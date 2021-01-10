@@ -18,12 +18,12 @@ NULL
 #'     Business or Enterprise support plan, the
 #'     `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [AWS
-#'     Support](http://aws.amazon.com/premiumsupport/).
+#'     Support](https://aws.amazon.com/premiumsupport/).
 #' 
 #' The AWS Support service also exposes a set of [AWS Trusted
-#' Advisor](http://aws.amazon.com/premiumsupport/trustedadvisor/) features.
-#' You can retrieve a list of checks and their descriptions, get check
-#' results, specify checks to refresh, and get the refresh status of
+#' Advisor](https://aws.amazon.com/premiumsupport/technology/trusted-advisor/)
+#' features. You can retrieve a list of checks and their descriptions, get
+#' check results, specify checks to refresh, and get the refresh status of
 #' checks.
 #' 
 #' The following list describes the AWS Support case management operations:

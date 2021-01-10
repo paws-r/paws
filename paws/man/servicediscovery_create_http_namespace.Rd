@@ -28,8 +28,8 @@ HTTP namespace can be discovered using a \code{DiscoverInstances} request but
 can't be discovered using DNS.
 }
 \details{
-For the current limit on the number of namespaces that you can create
-using the same AWS account, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits}
+For the current quota on the number of namespaces that you can create
+using the same AWS account, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map quotas}
 in the \emph{AWS Cloud Map Developer Guide}.
 }
 \section{Request syntax}{

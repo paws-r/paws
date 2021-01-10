@@ -26,7 +26,7 @@ configuration in an SSM document, the user must also specify a required
 document for validation purposes. In this case, an
 \code{ApplicationConfiguration} document requires an
 \code{ApplicationConfigurationSchema} document for validation purposes. For
-more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig.html}{AWS AppConfig}
+more information, see \href{https://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html}{AWS AppConfig}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{Attachments}{A list of key and value pairs that describe attachments to a version of
@@ -57,7 +57,7 @@ run on. For example, to run a document on EC2 instances, specify the
 following value: /AWS::EC2::Instance. If you specify a value of '/' the
 document can run on all types of resources. If you don't specify a
 value, the document can't run on any resources. For a list of valid
-resource types, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html}{AWS resource and property types reference}
+resource types, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html}{AWS resource and property types reference}
 in the \emph{AWS CloudFormation User Guide}.}
 
 \item{Tags}{Optional metadata that you assign to a resource. Tags enable you to
@@ -100,7 +100,7 @@ in the \emph{AWS Systems Manager User Guide}.
   ),
   Name = "string",
   VersionName = "string",
-  DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar",
+  DocumentType = "Command"|"Policy"|"Automation"|"Session"|"Package"|"ApplicationConfiguration"|"ApplicationConfigurationSchema"|"DeploymentStrategy"|"ChangeCalendar"|"Automation.ChangeTemplate",
   DocumentFormat = "YAML"|"JSON"|"TEXT",
   TargetType = "string",
   Tags = list(

@@ -21,7 +21,7 @@ You must have access to read Amazon S3 bucket.}
 containing the template body with a minimum length of 1 byte and a
 maximum length of 51,200 bytes.}
 
-\item{DeliveryS3Bucket}{[required] Location of an Amazon S3 bucket where AWS Config can deliver evaluation
+\item{DeliveryS3Bucket}{Location of an Amazon S3 bucket where AWS Config can deliver evaluation
 results. AWS Config stores intermediate files while processing
 conformance pack template.
 
@@ -40,24 +40,33 @@ pack while deploying a conformance pack.}
 Deploys conformance packs across member accounts in an AWS Organization.
 }
 \details{
+Only a master account and a delegated administrator can call this API.
+When calling this API with a delegated administrator, you must ensure
+AWS Organizations \code{ListDelegatedAdministrator} permissions are added.
+
 This API enables organization service access for
 \code{config-multiaccountsetup.amazonaws.com} through the
 \code{EnableAWSServiceAccess} action and creates a service linked role
-\code{AWSServiceRoleForConfigMultiAccountSetup} in the master account of your
-organization. The service linked role is created only when the role does
-not exist in the master account. AWS Config verifies the existence of
-role with GetRole action.
+\code{AWSServiceRoleForConfigMultiAccountSetup} in the master or delegated
+administrator account of your organization. The service linked role is
+created only when the role does not exist in the caller account. To use
+this API with delegated administrator, register a delegated
+administrator by calling AWS Organization \code{register-delegate-admin} for
+\code{config-multiaccountsetup.amazonaws.com}.
+
+Prerequisite: Ensure you call \code{EnableAllFeatures} API to enable all
+features in an organization.
 
 You must specify either the \code{TemplateS3Uri} or the \code{TemplateBody}
 parameter, but not both. If you provide both AWS Config uses the
 \code{TemplateS3Uri} parameter and ignores the \code{TemplateBody} parameter.
 
 AWS Config sets the state of a conformance pack to CREATE\\_IN\\_PROGRESS
-and UPDATE\\_IN\\_PROGRESS until the confomance pack is created or
+and UPDATE\\_IN\\_PROGRESS until the conformance pack is created or
 updated. You cannot update a conformance pack while it is in this state.
 
-You can create 6 conformance packs with 25 AWS Config rules in each
-pack.
+You can create 6 conformance packs with 25 AWS Config rules in each pack
+and 3 delegated administrator per organization.
 }
 \section{Request syntax}{
 \preformatted{svc$put_organization_conformance_pack(

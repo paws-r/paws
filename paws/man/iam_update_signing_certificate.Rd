@@ -10,14 +10,14 @@ iam_update_signing_certificate(UserName, CertificateId, Status)
 \arguments{
 \item{UserName}{The name of the IAM user the signing certificate belongs to.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{CertificateId}{[required] The ID of the signing certificate you want to update.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that
-can consist of any upper or lowercased letter or digit.}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
+that can consist of any upper or lowercased letter or digit.}
 
 \item{Status}{[required] The status you want to assign to the certificate. \code{Active} means that
 the certificate can be used for API calls to AWS \code{Inactive} means that

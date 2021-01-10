@@ -4,17 +4,28 @@
 \alias{resourcegroups_get_group}
 \title{Returns information about a specified resource group}
 \usage{
-resourcegroups_get_group(GroupName)
+resourcegroups_get_group(GroupName, Group)
 }
 \arguments{
-\item{GroupName}{[required] The name of the resource group.}
+\item{GroupName}{Deprecated - don't use this parameter. Use \code{Group} instead.}
+
+\item{Group}{The name or the ARN of the resource group to retrieve.}
 }
 \description{
 Returns information about a specified resource group.
 }
+\details{
+\strong{Minimum permissions}
+
+To run this command, you must have the following permissions:
+\itemize{
+\item \code{resource-groups:GetGroup}
+}
+}
 \section{Request syntax}{
 \preformatted{svc$get_group(
-  GroupName = "string"
+  GroupName = "string",
+  Group = "string"
 )
 }
 }

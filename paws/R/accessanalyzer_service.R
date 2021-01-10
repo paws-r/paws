@@ -12,9 +12,10 @@ NULL
 #' principal can be another AWS account, a root user, an IAM user or role,
 #' a federated user, an AWS service, or an anonymous user. This guide
 #' describes the AWS IAM Access Analyzer operations that you can call
-#' programmatically. For general information about Access Analyzer, see the
-#' [AWS IAM Access Analyzer section of the IAM User
-#' Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html).
+#' programmatically. For general information about Access Analyzer, see
+#' [AWS IAM Access
+#' Analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html)
+#' in the **IAM User Guide**.
 #' 
 #' To start using Access Analyzer, you first need to create an analyzer.
 #'
@@ -43,13 +44,14 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- accessanalyzer()
-#' svc$create_analyzer(
+#' svc$apply_archive_rule(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=accessanalyzer_apply_archive_rule]{apply_archive_rule} \tab Retroactively applies the archive rule to existing findings that meet the archive rule criteria\cr
 #'  \link[=accessanalyzer_create_analyzer]{create_analyzer} \tab Creates an analyzer for your account\cr
 #'  \link[=accessanalyzer_create_archive_rule]{create_archive_rule} \tab Creates an archive rule for the specified analyzer\cr
 #'  \link[=accessanalyzer_delete_analyzer]{delete_analyzer} \tab Deletes the specified analyzer\cr

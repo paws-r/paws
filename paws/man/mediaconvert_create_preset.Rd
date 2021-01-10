@@ -28,6 +28,9 @@ Create a new preset. For information about job templates see the User Guide at h
   Settings = list(
     AudioDescriptions = list(
       list(
+        AudioChannelTaggingSettings = list(
+          ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+        ),
         AudioNormalizationSettings = list(
           Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
           AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
@@ -145,6 +148,9 @@ Create a new preset. For information about job templates see the User Guide at h
               list(
                 InputChannels = list(
                   123
+                ),
+                InputChannelsFineTune = list(
+                  123.0
                 )
               )
             )
@@ -225,6 +231,8 @@ Create a new preset. For information about job templates see the User Guide at h
     ),
     ContainerSettings = list(
       CmfcSettings = list(
+        AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+        IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
         Scte35Esam = "INSERT"|"NONE",
         Scte35Source = "PASSTHROUGH"|"NONE"
       ),
@@ -234,6 +242,7 @@ Create a new preset. For information about job templates see the User Guide at h
       ),
       M2tsSettings = list(
         AudioBufferModel = "DVB"|"ATSC",
+        AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
         AudioFramesPerPes = 123,
         AudioPids = list(
           123
@@ -288,6 +297,7 @@ Create a new preset. For information about job templates see the User Guide at h
         VideoPid = 123
       ),
       M3u8Settings = list(
+        AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
         AudioFramesPerPes = 123,
         AudioPids = list(
           123
@@ -315,6 +325,7 @@ Create a new preset. For information about job templates see the User Guide at h
         Reference = "SELF_CONTAINED"|"EXTERNAL"
       ),
       Mp4Settings = list(
+        AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
         CslgAtom = "INCLUDE"|"EXCLUDE",
         CttsVersion = 123,
         FreeSpaceBox = "INCLUDE"|"EXCLUDE",
@@ -322,12 +333,15 @@ Create a new preset. For information about job templates see the User Guide at h
         Mp4MajorBrand = "string"
       ),
       MpdSettings = list(
+        AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+        AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
         CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
         Scte35Esam = "INSERT"|"NONE",
         Scte35Source = "PASSTHROUGH"|"NONE"
       ),
       MxfSettings = list(
-        AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO"
+        AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+        Profile = "D_10"|"XDCAM"|"OP1A"
       )
     ),
     VideoDescription = list(
@@ -337,7 +351,7 @@ Create a new preset. For information about job templates see the User Guide at h
         Av1Settings = list(
           AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-          FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+          FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
           FramerateDenominator = 123,
           FramerateNumerator = 123,
           GopSize = 123.0,
@@ -351,7 +365,21 @@ Create a new preset. For information about job templates see the User Guide at h
           Slices = 123,
           SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
         ),
-        Codec = "FRAME_CAPTURE"|"AV1"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VP8"|"VP9",
+        AvcIntraSettings = list(
+          AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+          AvcIntraUhdSettings = list(
+            QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+          ),
+          FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+          FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+          FramerateDenominator = 123,
+          FramerateNumerator = 123,
+          InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+          ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+          SlowPal = "DISABLED"|"ENABLED",
+          Telecine = "NONE"|"HARD"
+        ),
+        Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
         FrameCaptureSettings = list(
           FramerateDenominator = 123,
           FramerateNumerator = 123,
@@ -359,7 +387,7 @@ Create a new preset. For information about job templates see the User Guide at h
           Quality = 123
         ),
         H264Settings = list(
-          AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+          AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
           Bitrate = 123,
           CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
           CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
@@ -368,7 +396,7 @@ Create a new preset. For information about job templates see the User Guide at h
           FieldEncoding = "PAFF"|"FORCE_FIELD",
           FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-          FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+          FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
           FramerateDenominator = 123,
           FramerateNumerator = 123,
           GopBReference = "DISABLED"|"ENABLED",
@@ -393,6 +421,7 @@ Create a new preset. For information about job templates see the User Guide at h
           ),
           RateControlMode = "VBR"|"CBR"|"QVBR",
           RepeatPps = "DISABLED"|"ENABLED",
+          ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
           SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
           Slices = 123,
           SlowPal = "DISABLED"|"ENABLED",
@@ -412,7 +441,7 @@ Create a new preset. For information about job templates see the User Guide at h
           DynamicSubGop = "ADAPTIVE"|"STATIC",
           FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-          FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+          FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
           FramerateDenominator = 123,
           FramerateNumerator = 123,
           GopBReference = "DISABLED"|"ENABLED",
@@ -437,6 +466,7 @@ Create a new preset. For information about job templates see the User Guide at h
           ),
           RateControlMode = "VBR"|"CBR"|"QVBR",
           SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+          ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
           SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
           Slices = 123,
           SlowPal = "DISABLED"|"ENABLED",
@@ -455,7 +485,7 @@ Create a new preset. For information about job templates see the User Guide at h
           CodecProfile = "MAIN"|"PROFILE_422",
           DynamicSubGop = "ADAPTIVE"|"STATIC",
           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-          FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+          FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
           FramerateDenominator = 123,
           FramerateNumerator = 123,
           GopClosedCadence = 123,
@@ -473,6 +503,7 @@ Create a new preset. For information about job templates see the User Guide at h
           ParNumerator = 123,
           QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
           RateControlMode = "VBR"|"CBR",
+          ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
           SceneChangeDetect = "DISABLED"|"ENABLED",
           SlowPal = "DISABLED"|"ENABLED",
           Softness = 123,
@@ -484,20 +515,32 @@ Create a new preset. For information about job templates see the User Guide at h
         ProresSettings = list(
           CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-          FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+          FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
           FramerateDenominator = 123,
           FramerateNumerator = 123,
           InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
           ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
           ParDenominator = 123,
           ParNumerator = 123,
+          ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
           SlowPal = "DISABLED"|"ENABLED",
           Telecine = "NONE"|"HARD"
+        ),
+        Vc3Settings = list(
+          FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+          FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+          FramerateDenominator = 123,
+          FramerateNumerator = 123,
+          InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+          ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+          SlowPal = "DISABLED"|"ENABLED",
+          Telecine = "NONE"|"HARD",
+          Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
         ),
         Vp8Settings = list(
           Bitrate = 123,
           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-          FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+          FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
           FramerateDenominator = 123,
           FramerateNumerator = 123,
           GopSize = 123.0,
@@ -512,7 +555,7 @@ Create a new preset. For information about job templates see the User Guide at h
         Vp9Settings = list(
           Bitrate = 123,
           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-          FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+          FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
           FramerateDenominator = 123,
           FramerateNumerator = 123,
           GopSize = 123.0,

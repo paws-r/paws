@@ -4,7 +4,7 @@
 \alias{ec2_create_route_table}
 \title{Creates a route table for the specified VPC}
 \usage{
-ec2_create_route_table(DryRun, VpcId)
+ec2_create_route_table(DryRun, VpcId, TagSpecifications)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -13,6 +13,8 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{VpcId}{[required] The ID of the VPC.}
+
+\item{TagSpecifications}{The tags to assign to the route table.}
 }
 \description{
 Creates a route table for the specified VPC. After you create a route
@@ -25,7 +27,18 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
 \section{Request syntax}{
 \preformatted{svc$create_route_table(
   DryRun = TRUE|FALSE,
-  VpcId = "string"
+  VpcId = "string",
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

@@ -15,8 +15,7 @@ you want to update.}
 
 \item{Name}{The unique ID that specifies the ThreatIntelSet that you want to update.}
 
-\item{Location}{The updated URI of the file that contains the ThreateIntelSet. For
-example: https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.}
+\item{Location}{The updated URI of the file that contains the ThreateIntelSet.}
 
 \item{Activate}{The updated Boolean value that specifies whether the ThreateIntelSet is
 active or not.}

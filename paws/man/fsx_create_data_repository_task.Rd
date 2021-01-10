@@ -38,9 +38,9 @@ metadata, to files, directories, and symbolic links (symlinks) from your
 FSx file system to its linked data repository. A
 \code{CreateDataRepositoryTask} operation will fail if a data repository is
 not linked to the FSx file system. To learn more about data repository
-tasks, see \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/data-repository-tasks.html}{Using Data Repository Tasks}.
+tasks, see \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/data-repository-tasks.html}{Data Repository Tasks}.
 To learn more about linking a data repository to your file system, see
-\href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/export-data-repository.html#export-prefix}{Setting the Export Prefix}.
+\href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-fs-linked-data-repo.html}{Linking your file system to an S3 bucket}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_data_repository_task(

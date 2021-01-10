@@ -10,10 +10,10 @@ iotanalytics_update_channel(channelName, channelStorage,
 \arguments{
 \item{channelName}{[required] The name of the channel to be updated.}
 
-\item{channelStorage}{Where channel data is stored. You may choose one of "serviceManagedS3"
-or "customerManagedS3" storage. If not specified, the default is
-"serviceManagedS3". This cannot be changed after creation of the
-channel.}
+\item{channelStorage}{Where channel data is stored. You can choose one of \code{serviceManagedS3}
+or \code{customerManagedS3} storage. If not specified, the default is
+\code{serviceManagedS3}. You cannot change this storage option after the
+channel is created.}
 
 \item{retentionPeriod}{How long, in days, message data is kept for the channel. The retention
 period cannot be updated if the channel's S3 storage is

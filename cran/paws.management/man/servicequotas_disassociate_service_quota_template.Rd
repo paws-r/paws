@@ -2,23 +2,15 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_disassociate_service_quota_template}
 \alias{servicequotas_disassociate_service_quota_template}
-\title{Disables the Service Quotas template}
+\title{Disables your quota request template}
 \usage{
 servicequotas_disassociate_service_quota_template()
 }
 \description{
-Disables the Service Quotas template. Once the template is disabled, it
-does not request quota increases for new accounts in your organization.
-Disabling the quota template does not apply the quota increase requests
-from the template.
-}
-\details{
-\strong{Related operations}
-\itemize{
-\item To enable the quota template, call AssociateServiceQuotaTemplate.
-\item To delete a specific service quota from the template, use
-DeleteServiceQuotaIncreaseRequestFromTemplate.
-}
+Disables your quota request template. After a template is disabled, the
+quota increase requests in the template are not applied to new accounts
+in your organization. Disabling a quota request template does not apply
+its quota increase requests.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_service_quota_template()

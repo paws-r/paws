@@ -2,15 +2,12 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_get_association_for_service_quota_template}
 \alias{servicequotas_get_association_for_service_quota_template}
-\title{Retrieves the ServiceQuotaTemplateAssociationStatus value from the
-service}
+\title{Retrieves the status of the association for the quota request template}
 \usage{
 servicequotas_get_association_for_service_quota_template()
 }
 \description{
-Retrieves the \code{ServiceQuotaTemplateAssociationStatus} value from the
-service. Use this action to determine if the Service Quota template is
-associated, or enabled.
+Retrieves the status of the association for the quota request template.
 }
 \section{Request syntax}{
 \preformatted{svc$get_association_for_service_quota_template()

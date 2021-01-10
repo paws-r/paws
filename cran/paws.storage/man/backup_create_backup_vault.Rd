@@ -21,7 +21,7 @@ example,
 \verb{arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab}.}
 
 \item{CreatorRequestId}{A unique string that identifies the request and allows failed requests
-to be retried without the risk of executing the operation twice.}
+to be retried without the risk of running the operation twice.}
 }
 \description{
 Creates a logical container where backups are stored. A

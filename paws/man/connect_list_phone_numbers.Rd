@@ -25,6 +25,10 @@ results.}
 Provides information about the phone numbers for the specified Amazon
 Connect instance.
 }
+\details{
+For more information about phone numbers, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/contact-center-phone-number.html}{Set Up Phone Numbers for Your Contact Center}
+in the \emph{Amazon Connect Administrator Guide}.
+}
 \section{Request syntax}{
 \preformatted{svc$list_phone_numbers(
   InstanceId = "string",

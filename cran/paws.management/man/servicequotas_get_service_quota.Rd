@@ -2,21 +2,19 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_get_service_quota}
 \alias{servicequotas_get_service_quota}
-\title{Returns the details for the specified service quota}
+\title{Retrieves the applied quota value for the specified quota}
 \usage{
 servicequotas_get_service_quota(ServiceCode, QuotaCode)
 }
 \arguments{
-\item{ServiceCode}{[required] Specifies the service that you want to use.}
+\item{ServiceCode}{[required] The service identifier.}
 
-\item{QuotaCode}{[required] Identifies the service quota you want to select.}
+\item{QuotaCode}{[required] The quota identifier.}
 }
 \description{
-Returns the details for the specified service quota. This operation
-provides a different Value than the \code{GetAWSDefaultServiceQuota}
-operation. This operation returns the applied value for each quota.
-\code{GetAWSDefaultServiceQuota} returns the default AWS value for each
-quota.
+Retrieves the applied quota value for the specified quota. For some
+quotas, only the default values are available. If the applied quota
+value is not available for a quota, the quota is not retrieved.
 }
 \section{Request syntax}{
 \preformatted{svc$get_service_quota(

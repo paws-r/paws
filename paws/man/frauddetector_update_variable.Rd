@@ -14,7 +14,7 @@ frauddetector_update_variable(name, defaultValue, description,
 
 \item{description}{The new description.}
 
-\item{variableType}{The variable type.}
+\item{variableType}{The variable type. For more information see \href{https://docs.aws.amazon.com/frauddetector/latest/ug/create-a-variable.html#variable-types}{Variable types}.}
 }
 \description{
 Updates a variable.

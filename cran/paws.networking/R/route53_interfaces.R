@@ -3,6 +3,18 @@
 #' @include route53_service.R
 NULL
 
+.route53$activate_key_signing_key_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "HostedZoneId", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53$activate_key_signing_key_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChangeInfo = structure(list(Id = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubmittedAt = structure(logical(0), tags = list(type = "timestamp")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53$associate_vpc_with_hosted_zone_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), VPC = structure(list(VPCRegion = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", locationName = "AssociateVPCWithHostedZoneRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
@@ -60,6 +72,18 @@ NULL
 .route53$create_hosted_zone_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(HostedZone = structure(list(Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), CallerReference = structure(logical(0), tags = list(type = "string")), Config = structure(list(Comment = structure(logical(0), tags = list(type = "string")), PrivateZone = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), ResourceRecordSetCount = structure(logical(0), tags = list(type = "long")), LinkedService = structure(list(ServicePrincipal = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ChangeInfo = structure(list(Id = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubmittedAt = structure(logical(0), tags = list(type = "timestamp")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DelegationSet = structure(list(Id = structure(logical(0), tags = list(type = "string")), CallerReference = structure(logical(0), tags = list(type = "string")), NameServers = structure(list(structure(logical(0), tags = list(locationName = "NameServer", type = "string"))), tags = list(locationNameList = "NameServer", type = "list"))), tags = list(type = "structure")), VPC = structure(list(VPCRegion = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Location = structure(logical(0), tags = list(location = "header", locationName = "Location", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53$create_key_signing_key_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CallerReference = structure(logical(0), tags = list(type = "string")), HostedZoneId = structure(logical(0), tags = list(type = "string")), KeyManagementServiceArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", locationName = "CreateKeySigningKeyRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
+  return(populate(args, shape))
+}
+
+.route53$create_key_signing_key_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChangeInfo = structure(list(Id = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubmittedAt = structure(logical(0), tags = list(type = "timestamp")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KeySigningKey = structure(list(Name = structure(logical(0), tags = list(type = "string")), KmsArn = structure(logical(0), tags = list(type = "string")), Flag = structure(logical(0), tags = list(type = "integer")), SigningAlgorithmMnemonic = structure(logical(0), tags = list(type = "string")), SigningAlgorithmType = structure(logical(0), tags = list(type = "integer")), DigestAlgorithmMnemonic = structure(logical(0), tags = list(type = "string")), DigestAlgorithmType = structure(logical(0), tags = list(type = "integer")), KeyTag = structure(logical(0), tags = list(type = "integer")), DigestValue = structure(logical(0), tags = list(type = "string")), PublicKey = structure(logical(0), tags = list(type = "string")), DSRecord = structure(logical(0), tags = list(type = "string")), DNSKEYRecord = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp")), LastModifiedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Location = structure(logical(0), tags = list(location = "header", locationName = "Location", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -135,6 +159,18 @@ NULL
   return(populate(args, shape))
 }
 
+.route53$deactivate_key_signing_key_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "HostedZoneId", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53$deactivate_key_signing_key_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChangeInfo = structure(list(Id = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubmittedAt = structure(logical(0), tags = list(type = "timestamp")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53$delete_health_check_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(HealthCheckId = structure(logical(0), tags = list(location = "uri", locationName = "HealthCheckId", type = "string"))), tags = list(type = "structure"))
@@ -154,6 +190,18 @@ NULL
 }
 
 .route53$delete_hosted_zone_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChangeInfo = structure(list(Id = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubmittedAt = structure(logical(0), tags = list(type = "timestamp")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53$delete_key_signing_key_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "HostedZoneId", type = "string")), Name = structure(logical(0), tags = list(location = "uri", locationName = "Name", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53$delete_key_signing_key_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ChangeInfo = structure(list(Id = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubmittedAt = structure(logical(0), tags = list(type = "timestamp")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -219,6 +267,18 @@ NULL
   return(populate(args, shape))
 }
 
+.route53$disable_hosted_zone_dnssec_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53$disable_hosted_zone_dnssec_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChangeInfo = structure(list(Id = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubmittedAt = structure(logical(0), tags = list(type = "timestamp")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53$disassociate_vpc_from_hosted_zone_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string")), VPC = structure(list(VPCRegion = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", locationName = "DisassociateVPCFromHostedZoneRequest", xmlNamespace = "https://route53.amazonaws.com/doc/2013-04-01/"))
@@ -226,6 +286,18 @@ NULL
 }
 
 .route53$disassociate_vpc_from_hosted_zone_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ChangeInfo = structure(list(Id = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubmittedAt = structure(logical(0), tags = list(type = "timestamp")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53$enable_hosted_zone_dnssec_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53$enable_hosted_zone_dnssec_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ChangeInfo = structure(list(Id = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SubmittedAt = structure(logical(0), tags = list(type = "timestamp")), Comment = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -264,6 +336,18 @@ NULL
 .route53$get_checker_ip_ranges_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(CheckerIpRanges = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53$get_dnssec_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(HostedZoneId = structure(logical(0), tags = list(location = "uri", locationName = "Id", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53$get_dnssec_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(list(ServeSignature = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KeySigningKeys = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), KmsArn = structure(logical(0), tags = list(type = "string")), Flag = structure(logical(0), tags = list(type = "integer")), SigningAlgorithmMnemonic = structure(logical(0), tags = list(type = "string")), SigningAlgorithmType = structure(logical(0), tags = list(type = "integer")), DigestAlgorithmMnemonic = structure(logical(0), tags = list(type = "string")), DigestAlgorithmType = structure(logical(0), tags = list(type = "integer")), KeyTag = structure(logical(0), tags = list(type = "integer")), DigestValue = structure(logical(0), tags = list(type = "string")), PublicKey = structure(logical(0), tags = list(type = "string")), DSRecord = structure(logical(0), tags = list(type = "string")), DNSKEYRecord = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), CreatedDate = structure(logical(0), tags = list(type = "timestamp")), LastModifiedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

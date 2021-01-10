@@ -50,7 +50,10 @@ Constraints: Must be at least 30 minutes}
 can't set the \code{AvailabilityZone} parameter if the Multi-AZ parameter is
 set to \code{true}.}
 
-\item{EngineVersion}{The engine version number of the replication instance.}
+\item{EngineVersion}{The engine version number of the replication instance.
+
+When modifying a major engine version of an instance, also set
+\code{AllowMajorVersionUpgrade} to \code{true}.}
 
 \item{AllowMajorVersionUpgrade}{Indicates that major version upgrades are allowed. Changing this
 parameter does not result in an outage, and the change is asynchronously
@@ -63,7 +66,7 @@ replication instance's current version.}
 \item{AutoMinorVersionUpgrade}{A value that indicates that minor version upgrades are applied
 automatically to the replication instance during the maintenance window.
 Changing this parameter doesn't result in an outage, except in the case
-dsecribed following. The change is asynchronously applied as soon as
+described following. The change is asynchronously applied as soon as
 possible.
 
 An outage does result if these factors apply:

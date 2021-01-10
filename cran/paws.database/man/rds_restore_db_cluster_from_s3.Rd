@@ -2,8 +2,8 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_restore_db_cluster_from_s3}
 \alias{rds_restore_db_cluster_from_s3}
-\title{Creates an Amazon Aurora DB cluster from data stored in an Amazon S3
-bucket}
+\title{Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon
+S3 bucket}
 \usage{
 rds_restore_db_cluster_from_s3(AvailabilityZones, BackupRetentionPeriod,
   CharacterSetName, DatabaseName, DBClusterIdentifier,
@@ -66,9 +66,10 @@ DBSubnetGroup.
 
 Example: \code{mySubnetgroup}}
 
-\item{Engine}{[required] The name of the database engine to be used for the restored DB cluster.
+\item{Engine}{[required] The name of the database engine to be used for this DB cluster.
 
-Valid Values: \code{aurora}, \code{aurora-postgresql}}
+Valid Values: \code{aurora} (for MySQL 5.6-compatible Aurora), \code{aurora-mysql}
+(for MySQL 5.7-compatible Aurora), and \code{aurora-postgresql}}
 
 \item{EngineVersion}{The version number of the database engine to use.
 
@@ -159,17 +160,14 @@ Constraints: Minimum 30-minute window.}
 
 \item{KmsKeyId}{The AWS KMS key identifier for an encrypted DB cluster.
 
-The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are creating a DB cluster with the same AWS
-account that owns the KMS encryption key used to encrypt the new DB
-cluster, then you can use the KMS key alias instead of the ARN for the
-KM encryption key.
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK). To use a CMK in a
+different AWS account, specify the key ARN or alias ARN.
 
 If the StorageEncrypted parameter is enabled, and you do not specify a
 value for the \code{KmsKeyId} parameter, then Amazon RDS will use your
-default encryption key. AWS KMS creates the default encryption key for
-your AWS account. Your AWS account has a different default encryption
-key for each AWS Region.}
+default CMK. There is a default CMK for your AWS account. Your AWS
+account has a different default CMK for each AWS Region.}
 
 \item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
@@ -187,7 +185,7 @@ Valid values: \code{mysql}}
 
 MySQL versions 5.5, 5.6, and 5.7 are supported.
 
-Example: \verb{5.6.40}}
+Example: \verb{5.6.40}, \verb{5.7.28}}
 
 \item{S3BucketName}{[required] The name of the Amazon S3 bucket that contains the data used to create
 the Amazon Aurora DB cluster.}
@@ -232,17 +230,17 @@ The domain must be created prior to this operation.
 
 For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
 Authentication to authenticate users that connect to the DB cluster. For
-more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/kerberos-authentication.html}{Kerberos Authentication}
+more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/database-authentication.html}{Kerberos Authentication}
 in the \emph{Amazon Aurora User Guide}.}
 
 \item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
 Directory Service.}
 }
 \description{
-Creates an Amazon Aurora DB cluster from data stored in an Amazon S3
-bucket. Amazon RDS must be authorized to access the Amazon S3 bucket and
-the data must be created using the Percona XtraBackup utility as
-described in \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.html}{Migrating Data to an Amazon Aurora MySQL DB Cluster}
+Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon
+S3 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket
+and the data must be created using the Percona XtraBackup utility as
+described in \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Migrating.ExtMySQL.html#AuroraMySQL.Migrating.ExtMySQL.S3}{Migrating Data from MySQL by Using an Amazon S3 Bucket}
 in the \emph{Amazon Aurora User Guide}.
 }
 \details{
@@ -256,7 +254,8 @@ and the DB cluster is available.
 For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
 
-This action only applies to Aurora DB clusters.
+This action only applies to Aurora DB clusters. The source DB engine
+must be MySQL.
 }
 \section{Request syntax}{
 \preformatted{svc$restore_db_cluster_from_s3(

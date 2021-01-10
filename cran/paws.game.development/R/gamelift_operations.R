@@ -34,10 +34,10 @@ NULL
 #' **Learn more**
 #' 
 #' [Add FlexMatch to a Game
-#' Client](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html)
+#' Client](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html)
 #' 
 #' [FlexMatch Events
-#' Reference](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-events.html)
+#' Reference](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-events.html)
 #' 
 #' **Related operations**
 #' 
@@ -91,52 +91,51 @@ gamelift_accept_match <- function(TicketId, PlayerIds, AcceptanceType) {
 }
 .gamelift$operations$accept_match <- gamelift_accept_match
 
-#' This action is part of Amazon GameLift FleetIQ with game server groups,
-#' which is in preview release and is subject to change
+#' This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups
 #'
-#' **This action is part of Amazon GameLift FleetIQ with game server
-#' groups, which is in preview release and is subject to change.**
+#' **This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups.**
 #' 
 #' Locates an available game server and temporarily reserves it to host
-#' gameplay and players. This action is called by a game client or client
-#' service (such as a matchmaker) to request hosting resources for a new
-#' game session. In response, GameLift FleetIQ searches for an available
-#' game server in the specified game server group, places the game server
-#' in "claimed" status for 60 seconds, and returns connection information
-#' back to the requester so that players can connect to the game server.
+#' gameplay and players. This operation is called from a game client or
+#' client service (such as a matchmaker) to request hosting resources for a
+#' new game session. In response, GameLift FleetIQ locates an available
+#' game server, places it in `CLAIMED` status for 60 seconds, and returns
+#' connection information that players can use to connect to the game
+#' server.
 #' 
-#' There are two ways you can claim a game server. For the first option,
-#' you provide a game server group ID only, which prompts GameLift FleetIQ
-#' to search for an available game server in the specified group and claim
-#' it. With this option, GameLift FleetIQ attempts to consolidate gameplay
-#' on as few instances as possible to minimize hosting costs. For the
-#' second option, you request a specific game server by its ID. This option
-#' results in a less efficient claiming process because it does not take
-#' advantage of consolidation and may fail if the requested game server is
-#' unavailable.
-#' 
-#' To claim a game server, identify a game server group and (optionally) a
-#' game server ID. If your game requires that game data be provided to the
-#' game server at the start of a game, such as a game map or player
-#' information, you can provide it in your claim request.
+#' To claim a game server, identify a game server group. You can also
+#' specify a game server ID, although this approach bypasses GameLift
+#' FleetIQ placement optimization. Optionally, include game data to pass to
+#' the game server at the start of a game session, such as a game map or
+#' player information.
 #' 
 #' When a game server is successfully claimed, connection information is
-#' returned. A claimed game server's utilization status remains AVAILABLE,
-#' while the claim status is set to CLAIMED for up to 60 seconds. This time
-#' period allows the game server to be prompted to update its status to
-#' UTILIZED (using UpdateGameServer). If the game server's status is not
-#' updated within 60 seconds, the game server reverts to unclaimed status
-#' and is available to be claimed by another request.
+#' returned. A claimed game server's utilization status remains `AVAILABLE`
+#' while the claim status is set to `CLAIMED` for up to 60 seconds. This
+#' time period gives the game server time to update its status to
+#' `UTILIZED` (using UpdateGameServer) once players join. If the game
+#' server's status is not updated within 60 seconds, the game server
+#' reverts to unclaimed status and is available to be claimed by another
+#' request. The claim time period is a fixed value and is not configurable.
 #' 
 #' If you try to claim a specific game server, this request will fail in
-#' the following cases: (1) if the game server utilization status is
-#' UTILIZED, (2) if the game server claim status is CLAIMED, or (3) if the
-#' instance that the game server is running on is flagged as draining.
+#' the following cases:
+#' 
+#' -   If the game server utilization status is `UTILIZED`.
+#' 
+#' -   If the game server claim status is `CLAIMED`.
+#' 
+#' When claiming a specific game server, this request will succeed even if
+#' the game server is running on an instance in `DRAINING` status. To avoid
+#' this, first check the instance status by calling
+#' DescribeGameServerInstances.
 #' 
 #' **Learn more**
 #' 
 #' [GameLift FleetIQ
-#' Guide](https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html)
+#' Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)
 #' 
 #' **Related operations**
 #' 
@@ -156,16 +155,16 @@ gamelift_accept_match <- function(TicketId, PlayerIds, AcceptanceType) {
 #' gamelift_claim_game_server(GameServerGroupName, GameServerId,
 #'   GameServerData)
 #'
-#' @param GameServerGroupName &#91;required&#93; An identifier for the game server group. When claiming a specific game
-#' server, this is the game server group whether the game server is
-#' located. When requesting that GameLift FleetIQ locate an available game
-#' server, this is the game server group to search on. You can use either
-#' the GameServerGroup name or ARN value.
+#' @param GameServerGroupName &#91;required&#93; A unique identifier for the game server group where the game server is
+#' running. Use either the GameServerGroup name or ARN value.. If you are
+#' not specifying a game server to claim, this value identifies where you
+#' want GameLift FleetIQ to look for an available game server to claim.
 #' @param GameServerId A custom string that uniquely identifies the game server to claim. If
 #' this parameter is left empty, GameLift FleetIQ searches for an available
 #' game server in the specified game server group.
 #' @param GameServerData A set of custom game server properties, formatted as a single string
-#' value, to be passed to the claimed game server.
+#' value. This data is passed to a game client or service when it requests
+#' information on game servers using ListGameServers or ClaimGameServer.
 #'
 #' @section Request syntax:
 #' ```
@@ -309,10 +308,10 @@ gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy, Tag
 #' 
 #' -   To directly upload your build files to a GameLift S3 location. To
 #'     use this option, first call `CreateBuild` and specify a build name
-#'     and operating system. This action creates a new build resource and
-#'     also returns an S3 location with temporary access credentials. Use
-#'     the credentials to manually upload your build files to the specified
-#'     S3 location. For more information, see [Uploading
+#'     and operating system. This operation creates a new build resource
+#'     and also returns an S3 location with temporary access credentials.
+#'     Use the credentials to manually upload your build files to the
+#'     specified S3 location. For more information, see [Uploading
 #'     Objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html)
 #'     in the *Amazon S3 Developer Guide*. Build files can be uploaded to
 #'     the GameLift S3 location once only; that can't be updated.
@@ -350,12 +349,15 @@ gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy, Tag
 #' @param Version Version information that is associated with a build or script. Version
 #' strings do not need to be unique. You can use UpdateBuild to change this
 #' value later.
-#' @param StorageLocation Information indicating where your game build files are stored. Use this
-#' parameter only when creating a build with files stored in an S3 bucket
-#' that you own. The storage location must specify an S3 bucket name and
-#' key. The location must also specify a role ARN that you set up to allow
-#' Amazon GameLift to access your S3 bucket. The S3 bucket and your new
-#' build must be in the same Region.
+#' @param StorageLocation The location where your game build files are stored. Use this parameter
+#' only when creating a build using files that are stored in an S3 bucket
+#' that you own. Identify an S3 bucket name and key, which must in the same
+#' Region where you're creating a build. This parameter must also specify
+#' the ARN for an IAM role that you've set up to give Amazon GameLift
+#' access your S3 bucket. To call this operation with a storage location,
+#' you must have IAM PassRole permission. For more details on IAM roles and
+#' PassRole permissions, see [Set up a role for GameLift
+#' access](https://docs.aws.amazon.com/gamelift/latest/developerguide/setting-up-role.html).
 #' @param OperatingSystem The operating system that the game server binaries are built to run on.
 #' This value determines the type of fleet resources that you can use for
 #' this build. If your game build contains multiple executables, they all
@@ -505,12 +507,12 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' the Amazon GameLift server API `ProcessReady()` and specify one or more
 #' directory paths in `logParameters`. See more information in the [Server
 #' API
-#' Reference](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api-ref.html#gamelift-sdk-server-api-ref-dataypes-process).
+#' Reference](https://docs.aws.amazon.com/gamelift/latest/developerguide/#gamelift-sdk-server-api-ref-dataypes-process).
 #' @param EC2InstanceType &#91;required&#93; The name of an EC2 instance type that is supported in Amazon GameLift. A
 #' fleet instance type determines the computing resources of each instance
 #' in the fleet, including CPU, memory, storage, and networking capacity.
 #' Amazon GameLift supports the following EC2 instance types. See [Amazon
-#' EC2 Instance Types](http://aws.amazon.com/ec2/instance-types/) for
+#' EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/) for
 #' detailed descriptions.
 #' @param EC2InboundPermissions Range of IP addresses and port settings that permit inbound traffic to
 #' access game sessions that are running on the fleet. For fleets using a
@@ -558,9 +560,9 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' @param PeerVpcId A unique identifier for a VPC with resources to be accessed by your
 #' Amazon GameLift fleet. The VPC must be in the same Region as your fleet.
 #' To look up a VPC ID, use the [VPC
-#' Dashboard](https://console.aws.amazon.com/vpc/) in the AWS Management
-#' Console. Learn more about VPC peering in [VPC Peering with Amazon
-#' GameLift
+#' Dashboard](https://console.aws.amazon.com/vpc/home) in the AWS
+#' Management Console. Learn more about VPC peering in [VPC Peering with
+#' Amazon GameLift
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 #' @param FleetType Indicates whether to use On-Demand instances or Spot instances for this
 #' fleet. If empty, the default is `ON_DEMAND`. Both categories of
@@ -569,14 +571,14 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #' versus Spot
 #' Instances](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-ec2-instances.html#gamelift-ec2-instances-spot).
 #' @param InstanceRoleArn A unique identifier for an AWS IAM role that manages access to your AWS
-#' services. With an instance role ARN set, any application that runs on an
-#' instance in this fleet can assume the role, including install scripts,
-#' server processes, and daemons (background processes). Create a role or
-#' look up a role's ARN from the [IAM
-#' dashboard](https://console.aws.amazon.com/iam/) in the AWS Management
-#' Console. Learn more about using on-box credentials for your game servers
-#' at [Access external resources from a game
+#' services. Fleets with an instance role ARN allow applications that are
+#' running on the fleet's instances to assume the role. Learn more about
+#' using on-box credentials for your game servers at [Access external
+#' resources from a game
 #' server](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-resources.html).
+#' To call this operation with instance role ARN, you must have IAM
+#' PassRole permissions. See [IAM policy examples for
+#' GameLift](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-iam-policy-examples.html).
 #' @param CertificateConfiguration Indicates whether to generate a TLS/SSL certificate for the new fleet.
 #' TLS certificates are used for encrypting traffic between game clients
 #' and game servers running on GameLift. If this parameter is not
@@ -619,7 +621,7 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 #'   LogPaths = list(
 #'     "string"
 #'   ),
-#'   EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge",
+#'   EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge",
 #'   EC2InboundPermissions = list(
 #'     list(
 #'       FromPort = 123,
@@ -683,59 +685,53 @@ gamelift_create_fleet <- function(Name, Description = NULL, BuildId = NULL, Scri
 }
 .gamelift$operations$create_fleet <- gamelift_create_fleet
 
-#' This action is part of Amazon GameLift FleetIQ with game server groups,
-#' which is in preview release and is subject to change
+#' This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups
 #'
-#' **This action is part of Amazon GameLift FleetIQ with game server
-#' groups, which is in preview release and is subject to change.**
+#' **This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups.**
 #' 
-#' Creates a GameLift FleetIQ game server group to manage a collection of
-#' EC2 instances for game hosting. In addition to creating the game server
-#' group, this action also creates an Auto Scaling group in your AWS
-#' account and establishes a link between the two groups. You have full
-#' control over configuration of the Auto Scaling group, but GameLift
-#' FleetIQ routinely certain Auto Scaling group properties in order to
-#' optimize the group's instances for low-cost game hosting. You can view
-#' the status of your game server groups in the GameLift Console. Game
-#' server group metrics and events are emitted to Amazon CloudWatch.
+#' Creates a GameLift FleetIQ game server group for managing game hosting
+#' on a collection of Amazon EC2 instances for game hosting. This operation
+#' creates the game server group, creates an Auto Scaling group in your AWS
+#' account, and establishes a link between the two groups. You can view the
+#' status of your game server groups in the GameLift console. Game server
+#' group metrics and events are emitted to Amazon CloudWatch.
 #' 
-#' Prior creating a new game server group, you must set up the following:
+#' Before creating a new game server group, you must have the following:
 #' 
-#' -   An EC2 launch template. The template provides configuration settings
-#'     for a set of EC2 instances and includes the game server build that
-#'     you want to deploy and run on each instance. For more information on
-#'     creating a launch template, see [Launching an Instance from a Launch
+#' -   An Amazon EC2 launch template that specifies how to launch Amazon
+#'     EC2 instances with your game server build. For more information, see
+#'     [Launching an Instance from a Launch
 #'     Template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)
 #'     in the *Amazon EC2 User Guide*.
 #' 
-#' -   An IAM role. The role sets up limited access to your AWS account,
-#'     allowing GameLift FleetIQ to create and manage the EC2 Auto Scaling
-#'     group, get instance data, and emit metrics and events to CloudWatch.
-#'     For more information on setting up an IAM permissions policy with
-#'     principal access for GameLift, see [Specifying a Principal in a
-#'     Policy](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-bucket-user-policy-specifying-principal-intro.html)
-#'     in the *Amazon S3 Developer Guide*.
+#' -   An IAM role that extends limited access to your AWS account to allow
+#'     GameLift FleetIQ to create and interact with the Auto Scaling group.
+#'     For more information, see [Create IAM roles for cross-service
+#'     interaction](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-iam-permissions-roles.html)
+#'     in the *GameLift FleetIQ Developer Guide*.
 #' 
-#' To create a new game server group, provide a name and specify the IAM
-#' role and EC2 launch template. You also need to provide a list of
-#' instance types to be used in the group and set initial maximum and
+#' To create a new game server group, specify a unique group name, IAM role
+#' and Amazon EC2 launch template, and provide a list of instance types
+#' that can be used in the group. You must also set initial maximum and
 #' minimum limits on the group's instance count. You can optionally set an
-#' autoscaling policy with target tracking based on a GameLift FleetIQ
+#' Auto Scaling policy with target tracking based on a GameLift FleetIQ
 #' metric.
 #' 
 #' Once the game server group and corresponding Auto Scaling group are
 #' created, you have full access to change the Auto Scaling group's
-#' configuration as needed. Keep in mind, however, that some properties are
-#' periodically updated by GameLift FleetIQ as it balances the group's
-#' instances based on availability and cost.
+#' configuration as needed. Several properties that are set when creating a
+#' game server group, including maximum/minimum size and auto-scaling
+#' policy settings, must be updated directly in the Auto Scaling group.
+#' Keep in mind that some Auto Scaling group properties are periodically
+#' updated by GameLift FleetIQ as part of its balancing activities to
+#' optimize for availability and cost.
 #' 
 #' **Learn more**
 #' 
 #' [GameLift FleetIQ
-#' Guide](https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html)
-#' 
-#' [Updating a GameLift FleetIQ-Linked Auto Scaling
-#' Group](https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-asgroups.html)
+#' Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)
 #' 
 #' **Related operations**
 #' 
@@ -752,6 +748,8 @@ gamelift_create_fleet <- function(Name, Description = NULL, BuildId = NULL, Scri
 #' -   ResumeGameServerGroup
 #' 
 #' -   SuspendGameServerGroup
+#' 
+#' -   DescribeGameServerInstances
 #'
 #' @usage
 #' gamelift_create_game_server_group(GameServerGroupName, RoleArn, MinSize,
@@ -765,69 +763,89 @@ gamelift_create_fleet <- function(Name, Description = NULL, BuildId = NULL, Scri
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name
 #' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 #' for an IAM role that allows Amazon GameLift to access your EC2 Auto
-#' Scaling groups. The submitted role is validated to ensure that it
-#' contains the necessary permissions for game server groups.
+#' Scaling groups.
 #' @param MinSize &#91;required&#93; The minimum number of instances allowed in the EC2 Auto Scaling group.
-#' During autoscaling events, GameLift FleetIQ and EC2 do not scale down
-#' the group below this minimum. In production, this value should be set to
-#' at least 1.
+#' During automatic scaling events, GameLift FleetIQ and EC2 do not scale
+#' down the group below this minimum. In production, this value should be
+#' set to at least 1. After the Auto Scaling group is created, update this
+#' value directly in the Auto Scaling group using the AWS console or APIs.
 #' @param MaxSize &#91;required&#93; The maximum number of instances allowed in the EC2 Auto Scaling group.
-#' During autoscaling events, GameLift FleetIQ and EC2 do not scale up the
-#' group above this maximum.
+#' During automatic scaling events, GameLift FleetIQ and EC2 do not scale
+#' up the group above this maximum. After the Auto Scaling group is
+#' created, update this value directly in the Auto Scaling group using the
+#' AWS console or APIs.
 #' @param LaunchTemplate &#91;required&#93; The EC2 launch template that contains configuration settings and game
 #' server code to be deployed to all instances in the game server group.
 #' You can specify the template using either the template name or ID. For
 #' help with creating a launch template, see [Creating a Launch Template
 #' for an Auto Scaling
 #' Group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-template.html)
-#' in the *Amazon EC2 Auto Scaling User Guide*.
-#' @param InstanceDefinitions &#91;required&#93; A set of EC2 instance types to use when creating instances in the group.
-#' The instance definitions must specify at least two different instance
-#' types that are supported by GameLift FleetIQ. For more information on
-#' instance types, see [EC2 Instance
+#' in the *Amazon EC2 Auto Scaling User Guide*. After the Auto Scaling
+#' group is created, update this value directly in the Auto Scaling group
+#' using the AWS console or APIs.
+#' @param InstanceDefinitions &#91;required&#93; The EC2 instance types and sizes to use in the Auto Scaling group. The
+#' instance definitions must specify at least two different instance types
+#' that are supported by GameLift FleetIQ. For more information on instance
+#' types, see [EC2 Instance
 #' Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
-#' in the *Amazon EC2 User Guide*.
+#' in the *Amazon EC2 User Guide*. You can optionally specify capacity
+#' weighting for each instance type. If no weight value is specified for an
+#' instance type, it is set to the default value "1". For more information
+#' about capacity weighting, see [Instance Weighting for Amazon EC2 Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-weighting.html)
+#' in the Amazon EC2 Auto Scaling User Guide.
 #' @param AutoScalingPolicy Configuration settings to define a scaling policy for the Auto Scaling
 #' group that is optimized for game hosting. The scaling policy uses the
-#' metric "PercentUtilizedGameServers" to maintain a buffer of idle game
-#' servers that can immediately accommodate new games and players. Once the
-#' game server and Auto Scaling groups are created, you can update the
-#' scaling policy settings directly in Auto Scaling Groups.
-#' @param BalancingStrategy The fallback balancing method to use for the game server group when Spot
-#' instances in a Region become unavailable or are not viable for game
-#' hosting. Once triggered, this method remains active until Spot instances
-#' can once again be used. Method options include:
+#' metric `"PercentUtilizedGameServers"` to maintain a buffer of idle game
+#' servers that can immediately accommodate new games and players. After
+#' the Auto Scaling group is created, update this value directly in the
+#' Auto Scaling group using the AWS console or APIs.
+#' @param BalancingStrategy Indicates how GameLift FleetIQ balances the use of Spot Instances and
+#' On-Demand Instances in the game server group. Method options include the
+#' following:
 #' 
-#' -   SPOT\\_ONLY -- If Spot instances are unavailable, the game server
-#'     group provides no hosting capacity. No new instances are started,
-#'     and the existing nonviable Spot instances are terminated (once
-#'     current gameplay ends) and not replaced.
+#' -   `SPOT_ONLY` - Only Spot Instances are used in the game server group.
+#'     If Spot Instances are unavailable or not viable for game hosting,
+#'     the game server group provides no hosting capacity until Spot
+#'     Instances can again be used. Until then, no new instances are
+#'     started, and the existing nonviable Spot Instances are terminated
+#'     (after current gameplay ends) and are not replaced.
 #' 
-#' -   SPOT\\_PREFERRED -- If Spot instances are unavailable, the game
-#'     server group continues to provide hosting capacity by using
-#'     On-Demand instances. Existing nonviable Spot instances are
-#'     terminated (once current gameplay ends) and replaced with new
-#'     On-Demand instances.
+#' -   `SPOT_PREFERRED` - (default value) Spot Instances are used whenever
+#'     available in the game server group. If Spot Instances are
+#'     unavailable, the game server group continues to provide hosting
+#'     capacity by falling back to On-Demand Instances. Existing nonviable
+#'     Spot Instances are terminated (after current gameplay ends) and are
+#'     replaced with new On-Demand Instances.
+#' 
+#' -   `ON_DEMAND_ONLY` - Only On-Demand Instances are used in the game
+#'     server group. No Spot Instances are used, even when available, while
+#'     this balancing strategy is in force.
 #' @param GameServerProtectionPolicy A flag that indicates whether instances in the game server group are
 #' protected from early termination. Unprotected instances that have active
-#' game servers running may by terminated during a scale-down event,
+#' game servers running might be terminated during a scale-down event,
 #' causing players to be dropped from the game. Protected instances cannot
-#' be terminated while there are active game servers running. An exception
-#' to this is Spot Instances, which may be terminated by AWS regardless of
-#' protection status. This property is set to NO\\_PROTECTION by default.
+#' be terminated while there are active game servers running except in the
+#' event of a forced game server group deletion (see ). An exception to
+#' this is with Spot Instances, which can be terminated by AWS regardless
+#' of protection status. This property is set to `NO_PROTECTION` by
+#' default.
 #' @param VpcSubnets A list of virtual private cloud (VPC) subnets to use with instances in
 #' the game server group. By default, all GameLift FleetIQ-supported
-#' availability zones are used; this parameter allows you to specify VPCs
-#' that you've set up.
+#' Availability Zones are used. You can use this parameter to specify VPCs
+#' that you've set up. This property cannot be updated after the game
+#' server group is created, and the corresponding Auto Scaling group will
+#' always use the property value that is set with this request, even if the
+#' Auto Scaling group is updated directly.
 #' @param Tags A list of labels to assign to the new game server group resource. Tags
-#' are developer-defined key-value pairs. Tagging AWS resources are useful
+#' are developer-defined key-value pairs. Tagging AWS resources is useful
 #' for resource management, access management, and cost allocation. For
 #' more information, see [Tagging AWS
 #' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
 #' in the *AWS General Reference*. Once the resource is created, you can
 #' use TagResource, UntagResource, and ListTagsForResource to add, remove,
-#' and view tags. The maximum tag limit may be lower than stated. See the
-#' AWS General Reference for actual tagging limits.
+#' and view tags, respectively. The maximum tag limit may be lower than
+#' stated. See the AWS General Reference for actual tagging limits.
 #'
 #' @section Request syntax:
 #' ```
@@ -853,7 +871,7 @@ gamelift_create_fleet <- function(Name, Description = NULL, BuildId = NULL, Scri
 #'       TargetValue = 123.0
 #'     )
 #'   ),
-#'   BalancingStrategy = "SPOT_ONLY"|"SPOT_PREFERRED",
+#'   BalancingStrategy = "SPOT_ONLY"|"SPOT_PREFERRED"|"ON_DEMAND_ONLY",
 #'   GameServerProtectionPolicy = "NO_PROTECTION"|"FULL_PROTECTION",
 #'   VpcSubnets = list(
 #'     "string"
@@ -889,7 +907,7 @@ gamelift_create_game_server_group <- function(GameServerGroupName, RoleArn, MinS
 
 #' Creates a multiplayer game session for players
 #'
-#' Creates a multiplayer game session for players. This action creates a
+#' Creates a multiplayer game session for players. This operation creates a
 #' game session record and assigns an available server process in the
 #' specified fleet to host the game session. A fleet must have an `ACTIVE`
 #' status before a game session can be created in it.
@@ -1160,36 +1178,40 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 
 #' Defines a new matchmaking configuration for use with FlexMatch
 #'
-#' Defines a new matchmaking configuration for use with FlexMatch. A
-#' matchmaking configuration sets out guidelines for matching players and
-#' getting the matches into games. You can set up multiple matchmaking
-#' configurations to handle the scenarios needed for your game. Each
-#' matchmaking ticket (StartMatchmaking or StartMatchBackfill) specifies a
-#' configuration for the match and provides player attributes to support
-#' the configuration being used.
+#' Defines a new matchmaking configuration for use with FlexMatch. Whether
+#' your are using FlexMatch with GameLift hosting or as a standalone
+#' matchmaking service, the matchmaking configuration sets out rules for
+#' matching players and forming teams. If you're also using GameLift
+#' hosting, it defines how to start game sessions for each match. Your
+#' matchmaking system can use multiple configurations to handle different
+#' game scenarios. All matchmaking requests (StartMatchmaking or
+#' StartMatchBackfill) identify the matchmaking configuration to use and
+#' provide player attributes consistent with that configuration.
 #' 
-#' To create a matchmaking configuration, at a minimum you must specify the
-#' following: configuration name; a rule set that governs how to evaluate
-#' players and find acceptable matches; a game session queue to use when
-#' placing a new game session for the match; and the maximum time allowed
-#' for a matchmaking attempt.
+#' To create a matchmaking configuration, you must provide the following:
+#' configuration name and FlexMatch mode (with or without GameLift
+#' hosting); a rule set that specifies how to evaluate players and find
+#' acceptable matches; whether player acceptance is required; and the
+#' maximum time allowed for a matchmaking attempt. When using FlexMatch
+#' with GameLift hosting, you also need to identify the game session queue
+#' to use when starting a game session for the match.
 #' 
-#' There are two ways to track the progress of matchmaking tickets: (1)
-#' polling ticket status with DescribeMatchmaking; or (2) receiving
-#' notifications with Amazon Simple Notification Service (SNS). To use
-#' notifications, you first need to set up an SNS topic to receive the
-#' notifications, and provide the topic ARN in the matchmaking
-#' configuration. Since notifications promise only "best effort" delivery,
-#' we recommend calling `DescribeMatchmaking` if no notifications are
-#' received within 30 seconds.
+#' In addition, you must set up an Amazon Simple Notification Service (SNS)
+#' to receive matchmaking notifications, and provide the topic ARN in the
+#' matchmaking configuration. An alternative method, continuously polling
+#' ticket status with DescribeMatchmaking, is only suitable for games in
+#' development with low matchmaking usage.
 #' 
 #' **Learn more**
 #' 
-#' [Design a FlexMatch
-#' Matchmaker](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-configuration.html)
+#' [FlexMatch Developer
+#' Guide](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html)
 #' 
-#' [Setting up Notifications for
-#' Matchmaking](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)
+#' [Design a FlexMatch
+#' Matchmaker](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-configuration.html)
+#' 
+#' [Set Up FlexMatch Event
+#' Notification](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html)
 #' 
 #' **Related operations**
 #' 
@@ -1214,27 +1236,32 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #'   GameSessionQueueArns, RequestTimeoutSeconds, AcceptanceTimeoutSeconds,
 #'   AcceptanceRequired, RuleSetName, NotificationTarget,
 #'   AdditionalPlayerCount, CustomEventData, GameProperties, GameSessionData,
-#'   BackfillMode, Tags)
+#'   BackfillMode, FlexMatchMode, Tags)
 #'
 #' @param Name &#91;required&#93; A unique identifier for a matchmaking configuration. This name is used
 #' to identify the configuration associated with a matchmaking request or
 #' ticket.
 #' @param Description A human-readable description of the matchmaking configuration.
-#' @param GameSessionQueueArns &#91;required&#93; Amazon Resource Name
+#' @param GameSessionQueueArns Amazon Resource Name
 #' ([ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
 #' that is assigned to a GameLift game session queue resource and uniquely
-#' identifies it. ARNs are unique across all Regions. These queues are used
-#' when placing game sessions for matches that are created with this
-#' matchmaking configuration. Queues can be located in any Region.
+#' identifies it. ARNs are unique across all Regions. Queues can be located
+#' in any Region. Queues are used to start new GameLift-hosted game
+#' sessions for matches that are created with this matchmaking
+#' configuration. If `FlexMatchMode` is set to `STANDALONE`, do not set
+#' this parameter.
 #' @param RequestTimeoutSeconds &#91;required&#93; The maximum duration, in seconds, that a matchmaking ticket can remain
 #' in process before timing out. Requests that fail due to timing out can
 #' be resubmitted as needed.
 #' @param AcceptanceTimeoutSeconds The length of time (in seconds) to wait for players to accept a proposed
-#' match. If any player rejects the match or fails to accept before the
-#' timeout, the ticket continues to look for an acceptable match.
+#' match, if acceptance is required. If any player rejects the match or
+#' fails to accept before the timeout, the tickets are returned to the
+#' ticket pool and continue to be evaluated for an acceptable match.
 #' @param AcceptanceRequired &#91;required&#93; A flag that determines whether a match that was created with this
 #' configuration must be accepted by the matched players. To require
-#' acceptance, set to `TRUE`.
+#' acceptance, set to `TRUE`. With this option enabled, matchmaking tickets
+#' use the status `REQUIRES_ACCEPTANCE` to indicate when a completed
+#' potential match is waiting for player acceptance.
 #' @param RuleSetName &#91;required&#93; A unique identifier for a matchmaking rule set to use with this
 #' configuration. You can use either the rule set name or ARN value. A
 #' matchmaking configuration can only use rule sets that are defined in the
@@ -1243,7 +1270,8 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #' @param AdditionalPlayerCount The number of player slots in a match to keep open for future players.
 #' For example, assume that the configuration's rule set specifies a match
 #' for a single 12-person team. If the additional player count is set to 2,
-#' only 10 players are initially selected for the match.
+#' only 10 players are initially selected for the match. This parameter is
+#' not used if `FlexMatchMode` is set to `STANDALONE`.
 #' @param CustomEventData Information to be added to all events related to this matchmaking
 #' configuration.
 #' @param GameProperties A set of custom properties for a game session, formatted as key-value
@@ -1252,20 +1280,34 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #' [Start a Game
 #' Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 #' This information is added to the new GameSession object that is created
-#' for a successful match.
+#' for a successful match. This parameter is not used if `FlexMatchMode` is
+#' set to `STANDALONE`.
 #' @param GameSessionData A set of custom game session properties, formatted as a single string
 #' value. This data is passed to a game server process in the GameSession
 #' object with a request to start a new game session (see [Start a Game
 #' Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 #' This information is added to the new GameSession object that is created
-#' for a successful match.
+#' for a successful match. This parameter is not used if `FlexMatchMode` is
+#' set to `STANDALONE`.
 #' @param BackfillMode The method used to backfill game sessions that are created with this
 #' matchmaking configuration. Specify `MANUAL` when your game manages
 #' backfill requests manually or does not use the match backfill feature.
 #' Specify `AUTOMATIC` to have GameLift create a StartMatchBackfill request
 #' whenever a game session has one or more open slots. Learn more about
 #' manual and automatic backfill in [Backfill Existing Games with
-#' FlexMatch](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html).
+#' FlexMatch](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-backfill.html).
+#' Automatic backfill is not available when `FlexMatchMode` is set to
+#' `STANDALONE`.
+#' @param FlexMatchMode Indicates whether this matchmaking configuration is being used with
+#' GameLift hosting or as a standalone matchmaking solution.
+#' 
+#' -   **STANDALONE** - FlexMatch forms matches and returns match
+#'     information, including players and team assignments, in a
+#'     [MatchmakingSucceeded](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-events.html#match-events-matchmakingsucceeded)
+#'     event.
+#' 
+#' -   **WITH\\_QUEUE** - FlexMatch forms matches and uses the specified
+#'     GameLift queue to start a game session for the match.
 #' @param Tags A list of labels to assign to the new matchmaking configuration
 #' resource. Tags are developer-defined key-value pairs. Tagging AWS
 #' resources are useful for resource management, access management and cost
@@ -1299,6 +1341,7 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #'   ),
 #'   GameSessionData = "string",
 #'   BackfillMode = "AUTOMATIC"|"MANUAL",
+#'   FlexMatchMode = "STANDALONE"|"WITH_QUEUE",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -1311,14 +1354,14 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #' @keywords internal
 #'
 #' @rdname gamelift_create_matchmaking_configuration
-gamelift_create_matchmaking_configuration <- function(Name, Description = NULL, GameSessionQueueArns, RequestTimeoutSeconds, AcceptanceTimeoutSeconds = NULL, AcceptanceRequired, RuleSetName, NotificationTarget = NULL, AdditionalPlayerCount = NULL, CustomEventData = NULL, GameProperties = NULL, GameSessionData = NULL, BackfillMode = NULL, Tags = NULL) {
+gamelift_create_matchmaking_configuration <- function(Name, Description = NULL, GameSessionQueueArns = NULL, RequestTimeoutSeconds, AcceptanceTimeoutSeconds = NULL, AcceptanceRequired, RuleSetName, NotificationTarget = NULL, AdditionalPlayerCount = NULL, CustomEventData = NULL, GameProperties = NULL, GameSessionData = NULL, BackfillMode = NULL, FlexMatchMode = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateMatchmakingConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$create_matchmaking_configuration_input(Name = Name, Description = Description, GameSessionQueueArns = GameSessionQueueArns, RequestTimeoutSeconds = RequestTimeoutSeconds, AcceptanceTimeoutSeconds = AcceptanceTimeoutSeconds, AcceptanceRequired = AcceptanceRequired, RuleSetName = RuleSetName, NotificationTarget = NotificationTarget, AdditionalPlayerCount = AdditionalPlayerCount, CustomEventData = CustomEventData, GameProperties = GameProperties, GameSessionData = GameSessionData, BackfillMode = BackfillMode, Tags = Tags)
+  input <- .gamelift$create_matchmaking_configuration_input(Name = Name, Description = Description, GameSessionQueueArns = GameSessionQueueArns, RequestTimeoutSeconds = RequestTimeoutSeconds, AcceptanceTimeoutSeconds = AcceptanceTimeoutSeconds, AcceptanceRequired = AcceptanceRequired, RuleSetName = RuleSetName, NotificationTarget = NotificationTarget, AdditionalPlayerCount = AdditionalPlayerCount, CustomEventData = CustomEventData, GameProperties = GameProperties, GameSessionData = GameSessionData, BackfillMode = BackfillMode, FlexMatchMode = FlexMatchMode, Tags = Tags)
   output <- .gamelift$create_matchmaking_configuration_output()
   config <- get_config()
   svc <- .gamelift$service(config)
@@ -1347,13 +1390,13 @@ gamelift_create_matchmaking_configuration <- function(Name, Description = NULL, 
 #' **Learn more**
 #' 
 #' -   [Build a Rule
-#'     Set](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html)
+#'     Set](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html)
 #' 
 #' -   [Design a
-#'     Matchmaker](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-configuration.html)
+#'     Matchmaker](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-configuration.html)
 #' 
 #' -   [Matchmaking with
-#'     FlexMatch](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html)
+#'     FlexMatch](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-intro.html)
 #' 
 #' **Related operations**
 #' 
@@ -1626,14 +1669,17 @@ gamelift_create_player_sessions <- function(GameSessionId, PlayerIds, PlayerData
 #' @param Version The version that is associated with a build or script. Version strings
 #' do not need to be unique. You can use UpdateScript to change this value
 #' later.
-#' @param StorageLocation The location of the Amazon S3 bucket where a zipped file containing your
-#' Realtime scripts is stored. The storage location must specify the Amazon
-#' S3 bucket name, the zip file name (the "key"), and a role ARN that
-#' allows Amazon GameLift to access the Amazon S3 storage location. The S3
-#' bucket must be in the same Region where you want to create a new script.
-#' By default, Amazon GameLift uploads the latest version of the zip file;
-#' if you have S3 object versioning turned on, you can use the
-#' `ObjectVersion` parameter to specify an earlier version.
+#' @param StorageLocation The Amazon S3 location of your Realtime scripts. The storage location
+#' must specify the S3 bucket name, the zip file name (the "key"), and an
+#' IAM role ARN that allows Amazon GameLift to access the S3 storage
+#' location. The S3 bucket must be in the same Region where you are
+#' creating a new script. By default, Amazon GameLift uploads the latest
+#' version of the zip file; if you have S3 object versioning turned on, you
+#' can use the `ObjectVersion` parameter to specify an earlier version. To
+#' call this operation with a storage location, you must have IAM PassRole
+#' permission. For more details on IAM roles and PassRole permissions, see
+#' [Set up a role for GameLift
+#' access](https://docs.aws.amazon.com/gamelift/latest/developerguide/setting-up-role.html).
 #' @param ZipFile A data object containing your Realtime scripts and dependencies as a zip
 #' file. The zip file can have one or multiple files. Maximum size of a zip
 #' file is 5 MB.
@@ -1750,9 +1796,9 @@ gamelift_create_script <- function(Name = NULL, Version = NULL, StorageLocation 
 #' @param PeerVpcId &#91;required&#93; A unique identifier for a VPC with resources to be accessed by your
 #' Amazon GameLift fleet. The VPC must be in the same Region where your
 #' fleet is deployed. Look up a VPC ID using the [VPC
-#' Dashboard](https://console.aws.amazon.com/vpc/) in the AWS Management
-#' Console. Learn more about VPC peering in [VPC Peering with Amazon
-#' GameLift
+#' Dashboard](https://console.aws.amazon.com/vpc/home) in the AWS
+#' Management Console. Learn more about VPC peering in [VPC Peering with
+#' Amazon GameLift
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 #'
 #' @section Request syntax:
@@ -1836,9 +1882,9 @@ gamelift_create_vpc_peering_authorization <- function(GameLiftAwsAccountId, Peer
 #' @param PeerVpcId &#91;required&#93; A unique identifier for a VPC with resources to be accessed by your
 #' Amazon GameLift fleet. The VPC must be in the same Region where your
 #' fleet is deployed. Look up a VPC ID using the [VPC
-#' Dashboard](https://console.aws.amazon.com/vpc/) in the AWS Management
-#' Console. Learn more about VPC peering in [VPC Peering with Amazon
-#' GameLift
+#' Dashboard](https://console.aws.amazon.com/vpc/home) in the AWS
+#' Management Console. Learn more about VPC peering in [VPC Peering with
+#' Amazon GameLift
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 #'
 #' @section Request syntax:
@@ -1872,7 +1918,7 @@ gamelift_create_vpc_peering_connection <- function(FleetId, PeerVpcAwsAccountId,
 
 #' Deletes an alias
 #'
-#' Deletes an alias. This action removes all record of the alias. Game
+#' Deletes an alias. This operation removes all record of the alias. Game
 #' clients attempting to access a server process using the deleted alias
 #' receive an error. To delete an alias, specify the alias ID to be
 #' deleted.
@@ -1924,10 +1970,10 @@ gamelift_delete_alias <- function(AliasId) {
 
 #' Deletes a build
 #'
-#' Deletes a build. This action permanently deletes the build resource and
-#' any uploaded build files. Deleting a build does not affect the status of
-#' any active fleets using the build, but you can no longer create new
-#' fleets with the deleted build.
+#' Deletes a build. This operation permanently deletes the build resource
+#' and any uploaded build files. Deleting a build does not affect the
+#' status of any active fleets using the build, but you can no longer
+#' create new fleets with the deleted build.
 #' 
 #' To delete a build, specify the build ID.
 #' 
@@ -1992,7 +2038,7 @@ gamelift_delete_build <- function(BuildId) {
 #' VPC peering connection--this is done as part of the delete fleet
 #' process.
 #' 
-#' This action removes the fleet and its resources. Once a fleet is
+#' This operation removes the fleet and its resources. Once a fleet is
 #' deleted, you can no longer use any of the resource in that fleet.
 #' 
 #' **Learn more**
@@ -2047,37 +2093,41 @@ gamelift_delete_fleet <- function(FleetId) {
 }
 .gamelift$operations$delete_fleet <- gamelift_delete_fleet
 
-#' This action is part of Amazon GameLift FleetIQ with game server groups,
-#' which is in preview release and is subject to change
+#' This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups
 #'
-#' **This action is part of Amazon GameLift FleetIQ with game server
-#' groups, which is in preview release and is subject to change.**
+#' **This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups.**
 #' 
 #' Terminates a game server group and permanently deletes the game server
 #' group record. You have several options for how these resources are
 #' impacted when deleting the game server group. Depending on the type of
-#' delete action selected, this action may affect three types of resources:
-#' the game server group, the corresponding Auto Scaling group, and all
-#' game servers currently running in the group.
+#' delete operation selected, this operation might affect these resources:
+#' 
+#' -   The game server group
+#' 
+#' -   The corresponding Auto Scaling group
+#' 
+#' -   All game servers that are currently running in the group
 #' 
 #' To delete a game server group, identify the game server group to delete
-#' and specify the type of delete action to initiate. Game server groups
-#' can only be deleted if they are in ACTIVE or ERROR status.
+#' and specify the type of delete operation to initiate. Game server groups
+#' can only be deleted if they are in `ACTIVE` or `ERROR` status.
 #' 
-#' If the delete request is successful, a series of actions are kicked off.
-#' The game server group status is changed to DELETE\\_SCHEDULED, which
-#' prevents new game servers from being registered and stops autoscaling
-#' activity. Once all game servers in the game server group are
-#' de-registered, GameLift FleetIQ can begin deleting resources. If any of
-#' the delete actions fail, the game server group is placed in ERROR
-#' status.
+#' If the delete request is successful, a series of operations are kicked
+#' off. The game server group status is changed to `DELETE_SCHEDULED`,
+#' which prevents new game servers from being registered and stops
+#' automatic scaling activity. Once all game servers in the game server
+#' group are deregistered, GameLift FleetIQ can begin deleting resources.
+#' If any of the delete operations fail, the game server group is placed in
+#' `ERROR` status.
 #' 
 #' GameLift FleetIQ emits delete events to Amazon CloudWatch.
 #' 
 #' **Learn more**
 #' 
 #' [GameLift FleetIQ
-#' Guide](https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html)
+#' Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)
 #' 
 #' **Related operations**
 #' 
@@ -2094,23 +2144,26 @@ gamelift_delete_fleet <- function(FleetId) {
 #' -   ResumeGameServerGroup
 #' 
 #' -   SuspendGameServerGroup
+#' 
+#' -   DescribeGameServerInstances
 #'
 #' @usage
 #' gamelift_delete_game_server_group(GameServerGroupName, DeleteOption)
 #'
-#' @param GameServerGroupName &#91;required&#93; The unique identifier of the game server group to delete. Use either the
+#' @param GameServerGroupName &#91;required&#93; A unique identifier for the game server group. Use either the
 #' GameServerGroup name or ARN value.
-#' @param DeleteOption The type of delete to perform. Options include:
+#' @param DeleteOption The type of delete to perform. Options include the following:
 #' 
-#' -   SAFE\\_DELETE – Terminates the game server group and EC2 Auto Scaling
-#'     group only when it has no game servers that are in IN\\_USE status.
+#' -   `SAFE_DELETE` – (default) Terminates the game server group and EC2
+#'     Auto Scaling group only when it has no game servers that are in
+#'     `UTILIZED` status.
 #' 
-#' -   FORCE\\_DELETE – Terminates the game server group, including all
+#' -   `FORCE_DELETE` – Terminates the game server group, including all
 #'     active game servers regardless of their utilization status, and the
 #'     EC2 Auto Scaling group.
 #' 
-#' -   RETAIN – Does a safe delete of the game server group but retains the
-#'     EC2 Auto Scaling group as is.
+#' -   `RETAIN` – Does a safe delete of the game server group but retains
+#'     the EC2 Auto Scaling group as is.
 #'
 #' @section Request syntax:
 #' ```
@@ -2142,9 +2195,9 @@ gamelift_delete_game_server_group <- function(GameServerGroupName, DeleteOption 
 
 #' Deletes a game session queue
 #'
-#' Deletes a game session queue. This action means that any
-#' StartGameSessionPlacement requests that reference this queue will fail.
-#' To delete a queue, specify the queue name.
+#' Deletes a game session queue. Once a queue is successfully deleted,
+#' unfulfilled StartGameSessionPlacement requests that reference the queue
+#' will fail. To delete a queue, specify the queue name.
 #' 
 #' **Learn more**
 #' 
@@ -2261,7 +2314,7 @@ gamelift_delete_matchmaking_configuration <- function(Name) {
 #' **Learn more**
 #' 
 #' -   [Build a Rule
-#'     Set](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html)
+#'     Set](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html)
 #' 
 #' **Related operations**
 #' 
@@ -2317,10 +2370,10 @@ gamelift_delete_matchmaking_rule_set <- function(Name) {
 
 #' Deletes a fleet scaling policy
 #'
-#' Deletes a fleet scaling policy. This action means that the policy is no
-#' longer in force and removes all record of it. To delete a scaling
-#' policy, specify both the scaling policy name and the fleet ID it is
-#' associated with.
+#' Deletes a fleet scaling policy. Once deleted, the policy is no longer in
+#' force and GameLift removes all record of it. To delete a scaling policy,
+#' specify both the scaling policy name and the fleet ID it is associated
+#' with.
 #' 
 #' To temporarily suspend scaling policies, call StopFleetActions. This
 #' operation suspends all policies for the fleet.
@@ -2383,7 +2436,7 @@ gamelift_delete_scaling_policy <- function(Name, FleetId) {
 
 #' Deletes a Realtime script
 #'
-#' Deletes a Realtime script. This action permanently deletes the script
+#' Deletes a Realtime script. This operation permanently deletes the script
 #' record. If script files were uploaded, they are also deleted (files
 #' stored in an S3 bucket are not deleted).
 #' 
@@ -2471,9 +2524,9 @@ gamelift_delete_script <- function(ScriptId) {
 #' @param PeerVpcId &#91;required&#93; A unique identifier for a VPC with resources to be accessed by your
 #' Amazon GameLift fleet. The VPC must be in the same Region where your
 #' fleet is deployed. Look up a VPC ID using the [VPC
-#' Dashboard](https://console.aws.amazon.com/vpc/) in the AWS Management
-#' Console. Learn more about VPC peering in [VPC Peering with Amazon
-#' GameLift
+#' Dashboard](https://console.aws.amazon.com/vpc/home) in the AWS
+#' Management Console. Learn more about VPC peering in [VPC Peering with
+#' Amazon GameLift
 #' Fleets](https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 #'
 #' @section Request syntax:
@@ -2567,24 +2620,24 @@ gamelift_delete_vpc_peering_connection <- function(FleetId, VpcPeeringConnection
 }
 .gamelift$operations$delete_vpc_peering_connection <- gamelift_delete_vpc_peering_connection
 
-#' This action is part of Amazon GameLift FleetIQ with game server groups,
-#' which is in preview release and is subject to change
+#' This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups
 #'
-#' **This action is part of Amazon GameLift FleetIQ with game server
-#' groups, which is in preview release and is subject to change.**
+#' **This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups.**
 #' 
-#' Removes the game server resource from the game server group. As a result
-#' of this action, the de-registered game server can no longer be claimed
-#' and will not returned in a list of active game servers.
+#' Removes the game server from a game server group. As a result of this
+#' operation, the deregistered game server can no longer be claimed and
+#' will not be returned in a list of active game servers.
 #' 
-#' To de-register a game server, specify the game server group and game
-#' server ID. If successful, this action emits a CloudWatch event with
-#' termination time stamp and reason.
+#' To deregister a game server, specify the game server group and game
+#' server ID. If successful, this operation emits a CloudWatch event with
+#' termination timestamp and reason.
 #' 
 #' **Learn more**
 #' 
 #' [GameLift FleetIQ
-#' Guide](https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html)
+#' Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)
 #' 
 #' **Related operations**
 #' 
@@ -2603,10 +2656,9 @@ gamelift_delete_vpc_peering_connection <- function(FleetId, VpcPeeringConnection
 #' @usage
 #' gamelift_deregister_game_server(GameServerGroupName, GameServerId)
 #'
-#' @param GameServerGroupName &#91;required&#93; An identifier for the game server group where the game server to be
-#' de-registered is running. Use either the GameServerGroup name or ARN
-#' value.
-#' @param GameServerId &#91;required&#93; The identifier for the game server to be de-registered.
+#' @param GameServerGroupName &#91;required&#93; A unique identifier for the game server group where the game server is
+#' running. Use either the GameServerGroup name or ARN value.
+#' @param GameServerId &#91;required&#93; A custom string that uniquely identifies the game server to deregister.
 #'
 #' @section Request syntax:
 #' ```
@@ -2756,7 +2808,7 @@ gamelift_describe_build <- function(BuildId) {
 #' -   Current usage for the AWS account.
 #' 
 #' To learn more about the capabilities of each instance type, see [Amazon
-#' EC2 Instance Types](http://aws.amazon.com/ec2/instance-types/). Note
+#' EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/). Note
 #' that the instance types offered may vary depending on the region.
 #' 
 #' **Learn more**
@@ -2785,14 +2837,14 @@ gamelift_describe_build <- function(BuildId) {
 #' fleet instance type determines the computing resources of each instance
 #' in the fleet, including CPU, memory, storage, and networking capacity.
 #' Amazon GameLift supports the following EC2 instance types. See [Amazon
-#' EC2 Instance Types](http://aws.amazon.com/ec2/instance-types/) for
+#' EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/) for
 #' detailed descriptions. Leave this parameter blank to retrieve limits for
 #' all types.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$describe_ec2_instance_limits(
-#'   EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"
+#'   EC2InstanceType = "t2.micro"|"t2.small"|"t2.medium"|"t2.large"|"c3.large"|"c3.xlarge"|"c3.2xlarge"|"c3.4xlarge"|"c3.8xlarge"|"c4.large"|"c4.xlarge"|"c4.2xlarge"|"c4.4xlarge"|"c4.8xlarge"|"c5.large"|"c5.xlarge"|"c5.2xlarge"|"c5.4xlarge"|"c5.9xlarge"|"c5.12xlarge"|"c5.18xlarge"|"c5.24xlarge"|"c5a.large"|"c5a.xlarge"|"c5a.2xlarge"|"c5a.4xlarge"|"c5a.8xlarge"|"c5a.12xlarge"|"c5a.16xlarge"|"c5a.24xlarge"|"r3.large"|"r3.xlarge"|"r3.2xlarge"|"r3.4xlarge"|"r3.8xlarge"|"r4.large"|"r4.xlarge"|"r4.2xlarge"|"r4.4xlarge"|"r4.8xlarge"|"r4.16xlarge"|"r5.large"|"r5.xlarge"|"r5.2xlarge"|"r5.4xlarge"|"r5.8xlarge"|"r5.12xlarge"|"r5.16xlarge"|"r5.24xlarge"|"r5a.large"|"r5a.xlarge"|"r5a.2xlarge"|"r5a.4xlarge"|"r5a.8xlarge"|"r5a.12xlarge"|"r5a.16xlarge"|"r5a.24xlarge"|"m3.medium"|"m3.large"|"m3.xlarge"|"m3.2xlarge"|"m4.large"|"m4.xlarge"|"m4.2xlarge"|"m4.4xlarge"|"m4.10xlarge"|"m5.large"|"m5.xlarge"|"m5.2xlarge"|"m5.4xlarge"|"m5.8xlarge"|"m5.12xlarge"|"m5.16xlarge"|"m5.24xlarge"|"m5a.large"|"m5a.xlarge"|"m5a.2xlarge"|"m5a.4xlarge"|"m5a.8xlarge"|"m5a.12xlarge"|"m5a.16xlarge"|"m5a.24xlarge"
 #' )
 #' ```
 #'
@@ -2829,7 +2881,7 @@ gamelift_describe_ec2_instance_limits <- function(EC2InstanceType = NULL) {
 #' If successful, a FleetAttributes object is returned for each fleet
 #' requested, unless the fleet identifier is not found.
 #' 
-#' Some API actions may limit the number of fleet IDs allowed in one
+#' Some API operations may limit the number of fleet IDs allowed in one
 #' request. If a request exceeds this limit, the request fails and the
 #' error message includes the maximum allowed number.
 #' 
@@ -2878,10 +2930,10 @@ gamelift_describe_ec2_instance_limits <- function(EC2InstanceType = NULL) {
 #' `NextToken` to get results as a set of sequential pages. This parameter
 #' is ignored when the request specifies one or a list of fleet IDs.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value. This
-#' parameter is ignored when the request specifies one or a list of fleet
-#' IDs.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value.
+#' This parameter is ignored when the request specifies one or a list of
+#' fleet IDs.
 #'
 #' @section Request syntax:
 #' ```
@@ -2928,7 +2980,7 @@ gamelift_describe_fleet_attributes <- function(FleetIds = NULL, Limit = NULL, Ne
 #' ID. When a list of fleet IDs is provided, attribute objects are returned
 #' only for fleets that currently exist.
 #' 
-#' Some API actions may limit the number of fleet IDs allowed in one
+#' Some API operations may limit the number of fleet IDs allowed in one
 #' request. If a request exceeds this limit, the request fails and the
 #' error message includes the maximum allowed.
 #' 
@@ -2977,10 +3029,10 @@ gamelift_describe_fleet_attributes <- function(FleetIds = NULL, Limit = NULL, Ne
 #' `NextToken` to get results as a set of sequential pages. This parameter
 #' is ignored when the request specifies one or a list of fleet IDs.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value. This
-#' parameter is ignored when the request specifies one or a list of fleet
-#' IDs.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value.
+#' This parameter is ignored when the request specifies one or a list of
+#' fleet IDs.
 #'
 #' @section Request syntax:
 #' ```
@@ -3070,8 +3122,8 @@ gamelift_describe_fleet_capacity <- function(FleetIds = NULL, Limit = NULL, Next
 #' @param Limit The maximum number of results to return. Use this parameter with
 #' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value.
 #'
 #' @section Request syntax:
 #' ```
@@ -3200,7 +3252,7 @@ gamelift_describe_fleet_port_settings <- function(FleetId) {
 #' If successful, a FleetUtilization object is returned for each requested
 #' fleet ID, unless the fleet identifier is not found.
 #' 
-#' Some API actions may limit the number of fleet IDs allowed in one
+#' Some API operations may limit the number of fleet IDs allowed in one
 #' request. If a request exceeds this limit, the request fails and the
 #' error message includes the maximum allowed.
 #' 
@@ -3252,10 +3304,10 @@ gamelift_describe_fleet_port_settings <- function(FleetId) {
 #' `NextToken` to get results as a set of sequential pages. This parameter
 #' is ignored when the request specifies one or a list of fleet IDs.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value. This
-#' parameter is ignored when the request specifies one or a list of fleet
-#' IDs.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value.
+#' This parameter is ignored when the request specifies one or a list of
+#' fleet IDs.
 #'
 #' @section Request syntax:
 #' ```
@@ -3288,14 +3340,14 @@ gamelift_describe_fleet_utilization <- function(FleetIds = NULL, Limit = NULL, N
 }
 .gamelift$operations$describe_fleet_utilization <- gamelift_describe_fleet_utilization
 
-#' This action is part of Amazon GameLift FleetIQ with game server groups,
-#' which is in preview release and is subject to change
+#' This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups
 #'
-#' **This action is part of Amazon GameLift FleetIQ with game server
-#' groups, which is in preview release and is subject to change.**
+#' **This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups.**
 #' 
-#' Retrieves information for a game server resource. Information includes
-#' the game server statuses, health check info, and the instance the game
+#' Retrieves information for a registered game server. Information includes
+#' game server status, health check info, and the instance that the game
 #' server is running on.
 #' 
 #' To retrieve game server information, specify the game server ID. If
@@ -3304,7 +3356,7 @@ gamelift_describe_fleet_utilization <- function(FleetIds = NULL, Limit = NULL, N
 #' **Learn more**
 #' 
 #' [GameLift FleetIQ
-#' Guide](https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html)
+#' Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)
 #' 
 #' **Related operations**
 #' 
@@ -3323,9 +3375,10 @@ gamelift_describe_fleet_utilization <- function(FleetIds = NULL, Limit = NULL, N
 #' @usage
 #' gamelift_describe_game_server(GameServerGroupName, GameServerId)
 #'
-#' @param GameServerGroupName &#91;required&#93; An identifier for the game server group where the game server is
+#' @param GameServerGroupName &#91;required&#93; A unique identifier for the game server group where the game server is
 #' running. Use either the GameServerGroup name or ARN value.
-#' @param GameServerId &#91;required&#93; The identifier for the game server to be retrieved.
+#' @param GameServerId &#91;required&#93; A custom string that uniquely identifies the game server information to
+#' be retrieved.
 #'
 #' @section Request syntax:
 #' ```
@@ -3355,13 +3408,17 @@ gamelift_describe_game_server <- function(GameServerGroupName, GameServerId) {
 }
 .gamelift$operations$describe_game_server <- gamelift_describe_game_server
 
-#' This action is part of Amazon GameLift FleetIQ with game server groups,
-#' which is in preview release and is subject to change
+#' This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups
 #'
-#' **This action is part of Amazon GameLift FleetIQ with game server
-#' groups, which is in preview release and is subject to change.**
+#' **This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups.**
 #' 
-#' Retrieves information on a game server group.
+#' Retrieves information on a game server group. This operation returns
+#' only properties related to GameLift FleetIQ. To view or update
+#' properties for the corresponding Auto Scaling group, such as launch
+#' template, auto scaling policies, and maximum/minimum group size, access
+#' the Auto Scaling group directly.
 #' 
 #' To get attributes for a game server group, provide a group name or ARN
 #' value. If successful, a GameServerGroup object is returned.
@@ -3369,7 +3426,7 @@ gamelift_describe_game_server <- function(GameServerGroupName, GameServerId) {
 #' **Learn more**
 #' 
 #' [GameLift FleetIQ
-#' Guide](https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html)
+#' Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)
 #' 
 #' **Related operations**
 #' 
@@ -3386,12 +3443,14 @@ gamelift_describe_game_server <- function(GameServerGroupName, GameServerId) {
 #' -   ResumeGameServerGroup
 #' 
 #' -   SuspendGameServerGroup
+#' 
+#' -   DescribeGameServerInstances
 #'
 #' @usage
 #' gamelift_describe_game_server_group(GameServerGroupName)
 #'
-#' @param GameServerGroupName &#91;required&#93; The unique identifier for the game server group being requested. Use
-#' either the GameServerGroup name or ARN value.
+#' @param GameServerGroupName &#91;required&#93; A unique identifier for the game server group. Use either the
+#' GameServerGroup name or ARN value.
 #'
 #' @section Request syntax:
 #' ```
@@ -3420,11 +3479,107 @@ gamelift_describe_game_server_group <- function(GameServerGroupName) {
 }
 .gamelift$operations$describe_game_server_group <- gamelift_describe_game_server_group
 
+#' This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups
+#'
+#' **This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups.**
+#' 
+#' Retrieves status information about the Amazon EC2 instances associated
+#' with a GameLift FleetIQ game server group. Use this operation to detect
+#' when instances are active or not available to host new game servers. If
+#' you are looking for instance configuration information, call
+#' DescribeGameServerGroup or access the corresponding Auto Scaling group
+#' properties.
+#' 
+#' To request status for all instances in the game server group, provide a
+#' game server group ID only. To request status for specific instances,
+#' provide the game server group ID and one or more instance IDs. Use the
+#' pagination parameters to retrieve results in sequential segments. If
+#' successful, a collection of `GameServerInstance` objects is returned.
+#' 
+#' This operation is not designed to be called with every game server claim
+#' request; this practice can cause you to exceed your API limit, which
+#' results in errors. Instead, as a best practice, cache the results and
+#' refresh your cache no more than once every 10 seconds.
+#' 
+#' **Learn more**
+#' 
+#' [GameLift FleetIQ
+#' Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)
+#' 
+#' **Related operations**
+#' 
+#' -   CreateGameServerGroup
+#' 
+#' -   ListGameServerGroups
+#' 
+#' -   DescribeGameServerGroup
+#' 
+#' -   UpdateGameServerGroup
+#' 
+#' -   DeleteGameServerGroup
+#' 
+#' -   ResumeGameServerGroup
+#' 
+#' -   SuspendGameServerGroup
+#' 
+#' -   DescribeGameServerInstances
+#'
+#' @usage
+#' gamelift_describe_game_server_instances(GameServerGroupName,
+#'   InstanceIds, Limit, NextToken)
+#'
+#' @param GameServerGroupName &#91;required&#93; A unique identifier for the game server group. Use either the
+#' GameServerGroup name or ARN value.
+#' @param InstanceIds The EC2 instance IDs that you want to retrieve status on. EC2 instance
+#' IDs use a 17-character format, for example: `i-1234567890abcdef0`. To
+#' retrieve all instances in the game server group, leave this parameter
+#' empty.
+#' @param Limit The maximum number of results to return. Use this parameter with
+#' `NextToken` to get results as a set of sequential segments.
+#' @param NextToken A token that indicates the start of the next sequential segment of
+#' results. Use the token returned with the previous call to this
+#' operation. To start at the beginning of the result set, do not specify a
+#' value.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_game_server_instances(
+#'   GameServerGroupName = "string",
+#'   InstanceIds = list(
+#'     "string"
+#'   ),
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname gamelift_describe_game_server_instances
+gamelift_describe_game_server_instances <- function(GameServerGroupName, InstanceIds = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeGameServerInstances",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .gamelift$describe_game_server_instances_input(GameServerGroupName = GameServerGroupName, InstanceIds = InstanceIds, Limit = Limit, NextToken = NextToken)
+  output <- .gamelift$describe_game_server_instances_output()
+  config <- get_config()
+  svc <- .gamelift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.gamelift$operations$describe_game_server_instances <- gamelift_describe_game_server_instances
+
 #' Retrieves properties, including the protection policy in force, for one
 #' or more game sessions
 #'
 #' Retrieves properties, including the protection policy in force, for one
-#' or more game sessions. This action can be used in several ways: (1)
+#' or more game sessions. This operation can be used in several ways: (1)
 #' provide a `GameSessionId` or `GameSessionArn` to request details for a
 #' specific game session; (2) provide either a `FleetId` or an `AliasId` to
 #' request properties for all game sessions running on a fleet.
@@ -3470,8 +3625,8 @@ gamelift_describe_game_server_group <- function(GameServerGroupName) {
 #' @param Limit The maximum number of results to return. Use this parameter with
 #' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value.
 #'
 #' @section Request syntax:
 #' ```
@@ -3595,10 +3750,11 @@ gamelift_describe_game_session_placement <- function(PlacementId) {
 #' the queue ID or ARN value. To request settings for all queues, leave
 #' this parameter empty.
 #' @param Limit The maximum number of results to return. Use this parameter with
-#' `NextToken` to get results as a set of sequential pages.
+#' `NextToken` to get results as a set of sequential pages. You can request
+#' up to 50 results.
 #' @param NextToken A token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value.
 #'
 #' @section Request syntax:
 #' ```
@@ -3682,8 +3838,8 @@ gamelift_describe_game_session_queues <- function(Names = NULL, Limit = NULL, Ne
 #' @param Limit The maximum number of results to return. Use this parameter with
 #' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value.
 #'
 #' @section Request syntax:
 #' ```
@@ -3720,7 +3876,7 @@ gamelift_describe_game_sessions <- function(FleetId = NULL, GameSessionId = NULL
 #' Retrieves information about a fleet's instances, including instance IDs
 #'
 #' Retrieves information about a fleet's instances, including instance IDs.
-#' Use this action to get details on all instances in the fleet or get
+#' Use this operation to get details on all instances in the fleet or get
 #' details on one specific instance.
 #' 
 #' To get a specific instance, specify fleet ID and instance ID. To get all
@@ -3752,8 +3908,8 @@ gamelift_describe_game_sessions <- function(FleetId = NULL, GameSessionId = NULL
 #' @param Limit The maximum number of results to return. Use this parameter with
 #' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value.
 #'
 #' @section Request syntax:
 #' ```
@@ -3788,26 +3944,28 @@ gamelift_describe_instances <- function(FleetId, InstanceId = NULL, Limit = NULL
 #' Retrieves one or more matchmaking tickets
 #'
 #' Retrieves one or more matchmaking tickets. Use this operation to
-#' retrieve ticket information, including status and--once a successful
-#' match is made--acquire connection information for the resulting new game
-#' session.
-#' 
-#' You can use this operation to track the progress of matchmaking requests
-#' (through polling) as an alternative to using event notifications. See
-#' more details on tracking matchmaking requests through polling or
-#' notifications in StartMatchmaking.
+#' retrieve ticket information, including--after a successful match is
+#' made--connection information for the resulting new game session.
 #' 
 #' To request matchmaking tickets, provide a list of up to 10 ticket IDs.
 #' If the request is successful, a ticket object is returned for each
 #' requested ID that currently exists.
 #' 
+#' This operation is not designed to be continually called to track
+#' matchmaking ticket status. This practice can cause you to exceed your
+#' API limit, which results in errors. Instead, as a best practice, set up
+#' an Amazon Simple Notification Service (SNS) to receive notifications,
+#' and provide the topic ARN in the matchmaking configuration. Continuously
+#' poling ticket status with DescribeMatchmaking should only be used for
+#' games in development with low matchmaking usage.
+#' 
 #' **Learn more**
 #' 
 #' [Add FlexMatch to a Game
-#' Client](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html)
+#' Client](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html)
 #' 
 #' [Set Up FlexMatch Event
-#' Notification](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)
+#' Notification](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html)
 #' 
 #' **Related operations**
 #' 
@@ -3858,19 +4016,22 @@ gamelift_describe_matchmaking <- function(TicketIds) {
 
 #' Retrieves the details of FlexMatch matchmaking configurations
 #'
-#' Retrieves the details of FlexMatch matchmaking configurations. With this
-#' operation, you have the following options: (1) retrieve all existing
-#' configurations, (2) provide the names of one or more configurations to
-#' retrieve, or (3) retrieve all configurations that use a specified rule
-#' set name. When requesting multiple items, use the pagination parameters
-#' to retrieve results as a set of sequential pages. If successful, a
-#' configuration is returned for each requested name. When specifying a
-#' list of names, only configurations that currently exist are returned.
+#' Retrieves the details of FlexMatch matchmaking configurations.
+#' 
+#' This operation offers the following options: (1) retrieve all
+#' matchmaking configurations, (2) retrieve configurations for a specified
+#' list, or (3) retrieve all configurations that use a specified rule set
+#' name. When requesting multiple items, use the pagination parameters to
+#' retrieve results as a set of sequential pages.
+#' 
+#' If successful, a configuration is returned for each requested name. When
+#' specifying a list of names, only configurations that currently exist are
+#' returned.
 #' 
 #' **Learn more**
 #' 
 #' [Setting Up FlexMatch
-#' Matchmakers](https://docs.aws.amazon.com/gamelift/latest/developerguide/matchmaker-build.html)
+#' Matchmakers](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/matchmaker-build.html)
 #' 
 #' **Related operations**
 #' 
@@ -3904,8 +4065,8 @@ gamelift_describe_matchmaking <- function(TicketIds) {
 #' `NextToken` to get results as a set of sequential pages. This parameter
 #' is limited to 10.
 #' @param NextToken A token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value.
 #'
 #' @section Request syntax:
 #' ```
@@ -3950,7 +4111,7 @@ gamelift_describe_matchmaking_configurations <- function(Names = NULL, RuleSetNa
 #' **Learn more**
 #' 
 #' -   [Build a Rule
-#'     Set](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html)
+#'     Set](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html)
 #' 
 #' **Related operations**
 #' 
@@ -3980,8 +4141,8 @@ gamelift_describe_matchmaking_configurations <- function(Names = NULL, RuleSetNa
 #' @param Limit The maximum number of results to return. Use this parameter with
 #' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken A token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value.
 #'
 #' @section Request syntax:
 #' ```
@@ -4016,8 +4177,8 @@ gamelift_describe_matchmaking_rule_sets <- function(Names = NULL, Limit = NULL, 
 
 #' Retrieves properties for one or more player sessions
 #'
-#' Retrieves properties for one or more player sessions. This action can be
-#' used in several ways: (1) provide a `PlayerSessionId` to request
+#' Retrieves properties for one or more player sessions. This operation can
+#' be used in several ways: (1) provide a `PlayerSessionId` to request
 #' properties for a specific player session; (2) provide a `GameSessionId`
 #' to request properties for all player sessions in the specified game
 #' session; (3) provide a `PlayerId` to request properties for all player
@@ -4073,9 +4234,9 @@ gamelift_describe_matchmaking_rule_sets <- function(Names = NULL, Limit = NULL, 
 #' `NextToken` to get results as a set of sequential pages. If a player
 #' session ID is specified, this parameter is ignored.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value. If a
-#' player session ID is specified, this parameter is ignored.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value. If
+#' a player session ID is specified, this parameter is ignored.
 #'
 #' @section Request syntax:
 #' ```
@@ -4200,7 +4361,7 @@ gamelift_describe_runtime_configuration <- function(FleetId) {
 #' returned for the fleet.
 #' 
 #' A fleet may have all of its scaling policies suspended
-#' (StopFleetActions). This action does not affect the status of the
+#' (StopFleetActions). This operation does not affect the status of the
 #' scaling policies, which remains ACTIVE. To see whether a fleet's scaling
 #' policies are in force or suspended, call DescribeFleetAttributes and
 #' check the stopped actions.
@@ -4253,8 +4414,8 @@ gamelift_describe_runtime_configuration <- function(FleetId) {
 #' @param Limit The maximum number of results to return. Use this parameter with
 #' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value.
 #'
 #' @section Request syntax:
 #' ```
@@ -4527,7 +4688,7 @@ gamelift_get_game_session_log_url <- function(GameSessionId) {
 #' an SSH client. The private key must be saved in the proper format to a
 #' `.pem` file before using. If you're making this request using the AWS
 #' CLI, saving the secret can be handled as part of the GetInstanceAccess
-#' request, as shown in one of the examples for this action.
+#' request, as shown in one of the examples for this operation.
 #' 
 #' To request access to a specific instance, specify the IDs of both the
 #' instance and the fleet it belongs to. You can retrieve a fleet's
@@ -4629,8 +4790,8 @@ gamelift_get_instance_access <- function(FleetId, InstanceId) {
 #' @param Limit The maximum number of results to return. Use this parameter with
 #' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken A token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value.
 #'
 #' @section Request syntax:
 #' ```
@@ -4710,8 +4871,8 @@ gamelift_list_aliases <- function(RoutingStrategyType = NULL, Name = NULL, Limit
 #' @param Limit The maximum number of results to return. Use this parameter with
 #' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value.
 #'
 #' @section Request syntax:
 #' ```
@@ -4784,8 +4945,8 @@ gamelift_list_builds <- function(Status = NULL, Limit = NULL, NextToken = NULL) 
 #' @param Limit The maximum number of results to return. Use this parameter with
 #' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value.
 #'
 #' @section Request syntax:
 #' ```
@@ -4817,20 +4978,20 @@ gamelift_list_fleets <- function(BuildId = NULL, ScriptId = NULL, Limit = NULL, 
 }
 .gamelift$operations$list_fleets <- gamelift_list_fleets
 
-#' This action is part of Amazon GameLift FleetIQ with game server groups,
-#' which is in preview release and is subject to change
+#' This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups
 #'
-#' **This action is part of Amazon GameLift FleetIQ with game server
-#' groups, which is in preview release and is subject to change.**
+#' **This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups.**
 #' 
 #' Retrieves information on all game servers groups that exist in the
-#' current AWS account for the selected region. Use the pagination
-#' parameters to retrieve results in a set of sequential pages.
+#' current AWS account for the selected Region. Use the pagination
+#' parameters to retrieve results in a set of sequential segments.
 #' 
 #' **Learn more**
 #' 
 #' [GameLift FleetIQ
-#' Guide](https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html)
+#' Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)
 #' 
 #' **Related operations**
 #' 
@@ -4847,15 +5008,18 @@ gamelift_list_fleets <- function(BuildId = NULL, ScriptId = NULL, Limit = NULL, 
 #' -   ResumeGameServerGroup
 #' 
 #' -   SuspendGameServerGroup
+#' 
+#' -   DescribeGameServerInstances
 #'
 #' @usage
 #' gamelift_list_game_server_groups(Limit, NextToken)
 #'
 #' @param Limit The maximum number of results to return. Use this parameter with
-#' `NextToken` to get results as a set of sequential pages.
-#' @param NextToken A token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value.
+#' `NextToken` to get results as a set of sequential segments.
+#' @param NextToken A token that indicates the start of the next sequential segment of
+#' results. Use the token returned with the previous call to this
+#' operation. To start at the beginning of the result set, do not specify a
+#' value.
 #'
 #' @section Request syntax:
 #' ```
@@ -4885,22 +5049,21 @@ gamelift_list_game_server_groups <- function(Limit = NULL, NextToken = NULL) {
 }
 .gamelift$operations$list_game_server_groups <- gamelift_list_game_server_groups
 
-#' This action is part of Amazon GameLift FleetIQ with game server groups,
-#' which is in preview release and is subject to change
+#' This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups
 #'
-#' **This action is part of Amazon GameLift FleetIQ with game server
-#' groups, which is in preview release and is subject to change.**
+#' **This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups.**
 #' 
-#' Retrieves information on all game servers that are currently running in
-#' a specified game server group. If there are custom key sort values for
-#' your game servers, you can opt to have the returned list sorted based on
-#' these values. Use the pagination parameters to retrieve results in a set
-#' of sequential pages.
+#' Retrieves information on all game servers that are currently active in a
+#' specified game server group. You can opt to sort the list by game server
+#' age. Use the pagination parameters to retrieve results in a set of
+#' sequential segments.
 #' 
 #' **Learn more**
 #' 
 #' [GameLift FleetIQ
-#' Guide](https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html)
+#' Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)
 #' 
 #' **Related operations**
 #' 
@@ -4920,16 +5083,19 @@ gamelift_list_game_server_groups <- function(Limit = NULL, NextToken = NULL) {
 #' gamelift_list_game_servers(GameServerGroupName, SortOrder, Limit,
 #'   NextToken)
 #'
-#' @param GameServerGroupName &#91;required&#93; An identifier for the game server group for the game server you want to
-#' list. Use either the GameServerGroup name or ARN value.
-#' @param SortOrder Indicates how to sort the returned data based on the game servers'
-#' custom key sort value. If this parameter is left empty, the list of game
-#' servers is returned in no particular order.
+#' @param GameServerGroupName &#91;required&#93; An identifier for the game server group to retrieve a list of game
+#' servers from. Use either the GameServerGroup name or ARN value.
+#' @param SortOrder Indicates how to sort the returned data based on game server
+#' registration timestamp. Use ASCENDING to retrieve oldest game servers
+#' first, or use DESCENDING to retrieve newest game servers first. If this
+#' parameter is left empty, game servers are returned in no particular
+#' order.
 #' @param Limit The maximum number of results to return. Use this parameter with
-#' `NextToken` to get results as a set of sequential pages.
-#' @param NextToken A token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value.
+#' `NextToken` to get results as a set of sequential segments.
+#' @param NextToken A token that indicates the start of the next sequential segment of
+#' results. Use the token returned with the previous call to this
+#' operation. To start at the beginning of the result set, do not specify a
+#' value.
 #'
 #' @section Request syntax:
 #' ```
@@ -4990,8 +5156,8 @@ gamelift_list_game_servers <- function(GameServerGroupName, SortOrder = NULL, Li
 #' @param Limit The maximum number of results to return. Use this parameter with
 #' `NextToken` to get results as a set of sequential pages.
 #' @param NextToken A token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value.
 #'
 #' @section Request syntax:
 #' ```
@@ -5025,7 +5191,7 @@ gamelift_list_scripts <- function(Limit = NULL, NextToken = NULL) {
 #'
 #' Retrieves all tags that are assigned to a GameLift resource. Resource
 #' tags are used to organize AWS resources for a range of purposes. This
-#' action handles the permissions necessary to manage tags for the
+#' operation handles the permissions necessary to manage tags for the
 #' following GameLift resource types:
 #' 
 #' -   Build
@@ -5052,7 +5218,7 @@ gamelift_list_scripts <- function(Limit = NULL, NextToken = NULL) {
 #' in the *AWS General Reference*
 #' 
 #' [AWS Tagging
-#' Strategies](http://aws.amazon.com/answers/account-management/aws-tagging-strategies/)
+#' Strategies](https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf)
 #' 
 #' **Related operations**
 #' 
@@ -5070,7 +5236,7 @@ gamelift_list_scripts <- function(Limit = NULL, NextToken = NULL) {
 #' that is assigned to and uniquely identifies the GameLift resource that
 #' you want to retrieve tags for. GameLift resource ARNs are included in
 #' the data object for the resource, which can be retrieved by calling a
-#' List or Describe action for the resource type.
+#' List or Describe operation for the resource type.
 #'
 #' @section Request syntax:
 #' ```
@@ -5321,14 +5487,14 @@ gamelift_put_scaling_policy <- function(Name, FleetId, ScalingAdjustment = NULL,
 }
 .gamelift$operations$put_scaling_policy <- gamelift_put_scaling_policy
 
-#' This action is part of Amazon GameLift FleetIQ with game server groups,
-#' which is in preview release and is subject to change
+#' This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups
 #'
-#' **This action is part of Amazon GameLift FleetIQ with game server
-#' groups, which is in preview release and is subject to change.**
+#' **This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups.**
 #' 
 #' Creates a new game server resource and notifies GameLift FleetIQ that
-#' the game server is ready to host gameplay and players. This action is
+#' the game server is ready to host gameplay and players. This operation is
 #' called by a game server process that is running on an instance in a game
 #' server group. Registering game servers enables GameLift FleetIQ to track
 #' available game servers and enables game clients and services to claim a
@@ -5336,19 +5502,19 @@ gamelift_put_scaling_policy <- function(Name, FleetId, ScalingAdjustment = NULL,
 #' 
 #' To register a game server, identify the game server group and instance
 #' where the game server is running, and provide a unique identifier for
-#' the game server. You can also include connection and game server data;
-#' when a game client or service requests a game server by calling
-#' ClaimGameServer, this information is returned in response.
+#' the game server. You can also include connection and game server data.
+#' When a game client or service requests a game server by calling
+#' ClaimGameServer, this information is returned in the response.
 #' 
 #' Once a game server is successfully registered, it is put in status
-#' AVAILABLE. A request to register a game server may fail if the instance
-#' it is in the process of shutting down as part of instance rebalancing or
-#' scale-down activity.
+#' `AVAILABLE`. A request to register a game server may fail if the
+#' instance it is running on is in the process of shutting down as part of
+#' instance balancing or scale-down activity.
 #' 
 #' **Learn more**
 #' 
 #' [GameLift FleetIQ
-#' Guide](https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html)
+#' Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)
 #' 
 #' **Related operations**
 #' 
@@ -5366,32 +5532,22 @@ gamelift_put_scaling_policy <- function(Name, FleetId, ScalingAdjustment = NULL,
 #'
 #' @usage
 #' gamelift_register_game_server(GameServerGroupName, GameServerId,
-#'   InstanceId, ConnectionInfo, GameServerData, CustomSortKey, Tags)
+#'   InstanceId, ConnectionInfo, GameServerData)
 #'
-#' @param GameServerGroupName &#91;required&#93; An identifier for the game server group where the game server is
-#' running. You can use either the GameServerGroup name or ARN value.
-#' @param GameServerId &#91;required&#93; A custom string that uniquely identifies the new game server. Game
-#' server IDs are developer-defined and must be unique across all game
+#' @param GameServerGroupName &#91;required&#93; A unique identifier for the game server group where the game server is
+#' running. Use either the GameServerGroup name or ARN value.
+#' @param GameServerId &#91;required&#93; A custom string that uniquely identifies the game server to register.
+#' Game server IDs are developer-defined and must be unique across all game
 #' server groups in your AWS account.
 #' @param InstanceId &#91;required&#93; The unique identifier for the instance where the game server is running.
-#' This ID is available in the instance metadata.
-#' @param ConnectionInfo Information needed to make inbound client connections to the game
-#' server. This might include IP address and port, DNS name, etc.
+#' This ID is available in the instance metadata. EC2 instance IDs use a
+#' 17-character format, for example: `i-1234567890abcdef0`.
+#' @param ConnectionInfo Information that is needed to make inbound client connections to the
+#' game server. This might include the IP address and port, DNS name, and
+#' other information.
 #' @param GameServerData A set of custom game server properties, formatted as a single string
 #' value. This data is passed to a game client or service when it requests
-#' information on a game servers using ListGameServers or ClaimGameServer.
-#' @param CustomSortKey A game server tag that can be used to request sorted lists of game
-#' servers using ListGameServers. Custom sort keys are developer-defined
-#' based on how you want to organize the retrieved game server information.
-#' @param Tags A list of labels to assign to the new game server resource. Tags are
-#' developer-defined key-value pairs. Tagging AWS resources are useful for
-#' resource management, access management, and cost allocation. For more
-#' information, see [Tagging AWS
-#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
-#' in the *AWS General Reference*. Once the resource is created, you can
-#' use TagResource, UntagResource, and ListTagsForResource to add, remove,
-#' and view tags. The maximum tag limit may be lower than stated. See the
-#' AWS General Reference for actual tagging limits.
+#' information on game servers using ListGameServers or ClaimGameServer.
 #'
 #' @section Request syntax:
 #' ```
@@ -5400,28 +5556,21 @@ gamelift_put_scaling_policy <- function(Name, FleetId, ScalingAdjustment = NULL,
 #'   GameServerId = "string",
 #'   InstanceId = "string",
 #'   ConnectionInfo = "string",
-#'   GameServerData = "string",
-#'   CustomSortKey = "string",
-#'   Tags = list(
-#'     list(
-#'       Key = "string",
-#'       Value = "string"
-#'     )
-#'   )
+#'   GameServerData = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname gamelift_register_game_server
-gamelift_register_game_server <- function(GameServerGroupName, GameServerId, InstanceId, ConnectionInfo = NULL, GameServerData = NULL, CustomSortKey = NULL, Tags = NULL) {
+gamelift_register_game_server <- function(GameServerGroupName, GameServerId, InstanceId, ConnectionInfo = NULL, GameServerData = NULL) {
   op <- new_operation(
     name = "RegisterGameServer",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$register_game_server_input(GameServerGroupName = GameServerGroupName, GameServerId = GameServerId, InstanceId = InstanceId, ConnectionInfo = ConnectionInfo, GameServerData = GameServerData, CustomSortKey = CustomSortKey, Tags = Tags)
+  input <- .gamelift$register_game_server_input(GameServerGroupName = GameServerGroupName, GameServerId = GameServerId, InstanceId = InstanceId, ConnectionInfo = ConnectionInfo, GameServerData = GameServerData)
   output <- .gamelift$register_game_server_output()
   config <- get_config()
   svc <- .gamelift$service(config)
@@ -5542,27 +5691,29 @@ gamelift_resolve_alias <- function(AliasId) {
 }
 .gamelift$operations$resolve_alias <- gamelift_resolve_alias
 
-#' This action is part of Amazon GameLift FleetIQ with game server groups,
-#' which is in preview release and is subject to change
+#' This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups
 #'
-#' **This action is part of Amazon GameLift FleetIQ with game server
-#' groups, which is in preview release and is subject to change.**
+#' **This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups.**
 #' 
 #' Reinstates activity on a game server group after it has been suspended.
-#' A game server group may be suspended by calling SuspendGameServerGroup,
-#' or it may have been involuntarily suspended due to a configuration
-#' problem. You can manually resume activity on the group once the
-#' configuration problem has been resolved. Refer to the game server group
-#' status and status reason for more information on why group activity is
-#' suspended.
+#' A game server group might be suspended by theSuspendGameServerGroup
+#' operation, or it might be suspended involuntarily due to a configuration
+#' problem. In the second case, you can manually resume activity on the
+#' group once the configuration problem has been resolved. Refer to the
+#' game server group status and status reason for more information on why
+#' group activity is suspended.
 #' 
 #' To resume activity, specify a game server group ARN and the type of
-#' activity to be resumed.
+#' activity to be resumed. If successful, a GameServerGroup object is
+#' returned showing that the resumed activity is no longer listed in
+#' `SuspendedActions`.
 #' 
 #' **Learn more**
 #' 
 #' [GameLift FleetIQ
-#' Guide](https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html)
+#' Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)
 #' 
 #' **Related operations**
 #' 
@@ -5579,13 +5730,15 @@ gamelift_resolve_alias <- function(AliasId) {
 #' -   ResumeGameServerGroup
 #' 
 #' -   SuspendGameServerGroup
+#' 
+#' -   DescribeGameServerInstances
 #'
 #' @usage
 #' gamelift_resume_game_server_group(GameServerGroupName, ResumeActions)
 #'
-#' @param GameServerGroupName &#91;required&#93; The unique identifier of the game server group to resume activity on.
-#' Use either the GameServerGroup name or ARN value.
-#' @param ResumeActions &#91;required&#93; The action to resume for this game server group.
+#' @param GameServerGroupName &#91;required&#93; A unique identifier for the game server group. Use either the
+#' GameServerGroup name or ARN value.
+#' @param ResumeActions &#91;required&#93; The activity to resume for this game server group.
 #'
 #' @section Request syntax:
 #' ```
@@ -5770,8 +5923,8 @@ gamelift_resume_game_server_group <- function(GameServerGroupName, ResumeActions
 #' number of results returned is 20, even if this value is not set or is
 #' set higher than 20.
 #' @param NextToken Token that indicates the start of the next sequential page of results.
-#' Use the token that is returned with a previous call to this action. To
-#' start at the beginning of the result set, do not specify a value.
+#' Use the token that is returned with a previous call to this operation.
+#' To start at the beginning of the result set, do not specify a value.
 #'
 #' @section Request syntax:
 #' ```
@@ -6049,15 +6202,15 @@ gamelift_start_game_session_placement <- function(PlacementId, GameSessionQueueN
 #' GameSession object is updated to include matchmaker data on the new
 #' players. For more detail on how match backfill requests are processed,
 #' see [How Amazon GameLift FlexMatch
-#' Works](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html).
+#' Works](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html).
 #' 
 #' **Learn more**
 #' 
 #' [Backfill Existing Games with
-#' FlexMatch](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html)
+#' FlexMatch](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-backfill.html)
 #' 
 #' [How GameLift FlexMatch
-#' Works](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html)
+#' Works](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html)
 #' 
 #' **Related operations**
 #' 
@@ -6083,7 +6236,7 @@ gamelift_start_game_session_placement <- function(PlacementId, GameSessionQueueN
 #' configuration name or ARN value. The ARN of the matchmaker that was used
 #' with the original game session is listed in the GameSession object,
 #' `MatchmakerData` property.
-#' @param GameSessionArn &#91;required&#93; Amazon Resource Name
+#' @param GameSessionArn Amazon Resource Name
 #' ([ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
 #' that is assigned to a game session and uniquely identifies it. This is
 #' the same as the game session ID.
@@ -6096,7 +6249,7 @@ gamelift_start_game_session_placement <- function(PlacementId, GameSessionQueueN
 #'     all players who are currently assigned to the game session. The
 #'     matchmaker data is in JSON syntax, formatted as a string. For more
 #'     details, see [Match
-#'     Data](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data).
+#'     Data](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-server.html#match-server-data).
 #' 
 #' -   LatencyInMs -\\\\- If the matchmaker uses player latency, include a
 #'     latency value, in milliseconds, for the Region that the game session
@@ -6135,7 +6288,7 @@ gamelift_start_game_session_placement <- function(PlacementId, GameSessionQueueN
 #' @keywords internal
 #'
 #' @rdname gamelift_start_match_backfill
-gamelift_start_match_backfill <- function(TicketId = NULL, ConfigurationName, GameSessionArn, Players) {
+gamelift_start_match_backfill <- function(TicketId = NULL, ConfigurationName, GameSessionArn = NULL, Players) {
   op <- new_operation(
     name = "StartMatchBackfill",
     http_method = "POST",
@@ -6153,86 +6306,43 @@ gamelift_start_match_backfill <- function(TicketId = NULL, ConfigurationName, Ga
 .gamelift$operations$start_match_backfill <- gamelift_start_match_backfill
 
 #' Uses FlexMatch to create a game match for a group of players based on
-#' custom matchmaking rules, and starts a new game for the matched players
+#' custom matchmaking rules
 #'
 #' Uses FlexMatch to create a game match for a group of players based on
-#' custom matchmaking rules, and starts a new game for the matched players.
-#' Each matchmaking request specifies the type of match to build (team
-#' configuration, rules for an acceptable match, etc.). The request also
-#' specifies the players to find a match for and where to host the new game
-#' session for optimal performance. A matchmaking request might start with
-#' a single player or a group of players who want to play together.
-#' FlexMatch finds additional players as needed to fill the match. Match
-#' type, rules, and the queue used to place a new game session are defined
-#' in a `MatchmakingConfiguration`.
+#' custom matchmaking rules. If you're also using GameLift hosting, a new
+#' game session is started for the matched players. Each matchmaking
+#' request identifies one or more players to find a match for, and
+#' specifies the type of match to build, including the team configuration
+#' and the rules for an acceptable match. When a matchmaking request
+#' identifies a group of players who want to play together, FlexMatch finds
+#' additional players to fill the match. Match type, rules, and other
+#' features are defined in a `MatchmakingConfiguration`.
 #' 
 #' To start matchmaking, provide a unique ticket ID, specify a matchmaking
-#' configuration, and include the players to be matched. You must also
-#' include a set of player attributes relevant for the matchmaking
-#' configuration. If successful, a matchmaking ticket is returned with
-#' status set to `QUEUED`. Track the status of the ticket to respond as
-#' needed and acquire game session connection information for successfully
-#' completed matches.
+#' configuration, and include the players to be matched. For each player,
+#' you must also include the player attribute values that are required by
+#' the matchmaking configuration (in the rule set). If successful, a
+#' matchmaking ticket is returned with status set to `QUEUED`.
 #' 
-#' **Tracking ticket status** -- A couple of options are available for
-#' tracking the status of matchmaking requests:
-#' 
-#' -   Polling -- Call `DescribeMatchmaking`. This operation returns the
-#'     full ticket object, including current status and (for completed
-#'     tickets) game session connection info. We recommend polling no more
-#'     than once every 10 seconds.
-#' 
-#' -   Notifications -- Get event notifications for changes in ticket
-#'     status using Amazon Simple Notification Service (SNS). Notifications
-#'     are easy to set up (see CreateMatchmakingConfiguration) and
-#'     typically deliver match status changes faster and more efficiently
-#'     than polling. We recommend that you use polling to back up to
-#'     notifications (since delivery is not guaranteed) and call
-#'     `DescribeMatchmaking` only when notifications are not received
-#'     within 30 seconds.
-#' 
-#' **Processing a matchmaking request** -- FlexMatch handles a matchmaking
-#' request as follows:
-#' 
-#' 1.  Your client code submits a `StartMatchmaking` request for one or
-#'     more players and tracks the status of the request ticket.
-#' 
-#' 2.  FlexMatch uses this ticket and others in process to build an
-#'     acceptable match. When a potential match is identified, all tickets
-#'     in the proposed match are advanced to the next status.
-#' 
-#' 3.  If the match requires player acceptance (set in the matchmaking
-#'     configuration), the tickets move into status `REQUIRES_ACCEPTANCE`.
-#'     This status triggers your client code to solicit acceptance from all
-#'     players in every ticket involved in the match, and then call
-#'     AcceptMatch for each player. If any player rejects or fails to
-#'     accept the match before a specified timeout, the proposed match is
-#'     dropped (see `AcceptMatch` for more details).
-#' 
-#' 4.  Once a match is proposed and accepted, the matchmaking tickets move
-#'     into status `PLACING`. FlexMatch locates resources for a new game
-#'     session using the game session queue (set in the matchmaking
-#'     configuration) and creates the game session based on the match data.
-#' 
-#' 5.  When the match is successfully placed, the matchmaking tickets move
-#'     into `COMPLETED` status. Connection information (including game
-#'     session endpoint and player session) is added to the matchmaking
-#'     tickets. Matched players can use the connection information to join
-#'     the game.
+#' Track the status of the ticket to respond as needed. If you're also
+#' using GameLift hosting, a successfully completed ticket contains game
+#' session connection information. Ticket status updates are tracked using
+#' event notification through Amazon Simple Notification Service (SNS),
+#' which is defined in the matchmaking configuration.
 #' 
 #' **Learn more**
 #' 
 #' [Add FlexMatch to a Game
-#' Client](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html)
+#' Client](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html)
 #' 
 #' [Set Up FlexMatch Event
-#' Notification](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)
+#' Notification](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html)
 #' 
 #' [FlexMatch Integration
-#' Roadmap](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-tasks.html)
+#' Roadmap](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-tasks.html)
 #' 
 #' [How GameLift FlexMatch
-#' Works](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html)
+#' Works](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html)
 #' 
 #' **Related operations**
 #' 
@@ -6451,13 +6561,13 @@ gamelift_stop_game_session_placement <- function(PlacementId) {
 #' ticket ID is included in the `MatchmakerData` of an updated game session
 #' object, which is provided to the game server.
 #' 
-#' If the action is successful, the service sends back an empty JSON struct
-#' with the HTTP 200 response (not an empty HTTP body).
+#' If the operation is successful, the service sends back an empty JSON
+#' struct with the HTTP 200 response (not an empty HTTP body).
 #' 
 #' **Learn more**
 #' 
 #' [Add FlexMatch to a Game
-#' Client](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html)
+#' Client](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html)
 #' 
 #' **Related operations**
 #' 
@@ -6503,33 +6613,34 @@ gamelift_stop_matchmaking <- function(TicketId) {
 }
 .gamelift$operations$stop_matchmaking <- gamelift_stop_matchmaking
 
-#' This action is part of Amazon GameLift FleetIQ with game server groups,
-#' which is in preview release and is subject to change
+#' This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups
 #'
-#' **This action is part of Amazon GameLift FleetIQ with game server
-#' groups, which is in preview release and is subject to change.**
+#' **This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups.**
 #' 
 #' Temporarily stops activity on a game server group without terminating
-#' instances or the game server group. Activity can be restarted by calling
-#' ResumeGameServerGroup. Activities that can suspended are:
+#' instances or the game server group. You can restart activity by calling
+#' ResumeGameServerGroup. You can suspend the following activity:
 #' 
-#' -   Instance type replacement. This activity evaluates the current Spot
-#'     viability of all instance types that are defined for the game server
-#'     group. It updates the Auto Scaling group to remove nonviable Spot
-#'     instance types (which have a higher chance of game server
-#'     interruptions) and rebalances capacity across the remaining viable
-#'     Spot instance types. When this activity is suspended, the Auto
-#'     Scaling group continues with its current balance, regardless of
-#'     viability. Instance protection, utilization metrics, and capacity
-#'     autoscaling activities continue to be active.
+#' -   **Instance type replacement** - This activity evaluates the current
+#'     game hosting viability of all Spot instance types that are defined
+#'     for the game server group. It updates the Auto Scaling group to
+#'     remove nonviable Spot Instance types, which have a higher chance of
+#'     game server interruptions. It then balances capacity across the
+#'     remaining viable Spot Instance types. When this activity is
+#'     suspended, the Auto Scaling group continues with its current
+#'     balance, regardless of viability. Instance protection, utilization
+#'     metrics, and capacity scaling activities continue to be active.
 #' 
 #' To suspend activity, specify a game server group ARN and the type of
-#' activity to be suspended.
+#' activity to be suspended. If successful, a GameServerGroup object is
+#' returned showing that the activity is listed in `SuspendedActions`.
 #' 
 #' **Learn more**
 #' 
 #' [GameLift FleetIQ
-#' Guide](https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html)
+#' Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)
 #' 
 #' **Related operations**
 #' 
@@ -6546,13 +6657,15 @@ gamelift_stop_matchmaking <- function(TicketId) {
 #' -   ResumeGameServerGroup
 #' 
 #' -   SuspendGameServerGroup
+#' 
+#' -   DescribeGameServerInstances
 #'
 #' @usage
 #' gamelift_suspend_game_server_group(GameServerGroupName, SuspendActions)
 #'
-#' @param GameServerGroupName &#91;required&#93; The unique identifier of the game server group to stop activity on. Use
-#' either the GameServerGroup name or ARN value.
-#' @param SuspendActions &#91;required&#93; The action to suspend for this game server group.
+#' @param GameServerGroupName &#91;required&#93; A unique identifier for the game server group. Use either the
+#' GameServerGroup name or ARN value.
+#' @param SuspendActions &#91;required&#93; The activity to suspend for this game server group.
 #'
 #' @section Request syntax:
 #' ```
@@ -6589,8 +6702,9 @@ gamelift_suspend_game_server_group <- function(GameServerGroupName, SuspendActio
 #' Assigns a tag to a GameLift resource. AWS resource tags provide an
 #' additional management tool set. You can use tags to organize resources,
 #' create IAM permissions policies to manage access to groups of resources,
-#' customize AWS cost breakdowns, etc. This action handles the permissions
-#' necessary to manage tags for the following GameLift resource types:
+#' customize AWS cost breakdowns, etc. This operation handles the
+#' permissions necessary to manage tags for the following GameLift resource
+#' types:
 #' 
 #' -   Build
 #' 
@@ -6618,7 +6732,7 @@ gamelift_suspend_game_server_group <- function(GameServerGroupName, SuspendActio
 #' in the *AWS General Reference*
 #' 
 #' [AWS Tagging
-#' Strategies](http://aws.amazon.com/answers/account-management/aws-tagging-strategies/)
+#' Strategies](https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf)
 #' 
 #' **Related operations**
 #' 
@@ -6636,7 +6750,7 @@ gamelift_suspend_game_server_group <- function(GameServerGroupName, SuspendActio
 #' that is assigned to and uniquely identifies the GameLift resource that
 #' you want to assign tags to. GameLift resource ARNs are included in the
 #' data object for the resource, which can be retrieved by calling a List
-#' or Describe action for the resource type.
+#' or Describe operation for the resource type.
 #' @param Tags &#91;required&#93; A list of one or more tags to assign to the specified GameLift resource.
 #' Tags are developer-defined and structured as key-value pairs. The
 #' maximum tag limit may be lower than stated. See [Tagging AWS
@@ -6679,7 +6793,7 @@ gamelift_tag_resource <- function(ResourceARN, Tags) {
 #' Removes a tag that is assigned to a GameLift resource
 #'
 #' Removes a tag that is assigned to a GameLift resource. Resource tags are
-#' used to organize AWS resources for a range of purposes. This action
+#' used to organize AWS resources for a range of purposes. This operation
 #' handles the permissions necessary to manage tags for the following
 #' GameLift resource types:
 #' 
@@ -6699,7 +6813,7 @@ gamelift_tag_resource <- function(ResourceARN, Tags) {
 #' 
 #' To remove a tag from a resource, specify the unique ARN value for the
 #' resource and provide a string list containing one or more tags to be
-#' removed. This action succeeds even if the list includes tags that are
+#' removed. This operation succeeds even if the list includes tags that are
 #' not currently assigned to the specified resource.
 #' 
 #' **Learn more**
@@ -6709,7 +6823,7 @@ gamelift_tag_resource <- function(ResourceARN, Tags) {
 #' in the *AWS General Reference*
 #' 
 #' [AWS Tagging
-#' Strategies](http://aws.amazon.com/answers/account-management/aws-tagging-strategies/)
+#' Strategies](https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf)
 #' 
 #' **Related operations**
 #' 
@@ -6727,7 +6841,7 @@ gamelift_tag_resource <- function(ResourceARN, Tags) {
 #' that is assigned to and uniquely identifies the GameLift resource that
 #' you want to remove tags from. GameLift resource ARNs are included in the
 #' data object for the resource, which can be retrieved by calling a List
-#' or Describe action for the resource type.
+#' or Describe operation for the resource type.
 #' @param TagKeys &#91;required&#93; A list of one or more tag keys to remove from the specified GameLift
 #' resource. An AWS resource can have only one tag with a specific tag key,
 #' so specifying the tag key identifies which tag to remove.
@@ -6990,9 +7104,9 @@ gamelift_update_fleet_attributes <- function(FleetId, Name = NULL, Description =
 
 #' Updates capacity settings for a fleet
 #'
-#' Updates capacity settings for a fleet. Use this action to specify the
+#' Updates capacity settings for a fleet. Use this operation to specify the
 #' number of EC2 instances (hosts) that you want this fleet to contain.
-#' Before calling this action, you may want to call
+#' Before calling this operation, you may want to call
 #' DescribeEC2InstanceLimits to get the maximum capacity based on the
 #' fleet's EC2 instance type.
 #' 
@@ -7167,21 +7281,20 @@ gamelift_update_fleet_port_settings <- function(FleetId, InboundPermissionAuthor
 }
 .gamelift$operations$update_fleet_port_settings <- gamelift_update_fleet_port_settings
 
-#' This action is part of Amazon GameLift FleetIQ with game server groups,
-#' which is in preview release and is subject to change
+#' This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups
 #'
-#' **This action is part of Amazon GameLift FleetIQ with game server
-#' groups, which is in preview release and is subject to change.**
+#' **This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups.**
 #' 
-#' Updates information about a registered game server. This action is
-#' called by a game server process that is running on an instance in a game
-#' server group. There are three reasons to update game server information:
-#' (1) to change the utilization status of the game server, (2) to report
-#' game server health status, and (3) to change game server metadata. A
-#' registered game server should regularly report health and should update
-#' utilization status when it is supporting gameplay so that GameLift
-#' FleetIQ can accurately track game server availability. You can make all
-#' three types of updates in the same request.
+#' Updates information about a registered game server to help GameLift
+#' FleetIQ to track game server availability. This operation is called by a
+#' game server process that is running on an instance in a game server
+#' group.
+#' 
+#' Use this operation to update the following types of game server
+#' information. You can make all three types of updates in the same
+#' request:
 #' 
 #' -   To update the game server's utilization status, identify the game
 #'     server and game server group and specify the current utilization
@@ -7189,14 +7302,14 @@ gamelift_update_fleet_port_settings <- function(FleetId, InboundPermissionAuthor
 #'     hosting games and when they are available to be claimed.
 #' 
 #' -   To report health status, identify the game server and game server
-#'     group and set health check to HEALTHY. If a game server does not
+#'     group and set health check to `HEALTHY`. If a game server does not
 #'     report health status for a certain length of time, the game server
-#'     is no longer considered healthy and will be eventually de-registered
-#'     from the game server group to avoid affecting utilization metrics.
-#'     The best practice is to report health every 60 seconds.
+#'     is no longer considered healthy. As a result, it will be eventually
+#'     deregistered from the game server group to avoid affecting
+#'     utilization metrics. The best practice is to report health every 60
+#'     seconds.
 #' 
-#' -   To change game server metadata, provide updated game server data and
-#'     custom sort key values.
+#' -   To change game server metadata, provide updated game server data.
 #' 
 #' Once a game server is successfully updated, the relevant statuses and
 #' timestamps are updated.
@@ -7204,7 +7317,7 @@ gamelift_update_fleet_port_settings <- function(FleetId, InboundPermissionAuthor
 #' **Learn more**
 #' 
 #' [GameLift FleetIQ
-#' Guide](https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html)
+#' Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)
 #' 
 #' **Related operations**
 #' 
@@ -7222,23 +7335,18 @@ gamelift_update_fleet_port_settings <- function(FleetId, InboundPermissionAuthor
 #'
 #' @usage
 #' gamelift_update_game_server(GameServerGroupName, GameServerId,
-#'   GameServerData, CustomSortKey, UtilizationStatus, HealthCheck)
+#'   GameServerData, UtilizationStatus, HealthCheck)
 #'
-#' @param GameServerGroupName &#91;required&#93; An identifier for the game server group where the game server is
+#' @param GameServerGroupName &#91;required&#93; A unique identifier for the game server group where the game server is
 #' running. Use either the GameServerGroup name or ARN value.
-#' @param GameServerId &#91;required&#93; The identifier for the game server to be updated.
+#' @param GameServerId &#91;required&#93; A custom string that uniquely identifies the game server to update.
 #' @param GameServerData A set of custom game server properties, formatted as a single string
 #' value. This data is passed to a game client or service when it requests
-#' information on a game servers using DescribeGameServer or
-#' ClaimGameServer.
-#' @param CustomSortKey A game server tag that can be used to request sorted lists of game
-#' servers using ListGameServers. Custom sort keys are developer-defined
-#' based on how you want to organize the retrieved game server information.
+#' information on game servers using ListGameServers or ClaimGameServer.
 #' @param UtilizationStatus Indicates whether the game server is available or is currently hosting
 #' gameplay.
-#' @param HealthCheck Indicates health status of the game server. An update that explicitly
-#' includes this parameter updates the game server's *LastHealthCheckTime*
-#' time stamp.
+#' @param HealthCheck Indicates health status of the game server. A request that includes this
+#' parameter updates the game server's *LastHealthCheckTime* timestamp.
 #'
 #' @section Request syntax:
 #' ```
@@ -7246,7 +7354,6 @@ gamelift_update_fleet_port_settings <- function(FleetId, InboundPermissionAuthor
 #'   GameServerGroupName = "string",
 #'   GameServerId = "string",
 #'   GameServerData = "string",
-#'   CustomSortKey = "string",
 #'   UtilizationStatus = "AVAILABLE"|"UTILIZED",
 #'   HealthCheck = "HEALTHY"
 #' )
@@ -7255,14 +7362,14 @@ gamelift_update_fleet_port_settings <- function(FleetId, InboundPermissionAuthor
 #' @keywords internal
 #'
 #' @rdname gamelift_update_game_server
-gamelift_update_game_server <- function(GameServerGroupName, GameServerId, GameServerData = NULL, CustomSortKey = NULL, UtilizationStatus = NULL, HealthCheck = NULL) {
+gamelift_update_game_server <- function(GameServerGroupName, GameServerId, GameServerData = NULL, UtilizationStatus = NULL, HealthCheck = NULL) {
   op <- new_operation(
     name = "UpdateGameServer",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$update_game_server_input(GameServerGroupName = GameServerGroupName, GameServerId = GameServerId, GameServerData = GameServerData, CustomSortKey = CustomSortKey, UtilizationStatus = UtilizationStatus, HealthCheck = HealthCheck)
+  input <- .gamelift$update_game_server_input(GameServerGroupName = GameServerGroupName, GameServerId = GameServerId, GameServerData = GameServerData, UtilizationStatus = UtilizationStatus, HealthCheck = HealthCheck)
   output <- .gamelift$update_game_server_output()
   config <- get_config()
   svc <- .gamelift$service(config)
@@ -7272,33 +7379,27 @@ gamelift_update_game_server <- function(GameServerGroupName, GameServerId, GameS
 }
 .gamelift$operations$update_game_server <- gamelift_update_game_server
 
-#' This action is part of Amazon GameLift FleetIQ with game server groups,
-#' which is in preview release and is subject to change
+#' This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups
 #'
-#' **This action is part of Amazon GameLift FleetIQ with game server
-#' groups, which is in preview release and is subject to change.**
+#' **This operation is used with the Amazon GameLift FleetIQ solution and
+#' game server groups.**
 #' 
 #' Updates GameLift FleetIQ-specific properties for a game server group.
-#' These properties include instance rebalancing and game server
-#' protection. Many Auto Scaling group properties are updated directly.
-#' These include autoscaling policies, minimum/maximum/desired instance
-#' counts, and launch template.
+#' Many Auto Scaling group properties are updated on the Auto Scaling group
+#' directly, including the launch template, Auto Scaling policies, and
+#' maximum/minimum/desired instance counts.
 #' 
 #' To update the game server group, specify the game server group ID and
-#' provide the updated values.
-#' 
-#' Updated properties are validated to ensure that GameLift FleetIQ can
-#' continue to perform its core instance rebalancing activity. When you
-#' change Auto Scaling group properties directly and the changes cause
-#' errors with GameLift FleetIQ activities, an alert is sent.
+#' provide the updated values. Before applying the updates, the new values
+#' are validated to ensure that GameLift FleetIQ can continue to perform
+#' instance balancing activity. If successful, a GameServerGroup object is
+#' returned.
 #' 
 #' **Learn more**
 #' 
 #' [GameLift FleetIQ
-#' Guide](https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html)
-#' 
-#' [Updating a GameLift FleetIQ-Linked Auto Scaling
-#' Group](https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-asgroups.html)
+#' Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)
 #' 
 #' **Related operations**
 #' 
@@ -7315,48 +7416,61 @@ gamelift_update_game_server <- function(GameServerGroupName, GameServerId, GameS
 #' -   ResumeGameServerGroup
 #' 
 #' -   SuspendGameServerGroup
+#' 
+#' -   DescribeGameServerInstances
 #'
 #' @usage
 #' gamelift_update_game_server_group(GameServerGroupName, RoleArn,
 #'   InstanceDefinitions, GameServerProtectionPolicy, BalancingStrategy)
 #'
-#' @param GameServerGroupName &#91;required&#93; The unique identifier of the game server group to update. Use either the
+#' @param GameServerGroupName &#91;required&#93; A unique identifier for the game server group. Use either the
 #' GameServerGroup name or ARN value.
 #' @param RoleArn The Amazon Resource Name
 #' ([ARN](https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 #' for an IAM role that allows Amazon GameLift to access your EC2 Auto
-#' Scaling groups. The submitted role is validated to ensure that it
-#' contains the necessary permissions for game server groups.
-#' @param InstanceDefinitions An updated list of EC2 instance types to use when creating instances in
-#' the group. The instance definition must specify instance types that are
-#' supported by GameLift FleetIQ, and must include at least two instance
-#' types. This updated list replaces the entire current list of instance
-#' definitions for the game server group. For more information on instance
-#' types, see [EC2 Instance
+#' Scaling groups.
+#' @param InstanceDefinitions An updated list of EC2 instance types to use in the Auto Scaling group.
+#' The instance definitions must specify at least two different instance
+#' types that are supported by GameLift FleetIQ. This updated list replaces
+#' the entire current list of instance definitions for the game server
+#' group. For more information on instance types, see [EC2 Instance
 #' Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
-#' in the *Amazon EC2 User Guide*..
+#' in the *Amazon EC2 User Guide*. You can optionally specify capacity
+#' weighting for each instance type. If no weight value is specified for an
+#' instance type, it is set to the default value "1". For more information
+#' about capacity weighting, see [Instance Weighting for Amazon EC2 Auto
+#' Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-weighting.html)
+#' in the Amazon EC2 Auto Scaling User Guide.
 #' @param GameServerProtectionPolicy A flag that indicates whether instances in the game server group are
 #' protected from early termination. Unprotected instances that have active
-#' game servers running may by terminated during a scale-down event,
+#' game servers running might be terminated during a scale-down event,
 #' causing players to be dropped from the game. Protected instances cannot
-#' be terminated while there are active game servers running. An exception
-#' to this is Spot Instances, which may be terminated by AWS regardless of
-#' protection status. This property is set to NO\\_PROTECTION by default.
-#' @param BalancingStrategy The fallback balancing method to use for the game server group when Spot
-#' instances in a Region become unavailable or are not viable for game
-#' hosting. Once triggered, this method remains active until Spot instances
-#' can once again be used. Method options include:
+#' be terminated while there are active game servers running except in the
+#' event of a forced game server group deletion (see ). An exception to
+#' this is with Spot Instances, which can be terminated by AWS regardless
+#' of protection status. This property is set to `NO_PROTECTION` by
+#' default.
+#' @param BalancingStrategy Indicates how GameLift FleetIQ balances the use of Spot Instances and
+#' On-Demand Instances in the game server group. Method options include the
+#' following:
 #' 
-#' -   SPOT\\_ONLY -- If Spot instances are unavailable, the game server
-#'     group provides no hosting capacity. No new instances are started,
-#'     and the existing nonviable Spot instances are terminated (once
-#'     current gameplay ends) and not replaced.
+#' -   `SPOT_ONLY` - Only Spot Instances are used in the game server group.
+#'     If Spot Instances are unavailable or not viable for game hosting,
+#'     the game server group provides no hosting capacity until Spot
+#'     Instances can again be used. Until then, no new instances are
+#'     started, and the existing nonviable Spot Instances are terminated
+#'     (after current gameplay ends) and are not replaced.
 #' 
-#' -   SPOT\\_PREFERRED -- If Spot instances are unavailable, the game
-#'     server group continues to provide hosting capacity by using
-#'     On-Demand instances. Existing nonviable Spot instances are
-#'     terminated (once current gameplay ends) and replaced with new
-#'     On-Demand instances.
+#' -   `SPOT_PREFERRED` - (default value) Spot Instances are used whenever
+#'     available in the game server group. If Spot Instances are
+#'     unavailable, the game server group continues to provide hosting
+#'     capacity by falling back to On-Demand Instances. Existing nonviable
+#'     Spot Instances are terminated (after current gameplay ends) and are
+#'     replaced with new On-Demand Instances.
+#' 
+#' -   `ON_DEMAND_ONLY` - Only On-Demand Instances are used in the game
+#'     server group. No Spot Instances are used, even when available, while
+#'     this balancing strategy is in force.
 #'
 #' @section Request syntax:
 #' ```
@@ -7370,7 +7484,7 @@ gamelift_update_game_server <- function(GameServerGroupName, GameServerId, GameS
 #'     )
 #'   ),
 #'   GameServerProtectionPolicy = "NO_PROTECTION"|"FULL_PROTECTION",
-#'   BalancingStrategy = "SPOT_ONLY"|"SPOT_PREFERRED"
+#'   BalancingStrategy = "SPOT_ONLY"|"SPOT_PREFERRED"|"ON_DEMAND_ONLY"
 #' )
 #' ```
 #'
@@ -7570,7 +7684,7 @@ gamelift_update_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #' **Learn more**
 #' 
 #' [Design a FlexMatch
-#' Matchmaker](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-configuration.html)
+#' Matchmaker](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-configuration.html)
 #' 
 #' **Related operations**
 #' 
@@ -7595,7 +7709,7 @@ gamelift_update_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #'   GameSessionQueueArns, RequestTimeoutSeconds, AcceptanceTimeoutSeconds,
 #'   AcceptanceRequired, RuleSetName, NotificationTarget,
 #'   AdditionalPlayerCount, CustomEventData, GameProperties, GameSessionData,
-#'   BackfillMode)
+#'   BackfillMode, FlexMatchMode)
 #'
 #' @param Name &#91;required&#93; A unique identifier for a matchmaking configuration to update. You can
 #' use either the configuration name or ARN value.
@@ -7603,30 +7717,36 @@ gamelift_update_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #' @param GameSessionQueueArns Amazon Resource Name
 #' ([ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
 #' that is assigned to a GameLift game session queue resource and uniquely
-#' identifies it. ARNs are unique across all Regions. These queues are used
-#' when placing game sessions for matches that are created with this
-#' matchmaking configuration. Queues can be located in any Region.
+#' identifies it. ARNs are unique across all Regions. Queues can be located
+#' in any Region. Queues are used to start new GameLift-hosted game
+#' sessions for matches that are created with this matchmaking
+#' configuration. If `FlexMatchMode` is set to `STANDALONE`, do not set
+#' this parameter.
 #' @param RequestTimeoutSeconds The maximum duration, in seconds, that a matchmaking ticket can remain
 #' in process before timing out. Requests that fail due to timing out can
 #' be resubmitted as needed.
 #' @param AcceptanceTimeoutSeconds The length of time (in seconds) to wait for players to accept a proposed
-#' match. If any player rejects the match or fails to accept before the
-#' timeout, the ticket continues to look for an acceptable match.
+#' match, if acceptance is required. If any player rejects the match or
+#' fails to accept before the timeout, the tickets are returned to the
+#' ticket pool and continue to be evaluated for an acceptable match.
 #' @param AcceptanceRequired A flag that indicates whether a match that was created with this
 #' configuration must be accepted by the matched players. To require
-#' acceptance, set to TRUE.
+#' acceptance, set to TRUE. With this option enabled, matchmaking tickets
+#' use the status `REQUIRES_ACCEPTANCE` to indicate when a completed
+#' potential match is waiting for player acceptance.
 #' @param RuleSetName A unique identifier for a matchmaking rule set to use with this
 #' configuration. You can use either the rule set name or ARN value. A
 #' matchmaking configuration can only use rule sets that are defined in the
 #' same Region.
 #' @param NotificationTarget An SNS topic ARN that is set up to receive matchmaking notifications.
 #' See [Setting up Notifications for
-#' Matchmaking](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html)
+#' Matchmaking](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html)
 #' for more information.
 #' @param AdditionalPlayerCount The number of player slots in a match to keep open for future players.
 #' For example, assume that the configuration's rule set specifies a match
 #' for a single 12-person team. If the additional player count is set to 2,
-#' only 10 players are initially selected for the match.
+#' only 10 players are initially selected for the match. This parameter is
+#' not used if `FlexMatchMode` is set to `STANDALONE`.
 #' @param CustomEventData Information to add to all events related to the matchmaking
 #' configuration.
 #' @param GameProperties A set of custom properties for a game session, formatted as key-value
@@ -7635,20 +7755,34 @@ gamelift_update_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #' [Start a Game
 #' Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 #' This information is added to the new GameSession object that is created
-#' for a successful match.
+#' for a successful match. This parameter is not used if `FlexMatchMode` is
+#' set to `STANDALONE`.
 #' @param GameSessionData A set of custom game session properties, formatted as a single string
 #' value. This data is passed to a game server process in the GameSession
 #' object with a request to start a new game session (see [Start a Game
 #' Session](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 #' This information is added to the new GameSession object that is created
-#' for a successful match.
+#' for a successful match. This parameter is not used if `FlexMatchMode` is
+#' set to `STANDALONE`.
 #' @param BackfillMode The method that is used to backfill game sessions created with this
 #' matchmaking configuration. Specify MANUAL when your game manages
 #' backfill requests manually or does not use the match backfill feature.
 #' Specify AUTOMATIC to have GameLift create a StartMatchBackfill request
 #' whenever a game session has one or more open slots. Learn more about
 #' manual and automatic backfill in [Backfill Existing Games with
-#' FlexMatch](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html).
+#' FlexMatch](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-backfill.html).
+#' Automatic backfill is not available when `FlexMatchMode` is set to
+#' `STANDALONE`.
+#' @param FlexMatchMode Indicates whether this matchmaking configuration is being used with
+#' GameLift hosting or as a standalone matchmaking solution.
+#' 
+#' -   **STANDALONE** - FlexMatch forms matches and returns match
+#'     information, including players and team assignments, in a
+#'     [MatchmakingSucceeded](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-events.html#match-events-matchmakingsucceeded)
+#'     event.
+#' 
+#' -   **WITH\\_QUEUE** - FlexMatch forms matches and uses the specified
+#'     GameLift queue to start a game session for the match.
 #'
 #' @section Request syntax:
 #' ```
@@ -7672,21 +7806,22 @@ gamelift_update_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 #'     )
 #'   ),
 #'   GameSessionData = "string",
-#'   BackfillMode = "AUTOMATIC"|"MANUAL"
+#'   BackfillMode = "AUTOMATIC"|"MANUAL",
+#'   FlexMatchMode = "STANDALONE"|"WITH_QUEUE"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname gamelift_update_matchmaking_configuration
-gamelift_update_matchmaking_configuration <- function(Name, Description = NULL, GameSessionQueueArns = NULL, RequestTimeoutSeconds = NULL, AcceptanceTimeoutSeconds = NULL, AcceptanceRequired = NULL, RuleSetName = NULL, NotificationTarget = NULL, AdditionalPlayerCount = NULL, CustomEventData = NULL, GameProperties = NULL, GameSessionData = NULL, BackfillMode = NULL) {
+gamelift_update_matchmaking_configuration <- function(Name, Description = NULL, GameSessionQueueArns = NULL, RequestTimeoutSeconds = NULL, AcceptanceTimeoutSeconds = NULL, AcceptanceRequired = NULL, RuleSetName = NULL, NotificationTarget = NULL, AdditionalPlayerCount = NULL, CustomEventData = NULL, GameProperties = NULL, GameSessionData = NULL, BackfillMode = NULL, FlexMatchMode = NULL) {
   op <- new_operation(
     name = "UpdateMatchmakingConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .gamelift$update_matchmaking_configuration_input(Name = Name, Description = Description, GameSessionQueueArns = GameSessionQueueArns, RequestTimeoutSeconds = RequestTimeoutSeconds, AcceptanceTimeoutSeconds = AcceptanceTimeoutSeconds, AcceptanceRequired = AcceptanceRequired, RuleSetName = RuleSetName, NotificationTarget = NotificationTarget, AdditionalPlayerCount = AdditionalPlayerCount, CustomEventData = CustomEventData, GameProperties = GameProperties, GameSessionData = GameSessionData, BackfillMode = BackfillMode)
+  input <- .gamelift$update_matchmaking_configuration_input(Name = Name, Description = Description, GameSessionQueueArns = GameSessionQueueArns, RequestTimeoutSeconds = RequestTimeoutSeconds, AcceptanceTimeoutSeconds = AcceptanceTimeoutSeconds, AcceptanceRequired = AcceptanceRequired, RuleSetName = RuleSetName, NotificationTarget = NotificationTarget, AdditionalPlayerCount = AdditionalPlayerCount, CustomEventData = CustomEventData, GameProperties = GameProperties, GameSessionData = GameSessionData, BackfillMode = BackfillMode, FlexMatchMode = FlexMatchMode)
   output <- .gamelift$update_matchmaking_configuration_output()
   config <- get_config()
   svc <- .gamelift$service(config)
@@ -7839,14 +7974,17 @@ gamelift_update_runtime_configuration <- function(FleetId, RuntimeConfiguration)
 #' not need to be unique.
 #' @param Version The version that is associated with a build or script. Version strings
 #' do not need to be unique.
-#' @param StorageLocation The location of the Amazon S3 bucket where a zipped file containing your
-#' Realtime scripts is stored. The storage location must specify the Amazon
-#' S3 bucket name, the zip file name (the "key"), and a role ARN that
-#' allows Amazon GameLift to access the Amazon S3 storage location. The S3
-#' bucket must be in the same Region where you want to create a new script.
-#' By default, Amazon GameLift uploads the latest version of the zip file;
-#' if you have S3 object versioning turned on, you can use the
-#' `ObjectVersion` parameter to specify an earlier version.
+#' @param StorageLocation The Amazon S3 location of your Realtime scripts. The storage location
+#' must specify the S3 bucket name, the zip file name (the "key"), and an
+#' IAM role ARN that allows Amazon GameLift to access the S3 storage
+#' location. The S3 bucket must be in the same Region as the script you're
+#' updating. By default, Amazon GameLift uploads the latest version of the
+#' zip file; if you have S3 object versioning turned on, you can use the
+#' `ObjectVersion` parameter to specify an earlier version. To call this
+#' operation with a storage location, you must have IAM PassRole
+#' permission. For more details on IAM roles and PassRole permissions, see
+#' [Set up a role for GameLift
+#' access](https://docs.aws.amazon.com/gamelift/latest/developerguide/setting-up-role.html).
 #' @param ZipFile A data object containing your Realtime scripts and dependencies as a zip
 #' file. The zip file can have one or multiple files. Maximum size of a zip
 #' file is 5 MB.
@@ -7902,7 +8040,7 @@ gamelift_update_script <- function(ScriptId, Name = NULL, Version = NULL, Storag
 #' **Learn more**
 #' 
 #' -   [Build a Rule
-#'     Set](https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html)
+#'     Set](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html)
 #' 
 #' **Related operations**
 #' 

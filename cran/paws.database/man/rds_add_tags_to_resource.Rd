@@ -20,7 +20,7 @@ RDS resources, or used in a Condition statement in an IAM policy for
 Amazon RDS.
 }
 \details{
-For an overview on tagging Amazon RDS resources, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html}{Tagging Amazon RDS Resources}.
+For an overview on tagging Amazon RDS resources, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html}{Tagging Amazon RDS Resources}.
 }
 \section{Request syntax}{
 \preformatted{svc$add_tags_to_resource(

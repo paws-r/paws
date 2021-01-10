@@ -2,6 +2,10 @@ context("neptune")
 
 svc <- paws::neptune()
 
+test_that("describe_db_cluster_endpoints", {
+  expect_error(svc$describe_db_cluster_endpoints(), NA)
+})
+
 test_that("describe_db_cluster_parameter_groups", {
   expect_error(svc$describe_db_cluster_parameter_groups(), NA)
 })

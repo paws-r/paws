@@ -2,34 +2,33 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_deregister_game_server}
 \alias{gamelift_deregister_game_server}
-\title{This action is part of Amazon GameLift FleetIQ with game server groups,
-which is in preview release and is subject to change}
+\title{This operation is used with the Amazon GameLift FleetIQ solution and
+game server groups}
 \usage{
 gamelift_deregister_game_server(GameServerGroupName, GameServerId)
 }
 \arguments{
-\item{GameServerGroupName}{[required] An identifier for the game server group where the game server to be
-de-registered is running. Use either the GameServerGroup name or ARN
-value.}
+\item{GameServerGroupName}{[required] A unique identifier for the game server group where the game server is
+running. Use either the GameServerGroup name or ARN value.}
 
-\item{GameServerId}{[required] The identifier for the game server to be de-registered.}
+\item{GameServerId}{[required] A custom string that uniquely identifies the game server to deregister.}
 }
 \description{
-\strong{This action is part of Amazon GameLift FleetIQ with game server
-groups, which is in preview release and is subject to change.}
+\strong{This operation is used with the Amazon GameLift FleetIQ solution and
+game server groups.}
 }
 \details{
-Removes the game server resource from the game server group. As a result
-of this action, the de-registered game server can no longer be claimed
-and will not returned in a list of active game servers.
+Removes the game server from a game server group. As a result of this
+operation, the deregistered game server can no longer be claimed and
+will not be returned in a list of active game servers.
 
-To de-register a game server, specify the game server group and game
-server ID. If successful, this action emits a CloudWatch event with
-termination time stamp and reason.
+To deregister a game server, specify the game server group and game
+server ID. If successful, this operation emits a CloudWatch event with
+termination timestamp and reason.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html}{GameLift FleetIQ Guide}
+\href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html}{GameLift FleetIQ Guide}
 
 \strong{Related operations}
 \itemize{

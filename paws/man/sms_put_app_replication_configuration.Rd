@@ -2,18 +2,21 @@
 % Please edit documentation in R/sms_operations.R
 \name{sms_put_app_replication_configuration}
 \alias{sms_put_app_replication_configuration}
-\title{Creates or updates a replication configuration for an application}
+\title{Creates or updates the replication configuration for the specified
+application}
 \usage{
 sms_put_app_replication_configuration(appId,
   serverGroupReplicationConfigurations)
 }
 \arguments{
-\item{appId}{ID of the application tassociated with the replication configuration.}
+\item{appId}{The ID of the application.}
 
-\item{serverGroupReplicationConfigurations}{Replication configurations for server groups in the application.}
+\item{serverGroupReplicationConfigurations}{Information about the replication configurations for server groups in
+the application.}
 }
 \description{
-Creates or updates a replication configuration for an application.
+Creates or updates the replication configuration for the specified
+application.
 }
 \section{Request syntax}{
 \preformatted{svc$put_app_replication_configuration(

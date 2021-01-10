@@ -35,6 +35,9 @@ Creates a proposal for a change to the network that other members of the
 network can vote on, for example, a proposal to add a new member to the
 network. Any member can create a proposal.
 }
+\details{
+Applies only to Hyperledger Fabric.
+}
 \section{Request syntax}{
 \preformatted{svc$create_proposal(
   ClientRequestToken = "string",

@@ -9,9 +9,9 @@ iam_untag_role(RoleName, TagKeys)
 \arguments{
 \item{RoleName}{[required] The name of the IAM role from which you want to remove tags.
 
-This parameter accepts (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that
-consist of upper and lowercase alphanumeric characters with no spaces.
-You can also include any of the following characters: \\_+=,.@-}
+This parameter accepts (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
+that consist of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{TagKeys}{[required] A list of key names as a simple array of strings. The tags with matching
 keys are removed from the specified role.}

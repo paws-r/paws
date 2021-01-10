@@ -9,8 +9,8 @@ transcribeservice_update_vocabulary_filter(VocabularyFilterName, Words,
 }
 \arguments{
 \item{VocabularyFilterName}{[required] The name of the vocabulary filter to update. If you try to update a
-vocabulary filter with the same name as a previous vocabulary filter you
-will receive a \code{ConflictException} error.}
+vocabulary filter with the same name as another vocabulary filter, you
+get a \code{ConflictException} error.}
 
 \item{Words}{The words to use in the vocabulary filter. Only use characters from the
 character set defined for custom vocabularies. For a list of character

@@ -12,7 +12,7 @@ cloudsearch_delete_suggester(DomainName, SuggesterName)
 \item{SuggesterName}{[required] Specifies the name of the suggester you want to delete.}
 }
 \description{
-Deletes a suggester. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Search Suggestions}
+Deletes a suggester. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Search Suggestions}
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{

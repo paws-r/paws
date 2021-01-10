@@ -2,8 +2,8 @@
 % Please edit documentation in R/ivs_operations.R
 \name{ivs_create_stream_key}
 \alias{ivs_create_stream_key}
-\title{Creates a stream key, used to initiate a stream, for a specified channel
-ARN}
+\title{Creates a stream key, used to initiate a stream, for the specified
+channel ARN}
 \usage{
 ivs_create_stream_key(channelArn, tags)
 }
@@ -13,8 +13,8 @@ ivs_create_stream_key(channelArn, tags)
 \item{tags}{See Channel$tags.}
 }
 \description{
-Creates a stream key, used to initiate a stream, for a specified channel
-ARN.
+Creates a stream key, used to initiate a stream, for the specified
+channel ARN.
 }
 \details{
 Note that CreateChannel creates a stream key. If you subsequently use

@@ -9,7 +9,7 @@ iam_attach_group_policy(GroupName, PolicyArn)
 \arguments{
 \item{GroupName}{[required] The name (friendly name, not ARN) of the group to attach the policy to.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
@@ -25,7 +25,7 @@ Attaches the specified managed policy to the specified IAM group.
 You use this API to attach a managed policy to a group. To embed an
 inline policy in a group, use PutGroupPolicy.
 
-For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

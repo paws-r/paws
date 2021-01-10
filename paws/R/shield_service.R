@@ -52,13 +52,17 @@ NULL
 #'  \link[=shield_associate_health_check]{associate_health_check} \tab Adds health-based detection to the Shield Advanced protection for a resource\cr
 #'  \link[=shield_associate_proactive_engagement_details]{associate_proactive_engagement_details} \tab Initializes proactive engagement and sets the list of contacts for the DDoS Response Team (DRT) to use\cr
 #'  \link[=shield_create_protection]{create_protection} \tab Enables AWS Shield Advanced for a specific AWS resource\cr
+#'  \link[=shield_create_protection_group]{create_protection_group} \tab Creates a grouping of protected resources so they can be handled as a collective\cr
 #'  \link[=shield_create_subscription]{create_subscription} \tab Activates AWS Shield Advanced for an account\cr
 #'  \link[=shield_delete_protection]{delete_protection} \tab Deletes an AWS Shield Advanced Protection\cr
+#'  \link[=shield_delete_protection_group]{delete_protection_group} \tab Removes the specified protection group\cr
 #'  \link[=shield_delete_subscription]{delete_subscription} \tab Removes AWS Shield Advanced from an account\cr
 #'  \link[=shield_describe_attack]{describe_attack} \tab Describes the details of a DDoS attack\cr
+#'  \link[=shield_describe_attack_statistics]{describe_attack_statistics} \tab Provides information about the number and type of attacks AWS Shield has detected in the last year for all resources that belong to your account, regardless of whether you've defined Shield protections for them\cr
 #'  \link[=shield_describe_drt_access]{describe_drt_access} \tab Returns the current role and list of Amazon S3 log buckets used by the DDoS Response Team (DRT) to access your AWS account while assisting with attack mitigation\cr
 #'  \link[=shield_describe_emergency_contact_settings]{describe_emergency_contact_settings} \tab A list of email addresses and phone numbers that the DDoS Response Team (DRT) can use to contact you if you have proactive engagement enabled, for escalations to the DRT and to initiate proactive customer support\cr
 #'  \link[=shield_describe_protection]{describe_protection} \tab Lists the details of a Protection object\cr
+#'  \link[=shield_describe_protection_group]{describe_protection_group} \tab Returns the specification for the specified protection group\cr
 #'  \link[=shield_describe_subscription]{describe_subscription} \tab Provides details about the AWS Shield Advanced subscription for an account\cr
 #'  \link[=shield_disable_proactive_engagement]{disable_proactive_engagement} \tab Removes authorization from the DDoS Response Team (DRT) to notify contacts about escalations to the DRT and to initiate proactive customer support\cr
 #'  \link[=shield_disassociate_drt_log_bucket]{disassociate_drt_log_bucket} \tab Removes the DDoS Response Team's (DRT) access to the specified Amazon S3 bucket containing your AWS WAF logs\cr
@@ -67,8 +71,11 @@ NULL
 #'  \link[=shield_enable_proactive_engagement]{enable_proactive_engagement} \tab Authorizes the DDoS Response Team (DRT) to use email and phone to notify contacts about escalations to the DRT and to initiate proactive customer support\cr
 #'  \link[=shield_get_subscription_state]{get_subscription_state} \tab Returns the SubscriptionState, either Active or Inactive\cr
 #'  \link[=shield_list_attacks]{list_attacks} \tab Returns all ongoing DDoS attacks or all DDoS attacks during a specified time period\cr
+#'  \link[=shield_list_protection_groups]{list_protection_groups} \tab Retrieves the ProtectionGroup objects for the account\cr
 #'  \link[=shield_list_protections]{list_protections} \tab Lists all Protection objects for the account\cr
+#'  \link[=shield_list_resources_in_protection_group]{list_resources_in_protection_group} \tab Retrieves the resources that are included in the protection group\cr
 #'  \link[=shield_update_emergency_contact_settings]{update_emergency_contact_settings} \tab Updates the details of the list of email addresses and phone numbers that the DDoS Response Team (DRT) can use to contact you if you have proactive engagement enabled, for escalations to the DRT and to initiate proactive customer support\cr
+#'  \link[=shield_update_protection_group]{update_protection_group} \tab Updates an existing protection group\cr
 #'  \link[=shield_update_subscription]{update_subscription} \tab Updates the details of an existing subscription
 #' }
 #'

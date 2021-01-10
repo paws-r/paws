@@ -19,9 +19,17 @@ servicecatalog_update_provisioned_product_properties(AcceptLanguage,
 
 \item{ProvisionedProductProperties}{[required] A map that contains the provisioned product properties to be updated.
 
+The \code{LAUNCH_ROLE} key accepts role ARNs. This key allows an
+administrator to call \code{UpdateProvisionedProductProperties} to update the
+launch role that is associated with a provisioned product. This role is
+used when an end user calls a provisioning operation such as
+\code{UpdateProvisionedProduct}, \code{TerminateProvisionedProduct}, or
+\code{ExecuteProvisionedProductServiceAction}. Only a role ARN is valid. A
+user ARN is invalid.
+
 The \code{OWNER} key accepts user ARNs and role ARNs. The owner is the user
-that is allowed to see, update, terminate, and execute service actions
-in the provisioned product.
+that has permission to see, update, terminate, and execute service
+actions in the provisioned product.
 
 The administrator can change the owner of a provisioned product to
 another IAM user within the same account. Both end user owners and

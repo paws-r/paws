@@ -15,7 +15,8 @@ redshift_resize_cluster(ClusterIdentifier, ClusterType, NodeType,
 \item{NodeType}{The new node type for the nodes you are adding. If not specified, the
 cluster's current node type is used.}
 
-\item{NumberOfNodes}{The new number of nodes for the cluster.}
+\item{NumberOfNodes}{The new number of nodes for the cluster. If not specified, the cluster's
+current number of nodes is used.}
 
 \item{Classic}{A boolean value indicating whether the resize operation is using the
 classic resize process. If you don't provide this parameter or set the
@@ -33,10 +34,13 @@ Elastic resize operations have the following restrictions:
 \itemize{
 \item You can only resize clusters of the following types:
 \itemize{
+\item dc1.large (if your cluster is in a VPC)
+\item dc1.8xlarge (if your cluster is in a VPC)
 \item dc2.large
 \item dc2.8xlarge
 \item ds2.xlarge
 \item ds2.8xlarge
+\item ra3.xlplus
 \item ra3.4xlarge
 \item ra3.16xlarge
 }

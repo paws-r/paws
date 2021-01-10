@@ -8,7 +8,7 @@ sagemaker_list_monitoring_executions(MonitoringScheduleName,
   EndpointName, SortBy, SortOrder, NextToken, MaxResults,
   ScheduledTimeBefore, ScheduledTimeAfter, CreationTimeBefore,
   CreationTimeAfter, LastModifiedTimeBefore, LastModifiedTimeAfter,
-  StatusEquals)
+  StatusEquals, MonitoringJobDefinitionName, MonitoringTypeEquals)
 }
 \arguments{
 \item{MonitoringScheduleName}{Name of a specific schedule to fetch jobs for.}
@@ -40,6 +40,12 @@ is 10.}
 \item{LastModifiedTimeAfter}{A filter that returns only jobs modified before a specified time.}
 
 \item{StatusEquals}{A filter that retrieves only jobs with a specific status.}
+
+\item{MonitoringJobDefinitionName}{Gets a list of the monitoring job runs of the specified monitoring job
+definitions.}
+
+\item{MonitoringTypeEquals}{A filter that returns only the monitoring job runs of the specified
+monitoring type.}
 }
 \description{
 Returns list of all monitoring job executions.
@@ -70,7 +76,9 @@ Returns list of all monitoring job executions.
   LastModifiedTimeAfter = as.POSIXct(
     "2015-01-01"
   ),
-  StatusEquals = "Pending"|"Completed"|"CompletedWithViolations"|"InProgress"|"Failed"|"Stopping"|"Stopped"
+  StatusEquals = "Pending"|"Completed"|"CompletedWithViolations"|"InProgress"|"Failed"|"Stopping"|"Stopped",
+  MonitoringJobDefinitionName = "string",
+  MonitoringTypeEquals = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
 )
 }
 }

@@ -19,7 +19,7 @@ in the \emph{AWS IoT SiteWise User Guide}.}
 \description{
 Creates a gateway, which is a virtual or edge device that delivers
 industrial data streams from local servers to AWS IoT SiteWise. For more
-information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/gateway-connector.html}{Ingesting data using a gateway}
+information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/gateways.html}{Ingesting data using a gateway}
 in the \emph{AWS IoT SiteWise User Guide}.
 }
 \section{Request syntax}{

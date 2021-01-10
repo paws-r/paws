@@ -17,13 +17,6 @@ elbv2_remove_listener_certificates(ListenerArn, Certificates)
 Removes the specified certificate from the certificate list for the
 specified HTTPS or TLS listener.
 }
-\details{
-You can't remove the default certificate for a listener. To replace the
-default certificate, call ModifyListener.
-
-To list the certificates for your listener, use
-DescribeListenerCertificates.
-}
 \section{Request syntax}{
 \preformatted{svc$remove_listener_certificates(
   ListenerArn = "string",

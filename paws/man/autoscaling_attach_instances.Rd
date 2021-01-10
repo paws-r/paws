@@ -25,7 +25,7 @@ the instances are also registered with the load balancer. If there are
 target groups attached to your Auto Scaling group, the instances are
 also registered with the target groups.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-instance-asg.html}{Attach EC2 Instances to Your Auto Scaling Group}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-instance-asg.html}{Attach EC2 instances to your Auto Scaling group}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

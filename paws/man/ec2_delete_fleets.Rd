@@ -14,19 +14,44 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{FleetIds}{[required] The IDs of the EC2 Fleets.}
 
-\item{TerminateInstances}{[required] Indicates whether to terminate instances for an EC2 Fleet if it is
-deleted successfully.}
+\item{TerminateInstances}{[required] Indicates whether to terminate the instances when the EC2 Fleet is
+deleted. The default is to terminate the instances.
+
+To let the instances continue to run after the EC2 Fleet is deleted,
+specify \code{NoTerminateInstances}. Supported only for fleets of type
+\code{maintain} and \code{request}.
+
+For \code{instant} fleets, you cannot specify \code{NoTerminateInstances}. A
+deleted \code{instant} fleet with running instances is not supported.}
 }
 \description{
 Deletes the specified EC2 Fleet.
 }
 \details{
-After you delete an EC2 Fleet, it launches no new instances. You must
-specify whether an EC2 Fleet should also terminate its instances. If you
-terminate the instances, the EC2 Fleet enters the \code{deleted_terminating}
-state. Otherwise, the EC2 Fleet enters the \code{deleted_running} state, and
-the instances continue to run until they are interrupted or you
-terminate them manually.
+After you delete an EC2 Fleet, it launches no new instances.
+
+You must specify whether a deleted EC2 Fleet should also terminate its
+instances. If you choose to terminate the instances, the EC2 Fleet
+enters the \code{deleted_terminating} state. Otherwise, the EC2 Fleet enters
+the \code{deleted_running} state, and the instances continue to run until
+they are interrupted or you terminate them manually.
+
+For \code{instant} fleets, EC2 Fleet must terminate the instances when the
+fleet is deleted. A deleted \code{instant} fleet with running instances is
+not supported.
+
+\strong{Restrictions}
+\itemize{
+\item You can delete up to 25 \code{instant} fleets in a single request. If you
+exceed this number, no \code{instant} fleets are deleted and an error is
+returned. There is no restriction on the number of fleets of type
+\code{maintain} or \code{request} that can be deleted in a single request.
+\item Up to 1000 instances can be terminated in a single request to delete
+\code{instant} fleets.
+}
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#delete-fleet}{Deleting an EC2 Fleet}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_fleets(

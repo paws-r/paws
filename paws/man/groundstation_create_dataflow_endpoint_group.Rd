@@ -33,6 +33,7 @@ When a contact uses multiple \code{DataflowEndpointConfig} objects, each
           name = "string",
           port = 123
         ),
+        mtu = 123,
         name = "string",
         status = "created"|"creating"|"deleted"|"deleting"|"failed"
       ),

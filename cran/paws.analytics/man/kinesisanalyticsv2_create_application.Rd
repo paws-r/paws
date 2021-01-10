@@ -2,7 +2,7 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_create_application}
 \alias{kinesisanalyticsv2_create_application}
-\title{Creates an Amazon Kinesis Data Analytics application}
+\title{Creates a Kinesis Data Analytics application}
 \usage{
 kinesisanalyticsv2_create_application(ApplicationName,
   ApplicationDescription, RuntimeEnvironment, ServiceExecutionRole,
@@ -13,7 +13,8 @@ kinesisanalyticsv2_create_application(ApplicationName,
 
 \item{ApplicationDescription}{A summary description of the application.}
 
-\item{RuntimeEnvironment}{[required] The runtime environment for the application (\code{SQL-1.0} or \verb{FLINK-1_6}).}
+\item{RuntimeEnvironment}{[required] The runtime environment for the application (\code{SQL-1.0}, \verb{FLINK-1_6}, or
+\verb{FLINK-1_8}).}
 
 \item{ServiceExecutionRole}{[required] The IAM role used by the application to access Kinesis data streams,
 Kinesis Data Firehose delivery streams, Amazon S3 objects, and other
@@ -30,14 +31,14 @@ number of application tags includes system tags. The maximum number of
 user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html}{Using Tagging}.}
 }
 \description{
-Creates an Amazon Kinesis Data Analytics application. For information
-about creating a Kinesis Data Analytics application, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html}{Creating an Application}.
+Creates a Kinesis Data Analytics application. For information about
+creating a Kinesis Data Analytics application, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html}{Creating an Application}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_application(
   ApplicationName = "string",
   ApplicationDescription = "string",
-  RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8",
+  RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"FLINK-1_11",
   ServiceExecutionRole = "string",
   ApplicationConfiguration = list(
     SqlApplicationConfiguration = list(

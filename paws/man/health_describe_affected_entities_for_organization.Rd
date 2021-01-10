@@ -32,13 +32,17 @@ resources, groups of customer resources, or any other construct,
 depending on the AWS service.
 }
 \details{
-At least one event ARN and account ID are required. Results are sorted
-by the \code{lastUpdatedTime} of the entity, starting with the most recent.
+At least one event Amazon Resource Name (ARN) and account ID are
+required. Results are sorted by the \code{lastUpdatedTime} of the entity,
+starting with the most recent.
 
 Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
-EnableHealthServiceAccessForOrganization operation from your
-organization's master account.
+\href{https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html}{EnableHealthServiceAccessForOrganization}
+operation from your organization's master account.
+
+This API operation uses pagination. Specify the \code{nextToken} parameter in
+the next request to return more results.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_affected_entities_for_organization(

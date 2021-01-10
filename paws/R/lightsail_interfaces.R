@@ -15,6 +15,18 @@ NULL
   return(populate(args, shape))
 }
 
+.lightsail$attach_certificate_to_distribution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(distributionName = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$attach_certificate_to_distribution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(operation = structure(list(id = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), isTerminal = structure(logical(0), tags = list(type = "boolean")), operationDetails = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangedAt = structure(logical(0), tags = list(type = "timestamp")), errorCode = structure(logical(0), tags = list(type = "string")), errorDetails = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .lightsail$attach_disk_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(diskName = structure(logical(0), tags = list(type = "string")), instanceName = structure(logical(0), tags = list(type = "string")), diskPath = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -87,6 +99,18 @@ NULL
   return(populate(args, shape))
 }
 
+.lightsail$create_certificate_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(certificateName = structure(logical(0), tags = list(type = "string")), domainName = structure(logical(0), tags = list(type = "string")), subjectAlternativeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$create_certificate_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(certificate = structure(list(certificateArn = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), domainName = structure(logical(0), tags = list(type = "string")), certificateDetail = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), domainName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), serialNumber = structure(logical(0), tags = list(type = "string")), subjectAlternativeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), domainValidationRecords = structure(list(structure(list(domainName = structure(logical(0), tags = list(type = "string")), resourceRecord = structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), requestFailureReason = structure(logical(0), tags = list(type = "string")), inUseResourceCount = structure(logical(0), tags = list(type = "integer")), keyAlgorithm = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), issuedAt = structure(logical(0), tags = list(type = "timestamp")), issuerCA = structure(logical(0), tags = list(type = "string")), notBefore = structure(logical(0), tags = list(type = "timestamp")), notAfter = structure(logical(0), tags = list(type = "timestamp")), eligibleToRenew = structure(logical(0), tags = list(type = "string")), renewalSummary = structure(list(domainValidationRecords = structure(list(structure(list(domainName = structure(logical(0), tags = list(type = "string")), resourceRecord = structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), renewalStatus = structure(logical(0), tags = list(type = "string")), renewalStatusReason = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), revokedAt = structure(logical(0), tags = list(type = "timestamp")), revocationReason = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), supportCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), operations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), isTerminal = structure(logical(0), tags = list(type = "boolean")), operationDetails = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangedAt = structure(logical(0), tags = list(type = "timestamp")), errorCode = structure(logical(0), tags = list(type = "string")), errorDetails = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .lightsail$create_cloud_formation_stack_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(instances = structure(list(structure(list(sourceName = structure(logical(0), tags = list(type = "string")), instanceType = structure(logical(0), tags = list(type = "string")), portInfoSource = structure(logical(0), tags = list(type = "string")), userData = structure(logical(0), tags = list(type = "string")), availabilityZone = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -108,6 +132,42 @@ NULL
 .lightsail$create_contact_method_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(operations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), isTerminal = structure(logical(0), tags = list(type = "boolean")), operationDetails = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangedAt = structure(logical(0), tags = list(type = "timestamp")), errorCode = structure(logical(0), tags = list(type = "string")), errorDetails = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$create_container_service_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceName = structure(logical(0), tags = list(type = "string")), power = structure(logical(0), tags = list(type = "string")), scale = structure(logical(0), tags = list(type = "integer")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), publicDomainNames = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), deployment = structure(list(containers = structure(list(structure(list(image = structure(logical(0), tags = list(type = "string")), command = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), environment = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), publicEndpoint = structure(list(containerName = structure(logical(0), tags = list(type = "string")), containerPort = structure(logical(0), tags = list(type = "integer")), healthCheck = structure(list(healthyThreshold = structure(logical(0), tags = list(type = "integer")), unhealthyThreshold = structure(logical(0), tags = list(type = "integer")), timeoutSeconds = structure(logical(0), tags = list(type = "integer")), intervalSeconds = structure(logical(0), tags = list(type = "integer")), path = structure(logical(0), tags = list(type = "string")), successCodes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$create_container_service_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(containerService = structure(list(containerServiceName = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), power = structure(logical(0), tags = list(type = "string")), powerId = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), scale = structure(logical(0), tags = list(type = "integer")), currentDeployment = structure(list(version = structure(logical(0), tags = list(type = "integer")), state = structure(logical(0), tags = list(type = "string")), containers = structure(list(structure(list(image = structure(logical(0), tags = list(type = "string")), command = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), environment = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), publicEndpoint = structure(list(containerName = structure(logical(0), tags = list(type = "string")), containerPort = structure(logical(0), tags = list(type = "integer")), healthCheck = structure(list(healthyThreshold = structure(logical(0), tags = list(type = "integer")), unhealthyThreshold = structure(logical(0), tags = list(type = "integer")), timeoutSeconds = structure(logical(0), tags = list(type = "integer")), intervalSeconds = structure(logical(0), tags = list(type = "integer")), path = structure(logical(0), tags = list(type = "string")), successCodes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), nextDeployment = structure(list(version = structure(logical(0), tags = list(type = "integer")), state = structure(logical(0), tags = list(type = "string")), containers = structure(list(structure(list(image = structure(logical(0), tags = list(type = "string")), command = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), environment = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), publicEndpoint = structure(list(containerName = structure(logical(0), tags = list(type = "string")), containerPort = structure(logical(0), tags = list(type = "integer")), healthCheck = structure(list(healthyThreshold = structure(logical(0), tags = list(type = "integer")), unhealthyThreshold = structure(logical(0), tags = list(type = "integer")), timeoutSeconds = structure(logical(0), tags = list(type = "integer")), intervalSeconds = structure(logical(0), tags = list(type = "integer")), path = structure(logical(0), tags = list(type = "string")), successCodes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), isDisabled = structure(logical(0), tags = list(type = "boolean")), principalArn = structure(logical(0), tags = list(type = "string")), privateDomainName = structure(logical(0), tags = list(type = "string")), publicDomainNames = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$create_container_service_deployment_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceName = structure(logical(0), tags = list(type = "string")), containers = structure(list(structure(list(image = structure(logical(0), tags = list(type = "string")), command = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), environment = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), publicEndpoint = structure(list(containerName = structure(logical(0), tags = list(type = "string")), containerPort = structure(logical(0), tags = list(type = "integer")), healthCheck = structure(list(healthyThreshold = structure(logical(0), tags = list(type = "integer")), unhealthyThreshold = structure(logical(0), tags = list(type = "integer")), timeoutSeconds = structure(logical(0), tags = list(type = "integer")), intervalSeconds = structure(logical(0), tags = list(type = "integer")), path = structure(logical(0), tags = list(type = "string")), successCodes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$create_container_service_deployment_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(containerService = structure(list(containerServiceName = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), power = structure(logical(0), tags = list(type = "string")), powerId = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), scale = structure(logical(0), tags = list(type = "integer")), currentDeployment = structure(list(version = structure(logical(0), tags = list(type = "integer")), state = structure(logical(0), tags = list(type = "string")), containers = structure(list(structure(list(image = structure(logical(0), tags = list(type = "string")), command = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), environment = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), publicEndpoint = structure(list(containerName = structure(logical(0), tags = list(type = "string")), containerPort = structure(logical(0), tags = list(type = "integer")), healthCheck = structure(list(healthyThreshold = structure(logical(0), tags = list(type = "integer")), unhealthyThreshold = structure(logical(0), tags = list(type = "integer")), timeoutSeconds = structure(logical(0), tags = list(type = "integer")), intervalSeconds = structure(logical(0), tags = list(type = "integer")), path = structure(logical(0), tags = list(type = "string")), successCodes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), nextDeployment = structure(list(version = structure(logical(0), tags = list(type = "integer")), state = structure(logical(0), tags = list(type = "string")), containers = structure(list(structure(list(image = structure(logical(0), tags = list(type = "string")), command = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), environment = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), publicEndpoint = structure(list(containerName = structure(logical(0), tags = list(type = "string")), containerPort = structure(logical(0), tags = list(type = "integer")), healthCheck = structure(list(healthyThreshold = structure(logical(0), tags = list(type = "integer")), unhealthyThreshold = structure(logical(0), tags = list(type = "integer")), timeoutSeconds = structure(logical(0), tags = list(type = "integer")), intervalSeconds = structure(logical(0), tags = list(type = "integer")), path = structure(logical(0), tags = list(type = "string")), successCodes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), isDisabled = structure(logical(0), tags = list(type = "boolean")), principalArn = structure(logical(0), tags = list(type = "string")), privateDomainName = structure(logical(0), tags = list(type = "string")), publicDomainNames = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$create_container_service_registry_login_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$create_container_service_registry_login_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(registryLogin = structure(list(username = structure(logical(0), tags = list(type = "string")), password = structure(logical(0), tags = list(type = "string")), expiresAt = structure(logical(0), tags = list(type = "timestamp")), registry = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -144,6 +204,18 @@ NULL
 .lightsail$create_disk_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(operations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), isTerminal = structure(logical(0), tags = list(type = "boolean")), operationDetails = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangedAt = structure(logical(0), tags = list(type = "timestamp")), errorCode = structure(logical(0), tags = list(type = "string")), errorDetails = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$create_distribution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(distributionName = structure(logical(0), tags = list(type = "string")), origin = structure(list(name = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string")), protocolPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), defaultCacheBehavior = structure(list(behavior = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), cacheBehaviorSettings = structure(list(defaultTTL = structure(logical(0), tags = list(type = "long")), minimumTTL = structure(logical(0), tags = list(type = "long")), maximumTTL = structure(logical(0), tags = list(type = "long")), allowedHTTPMethods = structure(logical(0), tags = list(type = "string")), cachedHTTPMethods = structure(logical(0), tags = list(type = "string")), forwardedCookies = structure(list(option = structure(logical(0), tags = list(type = "string")), cookiesAllowList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), forwardedHeaders = structure(list(option = structure(logical(0), tags = list(type = "string")), headersAllowList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), forwardedQueryStrings = structure(list(option = structure(logical(0), tags = list(type = "boolean")), queryStringsAllowList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), cacheBehaviors = structure(list(structure(list(path = structure(logical(0), tags = list(type = "string")), behavior = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), bundleId = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$create_distribution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(distribution = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), supportCode = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceType = structure(logical(0), tags = list(type = "string")), alternativeDomainNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), isEnabled = structure(logical(0), tags = list(type = "boolean")), domainName = structure(logical(0), tags = list(type = "string")), bundleId = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), origin = structure(list(name = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string")), protocolPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), originPublicDNS = structure(logical(0), tags = list(type = "string")), defaultCacheBehavior = structure(list(behavior = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), cacheBehaviorSettings = structure(list(defaultTTL = structure(logical(0), tags = list(type = "long")), minimumTTL = structure(logical(0), tags = list(type = "long")), maximumTTL = structure(logical(0), tags = list(type = "long")), allowedHTTPMethods = structure(logical(0), tags = list(type = "string")), cachedHTTPMethods = structure(logical(0), tags = list(type = "string")), forwardedCookies = structure(list(option = structure(logical(0), tags = list(type = "string")), cookiesAllowList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), forwardedHeaders = structure(list(option = structure(logical(0), tags = list(type = "string")), headersAllowList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), forwardedQueryStrings = structure(list(option = structure(logical(0), tags = list(type = "boolean")), queryStringsAllowList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), cacheBehaviors = structure(list(structure(list(path = structure(logical(0), tags = list(type = "string")), behavior = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ableToUpdateBundle = structure(logical(0), tags = list(type = "boolean")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), operation = structure(list(id = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), isTerminal = structure(logical(0), tags = list(type = "boolean")), operationDetails = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangedAt = structure(logical(0), tags = list(type = "timestamp")), errorCode = structure(logical(0), tags = list(type = "string")), errorDetails = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -303,6 +375,18 @@ NULL
   return(populate(args, shape))
 }
 
+.lightsail$delete_certificate_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(certificateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$delete_certificate_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(operations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), isTerminal = structure(logical(0), tags = list(type = "boolean")), operationDetails = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangedAt = structure(logical(0), tags = list(type = "timestamp")), errorCode = structure(logical(0), tags = list(type = "string")), errorDetails = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .lightsail$delete_contact_method_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(protocol = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -312,6 +396,30 @@ NULL
 .lightsail$delete_contact_method_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(operations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), isTerminal = structure(logical(0), tags = list(type = "boolean")), operationDetails = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangedAt = structure(logical(0), tags = list(type = "timestamp")), errorCode = structure(logical(0), tags = list(type = "string")), errorDetails = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$delete_container_image_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceName = structure(logical(0), tags = list(type = "string")), image = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$delete_container_image_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$delete_container_service_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$delete_container_service_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -336,6 +444,18 @@ NULL
 .lightsail$delete_disk_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(operations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), isTerminal = structure(logical(0), tags = list(type = "boolean")), operationDetails = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangedAt = structure(logical(0), tags = list(type = "timestamp")), errorCode = structure(logical(0), tags = list(type = "string")), errorDetails = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$delete_distribution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(distributionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$delete_distribution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(operation = structure(list(id = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), isTerminal = structure(logical(0), tags = list(type = "boolean")), operationDetails = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangedAt = structure(logical(0), tags = list(type = "timestamp")), errorCode = structure(logical(0), tags = list(type = "string")), errorDetails = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -456,6 +576,18 @@ NULL
 .lightsail$delete_relational_database_snapshot_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(operations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), isTerminal = structure(logical(0), tags = list(type = "boolean")), operationDetails = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangedAt = structure(logical(0), tags = list(type = "timestamp")), errorCode = structure(logical(0), tags = list(type = "string")), errorDetails = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$detach_certificate_from_distribution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(distributionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$detach_certificate_from_distribution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(operation = structure(list(id = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), isTerminal = structure(logical(0), tags = list(type = "boolean")), operationDetails = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangedAt = structure(logical(0), tags = list(type = "timestamp")), errorCode = structure(logical(0), tags = list(type = "string")), errorDetails = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -603,6 +735,18 @@ NULL
   return(populate(args, shape))
 }
 
+.lightsail$get_certificates_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(certificateStatuses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), includeCertificateDetails = structure(logical(0), tags = list(type = "boolean")), certificateName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_certificates_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(certificates = structure(list(structure(list(certificateArn = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), domainName = structure(logical(0), tags = list(type = "string")), certificateDetail = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), domainName = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), serialNumber = structure(logical(0), tags = list(type = "string")), subjectAlternativeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), domainValidationRecords = structure(list(structure(list(domainName = structure(logical(0), tags = list(type = "string")), resourceRecord = structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), requestFailureReason = structure(logical(0), tags = list(type = "string")), inUseResourceCount = structure(logical(0), tags = list(type = "integer")), keyAlgorithm = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), issuedAt = structure(logical(0), tags = list(type = "timestamp")), issuerCA = structure(logical(0), tags = list(type = "string")), notBefore = structure(logical(0), tags = list(type = "timestamp")), notAfter = structure(logical(0), tags = list(type = "timestamp")), eligibleToRenew = structure(logical(0), tags = list(type = "string")), renewalSummary = structure(list(domainValidationRecords = structure(list(structure(list(domainName = structure(logical(0), tags = list(type = "string")), resourceRecord = structure(list(name = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), renewalStatus = structure(logical(0), tags = list(type = "string")), renewalStatusReason = structure(logical(0), tags = list(type = "string")), updatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), revokedAt = structure(logical(0), tags = list(type = "timestamp")), revocationReason = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), supportCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .lightsail$get_cloud_formation_stack_records_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(pageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -624,6 +768,90 @@ NULL
 .lightsail$get_contact_methods_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(contactMethods = structure(list(structure(list(contactEndpoint = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), protocol = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceType = structure(logical(0), tags = list(type = "string")), supportCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_container_api_metadata_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_container_api_metadata_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(metadata = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_container_images_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_container_images_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(containerImages = structure(list(structure(list(image = structure(logical(0), tags = list(type = "string")), digest = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_container_log_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceName = structure(logical(0), tags = list(type = "string")), containerName = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), filterPattern = structure(logical(0), tags = list(type = "string")), pageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_container_log_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(logEvents = structure(list(structure(list(createdAt = structure(logical(0), tags = list(type = "timestamp")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_container_service_deployments_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_container_service_deployments_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(deployments = structure(list(structure(list(version = structure(logical(0), tags = list(type = "integer")), state = structure(logical(0), tags = list(type = "string")), containers = structure(list(structure(list(image = structure(logical(0), tags = list(type = "string")), command = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), environment = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), publicEndpoint = structure(list(containerName = structure(logical(0), tags = list(type = "string")), containerPort = structure(logical(0), tags = list(type = "integer")), healthCheck = structure(list(healthyThreshold = structure(logical(0), tags = list(type = "integer")), unhealthyThreshold = structure(logical(0), tags = list(type = "integer")), timeoutSeconds = structure(logical(0), tags = list(type = "integer")), intervalSeconds = structure(logical(0), tags = list(type = "integer")), path = structure(logical(0), tags = list(type = "string")), successCodes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_container_service_metric_data_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceName = structure(logical(0), tags = list(type = "string")), metricName = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), period = structure(logical(0), tags = list(type = "integer")), statistics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_container_service_metric_data_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(metricName = structure(logical(0), tags = list(type = "string")), metricData = structure(list(structure(list(average = structure(logical(0), tags = list(type = "double")), maximum = structure(logical(0), tags = list(type = "double")), minimum = structure(logical(0), tags = list(type = "double")), sampleCount = structure(logical(0), tags = list(type = "double")), sum = structure(logical(0), tags = list(type = "double")), timestamp = structure(logical(0), tags = list(type = "timestamp")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_container_service_powers_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_container_service_powers_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(powers = structure(list(structure(list(powerId = structure(logical(0), tags = list(type = "string")), price = structure(logical(0), tags = list(type = "float")), cpuCount = structure(logical(0), tags = list(type = "float")), ramSizeInGb = structure(logical(0), tags = list(type = "float")), name = structure(logical(0), tags = list(type = "string")), isActive = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_container_services_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_container_services_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(containerServices = structure(list(structure(list(containerServiceName = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), power = structure(logical(0), tags = list(type = "string")), powerId = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), scale = structure(logical(0), tags = list(type = "integer")), currentDeployment = structure(list(version = structure(logical(0), tags = list(type = "integer")), state = structure(logical(0), tags = list(type = "string")), containers = structure(list(structure(list(image = structure(logical(0), tags = list(type = "string")), command = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), environment = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), publicEndpoint = structure(list(containerName = structure(logical(0), tags = list(type = "string")), containerPort = structure(logical(0), tags = list(type = "integer")), healthCheck = structure(list(healthyThreshold = structure(logical(0), tags = list(type = "integer")), unhealthyThreshold = structure(logical(0), tags = list(type = "integer")), timeoutSeconds = structure(logical(0), tags = list(type = "integer")), intervalSeconds = structure(logical(0), tags = list(type = "integer")), path = structure(logical(0), tags = list(type = "string")), successCodes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), nextDeployment = structure(list(version = structure(logical(0), tags = list(type = "integer")), state = structure(logical(0), tags = list(type = "string")), containers = structure(list(structure(list(image = structure(logical(0), tags = list(type = "string")), command = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), environment = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), publicEndpoint = structure(list(containerName = structure(logical(0), tags = list(type = "string")), containerPort = structure(logical(0), tags = list(type = "integer")), healthCheck = structure(list(healthyThreshold = structure(logical(0), tags = list(type = "integer")), unhealthyThreshold = structure(logical(0), tags = list(type = "integer")), timeoutSeconds = structure(logical(0), tags = list(type = "integer")), intervalSeconds = structure(logical(0), tags = list(type = "integer")), path = structure(logical(0), tags = list(type = "string")), successCodes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), isDisabled = structure(logical(0), tags = list(type = "boolean")), principalArn = structure(logical(0), tags = list(type = "string")), privateDomainName = structure(logical(0), tags = list(type = "string")), publicDomainNames = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -672,6 +900,54 @@ NULL
 .lightsail$get_disks_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(disks = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), supportCode = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), addOns = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), snapshotTimeOfDay = structure(logical(0), tags = list(type = "string")), nextSnapshotTimeOfDay = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), sizeInGb = structure(logical(0), tags = list(type = "integer")), isSystemDisk = structure(logical(0), tags = list(type = "boolean")), iops = structure(logical(0), tags = list(type = "integer")), path = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), attachedTo = structure(logical(0), tags = list(type = "string")), isAttached = structure(logical(0), tags = list(type = "boolean")), attachmentState = structure(logical(0), tags = list(deprecated = TRUE, type = "string")), gbInUse = structure(logical(0), tags = list(deprecated = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), nextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_distribution_bundles_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_distribution_bundles_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(bundles = structure(list(structure(list(bundleId = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), price = structure(logical(0), tags = list(type = "float")), transferPerMonthInGb = structure(logical(0), tags = list(type = "integer")), isActive = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_distribution_latest_cache_reset_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(distributionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_distribution_latest_cache_reset_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(status = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_distribution_metric_data_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(distributionName = structure(logical(0), tags = list(type = "string")), metricName = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "timestamp")), endTime = structure(logical(0), tags = list(type = "timestamp")), period = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string")), statistics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_distribution_metric_data_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(metricName = structure(logical(0), tags = list(type = "string")), metricData = structure(list(structure(list(average = structure(logical(0), tags = list(type = "double")), maximum = structure(logical(0), tags = list(type = "double")), minimum = structure(logical(0), tags = list(type = "double")), sampleCount = structure(logical(0), tags = list(type = "double")), sum = structure(logical(0), tags = list(type = "double")), timestamp = structure(logical(0), tags = list(type = "timestamp")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_distributions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(distributionName = structure(logical(0), tags = list(type = "string")), pageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$get_distributions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(distributions = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), supportCode = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceType = structure(logical(0), tags = list(type = "string")), alternativeDomainNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), isEnabled = structure(logical(0), tags = list(type = "boolean")), domainName = structure(logical(0), tags = list(type = "string")), bundleId = structure(logical(0), tags = list(type = "string")), certificateName = structure(logical(0), tags = list(type = "string")), origin = structure(list(name = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string")), protocolPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), originPublicDNS = structure(logical(0), tags = list(type = "string")), defaultCacheBehavior = structure(list(behavior = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), cacheBehaviorSettings = structure(list(defaultTTL = structure(logical(0), tags = list(type = "long")), minimumTTL = structure(logical(0), tags = list(type = "long")), maximumTTL = structure(logical(0), tags = list(type = "long")), allowedHTTPMethods = structure(logical(0), tags = list(type = "string")), cachedHTTPMethods = structure(logical(0), tags = list(type = "string")), forwardedCookies = structure(list(option = structure(logical(0), tags = list(type = "string")), cookiesAllowList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), forwardedHeaders = structure(list(option = structure(logical(0), tags = list(type = "string")), headersAllowList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), forwardedQueryStrings = structure(list(option = structure(logical(0), tags = list(type = "boolean")), queryStringsAllowList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), cacheBehaviors = structure(list(structure(list(path = structure(logical(0), tags = list(type = "string")), behavior = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ableToUpdateBundle = structure(logical(0), tags = list(type = "boolean")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextPageToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1191,6 +1467,18 @@ NULL
   return(populate(args, shape))
 }
 
+.lightsail$register_container_image_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceName = structure(logical(0), tags = list(type = "string")), label = structure(logical(0), tags = list(type = "string")), digest = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$register_container_image_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(containerImage = structure(list(image = structure(logical(0), tags = list(type = "string")), digest = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .lightsail$release_static_ip_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(staticIpName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -1200,6 +1488,18 @@ NULL
 .lightsail$release_static_ip_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(operations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), isTerminal = structure(logical(0), tags = list(type = "boolean")), operationDetails = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangedAt = structure(logical(0), tags = list(type = "timestamp")), errorCode = structure(logical(0), tags = list(type = "string")), errorDetails = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$reset_distribution_cache_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(distributionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$reset_distribution_cache_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(status = structure(logical(0), tags = list(type = "string")), createTime = structure(logical(0), tags = list(type = "timestamp")), operation = structure(list(id = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), isTerminal = structure(logical(0), tags = list(type = "boolean")), operationDetails = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangedAt = structure(logical(0), tags = list(type = "timestamp")), errorCode = structure(logical(0), tags = list(type = "string")), errorDetails = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -1308,6 +1608,42 @@ NULL
 .lightsail$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(operations = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), isTerminal = structure(logical(0), tags = list(type = "boolean")), operationDetails = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangedAt = structure(logical(0), tags = list(type = "timestamp")), errorCode = structure(logical(0), tags = list(type = "string")), errorDetails = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$update_container_service_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(serviceName = structure(logical(0), tags = list(type = "string")), power = structure(logical(0), tags = list(type = "string")), scale = structure(logical(0), tags = list(type = "integer")), isDisabled = structure(logical(0), tags = list(type = "boolean")), publicDomainNames = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$update_container_service_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(containerService = structure(list(containerServiceName = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), resourceType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), power = structure(logical(0), tags = list(type = "string")), powerId = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string")), scale = structure(logical(0), tags = list(type = "integer")), currentDeployment = structure(list(version = structure(logical(0), tags = list(type = "integer")), state = structure(logical(0), tags = list(type = "string")), containers = structure(list(structure(list(image = structure(logical(0), tags = list(type = "string")), command = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), environment = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), publicEndpoint = structure(list(containerName = structure(logical(0), tags = list(type = "string")), containerPort = structure(logical(0), tags = list(type = "integer")), healthCheck = structure(list(healthyThreshold = structure(logical(0), tags = list(type = "integer")), unhealthyThreshold = structure(logical(0), tags = list(type = "integer")), timeoutSeconds = structure(logical(0), tags = list(type = "integer")), intervalSeconds = structure(logical(0), tags = list(type = "integer")), path = structure(logical(0), tags = list(type = "string")), successCodes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), nextDeployment = structure(list(version = structure(logical(0), tags = list(type = "integer")), state = structure(logical(0), tags = list(type = "string")), containers = structure(list(structure(list(image = structure(logical(0), tags = list(type = "string")), command = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), environment = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), ports = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "map")), publicEndpoint = structure(list(containerName = structure(logical(0), tags = list(type = "string")), containerPort = structure(logical(0), tags = list(type = "integer")), healthCheck = structure(list(healthyThreshold = structure(logical(0), tags = list(type = "integer")), unhealthyThreshold = structure(logical(0), tags = list(type = "integer")), timeoutSeconds = structure(logical(0), tags = list(type = "integer")), intervalSeconds = structure(logical(0), tags = list(type = "integer")), path = structure(logical(0), tags = list(type = "string")), successCodes = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), createdAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), isDisabled = structure(logical(0), tags = list(type = "boolean")), principalArn = structure(logical(0), tags = list(type = "string")), privateDomainName = structure(logical(0), tags = list(type = "string")), publicDomainNames = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map")), url = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$update_distribution_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(distributionName = structure(logical(0), tags = list(type = "string")), origin = structure(list(name = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string")), protocolPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), defaultCacheBehavior = structure(list(behavior = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), cacheBehaviorSettings = structure(list(defaultTTL = structure(logical(0), tags = list(type = "long")), minimumTTL = structure(logical(0), tags = list(type = "long")), maximumTTL = structure(logical(0), tags = list(type = "long")), allowedHTTPMethods = structure(logical(0), tags = list(type = "string")), cachedHTTPMethods = structure(logical(0), tags = list(type = "string")), forwardedCookies = structure(list(option = structure(logical(0), tags = list(type = "string")), cookiesAllowList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), forwardedHeaders = structure(list(option = structure(logical(0), tags = list(type = "string")), headersAllowList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), forwardedQueryStrings = structure(list(option = structure(logical(0), tags = list(type = "boolean")), queryStringsAllowList = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), cacheBehaviors = structure(list(structure(list(path = structure(logical(0), tags = list(type = "string")), behavior = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), isEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$update_distribution_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(operation = structure(list(id = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), isTerminal = structure(logical(0), tags = list(type = "boolean")), operationDetails = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangedAt = structure(logical(0), tags = list(type = "timestamp")), errorCode = structure(logical(0), tags = list(type = "string")), errorDetails = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$update_distribution_bundle_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(distributionName = structure(logical(0), tags = list(type = "string")), bundleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lightsail$update_distribution_bundle_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(operation = structure(list(id = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceType = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), location = structure(list(availabilityZone = structure(logical(0), tags = list(type = "string")), regionName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), isTerminal = structure(logical(0), tags = list(type = "boolean")), operationDetails = structure(logical(0), tags = list(type = "string")), operationType = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), statusChangedAt = structure(logical(0), tags = list(type = "timestamp")), errorCode = structure(logical(0), tags = list(type = "string")), errorDetails = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

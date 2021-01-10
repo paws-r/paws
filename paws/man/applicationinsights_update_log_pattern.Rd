@@ -14,9 +14,20 @@ applicationinsights_update_log_pattern(ResourceGroupName,
 
 \item{PatternName}{[required] The name of the log pattern.}
 
-\item{Pattern}{The log pattern.}
+\item{Pattern}{The log pattern. The pattern must be DFA compatible. Patterns that
+utilize forward lookahead or backreference constructions are not
+supported.}
 
-\item{Rank}{Rank of the log pattern.}
+\item{Rank}{Rank of the log pattern. Must be a value between \code{1} and \verb{1,000,000}.
+The patterns are sorted by rank, so we recommend that you set your
+highest priority patterns with the lowest rank. A pattern of rank \code{1}
+will be the first to get matched to a log line. A pattern of rank
+\verb{1,000,000} will be last to get matched. When you configure custom log
+patterns from the console, a \code{Low} severity pattern translates to a
+\verb{750,000} rank. A \code{Medium} severity pattern translates to a \verb{500,000}
+rank. And a \code{High} severity pattern translates to a \verb{250,000} rank. Rank
+values less than \code{1} or greater than \verb{1,000,000} are reserved for
+AWS-provided patterns.}
 }
 \description{
 Adds a log pattern to a \code{LogPatternSet}.

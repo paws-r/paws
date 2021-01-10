@@ -20,6 +20,10 @@ none is supplied, the AWS account ID is used by default.}
 \description{
 Creates or updates table statistics of columns.
 }
+\details{
+The Identity and Access Management (IAM) permission required for this
+operation is \code{UpdateTable}.
+}
 \section{Request syntax}{
 \preformatted{svc$update_column_statistics_for_table(
   CatalogId = "string",

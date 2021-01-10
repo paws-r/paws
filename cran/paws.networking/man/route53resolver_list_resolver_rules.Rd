@@ -2,31 +2,31 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_list_resolver_rules}
 \alias{route53resolver_list_resolver_rules}
-\title{Lists the resolver rules that were created using the current AWS account}
+\title{Lists the Resolver rules that were created using the current AWS account}
 \usage{
 route53resolver_list_resolver_rules(MaxResults, NextToken, Filters)
 }
 \arguments{
-\item{MaxResults}{The maximum number of resolver rules that you want to return in the
+\item{MaxResults}{The maximum number of Resolver rules that you want to return in the
 response to a \code{ListResolverRules} request. If you don't specify a value
-for \code{MaxResults}, Resolver returns up to 100 resolver rules.}
+for \code{MaxResults}, Resolver returns up to 100 Resolver rules.}
 
 \item{NextToken}{For the first \code{ListResolverRules} request, omit this value.
 
-If you have more than \code{MaxResults} resolver rules, you can submit
-another \code{ListResolverRules} request to get the next group of resolver
+If you have more than \code{MaxResults} Resolver rules, you can submit
+another \code{ListResolverRules} request to get the next group of Resolver
 rules. In the next request, specify the value of \code{NextToken} from the
 previous response.}
 
-\item{Filters}{An optional specification to return a subset of resolver rules, such as
-all resolver rules that are associated with the same resolver endpoint.
+\item{Filters}{An optional specification to return a subset of Resolver rules, such as
+all Resolver rules that are associated with the same Resolver endpoint.
 
 If you submit a second or subsequent \code{ListResolverRules} request and
 specify the \code{NextToken} parameter, you must use the same values for
 \code{Filters}, if any, as in the previous request.}
 }
 \description{
-Lists the resolver rules that were created using the current AWS
+Lists the Resolver rules that were created using the current AWS
 account.
 }
 \section{Request syntax}{

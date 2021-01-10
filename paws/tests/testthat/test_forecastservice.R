@@ -42,6 +42,14 @@ test_that("list_forecasts", {
   expect_error(svc$list_forecasts(MaxResults = 20), NA)
 })
 
+test_that("list_predictor_backtest_export_jobs", {
+  expect_error(svc$list_predictor_backtest_export_jobs(), NA)
+})
+
+test_that("list_predictor_backtest_export_jobs", {
+  expect_error(svc$list_predictor_backtest_export_jobs(MaxResults = 20), NA)
+})
+
 test_that("list_predictors", {
   expect_error(svc$list_predictors(), NA)
 })

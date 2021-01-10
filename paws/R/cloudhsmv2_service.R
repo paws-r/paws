@@ -6,7 +6,7 @@ NULL
 #'
 #' @description
 #' For more information about AWS CloudHSM, see [AWS
-#' CloudHSM](http://aws.amazon.com/cloudhsm/) and the [AWS CloudHSM User
+#' CloudHSM](https://aws.amazon.com/cloudhsm/) and the [AWS CloudHSM User
 #' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/).
 #'
 #' @param
@@ -51,6 +51,8 @@ NULL
 #'  \link[=cloudhsmv2_describe_clusters]{describe_clusters} \tab Gets information about AWS CloudHSM clusters\cr
 #'  \link[=cloudhsmv2_initialize_cluster]{initialize_cluster} \tab Claims an AWS CloudHSM cluster by submitting the cluster certificate issued by your issuing certificate authority (CA) and the CA's root certificate\cr
 #'  \link[=cloudhsmv2_list_tags]{list_tags} \tab Gets a list of tags for the specified AWS CloudHSM cluster\cr
+#'  \link[=cloudhsmv2_modify_backup_attributes]{modify_backup_attributes} \tab Modifies attributes for AWS CloudHSM backup\cr
+#'  \link[=cloudhsmv2_modify_cluster]{modify_cluster} \tab Modifies AWS CloudHSM cluster\cr
 #'  \link[=cloudhsmv2_restore_backup]{restore_backup} \tab Restores a specified AWS CloudHSM backup that is in the PENDING_DELETION state\cr
 #'  \link[=cloudhsmv2_tag_resource]{tag_resource} \tab Adds or overwrites one or more tags for the specified AWS CloudHSM cluster\cr
 #'  \link[=cloudhsmv2_untag_resource]{untag_resource} \tab Removes the specified tag or tags from the specified AWS CloudHSM cluster

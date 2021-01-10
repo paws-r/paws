@@ -29,8 +29,10 @@ entity recognizer being created.}
 \item{ClientRequestToken}{A unique identifier for the request. If you don't set the client request
 token, Amazon Comprehend generates one.}
 
-\item{LanguageCode}{[required] The language of the input documents. All documents must be in the same
-language. Only English ("en") is currently supported.}
+\item{LanguageCode}{[required] You can specify any of the following languages supported by Amazon
+Comprehend: English ("en"), Spanish ("es"), French ("fr"), Italian
+("it"), German ("de"), or Portuguese ("pt"). All documents must be in
+the same language.}
 
 \item{VolumeKmsKeyId}{ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
 uses to encrypt data on the storage volume attached to the ML compute
@@ -62,6 +64,7 @@ using the API.
     )
   ),
   InputDataConfig = list(
+    DataFormat = "COMPREHEND_CSV"|"AUGMENTED_MANIFEST",
     EntityTypes = list(
       list(
         Type = "string"
@@ -75,6 +78,14 @@ using the API.
     ),
     EntityList = list(
       S3Uri = "string"
+    ),
+    AugmentedManifests = list(
+      list(
+        S3Uri = "string",
+        AttributeNames = list(
+          "string"
+        )
+      )
     )
   ),
   ClientRequestToken = "string",

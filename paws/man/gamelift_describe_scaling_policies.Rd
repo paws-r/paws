@@ -30,8 +30,8 @@ removed and recreated.
 \code{NextToken} to get results as a set of sequential pages.}
 
 \item{NextToken}{Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.}
+Use the token that is returned with a previous call to this operation.
+To start at the beginning of the result set, do not specify a value.}
 }
 \description{
 Retrieves all scaling policies applied to a fleet.
@@ -44,7 +44,7 @@ sequential pages. If successful, set of ScalingPolicy objects is
 returned for the fleet.
 
 A fleet may have all of its scaling policies suspended
-(StopFleetActions). This action does not affect the status of the
+(StopFleetActions). This operation does not affect the status of the
 scaling policies, which remains ACTIVE. To see whether a fleet's scaling
 policies are in force or suspended, call DescribeFleetAttributes and
 check the stopped actions.

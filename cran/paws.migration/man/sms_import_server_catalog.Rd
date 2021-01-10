@@ -8,7 +8,7 @@ sms_import_server_catalog()
 }
 \description{
 Gathers a complete list of on-premises servers. Connectors must be
-installed and monitoring all servers that you want to import.
+installed and monitoring all servers to import.
 }
 \details{
 This call returns immediately, but might take additional time to

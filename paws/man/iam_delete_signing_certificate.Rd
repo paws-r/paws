@@ -9,14 +9,14 @@ iam_delete_signing_certificate(UserName, CertificateId)
 \arguments{
 \item{UserName}{The name of the user the signing certificate belongs to.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{CertificateId}{[required] The ID of the signing certificate to delete.
 
 The format of this parameter, as described by its
-\href{http://wikipedia.org/wiki/regex}{regex} pattern, is a string of
+\href{https://en.wikipedia.org/wiki/Regex}{regex} pattern, is a string of
 characters that can be upper- or lower-cased letters or digits.}
 }
 \description{

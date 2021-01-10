@@ -39,10 +39,10 @@ number of messages that are in flight. Messages are considered to be
 \emph{in flight} if they have been sent to a client but have not yet been
 deleted or have not yet reached the end of their visibility window.
 \item \code{CreatedTimestamp} – Returns the time when the queue was created in
-seconds (\href{http://en.wikipedia.org/wiki/Unix_time}{epoch time}).
+seconds (\href{https://en.wikipedia.org/wiki/Unix_time}{epoch time}).
 \item \code{DelaySeconds} – Returns the default delay on the queue in seconds.
 \item \code{LastModifiedTimestamp} – Returns the time when the queue was last
-changed in seconds (\href{http://en.wikipedia.org/wiki/Unix_time}{epoch time}).
+changed in seconds (\href{https://en.wikipedia.org/wiki/Unix_time}{epoch time}).
 \item \code{MaximumMessageSize} – Returns the limit of how many bytes a message
 can contain before Amazon SQS rejects it.
 \item \code{MessageRetentionPeriod} – Returns the length of time, in seconds,
@@ -86,8 +86,8 @@ see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperG
 
 The following attributes apply only to \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO (first-in-first-out) queues}:
 \itemize{
-\item \code{FifoQueue} – Returns whether the queue is FIFO. For more
-information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic}{FIFO Queue Logic}
+\item \code{FifoQueue} – Returns information about whether the queue is FIFO.
+For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic}{FIFO Queue Logic}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 
 To determine whether a queue is
@@ -97,7 +97,49 @@ you can check whether \code{QueueName} ends with the \code{.fifo} suffix.
 deduplication is enabled for the queue. For more information, see
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing}{Exactly-Once Processing}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
-}}
+}
+
+\strong{Preview: High throughput for FIFO queues}
+
+\strong{High throughput for Amazon SQS FIFO queues is in preview release and
+is subject to change.} This feature provides a high number of
+transactions per second (TPS) for messages in FIFO queues. For
+information on throughput quotas, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html}{Quotas related to messages}
+in the \emph{Amazon Simple Queue Service Developer Guide}.
+
+This preview includes two new attributes:
+\itemize{
+\item \code{DeduplicationScope} – Specifies whether message deduplication
+occurs at the message group or queue level. Valid values are
+\code{messageGroup} and \code{queue}.
+\item \code{FifoThroughputLimit} – Specifies whether the FIFO queue throughput
+quota applies to the entire queue or per message group. Valid values
+are \code{perQueue} and \code{perMessageGroupId}. The \code{perMessageGroupId}
+value is allowed only when the value for \code{DeduplicationScope} is
+\code{messageGroup}.
+}
+
+To enable high throughput for FIFO queues, do the following:
+\itemize{
+\item Set \code{DeduplicationScope} to \code{messageGroup}.
+\item Set \code{FifoThroughputLimit} to \code{perMessageGroupId}.
+}
+
+If you set these attributes to anything other than the values shown for
+enabling high throughput, standard throughput is in effect and
+deduplication occurs as specified.
+
+This preview is available in the following AWS Regions:
+\itemize{
+\item US East (Ohio); us-east-2
+\item US East (N. Virginia); us-east-1
+\item US West (Oregon); us-west-2
+\item Europe (Ireland); eu-west-1
+}
+
+For more information about high throughput for FIFO queues, see
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html}{Preview: High throughput for FIFO queues}
+in the \emph{Amazon Simple Queue Service Developer Guide}.}
 }
 \description{
 Gets attributes for the specified queue.
@@ -111,7 +153,7 @@ you can check whether \code{QueueName} ends with the \code{.fifo} suffix.
 \preformatted{svc$get_queue_attributes(
   QueueUrl = "string",
   AttributeNames = list(
-    "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"
+    "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"|"DeduplicationScope"|"FifoThroughputLimit"
   )
 )
 }

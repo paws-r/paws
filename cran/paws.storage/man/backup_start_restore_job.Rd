@@ -23,18 +23,25 @@ provide a new resource name if the original already exists.
 You need to specify specific metadata to restore an Amazon Elastic File
 System (Amazon EFS) instance:
 \itemize{
-\item \code{file-system-id}: ID of the Amazon EFS file system that is backed up
-by AWS Backup. Returned in \code{GetRecoveryPointRestoreMetadata}.
+\item \code{file-system-id}: The ID of the Amazon EFS file system that is
+backed up by AWS Backup. Returned in
+\code{GetRecoveryPointRestoreMetadata}.
 \item \code{Encrypted}: A Boolean value that, if true, specifies that the file
 system is encrypted. If \code{KmsKeyId} is specified, \code{Encrypted} must be
 set to \code{true}.
 \item \code{KmsKeyId}: Specifies the AWS KMS key that is used to encrypt the
-restored file system.
+restored file system. You can specify a key from another AWS account
+provided that key it is properly shared with your account via AWS
+KMS.
 \item \code{PerformanceMode}: Specifies the throughput mode of the file system.
 \item \code{CreationToken}: A user-supplied value that ensures the uniqueness
 (idempotency) of the request.
 \item \code{newFileSystem}: A Boolean value that, if true, specifies that the
 recovery point is restored to a new Amazon EFS file system.
+\item \code{ItemsToRestore }: A serialized list of up to five strings where
+each string is a file path. Use \code{ItemsToRestore} to restore specific
+files or directories rather than the entire file system. This
+parameter is optional.
 }}
 
 \item{IamRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that AWS Backup uses to
@@ -57,11 +64,6 @@ resources:
 }
 \description{
 Recovers the saved resource identified by an Amazon Resource Name (ARN).
-}
-\details{
-If the resource ARN is included in the request, then the last complete
-backup of that resource is recovered. If the ARN of a recovery point is
-supplied, then that recovery point is restored.
 }
 \section{Request syntax}{
 \preformatted{svc$start_restore_job(

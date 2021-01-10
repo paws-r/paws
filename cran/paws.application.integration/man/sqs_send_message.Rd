@@ -12,7 +12,8 @@ sqs_send_message(QueueUrl, MessageBody, DelaySeconds, MessageAttributes,
 
 Queue URLs and names are case-sensitive.}
 
-\item{MessageBody}{[required] The message to send. The maximum string size is 256 KB.
+\item{MessageBody}{[required] The message to send. The minimum size is one character. The maximum size
+is 256 KB.
 
 A message can include only XML, JSON, and unformatted text. The
 following Unicode characters are allowed:
@@ -33,7 +34,7 @@ When you set \code{FifoQueue}, you can't set \code{DelaySeconds} per message. Yo
 can set this parameter only on a queue level.}
 
 \item{MessageAttributes}{Each message attribute consists of a \code{Name}, \code{Type}, and \code{Value}. For
-more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html}{Amazon SQS Message Attributes}
+more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes}{Amazon SQS Message Attributes}
 in the \emph{Amazon Simple Queue Service Developer Guide}.}
 
 \item{MessageSystemAttributes}{The message system attribute to send. Each message system attribute

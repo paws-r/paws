@@ -33,7 +33,7 @@ value in the request.
 This value helps ensure idempotency. Secrets Manager uses this value to
 prevent the accidental creation of duplicate versions if there are
 failures and retries during a rotation. We recommend that you generate a
-\href{https://wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
+\href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
 value to ensure uniqueness of your versions within the specified secret.
 \itemize{
 \item If the \code{ClientRequestToken} value isn't already associated with a
@@ -98,7 +98,7 @@ to parse.
 For storing multiple values, we recommend that you use a JSON text
 string argument and specify key/value pairs. For information on how to
 format a JSON parameter for the various command line tool environments,
-see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json}{Using JSON for Parameters}
+see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}. For example:
 
 \verb{\\\{"username":"bob","password":"abc123xyz456"\\\}}
@@ -123,7 +123,7 @@ operation is blocked and returns an \verb{Access Denied} error.
 
 This parameter requires a JSON text string argument. For information on
 how to format a JSON parameter for the various command line tool
-environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json}{Using JSON for Parameters}
+environments, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#cli-using-param-json}{Using JSON for Parameters}
 in the \emph{AWS CLI User Guide}. For example:
 
 \verb{\\\[\\\{"Key":"CostCenter","Value":"12345"\\\},\\\{"Key":"environment","Value":"production"\\\}\\\]}

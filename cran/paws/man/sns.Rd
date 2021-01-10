@@ -15,15 +15,19 @@ enables you to build distributed web-enabled applications. Applications
 can use Amazon SNS to easily push real-time notification messages to
 interested subscribers over multiple delivery protocols. For more
 information about this product see
-\href{http://aws.amazon.com/sns/}{https://aws.amazon.com/sns}. For detailed
+\href{https://aws.amazon.com/sns/}{https://aws.amazon.com/sns}. For detailed
 information about Amazon SNS features and their associated API calls,
 see the \href{https://docs.aws.amazon.com/sns/latest/dg/}{Amazon SNS Developer Guide}.
+
+For information on the permissions you need to use this API, see
+\href{https://docs.aws.amazon.com/sns/latest/dg/sns-authentication-and-access-control.html}{Identity and access management in Amazon SNS}
+in the \emph{Amazon SNS Developer Guide.}
 
 We also provide SDKs that enable you to access Amazon SNS from your
 preferred programming language. The SDKs contain functionality that
 automatically takes care of tasks such as: cryptographically signing
 your service requests, retrying requests, and handling error responses.
-For a list of available SDKs, go to \href{http://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
+For a list of available SDKs, go to \href{https://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
 }
 \section{Service syntax}{
 \preformatted{svc <- sns(

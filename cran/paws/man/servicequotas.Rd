@@ -10,19 +10,10 @@ servicequotas(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-Service Quotas is a web service that you can use to manage many of your
-AWS service quotas. Quotas, also referred to as limits, are the maximum
-values for a resource, item, or operation. This guide provide
-descriptions of the Service Quotas actions that you can call from an
-API. For the Service Quotas user guide, which explains how to use
-Service Quotas from the console, see \href{https://docs.aws.amazon.com/servicequotas/latest/userguide/intro.html}{What is Service Quotas}.
-
-AWS provides SDKs that consist of libraries and sample code for
-programming languages and platforms (Java, Ruby, .NET, iOS, Android,
-etc...,). The SDKs provide a convenient way to create programmatic
-access to Service Quotas and AWS. For information about the AWS SDKs,
-including how to download and install them, see the Tools for Amazon Web
-Services page.
+With Service Quotas, you can view and manage your quotas easily as your
+AWS workloads grow. Quotas, also referred to as limits, are the maximum
+number of resources that you can create in your AWS account. For more
+information, see the \href{https://docs.aws.amazon.com/servicequotas/latest/userguide/}{Service Quotas User Guide}.
 }
 \section{Service syntax}{
 \preformatted{svc <- servicequotas(
@@ -45,22 +36,25 @@ Services page.
 \section{Operations}{
 
 \tabular{ll}{
-\link[=servicequotas_associate_service_quota_template]{associate_service_quota_template} \tab Associates the Service Quotas template with your organization so that when new accounts are created in your organization, the template submits increase requests for the specified service quotas\cr
-\link[=servicequotas_delete_service_quota_increase_request_from_template]{delete_service_quota_increase_request_from_template} \tab Removes a service quota increase request from the Service Quotas template\cr
-\link[=servicequotas_disassociate_service_quota_template]{disassociate_service_quota_template} \tab Disables the Service Quotas template\cr
-\link[=servicequotas_get_association_for_service_quota_template]{get_association_for_service_quota_template} \tab Retrieves the ServiceQuotaTemplateAssociationStatus value from the service\cr
-\link[=servicequotas_get_aws_default_service_quota]{get_aws_default_service_quota} \tab Retrieves the default service quotas values\cr
-\link[=servicequotas_get_requested_service_quota_change]{get_requested_service_quota_change} \tab Retrieves the details for a particular increase request\cr
-\link[=servicequotas_get_service_quota]{get_service_quota} \tab Returns the details for the specified service quota\cr
-\link[=servicequotas_get_service_quota_increase_request_from_template]{get_service_quota_increase_request_from_template} \tab Returns the details of the service quota increase request in your template\cr
-\link[=servicequotas_list_aws_default_service_quotas]{list_aws_default_service_quotas} \tab Lists all default service quotas for the specified AWS service or all AWS services\cr
-\link[=servicequotas_list_requested_service_quota_change_history]{list_requested_service_quota_change_history} \tab Requests a list of the changes to quotas for a service\cr
-\link[=servicequotas_list_requested_service_quota_change_history_by_quota]{list_requested_service_quota_change_history_by_quota} \tab Requests a list of the changes to specific service quotas\cr
-\link[=servicequotas_list_service_quota_increase_requests_in_template]{list_service_quota_increase_requests_in_template} \tab Returns a list of the quota increase requests in the template\cr
-\link[=servicequotas_list_service_quotas]{list_service_quotas} \tab Lists all service quotas for the specified AWS service\cr
-\link[=servicequotas_list_services]{list_services} \tab Lists the AWS services available in Service Quotas\cr
-\link[=servicequotas_put_service_quota_increase_request_into_template]{put_service_quota_increase_request_into_template} \tab Defines and adds a quota to the service quota template\cr
-\link[=servicequotas_request_service_quota_increase]{request_service_quota_increase} \tab Retrieves the details of a service quota increase request
+\link[=servicequotas_associate_service_quota_template]{associate_service_quota_template} \tab Associates your quota request template with your organization\cr
+\link[=servicequotas_delete_service_quota_increase_request_from_template]{delete_service_quota_increase_request_from_template} \tab Deletes the quota increase request for the specified quota from your quota request template\cr
+\link[=servicequotas_disassociate_service_quota_template]{disassociate_service_quota_template} \tab Disables your quota request template\cr
+\link[=servicequotas_get_association_for_service_quota_template]{get_association_for_service_quota_template} \tab Retrieves the status of the association for the quota request template\cr
+\link[=servicequotas_get_aws_default_service_quota]{get_aws_default_service_quota} \tab Retrieves the default value for the specified quota\cr
+\link[=servicequotas_get_requested_service_quota_change]{get_requested_service_quota_change} \tab Retrieves information about the specified quota increase request\cr
+\link[=servicequotas_get_service_quota]{get_service_quota} \tab Retrieves the applied quota value for the specified quota\cr
+\link[=servicequotas_get_service_quota_increase_request_from_template]{get_service_quota_increase_request_from_template} \tab Retrieves information about the specified quota increase request in your quota request template\cr
+\link[=servicequotas_list_aws_default_service_quotas]{list_aws_default_service_quotas} \tab Lists the default values for the quotas for the specified AWS service\cr
+\link[=servicequotas_list_requested_service_quota_change_history]{list_requested_service_quota_change_history} \tab Retrieves the quota increase requests for the specified service\cr
+\link[=servicequotas_list_requested_service_quota_change_history_by_quota]{list_requested_service_quota_change_history_by_quota} \tab Retrieves the quota increase requests for the specified quota\cr
+\link[=servicequotas_list_service_quota_increase_requests_in_template]{list_service_quota_increase_requests_in_template} \tab Lists the quota increase requests in the specified quota request template\cr
+\link[=servicequotas_list_service_quotas]{list_service_quotas} \tab Lists the applied quota values for the specified AWS service\cr
+\link[=servicequotas_list_services]{list_services} \tab Lists the names and codes for the services integrated with Service Quotas\cr
+\link[=servicequotas_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags assigned to the specified applied quota\cr
+\link[=servicequotas_put_service_quota_increase_request_into_template]{put_service_quota_increase_request_into_template} \tab Adds a quota increase request to your quota request template\cr
+\link[=servicequotas_request_service_quota_increase]{request_service_quota_increase} \tab Submits a quota increase request for the specified quota\cr
+\link[=servicequotas_tag_resource]{tag_resource} \tab Adds tags to the specified applied quota\cr
+\link[=servicequotas_untag_resource]{untag_resource} \tab Removes tags from the specified applied quota
 }
 }
 

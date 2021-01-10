@@ -303,7 +303,7 @@ devicefarm_create_project <- function(name, defaultJobTimeoutMinutes = NULL) {
 #' 
 #' For more information on how Device Farm modifies your uploads during
 #' tests, see [Do you modify my
-#' app?](https://aws.amazon.com/device-farm/faq/)
+#' app?](https://aws.amazon.com/device-farm/faqs/)
 #'
 #' @section Request syntax:
 #' ```

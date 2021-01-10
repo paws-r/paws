@@ -23,28 +23,41 @@ organization config rule.}
 \description{
 Adds or updates organization config rule for your entire organization
 evaluating whether your AWS resources comply with your desired
-configurations. Only a master account can create or update an
-organization config rule.
+configurations.
 }
 \details{
+Only a master account and a delegated administrator can create or update
+an organization config rule. When calling this API with a delegated
+administrator, you must ensure AWS Organizations
+\code{ListDelegatedAdministrator} permissions are added.
+
 This API enables organization service access through the
 \code{EnableAWSServiceAccess} action and creates a service linked role
-\code{AWSServiceRoleForConfigMultiAccountSetup} in the master account of your
-organization. The service linked role is created only when the role does
-not exist in the master account. AWS Config verifies the existence of
-role with \code{GetRole} action.
+\code{AWSServiceRoleForConfigMultiAccountSetup} in the master or delegated
+administrator account of your organization. The service linked role is
+created only when the role does not exist in the caller account. AWS
+Config verifies the existence of role with \code{GetRole} action.
+
+To use this API with delegated administrator, register a delegated
+administrator by calling AWS Organization
+\code{register-delegated-administrator} for
+\code{config-multiaccountsetup.amazonaws.com}.
 
 You can use this action to create both custom AWS Config rules and AWS
 managed Config rules. If you are adding a new custom AWS Config rule,
-you must first create AWS Lambda function in the master account that the
-rule invokes to evaluate your resources. When you use the
-\code{PutOrganizationConfigRule} action to add the rule to AWS Config, you
-must specify the Amazon Resource Name (ARN) that AWS Lambda assigns to
-the function. If you are adding an AWS managed Config rule, specify the
-rule's identifier for the \code{RuleIdentifier} key.
+you must first create AWS Lambda function in the master account or a
+delegated administrator that the rule invokes to evaluate your
+resources. When you use the \code{PutOrganizationConfigRule} action to add
+the rule to AWS Config, you must specify the Amazon Resource Name (ARN)
+that AWS Lambda assigns to the function. If you are adding an AWS
+managed Config rule, specify the rule's identifier for the
+\code{RuleIdentifier} key.
 
 The maximum number of organization config rules that AWS Config supports
-is 150.
+is 150 and 3 delegated administrator per organization.
+
+Prerequisite: Ensure you call \code{EnableAllFeatures} API to enable all
+features in an organization.
 
 Specify either \code{OrganizationCustomRuleMetadata} or
 \code{OrganizationManagedRuleMetadata}.

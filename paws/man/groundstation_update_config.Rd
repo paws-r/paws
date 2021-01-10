@@ -68,7 +68,8 @@ existing future contacts scheduled with this \code{Config}.
       targetEirp = list(
         units = "dBW",
         value = 123.0
-      )
+      ),
+      transmitDisabled = TRUE|FALSE
     ),
     dataflowEndpointConfig = list(
       dataflowEndpointName = "string",

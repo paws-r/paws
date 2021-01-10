@@ -15,9 +15,7 @@ different Regions can also have the same name.}
 
 \item{ShardCount}{[required] The number of shards that the stream will use. The throughput of the
 stream is a function of the number of shards; more shards are required
-for greater provisioned throughput.
-
-DefaultShardLimit;}
+for greater provisioned throughput.}
 }
 \description{
 Creates a Kinesis data stream. A stream captures and transports data
@@ -29,9 +27,9 @@ stream.
 \details{
 You specify and control the number of shards that a stream is composed
 of. Each shard can support reads up to five transactions per second, up
-to a maximum data read total of 2 MB per second. Each shard can support
+to a maximum data read total of 2 MiB per second. Each shard can support
 writes up to 1,000 records per second, up to a maximum data write total
-of 1 MB per second. If the amount of data input increases or decreases,
+of 1 MiB per second. If the amount of data input increases or decreases,
 you can add or remove shards.
 
 The stream name identifies the stream. The name is scoped to the AWS
@@ -54,9 +52,9 @@ time.
 \item Create more shards than are authorized for your account.
 }
 
-For the default shard limit for an AWS account, see \href{http://docs.aws.amazon.com/kinesis/latest/dev/service-sizes-and-limits.html}{Amazon Kinesis Data Streams Limits}
+For the default shard limit for an AWS account, see \href{https://docs.aws.amazon.com/streams/latest/dev/service-sizes-and-limits.html}{Amazon Kinesis Data Streams Limits}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}. To increase this
-limit, \href{http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html}{contact AWS Support}.
+limit, \href{https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html}{contact AWS Support}.
 
 You can use \code{DescribeStream} to check the stream status, which is
 returned in \code{StreamStatus}.

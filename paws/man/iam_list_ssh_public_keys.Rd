@@ -12,7 +12,7 @@ iam_list_ssh_public_keys(UserName, Marker, MaxItems)
 specified, the \code{UserName} field is determined implicitly based on the
 AWS access key used to sign the request.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
@@ -39,7 +39,7 @@ specified IAM user. If none exists, the operation returns an empty list.
 The SSH public keys returned by this operation are used only for
 authenticating the IAM user to an AWS CodeCommit repository. For more
 information about using SSH keys to authenticate to an AWS CodeCommit
-repository, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up-credentials-ssh.html}{Set up AWS CodeCommit for SSH Connections}
+repository, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/setting-up.html}{Set up AWS CodeCommit for SSH Connections}
 in the \emph{AWS CodeCommit User Guide}.
 
 Although each user is limited to a small number of keys, you can still

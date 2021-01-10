@@ -16,12 +16,14 @@ need to be unique. You can use UpdateBuild to change this value later.}
 strings do not need to be unique. You can use UpdateBuild to change this
 value later.}
 
-\item{StorageLocation}{Information indicating where your game build files are stored. Use this
-parameter only when creating a build with files stored in an S3 bucket
-that you own. The storage location must specify an S3 bucket name and
-key. The location must also specify a role ARN that you set up to allow
-Amazon GameLift to access your S3 bucket. The S3 bucket and your new
-build must be in the same Region.}
+\item{StorageLocation}{The location where your game build files are stored. Use this parameter
+only when creating a build using files that are stored in an S3 bucket
+that you own. Identify an S3 bucket name and key, which must in the same
+Region where you're creating a build. This parameter must also specify
+the ARN for an IAM role that you've set up to give Amazon GameLift
+access your S3 bucket. To call this operation with a storage location,
+you must have IAM PassRole permission. For more details on IAM roles and
+PassRole permissions, see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/setting-up-role.html}{Set up a role for GameLift access}.}
 
 \item{OperatingSystem}{The operating system that the game server binaries are built to run on.
 This value determines the type of fleet resources that you can use for
@@ -61,10 +63,10 @@ permissions in place, call \code{CreateBuild} and specify a build name,
 operating system, and the S3 storage location of your game build.
 \item To directly upload your build files to a GameLift S3 location. To
 use this option, first call \code{CreateBuild} and specify a build name
-and operating system. This action creates a new build resource and
-also returns an S3 location with temporary access credentials. Use
-the credentials to manually upload your build files to the specified
-S3 location. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html}{Uploading Objects}
+and operating system. This operation creates a new build resource
+and also returns an S3 location with temporary access credentials.
+Use the credentials to manually upload your build files to the
+specified S3 location. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UploadingObjects.html}{Uploading Objects}
 in the \emph{Amazon S3 Developer Guide}. Build files can be uploaded to
 the GameLift S3 location once only; that can't be updated.
 }

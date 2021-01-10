@@ -2,17 +2,17 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_update_resolver_endpoint}
 \alias{route53resolver_update_resolver_endpoint}
-\title{Updates the name of an inbound or an outbound resolver endpoint}
+\title{Updates the name of an inbound or an outbound Resolver endpoint}
 \usage{
 route53resolver_update_resolver_endpoint(ResolverEndpointId, Name)
 }
 \arguments{
-\item{ResolverEndpointId}{[required] The ID of the resolver endpoint that you want to update.}
+\item{ResolverEndpointId}{[required] The ID of the Resolver endpoint that you want to update.}
 
-\item{Name}{The name of the resolver endpoint that you want to update.}
+\item{Name}{The name of the Resolver endpoint that you want to update.}
 }
 \description{
-Updates the name of an inbound or an outbound resolver endpoint.
+Updates the name of an inbound or an outbound Resolver endpoint.
 }
 \section{Request syntax}{
 \preformatted{svc$update_resolver_endpoint(

@@ -30,7 +30,7 @@ given stack, or DetectStackResourceDrift to detect drift on individual
 resources.
 
 For a list of stack resources that currently support drift detection,
-see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html}{Resources that Support Drift Detection}.
+see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html}{Resources that Support Drift Detection}.
 
 \code{DetectStackDrift} can take up to several minutes, depending on the
 number of resources contained within the stack. Use

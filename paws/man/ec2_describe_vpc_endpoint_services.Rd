@@ -41,6 +41,15 @@ from a prior call.)}
 \description{
 Describes available services to which you can create a VPC endpoint.
 }
+\details{
+When the service provider and the consumer have different accounts
+multiple Availability Zones, and the consumer views the VPC endpoint
+service information, the response only includes the common Availability
+Zones. For example, when the service provider account uses \verb{us-east-1a}
+and \verb{us-east-1c} and the consumer uses \verb{us-east-1a} and us-east-1a and
+us-east-1b, the response includes the VPC endpoint services in the
+common Availability Zone, \verb{us-east-1a}.
+}
 \section{Request syntax}{
 \preformatted{svc$describe_vpc_endpoint_services(
   DryRun = TRUE|FALSE,

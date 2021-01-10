@@ -18,7 +18,7 @@ Updates the shadow for the specified thing.
 }
 \details{
 For more information, see
-\href{http://docs.aws.amazon.com/iot/latest/developerguide/API_UpdateThingShadow.html}{UpdateThingShadow}
+\href{https://docs.aws.amazon.com/iot/latest/developerguide/device-shadow-rest-api.html#API_UpdateThingShadow}{UpdateThingShadow}
 in the AWS IoT Developer Guide.
 }
 \section{Request syntax}{

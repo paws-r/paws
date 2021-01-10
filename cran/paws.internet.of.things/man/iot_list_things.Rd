@@ -8,7 +8,9 @@ iot_list_things(nextToken, maxResults, attributeName, attributeValue,
   thingTypeName)
 }
 \arguments{
-\item{nextToken}{The token to retrieve the next set of results.}
+\item{nextToken}{To retrieve the next set of results, the \code{nextToken} value from a
+previous response; otherwise \strong{null} to receive the first set of
+results.}
 
 \item{maxResults}{The maximum number of results to return in this operation.}
 
@@ -23,6 +25,12 @@ Lists your things. Use the \strong{attributeName} and \strong{attributeValue}
 parameters to filter your things. For example, calling \code{ListThings} with
 attributeName=Color and attributeValue=Red retrieves all things in the
 registry that contain an attribute \strong{Color} with the value \strong{Red}.
+}
+\details{
+You will not be charged for calling this API if an \verb{Access denied} error
+is returned. You will also not be charged if no attributes or pagination
+token was provided in request and no pagination token and no results
+were returned.
 }
 \section{Request syntax}{
 \preformatted{svc$list_things(

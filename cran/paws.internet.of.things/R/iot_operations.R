@@ -151,12 +151,21 @@ iot_add_thing_to_thing_group <- function(thingGroupName = NULL, thingGroupArn = 
 #'     exceed 100.
 #'
 #' @usage
-#' iot_associate_targets_with_job(targets, jobId, comment)
+#' iot_associate_targets_with_job(targets, jobId, comment, namespaceId)
 #'
 #' @param targets &#91;required&#93; A list of thing group ARNs that define the targets of the job.
 #' @param jobId &#91;required&#93; The unique identifier you assigned to this job when it was created.
 #' @param comment An optional comment string describing why the job was associated with
 #' the targets.
+#' @param namespaceId The namespace used to indicate that a job is a customer-managed job.
+#' 
+#' When you specify a value for this parameter, AWS IoT Core sends jobs
+#' notifications to MQTT topics that contain the value in the following
+#' format.
+#' 
+#' `$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/`
+#' 
+#' The `namespaceId` feature is in public preview.
 #'
 #' @section Request syntax:
 #' ```
@@ -165,21 +174,22 @@ iot_add_thing_to_thing_group <- function(thingGroupName = NULL, thingGroupArn = 
 #'     "string"
 #'   ),
 #'   jobId = "string",
-#'   comment = "string"
+#'   comment = "string",
+#'   namespaceId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iot_associate_targets_with_job
-iot_associate_targets_with_job <- function(targets, jobId, comment = NULL) {
+iot_associate_targets_with_job <- function(targets, jobId, comment = NULL, namespaceId = NULL) {
   op <- new_operation(
     name = "AssociateTargetsWithJob",
     http_method = "POST",
     http_path = "/jobs/{jobId}/targets",
     paginator = list()
   )
-  input <- .iot$associate_targets_with_job_input(targets = targets, jobId = jobId, comment = comment)
+  input <- .iot$associate_targets_with_job_input(targets = targets, jobId = jobId, comment = comment, namespaceId = namespaceId)
   output <- .iot$associate_targets_with_job_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -396,7 +406,7 @@ iot_cancel_audit_mitigation_actions_task <- function(taskId) {
 #' Cancels an audit that is in progress
 #'
 #' Cancels an audit that is in progress. The audit can be either scheduled
-#' or on-demand. If the audit is not in progress, an
+#' or on demand. If the audit isn't in progress, an
 #' "InvalidRequestException" occurs.
 #'
 #' @usage
@@ -478,6 +488,42 @@ iot_cancel_certificate_transfer <- function(certificateId) {
   return(response)
 }
 .iot$operations$cancel_certificate_transfer <- iot_cancel_certificate_transfer
+
+#' Cancels a Device Defender ML Detect mitigation action
+#'
+#' Cancels a Device Defender ML Detect mitigation action.
+#'
+#' @usage
+#' iot_cancel_detect_mitigation_actions_task(taskId)
+#'
+#' @param taskId &#91;required&#93; The unique identifier of the task.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_detect_mitigation_actions_task(
+#'   taskId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_cancel_detect_mitigation_actions_task
+iot_cancel_detect_mitigation_actions_task <- function(taskId) {
+  op <- new_operation(
+    name = "CancelDetectMitigationActionsTask",
+    http_method = "PUT",
+    http_path = "/detect/mitigationactions/tasks/{taskId}/cancel",
+    paginator = list()
+  )
+  input <- .iot$cancel_detect_mitigation_actions_task_input(taskId = taskId)
+  output <- .iot$cancel_detect_mitigation_actions_task_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$cancel_detect_mitigation_actions_task <- iot_cancel_detect_mitigation_actions_task
 
 #' Cancels a job
 #'
@@ -664,6 +710,67 @@ iot_confirm_topic_rule_destination <- function(confirmationToken) {
   return(response)
 }
 .iot$operations$confirm_topic_rule_destination <- iot_confirm_topic_rule_destination
+
+#' Creates a Device Defender audit suppression
+#'
+#' Creates a Device Defender audit suppression.
+#'
+#' @usage
+#' iot_create_audit_suppression(checkName, resourceIdentifier,
+#'   expirationDate, suppressIndefinitely, description, clientRequestToken)
+#'
+#' @param checkName &#91;required&#93; 
+#' @param resourceIdentifier &#91;required&#93; 
+#' @param expirationDate The epoch timestamp in seconds at which this suppression expires.
+#' @param suppressIndefinitely Indicates whether a suppression should exist indefinitely or not.
+#' @param description The description of the audit suppression.
+#' @param clientRequestToken &#91;required&#93; The epoch timestamp in seconds at which this suppression expires.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_audit_suppression(
+#'   checkName = "string",
+#'   resourceIdentifier = list(
+#'     deviceCertificateId = "string",
+#'     caCertificateId = "string",
+#'     cognitoIdentityPoolId = "string",
+#'     clientId = "string",
+#'     policyVersionIdentifier = list(
+#'       policyName = "string",
+#'       policyVersionId = "string"
+#'     ),
+#'     account = "string",
+#'     iamRoleArn = "string",
+#'     roleAliasArn = "string"
+#'   ),
+#'   expirationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   suppressIndefinitely = TRUE|FALSE,
+#'   description = "string",
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_create_audit_suppression
+iot_create_audit_suppression <- function(checkName, resourceIdentifier, expirationDate = NULL, suppressIndefinitely = NULL, description = NULL, clientRequestToken) {
+  op <- new_operation(
+    name = "CreateAuditSuppression",
+    http_method = "POST",
+    http_path = "/audit/suppressions/create",
+    paginator = list()
+  )
+  input <- .iot$create_audit_suppression_input(checkName = checkName, resourceIdentifier = resourceIdentifier, expirationDate = expirationDate, suppressIndefinitely = suppressIndefinitely, description = description, clientRequestToken = clientRequestToken)
+  output <- .iot$create_audit_suppression_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$create_audit_suppression <- iot_create_audit_suppression
 
 #' Creates an authorizer
 #'
@@ -860,6 +967,66 @@ iot_create_certificate_from_csr <- function(certificateSigningRequest, setAsActi
   return(response)
 }
 .iot$operations$create_certificate_from_csr <- iot_create_certificate_from_csr
+
+#' Use this API to define a Custom Metric published by your devices to
+#' Device Defender
+#'
+#' Use this API to define a Custom Metric published by your devices to
+#' Device Defender.
+#'
+#' @usage
+#' iot_create_custom_metric(metricName, displayName, metricType, tags,
+#'   clientRequestToken)
+#'
+#' @param metricName &#91;required&#93; The name of the custom metric. This will be used in the metric report
+#' submitted from the device/thing. Shouldn't begin with `aws:`. Cannot be
+#' updated once defined.
+#' @param displayName Field represents a friendly name in the console for the custom metric;
+#' it doesn't have to be unique. Don't use this name as the metric
+#' identifier in the device metric report. Can be updated once defined.
+#' @param metricType &#91;required&#93; The type of the custom metric. Types include `string-list`,
+#' `ip-address-list`, `number-list`, and `number`.
+#' @param tags Metadata that can be used to manage the custom metric.
+#' @param clientRequestToken &#91;required&#93; Each custom metric must have a unique client request token. If you try
+#' to create a new custom metric that already exists with a different
+#' token, an exception occurs. If you omit this value, AWS SDKs will
+#' automatically generate a unique client request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_custom_metric(
+#'   metricName = "string",
+#'   displayName = "string",
+#'   metricType = "string-list"|"ip-address-list"|"number-list"|"number",
+#'   tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_create_custom_metric
+iot_create_custom_metric <- function(metricName, displayName = NULL, metricType, tags = NULL, clientRequestToken) {
+  op <- new_operation(
+    name = "CreateCustomMetric",
+    http_method = "POST",
+    http_path = "/custom-metric/{metricName}",
+    paginator = list()
+  )
+  input <- .iot$create_custom_metric_input(metricName = metricName, displayName = displayName, metricType = metricType, tags = tags, clientRequestToken = clientRequestToken)
+  output <- .iot$create_custom_metric_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$create_custom_metric <- iot_create_custom_metric
 
 #' Create a dimension that you can use to limit the scope of a metric used
 #' in a security profile for AWS IoT Device Defender
@@ -1077,7 +1244,7 @@ iot_create_dynamic_thing_group <- function(thingGroupName, thingGroupProperties 
 #' @usage
 #' iot_create_job(jobId, targets, documentSource, document, description,
 #'   presignedUrlConfig, targetSelection, jobExecutionsRolloutConfig,
-#'   abortConfig, timeoutConfig, tags)
+#'   abortConfig, timeoutConfig, tags, namespaceId)
 #'
 #' @param jobId &#91;required&#93; A job identifier which must be unique for your AWS account. We recommend
 #' using a UUID. Alpha-numeric characters, "-" and "\\_" are valid for use
@@ -1111,6 +1278,15 @@ iot_create_dynamic_thing_group <- function(thingGroupName, thingGroupProperties 
 #' terminal state before the time expires, it will be automatically set to
 #' `TIMED_OUT`.
 #' @param tags Metadata which can be used to manage the job.
+#' @param namespaceId The namespace used to indicate that a job is a customer-managed job.
+#' 
+#' When you specify a value for this parameter, AWS IoT Core sends jobs
+#' notifications to MQTT topics that contain the value in the following
+#' format.
+#' 
+#' `$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/`
+#' 
+#' The `namespaceId` feature is in public preview.
 #'
 #' @section Request syntax:
 #' ```
@@ -1156,21 +1332,22 @@ iot_create_dynamic_thing_group <- function(thingGroupName, thingGroupProperties 
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   namespaceId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iot_create_job
-iot_create_job <- function(jobId, targets, documentSource = NULL, document = NULL, description = NULL, presignedUrlConfig = NULL, targetSelection = NULL, jobExecutionsRolloutConfig = NULL, abortConfig = NULL, timeoutConfig = NULL, tags = NULL) {
+iot_create_job <- function(jobId, targets, documentSource = NULL, document = NULL, description = NULL, presignedUrlConfig = NULL, targetSelection = NULL, jobExecutionsRolloutConfig = NULL, abortConfig = NULL, timeoutConfig = NULL, tags = NULL, namespaceId = NULL) {
   op <- new_operation(
     name = "CreateJob",
     http_method = "PUT",
     http_path = "/jobs/{jobId}",
     paginator = list()
   )
-  input <- .iot$create_job_input(jobId = jobId, targets = targets, documentSource = documentSource, document = document, description = description, presignedUrlConfig = presignedUrlConfig, targetSelection = targetSelection, jobExecutionsRolloutConfig = jobExecutionsRolloutConfig, abortConfig = abortConfig, timeoutConfig = timeoutConfig, tags = tags)
+  input <- .iot$create_job_input(jobId = jobId, targets = targets, documentSource = documentSource, document = document, description = description, presignedUrlConfig = presignedUrlConfig, targetSelection = targetSelection, jobExecutionsRolloutConfig = jobExecutionsRolloutConfig, abortConfig = abortConfig, timeoutConfig = timeoutConfig, tags = tags, namespaceId = namespaceId)
   output <- .iot$create_job_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -1226,8 +1403,11 @@ iot_create_keys_and_certificate <- function(setAsActive = NULL) {
 #' StartAuditMitigationActionsTask
 #'
 #' Defines an action that can be applied to audit findings by using
-#' StartAuditMitigationActionsTask. Each mitigation action can apply only
-#' one type of change.
+#' StartAuditMitigationActionsTask. Only certain types of mitigation
+#' actions can be applied to specific check names. For more information,
+#' see [Mitigation
+#' actions](https://docs.aws.amazon.com/iot/latest/developerguide/). Each
+#' mitigation action can apply only one type of change.
 #'
 #' @usage
 #' iot_create_mitigation_action(actionName, roleArn, actionParams, tags)
@@ -1375,6 +1555,7 @@ iot_create_mitigation_action <- function(actionName, roleArn, actionParams, tags
 #'   files = list(
 #'     list(
 #'       fileName = "string",
+#'       fileType = 123,
 #'       fileVersion = "string",
 #'       fileLocation = list(
 #'         stream = list(
@@ -1772,17 +1953,17 @@ iot_create_role_alias <- function(roleAlias, roleArn, credentialDurationSeconds 
 #' iot_create_scheduled_audit(frequency, dayOfMonth, dayOfWeek,
 #'   targetCheckNames, scheduledAuditName, tags)
 #'
-#' @param frequency &#91;required&#93; How often the scheduled audit takes place. Can be one of "DAILY",
-#' "WEEKLY", "BIWEEKLY" or "MONTHLY". The start time of each audit is
-#' determined by the system.
-#' @param dayOfMonth The day of the month on which the scheduled audit takes place. Can be
-#' "1" through "31" or "LAST". This field is required if the "frequency"
-#' parameter is set to "MONTHLY". If days 29-31 are specified, and the
-#' month does not have that many days, the audit takes place on the "LAST"
+#' @param frequency &#91;required&#93; How often the scheduled audit takes place, either `DAILY`, `WEEKLY`,
+#' `BIWEEKLY` or `MONTHLY`. The start time of each audit is determined by
+#' the system.
+#' @param dayOfMonth The day of the month on which the scheduled audit takes place. This can
+#' be "1" through "31" or "LAST". This field is required if the "frequency"
+#' parameter is set to `MONTHLY`. If days 29 to 31 are specified, and the
+#' month doesn't have that many days, the audit takes place on the `LAST`
 #' day of the month.
-#' @param dayOfWeek The day of the week on which the scheduled audit takes place. Can be one
-#' of "SUN", "MON", "TUE", "WED", "THU", "FRI", or "SAT". This field is
-#' required if the "frequency" parameter is set to "WEEKLY" or "BIWEEKLY".
+#' @param dayOfWeek The day of the week on which the scheduled audit takes place, either
+#' `SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, or `SAT`. This field is
+#' required if the `frequency` parameter is set to `WEEKLY` or `BIWEEKLY`.
 #' @param targetCheckNames &#91;required&#93; Which checks are performed during the scheduled audit. Checks must be
 #' enabled for your account. (Use `DescribeAccountAuditConfiguration` to
 #' see the list of all checks, including those that are enabled or use
@@ -1845,15 +2026,17 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 #' @param alertTargets Specifies the destinations to which alerts are sent. (Alerts are always
 #' sent to the console.) Alerts are generated when a device (thing)
 #' violates a behavior.
-#' @param additionalMetricsToRetain A list of metrics whose data is retained (stored). By default, data is
-#' retained for any metric used in the profile's `behaviors`, but it is
-#' also retained for any metric specified here.
+#' @param additionalMetricsToRetain *Please use CreateSecurityProfileRequest$additionalMetricsToRetainV2
+#' instead.*
 #' 
-#' **Note:** This API field is deprecated. Please use
-#' CreateSecurityProfileRequest$additionalMetricsToRetainV2 instead.
+#' A list of metrics whose data is retained (stored). By default, data is
+#' retained for any metric used in the profile's `behaviors`, but it is
+#' also retained for any metric specified here. Can be used with custom
+#' metrics; cannot be used with dimensions.
 #' @param additionalMetricsToRetainV2 A list of metrics whose data is retained (stored). By default, data is
 #' retained for any metric used in the profile's `behaviors`, but it is
-#' also retained for any metric specified here.
+#' also retained for any metric specified here. Can be used with custom
+#' metrics; cannot be used with dimensions.
 #' @param tags Metadata that can be used to manage the security profile.
 #'
 #' @section Request syntax:
@@ -1870,7 +2053,7 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 #'         operator = "IN"|"NOT_IN"
 #'       ),
 #'       criteria = list(
-#'         comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set",
+#'         comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set"|"in-set"|"not-in-set",
 #'         value = list(
 #'           count = 123,
 #'           cidrs = list(
@@ -1878,6 +2061,13 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 #'           ),
 #'           ports = list(
 #'             123
+#'           ),
+#'           number = 123.0,
+#'           numbers = list(
+#'             123.0
+#'           ),
+#'           strings = list(
+#'             "string"
 #'           )
 #'         ),
 #'         durationSeconds = 123,
@@ -1885,8 +2075,12 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 #'         consecutiveDatapointsToClear = 123,
 #'         statisticalThreshold = list(
 #'           statistic = "string"
+#'         ),
+#'         mlDetectionConfig = list(
+#'           confidenceLevel = "LOW"|"MEDIUM"|"HIGH"
 #'         )
-#'       )
+#'       ),
+#'       suppressAlerts = TRUE|FALSE
 #'     )
 #'   ),
 #'   alertTargets = list(
@@ -2253,7 +2447,8 @@ iot_create_thing_type <- function(thingTypeName, thingTypeProperties = NULL, tag
 #'         firehose = list(
 #'           roleArn = "string",
 #'           deliveryStreamName = "string",
-#'           separator = "string"
+#'           separator = "string",
+#'           batchMode = TRUE|FALSE
 #'         ),
 #'         cloudwatchMetric = list(
 #'           roleArn = "string",
@@ -2287,11 +2482,13 @@ iot_create_thing_type <- function(thingTypeName, thingTypeProperties = NULL, tag
 #'         iotAnalytics = list(
 #'           channelArn = "string",
 #'           channelName = "string",
+#'           batchMode = TRUE|FALSE,
 #'           roleArn = "string"
 #'         ),
 #'         iotEvents = list(
 #'           inputName = "string",
 #'           messageId = "string",
+#'           batchMode = TRUE|FALSE,
 #'           roleArn = "string"
 #'         ),
 #'         iotSiteWise = list(
@@ -2325,6 +2522,21 @@ iot_create_thing_type <- function(thingTypeName, thingTypeProperties = NULL, tag
 #'           stateMachineName = "string",
 #'           roleArn = "string"
 #'         ),
+#'         timestream = list(
+#'           roleArn = "string",
+#'           databaseName = "string",
+#'           tableName = "string",
+#'           dimensions = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           ),
+#'           timestamp = list(
+#'             value = "string",
+#'             unit = "string"
+#'           )
+#'         ),
 #'         http = list(
 #'           url = "string",
 #'           confirmationUrl = "string",
@@ -2340,6 +2552,15 @@ iot_create_thing_type <- function(thingTypeName, thingTypeProperties = NULL, tag
 #'               serviceName = "string",
 #'               roleArn = "string"
 #'             )
+#'           )
+#'         ),
+#'         kafka = list(
+#'           destinationArn = "string",
+#'           topic = "string",
+#'           key = "string",
+#'           partition = "string",
+#'           clientProperties = list(
+#'             "string"
 #'           )
 #'         )
 #'       )
@@ -2397,7 +2618,8 @@ iot_create_thing_type <- function(thingTypeName, thingTypeProperties = NULL, tag
 #'       firehose = list(
 #'         roleArn = "string",
 #'         deliveryStreamName = "string",
-#'         separator = "string"
+#'         separator = "string",
+#'         batchMode = TRUE|FALSE
 #'       ),
 #'       cloudwatchMetric = list(
 #'         roleArn = "string",
@@ -2431,11 +2653,13 @@ iot_create_thing_type <- function(thingTypeName, thingTypeProperties = NULL, tag
 #'       iotAnalytics = list(
 #'         channelArn = "string",
 #'         channelName = "string",
+#'         batchMode = TRUE|FALSE,
 #'         roleArn = "string"
 #'       ),
 #'       iotEvents = list(
 #'         inputName = "string",
 #'         messageId = "string",
+#'         batchMode = TRUE|FALSE,
 #'         roleArn = "string"
 #'       ),
 #'       iotSiteWise = list(
@@ -2469,6 +2693,21 @@ iot_create_thing_type <- function(thingTypeName, thingTypeProperties = NULL, tag
 #'         stateMachineName = "string",
 #'         roleArn = "string"
 #'       ),
+#'       timestream = list(
+#'         roleArn = "string",
+#'         databaseName = "string",
+#'         tableName = "string",
+#'         dimensions = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         timestamp = list(
+#'           value = "string",
+#'           unit = "string"
+#'         )
+#'       ),
 #'       http = list(
 #'         url = "string",
 #'         confirmationUrl = "string",
@@ -2484,6 +2723,15 @@ iot_create_thing_type <- function(thingTypeName, thingTypeProperties = NULL, tag
 #'             serviceName = "string",
 #'             roleArn = "string"
 #'           )
+#'         )
+#'       ),
+#'       kafka = list(
+#'         destinationArn = "string",
+#'         topic = "string",
+#'         key = "string",
+#'         partition = "string",
+#'         clientProperties = list(
+#'           "string"
 #'         )
 #'       )
 #'     )
@@ -2528,6 +2776,16 @@ iot_create_topic_rule <- function(ruleName, topicRulePayload, tags = NULL) {
 #'   destinationConfiguration = list(
 #'     httpUrlConfiguration = list(
 #'       confirmationUrl = "string"
+#'     ),
+#'     vpcConfiguration = list(
+#'       subnetIds = list(
+#'         "string"
+#'       ),
+#'       securityGroups = list(
+#'         "string"
+#'       ),
+#'       vpcId = "string",
+#'       roleArn = "string"
 #'     )
 #'   )
 #' )
@@ -2591,6 +2849,56 @@ iot_delete_account_audit_configuration <- function(deleteScheduledAudits = NULL)
   return(response)
 }
 .iot$operations$delete_account_audit_configuration <- iot_delete_account_audit_configuration
+
+#' Deletes a Device Defender audit suppression
+#'
+#' Deletes a Device Defender audit suppression.
+#'
+#' @usage
+#' iot_delete_audit_suppression(checkName, resourceIdentifier)
+#'
+#' @param checkName &#91;required&#93; 
+#' @param resourceIdentifier &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_audit_suppression(
+#'   checkName = "string",
+#'   resourceIdentifier = list(
+#'     deviceCertificateId = "string",
+#'     caCertificateId = "string",
+#'     cognitoIdentityPoolId = "string",
+#'     clientId = "string",
+#'     policyVersionIdentifier = list(
+#'       policyName = "string",
+#'       policyVersionId = "string"
+#'     ),
+#'     account = "string",
+#'     iamRoleArn = "string",
+#'     roleAliasArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_delete_audit_suppression
+iot_delete_audit_suppression <- function(checkName, resourceIdentifier) {
+  op <- new_operation(
+    name = "DeleteAuditSuppression",
+    http_method = "POST",
+    http_path = "/audit/suppressions/delete",
+    paginator = list()
+  )
+  input <- .iot$delete_audit_suppression_input(checkName = checkName, resourceIdentifier = resourceIdentifier)
+  output <- .iot$delete_audit_suppression_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$delete_audit_suppression <- iot_delete_audit_suppression
 
 #' Deletes an authorizer
 #'
@@ -2751,6 +3059,49 @@ iot_delete_certificate <- function(certificateId, forceDelete = NULL) {
 }
 .iot$operations$delete_certificate <- iot_delete_certificate
 
+#' Before you can delete a custom metric, you must first remove the custom
+#' metric from all security profiles it's a part of
+#'
+#' Before you can delete a custom metric, you must first remove the custom
+#' metric from all security profiles it's a part of. The security profile
+#' associated with the custom metric can be found using the
+#' [ListSecurityProfiles](https://docs.aws.amazon.com/iot/latest/apireference/API_ListSecurityProfiles.html)
+#' API with `metricName` set to your custom metric name.
+#' 
+#' Deletes a Device Defender detect custom metric.
+#'
+#' @usage
+#' iot_delete_custom_metric(metricName)
+#'
+#' @param metricName &#91;required&#93; The name of the custom metric.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_custom_metric(
+#'   metricName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_delete_custom_metric
+iot_delete_custom_metric <- function(metricName) {
+  op <- new_operation(
+    name = "DeleteCustomMetric",
+    http_method = "DELETE",
+    http_path = "/custom-metric/{metricName}",
+    paginator = list()
+  )
+  input <- .iot$delete_custom_metric_input(metricName = metricName)
+  output <- .iot$delete_custom_metric_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$delete_custom_metric <- iot_delete_custom_metric
+
 #' Removes the specified dimension from your AWS account
 #'
 #' Removes the specified dimension from your AWS account.
@@ -2878,7 +3229,7 @@ iot_delete_dynamic_thing_group <- function(thingGroupName, expectedVersion = NUL
 #' or a LimitExceededException will occur.
 #'
 #' @usage
-#' iot_delete_job(jobId, force)
+#' iot_delete_job(jobId, force, namespaceId)
 #'
 #' @param jobId &#91;required&#93; The ID of the job to be deleted.
 #' 
@@ -2894,26 +3245,36 @@ iot_delete_dynamic_thing_group <- function(thingGroupName, expectedVersion = NUL
 #' executing the job to be unable to access job information or update the
 #' job execution status. Use caution and ensure that each device executing
 #' a job which is deleted is able to recover to a valid state.
+#' @param namespaceId The namespace used to indicate that a job is a customer-managed job.
+#' 
+#' When you specify a value for this parameter, AWS IoT Core sends jobs
+#' notifications to MQTT topics that contain the value in the following
+#' format.
+#' 
+#' `$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/`
+#' 
+#' The `namespaceId` feature is in public preview.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_job(
 #'   jobId = "string",
-#'   force = TRUE|FALSE
+#'   force = TRUE|FALSE,
+#'   namespaceId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iot_delete_job
-iot_delete_job <- function(jobId, force = NULL) {
+iot_delete_job <- function(jobId, force = NULL, namespaceId = NULL) {
   op <- new_operation(
     name = "DeleteJob",
     http_method = "DELETE",
     http_path = "/jobs/{jobId}",
     paginator = list()
   )
-  input <- .iot$delete_job_input(jobId = jobId, force = force)
+  input <- .iot$delete_job_input(jobId = jobId, force = force, namespaceId = namespaceId)
   output <- .iot$delete_job_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -2928,7 +3289,8 @@ iot_delete_job <- function(jobId, force = NULL) {
 #' Deletes a job execution.
 #'
 #' @usage
-#' iot_delete_job_execution(jobId, thingName, executionNumber, force)
+#' iot_delete_job_execution(jobId, thingName, executionNumber, force,
+#'   namespaceId)
 #'
 #' @param jobId &#91;required&#93; The ID of the job whose execution on a particular device will be
 #' deleted.
@@ -2947,6 +3309,15 @@ iot_delete_job <- function(jobId, force = NULL) {
 #' to be unable to access job information or update the job execution
 #' status. Use caution and ensure that the device is able to recover to a
 #' valid state.
+#' @param namespaceId The namespace used to indicate that a job is a customer-managed job.
+#' 
+#' When you specify a value for this parameter, AWS IoT Core sends jobs
+#' notifications to MQTT topics that contain the value in the following
+#' format.
+#' 
+#' `$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/`
+#' 
+#' The `namespaceId` feature is in public preview.
 #'
 #' @section Request syntax:
 #' ```
@@ -2954,21 +3325,22 @@ iot_delete_job <- function(jobId, force = NULL) {
 #'   jobId = "string",
 #'   thingName = "string",
 #'   executionNumber = 123,
-#'   force = TRUE|FALSE
+#'   force = TRUE|FALSE,
+#'   namespaceId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iot_delete_job_execution
-iot_delete_job_execution <- function(jobId, thingName, executionNumber, force = NULL) {
+iot_delete_job_execution <- function(jobId, thingName, executionNumber, force = NULL, namespaceId = NULL) {
   op <- new_operation(
     name = "DeleteJobExecution",
     http_method = "DELETE",
     http_path = "/things/{thingName}/jobs/{jobId}/executionNumber/{executionNumber}",
     paginator = list()
   )
-  input <- .iot$delete_job_execution_input(jobId = jobId, thingName = thingName, executionNumber = executionNumber, force = force)
+  input <- .iot$delete_job_execution_input(jobId = jobId, thingName = thingName, executionNumber = executionNumber, force = force, namespaceId = namespaceId)
   output <- .iot$delete_job_execution_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -3709,8 +4081,8 @@ iot_describe_account_audit_configuration <- function() {
 #' Gets information about a single audit finding
 #'
 #' Gets information about a single audit finding. Properties include the
-#' reason for noncompliance, the severity of the issue, and when the audit
-#' that returned the finding was started.
+#' reason for noncompliance, the severity of the issue, and the start time
+#' when the audit that returned the finding.
 #'
 #' @usage
 #' iot_describe_audit_finding(findingId)
@@ -3784,6 +4156,56 @@ iot_describe_audit_mitigation_actions_task <- function(taskId) {
   return(response)
 }
 .iot$operations$describe_audit_mitigation_actions_task <- iot_describe_audit_mitigation_actions_task
+
+#' Gets information about a Device Defender audit suppression
+#'
+#' Gets information about a Device Defender audit suppression.
+#'
+#' @usage
+#' iot_describe_audit_suppression(checkName, resourceIdentifier)
+#'
+#' @param checkName &#91;required&#93; 
+#' @param resourceIdentifier &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_audit_suppression(
+#'   checkName = "string",
+#'   resourceIdentifier = list(
+#'     deviceCertificateId = "string",
+#'     caCertificateId = "string",
+#'     cognitoIdentityPoolId = "string",
+#'     clientId = "string",
+#'     policyVersionIdentifier = list(
+#'       policyName = "string",
+#'       policyVersionId = "string"
+#'     ),
+#'     account = "string",
+#'     iamRoleArn = "string",
+#'     roleAliasArn = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_describe_audit_suppression
+iot_describe_audit_suppression <- function(checkName, resourceIdentifier) {
+  op <- new_operation(
+    name = "DescribeAuditSuppression",
+    http_method = "POST",
+    http_path = "/audit/suppressions/describe",
+    paginator = list()
+  )
+  input <- .iot$describe_audit_suppression_input(checkName = checkName, resourceIdentifier = resourceIdentifier)
+  output <- .iot$describe_audit_suppression_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$describe_audit_suppression <- iot_describe_audit_suppression
 
 #' Gets information about a Device Defender audit
 #'
@@ -3966,6 +4388,42 @@ iot_describe_certificate <- function(certificateId) {
 }
 .iot$operations$describe_certificate <- iot_describe_certificate
 
+#' Gets information about a Device Defender detect custom metric
+#'
+#' Gets information about a Device Defender detect custom metric.
+#'
+#' @usage
+#' iot_describe_custom_metric(metricName)
+#'
+#' @param metricName &#91;required&#93; The name of the custom metric.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_custom_metric(
+#'   metricName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_describe_custom_metric
+iot_describe_custom_metric <- function(metricName) {
+  op <- new_operation(
+    name = "DescribeCustomMetric",
+    http_method = "GET",
+    http_path = "/custom-metric/{metricName}",
+    paginator = list()
+  )
+  input <- .iot$describe_custom_metric_input(metricName = metricName)
+  output <- .iot$describe_custom_metric_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$describe_custom_metric <- iot_describe_custom_metric
+
 #' Describes the default authorizer
 #'
 #' Describes the default authorizer.
@@ -3997,6 +4455,42 @@ iot_describe_default_authorizer <- function() {
   return(response)
 }
 .iot$operations$describe_default_authorizer <- iot_describe_default_authorizer
+
+#' Gets information about a Device Defender ML Detect mitigation action
+#'
+#' Gets information about a Device Defender ML Detect mitigation action.
+#'
+#' @usage
+#' iot_describe_detect_mitigation_actions_task(taskId)
+#'
+#' @param taskId &#91;required&#93; The unique identifier of the task.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_detect_mitigation_actions_task(
+#'   taskId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_describe_detect_mitigation_actions_task
+iot_describe_detect_mitigation_actions_task <- function(taskId) {
+  op <- new_operation(
+    name = "DescribeDetectMitigationActionsTask",
+    http_method = "GET",
+    http_path = "/detect/mitigationactions/tasks/{taskId}",
+    paginator = list()
+  )
+  input <- .iot$describe_detect_mitigation_actions_task_input(taskId = taskId)
+  output <- .iot$describe_detect_mitigation_actions_task_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$describe_detect_mitigation_actions_task <- iot_describe_detect_mitigation_actions_task
 
 #' Provides details about a dimension that is defined in your AWS account
 #'
@@ -4721,8 +5215,10 @@ iot_detach_policy <- function(policyName, target) {
 #' @param policyName &#91;required&#93; The name of the policy to detach.
 #' @param principal &#91;required&#93; The principal.
 #' 
-#' If the principal is a certificate, specify the certificate ARN. If the
-#' principal is an Amazon Cognito identity, specify the identity ID.
+#' Valid principals are CertificateArn
+#' (arn:aws:iot:*region*:*accountId*:cert/*certificateId*), thingGroupArn
+#' (arn:aws:iot:*region*:*accountId*:thinggroup/*groupName*) and CognitoId
+#' (*region*:*id*).
 #'
 #' @section Request syntax:
 #' ```
@@ -4910,6 +5406,49 @@ iot_enable_topic_rule <- function(ruleName) {
 }
 .iot$operations$enable_topic_rule <- iot_enable_topic_rule
 
+#' Returns a Device Defender's ML Detect Security Profile training model's
+#' status
+#'
+#' Returns a Device Defender's ML Detect Security Profile training model's
+#' status.
+#'
+#' @usage
+#' iot_get_behavior_model_training_summaries(securityProfileName,
+#'   maxResults, nextToken)
+#'
+#' @param securityProfileName The name of the security profile.
+#' @param maxResults The maximum number of results to return at one time. The default is 25.
+#' @param nextToken The token for the next set of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_behavior_model_training_summaries(
+#'   securityProfileName = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_get_behavior_model_training_summaries
+iot_get_behavior_model_training_summaries <- function(securityProfileName = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "GetBehaviorModelTrainingSummaries",
+    http_method = "GET",
+    http_path = "/behavior-model-training/summaries",
+    paginator = list()
+  )
+  input <- .iot$get_behavior_model_training_summaries_input(securityProfileName = securityProfileName, maxResults = maxResults, nextToken = nextToken)
+  output <- .iot$get_behavior_model_training_summaries_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$get_behavior_model_training_summaries <- iot_get_behavior_model_training_summaries
+
 #' Returns the approximate count of unique values that match the query
 #'
 #' Returns the approximate count of unique values that match the query.
@@ -4964,7 +5503,10 @@ iot_get_cardinality <- function(indexName = NULL, queryString, aggregationField 
 #' @usage
 #' iot_get_effective_policies(principal, cognitoIdentityPoolId, thingName)
 #'
-#' @param principal The principal.
+#' @param principal The principal. Valid principals are CertificateArn
+#' (arn:aws:iot:*region*:*accountId*:cert/*certificateId*), thingGroupArn
+#' (arn:aws:iot:*region*:*accountId*:thinggroup/*groupName*) and CognitoId
+#' (*region*:*id*).
 #' @param cognitoIdentityPoolId The Cognito identity pool ID.
 #' @param thingName The thing name.
 #'
@@ -5460,12 +6002,14 @@ iot_get_v2_logging_options <- function() {
 #' profile.
 #'
 #' @usage
-#' iot_list_active_violations(thingName, securityProfileName, nextToken,
-#'   maxResults)
+#' iot_list_active_violations(thingName, securityProfileName,
+#'   behaviorCriteriaType, listSuppressedAlerts, nextToken, maxResults)
 #'
 #' @param thingName The name of the thing whose active violations are listed.
 #' @param securityProfileName The name of the Device Defender security profile for which violations
 #' are listed.
+#' @param behaviorCriteriaType The criteria for a behavior.
+#' @param listSuppressedAlerts A list of all suppressed alerts.
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return at one time.
 #'
@@ -5474,6 +6018,8 @@ iot_get_v2_logging_options <- function() {
 #' svc$list_active_violations(
 #'   thingName = "string",
 #'   securityProfileName = "string",
+#'   behaviorCriteriaType = "STATIC"|"STATISTICAL"|"MACHINE_LEARNING",
+#'   listSuppressedAlerts = TRUE|FALSE,
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -5482,14 +6028,14 @@ iot_get_v2_logging_options <- function() {
 #' @keywords internal
 #'
 #' @rdname iot_list_active_violations
-iot_list_active_violations <- function(thingName = NULL, securityProfileName = NULL, nextToken = NULL, maxResults = NULL) {
+iot_list_active_violations <- function(thingName = NULL, securityProfileName = NULL, behaviorCriteriaType = NULL, listSuppressedAlerts = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListActiveViolations",
     http_method = "GET",
     http_path = "/active-violations",
     paginator = list()
   )
-  input <- .iot$list_active_violations_input(thingName = thingName, securityProfileName = securityProfileName, nextToken = nextToken, maxResults = maxResults)
+  input <- .iot$list_active_violations_input(thingName = thingName, securityProfileName = securityProfileName, behaviorCriteriaType = behaviorCriteriaType, listSuppressedAlerts = listSuppressedAlerts, nextToken = nextToken, maxResults = maxResults)
   output <- .iot$list_active_violations_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -5506,7 +6052,11 @@ iot_list_active_violations <- function(thingName = NULL, securityProfileName = N
 #' @usage
 #' iot_list_attached_policies(target, recursive, marker, pageSize)
 #'
-#' @param target &#91;required&#93; The group or principal for which the policies will be listed.
+#' @param target &#91;required&#93; The group or principal for which the policies will be listed. Valid
+#' principals are CertificateArn
+#' (arn:aws:iot:*region*:*accountId*:cert/*certificateId*), thingGroupArn
+#' (arn:aws:iot:*region*:*accountId*:thinggroup/*groupName*) and CognitoId
+#' (*region*:*id*).
 #' @param recursive When true, recursively list attached policies.
 #' @param marker The token to retrieve the next set of results.
 #' @param pageSize The maximum number of results to be returned per request.
@@ -5545,12 +6095,12 @@ iot_list_attached_policies <- function(target, recursive = NULL, marker = NULL, 
 #' performed during a specified time period
 #'
 #' Lists the findings (results) of a Device Defender audit or of the audits
-#' performed during a specified time period. (Findings are retained for 180
+#' performed during a specified time period. (Findings are retained for 90
 #' days.)
 #'
 #' @usage
 #' iot_list_audit_findings(taskId, checkName, resourceIdentifier,
-#'   maxResults, nextToken, startTime, endTime)
+#'   maxResults, nextToken, startTime, endTime, listSuppressedFindings)
 #'
 #' @param taskId A filter to limit results to the audit with the specified ID. You must
 #' specify either the taskId or the startTime and endTime, but not both.
@@ -5564,6 +6114,10 @@ iot_list_attached_policies <- function(target, recursive = NULL, marker = NULL, 
 #' @param endTime A filter to limit results to those found before the specified time. You
 #' must specify either the startTime and endTime or the taskId, but not
 #' both.
+#' @param listSuppressedFindings Boolean flag indicating whether only the suppressed findings or the
+#' unsuppressed findings should be listed. If this parameter isn't
+#' provided, the response will list both suppressed and unsuppressed
+#' findings.
 #'
 #' @section Request syntax:
 #' ```
@@ -5590,21 +6144,22 @@ iot_list_attached_policies <- function(target, recursive = NULL, marker = NULL, 
 #'   ),
 #'   endTime = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   listSuppressedFindings = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iot_list_audit_findings
-iot_list_audit_findings <- function(taskId = NULL, checkName = NULL, resourceIdentifier = NULL, maxResults = NULL, nextToken = NULL, startTime = NULL, endTime = NULL) {
+iot_list_audit_findings <- function(taskId = NULL, checkName = NULL, resourceIdentifier = NULL, maxResults = NULL, nextToken = NULL, startTime = NULL, endTime = NULL, listSuppressedFindings = NULL) {
   op <- new_operation(
     name = "ListAuditFindings",
     http_method = "POST",
     http_path = "/audit/findings",
     paginator = list()
   )
-  input <- .iot$list_audit_findings_input(taskId = taskId, checkName = checkName, resourceIdentifier = resourceIdentifier, maxResults = maxResults, nextToken = nextToken, startTime = startTime, endTime = endTime)
+  input <- .iot$list_audit_findings_input(taskId = taskId, checkName = checkName, resourceIdentifier = resourceIdentifier, maxResults = maxResults, nextToken = nextToken, startTime = startTime, endTime = endTime, listSuppressedFindings = listSuppressedFindings)
   output <- .iot$list_audit_findings_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -5721,6 +6276,65 @@ iot_list_audit_mitigation_actions_tasks <- function(auditTaskId = NULL, findingI
 }
 .iot$operations$list_audit_mitigation_actions_tasks <- iot_list_audit_mitigation_actions_tasks
 
+#' Lists your Device Defender audit listings
+#'
+#' Lists your Device Defender audit listings.
+#'
+#' @usage
+#' iot_list_audit_suppressions(checkName, resourceIdentifier,
+#'   ascendingOrder, nextToken, maxResults)
+#'
+#' @param checkName 
+#' @param resourceIdentifier 
+#' @param ascendingOrder Determines whether suppressions are listed in ascending order by
+#' expiration date or not. If parameter isn't provided,
+#' `ascendingOrder=true`.
+#' @param nextToken The token for the next set of results.
+#' @param maxResults The maximum number of results to return at one time. The default is 25.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_audit_suppressions(
+#'   checkName = "string",
+#'   resourceIdentifier = list(
+#'     deviceCertificateId = "string",
+#'     caCertificateId = "string",
+#'     cognitoIdentityPoolId = "string",
+#'     clientId = "string",
+#'     policyVersionIdentifier = list(
+#'       policyName = "string",
+#'       policyVersionId = "string"
+#'     ),
+#'     account = "string",
+#'     iamRoleArn = "string",
+#'     roleAliasArn = "string"
+#'   ),
+#'   ascendingOrder = TRUE|FALSE,
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_list_audit_suppressions
+iot_list_audit_suppressions <- function(checkName = NULL, resourceIdentifier = NULL, ascendingOrder = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListAuditSuppressions",
+    http_method = "POST",
+    http_path = "/audit/suppressions/list",
+    paginator = list()
+  )
+  input <- .iot$list_audit_suppressions_input(checkName = checkName, resourceIdentifier = resourceIdentifier, ascendingOrder = ascendingOrder, nextToken = nextToken, maxResults = maxResults)
+  output <- .iot$list_audit_suppressions_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$list_audit_suppressions <- iot_list_audit_suppressions
+
 #' Lists the Device Defender audits that have been performed during a given
 #' time period
 #'
@@ -5732,7 +6346,7 @@ iot_list_audit_mitigation_actions_tasks <- function(auditTaskId = NULL, findingI
 #'   nextToken, maxResults)
 #'
 #' @param startTime &#91;required&#93; The beginning of the time period. Audit information is retained for a
-#' limited time (180 days). Requesting a start time prior to what is
+#' limited time (90 days). Requesting a start time prior to what is
 #' retained results in an "InvalidRequestException".
 #' @param endTime &#91;required&#93; The end of the time period.
 #' @param taskType A filter to limit the output to the specified type of audit: can be one
@@ -5828,7 +6442,9 @@ iot_list_authorizers <- function(pageSize = NULL, marker = NULL, ascendingOrder 
 #' @usage
 #' iot_list_billing_groups(nextToken, maxResults, namePrefixFilter)
 #'
-#' @param nextToken The token to retrieve the next set of results.
+#' @param nextToken To retrieve the next set of results, the `nextToken` value from a
+#' previous response; otherwise **null** to receive the first set of
+#' results.
 #' @param maxResults The maximum number of results to return per request.
 #' @param namePrefixFilter Limit the results to billing groups whose names have the given prefix.
 #'
@@ -5992,6 +6608,152 @@ iot_list_certificates_by_ca <- function(caCertificateId, pageSize = NULL, marker
   return(response)
 }
 .iot$operations$list_certificates_by_ca <- iot_list_certificates_by_ca
+
+#' Lists your Device Defender detect custom metrics
+#'
+#' Lists your Device Defender detect custom metrics.
+#'
+#' @usage
+#' iot_list_custom_metrics(nextToken, maxResults)
+#'
+#' @param nextToken The token for the next set of results.
+#' @param maxResults The maximum number of results to return at one time. The default is 25.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_custom_metrics(
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_list_custom_metrics
+iot_list_custom_metrics <- function(nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListCustomMetrics",
+    http_method = "GET",
+    http_path = "/custom-metrics",
+    paginator = list()
+  )
+  input <- .iot$list_custom_metrics_input(nextToken = nextToken, maxResults = maxResults)
+  output <- .iot$list_custom_metrics_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$list_custom_metrics <- iot_list_custom_metrics
+
+#' Lists mitigation actions executions for a Device Defender ML Detect
+#' Security Profile
+#'
+#' Lists mitigation actions executions for a Device Defender ML Detect
+#' Security Profile.
+#'
+#' @usage
+#' iot_list_detect_mitigation_actions_executions(taskId, violationId,
+#'   thingName, startTime, endTime, maxResults, nextToken)
+#'
+#' @param taskId The unique identifier of the task.
+#' @param violationId The unique identifier of the violation.
+#' @param thingName The name of the thing whose mitigation actions are listed.
+#' @param startTime A filter to limit results to those found after the specified time. You
+#' must specify either the startTime and endTime or the taskId, but not
+#' both.
+#' @param endTime The end of the time period for which ML Detect mitigation actions
+#' executions are returned.
+#' @param maxResults The maximum number of results to return at one time. The default is 25.
+#' @param nextToken The token for the next set of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_detect_mitigation_actions_executions(
+#'   taskId = "string",
+#'   violationId = "string",
+#'   thingName = "string",
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_list_detect_mitigation_actions_executions
+iot_list_detect_mitigation_actions_executions <- function(taskId = NULL, violationId = NULL, thingName = NULL, startTime = NULL, endTime = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListDetectMitigationActionsExecutions",
+    http_method = "GET",
+    http_path = "/detect/mitigationactions/executions",
+    paginator = list()
+  )
+  input <- .iot$list_detect_mitigation_actions_executions_input(taskId = taskId, violationId = violationId, thingName = thingName, startTime = startTime, endTime = endTime, maxResults = maxResults, nextToken = nextToken)
+  output <- .iot$list_detect_mitigation_actions_executions_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$list_detect_mitigation_actions_executions <- iot_list_detect_mitigation_actions_executions
+
+#' List of Device Defender ML Detect mitigation actions tasks
+#'
+#' List of Device Defender ML Detect mitigation actions tasks.
+#'
+#' @usage
+#' iot_list_detect_mitigation_actions_tasks(maxResults, nextToken,
+#'   startTime, endTime)
+#'
+#' @param maxResults The maximum number of results to return at one time. The default is 25.
+#' @param nextToken The token for the next set of results.
+#' @param startTime &#91;required&#93; A filter to limit results to those found after the specified time. You
+#' must specify either the startTime and endTime or the taskId, but not
+#' both.
+#' @param endTime &#91;required&#93; The end of the time period for which ML Detect mitigation actions tasks
+#' are returned.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_detect_mitigation_actions_tasks(
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_list_detect_mitigation_actions_tasks
+iot_list_detect_mitigation_actions_tasks <- function(maxResults = NULL, nextToken = NULL, startTime, endTime) {
+  op <- new_operation(
+    name = "ListDetectMitigationActionsTasks",
+    http_method = "GET",
+    http_path = "/detect/mitigationactions/tasks",
+    paginator = list()
+  )
+  input <- .iot$list_detect_mitigation_actions_tasks_input(maxResults = maxResults, nextToken = nextToken, startTime = startTime, endTime = endTime)
+  output <- .iot$list_detect_mitigation_actions_tasks_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$list_detect_mitigation_actions_tasks <- iot_list_detect_mitigation_actions_tasks
 
 #' List the set of dimensions that are defined for your AWS account
 #'
@@ -6161,12 +6923,21 @@ iot_list_job_executions_for_job <- function(jobId, status = NULL, maxResults = N
 #' Lists the job executions for the specified thing.
 #'
 #' @usage
-#' iot_list_job_executions_for_thing(thingName, status, maxResults,
-#'   nextToken)
+#' iot_list_job_executions_for_thing(thingName, status, namespaceId,
+#'   maxResults, nextToken)
 #'
 #' @param thingName &#91;required&#93; The thing name.
 #' @param status An optional filter that lets you search for jobs that have the specified
 #' status.
+#' @param namespaceId The namespace used to indicate that a job is a customer-managed job.
+#' 
+#' When you specify a value for this parameter, AWS IoT Core sends jobs
+#' notifications to MQTT topics that contain the value in the following
+#' format.
+#' 
+#' `$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/`
+#' 
+#' The `namespaceId` feature is in public preview.
 #' @param maxResults The maximum number of results to be returned per request.
 #' @param nextToken The token to retrieve the next set of results.
 #'
@@ -6175,6 +6946,7 @@ iot_list_job_executions_for_job <- function(jobId, status = NULL, maxResults = N
 #' svc$list_job_executions_for_thing(
 #'   thingName = "string",
 #'   status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+#'   namespaceId = "string",
 #'   maxResults = 123,
 #'   nextToken = "string"
 #' )
@@ -6183,14 +6955,14 @@ iot_list_job_executions_for_job <- function(jobId, status = NULL, maxResults = N
 #' @keywords internal
 #'
 #' @rdname iot_list_job_executions_for_thing
-iot_list_job_executions_for_thing <- function(thingName, status = NULL, maxResults = NULL, nextToken = NULL) {
+iot_list_job_executions_for_thing <- function(thingName, status = NULL, namespaceId = NULL, maxResults = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListJobExecutionsForThing",
     http_method = "GET",
     http_path = "/things/{thingName}/jobs",
     paginator = list()
   )
-  input <- .iot$list_job_executions_for_thing_input(thingName = thingName, status = status, maxResults = maxResults, nextToken = nextToken)
+  input <- .iot$list_job_executions_for_thing_input(thingName = thingName, status = status, namespaceId = namespaceId, maxResults = maxResults, nextToken = nextToken)
   output <- .iot$list_job_executions_for_thing_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -6206,7 +6978,7 @@ iot_list_job_executions_for_thing <- function(thingName, status = NULL, maxResul
 #'
 #' @usage
 #' iot_list_jobs(status, targetSelection, maxResults, nextToken,
-#'   thingGroupName, thingGroupId)
+#'   thingGroupName, thingGroupId, namespaceId)
 #'
 #' @param status An optional filter that lets you search for jobs that have the specified
 #' status.
@@ -6220,6 +6992,15 @@ iot_list_job_executions_for_thing <- function(thingName, status = NULL, maxResul
 #' @param nextToken The token to retrieve the next set of results.
 #' @param thingGroupName A filter that limits the returned jobs to those for the specified group.
 #' @param thingGroupId A filter that limits the returned jobs to those for the specified group.
+#' @param namespaceId The namespace used to indicate that a job is a customer-managed job.
+#' 
+#' When you specify a value for this parameter, AWS IoT Core sends jobs
+#' notifications to MQTT topics that contain the value in the following
+#' format.
+#' 
+#' `$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/`
+#' 
+#' The `namespaceId` feature is in public preview.
 #'
 #' @section Request syntax:
 #' ```
@@ -6229,21 +7010,22 @@ iot_list_job_executions_for_thing <- function(thingName, status = NULL, maxResul
 #'   maxResults = 123,
 #'   nextToken = "string",
 #'   thingGroupName = "string",
-#'   thingGroupId = "string"
+#'   thingGroupId = "string",
+#'   namespaceId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iot_list_jobs
-iot_list_jobs <- function(status = NULL, targetSelection = NULL, maxResults = NULL, nextToken = NULL, thingGroupName = NULL, thingGroupId = NULL) {
+iot_list_jobs <- function(status = NULL, targetSelection = NULL, maxResults = NULL, nextToken = NULL, thingGroupName = NULL, thingGroupId = NULL, namespaceId = NULL) {
   op <- new_operation(
     name = "ListJobs",
     http_method = "GET",
     http_path = "/jobs",
     paginator = list()
   )
-  input <- .iot$list_jobs_input(status = status, targetSelection = targetSelection, maxResults = maxResults, nextToken = nextToken, thingGroupName = thingGroupName, thingGroupId = thingGroupId)
+  input <- .iot$list_jobs_input(status = status, targetSelection = targetSelection, maxResults = maxResults, nextToken = nextToken, thingGroupName = thingGroupName, thingGroupId = thingGroupId, namespaceId = namespaceId)
   output <- .iot$list_jobs_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -6514,7 +7296,10 @@ iot_list_policy_versions <- function(policyName) {
 #' @usage
 #' iot_list_principal_policies(principal, marker, pageSize, ascendingOrder)
 #'
-#' @param principal &#91;required&#93; The principal.
+#' @param principal &#91;required&#93; The principal. Valid principals are CertificateArn
+#' (arn:aws:iot:*region*:*accountId*:cert/*certificateId*), thingGroupArn
+#' (arn:aws:iot:*region*:*accountId*:thinggroup/*groupName*) and CognitoId
+#' (*region*:*id*).
 #' @param marker The marker for the next set of results.
 #' @param pageSize The result page size.
 #' @param ascendingOrder Specifies the order for results. If true, results are returned in
@@ -6559,7 +7344,9 @@ iot_list_principal_policies <- function(principal, marker = NULL, pageSize = NUL
 #' @usage
 #' iot_list_principal_things(nextToken, maxResults, principal)
 #'
-#' @param nextToken The token to retrieve the next set of results.
+#' @param nextToken To retrieve the next set of results, the `nextToken` value from a
+#' previous response; otherwise **null** to receive the first set of
+#' results.
 #' @param maxResults The maximum number of results to return in this operation.
 #' @param principal &#91;required&#93; The principal.
 #'
@@ -6749,40 +7536,44 @@ iot_list_scheduled_audits <- function(nextToken = NULL, maxResults = NULL) {
 }
 .iot$operations$list_scheduled_audits <- iot_list_scheduled_audits
 
-#' Lists the Device Defender security profiles you have created
+#' Lists the Device Defender security profiles you've created
 #'
-#' Lists the Device Defender security profiles you have created. You can
-#' use filters to list only those security profiles associated with a thing
-#' group or only those associated with your account.
+#' Lists the Device Defender security profiles you've created. You can
+#' filter security profiles by dimension or custom metric.
+#' 
+#' `dimensionName` and `metricName` cannot be used in the same request.
 #'
 #' @usage
-#' iot_list_security_profiles(nextToken, maxResults, dimensionName)
+#' iot_list_security_profiles(nextToken, maxResults, dimensionName,
+#'   metricName)
 #'
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return at one time.
 #' @param dimensionName A filter to limit results to the security profiles that use the defined
-#' dimension.
+#' dimension. Cannot be used with `metricName`
+#' @param metricName The name of the custom metric. Cannot be used with `dimensionName`.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_security_profiles(
 #'   nextToken = "string",
 #'   maxResults = 123,
-#'   dimensionName = "string"
+#'   dimensionName = "string",
+#'   metricName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iot_list_security_profiles
-iot_list_security_profiles <- function(nextToken = NULL, maxResults = NULL, dimensionName = NULL) {
+iot_list_security_profiles <- function(nextToken = NULL, maxResults = NULL, dimensionName = NULL, metricName = NULL) {
   op <- new_operation(
     name = "ListSecurityProfiles",
     http_method = "GET",
     http_path = "/security-profiles",
     paginator = list()
   )
-  input <- .iot$list_security_profiles_input(nextToken = nextToken, maxResults = maxResults, dimensionName = dimensionName)
+  input <- .iot$list_security_profiles_input(nextToken = nextToken, maxResults = maxResults, dimensionName = dimensionName, metricName = metricName)
   output <- .iot$list_security_profiles_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -6886,7 +7677,9 @@ iot_list_streams <- function(maxResults = NULL, nextToken = NULL, ascendingOrder
 #' iot_list_tags_for_resource(resourceArn, nextToken)
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
-#' @param nextToken The token to retrieve the next set of results.
+#' @param nextToken To retrieve the next set of results, the `nextToken` value from a
+#' previous response; otherwise **null** to receive the first set of
+#' results.
 #'
 #' @section Request syntax:
 #' ```
@@ -7007,7 +7800,9 @@ iot_list_targets_for_security_profile <- function(securityProfileName, nextToken
 #' iot_list_thing_groups(nextToken, maxResults, parentGroup,
 #'   namePrefixFilter, recursive)
 #'
-#' @param nextToken The token to retrieve the next set of results.
+#' @param nextToken To retrieve the next set of results, the `nextToken` value from a
+#' previous response; otherwise **null** to receive the first set of
+#' results.
 #' @param maxResults The maximum number of results to return at one time.
 #' @param parentGroup A filter that limits the results to those with the specified parent
 #' group.
@@ -7054,7 +7849,9 @@ iot_list_thing_groups <- function(nextToken = NULL, maxResults = NULL, parentGro
 #' iot_list_thing_groups_for_thing(thingName, nextToken, maxResults)
 #'
 #' @param thingName &#91;required&#93; The thing name.
-#' @param nextToken The token to retrieve the next set of results.
+#' @param nextToken To retrieve the next set of results, the `nextToken` value from a
+#' previous response; otherwise **null** to receive the first set of
+#' results.
 #' @param maxResults The maximum number of results to return at one time.
 #'
 #' @section Request syntax:
@@ -7093,13 +7890,19 @@ iot_list_thing_groups_for_thing <- function(thingName, nextToken = NULL, maxResu
 #' identities or federated identities.
 #'
 #' @usage
-#' iot_list_thing_principals(thingName)
+#' iot_list_thing_principals(nextToken, maxResults, thingName)
 #'
+#' @param nextToken To retrieve the next set of results, the `nextToken` value from a
+#' previous response; otherwise **null** to receive the first set of
+#' results.
+#' @param maxResults The maximum number of results to return in this operation.
 #' @param thingName &#91;required&#93; The name of the thing.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_thing_principals(
+#'   nextToken = "string",
+#'   maxResults = 123,
 #'   thingName = "string"
 #' )
 #' ```
@@ -7107,14 +7910,14 @@ iot_list_thing_groups_for_thing <- function(thingName, nextToken = NULL, maxResu
 #' @keywords internal
 #'
 #' @rdname iot_list_thing_principals
-iot_list_thing_principals <- function(thingName) {
+iot_list_thing_principals <- function(nextToken = NULL, maxResults = NULL, thingName) {
   op <- new_operation(
     name = "ListThingPrincipals",
     http_method = "GET",
     http_path = "/things/{thingName}/principals",
     paginator = list()
   )
-  input <- .iot$list_thing_principals_input(thingName = thingName)
+  input <- .iot$list_thing_principals_input(nextToken = nextToken, maxResults = maxResults, thingName = thingName)
   output <- .iot$list_thing_principals_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -7134,7 +7937,9 @@ iot_list_thing_principals <- function(thingName) {
 #'
 #' @param taskId &#91;required&#93; The id of the task.
 #' @param reportType &#91;required&#93; The type of task report.
-#' @param nextToken The token to retrieve the next set of results.
+#' @param nextToken To retrieve the next set of results, the `nextToken` value from a
+#' previous response; otherwise **null** to receive the first set of
+#' results.
 #' @param maxResults The maximum number of results to return per request.
 #'
 #' @section Request syntax:
@@ -7174,7 +7979,9 @@ iot_list_thing_registration_task_reports <- function(taskId, reportType, nextTok
 #' @usage
 #' iot_list_thing_registration_tasks(nextToken, maxResults, status)
 #'
-#' @param nextToken The token to retrieve the next set of results.
+#' @param nextToken To retrieve the next set of results, the `nextToken` value from a
+#' previous response; otherwise **null** to receive the first set of
+#' results.
 #' @param maxResults The maximum number of results to return at one time.
 #' @param status The status of the bulk thing provisioning task.
 #'
@@ -7214,7 +8021,9 @@ iot_list_thing_registration_tasks <- function(nextToken = NULL, maxResults = NUL
 #' @usage
 #' iot_list_thing_types(nextToken, maxResults, thingTypeName)
 #'
-#' @param nextToken The token to retrieve the next set of results.
+#' @param nextToken To retrieve the next set of results, the `nextToken` value from a
+#' previous response; otherwise **null** to receive the first set of
+#' results.
 #' @param maxResults The maximum number of results to return in this operation.
 #' @param thingTypeName The name of the thing type.
 #'
@@ -7253,12 +8062,19 @@ iot_list_thing_types <- function(nextToken = NULL, maxResults = NULL, thingTypeN
 #' parameters to filter your things. For example, calling `ListThings` with
 #' attributeName=Color and attributeValue=Red retrieves all things in the
 #' registry that contain an attribute **Color** with the value **Red**.
+#' 
+#' You will not be charged for calling this API if an `Access denied` error
+#' is returned. You will also not be charged if no attributes or pagination
+#' token was provided in request and no pagination token and no results
+#' were returned.
 #'
 #' @usage
 #' iot_list_things(nextToken, maxResults, attributeName, attributeValue,
 #'   thingTypeName)
 #'
-#' @param nextToken The token to retrieve the next set of results.
+#' @param nextToken To retrieve the next set of results, the `nextToken` value from a
+#' previous response; otherwise **null** to receive the first set of
+#' results.
 #' @param maxResults The maximum number of results to return in this operation.
 #' @param attributeName The attribute name used to search for things.
 #' @param attributeValue The attribute value used to search for things.
@@ -7304,7 +8120,9 @@ iot_list_things <- function(nextToken = NULL, maxResults = NULL, attributeName =
 #'   maxResults)
 #'
 #' @param billingGroupName &#91;required&#93; The name of the billing group.
-#' @param nextToken The token to retrieve the next set of results.
+#' @param nextToken To retrieve the next set of results, the `nextToken` value from a
+#' previous response; otherwise **null** to receive the first set of
+#' results.
 #' @param maxResults The maximum number of results to return per request.
 #'
 #' @section Request syntax:
@@ -7347,7 +8165,9 @@ iot_list_things_in_billing_group <- function(billingGroupName, nextToken = NULL,
 #' @param thingGroupName &#91;required&#93; The thing group name.
 #' @param recursive When true, list things in this thing group and in all child groups as
 #' well.
-#' @param nextToken The token to retrieve the next set of results.
+#' @param nextToken To retrieve the next set of results, the `nextToken` value from a
+#' previous response; otherwise **null** to receive the first set of
+#' results.
 #' @param maxResults The maximum number of results to return at one time.
 #'
 #' @section Request syntax:
@@ -7388,7 +8208,9 @@ iot_list_things_in_thing_group <- function(thingGroupName, recursive = NULL, nex
 #' iot_list_topic_rule_destinations(maxResults, nextToken)
 #'
 #' @param maxResults The maximum number of results to return at one time.
-#' @param nextToken The token to retrieve the next set of results.
+#' @param nextToken To retrieve the next set of results, the `nextToken` value from a
+#' previous response; otherwise **null** to receive the first set of
+#' results.
 #'
 #' @section Request syntax:
 #' ```
@@ -7427,7 +8249,9 @@ iot_list_topic_rule_destinations <- function(maxResults = NULL, nextToken = NULL
 #'
 #' @param topic The topic.
 #' @param maxResults The maximum number of results to return.
-#' @param nextToken A token used to retrieve the next value.
+#' @param nextToken To retrieve the next set of results, the `nextToken` value from a
+#' previous response; otherwise **null** to receive the first set of
+#' results.
 #' @param ruleDisabled Specifies whether the rule is disabled.
 #'
 #' @section Request syntax:
@@ -7469,8 +8293,9 @@ iot_list_topic_rules <- function(topic = NULL, maxResults = NULL, nextToken = NU
 #'
 #' @param targetType The type of resource for which you are configuring logging. Must be
 #' `THING_Group`.
-#' @param nextToken The token used to get the next set of results, or **null** if there are
-#' no additional results.
+#' @param nextToken To retrieve the next set of results, the `nextToken` value from a
+#' previous response; otherwise **null** to receive the first set of
+#' results.
 #' @param maxResults The maximum number of results to return at one time.
 #'
 #' @section Request syntax:
@@ -7512,13 +8337,16 @@ iot_list_v2_logging_levels <- function(targetType = NULL, nextToken = NULL, maxR
 #'
 #' @usage
 #' iot_list_violation_events(startTime, endTime, thingName,
-#'   securityProfileName, nextToken, maxResults)
+#'   securityProfileName, behaviorCriteriaType, listSuppressedAlerts,
+#'   nextToken, maxResults)
 #'
 #' @param startTime &#91;required&#93; The start time for the alerts to be listed.
 #' @param endTime &#91;required&#93; The end time for the alerts to be listed.
 #' @param thingName A filter to limit results to those alerts caused by the specified thing.
 #' @param securityProfileName A filter to limit results to those alerts generated by the specified
 #' security profile.
+#' @param behaviorCriteriaType The criteria for a behavior.
+#' @param listSuppressedAlerts A list of all suppressed alerts.
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return at one time.
 #'
@@ -7533,6 +8361,8 @@ iot_list_v2_logging_levels <- function(targetType = NULL, nextToken = NULL, maxR
 #'   ),
 #'   thingName = "string",
 #'   securityProfileName = "string",
+#'   behaviorCriteriaType = "STATIC"|"STATISTICAL"|"MACHINE_LEARNING",
+#'   listSuppressedAlerts = TRUE|FALSE,
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -7541,14 +8371,14 @@ iot_list_v2_logging_levels <- function(targetType = NULL, nextToken = NULL, maxR
 #' @keywords internal
 #'
 #' @rdname iot_list_violation_events
-iot_list_violation_events <- function(startTime, endTime, thingName = NULL, securityProfileName = NULL, nextToken = NULL, maxResults = NULL) {
+iot_list_violation_events <- function(startTime, endTime, thingName = NULL, securityProfileName = NULL, behaviorCriteriaType = NULL, listSuppressedAlerts = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "ListViolationEvents",
     http_method = "GET",
     http_path = "/violation-events",
     paginator = list()
   )
-  input <- .iot$list_violation_events_input(startTime = startTime, endTime = endTime, thingName = thingName, securityProfileName = securityProfileName, nextToken = nextToken, maxResults = maxResults)
+  input <- .iot$list_violation_events_input(startTime = startTime, endTime = endTime, thingName = thingName, securityProfileName = securityProfileName, behaviorCriteriaType = behaviorCriteriaType, listSuppressedAlerts = listSuppressedAlerts, nextToken = nextToken, maxResults = maxResults)
   output <- .iot$list_violation_events_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -7972,7 +8802,8 @@ iot_remove_thing_from_thing_group <- function(thingGroupName = NULL, thingGroupA
 #'         firehose = list(
 #'           roleArn = "string",
 #'           deliveryStreamName = "string",
-#'           separator = "string"
+#'           separator = "string",
+#'           batchMode = TRUE|FALSE
 #'         ),
 #'         cloudwatchMetric = list(
 #'           roleArn = "string",
@@ -8006,11 +8837,13 @@ iot_remove_thing_from_thing_group <- function(thingGroupName = NULL, thingGroupA
 #'         iotAnalytics = list(
 #'           channelArn = "string",
 #'           channelName = "string",
+#'           batchMode = TRUE|FALSE,
 #'           roleArn = "string"
 #'         ),
 #'         iotEvents = list(
 #'           inputName = "string",
 #'           messageId = "string",
+#'           batchMode = TRUE|FALSE,
 #'           roleArn = "string"
 #'         ),
 #'         iotSiteWise = list(
@@ -8044,6 +8877,21 @@ iot_remove_thing_from_thing_group <- function(thingGroupName = NULL, thingGroupA
 #'           stateMachineName = "string",
 #'           roleArn = "string"
 #'         ),
+#'         timestream = list(
+#'           roleArn = "string",
+#'           databaseName = "string",
+#'           tableName = "string",
+#'           dimensions = list(
+#'             list(
+#'               name = "string",
+#'               value = "string"
+#'             )
+#'           ),
+#'           timestamp = list(
+#'             value = "string",
+#'             unit = "string"
+#'           )
+#'         ),
 #'         http = list(
 #'           url = "string",
 #'           confirmationUrl = "string",
@@ -8059,6 +8907,15 @@ iot_remove_thing_from_thing_group <- function(thingGroupName = NULL, thingGroupA
 #'               serviceName = "string",
 #'               roleArn = "string"
 #'             )
+#'           )
+#'         ),
+#'         kafka = list(
+#'           destinationArn = "string",
+#'           topic = "string",
+#'           key = "string",
+#'           partition = "string",
+#'           clientProperties = list(
+#'             "string"
 #'           )
 #'         )
 #'       )
@@ -8116,7 +8973,8 @@ iot_remove_thing_from_thing_group <- function(thingGroupName = NULL, thingGroupA
 #'       firehose = list(
 #'         roleArn = "string",
 #'         deliveryStreamName = "string",
-#'         separator = "string"
+#'         separator = "string",
+#'         batchMode = TRUE|FALSE
 #'       ),
 #'       cloudwatchMetric = list(
 #'         roleArn = "string",
@@ -8150,11 +9008,13 @@ iot_remove_thing_from_thing_group <- function(thingGroupName = NULL, thingGroupA
 #'       iotAnalytics = list(
 #'         channelArn = "string",
 #'         channelName = "string",
+#'         batchMode = TRUE|FALSE,
 #'         roleArn = "string"
 #'       ),
 #'       iotEvents = list(
 #'         inputName = "string",
 #'         messageId = "string",
+#'         batchMode = TRUE|FALSE,
 #'         roleArn = "string"
 #'       ),
 #'       iotSiteWise = list(
@@ -8188,6 +9048,21 @@ iot_remove_thing_from_thing_group <- function(thingGroupName = NULL, thingGroupA
 #'         stateMachineName = "string",
 #'         roleArn = "string"
 #'       ),
+#'       timestream = list(
+#'         roleArn = "string",
+#'         databaseName = "string",
+#'         tableName = "string",
+#'         dimensions = list(
+#'           list(
+#'             name = "string",
+#'             value = "string"
+#'           )
+#'         ),
+#'         timestamp = list(
+#'           value = "string",
+#'           unit = "string"
+#'         )
+#'       ),
 #'       http = list(
 #'         url = "string",
 #'         confirmationUrl = "string",
@@ -8203,6 +9078,15 @@ iot_remove_thing_from_thing_group <- function(thingGroupName = NULL, thingGroupA
 #'             serviceName = "string",
 #'             roleArn = "string"
 #'           )
+#'         )
+#'       ),
+#'       kafka = list(
+#'         destinationArn = "string",
+#'         topic = "string",
+#'         key = "string",
+#'         partition = "string",
+#'         clientProperties = list(
+#'           "string"
 #'         )
 #'       )
 #'     )
@@ -8492,7 +9376,7 @@ iot_set_v2_logging_options <- function(roleArn = NULL, defaultLogLevel = NULL, d
 #' the status of the task or to cancel it.
 #' @param target &#91;required&#93; Specifies the audit findings to which the mitigation actions are
 #' applied. You can apply them to a type of audit check, to all findings
-#' from an audit, or to a speecific set of findings.
+#' from an audit, or to a specific set of findings.
 #' @param auditCheckToActionsMapping &#91;required&#93; For an audit check, specifies which mitigation actions to apply. Those
 #' actions must be defined in your AWS account.
 #' @param clientRequestToken &#91;required&#93; Each audit mitigation task must have a unique client request token. If
@@ -8543,6 +9427,75 @@ iot_start_audit_mitigation_actions_task <- function(taskId, target, auditCheckTo
   return(response)
 }
 .iot$operations$start_audit_mitigation_actions_task <- iot_start_audit_mitigation_actions_task
+
+#' Starts a Device Defender ML Detect mitigation actions task
+#'
+#' Starts a Device Defender ML Detect mitigation actions task.
+#'
+#' @usage
+#' iot_start_detect_mitigation_actions_task(taskId, target, actions,
+#'   violationEventOccurrenceRange, includeOnlyActiveViolations,
+#'   includeSuppressedAlerts, clientRequestToken)
+#'
+#' @param taskId &#91;required&#93; The unique identifier of the task.
+#' @param target &#91;required&#93; Specifies the ML Detect findings to which the mitigation actions are
+#' applied.
+#' @param actions &#91;required&#93; The actions to be performed when a device has unexpected behavior.
+#' @param violationEventOccurrenceRange Specifies the time period of which violation events occurred between.
+#' @param includeOnlyActiveViolations Specifies to list only active violations.
+#' @param includeSuppressedAlerts Specifies to include suppressed alerts.
+#' @param clientRequestToken &#91;required&#93; Each mitigation action task must have a unique client request token. If
+#' you try to create a new task with the same token as a task that already
+#' exists, an exception occurs. If you omit this value, AWS SDKs will
+#' automatically generate a unique client request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_detect_mitigation_actions_task(
+#'   taskId = "string",
+#'   target = list(
+#'     violationIds = list(
+#'       "string"
+#'     ),
+#'     securityProfileName = "string",
+#'     behaviorName = "string"
+#'   ),
+#'   actions = list(
+#'     "string"
+#'   ),
+#'   violationEventOccurrenceRange = list(
+#'     startTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     endTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   ),
+#'   includeOnlyActiveViolations = TRUE|FALSE,
+#'   includeSuppressedAlerts = TRUE|FALSE,
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_start_detect_mitigation_actions_task
+iot_start_detect_mitigation_actions_task <- function(taskId, target, actions, violationEventOccurrenceRange = NULL, includeOnlyActiveViolations = NULL, includeSuppressedAlerts = NULL, clientRequestToken) {
+  op <- new_operation(
+    name = "StartDetectMitigationActionsTask",
+    http_method = "PUT",
+    http_path = "/detect/mitigationactions/tasks/{taskId}",
+    paginator = list()
+  )
+  input <- .iot$start_detect_mitigation_actions_task_input(taskId = taskId, target = target, actions = actions, violationEventOccurrenceRange = violationEventOccurrenceRange, includeOnlyActiveViolations = includeOnlyActiveViolations, includeSuppressedAlerts = includeSuppressedAlerts, clientRequestToken = clientRequestToken)
+  output <- .iot$start_detect_mitigation_actions_task_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$start_detect_mitigation_actions_task <- iot_start_detect_mitigation_actions_task
 
 #' Starts an on-demand Device Defender audit
 #'
@@ -8723,7 +9676,10 @@ iot_tag_resource <- function(resourceArn, tags) {
 #' iot_test_authorization(principal, cognitoIdentityPoolId, authInfos,
 #'   clientId, policyNamesToAdd, policyNamesToSkip)
 #'
-#' @param principal The principal.
+#' @param principal The principal. Valid principals are CertificateArn
+#' (arn:aws:iot:*region*:*accountId*:cert/*certificateId*), thingGroupArn
+#' (arn:aws:iot:*region*:*accountId*:thinggroup/*groupName*) and CognitoId
+#' (*region*:*id*).
 #' @param cognitoIdentityPoolId The Cognito identity pool ID.
 #' @param authInfos &#91;required&#93; A list of authorization info objects. Simulating authorization will
 #' create a response for each `authInfo` object in the list.
@@ -8942,9 +9898,9 @@ iot_untag_resource <- function(resourceArn, tagKeys) {
 #' iot_update_account_audit_configuration(roleArn,
 #'   auditNotificationTargetConfigurations, auditCheckConfigurations)
 #'
-#' @param roleArn The ARN of the role that grants permission to AWS IoT to access
-#' information about your devices, policies, certificates and other items
-#' as required when performing an audit.
+#' @param roleArn The Amazon Resource Name (ARN) of the role that grants permission to AWS
+#' IoT to access information about your devices, policies, certificates,
+#' and other items as required when performing an audit.
 #' @param auditNotificationTargetConfigurations Information about the targets to which audit notifications are sent.
 #' @param auditCheckConfigurations Specifies which audit checks are enabled and disabled for this account.
 #' Use `DescribeAccountAuditConfiguration` to see the list of all checks,
@@ -8954,9 +9910,9 @@ iot_untag_resource <- function(resourceArn, tagKeys) {
 #' enabled. When a check is disabled, any data collected so far in relation
 #' to the check is deleted.
 #' 
-#' You cannot disable a check if it is used by any scheduled audit. You
-#' must first delete the check from the scheduled audit or delete the
-#' scheduled audit itself.
+#' You cannot disable a check if it's used by any scheduled audit. You must
+#' first delete the check from the scheduled audit or delete the scheduled
+#' audit itself.
 #' 
 #' On the first call to `UpdateAccountAuditConfiguration`, this parameter
 #' is required and must specify at least one enabled check.
@@ -8999,6 +9955,66 @@ iot_update_account_audit_configuration <- function(roleArn = NULL, auditNotifica
   return(response)
 }
 .iot$operations$update_account_audit_configuration <- iot_update_account_audit_configuration
+
+#' Updates a Device Defender audit suppression
+#'
+#' Updates a Device Defender audit suppression.
+#'
+#' @usage
+#' iot_update_audit_suppression(checkName, resourceIdentifier,
+#'   expirationDate, suppressIndefinitely, description)
+#'
+#' @param checkName &#91;required&#93; 
+#' @param resourceIdentifier &#91;required&#93; 
+#' @param expirationDate The expiration date (epoch timestamp in seconds) that you want the
+#' suppression to adhere to.
+#' @param suppressIndefinitely Indicates whether a suppression should exist indefinitely or not.
+#' @param description The description of the audit suppression.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_audit_suppression(
+#'   checkName = "string",
+#'   resourceIdentifier = list(
+#'     deviceCertificateId = "string",
+#'     caCertificateId = "string",
+#'     cognitoIdentityPoolId = "string",
+#'     clientId = "string",
+#'     policyVersionIdentifier = list(
+#'       policyName = "string",
+#'       policyVersionId = "string"
+#'     ),
+#'     account = "string",
+#'     iamRoleArn = "string",
+#'     roleAliasArn = "string"
+#'   ),
+#'   expirationDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   suppressIndefinitely = TRUE|FALSE,
+#'   description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_update_audit_suppression
+iot_update_audit_suppression <- function(checkName, resourceIdentifier, expirationDate = NULL, suppressIndefinitely = NULL, description = NULL) {
+  op <- new_operation(
+    name = "UpdateAuditSuppression",
+    http_method = "PATCH",
+    http_path = "/audit/suppressions/update",
+    paginator = list()
+  )
+  input <- .iot$update_audit_suppression_input(checkName = checkName, resourceIdentifier = resourceIdentifier, expirationDate = expirationDate, suppressIndefinitely = suppressIndefinitely, description = description)
+  output <- .iot$update_audit_suppression_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$update_audit_suppression <- iot_update_audit_suppression
 
 #' Updates an authorizer
 #'
@@ -9150,12 +10166,13 @@ iot_update_ca_certificate <- function(certificateId, newStatus = NULL, newAutoRe
 #' Updates the status of the specified certificate. This operation is
 #' idempotent.
 #' 
-#' Moving a certificate from the ACTIVE state (including REVOKED) will not
-#' disconnect currently connected devices, but these devices will be unable
-#' to reconnect.
+#' Certificates must be in the ACTIVE state to authenticate devices that
+#' use a certificate to connect to AWS IoT.
 #' 
-#' The ACTIVE state is required to authenticate devices connecting to AWS
-#' IoT using a certificate.
+#' Within a few minutes of updating a certificate from the ACTIVE state to
+#' any other state, AWS IoT disconnects all devices that used that
+#' certificate to connect. Devices cannot use a certificate that is not in
+#' the ACTIVE state to reconnect.
 #'
 #' @usage
 #' iot_update_certificate(certificateId, newStatus)
@@ -9200,10 +10217,50 @@ iot_update_certificate <- function(certificateId, newStatus) {
 }
 .iot$operations$update_certificate <- iot_update_certificate
 
+#' Updates a Device Defender detect custom metric
+#'
+#' Updates a Device Defender detect custom metric.
+#'
+#' @usage
+#' iot_update_custom_metric(metricName, displayName)
+#'
+#' @param metricName &#91;required&#93; The name of the custom metric. Cannot be updated.
+#' @param displayName &#91;required&#93; Field represents a friendly name in the console for the custom metric,
+#' it doesn't have to be unique. Don't use this name as the metric
+#' identifier in the device metric report. Can be updated.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_custom_metric(
+#'   metricName = "string",
+#'   displayName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iot_update_custom_metric
+iot_update_custom_metric <- function(metricName, displayName) {
+  op <- new_operation(
+    name = "UpdateCustomMetric",
+    http_method = "PATCH",
+    http_path = "/custom-metric/{metricName}",
+    paginator = list()
+  )
+  input <- .iot$update_custom_metric_input(metricName = metricName, displayName = displayName)
+  output <- .iot$update_custom_metric_output()
+  config <- get_config()
+  svc <- .iot$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iot$operations$update_custom_metric <- iot_update_custom_metric
+
 #' Updates the definition for a dimension
 #'
 #' Updates the definition for a dimension. You cannot change the type of a
-#' dimension after it is created (you can delete it and re-create it).
+#' dimension after it is created (you can delete it and recreate it).
 #'
 #' @usage
 #' iot_update_dimension(name, stringValues)
@@ -9468,7 +10525,7 @@ iot_update_indexing_configuration <- function(thingIndexingConfiguration = NULL,
 #'
 #' @usage
 #' iot_update_job(jobId, description, presignedUrlConfig,
-#'   jobExecutionsRolloutConfig, abortConfig, timeoutConfig)
+#'   jobExecutionsRolloutConfig, abortConfig, timeoutConfig, namespaceId)
 #'
 #' @param jobId &#91;required&#93; The ID of the job to be updated.
 #' @param description A short text description of the job.
@@ -9480,6 +10537,15 @@ iot_update_indexing_configuration <- function(thingIndexingConfiguration = NULL,
 #' `IN_PROGRESS`. If the job execution status is not set to another
 #' terminal state before the time expires, it will be automatically set to
 #' `TIMED_OUT`.
+#' @param namespaceId The namespace used to indicate that a job is a customer-managed job.
+#' 
+#' When you specify a value for this parameter, AWS IoT Core sends jobs
+#' notifications to MQTT topics that contain the value in the following
+#' format.
+#' 
+#' `$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/`
+#' 
+#' The `namespaceId` feature is in public preview.
 #'
 #' @section Request syntax:
 #' ```
@@ -9513,21 +10579,22 @@ iot_update_indexing_configuration <- function(thingIndexingConfiguration = NULL,
 #'   ),
 #'   timeoutConfig = list(
 #'     inProgressTimeoutInMinutes = 123
-#'   )
+#'   ),
+#'   namespaceId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname iot_update_job
-iot_update_job <- function(jobId, description = NULL, presignedUrlConfig = NULL, jobExecutionsRolloutConfig = NULL, abortConfig = NULL, timeoutConfig = NULL) {
+iot_update_job <- function(jobId, description = NULL, presignedUrlConfig = NULL, jobExecutionsRolloutConfig = NULL, abortConfig = NULL, timeoutConfig = NULL, namespaceId = NULL) {
   op <- new_operation(
     name = "UpdateJob",
     http_method = "PATCH",
     http_path = "/jobs/{jobId}",
     paginator = list()
   )
-  input <- .iot$update_job_input(jobId = jobId, description = description, presignedUrlConfig = presignedUrlConfig, jobExecutionsRolloutConfig = jobExecutionsRolloutConfig, abortConfig = abortConfig, timeoutConfig = timeoutConfig)
+  input <- .iot$update_job_input(jobId = jobId, description = description, presignedUrlConfig = presignedUrlConfig, jobExecutionsRolloutConfig = jobExecutionsRolloutConfig, abortConfig = abortConfig, timeoutConfig = timeoutConfig, namespaceId = namespaceId)
   output <- .iot$update_job_output()
   config <- get_config()
   svc <- .iot$service(config)
@@ -9544,9 +10611,9 @@ iot_update_job <- function(jobId, description = NULL, presignedUrlConfig = NULL,
 #' @usage
 #' iot_update_mitigation_action(actionName, roleArn, actionParams)
 #'
-#' @param actionName &#91;required&#93; The friendly name for the mitigation action. You can't change the name
-#' by using `UpdateMitigationAction`. Instead, you must delete and
-#' re-create the mitigation action with the new name.
+#' @param actionName &#91;required&#93; The friendly name for the mitigation action. You cannot change the name
+#' by using `UpdateMitigationAction`. Instead, you must delete and recreate
+#' the mitigation action with the new name.
 #' @param roleArn The ARN of the IAM role that is used to apply the mitigation action.
 #' @param actionParams Defines the type of action and the parameters for that action.
 #'
@@ -9706,17 +10773,18 @@ iot_update_role_alias <- function(roleAlias, roleArn = NULL, credentialDurationS
 #' iot_update_scheduled_audit(frequency, dayOfMonth, dayOfWeek,
 #'   targetCheckNames, scheduledAuditName)
 #'
-#' @param frequency How often the scheduled audit takes place. Can be one of "DAILY",
-#' "WEEKLY", "BIWEEKLY", or "MONTHLY". The start time of each audit is
-#' determined by the system.
-#' @param dayOfMonth The day of the month on which the scheduled audit takes place. Can be
-#' "1" through "31" or "LAST". This field is required if the "frequency"
-#' parameter is set to "MONTHLY". If days 29-31 are specified, and the
+#' @param frequency How often the scheduled audit takes place, either `DAILY`, `WEEKLY`,
+#' `BIWEEKLY`, or `MONTHLY`. The start time of each audit is determined by
+#' the system.
+#' @param dayOfMonth The day of the month on which the scheduled audit takes place. This can
+#' be `1` through `31` or `LAST`. This field is required if the `frequency`
+#' parameter is set to `MONTHLY`. If days 29-31 are specified, and the
 #' month does not have that many days, the audit takes place on the "LAST"
 #' day of the month.
-#' @param dayOfWeek The day of the week on which the scheduled audit takes place. Can be one
-#' of "SUN", "MON", "TUE", "WED", "THU", "FRI", or "SAT". This field is
-#' required if the "frequency" parameter is set to "WEEKLY" or "BIWEEKLY".
+#' @param dayOfWeek The day of the week on which the scheduled audit takes place. This can
+#' be one of `SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, or `SAT`. This field
+#' is required if the "frequency" parameter is set to `WEEKLY` or
+#' `BIWEEKLY`.
 #' @param targetCheckNames Which checks are performed during the scheduled audit. Checks must be
 #' enabled for your account. (Use `DescribeAccountAuditConfiguration` to
 #' see the list of all checks, including those that are enabled or use
@@ -9771,15 +10839,17 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 #' @param behaviors Specifies the behaviors that, when violated by a device (thing), cause
 #' an alert.
 #' @param alertTargets Where the alerts are sent. (Alerts are always sent to the console.)
-#' @param additionalMetricsToRetain A list of metrics whose data is retained (stored). By default, data is
-#' retained for any metric used in the profile's `behaviors`, but it is
-#' also retained for any metric specified here.
+#' @param additionalMetricsToRetain *Please use UpdateSecurityProfileRequest$additionalMetricsToRetainV2
+#' instead.*
 #' 
-#' **Note:** This API field is deprecated. Please use
-#' UpdateSecurityProfileRequest$additionalMetricsToRetainV2 instead.
+#' A list of metrics whose data is retained (stored). By default, data is
+#' retained for any metric used in the profile's `behaviors`, but it is
+#' also retained for any metric specified here. Can be used with custom
+#' metrics; cannot be used with dimensions.
 #' @param additionalMetricsToRetainV2 A list of metrics whose data is retained (stored). By default, data is
 #' retained for any metric used in the profile's behaviors, but it is also
-#' retained for any metric specified here.
+#' retained for any metric specified here. Can be used with custom metrics;
+#' cannot be used with dimensions.
 #' @param deleteBehaviors If true, delete all `behaviors` defined for this security profile. If
 #' any `behaviors` are defined in the current invocation, an exception
 #' occurs.
@@ -9808,7 +10878,7 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 #'         operator = "IN"|"NOT_IN"
 #'       ),
 #'       criteria = list(
-#'         comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set",
+#'         comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set"|"in-set"|"not-in-set",
 #'         value = list(
 #'           count = 123,
 #'           cidrs = list(
@@ -9816,6 +10886,13 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 #'           ),
 #'           ports = list(
 #'             123
+#'           ),
+#'           number = 123.0,
+#'           numbers = list(
+#'             123.0
+#'           ),
+#'           strings = list(
+#'             "string"
 #'           )
 #'         ),
 #'         durationSeconds = 123,
@@ -9823,8 +10900,12 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 #'         consecutiveDatapointsToClear = 123,
 #'         statisticalThreshold = list(
 #'           statistic = "string"
+#'         ),
+#'         mlDetectionConfig = list(
+#'           confidenceLevel = "LOW"|"MEDIUM"|"HIGH"
 #'         )
-#'       )
+#'       ),
+#'       suppressAlerts = TRUE|FALSE
 #'     )
 #'   ),
 #'   alertTargets = list(
@@ -10130,7 +11211,7 @@ iot_update_thing_groups_for_thing <- function(thingName = NULL, thingGroupsToAdd
 #' ```
 #' svc$update_topic_rule_destination(
 #'   arn = "string",
-#'   status = "ENABLED"|"IN_PROGRESS"|"DISABLED"|"ERROR"
+#'   status = "ENABLED"|"IN_PROGRESS"|"DISABLED"|"ERROR"|"DELETING"
 #' )
 #' ```
 #'
@@ -10176,7 +11257,7 @@ iot_update_topic_rule_destination <- function(arn, status) {
 #'         operator = "IN"|"NOT_IN"
 #'       ),
 #'       criteria = list(
-#'         comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set",
+#'         comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set"|"in-set"|"not-in-set",
 #'         value = list(
 #'           count = 123,
 #'           cidrs = list(
@@ -10184,6 +11265,13 @@ iot_update_topic_rule_destination <- function(arn, status) {
 #'           ),
 #'           ports = list(
 #'             123
+#'           ),
+#'           number = 123.0,
+#'           numbers = list(
+#'             123.0
+#'           ),
+#'           strings = list(
+#'             "string"
 #'           )
 #'         ),
 #'         durationSeconds = 123,
@@ -10191,8 +11279,12 @@ iot_update_topic_rule_destination <- function(arn, status) {
 #'         consecutiveDatapointsToClear = 123,
 #'         statisticalThreshold = list(
 #'           statistic = "string"
+#'         ),
+#'         mlDetectionConfig = list(
+#'           confidenceLevel = "LOW"|"MEDIUM"|"HIGH"
 #'         )
-#'       )
+#'       ),
+#'       suppressAlerts = TRUE|FALSE
 #'     )
 #'   )
 #' )

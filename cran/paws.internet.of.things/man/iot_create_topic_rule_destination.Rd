@@ -18,6 +18,16 @@ prior to use.
   destinationConfiguration = list(
     httpUrlConfiguration = list(
       confirmationUrl = "string"
+    ),
+    vpcConfiguration = list(
+      subnetIds = list(
+        "string"
+      ),
+      securityGroups = list(
+        "string"
+      ),
+      vpcId = "string",
+      roleArn = "string"
     )
   )
 )

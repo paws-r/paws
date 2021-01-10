@@ -18,14 +18,15 @@ IAM policy. Do not include any resource-based policies in this
 parameter. Any resource-based policy must be submitted with the
 \code{ResourcePolicy} parameter. The policies cannot be "scope-down"
 policies, such as you could include in a call to
-\href{https://docs.aws.amazon.com/IAM/latest/APIReference/API_GetFederationToken.html}{GetFederationToken}
+\href{https://docs.aws.amazon.com/IAM/latest/APIReference/}{GetFederationToken}
 or one of the
-\href{https://docs.aws.amazon.com/IAM/latest/APIReference/API_AssumeRole.html}{AssumeRole}
-API operations. In other words, do not use policies designed to restrict
+\href{https://docs.aws.amazon.com/IAM/latest/APIReference/}{AssumeRole} API
+operations. In other words, do not use policies designed to restrict
 what a user can do while using the temporary credentials.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
-this parameter is a string of characters consisting of the following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
+validate this parameter is a string of characters consisting of the
+following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
@@ -43,8 +44,9 @@ operation. For more information about permissions boundaries, see
 in the \emph{IAM User Guide}. The policy input is specified as a string that
 contains the complete, valid JSON text of a permissions boundary policy.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
-this parameter is a string of characters consisting of the following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
+validate this parameter is a string of characters consisting of the
+following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
@@ -82,8 +84,9 @@ string. Each resource in the simulation is treated as if it had this
 policy attached. You can include only one resource-based policy in a
 simulation.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
-this parameter is a string of characters consisting of the following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
+validate this parameter is a string of characters consisting of the
+following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
@@ -135,7 +138,7 @@ security-group resources. If your scenario includes an EBS volume, then
 you must specify that volume as a resource. If the EC2 scenario includes
 VPC, then you must supply the network-interface resource. If it includes
 an IP subnet, then you must specify the subnet resource. For more
-information on the EC2 scenario options, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms}
+information on the EC2 scenario options, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html}{Supported Platforms}
 in the \emph{Amazon EC2 User Guide}.
 \itemize{
 \item \strong{EC2-Classic-InstanceStore}

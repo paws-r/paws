@@ -25,12 +25,12 @@ two are transitory).}
 \code{NextToken} to get results as a set of sequential pages.}
 
 \item{NextToken}{Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.}
+Use the token that is returned with a previous call to this operation.
+To start at the beginning of the result set, do not specify a value.}
 }
 \description{
 Retrieves properties, including the protection policy in force, for one
-or more game sessions. This action can be used in several ways: (1)
+or more game sessions. This operation can be used in several ways: (1)
 provide a \code{GameSessionId} or \code{GameSessionArn} to request details for a
 specific game session; (2) provide either a \code{FleetId} or an \code{AliasId} to
 request properties for all game sessions running on a fleet.

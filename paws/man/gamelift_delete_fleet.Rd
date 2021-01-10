@@ -21,7 +21,7 @@ CreateVpcPeeringAuthorization. You do not need to explicitly delete the
 VPC peering connection--this is done as part of the delete fleet
 process.
 
-This action removes the fleet and its resources. Once a fleet is
+This operation removes the fleet and its resources. Once a fleet is
 deleted, you can no longer use any of the resource in that fleet.
 
 \strong{Learn more}

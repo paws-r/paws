@@ -5,7 +5,7 @@
 \title{Returns descriptive information about an update against your Amazon EKS
 cluster or associated managed node group}
 \usage{
-eks_describe_update(name, updateId, nodegroupName)
+eks_describe_update(name, updateId, nodegroupName, addonName)
 }
 \arguments{
 \item{name}{[required] The name of the Amazon EKS cluster associated with the update.}
@@ -13,6 +13,10 @@ eks_describe_update(name, updateId, nodegroupName)
 \item{updateId}{[required] The ID of the update to describe.}
 
 \item{nodegroupName}{The name of the Amazon EKS node group associated with the update.}
+
+\item{addonName}{The name of the add-on. The name must match one of the names returned by
+\href{https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html}{\code{ListAddons}}
+.}
 }
 \description{
 Returns descriptive information about an update against your Amazon EKS
@@ -27,7 +31,8 @@ the reason for the failure.
 \preformatted{svc$describe_update(
   name = "string",
   updateId = "string",
-  nodegroupName = "string"
+  nodegroupName = "string",
+  addonName = "string"
 )
 }
 }

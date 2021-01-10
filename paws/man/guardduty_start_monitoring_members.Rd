@@ -7,8 +7,8 @@
 guardduty_start_monitoring_members(DetectorId, AccountIds)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty master account associated
-with the member accounts to monitor.}
+\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty administrator account
+associated with the member accounts to monitor.}
 
 \item{AccountIds}{[required] A list of account IDs of the GuardDuty member accounts to start
 monitoring.}

@@ -12,7 +12,7 @@ gamelift_tag_resource(ResourceARN, Tags)
 that is assigned to and uniquely identifies the GameLift resource that
 you want to assign tags to. GameLift resource ARNs are included in the
 data object for the resource, which can be retrieved by calling a List
-or Describe action for the resource type.}
+or Describe operation for the resource type.}
 
 \item{Tags}{[required] A list of one or more tags to assign to the specified GameLift resource.
 Tags are developer-defined and structured as key-value pairs. The
@@ -23,8 +23,9 @@ for actual tagging limits.}
 Assigns a tag to a GameLift resource. AWS resource tags provide an
 additional management tool set. You can use tags to organize resources,
 create IAM permissions policies to manage access to groups of resources,
-customize AWS cost breakdowns, etc. This action handles the permissions
-necessary to manage tags for the following GameLift resource types:
+customize AWS cost breakdowns, etc. This operation handles the
+permissions necessary to manage tags for the following GameLift resource
+types:
 }
 \details{
 \itemize{
@@ -47,7 +48,7 @@ assigned to the specified resource.
 \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
 in the \emph{AWS General Reference}
 
-\href{http://aws.amazon.com/answers/account-management/aws-tagging-strategies/}{AWS Tagging Strategies}
+\href{https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf}{AWS Tagging Strategies}
 
 \strong{Related operations}
 \itemize{

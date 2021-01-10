@@ -11,8 +11,11 @@ autoscalingplans_describe_scaling_plans(ScalingPlanNames,
 \item{ScalingPlanNames}{The names of the scaling plans (up to 10). If you specify application
 sources, you cannot specify scaling plan names.}
 
-\item{ScalingPlanVersion}{The version number of the scaling plan. If you specify a scaling plan
-version, you must also specify a scaling plan name.}
+\item{ScalingPlanVersion}{The version number of the scaling plan. Currently, the only valid value
+is \code{1}.
+
+If you specify a scaling plan version, you must also specify a scaling
+plan name.}
 
 \item{ApplicationSources}{The sources for the applications (up to 10). If you specify scaling plan
 names, you cannot specify application sources.}

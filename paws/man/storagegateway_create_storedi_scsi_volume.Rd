@@ -13,14 +13,14 @@ storagegateway_create_storedi_scsi_volume(GatewayARN, DiskId,
 
 \item{DiskId}{[required] The unique identifier for the gateway local disk that is configured as a
 stored volume. Use
-\href{https://docs.aws.amazon.com/storagegateway/latest/userguide/API_ListLocalDisks.html}{ListLocalDisks}
+\href{https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_ListLocalDisks.html}{ListLocalDisks}
 to list disk IDs for a gateway.}
 
 \item{SnapshotId}{The snapshot ID (e.g. "snap-1122aabb") of the snapshot to restore as the
 new stored volume. Specify this field if you want to create the iSCSI
 storage volume from a snapshot; otherwise, do not include this field. To
 list snapshots for your account use
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html}{DescribeSnapshots}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshots.html}{DescribeSnapshots}
 in the \emph{Amazon Elastic Compute Cloud API Reference}.}
 
 \item{PreserveExistingData}{[required] Set to true \code{true} if you want to preserve the data on the local disk.
@@ -71,7 +71,7 @@ choose to preserve existing data on the disk, create volume from an
 existing snapshot, or create an empty volume. If you choose to create an
 empty gateway volume, then any existing data on the disk is erased.
 
-In the request you must specify the gateway and the disk information on
+In the request, you must specify the gateway and the disk information on
 which you are creating the volume. In response, the gateway creates the
 volume and returns volume information such as the volume Amazon Resource
 Name (ARN), its size, and the iSCSI target ARN that initiators can use

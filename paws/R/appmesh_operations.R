@@ -259,7 +259,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'         ),
 #'         maxRetries = 123,
 #'         perRetryTimeout = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         ),
 #'         tcpRetryEvents = list(
@@ -268,11 +268,11 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'       ),
 #'       timeout = list(
 #'         idle = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         ),
 #'         perRequest = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         )
 #'       )
@@ -303,7 +303,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'             name = "string"
 #'           )
 #'         ),
-#'         method = "CONNECT"|"DELETE"|"GET"|"HEAD"|"OPTIONS"|"PATCH"|"POST"|"PUT"|"TRACE",
+#'         method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
 #'         prefix = "string",
 #'         scheme = "http"|"https"
 #'       ),
@@ -313,7 +313,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'         ),
 #'         maxRetries = 123,
 #'         perRetryTimeout = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         ),
 #'         tcpRetryEvents = list(
@@ -322,11 +322,11 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'       ),
 #'       timeout = list(
 #'         idle = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         ),
 #'         perRequest = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         )
 #'       )
@@ -357,7 +357,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'             name = "string"
 #'           )
 #'         ),
-#'         method = "CONNECT"|"DELETE"|"GET"|"HEAD"|"OPTIONS"|"PATCH"|"POST"|"PUT"|"TRACE",
+#'         method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
 #'         prefix = "string",
 #'         scheme = "http"|"https"
 #'       ),
@@ -367,7 +367,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'         ),
 #'         maxRetries = 123,
 #'         perRetryTimeout = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         ),
 #'         tcpRetryEvents = list(
@@ -376,11 +376,11 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'       ),
 #'       timeout = list(
 #'         idle = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         ),
 #'         perRequest = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         )
 #'       )
@@ -397,7 +397,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 #'       ),
 #'       timeout = list(
 #'         idle = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         )
 #'       )
@@ -499,18 +499,30 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'     ),
 #'     listeners = list(
 #'       list(
+#'         connectionPool = list(
+#'           grpc = list(
+#'             maxRequests = 123
+#'           ),
+#'           http = list(
+#'             maxConnections = 123,
+#'             maxPendingRequests = 123
+#'           ),
+#'           http2 = list(
+#'             maxRequests = 123
+#'           )
+#'         ),
 #'         healthCheck = list(
 #'           healthyThreshold = 123,
 #'           intervalMillis = 123,
 #'           path = "string",
 #'           port = 123,
-#'           protocol = "grpc"|"http"|"http2",
+#'           protocol = "http"|"http2"|"grpc",
 #'           timeoutMillis = 123,
 #'           unhealthyThreshold = 123
 #'         ),
 #'         portMapping = list(
 #'           port = 123,
-#'           protocol = "grpc"|"http"|"http2"
+#'           protocol = "http"|"http2"|"grpc"
 #'         ),
 #'         tls = list(
 #'           certificate = list(
@@ -522,7 +534,7 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'               privateKey = "string"
 #'             )
 #'           ),
-#'           mode = "DISABLED"|"PERMISSIVE"|"STRICT"
+#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED"
 #'         )
 #'       )
 #'     ),
@@ -579,20 +591,27 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #' communicate to is specified as a `backend`.
 #' 
 #' The response metadata for your new virtual node contains the `arn` that
-#' is associated with the virtual node. Set this value (either the full ARN
-#' or the truncated resource name: for example,
-#' `mesh/default/virtualNode/simpleapp`) as the `APPMESH_VIRTUAL_NODE_NAME`
-#' environment variable for your task group's Envoy proxy container in your
-#' task definition or pod spec. This is then mapped to the `node.id` and
-#' `node.cluster` Envoy parameters.
+#' is associated with the virtual node. Set this value to the full ARN; for
+#' example,
+#' `arn:aws:appmesh:us-west-2:123456789012:myMesh/default/virtualNode/myApp`)
+#' as the `APPMESH_RESOURCE_ARN` environment variable for your task group's
+#' Envoy proxy container in your task definition or pod spec. This is then
+#' mapped to the `node.id` and `node.cluster` Envoy parameters.
 #' 
-#' If you require your Envoy stats or tracing to use a different name, you
-#' can override the `node.cluster` value that is set by
-#' `APPMESH_VIRTUAL_NODE_NAME` with the `APPMESH_VIRTUAL_NODE_CLUSTER`
-#' environment variable.
+#' By default, App Mesh uses the name of the resource you specified in
+#' `APPMESH_RESOURCE_ARN` when Envoy is referring to itself in metrics and
+#' traces. You can override this behavior by setting the
+#' `APPMESH_RESOURCE_CLUSTER` environment variable with your own name.
+#' 
+#' AWS Cloud Map is not available in the eu-south-1 Region.
 #' 
 #' For more information about virtual nodes, see [Virtual
 #' nodes](https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_nodes.html).
+#' You must be using `1.15.0` or later of the Envoy image when setting
+#' these variables. For more information about App Mesh Envoy variables,
+#' see [Envoy
+#' image](https://docs.aws.amazon.com/app-mesh/latest/userguide/envoy.html)
+#' in the AWS App Mesh User Guide.
 #'
 #' @usage
 #' appmesh_create_virtual_node(clientToken, meshName, meshOwner, spec,
@@ -673,53 +692,80 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'     ),
 #'     listeners = list(
 #'       list(
+#'         connectionPool = list(
+#'           grpc = list(
+#'             maxRequests = 123
+#'           ),
+#'           http = list(
+#'             maxConnections = 123,
+#'             maxPendingRequests = 123
+#'           ),
+#'           http2 = list(
+#'             maxRequests = 123
+#'           ),
+#'           tcp = list(
+#'             maxConnections = 123
+#'           )
+#'         ),
 #'         healthCheck = list(
 #'           healthyThreshold = 123,
 #'           intervalMillis = 123,
 #'           path = "string",
 #'           port = 123,
-#'           protocol = "grpc"|"http"|"http2"|"tcp",
+#'           protocol = "http"|"tcp"|"http2"|"grpc",
 #'           timeoutMillis = 123,
 #'           unhealthyThreshold = 123
 #'         ),
+#'         outlierDetection = list(
+#'           baseEjectionDuration = list(
+#'             unit = "s"|"ms",
+#'             value = 123
+#'           ),
+#'           interval = list(
+#'             unit = "s"|"ms",
+#'             value = 123
+#'           ),
+#'           maxEjectionPercent = 123,
+#'           maxServerErrors = 123
+#'         ),
 #'         portMapping = list(
 #'           port = 123,
-#'           protocol = "grpc"|"http"|"http2"|"tcp"
+#'           protocol = "http"|"tcp"|"http2"|"grpc"
 #'         ),
 #'         timeout = list(
 #'           grpc = list(
 #'             idle = list(
-#'               unit = "ms"|"s",
+#'               unit = "s"|"ms",
 #'               value = 123
 #'             ),
 #'             perRequest = list(
-#'               unit = "ms"|"s",
+#'               unit = "s"|"ms",
 #'               value = 123
 #'             )
 #'           ),
 #'           http = list(
 #'             idle = list(
-#'               unit = "ms"|"s",
+#'               unit = "s"|"ms",
 #'               value = 123
 #'             ),
 #'             perRequest = list(
-#'               unit = "ms"|"s",
+#'               unit = "s"|"ms",
 #'               value = 123
 #'             )
 #'           ),
 #'           http2 = list(
 #'             idle = list(
-#'               unit = "ms"|"s",
+#'               unit = "s"|"ms",
 #'               value = 123
 #'             ),
 #'             perRequest = list(
-#'               unit = "ms"|"s",
+#'               unit = "s"|"ms",
 #'               value = 123
 #'             )
 #'           ),
 #'           tcp = list(
 #'             idle = list(
-#'               unit = "ms"|"s",
+#'               unit = "s"|"ms",
 #'               value = 123
 #'             )
 #'           )
@@ -734,7 +780,7 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'               privateKey = "string"
 #'             )
 #'           ),
-#'           mode = "DISABLED"|"PERMISSIVE"|"STRICT"
+#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED"
 #'         )
 #'       )
 #'     ),
@@ -837,7 +883,7 @@ appmesh_create_virtual_node <- function(clientToken = NULL, meshName, meshOwner 
 #'       list(
 #'         portMapping = list(
 #'           port = 123,
-#'           protocol = "grpc"|"http"|"http2"|"tcp"
+#'           protocol = "http"|"tcp"|"http2"|"grpc"
 #'         )
 #'       )
 #'     )
@@ -2327,7 +2373,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'         ),
 #'         maxRetries = 123,
 #'         perRetryTimeout = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         ),
 #'         tcpRetryEvents = list(
@@ -2336,11 +2382,11 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'       ),
 #'       timeout = list(
 #'         idle = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         ),
 #'         perRequest = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         )
 #'       )
@@ -2371,7 +2417,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'             name = "string"
 #'           )
 #'         ),
-#'         method = "CONNECT"|"DELETE"|"GET"|"HEAD"|"OPTIONS"|"PATCH"|"POST"|"PUT"|"TRACE",
+#'         method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
 #'         prefix = "string",
 #'         scheme = "http"|"https"
 #'       ),
@@ -2381,7 +2427,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'         ),
 #'         maxRetries = 123,
 #'         perRetryTimeout = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         ),
 #'         tcpRetryEvents = list(
@@ -2390,11 +2436,11 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'       ),
 #'       timeout = list(
 #'         idle = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         ),
 #'         perRequest = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         )
 #'       )
@@ -2425,7 +2471,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'             name = "string"
 #'           )
 #'         ),
-#'         method = "CONNECT"|"DELETE"|"GET"|"HEAD"|"OPTIONS"|"PATCH"|"POST"|"PUT"|"TRACE",
+#'         method = "GET"|"HEAD"|"POST"|"PUT"|"DELETE"|"CONNECT"|"OPTIONS"|"TRACE"|"PATCH",
 #'         prefix = "string",
 #'         scheme = "http"|"https"
 #'       ),
@@ -2435,7 +2481,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'         ),
 #'         maxRetries = 123,
 #'         perRetryTimeout = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         ),
 #'         tcpRetryEvents = list(
@@ -2444,11 +2490,11 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'       ),
 #'       timeout = list(
 #'         idle = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         ),
 #'         perRequest = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         )
 #'       )
@@ -2465,7 +2511,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #'       ),
 #'       timeout = list(
 #'         idle = list(
-#'           unit = "ms"|"s",
+#'           unit = "s"|"ms",
 #'           value = 123
 #'         )
 #'       )
@@ -2547,18 +2593,30 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'     ),
 #'     listeners = list(
 #'       list(
+#'         connectionPool = list(
+#'           grpc = list(
+#'             maxRequests = 123
+#'           ),
+#'           http = list(
+#'             maxConnections = 123,
+#'             maxPendingRequests = 123
+#'           ),
+#'           http2 = list(
+#'             maxRequests = 123
+#'           )
+#'         ),
 #'         healthCheck = list(
 #'           healthyThreshold = 123,
 #'           intervalMillis = 123,
 #'           path = "string",
 #'           port = 123,
-#'           protocol = "grpc"|"http"|"http2",
+#'           protocol = "http"|"http2"|"grpc",
 #'           timeoutMillis = 123,
 #'           unhealthyThreshold = 123
 #'         ),
 #'         portMapping = list(
 #'           port = 123,
-#'           protocol = "grpc"|"http"|"http2"
+#'           protocol = "http"|"http2"|"grpc"
 #'         ),
 #'         tls = list(
 #'           certificate = list(
@@ -2570,7 +2628,7 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 #'               privateKey = "string"
 #'             )
 #'           ),
-#'           mode = "DISABLED"|"PERMISSIVE"|"STRICT"
+#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED"
 #'         )
 #'       )
 #'     ),
@@ -2685,53 +2743,80 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'     ),
 #'     listeners = list(
 #'       list(
+#'         connectionPool = list(
+#'           grpc = list(
+#'             maxRequests = 123
+#'           ),
+#'           http = list(
+#'             maxConnections = 123,
+#'             maxPendingRequests = 123
+#'           ),
+#'           http2 = list(
+#'             maxRequests = 123
+#'           ),
+#'           tcp = list(
+#'             maxConnections = 123
+#'           )
+#'         ),
 #'         healthCheck = list(
 #'           healthyThreshold = 123,
 #'           intervalMillis = 123,
 #'           path = "string",
 #'           port = 123,
-#'           protocol = "grpc"|"http"|"http2"|"tcp",
+#'           protocol = "http"|"tcp"|"http2"|"grpc",
 #'           timeoutMillis = 123,
 #'           unhealthyThreshold = 123
 #'         ),
+#'         outlierDetection = list(
+#'           baseEjectionDuration = list(
+#'             unit = "s"|"ms",
+#'             value = 123
+#'           ),
+#'           interval = list(
+#'             unit = "s"|"ms",
+#'             value = 123
+#'           ),
+#'           maxEjectionPercent = 123,
+#'           maxServerErrors = 123
+#'         ),
 #'         portMapping = list(
 #'           port = 123,
-#'           protocol = "grpc"|"http"|"http2"|"tcp"
+#'           protocol = "http"|"tcp"|"http2"|"grpc"
 #'         ),
 #'         timeout = list(
 #'           grpc = list(
 #'             idle = list(
-#'               unit = "ms"|"s",
+#'               unit = "s"|"ms",
 #'               value = 123
 #'             ),
 #'             perRequest = list(
-#'               unit = "ms"|"s",
+#'               unit = "s"|"ms",
 #'               value = 123
 #'             )
 #'           ),
 #'           http = list(
 #'             idle = list(
-#'               unit = "ms"|"s",
+#'               unit = "s"|"ms",
 #'               value = 123
 #'             ),
 #'             perRequest = list(
-#'               unit = "ms"|"s",
+#'               unit = "s"|"ms",
 #'               value = 123
 #'             )
 #'           ),
 #'           http2 = list(
 #'             idle = list(
-#'               unit = "ms"|"s",
+#'               unit = "s"|"ms",
 #'               value = 123
 #'             ),
 #'             perRequest = list(
-#'               unit = "ms"|"s",
+#'               unit = "s"|"ms",
 #'               value = 123
 #'             )
 #'           ),
 #'           tcp = list(
 #'             idle = list(
-#'               unit = "ms"|"s",
+#'               unit = "s"|"ms",
 #'               value = 123
 #'             )
 #'           )
@@ -2746,7 +2831,7 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 #'               privateKey = "string"
 #'             )
 #'           ),
-#'           mode = "DISABLED"|"PERMISSIVE"|"STRICT"
+#'           mode = "STRICT"|"PERMISSIVE"|"DISABLED"
 #'         )
 #'       )
 #'     ),
@@ -2829,7 +2914,7 @@ appmesh_update_virtual_node <- function(clientToken = NULL, meshName, meshOwner 
 #'       list(
 #'         portMapping = list(
 #'           port = 123,
-#'           protocol = "grpc"|"http"|"http2"|"tcp"
+#'           protocol = "http"|"tcp"|"http2"|"grpc"
 #'         )
 #'       )
 #'     )

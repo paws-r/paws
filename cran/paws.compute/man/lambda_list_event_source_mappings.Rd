@@ -14,6 +14,8 @@ lambda_list_event_source_mappings(EventSourceArn, FunctionName, Marker,
 consumer.
 \item \strong{Amazon DynamoDB Streams} - The ARN of the stream.
 \item \strong{Amazon Simple Queue Service} - The ARN of the queue.
+\item \strong{Amazon Managed Streaming for Apache Kafka} - The ARN of the
+cluster.
 }}
 
 \item{FunctionName}{The name of the Lambda function.

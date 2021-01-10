@@ -6,7 +6,7 @@
 \usage{
 iot_create_job(jobId, targets, documentSource, document, description,
   presignedUrlConfig, targetSelection, jobExecutionsRolloutConfig,
-  abortConfig, timeoutConfig, tags)
+  abortConfig, timeoutConfig, tags, namespaceId)
 }
 \arguments{
 \item{jobId}{[required] A job identifier which must be unique for your AWS account. We recommend
@@ -51,6 +51,16 @@ terminal state before the time expires, it will be automatically set to
 \code{TIMED_OUT}.}
 
 \item{tags}{Metadata which can be used to manage the job.}
+
+\item{namespaceId}{The namespace used to indicate that a job is a customer-managed job.
+
+When you specify a value for this parameter, AWS IoT Core sends jobs
+notifications to MQTT topics that contain the value in the following
+format.
+
+\verb{$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/}
+
+The \code{namespaceId} feature is in public preview.}
 }
 \description{
 Creates a job.
@@ -98,7 +108,8 @@ Creates a job.
       Key = "string",
       Value = "string"
     )
-  )
+  ),
+  namespaceId = "string"
 )
 }
 }

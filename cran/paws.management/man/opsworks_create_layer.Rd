@@ -39,7 +39,7 @@ cluster's ARN.}
 information, see CloudWatchLogsLogStream.}
 
 \item{CustomInstanceProfileArn}{The ARN of an IAM profile to be used for the layer's EC2 instances. For
-more information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
+more information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{Using Identifiers}.}
 
 \item{CustomJson}{A JSON-formatted string containing custom stack configuration and
 deployment attributes to be installed on the layer's instances. For more

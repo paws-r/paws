@@ -15,7 +15,7 @@ iotsitewise_create_dashboard(projectId, dashboardName,
 \item{dashboardDescription}{A description for the dashboard.}
 
 \item{dashboardDefinition}{[required] The dashboard definition specified in a JSON literal. For detailed
-information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-dashboards-using-aws-cli.html}{Creating Dashboards (CLI)}
+information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-dashboards-using-aws-cli.html}{Creating dashboards (CLI)}
 in the \emph{AWS IoT SiteWise User Guide}.}
 
 \item{clientToken}{A unique case-sensitive identifier that you can provide to ensure the

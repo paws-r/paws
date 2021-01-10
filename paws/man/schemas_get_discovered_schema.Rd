@@ -21,7 +21,7 @@ Get the discovered schema that was generated based on sampled events.
   Events = list(
     "string"
   ),
-  Type = "OpenApi3"
+  Type = "OpenApi3"|"JSONSchemaDraft4"
 )
 }
 }

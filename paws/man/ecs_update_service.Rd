@@ -109,8 +109,9 @@ before they have time to come up.}
 Updating the task placement strategies and constraints on an Amazon ECS
 service remains in preview and is a Beta Service as defined by and
 subject to the Beta Service Participation Service Terms located at
-\url{https://aws.amazon.com/service-terms} ("Beta Terms"). These Beta Terms
-apply to your participation in this preview.
+\href{https://aws.amazon.com/service-terms/}{https://aws.amazon.com/service-terms}
+("Beta Terms"). These Beta Terms apply to your participation in this
+preview.
 }
 \details{
 Modifies the parameters of a service.
@@ -234,6 +235,10 @@ with the largest number of running tasks for this service.
     )
   ),
   deploymentConfiguration = list(
+    deploymentCircuitBreaker = list(
+      enable = TRUE|FALSE,
+      rollback = TRUE|FALSE
+    ),
     maximumPercent = 123,
     minimumHealthyPercent = 123
   ),

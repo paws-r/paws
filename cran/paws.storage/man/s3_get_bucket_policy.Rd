@@ -4,10 +4,14 @@
 \alias{s3_get_bucket_policy}
 \title{Returns the policy of a specified bucket}
 \usage{
-s3_get_bucket_policy(Bucket)
+s3_get_bucket_policy(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name for which to get the bucket policy.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Returns the policy of a specified bucket. If you are using an identity
@@ -30,12 +34,13 @@ For more information about bucket policies, see \href{https://docs.aws.amazon.co
 
 The following operation is related to \code{GetBucketPolicy}:
 \itemize{
-\item GetObject
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_policy(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

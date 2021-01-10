@@ -18,7 +18,7 @@ in the \emph{Amazon RDS User Guide}.}
 Lists all tags on an Amazon RDS resource.
 }
 \details{
-For an overview on tagging an Amazon RDS resource, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Tagging.html}{Tagging Amazon RDS Resources}
+For an overview on tagging an Amazon RDS resource, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html}{Tagging Amazon RDS Resources}
 in the \emph{Amazon RDS User Guide}.
 }
 \section{Request syntax}{

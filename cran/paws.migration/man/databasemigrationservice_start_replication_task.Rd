@@ -11,7 +11,7 @@ databasemigrationservice_start_replication_task(ReplicationTaskArn,
 \arguments{
 \item{ReplicationTaskArn}{[required] The Amazon Resource Name (ARN) of the replication task to be started.}
 
-\item{StartReplicationTaskType}{[required] The type of replication task.}
+\item{StartReplicationTaskType}{[required] A type of replication task.}
 
 \item{CdcStartTime}{Indicates the start time for a change data capture (CDC) operation. Use
 either CdcStartTime or CdcStartPosition to specify when you want a CDC
@@ -42,10 +42,10 @@ more information, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHA
 The value can be either server time or commit time.
 
 Server time example: --cdc-stop-position
-“server\\_time:3018-02-09T12:12:12”
+“server\\_time:2018-02-09T12:12:12”
 
 Commit time example: --cdc-stop-position “commit\\_time:
-3018-02-09T12:12:12 “}
+2018-02-09T12:12:12 “}
 }
 \description{
 Starts the replication task.

@@ -4,7 +4,8 @@
 \alias{storagegateway_assign_tape_pool}
 \title{Assigns a tape to a tape pool for archiving}
 \usage{
-storagegateway_assign_tape_pool(TapeARN, PoolId)
+storagegateway_assign_tape_pool(TapeARN, PoolId,
+  BypassGovernanceRetention)
 }
 \arguments{
 \item{TapeARN}{[required] The unique Amazon Resource Name (ARN) of the virtual tape that you want
@@ -17,6 +18,15 @@ the tape is archived directly into the storage class (S3 Glacier or S3
 Glacier Deep Archive) that corresponds to the pool.
 
 Valid Values: \code{GLACIER} | \code{DEEP_ARCHIVE}}
+
+\item{BypassGovernanceRetention}{Set permissions to bypass governance retention. If the lock type of the
+archived tape is \code{Governance}, the tape's archived age is not older than
+\code{RetentionLockInDays}, and the user does not already have
+\code{BypassGovernanceRetention}, setting this to TRUE enables the user to
+bypass the retention lock. This parameter is set to true by default for
+calls from the console.
+
+Valid values: \code{TRUE} | \code{FALSE}}
 }
 \description{
 Assigns a tape to a tape pool for archiving. The tape assigned to a pool
@@ -31,7 +41,8 @@ Valid Values: \code{GLACIER} | \code{DEEP_ARCHIVE}
 \section{Request syntax}{
 \preformatted{svc$assign_tape_pool(
   TapeARN = "string",
-  PoolId = "string"
+  PoolId = "string",
+  BypassGovernanceRetention = TRUE|FALSE
 )
 }
 }

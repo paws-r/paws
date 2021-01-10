@@ -2,7 +2,7 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_list_policies}
 \alias{fms_list_policies}
-\title{Returns an array of PolicySummary objects in the response}
+\title{Returns an array of PolicySummary objects}
 \usage{
 fms_list_policies(NextToken, MaxResults)
 }
@@ -22,7 +22,7 @@ Firewall Manager to return for this request. If you have more
 to get another batch of \code{PolicySummary} objects.}
 }
 \description{
-Returns an array of \code{PolicySummary} objects in the response.
+Returns an array of \code{PolicySummary} objects.
 }
 \section{Request syntax}{
 \preformatted{svc$list_policies(

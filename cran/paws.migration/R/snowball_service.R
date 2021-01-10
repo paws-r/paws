@@ -5,16 +5,16 @@ NULL
 #' Amazon Import/Export Snowball
 #'
 #' @description
-#' AWS Snowball is a petabyte-scale data transport solution that uses
+#' AWS Snow Family is a petabyte-scale data transport solution that uses
 #' secure devices to transfer large amounts of data between your
 #' on-premises data centers and Amazon Simple Storage Service (Amazon S3).
-#' The Snowball commands described here provide access to the same
-#' functionality that is available in the AWS Snowball Management Console,
-#' which enables you to create and manage jobs for Snowball. To transfer
-#' data locally with a Snowball device, you'll need to use the Snowball
-#' client or the Amazon S3 API adapter for Snowball. For more information,
-#' see the [User
-#' Guide](https://docs.aws.amazon.com/AWSImportExport/latest/ug/api-reference.html).
+#' The Snow commands described here provide access to the same
+#' functionality that is available in the AWS Snow Family Management
+#' Console, which enables you to create and manage jobs for a Snow device.
+#' To transfer data locally with a Snow device, you'll need to use the
+#' Snowball Edge client or the Amazon S3 API Interface for Snowball or AWS
+#' OpsHub for Snow Family. For more information, see the [User
+#' Guide](https://aws.amazon.com/snowball/).
 #'
 #' @param
 #' config
@@ -52,23 +52,26 @@ NULL
 #' \tabular{ll}{
 #'  \link[=snowball_cancel_cluster]{cancel_cluster} \tab Cancels a cluster job\cr
 #'  \link[=snowball_cancel_job]{cancel_job} \tab Cancels the specified job\cr
-#'  \link[=snowball_create_address]{create_address} \tab Creates an address for a Snowball to be shipped to\cr
+#'  \link[=snowball_create_address]{create_address} \tab Creates an address for a Snow device to be shipped to\cr
 #'  \link[=snowball_create_cluster]{create_cluster} \tab Creates an empty cluster\cr
 #'  \link[=snowball_create_job]{create_job} \tab Creates a job to import or export data between Amazon S3 and your on-premises data center\cr
+#'  \link[=snowball_create_return_shipping_label]{create_return_shipping_label} \tab Creates a shipping label that will be used to return the Snow device to AWS\cr
 #'  \link[=snowball_describe_address]{describe_address} \tab Takes an AddressId and returns specific details about that address in the form of an Address object\cr
 #'  \link[=snowball_describe_addresses]{describe_addresses} \tab Returns a specified number of ADDRESS objects\cr
 #'  \link[=snowball_describe_cluster]{describe_cluster} \tab Returns information about a specific cluster including shipping information, cluster status, and other important metadata\cr
 #'  \link[=snowball_describe_job]{describe_job} \tab Returns information about a specific job including shipping information, job status, and other important metadata\cr
+#'  \link[=snowball_describe_return_shipping_label]{describe_return_shipping_label} \tab Information on the shipping label of a Snow device that is being returned to AWS\cr
 #'  \link[=snowball_get_job_manifest]{get_job_manifest} \tab Returns a link to an Amazon S3 presigned URL for the manifest file associated with the specified JobId value\cr
 #'  \link[=snowball_get_job_unlock_code]{get_job_unlock_code} \tab Returns the UnlockCode code value for the specified job\cr
-#'  \link[=snowball_get_snowball_usage]{get_snowball_usage} \tab Returns information about the Snowball service limit for your account, and also the number of Snowballs your account has in use\cr
+#'  \link[=snowball_get_snowball_usage]{get_snowball_usage} \tab Returns information about the Snow Family service limit for your account, and also the number of Snow devices your account has in use\cr
 #'  \link[=snowball_get_software_updates]{get_software_updates} \tab Returns an Amazon S3 presigned URL for an update file associated with a specified JobId\cr
 #'  \link[=snowball_list_cluster_jobs]{list_cluster_jobs} \tab Returns an array of JobListEntry objects of the specified length\cr
 #'  \link[=snowball_list_clusters]{list_clusters} \tab Returns an array of ClusterListEntry objects of the specified length\cr
-#'  \link[=snowball_list_compatible_images]{list_compatible_images} \tab This action returns a list of the different Amazon EC2 Amazon Machine Images (AMIs) that are owned by your AWS account that would be supported for use on a Snowball Edge device\cr
+#'  \link[=snowball_list_compatible_images]{list_compatible_images} \tab This action returns a list of the different Amazon EC2 Amazon Machine Images (AMIs) that are owned by your AWS account that would be supported for use on a Snow device\cr
 #'  \link[=snowball_list_jobs]{list_jobs} \tab Returns an array of JobListEntry objects of the specified length\cr
 #'  \link[=snowball_update_cluster]{update_cluster} \tab While a cluster's ClusterState value is in the AwaitingQuorum state, you can update some of the information associated with a cluster\cr
-#'  \link[=snowball_update_job]{update_job} \tab While a job's JobState value is New, you can update some of the information associated with a job
+#'  \link[=snowball_update_job]{update_job} \tab While a job's JobState value is New, you can update some of the information associated with a job\cr
+#'  \link[=snowball_update_job_shipment_state]{update_job_shipment_state} \tab Updates the state when a the shipment states changes to a different state
 #' }
 #'
 #' @rdname snowball

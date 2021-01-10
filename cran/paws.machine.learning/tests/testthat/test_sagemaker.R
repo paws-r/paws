@@ -2,6 +2,14 @@ context("sagemaker")
 
 svc <- paws::sagemaker()
 
+test_that("list_actions", {
+  expect_error(svc$list_actions(), NA)
+})
+
+test_that("list_actions", {
+  expect_error(svc$list_actions(MaxResults = 20), NA)
+})
+
 test_that("list_algorithms", {
   expect_error(svc$list_algorithms(), NA)
 })
@@ -10,12 +18,36 @@ test_that("list_algorithms", {
   expect_error(svc$list_algorithms(MaxResults = 20), NA)
 })
 
+test_that("list_app_image_configs", {
+  expect_error(svc$list_app_image_configs(), NA)
+})
+
+test_that("list_app_image_configs", {
+  expect_error(svc$list_app_image_configs(MaxResults = 20), NA)
+})
+
 test_that("list_apps", {
   expect_error(svc$list_apps(), NA)
 })
 
 test_that("list_apps", {
   expect_error(svc$list_apps(MaxResults = 20), NA)
+})
+
+test_that("list_artifacts", {
+  expect_error(svc$list_artifacts(), NA)
+})
+
+test_that("list_artifacts", {
+  expect_error(svc$list_artifacts(MaxResults = 20), NA)
+})
+
+test_that("list_associations", {
+  expect_error(svc$list_associations(), NA)
+})
+
+test_that("list_associations", {
+  expect_error(svc$list_associations(MaxResults = 20), NA)
 })
 
 test_that("list_auto_ml_jobs", {
@@ -42,12 +74,52 @@ test_that("list_compilation_jobs", {
   expect_error(svc$list_compilation_jobs(MaxResults = 20), NA)
 })
 
+test_that("list_contexts", {
+  expect_error(svc$list_contexts(), NA)
+})
+
+test_that("list_contexts", {
+  expect_error(svc$list_contexts(MaxResults = 20), NA)
+})
+
+test_that("list_data_quality_job_definitions", {
+  expect_error(svc$list_data_quality_job_definitions(), NA)
+})
+
+test_that("list_data_quality_job_definitions", {
+  expect_error(svc$list_data_quality_job_definitions(MaxResults = 20), NA)
+})
+
+test_that("list_device_fleets", {
+  expect_error(svc$list_device_fleets(), NA)
+})
+
+test_that("list_device_fleets", {
+  expect_error(svc$list_device_fleets(MaxResults = 20), NA)
+})
+
+test_that("list_devices", {
+  expect_error(svc$list_devices(), NA)
+})
+
+test_that("list_devices", {
+  expect_error(svc$list_devices(MaxResults = 20), NA)
+})
+
 test_that("list_domains", {
   expect_error(svc$list_domains(), NA)
 })
 
 test_that("list_domains", {
   expect_error(svc$list_domains(MaxResults = 20), NA)
+})
+
+test_that("list_edge_packaging_jobs", {
+  expect_error(svc$list_edge_packaging_jobs(), NA)
+})
+
+test_that("list_edge_packaging_jobs", {
+  expect_error(svc$list_edge_packaging_jobs(MaxResults = 20), NA)
 })
 
 test_that("list_endpoint_configs", {
@@ -74,6 +146,14 @@ test_that("list_experiments", {
   expect_error(svc$list_experiments(MaxResults = 20), NA)
 })
 
+test_that("list_feature_groups", {
+  expect_error(svc$list_feature_groups(), NA)
+})
+
+test_that("list_feature_groups", {
+  expect_error(svc$list_feature_groups(MaxResults = 20), NA)
+})
+
 test_that("list_flow_definitions", {
   expect_error(svc$list_flow_definitions(), NA)
 })
@@ -98,6 +178,14 @@ test_that("list_hyper_parameter_tuning_jobs", {
   expect_error(svc$list_hyper_parameter_tuning_jobs(MaxResults = 20), NA)
 })
 
+test_that("list_images", {
+  expect_error(svc$list_images(), NA)
+})
+
+test_that("list_images", {
+  expect_error(svc$list_images(MaxResults = 20), NA)
+})
+
 test_that("list_labeling_jobs", {
   expect_error(svc$list_labeling_jobs(), NA)
 })
@@ -106,12 +194,44 @@ test_that("list_labeling_jobs", {
   expect_error(svc$list_labeling_jobs(MaxResults = 20), NA)
 })
 
+test_that("list_model_bias_job_definitions", {
+  expect_error(svc$list_model_bias_job_definitions(), NA)
+})
+
+test_that("list_model_bias_job_definitions", {
+  expect_error(svc$list_model_bias_job_definitions(MaxResults = 20), NA)
+})
+
+test_that("list_model_explainability_job_definitions", {
+  expect_error(svc$list_model_explainability_job_definitions(), NA)
+})
+
+test_that("list_model_explainability_job_definitions", {
+  expect_error(svc$list_model_explainability_job_definitions(MaxResults = 20), NA)
+})
+
+test_that("list_model_package_groups", {
+  expect_error(svc$list_model_package_groups(), NA)
+})
+
+test_that("list_model_package_groups", {
+  expect_error(svc$list_model_package_groups(MaxResults = 20), NA)
+})
+
 test_that("list_model_packages", {
   expect_error(svc$list_model_packages(), NA)
 })
 
 test_that("list_model_packages", {
   expect_error(svc$list_model_packages(MaxResults = 20), NA)
+})
+
+test_that("list_model_quality_job_definitions", {
+  expect_error(svc$list_model_quality_job_definitions(), NA)
+})
+
+test_that("list_model_quality_job_definitions", {
+  expect_error(svc$list_model_quality_job_definitions(MaxResults = 20), NA)
 })
 
 test_that("list_models", {
@@ -154,12 +274,36 @@ test_that("list_notebook_instances", {
   expect_error(svc$list_notebook_instances(MaxResults = 20), NA)
 })
 
+test_that("list_pipeline_execution_steps", {
+  expect_error(svc$list_pipeline_execution_steps(), NA)
+})
+
+test_that("list_pipeline_execution_steps", {
+  expect_error(svc$list_pipeline_execution_steps(MaxResults = 20), NA)
+})
+
+test_that("list_pipelines", {
+  expect_error(svc$list_pipelines(), NA)
+})
+
+test_that("list_pipelines", {
+  expect_error(svc$list_pipelines(MaxResults = 20), NA)
+})
+
 test_that("list_processing_jobs", {
   expect_error(svc$list_processing_jobs(), NA)
 })
 
 test_that("list_processing_jobs", {
   expect_error(svc$list_processing_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_projects", {
+  expect_error(svc$list_projects(), NA)
+})
+
+test_that("list_projects", {
+  expect_error(svc$list_projects(MaxResults = 20), NA)
 })
 
 test_that("list_subscribed_workteams", {
@@ -208,6 +352,14 @@ test_that("list_user_profiles", {
 
 test_that("list_user_profiles", {
   expect_error(svc$list_user_profiles(MaxResults = 20), NA)
+})
+
+test_that("list_workforces", {
+  expect_error(svc$list_workforces(), NA)
+})
+
+test_that("list_workforces", {
+  expect_error(svc$list_workforces(MaxResults = 20), NA)
 })
 
 test_that("list_workteams", {

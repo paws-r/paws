@@ -89,7 +89,7 @@ NULL
 
 .servicediscovery$discover_instances_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NamespaceName = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), QueryParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), HealthStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(NamespaceName = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), QueryParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), OptionalParameters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), HealthStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

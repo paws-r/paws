@@ -22,6 +22,12 @@ WAF and Shield Advanced policies if the specified policy has not been
 applied to them. Resources are considered noncompliant for security
 group policies if they are in scope of the policy, they violate one or
 more of the policy rules, and remediation is disabled or not possible.
+Resources are considered noncompliant for Network Firewall policies if a
+firewall is missing in the VPC, if the firewall endpoint isn't set up in
+an expected Availability Zone and subnet, if a subnet created by the
+Firewall Manager doesn't have the expected route table, and for
+modifications to a firewall policy that violate the Firewall Manager
+policy's rules.
 }
 \section{Request syntax}{
 \preformatted{svc$get_compliance_detail(

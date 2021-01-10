@@ -12,11 +12,12 @@ the queue ID or ARN value. To request settings for all queues, leave
 this parameter empty.}
 
 \item{Limit}{The maximum number of results to return. Use this parameter with
-\code{NextToken} to get results as a set of sequential pages.}
+\code{NextToken} to get results as a set of sequential pages. You can request
+up to 50 results.}
 
 \item{NextToken}{A token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.}
+Use the token that is returned with a previous call to this operation.
+To start at the beginning of the result set, do not specify a value.}
 }
 \description{
 Retrieves the properties for one or more game session queues. When

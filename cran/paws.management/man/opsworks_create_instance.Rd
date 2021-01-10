@@ -119,9 +119,9 @@ The following are valid values for this parameter: \code{dedicated},
 \code{default}, or \code{host}. Because there are costs associated with changes in
 tenancy options, we recommend that you research tenancy options before
 choosing them for your instances. For more information about dedicated
-hosts, see \href{http://aws.amazon.com/ec2/dedicated-hosts/}{Dedicated Hosts Overview} and \href{http://aws.amazon.com/ec2/dedicated-hosts/}{Amazon EC2 Dedicated Hosts}. For more
-information about dedicated instances, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/dedicated-instance.html}{Dedicated Instances}
-and \href{http://aws.amazon.com/ec2/purchasing-options/dedicated-instances/}{Amazon EC2 Dedicated Instances}.}
+hosts, see \href{https://aws.amazon.com/ec2/dedicated-hosts/}{Dedicated Hosts Overview} and \href{https://aws.amazon.com/ec2/dedicated-hosts/}{Amazon EC2 Dedicated Hosts}. For more
+information about dedicated instances, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Dedicated Instances} and
+\href{https://aws.amazon.com/ec2/pricing/dedicated-instances/}{Amazon EC2 Dedicated Instances}.}
 }
 \description{
 Creates an instance in a specified stack. For more information, see

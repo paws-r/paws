@@ -18,7 +18,7 @@ Event time.}
 
 \item{Sampling}{Set to \code{true} to get summaries for only a subset of available traces.}
 
-\item{SamplingStrategy}{A paramater to indicate whether to enable sampling on trace summaries.
+\item{SamplingStrategy}{A parameter to indicate whether to enable sampling on trace summaries.
 Input parameters are Name and Value.}
 
 \item{FilterExpression}{Specify a filter expression to retrieve trace summaries for services or

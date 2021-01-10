@@ -63,7 +63,7 @@ You can't convert a public hosted zone to a private hosted zone or vice
 versa. Instead, you must create a new hosted zone with the same name and
 create new resource record sets.
 
-For more information about charges for hosted zones, see \href{http://aws.amazon.com/route53/pricing/}{Amazon Route 53 Pricing}.
+For more information about charges for hosted zones, see \href{https://aws.amazon.com/route53/pricing/}{Amazon Route 53 Pricing}.
 
 Note the following:
 \itemize{

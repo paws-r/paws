@@ -6,8 +6,8 @@
 optional schedule}
 \usage{
 glue_create_crawler(Name, Role, DatabaseName, Description, Targets,
-  Schedule, Classifiers, TablePrefix, SchemaChangePolicy, Configuration,
-  CrawlerSecurityConfiguration, Tags)
+  Schedule, Classifiers, TablePrefix, SchemaChangePolicy, RecrawlPolicy,
+  LineageConfiguration, Configuration, CrawlerSecurityConfiguration, Tags)
 }
 \arguments{
 \item{Name}{[required] Name of the new crawler.}
@@ -34,6 +34,11 @@ classification.}
 \item{TablePrefix}{The table prefix used for catalog tables that are created.}
 
 \item{SchemaChangePolicy}{The policy for the crawler's update and deletion behavior.}
+
+\item{RecrawlPolicy}{A policy that specifies whether to crawl the entire dataset again, or to
+crawl only folders that were added since the last crawler run.}
+
+\item{LineageConfiguration}{Specifies data lineage configuration settings for the crawler.}
 
 \item{Configuration}{Crawler configuration information. This versioned JSON string allows
 users to specify aspects of a crawler's behavior. For more information,
@@ -65,7 +70,8 @@ field.
         Path = "string",
         Exclusions = list(
           "string"
-        )
+        ),
+        ConnectionName = "string"
       )
     ),
     JdbcTargets = list(
@@ -75,6 +81,13 @@ field.
         Exclusions = list(
           "string"
         )
+      )
+    ),
+    MongoDBTargets = list(
+      list(
+        ConnectionName = "string",
+        Path = "string",
+        ScanAll = TRUE|FALSE
       )
     ),
     DynamoDBTargets = list(
@@ -101,6 +114,12 @@ field.
   SchemaChangePolicy = list(
     UpdateBehavior = "LOG"|"UPDATE_IN_DATABASE",
     DeleteBehavior = "LOG"|"DELETE_FROM_DATABASE"|"DEPRECATE_IN_DATABASE"
+  ),
+  RecrawlPolicy = list(
+    RecrawlBehavior = "CRAWL_EVERYTHING"|"CRAWL_NEW_FOLDERS_ONLY"
+  ),
+  LineageConfiguration = list(
+    CrawlerLineageSettings = "ENABLE"|"DISABLE"
   ),
   Configuration = "string",
   CrawlerSecurityConfiguration = "string",

@@ -2,15 +2,15 @@
 % Please edit documentation in R/sms_operations.R
 \name{sms_terminate_app}
 \alias{sms_terminate_app}
-\title{Terminates the stack for an application}
+\title{Terminates the stack for the specified application}
 \usage{
 sms_terminate_app(appId)
 }
 \arguments{
-\item{appId}{ID of the application to terminate.}
+\item{appId}{The ID of the application.}
 }
 \description{
-Terminates the stack for an application.
+Terminates the stack for the specified application.
 }
 \section{Request syntax}{
 \preformatted{svc$terminate_app(

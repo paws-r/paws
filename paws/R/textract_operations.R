@@ -369,7 +369,7 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #'
 #' @usage
 #' textract_start_document_analysis(DocumentLocation, FeatureTypes,
-#'   ClientRequestToken, JobTag, NotificationChannel)
+#'   ClientRequestToken, JobTag, NotificationChannel, OutputConfig, KMSKeyId)
 #'
 #' @param DocumentLocation &#91;required&#93; The location of the document to be processed.
 #' @param FeatureTypes &#91;required&#93; A list of the types of analysis to perform. Add TABLES to the list to
@@ -390,6 +390,14 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #' notification corresponds to (such as a tax form or a receipt).
 #' @param NotificationChannel The Amazon SNS topic ARN that you want Amazon Textract to publish the
 #' completion status of the operation to.
+#' @param OutputConfig Sets if the output will go to a customer defined bucket. By default,
+#' Amazon Textract will save the results internally to be accessed by the
+#' GetDocumentAnalysis operation.
+#' @param KMSKeyId The KMS key used to encrypt the inference results. This can be in either
+#' Key ID or Key Alias format. When a KMS key is provided, the KMS key will
+#' be used for server-side encryption of the objects in the customer
+#' bucket. When this parameter is not enabled, the result will be encrypted
+#' server side,using SSE-S3.
 #'
 #' @section Request syntax:
 #' ```
@@ -409,21 +417,26 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #'   NotificationChannel = list(
 #'     SNSTopicArn = "string",
 #'     RoleArn = "string"
-#'   )
+#'   ),
+#'   OutputConfig = list(
+#'     S3Bucket = "string",
+#'     S3Prefix = "string"
+#'   ),
+#'   KMSKeyId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname textract_start_document_analysis
-textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, ClientRequestToken = NULL, JobTag = NULL, NotificationChannel = NULL) {
+textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, ClientRequestToken = NULL, JobTag = NULL, NotificationChannel = NULL, OutputConfig = NULL, KMSKeyId = NULL) {
   op <- new_operation(
     name = "StartDocumentAnalysis",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .textract$start_document_analysis_input(DocumentLocation = DocumentLocation, FeatureTypes = FeatureTypes, ClientRequestToken = ClientRequestToken, JobTag = JobTag, NotificationChannel = NotificationChannel)
+  input <- .textract$start_document_analysis_input(DocumentLocation = DocumentLocation, FeatureTypes = FeatureTypes, ClientRequestToken = ClientRequestToken, JobTag = JobTag, NotificationChannel = NotificationChannel, OutputConfig = OutputConfig, KMSKeyId = KMSKeyId)
   output <- .textract$start_document_analysis_output()
   config <- get_config()
   svc <- .textract$service(config)
@@ -458,7 +471,7 @@ textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, Cli
 #'
 #' @usage
 #' textract_start_document_text_detection(DocumentLocation,
-#'   ClientRequestToken, JobTag, NotificationChannel)
+#'   ClientRequestToken, JobTag, NotificationChannel, OutputConfig, KMSKeyId)
 #'
 #' @param DocumentLocation &#91;required&#93; The location of the document to be processed.
 #' @param ClientRequestToken The idempotent token that's used to identify the start request. If you
@@ -473,6 +486,14 @@ textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, Cli
 #' notification corresponds to (such as a tax form or a receipt).
 #' @param NotificationChannel The Amazon SNS topic ARN that you want Amazon Textract to publish the
 #' completion status of the operation to.
+#' @param OutputConfig Sets if the output will go to a customer defined bucket. By default
+#' Amazon Textract will save the results internally to be accessed with the
+#' GetDocumentTextDetection operation.
+#' @param KMSKeyId The KMS key used to encrypt the inference results. This can be in either
+#' Key ID or Key Alias format. When a KMS key is provided, the KMS key will
+#' be used for server-side encryption of the objects in the customer
+#' bucket. When this parameter is not enabled, the result will be encrypted
+#' server side,using SSE-S3.
 #'
 #' @section Request syntax:
 #' ```
@@ -489,21 +510,26 @@ textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, Cli
 #'   NotificationChannel = list(
 #'     SNSTopicArn = "string",
 #'     RoleArn = "string"
-#'   )
+#'   ),
+#'   OutputConfig = list(
+#'     S3Bucket = "string",
+#'     S3Prefix = "string"
+#'   ),
+#'   KMSKeyId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname textract_start_document_text_detection
-textract_start_document_text_detection <- function(DocumentLocation, ClientRequestToken = NULL, JobTag = NULL, NotificationChannel = NULL) {
+textract_start_document_text_detection <- function(DocumentLocation, ClientRequestToken = NULL, JobTag = NULL, NotificationChannel = NULL, OutputConfig = NULL, KMSKeyId = NULL) {
   op <- new_operation(
     name = "StartDocumentTextDetection",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .textract$start_document_text_detection_input(DocumentLocation = DocumentLocation, ClientRequestToken = ClientRequestToken, JobTag = JobTag, NotificationChannel = NotificationChannel)
+  input <- .textract$start_document_text_detection_input(DocumentLocation = DocumentLocation, ClientRequestToken = ClientRequestToken, JobTag = JobTag, NotificationChannel = NotificationChannel, OutputConfig = OutputConfig, KMSKeyId = KMSKeyId)
   output <- .textract$start_document_text_detection_output()
   config <- get_config()
   svc <- .textract$service(config)

@@ -12,7 +12,8 @@ elbv2_set_ip_address_type(LoadBalancerArn, IpAddressType)
 
 \item{IpAddressType}{[required] The IP address type. The possible values are \code{ipv4} (for IPv4 addresses)
 and \code{dualstack} (for IPv4 and IPv6 addresses). Internal load balancers
-must use \code{ipv4}. Network Load Balancers must use \code{ipv4}.}
+must use \code{ipv4}. You can’t specify \code{dualstack} for a load balancer with
+a UDP or TCP\\_UDP listener.}
 }
 \description{
 Sets the type of IP addresses used by the subnets of the specified

@@ -18,14 +18,15 @@ example:
 range
 \item To add a route for an on-premises network, enter the AWS
 Site-to-Site VPN connection's IPv4 CIDR range
-}
-
-Route address ranges cannot overlap with the CIDR range specified for
-client allocation.}
+\item To add a route for the local network, enter the client CIDR range
+}}
 
 \item{TargetVpcSubnetId}{[required] The ID of the subnet through which you want to route traffic. The
 specified subnet must be an existing target network of the Client VPN
-endpoint.}
+endpoint.
+
+Alternatively, if you're adding a route for the local network, specify
+\code{local}.}
 
 \item{Description}{A brief description of the route.}
 

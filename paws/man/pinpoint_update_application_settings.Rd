@@ -26,6 +26,7 @@ Updates the settings for an application.
       WebUrl = "string"
     ),
     CloudWatchMetricsEnabled = TRUE|FALSE,
+    EventTaggingEnabled = TRUE|FALSE,
     Limits = list(
       Daily = 123,
       MaximumDuration = 123,

@@ -11,7 +11,7 @@ organizations_list_parents(ChildId, NextToken, MaxResults)
 \item{ChildId}{[required] The unique identifier (ID) of the OU or account whose parent containers
 you want to list. Don't specify a root.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a child ID
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a child ID
 string requires one of the following:
 \itemize{
 \item \strong{Account} - A string that consists of exactly 12 digits.
@@ -51,9 +51,9 @@ empty set of results even when there are more results available. The
 \code{NextToken} response parameter value is \code{null} \emph{only} when there are no
 more results to display.
 
-This operation can be called only from the organization's master account
-or by a member account that is a delegated administrator for an AWS
-service.
+This operation can be called only from the organization's management
+account or by a member account that is a delegated administrator for an
+AWS service.
 
 In the current release, a child can have only a single parent.
 }

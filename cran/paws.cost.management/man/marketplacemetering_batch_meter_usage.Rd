@@ -28,6 +28,12 @@ meter usage for multiple products, you must make multiple calls to
 BatchMeterUsage.
 
 BatchMeterUsage can process up to 25 UsageRecords at a time.
+
+A UsageRecord can optionally include multiple usage allocations, to
+provide customers with usagedata split into buckets by tags that you
+define (or allow the customer to define).
+
+BatchMeterUsage requests must be less than 1MB in size.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_meter_usage(
@@ -38,7 +44,18 @@ BatchMeterUsage can process up to 25 UsageRecords at a time.
       ),
       CustomerIdentifier = "string",
       Dimension = "string",
-      Quantity = 123
+      Quantity = 123,
+      UsageAllocations = list(
+        list(
+          AllocatedUsageQuantity = 123,
+          Tags = list(
+            list(
+              Key = "string",
+              Value = "string"
+            )
+          )
+        )
+      )
     )
   ),
   ProductCode = "string"

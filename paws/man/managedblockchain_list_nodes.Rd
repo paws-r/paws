@@ -10,7 +10,10 @@ managedblockchain_list_nodes(NetworkId, MemberId, Status, MaxResults,
 \arguments{
 \item{NetworkId}{[required] The unique identifier of the network for which to list nodes.}
 
-\item{MemberId}{[required] The unique identifier of the member who owns the nodes to list.}
+\item{MemberId}{The unique identifier of the member who owns the nodes to list.
+
+Applies only to Hyperledger Fabric and is required for Hyperledger
+Fabric.}
 
 \item{Status}{An optional status specifier. If provided, only nodes currently in this
 status are listed.}
@@ -22,11 +25,14 @@ status are listed.}
 \description{
 Returns information about the nodes within a network.
 }
+\details{
+Applies to Hyperledger Fabric and Ethereum.
+}
 \section{Request syntax}{
 \preformatted{svc$list_nodes(
   NetworkId = "string",
   MemberId = "string",
-  Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETED"|"FAILED",
+  Status = "CREATING"|"AVAILABLE"|"UNHEALTHY"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETED"|"FAILED",
   MaxResults = 123,
   NextToken = "string"
 )

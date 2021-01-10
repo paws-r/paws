@@ -13,7 +13,8 @@ Functions when tasks are assigned to a worker, or in the \href{https://docs.aws.
 when a workflow enters a task state. See
 GetActivityTaskOutput$taskToken.}
 
-\item{output}{[required] The JSON output of the task.}
+\item{output}{[required] The JSON output of the task. Length constraints apply to the payload
+size, and are expressed as bytes in UTF-8 encoding.}
 }
 \description{
 Used by activity workers and task states using the

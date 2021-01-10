@@ -14,7 +14,7 @@ Amazon DynamoDB
 
 Amazon DynamoDB Streams provides API actions for accessing streams and
 processing stream records. To learn more about application development
-with Streams, see \href{http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html}{Capturing Table Activity with DynamoDB Streams}
+with Streams, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html}{Capturing Table Activity with DynamoDB Streams}
 in the Amazon DynamoDB Developer Guide.
 }
 \section{Service syntax}{

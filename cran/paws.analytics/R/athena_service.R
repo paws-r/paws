@@ -13,8 +13,8 @@ NULL
 #' automatically—executing queries in parallel—so results are fast, even
 #' with large datasets and complex queries. For more information, see [What
 #' is Amazon
-#' Athena](http://docs.aws.amazon.com/athena/latest/ug/what-is.html) in the
-#' *Amazon Athena User Guide*.
+#' Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) in
+#' the *Amazon Athena User Guide*.
 #' 
 #' If you connect to Athena using the JDBC driver, use version 1.1.0 of the
 #' driver or later with the Amazon Athena API. Earlier version drivers do

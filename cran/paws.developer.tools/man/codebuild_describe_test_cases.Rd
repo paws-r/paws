@@ -32,7 +32,8 @@ Returns a list of details about test cases for a report.
   nextToken = "string",
   maxResults = 123,
   filter = list(
-    status = "string"
+    status = "string",
+    keyword = "string"
   )
 )
 }

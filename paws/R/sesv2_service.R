@@ -11,8 +11,8 @@ NULL
 #' information about the Amazon SES API v2, including supported operations,
 #' data types, parameters, and schemas.
 #' 
-#' [Amazon SES](https://aws.amazon.com/pinpoint) is an AWS service that you
-#' can use to send email messages to your customers.
+#' [Amazon SES](https://aws.amazon.com/pinpoint/) is an AWS service that
+#' you can use to send email messages to your customers.
 #' 
 #' If you're new to Amazon SES API v2, you might find it helpful to also
 #' review the [Amazon Simple Email Service Developer
@@ -37,7 +37,7 @@ NULL
 #' high levels of availability and redundancy, while also minimizing
 #' latency. To learn more about the number of Availability Zones that are
 #' available in each Region, see [AWS Global
-#' Infrastructure](http://aws.amazon.com/about-aws/global-infrastructure/).
+#' Infrastructure](https://aws.amazon.com/about-aws/global-infrastructure/).
 #'
 #' @param
 #' config
@@ -73,34 +73,57 @@ NULL
 #' \tabular{ll}{
 #'  \link[=sesv2_create_configuration_set]{create_configuration_set} \tab Create a configuration set\cr
 #'  \link[=sesv2_create_configuration_set_event_destination]{create_configuration_set_event_destination} \tab Create an event destination\cr
+#'  \link[=sesv2_create_contact]{create_contact} \tab Creates a contact, which is an end-user who is receiving the email, and adds them to a contact list\cr
+#'  \link[=sesv2_create_contact_list]{create_contact_list} \tab Creates a contact list\cr
+#'  \link[=sesv2_create_custom_verification_email_template]{create_custom_verification_email_template} \tab Creates a new custom verification email template\cr
 #'  \link[=sesv2_create_dedicated_ip_pool]{create_dedicated_ip_pool} \tab Create a new pool of dedicated IP addresses\cr
 #'  \link[=sesv2_create_deliverability_test_report]{create_deliverability_test_report} \tab Create a new predictive inbox placement test\cr
 #'  \link[=sesv2_create_email_identity]{create_email_identity} \tab Starts the process of verifying an email identity\cr
+#'  \link[=sesv2_create_email_identity_policy]{create_email_identity_policy} \tab Creates the specified sending authorization policy for the given identity (an email address or a domain)\cr
+#'  \link[=sesv2_create_email_template]{create_email_template} \tab Creates an email template\cr
+#'  \link[=sesv2_create_import_job]{create_import_job} \tab Creates an import job for a data destination\cr
 #'  \link[=sesv2_delete_configuration_set]{delete_configuration_set} \tab Delete an existing configuration set\cr
 #'  \link[=sesv2_delete_configuration_set_event_destination]{delete_configuration_set_event_destination} \tab Delete an event destination\cr
+#'  \link[=sesv2_delete_contact]{delete_contact} \tab Removes a contact from a contact list\cr
+#'  \link[=sesv2_delete_contact_list]{delete_contact_list} \tab Deletes a contact list and all of the contacts on that list\cr
+#'  \link[=sesv2_delete_custom_verification_email_template]{delete_custom_verification_email_template} \tab Deletes an existing custom verification email template\cr
 #'  \link[=sesv2_delete_dedicated_ip_pool]{delete_dedicated_ip_pool} \tab Delete a dedicated IP pool\cr
 #'  \link[=sesv2_delete_email_identity]{delete_email_identity} \tab Deletes an email identity\cr
+#'  \link[=sesv2_delete_email_identity_policy]{delete_email_identity_policy} \tab Deletes the specified sending authorization policy for the given identity (an email address or a domain)\cr
+#'  \link[=sesv2_delete_email_template]{delete_email_template} \tab Deletes an email template\cr
 #'  \link[=sesv2_delete_suppressed_destination]{delete_suppressed_destination} \tab Removes an email address from the suppression list for your account\cr
 #'  \link[=sesv2_get_account]{get_account} \tab Obtain information about the email-sending status and capabilities of your Amazon SES account in the current AWS Region\cr
 #'  \link[=sesv2_get_blacklist_reports]{get_blacklist_reports} \tab Retrieve a list of the blacklists that your dedicated IP addresses appear on\cr
 #'  \link[=sesv2_get_configuration_set]{get_configuration_set} \tab Get information about an existing configuration set, including the dedicated IP pool that it's associated with, whether or not it's enabled for sending email, and more\cr
 #'  \link[=sesv2_get_configuration_set_event_destinations]{get_configuration_set_event_destinations} \tab Retrieve a list of event destinations that are associated with a configuration set\cr
+#'  \link[=sesv2_get_contact]{get_contact} \tab Returns a contact from a contact list\cr
+#'  \link[=sesv2_get_contact_list]{get_contact_list} \tab Returns contact list metadata\cr
+#'  \link[=sesv2_get_custom_verification_email_template]{get_custom_verification_email_template} \tab Returns the custom email verification template for the template name you specify\cr
 #'  \link[=sesv2_get_dedicated_ip]{get_dedicated_ip} \tab Get information about a dedicated IP address, including the name of the dedicated IP pool that it's associated with, as well information about the automatic warm-up process for the address\cr
 #'  \link[=sesv2_get_dedicated_ips]{get_dedicated_ips} \tab List the dedicated IP addresses that are associated with your AWS account\cr
 #'  \link[=sesv2_get_deliverability_dashboard_options]{get_deliverability_dashboard_options} \tab Retrieve information about the status of the Deliverability dashboard for your account\cr
 #'  \link[=sesv2_get_deliverability_test_report]{get_deliverability_test_report} \tab Retrieve the results of a predictive inbox placement test\cr
 #'  \link[=sesv2_get_domain_deliverability_campaign]{get_domain_deliverability_campaign} \tab Retrieve all the deliverability data for a specific campaign\cr
 #'  \link[=sesv2_get_domain_statistics_report]{get_domain_statistics_report} \tab Retrieve inbox placement and engagement rates for the domains that you use to send email\cr
-#'  \link[=sesv2_get_email_identity]{get_email_identity} \tab Provides information about a specific identity, including the identity's verification status, its DKIM authentication status, and its custom Mail-From settings\cr
+#'  \link[=sesv2_get_email_identity]{get_email_identity} \tab Provides information about a specific identity, including the identity's verification status, sending authorization policies, its DKIM authentication status, and its custom Mail-From settings\cr
+#'  \link[=sesv2_get_email_identity_policies]{get_email_identity_policies} \tab Returns the requested sending authorization policies for the given identity (an email address or a domain)\cr
+#'  \link[=sesv2_get_email_template]{get_email_template} \tab Displays the template object (which includes the subject line, HTML part and text part) for the template you specify\cr
+#'  \link[=sesv2_get_import_job]{get_import_job} \tab Provides information about an import job\cr
 #'  \link[=sesv2_get_suppressed_destination]{get_suppressed_destination} \tab Retrieves information about a specific email address that's on the suppression list for your account\cr
 #'  \link[=sesv2_list_configuration_sets]{list_configuration_sets} \tab List all of the configuration sets associated with your account in the current region\cr
+#'  \link[=sesv2_list_contact_lists]{list_contact_lists} \tab Lists all of the contact lists available\cr
+#'  \link[=sesv2_list_contacts]{list_contacts} \tab Lists the contacts present in a specific contact list\cr
+#'  \link[=sesv2_list_custom_verification_email_templates]{list_custom_verification_email_templates} \tab Lists the existing custom verification email templates for your account in the current AWS Region\cr
 #'  \link[=sesv2_list_dedicated_ip_pools]{list_dedicated_ip_pools} \tab List all of the dedicated IP pools that exist in your AWS account in the current Region\cr
 #'  \link[=sesv2_list_deliverability_test_reports]{list_deliverability_test_reports} \tab Show a list of the predictive inbox placement tests that you've performed, regardless of their statuses\cr
 #'  \link[=sesv2_list_domain_deliverability_campaigns]{list_domain_deliverability_campaigns} \tab Retrieve deliverability data for all the campaigns that used a specific domain to send email during a specified time range\cr
 #'  \link[=sesv2_list_email_identities]{list_email_identities} \tab Returns a list of all of the email identities that are associated with your AWS account\cr
+#'  \link[=sesv2_list_email_templates]{list_email_templates} \tab Lists the email templates present in your Amazon SES account in the current AWS Region\cr
+#'  \link[=sesv2_list_import_jobs]{list_import_jobs} \tab Lists all of the import jobs\cr
 #'  \link[=sesv2_list_suppressed_destinations]{list_suppressed_destinations} \tab Retrieves a list of email addresses that are on the suppression list for your account\cr
 #'  \link[=sesv2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve a list of the tags (keys and values) that are associated with a specified resource\cr
 #'  \link[=sesv2_put_account_dedicated_ip_warmup_attributes]{put_account_dedicated_ip_warmup_attributes} \tab Enable or disable the automatic warm-up feature for dedicated IP addresses\cr
+#'  \link[=sesv2_put_account_details]{put_account_details} \tab Update your Amazon SES account details\cr
 #'  \link[=sesv2_put_account_sending_attributes]{put_account_sending_attributes} \tab Enable or disable the ability of your account to send email\cr
 #'  \link[=sesv2_put_account_suppression_attributes]{put_account_suppression_attributes} \tab Change the settings for the account-level suppression list\cr
 #'  \link[=sesv2_put_configuration_set_delivery_options]{put_configuration_set_delivery_options} \tab Associate a configuration set with a dedicated IP pool\cr
@@ -116,10 +139,18 @@ NULL
 #'  \link[=sesv2_put_email_identity_feedback_attributes]{put_email_identity_feedback_attributes} \tab Used to enable or disable feedback forwarding for an identity\cr
 #'  \link[=sesv2_put_email_identity_mail_from_attributes]{put_email_identity_mail_from_attributes} \tab Used to enable or disable the custom Mail-From domain configuration for an email identity\cr
 #'  \link[=sesv2_put_suppressed_destination]{put_suppressed_destination} \tab Adds an email address to the suppression list for your account\cr
+#'  \link[=sesv2_send_bulk_email]{send_bulk_email} \tab Composes an email message to multiple destinations\cr
+#'  \link[=sesv2_send_custom_verification_email]{send_custom_verification_email} \tab Adds an email address to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it\cr
 #'  \link[=sesv2_send_email]{send_email} \tab Sends an email message\cr
 #'  \link[=sesv2_tag_resource]{tag_resource} \tab Add one or more tags (keys and values) to a specified resource\cr
+#'  \link[=sesv2_test_render_email_template]{test_render_email_template} \tab Creates a preview of the MIME content of an email when provided with a template and a set of replacement data\cr
 #'  \link[=sesv2_untag_resource]{untag_resource} \tab Remove one or more tags (keys and values) from a specified resource\cr
-#'  \link[=sesv2_update_configuration_set_event_destination]{update_configuration_set_event_destination} \tab Update the configuration of an event destination for a configuration set
+#'  \link[=sesv2_update_configuration_set_event_destination]{update_configuration_set_event_destination} \tab Update the configuration of an event destination for a configuration set\cr
+#'  \link[=sesv2_update_contact]{update_contact} \tab Updates a contact's preferences for a list\cr
+#'  \link[=sesv2_update_contact_list]{update_contact_list} \tab Updates contact list metadata\cr
+#'  \link[=sesv2_update_custom_verification_email_template]{update_custom_verification_email_template} \tab Updates an existing custom verification email template\cr
+#'  \link[=sesv2_update_email_identity_policy]{update_email_identity_policy} \tab Updates the specified sending authorization policy for the given identity (an email address or a domain)\cr
+#'  \link[=sesv2_update_email_template]{update_email_template} \tab Updates an email template
 #' }
 #'
 #' @rdname sesv2

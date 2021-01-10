@@ -5,17 +5,26 @@
 \title{Lists the parts that have been uploaded for a specific multipart upload}
 \usage{
 s3_list_parts(Bucket, Key, MaxParts, PartNumberMarker, UploadId,
-  RequestPayer)
+  RequestPayer, ExpectedBucketOwner)
 }
 \arguments{
-\item{Bucket}{[required] Name of the bucket to which the parts are being uploaded.
+\item{Bucket}{[required] The name of the bucket to which the parts are being uploaded.
 
 When using this API with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
+When using this operation with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+
+When using this API with Amazon S3 on Outposts, you must direct requests
+to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
+form
+\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
+When using this operation using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Key}{[required] Object key for which the multipart upload was initiated.}
@@ -28,14 +37,19 @@ higher part numbers will be listed.}
 \item{UploadId}{[required] Upload ID identifying the multipart upload whose parts are being listed.}
 
 \item{RequestPayer}{}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Lists the parts that have been uploaded for a specific multipart upload.
 This operation must include the upload ID, which you obtain by sending
-the initiate multipart upload request (see CreateMultipartUpload). This
-request returns a maximum of 1,000 uploaded parts. The default number of
-parts returned is 1,000 parts. You can restrict the number of parts
-returned by specifying the \code{max-parts} request parameter. If your
+the initiate multipart upload request (see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}).
+This request returns a maximum of 1,000 uploaded parts. The default
+number of parts returned is 1,000 parts. You can restrict the number of
+parts returned by specifying the \code{max-parts} request parameter. If your
 multipart upload consists of more than 1,000 parts, the response returns
 an \code{IsTruncated} field with the value of true, and a
 \code{NextPartNumberMarker} element. In subsequent \code{ListParts} requests you
@@ -51,11 +65,11 @@ see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuAndPermissions.html
 
 The following operations are related to \code{ListParts}:
 \itemize{
-\item CreateMultipartUpload
-\item UploadPart
-\item CompleteMultipartUpload
-\item AbortMultipartUpload
-\item ListMultipartUploads
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html}{CompleteMultipartUpload}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html}{AbortMultipartUpload}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html}{ListMultipartUploads}
 }
 }
 \section{Request syntax}{
@@ -65,7 +79,8 @@ The following operations are related to \code{ListParts}:
   MaxParts = 123,
   PartNumberMarker = 123,
   UploadId = "string",
-  RequestPayer = "requester"
+  RequestPayer = "requester",
+  ExpectedBucketOwner = "string"
 )
 }
 }

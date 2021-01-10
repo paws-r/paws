@@ -34,7 +34,7 @@ Inactive schemas will be deleted after two years.
   Description = "string",
   RegistryName = "string",
   SchemaName = "string",
-  Type = "OpenApi3"
+  Type = "OpenApi3"|"JSONSchemaDraft4"
 )
 }
 }

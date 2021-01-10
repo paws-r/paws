@@ -20,8 +20,10 @@ to override the default settings. A dashboard can have any type of
 parameters, and some parameters might accept multiple values.}
 
 \item{Permissions}{A structure that contains the permissions of the dashboard. You can use
-this structure for granting permissions with principal and action
-information.}
+this structure for granting permissions by providing a list of IAM
+action information for each principal ARN.
+
+To specify no permissions, omit the permissions list.}
 
 \item{SourceEntity}{[required] The entity that you are using as a source when you create the dashboard.
 In \code{SourceEntity}, you specify the type of object you're using as
@@ -50,7 +52,7 @@ which can be used for ad hoc (one-time) filtering. This option is
 \code{ENABLED} by default.
 \item \code{AvailabilityStatus} for \code{ExportToCSVOption} - This status can be
 either \code{ENABLED} or \code{DISABLED}. The visual option to export data to
-.csv format isn't enabled when this is set to \code{DISABLED}. This
+.CSV format isn't enabled when this is set to \code{DISABLED}. This
 option is \code{ENABLED} by default.
 \item \code{VisibilityState} for \code{SheetControlsOption} - This visibility state
 can be either \code{COLLAPSED} or \code{EXPANDED}. This option is \code{COLLAPSED}
@@ -64,16 +66,14 @@ AWS account where you create the dashboard.}
 }
 \description{
 Creates a dashboard from a template. To first create a template, see the
-CreateTemplate API operation.
+\verb{<a>CreateTemplate</a>} API operation.
 }
 \details{
 A dashboard is an entity in QuickSight that identifies QuickSight
 reports, created from analyses. You can share QuickSight dashboards.
 With the right permissions, you can create scheduled email reports from
-them. The \code{CreateDashboard}, \code{DescribeDashboard}, and
-\code{ListDashboardsByUser} API operations act on the dashboard entity. If
-you have the correct permissions, you can create a dashboard from a
-template that exists in a different AWS account.
+them. If you have the correct permissions, you can create a dashboard
+from a template that exists in a different AWS account.
 }
 \section{Request syntax}{
 \preformatted{svc$create_dashboard(

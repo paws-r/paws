@@ -12,7 +12,7 @@ databasemigrationservice_describe_event_categories(SourceType, Filters)
 
 Valid values: replication-instance | replication-task}
 
-\item{Filters}{Filters applied to the action.}
+\item{Filters}{Filters applied to the event categories.}
 }
 \description{
 Lists categories for all event source types, or, if specified, for a

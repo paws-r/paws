@@ -7,8 +7,8 @@
 cloudwatchlogs_stop_query(queryId)
 }
 \arguments{
-\item{queryId}{[required] The ID number of the query to stop. If necessary, you can use
-\code{DescribeQueries} to find this ID number.}
+\item{queryId}{[required] The ID number of the query to stop. To find this ID number, use
+\code{DescribeQueries}.}
 }
 \description{
 Stops a CloudWatch Logs Insights query that is in progress. If the query

@@ -28,7 +28,7 @@ Amazon EBS volume.
 }
 
 For more information about the features of Amazon EventBridge, see the
-\href{https://docs.aws.amazon.com/eventbridge/latest/userguide}{Amazon EventBridge User Guide}.
+\href{https://docs.aws.amazon.com/eventbridge/latest/userguide/}{Amazon EventBridge User Guide}.
 }
 \section{Service syntax}{
 \preformatted{svc <- eventbridge(
@@ -52,22 +52,29 @@ For more information about the features of Amazon EventBridge, see the
 
 \tabular{ll}{
 \link[=eventbridge_activate_event_source]{activate_event_source} \tab Activates a partner event source that has been deactivated\cr
+\link[=eventbridge_cancel_replay]{cancel_replay} \tab Cancels the specified replay\cr
+\link[=eventbridge_create_archive]{create_archive} \tab Creates an archive of events with the specified settings\cr
 \link[=eventbridge_create_event_bus]{create_event_bus} \tab Creates a new event bus within your account\cr
 \link[=eventbridge_create_partner_event_source]{create_partner_event_source} \tab Called by an SaaS partner to create a partner event source\cr
 \link[=eventbridge_deactivate_event_source]{deactivate_event_source} \tab You can use this operation to temporarily stop receiving events from the specified partner event source\cr
+\link[=eventbridge_delete_archive]{delete_archive} \tab Deletes the specified archive\cr
 \link[=eventbridge_delete_event_bus]{delete_event_bus} \tab Deletes the specified custom event bus or partner event bus\cr
 \link[=eventbridge_delete_partner_event_source]{delete_partner_event_source} \tab This operation is used by SaaS partners to delete a partner event source\cr
 \link[=eventbridge_delete_rule]{delete_rule} \tab Deletes the specified rule\cr
+\link[=eventbridge_describe_archive]{describe_archive} \tab Retrieves details about an archive\cr
 \link[=eventbridge_describe_event_bus]{describe_event_bus} \tab Displays details about an event bus in your account\cr
 \link[=eventbridge_describe_event_source]{describe_event_source} \tab This operation lists details about a partner event source that is shared with your account\cr
 \link[=eventbridge_describe_partner_event_source]{describe_partner_event_source} \tab An SaaS partner can use this operation to list details about a partner event source that they have created\cr
+\link[=eventbridge_describe_replay]{describe_replay} \tab Retrieves details about a replay\cr
 \link[=eventbridge_describe_rule]{describe_rule} \tab Describes the specified rule\cr
 \link[=eventbridge_disable_rule]{disable_rule} \tab Disables the specified rule\cr
 \link[=eventbridge_enable_rule]{enable_rule} \tab Enables the specified rule\cr
+\link[=eventbridge_list_archives]{list_archives} \tab Lists your archives\cr
 \link[=eventbridge_list_event_buses]{list_event_buses} \tab Lists all the event buses in your account, including the default event bus, custom event buses, and partner event buses\cr
 \link[=eventbridge_list_event_sources]{list_event_sources} \tab You can use this to see all the partner event sources that have been shared with your AWS account\cr
 \link[=eventbridge_list_partner_event_source_accounts]{list_partner_event_source_accounts} \tab An SaaS partner can use this operation to display the AWS account ID that a particular partner event source name is associated with\cr
 \link[=eventbridge_list_partner_event_sources]{list_partner_event_sources} \tab An SaaS partner can use this operation to list all the partner event source names that they have created\cr
+\link[=eventbridge_list_replays]{list_replays} \tab Lists your replays\cr
 \link[=eventbridge_list_rule_names_by_target]{list_rule_names_by_target} \tab Lists the rules for the specified target\cr
 \link[=eventbridge_list_rules]{list_rules} \tab Lists your Amazon EventBridge rules\cr
 \link[=eventbridge_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with an EventBridge resource\cr
@@ -79,9 +86,11 @@ For more information about the features of Amazon EventBridge, see the
 \link[=eventbridge_put_targets]{put_targets} \tab Adds the specified targets to the specified rule, or updates the targets if they are already associated with the rule\cr
 \link[=eventbridge_remove_permission]{remove_permission} \tab Revokes the permission of another AWS account to be able to put events to the specified event bus\cr
 \link[=eventbridge_remove_targets]{remove_targets} \tab Removes the specified targets from the specified rule\cr
+\link[=eventbridge_start_replay]{start_replay} \tab Starts the specified replay\cr
 \link[=eventbridge_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified EventBridge resource\cr
 \link[=eventbridge_test_event_pattern]{test_event_pattern} \tab Tests whether the specified event pattern matches the provided event\cr
-\link[=eventbridge_untag_resource]{untag_resource} \tab Removes one or more tags from the specified EventBridge resource
+\link[=eventbridge_untag_resource]{untag_resource} \tab Removes one or more tags from the specified EventBridge resource\cr
+\link[=eventbridge_update_archive]{update_archive} \tab Updates the specified archive
 }
 }
 

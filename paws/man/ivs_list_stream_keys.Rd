@@ -2,7 +2,7 @@
 % Please edit documentation in R/ivs_operations.R
 \name{ivs_list_stream_keys}
 \alias{ivs_list_stream_keys}
-\title{Gets summary information about stream keys}
+\title{Gets summary information about stream keys for the specified channel}
 \usage{
 ivs_list_stream_keys(channelArn, nextToken, maxResults)
 }
@@ -15,8 +15,7 @@ ivs_list_stream_keys(channelArn, nextToken, maxResults)
 \item{maxResults}{Maximum number of streamKeys to return.}
 }
 \description{
-Gets summary information about stream keys. The list can be filtered to
-a particular channel.
+Gets summary information about stream keys for the specified channel.
 }
 \section{Request syntax}{
 \preformatted{svc$list_stream_keys(

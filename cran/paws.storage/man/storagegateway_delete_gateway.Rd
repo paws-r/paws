@@ -27,7 +27,7 @@ continue to be billed for these snapshots. You can choose to remove all
 remaining Amazon EBS snapshots by canceling your Amazon EC2
 subscription.  If you prefer not to cancel your Amazon EC2 subscription,
 you can delete your snapshots using the Amazon EC2 console. For more
-information, see the \href{http://aws.amazon.com/storagegateway}{AWS Storage Gateway detail page}.
+information, see the \href{https://aws.amazon.com/storagegateway/}{AWS Storage Gateway detail page}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_gateway(

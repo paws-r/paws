@@ -2,8 +2,8 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_list_retirable_grants}
 \alias{kms_list_retirable_grants}
-\title{Returns a list of all grants for which the grant's RetiringPrincipal
-matches the one specified}
+\title{Returns all grants in which the specified principal is the
+RetiringPrincipal in the grant}
 \usage{
 kms_list_retirable_grants(Limit, Marker, RetiringPrincipal)
 }
@@ -19,7 +19,8 @@ This value is optional. If you include a value, it must be between 1 and
 with truncated results. Set it to the value of \code{NextMarker} from the
 truncated response you just received.}
 
-\item{RetiringPrincipal}{[required] The retiring principal for which to list grants.
+\item{RetiringPrincipal}{[required] The retiring principal for which to list grants. Enter a principal in
+your AWS account.
 
 To specify the retiring principal, use the \href{https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html}{Amazon Resource Name (ARN)}
 of an AWS principal. Valid AWS principals include AWS accounts (root),
@@ -29,12 +30,33 @@ in the Example ARNs section of the \emph{Amazon Web Services General
 Reference}.}
 }
 \description{
-Returns a list of all grants for which the grant's \code{RetiringPrincipal}
-matches the one specified.
+Returns all grants in which the specified principal is the
+\code{RetiringPrincipal} in the grant.
 }
 \details{
-A typical use is to list all grants that you are able to retire. To
-retire a grant, use RetireGrant.
+You can specify any principal in your AWS account. The grants that are
+returned include grants for CMKs in your AWS account and other AWS
+accounts.
+
+You might use this operation to determine which grants you may retire.
+To retire a grant, use the RetireGrant operation.
+
+\strong{Cross-account use}: You must specify a principal in your AWS account.
+However, this operation can return grants in any AWS account. You do not
+need \code{kms:ListRetirableGrants} permission (or any other additional
+permission) in any AWS account other than your own.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:ListRetirableGrants}
+(IAM policy) in your AWS account.
+
+\strong{Related operations:}
+\itemize{
+\item CreateGrant
+\item ListGrants
+\item RetireGrant
+\item RevokeGrant
+}
 }
 \section{Request syntax}{
 \preformatted{svc$list_retirable_grants(

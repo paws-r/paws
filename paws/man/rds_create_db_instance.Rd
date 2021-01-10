@@ -10,15 +10,15 @@ rds_create_db_instance(DBName, DBInstanceIdentifier, AllocatedStorage,
   DBSubnetGroupName, PreferredMaintenanceWindow, DBParameterGroupName,
   BackupRetentionPeriod, PreferredBackupWindow, Port, MultiAZ,
   EngineVersion, AutoMinorVersionUpgrade, LicenseModel, Iops,
-  OptionGroupName, CharacterSetName, PubliclyAccessible, Tags,
-  DBClusterIdentifier, StorageType, TdeCredentialArn,
-  TdeCredentialPassword, StorageEncrypted, KmsKeyId, Domain,
-  CopyTagsToSnapshot, MonitoringInterval, MonitoringRoleArn,
+  OptionGroupName, CharacterSetName, NcharCharacterSetName,
+  PubliclyAccessible, Tags, DBClusterIdentifier, StorageType,
+  TdeCredentialArn, TdeCredentialPassword, StorageEncrypted, KmsKeyId,
+  Domain, CopyTagsToSnapshot, MonitoringInterval, MonitoringRoleArn,
   DomainIAMRoleName, PromotionTier, Timezone,
   EnableIAMDatabaseAuthentication, EnablePerformanceInsights,
   PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod,
   EnableCloudwatchLogsExports, ProcessorFeatures, DeletionProtection,
-  MaxAllocatedStorage)
+  MaxAllocatedStorage, EnableCustomerOwnedIp)
 }
 \arguments{
 \item{DBName}{The meaning of this parameter differs according to the database engine
@@ -33,6 +33,8 @@ instance.
 Constraints:
 \itemize{
 \item Must contain 1 to 64 letters or numbers.
+\item Must begin with a letter. Subsequent characters can be letters,
+underscores, or digits (0-9).
 \item Can't be a word reserved by the specified database engine
 }
 
@@ -45,20 +47,22 @@ instance.
 Constraints:
 \itemize{
 \item Must contain 1 to 64 letters or numbers.
+\item Must begin with a letter. Subsequent characters can be letters,
+underscores, or digits (0-9).
 \item Can't be a word reserved by the specified database engine
 }
 
 \strong{PostgreSQL}
 
 The name of the database to create when the DB instance is created. If
-this parameter isn't specified, the default "postgres" database is
-created in the DB instance.
+this parameter isn't specified, no database is created in the DB
+instance.
 
 Constraints:
 \itemize{
 \item Must contain 1 to 63 letters, numbers, or underscores.
-\item Must begin with a letter or an underscore. Subsequent characters can
-be letters, underscores, or digits (0-9).
+\item Must begin with a letter. Subsequent characters can be letters,
+underscores, or digits (0-9).
 \item Can't be a word reserved by the specified database engine
 }
 
@@ -329,7 +333,7 @@ If you're creating a DB instance in an RDS on VMware environment,
 specify the identifier of the custom Availability Zone to create the DB
 instance in.
 
-For more information about RDS on VMware, see the \href{https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html}{\emph{RDS on VMware User Guide.}}}
+For more information about RDS on VMware, see the \href{https://docs.aws.amazon.com/AmazonRDS/latest/RDSonVMwareUserGuide/rds-on-vmware.html}{RDS on VMware User Guide.}}
 
 \item{DBSubnetGroupName}{A DB subnet group to associate with this DB instance.
 
@@ -471,7 +475,7 @@ in the \emph{Amazon RDS User Guide.}
 
 \strong{Microsoft SQL Server}
 
-See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.FeatureSupport}{Version and Feature Support on Amazon RDS}
+See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.VersionSupport}{Microsoft SQL Server Versions on Amazon RDS}
 in the \emph{Amazon RDS User Guide.}
 
 \strong{MySQL}
@@ -523,6 +527,8 @@ associated with the specified CharacterSet.
 
 Not applicable. The character set is managed by the DB cluster. For more
 information, see \code{CreateDBCluster}.}
+
+\item{NcharCharacterSetName}{The name of the NCHAR character set for the Oracle DB instance.}
 
 \item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
 
@@ -586,35 +592,25 @@ cluster.}
 
 \item{KmsKeyId}{The AWS KMS key identifier for an encrypted DB instance.
 
-The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are creating a DB instance with the same AWS
-account that owns the KMS encryption key used to encrypt the new DB
-instance, then you can use the KMS key alias instead of the ARN for the
-KM encryption key.
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK). To use a CMK in a
+different AWS account, specify the key ARN or alias ARN.
 
 \strong{Amazon Aurora}
 
-Not applicable. The KMS key identifier is managed by the DB cluster. For
-more information, see \code{CreateDBCluster}.
+Not applicable. The AWS KMS key identifier is managed by the DB cluster.
+For more information, see \code{CreateDBCluster}.
 
 If \code{StorageEncrypted} is enabled, and you do not specify a value for the
-\code{KmsKeyId} parameter, then Amazon RDS will use your default encryption
-key. AWS KMS creates the default encryption key for your AWS account.
-Your AWS account has a different default encryption key for each AWS
-Region.}
+\code{KmsKeyId} parameter, then Amazon RDS uses your default CMK. There is a
+default CMK for your AWS account. Your AWS account has a different
+default CMK for each AWS Region.}
 
 \item{Domain}{The Active Directory directory ID to create the DB instance in.
-Currently, only Microsoft SQL Server and Oracle DB instances can be
-created in an Active Directory Domain.
+Currently, only MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB
+instances can be created in an Active Directory Domain.
 
-For Microsoft SQL Server DB instances, Amazon RDS can use Windows
-Authentication to authenticate users that connect to the DB instance.
-For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html}{Using Windows Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server}
-in the \emph{Amazon RDS User Guide}.
-
-For Oracle DB instances, Amazon RDS can use Kerberos Authentication to
-authenticate users that connect to the DB instance. For more
-information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html}{Using Kerberos Authentication with Amazon RDS for Oracle}
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html}{Kerberos Authentication}
 in the \emph{Amazon RDS User Guide}.}
 
 \item{CopyTagsToSnapshot}{A value that indicates whether to copy tags from the DB instance to
@@ -663,27 +659,8 @@ supported only by \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/C
 Access Management (IAM) accounts to database accounts. By default,
 mapping is disabled.
 
-You can enable IAM database authentication for the following database
-engines:
-
-\strong{Amazon Aurora}
-
-Not applicable. Mapping AWS IAM accounts to database accounts is managed
-by the DB cluster.
-
-\strong{MySQL}
-\itemize{
-\item For MySQL 5.6, minor version 5.6.34 or higher
-\item For MySQL 5.7, minor version 5.7.16 or higher
-\item For MySQL 8.0, minor version 8.0.16 or higher
-}
-
-\strong{PostgreSQL}
-\itemize{
-\item For PostgreSQL 9.5, minor version 9.5.15 or higher
-\item For PostgreSQL 9.6, minor version 9.6.11 or higher
-\item PostgreSQL 10.6, 10.7, and 10.9
-}
+This setting doesn't apply to Amazon Aurora. Mapping AWS IAM accounts to
+database accounts is managed by the DB cluster.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication for MySQL and PostgreSQL}
 in the \emph{Amazon RDS User Guide.}}
@@ -695,13 +672,14 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Use
 in the \emph{Amazon Relational Database Service User Guide}.}
 
 \item{PerformanceInsightsKMSKeyId}{The AWS KMS key identifier for encryption of Performance Insights data.
-The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or
-the KMS key alias for the KMS encryption key.
+
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK).
 
 If you do not specify a value for \code{PerformanceInsightsKMSKeyId}, then
-Amazon RDS uses your default encryption key. AWS KMS creates the default
-encryption key for your AWS account. Your AWS account has a different
-default encryption key for each AWS Region.}
+Amazon RDS uses your default CMK. There is a default CMK for your AWS
+account. Your AWS account has a different default CMK for each AWS
+Region.}
 
 \item{PerformanceInsightsRetentionPeriod}{The amount of time, in days, to retain Performance Insights data. Valid
 values are 7 or 731 (2 years).}
@@ -709,7 +687,31 @@ values are 7 or 731 (2 years).}
 \item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to
 CloudWatch Logs. The values in the list depend on the DB engine being
 used. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
-in the \emph{Amazon Relational Database Service User Guide}.}
+in the \emph{Amazon Relational Database Service User Guide}.
+
+\strong{Amazon Aurora}
+
+Not applicable. CloudWatch Logs exports are managed by the DB cluster.
+
+\strong{MariaDB}
+
+Possible values are \code{audit}, \code{error}, \code{general}, and \code{slowquery}.
+
+\strong{Microsoft SQL Server}
+
+Possible values are \code{agent} and \code{error}.
+
+\strong{MySQL}
+
+Possible values are \code{audit}, \code{error}, \code{general}, and \code{slowquery}.
+
+\strong{Oracle}
+
+Possible values are \code{alert}, \code{audit}, \code{listener}, and \code{trace}.
+
+\strong{PostgreSQL}
+
+Possible values are \code{postgresql} and \code{upgrade}.}
 
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance.}
@@ -728,6 +730,20 @@ the DB cluster.}
 
 \item{MaxAllocatedStorage}{The upper limit to which Amazon RDS can automatically scale the storage
 of the DB instance.}
+
+\item{EnableCustomerOwnedIp}{A value that indicates whether to enable a customer-owned IP address
+(CoIP) for an RDS on Outposts DB instance.
+
+A \emph{CoIP} provides local or external connectivity to resources in your
+Outpost subnets through your on-premises network. For some use cases, a
+CoIP can provide lower latency for connections to the DB instance from
+outside of its virtual private cloud (VPC) on your local network.
+
+For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on AWS Outposts}
+in the \emph{Amazon RDS User Guide}.
+
+For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing}{Customer-owned IP addresses}
+in the \emph{AWS Outposts User Guide}.}
 }
 \description{
 Creates a new DB instance.
@@ -761,6 +777,7 @@ Creates a new DB instance.
   Iops = 123,
   OptionGroupName = "string",
   CharacterSetName = "string",
+  NcharCharacterSetName = "string",
   PubliclyAccessible = TRUE|FALSE,
   Tags = list(
     list(
@@ -795,7 +812,8 @@ Creates a new DB instance.
     )
   ),
   DeletionProtection = TRUE|FALSE,
-  MaxAllocatedStorage = 123
+  MaxAllocatedStorage = 123,
+  EnableCustomerOwnedIp = TRUE|FALSE
 )
 }
 }

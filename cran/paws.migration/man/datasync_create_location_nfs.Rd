@@ -15,7 +15,7 @@ path should be a path that's exported by the NFS server, or a
 subdirectory of that path. The path should be such that it can be
 mounted by other NFS clients in your network.
 
-To see all the paths exported by your NFS server. run
+To see all the paths exported by your NFS server, run
 "\verb{showmount -e nfs-server-name}" from an NFS client that has access to
 your server. You can specify any directory that appears in the results,
 and any subdirectory of that directory. Ensure that the NFS export is
@@ -28,6 +28,9 @@ all of the files that you want DataSync allow read access for all users.
 Doing either enables the agent to read the files. For the agent to
 access directories, you must additionally enable all execute access.
 
+If you are copying data to or from your AWS Snowcone device, see \href{https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html#nfs-on-snowcone}{NFS Server on AWS Snowcone}
+for more information.
+
 For information about NFS export configuration, see 18.7. The
 /etc/exports Configuration File in the Red Hat Enterprise Linux
 documentation.}
@@ -36,11 +39,17 @@ documentation.}
 Service (DNS) name of the NFS server. An agent that is installed
 on-premises uses this host name to mount the NFS server in a network.
 
+If you are copying data to or from your AWS Snowcone device, see \href{https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html#nfs-on-snowcone}{NFS Server on AWS Snowcone}
+for more information.
+
 This name must either be DNS-compliant or must be an IP version 4 (IPv4)
 address.}
 
 \item{OnPremConfig}{[required] Contains a list of Amazon Resource Names (ARNs) of agents that are used
-to connect to an NFS server.}
+to connect to an NFS server.
+
+If you are copying data to or from your AWS Snowcone device, see \href{https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html#nfs-on-snowcone}{NFS Server on AWS Snowcone}
+for more information.}
 
 \item{MountOptions}{The NFS mount options that DataSync can use to mount your NFS share.}
 
@@ -50,7 +59,7 @@ name your resources.}
 }
 \description{
 Defines a file system on a Network File System (NFS) server that can be
-read from or written to
+read from or written to.
 }
 \section{Request syntax}{
 \preformatted{svc$create_location_nfs(

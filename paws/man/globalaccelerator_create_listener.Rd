@@ -18,7 +18,7 @@ accelerator.}
 
 \item{ClientAffinity}{Client affinity lets you direct all requests from a user to the same
 endpoint, if you have stateful applications, regardless of the port and
-protocol of the client request. Clienty affinity gives you control over
+protocol of the client request. Client affinity gives you control over
 whether to always route each client to the same specific endpoint.
 
 AWS Global Accelerator uses a consistent-flow hashing algorithm to
@@ -45,8 +45,7 @@ idempotency—that is, the uniqueness—of the request.}
 \description{
 Create a listener to process inbound connections from clients to an
 accelerator. Connections arrive to assigned static IP addresses on a
-port, port range, or list of port ranges that you specify. To see an AWS
-CLI example of creating a listener, scroll down to \strong{Example}.
+port, port range, or list of port ranges that you specify.
 }
 \section{Request syntax}{
 \preformatted{svc$create_listener(

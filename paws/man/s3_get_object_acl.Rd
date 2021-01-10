@@ -4,7 +4,8 @@
 \alias{s3_get_object_acl}
 \title{Returns the access control list (ACL) of an object}
 \usage{
-s3_get_object_acl(Bucket, Key, VersionId, RequestPayer)
+s3_get_object_acl(Bucket, Key, VersionId, RequestPayer,
+  ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name that contains the object for which to get the ACL
@@ -13,8 +14,8 @@ information.
 When using this API with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
+When using this operation with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
@@ -23,12 +24,18 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.}
 \item{VersionId}{VersionId used to reference a specific version of the object.}
 
 \item{RequestPayer}{}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Returns the access control list (ACL) of an object. To use this
-operation, you must have READ\\_ACP access to the object.
+operation, you must have \code{READ_ACP} access to the object.
 }
 \details{
+This action is not supported by Amazon S3 on Outposts.
+
 \strong{Versioning}
 
 By default, GET returns ACL information about the current version of an
@@ -37,9 +44,9 @@ versionId subresource.
 
 The following operations are related to \code{GetObjectAcl}:
 \itemize{
-\item GetObject
-\item DeleteObject
-\item PutObject
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html}{DeleteObject}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
 }
 }
 \section{Request syntax}{
@@ -47,7 +54,8 @@ The following operations are related to \code{GetObjectAcl}:
   Bucket = "string",
   Key = "string",
   VersionId = "string",
-  RequestPayer = "requester"
+  RequestPayer = "requester",
+  ExpectedBucketOwner = "string"
 )
 }
 }

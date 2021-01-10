@@ -18,11 +18,18 @@ cognitoidentityprovider_create_identity_provider(UserPoolId,
 \item{ProviderDetails}{[required] The identity provider details. The following list describes the provider
 detail keys for each identity provider type.
 \itemize{
-\item For Google, Facebook and Login with Amazon:
+\item For Google and Login with Amazon:
 \itemize{
 \item client\\_id
 \item client\\_secret
 \item authorize\\_scopes
+}
+\item For Facebook:
+\itemize{
+\item client\\_id
+\item client\\_secret
+\item authorize\\_scopes
+\item api\\_version
 }
 \item For Sign in with Apple:
 \itemize{
@@ -47,7 +54,6 @@ oidc\\_issuer key}
 by oidc\\_issuer key}
 \item jwks\\_uri \emph{if not available from discovery URL specified by
 oidc\\_issuer key}
-\item authorize\\_scopes
 }
 \item For SAML providers:
 \itemize{

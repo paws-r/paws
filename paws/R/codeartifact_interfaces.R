@@ -29,19 +29,19 @@ NULL
 
 .codeartifact$create_domain_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), encryptionKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), encryptionKey = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codeartifact$create_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domain = structure(list(name = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp")), encryptionKey = structure(logical(0), tags = list(type = "string")), repositoryCount = structure(logical(0), tags = list(type = "integer")), assetSizeBytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(domain = structure(list(name = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp")), encryptionKey = structure(logical(0), tags = list(type = "string")), repositoryCount = structure(logical(0), tags = list(type = "integer")), assetSizeBytes = structure(logical(0), tags = list(type = "long")), s3BucketArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codeartifact$create_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), repository = structure(logical(0), tags = list(location = "querystring", locationName = "repository", type = "string")), description = structure(logical(0), tags = list(type = "string")), upstreams = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(domain = structure(logical(0), tags = list(location = "querystring", locationName = "domain", type = "string")), domainOwner = structure(logical(0), tags = list(location = "querystring", locationName = "domain-owner", type = "string")), repository = structure(logical(0), tags = list(location = "querystring", locationName = "repository", type = "string")), description = structure(logical(0), tags = list(type = "string")), upstreams = structure(list(structure(list(repositoryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -59,7 +59,7 @@ NULL
 
 .codeartifact$delete_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domain = structure(list(name = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp")), encryptionKey = structure(logical(0), tags = list(type = "string")), repositoryCount = structure(logical(0), tags = list(type = "integer")), assetSizeBytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(domain = structure(list(name = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp")), encryptionKey = structure(logical(0), tags = list(type = "string")), repositoryCount = structure(logical(0), tags = list(type = "integer")), assetSizeBytes = structure(logical(0), tags = list(type = "long")), s3BucketArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -119,7 +119,7 @@ NULL
 
 .codeartifact$describe_domain_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(domain = structure(list(name = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp")), encryptionKey = structure(logical(0), tags = list(type = "string")), repositoryCount = structure(logical(0), tags = list(type = "integer")), assetSizeBytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(domain = structure(list(name = structure(logical(0), tags = list(type = "string")), owner = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "timestamp")), encryptionKey = structure(logical(0), tags = list(type = "string")), repositoryCount = structure(logical(0), tags = list(type = "integer")), assetSizeBytes = structure(logical(0), tags = list(type = "long")), s3BucketArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -327,6 +327,18 @@ NULL
   return(populate(args, shape))
 }
 
+.codeartifact$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codeartifact$put_domain_permissions_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(domain = structure(logical(0), tags = list(type = "string")), domainOwner = structure(logical(0), tags = list(type = "string")), policyRevision = structure(logical(0), tags = list(type = "string")), policyDocument = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -348,6 +360,30 @@ NULL
 .codeartifact$put_repository_permissions_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(policy = structure(list(resourceArn = structure(logical(0), tags = list(type = "string")), revision = structure(logical(0), tags = list(type = "string")), document = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceArn", type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "querystring", locationName = "resourceArn", type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codeartifact$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

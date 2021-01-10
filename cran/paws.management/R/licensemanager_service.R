@@ -33,24 +33,48 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- licensemanager()
-#' svc$create_license_configuration(
+#' svc$accept_grant(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=licensemanager_accept_grant]{accept_grant} \tab Accepts the specified grant\cr
+#'  \link[=licensemanager_check_in_license]{check_in_license} \tab Checks in the specified license\cr
+#'  \link[=licensemanager_checkout_borrow_license]{checkout_borrow_license} \tab Checks out the specified license for offline use\cr
+#'  \link[=licensemanager_checkout_license]{checkout_license} \tab Checks out the specified license\cr
+#'  \link[=licensemanager_create_grant]{create_grant} \tab Creates a grant for the specified license\cr
+#'  \link[=licensemanager_create_grant_version]{create_grant_version} \tab Creates a new version of the specified grant\cr
+#'  \link[=licensemanager_create_license]{create_license} \tab Creates a license\cr
 #'  \link[=licensemanager_create_license_configuration]{create_license_configuration} \tab Creates a license configuration\cr
+#'  \link[=licensemanager_create_license_version]{create_license_version} \tab Creates a new version of the specified license\cr
+#'  \link[=licensemanager_create_token]{create_token} \tab Creates a long-lived token\cr
+#'  \link[=licensemanager_delete_grant]{delete_grant} \tab Deletes the specified grant\cr
+#'  \link[=licensemanager_delete_license]{delete_license} \tab Deletes the specified license\cr
 #'  \link[=licensemanager_delete_license_configuration]{delete_license_configuration} \tab Deletes the specified license configuration\cr
+#'  \link[=licensemanager_delete_token]{delete_token} \tab Deletes the specified token\cr
+#'  \link[=licensemanager_extend_license_consumption]{extend_license_consumption} \tab Extends the expiration date for license consumption\cr
+#'  \link[=licensemanager_get_access_token]{get_access_token} \tab Gets a temporary access token to use with AssumeRoleWithWebIdentity\cr
+#'  \link[=licensemanager_get_grant]{get_grant} \tab Gets detailed information about the specified grant\cr
+#'  \link[=licensemanager_get_license]{get_license} \tab Gets detailed information about the specified license\cr
 #'  \link[=licensemanager_get_license_configuration]{get_license_configuration} \tab Gets detailed information about the specified license configuration\cr
+#'  \link[=licensemanager_get_license_usage]{get_license_usage} \tab Gets detailed information about the usage of the specified license\cr
 #'  \link[=licensemanager_get_service_settings]{get_service_settings} \tab Gets the License Manager settings for the current Region\cr
 #'  \link[=licensemanager_list_associations_for_license_configuration]{list_associations_for_license_configuration} \tab Lists the resource associations for the specified license configuration\cr
+#'  \link[=licensemanager_list_distributed_grants]{list_distributed_grants} \tab Lists the grants distributed for the specified license\cr
 #'  \link[=licensemanager_list_failures_for_license_configuration_operations]{list_failures_for_license_configuration_operations} \tab Lists the license configuration operations that failed\cr
 #'  \link[=licensemanager_list_license_configurations]{list_license_configurations} \tab Lists the license configurations for your account\cr
+#'  \link[=licensemanager_list_licenses]{list_licenses} \tab Lists the licenses for your account\cr
 #'  \link[=licensemanager_list_license_specifications_for_resource]{list_license_specifications_for_resource} \tab Describes the license configurations for the specified resource\cr
+#'  \link[=licensemanager_list_license_versions]{list_license_versions} \tab Lists all versions of the specified license\cr
+#'  \link[=licensemanager_list_received_grants]{list_received_grants} \tab Lists grants that are received but not accepted\cr
+#'  \link[=licensemanager_list_received_licenses]{list_received_licenses} \tab Lists received licenses\cr
 #'  \link[=licensemanager_list_resource_inventory]{list_resource_inventory} \tab Lists resources managed using Systems Manager inventory\cr
 #'  \link[=licensemanager_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified license configuration\cr
+#'  \link[=licensemanager_list_tokens]{list_tokens} \tab Lists your tokens\cr
 #'  \link[=licensemanager_list_usage_for_license_configuration]{list_usage_for_license_configuration} \tab Lists all license usage records for a license configuration, displaying license consumption details by resource at a selected point in time\cr
+#'  \link[=licensemanager_reject_grant]{reject_grant} \tab Rejects the specified grant\cr
 #'  \link[=licensemanager_tag_resource]{tag_resource} \tab Adds the specified tags to the specified license configuration\cr
 #'  \link[=licensemanager_untag_resource]{untag_resource} \tab Removes the specified tags from the specified license configuration\cr
 #'  \link[=licensemanager_update_license_configuration]{update_license_configuration} \tab Modifies the attributes of an existing license configuration\cr

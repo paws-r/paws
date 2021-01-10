@@ -33,7 +33,7 @@ Availability Zones. If you decrement the desired capacity, your Auto
 Scaling group can become unbalanced between Availability Zones. Amazon
 EC2 Auto Scaling tries to rebalance the group, and rebalancing might
 terminate instances in other zones. For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html#AutoScalingBehavior.InstanceUsage}{Rebalancing Activities}
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html#AutoScalingBehavior.InstanceUsage}{Rebalancing activities}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

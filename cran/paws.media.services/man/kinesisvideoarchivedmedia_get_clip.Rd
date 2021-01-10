@@ -44,14 +44,14 @@ AAC) or A\\_MS/ACM (for G.711).
 \item The video track of each fragment must contain codec private data in
 the Advanced Video Coding (AVC) for H.264 format and HEVC for H.265
 format. For more information, see \href{https://www.iso.org/standard/55980.html}{MPEG-4 specification ISO/IEC 14496-15}. For information
-about adapting stream data to a given format, see \href{http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
+about adapting stream data to a given format, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html}{NAL Adaptation Flags}.
 \item The audio track (if present) of each fragment must contain codec
 private data in the AAC format (\href{https://www.iso.org/standard/43345.html}{AAC specification ISO/IEC 13818-7}) or the \href{http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html}{MS Wave format}.
 }
 
 You can monitor the amount of outgoing data by monitoring the
 \code{GetClip.OutgoingBytes} Amazon CloudWatch metric. For information about
-using CloudWatch to monitor Kinesis Video Streams, see \href{http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html}{Monitoring Kinesis Video Streams}.
+using CloudWatch to monitor Kinesis Video Streams, see \href{https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html}{Monitoring Kinesis Video Streams}.
 For pricing information, see \href{https://aws.amazon.com/kinesis/video-streams/pricing/}{Amazon Kinesis Video Streams Pricing} and \href{https://aws.amazon.com/pricing/}{AWS Pricing}. Charges for outgoing AWS data
 apply.
 }

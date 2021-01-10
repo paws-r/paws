@@ -41,7 +41,7 @@ line.
 \item All of the required header fields must be present in the message.
 \item Each part of a multipart MIME message must be formatted properly.
 \item Attachments must be of a content type that Amazon SES supports. For
-a list on unsupported content types, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mime-types.html}{Unsupported Attachment Types}
+a list on unsupported content types, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-raw.html#send-email-raw-mime}{Unsupported Attachment Types}
 in the \emph{Amazon SES Developer Guide}.
 \item The entire message must be base64-encoded.
 \item If any of the MIME parts in your message contain content that is
@@ -132,7 +132,7 @@ If you try to send email from an address that isn't verified, the
 operation results in an "Email address not verified" error.
 \item If your account is still in the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/request-production-access.html}{Amazon SES sandbox},
 you can only send email to other verified addresses in your account,
-or to addresses that are associated with the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mailbox-simulator.html}{Amazon SES mailbox simulator}.
+or to addresses that are associated with the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-simulator.html}{Amazon SES mailbox simulator}.
 \item The maximum message size, including attachments, is 10 MB.
 \item Each message has to include at least one recipient address. A
 recipient address includes any address on the To:, CC:, or BCC:
@@ -189,7 +189,7 @@ in the \emph{Amazon SES Developer Guide.}
 (including each recipient in the To:, CC: and BCC: fields) is
 counted against the maximum number of emails you can send in a
 24-hour period (your \emph{sending quota}). For more information about
-sending quotas in Amazon SES, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-limits.html}{Managing Your Amazon SES Sending Limits}
+sending quotas in Amazon SES, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/manage-sending-quotas.html}{Managing Your Amazon SES Sending Limits}
 in the \emph{Amazon SES Developer Guide.}
 }
 }

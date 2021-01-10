@@ -33,9 +33,9 @@ the trust policy. The role must also have the following permissions:
 \item \code{logs:CreateLogStream}
 }}
 
-\item{RuntimeVersion}{Specifies the runtime version to use for the canary. Currently, the only
-valid value is \code{syn-1.0}. For more information about runtime versions,
-see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html}{Canary Runtime Versions}.}
+\item{RuntimeVersion}{Specifies the runtime version to use for the canary. For a list of valid
+runtime versions and for more information about runtime versions, see
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html}{Canary Runtime Versions}.}
 
 \item{Schedule}{A structure that contains information about how often the canary is to
 run, and when these runs are to stop.}
@@ -78,7 +78,11 @@ To change the tags of an existing canary, use
   ),
   RunConfig = list(
     TimeoutInSeconds = 123,
-    MemoryInMB = 123
+    MemoryInMB = 123,
+    ActiveTracing = TRUE|FALSE,
+    EnvironmentVariables = list(
+      "string"
+    )
   ),
   SuccessRetentionPeriodInDays = 123,
   FailureRetentionPeriodInDays = 123,

@@ -34,7 +34,7 @@ Amazon SQS retains a message. Valid values: An integer from 60
 seconds (1 minute) to 1,209,600 seconds (14 days). Default: 345,600
 (4 days).
 \item \code{Policy} – The queue's policy. A valid AWS policy. For more
-information about policy structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html}{Overview of AWS IAM Policies}
+information about policy structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html}{Overview of AWS IAM Policies}
 in the \emph{Amazon IAM User Guide}.
 \item \code{ReceiveMessageWaitTimeSeconds} – The length of time, in seconds,
 for which a \verb{<a>ReceiveMessage</a>} action waits for a message to
@@ -87,21 +87,22 @@ which might incur charges after Free Tier. For more information, see
 
 The following attributes apply only to \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO (first-in-first-out) queues}:
 \itemize{
-\item \code{FifoQueue} – Designates a queue as FIFO. Valid values: \code{true},
-\code{false}. If you don't specify the \code{FifoQueue} attribute, Amazon SQS
-creates a standard queue. You can provide this attribute only during
-queue creation. You can't change it for an existing queue. When you
-set this attribute, you must also provide the \code{MessageGroupId} for
-your messages explicitly.
+\item \code{FifoQueue} – Designates a queue as FIFO. Valid values are \code{true}
+and \code{false}. If you don't specify the \code{FifoQueue} attribute, Amazon
+SQS creates a standard queue. You can provide this attribute only
+during queue creation. You can't change it for an existing queue.
+When you set this attribute, you must also provide the
+\code{MessageGroupId} for your messages explicitly.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic}{FIFO Queue Logic}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 \item \code{ContentBasedDeduplication} – Enables content-based deduplication.
-Valid values: \code{true}, \code{false}. For more information, see
+Valid values are \code{true} and \code{false}. For more information, see
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing}{Exactly-Once Processing}
-in the \emph{Amazon Simple Queue Service Developer Guide}.
+in the \emph{Amazon Simple Queue Service Developer Guide}. Note the
+following:
 \itemize{
-\item Every message must have a unique \code{MessageDeduplicationId},
+\item Every message must have a unique \code{MessageDeduplicationId}.
 \itemize{
 \item You may provide a \code{MessageDeduplicationId} explicitly.
 \item If you aren't able to provide a \code{MessageDeduplicationId} and
@@ -125,7 +126,49 @@ the same as the one generated for the first
 \code{MessageDeduplicationId}, the two messages are treated as
 duplicates and only one copy of the message is delivered.
 }
-}}
+}
+
+\strong{Preview: High throughput for FIFO queues}
+
+\strong{High throughput for Amazon SQS FIFO queues is in preview release and
+is subject to change.} This feature provides a high number of
+transactions per second (TPS) for messages in FIFO queues. For
+information on throughput quotas, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html}{Quotas related to messages}
+in the \emph{Amazon Simple Queue Service Developer Guide}.
+
+This preview includes two new attributes:
+\itemize{
+\item \code{DeduplicationScope} – Specifies whether message deduplication
+occurs at the message group or queue level. Valid values are
+\code{messageGroup} and \code{queue}.
+\item \code{FifoThroughputLimit} – Specifies whether the FIFO queue throughput
+quota applies to the entire queue or per message group. Valid values
+are \code{perQueue} and \code{perMessageGroupId}. The \code{perMessageGroupId}
+value is allowed only when the value for \code{DeduplicationScope} is
+\code{messageGroup}.
+}
+
+To enable high throughput for FIFO queues, do the following:
+\itemize{
+\item Set \code{DeduplicationScope} to \code{messageGroup}.
+\item Set \code{FifoThroughputLimit} to \code{perMessageGroupId}.
+}
+
+If you set these attributes to anything other than the values shown for
+enabling high throughput, standard throughput is in effect and
+deduplication occurs as specified.
+
+This preview is available in the following AWS Regions:
+\itemize{
+\item US East (Ohio); us-east-2
+\item US East (N. Virginia); us-east-1
+\item US West (Oregon); us-west-2
+\item Europe (Ireland); eu-west-1
+}
+
+For more information about high throughput for FIFO queues, see
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html}{Preview: High throughput for FIFO queues}
+in the \emph{Amazon Simple Queue Service Developer Guide}.}
 
 \item{tags}{Add cost allocation tags to the specified Amazon SQS queue. For an
 overview, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html}{Tagging Your Amazon SQS Queues}
@@ -141,14 +184,14 @@ character strings.
 the existing tag.
 }
 
-For a full list of tag restrictions, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-queues}{Limits Related to Queues}
+For a full list of tag restrictions, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-quotas.html#limits-queues}{Limits Related to Queues}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 
 To be able to tag a queue on creation, you must have the
 \code{sqs:CreateQueue} and \code{sqs:TagQueue} permissions.
 
 Cross-account permissions don't apply to this action. For more
-information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
+information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name}{Grant cross-account permissions to a role and a user name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.}
 }
 \description{
@@ -173,7 +216,7 @@ creating a queue with the same name.
 }
 
 To successfully create a new queue, you must provide a queue name that
-adheres to the \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/limits-queues.html}{limits related to queues}
+adheres to the \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-quotas.html#quotas-queues}{limits related to queues}
 and is unique within the scope of your queues.
 
 After you create a queue, you must wait at least one second after the
@@ -199,7 +242,7 @@ example, a parameter list with two elements looks like this:
 \verb{&amp;AttributeName.2=second}
 
 Cross-account permissions don't apply to this action. For more
-information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
+information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name}{Grant cross-account permissions to a role and a user name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{

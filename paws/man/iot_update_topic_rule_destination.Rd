@@ -49,7 +49,7 @@ endpoint URL, or confirmation URL of the destination.
 \section{Request syntax}{
 \preformatted{svc$update_topic_rule_destination(
   arn = "string",
-  status = "ENABLED"|"IN_PROGRESS"|"DISABLED"|"ERROR"
+  status = "ENABLED"|"IN_PROGRESS"|"DISABLED"|"ERROR"|"DELETING"
 )
 }
 }

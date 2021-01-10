@@ -7,7 +7,7 @@
 emr_terminate_job_flows(JobFlowIds)
 }
 \arguments{
-\item{JobFlowIds}{[required] A list of job flows to be shutdown.}
+\item{JobFlowIds}{[required] A list of job flows to be shut down.}
 }
 \description{
 TerminateJobFlows shuts a list of clusters (job flows) down. When a job

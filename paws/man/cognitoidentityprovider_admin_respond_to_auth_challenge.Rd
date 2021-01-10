@@ -13,7 +13,8 @@ cognitoidentityprovider_admin_respond_to_auth_challenge(UserPoolId,
 
 \item{ClientId}{[required] The app client ID.}
 
-\item{ChallengeName}{[required] The challenge name. For more information, see .}
+\item{ChallengeName}{[required] The challenge name. For more information, see
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminInitiateAuth.html}{AdminInitiateAuth}.}
 
 \item{ChallengeResponses}{The challenge responses. These are inputs corresponding to the value of
 \code{ChallengeName}, for example:

@@ -106,7 +106,7 @@ NULL
 #'     Attributes = list(
 #'       list(
 #'         AttributeName = "string",
-#'         AttributeType = "string"|"integer"|"float"|"timestamp"
+#'         AttributeType = "string"|"integer"|"float"|"timestamp"|"geolocation"
 #'       )
 #'     )
 #'   ),
@@ -156,8 +156,8 @@ forecastservice_create_dataset <- function(DatasetName, Domain, DatasetType, Dat
 #' To get a list of all your datasets groups, use the ListDatasetGroups
 #' operation.
 #' 
-#' The `Status` of a dataset group must be `ACTIVE` before you can create
-#' use the dataset group to create a predictor. To get the status, use the
+#' The `Status` of a dataset group must be `ACTIVE` before you can use the
+#' dataset group to create a predictor. To get the status, use the
 #' DescribeDatasetGroup operation.
 #'
 #' @usage
@@ -276,7 +276,8 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #'
 #' @usage
 #' forecastservice_create_dataset_import_job(DatasetImportJobName,
-#'   DatasetArn, DataSource, TimestampFormat, Tags)
+#'   DatasetArn, DataSource, TimestampFormat, TimeZone,
+#'   UseGeolocationForTimeZone, GeolocationFormat, Tags)
 #'
 #' @param DatasetImportJobName &#91;required&#93; The name for the dataset import job. We recommend including the current
 #' timestamp in the name, for example, `20190721DatasetImport`. This can
@@ -306,6 +307,24 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' 
 #' If the format isn't specified, Amazon Forecast expects the format to be
 #' "yyyy-MM-dd HH:mm:ss".
+#' @param TimeZone A single time zone for every item in your dataset. This option is ideal
+#' for datasets with all timestamps within a single time zone, or if all
+#' timestamps are normalized to a single time zone.
+#' 
+#' Refer to the [Joda-Time
+#' API](http://joda-time.sourceforge.net/timezones.html) for a complete
+#' list of valid time zone names.
+#' @param UseGeolocationForTimeZone Automatically derive time zone information from the geolocation
+#' attribute. This option is ideal for datasets that contain timestamps in
+#' multiple time zones and those timestamps are expressed in local time.
+#' @param GeolocationFormat The format of the geolocation attribute. The geolocation attribute can
+#' be formatted in one of two ways:
+#' 
+#' -   `LAT_LONG` - the latitude and longitude in decimal format (Example:
+#'     47.61\\_-122.33).
+#' 
+#' -   `CC_POSTALCODE` (US Only) - the country code (US), followed by the
+#'     5-digit ZIP code (Example: US\\_98121).
 #' @param Tags The optional metadata that you apply to the dataset import job to help
 #' you categorize and organize them. Each tag consists of a key and an
 #' optional value, both of which you define.
@@ -350,6 +369,9 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #'     )
 #'   ),
 #'   TimestampFormat = "string",
+#'   TimeZone = "string",
+#'   UseGeolocationForTimeZone = TRUE|FALSE,
+#'   GeolocationFormat = "string",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -362,14 +384,14 @@ forecastservice_create_dataset_group <- function(DatasetGroupName, Domain, Datas
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_dataset_import_job
-forecastservice_create_dataset_import_job <- function(DatasetImportJobName, DatasetArn, DataSource, TimestampFormat = NULL, Tags = NULL) {
+forecastservice_create_dataset_import_job <- function(DatasetImportJobName, DatasetArn, DataSource, TimestampFormat = NULL, TimeZone = NULL, UseGeolocationForTimeZone = NULL, GeolocationFormat = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDatasetImportJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .forecastservice$create_dataset_import_job_input(DatasetImportJobName = DatasetImportJobName, DatasetArn = DatasetArn, DataSource = DataSource, TimestampFormat = TimestampFormat, Tags = Tags)
+  input <- .forecastservice$create_dataset_import_job_input(DatasetImportJobName = DatasetImportJobName, DatasetArn = DatasetArn, DataSource = DataSource, TimestampFormat = TimestampFormat, TimeZone = TimeZone, UseGeolocationForTimeZone = UseGeolocationForTimeZone, GeolocationFormat = GeolocationFormat, Tags = Tags)
   output <- .forecastservice$create_dataset_import_job_output()
   config <- get_config()
   svc <- .forecastservice$service(config)
@@ -600,24 +622,20 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #'
 #' Creates an Amazon Forecast predictor.
 #' 
-#' In the request, you provide a dataset group and either specify an
-#' algorithm or let Amazon Forecast choose the algorithm for you using
-#' AutoML. If you specify an algorithm, you also can override
-#' algorithm-specific hyperparameters.
+#' In the request, provide a dataset group and either specify an algorithm
+#' or let Amazon Forecast choose an algorithm for you using AutoML. If you
+#' specify an algorithm, you also can override algorithm-specific
+#' hyperparameters.
 #' 
-#' Amazon Forecast uses the chosen algorithm to train a model using the
-#' latest version of the datasets in the specified dataset group. The
-#' result is called a predictor. You then generate a forecast using the
-#' CreateForecast operation.
+#' Amazon Forecast uses the algorithm to train a predictor using the latest
+#' version of the datasets in the specified dataset group. You can then
+#' generate a forecast using the CreateForecast operation.
 #' 
-#' After training a model, the `CreatePredictor` operation also evaluates
-#' it. To see the evaluation metrics, use the GetAccuracyMetrics operation.
-#' Always review the evaluation metrics before deciding to use the
-#' predictor to generate a forecast.
+#' To see the evaluation metrics, use the GetAccuracyMetrics operation.
 #' 
-#' Optionally, you can specify a featurization configuration to fill and
-#' aggregate the data fields in the `TARGET_TIME_SERIES` dataset to improve
-#' model training. For more information, see FeaturizationConfig.
+#' You can specify a featurization configuration to fill and aggregate the
+#' data fields in the `TARGET_TIME_SERIES` dataset to improve model
+#' training. For more information, see FeaturizationConfig.
 #' 
 #' For RELATED\\_TIME\\_SERIES datasets, `CreatePredictor` verifies that the
 #' `DataFrequency` specified when the dataset was created matches the
@@ -625,13 +643,17 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' restriction. Amazon Forecast also verifies the delimiter and timestamp
 #' format. For more information, see howitworks-datasets-groups.
 #' 
+#' By default, predictors are trained and evaluated at the 0.1 (P10), 0.5
+#' (P50), and 0.9 (P90) quantiles. You can choose custom forecast types to
+#' train and evaluate your predictor by setting the `ForecastTypes`.
+#' 
 #' **AutoML**
 #' 
 #' If you want Amazon Forecast to evaluate each algorithm and choose the
 #' one that minimizes the `objective function`, set `PerformAutoML` to
 #' `true`. The `objective function` is defined as the mean of the weighted
-#' p10, p50, and p90 quantile losses. For more information, see
-#' EvaluationResult.
+#' losses over the forecast types. By default, these are the p10, p50, and
+#' p90 quantile losses. For more information, see EvaluationResult.
 #' 
 #' When AutoML is enabled, the following properties are disallowed:
 #' 
@@ -652,9 +674,9 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #'
 #' @usage
 #' forecastservice_create_predictor(PredictorName, AlgorithmArn,
-#'   ForecastHorizon, PerformAutoML, PerformHPO, TrainingParameters,
-#'   EvaluationParameters, HPOConfig, InputDataConfig, FeaturizationConfig,
-#'   EncryptionConfig, Tags)
+#'   ForecastHorizon, ForecastTypes, PerformAutoML, PerformHPO,
+#'   TrainingParameters, EvaluationParameters, HPOConfig, InputDataConfig,
+#'   FeaturizationConfig, EncryptionConfig, Tags)
 #'
 #' @param PredictorName &#91;required&#93; A name for the predictor.
 #' @param AlgorithmArn The Amazon Resource Name (ARN) of the algorithm to use for model
@@ -664,9 +686,9 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' 
 #' -   `arn:aws:forecast:::algorithm/ARIMA`
 #' 
-#' -   `arn:aws:forecast:::algorithm/Deep_AR_Plus`
+#' -   `arn:aws:forecast:::algorithm/CNN-QR`
 #' 
-#'     Supports hyperparameter optimization (HPO)
+#' -   `arn:aws:forecast:::algorithm/Deep_AR_Plus`
 #' 
 #' -   `arn:aws:forecast:::algorithm/ETS`
 #' 
@@ -682,6 +704,12 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' 
 #' The maximum forecast horizon is the lesser of 500 time-steps or 1/3 of
 #' the TARGET\\_TIME\\_SERIES dataset length.
+#' @param ForecastTypes Specifies the forecast types used to train a predictor. You can specify
+#' up to five forecast types. Forecast types can be quantiles from 0.01 to
+#' 0.99, by increments of 0.01 or higher. You can also specify the mean
+#' forecast with `mean`.
+#' 
+#' The default value is `\\["0.10", "0.50", "0.9"\\]`.
 #' @param PerformAutoML Whether to perform AutoML. When Amazon Forecast performs AutoML, it
 #' evaluates the algorithms it provides and chooses the best algorithm and
 #' configuration for your training dataset.
@@ -706,9 +734,11 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' case, you are required to specify an algorithm and `PerformAutoML` must
 #' be false.
 #' 
-#' The following algorithm supports HPO:
+#' The following algorithms support HPO:
 #' 
 #' -   DeepAR+
+#' 
+#' -   CNN-QR
 #' @param TrainingParameters The hyperparameters to override for model training. The hyperparameters
 #' that you can override are listed in the individual algorithms. For the
 #' list of supported algorithms, see aws-forecast-choosing-recipes.
@@ -766,6 +796,9 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #'   PredictorName = "string",
 #'   AlgorithmArn = "string",
 #'   ForecastHorizon = 123,
+#'   ForecastTypes = list(
+#'     "string"
+#'   ),
 #'   PerformAutoML = TRUE|FALSE,
 #'   PerformHPO = TRUE|FALSE,
 #'   TrainingParameters = list(
@@ -847,14 +880,14 @@ forecastservice_create_forecast_export_job <- function(ForecastExportJobName, Fo
 #' @keywords internal
 #'
 #' @rdname forecastservice_create_predictor
-forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL, ForecastHorizon, PerformAutoML = NULL, PerformHPO = NULL, TrainingParameters = NULL, EvaluationParameters = NULL, HPOConfig = NULL, InputDataConfig, FeaturizationConfig, EncryptionConfig = NULL, Tags = NULL) {
+forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL, ForecastHorizon, ForecastTypes = NULL, PerformAutoML = NULL, PerformHPO = NULL, TrainingParameters = NULL, EvaluationParameters = NULL, HPOConfig = NULL, InputDataConfig, FeaturizationConfig, EncryptionConfig = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreatePredictor",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .forecastservice$create_predictor_input(PredictorName = PredictorName, AlgorithmArn = AlgorithmArn, ForecastHorizon = ForecastHorizon, PerformAutoML = PerformAutoML, PerformHPO = PerformHPO, TrainingParameters = TrainingParameters, EvaluationParameters = EvaluationParameters, HPOConfig = HPOConfig, InputDataConfig = InputDataConfig, FeaturizationConfig = FeaturizationConfig, EncryptionConfig = EncryptionConfig, Tags = Tags)
+  input <- .forecastservice$create_predictor_input(PredictorName = PredictorName, AlgorithmArn = AlgorithmArn, ForecastHorizon = ForecastHorizon, ForecastTypes = ForecastTypes, PerformAutoML = PerformAutoML, PerformHPO = PerformHPO, TrainingParameters = TrainingParameters, EvaluationParameters = EvaluationParameters, HPOConfig = HPOConfig, InputDataConfig = InputDataConfig, FeaturizationConfig = FeaturizationConfig, EncryptionConfig = EncryptionConfig, Tags = Tags)
   output <- .forecastservice$create_predictor_output()
   config <- get_config()
   svc <- .forecastservice$service(config)
@@ -863,6 +896,104 @@ forecastservice_create_predictor <- function(PredictorName, AlgorithmArn = NULL,
   return(response)
 }
 .forecastservice$operations$create_predictor <- forecastservice_create_predictor
+
+#' Exports backtest forecasts and accuracy metrics generated by the
+#' CreatePredictor operation
+#'
+#' Exports backtest forecasts and accuracy metrics generated by the
+#' CreatePredictor operation. Two folders containing CSV files are exported
+#' to your specified S3 bucket.
+#' 
+#' The export file names will match the following conventions:
+#' 
+#' `&lt;ExportJobName&gt;_&lt;ExportTimestamp&gt;_&lt;PartNumber&gt;.csv`
+#' 
+#' The &lt;ExportTimestamp&gt; component is in Java SimpleDate format
+#' (yyyy-MM-ddTHH-mm-ssZ).
+#' 
+#' You must specify a DataDestination object that includes an Amazon S3
+#' bucket and an AWS Identity and Access Management (IAM) role that Amazon
+#' Forecast can assume to access the Amazon S3 bucket. For more
+#' information, see aws-forecast-iam-roles.
+#' 
+#' The `Status` of the export job must be `ACTIVE` before you can access
+#' the export in your Amazon S3 bucket. To get the status, use the
+#' DescribePredictorBacktestExportJob operation.
+#'
+#' @usage
+#' forecastservice_create_predictor_backtest_export_job(
+#'   PredictorBacktestExportJobName, PredictorArn, Destination, Tags)
+#'
+#' @param PredictorBacktestExportJobName &#91;required&#93; The name for the backtest export job.
+#' @param PredictorArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor that you want to export.
+#' @param Destination &#91;required&#93; 
+#' @param Tags Optional metadata to help you categorize and organize your backtests.
+#' Each tag consists of a key and an optional value, both of which you
+#' define. Tag keys and values are case sensitive.
+#' 
+#' The following restrictions apply to tags:
+#' 
+#' -   For each resource, each tag key must be unique and each tag key must
+#'     have one value.
+#' 
+#' -   Maximum number of tags per resource: 50.
+#' 
+#' -   Maximum key length: 128 Unicode characters in UTF-8.
+#' 
+#' -   Maximum value length: 256 Unicode characters in UTF-8.
+#' 
+#' -   Accepted characters: all letters and numbers, spaces representable
+#'     in UTF-8, and + - = . \\_ : / @@. If your tagging schema is used
+#'     across other services and resources, the character restrictions of
+#'     those services also apply.
+#' 
+#' -   Key prefixes cannot include any upper or lowercase combination of
+#'     `aws:` or `AWS:`. Values can have this prefix. If a tag value has
+#'     `aws` as its prefix but the key does not, Forecast considers it to
+#'     be a user tag and will count against the limit of 50 tags. Tags with
+#'     only the key prefix of `aws` do not count against your tags per
+#'     resource limit. You cannot edit or delete tag keys with this prefix.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_predictor_backtest_export_job(
+#'   PredictorBacktestExportJobName = "string",
+#'   PredictorArn = "string",
+#'   Destination = list(
+#'     S3Config = list(
+#'       Path = "string",
+#'       RoleArn = "string",
+#'       KMSKeyArn = "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_create_predictor_backtest_export_job
+forecastservice_create_predictor_backtest_export_job <- function(PredictorBacktestExportJobName, PredictorArn, Destination, Tags = NULL) {
+  op <- new_operation(
+    name = "CreatePredictorBacktestExportJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$create_predictor_backtest_export_job_input(PredictorBacktestExportJobName = PredictorBacktestExportJobName, PredictorArn = PredictorArn, Destination = Destination, Tags = Tags)
+  output <- .forecastservice$create_predictor_backtest_export_job_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$create_predictor_backtest_export_job <- forecastservice_create_predictor_backtest_export_job
 
 #' Deletes an Amazon Forecast dataset that was created using the
 #' CreateDataset operation
@@ -1108,6 +1239,44 @@ forecastservice_delete_predictor <- function(PredictorArn) {
   return(response)
 }
 .forecastservice$operations$delete_predictor <- forecastservice_delete_predictor
+
+#' Deletes a predictor backtest export job
+#'
+#' Deletes a predictor backtest export job.
+#'
+#' @usage
+#' forecastservice_delete_predictor_backtest_export_job(
+#'   PredictorBacktestExportJobArn)
+#'
+#' @param PredictorBacktestExportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor backtest export job to
+#' delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_predictor_backtest_export_job(
+#'   PredictorBacktestExportJobArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_delete_predictor_backtest_export_job
+forecastservice_delete_predictor_backtest_export_job <- function(PredictorBacktestExportJobArn) {
+  op <- new_operation(
+    name = "DeletePredictorBacktestExportJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$delete_predictor_backtest_export_job_input(PredictorBacktestExportJobArn = PredictorBacktestExportJobArn)
+  output <- .forecastservice$delete_predictor_backtest_export_job_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$delete_predictor_backtest_export_job <- forecastservice_delete_predictor_backtest_export_job
 
 #' Describes an Amazon Forecast dataset created using the CreateDataset
 #' operation
@@ -1413,13 +1582,65 @@ forecastservice_describe_predictor <- function(PredictorArn) {
 }
 .forecastservice$operations$describe_predictor <- forecastservice_describe_predictor
 
+#' Describes a predictor backtest export job created using the
+#' CreatePredictorBacktestExportJob operation
+#'
+#' Describes a predictor backtest export job created using the
+#' CreatePredictorBacktestExportJob operation.
+#' 
+#' In addition to listing the properties provided by the user in the
+#' `CreatePredictorBacktestExportJob` request, this operation lists the
+#' following properties:
+#' 
+#' -   `CreationTime`
+#' 
+#' -   `LastModificationTime`
+#' 
+#' -   `Status`
+#' 
+#' -   `Message` (if an error occurred)
+#'
+#' @usage
+#' forecastservice_describe_predictor_backtest_export_job(
+#'   PredictorBacktestExportJobArn)
+#'
+#' @param PredictorBacktestExportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the predictor backtest export job.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_predictor_backtest_export_job(
+#'   PredictorBacktestExportJobArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_describe_predictor_backtest_export_job
+forecastservice_describe_predictor_backtest_export_job <- function(PredictorBacktestExportJobArn) {
+  op <- new_operation(
+    name = "DescribePredictorBacktestExportJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$describe_predictor_backtest_export_job_input(PredictorBacktestExportJobArn = PredictorBacktestExportJobArn)
+  output <- .forecastservice$describe_predictor_backtest_export_job_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$describe_predictor_backtest_export_job <- forecastservice_describe_predictor_backtest_export_job
+
 #' Provides metrics on the accuracy of the models that were trained by the
 #' CreatePredictor operation
 #'
 #' Provides metrics on the accuracy of the models that were trained by the
 #' CreatePredictor operation. Use metrics to see how well the model
 #' performed and to decide whether to use the predictor to generate a
-#' forecast. For more information, see metrics.
+#' forecast. For more information, see [Predictor
+#' Metrics](https://docs.aws.amazon.com/forecast/latest/dg/metrics.html).
 #' 
 #' This operation generates metrics for each backtest window that was
 #' evaluated. The number of backtest windows (`NumberOfBacktestWindows`) is
@@ -1778,6 +1999,79 @@ forecastservice_list_forecasts <- function(NextToken = NULL, MaxResults = NULL, 
   return(response)
 }
 .forecastservice$operations$list_forecasts <- forecastservice_list_forecasts
+
+#' Returns a list of predictor backtest export jobs created using the
+#' CreatePredictorBacktestExportJob operation
+#'
+#' Returns a list of predictor backtest export jobs created using the
+#' CreatePredictorBacktestExportJob operation. This operation returns a
+#' summary for each backtest export job. You can filter the list using an
+#' array of Filter objects.
+#' 
+#' To retrieve the complete set of properties for a particular backtest
+#' export job, use the ARN with the DescribePredictorBacktestExportJob
+#' operation.
+#'
+#' @usage
+#' forecastservice_list_predictor_backtest_export_jobs(NextToken,
+#'   MaxResults, Filters)
+#'
+#' @param NextToken If the result of the previous request was truncated, the response
+#' includes a NextToken. To retrieve the next set of results, use the token
+#' in the next request. Tokens expire after 24 hours.
+#' @param MaxResults The number of items to return in the response.
+#' @param Filters An array of filters. For each filter, provide a condition and a match
+#' statement. The condition is either `IS` or `IS_NOT`, which specifies
+#' whether to include or exclude the predictor backtest export jobs that
+#' match the statement from the list. The match statement consists of a key
+#' and a value.
+#' 
+#' **Filter properties**
+#' 
+#' -   `Condition` - The condition to apply. Valid values are `IS` and
+#'     `IS_NOT`. To include the predictor backtest export jobs that match
+#'     the statement, specify `IS`. To exclude matching predictor backtest
+#'     export jobs, specify `IS_NOT`.
+#' 
+#' -   `Key` - The name of the parameter to filter on. Valid values are
+#'     `PredictorBacktestExportJobArn` and `Status`.
+#' 
+#' -   `Value` - The value to match.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_predictor_backtest_export_jobs(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Filters = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string",
+#'       Condition = "IS"|"IS_NOT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname forecastservice_list_predictor_backtest_export_jobs
+forecastservice_list_predictor_backtest_export_jobs <- function(NextToken = NULL, MaxResults = NULL, Filters = NULL) {
+  op <- new_operation(
+    name = "ListPredictorBacktestExportJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .forecastservice$list_predictor_backtest_export_jobs_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
+  output <- .forecastservice$list_predictor_backtest_export_jobs_output()
+  config <- get_config()
+  svc <- .forecastservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.forecastservice$operations$list_predictor_backtest_export_jobs <- forecastservice_list_predictor_backtest_export_jobs
 
 #' Returns a list of predictors created using the CreatePredictor operation
 #'

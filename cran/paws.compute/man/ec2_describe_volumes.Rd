@@ -31,7 +31,7 @@ snapshot that is enabled for fast snapshot restore (\code{true} |
 \code{false}).
 \item \code{size} - The size of the volume, in GiB.
 \item \code{snapshot-id} - The snapshot from which the volume was created.
-\item \code{status} - The status of the volume (\code{creating} | \code{available} |
+\item \code{status} - The state of the volume (\code{creating} | \code{available} |
 \verb{in-use} | \code{deleting} | \code{deleted} | \code{error}).
 \item \code{tag}:<key> - The key/value combination of a tag assigned to
 the resource. Use the tag key in the filter name and the tag value
@@ -42,10 +42,8 @@ for the filter name and \code{TeamA} for the filter value.
 filter to find all resources assigned a tag with a specific key,
 regardless of the tag value.
 \item \code{volume-id} - The volume ID.
-\item \code{volume-type} - The Amazon EBS volume type. This can be \code{gp2} for
-General Purpose SSD, \code{io1} for Provisioned IOPS SSD, \code{st1} for
-Throughput Optimized HDD, \code{sc1} for Cold HDD, or \code{standard} for
-Magnetic volumes.
+\item \code{volume-type} - The Amazon EBS volume type (\code{gp2} | \code{gp3} | \code{io1} |
+\code{io2} | \code{st1} | \code{sc1}| \code{standard})
 }}
 
 \item{VolumeIds}{The volume IDs.}
@@ -84,7 +82,7 @@ of results is returned along with a \code{NextToken} value that can be passed
 to a subsequent \code{DescribeVolumes} request to retrieve the remaining
 results.
 
-For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html}{Amazon EBS Volumes}
+For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes.html}{Amazon EBS volumes}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{

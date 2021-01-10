@@ -85,6 +85,11 @@ more \code{SimulationJobRequest} objects.
               )
             ),
             streamUI = TRUE|FALSE
+          ),
+          worldConfigs = list(
+            list(
+              world = "string"
+            )
           )
         )
       ),

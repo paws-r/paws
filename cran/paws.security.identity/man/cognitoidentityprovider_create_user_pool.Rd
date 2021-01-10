@@ -45,9 +45,15 @@ usernames when a user signs up.}
 
 \item{SmsVerificationMessage}{A string representing the SMS verification message.}
 
-\item{EmailVerificationMessage}{A string representing the email verification message.}
+\item{EmailVerificationMessage}{A string representing the email verification message.
+EmailVerificationMessage is allowed only if
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount}{EmailSendingAccount}
+is DEVELOPER.}
 
-\item{EmailVerificationSubject}{A string representing the email verification subject.}
+\item{EmailVerificationSubject}{A string representing the email verification subject.
+EmailVerificationSubject is allowed only if
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_EmailConfigurationType.html#CognitoUserPools-Type-EmailConfigurationType-EmailSendingAccount}{EmailSendingAccount}
+is DEVELOPER.}
 
 \item{VerificationMessageTemplate}{The template for the verification message that the user sees when the
 app requests permission to access the user's information.}
@@ -78,7 +84,8 @@ can be standard or custom attributes.}
 selected sign-in option. For example, when this is set to \code{False}, users
 will be able to sign in using either "username" or "Username". This
 configuration is immutable once it has been set. For more information,
-see .}
+see
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UsernameConfigurationType.html}{UsernameConfigurationType}.}
 
 \item{AccountRecoverySetting}{Use this setting to define which verified available method a user can
 use to recover their password when they call \code{ForgotPassword}. It allows
@@ -86,11 +93,7 @@ you to define a preferred method when a user has more than one method
 available. With this setting, SMS does not qualify for a valid password
 recovery mechanism if the user also has SMS MFA enabled. In the absence
 of this setting, Cognito uses the legacy behavior to determine the
-recovery method where SMS is preferred over email.
-
-Starting February 1, 2020, the value of \code{AccountRecoverySetting} will
-default to \code{verified_email} first and \code{verified_phone_number} as the
-second option for newly created user pools if no value is provided.}
+recovery method where SMS is preferred over email.}
 }
 \description{
 Creates a new Amazon Cognito user pool and sets the password policy for
@@ -119,7 +122,16 @@ the pool.
     CreateAuthChallenge = "string",
     VerifyAuthChallengeResponse = "string",
     PreTokenGeneration = "string",
-    UserMigration = "string"
+    UserMigration = "string",
+    CustomSMSSender = list(
+      LambdaVersion = "V1_0",
+      LambdaArn = "string"
+    ),
+    CustomEmailSender = list(
+      LambdaVersion = "V1_0",
+      LambdaArn = "string"
+    ),
+    KMSKeyID = "string"
   ),
   AutoVerifiedAttributes = list(
     "phone_number"|"email"

@@ -747,7 +747,7 @@ codestar_update_project <- function(id, name = NULL, description = NULL) {
 #' team membership attributes.
 #' @param projectRole The role assigned to the user in the project. Project roles have
 #' different levels of access. For more information, see [Working with
-#' Teams](http://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html)
+#' Teams](https://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html)
 #' in the *AWS CodeStar User Guide*.
 #' @param remoteAccessAllowed Whether a team member is allowed to remotely access project resources
 #' using the SSH public key associated with the user's profile. Even if

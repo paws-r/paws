@@ -16,7 +16,7 @@ NULL
 #' endpoint.
 #' 
 #' For more information, see the [Amazon CloudSearch Developer
-#' Guide](http://docs.aws.amazon.com/cloudsearch/latest/developerguide).
+#' Guide](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/).
 #'
 #' @param
 #' config

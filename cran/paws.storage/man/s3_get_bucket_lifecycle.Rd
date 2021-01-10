@@ -4,13 +4,18 @@
 \alias{s3_get_bucket_lifecycle}
 \title{For an updated version of this API, see GetBucketLifecycleConfiguration}
 \usage{
-s3_get_bucket_lifecycle(Bucket)
+s3_get_bucket_lifecycle(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket for which to get the lifecycle information.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
-For an updated version of this API, see GetBucketLifecycleConfiguration.
+For an updated version of this API, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html}{GetBucketLifecycleConfiguration}.
 If you configured a bucket lifecycle using the \code{filter} element, you
 should see the updated version of this topic. This topic is provided for
 backward compatibility.
@@ -37,14 +42,15 @@ and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-access-control.html
 
 The following operations are related to \code{GetBucketLifecycle}:
 \itemize{
-\item GetBucketLifecycleConfiguration
-\item PutBucketLifecycle
-\item DeleteBucketLifecycle
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html}{GetBucketLifecycleConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycle.html}{PutBucketLifecycle}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html}{DeleteBucketLifecycle}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_lifecycle(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

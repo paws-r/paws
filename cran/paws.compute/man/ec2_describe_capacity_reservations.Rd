@@ -10,11 +10,12 @@ ec2_describe_capacity_reservations(CapacityReservationIds, NextToken,
 \arguments{
 \item{CapacityReservationIds}{The ID of the Capacity Reservation.}
 
-\item{NextToken}{The token to retrieve the next page of results.}
+\item{NextToken}{The token to use to retrieve the next page of results.}
 
 \item{MaxResults}{The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
-the returned nextToken value.}
+the returned \code{nextToken} value. This value can be between 5 and 500. If
+\code{maxResults} is given a larger value than 500, you receive an error.}
 
 \item{Filters}{One or more filters.
 \itemize{

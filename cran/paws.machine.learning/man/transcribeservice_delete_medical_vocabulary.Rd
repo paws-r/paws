@@ -7,7 +7,7 @@
 transcribeservice_delete_medical_vocabulary(VocabularyName)
 }
 \arguments{
-\item{VocabularyName}{[required] The name of the vocabulary you are choosing to delete.}
+\item{VocabularyName}{[required] The name of the vocabulary that you want to delete.}
 }
 \description{
 Deletes a vocabulary from Amazon Transcribe Medical.

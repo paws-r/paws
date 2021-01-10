@@ -10,7 +10,7 @@ neptune_copy_db_parameter_group(SourceDBParameterGroupIdentifier,
 }
 \arguments{
 \item{SourceDBParameterGroupIdentifier}{[required] The identifier or ARN for the source DB parameter group. For information
-about creating an ARN, see \href{https://docs.aws.amazon.com/neptune/latest/UserGuide/tagging.ARN.html#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.
+about creating an ARN, see \href{https://docs.aws.amazon.com/neptune/latest/userguide/#tagging.ARN.Constructing}{Constructing an Amazon Resource Name (ARN)}.
 
 Constraints:
 \itemize{

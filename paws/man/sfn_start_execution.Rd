@@ -4,7 +4,7 @@
 \alias{sfn_start_execution}
 \title{Starts a state machine execution}
 \usage{
-sfn_start_execution(stateMachineArn, name, input)
+sfn_start_execution(stateMachineArn, name, input, traceHeader)
 }
 \arguments{
 \item{stateMachineArn}{[required] The Amazon Resource Name (ARN) of the state machine to execute.}
@@ -32,7 +32,13 @@ example:
 \verb{"input": "\\\{\\"first_name\\" : \\"test\\"\\\}"}
 
 If you don't include any JSON input data, you still must include the two
-braces, for example: \code{"input": "\\{\\}"}}
+braces, for example: \code{"input": "\\{\\}"}
+
+Length constraints apply to the payload size, and are expressed as bytes
+in UTF-8 encoding.}
+
+\item{traceHeader}{Passes the AWS X-Ray trace header. The trace header can also be passed
+in the request payload.}
 }
 \description{
 Starts a state machine execution.
@@ -48,7 +54,8 @@ closed or if the input is different, it will return a 400
 \preformatted{svc$start_execution(
   stateMachineArn = "string",
   name = "string",
-  input = "string"
+  input = "string",
+  traceHeader = "string"
 )
 }
 }

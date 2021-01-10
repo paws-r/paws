@@ -5,7 +5,7 @@
 \title{Retrieves the Savings Plans covered for your account}
 \usage{
 costexplorer_get_savings_plans_coverage(TimePeriod, GroupBy,
-  Granularity, Filter, Metrics, NextToken, MaxResults)
+  Granularity, Filter, Metrics, NextToken, MaxResults, SortBy)
 }
 \arguments{
 \item{TimePeriod}{[required] The time period that you want the usage and costs for. The \code{Start} date
@@ -48,11 +48,26 @@ results than the maximum page size.}
 
 \item{MaxResults}{The number of items to be returned in a response. The default is \code{20},
 with a minimum value of \code{1}.}
+
+\item{SortBy}{The value by which you want to sort the data.
+
+The following values are supported for \code{Key}:
+\itemize{
+\item \code{SpendCoveredBySavingsPlan}
+\item \code{OnDemandCost}
+\item \code{CoveragePercentage}
+\item \code{TotalCost}
+\item \code{InstanceFamily}
+\item \code{Region}
+\item \code{Service}
+}
+
+Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.}
 }
 \description{
 Retrieves the Savings Plans covered for your account. This enables you
 to see how much of your cost is covered by a Savings Plan. An
-organization’s master account can see the coverage of the associated
+organization’s management account can see the coverage of the associated
 member accounts. This supports dimensions, Cost Categories, and nested
 expressions. For any time period, you can filter data for Savings Plans
 usage with the following dimensions:
@@ -90,12 +105,12 @@ operation.
     ),
     Not = list(),
     Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
       Values = list(
         "string"
       ),
       MatchOptions = list(
-        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     Tags = list(
@@ -104,13 +119,16 @@ operation.
         "string"
       ),
       MatchOptions = list(
-        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     CostCategories = list(
       Key = "string",
       Values = list(
         "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     )
   ),
@@ -118,7 +136,11 @@ operation.
     "string"
   ),
   NextToken = "string",
-  MaxResults = 123
+  MaxResults = 123,
+  SortBy = list(
+    Key = "string",
+    SortOrder = "ASCENDING"|"DESCENDING"
+  )
 )
 }
 }

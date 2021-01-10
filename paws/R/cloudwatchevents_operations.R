@@ -41,6 +41,93 @@ cloudwatchevents_activate_event_source <- function(Name) {
 }
 .cloudwatchevents$operations$activate_event_source <- cloudwatchevents_activate_event_source
 
+#' Cancels the specified replay
+#'
+#' Cancels the specified replay.
+#'
+#' @usage
+#' cloudwatchevents_cancel_replay(ReplayName)
+#'
+#' @param ReplayName &#91;required&#93; The name of the replay to cancel.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_replay(
+#'   ReplayName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_cancel_replay
+cloudwatchevents_cancel_replay <- function(ReplayName) {
+  op <- new_operation(
+    name = "CancelReplay",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$cancel_replay_input(ReplayName = ReplayName)
+  output <- .cloudwatchevents$cancel_replay_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$cancel_replay <- cloudwatchevents_cancel_replay
+
+#' Creates an archive of events with the specified settings
+#'
+#' Creates an archive of events with the specified settings. When you
+#' create an archive, incoming events might not immediately start being
+#' sent to the archive. Allow a short period of time for changes to take
+#' effect. If you do not specify a pattern to filter events sent to the
+#' archive, all events are sent to the archive except replayed events.
+#' Replayed events are not sent to an archive.
+#'
+#' @usage
+#' cloudwatchevents_create_archive(ArchiveName, EventSourceArn,
+#'   Description, EventPattern, RetentionDays)
+#'
+#' @param ArchiveName &#91;required&#93; The name for the archive to create.
+#' @param EventSourceArn &#91;required&#93; The ARN of the event source associated with the archive.
+#' @param Description A description for the archive.
+#' @param EventPattern An event pattern to use to filter events sent to the archive.
+#' @param RetentionDays The number of days to retain events for. Default value is 0. If set to
+#' 0, events are retained indefinitely
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_archive(
+#'   ArchiveName = "string",
+#'   EventSourceArn = "string",
+#'   Description = "string",
+#'   EventPattern = "string",
+#'   RetentionDays = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_create_archive
+cloudwatchevents_create_archive <- function(ArchiveName, EventSourceArn, Description = NULL, EventPattern = NULL, RetentionDays = NULL) {
+  op <- new_operation(
+    name = "CreateArchive",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$create_archive_input(ArchiveName = ArchiveName, EventSourceArn = EventSourceArn, Description = Description, EventPattern = EventPattern, RetentionDays = RetentionDays)
+  output <- .cloudwatchevents$create_archive_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$create_archive <- cloudwatchevents_create_archive
+
 #' Creates a new event bus within your account
 #'
 #' Creates a new event bus within your account. This can be a custom event
@@ -210,6 +297,42 @@ cloudwatchevents_deactivate_event_source <- function(Name) {
 }
 .cloudwatchevents$operations$deactivate_event_source <- cloudwatchevents_deactivate_event_source
 
+#' Deletes the specified archive
+#'
+#' Deletes the specified archive.
+#'
+#' @usage
+#' cloudwatchevents_delete_archive(ArchiveName)
+#'
+#' @param ArchiveName &#91;required&#93; The name of the archive to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_archive(
+#'   ArchiveName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_delete_archive
+cloudwatchevents_delete_archive <- function(ArchiveName) {
+  op <- new_operation(
+    name = "DeleteArchive",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$delete_archive_input(ArchiveName = ArchiveName)
+  output <- .cloudwatchevents$delete_archive_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$delete_archive <- cloudwatchevents_delete_archive
+
 #' Deletes the specified custom event bus or partner event bus
 #'
 #' Deletes the specified custom event bus or partner event bus. All rules
@@ -311,8 +434,8 @@ cloudwatchevents_delete_partner_event_source <- function(Name, Account) {
 #' cloudwatchevents_delete_rule(Name, EventBusName, Force)
 #'
 #' @param Name &#91;required&#93; The name of the rule.
-#' @param EventBusName The event bus associated with the rule. If you omit this, the default
-#' event bus is used.
+#' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
+#' this, the default event bus is used.
 #' @param Force If this is a managed rule, created by an AWS service on your behalf, you
 #' must specify `Force` as `True` to delete the rule. This parameter is
 #' ignored for rules that are not managed rules. You can check whether a
@@ -348,6 +471,42 @@ cloudwatchevents_delete_rule <- function(Name, EventBusName = NULL, Force = NULL
 }
 .cloudwatchevents$operations$delete_rule <- cloudwatchevents_delete_rule
 
+#' Retrieves details about an archive
+#'
+#' Retrieves details about an archive.
+#'
+#' @usage
+#' cloudwatchevents_describe_archive(ArchiveName)
+#'
+#' @param ArchiveName &#91;required&#93; The name of the archive to retrieve.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_archive(
+#'   ArchiveName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_describe_archive
+cloudwatchevents_describe_archive <- function(ArchiveName) {
+  op <- new_operation(
+    name = "DescribeArchive",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$describe_archive_input(ArchiveName = ArchiveName)
+  output <- .cloudwatchevents$describe_archive_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$describe_archive <- cloudwatchevents_describe_archive
+
 #' Displays details about an event bus in your account
 #'
 #' Displays details about an event bus in your account. This can include
@@ -364,8 +523,8 @@ cloudwatchevents_delete_rule <- function(Name, EventBusName = NULL, Force = NULL
 #' @usage
 #' cloudwatchevents_describe_event_bus(Name)
 #'
-#' @param Name The name of the event bus to show details for. If you omit this, the
-#' default event bus is displayed.
+#' @param Name The name or ARN of the event bus to show details for. If you omit this,
+#' the default event bus is displayed.
 #'
 #' @section Request syntax:
 #' ```
@@ -472,6 +631,51 @@ cloudwatchevents_describe_partner_event_source <- function(Name) {
 }
 .cloudwatchevents$operations$describe_partner_event_source <- cloudwatchevents_describe_partner_event_source
 
+#' Retrieves details about a replay
+#'
+#' Retrieves details about a replay. Use `DescribeReplay` to determine the
+#' progress of a running replay. A replay processes events to replay based
+#' on the time in the event, and replays them using 1 minute intervals. If
+#' you use `StartReplay` and specify an `EventStartTime` and an
+#' `EventEndTime` that covers a 20 minute time range, the events are
+#' replayed from the first minute of that 20 minute range first. Then the
+#' events from the second minute are replayed. You can use `DescribeReplay`
+#' to determine the progress of a replay. The value returned for
+#' `EventLastReplayedTime` indicates the time within the specified time
+#' range associated with the last event replayed.
+#'
+#' @usage
+#' cloudwatchevents_describe_replay(ReplayName)
+#'
+#' @param ReplayName &#91;required&#93; The name of the replay to retrieve.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_replay(
+#'   ReplayName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_describe_replay
+cloudwatchevents_describe_replay <- function(ReplayName) {
+  op <- new_operation(
+    name = "DescribeReplay",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$describe_replay_input(ReplayName = ReplayName)
+  output <- .cloudwatchevents$describe_replay_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$describe_replay <- cloudwatchevents_describe_replay
+
 #' Describes the specified rule
 #'
 #' Describes the specified rule.
@@ -483,8 +687,8 @@ cloudwatchevents_describe_partner_event_source <- function(Name) {
 #' cloudwatchevents_describe_rule(Name, EventBusName)
 #'
 #' @param Name &#91;required&#93; The name of the rule.
-#' @param EventBusName The event bus associated with the rule. If you omit this, the default
-#' event bus is used.
+#' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
+#' this, the default event bus is used.
 #'
 #' @section Request syntax:
 #' ```
@@ -526,8 +730,8 @@ cloudwatchevents_describe_rule <- function(Name, EventBusName = NULL) {
 #' cloudwatchevents_disable_rule(Name, EventBusName)
 #'
 #' @param Name &#91;required&#93; The name of the rule.
-#' @param EventBusName The event bus associated with the rule. If you omit this, the default
-#' event bus is used.
+#' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
+#' this, the default event bus is used.
 #'
 #' @section Request syntax:
 #' ```
@@ -570,8 +774,8 @@ cloudwatchevents_disable_rule <- function(Name, EventBusName = NULL) {
 #' cloudwatchevents_enable_rule(Name, EventBusName)
 #'
 #' @param Name &#91;required&#93; The name of the rule.
-#' @param EventBusName The event bus associated with the rule. If you omit this, the default
-#' event bus is used.
+#' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
+#' this, the default event bus is used.
 #'
 #' @section Request syntax:
 #' ```
@@ -600,6 +804,55 @@ cloudwatchevents_enable_rule <- function(Name, EventBusName = NULL) {
   return(response)
 }
 .cloudwatchevents$operations$enable_rule <- cloudwatchevents_enable_rule
+
+#' Lists your archives
+#'
+#' Lists your archives. You can either list all the archives or you can
+#' provide a prefix to match to the archive names. Filter parameters are
+#' exclusive.
+#'
+#' @usage
+#' cloudwatchevents_list_archives(NamePrefix, EventSourceArn, State,
+#'   NextToken, Limit)
+#'
+#' @param NamePrefix A name prefix to filter the archives returned. Only archives with name
+#' that match the prefix are returned.
+#' @param EventSourceArn The ARN of the event source associated with the archive.
+#' @param State The state of the archive.
+#' @param NextToken The token returned by a previous call to retrieve the next set of
+#' results.
+#' @param Limit The maximum number of results to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_archives(
+#'   NamePrefix = "string",
+#'   EventSourceArn = "string",
+#'   State = "ENABLED"|"DISABLED"|"CREATING"|"UPDATING"|"CREATE_FAILED"|"UPDATE_FAILED",
+#'   NextToken = "string",
+#'   Limit = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_list_archives
+cloudwatchevents_list_archives <- function(NamePrefix = NULL, EventSourceArn = NULL, State = NULL, NextToken = NULL, Limit = NULL) {
+  op <- new_operation(
+    name = "ListArchives",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$list_archives_input(NamePrefix = NamePrefix, EventSourceArn = EventSourceArn, State = State, NextToken = NextToken, Limit = Limit)
+  output <- .cloudwatchevents$list_archives_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$list_archives <- cloudwatchevents_list_archives
 
 #' Lists all the event buses in your account, including the default event
 #' bus, custom event buses, and partner event buses
@@ -790,6 +1043,55 @@ cloudwatchevents_list_partner_event_sources <- function(NamePrefix, NextToken = 
 }
 .cloudwatchevents$operations$list_partner_event_sources <- cloudwatchevents_list_partner_event_sources
 
+#' Lists your replays
+#'
+#' Lists your replays. You can either list all the replays or you can
+#' provide a prefix to match to the replay names. Filter parameters are
+#' exclusive.
+#'
+#' @usage
+#' cloudwatchevents_list_replays(NamePrefix, State, EventSourceArn,
+#'   NextToken, Limit)
+#'
+#' @param NamePrefix A name prefix to filter the replays returned. Only replays with name
+#' that match the prefix are returned.
+#' @param State The state of the replay.
+#' @param EventSourceArn The ARN of the event source associated with the replay.
+#' @param NextToken The token returned by a previous call to retrieve the next set of
+#' results.
+#' @param Limit The maximum number of replays to retrieve.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_replays(
+#'   NamePrefix = "string",
+#'   State = "STARTING"|"RUNNING"|"CANCELLING"|"COMPLETED"|"CANCELLED"|"FAILED",
+#'   EventSourceArn = "string",
+#'   NextToken = "string",
+#'   Limit = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_list_replays
+cloudwatchevents_list_replays <- function(NamePrefix = NULL, State = NULL, EventSourceArn = NULL, NextToken = NULL, Limit = NULL) {
+  op <- new_operation(
+    name = "ListReplays",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$list_replays_input(NamePrefix = NamePrefix, State = State, EventSourceArn = EventSourceArn, NextToken = NextToken, Limit = Limit)
+  output <- .cloudwatchevents$list_replays_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$list_replays <- cloudwatchevents_list_replays
+
 #' Lists the rules for the specified target
 #'
 #' Lists the rules for the specified target. You can see which of the rules
@@ -800,8 +1102,8 @@ cloudwatchevents_list_partner_event_sources <- function(NamePrefix, NextToken = 
 #'   NextToken, Limit)
 #'
 #' @param TargetArn &#91;required&#93; The Amazon Resource Name (ARN) of the target resource.
-#' @param EventBusName Limits the results to show only the rules associated with the specified
-#' event bus.
+#' @param EventBusName The name or ARN of the event bus to list rules for. If you omit this,
+#' the default event bus is used.
 #' @param NextToken The token returned by a previous call to retrieve the next set of
 #' results.
 #' @param Limit The maximum number of results to return.
@@ -848,8 +1150,8 @@ cloudwatchevents_list_rule_names_by_target <- function(TargetArn, EventBusName =
 #' cloudwatchevents_list_rules(NamePrefix, EventBusName, NextToken, Limit)
 #'
 #' @param NamePrefix The prefix matching the rule name.
-#' @param EventBusName Limits the results to show only the rules associated with the specified
-#' event bus.
+#' @param EventBusName The name or ARN of the event bus to list the rules for. If you omit
+#' this, the default event bus is used.
 #' @param NextToken The token returned by a previous call to retrieve the next set of
 #' results.
 #' @param Limit The maximum number of results to return.
@@ -930,8 +1232,8 @@ cloudwatchevents_list_tags_for_resource <- function(ResourceARN) {
 #'   Limit)
 #'
 #' @param Rule &#91;required&#93; The name of the rule.
-#' @param EventBusName The event bus associated with the rule. If you omit this, the default
-#' event bus is used.
+#' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
+#' this, the default event bus is used.
 #' @param NextToken The token returned by a previous call to retrieve the next set of
 #' results.
 #' @param Limit The maximum number of results to return.
@@ -1100,13 +1402,13 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 #'
 #' @usage
 #' cloudwatchevents_put_permission(EventBusName, Action, Principal,
-#'   StatementId, Condition)
+#'   StatementId, Condition, Policy)
 #'
-#' @param EventBusName The event bus associated with the rule. If you omit this, the default
-#' event bus is used.
-#' @param Action &#91;required&#93; The action that you are enabling the other account to perform.
+#' @param EventBusName The name of the event bus associated with the rule. If you omit this,
+#' the default event bus is used.
+#' @param Action The action that you are enabling the other account to perform.
 #' Currently, this must be `events:PutEvents`.
-#' @param Principal &#91;required&#93; The 12-digit AWS account ID that you are permitting to put events to
+#' @param Principal The 12-digit AWS account ID that you are permitting to put events to
 #' your default event bus. Specify "*" to permit any account to put events
 #' to your default event bus.
 #' 
@@ -1115,7 +1417,7 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 #' sure that the event pattern for each rule contains an `account` field
 #' with a specific account ID from which to receive events. Rules with an
 #' account field do not match any events sent from other accounts.
-#' @param StatementId &#91;required&#93; An identifier string for the external account that you are granting
+#' @param StatementId An identifier string for the external account that you are granting
 #' permissions to. If you later want to revoke the permission for this
 #' external account, specify this `StatementId` when you run
 #' RemovePermission.
@@ -1132,6 +1434,9 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 #' 
 #' The `Condition` is a JSON string which must contain `Type`, `Key`, and
 #' `Value` fields.
+#' @param Policy A JSON string that describes the permission policy statement. You can
+#' include a `Policy` parameter in the request instead of using the
+#' `StatementId`, `Action`, `Principal`, or `Condition` parameters.
 #'
 #' @section Request syntax:
 #' ```
@@ -1144,21 +1449,22 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 #'     Type = "string",
 #'     Key = "string",
 #'     Value = "string"
-#'   )
+#'   ),
+#'   Policy = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_put_permission
-cloudwatchevents_put_permission <- function(EventBusName = NULL, Action, Principal, StatementId, Condition = NULL) {
+cloudwatchevents_put_permission <- function(EventBusName = NULL, Action = NULL, Principal = NULL, StatementId = NULL, Condition = NULL, Policy = NULL) {
   op <- new_operation(
     name = "PutPermission",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchevents$put_permission_input(EventBusName = EventBusName, Action = Action, Principal = Principal, StatementId = StatementId, Condition = Condition)
+  input <- .cloudwatchevents$put_permission_input(EventBusName = EventBusName, Action = Action, Principal = Principal, StatementId = StatementId, Condition = Condition, Policy = Policy)
   output <- .cloudwatchevents$put_permission_output()
   config <- get_config()
   svc <- .cloudwatchevents$service(config)
@@ -1245,8 +1551,8 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action, Princip
 #' @param Description A description of the rule.
 #' @param RoleArn The Amazon Resource Name (ARN) of the IAM role associated with the rule.
 #' @param Tags The list of key-value pairs to associate with the rule.
-#' @param EventBusName The event bus to associate with this rule. If you omit this, the default
-#' event bus is used.
+#' @param EventBusName The name or ARN of the event bus to associate with this rule. If you
+#' omit this, the default event bus is used.
 #'
 #' @section Request syntax:
 #' ```
@@ -1328,6 +1634,8 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' -   The default event bus of another AWS account
 #' 
 #' -   Amazon API Gateway REST APIs
+#' 
+#' -   Redshift Clusters to invoke Data API ExecuteStatement on
 #' 
 #' Creating rules with built-in targets is supported only in the AWS
 #' Management Console. The built-in targets are
@@ -1412,8 +1720,8 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' cloudwatchevents_put_targets(Rule, EventBusName, Targets)
 #'
 #' @param Rule &#91;required&#93; The name of the rule.
-#' @param EventBusName The name of the event bus associated with the rule. If you omit this,
-#' the default event bus is used.
+#' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
+#' this, the default event bus is used.
 #' @param Targets &#91;required&#93; The targets to update or add to the rule.
 #'
 #' @section Request syntax:
@@ -1488,6 +1796,21 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #'         QueryStringParameters = list(
 #'           "string"
 #'         )
+#'       ),
+#'       RedshiftDataParameters = list(
+#'         SecretManagerArn = "string",
+#'         Database = "string",
+#'         DbUser = "string",
+#'         Sql = "string",
+#'         StatementName = "string",
+#'         WithEvent = TRUE|FALSE
+#'       ),
+#'       DeadLetterConfig = list(
+#'         Arn = "string"
+#'       ),
+#'       RetryPolicy = list(
+#'         MaximumRetryAttempts = 123,
+#'         MaximumEventAgeInSeconds = 123
 #'       )
 #'     )
 #'   )
@@ -1524,10 +1847,12 @@ cloudwatchevents_put_targets <- function(Rule, EventBusName = NULL, Targets) {
 #' `StatementId` by using DescribeEventBus.
 #'
 #' @usage
-#' cloudwatchevents_remove_permission(StatementId, EventBusName)
+#' cloudwatchevents_remove_permission(StatementId, RemoveAllPermissions,
+#'   EventBusName)
 #'
-#' @param StatementId &#91;required&#93; The statement ID corresponding to the account that is no longer allowed
+#' @param StatementId The statement ID corresponding to the account that is no longer allowed
 #' to put events to the default event bus.
+#' @param RemoveAllPermissions Specifies whether to remove all permissions.
 #' @param EventBusName The name of the event bus to revoke permissions for. If you omit this,
 #' the default event bus is used.
 #'
@@ -1535,6 +1860,7 @@ cloudwatchevents_put_targets <- function(Rule, EventBusName = NULL, Targets) {
 #' ```
 #' svc$remove_permission(
 #'   StatementId = "string",
+#'   RemoveAllPermissions = TRUE|FALSE,
 #'   EventBusName = "string"
 #' )
 #' ```
@@ -1542,14 +1868,14 @@ cloudwatchevents_put_targets <- function(Rule, EventBusName = NULL, Targets) {
 #' @keywords internal
 #'
 #' @rdname cloudwatchevents_remove_permission
-cloudwatchevents_remove_permission <- function(StatementId, EventBusName = NULL) {
+cloudwatchevents_remove_permission <- function(StatementId = NULL, RemoveAllPermissions = NULL, EventBusName = NULL) {
   op <- new_operation(
     name = "RemovePermission",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchevents$remove_permission_input(StatementId = StatementId, EventBusName = EventBusName)
+  input <- .cloudwatchevents$remove_permission_input(StatementId = StatementId, RemoveAllPermissions = RemoveAllPermissions, EventBusName = EventBusName)
   output <- .cloudwatchevents$remove_permission_output()
   config <- get_config()
   svc <- .cloudwatchevents$service(config)
@@ -1577,7 +1903,8 @@ cloudwatchevents_remove_permission <- function(StatementId, EventBusName = NULL)
 #' cloudwatchevents_remove_targets(Rule, EventBusName, Ids, Force)
 #'
 #' @param Rule &#91;required&#93; The name of the rule.
-#' @param EventBusName The name of the event bus associated with the rule.
+#' @param EventBusName The name or ARN of the event bus associated with the rule. If you omit
+#' this, the default event bus is used.
 #' @param Ids &#91;required&#93; The IDs of the targets to remove from the rule.
 #' @param Force If this is a managed rule, created by an AWS service on your behalf, you
 #' must specify `Force` as `True` to remove targets. This parameter is
@@ -1616,6 +1943,74 @@ cloudwatchevents_remove_targets <- function(Rule, EventBusName = NULL, Ids, Forc
   return(response)
 }
 .cloudwatchevents$operations$remove_targets <- cloudwatchevents_remove_targets
+
+#' Starts the specified replay
+#'
+#' Starts the specified replay. Events are not necessarily replayed in the
+#' exact same order that they were added to the archive. A replay processes
+#' events to replay based on the time in the event, and replays them using
+#' 1 minute intervals. If you specify an `EventStartTime` and an
+#' `EventEndTime` that covers a 20 minute time range, the events are
+#' replayed from the first minute of that 20 minute range first. Then the
+#' events from the second minute are replayed. You can use `DescribeReplay`
+#' to determine the progress of a replay. The value returned for
+#' `EventLastReplayedTime` indicates the time within the specified time
+#' range associated with the last event replayed.
+#'
+#' @usage
+#' cloudwatchevents_start_replay(ReplayName, Description, EventSourceArn,
+#'   EventStartTime, EventEndTime, Destination)
+#'
+#' @param ReplayName &#91;required&#93; The name of the replay to start.
+#' @param Description A description for the replay to start.
+#' @param EventSourceArn &#91;required&#93; The ARN of the archive to replay events from.
+#' @param EventStartTime &#91;required&#93; A time stamp for the time to start replaying events. Only events that
+#' occurred between the `EventStartTime` and `EventEndTime` are replayed.
+#' @param EventEndTime &#91;required&#93; A time stamp for the time to stop replaying events. Only events that
+#' occurred between the `EventStartTime` and `EventEndTime` are replayed.
+#' @param Destination &#91;required&#93; A `ReplayDestination` object that includes details about the destination
+#' for the replay.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_replay(
+#'   ReplayName = "string",
+#'   Description = "string",
+#'   EventSourceArn = "string",
+#'   EventStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EventEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Destination = list(
+#'     Arn = "string",
+#'     FilterArns = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_start_replay
+cloudwatchevents_start_replay <- function(ReplayName, Description = NULL, EventSourceArn, EventStartTime, EventEndTime, Destination) {
+  op <- new_operation(
+    name = "StartReplay",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$start_replay_input(ReplayName = ReplayName, Description = Description, EventSourceArn = EventSourceArn, EventStartTime = EventStartTime, EventEndTime = EventEndTime, Destination = Destination)
+  output <- .cloudwatchevents$start_replay_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$start_replay <- cloudwatchevents_start_replay
 
 #' Assigns one or more tags (key-value pairs) to the specified EventBridge
 #' resource
@@ -1763,3 +2158,46 @@ cloudwatchevents_untag_resource <- function(ResourceARN, TagKeys) {
   return(response)
 }
 .cloudwatchevents$operations$untag_resource <- cloudwatchevents_untag_resource
+
+#' Updates the specified archive
+#'
+#' Updates the specified archive.
+#'
+#' @usage
+#' cloudwatchevents_update_archive(ArchiveName, Description, EventPattern,
+#'   RetentionDays)
+#'
+#' @param ArchiveName &#91;required&#93; The name of the archive to update.
+#' @param Description The description for the archive.
+#' @param EventPattern The event pattern to use to filter events sent to the archive.
+#' @param RetentionDays The number of days to retain events in the archive.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_archive(
+#'   ArchiveName = "string",
+#'   Description = "string",
+#'   EventPattern = "string",
+#'   RetentionDays = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchevents_update_archive
+cloudwatchevents_update_archive <- function(ArchiveName, Description = NULL, EventPattern = NULL, RetentionDays = NULL) {
+  op <- new_operation(
+    name = "UpdateArchive",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchevents$update_archive_input(ArchiveName = ArchiveName, Description = Description, EventPattern = EventPattern, RetentionDays = RetentionDays)
+  output <- .cloudwatchevents$update_archive_output()
+  config <- get_config()
+  svc <- .cloudwatchevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchevents$operations$update_archive <- cloudwatchevents_update_archive

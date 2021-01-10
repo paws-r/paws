@@ -10,7 +10,7 @@ cloudsearch_build_suggesters(DomainName)
 \item{DomainName}{[required]}
 }
 \description{
-Indexes the search suggestions. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html#configuring-suggesters}{Configuring Suggesters}
+Indexes the search suggestions. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html#configuring-suggesters}{Configuring Suggesters}
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{

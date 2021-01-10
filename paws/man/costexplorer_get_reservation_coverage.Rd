@@ -5,7 +5,7 @@
 \title{Retrieves the reservation coverage for your account}
 \usage{
 costexplorer_get_reservation_coverage(TimePeriod, GroupBy, Granularity,
-  Filter, Metrics, NextPageToken)
+  Filter, Metrics, NextPageToken, SortBy, MaxResults)
 }
 \arguments{
 \item{TimePeriod}{[required] The start and end dates of the period that you want to retrieve data
@@ -75,15 +75,38 @@ in a request.}
 \item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token
 when the response from a previous call has more results than the maximum
 page size.}
+
+\item{SortBy}{The value by which you want to sort the data.
+
+The following values are supported for \code{Key}:
+\itemize{
+\item \code{OnDemandCost}
+\item \code{CoverageHoursPercentage}
+\item \code{OnDemandHours}
+\item \code{ReservedHours}
+\item \code{TotalRunningHours}
+\item \code{CoverageNormalizedUnitsPercentage}
+\item \code{OnDemandNormalizedUnits}
+\item \code{ReservedNormalizedUnits}
+\item \code{TotalRunningNormalizedUnits}
+\item \code{Time}
+}
+
+Supported values for \code{SortOrder} are \code{ASCENDING} or \code{DESCENDING}.}
+
+\item{MaxResults}{The maximum number of objects that you returned for this request. If
+more objects are available, in the response, AWS provides a
+NextPageToken value that you can use in a subsequent call to get the
+next batch of objects.}
 }
 \description{
 Retrieves the reservation coverage for your account. This enables you to
 see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache,
 Amazon Relational Database Service, or Amazon Redshift usage is covered
-by a reservation. An organization's master account can see the coverage
-of the associated member accounts. This supports dimensions, Cost
-Categories, and nested expressions. For any time period, you can filter
-data about reservation usage by the following dimensions:
+by a reservation. An organization's management account can see the
+coverage of the associated member accounts. This supports dimensions,
+Cost Categories, and nested expressions. For any time period, you can
+filter data about reservation usage by the following dimensions:
 }
 \details{
 \itemize{
@@ -126,12 +149,12 @@ operation.
     ),
     Not = list(),
     Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
       Values = list(
         "string"
       ),
       MatchOptions = list(
-        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     Tags = list(
@@ -140,20 +163,28 @@ operation.
         "string"
       ),
       MatchOptions = list(
-        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     CostCategories = list(
       Key = "string",
       Values = list(
         "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     )
   ),
   Metrics = list(
     "string"
   ),
-  NextPageToken = "string"
+  NextPageToken = "string",
+  SortBy = list(
+    Key = "string",
+    SortOrder = "ASCENDING"|"DESCENDING"
+  ),
+  MaxResults = 123
 )
 }
 }

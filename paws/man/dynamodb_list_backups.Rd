@@ -37,11 +37,11 @@ Where \code{BackupType} can be:
 List backups associated with an AWS account. To list backups for a given
 table, specify \code{TableName}. \code{ListBackups} returns a paginated list of
 results with at most 1 MB worth of items in a page. You can also specify
-a limit for the maximum number of entries to be returned in a page.
+a maximum number of entries to be returned in a page.
 }
 \details{
 In the request, start time is inclusive, but end time is exclusive. Note
-that these limits are for the time at which the original backup was
+that these boundaries are for the time at which the original backup was
 requested.
 
 You can call \code{ListBackups} a maximum of five times per second.

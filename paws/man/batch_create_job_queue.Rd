@@ -5,27 +5,42 @@
 \title{Creates an AWS Batch job queue}
 \usage{
 batch_create_job_queue(jobQueueName, state, priority,
-  computeEnvironmentOrder)
+  computeEnvironmentOrder, tags)
 }
 \arguments{
-\item{jobQueueName}{[required] The name of the job queue.}
+\item{jobQueueName}{[required] The name of the job queue. Up to 128 letters (uppercase and lowercase),
+numbers, and underscores are allowed.}
 
 \item{state}{The state of the job queue. If the job queue state is \code{ENABLED}, it is
-able to accept jobs.}
+able to accept jobs. If the job queue state is \code{DISABLED}, new jobs
+can't be added to the queue, but jobs already in the queue can finish.}
 
 \item{priority}{[required] The priority of the job queue. Job queues with a higher priority (or a
 higher integer value for the \code{priority} parameter) are evaluated first
 when associated with the same compute environment. Priority is
-determined in descending order, for example, a job queue with a priority
+determined in descending order. For example, a job queue with a priority
 value of \code{10} is given scheduling preference over a job queue with a
-priority value of \code{1}.}
+priority value of \code{1}. All of the compute environments must be either
+EC2 (\code{EC2} or \code{SPOT}) or Fargate (\code{FARGATE} or \code{FARGATE_SPOT}); EC2 and
+Fargate compute environments cannot be mixed.}
 
 \item{computeEnvironmentOrder}{[required] The set of compute environments mapped to a job queue and their order
 relative to each other. The job scheduler uses this parameter to
-determine which compute environment should execute a given job. Compute
+determine which compute environment should run a specific job. Compute
 environments must be in the \code{VALID} state before you can associate them
 with a job queue. You can associate up to three compute environments
-with a job queue.}
+with a job queue. All of the compute environments must be either EC2
+(\code{EC2} or \code{SPOT}) or Fargate (\code{FARGATE} or \code{FARGATE_SPOT}); EC2 and
+Fargate compute environments can't be mixed.
+
+All compute environments that are associated with a job queue must share
+the same architecture. AWS Batch doesn't support mixing compute
+environment architecture types in a single job queue.}
+
+\item{tags}{The tags that you apply to the job queue to help you categorize and
+organize your resources. Each tag consists of a key and an optional
+value. For more information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html}{Tagging your AWS Batch resources}
+in \emph{AWS Batch User Guide}.}
 }
 \description{
 Creates an AWS Batch job queue. When you create a job queue, you
@@ -49,6 +64,9 @@ preference for scheduling jobs to that compute environment.
       order = 123,
       computeEnvironment = "string"
     )
+  ),
+  tags = list(
+    "string"
   )
 )
 }

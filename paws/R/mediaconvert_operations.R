@@ -92,13 +92,13 @@ mediaconvert_cancel_job <- function(Id) {
 #' @param HopDestinations Optional. Use queue hopping to avoid overly long waits in the backlog of the queue that you submit your job to. Specify an alternate queue and the maximum time that your job will wait in the initial queue before hopping. For more information about this feature, see the AWS Elemental MediaConvert User Guide.
 #' @param JobTemplate Optional. When you create a job, you can either specify a job template or specify the transcoding settings individually.
 #' @param Priority Optional. Specify the relative priority for this job. In any given queue, the service begins processing the job with the highest value first. When more than one job has the same priority, the service begins processing the job that you submitted first. If you don't specify a priority, the service uses the default value 0.
-#' @param Queue Optional. When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to the default queue. For more about queues, see the User Guide topic at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.
-#' @param Role &#91;required&#93; Required. The IAM role you use for creating this job. For details about permissions, see the User Guide topic at the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.
+#' @param Queue Optional. When you create a job, you can specify a queue to send it to. If you don't specify, the job will go to the default queue. For more about queues, see the User Guide topic at https://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html.
+#' @param Role &#91;required&#93; Required. The IAM role you use for creating this job. For details about permissions, see the User Guide topic at the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html.
 #' @param Settings &#91;required&#93; JobSettings contains all the transcode settings for a job.
 #' @param SimulateReservedQueue Optional. Enable this setting when you run a test job to estimate how many reserved transcoding slots (RTS) you need. When this is enabled, MediaConvert runs your job from an on-demand queue with similar performance to what you will see with one RTS in a reserved queue. This setting is disabled by default.
 #' @param StatusUpdateInterval Optional. Specify how often MediaConvert sends STATUS_UPDATE events to Amazon CloudWatch Events. Set the interval, in seconds, between status updates. MediaConvert sends an update at this interval from the time the service begins processing your job to the time it completes the transcode or encounters an error.
-#' @param Tags Optional. The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.
-#' @param UserMetadata Optional. User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.
+#' @param Tags Optional. The tags that you want to add to the resource. You can tag resources with a key-value pair or with only a key.  Use standard AWS tags on your job for automatic integration with AWS services and for custom integrations and workflows.
+#' @param UserMetadata Optional. User-defined metadata that you want to associate with an MediaConvert job. You specify metadata in key/value pairs.  Use only for existing integrations or workflows that rely on job metadata tags. Otherwise, we recommend that you use standard AWS tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -159,6 +159,9 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   list(
 #'                     InputChannels = list(
 #'                       123
+#'                     ),
+#'                     InputChannelsFineTune = list(
+#'                       123.0
 #'                     )
 #'                   )
 #'                 )
@@ -250,6 +253,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'             StartTimecode = "string"
 #'           )
 #'         ),
+#'         InputScanType = "AUTO"|"PSF",
 #'         Position = list(
 #'           Height = 123,
 #'           Width = 123,
@@ -305,8 +309,28 @@ mediaconvert_cancel_job <- function(Id) {
 #'       BreakoutCode = 123,
 #'       DistributorId = "string"
 #'     ),
+#'     NielsenNonLinearWatermark = list(
+#'       ActiveWatermarkProcess = "NAES2_AND_NW"|"CBET"|"NAES2_AND_NW_AND_CBET",
+#'       AdiFilename = "string",
+#'       AssetId = "string",
+#'       AssetName = "string",
+#'       CbetSourceId = "string",
+#'       EpisodeId = "string",
+#'       MetadataDestination = "string",
+#'       SourceId = 123,
+#'       SourceWatermarkStatus = "CLEAN"|"WATERMARKED",
+#'       TicServerUrl = "string",
+#'       UniqueTicPerAudioTrack = "RESERVE_UNIQUE_TICS_PER_TRACK"|"SAME_TICS_PER_TRACK"
+#'     ),
 #'     OutputGroups = list(
 #'       list(
+#'         AutomatedEncodingSettings = list(
+#'           AbrSettings = list(
+#'             MaxAbrBitrate = 123,
+#'             MaxRenditions = 123,
+#'             MinAbrBitrate = 123
+#'           )
+#'         ),
 #'         CustomName = "string",
 #'         Name = "string",
 #'         OutputGroupSettings = list(
@@ -406,6 +430,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'             FragmentLength = 123,
 #'             HbbtvCompliance = "HBBTV_1_5"|"NONE",
 #'             MinBufferTime = 123,
+#'             MinFinalSegmentLength = 123.0,
 #'             MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
 #'             SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
 #'             SegmentLength = 123,
@@ -437,6 +462,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'                 )
 #'               )
 #'             ),
+#'             AudioOnlyHeader = "INCLUDE"|"EXCLUDE",
 #'             BaseUrl = "string",
 #'             CaptionLanguageMappings = list(
 #'               list(
@@ -539,6 +565,9 @@ mediaconvert_cancel_job <- function(Id) {
 #'           list(
 #'             AudioDescriptions = list(
 #'               list(
+#'                 AudioChannelTaggingSettings = list(
+#'                   ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+#'                 ),
 #'                 AudioNormalizationSettings = list(
 #'                   Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
 #'                   AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
@@ -656,6 +685,9 @@ mediaconvert_cancel_job <- function(Id) {
 #'                       list(
 #'                         InputChannels = list(
 #'                           123
+#'                         ),
+#'                         InputChannelsFineTune = list(
+#'                           123.0
 #'                         )
 #'                       )
 #'                     )
@@ -737,6 +769,8 @@ mediaconvert_cancel_job <- function(Id) {
 #'             ),
 #'             ContainerSettings = list(
 #'               CmfcSettings = list(
+#'                 AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                 IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
 #'                 Scte35Esam = "INSERT"|"NONE",
 #'                 Scte35Source = "PASSTHROUGH"|"NONE"
 #'               ),
@@ -746,6 +780,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'               ),
 #'               M2tsSettings = list(
 #'                 AudioBufferModel = "DVB"|"ATSC",
+#'                 AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'                 AudioFramesPerPes = 123,
 #'                 AudioPids = list(
 #'                   123
@@ -800,6 +835,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'                 VideoPid = 123
 #'               ),
 #'               M3u8Settings = list(
+#'                 AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'                 AudioFramesPerPes = 123,
 #'                 AudioPids = list(
 #'                   123
@@ -827,6 +863,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'                 Reference = "SELF_CONTAINED"|"EXTERNAL"
 #'               ),
 #'               Mp4Settings = list(
+#'                 AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'                 CslgAtom = "INCLUDE"|"EXCLUDE",
 #'                 CttsVersion = 123,
 #'                 FreeSpaceBox = "INCLUDE"|"EXCLUDE",
@@ -834,12 +871,15 @@ mediaconvert_cancel_job <- function(Id) {
 #'                 Mp4MajorBrand = "string"
 #'               ),
 #'               MpdSettings = list(
+#'                 AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+#'                 AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'                 CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
 #'                 Scte35Esam = "INSERT"|"NONE",
 #'                 Scte35Source = "PASSTHROUGH"|"NONE"
 #'               ),
 #'               MxfSettings = list(
-#'                 AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO"
+#'                 AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+#'                 Profile = "D_10"|"XDCAM"|"OP1A"
 #'               )
 #'             ),
 #'             Extension = "string",
@@ -862,7 +902,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'                 Av1Settings = list(
 #'                   AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopSize = 123.0,
@@ -876,7 +916,21 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   Slices = 123,
 #'                   SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
 #'                 ),
-#'                 Codec = "FRAME_CAPTURE"|"AV1"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VP8"|"VP9",
+#'                 AvcIntraSettings = list(
+#'                   AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+#'                   AvcIntraUhdSettings = list(
+#'                     QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+#'                   ),
+#'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123,
+#'                   InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                   SlowPal = "DISABLED"|"ENABLED",
+#'                   Telecine = "NONE"|"HARD"
+#'                 ),
+#'                 Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
 #'                 FrameCaptureSettings = list(
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
@@ -884,7 +938,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   Quality = 123
 #'                 ),
 #'                 H264Settings = list(
-#'                   AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                   AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
 #'                   Bitrate = 123,
 #'                   CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
 #'                   CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
@@ -893,7 +947,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   FieldEncoding = "PAFF"|"FORCE_FIELD",
 #'                   FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopBReference = "DISABLED"|"ENABLED",
@@ -918,6 +972,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   RepeatPps = "DISABLED"|"ENABLED",
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'                   SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'                   Slices = 123,
 #'                   SlowPal = "DISABLED"|"ENABLED",
@@ -937,7 +992,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   DynamicSubGop = "ADAPTIVE"|"STATIC",
 #'                   FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopBReference = "DISABLED"|"ENABLED",
@@ -962,6 +1017,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'                   SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'                   Slices = 123,
 #'                   SlowPal = "DISABLED"|"ENABLED",
@@ -980,7 +1036,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   CodecProfile = "MAIN"|"PROFILE_422",
 #'                   DynamicSubGop = "ADAPTIVE"|"STATIC",
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopClosedCadence = 123,
@@ -998,6 +1054,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'                   ParNumerator = 123,
 #'                   QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
 #'                   RateControlMode = "VBR"|"CBR",
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'                   SceneChangeDetect = "DISABLED"|"ENABLED",
 #'                   SlowPal = "DISABLED"|"ENABLED",
 #'                   Softness = 123,
@@ -1009,20 +1066,32 @@ mediaconvert_cancel_job <- function(Id) {
 #'                 ProresSettings = list(
 #'                   CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
 #'                   ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
 #'                   ParDenominator = 123,
 #'                   ParNumerator = 123,
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'                   SlowPal = "DISABLED"|"ENABLED",
 #'                   Telecine = "NONE"|"HARD"
+#'                 ),
+#'                 Vc3Settings = list(
+#'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123,
+#'                   InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                   SlowPal = "DISABLED"|"ENABLED",
+#'                   Telecine = "NONE"|"HARD",
+#'                   Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
 #'                 ),
 #'                 Vp8Settings = list(
 #'                   Bitrate = 123,
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopSize = 123.0,
@@ -1037,7 +1106,7 @@ mediaconvert_cancel_job <- function(Id) {
 #'                 Vp9Settings = list(
 #'                   Bitrate = 123,
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopSize = 123.0,
@@ -1283,6 +1352,9 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   list(
 #'                     InputChannels = list(
 #'                       123
+#'                     ),
+#'                     InputChannelsFineTune = list(
+#'                       123.0
 #'                     )
 #'                   )
 #'                 )
@@ -1367,6 +1439,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             StartTimecode = "string"
 #'           )
 #'         ),
+#'         InputScanType = "AUTO"|"PSF",
 #'         Position = list(
 #'           Height = 123,
 #'           Width = 123,
@@ -1419,8 +1492,28 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'       BreakoutCode = 123,
 #'       DistributorId = "string"
 #'     ),
+#'     NielsenNonLinearWatermark = list(
+#'       ActiveWatermarkProcess = "NAES2_AND_NW"|"CBET"|"NAES2_AND_NW_AND_CBET",
+#'       AdiFilename = "string",
+#'       AssetId = "string",
+#'       AssetName = "string",
+#'       CbetSourceId = "string",
+#'       EpisodeId = "string",
+#'       MetadataDestination = "string",
+#'       SourceId = 123,
+#'       SourceWatermarkStatus = "CLEAN"|"WATERMARKED",
+#'       TicServerUrl = "string",
+#'       UniqueTicPerAudioTrack = "RESERVE_UNIQUE_TICS_PER_TRACK"|"SAME_TICS_PER_TRACK"
+#'     ),
 #'     OutputGroups = list(
 #'       list(
+#'         AutomatedEncodingSettings = list(
+#'           AbrSettings = list(
+#'             MaxAbrBitrate = 123,
+#'             MaxRenditions = 123,
+#'             MinAbrBitrate = 123
+#'           )
+#'         ),
 #'         CustomName = "string",
 #'         Name = "string",
 #'         OutputGroupSettings = list(
@@ -1520,6 +1613,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             FragmentLength = 123,
 #'             HbbtvCompliance = "HBBTV_1_5"|"NONE",
 #'             MinBufferTime = 123,
+#'             MinFinalSegmentLength = 123.0,
 #'             MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
 #'             SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
 #'             SegmentLength = 123,
@@ -1551,6 +1645,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                 )
 #'               )
 #'             ),
+#'             AudioOnlyHeader = "INCLUDE"|"EXCLUDE",
 #'             BaseUrl = "string",
 #'             CaptionLanguageMappings = list(
 #'               list(
@@ -1653,6 +1748,9 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'           list(
 #'             AudioDescriptions = list(
 #'               list(
+#'                 AudioChannelTaggingSettings = list(
+#'                   ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+#'                 ),
 #'                 AudioNormalizationSettings = list(
 #'                   Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
 #'                   AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
@@ -1770,6 +1868,9 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                       list(
 #'                         InputChannels = list(
 #'                           123
+#'                         ),
+#'                         InputChannelsFineTune = list(
+#'                           123.0
 #'                         )
 #'                       )
 #'                     )
@@ -1851,6 +1952,8 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'             ),
 #'             ContainerSettings = list(
 #'               CmfcSettings = list(
+#'                 AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                 IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
 #'                 Scte35Esam = "INSERT"|"NONE",
 #'                 Scte35Source = "PASSTHROUGH"|"NONE"
 #'               ),
@@ -1860,6 +1963,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'               ),
 #'               M2tsSettings = list(
 #'                 AudioBufferModel = "DVB"|"ATSC",
+#'                 AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'                 AudioFramesPerPes = 123,
 #'                 AudioPids = list(
 #'                   123
@@ -1914,6 +2018,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                 VideoPid = 123
 #'               ),
 #'               M3u8Settings = list(
+#'                 AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'                 AudioFramesPerPes = 123,
 #'                 AudioPids = list(
 #'                   123
@@ -1941,6 +2046,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                 Reference = "SELF_CONTAINED"|"EXTERNAL"
 #'               ),
 #'               Mp4Settings = list(
+#'                 AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'                 CslgAtom = "INCLUDE"|"EXCLUDE",
 #'                 CttsVersion = 123,
 #'                 FreeSpaceBox = "INCLUDE"|"EXCLUDE",
@@ -1948,12 +2054,15 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                 Mp4MajorBrand = "string"
 #'               ),
 #'               MpdSettings = list(
+#'                 AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+#'                 AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'                 CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
 #'                 Scte35Esam = "INSERT"|"NONE",
 #'                 Scte35Source = "PASSTHROUGH"|"NONE"
 #'               ),
 #'               MxfSettings = list(
-#'                 AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO"
+#'                 AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+#'                 Profile = "D_10"|"XDCAM"|"OP1A"
 #'               )
 #'             ),
 #'             Extension = "string",
@@ -1976,7 +2085,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                 Av1Settings = list(
 #'                   AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopSize = 123.0,
@@ -1990,7 +2099,21 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   Slices = 123,
 #'                   SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
 #'                 ),
-#'                 Codec = "FRAME_CAPTURE"|"AV1"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VP8"|"VP9",
+#'                 AvcIntraSettings = list(
+#'                   AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+#'                   AvcIntraUhdSettings = list(
+#'                     QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+#'                   ),
+#'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123,
+#'                   InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                   SlowPal = "DISABLED"|"ENABLED",
+#'                   Telecine = "NONE"|"HARD"
+#'                 ),
+#'                 Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
 #'                 FrameCaptureSettings = list(
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
@@ -1998,7 +2121,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   Quality = 123
 #'                 ),
 #'                 H264Settings = list(
-#'                   AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                   AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
 #'                   Bitrate = 123,
 #'                   CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
 #'                   CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
@@ -2007,7 +2130,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   FieldEncoding = "PAFF"|"FORCE_FIELD",
 #'                   FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopBReference = "DISABLED"|"ENABLED",
@@ -2032,6 +2155,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   RepeatPps = "DISABLED"|"ENABLED",
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'                   SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'                   Slices = 123,
 #'                   SlowPal = "DISABLED"|"ENABLED",
@@ -2051,7 +2175,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   DynamicSubGop = "ADAPTIVE"|"STATIC",
 #'                   FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopBReference = "DISABLED"|"ENABLED",
@@ -2076,6 +2200,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'                   SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'                   Slices = 123,
 #'                   SlowPal = "DISABLED"|"ENABLED",
@@ -2094,7 +2219,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   CodecProfile = "MAIN"|"PROFILE_422",
 #'                   DynamicSubGop = "ADAPTIVE"|"STATIC",
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopClosedCadence = 123,
@@ -2112,6 +2237,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                   ParNumerator = 123,
 #'                   QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
 #'                   RateControlMode = "VBR"|"CBR",
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'                   SceneChangeDetect = "DISABLED"|"ENABLED",
 #'                   SlowPal = "DISABLED"|"ENABLED",
 #'                   Softness = 123,
@@ -2123,20 +2249,32 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                 ProresSettings = list(
 #'                   CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
 #'                   ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
 #'                   ParDenominator = 123,
 #'                   ParNumerator = 123,
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'                   SlowPal = "DISABLED"|"ENABLED",
 #'                   Telecine = "NONE"|"HARD"
+#'                 ),
+#'                 Vc3Settings = list(
+#'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123,
+#'                   InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                   SlowPal = "DISABLED"|"ENABLED",
+#'                   Telecine = "NONE"|"HARD",
+#'                   Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
 #'                 ),
 #'                 Vp8Settings = list(
 #'                   Bitrate = 123,
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopSize = 123.0,
@@ -2151,7 +2289,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 #'                 Vp9Settings = list(
 #'                   Bitrate = 123,
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopSize = 123.0,
@@ -2337,6 +2475,9 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'   Settings = list(
 #'     AudioDescriptions = list(
 #'       list(
+#'         AudioChannelTaggingSettings = list(
+#'           ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+#'         ),
 #'         AudioNormalizationSettings = list(
 #'           Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
 #'           AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
@@ -2454,6 +2595,9 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'               list(
 #'                 InputChannels = list(
 #'                   123
+#'                 ),
+#'                 InputChannelsFineTune = list(
+#'                   123.0
 #'                 )
 #'               )
 #'             )
@@ -2534,6 +2678,8 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'     ),
 #'     ContainerSettings = list(
 #'       CmfcSettings = list(
+#'         AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'         IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
 #'         Scte35Esam = "INSERT"|"NONE",
 #'         Scte35Source = "PASSTHROUGH"|"NONE"
 #'       ),
@@ -2543,6 +2689,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'       ),
 #'       M2tsSettings = list(
 #'         AudioBufferModel = "DVB"|"ATSC",
+#'         AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'         AudioFramesPerPes = 123,
 #'         AudioPids = list(
 #'           123
@@ -2597,6 +2744,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'         VideoPid = 123
 #'       ),
 #'       M3u8Settings = list(
+#'         AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'         AudioFramesPerPes = 123,
 #'         AudioPids = list(
 #'           123
@@ -2624,6 +2772,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'         Reference = "SELF_CONTAINED"|"EXTERNAL"
 #'       ),
 #'       Mp4Settings = list(
+#'         AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'         CslgAtom = "INCLUDE"|"EXCLUDE",
 #'         CttsVersion = 123,
 #'         FreeSpaceBox = "INCLUDE"|"EXCLUDE",
@@ -2631,12 +2780,15 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'         Mp4MajorBrand = "string"
 #'       ),
 #'       MpdSettings = list(
+#'         AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+#'         AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'         CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
 #'         Scte35Esam = "INSERT"|"NONE",
 #'         Scte35Source = "PASSTHROUGH"|"NONE"
 #'       ),
 #'       MxfSettings = list(
-#'         AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO"
+#'         AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+#'         Profile = "D_10"|"XDCAM"|"OP1A"
 #'       )
 #'     ),
 #'     VideoDescription = list(
@@ -2646,7 +2798,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'         Av1Settings = list(
 #'           AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
 #'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
 #'           GopSize = 123.0,
@@ -2660,7 +2812,21 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'           Slices = 123,
 #'           SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
 #'         ),
-#'         Codec = "FRAME_CAPTURE"|"AV1"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VP8"|"VP9",
+#'         AvcIntraSettings = list(
+#'           AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+#'           AvcIntraUhdSettings = list(
+#'             QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+#'           ),
+#'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'           FramerateDenominator = 123,
+#'           FramerateNumerator = 123,
+#'           InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'           ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'           SlowPal = "DISABLED"|"ENABLED",
+#'           Telecine = "NONE"|"HARD"
+#'         ),
+#'         Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
 #'         FrameCaptureSettings = list(
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
@@ -2668,7 +2834,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'           Quality = 123
 #'         ),
 #'         H264Settings = list(
-#'           AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'           AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
 #'           Bitrate = 123,
 #'           CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
 #'           CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
@@ -2677,7 +2843,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'           FieldEncoding = "PAFF"|"FORCE_FIELD",
 #'           FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
 #'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
 #'           GopBReference = "DISABLED"|"ENABLED",
@@ -2702,6 +2868,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'           ),
 #'           RateControlMode = "VBR"|"CBR"|"QVBR",
 #'           RepeatPps = "DISABLED"|"ENABLED",
+#'           ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'           SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'           Slices = 123,
 #'           SlowPal = "DISABLED"|"ENABLED",
@@ -2721,7 +2888,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'           DynamicSubGop = "ADAPTIVE"|"STATIC",
 #'           FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
 #'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
 #'           GopBReference = "DISABLED"|"ENABLED",
@@ -2746,6 +2913,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'           ),
 #'           RateControlMode = "VBR"|"CBR"|"QVBR",
 #'           SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+#'           ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'           SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'           Slices = 123,
 #'           SlowPal = "DISABLED"|"ENABLED",
@@ -2764,7 +2932,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'           CodecProfile = "MAIN"|"PROFILE_422",
 #'           DynamicSubGop = "ADAPTIVE"|"STATIC",
 #'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
 #'           GopClosedCadence = 123,
@@ -2782,6 +2950,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'           ParNumerator = 123,
 #'           QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
 #'           RateControlMode = "VBR"|"CBR",
+#'           ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'           SceneChangeDetect = "DISABLED"|"ENABLED",
 #'           SlowPal = "DISABLED"|"ENABLED",
 #'           Softness = 123,
@@ -2793,20 +2962,32 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'         ProresSettings = list(
 #'           CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
 #'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
 #'           InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
 #'           ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
 #'           ParDenominator = 123,
 #'           ParNumerator = 123,
+#'           ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'           SlowPal = "DISABLED"|"ENABLED",
 #'           Telecine = "NONE"|"HARD"
+#'         ),
+#'         Vc3Settings = list(
+#'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'           FramerateDenominator = 123,
+#'           FramerateNumerator = 123,
+#'           InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+#'           ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'           SlowPal = "DISABLED"|"ENABLED",
+#'           Telecine = "NONE"|"HARD",
+#'           Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
 #'         ),
 #'         Vp8Settings = list(
 #'           Bitrate = 123,
 #'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
 #'           GopSize = 123.0,
@@ -2821,7 +3002,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 #'         Vp9Settings = list(
 #'           Bitrate = 123,
 #'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
 #'           GopSize = 123.0,
@@ -3719,6 +3900,9 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   list(
 #'                     InputChannels = list(
 #'                       123
+#'                     ),
+#'                     InputChannelsFineTune = list(
+#'                       123.0
 #'                     )
 #'                   )
 #'                 )
@@ -3803,6 +3987,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             StartTimecode = "string"
 #'           )
 #'         ),
+#'         InputScanType = "AUTO"|"PSF",
 #'         Position = list(
 #'           Height = 123,
 #'           Width = 123,
@@ -3855,8 +4040,28 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'       BreakoutCode = 123,
 #'       DistributorId = "string"
 #'     ),
+#'     NielsenNonLinearWatermark = list(
+#'       ActiveWatermarkProcess = "NAES2_AND_NW"|"CBET"|"NAES2_AND_NW_AND_CBET",
+#'       AdiFilename = "string",
+#'       AssetId = "string",
+#'       AssetName = "string",
+#'       CbetSourceId = "string",
+#'       EpisodeId = "string",
+#'       MetadataDestination = "string",
+#'       SourceId = 123,
+#'       SourceWatermarkStatus = "CLEAN"|"WATERMARKED",
+#'       TicServerUrl = "string",
+#'       UniqueTicPerAudioTrack = "RESERVE_UNIQUE_TICS_PER_TRACK"|"SAME_TICS_PER_TRACK"
+#'     ),
 #'     OutputGroups = list(
 #'       list(
+#'         AutomatedEncodingSettings = list(
+#'           AbrSettings = list(
+#'             MaxAbrBitrate = 123,
+#'             MaxRenditions = 123,
+#'             MinAbrBitrate = 123
+#'           )
+#'         ),
 #'         CustomName = "string",
 #'         Name = "string",
 #'         OutputGroupSettings = list(
@@ -3956,6 +4161,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             FragmentLength = 123,
 #'             HbbtvCompliance = "HBBTV_1_5"|"NONE",
 #'             MinBufferTime = 123,
+#'             MinFinalSegmentLength = 123.0,
 #'             MpdProfile = "MAIN_PROFILE"|"ON_DEMAND_PROFILE",
 #'             SegmentControl = "SINGLE_FILE"|"SEGMENTED_FILES",
 #'             SegmentLength = 123,
@@ -3987,6 +4193,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                 )
 #'               )
 #'             ),
+#'             AudioOnlyHeader = "INCLUDE"|"EXCLUDE",
 #'             BaseUrl = "string",
 #'             CaptionLanguageMappings = list(
 #'               list(
@@ -4089,6 +4296,9 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'           list(
 #'             AudioDescriptions = list(
 #'               list(
+#'                 AudioChannelTaggingSettings = list(
+#'                   ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+#'                 ),
 #'                 AudioNormalizationSettings = list(
 #'                   Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
 #'                   AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
@@ -4206,6 +4416,9 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                       list(
 #'                         InputChannels = list(
 #'                           123
+#'                         ),
+#'                         InputChannelsFineTune = list(
+#'                           123.0
 #'                         )
 #'                       )
 #'                     )
@@ -4287,6 +4500,8 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'             ),
 #'             ContainerSettings = list(
 #'               CmfcSettings = list(
+#'                 AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'                 IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
 #'                 Scte35Esam = "INSERT"|"NONE",
 #'                 Scte35Source = "PASSTHROUGH"|"NONE"
 #'               ),
@@ -4296,6 +4511,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'               ),
 #'               M2tsSettings = list(
 #'                 AudioBufferModel = "DVB"|"ATSC",
+#'                 AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'                 AudioFramesPerPes = 123,
 #'                 AudioPids = list(
 #'                   123
@@ -4350,6 +4566,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                 VideoPid = 123
 #'               ),
 #'               M3u8Settings = list(
+#'                 AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'                 AudioFramesPerPes = 123,
 #'                 AudioPids = list(
 #'                   123
@@ -4377,6 +4594,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                 Reference = "SELF_CONTAINED"|"EXTERNAL"
 #'               ),
 #'               Mp4Settings = list(
+#'                 AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'                 CslgAtom = "INCLUDE"|"EXCLUDE",
 #'                 CttsVersion = 123,
 #'                 FreeSpaceBox = "INCLUDE"|"EXCLUDE",
@@ -4384,12 +4602,15 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                 Mp4MajorBrand = "string"
 #'               ),
 #'               MpdSettings = list(
+#'                 AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+#'                 AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'                 CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
 #'                 Scte35Esam = "INSERT"|"NONE",
 #'                 Scte35Source = "PASSTHROUGH"|"NONE"
 #'               ),
 #'               MxfSettings = list(
-#'                 AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO"
+#'                 AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+#'                 Profile = "D_10"|"XDCAM"|"OP1A"
 #'               )
 #'             ),
 #'             Extension = "string",
@@ -4412,7 +4633,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                 Av1Settings = list(
 #'                   AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopSize = 123.0,
@@ -4426,7 +4647,21 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   Slices = 123,
 #'                   SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
 #'                 ),
-#'                 Codec = "FRAME_CAPTURE"|"AV1"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VP8"|"VP9",
+#'                 AvcIntraSettings = list(
+#'                   AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+#'                   AvcIntraUhdSettings = list(
+#'                     QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+#'                   ),
+#'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123,
+#'                   InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                   SlowPal = "DISABLED"|"ENABLED",
+#'                   Telecine = "NONE"|"HARD"
+#'                 ),
+#'                 Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
 #'                 FrameCaptureSettings = list(
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
@@ -4434,7 +4669,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   Quality = 123
 #'                 ),
 #'                 H264Settings = list(
-#'                   AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'                   AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
 #'                   Bitrate = 123,
 #'                   CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
 #'                   CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
@@ -4443,7 +4678,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   FieldEncoding = "PAFF"|"FORCE_FIELD",
 #'                   FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopBReference = "DISABLED"|"ENABLED",
@@ -4468,6 +4703,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   RepeatPps = "DISABLED"|"ENABLED",
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'                   SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'                   Slices = 123,
 #'                   SlowPal = "DISABLED"|"ENABLED",
@@ -4487,7 +4723,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   DynamicSubGop = "ADAPTIVE"|"STATIC",
 #'                   FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopBReference = "DISABLED"|"ENABLED",
@@ -4512,6 +4748,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   ),
 #'                   RateControlMode = "VBR"|"CBR"|"QVBR",
 #'                   SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'                   SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'                   Slices = 123,
 #'                   SlowPal = "DISABLED"|"ENABLED",
@@ -4530,7 +4767,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   CodecProfile = "MAIN"|"PROFILE_422",
 #'                   DynamicSubGop = "ADAPTIVE"|"STATIC",
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopClosedCadence = 123,
@@ -4548,6 +4785,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                   ParNumerator = 123,
 #'                   QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
 #'                   RateControlMode = "VBR"|"CBR",
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'                   SceneChangeDetect = "DISABLED"|"ENABLED",
 #'                   SlowPal = "DISABLED"|"ENABLED",
 #'                   Softness = 123,
@@ -4559,20 +4797,32 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                 ProresSettings = list(
 #'                   CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
 #'                   ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
 #'                   ParDenominator = 123,
 #'                   ParNumerator = 123,
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'                   SlowPal = "DISABLED"|"ENABLED",
 #'                   Telecine = "NONE"|"HARD"
+#'                 ),
+#'                 Vc3Settings = list(
+#'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'                   FramerateDenominator = 123,
+#'                   FramerateNumerator = 123,
+#'                   InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+#'                   ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'                   SlowPal = "DISABLED"|"ENABLED",
+#'                   Telecine = "NONE"|"HARD",
+#'                   Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
 #'                 ),
 #'                 Vp8Settings = list(
 #'                   Bitrate = 123,
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopSize = 123.0,
@@ -4587,7 +4837,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 #'                 Vp9Settings = list(
 #'                   Bitrate = 123,
 #'                   FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'                   FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'                   FramerateDenominator = 123,
 #'                   FramerateNumerator = 123,
 #'                   GopSize = 123.0,
@@ -4769,6 +5019,9 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'   Settings = list(
 #'     AudioDescriptions = list(
 #'       list(
+#'         AudioChannelTaggingSettings = list(
+#'           ChannelTag = "L"|"R"|"C"|"LFE"|"LS"|"RS"|"LC"|"RC"|"CS"|"LSD"|"RSD"|"TCS"|"VHL"|"VHC"|"VHR"
+#'         ),
 #'         AudioNormalizationSettings = list(
 #'           Algorithm = "ITU_BS_1770_1"|"ITU_BS_1770_2"|"ITU_BS_1770_3"|"ITU_BS_1770_4",
 #'           AlgorithmControl = "CORRECT_AUDIO"|"MEASURE_ONLY",
@@ -4886,6 +5139,9 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'               list(
 #'                 InputChannels = list(
 #'                   123
+#'                 ),
+#'                 InputChannelsFineTune = list(
+#'                   123.0
 #'                 )
 #'               )
 #'             )
@@ -4966,6 +5222,8 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'     ),
 #'     ContainerSettings = list(
 #'       CmfcSettings = list(
+#'         AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
+#'         IFrameOnlyManifest = "INCLUDE"|"EXCLUDE",
 #'         Scte35Esam = "INSERT"|"NONE",
 #'         Scte35Source = "PASSTHROUGH"|"NONE"
 #'       ),
@@ -4975,6 +5233,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'       ),
 #'       M2tsSettings = list(
 #'         AudioBufferModel = "DVB"|"ATSC",
+#'         AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'         AudioFramesPerPes = 123,
 #'         AudioPids = list(
 #'           123
@@ -5029,6 +5288,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'         VideoPid = 123
 #'       ),
 #'       M3u8Settings = list(
+#'         AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'         AudioFramesPerPes = 123,
 #'         AudioPids = list(
 #'           123
@@ -5056,6 +5316,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'         Reference = "SELF_CONTAINED"|"EXTERNAL"
 #'       ),
 #'       Mp4Settings = list(
+#'         AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'         CslgAtom = "INCLUDE"|"EXCLUDE",
 #'         CttsVersion = 123,
 #'         FreeSpaceBox = "INCLUDE"|"EXCLUDE",
@@ -5063,12 +5324,15 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'         Mp4MajorBrand = "string"
 #'       ),
 #'       MpdSettings = list(
+#'         AccessibilityCaptionHints = "INCLUDE"|"EXCLUDE",
+#'         AudioDuration = "DEFAULT_CODEC_DURATION"|"MATCH_VIDEO_DURATION",
 #'         CaptionContainerType = "RAW"|"FRAGMENTED_MP4",
 #'         Scte35Esam = "INSERT"|"NONE",
 #'         Scte35Source = "PASSTHROUGH"|"NONE"
 #'       ),
 #'       MxfSettings = list(
-#'         AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO"
+#'         AfdSignaling = "NO_COPY"|"COPY_FROM_VIDEO",
+#'         Profile = "D_10"|"XDCAM"|"OP1A"
 #'       )
 #'     ),
 #'     VideoDescription = list(
@@ -5078,7 +5342,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'         Av1Settings = list(
 #'           AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
 #'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
 #'           GopSize = 123.0,
@@ -5092,7 +5356,21 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'           Slices = 123,
 #'           SpatialAdaptiveQuantization = "DISABLED"|"ENABLED"
 #'         ),
-#'         Codec = "FRAME_CAPTURE"|"AV1"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VP8"|"VP9",
+#'         AvcIntraSettings = list(
+#'           AvcIntraClass = "CLASS_50"|"CLASS_100"|"CLASS_200"|"CLASS_4K_2K",
+#'           AvcIntraUhdSettings = list(
+#'             QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS"
+#'           ),
+#'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'           FramerateDenominator = 123,
+#'           FramerateNumerator = 123,
+#'           InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
+#'           ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'           SlowPal = "DISABLED"|"ENABLED",
+#'           Telecine = "NONE"|"HARD"
+#'         ),
+#'         Codec = "AV1"|"AVC_INTRA"|"FRAME_CAPTURE"|"H_264"|"H_265"|"MPEG2"|"PRORES"|"VC3"|"VP8"|"VP9",
 #'         FrameCaptureSettings = list(
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
@@ -5100,7 +5378,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'           Quality = 123
 #'         ),
 #'         H264Settings = list(
-#'           AdaptiveQuantization = "OFF"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
+#'           AdaptiveQuantization = "OFF"|"AUTO"|"LOW"|"MEDIUM"|"HIGH"|"HIGHER"|"MAX",
 #'           Bitrate = 123,
 #'           CodecLevel = "AUTO"|"LEVEL_1"|"LEVEL_1_1"|"LEVEL_1_2"|"LEVEL_1_3"|"LEVEL_2"|"LEVEL_2_1"|"LEVEL_2_2"|"LEVEL_3"|"LEVEL_3_1"|"LEVEL_3_2"|"LEVEL_4"|"LEVEL_4_1"|"LEVEL_4_2"|"LEVEL_5"|"LEVEL_5_1"|"LEVEL_5_2",
 #'           CodecProfile = "BASELINE"|"HIGH"|"HIGH_10BIT"|"HIGH_422"|"HIGH_422_10BIT"|"MAIN",
@@ -5109,7 +5387,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'           FieldEncoding = "PAFF"|"FORCE_FIELD",
 #'           FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
 #'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
 #'           GopBReference = "DISABLED"|"ENABLED",
@@ -5134,6 +5412,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'           ),
 #'           RateControlMode = "VBR"|"CBR"|"QVBR",
 #'           RepeatPps = "DISABLED"|"ENABLED",
+#'           ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'           SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'           Slices = 123,
 #'           SlowPal = "DISABLED"|"ENABLED",
@@ -5153,7 +5432,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'           DynamicSubGop = "ADAPTIVE"|"STATIC",
 #'           FlickerAdaptiveQuantization = "DISABLED"|"ENABLED",
 #'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
 #'           GopBReference = "DISABLED"|"ENABLED",
@@ -5178,6 +5457,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'           ),
 #'           RateControlMode = "VBR"|"CBR"|"QVBR",
 #'           SampleAdaptiveOffsetFilterMode = "DEFAULT"|"ADAPTIVE"|"OFF",
+#'           ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'           SceneChangeDetect = "DISABLED"|"ENABLED"|"TRANSITION_DETECTION",
 #'           Slices = 123,
 #'           SlowPal = "DISABLED"|"ENABLED",
@@ -5196,7 +5476,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'           CodecProfile = "MAIN"|"PROFILE_422",
 #'           DynamicSubGop = "ADAPTIVE"|"STATIC",
 #'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
 #'           GopClosedCadence = 123,
@@ -5214,6 +5494,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'           ParNumerator = 123,
 #'           QualityTuningLevel = "SINGLE_PASS"|"MULTI_PASS",
 #'           RateControlMode = "VBR"|"CBR",
+#'           ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'           SceneChangeDetect = "DISABLED"|"ENABLED",
 #'           SlowPal = "DISABLED"|"ENABLED",
 #'           Softness = 123,
@@ -5225,20 +5506,32 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'         ProresSettings = list(
 #'           CodecProfile = "APPLE_PRORES_422"|"APPLE_PRORES_422_HQ"|"APPLE_PRORES_422_LT"|"APPLE_PRORES_422_PROXY",
 #'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
 #'           InterlaceMode = "PROGRESSIVE"|"TOP_FIELD"|"BOTTOM_FIELD"|"FOLLOW_TOP_FIELD"|"FOLLOW_BOTTOM_FIELD",
 #'           ParControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
 #'           ParDenominator = 123,
 #'           ParNumerator = 123,
+#'           ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
 #'           SlowPal = "DISABLED"|"ENABLED",
 #'           Telecine = "NONE"|"HARD"
+#'         ),
+#'         Vc3Settings = list(
+#'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
+#'           FramerateDenominator = 123,
+#'           FramerateNumerator = 123,
+#'           InterlaceMode = "INTERLACED"|"PROGRESSIVE",
+#'           ScanTypeConversionMode = "INTERLACED"|"INTERLACED_OPTIMIZE",
+#'           SlowPal = "DISABLED"|"ENABLED",
+#'           Telecine = "NONE"|"HARD",
+#'           Vc3Class = "CLASS_145_8BIT"|"CLASS_220_8BIT"|"CLASS_220_10BIT"
 #'         ),
 #'         Vp8Settings = list(
 #'           Bitrate = 123,
 #'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
 #'           GopSize = 123.0,
@@ -5253,7 +5546,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 #'         Vp9Settings = list(
 #'           Bitrate = 123,
 #'           FramerateControl = "INITIALIZE_FROM_SOURCE"|"SPECIFIED",
-#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE",
+#'           FramerateConversionAlgorithm = "DUPLICATE_DROP"|"INTERPOLATE"|"FRAMEFORMER",
 #'           FramerateDenominator = 123,
 #'           FramerateNumerator = 123,
 #'           GopSize = 123.0,

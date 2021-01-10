@@ -17,12 +17,12 @@ only returns \code{maxResults} results in a single page along with a
 \code{nextToken} response element. The remaining results of the initial
 request can be seen by sending another \code{DescribeJobDefinitions} request
 with the returned \code{nextToken} value. This value can be between 1 and
-100. If this parameter is not used, then \code{DescribeJobDefinitions}
-returns up to 100 results and a \code{nextToken} value if applicable.}
+100. If this parameter isn't used, then \code{DescribeJobDefinitions} returns
+up to 100 results and a \code{nextToken} value if applicable.}
 
 \item{jobDefinitionName}{The name of the job definition to describe.}
 
-\item{status}{The status with which to filter job definitions.}
+\item{status}{The status used to filter job definitions.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated
 \code{DescribeJobDefinitions} request where \code{maxResults} was used and the
@@ -30,8 +30,8 @@ results exceeded the value of that parameter. Pagination continues from
 the end of the previous results that returned the \code{nextToken} value.
 This value is \code{null} when there are no more results to return.
 
-This token should be treated as an opaque identifier that is only used
-to retrieve the next items in a list and not for other programmatic
+This token should be treated as an opaque identifier that's only used to
+retrieve the next items in a list and not for other programmatic
 purposes.}
 }
 \description{

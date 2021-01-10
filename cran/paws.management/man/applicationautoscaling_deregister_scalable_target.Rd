@@ -46,6 +46,9 @@ our \href{https://github.com/aws/aws-auto-scaling-custom-resource}{GitHub reposi
 type and unique identifier are specified using the endpoint ARN.
 Example:
 \code{arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE}.
+\item Amazon Comprehend entity recognizer endpoint - The resource type and
+unique identifier are specified using the endpoint ARN. Example:
+\code{arn:aws:comprehend:us-west-2:123456789012:entity-recognizer-endpoint/EXAMPLE}.
 \item Lambda provisioned concurrency - The resource type is \code{function} and
 the unique identifier is the function name with a function version
 or alias name suffix that is not \verb{$LATEST}. Example:
@@ -53,6 +56,9 @@ or alias name suffix that is not \verb{$LATEST}. Example:
 \item Amazon Keyspaces table - The resource type is \code{table} and the unique
 identifier is the table name. Example:
 \code{keyspace/mykeyspace/table/mytable}.
+\item Amazon MSK cluster - The resource type and unique identifier are
+specified using the cluster ARN. Example:
+\verb{arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension associated with the scalable target. This string
@@ -84,12 +90,17 @@ a custom resource provided by your own application or service.
 \item \code{comprehend:document-classifier-endpoint:DesiredInferenceUnits} -
 The number of inference units for an Amazon Comprehend document
 classification endpoint.
+\item \code{comprehend:entity-recognizer-endpoint:DesiredInferenceUnits} - The
+number of inference units for an Amazon Comprehend entity recognizer
+endpoint.
 \item \verb{lambda:function:ProvisionedConcurrency} - The provisioned
 concurrency for a Lambda function.
 \item \code{cassandra:table:ReadCapacityUnits} - The provisioned read capacity
 for an Amazon Keyspaces table.
 \item \code{cassandra:table:WriteCapacityUnits} - The provisioned write
 capacity for an Amazon Keyspaces table.
+\item \code{kafka:broker-storage:VolumeSize} - The provisioned volume size (in
+GiB) for brokers in an Amazon MSK cluster.
 }}
 }
 \description{
@@ -103,9 +114,9 @@ scheduled actions that are associated with it.
 }
 \section{Request syntax}{
 \preformatted{svc$deregister_scalable_target(
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
   ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize"
 )
 }
 }

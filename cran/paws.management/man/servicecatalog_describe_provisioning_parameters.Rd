@@ -6,7 +6,8 @@
 specified product using the specified provisioning artifact}
 \usage{
 servicecatalog_describe_provisioning_parameters(AcceptLanguage,
-  ProductId, ProvisioningArtifactId, PathId)
+  ProductId, ProductName, ProvisioningArtifactId,
+  ProvisioningArtifactName, PathId, PathName)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -16,13 +17,23 @@ servicecatalog_describe_provisioning_parameters(AcceptLanguage,
 \item \code{zh} - Chinese
 }}
 
-\item{ProductId}{[required] The product identifier.}
+\item{ProductId}{The product identifier. You must provide the product name or ID, but not
+both.}
 
-\item{ProvisioningArtifactId}{[required] The identifier of the provisioning artifact.}
+\item{ProductName}{The name of the product. You must provide the name or ID, but not both.}
+
+\item{ProvisioningArtifactId}{The identifier of the provisioning artifact. You must provide the name
+or ID, but not both.}
+
+\item{ProvisioningArtifactName}{The name of the provisioning artifact. You must provide the name or ID,
+but not both.}
 
 \item{PathId}{The path identifier of the product. This value is optional if the
 product has a default path, and required if the product has more than
-one path. To list the paths for a product, use ListLaunchPaths.}
+one path. To list the paths for a product, use ListLaunchPaths. You must
+provide the name or ID, but not both.}
+
+\item{PathName}{The name of the path. You must provide the name or ID, but not both.}
 }
 \description{
 Gets information about the configuration required to provision the
@@ -41,8 +52,11 @@ with the value \code{sc-tagoption-conflict-portfolioId-productId}.
 \preformatted{svc$describe_provisioning_parameters(
   AcceptLanguage = "string",
   ProductId = "string",
+  ProductName = "string",
   ProvisioningArtifactId = "string",
-  PathId = "string"
+  ProvisioningArtifactName = "string",
+  PathId = "string",
+  PathName = "string"
 )
 }
 }

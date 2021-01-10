@@ -39,7 +39,7 @@ want to retrieve. If you specify this parameter then don't specify
 with the \code{VersionStage} value of \code{AWSCURRENT}.
 
 This value is typically a
-\href{https://wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
+\href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
 value with 32 hexadecimal digits.}
 
 \item{VersionStage}{Specifies the secret version that you want to retrieve by the staging

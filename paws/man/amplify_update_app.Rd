@@ -7,7 +7,7 @@
 amplify_update_app(appId, name, description, platform,
   iamServiceRoleArn, environmentVariables, enableBranchAutoBuild,
   enableBranchAutoDeletion, enableBasicAuth, basicAuthCredentials,
-  customRules, buildSpec, enableAutoBranchCreation,
+  customRules, buildSpec, customHeaders, enableAutoBranchCreation,
   autoBranchCreationPatterns, autoBranchCreationConfig, repository,
   oauthToken, accessToken)
 }
@@ -38,12 +38,14 @@ delete a branch from your Git repository.}
 
 \item{buildSpec}{The build specification (build spec) for an Amplify app.}
 
-\item{enableAutoBranchCreation}{Enables automated branch creation for the Amplify app.}
+\item{customHeaders}{The custom HTTP headers for an Amplify app.}
 
-\item{autoBranchCreationPatterns}{Describes the automated branch creation glob patterns for the Amplify
+\item{enableAutoBranchCreation}{Enables automated branch creation for an Amplify app.}
+
+\item{autoBranchCreationPatterns}{Describes the automated branch creation glob patterns for an Amplify
 app.}
 
-\item{autoBranchCreationConfig}{The automated branch creation configuration for the Amplify app.}
+\item{autoBranchCreationConfig}{The automated branch creation configuration for an Amplify app.}
 
 \item{repository}{The name of the repository for an Amplify app}
 
@@ -81,6 +83,7 @@ Updates an existing Amplify app.
     )
   ),
   buildSpec = "string",
+  customHeaders = "string",
   enableAutoBranchCreation = TRUE|FALSE,
   autoBranchCreationPatterns = list(
     "string"
@@ -94,6 +97,7 @@ Updates an existing Amplify app.
     ),
     basicAuthCredentials = "string",
     enableBasicAuth = TRUE|FALSE,
+    enablePerformanceMode = TRUE|FALSE,
     buildSpec = "string",
     enablePullRequestPreview = TRUE|FALSE,
     pullRequestEnvironmentName = "string"

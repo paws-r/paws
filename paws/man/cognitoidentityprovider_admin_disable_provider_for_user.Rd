@@ -21,7 +21,8 @@ their password to sign-in. If the user to disable is a linked external
 IdP user, any link between that user and an existing user is removed.
 The next time the external user (no longer attached to the previously
 linked \code{DestinationUser}) signs in, they must create a new user account.
-See .
+See
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html}{AdminLinkProviderForUser}.
 }
 \details{
 This action is enabled only for admin access and requires developer
@@ -43,11 +44,12 @@ source user.
 For de-linking a SAML identity, there are two scenarios. If the linked
 identity has not yet been used to sign-in, the \code{ProviderAttributeName}
 and \code{ProviderAttributeValue} must be the same values that were used for
-the \code{SourceUser} when the identities were originally linked in the call.
-(If the linking was done with \code{ProviderAttributeName} set to
-\code{Cognito_Subject}, the same applies here). However, if the user has
-already signed in, the \code{ProviderAttributeName} must be \code{Cognito_Subject}
-and \code{ProviderAttributeValue} must be the subject of the SAML assertion.
+the \code{SourceUser} when the identities were originally linked using
+\code{ AdminLinkProviderForUser} call. (If the linking was done with
+\code{ProviderAttributeName} set to \code{Cognito_Subject}, the same applies
+here). However, if the user has already signed in, the
+\code{ProviderAttributeName} must be \code{Cognito_Subject} and
+\code{ProviderAttributeValue} must be the subject of the SAML assertion.
 }
 \section{Request syntax}{
 \preformatted{svc$admin_disable_provider_for_user(

@@ -39,6 +39,9 @@ Updates an existing Amazon Kendra data source.
       InclusionPrefixes = list(
         "string"
       ),
+      InclusionPatterns = list(
+        "string"
+      ),
       ExclusionPatterns = list(
         "string"
       ),
@@ -78,7 +81,8 @@ Updates an existing Amazon Kendra data source.
           IndexFieldName = "string"
         )
       ),
-      DocumentTitleFieldName = "string"
+      DocumentTitleFieldName = "string",
+      DisableLocalGroups = TRUE|FALSE
     ),
     DatabaseConfiguration = list(
       DatabaseEngineType = "RDS_AURORA_MYSQL"|"RDS_AURORA_POSTGRESQL"|"RDS_MYSQL"|"RDS_POSTGRESQL",
@@ -114,6 +118,9 @@ Updates an existing Amazon Kendra data source.
       ),
       AclConfiguration = list(
         AllowedGroupsColumnName = "string"
+      ),
+      SqlConfiguration = list(
+        QueryIdentifiersEnclosingOption = "DOUBLE_QUOTES"|"NONE"
       )
     ),
     SalesforceConfiguration = list(
@@ -219,7 +226,8 @@ Updates an existing Amazon Kendra data source.
           DateFieldFormat = "string",
           IndexFieldName = "string"
         )
-      )
+      ),
+      DisableLocalGroups = TRUE|FALSE
     ),
     ServiceNowConfiguration = list(
       HostUrl = "string",
@@ -260,6 +268,95 @@ Updates an existing Amazon Kendra data source.
             IndexFieldName = "string"
           )
         )
+      )
+    ),
+    ConfluenceConfiguration = list(
+      ServerUrl = "string",
+      SecretArn = "string",
+      Version = "CLOUD"|"SERVER",
+      SpaceConfiguration = list(
+        CrawlPersonalSpaces = TRUE|FALSE,
+        CrawlArchivedSpaces = TRUE|FALSE,
+        IncludeSpaces = list(
+          "string"
+        ),
+        ExcludeSpaces = list(
+          "string"
+        ),
+        SpaceFieldMappings = list(
+          list(
+            DataSourceFieldName = "DISPLAY_URL"|"ITEM_TYPE"|"SPACE_KEY"|"URL",
+            DateFieldFormat = "string",
+            IndexFieldName = "string"
+          )
+        )
+      ),
+      PageConfiguration = list(
+        PageFieldMappings = list(
+          list(
+            DataSourceFieldName = "AUTHOR"|"CONTENT_STATUS"|"CREATED_DATE"|"DISPLAY_URL"|"ITEM_TYPE"|"LABELS"|"MODIFIED_DATE"|"PARENT_ID"|"SPACE_KEY"|"SPACE_NAME"|"URL"|"VERSION",
+            DateFieldFormat = "string",
+            IndexFieldName = "string"
+          )
+        )
+      ),
+      BlogConfiguration = list(
+        BlogFieldMappings = list(
+          list(
+            DataSourceFieldName = "AUTHOR"|"DISPLAY_URL"|"ITEM_TYPE"|"LABELS"|"PUBLISH_DATE"|"SPACE_KEY"|"SPACE_NAME"|"URL"|"VERSION",
+            DateFieldFormat = "string",
+            IndexFieldName = "string"
+          )
+        )
+      ),
+      AttachmentConfiguration = list(
+        CrawlAttachments = TRUE|FALSE,
+        AttachmentFieldMappings = list(
+          list(
+            DataSourceFieldName = "AUTHOR"|"CONTENT_TYPE"|"CREATED_DATE"|"DISPLAY_URL"|"FILE_SIZE"|"ITEM_TYPE"|"PARENT_ID"|"SPACE_KEY"|"SPACE_NAME"|"URL"|"VERSION",
+            DateFieldFormat = "string",
+            IndexFieldName = "string"
+          )
+        )
+      ),
+      VpcConfiguration = list(
+        SubnetIds = list(
+          "string"
+        ),
+        SecurityGroupIds = list(
+          "string"
+        )
+      ),
+      InclusionPatterns = list(
+        "string"
+      ),
+      ExclusionPatterns = list(
+        "string"
+      )
+    ),
+    GoogleDriveConfiguration = list(
+      SecretArn = "string",
+      InclusionPatterns = list(
+        "string"
+      ),
+      ExclusionPatterns = list(
+        "string"
+      ),
+      FieldMappings = list(
+        list(
+          DataSourceFieldName = "string",
+          DateFieldFormat = "string",
+          IndexFieldName = "string"
+        )
+      ),
+      ExcludeMimeTypes = list(
+        "string"
+      ),
+      ExcludeUserAccounts = list(
+        "string"
+      ),
+      ExcludeSharedDrives = list(
+        "string"
       )
     )
   ),

@@ -52,7 +52,7 @@ NULL
 #' accurate by searching for records with the eventName of BatchMeterUsage.
 #' You can also use CloudTrail to audit records over time. For more
 #' information, see the *[AWS CloudTrail User
-#' Guide](http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html)*
+#' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html)*
 #' .
 #'
 #' @param

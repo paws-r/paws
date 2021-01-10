@@ -13,7 +13,7 @@ cloud9(config = list())
 AWS Cloud9 is a collection of tools that you can use to code, build,
 run, test, debug, and release software in the cloud.
 
-For more information about AWS Cloud9, see the \href{https://docs.aws.amazon.com/cloud9/latest/user-guide}{AWS Cloud9 User Guide}.
+For more information about AWS Cloud9, see the \href{https://docs.aws.amazon.com/cloud9/latest/user-guide/}{AWS Cloud9 User Guide}.
 
 AWS Cloud9 supports these operations:
 \itemize{

@@ -26,7 +26,7 @@ AWS provides SDKs that consist of libraries and sample code for various
 programming languages and platforms, such as Java, Ruby, .Net, iOS, or
 Android. The SDKs provide a convenient way to create programmatic access
 to AWS SSO and other AWS services. For more information about the AWS
-SDKs, including how to download and install them, see \href{http://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
+SDKs, including how to download and install them, see \href{https://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
 }
 \section{Service syntax}{
 \preformatted{svc <- sso(

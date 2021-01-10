@@ -28,13 +28,15 @@ version, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf
 
 AWS WAF is a web application firewall that lets you monitor the HTTP and
 HTTPS requests that are forwarded to Amazon CloudFront, an Amazon API
-Gateway API, or an Application Load Balancer. AWS WAF also lets you
-control access to your content. Based on conditions that you specify,
-such as the IP addresses that requests originate from or the values of
-query strings, API Gateway, CloudFront, or the Application Load Balancer
-responds to requests either with the requested content or with an HTTP
-403 status code (Forbidden). You also can configure CloudFront to return
-a custom error page when a request is blocked.
+Gateway REST API, an Application Load Balancer, or an AWS AppSync
+GraphQL API. AWS WAF also lets you control access to your content. Based
+on conditions that you specify, such as the IP addresses that requests
+originate from or the values of query strings, the API Gateway REST API,
+CloudFront distribution, the Application Load Balancer, or the AWS
+AppSync GraphQL API responds to requests either with the requested
+content or with an HTTP 403 status code (Forbidden). You also can
+configure CloudFront to return a custom error page when a request is
+blocked.
 
 This API guide is for developers who need detailed information about AWS
 WAF API actions, data types, and errors. For detailed information about
@@ -44,14 +46,14 @@ You can make calls using the endpoints listed in \href{https://docs.aws.amazon.c
 \itemize{
 \item For regional applications, you can use any of the endpoints in the
 list. A regional application can be an Application Load Balancer
-(ALB) or an API Gateway stage.
+(ALB), an API Gateway REST API, or an AppSync GraphQL API.
 \item For AWS CloudFront applications, you must use the API endpoint
 listed for US East (N. Virginia): us-east-1.
 }
 
 Alternatively, you can use one of the AWS SDKs to access an API that's
 tailored to the programming language or platform that you're using. For
-more information, see \href{http://aws.amazon.com/tools/#SDKs}{AWS SDKs}.
+more information, see \href{https://aws.amazon.com/tools/#SDKs}{AWS SDKs}.
 
 We currently provide two versions of the AWS WAF API: this API and the
 prior versions, the classic AWS WAF APIs. This new API provides the same

@@ -25,7 +25,7 @@ substrings are not allowed in the \verb{s3 key} portion of the \code{outputURI}
 field: ':', '//', '/./', '/../'.
 
 Amazon ML needs permissions to store and retrieve the logs on your
-behalf. For information about how to set permissions, see the \href{http://docs.aws.amazon.com/machine-learning/latest/dg}{Amazon Machine Learning Developer Guide}.}
+behalf. For information about how to set permissions, see the \href{https://docs.aws.amazon.com/machine-learning/latest/dg/}{Amazon Machine Learning Developer Guide}.}
 }
 \description{
 Generates predictions for a group of observations. The observations to

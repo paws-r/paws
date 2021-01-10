@@ -36,15 +36,25 @@ approvals, resources, and even your team.
 \section{Operations}{
 
 \tabular{ll}{
+\link[=honeycode_batch_create_table_rows]{batch_create_table_rows} \tab The BatchCreateTableRows API allows you to create one or more rows at the end of a table in a workbook\cr
+\link[=honeycode_batch_delete_table_rows]{batch_delete_table_rows} \tab The BatchDeleteTableRows API allows you to delete one or more rows from a table in a workbook\cr
+\link[=honeycode_batch_update_table_rows]{batch_update_table_rows} \tab The BatchUpdateTableRows API allows you to update one or more rows in a table in a workbook\cr
+\link[=honeycode_batch_upsert_table_rows]{batch_upsert_table_rows} \tab The BatchUpsertTableRows API allows you to upsert one or more rows in a table\cr
+\link[=honeycode_describe_table_data_import_job]{describe_table_data_import_job} \tab The DescribeTableDataImportJob API allows you to retrieve the status and details of a table data import job\cr
 \link[=honeycode_get_screen_data]{get_screen_data} \tab The GetScreenData API allows retrieval of data from a screen in a Honeycode app\cr
-\link[=honeycode_invoke_screen_automation]{invoke_screen_automation} \tab The InvokeScreenAutomation API allows invoking an action defined in a screen in a Honeycode app
+\link[=honeycode_invoke_screen_automation]{invoke_screen_automation} \tab The InvokeScreenAutomation API allows invoking an action defined in a screen in a Honeycode app\cr
+\link[=honeycode_list_table_columns]{list_table_columns} \tab The ListTableColumns API allows you to retrieve a list of all the columns in a table in a workbook\cr
+\link[=honeycode_list_table_rows]{list_table_rows} \tab The ListTableRows API allows you to retrieve a list of all the rows in a table in a workbook\cr
+\link[=honeycode_list_tables]{list_tables} \tab The ListTables API allows you to retrieve a list of all the tables in a workbook\cr
+\link[=honeycode_query_table_rows]{query_table_rows} \tab The QueryTableRows API allows you to use a filter formula to query for specific rows in a table\cr
+\link[=honeycode_start_table_data_import_job]{start_table_data_import_job} \tab The StartTableDataImportJob API allows you to start an import job on a table
 }
 }
 
 \examples{
 \dontrun{
 svc <- honeycode()
-svc$get_screen_data(
+svc$batch_create_table_rows(
   Foo = 123
 )
 }

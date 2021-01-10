@@ -12,7 +12,7 @@ computeoptimizer_export_ec2_instance_recommendations(accountIds,
 \item{accountIds}{The IDs of the AWS accounts for which to export instance
 recommendations.
 
-If your account is the master account of an organization, use this
+If your account is the management account of an organization, use this
 parameter to specify the member accounts for which you want to export
 recommendations.
 
@@ -27,7 +27,9 @@ You can specify multiple account IDs per request.}
 \item{filters}{An array of objects that describe a filter to export a more specific set
 of instance recommendations.}
 
-\item{fieldsToExport}{The recommendations data to include in the export file.}
+\item{fieldsToExport}{The recommendations data to include in the export file. For more
+information about the fields that can be exported, see \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html#exported-files}{Exported files}
+in the \emph{Compute Optimizer User Guide}.}
 
 \item{s3DestinationConfig}{[required] An object to specify the destination Amazon Simple Storage Service
 (Amazon S3) bucket name and key prefix for the export job.
@@ -47,8 +49,8 @@ in the \emph{Compute Optimizer user guide}.}
 The only export file format currently supported is \code{Csv}.}
 
 \item{includeMemberAccounts}{Indicates whether to include recommendations for resources in all member
-accounts of the organization if your account is the master account of an
-organization.
+accounts of the organization if your account is the management account
+of an organization.
 
 The member accounts must also be opted in to Compute Optimizer.
 
@@ -85,7 +87,7 @@ Region.
     )
   ),
   fieldsToExport = list(
-    "AccountId"|"InstanceArn"|"InstanceName"|"Finding"|"LookbackPeriodInDays"|"CurrentInstanceType"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"CurrentOnDemandPrice"|"CurrentStandardOneYearNoUpfrontReservedPrice"|"CurrentStandardThreeYearNoUpfrontReservedPrice"|"CurrentVCpus"|"CurrentMemory"|"CurrentStorage"|"CurrentNetwork"|"RecommendationOptionsInstanceType"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"RecommendationOptionsPerformanceRisk"|"RecommendationOptionsVcpus"|"RecommendationOptionsMemory"|"RecommendationOptionsStorage"|"RecommendationOptionsNetwork"|"RecommendationOptionsOnDemandPrice"|"RecommendationOptionsStandardOneYearNoUpfrontReservedPrice"|"RecommendationOptionsStandardThreeYearNoUpfrontReservedPrice"|"RecommendationsSourcesRecommendationSourceArn"|"RecommendationsSourcesRecommendationSourceType"|"LastRefreshTimestamp"
+    "AccountId"|"InstanceArn"|"InstanceName"|"Finding"|"LookbackPeriodInDays"|"CurrentInstanceType"|"UtilizationMetricsCpuMaximum"|"UtilizationMetricsMemoryMaximum"|"UtilizationMetricsEbsReadOpsPerSecondMaximum"|"UtilizationMetricsEbsWriteOpsPerSecondMaximum"|"UtilizationMetricsEbsReadBytesPerSecondMaximum"|"UtilizationMetricsEbsWriteBytesPerSecondMaximum"|"CurrentOnDemandPrice"|"CurrentStandardOneYearNoUpfrontReservedPrice"|"CurrentStandardThreeYearNoUpfrontReservedPrice"|"CurrentVCpus"|"CurrentMemory"|"CurrentStorage"|"CurrentNetwork"|"RecommendationOptionsInstanceType"|"RecommendationOptionsProjectedUtilizationMetricsCpuMaximum"|"RecommendationOptionsProjectedUtilizationMetricsMemoryMaximum"|"RecommendationOptionsPerformanceRisk"|"RecommendationOptionsVcpus"|"RecommendationOptionsMemory"|"RecommendationOptionsStorage"|"RecommendationOptionsNetwork"|"RecommendationOptionsOnDemandPrice"|"RecommendationOptionsStandardOneYearNoUpfrontReservedPrice"|"RecommendationOptionsStandardThreeYearNoUpfrontReservedPrice"|"RecommendationsSourcesRecommendationSourceArn"|"RecommendationsSourcesRecommendationSourceType"|"LastRefreshTimestamp"
   ),
   s3DestinationConfig = list(
     bucket = "string",

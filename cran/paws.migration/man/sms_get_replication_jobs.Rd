@@ -7,7 +7,7 @@
 sms_get_replication_jobs(replicationJobId, nextToken, maxResults)
 }
 \arguments{
-\item{replicationJobId}{The identifier of the replication job.}
+\item{replicationJobId}{The ID of the replication job.}
 
 \item{nextToken}{The token for the next set of results.}
 

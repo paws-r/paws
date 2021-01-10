@@ -11,7 +11,7 @@ appsync_create_type(apiId, definition, format)
 
 \item{definition}{[required] The type definition, in GraphQL Schema Definition Language (SDL) format.
 
-For more information, see the \href{http://graphql.org/learn/schema/}{GraphQL SDL documentation}.}
+For more information, see the \href{https://graphql.org/learn/schema/}{GraphQL SDL documentation}.}
 
 \item{format}{[required] The type format: SDL or JSON.}
 }

@@ -15,9 +15,12 @@ none is provided, the AWS account ID is used by default.}
 
 \item{TableName}{[required] The name of the table in which the partition to be updated is located.}
 
-\item{PartitionValueList}{[required] A list of the values defining the partition.}
+\item{PartitionValueList}{[required] List of partition key values that define the partition to update.}
 
-\item{PartitionInput}{[required] The new partition object to update the partition to.}
+\item{PartitionInput}{[required] The new partition object to update the partition to.
+
+The \code{Values} property can't be changed. If you want to change the
+partition key values for a partition, delete and recreate the partition.}
 }
 \description{
 Updates a partition.
@@ -83,7 +86,16 @@ Updates a partition.
           "string"
         )
       ),
-      StoredAsSubDirectories = TRUE|FALSE
+      StoredAsSubDirectories = TRUE|FALSE,
+      SchemaReference = list(
+        SchemaId = list(
+          SchemaArn = "string",
+          SchemaName = "string",
+          RegistryName = "string"
+        ),
+        SchemaVersionId = "string",
+        SchemaVersionNumber = 123
+      )
     ),
     Parameters = list(
       "string"

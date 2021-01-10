@@ -3,18 +3,20 @@
 #' @include guardduty_service.R
 NULL
 
-#' Accepts the invitation to be monitored by a master GuardDuty account
+#' Accepts the invitation to be monitored by a GuardDuty administrator
+#' account
 #'
-#' Accepts the invitation to be monitored by a master GuardDuty account.
+#' Accepts the invitation to be monitored by a GuardDuty administrator
+#' account.
 #'
 #' @usage
 #' guardduty_accept_invitation(DetectorId, MasterId, InvitationId)
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty member account.
-#' @param MasterId &#91;required&#93; The account ID of the master GuardDuty account whose invitation you're
-#' accepting.
-#' @param InvitationId &#91;required&#93; The value that is used to validate the master account to the member
-#' account.
+#' @param MasterId &#91;required&#93; The account ID of the GuardDuty administrator account whose invitation
+#' you're accepting.
+#' @param InvitationId &#91;required&#93; The value that is used to validate the administrator account to the
+#' member account.
 #'
 #' @section Request syntax:
 #' ```
@@ -51,8 +53,8 @@ guardduty_accept_invitation <- function(DetectorId, MasterId, InvitationId) {
 #' Archives GuardDuty findings that are specified by the list of finding
 #' IDs.
 #' 
-#' Only the master account can archive findings. Member accounts don't have
-#' permission to archive findings from their accounts.
+#' Only the administrator account can archive findings. Member accounts
+#' don't have permission to archive findings from their accounts.
 #'
 #' @usage
 #' guardduty_archive_findings(DetectorId, FindingIds)
@@ -96,16 +98,17 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 #' Creates a single Amazon GuardDuty detector. A detector is a resource
 #' that represents the GuardDuty service. To start using GuardDuty, you
 #' must create a detector in each Region where you enable the service. You
-#' can have only one detector per account per Region.
+#' can have only one detector per account per Region. All data sources are
+#' enabled in a new detector by default.
 #'
 #' @usage
 #' guardduty_create_detector(Enable, ClientToken,
-#'   FindingPublishingFrequency, Tags)
+#'   FindingPublishingFrequency, DataSources, Tags)
 #'
 #' @param Enable &#91;required&#93; A Boolean value that specifies whether the detector is to be enabled.
 #' @param ClientToken The idempotency token for the create request.
-#' @param FindingPublishingFrequency An enum value that specifies how frequently updated findings are
-#' exported.
+#' @param FindingPublishingFrequency A value that specifies how frequently updated findings are exported.
+#' @param DataSources Describes which data sources will be enabled for the detector.
 #' @param Tags The tags to be added to a new detector resource.
 #'
 #' @section Request syntax:
@@ -114,6 +117,11 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 #'   Enable = TRUE|FALSE,
 #'   ClientToken = "string",
 #'   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS",
+#'   DataSources = list(
+#'     S3Logs = list(
+#'       Enable = TRUE|FALSE
+#'     )
+#'   ),
 #'   Tags = list(
 #'     "string"
 #'   )
@@ -123,14 +131,14 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 #' @keywords internal
 #'
 #' @rdname guardduty_create_detector
-guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublishingFrequency = NULL, Tags = NULL) {
+guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublishingFrequency = NULL, DataSources = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDetector",
     http_method = "POST",
     http_path = "/detector",
     paginator = list()
   )
-  input <- .guardduty$create_detector_input(Enable = Enable, ClientToken = ClientToken, FindingPublishingFrequency = FindingPublishingFrequency, Tags = Tags)
+  input <- .guardduty$create_detector_input(Enable = Enable, ClientToken = ClientToken, FindingPublishingFrequency = FindingPublishingFrequency, DataSources = DataSources, Tags = Tags)
   output <- .guardduty$create_detector_output()
   config <- get_config()
   svc <- .guardduty$service(config)
@@ -148,9 +156,11 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' guardduty_create_filter(DetectorId, Name, Description, Action, Rank,
 #'   FindingCriteria, ClientToken, Tags)
 #'
-#' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account that you want to
-#' create a filter for.
-#' @param Name &#91;required&#93; The name of the filter.
+#' @param DetectorId &#91;required&#93; The ID of the detector belonging to the GuardDuty account that you want
+#' to create a filter for.
+#' @param Name &#91;required&#93; The name of the filter. Minimum length of 3. Maximum length of 64. Valid
+#' characters include alphanumeric characters, dot (.), underscore (\\_),
+#' and dash (-). Spaces are not allowed.
 #' @param Description The description of the filter.
 #' @param Action Specifies the action that is to be applied to the findings that match
 #' the filter.
@@ -212,6 +222,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' -   service.action.awsApiCallAction.api
 #' 
 #' -   service.action.awsApiCallAction.callerType
+#' 
+#' -   service.action.awsApiCallAction.errorCode
 #' 
 #' -   service.action.awsApiCallAction.remoteIpDetails.city.cityName
 #' 
@@ -339,7 +351,7 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 #' user interface. An IPSet is a list of IP addresses that are trusted for
 #' secure communication with AWS infrastructure and applications. GuardDuty
 #' doesn't generate findings for IP addresses that are included in IPSets.
-#' Only users from the master account can use this operation.
+#' Only users from the administrator account can use this operation.
 #'
 #' @usage
 #' guardduty_create_ip_set(DetectorId, Name, Format, Location, Activate,
@@ -398,8 +410,19 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
 #' of AWS account IDs
 #'
 #' Creates member accounts of the current AWS account by specifying a list
-#' of AWS account IDs. The current AWS account can then invite these
-#' members to manage GuardDuty in their accounts.
+#' of AWS account IDs. This step is a prerequisite for managing the
+#' associated member accounts either by invitation or through an
+#' organization.
+#' 
+#' When using `Create Members` as an organizations delegated administrator
+#' this action will enable GuardDuty in the added member accounts, with the
+#' exception of the organization delegated administrator account, which
+#' must enable GuardDuty prior to being added as a member.
+#' 
+#' If you are adding accounts by invitation use this action after GuardDuty
+#' has been enabled in potential member accounts and before using
+#' [`Invite Members`](https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html)
+#' .
 #'
 #' @usage
 #' guardduty_create_members(DetectorId, AccountDetails)
@@ -407,7 +430,7 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account that you want to
 #' associate member accounts with.
 #' @param AccountDetails &#91;required&#93; A list of account ID and email address pairs of the accounts that you
-#' want to associate with the master GuardDuty account.
+#' want to associate with the GuardDuty administrator account.
 #'
 #' @section Request syntax:
 #' ```
@@ -539,7 +562,7 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
 #'
 #' Creates a new ThreatIntelSet. ThreatIntelSets consist of known malicious
 #' IP addresses. GuardDuty generates findings based on ThreatIntelSets.
-#' Only users of the master account can use this operation.
+#' Only users of the administrator account can use this operation.
 #'
 #' @usage
 #' guardduty_create_threat_intel_set(DetectorId, Name, Format, Location,
@@ -790,11 +813,11 @@ guardduty_delete_invitations <- function(AccountIds) {
 }
 .guardduty$operations$delete_invitations <- guardduty_delete_invitations
 
-#' Deletes GuardDuty member accounts (to the current GuardDuty master
-#' account) specified by the account IDs
+#' Deletes GuardDuty member accounts (to the current GuardDuty
+#' administrator account) specified by the account IDs
 #'
-#' Deletes GuardDuty member accounts (to the current GuardDuty master
-#' account) specified by the account IDs.
+#' Deletes GuardDuty member accounts (to the current GuardDuty
+#' administrator account) specified by the account IDs.
 #'
 #' @usage
 #' guardduty_delete_members(DetectorId, AccountIds)
@@ -1031,11 +1054,11 @@ guardduty_disable_organization_admin_account <- function(AdminAccountId) {
 }
 .guardduty$operations$disable_organization_admin_account <- guardduty_disable_organization_admin_account
 
-#' Disassociates the current GuardDuty member account from its master
-#' account
+#' Disassociates the current GuardDuty member account from its
+#' administrator account
 #'
-#' Disassociates the current GuardDuty member account from its master
-#' account.
+#' Disassociates the current GuardDuty member account from its
+#' administrator account.
 #'
 #' @usage
 #' guardduty_disassociate_from_master_account(DetectorId)
@@ -1069,19 +1092,19 @@ guardduty_disassociate_from_master_account <- function(DetectorId) {
 }
 .guardduty$operations$disassociate_from_master_account <- guardduty_disassociate_from_master_account
 
-#' Disassociates GuardDuty member accounts (to the current GuardDuty master
-#' account) specified by the account IDs
+#' Disassociates GuardDuty member accounts (to the current GuardDuty
+#' administrator account) specified by the account IDs
 #'
-#' Disassociates GuardDuty member accounts (to the current GuardDuty master
-#' account) specified by the account IDs.
+#' Disassociates GuardDuty member accounts (to the current GuardDuty
+#' administrator account) specified by the account IDs.
 #'
 #' @usage
 #' guardduty_disassociate_members(DetectorId, AccountIds)
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty account whose members you
-#' want to disassociate from the master account.
+#' want to disassociate from the administrator account.
 #' @param AccountIds &#91;required&#93; A list of account IDs of the GuardDuty member accounts that you want to
-#' disassociate from the master account.
+#' disassociate from the administrator account.
 #'
 #' @section Request syntax:
 #' ```
@@ -1414,11 +1437,11 @@ guardduty_get_invitations_count <- function() {
 }
 .guardduty$operations$get_invitations_count <- guardduty_get_invitations_count
 
-#' Provides the details for the GuardDuty master account associated with
-#' the current GuardDuty member account
+#' Provides the details for the GuardDuty administrator account associated
+#' with the current GuardDuty member account
 #'
-#' Provides the details for the GuardDuty master account associated with
-#' the current GuardDuty member account.
+#' Provides the details for the GuardDuty administrator account associated
+#' with the current GuardDuty member account.
 #'
 #' @usage
 #' guardduty_get_master_account(DetectorId)
@@ -1452,11 +1475,53 @@ guardduty_get_master_account <- function(DetectorId) {
 }
 .guardduty$operations$get_master_account <- guardduty_get_master_account
 
-#' Retrieves GuardDuty member accounts (to the current GuardDuty master
-#' account) specified by the account IDs
+#' Describes which data sources are enabled for the member account's
+#' detector
 #'
-#' Retrieves GuardDuty member accounts (to the current GuardDuty master
-#' account) specified by the account IDs.
+#' Describes which data sources are enabled for the member account's
+#' detector.
+#'
+#' @usage
+#' guardduty_get_member_detectors(DetectorId, AccountIds)
+#'
+#' @param DetectorId &#91;required&#93; The detector ID for the administrator account.
+#' @param AccountIds &#91;required&#93; The account ID of the member account.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_member_detectors(
+#'   DetectorId = "string",
+#'   AccountIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_member_detectors
+guardduty_get_member_detectors <- function(DetectorId, AccountIds) {
+  op <- new_operation(
+    name = "GetMemberDetectors",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/member/detector/get",
+    paginator = list()
+  )
+  input <- .guardduty$get_member_detectors_input(DetectorId = DetectorId, AccountIds = AccountIds)
+  output <- .guardduty$get_member_detectors_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_member_detectors <- guardduty_get_member_detectors
+
+#' Retrieves GuardDuty member accounts (of the current GuardDuty
+#' administrator account) specified by the account IDs
+#'
+#' Retrieves GuardDuty member accounts (of the current GuardDuty
+#' administrator account) specified by the account IDs.
 #'
 #' @usage
 #' guardduty_get_members(DetectorId, AccountIds)
@@ -1535,15 +1600,84 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 }
 .guardduty$operations$get_threat_intel_set <- guardduty_get_threat_intel_set
 
+#' Lists Amazon GuardDuty usage statistics over the last 30 days for the
+#' specified detector ID
+#'
+#' Lists Amazon GuardDuty usage statistics over the last 30 days for the
+#' specified detector ID. For newly enabled detectors or data sources the
+#' cost returned will include only the usage so far under 30 days, this may
+#' differ from the cost metrics in the console, which projects usage over
+#' 30 days to provide a monthly cost estimate. For more information see
+#' [Understanding How Usage Costs are
+#' Calculated](https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations).
+#'
+#' @usage
+#' guardduty_get_usage_statistics(DetectorId, UsageStatisticType,
+#'   UsageCriteria, Unit, MaxResults, NextToken)
+#'
+#' @param DetectorId &#91;required&#93; The ID of the detector that specifies the GuardDuty service whose usage
+#' statistics you want to retrieve.
+#' @param UsageStatisticType &#91;required&#93; The type of usage statistics to retrieve.
+#' @param UsageCriteria &#91;required&#93; Represents the criteria used for querying usage.
+#' @param Unit The currency unit you would like to view your usage statistics in.
+#' Current valid values are USD.
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param NextToken A token to use for paginating results that are returned in the response.
+#' Set the value of this parameter to null for the first request to a list
+#' action. For subsequent calls, use the NextToken value returned from the
+#' previous request to continue listing results after the first page.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_usage_statistics(
+#'   DetectorId = "string",
+#'   UsageStatisticType = "SUM_BY_ACCOUNT"|"SUM_BY_DATA_SOURCE"|"SUM_BY_RESOURCE"|"TOP_RESOURCES",
+#'   UsageCriteria = list(
+#'     AccountIds = list(
+#'       "string"
+#'     ),
+#'     DataSources = list(
+#'       "FLOW_LOGS"|"CLOUD_TRAIL"|"DNS_LOGS"|"S3_LOGS"
+#'     ),
+#'     Resources = list(
+#'       "string"
+#'     )
+#'   ),
+#'   Unit = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_get_usage_statistics
+guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, UsageCriteria, Unit = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetUsageStatistics",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/usage/statistics",
+    paginator = list()
+  )
+  input <- .guardduty$get_usage_statistics_input(DetectorId = DetectorId, UsageStatisticType = UsageStatisticType, UsageCriteria = UsageCriteria, Unit = Unit, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .guardduty$get_usage_statistics_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$get_usage_statistics <- guardduty_get_usage_statistics
+
 #' Invites other AWS accounts (created as members of the current AWS
 #' account by CreateMembers) to enable GuardDuty, and allow the current AWS
-#' account to view and manage these accounts' GuardDuty findings on their
-#' behalf as the master account
+#' account to view and manage these accounts' findings on their behalf as
+#' the GuardDuty administrator account
 #'
 #' Invites other AWS accounts (created as members of the current AWS
 #' account by CreateMembers) to enable GuardDuty, and allow the current AWS
-#' account to view and manage these accounts' GuardDuty findings on their
-#' behalf as the master account.
+#' account to view and manage these accounts' findings on their behalf as
+#' the GuardDuty administrator account.
 #'
 #' @usage
 #' guardduty_invite_members(DetectorId, AccountIds,
@@ -1554,9 +1688,9 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #' @param AccountIds &#91;required&#93; A list of account IDs of the accounts that you want to invite to
 #' GuardDuty as members.
 #' @param DisableEmailNotification A Boolean value that specifies whether you want to disable email
-#' notification to the accounts that you’re inviting to GuardDuty as
+#' notification to the accounts that you are inviting to GuardDuty as
 #' members.
-#' @param Message The invitation message that you want to send to the accounts that you’re
+#' @param Message The invitation message that you want to send to the accounts that you're
 #' inviting to GuardDuty as members.
 #'
 #' @section Request syntax:
@@ -1869,7 +2003,7 @@ guardduty_list_findings <- function(DetectorId, FindingCriteria = NULL, SortCrit
 #'
 #' Lists the IPSets of the GuardDuty service specified by the detector ID.
 #' If you use this operation from a member account, the IPSets returned are
-#' the IPSets from the associated master account.
+#' the IPSets from the associated administrator account.
 #'
 #' @usage
 #' guardduty_list_ip_sets(DetectorId, MaxResults, NextToken)
@@ -1956,11 +2090,11 @@ guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .guardduty$operations$list_invitations <- guardduty_list_invitations
 
-#' Lists details about all member accounts for the current GuardDuty master
-#' account
+#' Lists details about all member accounts for the current GuardDuty
+#' administrator account
 #'
-#' Lists details about all member accounts for the current GuardDuty master
-#' account.
+#' Lists details about all member accounts for the current GuardDuty
+#' administrator account.
 #'
 #' @usage
 #' guardduty_list_members(DetectorId, MaxResults, NextToken,
@@ -2138,7 +2272,7 @@ guardduty_list_tags_for_resource <- function(ResourceArn) {
 #'
 #' Lists the ThreatIntelSets of the GuardDuty service specified by the
 #' detector ID. If you use this operation from a member account, the
-#' ThreatIntelSets associated with the master account are returned.
+#' ThreatIntelSets associated with the administrator account are returned.
 #'
 #' @usage
 #' guardduty_list_threat_intel_sets(DetectorId, MaxResults, NextToken)
@@ -2192,8 +2326,8 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
 #' @usage
 #' guardduty_start_monitoring_members(DetectorId, AccountIds)
 #'
-#' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty master account associated
-#' with the member accounts to monitor.
+#' @param DetectorId &#91;required&#93; The unique ID of the detector of the GuardDuty administrator account
+#' associated with the member accounts to monitor.
 #' @param AccountIds &#91;required&#93; A list of account IDs of the GuardDuty member accounts to start
 #' monitoring.
 #'
@@ -2236,8 +2370,8 @@ guardduty_start_monitoring_members <- function(DetectorId, AccountIds) {
 #' @usage
 #' guardduty_stop_monitoring_members(DetectorId, AccountIds)
 #'
-#' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the GuardDuty master
-#' account that is monitoring member accounts.
+#' @param DetectorId &#91;required&#93; The unique ID of the detector associated with the GuardDuty
+#' administrator account that is monitoring member accounts.
 #' @param AccountIds &#91;required&#93; A list of account IDs for the member accounts to stop monitoring.
 #'
 #' @section Request syntax:
@@ -2397,33 +2531,39 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 #'
 #' @usage
 #' guardduty_update_detector(DetectorId, Enable,
-#'   FindingPublishingFrequency)
+#'   FindingPublishingFrequency, DataSources)
 #'
 #' @param DetectorId &#91;required&#93; The unique ID of the detector to update.
 #' @param Enable Specifies whether the detector is enabled or not enabled.
 #' @param FindingPublishingFrequency An enum value that specifies how frequently findings are exported, such
 #' as to CloudWatch Events.
+#' @param DataSources Describes which data sources will be updated.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_detector(
 #'   DetectorId = "string",
 #'   Enable = TRUE|FALSE,
-#'   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS"
+#'   FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS",
+#'   DataSources = list(
+#'     S3Logs = list(
+#'       Enable = TRUE|FALSE
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname guardduty_update_detector
-guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishingFrequency = NULL) {
+guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishingFrequency = NULL, DataSources = NULL) {
   op <- new_operation(
     name = "UpdateDetector",
     http_method = "POST",
     http_path = "/detector/{detectorId}",
     paginator = list()
   )
-  input <- .guardduty$update_detector_input(DetectorId = DetectorId, Enable = Enable, FindingPublishingFrequency = FindingPublishingFrequency)
+  input <- .guardduty$update_detector_input(DetectorId = DetectorId, Enable = Enable, FindingPublishingFrequency = FindingPublishingFrequency, DataSources = DataSources)
   output <- .guardduty$update_detector_output()
   config <- get_config()
   svc <- .guardduty$service(config)
@@ -2602,36 +2742,89 @@ guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location =
 }
 .guardduty$operations$update_ip_set <- guardduty_update_ip_set
 
+#' Contains information on member accounts to be updated
+#'
+#' Contains information on member accounts to be updated.
+#'
+#' @usage
+#' guardduty_update_member_detectors(DetectorId, AccountIds, DataSources)
+#'
+#' @param DetectorId &#91;required&#93; The detector ID of the administrator account.
+#' @param AccountIds &#91;required&#93; A list of member account IDs to be updated.
+#' @param DataSources Describes which data sources will be updated.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_member_detectors(
+#'   DetectorId = "string",
+#'   AccountIds = list(
+#'     "string"
+#'   ),
+#'   DataSources = list(
+#'     S3Logs = list(
+#'       Enable = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname guardduty_update_member_detectors
+guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSources = NULL) {
+  op <- new_operation(
+    name = "UpdateMemberDetectors",
+    http_method = "POST",
+    http_path = "/detector/{detectorId}/member/detector/update",
+    paginator = list()
+  )
+  input <- .guardduty$update_member_detectors_input(DetectorId = DetectorId, AccountIds = AccountIds, DataSources = DataSources)
+  output <- .guardduty$update_member_detectors_output()
+  config <- get_config()
+  svc <- .guardduty$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.guardduty$operations$update_member_detectors <- guardduty_update_member_detectors
+
 #' Updates the delegated administrator account with the values provided
 #'
 #' Updates the delegated administrator account with the values provided.
 #'
 #' @usage
-#' guardduty_update_organization_configuration(DetectorId, AutoEnable)
+#' guardduty_update_organization_configuration(DetectorId, AutoEnable,
+#'   DataSources)
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector to update the delegated administrator for.
 #' @param AutoEnable &#91;required&#93; Indicates whether to automatically enable member accounts in the
 #' organization.
+#' @param DataSources Describes which data sources will be updated.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_organization_configuration(
 #'   DetectorId = "string",
-#'   AutoEnable = TRUE|FALSE
+#'   AutoEnable = TRUE|FALSE,
+#'   DataSources = list(
+#'     S3Logs = list(
+#'       AutoEnable = TRUE|FALSE
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname guardduty_update_organization_configuration
-guardduty_update_organization_configuration <- function(DetectorId, AutoEnable) {
+guardduty_update_organization_configuration <- function(DetectorId, AutoEnable, DataSources = NULL) {
   op <- new_operation(
     name = "UpdateOrganizationConfiguration",
     http_method = "POST",
     http_path = "/detector/{detectorId}/admin",
     paginator = list()
   )
-  input <- .guardduty$update_organization_configuration_input(DetectorId = DetectorId, AutoEnable = AutoEnable)
+  input <- .guardduty$update_organization_configuration_input(DetectorId = DetectorId, AutoEnable = AutoEnable, DataSources = DataSources)
   output <- .guardduty$update_organization_configuration_output()
   config <- get_config()
   svc <- .guardduty$service(config)
@@ -2701,8 +2894,7 @@ guardduty_update_publishing_destination <- function(DetectorId, DestinationId, D
 #' you want to update.
 #' @param ThreatIntelSetId &#91;required&#93; The unique ID that specifies the ThreatIntelSet that you want to update.
 #' @param Name The unique ID that specifies the ThreatIntelSet that you want to update.
-#' @param Location The updated URI of the file that contains the ThreateIntelSet. For
-#' example: https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.
+#' @param Location The updated URI of the file that contains the ThreateIntelSet.
 #' @param Activate The updated Boolean value that specifies whether the ThreateIntelSet is
 #' active or not.
 #'

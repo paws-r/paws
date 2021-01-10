@@ -28,7 +28,9 @@ servicecatalog_create_product(AcceptLanguage, Name, Owner, Description,
 
 \item{SupportEmail}{The contact email for product support.}
 
-\item{SupportUrl}{The contact URL for product support.}
+\item{SupportUrl}{The contact URL for product support.
+
+\verb{^https?:\\\\/\\\\// }/ is the pattern used to validate SupportUrl.}
 
 \item{ProductType}{[required] The type of product.}
 
@@ -45,6 +47,11 @@ Creates a product.
 }
 \details{
 A delegated admin is authorized to invoke this command.
+
+The user or role that performs this operation must have the
+\code{cloudformation:GetTemplate} IAM policy permission. This policy
+permission is required when using the \code{ImportFromPhysicalId} template
+source in the information data section.
 }
 \section{Request syntax}{
 \preformatted{svc$create_product(

@@ -10,7 +10,7 @@ workmail_delete_mailbox_permissions(OrganizationId, EntityId, GranteeId)
 \item{OrganizationId}{[required] The identifier of the organization under which the member (user or
 group) exists.}
 
-\item{EntityId}{[required] The identifier of the member (user or group)that owns the mailbox.}
+\item{EntityId}{[required] The identifier of the member (user or group) that owns the mailbox.}
 
 \item{GranteeId}{[required] The identifier of the member (user or group) for which to delete granted
 permissions.}

@@ -4,7 +4,8 @@
 \alias{s3_list_bucket_metrics_configurations}
 \title{Lists the metrics configurations for the bucket}
 \usage{
-s3_list_bucket_metrics_configurations(Bucket, ContinuationToken)
+s3_list_bucket_metrics_configurations(Bucket, ContinuationToken,
+  ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the metrics configurations to
@@ -14,6 +15,10 @@ retrieve.}
 has been truncated. Use the NextContinuationToken from a previously
 truncated list response to continue the listing. The continuation token
 is an opaque value that Amazon S3 understands.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Lists the metrics configurations for the bucket. The metrics
@@ -43,15 +48,16 @@ metrics, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-mo
 The following operations are related to
 \code{ListBucketMetricsConfigurations}:
 \itemize{
-\item PutBucketMetricsConfiguration
-\item GetBucketMetricsConfiguration
-\item DeleteBucketMetricsConfiguration
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketMetricsConfiguration.html}{PutBucketMetricsConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetricsConfiguration.html}{GetBucketMetricsConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetricsConfiguration.html}{DeleteBucketMetricsConfiguration}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$list_bucket_metrics_configurations(
   Bucket = "string",
-  ContinuationToken = "string"
+  ContinuationToken = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

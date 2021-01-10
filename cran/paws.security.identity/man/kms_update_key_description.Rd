@@ -27,11 +27,22 @@ Updates the description of a customer master key (CMK). To see the
 description of a CMK, use DescribeKey.
 }
 \details{
-You cannot perform this operation on a CMK in a different AWS account.
-
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
+a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:UpdateKeyDescription}
+(key policy)
+
+\strong{Related operations}
+\itemize{
+\item CreateKey
+\item DescribeKey
+}
 }
 \section{Request syntax}{
 \preformatted{svc$update_key_description(

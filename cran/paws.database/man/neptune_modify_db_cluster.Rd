@@ -111,12 +111,14 @@ Default: \code{false}}
 \item{CloudwatchLogsExportConfiguration}{The configuration setting for the log types to be enabled for export to
 CloudWatch Logs for a specific DB cluster.}
 
-\item{EngineVersion}{The version number of the database engine. Currently, setting this
-parameter has no effect. To upgrade your database engine to the most
-recent release, use the ApplyPendingMaintenanceAction API.
+\item{EngineVersion}{The version number of the database engine to which you want to upgrade.
+Changing this parameter results in an outage. The change is applied
+during the next maintenance window unless the \code{ApplyImmediately}
+parameter is set to true.
 
-For a list of valid engine versions, see CreateDBInstance, or call
-DescribeDBEngineVersions.}
+For a list of valid engine versions, see \href{https://docs.aws.amazon.com/neptune/latest/userguide/engine-releases.html}{Engine Releases for Amazon Neptune},
+or call
+\href{https://docs.aws.amazon.com/neptune/latest/userguide/api-other-apis.html#DescribeDBEngineVersions}{DescribeDBEngineVersions}.}
 
 \item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
 enabled. The database can't be deleted when deletion protection is

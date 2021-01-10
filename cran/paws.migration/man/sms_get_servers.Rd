@@ -13,7 +13,7 @@ sms_get_servers(nextToken, maxResults, vmServerAddressList)
 value is 50. To retrieve the remaining results, make another call with
 the returned \code{NextToken} value.}
 
-\item{vmServerAddressList}{List of \code{VmServerAddress} objects}
+\item{vmServerAddressList}{The server addresses.}
 }
 \description{
 Describes the servers in your server catalog.

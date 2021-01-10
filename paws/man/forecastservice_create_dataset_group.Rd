@@ -63,8 +63,8 @@ howitworks-datasets-groups.
 To get a list of all your datasets groups, use the ListDatasetGroups
 operation.
 
-The \code{Status} of a dataset group must be \code{ACTIVE} before you can create
-use the dataset group to create a predictor. To get the status, use the
+The \code{Status} of a dataset group must be \code{ACTIVE} before you can use the
+dataset group to create a predictor. To get the status, use the
 DescribeDatasetGroup operation.
 }
 \section{Request syntax}{

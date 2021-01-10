@@ -7,7 +7,9 @@
 iot_list_principal_things(nextToken, maxResults, principal)
 }
 \arguments{
-\item{nextToken}{The token to retrieve the next set of results.}
+\item{nextToken}{To retrieve the next set of results, the \code{nextToken} value from a
+previous response; otherwise \strong{null} to receive the first set of
+results.}
 
 \item{maxResults}{The maximum number of results to return in this operation.}
 

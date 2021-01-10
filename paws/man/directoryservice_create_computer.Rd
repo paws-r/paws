@@ -2,8 +2,7 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_create_computer}
 \alias{directoryservice_create_computer}
-\title{Creates a computer account in the specified directory, and joins the
-computer to the directory}
+\title{Creates an Active Directory computer object in the specified directory}
 \usage{
 directoryservice_create_computer(DirectoryId, ComputerName, Password,
   OrganizationalUnitDistinguishedName, ComputerAttributes)
@@ -23,8 +22,7 @@ place the computer account in.}
 to the computer account.}
 }
 \description{
-Creates a computer account in the specified directory, and joins the
-computer to the directory.
+Creates an Active Directory computer object in the specified directory.
 }
 \section{Request syntax}{
 \preformatted{svc$create_computer(

@@ -6,7 +6,7 @@
 \usage{
 quicksight_update_data_set(AwsAccountId, DataSetId, Name,
   PhysicalTableMap, LogicalTableMap, ImportMode, ColumnGroups,
-  RowLevelPermissionDataSet)
+  RowLevelPermissionDataSet, ColumnLevelPermissionRules)
 }
 \arguments{
 \item{AwsAccountId}{[required] The AWS account ID.}
@@ -28,6 +28,9 @@ physical tables.}
 Currently, only geospatial hierarchy is supported.}
 
 \item{RowLevelPermissionDataSet}{The row-level security configuration for the data you want to create.}
+
+\item{ColumnLevelPermissionRules}{A set of one or more definitions of a
+\verb{<a>ColumnLevelPermissionRule</a>}.}
 }
 \description{
 Updates a dataset.
@@ -41,6 +44,7 @@ Updates a dataset.
     list(
       RelationalTable = list(
         DataSourceArn = "string",
+        Catalog = "string",
         Schema = "string",
         Name = "string",
         InputColumns = list(
@@ -114,7 +118,10 @@ Updates a dataset.
             ColumnName = "string",
             Tags = list(
               list(
-                ColumnGeographicRole = "COUNTRY"|"STATE"|"COUNTY"|"CITY"|"POSTCODE"|"LONGITUDE"|"LATITUDE"
+                ColumnGeographicRole = "COUNTRY"|"STATE"|"COUNTY"|"CITY"|"POSTCODE"|"LONGITUDE"|"LATITUDE",
+                ColumnDescription = list(
+                  Text = "string"
+                )
               )
             )
           )
@@ -124,6 +131,12 @@ Updates a dataset.
         JoinInstruction = list(
           LeftOperand = "string",
           RightOperand = "string",
+          LeftJoinKeyProperties = list(
+            UniqueKey = TRUE|FALSE
+          ),
+          RightJoinKeyProperties = list(
+            UniqueKey = TRUE|FALSE
+          ),
           Type = "INNER"|"OUTER"|"LEFT"|"RIGHT",
           OnClause = "string"
         ),
@@ -144,8 +157,19 @@ Updates a dataset.
     )
   ),
   RowLevelPermissionDataSet = list(
+    Namespace = "string",
     Arn = "string",
     PermissionPolicy = "GRANT_ACCESS"|"DENY_ACCESS"
+  ),
+  ColumnLevelPermissionRules = list(
+    list(
+      Principals = list(
+        "string"
+      ),
+      ColumnNames = list(
+        "string"
+      )
+    )
   )
 )
 }

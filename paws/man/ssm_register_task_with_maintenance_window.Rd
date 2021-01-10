@@ -12,7 +12,14 @@ ssm_register_task_with_maintenance_window(WindowId, Targets, TaskArn,
 \arguments{
 \item{WindowId}{[required] The ID of the maintenance window the task should be added to.}
 
-\item{Targets}{[required] The targets (either instances or maintenance window targets).
+\item{Targets}{The targets (either instances or maintenance window targets).
+
+One or more targets must be specified for maintenance window Run
+Command-type tasks. Depending on the task, targets are optional for
+other maintenance window task types (Automation, AWS Lambda, and AWS
+Step Functions). For more information about running tasks that do not
+specify targets, see see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html}{Registering maintenance window tasks without targets}
+in the \emph{AWS Systems Manager User Guide}.
 
 Specify instances using the following format:
 
@@ -20,7 +27,7 @@ Specify instances using the following format:
 
 Specify maintenance window targets using the following format:
 
-\verb{Key=WindowTargetIds;,Values=&lt;window-target-id-1&gt;,&lt;window-target-id-2&gt;}}
+\verb{Key=WindowTargetIds,Values=&lt;window-target-id-1&gt;,&lt;window-target-id-2&gt;}}
 
 \item{TaskArn}{[required] The ARN of the task to run.}
 
@@ -55,10 +62,20 @@ the higher the priority. Tasks in a maintenance window are scheduled in
 priority order with tasks that have the same priority scheduled in
 parallel.}
 
-\item{MaxConcurrency}{[required] The maximum number of targets this task can be run for in parallel.}
+\item{MaxConcurrency}{The maximum number of targets this task can be run for in parallel.
 
-\item{MaxErrors}{[required] The maximum number of errors allowed before this task stops being
-scheduled.}
+For maintenance window tasks without a target specified, you cannot
+supply a value for this option. Instead, the system inserts a
+placeholder value of \code{1}. This value does not affect the running of your
+task.}
+
+\item{MaxErrors}{The maximum number of errors allowed before this task stops being
+scheduled.
+
+For maintenance window tasks without a target specified, you cannot
+supply a value for this option. Instead, the system inserts a
+placeholder value of \code{1}. This value does not affect the running of your
+task.}
 
 \item{LoggingInfo}{A structure containing information about an S3 bucket to write
 instance-level logs to.

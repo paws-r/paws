@@ -333,7 +333,7 @@ NULL
 
 .kms$list_aliases_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Aliases = structure(list(structure(list(AliasName = structure(logical(0), tags = list(type = "string")), AliasArn = structure(logical(0), tags = list(type = "string")), TargetKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string")), Truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  shape <- structure(list(Aliases = structure(list(structure(list(AliasName = structure(logical(0), tags = list(type = "string")), AliasArn = structure(logical(0), tags = list(type = "string")), TargetKeyId = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextMarker = structure(logical(0), tags = list(type = "string")), Truncated = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

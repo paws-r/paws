@@ -19,7 +19,7 @@ iotsecuretunneling_open_tunnel(description, tags, destinationConfig,
 }
 \description{
 Creates a new tunnel, and returns two client access tokens for clients
-to use to connect to the AWS IoT Secure Tunneling proxy server. .
+to use to connect to the AWS IoT Secure Tunneling proxy server.
 }
 \section{Request syntax}{
 \preformatted{svc$open_tunnel(

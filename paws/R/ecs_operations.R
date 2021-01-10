@@ -61,7 +61,8 @@ NULL
 #'       status = "ENABLED"|"DISABLED",
 #'       targetCapacity = 123,
 #'       minimumScalingStepSize = 123,
-#'       maximumScalingStepSize = 123
+#'       maximumScalingStepSize = 123,
+#'       instanceWarmupPeriod = 123
 #'     ),
 #'     managedTerminationProtection = "ENABLED"|"DISABLED"
 #'   ),
@@ -387,8 +388,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' definition to run in your service. If a `revision` is not specified, the
 #' latest `ACTIVE` revision is used.
 #' 
-#' A task definition must be specified if the service is using the `ECS`
-#' deployment controller.
+#' A task definition must be specified if the service is using either the
+#' `ECS` or `CODE_DEPLOY` deployment controllers.
 #' @param loadBalancers A load balancer object representing the load balancers to use with your
 #' service. For more information, see [Service Load
 #' Balancing](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html)
@@ -396,10 +397,10 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' 
 #' If the service is using the rolling update (`ECS`) deployment controller
 #' and using either an Application Load Balancer or Network Load Balancer,
-#' you can specify multiple target groups to attach to the service. The
-#' service-linked role is required for services that make use of multiple
-#' target groups. For more information, see [Using Service-Linked Roles for
-#' Amazon
+#' you must specify one or more target group ARNs to attach to the service.
+#' The service-linked role is required for services that make use of
+#' multiple target groups. For more information, see [Using Service-Linked
+#' Roles for Amazon
 #' ECS](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
@@ -424,15 +425,17 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' For Application Load Balancers and Network Load Balancers, this object
 #' must contain the load balancer target group ARN, the container name (as
 #' it appears in a container definition), and the container port to access
-#' from the load balancer. When a task from this service is placed on a
-#' container instance, the container instance and port combination is
-#' registered as a target in the target group specified here.
+#' from the load balancer. The load balancer name parameter must be
+#' omitted. When a task from this service is placed on a container
+#' instance, the container instance and port combination is registered as a
+#' target in the target group specified here.
 #' 
 #' For Classic Load Balancers, this object must contain the load balancer
 #' name, the container name (as it appears in a container definition), and
-#' the container port to access from the load balancer. When a task from
-#' this service is placed on a container instance, the container instance
-#' is registered with the load balancer specified here.
+#' the container port to access from the load balancer. The target group
+#' ARN parameter must be omitted. When a task from this service is placed
+#' on a container instance, the container instance is registered with the
+#' load balancer specified here.
 #' 
 #' Services with tasks that use the `awsvpc` network mode (for example,
 #' those with the Fargate launch type) only support Application Load
@@ -648,6 +651,10 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #'   platformVersion = "string",
 #'   role = "string",
 #'   deploymentConfiguration = list(
+#'     deploymentCircuitBreaker = list(
+#'       enable = TRUE|FALSE,
+#'       rollback = TRUE|FALSE
+#'     ),
 #'     maximumPercent = 123,
 #'     minimumHealthyPercent = 123
 #'   ),
@@ -3060,7 +3067,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' `containerDefinitions`. Optionally, you can add data volumes to your
 #' containers with the `volumes` parameter. For more information about task
 #' definition parameters and defaults, see [Amazon ECS Task
-#' Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_defintions.html)
+#' Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
 #' You can specify an IAM role for your task with the `taskRoleArn`
@@ -3106,21 +3113,27 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' role](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' @param networkMode The Docker networking mode to use for the containers in the task. The
-#' valid values are `none`, `bridge`, `awsvpc`, and `host`. The default
-#' Docker network mode is `bridge`. If you are using the Fargate launch
-#' type, the `awsvpc` network mode is required. If you are using the EC2
-#' launch type, any network mode can be used. If the network mode is set to
-#' `none`, you cannot specify port mappings in your container definitions,
-#' and the tasks containers do not have external connectivity. The `host`
-#' and `awsvpc` network modes offer the highest networking performance for
-#' containers because they use the EC2 network stack instead of the
-#' virtualized network stack provided by the `bridge` mode.
+#' valid values are `none`, `bridge`, `awsvpc`, and `host`. If no network
+#' mode is specified, the default is `bridge`.
+#' 
+#' For Amazon ECS tasks on Fargate, the `awsvpc` network mode is required.
+#' For Amazon ECS tasks on Amazon EC2 instances, any network mode can be
+#' used. If the network mode is set to `none`, you cannot specify port
+#' mappings in your container definitions, and the tasks containers do not
+#' have external connectivity. The `host` and `awsvpc` network modes offer
+#' the highest networking performance for containers because they use the
+#' EC2 network stack instead of the virtualized network stack provided by
+#' the `bridge` mode.
 #' 
 #' With the `host` and `awsvpc` network modes, exposed container ports are
 #' mapped directly to the corresponding host port (for the `host` network
 #' mode) or the attached elastic network interface port (for the `awsvpc`
 #' network mode), so you cannot take advantage of dynamic host port
 #' mappings.
+#' 
+#' When using the `host` network mode, you should not run containers using
+#' the root user (UID 0). It is considered best practice to use a non-root
+#' user.
 #' 
 #' If the network mode is `awsvpc`, the task is allocated an elastic
 #' network interface, and you must specify a NetworkConfiguration value
@@ -3153,8 +3166,10 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' @param placementConstraints An array of placement constraint objects to use for the task. You can
 #' specify a maximum of 10 constraints per task (this limit includes
 #' constraints in the task definition and those specified at runtime).
-#' @param requiresCompatibilities The launch type required by the task. If no value is specified, it
-#' defaults to `EC2`.
+#' @param requiresCompatibilities The task launch type that Amazon ECS should validate the task definition
+#' against. This ensures that the task definition parameters are compatible
+#' with the specified launch type. If no value is specified, it defaults to
+#' `EC2`.
 #' @param cpu The number of CPU units used by the task. It can be expressed as an
 #' integer using CPU units, for example `1024`, or as a string using vCPUs,
 #' for example `1 vCPU` or `1 vcpu`, in a task definition. String values
@@ -3502,6 +3517,14 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'         authorizationConfig = list(
 #'           accessPointId = "string",
 #'           iam = "ENABLED"|"DISABLED"
+#'         )
+#'       ),
+#'       fsxWindowsFileServerVolumeConfiguration = list(
+#'         fileSystemId = "string",
+#'         rootDirectory = "string",
+#'         authorizationConfig = list(
+#'           credentialsParameter = "string",
+#'           domain = "string"
 #'         )
 #'       )
 #'     )
@@ -4452,6 +4475,54 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
 }
 .ecs$operations$untag_resource <- ecs_untag_resource
 
+#' Modifies the parameters for a capacity provider
+#'
+#' Modifies the parameters for a capacity provider.
+#'
+#' @usage
+#' ecs_update_capacity_provider(name, autoScalingGroupProvider)
+#'
+#' @param name &#91;required&#93; An object representing the parameters to update for the Auto Scaling
+#' group capacity provider.
+#' @param autoScalingGroupProvider &#91;required&#93; The name of the capacity provider to update.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_capacity_provider(
+#'   name = "string",
+#'   autoScalingGroupProvider = list(
+#'     managedScaling = list(
+#'       status = "ENABLED"|"DISABLED",
+#'       targetCapacity = 123,
+#'       minimumScalingStepSize = 123,
+#'       maximumScalingStepSize = 123,
+#'       instanceWarmupPeriod = 123
+#'     ),
+#'     managedTerminationProtection = "ENABLED"|"DISABLED"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecs_update_capacity_provider
+ecs_update_capacity_provider <- function(name, autoScalingGroupProvider) {
+  op <- new_operation(
+    name = "UpdateCapacityProvider",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecs$update_capacity_provider_input(name = name, autoScalingGroupProvider = autoScalingGroupProvider)
+  output <- .ecs$update_capacity_provider_output()
+  config <- get_config()
+  svc <- .ecs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecs$operations$update_capacity_provider <- ecs_update_capacity_provider
+
 #' Modifies the settings to use for a cluster
 #'
 #' Modifies the settings to use for a cluster.
@@ -4663,8 +4734,9 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' Updating the task placement strategies and constraints on an Amazon ECS
 #' service remains in preview and is a Beta Service as defined by and
 #' subject to the Beta Service Participation Service Terms located at
-#' <https://aws.amazon.com/service-terms> ("Beta Terms"). These Beta Terms
-#' apply to your participation in this preview.
+#' [https://aws.amazon.com/service-terms](https://aws.amazon.com/service-terms/)
+#' ("Beta Terms"). These Beta Terms apply to your participation in this
+#' preview.
 #' 
 #' Modifies the parameters of a service.
 #' 
@@ -4877,6 +4949,10 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'     )
 #'   ),
 #'   deploymentConfiguration = list(
+#'     deploymentCircuitBreaker = list(
+#'       enable = TRUE|FALSE,
+#'       rollback = TRUE|FALSE
+#'     ),
 #'     maximumPercent = 123,
 #'     minimumHealthyPercent = 123
 #'   ),

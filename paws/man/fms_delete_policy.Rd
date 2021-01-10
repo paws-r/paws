@@ -7,8 +7,8 @@
 fms_delete_policy(PolicyId, DeleteAllPolicyResources)
 }
 \arguments{
-\item{PolicyId}{[required] The ID of the policy that you want to delete. \code{PolicyId} is returned by
-\code{PutPolicy} and by \code{ListPolicies}.}
+\item{PolicyId}{[required] The ID of the policy that you want to delete. You can retrieve this ID
+from \code{PutPolicy} and \code{ListPolicies}.}
 
 \item{DeleteAllPolicyResources}{If \code{True}, the request performs cleanup according to the policy type.
 

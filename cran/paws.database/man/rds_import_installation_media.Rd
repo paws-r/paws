@@ -35,7 +35,7 @@ require an on-premises customer provided license.
 
 \strong{Microsoft SQL Server}
 
-See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.FeatureSupport}{Version and Feature Support on Amazon RDS}
+See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.VersionSupport}{Microsoft SQL Server Versions on Amazon RDS}
 in the \emph{Amazon RDS User Guide.}}
 
 \item{EngineInstallationMediaPath}{[required] The path to the installation medium for the specified DB engine.

@@ -7,14 +7,12 @@
 robomaker_list_simulation_jobs(nextToken, maxResults, filters)
 }
 \arguments{
-\item{nextToken}{The \code{nextToken} value returned from a previous paginated
-\code{ListSimulationJobs} request where \code{maxResults} was used and the results
-exceeded the value of that parameter. Pagination continues from the end
-of the previous results that returned the \code{nextToken} value.
-
-This token should be treated as an opaque identifier that is only used
-to retrieve the next items in a list and not for other programmatic
-purposes.}
+\item{nextToken}{If the previous paginated request did not return all of the remaining
+results, the response object's \code{nextToken} parameter value is set to a
+token. To retrieve the next set of results, call \code{ListSimulationJobs}
+again and assign that token to the request object's \code{nextToken}
+parameter. If there are no remaining results, the previous response
+object's NextToken parameter is set to null.}
 
 \item{maxResults}{When this parameter is used, \code{ListSimulationJobs} only returns
 \code{maxResults} results in a single page along with a \code{nextToken} response

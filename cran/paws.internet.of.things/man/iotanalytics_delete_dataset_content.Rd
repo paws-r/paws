@@ -2,20 +2,20 @@
 % Please edit documentation in R/iotanalytics_operations.R
 \name{iotanalytics_delete_dataset_content}
 \alias{iotanalytics_delete_dataset_content}
-\title{Deletes the content of the specified data set}
+\title{Deletes the content of the specified dataset}
 \usage{
 iotanalytics_delete_dataset_content(datasetName, versionId)
 }
 \arguments{
-\item{datasetName}{[required] The name of the data set whose content is deleted.}
+\item{datasetName}{[required] The name of the dataset whose content is deleted.}
 
-\item{versionId}{The version of the data set whose content is deleted. You can also use
+\item{versionId}{The version of the dataset whose content is deleted. You can also use
 the strings "$LATEST" or "$LATEST\\_SUCCEEDED" to delete the latest or
 latest successfully completed data set. If not specified,
 "$LATEST\\_SUCCEEDED" is the default.}
 }
 \description{
-Deletes the content of the specified data set.
+Deletes the content of the specified dataset.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_dataset_content(

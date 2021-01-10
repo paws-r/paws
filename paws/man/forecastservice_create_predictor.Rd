@@ -5,9 +5,9 @@
 \title{Creates an Amazon Forecast predictor}
 \usage{
 forecastservice_create_predictor(PredictorName, AlgorithmArn,
-  ForecastHorizon, PerformAutoML, PerformHPO, TrainingParameters,
-  EvaluationParameters, HPOConfig, InputDataConfig, FeaturizationConfig,
-  EncryptionConfig, Tags)
+  ForecastHorizon, ForecastTypes, PerformAutoML, PerformHPO,
+  TrainingParameters, EvaluationParameters, HPOConfig, InputDataConfig,
+  FeaturizationConfig, EncryptionConfig, Tags)
 }
 \arguments{
 \item{PredictorName}{[required] A name for the predictor.}
@@ -18,9 +18,8 @@ training. Required if \code{PerformAutoML} is not set to \code{true}.
 \strong{Supported algorithms:}
 \itemize{
 \item \code{arn:aws:forecast:::algorithm/ARIMA}
+\item \code{arn:aws:forecast:::algorithm/CNN-QR}
 \item \code{arn:aws:forecast:::algorithm/Deep_AR_Plus}
-
-Supports hyperparameter optimization (HPO)
 \item \code{arn:aws:forecast:::algorithm/ETS}
 \item \code{arn:aws:forecast:::algorithm/NPTS}
 \item \code{arn:aws:forecast:::algorithm/Prophet}
@@ -35,6 +34,13 @@ the forecast horizon to 10, the model returns predictions for 10 days.
 
 The maximum forecast horizon is the lesser of 500 time-steps or 1/3 of
 the TARGET\\_TIME\\_SERIES dataset length.}
+
+\item{ForecastTypes}{Specifies the forecast types used to train a predictor. You can specify
+up to five forecast types. Forecast types can be quantiles from 0.01 to
+0.99, by increments of 0.01 or higher. You can also specify the mean
+forecast with \code{mean}.
+
+The default value is \verb{\\\["0.10", "0.50", "0.9"\\\]}.}
 
 \item{PerformAutoML}{Whether to perform AutoML. When Amazon Forecast performs AutoML, it
 evaluates the algorithms it provides and chooses the best algorithm and
@@ -61,9 +67,10 @@ tuning, and the valid range for each tunable hyperparameter. In this
 case, you are required to specify an algorithm and \code{PerformAutoML} must
 be false.
 
-The following algorithm supports HPO:
+The following algorithms support HPO:
 \itemize{
 \item DeepAR+
+\item CNN-QR
 }}
 
 \item{TrainingParameters}{The hyperparameters to override for model training. The hyperparameters
@@ -122,24 +129,20 @@ count against your tags per resource limit.
 Creates an Amazon Forecast predictor.
 }
 \details{
-In the request, you provide a dataset group and either specify an
-algorithm or let Amazon Forecast choose the algorithm for you using
-AutoML. If you specify an algorithm, you also can override
-algorithm-specific hyperparameters.
+In the request, provide a dataset group and either specify an algorithm
+or let Amazon Forecast choose an algorithm for you using AutoML. If you
+specify an algorithm, you also can override algorithm-specific
+hyperparameters.
 
-Amazon Forecast uses the chosen algorithm to train a model using the
-latest version of the datasets in the specified dataset group. The
-result is called a predictor. You then generate a forecast using the
-CreateForecast operation.
+Amazon Forecast uses the algorithm to train a predictor using the latest
+version of the datasets in the specified dataset group. You can then
+generate a forecast using the CreateForecast operation.
 
-After training a model, the \code{CreatePredictor} operation also evaluates
-it. To see the evaluation metrics, use the GetAccuracyMetrics operation.
-Always review the evaluation metrics before deciding to use the
-predictor to generate a forecast.
+To see the evaluation metrics, use the GetAccuracyMetrics operation.
 
-Optionally, you can specify a featurization configuration to fill and
-aggregate the data fields in the \code{TARGET_TIME_SERIES} dataset to improve
-model training. For more information, see FeaturizationConfig.
+You can specify a featurization configuration to fill and aggregate the
+data fields in the \code{TARGET_TIME_SERIES} dataset to improve model
+training. For more information, see FeaturizationConfig.
 
 For RELATED\\_TIME\\_SERIES datasets, \code{CreatePredictor} verifies that the
 \code{DataFrequency} specified when the dataset was created matches the
@@ -147,13 +150,17 @@ For RELATED\\_TIME\\_SERIES datasets, \code{CreatePredictor} verifies that the
 restriction. Amazon Forecast also verifies the delimiter and timestamp
 format. For more information, see howitworks-datasets-groups.
 
+By default, predictors are trained and evaluated at the 0.1 (P10), 0.5
+(P50), and 0.9 (P90) quantiles. You can choose custom forecast types to
+train and evaluate your predictor by setting the \code{ForecastTypes}.
+
 \strong{AutoML}
 
 If you want Amazon Forecast to evaluate each algorithm and choose the
 one that minimizes the \verb{objective function}, set \code{PerformAutoML} to
 \code{true}. The \verb{objective function} is defined as the mean of the weighted
-p10, p50, and p90 quantile losses. For more information, see
-EvaluationResult.
+losses over the forecast types. By default, these are the p10, p50, and
+p90 quantile losses. For more information, see EvaluationResult.
 
 When AutoML is enabled, the following properties are disallowed:
 \itemize{
@@ -175,6 +182,9 @@ To get the status, use the DescribePredictor operation.
   PredictorName = "string",
   AlgorithmArn = "string",
   ForecastHorizon = 123,
+  ForecastTypes = list(
+    "string"
+  ),
   PerformAutoML = TRUE|FALSE,
   PerformHPO = TRUE|FALSE,
   TrainingParameters = list(

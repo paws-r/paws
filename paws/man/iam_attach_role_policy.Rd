@@ -9,7 +9,7 @@ iam_attach_role_policy(RoleName, PolicyArn)
 \arguments{
 \item{RoleName}{[required] The name (friendly name, not ARN) of the role to attach the policy to.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
@@ -30,7 +30,7 @@ You can update a role's trust policy using UpdateAssumeRolePolicy.
 
 Use this API to attach a \emph{managed} policy to a role. To embed an inline
 policy in a role, use PutRolePolicy. For more information about
-policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

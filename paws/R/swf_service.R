@@ -19,7 +19,8 @@ NULL
 #' 
 #' This documentation serves as reference only. For a broader overview of
 #' the Amazon SWF programming model, see the *[Amazon SWF Developer
-#' Guide](https://docs.aws.amazon.com/amazonswf/latest/developerguide/)* .
+#' Guide](https://docs.aws.amazon.com/amazonswf/latest/developerguide/swf-welcome.html)*
+#' .
 #'
 #' @param
 #' config

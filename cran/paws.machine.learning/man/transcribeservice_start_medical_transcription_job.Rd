@@ -2,19 +2,19 @@
 % Please edit documentation in R/transcribeservice_operations.R
 \name{transcribeservice_start_medical_transcription_job}
 \alias{transcribeservice_start_medical_transcription_job}
-\title{Start a batch job to transcribe medical speech to text}
+\title{Starts a batch job to transcribe medical speech to text}
 \usage{
 transcribeservice_start_medical_transcription_job(
   MedicalTranscriptionJobName, LanguageCode, MediaSampleRateHertz,
-  MediaFormat, Media, OutputBucketName, OutputEncryptionKMSKeyId,
-  Settings, Specialty, Type)
+  MediaFormat, Media, OutputBucketName, OutputKey,
+  OutputEncryptionKMSKeyId, Settings, Specialty, Type)
 }
 \arguments{
-\item{MedicalTranscriptionJobName}{[required] The name of the medical transcription job. You can't use the strings "."
-or ".." by themselves as the job name. The name must also be unique
-within an AWS account. If you try to create a medical transcription job
-with the same name as a previous medical transcription job you will
-receive a \code{ConflictException} error.}
+\item{MedicalTranscriptionJobName}{[required] The name of the medical transcription job. You can't use the strings
+"\code{.}" or "\code{..}" by themselves as the job name. The name must also be
+unique within an AWS account. If you try to create a medical
+transcription job with the same name as a previous medical transcription
+job, you get a \code{ConflictException} error.}
 
 \item{LanguageCode}{[required] The language code for the language spoken in the input media file. US
 English (en-US) is the valid value for medical transcription jobs. Any
@@ -47,6 +47,25 @@ output of your transcription using the \code{OutputEncryptionKMSKeyId}
 parameter. If you don't specify a KMS key, Amazon Transcribe Medical
 uses the default Amazon S3 key for server-side encryption of transcripts
 that are placed in your S3 bucket.}
+
+\item{OutputKey}{You can specify a location in an Amazon S3 bucket to store the output of
+your medical transcription job.
+
+If you don't specify an output key, Amazon Transcribe Medical stores the
+output of your transcription job in the Amazon S3 bucket you specified.
+By default, the object key is "your-transcription-job-name.json".
+
+You can use output keys to specify the Amazon S3 prefix and file name of
+the transcription output. For example, specifying the Amazon S3 prefix,
+"folder1/folder2/", as an output key would lead to the output being
+stored as "folder1/folder2/your-transcription-job-name.json". If you
+specify "my-other-job-name.json" as the output key, the object key is
+changed to "my-other-job-name.json". You can use an output key to change
+both the prefix and the file name, for example
+"folder/my-other-job-name.json".
+
+If you specify an output key, you must also specify an S3 bucket in the
+\code{OutputBucketName} parameter.}
 
 \item{OutputEncryptionKMSKeyId}{The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS)
 key used to encrypt the output of the transcription job. The user
@@ -86,18 +105,19 @@ between doctors and patients. \code{DICTATION} refers to single-speaker
 dictated speech, e.g., for clinical notes.}
 }
 \description{
-Start a batch job to transcribe medical speech to text.
+Starts a batch job to transcribe medical speech to text.
 }
 \section{Request syntax}{
 \preformatted{svc$start_medical_transcription_job(
   MedicalTranscriptionJobName = "string",
-  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA"|"ru-RU"|"zh-CN"|"nl-NL"|"id-ID"|"ta-IN"|"fa-IR"|"en-IE"|"en-AB"|"en-WL"|"pt-PT"|"te-IN"|"tr-TR"|"de-CH"|"he-IL"|"ms-MY"|"ja-JP"|"ar-AE",
+  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
   MediaSampleRateHertz = 123,
-  MediaFormat = "mp3"|"mp4"|"wav"|"flac",
+  MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
   Media = list(
     MediaFileUri = "string"
   ),
   OutputBucketName = "string",
+  OutputKey = "string",
   OutputEncryptionKMSKeyId = "string",
   Settings = list(
     ShowSpeakerLabels = TRUE|FALSE,

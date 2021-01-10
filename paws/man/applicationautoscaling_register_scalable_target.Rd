@@ -46,6 +46,9 @@ our \href{https://github.com/aws/aws-auto-scaling-custom-resource}{GitHub reposi
 type and unique identifier are specified using the endpoint ARN.
 Example:
 \code{arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE}.
+\item Amazon Comprehend entity recognizer endpoint - The resource type and
+unique identifier are specified using the endpoint ARN. Example:
+\code{arn:aws:comprehend:us-west-2:123456789012:entity-recognizer-endpoint/EXAMPLE}.
 \item Lambda provisioned concurrency - The resource type is \code{function} and
 the unique identifier is the function name with a function version
 or alias name suffix that is not \verb{$LATEST}. Example:
@@ -53,6 +56,9 @@ or alias name suffix that is not \verb{$LATEST}. Example:
 \item Amazon Keyspaces table - The resource type is \code{table} and the unique
 identifier is the table name. Example:
 \code{keyspace/mykeyspace/table/mytable}.
+\item Amazon MSK cluster - The resource type and unique identifier are
+specified using the cluster ARN. Example:
+\verb{arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5}.
 }}
 
 \item{ScalableDimension}{[required] The scalable dimension associated with the scalable target. This string
@@ -84,29 +90,41 @@ a custom resource provided by your own application or service.
 \item \code{comprehend:document-classifier-endpoint:DesiredInferenceUnits} -
 The number of inference units for an Amazon Comprehend document
 classification endpoint.
+\item \code{comprehend:entity-recognizer-endpoint:DesiredInferenceUnits} - The
+number of inference units for an Amazon Comprehend entity recognizer
+endpoint.
 \item \verb{lambda:function:ProvisionedConcurrency} - The provisioned
 concurrency for a Lambda function.
 \item \code{cassandra:table:ReadCapacityUnits} - The provisioned read capacity
 for an Amazon Keyspaces table.
 \item \code{cassandra:table:WriteCapacityUnits} - The provisioned write
 capacity for an Amazon Keyspaces table.
+\item \code{kafka:broker-storage:VolumeSize} - The provisioned volume size (in
+GiB) for brokers in an Amazon MSK cluster.
 }}
 
 \item{MinCapacity}{The minimum value that you plan to scale in to. When a scaling policy is
 in effect, Application Auto Scaling can scale in (contract) as needed to
-the minimum capacity limit in response to changing demand.
+the minimum capacity limit in response to changing demand. This property
+is required when registering a new scalable target.
 
-This parameter is required if you are registering a scalable target. For
-certain resources, the minimum value allowed is 0. This includes Lambda
-provisioned concurrency, Spot Fleet, ECS services, Aurora DB clusters,
-EMR clusters, and custom resources. For all other resources, the minimum
-value allowed is 1.}
+For certain resources, the minimum value allowed is 0. This includes
+Lambda provisioned concurrency, Spot Fleet, ECS services, Aurora DB
+clusters, EMR clusters, and custom resources. For all other resources,
+the minimum value allowed is 1.}
 
 \item{MaxCapacity}{The maximum value that you plan to scale out to. When a scaling policy
 is in effect, Application Auto Scaling can scale out (expand) as needed
-to the maximum capacity limit in response to changing demand.
+to the maximum capacity limit in response to changing demand. This
+property is required when registering a new scalable target.
 
-This parameter is required if you are registering a scalable target.}
+Although you can specify a large maximum capacity, note that service
+quotas may impose lower limits. Each service has its own default quotas
+for the maximum capacity of the resource. If you want to specify a
+higher limit, you can request an increase. For more information, consult
+the documentation for that service. For information about the default
+quotas for each service, see \href{https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html}{Service Endpoints and Quotas}
+in the \emph{Amazon Web Services General Reference}.}
 
 \item{RoleARN}{This parameter is required for services that do not support
 service-linked roles (such as Amazon EMR), and it must specify the ARN
@@ -147,8 +165,10 @@ out and scale in. Scalable targets are uniquely identified by the
 combination of resource ID, scalable dimension, and namespace.
 
 When you register a new scalable target, you must specify values for
-minimum and maximum capacity. Application Auto Scaling scaling policies
-will not scale capacity to values that are outside of this range.
+minimum and maximum capacity. Current capacity will be adjusted within
+the specified range when scaling starts. Application Auto Scaling
+scaling policies will not scale capacity to values that are outside of
+this range.
 
 After you register a scalable target, you do not need to register it
 again to use other Application Auto Scaling operations. To see which
@@ -166,9 +186,9 @@ don't specify are not changed by this update request.
 }
 \section{Request syntax}{
 \preformatted{svc$register_scalable_target(
-  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra",
+  ServiceNamespace = "ecs"|"elasticmapreduce"|"ec2"|"appstream"|"dynamodb"|"rds"|"sagemaker"|"custom-resource"|"comprehend"|"lambda"|"cassandra"|"kafka",
   ResourceId = "string",
-  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits",
+  ScalableDimension = "ecs:service:DesiredCount"|"ec2:spot-fleet-request:TargetCapacity"|"elasticmapreduce:instancegroup:InstanceCount"|"appstream:fleet:DesiredCapacity"|"dynamodb:table:ReadCapacityUnits"|"dynamodb:table:WriteCapacityUnits"|"dynamodb:index:ReadCapacityUnits"|"dynamodb:index:WriteCapacityUnits"|"rds:cluster:ReadReplicaCount"|"sagemaker:variant:DesiredInstanceCount"|"custom-resource:ResourceType:Property"|"comprehend:document-classifier-endpoint:DesiredInferenceUnits"|"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits"|"lambda:function:ProvisionedConcurrency"|"cassandra:table:ReadCapacityUnits"|"cassandra:table:WriteCapacityUnits"|"kafka:broker-storage:VolumeSize",
   MinCapacity = 123,
   MaxCapacity = 123,
   RoleARN = "string",

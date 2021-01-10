@@ -4,20 +4,35 @@
 \alias{resourcegroups_update_group_query}
 \title{Updates the resource query of a group}
 \usage{
-resourcegroups_update_group_query(GroupName, ResourceQuery)
+resourcegroups_update_group_query(GroupName, Group, ResourceQuery)
 }
 \arguments{
-\item{GroupName}{[required] The name of the resource group for which you want to edit the query.}
+\item{GroupName}{Don't use this parameter. Use \code{Group} instead.}
 
-\item{ResourceQuery}{[required] The resource query that determines which AWS resources are members of
-the resource group.}
+\item{Group}{The name or the ARN of the resource group to query.}
+
+\item{ResourceQuery}{[required] The resource query to determine which AWS resources are members of this
+resource group.
+
+A resource group can contain either a \code{Configuration} or a
+\code{ResourceQuery}, but not both.}
 }
 \description{
-Updates the resource query of a group.
+Updates the resource query of a group. For more information about
+resource queries, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag}{Create a tag-based group in Resource Groups}.
+}
+\details{
+\strong{Minimum permissions}
+
+To run this command, you must have the following permissions:
+\itemize{
+\item \code{resource-groups:UpdateGroupQuery}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$update_group_query(
   GroupName = "string",
+  Group = "string",
   ResourceQuery = list(
     Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
     Query = "string"

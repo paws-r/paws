@@ -10,7 +10,8 @@ NULL
 #' @usage
 #' costandusagereportservice_delete_report_definition(ReportName)
 #'
-#' @param ReportName 
+#' @param ReportName The name of the report that you want to delete. The name must be unique,
+#' is case sensitive, and can't include spaces.
 #'
 #' @section Request syntax:
 #' ```
@@ -113,7 +114,7 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
 #'   ReportName = "string",
 #'   ReportDefinition = list(
 #'     ReportName = "string",
-#'     TimeUnit = "HOURLY"|"DAILY",
+#'     TimeUnit = "HOURLY"|"DAILY"|"MONTHLY",
 #'     Format = "textORcsv"|"Parquet",
 #'     Compression = "ZIP"|"GZIP"|"Parquet",
 #'     AdditionalSchemaElements = list(
@@ -121,7 +122,7 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
 #'     ),
 #'     S3Bucket = "string",
 #'     S3Prefix = "string",
-#'     S3Region = "us-east-1"|"us-west-1"|"us-west-2"|"eu-central-1"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"eu-north-1"|"ap-northeast-3"|"ap-east-1",
+#'     S3Region = "af-south-1"|"ap-east-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-north-1"|"eu-south-1"|"me-south-1"|"sa-east-1"|"us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"cn-north-1"|"cn-northwest-1",
 #'     AdditionalArtifacts = list(
 #'       "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
 #'     ),
@@ -166,7 +167,7 @@ costandusagereportservice_modify_report_definition <- function(ReportName, Repor
 #' svc$put_report_definition(
 #'   ReportDefinition = list(
 #'     ReportName = "string",
-#'     TimeUnit = "HOURLY"|"DAILY",
+#'     TimeUnit = "HOURLY"|"DAILY"|"MONTHLY",
 #'     Format = "textORcsv"|"Parquet",
 #'     Compression = "ZIP"|"GZIP"|"Parquet",
 #'     AdditionalSchemaElements = list(
@@ -174,7 +175,7 @@ costandusagereportservice_modify_report_definition <- function(ReportName, Repor
 #'     ),
 #'     S3Bucket = "string",
 #'     S3Prefix = "string",
-#'     S3Region = "us-east-1"|"us-west-1"|"us-west-2"|"eu-central-1"|"eu-west-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"eu-north-1"|"ap-northeast-3"|"ap-east-1",
+#'     S3Region = "af-south-1"|"ap-east-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"ca-central-1"|"eu-central-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-north-1"|"eu-south-1"|"me-south-1"|"sa-east-1"|"us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"cn-north-1"|"cn-northwest-1",
 #'     AdditionalArtifacts = list(
 #'       "REDSHIFT"|"QUICKSIGHT"|"ATHENA"
 #'     ),

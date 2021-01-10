@@ -5,12 +5,17 @@
 \title{Deletes an analytics configuration for the bucket (specified by the
 analytics configuration ID)}
 \usage{
-s3_delete_bucket_analytics_configuration(Bucket, Id)
+s3_delete_bucket_analytics_configuration(Bucket, Id,
+  ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket from which an analytics configuration is deleted.}
 
 \item{Id}{[required] The ID that identifies the analytics configuration.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Deletes an analytics configuration for the bucket (specified by the
@@ -28,15 +33,16 @@ For information about the Amazon S3 analytics feature, see \href{https://docs.aw
 The following operations are related to
 \code{DeleteBucketAnalyticsConfiguration}:
 \itemize{
-\item 
-\item 
-\item 
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAnalyticsConfiguration.html}{GetBucketAnalyticsConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketAnalyticsConfigurations.html}{ListBucketAnalyticsConfigurations}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html}{PutBucketAnalyticsConfiguration}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bucket_analytics_configuration(
   Bucket = "string",
-  Id = "string"
+  Id = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

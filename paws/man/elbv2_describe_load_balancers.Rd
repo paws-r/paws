@@ -20,11 +20,6 @@ previous call.)}
 \description{
 Describes the specified load balancers or all of your load balancers.
 }
-\details{
-To describe the listeners for a load balancer, use DescribeListeners. To
-describe the attributes for a load balancer, use
-DescribeLoadBalancerAttributes.
-}
 \section{Request syntax}{
 \preformatted{svc$describe_load_balancers(
   LoadBalancerArns = list(

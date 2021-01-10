@@ -8,75 +8,47 @@ NULL
 #' AWS Health
 #' 
 #' The AWS Health API provides programmatic access to the AWS Health
-#' information that is presented in the [AWS Personal Health
-#' Dashboard](https://phd.aws.amazon.com/phd/home#/). You can get
-#' information about events that affect your AWS resources:
+#' information that appears in the [AWS Personal Health
+#' Dashboard](https://phd.aws.amazon.com/phd/home#/). You can use the API
+#' operations to get information about AWS Health events that affect your
+#' AWS services and resources.
 #' 
-#' -   DescribeEvents: Summary information about events.
+#' You must have a Business or Enterprise support plan from [AWS
+#' Support](https://aws.amazon.com/premiumsupport/) to use the AWS Health
+#' API. If you call the AWS Health API from an AWS account that doesn't
+#' have a Business or Enterprise support plan, you receive a
+#' `SubscriptionRequiredException` error.
 #' 
-#' -   DescribeEventDetails: Detailed information about one or more events.
-#' 
-#' -   DescribeAffectedEntities: Information about AWS resources that are
-#'     affected by one or more events.
-#' 
-#' In addition, these operations provide information about event types and
-#' summary counts of events or affected entities:
-#' 
-#' -   DescribeEventTypes: Information about the kinds of events that AWS
-#'     Health tracks.
-#' 
-#' -   DescribeEventAggregates: A count of the number of events that meet
-#'     specified criteria.
-#' 
-#' -   DescribeEntityAggregates: A count of the number of affected entities
-#'     that meet specified criteria.
-#' 
-#' AWS Health integrates with AWS Organizations to provide a centralized
-#' view of AWS Health events across all accounts in your organization.
-#' 
-#' -   DescribeEventsForOrganization: Summary information about events
-#'     across the organization.
-#' 
-#' -   DescribeAffectedAccountsForOrganization: List of accounts in your
-#'     organization impacted by an event.
-#' 
-#' -   DescribeEventDetailsForOrganization: Detailed information about
-#'     events in your organization.
-#' 
-#' -   DescribeAffectedEntitiesForOrganization: Information about AWS
-#'     resources in your organization that are affected by events.
-#' 
-#' You can use the following operations to enable or disable AWS Health
-#' from working with AWS Organizations.
-#' 
-#' -   EnableHealthServiceAccessForOrganization: Enables AWS Health to work
-#'     with AWS Organizations.
-#' 
-#' -   DisableHealthServiceAccessForOrganization: Disables AWS Health from
-#'     working with AWS Organizations.
-#' 
-#' -   DescribeHealthServiceStatusForOrganization: Status information about
-#'     enabling or disabling AWS Health from working with AWS
-#'     Organizations.
-#' 
-#' The Health API requires a Business or Enterprise support plan from [AWS
-#' Support](http://aws.amazon.com/premiumsupport/). Calling the Health API
-#' from an account that does not have a Business or Enterprise support plan
-#' causes a `SubscriptionRequiredException`.
+#' AWS Health has a single endpoint: health.us-east-1.amazonaws.com
+#' (HTTPS). Use this endpoint to call the AWS Health API operations.
 #' 
 #' For authentication of requests, AWS Health uses the [Signature Version 4
 #' Signing
 #' Process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 #' 
-#' See the [AWS Health User
-#' Guide](https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html)
-#' for information about how to use the API.
+#' If your AWS account is part of AWS Organizations, you can use the AWS
+#' Health organizational view feature. This feature provides a centralized
+#' view of AWS Health events across all accounts in your organization. You
+#' can aggregate AWS Health events in real time to identify accounts in
+#' your organization that are affected by an operational event or get
+#' notified of security vulnerabilities. Use the organizational view API
+#' operations to enable this feature and return event information. For more
+#' information, see [Aggregating AWS Health
+#' events](https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html)
+#' in the *AWS Health User Guide*.
 #' 
-#' **Service Endpoint**
+#' When you use the AWS Health API operations to return AWS Health events,
+#' see the following recommendations:
 #' 
-#' The HTTP endpoint for the AWS Health API is:
+#' -   Use the
+#'     [eventScopeCode](https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html#AWSHealth-Type-Event-eventScopeCode)
+#'     parameter to specify whether to return AWS Health events that are
+#'     public or account-specific.
 #' 
-#' -   https://health.us-east-1.amazonaws.com
+#' -   Use pagination to view all events from the response. For example, if
+#'     you call the `DescribeEventsForOrganization` operation to get all
+#'     events in your organization, you might receive several page results.
+#'     Specify the `nextToken` in the next request to return more results.
 #'
 #' @param
 #' config
@@ -118,10 +90,10 @@ NULL
 #'  \link[=health_describe_event_details]{describe_event_details} \tab Returns detailed information about one or more specified events\cr
 #'  \link[=health_describe_event_details_for_organization]{describe_event_details_for_organization} \tab Returns detailed information about one or more specified events for one or more accounts in your organization\cr
 #'  \link[=health_describe_events]{describe_events} \tab Returns information about events that meet the specified filter criteria\cr
-#'  \link[=health_describe_events_for_organization]{describe_events_for_organization} \tab Returns information about events across your organization in AWS Organizations, meeting the specified filter criteria\cr
+#'  \link[=health_describe_events_for_organization]{describe_events_for_organization} \tab Returns information about events across your organization in AWS Organizations\cr
 #'  \link[=health_describe_event_types]{describe_event_types} \tab Returns the event types that meet the specified filter criteria\cr
 #'  \link[=health_describe_health_service_status_for_organization]{describe_health_service_status_for_organization} \tab This operation provides status information on enabling or disabling AWS Health to work with your organization\cr
-#'  \link[=health_disable_health_service_access_for_organization]{disable_health_service_access_for_organization} \tab Calling this operation disables Health from working with AWS Organizations\cr
+#'  \link[=health_disable_health_service_access_for_organization]{disable_health_service_access_for_organization} \tab Disables AWS Health from working with AWS Organizations\cr
 #'  \link[=health_enable_health_service_access_for_organization]{enable_health_service_access_for_organization} \tab Calling this operation enables AWS Health to work with AWS Organizations
 #' }
 #'

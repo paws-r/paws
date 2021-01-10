@@ -26,6 +26,9 @@ idempotency of the request.}
 Sends an event. Note that ConnectionToken is used for invoking this API
 instead of ParticipantToken.
 }
+\details{
+The Amazon Connect Participant Service APIs do not use \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 authentication}.
+}
 \section{Request syntax}{
 \preformatted{svc$send_event(
   ContentType = "string",

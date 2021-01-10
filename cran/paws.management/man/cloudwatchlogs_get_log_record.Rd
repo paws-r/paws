@@ -2,7 +2,7 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_get_log_record}
 \alias{cloudwatchlogs_get_log_record}
-\title{Retrieves all the fields and values of a single log event}
+\title{Retrieves all of the fields and values of a single log event}
 \usage{
 cloudwatchlogs_get_log_record(logRecordPointer)
 }
@@ -13,14 +13,13 @@ response, the value of the \verb{@ptr} field for a log event is the value to
 use as \code{logRecordPointer} to retrieve that complete log event record.}
 }
 \description{
-Retrieves all the fields and values of a single log event. All fields
+Retrieves all of the fields and values of a single log event. All fields
 are retrieved, even if the original query that produced the
 \code{logRecordPointer} retrieved only a subset of fields. Fields are
 returned as field name/field value pairs.
 }
 \details{
-Additionally, the entire unparsed log event is returned within
-\verb{@message}.
+The full unparsed log event is returned within \verb{@message}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_log_record(

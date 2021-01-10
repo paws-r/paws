@@ -17,11 +17,11 @@ honeycode_invoke_screen_automation(workbookId, appId, screenId,
 
 \item{screenAutomationId}{[required] The ID of the automation action to be performed.}
 
-\item{variables}{Variables are optional and are needed only if the screen requires them
-to render correctly. Variables are specified as a map where the key is
-the name of the variable as defined on the screen. The value is an
-object which currently has only one property, rawValue, which holds the
-value of the variable to be passed to the screen.}
+\item{variables}{Variables are specified as a map where the key is the name of the
+variable as defined on the screen. The value is an object which
+currently has only one property, rawValue, which holds the value of the
+variable to be passed to the screen. Any variables defined in a screen
+are required to be passed in the call.}
 
 \item{rowId}{The row ID for the automation if the automation is defined inside a
 block with source or list.}

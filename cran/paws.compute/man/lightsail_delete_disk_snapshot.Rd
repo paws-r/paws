@@ -24,7 +24,7 @@ disk.
 
 The \verb{delete disk snapshot} operation supports tag-based access control
 via resource tags applied to the resource identified by
-\verb{disk snapshot name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{disk snapshot name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_disk_snapshot(

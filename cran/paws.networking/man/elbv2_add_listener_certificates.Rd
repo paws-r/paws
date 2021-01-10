@@ -21,13 +21,9 @@ the specified HTTPS or TLS listener.
 If the certificate in already in the certificate list, the call is
 successful but the certificate is not added again.
 
-To get the certificate list for a listener, use
-DescribeListenerCertificates. To remove certificates from the
-certificate list for a listener, use RemoveListenerCertificates. To
-replace the default certificate for a listener, use ModifyListener.
-
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates}{SSL Certificates}
-in the \emph{Application Load Balancers Guide}.
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html}{HTTPS listeners}
+in the \emph{Application Load Balancers Guide} or \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html}{TLS listeners}
+in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$add_listener_certificates(

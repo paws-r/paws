@@ -19,6 +19,7 @@ Modify the default properties used to create WorkSpaces.
 \preformatted{svc$modify_workspace_creation_properties(
   ResourceId = "string",
   WorkspaceCreationProperties = list(
+    EnableWorkDocs = TRUE|FALSE,
     EnableInternetAccess = TRUE|FALSE,
     DefaultOu = "string",
     CustomSecurityGroupId = "string",

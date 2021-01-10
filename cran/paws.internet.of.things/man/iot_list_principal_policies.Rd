@@ -7,7 +7,10 @@
 iot_list_principal_policies(principal, marker, pageSize, ascendingOrder)
 }
 \arguments{
-\item{principal}{[required] The principal.}
+\item{principal}{[required] The principal. Valid principals are CertificateArn
+(arn:aws:iot:\emph{region}:\emph{accountId}:cert/\emph{certificateId}), thingGroupArn
+(arn:aws:iot:\emph{region}:\emph{accountId}:thinggroup/\emph{groupName}) and CognitoId
+(\emph{region}:\emph{id}).}
 
 \item{marker}{The marker for the next set of results.}
 

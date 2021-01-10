@@ -34,12 +34,15 @@ approved.}
 \description{
 Creates a new blockchain network using Amazon Managed Blockchain.
 }
+\details{
+Applies only to Hyperledger Fabric.
+}
 \section{Request syntax}{
 \preformatted{svc$create_network(
   ClientRequestToken = "string",
   Name = "string",
   Description = "string",
-  Framework = "HYPERLEDGER_FABRIC",
+  Framework = "HYPERLEDGER_FABRIC"|"ETHEREUM",
   FrameworkVersion = "string",
   FrameworkConfiguration = list(
     Fabric = list(

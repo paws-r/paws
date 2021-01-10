@@ -3,6 +3,53 @@
 #' @include workspaces_service.R
 NULL
 
+#' Associates the specified connection alias with the specified directory
+#' to enable cross-Region redirection
+#'
+#' Associates the specified connection alias with the specified directory
+#' to enable cross-Region redirection. For more information, see
+#' [Cross-Region Redirection for Amazon
+#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
+#' 
+#' Before performing this operation, call
+#' [DescribeConnectionAliases](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliases.html)
+#' to make sure that the current state of the connection alias is
+#' `CREATED`.
+#'
+#' @usage
+#' workspaces_associate_connection_alias(AliasId, ResourceId)
+#'
+#' @param AliasId &#91;required&#93; The identifier of the connection alias.
+#' @param ResourceId &#91;required&#93; The identifier of the directory to associate the connection alias with.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_connection_alias(
+#'   AliasId = "string",
+#'   ResourceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_associate_connection_alias
+workspaces_associate_connection_alias <- function(AliasId, ResourceId) {
+  op <- new_operation(
+    name = "AssociateConnectionAlias",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$associate_connection_alias_input(AliasId = AliasId, ResourceId = ResourceId)
+  output <- .workspaces$associate_connection_alias_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$associate_connection_alias <- workspaces_associate_connection_alias
+
 #' Associates the specified IP access control group with the specified
 #' directory
 #'
@@ -95,7 +142,23 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
 #' Region
 #'
 #' Copies the specified image from the specified Region to the current
+#' Region. For more information about copying images, see [Copy a Custom
+#' WorkSpaces
+#' Image](https://docs.aws.amazon.com/workspaces/latest/adminguide/copy-custom-image.html).
+#' 
+#' In the China (Ningxia) Region, you can copy images only within the same
 #' Region.
+#' 
+#' In the AWS GovCloud (US-West) Region, to copy images to and from other
+#' AWS Regions, contact AWS Support.
+#' 
+#' Before copying a shared image, be sure to verify that it has been shared
+#' from the correct AWS account. To determine if an image has been shared
+#' and to see the AWS account ID that owns an image, use the
+#' [DescribeWorkSpaceImages](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImages.html)
+#' and
+#' [DescribeWorkspaceImagePermissions](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceImagePermissions.html)
+#' API operations.
 #'
 #' @usage
 #' workspaces_copy_workspace_image(Name, Description, SourceImageId,
@@ -142,6 +205,60 @@ workspaces_copy_workspace_image <- function(Name, Description = NULL, SourceImag
   return(response)
 }
 .workspaces$operations$copy_workspace_image <- workspaces_copy_workspace_image
+
+#' Creates the specified connection alias for use with cross-Region
+#' redirection
+#'
+#' Creates the specified connection alias for use with cross-Region
+#' redirection. For more information, see [Cross-Region Redirection for
+#' Amazon
+#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
+#'
+#' @usage
+#' workspaces_create_connection_alias(ConnectionString, Tags)
+#'
+#' @param ConnectionString &#91;required&#93; A connection string in the form of a fully qualified domain name (FQDN),
+#' such as `www.example.com`.
+#' 
+#' After you create a connection string, it is always associated to your
+#' AWS account. You cannot recreate the same connection string with a
+#' different account, even if you delete all instances of it from the
+#' original account. The connection string is globally reserved for your
+#' account.
+#' @param Tags The tags to associate with the connection alias.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_connection_alias(
+#'   ConnectionString = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_create_connection_alias
+workspaces_create_connection_alias <- function(ConnectionString, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateConnectionAlias",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$create_connection_alias_input(ConnectionString = ConnectionString, Tags = Tags)
+  output <- .workspaces$create_connection_alias_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$create_connection_alias <- workspaces_create_connection_alias
 
 #' Creates an IP access control group
 #'
@@ -216,11 +333,9 @@ workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = 
 #' workspaces_create_tags(ResourceId, Tags)
 #'
 #' @param ResourceId &#91;required&#93; The identifier of the WorkSpaces resource. The supported resource types
-#' are WorkSpaces, registered directories, images, custom bundles, and IP
-#' access control groups.
-#' @param Tags &#91;required&#93; The tags. Each WorkSpaces resource can have a maximum of 50 tags. If you
-#' want to add new tags to a set of existing tags, you must submit all of
-#' the existing tags along with the new ones.
+#' are WorkSpaces, registered directories, images, custom bundles, IP
+#' access control groups, and connection aliases.
+#' @param Tags &#91;required&#93; The tags. Each WorkSpaces resource can have a maximum of 50 tags.
 #'
 #' @section Request syntax:
 #' ```
@@ -316,6 +431,57 @@ workspaces_create_workspaces <- function(Workspaces) {
 }
 .workspaces$operations$create_workspaces <- workspaces_create_workspaces
 
+#' Deletes the specified connection alias
+#'
+#' Deletes the specified connection alias. For more information, see
+#' [Cross-Region Redirection for Amazon
+#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
+#' 
+#' **If you will no longer be using a fully qualified domain name (FQDN) as
+#' the registration code for your WorkSpaces users, you must take certain
+#' precautions to prevent potential security issues.** For more
+#' information, see [Security Considerations if You Stop Using Cross-Region
+#' Redirection](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html#cross-region-redirection-security-considerations).
+#' 
+#' To delete a connection alias that has been shared, the shared account
+#' must first disassociate the connection alias from any directories it has
+#' been associated with. Then you must unshare the connection alias from
+#' the account it has been shared with. You can delete a connection alias
+#' only after it is no longer shared with any accounts or associated with
+#' any directories.
+#'
+#' @usage
+#' workspaces_delete_connection_alias(AliasId)
+#'
+#' @param AliasId &#91;required&#93; The identifier of the connection alias to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_connection_alias(
+#'   AliasId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_delete_connection_alias
+workspaces_delete_connection_alias <- function(AliasId) {
+  op <- new_operation(
+    name = "DeleteConnectionAlias",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$delete_connection_alias_input(AliasId = AliasId)
+  output <- .workspaces$delete_connection_alias_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$delete_connection_alias <- workspaces_delete_connection_alias
+
 #' Deletes the specified IP access control group
 #'
 #' Deletes the specified IP access control group.
@@ -363,8 +529,8 @@ workspaces_delete_ip_group <- function(GroupId) {
 #' workspaces_delete_tags(ResourceId, TagKeys)
 #'
 #' @param ResourceId &#91;required&#93; The identifier of the WorkSpaces resource. The supported resource types
-#' are WorkSpaces, registered directories, images, custom bundles, and IP
-#' access control groups.
+#' are WorkSpaces, registered directories, images, custom bundles, IP
+#' access control groups, and connection aliases.
 #' @param TagKeys &#91;required&#93; The tag keys.
 #'
 #' @section Request syntax:
@@ -401,7 +567,7 @@ workspaces_delete_tags <- function(ResourceId, TagKeys) {
 #'
 #' Deletes the specified image from your account. To delete an image, you
 #' must first delete any bundles that are associated with the image and
-#' un-share the image if it is shared with other accounts.
+#' unshare the image if it is shared with other accounts.
 #'
 #' @usage
 #' workspaces_delete_workspace_image(ImageId)
@@ -441,6 +607,19 @@ workspaces_delete_workspace_image <- function(ImageId) {
 #' returns before the WorkSpace directory is deregistered. If any
 #' WorkSpaces are registered to this directory, you must remove them before
 #' you can deregister the directory.
+#' 
+#' Simple AD and AD Connector are made available to you free of charge to
+#' use with WorkSpaces. If there are no WorkSpaces being used with your
+#' Simple AD or AD Connector directory for 30 consecutive days, this
+#' directory will be automatically deregistered for use with Amazon
+#' WorkSpaces, and you will be charged for this directory as per the [AWS
+#' Directory Services pricing
+#' terms](https://aws.amazon.com/directoryservice/pricing/).
+#' 
+#' To delete empty directories, see [Delete the Directory for Your
+#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/delete-workspaces-directory.html).
+#' If you delete your Simple AD or AD Connector directory, you can always
+#' create a new one when you want to start using WorkSpaces again.
 #'
 #' @usage
 #' workspaces_deregister_workspace_directory(DirectoryId)
@@ -589,6 +768,102 @@ workspaces_describe_client_properties <- function(ResourceIds) {
 }
 .workspaces$operations$describe_client_properties <- workspaces_describe_client_properties
 
+#' Describes the permissions that the owner of a connection alias has
+#' granted to another AWS account for the specified connection alias
+#'
+#' Describes the permissions that the owner of a connection alias has
+#' granted to another AWS account for the specified connection alias. For
+#' more information, see [Cross-Region Redirection for Amazon
+#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
+#'
+#' @usage
+#' workspaces_describe_connection_alias_permissions(AliasId, NextToken,
+#'   MaxResults)
+#'
+#' @param AliasId &#91;required&#93; The identifier of the connection alias.
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated,
+#' provide this token to receive the next set of results.
+#' @param MaxResults The maximum number of results to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_connection_alias_permissions(
+#'   AliasId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_connection_alias_permissions
+workspaces_describe_connection_alias_permissions <- function(AliasId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeConnectionAliasPermissions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$describe_connection_alias_permissions_input(AliasId = AliasId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .workspaces$describe_connection_alias_permissions_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_connection_alias_permissions <- workspaces_describe_connection_alias_permissions
+
+#' Retrieves a list that describes the connection aliases used for
+#' cross-Region redirection
+#'
+#' Retrieves a list that describes the connection aliases used for
+#' cross-Region redirection. For more information, see [Cross-Region
+#' Redirection for Amazon
+#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
+#'
+#' @usage
+#' workspaces_describe_connection_aliases(AliasIds, ResourceId, Limit,
+#'   NextToken)
+#'
+#' @param AliasIds The identifiers of the connection aliases to describe.
+#' @param ResourceId The identifier of the directory associated with the connection alias.
+#' @param Limit The maximum number of connection aliases to return.
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated,
+#' provide this token to receive the next set of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_connection_aliases(
+#'   AliasIds = list(
+#'     "string"
+#'   ),
+#'   ResourceId = "string",
+#'   Limit = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_connection_aliases
+workspaces_describe_connection_aliases <- function(AliasIds = NULL, ResourceId = NULL, Limit = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeConnectionAliases",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$describe_connection_aliases_input(AliasIds = AliasIds, ResourceId = ResourceId, Limit = Limit, NextToken = NextToken)
+  output <- .workspaces$describe_connection_aliases_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_connection_aliases <- workspaces_describe_connection_aliases
+
 #' Describes one or more of your IP access control groups
 #'
 #' Describes one or more of your IP access control groups.
@@ -640,8 +915,8 @@ workspaces_describe_ip_groups <- function(GroupIds = NULL, NextToken = NULL, Max
 #' workspaces_describe_tags(ResourceId)
 #'
 #' @param ResourceId &#91;required&#93; The identifier of the WorkSpaces resource. The supported resource types
-#' are WorkSpaces, registered directories, images, custom bundles, and IP
-#' access control groups.
+#' are WorkSpaces, registered directories, images, custom bundles, IP
+#' access control groups, and connection aliases.
 #'
 #' @section Request syntax:
 #' ```
@@ -768,6 +1043,50 @@ workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Limit
 }
 .workspaces$operations$describe_workspace_directories <- workspaces_describe_workspace_directories
 
+#' Describes the permissions that the owner of an image has granted to
+#' other AWS accounts for an image
+#'
+#' Describes the permissions that the owner of an image has granted to
+#' other AWS accounts for an image.
+#'
+#' @usage
+#' workspaces_describe_workspace_image_permissions(ImageId, NextToken,
+#'   MaxResults)
+#'
+#' @param ImageId &#91;required&#93; The identifier of the image.
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated,
+#' provide this token to receive the next set of results.
+#' @param MaxResults The maximum number of items to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_workspace_image_permissions(
+#'   ImageId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_workspace_image_permissions
+workspaces_describe_workspace_image_permissions <- function(ImageId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "DescribeWorkspaceImagePermissions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$describe_workspace_image_permissions_input(ImageId = ImageId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .workspaces$describe_workspace_image_permissions_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_workspace_image_permissions <- workspaces_describe_workspace_image_permissions
+
 #' Retrieves a list that describes one or more specified images, if the
 #' image identifiers are provided
 #'
@@ -776,9 +1095,11 @@ workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Limit
 #' described.
 #'
 #' @usage
-#' workspaces_describe_workspace_images(ImageIds, NextToken, MaxResults)
+#' workspaces_describe_workspace_images(ImageIds, ImageType, NextToken,
+#'   MaxResults)
 #'
 #' @param ImageIds The identifier of the image.
+#' @param ImageType The type (owned or shared) of the image.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
 #' @param MaxResults The maximum number of items to return.
@@ -789,6 +1110,7 @@ workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Limit
 #'   ImageIds = list(
 #'     "string"
 #'   ),
+#'   ImageType = "OWNED"|"SHARED",
 #'   NextToken = "string",
 #'   MaxResults = 123
 #' )
@@ -797,14 +1119,14 @@ workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Limit
 #' @keywords internal
 #'
 #' @rdname workspaces_describe_workspace_images
-workspaces_describe_workspace_images <- function(ImageIds = NULL, NextToken = NULL, MaxResults = NULL) {
+workspaces_describe_workspace_images <- function(ImageIds = NULL, ImageType = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "DescribeWorkspaceImages",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .workspaces$describe_workspace_images_input(ImageIds = ImageIds, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .workspaces$describe_workspace_images_input(ImageIds = ImageIds, ImageType = ImageType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workspaces$describe_workspace_images_output()
   config <- get_config()
   svc <- .workspaces$service(config)
@@ -955,6 +1277,51 @@ workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL
 }
 .workspaces$operations$describe_workspaces_connection_status <- workspaces_describe_workspaces_connection_status
 
+#' Disassociates a connection alias from a directory
+#'
+#' Disassociates a connection alias from a directory. Disassociating a
+#' connection alias disables cross-Region redirection between two
+#' directories in different AWS Regions. For more information, see
+#' [Cross-Region Redirection for Amazon
+#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
+#' 
+#' Before performing this operation, call
+#' [DescribeConnectionAliases](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliases.html)
+#' to make sure that the current state of the connection alias is
+#' `CREATED`.
+#'
+#' @usage
+#' workspaces_disassociate_connection_alias(AliasId)
+#'
+#' @param AliasId &#91;required&#93; The identifier of the connection alias to disassociate.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_connection_alias(
+#'   AliasId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_disassociate_connection_alias
+workspaces_disassociate_connection_alias <- function(AliasId) {
+  op <- new_operation(
+    name = "DisassociateConnectionAlias",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$disassociate_connection_alias_input(AliasId = AliasId)
+  output <- .workspaces$disassociate_connection_alias_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$disassociate_connection_alias <- workspaces_disassociate_connection_alias
+
 #' Disassociates the specified IP access control group from the specified
 #' directory
 #'
@@ -997,29 +1364,46 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
 }
 .workspaces$operations$disassociate_ip_groups <- workspaces_disassociate_ip_groups
 
-#' Imports the specified Windows 7 or Windows 10 Bring Your Own License
-#' (BYOL) image into Amazon WorkSpaces
+#' Imports the specified Windows 10 Bring Your Own License (BYOL) image
+#' into Amazon WorkSpaces
 #'
-#' Imports the specified Windows 7 or Windows 10 Bring Your Own License
-#' (BYOL) image into Amazon WorkSpaces. The image must be an already
-#' licensed EC2 image that is in your AWS account, and you must own the
-#' image.
+#' Imports the specified Windows 10 Bring Your Own License (BYOL) image
+#' into Amazon WorkSpaces. The image must be an already licensed Amazon EC2
+#' image that is in your AWS account, and you must own the image. For more
+#' information about creating BYOL images, see [Bring Your Own Windows
+#' Desktop
+#' Licenses](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
 #'
 #' @usage
 #' workspaces_import_workspace_image(Ec2ImageId, IngestionProcess,
-#'   ImageName, ImageDescription, Tags)
+#'   ImageName, ImageDescription, Tags, Applications)
 #'
 #' @param Ec2ImageId &#91;required&#93; The identifier of the EC2 image.
-#' @param IngestionProcess &#91;required&#93; The ingestion process to be used when importing the image.
+#' @param IngestionProcess &#91;required&#93; The ingestion process to be used when importing the image, depending on
+#' which protocol you want to use for your BYOL Workspace image, either
+#' PCoIP or WorkSpaces Streaming Protocol (WSP). To use WSP, specify a
+#' value that ends in `_WSP`. To use PCoIP, specify a value that does not
+#' end in `_WSP`.
+#' 
+#' For non-GPU-enabled bundles (bundles other than Graphics or
+#' GraphicsPro), specify `BYOL_REGULAR` or `BYOL_REGULAR_WSP`, depending on
+#' the protocol.
 #' @param ImageName &#91;required&#93; The name of the WorkSpace image.
 #' @param ImageDescription &#91;required&#93; The description of the WorkSpace image.
 #' @param Tags The tags. Each WorkSpaces resource can have a maximum of 50 tags.
+#' @param Applications If specified, the version of Microsoft Office to subscribe to. Valid
+#' only for Windows 10 BYOL images. For more information about subscribing
+#' to Office for BYOL images, see [Bring Your Own Windows Desktop
+#' Licenses](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
+#' 
+#' Although this parameter is an array, only one item is allowed at this
+#' time.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$import_workspace_image(
 #'   Ec2ImageId = "string",
-#'   IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO",
+#'   IngestionProcess = "BYOL_REGULAR"|"BYOL_GRAPHICS"|"BYOL_GRAPHICSPRO"|"BYOL_REGULAR_WSP",
 #'   ImageName = "string",
 #'   ImageDescription = "string",
 #'   Tags = list(
@@ -1027,6 +1411,9 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
 #'       Key = "string",
 #'       Value = "string"
 #'     )
+#'   ),
+#'   Applications = list(
+#'     "Microsoft_Office_2016"|"Microsoft_Office_2019"
 #'   )
 #' )
 #' ```
@@ -1034,14 +1421,14 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
 #' @keywords internal
 #'
 #' @rdname workspaces_import_workspace_image
-workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, ImageName, ImageDescription, Tags = NULL) {
+workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, ImageName, ImageDescription, Tags = NULL, Applications = NULL) {
   op <- new_operation(
     name = "ImportWorkspaceImage",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .workspaces$import_workspace_image_input(Ec2ImageId = Ec2ImageId, IngestionProcess = IngestionProcess, ImageName = ImageName, ImageDescription = ImageDescription, Tags = Tags)
+  input <- .workspaces$import_workspace_image_input(Ec2ImageId = Ec2ImageId, IngestionProcess = IngestionProcess, ImageName = ImageName, ImageDescription = ImageDescription, Tags = Tags, Applications = Applications)
   output <- .workspaces$import_workspace_image_output()
   config <- get_config()
   svc <- .workspaces$service(config)
@@ -1058,6 +1445,10 @@ workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, Imag
 #' Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks,
 #' that you can use for the network management interface when you enable
 #' Bring Your Own License (BYOL).
+#' 
+#' This operation can be run only by AWS accounts that are enabled for
+#' BYOL. If your account isn't enabled for BYOL, you'll receive an
+#' `AccessDeniedException` error.
 #' 
 #' The management network interface is connected to a secure Amazon
 #' WorkSpaces management network. It is used for interactive streaming of
@@ -1357,6 +1748,7 @@ workspaces_modify_workspace_access_properties <- function(ResourceId, WorkspaceA
 #' svc$modify_workspace_creation_properties(
 #'   ResourceId = "string",
 #'   WorkspaceCreationProperties = list(
+#'     EnableWorkDocs = TRUE|FALSE,
 #'     EnableInternetAccess = TRUE|FALSE,
 #'     DefaultOu = "string",
 #'     CustomSecurityGroupId = "string",
@@ -1388,7 +1780,9 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 
 #' Modifies the specified WorkSpace properties
 #'
-#' Modifies the specified WorkSpace properties.
+#' Modifies the specified WorkSpace properties. For important information
+#' about how to modify the size of the root and user volumes, see [Modify a
+#' WorkSpace](https://docs.aws.amazon.com/workspaces/latest/adminguide/modify-workspaces.html).
 #'
 #' @usage
 #' workspaces_modify_workspace_properties(WorkspaceId, WorkspaceProperties)
@@ -1525,11 +1919,11 @@ workspaces_reboot_workspaces <- function(RebootWorkspaceRequests) {
 #' Rebuilds the specified WorkSpace.
 #' 
 #' You cannot rebuild a WorkSpace unless its state is `AVAILABLE`, `ERROR`,
-#' `UNHEALTHY`, or `STOPPED`.
+#' `UNHEALTHY`, `STOPPED`, or `REBOOTING`.
 #' 
 #' Rebuilding a WorkSpace is a potentially destructive action that can
 #' result in the loss of data. For more information, see [Rebuild a
-#' WorkSpace](https://docs.aws.amazon.com/workspaces/latest/adminguide/reset-workspace.html).
+#' WorkSpace](https://docs.aws.amazon.com/workspaces/latest/adminguide/rebuild-workspace.html).
 #' 
 #' This operation is asynchronous and returns before the WorkSpaces have
 #' been completely rebuilt.
@@ -1825,12 +2219,32 @@ workspaces_stop_workspaces <- function(StopWorkspaceRequests) {
 #' 
 #' Terminating a WorkSpace is a permanent action and cannot be undone. The
 #' user's data is destroyed. If you need to archive any user data, contact
-#' Amazon Web Services before terminating the WorkSpace.
+#' AWS Support before terminating the WorkSpace.
 #' 
 #' You can terminate a WorkSpace that is in any state except `SUSPENDED`.
 #' 
 #' This operation is asynchronous and returns before the WorkSpaces have
-#' been completely terminated.
+#' been completely terminated. After a WorkSpace is terminated, the
+#' `TERMINATED` state is returned only briefly before the WorkSpace
+#' directory metadata is cleaned up, so this state is rarely returned. To
+#' confirm that a WorkSpace is terminated, check for the WorkSpace ID by
+#' using
+#' [DescribeWorkSpaces](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaces.html).
+#' If the WorkSpace ID isn't returned, then the WorkSpace has been
+#' successfully terminated.
+#' 
+#' Simple AD and AD Connector are made available to you free of charge to
+#' use with WorkSpaces. If there are no WorkSpaces being used with your
+#' Simple AD or AD Connector directory for 30 consecutive days, this
+#' directory will be automatically deregistered for use with Amazon
+#' WorkSpaces, and you will be charged for this directory as per the [AWS
+#' Directory Services pricing
+#' terms](https://aws.amazon.com/directoryservice/pricing/).
+#' 
+#' To delete empty directories, see [Delete the Directory for Your
+#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/delete-workspaces-directory.html).
+#' If you delete your Simple AD or AD Connector directory, you can always
+#' create a new one when you want to start using WorkSpaces again.
 #'
 #' @usage
 #' workspaces_terminate_workspaces(TerminateWorkspaceRequests)
@@ -1867,6 +2281,70 @@ workspaces_terminate_workspaces <- function(TerminateWorkspaceRequests) {
   return(response)
 }
 .workspaces$operations$terminate_workspaces <- workspaces_terminate_workspaces
+
+#' Shares or unshares a connection alias with one account by specifying
+#' whether that account has permission to associate the connection alias
+#' with a directory
+#'
+#' Shares or unshares a connection alias with one account by specifying
+#' whether that account has permission to associate the connection alias
+#' with a directory. If the association permission is granted, the
+#' connection alias is shared with that account. If the association
+#' permission is revoked, the connection alias is unshared with the
+#' account. For more information, see [Cross-Region Redirection for Amazon
+#' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
+#' 
+#' -   Before performing this operation, call
+#'     [DescribeConnectionAliases](https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliases.html)
+#'     to make sure that the current state of the connection alias is
+#'     `CREATED`.
+#' 
+#' -   To delete a connection alias that has been shared, the shared
+#'     account must first disassociate the connection alias from any
+#'     directories it has been associated with. Then you must unshare the
+#'     connection alias from the account it has been shared with. You can
+#'     delete a connection alias only after it is no longer shared with any
+#'     accounts or associated with any directories.
+#'
+#' @usage
+#' workspaces_update_connection_alias_permission(AliasId,
+#'   ConnectionAliasPermission)
+#'
+#' @param AliasId &#91;required&#93; The identifier of the connection alias that you want to update
+#' permissions for.
+#' @param ConnectionAliasPermission &#91;required&#93; Indicates whether to share or unshare the connection alias with the
+#' specified AWS account.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_connection_alias_permission(
+#'   AliasId = "string",
+#'   ConnectionAliasPermission = list(
+#'     SharedAccountId = "string",
+#'     AllowAssociation = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_update_connection_alias_permission
+workspaces_update_connection_alias_permission <- function(AliasId, ConnectionAliasPermission) {
+  op <- new_operation(
+    name = "UpdateConnectionAliasPermission",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$update_connection_alias_permission_input(AliasId = AliasId, ConnectionAliasPermission = ConnectionAliasPermission)
+  output <- .workspaces$update_connection_alias_permission_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$update_connection_alias_permission <- workspaces_update_connection_alias_permission
 
 #' Replaces the current rules of the specified IP access control group with
 #' the specified rules
@@ -1912,3 +2390,74 @@ workspaces_update_rules_of_ip_group <- function(GroupId, UserRules) {
   return(response)
 }
 .workspaces$operations$update_rules_of_ip_group <- workspaces_update_rules_of_ip_group
+
+#' Shares or unshares an image with one account in the same AWS Region by
+#' specifying whether that account has permission to copy the image
+#'
+#' Shares or unshares an image with one account in the same AWS Region by
+#' specifying whether that account has permission to copy the image. If the
+#' copy image permission is granted, the image is shared with that account.
+#' If the copy image permission is revoked, the image is unshared with the
+#' account.
+#' 
+#' After an image has been shared, the recipient account can copy the image
+#' to other AWS Regions as needed.
+#' 
+#' In the China (Ningxia) Region, you can copy images only within the same
+#' Region.
+#' 
+#' In the AWS GovCloud (US-West) Region, to copy images to and from other
+#' AWS Regions, contact AWS Support.
+#' 
+#' For more information about sharing images, see [Share or Unshare a
+#' Custom WorkSpaces
+#' Image](https://docs.aws.amazon.com/workspaces/latest/adminguide/share-custom-image.html).
+#' 
+#' -   To delete an image that has been shared, you must unshare the image
+#'     before you delete it.
+#' 
+#' -   Sharing Bring Your Own License (BYOL) images across AWS accounts
+#'     isn't supported at this time in the AWS GovCloud (US-West) Region.
+#'     To share BYOL images across accounts in the AWS GovCloud (US-West)
+#'     Region, contact AWS Support.
+#'
+#' @usage
+#' workspaces_update_workspace_image_permission(ImageId, AllowCopyImage,
+#'   SharedAccountId)
+#'
+#' @param ImageId &#91;required&#93; The identifier of the image.
+#' @param AllowCopyImage &#91;required&#93; The permission to copy the image. This permission can be revoked only
+#' after an image has been shared.
+#' @param SharedAccountId &#91;required&#93; The identifier of the AWS account to share or unshare the image with.
+#' 
+#' Before sharing the image, confirm that you are sharing to the correct
+#' AWS account ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_workspace_image_permission(
+#'   ImageId = "string",
+#'   AllowCopyImage = TRUE|FALSE,
+#'   SharedAccountId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_update_workspace_image_permission
+workspaces_update_workspace_image_permission <- function(ImageId, AllowCopyImage, SharedAccountId) {
+  op <- new_operation(
+    name = "UpdateWorkspaceImagePermission",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$update_workspace_image_permission_input(ImageId = ImageId, AllowCopyImage = AllowCopyImage, SharedAccountId = SharedAccountId)
+  output <- .workspaces$update_workspace_image_permission_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$update_workspace_image_permission <- workspaces_update_workspace_image_permission

@@ -4,15 +4,34 @@
 \alias{sesv2_send_email}
 \title{Sends an email message}
 \usage{
-sesv2_send_email(FromEmailAddress, Destination, ReplyToAddresses,
-  FeedbackForwardingEmailAddress, Content, EmailTags,
-  ConfigurationSetName)
+sesv2_send_email(FromEmailAddress, FromEmailAddressIdentityArn,
+  Destination, ReplyToAddresses, FeedbackForwardingEmailAddress,
+  FeedbackForwardingEmailAddressIdentityArn, Content, EmailTags,
+  ConfigurationSetName, ListManagementOptions)
 }
 \arguments{
 \item{FromEmailAddress}{The email address that you want to use as the "From" address for the
 email. The address that you specify has to be verified.}
 
-\item{Destination}{[required] An object that contains the recipients of the email message.}
+\item{FromEmailAddressIdentityArn}{This parameter is used only for sending authorization. It is the ARN of
+the identity that is associated with the sending authorization policy
+that permits you to use the email address specified in the
+\code{FromEmailAddress} parameter.
+
+For example, if the owner of example.com (which has ARN
+arn:aws:ses:us-east-1:123456789012:identity/example.com) attaches a
+policy to it that authorizes you to use sender@example.com, then you
+would specify the \code{FromEmailAddressIdentityArn} to be
+arn:aws:ses:us-east-1:123456789012:identity/example.com, and the
+\code{FromEmailAddress} to be sender@example.com.
+
+For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.
+
+For Raw emails, the \code{FromEmailAddressIdentityArn} value overrides the
+X-SES-SOURCE-ARN and X-SES-FROM-ARN headers specified in raw email
+message content.}
+
+\item{Destination}{An object that contains the recipients of the email message.}
 
 \item{ReplyToAddresses}{The "Reply-to" email addresses for the message. When the recipient
 replies to the message, each Reply-to address receives the reply.}
@@ -20,8 +39,22 @@ replies to the message, each Reply-to address receives the reply.}
 \item{FeedbackForwardingEmailAddress}{The address that you want bounce and complaint notifications to be sent
 to.}
 
+\item{FeedbackForwardingEmailAddressIdentityArn}{This parameter is used only for sending authorization. It is the ARN of
+the identity that is associated with the sending authorization policy
+that permits you to use the email address specified in the
+\code{FeedbackForwardingEmailAddress} parameter.
+
+For example, if the owner of example.com (which has ARN
+arn:aws:ses:us-east-1:123456789012:identity/example.com) attaches a
+policy to it that authorizes you to use feedback@example.com, then you
+would specify the \code{FeedbackForwardingEmailAddressIdentityArn} to be
+arn:aws:ses:us-east-1:123456789012:identity/example.com, and the
+\code{FeedbackForwardingEmailAddress} to be feedback@example.com.
+
+For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html}{Amazon SES Developer Guide}.}
+
 \item{Content}{[required] An object that contains the body of the message. You can send either a
-Simple message or a Raw message.}
+Simple message Raw message or a template Message.}
 
 \item{EmailTags}{A list of tags, in the form of name/value pairs, to apply to an email
 that you send using the \code{SendEmail} operation. Tags correspond to
@@ -30,6 +63,9 @@ email sending events.}
 
 \item{ConfigurationSetName}{The name of the configuration set that you want to use when sending the
 email.}
+
+\item{ListManagementOptions}{An object used to specify a list or topic to which an email belongs,
+which will be used when a contact chooses to unsubscribe.}
 }
 \description{
 Sends an email message. You can use the Amazon SES API v2 to send two
@@ -45,11 +81,15 @@ type of email, you have to specify all of the message headers, as
 well as the message body. You can use this message type to send
 messages that contain attachments. The message that you specify has
 to be a valid MIME message.
+\item \strong{Templated} – A message that contains personalization tags. When
+you send this type of email, Amazon SES API v2 automatically
+replaces the tags with values that you specify.
 }
 }
 \section{Request syntax}{
 \preformatted{svc$send_email(
   FromEmailAddress = "string",
+  FromEmailAddressIdentityArn = "string",
   Destination = list(
     ToAddresses = list(
       "string"
@@ -65,6 +105,7 @@ to be a valid MIME message.
     "string"
   ),
   FeedbackForwardingEmailAddress = "string",
+  FeedbackForwardingEmailAddressIdentityArn = "string",
   Content = list(
     Simple = list(
       Subject = list(
@@ -86,6 +127,7 @@ to be a valid MIME message.
       Data = raw
     ),
     Template = list(
+      TemplateName = "string",
       TemplateArn = "string",
       TemplateData = "string"
     )
@@ -96,7 +138,11 @@ to be a valid MIME message.
       Value = "string"
     )
   ),
-  ConfigurationSetName = "string"
+  ConfigurationSetName = "string",
+  ListManagementOptions = list(
+    ContactListName = "string",
+    TopicName = "string"
+  )
 )
 }
 }

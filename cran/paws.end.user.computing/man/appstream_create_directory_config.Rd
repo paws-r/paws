@@ -14,7 +14,7 @@ corp.example.com).}
 \item{OrganizationalUnitDistinguishedNames}{[required] The distinguished names of the organizational units for computer
 accounts.}
 
-\item{ServiceAccountCredentials}{[required] The credentials for the service account used by the fleet or image
+\item{ServiceAccountCredentials}{The credentials for the service account used by the fleet or image
 builder to connect to the directory.}
 }
 \description{

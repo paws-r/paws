@@ -8,7 +8,7 @@ transcribeservice_update_vocabulary(VocabularyName, LanguageCode,
   Phrases, VocabularyFileUri)
 }
 \arguments{
-\item{VocabularyName}{[required] The name of the vocabulary to update. The name is case-sensitive. If you
+\item{VocabularyName}{[required] The name of the vocabulary to update. The name is case sensitive. If you
 try to update a vocabulary with the same name as a previous vocabulary
 you will receive a \code{ConflictException} error.}
 
@@ -22,10 +22,10 @@ endpoint that you are calling. The general form is
 
 For example:
 
-For more information about S3 object names, see \href{http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys}{Object Keys}
+For more information about S3 object names, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys}{Object Keys}
 in the \emph{Amazon S3 Developer Guide}.
 
-For more information about custom vocabularies, see \href{http://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary}{Custom Vocabularies}.}
+For more information about custom vocabularies, see \href{https://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary}{Custom Vocabularies}.}
 }
 \description{
 Updates an existing vocabulary with new values. The \code{UpdateVocabulary}
@@ -35,7 +35,7 @@ that you provide in the request.
 \section{Request syntax}{
 \preformatted{svc$update_vocabulary(
   VocabularyName = "string",
-  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA"|"ru-RU"|"zh-CN"|"nl-NL"|"id-ID"|"ta-IN"|"fa-IR"|"en-IE"|"en-AB"|"en-WL"|"pt-PT"|"te-IN"|"tr-TR"|"de-CH"|"he-IL"|"ms-MY"|"ja-JP"|"ar-AE",
+  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
   Phrases = list(
     "string"
   ),

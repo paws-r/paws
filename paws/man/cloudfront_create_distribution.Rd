@@ -70,7 +70,11 @@ in the \emph{Amazon CloudFront Developer Guide}.
             OriginKeepaliveTimeout = 123
           ),
           ConnectionAttempts = 123,
-          ConnectionTimeout = 123
+          ConnectionTimeout = 123,
+          OriginShield = list(
+            Enabled = TRUE|FALSE,
+            OriginShieldRegion = "string"
+          )
         )
       )
     ),
@@ -100,6 +104,49 @@ in the \emph{Amazon CloudFront Developer Guide}.
     ),
     DefaultCacheBehavior = list(
       TargetOriginId = "string",
+      TrustedSigners = list(
+        Enabled = TRUE|FALSE,
+        Quantity = 123,
+        Items = list(
+          "string"
+        )
+      ),
+      TrustedKeyGroups = list(
+        Enabled = TRUE|FALSE,
+        Quantity = 123,
+        Items = list(
+          "string"
+        )
+      ),
+      ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+      AllowedMethods = list(
+        Quantity = 123,
+        Items = list(
+          "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+        ),
+        CachedMethods = list(
+          Quantity = 123,
+          Items = list(
+            "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+          )
+        )
+      ),
+      SmoothStreaming = TRUE|FALSE,
+      Compress = TRUE|FALSE,
+      LambdaFunctionAssociations = list(
+        Quantity = 123,
+        Items = list(
+          list(
+            LambdaFunctionARN = "string",
+            EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+            IncludeBody = TRUE|FALSE
+          )
+        )
+      ),
+      FieldLevelEncryptionId = "string",
+      RealtimeLogConfigArn = "string",
+      CachePolicyId = "string",
+      OriginRequestPolicyId = "string",
       ForwardedValues = list(
         QueryString = TRUE|FALSE,
         Cookies = list(
@@ -124,42 +171,9 @@ in the \emph{Amazon CloudFront Developer Guide}.
           )
         )
       ),
-      TrustedSigners = list(
-        Enabled = TRUE|FALSE,
-        Quantity = 123,
-        Items = list(
-          "string"
-        )
-      ),
-      ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
       MinTTL = 123,
-      AllowedMethods = list(
-        Quantity = 123,
-        Items = list(
-          "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
-        ),
-        CachedMethods = list(
-          Quantity = 123,
-          Items = list(
-            "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
-          )
-        )
-      ),
-      SmoothStreaming = TRUE|FALSE,
       DefaultTTL = 123,
-      MaxTTL = 123,
-      Compress = TRUE|FALSE,
-      LambdaFunctionAssociations = list(
-        Quantity = 123,
-        Items = list(
-          list(
-            LambdaFunctionARN = "string",
-            EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
-            IncludeBody = TRUE|FALSE
-          )
-        )
-      ),
-      FieldLevelEncryptionId = "string"
+      MaxTTL = 123
     ),
     CacheBehaviors = list(
       Quantity = 123,
@@ -167,6 +181,49 @@ in the \emph{Amazon CloudFront Developer Guide}.
         list(
           PathPattern = "string",
           TargetOriginId = "string",
+          TrustedSigners = list(
+            Enabled = TRUE|FALSE,
+            Quantity = 123,
+            Items = list(
+              "string"
+            )
+          ),
+          TrustedKeyGroups = list(
+            Enabled = TRUE|FALSE,
+            Quantity = 123,
+            Items = list(
+              "string"
+            )
+          ),
+          ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
+          AllowedMethods = list(
+            Quantity = 123,
+            Items = list(
+              "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+            ),
+            CachedMethods = list(
+              Quantity = 123,
+              Items = list(
+                "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
+              )
+            )
+          ),
+          SmoothStreaming = TRUE|FALSE,
+          Compress = TRUE|FALSE,
+          LambdaFunctionAssociations = list(
+            Quantity = 123,
+            Items = list(
+              list(
+                LambdaFunctionARN = "string",
+                EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
+                IncludeBody = TRUE|FALSE
+              )
+            )
+          ),
+          FieldLevelEncryptionId = "string",
+          RealtimeLogConfigArn = "string",
+          CachePolicyId = "string",
+          OriginRequestPolicyId = "string",
           ForwardedValues = list(
             QueryString = TRUE|FALSE,
             Cookies = list(
@@ -191,42 +248,9 @@ in the \emph{Amazon CloudFront Developer Guide}.
               )
             )
           ),
-          TrustedSigners = list(
-            Enabled = TRUE|FALSE,
-            Quantity = 123,
-            Items = list(
-              "string"
-            )
-          ),
-          ViewerProtocolPolicy = "allow-all"|"https-only"|"redirect-to-https",
           MinTTL = 123,
-          AllowedMethods = list(
-            Quantity = 123,
-            Items = list(
-              "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
-            ),
-            CachedMethods = list(
-              Quantity = 123,
-              Items = list(
-                "GET"|"HEAD"|"POST"|"PUT"|"PATCH"|"OPTIONS"|"DELETE"
-              )
-            )
-          ),
-          SmoothStreaming = TRUE|FALSE,
           DefaultTTL = 123,
-          MaxTTL = 123,
-          Compress = TRUE|FALSE,
-          LambdaFunctionAssociations = list(
-            Quantity = 123,
-            Items = list(
-              list(
-                LambdaFunctionARN = "string",
-                EventType = "viewer-request"|"viewer-response"|"origin-request"|"origin-response",
-                IncludeBody = TRUE|FALSE
-              )
-            )
-          ),
-          FieldLevelEncryptionId = "string"
+          MaxTTL = 123
         )
       )
     ),
@@ -254,7 +278,7 @@ in the \emph{Amazon CloudFront Developer Guide}.
       CloudFrontDefaultCertificate = TRUE|FALSE,
       IAMCertificateId = "string",
       ACMCertificateArn = "string",
-      SSLSupportMethod = "sni-only"|"vip",
+      SSLSupportMethod = "sni-only"|"vip"|"static-ip",
       MinimumProtocolVersion = "SSLv3"|"TLSv1"|"TLSv1_2016"|"TLSv1.1_2016"|"TLSv1.2_2018"|"TLSv1.2_2019",
       Certificate = "string",
       CertificateSource = "cloudfront"|"iam"|"acm"

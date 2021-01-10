@@ -36,7 +36,7 @@ and should match the schema of what is returned by
   ResourceGroupName = "string",
   ComponentName = "string",
   Monitor = TRUE|FALSE,
-  Tier = "DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB"|"SQL_SERVER",
+  Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
   ComponentConfiguration = "string"
 )
 }

@@ -27,8 +27,6 @@ When you specify the limit and the next token, you receive a paginated
 response. Limit and next token are not applicable if you specify
 organization config rule names. It is only applicable, when you request
 all the organization config rules.
-
-Only a master account can call this API.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_organization_config_rules(

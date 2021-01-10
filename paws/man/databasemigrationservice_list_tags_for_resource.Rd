@@ -2,7 +2,8 @@
 % Please edit documentation in R/databasemigrationservice_operations.R
 \name{databasemigrationservice_list_tags_for_resource}
 \alias{databasemigrationservice_list_tags_for_resource}
-\title{Lists all tags for an AWS DMS resource}
+\title{Lists all metadata tags attached to an AWS DMS resource, including
+replication instance, endpoint, security group, and migration task}
 \usage{
 databasemigrationservice_list_tags_for_resource(ResourceArn)
 }
@@ -11,7 +12,11 @@ databasemigrationservice_list_tags_for_resource(ResourceArn)
 DMS resource.}
 }
 \description{
-Lists all tags for an AWS DMS resource.
+Lists all metadata tags attached to an AWS DMS resource, including
+replication instance, endpoint, security group, and migration task. For
+more information, see
+\href{https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html}{\code{Tag}}
+data type description.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

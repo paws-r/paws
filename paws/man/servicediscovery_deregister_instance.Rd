@@ -2,7 +2,7 @@
 % Please edit documentation in R/servicediscovery_operations.R
 \name{servicediscovery_deregister_instance}
 \alias{servicediscovery_deregister_instance}
-\title{Deletes the Amazon Route 53 DNS records and health check, if any, that
+\title{Deletes the Amazon Route 53 DNS records and health check, if any, that
 AWS Cloud Map created for the specified instance}
 \usage{
 servicediscovery_deregister_instance(ServiceId, InstanceId)
@@ -15,7 +15,7 @@ servicediscovery_deregister_instance(ServiceId, InstanceId)
 request.}
 }
 \description{
-Deletes the Amazon Route 53 DNS records and health check, if any, that
+Deletes the Amazon Route 53 DNS records and health check, if any, that
 AWS Cloud Map created for the specified instance.
 }
 \section{Request syntax}{

@@ -9,7 +9,7 @@ NULL
 #' run, test, debug, and release software in the cloud.
 #' 
 #' For more information about AWS Cloud9, see the [AWS Cloud9 User
-#' Guide](https://docs.aws.amazon.com/cloud9/latest/user-guide).
+#' Guide](https://docs.aws.amazon.com/cloud9/latest/user-guide/).
 #' 
 #' AWS Cloud9 supports these operations:
 #' 

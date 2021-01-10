@@ -11,8 +11,8 @@ wafv2_list_resources_for_web_acl(WebACLArn, ResourceType)
 \item{WebACLArn}{[required] The Amazon Resource Name (ARN) of the Web ACL.}
 
 \item{ResourceType}{Used for web ACLs that are scoped for regional applications. A regional
-application can be an Application Load Balancer (ALB) or an API Gateway
-stage.}
+application can be an Application Load Balancer (ALB), an API Gateway
+REST API, or an AppSync GraphQL API.}
 }
 \description{
 This is the latest version of \strong{AWS WAF}, named AWS WAFV2, released in
@@ -28,7 +28,7 @@ the list of AWS CloudFront resources, use the AWS CloudFront call
 \section{Request syntax}{
 \preformatted{svc$list_resources_for_web_acl(
   WebACLArn = "string",
-  ResourceType = "APPLICATION_LOAD_BALANCER"|"API_GATEWAY"
+  ResourceType = "APPLICATION_LOAD_BALANCER"|"API_GATEWAY"|"APPSYNC"
 )
 }
 }

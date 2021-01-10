@@ -21,24 +21,32 @@ The valid repository association states are:
 \item Setting up pull request notifications. This is required for pull
 requests to trigger a CodeGuru Reviewer review.
 
-If your repository \code{ProviderType} is \code{GitHub} or \code{Bitbucket},
-CodeGuru Reviewer creates webhooks in your repository to trigger
-CodeGuru Reviewer reviews. If you delete these webhooks, reviews
-of code in your repository cannot be triggered.
+If your repository \code{ProviderType} is \code{GitHub},
+\verb{GitHub Enterprise Server}, or \code{Bitbucket}, CodeGuru Reviewer
+creates webhooks in your repository to trigger CodeGuru Reviewer
+reviews. If you delete these webhooks, reviews of code in your
+repository cannot be triggered.
 \item Setting up source code access. This is required for CodeGuru
 Reviewer to securely clone code in your repository.
 }
 \item \strong{Failed}: The repository failed to associate or disassociate.
 \item \strong{Disassociating}: CodeGuru Reviewer is removing the repository's
 pull request notifications and source code access.
+\item \strong{Disassociated}: CodeGuru Reviewer successfully disassociated the
+repository. You can create a new association with this repository if
+you want to review source code in it later. You can control access
+to code reviews created in an associated repository with tags after
+it has been disassociated. For more information, see \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/auth-and-access-control-using-tags.html}{Using tags to control access to associated repositories}
+in the \emph{Amazon CodeGuru Reviewer User Guide}.
 }}
 
 \item{Names}{List of repository names to use as a filter.}
 
 \item{Owners}{List of owners to use as a filter. For AWS CodeCommit, it is the name of
 the CodeCommit account that was used to associate the repository. For
-other repository source providers, such as Bitbucket, this is name of
-the account that was used to associate the repository.}
+other repository source providers, such as Bitbucket and GitHub
+Enterprise Server, this is name of the account that was used to
+associate the repository.}
 
 \item{MaxResults}{The maximum number of repository association results returned by
 \code{ListRepositoryAssociations} in paginated output. When this parameter is
@@ -78,7 +86,7 @@ You can filter the returned list by
     "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer"
   ),
   States = list(
-    "Associated"|"Associating"|"Failed"|"Disassociating"
+    "Associated"|"Associating"|"Failed"|"Disassociating"|"Disassociated"
   ),
   Names = list(
     "string"

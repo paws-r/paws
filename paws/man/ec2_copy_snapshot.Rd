@@ -24,7 +24,7 @@ Region in your AWS configuration file.}
 not enabled, enable encryption using this parameter. Otherwise, omit
 this parameter. Encrypted snapshots are encrypted, even if you omit this
 parameter and encryption by default is not enabled. You cannot set this
-parameter to false. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption}
+parameter to false. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 
 \item{KmsKeyId}{The identifier of the AWS Key Management Service (AWS KMS) customer
@@ -34,12 +34,12 @@ specified, the encrypted state must be \code{true}.
 
 You can specify the CMK using any of the following:
 \itemize{
-\item Key ID. For example, key/1234abcd-12ab-34cd-56ef-1234567890ab.
+\item Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
 \item Key alias. For example, alias/ExampleAlias.
 \item Key ARN. For example,
-arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:key/\emph{abcd1234-a123-456a-a12b-a123b4cd56ef}.
+arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
 \item Alias ARN. For example,
-arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:alias/\emph{ExampleAlias}.
+arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
 }
 
 AWS authenticates the CMK asynchronously. Therefore, if you specify an
@@ -48,14 +48,14 @@ but eventually fails.}
 
 \item{PresignedUrl}{When you copy an encrypted source snapshot using the Amazon EC2 Query
 API, you must supply a pre-signed URL. This parameter is optional for
-unencrypted snapshots. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html}{Query Requests}.
+unencrypted snapshots. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Query-Requests.html}{Query requests}.
 
 The \code{PresignedUrl} should use the snapshot source endpoint, the
 \code{CopySnapshot} action, and include the \code{SourceRegion},
 \code{SourceSnapshotId}, and \code{DestinationRegion} parameters. The
 \code{PresignedUrl} must be signed using AWS Signature Version 4. Because EBS
 snapshots are stored in Amazon S3, the signing algorithm for this
-parameter uses the same logic that is described in \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests by Using Query Parameters (AWS Signature Version 4)}
+parameter uses the same logic that is described in \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-query-string-auth.html}{Authenticating Requests: Using Query Parameters (AWS Signature Version 4)}
 in the \emph{Amazon Simple Storage Service API Reference}. An invalid or
 improperly signed \code{PresignedUrl} will cause the copy operation to fail
 asynchronously, and the snapshot will move to an \code{error} state.}
@@ -90,7 +90,7 @@ you must have permissions for the CMK used to encrypt the snapshot.
 Snapshots created by copying another snapshot have an arbitrary volume
 ID that should not be used for any purpose.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html}{Copying an Amazon EBS Snapshot}
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html}{Copying an Amazon EBS snapshot}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
@@ -104,7 +104,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   SourceSnapshotId = "string",
   TagSpecifications = list(
     list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
       Tags = list(
         list(
           Key = "string",

@@ -2,7 +2,7 @@
 % Please edit documentation in R/codeartifact_operations.R
 \name{codeartifact_get_authorization_token}
 \alias{codeartifact_get_authorization_token}
-\title{Generates a temporary authentication token for accessing repositories in
+\title{Generates a temporary authorization token for accessing repositories in
 the domain}
 \usage{
 codeartifact_get_authorization_token(domain, domainOwner,
@@ -15,12 +15,17 @@ token.}
 \item{domainOwner}{The 12-digit account number of the AWS account that owns the domain. It
 does not include dashes or spaces.}
 
-\item{durationSeconds}{The time, in seconds, that the generated authorization token is valid.}
+\item{durationSeconds}{The time, in seconds, that the generated authorization token is valid.
+Valid values are \code{0} and any number between \code{900} (15 minutes) and
+\code{43200} (12 hours). A value of \code{0} will set the expiration of the
+authorization token to the same expiration of the user's role's
+temporary credentials.}
 }
 \description{
-Generates a temporary authentication token for accessing repositories in
+Generates a temporary authorization token for accessing repositories in
 the domain. This API requires the \code{codeartifact:GetAuthorizationToken}
-and \code{sts:GetServiceBearerToken} permissions.
+and \code{sts:GetServiceBearerToken} permissions. For more information about
+authorization tokens, see \href{https://docs.aws.amazon.com/codeartifact/latest/ug/tokens-authentication.html}{AWS CodeArtifact authentication and tokens}.
 }
 \details{
 CodeArtifact authorization tokens are valid for a period of 12 hours

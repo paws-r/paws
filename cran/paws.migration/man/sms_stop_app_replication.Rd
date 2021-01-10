@@ -2,15 +2,17 @@
 % Please edit documentation in R/sms_operations.R
 \name{sms_stop_app_replication}
 \alias{sms_stop_app_replication}
-\title{Stops replicating an application}
+\title{Stops replicating the specified application by deleting the replication
+job for each server in the application}
 \usage{
 sms_stop_app_replication(appId)
 }
 \arguments{
-\item{appId}{ID of the application to stop replicating.}
+\item{appId}{The ID of the application.}
 }
 \description{
-Stops replicating an application.
+Stops replicating the specified application by deleting the replication
+job for each server in the application.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_app_replication(

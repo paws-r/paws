@@ -101,7 +101,7 @@ assigned number, for example, DFW3. The three-letter code typically
 corresponds with the International Air Transport Association airport
 code for an airport near the edge location. (These abbreviations might
 change in the future.) For a list of edge locations, see "The Route 53
-Global Network" on the \href{http://aws.amazon.com/route53/details/}{Route 53 Product Details} page.
+Global Network" on the \href{https://aws.amazon.com/route53/features/}{Route 53 Product Details} page.
 }
 
 \subsection{Queries That Are Logged}{
@@ -128,7 +128,7 @@ in the \emph{Amazon Route 53 Developer Guide}.
 
 \subsection{Pricing}{
 
-For information about charges for query logs, see \href{http://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
+For information about charges for query logs, see \href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
 }
 
 \subsection{How to Stop Logging}{

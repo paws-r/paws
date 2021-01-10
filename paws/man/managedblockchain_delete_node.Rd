@@ -2,20 +2,33 @@
 % Please edit documentation in R/managedblockchain_operations.R
 \name{managedblockchain_delete_node}
 \alias{managedblockchain_delete_node}
-\title{Deletes a peer node from a member that your AWS account owns}
+\title{Deletes a node that your AWS account owns}
 \usage{
 managedblockchain_delete_node(NetworkId, MemberId, NodeId)
 }
 \arguments{
-\item{NetworkId}{[required] The unique identifier of the network that the node belongs to.}
+\item{NetworkId}{[required] The unique identifier of the network that the node is on.
 
-\item{MemberId}{[required] The unique identifier of the member that owns this node.}
+Ethereum public networks have the following \code{NetworkId}s:
+\itemize{
+\item \code{n-ethereum-mainnet}
+\item \code{n-ethereum-rinkeby}
+\item \code{n-ethereum-ropsten}
+}}
+
+\item{MemberId}{The unique identifier of the member that owns this node.
+
+Applies only to Hyperledger Fabric and is required for Hyperledger
+Fabric.}
 
 \item{NodeId}{[required] The unique identifier of the node.}
 }
 \description{
-Deletes a peer node from a member that your AWS account owns. All data
-on the node is lost and cannot be recovered.
+Deletes a node that your AWS account owns. All data on the node is lost
+and cannot be recovered.
+}
+\details{
+Applies to Hyperledger Fabric and Ethereum.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_node(

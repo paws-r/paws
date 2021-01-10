@@ -2,7 +2,7 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_describe_backup_job}
 \alias{backup_describe_backup_job}
-\title{Returns metadata associated with creating a backup of a resource}
+\title{Returns backup job details for the specified BackupJobId}
 \usage{
 backup_describe_backup_job(BackupJobId)
 }
@@ -10,7 +10,7 @@ backup_describe_backup_job(BackupJobId)
 \item{BackupJobId}{[required] Uniquely identifies a request to AWS Backup to back up a resource.}
 }
 \description{
-Returns metadata associated with creating a backup of a resource.
+Returns backup job details for the specified \code{BackupJobId}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_backup_job(

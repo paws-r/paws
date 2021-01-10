@@ -2,19 +2,25 @@
 % Please edit documentation in R/managedblockchain_operations.R
 \name{managedblockchain_get_node}
 \alias{managedblockchain_get_node}
-\title{Returns detailed information about a peer node}
+\title{Returns detailed information about a node}
 \usage{
 managedblockchain_get_node(NetworkId, MemberId, NodeId)
 }
 \arguments{
-\item{NetworkId}{[required] The unique identifier of the network to which the node belongs.}
+\item{NetworkId}{[required] The unique identifier of the network that the node is on.}
 
-\item{MemberId}{[required] The unique identifier of the member that owns the node.}
+\item{MemberId}{The unique identifier of the member that owns the node.
+
+Applies only to Hyperledger Fabric and is required for Hyperledger
+Fabric.}
 
 \item{NodeId}{[required] The unique identifier of the node.}
 }
 \description{
-Returns detailed information about a peer node.
+Returns detailed information about a node.
+}
+\details{
+Applies to Hyperledger Fabric and Ethereum.
 }
 \section{Request syntax}{
 \preformatted{svc$get_node(

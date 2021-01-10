@@ -5,7 +5,7 @@
 \title{Creates a virtual tape by using your own barcode}
 \usage{
 storagegateway_create_tape_with_barcode(GatewayARN, TapeSizeInBytes,
-  TapeBarcode, KMSEncrypted, KMSKey, PoolId, Tags)
+  TapeBarcode, KMSEncrypted, KMSKey, PoolId, Worm, Tags)
 }
 \arguments{
 \item{GatewayARN}{[required] The unique Amazon Resource Name (ARN) that represents the gateway to
@@ -39,6 +39,9 @@ Deep Archive) that corresponds to the pool.
 
 Valid Values: \code{GLACIER} | \code{DEEP_ARCHIVE}}
 
+\item{Worm}{Set to \code{TRUE} if the tape you are creating is to be configured as a
+write-once-read-many (WORM) tape.}
+
 \item{Tags}{A list of up to 50 tags that can be assigned to a virtual tape that has
 a barcode. Each tag is a key-value pair.
 
@@ -49,7 +52,7 @@ the maximum length for a tag's value is 256.}
 }
 \description{
 Creates a virtual tape by using your own barcode. You write data to the
-virtual tape and then archive the tape. A barcode is unique and can not
+virtual tape and then archive the tape. A barcode is unique and cannot
 be reused if it has already been used on a tape. This applies to
 barcodes used on deleted tapes. This operation is only supported in the
 tape gateway type.
@@ -67,6 +70,7 @@ gateway.
   KMSEncrypted = TRUE|FALSE,
   KMSKey = "string",
   PoolId = "string",
+  Worm = TRUE|FALSE,
   Tags = list(
     list(
       Key = "string",

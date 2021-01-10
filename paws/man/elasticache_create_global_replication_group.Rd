@@ -10,8 +10,17 @@ elasticache_create_global_replication_group(
   PrimaryReplicationGroupId)
 }
 \arguments{
-\item{GlobalReplicationGroupIdSuffix}{[required] The suffix name of a Global Datastore. The suffix guarantees uniqueness
-of the Global Datastore name across multiple regions.}
+\item{GlobalReplicationGroupIdSuffix}{[required] The suffix name of a Global Datastore. Amazon ElastiCache automatically
+applies a prefix to the Global Datastore ID when it is created. Each AWS
+Region has its own prefix. For instance, a Global Datastore ID created
+in the US-West-1 region will begin with "dsdfu" along with the suffix
+name you provide. The suffix, combined with the auto-generated prefix,
+guarantees uniqueness of the Global Datastore name across multiple
+regions.
+
+For a full list of AWS Regions and their respective Global Datastore iD
+prefixes, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastores-CLI.html}{Using the AWS CLI with Global Datastores}
+.}
 
 \item{GlobalReplicationGroupDescription}{Provides details of the Global Datastore}
 
@@ -23,7 +32,7 @@ Global Datastore for Redis offers fully managed, fast, reliable and
 secure cross-region replication. Using Global Datastore for Redis, you
 can create cross-region read replica clusters for ElastiCache for Redis
 to enable low-latency reads and disaster recovery across regions. For
-more information, see Replication Across Regions Using Global Datastore.
+more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html}{Replication Across Regions Using Global Datastore}.
 }
 \details{
 \itemize{

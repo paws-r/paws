@@ -18,7 +18,7 @@ otherwise, the properties of the new listener must match the properties
 of the existing listener.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html}{Listeners for Your Classic Load Balancer}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html}{Listeners for Your Classic Load Balancer}
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{

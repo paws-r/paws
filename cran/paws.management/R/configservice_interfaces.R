@@ -173,6 +173,18 @@ NULL
   list()
 }
 
+.configservice$delete_stored_query_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(QueryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$delete_stored_query_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .configservice$deliver_config_snapshot_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(deliveryChannelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -277,7 +289,7 @@ NULL
 
 .configservice$describe_configuration_aggregators_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationAggregators = structure(list(structure(list(ConfigurationAggregatorName = structure(logical(0), tags = list(type = "string")), ConfigurationAggregatorArn = structure(logical(0), tags = list(type = "string")), AccountAggregationSources = structure(list(structure(list(AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), OrganizationAggregationSource = structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationAggregators = structure(list(structure(list(ConfigurationAggregatorName = structure(logical(0), tags = list(type = "string")), ConfigurationAggregatorArn = structure(logical(0), tags = list(type = "string")), AccountAggregationSources = structure(list(structure(list(AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), OrganizationAggregationSource = structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -639,6 +651,18 @@ NULL
   return(populate(args, shape))
 }
 
+.configservice$get_stored_query_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(QueryName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$get_stored_query_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StoredQuery = structure(list(QueryId = structure(logical(0), tags = list(box = TRUE, type = "string")), QueryArn = structure(logical(0), tags = list(box = TRUE, type = "string")), QueryName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(box = TRUE, type = "string")), Expression = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .configservice$list_aggregate_discovered_resources_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ConfigurationAggregatorName = structure(logical(0), tags = list(type = "string")), ResourceType = structure(logical(0), tags = list(type = "string")), Filters = structure(list(AccountId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ResourceName = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -660,6 +684,18 @@ NULL
 .configservice$list_discovered_resources_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(resourceIdentifiers = structure(list(structure(list(resourceType = structure(logical(0), tags = list(type = "string")), resourceId = structure(logical(0), tags = list(type = "string")), resourceName = structure(logical(0), tags = list(type = "string")), resourceDeletionTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$list_stored_queries_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(box = TRUE, type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$list_stored_queries_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StoredQueryMetadata = structure(list(structure(list(QueryId = structure(logical(0), tags = list(type = "string")), QueryArn = structure(logical(0), tags = list(type = "string")), QueryName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -705,7 +741,7 @@ NULL
 
 .configservice$put_configuration_aggregator_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationAggregator = structure(list(ConfigurationAggregatorName = structure(logical(0), tags = list(type = "string")), ConfigurationAggregatorArn = structure(logical(0), tags = list(type = "string")), AccountAggregationSources = structure(list(structure(list(AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), OrganizationAggregationSource = structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationAggregator = structure(list(ConfigurationAggregatorName = structure(logical(0), tags = list(type = "string")), ConfigurationAggregatorArn = structure(logical(0), tags = list(type = "string")), AccountAggregationSources = structure(list(structure(list(AccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), OrganizationAggregationSource = structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), AwsRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AllAwsRegions = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedBy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -750,6 +786,18 @@ NULL
 .configservice$put_evaluations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(FailedEvaluations = structure(list(structure(list(ComplianceResourceType = structure(logical(0), tags = list(type = "string")), ComplianceResourceId = structure(logical(0), tags = list(type = "string")), ComplianceType = structure(logical(0), tags = list(type = "string")), Annotation = structure(logical(0), tags = list(type = "string")), OrderingTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$put_external_evaluation_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConfigRuleName = structure(logical(0), tags = list(type = "string")), ExternalEvaluation = structure(list(ComplianceResourceType = structure(logical(0), tags = list(type = "string")), ComplianceResourceId = structure(logical(0), tags = list(type = "string")), ComplianceType = structure(logical(0), tags = list(type = "string")), Annotation = structure(logical(0), tags = list(type = "string")), OrderingTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$put_external_evaluation_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -820,6 +868,18 @@ NULL
 .configservice$put_retention_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RetentionConfiguration = structure(list(Name = structure(logical(0), tags = list(type = "string")), RetentionPeriodInDays = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$put_stored_query_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(StoredQuery = structure(list(QueryId = structure(logical(0), tags = list(box = TRUE, type = "string")), QueryArn = structure(logical(0), tags = list(box = TRUE, type = "string")), QueryName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(box = TRUE, type = "string")), Expression = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.configservice$put_stored_query_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(QueryArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

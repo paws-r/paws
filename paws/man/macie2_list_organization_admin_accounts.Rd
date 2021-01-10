@@ -2,8 +2,8 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_list_organization_admin_accounts}
 \alias{macie2_list_organization_admin_accounts}
-\title{Retrieves information about the account that's designated as the
-delegated administrator of Amazon Macie for an AWS organization}
+\title{Retrieves information about the delegated Amazon Macie administrator
+account for an AWS organization}
 \usage{
 macie2_list_organization_admin_accounts(maxResults, nextToken)
 }
@@ -15,8 +15,8 @@ response.}
 paginated response.}
 }
 \description{
-Retrieves information about the account that's designated as the
-delegated administrator of Amazon Macie for an AWS organization.
+Retrieves information about the delegated Amazon Macie administrator
+account for an AWS organization.
 }
 \section{Request syntax}{
 \preformatted{svc$list_organization_admin_accounts(

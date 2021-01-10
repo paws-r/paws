@@ -10,24 +10,31 @@ pi(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-AWS Performance Insights enables you to monitor and explore different
-dimensions of database load based on data captured from a running RDS
-instance. The guide provides detailed information about Performance
-Insights data types, parameters and errors. For more information about
-Performance Insights capabilities see \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon RDS Performance Insights}
-in the \emph{Amazon RDS User Guide}.
+Amazon RDS Performance Insights
 
-The AWS Performance Insights API provides visibility into the
-performance of your RDS instance, when Performance Insights is enabled
-for supported engine types. While Amazon CloudWatch provides the
-authoritative source for AWS service vended monitoring metrics, AWS
-Performance Insights offers a domain-specific view of database load
-measured as Average Active Sessions and provided to API consumers as a
-2-dimensional time-series dataset. The time dimension of the data
-provides DB load data for each time point in the queried time range, and
-each time point decomposes overall load in relation to the requested
-dimensions, such as SQL, Wait-event, User or Host, measured at that time
-point.
+Amazon RDS Performance Insights enables you to monitor and explore
+different dimensions of database load based on data captured from a
+running DB instance. The guide provides detailed information about
+Performance Insights data types, parameters and errors.
+
+When Performance Insights is enabled, the Amazon RDS Performance
+Insights API provides visibility into the performance of your DB
+instance. Amazon CloudWatch provides the authoritative source for AWS
+service-vended monitoring metrics. Performance Insights offers a
+domain-specific view of DB load.
+
+DB load is measured as Average Active Sessions. Performance Insights
+provides the data to API consumers as a two-dimensional time-series
+dataset. The time dimension provides DB load data for each time point in
+the queried time range. Each time point decomposes overall load in
+relation to the requested dimensions, measured at that time point.
+Examples include SQL, Wait event, User, and Host.
+\itemize{
+\item To learn more about Performance Insights and Amazon Aurora DB
+instances, go to the \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html}{Amazon Aurora User Guide}.
+\item To learn more about Performance Insights and Amazon RDS DB
+instances, go to the \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Amazon RDS User Guide}.
+}
 }
 \section{Service syntax}{
 \preformatted{svc <- pi(

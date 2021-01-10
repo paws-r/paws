@@ -27,7 +27,7 @@ value that is lower than the current size of the group, the Auto Scaling
 group uses its termination policy to determine which instances to
 terminate.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-manual-scaling.html}{Manual Scaling}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-manual-scaling.html}{Manual scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

@@ -5,7 +5,7 @@
 \title{Creates a data source that you use to with an Amazon Kendra index}
 \usage{
 kendra_create_data_source(Name, IndexId, Type, Configuration,
-  Description, Schedule, RoleArn, Tags)
+  Description, Schedule, RoleArn, Tags, ClientToken)
 }
 \arguments{
 \item{Name}{[required] A unique name for the data source. A data source name can't be changed
@@ -16,33 +16,50 @@ source.}
 
 \item{Type}{[required] The type of repository that contains the data source.}
 
-\item{Configuration}{[required] The connector configuration information that is required to access the
-repository.}
+\item{Configuration}{The connector configuration information that is required to access the
+repository.
+
+You can't specify the \code{Configuration} parameter when the \code{Type}
+parameter is set to \code{CUSTOM}. If you do, you receive a
+\code{ValidationException} exception.
+
+The \code{Configuration} parameter is required for all other data sources.}
 
 \item{Description}{A description for the data source.}
 
 \item{Schedule}{Sets the frequency that Amazon Kendra will check the documents in your
 repository and update the index. If you don't set a schedule Amazon
 Kendra will not periodically update the index. You can call the
-\code{StartDataSourceSyncJob} operation to update the index.}
+\code{StartDataSourceSyncJob} operation to update the index.
 
-\item{RoleArn}{[required] The Amazon Resource Name (ARN) of a role with permission to access the
-data source. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM Roles for Amazon Kendra}.}
+You can't specify the \code{Schedule} parameter when the \code{Type} parameter is
+set to \code{CUSTOM}. If you do, you receive a \code{ValidationException}
+exception.}
+
+\item{RoleArn}{The Amazon Resource Name (ARN) of a role with permission to access the
+data source. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM Roles for Amazon Kendra}.
+
+You can't specify the \code{RoleArn} parameter when the \code{Type} parameter is
+set to \code{CUSTOM}. If you do, you receive a \code{ValidationException}
+exception.
+
+The \code{RoleArn} parameter is required for all other data sources.}
 
 \item{Tags}{A list of key-value pairs that identify the data source. You can use the
 tags to identify and organize your resources and to control access to
 resources.}
+
+\item{ClientToken}{A token that you provide to identify the request to create a data
+source. Multiple calls to the \code{CreateDataSource} operation with the same
+client token will create only one data source.}
 }
 \description{
 Creates a data source that you use to with an Amazon Kendra index.
 }
 \details{
-You specify a name, connector type and description for your data source.
-You can choose between an S3 connector, a SharePoint Online connector,
-and a database connector.
-
-You also specify configuration information such as document metadata
-(author, source URI, and so on) and user context information.
+You specify a name, data source connector type and description for your
+data source. You also specify configuration information such as document
+metadata (author, source URI, and so on) and user context information.
 
 \code{CreateDataSource} is a synchronous operation. The operation returns 200
 if the data source was successfully created. Otherwise, an exception is
@@ -52,11 +69,14 @@ raised.
 \preformatted{svc$create_data_source(
   Name = "string",
   IndexId = "string",
-  Type = "S3"|"SHAREPOINT"|"DATABASE"|"SALESFORCE"|"ONEDRIVE"|"SERVICENOW",
+  Type = "S3"|"SHAREPOINT"|"DATABASE"|"SALESFORCE"|"ONEDRIVE"|"SERVICENOW"|"CUSTOM"|"CONFLUENCE"|"GOOGLEDRIVE",
   Configuration = list(
     S3Configuration = list(
       BucketName = "string",
       InclusionPrefixes = list(
+        "string"
+      ),
+      InclusionPatterns = list(
         "string"
       ),
       ExclusionPatterns = list(
@@ -98,7 +118,8 @@ raised.
           IndexFieldName = "string"
         )
       ),
-      DocumentTitleFieldName = "string"
+      DocumentTitleFieldName = "string",
+      DisableLocalGroups = TRUE|FALSE
     ),
     DatabaseConfiguration = list(
       DatabaseEngineType = "RDS_AURORA_MYSQL"|"RDS_AURORA_POSTGRESQL"|"RDS_MYSQL"|"RDS_POSTGRESQL",
@@ -134,6 +155,9 @@ raised.
       ),
       AclConfiguration = list(
         AllowedGroupsColumnName = "string"
+      ),
+      SqlConfiguration = list(
+        QueryIdentifiersEnclosingOption = "DOUBLE_QUOTES"|"NONE"
       )
     ),
     SalesforceConfiguration = list(
@@ -239,7 +263,8 @@ raised.
           DateFieldFormat = "string",
           IndexFieldName = "string"
         )
-      )
+      ),
+      DisableLocalGroups = TRUE|FALSE
     ),
     ServiceNowConfiguration = list(
       HostUrl = "string",
@@ -281,6 +306,95 @@ raised.
           )
         )
       )
+    ),
+    ConfluenceConfiguration = list(
+      ServerUrl = "string",
+      SecretArn = "string",
+      Version = "CLOUD"|"SERVER",
+      SpaceConfiguration = list(
+        CrawlPersonalSpaces = TRUE|FALSE,
+        CrawlArchivedSpaces = TRUE|FALSE,
+        IncludeSpaces = list(
+          "string"
+        ),
+        ExcludeSpaces = list(
+          "string"
+        ),
+        SpaceFieldMappings = list(
+          list(
+            DataSourceFieldName = "DISPLAY_URL"|"ITEM_TYPE"|"SPACE_KEY"|"URL",
+            DateFieldFormat = "string",
+            IndexFieldName = "string"
+          )
+        )
+      ),
+      PageConfiguration = list(
+        PageFieldMappings = list(
+          list(
+            DataSourceFieldName = "AUTHOR"|"CONTENT_STATUS"|"CREATED_DATE"|"DISPLAY_URL"|"ITEM_TYPE"|"LABELS"|"MODIFIED_DATE"|"PARENT_ID"|"SPACE_KEY"|"SPACE_NAME"|"URL"|"VERSION",
+            DateFieldFormat = "string",
+            IndexFieldName = "string"
+          )
+        )
+      ),
+      BlogConfiguration = list(
+        BlogFieldMappings = list(
+          list(
+            DataSourceFieldName = "AUTHOR"|"DISPLAY_URL"|"ITEM_TYPE"|"LABELS"|"PUBLISH_DATE"|"SPACE_KEY"|"SPACE_NAME"|"URL"|"VERSION",
+            DateFieldFormat = "string",
+            IndexFieldName = "string"
+          )
+        )
+      ),
+      AttachmentConfiguration = list(
+        CrawlAttachments = TRUE|FALSE,
+        AttachmentFieldMappings = list(
+          list(
+            DataSourceFieldName = "AUTHOR"|"CONTENT_TYPE"|"CREATED_DATE"|"DISPLAY_URL"|"FILE_SIZE"|"ITEM_TYPE"|"PARENT_ID"|"SPACE_KEY"|"SPACE_NAME"|"URL"|"VERSION",
+            DateFieldFormat = "string",
+            IndexFieldName = "string"
+          )
+        )
+      ),
+      VpcConfiguration = list(
+        SubnetIds = list(
+          "string"
+        ),
+        SecurityGroupIds = list(
+          "string"
+        )
+      ),
+      InclusionPatterns = list(
+        "string"
+      ),
+      ExclusionPatterns = list(
+        "string"
+      )
+    ),
+    GoogleDriveConfiguration = list(
+      SecretArn = "string",
+      InclusionPatterns = list(
+        "string"
+      ),
+      ExclusionPatterns = list(
+        "string"
+      ),
+      FieldMappings = list(
+        list(
+          DataSourceFieldName = "string",
+          DateFieldFormat = "string",
+          IndexFieldName = "string"
+        )
+      ),
+      ExcludeMimeTypes = list(
+        "string"
+      ),
+      ExcludeUserAccounts = list(
+        "string"
+      ),
+      ExcludeSharedDrives = list(
+        "string"
+      )
     )
   ),
   Description = "string",
@@ -291,7 +405,8 @@ raised.
       Key = "string",
       Value = "string"
     )
-  )
+  ),
+  ClientToken = "string"
 )
 }
 }

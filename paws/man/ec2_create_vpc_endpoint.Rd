@@ -24,15 +24,16 @@ Default: Gateway}
 DescribeVpcEndpointServices request, or get the name from the service
 provider.}
 
-\item{PolicyDocument}{A policy to attach to the endpoint that controls access to the service.
-The policy must be in valid JSON format. If this parameter is not
-specified, we attach a default policy that allows full access to the
-service.}
+\item{PolicyDocument}{(Interface and gateway endpoints) A policy to attach to the endpoint
+that controls access to the service. The policy must be in valid JSON
+format. If this parameter is not specified, we attach a default policy
+that allows full access to the service.}
 
 \item{RouteTableIds}{(Gateway endpoint) One or more route table IDs.}
 
-\item{SubnetIds}{(Interface endpoint) The ID of one or more subnets in which to create an
-endpoint network interface.}
+\item{SubnetIds}{(Interface and Gateway Load Balancer endpoints) The ID of one or more
+subnets in which to create an endpoint network interface. For a Gateway
+Load Balancer endpoint, you can specify one subnet only.}
 
 \item{SecurityGroupIds}{(Interface endpoint) The ID of one or more security groups to associate
 with the endpoint network interface.}
@@ -76,12 +77,16 @@ serves as an endpoint for communicating with the specified service. You
 can specify the subnets in which to create an endpoint, and the security
 groups to associate with the endpoint network interface.
 
+A \code{GatewayLoadBalancer} endpoint is a network interface in your subnet
+that serves an endpoint for communicating with a Gateway Load Balancer
+that you've configured as a VPC endpoint service.
+
 Use DescribeVpcEndpointServices to get a list of supported services.
 }
 \section{Request syntax}{
 \preformatted{svc$create_vpc_endpoint(
   DryRun = TRUE|FALSE,
-  VpcEndpointType = "Interface"|"Gateway",
+  VpcEndpointType = "Interface"|"Gateway"|"GatewayLoadBalancer",
   VpcId = "string",
   ServiceName = "string",
   PolicyDocument = "string",
@@ -98,7 +103,7 @@ Use DescribeVpcEndpointServices to get a list of supported services.
   PrivateDnsEnabled = TRUE|FALSE,
   TagSpecifications = list(
     list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
       Tags = list(
         list(
           Key = "string",

@@ -16,7 +16,7 @@ pending changes (\code{false}). Defaults to \code{false}.}
 Gets the availability options configured for a domain. By default, shows
 the configuration with any pending changes. Set the \code{Deployed} option to
 \code{true} to show the active configuration and exclude pending changes. For
-more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html}{Configuring Availability Options}
+more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html}{Configuring Availability Options}
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{

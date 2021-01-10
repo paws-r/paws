@@ -6,7 +6,7 @@
 \usage{
 batch_submit_job(jobName, jobQueue, arrayProperties, dependsOn,
   jobDefinition, parameters, containerOverrides, nodeOverrides,
-  retryStrategy, timeout)
+  retryStrategy, propagateTags, timeout, tags)
 }
 \arguments{
 \item{jobName}{[required] The name of the job. The first character must be alphanumeric, and up to
@@ -43,31 +43,53 @@ the job definition.}
 
 \item{containerOverrides}{A list of container overrides in JSON format that specify the name of a
 container in the specified job definition and the overrides it should
-receive. You can override the default command for a container (that is
+receive. You can override the default command for a container (that's
 specified in the job definition or the Docker image) with a \code{command}
 override. You can also override existing environment variables (that are
 specified in the job definition or Docker image) on a container or add
 new environment variables to it with an \code{environment} override.}
 
 \item{nodeOverrides}{A list of node overrides in JSON format that specify the node range to
-target and the container overrides for that node range.}
+target and the container overrides for that node range.
+
+This parameter isn't applicable to jobs running on Fargate resources;
+use \code{containerOverrides} instead.}
 
 \item{retryStrategy}{The retry strategy to use for failed jobs from this SubmitJob operation.
 When a retry strategy is specified here, it overrides the retry strategy
 defined in the job definition.}
 
+\item{propagateTags}{Specifies whether to propagate the tags from the job or job definition
+to the corresponding Amazon ECS task. If no value is specified, the tags
+aren't propagated. Tags can only be propagated to the tasks during task
+creation. For tags with the same name, job tags are given priority over
+job definitions tags. If the total number of combined tags from the job
+and job definition is over 50, the job is moved to the \code{FAILED} state.
+When specified, this overrides the tag propagation setting in the job
+definition.}
+
 \item{timeout}{The timeout configuration for this SubmitJob operation. You can specify
 a timeout duration after which AWS Batch terminates your jobs if they
-have not finished. If a job is terminated due to a timeout, it is not
+haven't finished. If a job is terminated due to a timeout, it isn't
 retried. The minimum value for the timeout is 60 seconds. This
 configuration overrides any timeout configuration specified in the job
 definition. For array jobs, child jobs have the same timeout
-configuration as the parent job. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html}{Job Timeouts}
+configuration as the parent job. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/}{Job Timeouts}
 in the \emph{Amazon Elastic Container Service Developer Guide}.}
+
+\item{tags}{The tags that you apply to the job request to help you categorize and
+organize your resources. Each tag consists of a key and an optional
+value. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
+in \emph{AWS General Reference}.}
 }
 \description{
 Submits an AWS Batch job from a job definition. Parameters specified
 during SubmitJob override parameters defined in the job definition.
+}
+\details{
+Jobs run on Fargate resources don't run for more than 14 days. After 14
+days, the Fargate resources might no longer be available and the job is
+terminated.
 }
 \section{Request syntax}{
 \preformatted{svc$submit_job(
@@ -102,7 +124,7 @@ during SubmitJob override parameters defined in the job definition.
     resourceRequirements = list(
       list(
         value = "string",
-        type = "GPU"
+        type = "GPU"|"VCPU"|"MEMORY"
       )
     )
   ),
@@ -127,7 +149,7 @@ during SubmitJob override parameters defined in the job definition.
           resourceRequirements = list(
             list(
               value = "string",
-              type = "GPU"
+              type = "GPU"|"VCPU"|"MEMORY"
             )
           )
         )
@@ -135,10 +157,22 @@ during SubmitJob override parameters defined in the job definition.
     )
   ),
   retryStrategy = list(
-    attempts = 123
+    attempts = 123,
+    evaluateOnExit = list(
+      list(
+        onStatusReason = "string",
+        onReason = "string",
+        onExitCode = "string",
+        action = "RETRY"|"EXIT"
+      )
+    )
   ),
+  propagateTags = TRUE|FALSE,
   timeout = list(
     attemptDurationSeconds = 123
+  ),
+  tags = list(
+    "string"
   )
 )
 }

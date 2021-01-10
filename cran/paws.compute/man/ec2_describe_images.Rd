@@ -26,7 +26,7 @@ the EBS volume.
 \item \code{block-device-mapping.volume-size} - The volume size of the EBS
 volume, in GiB.
 \item \code{block-device-mapping.volume-type} - The volume type of the EBS
-volume (\code{gp2} | \code{io1} | \code{st1 }| \code{sc1} | \code{standard}).
+volume (\code{gp2} | \code{io1} | \code{io2} | \code{st1 }| \code{sc1} | \code{standard}).
 \item \code{block-device-mapping.encrypted} - A Boolean that indicates whether
 the EBS volume is encrypted.
 \item \code{description} - The description of the image (provided during image

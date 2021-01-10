@@ -43,7 +43,8 @@ Components and Terminology topic in the \emph{AWS DataSync User Guide}.
     PosixPermissions = "NONE"|"PRESERVE",
     BytesPerSecond = 123,
     TaskQueueing = "ENABLED"|"DISABLED",
-    LogLevel = "OFF"|"BASIC"|"TRANSFER"
+    LogLevel = "OFF"|"BASIC"|"TRANSFER",
+    TransferMode = "CHANGED"|"ALL"
   ),
   Includes = list(
     list(

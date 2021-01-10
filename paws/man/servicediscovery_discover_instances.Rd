@@ -5,7 +5,7 @@
 \title{Discovers registered instances for a specified namespace and service}
 \usage{
 servicediscovery_discover_instances(NamespaceName, ServiceName,
-  MaxResults, QueryParameters, HealthStatus)
+  MaxResults, QueryParameters, OptionalParameters, HealthStatus)
 }
 \arguments{
 \item{NamespaceName}{[required] The name of the namespace that you specified when you registered the
@@ -18,10 +18,15 @@ instance.}
 the response to a \code{DiscoverInstances} request. If you don't specify a
 value for \code{MaxResults}, AWS Cloud Map returns up to 100 instances.}
 
-\item{QueryParameters}{A string map that contains attributes with values that you can use to
-filter instances by any custom attribute that you specified when you
-registered the instance. Only instances that match all the specified
-key/value pairs will be returned.}
+\item{QueryParameters}{Filters to scope the results based on custom attributes for the
+instance. For example, \verb{\\\{version=v1, az=1a\\\}}. Only instances that match
+all the specified key-value pairs will be returned.}
+
+\item{OptionalParameters}{Opportunistic filters to scope the results based on custom attributes.
+If there are instances that match both the filters specified in both the
+\code{QueryParameters} parameter and this parameter, they are returned.
+Otherwise, these filters are ignored and only instances that match the
+filters specified in the \code{QueryParameters} parameter are returned.}
 
 \item{HealthStatus}{The health status of the instances that you want to discover.}
 }
@@ -37,6 +42,9 @@ queries to discover instances.
   ServiceName = "string",
   MaxResults = 123,
   QueryParameters = list(
+    "string"
+  ),
+  OptionalParameters = list(
     "string"
   ),
   HealthStatus = "HEALTHY"|"UNHEALTHY"|"ALL"

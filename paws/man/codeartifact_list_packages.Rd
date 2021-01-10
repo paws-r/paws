@@ -23,6 +23,7 @@ does not include dashes or spaces.}
 \item \code{pypi}: A Python Package Index (PyPI) package.
 \item \code{maven}: A Maven package that contains compiled code in a
 distributable format, such as a JAR file.
+\item \code{nuget}: A NuGet package.
 }}
 
 \item{namespace}{The namespace of the package. The package component that specifies its
@@ -32,10 +33,12 @@ namespace depends on its type. For example:
 \item The namespace of an npm package is its \code{scope}.
 \item A Python package does not contain a corresponding component, so
 Python packages do not have a namespace.
+\item A NuGet package does not contain a corresponding component, so NuGet
+packages do not have a namespace.
 }}
 
-\item{packagePrefix}{A prefix used to filter returned repositories. Only repositories with
-names that start with \code{repositoryPrefix} are returned.}
+\item{packagePrefix}{A prefix used to filter returned packages. Only packages with names that
+start with \code{packagePrefix} are returned.}
 
 \item{maxResults}{The maximum number of results to return per page.}
 
@@ -53,7 +56,7 @@ objects for packages in a repository that match the request parameters.
   domain = "string",
   domainOwner = "string",
   repository = "string",
-  format = "npm"|"pypi"|"maven",
+  format = "npm"|"pypi"|"maven"|"nuget",
   namespace = "string",
   packagePrefix = "string",
   maxResults = 123,

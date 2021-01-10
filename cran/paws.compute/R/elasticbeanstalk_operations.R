@@ -104,8 +104,8 @@ elasticbeanstalk_apply_environment_managed_action <- function(EnvironmentName = 
 #' call is made, Elastic Beanstalk uses the associated operations role for
 #' permissions to downstream services during subsequent calls acting on
 #' this environment. For more information, see [Operations
-#' roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html)
-#' in the *AWS Elastic Beanstalk Developer Guide*.
+#' roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/) in the
+#' *AWS Elastic Beanstalk Developer Guide*.
 #'
 #' @usage
 #' elasticbeanstalk_associate_environment_operations_role(EnvironmentName,
@@ -678,8 +678,8 @@ elasticbeanstalk_create_configuration_template <- function(ApplicationName, Temp
 #' and during subsequent calls acting on this environment. To specify an
 #' operations role, you must have the `iam:PassRole` permission for the
 #' role. For more information, see [Operations
-#' roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html)
-#' in the *AWS Elastic Beanstalk Developer Guide*.
+#' roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/) in the
+#' *AWS Elastic Beanstalk Developer Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -1912,8 +1912,8 @@ elasticbeanstalk_describe_platform_version <- function(PlatformArn = NULL) {
 #' made, Elastic Beanstalk uses the caller's permissions for permissions to
 #' downstream services during subsequent calls acting on this environment.
 #' For more information, see [Operations
-#' roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html)
-#' in the *AWS Elastic Beanstalk Developer Guide*.
+#' roles](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/) in the
+#' *AWS Elastic Beanstalk Developer Guide*.
 #'
 #' @usage
 #' elasticbeanstalk_disassociate_environment_operations_role(
@@ -2551,7 +2551,7 @@ elasticbeanstalk_swap_environment_cnam_es <- function(SourceEnvironmentId = NULL
 #'     the environment, but the AWS resources continue to operate.
 #' 
 #' For more information, see the [AWS Elastic Beanstalk User
-#' Guide.](https://docs.aws.amazon.com/elasticbeanstalk/latest/ug/)
+#' Guide.](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/)
 #' 
 #' Default: `true`
 #' 

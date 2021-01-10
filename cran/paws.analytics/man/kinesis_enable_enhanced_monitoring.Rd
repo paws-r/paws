@@ -24,7 +24,7 @@ enables every metric.
 \item \code{ALL}
 }
 
-For more information, see \href{http://docs.aws.amazon.com/kinesis/latest/dev/monitoring-with-cloudwatch.html}{Monitoring the Amazon Kinesis Data Streams Service with Amazon CloudWatch}
+For more information, see \href{https://docs.aws.amazon.com/streams/latest/dev/monitoring-with-cloudwatch.html}{Monitoring the Amazon Kinesis Data Streams Service with Amazon CloudWatch}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}.}
 }
 \description{

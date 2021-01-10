@@ -8,14 +8,16 @@ request}
 sagemaker_create_endpoint(EndpointName, EndpointConfigName, Tags)
 }
 \arguments{
-\item{EndpointName}{[required] The name of the endpoint. The name must be unique within an AWS Region
-in your AWS account.}
+\item{EndpointName}{[required] The name of the endpoint.The name must be unique within an AWS Region in
+your AWS account. The name is case-insensitive in \code{CreateEndpoint}, but
+the case is preserved and must be matched in .}
 
 \item{EndpointConfigName}{[required] The name of an endpoint configuration. For more information, see
 CreateEndpointConfig.}
 
-\item{Tags}{An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}in
-the \emph{AWS Billing and Cost Management User Guide}.}
+\item{Tags}{An array of key-value pairs. You can use tags to categorize your AWS
+resources in different ways, for example, by purpose, owner, or
+environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
 }
 \description{
 Creates an endpoint using the endpoint configuration specified in the
@@ -67,6 +69,31 @@ activated in your IAM user account by default. If you previously
 deactivated AWS STS for a region, you need to reactivate AWS STS for
 that region. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating AWS STS in an AWS Region}
 in the \emph{AWS Identity and Access Management User Guide}.
+
+To add the IAM role policies for using this API operation, go to the
+\href{https://console.aws.amazon.com/iam/}{IAM console}, and choose Roles in
+the left navigation pane. Search the IAM role that you want to grant
+access to use the CreateEndpoint and CreateEndpointConfig API
+operations, add the following policies to the role.
+\itemize{
+\item Option 1: For a full Amazon SageMaker access, search and attach the
+\code{AmazonSageMakerFullAccess} policy.
+\item Option 2: For granting a limited access to an IAM role, paste the
+following Action elements manually into the JSON file of the IAM
+role:
+
+\verb{"Action": \\\["sagemaker:CreateEndpoint", "sagemaker:CreateEndpointConfig"\\\]}
+
+\verb{"Resource": \\\[}
+
+\code{"arn:aws:sagemaker:region:account-id:endpoint/endpointName"}
+
+\code{"arn:aws:sagemaker:region:account-id:endpoint-config/endpointConfigName"}
+
+\verb{\\\]}
+
+For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/api-permissions-reference.html}{Amazon SageMaker API Permissions: Actions, Permissions, and Resources Reference}.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$create_endpoint(

@@ -8,8 +8,8 @@ symmetric customer master key (CMK)}
 kms_disable_key_rotation(KeyId)
 }
 \arguments{
-\item{KeyId}{[required] Identifies a symmetric customer master key (CMK). You cannot enable
-automatic rotation of \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html#asymmetric-cmks}{asymmetric CMKs},
+\item{KeyId}{[required] Identifies a symmetric customer master key (CMK). You cannot enable or
+disable automatic rotation of \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html#asymmetric-cmks}{asymmetric CMKs},
 CMKs with \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{imported key material},
 or CMKs in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}.
 
@@ -31,11 +31,23 @@ for the specified symmetric customer master key (CMK).
 \details{
 You cannot enable automatic rotation of asymmetric CMKs, CMKs with
 imported key material, or CMKs in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}.
-You cannot perform this operation on a CMK in a different AWS account.
 
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
+a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:DisableKeyRotation}
+(key policy)
+
+\strong{Related operations:}
+\itemize{
+\item EnableKeyRotation
+\item GetKeyRotationStatus
+}
 }
 \section{Request syntax}{
 \preformatted{svc$disable_key_rotation(

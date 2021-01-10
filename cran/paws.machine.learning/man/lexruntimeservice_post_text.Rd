@@ -5,7 +5,7 @@
 \title{Sends user input to Amazon Lex}
 \usage{
 lexruntimeservice_post_text(botName, botAlias, userId,
-  sessionAttributes, requestAttributes, inputText)
+  sessionAttributes, requestAttributes, inputText, activeContexts)
 }
 \arguments{
 \item{botName}{[required] The name of the Amazon Lex bot.}
@@ -49,6 +49,14 @@ create any request attributes with the prefix \verb{x-amz-lex:}.
 For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs}{Setting Request Attributes}.}
 
 \item{inputText}{[required] The text that the user entered (Amazon Lex interprets this text).}
+
+\item{activeContexts}{A list of contexts active for the request. A context can be activated
+when a previous intent is fulfilled, or by including the context in the
+request,
+
+If you don't specify a list of contexts, Amazon Lex will use the current
+list of contexts for the session. If you specify an empty list, all
+contexts for the session are cleared.}
 }
 \description{
 Sends user input to Amazon Lex. Client applications can use this API to
@@ -111,7 +119,19 @@ In addition, Amazon Lex also returns your application-specific
   requestAttributes = list(
     "string"
   ),
-  inputText = "string"
+  inputText = "string",
+  activeContexts = list(
+    list(
+      name = "string",
+      timeToLive = list(
+        timeToLiveInSeconds = 123,
+        turnsToLive = 123
+      ),
+      parameters = list(
+        "string"
+      )
+    )
+  )
 )
 }
 }

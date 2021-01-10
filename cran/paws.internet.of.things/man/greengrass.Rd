@@ -87,6 +87,7 @@ AWS IoT Greengrass seamlessly extends AWS onto physical devices so they can act 
 \link[=greengrass_get_service_role_for_account]{get_service_role_for_account} \tab Retrieves the service role that is attached to your account\cr
 \link[=greengrass_get_subscription_definition]{get_subscription_definition} \tab Retrieves information about a subscription definition\cr
 \link[=greengrass_get_subscription_definition_version]{get_subscription_definition_version} \tab Retrieves information about a subscription definition version\cr
+\link[=greengrass_get_thing_runtime_configuration]{get_thing_runtime_configuration} \tab Get the runtime configuration of a thing\cr
 \link[=greengrass_list_bulk_deployment_detailed_reports]{list_bulk_deployment_detailed_reports} \tab Gets a paginated list of the deployments that have been started in a bulk deployment operation, and their current deployment status\cr
 \link[=greengrass_list_bulk_deployments]{list_bulk_deployments} \tab Returns a list of bulk deployments\cr
 \link[=greengrass_list_connector_definitions]{list_connector_definitions} \tab Retrieves a list of connector definitions\cr
@@ -122,7 +123,8 @@ AWS IoT Greengrass seamlessly extends AWS onto physical devices so they can act 
 \link[=greengrass_update_group_certificate_configuration]{update_group_certificate_configuration} \tab Updates the Certificate expiry time for a group\cr
 \link[=greengrass_update_logger_definition]{update_logger_definition} \tab Updates a logger definition\cr
 \link[=greengrass_update_resource_definition]{update_resource_definition} \tab Updates a resource definition\cr
-\link[=greengrass_update_subscription_definition]{update_subscription_definition} \tab Updates a subscription definition
+\link[=greengrass_update_subscription_definition]{update_subscription_definition} \tab Updates a subscription definition\cr
+\link[=greengrass_update_thing_runtime_configuration]{update_thing_runtime_configuration} \tab Updates the runtime configuration of a thing
 }
 }
 

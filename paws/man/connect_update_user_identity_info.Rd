@@ -16,6 +16,16 @@ connect_update_user_identity_info(IdentityInfo, UserId, InstanceId)
 \description{
 Updates the identity information for the specified user.
 }
+\details{
+Someone with the ability to invoke \code{UpdateUserIndentityInfo} can change
+the login credentials of other users by changing their email address.
+This poses a security risk to your organization. They can change the
+email address of a user to the attacker's email address, and then reset
+the password through email. We strongly recommend limiting who has the
+ability to invoke \code{UpdateUserIndentityInfo}. For more information, see
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-best-practices.html}{Best Practices for Security Profiles}
+in the \emph{Amazon Connect Administrator Guide}.
+}
 \section{Request syntax}{
 \preformatted{svc$update_user_identity_info(
   IdentityInfo = list(

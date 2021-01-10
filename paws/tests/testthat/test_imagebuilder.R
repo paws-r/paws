@@ -6,6 +6,10 @@ test_that("list_components", {
   expect_error(svc$list_components(), NA)
 })
 
+test_that("list_container_recipes", {
+  expect_error(svc$list_container_recipes(), NA)
+})
+
 test_that("list_distribution_configurations", {
   expect_error(svc$list_distribution_configurations(), NA)
 })

@@ -4,7 +4,8 @@
 \alias{sagemaker_create_trial}
 \title{Creates an Amazon SageMaker trial}
 \usage{
-sagemaker_create_trial(TrialName, DisplayName, ExperimentName, Tags)
+sagemaker_create_trial(TrialName, DisplayName, ExperimentName,
+  MetadataProperties, Tags)
 }
 \arguments{
 \item{TrialName}{[required] The name of the trial. The name must be unique in your AWS account and
@@ -14,6 +15,8 @@ is not case-sensitive.}
 If \code{DisplayName} isn't specified, \code{TrialName} is displayed.}
 
 \item{ExperimentName}{[required] The name of the experiment to associate the trial with.}
+
+\item{MetadataProperties}{}
 
 \item{Tags}{A list of tags to associate with the trial. You can use Search API to
 search on the tags.}
@@ -41,6 +44,12 @@ component, call the CreateTrialComponent API.
   TrialName = "string",
   DisplayName = "string",
   ExperimentName = "string",
+  MetadataProperties = list(
+    CommitId = "string",
+    Repository = "string",
+    GeneratedBy = "string",
+    ProjectId = "string"
+  ),
   Tags = list(
     list(
       Key = "string",

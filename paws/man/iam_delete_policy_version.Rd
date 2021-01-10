@@ -15,11 +15,12 @@ in the \emph{AWS General Reference}.}
 
 \item{VersionId}{[required] The policy version to delete.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that
-consists of the lowercase letter 'v' followed by one or two digits, and
-optionally followed by a period '.' and a string of letters and digits.
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
+that consists of the lowercase letter 'v' followed by one or two digits,
+and optionally followed by a period '.' and a string of letters and
+digits.
 
-For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
+For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.}
 }
 \description{
@@ -31,7 +32,7 @@ delete the default version from a policy, use DeletePolicy. To find out
 which version of a policy is marked as the default version, use
 ListPolicyVersions.
 
-For information about versions for managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
+For information about versions for managed policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

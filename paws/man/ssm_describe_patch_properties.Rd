@@ -15,7 +15,8 @@ ssm_describe_patch_properties(OperatingSystem, Property, PatchSet,
 \item{Property}{[required] The patch property for which you want to view patch details.}
 
 \item{PatchSet}{Indicates whether to list patches for the Windows operating system or
-for Microsoft applications. Not applicable for Linux operating systems.}
+for Microsoft applications. Not applicable for the Linux or macOS
+operating systems.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
@@ -35,12 +36,6 @@ DescribePatchBaselines.
 \details{
 The following section lists the properties that can be used in filters
 for each major operating system type:
-\subsection{WINDOWS}{
-
-Valid properties: PRODUCT, PRODUCT\\_FAMILY, CLASSIFICATION,
-MSRC\\_SEVERITY
-}
-
 \subsection{AMAZON\\_LINUX}{
 
 Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
@@ -51,9 +46,24 @@ Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 }
 
-\subsection{UBUNTU}{
+\subsection{CENTOS}{
+
+Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+}
+
+\subsection{DEBIAN}{
 
 Valid properties: PRODUCT, PRIORITY
+}
+
+\subsection{MACOS}{
+
+Valid properties: PRODUCT, CLASSIFICATION
+}
+
+\subsection{ORACLE\\_LINUX}{
+
+Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 }
 
 \subsection{REDHAT\\_ENTERPRISE\\_LINUX}{
@@ -66,14 +76,20 @@ Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
 }
 
-\subsection{CENTOS}{
+\subsection{UBUNTU}{
 
-Valid properties: PRODUCT, CLASSIFICATION, SEVERITY
+Valid properties: PRODUCT, PRIORITY
+}
+
+\subsection{WINDOWS}{
+
+Valid properties: PRODUCT, PRODUCT\\_FAMILY, CLASSIFICATION,
+MSRC\\_SEVERITY
 }
 }
 \section{Request syntax}{
 \preformatted{svc$describe_patch_properties(
-  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN",
+  OperatingSystem = "WINDOWS"|"AMAZON_LINUX"|"AMAZON_LINUX_2"|"UBUNTU"|"REDHAT_ENTERPRISE_LINUX"|"SUSE"|"CENTOS"|"ORACLE_LINUX"|"DEBIAN"|"MACOS",
   Property = "PRODUCT"|"PRODUCT_FAMILY"|"CLASSIFICATION"|"MSRC_SEVERITY"|"PRIORITY"|"SEVERITY",
   PatchSet = "OS"|"APPLICATION",
   MaxResults = 123,

@@ -17,7 +17,7 @@ is used, \code{DescribeComputeEnvironments} only returns \code{maxResults} resul
 in a single page along with a \code{nextToken} response element. The
 remaining results of the initial request can be seen by sending another
 \code{DescribeComputeEnvironments} request with the returned \code{nextToken}
-value. This value can be between 1 and 100. If this parameter is not
+value. This value can be between 1 and 100. If this parameter isn't
 used, then \code{DescribeComputeEnvironments} returns up to 100 results and a
 \code{nextToken} value if applicable.}
 
@@ -27,15 +27,15 @@ the results exceeded the value of that parameter. Pagination continues
 from the end of the previous results that returned the \code{nextToken}
 value. This value is \code{null} when there are no more results to return.
 
-This token should be treated as an opaque identifier that is only used
-to retrieve the next items in a list and not for other programmatic
+This token should be treated as an opaque identifier that's only used to
+retrieve the next items in a list and not for other programmatic
 purposes.}
 }
 \description{
 Describes one or more of your compute environments.
 }
 \details{
-If you are using an unmanaged compute environment, you can use the
+If you're using an unmanaged compute environment, you can use the
 \code{DescribeComputeEnvironment} operation to determine the \code{ecsClusterArn}
 that you should launch your Amazon ECS container instances into.
 }

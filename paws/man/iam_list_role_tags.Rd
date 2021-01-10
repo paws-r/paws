@@ -9,9 +9,9 @@ iam_list_role_tags(RoleName, Marker, MaxItems)
 \arguments{
 \item{RoleName}{[required] The name of the IAM role for which you want to see the list of tags.
 
-This parameter accepts (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that
-consist of upper and lowercase alphanumeric characters with no spaces.
-You can also include any of the following characters: \\_+=,.@-}
+This parameter accepts (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
+that consist of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{Marker}{Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to

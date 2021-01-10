@@ -2,10 +2,10 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_discover_input_schema}
 \alias{kinesisanalyticsv2_discover_input_schema}
-\title{Infers a schema for an SQL-based Amazon Kinesis Data Analytics
-application by evaluating sample records on the specified streaming
-source (Kinesis data stream or Kinesis Data Firehose delivery stream) or
-Amazon S3 object}
+\title{Infers a schema for a SQL-based Kinesis Data Analytics application by
+evaluating sample records on the specified streaming source (Kinesis
+data stream or Kinesis Data Firehose delivery stream) or Amazon S3
+object}
 \usage{
 kinesisanalyticsv2_discover_input_schema(ResourceARN,
   ServiceExecutionRole, InputStartingPositionConfiguration,
@@ -26,12 +26,11 @@ object.}
 discovering the schema of the records.}
 }
 \description{
-Infers a schema for an SQL-based Amazon Kinesis Data Analytics
-application by evaluating sample records on the specified streaming
-source (Kinesis data stream or Kinesis Data Firehose delivery stream) or
-Amazon S3 object. In the response, the operation returns the inferred
-schema and also the sample records that the operation used to infer the
-schema.
+Infers a schema for a SQL-based Kinesis Data Analytics application by
+evaluating sample records on the specified streaming source (Kinesis
+data stream or Kinesis Data Firehose delivery stream) or Amazon S3
+object. In the response, the operation returns the inferred schema and
+also the sample records that the operation used to infer the schema.
 }
 \details{
 You can use the inferred schema when configuring a streaming source for

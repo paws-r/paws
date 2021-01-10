@@ -26,7 +26,7 @@ analyzed by the specified analyzer..
   analyzerArn = "string",
   maxResults = 123,
   nextToken = "string",
-  resourceType = "AWS::IAM::Role"|"AWS::KMS::Key"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::S3::Bucket"|"AWS::SQS::Queue"
+  resourceType = "AWS::S3::Bucket"|"AWS::IAM::Role"|"AWS::SQS::Queue"|"AWS::Lambda::Function"|"AWS::Lambda::LayerVersion"|"AWS::KMS::Key"
 )
 }
 }

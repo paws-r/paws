@@ -2,9 +2,10 @@
 % Please edit documentation in R/iot_operations.R
 \name{iot_list_security_profiles}
 \alias{iot_list_security_profiles}
-\title{Lists the Device Defender security profiles you have created}
+\title{Lists the Device Defender security profiles you've created}
 \usage{
-iot_list_security_profiles(nextToken, maxResults, dimensionName)
+iot_list_security_profiles(nextToken, maxResults, dimensionName,
+  metricName)
 }
 \arguments{
 \item{nextToken}{The token for the next set of results.}
@@ -12,18 +13,23 @@ iot_list_security_profiles(nextToken, maxResults, dimensionName)
 \item{maxResults}{The maximum number of results to return at one time.}
 
 \item{dimensionName}{A filter to limit results to the security profiles that use the defined
-dimension.}
+dimension. Cannot be used with \code{metricName}}
+
+\item{metricName}{The name of the custom metric. Cannot be used with \code{dimensionName}.}
 }
 \description{
-Lists the Device Defender security profiles you have created. You can
-use filters to list only those security profiles associated with a thing
-group or only those associated with your account.
+Lists the Device Defender security profiles you've created. You can
+filter security profiles by dimension or custom metric.
+}
+\details{
+\code{dimensionName} and \code{metricName} cannot be used in the same request.
 }
 \section{Request syntax}{
 \preformatted{svc$list_security_profiles(
   nextToken = "string",
   maxResults = 123,
-  dimensionName = "string"
+  dimensionName = "string",
+  metricName = "string"
 )
 }
 }

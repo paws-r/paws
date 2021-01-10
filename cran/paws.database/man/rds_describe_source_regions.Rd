@@ -3,7 +3,8 @@
 \name{rds_describe_source_regions}
 \alias{rds_describe_source_regions}
 \title{Returns a list of the source AWS Regions where the current AWS Region
-can create a read replica or copy a DB snapshot from}
+can create a read replica, copy a DB snapshot from, or replicate
+automated backups from}
 \usage{
 rds_describe_source_regions(RegionName, MaxRecords, Marker, Filters)
 }
@@ -33,8 +34,8 @@ specified by \code{MaxRecords}.}
 }
 \description{
 Returns a list of the source AWS Regions where the current AWS Region
-can create a read replica or copy a DB snapshot from. This API action
-supports pagination.
+can create a read replica, copy a DB snapshot from, or replicate
+automated backups from. This API action supports pagination.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_source_regions(

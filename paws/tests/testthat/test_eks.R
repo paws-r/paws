@@ -2,6 +2,10 @@ context("eks")
 
 svc <- paws::eks()
 
+test_that("describe_addon_versions", {
+  expect_error(svc$describe_addon_versions(), NA)
+})
+
 test_that("list_clusters", {
   expect_error(svc$list_clusters(), NA)
 })

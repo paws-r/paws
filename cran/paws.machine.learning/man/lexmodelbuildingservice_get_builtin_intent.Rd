@@ -8,7 +8,7 @@ lexmodelbuildingservice_get_builtin_intent(signature)
 }
 \arguments{
 \item{signature}{[required] The unique identifier for a built-in intent. To find the signature for
-an intent, see \href{https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents}{Standard Built-in Intents}
+an intent, see \href{https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html}{Standard Built-in Intents}
 in the \emph{Alexa Skills Kit}.}
 }
 \description{

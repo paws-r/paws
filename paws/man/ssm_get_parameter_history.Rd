@@ -2,12 +2,12 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_get_parameter_history}
 \alias{ssm_get_parameter_history}
-\title{Query a list of all parameters used by the AWS account}
+\title{Retrieves the history of all changes to a parameter}
 \usage{
 ssm_get_parameter_history(Name, WithDecryption, MaxResults, NextToken)
 }
 \arguments{
-\item{Name}{[required] The name of a parameter you want to query.}
+\item{Name}{[required] The name of the parameter for which you want to review history.}
 
 \item{WithDecryption}{Return decrypted values for secure string parameters. This flag is
 ignored for String and StringList parameter types.}
@@ -20,7 +20,7 @@ next set of results.}
 from a previous call.)}
 }
 \description{
-Query a list of all parameters used by the AWS account.
+Retrieves the history of all changes to a parameter.
 }
 \section{Request syntax}{
 \preformatted{svc$get_parameter_history(

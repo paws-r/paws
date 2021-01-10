@@ -5,12 +5,14 @@
 \title{Lists the updates associated with an Amazon EKS cluster or managed node
 group in your AWS account, in the specified Region}
 \usage{
-eks_list_updates(name, nodegroupName, nextToken, maxResults)
+eks_list_updates(name, nodegroupName, addonName, nextToken, maxResults)
 }
 \arguments{
 \item{name}{[required] The name of the Amazon EKS cluster to list updates for.}
 
 \item{nodegroupName}{The name of the Amazon EKS managed node group to list updates for.}
+
+\item{addonName}{The names of the installed add-ons that have available updates.}
 
 \item{nextToken}{The \code{nextToken} value returned from a previous paginated \code{ListUpdates}
 request where \code{maxResults} was used and the results exceeded the value
@@ -34,6 +36,7 @@ group in your AWS account, in the specified Region.
 \preformatted{svc$list_updates(
   name = "string",
   nodegroupName = "string",
+  addonName = "string",
   nextToken = "string",
   maxResults = 123
 )

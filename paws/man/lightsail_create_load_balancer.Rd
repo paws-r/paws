@@ -38,12 +38,11 @@ certificate (e.g., \code{www.example.com}, \code{example.com}, \code{m.example.c
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \verb{tag resource}
-operation.}
+Use the \code{TagResource} action to tag a resource after it's created.}
 }
 \description{
 Creates a Lightsail load balancer. To learn more about deciding whether
-to load balance your application, see \href{https://lightsail.aws.amazon.com/ls/docs/how-to/article/configure-lightsail-instances-for-load-balancing}{Configure your Lightsail instances for load balancing}.
+to load balance your application, see \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/configure-lightsail-instances-for-load-balancing}{Configure your Lightsail instances for load balancing}.
 You can create up to 5 load balancers per AWS Region in your account.
 }
 \details{
@@ -52,7 +51,7 @@ settings. To change additional load balancer settings, use the
 \code{UpdateLoadBalancerAttribute} operation.
 
 The \verb{create load balancer} operation supports tag-based access control
-via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_load_balancer(

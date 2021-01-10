@@ -27,7 +27,10 @@ an \code{InvalidParameterException} error.}
 
 \item{startTime}{The start of the time range, expressed as the number of milliseconds
 after Jan 1, 1970 00:00:00 UTC. Events with a timestamp before this time
-are not returned.}
+are not returned.
+
+If you omit \code{startTime} and \code{endTime} the most recent log events are
+retrieved, to up 1 MB or 10,000 log events.}
 
 \item{endTime}{The end of the time range, expressed as the number of milliseconds after
 Jan 1, 1970 00:00:00 UTC. Events with a timestamp later than this time
@@ -48,10 +51,9 @@ group, interleaved in a single response. If the value is false, all the
 matched log events in the first log stream are searched first, then
 those in the next log stream, and so on. The default is false.
 
-\strong{IMPORTANT:} Starting on June 17, 2019, this parameter will be ignored
-and the value will be assumed to be true. The response from this
-operation will always interleave events from multiple log streams within
-a log group.}
+\strong{Important:} Starting on June 17, 2019, this parameter is ignored and
+the value is assumed to be true. The response from this operation always
+interleaves events from multiple log streams within a log group.}
 }
 \description{
 Lists log events from the specified log group. You can list all the log
@@ -60,10 +62,15 @@ the name of the log stream.
 }
 \details{
 By default, this operation returns as many log events as can fit in 1 MB
-(up to 10,000 log events), or all the events found within the time range
+(up to 10,000 log events) or all the events found within the time range
 that you specify. If the results include a token, then there are more
 log events available, and you can get additional results by specifying
-the token in a subsequent call.
+the token in a subsequent call. This operation can return empty results
+while there are more log events available through the token.
+
+The returned log events are sorted by event timestamp, the timestamp
+when the event was ingested by CloudWatch Logs, and the ID of the
+\code{PutLogEvents} request.
 }
 \section{Request syntax}{
 \preformatted{svc$filter_log_events(

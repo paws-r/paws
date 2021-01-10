@@ -19,7 +19,7 @@ NULL
 #'     Business or Enterprise support plan, the
 #'     `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [AWS
-#'     Support](http://aws.amazon.com/premiumsupport/).
+#'     Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_add_attachments_to_set(attachmentSetId, attachments)
@@ -85,7 +85,7 @@ support_add_attachments_to_set <- function(attachmentSetId = NULL, attachments) 
 #'     Business or Enterprise support plan, the
 #'     `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [AWS
-#'     Support](http://aws.amazon.com/premiumsupport/).
+#'     Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_add_communication_to_case(caseId, communicationBody,
@@ -156,7 +156,7 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' attachments to an existing case.
 #' 
 #' The `caseId` is separate from the `displayId` that appears in the [AWS
-#' Support Center](https://console.aws.amazon.com/support). Use the
+#' Support Center](https://console.aws.amazon.com/support/). Use the
 #' DescribeCases operation to get the `displayId`.
 #' 
 #' -   You must have a Business or Enterprise support plan to use the AWS
@@ -166,7 +166,7 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #'     Business or Enterprise support plan, the
 #'     `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [AWS
-#'     Support](http://aws.amazon.com/premiumsupport/).
+#'     Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_create_case(subject, serviceCode, severityCode, categoryCode,
@@ -198,7 +198,7 @@ support_add_communication_to_case <- function(caseId = NULL, communicationBody, 
 #' @param ccEmailAddresses A list of email addresses that AWS Support copies on case
 #' correspondence. AWS Support identifies the account that creates the case
 #' when you specify your AWS credentials in an HTTP POST method or use the
-#' [AWS SDKs](http://aws.amazon.com/tools/).
+#' [AWS SDKs](https://aws.amazon.com/tools/).
 #' @param language The language in which AWS Support handles the case. You must specify the
 #' ISO 639-1 code for the `language` parameter if you want support in that
 #' language. Currently, English ("en") and Japanese ("ja") are supported.
@@ -260,7 +260,7 @@ support_create_case <- function(subject, serviceCode = NULL, severityCode = NULL
 #'     Business or Enterprise support plan, the
 #'     `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [AWS
-#'     Support](http://aws.amazon.com/premiumsupport/).
+#'     Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_attachment(attachmentId)
@@ -322,7 +322,7 @@ support_describe_attachment <- function(attachmentId) {
 #'     Business or Enterprise support plan, the
 #'     `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [AWS
-#'     Support](http://aws.amazon.com/premiumsupport/).
+#'     Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_cases(caseIdList, displayId, afterTime, beforeTime,
@@ -407,7 +407,7 @@ support_describe_cases <- function(caseIdList = NULL, displayId = NULL, afterTim
 #'     Business or Enterprise support plan, the
 #'     `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [AWS
-#'     Support](http://aws.amazon.com/premiumsupport/).
+#'     Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_communications(caseId, beforeTime, afterTime,
@@ -480,7 +480,7 @@ support_describe_communications <- function(caseId, beforeTime = NULL, afterTime
 #'     Business or Enterprise support plan, the
 #'     `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [AWS
-#'     Support](http://aws.amazon.com/premiumsupport/).
+#'     Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_services(serviceCodeList, language)
@@ -534,7 +534,7 @@ support_describe_services <- function(serviceCodeList = NULL, language = NULL) {
 #'     Business or Enterprise support plan, the
 #'     `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [AWS
-#'     Support](http://aws.amazon.com/premiumsupport/).
+#'     Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_severity_levels(language)
@@ -590,7 +590,7 @@ support_describe_severity_levels <- function(language = NULL) {
 #'     Business or Enterprise support plan, the
 #'     `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [AWS
-#'     Support](http://aws.amazon.com/premiumsupport/).
+#'     Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_trusted_advisor_check_refresh_statuses(checkIds)
@@ -663,7 +663,7 @@ support_describe_trusted_advisor_check_refresh_statuses <- function(checkIds) {
 #'     Business or Enterprise support plan, the
 #'     `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [AWS
-#'     Support](http://aws.amazon.com/premiumsupport/).
+#'     Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_trusted_advisor_check_result(checkId, language)
@@ -717,7 +717,7 @@ support_describe_trusted_advisor_check_result <- function(checkId, language = NU
 #'     Business or Enterprise support plan, the
 #'     `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [AWS
-#'     Support](http://aws.amazon.com/premiumsupport/).
+#'     Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_trusted_advisor_check_summaries(checkIds)
@@ -770,7 +770,7 @@ support_describe_trusted_advisor_check_summaries <- function(checkIds) {
 #'     Business or Enterprise support plan, the
 #'     `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [AWS
-#'     Support](http://aws.amazon.com/premiumsupport/).
+#'     Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_describe_trusted_advisor_checks(language)
@@ -826,7 +826,7 @@ support_describe_trusted_advisor_checks <- function(language) {
 #'     Business or Enterprise support plan, the
 #'     `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [AWS
-#'     Support](http://aws.amazon.com/premiumsupport/).
+#'     Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_refresh_trusted_advisor_check(checkId)
@@ -874,7 +874,7 @@ support_refresh_trusted_advisor_check <- function(checkId) {
 #'     Business or Enterprise support plan, the
 #'     `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [AWS
-#'     Support](http://aws.amazon.com/premiumsupport/).
+#'     Support](https://aws.amazon.com/premiumsupport/).
 #'
 #' @usage
 #' support_resolve_case(caseId)

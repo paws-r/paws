@@ -23,7 +23,7 @@ numeric value.
 values.
 }
 
-For more information, see the \href{http://docs.aws.amazon.com/machine-learning/latest/dg}{Amazon Machine Learning Developer Guide}.}
+For more information, see the \href{https://docs.aws.amazon.com/machine-learning/latest/dg/}{Amazon Machine Learning Developer Guide}.}
 
 \item{Parameters}{A list of the training parameters in the \code{MLModel}. The list is
 implemented as a map of key-value pairs.

@@ -2,7 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_create_global_cluster}
 \alias{rds_create_global_cluster}
-\title{Creates an Aurora global database spread across multiple regions}
+\title{Creates an Aurora global database spread across multiple AWS Regions}
 \usage{
 rds_create_global_cluster(GlobalClusterIdentifier,
   SourceDBClusterIdentifier, Engine, EngineVersion, DeletionProtection,
@@ -14,7 +14,7 @@ rds_create_global_cluster(GlobalClusterIdentifier,
 \item{SourceDBClusterIdentifier}{The Amazon Resource Name (ARN) to use as the primary cluster of the
 global database. This parameter is optional.}
 
-\item{Engine}{Provides the name of the database engine to be used for this DB cluster.}
+\item{Engine}{The name of the database engine to be used for this DB cluster.}
 
 \item{EngineVersion}{The engine version of the Aurora global database.}
 
@@ -28,8 +28,8 @@ global database cluster you are creating.}
 \item{StorageEncrypted}{The storage encryption setting for the new global database cluster.}
 }
 \description{
-Creates an Aurora global database spread across multiple regions. The
-global database contains a single primary cluster with read-write
+Creates an Aurora global database spread across multiple AWS Regions.
+The global database contains a single primary cluster with read-write
 capability, and a read-only secondary cluster that receives data from
 the primary cluster through high-speed replication performed by the
 Aurora storage subsystem.

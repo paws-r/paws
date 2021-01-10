@@ -22,7 +22,7 @@ NULL
 #' example, the SDKs take care of cryptographically signing requests,
 #' managing errors, and retrying requests automatically. For information
 #' about the AWS SDKs, including how to download and install them, see the
-#' [Tools for Amazon Web Services page](http://aws.amazon.com/tools/).
+#' [Tools for Amazon Web Services page](https://aws.amazon.com/tools/).
 #' 
 #' See the [AWS CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
@@ -73,7 +73,7 @@ NULL
 #'  \link[=cloudtrail_list_tags]{list_tags} \tab Lists the tags for the trail in the current region\cr
 #'  \link[=cloudtrail_list_trails]{list_trails} \tab Lists trails that are in the current account\cr
 #'  \link[=cloudtrail_lookup_events]{lookup_events} \tab Looks up management events or CloudTrail Insights events that are captured by CloudTrail\cr
-#'  \link[=cloudtrail_put_event_selectors]{put_event_selectors} \tab Configures an event selector for your trail\cr
+#'  \link[=cloudtrail_put_event_selectors]{put_event_selectors} \tab Configures an event selector or advanced event selectors for your trail\cr
 #'  \link[=cloudtrail_put_insight_selectors]{put_insight_selectors} \tab Lets you enable Insights event logging by specifying the Insights selectors that you want to enable on an existing trail\cr
 #'  \link[=cloudtrail_remove_tags]{remove_tags} \tab Removes the specified tags from a trail\cr
 #'  \link[=cloudtrail_start_logging]{start_logging} \tab Starts the recording of AWS API calls and log file delivery for a trail\cr

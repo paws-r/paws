@@ -119,12 +119,12 @@ Facebook, Google, or any OpenID Connect-compatible identity provider.
 }
 \details{
 For mobile applications, we recommend that you use Amazon Cognito. You
-can use Amazon Cognito with the \href{http://aws.amazon.com/sdkforios/}{AWS SDK for iOS Developer Guide} and the \href{http://aws.amazon.com/sdkforandroid/}{AWS SDK for Android Developer Guide} to uniquely
-identify a user. You can also supply the user with a consistent identity
-throughout the lifetime of an application.
+can use Amazon Cognito with the \href{https://aws.amazon.com/amplify/}{AWS SDK for iOS Developer Guide} and the \href{https://aws.amazon.com/amplify/}{AWS SDK for Android Developer Guide} to uniquely identify a
+user. You can also supply the user with a consistent identity throughout
+the lifetime of an application.
 
-To learn more about Amazon Cognito, see \href{https://docs.aws.amazon.com/mobile/sdkforandroid/developerguide/cognito-auth.html#d0e840}{Amazon Cognito Overview}
-in \emph{AWS SDK for Android Developer Guide} and \href{https://docs.aws.amazon.com/mobile/sdkforios/developerguide/cognito-auth.html#d0e664}{Amazon Cognito Overview}
+To learn more about Amazon Cognito, see \href{https://aws-amplify.github.io/docs/android/authentication#d0e840}{Amazon Cognito Overview}
+in \emph{AWS SDK for Android Developer Guide} and \href{https://docs.aws.amazon.com/mobile/sdkforios/developerguide/#d0e664}{Amazon Cognito Overview}
 in the \emph{AWS SDK for iOS Developer Guide}.
 
 Calling \code{AssumeRoleWithWebIdentity} does not require the use of AWS
@@ -190,7 +190,7 @@ in the \emph{IAM User Guide}.
 
 You can pass up to 50 session tags. The plain text session tag keys
 can’t exceed 128 characters and the values can’t exceed 256 characters.
-For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
+For these and additional limits, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html#reference_iam-limits-entity-length}{IAM and STS Character Limits}
 in the \emph{IAM User Guide}.
 
 An AWS conversion compresses the passed session policies and session
@@ -225,27 +225,27 @@ in the role's trust policy.
 
 Calling \code{AssumeRoleWithWebIdentity} can result in an entry in your AWS
 CloudTrail logs. The entry includes the
-\href{http://openid.net/specs/openid-connect-core-1_0.html#Claims}{Subject}
+\href{https://openid.net/specs/openid-connect-core-1_0.html#Claims}{Subject}
 of the provided Web Identity Token. We recommend that you avoid using
 any personally identifiable information (PII) in this field. For
 example, you could instead use a GUID or a pairwise identifier, as
-\href{http://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes}{suggested in the OIDC specification}.
+\href{https://openid.net/specs/openid-connect-core-1_0.html#SubjectIDTypes}{suggested in the OIDC specification}.
 
 For more information about how to use web identity federation and the
 \code{AssumeRoleWithWebIdentity} API, see the following resources:
 \itemize{
 \item \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc_manual.html}{Using Web Identity Federation API Operations for Mobile Apps}
 and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_assumerolewithwebidentity}{Federation Through a Web-based Identity Provider}.
-\item \href{https://web-identity-federation-playground.s3.amazonaws.com/index.html}{Web Identity Federation Playground}.
+\item \href{https://aws.amazon.com/blogs/aws/the-aws-web-identity-federation-playground/}{Web Identity Federation Playground}.
 Walk through the process of authenticating through Login with
 Amazon, Facebook, or Google, getting temporary security credentials,
 and then using those credentials to make a request to AWS.
-\item \href{http://aws.amazon.com/sdkforios/}{AWS SDK for iOS Developer Guide}
-and \href{http://aws.amazon.com/sdkforandroid/}{AWS SDK for Android Developer Guide}. These toolkits contain
+\item \href{https://aws.amazon.com/amplify/}{AWS SDK for iOS Developer Guide}
+and \href{https://aws.amazon.com/amplify/}{AWS SDK for Android Developer Guide}. These toolkits contain
 sample apps that show how to invoke the identity providers. The
 toolkits then show how to use the information from these providers
 to get and use temporary security credentials.
-\item \href{http://aws.amazon.com/articles/web-identity-federation-with-mobile-applications}{Web Identity Federation with Mobile Applications}.
+\item \href{https://aws.amazon.com/articles/web-identity-federation-with-mobile-applications/}{Web Identity Federation with Mobile Applications}.
 This article discusses web identity federation and shows an example
 of how to use web identity federation to get access to content in
 Amazon S3.

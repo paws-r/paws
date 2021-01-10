@@ -5,10 +5,14 @@
 \title{This implementation of the GET operation uses the acl subresource to
 return the access control list (ACL) of a bucket}
 \usage{
-s3_get_bucket_acl(Bucket)
+s3_get_bucket_acl(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] Specifies the S3 bucket whose ACL is being requested.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 This implementation of the \code{GET} operation uses the \code{acl} subresource to
@@ -20,12 +24,13 @@ the ACL of the bucket without using an authorization header.
 \details{
 \strong{Related Resources}
 \itemize{
-\item 
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html}{ListObjects}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_acl(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

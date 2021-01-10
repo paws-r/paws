@@ -9,13 +9,13 @@ sms_create_replication_job(serverId, seedReplicationTime, frequency,
   encrypted, kmsKeyId)
 }
 \arguments{
-\item{serverId}{[required] The identifier of the server.}
+\item{serverId}{[required] The ID of the server.}
 
 \item{seedReplicationTime}{[required] The seed replication time.}
 
 \item{frequency}{The time between consecutive replication runs, in hours.}
 
-\item{runOnce}{}
+\item{runOnce}{Indicates whether to run the replication job one time.}
 
 \item{licenseType}{The license type to be used for the AMI created by a successful
 replication run.}
@@ -24,23 +24,22 @@ replication run.}
 
 \item{description}{The description of the replication job.}
 
-\item{numberOfRecentAmisToKeep}{The maximum number of SMS-created AMIs to retain. The oldest will be
-deleted once the maximum number is reached and a new AMI is created.}
+\item{numberOfRecentAmisToKeep}{The maximum number of SMS-created AMIs to retain. The oldest is deleted
+after the maximum number is reached and a new AMI is created.}
 
-\item{encrypted}{When \emph{true}, the replication job produces encrypted AMIs. See also
-\code{KmsKeyId} below.}
+\item{encrypted}{Indicates whether the replication job produces encrypted AMIs.}
 
-\item{kmsKeyId}{KMS key ID for replication jobs that produce encrypted AMIs. Can be any
-of the following:
+\item{kmsKeyId}{The ID of the KMS key for replication jobs that produce encrypted AMIs.
+This value can be any of the following:
 \itemize{
 \item KMS key ID
 \item KMS key alias
-\item ARN referring to KMS key ID
-\item ARN referring to KMS key alias
+\item ARN referring to the KMS key ID
+\item ARN referring to the KMS key alias
 }
 
-If encrypted is \emph{true} but a KMS key id is not specified, the customer's
-default KMS key for EBS is used.}
+If encrypted is \emph{true} but a KMS key ID is not specified, the customer's
+default KMS key for Amazon EBS is used.}
 }
 \description{
 Creates a replication job. The replication job schedules periodic

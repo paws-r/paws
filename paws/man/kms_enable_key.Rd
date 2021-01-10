@@ -23,12 +23,20 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 \description{
 Sets the key state of a customer master key (CMK) to enabled. This
 allows you to use the CMK for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}.
-You cannot perform this operation on a CMK in a different AWS account.
 }
 \details{
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
+a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:EnableKey}
+(key policy)
+
+\strong{Related operations}: DisableKey
 }
 \section{Request syntax}{
 \preformatted{svc$enable_key(

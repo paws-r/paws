@@ -16,7 +16,7 @@ topic (for example, "admin/\\#").}
 }
 \description{
 Updates the definition for a dimension. You cannot change the type of a
-dimension after it is created (you can delete it and re-create it).
+dimension after it is created (you can delete it and recreate it).
 }
 \section{Request syntax}{
 \preformatted{svc$update_dimension(

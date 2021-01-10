@@ -36,7 +36,7 @@ the \code{InService} state.
 To deregister instances from a load balancer, use
 DeregisterInstancesFromLoadBalancer.
 
-For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html}{Register or De-Register EC2 Instances}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-deregister-register-instances.html}{Register or De-Register EC2 Instances}
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{

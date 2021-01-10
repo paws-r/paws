@@ -18,7 +18,7 @@ is changed. This parameter is returned by the \verb{<a>ReceiveMessage</a>}
 action.}
 
 \item{VisibilityTimeout}{[required] The new value for the message's visibility timeout (in seconds). Values
-values: \code{0} to \code{43200}. Maximum: 12 hours.}
+range: \code{0} to \code{43200}. Maximum: 12 hours.}
 }
 \description{
 Changes the visibility timeout of a specified message in a queue to a

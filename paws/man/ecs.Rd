@@ -96,6 +96,7 @@ or worry about scaling your management infrastructure.
 \link[=ecs_submit_task_state_change]{submit_task_state_change} \tab This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent\cr
 \link[=ecs_tag_resource]{tag_resource} \tab Associates the specified tags to a resource with the specified resourceArn\cr
 \link[=ecs_untag_resource]{untag_resource} \tab Deletes specified tags from a resource\cr
+\link[=ecs_update_capacity_provider]{update_capacity_provider} \tab Modifies the parameters for a capacity provider\cr
 \link[=ecs_update_cluster_settings]{update_cluster_settings} \tab Modifies the settings to use for a cluster\cr
 \link[=ecs_update_container_agent]{update_container_agent} \tab Updates the Amazon ECS container agent on a specified container instance\cr
 \link[=ecs_update_container_instances_state]{update_container_instances_state} \tab Modifies the status of an Amazon ECS container instance\cr

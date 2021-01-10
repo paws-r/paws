@@ -166,8 +166,9 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #' @usage
 #' mediatailor_put_playback_configuration(AdDecisionServerUrl,
 #'   AvailSuppression, Bumper, CdnConfiguration, DashConfiguration,
-#'   LivePreRollConfiguration, Name, PersonalizationThresholdSeconds,
-#'   SlateAdUrl, Tags, TranscodeProfileName, VideoContentSourceUrl)
+#'   LivePreRollConfiguration, ManifestProcessingRules, Name,
+#'   PersonalizationThresholdSeconds, SlateAdUrl, Tags, TranscodeProfileName,
+#'   VideoContentSourceUrl)
 #'
 #' @param AdDecisionServerUrl The URL for the ad decision server (ADS). This includes the
 #' specification of static parameters and placeholders for dynamic
@@ -184,6 +185,9 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #' Amazon CloudFront, for content and ad segment management.
 #' @param DashConfiguration The configuration for DASH content.
 #' @param LivePreRollConfiguration The configuration for pre-roll ad insertion.
+#' @param ManifestProcessingRules The configuration for manifest processing rules. Manifest processing
+#' rules enable customization of the personalized manifests created by
+#' MediaTailor.
 #' @param Name The identifier for the playback configuration.
 #' @param PersonalizationThresholdSeconds The maximum duration of underfilled ad time (in seconds) allowed in an
 #' ad break.
@@ -226,6 +230,11 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #'     AdDecisionServerUrl = "string",
 #'     MaxDurationSeconds = 123
 #'   ),
+#'   ManifestProcessingRules = list(
+#'     AdMarkerPassthrough = list(
+#'       Enabled = TRUE|FALSE
+#'     )
+#'   ),
 #'   Name = "string",
 #'   PersonalizationThresholdSeconds = 123,
 #'   SlateAdUrl = "string",
@@ -240,14 +249,14 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 #' @keywords internal
 #'
 #' @rdname mediatailor_put_playback_configuration
-mediatailor_put_playback_configuration <- function(AdDecisionServerUrl = NULL, AvailSuppression = NULL, Bumper = NULL, CdnConfiguration = NULL, DashConfiguration = NULL, LivePreRollConfiguration = NULL, Name = NULL, PersonalizationThresholdSeconds = NULL, SlateAdUrl = NULL, Tags = NULL, TranscodeProfileName = NULL, VideoContentSourceUrl = NULL) {
+mediatailor_put_playback_configuration <- function(AdDecisionServerUrl = NULL, AvailSuppression = NULL, Bumper = NULL, CdnConfiguration = NULL, DashConfiguration = NULL, LivePreRollConfiguration = NULL, ManifestProcessingRules = NULL, Name = NULL, PersonalizationThresholdSeconds = NULL, SlateAdUrl = NULL, Tags = NULL, TranscodeProfileName = NULL, VideoContentSourceUrl = NULL) {
   op <- new_operation(
     name = "PutPlaybackConfiguration",
     http_method = "PUT",
     http_path = "/playbackConfiguration",
     paginator = list()
   )
-  input <- .mediatailor$put_playback_configuration_input(AdDecisionServerUrl = AdDecisionServerUrl, AvailSuppression = AvailSuppression, Bumper = Bumper, CdnConfiguration = CdnConfiguration, DashConfiguration = DashConfiguration, LivePreRollConfiguration = LivePreRollConfiguration, Name = Name, PersonalizationThresholdSeconds = PersonalizationThresholdSeconds, SlateAdUrl = SlateAdUrl, Tags = Tags, TranscodeProfileName = TranscodeProfileName, VideoContentSourceUrl = VideoContentSourceUrl)
+  input <- .mediatailor$put_playback_configuration_input(AdDecisionServerUrl = AdDecisionServerUrl, AvailSuppression = AvailSuppression, Bumper = Bumper, CdnConfiguration = CdnConfiguration, DashConfiguration = DashConfiguration, LivePreRollConfiguration = LivePreRollConfiguration, ManifestProcessingRules = ManifestProcessingRules, Name = Name, PersonalizationThresholdSeconds = PersonalizationThresholdSeconds, SlateAdUrl = SlateAdUrl, Tags = Tags, TranscodeProfileName = TranscodeProfileName, VideoContentSourceUrl = VideoContentSourceUrl)
   output <- .mediatailor$put_playback_configuration_output()
   config <- get_config()
   svc <- .mediatailor$service(config)

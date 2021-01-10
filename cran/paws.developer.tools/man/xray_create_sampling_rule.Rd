@@ -5,10 +5,26 @@
 \title{Creates a rule to control sampling behavior for instrumented
 applications}
 \usage{
-xray_create_sampling_rule(SamplingRule)
+xray_create_sampling_rule(SamplingRule, Tags)
 }
 \arguments{
 \item{SamplingRule}{[required] The rule definition.}
+
+\item{Tags}{A map that contains one or more tag keys and tag values to attach to an
+X-Ray sampling rule. For more information about ways to use tags, see
+\href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
+in the \emph{AWS General Reference}.
+
+The following restrictions apply to tags:
+\itemize{
+\item Maximum number of user-applied tags per resource: 50
+\item Maximum tag key length: 128 Unicode characters
+\item Maximum tag value length: 256 Unicode characters
+\item Valid values for key and value: a-z, A-Z, 0-9, space, and the
+following characters: \\_ . : / = + - and @
+\item Tag keys and values are case sensitive.
+\item Don't use \verb{aws:} as a prefix for keys; it's reserved for AWS use.
+}}
 }
 \description{
 Creates a rule to control sampling behavior for instrumented
@@ -37,6 +53,12 @@ borrowing from the reservoir.
     Version = 123,
     Attributes = list(
       "string"
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
     )
   )
 )

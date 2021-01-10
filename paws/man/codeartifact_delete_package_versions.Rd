@@ -20,6 +20,7 @@ does not include dashes or spaces.}
 \item \code{npm}
 \item \code{pypi}
 \item \code{maven}
+\item \code{nuget}
 }}
 
 \item{namespace}{The namespace of the package. The package component that specifies its
@@ -29,6 +30,8 @@ namespace depends on its type. For example:
 \item The namespace of an npm package is its \code{scope}.
 \item A Python package does not contain a corresponding component, so
 Python packages do not have a namespace.
+\item A NuGet package does not contain a corresponding component, so NuGet
+packages do not have a namespace.
 }}
 
 \item{package}{[required] The name of the package with the versions to delete.}
@@ -59,7 +62,7 @@ but you can restore them using
   domain = "string",
   domainOwner = "string",
   repository = "string",
-  format = "npm"|"pypi"|"maven",
+  format = "npm"|"pypi"|"maven"|"nuget",
   namespace = "string",
   package = "string",
   versions = list(

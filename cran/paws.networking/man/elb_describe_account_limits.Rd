@@ -18,7 +18,7 @@ Describes the current Elastic Load Balancing resource limits for your
 AWS account.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html}{Limits for Your Classic Load Balancer}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html}{Limits for Your Classic Load Balancer}
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{

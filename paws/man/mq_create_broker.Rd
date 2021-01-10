@@ -4,12 +4,15 @@
 \alias{mq_create_broker}
 \title{Creates a broker}
 \usage{
-mq_create_broker(AutoMinorVersionUpgrade, BrokerName, Configuration,
-  CreatorRequestId, DeploymentMode, EncryptionOptions, EngineType,
-  EngineVersion, HostInstanceType, Logs, MaintenanceWindowStartTime,
+mq_create_broker(AuthenticationStrategy, AutoMinorVersionUpgrade,
+  BrokerName, Configuration, CreatorRequestId, DeploymentMode,
+  EncryptionOptions, EngineType, EngineVersion, HostInstanceType,
+  LdapServerMetadata, Logs, MaintenanceWindowStartTime,
   PubliclyAccessible, SecurityGroups, StorageType, SubnetIds, Tags, Users)
 }
 \arguments{
+\item{AuthenticationStrategy}{The authentication strategy used to secure the broker.}
+
 \item{AutoMinorVersionUpgrade}{Required. Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.}
 
 \item{BrokerName}{Required. The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.}
@@ -22,11 +25,13 @@ mq_create_broker(AutoMinorVersionUpgrade, BrokerName, Configuration,
 
 \item{EncryptionOptions}{Encryption options for the broker.}
 
-\item{EngineType}{Required. The type of broker engine. Note: Currently, Amazon MQ supports only ACTIVEMQ.}
+\item{EngineType}{Required. The type of broker engine. Note: Currently, Amazon MQ supports ACTIVEMQ and RABBITMQ.}
 
 \item{EngineVersion}{Required. The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html}
 
 \item{HostInstanceType}{Required. The broker's instance type.}
+
+\item{LdapServerMetadata}{The metadata of the LDAP server used to authenticate and authorize connections to the broker.}
 
 \item{Logs}{Enables Amazon CloudWatch logging for brokers.}
 
@@ -38,17 +43,18 @@ mq_create_broker(AutoMinorVersionUpgrade, BrokerName, Configuration,
 
 \item{StorageType}{The broker's storage type.}
 
-\item{SubnetIds}{The list of groups (2 maximum) that define which subnets and IP ranges the broker can use from different Availability Zones. A SINGLE_INSTANCE deployment requires one subnet (for example, the default subnet). An ACTIVE_STANDBY_MULTI_AZ deployment requires two subnets.}
+\item{SubnetIds}{The list of groups that define which subnets and IP ranges the broker can use from different Availability Zones. A SINGLE_INSTANCE deployment requires one subnet (for example, the default subnet). An ACTIVE_STANDBY_MULTI_AZ deployment (ACTIVEMQ) requires two subnets. A CLUSTER_MULTI_AZ deployment (RABBITMQ) has no subnet requirements when deployed with public accessibility, deployment without public accessibility requires at least one subnet.}
 
 \item{Tags}{Create tags when creating the broker.}
 
-\item{Users}{Required. The list of ActiveMQ users (persons or applications) who can access queues and topics. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.}
+\item{Users}{Required. The list of broker users (persons or applications) who can access queues and topics. For RabbitMQ brokers, one and only one administrative user is accepted and created when a broker is first provisioned. All subsequent broker users are created by making RabbitMQ API calls directly to brokers or via the RabbitMQ Web Console. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.}
 }
 \description{
 Creates a broker. Note: This API is asynchronous.
 }
 \section{Request syntax}{
 \preformatted{svc$create_broker(
+  AuthenticationStrategy = "SIMPLE"|"LDAP",
   AutoMinorVersionUpgrade = TRUE|FALSE,
   BrokerName = "string",
   Configuration = list(
@@ -56,14 +62,29 @@ Creates a broker. Note: This API is asynchronous.
     Revision = 123
   ),
   CreatorRequestId = "string",
-  DeploymentMode = "SINGLE_INSTANCE"|"ACTIVE_STANDBY_MULTI_AZ",
+  DeploymentMode = "SINGLE_INSTANCE"|"ACTIVE_STANDBY_MULTI_AZ"|"CLUSTER_MULTI_AZ",
   EncryptionOptions = list(
     KmsKeyId = "string",
     UseAwsOwnedKey = TRUE|FALSE
   ),
-  EngineType = "ACTIVEMQ",
+  EngineType = "ACTIVEMQ"|"RABBITMQ",
   EngineVersion = "string",
   HostInstanceType = "string",
+  LdapServerMetadata = list(
+    Hosts = list(
+      "string"
+    ),
+    RoleBase = "string",
+    RoleName = "string",
+    RoleSearchMatching = "string",
+    RoleSearchSubtree = TRUE|FALSE,
+    ServiceAccountPassword = "string",
+    ServiceAccountUsername = "string",
+    UserBase = "string",
+    UserRoleName = "string",
+    UserSearchMatching = "string",
+    UserSearchSubtree = TRUE|FALSE
+  ),
   Logs = list(
     Audit = TRUE|FALSE,
     General = TRUE|FALSE

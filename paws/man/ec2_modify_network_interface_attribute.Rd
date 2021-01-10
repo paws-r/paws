@@ -29,7 +29,7 @@ must specify the ID of the security group, not the name.}
 \item{SourceDestCheck}{Indicates whether source/destination checking is enabled. A value of
 \code{true} means checking is enabled, and \code{false} means checking is
 disabled. This value must be \code{false} for a NAT instance to perform NAT.
-For more information, see \href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html}{NAT Instances}
+For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_NAT_Instance.html}{NAT Instances}
 in the \emph{Amazon Virtual Private Cloud User Guide}.}
 }
 \description{

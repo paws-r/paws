@@ -96,6 +96,7 @@ NULL
 #'  \link[=apigatewayv2_get_vpc_links]{get_vpc_links} \tab Gets a collection of VPC links\cr
 #'  \link[=apigatewayv2_import_api]{import_api} \tab Imports an API\cr
 #'  \link[=apigatewayv2_reimport_api]{reimport_api} \tab Puts an Api resource\cr
+#'  \link[=apigatewayv2_reset_authorizers_cache]{reset_authorizers_cache} \tab Resets all authorizer cache entries on a stage\cr
 #'  \link[=apigatewayv2_tag_resource]{tag_resource} \tab Creates a new Tag resource to represent a tag\cr
 #'  \link[=apigatewayv2_untag_resource]{untag_resource} \tab Deletes a Tag\cr
 #'  \link[=apigatewayv2_update_api]{update_api} \tab Updates an Api resource\cr

@@ -13,6 +13,10 @@ frauddetector_delete_detector(detectorId)
 Deletes the detector. Before deleting a detector, you must first delete
 all detector versions and rule versions associated with the detector.
 }
+\details{
+When you delete a detector, Amazon Fraud Detector permanently deletes
+the detector and the data is no longer stored in Amazon Fraud Detector.
+}
 \section{Request syntax}{
 \preformatted{svc$delete_detector(
   detectorId = "string"

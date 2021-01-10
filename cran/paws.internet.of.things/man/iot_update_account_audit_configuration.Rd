@@ -9,9 +9,9 @@ iot_update_account_audit_configuration(roleArn,
   auditNotificationTargetConfigurations, auditCheckConfigurations)
 }
 \arguments{
-\item{roleArn}{The ARN of the role that grants permission to AWS IoT to access
-information about your devices, policies, certificates and other items
-as required when performing an audit.}
+\item{roleArn}{The Amazon Resource Name (ARN) of the role that grants permission to AWS
+IoT to access information about your devices, policies, certificates,
+and other items as required when performing an audit.}
 
 \item{auditNotificationTargetConfigurations}{Information about the targets to which audit notifications are sent.}
 
@@ -23,9 +23,9 @@ Some data collection might start immediately when certain checks are
 enabled. When a check is disabled, any data collected so far in relation
 to the check is deleted.
 
-You cannot disable a check if it is used by any scheduled audit. You
-must first delete the check from the scheduled audit or delete the
-scheduled audit itself.
+You cannot disable a check if it's used by any scheduled audit. You must
+first delete the check from the scheduled audit or delete the scheduled
+audit itself.
 
 On the first call to \code{UpdateAccountAuditConfiguration}, this parameter
 is required and must specify at least one enabled check.}

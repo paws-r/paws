@@ -9,7 +9,11 @@ ssm_list_commands(CommandId, InstanceId, MaxResults, NextToken, Filters)
 \arguments{
 \item{CommandId}{(Optional) If provided, lists only the specified command.}
 
-\item{InstanceId}{(Optional) Lists commands issued against this instance ID.}
+\item{InstanceId}{(Optional) Lists commands issued against this instance ID.
+
+You can't specify an instance ID in the same command that you specify
+\code{Status} = \code{Pending}. This is because the command has not reached the
+instance yet.}
 
 \item{MaxResults}{(Optional) The maximum number of items to return for this call. The call
 also returns a token that you can specify in a subsequent call to get

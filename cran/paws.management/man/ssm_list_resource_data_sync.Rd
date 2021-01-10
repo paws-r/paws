@@ -9,7 +9,7 @@ ssm_list_resource_data_sync(SyncType, NextToken, MaxResults)
 \arguments{
 \item{SyncType}{View a list of resource data syncs according to the sync type. Specify
 \code{SyncToDestination} to view resource data syncs that synchronize data to
-an Amazon S3 buckets. Specify \code{SyncFromSource} to view resource data
+an Amazon S3 bucket. Specify \code{SyncFromSource} to view resource data
 syncs from AWS Organizations or from multiple AWS Regions.}
 
 \item{NextToken}{A token to start the list. Use this token to get the next set of

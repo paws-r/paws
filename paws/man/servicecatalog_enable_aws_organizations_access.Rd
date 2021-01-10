@@ -10,7 +10,7 @@ servicecatalog_enable_aws_organizations_access()
 Enable portfolio sharing feature through AWS Organizations. This API
 will allow Service Catalog to receive updates on your organization in
 order to sync your shares with the current structure. This API can only
-be called by the master account in the organization.
+be called by the management account in the organization.
 }
 \details{
 By calling this API Service Catalog will make a call to

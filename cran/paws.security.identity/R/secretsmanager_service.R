@@ -12,7 +12,7 @@ NULL
 #' 
 #' This guide provides descriptions of the Secrets Manager API. For more
 #' information about using this service, see the [AWS Secrets Manager User
-#' Guide](https://docs.aws.amazon.com/secretsmanager/latest/userguide/introduction.html).
+#' Guide](https://docs.aws.amazon.com/secretsmanager/latest/userguide/).
 #' 
 #' **API Version**
 #' 
@@ -26,7 +26,8 @@ NULL
 #' Secrets Manager. For example, the SDKs provide cryptographically signing
 #' requests, managing errors, and retrying requests automatically. For more
 #' information about the AWS SDKs, including downloading and installing
-#' them, see [Tools for Amazon Web Services](http://aws.amazon.com/tools/).
+#' them, see [Tools for Amazon Web
+#' Services](https://aws.amazon.com/tools/).
 #' 
 #' We recommend you use the AWS SDKs to make programmatic API calls to
 #' Secrets Manager. However, you also can use the Secrets Manager HTTP
@@ -45,9 +46,9 @@ NULL
 #' We welcome your feedback. Send your comments to
 #' <awssecretsmanager-feedback@@amazon.com>, or post your feedback and
 #' questions in the [AWS Secrets Manager Discussion
-#' Forum](http://forums.aws.amazon.com/forum.jspa?forumID=296). For more
+#' Forum](https://forums.aws.amazon.com/forum.jspa?forumID=296). For more
 #' information about the AWS Discussion Forums, see [Forums
-#' Help](http://forums.aws.amazon.com/help.jspa).
+#' Help](https://forums.aws.amazon.com:443/help.jspa).
 #' 
 #' **How examples are presented**
 #' 
@@ -69,11 +70,11 @@ NULL
 #' the request, when it was made, and so on. For more about AWS Secrets
 #' Manager and support for AWS CloudTrail, see [Logging AWS Secrets Manager
 #' Events with AWS
-#' CloudTrail](http://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail)
+#' CloudTrail](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail)
 #' in the *AWS Secrets Manager User Guide*. To learn more about CloudTrail,
 #' including enabling it and find your log files, see the [AWS CloudTrail
 #' User
-#' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
+#' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html).
 #'
 #' @param
 #' config

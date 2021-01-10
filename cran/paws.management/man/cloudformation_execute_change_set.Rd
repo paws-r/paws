@@ -35,6 +35,9 @@ updated stack.
 If a stack policy is associated with the stack, AWS CloudFormation
 enforces the policy during the update. You can't specify a temporary
 stack policy that overrides the current policy.
+
+To create a change set for the entire stack hierachy,
+\code{IncludeNestedStacks} must have been set to \code{True}.
 }
 \section{Request syntax}{
 \preformatted{svc$execute_change_set(

@@ -39,8 +39,8 @@ events.
 or AWS Lambda functions that you are logging for data events.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html}{Logging Data and Management Events for Trails}
-in the \emph{AWS CloudTrail User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/}{Logging Data and Management Events for Trails} in
+the \emph{AWS CloudTrail User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_event_selectors(

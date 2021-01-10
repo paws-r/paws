@@ -2,7 +2,7 @@
 % Please edit documentation in R/ivs_operations.R
 \name{ivs_tag_resource}
 \alias{ivs_tag_resource}
-\title{Adds or updates tags for a resource with a specified ARN}
+\title{Adds or updates tags for the AWS resource with the specified ARN}
 \usage{
 ivs_tag_resource(resourceArn, tags)
 }
@@ -12,7 +12,7 @@ ivs_tag_resource(resourceArn, tags)
 \item{tags}{[required] Array of tags to be added or updated.}
 }
 \description{
-Adds or updates tags for a resource with a specified ARN.
+Adds or updates tags for the AWS resource with the specified ARN.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

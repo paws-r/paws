@@ -16,8 +16,10 @@ ec2_search_transit_gateway_routes(TransitGatewayRouteTableId, Filters,
 gateway attachment.
 \item \code{attachment.resource-id} - The resource id of the transit gateway
 attachment.
-\item \code{attachment.resource-type} - The attachment resource type (\code{vpc} |
-\code{vpn}).
+\item \code{attachment.resource-type} - The attachment resource type. Valid
+values are \code{vpc} | \code{vpn} | \code{direct-connect-gateway} | \code{peering} |
+\code{connect}.
+\item \code{prefix-list-id} - The ID of the prefix list.
 \item \code{route-search.exact-match} - The exact match of the specified
 filter.
 \item \code{route-search.longest-prefix-match} - The longest prefix that

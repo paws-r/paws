@@ -19,7 +19,7 @@ field configuration specifies a unique name, the index field type, and
 the options you want to configure for the field. The options you can
 specify depend on the \verb{<a>IndexFieldType</a>}. If the field exists, the
 new configuration replaces the old one. For more information, see
-\href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html}{Configuring Index Fields}
+\href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html}{Configuring Index Fields}
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{

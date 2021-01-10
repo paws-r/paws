@@ -5,21 +5,26 @@ NULL
 #' Amazon Lightsail
 #'
 #' @description
-#' Amazon Lightsail is the easiest way to get started with AWS for
-#' developers who just need virtual private servers. Lightsail includes
-#' everything you need to launch your project quickly - a virtual machine,
-#' a managed database, SSD-based storage, data transfer, DNS management,
-#' and a static IP - for a low, predictable price. You manage those
-#' Lightsail servers through the Lightsail console or by using the API or
-#' command-line interface (CLI).
+#' Amazon Lightsail is the easiest way to get started with Amazon Web
+#' Services (AWS) for developers who need to build websites or web
+#' applications. It includes everything you need to launch your project
+#' quickly - instances (virtual private servers), container services,
+#' managed databases, SSD-based block storage, static IP addresses, load
+#' balancers, content delivery network (CDN) distributions, DNS management
+#' of registered domains, and resource snapshots (backups) - for a low,
+#' predictable monthly price.
 #' 
-#' For more information about Lightsail concepts and tasks, see the
-#' [Lightsail Dev Guide](https://lightsail.aws.amazon.com/ls/docs/all).
+#' You can manage your Lightsail resources using the Lightsail console,
+#' Lightsail API, AWS Command Line Interface (AWS CLI), or SDKs. For more
+#' information about Lightsail concepts and tasks, see the [Lightsail Dev
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli).
 #' 
-#' To use the Lightsail API or the CLI, you will need to use AWS Identity
-#' and Access Management (IAM) to generate access keys. For details about
-#' how to set this up, see the [Lightsail Dev
-#' Guide](http://lightsail.aws.amazon.com/ls/docs/how-to/article/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli).
+#' This API Reference provides detailed information about the actions, data
+#' types, parameters, and errors of the Lightsail service. For more
+#' information about the supported AWS Regions, endpoints, and service
+#' quotas of the Lightsail service, see [Amazon Lightsail Endpoints and
+#' Quotas](https://docs.aws.amazon.com/general/latest/gr/lightsail.html) in
+#' the *AWS General Reference*.
 #'
 #' @param
 #' config
@@ -54,19 +59,25 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=lightsail_allocate_static_ip]{allocate_static_ip} \tab Allocates a static IP address\cr
+#'  \link[=lightsail_attach_certificate_to_distribution]{attach_certificate_to_distribution} \tab Attaches an SSL/TLS certificate to your Amazon Lightsail content delivery network (CDN) distribution\cr
 #'  \link[=lightsail_attach_disk]{attach_disk} \tab Attaches a block storage disk to a running or stopped Lightsail instance and exposes it to the instance with the specified disk name\cr
 #'  \link[=lightsail_attach_instances_to_load_balancer]{attach_instances_to_load_balancer} \tab Attaches one or more Lightsail instances to a load balancer\cr
 #'  \link[=lightsail_attach_load_balancer_tls_certificate]{attach_load_balancer_tls_certificate} \tab Attaches a Transport Layer Security (TLS) certificate to your load balancer\cr
 #'  \link[=lightsail_attach_static_ip]{attach_static_ip} \tab Attaches a static IP address to a specific Amazon Lightsail instance\cr
 #'  \link[=lightsail_close_instance_public_ports]{close_instance_public_ports} \tab Closes ports for a specific Amazon Lightsail instance\cr
 #'  \link[=lightsail_copy_snapshot]{copy_snapshot} \tab Copies a manual snapshot of an instance or disk as another manual snapshot, or copies an automatic snapshot of an instance or disk as a manual snapshot\cr
+#'  \link[=lightsail_create_certificate]{create_certificate} \tab Creates an SSL/TLS certificate for a Amazon Lightsail content delivery network (CDN) distribution\cr
 #'  \link[=lightsail_create_cloud_formation_stack]{create_cloud_formation_stack} \tab Creates an AWS CloudFormation stack, which creates a new Amazon EC2 instance from an exported Amazon Lightsail snapshot\cr
 #'  \link[=lightsail_create_contact_method]{create_contact_method} \tab Creates an email or SMS text message contact method\cr
+#'  \link[=lightsail_create_container_service]{create_container_service} \tab Creates an Amazon Lightsail container service\cr
+#'  \link[=lightsail_create_container_service_deployment]{create_container_service_deployment} \tab Creates a deployment for your Amazon Lightsail container service\cr
+#'  \link[=lightsail_create_container_service_registry_login]{create_container_service_registry_login} \tab Creates a temporary set of log in credentials that you can use to log in to the Docker process on your local machine\cr
 #'  \link[=lightsail_create_disk]{create_disk} \tab Creates a block storage disk that can be attached to an Amazon Lightsail instance in the same Availability Zone (e\cr
 #'  \link[=lightsail_create_disk_from_snapshot]{create_disk_from_snapshot} \tab Creates a block storage disk from a manual or automatic snapshot of a disk\cr
 #'  \link[=lightsail_create_disk_snapshot]{create_disk_snapshot} \tab Creates a snapshot of a block storage disk\cr
+#'  \link[=lightsail_create_distribution]{create_distribution} \tab Creates an Amazon Lightsail content delivery network (CDN) distribution\cr
 #'  \link[=lightsail_create_domain]{create_domain} \tab Creates a domain resource for the specified domain (e\cr
-#'  \link[=lightsail_create_domain_entry]{create_domain_entry} \tab Creates one of the following entry records associated with the domain: Address (A), canonical name (CNAME), mail exchanger (MX), name server (NS), start of authority (SOA), service locator (SRV), or text (TXT)\cr
+#'  \link[=lightsail_create_domain_entry]{create_domain_entry} \tab Creates one of the following domain name system (DNS) records in a domain DNS zone: Address (A), canonical name (CNAME), mail exchanger (MX), name server (NS), start of authority (SOA), service locator (SRV), or text (TXT)\cr
 #'  \link[=lightsail_create_instances]{create_instances} \tab Creates one or more Amazon Lightsail instances\cr
 #'  \link[=lightsail_create_instances_from_snapshot]{create_instances_from_snapshot} \tab Creates one or more new instances from a manual or automatic snapshot of an instance\cr
 #'  \link[=lightsail_create_instance_snapshot]{create_instance_snapshot} \tab Creates a snapshot of a specific virtual private server, or instance\cr
@@ -78,9 +89,13 @@ NULL
 #'  \link[=lightsail_create_relational_database_snapshot]{create_relational_database_snapshot} \tab Creates a snapshot of your database in Amazon Lightsail\cr
 #'  \link[=lightsail_delete_alarm]{delete_alarm} \tab Deletes an alarm\cr
 #'  \link[=lightsail_delete_auto_snapshot]{delete_auto_snapshot} \tab Deletes an automatic snapshot of an instance or disk\cr
+#'  \link[=lightsail_delete_certificate]{delete_certificate} \tab Deletes an SSL/TLS certificate for your Amazon Lightsail content delivery network (CDN) distribution\cr
 #'  \link[=lightsail_delete_contact_method]{delete_contact_method} \tab Deletes a contact method\cr
+#'  \link[=lightsail_delete_container_image]{delete_container_image} \tab Deletes a container image that is registered to your Amazon Lightsail container service\cr
+#'  \link[=lightsail_delete_container_service]{delete_container_service} \tab Deletes your Amazon Lightsail container service\cr
 #'  \link[=lightsail_delete_disk]{delete_disk} \tab Deletes the specified block storage disk\cr
 #'  \link[=lightsail_delete_disk_snapshot]{delete_disk_snapshot} \tab Deletes the specified disk snapshot\cr
+#'  \link[=lightsail_delete_distribution]{delete_distribution} \tab Deletes your Amazon Lightsail content delivery network (CDN) distribution\cr
 #'  \link[=lightsail_delete_domain]{delete_domain} \tab Deletes the specified domain recordset and all of its domain records\cr
 #'  \link[=lightsail_delete_domain_entry]{delete_domain_entry} \tab Deletes a specific domain entry\cr
 #'  \link[=lightsail_delete_instance]{delete_instance} \tab Deletes an Amazon Lightsail instance\cr
@@ -91,6 +106,7 @@ NULL
 #'  \link[=lightsail_delete_load_balancer_tls_certificate]{delete_load_balancer_tls_certificate} \tab Deletes an SSL/TLS certificate associated with a Lightsail load balancer\cr
 #'  \link[=lightsail_delete_relational_database]{delete_relational_database} \tab Deletes a database in Amazon Lightsail\cr
 #'  \link[=lightsail_delete_relational_database_snapshot]{delete_relational_database_snapshot} \tab Deletes a database snapshot in Amazon Lightsail\cr
+#'  \link[=lightsail_detach_certificate_from_distribution]{detach_certificate_from_distribution} \tab Detaches an SSL/TLS certificate from your Amazon Lightsail content delivery network (CDN) distribution\cr
 #'  \link[=lightsail_detach_disk]{detach_disk} \tab Detaches a stopped block storage disk from a Lightsail instance\cr
 #'  \link[=lightsail_detach_instances_from_load_balancer]{detach_instances_from_load_balancer} \tab Detaches the specified instances from a Lightsail load balancer\cr
 #'  \link[=lightsail_detach_static_ip]{detach_static_ip} \tab Detaches a static IP from the Amazon Lightsail instance to which it is attached\cr
@@ -103,12 +119,24 @@ NULL
 #'  \link[=lightsail_get_auto_snapshots]{get_auto_snapshots} \tab Returns the available automatic snapshots for an instance or disk\cr
 #'  \link[=lightsail_get_blueprints]{get_blueprints} \tab Returns the list of available instance images, or blueprints\cr
 #'  \link[=lightsail_get_bundles]{get_bundles} \tab Returns the list of bundles that are available for purchase\cr
+#'  \link[=lightsail_get_certificates]{get_certificates} \tab Returns information about one or more Amazon Lightsail SSL/TLS certificates\cr
 #'  \link[=lightsail_get_cloud_formation_stack_records]{get_cloud_formation_stack_records} \tab Returns the CloudFormation stack record created as a result of the create cloud formation stack operation\cr
 #'  \link[=lightsail_get_contact_methods]{get_contact_methods} \tab Returns information about the configured contact methods\cr
+#'  \link[=lightsail_get_container_api_metadata]{get_container_api_metadata} \tab Returns information about Amazon Lightsail containers, such as the current version of the Lightsail Control (lightsailctl) plugin\cr
+#'  \link[=lightsail_get_container_images]{get_container_images} \tab Returns the container images that are registered to your Amazon Lightsail container service\cr
+#'  \link[=lightsail_get_container_log]{get_container_log} \tab Returns the log events of a container of your Amazon Lightsail container service\cr
+#'  \link[=lightsail_get_container_service_deployments]{get_container_service_deployments} \tab Returns the deployments for your Amazon Lightsail container service A deployment specifies the settings, such as the ports and launch command, of containers that are deployed to your container service\cr
+#'  \link[=lightsail_get_container_service_metric_data]{get_container_service_metric_data} \tab Returns the data points of a specific metric of your Amazon Lightsail container service\cr
+#'  \link[=lightsail_get_container_service_powers]{get_container_service_powers} \tab Returns the list of powers that can be specified for your Amazon Lightsail container services\cr
+#'  \link[=lightsail_get_container_services]{get_container_services} \tab Returns information about one or more of your Amazon Lightsail container services\cr
 #'  \link[=lightsail_get_disk]{get_disk} \tab Returns information about a specific block storage disk\cr
 #'  \link[=lightsail_get_disks]{get_disks} \tab Returns information about all block storage disks in your AWS account and region\cr
 #'  \link[=lightsail_get_disk_snapshot]{get_disk_snapshot} \tab Returns information about a specific block storage disk snapshot\cr
 #'  \link[=lightsail_get_disk_snapshots]{get_disk_snapshots} \tab Returns information about all block storage disk snapshots in your AWS account and region\cr
+#'  \link[=lightsail_get_distribution_bundles]{get_distribution_bundles} \tab Returns the list bundles that can be applied to you Amazon Lightsail content delivery network (CDN) distributions\cr
+#'  \link[=lightsail_get_distribution_latest_cache_reset]{get_distribution_latest_cache_reset} \tab Returns the timestamp and status of the last cache reset of a specific Amazon Lightsail content delivery network (CDN) distribution\cr
+#'  \link[=lightsail_get_distribution_metric_data]{get_distribution_metric_data} \tab Returns the data points of a specific metric for an Amazon Lightsail content delivery network (CDN) distribution\cr
+#'  \link[=lightsail_get_distributions]{get_distributions} \tab Returns information about one or more of your Amazon Lightsail content delivery network (CDN) distributions\cr
 #'  \link[=lightsail_get_domain]{get_domain} \tab Returns information about a specific domain recordset\cr
 #'  \link[=lightsail_get_domains]{get_domains} \tab Returns a list of all domains in the user's account\cr
 #'  \link[=lightsail_get_export_snapshot_records]{get_export_snapshot_records} \tab Returns the export snapshot record created as a result of the export snapshot operation\cr
@@ -152,7 +180,9 @@ NULL
 #'  \link[=lightsail_put_instance_public_ports]{put_instance_public_ports} \tab Opens ports for a specific Amazon Lightsail instance, and specifies the IP addresses allowed to connect to the instance through the ports, and the protocol\cr
 #'  \link[=lightsail_reboot_instance]{reboot_instance} \tab Restarts a specific instance\cr
 #'  \link[=lightsail_reboot_relational_database]{reboot_relational_database} \tab Restarts a specific database in Amazon Lightsail\cr
+#'  \link[=lightsail_register_container_image]{register_container_image} \tab Registers a container image to your Amazon Lightsail container service\cr
 #'  \link[=lightsail_release_static_ip]{release_static_ip} \tab Deletes a specific static IP from your account\cr
+#'  \link[=lightsail_reset_distribution_cache]{reset_distribution_cache} \tab Deletes currently cached content from your Amazon Lightsail content delivery network (CDN) distribution\cr
 #'  \link[=lightsail_send_contact_method_verification]{send_contact_method_verification} \tab Sends a verification request to an email contact method to ensure it's owned by the requester\cr
 #'  \link[=lightsail_start_instance]{start_instance} \tab Starts a specific Amazon Lightsail instance from a stopped state\cr
 #'  \link[=lightsail_start_relational_database]{start_relational_database} \tab Starts a specific database from a stopped state in Amazon Lightsail\cr
@@ -162,6 +192,9 @@ NULL
 #'  \link[=lightsail_test_alarm]{test_alarm} \tab Tests an alarm by displaying a banner on the Amazon Lightsail console\cr
 #'  \link[=lightsail_unpeer_vpc]{unpeer_vpc} \tab Attempts to unpeer the Lightsail VPC from the user's default VPC\cr
 #'  \link[=lightsail_untag_resource]{untag_resource} \tab Deletes the specified set of tag keys and their values from the specified Amazon Lightsail resource\cr
+#'  \link[=lightsail_update_container_service]{update_container_service} \tab Updates the configuration of your Amazon Lightsail container service, such as its power, scale, and public domain names\cr
+#'  \link[=lightsail_update_distribution]{update_distribution} \tab Updates an existing Amazon Lightsail content delivery network (CDN) distribution\cr
+#'  \link[=lightsail_update_distribution_bundle]{update_distribution_bundle} \tab Updates the bundle of your Amazon Lightsail content delivery network (CDN) distribution\cr
 #'  \link[=lightsail_update_domain_entry]{update_domain_entry} \tab Updates a domain recordset after it is created\cr
 #'  \link[=lightsail_update_load_balancer_attribute]{update_load_balancer_attribute} \tab Updates the specified attribute for a load balancer\cr
 #'  \link[=lightsail_update_relational_database]{update_relational_database} \tab Allows the update of one or more attributes of a database in Amazon Lightsail\cr

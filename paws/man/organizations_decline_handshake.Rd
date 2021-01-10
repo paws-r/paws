@@ -10,8 +10,8 @@ organizations_decline_handshake(HandshakeId)
 \item{HandshakeId}{[required] The unique identifier (ID) of the handshake that you want to decline.
 You can get the ID from the ListHandshakesForAccount operation.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for handshake ID
-string requires "h-" followed by from 8 to 32 lowercase letters or
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for handshake
+ID string requires "h-" followed by from 8 to 32 lowercase letters or
 digits.}
 }
 \description{

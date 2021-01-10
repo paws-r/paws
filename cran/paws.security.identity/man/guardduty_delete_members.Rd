@@ -2,8 +2,8 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_delete_members}
 \alias{guardduty_delete_members}
-\title{Deletes GuardDuty member accounts (to the current GuardDuty master
-account) specified by the account IDs}
+\title{Deletes GuardDuty member accounts (to the current GuardDuty
+administrator account) specified by the account IDs}
 \usage{
 guardduty_delete_members(DetectorId, AccountIds)
 }
@@ -15,8 +15,8 @@ want to delete.}
 delete.}
 }
 \description{
-Deletes GuardDuty member accounts (to the current GuardDuty master
-account) specified by the account IDs.
+Deletes GuardDuty member accounts (to the current GuardDuty
+administrator account) specified by the account IDs.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_members(

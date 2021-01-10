@@ -51,6 +51,18 @@ NULL
   return(populate(args, shape))
 }
 
+.computeoptimizer$get_ebs_volume_recommendations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(volumeArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), accountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.computeoptimizer$get_ebs_volume_recommendations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), volumeRecommendations = structure(list(structure(list(volumeArn = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), currentConfiguration = structure(list(volumeType = structure(logical(0), tags = list(type = "string")), volumeSize = structure(logical(0), tags = list(type = "integer")), volumeBaselineIOPS = structure(logical(0), tags = list(type = "integer")), volumeBurstIOPS = structure(logical(0), tags = list(type = "integer")), volumeBaselineThroughput = structure(logical(0), tags = list(type = "integer")), volumeBurstThroughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), finding = structure(logical(0), tags = list(type = "string")), utilizationMetrics = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), statistic = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), lookBackPeriodInDays = structure(logical(0), tags = list(type = "double")), volumeRecommendationOptions = structure(list(structure(list(configuration = structure(list(volumeType = structure(logical(0), tags = list(type = "string")), volumeSize = structure(logical(0), tags = list(type = "integer")), volumeBaselineIOPS = structure(logical(0), tags = list(type = "integer")), volumeBurstIOPS = structure(logical(0), tags = list(type = "integer")), volumeBaselineThroughput = structure(logical(0), tags = list(type = "integer")), volumeBurstThroughput = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), performanceRisk = structure(logical(0), tags = list(type = "double")), rank = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), lastRefreshTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), errors = structure(list(structure(list(identifier = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .computeoptimizer$get_ec2_instance_recommendations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(instanceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), accountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -87,6 +99,18 @@ NULL
   return(populate(args, shape))
 }
 
+.computeoptimizer$get_lambda_function_recommendations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(functionArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), accountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), filters = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.computeoptimizer$get_lambda_function_recommendations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), lambdaFunctionRecommendations = structure(list(structure(list(functionArn = structure(logical(0), tags = list(type = "string")), functionVersion = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string")), currentMemorySize = structure(logical(0), tags = list(type = "integer")), numberOfInvocations = structure(logical(0), tags = list(type = "long")), utilizationMetrics = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), statistic = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), lookbackPeriodInDays = structure(logical(0), tags = list(type = "double")), lastRefreshTimestamp = structure(logical(0), tags = list(type = "timestamp")), finding = structure(logical(0), tags = list(type = "string")), findingReasonCodes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), memorySizeRecommendationOptions = structure(list(structure(list(rank = structure(logical(0), tags = list(type = "integer")), memorySize = structure(logical(0), tags = list(type = "integer")), projectedUtilizationMetrics = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), statistic = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .computeoptimizer$get_recommendation_summaries_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(accountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
@@ -95,7 +119,7 @@ NULL
 
 .computeoptimizer$get_recommendation_summaries_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), recommendationSummaries = structure(list(structure(list(summaries = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list")), recommendationResourceType = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), recommendationSummaries = structure(list(structure(list(summaries = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "double")), reasonCodeSummaries = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), recommendationResourceType = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

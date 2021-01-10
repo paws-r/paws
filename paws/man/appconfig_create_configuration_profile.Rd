@@ -48,7 +48,7 @@ access to the configuration data.
 either a JSON Schema or an AWS Lambda function.
 }
 
-For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig-creating-configuration-and-profile.html}{Create a Configuration and a Configuration Profile}
+For more information, see \href{https://docs.aws.amazon.com/appconfig/latest/userguide/appconfig-creating-configuration-and-profile.html}{Create a Configuration and a Configuration Profile}
 in the \emph{AWS AppConfig User Guide}.
 }
 \section{Request syntax}{

@@ -2,6 +2,10 @@ context("lambda")
 
 svc <- paws::lambda()
 
+test_that("list_code_signing_configs", {
+  expect_error(svc$list_code_signing_configs(), NA)
+})
+
 test_that("list_event_source_mappings", {
   expect_error(svc$list_event_source_mappings(), NA)
 })

@@ -15,13 +15,18 @@ and must not begin or end with a hyphen.}
 \item{IpAddressType}{The value for the address type must be IPv4.}
 
 \item{IpAddresses}{Optionally, if you've added your own IP address pool to Global
-Accelerator, you can choose IP addresses from your own pool to use for
-the accelerator's static IP addresses. You can specify one or two
-addresses, separated by a comma. Do not include the /32 suffix.
+Accelerator (BYOIP), you can choose IP addresses from your own pool to
+use for the accelerator's static IP addresses when you create an
+accelerator. You can specify one or two addresses, separated by a comma.
+Do not include the /32 suffix.
 
-If you specify only one IP address from your IP address range, Global
-Accelerator assigns a second static IP address for the accelerator from
-the AWS IP address pool.
+Only one IP address from each of your IP address ranges can be used for
+each accelerator. If you specify only one IP address from your IP
+address range, Global Accelerator assigns a second static IP address for
+the accelerator from the AWS IP address pool.
+
+Note that you can't update IP addresses for an existing accelerator. To
+change them, you must create a new accelerator with the new addresses.
 
 For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html}{Bring Your Own IP Addresses (BYOIP)}
 in the \emph{AWS Global Accelerator Developer Guide}.}
@@ -44,17 +49,12 @@ in the \emph{AWS Global Accelerator Developer Guide}.}
 Create an accelerator. An accelerator includes one or more listeners
 that process inbound connections and direct traffic to one or more
 endpoint groups, each of which includes endpoints, such as Network Load
-Balancers. To see an AWS CLI example of creating an accelerator, scroll
-down to \strong{Example}.
+Balancers.
 }
 \details{
-If you bring your own IP address ranges to AWS Global Accelerator
-(BYOIP), you can assign IP addresses from your own pool to your
-accelerator as the static IP address entry points. Only one IP address
-from each of your IP address ranges can be used for each accelerator.
-
-You must specify the US West (Oregon) Region to create or update
-accelerators.
+Global Accelerator is a global service that supports endpoints in
+multiple AWS Regions but you must specify the US West (Oregon) Region to
+create or update accelerators.
 }
 \section{Request syntax}{
 \preformatted{svc$create_accelerator(

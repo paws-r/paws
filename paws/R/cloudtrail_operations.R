@@ -83,7 +83,7 @@ cloudtrail_add_tags <- function(ResourceId, TagsList = NULL) {
 #' -   Not be in IP address format (for example, 192.168.5.4)
 #' @param S3BucketName &#91;required&#93; Specifies the name of the Amazon S3 bucket designated for publishing log
 #' files. See [Amazon S3 Bucket Naming
-#' Requirements](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
+#' Requirements](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html).
 #' @param S3KeyPrefix Specifies the Amazon S3 key prefix that comes after the name of the
 #' bucket you have designated for log file delivery. For more information,
 #' see [Finding Your CloudTrail Log
@@ -301,8 +301,8 @@ cloudtrail_describe_trails <- function(trailNameList = NULL, includeShadowTrails
 #'     or AWS Lambda functions that you are logging for data events.
 #' 
 #' For more information, see [Logging Data and Management Events for
-#' Trails](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html)
-#' in the *AWS CloudTrail User Guide*.
+#' Trails](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/) in
+#' the *AWS CloudTrail User Guide*.
 #'
 #' @usage
 #' cloudtrail_get_event_selectors(TrailName)
@@ -677,8 +677,8 @@ cloudtrail_list_trails <- function(NextToken = NULL) {
 #' 50, with a maximum of 50 possible. The response includes a token that
 #' you can use to get the next page of results.
 #' 
-#' The rate of lookup requests is limited to two per second per account. If
-#' this limit is exceeded, a throttling error occurs.
+#' The rate of lookup requests is limited to two per second, per account,
+#' per region. If this limit is exceeded, a throttling error occurs.
 #'
 #' @usage
 #' cloudtrail_lookup_events(LookupAttributes, StartTime, EndTime,
@@ -745,18 +745,19 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 }
 .cloudtrail$operations$lookup_events <- cloudtrail_lookup_events
 
-#' Configures an event selector for your trail
+#' Configures an event selector or advanced event selectors for your trail
 #'
-#' Configures an event selector for your trail. Use event selectors to
-#' further specify the management and data event settings for your trail.
-#' By default, trails created without specific event selectors will be
-#' configured to log all read and write management events, and no data
-#' events.
+#' Configures an event selector or advanced event selectors for your trail.
+#' Use event selectors or advanced event selectors to specify management
+#' and data event settings for your trail. By default, trails created
+#' without specific event selectors are configured to log all read and
+#' write management events, and no data events.
 #' 
 #' When an event occurs in your account, CloudTrail evaluates the event
-#' selectors in all trails. For each trail, if the event matches any event
-#' selector, the trail processes and logs the event. If the event doesn't
-#' match any event selector, the trail doesn't log the event.
+#' selectors or advanced event selectors in all trails. For each trail, if
+#' the event matches any event selector, the trail processes and logs the
+#' event. If the event doesn't match any event selector, the trail doesn't
+#' log the event.
 #' 
 #' Example
 #' 
@@ -771,22 +772,32 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #' 4.  The `RunInstances` is a write-only event and it matches your event
 #'     selector. The trail logs the event.
 #' 
-#' 5.  The `GetConsoleOutput` is a read-only event but it doesn't match
-#'     your event selector. The trail doesn't log the event.
+#' 5.  The `GetConsoleOutput` is a read-only event that doesn't match your
+#'     event selector. The trail doesn't log the event.
 #' 
 #' The `PutEventSelectors` operation must be called from the region in
 #' which the trail was created; otherwise, an `InvalidHomeRegionException`
-#' is thrown.
+#' exception is thrown.
 #' 
 #' You can configure up to five event selectors for each trail. For more
-#' information, see [Logging Data and Management Events for
-#' Trails](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html)
-#' and [Limits in AWS
+#' information, see [Logging data and management events for
+#' trails](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/) and
+#' [Quotas in AWS
 #' CloudTrail](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html)
+#' in the *AWS CloudTrail User Guide*.
+#' 
+#' You can add advanced event selectors, and conditions for your advanced
+#' event selectors, up to a maximum of 500 values for all conditions and
+#' selectors on a trail. You can use either `AdvancedEventSelectors` or
+#' `EventSelectors`, but not both. If you apply `AdvancedEventSelectors` to
+#' a trail, any existing `EventSelectors` are overwritten. For more
+#' information about advanced event selectors, see [Logging data events for
+#' trails](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html)
 #' in the *AWS CloudTrail User Guide*.
 #'
 #' @usage
-#' cloudtrail_put_event_selectors(TrailName, EventSelectors)
+#' cloudtrail_put_event_selectors(TrailName, EventSelectors,
+#'   AdvancedEventSelectors)
 #'
 #' @param TrailName &#91;required&#93; Specifies the name of the trail or trail ARN. If you specify a trail
 #' name, the string must meet the following requirements:
@@ -806,8 +817,20 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #' If you specify a trail ARN, it must be in the format:
 #' 
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
-#' @param EventSelectors &#91;required&#93; Specifies the settings for your event selectors. You can configure up to
-#' five event selectors for a trail.
+#' @param EventSelectors Specifies the settings for your event selectors. You can configure up to
+#' five event selectors for a trail. You can use either `EventSelectors` or
+#' `AdvancedEventSelectors` in a `PutEventSelectors` request, but not both.
+#' If you apply `EventSelectors` to a trail, any existing
+#' `AdvancedEventSelectors` are overwritten.
+#' @param AdvancedEventSelectors Specifies the settings for advanced event selectors. You can add
+#' advanced event selectors, and conditions for your advanced event
+#' selectors, up to a maximum of 500 values for all conditions and
+#' selectors on a trail. You can use either `AdvancedEventSelectors` or
+#' `EventSelectors`, but not both. If you apply `AdvancedEventSelectors` to
+#' a trail, any existing `EventSelectors` are overwritten. For more
+#' information about advanced event selectors, see [Logging data events for
+#' trails](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html)
+#' in the *AWS CloudTrail User Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -829,6 +852,34 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #'         "string"
 #'       )
 #'     )
+#'   ),
+#'   AdvancedEventSelectors = list(
+#'     list(
+#'       Name = "string",
+#'       FieldSelectors = list(
+#'         list(
+#'           Field = "string",
+#'           Equals = list(
+#'             "string"
+#'           ),
+#'           StartsWith = list(
+#'             "string"
+#'           ),
+#'           EndsWith = list(
+#'             "string"
+#'           ),
+#'           NotEquals = list(
+#'             "string"
+#'           ),
+#'           NotStartsWith = list(
+#'             "string"
+#'           ),
+#'           NotEndsWith = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -836,14 +887,14 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 #' @keywords internal
 #'
 #' @rdname cloudtrail_put_event_selectors
-cloudtrail_put_event_selectors <- function(TrailName, EventSelectors) {
+cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, AdvancedEventSelectors = NULL) {
   op <- new_operation(
     name = "PutEventSelectors",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudtrail$put_event_selectors_input(TrailName = TrailName, EventSelectors = EventSelectors)
+  input <- .cloudtrail$put_event_selectors_input(TrailName = TrailName, EventSelectors = EventSelectors, AdvancedEventSelectors = AdvancedEventSelectors)
   output <- .cloudtrail$put_event_selectors_output()
   config <- get_config()
   svc <- .cloudtrail$service(config)
@@ -1076,7 +1127,7 @@ cloudtrail_stop_logging <- function(Name) {
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
 #' @param S3BucketName Specifies the name of the Amazon S3 bucket designated for publishing log
 #' files. See [Amazon S3 Bucket Naming
-#' Requirements](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/create_trail_naming_policy.html).
+#' Requirements](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html).
 #' @param S3KeyPrefix Specifies the Amazon S3 key prefix that comes after the name of the
 #' bucket you have designated for log file delivery. For more information,
 #' see [Finding Your CloudTrail Log

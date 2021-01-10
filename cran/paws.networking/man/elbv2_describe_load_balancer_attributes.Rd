@@ -2,8 +2,8 @@
 % Please edit documentation in R/elbv2_operations.R
 \name{elbv2_describe_load_balancer_attributes}
 \alias{elbv2_describe_load_balancer_attributes}
-\title{Describes the attributes for the specified Application Load Balancer or
-Network Load Balancer}
+\title{Describes the attributes for the specified Application Load Balancer,
+Network Load Balancer, or Gateway Load Balancer}
 \usage{
 elbv2_describe_load_balancer_attributes(LoadBalancerArn)
 }
@@ -11,13 +11,19 @@ elbv2_describe_load_balancer_attributes(LoadBalancerArn)
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
 }
 \description{
-Describes the attributes for the specified Application Load Balancer or
-Network Load Balancer.
+Describes the attributes for the specified Application Load Balancer,
+Network Load Balancer, or Gateway Load Balancer.
 }
 \details{
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes}{Load Balancer Attributes}
-in the \emph{Application Load Balancers Guide} or \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes}{Load Balancer Attributes}
-in the \emph{Network Load Balancers Guide}.
+For more information, see the following:
+\itemize{
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes}{Load balancer attributes}
+in the \emph{Application Load Balancers Guide}
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes}{Load balancer attributes}
+in the \emph{Network Load Balancers Guide}
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-load-balancers.html#load-balancer-attributes}{Load balancer attributes}
+in the \emph{Gateway Load Balancers Guide}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_load_balancer_attributes(

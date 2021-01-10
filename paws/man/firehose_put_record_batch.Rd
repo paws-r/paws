@@ -21,11 +21,7 @@ PutRecord. Applications using these operations are referred to as
 producers.
 }
 \details{
-By default, each delivery stream can take in up to 2,000 transactions
-per second, 5,000 records per second, or 5 MB per second. If you use
-PutRecord and PutRecordBatch, the limits are an aggregate across these
-two operations for each delivery stream. For more information about
-limits, see \href{https://docs.aws.amazon.com/firehose/latest/dev/limits.html}{Amazon Kinesis Data Firehose Limits}.
+For information about service quota, see \href{https://docs.aws.amazon.com/firehose/latest/dev/limits.html}{Amazon Kinesis Data Firehose Quota}.
 
 Each PutRecordBatch request supports up to 500 records. Each record in
 the request can be as large as 1,000 KB (before 64-bit encoding), up to

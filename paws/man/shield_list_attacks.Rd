@@ -16,25 +16,26 @@ included.}
 \item{StartTime}{The start of the time period for the attacks. This is a \code{timestamp}
 type. The sample request above indicates a \code{number} type because the
 default used by WAF is Unix time in seconds. However any valid
-\href{http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types}{timestamp format}
+\href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#parameter-types}{timestamp format}
 is allowed.}
 
 \item{EndTime}{The end of the time period for the attacks. This is a \code{timestamp} type.
 The sample request above indicates a \code{number} type because the default
-used by WAF is Unix time in seconds. However any valid \href{http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types}{timestamp format}
+used by WAF is Unix time in seconds. However any valid \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#parameter-types}{timestamp format}
 is allowed.}
 
 \item{NextToken}{The \code{ListAttacksRequest.NextMarker} value from a previous call to
 \code{ListAttacksRequest}. Pass null if this is the first call.}
 
-\item{MaxResults}{The maximum number of AttackSummary objects to be returned. If this is
-left blank, the first 20 results will be returned.
+\item{MaxResults}{The maximum number of AttackSummary objects to return. If you leave this
+blank, Shield Advanced returns the first 20 results.
 
-This is a maximum value; it is possible that AWS WAF will return the
-results in smaller batches. That is, the number of AttackSummary objects
-returned could be less than \code{MaxResults}, even if there are still more
-AttackSummary objects yet to return. If there are more AttackSummary
-objects to return, AWS WAF will always also return a \code{NextToken}.}
+This is a maximum value. Shield Advanced might return the results in
+smaller batches. That is, the number of objects returned could be less
+than \code{MaxResults}, even if there are still more objects yet to return.
+If there are more objects to return, Shield Advanced returns a value in
+\code{NextToken} that you can use in your next request, to get the next batch
+of objects.}
 }
 \description{
 Returns all ongoing DDoS attacks or all DDoS attacks during a specified

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ebs_operations.R
 \name{ebs_put_snapshot_block}
 \alias{ebs_put_snapshot_block}
-\title{Writes a block of data to a block in the snapshot}
+\title{Writes a block of data to a snapshot}
 \usage{
 ebs_put_snapshot_block(SnapshotId, BlockIndex, BlockData, DataLength,
   Progress, Checksum, ChecksumAlgorithm)
@@ -11,10 +11,10 @@ ebs_put_snapshot_block(SnapshotId, BlockIndex, BlockData, DataLength,
 \item{SnapshotId}{[required] The ID of the snapshot.}
 
 \item{BlockIndex}{[required] The block index of the block in which to write the data. A block index
-is the offset position of a block within a snapshot, and it is used to
-identify the block. To identify the logical offset of the data in the
-logical volume, multiply the block index with the block size (Block
-index * 512 bytes).}
+is a logical index in units of \code{512} KiB blocks. To identify the block
+index, divide the logical offset of the data in the logical volume by
+the block size (logical offset of data/\code{524288}). The logical offset of
+the data must be \code{512} KiB aligned.}
 
 \item{BlockData}{[required] The data to write to the block.
 
@@ -43,9 +43,9 @@ supported.}
 supported algorithm is \code{SHA256}.}
 }
 \description{
-Writes a block of data to a block in the snapshot. If the specified
-block contains data, the existing data is overwritten. The target
-snapshot must be in the \code{pending} state.
+Writes a block of data to a snapshot. If the specified block contains
+data, the existing data is overwritten. The target snapshot must be in
+the \code{pending} state.
 }
 \details{
 Data written to a snapshot must be aligned with 512-byte sectors.

@@ -14,6 +14,9 @@ managedblockchain_get_proposal(NetworkId, ProposalId)
 \description{
 Returns detailed information about a proposal.
 }
+\details{
+Applies only to Hyperledger Fabric.
+}
 \section{Request syntax}{
 \preformatted{svc$get_proposal(
   NetworkId = "string",

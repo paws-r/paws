@@ -2,21 +2,13 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_list_object_versions}
 \alias{s3_list_object_versions}
-\title{Returns metadata about all of the versions of objects in a bucket}
+\title{Returns metadata about all versions of the objects in a bucket}
 \usage{
 s3_list_object_versions(Bucket, Delimiter, EncodingType, KeyMarker,
-  MaxKeys, Prefix, VersionIdMarker)
+  MaxKeys, Prefix, VersionIdMarker, ExpectedBucketOwner)
 }
 \arguments{
-\item{Bucket}{[required] The bucket name that contains the objects.
-
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
-\emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
-in the \emph{Amazon Simple Storage Service Developer Guide}.}
+\item{Bucket}{[required] The bucket name that contains the objects.}
 
 \item{Delimiter}{A delimiter is a character that you specify to group keys. All keys that
 contain the same string between the \code{prefix} and the first occurrence of
@@ -44,10 +36,14 @@ prefix with delimiter to roll up numerous objects into a single result
 under CommonPrefixes.}
 
 \item{VersionIdMarker}{Specifies the object version you want to start listing from.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
-Returns metadata about all of the versions of objects in a bucket. You
-can also use request parameters as selection criteria to return metadata
+Returns metadata about all versions of the objects in a bucket. You can
+also use request parameters as selection criteria to return metadata
 about a subset of all the object versions.
 }
 \details{
@@ -57,12 +53,14 @@ appropriately.
 
 To use this operation, you must have READ access to the bucket.
 
+This action is not supported by Amazon S3 on Outposts.
+
 The following operations are related to \code{ListObjectVersions}:
 \itemize{
-\item ListObjectsV2
-\item GetObject
-\item PutObject
-\item DeleteObject
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html}{ListObjectsV2}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html}{DeleteObject}
 }
 }
 \section{Request syntax}{
@@ -73,7 +71,8 @@ The following operations are related to \code{ListObjectVersions}:
   KeyMarker = "string",
   MaxKeys = 123,
   Prefix = "string",
-  VersionIdMarker = "string"
+  VersionIdMarker = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

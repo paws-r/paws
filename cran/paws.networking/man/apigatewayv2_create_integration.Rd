@@ -6,9 +6,10 @@
 \usage{
 apigatewayv2_create_integration(ApiId, ConnectionId, ConnectionType,
   ContentHandlingStrategy, CredentialsArn, Description, IntegrationMethod,
-  IntegrationType, IntegrationUri, PassthroughBehavior,
-  PayloadFormatVersion, RequestParameters, RequestTemplates,
-  TemplateSelectionExpression, TimeoutInMillis, TlsConfig)
+  IntegrationSubtype, IntegrationType, IntegrationUri,
+  PassthroughBehavior, PayloadFormatVersion, RequestParameters,
+  RequestTemplates, ResponseParameters, TemplateSelectionExpression,
+  TimeoutInMillis, TlsConfig)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -46,6 +47,9 @@ permissions on supported AWS services, specify null.}
 
 \item{IntegrationMethod}{Specifies the integration's HTTP method type.}
 
+\item{IntegrationSubtype}{Supported only for HTTP API AWS\\_PROXY integrations. Specifies the AWS
+service action to invoke. To learn more, see \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-aws-services-reference.html}{Integration subtype reference}.}
+
 \item{IntegrationType}{[required] The integration type of an integration. One of the following:
 
 AWS: for integrating the route or method request with an AWS service
@@ -54,9 +58,9 @@ function-invoking action, this is referred to as the Lambda custom
 integration. With any other AWS service action, this is known as AWS
 integration. Supported only for WebSocket APIs.
 
-AWS\\_PROXY: for integrating the route or method request with the Lambda
-function-invoking action with the client request passed through as-is.
-This integration is also referred to as Lambda proxy integration.
+AWS\\_PROXY: for integrating the route or method request with a Lambda
+function or other AWS service action. This integration is also referred
+to as a Lambda proxy integration.
 
 HTTP: for integrating the route or method request with an HTTP endpoint.
 This integration is also referred to as the HTTP custom integration.
@@ -104,20 +108,46 @@ same HTTP 415 Unsupported Media Type response.}
 \item{PayloadFormatVersion}{Specifies the format of the payload sent to an integration. Required for
 HTTP APIs.}
 
-\item{RequestParameters}{A key-value map specifying request parameters that are passed from the
-method request to the backend. The key is an integration request
-parameter name and the associated value is a method request parameter
-value or static value that must be enclosed within single quotes and
-pre-encoded as required by the backend. The method request parameter
-value must match the pattern of method.request.\{location\}.\{name\} , where
-\{location\} is querystring, path, or header; and \{name\} must be a valid
-and unique method request parameter name. Supported only for WebSocket
-APIs.}
+\item{RequestParameters}{For WebSocket APIs, a key-value map specifying request parameters that
+are passed from the method request to the backend. The key is an
+integration request parameter name and the associated value is a method
+request parameter value or static value that must be enclosed within
+single quotes and pre-encoded as required by the backend. The method
+request parameter value must match the pattern of
+method.request.\{location\}.\{name\} , where \{location\} is querystring,
+path, or header; and \{name\} must be a valid and unique method request
+parameter name.
+
+For HTTP API integrations with a specified integrationSubtype, request
+parameters are a key-value map specifying parameters that are passed to
+AWS\\_PROXY integrations. You can provide static values, or map request
+data, stage variables, or context variables that are evaluated at
+runtime. To learn more, see \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-aws-services.html}{Working with AWS service integrations for HTTP APIs}.
+
+For HTTP API integrations without a specified integrationSubtype request
+parameters are a key-value map specifying how to transform HTTP requests
+before sending them to the backend. The key should follow the pattern
+<action>:<header|querystring|path>.<location> where
+action can be append, overwrite or remove. For values, you can provide
+static values, or map request data, stage variables, or context
+variables that are evaluated at runtime. To learn more, see
+\href{https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html}{Transforming API requests and responses}.}
 
 \item{RequestTemplates}{Represents a map of Velocity templates that are applied on the request
 payload based on the value of the Content-Type header sent by the
 client. The content type value is the key in this map, and the template
 (as a String) is the value. Supported only for WebSocket APIs.}
+
+\item{ResponseParameters}{Supported only for HTTP APIs. You use response parameters to transform
+the HTTP response from a backend integration before returning the
+response to clients. Specify a key-value map from a selection key to
+response parameters. The selection key must be a valid HTTP status code
+within the range of 200-599. Response parameters are a key-value map.
+The key must match pattern
+<action>:<header>.<location> or overwrite.statuscode.
+The action can be append, overwrite or remove. The value can be a static
+value, or map to response data, stage variables, or context variables
+that are evaluated at runtime. To learn more, see \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html}{Transforming API requests and responses}.}
 
 \item{TemplateSelectionExpression}{The template selection expression for the integration.}
 
@@ -141,6 +171,7 @@ Creates an Integration.
   CredentialsArn = "string",
   Description = "string",
   IntegrationMethod = "string",
+  IntegrationSubtype = "string",
   IntegrationType = "AWS"|"HTTP"|"MOCK"|"HTTP_PROXY"|"AWS_PROXY",
   IntegrationUri = "string",
   PassthroughBehavior = "WHEN_NO_MATCH"|"NEVER"|"WHEN_NO_TEMPLATES",
@@ -150,6 +181,11 @@ Creates an Integration.
   ),
   RequestTemplates = list(
     "string"
+  ),
+  ResponseParameters = list(
+    list(
+      "string"
+    )
   ),
   TemplateSelectionExpression = "string",
   TimeoutInMillis = 123,

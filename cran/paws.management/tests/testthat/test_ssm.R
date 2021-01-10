@@ -114,6 +114,22 @@ test_that("list_documents", {
   expect_error(svc$list_documents(MaxResults = 20), NA)
 })
 
+test_that("list_ops_item_events", {
+  expect_error(svc$list_ops_item_events(), NA)
+})
+
+test_that("list_ops_item_events", {
+  expect_error(svc$list_ops_item_events(MaxResults = 20), NA)
+})
+
+test_that("list_ops_metadata", {
+  expect_error(svc$list_ops_metadata(), NA)
+})
+
+test_that("list_ops_metadata", {
+  expect_error(svc$list_ops_metadata(MaxResults = 20), NA)
+})
+
 test_that("list_resource_compliance_summaries", {
   expect_error(svc$list_resource_compliance_summaries(), NA)
 })

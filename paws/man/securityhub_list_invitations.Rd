@@ -21,6 +21,10 @@ response.}
 Lists all Security Hub membership invitations that were sent to the
 current AWS account.
 }
+\details{
+This operation is only used by accounts that do not belong to an
+organization. Organization accounts do not receive invitations.
+}
 \section{Request syntax}{
 \preformatted{svc$list_invitations(
   MaxResults = 123,

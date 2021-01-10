@@ -4,7 +4,8 @@
 \alias{glue_update_workflow}
 \title{Updates an existing workflow}
 \usage{
-glue_update_workflow(Name, Description, DefaultRunProperties)
+glue_update_workflow(Name, Description, DefaultRunProperties,
+  MaxConcurrentRuns)
 }
 \arguments{
 \item{Name}{[required] Name of the workflow to be updated.}
@@ -13,6 +14,12 @@ glue_update_workflow(Name, Description, DefaultRunProperties)
 
 \item{DefaultRunProperties}{A collection of properties to be used as part of each execution of the
 workflow.}
+
+\item{MaxConcurrentRuns}{You can use this parameter to prevent unwanted multiple updates to data,
+to control costs, or in some cases, to prevent exceeding the maximum
+number of concurrent runs of any of the component jobs. If you leave
+this parameter blank, there is no limit to the number of concurrent
+workflow runs.}
 }
 \description{
 Updates an existing workflow.
@@ -23,7 +30,8 @@ Updates an existing workflow.
   Description = "string",
   DefaultRunProperties = list(
     "string"
-  )
+  ),
+  MaxConcurrentRuns = 123
 )
 }
 }

@@ -4,12 +4,14 @@
 \alias{frauddetector_put_outcome}
 \title{Creates or updates an outcome}
 \usage{
-frauddetector_put_outcome(name, description)
+frauddetector_put_outcome(name, description, tags)
 }
 \arguments{
 \item{name}{[required] The name of the outcome.}
 
 \item{description}{The outcome description.}
+
+\item{tags}{A collection of key and value pairs.}
 }
 \description{
 Creates or updates an outcome.
@@ -17,7 +19,13 @@ Creates or updates an outcome.
 \section{Request syntax}{
 \preformatted{svc$put_outcome(
   name = "string",
-  description = "string"
+  description = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

@@ -31,7 +31,7 @@ Rebooting a cluster is currently supported on Memcached and Redis
 (cluster mode enabled) clusters.
 
 If you make changes to parameters that require a Redis (cluster mode
-enabled) cluster reboot for the changes to be applied, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Rebooting.html}{Rebooting a Cluster}
+enabled) cluster reboot for the changes to be applied, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Rebooting.html}{Rebooting a Cluster}
 for an alternate process.
 }
 \section{Request syntax}{

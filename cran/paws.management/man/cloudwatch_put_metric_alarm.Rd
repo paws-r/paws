@@ -13,8 +13,7 @@ cloudwatch_put_metric_alarm(AlarmName, AlarmDescription, ActionsEnabled,
   ThresholdMetricId)
 }
 \arguments{
-\item{AlarmName}{[required] The name for the alarm. This name must be unique within your AWS
-account.}
+\item{AlarmName}{[required] The name for the alarm. This name must be unique within the Region.}
 
 \item{AlarmDescription}{The description for the alarm.}
 
@@ -49,6 +48,7 @@ Valid Values: \verb{arn:aws:automate:<i>region</i>:ec2:stop} |
 \verb{arn:aws:automate:<i>region</i>:ec2:reboot} |
 \verb{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> } |
 \verb{arn:aws:autoscaling:<i>region</i>:<i>account-id</i>:scalingPolicy:<i>policy-id</i>:autoScalingGroupName/<i>group-friendly-name</i>:policyName/<i>policy-friendly-name</i> }
+| \verb{arn:aws:ssm:<i>region</i>:<i>account-id</i>:opsitem:<i>severity</i> }
 
 Valid Values (for use with IAM roles):
 \verb{arn:aws:swf:<i>region</i>:<i>account-id</i>:action/actions/AWS_EC2.InstanceId.Stop/1.0}
@@ -112,8 +112,8 @@ period of 10 or 30 for a metric that does not have sub-minute
 resolution, the alarm still attempts to gather data at the period rate
 that you specify. In this case, it does not receive data for the
 attempts that do not correspond to a one-minute data resolution, and the
-alarm may often lapse into INSUFFICENT\\_DATA status. Specifying 10 or 30
-also sets this alarm as a high-resolution alarm, which has a higher
+alarm might often lapse into INSUFFICENT\\_DATA status. Specifying 10 or
+30 also sets this alarm as a high-resolution alarm, which has a higher
 charge than other alarms. For more information about pricing, see
 \href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.
 
@@ -130,12 +130,12 @@ a unit of measure, such as Percent, are aggregated separately.
 
 If you don't specify \code{Unit}, CloudWatch retrieves all unit types that
 have been published for the metric and attempts to evaluate the alarm.
-Usually metrics are published with only one unit, so the alarm will work
-as intended.
+Usually, metrics are published with only one unit, so the alarm works as
+intended.
 
 However, if the metric is published with multiple types of units and you
-don't specify a unit, the alarm's behavior is not defined and will
-behave un-predictably.
+don't specify a unit, the alarm's behavior is not defined and it behaves
+predictably.
 
 We recommend omitting \code{Unit} so that you don't inadvertently specify an
 incorrect unit that is not published for this metric. Doing so causes
@@ -193,7 +193,7 @@ Each item in the \code{Metrics} array either retrieves a metric or performs a
 math expression.
 
 One item in the \code{Metrics} array is the expression that the alarm
-watches. You designate this expression by setting \code{ReturnValue} to true
+watches. You designate this expression by setting \code{ReturnData} to true
 for this object in the array. For more information, see
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_MetricDataQuery.html}{MetricDataQuery}.
 
@@ -207,8 +207,15 @@ the \code{Metrics} array.}
 as many as 50 tags with an alarm.
 
 Tags can help you organize and categorize your resources. You can also
-use them to scope user permissions, by granting a user permission to
-access or change only resources with certain tag values.}
+use them to scope user permissions by granting a user permission to
+access or change only resources with certain tag values.
+
+If you are using this operation to update an existing alarm, any tags
+you specify in this parameter are ignored. To change the tags of an
+existing alarm, use
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_TagResource.html}{TagResource}
+or
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_UntagResource.html}{UntagResource}.}
 
 \item{ThresholdMetricId}{If this is an alarm based on an anomaly detection model, make this value
 match the ID of the \code{ANOMALY_DETECTION_BAND} function.
@@ -237,32 +244,17 @@ update completely overwrites the previous configuration of the alarm.
 If you are an IAM user, you must have Amazon EC2 permissions for some
 alarm operations:
 \itemize{
-\item \code{iam:CreateServiceLinkedRole} for all alarms with EC2 actions
-\item \code{ec2:DescribeInstanceStatus} and \code{ec2:DescribeInstances} for all
-alarms on EC2 instance status metrics
-\item \code{ec2:StopInstances} for alarms with stop actions
-\item \code{ec2:TerminateInstances} for alarms with terminate actions
-\item No specific permissions are needed for alarms with recover actions
+\item The \code{iam:CreateServiceLinkedRole} for all alarms with EC2 actions
+\item The \code{iam:CreateServiceLinkedRole} to create an alarm with Systems
+Manager OpsItem actions.
 }
-
-If you have read/write permissions for Amazon CloudWatch but not for
-Amazon EC2, you can still create an alarm, but the stop or terminate
-actions are not performed. However, if you are later granted the
-required permissions, the alarm actions that you created earlier are
-performed.
-
-If you are using an IAM role (for example, an EC2 instance profile), you
-cannot stop or terminate the instance using alarm actions. However, you
-can still see the alarm state and perform any other actions such as
-Amazon SNS notifications or Auto Scaling policies.
-
-If you are using temporary security credentials granted using AWS STS,
-you cannot stop or terminate an EC2 instance using alarm actions.
 
 The first time you create an alarm in the AWS Management Console, the
 CLI, or by using the PutMetricAlarm API, CloudWatch creates the
-necessary service-linked role for you. The service-linked role is called
-\code{AWSServiceRoleForCloudWatchEvents}. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role}{AWS service-linked role}.
+necessary service-linked rolea for you. The service-linked roles are
+called \code{AWSServiceRoleForCloudWatchEvents} and
+\code{AWSServiceRoleForCloudWatchAlarms_ActionSSM}. For more information, see
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role}{AWS service-linked role}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_metric_alarm(

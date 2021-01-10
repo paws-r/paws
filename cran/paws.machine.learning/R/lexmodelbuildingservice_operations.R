@@ -582,9 +582,9 @@ lexmodelbuildingservice_delete_slot_type_version <- function(name, version) {
 #' @param botName &#91;required&#93; The name of the bot that stored the utterances.
 #' @param userId &#91;required&#93; The unique identifier for the user that made the utterances. This is the
 #' user ID that was sent in the
-#' [PostContent](http://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html)
+#' [PostContent](https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html)
 #' or
-#' [PostText](http://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html)
+#' [PostText](https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html)
 #' operation request that contained the utterance.
 #'
 #' @section Request syntax:
@@ -994,7 +994,7 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
 #'
 #' @param signature &#91;required&#93; The unique identifier for a built-in intent. To find the signature for
 #' an intent, see [Standard Built-in
-#' Intents](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+#' Intents](https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html)
 #' in the *Alexa Skills Kit*.
 #'
 #' @section Request syntax:
@@ -1040,7 +1040,7 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
 #' returned if any part of its signature matches the substring. For
 #' example, "xyz" matches both "xyzabc" and "abcxyz." To find the signature
 #' for an intent, see [Standard Built-in
-#' Intents](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+#' Intents](https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html)
 #' in the *Alexa Skills Kit*.
 #' @param nextToken A pagination token that fetches the next page of intents. If this API
 #' call is truncated, Amazon Lex returns a pagination token in the
@@ -1052,7 +1052,7 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
 #' @section Request syntax:
 #' ```
 #' svc$get_builtin_intents(
-#'   locale = "en-US"|"en-GB"|"de-DE",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
 #'   signatureContains = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -1084,7 +1084,7 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 #' Gets a list of built-in slot types that meet the specified criteria.
 #' 
 #' For a list of built-in slot types, see [Slot Type
-#' Reference](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference)
+#' Reference](https://developer.amazon.com/en-US/docs/alexa/custom-skills/slot-type-reference.html)
 #' in the *Alexa Skills Kit*.
 #' 
 #' This operation requires permission for the `lex:GetBuiltInSlotTypes`
@@ -1108,7 +1108,7 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 #' @section Request syntax:
 #' ```
 #' svc$get_builtin_slot_types(
-#'   locale = "en-US"|"en-GB"|"de-DE",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
 #'   signatureContains = "string",
 #'   nextToken = "string",
 #'   maxResults = 123
@@ -1697,6 +1697,7 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #'
 #' @usage
 #' lexmodelbuildingservice_put_bot(name, description, intents,
+#'   enableModelImprovements, nluIntentConfidenceThreshold,
 #'   clarificationPrompt, abortStatement, idleSessionTTLInSeconds, voiceId,
 #'   checksum, processBehavior, locale, childDirected, detectSentiment,
 #'   createVersion, tags)
@@ -1706,6 +1707,68 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' @param intents An array of `Intent` objects. Each intent represents a command that a
 #' user can express. For example, a pizza ordering bot might support an
 #' OrderPizza intent. For more information, see how-it-works.
+#' @param enableModelImprovements Set to `true` to enable access to natural language understanding
+#' improvements.
+#' 
+#' When you set the `enableModelImprovements` parameter to `true` you can
+#' use the `nluIntentConfidenceThreshold` parameter to configure confidence
+#' scores. For more information, see [Confidence
+#' Scores](https://docs.aws.amazon.com/lex/latest/dg/confidence-scores.html).
+#' 
+#' You can only set the `enableModelImprovements` parameter in certain
+#' Regions. If you set the parameter to `true`, your bot has access to
+#' accuracy improvements.
+#' 
+#' The Regions where you can set the `enableModelImprovements` parameter to
+#' `true` are:
+#' 
+#' -   US East (N. Virginia) (us-east-1)
+#' 
+#' -   US West (Oregon) (us-west-2)
+#' 
+#' -   Asia Pacific (Sydney) (ap-southeast-2)
+#' 
+#' -   EU (Ireland) (eu-west-1)
+#' 
+#' In other Regions, the `enableModelImprovements` parameter is set to
+#' `true` by default. In these Regions setting the parameter to `false`
+#' throws a `ValidationException` exception.
+#' @param nluIntentConfidenceThreshold Determines the threshold where Amazon Lex will insert the
+#' `AMAZON.FallbackIntent`, `AMAZON.KendraSearchIntent`, or both when
+#' returning alternative intents in a
+#' [PostContent](https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html)
+#' or
+#' [PostText](https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html)
+#' response. `AMAZON.FallbackIntent` and `AMAZON.KendraSearchIntent` are
+#' only inserted if they are configured for the bot.
+#' 
+#' You must set the `enableModelImprovements` parameter to `true` to use
+#' confidence scores in the following regions.
+#' 
+#' -   US East (N. Virginia) (us-east-1)
+#' 
+#' -   US West (Oregon) (us-west-2)
+#' 
+#' -   Asia Pacific (Sydney) (ap-southeast-2)
+#' 
+#' -   EU (Ireland) (eu-west-1)
+#' 
+#' In other Regions, the `enableModelImprovements` parameter is set to
+#' `true` by default.
+#' 
+#' For example, suppose a bot is configured with the confidence threshold
+#' of 0.80 and the `AMAZON.FallbackIntent`. Amazon Lex returns three
+#' alternative intents with the following confidence scores: IntentA
+#' (0.70), IntentB (0.60), IntentC (0.50). The response from the `PostText`
+#' operation would be:
+#' 
+#' -   AMAZON.FallbackIntent
+#' 
+#' -   IntentA
+#' 
+#' -   IntentB
+#' 
+#' -   IntentC
 #' @param clarificationPrompt When Amazon Lex doesn't understand the user's intent, it uses this
 #' message to get clarification. To specify how many times Amazon Lex
 #' should repeat the clarification prompt, use the `maxAttempts` field. If
@@ -1743,7 +1806,7 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #'     400 Bad Request exception.
 #' @param abortStatement When Amazon Lex can't understand the user's input in context, it tries
 #' to elicit the information a few times. After that, Amazon Lex sends the
-#' message defined in `abortStatement` to the user, and then aborts the
+#' message defined in `abortStatement` to the user, and then cancels the
 #' conversation. To set the number of retries, use the
 #' `valueElicitationPrompt` field for the slot type.
 #' 
@@ -1757,7 +1820,7 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' specify the `valueElicitationPrompt` field when you create the
 #' `CrustType` slot.
 #' 
-#' If you have defined a fallback intent the abort statement will not be
+#' If you have defined a fallback intent the cancel statement will not be
 #' sent to the user, the fallback intent is used instead. For more
 #' information, see
 #' [AMAZON.FallbackIntent](https://docs.aws.amazon.com/lex/latest/dg/built-in-intent-fallback.html).
@@ -1825,7 +1888,7 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' COPPA. For information regarding the use of Amazon Lex in connection
 #' with websites, programs, or other applications that are directed or
 #' targeted, in whole or in part, to children under age 13, see the [Amazon
-#' Lex FAQ.](https://aws.amazon.com/lex/faqs#data-security)
+#' Lex FAQ.](https://aws.amazon.com/lex/faqs/#data-security)
 #' @param detectSentiment When set to `true` user utterances are sent to Amazon Comprehend for
 #' sentiment analysis. If you don't specify `detectSentiment`, the default
 #' is `false`.
@@ -1847,6 +1910,8 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #'       intentVersion = "string"
 #'     )
 #'   ),
+#'   enableModelImprovements = TRUE|FALSE,
+#'   nluIntentConfidenceThreshold = 123.0,
 #'   clarificationPrompt = list(
 #'     messages = list(
 #'       list(
@@ -1872,7 +1937,7 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #'   voiceId = "string",
 #'   checksum = "string",
 #'   processBehavior = "SAVE"|"BUILD",
-#'   locale = "en-US"|"en-GB"|"de-DE",
+#'   locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
 #'   childDirected = TRUE|FALSE,
 #'   detectSentiment = TRUE|FALSE,
 #'   createVersion = TRUE|FALSE,
@@ -1932,14 +1997,14 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_put_bot
-lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = NULL, clarificationPrompt = NULL, abortStatement = NULL, idleSessionTTLInSeconds = NULL, voiceId = NULL, checksum = NULL, processBehavior = NULL, locale, childDirected, detectSentiment = NULL, createVersion = NULL, tags = NULL) {
+lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = NULL, enableModelImprovements = NULL, nluIntentConfidenceThreshold = NULL, clarificationPrompt = NULL, abortStatement = NULL, idleSessionTTLInSeconds = NULL, voiceId = NULL, checksum = NULL, processBehavior = NULL, locale, childDirected, detectSentiment = NULL, createVersion = NULL, tags = NULL) {
   op <- new_operation(
     name = "PutBot",
     http_method = "PUT",
     http_path = "/bots/{name}/versions/$LATEST",
     paginator = list()
   )
-  input <- .lexmodelbuildingservice$put_bot_input(name = name, description = description, intents = intents, clarificationPrompt = clarificationPrompt, abortStatement = abortStatement, idleSessionTTLInSeconds = idleSessionTTLInSeconds, voiceId = voiceId, checksum = checksum, processBehavior = processBehavior, locale = locale, childDirected = childDirected, detectSentiment = detectSentiment, createVersion = createVersion, tags = tags)
+  input <- .lexmodelbuildingservice$put_bot_input(name = name, description = description, intents = intents, enableModelImprovements = enableModelImprovements, nluIntentConfidenceThreshold = nluIntentConfidenceThreshold, clarificationPrompt = clarificationPrompt, abortStatement = abortStatement, idleSessionTTLInSeconds = idleSessionTTLInSeconds, voiceId = voiceId, checksum = checksum, processBehavior = processBehavior, locale = locale, childDirected = childDirected, detectSentiment = detectSentiment, createVersion = createVersion, tags = tags)
   output <- .lexmodelbuildingservice$put_bot_output()
   config <- get_config()
   svc <- .lexmodelbuildingservice$service(config)
@@ -2086,7 +2151,7 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'   sampleUtterances, confirmationPrompt, rejectionStatement,
 #'   followUpPrompt, conclusionStatement, dialogCodeHook,
 #'   fulfillmentActivity, parentIntentSignature, checksum, createVersion,
-#'   kendraConfiguration)
+#'   kendraConfiguration, inputContexts, outputContexts)
 #'
 #' @param name &#91;required&#93; The name of the intent. The name is *not* case sensitive.
 #' 
@@ -2096,7 +2161,7 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' `HelpIntent`.
 #' 
 #' For a list of built-in intents, see [Standard Built-in
-#' Intents](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+#' Intents](https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html)
 #' in the *Alexa Skills Kit*.
 #' @param description A description of the intent.
 #' @param slots An array of intent slots. At runtime, Amazon Lex elicits required slot
@@ -2174,7 +2239,7 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' can process the intent (for example, place an order with a pizzeria).
 #' @param parentIntentSignature A unique identifier for the built-in intent to base this intent on. To
 #' find the signature for an intent, see [Standard Built-in
-#' Intents](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
+#' Intents](https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html)
 #' in the *Alexa Skills Kit*.
 #' @param checksum Identifies a specific revision of the `$LATEST` version.
 #' 
@@ -2192,7 +2257,12 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' @param kendraConfiguration Configuration information required to use the
 #' `AMAZON.KendraSearchIntent` intent to connect to an Amazon Kendra index.
 #' For more information, see
-#' [AMAZON.KendraSearchIntent](http://docs.aws.amazon.com/lex/latest/dg/built-in-intent-kendra-search.html).
+#' [AMAZON.KendraSearchIntent](https://docs.aws.amazon.com/lex/latest/dg/built-in-intent-kendra-search.html).
+#' @param inputContexts An array of `InputContext` objects that lists the contexts that must be
+#' active for Amazon Lex to choose the intent in a conversation with the
+#' user.
+#' @param outputContexts An array of `OutputContext` objects that lists the contexts that the
+#' intent activates when the intent is fulfilled.
 #'
 #' @section Request syntax:
 #' ```
@@ -2222,7 +2292,14 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'         "string"
 #'       ),
 #'       responseCard = "string",
-#'       obfuscationSetting = "NONE"|"DEFAULT_OBFUSCATION"
+#'       obfuscationSetting = "NONE"|"DEFAULT_OBFUSCATION",
+#'       defaultValueSpec = list(
+#'         defaultValueList = list(
+#'           list(
+#'             defaultValue = "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   sampleUtterances = list(
@@ -2300,6 +2377,18 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #'     kendraIndex = "string",
 #'     queryFilterString = "string",
 #'     role = "string"
+#'   ),
+#'   inputContexts = list(
+#'     list(
+#'       name = "string"
+#'     )
+#'   ),
+#'   outputContexts = list(
+#'     list(
+#'       name = "string",
+#'       timeToLiveInSeconds = 123,
+#'       turnsToLive = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -2441,14 +2530,14 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 #' @keywords internal
 #'
 #' @rdname lexmodelbuildingservice_put_intent
-lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots = NULL, sampleUtterances = NULL, confirmationPrompt = NULL, rejectionStatement = NULL, followUpPrompt = NULL, conclusionStatement = NULL, dialogCodeHook = NULL, fulfillmentActivity = NULL, parentIntentSignature = NULL, checksum = NULL, createVersion = NULL, kendraConfiguration = NULL) {
+lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots = NULL, sampleUtterances = NULL, confirmationPrompt = NULL, rejectionStatement = NULL, followUpPrompt = NULL, conclusionStatement = NULL, dialogCodeHook = NULL, fulfillmentActivity = NULL, parentIntentSignature = NULL, checksum = NULL, createVersion = NULL, kendraConfiguration = NULL, inputContexts = NULL, outputContexts = NULL) {
   op <- new_operation(
     name = "PutIntent",
     http_method = "PUT",
     http_path = "/intents/{name}/versions/$LATEST",
     paginator = list()
   )
-  input <- .lexmodelbuildingservice$put_intent_input(name = name, description = description, slots = slots, sampleUtterances = sampleUtterances, confirmationPrompt = confirmationPrompt, rejectionStatement = rejectionStatement, followUpPrompt = followUpPrompt, conclusionStatement = conclusionStatement, dialogCodeHook = dialogCodeHook, fulfillmentActivity = fulfillmentActivity, parentIntentSignature = parentIntentSignature, checksum = checksum, createVersion = createVersion, kendraConfiguration = kendraConfiguration)
+  input <- .lexmodelbuildingservice$put_intent_input(name = name, description = description, slots = slots, sampleUtterances = sampleUtterances, confirmationPrompt = confirmationPrompt, rejectionStatement = rejectionStatement, followUpPrompt = followUpPrompt, conclusionStatement = conclusionStatement, dialogCodeHook = dialogCodeHook, fulfillmentActivity = fulfillmentActivity, parentIntentSignature = parentIntentSignature, checksum = checksum, createVersion = createVersion, kendraConfiguration = kendraConfiguration, inputContexts = inputContexts, outputContexts = outputContexts)
   output <- .lexmodelbuildingservice$put_intent_output()
   config <- get_config()
   svc <- .lexmodelbuildingservice$service(config)
@@ -2489,13 +2578,16 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 #' called `DATE`.
 #' 
 #' For a list of built-in slot types, see [Slot Type
-#' Reference](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference)
+#' Reference](https://developer.amazon.com/en-US/docs/alexa/custom-skills/slot-type-reference.html)
 #' in the *Alexa Skills Kit*.
 #' @param description A description of the slot type.
 #' @param enumerationValues A list of `EnumerationValue` objects that defines the values that the
 #' slot type can take. Each value can have a list of `synonyms`, which are
 #' additional values that help train the machine learning model about the
 #' values that it resolves for a slot.
+#' 
+#' A regular expression slot type doesn't require enumeration values. All
+#' other slot types require a list of enumeration values.
 #' 
 #' When Amazon Lex resolves a slot value, it generates a resolution list
 #' that contains up to five possible values for the slot. If you are using

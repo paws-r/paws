@@ -2,8 +2,8 @@
 % Please edit documentation in R/docdb_operations.R
 \name{docdb_apply_pending_maintenance_action}
 \alias{docdb_apply_pending_maintenance_action}
-\title{Applies a pending maintenance action to a resource (for example, to a DB
-instance)}
+\title{Applies a pending maintenance action to a resource (for example, to an
+Amazon DocumentDB instance)}
 \usage{
 docdb_apply_pending_maintenance_action(ResourceIdentifier, ApplyAction,
   OptInType)
@@ -29,8 +29,8 @@ requests.
 }}
 }
 \description{
-Applies a pending maintenance action to a resource (for example, to a DB
-instance).
+Applies a pending maintenance action to a resource (for example, to an
+Amazon DocumentDB instance).
 }
 \section{Request syntax}{
 \preformatted{svc$apply_pending_maintenance_action(

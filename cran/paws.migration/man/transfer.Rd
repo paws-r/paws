@@ -11,16 +11,16 @@ transfer(config = list())
 }
 \description{
 AWS Transfer Family is a fully managed service that enables the transfer
-of files over the the File Transfer Protocol (FTP), File Transfer
-Protocol over SSL (FTPS), or Secure Shell (SSH) File Transfer Protocol
-(SFTP) directly into and out of Amazon Simple Storage Service (Amazon
-S3). AWS helps you seamlessly migrate your file transfer workflows to
-AWS Transfer Family by integrating with existing authentication systems,
-and providing DNS routing with Amazon Route 53 so nothing changes for
-your customers and partners, or their applications. With your data in
-Amazon S3, you can use it with AWS services for processing, analytics,
-machine learning, and archiving. Getting started with AWS Transfer
-Family is easy since there is no infrastructure to buy and set up.
+of files over the File Transfer Protocol (FTP), File Transfer Protocol
+over SSL (FTPS), or Secure Shell (SSH) File Transfer Protocol (SFTP)
+directly into and out of Amazon Simple Storage Service (Amazon S3). AWS
+helps you seamlessly migrate your file transfer workflows to AWS
+Transfer Family by integrating with existing authentication systems, and
+providing DNS routing with Amazon Route 53 so nothing changes for your
+customers and partners, or their applications. With your data in Amazon
+S3, you can use it with AWS services for processing, analytics, machine
+learning, and archiving. Getting started with AWS Transfer Family is
+easy since there is no infrastructure to buy and set up.
 }
 \section{Service syntax}{
 \preformatted{svc <- transfer(
@@ -48,9 +48,11 @@ Family is easy since there is no infrastructure to buy and set up.
 \link[=transfer_delete_server]{delete_server} \tab Deletes the file transfer protocol-enabled server that you specify\cr
 \link[=transfer_delete_ssh_public_key]{delete_ssh_public_key} \tab Deletes a user's Secure Shell (SSH) public key\cr
 \link[=transfer_delete_user]{delete_user} \tab Deletes the user belonging to a file transfer protocol-enabled server you specify\cr
+\link[=transfer_describe_security_policy]{describe_security_policy} \tab Describes the security policy that is attached to your file transfer protocol-enabled server\cr
 \link[=transfer_describe_server]{describe_server} \tab Describes a file transfer protocol-enabled server that you specify by passing the ServerId parameter\cr
 \link[=transfer_describe_user]{describe_user} \tab Describes the user assigned to the specific file transfer protocol-enabled server, as identified by its ServerId property\cr
 \link[=transfer_import_ssh_public_key]{import_ssh_public_key} \tab Adds a Secure Shell (SSH) public key to a user account identified by a UserName value assigned to the specific file transfer protocol-enabled server, identified by ServerId\cr
+\link[=transfer_list_security_policies]{list_security_policies} \tab Lists the security policies that are attached to your file transfer protocol-enabled servers\cr
 \link[=transfer_list_servers]{list_servers} \tab Lists the file transfer protocol-enabled servers that are associated with your AWS account\cr
 \link[=transfer_list_tags_for_resource]{list_tags_for_resource} \tab Lists all of the tags associated with the Amazon Resource Number (ARN) you specify\cr
 \link[=transfer_list_users]{list_users} \tab Lists the users for a file transfer protocol-enabled server that you specify by passing the ServerId parameter\cr

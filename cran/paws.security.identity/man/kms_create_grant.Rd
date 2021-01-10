@@ -47,15 +47,19 @@ in the Example ARNs section of the \emph{AWS General Reference}.}
 only when the encryption context matches or includes the encryption
 context specified in this structure. For more information about
 encryption context, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
-in the \strong{AWS Key Management Service Developer Guide} .}
+in the \strong{AWS Key Management Service Developer Guide} .
+
+Grant constraints are not applied to operations that do not support an
+encryption context, such as cryptographic operations with asymmetric
+CMKs and management operations, such as DescribeKey or RetireGrant.}
 
 \item{GrantTokens}{A list of grant tokens.
 
 For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token}{Grant Tokens}
 in the \emph{AWS Key Management Service Developer Guide}.}
 
-\item{Name}{A friendly name for identifying the grant. Use this value to prevent the
-unintended creation of duplicate grants when retrying this request.
+\item{Name}{A friendly name for the grant. Use this value to prevent the unintended
+creation of duplicate grants when retrying this request.
 
 When this value is absent, all \code{CreateGrant} requests result in a new
 grant with a unique \code{GrantId} even if all the supplied parameters are
@@ -66,8 +70,8 @@ When this value is present, you can retry a \code{CreateGrant} request with
 identical parameters; if the grant already exists, the original
 \code{GrantId} is returned without creating a new grant. Note that the
 returned grant token is unique with every \code{CreateGrant} request, even
-when a duplicate \code{GrantId} is returned. All grant tokens obtained in
-this way can be used interchangeably.}
+when a duplicate \code{GrantId} is returned. All grant tokens for the same
+grant ID can be used interchangeably.}
 }
 \description{
 Adds a grant to a customer master key (CMK). The grant allows the
@@ -90,8 +94,8 @@ GetPublicKey. (There are limited exceptions to this rule for legacy
 operations, but you should not create a grant for an operation that
 AWS KMS does not support.)
 \item Grants for asymmetric CMKs cannot allow operations that are not
-supported for asymmetric CMKs, including operations that \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKey}{generate data keys}
-or \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKeyPair}{data key pairs},
+supported for asymmetric CMKs, including operations that \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKey.html}{generate data keys}
+or \href{https://docs.aws.amazon.com/kms/latest/APIReference/API_GenerateDataKeyPair.html}{data key pairs},
 or operations related to \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic key rotation},
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{imported key material},
 or CMKs in \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key stores}.
@@ -105,17 +109,30 @@ asymmetric CMKs.
 }
 
 For information about symmetric and asymmetric CMKs, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric CMKs}
-in the \emph{AWS Key Management Service Developer Guide}.
-
-To perform this operation on a CMK in a different AWS account, specify
-the key ARN in the value of the \code{KeyId} parameter. For more information
-about grants, see
+in the \emph{AWS Key Management Service Developer Guide}. For more
+information about grants, see
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html}{Grants}
 in the \strong{AWS Key Management Service Developer Guide} .
 
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: Yes. To perform this operation on a CMK in a
+different AWS account, specify the key ARN in the value of the \code{KeyId}
+parameter.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:CreateGrant}
+(key policy)
+
+\strong{Related operations:}
+\itemize{
+\item ListGrants
+\item ListRetirableGrants
+\item RetireGrant
+\item RevokeGrant
+}
 }
 \section{Request syntax}{
 \preformatted{svc$create_grant(

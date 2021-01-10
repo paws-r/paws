@@ -20,7 +20,7 @@ NULL
 #' dependencies between the resources for you.
 #' 
 #' For more information about AWS CloudFormation, see the [AWS
-#' CloudFormation Product Page](http://aws.amazon.com/cloudformation/).
+#' CloudFormation Product Page](https://aws.amazon.com/cloudformation/).
 #' 
 #' Amazon CloudFormation makes use of other AWS products. If you need
 #' additional technical information about a specific AWS product, you can

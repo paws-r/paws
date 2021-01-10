@@ -30,7 +30,7 @@ period (dot), at symbol (@), or hyphen.
 \item First character must be a letter.
 \item Must not contain a colon ( : ) or slash ( / ).
 \item Cannot be a reserved word. A list of reserved words can be found in
-\href{http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words}
+\href{https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words}
 in the Amazon Redshift Database Developer Guide.
 }}
 
@@ -45,7 +45,7 @@ period (dot), at symbol (@), or hyphen.
 \item First character must be a letter.
 \item Must not contain a colon ( : ) or slash ( / ).
 \item Cannot be a reserved word. A list of reserved words can be found in
-\href{http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words}
+\href{https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words}
 in the Amazon Redshift Database Developer Guide.
 }}
 
@@ -74,7 +74,7 @@ period (dot), at symbol (@), or hyphen.
 \item First character must be a letter.
 \item Must not contain a colon ( : ) or slash ( / ).
 \item Cannot be a reserved word. A list of reserved words can be found in
-\href{http://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words}
+\href{https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html}{Reserved Words}
 in the Amazon Redshift Database Developer Guide.
 }}
 }

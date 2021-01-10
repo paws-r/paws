@@ -6,7 +6,7 @@
 \usage{
 apigateway_create_rest_api(name, description, version, cloneFrom,
   binaryMediaTypes, minimumCompressionSize, apiKeySource,
-  endpointConfiguration, policy, tags)
+  endpointConfiguration, policy, tags, disableExecuteApiEndpoint)
 }
 \arguments{
 \item{name}{[required] [Required] The name of the RestApi.}
@@ -44,6 +44,12 @@ the API.}
 \item{tags}{The key-value map of strings. The valid character set is
 [a-zA-Z+-=.\\_:/]. The tag key can be up to 128 characters and must not
 start with \verb{aws:}. The tag value can be up to 256 characters.}
+
+\item{disableExecuteApiEndpoint}{Specifies whether clients can invoke your API by using the default
+\code{execute-api} endpoint. By default, clients can invoke your API with the
+default https://\{api\\_id\}.execute-api.\{region\}.amazonaws.com endpoint.
+To require that clients use a custom domain name to invoke your API,
+disable the default endpoint.}
 }
 \description{
 Creates a new RestApi resource.
@@ -70,7 +76,8 @@ Creates a new RestApi resource.
   policy = "string",
   tags = list(
     "string"
-  )
+  ),
+  disableExecuteApiEndpoint = TRUE|FALSE
 )
 }
 }

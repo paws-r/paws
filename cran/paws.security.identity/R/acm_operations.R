@@ -177,7 +177,7 @@ acm_describe_certificate <- function(CertificateArn) {
 #' 
 #' For information about exporting and formatting a certificate using the
 #' ACM console or CLI, see [Export a Private
-#' Certificate](https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-export-private.html).
+#' Certificate](https://docs.aws.amazon.com/acm/latest/userguide/).
 #'
 #' @usage
 #' acm_export_certificate(CertificateArn, Passphrase)
@@ -282,7 +282,7 @@ acm_get_certificate <- function(CertificateArn) {
 #' in the *AWS Certificate Manager User Guide*.
 #' 
 #' ACM does not provide [managed
-#' renewal](https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html)
+#' renewal](https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html)
 #' for certificates that you import.
 #' 
 #' Note the following guidelines when importing third party certificates:
@@ -558,10 +558,10 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 #' certificates can be renewed with this operation. In order to renew your
 #' ACM PCA certificates with ACM, you must first [grant the ACM service
 #' principal permission to do
-#' so](https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaPermissions.html).
-#' For more information, see [Testing Managed
-#' Renewal](https://docs.aws.amazon.com/acm/latest/userguide/manual-renewal.html)
-#' in the ACM User Guide.
+#' so](https://docs.aws.amazon.com/acm-pca/latest/userguide/). For more
+#' information, see [Testing Managed
+#' Renewal](https://docs.aws.amazon.com/acm/latest/userguide/) in the ACM
+#' User Guide.
 #'
 #' @usage
 #' acm_renew_certificate(CertificateArn)

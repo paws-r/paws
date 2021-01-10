@@ -51,7 +51,7 @@ Lists the consumers registered to receive data from a stream using
 enhanced fan-out, and provides information about each consumer.
 }
 \details{
-This operation has a limit of 10 transactions per second per account.
+This operation has a limit of 5 transactions per second per stream.
 }
 \section{Request syntax}{
 \preformatted{svc$list_stream_consumers(

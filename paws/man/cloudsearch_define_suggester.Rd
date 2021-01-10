@@ -16,7 +16,7 @@ Configures a suggester for a domain. A suggester enables you to display
 possible matches before users finish typing their queries. When you
 configure a suggester, you must specify the name of the text field you
 want to search for possible matches and a unique name for the suggester.
-For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Search Suggestions}
+For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Search Suggestions}
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{

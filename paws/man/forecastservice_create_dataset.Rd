@@ -106,7 +106,7 @@ training data. Use the DescribeDataset operation to get the status.
     Attributes = list(
       list(
         AttributeName = "string",
-        AttributeType = "string"|"integer"|"float"|"timestamp"
+        AttributeType = "string"|"integer"|"float"|"timestamp"|"geolocation"
       )
     )
   ),

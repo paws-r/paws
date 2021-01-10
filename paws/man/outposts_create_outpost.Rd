@@ -5,10 +5,10 @@
 \title{Creates an Outpost}
 \usage{
 outposts_create_outpost(Name, Description, SiteId, AvailabilityZone,
-  AvailabilityZoneId)
+  AvailabilityZoneId, Tags)
 }
 \arguments{
-\item{Name}{}
+\item{Name}{[required]}
 
 \item{Description}{}
 
@@ -17,6 +17,8 @@ outposts_create_outpost(Name, Description, SiteId, AvailabilityZone,
 \item{AvailabilityZone}{}
 
 \item{AvailabilityZoneId}{}
+
+\item{Tags}{The tags to apply to the Outpost.}
 }
 \description{
 Creates an Outpost.
@@ -27,7 +29,10 @@ Creates an Outpost.
   Description = "string",
   SiteId = "string",
   AvailabilityZone = "string",
-  AvailabilityZoneId = "string"
+  AvailabilityZoneId = "string",
+  Tags = list(
+    "string"
+  )
 )
 }
 }

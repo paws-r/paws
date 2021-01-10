@@ -6,12 +6,29 @@
 \usage{
 s3_upload_part(Body, Bucket, ContentLength, ContentMD5, Key, PartNumber,
   UploadId, SSECustomerAlgorithm, SSECustomerKey, SSECustomerKeyMD5,
-  RequestPayer)
+  RequestPayer, ExpectedBucketOwner)
 }
 \arguments{
 \item{Body}{Object data.}
 
-\item{Bucket}{[required] Name of the bucket to which the multipart upload was initiated.}
+\item{Bucket}{[required] The name of the bucket to which the multipart upload was initiated.
+
+When using this API with an access point, you must direct requests to
+the access point hostname. The access point hostname takes the form
+\emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
+When using this operation with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+
+When using this API with Amazon S3 on Outposts, you must direct requests
+to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
+form
+\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
+When using this operation using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
+in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{ContentLength}{Size of the body in bytes. This parameter is useful when the size of the
 body cannot be determined automatically.}
@@ -34,7 +51,7 @@ example, AES256).}
 encrypting data. This value is used to store the object and then it is
 discarded; Amazon S3 does not store the encryption key. The key must be
 appropriate for use with the algorithm specified in the
-\verb{x-amz-server-side​-encryption​-customer-algorithm header}. This must be
+\verb{x-amz-server-side-encryption-customer-algorithm header}. This must be
 the same encryption key specified in the initiate multipart upload
 request.}
 
@@ -43,6 +60,10 @@ request.}
 that the encryption key was transmitted without error.}
 
 \item{RequestPayer}{}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Uploads a part in a multipart upload.
@@ -51,12 +72,15 @@ Uploads a part in a multipart upload.
 In this operation, you provide part data in your request. However, you
 have an option to specify your existing Amazon S3 object as a data
 source for the part you are uploading. To upload a part from an existing
-object, you use the UploadPartCopy operation.
+object, you use the
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPartCopy.html}{UploadPartCopy}
+operation.
 
-You must initiate a multipart upload (see CreateMultipartUpload) before
-you can upload any part. In response to your initiate request, Amazon S3
-returns an upload ID, a unique identifier, that you must include in your
-upload part request.
+You must initiate a multipart upload (see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload})
+before you can upload any part. In response to your initiate request,
+Amazon S3 returns an upload ID, a unique identifier, that you must
+include in your upload part request.
 
 Part numbers can be any number from 1 to 10,000, inclusive. A part
 number uniquely identifies a part and also defines its position within
@@ -69,6 +93,10 @@ To ensure that data is not corrupted when traversing the network,
 specify the \code{Content-MD5} header in the upload part request. Amazon S3
 checks the part data against the provided MD5 value. If they do not
 match, Amazon S3 returns an error.
+
+If the upload request is signed with Signature Version 4, then AWS S3
+uses the \code{x-amz-content-sha256} header as a checksum instead of
+\code{Content-MD5}. For more information see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sigv4-auth-using-authorization-header.html}{Authenticating Requests: Using the Authorization Header (AWS Signature Version 4)}.
 
 \strong{Note:} After you initiate multipart upload and upload one or more
 parts, you must either complete or abort multipart upload in order to
@@ -89,8 +117,9 @@ decrypts it for you when you access it. You have the option of providing
 your own encryption key, or you can use the AWS managed encryption keys.
 If you choose to provide your own encryption key, the request headers
 you provide in the request must match the headers you used in the
-request to initiate the upload by using CreateMultipartUpload. For more
-information, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html}{Using Server-Side Encryption}
+request to initiate the upload by using
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}.
+For more information, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingServerSideEncryption.html}{Using Server-Side Encryption}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 Server-side encryption is supported by the S3 Multipart Upload actions.
@@ -98,39 +127,38 @@ Unless you are using a customer-provided encryption key, you don't need
 to specify the encryption parameters in each UploadPart request.
 Instead, you only need to specify the server-side encryption parameters
 in the initial Initiate Multipart request. For more information, see
-CreateMultipartUpload.
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}.
 
 If you requested server-side encryption using a customer-provided
 encryption key in your initiate multipart upload request, you must
 provide identical encryption information in each part upload using the
 following headers.
 \itemize{
-\item x-amz-server-side​-encryption​-customer-algorithm
-\item x-amz-server-side​-encryption​-customer-key
-\item x-amz-server-side​-encryption​-customer-key-MD5
+\item x-amz-server-side-encryption-customer-algorithm
+\item x-amz-server-side-encryption-customer-key
+\item x-amz-server-side-encryption-customer-key-MD5
 }
 
 \strong{Special Errors}
 \itemize{
 \item 
-}\preformatted{-   *Code: NoSuchUpload*
-
--   *Cause: The specified multipart upload does not exist. The
-    upload ID might be invalid, or the multipart upload might have
-    been aborted or completed.*
-
--   *HTTP Status Code: 404 Not Found*
-
--   *SOAP Fault Code Prefix: Client*
+\itemize{
+\item \emph{Code: NoSuchUpload}
+\item \emph{Cause: The specified multipart upload does not exist. The
+upload ID might be invalid, or the multipart upload might have
+been aborted or completed.}
+\item \emph{HTTP Status Code: 404 Not Found}
+\item \emph{SOAP Fault Code Prefix: Client}
+}
 }
 
 \strong{Related Resources}
 \itemize{
-\item CreateMultipartUpload
-\item CompleteMultipartUpload
-\item AbortMultipartUpload
-\item ListParts
-\item ListMultipartUploads
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html}{CreateMultipartUpload}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html}{CompleteMultipartUpload}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html}{AbortMultipartUpload}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html}{ListParts}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListMultipartUploads.html}{ListMultipartUploads}
 }
 }
 \section{Request syntax}{
@@ -145,7 +173,8 @@ following headers.
   SSECustomerAlgorithm = "string",
   SSECustomerKey = raw,
   SSECustomerKeyMD5 = "string",
-  RequestPayer = "requester"
+  RequestPayer = "requester",
+  ExpectedBucketOwner = "string"
 )
 }
 }

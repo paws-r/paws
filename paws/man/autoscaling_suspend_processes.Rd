@@ -2,8 +2,8 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_suspend_processes}
 \alias{autoscaling_suspend_processes}
-\title{Suspends the specified automatic scaling processes, or all processes,
-for the specified Auto Scaling group}
+\title{Suspends the specified auto scaling processes, or all processes, for the
+specified Auto Scaling group}
 \usage{
 autoscaling_suspend_processes(AutoScalingGroupName, ScalingProcesses)
 }
@@ -26,13 +26,13 @@ autoscaling_suspend_processes(AutoScalingGroupName, ScalingProcesses)
 If you omit this parameter, all processes are specified.}
 }
 \description{
-Suspends the specified automatic scaling processes, or all processes,
-for the specified Auto Scaling group.
+Suspends the specified auto scaling processes, or all processes, for the
+specified Auto Scaling group.
 }
 \details{
 If you suspend either the \code{Launch} or \code{Terminate} process types, it can
 prevent other process types from functioning properly. For more
-information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html}{Suspending and Resuming Scaling Processes}
+information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html}{Suspending and resuming scaling processes}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 To resume processes that have been suspended, call the ResumeProcesses

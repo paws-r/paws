@@ -8,8 +8,9 @@ NULL
 #' AWS IoT Secure Tunnling enables you to create remote connections to
 #' devices deployed in the field.
 #' 
-#' For more information about how AWS IoT Secure Tunneling works, see the
-#' User Guide.
+#' For more information about how AWS IoT Secure Tunneling works, see [AWS
+#' IoT Secure
+#' Tunneling](https://docs.aws.amazon.com/iot/latest/developerguide/secure-tunneling.html).
 #'
 #' @param
 #' config

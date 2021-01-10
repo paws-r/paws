@@ -22,8 +22,20 @@ form:
 \description{
 Creates an audit report that lists every time that your CA private key
 is used. The report is saved in the Amazon S3 bucket that you specify on
-input. The IssueCertificate and RevokeCertificate actions use the
-private key.
+input. The
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_IssueCertificate.html}{IssueCertificate}
+and
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_RevokeCertificate.html}{RevokeCertificate}
+actions use the private key.
+}
+\details{
+Both PCA and the IAM principal must have permission to write to the S3
+bucket that you specify. If the IAM principal making the call does not
+have permission to write to the bucket, then an exception is thrown. For
+more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/}{Configure Access to ACM Private CA}.
+
+ACM Private CAA assets that are stored in Amazon S3 can be protected
+with encryption. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaAuditReport.html#audit-report-encryption}{Encrypting Your Audit Reports}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_certificate_authority_audit_report(

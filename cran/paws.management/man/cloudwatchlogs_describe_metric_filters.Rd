@@ -10,7 +10,8 @@ cloudwatchlogs_describe_metric_filters(logGroupName, filterNamePrefix,
 \arguments{
 \item{logGroupName}{The name of the log group.}
 
-\item{filterNamePrefix}{The prefix to match.}
+\item{filterNamePrefix}{The prefix to match. CloudWatch Logs uses the value you set here only if
+you also include the \code{logGroupName} parameter in your request.}
 
 \item{nextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
@@ -27,9 +28,9 @@ include this parameter in your request, you must also include the
 \code{metricName} parameter.}
 }
 \description{
-Lists the specified metric filters. You can list all the metric filters
-or filter the results by log name, prefix, metric name, or metric
-namespace. The results are ASCII-sorted by filter name.
+Lists the specified metric filters. You can list all of the metric
+filters or filter the results by log name, prefix, metric name, or
+metric namespace. The results are ASCII-sorted by filter name.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_metric_filters(

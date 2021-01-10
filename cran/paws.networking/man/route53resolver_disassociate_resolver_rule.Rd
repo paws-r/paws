@@ -2,25 +2,25 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_disassociate_resolver_rule}
 \alias{route53resolver_disassociate_resolver_rule}
-\title{Removes the association between a specified resolver rule and a
+\title{Removes the association between a specified Resolver rule and a
 specified VPC}
 \usage{
 route53resolver_disassociate_resolver_rule(VPCId, ResolverRuleId)
 }
 \arguments{
-\item{VPCId}{[required] The ID of the VPC that you want to disassociate the resolver rule from.}
+\item{VPCId}{[required] The ID of the VPC that you want to disassociate the Resolver rule from.}
 
-\item{ResolverRuleId}{[required] The ID of the resolver rule that you want to disassociate from the
+\item{ResolverRuleId}{[required] The ID of the Resolver rule that you want to disassociate from the
 specified VPC.}
 }
 \description{
-Removes the association between a specified resolver rule and a
+Removes the association between a specified Resolver rule and a
 specified VPC.
 }
 \details{
-If you disassociate a resolver rule from a VPC, Resolver stops
+If you disassociate a Resolver rule from a VPC, Resolver stops
 forwarding DNS queries for the domain name that you specified in the
-resolver rule.
+Resolver rule.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_resolver_rule(

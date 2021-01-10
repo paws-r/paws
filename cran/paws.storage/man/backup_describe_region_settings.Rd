@@ -7,12 +7,12 @@
 backup_describe_region_settings()
 }
 \description{
-Returns the current service opt-in settings for the Region. If the
-service has a value set to \code{true}, AWS Backup attempts to protect that
-service's resources in this Region, when included in an on-demand backup
-or scheduled backup plan. If the value is set to \code{false} for a service,
-AWS Backup does not attempt to protect that service's resources in this
-Region.
+Returns the current service opt-in settings for the Region. If
+service-opt-in is enabled for a service, AWS Backup tries to protect
+that service's resources in this Region, when the resource is included
+in an on-demand backup or scheduled backup plan. Otherwise, AWS Backup
+does not try to protect that service's resources in this Region, AWS
+Backup does not try to protect that service's resources in this Region.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_region_settings()

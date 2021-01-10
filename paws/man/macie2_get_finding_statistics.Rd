@@ -17,8 +17,8 @@ are:
 classification job that produced the finding.
 \item resourcesAffected.s3Bucket.name - The name of the S3 bucket that the
 finding applies to.
-\item severity.description - The severity of the finding, such as High or
-Medium.
+\item severity.description - The severity level of the finding, such as
+High or Medium.
 \item type - The type of finding, such as Policy:IAMUser/S3BucketPublic
 and SensitiveData:S3Object/Personal.
 }}
@@ -36,6 +36,9 @@ and SensitiveData:S3Object/Personal.
     criterion = list(
       list(
         eq = list(
+          "string"
+        ),
+        eqExactMatch = list(
           "string"
         ),
         gt = 123,

@@ -79,10 +79,6 @@ on a variety of common use cases. Use \code{QualityFilter} to set the quality
 bar by specifying \code{LOW}, \code{MEDIUM}, or \code{HIGH}. If you do not want to
 filter detected faces, specify \code{NONE}. The default value is \code{NONE}.
 
-To use quality filtering, you need a collection associated with version
-3 of the face model or higher. To get the version of the face model
-associated with a collection, call DescribeCollection.
-
 If the image doesn't contain Exif metadata, \code{CompareFaces} returns
 orientation information for the source and target images. Use these
 values to display the images with the correct image orientation.

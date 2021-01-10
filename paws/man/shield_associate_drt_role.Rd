@@ -13,7 +13,7 @@ shield_associate_drt_role(RoleArn)
 your AWS account.
 
 Prior to making the \code{AssociateDRTRole} request, you must attach the
-\href{https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy}{AWSShieldDRTAccessPolicy}
+\href{https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy}{AWSShieldDRTAccessPolicy}
 managed policy to this role. For more information see Attaching and
 Detaching IAM Policies.}
 }
@@ -29,7 +29,7 @@ submit an \code{AssociateDRTRole} request for an account that already has an
 associated role, the new \code{RoleArn} will replace the existing \code{RoleArn}.
 
 Prior to making the \code{AssociateDRTRole} request, you must attach the
-\href{https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy}{AWSShieldDRTAccessPolicy}
+\href{https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy}{AWSShieldDRTAccessPolicy}
 managed policy to the role you will specify in the request. For more
 information see Attaching and Detaching IAM Policies. The role must also
 trust the service principal \code{ drt.shield.amazonaws.com}. For more
@@ -45,8 +45,8 @@ You must have the \code{iam:PassRole} permission to make an
 \code{AssociateDRTRole} request. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html}{Granting a User Permissions to Pass a Role to an AWS Service}.
 
 To use the services of the DRT and make an \code{AssociateDRTRole} request,
-you must be subscribed to the \href{https://aws.amazon.com/premiumsupport/business-support/}{Business Support plan} or the
-\href{https://aws.amazon.com/premiumsupport/enterprise-support/}{Enterprise Support plan}.
+you must be subscribed to the \href{https://aws.amazon.com/premiumsupport/plans/business/}{Business Support plan} or the
+\href{https://aws.amazon.com/premiumsupport/plans/enterprise/}{Enterprise Support plan}.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_drt_role(

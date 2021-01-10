@@ -41,7 +41,7 @@ This allows sharing access to the queue.
 \details{
 When you create a queue, you have full control access rights for the
 queue. Only you, the owner of the queue, can grant or deny permissions
-to the queue. For more information about these permissions, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue}{Allow Developers to Write Messages to a Shared Queue}
+to the queue. For more information about these permissions, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-iam-policies.html#write-messages-to-shared-queue}{Allow Developers to Write Messages to a Shared Queue}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 \itemize{
 \item \code{AddPermission} generates a policy for you. You can use
@@ -63,7 +63,7 @@ example, a parameter list with two elements looks like this:
 \verb{&amp;AttributeName.2=second}
 
 Cross-account permissions don't apply to this action. For more
-information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
+information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name}{Grant cross-account permissions to a role and a user name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{

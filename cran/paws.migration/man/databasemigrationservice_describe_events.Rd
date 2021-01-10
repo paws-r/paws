@@ -23,7 +23,7 @@ Valid values: replication-instance | replication-task}
 
 \item{EventCategories}{A list of event categories for the source type that you've chosen.}
 
-\item{Filters}{Filters applied to the action.}
+\item{Filters}{Filters applied to events.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token

@@ -4,18 +4,34 @@
 \alias{sagemaker_create_workteam}
 \title{Creates a new work team for labeling your data}
 \usage{
-sagemaker_create_workteam(WorkteamName, MemberDefinitions, Description,
-  NotificationConfiguration, Tags)
+sagemaker_create_workteam(WorkteamName, WorkforceName,
+  MemberDefinitions, Description, NotificationConfiguration, Tags)
 }
 \arguments{
 \item{WorkteamName}{[required] The name of the work team. Use this name to identify the work team.}
 
-\item{MemberDefinitions}{[required] A list of \code{MemberDefinition} objects that contains objects that identify
-the Amazon Cognito user pool that makes up the work team. For more
-information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html}{Amazon Cognito User Pools}.
+\item{WorkforceName}{The name of the workforce.}
 
-All of the \code{CognitoMemberDefinition} objects that make up the member
-definition must have the same \code{ClientId} and \code{UserPool} values.}
+\item{MemberDefinitions}{[required] A list of \code{MemberDefinition} objects that contains objects that identify
+the workers that make up the work team.
+
+Workforces can be created using Amazon Cognito or your own OIDC Identity
+Provider (IdP). For private workforces created using Amazon Cognito use
+\code{CognitoMemberDefinition}. For workforces created using your own OIDC
+identity provider (IdP) use \code{OidcMemberDefinition}. Do not provide input
+for both of these parameters in a single request.
+
+For workforces created using Amazon Cognito, private work teams
+correspond to Amazon Cognito \emph{user groups} within the user pool used to
+create a workforce. All of the \code{CognitoMemberDefinition} objects that
+make up the member definition must have the same \code{ClientId} and
+\code{UserPool} values. To add a Amazon Cognito user group to an existing
+worker pool, see Adding groups to a User Pool. For more information
+about user pools, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html}{Amazon Cognito User Pools}.
+
+For workforces created using your own OIDC IdP, specify the user groups
+that you want to include in your private work team in
+\code{OidcMemberDefinition} by listing those groups in \code{Groups}.}
 
 \item{Description}{[required] A description of the work team.}
 
@@ -39,12 +55,18 @@ You cannot create more than 25 work teams in an account and region.
 \section{Request syntax}{
 \preformatted{svc$create_workteam(
   WorkteamName = "string",
+  WorkforceName = "string",
   MemberDefinitions = list(
     list(
       CognitoMemberDefinition = list(
         UserPool = "string",
         UserGroup = "string",
         ClientId = "string"
+      ),
+      OidcMemberDefinition = list(
+        Groups = list(
+          "string"
+        )
       )
     )
   ),

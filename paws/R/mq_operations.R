@@ -8,32 +8,36 @@ NULL
 #' Creates a broker. Note: This API is asynchronous.
 #'
 #' @usage
-#' mq_create_broker(AutoMinorVersionUpgrade, BrokerName, Configuration,
-#'   CreatorRequestId, DeploymentMode, EncryptionOptions, EngineType,
-#'   EngineVersion, HostInstanceType, Logs, MaintenanceWindowStartTime,
+#' mq_create_broker(AuthenticationStrategy, AutoMinorVersionUpgrade,
+#'   BrokerName, Configuration, CreatorRequestId, DeploymentMode,
+#'   EncryptionOptions, EngineType, EngineVersion, HostInstanceType,
+#'   LdapServerMetadata, Logs, MaintenanceWindowStartTime,
 #'   PubliclyAccessible, SecurityGroups, StorageType, SubnetIds, Tags, Users)
 #'
+#' @param AuthenticationStrategy The authentication strategy used to secure the broker.
 #' @param AutoMinorVersionUpgrade Required. Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.
 #' @param BrokerName Required. The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.
 #' @param Configuration A list of information about the configuration.
 #' @param CreatorRequestId The unique ID that the requester receives for the created broker. Amazon MQ passes your ID with the API action. Note: We recommend using a Universally Unique Identifier (UUID) for the creatorRequestId. You may omit the creatorRequestId if your application doesn't require idempotency.
 #' @param DeploymentMode Required. The deployment mode of the broker.
 #' @param EncryptionOptions Encryption options for the broker.
-#' @param EngineType Required. The type of broker engine. Note: Currently, Amazon MQ supports only ACTIVEMQ.
+#' @param EngineType Required. The type of broker engine. Note: Currently, Amazon MQ supports ACTIVEMQ and RABBITMQ.
 #' @param EngineVersion Required. The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 #' @param HostInstanceType Required. The broker's instance type.
+#' @param LdapServerMetadata The metadata of the LDAP server used to authenticate and authorize connections to the broker.
 #' @param Logs Enables Amazon CloudWatch logging for brokers.
 #' @param MaintenanceWindowStartTime The parameters that determine the WeeklyStartTime.
 #' @param PubliclyAccessible Required. Enables connections from applications outside of the VPC that hosts the broker's subnets.
 #' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
 #' @param StorageType The broker's storage type.
-#' @param SubnetIds The list of groups (2 maximum) that define which subnets and IP ranges the broker can use from different Availability Zones. A SINGLE_INSTANCE deployment requires one subnet (for example, the default subnet). An ACTIVE_STANDBY_MULTI_AZ deployment requires two subnets.
+#' @param SubnetIds The list of groups that define which subnets and IP ranges the broker can use from different Availability Zones. A SINGLE_INSTANCE deployment requires one subnet (for example, the default subnet). An ACTIVE_STANDBY_MULTI_AZ deployment (ACTIVEMQ) requires two subnets. A CLUSTER_MULTI_AZ deployment (RABBITMQ) has no subnet requirements when deployed with public accessibility, deployment without public accessibility requires at least one subnet.
 #' @param Tags Create tags when creating the broker.
-#' @param Users Required. The list of ActiveMQ users (persons or applications) who can access queues and topics. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
+#' @param Users Required. The list of broker users (persons or applications) who can access queues and topics. For RabbitMQ brokers, one and only one administrative user is accepted and created when a broker is first provisioned. All subsequent broker users are created by making RabbitMQ API calls directly to brokers or via the RabbitMQ Web Console. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 2-100 characters long.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_broker(
+#'   AuthenticationStrategy = "SIMPLE"|"LDAP",
 #'   AutoMinorVersionUpgrade = TRUE|FALSE,
 #'   BrokerName = "string",
 #'   Configuration = list(
@@ -41,14 +45,29 @@ NULL
 #'     Revision = 123
 #'   ),
 #'   CreatorRequestId = "string",
-#'   DeploymentMode = "SINGLE_INSTANCE"|"ACTIVE_STANDBY_MULTI_AZ",
+#'   DeploymentMode = "SINGLE_INSTANCE"|"ACTIVE_STANDBY_MULTI_AZ"|"CLUSTER_MULTI_AZ",
 #'   EncryptionOptions = list(
 #'     KmsKeyId = "string",
 #'     UseAwsOwnedKey = TRUE|FALSE
 #'   ),
-#'   EngineType = "ACTIVEMQ",
+#'   EngineType = "ACTIVEMQ"|"RABBITMQ",
 #'   EngineVersion = "string",
 #'   HostInstanceType = "string",
+#'   LdapServerMetadata = list(
+#'     Hosts = list(
+#'       "string"
+#'     ),
+#'     RoleBase = "string",
+#'     RoleName = "string",
+#'     RoleSearchMatching = "string",
+#'     RoleSearchSubtree = TRUE|FALSE,
+#'     ServiceAccountPassword = "string",
+#'     ServiceAccountUsername = "string",
+#'     UserBase = "string",
+#'     UserRoleName = "string",
+#'     UserSearchMatching = "string",
+#'     UserSearchSubtree = TRUE|FALSE
+#'   ),
 #'   Logs = list(
 #'     Audit = TRUE|FALSE,
 #'     General = TRUE|FALSE
@@ -85,14 +104,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname mq_create_broker
-mq_create_broker <- function(AutoMinorVersionUpgrade = NULL, BrokerName = NULL, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode = NULL, EncryptionOptions = NULL, EngineType = NULL, EngineVersion = NULL, HostInstanceType = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible = NULL, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users = NULL) {
+mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerName = NULL, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode = NULL, EncryptionOptions = NULL, EngineType = NULL, EngineVersion = NULL, HostInstanceType = NULL, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible = NULL, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users = NULL) {
   op <- new_operation(
     name = "CreateBroker",
     http_method = "POST",
     http_path = "/v1/brokers",
     paginator = list()
   )
-  input <- .mq$create_broker_input(AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerName = BrokerName, Configuration = Configuration, CreatorRequestId = CreatorRequestId, DeploymentMode = DeploymentMode, EncryptionOptions = EncryptionOptions, EngineType = EngineType, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, PubliclyAccessible = PubliclyAccessible, SecurityGroups = SecurityGroups, StorageType = StorageType, SubnetIds = SubnetIds, Tags = Tags, Users = Users)
+  input <- .mq$create_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerName = BrokerName, Configuration = Configuration, CreatorRequestId = CreatorRequestId, DeploymentMode = DeploymentMode, EncryptionOptions = EncryptionOptions, EngineType = EngineType, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, PubliclyAccessible = PubliclyAccessible, SecurityGroups = SecurityGroups, StorageType = StorageType, SubnetIds = SubnetIds, Tags = Tags, Users = Users)
   output <- .mq$create_broker_output()
   config <- get_config()
   svc <- .mq$service(config)
@@ -107,9 +126,11 @@ mq_create_broker <- function(AutoMinorVersionUpgrade = NULL, BrokerName = NULL, 
 #' Creates a new configuration for the specified configuration name. Amazon MQ uses the default configuration (the engine type and version).
 #'
 #' @usage
-#' mq_create_configuration(EngineType, EngineVersion, Name, Tags)
+#' mq_create_configuration(AuthenticationStrategy, EngineType,
+#'   EngineVersion, Name, Tags)
 #'
-#' @param EngineType Required. The type of broker engine. Note: Currently, Amazon MQ supports only ACTIVEMQ.
+#' @param AuthenticationStrategy The authentication strategy associated with the configuration.
+#' @param EngineType Required. The type of broker engine. Note: Currently, Amazon MQ supports ACTIVEMQ and RABBITMQ.
 #' @param EngineVersion Required. The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 #' @param Name Required. The name of the configuration. This value can contain only alphanumeric characters, dashes, periods, underscores, and tildes (- . _ ~). This value must be 1-150 characters long.
 #' @param Tags Create tags when creating the configuration.
@@ -117,7 +138,8 @@ mq_create_broker <- function(AutoMinorVersionUpgrade = NULL, BrokerName = NULL, 
 #' @section Request syntax:
 #' ```
 #' svc$create_configuration(
-#'   EngineType = "ACTIVEMQ",
+#'   AuthenticationStrategy = "SIMPLE"|"LDAP",
+#'   EngineType = "ACTIVEMQ"|"RABBITMQ",
 #'   EngineVersion = "string",
 #'   Name = "string",
 #'   Tags = list(
@@ -129,14 +151,14 @@ mq_create_broker <- function(AutoMinorVersionUpgrade = NULL, BrokerName = NULL, 
 #' @keywords internal
 #'
 #' @rdname mq_create_configuration
-mq_create_configuration <- function(EngineType = NULL, EngineVersion = NULL, Name = NULL, Tags = NULL) {
+mq_create_configuration <- function(AuthenticationStrategy = NULL, EngineType = NULL, EngineVersion = NULL, Name = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateConfiguration",
     http_method = "POST",
     http_path = "/v1/configurations",
     paginator = list()
   )
-  input <- .mq$create_configuration_input(EngineType = EngineType, EngineVersion = EngineVersion, Name = Name, Tags = Tags)
+  input <- .mq$create_configuration_input(AuthenticationStrategy = AuthenticationStrategy, EngineType = EngineType, EngineVersion = EngineVersion, Name = Name, Tags = Tags)
   output <- .mq$create_configuration_output()
   config <- get_config()
   svc <- .mq$service(config)
@@ -239,7 +261,7 @@ mq_create_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Passwo
 #' @usage
 #' mq_delete_broker(BrokerId)
 #'
-#' @param BrokerId &#91;required&#93; The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.
+#' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #'
 #' @section Request syntax:
 #' ```
@@ -814,20 +836,24 @@ mq_reboot_broker <- function(BrokerId) {
 #' Adds a pending configuration change to a broker.
 #'
 #' @usage
-#' mq_update_broker(AutoMinorVersionUpgrade, BrokerId, Configuration,
-#'   EngineVersion, HostInstanceType, Logs, SecurityGroups)
+#' mq_update_broker(AuthenticationStrategy, AutoMinorVersionUpgrade,
+#'   BrokerId, Configuration, EngineVersion, HostInstanceType,
+#'   LdapServerMetadata, Logs, SecurityGroups)
 #'
+#' @param AuthenticationStrategy The authentication strategy used to secure the broker.
 #' @param AutoMinorVersionUpgrade Enables automatic upgrades to new minor versions for brokers, as Apache releases the versions. The automatic upgrades occur during the maintenance window of the broker or after a manual broker reboot.
-#' @param BrokerId &#91;required&#93; The name of the broker. This value must be unique in your AWS account, 1-50 characters long, must contain only letters, numbers, dashes, and underscores, and must not contain whitespaces, brackets, wildcard characters, or special characters.
+#' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #' @param Configuration A list of information about the configuration.
 #' @param EngineVersion The version of the broker engine. For a list of supported engine versions, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 #' @param HostInstanceType The host instance type of the broker to upgrade to. For a list of supported instance types, see https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+#' @param LdapServerMetadata The metadata of the LDAP server used to authenticate and authorize connections to the broker.
 #' @param Logs Enables Amazon CloudWatch logging for brokers.
 #' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorizes connections to brokers.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_broker(
+#'   AuthenticationStrategy = "SIMPLE"|"LDAP",
 #'   AutoMinorVersionUpgrade = TRUE|FALSE,
 #'   BrokerId = "string",
 #'   Configuration = list(
@@ -836,6 +862,21 @@ mq_reboot_broker <- function(BrokerId) {
 #'   ),
 #'   EngineVersion = "string",
 #'   HostInstanceType = "string",
+#'   LdapServerMetadata = list(
+#'     Hosts = list(
+#'       "string"
+#'     ),
+#'     RoleBase = "string",
+#'     RoleName = "string",
+#'     RoleSearchMatching = "string",
+#'     RoleSearchSubtree = TRUE|FALSE,
+#'     ServiceAccountPassword = "string",
+#'     ServiceAccountUsername = "string",
+#'     UserBase = "string",
+#'     UserRoleName = "string",
+#'     UserSearchMatching = "string",
+#'     UserSearchSubtree = TRUE|FALSE
+#'   ),
 #'   Logs = list(
 #'     Audit = TRUE|FALSE,
 #'     General = TRUE|FALSE
@@ -849,14 +890,14 @@ mq_reboot_broker <- function(BrokerId) {
 #' @keywords internal
 #'
 #' @rdname mq_update_broker
-mq_update_broker <- function(AutoMinorVersionUpgrade = NULL, BrokerId, Configuration = NULL, EngineVersion = NULL, HostInstanceType = NULL, Logs = NULL, SecurityGroups = NULL) {
+mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerId, Configuration = NULL, EngineVersion = NULL, HostInstanceType = NULL, LdapServerMetadata = NULL, Logs = NULL, SecurityGroups = NULL) {
   op <- new_operation(
     name = "UpdateBroker",
     http_method = "PUT",
     http_path = "/v1/brokers/{broker-id}",
     paginator = list()
   )
-  input <- .mq$update_broker_input(AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerId = BrokerId, Configuration = Configuration, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, Logs = Logs, SecurityGroups = SecurityGroups)
+  input <- .mq$update_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerId = BrokerId, Configuration = Configuration, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, SecurityGroups = SecurityGroups)
   output <- .mq$update_broker_output()
   config <- get_config()
   svc <- .mq$service(config)

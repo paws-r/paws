@@ -34,8 +34,7 @@ following:
 s3-bucket\\_name//AWSLogs/aws\\_account\\_id}
 }
 \description{
-Update the attributes for an accelerator. To see an AWS CLI example of
-updating an accelerator to enable flow logs, scroll down to \strong{Example}.
+Update the attributes for an accelerator.
 }
 \section{Request syntax}{
 \preformatted{svc$update_accelerator_attributes(

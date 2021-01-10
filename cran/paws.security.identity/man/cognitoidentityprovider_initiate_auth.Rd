@@ -45,12 +45,14 @@ value of \code{AuthFlow}:
 \itemize{
 \item For \code{USER_SRP_AUTH}: \code{USERNAME} (required), \code{SRP_A} (required),
 \code{SECRET_HASH} (required if the app client is configured with a
-client secret), \code{DEVICE_KEY}
+client secret), \code{DEVICE_KEY}.
 \item For \code{REFRESH_TOKEN_AUTH/REFRESH_TOKEN}: \code{REFRESH_TOKEN} (required),
 \code{SECRET_HASH} (required if the app client is configured with a
-client secret), \code{DEVICE_KEY}
+client secret), \code{DEVICE_KEY}.
 \item For \code{CUSTOM_AUTH}: \code{USERNAME} (required), \code{SECRET_HASH} (if app
-client is configured with client secret), \code{DEVICE_KEY}
+client is configured with client secret), \code{DEVICE_KEY}. To start the
+authentication flow with password verification, include
+\code{ChallengeName: SRP_A} and \verb{SRP_A: (The SRP_A Value)}.
 }}
 
 \item{ClientMetadata}{A map of custom key-value pairs that you can provide as input for

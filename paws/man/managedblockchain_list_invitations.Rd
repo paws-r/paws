@@ -2,7 +2,7 @@
 % Please edit documentation in R/managedblockchain_operations.R
 \name{managedblockchain_list_invitations}
 \alias{managedblockchain_list_invitations}
-\title{Returns a listing of all invitations made on the specified network}
+\title{Returns a list of all invitations for the current AWS account}
 \usage{
 managedblockchain_list_invitations(MaxResults, NextToken)
 }
@@ -12,7 +12,10 @@ managedblockchain_list_invitations(MaxResults, NextToken)
 \item{NextToken}{The pagination token that indicates the next set of results to retrieve.}
 }
 \description{
-Returns a listing of all invitations made on the specified network.
+Returns a list of all invitations for the current AWS account.
+}
+\details{
+Applies only to Hyperledger Fabric.
 }
 \section{Request syntax}{
 \preformatted{svc$list_invitations(

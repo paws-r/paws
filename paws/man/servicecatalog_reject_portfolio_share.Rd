@@ -20,8 +20,8 @@ servicecatalog_reject_portfolio_share(AcceptLanguage, PortfolioId,
 \item{PortfolioShareType}{The type of shared portfolios to reject. The default is to reject
 imported portfolios.
 \itemize{
-\item \code{AWS_ORGANIZATIONS} - Reject portfolios shared by the master account
-of your organization.
+\item \code{AWS_ORGANIZATIONS} - Reject portfolios shared by the management
+account of your organization.
 \item \code{IMPORTED} - Reject imported portfolios.
 \item \code{AWS_SERVICECATALOG} - Not supported. (Throws
 ResourceNotFoundException.)

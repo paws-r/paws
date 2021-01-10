@@ -61,7 +61,7 @@ Updates an existing OriginEndpoint.
     ),
     HlsManifests = list(
       list(
-        AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+        AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH"|"DATERANGE",
         AdTriggers = list(
           "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
         ),
@@ -114,11 +114,13 @@ Updates an existing OriginEndpoint.
       MinVideoBitsPerSecond = 123,
       StreamOrder = "ORIGINAL"|"VIDEO_BITRATE_ASCENDING"|"VIDEO_BITRATE_DESCENDING"
     ),
-    SuggestedPresentationDelaySeconds = 123
+    SuggestedPresentationDelaySeconds = 123,
+    UtcTiming = "NONE"|"HTTP-HEAD"|"HTTP-ISO",
+    UtcTimingUri = "string"
   ),
   Description = "string",
   HlsPackage = list(
-    AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH",
+    AdMarkers = "NONE"|"SCTE35_ENHANCED"|"PASSTHROUGH"|"DATERANGE",
     AdTriggers = list(
       "SPLICE_INSERT"|"BREAK"|"PROVIDER_ADVERTISEMENT"|"DISTRIBUTOR_ADVERTISEMENT"|"PROVIDER_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_PLACEMENT_OPPORTUNITY"|"PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY"|"DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY"
     ),

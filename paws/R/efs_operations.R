@@ -349,7 +349,7 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
 #' Zones. There are cost considerations for using a file system in an
 #' Availability Zone through a mount target created in another Availability
 #' Zone. For more information, see [Amazon
-#' EFS](http://aws.amazon.com/efs/). In addition, by always using a mount
+#' EFS](https://aws.amazon.com/efs/). In addition, by always using a mount
 #' target local to the instance's Availability Zone, you eliminate a
 #' partial failure scenario. If the Availability Zone in which your mount
 #' target is created goes down, then you can't access your file system
@@ -594,7 +594,7 @@ efs_delete_file_system <- function(FileSystemId) {
 #' default `FileSystemPolicy` goes into effect once the existing policy is
 #' deleted. For more information about the default file system policy, see
 #' [Using Resource-based Policies with
-#' EFS](https://docs.aws.amazon.com/efs/latest/ug/res-based-policies-efs.html).
+#' EFS](https://docs.aws.amazon.com/efs/latest/ug/).
 #' 
 #' This operation requires permissions for the
 #' `elasticfilesystem:DeleteFileSystemPolicy` action.

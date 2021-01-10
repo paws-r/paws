@@ -5,19 +5,29 @@ NULL
 #' AWS Signer
 #'
 #' @description
-#' With code signing for IoT, you can sign code that you create for any IoT
-#' device that is supported by Amazon Web Services (AWS). Code signing is
-#' available through [Amazon
-#' FreeRTOS](http://docs.aws.amazon.com/freertos/latest/userguide/) and
+#' AWS Signer is a fully managed code signing service to help you ensure
+#' the trust and integrity of your code.
+#' 
+#' AWS Signer supports the following applications:
+#' 
+#' With *code signing for AWS Lambda*, you can sign AWS Lambda deployment
+#' packages. Integrated support is provided for Amazon S3, Amazon
+#' CloudWatch, and AWS CloudTrail. In order to sign code, you create a
+#' signing profile and then use Signer to sign Lambda zip files in S3.
+#' 
+#' With *code signing for IoT*, you can sign code for any IoT device that
+#' is supported by AWS. IoT code signing is available for [Amazon
+#' FreeRTOS](https://docs.aws.amazon.com/freertos/latest/userguide/) and
 #' [AWS IoT Device
-#' Management](http://docs.aws.amazon.com/iot/latest/developerguide/), and
-#' integrated with [AWS Certificate Manager
-#' (ACM)](http://docs.aws.amazon.com/acm/latest/userguide/). In order to
-#' sign code, you import a third-party code signing certificate with ACM
-#' that is used to sign updates in Amazon FreeRTOS and AWS IoT Device
-#' Management. For general information about using code signing, see the
-#' [Code Signing for IoT Developer
-#' Guide](http://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html).
+#' Management](https://docs.aws.amazon.com/iot/latest/developerguide/), and
+#' is integrated with [AWS Certificate Manager
+#' (ACM)](https://docs.aws.amazon.com/acm/latest/userguide/). In order to
+#' sign code, you import a third-party code signing certificate using ACM,
+#' and use that to sign updates in Amazon FreeRTOS and AWS IoT Device
+#' Management.
+#' 
+#' For more information about AWS Signer, see the [AWS Signer Developer
+#' Guide](https://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html).
 #'
 #' @param
 #' config
@@ -44,22 +54,27 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- signer()
-#' svc$cancel_signing_profile(
+#' svc$add_profile_permission(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=signer_add_profile_permission]{add_profile_permission} \tab Adds cross-account permissions to a signing profile\cr
 #'  \link[=signer_cancel_signing_profile]{cancel_signing_profile} \tab Changes the state of an ACTIVE signing profile to CANCELED\cr
 #'  \link[=signer_describe_signing_job]{describe_signing_job} \tab Returns information about a specific code signing job\cr
 #'  \link[=signer_get_signing_platform]{get_signing_platform} \tab Returns information on a specific signing platform\cr
 #'  \link[=signer_get_signing_profile]{get_signing_profile} \tab Returns information on a specific signing profile\cr
+#'  \link[=signer_list_profile_permissions]{list_profile_permissions} \tab Lists the cross-account permissions associated with a signing profile\cr
 #'  \link[=signer_list_signing_jobs]{list_signing_jobs} \tab Lists all your signing jobs\cr
 #'  \link[=signer_list_signing_platforms]{list_signing_platforms} \tab Lists all signing platforms available in code signing that match the request parameters\cr
 #'  \link[=signer_list_signing_profiles]{list_signing_profiles} \tab Lists all available signing profiles in your AWS account\cr
 #'  \link[=signer_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags associated with a signing profile resource\cr
 #'  \link[=signer_put_signing_profile]{put_signing_profile} \tab Creates a signing profile\cr
+#'  \link[=signer_remove_profile_permission]{remove_profile_permission} \tab Removes cross-account permissions from a signing profile\cr
+#'  \link[=signer_revoke_signature]{revoke_signature} \tab Changes the state of a signing job to REVOKED\cr
+#'  \link[=signer_revoke_signing_profile]{revoke_signing_profile} \tab Changes the state of a signing profile to REVOKED\cr
 #'  \link[=signer_start_signing_job]{start_signing_job} \tab Initiates a signing job to be performed on the code provided\cr
 #'  \link[=signer_tag_resource]{tag_resource} \tab Adds one or more tags to a signing profile\cr
 #'  \link[=signer_untag_resource]{untag_resource} \tab Removes one or more tags from a signing profile

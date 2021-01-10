@@ -23,9 +23,32 @@ NULL
 #' 
 #' -   **FULL\\_REQUEST\\_CACHING**: All requests are fully cached.
 #' 
-#' -   **PER\\_RESOLVER\\_CACHING**: Individual resovlers that you specify
+#' -   **PER\\_RESOLVER\\_CACHING**: Individual resolvers that you specify
 #'     are cached.
-#' @param type &#91;required&#93; The cache instance type.
+#' @param type &#91;required&#93; The cache instance type. Valid values are
+#' 
+#' -   `SMALL`
+#' 
+#' -   `MEDIUM`
+#' 
+#' -   `LARGE`
+#' 
+#' -   `XLARGE`
+#' 
+#' -   `LARGE_2X`
+#' 
+#' -   `LARGE_4X`
+#' 
+#' -   `LARGE_8X` (not available in all regions)
+#' 
+#' -   `LARGE_12X`
+#' 
+#' Historically, instance types were identified by an EC2-style value. As
+#' of July 2020, this is deprecated, and the generic identifiers above
+#' should be used.
+#' 
+#' The following legacy instance types are available, but their use is
+#' discouraged:
 #' 
 #' -   **T2\\_SMALL**: A t2.small instance type.
 #' 
@@ -223,7 +246,7 @@ appsync_create_data_source <- function(apiId, name, description = NULL, type, se
 #' @param name &#91;required&#93; The `Function` name. The function name does not have to be unique.
 #' @param description The `Function` description.
 #' @param dataSourceName &#91;required&#93; The `Function` `DataSource` name.
-#' @param requestMappingTemplate &#91;required&#93; The `Function` request mapping template. Functions support only the
+#' @param requestMappingTemplate The `Function` request mapping template. Functions support only the
 #' 2018-05-29 version of the request mapping template.
 #' @param responseMappingTemplate The `Function` response mapping template.
 #' @param functionVersion &#91;required&#93; The `version` of the request mapping template. Currently the supported
@@ -245,7 +268,7 @@ appsync_create_data_source <- function(apiId, name, description = NULL, type, se
 #' @keywords internal
 #'
 #' @rdname appsync_create_function
-appsync_create_function <- function(apiId, name, description = NULL, dataSourceName, requestMappingTemplate, responseMappingTemplate = NULL, functionVersion) {
+appsync_create_function <- function(apiId, name, description = NULL, dataSourceName, requestMappingTemplate = NULL, responseMappingTemplate = NULL, functionVersion) {
   op <- new_operation(
     name = "CreateFunction",
     http_method = "POST",
@@ -362,11 +385,15 @@ appsync_create_graphql_api <- function(name, logConfig = NULL, authenticationTyp
 #' @param typeName &#91;required&#93; The name of the `Type`.
 #' @param fieldName &#91;required&#93; The name of the field to attach the resolver to.
 #' @param dataSourceName The name of the data source for which the resolver is being created.
-#' @param requestMappingTemplate &#91;required&#93; The mapping template to be used for requests.
+#' @param requestMappingTemplate The mapping template to be used for requests.
 #' 
 #' A resolver uses a request mapping template to convert a GraphQL
 #' expression into a format that a data source can understand. Mapping
 #' templates are written in Apache Velocity Template Language (VTL).
+#' 
+#' VTL request mapping templates are optional when using a Lambda data
+#' source. For all other data sources, VTL request and response mapping
+#' templates are required.
 #' @param responseMappingTemplate The mapping template to be used for responses from the data source.
 #' @param kind The resolver type.
 #' 
@@ -416,7 +443,7 @@ appsync_create_graphql_api <- function(name, logConfig = NULL, authenticationTyp
 #' @keywords internal
 #'
 #' @rdname appsync_create_resolver
-appsync_create_resolver <- function(apiId, typeName, fieldName, dataSourceName = NULL, requestMappingTemplate, responseMappingTemplate = NULL, kind = NULL, pipelineConfig = NULL, syncConfig = NULL, cachingConfig = NULL) {
+appsync_create_resolver <- function(apiId, typeName, fieldName, dataSourceName = NULL, requestMappingTemplate = NULL, responseMappingTemplate = NULL, kind = NULL, pipelineConfig = NULL, syncConfig = NULL, cachingConfig = NULL) {
   op <- new_operation(
     name = "CreateResolver",
     http_method = "POST",
@@ -444,7 +471,7 @@ appsync_create_resolver <- function(apiId, typeName, fieldName, dataSourceName =
 #' @param definition &#91;required&#93; The type definition, in GraphQL Schema Definition Language (SDL) format.
 #' 
 #' For more information, see the [GraphQL SDL
-#' documentation](http://graphql.org/learn/schema/).
+#' documentation](https://graphql.org/learn/schema/).
 #' @param format &#91;required&#93; The type format: SDL or JSON.
 #'
 #' @section Request syntax:
@@ -1085,7 +1112,7 @@ appsync_get_type <- function(apiId, typeName, format) {
 #'
 #' Lists the API keys for a given API.
 #' 
-#' API keys are deleted automatically sometime after they expire. However,
+#' API keys are deleted automatically 60 days after they expire. However,
 #' they may still be included in the response until they have actually been
 #' deleted. You can safely call `DeleteApiKey` to manually delete a key
 #' before it's automatically deleted.
@@ -1556,9 +1583,32 @@ appsync_untag_resource <- function(resourceArn, tagKeys) {
 #' 
 #' -   **FULL\\_REQUEST\\_CACHING**: All requests are fully cached.
 #' 
-#' -   **PER\\_RESOLVER\\_CACHING**: Individual resovlers that you specify
+#' -   **PER\\_RESOLVER\\_CACHING**: Individual resolvers that you specify
 #'     are cached.
-#' @param type &#91;required&#93; The cache instance type.
+#' @param type &#91;required&#93; The cache instance type. Valid values are
+#' 
+#' -   `SMALL`
+#' 
+#' -   `MEDIUM`
+#' 
+#' -   `LARGE`
+#' 
+#' -   `XLARGE`
+#' 
+#' -   `LARGE_2X`
+#' 
+#' -   `LARGE_4X`
+#' 
+#' -   `LARGE_8X` (not available in all regions)
+#' 
+#' -   `LARGE_12X`
+#' 
+#' Historically, instance types were identified by an EC2-style value. As
+#' of July 2020, this is deprecated, and the generic identifiers above
+#' should be used.
+#' 
+#' The following legacy instance types are available, but their use is
+#' discouraged:
 #' 
 #' -   **T2\\_SMALL**: A t2.small instance type.
 #' 
@@ -1606,7 +1656,7 @@ appsync_update_api_cache <- function(apiId, ttl, apiCachingBehavior, type) {
 
 #' Updates an API key
 #'
-#' Updates an API key.
+#' Updates an API key. The key can be updated while it is not deleted.
 #'
 #' @usage
 #' appsync_update_api_key(apiId, id, description, expires)
@@ -1750,7 +1800,7 @@ appsync_update_data_source <- function(apiId, name, description = NULL, type, se
 #' @param description The `Function` description.
 #' @param functionId &#91;required&#93; The function ID.
 #' @param dataSourceName &#91;required&#93; The `Function` `DataSource` name.
-#' @param requestMappingTemplate &#91;required&#93; The `Function` request mapping template. Functions support only the
+#' @param requestMappingTemplate The `Function` request mapping template. Functions support only the
 #' 2018-05-29 version of the request mapping template.
 #' @param responseMappingTemplate The `Function` request mapping template.
 #' @param functionVersion &#91;required&#93; The `version` of the request mapping template. Currently the supported
@@ -1773,7 +1823,7 @@ appsync_update_data_source <- function(apiId, name, description = NULL, type, se
 #' @keywords internal
 #'
 #' @rdname appsync_update_function
-appsync_update_function <- function(apiId, name, description = NULL, functionId, dataSourceName, requestMappingTemplate, responseMappingTemplate = NULL, functionVersion) {
+appsync_update_function <- function(apiId, name, description = NULL, functionId, dataSourceName, requestMappingTemplate = NULL, responseMappingTemplate = NULL, functionVersion) {
   op <- new_operation(
     name = "UpdateFunction",
     http_method = "POST",
@@ -1885,7 +1935,15 @@ appsync_update_graphql_api <- function(apiId, name, logConfig = NULL, authentica
 #' @param typeName &#91;required&#93; The new type name.
 #' @param fieldName &#91;required&#93; The new field name.
 #' @param dataSourceName The new data source name.
-#' @param requestMappingTemplate &#91;required&#93; The new request mapping template.
+#' @param requestMappingTemplate The new request mapping template.
+#' 
+#' A resolver uses a request mapping template to convert a GraphQL
+#' expression into a format that a data source can understand. Mapping
+#' templates are written in Apache Velocity Template Language (VTL).
+#' 
+#' VTL request mapping templates are optional when using a Lambda data
+#' source. For all other data sources, VTL request and response mapping
+#' templates are required.
 #' @param responseMappingTemplate The new response mapping template.
 #' @param kind The resolver type.
 #' 
@@ -1935,7 +1993,7 @@ appsync_update_graphql_api <- function(apiId, name, logConfig = NULL, authentica
 #' @keywords internal
 #'
 #' @rdname appsync_update_resolver
-appsync_update_resolver <- function(apiId, typeName, fieldName, dataSourceName = NULL, requestMappingTemplate, responseMappingTemplate = NULL, kind = NULL, pipelineConfig = NULL, syncConfig = NULL, cachingConfig = NULL) {
+appsync_update_resolver <- function(apiId, typeName, fieldName, dataSourceName = NULL, requestMappingTemplate = NULL, responseMappingTemplate = NULL, kind = NULL, pipelineConfig = NULL, syncConfig = NULL, cachingConfig = NULL) {
   op <- new_operation(
     name = "UpdateResolver",
     http_method = "POST",

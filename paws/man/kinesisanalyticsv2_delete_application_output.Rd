@@ -2,8 +2,8 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_delete_application_output}
 \alias{kinesisanalyticsv2_delete_application_output}
-\title{Deletes the output destination configuration from your SQL-based Amazon
-Kinesis Data Analytics application's configuration}
+\title{Deletes the output destination configuration from your SQL-based Kinesis
+Data Analytics application's configuration}
 \usage{
 kinesisanalyticsv2_delete_application_output(ApplicationName,
   CurrentApplicationVersionId, OutputId)
@@ -23,10 +23,10 @@ that you want to delete from the application configuration. You can use
 the DescribeApplication operation to get the specific \code{OutputId}.}
 }
 \description{
-Deletes the output destination configuration from your SQL-based Amazon
-Kinesis Data Analytics application's configuration. Kinesis Data
-Analytics will no longer write data from the corresponding
-in-application stream to the external output destination.
+Deletes the output destination configuration from your SQL-based Kinesis
+Data Analytics application's configuration. Kinesis Data Analytics will
+no longer write data from the corresponding in-application stream to the
+external output destination.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_application_output(

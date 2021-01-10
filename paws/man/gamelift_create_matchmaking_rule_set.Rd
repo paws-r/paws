@@ -42,9 +42,9 @@ new rule set.
 
 \strong{Learn more}
 \itemize{
-\item \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html}{Build a Rule Set}
-\item \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-configuration.html}{Design a Matchmaker}
-\item \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-intro.html}{Matchmaking with FlexMatch}
+\item \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html}{Build a Rule Set}
+\item \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-configuration.html}{Design a Matchmaker}
+\item \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-intro.html}{Matchmaking with FlexMatch}
 }
 
 \strong{Related operations}

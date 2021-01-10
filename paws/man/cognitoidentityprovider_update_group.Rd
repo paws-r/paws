@@ -18,7 +18,8 @@ cognitoidentityprovider_update_group(GroupName, UserPoolId, Description,
 \code{cognito:roles} and \code{cognito:preferred_role} claims in the token.}
 
 \item{Precedence}{The new precedence value for the group. For more information about this
-parameter, see .}
+parameter, see
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateGroup.html}{CreateGroup}.}
 }
 \description{
 Updates the specified group with the specified attributes.

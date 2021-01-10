@@ -33,8 +33,6 @@ configuration types.
 \details{
 To enable Amazon Cognito advanced security features, update the user
 pool to include the \code{UserPoolAddOns} key\code{AdvancedSecurityMode}.
-
-See .
 }
 \section{Request syntax}{
 \preformatted{svc$set_risk_configuration(

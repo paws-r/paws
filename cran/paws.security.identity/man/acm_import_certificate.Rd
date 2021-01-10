@@ -34,7 +34,7 @@ certificates into ACM, see \href{https://docs.aws.amazon.com/acm/latest/userguid
 in the \emph{AWS Certificate Manager User Guide}.
 }
 \details{
-ACM does not provide \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-renewal.html}{managed renewal}
+ACM does not provide \href{https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html}{managed renewal}
 for certificates that you import.
 
 Note the following guidelines when importing third party certificates:

@@ -89,6 +89,7 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=dynamodb_batch_execute_statement]{batch_execute_statement} \tab This operation allows you to perform batch reads and writes on data stored in DynamoDB, using PartiQL\cr
 #'  \link[=dynamodb_batch_get_item]{batch_get_item} \tab The BatchGetItem operation returns the attributes of one or more items from one or more tables\cr
 #'  \link[=dynamodb_batch_write_item]{batch_write_item} \tab The BatchWriteItem operation puts or deletes multiple items in one or more tables\cr
 #'  \link[=dynamodb_create_backup]{create_backup} \tab Creates a backup for an existing table\cr
@@ -101,15 +102,23 @@ NULL
 #'  \link[=dynamodb_describe_continuous_backups]{describe_continuous_backups} \tab Checks the status of continuous backups and point in time recovery on the specified table\cr
 #'  \link[=dynamodb_describe_contributor_insights]{describe_contributor_insights} \tab Returns information about contributor insights, for a given table or global secondary index\cr
 #'  \link[=dynamodb_describe_endpoints]{describe_endpoints} \tab Returns the regional endpoint information\cr
+#'  \link[=dynamodb_describe_export]{describe_export} \tab Describes an existing table export\cr
 #'  \link[=dynamodb_describe_global_table]{describe_global_table} \tab Returns information about the specified global table\cr
 #'  \link[=dynamodb_describe_global_table_settings]{describe_global_table_settings} \tab Describes Region-specific settings for a global table\cr
-#'  \link[=dynamodb_describe_limits]{describe_limits} \tab Returns the current provisioned-capacity limits for your AWS account in a Region, both for the Region as a whole and for any one DynamoDB table that you create there\cr
+#'  \link[=dynamodb_describe_kinesis_streaming_destination]{describe_kinesis_streaming_destination} \tab Returns information about the status of Kinesis streaming\cr
+#'  \link[=dynamodb_describe_limits]{describe_limits} \tab Returns the current provisioned-capacity quotas for your AWS account in a Region, both for the Region as a whole and for any one DynamoDB table that you create there\cr
 #'  \link[=dynamodb_describe_table]{describe_table} \tab Returns information about the table, including the current status of the table, when it was created, the primary key schema, and any indexes on the table\cr
 #'  \link[=dynamodb_describe_table_replica_auto_scaling]{describe_table_replica_auto_scaling} \tab Describes auto scaling settings across replicas of the global table at once\cr
 #'  \link[=dynamodb_describe_time_to_live]{describe_time_to_live} \tab Gives a description of the Time to Live (TTL) status on the specified table\cr
+#'  \link[=dynamodb_disable_kinesis_streaming_destination]{disable_kinesis_streaming_destination} \tab Stops replication from the DynamoDB table to the Kinesis data stream\cr
+#'  \link[=dynamodb_enable_kinesis_streaming_destination]{enable_kinesis_streaming_destination} \tab Starts table data replication to the specified Kinesis data stream at a timestamp chosen during the enable workflow\cr
+#'  \link[=dynamodb_execute_statement]{execute_statement} \tab This operation allows you to perform reads and singleton writes on data stored in DynamoDB, using PartiQL\cr
+#'  \link[=dynamodb_execute_transaction]{execute_transaction} \tab This operation allows you to perform transactional reads or writes on data stored in DynamoDB, using PartiQL\cr
+#'  \link[=dynamodb_export_table_to_point_in_time]{export_table_to_point_in_time} \tab Exports table data to an S3 bucket\cr
 #'  \link[=dynamodb_get_item]{get_item} \tab The GetItem operation returns a set of attributes for the item with the given primary key\cr
 #'  \link[=dynamodb_list_backups]{list_backups} \tab List backups associated with an AWS account\cr
 #'  \link[=dynamodb_list_contributor_insights]{list_contributor_insights} \tab Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes\cr
+#'  \link[=dynamodb_list_exports]{list_exports} \tab Lists completed exports within the past 90 days\cr
 #'  \link[=dynamodb_list_global_tables]{list_global_tables} \tab Lists all global tables that have a replica in the specified Region\cr
 #'  \link[=dynamodb_list_tables]{list_tables} \tab Returns an array of table names associated with the current account and endpoint\cr
 #'  \link[=dynamodb_list_tags_of_resource]{list_tags_of_resource} \tab List all tags on an Amazon DynamoDB resource\cr

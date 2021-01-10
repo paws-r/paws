@@ -13,19 +13,35 @@ to update.}
 
 \item{state}{The state of the compute environment. Compute environments in the
 \code{ENABLED} state can accept jobs from a queue and scale in or out
-automatically based on the workload demand of its associated queues.}
+automatically based on the workload demand of its associated queues.
+
+If the state is \code{ENABLED}, then the AWS Batch scheduler can attempt to
+place jobs from an associated job queue on the compute resources within
+the environment. If the compute environment is managed, then it can
+scale its instances out or in automatically, based on the job queue
+demand.
+
+If the state is \code{DISABLED}, then the AWS Batch scheduler doesn't attempt
+to place jobs within the environment. Jobs in a \code{STARTING} or \code{RUNNING}
+state continue to progress normally. Managed compute environments in the
+\code{DISABLED} state don't scale out. However, they scale in to \code{minvCpus}
+value after instances become idle.}
 
 \item{computeResources}{Details of the compute resources managed by the compute environment.
-Required for a managed compute environment.}
+Required for a managed compute environment. For more information, see
+\href{https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html}{Compute Environments}
+in the \emph{AWS Batch User Guide}.}
 
 \item{serviceRole}{The full Amazon Resource Name (ARN) of the IAM role that allows AWS
-Batch to make calls to other AWS services on your behalf.
+Batch to make calls to other AWS services on your behalf. For more
+information, see \href{https://docs.aws.amazon.com/batch/latest/userguide/service_IAM_role.html}{AWS Batch service IAM role}
+in the \emph{AWS Batch User Guide}.
 
 If your specified role has a path other than \code{/}, then you must either
 specify the full role ARN (this is recommended) or prefix the role name
 with the path.
 
-Depending on how you created your AWS Batch service role, its ARN may
+Depending on how you created your AWS Batch service role, its ARN might
 contain the \code{service-role} path prefix. When you only specify the name
 of the service role, AWS Batch assumes that your ARN does not use the
 \code{service-role} path prefix. Because of this, we recommend that you
@@ -42,7 +58,13 @@ Updates an AWS Batch compute environment.
   computeResources = list(
     minvCpus = 123,
     maxvCpus = 123,
-    desiredvCpus = 123
+    desiredvCpus = 123,
+    subnets = list(
+      "string"
+    ),
+    securityGroupIds = list(
+      "string"
+    )
   ),
   serviceRole = "string"
 )

@@ -2,21 +2,21 @@
 % Please edit documentation in R/sms_operations.R
 \name{sms_delete_app}
 \alias{sms_delete_app}
-\title{Deletes an existing application}
+\title{Deletes the specified application}
 \usage{
 sms_delete_app(appId, forceStopAppReplication, forceTerminateApp)
 }
 \arguments{
-\item{appId}{ID of the application to delete.}
+\item{appId}{The ID of the application.}
 
-\item{forceStopAppReplication}{While deleting the application, stop all replication jobs corresponding
-to the servers in the application.}
+\item{forceStopAppReplication}{Indicates whether to stop all replication jobs corresponding to the
+servers in the application while deleting the application.}
 
-\item{forceTerminateApp}{While deleting the application, terminate the stack corresponding to the
-application.}
+\item{forceTerminateApp}{Indicates whether to terminate the stack corresponding to the
+application while deleting the application.}
 }
 \description{
-Deletes an existing application. Optionally deletes the launched stack
+Deletes the specified application. Optionally deletes the launched stack
 associated with the application and all AWS SMS replication jobs for
 servers in the application.
 }

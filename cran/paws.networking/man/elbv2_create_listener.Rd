@@ -2,68 +2,37 @@
 % Please edit documentation in R/elbv2_operations.R
 \name{elbv2_create_listener}
 \alias{elbv2_create_listener}
-\title{Creates a listener for the specified Application Load Balancer or
-Network Load Balancer}
+\title{Creates a listener for the specified Application Load Balancer, Network
+Load Balancer}
 \usage{
 elbv2_create_listener(LoadBalancerArn, Protocol, Port, SslPolicy,
-  Certificates, DefaultActions, AlpnPolicy)
+  Certificates, DefaultActions, AlpnPolicy, Tags)
 }
 \arguments{
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
 
-\item{Protocol}{[required] The protocol for connections from clients to the load balancer. For
+\item{Protocol}{The protocol for connections from clients to the load balancer. For
 Application Load Balancers, the supported protocols are HTTP and HTTPS.
 For Network Load Balancers, the supported protocols are TCP, TLS, UDP,
-and TCP\\_UDP.}
+and TCP\\_UDP. You can’t specify the UDP or TCP\\_UDP protocol if
+dual-stack mode is enabled. You cannot specify a protocol for a Gateway
+Load Balancer.}
 
-\item{Port}{[required] The port on which the load balancer is listening.}
+\item{Port}{The port on which the load balancer is listening. You cannot specify a
+port for a Gateway Load Balancer.}
 
 \item{SslPolicy}{[HTTPS and TLS listeners] The security policy that defines which
-protocols and ciphers are supported. The following are the possible
-values:
-\itemize{
-\item \code{ELBSecurityPolicy-2016-08}
-\item \code{ELBSecurityPolicy-TLS-1-0-2015-04}
-\item \code{ELBSecurityPolicy-TLS-1-1-2017-01}
-\item \code{ELBSecurityPolicy-TLS-1-2-2017-01}
-\item \code{ELBSecurityPolicy-TLS-1-2-Ext-2018-06}
-\item \code{ELBSecurityPolicy-FS-2018-06}
-\item \code{ELBSecurityPolicy-FS-1-1-2019-08}
-\item \code{ELBSecurityPolicy-FS-1-2-2019-08}
-\item \code{ELBSecurityPolicy-FS-1-2-Res-2019-08}
-}
+protocols and ciphers are supported.
 
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security Policies}
-in the \emph{Application Load Balancers Guide} and \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies}{Security Policies}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security policies}
+in the \emph{Application Load Balancers Guide} and \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies}{Security policies}
 in the \emph{Network Load Balancers Guide}.}
 
 \item{Certificates}{[HTTPS and TLS listeners] The default certificate for the listener.
 You must provide exactly one certificate. Set \code{CertificateArn} to the
-certificate ARN but do not set \code{IsDefault}.
+certificate ARN but do not set \code{IsDefault}.}
 
-To create a certificate list for the listener, use
-AddListenerCertificates.}
-
-\item{DefaultActions}{[required] The actions for the default rule. The rule must include one forward
-action or one or more fixed-response actions.
-
-If the action type is \code{forward}, you specify one or more target groups.
-The protocol of the target group must be HTTP or HTTPS for an
-Application Load Balancer. The protocol of the target group must be TCP,
-TLS, UDP, or TCP\\_UDP for a Network Load Balancer.
-
-[HTTPS listeners] If the action type is \code{authenticate-oidc}, you
-authenticate users through an identity provider that is OpenID Connect
-(OIDC) compliant.
-
-[HTTPS listeners] If the action type is \code{authenticate-cognito}, you
-authenticate users through the user pools supported by Amazon Cognito.
-
-[Application Load Balancer] If the action type is \code{redirect}, you
-redirect specified client requests from one URL to another.
-
-[Application Load Balancer] If the action type is \code{fixed-response},
-you drop specified client requests and return a custom HTTP response.}
+\item{DefaultActions}{[required] The actions for the default rule.}
 
 \item{AlpnPolicy}{[TLS listeners] The name of the Application-Layer Protocol Negotiation
 (ALPN) policy. You can specify one policy name. The following are the
@@ -76,31 +45,31 @@ possible values:
 \item \code{None}
 }
 
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies}{ALPN Policies}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies}{ALPN policies}
 in the \emph{Network Load Balancers Guide}.}
+
+\item{Tags}{The tags to assign to the listener.}
 }
 \description{
-Creates a listener for the specified Application Load Balancer or
-Network Load Balancer.
+Creates a listener for the specified Application Load Balancer, Network
+Load Balancer. or Gateway Load Balancer.
 }
 \details{
-To update a listener, use ModifyListener. When you are finished with a
-listener, you can delete it using DeleteListener. If you are finished
-with both the listener and the load balancer, you can delete them both
-using DeleteLoadBalancer.
+For more information, see the following:
+\itemize{
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html}{Listeners for your Application Load Balancers}
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html}{Listeners for your Network Load Balancers}
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-listeners.html}{Listeners for your Gateway Load Balancers}
+}
 
 This operation is idempotent, which means that it completes at most one
 time. If you attempt to create multiple listeners with the same
 settings, each call succeeds.
-
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html}{Listeners for Your Application Load Balancers}
-in the \emph{Application Load Balancers Guide} and \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html}{Listeners for Your Network Load Balancers}
-in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_listener(
   LoadBalancerArn = "string",
-  Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP",
+  Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
   Port = 123,
   SslPolicy = "string",
   Certificates = list(
@@ -171,6 +140,12 @@ in the \emph{Network Load Balancers Guide}.
   ),
   AlpnPolicy = list(
     "string"
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

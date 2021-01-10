@@ -2,8 +2,8 @@
 % Please edit documentation in R/elbv2_operations.R
 \name{elbv2_delete_load_balancer}
 \alias{elbv2_delete_load_balancer}
-\title{Deletes the specified Application Load Balancer or Network Load Balancer
-and its attached listeners}
+\title{Deletes the specified Application Load Balancer, Network Load Balancer,
+or Gateway Load Balancer}
 \usage{
 elbv2_delete_load_balancer(LoadBalancerArn)
 }
@@ -11,8 +11,9 @@ elbv2_delete_load_balancer(LoadBalancerArn)
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
 }
 \description{
-Deletes the specified Application Load Balancer or Network Load Balancer
-and its attached listeners.
+Deletes the specified Application Load Balancer, Network Load Balancer,
+or Gateway Load Balancer. Deleting a load balancer also deletes its
+listeners.
 }
 \details{
 You can't delete a load balancer if deletion protection is enabled. If

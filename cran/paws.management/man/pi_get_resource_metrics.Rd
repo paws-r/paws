@@ -9,14 +9,14 @@ pi_get_resource_metrics(ServiceType, Identifier, MetricQueries,
   StartTime, EndTime, PeriodInSeconds, MaxResults, NextToken)
 }
 \arguments{
-\item{ServiceType}{[required] The AWS service for which Performance Insights will return metrics. The
-only valid value for \emph{ServiceType} is: \code{RDS}}
+\item{ServiceType}{[required] The AWS service for which Performance Insights returns metrics. The only
+valid value for \emph{ServiceType} is \code{RDS}.}
 
 \item{Identifier}{[required] An immutable, AWS Region-unique identifier for a data source.
 Performance Insights gathers metrics from this data source.
 
-To use an Amazon RDS instance as a data source, you specify its
-\code{DbiResourceId} value - for example: \code{db-FAIHNTYBKTGAUSUZQYPDS2GW4A}}
+To use a DB instance as a data source, specify its \code{DbiResourceId}
+value. For example, specify \code{db-FAIHNTYBKTGAUSUZQYPDS2GW4A}.}
 
 \item{MetricQueries}{[required] An array of one or more queries to perform. Each query must specify a
 Performance Insights metric, and can optionally specify aggregation and
@@ -29,7 +29,7 @@ than \code{StartTime} will be returned.
 
 The value for \code{StartTime} must be earlier than the value for \code{EndTime}.}
 
-\item{EndTime}{[required] The date and time specifiying the end of the requested time series data.
+\item{EndTime}{[required] The date and time specifying the end of the requested time series data.
 The value specified is \emph{exclusive} - data points less than (but not
 equal to) \code{EndTime} will be returned.
 
@@ -62,6 +62,10 @@ token, up to the value specified by \code{MaxRecords}.}
 Retrieve Performance Insights metrics for a set of data sources, over a
 time period. You can provide specific dimension groups and dimensions,
 and provide aggregation and filtering criteria for each group.
+}
+\details{
+Each response element returns a maximum of 500 bytes. For larger
+elements, such as SQL statements, only the first 500 bytes are returned.
 }
 \section{Request syntax}{
 \preformatted{svc$get_resource_metrics(

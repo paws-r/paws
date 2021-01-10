@@ -26,8 +26,8 @@ within a Region or across multiple Regions.}
 definition to run in your service. If a \code{revision} is not specified, the
 latest \code{ACTIVE} revision is used.
 
-A task definition must be specified if the service is using the \code{ECS}
-deployment controller.}
+A task definition must be specified if the service is using either the
+\code{ECS} or \code{CODE_DEPLOY} deployment controllers.}
 
 \item{loadBalancers}{A load balancer object representing the load balancers to use with your
 service. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-load-balancing.html}{Service Load Balancing}
@@ -35,9 +35,9 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 If the service is using the rolling update (\code{ECS}) deployment controller
 and using either an Application Load Balancer or Network Load Balancer,
-you can specify multiple target groups to attach to the service. The
-service-linked role is required for services that make use of multiple
-target groups. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using Service-Linked Roles for Amazon ECS}
+you must specify one or more target group ARNs to attach to the service.
+The service-linked role is required for services that make use of
+multiple target groups. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html}{Using Service-Linked Roles for Amazon ECS}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
 
 If the service is using the \code{CODE_DEPLOY} deployment controller, the
@@ -61,15 +61,17 @@ when updating the service.
 For Application Load Balancers and Network Load Balancers, this object
 must contain the load balancer target group ARN, the container name (as
 it appears in a container definition), and the container port to access
-from the load balancer. When a task from this service is placed on a
-container instance, the container instance and port combination is
-registered as a target in the target group specified here.
+from the load balancer. The load balancer name parameter must be
+omitted. When a task from this service is placed on a container
+instance, the container instance and port combination is registered as a
+target in the target group specified here.
 
 For Classic Load Balancers, this object must contain the load balancer
 name, the container name (as it appears in a container definition), and
-the container port to access from the load balancer. When a task from
-this service is placed on a container instance, the container instance
-is registered with the load balancer specified here.
+the container port to access from the load balancer. The target group
+ARN parameter must be omitted. When a task from this service is placed
+on a container instance, the container instance is registered with the
+load balancer specified here.
 
 Services with tasks that use the \code{awsvpc} network mode (for example,
 those with the Fargate launch type) only support Application Load
@@ -401,6 +403,10 @@ tasks for this service.
   platformVersion = "string",
   role = "string",
   deploymentConfiguration = list(
+    deploymentCircuitBreaker = list(
+      enable = TRUE|FALSE,
+      rollback = TRUE|FALSE
+    ),
     maximumPercent = 123,
     minimumHealthyPercent = 123
   ),

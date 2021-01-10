@@ -44,6 +44,9 @@ CloudFormation.
 When you call this API, AWS Config only stores configuration state of
 the resource provided in the request. This API does not change or
 remediate the configuration of the resource.
+
+Write-only schema properites are not recorded as part of the published
+configuration item.
 }
 \section{Request syntax}{
 \preformatted{svc$put_resource_config(

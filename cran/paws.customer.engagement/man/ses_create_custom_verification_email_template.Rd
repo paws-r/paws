@@ -17,7 +17,7 @@ ses_create_custom_verification_email_template(TemplateName,
 
 \item{TemplateContent}{[required] The content of the custom verification email. The total size of the
 email must be less than 10 MB. The message body may contain HTML, with
-some limitations. For more information, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html#custom-verification-emails-faq}{Custom Verification Email Frequently Asked Questions}
+some limitations. For more information, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html#custom-verification-emails-faq}{Custom Verification Email Frequently Asked Questions}
 in the \emph{Amazon SES Developer Guide}.}
 
 \item{SuccessRedirectionURL}{[required] The URL that the recipient of the verification email is sent to if his
@@ -31,7 +31,7 @@ Creates a new custom verification email template.
 }
 \details{
 For more information about custom verification email templates, see
-\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/custom-verification-emails.html}{Using Custom Verification Email Templates}
+\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html}{Using Custom Verification Email Templates}
 in the \emph{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.

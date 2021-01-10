@@ -17,7 +17,8 @@ idempotency of the request.}
 \item{description}{A custom description of the job. The description can contain as many as
 200 characters.}
 
-\item{initialRun}{Specifies whether to run the job immediately, after it's created.}
+\item{initialRun}{Specifies whether to analyze all existing, eligible objects immediately
+after the job is created.}
 
 \item{jobType}{[required] The schedule for running the job. Valid values are:
 \itemize{
@@ -36,18 +37,19 @@ that analysis.}
 
 \item{samplingPercentage}{The sampling depth, as a percentage, to apply when processing objects.
 This value determines the percentage of eligible objects that the job
-analyzes. If the value is less than 100, Amazon Macie randomly selects
-the objects to analyze, up to the specified percentage.}
+analyzes. If this value is less than 100, Amazon Macie selects the
+objects to analyze at random, up to the specified percentage, and
+analyzes all the data in those objects.}
 
 \item{scheduleFrequency}{The recurrence pattern for running the job. To run the job only once,
-don't specify a value for this property and set the value of the jobType
-property to ONE\\_TIME.}
+don't specify a value for this property and set the value for the
+jobType property to ONE\\_TIME.}
 
 \item{tags}{A map of key-value pairs that specifies the tags to associate with the
 job.
 
-A job can have a maximum of 50 tags. Each tag consists of a required tag
-key and an associated tag value. The maximum length of a tag key is 128
+A job can have a maximum of 50 tags. Each tag consists of a tag key and
+an associated tag value. The maximum length of a tag key is 128
 characters. The maximum length of a tag value is 256 characters.}
 }
 \description{

@@ -30,7 +30,7 @@ terminated.
 the environment, but the AWS resources continue to operate.
 }
 
-For more information, see the \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/ug/}{AWS Elastic Beanstalk User Guide.}
+For more information, see the \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/}{AWS Elastic Beanstalk User Guide.}
 
 Default: \code{true}
 

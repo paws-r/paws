@@ -6,7 +6,8 @@
 \usage{
 ssm_update_ops_item(Description, OperationalData,
   OperationalDataToDelete, Notifications, Priority, RelatedOpsItems,
-  Status, OpsItemId, Title, Category, Severity)
+  Status, OpsItemId, Title, Category, Severity, ActualStartTime,
+  ActualEndTime, PlannedStartTime, PlannedEndTime)
 }
 \arguments{
 \item{Description}{Update the information about the OpsItem. Provide enough information so
@@ -62,6 +63,18 @@ impacted resource.}
 \item{Category}{Specify a new category for an OpsItem.}
 
 \item{Severity}{Specify a new severity for an OpsItem.}
+
+\item{ActualStartTime}{The time a runbook workflow started. Currently reported only for the
+OpsItem type \verb{/aws/changerequest}.}
+
+\item{ActualEndTime}{The time a runbook workflow ended. Currently reported only for the
+OpsItem type \verb{/aws/changerequest}.}
+
+\item{PlannedStartTime}{The time specified in a change request for a runbook workflow to start.
+Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
+
+\item{PlannedEndTime}{The time specified in a change request for a runbook workflow to end.
+Currently supported only for the OpsItem type \verb{/aws/changerequest}.}
 }
 \description{
 Edit or change an OpsItem. You must have permission in AWS Identity and
@@ -98,11 +111,23 @@ in the \emph{AWS Systems Manager User Guide}.
       OpsItemId = "string"
     )
   ),
-  Status = "Open"|"InProgress"|"Resolved",
+  Status = "Open"|"InProgress"|"Resolved"|"Pending"|"TimedOut"|"Cancelling"|"Cancelled"|"Failed"|"CompletedWithSuccess"|"CompletedWithFailure"|"Scheduled"|"RunbookInProgress"|"PendingChangeCalendarOverride"|"ChangeCalendarOverrideApproved"|"ChangeCalendarOverrideRejected"|"PendingApproval"|"Approved"|"Rejected",
   OpsItemId = "string",
   Title = "string",
   Category = "string",
-  Severity = "string"
+  Severity = "string",
+  ActualStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  ActualEndTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  PlannedStartTime = as.POSIXct(
+    "2015-01-01"
+  ),
+  PlannedEndTime = as.POSIXct(
+    "2015-01-01"
+  )
 )
 }
 }

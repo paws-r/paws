@@ -18,6 +18,15 @@ Config rule must already exist for you to add a remediation
 configuration. The target (SSM document) must exist and have permissions
 to use the target.
 }
+\details{
+If you make backward incompatible changes to the SSM document, you must
+call this again to ensure the remediations can run.
+
+This API does not support adding remediation configurations for
+service-linked AWS Config Rules such as Organization Config rules, the
+rules deployed by conformance packs, and rules deployed by AWS Security
+Hub.
+}
 \section{Request syntax}{
 \preformatted{svc$put_remediation_configurations(
   RemediationConfigurations = list(

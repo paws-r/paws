@@ -6,7 +6,7 @@
 \usage{
 licensemanager_create_license_configuration(Name, Description,
   LicenseCountingType, LicenseCount, LicenseCountHardLimit, LicenseRules,
-  Tags, ProductInformationList)
+  Tags, DisassociateWhenNotFound, ProductInformationList)
 }
 \arguments{
 \item{Name}{[required] Name of the license configuration.}
@@ -21,20 +21,28 @@ licensemanager_create_license_configuration(Name, Description,
 hard limit blocks the launch of new instances.}
 
 \item{LicenseRules}{License rules. The syntax is \\#name=value (for example,
-\\#allowedTenancy=EC2-DedicatedHost). Available rules vary by dimension.
+\\#allowedTenancy=EC2-DedicatedHost). The available rules vary by
+dimension, as follows.
 \itemize{
-\item \code{Cores} dimension: \code{allowedTenancy} | \code{maximumCores} |
-\code{minimumCores}
+\item \code{Cores} dimension: \code{allowedTenancy} | \code{licenseAffinityToHost} |
+\code{maximumCores} | \code{minimumCores}
 \item \code{Instances} dimension: \code{allowedTenancy} | \code{maximumCores} |
 \code{minimumCores} | \code{maximumSockets} | \code{minimumSockets} |
 \code{maximumVcpus} | \code{minimumVcpus}
-\item \code{Sockets} dimension: \code{allowedTenancy} | \code{maximumSockets} |
-\code{minimumSockets}
+\item \code{Sockets} dimension: \code{allowedTenancy} | \code{licenseAffinityToHost} |
+\code{maximumSockets} | \code{minimumSockets}
 \item \code{vCPUs} dimension: \code{allowedTenancy} | \code{honorVcpuOptimization} |
 \code{maximumVcpus} | \code{minimumVcpus}
-}}
+}
+
+The unit for \code{licenseAffinityToHost} is days and the range is 1 to 180.
+The possible values for \code{allowedTenancy} are \code{EC2-Default},
+\code{EC2-DedicatedHost}, and \code{EC2-DedicatedInstance}. The possible values
+for \code{honorVcpuOptimization} are \code{True} and \code{False}.}
 
 \item{Tags}{Tags to add to the license configuration.}
+
+\item{DisassociateWhenNotFound}{When true, disassociates a resource when software is uninstalled.}
 
 \item{ProductInformationList}{Product information.}
 }
@@ -46,9 +54,9 @@ A license configuration is an abstraction of a customer license
 agreement that can be consumed and enforced by License Manager.
 Components include specifications for the license type (licensing by
 instance, socket, CPU, or vCPU), allowed tenancy (shared tenancy,
-Dedicated Instance, Dedicated Host, or all of these), host affinity (how
-long a VM must be associated with a host), and the number of licenses
-purchased and used.
+Dedicated Instance, Dedicated Host, or all of these), license affinity
+to host (how long a license must be associated with a host), and the
+number of licenses purchased and used.
 }
 \section{Request syntax}{
 \preformatted{svc$create_license_configuration(
@@ -66,6 +74,7 @@ purchased and used.
       Value = "string"
     )
   ),
+  DisassociateWhenNotFound = TRUE|FALSE,
   ProductInformationList = list(
     list(
       ResourceType = "string",

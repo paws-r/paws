@@ -57,7 +57,20 @@ exception.
       MaxConcurrency = "string",
       ComplianceSeverity = "CRITICAL"|"HIGH"|"MEDIUM"|"LOW"|"UNSPECIFIED",
       SyncCompliance = "AUTO"|"MANUAL",
-      ApplyOnlyAtCronInterval = TRUE|FALSE
+      ApplyOnlyAtCronInterval = TRUE|FALSE,
+      TargetLocations = list(
+        list(
+          Accounts = list(
+            "string"
+          ),
+          Regions = list(
+            "string"
+          ),
+          TargetLocationMaxConcurrency = "string",
+          TargetLocationMaxErrors = "string",
+          ExecutionRoleName = "string"
+        )
+      )
     )
   )
 )

@@ -9,7 +9,7 @@ databasemigrationservice_describe_replication_instances(Filters,
   MaxRecords, Marker)
 }
 \arguments{
-\item{Filters}{Filters applied to the describe action.
+\item{Filters}{Filters applied to replication instances.
 
 Valid filter names: replication-instance-arn | replication-instance-id |
 replication-instance-class | engine-version}

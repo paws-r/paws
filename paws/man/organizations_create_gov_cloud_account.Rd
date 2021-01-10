@@ -6,7 +6,7 @@
 authorized to create accounts in the AWS GovCloud (US) Region}
 \usage{
 organizations_create_gov_cloud_account(Email, AccountName, RoleName,
-  IamUserAccessToBilling)
+  IamUserAccessToBilling, Tags)
 }
 \arguments{
 \item{Email}{[required] The email address of the owner to assign to the new member account in
@@ -24,9 +24,9 @@ commercial Region, not from the AWS GovCloud (US) Region.}
 
 The name of an IAM role that AWS Organizations automatically
 preconfigures in the new member accounts in both the AWS GovCloud (US)
-Region and in the commercial Region. This role trusts the master
-account, allowing users in the master account to assume the role, as
-permitted by the master account administrator. The role has
+Region and in the commercial Region. This role trusts the management
+account, allowing users in the management account to assume the role, as
+permitted by the management account administrator. The role has
 administrator permissions in the new member account.
 
 If you don't specify this parameter, the role name defaults to
@@ -37,7 +37,7 @@ account, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/or
 in the \emph{AWS Organizations User Guide} and steps 2 and 3 in \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html}{Tutorial: Delegate Access Across AWS Accounts Using IAM Roles}
 in the \emph{IAM User Guide.}
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} that is used to
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
 validate this parameter. The pattern can include uppercase letters,
 lowercase letters, digits with no spaces, and any of the following
 characters: =,.@-}
@@ -46,12 +46,27 @@ characters: =,.@-}
 enables IAM users to access account billing information \emph{if} they have
 the required permissions. If set to \code{DENY}, only the root user of the
 new account can access account billing information. For more
-information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate}{Activating Access to the Billing and Cost Management Console}
+information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate}{Activating Access to the Billing and Cost Management Console}
 in the \emph{AWS Billing and Cost Management User Guide.}
 
 If you don't specify this parameter, the value defaults to \code{ALLOW}, and
 IAM users and roles with the required permissions can access billing
 information for the new account.}
+
+\item{Tags}{A list of tags that you want to attach to the newly created account.
+These tags are attached to the commercial account associated with the
+GovCloud account, and not to the GovCloud account itself. To add tags to
+the actual GovCloud account, call the TagResource operation in the
+GovCloud region after the new GovCloud account exists.
+
+For each tag in the list, you must specify both a tag key and a value.
+You can set the value to an empty string, but you can't set it to
+\code{null}. For more information about tagging, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html}{Tagging AWS Organizations resources}
+in the AWS Organizations User Guide.
+
+If any one of the tags is invalid or if you exceed the allowed number of
+tags for an account, then the entire request fails and the account is
+not created.}
 }
 \description{
 This action is available if all of the following are true:
@@ -60,16 +75,18 @@ This action is available if all of the following are true:
 \itemize{
 \item You're authorized to create accounts in the AWS GovCloud (US)
 Region. For more information on the AWS GovCloud (US) Region, see
-the \href{http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/welcome.html}{\emph{AWS GovCloud User Guide}.}
+the \href{https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/welcome.html}{\emph{AWS GovCloud User Guide}.}
 \item You already have an account in the AWS GovCloud (US) Region that is
-associated with your master account in the commercial Region.
-\item You call this action from the master account of your organization in
-the commercial Region.
-\item You have the \code{organizations:CreateGovCloudAccount} permission. AWS
-Organizations creates the required service-linked role named
-\code{AWSServiceRoleForOrganizations}. For more information, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_integrate_services-using_slrs}{AWS Organizations and Service-Linked Roles}
-in the \emph{AWS Organizations User Guide.}
+paired with a management account of an organization in the
+commercial Region.
+\item You call this action from the management account of your
+organization in the commercial Region.
+\item You have the \code{organizations:CreateGovCloudAccount} permission.
 }
+
+AWS Organizations automatically creates the required service-linked role
+named \code{AWSServiceRoleForOrganizations}. For more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_integrate_services-using_slrs}{AWS Organizations and Service-Linked Roles}
+in the \emph{AWS Organizations User Guide.}
 
 AWS automatically enables AWS CloudTrail for AWS GovCloud (US) accounts,
 but you should also do the following:
@@ -77,16 +94,23 @@ but you should also do the following:
 \item Verify that AWS CloudTrail is enabled to store logs.
 \item Create an S3 bucket for AWS CloudTrail log storage.
 
-For more information, see \href{http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/verifying-cloudtrail.html}{Verifying AWS CloudTrail Is Enabled}
+For more information, see \href{https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/verifying-cloudtrail.html}{Verifying AWS CloudTrail Is Enabled}
 in the \emph{AWS GovCloud User Guide}.
 }
 
-You call this action from the master account of your organization in the
-commercial Region to create a standalone AWS account in the AWS GovCloud
-(US) Region. After the account is created, the master account of an
-organization in the AWS GovCloud (US) Region can invite it to that
-organization. For more information on inviting standalone accounts in
-the AWS GovCloud (US) to join an organization, see \href{http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html}{AWS Organizations}
+If the request includes tags, then the requester must have the
+\code{organizations:TagResource} permission. The tags are attached to the
+commercial account associated with the GovCloud account, rather than the
+GovCloud account itself. To add tags to the GovCloud account, call the
+TagResource operation in the GovCloud Region after the new GovCloud
+account exists.
+
+You call this action from the management account of your organization in
+the commercial Region to create a standalone AWS account in the AWS
+GovCloud (US) Region. After the account is created, the management
+account of an organization in the AWS GovCloud (US) Region can invite it
+to that organization. For more information on inviting standalone
+accounts in the AWS GovCloud (US) to join an organization, see \href{https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html}{AWS Organizations}
 in the \emph{AWS GovCloud User Guide.}
 
 Calling \code{CreateGovCloudAccount} is an asynchronous request that AWS
@@ -100,7 +124,7 @@ check the status of the request, do one of the following:
 provide as a parameter to the DescribeCreateAccountStatus operation.
 \item Check the AWS CloudTrail log for the \code{CreateAccountResult} event.
 For information on using AWS CloudTrail with Organizations, see
-\href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_monitoring.html}{Monitoring the Activity in Your Organization}
+\href{https://docs.aws.amazon.com/organizations/latest/userguide/}{Monitoring the Activity in Your Organization}
 in the \emph{AWS Organizations User Guide.}
 }
 
@@ -112,13 +136,13 @@ of the organization whose credentials made the request. Both accounts
 are associated with the same email address.
 
 A role is created in the new account in the commercial Region that
-allows the master account in the organization in the commercial Region
-to assume it. An AWS GovCloud (US) account is then created and
+allows the management account in the organization in the commercial
+Region to assume it. An AWS GovCloud (US) account is then created and
 associated with the commercial account that you just created. A role is
-created in the new AWS GovCloud (US) account that can be assumed by the
-AWS GovCloud (US) account that is associated with the master account of
-the commercial organization. For more information and to view a diagram
-that explains how account access works, see \href{http://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html}{AWS Organizations}
+also created in the new AWS GovCloud (US) account that can be assumed by
+the AWS GovCloud (US) account that is associated with the management
+account of the commercial organization. For more information and to view
+a diagram that explains how account access works, see \href{https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html}{AWS Organizations}
 in the \emph{AWS GovCloud User Guide.}
 
 For more information about creating accounts, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html}{Creating an AWS Account in Your Organization}
@@ -130,7 +154,7 @@ required for the account to operate as a standalone account is \emph{not}
 automatically collected. This includes a payment method and signing
 the end user license agreement (EULA). If you must remove an account
 from your organization later, you can do so only after you provide
-the missing information. Follow the steps at \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization as a member account}
+the missing information. Follow the steps at \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization as a member account}
 in the \emph{AWS Organizations User Guide.}
 \item If you get an exception that indicates that you exceeded your
 account limits for the organization, contact \href{https://console.aws.amazon.com/support/home#/}{AWS Support}.
@@ -141,7 +165,7 @@ then try again. If the error persists, contact \href{https://console.aws.amazon.
 isn't recommended. You can only close an account from the AWS
 Billing and Cost Management console, and you must be signed in as
 the root user. For information on the requirements and process for
-closing an account, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html}{Closing an AWS Account}
+closing an account, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html}{Closing an AWS Account}
 in the \emph{AWS Organizations User Guide}.
 }
 
@@ -151,14 +175,20 @@ Billing Information} switch enabled. If you enable it, IAM users and
 roles that have appropriate permissions can view billing information for
 the account. If you disable it, only the account root user can access
 billing information. For information about how to disable this switch
-for an account, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html}{Granting Access to Your Billing Information and Tools}.
+for an account, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html}{Granting Access to Your Billing Information and Tools}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_gov_cloud_account(
   Email = "string",
   AccountName = "string",
   RoleName = "string",
-  IamUserAccessToBilling = "ALLOW"|"DENY"
+  IamUserAccessToBilling = "ALLOW"|"DENY",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

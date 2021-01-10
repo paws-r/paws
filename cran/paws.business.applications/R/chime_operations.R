@@ -583,6 +583,139 @@ chime_create_account <- function(Name) {
 }
 .chime$operations$create_account <- chime_create_account
 
+#' Creates an Amazon Chime Messaging SDK AppInstance under an AWS Account
+#'
+#' Creates an Amazon Chime Messaging SDK `AppInstance` under an AWS
+#' Account. Only Messaging SDK customers use this API. `CreateAppInstance`
+#' supports `idempotency` behavior as described in the AWS API Standard.
+#'
+#' @usage
+#' chime_create_app_instance(Name, Metadata, ClientRequestToken)
+#'
+#' @param Name &#91;required&#93; The name of the app instance.
+#' @param Metadata The metadata of the app instance. Limited to a 1KB string in UTF-8.
+#' @param ClientRequestToken &#91;required&#93; The `ClientRequestToken` of the app instance.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_app_instance(
+#'   Name = "string",
+#'   Metadata = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_create_app_instance
+chime_create_app_instance <- function(Name, Metadata = NULL, ClientRequestToken) {
+  op <- new_operation(
+    name = "CreateAppInstance",
+    http_method = "POST",
+    http_path = "/app-instances",
+    paginator = list()
+  )
+  input <- .chime$create_app_instance_input(Name = Name, Metadata = Metadata, ClientRequestToken = ClientRequestToken)
+  output <- .chime$create_app_instance_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$create_app_instance <- chime_create_app_instance
+
+#' Promotes an AppInstanceUser to an AppInstanceAdmin
+#'
+#' Promotes an `AppInstanceUser` to an `AppInstanceAdmin`. The promoted
+#' user can perform the following actions.
+#' 
+#' -   `ChannelModerator` actions across all channels in the app instance.
+#' 
+#' -   `DeleteChannelMessage` actions.
+#' 
+#' Only an `AppInstanceUser` can be promoted to an `AppInstanceAdmin` role.
+#'
+#' @usage
+#' chime_create_app_instance_admin(AppInstanceAdminArn, AppInstanceArn)
+#'
+#' @param AppInstanceAdminArn &#91;required&#93; The ARN of the administrator of the current app instance.
+#' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_app_instance_admin(
+#'   AppInstanceAdminArn = "string",
+#'   AppInstanceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_create_app_instance_admin
+chime_create_app_instance_admin <- function(AppInstanceAdminArn, AppInstanceArn) {
+  op <- new_operation(
+    name = "CreateAppInstanceAdmin",
+    http_method = "POST",
+    http_path = "/app-instances/{appInstanceArn}/admins",
+    paginator = list()
+  )
+  input <- .chime$create_app_instance_admin_input(AppInstanceAdminArn = AppInstanceAdminArn, AppInstanceArn = AppInstanceArn)
+  output <- .chime$create_app_instance_admin_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$create_app_instance_admin <- chime_create_app_instance_admin
+
+#' Creates a user under an Amazon Chime AppInstance
+#'
+#' Creates a user under an Amazon Chime `AppInstance`. The request consists
+#' of a unique `appInstanceUserId` and `Name` for that user.
+#'
+#' @usage
+#' chime_create_app_instance_user(AppInstanceArn, AppInstanceUserId, Name,
+#'   Metadata, ClientRequestToken)
+#'
+#' @param AppInstanceArn &#91;required&#93; The ARN of the app instance request.
+#' @param AppInstanceUserId &#91;required&#93; The user ID of the app instance.
+#' @param Name &#91;required&#93; The user's name.
+#' @param Metadata The request's metadata. Limited to a 1KB string in UTF-8.
+#' @param ClientRequestToken &#91;required&#93; The token assigned to the user requesting an app instance.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_app_instance_user(
+#'   AppInstanceArn = "string",
+#'   AppInstanceUserId = "string",
+#'   Name = "string",
+#'   Metadata = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_create_app_instance_user
+chime_create_app_instance_user <- function(AppInstanceArn, AppInstanceUserId, Name, Metadata = NULL, ClientRequestToken) {
+  op <- new_operation(
+    name = "CreateAppInstanceUser",
+    http_method = "POST",
+    http_path = "/app-instance-users",
+    paginator = list()
+  )
+  input <- .chime$create_app_instance_user_input(AppInstanceArn = AppInstanceArn, AppInstanceUserId = AppInstanceUserId, Name = Name, Metadata = Metadata, ClientRequestToken = ClientRequestToken)
+  output <- .chime$create_app_instance_user_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$create_app_instance_user <- chime_create_app_instance_user
+
 #' Creates a new attendee for an active Amazon Chime SDK meeting
 #'
 #' Creates a new attendee for an active Amazon Chime SDK meeting. For more
@@ -594,8 +727,10 @@ chime_create_account <- function(Name) {
 #' chime_create_attendee(MeetingId, ExternalUserId, Tags)
 #'
 #' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
-#' @param ExternalUserId &#91;required&#93; The Amazon Chime SDK external user ID. Links the attendee to an identity
-#' managed by a builder application.
+#' @param ExternalUserId &#91;required&#93; The Amazon Chime SDK external user ID. An idempotency token. Links the
+#' attendee to an identity managed by a builder application. If you create
+#' an attendee with the same external user id, the service returns the
+#' existing record.
 #' @param Tags The tag key-value pairs.
 #'
 #' @section Request syntax:
@@ -672,6 +807,221 @@ chime_create_bot <- function(AccountId, DisplayName, Domain = NULL) {
 }
 .chime$operations$create_bot <- chime_create_bot
 
+#' Creates a channel to which you can add users and send messages
+#'
+#' Creates a channel to which you can add users and send messages.
+#' 
+#' **Restriction**: You can't change a channel's privacy.
+#'
+#' @usage
+#' chime_create_channel(AppInstanceArn, Name, Mode, Privacy, Metadata,
+#'   ClientRequestToken, Tags)
+#'
+#' @param AppInstanceArn &#91;required&#93; The ARN of the channel request.
+#' @param Name &#91;required&#93; The name of the channel.
+#' @param Mode The channel mode: `UNRESTRICTED` or `RESTRICTED`. Administrators,
+#' moderators, and channel members can add themselves and other members to
+#' unrestricted channels. Only administrators and moderators can add
+#' members to restricted channels.
+#' @param Privacy The channel's privacy level: `PUBLIC` or `PRIVATE`. Private channels
+#' aren't discoverable by users outside the channel. Public channels are
+#' discoverable by anyone in the app instance.
+#' @param Metadata The metadata of the creation request. Limited to 1KB and UTF-8.
+#' @param ClientRequestToken &#91;required&#93; The client token for the request. An `Idempotency` token.
+#' @param Tags 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_channel(
+#'   AppInstanceArn = "string",
+#'   Name = "string",
+#'   Mode = "UNRESTRICTED"|"RESTRICTED",
+#'   Privacy = "PUBLIC"|"PRIVATE",
+#'   Metadata = "string",
+#'   ClientRequestToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_create_channel
+chime_create_channel <- function(AppInstanceArn, Name, Mode = NULL, Privacy = NULL, Metadata = NULL, ClientRequestToken, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateChannel",
+    http_method = "POST",
+    http_path = "/channels",
+    paginator = list()
+  )
+  input <- .chime$create_channel_input(AppInstanceArn = AppInstanceArn, Name = Name, Mode = Mode, Privacy = Privacy, Metadata = Metadata, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  output <- .chime$create_channel_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$create_channel <- chime_create_channel
+
+#' Permanently bans a member from a channel
+#'
+#' Permanently bans a member from a channel. Moderators can't add banned
+#' members to a channel. To undo a ban, you first have to
+#' `DeleteChannelBan`, and then `CreateChannelMembership`. Bans are cleaned
+#' up when you delete users or channels.
+#' 
+#' If you ban a user who is already part of a channel, that user is
+#' automatically kicked from the channel.
+#'
+#' @usage
+#' chime_create_channel_ban(ChannelArn, MemberArn)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the ban request.
+#' @param MemberArn &#91;required&#93; The ARN of the member being banned.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_channel_ban(
+#'   ChannelArn = "string",
+#'   MemberArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_create_channel_ban
+chime_create_channel_ban <- function(ChannelArn, MemberArn) {
+  op <- new_operation(
+    name = "CreateChannelBan",
+    http_method = "POST",
+    http_path = "/channels/{channelArn}/bans",
+    paginator = list()
+  )
+  input <- .chime$create_channel_ban_input(ChannelArn = ChannelArn, MemberArn = MemberArn)
+  output <- .chime$create_channel_ban_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$create_channel_ban <- chime_create_channel_ban
+
+#' Adds a user to a channel
+#'
+#' Adds a user to a channel. The `InvitedBy` response field is derived from
+#' the request header. A channel member can:
+#' 
+#' -   List messages
+#' 
+#' -   Send messages
+#' 
+#' -   Receive messages
+#' 
+#' -   Edit their own messages
+#' 
+#' -   Leave the channel
+#' 
+#' Privacy settings impact this action as follows:
+#' 
+#' -   Public Channels: You do not need to be a member to list messages,
+#'     but you must be a member to send messages.
+#' 
+#' -   Private Channels: You must be a member to list or send messages.
+#'
+#' @usage
+#' chime_create_channel_membership(ChannelArn, MemberArn, Type)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel to which you're adding users.
+#' @param MemberArn &#91;required&#93; The ARN of the member you want to add to the channel.
+#' @param Type &#91;required&#93; The membership type of a user, `DEFAULT` or `HIDDEN`. Default members
+#' are always returned as part of `ListChannelMemberships`. Hidden members
+#' are only returned if the type filter in `ListChannelMemberships` equals
+#' `HIDDEN`. Otherwise hidden members are not returned. This is only
+#' supported by moderators.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_channel_membership(
+#'   ChannelArn = "string",
+#'   MemberArn = "string",
+#'   Type = "DEFAULT"|"HIDDEN"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_create_channel_membership
+chime_create_channel_membership <- function(ChannelArn, MemberArn, Type) {
+  op <- new_operation(
+    name = "CreateChannelMembership",
+    http_method = "POST",
+    http_path = "/channels/{channelArn}/memberships",
+    paginator = list()
+  )
+  input <- .chime$create_channel_membership_input(ChannelArn = ChannelArn, MemberArn = MemberArn, Type = Type)
+  output <- .chime$create_channel_membership_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$create_channel_membership <- chime_create_channel_membership
+
+#' Creates a new ChannelModerator
+#'
+#' Creates a new `ChannelModerator`. A channel moderator can:
+#' 
+#' -   Add and remove other members of the channel.
+#' 
+#' -   Add and remove other moderators of the channel.
+#' 
+#' -   Add and remove user bans for the channel.
+#' 
+#' -   Redact messages in the channel.
+#' 
+#' -   List messages in the channel.
+#'
+#' @usage
+#' chime_create_channel_moderator(ChannelArn, ChannelModeratorArn)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel.
+#' @param ChannelModeratorArn &#91;required&#93; The ARN of the moderator.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_channel_moderator(
+#'   ChannelArn = "string",
+#'   ChannelModeratorArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_create_channel_moderator
+chime_create_channel_moderator <- function(ChannelArn, ChannelModeratorArn) {
+  op <- new_operation(
+    name = "CreateChannelModerator",
+    http_method = "POST",
+    http_path = "/channels/{channelArn}/moderators",
+    paginator = list()
+  )
+  input <- .chime$create_channel_moderator_input(ChannelArn = ChannelArn, ChannelModeratorArn = ChannelModeratorArn)
+  output <- .chime$create_channel_moderator_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$create_channel_moderator <- chime_create_channel_moderator
+
 #' Creates a new Amazon Chime SDK meeting in the specified media Region
 #' with no initial attendees
 #'
@@ -694,8 +1044,9 @@ chime_create_bot <- function(AccountId, DisplayName, Domain = NULL) {
 #' @param MeetingHostId Reserved.
 #' @param MediaRegion The Region in which to create the meeting. Default: `us-east-1`.
 #' 
-#' Available values: `ap-northeast-1`, `ap-southeast-1`, `ap-southeast-2`,
-#' `ca-central-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`,
+#' Available values: `af-south-1`, `ap-northeast-1`, `ap-northeast-2`,
+#' `ap-south-1`, `ap-southeast-1`, `ap-southeast-2`, `ca-central-1`,
+#' `eu-central-1`, `eu-north-1`, `eu-south-1`, `eu-west-1`, `eu-west-2`,
 #' `eu-west-3`, `sa-east-1`, `us-east-1`, `us-east-2`, `us-west-1`,
 #' `us-west-2`.
 #' @param Tags The tag key-value pairs.
@@ -742,6 +1093,66 @@ chime_create_meeting <- function(ClientRequestToken, ExternalMeetingId = NULL, M
 }
 .chime$operations$create_meeting <- chime_create_meeting
 
+#' Uses the join token and call metadata in a meeting request (From number,
+#' To number, and so forth) to initiate an outbound call to a public
+#' switched telephone network (PSTN) and joins them into Chime meeting
+#'
+#' Uses the join token and call metadata in a meeting request (From number,
+#' To number, and so forth) to initiate an outbound call to a public
+#' switched telephone network (PSTN) and joins them into Chime meeting.
+#' Also ensures that the From number belongs to the customer.
+#' 
+#' To play welcome audio or implement an interactive voice response (IVR),
+#' use the `CreateSipMediaApplicationCall` API with the corresponding SIP
+#' media application ID.
+#'
+#' @usage
+#' chime_create_meeting_dial_out(MeetingId, FromPhoneNumber, ToPhoneNumber,
+#'   JoinToken)
+#'
+#' @param MeetingId &#91;required&#93; The Amazon Chime SDK meeting ID.
+#' 
+#' Type: String
+#' 
+#' Pattern: \[a-fA-F0-9\]\{8\}(?:-\[a-fA-F0-9\]\{4\})\{3\}-\[a-fA-F0-9\]\{12\}
+#' 
+#' Required: No
+#' @param FromPhoneNumber &#91;required&#93; Phone number used as the caller ID when the remote party receives a
+#' call.
+#' @param ToPhoneNumber &#91;required&#93; Phone number called when inviting someone to a meeting.
+#' @param JoinToken &#91;required&#93; Token used by the Amazon Chime SDK attendee. Call the CreateAttendee API
+#' to get a join token.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_meeting_dial_out(
+#'   MeetingId = "string",
+#'   FromPhoneNumber = "string",
+#'   ToPhoneNumber = "string",
+#'   JoinToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_create_meeting_dial_out
+chime_create_meeting_dial_out <- function(MeetingId, FromPhoneNumber, ToPhoneNumber, JoinToken) {
+  op <- new_operation(
+    name = "CreateMeetingDialOut",
+    http_method = "POST",
+    http_path = "/meetings/{meetingId}/dial-outs",
+    paginator = list()
+  )
+  input <- .chime$create_meeting_dial_out_input(MeetingId = MeetingId, FromPhoneNumber = FromPhoneNumber, ToPhoneNumber = ToPhoneNumber, JoinToken = JoinToken)
+  output <- .chime$create_meeting_dial_out_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$create_meeting_dial_out <- chime_create_meeting_dial_out
+
 #' Creates a new Amazon Chime SDK meeting in the specified media Region,
 #' with attendees
 #'
@@ -765,8 +1176,9 @@ chime_create_meeting <- function(ClientRequestToken, ExternalMeetingId = NULL, M
 #' @param MeetingHostId Reserved.
 #' @param MediaRegion The Region in which to create the meeting. Default: `us-east-1`.
 #' 
-#' Available values: `ap-northeast-1`, `ap-southeast-1`, `ap-southeast-2`,
-#' `ca-central-1`, `eu-central-1`, `eu-north-1`, `eu-west-1`, `eu-west-2`,
+#' Available values: `af-south-1`, `ap-northeast-1`, `ap-northeast-2`,
+#' `ap-south-1`, `ap-southeast-1`, `ap-southeast-2`, `ca-central-1`,
+#' `eu-central-1`, `eu-north-1`, `eu-south-1`, `eu-west-1`, `eu-west-2`,
 #' `eu-west-3`, `sa-east-1`, `us-east-1`, `us-east-2`, `us-west-1`,
 #' `us-west-2`.
 #' @param Tags The tag key-value pairs.
@@ -1014,6 +1426,162 @@ chime_create_room_membership <- function(AccountId, RoomId, MemberId, Role = NUL
 }
 .chime$operations$create_room_membership <- chime_create_room_membership
 
+#' Creates a SIP media application
+#'
+#' Creates a SIP media application.
+#'
+#' @usage
+#' chime_create_sip_media_application(AwsRegion, Name, Endpoints)
+#'
+#' @param AwsRegion &#91;required&#93; AWS Region assigned to the SIP media application.
+#' @param Name The SIP media application name.
+#' @param Endpoints &#91;required&#93; List of endpoints (Lambda Amazon Resource Names) specified for the SIP
+#' media application. Currently, only one endpoint is supported.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_sip_media_application(
+#'   AwsRegion = "string",
+#'   Name = "string",
+#'   Endpoints = list(
+#'     list(
+#'       LambdaArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_create_sip_media_application
+chime_create_sip_media_application <- function(AwsRegion, Name = NULL, Endpoints) {
+  op <- new_operation(
+    name = "CreateSipMediaApplication",
+    http_method = "POST",
+    http_path = "/sip-media-applications",
+    paginator = list()
+  )
+  input <- .chime$create_sip_media_application_input(AwsRegion = AwsRegion, Name = Name, Endpoints = Endpoints)
+  output <- .chime$create_sip_media_application_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$create_sip_media_application <- chime_create_sip_media_application
+
+#' Creates an outbound call to a phone number from the phone number
+#' specified in the request, and it invokes the endpoint of the specified
+#' sipMediaApplicationId
+#'
+#' Creates an outbound call to a phone number from the phone number
+#' specified in the request, and it invokes the endpoint of the specified
+#' `sipMediaApplicationId`.
+#'
+#' @usage
+#' chime_create_sip_media_application_call(FromPhoneNumber, ToPhoneNumber,
+#'   SipMediaApplicationId)
+#'
+#' @param FromPhoneNumber The phone number that a user calls from.
+#' @param ToPhoneNumber The phone number that the user dials in order to connect to a meeting
+#' @param SipMediaApplicationId &#91;required&#93; The ID of the SIP media application.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_sip_media_application_call(
+#'   FromPhoneNumber = "string",
+#'   ToPhoneNumber = "string",
+#'   SipMediaApplicationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_create_sip_media_application_call
+chime_create_sip_media_application_call <- function(FromPhoneNumber = NULL, ToPhoneNumber = NULL, SipMediaApplicationId) {
+  op <- new_operation(
+    name = "CreateSipMediaApplicationCall",
+    http_method = "POST",
+    http_path = "/sip-media-applications/{sipMediaApplicationId}/calls",
+    paginator = list()
+  )
+  input <- .chime$create_sip_media_application_call_input(FromPhoneNumber = FromPhoneNumber, ToPhoneNumber = ToPhoneNumber, SipMediaApplicationId = SipMediaApplicationId)
+  output <- .chime$create_sip_media_application_call_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$create_sip_media_application_call <- chime_create_sip_media_application_call
+
+#' Creates a SIP rule which can be used to run a SIP media application as a
+#' target for a specific trigger type
+#'
+#' Creates a SIP rule which can be used to run a SIP media application as a
+#' target for a specific trigger type.
+#'
+#' @usage
+#' chime_create_sip_rule(Name, TriggerType, TriggerValue, Disabled,
+#'   TargetApplications)
+#'
+#' @param Name &#91;required&#93; The name of the SIP rule.
+#' @param TriggerType &#91;required&#93; The type of trigger whose value is assigned to the SIP rule in
+#' `TriggerValue`. Allowed trigger values are `RequestUriHostname` and
+#' `ToPhoneNumber`.
+#' @param TriggerValue &#91;required&#93; If `TriggerType` is `RequestUriHostname` then the value can be the
+#' outbound host name of an Amazon Chime Voice Connector. If `TriggerType`
+#' is `ToPhoneNumber` then the value can be a customer-owned phone number
+#' in E164 format. `SipRule` is triggered if the SIP application requests a
+#' host name, or a If `TriggerType` is `RequestUriHostname`, then the value
+#' can be the outbound hostname of an Amazon Chime Voice Connector. If
+#' `TriggerType` is `ToPhoneNumber`, then the value can be a customer-owned
+#' phone number in E164 format. `SipRule` is triggered if the SIP
+#' application requests a host name, or a `ToPhoneNumber` value matches the
+#' incoming SIP request.
+#' @param Disabled Enables or disables a rule. You must disable rules before you can delete
+#' them.
+#' @param TargetApplications &#91;required&#93; List of SIP media applications with priority and AWS Region. Only one
+#' SIP application per AWS Region can be used.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_sip_rule(
+#'   Name = "string",
+#'   TriggerType = "ToPhoneNumber"|"RequestUriHostname",
+#'   TriggerValue = "string",
+#'   Disabled = TRUE|FALSE,
+#'   TargetApplications = list(
+#'     list(
+#'       SipMediaApplicationId = "string",
+#'       Priority = 123,
+#'       AwsRegion = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_create_sip_rule
+chime_create_sip_rule <- function(Name, TriggerType, TriggerValue, Disabled = NULL, TargetApplications) {
+  op <- new_operation(
+    name = "CreateSipRule",
+    http_method = "POST",
+    http_path = "/sip-rules",
+    paginator = list()
+  )
+  input <- .chime$create_sip_rule_input(Name = Name, TriggerType = TriggerType, TriggerValue = TriggerValue, Disabled = Disabled, TargetApplications = TargetApplications)
+  output <- .chime$create_sip_rule_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$create_sip_rule <- chime_create_sip_rule
+
 #' Creates a user under the specified Amazon Chime account
 #'
 #' Creates a user under the specified Amazon Chime account.
@@ -1205,6 +1773,153 @@ chime_delete_account <- function(AccountId) {
 }
 .chime$operations$delete_account <- chime_delete_account
 
+#' Deletes an AppInstance and all associated data asynchronously
+#'
+#' Deletes an `AppInstance` and all associated data asynchronously.
+#'
+#' @usage
+#' chime_delete_app_instance(AppInstanceArn)
+#'
+#' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_app_instance(
+#'   AppInstanceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_delete_app_instance
+chime_delete_app_instance <- function(AppInstanceArn) {
+  op <- new_operation(
+    name = "DeleteAppInstance",
+    http_method = "DELETE",
+    http_path = "/app-instances/{appInstanceArn}",
+    paginator = list()
+  )
+  input <- .chime$delete_app_instance_input(AppInstanceArn = AppInstanceArn)
+  output <- .chime$delete_app_instance_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$delete_app_instance <- chime_delete_app_instance
+
+#' Demotes an AppInstanceAdmin to an AppInstanceUser
+#'
+#' Demotes an `AppInstanceAdmin` to an `AppInstanceUser`. This action does
+#' not delete the user.
+#'
+#' @usage
+#' chime_delete_app_instance_admin(AppInstanceAdminArn, AppInstanceArn)
+#'
+#' @param AppInstanceAdminArn &#91;required&#93; The ARN of the app instance's administrator.
+#' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_app_instance_admin(
+#'   AppInstanceAdminArn = "string",
+#'   AppInstanceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_delete_app_instance_admin
+chime_delete_app_instance_admin <- function(AppInstanceAdminArn, AppInstanceArn) {
+  op <- new_operation(
+    name = "DeleteAppInstanceAdmin",
+    http_method = "DELETE",
+    http_path = "/app-instances/{appInstanceArn}/admins/{appInstanceAdminArn}",
+    paginator = list()
+  )
+  input <- .chime$delete_app_instance_admin_input(AppInstanceAdminArn = AppInstanceAdminArn, AppInstanceArn = AppInstanceArn)
+  output <- .chime$delete_app_instance_admin_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$delete_app_instance_admin <- chime_delete_app_instance_admin
+
+#' Deletes the streaming configurations of an app instance
+#'
+#' Deletes the streaming configurations of an app instance.
+#'
+#' @usage
+#' chime_delete_app_instance_streaming_configurations(AppInstanceArn)
+#'
+#' @param AppInstanceArn &#91;required&#93; The ARN of the streaming configurations being deleted.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_app_instance_streaming_configurations(
+#'   AppInstanceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_delete_app_instance_streaming_configurations
+chime_delete_app_instance_streaming_configurations <- function(AppInstanceArn) {
+  op <- new_operation(
+    name = "DeleteAppInstanceStreamingConfigurations",
+    http_method = "DELETE",
+    http_path = "/app-instances/{appInstanceArn}/streaming-configurations",
+    paginator = list()
+  )
+  input <- .chime$delete_app_instance_streaming_configurations_input(AppInstanceArn = AppInstanceArn)
+  output <- .chime$delete_app_instance_streaming_configurations_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$delete_app_instance_streaming_configurations <- chime_delete_app_instance_streaming_configurations
+
+#' Deletes an AppInstanceUser
+#'
+#' Deletes an `AppInstanceUser`.
+#'
+#' @usage
+#' chime_delete_app_instance_user(AppInstanceUserArn)
+#'
+#' @param AppInstanceUserArn &#91;required&#93; The ARN of the user request being deleted.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_app_instance_user(
+#'   AppInstanceUserArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_delete_app_instance_user
+chime_delete_app_instance_user <- function(AppInstanceUserArn) {
+  op <- new_operation(
+    name = "DeleteAppInstanceUser",
+    http_method = "DELETE",
+    http_path = "/app-instance-users/{appInstanceUserArn}",
+    paginator = list()
+  )
+  input <- .chime$delete_app_instance_user_input(AppInstanceUserArn = AppInstanceUserArn)
+  output <- .chime$delete_app_instance_user_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$delete_app_instance_user <- chime_delete_app_instance_user
+
 #' Deletes an attendee from the specified Amazon Chime SDK meeting and
 #' deletes their JoinToken
 #'
@@ -1248,6 +1963,198 @@ chime_delete_attendee <- function(MeetingId, AttendeeId) {
   return(response)
 }
 .chime$operations$delete_attendee <- chime_delete_attendee
+
+#' Immediately makes a channel and its memberships inaccessible and marks
+#' them for deletion
+#'
+#' Immediately makes a channel and its memberships inaccessible and marks
+#' them for deletion. This is an irreversible process.
+#'
+#' @usage
+#' chime_delete_channel(ChannelArn)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel being deleted.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_channel(
+#'   ChannelArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_delete_channel
+chime_delete_channel <- function(ChannelArn) {
+  op <- new_operation(
+    name = "DeleteChannel",
+    http_method = "DELETE",
+    http_path = "/channels/{channelArn}",
+    paginator = list()
+  )
+  input <- .chime$delete_channel_input(ChannelArn = ChannelArn)
+  output <- .chime$delete_channel_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$delete_channel <- chime_delete_channel
+
+#' Removes a user from a channel's ban list
+#'
+#' Removes a user from a channel's ban list.
+#'
+#' @usage
+#' chime_delete_channel_ban(ChannelArn, MemberArn)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel from which the app instance user was banned.
+#' @param MemberArn &#91;required&#93; The ARN of the app instance user that you want to reinstate.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_channel_ban(
+#'   ChannelArn = "string",
+#'   MemberArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_delete_channel_ban
+chime_delete_channel_ban <- function(ChannelArn, MemberArn) {
+  op <- new_operation(
+    name = "DeleteChannelBan",
+    http_method = "DELETE",
+    http_path = "/channels/{channelArn}/bans/{memberArn}",
+    paginator = list()
+  )
+  input <- .chime$delete_channel_ban_input(ChannelArn = ChannelArn, MemberArn = MemberArn)
+  output <- .chime$delete_channel_ban_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$delete_channel_ban <- chime_delete_channel_ban
+
+#' Removes a member from a channel
+#'
+#' Removes a member from a channel.
+#'
+#' @usage
+#' chime_delete_channel_membership(ChannelArn, MemberArn)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel from which you want to remove the user.
+#' @param MemberArn &#91;required&#93; The ARN of the member that you're removing from the channel.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_channel_membership(
+#'   ChannelArn = "string",
+#'   MemberArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_delete_channel_membership
+chime_delete_channel_membership <- function(ChannelArn, MemberArn) {
+  op <- new_operation(
+    name = "DeleteChannelMembership",
+    http_method = "DELETE",
+    http_path = "/channels/{channelArn}/memberships/{memberArn}",
+    paginator = list()
+  )
+  input <- .chime$delete_channel_membership_input(ChannelArn = ChannelArn, MemberArn = MemberArn)
+  output <- .chime$delete_channel_membership_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$delete_channel_membership <- chime_delete_channel_membership
+
+#' Deletes a channel message
+#'
+#' Deletes a channel message. Only admins can perform this action. Deletion
+#' makes messages inaccessible immediately. A background process deletes
+#' any revisions created by `UpdateChannelMessage`.
+#'
+#' @usage
+#' chime_delete_channel_message(ChannelArn, MessageId)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel.
+#' @param MessageId &#91;required&#93; The ID of the message being deleted.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_channel_message(
+#'   ChannelArn = "string",
+#'   MessageId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_delete_channel_message
+chime_delete_channel_message <- function(ChannelArn, MessageId) {
+  op <- new_operation(
+    name = "DeleteChannelMessage",
+    http_method = "DELETE",
+    http_path = "/channels/{channelArn}/messages/{messageId}",
+    paginator = list()
+  )
+  input <- .chime$delete_channel_message_input(ChannelArn = ChannelArn, MessageId = MessageId)
+  output <- .chime$delete_channel_message_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$delete_channel_message <- chime_delete_channel_message
+
+#' Deletes a channel moderator
+#'
+#' Deletes a channel moderator.
+#'
+#' @usage
+#' chime_delete_channel_moderator(ChannelArn, ChannelModeratorArn)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel.
+#' @param ChannelModeratorArn &#91;required&#93; The ARN of the moderator being deleted.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_channel_moderator(
+#'   ChannelArn = "string",
+#'   ChannelModeratorArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_delete_channel_moderator
+chime_delete_channel_moderator <- function(ChannelArn, ChannelModeratorArn) {
+  op <- new_operation(
+    name = "DeleteChannelModerator",
+    http_method = "DELETE",
+    http_path = "/channels/{channelArn}/moderators/{channelModeratorArn}",
+    paginator = list()
+  )
+  input <- .chime$delete_channel_moderator_input(ChannelArn = ChannelArn, ChannelModeratorArn = ChannelModeratorArn)
+  output <- .chime$delete_channel_moderator_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$delete_channel_moderator <- chime_delete_channel_moderator
 
 #' Deletes the events configuration that allows a bot to receive outgoing
 #' events
@@ -1488,6 +2395,79 @@ chime_delete_room_membership <- function(AccountId, RoomId, MemberId) {
   return(response)
 }
 .chime$operations$delete_room_membership <- chime_delete_room_membership
+
+#' Deletes a SIP media application
+#'
+#' Deletes a SIP media application.
+#'
+#' @usage
+#' chime_delete_sip_media_application(SipMediaApplicationId)
+#'
+#' @param SipMediaApplicationId &#91;required&#93; The SIP media application ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_sip_media_application(
+#'   SipMediaApplicationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_delete_sip_media_application
+chime_delete_sip_media_application <- function(SipMediaApplicationId) {
+  op <- new_operation(
+    name = "DeleteSipMediaApplication",
+    http_method = "DELETE",
+    http_path = "/sip-media-applications/{sipMediaApplicationId}",
+    paginator = list()
+  )
+  input <- .chime$delete_sip_media_application_input(SipMediaApplicationId = SipMediaApplicationId)
+  output <- .chime$delete_sip_media_application_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$delete_sip_media_application <- chime_delete_sip_media_application
+
+#' Deletes a SIP rule
+#'
+#' Deletes a SIP rule. You must disable a SIP rule before you can delete
+#' it.
+#'
+#' @usage
+#' chime_delete_sip_rule(SipRuleId)
+#'
+#' @param SipRuleId &#91;required&#93; The SIP rule ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_sip_rule(
+#'   SipRuleId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_delete_sip_rule
+chime_delete_sip_rule <- function(SipRuleId) {
+  op <- new_operation(
+    name = "DeleteSipRule",
+    http_method = "DELETE",
+    http_path = "/sip-rules/{sipRuleId}",
+    paginator = list()
+  )
+  input <- .chime$delete_sip_rule_input(SipRuleId = SipRuleId)
+  output <- .chime$delete_sip_rule_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$delete_sip_rule <- chime_delete_sip_rule
 
 #' Deletes the specified Amazon Chime Voice Connector
 #'
@@ -1806,6 +2786,348 @@ chime_delete_voice_connector_termination_credentials <- function(VoiceConnectorI
 }
 .chime$operations$delete_voice_connector_termination_credentials <- chime_delete_voice_connector_termination_credentials
 
+#' Returns the full details of an AppInstance
+#'
+#' Returns the full details of an `AppInstance`.
+#'
+#' @usage
+#' chime_describe_app_instance(AppInstanceArn)
+#'
+#' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_app_instance(
+#'   AppInstanceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_describe_app_instance
+chime_describe_app_instance <- function(AppInstanceArn) {
+  op <- new_operation(
+    name = "DescribeAppInstance",
+    http_method = "GET",
+    http_path = "/app-instances/{appInstanceArn}",
+    paginator = list()
+  )
+  input <- .chime$describe_app_instance_input(AppInstanceArn = AppInstanceArn)
+  output <- .chime$describe_app_instance_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$describe_app_instance <- chime_describe_app_instance
+
+#' Returns the full details of an AppInstanceAdmin
+#'
+#' Returns the full details of an `AppInstanceAdmin`.
+#'
+#' @usage
+#' chime_describe_app_instance_admin(AppInstanceAdminArn, AppInstanceArn)
+#'
+#' @param AppInstanceAdminArn &#91;required&#93; The ARN of the app instance administrator.
+#' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_app_instance_admin(
+#'   AppInstanceAdminArn = "string",
+#'   AppInstanceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_describe_app_instance_admin
+chime_describe_app_instance_admin <- function(AppInstanceAdminArn, AppInstanceArn) {
+  op <- new_operation(
+    name = "DescribeAppInstanceAdmin",
+    http_method = "GET",
+    http_path = "/app-instances/{appInstanceArn}/admins/{appInstanceAdminArn}",
+    paginator = list()
+  )
+  input <- .chime$describe_app_instance_admin_input(AppInstanceAdminArn = AppInstanceAdminArn, AppInstanceArn = AppInstanceArn)
+  output <- .chime$describe_app_instance_admin_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$describe_app_instance_admin <- chime_describe_app_instance_admin
+
+#' Returns the full details of an AppInstanceUser
+#'
+#' Returns the full details of an `AppInstanceUser`.
+#'
+#' @usage
+#' chime_describe_app_instance_user(AppInstanceUserArn)
+#'
+#' @param AppInstanceUserArn &#91;required&#93; The ARN of the app instance user.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_app_instance_user(
+#'   AppInstanceUserArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_describe_app_instance_user
+chime_describe_app_instance_user <- function(AppInstanceUserArn) {
+  op <- new_operation(
+    name = "DescribeAppInstanceUser",
+    http_method = "GET",
+    http_path = "/app-instance-users/{appInstanceUserArn}",
+    paginator = list()
+  )
+  input <- .chime$describe_app_instance_user_input(AppInstanceUserArn = AppInstanceUserArn)
+  output <- .chime$describe_app_instance_user_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$describe_app_instance_user <- chime_describe_app_instance_user
+
+#' Returns the full details of a channel in an Amazon Chime app instance
+#'
+#' Returns the full details of a channel in an Amazon Chime app instance.
+#'
+#' @usage
+#' chime_describe_channel(ChannelArn)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_channel(
+#'   ChannelArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_describe_channel
+chime_describe_channel <- function(ChannelArn) {
+  op <- new_operation(
+    name = "DescribeChannel",
+    http_method = "GET",
+    http_path = "/channels/{channelArn}",
+    paginator = list()
+  )
+  input <- .chime$describe_channel_input(ChannelArn = ChannelArn)
+  output <- .chime$describe_channel_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$describe_channel <- chime_describe_channel
+
+#' Returns the full details of a channel ban
+#'
+#' Returns the full details of a channel ban.
+#'
+#' @usage
+#' chime_describe_channel_ban(ChannelArn, MemberArn)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel from which the user is banned.
+#' @param MemberArn &#91;required&#93; The ARN of the member being banned.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_channel_ban(
+#'   ChannelArn = "string",
+#'   MemberArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_describe_channel_ban
+chime_describe_channel_ban <- function(ChannelArn, MemberArn) {
+  op <- new_operation(
+    name = "DescribeChannelBan",
+    http_method = "GET",
+    http_path = "/channels/{channelArn}/bans/{memberArn}",
+    paginator = list()
+  )
+  input <- .chime$describe_channel_ban_input(ChannelArn = ChannelArn, MemberArn = MemberArn)
+  output <- .chime$describe_channel_ban_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$describe_channel_ban <- chime_describe_channel_ban
+
+#' Returns the full details of a user's channel membership
+#'
+#' Returns the full details of a user's channel membership.
+#'
+#' @usage
+#' chime_describe_channel_membership(ChannelArn, MemberArn)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel.
+#' @param MemberArn &#91;required&#93; The ARN of the member.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_channel_membership(
+#'   ChannelArn = "string",
+#'   MemberArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_describe_channel_membership
+chime_describe_channel_membership <- function(ChannelArn, MemberArn) {
+  op <- new_operation(
+    name = "DescribeChannelMembership",
+    http_method = "GET",
+    http_path = "/channels/{channelArn}/memberships/{memberArn}",
+    paginator = list()
+  )
+  input <- .chime$describe_channel_membership_input(ChannelArn = ChannelArn, MemberArn = MemberArn)
+  output <- .chime$describe_channel_membership_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$describe_channel_membership <- chime_describe_channel_membership
+
+#' Returns the details of a channel based on the membership of the
+#' AppInstanceUser specified
+#'
+#' Returns the details of a channel based on the membership of the
+#' `AppInstanceUser` specified.
+#'
+#' @usage
+#' chime_describe_channel_membership_for_app_instance_user(ChannelArn,
+#'   AppInstanceUserArn)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel to which the user belongs.
+#' @param AppInstanceUserArn &#91;required&#93; The ARN of the user in a channel.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_channel_membership_for_app_instance_user(
+#'   ChannelArn = "string",
+#'   AppInstanceUserArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_describe_channel_membership_for_app_instance_user
+chime_describe_channel_membership_for_app_instance_user <- function(ChannelArn, AppInstanceUserArn) {
+  op <- new_operation(
+    name = "DescribeChannelMembershipForAppInstanceUser",
+    http_method = "GET",
+    http_path = "/channels/{channelArn}?scope=app-instance-user-membership",
+    paginator = list()
+  )
+  input <- .chime$describe_channel_membership_for_app_instance_user_input(ChannelArn = ChannelArn, AppInstanceUserArn = AppInstanceUserArn)
+  output <- .chime$describe_channel_membership_for_app_instance_user_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$describe_channel_membership_for_app_instance_user <- chime_describe_channel_membership_for_app_instance_user
+
+#' Returns the full details of a channel moderated by the specified
+#' AppInstanceUser
+#'
+#' Returns the full details of a channel moderated by the specified
+#' `AppInstanceUser`.
+#'
+#' @usage
+#' chime_describe_channel_moderated_by_app_instance_user(ChannelArn,
+#'   AppInstanceUserArn)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the moderated channel.
+#' @param AppInstanceUserArn &#91;required&#93; The ARN of the app instance user in the moderated channel.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_channel_moderated_by_app_instance_user(
+#'   ChannelArn = "string",
+#'   AppInstanceUserArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_describe_channel_moderated_by_app_instance_user
+chime_describe_channel_moderated_by_app_instance_user <- function(ChannelArn, AppInstanceUserArn) {
+  op <- new_operation(
+    name = "DescribeChannelModeratedByAppInstanceUser",
+    http_method = "GET",
+    http_path = "/channels/{channelArn}?scope=app-instance-user-moderated-channel",
+    paginator = list()
+  )
+  input <- .chime$describe_channel_moderated_by_app_instance_user_input(ChannelArn = ChannelArn, AppInstanceUserArn = AppInstanceUserArn)
+  output <- .chime$describe_channel_moderated_by_app_instance_user_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$describe_channel_moderated_by_app_instance_user <- chime_describe_channel_moderated_by_app_instance_user
+
+#' Returns the full details of a single ChannelModerator
+#'
+#' Returns the full details of a single ChannelModerator.
+#'
+#' @usage
+#' chime_describe_channel_moderator(ChannelArn, ChannelModeratorArn)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel.
+#' @param ChannelModeratorArn &#91;required&#93; The ARN of the channel moderator.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_channel_moderator(
+#'   ChannelArn = "string",
+#'   ChannelModeratorArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_describe_channel_moderator
+chime_describe_channel_moderator <- function(ChannelArn, ChannelModeratorArn) {
+  op <- new_operation(
+    name = "DescribeChannelModerator",
+    http_method = "GET",
+    http_path = "/channels/{channelArn}/moderators/{channelModeratorArn}",
+    paginator = list()
+  )
+  input <- .chime$describe_channel_moderator_input(ChannelArn = ChannelArn, ChannelModeratorArn = ChannelModeratorArn)
+  output <- .chime$describe_channel_moderator_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$describe_channel_moderator <- chime_describe_channel_moderator
+
 #' Disassociates the primary provisioned phone number from the specified
 #' Amazon Chime user
 #'
@@ -2019,8 +3341,8 @@ chime_get_account <- function(AccountId) {
 #' Retrieves account settings for the specified Amazon Chime account ID,
 #' such as remote control and dial out settings. For more information about
 #' these settings, see [Use the Policies
-#' Page](https://docs.aws.amazon.com/chime/latest/ag/policies.html) in the
-#' *Amazon Chime Administration Guide*.
+#' Page](https://docs.aws.amazon.com/chime/latest/ag/mtg-settings.html) in
+#' the *Amazon Chime Administration Guide*.
 #'
 #' @usage
 #' chime_get_account_settings(AccountId)
@@ -2053,6 +3375,78 @@ chime_get_account_settings <- function(AccountId) {
   return(response)
 }
 .chime$operations$get_account_settings <- chime_get_account_settings
+
+#' Gets the retention settings for an app instance
+#'
+#' Gets the retention settings for an app instance.
+#'
+#' @usage
+#' chime_get_app_instance_retention_settings(AppInstanceArn)
+#'
+#' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_app_instance_retention_settings(
+#'   AppInstanceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_get_app_instance_retention_settings
+chime_get_app_instance_retention_settings <- function(AppInstanceArn) {
+  op <- new_operation(
+    name = "GetAppInstanceRetentionSettings",
+    http_method = "GET",
+    http_path = "/app-instances/{appInstanceArn}/retention-settings",
+    paginator = list()
+  )
+  input <- .chime$get_app_instance_retention_settings_input(AppInstanceArn = AppInstanceArn)
+  output <- .chime$get_app_instance_retention_settings_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$get_app_instance_retention_settings <- chime_get_app_instance_retention_settings
+
+#' Gets the streaming settings for an app instance
+#'
+#' Gets the streaming settings for an app instance.
+#'
+#' @usage
+#' chime_get_app_instance_streaming_configurations(AppInstanceArn)
+#'
+#' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_app_instance_streaming_configurations(
+#'   AppInstanceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_get_app_instance_streaming_configurations
+chime_get_app_instance_streaming_configurations <- function(AppInstanceArn) {
+  op <- new_operation(
+    name = "GetAppInstanceStreamingConfigurations",
+    http_method = "GET",
+    http_path = "/app-instances/{appInstanceArn}/streaming-configurations",
+    paginator = list()
+  )
+  input <- .chime$get_app_instance_streaming_configurations_input(AppInstanceArn = AppInstanceArn)
+  output <- .chime$get_app_instance_streaming_configurations_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$get_app_instance_streaming_configurations <- chime_get_app_instance_streaming_configurations
 
 #' Gets the Amazon Chime SDK attendee details for a specified meeting ID
 #' and attendee ID
@@ -2136,6 +3530,44 @@ chime_get_bot <- function(AccountId, BotId) {
   return(response)
 }
 .chime$operations$get_bot <- chime_get_bot
+
+#' Gets the full details of a channel message
+#'
+#' Gets the full details of a channel message.
+#'
+#' @usage
+#' chime_get_channel_message(ChannelArn, MessageId)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel.
+#' @param MessageId &#91;required&#93; The ID of the message.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_channel_message(
+#'   ChannelArn = "string",
+#'   MessageId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_get_channel_message
+chime_get_channel_message <- function(ChannelArn, MessageId) {
+  op <- new_operation(
+    name = "GetChannelMessage",
+    http_method = "GET",
+    http_path = "/channels/{channelArn}/messages/{messageId}",
+    paginator = list()
+  )
+  input <- .chime$get_channel_message_input(ChannelArn = ChannelArn, MessageId = MessageId)
+  output <- .chime$get_channel_message_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$get_channel_message <- chime_get_channel_message
 
 #' Gets details for an events configuration that allows a bot to receive
 #' outgoing events, such as an HTTPS endpoint or Lambda function ARN
@@ -2249,6 +3681,38 @@ chime_get_meeting <- function(MeetingId) {
   return(response)
 }
 .chime$operations$get_meeting <- chime_get_meeting
+
+#' The endpoint for the messaging session
+#'
+#' The endpoint for the messaging session.
+#'
+#' @usage
+#' chime_get_messaging_session_endpoint()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_messaging_session_endpoint()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_get_messaging_session_endpoint
+chime_get_messaging_session_endpoint <- function() {
+  op <- new_operation(
+    name = "GetMessagingSessionEndpoint",
+    http_method = "GET",
+    http_path = "/endpoints/messaging-session",
+    paginator = list()
+  )
+  input <- .chime$get_messaging_session_endpoint_input()
+  output <- .chime$get_messaging_session_endpoint_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$get_messaging_session_endpoint <- chime_get_messaging_session_endpoint
 
 #' Retrieves details for the specified phone number ID, such as
 #' associations, capabilities, and product type
@@ -2405,8 +3869,7 @@ chime_get_proxy_session <- function(VoiceConnectorId, ProxySessionId) {
 #'
 #' Gets the retention settings for the specified Amazon Chime Enterprise
 #' account. For more information about retention settings, see [Managing
-#' Chat Retention
-#' Policies](https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html)
+#' Chat Retention Policies](https://docs.aws.amazon.com/chime/latest/ag/)
 #' in the *Amazon Chime Administration Guide*.
 #'
 #' @usage
@@ -2480,6 +3943,121 @@ chime_get_room <- function(AccountId, RoomId) {
   return(response)
 }
 .chime$operations$get_room <- chime_get_room
+
+#' Retrieves the information for a SIP media application, including name,
+#' AWS Region, and endpoints
+#'
+#' Retrieves the information for a SIP media application, including name,
+#' AWS Region, and endpoints.
+#'
+#' @usage
+#' chime_get_sip_media_application(SipMediaApplicationId)
+#'
+#' @param SipMediaApplicationId &#91;required&#93; The SIP media application ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_sip_media_application(
+#'   SipMediaApplicationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_get_sip_media_application
+chime_get_sip_media_application <- function(SipMediaApplicationId) {
+  op <- new_operation(
+    name = "GetSipMediaApplication",
+    http_method = "GET",
+    http_path = "/sip-media-applications/{sipMediaApplicationId}",
+    paginator = list()
+  )
+  input <- .chime$get_sip_media_application_input(SipMediaApplicationId = SipMediaApplicationId)
+  output <- .chime$get_sip_media_application_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$get_sip_media_application <- chime_get_sip_media_application
+
+#' Returns the logging configuration for the specified SIP media
+#' application
+#'
+#' Returns the logging configuration for the specified SIP media
+#' application.
+#'
+#' @usage
+#' chime_get_sip_media_application_logging_configuration(
+#'   SipMediaApplicationId)
+#'
+#' @param SipMediaApplicationId &#91;required&#93; The ID of the SIP media application.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_sip_media_application_logging_configuration(
+#'   SipMediaApplicationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_get_sip_media_application_logging_configuration
+chime_get_sip_media_application_logging_configuration <- function(SipMediaApplicationId) {
+  op <- new_operation(
+    name = "GetSipMediaApplicationLoggingConfiguration",
+    http_method = "GET",
+    http_path = "/sip-media-applications/{sipMediaApplicationId}/logging-configuration",
+    paginator = list()
+  )
+  input <- .chime$get_sip_media_application_logging_configuration_input(SipMediaApplicationId = SipMediaApplicationId)
+  output <- .chime$get_sip_media_application_logging_configuration_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$get_sip_media_application_logging_configuration <- chime_get_sip_media_application_logging_configuration
+
+#' Retrieves the details of a SIP rule, such as the rule ID, name,
+#' triggers, and target endpoints
+#'
+#' Retrieves the details of a SIP rule, such as the rule ID, name,
+#' triggers, and target endpoints.
+#'
+#' @usage
+#' chime_get_sip_rule(SipRuleId)
+#'
+#' @param SipRuleId &#91;required&#93; The SIP rule ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_sip_rule(
+#'   SipRuleId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_get_sip_rule
+chime_get_sip_rule <- function(SipRuleId) {
+  op <- new_operation(
+    name = "GetSipRule",
+    http_method = "GET",
+    http_path = "/sip-rules/{sipRuleId}",
+    paginator = list()
+  )
+  input <- .chime$get_sip_rule_input(SipRuleId = SipRuleId)
+  output <- .chime$get_sip_rule_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$get_sip_rule <- chime_get_sip_rule
 
 #' Retrieves details for the specified user ID, such as primary email
 #' address, license type, and personal meeting PIN
@@ -2684,7 +4262,7 @@ chime_get_voice_connector_group <- function(VoiceConnectorGroupId) {
 #'
 #' Retrieves the logging configuration details for the specified Amazon
 #' Chime Voice Connector. Shows whether SIP message logs are enabled for
-#' sending to Amazon CloudWatch Logs.
+#' sending to Amazon CloudWatch.
 #'
 #' @usage
 #' chime_get_voice_connector_logging_configuration(VoiceConnectorId)
@@ -3003,6 +4581,127 @@ chime_list_accounts <- function(Name = NULL, UserEmail = NULL, NextToken = NULL,
 }
 .chime$operations$list_accounts <- chime_list_accounts
 
+#' Returns a list of the administrators in the app instance
+#'
+#' Returns a list of the administrators in the app instance.
+#'
+#' @usage
+#' chime_list_app_instance_admins(AppInstanceArn, MaxResults, NextToken)
+#'
+#' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
+#' @param MaxResults The maximum number of administrators that you want to return.
+#' @param NextToken The token returned from previous API requests until the number of
+#' administrators is reached.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_app_instance_admins(
+#'   AppInstanceArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_app_instance_admins
+chime_list_app_instance_admins <- function(AppInstanceArn, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAppInstanceAdmins",
+    http_method = "GET",
+    http_path = "/app-instances/{appInstanceArn}/admins",
+    paginator = list()
+  )
+  input <- .chime$list_app_instance_admins_input(AppInstanceArn = AppInstanceArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .chime$list_app_instance_admins_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_app_instance_admins <- chime_list_app_instance_admins
+
+#' List all AppInstanceUsers created under a single app instance
+#'
+#' List all `AppInstanceUsers` created under a single app instance.
+#'
+#' @usage
+#' chime_list_app_instance_users(AppInstanceArn, MaxResults, NextToken)
+#'
+#' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
+#' @param MaxResults The maximum number of requests that you want returned.
+#' @param NextToken The token passed by previous API calls until all requested users are
+#' returned.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_app_instance_users(
+#'   AppInstanceArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_app_instance_users
+chime_list_app_instance_users <- function(AppInstanceArn, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAppInstanceUsers",
+    http_method = "GET",
+    http_path = "/app-instance-users",
+    paginator = list()
+  )
+  input <- .chime$list_app_instance_users_input(AppInstanceArn = AppInstanceArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .chime$list_app_instance_users_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_app_instance_users <- chime_list_app_instance_users
+
+#' Lists all Amazon Chime app instances created under a single AWS account
+#'
+#' Lists all Amazon Chime app instances created under a single AWS account.
+#'
+#' @usage
+#' chime_list_app_instances(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of app instances that you want to return.
+#' @param NextToken The token passed by previous API requests until you reach the maximum
+#' number of app instances.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_app_instances(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_app_instances
+chime_list_app_instances <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAppInstances",
+    http_method = "GET",
+    http_path = "/app-instances",
+    paginator = list()
+  )
+  input <- .chime$list_app_instances_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .chime$list_app_instances_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_app_instances <- chime_list_app_instances
+
 #' Lists the tags applied to an Amazon Chime SDK attendee resource
 #'
 #' Lists the tags applied to an Amazon Chime SDK attendee resource.
@@ -3126,6 +4825,333 @@ chime_list_bots <- function(AccountId, MaxResults = NULL, NextToken = NULL) {
   return(response)
 }
 .chime$operations$list_bots <- chime_list_bots
+
+#' Lists all the users banned from a particular channel
+#'
+#' Lists all the users banned from a particular channel.
+#'
+#' @usage
+#' chime_list_channel_bans(ChannelArn, MaxResults, NextToken)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel.
+#' @param MaxResults The maximum number of bans that you want returned.
+#' @param NextToken The token passed by previous API calls until all requested bans are
+#' returned.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_channel_bans(
+#'   ChannelArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_channel_bans
+chime_list_channel_bans <- function(ChannelArn, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListChannelBans",
+    http_method = "GET",
+    http_path = "/channels/{channelArn}/bans",
+    paginator = list()
+  )
+  input <- .chime$list_channel_bans_input(ChannelArn = ChannelArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .chime$list_channel_bans_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_channel_bans <- chime_list_channel_bans
+
+#' Lists all channel memberships in a channel
+#'
+#' Lists all channel memberships in a channel.
+#'
+#' @usage
+#' chime_list_channel_memberships(ChannelArn, Type, MaxResults, NextToken)
+#'
+#' @param ChannelArn &#91;required&#93; The maximum number of channel memberships that you want returned.
+#' @param Type The membership type of a user, `DEFAULT` or `HIDDEN`. Default members
+#' are always returned as part of `ListChannelMemberships`. Hidden members
+#' are only returned if the type filter in `ListChannelMemberships` equals
+#' `HIDDEN`. Otherwise hidden members are not returned.
+#' @param MaxResults The maximum number of channel memberships that you want returned.
+#' @param NextToken The token passed by previous API calls until all requested channel
+#' memberships are returned..
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_channel_memberships(
+#'   ChannelArn = "string",
+#'   Type = "DEFAULT"|"HIDDEN",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_channel_memberships
+chime_list_channel_memberships <- function(ChannelArn, Type = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListChannelMemberships",
+    http_method = "GET",
+    http_path = "/channels/{channelArn}/memberships",
+    paginator = list()
+  )
+  input <- .chime$list_channel_memberships_input(ChannelArn = ChannelArn, Type = Type, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .chime$list_channel_memberships_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_channel_memberships <- chime_list_channel_memberships
+
+#' Lists all channels that a particular AppInstanceUser is a part of
+#'
+#' Lists all channels that a particular `AppInstanceUser` is a part of.
+#' Only an `AppInstanceAdmin` can call the API with a user ARN that is not
+#' their own.
+#'
+#' @usage
+#' chime_list_channel_memberships_for_app_instance_user(AppInstanceUserArn,
+#'   MaxResults, NextToken)
+#'
+#' @param AppInstanceUserArn The ARN of the app instance users
+#' @param MaxResults The maximum number of users that you want returned.
+#' @param NextToken The token returned from previous API requests until the number of
+#' channel memberships is reached.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_channel_memberships_for_app_instance_user(
+#'   AppInstanceUserArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_channel_memberships_for_app_instance_user
+chime_list_channel_memberships_for_app_instance_user <- function(AppInstanceUserArn = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListChannelMembershipsForAppInstanceUser",
+    http_method = "GET",
+    http_path = "/channels?scope=app-instance-user-memberships",
+    paginator = list()
+  )
+  input <- .chime$list_channel_memberships_for_app_instance_user_input(AppInstanceUserArn = AppInstanceUserArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .chime$list_channel_memberships_for_app_instance_user_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_channel_memberships_for_app_instance_user <- chime_list_channel_memberships_for_app_instance_user
+
+#' List all the messages in a channel
+#'
+#' List all the messages in a channel. Returns a paginated list of
+#' `ChannelMessages`. Sorted in descending order by default, based on the
+#' creation timestamp.
+#' 
+#' Redacted messages appear in the results as empty, since they are only
+#' redacted, not deleted. Deleted messages do not appear in the results.
+#' This action always returns the latest version of an edited message.
+#'
+#' @usage
+#' chime_list_channel_messages(ChannelArn, SortOrder, NotBefore, NotAfter,
+#'   MaxResults, NextToken)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel.
+#' @param SortOrder The order in which you want messages sorted. Default is Descending,
+#' based on time created.
+#' @param NotBefore The initial or starting time stamp for your requested messages.
+#' @param NotAfter The final or ending time stamp for your requested messages.
+#' @param MaxResults The maximum number of messages that you want returned.
+#' @param NextToken The token passed by previous API calls until all requested messages are
+#' returned.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_channel_messages(
+#'   ChannelArn = "string",
+#'   SortOrder = "ASCENDING"|"DESCENDING",
+#'   NotBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NotAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_channel_messages
+chime_list_channel_messages <- function(ChannelArn, SortOrder = NULL, NotBefore = NULL, NotAfter = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListChannelMessages",
+    http_method = "GET",
+    http_path = "/channels/{channelArn}/messages",
+    paginator = list()
+  )
+  input <- .chime$list_channel_messages_input(ChannelArn = ChannelArn, SortOrder = SortOrder, NotBefore = NotBefore, NotAfter = NotAfter, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .chime$list_channel_messages_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_channel_messages <- chime_list_channel_messages
+
+#' Lists all the moderators for a channel
+#'
+#' Lists all the moderators for a channel.
+#'
+#' @usage
+#' chime_list_channel_moderators(ChannelArn, MaxResults, NextToken)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel.
+#' @param MaxResults The maximum number of moderators that you want returned.
+#' @param NextToken The token passed by previous API calls until all requested moderators
+#' are returned.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_channel_moderators(
+#'   ChannelArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_channel_moderators
+chime_list_channel_moderators <- function(ChannelArn, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListChannelModerators",
+    http_method = "GET",
+    http_path = "/channels/{channelArn}/moderators",
+    paginator = list()
+  )
+  input <- .chime$list_channel_moderators_input(ChannelArn = ChannelArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .chime$list_channel_moderators_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_channel_moderators <- chime_list_channel_moderators
+
+#' Lists all Channels created under a single Chime App as a paginated list
+#'
+#' Lists all Channels created under a single Chime App as a paginated list.
+#' You can specify filters to narrow results.
+#' 
+#' **Functionality & restrictions**
+#' 
+#' -   Use privacy = `PUBLIC` to retrieve all public channels in the
+#'     account
+#' 
+#' -   Only an `AppInstanceAdmin` can set privacy = `PRIVATE` to list the
+#'     private channels in an account.
+#'
+#' @usage
+#' chime_list_channels(AppInstanceArn, Privacy, MaxResults, NextToken)
+#'
+#' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
+#' @param Privacy The privacy setting. `PUBLIC` retrieves all the public channels.
+#' `PRIVATE` retrieves private channels. Only an app instance administrator
+#' can retrieve private channels.
+#' @param MaxResults The maximum number of channels that you want to return.
+#' @param NextToken The token passed by previous API calls until all requested channels are
+#' returned.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_channels(
+#'   AppInstanceArn = "string",
+#'   Privacy = "PUBLIC"|"PRIVATE",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_channels
+chime_list_channels <- function(AppInstanceArn, Privacy = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListChannels",
+    http_method = "GET",
+    http_path = "/channels",
+    paginator = list()
+  )
+  input <- .chime$list_channels_input(AppInstanceArn = AppInstanceArn, Privacy = Privacy, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .chime$list_channels_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_channels <- chime_list_channels
+
+#' A list of the channels moderated by an app instance user
+#'
+#' A list of the channels moderated by an app instance user.
+#'
+#' @usage
+#' chime_list_channels_moderated_by_app_instance_user(AppInstanceUserArn,
+#'   MaxResults, NextToken)
+#'
+#' @param AppInstanceUserArn The ARN of the user in the moderated channel.
+#' @param MaxResults The maximum number of channels in the request.
+#' @param NextToken The token returned from previous API requests until the number of
+#' channels moderated by the user is reached.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_channels_moderated_by_app_instance_user(
+#'   AppInstanceUserArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_channels_moderated_by_app_instance_user
+chime_list_channels_moderated_by_app_instance_user <- function(AppInstanceUserArn = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListChannelsModeratedByAppInstanceUser",
+    http_method = "GET",
+    http_path = "/channels?scope=app-instance-user-moderated-channels",
+    paginator = list()
+  )
+  input <- .chime$list_channels_moderated_by_app_instance_user_input(AppInstanceUserArn = AppInstanceUserArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .chime$list_channels_moderated_by_app_instance_user_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_channels_moderated_by_app_instance_user <- chime_list_channels_moderated_by_app_instance_user
 
 #' Lists the tags applied to an Amazon Chime SDK meeting resource
 #'
@@ -3268,7 +5294,7 @@ chime_list_phone_number_orders <- function(NextToken = NULL, MaxResults = NULL) 
 #' svc$list_phone_numbers(
 #'   Status = "AcquireInProgress"|"AcquireFailed"|"Unassigned"|"Assigned"|"ReleaseInProgress"|"DeleteInProgress"|"ReleaseFailed"|"DeleteFailed",
 #'   ProductType = "BusinessCalling"|"VoiceConnector",
-#'   FilterName = "AccountId"|"UserId"|"VoiceConnectorId"|"VoiceConnectorGroupId",
+#'   FilterName = "AccountId"|"UserId"|"VoiceConnectorId"|"VoiceConnectorGroupId"|"SipRuleId",
 #'   FilterValue = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -3426,6 +5452,86 @@ chime_list_rooms <- function(AccountId, MemberId = NULL, MaxResults = NULL, Next
   return(response)
 }
 .chime$operations$list_rooms <- chime_list_rooms
+
+#' Lists the SIP media applications under the administrator's AWS account
+#'
+#' Lists the SIP media applications under the administrator's AWS account.
+#'
+#' @usage
+#' chime_list_sip_media_applications(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of results to return in a single call. Defaults to
+#' 100.
+#' @param NextToken The token to use to retrieve the next page of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_sip_media_applications(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_sip_media_applications
+chime_list_sip_media_applications <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListSipMediaApplications",
+    http_method = "GET",
+    http_path = "/sip-media-applications",
+    paginator = list()
+  )
+  input <- .chime$list_sip_media_applications_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .chime$list_sip_media_applications_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_sip_media_applications <- chime_list_sip_media_applications
+
+#' Lists the SIP rules under the administrator's AWS account
+#'
+#' Lists the SIP rules under the administrator's AWS account.
+#'
+#' @usage
+#' chime_list_sip_rules(SipMediaApplicationId, MaxResults, NextToken)
+#'
+#' @param SipMediaApplicationId The SIP media application ID.
+#' @param MaxResults The maximum number of results to return in a single call. Defaults to
+#' 100.
+#' @param NextToken The token to use to retrieve the next page of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_sip_rules(
+#'   SipMediaApplicationId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_list_sip_rules
+chime_list_sip_rules <- function(SipMediaApplicationId = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListSipRules",
+    http_method = "GET",
+    http_path = "/sip-rules",
+    paginator = list()
+  )
+  input <- .chime$list_sip_rules_input(SipMediaApplicationId = SipMediaApplicationId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .chime$list_sip_rules_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$list_sip_rules <- chime_list_sip_rules
 
 #' Lists the tags applied to an Amazon Chime SDK meeting resource
 #'
@@ -3667,6 +5773,93 @@ chime_logout_user <- function(AccountId, UserId) {
 }
 .chime$operations$logout_user <- chime_logout_user
 
+#' Sets the amount of time in days that a given app instance retains data
+#'
+#' Sets the amount of time in days that a given app instance retains data.
+#'
+#' @usage
+#' chime_put_app_instance_retention_settings(AppInstanceArn,
+#'   AppInstanceRetentionSettings)
+#'
+#' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
+#' @param AppInstanceRetentionSettings &#91;required&#93; The time in days to retain data. Data type: number.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_app_instance_retention_settings(
+#'   AppInstanceArn = "string",
+#'   AppInstanceRetentionSettings = list(
+#'     ChannelRetentionSettings = list(
+#'       RetentionDays = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_put_app_instance_retention_settings
+chime_put_app_instance_retention_settings <- function(AppInstanceArn, AppInstanceRetentionSettings) {
+  op <- new_operation(
+    name = "PutAppInstanceRetentionSettings",
+    http_method = "PUT",
+    http_path = "/app-instances/{appInstanceArn}/retention-settings",
+    paginator = list()
+  )
+  input <- .chime$put_app_instance_retention_settings_input(AppInstanceArn = AppInstanceArn, AppInstanceRetentionSettings = AppInstanceRetentionSettings)
+  output <- .chime$put_app_instance_retention_settings_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$put_app_instance_retention_settings <- chime_put_app_instance_retention_settings
+
+#' The data streaming configurations of an app instance
+#'
+#' The data streaming configurations of an app instance.
+#'
+#' @usage
+#' chime_put_app_instance_streaming_configurations(AppInstanceArn,
+#'   AppInstanceStreamingConfigurations)
+#'
+#' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
+#' @param AppInstanceStreamingConfigurations &#91;required&#93; The streaming configurations set for an app instance.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_app_instance_streaming_configurations(
+#'   AppInstanceArn = "string",
+#'   AppInstanceStreamingConfigurations = list(
+#'     list(
+#'       AppInstanceDataType = "Channel"|"ChannelMessage",
+#'       ResourceArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_put_app_instance_streaming_configurations
+chime_put_app_instance_streaming_configurations <- function(AppInstanceArn, AppInstanceStreamingConfigurations) {
+  op <- new_operation(
+    name = "PutAppInstanceStreamingConfigurations",
+    http_method = "PUT",
+    http_path = "/app-instances/{appInstanceArn}/streaming-configurations",
+    paginator = list()
+  )
+  input <- .chime$put_app_instance_streaming_configurations_input(AppInstanceArn = AppInstanceArn, AppInstanceStreamingConfigurations = AppInstanceStreamingConfigurations)
+  output <- .chime$put_app_instance_streaming_configurations_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$put_app_instance_streaming_configurations <- chime_put_app_instance_streaming_configurations
+
 #' Creates an events configuration that allows a bot to receive outgoing
 #' events sent by Amazon Chime
 #'
@@ -3726,8 +5919,7 @@ chime_put_events_configuration <- function(AccountId, BotId, OutboundEventsHTTPS
 #' To turn off existing retention settings, remove the number of days from
 #' the corresponding **RetentionDays** field in the **RetentionSettings**
 #' object. For more information about retention settings, see [Managing
-#' Chat Retention
-#' Policies](https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html)
+#' Chat Retention Policies](https://docs.aws.amazon.com/chime/latest/ag/)
 #' in the *Amazon Chime Administration Guide*.
 #'
 #' @usage
@@ -3770,6 +5962,49 @@ chime_put_retention_settings <- function(AccountId, RetentionSettings) {
   return(response)
 }
 .chime$operations$put_retention_settings <- chime_put_retention_settings
+
+#' Updates the logging configuration for the specified SIP media
+#' application
+#'
+#' Updates the logging configuration for the specified SIP media
+#' application.
+#'
+#' @usage
+#' chime_put_sip_media_application_logging_configuration(
+#'   SipMediaApplicationId, SipMediaApplicationLoggingConfiguration)
+#'
+#' @param SipMediaApplicationId &#91;required&#93; The ID of the specified SIP media application
+#' @param SipMediaApplicationLoggingConfiguration The actual logging configuration.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_sip_media_application_logging_configuration(
+#'   SipMediaApplicationId = "string",
+#'   SipMediaApplicationLoggingConfiguration = list(
+#'     EnableSipMediaApplicationMessageLogs = TRUE|FALSE
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_put_sip_media_application_logging_configuration
+chime_put_sip_media_application_logging_configuration <- function(SipMediaApplicationId, SipMediaApplicationLoggingConfiguration = NULL) {
+  op <- new_operation(
+    name = "PutSipMediaApplicationLoggingConfiguration",
+    http_method = "PUT",
+    http_path = "/sip-media-applications/{sipMediaApplicationId}/logging-configuration",
+    paginator = list()
+  )
+  input <- .chime$put_sip_media_application_logging_configuration_input(SipMediaApplicationId = SipMediaApplicationId, SipMediaApplicationLoggingConfiguration = SipMediaApplicationLoggingConfiguration)
+  output <- .chime$put_sip_media_application_logging_configuration_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$put_sip_media_application_logging_configuration <- chime_put_sip_media_application_logging_configuration
 
 #' Puts emergency calling configuration details to the specified Amazon
 #' Chime Voice Connector, such as emergency phone numbers and calling
@@ -4120,6 +6355,46 @@ chime_put_voice_connector_termination_credentials <- function(VoiceConnectorId, 
 }
 .chime$operations$put_voice_connector_termination_credentials <- chime_put_voice_connector_termination_credentials
 
+#' Redacts message content, but not metadata
+#'
+#' Redacts message content, but not metadata. The message exists in the
+#' back end, but the action returns null content, and the state shows as
+#' redacted.
+#'
+#' @usage
+#' chime_redact_channel_message(ChannelArn, MessageId)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel containing the messages that you want to redact.
+#' @param MessageId &#91;required&#93; The ID of the message being redacted.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$redact_channel_message(
+#'   ChannelArn = "string",
+#'   MessageId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_redact_channel_message
+chime_redact_channel_message <- function(ChannelArn, MessageId) {
+  op <- new_operation(
+    name = "RedactChannelMessage",
+    http_method = "POST",
+    http_path = "/channels/{channelArn}/messages/{messageId}?operation=redact",
+    paginator = list()
+  )
+  input <- .chime$redact_channel_message_input(ChannelArn = ChannelArn, MessageId = MessageId)
+  output <- .chime$redact_channel_message_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$redact_channel_message <- chime_redact_channel_message
+
 #' Redacts the specified message from the specified Amazon Chime
 #' conversation
 #'
@@ -4162,9 +6437,9 @@ chime_redact_conversation_message <- function(AccountId, ConversationId, Message
 }
 .chime$operations$redact_conversation_message <- chime_redact_conversation_message
 
-#' Redacts the specified message from the specified Amazon Chime chat room
+#' Redacts the specified message from the specified Amazon Chime channel
 #'
-#' Redacts the specified message from the specified Amazon Chime chat room.
+#' Redacts the specified message from the specified Amazon Chime channel.
 #'
 #' @usage
 #' chime_redact_room_message(AccountId, RoomId, MessageId)
@@ -4367,6 +6642,57 @@ chime_search_available_phone_numbers <- function(AreaCode = NULL, City = NULL, C
   return(response)
 }
 .chime$operations$search_available_phone_numbers <- chime_search_available_phone_numbers
+
+#' Sends a message to a particular channel that the member is a part of
+#'
+#' Sends a message to a particular channel that the member is a part of.
+#' 
+#' `STANDARD` messages can contain 4KB of data and the 1KB of metadata.
+#' `CONTROL` messages can contain 30 bytes of data and no metadata.
+#'
+#' @usage
+#' chime_send_channel_message(ChannelArn, Content, Type, Persistence,
+#'   Metadata, ClientRequestToken)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel.
+#' @param Content &#91;required&#93; The content of the message.
+#' @param Type &#91;required&#93; The type of message, `STANDARD` or `CONTROL`.
+#' @param Persistence &#91;required&#93; Boolean that controls whether the message is persisted on the back end.
+#' Required.
+#' @param Metadata The optional metadata for each message.
+#' @param ClientRequestToken &#91;required&#93; The `Idempotency` token for each client request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$send_channel_message(
+#'   ChannelArn = "string",
+#'   Content = "string",
+#'   Type = "STANDARD"|"CONTROL",
+#'   Persistence = "PERSISTENT"|"NON_PERSISTENT",
+#'   Metadata = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_send_channel_message
+chime_send_channel_message <- function(ChannelArn, Content, Type, Persistence, Metadata = NULL, ClientRequestToken) {
+  op <- new_operation(
+    name = "SendChannelMessage",
+    http_method = "POST",
+    http_path = "/channels/{channelArn}/messages",
+    paginator = list()
+  )
+  input <- .chime$send_channel_message_input(ChannelArn = ChannelArn, Content = Content, Type = Type, Persistence = Persistence, Metadata = Metadata, ClientRequestToken = ClientRequestToken)
+  output <- .chime$send_channel_message_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$send_channel_message <- chime_send_channel_message
 
 #' Applies the specified tags to the specified Amazon Chime SDK attendee
 #'
@@ -4670,8 +6996,8 @@ chime_update_account <- function(AccountId, Name = NULL) {
 #' update settings for remote control of shared screens, or for the
 #' dial-out option. For more information about these settings, see [Use the
 #' Policies
-#' Page](https://docs.aws.amazon.com/chime/latest/ag/policies.html) in the
-#' *Amazon Chime Administration Guide*.
+#' Page](https://docs.aws.amazon.com/chime/latest/ag/mtg-settings.html) in
+#' the *Amazon Chime Administration Guide*.
 #'
 #' @usage
 #' chime_update_account_settings(AccountId, AccountSettings)
@@ -4709,6 +7035,87 @@ chime_update_account_settings <- function(AccountId, AccountSettings) {
   return(response)
 }
 .chime$operations$update_account_settings <- chime_update_account_settings
+
+#' Updates AppInstance metadata
+#'
+#' Updates `AppInstance` metadata.
+#'
+#' @usage
+#' chime_update_app_instance(AppInstanceArn, Name, Metadata)
+#'
+#' @param AppInstanceArn &#91;required&#93; The ARN of the app instance.
+#' @param Name &#91;required&#93; The name that you want to change.
+#' @param Metadata The metadata that you want to change.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_app_instance(
+#'   AppInstanceArn = "string",
+#'   Name = "string",
+#'   Metadata = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_update_app_instance
+chime_update_app_instance <- function(AppInstanceArn, Name, Metadata = NULL) {
+  op <- new_operation(
+    name = "UpdateAppInstance",
+    http_method = "PUT",
+    http_path = "/app-instances/{appInstanceArn}",
+    paginator = list()
+  )
+  input <- .chime$update_app_instance_input(AppInstanceArn = AppInstanceArn, Name = Name, Metadata = Metadata)
+  output <- .chime$update_app_instance_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$update_app_instance <- chime_update_app_instance
+
+#' Updates the details for an AppInstanceUser
+#'
+#' Updates the details for an `AppInstanceUser`. You can update names and
+#' metadata.
+#'
+#' @usage
+#' chime_update_app_instance_user(AppInstanceUserArn, Name, Metadata)
+#'
+#' @param AppInstanceUserArn &#91;required&#93; The ARN of the app instance user.
+#' @param Name &#91;required&#93; The name of the app instance user.
+#' @param Metadata The metadata of the app instance user.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_app_instance_user(
+#'   AppInstanceUserArn = "string",
+#'   Name = "string",
+#'   Metadata = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_update_app_instance_user
+chime_update_app_instance_user <- function(AppInstanceUserArn, Name, Metadata = NULL) {
+  op <- new_operation(
+    name = "UpdateAppInstanceUser",
+    http_method = "PUT",
+    http_path = "/app-instance-users/{appInstanceUserArn}",
+    paginator = list()
+  )
+  input <- .chime$update_app_instance_user_input(AppInstanceUserArn = AppInstanceUserArn, Name = Name, Metadata = Metadata)
+  output <- .chime$update_app_instance_user_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$update_app_instance_user <- chime_update_app_instance_user
 
 #' Updates the status of the specified bot, such as starting or stopping
 #' the bot from running in your Amazon Chime Enterprise account
@@ -4751,6 +7158,130 @@ chime_update_bot <- function(AccountId, BotId, Disabled = NULL) {
   return(response)
 }
 .chime$operations$update_bot <- chime_update_bot
+
+#' Update a channel's attributes
+#'
+#' Update a channel's attributes.
+#' 
+#' **Restriction**: You can't change a channel's privacy.
+#'
+#' @usage
+#' chime_update_channel(ChannelArn, Name, Mode, Metadata)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel.
+#' @param Name &#91;required&#93; The name of the channel.
+#' @param Mode &#91;required&#93; The mode of the update request.
+#' @param Metadata The metadata of the channel.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_channel(
+#'   ChannelArn = "string",
+#'   Name = "string",
+#'   Mode = "UNRESTRICTED"|"RESTRICTED",
+#'   Metadata = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_update_channel
+chime_update_channel <- function(ChannelArn, Name, Mode, Metadata = NULL) {
+  op <- new_operation(
+    name = "UpdateChannel",
+    http_method = "PUT",
+    http_path = "/channels/{channelArn}",
+    paginator = list()
+  )
+  input <- .chime$update_channel_input(ChannelArn = ChannelArn, Name = Name, Mode = Mode, Metadata = Metadata)
+  output <- .chime$update_channel_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$update_channel <- chime_update_channel
+
+#' Updates the content of a message
+#'
+#' Updates the content of a message.
+#'
+#' @usage
+#' chime_update_channel_message(ChannelArn, MessageId, Content, Metadata)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel.
+#' @param MessageId &#91;required&#93; The ID string of the message being updated.
+#' @param Content The content of the message being updated.
+#' @param Metadata The metadata of the message being updated.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_channel_message(
+#'   ChannelArn = "string",
+#'   MessageId = "string",
+#'   Content = "string",
+#'   Metadata = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_update_channel_message
+chime_update_channel_message <- function(ChannelArn, MessageId, Content = NULL, Metadata = NULL) {
+  op <- new_operation(
+    name = "UpdateChannelMessage",
+    http_method = "PUT",
+    http_path = "/channels/{channelArn}/messages/{messageId}",
+    paginator = list()
+  )
+  input <- .chime$update_channel_message_input(ChannelArn = ChannelArn, MessageId = MessageId, Content = Content, Metadata = Metadata)
+  output <- .chime$update_channel_message_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$update_channel_message <- chime_update_channel_message
+
+#' Sets the timestamp to the point when a user last read messages in a
+#' channel
+#'
+#' Sets the timestamp to the point when a user last read messages in a
+#' channel.
+#'
+#' @usage
+#' chime_update_channel_read_marker(ChannelArn)
+#'
+#' @param ChannelArn &#91;required&#93; The ARN of the channel.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_channel_read_marker(
+#'   ChannelArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_update_channel_read_marker
+chime_update_channel_read_marker <- function(ChannelArn) {
+  op <- new_operation(
+    name = "UpdateChannelReadMarker",
+    http_method = "PUT",
+    http_path = "/channels/{channelArn}/readMarker",
+    paginator = list()
+  )
+  input <- .chime$update_channel_read_marker_input(ChannelArn = ChannelArn)
+  output <- .chime$update_channel_read_marker_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$update_channel_read_marker <- chime_update_channel_read_marker
 
 #' Updates global settings for the administrator's AWS account, such as
 #' Amazon Chime Business Calling and Amazon Chime Voice Connector settings
@@ -5021,6 +7552,99 @@ chime_update_room_membership <- function(AccountId, RoomId, MemberId, Role = NUL
   return(response)
 }
 .chime$operations$update_room_membership <- chime_update_room_membership
+
+#' Updates the details for the specified SIP media application
+#'
+#' Updates the details for the specified SIP media application.
+#'
+#' @usage
+#' chime_update_sip_media_application(SipMediaApplicationId, Name,
+#'   Endpoints)
+#'
+#' @param SipMediaApplicationId &#91;required&#93; The SIP media application ID.
+#' @param Name The new name for the specified SIP media application.
+#' @param Endpoints The new set of endpoints for the specified SIP media application.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_sip_media_application(
+#'   SipMediaApplicationId = "string",
+#'   Name = "string",
+#'   Endpoints = list(
+#'     list(
+#'       LambdaArn = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_update_sip_media_application
+chime_update_sip_media_application <- function(SipMediaApplicationId, Name = NULL, Endpoints = NULL) {
+  op <- new_operation(
+    name = "UpdateSipMediaApplication",
+    http_method = "PUT",
+    http_path = "/sip-media-applications/{sipMediaApplicationId}",
+    paginator = list()
+  )
+  input <- .chime$update_sip_media_application_input(SipMediaApplicationId = SipMediaApplicationId, Name = Name, Endpoints = Endpoints)
+  output <- .chime$update_sip_media_application_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$update_sip_media_application <- chime_update_sip_media_application
+
+#' Updates the details for the specified SIP rule
+#'
+#' Updates the details for the specified SIP rule.
+#'
+#' @usage
+#' chime_update_sip_rule(SipRuleId, Name, Disabled, TargetApplications)
+#'
+#' @param SipRuleId &#91;required&#93; The SIP rule ID.
+#' @param Name &#91;required&#93; The new name for the specified SIP rule.
+#' @param Disabled The new value specified to indicate whether the rule is disabled.
+#' @param TargetApplications The new value of the list of target applications.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_sip_rule(
+#'   SipRuleId = "string",
+#'   Name = "string",
+#'   Disabled = TRUE|FALSE,
+#'   TargetApplications = list(
+#'     list(
+#'       SipMediaApplicationId = "string",
+#'       Priority = 123,
+#'       AwsRegion = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname chime_update_sip_rule
+chime_update_sip_rule <- function(SipRuleId, Name, Disabled = NULL, TargetApplications = NULL) {
+  op <- new_operation(
+    name = "UpdateSipRule",
+    http_method = "PUT",
+    http_path = "/sip-rules/{sipRuleId}",
+    paginator = list()
+  )
+  input <- .chime$update_sip_rule_input(SipRuleId = SipRuleId, Name = Name, Disabled = Disabled, TargetApplications = TargetApplications)
+  output <- .chime$update_sip_rule_output()
+  config <- get_config()
+  svc <- .chime$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.chime$operations$update_sip_rule <- chime_update_sip_rule
 
 #' Updates user details for a specified user ID
 #'

@@ -14,8 +14,7 @@ tags to. An ARN uniquely identifies a resource.}
 you define.}
 }
 \description{
-Add tags to an accelerator resource. To see an AWS CLI example of adding
-tags to an accelerator, scroll down to \strong{Example}.
+Add tags to an accelerator resource.
 }
 \details{
 For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html}{Tagging in AWS Global Accelerator}

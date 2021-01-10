@@ -5,12 +5,14 @@
 \title{Creates a domain name}
 \usage{
 apigatewayv2_create_domain_name(DomainName, DomainNameConfigurations,
-  Tags)
+  MutualTlsAuthentication, Tags)
 }
 \arguments{
 \item{DomainName}{[required] The domain name.}
 
 \item{DomainNameConfigurations}{The domain name configurations.}
+
+\item{MutualTlsAuthentication}{The mutual TLS authentication configuration for a custom domain name.}
 
 \item{Tags}{The collection of tags associated with a domain name.}
 }
@@ -34,6 +36,10 @@ Creates a domain name.
       HostedZoneId = "string",
       SecurityPolicy = "TLS_1_0"|"TLS_1_2"
     )
+  ),
+  MutualTlsAuthentication = list(
+    TruststoreUri = "string",
+    TruststoreVersion = "string"
   ),
   Tags = list(
     "string"

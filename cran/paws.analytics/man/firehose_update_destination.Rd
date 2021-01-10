@@ -7,7 +7,8 @@
 firehose_update_destination(DeliveryStreamName,
   CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate,
   ExtendedS3DestinationUpdate, RedshiftDestinationUpdate,
-  ElasticsearchDestinationUpdate, SplunkDestinationUpdate)
+  ElasticsearchDestinationUpdate, SplunkDestinationUpdate,
+  HttpEndpointDestinationUpdate)
 }
 \arguments{
 \item{DeliveryStreamName}{[required] The name of the delivery stream.}
@@ -31,6 +32,8 @@ configuration.}
 \item{ElasticsearchDestinationUpdate}{Describes an update for a destination in Amazon ES.}
 
 \item{SplunkDestinationUpdate}{Describes an update for a destination in Splunk.}
+
+\item{HttpEndpointDestinationUpdate}{Describes an update to the specified HTTP endpoint destination.}
 }
 \description{
 Updates the specified destination of the specified delivery stream.
@@ -392,6 +395,72 @@ DescribeDeliveryStream. Use the new version ID to set
       Enabled = TRUE|FALSE,
       LogGroupName = "string",
       LogStreamName = "string"
+    )
+  ),
+  HttpEndpointDestinationUpdate = list(
+    EndpointConfiguration = list(
+      Url = "string",
+      Name = "string",
+      AccessKey = "string"
+    ),
+    BufferingHints = list(
+      SizeInMBs = 123,
+      IntervalInSeconds = 123
+    ),
+    CloudWatchLoggingOptions = list(
+      Enabled = TRUE|FALSE,
+      LogGroupName = "string",
+      LogStreamName = "string"
+    ),
+    RequestConfiguration = list(
+      ContentEncoding = "NONE"|"GZIP",
+      CommonAttributes = list(
+        list(
+          AttributeName = "string",
+          AttributeValue = "string"
+        )
+      )
+    ),
+    ProcessingConfiguration = list(
+      Enabled = TRUE|FALSE,
+      Processors = list(
+        list(
+          Type = "Lambda",
+          Parameters = list(
+            list(
+              ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+              ParameterValue = "string"
+            )
+          )
+        )
+      )
+    ),
+    RoleARN = "string",
+    RetryOptions = list(
+      DurationInSeconds = 123
+    ),
+    S3BackupMode = "FailedDataOnly"|"AllData",
+    S3Update = list(
+      RoleARN = "string",
+      BucketARN = "string",
+      Prefix = "string",
+      ErrorOutputPrefix = "string",
+      BufferingHints = list(
+        SizeInMBs = 123,
+        IntervalInSeconds = 123
+      ),
+      CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+      EncryptionConfiguration = list(
+        NoEncryptionConfig = "NoEncryption",
+        KMSEncryptionConfig = list(
+          AWSKMSKeyARN = "string"
+        )
+      ),
+      CloudWatchLoggingOptions = list(
+        Enabled = TRUE|FALSE,
+        LogGroupName = "string",
+        LogStreamName = "string"
+      )
     )
   )
 )

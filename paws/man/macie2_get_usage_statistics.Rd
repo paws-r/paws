@@ -8,7 +8,9 @@ accounts}
 macie2_get_usage_statistics(filterBy, maxResults, nextToken, sortBy)
 }
 \arguments{
-\item{filterBy}{The criteria to use to filter the query results.}
+\item{filterBy}{An array of objects, one for each condition to use to filter the query
+results. If the array contains more than one object, Amazon Macie uses
+an AND operator to join the conditions specified by the objects.}
 
 \item{maxResults}{The maximum number of items to include in each page of the response.}
 
@@ -25,7 +27,8 @@ accounts.
 \preformatted{svc$get_usage_statistics(
   filterBy = list(
     list(
-      key = "accountId",
+      comparator = "GT"|"GTE"|"LT"|"LTE"|"EQ"|"NE"|"CONTAINS",
+      key = "accountId"|"serviceLimit"|"freeTrialStartDate"|"total",
       values = list(
         "string"
       )
@@ -34,7 +37,7 @@ accounts.
   maxResults = 123,
   nextToken = "string",
   sortBy = list(
-    key = "accountId"|"total",
+    key = "accountId"|"total"|"serviceLimitValue"|"freeTrialStartDate",
     orderBy = "ASC"|"DESC"
   )
 )

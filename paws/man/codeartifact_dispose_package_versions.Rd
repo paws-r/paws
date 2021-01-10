@@ -23,6 +23,7 @@ dispose. The valid values are:
 \item \code{npm}
 \item \code{pypi}
 \item \code{maven}
+\item \code{nuget}
 }}
 
 \item{namespace}{The namespace of the package. The package component that specifies its
@@ -32,6 +33,8 @@ namespace depends on its type. For example:
 \item The namespace of an npm package is its \code{scope}.
 \item A Python package does not contain a corresponding component, so
 Python packages do not have a namespace.
+\item A NuGet package does not contain a corresponding component, so NuGet
+packages do not have a namespace.
 }}
 
 \item{package}{[required] The name of the package with the versions you want to dispose.}
@@ -56,23 +59,21 @@ your repository because its assets are deleted.
 }
 \details{
 To view all disposed package versions in a repository, use
-\verb{<a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html">ListackageVersions</a>}
+\href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html}{\code{ListPackageVersions}}
 and set the
-\verb{<a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html#API_ListPackageVersions_RequestSyntax">status</a>}
+\href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html#API_ListPackageVersions_RequestSyntax}{\code{status}}
 parameter to \code{Disposed}.
 
 To view information about a disposed package version, use
-\verb{<a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html">ListPackageVersions</a>}
-and set the
-\verb{<a href="https://docs.aws.amazon.com/API_ListPackageVersions.html#codeartifact-ListPackageVersions-response-status">status</a>}
-parameter to \code{Disposed}.
+\href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DescribePackageVersion.html}{\code{DescribePackageVersion}}
+..
 }
 \section{Request syntax}{
 \preformatted{svc$dispose_package_versions(
   domain = "string",
   domainOwner = "string",
   repository = "string",
-  format = "npm"|"pypi"|"maven",
+  format = "npm"|"pypi"|"maven"|"nuget",
   namespace = "string",
   package = "string",
   versions = list(

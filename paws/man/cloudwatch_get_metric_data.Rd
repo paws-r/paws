@@ -58,8 +58,8 @@ beginning and end of an hour. For example, if the \code{Period} of a metric
 is 5 minutes, specifying 12:05 or 12:30 as \code{EndTime} can get a faster
 response from CloudWatch than setting 12:07 or 12:29 as the \code{EndTime}.}
 
-\item{NextToken}{Include this value, if it was returned by the previous call, to get the
-next set of data points.}
+\item{NextToken}{Include this value, if it was returned by the previous \code{GetMetricData}
+operation, to get the next set of data points.}
 
 \item{ScanBy}{The order in which data points should be returned. \code{TimestampDescending}
 returns the newest data first and paginates when the \code{MaxDatapoints}
@@ -110,9 +110,9 @@ resolution of 1 hour.
 If you omit \code{Unit} in your request, all data that was collected with any
 unit is returned, along with the corresponding units that were specified
 when the data was reported to CloudWatch. If you specify a unit, the
-operation returns only data data that was collected with that unit
-specified. If you specify a unit that does not match the data collected,
-the results of the operation are null. CloudWatch does not perform unit
+operation returns only data that was collected with that unit specified.
+If you specify a unit that does not match the data collected, the
+results of the operation are null. CloudWatch does not perform unit
 conversions.
 }
 \section{Request syntax}{

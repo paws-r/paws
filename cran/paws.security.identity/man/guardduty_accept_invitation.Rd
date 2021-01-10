@@ -2,21 +2,23 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_accept_invitation}
 \alias{guardduty_accept_invitation}
-\title{Accepts the invitation to be monitored by a master GuardDuty account}
+\title{Accepts the invitation to be monitored by a GuardDuty administrator
+account}
 \usage{
 guardduty_accept_invitation(DetectorId, MasterId, InvitationId)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
 
-\item{MasterId}{[required] The account ID of the master GuardDuty account whose invitation you're
-accepting.}
+\item{MasterId}{[required] The account ID of the GuardDuty administrator account whose invitation
+you're accepting.}
 
-\item{InvitationId}{[required] The value that is used to validate the master account to the member
-account.}
+\item{InvitationId}{[required] The value that is used to validate the administrator account to the
+member account.}
 }
 \description{
-Accepts the invitation to be monitored by a master GuardDuty account.
+Accepts the invitation to be monitored by a GuardDuty administrator
+account.
 }
 \section{Request syntax}{
 \preformatted{svc$accept_invitation(

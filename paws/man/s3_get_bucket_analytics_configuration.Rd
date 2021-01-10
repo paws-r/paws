@@ -6,13 +6,17 @@
 configuration (identified by the analytics configuration ID) from the
 bucket}
 \usage{
-s3_get_bucket_analytics_configuration(Bucket, Id)
+s3_get_bucket_analytics_configuration(Bucket, Id, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket from which an analytics configuration is
 retrieved.}
 
 \item{Id}{[required] The ID that identifies the analytics configuration.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 This implementation of the GET operation returns an analytics
@@ -32,15 +36,16 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Related Resources}
 \itemize{
-\item 
-\item 
-\item 
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketAnalyticsConfiguration.html}{DeleteBucketAnalyticsConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketAnalyticsConfigurations.html}{ListBucketAnalyticsConfigurations}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html}{PutBucketAnalyticsConfiguration}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_analytics_configuration(
   Bucket = "string",
-  Id = "string"
+  Id = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

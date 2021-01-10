@@ -11,24 +11,25 @@ pi_describe_dimension_keys(ServiceType, Identifier, StartTime, EndTime,
 }
 \arguments{
 \item{ServiceType}{[required] The AWS service for which Performance Insights will return metrics. The
-only valid value for \emph{ServiceType} is: \code{RDS}}
+only valid value for \emph{ServiceType} is \code{RDS}.}
 
 \item{Identifier}{[required] An immutable, AWS Region-unique identifier for a data source.
 Performance Insights gathers metrics from this data source.
 
 To use an Amazon RDS instance as a data source, you specify its
-\code{DbiResourceId} value - for example: \code{db-FAIHNTYBKTGAUSUZQYPDS2GW4A}}
+\code{DbiResourceId} value. For example, specify
+\code{db-FAIHNTYBKTGAUSUZQYPDS2GW4A}}
 
 \item{StartTime}{[required] The date and time specifying the beginning of the requested time series
-data. You can't specify a \code{StartTime} that's earlier than 7 days ago.
-The value specified is \emph{inclusive} - data points equal to or greater
-than \code{StartTime} will be returned.
+data. You must specify a \code{StartTime} within the past 7 days. The value
+specified is \emph{inclusive}, which means that data points equal to or
+greater than \code{StartTime} are returned.
 
 The value for \code{StartTime} must be earlier than the value for \code{EndTime}.}
 
 \item{EndTime}{[required] The date and time specifying the end of the requested time series data.
-The value specified is \emph{exclusive} - data points less than (but not
-equal to) \code{EndTime} will be returned.
+The value specified is \emph{exclusive}, which means that data points less
+than (but not equal to) \code{EndTime} are returned.
 
 The value for \code{EndTime} must be later than the value for \code{StartTime}.}
 
@@ -40,7 +41,15 @@ Valid values for \code{Metric} are:
 sessions for the database engine.
 \item \code{db.sampledload.avg} - the raw number of active sessions for the
 database engine.
-}}
+}
+
+If the number of active sessions is less than an internal Performance
+Insights threshold, \code{db.load.avg} and \code{db.sampledload.avg} are the same
+value. If the number of active sessions is greater than the internal
+threshold, Performance Insights samples the active sessions, with
+\code{db.load.avg} showing the scaled values, \code{db.sampledload.avg} showing
+the raw values, and \code{db.sampledload.avg} less than \code{db.load.avg}. For
+most use cases, you can query \code{db.load.avg} only.}
 
 \item{PeriodInSeconds}{The granularity, in seconds, of the data points returned from
 Performance Insights. A period can be as short as one second, or as long
@@ -53,16 +62,15 @@ as one day (86400 seconds). Valid values are:
 \item \code{86400} (twenty-four hours)
 }
 
-If you don't specify \code{PeriodInSeconds}, then Performance Insights will
-choose a value for you, with a goal of returning roughly 100-200 data
+If you don't specify \code{PeriodInSeconds}, then Performance Insights
+chooses a value for you, with a goal of returning roughly 100-200 data
 points in the response.}
 
 \item{GroupBy}{[required] A specification for how to aggregate the data points from a query
 result. You must specify a valid dimension group. Performance Insights
-will return all of the dimensions within that group, unless you provide
-the names of specific dimensions within that group. You can also request
-that Performance Insights return a limited number of values for a
-dimension.}
+returns all dimensions within this group, unless you provide the names
+of specific dimensions within this group. You can also request that
+Performance Insights return a limited number of values for a dimension.}
 
 \item{PartitionBy}{For each dimension specified in \code{GroupBy}, specify a secondary dimension
 to further subdivide the partition keys in the response.}
@@ -85,6 +93,10 @@ token, up to the value specified by \code{MaxRecords}.}
 \description{
 For a specific time period, retrieve the top \code{N} dimension keys for a
 metric.
+}
+\details{
+Each response element returns a maximum of 500 bytes. For larger
+elements, such as SQL statements, only the first 500 bytes are returned.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_dimension_keys(

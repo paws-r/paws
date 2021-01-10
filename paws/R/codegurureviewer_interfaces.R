@@ -5,13 +5,25 @@ NULL
 
 .codegurureviewer$associate_repository_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Repository = structure(list(CodeCommit = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Bitbucket = structure(list(Name = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GitHubEnterpriseServer = structure(list(Name = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Repository = structure(list(CodeCommit = structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Bitbucket = structure(list(Name = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), GitHubEnterpriseServer = structure(list(Name = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .codegurureviewer$associate_repository_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RepositoryAssociation = structure(list(AssociationId = structure(logical(0), tags = list(type = "string")), AssociationArn = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), LastUpdatedTimeStamp = structure(logical(0), tags = list(type = "timestamp")), CreatedTimeStamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(RepositoryAssociation = structure(list(AssociationId = structure(logical(0), tags = list(type = "string")), AssociationArn = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), LastUpdatedTimeStamp = structure(logical(0), tags = list(type = "timestamp")), CreatedTimeStamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codegurureviewer$create_code_review_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), RepositoryAssociationArn = structure(logical(0), tags = list(type = "string")), Type = structure(list(RepositoryAnalysis = structure(list(RepositoryHead = structure(list(BranchName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codegurureviewer$create_code_review_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CodeReview = structure(list(Name = structure(logical(0), tags = list(type = "string")), CodeReviewArn = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), CreatedTimeStamp = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTimeStamp = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string")), PullRequestId = structure(logical(0), tags = list(type = "string")), SourceCodeType = structure(list(CommitDiff = structure(list(SourceCommit = structure(logical(0), tags = list(type = "string")), DestinationCommit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RepositoryHead = structure(list(BranchName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), AssociationArn = structure(logical(0), tags = list(type = "string")), Metrics = structure(list(MeteredLinesOfCodeCount = structure(logical(0), tags = list(type = "long")), FindingsCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -23,7 +35,7 @@ NULL
 
 .codegurureviewer$describe_code_review_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CodeReview = structure(list(Name = structure(logical(0), tags = list(type = "string")), CodeReviewArn = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), CreatedTimeStamp = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTimeStamp = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string")), PullRequestId = structure(logical(0), tags = list(type = "string")), SourceCodeType = structure(list(CommitDiff = structure(list(SourceCommit = structure(logical(0), tags = list(type = "string")), DestinationCommit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Metrics = structure(list(MeteredLinesOfCodeCount = structure(logical(0), tags = list(type = "long")), FindingsCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(CodeReview = structure(list(Name = structure(logical(0), tags = list(type = "string")), CodeReviewArn = structure(logical(0), tags = list(type = "string")), RepositoryName = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), CreatedTimeStamp = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTimeStamp = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string")), PullRequestId = structure(logical(0), tags = list(type = "string")), SourceCodeType = structure(list(CommitDiff = structure(list(SourceCommit = structure(logical(0), tags = list(type = "string")), DestinationCommit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RepositoryHead = structure(list(BranchName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), AssociationArn = structure(logical(0), tags = list(type = "string")), Metrics = structure(list(MeteredLinesOfCodeCount = structure(logical(0), tags = list(type = "long")), FindingsCount = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -47,7 +59,7 @@ NULL
 
 .codegurureviewer$describe_repository_association_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RepositoryAssociation = structure(list(AssociationId = structure(logical(0), tags = list(type = "string")), AssociationArn = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), LastUpdatedTimeStamp = structure(logical(0), tags = list(type = "timestamp")), CreatedTimeStamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(RepositoryAssociation = structure(list(AssociationId = structure(logical(0), tags = list(type = "string")), AssociationArn = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), LastUpdatedTimeStamp = structure(logical(0), tags = list(type = "timestamp")), CreatedTimeStamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -59,7 +71,7 @@ NULL
 
 .codegurureviewer$disassociate_repository_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RepositoryAssociation = structure(list(AssociationId = structure(logical(0), tags = list(type = "string")), AssociationArn = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), LastUpdatedTimeStamp = structure(logical(0), tags = list(type = "timestamp")), CreatedTimeStamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(RepositoryAssociation = structure(list(AssociationId = structure(logical(0), tags = list(type = "string")), AssociationArn = structure(logical(0), tags = list(type = "string")), ConnectionArn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), ProviderType = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), LastUpdatedTimeStamp = structure(logical(0), tags = list(type = "timestamp")), CreatedTimeStamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -111,6 +123,18 @@ NULL
   return(populate(args, shape))
 }
 
+.codegurureviewer$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codegurureviewer$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .codegurureviewer$put_recommendation_feedback_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(CodeReviewArn = structure(logical(0), tags = list(type = "string")), RecommendationId = structure(logical(0), tags = list(type = "string")), Reactions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -118,6 +142,30 @@ NULL
 }
 
 .codegurureviewer$put_recommendation_feedback_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codegurureviewer$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codegurureviewer$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codegurureviewer$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceArn = structure(logical(0), tags = list(location = "uri", locationName = "resourceArn", type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "tagKeys", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.codegurureviewer$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

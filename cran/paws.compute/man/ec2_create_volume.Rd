@@ -7,29 +7,40 @@ Availability Zone}
 \usage{
 ec2_create_volume(AvailabilityZone, Encrypted, Iops, KmsKeyId,
   OutpostArn, Size, SnapshotId, VolumeType, DryRun, TagSpecifications,
-  MultiAttachEnabled)
+  MultiAttachEnabled, Throughput)
 }
 \arguments{
 \item{AvailabilityZone}{[required] The Availability Zone in which to create the volume.}
 
-\item{Encrypted}{Specifies whether the volume should be encrypted. The effect of setting
+\item{Encrypted}{Indicates whether the volume should be encrypted. The effect of setting
 the encryption state to \code{true} depends on the volume origin (new or from
 a snapshot), starting encryption state, ownership, and whether
-encryption by default is enabled. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-by-default}{Encryption by Default}
+encryption by default is enabled. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-by-default}{Encryption by default}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 Encrypted Amazon EBS volumes must be attached to instances that support
-Amazon EBS encryption. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances}{Supported Instance Types}.}
+Amazon EBS encryption. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances}{Supported instance types}.}
 
-\item{Iops}{The number of I/O operations per second (IOPS) to provision for the
-volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 64,000 IOPS
-for volumes in most Regions. Maximum IOPS of 64,000 is guaranteed only
-on \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Nitro-based instances}.
-Other instance families guarantee performance up to 32,000 IOPS. For
-more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html}{Amazon EBS Volume Types}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+\item{Iops}{The number of I/O operations per second (IOPS). For \code{gp3}, \code{io1}, and
+\code{io2} volumes, this represents the number of IOPS that are provisioned
+for the volume. For \code{gp2} volumes, this represents the baseline
+performance of the volume and the rate at which the volume accumulates
+I/O credits for bursting.
 
-This parameter is valid only for Provisioned IOPS SSD (io1) volumes.}
+The following are the supported values for each volume type:
+\itemize{
+\item \code{gp3}: 3,000-16,000 IOPS
+\item \code{io1}: 100-64,000 IOPS
+\item \code{io2}: 100-64,000 IOPS
+}
+
+For \code{io1} and \code{io2} volumes, we guarantee 64,000 IOPS only for
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Instances built on the Nitro System}.
+Other instance families guarantee performance up to 32,000 IOPS.
+
+This parameter is required for \code{io1} and \code{io2} volumes. The default for
+\code{gp3} volumes is 3,000 IOPS. This parameter is not supported for \code{gp2},
+\code{st1}, \code{sc1}, or \code{standard} volumes.}
 
 \item{KmsKeyId}{The identifier of the AWS Key Management Service (AWS KMS) customer
 master key (CMK) to use for Amazon EBS encryption. If this parameter is
@@ -38,12 +49,12 @@ specified, the encrypted state must be \code{true}.
 
 You can specify the CMK using any of the following:
 \itemize{
-\item Key ID. For example, key/1234abcd-12ab-34cd-56ef-1234567890ab.
+\item Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
 \item Key alias. For example, alias/ExampleAlias.
 \item Key ARN. For example,
-arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:key/\emph{abcd1234-a123-456a-a12b-a123b4cd56ef}.
+arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
 \item Alias ARN. For example,
-arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:alias/\emph{ExampleAlias}.
+arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
 }
 
 AWS authenticates the CMK asynchronously. Therefore, if you specify an
@@ -53,22 +64,32 @@ but eventually fails.}
 \item{OutpostArn}{The Amazon Resource Name (ARN) of the Outpost.}
 
 \item{Size}{The size of the volume, in GiBs. You must specify either a snapshot ID
-or a volume size.
+or a volume size. If you specify a snapshot, the default is the snapshot
+size. You can specify a volume size that is equal to or larger than the
+snapshot size.
 
-Constraints: 1-16,384 for \code{gp2}, 4-16,384 for \code{io1}, 500-16,384 for
-\code{st1}, 500-16,384 for \code{sc1}, and 1-1,024 for \code{standard}. If you specify
-a snapshot, the volume size must be equal to or larger than the snapshot
-size.
-
-Default: If you're creating the volume from a snapshot and don't specify
-a volume size, the default is the snapshot size.}
+The following are the supported volumes sizes for each volume type:
+\itemize{
+\item \code{gp2} and \code{gp3}: 1-16,384
+\item \code{io1} and \code{io2}: 4-16,384
+\item \code{st1} and \code{sc1}: 125-16,384
+\item \code{standard}: 1-1,024
+}}
 
 \item{SnapshotId}{The snapshot from which to create the volume. You must specify either a
 snapshot ID or a volume size.}
 
-\item{VolumeType}{The volume type. This can be \code{gp2} for General Purpose SSD, \code{io1} for
-Provisioned IOPS SSD, \code{st1} for Throughput Optimized HDD, \code{sc1} for Cold
-HDD, or \code{standard} for Magnetic volumes.
+\item{VolumeType}{The volume type. This parameter can be one of the following values:
+\itemize{
+\item General Purpose SSD: \code{gp2} | \code{gp3}
+\item Provisioned IOPS SSD: \code{io1} | \code{io2}
+\item Throughput Optimized HDD: \code{st1}
+\item Cold HDD: \code{sc1}
+\item Magnetic: \code{standard}
+}
+
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html}{Amazon EBS volume types}
+in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 Default: \code{gp2}}
 
@@ -79,15 +100,21 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{TagSpecifications}{The tags to apply to the volume during creation.}
 
-\item{MultiAttachEnabled}{Specifies whether to enable Amazon EBS Multi-Attach. If you enable
-Multi-Attach, you can attach the volume to up to 16 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Nitro-based instances}
-in the same Availability Zone. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html}{Amazon EBS Multi-Attach}
+\item{MultiAttachEnabled}{Indicates whether to enable Amazon EBS Multi-Attach. If you enable
+Multi-Attach, you can attach the volume to up to 16 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances}{Instances built on the Nitro System}
+in the same Availability Zone. This parameter is supported with \code{io1}
+and \code{io2} volumes only. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html}{Amazon EBS Multi-Attach}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.}
+
+\item{Throughput}{The throughput to provision for a volume, with a maximum of 1,000 MiB/s.
+
+This parameter is valid only for \code{gp3} volumes.
+
+Valid Range: Minimum value of 125. Maximum value of 1000.}
 }
 \description{
 Creates an EBS volume that can be attached to an instance in the same
-Availability Zone. The volume is created in the regional endpoint that
-you send the HTTP request to. For more information see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html}{Regions and Endpoints}.
+Availability Zone.
 }
 \details{
 You can create a new empty volume or restore a volume from an EBS
@@ -97,14 +124,14 @@ propagated to the volume.
 You can create encrypted volumes. Encrypted volumes must be attached to
 instances that support Amazon EBS encryption. Volumes that are created
 from encrypted snapshots are also automatically encrypted. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption}
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 You can tag your volumes during creation. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Amazon EC2 Resources}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging your Amazon EC2 resources}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html}{Creating an Amazon EBS Volume}
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html}{Creating an Amazon EBS volume}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
@@ -116,11 +143,11 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   OutpostArn = "string",
   Size = 123,
   SnapshotId = "string",
-  VolumeType = "standard"|"io1"|"gp2"|"sc1"|"st1",
+  VolumeType = "standard"|"io1"|"io2"|"gp2"|"sc1"|"st1"|"gp3",
   DryRun = TRUE|FALSE,
   TagSpecifications = list(
     list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
       Tags = list(
         list(
           Key = "string",
@@ -129,7 +156,8 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
       )
     )
   ),
-  MultiAttachEnabled = TRUE|FALSE
+  MultiAttachEnabled = TRUE|FALSE,
+  Throughput = 123
 )
 }
 }

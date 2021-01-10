@@ -4,11 +4,13 @@
 \alias{medialive_create_channel}
 \title{Creates a new channel}
 \usage{
-medialive_create_channel(ChannelClass, Destinations, EncoderSettings,
-  InputAttachments, InputSpecification, LogLevel, Name, RequestId,
-  Reserved, RoleArn, Tags)
+medialive_create_channel(CdiInputSpecification, ChannelClass,
+  Destinations, EncoderSettings, InputAttachments, InputSpecification,
+  LogLevel, Name, RequestId, Reserved, RoleArn, Tags)
 }
 \arguments{
+\item{CdiInputSpecification}{Specification of CDI inputs for this channel}
+
 \item{ChannelClass}{The class for this channel. STANDARD for a channel with two pipelines or SINGLE_PIPELINE for a channel with one pipeline.}
 
 \item{Destinations}{}
@@ -17,7 +19,7 @@ medialive_create_channel(ChannelClass, Destinations, EncoderSettings,
 
 \item{InputAttachments}{List of input attachments for channel.}
 
-\item{InputSpecification}{Specification of input for this channel (max. bitrate, resolution, codec, etc.)}
+\item{InputSpecification}{Specification of network and file inputs for this channel}
 
 \item{LogLevel}{The log level to write to CloudWatch Logs.}
 
@@ -37,6 +39,9 @@ Creates a new channel
 }
 \section{Request syntax}{
 \preformatted{svc$create_channel(
+  CdiInputSpecification = list(
+    Resolution = "SD"|"HD"|"FHD"|"UHD"
+  ),
   ChannelClass = "STANDARD"|"SINGLE_PIPELINE",
   Destinations = list(
     list(
@@ -119,7 +124,12 @@ Creates a new channel
             CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0",
             SampleRate = 123.0
           ),
-          PassThroughSettings = list()
+          PassThroughSettings = list(),
+          WavSettings = list(
+            BitDepth = 123.0,
+            CodingMode = "CODING_MODE_1_0"|"CODING_MODE_2_0"|"CODING_MODE_4_0"|"CODING_MODE_8_0",
+            SampleRate = 123.0
+          )
         ),
         LanguageCode = "string",
         LanguageCodeControl = "FOLLOW_INPUT"|"USE_CONFIGURED",
@@ -230,6 +240,11 @@ Creates a new channel
             XPosition = 123,
             YPosition = 123
           ),
+          EbuTtDDestinationSettings = list(
+            FillLineGap = "DISABLED"|"ENABLED",
+            FontFamily = "string",
+            StyleControl = "EXCLUDE"|"INCLUDE"
+          ),
           EmbeddedDestinationSettings = list(),
           EmbeddedPlusScte20DestinationSettings = list(),
           RtmpCaptionInfoDestinationSettings = list(),
@@ -310,6 +325,7 @@ Creates a new channel
               DestinationRefId = "string"
             ),
             DirectoryStructure = "SINGLE_DIRECTORY"|"SUBDIRECTORY_PER_STREAM",
+            DiscontinuityTags = "INSERT"|"NEVER_INSERT",
             EncryptionType = "AES128"|"SAMPLE_AES",
             HlsCdnSettings = list(
               HlsAkamaiSettings = list(
@@ -344,6 +360,7 @@ Creates a new channel
             ),
             HlsId3SegmentTagging = "DISABLED"|"ENABLED",
             IFrameOnlyPlaylists = "DISABLED"|"STANDARD",
+            IncompleteSegmentBehavior = "AUTO"|"SUPPRESS",
             IndexNSegments = 123,
             InputLossAction = "EMIT_OUTPUT"|"PAUSE_OUTPUT",
             IvInManifest = "EXCLUDE"|"INCLUDE",
@@ -365,7 +382,7 @@ Creates a new channel
             ManifestDurationFormat = "FLOATING_POINT"|"INTEGER",
             MinSegmentLength = 123,
             Mode = "LIVE"|"VOD",
-            OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY",
+            OutputSelection = "MANIFESTS_AND_SEGMENTS"|"SEGMENTS_ONLY"|"VARIANT_MANIFESTS_AND_SEGMENTS",
             ProgramDateTime = "EXCLUDE"|"INCLUDE",
             ProgramDateTimePeriod = 123,
             RedundantManifest = "DISABLED"|"ENABLED",
@@ -408,6 +425,9 @@ Creates a new channel
           ),
           MultiplexGroupSettings = list(),
           RtmpGroupSettings = list(
+            AdMarkers = list(
+              "ON_CUE_POINT_SCTE35"
+            ),
             AuthenticationScheme = "AKAMAI"|"COMMON",
             CacheFullBehavior = "DISCONNECT_IMMEDIATELY"|"WAIT_FOR_SERVER",
             CacheLength = 123,
@@ -492,7 +512,8 @@ Creates a new channel
                     TimedMetadataPid = "string",
                     TransportStreamId = 123,
                     VideoPid = "string"
-                  )
+                  ),
+                  RawSettings = list()
                 ),
                 Extension = "string",
                 NameModifier = "string"
@@ -720,6 +741,12 @@ Creates a new channel
               Rec601Settings = list(),
               Rec709Settings = list()
             ),
+            FilterSettings = list(
+              TemporalFilterSettings = list(
+                PostFilterSharpening = "AUTO"|"DISABLED"|"ENABLED",
+                Strength = "AUTO"|"STRENGTH_1"|"STRENGTH_2"|"STRENGTH_3"|"STRENGTH_4"|"STRENGTH_5"|"STRENGTH_6"|"STRENGTH_7"|"STRENGTH_8"|"STRENGTH_9"|"STRENGTH_10"|"STRENGTH_11"|"STRENGTH_12"|"STRENGTH_13"|"STRENGTH_14"|"STRENGTH_15"|"STRENGTH_16"
+              )
+            ),
             FixedAfd = "AFD_0000"|"AFD_0010"|"AFD_0011"|"AFD_0100"|"AFD_1000"|"AFD_1001"|"AFD_1010"|"AFD_1011"|"AFD_1101"|"AFD_1110"|"AFD_1111",
             FlickerAq = "DISABLED"|"ENABLED",
             FramerateDenominator = 123,
@@ -736,11 +763,34 @@ Creates a new channel
             Profile = "MAIN"|"MAIN_10BIT",
             QvbrQualityLevel = 123,
             RateControlMode = "CBR"|"MULTIPLEX"|"QVBR",
-            ScanType = "PROGRESSIVE",
+            ScanType = "INTERLACED"|"PROGRESSIVE",
             SceneChangeDetect = "DISABLED"|"ENABLED",
             Slices = 123,
             Tier = "HIGH"|"MAIN",
             TimecodeInsertion = "DISABLED"|"PIC_TIMING_SEI"
+          ),
+          Mpeg2Settings = list(
+            AdaptiveQuantization = "AUTO"|"HIGH"|"LOW"|"MEDIUM"|"OFF",
+            AfdSignaling = "AUTO"|"FIXED"|"NONE",
+            ColorMetadata = "IGNORE"|"INSERT",
+            ColorSpace = "AUTO"|"PASSTHROUGH",
+            DisplayAspectRatio = "DISPLAYRATIO16X9"|"DISPLAYRATIO4X3",
+            FilterSettings = list(
+              TemporalFilterSettings = list(
+                PostFilterSharpening = "AUTO"|"DISABLED"|"ENABLED",
+                Strength = "AUTO"|"STRENGTH_1"|"STRENGTH_2"|"STRENGTH_3"|"STRENGTH_4"|"STRENGTH_5"|"STRENGTH_6"|"STRENGTH_7"|"STRENGTH_8"|"STRENGTH_9"|"STRENGTH_10"|"STRENGTH_11"|"STRENGTH_12"|"STRENGTH_13"|"STRENGTH_14"|"STRENGTH_15"|"STRENGTH_16"
+              )
+            ),
+            FixedAfd = "AFD_0000"|"AFD_0010"|"AFD_0011"|"AFD_0100"|"AFD_1000"|"AFD_1001"|"AFD_1010"|"AFD_1011"|"AFD_1101"|"AFD_1110"|"AFD_1111",
+            FramerateDenominator = 123,
+            FramerateNumerator = 123,
+            GopClosedCadence = 123,
+            GopNumBFrames = 123,
+            GopSize = 123.0,
+            GopSizeUnits = "FRAMES"|"SECONDS",
+            ScanType = "INTERLACED"|"PROGRESSIVE",
+            SubgopLength = "DYNAMIC"|"FIXED",
+            TimecodeInsertion = "DISABLED"|"GOP_TIMECODE"
           )
         ),
         Height = 123,
@@ -755,6 +805,24 @@ Creates a new channel
   InputAttachments = list(
     list(
       AutomaticInputFailoverSettings = list(
+        ErrorClearTimeMsec = 123,
+        FailoverConditions = list(
+          list(
+            FailoverConditionSettings = list(
+              AudioSilenceSettings = list(
+                AudioSelectorName = "string",
+                AudioSilenceThresholdMsec = 123
+              ),
+              InputLossSettings = list(
+                InputLossThresholdMsec = 123
+              ),
+              VideoBlackSettings = list(
+                BlackDetectThreshold = 123.0,
+                VideoBlackThresholdMsec = 123
+              )
+            )
+          )
+        ),
         InputPreference = "EQUAL_INPUT_PREFERENCE"|"PRIMARY_INPUT_PREFERRED",
         SecondaryInputId = "string"
       ),
@@ -787,6 +855,9 @@ Creates a new channel
             LanguageCode = "string",
             Name = "string",
             SelectorSettings = list(
+              AncillarySourceSettings = list(
+                SourceAncillaryChannelNumber = 123
+              ),
               AribSourceSettings = list(),
               DvbSubSourceSettings = list(
                 Pid = 123

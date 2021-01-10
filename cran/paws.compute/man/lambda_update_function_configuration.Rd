@@ -7,7 +7,7 @@
 lambda_update_function_configuration(FunctionName, Role, Handler,
   Description, Timeout, MemorySize, VpcConfig, Environment, Runtime,
   DeadLetterConfig, KMSKeyArn, TracingConfig, RevisionId, Layers,
-  FileSystemConfigs)
+  FileSystemConfigs, ImageConfig)
 }
 \arguments{
 \item{FunctionName}{[required] The name of the Lambda function.
@@ -28,16 +28,16 @@ the function name, it is limited to 64 characters in length.}
 \item{Handler}{The name of the method within your code that Lambda calls to execute
 your function. The format includes the file name. It can also include
 namespaces and other qualifiers, depending on the runtime. For more
-information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/programming-model-v2.html}{Programming Model}.}
+information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-features.html}{Programming Model}.}
 
 \item{Description}{A description of the function.}
 
 \item{Timeout}{The amount of time that Lambda allows a function to run before stopping
 it. The default is 3 seconds. The maximum allowed value is 900 seconds.}
 
-\item{MemorySize}{The amount of memory that your function has access to. Increasing the
-function's memory also increases its CPU allocation. The default value
-is 128 MB. The value must be a multiple of 64 MB.}
+\item{MemorySize}{The amount of memory available to the function at runtime. Increasing
+the function's memory also increases its CPU allocation. The default
+value is 128 MB. The value can be any multiple of 1 MB.}
 
 \item{VpcConfig}{For network connectivity to AWS resources in a VPC, specify a list of
 security groups and subnets in the VPC. When you connect a function to a
@@ -70,6 +70,8 @@ to add to the function's execution environment. Specify each layer by
 its ARN, including the version.}
 
 \item{FileSystemConfigs}{Connection settings for an Amazon EFS file system.}
+
+\item{ImageConfig}{Configuration values that override the container image Dockerfile.}
 }
 \description{
 Modify the version-specific settings of a Lambda function.
@@ -112,7 +114,7 @@ invoke permissions to an account or AWS service, use AddPermission.
       "string"
     )
   ),
-  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided",
+  Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
   DeadLetterConfig = list(
     TargetArn = "string"
   ),
@@ -129,6 +131,15 @@ invoke permissions to an account or AWS service, use AddPermission.
       Arn = "string",
       LocalMountPath = "string"
     )
+  ),
+  ImageConfig = list(
+    EntryPoint = list(
+      "string"
+    ),
+    Command = list(
+      "string"
+    ),
+    WorkingDirectory = "string"
   )
 )
 }

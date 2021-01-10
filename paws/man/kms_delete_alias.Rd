@@ -11,8 +11,7 @@ kms_delete_alias(AliasName)
 followed by the alias name, such as \code{alias/ExampleAlias}.}
 }
 \description{
-Deletes the specified alias. You cannot perform this operation on an
-alias in a different AWS account.
+Deletes the specified alias.
 }
 \details{
 Because an alias is not a property of a CMK, you can delete and change
@@ -24,6 +23,27 @@ Each CMK can have multiple aliases. To change the alias of a CMK, use
 DeleteAlias to delete the current alias and CreateAlias to create a new
 alias. To associate an existing alias with a different customer master
 key (CMK), call UpdateAlias.
+
+\strong{Cross-account use}: No. You cannot perform this operation on an alias
+in a different AWS account.
+
+\strong{Required permissions}
+\itemize{
+\item \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:DeleteAlias}
+on the alias (IAM policy).
+\item \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:DeleteAlias}
+on the CMK (key policy).
+}
+
+For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-access}{Controlling access to aliases}
+in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Related operations:}
+\itemize{
+\item CreateAlias
+\item ListAliases
+\item UpdateAlias
+}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_alias(

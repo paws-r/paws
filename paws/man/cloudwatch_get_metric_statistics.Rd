@@ -90,10 +90,10 @@ numbers.}
 \item{Unit}{The unit for a given metric. If you omit \code{Unit}, all data that was
 collected with any unit is returned, along with the corresponding units
 that were specified when the data was reported to CloudWatch. If you
-specify a unit, the operation returns only data data that was collected
-with that unit specified. If you specify a unit that does not match the
-data collected, the results of the operation are null. CloudWatch does
-not perform unit conversions.}
+specify a unit, the operation returns only data that was collected with
+that unit specified. If you specify a unit that does not match the data
+collected, the results of the operation are null. CloudWatch does not
+perform unit conversions.}
 }
 \description{
 Gets statistics for the specified metric.
@@ -150,7 +150,7 @@ CloudWatch started retaining 5-minute and 1-hour metric data as of July
 9, 2016.
 
 For information about metrics and dimensions supported by AWS services,
-see the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CW_Support_For_AWS.html}{Amazon CloudWatch Metrics and Dimensions Reference}
+see the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/aws-services-cloudwatch-metrics.html}{Amazon CloudWatch Metrics and Dimensions Reference}
 in the \emph{Amazon CloudWatch User Guide}.
 }
 \section{Request syntax}{

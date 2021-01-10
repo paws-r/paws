@@ -3,6 +3,18 @@
 #' @include workspaces_service.R
 NULL
 
+.workspaces$associate_connection_alias_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AliasId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$associate_connection_alias_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConnectionIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspaces$associate_ip_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), GroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -39,6 +51,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workspaces$create_connection_alias_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConnectionString = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$create_connection_alias_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AliasId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspaces$create_ip_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupName = structure(logical(0), tags = list(type = "string")), GroupDesc = structure(logical(0), tags = list(type = "string")), UserRules = structure(list(structure(list(ipRule = structure(logical(0), tags = list(type = "string")), ruleDesc = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -72,6 +96,18 @@ NULL
 .workspaces$create_workspaces_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(FailedRequests = structure(list(structure(list(WorkspaceRequest = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), BundleId = structure(logical(0), tags = list(type = "string")), VolumeEncryptionKey = structure(logical(0), tags = list(type = "string")), UserVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), RootVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), WorkspaceProperties = structure(list(RunningMode = structure(logical(0), tags = list(type = "string")), RunningModeAutoStopTimeoutInMinutes = structure(logical(0), tags = list(type = "integer")), RootVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), UserVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), ComputeTypeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PendingRequests = structure(list(structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string")), DirectoryId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), BundleId = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ComputerName = structure(logical(0), tags = list(type = "string")), VolumeEncryptionKey = structure(logical(0), tags = list(type = "string")), UserVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), RootVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), WorkspaceProperties = structure(list(RunningMode = structure(logical(0), tags = list(type = "string")), RunningModeAutoStopTimeoutInMinutes = structure(logical(0), tags = list(type = "integer")), RootVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), UserVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), ComputeTypeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ModificationStates = structure(list(structure(list(Resource = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$delete_connection_alias_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AliasId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$delete_connection_alias_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -159,6 +195,30 @@ NULL
   return(populate(args, shape))
 }
 
+.workspaces$describe_connection_alias_permissions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AliasId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$describe_connection_alias_permissions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AliasId = structure(logical(0), tags = list(type = "string")), ConnectionAliasPermissions = structure(list(structure(list(SharedAccountId = structure(logical(0), tags = list(type = "string")), AllowAssociation = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$describe_connection_aliases_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AliasIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ResourceId = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$describe_connection_aliases_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ConnectionAliases = structure(list(structure(list(ConnectionString = structure(logical(0), tags = list(type = "string")), AliasId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), Associations = structure(list(structure(list(AssociationStatus = structure(logical(0), tags = list(type = "string")), AssociatedAccountId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ConnectionIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspaces$describe_ip_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -207,15 +267,27 @@ NULL
   return(populate(args, shape))
 }
 
+.workspaces$describe_workspace_image_permissions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ImageId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$describe_workspace_image_permissions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ImageId = structure(logical(0), tags = list(type = "string")), ImagePermissions = structure(list(structure(list(SharedAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspaces$describe_workspace_images_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ImageIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(ImageIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ImageType = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workspaces$describe_workspace_images_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Images = structure(list(structure(list(ImageId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), OperatingSystem = structure(list(Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string")), RequiredTenancy = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Images = structure(list(structure(list(ImageId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), OperatingSystem = structure(list(Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string")), RequiredTenancy = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), OwnerAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -255,6 +327,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workspaces$disassociate_connection_alias_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AliasId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$disassociate_connection_alias_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspaces$disassociate_ip_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), GroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -269,7 +353,7 @@ NULL
 
 .workspaces$import_workspace_image_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Ec2ImageId = structure(logical(0), tags = list(type = "string")), IngestionProcess = structure(logical(0), tags = list(type = "string")), ImageName = structure(logical(0), tags = list(type = "string")), ImageDescription = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Ec2ImageId = structure(logical(0), tags = list(type = "string")), IngestionProcess = structure(logical(0), tags = list(type = "string")), ImageName = structure(logical(0), tags = list(type = "string")), ImageDescription = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Applications = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -353,7 +437,7 @@ NULL
 
 .workspaces$modify_workspace_creation_properties_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), WorkspaceCreationProperties = structure(list(EnableInternetAccess = structure(logical(0), tags = list(type = "boolean")), DefaultOu = structure(logical(0), tags = list(type = "string")), CustomSecurityGroupId = structure(logical(0), tags = list(type = "string")), UserEnabledAsLocalAdministrator = structure(logical(0), tags = list(type = "boolean")), EnableMaintenanceMode = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), WorkspaceCreationProperties = structure(list(EnableWorkDocs = structure(logical(0), tags = list(type = "boolean")), EnableInternetAccess = structure(logical(0), tags = list(type = "boolean")), DefaultOu = structure(logical(0), tags = list(type = "string")), CustomSecurityGroupId = structure(logical(0), tags = list(type = "string")), UserEnabledAsLocalAdministrator = structure(logical(0), tags = list(type = "boolean")), EnableMaintenanceMode = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -483,6 +567,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workspaces$update_connection_alias_permission_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AliasId = structure(logical(0), tags = list(type = "string")), ConnectionAliasPermission = structure(list(SharedAccountId = structure(logical(0), tags = list(type = "string")), AllowAssociation = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$update_connection_alias_permission_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspaces$update_rules_of_ip_group_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupId = structure(logical(0), tags = list(type = "string")), UserRules = structure(list(structure(list(ipRule = structure(logical(0), tags = list(type = "string")), ruleDesc = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -490,6 +586,18 @@ NULL
 }
 
 .workspaces$update_rules_of_ip_group_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$update_workspace_image_permission_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ImageId = structure(logical(0), tags = list(type = "string")), AllowCopyImage = structure(logical(0), tags = list(type = "boolean")), SharedAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$update_workspace_image_permission_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

@@ -5,7 +5,8 @@ NULL
 
 #' Records user interaction event data
 #'
-#' Records user interaction event data.
+#' Records user interaction event data. For more information see
+#' event-record-api.
 #'
 #' @usage
 #' personalizeevents_put_events(trackingId, userId, sessionId, eventList)
@@ -14,7 +15,11 @@ NULL
 #' [CreateEventTracker](https://docs.aws.amazon.com/personalize/latest/dg/API_CreateEventTracker.html)
 #' API.
 #' @param userId The user associated with the event.
-#' @param sessionId &#91;required&#93; The session ID associated with the user's visit.
+#' @param sessionId &#91;required&#93; The session ID associated with the user's visit. Your application
+#' generates the sessionId when a user first visits your website or uses
+#' your application. Amazon Personalize uses the sessionId to associate
+#' events with the user before they log in. For more information see
+#' event-record-api.
 #' @param eventList &#91;required&#93; A list of event data from the session.
 #'
 #' @section Request syntax:
@@ -27,9 +32,15 @@ NULL
 #'     list(
 #'       eventId = "string",
 #'       eventType = "string",
+#'       eventValue = 123.0,
+#'       itemId = "string",
 #'       properties = "string",
 #'       sentAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       recommendationId = "string",
+#'       impression = list(
+#'         "string"
 #'       )
 #'     )
 #'   )
@@ -55,3 +66,93 @@ personalizeevents_put_events <- function(trackingId, userId = NULL, sessionId, e
   return(response)
 }
 .personalizeevents$operations$put_events <- personalizeevents_put_events
+
+#' Adds one or more items to an Items dataset
+#'
+#' Adds one or more items to an Items dataset. For more information see
+#' importing-items.
+#'
+#' @usage
+#' personalizeevents_put_items(datasetArn, items)
+#'
+#' @param datasetArn &#91;required&#93; The Amazon Resource Number (ARN) of the Items dataset you are adding the
+#' item or items to.
+#' @param items &#91;required&#93; A list of item data.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_items(
+#'   datasetArn = "string",
+#'   items = list(
+#'     list(
+#'       itemId = "string",
+#'       properties = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalizeevents_put_items
+personalizeevents_put_items <- function(datasetArn, items) {
+  op <- new_operation(
+    name = "PutItems",
+    http_method = "POST",
+    http_path = "/items",
+    paginator = list()
+  )
+  input <- .personalizeevents$put_items_input(datasetArn = datasetArn, items = items)
+  output <- .personalizeevents$put_items_output()
+  config <- get_config()
+  svc <- .personalizeevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalizeevents$operations$put_items <- personalizeevents_put_items
+
+#' Adds one or more users to a Users dataset
+#'
+#' Adds one or more users to a Users dataset. For more information see
+#' importing-users.
+#'
+#' @usage
+#' personalizeevents_put_users(datasetArn, users)
+#'
+#' @param datasetArn &#91;required&#93; The Amazon Resource Number (ARN) of the Users dataset you are adding the
+#' user or users to.
+#' @param users &#91;required&#93; A list of user data.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_users(
+#'   datasetArn = "string",
+#'   users = list(
+#'     list(
+#'       userId = "string",
+#'       properties = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname personalizeevents_put_users
+personalizeevents_put_users <- function(datasetArn, users) {
+  op <- new_operation(
+    name = "PutUsers",
+    http_method = "POST",
+    http_path = "/users",
+    paginator = list()
+  )
+  input <- .personalizeevents$put_users_input(datasetArn = datasetArn, users = users)
+  output <- .personalizeevents$put_users_output()
+  config <- get_config()
+  svc <- .personalizeevents$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.personalizeevents$operations$put_users <- personalizeevents_put_users

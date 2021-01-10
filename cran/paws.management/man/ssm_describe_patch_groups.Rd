@@ -10,7 +10,23 @@ ssm_describe_patch_groups(MaxResults, Filters, NextToken)
 \item{MaxResults}{The maximum number of patch groups to return (per page).}
 
 \item{Filters}{One or more filters. Use a filter to return a more specific list of
-results.}
+results.
+
+For \code{DescribePatchGroups},valid filter keys include the following:
+\itemize{
+\item \code{NAME_PREFIX}: The name of the patch group. Wildcards (*) are
+accepted.
+\item \code{OPERATING_SYSTEM}: The supported operating system type to return
+results for. For valid operating system values, see
+GetDefaultPatchBaselineRequest$OperatingSystem in
+CreatePatchBaseline.
+
+Examples:
+\itemize{
+\item \verb{--filters Key=NAME_PREFIX,Values=MyPatchGroup*}
+\item \verb{--filters Key=OPERATING_SYSTEM,Values=AMAZON_LINUX_2}
+}
+}}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}

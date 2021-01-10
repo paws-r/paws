@@ -9,7 +9,9 @@ iot_list_tags_for_resource(resourceArn, nextToken)
 \arguments{
 \item{resourceArn}{[required] The ARN of the resource.}
 
-\item{nextToken}{The token to retrieve the next set of results.}
+\item{nextToken}{To retrieve the next set of results, the \code{nextToken} value from a
+previous response; otherwise \strong{null} to receive the first set of
+results.}
 }
 \description{
 Lists the tags (metadata) you have assigned to the resource.

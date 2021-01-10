@@ -12,25 +12,27 @@ ID values.}
 }
 \description{
 Retrieves one or more matchmaking tickets. Use this operation to
-retrieve ticket information, including status and--once a successful
-match is made--acquire connection information for the resulting new game
-session.
+retrieve ticket information, including--after a successful match is
+made--connection information for the resulting new game session.
 }
 \details{
-You can use this operation to track the progress of matchmaking requests
-(through polling) as an alternative to using event notifications. See
-more details on tracking matchmaking requests through polling or
-notifications in StartMatchmaking.
-
 To request matchmaking tickets, provide a list of up to 10 ticket IDs.
 If the request is successful, a ticket object is returned for each
 requested ID that currently exists.
 
+This operation is not designed to be continually called to track
+matchmaking ticket status. This practice can cause you to exceed your
+API limit, which results in errors. Instead, as a best practice, set up
+an Amazon Simple Notification Service (SNS) to receive notifications,
+and provide the topic ARN in the matchmaking configuration. Continuously
+poling ticket status with DescribeMatchmaking should only be used for
+games in development with low matchmaking usage.
+
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html}{Add FlexMatch to a Game Client}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html}{Add FlexMatch to a Game Client}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html}{Set Up FlexMatch Event Notification}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html}{Set Up FlexMatch Event Notification}
 
 \strong{Related operations}
 \itemize{

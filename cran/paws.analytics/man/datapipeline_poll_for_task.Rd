@@ -19,7 +19,7 @@ the call to \code{PollForTask}. There are no wildcard values permitted in
 \item{instanceIdentity}{Identity information for the EC2 instance that is hosting the task
 runner. You can get this value from the instance using
 \verb{http://169.254.169.254/latest/meta-data/instance-id}. For more
-information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html}{Instance Metadata}
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance Metadata}
 in the \emph{Amazon Elastic Compute Cloud User Guide.} Passing in this value
 proves that your task runner is running on an EC2 instance, and ensures
 the proper AWS Data Pipeline service charges are applied to your

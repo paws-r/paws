@@ -12,9 +12,17 @@ autoscalingplans_create_scaling_plan(ScalingPlanName, ApplicationSource,
 colons, or forward slashes.}
 
 \item{ApplicationSource}{[required] A CloudFormation stack or set of tags. You can create one scaling plan
-per application source.}
+per application source.
 
-\item{ScalingInstructions}{[required] The scaling instructions.}
+For more information, see
+\href{https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ApplicationSource.html}{ApplicationSource}
+in the \emph{AWS Auto Scaling API Reference}.}
+
+\item{ScalingInstructions}{[required] The scaling instructions.
+
+For more information, see
+\href{https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html}{ScalingInstruction}
+in the \emph{AWS Auto Scaling API Reference}.}
 }
 \description{
 Creates a scaling plan.

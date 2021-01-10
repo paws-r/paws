@@ -13,7 +13,7 @@ system is used to read data from the EFS source location or write data
 to the EFS destination. By default, AWS DataSync uses the root
 directory.
 
-\code{Subdirectory} must be specified with forward slashes. For example
+\code{Subdirectory} must be specified with forward slashes. For example,
 \verb{/path/to/folder}.}
 
 \item{EfsFilesystemArn}{[required] The Amazon Resource Name (ARN) for the Amazon EFS file system.}

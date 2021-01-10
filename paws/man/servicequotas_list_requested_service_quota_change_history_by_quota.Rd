@@ -2,39 +2,26 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_list_requested_service_quota_change_history_by_quota}
 \alias{servicequotas_list_requested_service_quota_change_history_by_quota}
-\title{Requests a list of the changes to specific service quotas}
+\title{Retrieves the quota increase requests for the specified quota}
 \usage{
 servicequotas_list_requested_service_quota_change_history_by_quota(
   ServiceCode, QuotaCode, Status, NextToken, MaxResults)
 }
 \arguments{
-\item{ServiceCode}{[required] Specifies the service that you want to use.}
+\item{ServiceCode}{[required] The service identifier.}
 
-\item{QuotaCode}{[required] Specifies the service quota that you want to use}
+\item{QuotaCode}{[required] The quota identifier.}
 
-\item{Status}{Specifies the status value of the quota increase request.}
+\item{Status}{The status value of the quota increase request.}
 
-\item{NextToken}{(Optional) Use this parameter in a request if you receive a \code{NextToken}
-response in a previous request that indicates that there's more output
-available. In a subsequent call, set it to the value of the previous
-call's \code{NextToken} response to indicate where the output should continue
-from.}
+\item{NextToken}{The token for the next page of results.}
 
-\item{MaxResults}{(Optional) Limits the number of results that you want to include in the
-response. If you don't include this parameter, the response defaults to
-a value that's specific to the operation. If additional items exist
-beyond the specified maximum, the \code{NextToken} element is present and has
-a value (isn't null). Include that value as the \code{NextToken} request
-parameter in the call to the operation to get the next part of the
-results. You should check \code{NextToken} after every operation to ensure
-that you receive all of the results.}
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, if any, make another call with the token returned
+from this call.}
 }
 \description{
-Requests a list of the changes to specific service quotas. This command
-provides additional granularity over the
-\code{ListRequestedServiceQuotaChangeHistory} command. Once a quota change
-request has reached \verb{CASE_CLOSED, APPROVED,} or \code{DENIED}, the history
-has been kept for 90 days.
+Retrieves the quota increase requests for the specified quota.
 }
 \section{Request syntax}{
 \preformatted{svc$list_requested_service_quota_change_history_by_quota(

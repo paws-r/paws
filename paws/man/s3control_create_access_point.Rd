@@ -14,15 +14,63 @@ create an access point.}
 \item{Name}{[required] The name you want to assign to this access point.}
 
 \item{Bucket}{[required] The name of the bucket that you want to associate this access point
-with.}
+with.
+
+For using this parameter with Amazon S3 on Outposts with the REST API,
+you must specify the name and the x-amz-outpost-id as well.
+
+For using this parameter with S3 on Outposts with the AWS SDK and CLI,
+you must specify the ARN of the bucket accessed in the format
+\verb{arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/bucket/&lt;my-bucket-name&gt;}.
+For example, to access the bucket \code{reports} through outpost \code{my-outpost}
+owned by account \code{123456789012} in Region \code{us-west-2}, use the URL
+encoding of
+\code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/bucket/reports}.
+The value must be URL encoded.}
 
 \item{VpcConfiguration}{If you include this field, Amazon S3 restricts access to this access
-point to requests from the specified virtual private cloud (VPC).}
+point to requests from the specified virtual private cloud (VPC).
+
+This is required for creating an access point for Amazon S3 on Outposts
+buckets.}
 
 \item{PublicAccessBlockConfiguration}{}
 }
 \description{
-Creates an access point and associates it with the specified bucket.
+Creates an access point and associates it with the specified bucket. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-points.html}{Managing Data Access with Amazon S3 Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+}
+\details{
+\strong{Using this action with Amazon S3 on Outposts}
+
+This action:
+\itemize{
+\item Requires a virtual private cloud (VPC) configuration as S3 on
+Outposts only supports VPC style access points.
+\item Does not support ACL on S3 on Outposts buckets.
+\item Does not support Public Access on S3 on Outposts buckets.
+\item Does not support object lock for S3 on Outposts buckets.
+}
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
+in the \emph{Amazon Simple Storage Service Developer Guide} .
+
+All Amazon S3 on Outposts REST API requests for this action require an
+additional parameter of \code{x-amz-outpost-id} to be passed with the request
+and an S3 on Outposts endpoint hostname prefix instead of \code{s3-control}.
+For an example of the request syntax for Amazon S3 on Outposts that uses
+the S3 on Outposts endpoint hostname prefix and the \code{x-amz-outpost-id}
+derived using the access point ARN, see the
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateAccessPoint.html#API_control_CreateAccessPoint_Examples}{Examples}
+section.
+
+The following actions are related to \code{CreateAccessPoint}:
+\itemize{
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPoint.html}{GetAccessPoint}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPoint.html}{DeleteAccessPoint}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListAccessPoints.html}{ListAccessPoints}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$create_access_point(

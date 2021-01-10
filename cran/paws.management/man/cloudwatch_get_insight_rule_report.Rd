@@ -31,8 +31,8 @@ the report. You can specify one or more of the following metrics:
 \item \code{UniqueContributors} -- the number of unique contributors for each
 data point.
 \item \code{MaxContributorValue} -- the value of the top contributor for each
-data point. The identity of the contributor may change for each data
-point in the graph.
+data point. The identity of the contributor might change for each
+data point in the graph.
 
 If this rule aggregates by COUNT, the top contributor for each data
 point is the contributor with the most occurrences in that period.
@@ -65,8 +65,8 @@ point in the time series. These statistics can include the following:
 \item \code{UniqueContributors} -- the number of unique contributors for each
 data point.
 \item \code{MaxContributorValue} -- the value of the top contributor for each
-data point. The identity of the contributor may change for each data
-point in the graph.
+data point. The identity of the contributor might change for each
+data point in the graph.
 
 If this rule aggregates by COUNT, the top contributor for each data
 point is the contributor with the most occurrences in that period.

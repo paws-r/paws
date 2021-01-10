@@ -14,7 +14,7 @@ Returns the results from the specified query.
 }
 \details{
 Only the fields requested in the query are returned, along with a \verb{@ptr}
-field which is the identifier for the log record. You can use the value
+field, which is the identifier for the log record. You can use the value
 of \verb{@ptr} in a
 \href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_GetLogRecord.html}{GetLogRecord}
 operation to get the full log record.

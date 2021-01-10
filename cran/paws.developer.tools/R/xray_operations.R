@@ -50,31 +50,70 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
 #' Creates a group resource with a name and a filter expression.
 #'
 #' @usage
-#' xray_create_group(GroupName, FilterExpression)
+#' xray_create_group(GroupName, FilterExpression, InsightsConfiguration,
+#'   Tags)
 #'
 #' @param GroupName &#91;required&#93; The case-sensitive name of the new group. Default is a reserved name and
 #' names must be unique.
 #' @param FilterExpression The filter expression defining criteria by which to group traces.
+#' @param InsightsConfiguration The structure containing configurations related to insights.
+#' 
+#' -   The InsightsEnabled boolean can be set to true to enable insights
+#'     for the new group or false to disable insights for the new group.
+#' 
+#' -   The NotifcationsEnabled boolean can be set to true to enable
+#'     insights notifications for the new group. Notifications may only be
+#'     enabled on a group with InsightsEnabled set to true.
+#' @param Tags A map that contains one or more tag keys and tag values to attach to an
+#' X-Ray group. For more information about ways to use tags, see [Tagging
+#' AWS
+#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *AWS General Reference*.
+#' 
+#' The following restrictions apply to tags:
+#' 
+#' -   Maximum number of user-applied tags per resource: 50
+#' 
+#' -   Maximum tag key length: 128 Unicode characters
+#' 
+#' -   Maximum tag value length: 256 Unicode characters
+#' 
+#' -   Valid values for key and value: a-z, A-Z, 0-9, space, and the
+#'     following characters: \\_ . : / = + - and @@
+#' 
+#' -   Tag keys and values are case sensitive.
+#' 
+#' -   Don't use `aws:` as a prefix for keys; it's reserved for AWS use.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_group(
 #'   GroupName = "string",
-#'   FilterExpression = "string"
+#'   FilterExpression = "string",
+#'   InsightsConfiguration = list(
+#'     InsightsEnabled = TRUE|FALSE,
+#'     NotificationsEnabled = TRUE|FALSE
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname xray_create_group
-xray_create_group <- function(GroupName, FilterExpression = NULL) {
+xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateGroup",
     http_method = "POST",
     http_path = "/CreateGroup",
     paginator = list()
   )
-  input <- .xray$create_group_input(GroupName = GroupName, FilterExpression = FilterExpression)
+  input <- .xray$create_group_input(GroupName = GroupName, FilterExpression = FilterExpression, InsightsConfiguration = InsightsConfiguration, Tags = Tags)
   output <- .xray$create_group_output()
   config <- get_config()
   svc <- .xray$service(config)
@@ -97,9 +136,29 @@ xray_create_group <- function(GroupName, FilterExpression = NULL) {
 #' borrowing from the reservoir.
 #'
 #' @usage
-#' xray_create_sampling_rule(SamplingRule)
+#' xray_create_sampling_rule(SamplingRule, Tags)
 #'
 #' @param SamplingRule &#91;required&#93; The rule definition.
+#' @param Tags A map that contains one or more tag keys and tag values to attach to an
+#' X-Ray sampling rule. For more information about ways to use tags, see
+#' [Tagging AWS
+#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *AWS General Reference*.
+#' 
+#' The following restrictions apply to tags:
+#' 
+#' -   Maximum number of user-applied tags per resource: 50
+#' 
+#' -   Maximum tag key length: 128 Unicode characters
+#' 
+#' -   Maximum tag value length: 256 Unicode characters
+#' 
+#' -   Valid values for key and value: a-z, A-Z, 0-9, space, and the
+#'     following characters: \\_ . : / = + - and @@
+#' 
+#' -   Tag keys and values are case sensitive.
+#' 
+#' -   Don't use `aws:` as a prefix for keys; it's reserved for AWS use.
 #'
 #' @section Request syntax:
 #' ```
@@ -120,6 +179,12 @@ xray_create_group <- function(GroupName, FilterExpression = NULL) {
 #'     Attributes = list(
 #'       "string"
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -127,14 +192,14 @@ xray_create_group <- function(GroupName, FilterExpression = NULL) {
 #' @keywords internal
 #'
 #' @rdname xray_create_sampling_rule
-xray_create_sampling_rule <- function(SamplingRule) {
+xray_create_sampling_rule <- function(SamplingRule, Tags = NULL) {
   op <- new_operation(
     name = "CreateSamplingRule",
     http_method = "POST",
     http_path = "/CreateSamplingRule",
     paginator = list()
   )
-  input <- .xray$create_sampling_rule_input(SamplingRule = SamplingRule)
+  input <- .xray$create_sampling_rule_input(SamplingRule = SamplingRule, Tags = Tags)
   output <- .xray$create_sampling_rule_output()
   config <- get_config()
   svc <- .xray$service(config)
@@ -328,6 +393,205 @@ xray_get_groups <- function(NextToken = NULL) {
 }
 .xray$operations$get_groups <- xray_get_groups
 
+#' Retrieves the summary information of an insight
+#'
+#' Retrieves the summary information of an insight. This includes impact to
+#' clients and root cause services, the top anomalous services, the
+#' category, the state of the insight, and the start and end time of the
+#' insight.
+#'
+#' @usage
+#' xray_get_insight(InsightId)
+#'
+#' @param InsightId &#91;required&#93; The insight's unique identifier. Use the GetInsightSummaries action to
+#' retrieve an InsightId.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_insight(
+#'   InsightId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname xray_get_insight
+xray_get_insight <- function(InsightId) {
+  op <- new_operation(
+    name = "GetInsight",
+    http_method = "POST",
+    http_path = "/Insight",
+    paginator = list()
+  )
+  input <- .xray$get_insight_input(InsightId = InsightId)
+  output <- .xray$get_insight_output()
+  config <- get_config()
+  svc <- .xray$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$get_insight <- xray_get_insight
+
+#' X-Ray reevaluates insights periodically until they're resolved, and
+#' records each intermediate state as an event
+#'
+#' X-Ray reevaluates insights periodically until they're resolved, and
+#' records each intermediate state as an event. You can review an insight's
+#' events in the Impact Timeline on the Inspect page in the X-Ray console.
+#'
+#' @usage
+#' xray_get_insight_events(InsightId, MaxResults, NextToken)
+#'
+#' @param InsightId &#91;required&#93; The insight's unique identifier. Use the GetInsightSummaries action to
+#' retrieve an InsightId.
+#' @param MaxResults Used to retrieve at most the specified value of events.
+#' @param NextToken Specify the pagination token returned by a previous request to retrieve
+#' the next page of events.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_insight_events(
+#'   InsightId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname xray_get_insight_events
+xray_get_insight_events <- function(InsightId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetInsightEvents",
+    http_method = "POST",
+    http_path = "/InsightEvents",
+    paginator = list()
+  )
+  input <- .xray$get_insight_events_input(InsightId = InsightId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .xray$get_insight_events_output()
+  config <- get_config()
+  svc <- .xray$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$get_insight_events <- xray_get_insight_events
+
+#' Retrieves a service graph structure filtered by the specified insight
+#'
+#' Retrieves a service graph structure filtered by the specified insight.
+#' The service graph is limited to only structural information. For a
+#' complete service graph, use this API with the GetServiceGraph API.
+#'
+#' @usage
+#' xray_get_insight_impact_graph(InsightId, StartTime, EndTime, NextToken)
+#'
+#' @param InsightId &#91;required&#93; The insight's unique identifier. Use the GetInsightSummaries action to
+#' retrieve an InsightId.
+#' @param StartTime &#91;required&#93; The estimated start time of the insight, in Unix time seconds. The
+#' StartTime is inclusive of the value provided and can't be more than 30
+#' days old.
+#' @param EndTime &#91;required&#93; The estimated end time of the insight, in Unix time seconds. The EndTime
+#' is exclusive of the value provided. The time range between the start
+#' time and end time can't be more than six hours.
+#' @param NextToken Specify the pagination token returned by a previous request to retrieve
+#' the next page of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_insight_impact_graph(
+#'   InsightId = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname xray_get_insight_impact_graph
+xray_get_insight_impact_graph <- function(InsightId, StartTime, EndTime, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetInsightImpactGraph",
+    http_method = "POST",
+    http_path = "/InsightImpactGraph",
+    paginator = list()
+  )
+  input <- .xray$get_insight_impact_graph_input(InsightId = InsightId, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken)
+  output <- .xray$get_insight_impact_graph_output()
+  config <- get_config()
+  svc <- .xray$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$get_insight_impact_graph <- xray_get_insight_impact_graph
+
+#' Retrieves the summaries of all insights in the specified group matching
+#' the provided filter values
+#'
+#' Retrieves the summaries of all insights in the specified group matching
+#' the provided filter values.
+#'
+#' @usage
+#' xray_get_insight_summaries(States, GroupARN, GroupName, StartTime,
+#'   EndTime, MaxResults, NextToken)
+#'
+#' @param States The list of insight states.
+#' @param GroupARN The Amazon Resource Name (ARN) of the group. Required if the GroupName
+#' isn't provided.
+#' @param GroupName The name of the group. Required if the GroupARN isn't provided.
+#' @param StartTime &#91;required&#93; The beginning of the time frame in which the insights started. The start
+#' time can't be more than 30 days old.
+#' @param EndTime &#91;required&#93; The end of the time frame in which the insights ended. The end time
+#' can't be more than 30 days old.
+#' @param MaxResults The maximum number of results to display.
+#' @param NextToken Pagination token.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_insight_summaries(
+#'   States = list(
+#'     "ACTIVE"|"CLOSED"
+#'   ),
+#'   GroupARN = "string",
+#'   GroupName = "string",
+#'   StartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname xray_get_insight_summaries
+xray_get_insight_summaries <- function(States = NULL, GroupARN = NULL, GroupName = NULL, StartTime, EndTime, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "GetInsightSummaries",
+    http_method = "POST",
+    http_path = "/InsightSummaries",
+    paginator = list()
+  )
+  input <- .xray$get_insight_summaries_input(States = States, GroupARN = GroupARN, GroupName = GroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .xray$get_insight_summaries_output()
+  config <- get_config()
+  svc <- .xray$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$get_insight_summaries <- xray_get_insight_summaries
+
 #' Retrieves all sampling rules
 #'
 #' Retrieves all sampling rules.
@@ -468,8 +732,9 @@ xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
 #'
 #' @param StartTime &#91;required&#93; The start of the time frame for which to generate a graph.
 #' @param EndTime &#91;required&#93; The end of the timeframe for which to generate a graph.
-#' @param GroupName The name of a group to generate a graph based on.
-#' @param GroupARN The ARN of a group to generate a graph based on.
+#' @param GroupName The name of a group based on which you want to generate a graph.
+#' @param GroupARN The Amazon Resource Name (ARN) of a group based on which you want to
+#' generate a graph.
 #' @param NextToken Pagination token.
 #'
 #' @section Request syntax:
@@ -515,16 +780,20 @@ xray_get_service_graph <- function(StartTime, EndTime, GroupName = NULL, GroupAR
 #'
 #' @usage
 #' xray_get_time_series_service_statistics(StartTime, EndTime, GroupName,
-#'   GroupARN, EntitySelectorExpression, Period, NextToken)
+#'   GroupARN, EntitySelectorExpression, Period, ForecastStatistics,
+#'   NextToken)
 #'
 #' @param StartTime &#91;required&#93; The start of the time frame for which to aggregate statistics.
 #' @param EndTime &#91;required&#93; The end of the time frame for which to aggregate statistics.
 #' @param GroupName The case-sensitive name of the group for which to pull statistics from.
-#' @param GroupARN The ARN of the group for which to pull statistics from.
+#' @param GroupARN The Amazon Resource Name (ARN) of the group for which to pull statistics
+#' from.
 #' @param EntitySelectorExpression A filter expression defining entities that will be aggregated for
 #' statistics. Supports ID, service, and edge functions. If no selector
 #' expression is specified, edge statistics are returned.
 #' @param Period Aggregation period in seconds.
+#' @param ForecastStatistics The forecasted high and low fault count values. Forecast enabled
+#' requests require the EntitySelectorExpression ID be provided.
 #' @param NextToken Pagination token.
 #'
 #' @section Request syntax:
@@ -540,6 +809,7 @@ xray_get_service_graph <- function(StartTime, EndTime, GroupName = NULL, GroupAR
 #'   GroupARN = "string",
 #'   EntitySelectorExpression = "string",
 #'   Period = 123,
+#'   ForecastStatistics = TRUE|FALSE,
 #'   NextToken = "string"
 #' )
 #' ```
@@ -547,14 +817,14 @@ xray_get_service_graph <- function(StartTime, EndTime, GroupName = NULL, GroupAR
 #' @keywords internal
 #'
 #' @rdname xray_get_time_series_service_statistics
-xray_get_time_series_service_statistics <- function(StartTime, EndTime, GroupName = NULL, GroupARN = NULL, EntitySelectorExpression = NULL, Period = NULL, NextToken = NULL) {
+xray_get_time_series_service_statistics <- function(StartTime, EndTime, GroupName = NULL, GroupARN = NULL, EntitySelectorExpression = NULL, Period = NULL, ForecastStatistics = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "GetTimeSeriesServiceStatistics",
     http_method = "POST",
     http_path = "/TimeSeriesServiceStatistics",
     paginator = list()
   )
-  input <- .xray$get_time_series_service_statistics_input(StartTime = StartTime, EndTime = EndTime, GroupName = GroupName, GroupARN = GroupARN, EntitySelectorExpression = EntitySelectorExpression, Period = Period, NextToken = NextToken)
+  input <- .xray$get_time_series_service_statistics_input(StartTime = StartTime, EndTime = EndTime, GroupName = GroupName, GroupARN = GroupARN, EntitySelectorExpression = EntitySelectorExpression, Period = Period, ForecastStatistics = ForecastStatistics, NextToken = NextToken)
   output <- .xray$get_time_series_service_statistics_output()
   config <- get_config()
   svc <- .xray$service(config)
@@ -637,7 +907,7 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 #' @param TimeRangeType A parameter to indicate whether to query trace summaries by TraceId or
 #' Event time.
 #' @param Sampling Set to `true` to get summaries for only a subset of available traces.
-#' @param SamplingStrategy A paramater to indicate whether to enable sampling on trace summaries.
+#' @param SamplingStrategy A parameter to indicate whether to enable sampling on trace summaries.
 #' Input parameters are Name and Value.
 #' @param FilterExpression Specify a filter expression to retrieve trace summaries for services or
 #' requests that meet certain requirements.
@@ -683,6 +953,48 @@ xray_get_trace_summaries <- function(StartTime, EndTime, TimeRangeType = NULL, S
   return(response)
 }
 .xray$operations$get_trace_summaries <- xray_get_trace_summaries
+
+#' Returns a list of tags that are applied to the specified AWS X-Ray group
+#' or sampling rule
+#'
+#' Returns a list of tags that are applied to the specified AWS X-Ray group
+#' or sampling rule.
+#'
+#' @usage
+#' xray_list_tags_for_resource(ResourceARN, NextToken)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Number (ARN) of an X-Ray group or sampling rule.
+#' @param NextToken A pagination token. If multiple pages of results are returned, use the
+#' `NextToken` value returned with the current page of results as the value
+#' of this parameter to get the next page of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceARN = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname xray_list_tags_for_resource
+xray_list_tags_for_resource <- function(ResourceARN, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/ListTagsForResource",
+    paginator = list()
+  )
+  input <- .xray$list_tags_for_resource_input(ResourceARN = ResourceARN, NextToken = NextToken)
+  output <- .xray$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .xray$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$list_tags_for_resource <- xray_list_tags_for_resource
 
 #' Updates the encryption configuration for X-Ray data
 #'
@@ -810,7 +1122,7 @@ xray_put_telemetry_records <- function(TelemetryRecords, EC2InstanceId = NULL, H
 #' Documents](https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html)
 #' in the *AWS X-Ray Developer Guide*.
 #' 
-#' **Required Segment Document Fields**
+#' **Required segment document fields**
 #' 
 #' -   `name` - The name of the service that handled the request.
 #' 
@@ -830,17 +1142,17 @@ xray_put_telemetry_records <- function(TelemetryRecords, EC2InstanceId = NULL, H
 #' 
 #' -   `in_progress` - Set to `true` instead of specifying an `end_time` to
 #'     record that a segment has been started, but is not complete. Send an
-#'     in progress segment when your application receives a request that
-#'     will take a long time to serve, to trace the fact that the request
-#'     was received. When the response is sent, send the complete segment
-#'     to overwrite the in-progress segment.
+#'     in-progress segment when your application receives a request that
+#'     will take a long time to serve, to trace that the request was
+#'     received. When the response is sent, send the complete segment to
+#'     overwrite the in-progress segment.
 #' 
 #' A `trace_id` consists of three numbers separated by hyphens. For
 #' example, 1-58406520-a006649127e371903a2de979. This includes:
 #' 
 #' **Trace ID Format**
 #' 
-#' -   The version number, i.e. `1`.
+#' -   The version number, for instance, `1`.
 #' 
 #' -   The time of the original request, in Unix epoch time, in 8
 #'     hexadecimal digits. For example, 10:00AM December 2nd, 2016 PST in
@@ -884,38 +1196,156 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
 }
 .xray$operations$put_trace_segments <- xray_put_trace_segments
 
+#' Applies tags to an existing AWS X-Ray group or sampling rule
+#'
+#' Applies tags to an existing AWS X-Ray group or sampling rule.
+#'
+#' @usage
+#' xray_tag_resource(ResourceARN, Tags)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Number (ARN) of an X-Ray group or sampling rule.
+#' @param Tags &#91;required&#93; A map that contains one or more tag keys and tag values to attach to an
+#' X-Ray group or sampling rule. For more information about ways to use
+#' tags, see [Tagging AWS
+#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *AWS General Reference*.
+#' 
+#' The following restrictions apply to tags:
+#' 
+#' -   Maximum number of user-applied tags per resource: 50
+#' 
+#' -   Maximum tag key length: 128 Unicode characters
+#' 
+#' -   Maximum tag value length: 256 Unicode characters
+#' 
+#' -   Valid values for key and value: a-z, A-Z, 0-9, space, and the
+#'     following characters: \\_ . : / = + - and @@
+#' 
+#' -   Tag keys and values are case sensitive.
+#' 
+#' -   Don't use `aws:` as a prefix for keys; it's reserved for AWS use.
+#'     You cannot edit or delete system tags.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceARN = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname xray_tag_resource
+xray_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/TagResource",
+    paginator = list()
+  )
+  input <- .xray$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .xray$tag_resource_output()
+  config <- get_config()
+  svc <- .xray$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$tag_resource <- xray_tag_resource
+
+#' Removes tags from an AWS X-Ray group or sampling rule
+#'
+#' Removes tags from an AWS X-Ray group or sampling rule. You cannot edit
+#' or delete system tags (those with an `aws:` prefix).
+#'
+#' @usage
+#' xray_untag_resource(ResourceARN, TagKeys)
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Number (ARN) of an X-Ray group or sampling rule.
+#' @param TagKeys &#91;required&#93; Keys for one or more tags that you want to remove from an X-Ray group or
+#' sampling rule.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceARN = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname xray_untag_resource
+xray_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/UntagResource",
+    paginator = list()
+  )
+  input <- .xray$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .xray$untag_resource_output()
+  config <- get_config()
+  svc <- .xray$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.xray$operations$untag_resource <- xray_untag_resource
+
 #' Updates a group resource
 #'
 #' Updates a group resource.
 #'
 #' @usage
-#' xray_update_group(GroupName, GroupARN, FilterExpression)
+#' xray_update_group(GroupName, GroupARN, FilterExpression,
+#'   InsightsConfiguration)
 #'
 #' @param GroupName The case-sensitive name of the group.
 #' @param GroupARN The ARN that was generated upon creation.
 #' @param FilterExpression The updated filter expression defining criteria by which to group
 #' traces.
+#' @param InsightsConfiguration The structure containing configurations related to insights.
+#' 
+#' -   The InsightsEnabled boolean can be set to true to enable insights
+#'     for the group or false to disable insights for the group.
+#' 
+#' -   The NotifcationsEnabled boolean can be set to true to enable
+#'     insights notifications for the group. Notifications can only be
+#'     enabled on a group with InsightsEnabled set to true.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_group(
 #'   GroupName = "string",
 #'   GroupARN = "string",
-#'   FilterExpression = "string"
+#'   FilterExpression = "string",
+#'   InsightsConfiguration = list(
+#'     InsightsEnabled = TRUE|FALSE,
+#'     NotificationsEnabled = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname xray_update_group
-xray_update_group <- function(GroupName = NULL, GroupARN = NULL, FilterExpression = NULL) {
+xray_update_group <- function(GroupName = NULL, GroupARN = NULL, FilterExpression = NULL, InsightsConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateGroup",
     http_method = "POST",
     http_path = "/UpdateGroup",
     paginator = list()
   )
-  input <- .xray$update_group_input(GroupName = GroupName, GroupARN = GroupARN, FilterExpression = FilterExpression)
+  input <- .xray$update_group_input(GroupName = GroupName, GroupARN = GroupARN, FilterExpression = FilterExpression, InsightsConfiguration = InsightsConfiguration)
   output <- .xray$update_group_output()
   config <- get_config()
   svc <- .xray$service(config)

@@ -24,7 +24,7 @@ Constraints: Minimum 20, maximum 500.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 
-\item{Filters}{Filters applied to the describe table statistics action.
+\item{Filters}{Filters applied to table statistics.
 
 Valid filter names: schema-name | table-name | table-state
 

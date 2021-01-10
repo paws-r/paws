@@ -40,17 +40,27 @@ For more examples, see
 in the \emph{AWS Key Management Service API Reference}.
 }
 
-The following attribute applies only to FIFO topics:
+The following attributes apply only to \href{https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html}{FIFO topics}:
 \itemize{
-\item \code{ContentBasedDeduplication} – Enables content-based deduplication.
-Amazon SNS uses a SHA-256 hash to generate the
-\code{MessageDeduplicationId} using the body of the message (but not the
-attributes of the message).
-\item When \code{ContentBasedDeduplication} is in effect, messages with
-identical content sent within the deduplication interval are treated
-as duplicates and only one copy of the message is delivered.
-\item If the queue has \code{ContentBasedDeduplication} set, your
-\code{MessageDeduplicationId} overrides the generated one.
+\item \code{FifoTopic} – When this is set to \code{true}, a FIFO topic is created.
+\item \code{ContentBasedDeduplication} – Enables content-based deduplication
+for FIFO topics.
+\itemize{
+\item By default, \code{ContentBasedDeduplication} is set to \code{false}. If
+you create a FIFO topic and this attribute is \code{false}, you must
+specify a value for the \code{MessageDeduplicationId} parameter for
+the
+\href{https://docs.aws.amazon.com/sns/latest/api/API_Publish.html}{Publish}
+action.
+\item When you set \code{ContentBasedDeduplication} to \code{true}, Amazon SNS
+uses a SHA-256 hash to generate the \code{MessageDeduplicationId}
+using the body of the message (but not the attributes of the
+message).
+
+(Optional) To override the generated value, you can specify a
+value for the the \code{MessageDeduplicationId} parameter for the
+\code{Publish} action.
+}
 }}
 
 \item{Tags}{The list of tags to add to a new topic.
@@ -62,9 +72,10 @@ To be able to tag a topic on creation, you must have the
 Creates a topic to which notifications can be published. Users can
 create at most 100,000 standard topics (at most 1,000 FIFO topics). For
 more information, see
-\href{http://aws.amazon.com/sns/}{https://aws.amazon.com/sns}. This action is
-idempotent, so if the requester already owns a topic with the specified
-name, that topic's ARN is returned without creating a new topic.
+\href{https://aws.amazon.com/sns/}{https://aws.amazon.com/sns}. This action
+is idempotent, so if the requester already owns a topic with the
+specified name, that topic's ARN is returned without creating a new
+topic.
 }
 \section{Request syntax}{
 \preformatted{svc$create_topic(

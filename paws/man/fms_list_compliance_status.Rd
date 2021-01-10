@@ -2,7 +2,7 @@
 % Please edit documentation in R/fms_operations.R
 \name{fms_list_compliance_status}
 \alias{fms_list_compliance_status}
-\title{Returns an array of PolicyComplianceStatus objects in the response}
+\title{Returns an array of PolicyComplianceStatus objects}
 \usage{
 fms_list_compliance_status(PolicyId, NextToken, MaxResults)
 }
@@ -25,9 +25,9 @@ AWS Firewall Manager to return for this request. If you have more
 to get another batch of \code{PolicyComplianceStatus} objects.}
 }
 \description{
-Returns an array of \code{PolicyComplianceStatus} objects in the response.
-Use \code{PolicyComplianceStatus} to get a summary of which member accounts
-are protected by the specified policy.
+Returns an array of \code{PolicyComplianceStatus} objects. Use
+\code{PolicyComplianceStatus} to get a summary of which member accounts are
+protected by the specified policy.
 }
 \section{Request syntax}{
 \preformatted{svc$list_compliance_status(

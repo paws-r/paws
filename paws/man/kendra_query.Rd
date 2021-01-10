@@ -6,7 +6,7 @@
 \usage{
 kendra_query(IndexId, QueryText, AttributeFilter, Facets,
   RequestedDocumentAttributes, QueryResultTypeFilter, PageNumber,
-  PageSize)
+  PageSize, SortingConfiguration, UserContext, VisitorId)
 }
 \arguments{
 \item{IndexId}{[required] The unique identifier of the index to search. The identifier is returned
@@ -39,6 +39,21 @@ Use this parameter to get result pages after the first one.}
 \item{PageSize}{Sets the number of results that are returned in each page of results.
 The default page size is 10. The maximum number of results returned is
 100. If you ask for more than 100 results, only 100 are returned.}
+
+\item{SortingConfiguration}{Provides information that determines how the results of the query are
+sorted. You can set the field that Amazon Kendra should sort the results
+on, and specify whether the results should be sorted in ascending or
+descending order. In the case of ties in sorting the results, the
+results are sorted by relevance.
+
+If you don't provide sorting configuration, the results are sorted by
+the relevance that Amazon Kendra determines for the result.}
+
+\item{UserContext}{The user context token.}
+
+\item{VisitorId}{Provides an identifier for a specific user. The \code{VisitorId} should be a
+unique identifier, such as a GUID. Don't use personally identifiable
+information, such as the user's email address, as the \code{VisitorId}.}
 }
 \description{
 Searches an active index. Use this API to search your documents using
@@ -60,6 +75,8 @@ results.
 
 You can specify that the query return only one type of result using the
 \code{QueryResultTypeConfig} parameter.
+
+Each query returns the 100 most relevant results.
 }
 \section{Request syntax}{
 \preformatted{svc$query(
@@ -175,7 +192,15 @@ You can specify that the query return only one type of result using the
   ),
   QueryResultTypeFilter = "DOCUMENT"|"QUESTION_ANSWER"|"ANSWER",
   PageNumber = 123,
-  PageSize = 123
+  PageSize = 123,
+  SortingConfiguration = list(
+    DocumentAttributeKey = "string",
+    SortOrder = "DESC"|"ASC"
+  ),
+  UserContext = list(
+    Token = "string"
+  ),
+  VisitorId = "string"
 )
 }
 }

@@ -8,7 +8,8 @@ can review the changes before executing them}
 cloudformation_create_change_set(StackName, TemplateBody, TemplateURL,
   UsePreviousTemplate, Parameters, Capabilities, ResourceTypes, RoleARN,
   RollbackConfiguration, NotificationARNs, Tags, ChangeSetName,
-  ClientToken, Description, ChangeSetType, ResourcesToImport)
+  ClientToken, Description, ChangeSetType, ResourcesToImport,
+  IncludeNestedStacks)
 }
 \arguments{
 \item{StackName}{[required] The name or the unique ID of the stack for which you are creating a
@@ -71,7 +72,7 @@ permissions if necessary.
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGroupAddition}
 }
 
-For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in AWS CloudFormation Templates}.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in AWS CloudFormation Templates}.
 \item \code{CAPABILITY_AUTO_EXPAND}
 
 Some template contain macros. Macros perform custom processing on
@@ -84,21 +85,20 @@ your stack template contains one or more macros, and you choose to
 create a stack directly from the processed template, without first
 reviewing the resulting changes in a change set, you must
 acknowledge this capability. This includes the
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html}{AWS::Include}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html}{AWS::Include}
 and
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
 transforms, which are macros hosted by AWS CloudFormation.
 
 This capacity does not apply to creating change sets, and specifying
 it when creating change sets has no effect.
 
-Also, change sets do not currently support nested stacks. If you
-want to create a stack from a stack template that contains macros
-\emph{and} nested stacks, you must create or update the stack directly
-from the template using the CreateStack or UpdateStack action, and
-specifying this capability.
+If you want to create a stack from a stack template that contains
+macros \emph{and} nested stacks, you must create or update the stack
+directly from the template using the CreateStack or UpdateStack
+action, and specifying this capability.
 
-For more information on macros, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using AWS CloudFormation Macros to Perform Custom Processing on Templates}.
+For more information on macros, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using AWS CloudFormation Macros to Perform Custom Processing on Templates}.
 }}
 
 \item{ResourceTypes}{The template resource types that you have permissions to work with if
@@ -168,6 +168,10 @@ By default, AWS CloudFormation specifies \code{UPDATE}. You can't use the
 type to create a change set for an existing stack.}
 
 \item{ResourcesToImport}{The resources to import into your stack.}
+
+\item{IncludeNestedStacks}{Creates a change set for the all nested stacks specified in the
+template. The default behavior of this action is set to \code{False}. To
+include nested sets in a change set, specify \code{True}.}
 }
 \description{
 Creates a list of changes that will be applied to a stack so that you
@@ -195,6 +199,9 @@ action.
 When you are satisfied with the changes the change set will make,
 execute the change set by using the ExecuteChangeSet action. AWS
 CloudFormation doesn't make changes until you execute the change set.
+
+To create a change set for the entire stack hierachy, set
+\code{IncludeNestedStacks} to \code{True}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_change_set(
@@ -247,7 +254,8 @@ CloudFormation doesn't make changes until you execute the change set.
         "string"
       )
     )
-  )
+  ),
+  IncludeNestedStacks = TRUE|FALSE
 )
 }
 }

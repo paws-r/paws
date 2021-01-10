@@ -4,17 +4,24 @@
 \alias{s3_put_bucket_lifecycle}
 \title{For an updated version of this API, see PutBucketLifecycleConfiguration}
 \usage{
-s3_put_bucket_lifecycle(Bucket, ContentMD5, LifecycleConfiguration)
+s3_put_bucket_lifecycle(Bucket, ContentMD5, LifecycleConfiguration,
+  ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required]}
 
-\item{ContentMD5}{}
+\item{ContentMD5}{For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.}
 
 \item{LifecycleConfiguration}{}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
-For an updated version of this API, see PutBucketLifecycleConfiguration.
+For an updated version of this API, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html}{PutBucketLifecycleConfiguration}.
 This version has been deprecated. Existing lifecycle configurations will
 work. For new lifecycle configurations, use the updated API.
 }
@@ -50,9 +57,9 @@ STANDARD\\_IA or ONEZONE\\_IA, see \href{https://docs.aws.amazon.com/AmazonS3/la
 
 \strong{Related Resources}
 \itemize{
-\item GetBucketLifecycle(Deprecated)
-\item GetBucketLifecycleConfiguration
-\item 
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycle.html}{GetBucketLifecycle}(Deprecated)
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html}{GetBucketLifecycleConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_RestoreObject.html}{RestoreObject}
 \item By default, a resource owner—in this case, a bucket owner, which is
 the AWS account that created the bucket—can perform any of the
 operations. A resource owner can also grant others permission to
@@ -100,7 +107,8 @@ topics in the Amazon Simple Storage Service Developer Guide:
         )
       )
     )
-  )
+  ),
+  ExpectedBucketOwner = "string"
 )
 }
 }

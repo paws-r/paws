@@ -84,6 +84,49 @@ workmail_associate_member_to_group <- function(OrganizationId, GroupId, MemberId
 }
 .workmail$operations$associate_member_to_group <- workmail_associate_member_to_group
 
+#' Cancels a mailbox export job
+#'
+#' Cancels a mailbox export job.
+#' 
+#' If the mailbox export job is near completion, it might not be possible
+#' to cancel it.
+#'
+#' @usage
+#' workmail_cancel_mailbox_export_job(ClientToken, JobId, OrganizationId)
+#'
+#' @param ClientToken &#91;required&#93; The idempotency token for the client request.
+#' @param JobId &#91;required&#93; The job ID.
+#' @param OrganizationId &#91;required&#93; The organization ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_mailbox_export_job(
+#'   ClientToken = "string",
+#'   JobId = "string",
+#'   OrganizationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_cancel_mailbox_export_job
+workmail_cancel_mailbox_export_job <- function(ClientToken, JobId, OrganizationId) {
+  op <- new_operation(
+    name = "CancelMailboxExportJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$cancel_mailbox_export_job_input(ClientToken = ClientToken, JobId = JobId, OrganizationId = OrganizationId)
+  output <- .workmail$cancel_mailbox_export_job_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$cancel_mailbox_export_job <- workmail_cancel_mailbox_export_job
+
 #' Adds an alias to the set of a given member (user or group) of Amazon
 #' WorkMail
 #'
@@ -166,6 +209,83 @@ workmail_create_group <- function(OrganizationId, Name) {
 }
 .workmail$operations$create_group <- workmail_create_group
 
+#' Creates a new Amazon WorkMail organization
+#'
+#' Creates a new Amazon WorkMail organization. Optionally, you can choose
+#' to associate an existing AWS Directory Service directory with your
+#' organization. If an AWS Directory Service directory ID is specified, the
+#' organization alias must match the directory alias. If you choose not to
+#' associate an existing directory with your organization, then we create a
+#' new Amazon WorkMail directory for you. For more information, see [Adding
+#' an
+#' organization](https://docs.aws.amazon.com/workmail/latest/adminguide/add_new_organization.html)
+#' in the *Amazon WorkMail Administrator Guide*.
+#' 
+#' You can associate multiple email domains with an organization, then set
+#' your default email domain from the Amazon WorkMail console. You can also
+#' associate a domain that is managed in an Amazon Route 53 public hosted
+#' zone. For more information, see [Adding a
+#' domain](https://docs.aws.amazon.com/workmail/latest/adminguide/add_domain.html)
+#' and [Choosing the default
+#' domain](https://docs.aws.amazon.com/workmail/latest/adminguide/default_domain.html)
+#' in the *Amazon WorkMail Administrator Guide*.
+#' 
+#' Optionally, you can use a customer managed master key from AWS Key
+#' Management Service (AWS KMS) to encrypt email for your organization. If
+#' you don't associate an AWS KMS key, Amazon WorkMail creates a default
+#' AWS managed master key for you.
+#'
+#' @usage
+#' workmail_create_organization(DirectoryId, Alias, ClientToken, Domains,
+#'   KmsKeyArn, EnableInteroperability)
+#'
+#' @param DirectoryId The AWS Directory Service directory ID.
+#' @param Alias &#91;required&#93; The organization alias.
+#' @param ClientToken The idempotency token associated with the request.
+#' @param Domains The email domains to associate with the organization.
+#' @param KmsKeyArn The Amazon Resource Name (ARN) of a customer managed master key from AWS
+#' KMS.
+#' @param EnableInteroperability When `true`, allows organization interoperability between Amazon
+#' WorkMail and Microsoft Exchange. Can only be set to `true` if an AD
+#' Connector directory ID is included in the request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_organization(
+#'   DirectoryId = "string",
+#'   Alias = "string",
+#'   ClientToken = "string",
+#'   Domains = list(
+#'     list(
+#'       DomainName = "string",
+#'       HostedZoneId = "string"
+#'     )
+#'   ),
+#'   KmsKeyArn = "string",
+#'   EnableInteroperability = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_create_organization
+workmail_create_organization <- function(DirectoryId = NULL, Alias, ClientToken = NULL, Domains = NULL, KmsKeyArn = NULL, EnableInteroperability = NULL) {
+  op <- new_operation(
+    name = "CreateOrganization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$create_organization_input(DirectoryId = DirectoryId, Alias = Alias, ClientToken = ClientToken, Domains = Domains, KmsKeyArn = KmsKeyArn, EnableInteroperability = EnableInteroperability)
+  output <- .workmail$create_organization_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$create_organization <- workmail_create_organization
+
 #' Creates a new Amazon WorkMail resource
 #'
 #' Creates a new Amazon WorkMail resource.
@@ -218,8 +338,8 @@ workmail_create_resource <- function(OrganizationId, Name, Type) {
 #' workmail_create_user(OrganizationId, Name, DisplayName, Password)
 #'
 #' @param OrganizationId &#91;required&#93; The identifier of the organization for which the user is created.
-#' @param Name &#91;required&#93; The name for the new user. Simple AD or AD Connector user names have a
-#' maximum length of 20. All others have a maximum length of 64.
+#' @param Name &#91;required&#93; The name for the new user. WorkMail directory user names have a maximum
+#' length of 64. All others have a maximum length of 20.
 #' @param DisplayName &#91;required&#93; The display name for the new user.
 #' @param Password &#91;required&#93; The password for the new user.
 #'
@@ -383,7 +503,7 @@ workmail_delete_group <- function(OrganizationId, GroupId) {
 #'
 #' @param OrganizationId &#91;required&#93; The identifier of the organization under which the member (user or
 #' group) exists.
-#' @param EntityId &#91;required&#93; The identifier of the member (user or group)that owns the mailbox.
+#' @param EntityId &#91;required&#93; The identifier of the member (user or group) that owns the mailbox.
 #' @param GranteeId &#91;required&#93; The identifier of the member (user or group) for which to delete granted
 #' permissions.
 #'
@@ -415,6 +535,54 @@ workmail_delete_mailbox_permissions <- function(OrganizationId, EntityId, Grante
   return(response)
 }
 .workmail$operations$delete_mailbox_permissions <- workmail_delete_mailbox_permissions
+
+#' Deletes an Amazon WorkMail organization and all underlying AWS resources
+#' managed by Amazon WorkMail as part of the organization
+#'
+#' Deletes an Amazon WorkMail organization and all underlying AWS resources
+#' managed by Amazon WorkMail as part of the organization. You can choose
+#' whether to delete the associated directory. For more information, see
+#' [Removing an
+#' organization](https://docs.aws.amazon.com/workmail/latest/adminguide/delete_organization.html)
+#' in the *Amazon WorkMail Administrator Guide*.
+#'
+#' @usage
+#' workmail_delete_organization(ClientToken, OrganizationId,
+#'   DeleteDirectory)
+#'
+#' @param ClientToken The idempotency token associated with the request.
+#' @param OrganizationId &#91;required&#93; The organization ID.
+#' @param DeleteDirectory &#91;required&#93; If true, deletes the AWS Directory Service directory associated with the
+#' organization.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_organization(
+#'   ClientToken = "string",
+#'   OrganizationId = "string",
+#'   DeleteDirectory = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_delete_organization
+workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, DeleteDirectory) {
+  op <- new_operation(
+    name = "DeleteOrganization",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$delete_organization_input(ClientToken = ClientToken, OrganizationId = OrganizationId, DeleteDirectory = DeleteDirectory)
+  output <- .workmail$delete_organization_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$delete_organization <- workmail_delete_organization
 
 #' Deletes the specified resource
 #'
@@ -615,6 +783,44 @@ workmail_describe_group <- function(OrganizationId, GroupId) {
   return(response)
 }
 .workmail$operations$describe_group <- workmail_describe_group
+
+#' Describes the current status of a mailbox export job
+#'
+#' Describes the current status of a mailbox export job.
+#'
+#' @usage
+#' workmail_describe_mailbox_export_job(JobId, OrganizationId)
+#'
+#' @param JobId &#91;required&#93; The mailbox export job ID.
+#' @param OrganizationId &#91;required&#93; The organization ID.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_mailbox_export_job(
+#'   JobId = "string",
+#'   OrganizationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_describe_mailbox_export_job
+workmail_describe_mailbox_export_job <- function(JobId, OrganizationId) {
+  op <- new_operation(
+    name = "DescribeMailboxExportJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$describe_mailbox_export_job_input(JobId = JobId, OrganizationId = OrganizationId)
+  output <- .workmail$describe_mailbox_export_job_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$describe_mailbox_export_job <- workmail_describe_mailbox_export_job
 
 #' Provides more information regarding a given organization based on its
 #' identifier
@@ -1105,6 +1311,48 @@ workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = 
 }
 .workmail$operations$list_groups <- workmail_list_groups
 
+#' Lists the mailbox export jobs started for the specified organization
+#' within the last seven days
+#'
+#' Lists the mailbox export jobs started for the specified organization
+#' within the last seven days.
+#'
+#' @usage
+#' workmail_list_mailbox_export_jobs(OrganizationId, NextToken, MaxResults)
+#'
+#' @param OrganizationId &#91;required&#93; The organization ID.
+#' @param NextToken The token to use to retrieve the next page of results.
+#' @param MaxResults The maximum number of results to return in a single call.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_mailbox_export_jobs(
+#'   OrganizationId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_list_mailbox_export_jobs
+workmail_list_mailbox_export_jobs <- function(OrganizationId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListMailboxExportJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$list_mailbox_export_jobs_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .workmail$list_mailbox_export_jobs_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$list_mailbox_export_jobs <- workmail_list_mailbox_export_jobs
+
 #' Lists the mailbox permissions associated with a user, group, or resource
 #' mailbox
 #'
@@ -1544,7 +1792,7 @@ workmail_put_retention_policy <- function(OrganizationId, Id = NULL, Name, Descr
 #' performs no change if the user, group, or resource is enabled and fails
 #' if the user, group, or resource is deleted. This operation results in
 #' the accumulation of costs. For more information, see
-#' [Pricing](https://aws.amazon.com/workmail/pricing). The equivalent
+#' [Pricing](https://aws.amazon.com/workmail/pricing/). The equivalent
 #' console functionality for this operation is *Enable*.
 #' 
 #' Users can either be created by calling the CreateUser API operation or
@@ -1628,6 +1876,66 @@ workmail_reset_password <- function(OrganizationId, UserId, Password) {
   return(response)
 }
 .workmail$operations$reset_password <- workmail_reset_password
+
+#' Starts a mailbox export job to export MIME-format email messages and
+#' calendar items from the specified mailbox to the specified Amazon Simple
+#' Storage Service (Amazon S3) bucket
+#'
+#' Starts a mailbox export job to export MIME-format email messages and
+#' calendar items from the specified mailbox to the specified Amazon Simple
+#' Storage Service (Amazon S3) bucket. For more information, see [Exporting
+#' mailbox
+#' content](https://docs.aws.amazon.com/workmail/latest/adminguide/mail-export.html)
+#' in the *Amazon WorkMail Administrator Guide*.
+#'
+#' @usage
+#' workmail_start_mailbox_export_job(ClientToken, OrganizationId, EntityId,
+#'   Description, RoleArn, KmsKeyArn, S3BucketName, S3Prefix)
+#'
+#' @param ClientToken &#91;required&#93; The idempotency token for the client request.
+#' @param OrganizationId &#91;required&#93; The identifier associated with the organization.
+#' @param EntityId &#91;required&#93; The identifier of the user or resource associated with the mailbox.
+#' @param Description The mailbox export job description.
+#' @param RoleArn &#91;required&#93; The ARN of the AWS Identity and Access Management (IAM) role that grants
+#' write permission to the S3 bucket.
+#' @param KmsKeyArn &#91;required&#93; The Amazon Resource Name (ARN) of the symmetric AWS Key Management
+#' Service (AWS KMS) key that encrypts the exported mailbox content.
+#' @param S3BucketName &#91;required&#93; The name of the S3 bucket.
+#' @param S3Prefix &#91;required&#93; The S3 bucket prefix.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_mailbox_export_job(
+#'   ClientToken = "string",
+#'   OrganizationId = "string",
+#'   EntityId = "string",
+#'   Description = "string",
+#'   RoleArn = "string",
+#'   KmsKeyArn = "string",
+#'   S3BucketName = "string",
+#'   S3Prefix = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_start_mailbox_export_job
+workmail_start_mailbox_export_job <- function(ClientToken, OrganizationId, EntityId, Description = NULL, RoleArn, KmsKeyArn, S3BucketName, S3Prefix) {
+  op <- new_operation(
+    name = "StartMailboxExportJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$start_mailbox_export_job_input(ClientToken = ClientToken, OrganizationId = OrganizationId, EntityId = EntityId, Description = Description, RoleArn = RoleArn, KmsKeyArn = KmsKeyArn, S3BucketName = S3BucketName, S3Prefix = S3Prefix)
+  output <- .workmail$start_mailbox_export_job_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$start_mailbox_export_job <- workmail_start_mailbox_export_job
 
 #' Applies the specified tags to the specified Amazon WorkMail organization
 #' resource

@@ -20,16 +20,16 @@ status. This field can be any string up to the maximum length.}
 \description{
 Updates the status for the specified job. Use this operation to confirm
 that you want to run a job or to cancel an existing job. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html}{Amazon S3 Batch Operations}
-in the Amazon Simple Storage Service Developer Guide.
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html}{S3 Batch Operations}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 \details{
 Related actions include:
 \itemize{
-\item CreateJob
-\item ListJobs
-\item DescribeJob
-\item UpdateJobStatus
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html}{CreateJob}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_ListJobs.html}{ListJobs}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DescribeJob.html}{DescribeJob}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_UpdateJobStatus.html}{UpdateJobStatus}
 }
 }
 \section{Request syntax}{

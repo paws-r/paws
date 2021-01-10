@@ -5,7 +5,8 @@
 \title{Returns the list of component build versions for the specified semantic
 version}
 \usage{
-imagebuilder_list_components(owner, filters, maxResults, nextToken)
+imagebuilder_list_components(owner, filters, byName, maxResults,
+  nextToken)
 }
 \arguments{
 \item{owner}{The owner defines which components you want to list. By default, this
@@ -15,6 +16,9 @@ by Amazon, or those components that have been shared with you by other
 customers.}
 
 \item{filters}{The filters.}
+
+\item{byName}{Returns the list of component build versions for the specified semantic
+version.}
 
 \item{maxResults}{The maximum items to return in a request.}
 
@@ -36,6 +40,7 @@ version.
       )
     )
   ),
+  byName = TRUE|FALSE,
   maxResults = 123,
   nextToken = "string"
 )

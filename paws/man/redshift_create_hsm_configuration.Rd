@@ -38,8 +38,8 @@ will then store its encryption keys in the HSM.
 }
 \details{
 In addition to creating an HSM configuration, you must also create an
-HSM client certificate. For more information, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html}{Hardware Security Modules}
-in the Amazon Redshift Cluster Management Guide.
+HSM client certificate. For more information, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/}{Hardware Security Modules} in the
+Amazon Redshift Cluster Management Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$create_hsm_configuration(

@@ -31,6 +31,9 @@ define and configure the outputs of your pipeline.
       amiDistributionConfiguration = list(
         name = "string",
         description = "string",
+        targetAccountIds = list(
+          "string"
+        ),
         amiTags = list(
           "string"
         ),
@@ -42,6 +45,16 @@ define and configure the outputs of your pipeline.
           userGroups = list(
             "string"
           )
+        )
+      ),
+      containerDistributionConfiguration = list(
+        description = "string",
+        containerTags = list(
+          "string"
+        ),
+        targetRepository = list(
+          service = "ECR",
+          repositoryName = "string"
         )
       ),
       licenseConfigurationArns = list(

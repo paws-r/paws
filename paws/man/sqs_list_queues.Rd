@@ -2,7 +2,7 @@
 % Please edit documentation in R/sqs_operations.R
 \name{sqs_list_queues}
 \alias{sqs_list_queues}
-\title{Returns a list of your queues}
+\title{Returns a list of your queues in the current region}
 \usage{
 sqs_list_queues(QueueNamePrefix, NextToken, MaxResults)
 }
@@ -14,17 +14,27 @@ Queue URLs and names are case-sensitive.}
 
 \item{NextToken}{Pagination token to request the next set of results.}
 
-\item{MaxResults}{Maximum number of results to include in the response.}
+\item{MaxResults}{Maximum number of results to include in the response. Value range is 1
+to 1000. You must set \code{MaxResults} to receive a value for \code{NextToken} in
+the response.}
 }
 \description{
-Returns a list of your queues. The maximum number of queues that can be
-returned is 1,000. If you specify a value for the optional
-\code{QueueNamePrefix} parameter, only queues with a name that begins with
-the specified value are returned.
+Returns a list of your queues in the current region. The response
+includes a maximum of 1,000 results. If you specify a value for the
+optional \code{QueueNamePrefix} parameter, only queues with a name that
+begins with the specified value are returned.
 }
 \details{
+The \code{listQueues} methods supports pagination. Set parameter \code{MaxResults}
+in the request to specify the maximum number of results to be returned
+in the response. If you do not set \code{MaxResults}, the response includes a
+maximum of 1,000 results. If you set \code{MaxResults} and there are
+additional results to display, the response includes a value for
+\code{NextToken}. Use \code{NextToken} as a parameter in your next request to
+\code{listQueues} to receive the next page of results.
+
 Cross-account permissions don't apply to this action. For more
-information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name}{Grant Cross-Account Permissions to a Role and a User Name}
+information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name}{Grant cross-account permissions to a role and a user name}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
 }
 \section{Request syntax}{

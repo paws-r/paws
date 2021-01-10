@@ -171,6 +171,18 @@ NULL
   return(populate(args, shape))
 }
 
+.servicequotas$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .servicequotas$put_service_quota_increase_request_into_template_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(QuotaCode = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), AwsRegion = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure"))
@@ -192,5 +204,29 @@ NULL
 .servicequotas$request_service_quota_increase_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(RequestedQuota = structure(list(Id = structure(logical(0), tags = list(type = "string")), CaseId = structure(logical(0), tags = list(type = "string")), ServiceCode = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), QuotaCode = structure(logical(0), tags = list(type = "string")), QuotaName = structure(logical(0), tags = list(type = "string")), DesiredValue = structure(logical(0), tags = list(type = "double")), Status = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdated = structure(logical(0), tags = list(type = "timestamp")), Requester = structure(logical(0), tags = list(type = "string")), QuotaArn = structure(logical(0), tags = list(type = "string")), GlobalQuota = structure(logical(0), tags = list(type = "boolean")), Unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicequotas$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
 }

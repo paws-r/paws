@@ -19,7 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \code{FAILED}).
 \item \code{log-destination-type} - The type of destination to which the flow
 log publishes data. Possible destination types include
-\code{cloud-watch-logs} and \code{S3}.
+\code{cloud-watch-logs} and \code{s3}.
 \item \code{flow-log-id} - The ID of the flow log.
 \item \code{log-group-name} - The name of the log group.
 \item \code{resource-id} - The ID of the VPC, subnet, or network interface.

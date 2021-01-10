@@ -12,6 +12,9 @@ managedblockchain_get_network(NetworkId)
 \description{
 Returns detailed information about a network.
 }
+\details{
+Applies to Hyperledger Fabric and Ethereum.
+}
 \section{Request syntax}{
 \preformatted{svc$get_network(
   NetworkId = "string"

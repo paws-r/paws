@@ -9,7 +9,7 @@ iam_delete_server_certificate(ServerCertificateName)
 \arguments{
 \item{ServerCertificateName}{[required] The name of the server certificate you want to delete.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 }
@@ -30,7 +30,7 @@ Elastic Load Balancing to stop accepting traffic. We recommend that you
 remove the reference to the certificate from Elastic Load Balancing
 before using this command to delete the certificate. For more
 information, go to
-\href{https://docs.aws.amazon.com/ElasticLoadBalancing/latest/APIReference/API_DeleteLoadBalancerListeners.html}{DeleteLoadBalancerListeners}
+\href{https://docs.aws.amazon.com/elasticloadbalancing/2012-06-01/APIReference/API_DeleteLoadBalancerListeners.html}{DeleteLoadBalancerListeners}
 in the \emph{Elastic Load Balancing API Reference}.
 }
 \section{Request syntax}{

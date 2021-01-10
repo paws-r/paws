@@ -73,3 +73,11 @@ test_that("describe_pending_aggregation_requests", {
 test_that("describe_retention_configurations", {
   expect_error(svc$describe_retention_configurations(), NA)
 })
+
+test_that("list_stored_queries", {
+  expect_error(svc$list_stored_queries(), NA)
+})
+
+test_that("list_stored_queries", {
+  expect_error(svc$list_stored_queries(MaxResults = 20), NA)
+})

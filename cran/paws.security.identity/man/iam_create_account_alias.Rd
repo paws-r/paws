@@ -9,13 +9,13 @@ iam_create_account_alias(AccountAlias)
 \arguments{
 \item{AccountAlias}{[required] The account alias to create.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of lowercase letters, digits, and dashes. You cannot start or
 finish with a dash, nor can you have two dashes in a row.}
 }
 \description{
 Creates an alias for your AWS account. For information about using an
-AWS account alias, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/AccountAlias.html}{Using an Alias for Your AWS Account ID}
+AWS account alias, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html}{Using an Alias for Your AWS Account ID}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

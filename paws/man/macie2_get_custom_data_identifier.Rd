@@ -2,8 +2,7 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_get_custom_data_identifier}
 \alias{macie2_get_custom_data_identifier}
-\title{Retrieves information about the criteria and other settings for a custom
-data identifier}
+\title{Retrieves the criteria and other settings for a custom data identifier}
 \usage{
 macie2_get_custom_data_identifier(id)
 }
@@ -12,8 +11,7 @@ macie2_get_custom_data_identifier(id)
 request applies to.}
 }
 \description{
-Retrieves information about the criteria and other settings for a custom
-data identifier.
+Retrieves the criteria and other settings for a custom data identifier.
 }
 \section{Request syntax}{
 \preformatted{svc$get_custom_data_identifier(

@@ -14,7 +14,7 @@ rds_describe_export_tasks(ExportTaskIdentifier, SourceArn, Filters,
 
 \item{Filters}{Filters specify one or more snapshot exports to describe. The filters
 are specified as name-value pairs that define what to include in the
-output.
+output. Filter names and values are case-sensitive.
 
 Supported filters include the following:
 \itemize{
@@ -23,7 +23,8 @@ task.
 \item \code{s3-bucket} - The Amazon S3 bucket the snapshot is exported to.
 \item \code{source-arn} - The Amazon Resource Name (ARN) of the snapshot
 exported to Amazon S3
-\item \code{status} - The status of the export task.
+\item \code{status} - The status of the export task. Must be lowercase, for
+example, \code{complete}.
 }}
 
 \item{Marker}{An optional pagination token provided by a previous

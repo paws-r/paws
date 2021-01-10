@@ -26,7 +26,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
 \section{Request syntax}{
 \preformatted{svc$get_default_credit_specification(
   DryRun = TRUE|FALSE,
-  InstanceFamily = "t2"|"t3"|"t3a"
+  InstanceFamily = "t2"|"t3"|"t3a"|"t4g"
 )
 }
 }

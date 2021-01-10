@@ -17,7 +17,7 @@ hyphen.}
 
 \item{Listeners}{[required] The listeners.
 
-For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html}{Listeners for Your Classic Load Balancer}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-listener-config.html}{Listeners for Your Classic Load Balancer}
 in the \emph{Classic Load Balancers Guide}.}
 
 \item{AvailabilityZones}{One or more Availability Zones from the same region as the load
@@ -38,7 +38,7 @@ Specify one subnet per Availability Zone specified in
 
 By default, Elastic Load Balancing creates an Internet-facing load
 balancer with a DNS name that resolves to public IP addresses. For more
-information about Internet-facing and Internal load balancers, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#load-balancer-scheme}{Load Balancer Scheme}
+information about Internet-facing and Internal load balancers, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/how-elastic-load-balancing-works.html#load-balancer-scheme}{Load Balancer Scheme}
 in the \emph{Elastic Load Balancing User Guide}.
 
 Specify \code{internal} to create a load balancer with a DNS name that
@@ -46,7 +46,7 @@ resolves to private IP addresses.}
 
 \item{Tags}{A list of tags to assign to the load balancer.
 
-For more information about tagging your load balancer, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html}{Tag Your Classic Load Balancer}
+For more information about tagging your load balancer, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/add-remove-tags.html}{Tag Your Classic Load Balancer}
 in the \emph{Classic Load Balancers Guide}.}
 }
 \description{
@@ -64,7 +64,7 @@ DeleteLoadBalancer.
 
 You can create up to 20 load balancers per region per account. You can
 request an increase for the number of load balancers for your account.
-For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html}{Limits for Your Classic Load Balancer}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-limits.html}{Limits for Your Classic Load Balancer}
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{

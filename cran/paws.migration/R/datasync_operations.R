@@ -7,8 +7,8 @@ NULL
 #'
 #' Cancels execution of a task.
 #' 
-#' When you cancel a task execution, the transfer of some files are
-#' abruptly interrupted. The contents of files that are transferred to the
+#' When you cancel a task execution, the transfer of some files is abruptly
+#' interrupted. The contents of files that are transferred to the
 #' destination might be incomplete or inconsistent with the source files.
 #' However, if you start a new task execution on the same task and you
 #' allow the task execution to complete, file content on the destination is
@@ -58,9 +58,9 @@ datasync_cancel_task_execution <- function(TaskExecutionArn) {
 #' Region where your target locations (in Amazon S3 or Amazon EFS) reside.
 #' Your tasks are created in this AWS Region.
 #' 
-#' You can activate the agent in a VPC (Virtual private Cloud) or provide
+#' You can activate the agent in a VPC (virtual private cloud) or provide
 #' the agent access to a VPC endpoint so you can run tasks without going
-#' over the public Internet.
+#' over the public internet.
 #' 
 #' You can use an agent for more than one location. If a task uses multiple
 #' agents, all of them need to have status AVAILABLE for the task to run.
@@ -96,12 +96,12 @@ datasync_cancel_task_execution <- function(TaskExecutionArn) {
 #' Valid characters for key and value are letters, spaces, and numbers
 #' representable in UTF-8 format, and the following special characters: + -
 #' = . \\_ : / @@.
-#' @param VpcEndpointId The ID of the VPC (Virtual Private Cloud) endpoint that the agent has
+#' @param VpcEndpointId The ID of the VPC (virtual private cloud) endpoint that the agent has
 #' access to. This is the client-side VPC endpoint, also called a
 #' PrivateLink. If you don't have a PrivateLink VPC endpoint, see [Creating
 #' a VPC Endpoint Service
 #' Configuration](https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html#create-endpoint-service)
-#' in the AWS VPC User Guide.
+#' in the Amazon VPC User Guide.
 #' 
 #' VPC endpoint ID looks like this: `vpce-01234d5aff67890e1`.
 #' @param SubnetArns The Amazon Resource Names (ARNs) of the subnets in which DataSync will
@@ -169,7 +169,7 @@ datasync_create_agent <- function(ActivationKey, AgentName = NULL, Tags = NULL, 
 #' to the EFS destination. By default, AWS DataSync uses the root
 #' directory.
 #' 
-#' `Subdirectory` must be specified with forward slashes. For example
+#' `Subdirectory` must be specified with forward slashes. For example,
 #' `/path/to/folder`.
 #' @param EfsFilesystemArn &#91;required&#93; The Amazon Resource Name (ARN) for the Amazon EFS file system.
 #' @param Ec2Config &#91;required&#93; The subnet and security group that the Amazon EFS file system uses. The
@@ -308,7 +308,7 @@ datasync_create_location_fsx_windows <- function(Subdirectory = NULL, FsxFilesys
 #' read from or written to
 #'
 #' Defines a file system on a Network File System (NFS) server that can be
-#' read from or written to
+#' read from or written to.
 #'
 #' @usage
 #' datasync_create_location_nfs(Subdirectory, ServerHostname, OnPremConfig,
@@ -320,7 +320,7 @@ datasync_create_location_fsx_windows <- function(Subdirectory = NULL, FsxFilesys
 #' subdirectory of that path. The path should be such that it can be
 #' mounted by other NFS clients in your network.
 #' 
-#' To see all the paths exported by your NFS server. run
+#' To see all the paths exported by your NFS server, run
 #' "`showmount -e nfs-server-name`" from an NFS client that has access to
 #' your server. You can specify any directory that appears in the results,
 #' and any subdirectory of that directory. Ensure that the NFS export is
@@ -333,6 +333,11 @@ datasync_create_location_fsx_windows <- function(Subdirectory = NULL, FsxFilesys
 #' Doing either enables the agent to read the files. For the agent to
 #' access directories, you must additionally enable all execute access.
 #' 
+#' If you are copying data to or from your AWS Snowcone device, see [NFS
+#' Server on AWS
+#' Snowcone](https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html#nfs-on-snowcone)
+#' for more information.
+#' 
 #' For information about NFS export configuration, see 18.7. The
 #' /etc/exports Configuration File in the Red Hat Enterprise Linux
 #' documentation.
@@ -340,10 +345,20 @@ datasync_create_location_fsx_windows <- function(Subdirectory = NULL, FsxFilesys
 #' Service (DNS) name of the NFS server. An agent that is installed
 #' on-premises uses this host name to mount the NFS server in a network.
 #' 
+#' If you are copying data to or from your AWS Snowcone device, see [NFS
+#' Server on AWS
+#' Snowcone](https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html#nfs-on-snowcone)
+#' for more information.
+#' 
 #' This name must either be DNS-compliant or must be an IP version 4 (IPv4)
 #' address.
 #' @param OnPremConfig &#91;required&#93; Contains a list of Amazon Resource Names (ARNs) of agents that are used
 #' to connect to an NFS server.
+#' 
+#' If you are copying data to or from your AWS Snowcone device, see [NFS
+#' Server on AWS
+#' Snowcone](https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html#nfs-on-snowcone)
+#' for more information.
 #' @param MountOptions The NFS mount options that DataSync can use to mount your NFS share.
 #' @param Tags The key-value pair that represents the tag that you want to add to the
 #' location. The value can be an empty string. We recommend using tags to
@@ -391,36 +406,118 @@ datasync_create_location_nfs <- function(Subdirectory, ServerHostname, OnPremCon
 }
 .datasync$operations$create_location_nfs <- datasync_create_location_nfs
 
+#' Creates an endpoint for a self-managed object storage bucket
+#'
+#' Creates an endpoint for a self-managed object storage bucket. For more
+#' information about self-managed object storage locations, see
+#' create-object-location.
+#'
+#' @usage
+#' datasync_create_location_object_storage(ServerHostname, ServerPort,
+#'   ServerProtocol, Subdirectory, BucketName, AccessKey, SecretKey,
+#'   AgentArns, Tags)
+#'
+#' @param ServerHostname &#91;required&#93; The name of the self-managed object storage server. This value is the IP
+#' address or Domain Name Service (DNS) name of the object storage server.
+#' An agent uses this host name to mount the object storage server in a
+#' network.
+#' @param ServerPort The port that your self-managed object storage server accepts inbound
+#' network traffic on. The server port is set by default to TCP 80 (HTTP)
+#' or TCP 443 (HTTPS). You can specify a custom port if your self-managed
+#' object storage server requires one.
+#' @param ServerProtocol The protocol that the object storage server uses to communicate. Valid
+#' values are HTTP or HTTPS.
+#' @param Subdirectory The subdirectory in the self-managed object storage server that is used
+#' to read data from.
+#' @param BucketName &#91;required&#93; The bucket on the self-managed object storage server that is used to
+#' read data from.
+#' @param AccessKey Optional. The access key is used if credentials are required to access
+#' the self-managed object storage server. If your object storage requires
+#' a user name and password to authenticate, use `AccessKey` and
+#' `SecretKey` to provide the user name and password, respectively.
+#' @param SecretKey Optional. The secret key is used if credentials are required to access
+#' the self-managed object storage server. If your object storage requires
+#' a user name and password to authenticate, use `AccessKey` and
+#' `SecretKey` to provide the user name and password, respectively.
+#' @param AgentArns &#91;required&#93; The Amazon Resource Name (ARN) of the agents associated with the
+#' self-managed object storage server location.
+#' @param Tags The key-value pair that represents the tag that you want to add to the
+#' location. The value can be an empty string. We recommend using tags to
+#' name your resources.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_location_object_storage(
+#'   ServerHostname = "string",
+#'   ServerPort = 123,
+#'   ServerProtocol = "HTTPS"|"HTTP",
+#'   Subdirectory = "string",
+#'   BucketName = "string",
+#'   AccessKey = "string",
+#'   SecretKey = "string",
+#'   AgentArns = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datasync_create_location_object_storage
+datasync_create_location_object_storage <- function(ServerHostname, ServerPort = NULL, ServerProtocol = NULL, Subdirectory = NULL, BucketName, AccessKey = NULL, SecretKey = NULL, AgentArns, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateLocationObjectStorage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .datasync$create_location_object_storage_input(ServerHostname = ServerHostname, ServerPort = ServerPort, ServerProtocol = ServerProtocol, Subdirectory = Subdirectory, BucketName = BucketName, AccessKey = AccessKey, SecretKey = SecretKey, AgentArns = AgentArns, Tags = Tags)
+  output <- .datasync$create_location_object_storage_output()
+  config <- get_config()
+  svc <- .datasync$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datasync$operations$create_location_object_storage <- datasync_create_location_object_storage
+
 #' Creates an endpoint for an Amazon S3 bucket
 #'
 #' Creates an endpoint for an Amazon S3 bucket.
 #' 
-#' For AWS DataSync to access a destination S3 bucket, it needs an AWS
-#' Identity and Access Management (IAM) role that has the required
-#' permissions. You can set up the required permissions by creating an IAM
-#' policy that grants the required permissions and attaching the policy to
-#' the role. An example of such a policy is shown in the examples section.
-#' 
 #' For more information, see
-#' https://docs.aws.amazon.com/datasync/latest/userguide/working-with-locations.html\\#create-s3-location
-#' in the *AWS DataSync User Guide.*
+#' https://docs.aws.amazon.com/datasync/latest/userguide/create-locations-cli.html\\#create-location-s3-cli
+#' in the *AWS DataSync User Guide*.
 #'
 #' @usage
 #' datasync_create_location_s3(Subdirectory, S3BucketArn, S3StorageClass,
-#'   S3Config, Tags)
+#'   S3Config, AgentArns, Tags)
 #'
 #' @param Subdirectory A subdirectory in the Amazon S3 bucket. This subdirectory in Amazon S3
 #' is used to read data from the S3 source location or write data to the S3
 #' destination.
-#' @param S3BucketArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon S3 bucket.
+#' @param S3BucketArn &#91;required&#93; The ARN of the Amazon S3 bucket. If the bucket is on an AWS Outpost,
+#' this must be an access point ARN.
 #' @param S3StorageClass The Amazon S3 storage class that you want to store your files in when
-#' this location is used as a task destination. For more information about
-#' S3 storage classes, see [Amazon S3 Storage
-#' Classes](https://aws.amazon.com/s3/storage-classes/) in the *Amazon
-#' Simple Storage Service Developer Guide*. Some storage classes have
-#' behaviors that can affect your S3 storage cost. For detailed
-#' information, see using-storage-classes.
+#' this location is used as a task destination. For buckets in AWS Regions,
+#' the storage class defaults to Standard. For buckets on AWS Outposts, the
+#' storage class defaults to AWS S3 Outposts.
+#' 
+#' For more information about S3 storage classes, see [Amazon S3 Storage
+#' Classes](https://aws.amazon.com/s3/storage-classes/). Some storage
+#' classes have behaviors that can affect your S3 storage cost. For
+#' detailed information, see using-storage-classes.
 #' @param S3Config &#91;required&#93; 
+#' @param AgentArns If you are using DataSync on an AWS Outpost, specify the Amazon Resource
+#' Names (ARNs) of the DataSync agents deployed on your Outpost. For more
+#' information about launching a DataSync agent on an AWS Outpost, see
+#' outposts-agent.
 #' @param Tags The key-value pair that represents the tag that you want to add to the
 #' location. The value can be an empty string. We recommend using tags to
 #' name your resources.
@@ -430,9 +527,12 @@ datasync_create_location_nfs <- function(Subdirectory, ServerHostname, OnPremCon
 #' svc$create_location_s3(
 #'   Subdirectory = "string",
 #'   S3BucketArn = "string",
-#'   S3StorageClass = "STANDARD"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE",
+#'   S3StorageClass = "STANDARD"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS",
 #'   S3Config = list(
 #'     BucketAccessRoleArn = "string"
+#'   ),
+#'   AgentArns = list(
+#'     "string"
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -446,14 +546,14 @@ datasync_create_location_nfs <- function(Subdirectory, ServerHostname, OnPremCon
 #' @keywords internal
 #'
 #' @rdname datasync_create_location_s3
-datasync_create_location_s3 <- function(Subdirectory = NULL, S3BucketArn, S3StorageClass = NULL, S3Config, Tags = NULL) {
+datasync_create_location_s3 <- function(Subdirectory = NULL, S3BucketArn, S3StorageClass = NULL, S3Config, AgentArns = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateLocationS3",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .datasync$create_location_s3_input(Subdirectory = Subdirectory, S3BucketArn = S3BucketArn, S3StorageClass = S3StorageClass, S3Config = S3Config, Tags = Tags)
+  input <- .datasync$create_location_s3_input(Subdirectory = Subdirectory, S3BucketArn = S3BucketArn, S3StorageClass = S3StorageClass, S3Config = S3Config, AgentArns = AgentArns, Tags = Tags)
   output <- .datasync$create_location_s3_output()
   config <- get_config()
   svc <- .datasync$service(config)
@@ -463,11 +563,11 @@ datasync_create_location_s3 <- function(Subdirectory = NULL, S3BucketArn, S3Stor
 }
 .datasync$operations$create_location_s3 <- datasync_create_location_s3
 
-#' Defines a file system on an Server Message Block (SMB) server that can
-#' be read from or written to
+#' Defines a file system on a Server Message Block (SMB) server that can be
+#' read from or written to
 #'
-#' Defines a file system on an Server Message Block (SMB) server that can
-#' be read from or written to.
+#' Defines a file system on a Server Message Block (SMB) server that can be
+#' read from or written to.
 #'
 #' @usage
 #' datasync_create_location_smb(Subdirectory, ServerHostname, User, Domain,
@@ -479,7 +579,7 @@ datasync_create_location_s3 <- function(Subdirectory = NULL, S3BucketArn, S3Stor
 #' subdirectory of that path. The path should be such that it can be
 #' mounted by other SMB clients in your network.
 #' 
-#' `Subdirectory` must be specified with forward slashes. For example
+#' `Subdirectory` must be specified with forward slashes. For example,
 #' `/path/to/folder`.
 #' 
 #' To transfer all the data in the folder you specified, DataSync needs to
@@ -571,7 +671,7 @@ datasync_create_location_smb <- function(Subdirectory, ServerHostname, User, Dom
 #' it means that your agent might be having trouble mounting the source NFS
 #' file system. Check the task's ErrorCode and ErrorDetail. Mount issues
 #' are often caused by either a misconfigured firewall or a mistyped NFS
-#' server host name.
+#' server hostname.
 #'
 #' @usage
 #' datasync_create_task(SourceLocationArn, DestinationLocationArn,
@@ -581,12 +681,6 @@ datasync_create_location_smb <- function(Subdirectory, ServerHostname, User, Dom
 #' @param DestinationLocationArn &#91;required&#93; The Amazon Resource Name (ARN) of an AWS storage resource's location.
 #' @param CloudWatchLogGroupArn The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that
 #' is used to monitor and log events in the task.
-#' 
-#' For more information on these groups, see Working with Log Groups and
-#' Log Streams in the *Amazon CloudWatch User Guide.*
-#' 
-#' For more information about how to use CloudWatch Logs with DataSync, see
-#' Monitoring Your Task in the *AWS DataSync User Guide.*
 #' @param Name The name of a task. This value is a text reference that is used to
 #' identify the task in the console.
 #' @param Options The set of configuration options that control the behavior of a single
@@ -596,12 +690,12 @@ datasync_create_location_smb <- function(Subdirectory, ServerHostname, User, Dom
 #' and so on.
 #' 
 #' For each individual task execution, you can override these options by
-#' specifying the `OverrideOptions` before starting a the task execution.
-#' For more information, see the operation.
+#' specifying the `OverrideOptions` before starting the task execution. For
+#' more information, see the operation.
 #' @param Excludes A list of filter rules that determines which files to exclude from a
 #' task. The list should contain a single filter string that consists of
 #' the patterns to exclude. The patterns are delimited by "|" (that is, a
-#' pipe), for example, `"/folder1|/folder2"`
+#' pipe), for example, `"/folder1|/folder2"`.
 #' @param Schedule Specifies a schedule used to periodically transfer files from a source
 #' to a destination location. The schedule should be specified in UTC time.
 #' For more information, see task-scheduling.
@@ -627,7 +721,8 @@ datasync_create_location_smb <- function(Subdirectory, ServerHostname, User, Dom
 #'     PosixPermissions = "NONE"|"PRESERVE",
 #'     BytesPerSecond = 123,
 #'     TaskQueueing = "ENABLED"|"DISABLED",
-#'     LogLevel = "OFF"|"BASIC"|"TRANSFER"
+#'     LogLevel = "OFF"|"BASIC"|"TRANSFER",
+#'     TransferMode = "CHANGED"|"ALL"
 #'   ),
 #'   Excludes = list(
 #'     list(
@@ -897,14 +992,14 @@ datasync_describe_location_fsx_windows <- function(LocationArn) {
 }
 .datasync$operations$describe_location_fsx_windows <- datasync_describe_location_fsx_windows
 
-#' Returns metadata, such as the path information, about a NFS location
+#' Returns metadata, such as the path information, about an NFS location
 #'
-#' Returns metadata, such as the path information, about a NFS location.
+#' Returns metadata, such as the path information, about an NFS location.
 #'
 #' @usage
 #' datasync_describe_location_nfs(LocationArn)
 #'
-#' @param LocationArn &#91;required&#93; The Amazon resource Name (ARN) of the NFS location to describe.
+#' @param LocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the NFS location to describe.
 #'
 #' @section Request syntax:
 #' ```
@@ -932,6 +1027,45 @@ datasync_describe_location_nfs <- function(LocationArn) {
   return(response)
 }
 .datasync$operations$describe_location_nfs <- datasync_describe_location_nfs
+
+#' Returns metadata about a self-managed object storage server location
+#'
+#' Returns metadata about a self-managed object storage server location.
+#' For more information about self-managed object storage locations, see
+#' create-object-location.
+#'
+#' @usage
+#' datasync_describe_location_object_storage(LocationArn)
+#'
+#' @param LocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the self-managed object storage server
+#' location that was described.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_location_object_storage(
+#'   LocationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datasync_describe_location_object_storage
+datasync_describe_location_object_storage <- function(LocationArn) {
+  op <- new_operation(
+    name = "DescribeLocationObjectStorage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .datasync$describe_location_object_storage_input(LocationArn = LocationArn)
+  output <- .datasync$describe_location_object_storage_output()
+  config <- get_config()
+  svc <- .datasync$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datasync$operations$describe_location_object_storage <- datasync_describe_location_object_storage
 
 #' Returns metadata, such as bucket name, about an Amazon S3 bucket
 #' location
@@ -972,16 +1106,16 @@ datasync_describe_location_s3 <- function(LocationArn) {
 }
 .datasync$operations$describe_location_s3 <- datasync_describe_location_s3
 
-#' Returns metadata, such as the path and user information about a SMB
+#' Returns metadata, such as the path and user information about an SMB
 #' location
 #'
-#' Returns metadata, such as the path and user information about a SMB
+#' Returns metadata, such as the path and user information about an SMB
 #' location.
 #'
 #' @usage
 #' datasync_describe_location_smb(LocationArn)
 #'
-#' @param LocationArn &#91;required&#93; The Amazon resource Name (ARN) of the SMB location to describe.
+#' @param LocationArn &#91;required&#93; The Amazon Resource Name (ARN) of the SMB location to describe.
 #'
 #' @section Request syntax:
 #' ```
@@ -1133,9 +1267,9 @@ datasync_list_agents <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .datasync$operations$list_agents <- datasync_list_agents
 
-#' Returns a lists of source and destination locations
+#' Returns a list of source and destination locations
 #'
-#' Returns a lists of source and destination locations.
+#' Returns a list of source and destination locations.
 #' 
 #' If you have more locations than are returned in a response (that is, the
 #' response returns only a truncated list of your agents), the response
@@ -1143,31 +1277,44 @@ datasync_list_agents <- function(MaxResults = NULL, NextToken = NULL) {
 #' next page of locations.
 #'
 #' @usage
-#' datasync_list_locations(MaxResults, NextToken)
+#' datasync_list_locations(MaxResults, NextToken, Filters)
 #'
 #' @param MaxResults The maximum number of locations to return.
 #' @param NextToken An opaque string that indicates the position at which to begin the next
 #' list of locations.
+#' @param Filters You can use API filters to narrow down the list of resources returned by
+#' `ListLocations`. For example, to retrieve all tasks on a specific source
+#' location, you can use `ListLocations` with filter name `LocationType S3`
+#' and `Operator Equals`.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_locations(
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "LocationUri"|"LocationType"|"CreationTime",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       Operator = "Equals"|"NotEquals"|"In"|"LessThanOrEqual"|"LessThan"|"GreaterThanOrEqual"|"GreaterThan"|"Contains"|"NotContains"|"BeginsWith"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname datasync_list_locations
-datasync_list_locations <- function(MaxResults = NULL, NextToken = NULL) {
+datasync_list_locations <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListLocations",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .datasync$list_locations_input(MaxResults = MaxResults, NextToken = NextToken)
+  input <- .datasync$list_locations_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .datasync$list_locations_output()
   config <- get_config()
   svc <- .datasync$service(config)
@@ -1177,9 +1324,9 @@ datasync_list_locations <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .datasync$operations$list_locations <- datasync_list_locations
 
-#' Returns all the tags associated with a specified resources
+#' Returns all the tags associated with a specified resource
 #'
-#' Returns all the tags associated with a specified resources.
+#' Returns all the tags associated with a specified resource.
 #'
 #' @usage
 #' datasync_list_tags_for_resource(ResourceArn, MaxResults, NextToken)
@@ -1264,31 +1411,44 @@ datasync_list_task_executions <- function(TaskArn = NULL, MaxResults = NULL, Nex
 #' Returns a list of all the tasks.
 #'
 #' @usage
-#' datasync_list_tasks(MaxResults, NextToken)
+#' datasync_list_tasks(MaxResults, NextToken, Filters)
 #'
 #' @param MaxResults The maximum number of tasks to return.
 #' @param NextToken An opaque string that indicates the position at which to begin the next
 #' list of tasks.
+#' @param Filters You can use API filters to narrow down the list of resources returned by
+#' `ListTasks`. For example, to retrieve all tasks on a specific source
+#' location, you can use `ListTasks` with filter name `LocationId` and
+#' `Operator Equals` with the ARN for the location.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_tasks(
 #'   MaxResults = 123,
-#'   NextToken = "string"
+#'   NextToken = "string",
+#'   Filters = list(
+#'     list(
+#'       Name = "LocationId"|"CreationTime",
+#'       Values = list(
+#'         "string"
+#'       ),
+#'       Operator = "Equals"|"NotEquals"|"In"|"LessThanOrEqual"|"LessThan"|"GreaterThanOrEqual"|"GreaterThan"|"Contains"|"NotContains"|"BeginsWith"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname datasync_list_tasks
-datasync_list_tasks <- function(MaxResults = NULL, NextToken = NULL) {
+datasync_list_tasks <- function(MaxResults = NULL, NextToken = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListTasks",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .datasync$list_tasks_input(MaxResults = MaxResults, NextToken = NextToken)
+  input <- .datasync$list_tasks_input(MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .datasync$list_tasks_output()
   config <- get_config()
   svc <- .datasync$service(config)
@@ -1336,7 +1496,8 @@ datasync_list_tasks <- function(MaxResults = NULL, NextToken = NULL) {
 #'     PosixPermissions = "NONE"|"PRESERVE",
 #'     BytesPerSecond = 123,
 #'     TaskQueueing = "ENABLED"|"DISABLED",
-#'     LogLevel = "OFF"|"BASIC"|"TRANSFER"
+#'     LogLevel = "OFF"|"BASIC"|"TRANSFER",
+#'     TransferMode = "CHANGED"|"ALL"
 #'   ),
 #'   Includes = list(
 #'     list(
@@ -1528,7 +1689,8 @@ datasync_update_agent <- function(AgentArn, Name = NULL) {
 #'     PosixPermissions = "NONE"|"PRESERVE",
 #'     BytesPerSecond = 123,
 #'     TaskQueueing = "ENABLED"|"DISABLED",
-#'     LogLevel = "OFF"|"BASIC"|"TRANSFER"
+#'     LogLevel = "OFF"|"BASIC"|"TRANSFER",
+#'     TransferMode = "CHANGED"|"ALL"
 #'   ),
 #'   Excludes = list(
 #'     list(
@@ -1563,3 +1725,64 @@ datasync_update_task <- function(TaskArn, Options = NULL, Excludes = NULL, Sched
   return(response)
 }
 .datasync$operations$update_task <- datasync_update_task
+
+#' Updates execution of a task
+#'
+#' Updates execution of a task.
+#' 
+#' You can modify bandwidth throttling for a task execution that is running
+#' or queued. For more information, see [Adjusting Bandwidth Throttling for
+#' a Task
+#' Execution](https://docs.aws.amazon.com/datasync/latest/#adjust-bandwidth-throttling).
+#' 
+#' The only `Option` that can be modified by `UpdateTaskExecution` is
+#' ` <a href="https://docs.aws.amazon.com/datasync/latest/userguide/API_Options.html#DataSync-Type-Options-BytesPerSecond">BytesPerSecond</a> `.
+#'
+#' @usage
+#' datasync_update_task_execution(TaskExecutionArn, Options)
+#'
+#' @param TaskExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the specific task execution that is
+#' being updated.
+#' @param Options &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_task_execution(
+#'   TaskExecutionArn = "string",
+#'   Options = list(
+#'     VerifyMode = "POINT_IN_TIME_CONSISTENT"|"ONLY_FILES_TRANSFERRED"|"NONE",
+#'     OverwriteMode = "ALWAYS"|"NEVER",
+#'     Atime = "NONE"|"BEST_EFFORT",
+#'     Mtime = "NONE"|"PRESERVE",
+#'     Uid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
+#'     Gid = "NONE"|"INT_VALUE"|"NAME"|"BOTH",
+#'     PreserveDeletedFiles = "PRESERVE"|"REMOVE",
+#'     PreserveDevices = "NONE"|"PRESERVE",
+#'     PosixPermissions = "NONE"|"PRESERVE",
+#'     BytesPerSecond = 123,
+#'     TaskQueueing = "ENABLED"|"DISABLED",
+#'     LogLevel = "OFF"|"BASIC"|"TRANSFER",
+#'     TransferMode = "CHANGED"|"ALL"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname datasync_update_task_execution
+datasync_update_task_execution <- function(TaskExecutionArn, Options) {
+  op <- new_operation(
+    name = "UpdateTaskExecution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .datasync$update_task_execution_input(TaskExecutionArn = TaskExecutionArn, Options = Options)
+  output <- .datasync$update_task_execution_output()
+  config <- get_config()
+  svc <- .datasync$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.datasync$operations$update_task_execution <- datasync_update_task_execution

@@ -2,8 +2,8 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_disable_organization_admin_account}
 \alias{macie2_disable_organization_admin_account}
-\title{Disables an account as a delegated administrator of Amazon Macie for an
-AWS organization}
+\title{Disables an account as the delegated Amazon Macie administrator account
+for an AWS organization}
 \usage{
 macie2_disable_organization_admin_account(adminAccountId)
 }
@@ -11,8 +11,8 @@ macie2_disable_organization_admin_account(adminAccountId)
 \item{adminAccountId}{[required] The AWS account ID of the delegated administrator account.}
 }
 \description{
-Disables an account as a delegated administrator of Amazon Macie for an
-AWS organization.
+Disables an account as the delegated Amazon Macie administrator account
+for an AWS organization.
 }
 \section{Request syntax}{
 \preformatted{svc$disable_organization_admin_account(

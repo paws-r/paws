@@ -651,6 +651,18 @@ NULL
   return(populate(args, shape))
 }
 
+.greengrass$get_thing_runtime_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ThingName = structure(logical(0), tags = list(location = "uri", locationName = "ThingName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.greengrass$get_thing_runtime_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RuntimeConfiguration = structure(list(TelemetryConfiguration = structure(list(ConfigurationSyncStatus = structure(logical(0), tags = list(type = "string")), Telemetry = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .greengrass$list_bulk_deployment_detailed_reports_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(BulkDeploymentId = structure(logical(0), tags = list(location = "uri", locationName = "BulkDeploymentId", type = "string")), MaxResults = structure(logical(0), tags = list(location = "querystring", locationName = "MaxResults", type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string"))), tags = list(type = "structure"))
@@ -1074,6 +1086,18 @@ NULL
 }
 
 .greengrass$update_subscription_definition_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.greengrass$update_thing_runtime_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TelemetryConfiguration = structure(list(Telemetry = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ThingName = structure(logical(0), tags = list(location = "uri", locationName = "ThingName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.greengrass$update_thing_runtime_configuration_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

@@ -13,7 +13,8 @@ appstream_describe_sessions(StackName, FleetName, UserId, NextToken,
 
 \item{FleetName}{[required] The name of the fleet. This value is case-sensitive.}
 
-\item{UserId}{The user identifier.}
+\item{UserId}{The user identifier (ID). If you specify a user ID, you must also
+specify the authentication type.}
 
 \item{NextToken}{The pagination token to use to retrieve the next page of results for
 this operation. If this value is null, it retrieves the first page.}

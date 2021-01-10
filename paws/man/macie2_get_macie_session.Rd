@@ -2,14 +2,14 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_get_macie_session}
 \alias{macie2_get_macie_session}
-\title{Retrieves information about the current status and configuration
-settings for an Amazon Macie account}
+\title{Retrieves the current status and configuration settings for an Amazon
+Macie account}
 \usage{
 macie2_get_macie_session()
 }
 \description{
-Retrieves information about the current status and configuration
-settings for an Amazon Macie account.
+Retrieves the current status and configuration settings for an Amazon
+Macie account.
 }
 \section{Request syntax}{
 \preformatted{svc$get_macie_session()

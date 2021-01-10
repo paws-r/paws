@@ -26,7 +26,7 @@ Lists the connections associated with your account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_connections(
-  ProviderTypeFilter = "Bitbucket"|"GitHubEnterpriseServer",
+  ProviderTypeFilter = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
   HostArnFilter = "string",
   MaxResults = 123,
   NextToken = "string"

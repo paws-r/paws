@@ -2,22 +2,39 @@
 % Please edit documentation in R/organizations_operations.R
 \name{organizations_untag_resource}
 \alias{organizations_untag_resource}
-\title{Removes a tag from the specified resource}
+\title{Removes any tags with the specified keys from the specified resource}
 \usage{
 organizations_untag_resource(ResourceId, TagKeys)
 }
 \arguments{
-\item{ResourceId}{[required] The ID of the resource to remove the tag from.}
+\item{ResourceId}{[required] The ID of the resource to remove a tag from.
 
-\item{TagKeys}{[required] The tag to remove from the specified resource.}
+You can specify any of the following taggable resources.
+\itemize{
+\item AWS account – specify the account ID number.
+\item Organizational unit – specify the OU ID that begins with \verb{ou-} and
+looks similar to: \verb{ou-<i>1a2b-34uvwxyz</i> }
+\item Root – specify the root ID that begins with \verb{r-} and looks similar
+to: \verb{r-<i>1a2b</i> }
+\item Policy – specify the policy ID that begins with \verb{p-} andlooks
+similar to: \verb{p-<i>12abcdefg3</i> }
+}}
+
+\item{TagKeys}{[required] The list of keys for tags to remove from the specified resource.}
 }
 \description{
-Removes a tag from the specified resource.
+Removes any tags with the specified keys from the specified resource.
 }
 \details{
-Currently, you can tag and untag accounts in AWS Organizations.
+You can attach tags to the following resources in AWS Organizations.
+\itemize{
+\item AWS account
+\item Organization root
+\item Organizational unit (OU)
+\item Policy (any type)
+}
 
-This operation can be called only from the organization's master
+This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{

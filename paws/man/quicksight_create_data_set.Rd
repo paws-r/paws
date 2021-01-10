@@ -6,7 +6,8 @@
 \usage{
 quicksight_create_data_set(AwsAccountId, DataSetId, Name,
   PhysicalTableMap, LogicalTableMap, ImportMode, ColumnGroups,
-  Permissions, RowLevelPermissionDataSet, Tags)
+  Permissions, RowLevelPermissionDataSet, ColumnLevelPermissionRules,
+  Tags)
 }
 \arguments{
 \item{AwsAccountId}{[required] The AWS account ID.}
@@ -32,6 +33,9 @@ Currently, only geospatial hierarchy is supported.}
 \item{RowLevelPermissionDataSet}{The row-level security configuration for the data that you want to
 create.}
 
+\item{ColumnLevelPermissionRules}{A set of one or more definitions of a
+\verb{<a>ColumnLevelPermissionRule</a>}.}
+
 \item{Tags}{Contains a map of the key-value pairs for the resource tag or tags
 assigned to the dataset.}
 }
@@ -47,6 +51,7 @@ Creates a dataset.
     list(
       RelationalTable = list(
         DataSourceArn = "string",
+        Catalog = "string",
         Schema = "string",
         Name = "string",
         InputColumns = list(
@@ -120,7 +125,10 @@ Creates a dataset.
             ColumnName = "string",
             Tags = list(
               list(
-                ColumnGeographicRole = "COUNTRY"|"STATE"|"COUNTY"|"CITY"|"POSTCODE"|"LONGITUDE"|"LATITUDE"
+                ColumnGeographicRole = "COUNTRY"|"STATE"|"COUNTY"|"CITY"|"POSTCODE"|"LONGITUDE"|"LATITUDE",
+                ColumnDescription = list(
+                  Text = "string"
+                )
               )
             )
           )
@@ -130,6 +138,12 @@ Creates a dataset.
         JoinInstruction = list(
           LeftOperand = "string",
           RightOperand = "string",
+          LeftJoinKeyProperties = list(
+            UniqueKey = TRUE|FALSE
+          ),
+          RightJoinKeyProperties = list(
+            UniqueKey = TRUE|FALSE
+          ),
           Type = "INNER"|"OUTER"|"LEFT"|"RIGHT",
           OnClause = "string"
         ),
@@ -158,8 +172,19 @@ Creates a dataset.
     )
   ),
   RowLevelPermissionDataSet = list(
+    Namespace = "string",
     Arn = "string",
     PermissionPolicy = "GRANT_ACCESS"|"DENY_ACCESS"
+  ),
+  ColumnLevelPermissionRules = list(
+    list(
+      Principals = list(
+        "string"
+      ),
+      ColumnNames = list(
+        "string"
+      )
+    )
   ),
   Tags = list(
     list(

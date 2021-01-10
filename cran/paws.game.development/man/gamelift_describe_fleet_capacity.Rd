@@ -15,10 +15,10 @@ You can use either the fleet ID or ARN value.}
 is ignored when the request specifies one or a list of fleet IDs.}
 
 \item{NextToken}{Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value. This
-parameter is ignored when the request specifies one or a list of fleet
-IDs.}
+Use the token that is returned with a previous call to this operation.
+To start at the beginning of the result set, do not specify a value.
+This parameter is ignored when the request specifies one or a list of
+fleet IDs.}
 }
 \description{
 Retrieves the current capacity statistics for one or more fleets. These
@@ -34,7 +34,7 @@ successful, a FleetCapacity object is returned for each requested fleet
 ID. When a list of fleet IDs is provided, attribute objects are returned
 only for fleets that currently exist.
 
-Some API actions may limit the number of fleet IDs allowed in one
+Some API operations may limit the number of fleet IDs allowed in one
 request. If a request exceeds this limit, the request fails and the
 error message includes the maximum allowed.
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/managedblockchain_operations.R
 \name{managedblockchain_create_node}
 \alias{managedblockchain_create_node}
-\title{Creates a peer node in a member}
+\title{Creates a node on the specified blockchain network}
 \usage{
 managedblockchain_create_node(ClientRequestToken, NetworkId, MemberId,
   NodeConfiguration)
@@ -14,14 +14,26 @@ than one time. This identifier is required only if you make a service
 request directly using an HTTP client. It is generated automatically if
 you use an AWS SDK or the AWS CLI.}
 
-\item{NetworkId}{[required] The unique identifier of the network in which this node runs.}
+\item{NetworkId}{[required] The unique identifier of the network for the node.
 
-\item{MemberId}{[required] The unique identifier of the member that owns this node.}
+Ethereum public networks have the following \code{NetworkId}s:
+\itemize{
+\item \code{n-ethereum-mainnet}
+\item \code{n-ethereum-rinkeby}
+\item \code{n-ethereum-ropsten}
+}}
+
+\item{MemberId}{The unique identifier of the member that owns this node.
+
+Applies only to Hyperledger Fabric.}
 
 \item{NodeConfiguration}{[required] The properties of a node configuration.}
 }
 \description{
-Creates a peer node in a member.
+Creates a node on the specified blockchain network.
+}
+\details{
+Applies to Hyperledger Fabric and Ethereum.
 }
 \section{Request syntax}{
 \preformatted{svc$create_node(
@@ -44,7 +56,8 @@ Creates a peer node in a member.
           )
         )
       )
-    )
+    ),
+    StateDB = "LevelDB"|"CouchDB"
   )
 )
 }

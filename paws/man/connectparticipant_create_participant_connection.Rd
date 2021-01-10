@@ -9,8 +9,10 @@ connectparticipant_create_participant_connection(Type, ParticipantToken)
 \arguments{
 \item{Type}{[required] Type of connection information required.}
 
-\item{ParticipantToken}{[required] Participant Token as obtained from
-\href{https://docs.aws.amazon.com/connect/latest/APIReference/API_StartChatContactResponse.html}{StartChatContact}
+\item{ParticipantToken}{[required] This is a header parameter.
+
+The Participant Token as obtained from
+\href{https://docs.aws.amazon.com/connect/latest/APIReference/API_StartChatContact.html}{StartChatContact}
 API response.}
 }
 \description{
@@ -19,7 +21,7 @@ for invoking this API instead of ConnectionToken.
 }
 \details{
 The participant token is valid for the lifetime of the participant –
-until the they are part of a contact.
+until they are part of a contact.
 
 The response URL for \code{WEBSOCKET} Type has a connect expiry timeout of
 100s. Clients must manually connect to the returned websocket URL and
@@ -33,6 +35,8 @@ connection:
 Upon websocket URL expiry, as specified in the response ConnectionExpiry
 parameter, clients need to call this API again to obtain a new websocket
 URL and perform the same steps as before.
+
+The Amazon Connect Participant Service APIs do not use \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4 authentication}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_participant_connection(

@@ -55,22 +55,22 @@ necessary.
 \link[=macie2_delete_invitations]{delete_invitations} \tab Deletes Amazon Macie membership invitations that were received from specific accounts\cr
 \link[=macie2_delete_member]{delete_member} \tab Deletes the association between an Amazon Macie master account and an account\cr
 \link[=macie2_describe_buckets]{describe_buckets} \tab Retrieves (queries) statistical data and other information about one or more S3 buckets that Amazon Macie monitors and analyzes\cr
-\link[=macie2_describe_classification_job]{describe_classification_job} \tab Retrieves information about the status and settings for a classification job\cr
-\link[=macie2_describe_organization_configuration]{describe_organization_configuration} \tab Retrieves information about the Amazon Macie configuration settings for an AWS organization\cr
+\link[=macie2_describe_classification_job]{describe_classification_job} \tab Retrieves the status and settings for a classification job\cr
+\link[=macie2_describe_organization_configuration]{describe_organization_configuration} \tab Retrieves the Amazon Macie configuration settings for an AWS organization\cr
 \link[=macie2_disable_macie]{disable_macie} \tab Disables an Amazon Macie account and deletes Macie resources for the account\cr
-\link[=macie2_disable_organization_admin_account]{disable_organization_admin_account} \tab Disables an account as a delegated administrator of Amazon Macie for an AWS organization\cr
+\link[=macie2_disable_organization_admin_account]{disable_organization_admin_account} \tab Disables an account as the delegated Amazon Macie administrator account for an AWS organization\cr
 \link[=macie2_disassociate_from_master_account]{disassociate_from_master_account} \tab Disassociates a member account from its Amazon Macie master account\cr
 \link[=macie2_disassociate_member]{disassociate_member} \tab Disassociates an Amazon Macie master account from a member account\cr
 \link[=macie2_enable_macie]{enable_macie} \tab Enables Amazon Macie and specifies the configuration settings for a Macie account\cr
-\link[=macie2_enable_organization_admin_account]{enable_organization_admin_account} \tab Enables an account as a delegated administrator of Amazon Macie for an AWS organization\cr
+\link[=macie2_enable_organization_admin_account]{enable_organization_admin_account} \tab Designates an account as the delegated Amazon Macie administrator account for an AWS organization\cr
 \link[=macie2_get_bucket_statistics]{get_bucket_statistics} \tab Retrieves (queries) aggregated statistical data for all the S3 buckets that Amazon Macie monitors and analyzes\cr
 \link[=macie2_get_classification_export_configuration]{get_classification_export_configuration} \tab Retrieves the configuration settings for storing data classification results\cr
-\link[=macie2_get_custom_data_identifier]{get_custom_data_identifier} \tab Retrieves information about the criteria and other settings for a custom data identifier\cr
-\link[=macie2_get_findings]{get_findings} \tab Retrieves information about one or more findings\cr
-\link[=macie2_get_findings_filter]{get_findings_filter} \tab Retrieves information about the criteria and other settings for a findings filter\cr
+\link[=macie2_get_custom_data_identifier]{get_custom_data_identifier} \tab Retrieves the criteria and other settings for a custom data identifier\cr
+\link[=macie2_get_findings]{get_findings} \tab Retrieves the details of one or more findings\cr
+\link[=macie2_get_findings_filter]{get_findings_filter} \tab Retrieves the criteria and other settings for a findings filter\cr
 \link[=macie2_get_finding_statistics]{get_finding_statistics} \tab Retrieves (queries) aggregated statistical data about findings\cr
 \link[=macie2_get_invitations_count]{get_invitations_count} \tab Retrieves the count of Amazon Macie membership invitations that were received by an account\cr
-\link[=macie2_get_macie_session]{get_macie_session} \tab Retrieves information about the current status and configuration settings for an Amazon Macie account\cr
+\link[=macie2_get_macie_session]{get_macie_session} \tab Retrieves the current status and configuration settings for an Amazon Macie account\cr
 \link[=macie2_get_master_account]{get_master_account} \tab Retrieves information about the Amazon Macie master account for an account\cr
 \link[=macie2_get_member]{get_member} \tab Retrieves information about a member account that's associated with an Amazon Macie master account\cr
 \link[=macie2_get_usage_statistics]{get_usage_statistics} \tab Retrieves (queries) quotas and aggregated usage data for one or more accounts\cr
@@ -81,17 +81,17 @@ necessary.
 \link[=macie2_list_findings_filters]{list_findings_filters} \tab Retrieves a subset of information about all the findings filters for an account\cr
 \link[=macie2_list_invitations]{list_invitations} \tab Retrieves information about all the Amazon Macie membership invitations that were received by an account\cr
 \link[=macie2_list_members]{list_members} \tab Retrieves information about the accounts that are associated with an Amazon Macie master account\cr
-\link[=macie2_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Retrieves information about the account that's designated as the delegated administrator of Amazon Macie for an AWS organization\cr
+\link[=macie2_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Retrieves information about the delegated Amazon Macie administrator account for an AWS organization\cr
 \link[=macie2_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the tags (keys and values) that are associated with a classification job, custom data identifier, findings filter, or member account\cr
 \link[=macie2_put_classification_export_configuration]{put_classification_export_configuration} \tab Creates or updates the configuration settings for storing data classification results\cr
 \link[=macie2_tag_resource]{tag_resource} \tab Adds or updates one or more tags (keys and values) that are associated with a classification job, custom data identifier, findings filter, or member account\cr
 \link[=macie2_test_custom_data_identifier]{test_custom_data_identifier} \tab Tests a custom data identifier\cr
 \link[=macie2_untag_resource]{untag_resource} \tab Removes one or more tags (keys and values) from a classification job, custom data identifier, findings filter, or member account\cr
-\link[=macie2_update_classification_job]{update_classification_job} \tab Cancels a classification job\cr
+\link[=macie2_update_classification_job]{update_classification_job} \tab Changes the status of a classification job\cr
 \link[=macie2_update_findings_filter]{update_findings_filter} \tab Updates the criteria and other settings for a findings filter\cr
 \link[=macie2_update_macie_session]{update_macie_session} \tab Suspends or re-enables an Amazon Macie account, or updates the configuration settings for a Macie account\cr
 \link[=macie2_update_member_session]{update_member_session} \tab Enables an Amazon Macie master account to suspend or re-enable a member account\cr
-\link[=macie2_update_organization_configuration]{update_organization_configuration} \tab Updates Amazon Macie configuration settings for an AWS organization
+\link[=macie2_update_organization_configuration]{update_organization_configuration} \tab Updates the Amazon Macie configuration settings for an AWS organization
 }
 }
 

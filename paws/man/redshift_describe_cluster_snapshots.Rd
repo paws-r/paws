@@ -23,13 +23,13 @@ Valid Values: \code{automated} | \code{manual}}
 
 \item{StartTime}{A value that requests only snapshots created at or after the specified
 time. The time value is specified in ISO 8601 format. For more
-information about ISO 8601, go to the \href{http://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
+information about ISO 8601, go to the \href{https://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
 
 Example: \verb{2012-07-16T18:00:00Z}}
 
 \item{EndTime}{A time value that requests only snapshots created at or before the
 specified time. The time value is specified in ISO 8601 format. For more
-information about ISO 8601, go to the \href{http://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
+information about ISO 8601, go to the \href{https://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
 
 Example: \verb{2012-07-16T18:00:00Z}}
 

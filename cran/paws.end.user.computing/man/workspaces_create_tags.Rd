@@ -8,12 +8,10 @@ workspaces_create_tags(ResourceId, Tags)
 }
 \arguments{
 \item{ResourceId}{[required] The identifier of the WorkSpaces resource. The supported resource types
-are WorkSpaces, registered directories, images, custom bundles, and IP
-access control groups.}
+are WorkSpaces, registered directories, images, custom bundles, IP
+access control groups, and connection aliases.}
 
-\item{Tags}{[required] The tags. Each WorkSpaces resource can have a maximum of 50 tags. If you
-want to add new tags to a set of existing tags, you must submit all of
-the existing tags along with the new ones.}
+\item{Tags}{[required] The tags. Each WorkSpaces resource can have a maximum of 50 tags.}
 }
 \description{
 Creates the specified tags for the specified WorkSpaces resource.

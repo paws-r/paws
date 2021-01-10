@@ -63,6 +63,18 @@ NULL
   return(populate(args, shape))
 }
 
+.snowball$create_return_shipping_label_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string")), ShippingOption = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.snowball$create_return_shipping_label_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .snowball$describe_address_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AddressId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -108,6 +120,18 @@ NULL
 .snowball$describe_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(JobMetadata = structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobState = structure(logical(0), tags = list(type = "string")), JobType = structure(logical(0), tags = list(type = "string")), SnowballType = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), Resources = structure(list(S3Resources = structure(list(structure(list(BucketArn = structure(logical(0), tags = list(type = "string")), KeyRange = structure(list(BeginMarker = structure(logical(0), tags = list(type = "string")), EndMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), LambdaResources = structure(list(structure(list(LambdaArn = structure(logical(0), tags = list(type = "string")), EventTriggers = structure(list(structure(list(EventResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Ec2AmiResources = structure(list(structure(list(AmiId = structure(logical(0), tags = list(type = "string")), SnowballAmiId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), KmsKeyARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string")), AddressId = structure(logical(0), tags = list(type = "string")), ShippingDetails = structure(list(ShippingOption = structure(logical(0), tags = list(type = "string")), InboundShipment = structure(list(Status = structure(logical(0), tags = list(type = "string")), TrackingNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutboundShipment = structure(list(Status = structure(logical(0), tags = list(type = "string")), TrackingNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), SnowballCapacityPreference = structure(logical(0), tags = list(type = "string")), Notification = structure(list(SnsTopicARN = structure(logical(0), tags = list(type = "string")), JobStatesToNotify = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotifyAll = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DataTransferProgress = structure(list(BytesTransferred = structure(logical(0), tags = list(type = "long")), ObjectsTransferred = structure(logical(0), tags = list(type = "long")), TotalBytes = structure(logical(0), tags = list(type = "long")), TotalObjects = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), JobLogInfo = structure(list(JobCompletionReportURI = structure(logical(0), tags = list(type = "string")), JobSuccessLogURI = structure(logical(0), tags = list(type = "string")), JobFailureLogURI = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClusterId = structure(logical(0), tags = list(type = "string")), ForwardingAddressId = structure(logical(0), tags = list(type = "string")), TaxDocuments = structure(list(IND = structure(list(GSTIN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), DeviceConfiguration = structure(list(SnowconeDeviceConfiguration = structure(list(WirelessConnection = structure(list(IsWifiEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), SubJobMetadata = structure(list(structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobState = structure(logical(0), tags = list(type = "string")), JobType = structure(logical(0), tags = list(type = "string")), SnowballType = structure(logical(0), tags = list(type = "string")), CreationDate = structure(logical(0), tags = list(type = "timestamp")), Resources = structure(list(S3Resources = structure(list(structure(list(BucketArn = structure(logical(0), tags = list(type = "string")), KeyRange = structure(list(BeginMarker = structure(logical(0), tags = list(type = "string")), EndMarker = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), LambdaResources = structure(list(structure(list(LambdaArn = structure(logical(0), tags = list(type = "string")), EventTriggers = structure(list(structure(list(EventResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), Ec2AmiResources = structure(list(structure(list(AmiId = structure(logical(0), tags = list(type = "string")), SnowballAmiId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Description = structure(logical(0), tags = list(type = "string")), KmsKeyARN = structure(logical(0), tags = list(type = "string")), RoleARN = structure(logical(0), tags = list(type = "string")), AddressId = structure(logical(0), tags = list(type = "string")), ShippingDetails = structure(list(ShippingOption = structure(logical(0), tags = list(type = "string")), InboundShipment = structure(list(Status = structure(logical(0), tags = list(type = "string")), TrackingNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutboundShipment = structure(list(Status = structure(logical(0), tags = list(type = "string")), TrackingNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), SnowballCapacityPreference = structure(logical(0), tags = list(type = "string")), Notification = structure(list(SnsTopicARN = structure(logical(0), tags = list(type = "string")), JobStatesToNotify = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NotifyAll = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), DataTransferProgress = structure(list(BytesTransferred = structure(logical(0), tags = list(type = "long")), ObjectsTransferred = structure(logical(0), tags = list(type = "long")), TotalBytes = structure(logical(0), tags = list(type = "long")), TotalObjects = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), JobLogInfo = structure(list(JobCompletionReportURI = structure(logical(0), tags = list(type = "string")), JobSuccessLogURI = structure(logical(0), tags = list(type = "string")), JobFailureLogURI = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClusterId = structure(logical(0), tags = list(type = "string")), ForwardingAddressId = structure(logical(0), tags = list(type = "string")), TaxDocuments = structure(list(IND = structure(list(GSTIN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), DeviceConfiguration = structure(list(SnowconeDeviceConfiguration = structure(list(WirelessConnection = structure(list(IsWifiEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.snowball$describe_return_shipping_label_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.snowball$describe_return_shipping_label_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Status = structure(logical(0), tags = list(type = "string")), ExpirationDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -226,6 +250,18 @@ NULL
 }
 
 .snowball$update_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.snowball$update_job_shipment_state_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string")), ShipmentState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.snowball$update_job_shipment_state_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

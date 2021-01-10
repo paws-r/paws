@@ -38,13 +38,15 @@ If you are using \code{nextToken} in this operation, you must specify \code{true
 for \code{startFromHead}.}
 }
 \description{
-Lists log events from the specified log stream. You can list all the log
-events or filter using a time range.
+Lists log events from the specified log stream. You can list all of the
+log events or filter using a time range.
 }
 \details{
 By default, this operation returns as many log events as can fit in a
 response size of 1MB (up to 10,000 log events). You can get additional
-log events by specifying one of the tokens in a subsequent call.
+log events by specifying one of the tokens in a subsequent call. This
+operation can return empty results while there are more log events
+available through the token.
 }
 \section{Request syntax}{
 \preformatted{svc$get_log_events(

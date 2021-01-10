@@ -20,7 +20,7 @@ virtual private cloud (VPC). The specified security groups override the
 previously associated security groups.
 }
 \details{
-For more information, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html#elb-vpc-security-groups}{Security Groups for Load Balancers in a VPC}
+For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-security-groups.html#elb-vpc-security-groups}{Security Groups for Load Balancers in a VPC}
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{

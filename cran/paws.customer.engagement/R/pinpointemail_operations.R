@@ -783,7 +783,7 @@ pinpointemail_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, P
 #' subscription charge, in addition to any other fees that you accrue by
 #' using Amazon Pinpoint. For more information about the features and cost
 #' of a Deliverability dashboard subscription, see [Amazon Pinpoint
-#' Pricing](http://aws.amazon.com/pinpoint/pricing/).
+#' Pricing](https://aws.amazon.com/pinpoint/pricing/).
 #'
 #' @usage
 #' pinpointemail_get_deliverability_dashboard_options()
@@ -1639,7 +1639,7 @@ pinpointemail_put_dedicated_ip_warmup_attributes <- function(Ip, WarmupPercentag
 #' subscription charge, in addition to any other fees that you accrue by
 #' using Amazon Pinpoint. For more information about the features and cost
 #' of a Deliverability dashboard subscription, see [Amazon Pinpoint
-#' Pricing](http://aws.amazon.com/pinpoint/pricing/).
+#' Pricing](https://aws.amazon.com/pinpoint/pricing/).
 #'
 #' @usage
 #' pinpointemail_put_deliverability_dashboard_option(DashboardEnabled,

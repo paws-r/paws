@@ -18,7 +18,7 @@ Deletes an Amazon Lightsail instance.
 \details{
 The \verb{delete instance} operation supports tag-based access control via
 resource tags applied to the resource identified by \verb{instance name}. For
-more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_instance(

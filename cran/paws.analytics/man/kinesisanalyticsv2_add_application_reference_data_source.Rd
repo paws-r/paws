@@ -2,8 +2,8 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_add_application_reference_data_source}
 \alias{kinesisanalyticsv2_add_application_reference_data_source}
-\title{Adds a reference data source to an existing SQL-based Amazon Kinesis
-Data Analytics application}
+\title{Adds a reference data source to an existing SQL-based Kinesis Data
+Analytics application}
 \usage{
 kinesisanalyticsv2_add_application_reference_data_source(
   ApplicationName, CurrentApplicationVersionId, ReferenceDataSource)
@@ -22,8 +22,8 @@ in-application table that is created. You provide an S3 bucket, object
 key name, and the resulting in-application table that is created.}
 }
 \description{
-Adds a reference data source to an existing SQL-based Amazon Kinesis
-Data Analytics application.
+Adds a reference data source to an existing SQL-based Kinesis Data
+Analytics application.
 }
 \details{
 Kinesis Data Analytics reads reference data (that is, an Amazon S3

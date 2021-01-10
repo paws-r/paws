@@ -17,12 +17,13 @@ from any other state. Each action is specified as an Amazon Resource
 Name (ARN).
 
 Valid Values:
-\verb{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> }}
+\verb{arn:aws:sns:<i>region</i>:<i>account-id</i>:<i>sns-topic-name</i> } |
+\verb{arn:aws:ssm:<i>region</i>:<i>account-id</i>:opsitem:<i>severity</i> }}
 
 \item{AlarmDescription}{The description for the composite alarm.}
 
-\item{AlarmName}{[required] The name for the composite alarm. This name must be unique within your
-AWS account.}
+\item{AlarmName}{[required] The name for the composite alarm. This name must be unique within the
+Region.}
 
 \item{AlarmRule}{[required] An expression that specifies which other alarms are to be evaluated to
 determine this composite alarm's state. For each alarm that you
@@ -141,6 +142,9 @@ only time that the alarm can be in \code{INSUFFICIENT_DATA} state.
 
 When you update an existing alarm, its state is left unchanged, but the
 update completely overwrites the previous configuration of the alarm.
+
+If you are an IAM user, you must have \code{iam:CreateServiceLinkedRole} to
+create a composite alarm that has Systems Manager OpsItem actions.
 }
 \section{Request syntax}{
 \preformatted{svc$put_composite_alarm(

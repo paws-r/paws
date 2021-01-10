@@ -29,8 +29,8 @@ hours.}
 \item{Filters}{[required] The queues, up to 100, or channels, to use to filter the metrics
 returned. Metric data is retrieved only for the resources associated
 with the queues or channels included in the filter. You can include both
-queue IDs and queue ARNs in the same request. The only supported channel
-is \code{VOICE}.}
+queue IDs and queue ARNs in the same request. VOICE, CHAT, and TASK
+channels are supported.}
 
 \item{Groupings}{The grouping applied to the metrics returned. For example, when results
 are grouped by queue, the metrics returned are grouped by queue. The
@@ -235,7 +235,7 @@ results.}
 Gets historical metric data from the specified Amazon Connect instance.
 }
 \details{
-For more information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics.html}{Historical Metrics Reports}
+For a description of each historical metric, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html}{Historical Metrics Definitions}
 in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
@@ -252,7 +252,7 @@ in the \emph{Amazon Connect Administrator Guide}.
       "string"
     ),
     Channels = list(
-      "VOICE"|"CHAT"
+      "VOICE"|"CHAT"|"TASK"
     )
   ),
   Groupings = list(

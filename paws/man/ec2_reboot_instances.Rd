@@ -21,7 +21,7 @@ instances. The operation succeeds if the instances are valid and belong
 to you. Requests to reboot terminated instances are ignored.
 }
 \details{
-If an instance does not cleanly shut down within four minutes, Amazon
+If an instance does not cleanly shut down within a few minutes, Amazon
 EC2 performs a hard reboot.
 
 For more information about troubleshooting, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html}{Getting console output and rebooting instances}

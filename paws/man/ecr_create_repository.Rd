@@ -5,7 +5,7 @@
 \title{Creates a repository}
 \usage{
 ecr_create_repository(repositoryName, tags, imageTagMutability,
-  imageScanningConfiguration)
+  imageScanningConfiguration, encryptionConfiguration)
 }
 \arguments{
 \item{repositoryName}{[required] The name to use for the repository. The repository name may be specified
@@ -24,9 +24,12 @@ image tags to be overwritten. If \code{IMMUTABLE} is specified, all image
 tags within the repository will be immutable which will prevent them
 from being overwritten.}
 
-\item{imageScanningConfiguration}{The image scanning configuration for the repository. This setting
-determines whether images are scanned for known vulnerabilities after
-being pushed to the repository.}
+\item{imageScanningConfiguration}{The image scanning configuration for the repository. This determines
+whether images are scanned for known vulnerabilities after being pushed
+to the repository.}
+
+\item{encryptionConfiguration}{The encryption configuration for the repository. This determines how the
+contents of your repository are encrypted at rest.}
 }
 \description{
 Creates a repository. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html}{Amazon ECR Repositories}
@@ -44,6 +47,10 @@ in the \emph{Amazon Elastic Container Registry User Guide}.
   imageTagMutability = "MUTABLE"|"IMMUTABLE",
   imageScanningConfiguration = list(
     scanOnPush = TRUE|FALSE
+  ),
+  encryptionConfiguration = list(
+    encryptionType = "AES256"|"KMS",
+    kmsKey = "string"
   )
 )
 }

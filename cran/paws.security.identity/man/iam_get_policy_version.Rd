@@ -16,9 +16,10 @@ in the \emph{AWS General Reference}.}
 
 \item{VersionId}{[required] Identifies the policy version to retrieve.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that
-consists of the lowercase letter 'v' followed by one or two digits, and
-optionally followed by a period '.' and a string of letters and digits.}
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
+that consists of the lowercase letter 'v' followed by one or two digits,
+and optionally followed by a period '.' and a string of letters and
+digits.}
 }
 \description{
 Retrieves information about the specified version of the specified
@@ -37,10 +38,10 @@ This API retrieves information about managed policies. To retrieve
 information about an inline policy that is embedded in a user, group, or
 role, use the GetUserPolicy, GetGroupPolicy, or GetRolePolicy API.
 
-For more information about the types of policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+For more information about the types of policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 
-For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html}{Versioning for Managed Policies}
+For more information about managed policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

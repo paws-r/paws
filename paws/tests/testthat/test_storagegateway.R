@@ -18,6 +18,10 @@ test_that("list_gateways", {
   expect_error(svc$list_gateways(), NA)
 })
 
+test_that("list_tape_pools", {
+  expect_error(svc$list_tape_pools(), NA)
+})
+
 test_that("list_tapes", {
   expect_error(svc$list_tapes(), NA)
 })

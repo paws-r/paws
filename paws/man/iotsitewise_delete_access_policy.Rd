@@ -2,8 +2,8 @@
 % Please edit documentation in R/iotsitewise_operations.R
 \name{iotsitewise_delete_access_policy}
 \alias{iotsitewise_delete_access_policy}
-\title{Deletes an access policy that grants the specified AWS Single Sign-On
-identity access to the specified AWS IoT SiteWise Monitor resource}
+\title{Deletes an access policy that grants the specified identity access to
+the specified AWS IoT SiteWise Monitor resource}
 \usage{
 iotsitewise_delete_access_policy(accessPolicyId, clientToken)
 }
@@ -15,10 +15,9 @@ idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 }
 \description{
-Deletes an access policy that grants the specified AWS Single Sign-On
-identity access to the specified AWS IoT SiteWise Monitor resource. You
-can use this operation to revoke access to an AWS IoT SiteWise Monitor
-resource.
+Deletes an access policy that grants the specified identity access to
+the specified AWS IoT SiteWise Monitor resource. You can use this
+operation to revoke access to an AWS IoT SiteWise Monitor resource.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_access_policy(

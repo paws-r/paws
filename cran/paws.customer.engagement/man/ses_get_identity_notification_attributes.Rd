@@ -22,7 +22,7 @@ This operation is throttled at one request per second and can only get
 notification attributes for up to 100 identities at a time.
 
 For more information about using notifications with Amazon SES, see the
-\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/notifications.html}{Amazon SES Developer Guide}.
+\href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_identity_notification_attributes(

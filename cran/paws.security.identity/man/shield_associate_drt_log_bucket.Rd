@@ -17,8 +17,8 @@ Amazon S3 buckets with your subscription.
 }
 \details{
 To use the services of the DRT and make an \code{AssociateDRTLogBucket}
-request, you must be subscribed to the \href{https://aws.amazon.com/premiumsupport/business-support/}{Business Support plan} or the
-\href{https://aws.amazon.com/premiumsupport/enterprise-support/}{Enterprise Support plan}.
+request, you must be subscribed to the \href{https://aws.amazon.com/premiumsupport/plans/business/}{Business Support plan} or the
+\href{https://aws.amazon.com/premiumsupport/plans/enterprise/}{Enterprise Support plan}.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_drt_log_bucket(

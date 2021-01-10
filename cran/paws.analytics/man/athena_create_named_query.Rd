@@ -34,7 +34,7 @@ Creates a named query in the specified workgroup. Requires that you have
 access to the workgroup.
 }
 \details{
-For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
+For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
 in the \emph{Amazon Athena User Guide}.
 }
 \section{Request syntax}{

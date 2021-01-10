@@ -49,14 +49,25 @@ material from the associated AWS CloudHSM cluster. However, you might
 need to manually \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-orphaned-key}{delete the orphaned key material}
 from the cluster and its backups.
 
-You cannot perform this operation on a CMK in a different AWS account.
-
 For more information about scheduling a CMK for deletion, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html}{Deleting Customer Master Keys}
 in the \emph{AWS Key Management Service Developer Guide}.
 
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
+a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:ScheduleKeyDeletion}
+(key policy)
+
+\strong{Related operations}
+\itemize{
+\item CancelKeyDeletion
+\item DisableKey
+}
 }
 \section{Request syntax}{
 \preformatted{svc$schedule_key_deletion(

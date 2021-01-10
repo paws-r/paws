@@ -84,7 +84,7 @@ NULL
 #'   DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration,
 #'   ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration,
 #'   ElasticsearchDestinationConfiguration, SplunkDestinationConfiguration,
-#'   Tags)
+#'   HttpEndpointDestinationConfiguration, Tags)
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream. This name must be unique per AWS
 #' account in the same AWS Region. If the delivery streams are in different
@@ -111,6 +111,8 @@ NULL
 #' destination.
 #' @param ElasticsearchDestinationConfiguration The destination in Amazon ES. You can specify only one destination.
 #' @param SplunkDestinationConfiguration The destination in Splunk. You can specify only one destination.
+#' @param HttpEndpointDestinationConfiguration Enables configuring Kinesis Firehose to deliver data to any HTTP
+#' endpoint destination. You can specify only one destination.
 #' @param Tags A set of tags to assign to the delivery stream. A tag is a key-value
 #' pair that you can define and assign to AWS resources. Tags are metadata.
 #' For example, you can add friendly names and descriptions or other types
@@ -463,6 +465,72 @@ NULL
 #'       LogStreamName = "string"
 #'     )
 #'   ),
+#'   HttpEndpointDestinationConfiguration = list(
+#'     EndpointConfiguration = list(
+#'       Url = "string",
+#'       Name = "string",
+#'       AccessKey = "string"
+#'     ),
+#'     BufferingHints = list(
+#'       SizeInMBs = 123,
+#'       IntervalInSeconds = 123
+#'     ),
+#'     CloudWatchLoggingOptions = list(
+#'       Enabled = TRUE|FALSE,
+#'       LogGroupName = "string",
+#'       LogStreamName = "string"
+#'     ),
+#'     RequestConfiguration = list(
+#'       ContentEncoding = "NONE"|"GZIP",
+#'       CommonAttributes = list(
+#'         list(
+#'           AttributeName = "string",
+#'           AttributeValue = "string"
+#'         )
+#'       )
+#'     ),
+#'     ProcessingConfiguration = list(
+#'       Enabled = TRUE|FALSE,
+#'       Processors = list(
+#'         list(
+#'           Type = "Lambda",
+#'           Parameters = list(
+#'             list(
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'               ParameterValue = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     RoleARN = "string",
+#'     RetryOptions = list(
+#'       DurationInSeconds = 123
+#'     ),
+#'     S3BackupMode = "FailedDataOnly"|"AllData",
+#'     S3Configuration = list(
+#'       RoleARN = "string",
+#'       BucketARN = "string",
+#'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
+#'       BufferingHints = list(
+#'         SizeInMBs = 123,
+#'         IntervalInSeconds = 123
+#'       ),
+#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'       EncryptionConfiguration = list(
+#'         NoEncryptionConfig = "NoEncryption",
+#'         KMSEncryptionConfig = list(
+#'           AWSKMSKeyARN = "string"
+#'         )
+#'       ),
+#'       CloudWatchLoggingOptions = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroupName = "string",
+#'         LogStreamName = "string"
+#'       )
+#'     )
+#'   ),
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -475,14 +543,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname firehose_create_delivery_stream
-firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, Tags = NULL) {
+firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamType = NULL, KinesisStreamSourceConfiguration = NULL, DeliveryStreamEncryptionConfigurationInput = NULL, S3DestinationConfiguration = NULL, ExtendedS3DestinationConfiguration = NULL, RedshiftDestinationConfiguration = NULL, ElasticsearchDestinationConfiguration = NULL, SplunkDestinationConfiguration = NULL, HttpEndpointDestinationConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDeliveryStream",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, Tags = Tags)
+  input <- .firehose$create_delivery_stream_input(DeliveryStreamName = DeliveryStreamName, DeliveryStreamType = DeliveryStreamType, KinesisStreamSourceConfiguration = KinesisStreamSourceConfiguration, DeliveryStreamEncryptionConfigurationInput = DeliveryStreamEncryptionConfigurationInput, S3DestinationConfiguration = S3DestinationConfiguration, ExtendedS3DestinationConfiguration = ExtendedS3DestinationConfiguration, RedshiftDestinationConfiguration = RedshiftDestinationConfiguration, ElasticsearchDestinationConfiguration = ElasticsearchDestinationConfiguration, SplunkDestinationConfiguration = SplunkDestinationConfiguration, HttpEndpointDestinationConfiguration = HttpEndpointDestinationConfiguration, Tags = Tags)
   output <- .firehose$create_delivery_stream_output()
   config <- get_config()
   svc <- .firehose$service(config)
@@ -807,12 +875,8 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' PutRecord. Applications using these operations are referred to as
 #' producers.
 #' 
-#' By default, each delivery stream can take in up to 2,000 transactions
-#' per second, 5,000 records per second, or 5 MB per second. If you use
-#' PutRecord and PutRecordBatch, the limits are an aggregate across these
-#' two operations for each delivery stream. For more information about
-#' limits, see [Amazon Kinesis Data Firehose
-#' Limits](https://docs.aws.amazon.com/firehose/latest/dev/limits.html).
+#' For information about service quota, see [Amazon Kinesis Data Firehose
+#' Quota](https://docs.aws.amazon.com/firehose/latest/dev/limits.html).
 #' 
 #' Each PutRecordBatch request supports up to 500 records. Each record in
 #' the request can be as large as 1,000 KB (before 64-bit encoding), up to
@@ -1206,7 +1270,8 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' firehose_update_destination(DeliveryStreamName,
 #'   CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate,
 #'   ExtendedS3DestinationUpdate, RedshiftDestinationUpdate,
-#'   ElasticsearchDestinationUpdate, SplunkDestinationUpdate)
+#'   ElasticsearchDestinationUpdate, SplunkDestinationUpdate,
+#'   HttpEndpointDestinationUpdate)
 #'
 #' @param DeliveryStreamName &#91;required&#93; The name of the delivery stream.
 #' @param CurrentDeliveryStreamVersionId &#91;required&#93; Obtain this value from the `VersionId` result of
@@ -1222,6 +1287,7 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' @param RedshiftDestinationUpdate Describes an update for a destination in Amazon Redshift.
 #' @param ElasticsearchDestinationUpdate Describes an update for a destination in Amazon ES.
 #' @param SplunkDestinationUpdate Describes an update for a destination in Splunk.
+#' @param HttpEndpointDestinationUpdate Describes an update to the specified HTTP endpoint destination.
 #'
 #' @section Request syntax:
 #' ```
@@ -1547,6 +1613,72 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #'       LogGroupName = "string",
 #'       LogStreamName = "string"
 #'     )
+#'   ),
+#'   HttpEndpointDestinationUpdate = list(
+#'     EndpointConfiguration = list(
+#'       Url = "string",
+#'       Name = "string",
+#'       AccessKey = "string"
+#'     ),
+#'     BufferingHints = list(
+#'       SizeInMBs = 123,
+#'       IntervalInSeconds = 123
+#'     ),
+#'     CloudWatchLoggingOptions = list(
+#'       Enabled = TRUE|FALSE,
+#'       LogGroupName = "string",
+#'       LogStreamName = "string"
+#'     ),
+#'     RequestConfiguration = list(
+#'       ContentEncoding = "NONE"|"GZIP",
+#'       CommonAttributes = list(
+#'         list(
+#'           AttributeName = "string",
+#'           AttributeValue = "string"
+#'         )
+#'       )
+#'     ),
+#'     ProcessingConfiguration = list(
+#'       Enabled = TRUE|FALSE,
+#'       Processors = list(
+#'         list(
+#'           Type = "Lambda",
+#'           Parameters = list(
+#'             list(
+#'               ParameterName = "LambdaArn"|"NumberOfRetries"|"RoleArn"|"BufferSizeInMBs"|"BufferIntervalInSeconds",
+#'               ParameterValue = "string"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     RoleARN = "string",
+#'     RetryOptions = list(
+#'       DurationInSeconds = 123
+#'     ),
+#'     S3BackupMode = "FailedDataOnly"|"AllData",
+#'     S3Update = list(
+#'       RoleARN = "string",
+#'       BucketARN = "string",
+#'       Prefix = "string",
+#'       ErrorOutputPrefix = "string",
+#'       BufferingHints = list(
+#'         SizeInMBs = 123,
+#'         IntervalInSeconds = 123
+#'       ),
+#'       CompressionFormat = "UNCOMPRESSED"|"GZIP"|"ZIP"|"Snappy"|"HADOOP_SNAPPY",
+#'       EncryptionConfiguration = list(
+#'         NoEncryptionConfig = "NoEncryption",
+#'         KMSEncryptionConfig = list(
+#'           AWSKMSKeyARN = "string"
+#'         )
+#'       ),
+#'       CloudWatchLoggingOptions = list(
+#'         Enabled = TRUE|FALSE,
+#'         LogGroupName = "string",
+#'         LogStreamName = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1554,14 +1686,14 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 #' @keywords internal
 #'
 #' @rdname firehose_update_destination
-firehose_update_destination <- function(DeliveryStreamName, CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate = NULL, ExtendedS3DestinationUpdate = NULL, RedshiftDestinationUpdate = NULL, ElasticsearchDestinationUpdate = NULL, SplunkDestinationUpdate = NULL) {
+firehose_update_destination <- function(DeliveryStreamName, CurrentDeliveryStreamVersionId, DestinationId, S3DestinationUpdate = NULL, ExtendedS3DestinationUpdate = NULL, RedshiftDestinationUpdate = NULL, ElasticsearchDestinationUpdate = NULL, SplunkDestinationUpdate = NULL, HttpEndpointDestinationUpdate = NULL) {
   op <- new_operation(
     name = "UpdateDestination",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .firehose$update_destination_input(DeliveryStreamName = DeliveryStreamName, CurrentDeliveryStreamVersionId = CurrentDeliveryStreamVersionId, DestinationId = DestinationId, S3DestinationUpdate = S3DestinationUpdate, ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate, RedshiftDestinationUpdate = RedshiftDestinationUpdate, ElasticsearchDestinationUpdate = ElasticsearchDestinationUpdate, SplunkDestinationUpdate = SplunkDestinationUpdate)
+  input <- .firehose$update_destination_input(DeliveryStreamName = DeliveryStreamName, CurrentDeliveryStreamVersionId = CurrentDeliveryStreamVersionId, DestinationId = DestinationId, S3DestinationUpdate = S3DestinationUpdate, ExtendedS3DestinationUpdate = ExtendedS3DestinationUpdate, RedshiftDestinationUpdate = RedshiftDestinationUpdate, ElasticsearchDestinationUpdate = ElasticsearchDestinationUpdate, SplunkDestinationUpdate = SplunkDestinationUpdate, HttpEndpointDestinationUpdate = HttpEndpointDestinationUpdate)
   output <- .firehose$update_destination_output()
   config <- get_config()
   svc <- .firehose$service(config)

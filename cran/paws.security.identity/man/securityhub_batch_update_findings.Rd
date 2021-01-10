@@ -78,8 +78,8 @@ account.
 Updates from \code{BatchUpdateFindings} do not affect the value of
 \code{UpdatedAt} for a finding.
 
-Master accounts can use \code{BatchUpdateFindings} to update the following
-finding fields and objects.
+Master and member accounts can use \code{BatchUpdateFindings} to update the
+following finding fields and objects.
 \itemize{
 \item \code{Confidence}
 \item \code{Criticality}
@@ -92,8 +92,10 @@ finding fields and objects.
 \item \code{Workflow}
 }
 
-Member accounts can only use \code{BatchUpdateFindings} to update the Note
-object.
+You can configure IAM policies to restrict access to fields and field
+values. For example, you might not want member accounts to be able to
+suppress findings or change the finding severity. See \href{https://docs.aws.amazon.com/securityhub/latest/userguide/finding-update-batchupdatefindings.html#batchupdatefindings-configure-access}{Configuring access to BatchUpdateFindings}
+in the \emph{AWS Security Hub User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$batch_update_findings(

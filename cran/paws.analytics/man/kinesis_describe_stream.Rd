@@ -28,8 +28,8 @@ Every record ingested in the stream is identified by a sequence number,
 which is assigned when the record is put into the stream.
 
 You can limit the number of shards returned by each call. For more
-information, see \href{http://docs.aws.amazon.com/kinesis/latest/dev/kinesis-using-sdk-java-retrieve-shards.html}{Retrieving Shards from a Stream}
-in the \emph{Amazon Kinesis Data Streams Developer Guide}.
+information, see \href{https://docs.aws.amazon.com/streams/latest/dev/}{Retrieving Shards from a Stream} in the \emph{Amazon
+Kinesis Data Streams Developer Guide}.
 
 There are no guarantees about the chronological order shards returned.
 To process shards in chronological order, use the ID of the parent shard

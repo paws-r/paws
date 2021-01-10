@@ -49,3 +49,11 @@ test_that("describe_snapshots", {
 test_that("describe_update_actions", {
   expect_error(svc$describe_update_actions(), NA)
 })
+
+test_that("describe_user_groups", {
+  expect_error(svc$describe_user_groups(), NA)
+})
+
+test_that("describe_users", {
+  expect_error(svc$describe_users(), NA)
+})

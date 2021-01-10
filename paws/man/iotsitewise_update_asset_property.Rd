@@ -15,7 +15,7 @@ iotsitewise_update_asset_property(assetId, propertyId, propertyAlias,
 \item{propertyAlias}{The property alias that identifies the property, such as an OPC-UA
 server data stream path (for example,
 \verb{/company/windfarm/3/turbine/7/temperature}). For more information, see
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html}{Mapping Industrial Data Streams to Asset Properties}
+\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html}{Mapping industrial data streams to asset properties}
 in the \emph{AWS IoT SiteWise User Guide}.
 
 If you omit this parameter, the alias is removed from the property.}
@@ -23,7 +23,7 @@ If you omit this parameter, the alias is removed from the property.}
 \item{propertyNotificationState}{The MQTT notification state (enabled or disabled) for this asset
 property. When the notification state is enabled, AWS IoT SiteWise
 publishes property value updates to a unique MQTT topic. For more
-information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/interact-with-other-services.html}{Interacting with Other Services}
+information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/interact-with-other-services.html}{Interacting with other services}
 in the \emph{AWS IoT SiteWise User Guide}.
 
 If you omit this parameter, the notification state is set to \code{DISABLED}.}

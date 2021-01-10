@@ -6,12 +6,13 @@ NULL
 #'
 #' @description
 #' AWS Compute Optimizer is a service that analyzes the configuration and
-#' utilization metrics of your AWS resources, such as EC2 instances and
-#' Auto Scaling groups. It reports whether your resources are optimal, and
-#' generates optimization recommendations to reduce the cost and improve
-#' the performance of your workloads. Compute Optimizer also provides
-#' recent utilization metric data, as well as projected utilization metric
-#' data for the recommendations, which you can use to evaluate which
+#' utilization metrics of your AWS compute resources, such as EC2
+#' instances, Auto Scaling groups, AWS Lambda functions, and Amazon EBS
+#' volumes. It reports whether your resources are optimal, and generates
+#' optimization recommendations to reduce the cost and improve the
+#' performance of your workloads. Compute Optimizer also provides recent
+#' utilization metric data, as well as projected utilization metric data
+#' for the recommendations, which you can use to evaluate which
 #' recommendation provides the best price-performance trade-off. The
 #' analysis of your usage patterns can help you decide when to move or
 #' resize your running resources, and still meet your performance and
@@ -56,9 +57,11 @@ NULL
 #'  \link[=computeoptimizer_export_auto_scaling_group_recommendations]{export_auto_scaling_group_recommendations} \tab Exports optimization recommendations for Auto Scaling groups\cr
 #'  \link[=computeoptimizer_export_ec2_instance_recommendations]{export_ec2_instance_recommendations} \tab Exports optimization recommendations for Amazon EC2 instances\cr
 #'  \link[=computeoptimizer_get_auto_scaling_group_recommendations]{get_auto_scaling_group_recommendations} \tab Returns Auto Scaling group recommendations\cr
+#'  \link[=computeoptimizer_get_ebs_volume_recommendations]{get_ebs_volume_recommendations} \tab Returns Amazon Elastic Block Store (Amazon EBS) volume recommendations\cr
 #'  \link[=computeoptimizer_get_ec2_instance_recommendations]{get_ec2_instance_recommendations} \tab Returns Amazon EC2 instance recommendations\cr
 #'  \link[=computeoptimizer_get_ec2_recommendation_projected_metrics]{get_ec2_recommendation_projected_metrics} \tab Returns the projected utilization metrics of Amazon EC2 instance recommendations\cr
 #'  \link[=computeoptimizer_get_enrollment_status]{get_enrollment_status} \tab Returns the enrollment (opt in) status of an account to the AWS Compute Optimizer service\cr
+#'  \link[=computeoptimizer_get_lambda_function_recommendations]{get_lambda_function_recommendations} \tab Returns AWS Lambda function recommendations\cr
 #'  \link[=computeoptimizer_get_recommendation_summaries]{get_recommendation_summaries} \tab Returns the optimization findings for an account\cr
 #'  \link[=computeoptimizer_update_enrollment_status]{update_enrollment_status} \tab Updates the enrollment (opt in) status of an account to the AWS Compute Optimizer service
 #' }

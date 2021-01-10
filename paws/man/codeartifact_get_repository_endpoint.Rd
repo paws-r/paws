@@ -21,6 +21,7 @@ endpoint for each package format:
 \item \code{npm}
 \item \code{pypi}
 \item \code{maven}
+\item \code{nuget}
 }}
 }
 \description{
@@ -32,6 +33,7 @@ repository has one endpoint for each package format:
 \item \code{npm}
 \item \code{pypi}
 \item \code{maven}
+\item \code{nuget}
 }
 }
 \section{Request syntax}{
@@ -39,7 +41,7 @@ repository has one endpoint for each package format:
   domain = "string",
   domainOwner = "string",
   repository = "string",
-  format = "npm"|"pypi"|"maven"
+  format = "npm"|"pypi"|"maven"|"nuget"
 )
 }
 }

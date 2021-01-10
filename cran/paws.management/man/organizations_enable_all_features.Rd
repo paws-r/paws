@@ -32,14 +32,14 @@ After all invited member accounts accept the handshake, you finalize the
 feature set change by accepting the handshake that contains
 \code{"Action": "ENABLE_ALL_FEATURES"}. This completes the change.
 
-After you enable all features in your organization, the master account
-in the organization can apply policies on all member accounts. These
-policies can restrict what users and even administrators in those
-accounts can do. The master account can apply policies that prevent
+After you enable all features in your organization, the management
+account in the organization can apply policies on all member accounts.
+These policies can restrict what users and even administrators in those
+accounts can do. The management account can apply policies that prevent
 accounts from leaving the organization. Ensure that your account
 administrators are aware of this.
 
-This operation can be called only from the organization's master
+This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{

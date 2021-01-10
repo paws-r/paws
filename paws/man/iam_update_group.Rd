@@ -10,14 +10,14 @@ iam_update_group(GroupName, NewPath, NewGroupName)
 \item{GroupName}{[required] Name of the IAM group to update. If you're changing the name of the
 group, this is the original name.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{NewPath}{New path for the IAM group. Only include this if changing the group's
 path.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
@@ -36,8 +36,8 @@ Updates the name and/or the path of the specified IAM group.
 }
 \details{
 You should understand the implications of changing a group's path or
-name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_WorkingWithGroupsAndUsers.html}{Renaming Users and Groups}
-in the \emph{IAM User Guide}.
+name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html}{Renaming Users and Groups} in the
+\emph{IAM User Guide}.
 
 The person making the request (the principal), must have permission to
 change the role group with the old name and the new name. For example,

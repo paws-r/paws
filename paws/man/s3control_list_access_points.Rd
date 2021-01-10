@@ -11,7 +11,19 @@ s3control_list_access_points(AccountId, Bucket, NextToken, MaxResults)
 \item{AccountId}{[required] The AWS account ID for owner of the bucket whose access points you want
 to list.}
 
-\item{Bucket}{The name of the bucket whose associated access points you want to list.}
+\item{Bucket}{The name of the bucket whose associated access points you want to list.
+
+For using this parameter with Amazon S3 on Outposts with the REST API,
+you must specify the name and the x-amz-outpost-id as well.
+
+For using this parameter with S3 on Outposts with the AWS SDK and CLI,
+you must specify the ARN of the bucket accessed in the format
+\verb{arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/bucket/&lt;my-bucket-name&gt;}.
+For example, to access the bucket \code{reports} through outpost \code{my-outpost}
+owned by account \code{123456789012} in Region \code{us-west-2}, use the URL
+encoding of
+\code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/bucket/reports}.
+The value must be URL encoded.}
 
 \item{NextToken}{A continuation token. If a previous call to \code{ListAccessPoints} returned
 a continuation token in the \code{NextToken} field, then providing that value
@@ -30,6 +42,23 @@ the specified bucket has more than 1,000 access points (or the number
 specified in \code{maxResults}, whichever is less), the response will include
 a continuation token that you can use to list the additional access
 points.
+}
+\details{
+All Amazon S3 on Outposts REST API requests for this action require an
+additional parameter of \code{x-amz-outpost-id} to be passed with the request
+and an S3 on Outposts endpoint hostname prefix instead of \code{s3-control}.
+For an example of the request syntax for Amazon S3 on Outposts that uses
+the S3 on Outposts endpoint hostname prefix and the \code{x-amz-outpost-id}
+derived using the access point ARN, see the
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPoint.html#API_control_GetAccessPoint_Examples}{Examples}
+section.
+
+The following actions are related to \code{ListAccessPoints}:
+\itemize{
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateAccessPoint.html}{CreateAccessPoint}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPoint.html}{DeleteAccessPoint}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetAccessPoint.html}{GetAccessPoint}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$list_access_points(

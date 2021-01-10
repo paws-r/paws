@@ -2,8 +2,8 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_disassociate_from_master_account}
 \alias{guardduty_disassociate_from_master_account}
-\title{Disassociates the current GuardDuty member account from its master
-account}
+\title{Disassociates the current GuardDuty member account from its
+administrator account}
 \usage{
 guardduty_disassociate_from_master_account(DetectorId)
 }
@@ -11,8 +11,8 @@ guardduty_disassociate_from_master_account(DetectorId)
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
 }
 \description{
-Disassociates the current GuardDuty member account from its master
-account.
+Disassociates the current GuardDuty member account from its
+administrator account.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_from_master_account(

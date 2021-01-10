@@ -2,9 +2,10 @@
 % Please edit documentation in R/lightsail_operations.R
 \name{lightsail_create_domain_entry}
 \alias{lightsail_create_domain_entry}
-\title{Creates one of the following entry records associated with the domain:
-Address (A), canonical name (CNAME), mail exchanger (MX), name server
-(NS), start of authority (SOA), service locator (SRV), or text (TXT)}
+\title{Creates one of the following domain name system (DNS) records in a
+domain DNS zone: Address (A), canonical name (CNAME), mail exchanger
+(MX), name server (NS), start of authority (SOA), service locator (SRV),
+or text (TXT)}
 \usage{
 lightsail_create_domain_entry(domainName, domainEntry)
 }
@@ -16,14 +17,15 @@ domain entry.}
 entry request.}
 }
 \description{
-Creates one of the following entry records associated with the domain:
-Address (A), canonical name (CNAME), mail exchanger (MX), name server
-(NS), start of authority (SOA), service locator (SRV), or text (TXT).
+Creates one of the following domain name system (DNS) records in a
+domain DNS zone: Address (A), canonical name (CNAME), mail exchanger
+(MX), name server (NS), start of authority (SOA), service locator (SRV),
+or text (TXT).
 }
 \details{
 The \verb{create domain entry} operation supports tag-based access control
 via resource tags applied to the resource identified by \verb{domain name}.
-For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_domain_entry(

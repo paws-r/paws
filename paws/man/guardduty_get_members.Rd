@@ -2,8 +2,8 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_get_members}
 \alias{guardduty_get_members}
-\title{Retrieves GuardDuty member accounts (to the current GuardDuty master
-account) specified by the account IDs}
+\title{Retrieves GuardDuty member accounts (of the current GuardDuty
+administrator account) specified by the account IDs}
 \usage{
 guardduty_get_members(DetectorId, AccountIds)
 }
@@ -15,8 +15,8 @@ want to retrieve.}
 describe.}
 }
 \description{
-Retrieves GuardDuty member accounts (to the current GuardDuty master
-account) specified by the account IDs.
+Retrieves GuardDuty member accounts (of the current GuardDuty
+administrator account) specified by the account IDs.
 }
 \section{Request syntax}{
 \preformatted{svc$get_members(

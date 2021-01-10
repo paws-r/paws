@@ -10,9 +10,9 @@ sagemaker_add_tags(ResourceArn, Tags)
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource that you want to tag.}
 
-\item{Tags}{[required] An array of \code{Tag} objects. Each tag is a key-value pair. Only the \code{key}
-parameter is required. If you don't specify a value, Amazon SageMaker
-sets the value to an empty string.}
+\item{Tags}{[required] An array of key-value pairs. You can use tags to categorize your AWS
+resources in different ways, for example, by purpose, owner, or
+environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
 }
 \description{
 Adds or overwrites one or more tags for the specified Amazon SageMaker
@@ -23,7 +23,7 @@ work teams, endpoint configurations, and endpoints.
 \details{
 Each tag consists of a key and an optional value. Tag keys must be
 unique per resource. For more information about tags, see For more
-information, see \href{https://aws.amazon.com/answers/account-management/aws-tagging-strategies/}{AWS Tagging Strategies}.
+information, see \href{https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf}{AWS Tagging Strategies}.
 
 Tags that you add to a hyperparameter tuning job by calling this API are
 also added to any training jobs that the hyperparameter tuning job

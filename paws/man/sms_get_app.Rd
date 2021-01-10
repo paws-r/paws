@@ -2,15 +2,15 @@
 % Please edit documentation in R/sms_operations.R
 \name{sms_get_app}
 \alias{sms_get_app}
-\title{Retrieve information about an application}
+\title{Retrieve information about the specified application}
 \usage{
 sms_get_app(appId)
 }
 \arguments{
-\item{appId}{ID of the application whose information is being retrieved.}
+\item{appId}{The ID of the application.}
 }
 \description{
-Retrieve information about an application.
+Retrieve information about the specified application.
 }
 \section{Request syntax}{
 \preformatted{svc$get_app(

@@ -2,18 +2,19 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_get_resolver_rule_policy}
 \alias{route53resolver_get_resolver_rule_policy}
-\title{Gets information about a resolver rule policy}
+\title{Gets information about the Resolver rule policy for a specified rule}
 \usage{
 route53resolver_get_resolver_rule_policy(Arn)
 }
 \arguments{
-\item{Arn}{[required] The ID of the resolver rule policy that you want to get information
-about.}
+\item{Arn}{[required] The ID of the Resolver rule that you want to get the Resolver rule
+policy for.}
 }
 \description{
-Gets information about a resolver rule policy. A resolver rule policy
-specifies the Resolver operations and resources that you want to allow
-another AWS account to be able to use.
+Gets information about the Resolver rule policy for a specified rule. A
+Resolver rule policy includes the rule that you want to share with
+another account, the account that you want to share the rule with, and
+the Resolver operations that you want to allow the account to use.
 }
 \section{Request syntax}{
 \preformatted{svc$get_resolver_rule_policy(

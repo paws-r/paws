@@ -33,6 +33,7 @@ in the \emph{AWS Site-to-Site VPN User Guide}.
   VpnTunnelOutsideIpAddress = "string",
   TunnelOptions = list(
     TunnelInsideCidr = "string",
+    TunnelInsideIpv6Cidr = "string",
     PreSharedKey = "string",
     Phase1LifetimeSeconds = 123,
     Phase2LifetimeSeconds = 123,
@@ -40,6 +41,7 @@ in the \emph{AWS Site-to-Site VPN User Guide}.
     RekeyFuzzPercentage = 123,
     ReplayWindowSize = 123,
     DPDTimeoutSeconds = 123,
+    DPDTimeoutAction = "string",
     Phase1EncryptionAlgorithms = list(
       list(
         Value = "string"
@@ -74,7 +76,8 @@ in the \emph{AWS Site-to-Site VPN User Guide}.
       list(
         Value = "string"
       )
-    )
+    ),
+    StartupAction = "string"
   ),
   DryRun = TRUE|FALSE
 )

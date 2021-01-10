@@ -2,14 +2,14 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_describe_organization_configuration}
 \alias{macie2_describe_organization_configuration}
-\title{Retrieves information about the Amazon Macie configuration settings for
-an AWS organization}
+\title{Retrieves the Amazon Macie configuration settings for an AWS
+organization}
 \usage{
 macie2_describe_organization_configuration()
 }
 \description{
-Retrieves information about the Amazon Macie configuration settings for
-an AWS organization.
+Retrieves the Amazon Macie configuration settings for an AWS
+organization.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_organization_configuration()

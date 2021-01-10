@@ -36,7 +36,7 @@ since you last read it.}
 }
 \description{
 Updates the configuration of a Lambda function
-\href{https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{alias}.
+\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{alias}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_alias(

@@ -2,9 +2,8 @@
 % Please edit documentation in R/managedblockchain_operations.R
 \name{managedblockchain_list_proposal_votes}
 \alias{managedblockchain_list_proposal_votes}
-\title{Returns the listing of votes for a specified proposal, including the
-value of each vote and the unique identifier of the member that cast the
-vote}
+\title{Returns the list of votes for a specified proposal, including the value
+of each vote and the unique identifier of the member that cast the vote}
 \usage{
 managedblockchain_list_proposal_votes(NetworkId, ProposalId, MaxResults,
   NextToken)
@@ -19,9 +18,11 @@ managedblockchain_list_proposal_votes(NetworkId, ProposalId, MaxResults,
 \item{NextToken}{The pagination token that indicates the next set of results to retrieve.}
 }
 \description{
-Returns the listing of votes for a specified proposal, including the
-value of each vote and the unique identifier of the member that cast the
-vote.
+Returns the list of votes for a specified proposal, including the value
+of each vote and the unique identifier of the member that cast the vote.
+}
+\details{
+Applies only to Hyperledger Fabric.
 }
 \section{Request syntax}{
 \preformatted{svc$list_proposal_votes(

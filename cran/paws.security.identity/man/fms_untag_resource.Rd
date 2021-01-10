@@ -7,9 +7,9 @@
 fms_untag_resource(ResourceArn, TagKeys)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource. The Firewall Manager
-policy is the only AWS resource that supports tagging, so this ARN is a
-policy ARN.}
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource to return tags for. The
+AWS Firewall Manager resources that support tagging are policies,
+applications lists, and protocols lists.}
 
 \item{TagKeys}{[required] The keys of the tags to remove from the resource.}
 }

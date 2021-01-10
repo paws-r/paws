@@ -50,12 +50,28 @@ test_that("list_entity_recognizers", {
   expect_error(svc$list_entity_recognizers(MaxResults = 20), NA)
 })
 
+test_that("list_events_detection_jobs", {
+  expect_error(svc$list_events_detection_jobs(), NA)
+})
+
+test_that("list_events_detection_jobs", {
+  expect_error(svc$list_events_detection_jobs(MaxResults = 20), NA)
+})
+
 test_that("list_key_phrases_detection_jobs", {
   expect_error(svc$list_key_phrases_detection_jobs(), NA)
 })
 
 test_that("list_key_phrases_detection_jobs", {
   expect_error(svc$list_key_phrases_detection_jobs(MaxResults = 20), NA)
+})
+
+test_that("list_pii_entities_detection_jobs", {
+  expect_error(svc$list_pii_entities_detection_jobs(), NA)
+})
+
+test_that("list_pii_entities_detection_jobs", {
+  expect_error(svc$list_pii_entities_detection_jobs(MaxResults = 20), NA)
 })
 
 test_that("list_sentiment_detection_jobs", {

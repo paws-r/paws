@@ -39,6 +39,74 @@ lightsail_allocate_static_ip <- function(staticIpName) {
 }
 .lightsail$operations$allocate_static_ip <- lightsail_allocate_static_ip
 
+#' Attaches an SSL/TLS certificate to your Amazon Lightsail content
+#' delivery network (CDN) distribution
+#'
+#' Attaches an SSL/TLS certificate to your Amazon Lightsail content
+#' delivery network (CDN) distribution.
+#' 
+#' After the certificate is attached, your distribution accepts HTTPS
+#' traffic for all of the domains that are associated with the certificate.
+#' 
+#' Use the `CreateCertificate` action to create a certificate that you can
+#' attach to your distribution.
+#' 
+#' Only certificates created in the `us-east-1` AWS Region can be attached
+#' to Lightsail distributions. Lightsail distributions are global resources
+#' that can reference an origin in any AWS Region, and distribute its
+#' content globally. However, all distributions are located in the
+#' `us-east-1` Region.
+#'
+#' @usage
+#' lightsail_attach_certificate_to_distribution(distributionName,
+#'   certificateName)
+#'
+#' @param distributionName &#91;required&#93; The name of the distribution that the certificate will be attached to.
+#' 
+#' Use the `GetDistributions` action to get a list of distribution names
+#' that you can specify.
+#' @param certificateName &#91;required&#93; The name of the certificate to attach to a distribution.
+#' 
+#' Only certificates with a status of `ISSUED` can be attached to a
+#' distribution.
+#' 
+#' Use the `GetCertificates` action to get a list of certificate names that
+#' you can specify.
+#' 
+#' This is the name of the certificate resource type and is used only to
+#' reference the certificate in other API actions. It can be different than
+#' the domain name of the certificate. For example, your certificate name
+#' might be `WordPress-Blog-Certificate` and the domain name of the
+#' certificate might be `example.com`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$attach_certificate_to_distribution(
+#'   distributionName = "string",
+#'   certificateName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_attach_certificate_to_distribution
+lightsail_attach_certificate_to_distribution <- function(distributionName, certificateName) {
+  op <- new_operation(
+    name = "AttachCertificateToDistribution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$attach_certificate_to_distribution_input(distributionName = distributionName, certificateName = certificateName)
+  output <- .lightsail$attach_certificate_to_distribution_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$attach_certificate_to_distribution <- lightsail_attach_certificate_to_distribution
+
 #' Attaches a block storage disk to a running or stopped Lightsail instance
 #' and exposes it to the instance with the specified disk name
 #'
@@ -48,7 +116,7 @@ lightsail_allocate_static_ip <- function(staticIpName) {
 #' The `attach disk` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `disk name`. For
 #' more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_attach_disk(diskName, instanceName, diskPath)
@@ -97,7 +165,7 @@ lightsail_attach_disk <- function(diskName, instanceName, diskPath) {
 #' The `attach instances to load balancer` operation supports tag-based
 #' access control via resource tags applied to the resource identified by
 #' `load balancer name`. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_attach_instances_to_load_balancer(loadBalancerName,
@@ -160,7 +228,7 @@ lightsail_attach_instances_to_load_balancer <- function(loadBalancerName, instan
 #' The `AttachLoadBalancerTlsCertificate` operation supports tag-based
 #' access control via resource tags applied to the resource identified by
 #' `load balancer name`. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_attach_load_balancer_tls_certificate(loadBalancerName,
@@ -243,7 +311,7 @@ lightsail_attach_static_ip <- function(staticIpName, instanceName) {
 #' The `CloseInstancePublicPorts` action supports tag-based access control
 #' via resource tags applied to the resource identified by `instanceName`.
 #' For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_close_instance_public_ports(portInfo, instanceName)
@@ -389,6 +457,78 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
 }
 .lightsail$operations$copy_snapshot <- lightsail_copy_snapshot
 
+#' Creates an SSL/TLS certificate for a Amazon Lightsail content delivery
+#' network (CDN) distribution
+#'
+#' Creates an SSL/TLS certificate for a Amazon Lightsail content delivery
+#' network (CDN) distribution.
+#' 
+#' After the certificate is created, use the
+#' `AttachCertificateToDistribution` action to attach the certificate to
+#' your distribution.
+#' 
+#' Only certificates created in the `us-east-1` AWS Region can be attached
+#' to Lightsail distributions. Lightsail distributions are global resources
+#' that can reference an origin in any AWS Region, and distribute its
+#' content globally. However, all distributions are located in the
+#' `us-east-1` Region.
+#'
+#' @usage
+#' lightsail_create_certificate(certificateName, domainName,
+#'   subjectAlternativeNames, tags)
+#'
+#' @param certificateName &#91;required&#93; The name for the certificate.
+#' @param domainName &#91;required&#93; The domain name (e.g., `example.com`) for the certificate.
+#' @param subjectAlternativeNames An array of strings that specify the alternate domains (e.g.,
+#' `example2.com`) and subdomains (e.g., `blog.example.com`) for the
+#' certificate.
+#' 
+#' You can specify a maximum of nine alternate domains (in addition to the
+#' primary domain name).
+#' 
+#' Wildcard domain entries (e.g., `*.example.com`) are not supported.
+#' @param tags The tag keys and optional values to add to the certificate during
+#' create.
+#' 
+#' Use the `TagResource` action to tag a resource after it's created.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_certificate(
+#'   certificateName = "string",
+#'   domainName = "string",
+#'   subjectAlternativeNames = list(
+#'     "string"
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_create_certificate
+lightsail_create_certificate <- function(certificateName, domainName, subjectAlternativeNames = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateCertificate",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$create_certificate_input(certificateName = certificateName, domainName = domainName, subjectAlternativeNames = subjectAlternativeNames, tags = tags)
+  output <- .lightsail$create_certificate_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$create_certificate <- lightsail_create_certificate
+
 #' Creates an AWS CloudFormation stack, which creates a new Amazon EC2
 #' instance from an exported Amazon Lightsail snapshot
 #'
@@ -526,6 +666,291 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 }
 .lightsail$operations$create_contact_method <- lightsail_create_contact_method
 
+#' Creates an Amazon Lightsail container service
+#'
+#' Creates an Amazon Lightsail container service.
+#' 
+#' A Lightsail container service is a compute resource to which you can
+#' deploy containers. For more information, see Container services in
+#' Amazon Lightsail in the *Lightsail Dev Guide*.
+#'
+#' @usage
+#' lightsail_create_container_service(serviceName, power, scale, tags,
+#'   publicDomainNames, deployment)
+#'
+#' @param serviceName &#91;required&#93; The name for the container service.
+#' 
+#' The name that you specify for your container service will make up part
+#' of its default domain. The default domain of a container service is
+#' typically
+#' `https://&lt;ServiceName&gt;.&lt;RandomGUID&gt;.&lt;AWSRegion&gt;.cs.amazonlightsail.com`.
+#' If the name of your container service is `container-service-1`, and it's
+#' located in the US East (Ohio) AWS region (`us-east-2`), then the domain
+#' for your container service will be like the following example:
+#' `https://container-service-1.ur4EXAMPLE2uq.us-east-2.cs.amazonlightsail.com`
+#' 
+#' The following are the requirements for container service names:
+#' 
+#' -   Must be unique within each AWS Region in your Lightsail account.
+#' 
+#' -   Must contain 1 to 63 characters.
+#' 
+#' -   Must contain only alphanumeric characters and hyphens.
+#' 
+#' -   A hyphen (-) can separate words but cannot be at the start or end of
+#'     the name.
+#' @param power &#91;required&#93; The power specification for the container service.
+#' 
+#' The power specifies the amount of memory, vCPUs, and base monthly cost
+#' of each node of the container service. The `power` and `scale` of a
+#' container service makes up its configured capacity. To determine the
+#' monthly price of your container service, multiply the base price of the
+#' `power` with the `scale` (the number of nodes) of the service.
+#' 
+#' Use the `GetContainerServicePowers` action to get a list of power
+#' options that you can specify using this parameter, and their base
+#' monthly cost.
+#' @param scale &#91;required&#93; The scale specification for the container service.
+#' 
+#' The scale specifies the allocated compute nodes of the container
+#' service. The `power` and `scale` of a container service makes up its
+#' configured capacity. To determine the monthly price of your container
+#' service, multiply the base price of the `power` with the `scale` (the
+#' number of nodes) of the service.
+#' @param tags The tag keys and optional values for the container service.
+#' 
+#' For more information about tags in Lightsail, see the [Lightsail Dev
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-tags).
+#' @param publicDomainNames The public domain names to use with the container service, such as
+#' `example.com` and `www.example.com`.
+#' 
+#' You can specify up to four public domain names for a container service.
+#' The domain names that you specify are used when you create a deployment
+#' with a container configured as the public endpoint of your container
+#' service.
+#' 
+#' If you don't specify public domain names, then you can use the default
+#' domain of the container service.
+#' 
+#' You must create and validate an SSL/TLS certificate before you can use
+#' public domain names with your container service. Use the
+#' `CreateCertificate` action to create a certificate for the public domain
+#' names you want to use with your container service.
+#' 
+#' You can specify public domain names using a string to array map as shown
+#' in the example later on this page.
+#' @param deployment An object that describes a deployment for the container service.
+#' 
+#' A deployment specifies the containers that will be launched on the
+#' container service and their settings, such as the ports to open, the
+#' environment variables to apply, and the launch command to run. It also
+#' specifies the container that will serve as the public endpoint of the
+#' deployment and its settings, such as the HTTP or HTTPS port to use, and
+#' the health check configuration.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_container_service(
+#'   serviceName = "string",
+#'   power = "nano"|"micro"|"small"|"medium"|"large"|"xlarge",
+#'   scale = 123,
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   publicDomainNames = list(
+#'     list(
+#'       "string"
+#'     )
+#'   ),
+#'   deployment = list(
+#'     containers = list(
+#'       list(
+#'         image = "string",
+#'         command = list(
+#'           "string"
+#'         ),
+#'         environment = list(
+#'           "string"
+#'         ),
+#'         ports = list(
+#'           "HTTP"|"HTTPS"|"TCP"|"UDP"
+#'         )
+#'       )
+#'     ),
+#'     publicEndpoint = list(
+#'       containerName = "string",
+#'       containerPort = 123,
+#'       healthCheck = list(
+#'         healthyThreshold = 123,
+#'         unhealthyThreshold = 123,
+#'         timeoutSeconds = 123,
+#'         intervalSeconds = 123,
+#'         path = "string",
+#'         successCodes = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_create_container_service
+lightsail_create_container_service <- function(serviceName, power, scale, tags = NULL, publicDomainNames = NULL, deployment = NULL) {
+  op <- new_operation(
+    name = "CreateContainerService",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$create_container_service_input(serviceName = serviceName, power = power, scale = scale, tags = tags, publicDomainNames = publicDomainNames, deployment = deployment)
+  output <- .lightsail$create_container_service_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$create_container_service <- lightsail_create_container_service
+
+#' Creates a deployment for your Amazon Lightsail container service
+#'
+#' Creates a deployment for your Amazon Lightsail container service.
+#' 
+#' A deployment specifies the containers that will be launched on the
+#' container service and their settings, such as the ports to open, the
+#' environment variables to apply, and the launch command to run. It also
+#' specifies the container that will serve as the public endpoint of the
+#' deployment and its settings, such as the HTTP or HTTPS port to use, and
+#' the health check configuration.
+#' 
+#' You can deploy containers to your container service using container
+#' images from a public registry like Docker Hub, or from your local
+#' machine. For more information, see [Creating container images for your
+#' Amazon Lightsail container
+#' services](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-creating-container-images)
+#' in the *Lightsail Dev Guide*.
+#'
+#' @usage
+#' lightsail_create_container_service_deployment(serviceName, containers,
+#'   publicEndpoint)
+#'
+#' @param serviceName &#91;required&#93; The name of the container service for which to create the deployment.
+#' @param containers An object that describes the settings of the containers that will be
+#' launched on the container service.
+#' @param publicEndpoint An object that describes the settings of the public endpoint for the
+#' container service.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_container_service_deployment(
+#'   serviceName = "string",
+#'   containers = list(
+#'     list(
+#'       image = "string",
+#'       command = list(
+#'         "string"
+#'       ),
+#'       environment = list(
+#'         "string"
+#'       ),
+#'       ports = list(
+#'         "HTTP"|"HTTPS"|"TCP"|"UDP"
+#'       )
+#'     )
+#'   ),
+#'   publicEndpoint = list(
+#'     containerName = "string",
+#'     containerPort = 123,
+#'     healthCheck = list(
+#'       healthyThreshold = 123,
+#'       unhealthyThreshold = 123,
+#'       timeoutSeconds = 123,
+#'       intervalSeconds = 123,
+#'       path = "string",
+#'       successCodes = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_create_container_service_deployment
+lightsail_create_container_service_deployment <- function(serviceName, containers = NULL, publicEndpoint = NULL) {
+  op <- new_operation(
+    name = "CreateContainerServiceDeployment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$create_container_service_deployment_input(serviceName = serviceName, containers = containers, publicEndpoint = publicEndpoint)
+  output <- .lightsail$create_container_service_deployment_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$create_container_service_deployment <- lightsail_create_container_service_deployment
+
+#' Creates a temporary set of log in credentials that you can use to log in
+#' to the Docker process on your local machine
+#'
+#' Creates a temporary set of log in credentials that you can use to log in
+#' to the Docker process on your local machine. After you're logged in, you
+#' can use the native Docker commands to push your local container images
+#' to the container image registry of your Amazon Lightsail account so that
+#' you can use them with your Lightsail container service. The log in
+#' credentials expire 12 hours after they are created, at which point you
+#' will need to create a new set of log in credentials.
+#' 
+#' You can only push container images to the container service registry of
+#' your Lightsail account. You cannot pull container images perform any
+#' other container image management actions on the container service
+#' registry of your Lightsail account.
+#' 
+#' After you push your container images to the container image registry of
+#' your Lightsail account, use the `RegisterContainerImage` action to
+#' register the pushed images to a specific Lightsail container service.
+#' 
+#' This action is not required if you install and use the Lightsail Control
+#' (lightsailctl) plugin to push container images to your Lightsail
+#' container service. For more information, see Pushing and managing
+#' container images on your Amazon Lightsail container services in the
+#' *Lightsail Dev Guide*.
+#'
+#' @usage
+#' lightsail_create_container_service_registry_login()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_container_service_registry_login()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_create_container_service_registry_login
+lightsail_create_container_service_registry_login <- function() {
+  op <- new_operation(
+    name = "CreateContainerServiceRegistryLogin",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$create_container_service_registry_login_input()
+  output <- .lightsail$create_container_service_registry_login_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$create_container_service_registry_login <- lightsail_create_container_service_registry_login
+
 #' Creates a block storage disk that can be attached to an Amazon Lightsail
 #' instance in the same Availability Zone (e
 #'
@@ -534,7 +959,7 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' 
 #' The `create disk` operation supports tag-based access control via
 #' request tags. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_create_disk(diskName, availabilityZone, sizeInGb, tags,
@@ -550,8 +975,7 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' @param sizeInGb &#91;required&#93; The size of the disk in GB (e.g., `32`).
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' To tag a resource after it has been created, see the `tag resource`
-#' operation.
+#' Use the `TagResource` action to tag a resource after it's created.
 #' @param addOns An array of objects that represent the add-ons to enable for the new
 #' disk.
 #'
@@ -609,7 +1033,7 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' control via request tags and resource tags applied to the resource
 #' identified by `disk snapshot name`. For more information, see the
 #' [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_create_disk_from_snapshot(diskName, diskSnapshotName,
@@ -634,8 +1058,7 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' @param sizeInGb &#91;required&#93; The size of the disk in GB (e.g., `32`).
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' To tag a resource after it has been created, see the `tag resource`
-#' operation.
+#' Use the `TagResource` action to tag a resource after it's created.
 #' @param addOns An array of objects that represent the add-ons to enable for the new
 #' disk.
 #' @param sourceDiskName The name of the source disk from which the source automatic snapshot was
@@ -755,7 +1178,7 @@ lightsail_create_disk_from_snapshot <- function(diskName, diskSnapshotName = NUL
 #' 
 #' The `create disk snapshot` operation supports tag-based access control
 #' via request tags. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_create_disk_snapshot(diskName, diskSnapshotName, instanceName,
@@ -777,8 +1200,7 @@ lightsail_create_disk_from_snapshot <- function(diskName, diskSnapshotName = NUL
 #' exclusive.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' To tag a resource after it has been created, see the `tag resource`
-#' operation.
+#' Use the `TagResource` action to tag a resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -815,13 +1237,124 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
 }
 .lightsail$operations$create_disk_snapshot <- lightsail_create_disk_snapshot
 
+#' Creates an Amazon Lightsail content delivery network (CDN) distribution
+#'
+#' Creates an Amazon Lightsail content delivery network (CDN) distribution.
+#' 
+#' A distribution is a globally distributed network of caching servers that
+#' improve the performance of your website or web application hosted on a
+#' Lightsail instance. For more information, see [Content delivery networks
+#' in Amazon
+#' Lightsail](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-content-delivery-network-distributions).
+#'
+#' @usage
+#' lightsail_create_distribution(distributionName, origin,
+#'   defaultCacheBehavior, cacheBehaviorSettings, cacheBehaviors, bundleId,
+#'   tags)
+#'
+#' @param distributionName &#91;required&#93; The name for the distribution.
+#' @param origin &#91;required&#93; An object that describes the origin resource for the distribution, such
+#' as a Lightsail instance or load balancer.
+#' 
+#' The distribution pulls, caches, and serves content from the origin.
+#' @param defaultCacheBehavior &#91;required&#93; An object that describes the default cache behavior for the
+#' distribution.
+#' @param cacheBehaviorSettings An object that describes the cache behavior settings for the
+#' distribution.
+#' @param cacheBehaviors An array of objects that describe the per-path cache behavior for the
+#' distribution.
+#' @param bundleId &#91;required&#93; The bundle ID to use for the distribution.
+#' 
+#' A distribution bundle describes the specifications of your distribution,
+#' such as the monthly cost and monthly network transfer quota.
+#' 
+#' Use the `GetDistributionBundles` action to get a list of distribution
+#' bundle IDs that you can specify.
+#' @param tags The tag keys and optional values to add to the distribution during
+#' create.
+#' 
+#' Use the `TagResource` action to tag a resource after it's created.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_distribution(
+#'   distributionName = "string",
+#'   origin = list(
+#'     name = "string",
+#'     regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2",
+#'     protocolPolicy = "http-only"|"https-only"
+#'   ),
+#'   defaultCacheBehavior = list(
+#'     behavior = "dont-cache"|"cache"
+#'   ),
+#'   cacheBehaviorSettings = list(
+#'     defaultTTL = 123,
+#'     minimumTTL = 123,
+#'     maximumTTL = 123,
+#'     allowedHTTPMethods = "string",
+#'     cachedHTTPMethods = "string",
+#'     forwardedCookies = list(
+#'       option = "none"|"allow-list"|"all",
+#'       cookiesAllowList = list(
+#'         "string"
+#'       )
+#'     ),
+#'     forwardedHeaders = list(
+#'       option = "none"|"allow-list"|"all",
+#'       headersAllowList = list(
+#'         "Accept"|"Accept-Charset"|"Accept-Datetime"|"Accept-Encoding"|"Accept-Language"|"Authorization"|"CloudFront-Forwarded-Proto"|"CloudFront-Is-Desktop-Viewer"|"CloudFront-Is-Mobile-Viewer"|"CloudFront-Is-SmartTV-Viewer"|"CloudFront-Is-Tablet-Viewer"|"CloudFront-Viewer-Country"|"Host"|"Origin"|"Referer"
+#'       )
+#'     ),
+#'     forwardedQueryStrings = list(
+#'       option = TRUE|FALSE,
+#'       queryStringsAllowList = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   cacheBehaviors = list(
+#'     list(
+#'       path = "string",
+#'       behavior = "dont-cache"|"cache"
+#'     )
+#'   ),
+#'   bundleId = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_create_distribution
+lightsail_create_distribution <- function(distributionName, origin, defaultCacheBehavior, cacheBehaviorSettings = NULL, cacheBehaviors = NULL, bundleId, tags = NULL) {
+  op <- new_operation(
+    name = "CreateDistribution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$create_distribution_input(distributionName = distributionName, origin = origin, defaultCacheBehavior = defaultCacheBehavior, cacheBehaviorSettings = cacheBehaviorSettings, cacheBehaviors = cacheBehaviors, bundleId = bundleId, tags = tags)
+  output <- .lightsail$create_distribution_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$create_distribution <- lightsail_create_distribution
+
 #' Creates a domain resource for the specified domain (e
 #'
 #' Creates a domain resource for the specified domain (e.g., example.com).
 #' 
 #' The `create domain` operation supports tag-based access control via
 #' request tags. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_create_domain(domainName, tags)
@@ -834,8 +1367,7 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
 #' parameter to manage the DNS records for that domain.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' To tag a resource after it has been created, see the `tag resource`
-#' operation.
+#' Use the `TagResource` action to tag a resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -870,18 +1402,20 @@ lightsail_create_domain <- function(domainName, tags = NULL) {
 }
 .lightsail$operations$create_domain <- lightsail_create_domain
 
-#' Creates one of the following entry records associated with the domain:
-#' Address (A), canonical name (CNAME), mail exchanger (MX), name server
-#' (NS), start of authority (SOA), service locator (SRV), or text (TXT)
+#' Creates one of the following domain name system (DNS) records in a
+#' domain DNS zone: Address (A), canonical name (CNAME), mail exchanger
+#' (MX), name server (NS), start of authority (SOA), service locator (SRV),
+#' or text (TXT)
 #'
-#' Creates one of the following entry records associated with the domain:
-#' Address (A), canonical name (CNAME), mail exchanger (MX), name server
-#' (NS), start of authority (SOA), service locator (SRV), or text (TXT).
+#' Creates one of the following domain name system (DNS) records in a
+#' domain DNS zone: Address (A), canonical name (CNAME), mail exchanger
+#' (MX), name server (NS), start of authority (SOA), service locator (SRV),
+#' or text (TXT).
 #' 
 #' The `create domain entry` operation supports tag-based access control
 #' via resource tags applied to the resource identified by `domain name`.
 #' For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_create_domain_entry(domainName, domainEntry)
@@ -936,7 +1470,7 @@ lightsail_create_domain_entry <- function(domainName, domainEntry) {
 #' 
 #' The `create instance snapshot` operation supports tag-based access
 #' control via request tags. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_create_instance_snapshot(instanceSnapshotName, instanceName,
@@ -946,8 +1480,7 @@ lightsail_create_domain_entry <- function(domainName, domainEntry) {
 #' @param instanceName &#91;required&#93; The Lightsail instance on which to base your snapshot.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' To tag a resource after it has been created, see the `tag resource`
-#' operation.
+#' Use the `TagResource` action to tag a resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -989,7 +1522,7 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #' 
 #' The `create instances` operation supports tag-based access control via
 #' request tags. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_create_instances(instanceNames, availabilityZone,
@@ -1002,7 +1535,7 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #' @param availabilityZone &#91;required&#93; The Availability Zone in which to create your instance. Use the
 #' following format: `us-east-2a` (case sensitive). You can get a list of
 #' Availability Zones by using the [get
-#' regions](http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html)
+#' regions](https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html)
 #' operation. Be sure to add the `include Availability Zones` parameter to
 #' your request.
 #' @param customImageName (Deprecated) The name for your custom image.
@@ -1027,12 +1560,11 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #' on your instance varies. Amazon Linux and CentOS use `yum`, Debian and
 #' Ubuntu use `apt-get`, and FreeBSD uses `pkg`. For a complete list, see
 #' the [Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compare-options-choose-lightsail-instance-image).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/compare-options-choose-lightsail-instance-image).
 #' @param keyPairName The name of your key pair.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' To tag a resource after it has been created, see the `tag resource`
-#' operation.
+#' Use the `TagResource` action to tag a resource after it's created.
 #' @param addOns An array of objects representing the add-ons to enable for the new
 #' instance.
 #'
@@ -1095,7 +1627,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' control via request tags and resource tags applied to the resource
 #' identified by `instance snapshot name`. For more information, see the
 #' [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_create_instances_from_snapshot(instanceNames,
@@ -1108,7 +1640,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' @param availabilityZone &#91;required&#93; The Availability Zone where you want to create your instances. Use the
 #' following formatting: `us-east-2a` (case sensitive). You can get a list
 #' of Availability Zones by using the [get
-#' regions](http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html)
+#' regions](https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html)
 #' operation. Be sure to add the `include Availability Zones` parameter to
 #' your request.
 #' @param instanceSnapshotName The name of the instance snapshot on which you are basing your new
@@ -1129,12 +1661,11 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' on your instance varies. Amazon Linux and CentOS use `yum`, Debian and
 #' Ubuntu use `apt-get`, and FreeBSD uses `pkg`. For a complete list, see
 #' the [Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compare-options-choose-lightsail-instance-image).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/compare-options-choose-lightsail-instance-image).
 #' @param keyPairName The name for your key pair.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' To tag a resource after it has been created, see the `tag resource`
-#' operation.
+#' Use the `TagResource` action to tag a resource after it's created.
 #' @param addOns An array of objects representing the add-ons to enable for the new
 #' instance.
 #' @param sourceInstanceName The name of the source instance from which the source automatic snapshot
@@ -1243,7 +1774,7 @@ lightsail_create_instances_from_snapshot <- function(instanceNames, attachedDisk
 #' 
 #' The `create key pair` operation supports tag-based access control via
 #' request tags. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_create_key_pair(keyPairName, tags)
@@ -1251,8 +1782,7 @@ lightsail_create_instances_from_snapshot <- function(instanceNames, attachedDisk
 #' @param keyPairName &#91;required&#93; The name for your new key pair.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' To tag a resource after it has been created, see the `tag resource`
-#' operation.
+#' Use the `TagResource` action to tag a resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -1292,7 +1822,7 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' Creates a Lightsail load balancer. To learn more about deciding whether
 #' to load balance your application, see [Configure your Lightsail
 #' instances for load
-#' balancing](https://lightsail.aws.amazon.com/ls/docs/how-to/article/configure-lightsail-instances-for-load-balancing).
+#' balancing](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/configure-lightsail-instances-for-load-balancing).
 #' You can create up to 5 load balancers per AWS Region in your account.
 #' 
 #' When you create a load balancer, you can specify a unique name and port
@@ -1301,7 +1831,7 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' 
 #' The `create load balancer` operation supports tag-based access control
 #' via request tags. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_create_load_balancer(loadBalancerName, instancePort,
@@ -1331,8 +1861,7 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' `blog.example.com`).
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' To tag a resource after it has been created, see the `tag resource`
-#' operation.
+#' Use the `TagResource` action to tag a resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -1384,7 +1913,7 @@ lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healt
 #' The `CreateLoadBalancerTlsCertificate` operation supports tag-based
 #' access control via resource tags applied to the resource identified by
 #' `load balancer name`. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_create_load_balancer_tls_certificate(loadBalancerName,
@@ -1399,7 +1928,7 @@ lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healt
 #' at one time. There is also an overall limit to the number of
 #' certificates that can be issue in a 365-day period. For more
 #' information, see
-#' [Limits](http://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html).
+#' [Limits](https://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html).
 #' @param certificateDomainName &#91;required&#93; The domain name (e.g., `example.com`) for your SSL/TLS certificate.
 #' @param certificateAlternativeNames An array of strings listing alternative domains and subdomains for your
 #' SSL/TLS certificate. Lightsail will de-dupe the names for you. You can
@@ -1407,8 +1936,7 @@ lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healt
 #' domain). We do not support wildcards (e.g., `*.example.com`).
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' To tag a resource after it has been created, see the `tag resource`
-#' operation.
+#' Use the `TagResource` action to tag a resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -1454,7 +1982,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' 
 #' The `create relational database` operation supports tag-based access
 #' control via request tags. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_create_relational_database(relationalDatabaseName,
@@ -1563,8 +2091,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' database.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' To tag a resource after it has been created, see the `tag resource`
-#' operation.
+#' Use the `TagResource` action to tag a resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -1622,7 +2149,7 @@ lightsail_create_relational_database <- function(relationalDatabaseName, availab
 #' tag-based access control via request tags and resource tags applied to
 #' the resource identified by relationalDatabaseSnapshotName. For more
 #' information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_create_relational_database_from_snapshot(
@@ -1685,8 +2212,7 @@ lightsail_create_relational_database <- function(relationalDatabaseName, availab
 #' provided.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' To tag a resource after it has been created, see the `tag resource`
-#' operation.
+#' Use the `TagResource` action to tag a resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -1739,7 +2265,7 @@ lightsail_create_relational_database_from_snapshot <- function(relationalDatabas
 #' The `create relational database snapshot` operation supports tag-based
 #' access control via request tags. For more information, see the
 #' [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_create_relational_database_snapshot(relationalDatabaseName,
@@ -1755,8 +2281,7 @@ lightsail_create_relational_database_from_snapshot <- function(relationalDatabas
 #' -   The first and last character must be a letter or number.
 #' @param tags The tag keys and optional values to add to the resource during create.
 #' 
-#' To tag a resource after it has been created, see the `tag resource`
-#' operation.
+#' Use the `TagResource` action to tag a resource after it's created.
 #'
 #' @section Request syntax:
 #' ```
@@ -1877,6 +2402,51 @@ lightsail_delete_auto_snapshot <- function(resourceName, date) {
 }
 .lightsail$operations$delete_auto_snapshot <- lightsail_delete_auto_snapshot
 
+#' Deletes an SSL/TLS certificate for your Amazon Lightsail content
+#' delivery network (CDN) distribution
+#'
+#' Deletes an SSL/TLS certificate for your Amazon Lightsail content
+#' delivery network (CDN) distribution.
+#' 
+#' Certificates that are currently attached to a distribution cannot be
+#' deleted. Use the `DetachCertificateFromDistribution` action to detach a
+#' certificate from a distribution.
+#'
+#' @usage
+#' lightsail_delete_certificate(certificateName)
+#'
+#' @param certificateName &#91;required&#93; The name of the certificate to delete.
+#' 
+#' Use the `GetCertificates` action to get a list of certificate names that
+#' you can specify.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_certificate(
+#'   certificateName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_delete_certificate
+lightsail_delete_certificate <- function(certificateName) {
+  op <- new_operation(
+    name = "DeleteCertificate",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$delete_certificate_input(certificateName = certificateName)
+  output <- .lightsail$delete_certificate_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$delete_certificate <- lightsail_delete_certificate
+
 #' Deletes a contact method
 #'
 #' Deletes a contact method.
@@ -1925,6 +2495,92 @@ lightsail_delete_contact_method <- function(protocol) {
 }
 .lightsail$operations$delete_contact_method <- lightsail_delete_contact_method
 
+#' Deletes a container image that is registered to your Amazon Lightsail
+#' container service
+#'
+#' Deletes a container image that is registered to your Amazon Lightsail
+#' container service.
+#'
+#' @usage
+#' lightsail_delete_container_image(serviceName, image)
+#'
+#' @param serviceName &#91;required&#93; The name of the container service for which to delete a registered
+#' container image.
+#' @param image &#91;required&#93; The name of the container image to delete from the container service.
+#' 
+#' Use the `GetContainerImages` action to get the name of the container
+#' images that are registered to a container service.
+#' 
+#' Container images sourced from your Lightsail container service, that are
+#' registered and stored on your service, start with a colon (`:`). For
+#' example, `:container-service-1.mystaticwebsite.1`. Container images
+#' sourced from a public registry like Docker Hub don't start with a colon.
+#' For example, `nginx:latest` or `nginx`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_container_image(
+#'   serviceName = "string",
+#'   image = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_delete_container_image
+lightsail_delete_container_image <- function(serviceName, image) {
+  op <- new_operation(
+    name = "DeleteContainerImage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$delete_container_image_input(serviceName = serviceName, image = image)
+  output <- .lightsail$delete_container_image_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$delete_container_image <- lightsail_delete_container_image
+
+#' Deletes your Amazon Lightsail container service
+#'
+#' Deletes your Amazon Lightsail container service.
+#'
+#' @usage
+#' lightsail_delete_container_service(serviceName)
+#'
+#' @param serviceName &#91;required&#93; The name of the container service to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_container_service(
+#'   serviceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_delete_container_service
+lightsail_delete_container_service <- function(serviceName) {
+  op <- new_operation(
+    name = "DeleteContainerService",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$delete_container_service_input(serviceName = serviceName)
+  output <- .lightsail$delete_container_service_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$delete_container_service <- lightsail_delete_container_service
+
 #' Deletes the specified block storage disk
 #'
 #' Deletes the specified block storage disk. The disk must be in the
@@ -1935,7 +2591,7 @@ lightsail_delete_contact_method <- function(protocol) {
 #' The `delete disk` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `disk name`. For
 #' more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_delete_disk(diskName, forceDeleteAddOns)
@@ -1987,7 +2643,7 @@ lightsail_delete_disk <- function(diskName, forceDeleteAddOns = NULL) {
 #' The `delete disk snapshot` operation supports tag-based access control
 #' via resource tags applied to the resource identified by
 #' `disk snapshot name`. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_delete_disk_snapshot(diskSnapshotName)
@@ -2022,6 +2678,47 @@ lightsail_delete_disk_snapshot <- function(diskSnapshotName) {
 }
 .lightsail$operations$delete_disk_snapshot <- lightsail_delete_disk_snapshot
 
+#' Deletes your Amazon Lightsail content delivery network (CDN)
+#' distribution
+#'
+#' Deletes your Amazon Lightsail content delivery network (CDN)
+#' distribution.
+#'
+#' @usage
+#' lightsail_delete_distribution(distributionName)
+#'
+#' @param distributionName The name of the distribution to delete.
+#' 
+#' Use the `GetDistributions` action to get a list of distribution names
+#' that you can specify.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_distribution(
+#'   distributionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_delete_distribution
+lightsail_delete_distribution <- function(distributionName = NULL) {
+  op <- new_operation(
+    name = "DeleteDistribution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$delete_distribution_input(distributionName = distributionName)
+  output <- .lightsail$delete_distribution_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$delete_distribution <- lightsail_delete_distribution
+
 #' Deletes the specified domain recordset and all of its domain records
 #'
 #' Deletes the specified domain recordset and all of its domain records.
@@ -2029,7 +2726,7 @@ lightsail_delete_disk_snapshot <- function(diskSnapshotName) {
 #' The `delete domain` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `domain name`. For
 #' more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_delete_domain(domainName)
@@ -2070,7 +2767,7 @@ lightsail_delete_domain <- function(domainName) {
 #' The `delete domain entry` operation supports tag-based access control
 #' via resource tags applied to the resource identified by `domain name`.
 #' For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_delete_domain_entry(domainName, domainEntry)
@@ -2123,7 +2820,7 @@ lightsail_delete_domain_entry <- function(domainName, domainEntry) {
 #' The `delete instance` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `instance name`. For
 #' more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_delete_instance(instanceName, forceDeleteAddOns)
@@ -2167,7 +2864,7 @@ lightsail_delete_instance <- function(instanceName, forceDeleteAddOns = NULL) {
 #' The `delete instance snapshot` operation supports tag-based access
 #' control via resource tags applied to the resource identified by
 #' `instance snapshot name`. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_delete_instance_snapshot(instanceSnapshotName)
@@ -2208,7 +2905,7 @@ lightsail_delete_instance_snapshot <- function(instanceSnapshotName) {
 #' The `delete key pair` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `key pair name`. For
 #' more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_delete_key_pair(keyPairName)
@@ -2255,7 +2952,7 @@ lightsail_delete_key_pair <- function(keyPairName) {
 #' certificate on the instance. For more information, see [Troubleshooting
 #' connection issues when using the Amazon Lightsail browser-based SSH or
 #' RDP
-#' client](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-troubleshooting-browser-based-ssh-rdp-client-connection).
+#' client](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-troubleshooting-browser-based-ssh-rdp-client-connection).
 #'
 #' @usage
 #' lightsail_delete_known_host_keys(instanceName)
@@ -2301,7 +2998,7 @@ lightsail_delete_known_host_keys <- function(instanceName) {
 #' The `delete load balancer` operation supports tag-based access control
 #' via resource tags applied to the resource identified by
 #' `load balancer name`. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_delete_load_balancer(loadBalancerName)
@@ -2343,7 +3040,7 @@ lightsail_delete_load_balancer <- function(loadBalancerName) {
 #' The `DeleteLoadBalancerTlsCertificate` operation supports tag-based
 #' access control via resource tags applied to the resource identified by
 #' `load balancer name`. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_delete_load_balancer_tls_certificate(loadBalancerName,
@@ -2394,7 +3091,7 @@ lightsail_delete_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' The `delete relational database` operation supports tag-based access
 #' control via resource tags applied to the resource identified by
 #' relationalDatabaseName. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_delete_relational_database(relationalDatabaseName,
@@ -2458,7 +3155,7 @@ lightsail_delete_relational_database <- function(relationalDatabaseName, skipFin
 #' The `delete relational database snapshot` operation supports tag-based
 #' access control via resource tags applied to the resource identified by
 #' relationalDatabaseName. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_delete_relational_database_snapshot(
@@ -2493,6 +3190,50 @@ lightsail_delete_relational_database_snapshot <- function(relationalDatabaseSnap
 }
 .lightsail$operations$delete_relational_database_snapshot <- lightsail_delete_relational_database_snapshot
 
+#' Detaches an SSL/TLS certificate from your Amazon Lightsail content
+#' delivery network (CDN) distribution
+#'
+#' Detaches an SSL/TLS certificate from your Amazon Lightsail content
+#' delivery network (CDN) distribution.
+#' 
+#' After the certificate is detached, your distribution stops accepting
+#' traffic for all of the domains that are associated with the certificate.
+#'
+#' @usage
+#' lightsail_detach_certificate_from_distribution(distributionName)
+#'
+#' @param distributionName &#91;required&#93; The name of the distribution from which to detach the certificate.
+#' 
+#' Use the `GetDistributions` action to get a list of distribution names
+#' that you can specify.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$detach_certificate_from_distribution(
+#'   distributionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_detach_certificate_from_distribution
+lightsail_detach_certificate_from_distribution <- function(distributionName) {
+  op <- new_operation(
+    name = "DetachCertificateFromDistribution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$detach_certificate_from_distribution_input(distributionName = distributionName)
+  output <- .lightsail$detach_certificate_from_distribution_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$detach_certificate_from_distribution <- lightsail_detach_certificate_from_distribution
+
 #' Detaches a stopped block storage disk from a Lightsail instance
 #'
 #' Detaches a stopped block storage disk from a Lightsail instance. Make
@@ -2502,7 +3243,7 @@ lightsail_delete_relational_database_snapshot <- function(relationalDatabaseSnap
 #' The `detach disk` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `disk name`. For
 #' more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_detach_disk(diskName)
@@ -2547,7 +3288,7 @@ lightsail_detach_disk <- function(diskName) {
 #' The `detach instances from load balancer` operation supports tag-based
 #' access control via resource tags applied to the resource identified by
 #' `load balancer name`. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_detach_instances_from_load_balancer(loadBalancerName,
@@ -2762,7 +3503,7 @@ lightsail_enable_add_on <- function(resourceName, addOnRequest) {
 #' The `export snapshot` operation supports tag-based access control via
 #' resource tags applied to the resource identified by
 #' `source snapshot name`. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #' 
 #' Use the `get instance snapshots` or `get disk snapshots` operations to
 #' get a list of snapshots that you can export to Amazon EC2.
@@ -3033,6 +3774,68 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL) {
 }
 .lightsail$operations$get_bundles <- lightsail_get_bundles
 
+#' Returns information about one or more Amazon Lightsail SSL/TLS
+#' certificates
+#'
+#' Returns information about one or more Amazon Lightsail SSL/TLS
+#' certificates.
+#' 
+#' To get a summary of a certificate, ommit `includeCertificateDetails`
+#' from your request. The response will include only the certificate Amazon
+#' Resource Name (ARN), certificate name, domain name, and tags.
+#'
+#' @usage
+#' lightsail_get_certificates(certificateStatuses,
+#'   includeCertificateDetails, certificateName)
+#'
+#' @param certificateStatuses The status of the certificates for which to return information.
+#' 
+#' For example, specify `ISSUED` to return only certificates with an
+#' `ISSUED` status.
+#' 
+#' When omitted, the response includes all of your certificates in the AWS
+#' Region where the request is made, regardless of their current status.
+#' @param includeCertificateDetails Indicates whether to include detailed information about the certificates
+#' in the response.
+#' 
+#' When omitted, the response includes only the certificate names, Amazon
+#' Resource Names (ARNs), domain names, and tags.
+#' @param certificateName The name for the certificate for which to return information.
+#' 
+#' When omitted, the response includes all of your certificates in the AWS
+#' Region where the request is made.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_certificates(
+#'   certificateStatuses = list(
+#'     "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED"
+#'   ),
+#'   includeCertificateDetails = TRUE|FALSE,
+#'   certificateName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_certificates
+lightsail_get_certificates <- function(certificateStatuses = NULL, includeCertificateDetails = NULL, certificateName = NULL) {
+  op <- new_operation(
+    name = "GetCertificates",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_certificates_input(certificateStatuses = certificateStatuses, includeCertificateDetails = includeCertificateDetails, certificateName = certificateName)
+  output <- .lightsail$get_certificates_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_certificates <- lightsail_get_certificates
+
 #' Returns the CloudFormation stack record created as a result of the
 #' create cloud formation stack operation
 #'
@@ -3130,6 +3933,428 @@ lightsail_get_contact_methods <- function(protocols = NULL) {
   return(response)
 }
 .lightsail$operations$get_contact_methods <- lightsail_get_contact_methods
+
+#' Returns information about Amazon Lightsail containers, such as the
+#' current version of the Lightsail Control (lightsailctl) plugin
+#'
+#' Returns information about Amazon Lightsail containers, such as the
+#' current version of the Lightsail Control (lightsailctl) plugin.
+#'
+#' @usage
+#' lightsail_get_container_api_metadata()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_container_api_metadata()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_container_api_metadata
+lightsail_get_container_api_metadata <- function() {
+  op <- new_operation(
+    name = "GetContainerAPIMetadata",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_container_api_metadata_input()
+  output <- .lightsail$get_container_api_metadata_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_container_api_metadata <- lightsail_get_container_api_metadata
+
+#' Returns the container images that are registered to your Amazon
+#' Lightsail container service
+#'
+#' Returns the container images that are registered to your Amazon
+#' Lightsail container service.
+#' 
+#' If you created a deployment on your Lightsail container service that
+#' uses container images from a public registry like Docker Hub, those
+#' images are not returned as part of this action. Those images are not
+#' registered to your Lightsail container service.
+#'
+#' @usage
+#' lightsail_get_container_images(serviceName)
+#'
+#' @param serviceName &#91;required&#93; The name of the container service for which to return registered
+#' container images.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_container_images(
+#'   serviceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_container_images
+lightsail_get_container_images <- function(serviceName) {
+  op <- new_operation(
+    name = "GetContainerImages",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_container_images_input(serviceName = serviceName)
+  output <- .lightsail$get_container_images_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_container_images <- lightsail_get_container_images
+
+#' Returns the log events of a container of your Amazon Lightsail container
+#' service
+#'
+#' Returns the log events of a container of your Amazon Lightsail container
+#' service.
+#' 
+#' If your container service has more than one node (i.e., a scale greater
+#' than 1), then the log events that are returned for the specified
+#' container are merged from all nodes on your container service.
+#' 
+#' Container logs are retained for a certain amount of time. For more
+#' information, see [Amazon Lightsail endpoints and
+#' quotas](https://docs.aws.amazon.com/general/latest/gr/lightsail.html) in
+#' the *AWS General Reference*.
+#'
+#' @usage
+#' lightsail_get_container_log(serviceName, containerName, startTime,
+#'   endTime, filterPattern, pageToken)
+#'
+#' @param serviceName &#91;required&#93; The name of the container service for which to get a container log.
+#' @param containerName &#91;required&#93; The name of the container that is either running or previously ran on
+#' the container service for which to return a log.
+#' @param startTime The start of the time interval for which to get log data.
+#' 
+#' Constraints:
+#' 
+#' -   Specified in Coordinated Universal Time (UTC).
+#' 
+#' -   Specified in the Unix time format.
+#' 
+#'     For example, if you wish to use a start time of October 1, 2018, at
+#'     8 PM UTC, specify `1538424000` as the start time.
+#' 
+#' You can convert a human-friendly time to Unix time format using a
+#' converter like [Epoch converter](https://www.epochconverter.com/).
+#' @param endTime The end of the time interval for which to get log data.
+#' 
+#' Constraints:
+#' 
+#' -   Specified in Coordinated Universal Time (UTC).
+#' 
+#' -   Specified in the Unix time format.
+#' 
+#'     For example, if you wish to use an end time of October 1, 2018, at 9
+#'     PM UTC, specify `1538427600` as the end time.
+#' 
+#' You can convert a human-friendly time to Unix time format using a
+#' converter like [Epoch converter](https://www.epochconverter.com/).
+#' @param filterPattern The pattern to use to filter the returned log events to a specific term.
+#' 
+#' The following are a few examples of filter patterns that you can
+#' specify:
+#' 
+#' -   To return all log events, specify a filter pattern of `""`.
+#' 
+#' -   To exclude log events that contain the `ERROR` term, and return all
+#'     other log events, specify a filter pattern of `"-ERROR"`.
+#' 
+#' -   To return log events that contain the `ERROR` term, specify a filter
+#'     pattern of `"ERROR"`.
+#' 
+#' -   To return log events that contain both the `ERROR` and `Exception`
+#'     terms, specify a filter pattern of `"ERROR Exception"`.
+#' 
+#' -   To return log events that contain the `ERROR` *or* the `Exception`
+#'     term, specify a filter pattern of `"?ERROR ?Exception"`.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetContainerLog` request. If
+#' your results are paginated, the response will return a next page token
+#' that you can specify as the page token in a subsequent request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_container_log(
+#'   serviceName = "string",
+#'   containerName = "string",
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   filterPattern = "string",
+#'   pageToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_container_log
+lightsail_get_container_log <- function(serviceName, containerName, startTime = NULL, endTime = NULL, filterPattern = NULL, pageToken = NULL) {
+  op <- new_operation(
+    name = "GetContainerLog",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_container_log_input(serviceName = serviceName, containerName = containerName, startTime = startTime, endTime = endTime, filterPattern = filterPattern, pageToken = pageToken)
+  output <- .lightsail$get_container_log_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_container_log <- lightsail_get_container_log
+
+#' Returns the deployments for your Amazon Lightsail container service A
+#' deployment specifies the settings, such as the ports and launch command,
+#' of containers that are deployed to your container service
+#'
+#' Returns the deployments for your Amazon Lightsail container service
+#' 
+#' A deployment specifies the settings, such as the ports and launch
+#' command, of containers that are deployed to your container service.
+#' 
+#' The deployments are ordered by version in ascending order. The newest
+#' version is listed at the top of the response.
+#' 
+#' A set number of deployments are kept before the oldest one is replaced
+#' with the newest one. For more information, see [Amazon Lightsail
+#' endpoints and
+#' quotas](https://docs.aws.amazon.com/general/latest/gr/lightsail.html) in
+#' the *AWS General Reference*.
+#'
+#' @usage
+#' lightsail_get_container_service_deployments(serviceName)
+#'
+#' @param serviceName &#91;required&#93; The name of the container service for which to return deployments.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_container_service_deployments(
+#'   serviceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_container_service_deployments
+lightsail_get_container_service_deployments <- function(serviceName) {
+  op <- new_operation(
+    name = "GetContainerServiceDeployments",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_container_service_deployments_input(serviceName = serviceName)
+  output <- .lightsail$get_container_service_deployments_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_container_service_deployments <- lightsail_get_container_service_deployments
+
+#' Returns the data points of a specific metric of your Amazon Lightsail
+#' container service
+#'
+#' Returns the data points of a specific metric of your Amazon Lightsail
+#' container service.
+#' 
+#' Metrics report the utilization of your resources. Monitor and collect
+#' metric data regularly to maintain the reliability, availability, and
+#' performance of your resources.
+#'
+#' @usage
+#' lightsail_get_container_service_metric_data(serviceName, metricName,
+#'   startTime, endTime, period, statistics)
+#'
+#' @param serviceName &#91;required&#93; The name of the container service for which to get metric data.
+#' @param metricName &#91;required&#93; The metric for which you want to return information.
+#' 
+#' Valid container service metric names are listed below, along with the
+#' most useful statistics to include in your request, and the published
+#' unit value.
+#' 
+#' -   `CPUUtilization` - The average percentage of compute units that are
+#'     currently in use across all nodes of the container service. This
+#'     metric identifies the processing power required to run containers on
+#'     each node of the container service.
+#' 
+#'     Statistics: The most useful statistics are `Maximum` and `Average`.
+#' 
+#'     Unit: The published unit is `Percent`.
+#' 
+#' -   `MemoryUtilization` - The average percentage of available memory
+#'     that is currently in use across all nodes of the container service.
+#'     This metric identifies the memory required to run containers on each
+#'     node of the container service.
+#' 
+#'     Statistics: The most useful statistics are `Maximum` and `Average`.
+#' 
+#'     Unit: The published unit is `Percent`.
+#' @param startTime &#91;required&#93; The start time of the time period.
+#' @param endTime &#91;required&#93; The end time of the time period.
+#' @param period &#91;required&#93; The granularity, in seconds, of the returned data points.
+#' 
+#' All container service metric data is available in 5-minute (300 seconds)
+#' granularity.
+#' @param statistics &#91;required&#93; The statistic for the metric.
+#' 
+#' The following statistics are available:
+#' 
+#' -   `Minimum` - The lowest value observed during the specified period.
+#'     Use this value to determine low volumes of activity for your
+#'     application.
+#' 
+#' -   `Maximum` - The highest value observed during the specified period.
+#'     Use this value to determine high volumes of activity for your
+#'     application.
+#' 
+#' -   `Sum` - All values submitted for the matching metric added together.
+#'     You can use this statistic to determine the total volume of a
+#'     metric.
+#' 
+#' -   `Average` - The value of `Sum` / `SampleCount` during the specified
+#'     period. By comparing this statistic with the `Minimum` and `Maximum`
+#'     values, you can determine the full scope of a metric and how close
+#'     the average use is to the `Minimum` and `Maximum` values. This
+#'     comparison helps you to know when to increase or decrease your
+#'     resources.
+#' 
+#' -   `SampleCount` - The count, or number, of data points used for the
+#'     statistical calculation.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_container_service_metric_data(
+#'   serviceName = "string",
+#'   metricName = "CPUUtilization"|"MemoryUtilization",
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   period = 123,
+#'   statistics = list(
+#'     "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_container_service_metric_data
+lightsail_get_container_service_metric_data <- function(serviceName, metricName, startTime, endTime, period, statistics) {
+  op <- new_operation(
+    name = "GetContainerServiceMetricData",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_container_service_metric_data_input(serviceName = serviceName, metricName = metricName, startTime = startTime, endTime = endTime, period = period, statistics = statistics)
+  output <- .lightsail$get_container_service_metric_data_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_container_service_metric_data <- lightsail_get_container_service_metric_data
+
+#' Returns the list of powers that can be specified for your Amazon
+#' Lightsail container services
+#'
+#' Returns the list of powers that can be specified for your Amazon
+#' Lightsail container services.
+#' 
+#' The power specifies the amount of memory, the number of vCPUs, and the
+#' base price of the container service.
+#'
+#' @usage
+#' lightsail_get_container_service_powers()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_container_service_powers()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_container_service_powers
+lightsail_get_container_service_powers <- function() {
+  op <- new_operation(
+    name = "GetContainerServicePowers",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_container_service_powers_input()
+  output <- .lightsail$get_container_service_powers_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_container_service_powers <- lightsail_get_container_service_powers
+
+#' Returns information about one or more of your Amazon Lightsail container
+#' services
+#'
+#' Returns information about one or more of your Amazon Lightsail container
+#' services.
+#'
+#' @usage
+#' lightsail_get_container_services(serviceName)
+#'
+#' @param serviceName The name of the container service for which to return information.
+#' 
+#' When omitted, the response includes all of your container services in
+#' the AWS Region where the request is made.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_container_services(
+#'   serviceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_container_services
+lightsail_get_container_services <- function(serviceName = NULL) {
+  op <- new_operation(
+    name = "GetContainerServices",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_container_services_input(serviceName = serviceName)
+  output <- .lightsail$get_container_services_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_container_services <- lightsail_get_container_services
 
 #' Returns information about a specific block storage disk
 #'
@@ -3286,6 +4511,307 @@ lightsail_get_disks <- function(pageToken = NULL) {
   return(response)
 }
 .lightsail$operations$get_disks <- lightsail_get_disks
+
+#' Returns the list bundles that can be applied to you Amazon Lightsail
+#' content delivery network (CDN) distributions
+#'
+#' Returns the list bundles that can be applied to you Amazon Lightsail
+#' content delivery network (CDN) distributions.
+#' 
+#' A distribution bundle specifies the monthly network transfer quota and
+#' monthly cost of your dsitribution.
+#'
+#' @usage
+#' lightsail_get_distribution_bundles()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_distribution_bundles()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_distribution_bundles
+lightsail_get_distribution_bundles <- function() {
+  op <- new_operation(
+    name = "GetDistributionBundles",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_distribution_bundles_input()
+  output <- .lightsail$get_distribution_bundles_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_distribution_bundles <- lightsail_get_distribution_bundles
+
+#' Returns the timestamp and status of the last cache reset of a specific
+#' Amazon Lightsail content delivery network (CDN) distribution
+#'
+#' Returns the timestamp and status of the last cache reset of a specific
+#' Amazon Lightsail content delivery network (CDN) distribution.
+#'
+#' @usage
+#' lightsail_get_distribution_latest_cache_reset(distributionName)
+#'
+#' @param distributionName The name of the distribution for which to return the timestamp of the
+#' last cache reset.
+#' 
+#' Use the `GetDistributions` action to get a list of distribution names
+#' that you can specify.
+#' 
+#' When omitted, the response includes the latest cache reset timestamp of
+#' all your distributions.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_distribution_latest_cache_reset(
+#'   distributionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_distribution_latest_cache_reset
+lightsail_get_distribution_latest_cache_reset <- function(distributionName = NULL) {
+  op <- new_operation(
+    name = "GetDistributionLatestCacheReset",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_distribution_latest_cache_reset_input(distributionName = distributionName)
+  output <- .lightsail$get_distribution_latest_cache_reset_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_distribution_latest_cache_reset <- lightsail_get_distribution_latest_cache_reset
+
+#' Returns the data points of a specific metric for an Amazon Lightsail
+#' content delivery network (CDN) distribution
+#'
+#' Returns the data points of a specific metric for an Amazon Lightsail
+#' content delivery network (CDN) distribution.
+#' 
+#' Metrics report the utilization of your resources, and the error counts
+#' generated by them. Monitor and collect metric data regularly to maintain
+#' the reliability, availability, and performance of your resources.
+#'
+#' @usage
+#' lightsail_get_distribution_metric_data(distributionName, metricName,
+#'   startTime, endTime, period, unit, statistics)
+#'
+#' @param distributionName &#91;required&#93; The name of the distribution for which to get metric data.
+#' 
+#' Use the `GetDistributions` action to get a list of distribution names
+#' that you can specify.
+#' @param metricName &#91;required&#93; The metric for which you want to return information.
+#' 
+#' Valid distribution metric names are listed below, along with the most
+#' useful `statistics` to include in your request, and the published `unit`
+#' value.
+#' 
+#' -   **`Requests`** - The total number of viewer requests received by
+#'     your Lightsail distribution, for all HTTP methods, and for both HTTP
+#'     and HTTPS requests.
+#' 
+#'     `Statistics`: The most useful statistic is `Sum`.
+#' 
+#'     `Unit`: The published unit is `None`.
+#' 
+#' -   **`BytesDownloaded`** - The number of bytes downloaded by viewers
+#'     for GET, HEAD, and OPTIONS requests.
+#' 
+#'     `Statistics`: The most useful statistic is `Sum`.
+#' 
+#'     `Unit`: The published unit is `None`.
+#' 
+#' -   **`BytesUploaded `** - The number of bytes uploaded to your origin
+#'     by your Lightsail distribution, using POST and PUT requests.
+#' 
+#'     `Statistics`: The most useful statistic is `Sum`.
+#' 
+#'     `Unit`: The published unit is `None`.
+#' 
+#' -   **`TotalErrorRate`** - The percentage of all viewer requests for
+#'     which the response's HTTP status code was 4xx or 5xx.
+#' 
+#'     `Statistics`: The most useful statistic is `Average`.
+#' 
+#'     `Unit`: The published unit is `Percent`.
+#' 
+#' -   **`4xxErrorRate`** - The percentage of all viewer requests for which
+#'     the response's HTTP status cod was 4xx. In these cases, the client
+#'     or client viewer may have made an error. For example, a status code
+#'     of 404 (Not Found) means that the client requested an object that
+#'     could not be found.
+#' 
+#'     `Statistics`: The most useful statistic is `Average`.
+#' 
+#'     `Unit`: The published unit is `Percent`.
+#' 
+#' -   **`5xxErrorRate`** - The percentage of all viewer requests for which
+#'     the response's HTTP status code was 5xx. In these cases, the origin
+#'     server did not satisfy the requests. For example, a status code of
+#'     503 (Service Unavailable) means that the origin server is currently
+#'     unavailable.
+#' 
+#'     `Statistics`: The most useful statistic is `Average`.
+#' 
+#'     `Unit`: The published unit is `Percent`.
+#' @param startTime &#91;required&#93; The start of the time interval for which to get metric data.
+#' 
+#' Constraints:
+#' 
+#' -   Specified in Coordinated Universal Time (UTC).
+#' 
+#' -   Specified in the Unix time format.
+#' 
+#'     For example, if you wish to use a start time of October 1, 2018, at
+#'     8 PM UTC, specify `1538424000` as the start time.
+#' 
+#' You can convert a human-friendly time to Unix time format using a
+#' converter like [Epoch converter](https://www.epochconverter.com/).
+#' @param endTime &#91;required&#93; The end of the time interval for which to get metric data.
+#' 
+#' Constraints:
+#' 
+#' -   Specified in Coordinated Universal Time (UTC).
+#' 
+#' -   Specified in the Unix time format.
+#' 
+#'     For example, if you wish to use an end time of October 1, 2018, at 9
+#'     PM UTC, specify `1538427600` as the end time.
+#' 
+#' You can convert a human-friendly time to Unix time format using a
+#' converter like [Epoch converter](https://www.epochconverter.com/).
+#' @param period &#91;required&#93; The granularity, in seconds, for the metric data points that will be
+#' returned.
+#' @param unit &#91;required&#93; The unit for the metric data request.
+#' 
+#' Valid units depend on the metric data being requested. For the valid
+#' units with each available metric, see the `metricName` parameter.
+#' @param statistics &#91;required&#93; The statistic for the metric.
+#' 
+#' The following statistics are available:
+#' 
+#' -   `Minimum` - The lowest value observed during the specified period.
+#'     Use this value to determine low volumes of activity for your
+#'     application.
+#' 
+#' -   `Maximum` - The highest value observed during the specified period.
+#'     Use this value to determine high volumes of activity for your
+#'     application.
+#' 
+#' -   `Sum` - All values submitted for the matching metric added together.
+#'     You can use this statistic to determine the total volume of a
+#'     metric.
+#' 
+#' -   `Average` - The value of Sum / SampleCount during the specified
+#'     period. By comparing this statistic with the Minimum and Maximum
+#'     values, you can determine the full scope of a metric and how close
+#'     the average use is to the Minimum and Maximum values. This
+#'     comparison helps you to know when to increase or decrease your
+#'     resources.
+#' 
+#' -   `SampleCount` - The count, or number, of data points used for the
+#'     statistical calculation.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_distribution_metric_data(
+#'   distributionName = "string",
+#'   metricName = "Requests"|"BytesDownloaded"|"BytesUploaded"|"TotalErrorRate"|"Http4xxErrorRate"|"Http5xxErrorRate",
+#'   startTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   endTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   period = 123,
+#'   unit = "Seconds"|"Microseconds"|"Milliseconds"|"Bytes"|"Kilobytes"|"Megabytes"|"Gigabytes"|"Terabytes"|"Bits"|"Kilobits"|"Megabits"|"Gigabits"|"Terabits"|"Percent"|"Count"|"Bytes/Second"|"Kilobytes/Second"|"Megabytes/Second"|"Gigabytes/Second"|"Terabytes/Second"|"Bits/Second"|"Kilobits/Second"|"Megabits/Second"|"Gigabits/Second"|"Terabits/Second"|"Count/Second"|"None",
+#'   statistics = list(
+#'     "Minimum"|"Maximum"|"Sum"|"Average"|"SampleCount"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_distribution_metric_data
+lightsail_get_distribution_metric_data <- function(distributionName, metricName, startTime, endTime, period, unit, statistics) {
+  op <- new_operation(
+    name = "GetDistributionMetricData",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_distribution_metric_data_input(distributionName = distributionName, metricName = metricName, startTime = startTime, endTime = endTime, period = period, unit = unit, statistics = statistics)
+  output <- .lightsail$get_distribution_metric_data_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_distribution_metric_data <- lightsail_get_distribution_metric_data
+
+#' Returns information about one or more of your Amazon Lightsail content
+#' delivery network (CDN) distributions
+#'
+#' Returns information about one or more of your Amazon Lightsail content
+#' delivery network (CDN) distributions.
+#'
+#' @usage
+#' lightsail_get_distributions(distributionName, pageToken)
+#'
+#' @param distributionName The name of the distribution for which to return information.
+#' 
+#' Use the `GetDistributions` action to get a list of distribution names
+#' that you can specify.
+#' 
+#' When omitted, the response includes all of your distributions in the AWS
+#' Region where the request is made.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial `GetDistributions` request. If
+#' your results are paginated, the response will return a next page token
+#' that you can specify as the page token in a subsequent request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_distributions(
+#'   distributionName = "string",
+#'   pageToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_get_distributions
+lightsail_get_distributions <- function(distributionName = NULL, pageToken = NULL) {
+  op <- new_operation(
+    name = "GetDistributions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$get_distributions_input(distributionName = distributionName, pageToken = pageToken)
+  output <- .lightsail$get_distributions_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$get_distributions <- lightsail_get_distributions
 
 #' Returns information about a specific domain recordset
 #'
@@ -3457,7 +4983,7 @@ lightsail_get_instance <- function(instanceName) {
 #' The `get instance access details` operation supports tag-based access
 #' control via resource tags applied to the resource identified by
 #' `instance name`. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_get_instance_access_details(instanceName, protocol)
@@ -4413,8 +5939,8 @@ lightsail_get_operations_for_resource <- function(resourceName, pageToken = NULL
 #' @param includeAvailabilityZones A Boolean value indicating whether to also include Availability Zones in
 #' your get regions request. Availability Zones are indicated with a
 #' letter: e.g., `us-east-2a`.
-#' @param includeRelationalDatabaseAvailabilityZones &gt;A Boolean value indicating whether to also include Availability
-#' Zones for databases in your get regions request. Availability Zones are
+#' @param includeRelationalDatabaseAvailabilityZones A Boolean value indicating whether to also include Availability Zones
+#' for databases in your get regions request. Availability Zones are
 #' indicated with a letter (e.g., `us-east-2a`).
 #'
 #' @section Request syntax:
@@ -5284,7 +6810,7 @@ lightsail_is_vpc_peered <- function() {
 #' The `OpenInstancePublicPorts` action supports tag-based access control
 #' via resource tags applied to the resource identified by `instanceName`.
 #' For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_open_instance_public_ports(portInfo, instanceName)
@@ -5559,7 +7085,7 @@ lightsail_put_alarm <- function(alarmName, metricName, monitoredResourceName, co
 #' The `PutInstancePublicPorts` action supports tag-based access control
 #' via resource tags applied to the resource identified by `instanceName`.
 #' For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_put_instance_public_ports(portInfos, instanceName)
@@ -5615,7 +7141,7 @@ lightsail_put_instance_public_ports <- function(portInfos, instanceName) {
 #' The `reboot instance` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `instance name`. For
 #' more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_reboot_instance(instanceName)
@@ -5656,7 +7182,7 @@ lightsail_reboot_instance <- function(instanceName) {
 #' The `reboot relational database` operation supports tag-based access
 #' control via resource tags applied to the resource identified by
 #' relationalDatabaseName. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_reboot_relational_database(relationalDatabaseName)
@@ -5689,6 +7215,75 @@ lightsail_reboot_relational_database <- function(relationalDatabaseName) {
   return(response)
 }
 .lightsail$operations$reboot_relational_database <- lightsail_reboot_relational_database
+
+#' Registers a container image to your Amazon Lightsail container service
+#'
+#' Registers a container image to your Amazon Lightsail container service.
+#' 
+#' This action is not required if you install and use the Lightsail Control
+#' (lightsailctl) plugin to push container images to your Lightsail
+#' container service. For more information, see Pushing and managing
+#' container images on your Amazon Lightsail container services in the
+#' *Lightsail Dev Guide*.
+#'
+#' @usage
+#' lightsail_register_container_image(serviceName, label, digest)
+#'
+#' @param serviceName &#91;required&#93; The name of the container service for which to register a container
+#' image.
+#' @param label &#91;required&#93; The label for the container image when it's registered to the container
+#' service.
+#' 
+#' Use a descriptive label that you can use to track the different versions
+#' of your registered container images.
+#' 
+#' Use the `GetContainerImages` action to return the container images
+#' registered to a Lightsail container service. The label is the
+#' `&lt;imagelabel&gt;` portion of the following image name example:
+#' 
+#' -   `:container-service-1.&lt;imagelabel&gt;.1`
+#' 
+#' If the name of your container service is `mycontainerservice`, and the
+#' label that you specify is `mystaticwebsite`, then the name of the
+#' registered container image will be
+#' `:mycontainerservice.mystaticwebsite.1`.
+#' 
+#' The number at the end of these image name examples represents the
+#' version of the registered container image. If you push and register
+#' another container image to the same Lightsail container service, with
+#' the same label, then the version number for the new registered container
+#' image will be `2`. If you push and register another container image, the
+#' version number will be `3`, and so on.
+#' @param digest &#91;required&#93; The digest of the container image to be registered.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$register_container_image(
+#'   serviceName = "string",
+#'   label = "string",
+#'   digest = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_register_container_image
+lightsail_register_container_image <- function(serviceName, label, digest) {
+  op <- new_operation(
+    name = "RegisterContainerImage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$register_container_image_input(serviceName = serviceName, label = label, digest = digest)
+  output <- .lightsail$register_container_image_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$register_container_image <- lightsail_register_container_image
 
 #' Deletes a specific static IP from your account
 #'
@@ -5725,6 +7320,50 @@ lightsail_release_static_ip <- function(staticIpName) {
   return(response)
 }
 .lightsail$operations$release_static_ip <- lightsail_release_static_ip
+
+#' Deletes currently cached content from your Amazon Lightsail content
+#' delivery network (CDN) distribution
+#'
+#' Deletes currently cached content from your Amazon Lightsail content
+#' delivery network (CDN) distribution.
+#' 
+#' After resetting the cache, the next time a content request is made, your
+#' distribution pulls, serves, and caches it from the origin.
+#'
+#' @usage
+#' lightsail_reset_distribution_cache(distributionName)
+#'
+#' @param distributionName The name of the distribution for which to reset cache.
+#' 
+#' Use the `GetDistributions` action to get a list of distribution names
+#' that you can specify.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$reset_distribution_cache(
+#'   distributionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_reset_distribution_cache
+lightsail_reset_distribution_cache <- function(distributionName = NULL) {
+  op <- new_operation(
+    name = "ResetDistributionCache",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$reset_distribution_cache_input(distributionName = distributionName)
+  output <- .lightsail$reset_distribution_cache_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$reset_distribution_cache <- lightsail_reset_distribution_cache
 
 #' Sends a verification request to an email contact method to ensure it's
 #' owned by the requester
@@ -5788,12 +7427,12 @@ lightsail_send_contact_method_verification <- function(protocol) {
 #' address to the instance. To use the same IP address after stopping and
 #' starting an instance, create a static IP address and attach it to the
 #' instance. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/lightsail-create-static-ip).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/lightsail-create-static-ip).
 #' 
 #' The `start instance` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `instance name`. For
 #' more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_start_instance(instanceName)
@@ -5835,7 +7474,7 @@ lightsail_start_instance <- function(instanceName) {
 #' The `start relational database` operation supports tag-based access
 #' control via resource tags applied to the resource identified by
 #' relationalDatabaseName. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_start_relational_database(relationalDatabaseName)
@@ -5877,12 +7516,12 @@ lightsail_start_relational_database <- function(relationalDatabaseName) {
 #' address to the instance. To use the same IP address after stopping and
 #' starting an instance, create a static IP address and attach it to the
 #' instance. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/lightsail-create-static-ip).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/lightsail-create-static-ip).
 #' 
 #' The `stop instance` operation supports tag-based access control via
 #' resource tags applied to the resource identified by `instance name`. For
 #' more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_stop_instance(instanceName, force)
@@ -5930,7 +7569,7 @@ lightsail_stop_instance <- function(instanceName, force = NULL) {
 #' The `stop relational database` operation supports tag-based access
 #' control via resource tags applied to the resource identified by
 #' relationalDatabaseName. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_stop_relational_database(relationalDatabaseName,
@@ -5974,12 +7613,12 @@ lightsail_stop_relational_database <- function(relationalDatabaseName, relationa
 #' resource can have a maximum of 50 tags. Each tag consists of a key and
 #' an optional value. Tag keys must be unique per resource. For more
 #' information about tags, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-tags).
 #' 
 #' The `tag resource` operation supports tag-based access control via
 #' request tags and resource tags applied to the resource identified by
 #' `resource name`. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_tag_resource(resourceName, resourceArn, tags)
@@ -6121,7 +7760,7 @@ lightsail_unpeer_vpc <- function() {
 #' The `untag resource` operation supports tag-based access control via
 #' request tags and resource tags applied to the resource identified by
 #' `resource name`. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_untag_resource(resourceName, resourceArn, tagKeys)
@@ -6162,6 +7801,247 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 }
 .lightsail$operations$untag_resource <- lightsail_untag_resource
 
+#' Updates the configuration of your Amazon Lightsail container service,
+#' such as its power, scale, and public domain names
+#'
+#' Updates the configuration of your Amazon Lightsail container service,
+#' such as its power, scale, and public domain names.
+#'
+#' @usage
+#' lightsail_update_container_service(serviceName, power, scale,
+#'   isDisabled, publicDomainNames)
+#'
+#' @param serviceName &#91;required&#93; The name of the container service to update.
+#' @param power The power for the container service.
+#' 
+#' The power specifies the amount of memory, vCPUs, and base monthly cost
+#' of each node of the container service. The `power` and `scale` of a
+#' container service makes up its configured capacity. To determine the
+#' monthly price of your container service, multiply the base price of the
+#' `power` with the `scale` (the number of nodes) of the service.
+#' 
+#' Use the `GetContainerServicePowers` action to view the specifications of
+#' each power option.
+#' @param scale The scale for the container service.
+#' 
+#' The scale specifies the allocated compute nodes of the container
+#' service. The `power` and `scale` of a container service makes up its
+#' configured capacity. To determine the monthly price of your container
+#' service, multiply the base price of the `power` with the `scale` (the
+#' number of nodes) of the service.
+#' @param isDisabled A Boolean value to indicate whether the container service is disabled.
+#' @param publicDomainNames The public domain names to use with the container service, such as
+#' `example.com` and `www.example.com`.
+#' 
+#' You can specify up to four public domain names for a container service.
+#' The domain names that you specify are used when you create a deployment
+#' with a container configured as the public endpoint of your container
+#' service.
+#' 
+#' If you don't specify public domain names, then you can use the default
+#' domain of the container service.
+#' 
+#' You must create and validate an SSL/TLS certificate before you can use
+#' public domain names with your container service. Use the
+#' `CreateCertificate` action to create a certificate for the public domain
+#' names you want to use with your container service.
+#' 
+#' You can specify public domain names using a string to array map as shown
+#' in the example later on this page.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_container_service(
+#'   serviceName = "string",
+#'   power = "nano"|"micro"|"small"|"medium"|"large"|"xlarge",
+#'   scale = 123,
+#'   isDisabled = TRUE|FALSE,
+#'   publicDomainNames = list(
+#'     list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_update_container_service
+lightsail_update_container_service <- function(serviceName, power = NULL, scale = NULL, isDisabled = NULL, publicDomainNames = NULL) {
+  op <- new_operation(
+    name = "UpdateContainerService",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$update_container_service_input(serviceName = serviceName, power = power, scale = scale, isDisabled = isDisabled, publicDomainNames = publicDomainNames)
+  output <- .lightsail$update_container_service_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$update_container_service <- lightsail_update_container_service
+
+#' Updates an existing Amazon Lightsail content delivery network (CDN)
+#' distribution
+#'
+#' Updates an existing Amazon Lightsail content delivery network (CDN)
+#' distribution.
+#' 
+#' Use this action to update the configuration of your existing
+#' distribution
+#'
+#' @usage
+#' lightsail_update_distribution(distributionName, origin,
+#'   defaultCacheBehavior, cacheBehaviorSettings, cacheBehaviors, isEnabled)
+#'
+#' @param distributionName &#91;required&#93; The name of the distribution to update.
+#' 
+#' Use the `GetDistributions` action to get a list of distribution names
+#' that you can specify.
+#' @param origin An object that describes the origin resource for the distribution, such
+#' as a Lightsail instance or load balancer.
+#' 
+#' The distribution pulls, caches, and serves content from the origin.
+#' @param defaultCacheBehavior An object that describes the default cache behavior for the
+#' distribution.
+#' @param cacheBehaviorSettings An object that describes the cache behavior settings for the
+#' distribution.
+#' 
+#' The `cacheBehaviorSettings` specified in your
+#' `UpdateDistributionRequest` will replace your distribution's existing
+#' settings.
+#' @param cacheBehaviors An array of objects that describe the per-path cache behavior for the
+#' distribution.
+#' @param isEnabled Indicates whether to enable the distribution.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_distribution(
+#'   distributionName = "string",
+#'   origin = list(
+#'     name = "string",
+#'     regionName = "us-east-1"|"us-east-2"|"us-west-1"|"us-west-2"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"eu-central-1"|"ca-central-1"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"ap-northeast-2",
+#'     protocolPolicy = "http-only"|"https-only"
+#'   ),
+#'   defaultCacheBehavior = list(
+#'     behavior = "dont-cache"|"cache"
+#'   ),
+#'   cacheBehaviorSettings = list(
+#'     defaultTTL = 123,
+#'     minimumTTL = 123,
+#'     maximumTTL = 123,
+#'     allowedHTTPMethods = "string",
+#'     cachedHTTPMethods = "string",
+#'     forwardedCookies = list(
+#'       option = "none"|"allow-list"|"all",
+#'       cookiesAllowList = list(
+#'         "string"
+#'       )
+#'     ),
+#'     forwardedHeaders = list(
+#'       option = "none"|"allow-list"|"all",
+#'       headersAllowList = list(
+#'         "Accept"|"Accept-Charset"|"Accept-Datetime"|"Accept-Encoding"|"Accept-Language"|"Authorization"|"CloudFront-Forwarded-Proto"|"CloudFront-Is-Desktop-Viewer"|"CloudFront-Is-Mobile-Viewer"|"CloudFront-Is-SmartTV-Viewer"|"CloudFront-Is-Tablet-Viewer"|"CloudFront-Viewer-Country"|"Host"|"Origin"|"Referer"
+#'       )
+#'     ),
+#'     forwardedQueryStrings = list(
+#'       option = TRUE|FALSE,
+#'       queryStringsAllowList = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   cacheBehaviors = list(
+#'     list(
+#'       path = "string",
+#'       behavior = "dont-cache"|"cache"
+#'     )
+#'   ),
+#'   isEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_update_distribution
+lightsail_update_distribution <- function(distributionName, origin = NULL, defaultCacheBehavior = NULL, cacheBehaviorSettings = NULL, cacheBehaviors = NULL, isEnabled = NULL) {
+  op <- new_operation(
+    name = "UpdateDistribution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$update_distribution_input(distributionName = distributionName, origin = origin, defaultCacheBehavior = defaultCacheBehavior, cacheBehaviorSettings = cacheBehaviorSettings, cacheBehaviors = cacheBehaviors, isEnabled = isEnabled)
+  output <- .lightsail$update_distribution_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$update_distribution <- lightsail_update_distribution
+
+#' Updates the bundle of your Amazon Lightsail content delivery network
+#' (CDN) distribution
+#'
+#' Updates the bundle of your Amazon Lightsail content delivery network
+#' (CDN) distribution.
+#' 
+#' A distribution bundle specifies the monthly network transfer quota and
+#' monthly cost of your dsitribution.
+#' 
+#' Update your distribution's bundle if your distribution is going over its
+#' monthly network transfer quota and is incurring an overage fee.
+#' 
+#' You can update your distribution's bundle only one time within your
+#' monthly AWS billing cycle. To determine if you can update your
+#' distribution's bundle, use the `GetDistributions` action. The
+#' `ableToUpdateBundle` parameter in the result will indicate whether you
+#' can currently update your distribution's bundle.
+#'
+#' @usage
+#' lightsail_update_distribution_bundle(distributionName, bundleId)
+#'
+#' @param distributionName The name of the distribution for which to update the bundle.
+#' 
+#' Use the `GetDistributions` action to get a list of distribution names
+#' that you can specify.
+#' @param bundleId The bundle ID of the new bundle to apply to your distribution.
+#' 
+#' Use the `GetDistributionBundles` action to get a list of distribution
+#' bundle IDs that you can specify.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_distribution_bundle(
+#'   distributionName = "string",
+#'   bundleId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lightsail_update_distribution_bundle
+lightsail_update_distribution_bundle <- function(distributionName = NULL, bundleId = NULL) {
+  op <- new_operation(
+    name = "UpdateDistributionBundle",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lightsail$update_distribution_bundle_input(distributionName = distributionName, bundleId = bundleId)
+  output <- .lightsail$update_distribution_bundle_output()
+  config <- get_config()
+  svc <- .lightsail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lightsail$operations$update_distribution_bundle <- lightsail_update_distribution_bundle
+
 #' Updates a domain recordset after it is created
 #'
 #' Updates a domain recordset after it is created.
@@ -6169,7 +8049,7 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 #' The `update domain entry` operation supports tag-based access control
 #' via resource tags applied to the resource identified by `domain name`.
 #' For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_update_domain_entry(domainName, domainEntry)
@@ -6223,7 +8103,7 @@ lightsail_update_domain_entry <- function(domainName, domainEntry) {
 #' The `update load balancer attribute` operation supports tag-based access
 #' control via resource tags applied to the resource identified by
 #' `load balancer name`. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_update_load_balancer_attribute(loadBalancerName,
@@ -6276,7 +8156,7 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #' The `update relational database` operation supports tag-based access
 #' control via resource tags applied to the resource identified by
 #' relationalDatabaseName. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_update_relational_database(relationalDatabaseName,
@@ -6404,7 +8284,7 @@ lightsail_update_relational_database <- function(relationalDatabaseName, masterU
 #' The `update relational database parameters` operation supports tag-based
 #' access control via resource tags applied to the resource identified by
 #' relationalDatabaseName. For more information, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags).
 #'
 #' @usage
 #' lightsail_update_relational_database_parameters(relationalDatabaseName,

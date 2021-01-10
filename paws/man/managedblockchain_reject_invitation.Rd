@@ -14,6 +14,9 @@ Rejects an invitation to join a network. This action can be called by a
 principal in an AWS account that has received an invitation to create a
 member and join a network.
 }
+\details{
+Applies only to Hyperledger Fabric.
+}
 \section{Request syntax}{
 \preformatted{svc$reject_invitation(
   InvitationId = "string"

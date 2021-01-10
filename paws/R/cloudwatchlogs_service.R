@@ -6,10 +6,10 @@ NULL
 #'
 #' @description
 #' You can use Amazon CloudWatch Logs to monitor, store, and access your
-#' log files from Amazon EC2 instances, AWS CloudTrail, or other sources.
-#' You can then retrieve the associated log data from CloudWatch Logs using
-#' the CloudWatch console, CloudWatch Logs commands in the AWS CLI,
-#' CloudWatch Logs API, or CloudWatch Logs SDK.
+#' log files from EC2 instances, AWS CloudTrail, or other sources. You can
+#' then retrieve the associated log data from CloudWatch Logs using the
+#' CloudWatch console, CloudWatch Logs commands in the AWS CLI, CloudWatch
+#' Logs API, or CloudWatch Logs SDK.
 #' 
 #' You can use CloudWatch Logs to:
 #' 
@@ -18,7 +18,7 @@ NULL
 #'     For example, CloudWatch Logs can track the number of errors that
 #'     occur in your application logs and send you a notification whenever
 #'     the rate of errors exceeds a threshold that you specify. CloudWatch
-#'     Logs uses your log data for monitoring; so, no code changes are
+#'     Logs uses your log data for monitoring so no code changes are
 #'     required. For example, you can monitor application logs for specific
 #'     literal terms (such as "NullReferenceException") or count the number
 #'     of occurrences of a literal term at a particular position in log
@@ -28,7 +28,7 @@ NULL
 #' 
 #' -   **Monitor AWS CloudTrail logged events**: You can create alarms in
 #'     CloudWatch and receive notifications of particular API activity as
-#'     captured by CloudTrail and use the notification to perform
+#'     captured by CloudTrail. You can use the notification to perform
 #'     troubleshooting.
 #' 
 #' -   **Archive log data**: You can use CloudWatch Logs to store your log
@@ -80,7 +80,7 @@ NULL
 #'  \link[=cloudwatchlogs_delete_log_group]{delete_log_group} \tab Deletes the specified log group and permanently deletes all the archived log events associated with the log group\cr
 #'  \link[=cloudwatchlogs_delete_log_stream]{delete_log_stream} \tab Deletes the specified log stream and permanently deletes all the archived log events associated with the log stream\cr
 #'  \link[=cloudwatchlogs_delete_metric_filter]{delete_metric_filter} \tab Deletes the specified metric filter\cr
-#'  \link[=cloudwatchlogs_delete_query_definition]{delete_query_definition} \tab Delete query definition\cr
+#'  \link[=cloudwatchlogs_delete_query_definition]{delete_query_definition} \tab Deletes a saved CloudWatch Logs Insights query definition\cr
 #'  \link[=cloudwatchlogs_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource policy from this account\cr
 #'  \link[=cloudwatchlogs_delete_retention_policy]{delete_retention_policy} \tab Deletes the specified retention policy\cr
 #'  \link[=cloudwatchlogs_delete_subscription_filter]{delete_subscription_filter} \tab Deletes the specified subscription filter\cr
@@ -90,21 +90,21 @@ NULL
 #'  \link[=cloudwatchlogs_describe_log_streams]{describe_log_streams} \tab Lists the log streams for the specified log group\cr
 #'  \link[=cloudwatchlogs_describe_metric_filters]{describe_metric_filters} \tab Lists the specified metric filters\cr
 #'  \link[=cloudwatchlogs_describe_queries]{describe_queries} \tab Returns a list of CloudWatch Logs Insights queries that are scheduled, executing, or have been executed recently in this account\cr
-#'  \link[=cloudwatchlogs_describe_query_definitions]{describe_query_definitions} \tab Describe query definitions\cr
+#'  \link[=cloudwatchlogs_describe_query_definitions]{describe_query_definitions} \tab This operation returns a paginated list of your saved CloudWatch Logs Insights query definitions\cr
 #'  \link[=cloudwatchlogs_describe_resource_policies]{describe_resource_policies} \tab Lists the resource policies in this account\cr
 #'  \link[=cloudwatchlogs_describe_subscription_filters]{describe_subscription_filters} \tab Lists the subscription filters for the specified log group\cr
 #'  \link[=cloudwatchlogs_disassociate_kms_key]{disassociate_kms_key} \tab Disassociates the associated AWS Key Management Service (AWS KMS) customer master key (CMK) from the specified log group\cr
 #'  \link[=cloudwatchlogs_filter_log_events]{filter_log_events} \tab Lists log events from the specified log group\cr
 #'  \link[=cloudwatchlogs_get_log_events]{get_log_events} \tab Lists log events from the specified log stream\cr
 #'  \link[=cloudwatchlogs_get_log_group_fields]{get_log_group_fields} \tab Returns a list of the fields that are included in log events in the specified log group, along with the percentage of log events that contain each field\cr
-#'  \link[=cloudwatchlogs_get_log_record]{get_log_record} \tab Retrieves all the fields and values of a single log event\cr
+#'  \link[=cloudwatchlogs_get_log_record]{get_log_record} \tab Retrieves all of the fields and values of a single log event\cr
 #'  \link[=cloudwatchlogs_get_query_results]{get_query_results} \tab Returns the results from the specified query\cr
 #'  \link[=cloudwatchlogs_list_tags_log_group]{list_tags_log_group} \tab Lists the tags for the specified log group\cr
 #'  \link[=cloudwatchlogs_put_destination]{put_destination} \tab Creates or updates a destination\cr
 #'  \link[=cloudwatchlogs_put_destination_policy]{put_destination_policy} \tab Creates or updates an access policy associated with an existing destination\cr
 #'  \link[=cloudwatchlogs_put_log_events]{put_log_events} \tab Uploads a batch of log events to the specified log stream\cr
 #'  \link[=cloudwatchlogs_put_metric_filter]{put_metric_filter} \tab Creates or updates a metric filter and associates it with the specified log group\cr
-#'  \link[=cloudwatchlogs_put_query_definition]{put_query_definition} \tab Put query definition\cr
+#'  \link[=cloudwatchlogs_put_query_definition]{put_query_definition} \tab Creates or updates a query definition for CloudWatch Logs Insights\cr
 #'  \link[=cloudwatchlogs_put_resource_policy]{put_resource_policy} \tab Creates or updates a resource policy allowing other AWS services to put log events to this account, such as Amazon Route 53\cr
 #'  \link[=cloudwatchlogs_put_retention_policy]{put_retention_policy} \tab Sets the retention of the specified log group\cr
 #'  \link[=cloudwatchlogs_put_subscription_filter]{put_subscription_filter} \tab Creates or updates a subscription filter and associates it with the specified log group\cr

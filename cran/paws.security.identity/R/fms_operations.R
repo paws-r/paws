@@ -52,6 +52,43 @@ fms_associate_admin_account <- function(AdminAccount) {
 }
 .fms$operations$associate_admin_account <- fms_associate_admin_account
 
+#' Permanently deletes an AWS Firewall Manager applications list
+#'
+#' Permanently deletes an AWS Firewall Manager applications list.
+#'
+#' @usage
+#' fms_delete_apps_list(ListId)
+#'
+#' @param ListId &#91;required&#93; The ID of the applications list that you want to delete. You can
+#' retrieve this ID from `PutAppsList`, `ListAppsLists`, and `GetAppsList`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_apps_list(
+#'   ListId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_delete_apps_list
+fms_delete_apps_list <- function(ListId) {
+  op <- new_operation(
+    name = "DeleteAppsList",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$delete_apps_list_input(ListId = ListId)
+  output <- .fms$delete_apps_list_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$delete_apps_list <- fms_delete_apps_list
+
 #' Deletes an AWS Firewall Manager association with the IAM role and the
 #' Amazon Simple Notification Service (SNS) topic that is used to record
 #' AWS Firewall Manager SNS logs
@@ -95,8 +132,8 @@ fms_delete_notification_channel <- function() {
 #' @usage
 #' fms_delete_policy(PolicyId, DeleteAllPolicyResources)
 #'
-#' @param PolicyId &#91;required&#93; The ID of the policy that you want to delete. `PolicyId` is returned by
-#' `PutPolicy` and by `ListPolicies`.
+#' @param PolicyId &#91;required&#93; The ID of the policy that you want to delete. You can retrieve this ID
+#' from `PutPolicy` and `ListPolicies`.
 #' @param DeleteAllPolicyResources If `True`, the request performs cleanup according to the policy type.
 #' 
 #' For AWS WAF and Shield Advanced policies, the cleanup does the
@@ -153,6 +190,44 @@ fms_delete_policy <- function(PolicyId, DeleteAllPolicyResources = NULL) {
   return(response)
 }
 .fms$operations$delete_policy <- fms_delete_policy
+
+#' Permanently deletes an AWS Firewall Manager protocols list
+#'
+#' Permanently deletes an AWS Firewall Manager protocols list.
+#'
+#' @usage
+#' fms_delete_protocols_list(ListId)
+#'
+#' @param ListId &#91;required&#93; The ID of the protocols list that you want to delete. You can retrieve
+#' this ID from `PutProtocolsList`, `ListProtocolsLists`, and
+#' `GetProtocolsLost`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_protocols_list(
+#'   ListId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_delete_protocols_list
+fms_delete_protocols_list <- function(ListId) {
+  op <- new_operation(
+    name = "DeleteProtocolsList",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$delete_protocols_list_input(ListId = ListId)
+  output <- .fms$delete_protocols_list_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$delete_protocols_list <- fms_delete_protocols_list
 
 #' Disassociates the account that has been set as the AWS Firewall Manager
 #' administrator account
@@ -223,6 +298,48 @@ fms_get_admin_account <- function() {
 }
 .fms$operations$get_admin_account <- fms_get_admin_account
 
+#' Returns information about the specified AWS Firewall Manager
+#' applications list
+#'
+#' Returns information about the specified AWS Firewall Manager
+#' applications list.
+#'
+#' @usage
+#' fms_get_apps_list(ListId, DefaultList)
+#'
+#' @param ListId &#91;required&#93; The ID of the AWS Firewall Manager applications list that you want the
+#' details for.
+#' @param DefaultList Specifies whether the list to retrieve is a default list owned by AWS
+#' Firewall Manager.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_apps_list(
+#'   ListId = "string",
+#'   DefaultList = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_get_apps_list
+fms_get_apps_list <- function(ListId, DefaultList = NULL) {
+  op <- new_operation(
+    name = "GetAppsList",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$get_apps_list_input(ListId = ListId, DefaultList = DefaultList)
+  output <- .fms$get_apps_list_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$get_apps_list <- fms_get_apps_list
+
 #' Returns detailed compliance information about the specified member
 #' account
 #'
@@ -233,6 +350,12 @@ fms_get_admin_account <- function() {
 #' applied to them. Resources are considered noncompliant for security
 #' group policies if they are in scope of the policy, they violate one or
 #' more of the policy rules, and remediation is disabled or not possible.
+#' Resources are considered noncompliant for Network Firewall policies if a
+#' firewall is missing in the VPC, if the firewall endpoint isn't set up in
+#' an expected Availability Zone and subnet, if a subnet created by the
+#' Firewall Manager doesn't have the expected route table, and for
+#' modifications to a firewall policy that violate the Firewall Manager
+#' policy's rules.
 #'
 #' @usage
 #' fms_get_compliance_detail(PolicyId, MemberAccount)
@@ -409,11 +532,155 @@ fms_get_protection_status <- function(PolicyId, MemberAccountId = NULL, StartTim
 }
 .fms$operations$get_protection_status <- fms_get_protection_status
 
-#' Returns an array of PolicyComplianceStatus objects in the response
+#' Returns information about the specified AWS Firewall Manager protocols
+#' list
 #'
-#' Returns an array of `PolicyComplianceStatus` objects in the response.
-#' Use `PolicyComplianceStatus` to get a summary of which member accounts
-#' are protected by the specified policy.
+#' Returns information about the specified AWS Firewall Manager protocols
+#' list.
+#'
+#' @usage
+#' fms_get_protocols_list(ListId, DefaultList)
+#'
+#' @param ListId &#91;required&#93; The ID of the AWS Firewall Manager protocols list that you want the
+#' details for.
+#' @param DefaultList Specifies whether the list to retrieve is a default list owned by AWS
+#' Firewall Manager.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_protocols_list(
+#'   ListId = "string",
+#'   DefaultList = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_get_protocols_list
+fms_get_protocols_list <- function(ListId, DefaultList = NULL) {
+  op <- new_operation(
+    name = "GetProtocolsList",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$get_protocols_list_input(ListId = ListId, DefaultList = DefaultList)
+  output <- .fms$get_protocols_list_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$get_protocols_list <- fms_get_protocols_list
+
+#' Retrieves violations for a resource based on the specified AWS Firewall
+#' Manager policy and AWS account
+#'
+#' Retrieves violations for a resource based on the specified AWS Firewall
+#' Manager policy and AWS account.
+#'
+#' @usage
+#' fms_get_violation_details(PolicyId, MemberAccount, ResourceId,
+#'   ResourceType)
+#'
+#' @param PolicyId &#91;required&#93; The ID of the AWS Firewall Manager policy that you want the details for.
+#' This currently only supports security group content audit policies.
+#' @param MemberAccount &#91;required&#93; The AWS account ID that you want the details for.
+#' @param ResourceId &#91;required&#93; The ID of the resource that has violations.
+#' @param ResourceType &#91;required&#93; The resource type. This is in the format shown in the [AWS Resource
+#' Types
+#' Reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
+#' Supported resource types are: `AWS::EC2::Instance`,
+#' `AWS::EC2::NetworkInterface`, `AWS::EC2::SecurityGroup`,
+#' `AWS::NetworkFirewall::FirewallPolicy`, and `AWS::EC2::Subnet`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_violation_details(
+#'   PolicyId = "string",
+#'   MemberAccount = "string",
+#'   ResourceId = "string",
+#'   ResourceType = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_get_violation_details
+fms_get_violation_details <- function(PolicyId, MemberAccount, ResourceId, ResourceType) {
+  op <- new_operation(
+    name = "GetViolationDetails",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$get_violation_details_input(PolicyId = PolicyId, MemberAccount = MemberAccount, ResourceId = ResourceId, ResourceType = ResourceType)
+  output <- .fms$get_violation_details_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$get_violation_details <- fms_get_violation_details
+
+#' Returns an array of AppsListDataSummary objects
+#'
+#' Returns an array of `AppsListDataSummary` objects.
+#'
+#' @usage
+#' fms_list_apps_lists(DefaultLists, NextToken, MaxResults)
+#'
+#' @param DefaultLists Specifies whether the lists to retrieve are default lists owned by AWS
+#' Firewall Manager.
+#' @param NextToken If you specify a value for `MaxResults` in your list request, and you
+#' have more objects than the maximum, AWS Firewall Manager returns this
+#' token in the response. For all but the first request, you provide the
+#' token returned by the prior request in the request parameters, to
+#' retrieve the next batch of objects.
+#' @param MaxResults &#91;required&#93; The maximum number of objects that you want AWS Firewall Manager to
+#' return for this request. If more objects are available, in the response,
+#' AWS Firewall Manager provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#' 
+#' If you don't specify this, AWS Firewall Manager returns all available
+#' objects.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_apps_lists(
+#'   DefaultLists = TRUE|FALSE,
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_list_apps_lists
+fms_list_apps_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxResults) {
+  op <- new_operation(
+    name = "ListAppsLists",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$list_apps_lists_input(DefaultLists = DefaultLists, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .fms$list_apps_lists_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$list_apps_lists <- fms_list_apps_lists
+
+#' Returns an array of PolicyComplianceStatus objects
+#'
+#' Returns an array of `PolicyComplianceStatus` objects. Use
+#' `PolicyComplianceStatus` to get a summary of which member accounts are
+#' protected by the specified policy.
 #'
 #' @usage
 #' fms_list_compliance_status(PolicyId, NextToken, MaxResults)
@@ -514,9 +781,9 @@ fms_list_member_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .fms$operations$list_member_accounts <- fms_list_member_accounts
 
-#' Returns an array of PolicySummary objects in the response
+#' Returns an array of PolicySummary objects
 #'
-#' Returns an array of `PolicySummary` objects in the response.
+#' Returns an array of `PolicySummary` objects.
 #'
 #' @usage
 #' fms_list_policies(NextToken, MaxResults)
@@ -562,6 +829,57 @@ fms_list_policies <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .fms$operations$list_policies <- fms_list_policies
 
+#' Returns an array of ProtocolsListDataSummary objects
+#'
+#' Returns an array of `ProtocolsListDataSummary` objects.
+#'
+#' @usage
+#' fms_list_protocols_lists(DefaultLists, NextToken, MaxResults)
+#'
+#' @param DefaultLists Specifies whether the lists to retrieve are default lists owned by AWS
+#' Firewall Manager.
+#' @param NextToken If you specify a value for `MaxResults` in your list request, and you
+#' have more objects than the maximum, AWS Firewall Manager returns this
+#' token in the response. For all but the first request, you provide the
+#' token returned by the prior request in the request parameters, to
+#' retrieve the next batch of objects.
+#' @param MaxResults &#91;required&#93; The maximum number of objects that you want AWS Firewall Manager to
+#' return for this request. If more objects are available, in the response,
+#' AWS Firewall Manager provides a `NextToken` value that you can use in a
+#' subsequent call to get the next batch of objects.
+#' 
+#' If you don't specify this, AWS Firewall Manager returns all available
+#' objects.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_protocols_lists(
+#'   DefaultLists = TRUE|FALSE,
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_list_protocols_lists
+fms_list_protocols_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxResults) {
+  op <- new_operation(
+    name = "ListProtocolsLists",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$list_protocols_lists_input(DefaultLists = DefaultLists, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .fms$list_protocols_lists_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$list_protocols_lists <- fms_list_protocols_lists
+
 #' Retrieves the list of tags for the specified AWS resource
 #'
 #' Retrieves the list of tags for the specified AWS resource.
@@ -570,8 +888,8 @@ fms_list_policies <- function(NextToken = NULL, MaxResults = NULL) {
 #' fms_list_tags_for_resource(ResourceArn)
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return tags for. The
-#' Firewall Manager policy is the only AWS resource that supports tagging,
-#' so this ARN is a policy ARN..
+#' AWS Firewall Manager resources that support tagging are policies,
+#' applications lists, and protocols lists.
 #'
 #' @section Request syntax:
 #' ```
@@ -600,11 +918,87 @@ fms_list_tags_for_resource <- function(ResourceArn) {
 }
 .fms$operations$list_tags_for_resource <- fms_list_tags_for_resource
 
+#' Creates an AWS Firewall Manager applications list
+#'
+#' Creates an AWS Firewall Manager applications list.
+#'
+#' @usage
+#' fms_put_apps_list(AppsList, TagList)
+#'
+#' @param AppsList &#91;required&#93; The details of the AWS Firewall Manager applications list to be created.
+#' @param TagList The tags associated with the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_apps_list(
+#'   AppsList = list(
+#'     ListId = "string",
+#'     ListName = "string",
+#'     ListUpdateToken = "string",
+#'     CreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     AppsList = list(
+#'       list(
+#'         AppName = "string",
+#'         Protocol = "string",
+#'         Port = 123
+#'       )
+#'     ),
+#'     PreviousAppsList = list(
+#'       list(
+#'         list(
+#'           AppName = "string",
+#'           Protocol = "string",
+#'           Port = 123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   TagList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_put_apps_list
+fms_put_apps_list <- function(AppsList, TagList = NULL) {
+  op <- new_operation(
+    name = "PutAppsList",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$put_apps_list_input(AppsList = AppsList, TagList = TagList)
+  output <- .fms$put_apps_list_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$put_apps_list <- fms_put_apps_list
+
 #' Designates the IAM role and Amazon Simple Notification Service (SNS)
 #' topic that AWS Firewall Manager uses to record SNS logs
 #'
 #' Designates the IAM role and Amazon Simple Notification Service (SNS)
 #' topic that AWS Firewall Manager uses to record SNS logs.
+#' 
+#' To perform this action outside of the console, you must configure the
+#' SNS topic to allow the Firewall Manager role `AWSServiceRoleForFMS` to
+#' publish SNS logs. For more information, see [Firewall Manager required
+#' permissions for API
+#' actions](https://docs.aws.amazon.com/waf/latest/developerguide/fms-api-permissions-ref.html)
+#' in the *AWS Firewall Manager Developer Guide*.
 #'
 #' @usage
 #' fms_put_notification_channel(SnsTopicArn, SnsRoleName)
@@ -648,17 +1042,20 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #' 
 #' Firewall Manager provides the following types of policies:
 #' 
-#' -   A Shield Advanced policy, which applies Shield Advanced protection
-#'     to specified accounts and resources
-#' 
 #' -   An AWS WAF policy (type WAFV2), which defines rule groups to run
 #'     first in the corresponding AWS WAF web ACL and rule groups to run
 #'     last in the web ACL.
 #' 
 #' -   An AWS WAF Classic policy (type WAF), which defines a rule group.
 #' 
+#' -   A Shield Advanced policy, which applies Shield Advanced protection
+#'     to specified accounts and resources.
+#' 
 #' -   A security group policy, which manages VPC security groups across
 #'     your AWS organization.
+#' 
+#' -   An AWS Network Firewall policy, which provides firewall rules to
+#'     filter network traffic in specified Amazon VPCs.
 #' 
 #' Each policy is specific to one of the types. If you want to enforce more
 #' than one policy type across accounts, create multiple policies. You can
@@ -682,7 +1079,7 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #'     PolicyName = "string",
 #'     PolicyUpdateToken = "string",
 #'     SecurityServicePolicyData = list(
-#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT",
+#'       Type = "WAF"|"WAFV2"|"SHIELD_ADVANCED"|"SECURITY_GROUPS_COMMON"|"SECURITY_GROUPS_CONTENT_AUDIT"|"SECURITY_GROUPS_USAGE_AUDIT"|"NETWORK_FIREWALL",
 #'       ManagedServiceData = "string"
 #'     ),
 #'     ResourceType = "string",
@@ -737,6 +1134,67 @@ fms_put_policy <- function(Policy, TagList = NULL) {
 }
 .fms$operations$put_policy <- fms_put_policy
 
+#' Creates an AWS Firewall Manager protocols list
+#'
+#' Creates an AWS Firewall Manager protocols list.
+#'
+#' @usage
+#' fms_put_protocols_list(ProtocolsList, TagList)
+#'
+#' @param ProtocolsList &#91;required&#93; The details of the AWS Firewall Manager protocols list to be created.
+#' @param TagList The tags associated with the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_protocols_list(
+#'   ProtocolsList = list(
+#'     ListId = "string",
+#'     ListName = "string",
+#'     ListUpdateToken = "string",
+#'     CreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ProtocolsList = list(
+#'       "string"
+#'     ),
+#'     PreviousProtocolsList = list(
+#'       list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   TagList = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fms_put_protocols_list
+fms_put_protocols_list <- function(ProtocolsList, TagList = NULL) {
+  op <- new_operation(
+    name = "PutProtocolsList",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fms$put_protocols_list_input(ProtocolsList = ProtocolsList, TagList = TagList)
+  output <- .fms$put_protocols_list_output()
+  config <- get_config()
+  svc <- .fms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fms$operations$put_protocols_list <- fms_put_protocols_list
+
 #' Adds one or more tags to an AWS resource
 #'
 #' Adds one or more tags to an AWS resource.
@@ -744,9 +1202,9 @@ fms_put_policy <- function(Policy, TagList = NULL) {
 #' @usage
 #' fms_tag_resource(ResourceArn, TagList)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource. The Firewall Manager
-#' policy is the only AWS resource that supports tagging, so this ARN is a
-#' policy ARN.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return tags for. The
+#' AWS Firewall Manager resources that support tagging are policies,
+#' applications lists, and protocols lists.
 #' @param TagList &#91;required&#93; The tags to add to the resource.
 #'
 #' @section Request syntax:
@@ -789,9 +1247,9 @@ fms_tag_resource <- function(ResourceArn, TagList) {
 #' @usage
 #' fms_untag_resource(ResourceArn, TagKeys)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource. The Firewall Manager
-#' policy is the only AWS resource that supports tagging, so this ARN is a
-#' policy ARN.
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return tags for. The
+#' AWS Firewall Manager resources that support tagging are policies,
+#' applications lists, and protocols lists.
 #' @param TagKeys &#91;required&#93; The keys of the tags to remove from the resource.
 #'
 #' @section Request syntax:

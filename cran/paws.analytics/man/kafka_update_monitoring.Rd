@@ -28,7 +28,7 @@ kafka_update_monitoring(ClusterArn, CurrentVersion, EnhancedMonitoring,
 \preformatted{svc$update_monitoring(
   ClusterArn = "string",
   CurrentVersion = "string",
-  EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER",
+  EnhancedMonitoring = "DEFAULT"|"PER_BROKER"|"PER_TOPIC_PER_BROKER"|"PER_TOPIC_PER_PARTITION",
   OpenMonitoring = list(
     Prometheus = list(
       JmxExporter = list(

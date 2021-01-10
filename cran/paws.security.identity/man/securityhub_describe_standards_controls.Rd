@@ -9,7 +9,8 @@ securityhub_describe_standards_controls(StandardsSubscriptionArn,
 }
 \arguments{
 \item{StandardsSubscriptionArn}{[required] The ARN of a resource that represents your subscription to a supported
-standard.}
+standard. To get the subscription ARNs of the standards you have
+enabled, use the \verb{<a>GetEnabledStandards</a>} operation.}
 
 \item{NextToken}{The token that is required for pagination. On your first call to the
 \code{DescribeStandardsControls} operation, set the value of this parameter

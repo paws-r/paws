@@ -5,12 +5,16 @@
 \title{Enables notifications of specified events for a bucket}
 \usage{
 s3_put_bucket_notification_configuration(Bucket,
-  NotificationConfiguration)
+  NotificationConfiguration, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket.}
 
 \item{NotificationConfiguration}{[required]}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Enables notifications of specified events for a bucket. For more
@@ -68,7 +72,7 @@ of the test notification sent to the topic.
 The following operation is related to
 \code{PutBucketNotificationConfiguration}:
 \itemize{
-\item GetBucketNotificationConfiguration
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html}{GetBucketNotificationConfiguration}
 }
 }
 \section{Request syntax}{
@@ -132,7 +136,8 @@ The following operation is related to
         )
       )
     )
-  )
+  ),
+  ExpectedBucketOwner = "string"
 )
 }
 }

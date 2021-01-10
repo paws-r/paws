@@ -10,6 +10,10 @@ test_that("describe_addresses", {
   expect_error(svc$describe_addresses(MaxResults = 20), NA)
 })
 
+test_that("describe_return_shipping_label", {
+  expect_error(svc$describe_return_shipping_label(), NA)
+})
+
 test_that("list_clusters", {
   expect_error(svc$list_clusters(), NA)
 })

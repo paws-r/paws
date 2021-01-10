@@ -4,10 +4,14 @@
 \alias{s3_delete_bucket_tagging}
 \title{Deletes the tags from the bucket}
 \usage{
-s3_delete_bucket_tagging(Bucket)
+s3_delete_bucket_tagging(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The bucket that has the tag set to be removed.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Deletes the tags from the bucket.
@@ -19,13 +23,14 @@ permission and can grant this permission to others.
 
 The following operations are related to \code{DeleteBucketTagging}:
 \itemize{
-\item GetBucketTagging
-\item PutBucketTagging
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html}{GetBucketTagging}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html}{PutBucketTagging}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bucket_tagging(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

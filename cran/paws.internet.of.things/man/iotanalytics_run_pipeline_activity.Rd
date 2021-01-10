@@ -8,10 +8,10 @@ payload}
 iotanalytics_run_pipeline_activity(pipelineActivity, payloads)
 }
 \arguments{
-\item{pipelineActivity}{[required] The pipeline activity that is run. This must not be a 'channel' activity
-or a 'datastore' activity because these activities are used in a
-pipeline only to load the original message and to store the (possibly)
-transformed message. If a 'lambda' activity is specified, only
+\item{pipelineActivity}{[required] The pipeline activity that is run. This must not be a channel activity
+or a datastore activity because these activities are used in a pipeline
+only to load the original message and to store the (possibly)
+transformed message. If a lambda activity is specified, only
 short-running Lambda functions (those with a timeout of less than 30
 seconds or less) can be used.}
 

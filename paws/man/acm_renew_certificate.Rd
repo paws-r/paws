@@ -17,9 +17,9 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/general/l
 \description{
 Renews an eligable ACM certificate. At this time, only exported private
 certificates can be renewed with this operation. In order to renew your
-ACM PCA certificates with ACM, you must first \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaPermissions.html}{grant the ACM service principal permission to do so}.
-For more information, see \href{https://docs.aws.amazon.com/acm/latest/userguide/manual-renewal.html}{Testing Managed Renewal}
-in the ACM User Guide.
+ACM PCA certificates with ACM, you must first \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/}{grant the ACM service principal permission to do so}. For more
+information, see \href{https://docs.aws.amazon.com/acm/latest/userguide/}{Testing Managed Renewal} in the ACM
+User Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$renew_certificate(

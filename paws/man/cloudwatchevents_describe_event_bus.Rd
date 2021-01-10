@@ -7,8 +7,8 @@
 cloudwatchevents_describe_event_bus(Name)
 }
 \arguments{
-\item{Name}{The name of the event bus to show details for. If you omit this, the
-default event bus is displayed.}
+\item{Name}{The name or ARN of the event bus to show details for. If you omit this,
+the default event bus is displayed.}
 }
 \description{
 Displays details about an event bus in your account. This can include

@@ -13,8 +13,7 @@ iotsecuretunneling(config = list())
 AWS IoT Secure Tunnling enables you to create remote connections to
 devices deployed in the field.
 
-For more information about how AWS IoT Secure Tunneling works, see the
-User Guide.
+For more information about how AWS IoT Secure Tunneling works, see \href{https://docs.aws.amazon.com/iot/latest/developerguide/secure-tunneling.html}{AWS IoT Secure Tunneling}.
 }
 \section{Service syntax}{
 \preformatted{svc <- iotsecuretunneling(

@@ -21,7 +21,7 @@ Segments must include the following fields. For the full segment
 document schema, see \href{https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html}{AWS X-Ray Segment Documents}
 in the \emph{AWS X-Ray Developer Guide}.
 
-\strong{Required Segment Document Fields}
+\strong{Required segment document fields}
 \itemize{
 \item \code{name} - The name of the service that handled the request.
 \item \code{id} - A 64-bit identifier for the segment, unique among segments in
@@ -36,10 +36,10 @@ example, \code{1480615200.010} or \code{1.480615200010E9}.
 or \code{in_progress}.
 \item \code{in_progress} - Set to \code{true} instead of specifying an \code{end_time} to
 record that a segment has been started, but is not complete. Send an
-in progress segment when your application receives a request that
-will take a long time to serve, to trace the fact that the request
-was received. When the response is sent, send the complete segment
-to overwrite the in-progress segment.
+in-progress segment when your application receives a request that
+will take a long time to serve, to trace that the request was
+received. When the response is sent, send the complete segment to
+overwrite the in-progress segment.
 }
 
 A \code{trace_id} consists of three numbers separated by hyphens. For
@@ -47,7 +47,7 @@ example, 1-58406520-a006649127e371903a2de979. This includes:
 
 \strong{Trace ID Format}
 \itemize{
-\item The version number, i.e. \code{1}.
+\item The version number, for instance, \code{1}.
 \item The time of the original request, in Unix epoch time, in 8
 hexadecimal digits. For example, 10:00AM December 2nd, 2016 PST in
 epoch time is \code{1480615200} seconds, or \code{58406520} in hexadecimal.

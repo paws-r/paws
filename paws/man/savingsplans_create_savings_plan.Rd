@@ -5,7 +5,7 @@
 \title{Creates a Savings Plan}
 \usage{
 savingsplans_create_savings_plan(savingsPlanOfferingId, commitment,
-  upfrontPaymentAmount, clientToken, tags)
+  upfrontPaymentAmount, purchaseTime, clientToken, tags)
 }
 \arguments{
 \item{savingsPlanOfferingId}{[required] The ID of the offering.}
@@ -17,6 +17,9 @@ point.}
 \item{upfrontPaymentAmount}{The up-front payment amount. This is a whole number between 50 and 99
 percent of the total value of the Savings Plan. This parameter is
 supported only if the payment option is \verb{Partial Upfront}.}
+
+\item{purchaseTime}{The time at which to purchase the Savings Plan, in UTC format
+(YYYY-MM-DDTHH:MM:SSZ).}
 
 \item{clientToken}{Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.}
@@ -31,6 +34,9 @@ Creates a Savings Plan.
   savingsPlanOfferingId = "string",
   commitment = "string",
   upfrontPaymentAmount = "string",
+  purchaseTime = as.POSIXct(
+    "2015-01-01"
+  ),
   clientToken = "string",
   tags = list(
     "string"

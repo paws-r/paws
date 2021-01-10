@@ -20,6 +20,11 @@ results.}
 Provides summary information about the routing profiles for the
 specified Amazon Connect instance.
 }
+\details{
+For more information about routing profiles, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/concepts-routing.html}{Routing Profiles}
+and \href{https://docs.aws.amazon.com/connect/latest/adminguide/routing-profiles.html}{Create a Routing Profile}
+in the \emph{Amazon Connect Administrator Guide}.
+}
 \section{Request syntax}{
 \preformatted{svc$list_routing_profiles(
   InstanceId = "string",

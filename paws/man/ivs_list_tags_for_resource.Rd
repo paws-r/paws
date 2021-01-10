@@ -2,7 +2,7 @@
 % Please edit documentation in R/ivs_operations.R
 \name{ivs_list_tags_for_resource}
 \alias{ivs_list_tags_for_resource}
-\title{Gets information about the tags for a specified ARN}
+\title{Gets information about AWS tags for the specified ARN}
 \usage{
 ivs_list_tags_for_resource(resourceArn, nextToken, maxResults)
 }
@@ -15,7 +15,7 @@ ivs_list_tags_for_resource(resourceArn, nextToken, maxResults)
 \item{maxResults}{Maximum number of tags to return.}
 }
 \description{
-Gets information about the tags for a specified ARN.
+Gets information about AWS tags for the specified ARN.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

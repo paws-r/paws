@@ -29,8 +29,21 @@ Revokes the specified grant for the specified customer master key (CMK).
 You can revoke a grant to actively deny operations that depend on it.
 }
 \details{
-To perform this operation on a CMK in a different AWS account, specify
-the key ARN in the value of the \code{KeyId} parameter.
+\strong{Cross-account use}: Yes. To perform this operation on a CMK in a
+different AWS account, specify the key ARN in the value of the \code{KeyId}
+parameter.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:RevokeGrant}
+(key policy)
+
+\strong{Related operations:}
+\itemize{
+\item CreateGrant
+\item ListGrants
+\item ListRetirableGrants
+\item RetireGrant
+}
 }
 \section{Request syntax}{
 \preformatted{svc$revoke_grant(

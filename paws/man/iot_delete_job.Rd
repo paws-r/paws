@@ -4,7 +4,7 @@
 \alias{iot_delete_job}
 \title{Deletes a job and its related job executions}
 \usage{
-iot_delete_job(jobId, force)
+iot_delete_job(jobId, force, namespaceId)
 }
 \arguments{
 \item{jobId}{[required] The ID of the job to be deleted.
@@ -22,6 +22,16 @@ Deleting a job which is "IN\\_PROGRESS", will cause a device which is
 executing the job to be unable to access job information or update the
 job execution status. Use caution and ensure that each device executing
 a job which is deleted is able to recover to a valid state.}
+
+\item{namespaceId}{The namespace used to indicate that a job is a customer-managed job.
+
+When you specify a value for this parameter, AWS IoT Core sends jobs
+notifications to MQTT topics that contain the value in the following
+format.
+
+\verb{$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/}
+
+The \code{namespaceId} feature is in public preview.}
 }
 \description{
 Deletes a job and its related job executions.
@@ -39,7 +49,8 @@ or a LimitExceededException will occur.
 \section{Request syntax}{
 \preformatted{svc$delete_job(
   jobId = "string",
-  force = TRUE|FALSE
+  force = TRUE|FALSE,
+  namespaceId = "string"
 )
 }
 }

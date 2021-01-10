@@ -2,7 +2,7 @@
 % Please edit documentation in R/managedblockchain_operations.R
 \name{managedblockchain_list_proposals}
 \alias{managedblockchain_list_proposals}
-\title{Returns a listing of proposals for the network}
+\title{Returns a list of proposals for the network}
 \usage{
 managedblockchain_list_proposals(NetworkId, MaxResults, NextToken)
 }
@@ -14,7 +14,10 @@ managedblockchain_list_proposals(NetworkId, MaxResults, NextToken)
 \item{NextToken}{The pagination token that indicates the next set of results to retrieve.}
 }
 \description{
-Returns a listing of proposals for the network.
+Returns a list of proposals for the network.
+}
+\details{
+Applies only to Hyperledger Fabric.
 }
 \section{Request syntax}{
 \preformatted{svc$list_proposals(

@@ -6,11 +6,21 @@ NULL
 #'
 #' @description
 #' Amazon Managed Blockchain is a fully managed service for creating and
-#' managing blockchain networks using open source frameworks. Blockchain
+#' managing blockchain networks using open-source frameworks. Blockchain
 #' allows you to build applications where multiple parties can securely and
 #' transparently run transactions and share data without the need for a
-#' trusted, central authority. Currently, Managed Blockchain supports the
-#' Hyperledger Fabric open source framework.
+#' trusted, central authority.
+#' 
+#' Managed Blockchain supports the Hyperledger Fabric and Ethereum
+#' open-source frameworks. Because of fundamental differences between the
+#' frameworks, some API actions or data types may only apply in the context
+#' of one framework and not the other. For example, actions related to
+#' Hyperledger Fabric network members such as `CreateMember` and
+#' `DeleteMember` do not apply to Ethereum.
+#' 
+#' The description for each action indicates the framework or frameworks to
+#' which it applies. Data types and properties that apply only in the
+#' context of a particular framework are similarly indicated.
 #'
 #' @param
 #' config
@@ -46,20 +56,20 @@ NULL
 #' \tabular{ll}{
 #'  \link[=managedblockchain_create_member]{create_member} \tab Creates a member within a Managed Blockchain network\cr
 #'  \link[=managedblockchain_create_network]{create_network} \tab Creates a new blockchain network using Amazon Managed Blockchain\cr
-#'  \link[=managedblockchain_create_node]{create_node} \tab Creates a peer node in a member\cr
+#'  \link[=managedblockchain_create_node]{create_node} \tab Creates a node on the specified blockchain network\cr
 #'  \link[=managedblockchain_create_proposal]{create_proposal} \tab Creates a proposal for a change to the network that other members of the network can vote on, for example, a proposal to add a new member to the network\cr
 #'  \link[=managedblockchain_delete_member]{delete_member} \tab Deletes a member\cr
-#'  \link[=managedblockchain_delete_node]{delete_node} \tab Deletes a peer node from a member that your AWS account owns\cr
+#'  \link[=managedblockchain_delete_node]{delete_node} \tab Deletes a node that your AWS account owns\cr
 #'  \link[=managedblockchain_get_member]{get_member} \tab Returns detailed information about a member\cr
 #'  \link[=managedblockchain_get_network]{get_network} \tab Returns detailed information about a network\cr
-#'  \link[=managedblockchain_get_node]{get_node} \tab Returns detailed information about a peer node\cr
+#'  \link[=managedblockchain_get_node]{get_node} \tab Returns detailed information about a node\cr
 #'  \link[=managedblockchain_get_proposal]{get_proposal} \tab Returns detailed information about a proposal\cr
-#'  \link[=managedblockchain_list_invitations]{list_invitations} \tab Returns a listing of all invitations made on the specified network\cr
-#'  \link[=managedblockchain_list_members]{list_members} \tab Returns a listing of the members in a network and properties of their configurations\cr
-#'  \link[=managedblockchain_list_networks]{list_networks} \tab Returns information about the networks in which the current AWS account has members\cr
+#'  \link[=managedblockchain_list_invitations]{list_invitations} \tab Returns a list of all invitations for the current AWS account\cr
+#'  \link[=managedblockchain_list_members]{list_members} \tab Returns a list of the members in a network and properties of their configurations\cr
+#'  \link[=managedblockchain_list_networks]{list_networks} \tab Returns information about the networks in which the current AWS account participates\cr
 #'  \link[=managedblockchain_list_nodes]{list_nodes} \tab Returns information about the nodes within a network\cr
-#'  \link[=managedblockchain_list_proposals]{list_proposals} \tab Returns a listing of proposals for the network\cr
-#'  \link[=managedblockchain_list_proposal_votes]{list_proposal_votes} \tab Returns the listing of votes for a specified proposal, including the value of each vote and the unique identifier of the member that cast the vote\cr
+#'  \link[=managedblockchain_list_proposals]{list_proposals} \tab Returns a list of proposals for the network\cr
+#'  \link[=managedblockchain_list_proposal_votes]{list_proposal_votes} \tab Returns the list of votes for a specified proposal, including the value of each vote and the unique identifier of the member that cast the vote\cr
 #'  \link[=managedblockchain_reject_invitation]{reject_invitation} \tab Rejects an invitation to join a network\cr
 #'  \link[=managedblockchain_update_member]{update_member} \tab Updates a member configuration with new parameters\cr
 #'  \link[=managedblockchain_update_node]{update_node} \tab Updates a node configuration with new parameters\cr

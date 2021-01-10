@@ -3,6 +3,382 @@
 #' @include honeycode_service.R
 NULL
 
+#' The BatchCreateTableRows API allows you to create one or more rows at
+#' the end of a table in a workbook
+#'
+#' The BatchCreateTableRows API allows you to create one or more rows at
+#' the end of a table in a workbook. The API allows you to specify the
+#' values to set in some or all of the columns in the new rows.
+#' 
+#' If a column is not explicitly set in a specific row, then the column
+#' level formula specified in the table will be applied to the new row. If
+#' there is no column level formula but the last row of the table has a
+#' formula, then that formula will be copied down to the new row. If there
+#' is no column level formula and no formula in the last row of the table,
+#' then that column will be left blank for the new rows.
+#'
+#' @usage
+#' honeycode_batch_create_table_rows(workbookId, tableId, rowsToCreate,
+#'   clientRequestToken)
+#'
+#' @param workbookId &#91;required&#93; The ID of the workbook where the new rows are being added.
+#' 
+#' If a workbook with the specified ID could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param tableId &#91;required&#93; The ID of the table where the new rows are being added.
+#' 
+#' If a table with the specified ID could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param rowsToCreate &#91;required&#93; The list of rows to create at the end of the table. Each item in this
+#' list needs to have a batch item id to uniquely identify the element in
+#' the request and the cells to create for that row. You need to specify at
+#' least one item in this list.
+#' 
+#' Note that if one of the column ids in any of the rows in the request
+#' does not exist in the table, then the request fails and no updates are
+#' made to the table.
+#' @param clientRequestToken The request token for performing the batch create operation. Request
+#' tokens help to identify duplicate requests. If a call times out or fails
+#' due to a transient error like a failed network connection, you can retry
+#' the call with the same request token. The service ensures that if the
+#' first call using that request token is successfully performed, the
+#' second call will not perform the operation again.
+#' 
+#' Note that request tokens are valid only for a few minutes. You cannot
+#' use request tokens to dedupe requests spanning hours or days.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_create_table_rows(
+#'   workbookId = "string",
+#'   tableId = "string",
+#'   rowsToCreate = list(
+#'     list(
+#'       batchItemId = "string",
+#'       cellsToCreate = list(
+#'         list(
+#'           fact = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname honeycode_batch_create_table_rows
+honeycode_batch_create_table_rows <- function(workbookId, tableId, rowsToCreate, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "BatchCreateTableRows",
+    http_method = "POST",
+    http_path = "/workbooks/{workbookId}/tables/{tableId}/rows/batchcreate",
+    paginator = list()
+  )
+  input <- .honeycode$batch_create_table_rows_input(workbookId = workbookId, tableId = tableId, rowsToCreate = rowsToCreate, clientRequestToken = clientRequestToken)
+  output <- .honeycode$batch_create_table_rows_output()
+  config <- get_config()
+  svc <- .honeycode$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.honeycode$operations$batch_create_table_rows <- honeycode_batch_create_table_rows
+
+#' The BatchDeleteTableRows API allows you to delete one or more rows from
+#' a table in a workbook
+#'
+#' The BatchDeleteTableRows API allows you to delete one or more rows from
+#' a table in a workbook. You need to specify the ids of the rows that you
+#' want to delete from the table.
+#'
+#' @usage
+#' honeycode_batch_delete_table_rows(workbookId, tableId, rowIds,
+#'   clientRequestToken)
+#'
+#' @param workbookId &#91;required&#93; The ID of the workbook where the rows are being deleted.
+#' 
+#' If a workbook with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param tableId &#91;required&#93; The ID of the table where the rows are being deleted.
+#' 
+#' If a table with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param rowIds &#91;required&#93; The list of row ids to delete from the table. You need to specify at
+#' least one row id in this list.
+#' 
+#' Note that if one of the row ids provided in the request does not exist
+#' in the table, then the request fails and no rows are deleted from the
+#' table.
+#' @param clientRequestToken The request token for performing the delete action. Request tokens help
+#' to identify duplicate requests. If a call times out or fails due to a
+#' transient error like a failed network connection, you can retry the call
+#' with the same request token. The service ensures that if the first call
+#' using that request token is successfully performed, the second call will
+#' not perform the action again.
+#' 
+#' Note that request tokens are valid only for a few minutes. You cannot
+#' use request tokens to dedupe requests spanning hours or days.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_delete_table_rows(
+#'   workbookId = "string",
+#'   tableId = "string",
+#'   rowIds = list(
+#'     "string"
+#'   ),
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname honeycode_batch_delete_table_rows
+honeycode_batch_delete_table_rows <- function(workbookId, tableId, rowIds, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "BatchDeleteTableRows",
+    http_method = "POST",
+    http_path = "/workbooks/{workbookId}/tables/{tableId}/rows/batchdelete",
+    paginator = list()
+  )
+  input <- .honeycode$batch_delete_table_rows_input(workbookId = workbookId, tableId = tableId, rowIds = rowIds, clientRequestToken = clientRequestToken)
+  output <- .honeycode$batch_delete_table_rows_output()
+  config <- get_config()
+  svc <- .honeycode$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.honeycode$operations$batch_delete_table_rows <- honeycode_batch_delete_table_rows
+
+#' The BatchUpdateTableRows API allows you to update one or more rows in a
+#' table in a workbook
+#'
+#' The BatchUpdateTableRows API allows you to update one or more rows in a
+#' table in a workbook.
+#' 
+#' You can specify the values to set in some or all of the columns in the
+#' table for the specified rows. If a column is not explicitly specified in
+#' a particular row, then that column will not be updated for that row. To
+#' clear out the data in a specific cell, you need to set the value as an
+#' empty string ("").
+#'
+#' @usage
+#' honeycode_batch_update_table_rows(workbookId, tableId, rowsToUpdate,
+#'   clientRequestToken)
+#'
+#' @param workbookId &#91;required&#93; The ID of the workbook where the rows are being updated.
+#' 
+#' If a workbook with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param tableId &#91;required&#93; The ID of the table where the rows are being updated.
+#' 
+#' If a table with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param rowsToUpdate &#91;required&#93; The list of rows to update in the table. Each item in this list needs to
+#' contain the row id to update along with the map of column id to cell
+#' values for each column in that row that needs to be updated. You need to
+#' specify at least one row in this list, and for each row, you need to
+#' specify at least one column to update.
+#' 
+#' Note that if one of the row or column ids in the request does not exist
+#' in the table, then the request fails and no updates are made to the
+#' table.
+#' @param clientRequestToken The request token for performing the update action. Request tokens help
+#' to identify duplicate requests. If a call times out or fails due to a
+#' transient error like a failed network connection, you can retry the call
+#' with the same request token. The service ensures that if the first call
+#' using that request token is successfully performed, the second call will
+#' not perform the action again.
+#' 
+#' Note that request tokens are valid only for a few minutes. You cannot
+#' use request tokens to dedupe requests spanning hours or days.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_update_table_rows(
+#'   workbookId = "string",
+#'   tableId = "string",
+#'   rowsToUpdate = list(
+#'     list(
+#'       rowId = "string",
+#'       cellsToUpdate = list(
+#'         list(
+#'           fact = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname honeycode_batch_update_table_rows
+honeycode_batch_update_table_rows <- function(workbookId, tableId, rowsToUpdate, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "BatchUpdateTableRows",
+    http_method = "POST",
+    http_path = "/workbooks/{workbookId}/tables/{tableId}/rows/batchupdate",
+    paginator = list()
+  )
+  input <- .honeycode$batch_update_table_rows_input(workbookId = workbookId, tableId = tableId, rowsToUpdate = rowsToUpdate, clientRequestToken = clientRequestToken)
+  output <- .honeycode$batch_update_table_rows_output()
+  config <- get_config()
+  svc <- .honeycode$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.honeycode$operations$batch_update_table_rows <- honeycode_batch_update_table_rows
+
+#' The BatchUpsertTableRows API allows you to upsert one or more rows in a
+#' table
+#'
+#' The BatchUpsertTableRows API allows you to upsert one or more rows in a
+#' table. The upsert operation takes a filter expression as input and
+#' evaluates it to find matching rows on the destination table. If matching
+#' rows are found, it will update the cells in the matching rows to new
+#' values specified in the request. If no matching rows are found, a new
+#' row is added at the end of the table and the cells in that row are set
+#' to the new values specified in the request.
+#' 
+#' You can specify the values to set in some or all of the columns in the
+#' table for the matching or newly appended rows. If a column is not
+#' explicitly specified for a particular row, then that column will not be
+#' updated for that row. To clear out the data in a specific cell, you need
+#' to set the value as an empty string ("").
+#'
+#' @usage
+#' honeycode_batch_upsert_table_rows(workbookId, tableId, rowsToUpsert,
+#'   clientRequestToken)
+#'
+#' @param workbookId &#91;required&#93; The ID of the workbook where the rows are being upserted.
+#' 
+#' If a workbook with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param tableId &#91;required&#93; The ID of the table where the rows are being upserted.
+#' 
+#' If a table with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param rowsToUpsert &#91;required&#93; The list of rows to upsert in the table. Each item in this list needs to
+#' have a batch item id to uniquely identify the element in the request, a
+#' filter expression to find the rows to update for that element and the
+#' cell values to set for each column in the upserted rows. You need to
+#' specify at least one item in this list.
+#' 
+#' Note that if one of the filter formulas in the request fails to evaluate
+#' because of an error or one of the column ids in any of the rows does not
+#' exist in the table, then the request fails and no updates are made to
+#' the table.
+#' @param clientRequestToken The request token for performing the update action. Request tokens help
+#' to identify duplicate requests. If a call times out or fails due to a
+#' transient error like a failed network connection, you can retry the call
+#' with the same request token. The service ensures that if the first call
+#' using that request token is successfully performed, the second call will
+#' not perform the action again.
+#' 
+#' Note that request tokens are valid only for a few minutes. You cannot
+#' use request tokens to dedupe requests spanning hours or days.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_upsert_table_rows(
+#'   workbookId = "string",
+#'   tableId = "string",
+#'   rowsToUpsert = list(
+#'     list(
+#'       batchItemId = "string",
+#'       filter = list(
+#'         formula = "string",
+#'         contextRowId = "string"
+#'       ),
+#'       cellsToUpdate = list(
+#'         list(
+#'           fact = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname honeycode_batch_upsert_table_rows
+honeycode_batch_upsert_table_rows <- function(workbookId, tableId, rowsToUpsert, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "BatchUpsertTableRows",
+    http_method = "POST",
+    http_path = "/workbooks/{workbookId}/tables/{tableId}/rows/batchupsert",
+    paginator = list()
+  )
+  input <- .honeycode$batch_upsert_table_rows_input(workbookId = workbookId, tableId = tableId, rowsToUpsert = rowsToUpsert, clientRequestToken = clientRequestToken)
+  output <- .honeycode$batch_upsert_table_rows_output()
+  config <- get_config()
+  svc <- .honeycode$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.honeycode$operations$batch_upsert_table_rows <- honeycode_batch_upsert_table_rows
+
+#' The DescribeTableDataImportJob API allows you to retrieve the status and
+#' details of a table data import job
+#'
+#' The DescribeTableDataImportJob API allows you to retrieve the status and
+#' details of a table data import job.
+#'
+#' @usage
+#' honeycode_describe_table_data_import_job(workbookId, tableId, jobId)
+#'
+#' @param workbookId &#91;required&#93; The ID of the workbook into which data was imported.
+#' 
+#' If a workbook with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param tableId &#91;required&#93; The ID of the table into which data was imported.
+#' 
+#' If a table with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param jobId &#91;required&#93; The ID of the job that was returned by the StartTableDataImportJob
+#' request.
+#' 
+#' If a job with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_table_data_import_job(
+#'   workbookId = "string",
+#'   tableId = "string",
+#'   jobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname honeycode_describe_table_data_import_job
+honeycode_describe_table_data_import_job <- function(workbookId, tableId, jobId) {
+  op <- new_operation(
+    name = "DescribeTableDataImportJob",
+    http_method = "GET",
+    http_path = "/workbooks/{workbookId}/tables/{tableId}/import/{jobId}",
+    paginator = list()
+  )
+  input <- .honeycode$describe_table_data_import_job_input(workbookId = workbookId, tableId = tableId, jobId = jobId)
+  output <- .honeycode$describe_table_data_import_job_output()
+  config <- get_config()
+  svc <- .honeycode$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.honeycode$operations$describe_table_data_import_job <- honeycode_describe_table_data_import_job
+
 #' The GetScreenData API allows retrieval of data from a screen in a
 #' Honeycode app
 #'
@@ -86,11 +462,11 @@ honeycode_get_screen_data <- function(workbookId, appId, screenId, variables = N
 #' @param appId &#91;required&#93; The ID of the app that contains the screen automation.
 #' @param screenId &#91;required&#93; The ID of the screen that contains the screen automation.
 #' @param screenAutomationId &#91;required&#93; The ID of the automation action to be performed.
-#' @param variables Variables are optional and are needed only if the screen requires them
-#' to render correctly. Variables are specified as a map where the key is
-#' the name of the variable as defined on the screen. The value is an
-#' object which currently has only one property, rawValue, which holds the
-#' value of the variable to be passed to the screen.
+#' @param variables Variables are specified as a map where the key is the name of the
+#' variable as defined on the screen. The value is an object which
+#' currently has only one property, rawValue, which holds the value of the
+#' variable to be passed to the screen. Any variables defined in a screen
+#' are required to be passed in the call.
 #' @param rowId The row ID for the automation if the automation is defined inside a
 #' block with source or list.
 #' @param clientRequestToken The request token for performing the automation action. Request tokens
@@ -140,3 +516,314 @@ honeycode_invoke_screen_automation <- function(workbookId, appId, screenId, scre
   return(response)
 }
 .honeycode$operations$invoke_screen_automation <- honeycode_invoke_screen_automation
+
+#' The ListTableColumns API allows you to retrieve a list of all the
+#' columns in a table in a workbook
+#'
+#' The ListTableColumns API allows you to retrieve a list of all the
+#' columns in a table in a workbook.
+#'
+#' @usage
+#' honeycode_list_table_columns(workbookId, tableId, nextToken)
+#'
+#' @param workbookId &#91;required&#93; The ID of the workbook that contains the table whose columns are being
+#' retrieved.
+#' 
+#' If a workbook with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param tableId &#91;required&#93; The ID of the table whose columns are being retrieved.
+#' 
+#' If a table with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param nextToken This parameter is optional. If a nextToken is not specified, the API
+#' returns the first page of data.
+#' 
+#' Pagination tokens expire after 1 hour. If you use a token that was
+#' returned more than an hour back, the API will throw ValidationException.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_table_columns(
+#'   workbookId = "string",
+#'   tableId = "string",
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname honeycode_list_table_columns
+honeycode_list_table_columns <- function(workbookId, tableId, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListTableColumns",
+    http_method = "GET",
+    http_path = "/workbooks/{workbookId}/tables/{tableId}/columns",
+    paginator = list()
+  )
+  input <- .honeycode$list_table_columns_input(workbookId = workbookId, tableId = tableId, nextToken = nextToken)
+  output <- .honeycode$list_table_columns_output()
+  config <- get_config()
+  svc <- .honeycode$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.honeycode$operations$list_table_columns <- honeycode_list_table_columns
+
+#' The ListTableRows API allows you to retrieve a list of all the rows in a
+#' table in a workbook
+#'
+#' The ListTableRows API allows you to retrieve a list of all the rows in a
+#' table in a workbook.
+#'
+#' @usage
+#' honeycode_list_table_rows(workbookId, tableId, rowIds, maxResults,
+#'   nextToken)
+#'
+#' @param workbookId &#91;required&#93; The ID of the workbook that contains the table whose rows are being
+#' retrieved.
+#' 
+#' If a workbook with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param tableId &#91;required&#93; The ID of the table whose rows are being retrieved.
+#' 
+#' If a table with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param rowIds This parameter is optional. If one or more row ids are specified in this
+#' list, then only the specified row ids are returned in the result. If no
+#' row ids are specified here, then all the rows in the table are returned.
+#' @param maxResults The maximum number of rows to return in each page of the results.
+#' @param nextToken This parameter is optional. If a nextToken is not specified, the API
+#' returns the first page of data.
+#' 
+#' Pagination tokens expire after 1 hour. If you use a token that was
+#' returned more than an hour back, the API will throw ValidationException.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_table_rows(
+#'   workbookId = "string",
+#'   tableId = "string",
+#'   rowIds = list(
+#'     "string"
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname honeycode_list_table_rows
+honeycode_list_table_rows <- function(workbookId, tableId, rowIds = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListTableRows",
+    http_method = "POST",
+    http_path = "/workbooks/{workbookId}/tables/{tableId}/rows/list",
+    paginator = list()
+  )
+  input <- .honeycode$list_table_rows_input(workbookId = workbookId, tableId = tableId, rowIds = rowIds, maxResults = maxResults, nextToken = nextToken)
+  output <- .honeycode$list_table_rows_output()
+  config <- get_config()
+  svc <- .honeycode$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.honeycode$operations$list_table_rows <- honeycode_list_table_rows
+
+#' The ListTables API allows you to retrieve a list of all the tables in a
+#' workbook
+#'
+#' The ListTables API allows you to retrieve a list of all the tables in a
+#' workbook.
+#'
+#' @usage
+#' honeycode_list_tables(workbookId, maxResults, nextToken)
+#'
+#' @param workbookId &#91;required&#93; The ID of the workbook whose tables are being retrieved.
+#' 
+#' If a workbook with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param maxResults The maximum number of tables to return in each page of the results.
+#' @param nextToken This parameter is optional. If a nextToken is not specified, the API
+#' returns the first page of data.
+#' 
+#' Pagination tokens expire after 1 hour. If you use a token that was
+#' returned more than an hour back, the API will throw ValidationException.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tables(
+#'   workbookId = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname honeycode_list_tables
+honeycode_list_tables <- function(workbookId, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListTables",
+    http_method = "GET",
+    http_path = "/workbooks/{workbookId}/tables",
+    paginator = list()
+  )
+  input <- .honeycode$list_tables_input(workbookId = workbookId, maxResults = maxResults, nextToken = nextToken)
+  output <- .honeycode$list_tables_output()
+  config <- get_config()
+  svc <- .honeycode$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.honeycode$operations$list_tables <- honeycode_list_tables
+
+#' The QueryTableRows API allows you to use a filter formula to query for
+#' specific rows in a table
+#'
+#' The QueryTableRows API allows you to use a filter formula to query for
+#' specific rows in a table.
+#'
+#' @usage
+#' honeycode_query_table_rows(workbookId, tableId, filterFormula,
+#'   maxResults, nextToken)
+#'
+#' @param workbookId &#91;required&#93; The ID of the workbook whose table rows are being queried.
+#' 
+#' If a workbook with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param tableId &#91;required&#93; The ID of the table whose rows are being queried.
+#' 
+#' If a table with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param filterFormula &#91;required&#93; An object that represents a filter formula along with the id of the
+#' context row under which the filter function needs to evaluate.
+#' @param maxResults The maximum number of rows to return in each page of the results.
+#' @param nextToken This parameter is optional. If a nextToken is not specified, the API
+#' returns the first page of data.
+#' 
+#' Pagination tokens expire after 1 hour. If you use a token that was
+#' returned more than an hour back, the API will throw ValidationException.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$query_table_rows(
+#'   workbookId = "string",
+#'   tableId = "string",
+#'   filterFormula = list(
+#'     formula = "string",
+#'     contextRowId = "string"
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname honeycode_query_table_rows
+honeycode_query_table_rows <- function(workbookId, tableId, filterFormula, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "QueryTableRows",
+    http_method = "POST",
+    http_path = "/workbooks/{workbookId}/tables/{tableId}/rows/query",
+    paginator = list()
+  )
+  input <- .honeycode$query_table_rows_input(workbookId = workbookId, tableId = tableId, filterFormula = filterFormula, maxResults = maxResults, nextToken = nextToken)
+  output <- .honeycode$query_table_rows_output()
+  config <- get_config()
+  svc <- .honeycode$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.honeycode$operations$query_table_rows <- honeycode_query_table_rows
+
+#' The StartTableDataImportJob API allows you to start an import job on a
+#' table
+#'
+#' The StartTableDataImportJob API allows you to start an import job on a
+#' table. This API will only return the id of the job that was started. To
+#' find out the status of the import request, you need to call the
+#' DescribeTableDataImportJob API.
+#'
+#' @usage
+#' honeycode_start_table_data_import_job(workbookId, dataSource,
+#'   dataFormat, destinationTableId, importOptions, clientRequestToken)
+#'
+#' @param workbookId &#91;required&#93; The ID of the workbook where the rows are being imported.
+#' 
+#' If a workbook with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param dataSource &#91;required&#93; The source of the data that is being imported. The size of source must
+#' be no larger than 100 MB. Source must have no more than 100,000 cells
+#' and no more than 1,000 rows.
+#' @param dataFormat &#91;required&#93; The format of the data that is being imported. Currently the only option
+#' supported is "DELIMITED\\_TEXT".
+#' @param destinationTableId &#91;required&#93; The ID of the table where the rows are being imported.
+#' 
+#' If a table with the specified id could not be found, this API throws
+#' ResourceNotFoundException.
+#' @param importOptions &#91;required&#93; The options for customizing this import request.
+#' @param clientRequestToken &#91;required&#93; The request token for performing the update action. Request tokens help
+#' to identify duplicate requests. If a call times out or fails due to a
+#' transient error like a failed network connection, you can retry the call
+#' with the same request token. The service ensures that if the first call
+#' using that request token is successfully performed, the second call will
+#' not perform the action again.
+#' 
+#' Note that request tokens are valid only for a few minutes. You cannot
+#' use request tokens to dedupe requests spanning hours or days.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_table_data_import_job(
+#'   workbookId = "string",
+#'   dataSource = list(
+#'     dataSourceConfig = list(
+#'       dataSourceUrl = "string"
+#'     )
+#'   ),
+#'   dataFormat = "DELIMITED_TEXT",
+#'   destinationTableId = "string",
+#'   importOptions = list(
+#'     destinationOptions = list(
+#'       columnMap = list(
+#'         list(
+#'           columnIndex = 123
+#'         )
+#'       )
+#'     ),
+#'     delimitedTextOptions = list(
+#'       delimiter = "string",
+#'       hasHeaderRow = TRUE|FALSE,
+#'       ignoreEmptyRows = TRUE|FALSE,
+#'       dataCharacterEncoding = "UTF-8"|"US-ASCII"|"ISO-8859-1"|"UTF-16BE"|"UTF-16LE"|"UTF-16"
+#'     )
+#'   ),
+#'   clientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname honeycode_start_table_data_import_job
+honeycode_start_table_data_import_job <- function(workbookId, dataSource, dataFormat, destinationTableId, importOptions, clientRequestToken) {
+  op <- new_operation(
+    name = "StartTableDataImportJob",
+    http_method = "POST",
+    http_path = "/workbooks/{workbookId}/tables/{tableId}/import",
+    paginator = list()
+  )
+  input <- .honeycode$start_table_data_import_job_input(workbookId = workbookId, dataSource = dataSource, dataFormat = dataFormat, destinationTableId = destinationTableId, importOptions = importOptions, clientRequestToken = clientRequestToken)
+  output <- .honeycode$start_table_data_import_job_output()
+  config <- get_config()
+  svc <- .honeycode$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.honeycode$operations$start_table_data_import_job <- honeycode_start_table_data_import_job

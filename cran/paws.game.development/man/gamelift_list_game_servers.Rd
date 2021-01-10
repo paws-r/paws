@@ -2,41 +2,43 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_list_game_servers}
 \alias{gamelift_list_game_servers}
-\title{This action is part of Amazon GameLift FleetIQ with game server groups,
-which is in preview release and is subject to change}
+\title{This operation is used with the Amazon GameLift FleetIQ solution and
+game server groups}
 \usage{
 gamelift_list_game_servers(GameServerGroupName, SortOrder, Limit,
   NextToken)
 }
 \arguments{
-\item{GameServerGroupName}{[required] An identifier for the game server group for the game server you want to
-list. Use either the GameServerGroup name or ARN value.}
+\item{GameServerGroupName}{[required] An identifier for the game server group to retrieve a list of game
+servers from. Use either the GameServerGroup name or ARN value.}
 
-\item{SortOrder}{Indicates how to sort the returned data based on the game servers'
-custom key sort value. If this parameter is left empty, the list of game
-servers is returned in no particular order.}
+\item{SortOrder}{Indicates how to sort the returned data based on game server
+registration timestamp. Use ASCENDING to retrieve oldest game servers
+first, or use DESCENDING to retrieve newest game servers first. If this
+parameter is left empty, game servers are returned in no particular
+order.}
 
 \item{Limit}{The maximum number of results to return. Use this parameter with
-\code{NextToken} to get results as a set of sequential pages.}
+\code{NextToken} to get results as a set of sequential segments.}
 
-\item{NextToken}{A token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.}
+\item{NextToken}{A token that indicates the start of the next sequential segment of
+results. Use the token returned with the previous call to this
+operation. To start at the beginning of the result set, do not specify a
+value.}
 }
 \description{
-\strong{This action is part of Amazon GameLift FleetIQ with game server
-groups, which is in preview release and is subject to change.}
+\strong{This operation is used with the Amazon GameLift FleetIQ solution and
+game server groups.}
 }
 \details{
-Retrieves information on all game servers that are currently running in
-a specified game server group. If there are custom key sort values for
-your game servers, you can opt to have the returned list sorted based on
-these values. Use the pagination parameters to retrieve results in a set
-of sequential pages.
+Retrieves information on all game servers that are currently active in a
+specified game server group. You can opt to sort the list by game server
+age. Use the pagination parameters to retrieve results in a set of
+sequential segments.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html}{GameLift FleetIQ Guide}
+\href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html}{GameLift FleetIQ Guide}
 
 \strong{Related operations}
 \itemize{

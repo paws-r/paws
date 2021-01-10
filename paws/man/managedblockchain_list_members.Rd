@@ -2,7 +2,7 @@
 % Please edit documentation in R/managedblockchain_operations.R
 \name{managedblockchain_list_members}
 \alias{managedblockchain_list_members}
-\title{Returns a listing of the members in a network and properties of their
+\title{Returns a list of the members in a network and properties of their
 configurations}
 \usage{
 managedblockchain_list_members(NetworkId, Name, Status, IsOwned,
@@ -25,8 +25,11 @@ accounts own (\code{false}). If omitted, all members are listed.}
 \item{NextToken}{The pagination token that indicates the next set of results to retrieve.}
 }
 \description{
-Returns a listing of the members in a network and properties of their
+Returns a list of the members in a network and properties of their
 configurations.
+}
+\details{
+Applies only to Hyperledger Fabric.
 }
 \section{Request syntax}{
 \preformatted{svc$list_members(

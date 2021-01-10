@@ -8,9 +8,10 @@ NULL
 #' Creates a batch of variables.
 #'
 #' @usage
-#' frauddetector_batch_create_variable(variableEntries)
+#' frauddetector_batch_create_variable(variableEntries, tags)
 #'
 #' @param variableEntries &#91;required&#93; The list of variables for the batch create variable request.
+#' @param tags A collection of key and value pairs.
 #'
 #' @section Request syntax:
 #' ```
@@ -24,6 +25,12 @@ NULL
 #'       description = "string",
 #'       variableType = "string"
 #'     )
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -31,14 +38,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname frauddetector_batch_create_variable
-frauddetector_batch_create_variable <- function(variableEntries) {
+frauddetector_batch_create_variable <- function(variableEntries, tags = NULL) {
   op <- new_operation(
     name = "BatchCreateVariable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$batch_create_variable_input(variableEntries = variableEntries)
+  input <- .frauddetector$batch_create_variable_input(variableEntries = variableEntries, tags = tags)
   output <- .frauddetector$batch_create_variable_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -93,7 +100,7 @@ frauddetector_batch_get_variable <- function(names) {
 #'
 #' @usage
 #' frauddetector_create_detector_version(detectorId, description,
-#'   externalModelEndpoints, rules, modelVersions, ruleExecutionMode)
+#'   externalModelEndpoints, rules, modelVersions, ruleExecutionMode, tags)
 #'
 #' @param detectorId &#91;required&#93; The ID of the detector under which you want to create a new version.
 #' @param description The description of the detector version.
@@ -113,6 +120,7 @@ frauddetector_batch_get_variable <- function(names) {
 #' and returns the outcomes for all matched rules.
 #' 
 #' The default behavior is `FIRST_MATCHED`.
+#' @param tags A collection of key and value pairs.
 #'
 #' @section Request syntax:
 #' ```
@@ -133,24 +141,31 @@ frauddetector_batch_get_variable <- function(names) {
 #'     list(
 #'       modelId = "string",
 #'       modelType = "ONLINE_FRAUD_INSIGHTS",
-#'       modelVersionNumber = "string"
+#'       modelVersionNumber = "string",
+#'       arn = "string"
 #'     )
 #'   ),
-#'   ruleExecutionMode = "ALL_MATCHED"|"FIRST_MATCHED"
+#'   ruleExecutionMode = "ALL_MATCHED"|"FIRST_MATCHED",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname frauddetector_create_detector_version
-frauddetector_create_detector_version <- function(detectorId, description = NULL, externalModelEndpoints = NULL, rules, modelVersions = NULL, ruleExecutionMode = NULL) {
+frauddetector_create_detector_version <- function(detectorId, description = NULL, externalModelEndpoints = NULL, rules, modelVersions = NULL, ruleExecutionMode = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateDetectorVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$create_detector_version_input(detectorId = detectorId, description = description, externalModelEndpoints = externalModelEndpoints, rules = rules, modelVersions = modelVersions, ruleExecutionMode = ruleExecutionMode)
+  input <- .frauddetector$create_detector_version_input(detectorId = detectorId, description = description, externalModelEndpoints = externalModelEndpoints, rules = rules, modelVersions = modelVersions, ruleExecutionMode = ruleExecutionMode, tags = tags)
   output <- .frauddetector$create_detector_version_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -160,37 +175,116 @@ frauddetector_create_detector_version <- function(detectorId, description = NULL
 }
 .frauddetector$operations$create_detector_version <- frauddetector_create_detector_version
 
-#' Creates a version of the model using the specified model type
+#' Creates a model using the specified model type
 #'
-#' Creates a version of the model using the specified model type.
+#' Creates a model using the specified model type.
 #'
 #' @usage
-#' frauddetector_create_model_version(modelId, modelType, description)
+#' frauddetector_create_model(modelId, modelType, description,
+#'   eventTypeName, tags)
 #'
 #' @param modelId &#91;required&#93; The model ID.
 #' @param modelType &#91;required&#93; The model type.
-#' @param description The model version description.
+#' @param description The model description.
+#' @param eventTypeName &#91;required&#93; The name of the event type.
+#' @param tags A collection of key and value pairs.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_model(
+#'   modelId = "string",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   description = "string",
+#'   eventTypeName = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_create_model
+frauddetector_create_model <- function(modelId, modelType, description = NULL, eventTypeName, tags = NULL) {
+  op <- new_operation(
+    name = "CreateModel",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$create_model_input(modelId = modelId, modelType = modelType, description = description, eventTypeName = eventTypeName, tags = tags)
+  output <- .frauddetector$create_model_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$create_model <- frauddetector_create_model
+
+#' Creates a version of the model using the specified model type and model
+#' id
+#'
+#' Creates a version of the model using the specified model type and model
+#' id.
+#'
+#' @usage
+#' frauddetector_create_model_version(modelId, modelType,
+#'   trainingDataSource, trainingDataSchema, externalEventsDetail, tags)
+#'
+#' @param modelId &#91;required&#93; The model ID.
+#' @param modelType &#91;required&#93; The model type.
+#' @param trainingDataSource &#91;required&#93; The training data source location in Amazon S3.
+#' @param trainingDataSchema &#91;required&#93; The training data schema.
+#' @param externalEventsDetail Details for the external events data used for model version training.
+#' Required if `trainingDataSource` is `EXTERNAL_EVENTS`.
+#' @param tags A collection of key and value pairs.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_model_version(
 #'   modelId = "string",
 #'   modelType = "ONLINE_FRAUD_INSIGHTS",
-#'   description = "string"
+#'   trainingDataSource = "EXTERNAL_EVENTS",
+#'   trainingDataSchema = list(
+#'     modelVariables = list(
+#'       "string"
+#'     ),
+#'     labelSchema = list(
+#'       labelMapper = list(
+#'         list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   externalEventsDetail = list(
+#'     dataLocation = "string",
+#'     dataAccessRoleArn = "string"
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname frauddetector_create_model_version
-frauddetector_create_model_version <- function(modelId, modelType, description = NULL) {
+frauddetector_create_model_version <- function(modelId, modelType, trainingDataSource, trainingDataSchema, externalEventsDetail = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateModelVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$create_model_version_input(modelId = modelId, modelType = modelType, description = description)
+  input <- .frauddetector$create_model_version_input(modelId = modelId, modelType = modelType, trainingDataSource = trainingDataSource, trainingDataSchema = trainingDataSchema, externalEventsDetail = externalEventsDetail, tags = tags)
   output <- .frauddetector$create_model_version_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -206,7 +300,7 @@ frauddetector_create_model_version <- function(modelId, modelType, description =
 #'
 #' @usage
 #' frauddetector_create_rule(ruleId, detectorId, description, expression,
-#'   language, outcomes)
+#'   language, outcomes, tags)
 #'
 #' @param ruleId &#91;required&#93; The rule ID.
 #' @param detectorId &#91;required&#93; The detector ID for the rule's parent detector.
@@ -214,6 +308,7 @@ frauddetector_create_model_version <- function(modelId, modelType, description =
 #' @param expression &#91;required&#93; The rule expression.
 #' @param language &#91;required&#93; The language of the rule.
 #' @param outcomes &#91;required&#93; The outcome or outcomes returned when the rule expression matches.
+#' @param tags A collection of key and value pairs.
 #'
 #' @section Request syntax:
 #' ```
@@ -225,6 +320,12 @@ frauddetector_create_model_version <- function(modelId, modelType, description =
 #'   language = "DETECTORPL",
 #'   outcomes = list(
 #'     "string"
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -232,14 +333,14 @@ frauddetector_create_model_version <- function(modelId, modelType, description =
 #' @keywords internal
 #'
 #' @rdname frauddetector_create_rule
-frauddetector_create_rule <- function(ruleId, detectorId, description = NULL, expression, language, outcomes) {
+frauddetector_create_rule <- function(ruleId, detectorId, description = NULL, expression, language, outcomes, tags = NULL) {
   op <- new_operation(
     name = "CreateRule",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$create_rule_input(ruleId = ruleId, detectorId = detectorId, description = description, expression = expression, language = language, outcomes = outcomes)
+  input <- .frauddetector$create_rule_input(ruleId = ruleId, detectorId = detectorId, description = description, expression = expression, language = language, outcomes = outcomes, tags = tags)
   output <- .frauddetector$create_rule_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -255,14 +356,19 @@ frauddetector_create_rule <- function(ruleId, detectorId, description = NULL, ex
 #'
 #' @usage
 #' frauddetector_create_variable(name, dataType, dataSource, defaultValue,
-#'   description, variableType)
+#'   description, variableType, tags)
 #'
 #' @param name &#91;required&#93; The name of the variable.
 #' @param dataType &#91;required&#93; The data type.
 #' @param dataSource &#91;required&#93; The source of the data.
 #' @param defaultValue &#91;required&#93; The default value for the variable when no value is received.
 #' @param description The description.
-#' @param variableType The variable type.
+#' @param variableType The variable type. For more information see [Variable
+#' types](https://docs.aws.amazon.com/frauddetector/latest/ug/create-a-variable.html#variable-types).
+#' 
+#' Valid Values:
+#' `AUTH_CODE | AVS | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY | BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN | CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL | FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER | PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 | SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE | SHIPPING_STATE | SHIPPING_ZIP | USERAGENT`
+#' @param tags A collection of key and value pairs.
 #'
 #' @section Request syntax:
 #' ```
@@ -272,21 +378,27 @@ frauddetector_create_rule <- function(ruleId, detectorId, description = NULL, ex
 #'   dataSource = "EVENT"|"MODEL_SCORE"|"EXTERNAL_MODEL_SCORE",
 #'   defaultValue = "string",
 #'   description = "string",
-#'   variableType = "string"
+#'   variableType = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname frauddetector_create_variable
-frauddetector_create_variable <- function(name, dataType, dataSource, defaultValue, description = NULL, variableType = NULL) {
+frauddetector_create_variable <- function(name, dataType, dataSource, defaultValue, description = NULL, variableType = NULL, tags = NULL) {
   op <- new_operation(
     name = "CreateVariable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$create_variable_input(name = name, dataType = dataType, dataSource = dataSource, defaultValue = defaultValue, description = description, variableType = variableType)
+  input <- .frauddetector$create_variable_input(name = name, dataType = dataType, dataSource = dataSource, defaultValue = defaultValue, description = description, variableType = variableType, tags = tags)
   output <- .frauddetector$create_variable_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -300,6 +412,9 @@ frauddetector_create_variable <- function(name, dataType, dataSource, defaultVal
 #'
 #' Deletes the detector. Before deleting a detector, you must first delete
 #' all detector versions and rule versions associated with the detector.
+#' 
+#' When you delete a detector, Amazon Fraud Detector permanently deletes
+#' the detector and the data is no longer stored in Amazon Fraud Detector.
 #'
 #' @usage
 #' frauddetector_delete_detector(detectorId)
@@ -337,6 +452,10 @@ frauddetector_delete_detector <- function(detectorId) {
 #'
 #' Deletes the detector version. You cannot delete detector versions that
 #' are in `ACTIVE` status.
+#' 
+#' When you delete a detector version, Amazon Fraud Detector permanently
+#' deletes the detector and the data is no longer stored in Amazon Fraud
+#' Detector.
 #'
 #' @usage
 #' frauddetector_delete_detector_version(detectorId, detectorVersionId)
@@ -372,33 +491,81 @@ frauddetector_delete_detector_version <- function(detectorId, detectorVersionId)
 }
 .frauddetector$operations$delete_detector_version <- frauddetector_delete_detector_version
 
+#' Deletes an entity type
+#'
+#' Deletes an entity type.
+#' 
+#' You cannot delete an entity type that is included in an event type.
+#' 
+#' When you delete an entity type, Amazon Fraud Detector permanently
+#' deletes that entity type from the evaluation history, and the data is no
+#' longer stored in Amazon Fraud Detector.
+#'
+#' @usage
+#' frauddetector_delete_entity_type(name)
+#'
+#' @param name &#91;required&#93; The name of the entity type to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_entity_type(
+#'   name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_delete_entity_type
+frauddetector_delete_entity_type <- function(name) {
+  op <- new_operation(
+    name = "DeleteEntityType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$delete_entity_type_input(name = name)
+  output <- .frauddetector$delete_entity_type_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$delete_entity_type <- frauddetector_delete_entity_type
+
 #' Deletes the specified event
 #'
 #' Deletes the specified event.
+#' 
+#' When you delete an event, Amazon Fraud Detector permanently deletes that
+#' event from the evaluation history, and the event data is no longer
+#' stored in Amazon Fraud Detector.
 #'
 #' @usage
-#' frauddetector_delete_event(eventId)
+#' frauddetector_delete_event(eventId, eventTypeName)
 #'
 #' @param eventId &#91;required&#93; The ID of the event to delete.
+#' @param eventTypeName &#91;required&#93; The name of the event type.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_event(
-#'   eventId = "string"
+#'   eventId = "string",
+#'   eventTypeName = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname frauddetector_delete_event
-frauddetector_delete_event <- function(eventId) {
+frauddetector_delete_event <- function(eventId, eventTypeName) {
   op <- new_operation(
     name = "DeleteEvent",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$delete_event_input(eventId = eventId)
+  input <- .frauddetector$delete_event_input(eventId = eventId, eventTypeName = eventTypeName)
   output <- .frauddetector$delete_event_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -408,46 +575,360 @@ frauddetector_delete_event <- function(eventId) {
 }
 .frauddetector$operations$delete_event <- frauddetector_delete_event
 
-#' Deletes the rule version
+#' Deletes an event type
 #'
-#' Deletes the rule version. You cannot delete a rule version if it is used
-#' by an `ACTIVE` or `INACTIVE` detector version.
+#' Deletes an event type.
+#' 
+#' You cannot delete an event type that is used in a detector or a model.
+#' 
+#' When you delete an entity type, Amazon Fraud Detector permanently
+#' deletes that entity type from the evaluation history, and the data is no
+#' longer stored in Amazon Fraud Detector.
 #'
 #' @usage
-#' frauddetector_delete_rule_version(detectorId, ruleId, ruleVersion)
+#' frauddetector_delete_event_type(name)
 #'
-#' @param detectorId &#91;required&#93; The ID of the detector that includes the rule version to delete.
-#' @param ruleId &#91;required&#93; The rule ID of the rule version to delete.
-#' @param ruleVersion &#91;required&#93; The rule version to delete.
+#' @param name &#91;required&#93; The name of the event type to delete.
 #'
 #' @section Request syntax:
 #' ```
-#' svc$delete_rule_version(
-#'   detectorId = "string",
-#'   ruleId = "string",
-#'   ruleVersion = "string"
+#' svc$delete_event_type(
+#'   name = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
-#' @rdname frauddetector_delete_rule_version
-frauddetector_delete_rule_version <- function(detectorId, ruleId, ruleVersion) {
+#' @rdname frauddetector_delete_event_type
+frauddetector_delete_event_type <- function(name) {
   op <- new_operation(
-    name = "DeleteRuleVersion",
+    name = "DeleteEventType",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$delete_rule_version_input(detectorId = detectorId, ruleId = ruleId, ruleVersion = ruleVersion)
-  output <- .frauddetector$delete_rule_version_output()
+  input <- .frauddetector$delete_event_type_input(name = name)
+  output <- .frauddetector$delete_event_type_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
-.frauddetector$operations$delete_rule_version <- frauddetector_delete_rule_version
+.frauddetector$operations$delete_event_type <- frauddetector_delete_event_type
+
+#' Removes a SageMaker model from Amazon Fraud Detector
+#'
+#' Removes a SageMaker model from Amazon Fraud Detector.
+#' 
+#' You can remove an Amazon SageMaker model if it is not associated with a
+#' detector version. Removing a SageMaker model disconnects it from Amazon
+#' Fraud Detector, but the model remains available in SageMaker.
+#'
+#' @usage
+#' frauddetector_delete_external_model(modelEndpoint)
+#'
+#' @param modelEndpoint &#91;required&#93; The endpoint of the Amazon Sagemaker model to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_external_model(
+#'   modelEndpoint = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_delete_external_model
+frauddetector_delete_external_model <- function(modelEndpoint) {
+  op <- new_operation(
+    name = "DeleteExternalModel",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$delete_external_model_input(modelEndpoint = modelEndpoint)
+  output <- .frauddetector$delete_external_model_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$delete_external_model <- frauddetector_delete_external_model
+
+#' Deletes a label
+#'
+#' Deletes a label.
+#' 
+#' You cannot delete labels that are included in an event type in Amazon
+#' Fraud Detector.
+#' 
+#' You cannot delete a label assigned to an event ID. You must first delete
+#' the relevant event ID.
+#' 
+#' When you delete a label, Amazon Fraud Detector permanently deletes that
+#' label from the evaluation history, and the data is no longer stored in
+#' Amazon Fraud Detector.
+#'
+#' @usage
+#' frauddetector_delete_label(name)
+#'
+#' @param name &#91;required&#93; The name of the label to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_label(
+#'   name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_delete_label
+frauddetector_delete_label <- function(name) {
+  op <- new_operation(
+    name = "DeleteLabel",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$delete_label_input(name = name)
+  output <- .frauddetector$delete_label_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$delete_label <- frauddetector_delete_label
+
+#' Deletes a model
+#'
+#' Deletes a model.
+#' 
+#' You can delete models and model versions in Amazon Fraud Detector,
+#' provided that they are not associated with a detector version.
+#' 
+#' When you delete a model, Amazon Fraud Detector permanently deletes that
+#' model from the evaluation history, and the data is no longer stored in
+#' Amazon Fraud Detector.
+#'
+#' @usage
+#' frauddetector_delete_model(modelId, modelType)
+#'
+#' @param modelId &#91;required&#93; The model ID of the model to delete.
+#' @param modelType &#91;required&#93; The model type of the model to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_model(
+#'   modelId = "string",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_delete_model
+frauddetector_delete_model <- function(modelId, modelType) {
+  op <- new_operation(
+    name = "DeleteModel",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$delete_model_input(modelId = modelId, modelType = modelType)
+  output <- .frauddetector$delete_model_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$delete_model <- frauddetector_delete_model
+
+#' Deletes a model version
+#'
+#' Deletes a model version.
+#' 
+#' You can delete models and model versions in Amazon Fraud Detector,
+#' provided that they are not associated with a detector version.
+#' 
+#' When you delete a model version, Amazon Fraud Detector permanently
+#' deletes that model version from the evaluation history, and the data is
+#' no longer stored in Amazon Fraud Detector.
+#'
+#' @usage
+#' frauddetector_delete_model_version(modelId, modelType,
+#'   modelVersionNumber)
+#'
+#' @param modelId &#91;required&#93; The model ID of the model version to delete.
+#' @param modelType &#91;required&#93; The model type of the model version to delete.
+#' @param modelVersionNumber &#91;required&#93; The model version number of the model version to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_model_version(
+#'   modelId = "string",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   modelVersionNumber = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_delete_model_version
+frauddetector_delete_model_version <- function(modelId, modelType, modelVersionNumber) {
+  op <- new_operation(
+    name = "DeleteModelVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$delete_model_version_input(modelId = modelId, modelType = modelType, modelVersionNumber = modelVersionNumber)
+  output <- .frauddetector$delete_model_version_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$delete_model_version <- frauddetector_delete_model_version
+
+#' Deletes an outcome
+#'
+#' Deletes an outcome.
+#' 
+#' You cannot delete an outcome that is used in a rule version.
+#' 
+#' When you delete an outcome, Amazon Fraud Detector permanently deletes
+#' that outcome from the evaluation history, and the data is no longer
+#' stored in Amazon Fraud Detector.
+#'
+#' @usage
+#' frauddetector_delete_outcome(name)
+#'
+#' @param name &#91;required&#93; The name of the outcome to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_outcome(
+#'   name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_delete_outcome
+frauddetector_delete_outcome <- function(name) {
+  op <- new_operation(
+    name = "DeleteOutcome",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$delete_outcome_input(name = name)
+  output <- .frauddetector$delete_outcome_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$delete_outcome <- frauddetector_delete_outcome
+
+#' Deletes the rule
+#'
+#' Deletes the rule. You cannot delete a rule if it is used by an `ACTIVE`
+#' or `INACTIVE` detector version.
+#' 
+#' When you delete a rule, Amazon Fraud Detector permanently deletes that
+#' rule from the evaluation history, and the data is no longer stored in
+#' Amazon Fraud Detector.
+#'
+#' @usage
+#' frauddetector_delete_rule(rule)
+#'
+#' @param rule &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_rule(
+#'   rule = list(
+#'     detectorId = "string",
+#'     ruleId = "string",
+#'     ruleVersion = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_delete_rule
+frauddetector_delete_rule <- function(rule) {
+  op <- new_operation(
+    name = "DeleteRule",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$delete_rule_input(rule = rule)
+  output <- .frauddetector$delete_rule_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$delete_rule <- frauddetector_delete_rule
+
+#' Deletes a variable
+#'
+#' Deletes a variable.
+#' 
+#' You can't delete variables that are included in an event type in Amazon
+#' Fraud Detector.
+#' 
+#' Amazon Fraud Detector automatically deletes model output variables and
+#' SageMaker model output variables when you delete the model. You can't
+#' delete these variables manually.
+#' 
+#' When you delete a variable, Amazon Fraud Detector permanently deletes
+#' that variable from the evaluation history, and the data is no longer
+#' stored in Amazon Fraud Detector.
+#'
+#' @usage
+#' frauddetector_delete_variable(name)
+#'
+#' @param name &#91;required&#93; The name of the variable to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_variable(
+#'   name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_delete_variable
+frauddetector_delete_variable <- function(name) {
+  op <- new_operation(
+    name = "DeleteVariable",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$delete_variable_input(name = name)
+  output <- .frauddetector$delete_variable_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$delete_variable <- frauddetector_delete_variable
 
 #' Gets all versions for a specified detector
 #'
@@ -501,7 +982,7 @@ frauddetector_describe_detector <- function(detectorId, nextToken = NULL, maxRes
 #'   modelType, nextToken, maxResults)
 #'
 #' @param modelId The model ID.
-#' @param modelVersionNumber The model version.
+#' @param modelVersionNumber The model version number.
 #' @param modelType The model type.
 #' @param nextToken The next token from the previous results.
 #' @param maxResults The maximum number of results to return.
@@ -575,14 +1056,15 @@ frauddetector_get_detector_version <- function(detectorId, detectorVersionId) {
 }
 .frauddetector$operations$get_detector_version <- frauddetector_get_detector_version
 
-#' Gets all of detectors
+#' Gets all detectors or a single detector if a detectorId is specified
 #'
-#' Gets all of detectors. This is a paginated API. If you provide a null
-#' `maxSizePerPage`, this actions retrieves a maximum of 10 records per
-#' page. If you provide a `maxSizePerPage`, the value must be between 5 and
-#' 10. To get the next page results, provide the pagination token from the
-#' `GetEventTypesResponse` as part of your request. A null pagination token
-#' fetches the records from the beginning.
+#' Gets all detectors or a single detector if a `detectorId` is specified.
+#' This is a paginated API. If you provide a null `maxResults`, this action
+#' retrieves a maximum of 10 records per page. If you provide a
+#' `maxResults`, the value must be between 5 and 10. To get the next page
+#' results, provide the pagination token from the `GetDetectorsResponse` as
+#' part of your request. A null pagination token fetches the records from
+#' the beginning.
 #'
 #' @usage
 #' frauddetector_get_detectors(detectorId, nextToken, maxResults)
@@ -620,15 +1102,177 @@ frauddetector_get_detectors <- function(detectorId = NULL, nextToken = NULL, max
 }
 .frauddetector$operations$get_detectors <- frauddetector_get_detectors
 
+#' Gets all entity types or a specific entity type if a name is specified
+#'
+#' Gets all entity types or a specific entity type if a name is specified.
+#' This is a paginated API. If you provide a null `maxResults`, this action
+#' retrieves a maximum of 10 records per page. If you provide a
+#' `maxResults`, the value must be between 5 and 10. To get the next page
+#' results, provide the pagination token from the `GetEntityTypesResponse`
+#' as part of your request. A null pagination token fetches the records
+#' from the beginning.
+#'
+#' @usage
+#' frauddetector_get_entity_types(name, nextToken, maxResults)
+#'
+#' @param name The name.
+#' @param nextToken The next token for the subsequent request.
+#' @param maxResults The maximum number of objects to return for the request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_entity_types(
+#'   name = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_get_entity_types
+frauddetector_get_entity_types <- function(name = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "GetEntityTypes",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$get_entity_types_input(name = name, nextToken = nextToken, maxResults = maxResults)
+  output <- .frauddetector$get_entity_types_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$get_entity_types <- frauddetector_get_entity_types
+
+#' Evaluates an event against a detector version
+#'
+#' Evaluates an event against a detector version. If a version ID is not
+#' provided, the detector’s (`ACTIVE`) version is used.
+#'
+#' @usage
+#' frauddetector_get_event_prediction(detectorId, detectorVersionId,
+#'   eventId, eventTypeName, entities, eventTimestamp, eventVariables,
+#'   externalModelEndpointDataBlobs)
+#'
+#' @param detectorId &#91;required&#93; The detector ID.
+#' @param detectorVersionId The detector version ID.
+#' @param eventId &#91;required&#93; The unique ID used to identify the event.
+#' @param eventTypeName &#91;required&#93; The event type associated with the detector specified for the
+#' prediction.
+#' @param entities &#91;required&#93; The entity type (associated with the detector's event type) and specific
+#' entity ID representing who performed the event. If an entity id is not
+#' available, use "UNKNOWN."
+#' @param eventTimestamp &#91;required&#93; Timestamp that defines when the event under evaluation occurred.
+#' @param eventVariables &#91;required&#93; Names of the event type's variables you defined in Amazon Fraud Detector
+#' to represent data elements and their corresponding values for the event
+#' you are sending for evaluation.
+#' @param externalModelEndpointDataBlobs The Amazon SageMaker model endpoint input data blobs.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_event_prediction(
+#'   detectorId = "string",
+#'   detectorVersionId = "string",
+#'   eventId = "string",
+#'   eventTypeName = "string",
+#'   entities = list(
+#'     list(
+#'       entityType = "string",
+#'       entityId = "string"
+#'     )
+#'   ),
+#'   eventTimestamp = "string",
+#'   eventVariables = list(
+#'     "string"
+#'   ),
+#'   externalModelEndpointDataBlobs = list(
+#'     list(
+#'       byteBuffer = raw,
+#'       contentType = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_get_event_prediction
+frauddetector_get_event_prediction <- function(detectorId, detectorVersionId = NULL, eventId, eventTypeName, entities, eventTimestamp, eventVariables, externalModelEndpointDataBlobs = NULL) {
+  op <- new_operation(
+    name = "GetEventPrediction",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$get_event_prediction_input(detectorId = detectorId, detectorVersionId = detectorVersionId, eventId = eventId, eventTypeName = eventTypeName, entities = entities, eventTimestamp = eventTimestamp, eventVariables = eventVariables, externalModelEndpointDataBlobs = externalModelEndpointDataBlobs)
+  output <- .frauddetector$get_event_prediction_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$get_event_prediction <- frauddetector_get_event_prediction
+
+#' Gets all event types or a specific event type if name is provided
+#'
+#' Gets all event types or a specific event type if name is provided. This
+#' is a paginated API. If you provide a null `maxResults`, this action
+#' retrieves a maximum of 10 records per page. If you provide a
+#' `maxResults`, the value must be between 5 and 10. To get the next page
+#' results, provide the pagination token from the `GetEventTypesResponse`
+#' as part of your request. A null pagination token fetches the records
+#' from the beginning.
+#'
+#' @usage
+#' frauddetector_get_event_types(name, nextToken, maxResults)
+#'
+#' @param name The name.
+#' @param nextToken The next token for the subsequent request.
+#' @param maxResults The maximum number of objects to return for the request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_event_types(
+#'   name = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_get_event_types
+frauddetector_get_event_types <- function(name = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "GetEventTypes",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$get_event_types_input(name = name, nextToken = nextToken, maxResults = maxResults)
+  output <- .frauddetector$get_event_types_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$get_event_types <- frauddetector_get_event_types
+
 #' Gets the details for one or more Amazon SageMaker models that have been
 #' imported into the service
 #'
 #' Gets the details for one or more Amazon SageMaker models that have been
 #' imported into the service. This is a paginated API. If you provide a
-#' null `maxSizePerPage`, this actions retrieves a maximum of 10 records
-#' per page. If you provide a `maxSizePerPage`, the value must be between 5
-#' and 10. To get the next page results, provide the pagination token from
-#' the `GetExternalModelsResult` as part of your request. A null pagination
+#' null `maxResults`, this actions retrieves a maximum of 10 records per
+#' page. If you provide a `maxResults`, the value must be between 5 and 10.
+#' To get the next page results, provide the pagination token from the
+#' `GetExternalModelsResult` as part of your request. A null pagination
 #' token fetches the records from the beginning.
 #'
 #' @usage
@@ -667,16 +1311,96 @@ frauddetector_get_external_models <- function(modelEndpoint = NULL, nextToken = 
 }
 .frauddetector$operations$get_external_models <- frauddetector_get_external_models
 
-#' Gets a model version
+#' Gets the encryption key if a Key Management Service (KMS) customer
+#' master key (CMK) has been specified to be used to encrypt content in
+#' Amazon Fraud Detector
 #'
-#' Gets a model version.
+#' Gets the encryption key if a Key Management Service (KMS) customer
+#' master key (CMK) has been specified to be used to encrypt content in
+#' Amazon Fraud Detector.
+#'
+#' @usage
+#' frauddetector_get_kms_encryption_key()
+#'
+
+#'
+
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_get_kms_encryption_key
+frauddetector_get_kms_encryption_key <- function() {
+  op <- new_operation(
+    name = "GetKMSEncryptionKey",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$get_kms_encryption_key_input()
+  output <- .frauddetector$get_kms_encryption_key_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$get_kms_encryption_key <- frauddetector_get_kms_encryption_key
+
+#' Gets all labels or a specific label if name is provided
+#'
+#' Gets all labels or a specific label if name is provided. This is a
+#' paginated API. If you provide a null `maxResults`, this action retrieves
+#' a maximum of 50 records per page. If you provide a `maxResults`, the
+#' value must be between 10 and 50. To get the next page results, provide
+#' the pagination token from the `GetGetLabelsResponse` as part of your
+#' request. A null pagination token fetches the records from the beginning.
+#'
+#' @usage
+#' frauddetector_get_labels(name, nextToken, maxResults)
+#'
+#' @param name The name of the label or labels to get.
+#' @param nextToken The next token for the subsequent request.
+#' @param maxResults The maximum number of objects to return for the request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_labels(
+#'   name = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_get_labels
+frauddetector_get_labels <- function(name = NULL, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "GetLabels",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$get_labels_input(name = name, nextToken = nextToken, maxResults = maxResults)
+  output <- .frauddetector$get_labels_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$get_labels <- frauddetector_get_labels
+
+#' Gets the details of the specified model version
+#'
+#' Gets the details of the specified model version.
 #'
 #' @usage
 #' frauddetector_get_model_version(modelId, modelType, modelVersionNumber)
 #'
 #' @param modelId &#91;required&#93; The model ID.
 #' @param modelType &#91;required&#93; The model type.
-#' @param modelVersionNumber &#91;required&#93; The model version.
+#' @param modelVersionNumber &#91;required&#93; The model version number.
 #'
 #' @section Request syntax:
 #' ```
@@ -707,27 +1431,32 @@ frauddetector_get_model_version <- function(modelId, modelType, modelVersionNumb
 }
 .frauddetector$operations$get_model_version <- frauddetector_get_model_version
 
-#' Gets all of the models for the AWS account, or the specified model type,
-#' or gets a single model for the specified model type, model ID
-#' combination
+#' Gets one or more models
 #'
-#' Gets all of the models for the AWS account, or the specified model type,
-#' or gets a single model for the specified model type, model ID
-#' combination.
+#' Gets one or more models. Gets all models for the AWS account if no model
+#' type and no model id provided. Gets all models for the AWS account and
+#' model type, if the model type is specified but model id is not provided.
+#' Gets a specific model if (model type, model id) tuple is specified.
+#' 
+#' This is a paginated API. If you provide a null `maxResults`, this action
+#' retrieves a maximum of 10 records per page. If you provide a
+#' `maxResults`, the value must be between 1 and 10. To get the next page
+#' results, provide the pagination token from the response as part of your
+#' request. A null pagination token fetches the records from the beginning.
 #'
 #' @usage
-#' frauddetector_get_models(modelType, modelId, nextToken, maxResults)
+#' frauddetector_get_models(modelId, modelType, nextToken, maxResults)
 #'
-#' @param modelType The model type.
 #' @param modelId The model ID.
-#' @param nextToken The next token for the request.
-#' @param maxResults The maximum results to return for the request.
+#' @param modelType The model type.
+#' @param nextToken The next token for the subsequent request.
+#' @param maxResults The maximum number of objects to return for the request.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_models(
-#'   modelType = "ONLINE_FRAUD_INSIGHTS",
 #'   modelId = "string",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS",
 #'   nextToken = "string",
 #'   maxResults = 123
 #' )
@@ -736,14 +1465,14 @@ frauddetector_get_model_version <- function(modelId, modelType, modelVersionNumb
 #' @keywords internal
 #'
 #' @rdname frauddetector_get_models
-frauddetector_get_models <- function(modelType = NULL, modelId = NULL, nextToken = NULL, maxResults = NULL) {
+frauddetector_get_models <- function(modelId = NULL, modelType = NULL, nextToken = NULL, maxResults = NULL) {
   op <- new_operation(
     name = "GetModels",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$get_models_input(modelType = modelType, modelId = modelId, nextToken = nextToken, maxResults = maxResults)
+  input <- .frauddetector$get_models_input(modelId = modelId, modelType = modelType, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_models_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -756,11 +1485,11 @@ frauddetector_get_models <- function(modelType = NULL, modelId = NULL, nextToken
 #' Gets one or more outcomes
 #'
 #' Gets one or more outcomes. This is a paginated API. If you provide a
-#' null `maxSizePerPage`, this actions retrieves a maximum of 10 records
-#' per page. If you provide a `maxSizePerPage`, the value must be between
-#' 50 and 100. To get the next page results, provide the pagination token
-#' from the `GetOutcomesResult` as part of your request. A null pagination
-#' token fetches the records from the beginning.
+#' null `maxResults`, this actions retrieves a maximum of 100 records per
+#' page. If you provide a `maxResults`, the value must be between 50 and
+#' 100. To get the next page results, provide the pagination token from the
+#' `GetOutcomesResult` as part of your request. A null pagination token
+#' fetches the records from the beginning.
 #'
 #' @usage
 #' frauddetector_get_outcomes(name, nextToken, maxResults)
@@ -798,64 +1527,19 @@ frauddetector_get_outcomes <- function(name = NULL, nextToken = NULL, maxResults
 }
 .frauddetector$operations$get_outcomes <- frauddetector_get_outcomes
 
-#' Evaluates an event against a detector version
+#' Get all rules for a detector (paginated) if ruleId and ruleVersion are
+#' not specified
 #'
-#' Evaluates an event against a detector version. If a version ID is not
-#' provided, the detector’s (`ACTIVE`) version is used.
-#'
-#' @usage
-#' frauddetector_get_prediction(detectorId, detectorVersionId, eventId,
-#'   eventAttributes, externalModelEndpointDataBlobs)
-#'
-#' @param detectorId &#91;required&#93; The detector ID.
-#' @param detectorVersionId The detector version ID.
-#' @param eventId &#91;required&#93; The unique ID used to identify the event.
-#' @param eventAttributes Names of variables you defined in Amazon Fraud Detector to represent
-#' event data elements and their corresponding values for the event you are
-#' sending for evaluation.
-#' @param externalModelEndpointDataBlobs The Amazon SageMaker model endpoint input data blobs.
-#'
-#' @section Request syntax:
-#' ```
-#' svc$get_prediction(
-#'   detectorId = "string",
-#'   detectorVersionId = "string",
-#'   eventId = "string",
-#'   eventAttributes = list(
-#'     "string"
-#'   ),
-#'   externalModelEndpointDataBlobs = list(
-#'     list(
-#'       byteBuffer = raw,
-#'       contentType = "string"
-#'     )
-#'   )
-#' )
-#' ```
-#'
-#' @keywords internal
-#'
-#' @rdname frauddetector_get_prediction
-frauddetector_get_prediction <- function(detectorId, detectorVersionId = NULL, eventId, eventAttributes = NULL, externalModelEndpointDataBlobs = NULL) {
-  op <- new_operation(
-    name = "GetPrediction",
-    http_method = "POST",
-    http_path = "/",
-    paginator = list()
-  )
-  input <- .frauddetector$get_prediction_input(detectorId = detectorId, detectorVersionId = detectorVersionId, eventId = eventId, eventAttributes = eventAttributes, externalModelEndpointDataBlobs = externalModelEndpointDataBlobs)
-  output <- .frauddetector$get_prediction_output()
-  config <- get_config()
-  svc <- .frauddetector$service(config)
-  request <- new_request(svc, op, input, output)
-  response <- send_request(request)
-  return(response)
-}
-.frauddetector$operations$get_prediction <- frauddetector_get_prediction
-
-#' Gets all rules available for the specified detector
-#'
-#' Gets all rules available for the specified detector.
+#' Get all rules for a detector (paginated) if `ruleId` and `ruleVersion`
+#' are not specified. Gets all rules for the detector and the `ruleId` if
+#' present (paginated). Gets a specific rule if both the `ruleId` and the
+#' `ruleVersion` are specified.
+#' 
+#' This is a paginated API. Providing null maxResults results in retrieving
+#' maximum of 100 records per page. If you provide maxResults the value
+#' must be between 50 and 100. To get the next page result, a provide a
+#' pagination token from GetRulesResult as part of your request. Null
+#' pagination token fetches the records from the beginning.
 #'
 #' @usage
 #' frauddetector_get_rules(ruleId, detectorId, ruleVersion, nextToken,
@@ -943,35 +1627,87 @@ frauddetector_get_variables <- function(name = NULL, nextToken = NULL, maxResult
 }
 .frauddetector$operations$get_variables <- frauddetector_get_variables
 
+#' Lists all tags associated with the resource
+#'
+#' Lists all tags associated with the resource. This is a paginated API. To
+#' get the next page results, provide the pagination token from the
+#' response as part of your request. A null pagination token fetches the
+#' records from the beginning.
+#'
+#' @usage
+#' frauddetector_list_tags_for_resource(resourceARN, nextToken, maxResults)
+#'
+#' @param resourceARN &#91;required&#93; The ARN that specifies the resource whose tags you want to list.
+#' @param nextToken The next token from the previous results.
+#' @param maxResults The maximum number of objects to return for the request.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceARN = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_list_tags_for_resource
+frauddetector_list_tags_for_resource <- function(resourceARN, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$list_tags_for_resource_input(resourceARN = resourceARN, nextToken = nextToken, maxResults = maxResults)
+  output <- .frauddetector$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$list_tags_for_resource <- frauddetector_list_tags_for_resource
+
 #' Creates or updates a detector
 #'
 #' Creates or updates a detector.
 #'
 #' @usage
-#' frauddetector_put_detector(detectorId, description)
+#' frauddetector_put_detector(detectorId, description, eventTypeName, tags)
 #'
 #' @param detectorId &#91;required&#93; The detector ID.
 #' @param description The description of the detector.
+#' @param eventTypeName &#91;required&#93; The name of the event type.
+#' @param tags A collection of key and value pairs.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$put_detector(
 #'   detectorId = "string",
-#'   description = "string"
+#'   description = "string",
+#'   eventTypeName = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname frauddetector_put_detector
-frauddetector_put_detector <- function(detectorId, description = NULL) {
+frauddetector_put_detector <- function(detectorId, description = NULL, eventTypeName, tags = NULL) {
   op <- new_operation(
     name = "PutDetector",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$put_detector_input(detectorId = detectorId, description = description)
+  input <- .frauddetector$put_detector_input(detectorId = detectorId, description = description, eventTypeName = eventTypeName, tags = tags)
   output <- .frauddetector$put_detector_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -981,6 +1717,120 @@ frauddetector_put_detector <- function(detectorId, description = NULL) {
 }
 .frauddetector$operations$put_detector <- frauddetector_put_detector
 
+#' Creates or updates an entity type
+#'
+#' Creates or updates an entity type. An entity represents who is
+#' performing the event. As part of a fraud prediction, you pass the entity
+#' ID to indicate the specific entity who performed the event. An entity
+#' type classifies the entity. Example classifications include customer,
+#' merchant, or account.
+#'
+#' @usage
+#' frauddetector_put_entity_type(name, description, tags)
+#'
+#' @param name &#91;required&#93; The name of the entity type.
+#' @param description The description.
+#' @param tags A collection of key and value pairs.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_entity_type(
+#'   name = "string",
+#'   description = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_put_entity_type
+frauddetector_put_entity_type <- function(name, description = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "PutEntityType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$put_entity_type_input(name = name, description = description, tags = tags)
+  output <- .frauddetector$put_entity_type_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$put_entity_type <- frauddetector_put_entity_type
+
+#' Creates or updates an event type
+#'
+#' Creates or updates an event type. An event is a business activity that
+#' is evaluated for fraud risk. With Amazon Fraud Detector, you generate
+#' fraud predictions for events. An event type defines the structure for an
+#' event sent to Amazon Fraud Detector. This includes the variables sent as
+#' part of the event, the entity performing the event (such as a customer),
+#' and the labels that classify the event. Example event types include
+#' online payment transactions, account registrations, and authentications.
+#'
+#' @usage
+#' frauddetector_put_event_type(name, description, eventVariables, labels,
+#'   entityTypes, tags)
+#'
+#' @param name &#91;required&#93; The name.
+#' @param description The description of the event type.
+#' @param eventVariables &#91;required&#93; The event type variables.
+#' @param labels The event type labels.
+#' @param entityTypes &#91;required&#93; The entity type for the event type. Example entity types: customer,
+#' merchant, account.
+#' @param tags A collection of key and value pairs.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_event_type(
+#'   name = "string",
+#'   description = "string",
+#'   eventVariables = list(
+#'     "string"
+#'   ),
+#'   labels = list(
+#'     "string"
+#'   ),
+#'   entityTypes = list(
+#'     "string"
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_put_event_type
+frauddetector_put_event_type <- function(name, description = NULL, eventVariables, labels = NULL, entityTypes, tags = NULL) {
+  op <- new_operation(
+    name = "PutEventType",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$put_event_type_input(name = name, description = description, eventVariables = eventVariables, labels = labels, entityTypes = entityTypes, tags = tags)
+  output <- .frauddetector$put_event_type_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$put_event_type <- frauddetector_put_event_type
+
 #' Creates or updates an Amazon SageMaker model endpoint
 #'
 #' Creates or updates an Amazon SageMaker model endpoint. You can also use
@@ -988,28 +1838,28 @@ frauddetector_put_detector <- function(detectorId, description = NULL) {
 #' the IAM role and/or the mapped variables.
 #'
 #' @usage
-#' frauddetector_put_external_model(modelEndpoint, modelSource, role,
-#'   inputConfiguration, outputConfiguration, modelEndpointStatus)
+#' frauddetector_put_external_model(modelEndpoint, modelSource,
+#'   invokeModelEndpointRoleArn, inputConfiguration, outputConfiguration,
+#'   modelEndpointStatus, tags)
 #'
 #' @param modelEndpoint &#91;required&#93; The model endpoints name.
 #' @param modelSource &#91;required&#93; The source of the model.
-#' @param role &#91;required&#93; The IAM role used to invoke the model endpoint.
+#' @param invokeModelEndpointRoleArn &#91;required&#93; The IAM role used to invoke the model endpoint.
 #' @param inputConfiguration &#91;required&#93; The model endpoint input configuration.
 #' @param outputConfiguration &#91;required&#93; The model endpoint output configuration.
 #' @param modelEndpointStatus &#91;required&#93; The model endpoint’s status in Amazon Fraud Detector.
+#' @param tags A collection of key and value pairs.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$put_external_model(
 #'   modelEndpoint = "string",
 #'   modelSource = "SAGEMAKER",
-#'   role = list(
-#'     arn = "string",
-#'     name = "string"
-#'   ),
+#'   invokeModelEndpointRoleArn = "string",
 #'   inputConfiguration = list(
+#'     eventTypeName = "string",
 #'     format = "TEXT_CSV"|"APPLICATION_JSON",
-#'     isOpaque = TRUE|FALSE,
+#'     useEventVariables = TRUE|FALSE,
 #'     jsonInputTemplate = "string",
 #'     csvInputTemplate = "string"
 #'   ),
@@ -1022,21 +1872,27 @@ frauddetector_put_detector <- function(detectorId, description = NULL) {
 #'       "string"
 #'     )
 #'   ),
-#'   modelEndpointStatus = "ASSOCIATED"|"DISSOCIATED"
+#'   modelEndpointStatus = "ASSOCIATED"|"DISSOCIATED",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname frauddetector_put_external_model
-frauddetector_put_external_model <- function(modelEndpoint, modelSource, role, inputConfiguration, outputConfiguration, modelEndpointStatus) {
+frauddetector_put_external_model <- function(modelEndpoint, modelSource, invokeModelEndpointRoleArn, inputConfiguration, outputConfiguration, modelEndpointStatus, tags = NULL) {
   op <- new_operation(
     name = "PutExternalModel",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$put_external_model_input(modelEndpoint = modelEndpoint, modelSource = modelSource, role = role, inputConfiguration = inputConfiguration, outputConfiguration = outputConfiguration, modelEndpointStatus = modelEndpointStatus)
+  input <- .frauddetector$put_external_model_input(modelEndpoint = modelEndpoint, modelSource = modelSource, invokeModelEndpointRoleArn = invokeModelEndpointRoleArn, inputConfiguration = inputConfiguration, outputConfiguration = outputConfiguration, modelEndpointStatus = modelEndpointStatus, tags = tags)
   output <- .frauddetector$put_external_model_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -1046,43 +1902,66 @@ frauddetector_put_external_model <- function(modelEndpoint, modelSource, role, i
 }
 .frauddetector$operations$put_external_model <- frauddetector_put_external_model
 
-#' Creates or updates a model
+#' Specifies the Key Management Service (KMS) customer master key (CMK) to
+#' be used to encrypt content in Amazon Fraud Detector
 #'
-#' Creates or updates a model.
+#' Specifies the Key Management Service (KMS) customer master key (CMK) to
+#' be used to encrypt content in Amazon Fraud Detector.
 #'
 #' @usage
-#' frauddetector_put_model(modelId, modelType, description,
-#'   trainingDataSource, modelVariables, labelSchema)
+#' frauddetector_put_kms_encryption_key(kmsEncryptionKeyArn)
 #'
-#' @param modelId &#91;required&#93; The model ID.
-#' @param modelType &#91;required&#93; The model type.
-#' @param description The model description.
-#' @param trainingDataSource &#91;required&#93; The training data source location in Amazon S3.
-#' @param modelVariables &#91;required&#93; The model input variables.
-#' @param labelSchema &#91;required&#93; The label schema.
+#' @param kmsEncryptionKeyArn &#91;required&#93; The KMS encryption key ARN.
 #'
 #' @section Request syntax:
 #' ```
-#' svc$put_model(
-#'   modelId = "string",
-#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#' svc$put_kms_encryption_key(
+#'   kmsEncryptionKeyArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_put_kms_encryption_key
+frauddetector_put_kms_encryption_key <- function(kmsEncryptionKeyArn) {
+  op <- new_operation(
+    name = "PutKMSEncryptionKey",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$put_kms_encryption_key_input(kmsEncryptionKeyArn = kmsEncryptionKeyArn)
+  output <- .frauddetector$put_kms_encryption_key_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$put_kms_encryption_key <- frauddetector_put_kms_encryption_key
+
+#' Creates or updates label
+#'
+#' Creates or updates label. A label classifies an event as fraudulent or
+#' legitimate. Labels are associated with event types and used to train
+#' supervised machine learning models in Amazon Fraud Detector.
+#'
+#' @usage
+#' frauddetector_put_label(name, description, tags)
+#'
+#' @param name &#91;required&#93; The label name.
+#' @param description The label description.
+#' @param tags 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_label(
+#'   name = "string",
 #'   description = "string",
-#'   trainingDataSource = list(
-#'     dataLocation = "string",
-#'     dataAccessRoleArn = "string"
-#'   ),
-#'   modelVariables = list(
+#'   tags = list(
 #'     list(
-#'       name = "string",
-#'       index = 123
-#'     )
-#'   ),
-#'   labelSchema = list(
-#'     labelKey = "string",
-#'     labelMapper = list(
-#'       list(
-#'         "string"
-#'       )
+#'       key = "string",
+#'       value = "string"
 #'     )
 #'   )
 #' )
@@ -1090,53 +1969,60 @@ frauddetector_put_external_model <- function(modelEndpoint, modelSource, role, i
 #'
 #' @keywords internal
 #'
-#' @rdname frauddetector_put_model
-frauddetector_put_model <- function(modelId, modelType, description = NULL, trainingDataSource, modelVariables, labelSchema) {
+#' @rdname frauddetector_put_label
+frauddetector_put_label <- function(name, description = NULL, tags = NULL) {
   op <- new_operation(
-    name = "PutModel",
+    name = "PutLabel",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$put_model_input(modelId = modelId, modelType = modelType, description = description, trainingDataSource = trainingDataSource, modelVariables = modelVariables, labelSchema = labelSchema)
-  output <- .frauddetector$put_model_output()
+  input <- .frauddetector$put_label_input(name = name, description = description, tags = tags)
+  output <- .frauddetector$put_label_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
   request <- new_request(svc, op, input, output)
   response <- send_request(request)
   return(response)
 }
-.frauddetector$operations$put_model <- frauddetector_put_model
+.frauddetector$operations$put_label <- frauddetector_put_label
 
 #' Creates or updates an outcome
 #'
 #' Creates or updates an outcome.
 #'
 #' @usage
-#' frauddetector_put_outcome(name, description)
+#' frauddetector_put_outcome(name, description, tags)
 #'
 #' @param name &#91;required&#93; The name of the outcome.
 #' @param description The outcome description.
+#' @param tags A collection of key and value pairs.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$put_outcome(
 #'   name = "string",
-#'   description = "string"
+#'   description = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname frauddetector_put_outcome
-frauddetector_put_outcome <- function(name, description = NULL) {
+frauddetector_put_outcome <- function(name, description = NULL, tags = NULL) {
   op <- new_operation(
     name = "PutOutcome",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$put_outcome_input(name = name, description = description)
+  input <- .frauddetector$put_outcome_input(name = name, description = description, tags = tags)
   output <- .frauddetector$put_outcome_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -1146,11 +2032,94 @@ frauddetector_put_outcome <- function(name, description = NULL) {
 }
 .frauddetector$operations$put_outcome <- frauddetector_put_outcome
 
+#' Assigns tags to a resource
+#'
+#' Assigns tags to a resource.
+#'
+#' @usage
+#' frauddetector_tag_resource(resourceARN, tags)
+#'
+#' @param resourceARN &#91;required&#93; The resource ARN.
+#' @param tags &#91;required&#93; The tags to assign to the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceARN = "string",
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_tag_resource
+frauddetector_tag_resource <- function(resourceARN, tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$tag_resource_input(resourceARN = resourceARN, tags = tags)
+  output <- .frauddetector$tag_resource_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$tag_resource <- frauddetector_tag_resource
+
+#' Removes tags from a resource
+#'
+#' Removes tags from a resource.
+#'
+#' @usage
+#' frauddetector_untag_resource(resourceARN, tagKeys)
+#'
+#' @param resourceARN &#91;required&#93; The ARN of the resource from which to remove the tag.
+#' @param tagKeys &#91;required&#93; The resource ARN.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceARN = "string",
+#'   tagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_untag_resource
+frauddetector_untag_resource <- function(resourceARN, tagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$untag_resource_input(resourceARN = resourceARN, tagKeys = tagKeys)
+  output <- .frauddetector$untag_resource_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$untag_resource <- frauddetector_untag_resource
+
 #' Updates a detector version
 #'
 #' Updates a detector version. The detector version attributes that you can
-#' update include models, external model endpoints, rules, and description.
-#' You can only update a `DRAFT` detector version.
+#' update include models, external model endpoints, rules, rule execution
+#' mode, and description. You can only update a `DRAFT` detector version.
 #'
 #' @usage
 #' frauddetector_update_detector_version(detectorId, detectorVersionId,
@@ -1195,7 +2164,8 @@ frauddetector_put_outcome <- function(name, description = NULL) {
 #'     list(
 #'       modelId = "string",
 #'       modelType = "ONLINE_FRAUD_INSIGHTS",
-#'       modelVersionNumber = "string"
+#'       modelVersionNumber = "string",
+#'       arn = "string"
 #'     )
 #'   ),
 #'   ruleExecutionMode = "ALL_MATCHED"|"FIRST_MATCHED"
@@ -1307,48 +2277,96 @@ frauddetector_update_detector_version_status <- function(detectorId, detectorVer
 }
 .frauddetector$operations$update_detector_version_status <- frauddetector_update_detector_version_status
 
-#' Updates a model version
+#' Updates a model
 #'
-#' Updates a model version. You can update the description and status
-#' attributes using this action. You can perform the following status
-#' updates:
-#' 
-#' 1.  Change the `TRAINING_COMPLETE` status to `ACTIVE`
-#' 
-#' 2.  Change `ACTIVE` back to `TRAINING_COMPLETE`
+#' Updates a model. You can update the description attribute using this
+#' action.
 #'
 #' @usage
-#' frauddetector_update_model_version(modelId, modelType,
-#'   modelVersionNumber, description, status)
+#' frauddetector_update_model(modelId, modelType, description)
 #'
 #' @param modelId &#91;required&#93; The model ID.
 #' @param modelType &#91;required&#93; The model type.
-#' @param modelVersionNumber &#91;required&#93; The model version.
-#' @param description &#91;required&#93; The model description.
-#' @param status &#91;required&#93; The new model status.
+#' @param description The new model description.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_model(
+#'   modelId = "string",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_update_model
+frauddetector_update_model <- function(modelId, modelType, description = NULL) {
+  op <- new_operation(
+    name = "UpdateModel",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$update_model_input(modelId = modelId, modelType = modelType, description = description)
+  output <- .frauddetector$update_model_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$update_model <- frauddetector_update_model
+
+#' Updates a model version
+#'
+#' Updates a model version. Updating a model version retrains an existing
+#' model version using updated training data and produces a new minor
+#' version of the model. You can update the training data set location and
+#' data access role attributes using this action. This action creates and
+#' trains a new minor version of the model, for example version 1.01, 1.02,
+#' 1.03.
+#'
+#' @usage
+#' frauddetector_update_model_version(modelId, modelType,
+#'   majorVersionNumber, externalEventsDetail, tags)
+#'
+#' @param modelId &#91;required&#93; The model ID.
+#' @param modelType &#91;required&#93; The model type.
+#' @param majorVersionNumber &#91;required&#93; The major version number.
+#' @param externalEventsDetail The event details.
+#' @param tags A collection of key and value pairs.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_model_version(
 #'   modelId = "string",
 #'   modelType = "ONLINE_FRAUD_INSIGHTS",
-#'   modelVersionNumber = "string",
-#'   description = "string",
-#'   status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETE"|"ACTIVATE_REQUESTED"|"ACTIVATE_IN_PROGRESS"|"ACTIVE"|"INACTIVATE_IN_PROGRESS"|"INACTIVE"|"ERROR"
+#'   majorVersionNumber = "string",
+#'   externalEventsDetail = list(
+#'     dataLocation = "string",
+#'     dataAccessRoleArn = "string"
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname frauddetector_update_model_version
-frauddetector_update_model_version <- function(modelId, modelType, modelVersionNumber, description, status) {
+frauddetector_update_model_version <- function(modelId, modelType, majorVersionNumber, externalEventsDetail = NULL, tags = NULL) {
   op <- new_operation(
     name = "UpdateModelVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$update_model_version_input(modelId = modelId, modelType = modelType, modelVersionNumber = modelVersionNumber, description = description, status = status)
+  input <- .frauddetector$update_model_version_input(modelId = modelId, modelType = modelType, majorVersionNumber = majorVersionNumber, externalEventsDetail = externalEventsDetail, tags = tags)
   output <- .frauddetector$update_model_version_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -1358,9 +2376,58 @@ frauddetector_update_model_version <- function(modelId, modelType, modelVersionN
 }
 .frauddetector$operations$update_model_version <- frauddetector_update_model_version
 
+#' Updates the status of a model version
+#'
+#' Updates the status of a model version.
+#' 
+#' You can perform the following status updates:
+#' 
+#' 1.  Change the `TRAINING_COMPLETE` status to `ACTIVE`.
+#' 
+#' 2.  Change `ACTIVE`to `INACTIVE`.
+#'
+#' @usage
+#' frauddetector_update_model_version_status(modelId, modelType,
+#'   modelVersionNumber, status)
+#'
+#' @param modelId &#91;required&#93; The model ID of the model version to update.
+#' @param modelType &#91;required&#93; The model type.
+#' @param modelVersionNumber &#91;required&#93; The model version number.
+#' @param status &#91;required&#93; The model version status.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_model_version_status(
+#'   modelId = "string",
+#'   modelType = "ONLINE_FRAUD_INSIGHTS",
+#'   modelVersionNumber = "string",
+#'   status = "ACTIVE"|"INACTIVE"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname frauddetector_update_model_version_status
+frauddetector_update_model_version_status <- function(modelId, modelType, modelVersionNumber, status) {
+  op <- new_operation(
+    name = "UpdateModelVersionStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .frauddetector$update_model_version_status_input(modelId = modelId, modelType = modelType, modelVersionNumber = modelVersionNumber, status = status)
+  output <- .frauddetector$update_model_version_status_output()
+  config <- get_config()
+  svc <- .frauddetector$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.frauddetector$operations$update_model_version_status <- frauddetector_update_model_version_status
+
 #' Updates a rule's metadata
 #'
-#' Updates a rule's metadata.
+#' Updates a rule's metadata. The description attribute can be updated.
 #'
 #' @usage
 #' frauddetector_update_rule_metadata(rule, description)
@@ -1402,17 +2469,19 @@ frauddetector_update_rule_metadata <- function(rule, description) {
 
 #' Updates a rule version resulting in a new rule version
 #'
-#' Updates a rule version resulting in a new rule version.
+#' Updates a rule version resulting in a new rule version. Updates a rule
+#' version resulting in a new rule version (version 1, 2, 3 ...).
 #'
 #' @usage
 #' frauddetector_update_rule_version(rule, description, expression,
-#'   language, outcomes)
+#'   language, outcomes, tags)
 #'
 #' @param rule &#91;required&#93; The rule to update.
 #' @param description The description.
 #' @param expression &#91;required&#93; The rule expression.
 #' @param language &#91;required&#93; The language.
 #' @param outcomes &#91;required&#93; The outcomes.
+#' @param tags The tags to assign to the rule version.
 #'
 #' @section Request syntax:
 #' ```
@@ -1427,6 +2496,12 @@ frauddetector_update_rule_metadata <- function(rule, description) {
 #'   language = "DETECTORPL",
 #'   outcomes = list(
 #'     "string"
+#'   ),
+#'   tags = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1434,14 +2509,14 @@ frauddetector_update_rule_metadata <- function(rule, description) {
 #' @keywords internal
 #'
 #' @rdname frauddetector_update_rule_version
-frauddetector_update_rule_version <- function(rule, description = NULL, expression, language, outcomes) {
+frauddetector_update_rule_version <- function(rule, description = NULL, expression, language, outcomes, tags = NULL) {
   op <- new_operation(
     name = "UpdateRuleVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$update_rule_version_input(rule = rule, description = description, expression = expression, language = language, outcomes = outcomes)
+  input <- .frauddetector$update_rule_version_input(rule = rule, description = description, expression = expression, language = language, outcomes = outcomes, tags = tags)
   output <- .frauddetector$update_rule_version_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -1462,7 +2537,8 @@ frauddetector_update_rule_version <- function(rule, description = NULL, expressi
 #' @param name &#91;required&#93; The name of the variable.
 #' @param defaultValue The new default value of the variable.
 #' @param description The new description.
-#' @param variableType The variable type.
+#' @param variableType The variable type. For more information see [Variable
+#' types](https://docs.aws.amazon.com/frauddetector/latest/ug/create-a-variable.html#variable-types).
 #'
 #' @section Request syntax:
 #' ```

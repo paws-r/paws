@@ -2,18 +2,24 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_delete_public_access_block}
 \alias{s3control_delete_public_access_block}
-\title{Removes the PublicAccessBlock configuration for an Amazon Web Services
-account}
+\title{Removes the PublicAccessBlock configuration for an AWS account}
 \usage{
 s3control_delete_public_access_block(AccountId)
 }
 \arguments{
-\item{AccountId}{[required] The account ID for the Amazon Web Services account whose
-\code{PublicAccessBlock} configuration you want to remove.}
+\item{AccountId}{[required] The account ID for the AWS account whose \code{PublicAccessBlock}
+configuration you want to remove.}
 }
 \description{
-Removes the \code{PublicAccessBlock} configuration for an Amazon Web Services
-account.
+Removes the \code{PublicAccessBlock} configuration for an AWS account. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html}{Using Amazon S3 block public access}.
+}
+\details{
+Related actions include:
+\itemize{
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetPublicAccessBlock.html}{GetPublicAccessBlock}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutPublicAccessBlock.html}{PutPublicAccessBlock}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_public_access_block(

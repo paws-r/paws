@@ -9,13 +9,14 @@ NULL
 #'
 #' @usage
 #' outposts_create_outpost(Name, Description, SiteId, AvailabilityZone,
-#'   AvailabilityZoneId)
+#'   AvailabilityZoneId, Tags)
 #'
-#' @param Name 
+#' @param Name &#91;required&#93; 
 #' @param Description 
 #' @param SiteId &#91;required&#93; 
 #' @param AvailabilityZone 
 #' @param AvailabilityZoneId 
+#' @param Tags The tags to apply to the Outpost.
 #'
 #' @section Request syntax:
 #' ```
@@ -24,21 +25,24 @@ NULL
 #'   Description = "string",
 #'   SiteId = "string",
 #'   AvailabilityZone = "string",
-#'   AvailabilityZoneId = "string"
+#'   AvailabilityZoneId = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname outposts_create_outpost
-outposts_create_outpost <- function(Name = NULL, Description = NULL, SiteId, AvailabilityZone = NULL, AvailabilityZoneId = NULL) {
+outposts_create_outpost <- function(Name, Description = NULL, SiteId, AvailabilityZone = NULL, AvailabilityZoneId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateOutpost",
     http_method = "POST",
     http_path = "/outposts",
     paginator = list()
   )
-  input <- .outposts$create_outpost_input(Name = Name, Description = Description, SiteId = SiteId, AvailabilityZone = AvailabilityZone, AvailabilityZoneId = AvailabilityZoneId)
+  input <- .outposts$create_outpost_input(Name = Name, Description = Description, SiteId = SiteId, AvailabilityZone = AvailabilityZone, AvailabilityZoneId = AvailabilityZoneId, Tags = Tags)
   output <- .outposts$create_outpost_output()
   config <- get_config()
   svc <- .outposts$service(config)
@@ -271,3 +275,119 @@ outposts_list_sites <- function(NextToken = NULL, MaxResults = NULL) {
   return(response)
 }
 .outposts$operations$list_sites <- outposts_list_sites
+
+#' Lists the tags for the specified resource
+#'
+#' Lists the tags for the specified resource.
+#'
+#' @usage
+#' outposts_list_tags_for_resource(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname outposts_list_tags_for_resource
+outposts_list_tags_for_resource <- function(ResourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .outposts$list_tags_for_resource_input(ResourceArn = ResourceArn)
+  output <- .outposts$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .outposts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.outposts$operations$list_tags_for_resource <- outposts_list_tags_for_resource
+
+#' Adds tags to the specified resource
+#'
+#' Adds tags to the specified resource.
+#'
+#' @usage
+#' outposts_tag_resource(ResourceArn, Tags)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#' @param Tags &#91;required&#93; The tags to add to the resource.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   ResourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname outposts_tag_resource
+outposts_tag_resource <- function(ResourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .outposts$tag_resource_input(ResourceArn = ResourceArn, Tags = Tags)
+  output <- .outposts$tag_resource_output()
+  config <- get_config()
+  svc <- .outposts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.outposts$operations$tag_resource <- outposts_tag_resource
+
+#' Removes tags from the specified resource
+#'
+#' Removes tags from the specified resource.
+#'
+#' @usage
+#' outposts_untag_resource(ResourceArn, TagKeys)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#' @param TagKeys &#91;required&#93; The tag keys.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   ResourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname outposts_untag_resource
+outposts_untag_resource <- function(ResourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .outposts$untag_resource_input(ResourceArn = ResourceArn, TagKeys = TagKeys)
+  output <- .outposts$untag_resource_output()
+  config <- get_config()
+  svc <- .outposts$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.outposts$operations$untag_resource <- outposts_untag_resource

@@ -9,13 +9,13 @@ organizations_update_policy(PolicyId, Name, Description, Content)
 \arguments{
 \item{PolicyId}{[required] The unique identifier (ID) of the policy that you want to update.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a policy ID
 string requires "p-" followed by from 8 to 128 lowercase or uppercase
 letters, digits, or the underscore character (\\_).}
 
 \item{Name}{If provided, the new name for the policy.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} that is used to
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
 validate this parameter is a string of any of the characters in the
 ASCII character range.}
 
@@ -23,7 +23,7 @@ ASCII character range.}
 
 \item{Content}{If provided, the new content for the policy. The text must be correctly
 formatted JSON that complies with the syntax for the policy's type. For
-more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_reference_scp-syntax.html}{Service Control Policy Syntax}
+more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html}{Service Control Policy Syntax}
 in the \emph{AWS Organizations User Guide.}}
 }
 \description{
@@ -32,7 +32,7 @@ you don't supply any parameter, that value remains unchanged. You can't
 change a policy's type.
 }
 \details{
-This operation can be called only from the organization's master
+This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{

@@ -10,11 +10,30 @@ s3control_get_access_point_policy(AccountId, Name)
 \arguments{
 \item{AccountId}{[required] The account ID for the account that owns the specified access point.}
 
-\item{Name}{[required] The name of the access point whose policy you want to retrieve.}
+\item{Name}{[required] The name of the access point whose policy you want to retrieve.
+
+For using this parameter with Amazon S3 on Outposts with the REST API,
+you must specify the name and the x-amz-outpost-id as well.
+
+For using this parameter with S3 on Outposts with the AWS SDK and CLI,
+you must specify the ARN of the access point accessed in the format
+\verb{arn:aws:s3-outposts:&lt;Region&gt;:&lt;account-id&gt;:outpost/&lt;outpost-id&gt;/accesspoint/&lt;my-accesspoint-name&gt;}.
+For example, to access the access point \code{reports-ap} through outpost
+\code{my-outpost} owned by account \code{123456789012} in Region \code{us-west-2}, use
+the URL encoding of
+\code{arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap}.
+The value must be URL encoded.}
 }
 \description{
 Returns the access point policy associated with the specified access
 point.
+}
+\details{
+The following actions are related to \code{GetAccessPointPolicy}:
+\itemize{
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicy.html}{PutAccessPointPolicy}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteAccessPointPolicy.html}{DeleteAccessPointPolicy}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_access_point_policy(

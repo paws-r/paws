@@ -14,7 +14,7 @@ Deletes the specified listener.
 }
 \details{
 Alternatively, your listener is deleted when you delete the load
-balancer to which it is attached, using DeleteLoadBalancer.
+balancer to which it is attached.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_listener(

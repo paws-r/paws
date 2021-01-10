@@ -12,7 +12,8 @@ redshift_create_cluster(DBName, ClusterIdentifier, ClusterType,
   ClusterVersion, AllowVersionUpgrade, NumberOfNodes, PubliclyAccessible,
   Encrypted, HsmClientCertificateIdentifier, HsmConfigurationIdentifier,
   ElasticIp, Tags, KmsKeyId, EnhancedVpcRouting, AdditionalInfo, IamRoles,
-  MaintenanceTrackName, SnapshotScheduleIdentifier)
+  MaintenanceTrackName, SnapshotScheduleIdentifier,
+  AvailabilityZoneRelocation)
 }
 \arguments{
 \item{DBName}{The name of the first database to be created when the cluster is
@@ -64,7 +65,8 @@ node types, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working
 in the \emph{Amazon Redshift Cluster Management Guide}.
 
 Valid Values: \code{ds2.xlarge} | \code{ds2.8xlarge} | \code{dc1.large} | \code{dc1.8xlarge}
-| \code{dc2.large} | \code{dc2.8xlarge} | \code{ra3.4xlarge} | \code{ra3.16xlarge}}
+| \code{dc2.large} | \code{dc2.8xlarge} | \code{ra3.xlplus} | \code{ra3.4xlarge} |
+\code{ra3.16xlarge}}
 
 \item{MasterUsername}{[required] The user name associated with the master user account for the cluster
 that is being created.
@@ -252,6 +254,9 @@ cluster. If you don't provide a maintenance track name, the cluster is
 assigned to the \code{current} track.}
 
 \item{SnapshotScheduleIdentifier}{A unique identifier for the snapshot schedule.}
+
+\item{AvailabilityZoneRelocation}{The option to enable relocation for an Amazon Redshift cluster between
+Availability Zones after the cluster is created.}
 }
 \description{
 Creates a new cluster with the specified parameters.
@@ -305,7 +310,8 @@ in the \emph{Amazon Redshift Cluster Management Guide}.
     "string"
   ),
   MaintenanceTrackName = "string",
-  SnapshotScheduleIdentifier = "string"
+  SnapshotScheduleIdentifier = "string",
+  AvailabilityZoneRelocation = TRUE|FALSE
 )
 }
 }

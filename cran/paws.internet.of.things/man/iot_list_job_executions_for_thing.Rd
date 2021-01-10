@@ -4,14 +4,24 @@
 \alias{iot_list_job_executions_for_thing}
 \title{Lists the job executions for the specified thing}
 \usage{
-iot_list_job_executions_for_thing(thingName, status, maxResults,
-  nextToken)
+iot_list_job_executions_for_thing(thingName, status, namespaceId,
+  maxResults, nextToken)
 }
 \arguments{
 \item{thingName}{[required] The thing name.}
 
 \item{status}{An optional filter that lets you search for jobs that have the specified
 status.}
+
+\item{namespaceId}{The namespace used to indicate that a job is a customer-managed job.
+
+When you specify a value for this parameter, AWS IoT Core sends jobs
+notifications to MQTT topics that contain the value in the following
+format.
+
+\verb{$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/}
+
+The \code{namespaceId} feature is in public preview.}
 
 \item{maxResults}{The maximum number of results to be returned per request.}
 
@@ -24,6 +34,7 @@ Lists the job executions for the specified thing.
 \preformatted{svc$list_job_executions_for_thing(
   thingName = "string",
   status = "QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED"|"TIMED_OUT"|"REJECTED"|"REMOVED"|"CANCELED",
+  namespaceId = "string",
   maxResults = 123,
   nextToken = "string"
 )

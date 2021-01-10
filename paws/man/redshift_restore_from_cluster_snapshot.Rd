@@ -12,7 +12,8 @@ redshift_restore_from_cluster_snapshot(ClusterIdentifier,
   ClusterSecurityGroups, VpcSecurityGroupIds, PreferredMaintenanceWindow,
   AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod,
   KmsKeyId, NodeType, EnhancedVpcRouting, AdditionalInfo, IamRoles,
-  MaintenanceTrackName, SnapshotScheduleIdentifier, NumberOfNodes)
+  MaintenanceTrackName, SnapshotScheduleIdentifier, NumberOfNodes,
+  AvailabilityZoneRelocation)
 }
 \arguments{
 \item{ClusterIdentifier}{[required] The identifier of the cluster that will be created from restoring the
@@ -176,6 +177,9 @@ source cluster are on different tracks.}
 \item{SnapshotScheduleIdentifier}{A unique identifier for the snapshot schedule.}
 
 \item{NumberOfNodes}{The number of nodes specified when provisioning the restored cluster.}
+
+\item{AvailabilityZoneRelocation}{The option to enable relocation for an Amazon Redshift cluster between
+Availability Zones after the cluster is restored.}
 }
 \description{
 Creates a new cluster from a snapshot. By default, Amazon Redshift
@@ -228,7 +232,8 @@ in the \emph{Amazon Redshift Cluster Management Guide}.
   ),
   MaintenanceTrackName = "string",
   SnapshotScheduleIdentifier = "string",
-  NumberOfNodes = 123
+  NumberOfNodes = 123,
+  AvailabilityZoneRelocation = TRUE|FALSE
 )
 }
 }

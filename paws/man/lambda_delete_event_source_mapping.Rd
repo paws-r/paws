@@ -10,7 +10,7 @@ lambda_delete_event_source_mapping(UUID)
 \item{UUID}{[required] The identifier of the event source mapping.}
 }
 \description{
-Deletes an \href{https://docs.aws.amazon.com/lambda/latest/dg/intro-invocation-modes.html}{event source mapping}.
+Deletes an \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html}{event source mapping}.
 You can get the identifier of a mapping from the output of
 ListEventSourceMappings.
 }

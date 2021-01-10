@@ -12,9 +12,9 @@ NULL
 #' 
 #' To use the services of the DRT and make an `AssociateDRTLogBucket`
 #' request, you must be subscribed to the [Business Support
-#' plan](https://aws.amazon.com/premiumsupport/business-support/) or the
+#' plan](https://aws.amazon.com/premiumsupport/plans/business/) or the
 #' [Enterprise Support
-#' plan](https://aws.amazon.com/premiumsupport/enterprise-support/).
+#' plan](https://aws.amazon.com/premiumsupport/plans/enterprise/).
 #'
 #' @usage
 #' shield_associate_drt_log_bucket(LogBucket)
@@ -62,7 +62,7 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' associated role, the new `RoleArn` will replace the existing `RoleArn`.
 #' 
 #' Prior to making the `AssociateDRTRole` request, you must attach the
-#' [AWSShieldDRTAccessPolicy](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy)
+#' [AWSShieldDRTAccessPolicy](https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy)
 #' managed policy to the role you will specify in the request. For more
 #' information see Attaching and Detaching IAM Policies. The role must also
 #' trust the service principal ` drt.shield.amazonaws.com`. For more
@@ -82,9 +82,9 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' 
 #' To use the services of the DRT and make an `AssociateDRTRole` request,
 #' you must be subscribed to the [Business Support
-#' plan](https://aws.amazon.com/premiumsupport/business-support/) or the
+#' plan](https://aws.amazon.com/premiumsupport/plans/business/) or the
 #' [Enterprise Support
-#' plan](https://aws.amazon.com/premiumsupport/enterprise-support/).
+#' plan](https://aws.amazon.com/premiumsupport/plans/enterprise/).
 #'
 #' @usage
 #' shield_associate_drt_role(RoleArn)
@@ -93,7 +93,7 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' your AWS account.
 #' 
 #' Prior to making the `AssociateDRTRole` request, you must attach the
-#' [AWSShieldDRTAccessPolicy](https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy)
+#' [AWSShieldDRTAccessPolicy](https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy)
 #' managed policy to this role. For more information see Attaching and
 #' Detaching IAM Policies.
 #'
@@ -253,8 +253,8 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' You can add protection to only a single resource with each
 #' CreateProtection request. If you want to add protection to multiple
 #' resources at once, use the [AWS WAF
-#' console](https://console.aws.amazon.com/waf/). For more information see
-#' [Getting Started with AWS Shield
+#' console](https://console.aws.amazon.com/waf/home). For more information
+#' see [Getting Started with AWS Shield
 #' Advanced](https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html)
 #' and [Add AWS Shield Advanced Protection to more AWS
 #' Resources](https://docs.aws.amazon.com/waf/latest/developerguide/configure-new-protection.html).
@@ -312,6 +312,81 @@ shield_create_protection <- function(Name, ResourceArn) {
   return(response)
 }
 .shield$operations$create_protection <- shield_create_protection
+
+#' Creates a grouping of protected resources so they can be handled as a
+#' collective
+#'
+#' Creates a grouping of protected resources so they can be handled as a
+#' collective. This resource grouping improves the accuracy of detection
+#' and reduces false positives.
+#'
+#' @usage
+#' shield_create_protection_group(ProtectionGroupId, Aggregation, Pattern,
+#'   ResourceType, Members)
+#'
+#' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
+#' protection group in lists and to manage the protection group, for
+#' example to update, delete, or describe it.
+#' @param Aggregation &#91;required&#93; Defines how AWS Shield combines resource data for the group in order to
+#' detect, mitigate, and report events.
+#' 
+#' -   Sum - Use the total traffic across the group. This is a good choice
+#'     for most cases. Examples include Elastic IP addresses for EC2
+#'     instances that scale manually or automatically.
+#' 
+#' -   Mean - Use the average of the traffic across the group. This is a
+#'     good choice for resources that share traffic uniformly. Examples
+#'     include accelerators and load balancers.
+#' 
+#' -   Max - Use the highest traffic from each resource. This is useful for
+#'     resources that don't share traffic and for resources that share that
+#'     traffic in a non-uniform way. Examples include CloudFront
+#'     distributions and origin resources for CloudFront distributions.
+#' @param Pattern &#91;required&#93; The criteria to use to choose the protected resources for inclusion in
+#' the group. You can include all resources that have protections, provide
+#' a list of resource Amazon Resource Names (ARNs), or include all
+#' resources of a specified resource type.
+#' @param ResourceType The resource type to include in the protection group. All protected
+#' resources of this type are included in the protection group. Newly
+#' protected resources of this type are automatically added to the group.
+#' You must set this when you set `Pattern` to `BY_RESOURCE_TYPE` and you
+#' must not set it for any other `Pattern` setting.
+#' @param Members The Amazon Resource Names (ARNs) of the resources to include in the
+#' protection group. You must set this when you set `Pattern` to
+#' `ARBITRARY` and you must not set it for any other `Pattern` setting.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_protection_group(
+#'   ProtectionGroupId = "string",
+#'   Aggregation = "SUM"|"MEAN"|"MAX",
+#'   Pattern = "ALL"|"ARBITRARY"|"BY_RESOURCE_TYPE",
+#'   ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
+#'   Members = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_create_protection_group
+shield_create_protection_group <- function(ProtectionGroupId, Aggregation, Pattern, ResourceType = NULL, Members = NULL) {
+  op <- new_operation(
+    name = "CreateProtectionGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$create_protection_group_input(ProtectionGroupId = ProtectionGroupId, Aggregation = Aggregation, Pattern = Pattern, ResourceType = ResourceType, Members = Members)
+  output <- .shield$create_protection_group_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$create_protection_group <- shield_create_protection_group
 
 #' Activates AWS Shield Advanced for an account
 #'
@@ -385,6 +460,44 @@ shield_delete_protection <- function(ProtectionId) {
 }
 .shield$operations$delete_protection <- shield_delete_protection
 
+#' Removes the specified protection group
+#'
+#' Removes the specified protection group.
+#'
+#' @usage
+#' shield_delete_protection_group(ProtectionGroupId)
+#'
+#' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
+#' protection group in lists and to manage the protection group, for
+#' example to update, delete, or describe it.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_protection_group(
+#'   ProtectionGroupId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_delete_protection_group
+shield_delete_protection_group <- function(ProtectionGroupId) {
+  op <- new_operation(
+    name = "DeleteProtectionGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$delete_protection_group_input(ProtectionGroupId = ProtectionGroupId)
+  output <- .shield$delete_protection_group_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$delete_protection_group <- shield_delete_protection_group
+
 #' Removes AWS Shield Advanced from an account
 #'
 #' Removes AWS Shield Advanced from an account. AWS Shield Advanced
@@ -454,6 +567,53 @@ shield_describe_attack <- function(AttackId) {
   return(response)
 }
 .shield$operations$describe_attack <- shield_describe_attack
+
+#' Provides information about the number and type of attacks AWS Shield has
+#' detected in the last year for all resources that belong to your account,
+#' regardless of whether you've defined Shield protections for them
+#'
+#' Provides information about the number and type of attacks AWS Shield has
+#' detected in the last year for all resources that belong to your account,
+#' regardless of whether you've defined Shield protections for them. This
+#' operation is available to Shield customers as well as to Shield Advanced
+#' customers.
+#' 
+#' The operation returns data for the time range of midnight UTC, one year
+#' ago, to midnight UTC, today. For example, if the current time is
+#' `2020-10-26 15:39:32 PDT`, equal to `2020-10-26 22:39:32 UTC`, then the
+#' time range for the attack data returned is from
+#' `2019-10-26 00:00:00 UTC` to `2020-10-26 00:00:00 UTC`.
+#' 
+#' The time range indicates the period covered by the attack statistics
+#' data items.
+#'
+#' @usage
+#' shield_describe_attack_statistics()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_attack_statistics()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_describe_attack_statistics
+shield_describe_attack_statistics <- function() {
+  op <- new_operation(
+    name = "DescribeAttackStatistics",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$describe_attack_statistics_input()
+  output <- .shield$describe_attack_statistics_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$describe_attack_statistics <- shield_describe_attack_statistics
 
 #' Returns the current role and list of Amazon S3 log buckets used by the
 #' DDoS Response Team (DRT) to access your AWS account while assisting with
@@ -570,6 +730,44 @@ shield_describe_protection <- function(ProtectionId = NULL, ResourceArn = NULL) 
 }
 .shield$operations$describe_protection <- shield_describe_protection
 
+#' Returns the specification for the specified protection group
+#'
+#' Returns the specification for the specified protection group.
+#'
+#' @usage
+#' shield_describe_protection_group(ProtectionGroupId)
+#'
+#' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
+#' protection group in lists and to manage the protection group, for
+#' example to update, delete, or describe it.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_protection_group(
+#'   ProtectionGroupId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_describe_protection_group
+shield_describe_protection_group <- function(ProtectionGroupId) {
+  op <- new_operation(
+    name = "DescribeProtectionGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$describe_protection_group_input(ProtectionGroupId = ProtectionGroupId)
+  output <- .shield$describe_protection_group_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$describe_protection_group <- shield_describe_protection_group
+
 #' Provides details about the AWS Shield Advanced subscription for an
 #' account
 #'
@@ -648,12 +846,12 @@ shield_disable_proactive_engagement <- function() {
 #' 
 #' To make a `DisassociateDRTLogBucket` request, you must be subscribed to
 #' the [Business Support
-#' plan](https://aws.amazon.com/premiumsupport/business-support/) or the
+#' plan](https://aws.amazon.com/premiumsupport/plans/business/) or the
 #' [Enterprise Support
-#' plan](https://aws.amazon.com/premiumsupport/enterprise-support/).
-#' However, if you are not subscribed to one of these support plans, but
-#' had been previously and had granted the DRT access to your account, you
-#' can submit a `DisassociateDRTLogBucket` request to remove this access.
+#' plan](https://aws.amazon.com/premiumsupport/plans/enterprise/). However,
+#' if you are not subscribed to one of these support plans, but had been
+#' previously and had granted the DRT access to your account, you can
+#' submit a `DisassociateDRTLogBucket` request to remove this access.
 #'
 #' @usage
 #' shield_disassociate_drt_log_bucket(LogBucket)
@@ -693,12 +891,12 @@ shield_disassociate_drt_log_bucket <- function(LogBucket) {
 #' 
 #' To make a `DisassociateDRTRole` request, you must be subscribed to the
 #' [Business Support
-#' plan](https://aws.amazon.com/premiumsupport/business-support/) or the
+#' plan](https://aws.amazon.com/premiumsupport/plans/business/) or the
 #' [Enterprise Support
-#' plan](https://aws.amazon.com/premiumsupport/enterprise-support/).
-#' However, if you are not subscribed to one of these support plans, but
-#' had been previously and had granted the DRT access to your account, you
-#' can submit a `DisassociateDRTRole` request to remove this access.
+#' plan](https://aws.amazon.com/premiumsupport/plans/enterprise/). However,
+#' if you are not subscribed to one of these support plans, but had been
+#' previously and had granted the DRT access to your account, you can
+#' submit a `DisassociateDRTRole` request to remove this access.
 #'
 #' @usage
 #' shield_disassociate_drt_role()
@@ -864,23 +1062,24 @@ shield_get_subscription_state <- function() {
 #' type. The sample request above indicates a `number` type because the
 #' default used by WAF is Unix time in seconds. However any valid
 #' [timestamp
-#' format](http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types)
+#' format](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#parameter-types)
 #' is allowed.
 #' @param EndTime The end of the time period for the attacks. This is a `timestamp` type.
 #' The sample request above indicates a `number` type because the default
 #' used by WAF is Unix time in seconds. However any valid [timestamp
-#' format](http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types)
+#' format](https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters.html#parameter-types)
 #' is allowed.
 #' @param NextToken The `ListAttacksRequest.NextMarker` value from a previous call to
 #' `ListAttacksRequest`. Pass null if this is the first call.
-#' @param MaxResults The maximum number of AttackSummary objects to be returned. If this is
-#' left blank, the first 20 results will be returned.
+#' @param MaxResults The maximum number of AttackSummary objects to return. If you leave this
+#' blank, Shield Advanced returns the first 20 results.
 #' 
-#' This is a maximum value; it is possible that AWS WAF will return the
-#' results in smaller batches. That is, the number of AttackSummary objects
-#' returned could be less than `MaxResults`, even if there are still more
-#' AttackSummary objects yet to return. If there are more AttackSummary
-#' objects to return, AWS WAF will always also return a `NextToken`.
+#' This is a maximum value. Shield Advanced might return the results in
+#' smaller batches. That is, the number of objects returned could be less
+#' than `MaxResults`, even if there are still more objects yet to return.
+#' If there are more objects to return, Shield Advanced returns a value in
+#' `NextToken` that you can use in your next request, to get the next batch
+#' of objects.
 #'
 #' @section Request syntax:
 #' ```
@@ -929,6 +1128,53 @@ shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime =
 }
 .shield$operations$list_attacks <- shield_list_attacks
 
+#' Retrieves the ProtectionGroup objects for the account
+#'
+#' Retrieves the ProtectionGroup objects for the account.
+#'
+#' @usage
+#' shield_list_protection_groups(NextToken, MaxResults)
+#'
+#' @param NextToken The next token value from a previous call to `ListProtectionGroups`.
+#' Pass null if this is the first call.
+#' @param MaxResults The maximum number of ProtectionGroup objects to return. If you leave
+#' this blank, Shield Advanced returns the first 20 results.
+#' 
+#' This is a maximum value. Shield Advanced might return the results in
+#' smaller batches. That is, the number of objects returned could be less
+#' than `MaxResults`, even if there are still more objects yet to return.
+#' If there are more objects to return, Shield Advanced returns a value in
+#' `NextToken` that you can use in your next request, to get the next batch
+#' of objects.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_protection_groups(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_list_protection_groups
+shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListProtectionGroups",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$list_protection_groups_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .shield$list_protection_groups_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$list_protection_groups <- shield_list_protection_groups
+
 #' Lists all Protection objects for the account
 #'
 #' Lists all Protection objects for the account.
@@ -938,14 +1184,15 @@ shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime =
 #'
 #' @param NextToken The `ListProtectionsRequest.NextToken` value from a previous call to
 #' `ListProtections`. Pass null if this is the first call.
-#' @param MaxResults The maximum number of Protection objects to be returned. If this is left
-#' blank the first 20 results will be returned.
+#' @param MaxResults The maximum number of Protection objects to return. If you leave this
+#' blank, Shield Advanced returns the first 20 results.
 #' 
-#' This is a maximum value; it is possible that AWS WAF will return the
-#' results in smaller batches. That is, the number of Protection objects
-#' returned could be less than `MaxResults`, even if there are still more
-#' Protection objects yet to return. If there are more Protection objects
-#' to return, AWS WAF will always also return a `NextToken`.
+#' This is a maximum value. Shield Advanced might return the results in
+#' smaller batches. That is, the number of objects returned could be less
+#' than `MaxResults`, even if there are still more objects yet to return.
+#' If there are more objects to return, Shield Advanced returns a value in
+#' `NextToken` that you can use in your next request, to get the next batch
+#' of objects.
 #'
 #' @section Request syntax:
 #' ```
@@ -974,6 +1221,58 @@ shield_list_protections <- function(NextToken = NULL, MaxResults = NULL) {
   return(response)
 }
 .shield$operations$list_protections <- shield_list_protections
+
+#' Retrieves the resources that are included in the protection group
+#'
+#' Retrieves the resources that are included in the protection group.
+#'
+#' @usage
+#' shield_list_resources_in_protection_group(ProtectionGroupId, NextToken,
+#'   MaxResults)
+#'
+#' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
+#' protection group in lists and to manage the protection group, for
+#' example to update, delete, or describe it.
+#' @param NextToken The next token value from a previous call to
+#' `ListResourcesInProtectionGroup`. Pass null if this is the first call.
+#' @param MaxResults The maximum number of resource ARN objects to return. If you leave this
+#' blank, Shield Advanced returns the first 20 results.
+#' 
+#' This is a maximum value. Shield Advanced might return the results in
+#' smaller batches. That is, the number of objects returned could be less
+#' than `MaxResults`, even if there are still more objects yet to return.
+#' If there are more objects to return, Shield Advanced returns a value in
+#' `NextToken` that you can use in your next request, to get the next batch
+#' of objects.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_resources_in_protection_group(
+#'   ProtectionGroupId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_list_resources_in_protection_group
+shield_list_resources_in_protection_group <- function(ProtectionGroupId, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListResourcesInProtectionGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$list_resources_in_protection_group_input(ProtectionGroupId = ProtectionGroupId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .shield$list_resources_in_protection_group_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$list_resources_in_protection_group <- shield_list_resources_in_protection_group
 
 #' Updates the details of the list of email addresses and phone numbers
 #' that the DDoS Response Team (DRT) can use to contact you if you have
@@ -1027,6 +1326,80 @@ shield_update_emergency_contact_settings <- function(EmergencyContactList = NULL
   return(response)
 }
 .shield$operations$update_emergency_contact_settings <- shield_update_emergency_contact_settings
+
+#' Updates an existing protection group
+#'
+#' Updates an existing protection group. A protection group is a grouping
+#' of protected resources so they can be handled as a collective. This
+#' resource grouping improves the accuracy of detection and reduces false
+#' positives.
+#'
+#' @usage
+#' shield_update_protection_group(ProtectionGroupId, Aggregation, Pattern,
+#'   ResourceType, Members)
+#'
+#' @param ProtectionGroupId &#91;required&#93; The name of the protection group. You use this to identify the
+#' protection group in lists and to manage the protection group, for
+#' example to update, delete, or describe it.
+#' @param Aggregation &#91;required&#93; Defines how AWS Shield combines resource data for the group in order to
+#' detect, mitigate, and report events.
+#' 
+#' -   Sum - Use the total traffic across the group. This is a good choice
+#'     for most cases. Examples include Elastic IP addresses for EC2
+#'     instances that scale manually or automatically.
+#' 
+#' -   Mean - Use the average of the traffic across the group. This is a
+#'     good choice for resources that share traffic uniformly. Examples
+#'     include accelerators and load balancers.
+#' 
+#' -   Max - Use the highest traffic from each resource. This is useful for
+#'     resources that don't share traffic and for resources that share that
+#'     traffic in a non-uniform way. Examples include CloudFront
+#'     distributions and origin resources for CloudFront distributions.
+#' @param Pattern &#91;required&#93; The criteria to use to choose the protected resources for inclusion in
+#' the group. You can include all resources that have protections, provide
+#' a list of resource Amazon Resource Names (ARNs), or include all
+#' resources of a specified resource type.
+#' @param ResourceType The resource type to include in the protection group. All protected
+#' resources of this type are included in the protection group. You must
+#' set this when you set `Pattern` to `BY_RESOURCE_TYPE` and you must not
+#' set it for any other `Pattern` setting.
+#' @param Members The Amazon Resource Names (ARNs) of the resources to include in the
+#' protection group. You must set this when you set `Pattern` to
+#' `ARBITRARY` and you must not set it for any other `Pattern` setting.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_protection_group(
+#'   ProtectionGroupId = "string",
+#'   Aggregation = "SUM"|"MEAN"|"MAX",
+#'   Pattern = "ALL"|"ARBITRARY"|"BY_RESOURCE_TYPE",
+#'   ResourceType = "CLOUDFRONT_DISTRIBUTION"|"ROUTE_53_HOSTED_ZONE"|"ELASTIC_IP_ALLOCATION"|"CLASSIC_LOAD_BALANCER"|"APPLICATION_LOAD_BALANCER"|"GLOBAL_ACCELERATOR",
+#'   Members = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname shield_update_protection_group
+shield_update_protection_group <- function(ProtectionGroupId, Aggregation, Pattern, ResourceType = NULL, Members = NULL) {
+  op <- new_operation(
+    name = "UpdateProtectionGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .shield$update_protection_group_input(ProtectionGroupId = ProtectionGroupId, Aggregation = Aggregation, Pattern = Pattern, ResourceType = ResourceType, Members = Members)
+  output <- .shield$update_protection_group_output()
+  config <- get_config()
+  svc <- .shield$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.shield$operations$update_protection_group <- shield_update_protection_group
 
 #' Updates the details of an existing subscription
 #'

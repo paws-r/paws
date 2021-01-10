@@ -32,7 +32,7 @@ NULL
 #'     format. For more information, see [MPEG-4 specification ISO/IEC
 #'     14496-15](https://www.iso.org/standard/55980.html). For information
 #'     about adapting stream data to a given format, see [NAL Adaptation
-#'     Flags](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html).
+#'     Flags](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html).
 #' 
 #' -   The audio track (if present) of each fragment must contain codec
 #'     private data in the AAC format ([AAC specification ISO/IEC
@@ -43,7 +43,7 @@ NULL
 #' `GetClip.OutgoingBytes` Amazon CloudWatch metric. For information about
 #' using CloudWatch to monitor Kinesis Video Streams, see [Monitoring
 #' Kinesis Video
-#' Streams](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html).
+#' Streams](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html).
 #' For pricing information, see [Amazon Kinesis Video Streams
 #' Pricing](https://aws.amazon.com/kinesis/video-streams/pricing/) and [AWS
 #' Pricing](https://aws.amazon.com/pricing/). Charges for outgoing AWS data
@@ -128,7 +128,7 @@ kinesisvideoarchivedmedia_get_clip <- function(StreamName = NULL, StreamARN = NU
 #'     format. For more information, see [MPEG-4 specification ISO/IEC
 #'     14496-15](https://www.iso.org/standard/55980.html). For information
 #'     about adapting stream data to a given format, see [NAL Adaptation
-#'     Flags](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html).
+#'     Flags](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html).
 #' 
 #' -   The audio track (if present) of each fragment must contain codec
 #'     private data in the AAC format ([AAC specification ISO/IEC
@@ -139,7 +139,7 @@ kinesisvideoarchivedmedia_get_clip <- function(StreamName = NULL, StreamARN = NU
 #' Streams:
 #' 
 #' 1.  Get an endpoint using
-#'     [GetDataEndpoint](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_GetDataEndpoint.html),
+#'     [GetDataEndpoint](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_GetDataEndpoint.html),
 #'     specifying `GET_DASH_STREAMING_SESSION_URL` for the `APIName`
 #'     parameter.
 #' 
@@ -209,7 +209,7 @@ kinesisvideoarchivedmedia_get_clip <- function(StreamName = NULL, StreamARN = NU
 #' -   A streaming session URL should not be shared between players. The
 #'     service might throttle a session if multiple media players are
 #'     sharing it. For connection limits, see [Kinesis Video Streams
-#'     Limits](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html).
+#'     Limits](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html).
 #' 
 #' -   A Kinesis video stream can have a maximum of ten active MPEG-DASH
 #'     streaming sessions. If a new session is created when the maximum
@@ -226,7 +226,7 @@ kinesisvideoarchivedmedia_get_clip <- function(StreamName = NULL, StreamARN = NU
 #' monitoring the `GetMP4MediaFragment.OutgoingBytes` Amazon CloudWatch
 #' metric. For information about using CloudWatch to monitor Kinesis Video
 #' Streams, see [Monitoring Kinesis Video
-#' Streams](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html).
+#' Streams](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html).
 #' For pricing information, see [Amazon Kinesis Video Streams
 #' Pricing](https://aws.amazon.com/kinesis/video-streams/pricing/) and [AWS
 #' Pricing](https://aws.amazon.com/pricing/). Charges for both HLS sessions
@@ -234,7 +234,7 @@ kinesisvideoarchivedmedia_get_clip <- function(StreamName = NULL, StreamARN = NU
 #' 
 #' For more information about HLS, see [HTTP Live
 #' Streaming](https://developer.apple.com/streaming/) on the [Apple
-#' Developer site](https://developer.apple.com).
+#' Developer site](https://developer.apple.com/).
 #' 
 #' If an error is thrown after invoking a Kinesis Video Streams archived
 #' media API, in addition to the HTTP status code and the response body, it
@@ -451,7 +451,7 @@ kinesisvideoarchivedmedia_get_dash_streaming_session_url <- function(StreamName 
 #'     format ([MPEG-4 specification ISO/IEC
 #'     14496-15](https://www.iso.org/standard/55980.html)). For information
 #'     about adapting stream data to a given format, see [NAL Adaptation
-#'     Flags](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html).
+#'     Flags](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html).
 #' 
 #' -   The audio track (if present) of each fragment must contain codec
 #'     private data in the AAC format ([AAC specification ISO/IEC
@@ -466,7 +466,7 @@ kinesisvideoarchivedmedia_get_dash_streaming_session_url <- function(StreamName 
 #' The following procedure shows how to use HLS with Kinesis Video Streams:
 #' 
 #' 1.  Get an endpoint using
-#'     [GetDataEndpoint](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_GetDataEndpoint.html),
+#'     [GetDataEndpoint](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/API_GetDataEndpoint.html),
 #'     specifying `GET_HLS_STREAMING_SESSION_URL` for the `APIName`
 #'     parameter.
 #' 
@@ -562,7 +562,7 @@ kinesisvideoarchivedmedia_get_dash_streaming_session_url <- function(StreamName 
 #' -   A streaming session URL should not be shared between players. The
 #'     service might throttle a session if multiple media players are
 #'     sharing it. For connection limits, see [Kinesis Video Streams
-#'     Limits](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html).
+#'     Limits](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html).
 #' 
 #' -   A Kinesis video stream can have a maximum of ten active HLS
 #'     streaming sessions. If a new session is created when the maximum
@@ -579,7 +579,7 @@ kinesisvideoarchivedmedia_get_dash_streaming_session_url <- function(StreamName 
 #' monitoring the `GetMP4MediaFragment.OutgoingBytes` Amazon CloudWatch
 #' metric. For information about using CloudWatch to monitor Kinesis Video
 #' Streams, see [Monitoring Kinesis Video
-#' Streams](http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html).
+#' Streams](https://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html).
 #' For pricing information, see [Amazon Kinesis Video Streams
 #' Pricing](https://aws.amazon.com/kinesis/video-streams/pricing/) and [AWS
 #' Pricing](https://aws.amazon.com/pricing/). Charges for both HLS sessions
@@ -587,7 +587,7 @@ kinesisvideoarchivedmedia_get_dash_streaming_session_url <- function(StreamName 
 #' 
 #' For more information about HLS, see [HTTP Live
 #' Streaming](https://developer.apple.com/streaming/) on the [Apple
-#' Developer site](https://developer.apple.com).
+#' Developer site](https://developer.apple.com/).
 #' 
 #' If an error is thrown after invoking a Kinesis Video Streams archived
 #' media API, in addition to the HTTP status code and the response body, it

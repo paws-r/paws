@@ -17,7 +17,7 @@ storagegateway_create_cachedi_scsi_volume(GatewayARN, VolumeSizeInBytes,
 new cached volume. Specify this field if you want to create the iSCSI
 storage volume from a snapshot; otherwise, do not include this field. To
 list snapshots for your account use
-\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/ApiReference-query-DescribeSnapshots.html}{DescribeSnapshots}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeSnapshots.html}{DescribeSnapshots}
 in the \emph{Amazon Elastic Compute Cloud API Reference}.}
 
 \item{TargetName}{[required] The name of the iSCSI target used by an initiator to connect to a volume

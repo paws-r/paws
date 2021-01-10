@@ -10,7 +10,7 @@ databasemigrationservice_describe_event_subscriptions(SubscriptionName,
 \arguments{
 \item{SubscriptionName}{The name of the AWS DMS event subscription to be described.}
 
-\item{Filters}{Filters applied to the action.}
+\item{Filters}{Filters applied to event subscriptions.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
 records exist than the specified \code{MaxRecords} value, a pagination token

@@ -26,6 +26,7 @@ Updates a previously created schedule.
     ),
     MonitoringJobDefinition = list(
       BaselineConfig = list(
+        BaseliningJobName = "string",
         ConstraintsResource = list(
           S3Uri = "string"
         ),
@@ -39,7 +40,13 @@ Updates a previously created schedule.
             EndpointName = "string",
             LocalPath = "string",
             S3InputMode = "Pipe"|"File",
-            S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key"
+            S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+            FeaturesAttribute = "string",
+            InferenceAttribute = "string",
+            ProbabilityAttribute = "string",
+            ProbabilityThresholdAttribute = 123.0,
+            StartTimeOffset = "string",
+            EndTimeOffset = "string"
           )
         )
       ),
@@ -93,7 +100,9 @@ Updates a previously created schedule.
         )
       ),
       RoleArn = "string"
-    )
+    ),
+    MonitoringJobDefinitionName = "string",
+    MonitoringType = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
   )
 )
 }

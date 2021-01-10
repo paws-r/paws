@@ -27,7 +27,7 @@ of the descriptions of all the consumers that are currently registered
 with a given data stream.
 }
 \details{
-This operation has a limit of 20 transactions per second per account.
+This operation has a limit of 20 transactions per second per stream.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_stream_consumer(

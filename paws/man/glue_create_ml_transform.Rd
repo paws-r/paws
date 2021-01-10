@@ -6,7 +6,7 @@
 \usage{
 glue_create_ml_transform(Name, Description, InputRecordTables,
   Parameters, Role, GlueVersion, MaxCapacity, WorkerType, NumberOfWorkers,
-  Timeout, MaxRetries, Tags)
+  Timeout, MaxRetries, Tags, TransformEncryption)
 }
 \arguments{
 \item{Name}{[required] The unique name that you give the transform when you create it.}
@@ -102,6 +102,10 @@ task run fails.}
 to limit access to the machine learning transform. For more information
 about tags in AWS Glue, see \href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{AWS Tags in AWS Glue} in
 the developer guide.}
+
+\item{TransformEncryption}{The encryption-at-rest settings of the transform that apply to accessing
+user data. Machine learning transforms can access user data encrypted in
+Amazon S3 using KMS.}
 }
 \description{
 Creates an AWS Glue machine learning transform. This operation creates
@@ -150,6 +154,13 @@ high-quality machine learning transform. These parameters include
   MaxRetries = 123,
   Tags = list(
     "string"
+  ),
+  TransformEncryption = list(
+    MlUserDataEncryption = list(
+      MlUserDataEncryptionMode = "DISABLED"|"SSE-KMS",
+      KmsKeyId = "string"
+    ),
+    TaskRunSecurityConfigurationName = "string"
   )
 )
 }

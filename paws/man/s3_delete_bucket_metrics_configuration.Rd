@@ -5,12 +5,16 @@
 \title{Deletes a metrics configuration for the Amazon CloudWatch request
 metrics (specified by the metrics configuration ID) from the bucket}
 \usage{
-s3_delete_bucket_metrics_configuration(Bucket, Id)
+s3_delete_bucket_metrics_configuration(Bucket, Id, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the metrics configuration to delete.}
 
 \item{Id}{[required] The ID used to identify the metrics configuration.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Deletes a metrics configuration for the Amazon CloudWatch request
@@ -30,16 +34,17 @@ For information about CloudWatch request metrics for Amazon S3, see
 The following operations are related to
 \code{DeleteBucketMetricsConfiguration}:
 \itemize{
-\item GetBucketMetricsConfiguration
-\item PutBucketMetricsConfiguration
-\item ListBucketMetricsConfigurations
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketMetricsConfiguration.html}{GetBucketMetricsConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketMetricsConfiguration.html}{PutBucketMetricsConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketMetricsConfigurations.html}{ListBucketMetricsConfigurations}
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/cloudwatch-monitoring.html}{Monitoring Metrics with Amazon CloudWatch}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bucket_metrics_configuration(
   Bucket = "string",
-  Id = "string"
+  Id = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

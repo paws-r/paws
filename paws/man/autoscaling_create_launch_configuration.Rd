@@ -9,7 +9,7 @@ autoscaling_create_launch_configuration(LaunchConfigurationName,
   ClassicLinkVPCSecurityGroups, UserData, InstanceId, InstanceType,
   KernelId, RamdiskId, BlockDeviceMappings, InstanceMonitoring, SpotPrice,
   IamInstanceProfile, EbsOptimized, AssociatePublicIpAddress,
-  PlacementTenancy)
+  PlacementTenancy, MetadataOptions)
 }
 \arguments{
 \item{LaunchConfigurationName}{[required] The name of the launch configuration. This name must be unique per
@@ -28,17 +28,17 @@ in the \emph{Amazon EC2 User Guide for Linux Instances}.}
 the Auto Scaling group.
 
 [EC2-VPC] Specify the security group IDs. For more information, see
-\href{https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_SecurityGroups.html}{Security Groups for Your VPC}
+\href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html}{Security Groups for Your VPC}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 
 [EC2-Classic] Specify either the security group names or the security
-group IDs. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html}{Amazon EC2 Security Groups}
+group IDs. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html}{Amazon EC2 Security Groups}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.}
 
 \item{ClassicLinkVPCId}{The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances
 to. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html}{ClassicLink}
-in the \emph{Amazon EC2 User Guide for Linux Instances} and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink}{Linking EC2-Classic Instances to a VPC}
+in the \emph{Amazon EC2 User Guide for Linux Instances} and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink}{Linking EC2-Classic instances to a VPC}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 This parameter can only be used if you are launching EC2-Classic
@@ -47,15 +47,18 @@ instances.}
 \item{ClassicLinkVPCSecurityGroups}{The IDs of one or more security groups for the specified
 ClassicLink-enabled VPC. For more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html}{ClassicLink}
-in the \emph{Amazon EC2 User Guide for Linux Instances} and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink}{Linking EC2-Classic Instances to a VPC}
+in the \emph{Amazon EC2 User Guide for Linux Instances} and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink}{Linking EC2-Classic instances to a VPC}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 If you specify the \code{ClassicLinkVPCId} parameter, you must specify this
 parameter.}
 
-\item{UserData}{The Base64-encoded user data to make available to the launched EC2
-instances. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance Metadata and User Data}
-in the \emph{Amazon EC2 User Guide for Linux Instances}.}
+\item{UserData}{The user data to make available to the launched EC2 instances. For more
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance metadata and user data}
+(Linux) and \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html}{Instance metadata and user data}
+(Windows). If you are using a command line tool, base64-encoding is
+performed for you, and you can load the text from a file. Otherwise, you
+must provide base64-encoded text. User data is limited to 16 KB.}
 
 \item{InstanceId}{The ID of the instance to use to create the launch configuration. The
 new launch configuration derives attributes from the instance, except
@@ -64,7 +67,7 @@ for the block device mapping.
 To create a launch configuration with a block device mapping or override
 any other instance attributes, specify them as part of the same request.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-lc-with-instanceID.html}{Create a Launch Configuration Using an EC2 Instance}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-lc-with-instanceID.html}{Creating a launch configuration using an EC2 instance}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 If you do not specify \code{InstanceId}, you must specify both \code{ImageId} and
@@ -73,7 +76,7 @@ If you do not specify \code{InstanceId}, you must specify both \code{ImageId} an
 \item{InstanceType}{Specifies the instance type of the EC2 instance.
 
 For information about available instance types, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes}{Available Instance Types}
-in the \emph{Amazon EC2 User Guide for Linux Instances.}
+in the \emph{Amazon EC2 User Guide for Linux Instances}.
 
 If you do not specify \code{InstanceId}, you must specify \code{InstanceType}.}
 
@@ -94,13 +97,13 @@ The default value is \code{true} (enabled).
 When detailed monitoring is enabled, Amazon CloudWatch generates metrics
 every minute and your account is charged a fee. When you disable
 detailed monitoring, CloudWatch generates metrics every 5 minutes. For
-more information, see \href{https://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-monitoring.html#enable-as-instance-metrics}{Configure Monitoring for Auto Scaling Instances}
+more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/enable-as-instance-metrics.html}{Configure Monitoring for Auto Scaling Instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{SpotPrice}{The maximum hourly price to be paid for any Spot Instance launched to
 fulfill the request. Spot Instances are launched when the price you
 specify exceeds the current Spot price. For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html}{Launching Spot Instances in Your Auto Scaling Group}
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html}{Requesting Spot Instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 When you change your maximum price by creating a new launch
@@ -112,7 +115,7 @@ Spot price.}
 associated with the IAM role for the instance. The instance profile
 contains the IAM role.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html}{IAM Role for Applications That Run on Amazon EC2 Instances}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html}{IAM role for applications that run on Amazon EC2 instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{EbsOptimized}{Specifies whether the launch configuration is optimized for EBS I/O
@@ -121,7 +124,7 @@ throughput to Amazon EBS and an optimized configuration stack to provide
 optimal I/O performance. This optimization is not available with all
 instance types. Additional fees are incurred when you enable EBS
 optimization for an instance type that is not EBS-optimized by default.
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSOptimized.html}{Amazon EBS-Optimized Instances}
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-optimized.html}{Amazon EBS-Optimized Instances}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
 
 The default value is \code{false}.}
@@ -130,7 +133,7 @@ The default value is \code{false}.}
 (VPC), specifies whether to assign a public IP address to the group's
 instances. If you specify \code{true}, each instance in the Auto Scaling
 group receives a unique public IP address. For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html}{Launching Auto Scaling Instances in a VPC}
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html}{Launching Auto Scaling instances in a VPC}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 If you specify this parameter, you must specify at least one subnet for
@@ -153,10 +156,14 @@ value of this parameter to \code{dedicated}.
 If you specify \code{PlacementTenancy}, you must specify at least one subnet
 for \code{VPCZoneIdentifier} when you create your group.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-vpc-tenancy}{Instance Placement Tenancy}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-dedicated-instances.html}{Configuring instance tenancy with Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 Valid Values: \code{default} | \code{dedicated}}
+
+\item{MetadataOptions}{The metadata options for the instances. For more information, see
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-config.html#launch-configurations-imds}{Configuring the Instance Metadata Options}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{
 Creates a launch configuration.
@@ -164,10 +171,10 @@ Creates a launch configuration.
 \details{
 If you exceed your maximum limit of launch configurations, the call
 fails. To query this limit, call the DescribeAccountLimits API. For
-information about updating this limit, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling Service Quotas}
+information about updating this limit, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html}{Amazon EC2 Auto Scaling service quotas}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html}{Launch Configurations}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html}{Launch configurations}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{
@@ -209,7 +216,12 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.
   IamInstanceProfile = "string",
   EbsOptimized = TRUE|FALSE,
   AssociatePublicIpAddress = TRUE|FALSE,
-  PlacementTenancy = "string"
+  PlacementTenancy = "string",
+  MetadataOptions = list(
+    HttpTokens = "optional"|"required",
+    HttpPutResponseHopLimit = 123,
+    HttpEndpoint = "disabled"|"enabled"
+  )
 )
 }
 }

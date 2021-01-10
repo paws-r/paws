@@ -7,13 +7,13 @@ NULL
 #' @description
 #' Amazon Elastic Container Registry
 #' 
-#' Amazon Elastic Container Registry (Amazon ECR) is a managed Docker
-#' registry service. Customers can use the familiar Docker CLI to push,
-#' pull, and manage images. Amazon ECR provides a secure, scalable, and
-#' reliable registry. Amazon ECR supports private Docker repositories with
-#' resource-based permissions using IAM so that specific users or Amazon
-#' EC2 instances can access repositories and images. Developers can use the
-#' Docker CLI to author and manage images.
+#' Amazon Elastic Container Registry (Amazon ECR) is a managed container
+#' image registry service. Customers can use the familiar Docker CLI, or
+#' their preferred client, to push, pull, and manage images. Amazon ECR
+#' provides a secure, scalable, and reliable registry for your Docker or
+#' Open Container Initiative (OCI) images. Amazon ECR supports private
+#' repositories with resource-based permissions using IAM so that specific
+#' users or Amazon EC2 instances can access repositories and images.
 #'
 #' @param
 #' config
@@ -60,15 +60,18 @@ NULL
 #'  \link[=ecr_complete_layer_upload]{complete_layer_upload} \tab Informs Amazon ECR that the image layer upload has completed for a specified registry, repository name, and upload ID\cr
 #'  \link[=ecr_create_repository]{create_repository} \tab Creates a repository\cr
 #'  \link[=ecr_delete_lifecycle_policy]{delete_lifecycle_policy} \tab Deletes the lifecycle policy associated with the specified repository\cr
+#'  \link[=ecr_delete_registry_policy]{delete_registry_policy} \tab Deletes the registry permissions policy\cr
 #'  \link[=ecr_delete_repository]{delete_repository} \tab Deletes a repository\cr
 #'  \link[=ecr_delete_repository_policy]{delete_repository_policy} \tab Deletes the repository policy associated with the specified repository\cr
 #'  \link[=ecr_describe_images]{describe_images} \tab Returns metadata about the images in a repository\cr
 #'  \link[=ecr_describe_image_scan_findings]{describe_image_scan_findings} \tab Returns the scan findings for the specified image\cr
+#'  \link[=ecr_describe_registry]{describe_registry} \tab Describes the settings for a registry\cr
 #'  \link[=ecr_describe_repositories]{describe_repositories} \tab Describes image repositories in a registry\cr
 #'  \link[=ecr_get_authorization_token]{get_authorization_token} \tab Retrieves an authorization token\cr
 #'  \link[=ecr_get_download_url_for_layer]{get_download_url_for_layer} \tab Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer\cr
 #'  \link[=ecr_get_lifecycle_policy]{get_lifecycle_policy} \tab Retrieves the lifecycle policy for the specified repository\cr
 #'  \link[=ecr_get_lifecycle_policy_preview]{get_lifecycle_policy_preview} \tab Retrieves the results of the lifecycle policy preview request for the specified repository\cr
+#'  \link[=ecr_get_registry_policy]{get_registry_policy} \tab Retrieves the permissions policy for a registry\cr
 #'  \link[=ecr_get_repository_policy]{get_repository_policy} \tab Retrieves the repository policy for the specified repository\cr
 #'  \link[=ecr_initiate_layer_upload]{initiate_layer_upload} \tab Notifies Amazon ECR that you intend to upload an image layer\cr
 #'  \link[=ecr_list_images]{list_images} \tab Lists all the image IDs for the specified repository\cr
@@ -77,6 +80,8 @@ NULL
 #'  \link[=ecr_put_image_scanning_configuration]{put_image_scanning_configuration} \tab Updates the image scanning configuration for the specified repository\cr
 #'  \link[=ecr_put_image_tag_mutability]{put_image_tag_mutability} \tab Updates the image tag mutability settings for the specified repository\cr
 #'  \link[=ecr_put_lifecycle_policy]{put_lifecycle_policy} \tab Creates or updates the lifecycle policy for the specified repository\cr
+#'  \link[=ecr_put_registry_policy]{put_registry_policy} \tab Creates or updates the permissions policy for your registry\cr
+#'  \link[=ecr_put_replication_configuration]{put_replication_configuration} \tab Creates or updates the replication configuration for a registry\cr
 #'  \link[=ecr_set_repository_policy]{set_repository_policy} \tab Applies a repository policy to the specified repository to control access permissions\cr
 #'  \link[=ecr_start_image_scan]{start_image_scan} \tab Starts an image vulnerability scan\cr
 #'  \link[=ecr_start_lifecycle_policy_preview]{start_lifecycle_policy_preview} \tab Starts a preview of a lifecycle policy for the specified repository\cr

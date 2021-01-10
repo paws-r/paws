@@ -6,19 +6,26 @@
 bucket}
 \usage{
 s3_put_public_access_block(Bucket, ContentMD5,
-  PublicAccessBlockConfiguration)
+  PublicAccessBlockConfiguration, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the Amazon S3 bucket whose \code{PublicAccessBlock} configuration
 you want to set.}
 
-\item{ContentMD5}{The MD5 hash of the \code{PutPublicAccessBlock} request body.}
+\item{ContentMD5}{The MD5 hash of the \code{PutPublicAccessBlock} request body.
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.}
 
 \item{PublicAccessBlockConfiguration}{[required] The \code{PublicAccessBlock} configuration that you want to apply to this
 Amazon S3 bucket. You can enable the configuration options in any
 combination. For more information about when Amazon S3 considers a
 bucket or object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status}{The Meaning of "Public"}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Creates or modifies the \code{PublicAccessBlock} configuration for an Amazon
@@ -39,9 +46,9 @@ object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-
 
 \strong{Related Resources}
 \itemize{
-\item GetPublicAccessBlock
-\item DeletePublicAccessBlock
-\item GetBucketPolicyStatus
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetPublicAccessBlock.html}{GetPublicAccessBlock}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeletePublicAccessBlock.html}{DeletePublicAccessBlock}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketPolicyStatus.html}{GetBucketPolicyStatus}
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html}{Using Amazon S3 Block Public Access}
 }
 }
@@ -54,7 +61,8 @@ object public, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-
     IgnorePublicAcls = TRUE|FALSE,
     BlockPublicPolicy = TRUE|FALSE,
     RestrictPublicBuckets = TRUE|FALSE
-  )
+  ),
+  ExpectedBucketOwner = "string"
 )
 }
 }

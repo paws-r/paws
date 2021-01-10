@@ -34,7 +34,7 @@ to Amazon S3 for long-term storage.
   EventDestination = list(
     Enabled = TRUE|FALSE,
     MatchingEventTypes = list(
-      "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"|"DELIVERY_DELAY"
+      "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"|"DELIVERY_DELAY"|"SUBSCRIPTION"
     ),
     KinesisFirehoseDestination = list(
       IamRoleArn = "string",
