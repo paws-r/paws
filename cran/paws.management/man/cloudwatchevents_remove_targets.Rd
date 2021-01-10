@@ -9,7 +9,8 @@ cloudwatchevents_remove_targets(Rule, EventBusName, Ids, Force)
 \arguments{
 \item{Rule}{[required] The name of the rule.}
 
-\item{EventBusName}{The name of the event bus associated with the rule.}
+\item{EventBusName}{The name or ARN of the event bus associated with the rule. If you omit
+this, the default event bus is used.}
 
 \item{Ids}{[required] The IDs of the targets to remove from the rule.}
 

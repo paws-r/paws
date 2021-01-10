@@ -5,7 +5,7 @@
 \title{Creates a repository}
 \usage{
 codeartifact_create_repository(domain, domainOwner, repository,
-  description, upstreams)
+  description, upstreams, tags)
 }
 \arguments{
 \item{domain}{[required] The domain that contains the created repository.}
@@ -21,6 +21,8 @@ does not include dashes or spaces.}
 order of the upstream repositories in the list determines their priority
 order when AWS CodeArtifact looks for a requested package version. For
 more information, see \href{https://docs.aws.amazon.com/codeartifact/latest/ug/repos-upstream.html}{Working with upstream repositories}.}
+
+\item{tags}{One or more tag key-value pairs for the repository.}
 }
 \description{
 Creates a repository.
@@ -34,6 +36,12 @@ Creates a repository.
   upstreams = list(
     list(
       repositoryName = "string"
+    )
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
     )
   )
 )

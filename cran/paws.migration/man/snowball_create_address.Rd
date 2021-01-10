@@ -2,15 +2,15 @@
 % Please edit documentation in R/snowball_operations.R
 \name{snowball_create_address}
 \alias{snowball_create_address}
-\title{Creates an address for a Snowball to be shipped to}
+\title{Creates an address for a Snow device to be shipped to}
 \usage{
 snowball_create_address(Address)
 }
 \arguments{
-\item{Address}{[required] The address that you want the Snowball shipped to.}
+\item{Address}{[required] The address that you want the Snow device shipped to.}
 }
 \description{
-Creates an address for a Snowball to be shipped to. In most regions,
+Creates an address for a Snow device to be shipped to. In most regions,
 addresses are validated at the time of creation. The address you provide
 must be located within the serviceable area of your region. If the
 address is invalid or unsupported, then an exception is thrown.

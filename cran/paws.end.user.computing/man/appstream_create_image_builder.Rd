@@ -31,11 +31,23 @@ instance types are available:
 \item stream.memory.2xlarge
 \item stream.memory.4xlarge
 \item stream.memory.8xlarge
+\item stream.memory.z1d.large
+\item stream.memory.z1d.xlarge
+\item stream.memory.z1d.2xlarge
+\item stream.memory.z1d.3xlarge
+\item stream.memory.z1d.6xlarge
+\item stream.memory.z1d.12xlarge
 \item stream.graphics-design.large
 \item stream.graphics-design.xlarge
 \item stream.graphics-design.2xlarge
 \item stream.graphics-design.4xlarge
 \item stream.graphics-desktop.2xlarge
+\item stream.graphics.g4dn.xlarge
+\item stream.graphics.g4dn.2xlarge
+\item stream.graphics.g4dn.4xlarge
+\item stream.graphics.g4dn.8xlarge
+\item stream.graphics.g4dn.12xlarge
+\item stream.graphics.g4dn.16xlarge
 \item stream.graphics-pro.4xlarge
 \item stream.graphics-pro.8xlarge
 \item stream.graphics-pro.16xlarge
@@ -53,7 +65,7 @@ builder. To assume a role, the image builder calls the AWS Security
 Token Service (STS) \code{AssumeRole} API operation and passes the ARN of the
 role to use. The operation creates a new session with temporary
 credentials. AppStream 2.0 retrieves the temporary credentials and
-creates the \strong{AppStream\\_Machine\\_Role} credential profile on the
+creates the \strong{appstream\\_machine\\_role} credential profile on the
 instance.
 
 For more information, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/using-iam-roles-to-grant-permissions-to-applications-scripts-streaming-instances.html}{Using an IAM Role to Grant Permissions to Applications and Scripts Running on AppStream 2.0 Streaming Instances}

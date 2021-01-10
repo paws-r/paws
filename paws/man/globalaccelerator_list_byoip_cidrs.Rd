@@ -17,12 +17,8 @@ value.}
 }
 \description{
 Lists the IP address ranges that were specified in calls to
-\href{https://docs.aws.amazon.com/global-accelerator/latest/api/ProvisionByoipCidr.html}{ProvisionByoipCidr},
+\href{https://docs.aws.amazon.com/global-accelerator/latest/api/}{ProvisionByoipCidr},
 including the current state and a history of state changes.
-}
-\details{
-To see an AWS CLI example of listing BYOIP CIDR addresses, scroll down
-to \strong{Example}.
 }
 \section{Request syntax}{
 \preformatted{svc$list_byoip_cidrs(

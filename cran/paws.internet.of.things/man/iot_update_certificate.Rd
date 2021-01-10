@@ -25,12 +25,13 @@ Updates the status of the specified certificate. This operation is
 idempotent.
 }
 \details{
-Moving a certificate from the ACTIVE state (including REVOKED) will not
-disconnect currently connected devices, but these devices will be unable
-to reconnect.
+Certificates must be in the ACTIVE state to authenticate devices that
+use a certificate to connect to AWS IoT.
 
-The ACTIVE state is required to authenticate devices connecting to AWS
-IoT using a certificate.
+Within a few minutes of updating a certificate from the ACTIVE state to
+any other state, AWS IoT disconnects all devices that used that
+certificate to connect. Devices cannot use a certificate that is not in
+the ACTIVE state to reconnect.
 }
 \section{Request syntax}{
 \preformatted{svc$update_certificate(

@@ -20,8 +20,7 @@ Constraints:
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \verb{tag resource}
-operation.}
+Use the \code{TagResource} action to tag a resource after it's created.}
 }
 \description{
 Creates a snapshot of your database in Amazon Lightsail. You can use
@@ -31,7 +30,7 @@ before deleting a database.
 \details{
 The \verb{create relational database snapshot} operation supports tag-based
 access control via request tags. For more information, see the
-\href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_relational_database_snapshot(

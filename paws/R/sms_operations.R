@@ -12,13 +12,14 @@ NULL
 #' sms_create_app(name, description, roleName, clientToken, serverGroups,
 #'   tags)
 #'
-#' @param name Name of the new application.
-#' @param description Description of the new application
-#' @param roleName Name of service role in customer's account to be used by AWS SMS.
-#' @param clientToken A unique, case-sensitive identifier you provide to ensure idempotency of
-#' application creation.
-#' @param serverGroups List of server groups to include in the application.
-#' @param tags List of tags to be associated with the application.
+#' @param name The name of the new application.
+#' @param description The description of the new application
+#' @param roleName The name of the service role in the customer's account to be used by AWS
+#' SMS.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of application creation.
+#' @param serverGroups The server groups to include in the application.
+#' @param tags The tags to be associated with the application.
 #'
 #' @section Request syntax:
 #' ```
@@ -91,31 +92,30 @@ sms_create_app <- function(name = NULL, description = NULL, roleName = NULL, cli
 #'   runOnce, licenseType, roleName, description, numberOfRecentAmisToKeep,
 #'   encrypted, kmsKeyId)
 #'
-#' @param serverId &#91;required&#93; The identifier of the server.
+#' @param serverId &#91;required&#93; The ID of the server.
 #' @param seedReplicationTime &#91;required&#93; The seed replication time.
 #' @param frequency The time between consecutive replication runs, in hours.
-#' @param runOnce 
+#' @param runOnce Indicates whether to run the replication job one time.
 #' @param licenseType The license type to be used for the AMI created by a successful
 #' replication run.
 #' @param roleName The name of the IAM role to be used by the AWS SMS.
 #' @param description The description of the replication job.
-#' @param numberOfRecentAmisToKeep The maximum number of SMS-created AMIs to retain. The oldest will be
-#' deleted once the maximum number is reached and a new AMI is created.
-#' @param encrypted When *true*, the replication job produces encrypted AMIs. See also
-#' `KmsKeyId` below.
-#' @param kmsKeyId KMS key ID for replication jobs that produce encrypted AMIs. Can be any
-#' of the following:
+#' @param numberOfRecentAmisToKeep The maximum number of SMS-created AMIs to retain. The oldest is deleted
+#' after the maximum number is reached and a new AMI is created.
+#' @param encrypted Indicates whether the replication job produces encrypted AMIs.
+#' @param kmsKeyId The ID of the KMS key for replication jobs that produce encrypted AMIs.
+#' This value can be any of the following:
 #' 
 #' -   KMS key ID
 #' 
 #' -   KMS key alias
 #' 
-#' -   ARN referring to KMS key ID
+#' -   ARN referring to the KMS key ID
 #' 
-#' -   ARN referring to KMS key alias
+#' -   ARN referring to the KMS key alias
 #' 
-#' If encrypted is *true* but a KMS key id is not specified, the customer's
-#' default KMS key for EBS is used.
+#' If encrypted is *true* but a KMS key ID is not specified, the customer's
+#' default KMS key for Amazon EBS is used.
 #'
 #' @section Request syntax:
 #' ```
@@ -155,20 +155,20 @@ sms_create_replication_job <- function(serverId, seedReplicationTime, frequency 
 }
 .sms$operations$create_replication_job <- sms_create_replication_job
 
-#' Deletes an existing application
+#' Deletes the specified application
 #'
-#' Deletes an existing application. Optionally deletes the launched stack
+#' Deletes the specified application. Optionally deletes the launched stack
 #' associated with the application and all AWS SMS replication jobs for
 #' servers in the application.
 #'
 #' @usage
 #' sms_delete_app(appId, forceStopAppReplication, forceTerminateApp)
 #'
-#' @param appId ID of the application to delete.
-#' @param forceStopAppReplication While deleting the application, stop all replication jobs corresponding
-#' to the servers in the application.
-#' @param forceTerminateApp While deleting the application, terminate the stack corresponding to the
-#' application.
+#' @param appId The ID of the application.
+#' @param forceStopAppReplication Indicates whether to stop all replication jobs corresponding to the
+#' servers in the application while deleting the application.
+#' @param forceTerminateApp Indicates whether to terminate the stack corresponding to the
+#' application while deleting the application.
 #'
 #' @section Request syntax:
 #' ```
@@ -199,14 +199,14 @@ sms_delete_app <- function(appId = NULL, forceStopAppReplication = NULL, forceTe
 }
 .sms$operations$delete_app <- sms_delete_app
 
-#' Deletes existing launch configuration for an application
+#' Deletes the launch configuration for the specified application
 #'
-#' Deletes existing launch configuration for an application.
+#' Deletes the launch configuration for the specified application.
 #'
 #' @usage
 #' sms_delete_app_launch_configuration(appId)
 #'
-#' @param appId ID of the application associated with the launch configuration.
+#' @param appId The ID of the application.
 #'
 #' @section Request syntax:
 #' ```
@@ -235,14 +235,14 @@ sms_delete_app_launch_configuration <- function(appId = NULL) {
 }
 .sms$operations$delete_app_launch_configuration <- sms_delete_app_launch_configuration
 
-#' Deletes existing replication configuration for an application
+#' Deletes the replication configuration for the specified application
 #'
-#' Deletes existing replication configuration for an application.
+#' Deletes the replication configuration for the specified application.
 #'
 #' @usage
 #' sms_delete_app_replication_configuration(appId)
 #'
-#' @param appId ID of the application associated with the replication configuration.
+#' @param appId The ID of the application.
 #'
 #' @section Request syntax:
 #' ```
@@ -271,6 +271,42 @@ sms_delete_app_replication_configuration <- function(appId = NULL) {
 }
 .sms$operations$delete_app_replication_configuration <- sms_delete_app_replication_configuration
 
+#' Deletes the validation configuration for the specified application
+#'
+#' Deletes the validation configuration for the specified application.
+#'
+#' @usage
+#' sms_delete_app_validation_configuration(appId)
+#'
+#' @param appId &#91;required&#93; The ID of the application.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_app_validation_configuration(
+#'   appId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sms_delete_app_validation_configuration
+sms_delete_app_validation_configuration <- function(appId) {
+  op <- new_operation(
+    name = "DeleteAppValidationConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sms$delete_app_validation_configuration_input(appId = appId)
+  output <- .sms$delete_app_validation_configuration_output()
+  config <- get_config()
+  svc <- .sms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sms$operations$delete_app_validation_configuration <- sms_delete_app_validation_configuration
+
 #' Deletes the specified replication job
 #'
 #' Deletes the specified replication job.
@@ -282,7 +318,7 @@ sms_delete_app_replication_configuration <- function(appId = NULL) {
 #' @usage
 #' sms_delete_replication_job(replicationJobId)
 #'
-#' @param replicationJobId &#91;required&#93; The identifier of the replication job.
+#' @param replicationJobId &#91;required&#93; The ID of the replication job.
 #'
 #' @section Request syntax:
 #' ```
@@ -353,7 +389,7 @@ sms_delete_server_catalog <- function() {
 #' @usage
 #' sms_disassociate_connector(connectorId)
 #'
-#' @param connectorId &#91;required&#93; The identifier of the connector.
+#' @param connectorId &#91;required&#93; The ID of the connector.
 #'
 #' @section Request syntax:
 #' ```
@@ -391,8 +427,8 @@ sms_disassociate_connector <- function(connectorId) {
 #' @usage
 #' sms_generate_change_set(appId, changesetFormat)
 #'
-#' @param appId ID of the application associated with the change set.
-#' @param changesetFormat Format for the change set.
+#' @param appId The ID of the application associated with the change set.
+#' @param changesetFormat The format for the change set.
 #'
 #' @section Request syntax:
 #' ```
@@ -422,20 +458,20 @@ sms_generate_change_set <- function(appId = NULL, changesetFormat = NULL) {
 }
 .sms$operations$generate_change_set <- sms_generate_change_set
 
-#' Generates an Amazon CloudFormation template based on the current launch
+#' Generates an AWS CloudFormation template based on the current launch
 #' configuration and writes it to an Amazon S3 object in the customer’s
 #' Amazon S3 bucket
 #'
-#' Generates an Amazon CloudFormation template based on the current launch
+#' Generates an AWS CloudFormation template based on the current launch
 #' configuration and writes it to an Amazon S3 object in the customer’s
 #' Amazon S3 bucket.
 #'
 #' @usage
 #' sms_generate_template(appId, templateFormat)
 #'
-#' @param appId ID of the application associated with the Amazon CloudFormation
+#' @param appId The ID of the application associated with the AWS CloudFormation
 #' template.
-#' @param templateFormat Format for generating the Amazon CloudFormation template.
+#' @param templateFormat The format for generating the AWS CloudFormation template.
 #'
 #' @section Request syntax:
 #' ```
@@ -465,14 +501,14 @@ sms_generate_template <- function(appId = NULL, templateFormat = NULL) {
 }
 .sms$operations$generate_template <- sms_generate_template
 
-#' Retrieve information about an application
+#' Retrieve information about the specified application
 #'
-#' Retrieve information about an application.
+#' Retrieve information about the specified application.
 #'
 #' @usage
 #' sms_get_app(appId)
 #'
-#' @param appId ID of the application whose information is being retrieved.
+#' @param appId The ID of the application.
 #'
 #' @section Request syntax:
 #' ```
@@ -501,16 +537,16 @@ sms_get_app <- function(appId = NULL) {
 }
 .sms$operations$get_app <- sms_get_app
 
-#' Retrieves the application launch configuration associated with an
-#' application
+#' Retrieves the application launch configuration associated with the
+#' specified application
 #'
-#' Retrieves the application launch configuration associated with an
-#' application.
+#' Retrieves the application launch configuration associated with the
+#' specified application.
 #'
 #' @usage
 #' sms_get_app_launch_configuration(appId)
 #'
-#' @param appId ID of the application launch configuration.
+#' @param appId The ID of the application.
 #'
 #' @section Request syntax:
 #' ```
@@ -539,16 +575,16 @@ sms_get_app_launch_configuration <- function(appId = NULL) {
 }
 .sms$operations$get_app_launch_configuration <- sms_get_app_launch_configuration
 
-#' Retrieves an application replication configuration associatd with an
-#' application
+#' Retrieves the application replication configuration associated with the
+#' specified application
 #'
-#' Retrieves an application replication configuration associatd with an
-#' application.
+#' Retrieves the application replication configuration associated with the
+#' specified application.
 #'
 #' @usage
 #' sms_get_app_replication_configuration(appId)
 #'
-#' @param appId ID of the application associated with the replication configuration.
+#' @param appId The ID of the application.
 #'
 #' @section Request syntax:
 #' ```
@@ -576,6 +612,80 @@ sms_get_app_replication_configuration <- function(appId = NULL) {
   return(response)
 }
 .sms$operations$get_app_replication_configuration <- sms_get_app_replication_configuration
+
+#' Retrieves information about a configuration for validating an
+#' application
+#'
+#' Retrieves information about a configuration for validating an
+#' application.
+#'
+#' @usage
+#' sms_get_app_validation_configuration(appId)
+#'
+#' @param appId &#91;required&#93; The ID of the application.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_app_validation_configuration(
+#'   appId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sms_get_app_validation_configuration
+sms_get_app_validation_configuration <- function(appId) {
+  op <- new_operation(
+    name = "GetAppValidationConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sms$get_app_validation_configuration_input(appId = appId)
+  output <- .sms$get_app_validation_configuration_output()
+  config <- get_config()
+  svc <- .sms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sms$operations$get_app_validation_configuration <- sms_get_app_validation_configuration
+
+#' Retrieves output from validating an application
+#'
+#' Retrieves output from validating an application.
+#'
+#' @usage
+#' sms_get_app_validation_output(appId)
+#'
+#' @param appId &#91;required&#93; The ID of the application.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_app_validation_output(
+#'   appId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sms_get_app_validation_output
+sms_get_app_validation_output <- function(appId) {
+  op <- new_operation(
+    name = "GetAppValidationOutput",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sms$get_app_validation_output_input(appId = appId)
+  output <- .sms$get_app_validation_output_output()
+  config <- get_config()
+  svc <- .sms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sms$operations$get_app_validation_output <- sms_get_app_validation_output
 
 #' Describes the connectors registered with the AWS SMS
 #'
@@ -624,7 +734,7 @@ sms_get_connectors <- function(nextToken = NULL, maxResults = NULL) {
 #' @usage
 #' sms_get_replication_jobs(replicationJobId, nextToken, maxResults)
 #'
-#' @param replicationJobId The identifier of the replication job.
+#' @param replicationJobId The ID of the replication job.
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return in a single call. The default
 #' value is 50. To retrieve the remaining results, make another call with
@@ -666,7 +776,7 @@ sms_get_replication_jobs <- function(replicationJobId = NULL, nextToken = NULL, 
 #' @usage
 #' sms_get_replication_runs(replicationJobId, nextToken, maxResults)
 #'
-#' @param replicationJobId &#91;required&#93; The identifier of the replication job.
+#' @param replicationJobId &#91;required&#93; The ID of the replication job.
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return in a single call. The default
 #' value is 50. To retrieve the remaining results, make another call with
@@ -715,7 +825,7 @@ sms_get_replication_runs <- function(replicationJobId, nextToken = NULL, maxResu
 #' @param maxResults The maximum number of results to return in a single call. The default
 #' value is 50. To retrieve the remaining results, make another call with
 #' the returned `NextToken` value.
-#' @param vmServerAddressList List of `VmServerAddress` objects
+#' @param vmServerAddressList The server addresses.
 #'
 #' @section Request syntax:
 #' ```
@@ -751,10 +861,50 @@ sms_get_servers <- function(nextToken = NULL, maxResults = NULL, vmServerAddress
 }
 .sms$operations$get_servers <- sms_get_servers
 
+#' Allows application import from AWS Migration Hub
+#'
+#' Allows application import from AWS Migration Hub.
+#'
+#' @usage
+#' sms_import_app_catalog(roleName)
+#'
+#' @param roleName The name of the service role. If you omit this parameter, we create a
+#' service-linked role for AWS Migration Hub in your account. Otherwise,
+#' the role that you provide must have the [policy and trust
+#' policy](https://docs.aws.amazon.com/migrationhub/latest/ug/new-customer-setup.html#sms-managed)
+#' described in the *AWS Migration Hub User Guide*.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$import_app_catalog(
+#'   roleName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sms_import_app_catalog
+sms_import_app_catalog <- function(roleName = NULL) {
+  op <- new_operation(
+    name = "ImportAppCatalog",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sms$import_app_catalog_input(roleName = roleName)
+  output <- .sms$import_app_catalog_output()
+  config <- get_config()
+  svc <- .sms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sms$operations$import_app_catalog <- sms_import_app_catalog
+
 #' Gathers a complete list of on-premises servers
 #'
 #' Gathers a complete list of on-premises servers. Connectors must be
-#' installed and monitoring all servers that you want to import.
+#' installed and monitoring all servers to import.
 #' 
 #' This call returns immediately, but might take additional time to
 #' retrieve all the servers.
@@ -787,14 +937,14 @@ sms_import_server_catalog <- function() {
 }
 .sms$operations$import_server_catalog <- sms_import_server_catalog
 
-#' Launches an application stack
+#' Launches the specified application as a stack in AWS CloudFormation
 #'
-#' Launches an application stack.
+#' Launches the specified application as a stack in AWS CloudFormation.
 #'
 #' @usage
 #' sms_launch_app(appId)
 #'
-#' @param appId ID of the application to launch.
+#' @param appId The ID of the application.
 #'
 #' @section Request syntax:
 #' ```
@@ -823,17 +973,17 @@ sms_launch_app <- function(appId = NULL) {
 }
 .sms$operations$launch_app <- sms_launch_app
 
-#' Returns a list of summaries for all applications
+#' Retrieves summaries for all applications
 #'
-#' Returns a list of summaries for all applications.
+#' Retrieves summaries for all applications.
 #'
 #' @usage
 #' sms_list_apps(appIds, nextToken, maxResults)
 #'
-#' @param appIds 
+#' @param appIds The unique application IDs.
 #' @param nextToken The token for the next set of results.
 #' @param maxResults The maximum number of results to return in a single call. The default
-#' value is 50. To retrieve the remaining results, make another call with
+#' value is 100. To retrieve the remaining results, make another call with
 #' the returned `NextToken` value.
 #'
 #' @section Request syntax:
@@ -867,24 +1017,74 @@ sms_list_apps <- function(appIds = NULL, nextToken = NULL, maxResults = NULL) {
 }
 .sms$operations$list_apps <- sms_list_apps
 
-#' Creates a launch configuration for an application
+#' Provides information to AWS SMS about whether application validation is
+#' successful
 #'
-#' Creates a launch configuration for an application.
+#' Provides information to AWS SMS about whether application validation is
+#' successful.
 #'
 #' @usage
-#' sms_put_app_launch_configuration(appId, roleName,
+#' sms_notify_app_validation_output(appId, notificationContext)
+#'
+#' @param appId &#91;required&#93; The ID of the application.
+#' @param notificationContext The notification information.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$notify_app_validation_output(
+#'   appId = "string",
+#'   notificationContext = list(
+#'     validationId = "string",
+#'     status = "READY_FOR_VALIDATION"|"PENDING"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'     statusMessage = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sms_notify_app_validation_output
+sms_notify_app_validation_output <- function(appId, notificationContext = NULL) {
+  op <- new_operation(
+    name = "NotifyAppValidationOutput",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sms$notify_app_validation_output_input(appId = appId, notificationContext = notificationContext)
+  output <- .sms$notify_app_validation_output_output()
+  config <- get_config()
+  svc <- .sms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sms$operations$notify_app_validation_output <- sms_notify_app_validation_output
+
+#' Creates or updates the launch configuration for the specified
+#' application
+#'
+#' Creates or updates the launch configuration for the specified
+#' application.
+#'
+#' @usage
+#' sms_put_app_launch_configuration(appId, roleName, autoLaunch,
 #'   serverGroupLaunchConfigurations)
 #'
-#' @param appId ID of the application associated with the launch configuration.
-#' @param roleName Name of service role in the customer's account that Amazon
+#' @param appId The ID of the application.
+#' @param roleName The name of service role in the customer's account that AWS
 #' CloudFormation uses to launch the application.
-#' @param serverGroupLaunchConfigurations Launch configurations for server groups in the application.
+#' @param autoLaunch Indicates whether the application is configured to launch automatically
+#' after replication is complete.
+#' @param serverGroupLaunchConfigurations Information about the launch configurations for server groups in the
+#' application.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$put_app_launch_configuration(
 #'   appId = "string",
 #'   roleName = "string",
+#'   autoLaunch = TRUE|FALSE,
 #'   serverGroupLaunchConfigurations = list(
 #'     list(
 #'       serverGroupId = "string",
@@ -919,7 +1119,13 @@ sms_list_apps <- function(appIds = NULL, nextToken = NULL, maxResults = NULL) {
 #'             )
 #'           ),
 #'           instanceType = "string",
-#'           associatePublicIpAddress = TRUE|FALSE
+#'           associatePublicIpAddress = TRUE|FALSE,
+#'           iamInstanceProfileName = "string",
+#'           configureScript = list(
+#'             bucket = "string",
+#'             key = "string"
+#'           ),
+#'           configureScriptType = "SHELL_SCRIPT"|"POWERSHELL_SCRIPT"
 #'         )
 #'       )
 #'     )
@@ -930,14 +1136,14 @@ sms_list_apps <- function(appIds = NULL, nextToken = NULL, maxResults = NULL) {
 #' @keywords internal
 #'
 #' @rdname sms_put_app_launch_configuration
-sms_put_app_launch_configuration <- function(appId = NULL, roleName = NULL, serverGroupLaunchConfigurations = NULL) {
+sms_put_app_launch_configuration <- function(appId = NULL, roleName = NULL, autoLaunch = NULL, serverGroupLaunchConfigurations = NULL) {
   op <- new_operation(
     name = "PutAppLaunchConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sms$put_app_launch_configuration_input(appId = appId, roleName = roleName, serverGroupLaunchConfigurations = serverGroupLaunchConfigurations)
+  input <- .sms$put_app_launch_configuration_input(appId = appId, roleName = roleName, autoLaunch = autoLaunch, serverGroupLaunchConfigurations = serverGroupLaunchConfigurations)
   output <- .sms$put_app_launch_configuration_output()
   config <- get_config()
   svc <- .sms$service(config)
@@ -947,16 +1153,19 @@ sms_put_app_launch_configuration <- function(appId = NULL, roleName = NULL, serv
 }
 .sms$operations$put_app_launch_configuration <- sms_put_app_launch_configuration
 
-#' Creates or updates a replication configuration for an application
+#' Creates or updates the replication configuration for the specified
+#' application
 #'
-#' Creates or updates a replication configuration for an application.
+#' Creates or updates the replication configuration for the specified
+#' application.
 #'
 #' @usage
 #' sms_put_app_replication_configuration(appId,
 #'   serverGroupReplicationConfigurations)
 #'
-#' @param appId ID of the application tassociated with the replication configuration.
-#' @param serverGroupReplicationConfigurations Replication configurations for server groups in the application.
+#' @param appId The ID of the application.
+#' @param serverGroupReplicationConfigurations Information about the replication configurations for server groups in
+#' the application.
 #'
 #' @section Request syntax:
 #' ```
@@ -1021,14 +1230,114 @@ sms_put_app_replication_configuration <- function(appId = NULL, serverGroupRepli
 }
 .sms$operations$put_app_replication_configuration <- sms_put_app_replication_configuration
 
-#' Starts replicating an application
+#' Creates or updates a validation configuration for the specified
+#' application
 #'
-#' Starts replicating an application.
+#' Creates or updates a validation configuration for the specified
+#' application.
+#'
+#' @usage
+#' sms_put_app_validation_configuration(appId, appValidationConfigurations,
+#'   serverGroupValidationConfigurations)
+#'
+#' @param appId &#91;required&#93; The ID of the application.
+#' @param appValidationConfigurations The configuration for application validation.
+#' @param serverGroupValidationConfigurations The configuration for instance validation.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_app_validation_configuration(
+#'   appId = "string",
+#'   appValidationConfigurations = list(
+#'     list(
+#'       validationId = "string",
+#'       name = "string",
+#'       appValidationStrategy = "SSM",
+#'       ssmValidationParameters = list(
+#'         source = list(
+#'           s3Location = list(
+#'             bucket = "string",
+#'             key = "string"
+#'           )
+#'         ),
+#'         instanceId = "string",
+#'         scriptType = "SHELL_SCRIPT"|"POWERSHELL_SCRIPT",
+#'         command = "string",
+#'         executionTimeoutSeconds = 123,
+#'         outputS3BucketName = "string"
+#'       )
+#'     )
+#'   ),
+#'   serverGroupValidationConfigurations = list(
+#'     list(
+#'       serverGroupId = "string",
+#'       serverValidationConfigurations = list(
+#'         list(
+#'           server = list(
+#'             serverId = "string",
+#'             serverType = "VIRTUAL_MACHINE",
+#'             vmServer = list(
+#'               vmServerAddress = list(
+#'                 vmManagerId = "string",
+#'                 vmId = "string"
+#'               ),
+#'               vmName = "string",
+#'               vmManagerName = "string",
+#'               vmManagerType = "VSPHERE"|"SCVMM"|"HYPERV-MANAGER",
+#'               vmPath = "string"
+#'             ),
+#'             replicationJobId = "string",
+#'             replicationJobTerminated = TRUE|FALSE
+#'           ),
+#'           validationId = "string",
+#'           name = "string",
+#'           serverValidationStrategy = "USERDATA",
+#'           userDataValidationParameters = list(
+#'             source = list(
+#'               s3Location = list(
+#'                 bucket = "string",
+#'                 key = "string"
+#'               )
+#'             ),
+#'             scriptType = "SHELL_SCRIPT"|"POWERSHELL_SCRIPT"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sms_put_app_validation_configuration
+sms_put_app_validation_configuration <- function(appId, appValidationConfigurations = NULL, serverGroupValidationConfigurations = NULL) {
+  op <- new_operation(
+    name = "PutAppValidationConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sms$put_app_validation_configuration_input(appId = appId, appValidationConfigurations = appValidationConfigurations, serverGroupValidationConfigurations = serverGroupValidationConfigurations)
+  output <- .sms$put_app_validation_configuration_output()
+  config <- get_config()
+  svc <- .sms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sms$operations$put_app_validation_configuration <- sms_put_app_validation_configuration
+
+#' Starts replicating the specified application by creating replication
+#' jobs for each server in the application
+#'
+#' Starts replicating the specified application by creating replication
+#' jobs for each server in the application.
 #'
 #' @usage
 #' sms_start_app_replication(appId)
 #'
-#' @param appId ID of the application to replicate.
+#' @param appId The ID of the application.
 #'
 #' @section Request syntax:
 #' ```
@@ -1057,19 +1366,57 @@ sms_start_app_replication <- function(appId = NULL) {
 }
 .sms$operations$start_app_replication <- sms_start_app_replication
 
+#' Starts an on-demand replication run for the specified application
+#'
+#' Starts an on-demand replication run for the specified application.
+#'
+#' @usage
+#' sms_start_on_demand_app_replication(appId, description)
+#'
+#' @param appId &#91;required&#93; The ID of the application.
+#' @param description The description of the replication run.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_on_demand_app_replication(
+#'   appId = "string",
+#'   description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sms_start_on_demand_app_replication
+sms_start_on_demand_app_replication <- function(appId, description = NULL) {
+  op <- new_operation(
+    name = "StartOnDemandAppReplication",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sms$start_on_demand_app_replication_input(appId = appId, description = description)
+  output <- .sms$start_on_demand_app_replication_output()
+  config <- get_config()
+  svc <- .sms$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sms$operations$start_on_demand_app_replication <- sms_start_on_demand_app_replication
+
 #' Starts an on-demand replication run for the specified replication job
 #'
 #' Starts an on-demand replication run for the specified replication job.
 #' This replication run starts immediately. This replication run is in
 #' addition to the ones already scheduled.
 #' 
-#' There is a limit on the number of on-demand replications runs you can
-#' request in a 24-hour period.
+#' There is a limit on the number of on-demand replications runs that you
+#' can request in a 24-hour period.
 #'
 #' @usage
 #' sms_start_on_demand_replication_run(replicationJobId, description)
 #'
-#' @param replicationJobId &#91;required&#93; The identifier of the replication job.
+#' @param replicationJobId &#91;required&#93; The ID of the replication job.
 #' @param description The description of the replication run.
 #'
 #' @section Request syntax:
@@ -1100,14 +1447,16 @@ sms_start_on_demand_replication_run <- function(replicationJobId, description = 
 }
 .sms$operations$start_on_demand_replication_run <- sms_start_on_demand_replication_run
 
-#' Stops replicating an application
+#' Stops replicating the specified application by deleting the replication
+#' job for each server in the application
 #'
-#' Stops replicating an application.
+#' Stops replicating the specified application by deleting the replication
+#' job for each server in the application.
 #'
 #' @usage
 #' sms_stop_app_replication(appId)
 #'
-#' @param appId ID of the application to stop replicating.
+#' @param appId The ID of the application.
 #'
 #' @section Request syntax:
 #' ```
@@ -1136,14 +1485,14 @@ sms_stop_app_replication <- function(appId = NULL) {
 }
 .sms$operations$stop_app_replication <- sms_stop_app_replication
 
-#' Terminates the stack for an application
+#' Terminates the stack for the specified application
 #'
-#' Terminates the stack for an application.
+#' Terminates the stack for the specified application.
 #'
 #' @usage
 #' sms_terminate_app(appId)
 #'
-#' @param appId ID of the application to terminate.
+#' @param appId The ID of the application.
 #'
 #' @section Request syntax:
 #' ```
@@ -1172,19 +1521,19 @@ sms_terminate_app <- function(appId = NULL) {
 }
 .sms$operations$terminate_app <- sms_terminate_app
 
-#' Updates an application
+#' Updates the specified application
 #'
-#' Updates an application.
+#' Updates the specified application.
 #'
 #' @usage
 #' sms_update_app(appId, name, description, roleName, serverGroups, tags)
 #'
-#' @param appId ID of the application to update.
-#' @param name New name of the application.
-#' @param description New description of the application.
-#' @param roleName Name of the service role in the customer's account used by AWS SMS.
-#' @param serverGroups List of server groups in the application to update.
-#' @param tags List of tags to associate with the application.
+#' @param appId The ID of the application.
+#' @param name The new name of the application.
+#' @param description The new description of the application.
+#' @param roleName The name of the service role in the customer's account used by AWS SMS.
+#' @param serverGroups The server groups in the application to update.
+#' @param tags The tags to associate with the application.
 #'
 #' @section Request syntax:
 #' ```
@@ -1255,30 +1604,30 @@ sms_update_app <- function(appId = NULL, name = NULL, description = NULL, roleNa
 #'   nextReplicationRunStartTime, licenseType, roleName, description,
 #'   numberOfRecentAmisToKeep, encrypted, kmsKeyId)
 #'
-#' @param replicationJobId &#91;required&#93; The identifier of the replication job.
+#' @param replicationJobId &#91;required&#93; The ID of the replication job.
 #' @param frequency The time between consecutive replication runs, in hours.
 #' @param nextReplicationRunStartTime The start time of the next replication run.
 #' @param licenseType The license type to be used for the AMI created by a successful
 #' replication run.
 #' @param roleName The name of the IAM role to be used by AWS SMS.
 #' @param description The description of the replication job.
-#' @param numberOfRecentAmisToKeep The maximum number of SMS-created AMIs to retain. The oldest will be
-#' deleted once the maximum number is reached and a new AMI is created.
-#' @param encrypted When true, the replication job produces encrypted AMIs . See also
-#' `KmsKeyId` below.
-#' @param kmsKeyId KMS key ID for replication jobs that produce encrypted AMIs. Can be any
-#' of the following:
+#' @param numberOfRecentAmisToKeep The maximum number of SMS-created AMIs to retain. The oldest is deleted
+#' after the maximum number is reached and a new AMI is created.
+#' @param encrypted When true, the replication job produces encrypted AMIs. For more
+#' information, `KmsKeyId`.
+#' @param kmsKeyId The ID of the KMS key for replication jobs that produce encrypted AMIs.
+#' This value can be any of the following:
 #' 
 #' -   KMS key ID
 #' 
 #' -   KMS key alias
 #' 
-#' -   ARN referring to KMS key ID
+#' -   ARN referring to the KMS key ID
 #' 
-#' -   ARN referring to KMS key alias
+#' -   ARN referring to the KMS key alias
 #' 
-#' If encrypted is *true* but a KMS key id is not specified, the customer's
-#' default KMS key for EBS is used.
+#' If encrypted is enabled but a KMS key ID is not specified, the
+#' customer's default KMS key for Amazon EBS is used.
 #'
 #' @section Request syntax:
 #' ```

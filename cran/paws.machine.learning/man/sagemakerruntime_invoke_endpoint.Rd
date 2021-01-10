@@ -7,12 +7,12 @@ services, your client applications use this API to get inferences from
 the model hosted at the specified endpoint}
 \usage{
 sagemakerruntime_invoke_endpoint(EndpointName, Body, ContentType,
-  Accept, CustomAttributes, TargetModel, TargetVariant)
+  Accept, CustomAttributes, TargetModel, TargetVariant, InferenceId)
 }
 \arguments{
 \item{EndpointName}{[required] The name of the endpoint that you specified when you created the
 endpoint using the
-\href{https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html}{CreateEndpoint}
+\href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html}{CreateEndpoint}
 API.}
 
 \item{Body}{[required] Provides input data, in the format specified in the \code{ContentType}
@@ -32,15 +32,30 @@ this value, for example, to provide an ID that you can use to track a
 request or to provide other metadata that a service endpoint was
 programmed to process. The value must consist of no more than 1024
 visible US-ASCII characters as specified in \href{https://tools.ietf.org/html/rfc7230#section-3.2.6}{Section 3.3.6. Field Value Components} of the
-Hypertext Transfer Protocol (HTTP/1.1). This feature is currently
-supported in the AWS SDKs but not in the Amazon SageMaker Python SDK.}
+Hypertext Transfer Protocol (HTTP/1.1).
+
+The code in your model is responsible for setting or updating any custom
+attributes in the response. If your code does not set this value in the
+response, an empty value is returned. For example, if a custom attribute
+represents the trace ID, your model can prepend the custom attribute
+with \verb{Trace ID:} in your post-processing function.
+
+This feature is currently supported in the AWS SDKs but not in the
+Amazon SageMaker Python SDK.}
 
 \item{TargetModel}{The model to request for inference when invoking a multi-model endpoint.}
 
 \item{TargetVariant}{Specify the production variant to send the inference request to when
 invoking an endpoint that is running two or more variants. Note that
 this parameter overrides the default behavior for the endpoint, which is
-to distribute the invocation traffic based on the variant weights.}
+to distribute the invocation traffic based on the variant weights.
+
+For information about how to use variant targeting to perform a/b
+testing, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html}{Test models in production}}
+
+\item{InferenceId}{If you provide a value, it is added to the captured data when you enable
+data capture on the endpoint. For information about data capture, see
+\href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-capture.html}{Capture Data}.}
 }
 \description{
 After you deploy a model into production using Amazon SageMaker hosting
@@ -48,7 +63,7 @@ services, your client applications use this API to get inferences from
 the model hosted at the specified endpoint.
 }
 \details{
-For an overview of Amazon SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html}{How It Works}.
+For an overview of Amazon SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/}{How It Works}.
 
 Amazon SageMaker strips all POST headers except those supported by the
 API. Amazon SageMaker might add additional headers. You should not rely
@@ -56,14 +71,14 @@ on the behavior of headers outside those enumerated in the request
 syntax.
 
 Calls to \code{InvokeEndpoint} are authenticated by using AWS Signature
-Version 4. For information, see \href{http://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html}{Authenticating Requests (AWS Signature Version 4)}
+Version 4. For information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html}{Authenticating Requests (AWS Signature Version 4)}
 in the \emph{Amazon S3 API Reference}.
 
 A customer's model containers must respond to requests within 60
 seconds. The model itself can have a maximum processing time of 60
-seconds before responding to the /invocations. If your model is going to
-take 50-60 seconds of processing time, the SDK socket timeout should be
-set to be 70 seconds.
+seconds before responding to invocations. If your model is going to take
+50-60 seconds of processing time, the SDK socket timeout should be set
+to be 70 seconds.
 
 Endpoints are scoped to an individual account, and are not public. The
 URL does not contain the account ID, but Amazon SageMaker determines the
@@ -77,7 +92,8 @@ account ID from the authentication token that is supplied by the caller.
   Accept = "string",
   CustomAttributes = "string",
   TargetModel = "string",
-  TargetVariant = "string"
+  TargetVariant = "string",
+  InferenceId = "string"
 )
 }
 }

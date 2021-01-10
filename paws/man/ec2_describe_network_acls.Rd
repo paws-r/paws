@@ -64,8 +64,8 @@ value.}
 Describes one or more of your network ACLs.
 }
 \details{
-For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html}{Network ACLs} in
-the \emph{Amazon Virtual Private Cloud User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Network ACLs} in the \emph{Amazon
+Virtual Private Cloud User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_network_acls(

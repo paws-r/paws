@@ -3,8 +3,8 @@
 \name{sesv2_get_email_identity}
 \alias{sesv2_get_email_identity}
 \title{Provides information about a specific identity, including the identity's
-verification status, its DKIM authentication status, and its custom
-Mail-From settings}
+verification status, sending authorization policies, its DKIM
+authentication status, and its custom Mail-From settings}
 \usage{
 sesv2_get_email_identity(EmailIdentity)
 }
@@ -13,8 +13,8 @@ sesv2_get_email_identity(EmailIdentity)
 }
 \description{
 Provides information about a specific identity, including the identity's
-verification status, its DKIM authentication status, and its custom
-Mail-From settings.
+verification status, sending authorization policies, its DKIM
+authentication status, and its custom Mail-From settings.
 }
 \section{Request syntax}{
 \preformatted{svc$get_email_identity(

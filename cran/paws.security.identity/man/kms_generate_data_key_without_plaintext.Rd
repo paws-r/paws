@@ -99,6 +99,23 @@ in the \emph{AWS Key Management Service Developer Guide}.
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: Yes. To perform this operation with a CMK in a
+different AWS account, specify the key ARN or alias ARN in the value of
+the \code{KeyId} parameter.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:GenerateDataKeyWithoutPlaintext}
+(key policy)
+
+\strong{Related operations:}
+\itemize{
+\item Decrypt
+\item Encrypt
+\item GenerateDataKey
+\item GenerateDataKeyPair
+\item GenerateDataKeyPairWithoutPlaintext
+}
 }
 \section{Request syntax}{
 \preformatted{svc$generate_data_key_without_plaintext(

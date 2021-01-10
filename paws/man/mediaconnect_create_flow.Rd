@@ -45,6 +45,7 @@ Creates a new flow. The request must include one source. The request optionally 
         SecretArn = "string",
         Url = "string"
       ),
+      EntitlementStatus = "ENABLED"|"DISABLED",
       Name = "string",
       Subscribers = list(
         "string"

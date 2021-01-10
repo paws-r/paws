@@ -4,7 +4,8 @@
 \alias{s3_put_bucket_cors}
 \title{Sets the cors configuration for your bucket}
 \usage{
-s3_put_bucket_cors(Bucket, CORSConfiguration, ContentMD5)
+s3_put_bucket_cors(Bucket, CORSConfiguration, ContentMD5,
+  ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] Specifies the bucket impacted by the \code{cors}configuration.}
@@ -15,7 +16,14 @@ the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. This header must be
 used as a message integrity check to verify that the request body was
-not corrupted in transit. For more information, go to \href{http://www.ietf.org/rfc/rfc1864.txt}{RFC 1864.}}
+not corrupted in transit. For more information, go to \href{https://www.ietf.org/rfc/rfc1864.txt}{RFC 1864.}
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Sets the \code{cors} configuration for your bucket. If the configuration
@@ -58,9 +66,9 @@ the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Related Resources}
 \itemize{
-\item GetBucketCors
-\item DeleteBucketCors
-\item RESTOPTIONSobject
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketCors.html}{GetBucketCors}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketCors.html}{DeleteBucketCors}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/RESTOPTIONSobject.html}{RESTOPTIONSobject}
 }
 }
 \section{Request syntax}{
@@ -85,7 +93,8 @@ the \emph{Amazon Simple Storage Service Developer Guide}.
       )
     )
   ),
-  ContentMD5 = "string"
+  ContentMD5 = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

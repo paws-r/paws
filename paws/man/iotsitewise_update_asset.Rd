@@ -16,7 +16,7 @@ idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 }
 \description{
-Updates an asset's name. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html}{Updating Assets and Models}
+Updates an asset's name. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html}{Updating assets and models}
 in the \emph{AWS IoT SiteWise User Guide}.
 }
 \section{Request syntax}{

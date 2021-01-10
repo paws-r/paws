@@ -11,7 +11,8 @@ cognitoidentityprovider_respond_to_auth_challenge(ClientId,
 \arguments{
 \item{ClientId}{[required] The app client ID.}
 
-\item{ChallengeName}{[required] The challenge name. For more information, see .
+\item{ChallengeName}{[required] The challenge name. For more information, see
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_InitiateAuth.html}{InitiateAuth}.
 
 \code{ADMIN_NO_SRP_AUTH} is not a valid value.}
 

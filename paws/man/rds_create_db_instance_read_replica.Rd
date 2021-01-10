@@ -15,7 +15,7 @@ rds_create_db_instance_read_replica(DBInstanceIdentifier,
   PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod,
   EnableCloudwatchLogsExports, ProcessorFeatures,
   UseDefaultProcessorFeatures, DeletionProtection, Domain,
-  DomainIAMRoleName, SourceRegion)
+  DomainIAMRoleName, ReplicaMode, MaxAllocatedStorage, SourceRegion)
 }
 \arguments{
 \item{DBInstanceIdentifier}{[required] The DB instance identifier of the read replica. This identifier is the
@@ -33,8 +33,8 @@ PostgreSQL, or SQL Server DB instance.
 source is running MySQL 5.6 or later.
 \item For the limitations of Oracle read replicas, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html}{Read Replica Limitations with Oracle}
 in the \emph{Amazon RDS User Guide}.
-\item For the limitations of SQL Server read replicas, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.ReadReplicas.Limitations.html}{Read Replica Limitations with Microsoft SQL Server}
-in the \emph{Amazon RDS User Guide}.
+\item For the limitations of SQL Server read replicas, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/}{Read Replica Limitations with Microsoft SQL Server} in
+the \emph{Amazon RDS User Guide}.
 \item Can specify a PostgreSQL DB instance only if the source is running
 PostgreSQL 9.3.5 or later (9.4.7 and higher for cross-region
 replication).
@@ -178,25 +178,26 @@ Valid Values: \verb{0, 1, 5, 10, 15, 30, 60}}
 \item{MonitoringRoleArn}{The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
 \code{arn:aws:iam:123456789012:role/emaccess}. For information on creating a
-monitoring role, go to \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.html#USER_Monitoring.OS.IAMRole}{To create an IAM role for Amazon RDS Enhanced Monitoring}
+monitoring role, go to \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Monitoring.html#USER_Monitoring}{To create an IAM role for Amazon RDS Enhanced Monitoring}
 in the \emph{Amazon RDS User Guide}.
 
 If \code{MonitoringInterval} is set to a value other than 0, then you must
 supply a \code{MonitoringRoleArn} value.}
 
-\item{KmsKeyId}{The AWS KMS key ID for an encrypted read replica. The KMS key ID is the
-Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias for
-the KMS encryption key.
+\item{KmsKeyId}{The AWS KMS key identifier for an encrypted read replica.
+
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS CMK.
 
 If you create an encrypted read replica in the same AWS Region as the
-source DB instance, then you do not have to specify a value for this
-parameter. The read replica is encrypted with the same KMS key as the
-source DB instance.
+source DB instance, then do not specify a value for this parameter. A
+read replica in the same Region is always encrypted with the same AWS
+KMS CMK as the source DB instance.
 
 If you create an encrypted read replica in a different AWS Region, then
-you must specify a KMS key for the destination AWS Region. KMS
-encryption keys are specific to the AWS Region that they are created in,
-and you can't use encryption keys from one AWS Region in another AWS
+you must specify a AWS KMS key identifier for the destination AWS
+Region. AWS KMS CMKs are specific to the AWS Region that they are
+created in, and you can't use CMKs from one AWS Region in another AWS
 Region.
 
 You can't create an encrypted read replica from an unencrypted DB
@@ -260,8 +261,7 @@ pre-signed URL will be calculated on your behalf.}
 
 \item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled. For information about the supported DB engines, see
-CreateDBInstance.
+mapping is disabled.
 
 For more information about IAM database authentication, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication for MySQL and PostgreSQL}
 in the \emph{Amazon RDS User Guide.}}
@@ -273,13 +273,14 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Use
 in the \emph{Amazon RDS User Guide}.}
 
 \item{PerformanceInsightsKMSKeyId}{The AWS KMS key identifier for encryption of Performance Insights data.
-The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier, or
-the KMS key alias for the KMS encryption key.
+
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK).
 
 If you do not specify a value for \code{PerformanceInsightsKMSKeyId}, then
-Amazon RDS uses your default encryption key. AWS KMS creates the default
-encryption key for your AWS account. Your AWS account has a different
-default encryption key for each AWS Region.}
+Amazon RDS uses your default CMK. There is a default CMK for your AWS
+account. Your AWS account has a different default CMK for each AWS
+Region.}
 
 \item{PerformanceInsightsRetentionPeriod}{The amount of time, in days, to retain Performance Insights data. Valid
 values are 7 or 731 (2 years).}
@@ -301,19 +302,31 @@ enabled. By default, deletion protection is disabled. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 
 \item{Domain}{The Active Directory directory ID to create the DB instance in.
+Currently, only MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB
+instances can be created in an Active Directory Domain.
 
-For Oracle DB instances, Amazon RDS can use Kerberos authentication to
-authenticate users that connect to the DB instance. For more
-information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html}{Using Kerberos Authentication with Amazon RDS for Oracle}
-in the \emph{Amazon RDS User Guide}.
-
-For Microsoft SQL Server DB instances, Amazon RDS can use Windows
-Authentication to authenticate users that connect to the DB instance.
-For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html}{Using Windows Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server}
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html}{Kerberos Authentication}
 in the \emph{Amazon RDS User Guide}.}
 
 \item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
 Directory Service.}
+
+\item{ReplicaMode}{The open mode of the replica database: mounted or read-only.
+
+This parameter is only supported for Oracle DB instances.
+
+Mounted DB replicas are included in Oracle Enterprise Edition. The main
+use case for mounted replicas is cross-Region disaster recovery. The
+primary database doesn't use Active Data Guard to transmit information
+to the mounted replica. Because it doesn't accept user connections, a
+mounted replica can't serve a read-only workload.
+
+You can create a combination of mounted and read-only DB replicas for
+the same primary DB instance. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html}{Working with Oracle Read Replicas for Amazon RDS}
+in the \emph{Amazon RDS User Guide}.}
+
+\item{MaxAllocatedStorage}{The upper limit to which Amazon RDS can automatically scale the storage
+of the DB instance.}
 
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }
@@ -381,6 +394,8 @@ Your source DB instance must have backup retention enabled.
   DeletionProtection = TRUE|FALSE,
   Domain = "string",
   DomainIAMRoleName = "string",
+  ReplicaMode = "open-read-only"|"mounted",
+  MaxAllocatedStorage = 123,
   SourceRegion = "string"
 )
 }

@@ -5,7 +5,8 @@
 \title{Creates one or more virtual tapes}
 \usage{
 storagegateway_create_tapes(GatewayARN, TapeSizeInBytes, ClientToken,
-  NumTapesToCreate, TapeBarcodePrefix, KMSEncrypted, KMSKey, PoolId, Tags)
+  NumTapesToCreate, TapeBarcodePrefix, KMSEncrypted, KMSKey, PoolId, Worm,
+  Tags)
 }
 \arguments{
 \item{GatewayARN}{[required] The unique Amazon Resource Name (ARN) that represents the gateway to
@@ -48,6 +49,9 @@ Glacier Deep Archive) that corresponds to the pool.
 
 Valid Values: \code{GLACIER} | \code{DEEP_ARCHIVE}}
 
+\item{Worm}{Set to \code{TRUE} if the tape you are creating is to be configured as a
+write-once-read-many (WORM) tape.}
+
 \item{Tags}{A list of up to 50 tags that can be assigned to a virtual tape. Each tag
 is a key-value pair.
 
@@ -76,6 +80,7 @@ gateway.
   KMSEncrypted = TRUE|FALSE,
   KMSKey = "string",
   PoolId = "string",
+  Worm = TRUE|FALSE,
   Tags = list(
     list(
       Key = "string",

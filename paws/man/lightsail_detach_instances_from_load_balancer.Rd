@@ -22,7 +22,7 @@ they are detached from the load balancer.
 
 The \verb{detach instances from load balancer} operation supports tag-based
 access control via resource tags applied to the resource identified by
-\verb{load balancer name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{load balancer name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$detach_instances_from_load_balancer(

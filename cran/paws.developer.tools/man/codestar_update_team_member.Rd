@@ -14,7 +14,7 @@ codestar_update_team_member(projectId, userArn, projectRole,
 team membership attributes.}
 
 \item{projectRole}{The role assigned to the user in the project. Project roles have
-different levels of access. For more information, see \href{http://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html}{Working with Teams}
+different levels of access. For more information, see \href{https://docs.aws.amazon.com/codestar/latest/userguide/working-with-teams.html}{Working with Teams}
 in the \emph{AWS CodeStar User Guide}.}
 
 \item{remoteAccessAllowed}{Whether a team member is allowed to remotely access project resources

@@ -33,9 +33,8 @@ propagation route table (\code{enable} | \code{disable}).
 Protocol support is enabled (\code{enable} | \code{disable}).
 \item \code{owner-id} - The ID of the AWS account that owns the transit
 gateway.
-\item \code{state} - The state of the attachment (\code{available} | \code{deleted} |
-\code{deleting} | \code{failed} | \code{modifying} | \code{pendingAcceptance} |
-\code{pending} | \code{rollingBack} | \code{rejected} | \code{rejecting}).
+\item \code{state} - The state of the transit gateway (\code{available} | \code{deleted}
+| \code{deleting} | \code{modifying} | \code{pending}).
 \item \code{transit-gateway-id} - The ID of the transit gateway.
 }}
 

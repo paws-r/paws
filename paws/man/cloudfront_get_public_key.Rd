@@ -2,15 +2,15 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_get_public_key}
 \alias{cloudfront_get_public_key}
-\title{Get the public key information}
+\title{Gets a public key}
 \usage{
 cloudfront_get_public_key(Id)
 }
 \arguments{
-\item{Id}{[required] Request the ID for the public key.}
+\item{Id}{[required] The identifier of the public key you are getting.}
 }
 \description{
-Get the public key information.
+Gets a public key.
 }
 \section{Request syntax}{
 \preformatted{svc$get_public_key(

@@ -58,7 +58,7 @@ directoryservice_accept_shared_directory <- function(SharedDirectoryId) {
 #' about what permissions are required to run the *AddIpRoutes* operation,
 #' see [AWS Directory Service API Permissions: Actions, Resources, and
 #' Conditions
-#' Reference](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
+#' Reference](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 #'
 #' @usage
 #' directoryservice_add_ip_routes(DirectoryId, IpRoutes,
@@ -150,6 +150,55 @@ directoryservice_add_ip_routes <- function(DirectoryId, IpRoutes, UpdateSecurity
   return(response)
 }
 .directoryservice$operations$add_ip_routes <- directoryservice_add_ip_routes
+
+#' Adds two domain controllers in the specified Region for the specified
+#' directory
+#'
+#' Adds two domain controllers in the specified Region for the specified
+#' directory.
+#'
+#' @usage
+#' directoryservice_add_region(DirectoryId, RegionName, VPCSettings)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the directory to which you want to add Region
+#' replication.
+#' @param RegionName &#91;required&#93; The name of the Region where you want to add domain controllers for
+#' replication. For example, `us-east-1`.
+#' @param VPCSettings &#91;required&#93; 
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_region(
+#'   DirectoryId = "string",
+#'   RegionName = "string",
+#'   VPCSettings = list(
+#'     VpcId = "string",
+#'     SubnetIds = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_add_region
+directoryservice_add_region <- function(DirectoryId, RegionName, VPCSettings) {
+  op <- new_operation(
+    name = "AddRegion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directoryservice$add_region_input(DirectoryId = DirectoryId, RegionName = RegionName, VPCSettings = VPCSettings)
+  output <- .directoryservice$add_region_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$add_region <- directoryservice_add_region
 
 #' Adds or overwrites one or more tags for the specified directory
 #'
@@ -247,7 +296,7 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 #' about what permissions are required to run the `ConnectDirectory`
 #' operation, see [AWS Directory Service API Permissions: Actions,
 #' Resources, and Conditions
-#' Reference](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
+#' Reference](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 #'
 #' @usage
 #' directoryservice_connect_directory(Name, ShortName, Password,
@@ -357,11 +406,9 @@ directoryservice_create_alias <- function(DirectoryId, Alias) {
 }
 .directoryservice$operations$create_alias <- directoryservice_create_alias
 
-#' Creates a computer account in the specified directory, and joins the
-#' computer to the directory
+#' Creates an Active Directory computer object in the specified directory
 #'
-#' Creates a computer account in the specified directory, and joins the
-#' computer to the directory.
+#' Creates an Active Directory computer object in the specified directory.
 #'
 #' @usage
 #' directoryservice_create_computer(DirectoryId, ComputerName, Password,
@@ -472,7 +519,7 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' about what permissions are required to run the `CreateDirectory`
 #' operation, see [AWS Directory Service API Permissions: Actions,
 #' Resources, and Conditions
-#' Reference](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
+#' Reference](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 #'
 #' @usage
 #' directoryservice_create_directory(Name, ShortName, Password,
@@ -486,6 +533,31 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' 
 #' If you need to change the password for the administrator account, you
 #' can use the ResetUserPassword API call.
+#' 
+#' The regex pattern for this string is made up of the following
+#' conditions:
+#' 
+#' -   Length (?=^.\{8,64\}$) – Must be between 8 and 64 characters
+#' 
+#' AND any 3 of the following password complexity rules required by Active
+#' Directory:
+#' 
+#' -   Numbers and upper case and lowercase
+#'     (?=.*`\\d`)(?=.*\[A-Z\])(?=.*\[a-z\])
+#' 
+#' -   Numbers and special characters and lower case
+#'     (?=.*`\\d`)(?=.*\[^A-Za-z0-9`\\s`\])(?=.*\[a-z\])
+#' 
+#' -   Special characters and upper case and lower case
+#'     (?=.*\[^A-Za-z0-9`\\s`\])(?=.*\[A-Z\])(?=.*\[a-z\])
+#' 
+#' -   Numbers and upper case and special characters
+#'     (?=.*`\\d`)(?=.*\[A-Z\])(?=.*\[^A-Za-z0-9`\\s`\])
+#' 
+#' For additional information about how Active Directory passwords are
+#' enforced, see [Password must meet complexity
+#' requirements](https://docs.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements)
+#' on the Microsoft website.
 #' @param Description A description for the directory.
 #' @param Size &#91;required&#93; The size of the directory.
 #' @param VpcSettings A DirectoryVpcSettings object that contains additional information for
@@ -591,7 +663,7 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 #' about what permissions are required to run the *CreateMicrosoftAD*
 #' operation, see [AWS Directory Service API Permissions: Actions,
 #' Resources, and Conditions
-#' Reference](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
+#' Reference](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 #'
 #' @usage
 #' directoryservice_create_microsoft_ad(Name, ShortName, Password,
@@ -818,7 +890,7 @@ directoryservice_delete_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' about what permissions are required to run the `DeleteDirectory`
 #' operation, see [AWS Directory Service API Permissions: Actions,
 #' Resources, and Conditions
-#' Reference](http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
+#' Reference](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
 #'
 #' @usage
 #' directoryservice_delete_directory(DirectoryId)
@@ -965,11 +1037,11 @@ directoryservice_delete_trust <- function(TrustId, DeleteAssociatedConditionalFo
 }
 .directoryservice$operations$delete_trust <- directoryservice_delete_trust
 
-#' Deletes from the system the certificate that was registered for a
-#' secured LDAP connection
+#' Deletes from the system the certificate that was registered for secure
+#' LDAP or client certificate authentication
 #'
-#' Deletes from the system the certificate that was registered for a
-#' secured LDAP connection.
+#' Deletes from the system the certificate that was registered for secure
+#' LDAP or client certificate authentication.
 #'
 #' @usage
 #' directoryservice_deregister_certificate(DirectoryId, CertificateId)
@@ -1047,11 +1119,11 @@ directoryservice_deregister_event_topic <- function(DirectoryId, TopicName) {
 }
 .directoryservice$operations$deregister_event_topic <- directoryservice_deregister_event_topic
 
-#' Displays information about the certificate registered for a secured LDAP
-#' connection
+#' Displays information about the certificate registered for secure LDAP or
+#' client certificate authentication
 #'
-#' Displays information about the certificate registered for a secured LDAP
-#' connection.
+#' Displays information about the certificate registered for secure LDAP or
+#' client certificate authentication.
 #'
 #' @usage
 #' directoryservice_describe_certificate(DirectoryId, CertificateId)
@@ -1338,6 +1410,49 @@ directoryservice_describe_ldaps_settings <- function(DirectoryId, Type = NULL, N
 }
 .directoryservice$operations$describe_ldaps_settings <- directoryservice_describe_ldaps_settings
 
+#' Provides information about the Regions that are configured for
+#' multi-Region replication
+#'
+#' Provides information about the Regions that are configured for
+#' multi-Region replication.
+#'
+#' @usage
+#' directoryservice_describe_regions(DirectoryId, RegionName, NextToken)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the directory.
+#' @param RegionName The name of the Region. For example, `us-east-1`.
+#' @param NextToken The `DescribeRegionsResult.NextToken` value from a previous call to
+#' DescribeRegions. Pass null if this is the first call.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_regions(
+#'   DirectoryId = "string",
+#'   RegionName = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_describe_regions
+directoryservice_describe_regions <- function(DirectoryId, RegionName = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeRegions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directoryservice$describe_regions_input(DirectoryId = DirectoryId, RegionName = RegionName, NextToken = NextToken)
+  output <- .directoryservice$describe_regions_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$describe_regions <- directoryservice_describe_regions
+
 #' Returns the shared directories in your account
 #'
 #' Returns the shared directories in your account.
@@ -1498,6 +1613,47 @@ directoryservice_describe_trusts <- function(DirectoryId = NULL, TrustIds = NULL
 }
 .directoryservice$operations$describe_trusts <- directoryservice_describe_trusts
 
+#' Disables alternative client authentication methods for the specified
+#' directory
+#'
+#' Disables alternative client authentication methods for the specified
+#' directory.
+#'
+#' @usage
+#' directoryservice_disable_client_authentication(DirectoryId, Type)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the directory
+#' @param Type &#91;required&#93; The type of client authentication to disable. Currently, only the
+#' parameter, `SmartCard` is supported.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_client_authentication(
+#'   DirectoryId = "string",
+#'   Type = "SmartCard"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_disable_client_authentication
+directoryservice_disable_client_authentication <- function(DirectoryId, Type) {
+  op <- new_operation(
+    name = "DisableClientAuthentication",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directoryservice$disable_client_authentication_input(DirectoryId = DirectoryId, Type = Type)
+  output <- .directoryservice$disable_client_authentication_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$disable_client_authentication <- directoryservice_disable_client_authentication
+
 #' Deactivates LDAP secure calls for the specified directory
 #'
 #' Deactivates LDAP secure calls for the specified directory.
@@ -1626,6 +1782,49 @@ directoryservice_disable_sso <- function(DirectoryId, UserName = NULL, Password 
   return(response)
 }
 .directoryservice$operations$disable_sso <- directoryservice_disable_sso
+
+#' Enables alternative client authentication methods for the specified
+#' directory
+#'
+#' Enables alternative client authentication methods for the specified
+#' directory.
+#'
+#' @usage
+#' directoryservice_enable_client_authentication(DirectoryId, Type)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the specified directory.
+#' @param Type &#91;required&#93; The type of client authentication to enable. Currently only the value
+#' `SmartCard` is supported. Smart card authentication in AD Connector
+#' requires that you enable Kerberos Constrained Delegation for the Service
+#' User to the LDAP service in the on-premises AD.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_client_authentication(
+#'   DirectoryId = "string",
+#'   Type = "SmartCard"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_enable_client_authentication
+directoryservice_enable_client_authentication <- function(DirectoryId, Type) {
+  op <- new_operation(
+    name = "EnableClientAuthentication",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directoryservice$enable_client_authentication_input(DirectoryId = DirectoryId, Type = Type)
+  output <- .directoryservice$enable_client_authentication_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$enable_client_authentication <- directoryservice_enable_client_authentication
 
 #' Activates the switch for the specific directory to always use LDAP
 #' secure calls
@@ -1843,10 +2042,10 @@ directoryservice_get_snapshot_limits <- function(DirectoryId) {
 .directoryservice$operations$get_snapshot_limits <- directoryservice_get_snapshot_limits
 
 #' For the specified directory, lists all the certificates registered for a
-#' secured LDAP connection
+#' secure LDAP or client certificate authentication
 #'
 #' For the specified directory, lists all the certificates registered for a
-#' secured LDAP connection.
+#' secure LDAP or client certificate authentication.
 #'
 #' @usage
 #' directoryservice_list_certificates(DirectoryId, NextToken, Limit)
@@ -2056,35 +2255,47 @@ directoryservice_list_tags_for_resource <- function(ResourceId, NextToken = NULL
 }
 .directoryservice$operations$list_tags_for_resource <- directoryservice_list_tags_for_resource
 
-#' Registers a certificate for secured LDAP connection
+#' Registers a certificate for a secure LDAP or client certificate
+#' authentication
 #'
-#' Registers a certificate for secured LDAP connection.
+#' Registers a certificate for a secure LDAP or client certificate
+#' authentication.
 #'
 #' @usage
-#' directoryservice_register_certificate(DirectoryId, CertificateData)
+#' directoryservice_register_certificate(DirectoryId, CertificateData,
+#'   Type, ClientCertAuthSettings)
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param CertificateData &#91;required&#93; The certificate PEM string that needs to be registered.
+#' @param Type The function that the registered certificate performs. Valid values
+#' include `ClientLDAPS` or `ClientCertAuth`. The default value is
+#' `ClientLDAPS`.
+#' @param ClientCertAuthSettings A `ClientCertAuthSettings` object that contains client certificate
+#' authentication settings.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$register_certificate(
 #'   DirectoryId = "string",
-#'   CertificateData = "string"
+#'   CertificateData = "string",
+#'   Type = "ClientCertAuth"|"ClientLDAPS",
+#'   ClientCertAuthSettings = list(
+#'     OCSPUrl = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname directoryservice_register_certificate
-directoryservice_register_certificate <- function(DirectoryId, CertificateData) {
+directoryservice_register_certificate <- function(DirectoryId, CertificateData, Type = NULL, ClientCertAuthSettings = NULL) {
   op <- new_operation(
     name = "RegisterCertificate",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .directoryservice$register_certificate_input(DirectoryId = DirectoryId, CertificateData = CertificateData)
+  input <- .directoryservice$register_certificate_input(DirectoryId = DirectoryId, CertificateData = CertificateData, Type = Type, ClientCertAuthSettings = ClientCertAuthSettings)
   output <- .directoryservice$register_certificate_output()
   config <- get_config()
   svc <- .directoryservice$service(config)
@@ -2217,6 +2428,46 @@ directoryservice_remove_ip_routes <- function(DirectoryId, CidrIps) {
   return(response)
 }
 .directoryservice$operations$remove_ip_routes <- directoryservice_remove_ip_routes
+
+#' Stops all replication and removes the domain controllers from the
+#' specified Region
+#'
+#' Stops all replication and removes the domain controllers from the
+#' specified Region. You cannot remove the primary Region with this
+#' operation. Instead, use the `DeleteDirectory` API.
+#'
+#' @usage
+#' directoryservice_remove_region(DirectoryId)
+#'
+#' @param DirectoryId &#91;required&#93; The identifier of the directory for which you want to remove Region
+#' replication.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$remove_region(
+#'   DirectoryId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname directoryservice_remove_region
+directoryservice_remove_region <- function(DirectoryId) {
+  op <- new_operation(
+    name = "RemoveRegion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .directoryservice$remove_region_input(DirectoryId = DirectoryId)
+  output <- .directoryservice$remove_region_output()
+  config <- get_config()
+  svc <- .directoryservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.directoryservice$operations$remove_region <- directoryservice_remove_region
 
 #' Removes tags from a directory
 #'

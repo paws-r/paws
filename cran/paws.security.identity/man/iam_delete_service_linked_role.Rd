@@ -28,7 +28,7 @@ deleted. To delete the service-linked role, you must first remove those
 resources from the linked service and then submit the deletion request
 again. Resources are specific to the service that is linked to the role.
 For more information about removing resources from a service, see the
-\href{http://docs.aws.amazon.com/}{AWS documentation} for your service.
+\href{https://docs.aws.amazon.com/}{AWS documentation} for your service.
 
 For more information about service-linked roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-linked-role}{Roles Terms and Concepts: AWS Service-Linked Role}
 in the \emph{IAM User Guide}.

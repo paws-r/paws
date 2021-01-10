@@ -7,9 +7,6 @@ NULL
 #' @description
 #' AWS CodeStar Connections
 #' 
-#' The CodeStar Connections feature is in preview release and is subject to
-#' change.
-#' 
 #' This AWS CodeStar Connections API Reference provides descriptions and
 #' usage examples of the operations and data types for the AWS CodeStar
 #' Connections API. You can use the connections API to work with
@@ -26,8 +23,8 @@ NULL
 #' When you create a connection, the console initiates a third-party
 #' connection handshake. *Installations* are the apps that are used to
 #' conduct this handshake. For example, the installation for the Bitbucket
-#' provider type is the Bitbucket Cloud app. When you create a connection,
-#' you can choose an existing installation or create one.
+#' provider type is the Bitbucket app. When you create a connection, you
+#' can choose an existing installation or create one.
 #' 
 #' When you want to create a connection to an installed provider type such
 #' as GitHub Enterprise Server, you create a *host* for your connections.
@@ -115,7 +112,8 @@ NULL
 #'  \link[=codestarconnections_list_hosts]{list_hosts} \tab Lists the hosts associated with your account\cr
 #'  \link[=codestarconnections_list_tags_for_resource]{list_tags_for_resource} \tab Gets the set of key-value pairs (metadata) that are used to manage the resource\cr
 #'  \link[=codestarconnections_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource\cr
-#'  \link[=codestarconnections_untag_resource]{untag_resource} \tab Removes tags from an AWS resource
+#'  \link[=codestarconnections_untag_resource]{untag_resource} \tab Removes tags from an AWS resource\cr
+#'  \link[=codestarconnections_update_host]{update_host} \tab Updates a specified host with the provided configurations
 #' }
 #'
 #' @rdname codestarconnections

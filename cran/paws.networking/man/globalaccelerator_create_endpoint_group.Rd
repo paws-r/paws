@@ -7,13 +7,14 @@
 globalaccelerator_create_endpoint_group(ListenerArn,
   EndpointGroupRegion, EndpointConfigurations, TrafficDialPercentage,
   HealthCheckPort, HealthCheckProtocol, HealthCheckPath,
-  HealthCheckIntervalSeconds, ThresholdCount, IdempotencyToken)
+  HealthCheckIntervalSeconds, ThresholdCount, IdempotencyToken,
+  PortOverrides)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
 
-\item{EndpointGroupRegion}{[required] The name of the AWS Region where the endpoint group is located. A
-listener can have only one endpoint group in a specific Region.}
+\item{EndpointGroupRegion}{[required] The AWS Region where the endpoint group is located. A listener can have
+only one endpoint group in a specific Region.}
 
 \item{EndpointConfigurations}{The list of endpoint objects.}
 
@@ -48,11 +49,20 @@ healthy. The default value is 3.}
 
 \item{IdempotencyToken}{[required] A unique, case-sensitive identifier that you provide to ensure the
 idempotency—that is, the uniqueness—of the request.}
+
+\item{PortOverrides}{Override specific listener ports used to route traffic to endpoints that
+are part of this endpoint group. For example, you can create a port
+override in which the listener receives user traffic on ports 80 and
+443, but your accelerator routes that traffic to ports 1080 and 1443,
+respectively, on the endpoints.
+
+For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html}{Port overrides}
+in the \emph{AWS Global Accelerator Developer Guide}.}
 }
 \description{
 Create an endpoint group for the specified listener. An endpoint group
-is a collection of endpoints in one AWS Region. To see an AWS CLI
-example of creating an endpoint group, scroll down to \strong{Example}.
+is a collection of endpoints in one AWS Region. A resource must be valid
+and active when you add it as an endpoint.
 }
 \section{Request syntax}{
 \preformatted{svc$create_endpoint_group(
@@ -71,7 +81,13 @@ example of creating an endpoint group, scroll down to \strong{Example}.
   HealthCheckPath = "string",
   HealthCheckIntervalSeconds = 123,
   ThresholdCount = 123,
-  IdempotencyToken = "string"
+  IdempotencyToken = "string",
+  PortOverrides = list(
+    list(
+      ListenerPort = 123,
+      EndpointPort = 123
+    )
+  )
 )
 }
 }

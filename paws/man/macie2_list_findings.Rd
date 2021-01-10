@@ -28,6 +28,9 @@ paginated response.}
         eq = list(
           "string"
         ),
+        eqExactMatch = list(
+          "string"
+        ),
         gt = 123,
         gte = 123,
         lt = 123,

@@ -2,8 +2,8 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_get_master_account}
 \alias{guardduty_get_master_account}
-\title{Provides the details for the GuardDuty master account associated with
-the current GuardDuty member account}
+\title{Provides the details for the GuardDuty administrator account associated
+with the current GuardDuty member account}
 \usage{
 guardduty_get_master_account(DetectorId)
 }
@@ -11,8 +11,8 @@ guardduty_get_master_account(DetectorId)
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
 }
 \description{
-Provides the details for the GuardDuty master account associated with
-the current GuardDuty member account.
+Provides the details for the GuardDuty administrator account associated
+with the current GuardDuty member account.
 }
 \section{Request syntax}{
 \preformatted{svc$get_master_account(

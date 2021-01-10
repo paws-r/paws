@@ -18,9 +18,8 @@ default association route table for the transit gateway (\code{true} |
 \item \code{default-propagation-route-table} - Indicates whether this is the
 default propagation route table for the transit gateway (\code{true} |
 \code{false}).
-\item \code{state} - The state of the attachment (\code{available} | \code{deleted} |
-\code{deleting} | \code{failed} | \code{modifying} | \code{pendingAcceptance} |
-\code{pending} | \code{rollingBack} | \code{rejected} | \code{rejecting}).
+\item \code{state} - The state of the route table (\code{available} | \code{deleting} |
+\code{deleted} | \code{pending}).
 \item \code{transit-gateway-id} - The ID of the transit gateway.
 \item \code{transit-gateway-route-table-id} - The ID of the transit gateway
 route table.

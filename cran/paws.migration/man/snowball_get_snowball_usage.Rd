@@ -2,19 +2,19 @@
 % Please edit documentation in R/snowball_operations.R
 \name{snowball_get_snowball_usage}
 \alias{snowball_get_snowball_usage}
-\title{Returns information about the Snowball service limit for your account,
-and also the number of Snowballs your account has in use}
+\title{Returns information about the Snow Family service limit for your
+account, and also the number of Snow devices your account has in use}
 \usage{
 snowball_get_snowball_usage()
 }
 \description{
-Returns information about the Snowball service limit for your account,
-and also the number of Snowballs your account has in use.
+Returns information about the Snow Family service limit for your
+account, and also the number of Snow devices your account has in use.
 }
 \details{
-The default service limit for the number of Snowballs that you can have
-at one time is 1. If you want to increase your service limit, contact
-AWS Support.
+The default service limit for the number of Snow devices that you can
+have at one time is 1. If you want to increase your service limit,
+contact AWS Support.
 }
 \section{Request syntax}{
 \preformatted{svc$get_snowball_usage()

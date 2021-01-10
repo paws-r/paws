@@ -4,7 +4,7 @@
 \alias{servicecatalog_describe_provisioned_product}
 \title{Gets information about the specified provisioned product}
 \usage{
-servicecatalog_describe_provisioned_product(AcceptLanguage, Id)
+servicecatalog_describe_provisioned_product(AcceptLanguage, Id, Name)
 }
 \arguments{
 \item{AcceptLanguage}{The language code.
@@ -14,7 +14,17 @@ servicecatalog_describe_provisioned_product(AcceptLanguage, Id)
 \item \code{zh} - Chinese
 }}
 
-\item{Id}{[required] The provisioned product identifier.}
+\item{Id}{The provisioned product identifier. You must provide the name or ID, but
+not both.
+
+If you do not provide a name or ID, or you provide both name and ID, an
+\code{InvalidParametersException} will occur.}
+
+\item{Name}{The name of the provisioned product. You must provide the name or ID,
+but not both.
+
+If you do not provide a name or ID, or you provide both name and ID, an
+\code{InvalidParametersException} will occur.}
 }
 \description{
 Gets information about the specified provisioned product.
@@ -22,7 +32,8 @@ Gets information about the specified provisioned product.
 \section{Request syntax}{
 \preformatted{svc$describe_provisioned_product(
   AcceptLanguage = "string",
-  Id = "string"
+  Id = "string",
+  Name = "string"
 )
 }
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/frauddetector_operations.R
 \name{frauddetector_get_model_version}
 \alias{frauddetector_get_model_version}
-\title{Gets a model version}
+\title{Gets the details of the specified model version}
 \usage{
 frauddetector_get_model_version(modelId, modelType, modelVersionNumber)
 }
@@ -11,10 +11,10 @@ frauddetector_get_model_version(modelId, modelType, modelVersionNumber)
 
 \item{modelType}{[required] The model type.}
 
-\item{modelVersionNumber}{[required] The model version.}
+\item{modelVersionNumber}{[required] The model version number.}
 }
 \description{
-Gets a model version.
+Gets the details of the specified model version.
 }
 \section{Request syntax}{
 \preformatted{svc$get_model_version(

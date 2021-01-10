@@ -5,7 +5,8 @@
 \title{Terminates the specified provisioned product}
 \usage{
 servicecatalog_terminate_provisioned_product(ProvisionedProductName,
-  ProvisionedProductId, TerminateToken, IgnoreErrors, AcceptLanguage)
+  ProvisionedProductId, TerminateToken, IgnoreErrors, AcceptLanguage,
+  RetainPhysicalResources)
 }
 \arguments{
 \item{ProvisionedProductName}{The name of the provisioned product. You cannot specify both
@@ -28,6 +29,12 @@ provisioned product even if it cannot delete the underlying resources.}
 \item \code{jp} - Japanese
 \item \code{zh} - Chinese
 }}
+
+\item{RetainPhysicalResources}{When this boolean parameter is set to true, the
+\code{TerminateProvisionedProduct} API deletes the Service Catalog
+provisioned product. However, it does not remove the CloudFormation
+stack, stack set, or the underlying resources of the deleted provisioned
+product. The default value is false.}
 }
 \description{
 Terminates the specified provisioned product.
@@ -44,7 +51,8 @@ You can check the status of this request using DescribeRecord.
   ProvisionedProductId = "string",
   TerminateToken = "string",
   IgnoreErrors = TRUE|FALSE,
-  AcceptLanguage = "string"
+  AcceptLanguage = "string",
+  RetainPhysicalResources = TRUE|FALSE
 )
 }
 }

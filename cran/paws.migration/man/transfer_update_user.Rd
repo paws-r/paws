@@ -5,22 +5,20 @@
 \title{Assigns new properties to a user}
 \usage{
 transfer_update_user(HomeDirectory, HomeDirectoryType,
-  HomeDirectoryMappings, Policy, Role, ServerId, UserName)
+  HomeDirectoryMappings, Policy, PosixProfile, Role, ServerId, UserName)
 }
 \arguments{
 \item{HomeDirectory}{Specifies the landing directory (folder) for a user when they log in to
-the file transfer protocol-enabled server using their file transfer
-protocol client.
+the server using their file transfer protocol client.
 
 An example is \verb{your-Amazon-S3-bucket-name&gt;/home/username}.}
 
 \item{HomeDirectoryType}{The type of landing directory (folder) you want your users' home
-directory to be when they log into the file transfer protocol-enabled
-server. If you set it to \code{PATH}, the user will see the absolute Amazon
-S3 bucket paths as is in their file transfer protocol clients. If you
-set it \code{LOGICAL}, you will need to provide mappings in the
-\code{HomeDirectoryMappings} for how you want to make Amazon S3 paths visible
-to your users.}
+directory to be when they log into the server. If you set it to \code{PATH},
+the user will see the absolute Amazon S3 bucket paths as is in their
+file transfer protocol clients. If you set it \code{LOGICAL}, you will need
+to provide mappings in the \code{HomeDirectoryMappings} for how you want to
+make Amazon S3 paths visible to your users.}
 
 \item{HomeDirectoryMappings}{Logical directory mappings that specify what Amazon S3 paths and keys
 should be visible to your user and how you want to make them visible.
@@ -39,7 +37,7 @@ HomeDirectory parameter value.
 
 If the target of a logical directory entry does not exist in Amazon S3,
 the entry will be ignored. As a workaround, you can use the Amazon S3
-api to create 0 byte objects as place holders for your directory. If
+API to create 0 byte objects as place holders for your directory. If
 using the CLI, use the \code{s3api} call instead of \code{s3} so you can use the
 put-object operation. For example, you use the following:
 \verb{aws s3api put-object --bucket bucketname --key path/to/folder/}. Make
@@ -62,22 +60,24 @@ For more information, see
 \href{https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html}{AssumeRole}
 in the \emph{AWS Security Token Service API Reference}.}
 
+\item{PosixProfile}{}
+
 \item{Role}{The IAM role that controls your users' access to your Amazon S3 bucket.
 The policies attached to this role will determine the level of access
 you want to provide your users when transferring files into and out of
 your Amazon S3 bucket or buckets. The IAM role should also contain a
-trust relationship that allows the file transfer protocol-enabled server
-to access your resources when servicing your users' transfer requests.}
+trust relationship that allows the server to access your resources when
+servicing your users' transfer requests.}
 
-\item{ServerId}{[required] A system-assigned unique identifier for a file transfer protocol-enabled
-server instance that the user account is assigned to.}
+\item{ServerId}{[required] A system-assigned unique identifier for a server instance that the user
+account is assigned to.}
 
-\item{UserName}{[required] A unique string that identifies a user and is associated with a file
-transfer protocol-enabled server as specified by the \code{ServerId}. This is
-the string that will be used by your user when they log in to your
-server. This user name is a minimum of 3 and a maximum of 32 characters
-long. The following are valid characters: a-z, A-Z, 0-9, underscore, and
-hyphen. The user name can't start with a hyphen.}
+\item{UserName}{[required] A unique string that identifies a user and is associated with a server
+as specified by the \code{ServerId}. This user name must be a minimum of 3
+and a maximum of 100 characters long. The following are valid
+characters: a-z, A-Z, 0-9, underscore '\\_', hyphen '-', period '.', and
+at sign '@'. The user name can't start with a hyphen, period, or at
+sign.}
 }
 \description{
 Assigns new properties to a user. Parameters you pass modify any or all
@@ -99,6 +99,13 @@ user.
     )
   ),
   Policy = "string",
+  PosixProfile = list(
+    Uid = 123,
+    Gid = 123,
+    SecondaryGids = list(
+      123
+    )
+  ),
   Role = "string",
   ServerId = "string",
   UserName = "string"

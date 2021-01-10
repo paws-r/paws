@@ -19,16 +19,18 @@ an alert.}
 
 \item{alertTargets}{Where the alerts are sent. (Alerts are always sent to the console.)}
 
-\item{additionalMetricsToRetain}{A list of metrics whose data is retained (stored). By default, data is
-retained for any metric used in the profile's \code{behaviors}, but it is
-also retained for any metric specified here.
+\item{additionalMetricsToRetain}{\emph{Please use UpdateSecurityProfileRequest$additionalMetricsToRetainV2
+instead.}
 
-\strong{Note:} This API field is deprecated. Please use
-UpdateSecurityProfileRequest$additionalMetricsToRetainV2 instead.}
+A list of metrics whose data is retained (stored). By default, data is
+retained for any metric used in the profile's \code{behaviors}, but it is
+also retained for any metric specified here. Can be used with custom
+metrics; cannot be used with dimensions.}
 
 \item{additionalMetricsToRetainV2}{A list of metrics whose data is retained (stored). By default, data is
 retained for any metric used in the profile's behaviors, but it is also
-retained for any metric specified here.}
+retained for any metric specified here. Can be used with custom metrics;
+cannot be used with dimensions.}
 
 \item{deleteBehaviors}{If true, delete all \code{behaviors} defined for this security profile. If
 any \code{behaviors} are defined in the current invocation, an exception
@@ -63,7 +65,7 @@ Updates a Device Defender security profile.
         operator = "IN"|"NOT_IN"
       ),
       criteria = list(
-        comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set",
+        comparisonOperator = "less-than"|"less-than-equals"|"greater-than"|"greater-than-equals"|"in-cidr-set"|"not-in-cidr-set"|"in-port-set"|"not-in-port-set"|"in-set"|"not-in-set",
         value = list(
           count = 123,
           cidrs = list(
@@ -71,6 +73,13 @@ Updates a Device Defender security profile.
           ),
           ports = list(
             123
+          ),
+          number = 123.0,
+          numbers = list(
+            123.0
+          ),
+          strings = list(
+            "string"
           )
         ),
         durationSeconds = 123,
@@ -78,8 +87,12 @@ Updates a Device Defender security profile.
         consecutiveDatapointsToClear = 123,
         statisticalThreshold = list(
           statistic = "string"
+        ),
+        mlDetectionConfig = list(
+          confidenceLevel = "LOW"|"MEDIUM"|"HIGH"
         )
-      )
+      ),
+      suppressAlerts = TRUE|FALSE
     )
   ),
   alertTargets = list(

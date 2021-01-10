@@ -6,7 +6,8 @@
 \usage{
 apigatewayv2_update_api(ApiId, ApiKeySelectionExpression,
   CorsConfiguration, CredentialsArn, Description, DisableSchemaValidation,
-  Name, RouteKey, RouteSelectionExpression, Target, Version)
+  DisableExecuteApiEndpoint, Name, RouteKey, RouteSelectionExpression,
+  Target, Version)
 }
 \arguments{
 \item{ApiId}{[required] The API identifier.}
@@ -22,15 +23,21 @@ options are available. To specify an IAM Role for API Gateway to assume,
 use the role's Amazon Resource Name (ARN). To require that the caller's
 identity be passed through from the request, specify
 arn:aws:iam::\emph{:user/}. To use resource-based permissions on supported
-AWS services, specify null. Currently, this property is not used for
-HTTP integrations. If provided, this value replaces the credentials
-associated with the quick create integration. Supported only for HTTP
-APIs.}
+AWS services, don't specify this parameter. Currently, this property is
+not used for HTTP integrations. If provided, this value replaces the
+credentials associated with the quick create integration. Supported only
+for HTTP APIs.}
 
 \item{Description}{The description of the API.}
 
 \item{DisableSchemaValidation}{Avoid validating models when creating a deployment. Supported only for
 WebSocket APIs.}
+
+\item{DisableExecuteApiEndpoint}{Specifies whether clients can invoke your API by using the default
+execute-api endpoint. By default, clients can invoke your API with the
+default https://\{api\\_id\}.execute-api.\{region\}.amazonaws.com endpoint.
+To require that clients use a custom domain name to invoke your API,
+disable the default endpoint.}
 
 \item{Name}{The name of the API.}
 
@@ -79,6 +86,7 @@ Updates an Api resource.
   CredentialsArn = "string",
   Description = "string",
   DisableSchemaValidation = TRUE|FALSE,
+  DisableExecuteApiEndpoint = TRUE|FALSE,
   Name = "string",
   RouteKey = "string",
   RouteSelectionExpression = "string",

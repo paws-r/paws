@@ -4,17 +4,30 @@
 \alias{cloudwatch_list_metrics}
 \title{List the specified metrics}
 \usage{
-cloudwatch_list_metrics(Namespace, MetricName, Dimensions, NextToken)
+cloudwatch_list_metrics(Namespace, MetricName, Dimensions, NextToken,
+  RecentlyActive)
 }
 \arguments{
-\item{Namespace}{The namespace to filter against.}
+\item{Namespace}{The metric namespace to filter against. Only the namespace that matches
+exactly will be returned.}
 
-\item{MetricName}{The name of the metric to filter against.}
+\item{MetricName}{The name of the metric to filter against. Only the metrics with names
+that match exactly will be returned.}
 
-\item{Dimensions}{The dimensions to filter against.}
+\item{Dimensions}{The dimensions to filter against. Only the dimensions that match exactly
+will be returned.}
 
 \item{NextToken}{The token returned by a previous call to indicate that there is more
 data available.}
+
+\item{RecentlyActive}{To filter the results to show only metrics that have had data points
+published in the past three hours, specify this parameter with a value
+of \code{PT3H}. This is the only valid value for this parameter.
+
+The results that are returned are an approximation of the value you
+specify. There is a low probability that the returned results include
+metrics with last published data as much as 40 minutes more than the
+specified time interval.}
 }
 \description{
 List the specified metrics. You can use the returned metrics with
@@ -27,9 +40,15 @@ to obtain statistical data.
 Up to 500 results are returned for any one call. To retrieve additional
 results, use the returned token with subsequent calls.
 
-After you create a metric, allow up to fifteen minutes before the metric
-appears. Statistics about the metric, however, are available sooner
-using
+After you create a metric, allow up to 15 minutes before the metric
+appears. You can see statistics about the metric sooner by using
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html}{GetMetricData}
+or
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html}{GetMetricStatistics}.
+
+\code{ListMetrics} doesn't return information about metrics if those metrics
+haven't reported data in the past two weeks. To retrieve those metrics,
+use
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html}{GetMetricData}
 or
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html}{GetMetricStatistics}.
@@ -44,7 +63,8 @@ or
       Value = "string"
     )
   ),
-  NextToken = "string"
+  NextToken = "string",
+  RecentlyActive = "PT3H"
 )
 }
 }

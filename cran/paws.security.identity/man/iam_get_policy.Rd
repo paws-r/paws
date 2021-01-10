@@ -30,7 +30,7 @@ information about an inline policy that is embedded with an IAM user,
 group, or role, use the GetUserPolicy, GetGroupPolicy, or GetRolePolicy
 API.
 
-For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+For more information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

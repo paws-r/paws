@@ -47,6 +47,11 @@ management and include this parameter, an error is returned.}
 \description{
 Creates a user account for the specified Amazon Connect instance.
 }
+\details{
+For information about how to create user accounts using the Amazon
+Connect console, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/user-management.html}{Add Users}
+in the \emph{Amazon Connect Administrator Guide}.
+}
 \section{Request syntax}{
 \preformatted{svc$create_user(
   Username = "string",

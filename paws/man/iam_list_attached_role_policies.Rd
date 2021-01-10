@@ -10,14 +10,14 @@ iam_list_attached_role_policies(RoleName, PathPrefix, Marker, MaxItems)
 \item{RoleName}{[required] The name (friendly name, not ARN) of the role to list attached policies
 for.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{PathPrefix}{The path prefix for filtering the results. This parameter is optional.
 If it is not included, it defaults to a slash (/), listing all policies.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
@@ -45,7 +45,7 @@ Lists all managed policies that are attached to the specified IAM role.
 \details{
 An IAM role can also have inline policies embedded with it. To list the
 inline policies for a role, use the ListRolePolicies API. For
-information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 
 You can paginate the results using the \code{MaxItems} and \code{Marker}

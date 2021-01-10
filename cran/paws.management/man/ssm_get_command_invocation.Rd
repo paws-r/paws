@@ -16,7 +16,10 @@ environment that is configured for Systems Manager.}
 
 \item{PluginName}{(Optional) The name of the plugin for which you want detailed results.
 If the document contains only one plugin, the name can be omitted and
-the details will be returned.}
+the details will be returned.
+
+Plugin names are also referred to as step names in Systems Manager
+documents.}
 }
 \description{
 Returns detailed information about command execution for an invocation

@@ -35,7 +35,7 @@ configuration has changed since you last updated it.}
 }
 \description{
 Creates a
-\href{https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html}{version}
+\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{version}
 from the current code and configuration of a function. Use versions to
 create a snapshot of your function code and configuration that doesn't
 change.

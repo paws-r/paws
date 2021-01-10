@@ -36,7 +36,7 @@ security group and Amazon Redshift cluster must be in the same AWS
 Region.
 
 If you authorize access to a CIDR/IP address range, specify \emph{CIDRIP}.
-For an overview of CIDR blocks, see the Wikipedia article on \href{http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Classless Inter-Domain Routing}.
+For an overview of CIDR blocks, see the Wikipedia article on \href{https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Classless Inter-Domain Routing}.
 
 You must also associate the security group with a cluster so that
 clients running on these IP addresses or the EC2 instance are authorized

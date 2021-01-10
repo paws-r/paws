@@ -44,7 +44,7 @@ used in the same call as \code{OnPremisesTagSet}.}
 act on the user's behalf when interacting with AWS services.}
 
 \item{triggerConfigurations}{Information about triggers to create when the deployment group is
-created. For examples, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html}{Create a Trigger for an AWS CodeDeploy Event}
+created. For examples, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html}{Create a Trigger for an AWS CodeDeploy Event}
 in the \emph{AWS CodeDeploy User Guide}.}
 
 \item{alarmConfiguration}{Information to add about Amazon CloudWatch alarms when the deployment

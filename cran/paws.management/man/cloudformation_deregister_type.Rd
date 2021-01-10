@@ -44,7 +44,7 @@ deregistered as well.
 \section{Request syntax}{
 \preformatted{svc$deregister_type(
   Arn = "string",
-  Type = "RESOURCE",
+  Type = "RESOURCE"|"MODULE",
   TypeName = "string",
   VersionId = "string"
 )

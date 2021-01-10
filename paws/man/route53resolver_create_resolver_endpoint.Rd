@@ -2,7 +2,7 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_create_resolver_endpoint}
 \alias{route53resolver_create_resolver_endpoint}
-\title{Creates a resolver endpoint}
+\title{Creates a Resolver endpoint}
 \usage{
 route53resolver_create_resolver_endpoint(CreatorRequestId, Name,
   SecurityGroupIds, Direction, IpAddresses, Tags)
@@ -18,35 +18,36 @@ Resolver dashboard in the Route 53 console.}
 
 \item{SecurityGroupIds}{[required] The ID of one or more security groups that you want to use to control
 access to this VPC. The security group that you specify must include one
-or more inbound rules (for inbound resolver endpoints) or outbound rules
-(for outbound resolver endpoints).}
+or more inbound rules (for inbound Resolver endpoints) or outbound rules
+(for outbound Resolver endpoints). Inbound and outbound rules must allow
+TCP and UDP access. For inbound access, open port 53. For outbound
+access, open the port that you're using for DNS queries on your network.}
 
 \item{Direction}{[required] Specify the applicable value:
 \itemize{
 \item \code{INBOUND}: Resolver forwards DNS queries to the DNS service for a
-VPC from your network or another VPC
+VPC from your network
 \item \code{OUTBOUND}: Resolver forwards DNS queries from the DNS service for a
-VPC to your network or another VPC
+VPC to your network
 }}
 
-\item{IpAddresses}{[required] The subnets and IP addresses in your VPC that you want DNS queries to
-pass through on the way from your VPCs to your network (for outbound
-endpoints) or on the way from your network to your VPCs (for inbound
-resolver endpoints).}
+\item{IpAddresses}{[required] The subnets and IP addresses in your VPC that DNS queries originate from
+(for outbound endpoints) or that you forward DNS queries to (for inbound
+endpoints). The subnet ID uniquely identifies a VPC.}
 
 \item{Tags}{A list of the tag keys and values that you want to associate with the
 endpoint.}
 }
 \description{
-Creates a resolver endpoint. There are two types of resolver endpoints,
+Creates a Resolver endpoint. There are two types of Resolver endpoints,
 inbound and outbound:
 }
 \details{
 \itemize{
-\item An \emph{inbound resolver endpoint} forwards DNS queries to the DNS
-service for a VPC from your network or another VPC.
-\item An \emph{outbound resolver endpoint} forwards DNS queries from the DNS
-service for a VPC to your network or another VPC.
+\item An \emph{inbound Resolver endpoint} forwards DNS queries to the DNS
+service for a VPC from your network.
+\item An \emph{outbound Resolver endpoint} forwards DNS queries from the DNS
+service for a VPC to your network.
 }
 }
 \section{Request syntax}{

@@ -6,6 +6,8 @@ NULL
 #' Creates a member within a Managed Blockchain network
 #'
 #' Creates a member within a Managed Blockchain network.
+#' 
+#' Applies only to Hyperledger Fabric.
 #'
 #' @usage
 #' managedblockchain_create_member(ClientRequestToken, InvitationId,
@@ -72,6 +74,8 @@ managedblockchain_create_member <- function(ClientRequestToken, InvitationId, Ne
 #' Creates a new blockchain network using Amazon Managed Blockchain
 #'
 #' Creates a new blockchain network using Amazon Managed Blockchain.
+#' 
+#' Applies only to Hyperledger Fabric.
 #'
 #' @usage
 #' managedblockchain_create_network(ClientRequestToken, Name, Description,
@@ -99,7 +103,7 @@ managedblockchain_create_member <- function(ClientRequestToken, InvitationId, Ne
 #'   ClientRequestToken = "string",
 #'   Name = "string",
 #'   Description = "string",
-#'   Framework = "HYPERLEDGER_FABRIC",
+#'   Framework = "HYPERLEDGER_FABRIC"|"ETHEREUM",
 #'   FrameworkVersion = "string",
 #'   FrameworkConfiguration = list(
 #'     Fabric = list(
@@ -155,9 +159,11 @@ managedblockchain_create_network <- function(ClientRequestToken, Name, Descripti
 }
 .managedblockchain$operations$create_network <- managedblockchain_create_network
 
-#' Creates a peer node in a member
+#' Creates a node on the specified blockchain network
 #'
-#' Creates a peer node in a member.
+#' Creates a node on the specified blockchain network.
+#' 
+#' Applies to Hyperledger Fabric and Ethereum.
 #'
 #' @usage
 #' managedblockchain_create_node(ClientRequestToken, NetworkId, MemberId,
@@ -168,8 +174,18 @@ managedblockchain_create_network <- function(ClientRequestToken, Name, Descripti
 #' than one time. This identifier is required only if you make a service
 #' request directly using an HTTP client. It is generated automatically if
 #' you use an AWS SDK or the AWS CLI.
-#' @param NetworkId &#91;required&#93; The unique identifier of the network in which this node runs.
-#' @param MemberId &#91;required&#93; The unique identifier of the member that owns this node.
+#' @param NetworkId &#91;required&#93; The unique identifier of the network for the node.
+#' 
+#' Ethereum public networks have the following `NetworkId`s:
+#' 
+#' -   `n-ethereum-mainnet`
+#' 
+#' -   `n-ethereum-rinkeby`
+#' 
+#' -   `n-ethereum-ropsten`
+#' @param MemberId The unique identifier of the member that owns this node.
+#' 
+#' Applies only to Hyperledger Fabric.
 #' @param NodeConfiguration &#91;required&#93; The properties of a node configuration.
 #'
 #' @section Request syntax:
@@ -194,7 +210,8 @@ managedblockchain_create_network <- function(ClientRequestToken, Name, Descripti
 #'           )
 #'         )
 #'       )
-#'     )
+#'     ),
+#'     StateDB = "LevelDB"|"CouchDB"
 #'   )
 #' )
 #' ```
@@ -202,11 +219,11 @@ managedblockchain_create_network <- function(ClientRequestToken, Name, Descripti
 #' @keywords internal
 #'
 #' @rdname managedblockchain_create_node
-managedblockchain_create_node <- function(ClientRequestToken, NetworkId, MemberId, NodeConfiguration) {
+managedblockchain_create_node <- function(ClientRequestToken, NetworkId, MemberId = NULL, NodeConfiguration) {
   op <- new_operation(
     name = "CreateNode",
     http_method = "POST",
-    http_path = "/networks/{networkId}/members/{memberId}/nodes",
+    http_path = "/networks/{networkId}/nodes",
     paginator = list()
   )
   input <- .managedblockchain$create_node_input(ClientRequestToken = ClientRequestToken, NetworkId = NetworkId, MemberId = MemberId, NodeConfiguration = NodeConfiguration)
@@ -226,6 +243,8 @@ managedblockchain_create_node <- function(ClientRequestToken, NetworkId, MemberI
 #' Creates a proposal for a change to the network that other members of the
 #' network can vote on, for example, a proposal to add a new member to the
 #' network. Any member can create a proposal.
+#' 
+#' Applies only to Hyperledger Fabric.
 #'
 #' @usage
 #' managedblockchain_create_proposal(ClientRequestToken, NetworkId,
@@ -299,6 +318,8 @@ managedblockchain_create_proposal <- function(ClientRequestToken, NetworkId, Mem
 #' approved proposal to remove a member. If `MemberId` is the last member
 #' in a network specified by the last AWS account, the network is deleted
 #' also.
+#' 
+#' Applies only to Hyperledger Fabric.
 #'
 #' @usage
 #' managedblockchain_delete_member(NetworkId, MemberId)
@@ -334,16 +355,29 @@ managedblockchain_delete_member <- function(NetworkId, MemberId) {
 }
 .managedblockchain$operations$delete_member <- managedblockchain_delete_member
 
-#' Deletes a peer node from a member that your AWS account owns
+#' Deletes a node that your AWS account owns
 #'
-#' Deletes a peer node from a member that your AWS account owns. All data
-#' on the node is lost and cannot be recovered.
+#' Deletes a node that your AWS account owns. All data on the node is lost
+#' and cannot be recovered.
+#' 
+#' Applies to Hyperledger Fabric and Ethereum.
 #'
 #' @usage
 #' managedblockchain_delete_node(NetworkId, MemberId, NodeId)
 #'
-#' @param NetworkId &#91;required&#93; The unique identifier of the network that the node belongs to.
-#' @param MemberId &#91;required&#93; The unique identifier of the member that owns this node.
+#' @param NetworkId &#91;required&#93; The unique identifier of the network that the node is on.
+#' 
+#' Ethereum public networks have the following `NetworkId`s:
+#' 
+#' -   `n-ethereum-mainnet`
+#' 
+#' -   `n-ethereum-rinkeby`
+#' 
+#' -   `n-ethereum-ropsten`
+#' @param MemberId The unique identifier of the member that owns this node.
+#' 
+#' Applies only to Hyperledger Fabric and is required for Hyperledger
+#' Fabric.
 #' @param NodeId &#91;required&#93; The unique identifier of the node.
 #'
 #' @section Request syntax:
@@ -358,11 +392,11 @@ managedblockchain_delete_member <- function(NetworkId, MemberId) {
 #' @keywords internal
 #'
 #' @rdname managedblockchain_delete_node
-managedblockchain_delete_node <- function(NetworkId, MemberId, NodeId) {
+managedblockchain_delete_node <- function(NetworkId, MemberId = NULL, NodeId) {
   op <- new_operation(
     name = "DeleteNode",
     http_method = "DELETE",
-    http_path = "/networks/{networkId}/members/{memberId}/nodes/{nodeId}",
+    http_path = "/networks/{networkId}/nodes/{nodeId}",
     paginator = list()
   )
   input <- .managedblockchain$delete_node_input(NetworkId = NetworkId, MemberId = MemberId, NodeId = NodeId)
@@ -378,6 +412,8 @@ managedblockchain_delete_node <- function(NetworkId, MemberId, NodeId) {
 #' Returns detailed information about a member
 #'
 #' Returns detailed information about a member.
+#' 
+#' Applies only to Hyperledger Fabric.
 #'
 #' @usage
 #' managedblockchain_get_member(NetworkId, MemberId)
@@ -416,6 +452,8 @@ managedblockchain_get_member <- function(NetworkId, MemberId) {
 #' Returns detailed information about a network
 #'
 #' Returns detailed information about a network.
+#' 
+#' Applies to Hyperledger Fabric and Ethereum.
 #'
 #' @usage
 #' managedblockchain_get_network(NetworkId)
@@ -449,15 +487,20 @@ managedblockchain_get_network <- function(NetworkId) {
 }
 .managedblockchain$operations$get_network <- managedblockchain_get_network
 
-#' Returns detailed information about a peer node
+#' Returns detailed information about a node
 #'
-#' Returns detailed information about a peer node.
+#' Returns detailed information about a node.
+#' 
+#' Applies to Hyperledger Fabric and Ethereum.
 #'
 #' @usage
 #' managedblockchain_get_node(NetworkId, MemberId, NodeId)
 #'
-#' @param NetworkId &#91;required&#93; The unique identifier of the network to which the node belongs.
-#' @param MemberId &#91;required&#93; The unique identifier of the member that owns the node.
+#' @param NetworkId &#91;required&#93; The unique identifier of the network that the node is on.
+#' @param MemberId The unique identifier of the member that owns the node.
+#' 
+#' Applies only to Hyperledger Fabric and is required for Hyperledger
+#' Fabric.
 #' @param NodeId &#91;required&#93; The unique identifier of the node.
 #'
 #' @section Request syntax:
@@ -472,11 +515,11 @@ managedblockchain_get_network <- function(NetworkId) {
 #' @keywords internal
 #'
 #' @rdname managedblockchain_get_node
-managedblockchain_get_node <- function(NetworkId, MemberId, NodeId) {
+managedblockchain_get_node <- function(NetworkId, MemberId = NULL, NodeId) {
   op <- new_operation(
     name = "GetNode",
     http_method = "GET",
-    http_path = "/networks/{networkId}/members/{memberId}/nodes/{nodeId}",
+    http_path = "/networks/{networkId}/nodes/{nodeId}",
     paginator = list()
   )
   input <- .managedblockchain$get_node_input(NetworkId = NetworkId, MemberId = MemberId, NodeId = NodeId)
@@ -492,6 +535,8 @@ managedblockchain_get_node <- function(NetworkId, MemberId, NodeId) {
 #' Returns detailed information about a proposal
 #'
 #' Returns detailed information about a proposal.
+#' 
+#' Applies only to Hyperledger Fabric.
 #'
 #' @usage
 #' managedblockchain_get_proposal(NetworkId, ProposalId)
@@ -527,9 +572,11 @@ managedblockchain_get_proposal <- function(NetworkId, ProposalId) {
 }
 .managedblockchain$operations$get_proposal <- managedblockchain_get_proposal
 
-#' Returns a listing of all invitations made on the specified network
+#' Returns a list of all invitations for the current AWS account
 #'
-#' Returns a listing of all invitations made on the specified network.
+#' Returns a list of all invitations for the current AWS account.
+#' 
+#' Applies only to Hyperledger Fabric.
 #'
 #' @usage
 #' managedblockchain_list_invitations(MaxResults, NextToken)
@@ -565,11 +612,13 @@ managedblockchain_list_invitations <- function(MaxResults = NULL, NextToken = NU
 }
 .managedblockchain$operations$list_invitations <- managedblockchain_list_invitations
 
-#' Returns a listing of the members in a network and properties of their
+#' Returns a list of the members in a network and properties of their
 #' configurations
 #'
-#' Returns a listing of the members in a network and properties of their
+#' Returns a list of the members in a network and properties of their
 #' configurations.
+#' 
+#' Applies only to Hyperledger Fabric.
 #'
 #' @usage
 #' managedblockchain_list_members(NetworkId, Name, Status, IsOwned,
@@ -618,10 +667,12 @@ managedblockchain_list_members <- function(NetworkId, Name = NULL, Status = NULL
 .managedblockchain$operations$list_members <- managedblockchain_list_members
 
 #' Returns information about the networks in which the current AWS account
-#' has members
+#' participates
 #'
 #' Returns information about the networks in which the current AWS account
-#' has members.
+#' participates.
+#' 
+#' Applies to Hyperledger Fabric and Ethereum.
 #'
 #' @usage
 #' managedblockchain_list_networks(Name, Framework, Status, MaxResults,
@@ -632,6 +683,8 @@ managedblockchain_list_members <- function(NetworkId, Name = NULL, Status = NULL
 #' framework type are listed.
 #' @param Status An optional status specifier. If provided, only networks currently in
 #' this status are listed.
+#' 
+#' Applies only to Hyperledger Fabric.
 #' @param MaxResults The maximum number of networks to list.
 #' @param NextToken The pagination token that indicates the next set of results to retrieve.
 #'
@@ -639,7 +692,7 @@ managedblockchain_list_members <- function(NetworkId, Name = NULL, Status = NULL
 #' ```
 #' svc$list_networks(
 #'   Name = "string",
-#'   Framework = "HYPERLEDGER_FABRIC",
+#'   Framework = "HYPERLEDGER_FABRIC"|"ETHEREUM",
 #'   Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"DELETING"|"DELETED",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -669,13 +722,18 @@ managedblockchain_list_networks <- function(Name = NULL, Framework = NULL, Statu
 #' Returns information about the nodes within a network
 #'
 #' Returns information about the nodes within a network.
+#' 
+#' Applies to Hyperledger Fabric and Ethereum.
 #'
 #' @usage
 #' managedblockchain_list_nodes(NetworkId, MemberId, Status, MaxResults,
 #'   NextToken)
 #'
 #' @param NetworkId &#91;required&#93; The unique identifier of the network for which to list nodes.
-#' @param MemberId &#91;required&#93; The unique identifier of the member who owns the nodes to list.
+#' @param MemberId The unique identifier of the member who owns the nodes to list.
+#' 
+#' Applies only to Hyperledger Fabric and is required for Hyperledger
+#' Fabric.
 #' @param Status An optional status specifier. If provided, only nodes currently in this
 #' status are listed.
 #' @param MaxResults The maximum number of nodes to list.
@@ -686,7 +744,7 @@ managedblockchain_list_networks <- function(Name = NULL, Framework = NULL, Statu
 #' svc$list_nodes(
 #'   NetworkId = "string",
 #'   MemberId = "string",
-#'   Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETED"|"FAILED",
+#'   Status = "CREATING"|"AVAILABLE"|"UNHEALTHY"|"CREATE_FAILED"|"UPDATING"|"DELETING"|"DELETED"|"FAILED",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -695,11 +753,11 @@ managedblockchain_list_networks <- function(Name = NULL, Framework = NULL, Statu
 #' @keywords internal
 #'
 #' @rdname managedblockchain_list_nodes
-managedblockchain_list_nodes <- function(NetworkId, MemberId, Status = NULL, MaxResults = NULL, NextToken = NULL) {
+managedblockchain_list_nodes <- function(NetworkId, MemberId = NULL, Status = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListNodes",
     http_method = "GET",
-    http_path = "/networks/{networkId}/members/{memberId}/nodes",
+    http_path = "/networks/{networkId}/nodes",
     paginator = list()
   )
   input <- .managedblockchain$list_nodes_input(NetworkId = NetworkId, MemberId = MemberId, Status = Status, MaxResults = MaxResults, NextToken = NextToken)
@@ -712,13 +770,13 @@ managedblockchain_list_nodes <- function(NetworkId, MemberId, Status = NULL, Max
 }
 .managedblockchain$operations$list_nodes <- managedblockchain_list_nodes
 
-#' Returns the listing of votes for a specified proposal, including the
-#' value of each vote and the unique identifier of the member that cast the
-#' vote
+#' Returns the list of votes for a specified proposal, including the value
+#' of each vote and the unique identifier of the member that cast the vote
 #'
-#' Returns the listing of votes for a specified proposal, including the
-#' value of each vote and the unique identifier of the member that cast the
-#' vote.
+#' Returns the list of votes for a specified proposal, including the value
+#' of each vote and the unique identifier of the member that cast the vote.
+#' 
+#' Applies only to Hyperledger Fabric.
 #'
 #' @usage
 #' managedblockchain_list_proposal_votes(NetworkId, ProposalId, MaxResults,
@@ -759,9 +817,11 @@ managedblockchain_list_proposal_votes <- function(NetworkId, ProposalId, MaxResu
 }
 .managedblockchain$operations$list_proposal_votes <- managedblockchain_list_proposal_votes
 
-#' Returns a listing of proposals for the network
+#' Returns a list of proposals for the network
 #'
-#' Returns a listing of proposals for the network.
+#' Returns a list of proposals for the network.
+#' 
+#' Applies only to Hyperledger Fabric.
 #'
 #' @usage
 #' managedblockchain_list_proposals(NetworkId, MaxResults, NextToken)
@@ -804,6 +864,8 @@ managedblockchain_list_proposals <- function(NetworkId, MaxResults = NULL, NextT
 #' Rejects an invitation to join a network. This action can be called by a
 #' principal in an AWS account that has received an invitation to create a
 #' member and join a network.
+#' 
+#' Applies only to Hyperledger Fabric.
 #'
 #' @usage
 #' managedblockchain_reject_invitation(InvitationId)
@@ -840,14 +902,16 @@ managedblockchain_reject_invitation <- function(InvitationId) {
 #' Updates a member configuration with new parameters
 #'
 #' Updates a member configuration with new parameters.
+#' 
+#' Applies only to Hyperledger Fabric.
 #'
 #' @usage
 #' managedblockchain_update_member(NetworkId, MemberId,
 #'   LogPublishingConfiguration)
 #'
-#' @param NetworkId &#91;required&#93; The unique ID of the Managed Blockchain network to which the member
-#' belongs.
-#' @param MemberId &#91;required&#93; The unique ID of the member.
+#' @param NetworkId &#91;required&#93; The unique identifier of the Managed Blockchain network to which the
+#' member belongs.
+#' @param MemberId &#91;required&#93; The unique identifier of the member.
 #' @param LogPublishingConfiguration Configuration properties for publishing to Amazon CloudWatch Logs.
 #'
 #' @section Request syntax:
@@ -890,15 +954,18 @@ managedblockchain_update_member <- function(NetworkId, MemberId, LogPublishingCo
 #' Updates a node configuration with new parameters
 #'
 #' Updates a node configuration with new parameters.
+#' 
+#' Applies only to Hyperledger Fabric.
 #'
 #' @usage
 #' managedblockchain_update_node(NetworkId, MemberId, NodeId,
 #'   LogPublishingConfiguration)
 #'
-#' @param NetworkId &#91;required&#93; The unique ID of the Managed Blockchain network to which the node
-#' belongs.
-#' @param MemberId &#91;required&#93; The unique ID of the member that owns the node.
-#' @param NodeId &#91;required&#93; The unique ID of the node.
+#' @param NetworkId &#91;required&#93; The unique identifier of the network that the node is on.
+#' @param MemberId The unique identifier of the member that owns the node.
+#' 
+#' Applies only to Hyperledger Fabric.
+#' @param NodeId &#91;required&#93; The unique identifier of the node.
 #' @param LogPublishingConfiguration Configuration properties for publishing to Amazon CloudWatch Logs.
 #'
 #' @section Request syntax:
@@ -927,11 +994,11 @@ managedblockchain_update_member <- function(NetworkId, MemberId, LogPublishingCo
 #' @keywords internal
 #'
 #' @rdname managedblockchain_update_node
-managedblockchain_update_node <- function(NetworkId, MemberId, NodeId, LogPublishingConfiguration = NULL) {
+managedblockchain_update_node <- function(NetworkId, MemberId = NULL, NodeId, LogPublishingConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateNode",
     http_method = "PATCH",
-    http_path = "/networks/{networkId}/members/{memberId}/nodes/{nodeId}",
+    http_path = "/networks/{networkId}/nodes/{nodeId}",
     paginator = list()
   )
   input <- .managedblockchain$update_node_input(NetworkId = NetworkId, MemberId = MemberId, NodeId = NodeId, LogPublishingConfiguration = LogPublishingConfiguration)
@@ -949,6 +1016,8 @@ managedblockchain_update_node <- function(NetworkId, MemberId, NodeId, LogPublis
 #' Casts a vote for a specified `ProposalId` on behalf of a member. The
 #' member to vote as, specified by `VoterMemberId`, must be in the same AWS
 #' account as the principal that calls the action.
+#' 
+#' Applies only to Hyperledger Fabric.
 #'
 #' @usage
 #' managedblockchain_vote_on_proposal(NetworkId, ProposalId, VoterMemberId,

@@ -27,31 +27,31 @@ ARN.
     ProductArn = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     AwsAccountId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     Id = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     GeneratorId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     Type = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     FirstObservedAt = list(
@@ -111,7 +111,7 @@ ARN.
     SeverityLabel = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     Confidence = list(
@@ -131,87 +131,87 @@ ARN.
     Title = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     Description = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     RecommendationText = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     SourceUrl = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ProductFields = list(
       list(
         Key = "string",
         Value = "string",
-        Comparison = "EQUALS"
+        Comparison = "EQUALS"|"NOT_EQUALS"
       )
     ),
     ProductName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     CompanyName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     UserDefinedFields = list(
       list(
         Key = "string",
         Value = "string",
-        Comparison = "EQUALS"
+        Comparison = "EQUALS"|"NOT_EQUALS"
       )
     ),
     MalwareName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     MalwareType = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     MalwarePath = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     MalwareState = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     NetworkDirection = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     NetworkProtocol = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     NetworkSourceIpV4 = list(
@@ -234,13 +234,13 @@ ARN.
     NetworkSourceDomain = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     NetworkSourceMac = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     NetworkDestinationIpV4 = list(
@@ -263,19 +263,19 @@ ARN.
     NetworkDestinationDomain = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ProcessName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ProcessPath = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ProcessPid = list(
@@ -315,19 +315,19 @@ ARN.
     ThreatIntelIndicatorType = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ThreatIntelIndicatorValue = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ThreatIntelIndicatorCategory = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ThreatIntelIndicatorLastObservedAt = list(
@@ -343,56 +343,56 @@ ARN.
     ThreatIntelIndicatorSource = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ThreatIntelIndicatorSourceUrl = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceType = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourcePartition = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceRegion = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceTags = list(
       list(
         Key = "string",
         Value = "string",
-        Comparison = "EQUALS"
+        Comparison = "EQUALS"|"NOT_EQUALS"
       )
     ),
     ResourceAwsEc2InstanceType = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceAwsEc2InstanceImageId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceAwsEc2InstanceIpV4Addresses = list(
@@ -408,25 +408,25 @@ ARN.
     ResourceAwsEc2InstanceKeyName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceAwsEc2InstanceIamInstanceProfileArn = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceAwsEc2InstanceVpcId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceAwsEc2InstanceSubnetId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceAwsEc2InstanceLaunchedAt = list(
@@ -442,25 +442,25 @@ ARN.
     ResourceAwsS3BucketOwnerId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceAwsS3BucketOwnerName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceAwsIamAccessKeyUserName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceAwsIamAccessKeyStatus = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceAwsIamAccessKeyCreatedAt = list(
@@ -476,19 +476,19 @@ ARN.
     ResourceContainerName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceContainerImageId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceContainerImageName = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     ResourceContainerLaunchedAt = list(
@@ -505,55 +505,55 @@ ARN.
       list(
         Key = "string",
         Value = "string",
-        Comparison = "EQUALS"
+        Comparison = "EQUALS"|"NOT_EQUALS"
       )
     ),
     ComplianceStatus = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     VerificationState = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     WorkflowState = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     WorkflowStatus = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     RecordState = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     RelatedFindingsProductArn = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     RelatedFindingsId = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     NoteText = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     NoteUpdatedAt = list(
@@ -569,7 +569,7 @@ ARN.
     NoteUpdatedBy = list(
       list(
         Value = "string",
-        Comparison = "EQUALS"|"PREFIX"
+        Comparison = "EQUALS"|"PREFIX"|"NOT_EQUALS"|"PREFIX_NOT_EQUALS"
       )
     ),
     Keyword = list(

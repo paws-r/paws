@@ -8,8 +8,7 @@ passing the ServerId parameter}
 transfer_describe_server(ServerId)
 }
 \arguments{
-\item{ServerId}{[required] A system-assigned unique identifier for a file transfer protocol-enabled
-server.}
+\item{ServerId}{[required] A system-assigned unique identifier for a server.}
 }
 \description{
 Describes a file transfer protocol-enabled server that you specify by

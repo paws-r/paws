@@ -5,7 +5,8 @@
 \title{Creates an new set of frequently asked question (FAQ) questions and
 answers}
 \usage{
-kendra_create_faq(IndexId, Name, Description, S3Path, RoleArn, Tags)
+kendra_create_faq(IndexId, Name, Description, S3Path, RoleArn, Tags,
+  FileFormat, ClientToken)
 }
 \arguments{
 \item{IndexId}{[required] The identifier of the index that contains the FAQ.}
@@ -21,6 +22,19 @@ S3 bucket that contains the FAQs. For more information, see \href{https://docs.a
 
 \item{Tags}{A list of key-value pairs that identify the FAQ. You can use the tags to
 identify and organize your resources and to control access to resources.}
+
+\item{FileFormat}{The format of the input file. You can choose between a basic CSV format,
+a CSV format that includes customs attributes in a header, and a JSON
+format that includes custom attributes.
+
+The format must match the format of the file stored in the S3 bucket
+identified in the \code{S3Path} parameter.
+
+For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/in-creating-faq.html}{Adding questions and answers}.}
+
+\item{ClientToken}{A token that you provide to identify the request to create a FAQ.
+Multiple calls to the \code{CreateFaqRequest} operation with the same client
+token will create only one FAQ.}
 }
 \description{
 Creates an new set of frequently asked question (FAQ) questions and
@@ -41,7 +55,9 @@ answers.
       Key = "string",
       Value = "string"
     )
-  )
+  ),
+  FileFormat = "CSV"|"CSV_WITH_HEADER"|"JSON",
+  ClientToken = "string"
 )
 }
 }

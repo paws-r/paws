@@ -5,7 +5,7 @@
 \title{Creates a variable}
 \usage{
 frauddetector_create_variable(name, dataType, dataSource, defaultValue,
-  description, variableType)
+  description, variableType, tags)
 }
 \arguments{
 \item{name}{[required] The name of the variable.}
@@ -18,7 +18,12 @@ frauddetector_create_variable(name, dataType, dataSource, defaultValue,
 
 \item{description}{The description.}
 
-\item{variableType}{The variable type.}
+\item{variableType}{The variable type. For more information see \href{https://docs.aws.amazon.com/frauddetector/latest/ug/create-a-variable.html#variable-types}{Variable types}.
+
+Valid Values:
+\code{AUTH_CODE | AVS | BILLING_ADDRESS_L1 | BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY | BILLING_NAME | BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN | CATEGORICAL | CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL | FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE | PHONE_NUMBER | PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 | SHIPPING_ADDRESS_L2 | SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME | SHIPPING_PHONE | SHIPPING_STATE | SHIPPING_ZIP | USERAGENT}}
+
+\item{tags}{A collection of key and value pairs.}
 }
 \description{
 Creates a variable.
@@ -30,7 +35,13 @@ Creates a variable.
   dataSource = "EVENT"|"MODEL_SCORE"|"EXTERNAL_MODEL_SCORE",
   defaultValue = "string",
   description = "string",
-  variableType = "string"
+  variableType = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

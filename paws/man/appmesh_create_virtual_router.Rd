@@ -52,7 +52,7 @@ For more information about virtual routers, see \href{https://docs.aws.amazon.co
       list(
         portMapping = list(
           port = 123,
-          protocol = "grpc"|"http"|"http2"|"tcp"
+          protocol = "http"|"tcp"|"http2"|"grpc"
         )
       )
     )

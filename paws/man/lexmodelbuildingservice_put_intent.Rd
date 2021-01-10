@@ -8,7 +8,7 @@ lexmodelbuildingservice_put_intent(name, description, slots,
   sampleUtterances, confirmationPrompt, rejectionStatement,
   followUpPrompt, conclusionStatement, dialogCodeHook,
   fulfillmentActivity, parentIntentSignature, checksum, createVersion,
-  kendraConfiguration)
+  kendraConfiguration, inputContexts, outputContexts)
 }
 \arguments{
 \item{name}{[required] The name of the intent. The name is \emph{not} case sensitive.
@@ -18,7 +18,7 @@ with "AMAZON." removed. For example, because there is a built-in intent
 called \code{AMAZON.HelpIntent}, you can't create a custom intent called
 \code{HelpIntent}.
 
-For a list of built-in intents, see \href{https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents}{Standard Built-in Intents}
+For a list of built-in intents, see \href{https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html}{Standard Built-in Intents}
 in the \emph{Alexa Skills Kit}.}
 
 \item{description}{A description of the intent.}
@@ -103,7 +103,7 @@ to the client application, or direct it to invoke a Lambda function that
 can process the intent (for example, place an order with a pizzeria).}
 
 \item{parentIntentSignature}{A unique identifier for the built-in intent to base this intent on. To
-find the signature for an intent, see \href{https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents}{Standard Built-in Intents}
+find the signature for an intent, see \href{https://developer.amazon.com/en-US/docs/alexa/custom-skills/standard-built-in-intents.html}{Standard Built-in Intents}
 in the \emph{Alexa Skills Kit}.}
 
 \item{checksum}{Identifies a specific revision of the \verb{$LATEST} version.
@@ -124,7 +124,14 @@ not specify \code{createVersion}, the default is \code{false}.}
 \item{kendraConfiguration}{Configuration information required to use the
 \code{AMAZON.KendraSearchIntent} intent to connect to an Amazon Kendra index.
 For more information, see
-\href{http://docs.aws.amazon.com/lex/latest/dg/built-in-intent-kendra-search.html}{AMAZON.KendraSearchIntent}.}
+\href{https://docs.aws.amazon.com/lex/latest/dg/built-in-intent-kendra-search.html}{AMAZON.KendraSearchIntent}.}
+
+\item{inputContexts}{An array of \code{InputContext} objects that lists the contexts that must be
+active for Amazon Lex to choose the intent in a conversation with the
+user.}
+
+\item{outputContexts}{An array of \code{OutputContext} objects that lists the contexts that the
+intent activates when the intent is fulfilled.}
 }
 \description{
 Creates an intent or replaces an existing intent.
@@ -201,7 +208,14 @@ This operation requires permissions for the \code{lex:PutIntent} action.
         "string"
       ),
       responseCard = "string",
-      obfuscationSetting = "NONE"|"DEFAULT_OBFUSCATION"
+      obfuscationSetting = "NONE"|"DEFAULT_OBFUSCATION",
+      defaultValueSpec = list(
+        defaultValueList = list(
+          list(
+            defaultValue = "string"
+          )
+        )
+      )
     )
   ),
   sampleUtterances = list(
@@ -279,6 +293,18 @@ This operation requires permissions for the \code{lex:PutIntent} action.
     kendraIndex = "string",
     queryFilterString = "string",
     role = "string"
+  ),
+  inputContexts = list(
+    list(
+      name = "string"
+    )
+  ),
+  outputContexts = list(
+    list(
+      name = "string",
+      timeToLiveInSeconds = 123,
+      turnsToLive = 123
+    )
   )
 )
 }

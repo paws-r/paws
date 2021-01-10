@@ -2,22 +2,36 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_register_certificate}
 \alias{directoryservice_register_certificate}
-\title{Registers a certificate for secured LDAP connection}
+\title{Registers a certificate for a secure LDAP or client certificate
+authentication}
 \usage{
-directoryservice_register_certificate(DirectoryId, CertificateData)
+directoryservice_register_certificate(DirectoryId, CertificateData,
+  Type, ClientCertAuthSettings)
 }
 \arguments{
 \item{DirectoryId}{[required] The identifier of the directory.}
 
 \item{CertificateData}{[required] The certificate PEM string that needs to be registered.}
+
+\item{Type}{The function that the registered certificate performs. Valid values
+include \code{ClientLDAPS} or \code{ClientCertAuth}. The default value is
+\code{ClientLDAPS}.}
+
+\item{ClientCertAuthSettings}{A \code{ClientCertAuthSettings} object that contains client certificate
+authentication settings.}
 }
 \description{
-Registers a certificate for secured LDAP connection.
+Registers a certificate for a secure LDAP or client certificate
+authentication.
 }
 \section{Request syntax}{
 \preformatted{svc$register_certificate(
   DirectoryId = "string",
-  CertificateData = "string"
+  CertificateData = "string",
+  Type = "ClientCertAuth"|"ClientLDAPS",
+  ClientCertAuthSettings = list(
+    OCSPUrl = "string"
+  )
 )
 }
 }

@@ -137,6 +137,18 @@ NULL
   return(populate(args, shape))
 }
 
+.schemas$export_schema_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RegistryName = structure(logical(0), tags = list(location = "uri", locationName = "registryName", type = "string")), SchemaName = structure(logical(0), tags = list(location = "uri", locationName = "schemaName", type = "string")), SchemaVersion = structure(logical(0), tags = list(location = "querystring", locationName = "schemaVersion", type = "string")), Type = structure(logical(0), tags = list(location = "querystring", locationName = "type", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.schemas$export_schema_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Content = structure(logical(0), tags = list(type = "string")), SchemaArn = structure(logical(0), tags = list(type = "string")), SchemaName = structure(logical(0), tags = list(type = "string")), SchemaVersion = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .schemas$get_code_binding_source_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Language = structure(logical(0), tags = list(location = "uri", locationName = "language", type = "string")), RegistryName = structure(logical(0), tags = list(location = "uri", locationName = "registryName", type = "string")), SchemaName = structure(logical(0), tags = list(location = "uri", locationName = "schemaName", type = "string")), SchemaVersion = structure(logical(0), tags = list(location = "querystring", locationName = "schemaVersion", type = "string"))), tags = list(type = "structure"))
@@ -205,7 +217,7 @@ NULL
 
 .schemas$list_schema_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), SchemaVersions = structure(list(structure(list(SchemaArn = structure(logical(0), tags = list(type = "string")), SchemaName = structure(logical(0), tags = list(type = "string")), SchemaVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), SchemaVersions = structure(list(structure(list(SchemaArn = structure(logical(0), tags = list(type = "string")), SchemaName = structure(logical(0), tags = list(type = "string")), SchemaVersion = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -265,7 +277,7 @@ NULL
 
 .schemas$search_schemas_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Schemas = structure(list(structure(list(RegistryName = structure(logical(0), tags = list(type = "string")), SchemaArn = structure(logical(0), tags = list(type = "string")), SchemaName = structure(logical(0), tags = list(type = "string")), SchemaVersions = structure(list(structure(list(CreatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), SchemaVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), Schemas = structure(list(structure(list(RegistryName = structure(logical(0), tags = list(type = "string")), SchemaArn = structure(logical(0), tags = list(type = "string")), SchemaName = structure(logical(0), tags = list(type = "string")), SchemaVersions = structure(list(structure(list(CreatedDate = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), SchemaVersion = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

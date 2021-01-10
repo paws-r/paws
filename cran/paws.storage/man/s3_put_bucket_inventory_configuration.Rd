@@ -6,7 +6,7 @@
 (identified by the inventory ID) to the bucket}
 \usage{
 s3_put_bucket_inventory_configuration(Bucket, Id,
-  InventoryConfiguration)
+  InventoryConfiguration, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket where the inventory configuration will be stored.}
@@ -14,6 +14,10 @@ s3_put_bucket_inventory_configuration(Bucket, Id,
 \item{Id}{[required] The ID used to identify the inventory configuration.}
 
 \item{InventoryConfiguration}{[required] Specifies the inventory configuration.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 This implementation of the \code{PUT} operation adds an inventory
@@ -71,9 +75,9 @@ to set the configuration on the bucket.
 
 \strong{Related Resources}
 \itemize{
-\item GetBucketInventoryConfiguration
-\item DeleteBucketInventoryConfiguration
-\item ListBucketInventoryConfigurations
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketInventoryConfiguration.html}{GetBucketInventoryConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketInventoryConfiguration.html}{DeleteBucketInventoryConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketInventoryConfigurations.html}{ListBucketInventoryConfigurations}
 }
 }
 \section{Request syntax}{
@@ -107,7 +111,8 @@ to set the configuration on the bucket.
     Schedule = list(
       Frequency = "Daily"|"Weekly"
     )
-  )
+  ),
+  ExpectedBucketOwner = "string"
 )
 }
 }

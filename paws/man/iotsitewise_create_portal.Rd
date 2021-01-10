@@ -5,7 +5,8 @@
 \title{Creates a portal, which can contain projects and dashboards}
 \usage{
 iotsitewise_create_portal(portalName, portalDescription,
-  portalContactEmail, clientToken, portalLogoImageFile, roleArn, tags)
+  portalContactEmail, clientToken, portalLogoImageFile, roleArn, tags,
+  portalAuthMode)
 }
 \arguments{
 \item{portalName}{[required] A friendly name for the portal.}
@@ -30,17 +31,33 @@ in the \emph{AWS IoT SiteWise User Guide}.}
 \item{tags}{A list of key-value pairs that contain metadata for the portal. For more
 information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/tag-resources.html}{Tagging your AWS IoT SiteWise resources}
 in the \emph{AWS IoT SiteWise User Guide}.}
+
+\item{portalAuthMode}{The service to use to authenticate users to the portal. Choose from the
+following options:
+\itemize{
+\item \code{SSO} – The portal uses AWS Single Sign-On to authenticate users and
+manage user permissions. Before you can create a portal that uses
+AWS SSO, you must enable AWS SSO. For more information, see
+\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/monitor-getting-started.html#mon-gs-sso}{Enabling AWS SSO}
+in the \emph{AWS IoT SiteWise User Guide}. This option is only available
+in AWS Regions other than the China Regions.
+\item \code{IAM} – The portal uses AWS Identity and Access Management (IAM) to
+authenticate users and manage user permissions. This option is only
+available in the China Regions.
+}
+
+You can't change this value after you create a portal.
+
+Default: \code{SSO}}
 }
 \description{
-Creates a portal, which can contain projects and dashboards. Before you
-can create a portal, you must configure AWS Single Sign-On in the
-current Region. AWS IoT SiteWise Monitor uses AWS SSO to manage user
-permissions. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/monitor-get-started.html#mon-gs-sso}{Enabling AWS SSO}
-in the \emph{AWS IoT SiteWise User Guide}.
+Creates a portal, which can contain projects and dashboards. AWS IoT
+SiteWise Monitor uses AWS SSO or IAM to authenticate portal users and
+manage user permissions.
 }
 \details{
-Before you can sign in to a new portal, you must add at least one AWS
-SSO user or group to that portal. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/administer-portals.html#portal-change-admins}{Adding or Removing Portal Administrators}
+Before you can sign in to a new portal, you must add at least one
+identity to that portal. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/administer-portals.html#portal-change-admins}{Adding or removing portal administrators}
 in the \emph{AWS IoT SiteWise User Guide}.
 }
 \section{Request syntax}{
@@ -56,7 +73,8 @@ in the \emph{AWS IoT SiteWise User Guide}.
   roleArn = "string",
   tags = list(
     "string"
-  )
+  ),
+  portalAuthMode = "IAM"|"SSO"
 )
 }
 }

@@ -11,7 +11,8 @@ elasticache_modify_replication_group(ReplicationGroupId,
   NotificationTopicArn, CacheParameterGroupName, NotificationTopicStatus,
   ApplyImmediately, EngineVersion, AutoMinorVersionUpgrade,
   SnapshotRetentionLimit, SnapshotWindow, CacheNodeType, AuthToken,
-  AuthTokenUpdateStrategy)
+  AuthTokenUpdateStrategy, UserGroupIdsToAdd, UserGroupIdsToRemove,
+  RemoveUserGroups)
 }
 \arguments{
 \item{ReplicationGroupId}{[required] The identifier of the replication group to modify.}
@@ -34,7 +35,7 @@ read/write primary if the existing primary encounters a failure.
 Valid values: \code{true} | \code{false}}
 
 \item{MultiAZEnabled}{A flag indicating if you have Multi-AZ enabled to enhance fault
-tolerance. For more information, see \href{http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html}{Minimizing Downtime: Multi-AZ}.}
+tolerance. For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html}{Minimizing Downtime: Multi-AZ}.}
 
 \item{NodeGroupId}{Deprecated. This parameter is not used.}
 
@@ -143,7 +144,7 @@ length
 }
 
 For more information, see AUTH password at
-\href{http://redis.io/commands/AUTH}{AUTH}.}
+\href{https://redis.io/commands/AUTH}{AUTH}.}
 
 \item{AuthTokenUpdateStrategy}{Specifies the strategy to use to update the AUTH token. This parameter
 must be specified with the \code{auth-token} parameter. Possible values:
@@ -153,6 +154,13 @@ must be specified with the \code{auth-token} parameter. Possible values:
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/auth.html}{Authenticating Users with Redis AUTH}}
+
+\item{UserGroupIdsToAdd}{A list of user group IDs.}
+
+\item{UserGroupIdsToRemove}{A list of users groups to remove, meaning the users in the group no
+longer can access thereplication group.}
+
+\item{RemoveUserGroups}{Removes the user groups that can access this replication group.}
 }
 \description{
 Modifies the settings for a replication group.
@@ -193,7 +201,14 @@ This operation is valid for Redis only.
   SnapshotWindow = "string",
   CacheNodeType = "string",
   AuthToken = "string",
-  AuthTokenUpdateStrategy = "SET"|"ROTATE"
+  AuthTokenUpdateStrategy = "SET"|"ROTATE"|"DELETE",
+  UserGroupIdsToAdd = list(
+    "string"
+  ),
+  UserGroupIdsToRemove = list(
+    "string"
+  ),
+  RemoveUserGroups = TRUE|FALSE
 )
 }
 }

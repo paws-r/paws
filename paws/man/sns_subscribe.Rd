@@ -67,23 +67,21 @@ held in the dead-letter queue for further analysis or reprocessing.
 
 \item{ReturnSubscriptionArn}{Sets whether the response from the \code{Subscribe} request includes the
 subscription ARN, even if the subscription is not yet confirmed.
-\itemize{
-\item If you set this parameter to \code{true}, the response includes the ARN
-in all cases, even if the subscription is not yet confirmed. In
-addition to the ARN for confirmed subscriptions, the response also
-includes the \verb{pending subscription} ARN value for subscriptions that
-aren't yet confirmed. A subscription becomes confirmed when the
-subscriber calls the \code{ConfirmSubscription} action with a
-confirmation token.
-}
+
+If you set this parameter to \code{true}, the response includes the ARN in
+all cases, even if the subscription is not yet confirmed. In addition to
+the ARN for confirmed subscriptions, the response also includes the
+\verb{pending subscription} ARN value for subscriptions that aren't yet
+confirmed. A subscription becomes confirmed when the subscriber calls
+the \code{ConfirmSubscription} action with a confirmation token.
 
 The default value is \code{false}.}
 }
 \description{
 Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is
 HTTP/S or email, or if the endpoint and the topic are not in the same
-AWS account, the endpoint owner must the \code{ConfirmSubscription} action to
-confirm the subscription.
+AWS account, the endpoint owner must run the \code{ConfirmSubscription}
+action to confirm the subscription.
 }
 \details{
 You call the \code{ConfirmSubscription} action with the token from the

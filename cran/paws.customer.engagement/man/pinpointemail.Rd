@@ -14,7 +14,7 @@ Welcome to the \emph{Amazon Pinpoint Email API Reference}. This guide
 provides information about the Amazon Pinpoint Email API (version 1.0),
 including supported operations, data types, parameters, and schemas.
 
-\href{https://aws.amazon.com/pinpoint}{Amazon Pinpoint} is an AWS service
+\href{https://aws.amazon.com/pinpoint/}{Amazon Pinpoint} is an AWS service
 that you can use to engage with your customers across multiple messaging
 channels. You can use Amazon Pinpoint to send email, SMS text messages,
 voice messages, and push notifications. The Amazon Pinpoint Email API
@@ -43,7 +43,7 @@ united by private, low-latency, high-throughput, and highly redundant
 network connections. These Availability Zones enable us to provide very
 high levels of availability and redundancy, while also minimizing
 latency. To learn more about the number of Availability Zones that are
-available in each Region, see \href{http://aws.amazon.com/about-aws/global-infrastructure/}{AWS Global Infrastructure}.
+available in each Region, see \href{https://aws.amazon.com/about-aws/global-infrastructure/}{AWS Global Infrastructure}.
 }
 \section{Service syntax}{
 \preformatted{svc <- pinpointemail(

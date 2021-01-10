@@ -2,19 +2,19 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_get_resolver_rule_association}
 \alias{route53resolver_get_resolver_rule_association}
-\title{Gets information about an association between a specified resolver rule
+\title{Gets information about an association between a specified Resolver rule
 and a VPC}
 \usage{
 route53resolver_get_resolver_rule_association(ResolverRuleAssociationId)
 }
 \arguments{
-\item{ResolverRuleAssociationId}{[required] The ID of the resolver rule association that you want to get information
+\item{ResolverRuleAssociationId}{[required] The ID of the Resolver rule association that you want to get information
 about.}
 }
 \description{
-Gets information about an association between a specified resolver rule
-and a VPC. You associate a resolver rule and a VPC using
-AssociateResolverRule.
+Gets information about an association between a specified Resolver rule
+and a VPC. You associate a Resolver rule and a VPC using
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_AssociateResolverRule.html}{AssociateResolverRule}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_resolver_rule_association(

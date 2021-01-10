@@ -12,12 +12,12 @@ macie2_test_custom_data_identifier(ignoreWords, keywords,
 exclude from the results. If the text matched by the regular expression
 is the same as any string in this array, Amazon Macie ignores it. The
 array can contain as many as 10 ignore words. Each ignore word can
-contain 4 - 90 characters.}
+contain 4 - 90 characters. Ignore words are case sensitive.}
 
 \item{keywords}{An array that lists specific character sequences (keywords), one of
 which must be within proximity (maximumMatchDistance) of the regular
 expression to match. The array can contain as many as 50 keywords. Each
-keyword can contain 4 - 90 characters.}
+keyword can contain 4 - 90 characters. Keywords aren't case sensitive.}
 
 \item{maximumMatchDistance}{The maximum number of characters that can exist between text that
 matches the regex pattern and the character sequences specified by the

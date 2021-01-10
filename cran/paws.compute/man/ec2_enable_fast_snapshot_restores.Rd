@@ -30,7 +30,7 @@ You get the full benefit of fast snapshot restores after they enter the
 DescribeFastSnapshotRestores. To disable fast snapshot restores, use
 DisableFastSnapshotRestores.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-fast-snapshot-restore.html}{Amazon EBS Fast Snapshot Restore}
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-fast-snapshot-restore.html}{Amazon EBS fast snapshot restore}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{

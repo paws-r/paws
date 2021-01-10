@@ -13,9 +13,10 @@ xray_get_service_graph(StartTime, EndTime, GroupName, GroupARN,
 
 \item{EndTime}{[required] The end of the timeframe for which to generate a graph.}
 
-\item{GroupName}{The name of a group to generate a graph based on.}
+\item{GroupName}{The name of a group based on which you want to generate a graph.}
 
-\item{GroupARN}{The ARN of a group to generate a graph based on.}
+\item{GroupARN}{The Amazon Resource Name (ARN) of a group based on which you want to
+generate a graph.}
 
 \item{NextToken}{Pagination token.}
 }

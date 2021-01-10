@@ -17,7 +17,7 @@ iam_get_service_last_accessed_details_with_entities(JobId,
 to learn when the IAM entity last attempted to access the specified
 service.
 
-To learn the service namespace for a service, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html}{Actions, Resources, and Condition Keys for AWS Services}
+To learn the service namespace for a service, go to \href{https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html}{Actions, Resources, and Condition Keys for AWS Services}
 in the \emph{IAM User Guide}. Choose the name of the service to view details
 for that service. In the first paragraph, find the service prefix. For
 example, \verb{(service prefix: a4b)}. For more information about service

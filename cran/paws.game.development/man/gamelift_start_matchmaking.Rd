@@ -3,7 +3,7 @@
 \name{gamelift_start_matchmaking}
 \alias{gamelift_start_matchmaking}
 \title{Uses FlexMatch to create a game match for a group of players based on
-custom matchmaking rules, and starts a new game for the matched players}
+custom matchmaking rules}
 \usage{
 gamelift_start_matchmaking(TicketId, ConfigurationName, Players)
 }
@@ -24,77 +24,37 @@ objects contain the name of the team the player is assigned to.}
 }
 \description{
 Uses FlexMatch to create a game match for a group of players based on
-custom matchmaking rules, and starts a new game for the matched players.
-Each matchmaking request specifies the type of match to build (team
-configuration, rules for an acceptable match, etc.). The request also
-specifies the players to find a match for and where to host the new game
-session for optimal performance. A matchmaking request might start with
-a single player or a group of players who want to play together.
-FlexMatch finds additional players as needed to fill the match. Match
-type, rules, and the queue used to place a new game session are defined
-in a \code{MatchmakingConfiguration}.
+custom matchmaking rules. If you're also using GameLift hosting, a new
+game session is started for the matched players. Each matchmaking
+request identifies one or more players to find a match for, and
+specifies the type of match to build, including the team configuration
+and the rules for an acceptable match. When a matchmaking request
+identifies a group of players who want to play together, FlexMatch finds
+additional players to fill the match. Match type, rules, and other
+features are defined in a \code{MatchmakingConfiguration}.
 }
 \details{
 To start matchmaking, provide a unique ticket ID, specify a matchmaking
-configuration, and include the players to be matched. You must also
-include a set of player attributes relevant for the matchmaking
-configuration. If successful, a matchmaking ticket is returned with
-status set to \code{QUEUED}. Track the status of the ticket to respond as
-needed and acquire game session connection information for successfully
-completed matches.
+configuration, and include the players to be matched. For each player,
+you must also include the player attribute values that are required by
+the matchmaking configuration (in the rule set). If successful, a
+matchmaking ticket is returned with status set to \code{QUEUED}.
 
-\strong{Tracking ticket status} -- A couple of options are available for
-tracking the status of matchmaking requests:
-\itemize{
-\item Polling -- Call \code{DescribeMatchmaking}. This operation returns the
-full ticket object, including current status and (for completed
-tickets) game session connection info. We recommend polling no more
-than once every 10 seconds.
-\item Notifications -- Get event notifications for changes in ticket
-status using Amazon Simple Notification Service (SNS). Notifications
-are easy to set up (see CreateMatchmakingConfiguration) and
-typically deliver match status changes faster and more efficiently
-than polling. We recommend that you use polling to back up to
-notifications (since delivery is not guaranteed) and call
-\code{DescribeMatchmaking} only when notifications are not received
-within 30 seconds.
-}
-
-\strong{Processing a matchmaking request} -- FlexMatch handles a matchmaking
-request as follows:
-\enumerate{
-\item Your client code submits a \code{StartMatchmaking} request for one or
-more players and tracks the status of the request ticket.
-\item FlexMatch uses this ticket and others in process to build an
-acceptable match. When a potential match is identified, all tickets
-in the proposed match are advanced to the next status.
-\item If the match requires player acceptance (set in the matchmaking
-configuration), the tickets move into status \code{REQUIRES_ACCEPTANCE}.
-This status triggers your client code to solicit acceptance from all
-players in every ticket involved in the match, and then call
-AcceptMatch for each player. If any player rejects or fails to
-accept the match before a specified timeout, the proposed match is
-dropped (see \code{AcceptMatch} for more details).
-\item Once a match is proposed and accepted, the matchmaking tickets move
-into status \code{PLACING}. FlexMatch locates resources for a new game
-session using the game session queue (set in the matchmaking
-configuration) and creates the game session based on the match data.
-\item When the match is successfully placed, the matchmaking tickets move
-into \code{COMPLETED} status. Connection information (including game
-session endpoint and player session) is added to the matchmaking
-tickets. Matched players can use the connection information to join
-the game.
-}
+Track the status of the ticket to respond as needed. If you're also
+using GameLift hosting, a successfully completed ticket contains game
+session connection information. Ticket status updates are tracked using
+event notification through Amazon Simple Notification Service (SNS),
+which is defined in the matchmaking configuration.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-client.html}{Add FlexMatch to a Game Client}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html}{Add FlexMatch to a Game Client}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-notification.html}{Set Up FlexMatch Event Notification}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-notification.html}{Set Up FlexMatch Event Notification}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/match-tasks.html}{FlexMatch Integration Roadmap}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-tasks.html}{FlexMatch Integration Roadmap}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-match.html}{How GameLift FlexMatch Works}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/gamelift-match.html}{How GameLift FlexMatch Works}
 
 \strong{Related operations}
 \itemize{

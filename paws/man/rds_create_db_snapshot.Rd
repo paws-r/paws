@@ -2,7 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_create_db_snapshot}
 \alias{rds_create_db_snapshot}
-\title{Creates a DBSnapshot}
+\title{Creates a snapshot of a DB instance}
 \usage{
 rds_create_db_snapshot(DBSnapshotIdentifier, DBInstanceIdentifier, Tags)
 }
@@ -30,8 +30,8 @@ Constraints:
 \item{Tags}{}
 }
 \description{
-Creates a DBSnapshot. The source DBInstance must be in "available"
-state.
+Creates a snapshot of a DB instance. The source DB instance must be in
+the \code{available} or \code{storage-optimization} state.
 }
 \section{Request syntax}{
 \preformatted{svc$create_db_snapshot(

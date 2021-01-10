@@ -3,27 +3,52 @@
 #' @include resourcegroups_service.R
 NULL
 
-#' Creates a group with a specified name, description, and resource query
+#' Creates a resource group with the specified name and description
 #'
-#' Creates a group with a specified name, description, and resource query.
+#' Creates a resource group with the specified name and description. You
+#' can optionally include a resource query, or a service configuration. For
+#' more information about constructing a resource query, see [Create a
+#' tag-based group in Resource
+#' Groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
+#' For more information about service configurations, see [Service
+#' configurations for resource
+#' groups](https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html).
+#' 
+#' **Minimum permissions**
+#' 
+#' To run this command, you must have the following permissions:
+#' 
+#' -   `resource-groups:CreateGroup`
 #'
 #' @usage
-#' resourcegroups_create_group(Name, Description, ResourceQuery, Tags)
+#' resourcegroups_create_group(Name, Description, ResourceQuery, Tags,
+#'   Configuration)
 #'
 #' @param Name &#91;required&#93; The name of the group, which is the identifier of the group in other
-#' operations. A resource group name cannot be updated after it is created.
-#' A resource group name can have a maximum of 128 characters, including
-#' letters, numbers, hyphens, dots, and underscores. The name cannot start
-#' with `AWS` or `aws`; these are reserved. A resource group name must be
-#' unique within your account.
-#' @param Description The description of the resource group. Descriptions can have a maximum
-#' of 511 characters, including letters, numbers, hyphens, underscores,
-#' punctuation, and spaces.
-#' @param ResourceQuery &#91;required&#93; The resource query that determines which AWS resources are members of
-#' this group.
-#' @param Tags The tags to add to the group. A tag is a string-to-string map of
-#' key-value pairs. Tag keys can have a maximum character length of 128
-#' characters, and tag values can have a maximum length of 256 characters.
+#' operations. You can't change the name of a resource group after you
+#' create it. A resource group name can consist of letters, numbers,
+#' hyphens, periods, and underscores. The name cannot start with `AWS` or
+#' `aws`; these are reserved. A resource group name must be unique within
+#' each AWS Region in your AWS account.
+#' @param Description The description of the resource group. Descriptions can consist of
+#' letters, numbers, hyphens, underscores, periods, and spaces.
+#' @param ResourceQuery The resource query that determines which AWS resources are members of
+#' this group. For more information about resource queries, see [Create a
+#' tag-based group in Resource
+#' Groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
+#' 
+#' A resource group can contain either a `ResourceQuery` or a
+#' `Configuration`, but not both.
+#' @param Tags The tags to add to the group. A tag is key-value pair string.
+#' @param Configuration A configuration associates the resource group with an AWS service and
+#' specifies how the service can interact with the resources in the group.
+#' A configuration is an array of GroupConfigurationItem elements. For
+#' details about the syntax of service configurations, see [Service
+#' configurations for resource
+#' groups](https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html).
+#' 
+#' A resource group can contain either a `Configuration` or a
+#' `ResourceQuery`, but not both.
 #'
 #' @section Request syntax:
 #' ```
@@ -36,6 +61,19 @@ NULL
 #'   ),
 #'   Tags = list(
 #'     "string"
+#'   ),
+#'   Configuration = list(
+#'     list(
+#'       Type = "string",
+#'       Parameters = list(
+#'         list(
+#'           Name = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -43,14 +81,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname resourcegroups_create_group
-resourcegroups_create_group <- function(Name, Description = NULL, ResourceQuery, Tags = NULL) {
+resourcegroups_create_group <- function(Name, Description = NULL, ResourceQuery = NULL, Tags = NULL, Configuration = NULL) {
   op <- new_operation(
     name = "CreateGroup",
     http_method = "POST",
     http_path = "/groups",
     paginator = list()
   )
-  input <- .resourcegroups$create_group_input(Name = Name, Description = Description, ResourceQuery = ResourceQuery, Tags = Tags)
+  input <- .resourcegroups$create_group_input(Name = Name, Description = Description, ResourceQuery = ResourceQuery, Tags = Tags, Configuration = Configuration)
   output <- .resourcegroups$create_group_output()
   config <- get_config()
   svc <- .resourcegroups$service(config)
@@ -60,35 +98,43 @@ resourcegroups_create_group <- function(Name, Description = NULL, ResourceQuery,
 }
 .resourcegroups$operations$create_group <- resourcegroups_create_group
 
-#' Deletes a specified resource group
+#' Deletes the specified resource group
 #'
-#' Deletes a specified resource group. Deleting a resource group does not
-#' delete resources that are members of the group; it only deletes the
+#' Deletes the specified resource group. Deleting a resource group does not
+#' delete any resources that are members of the group; it only deletes the
 #' group structure.
+#' 
+#' **Minimum permissions**
+#' 
+#' To run this command, you must have the following permissions:
+#' 
+#' -   `resource-groups:DeleteGroup`
 #'
 #' @usage
-#' resourcegroups_delete_group(GroupName)
+#' resourcegroups_delete_group(GroupName, Group)
 #'
-#' @param GroupName &#91;required&#93; The name of the resource group to delete.
+#' @param GroupName Deprecated - don't use this parameter. Use `Group` instead.
+#' @param Group The name or the ARN of the resource group to delete.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$delete_group(
-#'   GroupName = "string"
+#'   GroupName = "string",
+#'   Group = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname resourcegroups_delete_group
-resourcegroups_delete_group <- function(GroupName) {
+resourcegroups_delete_group <- function(GroupName = NULL, Group = NULL) {
   op <- new_operation(
     name = "DeleteGroup",
-    http_method = "DELETE",
-    http_path = "/groups/{GroupName}",
+    http_method = "POST",
+    http_path = "/delete-group",
     paginator = list()
   )
-  input <- .resourcegroups$delete_group_input(GroupName = GroupName)
+  input <- .resourcegroups$delete_group_input(GroupName = GroupName, Group = Group)
   output <- .resourcegroups$delete_group_output()
   config <- get_config()
   svc <- .resourcegroups$service(config)
@@ -101,30 +147,38 @@ resourcegroups_delete_group <- function(GroupName) {
 #' Returns information about a specified resource group
 #'
 #' Returns information about a specified resource group.
+#' 
+#' **Minimum permissions**
+#' 
+#' To run this command, you must have the following permissions:
+#' 
+#' -   `resource-groups:GetGroup`
 #'
 #' @usage
-#' resourcegroups_get_group(GroupName)
+#' resourcegroups_get_group(GroupName, Group)
 #'
-#' @param GroupName &#91;required&#93; The name of the resource group.
+#' @param GroupName Deprecated - don't use this parameter. Use `Group` instead.
+#' @param Group The name or the ARN of the resource group to retrieve.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_group(
-#'   GroupName = "string"
+#'   GroupName = "string",
+#'   Group = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname resourcegroups_get_group
-resourcegroups_get_group <- function(GroupName) {
+resourcegroups_get_group <- function(GroupName = NULL, Group = NULL) {
   op <- new_operation(
     name = "GetGroup",
-    http_method = "GET",
-    http_path = "/groups/{GroupName}",
+    http_method = "POST",
+    http_path = "/get-group",
     paginator = list()
   )
-  input <- .resourcegroups$get_group_input(GroupName = GroupName)
+  input <- .resourcegroups$get_group_input(GroupName = GroupName, Group = Group)
   output <- .resourcegroups$get_group_output()
   config <- get_config()
   svc <- .resourcegroups$service(config)
@@ -134,33 +188,91 @@ resourcegroups_get_group <- function(GroupName) {
 }
 .resourcegroups$operations$get_group <- resourcegroups_get_group
 
-#' Returns the resource query associated with the specified resource group
+#' Returns the service configuration associated with the specified resource
+#' group
 #'
-#' Returns the resource query associated with the specified resource group.
+#' Returns the service configuration associated with the specified resource
+#' group. For details about the service configuration syntax, see [Service
+#' configurations for resource
+#' groups](https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html).
+#' 
+#' **Minimum permissions**
+#' 
+#' To run this command, you must have the following permissions:
+#' 
+#' -   `resource-groups:GetGroupConfiguration`
 #'
 #' @usage
-#' resourcegroups_get_group_query(GroupName)
+#' resourcegroups_get_group_configuration(Group)
 #'
-#' @param GroupName &#91;required&#93; The name of the resource group.
+#' @param Group The name or the ARN of the resource group.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_group_configuration(
+#'   Group = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname resourcegroups_get_group_configuration
+resourcegroups_get_group_configuration <- function(Group = NULL) {
+  op <- new_operation(
+    name = "GetGroupConfiguration",
+    http_method = "POST",
+    http_path = "/get-group-configuration",
+    paginator = list()
+  )
+  input <- .resourcegroups$get_group_configuration_input(Group = Group)
+  output <- .resourcegroups$get_group_configuration_output()
+  config <- get_config()
+  svc <- .resourcegroups$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourcegroups$operations$get_group_configuration <- resourcegroups_get_group_configuration
+
+#' Retrieves the resource query associated with the specified resource
+#' group
+#'
+#' Retrieves the resource query associated with the specified resource
+#' group. For more information about resource queries, see [Create a
+#' tag-based group in Resource
+#' Groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
+#' 
+#' **Minimum permissions**
+#' 
+#' To run this command, you must have the following permissions:
+#' 
+#' -   `resource-groups:GetGroupQuery`
+#'
+#' @usage
+#' resourcegroups_get_group_query(GroupName, Group)
+#'
+#' @param GroupName Don't use this parameter. Use `Group` instead.
+#' @param Group The name or the ARN of the resource group to query.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_group_query(
-#'   GroupName = "string"
+#'   GroupName = "string",
+#'   Group = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname resourcegroups_get_group_query
-resourcegroups_get_group_query <- function(GroupName) {
+resourcegroups_get_group_query <- function(GroupName = NULL, Group = NULL) {
   op <- new_operation(
     name = "GetGroupQuery",
-    http_method = "GET",
-    http_path = "/groups/{GroupName}/query",
+    http_method = "POST",
+    http_path = "/get-group-query",
     paginator = list()
   )
-  input <- .resourcegroups$get_group_query_input(GroupName = GroupName)
+  input <- .resourcegroups$get_group_query_input(GroupName = GroupName, Group = Group)
   output <- .resourcegroups$get_group_query_output()
   config <- get_config()
   svc <- .resourcegroups$service(config)
@@ -175,12 +287,17 @@ resourcegroups_get_group_query <- function(GroupName) {
 #'
 #' Returns a list of tags that are associated with a resource group,
 #' specified by an ARN.
+#' 
+#' **Minimum permissions**
+#' 
+#' To run this command, you must have the following permissions:
+#' 
+#' -   `resource-groups:GetTags`
 #'
 #' @usage
 #' resourcegroups_get_tags(Arn)
 #'
-#' @param Arn &#91;required&#93; The ARN of the resource group for which you want a list of tags. The
-#' resource must exist within the account you are using.
+#' @param Arn &#91;required&#93; The ARN of the resource group whose tags you want to retrieve.
 #'
 #' @section Request syntax:
 #' ```
@@ -209,34 +326,117 @@ resourcegroups_get_tags <- function(Arn) {
 }
 .resourcegroups$operations$get_tags <- resourcegroups_get_tags
 
-#' Returns a list of ARNs of resources that are members of a specified
-#' resource group
+#' Adds the specified resources to the specified group
 #'
-#' Returns a list of ARNs of resources that are members of a specified
-#' resource group.
+#' Adds the specified resources to the specified group.
+#' 
+#' **Minimum permissions**
+#' 
+#' To run this command, you must have the following permissions:
+#' 
+#' -   `resource-groups:GroupResources`
 #'
 #' @usage
-#' resourcegroups_list_group_resources(GroupName, Filters, MaxResults,
-#'   NextToken)
+#' resourcegroups_group_resources(Group, ResourceArns)
 #'
-#' @param GroupName &#91;required&#93; The name of the resource group.
+#' @param Group &#91;required&#93; The name or the ARN of the resource group to add resources to.
+#' @param ResourceArns &#91;required&#93; The list of ARNs for resources to be added to the group.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$group_resources(
+#'   Group = "string",
+#'   ResourceArns = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname resourcegroups_group_resources
+resourcegroups_group_resources <- function(Group, ResourceArns) {
+  op <- new_operation(
+    name = "GroupResources",
+    http_method = "POST",
+    http_path = "/group-resources",
+    paginator = list()
+  )
+  input <- .resourcegroups$group_resources_input(Group = Group, ResourceArns = ResourceArns)
+  output <- .resourcegroups$group_resources_output()
+  config <- get_config()
+  svc <- .resourcegroups$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourcegroups$operations$group_resources <- resourcegroups_group_resources
+
+#' Returns a list of ARNs of the resources that are members of a specified
+#' resource group
+#'
+#' Returns a list of ARNs of the resources that are members of a specified
+#' resource group.
+#' 
+#' **Minimum permissions**
+#' 
+#' To run this command, you must have the following permissions:
+#' 
+#' -   `resource-groups:ListGroupResources`
+#'
+#' @usage
+#' resourcegroups_list_group_resources(GroupName, Group, Filters,
+#'   MaxResults, NextToken)
+#'
+#' @param GroupName ***Deprecated - don't use this parameter. Use the `Group` request field
+#' instead.***
+#' @param Group The name or the ARN of the resource group
 #' @param Filters Filters, formatted as ResourceFilter objects, that you want to apply to
-#' a ListGroupResources operation.
+#' a `ListGroupResources` operation. Filters the results to include only
+#' those of the specified resource types.
 #' 
 #' -   `resource-type` - Filter resources by their type. Specify up to five
-#'     resource types in the format AWS::ServiceCode::ResourceType. For
-#'     example, AWS::EC2::Instance, or AWS::S3::Bucket.
-#' @param MaxResults The maximum number of group member ARNs that are returned in a single
-#' call by ListGroupResources, in paginated output. By default, this number
-#' is 50.
-#' @param NextToken The NextToken value that is returned in a paginated ListGroupResources
-#' request. To get the next page of results, run the call again, add the
-#' NextToken parameter, and specify the NextToken value.
+#'     resource types in the format `AWS::ServiceCode::ResourceType`. For
+#'     example, `AWS::EC2::Instance`, or `AWS::S3::Bucket`.
+#' 
+#' When you specify a `resource-type` filter for `ListGroupResources`, AWS
+#' Resource Groups validates your filter resource types against the types
+#' that are defined in the query associated with the group. For example, if
+#' a group contains only S3 buckets because its query specifies only that
+#' resource type, but your `resource-type` filter includes EC2 instances,
+#' AWS Resource Groups does not filter for EC2 instances. In this case, a
+#' `ListGroupResources` request returns a `BadRequestException` error with
+#' a message similar to the following:
+#' 
+#' `The resource types specified as filters in the request are not valid.`
+#' 
+#' The error includes a list of resource types that failed the validation
+#' because they are not part of the query associated with the group. This
+#' validation doesn't occur when the group query specifies
+#' `AWS::AllSupported`, because a group based on such a query can contain
+#' any of the allowed resource types for the query type (tag-based or AWS
+#' CloudFormation stack-based queries).
+#' @param MaxResults The total number of results that you want included on each page of the
+#' response. If you do not include this parameter, it defaults to a value
+#' that is specific to the operation. If additional items exist beyond the
+#' maximum you specify, the `NextToken` response element is present and has
+#' a value (is not null). Include that value as the `NextToken` request
+#' parameter in the next call to the operation to get the next part of the
+#' results. Note that the service might return fewer results than the
+#' maximum even when there are more results available. You should check
+#' `NextToken` after every operation to ensure that you receive all of the
+#' results.
+#' @param NextToken The parameter for receiving additional results if you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' provided by a previous call's `NextToken` response to indicate where the
+#' output should continue from.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_group_resources(
 #'   GroupName = "string",
+#'   Group = "string",
 #'   Filters = list(
 #'     list(
 #'       Name = "resource-type",
@@ -253,14 +453,14 @@ resourcegroups_get_tags <- function(Arn) {
 #' @keywords internal
 #'
 #' @rdname resourcegroups_list_group_resources
-resourcegroups_list_group_resources <- function(GroupName, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
+resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, Filters = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListGroupResources",
     http_method = "POST",
-    http_path = "/groups/{GroupName}/resource-identifiers-list",
+    http_path = "/list-group-resources",
     paginator = list()
   )
-  input <- .resourcegroups$list_group_resources_input(GroupName = GroupName, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .resourcegroups$list_group_resources_input(GroupName = GroupName, Group = Group, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .resourcegroups$list_group_resources_output()
   config <- get_config()
   svc <- .resourcegroups$service(config)
@@ -273,28 +473,53 @@ resourcegroups_list_group_resources <- function(GroupName, Filters = NULL, MaxRe
 #' Returns a list of existing resource groups in your account
 #'
 #' Returns a list of existing resource groups in your account.
+#' 
+#' **Minimum permissions**
+#' 
+#' To run this command, you must have the following permissions:
+#' 
+#' -   `resource-groups:ListGroups`
 #'
 #' @usage
 #' resourcegroups_list_groups(Filters, MaxResults, NextToken)
 #'
 #' @param Filters Filters, formatted as GroupFilter objects, that you want to apply to a
-#' ListGroups operation.
+#' `ListGroups` operation.
 #' 
-#' -   `resource-type` - Filter groups by resource type. Specify up to five
-#'     resource types in the format AWS::ServiceCode::ResourceType. For
-#'     example, AWS::EC2::Instance, or AWS::S3::Bucket.
-#' @param MaxResults The maximum number of resource group results that are returned by
-#' ListGroups in paginated output. By default, this number is 50.
-#' @param NextToken The NextToken value that is returned in a paginated `ListGroups`
-#' request. To get the next page of results, run the call again, add the
-#' NextToken parameter, and specify the NextToken value.
+#' -   `resource-type` - Filter the results to include only those of the
+#'     specified resource types. Specify up to five resource types in the
+#'     format `AWS::<i>ServiceCode</i>::<i>ResourceType</i> `. For example,
+#'     `AWS::EC2::Instance`, or `AWS::S3::Bucket`.
+#' 
+#' -   `configuration-type` - Filter the results to include only those
+#'     groups that have the specified configuration types attached. The
+#'     current supported values are:
+#' 
+#'     -   `AWS:EC2::CapacityReservationPool`
+#' 
+#'     -   `AWS:EC2::HostManagement`
+#' @param MaxResults The total number of results that you want included on each page of the
+#' response. If you do not include this parameter, it defaults to a value
+#' that is specific to the operation. If additional items exist beyond the
+#' maximum you specify, the `NextToken` response element is present and has
+#' a value (is not null). Include that value as the `NextToken` request
+#' parameter in the next call to the operation to get the next part of the
+#' results. Note that the service might return fewer results than the
+#' maximum even when there are more results available. You should check
+#' `NextToken` after every operation to ensure that you receive all of the
+#' results.
+#' @param NextToken The parameter for receiving additional results if you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' provided by a previous call's `NextToken` response to indicate where the
+#' output should continue from.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_groups(
 #'   Filters = list(
 #'     list(
-#'       Name = "resource-type",
+#'       Name = "resource-type"|"configuration-type",
 #'       Values = list(
 #'         "string"
 #'       )
@@ -325,23 +550,108 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
 }
 .resourcegroups$operations$list_groups <- resourcegroups_list_groups
 
-#' Returns a list of AWS resource identifiers that matches a specified
+#' Attaches a service configuration to the specified group
+#'
+#' Attaches a service configuration to the specified group. This occurs
+#' asynchronously, and can take time to complete. You can use
+#' GetGroupConfiguration to check the status of the update.
+#' 
+#' **Minimum permissions**
+#' 
+#' To run this command, you must have the following permissions:
+#' 
+#' -   `resource-groups:PutGroupConfiguration`
+#'
+#' @usage
+#' resourcegroups_put_group_configuration(Group, Configuration)
+#'
+#' @param Group The name or ARN of the resource group with the configuration that you
+#' want to update.
+#' @param Configuration The new configuration to associate with the specified group. A
+#' configuration associates the resource group with an AWS service and
+#' specifies how the service can interact with the resources in the group.
+#' A configuration is an array of GroupConfigurationItem elements.
+#' 
+#' For information about the syntax of a service configuration, see
+#' [Service configurations for resource
+#' groups](https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html).
+#' 
+#' A resource group can contain either a `Configuration` or a
+#' `ResourceQuery`, but not both.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_group_configuration(
+#'   Group = "string",
+#'   Configuration = list(
+#'     list(
+#'       Type = "string",
+#'       Parameters = list(
+#'         list(
+#'           Name = "string",
+#'           Values = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname resourcegroups_put_group_configuration
+resourcegroups_put_group_configuration <- function(Group = NULL, Configuration = NULL) {
+  op <- new_operation(
+    name = "PutGroupConfiguration",
+    http_method = "POST",
+    http_path = "/put-group-configuration",
+    paginator = list()
+  )
+  input <- .resourcegroups$put_group_configuration_input(Group = Group, Configuration = Configuration)
+  output <- .resourcegroups$put_group_configuration_output()
+  config <- get_config()
+  svc <- .resourcegroups$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourcegroups$operations$put_group_configuration <- resourcegroups_put_group_configuration
+
+#' Returns a list of AWS resource identifiers that matches the specified
 #' query
 #'
-#' Returns a list of AWS resource identifiers that matches a specified
+#' Returns a list of AWS resource identifiers that matches the specified
 #' query. The query uses the same format as a resource query in a
 #' CreateGroup or UpdateGroupQuery operation.
+#' 
+#' **Minimum permissions**
+#' 
+#' To run this command, you must have the following permissions:
+#' 
+#' -   `resource-groups:SearchResources`
 #'
 #' @usage
 #' resourcegroups_search_resources(ResourceQuery, MaxResults, NextToken)
 #'
 #' @param ResourceQuery &#91;required&#93; The search query, using the same formats that are supported for resource
-#' group definition.
-#' @param MaxResults The maximum number of group member ARNs returned by `SearchResources` in
-#' paginated output. By default, this number is 50.
-#' @param NextToken The NextToken value that is returned in a paginated `SearchResources`
-#' request. To get the next page of results, run the call again, add the
-#' NextToken parameter, and specify the NextToken value.
+#' group definition. For more information, see CreateGroup.
+#' @param MaxResults The total number of results that you want included on each page of the
+#' response. If you do not include this parameter, it defaults to a value
+#' that is specific to the operation. If additional items exist beyond the
+#' maximum you specify, the `NextToken` response element is present and has
+#' a value (is not null). Include that value as the `NextToken` request
+#' parameter in the next call to the operation to get the next part of the
+#' results. Note that the service might return fewer results than the
+#' maximum even when there are more results available. You should check
+#' `NextToken` after every operation to ensure that you receive all of the
+#' results.
+#' @param NextToken The parameter for receiving additional results if you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' provided by a previous call's `NextToken` response to indicate where the
+#' output should continue from.
 #'
 #' @section Request syntax:
 #' ```
@@ -380,15 +690,24 @@ resourcegroups_search_resources <- function(ResourceQuery, MaxResults = NULL, Ne
 #' Adds tags to a resource group with the specified ARN. Existing tags on a
 #' resource group are not changed if they are not specified in the request
 #' parameters.
+#' 
+#' Do not store personally identifiable information (PII) or other
+#' confidential or sensitive information in tags. We use tags to provide
+#' you with billing and administration services. Tags are not intended to
+#' be used for private or sensitive data.
+#' 
+#' **Minimum permissions**
+#' 
+#' To run this command, you must have the following permissions:
+#' 
+#' -   `resource-groups:Tag`
 #'
 #' @usage
 #' resourcegroups_tag(Arn, Tags)
 #'
-#' @param Arn &#91;required&#93; The ARN of the resource to which to add tags.
-#' @param Tags &#91;required&#93; The tags to add to the specified resource. A tag is a string-to-string
-#' map of key-value pairs. Tag keys can have a maximum character length of
-#' 128 characters, and tag values can have a maximum length of 256
-#' characters.
+#' @param Arn &#91;required&#93; The ARN of the resource group to which to add tags.
+#' @param Tags &#91;required&#93; The tags to add to the specified resource group. A tag is a
+#' string-to-string map of key-value pairs.
 #'
 #' @section Request syntax:
 #' ```
@@ -420,14 +739,69 @@ resourcegroups_tag <- function(Arn, Tags) {
 }
 .resourcegroups$operations$tag <- resourcegroups_tag
 
-#' Deletes specified tags from a specified resource
+#' Removes the specified resources from the specified group
 #'
-#' Deletes specified tags from a specified resource.
+#' Removes the specified resources from the specified group.
+#' 
+#' **Minimum permissions**
+#' 
+#' To run this command, you must have the following permissions:
+#' 
+#' -   `resource-groups:UngroupResources`
+#'
+#' @usage
+#' resourcegroups_ungroup_resources(Group, ResourceArns)
+#'
+#' @param Group &#91;required&#93; The name or the ARN of the resource group from which to remove the
+#' resources.
+#' @param ResourceArns &#91;required&#93; The ARNs of the resources to be removed from the group.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$ungroup_resources(
+#'   Group = "string",
+#'   ResourceArns = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname resourcegroups_ungroup_resources
+resourcegroups_ungroup_resources <- function(Group, ResourceArns) {
+  op <- new_operation(
+    name = "UngroupResources",
+    http_method = "POST",
+    http_path = "/ungroup-resources",
+    paginator = list()
+  )
+  input <- .resourcegroups$ungroup_resources_input(Group = Group, ResourceArns = ResourceArns)
+  output <- .resourcegroups$ungroup_resources_output()
+  config <- get_config()
+  svc <- .resourcegroups$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.resourcegroups$operations$ungroup_resources <- resourcegroups_ungroup_resources
+
+#' Deletes tags from a specified resource group
+#'
+#' Deletes tags from a specified resource group.
+#' 
+#' **Minimum permissions**
+#' 
+#' To run this command, you must have the following permissions:
+#' 
+#' -   `resource-groups:Untag`
 #'
 #' @usage
 #' resourcegroups_untag(Arn, Keys)
 #'
-#' @param Arn &#91;required&#93; The ARN of the resource from which to remove tags.
+#' @param Arn &#91;required&#93; The ARN of the resource group from which to remove tags. The command
+#' removed both the specified keys and any values associated with those
+#' keys.
 #' @param Keys &#91;required&#93; The keys of the tags to be removed.
 #'
 #' @section Request syntax:
@@ -460,24 +834,31 @@ resourcegroups_untag <- function(Arn, Keys) {
 }
 .resourcegroups$operations$untag <- resourcegroups_untag
 
-#' Updates an existing group with a new or changed description
+#' Updates the description for an existing group
 #'
-#' Updates an existing group with a new or changed description. You cannot
-#' update the name of a resource group.
+#' Updates the description for an existing group. You cannot update the
+#' name of a resource group.
+#' 
+#' **Minimum permissions**
+#' 
+#' To run this command, you must have the following permissions:
+#' 
+#' -   `resource-groups:UpdateGroup`
 #'
 #' @usage
-#' resourcegroups_update_group(GroupName, Description)
+#' resourcegroups_update_group(GroupName, Group, Description)
 #'
-#' @param GroupName &#91;required&#93; The name of the resource group for which you want to update its
-#' description.
-#' @param Description The description of the resource group. Descriptions can have a maximum
-#' of 511 characters, including letters, numbers, hyphens, underscores,
-#' punctuation, and spaces.
+#' @param GroupName Don't use this parameter. Use `Group` instead.
+#' @param Group The name or the ARN of the resource group to modify.
+#' @param Description The new description that you want to update the resource group with.
+#' Descriptions can contain letters, numbers, hyphens, underscores,
+#' periods, and spaces.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_group(
 #'   GroupName = "string",
+#'   Group = "string",
 #'   Description = "string"
 #' )
 #' ```
@@ -485,14 +866,14 @@ resourcegroups_untag <- function(Arn, Keys) {
 #' @keywords internal
 #'
 #' @rdname resourcegroups_update_group
-resourcegroups_update_group <- function(GroupName, Description = NULL) {
+resourcegroups_update_group <- function(GroupName = NULL, Group = NULL, Description = NULL) {
   op <- new_operation(
     name = "UpdateGroup",
-    http_method = "PUT",
-    http_path = "/groups/{GroupName}",
+    http_method = "POST",
+    http_path = "/update-group",
     paginator = list()
   )
-  input <- .resourcegroups$update_group_input(GroupName = GroupName, Description = Description)
+  input <- .resourcegroups$update_group_input(GroupName = GroupName, Group = Group, Description = Description)
   output <- .resourcegroups$update_group_output()
   config <- get_config()
   svc <- .resourcegroups$service(config)
@@ -504,19 +885,32 @@ resourcegroups_update_group <- function(GroupName, Description = NULL) {
 
 #' Updates the resource query of a group
 #'
-#' Updates the resource query of a group.
+#' Updates the resource query of a group. For more information about
+#' resource queries, see [Create a tag-based group in Resource
+#' Groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
+#' 
+#' **Minimum permissions**
+#' 
+#' To run this command, you must have the following permissions:
+#' 
+#' -   `resource-groups:UpdateGroupQuery`
 #'
 #' @usage
-#' resourcegroups_update_group_query(GroupName, ResourceQuery)
+#' resourcegroups_update_group_query(GroupName, Group, ResourceQuery)
 #'
-#' @param GroupName &#91;required&#93; The name of the resource group for which you want to edit the query.
-#' @param ResourceQuery &#91;required&#93; The resource query that determines which AWS resources are members of
-#' the resource group.
+#' @param GroupName Don't use this parameter. Use `Group` instead.
+#' @param Group The name or the ARN of the resource group to query.
+#' @param ResourceQuery &#91;required&#93; The resource query to determine which AWS resources are members of this
+#' resource group.
+#' 
+#' A resource group can contain either a `Configuration` or a
+#' `ResourceQuery`, but not both.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_group_query(
 #'   GroupName = "string",
+#'   Group = "string",
 #'   ResourceQuery = list(
 #'     Type = "TAG_FILTERS_1_0"|"CLOUDFORMATION_STACK_1_0",
 #'     Query = "string"
@@ -527,14 +921,14 @@ resourcegroups_update_group <- function(GroupName, Description = NULL) {
 #' @keywords internal
 #'
 #' @rdname resourcegroups_update_group_query
-resourcegroups_update_group_query <- function(GroupName, ResourceQuery) {
+resourcegroups_update_group_query <- function(GroupName = NULL, Group = NULL, ResourceQuery) {
   op <- new_operation(
     name = "UpdateGroupQuery",
-    http_method = "PUT",
-    http_path = "/groups/{GroupName}/query",
+    http_method = "POST",
+    http_path = "/update-group-query",
     paginator = list()
   )
-  input <- .resourcegroups$update_group_query_input(GroupName = GroupName, ResourceQuery = ResourceQuery)
+  input <- .resourcegroups$update_group_query_input(GroupName = GroupName, Group = Group, ResourceQuery = ResourceQuery)
   output <- .resourcegroups$update_group_query_output()
   config <- get_config()
   svc <- .resourcegroups$service(config)

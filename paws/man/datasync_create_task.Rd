@@ -13,13 +13,7 @@ datasync_create_task(SourceLocationArn, DestinationLocationArn,
 \item{DestinationLocationArn}{[required] The Amazon Resource Name (ARN) of an AWS storage resource's location.}
 
 \item{CloudWatchLogGroupArn}{The Amazon Resource Name (ARN) of the Amazon CloudWatch log group that
-is used to monitor and log events in the task.
-
-For more information on these groups, see Working with Log Groups and
-Log Streams in the \emph{Amazon CloudWatch User Guide.}
-
-For more information about how to use CloudWatch Logs with DataSync, see
-Monitoring Your Task in the \emph{AWS DataSync User Guide.}}
+is used to monitor and log events in the task.}
 
 \item{Name}{The name of a task. This value is a text reference that is used to
 identify the task in the console.}
@@ -31,13 +25,13 @@ You can configure these options to preserve metadata such as user ID
 and so on.
 
 For each individual task execution, you can override these options by
-specifying the \code{OverrideOptions} before starting a the task execution.
-For more information, see the operation.}
+specifying the \code{OverrideOptions} before starting the task execution. For
+more information, see the operation.}
 
 \item{Excludes}{A list of filter rules that determines which files to exclude from a
 task. The list should contain a single filter string that consists of
 the patterns to exclude. The patterns are delimited by "|" (that is, a
-pipe), for example, \code{"/folder1|/folder2"}}
+pipe), for example, \code{"/folder1|/folder2"}.}
 
 \item{Schedule}{Specifies a schedule used to periodically transfer files from a source
 to a destination location. The schedule should be specified in UTC time.
@@ -65,7 +59,7 @@ of the task remains in the CREATING status for more than a few minutes,
 it means that your agent might be having trouble mounting the source NFS
 file system. Check the task's ErrorCode and ErrorDetail. Mount issues
 are often caused by either a misconfigured firewall or a mistyped NFS
-server host name.
+server hostname.
 }
 \section{Request syntax}{
 \preformatted{svc$create_task(
@@ -85,7 +79,8 @@ server host name.
     PosixPermissions = "NONE"|"PRESERVE",
     BytesPerSecond = 123,
     TaskQueueing = "ENABLED"|"DISABLED",
-    LogLevel = "OFF"|"BASIC"|"TRANSFER"
+    LogLevel = "OFF"|"BASIC"|"TRANSFER",
+    TransferMode = "CHANGED"|"ALL"
   ),
   Excludes = list(
     list(

@@ -55,12 +55,12 @@ selectors in the Fargate profile, then that pod is run on Fargate.
 
 When you create a Fargate profile, you must specify a pod execution role
 to use with the pods that are scheduled with the profile. This role is
-added to the cluster's Kubernetes \href{https://kubernetes.io/docs/admin/authorization/rbac/}{Role Based Access Control} (RBAC)
-for authorization so that the \code{kubelet} that is running on the Fargate
-infrastructure can register with your Amazon EKS cluster so that it can
-appear in your cluster as a node. The pod execution role also provides
-IAM permissions to the Fargate infrastructure to allow read access to
-Amazon ECR image repositories. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html}{Pod Execution Role}
+added to the cluster's Kubernetes \href{https://kubernetes.io/docs/reference/access-authn-authz/rbac/}{Role Based Access Control}
+(RBAC) for authorization so that the \code{kubelet} that is running on the
+Fargate infrastructure can register with your Amazon EKS cluster so that
+it can appear in your cluster as a node. The pod execution role also
+provides IAM permissions to the Fargate infrastructure to allow read
+access to Amazon ECR image repositories. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/pod-execution-role.html}{Pod Execution Role}
 in the \emph{Amazon EKS User Guide}.
 
 Fargate profiles are immutable. However, you can create a new updated

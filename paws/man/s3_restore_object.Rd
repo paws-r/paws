@@ -2,23 +2,30 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_restore_object}
 \alias{s3_restore_object}
-\title{Restores an archived copy of an object back into Amazon S3 This
-operation performs the following types of requests: - select - Perform a
-select query on an archived object - restore an archive - Restore an
-archived object To use this operation, you must have permissions to
-perform the s3:RestoreObject action}
+\title{Restores an archived copy of an object back into Amazon S3 This action
+is not supported by Amazon S3 on Outposts}
 \usage{
-s3_restore_object(Bucket, Key, VersionId, RestoreRequest, RequestPayer)
+s3_restore_object(Bucket, Key, VersionId, RestoreRequest, RequestPayer,
+  ExpectedBucketOwner)
 }
 \arguments{
-\item{Bucket}{[required] The bucket name or containing the object to restore.
+\item{Bucket}{[required] The bucket name containing the object to restore.
 
 When using this API with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
+When using this operation with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+
+When using this API with Amazon S3 on Outposts, you must direct requests
+to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
+form
+\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
+When using this operation using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
 \item{Key}{[required] Object key for which the operation was initiated.}
@@ -28,12 +35,18 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.}
 \item{RestoreRequest}{}
 
 \item{RequestPayer}{}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Restores an archived copy of an object back into Amazon S3
 }
 \details{
-This operation performs the following types of requests:
+This action is not supported by Amazon S3 on Outposts.
+
+This action performs the following types of requests:
 \itemize{
 \item \code{select} - Perform a select query on an archived object
 \item \verb{restore an archive} - Restore an archived object
@@ -70,7 +83,7 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 For more information about the \code{S3} structure in the request body,
 see the following:
 \itemize{
-\item PutObject
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html}{Managing Access with ACLs}
 in the \emph{Amazon Simple Storage Service Developer Guide}
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/serv-side-encryption.html}{Protecting Data Using Server-Side Encryption}
@@ -124,49 +137,53 @@ duplicate requests.
 been restored. A select request doesn’t return error response \code{409}.
 }
 
-\strong{Restoring Archives}
+\strong{Restoring objects}
 
-Objects in the GLACIER and DEEP\\_ARCHIVE storage classes are archived.
-To access an archived object, you must first initiate a restore request.
-This restores a temporary copy of the archived object. In a restore
-request, you specify the number of days that you want the restored copy
-to exist. After the specified period, Amazon S3 deletes the temporary
-copy but the object remains archived in the GLACIER or DEEP\\_ARCHIVE
-storage class that object was restored from.
+Objects that you archive to the S3 Glacier or S3 Glacier Deep Archive
+storage class, and S3 Intelligent-Tiering Archive or S3
+Intelligent-Tiering Deep Archive tiers are not accessible in real time.
+For objects in Archive Access or Deep Archive Access tiers you must
+first initiate a restore request, and then wait until the object is
+moved into the Frequent Access tier. For objects in S3 Glacier or S3
+Glacier Deep Archive storage classes you must first initiate a restore
+request, and then wait until a temporary copy of the object is
+available. To access an archived object, you must restore the object for
+the duration (number of days) that you specify.
 
 To restore a specific object version, you can provide a version ID. If
 you don't provide a version ID, Amazon S3 restores the current version.
-
-The time it takes restore jobs to finish depends on which storage class
-the object is being restored from and which data access tier you
-specify.
 
 When restoring an archived object (or using a select request), you can
 specify one of the following data access tier options in the \code{Tier}
 element of the request body:
 \itemize{
 \item \strong{\code{Expedited}} - Expedited retrievals allow you to quickly access
-your data stored in the GLACIER storage class when occasional urgent
-requests for a subset of archives are required. For all but the
-largest archived objects (250 MB+), data accessed using Expedited
-retrievals are typically made available within 1–5 minutes.
-Provisioned capacity ensures that retrieval capacity for Expedited
-retrievals is available when you need it. Expedited retrievals and
-provisioned capacity are not available for the DEEP\\_ARCHIVE storage
-class.
-\item \strong{\code{Standard}} - S3 Standard retrievals allow you to access any of
-your archived objects within several hours. This is the default
-option for the GLACIER and DEEP\\_ARCHIVE retrieval requests that do
-not specify the retrieval option. S3 Standard retrievals typically
-complete within 3-5 hours from the GLACIER storage class and
-typically complete within 12 hours from the DEEP\\_ARCHIVE storage
-class.
-\item \strong{\code{Bulk}} - Bulk retrievals are Amazon S3 Glacier’s lowest-cost
-retrieval option, enabling you to retrieve large amounts, even
-petabytes, of data inexpensively in a day. Bulk retrievals typically
-complete within 5-12 hours from the GLACIER storage class and
-typically complete within 48 hours from the DEEP\\_ARCHIVE storage
-class.
+your data stored in the S3 Glacier storage class or S3
+Intelligent-Tiering Archive tier when occasional urgent requests for
+a subset of archives are required. For all but the largest archived
+objects (250 MB+), data accessed using Expedited retrievals is
+typically made available within 1–5 minutes. Provisioned capacity
+ensures that retrieval capacity for Expedited retrievals is
+available when you need it. Expedited retrievals and provisioned
+capacity are not available for objects stored in the S3 Glacier Deep
+Archive storage class or S3 Intelligent-Tiering Deep Archive tier.
+\item \strong{\code{Standard}} - Standard retrievals allow you to access any of your
+archived objects within several hours. This is the default option
+for retrieval requests that do not specify the retrieval option.
+Standard retrievals typically finish within 3–5 hours for objects
+stored in the S3 Glacier storage class or S3 Intelligent-Tiering
+Archive tier. They typically finish within 12 hours for objects
+stored in the S3 Glacier Deep Archive storage class or S3
+Intelligent-Tiering Deep Archive tier. Standard retrievals are free
+for objects stored in S3 Intelligent-Tiering.
+\item \strong{\code{Bulk}} - Bulk retrievals are the lowest-cost retrieval option in
+S3 Glacier, enabling you to retrieve large amounts, even petabytes,
+of data inexpensively. Bulk retrievals typically finish within 5–12
+hours for objects stored in the S3 Glacier storage class or S3
+Intelligent-Tiering Archive tier. They typically finish within 48
+hours for objects stored in the S3 Glacier Deep Archive storage
+class or S3 Intelligent-Tiering Deep Archive tier. Bulk retrievals
+are free for objects stored in S3 Intelligent-Tiering.
 }
 
 For more information about archive retrieval options and provisioned
@@ -174,13 +191,8 @@ capacity for \code{Expedited} data access, see \href{https://docs.aws.amazon.com
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 You can use Amazon S3 restore speed upgrade to change the restore speed
-to a faster speed while it is in progress. You upgrade the speed of an
-in-progress restoration by issuing another restore request to the same
-object, setting a new \code{Tier} request element. When issuing a request to
-upgrade the restore tier, you must choose a tier that is faster than the
-tier that the in-progress restore is using. You must not change any
-other parameters, such as the \code{Days} request element. For more
-information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/restoring-objects.html#restoring-objects-upgrade-tier.title.html}{Upgrading the Speed of an In-Progress Restore}
+to a faster speed while it is in progress. For more information, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/dev/restoring-objects.html#restoring-objects-upgrade-tier.title.html}{Upgrading the speed of an in-progress restore}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 To get the status of object restoration, you can send a \code{HEAD} request.
@@ -202,7 +214,9 @@ an expiration action, the object expiration overrides the life span that
 you specify in a restore request. For example, if you restore an object
 copy for 10 days, but the object is scheduled to expire in 3 days,
 Amazon S3 deletes the object in 3 days. For more information about
-lifecycle configuration, see PutBucketLifecycleConfiguration and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html}{Object Lifecycle Management}
+lifecycle configuration, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html}{PutBucketLifecycleConfiguration}
+and \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html}{Object Lifecycle Management}
 in \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Responses}
@@ -210,43 +224,39 @@ in \emph{Amazon Simple Storage Service Developer Guide}.
 A successful operation returns either the \verb{200 OK} or \verb{202 Accepted}
 status code.
 \itemize{
-\item If the object copy is not previously restored, then Amazon S3
-returns \verb{202 Accepted} in the response.
-\item If the object copy is previously restored, Amazon S3 returns
-\verb{200 OK} in the response.
+\item If the object is not previously restored, then Amazon S3 returns
+\verb{202 Accepted} in the response.
+\item If the object is previously restored, Amazon S3 returns \verb{200 OK} in
+the response.
 }
 
 \strong{Special Errors}
 \itemize{
 \item 
-}\preformatted{-   *Code: RestoreAlreadyInProgress*
-
--   *Cause: Object restore is already in progress. (This error does
-    not apply to SELECT type requests.)*
-
--   *HTTP Status Code: 409 Conflict*
-
--   *SOAP Fault Code Prefix: Client*
-}
 \itemize{
+\item \emph{Code: RestoreAlreadyInProgress}
+\item \emph{Cause: Object restore is already in progress. (This error does
+not apply to SELECT type requests.)}
+\item \emph{HTTP Status Code: 409 Conflict}
+\item \emph{SOAP Fault Code Prefix: Client}
+}
 \item 
-}\preformatted{-   *Code: GlacierExpeditedRetrievalNotAvailable*
-
--   *Cause: S3 Glacier expedited retrievals are currently not
-    available. Try again later. (Returned if there is insufficient
-    capacity to process the Expedited request. This error applies
-    only to Expedited retrievals and not to S3 Standard or Bulk
-    retrievals.)*
-
--   *HTTP Status Code: 503*
-
--   *SOAP Fault Code Prefix: N/A*
+\itemize{
+\item \emph{Code: GlacierExpeditedRetrievalNotAvailable}
+\item \emph{Cause: expedited retrievals are currently not available. Try
+again later. (Returned if there is insufficient capacity to
+process the Expedited request. This error applies only to
+Expedited retrievals and not to S3 Standard or Bulk
+retrievals.)}
+\item \emph{HTTP Status Code: 503}
+\item \emph{SOAP Fault Code Prefix: N/A}
+}
 }
 
 \strong{Related Resources}
 \itemize{
-\item PutBucketLifecycleConfiguration
-\item GetBucketNotificationConfiguration
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html}{PutBucketLifecycleConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html}{GetBucketNotificationConfiguration}
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-glacier-select-sql-reference.html}{SQL Reference for Amazon S3 Select and S3 Glacier Select}
 in the \emph{Amazon Simple Storage Service Developer Guide}
 }
@@ -332,11 +342,12 @@ in the \emph{Amazon Simple Storage Service Developer Guide}
             Value = "string"
           )
         ),
-        StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"
+        StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"
       )
     )
   ),
-  RequestPayer = "requester"
+  RequestPayer = "requester",
+  ExpectedBucketOwner = "string"
 )
 }
 }

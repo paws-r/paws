@@ -3,6 +3,65 @@
 #' @include sagemaker_service.R
 NULL
 
+#' Creates an association between the source and the destination
+#'
+#' Creates an *association* between the source and the destination. A
+#' source can be associated with multiple destinations, and a destination
+#' can be associated with multiple sources. An association is a lineage
+#' tracking entity. For more information, see [Amazon SageMaker ML Lineage
+#' Tracking](https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html).
+#'
+#' @usage
+#' sagemaker_add_association(SourceArn, DestinationArn, AssociationType)
+#'
+#' @param SourceArn &#91;required&#93; The ARN of the source.
+#' @param DestinationArn &#91;required&#93; The Amazon Resource Name (ARN) of the destination.
+#' @param AssociationType The type of association. The following are suggested uses for each type.
+#' Amazon SageMaker places no restrictions on their use.
+#' 
+#' -   ContributedTo - The source contributed to the destination or had a
+#'     part in enabling the destination. For example, the training data
+#'     contributed to the training job.
+#' 
+#' -   AssociatedWith - The source is connected to the destination. For
+#'     example, an approval workflow is associated with a model deployment.
+#' 
+#' -   DerivedFrom - The destination is a modification of the source. For
+#'     example, a digest output of a channel input for a processing job is
+#'     derived from the original inputs.
+#' 
+#' -   Produced - The source generated the destination. For example, a
+#'     training job produced a model artifact.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$add_association(
+#'   SourceArn = "string",
+#'   DestinationArn = "string",
+#'   AssociationType = "ContributedTo"|"AssociatedWith"|"DerivedFrom"|"Produced"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_add_association
+sagemaker_add_association <- function(SourceArn, DestinationArn, AssociationType = NULL) {
+  op <- new_operation(
+    name = "AddAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$add_association_input(SourceArn = SourceArn, DestinationArn = DestinationArn, AssociationType = AssociationType)
+  output <- .sagemaker$add_association_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$add_association <- sagemaker_add_association
+
 #' Adds or overwrites one or more tags for the specified Amazon SageMaker
 #' resource
 #'
@@ -14,7 +73,7 @@ NULL
 #' Each tag consists of a key and an optional value. Tag keys must be
 #' unique per resource. For more information about tags, see For more
 #' information, see [AWS Tagging
-#' Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+#' Strategies](https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf).
 #' 
 #' Tags that you add to a hyperparameter tuning job by calling this API are
 #' also added to any training jobs that the hyperparameter tuning job
@@ -29,9 +88,10 @@ NULL
 #' sagemaker_add_tags(ResourceArn, Tags)
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to tag.
-#' @param Tags &#91;required&#93; An array of `Tag` objects. Each tag is a key-value pair. Only the `key`
-#' parameter is required. If you don't specify a value, Amazon SageMaker
-#' sets the value to an empty string.
+#' @param Tags &#91;required&#93; An array of key-value pairs. You can use tags to categorize your AWS
+#' resources in different ways, for example, by purpose, owner, or
+#' environment. For more information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -106,6 +166,77 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 }
 .sagemaker$operations$associate_trial_component <- sagemaker_associate_trial_component
 
+#' Creates an action
+#'
+#' Creates an *action*. An action is a lineage tracking entity that
+#' represents an action or activity. For example, a model deployment or an
+#' HPO job. Generally, an action involves at least one input or output
+#' artifact. For more information, see [Amazon SageMaker ML Lineage
+#' Tracking](https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html).
+#'
+#' @usage
+#' sagemaker_create_action(ActionName, Source, ActionType, Description,
+#'   Status, Properties, MetadataProperties, Tags)
+#'
+#' @param ActionName &#91;required&#93; The name of the action. Must be unique to your account in an AWS Region.
+#' @param Source &#91;required&#93; The source type, ID, and URI.
+#' @param ActionType &#91;required&#93; The action type.
+#' @param Description The description of the action.
+#' @param Status The status of the action.
+#' @param Properties A list of properties to add to the action.
+#' @param MetadataProperties 
+#' @param Tags A list of tags to apply to the action.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_action(
+#'   ActionName = "string",
+#'   Source = list(
+#'     SourceUri = "string",
+#'     SourceType = "string",
+#'     SourceId = "string"
+#'   ),
+#'   ActionType = "string",
+#'   Description = "string",
+#'   Status = "Unknown"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+#'   Properties = list(
+#'     "string"
+#'   ),
+#'   MetadataProperties = list(
+#'     CommitId = "string",
+#'     Repository = "string",
+#'     GeneratedBy = "string",
+#'     ProjectId = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_action
+sagemaker_create_action <- function(ActionName, Source, ActionType, Description = NULL, Status = NULL, Properties = NULL, MetadataProperties = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateAction",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_action_input(ActionName = ActionName, Source = Source, ActionType = ActionType, Description = Description, Status = Status, Properties = Properties, MetadataProperties = MetadataProperties, Tags = Tags)
+  output <- .sagemaker$create_action_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_action <- sagemaker_create_action
+
 #' Create a machine learning algorithm that you can use in Amazon SageMaker
 #' and list in the AWS Marketplace
 #'
@@ -115,7 +246,7 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 #' @usage
 #' sagemaker_create_algorithm(AlgorithmName, AlgorithmDescription,
 #'   TrainingSpecification, InferenceSpecification, ValidationSpecification,
-#'   CertifyForMarketplace)
+#'   CertifyForMarketplace, Tags)
 #'
 #' @param AlgorithmName &#91;required&#93; The name of the algorithm.
 #' @param AlgorithmDescription A description of the algorithm.
@@ -156,6 +287,10 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 #' algorithm's inference code.
 #' @param CertifyForMarketplace Whether to certify the algorithm so that it can be listed in AWS
 #' Marketplace.
+#' @param Tags An array of key-value pairs. You can use tags to categorize your AWS
+#' resources in different ways, for example, by purpose, owner, or
+#' environment. For more information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -191,7 +326,7 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 #'       )
 #'     ),
 #'     SupportedTrainingInstanceTypes = list(
-#'       "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"
+#'       "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge"
 #'     ),
 #'     SupportsDistributedTraining = TRUE|FALSE,
 #'     MetricDefinitions = list(
@@ -289,7 +424,7 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 #'             S3OutputPath = "string"
 #'           ),
 #'           ResourceConfig = list(
-#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
+#'             InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
 #'             InstanceCount = 123,
 #'             VolumeSizeInGB = 123,
 #'             VolumeKmsKeyId = "string"
@@ -332,21 +467,27 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 #'       )
 #'     )
 #'   ),
-#'   CertifyForMarketplace = TRUE|FALSE
+#'   CertifyForMarketplace = TRUE|FALSE,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_algorithm
-sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NULL, TrainingSpecification, InferenceSpecification = NULL, ValidationSpecification = NULL, CertifyForMarketplace = NULL) {
+sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NULL, TrainingSpecification, InferenceSpecification = NULL, ValidationSpecification = NULL, CertifyForMarketplace = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateAlgorithm",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_algorithm_input(AlgorithmName = AlgorithmName, AlgorithmDescription = AlgorithmDescription, TrainingSpecification = TrainingSpecification, InferenceSpecification = InferenceSpecification, ValidationSpecification = ValidationSpecification, CertifyForMarketplace = CertifyForMarketplace)
+  input <- .sagemaker$create_algorithm_input(AlgorithmName = AlgorithmName, AlgorithmDescription = AlgorithmDescription, TrainingSpecification = TrainingSpecification, InferenceSpecification = InferenceSpecification, ValidationSpecification = ValidationSpecification, CertifyForMarketplace = CertifyForMarketplace, Tags = Tags)
   output <- .sagemaker$create_algorithm_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -392,6 +533,7 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 #'   ),
 #'   ResourceSpec = list(
 #'     SageMakerImageArn = "string",
+#'     SageMakerImageVersionArn = "string",
 #'     InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'   )
 #' )
@@ -417,41 +559,175 @@ sagemaker_create_app <- function(DomainId, UserProfileName, AppType, AppName, Ta
 }
 .sagemaker$operations$create_app <- sagemaker_create_app
 
-#' Creates an AutoPilot job
+#' Creates a configuration for running a SageMaker image as a KernelGateway
+#' app
 #'
-#' Creates an AutoPilot job.
+#' Creates a configuration for running a SageMaker image as a KernelGateway
+#' app. The configuration specifies the Amazon Elastic File System (EFS)
+#' storage volume on the image, and a list of the kernels in the image.
+#'
+#' @usage
+#' sagemaker_create_app_image_config(AppImageConfigName, Tags,
+#'   KernelGatewayImageConfig)
+#'
+#' @param AppImageConfigName &#91;required&#93; The name of the AppImageConfig. Must be unique to your account.
+#' @param Tags A list of tags to apply to the AppImageConfig.
+#' @param KernelGatewayImageConfig The KernelGatewayImageConfig.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_app_image_config(
+#'   AppImageConfigName = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   KernelGatewayImageConfig = list(
+#'     KernelSpecs = list(
+#'       list(
+#'         Name = "string",
+#'         DisplayName = "string"
+#'       )
+#'     ),
+#'     FileSystemConfig = list(
+#'       MountPath = "string",
+#'       DefaultUid = 123,
+#'       DefaultGid = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_app_image_config
+sagemaker_create_app_image_config <- function(AppImageConfigName, Tags = NULL, KernelGatewayImageConfig = NULL) {
+  op <- new_operation(
+    name = "CreateAppImageConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_app_image_config_input(AppImageConfigName = AppImageConfigName, Tags = Tags, KernelGatewayImageConfig = KernelGatewayImageConfig)
+  output <- .sagemaker$create_app_image_config_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_app_image_config <- sagemaker_create_app_image_config
+
+#' Creates an artifact
+#'
+#' Creates an *artifact*. An artifact is a lineage tracking entity that
+#' represents a URI addressable object or data. Some examples are the S3
+#' URI of a dataset and the ECR registry path of an image. For more
+#' information, see [Amazon SageMaker ML Lineage
+#' Tracking](https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html).
+#'
+#' @usage
+#' sagemaker_create_artifact(ArtifactName, Source, ArtifactType,
+#'   Properties, MetadataProperties, Tags)
+#'
+#' @param ArtifactName The name of the artifact. Must be unique to your account in an AWS
+#' Region.
+#' @param Source &#91;required&#93; The ID, ID type, and URI of the source.
+#' @param ArtifactType &#91;required&#93; The artifact type.
+#' @param Properties A list of properties to add to the artifact.
+#' @param MetadataProperties 
+#' @param Tags A list of tags to apply to the artifact.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_artifact(
+#'   ArtifactName = "string",
+#'   Source = list(
+#'     SourceUri = "string",
+#'     SourceTypes = list(
+#'       list(
+#'         SourceIdType = "MD5Hash"|"S3ETag"|"S3Version"|"Custom",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   ArtifactType = "string",
+#'   Properties = list(
+#'     "string"
+#'   ),
+#'   MetadataProperties = list(
+#'     CommitId = "string",
+#'     Repository = "string",
+#'     GeneratedBy = "string",
+#'     ProjectId = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_artifact
+sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType, Properties = NULL, MetadataProperties = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateArtifact",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_artifact_input(ArtifactName = ArtifactName, Source = Source, ArtifactType = ArtifactType, Properties = Properties, MetadataProperties = MetadataProperties, Tags = Tags)
+  output <- .sagemaker$create_artifact_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_artifact <- sagemaker_create_artifact
+
+#' Creates an Autopilot job
+#'
+#' Creates an Autopilot job.
 #' 
-#' After you run an AutoPilot job, you can find the best performing model
-#' by calling , and then deploy that model by following the steps described
-#' in [Step 6.1: Deploy the Model to Amazon SageMaker Hosting
+#' Find the best performing model after you run an Autopilot job by calling
+#' . Deploy that model by following the steps described in [Step 6.1:
+#' Deploy the Model to Amazon SageMaker Hosting
 #' Services](https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html).
 #' 
-#' For information about how to use AutoPilot, see [Use AutoPilot to
-#' Automate Model
-#' Development](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html).
+#' For information about how to use Autopilot, see [Automate Model
+#' Development with Amazon SageMaker
+#' Autopilot](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html).
 #'
 #' @usage
 #' sagemaker_create_auto_ml_job(AutoMLJobName, InputDataConfig,
 #'   OutputDataConfig, ProblemType, AutoMLJobObjective, AutoMLJobConfig,
 #'   RoleArn, GenerateCandidateDefinitionsOnly, Tags)
 #'
-#' @param AutoMLJobName &#91;required&#93; Identifies an AutoPilot job. Must be unique to your account and is
+#' @param AutoMLJobName &#91;required&#93; Identifies an Autopilot job. Must be unique to your account and is
 #' case-insensitive.
 #' @param InputDataConfig &#91;required&#93; Similar to InputDataConfig supported by Tuning. Format(s) supported:
-#' CSV. Minimum of 1000 rows.
+#' CSV. Minimum of 500 rows.
 #' @param OutputDataConfig &#91;required&#93; Similar to OutputDataConfig supported by Tuning. Format(s) supported:
 #' CSV.
 #' @param ProblemType Defines the kind of preprocessing and algorithms intended for the
 #' candidates. Options include: BinaryClassification,
 #' MulticlassClassification, and Regression.
-#' @param AutoMLJobObjective Defines the job's objective. You provide a MetricName and AutoML will
-#' infer minimize or maximize. If this is not provided, the most commonly
-#' used ObjectiveMetric for problem type will be selected.
+#' @param AutoMLJobObjective Defines the objective of a an AutoML job. You provide a
+#' AutoMLJobObjective$MetricName and Autopilot infers whether to minimize
+#' or maximize it. If a metric is not specified, the most commonly used
+#' ObjectiveMetric for problem type is automaically selected.
 #' @param AutoMLJobConfig Contains CompletionCriteria and SecurityConfig.
-#' @param RoleArn &#91;required&#93; The ARN of the role that will be used to access the data.
-#' @param GenerateCandidateDefinitionsOnly This will generate possible candidates without training a model. A
-#' candidate is a combination of data preprocessors, algorithms, and
-#' algorithm parameter settings.
+#' @param RoleArn &#91;required&#93; The ARN of the role that is used to access the data.
+#' @param GenerateCandidateDefinitionsOnly Generates possible candidates without training a model. A candidate is a
+#' combination of data preprocessors, algorithms, and algorithm parameter
+#' settings.
 #' @param Tags Each tag consists of a key and an optional value. Tag keys must be
 #' unique per resource.
 #'
@@ -477,7 +753,7 @@ sagemaker_create_app <- function(DomainId, UserProfileName, AppType, AppName, Ta
 #'   ),
 #'   ProblemType = "BinaryClassification"|"MulticlassClassification"|"Regression",
 #'   AutoMLJobObjective = list(
-#'     MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"
+#'     MetricName = "Accuracy"|"MSE"|"F1"|"F1macro"|"AUC"
 #'   ),
 #'   AutoMLJobConfig = list(
 #'     CompletionCriteria = list(
@@ -543,13 +819,17 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
 #' or in any other Git repository.
 #'
 #' @usage
-#' sagemaker_create_code_repository(CodeRepositoryName, GitConfig)
+#' sagemaker_create_code_repository(CodeRepositoryName, GitConfig, Tags)
 #'
 #' @param CodeRepositoryName &#91;required&#93; The name of the Git repository. The name must have 1 to 63 characters.
 #' Valid characters are a-z, A-Z, 0-9, and - (hyphen).
 #' @param GitConfig &#91;required&#93; Specifies details about the repository, including the URL where the
 #' repository is located, the default branch, and credentials to use to
 #' access the repository.
+#' @param Tags An array of key-value pairs. You can use tags to categorize your AWS
+#' resources in different ways, for example, by purpose, owner, or
+#' environment. For more information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -559,6 +839,12 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
 #'     RepositoryUrl = "string",
 #'     Branch = "string",
 #'     SecretArn = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -566,14 +852,14 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_code_repository
-sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig) {
+sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig, Tags = NULL) {
   op <- new_operation(
     name = "CreateCodeRepository",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_code_repository_input(CodeRepositoryName = CodeRepositoryName, GitConfig = GitConfig)
+  input <- .sagemaker$create_code_repository_input(CodeRepositoryName = CodeRepositoryName, GitConfig = GitConfig, Tags = Tags)
   output <- .sagemaker$create_code_repository_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -603,7 +889,8 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig) {
 #' -   The output location for the compiled model and the device (target)
 #'     that the model runs on
 #' 
-#' -   `The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker assumes to perform the model compilation job`
+#' -   The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker
+#'     assumes to perform the model compilation job.
 #' 
 #' You can also provide a `Tag` to track the model compilation job's
 #' resource use and costs. The response body contains the
@@ -616,7 +903,7 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig) {
 #'
 #' @usage
 #' sagemaker_create_compilation_job(CompilationJobName, RoleArn,
-#'   InputConfig, OutputConfig, StoppingCondition)
+#'   InputConfig, OutputConfig, StoppingCondition, Tags)
 #'
 #' @param CompilationJobName &#91;required&#93; A name for the model compilation job. The name must be unique within the
 #' AWS Region and within your AWS account.
@@ -645,6 +932,10 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig) {
 #' @param StoppingCondition &#91;required&#93; Specifies a limit to how long a model compilation job can run. When the
 #' job reaches the time limit, Amazon SageMaker ends the compilation job.
 #' Use this API to cap model training costs.
+#' @param Tags An array of key-value pairs. You can use tags to categorize your AWS
+#' resources in different ways, for example, by purpose, owner, or
+#' environment. For more information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -654,15 +945,28 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig) {
 #'   InputConfig = list(
 #'     S3Uri = "string",
 #'     DataInputConfig = "string",
-#'     Framework = "TENSORFLOW"|"KERAS"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"|"TFLITE"
+#'     Framework = "TENSORFLOW"|"KERAS"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"|"TFLITE"|"DARKNET"|"SKLEARN"
 #'   ),
 #'   OutputConfig = list(
 #'     S3OutputLocation = "string",
-#'     TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_inf1"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv22"
+#'     TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv22"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm",
+#'     TargetPlatform = list(
+#'       Os = "ANDROID"|"LINUX",
+#'       Arch = "X86_64"|"X86"|"ARM64"|"ARM_EABI"|"ARM_EABIHF",
+#'       Accelerator = "INTEL_GRAPHICS"|"MALI"|"NVIDIA"
+#'     ),
+#'     CompilerOptions = "string",
+#'     KmsKeyId = "string"
 #'   ),
 #'   StoppingCondition = list(
 #'     MaxRuntimeInSeconds = 123,
 #'     MaxWaitTimeInSeconds = 123
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -670,14 +974,14 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_compilation_job
-sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, InputConfig, OutputConfig, StoppingCondition) {
+sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, InputConfig, OutputConfig, StoppingCondition, Tags = NULL) {
   op <- new_operation(
     name = "CreateCompilationJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_compilation_job_input(CompilationJobName = CompilationJobName, RoleArn = RoleArn, InputConfig = InputConfig, OutputConfig = OutputConfig, StoppingCondition = StoppingCondition)
+  input <- .sagemaker$create_compilation_job_input(CompilationJobName = CompilationJobName, RoleArn = RoleArn, InputConfig = InputConfig, OutputConfig = OutputConfig, StoppingCondition = StoppingCondition, Tags = Tags)
   output <- .sagemaker$create_compilation_job_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -687,44 +991,329 @@ sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, InputC
 }
 .sagemaker$operations$create_compilation_job <- sagemaker_create_compilation_job
 
-#' Creates a Domain used by SageMaker Studio
+#' Creates a context
 #'
-#' Creates a `Domain` used by SageMaker Studio. A domain consists of an
-#' associated directory, a list of authorized users, and a variety of
-#' security, application, policy, and Amazon Virtual Private Cloud (VPC)
-#' configurations. An AWS account is limited to one domain per region.
-#' Users within a domain can share notebook files and other artifacts with
-#' each other.
+#' Creates a *context*. A context is a lineage tracking entity that
+#' represents a logical grouping of other tracking or experiment entities.
+#' Some examples are an endpoint and a model package. For more information,
+#' see [Amazon SageMaker ML Lineage
+#' Tracking](https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html).
+#'
+#' @usage
+#' sagemaker_create_context(ContextName, Source, ContextType, Description,
+#'   Properties, Tags)
+#'
+#' @param ContextName &#91;required&#93; The name of the context. Must be unique to your account in an AWS
+#' Region.
+#' @param Source &#91;required&#93; The source type, ID, and URI.
+#' @param ContextType &#91;required&#93; The context type.
+#' @param Description The description of the context.
+#' @param Properties A list of properties to add to the context.
+#' @param Tags A list of tags to apply to the context.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_context(
+#'   ContextName = "string",
+#'   Source = list(
+#'     SourceUri = "string",
+#'     SourceType = "string",
+#'     SourceId = "string"
+#'   ),
+#'   ContextType = "string",
+#'   Description = "string",
+#'   Properties = list(
+#'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_context
+sagemaker_create_context <- function(ContextName, Source, ContextType, Description = NULL, Properties = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateContext",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_context_input(ContextName = ContextName, Source = Source, ContextType = ContextType, Description = Description, Properties = Properties, Tags = Tags)
+  output <- .sagemaker$create_context_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_context <- sagemaker_create_context
+
+#' Creates a definition for a job that monitors data quality and drift
+#'
+#' Creates a definition for a job that monitors data quality and drift. For
+#' information about model monitor, see [Amazon SageMaker Model
+#' Monitor](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html).
+#'
+#' @usage
+#' sagemaker_create_data_quality_job_definition(JobDefinitionName,
+#'   DataQualityBaselineConfig, DataQualityAppSpecification,
+#'   DataQualityJobInput, DataQualityJobOutputConfig, JobResources,
+#'   NetworkConfig, RoleArn, StoppingCondition, Tags)
+#'
+#' @param JobDefinitionName &#91;required&#93; The name for the monitoring job definition.
+#' @param DataQualityBaselineConfig Configures the constraints and baselines for the monitoring job.
+#' @param DataQualityAppSpecification &#91;required&#93; Specifies the container that runs the monitoring job.
+#' @param DataQualityJobInput &#91;required&#93; A list of inputs for the monitoring job. Currently endpoints are
+#' supported as monitoring inputs.
+#' @param DataQualityJobOutputConfig &#91;required&#93; 
+#' @param JobResources &#91;required&#93; 
+#' @param NetworkConfig Specifies networking configuration for the monitoring job.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
+#' assume to perform tasks on your behalf.
+#' @param StoppingCondition 
+#' @param Tags (Optional) An array of key-value pairs. For more information, see [Using
+#' Cost Allocation
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL)
+#' in the *AWS Billing and Cost Management User Guide*.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_data_quality_job_definition(
+#'   JobDefinitionName = "string",
+#'   DataQualityBaselineConfig = list(
+#'     BaseliningJobName = "string",
+#'     ConstraintsResource = list(
+#'       S3Uri = "string"
+#'     ),
+#'     StatisticsResource = list(
+#'       S3Uri = "string"
+#'     )
+#'   ),
+#'   DataQualityAppSpecification = list(
+#'     ImageUri = "string",
+#'     ContainerEntrypoint = list(
+#'       "string"
+#'     ),
+#'     ContainerArguments = list(
+#'       "string"
+#'     ),
+#'     RecordPreprocessorSourceUri = "string",
+#'     PostAnalyticsProcessorSourceUri = "string",
+#'     Environment = list(
+#'       "string"
+#'     )
+#'   ),
+#'   DataQualityJobInput = list(
+#'     EndpointInput = list(
+#'       EndpointName = "string",
+#'       LocalPath = "string",
+#'       S3InputMode = "Pipe"|"File",
+#'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'       FeaturesAttribute = "string",
+#'       InferenceAttribute = "string",
+#'       ProbabilityAttribute = "string",
+#'       ProbabilityThresholdAttribute = 123.0,
+#'       StartTimeOffset = "string",
+#'       EndTimeOffset = "string"
+#'     )
+#'   ),
+#'   DataQualityJobOutputConfig = list(
+#'     MonitoringOutputs = list(
+#'       list(
+#'         S3Output = list(
+#'           S3Uri = "string",
+#'           LocalPath = "string",
+#'           S3UploadMode = "Continuous"|"EndOfJob"
+#'         )
+#'       )
+#'     ),
+#'     KmsKeyId = "string"
+#'   ),
+#'   JobResources = list(
+#'     ClusterConfig = list(
+#'       InstanceCount = 123,
+#'       InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
+#'       VolumeSizeInGB = 123,
+#'       VolumeKmsKeyId = "string"
+#'     )
+#'   ),
+#'   NetworkConfig = list(
+#'     EnableInterContainerTrafficEncryption = TRUE|FALSE,
+#'     EnableNetworkIsolation = TRUE|FALSE,
+#'     VpcConfig = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   RoleArn = "string",
+#'   StoppingCondition = list(
+#'     MaxRuntimeInSeconds = 123
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_data_quality_job_definition
+sagemaker_create_data_quality_job_definition <- function(JobDefinitionName, DataQualityBaselineConfig = NULL, DataQualityAppSpecification, DataQualityJobInput, DataQualityJobOutputConfig, JobResources, NetworkConfig = NULL, RoleArn, StoppingCondition = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateDataQualityJobDefinition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_data_quality_job_definition_input(JobDefinitionName = JobDefinitionName, DataQualityBaselineConfig = DataQualityBaselineConfig, DataQualityAppSpecification = DataQualityAppSpecification, DataQualityJobInput = DataQualityJobInput, DataQualityJobOutputConfig = DataQualityJobOutputConfig, JobResources = JobResources, NetworkConfig = NetworkConfig, RoleArn = RoleArn, StoppingCondition = StoppingCondition, Tags = Tags)
+  output <- .sagemaker$create_data_quality_job_definition_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_data_quality_job_definition <- sagemaker_create_data_quality_job_definition
+
+#' Creates a device fleet
+#'
+#' Creates a device fleet.
+#'
+#' @usage
+#' sagemaker_create_device_fleet(DeviceFleetName, RoleArn, Description,
+#'   OutputConfig, Tags)
+#'
+#' @param DeviceFleetName &#91;required&#93; The name of the fleet that the device belongs to.
+#' @param RoleArn The Amazon Resource Name (ARN) that has access to AWS Internet of Things
+#' (IoT).
+#' @param Description A description of the fleet.
+#' @param OutputConfig &#91;required&#93; The output configuration for storing sample data collected by the fleet.
+#' @param Tags Creates tags for the specified fleet.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_device_fleet(
+#'   DeviceFleetName = "string",
+#'   RoleArn = "string",
+#'   Description = "string",
+#'   OutputConfig = list(
+#'     S3OutputLocation = "string",
+#'     KmsKeyId = "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_device_fleet
+sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Description = NULL, OutputConfig, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateDeviceFleet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_device_fleet_input(DeviceFleetName = DeviceFleetName, RoleArn = RoleArn, Description = Description, OutputConfig = OutputConfig, Tags = Tags)
+  output <- .sagemaker$create_device_fleet_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_device_fleet <- sagemaker_create_device_fleet
+
+#' Creates a Domain used by Amazon SageMaker Studio
+#'
+#' Creates a `Domain` used by Amazon SageMaker Studio. A domain consists of
+#' an associated Amazon Elastic File System (EFS) volume, a list of
+#' authorized users, and a variety of security, application, policy, and
+#' Amazon Virtual Private Cloud (VPC) configurations. An AWS account is
+#' limited to one domain per region. Users within a domain can share
+#' notebook files and other artifacts with each other.
 #' 
-#' When a domain is created, an Amazon Elastic File System (EFS) volume is
-#' also created for use by all of the users within the domain. Each user
-#' receives a private home directory within the EFS for notebooks, Git
-#' repositories, and data files.
+#' **EFS storage**
 #' 
-#' All traffic between the domain and the EFS volume is communicated
-#' through the specified subnet IDs. All other traffic goes over the
-#' Internet through an Amazon SageMaker system VPC. The EFS traffic uses
-#' the NFS/TCP protocol over port 2049.
+#' When a domain is created, an EFS volume is created for use by all of the
+#' users within the domain. Each user receives a private home directory
+#' within the EFS volume for notebooks, Git repositories, and data files.
 #' 
-#' NFS traffic over TCP on port 2049 needs to be allowed in both inbound
-#' and outbound rules in order to launch a SageMaker Studio app
-#' successfully.
+#' SageMaker uses the AWS Key Management Service (AWS KMS) to encrypt the
+#' EFS volume attached to the domain with an AWS managed customer master
+#' key (CMK) by default. For more control, you can specify a customer
+#' managed CMK. For more information, see [Protect Data at Rest Using
+#' Encryption](https://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html).
+#' 
+#' **VPC configuration**
+#' 
+#' All SageMaker Studio traffic between the domain and the EFS volume is
+#' through the specified VPC and subnets. For other Studio traffic, you can
+#' specify the `AppNetworkAccessType` parameter. `AppNetworkAccessType`
+#' corresponds to the network access type that you choose when you onboard
+#' to Studio. The following options are available:
+#' 
+#' -   `PublicInternetOnly` - Non-EFS traffic goes through a VPC managed by
+#'     Amazon SageMaker, which allows internet access. This is the default
+#'     value.
+#' 
+#' -   `VpcOnly` - All Studio traffic is through the specified VPC and
+#'     subnets. Internet access is disabled by default. To allow internet
+#'     access, you must specify a NAT gateway.
+#' 
+#'     When internet access is disabled, you won't be able to run a Studio
+#'     notebook or to train or host models unless your VPC has an interface
+#'     endpoint to the SageMaker API and runtime or a NAT gateway and your
+#'     security groups allow outbound connections.
+#' 
+#' For more information, see [Connect SageMaker Studio Notebooks to
+#' Resources in a
+#' VPC](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-notebooks-and-internet-access.html).
 #'
 #' @usage
 #' sagemaker_create_domain(DomainName, AuthMode, DefaultUserSettings,
-#'   SubnetIds, VpcId, Tags, HomeEfsFileSystemKmsKeyId)
+#'   SubnetIds, VpcId, Tags, AppNetworkAccessType, HomeEfsFileSystemKmsKeyId,
+#'   KmsKeyId)
 #'
 #' @param DomainName &#91;required&#93; A name for the domain.
 #' @param AuthMode &#91;required&#93; The mode of authentication that members use to access the domain.
 #' @param DefaultUserSettings &#91;required&#93; The default user settings.
-#' @param SubnetIds &#91;required&#93; The VPC subnets to use for communication with the EFS volume.
-#' @param VpcId &#91;required&#93; The ID of the Amazon Virtual Private Cloud (VPC) to use for
-#' communication with the EFS volume.
+#' @param SubnetIds &#91;required&#93; The VPC subnets that Studio uses for communication.
+#' @param VpcId &#91;required&#93; The ID of the Amazon Virtual Private Cloud (VPC) that Studio uses for
+#' communication.
 #' @param Tags Tags to associated with the Domain. Each tag consists of a key and an
 #' optional value. Tag keys must be unique per resource. Tags are
 #' searchable using the Search API.
-#' @param HomeEfsFileSystemKmsKeyId The AWS Key Management Service (KMS) encryption key ID. Encryption with
-#' a customer master key (CMK) is not supported.
+#' @param AppNetworkAccessType Specifies the VPC used for non-EFS traffic. The default value is
+#' `PublicInternetOnly`.
+#' 
+#' -   `PublicInternetOnly` - Non-EFS traffic is through a VPC managed by
+#'     Amazon SageMaker, which allows direct internet access
+#' 
+#' -   `VpcOnly` - All Studio traffic is through the specified VPC and
+#'     subnets
+#' @param HomeEfsFileSystemKmsKeyId This member is deprecated and replaced with `KmsKeyId`.
+#' @param KmsKeyId SageMaker uses AWS KMS to encrypt the EFS volume attached to the domain
+#' with an AWS managed customer master key (CMK) by default. For more
+#' control, specify a customer managed CMK.
 #'
 #' @section Request syntax:
 #' ```
@@ -744,18 +1333,28 @@ sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, InputC
 #'     JupyterServerAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     ),
 #'     KernelGatewayAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
+#'       ),
+#'       CustomImages = list(
+#'         list(
+#'           ImageName = "string",
+#'           ImageVersionNumber = 123,
+#'           AppImageConfigName = "string"
+#'         )
 #'       )
 #'     ),
 #'     TensorBoardAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     )
@@ -770,21 +1369,23 @@ sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, InputC
 #'       Value = "string"
 #'     )
 #'   ),
-#'   HomeEfsFileSystemKmsKeyId = "string"
+#'   AppNetworkAccessType = "PublicInternetOnly"|"VpcOnly",
+#'   HomeEfsFileSystemKmsKeyId = "string",
+#'   KmsKeyId = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_domain
-sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, SubnetIds, VpcId, Tags = NULL, HomeEfsFileSystemKmsKeyId = NULL) {
+sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, SubnetIds, VpcId, Tags = NULL, AppNetworkAccessType = NULL, HomeEfsFileSystemKmsKeyId = NULL, KmsKeyId = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_domain_input(DomainName = DomainName, AuthMode = AuthMode, DefaultUserSettings = DefaultUserSettings, SubnetIds = SubnetIds, VpcId = VpcId, Tags = Tags, HomeEfsFileSystemKmsKeyId = HomeEfsFileSystemKmsKeyId)
+  input <- .sagemaker$create_domain_input(DomainName = DomainName, AuthMode = AuthMode, DefaultUserSettings = DefaultUserSettings, SubnetIds = SubnetIds, VpcId = VpcId, Tags = Tags, AppNetworkAccessType = AppNetworkAccessType, HomeEfsFileSystemKmsKeyId = HomeEfsFileSystemKmsKeyId, KmsKeyId = KmsKeyId)
   output <- .sagemaker$create_domain_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -793,6 +1394,73 @@ sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, S
   return(response)
 }
 .sagemaker$operations$create_domain <- sagemaker_create_domain
+
+#' Starts a SageMaker Edge Manager model packaging job
+#'
+#' Starts a SageMaker Edge Manager model packaging job. Edge Manager will
+#' use the model artifacts from the Amazon Simple Storage Service bucket
+#' that you specify. After the model has been packaged, Amazon SageMaker
+#' saves the resulting artifacts to an S3 bucket that you specify.
+#'
+#' @usage
+#' sagemaker_create_edge_packaging_job(EdgePackagingJobName,
+#'   CompilationJobName, ModelName, ModelVersion, RoleArn, OutputConfig,
+#'   ResourceKey, Tags)
+#'
+#' @param EdgePackagingJobName &#91;required&#93; The name of the edge packaging job.
+#' @param CompilationJobName &#91;required&#93; The name of the SageMaker Neo compilation job that will be used to
+#' locate model artifacts for packaging.
+#' @param ModelName &#91;required&#93; The name of the model.
+#' @param ModelVersion &#91;required&#93; The version of the model.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that enables Amazon
+#' SageMaker to download and upload the model, and to contact SageMaker
+#' Neo.
+#' @param OutputConfig &#91;required&#93; Provides information about the output location for the packaged model.
+#' @param ResourceKey The CMK to use when encrypting the EBS volume the edge packaging job
+#' runs on.
+#' @param Tags Creates tags for the packaging job.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_edge_packaging_job(
+#'   EdgePackagingJobName = "string",
+#'   CompilationJobName = "string",
+#'   ModelName = "string",
+#'   ModelVersion = "string",
+#'   RoleArn = "string",
+#'   OutputConfig = list(
+#'     S3OutputLocation = "string",
+#'     KmsKeyId = "string"
+#'   ),
+#'   ResourceKey = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_edge_packaging_job
+sagemaker_create_edge_packaging_job <- function(EdgePackagingJobName, CompilationJobName, ModelName, ModelVersion, RoleArn, OutputConfig, ResourceKey = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateEdgePackagingJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_edge_packaging_job_input(EdgePackagingJobName = EdgePackagingJobName, CompilationJobName = CompilationJobName, ModelName = ModelName, ModelVersion = ModelVersion, RoleArn = RoleArn, OutputConfig = OutputConfig, ResourceKey = ResourceKey, Tags = Tags)
+  output <- .sagemaker$create_edge_packaging_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_edge_packaging_job <- sagemaker_create_edge_packaging_job
 
 #' Creates an endpoint using the endpoint configuration specified in the
 #' request
@@ -849,18 +1517,46 @@ sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, S
 #' STS in an AWS
 #' Region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
 #' in the *AWS Identity and Access Management User Guide*.
+#' 
+#' To add the IAM role policies for using this API operation, go to the
+#' [IAM console](https://console.aws.amazon.com/iam/), and choose Roles in
+#' the left navigation pane. Search the IAM role that you want to grant
+#' access to use the CreateEndpoint and CreateEndpointConfig API
+#' operations, add the following policies to the role.
+#' 
+#' -   Option 1: For a full Amazon SageMaker access, search and attach the
+#'     `AmazonSageMakerFullAccess` policy.
+#' 
+#' -   Option 2: For granting a limited access to an IAM role, paste the
+#'     following Action elements manually into the JSON file of the IAM
+#'     role:
+#' 
+#'     `"Action": \\["sagemaker:CreateEndpoint", "sagemaker:CreateEndpointConfig"\\]`
+#' 
+#'     `"Resource": \\[`
+#' 
+#'     `"arn:aws:sagemaker:region:account-id:endpoint/endpointName"`
+#' 
+#'     `"arn:aws:sagemaker:region:account-id:endpoint-config/endpointConfigName"`
+#' 
+#'     `\\]`
+#' 
+#'     For more information, see [Amazon SageMaker API Permissions:
+#'     Actions, Permissions, and Resources
+#'     Reference](https://docs.aws.amazon.com/sagemaker/latest/dg/api-permissions-reference.html).
 #'
 #' @usage
 #' sagemaker_create_endpoint(EndpointName, EndpointConfigName, Tags)
 #'
-#' @param EndpointName &#91;required&#93; The name of the endpoint. The name must be unique within an AWS Region
-#' in your AWS account.
+#' @param EndpointName &#91;required&#93; The name of the endpoint.The name must be unique within an AWS Region in
+#' your AWS account. The name is case-insensitive in `CreateEndpoint`, but
+#' the case is preserved and must be matched in .
 #' @param EndpointConfigName &#91;required&#93; The name of an endpoint configuration. For more information, see
 #' CreateEndpointConfig.
-#' @param Tags An array of key-value pairs. For more information, see [Using Cost
-#' Allocation
-#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)in
-#' the *AWS Billing and Cost Management User Guide*.
+#' @param Tags An array of key-value pairs. You can use tags to categorize your AWS
+#' resources in different ways, for example, by purpose, owner, or
+#' environment. For more information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 #'
 #' @section Request syntax:
 #' ```
@@ -947,10 +1643,10 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Tags = N
 #' @param ProductionVariants &#91;required&#93; An list of `ProductionVariant` objects, one for each model that you want
 #' to host at this endpoint.
 #' @param DataCaptureConfig 
-#' @param Tags A list of key-value pairs. For more information, see [Using Cost
-#' Allocation
-#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
-#' in the *AWS Billing and Cost Management User Guide*.
+#' @param Tags An array of key-value pairs. You can use tags to categorize your AWS
+#' resources in different ways, for example, by purpose, owner, or
+#' environment. For more information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 #' @param KmsKeyId The Amazon Resource Name (ARN) of a AWS Key Management Service key that
 #' Amazon SageMaker uses to encrypt data on the storage volume attached to
 #' the ML compute instance that hosts the endpoint.
@@ -1053,12 +1749,12 @@ sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVaria
 }
 .sagemaker$operations$create_endpoint_config <- sagemaker_create_endpoint_config
 
-#' Creates an Amazon SageMaker experiment
+#' Creates an SageMaker experiment
 #'
-#' Creates an Amazon SageMaker *experiment*. An experiment is a collection
-#' of *trials* that are observed, compared and evaluated as a group. A
-#' trial is a set of steps, called *trial components*, that produce a
-#' machine learning model.
+#' Creates an SageMaker *experiment*. An experiment is a collection of
+#' *trials* that are observed, compared and evaluated as a group. A trial
+#' is a set of steps, called *trial components*, that produce a machine
+#' learning model.
 #' 
 #' The goal of an experiment is to determine the components that produce
 #' the best model. Multiple trials are performed, each one isolating and
@@ -1129,6 +1825,161 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
   return(response)
 }
 .sagemaker$operations$create_experiment <- sagemaker_create_experiment
+
+#' Create a new FeatureGroup
+#'
+#' Create a new `FeatureGroup`. A `FeatureGroup` is a group of `Features`
+#' defined in the `FeatureStore` to describe a `Record`.
+#' 
+#' The `FeatureGroup` defines the schema and features contained in the
+#' FeatureGroup. A `FeatureGroup` definition is composed of a list of
+#' `Features`, a `RecordIdentifierFeatureName`, an `EventTimeFeatureName`
+#' and configurations for its `OnlineStore` and `OfflineStore`. Check [AWS
+#' service
+#' quotas](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)
+#' to see the `FeatureGroup`s quota for your AWS account.
+#' 
+#' You must include at least one of `OnlineStoreConfig` and
+#' `OfflineStoreConfig` to create a `FeatureGroup`.
+#'
+#' @usage
+#' sagemaker_create_feature_group(FeatureGroupName,
+#'   RecordIdentifierFeatureName, EventTimeFeatureName, FeatureDefinitions,
+#'   OnlineStoreConfig, OfflineStoreConfig, RoleArn, Description, Tags)
+#'
+#' @param FeatureGroupName &#91;required&#93; The name of the `FeatureGroup`. The name must be unique within an AWS
+#' Region in an AWS account. The name:
+#' 
+#' -   Must start and end with an alphanumeric character.
+#' 
+#' -   Can only contain alphanumeric character and hyphens. Spaces are not
+#'     allowed.
+#' @param RecordIdentifierFeatureName &#91;required&#93; The name of the `Feature` whose value uniquely identifies a `Record`
+#' defined in the `FeatureStore`. Only the latest record per identifier
+#' value will be stored in the `OnlineStore`. `RecordIdentifierFeatureName`
+#' must be one of feature definitions' names.
+#' 
+#' You use the `RecordIdentifierFeatureName` to access data in a
+#' `FeatureStore`.
+#' 
+#' This name:
+#' 
+#' -   Must start and end with an alphanumeric character.
+#' 
+#' -   Can only contains alphanumeric characters, hyphens, underscores.
+#'     Spaces are not allowed.
+#' @param EventTimeFeatureName &#91;required&#93; The name of the feature that stores the `EventTime` of a `Record` in a
+#' `FeatureGroup`.
+#' 
+#' An `EventTime` is a point in time when a new event occurs that
+#' corresponds to the creation or update of a `Record` in a `FeatureGroup`.
+#' All `Records` in the `FeatureGroup` must have a corresponding
+#' `EventTime`.
+#' 
+#' An `EventTime` can be a `String` or `Fractional`.
+#' 
+#' -   `Fractional`: `EventTime` feature values must be a Unix timestamp in
+#'     seconds.
+#' 
+#' -   `String`: `EventTime` feature values must be an ISO-8601 string in
+#'     the format. The following formats are supported
+#'     `yyyy-MM-dd'T'HH:mm:ssZ` and `yyyy-MM-dd'T'HH:mm:ss.SSSZ` where
+#'     `yyyy`, `MM`, and `dd` represent the year, month, and day
+#'     respectively and `HH`, `mm`, `ss`, and if applicable, `SSS`
+#'     represent the hour, month, second and milliseconds respsectively.
+#'     `'T'` and `Z` are constants.
+#' @param FeatureDefinitions &#91;required&#93; A list of `Feature` names and types. `Name` and `Type` is compulsory per
+#' `Feature`.
+#' 
+#' Valid feature `FeatureType`s are `Integral`, `Fractional` and `String`.
+#' 
+#' `FeatureName`s cannot be any of the following: `is_deleted`,
+#' `write_time`, `api_invocation_time`
+#' 
+#' You can create up to 2,500 `FeatureDefinition`s per `FeatureGroup`.
+#' @param OnlineStoreConfig You can turn the `OnlineStore` on or off by specifying `True` for the
+#' `EnableOnlineStore` flag in `OnlineStoreConfig`; the default value is
+#' `False`.
+#' 
+#' You can also include an AWS KMS key ID (`KMSKeyId`) for at-rest
+#' encryption of the `OnlineStore`.
+#' @param OfflineStoreConfig Use this to configure an `OfflineFeatureStore`. This parameter allows
+#' you to specify:
+#' 
+#' -   The Amazon Simple Storage Service (Amazon S3) location of an
+#'     `OfflineStore`.
+#' 
+#' -   A configuration for an AWS Glue or AWS Hive data cataolgue.
+#' 
+#' -   An KMS encryption key to encrypt the Amazon S3 location used for
+#'     `OfflineStore`.
+#' 
+#' To learn more about this parameter, see OfflineStoreConfig.
+#' @param RoleArn The Amazon Resource Name (ARN) of the IAM execution role used to persist
+#' data into the `OfflineStore` if an `OfflineStoreConfig` is provided.
+#' @param Description A free-form description of a `FeatureGroup`.
+#' @param Tags Tags used to identify `Features` in each `FeatureGroup`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_feature_group(
+#'   FeatureGroupName = "string",
+#'   RecordIdentifierFeatureName = "string",
+#'   EventTimeFeatureName = "string",
+#'   FeatureDefinitions = list(
+#'     list(
+#'       FeatureName = "string",
+#'       FeatureType = "Integral"|"Fractional"|"String"
+#'     )
+#'   ),
+#'   OnlineStoreConfig = list(
+#'     SecurityConfig = list(
+#'       KmsKeyId = "string"
+#'     ),
+#'     EnableOnlineStore = TRUE|FALSE
+#'   ),
+#'   OfflineStoreConfig = list(
+#'     S3StorageConfig = list(
+#'       S3Uri = "string",
+#'       KmsKeyId = "string"
+#'     ),
+#'     DisableGlueTableCreation = TRUE|FALSE,
+#'     DataCatalogConfig = list(
+#'       TableName = "string",
+#'       Catalog = "string",
+#'       Database = "string"
+#'     )
+#'   ),
+#'   RoleArn = "string",
+#'   Description = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_feature_group
+sagemaker_create_feature_group <- function(FeatureGroupName, RecordIdentifierFeatureName, EventTimeFeatureName, FeatureDefinitions, OnlineStoreConfig = NULL, OfflineStoreConfig = NULL, RoleArn = NULL, Description = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateFeatureGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_feature_group_input(FeatureGroupName = FeatureGroupName, RecordIdentifierFeatureName = RecordIdentifierFeatureName, EventTimeFeatureName = EventTimeFeatureName, FeatureDefinitions = FeatureDefinitions, OnlineStoreConfig = OnlineStoreConfig, OfflineStoreConfig = OfflineStoreConfig, RoleArn = RoleArn, Description = Description, Tags = Tags)
+  output <- .sagemaker$create_feature_group_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_feature_group <- sagemaker_create_feature_group
 
 #' Creates a flow definition
 #'
@@ -1289,8 +2140,8 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #'
 #' @param HyperParameterTuningJobName &#91;required&#93; The name of the tuning job. This name is the prefix for the names of all
 #' training jobs that this tuning job launches. The name must be unique
-#' within the same AWS account and AWS Region. The name must have \{ \} to \{
-#' \} characters. Valid characters are a-z, A-Z, 0-9, and : + = @@ \\_ % -
+#' within the same AWS account and AWS Region. The name must have 1 to 32
+#' characters. Valid characters are a-z, A-Z, 0-9, and : + = @@ \\_ % -
 #' (hyphen). The name is not case sensitive.
 #' @param HyperParameterTuningJobConfig &#91;required&#93; The HyperParameterTuningJobConfig object that describes the tuning job,
 #' including the search strategy, the objective metric used to evaluate
@@ -1321,8 +2172,8 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #' for the tuning job.
 #' @param Tags An array of key-value pairs. You can use tags to categorize your AWS
 #' resources in different ways, for example, by purpose, owner, or
-#' environment. For more information, see [AWS Tagging
-#' Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+#' environment. For more information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 #' 
 #' Tags that you specify for the tuning job are also added to all training
 #' jobs that the tuning job launches.
@@ -1460,7 +2311,7 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #'       S3OutputPath = "string"
 #'     ),
 #'     ResourceConfig = list(
-#'       InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
+#'       InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
 #'       InstanceCount = 123,
 #'       VolumeSizeInGB = 123,
 #'       VolumeKmsKeyId = "string"
@@ -1566,7 +2417,7 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #'         S3OutputPath = "string"
 #'       ),
 #'       ResourceConfig = list(
-#'         InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
+#'         InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
 #'         InstanceCount = 123,
 #'         VolumeSizeInGB = 123,
 #'         VolumeKmsKeyId = "string"
@@ -1620,6 +2471,109 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
   return(response)
 }
 .sagemaker$operations$create_hyper_parameter_tuning_job <- sagemaker_create_hyper_parameter_tuning_job
+
+#' Creates a custom SageMaker image
+#'
+#' Creates a custom SageMaker image. A SageMaker image is a set of image
+#' versions. Each image version represents a container image stored in
+#' Amazon Container Registry (ECR). For more information, see [Bring your
+#' own SageMaker
+#' image](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-byoi.html).
+#'
+#' @usage
+#' sagemaker_create_image(Description, DisplayName, ImageName, RoleArn,
+#'   Tags)
+#'
+#' @param Description The description of the image.
+#' @param DisplayName The display name of the image. If not provided, `ImageName` is
+#' displayed.
+#' @param ImageName &#91;required&#93; The name of the image. Must be unique to your account.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that enables Amazon
+#' SageMaker to perform tasks on your behalf.
+#' @param Tags A list of tags to apply to the image.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_image(
+#'   Description = "string",
+#'   DisplayName = "string",
+#'   ImageName = "string",
+#'   RoleArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_image
+sagemaker_create_image <- function(Description = NULL, DisplayName = NULL, ImageName, RoleArn, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateImage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_image_input(Description = Description, DisplayName = DisplayName, ImageName = ImageName, RoleArn = RoleArn, Tags = Tags)
+  output <- .sagemaker$create_image_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_image <- sagemaker_create_image
+
+#' Creates a version of the SageMaker image specified by ImageName
+#'
+#' Creates a version of the SageMaker image specified by `ImageName`. The
+#' version represents the Amazon Container Registry (ECR) container image
+#' specified by `BaseImage`.
+#'
+#' @usage
+#' sagemaker_create_image_version(BaseImage, ClientToken, ImageName)
+#'
+#' @param BaseImage &#91;required&#93; The registry path of the container image to use as the starting point
+#' for this version. The path is an Amazon Container Registry (ECR) URI in
+#' the following format:
+#' 
+#' `&lt;acct-id&gt;.dkr.ecr.&lt;region&gt;.amazonaws.com/&lt;repo-name\\[:tag\\] or \\[@@digest\\]&gt;`
+#' @param ClientToken &#91;required&#93; A unique ID. If not specified, the AWS CLI and AWS SDKs, such as the SDK
+#' for Python (Boto3), add a unique value to the call.
+#' @param ImageName &#91;required&#93; The `ImageName` of the `Image` to create a version of.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_image_version(
+#'   BaseImage = "string",
+#'   ClientToken = "string",
+#'   ImageName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_image_version
+sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName) {
+  op <- new_operation(
+    name = "CreateImageVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_image_version_input(BaseImage = BaseImage, ClientToken = ClientToken, ImageName = ImageName)
+  output <- .sagemaker$create_image_version_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_image_version <- sagemaker_create_image_version
 
 #' Creates a job that uses workers to label the data objects in your input
 #' dataset
@@ -1678,12 +2632,12 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 #' perform tasks on your behalf during data labeling. You must grant this
 #' role the necessary permissions so that Amazon SageMaker can successfully
 #' complete data labeling.
-#' @param LabelCategoryConfigS3Uri The S3 URL of the file that defines the categories used to label the
+#' @param LabelCategoryConfigS3Uri The S3 URI of the file that defines the categories used to label the
 #' data objects.
 #' 
 #' For 3D point cloud task types, see [Create a Labeling Category
 #' Configuration File for 3D Point Cloud Labeling
-#' Jobs](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-point-cloud-label-category-config.html).
+#' Jobs](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-label-cat-config-attributes.html).
 #' 
 #' For all other [built-in task
 #' types](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html)
@@ -1743,6 +2697,9 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 #'     DataSource = list(
 #'       S3DataSource = list(
 #'         ManifestS3Uri = "string"
+#'       ),
+#'       SnsDataSource = list(
+#'         SnsTopicArn = "string"
 #'       )
 #'     ),
 #'     DataAttributes = list(
@@ -1753,7 +2710,8 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 #'   ),
 #'   OutputConfig = list(
 #'     S3OutputPath = "string",
-#'     KmsKeyId = "string"
+#'     KmsKeyId = "string",
+#'     SnsTopicArn = "string"
 #'   ),
 #'   RoleArn = "string",
 #'   LabelCategoryConfigS3Uri = "string",
@@ -1878,10 +2836,10 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #' 
 #' To be able to pass this role to Amazon SageMaker, the caller of this API
 #' must have the `iam:PassRole` permission.
-#' @param Tags An array of key-value pairs. For more information, see [Using Cost
-#' Allocation
-#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
-#' in the *AWS Billing and Cost Management User Guide*.
+#' @param Tags An array of key-value pairs. You can use tags to categorize your AWS
+#' resources in different ways, for example, by purpose, owner, or
+#' environment. For more information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 #' @param VpcConfig A VpcConfig object that specifies the VPC that you want your model to
 #' connect to. Control access to and from your model container by
 #' configuring the VPC. `VpcConfig` is used in hosting services and in
@@ -1901,6 +2859,9 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #'   PrimaryContainer = list(
 #'     ContainerHostname = "string",
 #'     Image = "string",
+#'     ImageConfig = list(
+#'       RepositoryAccessMode = "Platform"|"Vpc"
+#'     ),
 #'     Mode = "SingleModel"|"MultiModel",
 #'     ModelDataUrl = "string",
 #'     Environment = list(
@@ -1912,6 +2873,9 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #'     list(
 #'       ContainerHostname = "string",
 #'       Image = "string",
+#'       ImageConfig = list(
+#'         RepositoryAccessMode = "Platform"|"Vpc"
+#'       ),
 #'       Mode = "SingleModel"|"MultiModel",
 #'       ModelDataUrl = "string",
 #'       Environment = list(
@@ -1959,27 +2923,292 @@ sagemaker_create_model <- function(ModelName, PrimaryContainer = NULL, Container
 }
 .sagemaker$operations$create_model <- sagemaker_create_model
 
+#' Creates the definition for a model bias job
+#'
+#' Creates the definition for a model bias job.
+#'
+#' @usage
+#' sagemaker_create_model_bias_job_definition(JobDefinitionName,
+#'   ModelBiasBaselineConfig, ModelBiasAppSpecification, ModelBiasJobInput,
+#'   ModelBiasJobOutputConfig, JobResources, NetworkConfig, RoleArn,
+#'   StoppingCondition, Tags)
+#'
+#' @param JobDefinitionName &#91;required&#93; The name of the bias job definition. The name must be unique within an
+#' AWS Region in the AWS account.
+#' @param ModelBiasBaselineConfig The baseline configuration for a model bias job.
+#' @param ModelBiasAppSpecification &#91;required&#93; Configures the model bias job to run a specified Docker container image.
+#' @param ModelBiasJobInput &#91;required&#93; Inputs for the model bias job.
+#' @param ModelBiasJobOutputConfig &#91;required&#93; 
+#' @param JobResources &#91;required&#93; 
+#' @param NetworkConfig Networking options for a model bias job.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
+#' assume to perform tasks on your behalf.
+#' @param StoppingCondition 
+#' @param Tags (Optional) An array of key-value pairs. For more information, see [Using
+#' Cost Allocation
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL)
+#' in the *AWS Billing and Cost Management User Guide*.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_model_bias_job_definition(
+#'   JobDefinitionName = "string",
+#'   ModelBiasBaselineConfig = list(
+#'     BaseliningJobName = "string",
+#'     ConstraintsResource = list(
+#'       S3Uri = "string"
+#'     )
+#'   ),
+#'   ModelBiasAppSpecification = list(
+#'     ImageUri = "string",
+#'     ConfigUri = "string",
+#'     Environment = list(
+#'       "string"
+#'     )
+#'   ),
+#'   ModelBiasJobInput = list(
+#'     EndpointInput = list(
+#'       EndpointName = "string",
+#'       LocalPath = "string",
+#'       S3InputMode = "Pipe"|"File",
+#'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'       FeaturesAttribute = "string",
+#'       InferenceAttribute = "string",
+#'       ProbabilityAttribute = "string",
+#'       ProbabilityThresholdAttribute = 123.0,
+#'       StartTimeOffset = "string",
+#'       EndTimeOffset = "string"
+#'     ),
+#'     GroundTruthS3Input = list(
+#'       S3Uri = "string"
+#'     )
+#'   ),
+#'   ModelBiasJobOutputConfig = list(
+#'     MonitoringOutputs = list(
+#'       list(
+#'         S3Output = list(
+#'           S3Uri = "string",
+#'           LocalPath = "string",
+#'           S3UploadMode = "Continuous"|"EndOfJob"
+#'         )
+#'       )
+#'     ),
+#'     KmsKeyId = "string"
+#'   ),
+#'   JobResources = list(
+#'     ClusterConfig = list(
+#'       InstanceCount = 123,
+#'       InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
+#'       VolumeSizeInGB = 123,
+#'       VolumeKmsKeyId = "string"
+#'     )
+#'   ),
+#'   NetworkConfig = list(
+#'     EnableInterContainerTrafficEncryption = TRUE|FALSE,
+#'     EnableNetworkIsolation = TRUE|FALSE,
+#'     VpcConfig = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   RoleArn = "string",
+#'   StoppingCondition = list(
+#'     MaxRuntimeInSeconds = 123
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_model_bias_job_definition
+sagemaker_create_model_bias_job_definition <- function(JobDefinitionName, ModelBiasBaselineConfig = NULL, ModelBiasAppSpecification, ModelBiasJobInput, ModelBiasJobOutputConfig, JobResources, NetworkConfig = NULL, RoleArn, StoppingCondition = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateModelBiasJobDefinition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_model_bias_job_definition_input(JobDefinitionName = JobDefinitionName, ModelBiasBaselineConfig = ModelBiasBaselineConfig, ModelBiasAppSpecification = ModelBiasAppSpecification, ModelBiasJobInput = ModelBiasJobInput, ModelBiasJobOutputConfig = ModelBiasJobOutputConfig, JobResources = JobResources, NetworkConfig = NetworkConfig, RoleArn = RoleArn, StoppingCondition = StoppingCondition, Tags = Tags)
+  output <- .sagemaker$create_model_bias_job_definition_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_model_bias_job_definition <- sagemaker_create_model_bias_job_definition
+
+#' Creates the definition for a model explainability job
+#'
+#' Creates the definition for a model explainability job.
+#'
+#' @usage
+#' sagemaker_create_model_explainability_job_definition(JobDefinitionName,
+#'   ModelExplainabilityBaselineConfig, ModelExplainabilityAppSpecification,
+#'   ModelExplainabilityJobInput, ModelExplainabilityJobOutputConfig,
+#'   JobResources, NetworkConfig, RoleArn, StoppingCondition, Tags)
+#'
+#' @param JobDefinitionName &#91;required&#93; The name of the model explainability job definition. The name must be
+#' unique within an AWS Region in the AWS account.
+#' @param ModelExplainabilityBaselineConfig The baseline configuration for a model explainability job.
+#' @param ModelExplainabilityAppSpecification &#91;required&#93; Configures the model explainability job to run a specified Docker
+#' container image.
+#' @param ModelExplainabilityJobInput &#91;required&#93; Inputs for the model explainability job.
+#' @param ModelExplainabilityJobOutputConfig &#91;required&#93; 
+#' @param JobResources &#91;required&#93; 
+#' @param NetworkConfig Networking options for a model explainability job.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
+#' assume to perform tasks on your behalf.
+#' @param StoppingCondition 
+#' @param Tags (Optional) An array of key-value pairs. For more information, see [Using
+#' Cost Allocation
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL)
+#' in the *AWS Billing and Cost Management User Guide*.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_model_explainability_job_definition(
+#'   JobDefinitionName = "string",
+#'   ModelExplainabilityBaselineConfig = list(
+#'     BaseliningJobName = "string",
+#'     ConstraintsResource = list(
+#'       S3Uri = "string"
+#'     )
+#'   ),
+#'   ModelExplainabilityAppSpecification = list(
+#'     ImageUri = "string",
+#'     ConfigUri = "string",
+#'     Environment = list(
+#'       "string"
+#'     )
+#'   ),
+#'   ModelExplainabilityJobInput = list(
+#'     EndpointInput = list(
+#'       EndpointName = "string",
+#'       LocalPath = "string",
+#'       S3InputMode = "Pipe"|"File",
+#'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'       FeaturesAttribute = "string",
+#'       InferenceAttribute = "string",
+#'       ProbabilityAttribute = "string",
+#'       ProbabilityThresholdAttribute = 123.0,
+#'       StartTimeOffset = "string",
+#'       EndTimeOffset = "string"
+#'     )
+#'   ),
+#'   ModelExplainabilityJobOutputConfig = list(
+#'     MonitoringOutputs = list(
+#'       list(
+#'         S3Output = list(
+#'           S3Uri = "string",
+#'           LocalPath = "string",
+#'           S3UploadMode = "Continuous"|"EndOfJob"
+#'         )
+#'       )
+#'     ),
+#'     KmsKeyId = "string"
+#'   ),
+#'   JobResources = list(
+#'     ClusterConfig = list(
+#'       InstanceCount = 123,
+#'       InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
+#'       VolumeSizeInGB = 123,
+#'       VolumeKmsKeyId = "string"
+#'     )
+#'   ),
+#'   NetworkConfig = list(
+#'     EnableInterContainerTrafficEncryption = TRUE|FALSE,
+#'     EnableNetworkIsolation = TRUE|FALSE,
+#'     VpcConfig = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   RoleArn = "string",
+#'   StoppingCondition = list(
+#'     MaxRuntimeInSeconds = 123
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_model_explainability_job_definition
+sagemaker_create_model_explainability_job_definition <- function(JobDefinitionName, ModelExplainabilityBaselineConfig = NULL, ModelExplainabilityAppSpecification, ModelExplainabilityJobInput, ModelExplainabilityJobOutputConfig, JobResources, NetworkConfig = NULL, RoleArn, StoppingCondition = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateModelExplainabilityJobDefinition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_model_explainability_job_definition_input(JobDefinitionName = JobDefinitionName, ModelExplainabilityBaselineConfig = ModelExplainabilityBaselineConfig, ModelExplainabilityAppSpecification = ModelExplainabilityAppSpecification, ModelExplainabilityJobInput = ModelExplainabilityJobInput, ModelExplainabilityJobOutputConfig = ModelExplainabilityJobOutputConfig, JobResources = JobResources, NetworkConfig = NetworkConfig, RoleArn = RoleArn, StoppingCondition = StoppingCondition, Tags = Tags)
+  output <- .sagemaker$create_model_explainability_job_definition_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_model_explainability_job_definition <- sagemaker_create_model_explainability_job_definition
+
 #' Creates a model package that you can use to create Amazon SageMaker
-#' models or list on AWS Marketplace
+#' models or list on AWS Marketplace, or a versioned model that is part of
+#' a model group
 #'
 #' Creates a model package that you can use to create Amazon SageMaker
-#' models or list on AWS Marketplace. Buyers can subscribe to model
-#' packages listed on AWS Marketplace to create models in Amazon SageMaker.
+#' models or list on AWS Marketplace, or a versioned model that is part of
+#' a model group. Buyers can subscribe to model packages listed on AWS
+#' Marketplace to create models in Amazon SageMaker.
 #' 
 #' To create a model package by specifying a Docker container that contains
 #' your inference code and the Amazon S3 location of your model artifacts,
 #' provide values for `InferenceSpecification`. To create a model from an
 #' algorithm resource that you created or subscribed to in AWS Marketplace,
 #' provide a value for `SourceAlgorithmSpecification`.
+#' 
+#' There are two types of model packages:
+#' 
+#' -   Versioned - a model that is part of a model group in the model
+#'     registry.
+#' 
+#' -   Unversioned - a model package that is not part of a model group.
 #'
 #' @usage
-#' sagemaker_create_model_package(ModelPackageName,
+#' sagemaker_create_model_package(ModelPackageName, ModelPackageGroupName,
 #'   ModelPackageDescription, InferenceSpecification,
 #'   ValidationSpecification, SourceAlgorithmSpecification,
-#'   CertifyForMarketplace)
+#'   CertifyForMarketplace, Tags, ModelApprovalStatus, MetadataProperties,
+#'   ModelMetrics, ClientToken)
 #'
-#' @param ModelPackageName &#91;required&#93; The name of the model package. The name must have 1 to 63 characters.
+#' @param ModelPackageName The name of the model package. The name must have 1 to 63 characters.
 #' Valid characters are a-z, A-Z, 0-9, and - (hyphen).
+#' 
+#' This parameter is required for unversioned models. It is not applicable
+#' to versioned models.
+#' @param ModelPackageGroupName The name of the model group that this model version belongs to.
+#' 
+#' This parameter is required for versioned models, and does not apply to
+#' unversioned models.
 #' @param ModelPackageDescription A description of the model package.
 #' @param InferenceSpecification Specifies details about inference jobs that can be run with models based
 #' on this model package, including the following:
@@ -1996,11 +3225,29 @@ sagemaker_create_model <- function(ModelName, PrimaryContainer = NULL, Container
 #' SageMaker runs to test the model package.
 #' @param SourceAlgorithmSpecification Details about the algorithm that was used to create the model package.
 #' @param CertifyForMarketplace Whether to certify the model package for listing on AWS Marketplace.
+#' 
+#' This parameter is optional for unversioned models, and does not apply to
+#' versioned models.
+#' @param Tags A list of key value pairs associated with the model. For more
+#' information, see [Tagging AWS
+#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *AWS General Reference Guide*.
+#' @param ModelApprovalStatus Whether the model is approved for deployment.
+#' 
+#' This parameter is optional for versioned models, and does not apply to
+#' unversioned models.
+#' 
+#' For versioned models, the value of this parameter must be set to
+#' `Approved` to deploy the model.
+#' @param MetadataProperties 
+#' @param ModelMetrics A structure that contains model metrics reports.
+#' @param ClientToken A unique token that guarantees that the call to this API is idempotent.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_model_package(
 #'   ModelPackageName = "string",
+#'   ModelPackageGroupName = "string",
 #'   ModelPackageDescription = "string",
 #'   InferenceSpecification = list(
 #'     Containers = list(
@@ -2071,21 +3318,75 @@ sagemaker_create_model <- function(ModelName, PrimaryContainer = NULL, Container
 #'       )
 #'     )
 #'   ),
-#'   CertifyForMarketplace = TRUE|FALSE
+#'   CertifyForMarketplace = TRUE|FALSE,
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   ModelApprovalStatus = "Approved"|"Rejected"|"PendingManualApproval",
+#'   MetadataProperties = list(
+#'     CommitId = "string",
+#'     Repository = "string",
+#'     GeneratedBy = "string",
+#'     ProjectId = "string"
+#'   ),
+#'   ModelMetrics = list(
+#'     ModelQuality = list(
+#'       Statistics = list(
+#'         ContentType = "string",
+#'         ContentDigest = "string",
+#'         S3Uri = "string"
+#'       ),
+#'       Constraints = list(
+#'         ContentType = "string",
+#'         ContentDigest = "string",
+#'         S3Uri = "string"
+#'       )
+#'     ),
+#'     ModelDataQuality = list(
+#'       Statistics = list(
+#'         ContentType = "string",
+#'         ContentDigest = "string",
+#'         S3Uri = "string"
+#'       ),
+#'       Constraints = list(
+#'         ContentType = "string",
+#'         ContentDigest = "string",
+#'         S3Uri = "string"
+#'       )
+#'     ),
+#'     Bias = list(
+#'       Report = list(
+#'         ContentType = "string",
+#'         ContentDigest = "string",
+#'         S3Uri = "string"
+#'       )
+#'     ),
+#'     Explainability = list(
+#'       Report = list(
+#'         ContentType = "string",
+#'         ContentDigest = "string",
+#'         S3Uri = "string"
+#'       )
+#'     )
+#'   ),
+#'   ClientToken = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_model_package
-sagemaker_create_model_package <- function(ModelPackageName, ModelPackageDescription = NULL, InferenceSpecification = NULL, ValidationSpecification = NULL, SourceAlgorithmSpecification = NULL, CertifyForMarketplace = NULL) {
+sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackageGroupName = NULL, ModelPackageDescription = NULL, InferenceSpecification = NULL, ValidationSpecification = NULL, SourceAlgorithmSpecification = NULL, CertifyForMarketplace = NULL, Tags = NULL, ModelApprovalStatus = NULL, MetadataProperties = NULL, ModelMetrics = NULL, ClientToken = NULL) {
   op <- new_operation(
     name = "CreateModelPackage",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_model_package_input(ModelPackageName = ModelPackageName, ModelPackageDescription = ModelPackageDescription, InferenceSpecification = InferenceSpecification, ValidationSpecification = ValidationSpecification, SourceAlgorithmSpecification = SourceAlgorithmSpecification, CertifyForMarketplace = CertifyForMarketplace)
+  input <- .sagemaker$create_model_package_input(ModelPackageName = ModelPackageName, ModelPackageGroupName = ModelPackageGroupName, ModelPackageDescription = ModelPackageDescription, InferenceSpecification = InferenceSpecification, ValidationSpecification = ValidationSpecification, SourceAlgorithmSpecification = SourceAlgorithmSpecification, CertifyForMarketplace = CertifyForMarketplace, Tags = Tags, ModelApprovalStatus = ModelApprovalStatus, MetadataProperties = MetadataProperties, ModelMetrics = ModelMetrics, ClientToken = ClientToken)
   output <- .sagemaker$create_model_package_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -2094,6 +3395,190 @@ sagemaker_create_model_package <- function(ModelPackageName, ModelPackageDescrip
   return(response)
 }
 .sagemaker$operations$create_model_package <- sagemaker_create_model_package
+
+#' Creates a model group
+#'
+#' Creates a model group. A model group contains a group of model versions.
+#'
+#' @usage
+#' sagemaker_create_model_package_group(ModelPackageGroupName,
+#'   ModelPackageGroupDescription, Tags)
+#'
+#' @param ModelPackageGroupName &#91;required&#93; The name of the model group.
+#' @param ModelPackageGroupDescription A description for the model group.
+#' @param Tags A list of key value pairs associated with the model group. For more
+#' information, see [Tagging AWS
+#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *AWS General Reference Guide*.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_model_package_group(
+#'   ModelPackageGroupName = "string",
+#'   ModelPackageGroupDescription = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_model_package_group
+sagemaker_create_model_package_group <- function(ModelPackageGroupName, ModelPackageGroupDescription = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateModelPackageGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_model_package_group_input(ModelPackageGroupName = ModelPackageGroupName, ModelPackageGroupDescription = ModelPackageGroupDescription, Tags = Tags)
+  output <- .sagemaker$create_model_package_group_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_model_package_group <- sagemaker_create_model_package_group
+
+#' Creates a definition for a job that monitors model quality and drift
+#'
+#' Creates a definition for a job that monitors model quality and drift.
+#' For information about model monitor, see [Amazon SageMaker Model
+#' Monitor](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html).
+#'
+#' @usage
+#' sagemaker_create_model_quality_job_definition(JobDefinitionName,
+#'   ModelQualityBaselineConfig, ModelQualityAppSpecification,
+#'   ModelQualityJobInput, ModelQualityJobOutputConfig, JobResources,
+#'   NetworkConfig, RoleArn, StoppingCondition, Tags)
+#'
+#' @param JobDefinitionName &#91;required&#93; The name of the monitoring job definition.
+#' @param ModelQualityBaselineConfig Specifies the constraints and baselines for the monitoring job.
+#' @param ModelQualityAppSpecification &#91;required&#93; The container that runs the monitoring job.
+#' @param ModelQualityJobInput &#91;required&#93; A list of the inputs that are monitored. Currently endpoints are
+#' supported.
+#' @param ModelQualityJobOutputConfig &#91;required&#93; 
+#' @param JobResources &#91;required&#93; 
+#' @param NetworkConfig Specifies the network configuration for the monitoring job.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
+#' assume to perform tasks on your behalf.
+#' @param StoppingCondition 
+#' @param Tags (Optional) An array of key-value pairs. For more information, see [Using
+#' Cost Allocation
+#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL)
+#' in the *AWS Billing and Cost Management User Guide*.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_model_quality_job_definition(
+#'   JobDefinitionName = "string",
+#'   ModelQualityBaselineConfig = list(
+#'     BaseliningJobName = "string",
+#'     ConstraintsResource = list(
+#'       S3Uri = "string"
+#'     )
+#'   ),
+#'   ModelQualityAppSpecification = list(
+#'     ImageUri = "string",
+#'     ContainerEntrypoint = list(
+#'       "string"
+#'     ),
+#'     ContainerArguments = list(
+#'       "string"
+#'     ),
+#'     RecordPreprocessorSourceUri = "string",
+#'     PostAnalyticsProcessorSourceUri = "string",
+#'     ProblemType = "BinaryClassification"|"MulticlassClassification"|"Regression",
+#'     Environment = list(
+#'       "string"
+#'     )
+#'   ),
+#'   ModelQualityJobInput = list(
+#'     EndpointInput = list(
+#'       EndpointName = "string",
+#'       LocalPath = "string",
+#'       S3InputMode = "Pipe"|"File",
+#'       S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'       FeaturesAttribute = "string",
+#'       InferenceAttribute = "string",
+#'       ProbabilityAttribute = "string",
+#'       ProbabilityThresholdAttribute = 123.0,
+#'       StartTimeOffset = "string",
+#'       EndTimeOffset = "string"
+#'     ),
+#'     GroundTruthS3Input = list(
+#'       S3Uri = "string"
+#'     )
+#'   ),
+#'   ModelQualityJobOutputConfig = list(
+#'     MonitoringOutputs = list(
+#'       list(
+#'         S3Output = list(
+#'           S3Uri = "string",
+#'           LocalPath = "string",
+#'           S3UploadMode = "Continuous"|"EndOfJob"
+#'         )
+#'       )
+#'     ),
+#'     KmsKeyId = "string"
+#'   ),
+#'   JobResources = list(
+#'     ClusterConfig = list(
+#'       InstanceCount = 123,
+#'       InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
+#'       VolumeSizeInGB = 123,
+#'       VolumeKmsKeyId = "string"
+#'     )
+#'   ),
+#'   NetworkConfig = list(
+#'     EnableInterContainerTrafficEncryption = TRUE|FALSE,
+#'     EnableNetworkIsolation = TRUE|FALSE,
+#'     VpcConfig = list(
+#'       SecurityGroupIds = list(
+#'         "string"
+#'       ),
+#'       Subnets = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   RoleArn = "string",
+#'   StoppingCondition = list(
+#'     MaxRuntimeInSeconds = 123
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_model_quality_job_definition
+sagemaker_create_model_quality_job_definition <- function(JobDefinitionName, ModelQualityBaselineConfig = NULL, ModelQualityAppSpecification, ModelQualityJobInput, ModelQualityJobOutputConfig, JobResources, NetworkConfig = NULL, RoleArn, StoppingCondition = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateModelQualityJobDefinition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_model_quality_job_definition_input(JobDefinitionName = JobDefinitionName, ModelQualityBaselineConfig = ModelQualityBaselineConfig, ModelQualityAppSpecification = ModelQualityAppSpecification, ModelQualityJobInput = ModelQualityJobInput, ModelQualityJobOutputConfig = ModelQualityJobOutputConfig, JobResources = JobResources, NetworkConfig = NetworkConfig, RoleArn = RoleArn, StoppingCondition = StoppingCondition, Tags = Tags)
+  output <- .sagemaker$create_model_quality_job_definition_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_model_quality_job_definition <- sagemaker_create_model_quality_job_definition
 
 #' Creates a schedule that regularly starts Amazon SageMaker Processing
 #' Jobs to monitor the data captured for an Amazon SageMaker Endoint
@@ -2123,6 +3608,7 @@ sagemaker_create_model_package <- function(ModelPackageName, ModelPackageDescrip
 #'     ),
 #'     MonitoringJobDefinition = list(
 #'       BaselineConfig = list(
+#'         BaseliningJobName = "string",
 #'         ConstraintsResource = list(
 #'           S3Uri = "string"
 #'         ),
@@ -2136,7 +3622,13 @@ sagemaker_create_model_package <- function(ModelPackageName, ModelPackageDescrip
 #'             EndpointName = "string",
 #'             LocalPath = "string",
 #'             S3InputMode = "Pipe"|"File",
-#'             S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key"
+#'             S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'             FeaturesAttribute = "string",
+#'             InferenceAttribute = "string",
+#'             ProbabilityAttribute = "string",
+#'             ProbabilityThresholdAttribute = 123.0,
+#'             StartTimeOffset = "string",
+#'             EndTimeOffset = "string"
 #'           )
 #'         )
 #'       ),
@@ -2190,7 +3682,9 @@ sagemaker_create_model_package <- function(ModelPackageName, ModelPackageDescrip
 #'         )
 #'       ),
 #'       RoleArn = "string"
-#'     )
+#'     ),
+#'     MonitoringJobDefinitionName = "string",
+#'     MonitoringType = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -2263,7 +3757,7 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' validate hosted models.
 #' 
 #' For more information, see [How It
-#' Works](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
+#' Works](https://docs.aws.amazon.com/sagemaker/latest/dg/).
 #'
 #' @usage
 #' sagemaker_create_notebook_instance(NotebookInstanceName, InstanceType,
@@ -2294,8 +3788,10 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' information, see [Enabling and Disabling
 #' Keys](https://docs.aws.amazon.com/kms/latest/developerguide/enabling-keys.html)
 #' in the *AWS Key Management Service Developer Guide*.
-#' @param Tags A list of tags to associate with the notebook instance. You can add tags
-#' later by using the `CreateTags` API.
+#' @param Tags An array of key-value pairs. You can use tags to categorize your AWS
+#' resources in different ways, for example, by purpose, owner, or
+#' environment. For more information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 #' @param LifecycleConfigName The name of a lifecycle configuration to associate with the notebook
 #' instance. For information about lifestyle configurations, see [Step 2.1:
 #' (Optional) Customize a Notebook
@@ -2307,7 +3803,7 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' configure a NAT Gateway in your VPC.
 #' 
 #' For more information, see [Notebook Instances Are Internet-Enabled by
-#' Default](https://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access).
+#' Default](https://docs.aws.amazon.com/sagemaker/latest/dg/#appendix-notebook-and-internet-access).
 #' You can set the value of this parameter to `Disabled` only if you set a
 #' value for the `SubnetId` parameter.
 #' @param VolumeSizeInGB The size, in GB, of the ML storage volume to attach to the notebook
@@ -2466,6 +3962,64 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 }
 .sagemaker$operations$create_notebook_instance_lifecycle_config <- sagemaker_create_notebook_instance_lifecycle_config
 
+#' Creates a pipeline using a JSON pipeline definition
+#'
+#' Creates a pipeline using a JSON pipeline definition.
+#'
+#' @usage
+#' sagemaker_create_pipeline(PipelineName, PipelineDisplayName,
+#'   PipelineDefinition, PipelineDescription, ClientRequestToken, RoleArn,
+#'   Tags)
+#'
+#' @param PipelineName &#91;required&#93; The name of the pipeline.
+#' @param PipelineDisplayName The display name of the pipeline.
+#' @param PipelineDefinition &#91;required&#93; The JSON pipeline definition of the pipeline.
+#' @param PipelineDescription A description of the pipeline.
+#' @param ClientRequestToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the operation. An idempotent operation completes no more
+#' than one time.
+#' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the role used by the pipeline to
+#' access and create resources.
+#' @param Tags A list of tags to apply to the created pipeline.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_pipeline(
+#'   PipelineName = "string",
+#'   PipelineDisplayName = "string",
+#'   PipelineDefinition = "string",
+#'   PipelineDescription = "string",
+#'   ClientRequestToken = "string",
+#'   RoleArn = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_pipeline
+sagemaker_create_pipeline <- function(PipelineName, PipelineDisplayName = NULL, PipelineDefinition, PipelineDescription = NULL, ClientRequestToken, RoleArn, Tags = NULL) {
+  op <- new_operation(
+    name = "CreatePipeline",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_pipeline_input(PipelineName = PipelineName, PipelineDisplayName = PipelineDisplayName, PipelineDefinition = PipelineDefinition, PipelineDescription = PipelineDescription, ClientRequestToken = ClientRequestToken, RoleArn = RoleArn, Tags = Tags)
+  output <- .sagemaker$create_pipeline_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_pipeline <- sagemaker_create_pipeline
+
 #' Creates a URL for a specified UserProfile in a Domain
 #'
 #' Creates a URL for a specified UserProfile in a Domain. When accessed in
@@ -2474,6 +4028,10 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' associated with the Domain's Amazon Elastic File System (EFS) volume.
 #' This operation can only be called when the authentication mode equals
 #' IAM.
+#' 
+#' The URL that you get from a call to `CreatePresignedDomainUrl` is valid
+#' only for 5 minutes. If you try to use the URL after the 5-minute limit
+#' expires, you are directed to the AWS console sign-in page.
 #'
 #' @usage
 #' sagemaker_create_presigned_domain_url(DomainId, UserProfileName,
@@ -2585,9 +4143,7 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #'   StoppingCondition, AppSpecification, Environment, NetworkConfig,
 #'   RoleArn, Tags, ExperimentConfig)
 #'
-#' @param ProcessingInputs For each input, data is downloaded from S3 into the processing container
-#' before the processing job begins running if "S3InputMode" is set to
-#' `File`.
+#' @param ProcessingInputs List of input configurations for the processing job.
 #' @param ProcessingOutputConfig Output configuration for the processing job.
 #' @param ProcessingJobName &#91;required&#93; The name of the processing job. The name must be unique within an AWS
 #' Region in the AWS account.
@@ -2612,6 +4168,7 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #'   ProcessingInputs = list(
 #'     list(
 #'       InputName = "string",
+#'       AppManaged = TRUE|FALSE,
 #'       S3Input = list(
 #'         S3Uri = "string",
 #'         LocalPath = "string",
@@ -2619,6 +4176,32 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #'         S3InputMode = "Pipe"|"File",
 #'         S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
 #'         S3CompressionType = "None"|"Gzip"
+#'       ),
+#'       DatasetDefinition = list(
+#'         AthenaDatasetDefinition = list(
+#'           Catalog = "string",
+#'           Database = "string",
+#'           QueryString = "string",
+#'           WorkGroup = "string",
+#'           OutputS3Uri = "string",
+#'           KmsKeyId = "string",
+#'           OutputFormat = "PARQUET"|"ORC"|"AVRO"|"JSON"|"TEXTFILE",
+#'           OutputCompression = "GZIP"|"SNAPPY"|"ZLIB"
+#'         ),
+#'         RedshiftDatasetDefinition = list(
+#'           ClusterId = "string",
+#'           Database = "string",
+#'           DbUser = "string",
+#'           QueryString = "string",
+#'           ClusterRoleArn = "string",
+#'           OutputS3Uri = "string",
+#'           KmsKeyId = "string",
+#'           OutputFormat = "PARQUET"|"CSV",
+#'           OutputCompression = "None"|"GZIP"|"BZIP2"|"ZSTD"|"SNAPPY"
+#'         ),
+#'         LocalPath = "string",
+#'         DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'         InputMode = "Pipe"|"File"
 #'       )
 #'     )
 #'   ),
@@ -2630,7 +4213,11 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #'           S3Uri = "string",
 #'           LocalPath = "string",
 #'           S3UploadMode = "Continuous"|"EndOfJob"
-#'         )
+#'         ),
+#'         FeatureStoreOutput = list(
+#'           FeatureGroupName = "string"
+#'         ),
+#'         AppManaged = TRUE|FALSE
 #'       )
 #'     ),
 #'     KmsKeyId = "string"
@@ -2706,6 +4293,73 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 }
 .sagemaker$operations$create_processing_job <- sagemaker_create_processing_job
 
+#' Creates a machine learning (ML) project that can contain one or more
+#' templates that set up an ML pipeline from training to deploying an
+#' approved model
+#'
+#' Creates a machine learning (ML) project that can contain one or more
+#' templates that set up an ML pipeline from training to deploying an
+#' approved model.
+#'
+#' @usage
+#' sagemaker_create_project(ProjectName, ProjectDescription,
+#'   ServiceCatalogProvisioningDetails, Tags)
+#'
+#' @param ProjectName &#91;required&#93; The name of the project.
+#' @param ProjectDescription A description for the project.
+#' @param ServiceCatalogProvisioningDetails &#91;required&#93; The product ID and provisioning artifact ID to provision a service
+#' catalog. For information, see [What is AWS Service
+#' Catalog](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html).
+#' @param Tags An array of key-value pairs that you want to use to organize and track
+#' your AWS resource costs. For more information, see [Tagging AWS
+#' resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)
+#' in the *AWS General Reference Guide*.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_project(
+#'   ProjectName = "string",
+#'   ProjectDescription = "string",
+#'   ServiceCatalogProvisioningDetails = list(
+#'     ProductId = "string",
+#'     ProvisioningArtifactId = "string",
+#'     PathId = "string",
+#'     ProvisioningParameters = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_project
+sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, ServiceCatalogProvisioningDetails, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateProject",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_project_input(ProjectName = ProjectName, ProjectDescription = ProjectDescription, ServiceCatalogProvisioningDetails = ServiceCatalogProvisioningDetails, Tags = Tags)
+  output <- .sagemaker$create_project_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_project <- sagemaker_create_project
+
 #' Starts a model training job
 #'
 #' Starts a model training job. After training completes, Amazon SageMaker
@@ -2716,7 +4370,7 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #' services, you can use the resulting model artifacts as part of the
 #' model. You can also use the artifacts in a machine learning service
 #' other than Amazon SageMaker, provided that you know how to use them for
-#' inferences.
+#' inference.
 #' 
 #' In the request body, you provide the following:
 #' 
@@ -2744,7 +4398,7 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #'     more information, see [Managed Spot
 #'     Training](https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html).
 #' 
-#' -   `RoleARN` - The Amazon Resource Number (ARN) that Amazon SageMaker
+#' -   `RoleArn` - The Amazon Resource Number (ARN) that Amazon SageMaker
 #'     assumes to perform tasks on your behalf during model training. You
 #'     must grant this role the necessary permissions so that Amazon
 #'     SageMaker can successfully complete model training.
@@ -2755,7 +4409,7 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #'     for a managed spot training job to complete.
 #' 
 #' For more information about Amazon SageMaker, see [How It
-#' Works](https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
+#' Works](https://docs.aws.amazon.com/sagemaker/latest/dg/).
 #'
 #' @usage
 #' sagemaker_create_training_job(TrainingJobName, HyperParameters,
@@ -2763,7 +4417,8 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #'   ResourceConfig, VpcConfig, StoppingCondition, Tags,
 #'   EnableNetworkIsolation, EnableInterContainerTrafficEncryption,
 #'   EnableManagedSpotTraining, CheckpointConfig, DebugHookConfig,
-#'   DebugRuleConfigurations, TensorBoardOutputConfig, ExperimentConfig)
+#'   DebugRuleConfigurations, TensorBoardOutputConfig, ExperimentConfig,
+#'   ProfilerConfig, ProfilerRuleConfigurations)
 #'
 #' @param TrainingJobName &#91;required&#93; The name of the training job. The name must be unique within an AWS
 #' Region in an AWS account.
@@ -2782,7 +4437,7 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #' [Algorithms](https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 #' For information about providing your own algorithms, see [Using Your Own
 #' Algorithms with Amazon
-#' SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
+#' SageMaker](https://docs.aws.amazon.com/sagemaker/latest/dg/docker-containers.html).
 #' @param RoleArn &#91;required&#93; The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker can
 #' assume to perform tasks on your behalf.
 #' 
@@ -2836,10 +4491,10 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #' signal, which delays job termination for 120 seconds. Algorithms can use
 #' this 120-second window to save the model artifacts, so the results of
 #' training are not lost.
-#' @param Tags An array of key-value pairs. For more information, see [Using Cost
-#' Allocation
-#' Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
-#' in the *AWS Billing and Cost Management User Guide*.
+#' @param Tags An array of key-value pairs. You can use tags to categorize your AWS
+#' resources in different ways, for example, by purpose, owner, or
+#' environment. For more information, see [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 #' @param EnableNetworkIsolation Isolates the training container. No inbound or outbound network calls
 #' can be made, except for calls between peers within a training cluster
 #' for distributed training. If you enable network isolation for training
@@ -2868,9 +4523,13 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #' @param CheckpointConfig Contains information about the output location for managed spot training
 #' checkpoint data.
 #' @param DebugHookConfig 
-#' @param DebugRuleConfigurations Configuration information for debugging rules.
+#' @param DebugRuleConfigurations Configuration information for Debugger rules for debugging output
+#' tensors.
 #' @param TensorBoardOutputConfig 
 #' @param ExperimentConfig 
+#' @param ProfilerConfig 
+#' @param ProfilerRuleConfigurations Configuration information for Debugger rules for profiling system and
+#' framework metrics.
 #'
 #' @section Request syntax:
 #' ```
@@ -2925,7 +4584,7 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #'     S3OutputPath = "string"
 #'   ),
 #'   ResourceConfig = list(
-#'     InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
+#'     InstanceType = "ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.p3dn.24xlarge"|"ml.p4d.24xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.c5n.xlarge"|"ml.c5n.2xlarge"|"ml.c5n.4xlarge"|"ml.c5n.9xlarge"|"ml.c5n.18xlarge",
 #'     InstanceCount = 123,
 #'     VolumeSizeInGB = 123,
 #'     VolumeKmsKeyId = "string"
@@ -2991,6 +4650,26 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #'     ExperimentName = "string",
 #'     TrialName = "string",
 #'     TrialComponentDisplayName = "string"
+#'   ),
+#'   ProfilerConfig = list(
+#'     S3OutputPath = "string",
+#'     ProfilingIntervalInMilliseconds = 123,
+#'     ProfilingParameters = list(
+#'       "string"
+#'     )
+#'   ),
+#'   ProfilerRuleConfigurations = list(
+#'     list(
+#'       RuleConfigurationName = "string",
+#'       LocalPath = "string",
+#'       S3OutputPath = "string",
+#'       RuleEvaluatorImage = "string",
+#'       InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
+#'       VolumeSizeInGB = 123,
+#'       RuleParameters = list(
+#'         "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -2998,14 +4677,14 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_training_job
-sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NULL, AlgorithmSpecification, RoleArn, InputDataConfig = NULL, OutputDataConfig, ResourceConfig, VpcConfig = NULL, StoppingCondition, Tags = NULL, EnableNetworkIsolation = NULL, EnableInterContainerTrafficEncryption = NULL, EnableManagedSpotTraining = NULL, CheckpointConfig = NULL, DebugHookConfig = NULL, DebugRuleConfigurations = NULL, TensorBoardOutputConfig = NULL, ExperimentConfig = NULL) {
+sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NULL, AlgorithmSpecification, RoleArn, InputDataConfig = NULL, OutputDataConfig, ResourceConfig, VpcConfig = NULL, StoppingCondition, Tags = NULL, EnableNetworkIsolation = NULL, EnableInterContainerTrafficEncryption = NULL, EnableManagedSpotTraining = NULL, CheckpointConfig = NULL, DebugHookConfig = NULL, DebugRuleConfigurations = NULL, TensorBoardOutputConfig = NULL, ExperimentConfig = NULL, ProfilerConfig = NULL, ProfilerRuleConfigurations = NULL) {
   op <- new_operation(
     name = "CreateTrainingJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_training_job_input(TrainingJobName = TrainingJobName, HyperParameters = HyperParameters, AlgorithmSpecification = AlgorithmSpecification, RoleArn = RoleArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ResourceConfig = ResourceConfig, VpcConfig = VpcConfig, StoppingCondition = StoppingCondition, Tags = Tags, EnableNetworkIsolation = EnableNetworkIsolation, EnableInterContainerTrafficEncryption = EnableInterContainerTrafficEncryption, EnableManagedSpotTraining = EnableManagedSpotTraining, CheckpointConfig = CheckpointConfig, DebugHookConfig = DebugHookConfig, DebugRuleConfigurations = DebugRuleConfigurations, TensorBoardOutputConfig = TensorBoardOutputConfig, ExperimentConfig = ExperimentConfig)
+  input <- .sagemaker$create_training_job_input(TrainingJobName = TrainingJobName, HyperParameters = HyperParameters, AlgorithmSpecification = AlgorithmSpecification, RoleArn = RoleArn, InputDataConfig = InputDataConfig, OutputDataConfig = OutputDataConfig, ResourceConfig = ResourceConfig, VpcConfig = VpcConfig, StoppingCondition = StoppingCondition, Tags = Tags, EnableNetworkIsolation = EnableNetworkIsolation, EnableInterContainerTrafficEncryption = EnableInterContainerTrafficEncryption, EnableManagedSpotTraining = EnableManagedSpotTraining, CheckpointConfig = CheckpointConfig, DebugHookConfig = DebugHookConfig, DebugRuleConfigurations = DebugRuleConfigurations, TensorBoardOutputConfig = TensorBoardOutputConfig, ExperimentConfig = ExperimentConfig, ProfilerConfig = ProfilerConfig, ProfilerRuleConfigurations = ProfilerRuleConfigurations)
   output <- .sagemaker$create_training_job_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -3211,13 +4890,15 @@ sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcu
 #' component, call the CreateTrialComponent API.
 #'
 #' @usage
-#' sagemaker_create_trial(TrialName, DisplayName, ExperimentName, Tags)
+#' sagemaker_create_trial(TrialName, DisplayName, ExperimentName,
+#'   MetadataProperties, Tags)
 #'
 #' @param TrialName &#91;required&#93; The name of the trial. The name must be unique in your AWS account and
 #' is not case-sensitive.
 #' @param DisplayName The name of the trial as displayed. The name doesn't need to be unique.
 #' If `DisplayName` isn't specified, `TrialName` is displayed.
 #' @param ExperimentName &#91;required&#93; The name of the experiment to associate the trial with.
+#' @param MetadataProperties 
 #' @param Tags A list of tags to associate with the trial. You can use Search API to
 #' search on the tags.
 #'
@@ -3227,6 +4908,12 @@ sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcu
 #'   TrialName = "string",
 #'   DisplayName = "string",
 #'   ExperimentName = "string",
+#'   MetadataProperties = list(
+#'     CommitId = "string",
+#'     Repository = "string",
+#'     GeneratedBy = "string",
+#'     ProjectId = "string"
+#'   ),
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -3239,14 +4926,14 @@ sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcu
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_trial
-sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName, Tags = NULL) {
+sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName, MetadataProperties = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTrial",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_trial_input(TrialName = TrialName, DisplayName = DisplayName, ExperimentName = ExperimentName, Tags = Tags)
+  input <- .sagemaker$create_trial_input(TrialName = TrialName, DisplayName = DisplayName, ExperimentName = ExperimentName, MetadataProperties = MetadataProperties, Tags = Tags)
   output <- .sagemaker$create_trial_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -3282,7 +4969,7 @@ sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName
 #' @usage
 #' sagemaker_create_trial_component(TrialComponentName, DisplayName,
 #'   Status, StartTime, EndTime, Parameters, InputArtifacts, OutputArtifacts,
-#'   Tags)
+#'   MetadataProperties, Tags)
 #'
 #' @param TrialComponentName &#91;required&#93; The name of the component. The name must be unique in your AWS account
 #' and is not case-sensitive.
@@ -3303,6 +4990,7 @@ sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName
 #' datasets, algorithms, hyperparameters, source code, and instance types.
 #' @param OutputArtifacts The output artifacts for the component. Examples of output artifacts are
 #' metrics, snapshots, logs, and images.
+#' @param MetadataProperties 
 #' @param Tags A list of tags to associate with the component. You can use Search API
 #' to search on the tags.
 #'
@@ -3339,6 +5027,12 @@ sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName
 #'       Value = "string"
 #'     )
 #'   ),
+#'   MetadataProperties = list(
+#'     CommitId = "string",
+#'     Repository = "string",
+#'     GeneratedBy = "string",
+#'     ProjectId = "string"
+#'   ),
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -3351,14 +5045,14 @@ sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_trial_component
-sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = NULL, Status = NULL, StartTime = NULL, EndTime = NULL, Parameters = NULL, InputArtifacts = NULL, OutputArtifacts = NULL, Tags = NULL) {
+sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = NULL, Status = NULL, StartTime = NULL, EndTime = NULL, Parameters = NULL, InputArtifacts = NULL, OutputArtifacts = NULL, MetadataProperties = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTrialComponent",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_trial_component_input(TrialComponentName = TrialComponentName, DisplayName = DisplayName, Status = Status, StartTime = StartTime, EndTime = EndTime, Parameters = Parameters, InputArtifacts = InputArtifacts, OutputArtifacts = OutputArtifacts, Tags = Tags)
+  input <- .sagemaker$create_trial_component_input(TrialComponentName = TrialComponentName, DisplayName = DisplayName, Status = Status, StartTime = StartTime, EndTime = EndTime, Parameters = Parameters, InputArtifacts = InputArtifacts, OutputArtifacts = OutputArtifacts, MetadataProperties = MetadataProperties, Tags = Tags)
   output <- .sagemaker$create_trial_component_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -3423,18 +5117,28 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 #'     JupyterServerAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     ),
 #'     KernelGatewayAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
+#'       ),
+#'       CustomImages = list(
+#'         list(
+#'           ImageName = "string",
+#'           ImageVersionNumber = 123,
+#'           AppImageConfigName = "string"
+#'         )
 #'       )
 #'     ),
 #'     TensorBoardAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     )
@@ -3462,6 +5166,101 @@ sagemaker_create_user_profile <- function(DomainId, UserProfileName, SingleSignO
 }
 .sagemaker$operations$create_user_profile <- sagemaker_create_user_profile
 
+#' Use this operation to create a workforce
+#'
+#' Use this operation to create a workforce. This operation will return an
+#' error if a workforce already exists in the AWS Region that you specify.
+#' You can only create one workforce in each AWS Region per AWS account.
+#' 
+#' If you want to create a new workforce in an AWS Region where a workforce
+#' already exists, use the API operation to delete the existing workforce
+#' and then use `CreateWorkforce` to create a new workforce.
+#' 
+#' To create a private workforce using Amazon Cognito, you must specify a
+#' Cognito user pool in `CognitoConfig`. You can also create an Amazon
+#' Cognito workforce using the Amazon SageMaker console. For more
+#' information, see [Create a Private Workforce (Amazon
+#' Cognito)](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-create-private.html).
+#' 
+#' To create a private workforce using your own OIDC Identity Provider
+#' (IdP), specify your IdP configuration in `OidcConfig`. Your OIDC IdP
+#' must support *groups* because groups are used by Ground Truth and Amazon
+#' A2I to create work teams. For more information, see [Create a Private
+#' Workforce (OIDC
+#' IdP)](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-create-private-oidc.html).
+#'
+#' @usage
+#' sagemaker_create_workforce(CognitoConfig, OidcConfig, SourceIpConfig,
+#'   WorkforceName, Tags)
+#'
+#' @param CognitoConfig Use this parameter to configure an Amazon Cognito private workforce. A
+#' single Cognito workforce is created using and corresponds to a single
+#' [Amazon Cognito user
+#' pool](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html).
+#' 
+#' Do not use `OidcConfig` if you specify values for `CognitoConfig`.
+#' @param OidcConfig Use this parameter to configure a private workforce using your own OIDC
+#' Identity Provider.
+#' 
+#' Do not use `CognitoConfig` if you specify values for `OidcConfig`.
+#' @param SourceIpConfig 
+#' @param WorkforceName &#91;required&#93; The name of the private workforce.
+#' @param Tags An array of key-value pairs that contain metadata to help you categorize
+#' and organize our workforce. Each tag consists of a key and a value, both
+#' of which you define.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_workforce(
+#'   CognitoConfig = list(
+#'     UserPool = "string",
+#'     ClientId = "string"
+#'   ),
+#'   OidcConfig = list(
+#'     ClientId = "string",
+#'     ClientSecret = "string",
+#'     Issuer = "string",
+#'     AuthorizationEndpoint = "string",
+#'     TokenEndpoint = "string",
+#'     UserInfoEndpoint = "string",
+#'     LogoutEndpoint = "string",
+#'     JwksUri = "string"
+#'   ),
+#'   SourceIpConfig = list(
+#'     Cidrs = list(
+#'       "string"
+#'     )
+#'   ),
+#'   WorkforceName = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_create_workforce
+sagemaker_create_workforce <- function(CognitoConfig = NULL, OidcConfig = NULL, SourceIpConfig = NULL, WorkforceName, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateWorkforce",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$create_workforce_input(CognitoConfig = CognitoConfig, OidcConfig = OidcConfig, SourceIpConfig = SourceIpConfig, WorkforceName = WorkforceName, Tags = Tags)
+  output <- .sagemaker$create_workforce_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$create_workforce <- sagemaker_create_workforce
+
 #' Creates a new work team for labeling your data
 #'
 #' Creates a new work team for labeling your data. A work team is defined
@@ -3471,17 +5270,32 @@ sagemaker_create_user_profile <- function(DomainId, UserProfileName, SingleSignO
 #' You cannot create more than 25 work teams in an account and region.
 #'
 #' @usage
-#' sagemaker_create_workteam(WorkteamName, MemberDefinitions, Description,
-#'   NotificationConfiguration, Tags)
+#' sagemaker_create_workteam(WorkteamName, WorkforceName,
+#'   MemberDefinitions, Description, NotificationConfiguration, Tags)
 #'
 #' @param WorkteamName &#91;required&#93; The name of the work team. Use this name to identify the work team.
+#' @param WorkforceName The name of the workforce.
 #' @param MemberDefinitions &#91;required&#93; A list of `MemberDefinition` objects that contains objects that identify
-#' the Amazon Cognito user pool that makes up the work team. For more
-#' information, see [Amazon Cognito User
+#' the workers that make up the work team.
+#' 
+#' Workforces can be created using Amazon Cognito or your own OIDC Identity
+#' Provider (IdP). For private workforces created using Amazon Cognito use
+#' `CognitoMemberDefinition`. For workforces created using your own OIDC
+#' identity provider (IdP) use `OidcMemberDefinition`. Do not provide input
+#' for both of these parameters in a single request.
+#' 
+#' For workforces created using Amazon Cognito, private work teams
+#' correspond to Amazon Cognito *user groups* within the user pool used to
+#' create a workforce. All of the `CognitoMemberDefinition` objects that
+#' make up the member definition must have the same `ClientId` and
+#' `UserPool` values. To add a Amazon Cognito user group to an existing
+#' worker pool, see Adding groups to a User Pool. For more information
+#' about user pools, see [Amazon Cognito User
 #' Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html).
 #' 
-#' All of the `CognitoMemberDefinition` objects that make up the member
-#' definition must have the same `ClientId` and `UserPool` values.
+#' For workforces created using your own OIDC IdP, specify the user groups
+#' that you want to include in your private work team in
+#' `OidcMemberDefinition` by listing those groups in `Groups`.
 #' @param Description &#91;required&#93; A description of the work team.
 #' @param NotificationConfiguration Configures notification of workers regarding available or expiring work
 #' items.
@@ -3497,12 +5311,18 @@ sagemaker_create_user_profile <- function(DomainId, UserProfileName, SingleSignO
 #' ```
 #' svc$create_workteam(
 #'   WorkteamName = "string",
+#'   WorkforceName = "string",
 #'   MemberDefinitions = list(
 #'     list(
 #'       CognitoMemberDefinition = list(
 #'         UserPool = "string",
 #'         UserGroup = "string",
 #'         ClientId = "string"
+#'       ),
+#'       OidcMemberDefinition = list(
+#'         Groups = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -3522,14 +5342,14 @@ sagemaker_create_user_profile <- function(DomainId, UserProfileName, SingleSignO
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_workteam
-sagemaker_create_workteam <- function(WorkteamName, MemberDefinitions, Description, NotificationConfiguration = NULL, Tags = NULL) {
+sagemaker_create_workteam <- function(WorkteamName, WorkforceName = NULL, MemberDefinitions, Description, NotificationConfiguration = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateWorkteam",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_workteam_input(WorkteamName = WorkteamName, MemberDefinitions = MemberDefinitions, Description = Description, NotificationConfiguration = NotificationConfiguration, Tags = Tags)
+  input <- .sagemaker$create_workteam_input(WorkteamName = WorkteamName, WorkforceName = WorkforceName, MemberDefinitions = MemberDefinitions, Description = Description, NotificationConfiguration = NotificationConfiguration, Tags = Tags)
   output <- .sagemaker$create_workteam_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -3538,6 +5358,42 @@ sagemaker_create_workteam <- function(WorkteamName, MemberDefinitions, Descripti
   return(response)
 }
 .sagemaker$operations$create_workteam <- sagemaker_create_workteam
+
+#' Deletes an action
+#'
+#' Deletes an action.
+#'
+#' @usage
+#' sagemaker_delete_action(ActionName)
+#'
+#' @param ActionName &#91;required&#93; The name of the action to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_action(
+#'   ActionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_action
+sagemaker_delete_action <- function(ActionName) {
+  op <- new_operation(
+    name = "DeleteAction",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_action_input(ActionName = ActionName)
+  output <- .sagemaker$delete_action_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_action <- sagemaker_delete_action
 
 #' Removes the specified algorithm from your account
 #'
@@ -3617,6 +5473,126 @@ sagemaker_delete_app <- function(DomainId, UserProfileName, AppType, AppName) {
 }
 .sagemaker$operations$delete_app <- sagemaker_delete_app
 
+#' Deletes an AppImageConfig
+#'
+#' Deletes an AppImageConfig.
+#'
+#' @usage
+#' sagemaker_delete_app_image_config(AppImageConfigName)
+#'
+#' @param AppImageConfigName &#91;required&#93; The name of the AppImageConfig to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_app_image_config(
+#'   AppImageConfigName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_app_image_config
+sagemaker_delete_app_image_config <- function(AppImageConfigName) {
+  op <- new_operation(
+    name = "DeleteAppImageConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_app_image_config_input(AppImageConfigName = AppImageConfigName)
+  output <- .sagemaker$delete_app_image_config_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_app_image_config <- sagemaker_delete_app_image_config
+
+#' Deletes an artifact
+#'
+#' Deletes an artifact. Either `ArtifactArn` or `Source` must be specified.
+#'
+#' @usage
+#' sagemaker_delete_artifact(ArtifactArn, Source)
+#'
+#' @param ArtifactArn The Amazon Resource Name (ARN) of the artifact to delete.
+#' @param Source The URI of the source.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_artifact(
+#'   ArtifactArn = "string",
+#'   Source = list(
+#'     SourceUri = "string",
+#'     SourceTypes = list(
+#'       list(
+#'         SourceIdType = "MD5Hash"|"S3ETag"|"S3Version"|"Custom",
+#'         Value = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_artifact
+sagemaker_delete_artifact <- function(ArtifactArn = NULL, Source = NULL) {
+  op <- new_operation(
+    name = "DeleteArtifact",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_artifact_input(ArtifactArn = ArtifactArn, Source = Source)
+  output <- .sagemaker$delete_artifact_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_artifact <- sagemaker_delete_artifact
+
+#' Deletes an association
+#'
+#' Deletes an association.
+#'
+#' @usage
+#' sagemaker_delete_association(SourceArn, DestinationArn)
+#'
+#' @param SourceArn &#91;required&#93; The ARN of the source.
+#' @param DestinationArn &#91;required&#93; The Amazon Resource Name (ARN) of the destination.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_association(
+#'   SourceArn = "string",
+#'   DestinationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_association
+sagemaker_delete_association <- function(SourceArn, DestinationArn) {
+  op <- new_operation(
+    name = "DeleteAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_association_input(SourceArn = SourceArn, DestinationArn = DestinationArn)
+  output <- .sagemaker$delete_association_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_association <- sagemaker_delete_association
+
 #' Deletes the specified Git repository from your account
 #'
 #' Deletes the specified Git repository from your account.
@@ -3652,6 +5628,114 @@ sagemaker_delete_code_repository <- function(CodeRepositoryName) {
   return(response)
 }
 .sagemaker$operations$delete_code_repository <- sagemaker_delete_code_repository
+
+#' Deletes an context
+#'
+#' Deletes an context.
+#'
+#' @usage
+#' sagemaker_delete_context(ContextName)
+#'
+#' @param ContextName &#91;required&#93; The name of the context to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_context(
+#'   ContextName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_context
+sagemaker_delete_context <- function(ContextName) {
+  op <- new_operation(
+    name = "DeleteContext",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_context_input(ContextName = ContextName)
+  output <- .sagemaker$delete_context_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_context <- sagemaker_delete_context
+
+#' Deletes a data quality monitoring job definition
+#'
+#' Deletes a data quality monitoring job definition.
+#'
+#' @usage
+#' sagemaker_delete_data_quality_job_definition(JobDefinitionName)
+#'
+#' @param JobDefinitionName &#91;required&#93; The name of the data quality monitoring job definition to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_data_quality_job_definition(
+#'   JobDefinitionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_data_quality_job_definition
+sagemaker_delete_data_quality_job_definition <- function(JobDefinitionName) {
+  op <- new_operation(
+    name = "DeleteDataQualityJobDefinition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_data_quality_job_definition_input(JobDefinitionName = JobDefinitionName)
+  output <- .sagemaker$delete_data_quality_job_definition_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_data_quality_job_definition <- sagemaker_delete_data_quality_job_definition
+
+#' Deletes a fleet
+#'
+#' Deletes a fleet.
+#'
+#' @usage
+#' sagemaker_delete_device_fleet(DeviceFleetName)
+#'
+#' @param DeviceFleetName &#91;required&#93; The name of the fleet to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_device_fleet(
+#'   DeviceFleetName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_device_fleet
+sagemaker_delete_device_fleet <- function(DeviceFleetName) {
+  op <- new_operation(
+    name = "DeleteDeviceFleet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_device_fleet_input(DeviceFleetName = DeviceFleetName)
+  output <- .sagemaker$delete_device_fleet_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_device_fleet <- sagemaker_delete_device_fleet
 
 #' Used to delete a domain
 #'
@@ -3705,7 +5789,7 @@ sagemaker_delete_domain <- function(DomainId, RetentionPolicy = NULL) {
 #' 
 #' Amazon SageMaker retires any custom KMS key grants associated with the
 #' endpoint, meaning you don't need to use the
-#' [RevokeGrant](http://docs.aws.amazon.com/kms/latest/APIReference/API_RevokeGrant.html)
+#' [RevokeGrant](https://docs.aws.amazon.com/kms/latest/APIReference/API_RevokeGrant.html)
 #' API call.
 #'
 #' @usage
@@ -3823,6 +5907,50 @@ sagemaker_delete_experiment <- function(ExperimentName) {
 }
 .sagemaker$operations$delete_experiment <- sagemaker_delete_experiment
 
+#' Delete the FeatureGroup and any data that was written to the OnlineStore
+#' of the FeatureGroup
+#'
+#' Delete the `FeatureGroup` and any data that was written to the
+#' `OnlineStore` of the `FeatureGroup`. Data cannot be accessed from the
+#' `OnlineStore` immediately after `DeleteFeatureGroup` is called.
+#' 
+#' Data written into the `OfflineStore` will not be deleted. The AWS Glue
+#' database and tables that are automatically created for your
+#' `OfflineStore` are not deleted.
+#'
+#' @usage
+#' sagemaker_delete_feature_group(FeatureGroupName)
+#'
+#' @param FeatureGroupName &#91;required&#93; The name of the `FeatureGroup` you want to delete. The name must be
+#' unique within an AWS Region in an AWS account.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_feature_group(
+#'   FeatureGroupName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_feature_group
+sagemaker_delete_feature_group <- function(FeatureGroupName) {
+  op <- new_operation(
+    name = "DeleteFeatureGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_feature_group_input(FeatureGroupName = FeatureGroupName)
+  output <- .sagemaker$delete_feature_group_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_feature_group <- sagemaker_delete_feature_group
+
 #' Deletes the specified flow definition
 #'
 #' Deletes the specified flow definition.
@@ -3859,9 +5987,11 @@ sagemaker_delete_flow_definition <- function(FlowDefinitionName) {
 }
 .sagemaker$operations$delete_flow_definition <- sagemaker_delete_flow_definition
 
-#' Use this operation to delete a worker task template (HumanTaskUi)
+#' Use this operation to delete a human task user interface (worker task
+#' template)
 #'
-#' Use this operation to delete a worker task template (`HumanTaskUi`).
+#' Use this operation to delete a human task user interface (worker task
+#' template).
 #' 
 #' To see a list of human task user interfaces (work task templates) in
 #' your account, use . When you delete a worker task template, it no longer
@@ -3899,6 +6029,82 @@ sagemaker_delete_human_task_ui <- function(HumanTaskUiName) {
   return(response)
 }
 .sagemaker$operations$delete_human_task_ui <- sagemaker_delete_human_task_ui
+
+#' Deletes a SageMaker image and all versions of the image
+#'
+#' Deletes a SageMaker image and all versions of the image. The container
+#' images aren't deleted.
+#'
+#' @usage
+#' sagemaker_delete_image(ImageName)
+#'
+#' @param ImageName &#91;required&#93; The name of the image to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_image(
+#'   ImageName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_image
+sagemaker_delete_image <- function(ImageName) {
+  op <- new_operation(
+    name = "DeleteImage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_image_input(ImageName = ImageName)
+  output <- .sagemaker$delete_image_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_image <- sagemaker_delete_image
+
+#' Deletes a version of a SageMaker image
+#'
+#' Deletes a version of a SageMaker image. The container image the version
+#' represents isn't deleted.
+#'
+#' @usage
+#' sagemaker_delete_image_version(ImageName, Version)
+#'
+#' @param ImageName &#91;required&#93; The name of the image.
+#' @param Version &#91;required&#93; The version to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_image_version(
+#'   ImageName = "string",
+#'   Version = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_image_version
+sagemaker_delete_image_version <- function(ImageName, Version) {
+  op <- new_operation(
+    name = "DeleteImageVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_image_version_input(ImageName = ImageName, Version = Version)
+  output <- .sagemaker$delete_image_version_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_image_version <- sagemaker_delete_image_version
 
 #' Deletes a model
 #'
@@ -3938,6 +6144,78 @@ sagemaker_delete_model <- function(ModelName) {
   return(response)
 }
 .sagemaker$operations$delete_model <- sagemaker_delete_model
+
+#' Deletes an Amazon SageMaker model bias job definition
+#'
+#' Deletes an Amazon SageMaker model bias job definition.
+#'
+#' @usage
+#' sagemaker_delete_model_bias_job_definition(JobDefinitionName)
+#'
+#' @param JobDefinitionName &#91;required&#93; The name of the model bias job definition to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_model_bias_job_definition(
+#'   JobDefinitionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_model_bias_job_definition
+sagemaker_delete_model_bias_job_definition <- function(JobDefinitionName) {
+  op <- new_operation(
+    name = "DeleteModelBiasJobDefinition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_model_bias_job_definition_input(JobDefinitionName = JobDefinitionName)
+  output <- .sagemaker$delete_model_bias_job_definition_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_model_bias_job_definition <- sagemaker_delete_model_bias_job_definition
+
+#' Deletes an Amazon SageMaker model explainability job definition
+#'
+#' Deletes an Amazon SageMaker model explainability job definition.
+#'
+#' @usage
+#' sagemaker_delete_model_explainability_job_definition(JobDefinitionName)
+#'
+#' @param JobDefinitionName &#91;required&#93; The name of the model explainability job definition to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_model_explainability_job_definition(
+#'   JobDefinitionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_model_explainability_job_definition
+sagemaker_delete_model_explainability_job_definition <- function(JobDefinitionName) {
+  op <- new_operation(
+    name = "DeleteModelExplainabilityJobDefinition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_model_explainability_job_definition_input(JobDefinitionName = JobDefinitionName)
+  output <- .sagemaker$delete_model_explainability_job_definition_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_model_explainability_job_definition <- sagemaker_delete_model_explainability_job_definition
 
 #' Deletes a model package
 #'
@@ -3979,6 +6257,114 @@ sagemaker_delete_model_package <- function(ModelPackageName) {
   return(response)
 }
 .sagemaker$operations$delete_model_package <- sagemaker_delete_model_package
+
+#' Deletes the specified model group
+#'
+#' Deletes the specified model group.
+#'
+#' @usage
+#' sagemaker_delete_model_package_group(ModelPackageGroupName)
+#'
+#' @param ModelPackageGroupName &#91;required&#93; The name of the model group to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_model_package_group(
+#'   ModelPackageGroupName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_model_package_group
+sagemaker_delete_model_package_group <- function(ModelPackageGroupName) {
+  op <- new_operation(
+    name = "DeleteModelPackageGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_model_package_group_input(ModelPackageGroupName = ModelPackageGroupName)
+  output <- .sagemaker$delete_model_package_group_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_model_package_group <- sagemaker_delete_model_package_group
+
+#' Deletes a model group resource policy
+#'
+#' Deletes a model group resource policy.
+#'
+#' @usage
+#' sagemaker_delete_model_package_group_policy(ModelPackageGroupName)
+#'
+#' @param ModelPackageGroupName &#91;required&#93; The name of the model group for which to delete the policy.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_model_package_group_policy(
+#'   ModelPackageGroupName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_model_package_group_policy
+sagemaker_delete_model_package_group_policy <- function(ModelPackageGroupName) {
+  op <- new_operation(
+    name = "DeleteModelPackageGroupPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_model_package_group_policy_input(ModelPackageGroupName = ModelPackageGroupName)
+  output <- .sagemaker$delete_model_package_group_policy_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_model_package_group_policy <- sagemaker_delete_model_package_group_policy
+
+#' Deletes the secified model quality monitoring job definition
+#'
+#' Deletes the secified model quality monitoring job definition.
+#'
+#' @usage
+#' sagemaker_delete_model_quality_job_definition(JobDefinitionName)
+#'
+#' @param JobDefinitionName &#91;required&#93; The name of the model quality monitoring job definition to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_model_quality_job_definition(
+#'   JobDefinitionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_model_quality_job_definition
+sagemaker_delete_model_quality_job_definition <- function(JobDefinitionName) {
+  op <- new_operation(
+    name = "DeleteModelQualityJobDefinition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_model_quality_job_definition_input(JobDefinitionName = JobDefinitionName)
+  output <- .sagemaker$delete_model_quality_job_definition_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_model_quality_job_definition <- sagemaker_delete_model_quality_job_definition
 
 #' Deletes a monitoring schedule
 #'
@@ -4095,6 +6481,82 @@ sagemaker_delete_notebook_instance_lifecycle_config <- function(NotebookInstance
   return(response)
 }
 .sagemaker$operations$delete_notebook_instance_lifecycle_config <- sagemaker_delete_notebook_instance_lifecycle_config
+
+#' Deletes a pipeline if there are no in-progress executions
+#'
+#' Deletes a pipeline if there are no in-progress executions.
+#'
+#' @usage
+#' sagemaker_delete_pipeline(PipelineName, ClientRequestToken)
+#'
+#' @param PipelineName &#91;required&#93; The name of the pipeline to delete.
+#' @param ClientRequestToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the operation. An idempotent operation completes no more
+#' than one time.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_pipeline(
+#'   PipelineName = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_pipeline
+sagemaker_delete_pipeline <- function(PipelineName, ClientRequestToken) {
+  op <- new_operation(
+    name = "DeletePipeline",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_pipeline_input(PipelineName = PipelineName, ClientRequestToken = ClientRequestToken)
+  output <- .sagemaker$delete_pipeline_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_pipeline <- sagemaker_delete_pipeline
+
+#' Delete the specified project
+#'
+#' Delete the specified project.
+#'
+#' @usage
+#' sagemaker_delete_project(ProjectName)
+#'
+#' @param ProjectName &#91;required&#93; The name of the project to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_project(
+#'   ProjectName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_project
+sagemaker_delete_project <- function(ProjectName) {
+  op <- new_operation(
+    name = "DeleteProject",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_project_input(ProjectName = ProjectName)
+  output <- .sagemaker$delete_project_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_project <- sagemaker_delete_project
 
 #' Deletes the specified tags from an Amazon SageMaker resource
 #'
@@ -4260,6 +6722,51 @@ sagemaker_delete_user_profile <- function(DomainId, UserProfileName) {
 }
 .sagemaker$operations$delete_user_profile <- sagemaker_delete_user_profile
 
+#' Use this operation to delete a workforce
+#'
+#' Use this operation to delete a workforce.
+#' 
+#' If you want to create a new workforce in an AWS Region where a workforce
+#' already exists, use this operation to delete the existing workforce and
+#' then use to create a new workforce.
+#' 
+#' If a private workforce contains one or more work teams, you must use the
+#' operation to delete all work teams before you delete the workforce. If
+#' you try to delete a workforce that contains one or more work teams, you
+#' will recieve a `ResourceInUse` error.
+#'
+#' @usage
+#' sagemaker_delete_workforce(WorkforceName)
+#'
+#' @param WorkforceName &#91;required&#93; The name of the workforce.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_workforce(
+#'   WorkforceName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_delete_workforce
+sagemaker_delete_workforce <- function(WorkforceName) {
+  op <- new_operation(
+    name = "DeleteWorkforce",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$delete_workforce_input(WorkforceName = WorkforceName)
+  output <- .sagemaker$delete_workforce_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$delete_workforce <- sagemaker_delete_workforce
+
 #' Deletes an existing work team
 #'
 #' Deletes an existing work team. This operation can't be undone.
@@ -4295,6 +6802,83 @@ sagemaker_delete_workteam <- function(WorkteamName) {
   return(response)
 }
 .sagemaker$operations$delete_workteam <- sagemaker_delete_workteam
+
+#' Deregisters the specified devices
+#'
+#' Deregisters the specified devices. After you deregister a device, you
+#' will need to re-register the devices.
+#'
+#' @usage
+#' sagemaker_deregister_devices(DeviceFleetName, DeviceNames)
+#'
+#' @param DeviceFleetName &#91;required&#93; The name of the fleet the devices belong to.
+#' @param DeviceNames &#91;required&#93; The unique IDs of the devices.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$deregister_devices(
+#'   DeviceFleetName = "string",
+#'   DeviceNames = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_deregister_devices
+sagemaker_deregister_devices <- function(DeviceFleetName, DeviceNames) {
+  op <- new_operation(
+    name = "DeregisterDevices",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$deregister_devices_input(DeviceFleetName = DeviceFleetName, DeviceNames = DeviceNames)
+  output <- .sagemaker$deregister_devices_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$deregister_devices <- sagemaker_deregister_devices
+
+#' Describes an action
+#'
+#' Describes an action.
+#'
+#' @usage
+#' sagemaker_describe_action(ActionName)
+#'
+#' @param ActionName &#91;required&#93; The name of the action to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_action(
+#'   ActionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_action
+sagemaker_describe_action <- function(ActionName) {
+  op <- new_operation(
+    name = "DescribeAction",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_action_input(ActionName = ActionName)
+  output <- .sagemaker$describe_action_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_action <- sagemaker_describe_action
 
 #' Returns a description of the specified algorithm that is in your account
 #'
@@ -4374,6 +6958,78 @@ sagemaker_describe_app <- function(DomainId, UserProfileName, AppType, AppName) 
   return(response)
 }
 .sagemaker$operations$describe_app <- sagemaker_describe_app
+
+#' Describes an AppImageConfig
+#'
+#' Describes an AppImageConfig.
+#'
+#' @usage
+#' sagemaker_describe_app_image_config(AppImageConfigName)
+#'
+#' @param AppImageConfigName &#91;required&#93; The name of the AppImageConfig to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_app_image_config(
+#'   AppImageConfigName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_app_image_config
+sagemaker_describe_app_image_config <- function(AppImageConfigName) {
+  op <- new_operation(
+    name = "DescribeAppImageConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_app_image_config_input(AppImageConfigName = AppImageConfigName)
+  output <- .sagemaker$describe_app_image_config_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_app_image_config <- sagemaker_describe_app_image_config
+
+#' Describes an artifact
+#'
+#' Describes an artifact.
+#'
+#' @usage
+#' sagemaker_describe_artifact(ArtifactArn)
+#'
+#' @param ArtifactArn &#91;required&#93; The Amazon Resource Name (ARN) of the artifact to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_artifact(
+#'   ArtifactArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_artifact
+sagemaker_describe_artifact <- function(ArtifactArn) {
+  op <- new_operation(
+    name = "DescribeArtifact",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_artifact_input(ArtifactArn = ArtifactArn)
+  output <- .sagemaker$describe_artifact_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_artifact <- sagemaker_describe_artifact
 
 #' Returns information about an Amazon SageMaker job
 #'
@@ -4487,6 +7143,154 @@ sagemaker_describe_compilation_job <- function(CompilationJobName) {
 }
 .sagemaker$operations$describe_compilation_job <- sagemaker_describe_compilation_job
 
+#' Describes a context
+#'
+#' Describes a context.
+#'
+#' @usage
+#' sagemaker_describe_context(ContextName)
+#'
+#' @param ContextName &#91;required&#93; The name of the context to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_context(
+#'   ContextName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_context
+sagemaker_describe_context <- function(ContextName) {
+  op <- new_operation(
+    name = "DescribeContext",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_context_input(ContextName = ContextName)
+  output <- .sagemaker$describe_context_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_context <- sagemaker_describe_context
+
+#' Gets the details of a data quality monitoring job definition
+#'
+#' Gets the details of a data quality monitoring job definition.
+#'
+#' @usage
+#' sagemaker_describe_data_quality_job_definition(JobDefinitionName)
+#'
+#' @param JobDefinitionName &#91;required&#93; The name of the data quality monitoring job definition to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_data_quality_job_definition(
+#'   JobDefinitionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_data_quality_job_definition
+sagemaker_describe_data_quality_job_definition <- function(JobDefinitionName) {
+  op <- new_operation(
+    name = "DescribeDataQualityJobDefinition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_data_quality_job_definition_input(JobDefinitionName = JobDefinitionName)
+  output <- .sagemaker$describe_data_quality_job_definition_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_data_quality_job_definition <- sagemaker_describe_data_quality_job_definition
+
+#' Describes the device
+#'
+#' Describes the device.
+#'
+#' @usage
+#' sagemaker_describe_device(NextToken, DeviceName, DeviceFleetName)
+#'
+#' @param NextToken Next token of device description.
+#' @param DeviceName &#91;required&#93; The unique ID of the device.
+#' @param DeviceFleetName &#91;required&#93; The name of the fleet the devices belong to.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_device(
+#'   NextToken = "string",
+#'   DeviceName = "string",
+#'   DeviceFleetName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_device
+sagemaker_describe_device <- function(NextToken = NULL, DeviceName, DeviceFleetName) {
+  op <- new_operation(
+    name = "DescribeDevice",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_device_input(NextToken = NextToken, DeviceName = DeviceName, DeviceFleetName = DeviceFleetName)
+  output <- .sagemaker$describe_device_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_device <- sagemaker_describe_device
+
+#' A description of the fleet the device belongs to
+#'
+#' A description of the fleet the device belongs to.
+#'
+#' @usage
+#' sagemaker_describe_device_fleet(DeviceFleetName)
+#'
+#' @param DeviceFleetName &#91;required&#93; The name of the fleet.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_device_fleet(
+#'   DeviceFleetName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_device_fleet
+sagemaker_describe_device_fleet <- function(DeviceFleetName) {
+  op <- new_operation(
+    name = "DescribeDeviceFleet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_device_fleet_input(DeviceFleetName = DeviceFleetName)
+  output <- .sagemaker$describe_device_fleet_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_device_fleet <- sagemaker_describe_device_fleet
+
 #' The description of the domain
 #'
 #' The description of the domain.
@@ -4522,6 +7326,42 @@ sagemaker_describe_domain <- function(DomainId) {
   return(response)
 }
 .sagemaker$operations$describe_domain <- sagemaker_describe_domain
+
+#' A description of edge packaging jobs
+#'
+#' A description of edge packaging jobs.
+#'
+#' @usage
+#' sagemaker_describe_edge_packaging_job(EdgePackagingJobName)
+#'
+#' @param EdgePackagingJobName &#91;required&#93; The name of the edge packaging job.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_edge_packaging_job(
+#'   EdgePackagingJobName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_edge_packaging_job
+sagemaker_describe_edge_packaging_job <- function(EdgePackagingJobName) {
+  op <- new_operation(
+    name = "DescribeEdgePackagingJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_edge_packaging_job_input(EdgePackagingJobName = EdgePackagingJobName)
+  output <- .sagemaker$describe_edge_packaging_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_edge_packaging_job <- sagemaker_describe_edge_packaging_job
 
 #' Returns the description of an endpoint
 #'
@@ -4632,6 +7472,47 @@ sagemaker_describe_experiment <- function(ExperimentName) {
   return(response)
 }
 .sagemaker$operations$describe_experiment <- sagemaker_describe_experiment
+
+#' Use this operation to describe a FeatureGroup
+#'
+#' Use this operation to describe a `FeatureGroup`. The response includes
+#' information on the creation time, `FeatureGroup` name, the unique
+#' identifier for each `FeatureGroup`, and more.
+#'
+#' @usage
+#' sagemaker_describe_feature_group(FeatureGroupName, NextToken)
+#'
+#' @param FeatureGroupName &#91;required&#93; The name of the `FeatureGroup` you want described.
+#' @param NextToken A token to resume pagination of the list of `Features`
+#' (`FeatureDefinitions`). 2,500 `Features` are returned by default.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_feature_group(
+#'   FeatureGroupName = "string",
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_feature_group
+sagemaker_describe_feature_group <- function(FeatureGroupName, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeFeatureGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_feature_group_input(FeatureGroupName = FeatureGroupName, NextToken = NextToken)
+  output <- .sagemaker$describe_feature_group_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_feature_group <- sagemaker_describe_feature_group
 
 #' Returns information about the specified flow definition
 #'
@@ -4745,6 +7626,81 @@ sagemaker_describe_hyper_parameter_tuning_job <- function(HyperParameterTuningJo
 }
 .sagemaker$operations$describe_hyper_parameter_tuning_job <- sagemaker_describe_hyper_parameter_tuning_job
 
+#' Describes a SageMaker image
+#'
+#' Describes a SageMaker image.
+#'
+#' @usage
+#' sagemaker_describe_image(ImageName)
+#'
+#' @param ImageName &#91;required&#93; The name of the image to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_image(
+#'   ImageName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_image
+sagemaker_describe_image <- function(ImageName) {
+  op <- new_operation(
+    name = "DescribeImage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_image_input(ImageName = ImageName)
+  output <- .sagemaker$describe_image_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_image <- sagemaker_describe_image
+
+#' Describes a version of a SageMaker image
+#'
+#' Describes a version of a SageMaker image.
+#'
+#' @usage
+#' sagemaker_describe_image_version(ImageName, Version)
+#'
+#' @param ImageName &#91;required&#93; The name of the image.
+#' @param Version The version of the image. If not specified, the latest version is
+#' described.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_image_version(
+#'   ImageName = "string",
+#'   Version = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_image_version
+sagemaker_describe_image_version <- function(ImageName, Version = NULL) {
+  op <- new_operation(
+    name = "DescribeImageVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_image_version_input(ImageName = ImageName, Version = Version)
+  output <- .sagemaker$describe_image_version_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_image_version <- sagemaker_describe_image_version
+
 #' Gets information about a labeling job
 #'
 #' Gets information about a labeling job.
@@ -4817,6 +7773,81 @@ sagemaker_describe_model <- function(ModelName) {
 }
 .sagemaker$operations$describe_model <- sagemaker_describe_model
 
+#' Returns a description of a model bias job definition
+#'
+#' Returns a description of a model bias job definition.
+#'
+#' @usage
+#' sagemaker_describe_model_bias_job_definition(JobDefinitionName)
+#'
+#' @param JobDefinitionName &#91;required&#93; The name of the model bias job definition. The name must be unique
+#' within an AWS Region in the AWS account.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_model_bias_job_definition(
+#'   JobDefinitionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_model_bias_job_definition
+sagemaker_describe_model_bias_job_definition <- function(JobDefinitionName) {
+  op <- new_operation(
+    name = "DescribeModelBiasJobDefinition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_model_bias_job_definition_input(JobDefinitionName = JobDefinitionName)
+  output <- .sagemaker$describe_model_bias_job_definition_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_model_bias_job_definition <- sagemaker_describe_model_bias_job_definition
+
+#' Returns a description of a model explainability job definition
+#'
+#' Returns a description of a model explainability job definition.
+#'
+#' @usage
+#' sagemaker_describe_model_explainability_job_definition(
+#'   JobDefinitionName)
+#'
+#' @param JobDefinitionName &#91;required&#93; The name of the model explainability job definition. The name must be
+#' unique within an AWS Region in the AWS account.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_model_explainability_job_definition(
+#'   JobDefinitionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_model_explainability_job_definition
+sagemaker_describe_model_explainability_job_definition <- function(JobDefinitionName) {
+  op <- new_operation(
+    name = "DescribeModelExplainabilityJobDefinition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_model_explainability_job_definition_input(JobDefinitionName = JobDefinitionName)
+  output <- .sagemaker$describe_model_explainability_job_definition_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_model_explainability_job_definition <- sagemaker_describe_model_explainability_job_definition
+
 #' Returns a description of the specified model package, which is used to
 #' create Amazon SageMaker models or list them on AWS Marketplace
 #'
@@ -4857,6 +7888,79 @@ sagemaker_describe_model_package <- function(ModelPackageName) {
   return(response)
 }
 .sagemaker$operations$describe_model_package <- sagemaker_describe_model_package
+
+#' Gets a description for the specified model group
+#'
+#' Gets a description for the specified model group.
+#'
+#' @usage
+#' sagemaker_describe_model_package_group(ModelPackageGroupName)
+#'
+#' @param ModelPackageGroupName &#91;required&#93; The name of the model group to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_model_package_group(
+#'   ModelPackageGroupName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_model_package_group
+sagemaker_describe_model_package_group <- function(ModelPackageGroupName) {
+  op <- new_operation(
+    name = "DescribeModelPackageGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_model_package_group_input(ModelPackageGroupName = ModelPackageGroupName)
+  output <- .sagemaker$describe_model_package_group_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_model_package_group <- sagemaker_describe_model_package_group
+
+#' Returns a description of a model quality job definition
+#'
+#' Returns a description of a model quality job definition.
+#'
+#' @usage
+#' sagemaker_describe_model_quality_job_definition(JobDefinitionName)
+#'
+#' @param JobDefinitionName &#91;required&#93; The name of the model quality job. The name must be unique within an AWS
+#' Region in the AWS account.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_model_quality_job_definition(
+#'   JobDefinitionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_model_quality_job_definition
+sagemaker_describe_model_quality_job_definition <- function(JobDefinitionName) {
+  op <- new_operation(
+    name = "DescribeModelQualityJobDefinition",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_model_quality_job_definition_input(JobDefinitionName = JobDefinitionName)
+  output <- .sagemaker$describe_model_quality_job_definition_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_model_quality_job_definition <- sagemaker_describe_model_quality_job_definition
 
 #' Describes the schedule for a monitoring job
 #'
@@ -4971,6 +8075,115 @@ sagemaker_describe_notebook_instance_lifecycle_config <- function(NotebookInstan
 }
 .sagemaker$operations$describe_notebook_instance_lifecycle_config <- sagemaker_describe_notebook_instance_lifecycle_config
 
+#' Describes the details of a pipeline
+#'
+#' Describes the details of a pipeline.
+#'
+#' @usage
+#' sagemaker_describe_pipeline(PipelineName)
+#'
+#' @param PipelineName &#91;required&#93; The name of the pipeline to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_pipeline(
+#'   PipelineName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_pipeline
+sagemaker_describe_pipeline <- function(PipelineName) {
+  op <- new_operation(
+    name = "DescribePipeline",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_pipeline_input(PipelineName = PipelineName)
+  output <- .sagemaker$describe_pipeline_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_pipeline <- sagemaker_describe_pipeline
+
+#' Describes the details of an execution's pipeline definition
+#'
+#' Describes the details of an execution's pipeline definition.
+#'
+#' @usage
+#' sagemaker_describe_pipeline_definition_for_execution(
+#'   PipelineExecutionArn)
+#'
+#' @param PipelineExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the pipeline execution.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_pipeline_definition_for_execution(
+#'   PipelineExecutionArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_pipeline_definition_for_execution
+sagemaker_describe_pipeline_definition_for_execution <- function(PipelineExecutionArn) {
+  op <- new_operation(
+    name = "DescribePipelineDefinitionForExecution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_pipeline_definition_for_execution_input(PipelineExecutionArn = PipelineExecutionArn)
+  output <- .sagemaker$describe_pipeline_definition_for_execution_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_pipeline_definition_for_execution <- sagemaker_describe_pipeline_definition_for_execution
+
+#' Describes the details of a pipeline execution
+#'
+#' Describes the details of a pipeline execution.
+#'
+#' @usage
+#' sagemaker_describe_pipeline_execution(PipelineExecutionArn)
+#'
+#' @param PipelineExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the pipeline execution.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_pipeline_execution(
+#'   PipelineExecutionArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_pipeline_execution
+sagemaker_describe_pipeline_execution <- function(PipelineExecutionArn) {
+  op <- new_operation(
+    name = "DescribePipelineExecution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_pipeline_execution_input(PipelineExecutionArn = PipelineExecutionArn)
+  output <- .sagemaker$describe_pipeline_execution_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_pipeline_execution <- sagemaker_describe_pipeline_execution
+
 #' Returns a description of a processing job
 #'
 #' Returns a description of a processing job.
@@ -5007,6 +8220,42 @@ sagemaker_describe_processing_job <- function(ProcessingJobName) {
   return(response)
 }
 .sagemaker$operations$describe_processing_job <- sagemaker_describe_processing_job
+
+#' Describes the details of a project
+#'
+#' Describes the details of a project.
+#'
+#' @usage
+#' sagemaker_describe_project(ProjectName)
+#'
+#' @param ProjectName &#91;required&#93; The name of the project to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_project(
+#'   ProjectName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_describe_project
+sagemaker_describe_project <- function(ProjectName) {
+  op <- new_operation(
+    name = "DescribeProject",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$describe_project_input(ProjectName = ProjectName)
+  output <- .sagemaker$describe_project_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$describe_project <- sagemaker_describe_project
 
 #' Gets information about a work team provided by a vendor
 #'
@@ -5311,6 +8560,39 @@ sagemaker_describe_workteam <- function(WorkteamName) {
 }
 .sagemaker$operations$describe_workteam <- sagemaker_describe_workteam
 
+#' Disables using Service Catalog in SageMaker
+#'
+#' Disables using Service Catalog in SageMaker. Service Catalog is used to
+#' create SageMaker projects.
+#'
+#' @usage
+#' sagemaker_disable_sagemaker_servicecatalog_portfolio()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_sagemaker_servicecatalog_portfolio()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_disable_sagemaker_servicecatalog_portfolio
+sagemaker_disable_sagemaker_servicecatalog_portfolio <- function() {
+  op <- new_operation(
+    name = "DisableSagemakerServicecatalogPortfolio",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$disable_sagemaker_servicecatalog_portfolio_input()
+  output <- .sagemaker$disable_sagemaker_servicecatalog_portfolio_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$disable_sagemaker_servicecatalog_portfolio <- sagemaker_disable_sagemaker_servicecatalog_portfolio
+
 #' Disassociates a trial component from a trial
 #'
 #' Disassociates a trial component from a trial. This doesn't effect other
@@ -5358,6 +8640,148 @@ sagemaker_disassociate_trial_component <- function(TrialComponentName, TrialName
 }
 .sagemaker$operations$disassociate_trial_component <- sagemaker_disassociate_trial_component
 
+#' Enables using Service Catalog in SageMaker
+#'
+#' Enables using Service Catalog in SageMaker. Service Catalog is used to
+#' create SageMaker projects.
+#'
+#' @usage
+#' sagemaker_enable_sagemaker_servicecatalog_portfolio()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_sagemaker_servicecatalog_portfolio()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_enable_sagemaker_servicecatalog_portfolio
+sagemaker_enable_sagemaker_servicecatalog_portfolio <- function() {
+  op <- new_operation(
+    name = "EnableSagemakerServicecatalogPortfolio",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$enable_sagemaker_servicecatalog_portfolio_input()
+  output <- .sagemaker$enable_sagemaker_servicecatalog_portfolio_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$enable_sagemaker_servicecatalog_portfolio <- sagemaker_enable_sagemaker_servicecatalog_portfolio
+
+#' Describes a fleet
+#'
+#' Describes a fleet.
+#'
+#' @usage
+#' sagemaker_get_device_fleet_report(DeviceFleetName)
+#'
+#' @param DeviceFleetName &#91;required&#93; The name of the fleet.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_device_fleet_report(
+#'   DeviceFleetName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_get_device_fleet_report
+sagemaker_get_device_fleet_report <- function(DeviceFleetName) {
+  op <- new_operation(
+    name = "GetDeviceFleetReport",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$get_device_fleet_report_input(DeviceFleetName = DeviceFleetName)
+  output <- .sagemaker$get_device_fleet_report_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$get_device_fleet_report <- sagemaker_get_device_fleet_report
+
+#' Gets a resource policy that manages access for a model group
+#'
+#' Gets a resource policy that manages access for a model group. For
+#' information about resource policies, see [Identity-based policies and
+#' resource-based
+#' policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html)
+#' in the *AWS Identity and Access Management User Guide.*.
+#'
+#' @usage
+#' sagemaker_get_model_package_group_policy(ModelPackageGroupName)
+#'
+#' @param ModelPackageGroupName &#91;required&#93; The name of the model group for which to get the resource policy.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_model_package_group_policy(
+#'   ModelPackageGroupName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_get_model_package_group_policy
+sagemaker_get_model_package_group_policy <- function(ModelPackageGroupName) {
+  op <- new_operation(
+    name = "GetModelPackageGroupPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$get_model_package_group_policy_input(ModelPackageGroupName = ModelPackageGroupName)
+  output <- .sagemaker$get_model_package_group_policy_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$get_model_package_group_policy <- sagemaker_get_model_package_group_policy
+
+#' Gets the status of Service Catalog in SageMaker
+#'
+#' Gets the status of Service Catalog in SageMaker. Service Catalog is used
+#' to create SageMaker projects.
+#'
+#' @usage
+#' sagemaker_get_sagemaker_servicecatalog_portfolio_status()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_sagemaker_servicecatalog_portfolio_status()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_get_sagemaker_servicecatalog_portfolio_status
+sagemaker_get_sagemaker_servicecatalog_portfolio_status <- function() {
+  op <- new_operation(
+    name = "GetSagemakerServicecatalogPortfolioStatus",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$get_sagemaker_servicecatalog_portfolio_status_input()
+  output <- .sagemaker$get_sagemaker_servicecatalog_portfolio_status_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$get_sagemaker_servicecatalog_portfolio_status <- sagemaker_get_sagemaker_servicecatalog_portfolio_status
+
 #' An auto-complete API for the search functionality in the Amazon
 #' SageMaker console
 #'
@@ -5375,7 +8799,7 @@ sagemaker_disassociate_trial_component <- function(TrialComponentName, TrialName
 #' @section Request syntax:
 #' ```
 #' svc$get_search_suggestions(
-#'   Resource = "TrainingJob"|"Experiment"|"ExperimentTrial"|"ExperimentTrialComponent",
+#'   Resource = "TrainingJob"|"Experiment"|"ExperimentTrial"|"ExperimentTrialComponent"|"Endpoint"|"ModelPackage"|"ModelPackageGroup"|"Pipeline"|"PipelineExecution"|"FeatureGroup",
 #'   SuggestionQuery = list(
 #'     PropertyNameQuery = list(
 #'       PropertyNameHint = "string"
@@ -5403,6 +8827,65 @@ sagemaker_get_search_suggestions <- function(Resource, SuggestionQuery = NULL) {
   return(response)
 }
 .sagemaker$operations$get_search_suggestions <- sagemaker_get_search_suggestions
+
+#' Lists the actions in your account and their properties
+#'
+#' Lists the actions in your account and their properties.
+#'
+#' @usage
+#' sagemaker_list_actions(SourceUri, ActionType, CreatedAfter,
+#'   CreatedBefore, SortBy, SortOrder, NextToken, MaxResults)
+#'
+#' @param SourceUri A filter that returns only actions with the specified source URI.
+#' @param ActionType A filter that returns only actions of the specified type.
+#' @param CreatedAfter A filter that returns only actions created on or after the specified
+#' time.
+#' @param CreatedBefore A filter that returns only actions created on or before the specified
+#' time.
+#' @param SortBy The property used to sort results. The default value is `CreationTime`.
+#' @param SortOrder The sort order. The default value is `Descending`.
+#' @param NextToken If the previous call to `ListActions` didn't return the full set of
+#' actions, the call returns a token for getting the next set of actions.
+#' @param MaxResults The maximum number of actions to return in the response. The default
+#' value is 10.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_actions(
+#'   SourceUri = "string",
+#'   ActionType = "string",
+#'   CreatedAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreatedBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SortBy = "Name"|"CreationTime",
+#'   SortOrder = "Ascending"|"Descending",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_actions
+sagemaker_list_actions <- function(SourceUri = NULL, ActionType = NULL, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListActions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_actions_input(SourceUri = SourceUri, ActionType = ActionType, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$list_actions_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_actions <- sagemaker_list_actions
 
 #' Lists the machine learning algorithms that have been created
 #'
@@ -5463,6 +8946,78 @@ sagemaker_list_algorithms <- function(CreationTimeAfter = NULL, CreationTimeBefo
 }
 .sagemaker$operations$list_algorithms <- sagemaker_list_algorithms
 
+#' Lists the AppImageConfigs in your account and their properties
+#'
+#' Lists the AppImageConfigs in your account and their properties. The list
+#' can be filtered by creation time or modified time, and whether the
+#' AppImageConfig name contains a specified string.
+#'
+#' @usage
+#' sagemaker_list_app_image_configs(MaxResults, NextToken, NameContains,
+#'   CreationTimeBefore, CreationTimeAfter, ModifiedTimeBefore,
+#'   ModifiedTimeAfter, SortBy, SortOrder)
+#'
+#' @param MaxResults The maximum number of AppImageConfigs to return in the response. The
+#' default value is 10.
+#' @param NextToken If the previous call to `ListImages` didn't return the full set of
+#' AppImageConfigs, the call returns a token for getting the next set of
+#' AppImageConfigs.
+#' @param NameContains A filter that returns only AppImageConfigs whose name contains the
+#' specified string.
+#' @param CreationTimeBefore A filter that returns only AppImageConfigs created on or before the
+#' specified time.
+#' @param CreationTimeAfter A filter that returns only AppImageConfigs created on or after the
+#' specified time.
+#' @param ModifiedTimeBefore A filter that returns only AppImageConfigs modified on or before the
+#' specified time.
+#' @param ModifiedTimeAfter A filter that returns only AppImageConfigs modified on or after the
+#' specified time.
+#' @param SortBy The property used to sort results. The default value is `CreationTime`.
+#' @param SortOrder The sort order. The default value is `Descending`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_app_image_configs(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   NameContains = "string",
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ModifiedTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ModifiedTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SortBy = "CreationTime"|"LastModifiedTime"|"Name",
+#'   SortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_app_image_configs
+sagemaker_list_app_image_configs <- function(MaxResults = NULL, NextToken = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL, ModifiedTimeBefore = NULL, ModifiedTimeAfter = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "ListAppImageConfigs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_app_image_configs_input(MaxResults = MaxResults, NextToken = NextToken, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, ModifiedTimeBefore = ModifiedTimeBefore, ModifiedTimeAfter = ModifiedTimeAfter, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .sagemaker$list_app_image_configs_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_app_image_configs <- sagemaker_list_app_image_configs
+
 #' Lists apps
 #'
 #' Lists apps.
@@ -5511,6 +9066,135 @@ sagemaker_list_apps <- function(NextToken = NULL, MaxResults = NULL, SortOrder =
 }
 .sagemaker$operations$list_apps <- sagemaker_list_apps
 
+#' Lists the artifacts in your account and their properties
+#'
+#' Lists the artifacts in your account and their properties.
+#'
+#' @usage
+#' sagemaker_list_artifacts(SourceUri, ArtifactType, CreatedAfter,
+#'   CreatedBefore, SortBy, SortOrder, NextToken, MaxResults)
+#'
+#' @param SourceUri A filter that returns only artifacts with the specified source URI.
+#' @param ArtifactType A filter that returns only artifacts of the specified type.
+#' @param CreatedAfter A filter that returns only artifacts created on or after the specified
+#' time.
+#' @param CreatedBefore A filter that returns only artifacts created on or before the specified
+#' time.
+#' @param SortBy The property used to sort results. The default value is `CreationTime`.
+#' @param SortOrder The sort order. The default value is `Descending`.
+#' @param NextToken If the previous call to `ListArtifacts` didn't return the full set of
+#' artifacts, the call returns a token for getting the next set of
+#' artifacts.
+#' @param MaxResults The maximum number of artifacts to return in the response. The default
+#' value is 10.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_artifacts(
+#'   SourceUri = "string",
+#'   ArtifactType = "string",
+#'   CreatedAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreatedBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SortBy = "CreationTime",
+#'   SortOrder = "Ascending"|"Descending",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_artifacts
+sagemaker_list_artifacts <- function(SourceUri = NULL, ArtifactType = NULL, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListArtifacts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_artifacts_input(SourceUri = SourceUri, ArtifactType = ArtifactType, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$list_artifacts_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_artifacts <- sagemaker_list_artifacts
+
+#' Lists the associations in your account and their properties
+#'
+#' Lists the associations in your account and their properties.
+#'
+#' @usage
+#' sagemaker_list_associations(SourceArn, DestinationArn, SourceType,
+#'   DestinationType, AssociationType, CreatedAfter, CreatedBefore, SortBy,
+#'   SortOrder, NextToken, MaxResults)
+#'
+#' @param SourceArn A filter that returns only associations with the specified source ARN.
+#' @param DestinationArn A filter that returns only associations with the specified destination
+#' Amazon Resource Name (ARN).
+#' @param SourceType A filter that returns only associations with the specified source type.
+#' @param DestinationType A filter that returns only associations with the specified destination
+#' type.
+#' @param AssociationType A filter that returns only associations of the specified type.
+#' @param CreatedAfter A filter that returns only associations created on or after the
+#' specified time.
+#' @param CreatedBefore A filter that returns only associations created on or before the
+#' specified time.
+#' @param SortBy The property used to sort results. The default value is `CreationTime`.
+#' @param SortOrder The sort order. The default value is `Descending`.
+#' @param NextToken If the previous call to `ListAssociations` didn't return the full set of
+#' associations, the call returns a token for getting the next set of
+#' associations.
+#' @param MaxResults The maximum number of associations to return in the response. The
+#' default value is 10.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_associations(
+#'   SourceArn = "string",
+#'   DestinationArn = "string",
+#'   SourceType = "string",
+#'   DestinationType = "string",
+#'   AssociationType = "ContributedTo"|"AssociatedWith"|"DerivedFrom"|"Produced",
+#'   CreatedAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreatedBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SortBy = "SourceArn"|"DestinationArn"|"SourceType"|"DestinationType"|"CreationTime",
+#'   SortOrder = "Ascending"|"Descending",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_associations
+sagemaker_list_associations <- function(SourceArn = NULL, DestinationArn = NULL, SourceType = NULL, DestinationType = NULL, AssociationType = NULL, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_associations_input(SourceArn = SourceArn, DestinationArn = DestinationArn, SourceType = SourceType, DestinationType = DestinationType, AssociationType = AssociationType, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$list_associations_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_associations <- sagemaker_list_associations
+
 #' Request a list of jobs
 #'
 #' Request a list of jobs.
@@ -5530,8 +9214,8 @@ sagemaker_list_apps <- function(NextToken = NULL, MaxResults = NULL, SortOrder =
 #' @param SortBy The parameter by which to sort the results. The default is
 #' AutoMLJobName.
 #' @param MaxResults Request a list of jobs up to a specified limit.
-#' @param NextToken If the previous response was truncated, you will receive this token. Use
-#' it in your next request to receive the next set of results.
+#' @param NextToken If the previous response was truncated, you receive this token. Use it
+#' in your next request to receive the next set of results.
 #'
 #' @section Request syntax:
 #' ```
@@ -5591,8 +9275,8 @@ sagemaker_list_auto_ml_jobs <- function(CreationTimeAfter = NULL, CreationTimeBe
 #' @param SortOrder The sort order for the results. The default is Ascending.
 #' @param SortBy The parameter by which to sort the results. The default is Descending.
 #' @param MaxResults List the job's Candidates up to a specified limit.
-#' @param NextToken If the previous response was truncated, you will receive this token. Use
-#' it in your next request to receive the next set of results.
+#' @param NextToken If the previous response was truncated, you receive this token. Use it
+#' in your next request to receive the next set of results.
 #'
 #' @section Request syntax:
 #' ```
@@ -5772,6 +9456,242 @@ sagemaker_list_compilation_jobs <- function(NextToken = NULL, MaxResults = NULL,
 }
 .sagemaker$operations$list_compilation_jobs <- sagemaker_list_compilation_jobs
 
+#' Lists the contexts in your account and their properties
+#'
+#' Lists the contexts in your account and their properties.
+#'
+#' @usage
+#' sagemaker_list_contexts(SourceUri, ContextType, CreatedAfter,
+#'   CreatedBefore, SortBy, SortOrder, NextToken, MaxResults)
+#'
+#' @param SourceUri A filter that returns only contexts with the specified source URI.
+#' @param ContextType A filter that returns only contexts of the specified type.
+#' @param CreatedAfter A filter that returns only contexts created on or after the specified
+#' time.
+#' @param CreatedBefore A filter that returns only contexts created on or before the specified
+#' time.
+#' @param SortBy The property used to sort results. The default value is `CreationTime`.
+#' @param SortOrder The sort order. The default value is `Descending`.
+#' @param NextToken If the previous call to `ListContexts` didn't return the full set of
+#' contexts, the call returns a token for getting the next set of contexts.
+#' @param MaxResults The maximum number of contexts to return in the response. The default
+#' value is 10.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_contexts(
+#'   SourceUri = "string",
+#'   ContextType = "string",
+#'   CreatedAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreatedBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SortBy = "Name"|"CreationTime",
+#'   SortOrder = "Ascending"|"Descending",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_contexts
+sagemaker_list_contexts <- function(SourceUri = NULL, ContextType = NULL, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListContexts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_contexts_input(SourceUri = SourceUri, ContextType = ContextType, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$list_contexts_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_contexts <- sagemaker_list_contexts
+
+#' Lists the data quality job definitions in your account
+#'
+#' Lists the data quality job definitions in your account.
+#'
+#' @usage
+#' sagemaker_list_data_quality_job_definitions(EndpointName, SortBy,
+#'   SortOrder, NextToken, MaxResults, NameContains, CreationTimeBefore,
+#'   CreationTimeAfter)
+#'
+#' @param EndpointName A filter that lists the data quality job definitions associated with the
+#' specified endpoint.
+#' @param SortBy The field to sort results by. The default is `CreationTime`.
+#' @param SortOrder The sort order for results. The default is `Descending`.
+#' @param NextToken If the result of the previous `ListDataQualityJobDefinitions` request
+#' was truncated, the response includes a `NextToken`. To retrieve the next
+#' set of transform jobs, use the token in the next request.&gt;
+#' @param MaxResults The maximum number of data quality monitoring job definitions to return
+#' in the response.
+#' @param NameContains A string in the data quality monitoring job definition name. This filter
+#' returns only data quality monitoring job definitions whose name contains
+#' the specified string.
+#' @param CreationTimeBefore A filter that returns only data quality monitoring job definitions
+#' created before the specified time.
+#' @param CreationTimeAfter A filter that returns only data quality monitoring job definitions
+#' created after the specified time.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_data_quality_job_definitions(
+#'   EndpointName = "string",
+#'   SortBy = "Name"|"CreationTime",
+#'   SortOrder = "Ascending"|"Descending",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   NameContains = "string",
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_data_quality_job_definitions
+sagemaker_list_data_quality_job_definitions <- function(EndpointName = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL) {
+  op <- new_operation(
+    name = "ListDataQualityJobDefinitions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_data_quality_job_definitions_input(EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
+  output <- .sagemaker$list_data_quality_job_definitions_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_data_quality_job_definitions <- sagemaker_list_data_quality_job_definitions
+
+#' Returns a list of devices in the fleet
+#'
+#' Returns a list of devices in the fleet.
+#'
+#' @usage
+#' sagemaker_list_device_fleets(NextToken, MaxResults, CreationTimeAfter,
+#'   CreationTimeBefore, LastModifiedTimeAfter, LastModifiedTimeBefore,
+#'   NameContains, SortBy, SortOrder)
+#'
+#' @param NextToken The response from the last list when returning a list large enough to
+#' need tokening.
+#' @param MaxResults The maximum number of results to select.
+#' @param CreationTimeAfter Filter fleets where packaging job was created after specified time.
+#' @param CreationTimeBefore Filter fleets where the edge packaging job was created before specified
+#' time.
+#' @param LastModifiedTimeAfter Select fleets where the job was updated after X
+#' @param LastModifiedTimeBefore Select fleets where the job was updated before X
+#' @param NameContains Filter for fleets containing this name in their fleet device name.
+#' @param SortBy The column to sort by.
+#' @param SortOrder What direction to sort in.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_device_fleets(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NameContains = "string",
+#'   SortBy = "NAME"|"CREATION_TIME"|"LAST_MODIFIED_TIME",
+#'   SortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_device_fleets
+sagemaker_list_device_fleets <- function(NextToken = NULL, MaxResults = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "ListDeviceFleets",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_device_fleets_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .sagemaker$list_device_fleets_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_device_fleets <- sagemaker_list_device_fleets
+
+#' A list of devices
+#'
+#' A list of devices.
+#'
+#' @usage
+#' sagemaker_list_devices(NextToken, MaxResults, LatestHeartbeatAfter,
+#'   ModelName, DeviceFleetName)
+#'
+#' @param NextToken The response from the last list when returning a list large enough to
+#' need tokening.
+#' @param MaxResults Maximum number of results to select.
+#' @param LatestHeartbeatAfter Select fleets where the job was updated after X
+#' @param ModelName A filter that searches devices that contains this name in any of their
+#' models.
+#' @param DeviceFleetName Filter for fleets containing this name in their device fleet name.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_devices(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   LatestHeartbeatAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ModelName = "string",
+#'   DeviceFleetName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_devices
+sagemaker_list_devices <- function(NextToken = NULL, MaxResults = NULL, LatestHeartbeatAfter = NULL, ModelName = NULL, DeviceFleetName = NULL) {
+  op <- new_operation(
+    name = "ListDevices",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_devices_input(NextToken = NextToken, MaxResults = MaxResults, LatestHeartbeatAfter = LatestHeartbeatAfter, ModelName = ModelName, DeviceFleetName = DeviceFleetName)
+  output <- .sagemaker$list_devices_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_devices <- sagemaker_list_devices
+
 #' Lists the domains
 #'
 #' Lists the domains.
@@ -5810,6 +9730,74 @@ sagemaker_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
   return(response)
 }
 .sagemaker$operations$list_domains <- sagemaker_list_domains
+
+#' Returns a list of edge packaging jobs
+#'
+#' Returns a list of edge packaging jobs.
+#'
+#' @usage
+#' sagemaker_list_edge_packaging_jobs(NextToken, MaxResults,
+#'   CreationTimeAfter, CreationTimeBefore, LastModifiedTimeAfter,
+#'   LastModifiedTimeBefore, NameContains, ModelNameContains, StatusEquals,
+#'   SortBy, SortOrder)
+#'
+#' @param NextToken The response from the last list when returning a list large enough to
+#' need tokening.
+#' @param MaxResults Maximum number of results to select.
+#' @param CreationTimeAfter Select jobs where the job was created after specified time.
+#' @param CreationTimeBefore Select jobs where the job was created before specified time.
+#' @param LastModifiedTimeAfter Select jobs where the job was updated after specified time.
+#' @param LastModifiedTimeBefore Select jobs where the job was updated before specified time.
+#' @param NameContains Filter for jobs containing this name in their packaging job name.
+#' @param ModelNameContains Filter for jobs where the model name contains this string.
+#' @param StatusEquals The job status to filter for.
+#' @param SortBy Use to specify what column to sort by.
+#' @param SortOrder What direction to sort by.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_edge_packaging_jobs(
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   NameContains = "string",
+#'   ModelNameContains = "string",
+#'   StatusEquals = "STARTING"|"INPROGRESS"|"COMPLETED"|"FAILED"|"STOPPING"|"STOPPED",
+#'   SortBy = "NAME"|"MODEL_NAME"|"CREATION_TIME"|"LAST_MODIFIED_TIME"|"STATUS",
+#'   SortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_edge_packaging_jobs
+sagemaker_list_edge_packaging_jobs <- function(NextToken = NULL, MaxResults = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, NameContains = NULL, ModelNameContains = NULL, StatusEquals = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "ListEdgePackagingJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_edge_packaging_jobs_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, ModelNameContains = ModelNameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .sagemaker$list_edge_packaging_jobs_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_edge_packaging_jobs <- sagemaker_list_edge_packaging_jobs
 
 #' Lists endpoint configurations
 #'
@@ -5997,6 +9985,67 @@ sagemaker_list_experiments <- function(CreatedAfter = NULL, CreatedBefore = NULL
 }
 .sagemaker$operations$list_experiments <- sagemaker_list_experiments
 
+#' List FeatureGroups based on given filter and order
+#'
+#' List `FeatureGroup`s based on given filter and order.
+#'
+#' @usage
+#' sagemaker_list_feature_groups(NameContains, FeatureGroupStatusEquals,
+#'   OfflineStoreStatusEquals, CreationTimeAfter, CreationTimeBefore,
+#'   SortOrder, SortBy, MaxResults, NextToken)
+#'
+#' @param NameContains A string that partially matches one or more `FeatureGroup`s names.
+#' Filters `FeatureGroup`s by name.
+#' @param FeatureGroupStatusEquals A `FeatureGroup` status. Filters by `FeatureGroup` status.
+#' @param OfflineStoreStatusEquals An `OfflineStore` status. Filters by `OfflineStore` status.
+#' @param CreationTimeAfter Use this parameter to search for `FeatureGroups`s created after a
+#' specific date and time.
+#' @param CreationTimeBefore Use this parameter to search for `FeatureGroups`s created before a
+#' specific date and time.
+#' @param SortOrder The order in which feature groups are listed.
+#' @param SortBy The value on which the feature group list is sorted.
+#' @param MaxResults The maximum number of results returned by `ListFeatureGroups`.
+#' @param NextToken A token to resume pagination of `ListFeatureGroups` results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_feature_groups(
+#'   NameContains = "string",
+#'   FeatureGroupStatusEquals = "Creating"|"Created"|"CreateFailed"|"Deleting"|"DeleteFailed",
+#'   OfflineStoreStatusEquals = "Active"|"Blocked"|"Disabled",
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SortOrder = "Ascending"|"Descending",
+#'   SortBy = "Name"|"FeatureGroupStatus"|"OfflineStoreStatus"|"CreationTime",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_feature_groups
+sagemaker_list_feature_groups <- function(NameContains = NULL, FeatureGroupStatusEquals = NULL, OfflineStoreStatusEquals = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, SortOrder = NULL, SortBy = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListFeatureGroups",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_feature_groups_input(NameContains = NameContains, FeatureGroupStatusEquals = FeatureGroupStatusEquals, OfflineStoreStatusEquals = OfflineStoreStatusEquals, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, SortOrder = SortOrder, SortBy = SortBy, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .sagemaker$list_feature_groups_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_feature_groups <- sagemaker_list_feature_groups
+
 #' Returns information about the flow definitions in your account
 #'
 #' Returns information about the flow definitions in your account.
@@ -6181,6 +10230,147 @@ sagemaker_list_hyper_parameter_tuning_jobs <- function(NextToken = NULL, MaxResu
 }
 .sagemaker$operations$list_hyper_parameter_tuning_jobs <- sagemaker_list_hyper_parameter_tuning_jobs
 
+#' Lists the versions of a specified image and their properties
+#'
+#' Lists the versions of a specified image and their properties. The list
+#' can be filtered by creation time or modified time.
+#'
+#' @usage
+#' sagemaker_list_image_versions(CreationTimeAfter, CreationTimeBefore,
+#'   ImageName, LastModifiedTimeAfter, LastModifiedTimeBefore, MaxResults,
+#'   NextToken, SortBy, SortOrder)
+#'
+#' @param CreationTimeAfter A filter that returns only versions created on or after the specified
+#' time.
+#' @param CreationTimeBefore A filter that returns only versions created on or before the specified
+#' time.
+#' @param ImageName &#91;required&#93; The name of the image to list the versions of.
+#' @param LastModifiedTimeAfter A filter that returns only versions modified on or after the specified
+#' time.
+#' @param LastModifiedTimeBefore A filter that returns only versions modified on or before the specified
+#' time.
+#' @param MaxResults The maximum number of versions to return in the response. The default
+#' value is 10.
+#' @param NextToken If the previous call to `ListImageVersions` didn't return the full set
+#' of versions, the call returns a token for getting the next set of
+#' versions.
+#' @param SortBy The property used to sort results. The default value is `CREATION_TIME`.
+#' @param SortOrder The sort order. The default value is `DESCENDING`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_image_versions(
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ImageName = "string",
+#'   LastModifiedTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   SortBy = "CREATION_TIME"|"LAST_MODIFIED_TIME"|"VERSION",
+#'   SortOrder = "ASCENDING"|"DESCENDING"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_image_versions
+sagemaker_list_image_versions <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, ImageName, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, MaxResults = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "ListImageVersions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_image_versions_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, ImageName = ImageName, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .sagemaker$list_image_versions_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_image_versions <- sagemaker_list_image_versions
+
+#' Lists the images in your account and their properties
+#'
+#' Lists the images in your account and their properties. The list can be
+#' filtered by creation time or modified time, and whether the image name
+#' contains a specified string.
+#'
+#' @usage
+#' sagemaker_list_images(CreationTimeAfter, CreationTimeBefore,
+#'   LastModifiedTimeAfter, LastModifiedTimeBefore, MaxResults, NameContains,
+#'   NextToken, SortBy, SortOrder)
+#'
+#' @param CreationTimeAfter A filter that returns only images created on or after the specified
+#' time.
+#' @param CreationTimeBefore A filter that returns only images created on or before the specified
+#' time.
+#' @param LastModifiedTimeAfter A filter that returns only images modified on or after the specified
+#' time.
+#' @param LastModifiedTimeBefore A filter that returns only images modified on or before the specified
+#' time.
+#' @param MaxResults The maximum number of images to return in the response. The default
+#' value is 10.
+#' @param NameContains A filter that returns only images whose name contains the specified
+#' string.
+#' @param NextToken If the previous call to `ListImages` didn't return the full set of
+#' images, the call returns a token for getting the next set of images.
+#' @param SortBy The property used to sort results. The default value is `CREATION_TIME`.
+#' @param SortOrder The sort order. The default value is `DESCENDING`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_images(
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   MaxResults = 123,
+#'   NameContains = "string",
+#'   NextToken = "string",
+#'   SortBy = "CREATION_TIME"|"LAST_MODIFIED_TIME"|"IMAGE_NAME",
+#'   SortOrder = "ASCENDING"|"DESCENDING"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_images
+sagemaker_list_images <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, LastModifiedTimeAfter = NULL, LastModifiedTimeBefore = NULL, MaxResults = NULL, NameContains = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "ListImages",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_images_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .sagemaker$list_images_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_images <- sagemaker_list_images
+
 #' Gets a list of labeling jobs
 #'
 #' Gets a list of labeling jobs.
@@ -6229,7 +10419,7 @@ sagemaker_list_hyper_parameter_tuning_jobs <- function(NextToken = NULL, MaxResu
 #'   NameContains = "string",
 #'   SortBy = "Name"|"CreationTime"|"Status",
 #'   SortOrder = "Ascending"|"Descending",
-#'   StatusEquals = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"
+#'   StatusEquals = "Initializing"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"
 #' )
 #' ```
 #'
@@ -6316,13 +10506,198 @@ sagemaker_list_labeling_jobs_for_workteam <- function(WorkteamArn, MaxResults = 
 }
 .sagemaker$operations$list_labeling_jobs_for_workteam <- sagemaker_list_labeling_jobs_for_workteam
 
+#' Lists model bias jobs definitions that satisfy various filters
+#'
+#' Lists model bias jobs definitions that satisfy various filters.
+#'
+#' @usage
+#' sagemaker_list_model_bias_job_definitions(EndpointName, SortBy,
+#'   SortOrder, NextToken, MaxResults, NameContains, CreationTimeBefore,
+#'   CreationTimeAfter)
+#'
+#' @param EndpointName Name of the endpoint to monitor for model bias.
+#' @param SortBy Whether to sort results by the `Name` or `CreationTime` field. The
+#' default is `CreationTime`.
+#' @param SortOrder Whether to sort the results in `Ascending` or `Descending` order. The
+#' default is `Descending`.
+#' @param NextToken The token returned if the response is truncated. To retrieve the next
+#' set of job executions, use it in the next request.
+#' @param MaxResults The maximum number of model bias jobs to return in the response. The
+#' default value is 10.
+#' @param NameContains Filter for model bias jobs whose name contains a specified string.
+#' @param CreationTimeBefore A filter that returns only model bias jobs created before a specified
+#' time.
+#' @param CreationTimeAfter A filter that returns only model bias jobs created after a specified
+#' time.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_model_bias_job_definitions(
+#'   EndpointName = "string",
+#'   SortBy = "Name"|"CreationTime",
+#'   SortOrder = "Ascending"|"Descending",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   NameContains = "string",
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_model_bias_job_definitions
+sagemaker_list_model_bias_job_definitions <- function(EndpointName = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL) {
+  op <- new_operation(
+    name = "ListModelBiasJobDefinitions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_model_bias_job_definitions_input(EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
+  output <- .sagemaker$list_model_bias_job_definitions_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_model_bias_job_definitions <- sagemaker_list_model_bias_job_definitions
+
+#' Lists model explainability job definitions that satisfy various filters
+#'
+#' Lists model explainability job definitions that satisfy various filters.
+#'
+#' @usage
+#' sagemaker_list_model_explainability_job_definitions(EndpointName,
+#'   SortBy, SortOrder, NextToken, MaxResults, NameContains,
+#'   CreationTimeBefore, CreationTimeAfter)
+#'
+#' @param EndpointName Name of the endpoint to monitor for model explainability.
+#' @param SortBy Whether to sort results by the `Name` or `CreationTime` field. The
+#' default is `CreationTime`.
+#' @param SortOrder Whether to sort the results in `Ascending` or `Descending` order. The
+#' default is `Descending`.
+#' @param NextToken The token returned if the response is truncated. To retrieve the next
+#' set of job executions, use it in the next request.
+#' @param MaxResults The maximum number of jobs to return in the response. The default value
+#' is 10.
+#' @param NameContains Filter for model explainability jobs whose name contains a specified
+#' string.
+#' @param CreationTimeBefore A filter that returns only model explainability jobs created before a
+#' specified time.
+#' @param CreationTimeAfter A filter that returns only model explainability jobs created after a
+#' specified time.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_model_explainability_job_definitions(
+#'   EndpointName = "string",
+#'   SortBy = "Name"|"CreationTime",
+#'   SortOrder = "Ascending"|"Descending",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   NameContains = "string",
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_model_explainability_job_definitions
+sagemaker_list_model_explainability_job_definitions <- function(EndpointName = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL) {
+  op <- new_operation(
+    name = "ListModelExplainabilityJobDefinitions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_model_explainability_job_definitions_input(EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
+  output <- .sagemaker$list_model_explainability_job_definitions_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_model_explainability_job_definitions <- sagemaker_list_model_explainability_job_definitions
+
+#' Gets a list of the model groups in your AWS account
+#'
+#' Gets a list of the model groups in your AWS account.
+#'
+#' @usage
+#' sagemaker_list_model_package_groups(CreationTimeAfter,
+#'   CreationTimeBefore, MaxResults, NameContains, NextToken, SortBy,
+#'   SortOrder)
+#'
+#' @param CreationTimeAfter A filter that returns only model groups created after the specified
+#' time.
+#' @param CreationTimeBefore A filter that returns only model groups created before the specified
+#' time.
+#' @param MaxResults The maximum number of results to return in the response.
+#' @param NameContains A string in the model group name. This filter returns only model groups
+#' whose name contains the specified string.
+#' @param NextToken If the result of the previous `ListModelPackageGroups` request was
+#' truncated, the response includes a `NextToken`. To retrieve the next set
+#' of model groups, use the token in the next request.
+#' @param SortBy The field to sort results by. The default is `CreationTime`.
+#' @param SortOrder The sort order for results. The default is `Ascending`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_model_package_groups(
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   MaxResults = 123,
+#'   NameContains = "string",
+#'   NextToken = "string",
+#'   SortBy = "Name"|"CreationTime",
+#'   SortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_model_package_groups
+sagemaker_list_model_package_groups <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, MaxResults = NULL, NameContains = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "ListModelPackageGroups",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_model_package_groups_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .sagemaker$list_model_package_groups_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_model_package_groups <- sagemaker_list_model_package_groups
+
 #' Lists the model packages that have been created
 #'
 #' Lists the model packages that have been created.
 #'
 #' @usage
 #' sagemaker_list_model_packages(CreationTimeAfter, CreationTimeBefore,
-#'   MaxResults, NameContains, NextToken, SortBy, SortOrder)
+#'   MaxResults, NameContains, ModelApprovalStatus, ModelPackageGroupName,
+#'   ModelPackageType, NextToken, SortBy, SortOrder)
 #'
 #' @param CreationTimeAfter A filter that returns only model packages created after the specified
 #' time (timestamp).
@@ -6331,6 +10706,18 @@ sagemaker_list_labeling_jobs_for_workteam <- function(WorkteamArn, MaxResults = 
 #' @param MaxResults The maximum number of model packages to return in the response.
 #' @param NameContains A string in the model package name. This filter returns only model
 #' packages whose name contains the specified string.
+#' @param ModelApprovalStatus A filter that returns only the model packages with the specified
+#' approval status.
+#' @param ModelPackageGroupName A filter that returns only model versions that belong to the specified
+#' model group.
+#' @param ModelPackageType A filter that returns onlyl the model packages of the specified type.
+#' This can be one of the following values.
+#' 
+#' -   `VERSIONED` - List only versioned models.
+#' 
+#' -   `UNVERSIONED` - List only unversioined models.
+#' 
+#' -   `BOTH` - List both versioned and unversioned models.
 #' @param NextToken If the response to a previous `ListModelPackages` request was truncated,
 #' the response includes a `NextToken`. To retrieve the next set of model
 #' packages, use the token in the next request.
@@ -6349,6 +10736,9 @@ sagemaker_list_labeling_jobs_for_workteam <- function(WorkteamArn, MaxResults = 
 #'   ),
 #'   MaxResults = 123,
 #'   NameContains = "string",
+#'   ModelApprovalStatus = "Approved"|"Rejected"|"PendingManualApproval",
+#'   ModelPackageGroupName = "string",
+#'   ModelPackageType = "Versioned"|"Unversioned"|"Both",
 #'   NextToken = "string",
 #'   SortBy = "Name"|"CreationTime",
 #'   SortOrder = "Ascending"|"Descending"
@@ -6358,14 +10748,14 @@ sagemaker_list_labeling_jobs_for_workteam <- function(WorkteamArn, MaxResults = 
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_model_packages
-sagemaker_list_model_packages <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, MaxResults = NULL, NameContains = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
+sagemaker_list_model_packages <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, MaxResults = NULL, NameContains = NULL, ModelApprovalStatus = NULL, ModelPackageGroupName = NULL, ModelPackageType = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
   op <- new_operation(
     name = "ListModelPackages",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$list_model_packages_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
+  input <- .sagemaker$list_model_packages_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, ModelApprovalStatus = ModelApprovalStatus, ModelPackageGroupName = ModelPackageGroupName, ModelPackageType = ModelPackageType, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_model_packages_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -6374,6 +10764,71 @@ sagemaker_list_model_packages <- function(CreationTimeAfter = NULL, CreationTime
   return(response)
 }
 .sagemaker$operations$list_model_packages <- sagemaker_list_model_packages
+
+#' Gets a list of model quality monitoring job definitions in your account
+#'
+#' Gets a list of model quality monitoring job definitions in your account.
+#'
+#' @usage
+#' sagemaker_list_model_quality_job_definitions(EndpointName, SortBy,
+#'   SortOrder, NextToken, MaxResults, NameContains, CreationTimeBefore,
+#'   CreationTimeAfter)
+#'
+#' @param EndpointName A filter that returns only model quality monitoring job definitions that
+#' are associated with the specified endpoint.
+#' @param SortBy The field to sort results by. The default is `CreationTime`.
+#' @param SortOrder The sort order for results. The default is `Descending`.
+#' @param NextToken If the result of the previous `ListModelQualityJobDefinitions` request
+#' was truncated, the response includes a `NextToken`. To retrieve the next
+#' set of model quality monitoring job definitions, use the token in the
+#' next request.
+#' @param MaxResults The maximum number of results to return in a call to
+#' `ListModelQualityJobDefinitions`.
+#' @param NameContains A string in the transform job name. This filter returns only model
+#' quality monitoring job definitions whose name contains the specified
+#' string.
+#' @param CreationTimeBefore A filter that returns only model quality monitoring job definitions
+#' created before the specified time.
+#' @param CreationTimeAfter A filter that returns only model quality monitoring job definitions
+#' created after the specified time.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_model_quality_job_definitions(
+#'   EndpointName = "string",
+#'   SortBy = "Name"|"CreationTime",
+#'   SortOrder = "Ascending"|"Descending",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   NameContains = "string",
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_model_quality_job_definitions
+sagemaker_list_model_quality_job_definitions <- function(EndpointName = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL) {
+  op <- new_operation(
+    name = "ListModelQualityJobDefinitions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_model_quality_job_definitions_input(EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
+  output <- .sagemaker$list_model_quality_job_definitions_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_model_quality_job_definitions <- sagemaker_list_model_quality_job_definitions
 
 #' Lists models created with the CreateModel API
 #'
@@ -6442,7 +10897,7 @@ sagemaker_list_models <- function(SortBy = NULL, SortOrder = NULL, NextToken = N
 #'   EndpointName, SortBy, SortOrder, NextToken, MaxResults,
 #'   ScheduledTimeBefore, ScheduledTimeAfter, CreationTimeBefore,
 #'   CreationTimeAfter, LastModifiedTimeBefore, LastModifiedTimeAfter,
-#'   StatusEquals)
+#'   StatusEquals, MonitoringJobDefinitionName, MonitoringTypeEquals)
 #'
 #' @param MonitoringScheduleName Name of a specific schedule to fetch jobs for.
 #' @param EndpointName Name of a specific endpoint to fetch jobs for.
@@ -6461,6 +10916,10 @@ sagemaker_list_models <- function(SortBy = NULL, SortOrder = NULL, NextToken = N
 #' @param LastModifiedTimeBefore A filter that returns only jobs modified after a specified time.
 #' @param LastModifiedTimeAfter A filter that returns only jobs modified before a specified time.
 #' @param StatusEquals A filter that retrieves only jobs with a specific status.
+#' @param MonitoringJobDefinitionName Gets a list of the monitoring job runs of the specified monitoring job
+#' definitions.
+#' @param MonitoringTypeEquals A filter that returns only the monitoring job runs of the specified
+#' monitoring type.
 #'
 #' @section Request syntax:
 #' ```
@@ -6489,21 +10948,23 @@ sagemaker_list_models <- function(SortBy = NULL, SortOrder = NULL, NextToken = N
 #'   LastModifiedTimeAfter = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   StatusEquals = "Pending"|"Completed"|"CompletedWithViolations"|"InProgress"|"Failed"|"Stopping"|"Stopped"
+#'   StatusEquals = "Pending"|"Completed"|"CompletedWithViolations"|"InProgress"|"Failed"|"Stopping"|"Stopped",
+#'   MonitoringJobDefinitionName = "string",
+#'   MonitoringTypeEquals = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_monitoring_executions
-sagemaker_list_monitoring_executions <- function(MonitoringScheduleName = NULL, EndpointName = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, ScheduledTimeBefore = NULL, ScheduledTimeAfter = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL, LastModifiedTimeBefore = NULL, LastModifiedTimeAfter = NULL, StatusEquals = NULL) {
+sagemaker_list_monitoring_executions <- function(MonitoringScheduleName = NULL, EndpointName = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, ScheduledTimeBefore = NULL, ScheduledTimeAfter = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL, LastModifiedTimeBefore = NULL, LastModifiedTimeAfter = NULL, StatusEquals = NULL, MonitoringJobDefinitionName = NULL, MonitoringTypeEquals = NULL) {
   op <- new_operation(
     name = "ListMonitoringExecutions",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$list_monitoring_executions_input(MonitoringScheduleName = MonitoringScheduleName, EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, ScheduledTimeBefore = ScheduledTimeBefore, ScheduledTimeAfter = ScheduledTimeAfter, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, StatusEquals = StatusEquals)
+  input <- .sagemaker$list_monitoring_executions_input(MonitoringScheduleName = MonitoringScheduleName, EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, ScheduledTimeBefore = ScheduledTimeBefore, ScheduledTimeAfter = ScheduledTimeAfter, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, StatusEquals = StatusEquals, MonitoringJobDefinitionName = MonitoringJobDefinitionName, MonitoringTypeEquals = MonitoringTypeEquals)
   output <- .sagemaker$list_monitoring_executions_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -6521,7 +10982,7 @@ sagemaker_list_monitoring_executions <- function(MonitoringScheduleName = NULL, 
 #' sagemaker_list_monitoring_schedules(EndpointName, SortBy, SortOrder,
 #'   NextToken, MaxResults, NameContains, CreationTimeBefore,
 #'   CreationTimeAfter, LastModifiedTimeBefore, LastModifiedTimeAfter,
-#'   StatusEquals)
+#'   StatusEquals, MonitoringJobDefinitionName, MonitoringTypeEquals)
 #'
 #' @param EndpointName Name of a specific endpoint to fetch schedules for.
 #' @param SortBy Whether to sort results by `Status`, `CreationTime`, `ScheduledTime`
@@ -6543,6 +11004,10 @@ sagemaker_list_monitoring_executions <- function(MonitoringScheduleName = NULL, 
 #' specified time.
 #' @param StatusEquals A filter that returns only monitoring schedules modified before a
 #' specified time.
+#' @param MonitoringJobDefinitionName Gets a list of the monitoring schedules for the specified monitoring job
+#' definition.
+#' @param MonitoringTypeEquals A filter that returns only the monitoring schedules for the specified
+#' monitoring type.
 #'
 #' @section Request syntax:
 #' ```
@@ -6565,21 +11030,23 @@ sagemaker_list_monitoring_executions <- function(MonitoringScheduleName = NULL, 
 #'   LastModifiedTimeAfter = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   StatusEquals = "Pending"|"Failed"|"Scheduled"|"Stopped"
+#'   StatusEquals = "Pending"|"Failed"|"Scheduled"|"Stopped",
+#'   MonitoringJobDefinitionName = "string",
+#'   MonitoringTypeEquals = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_list_monitoring_schedules
-sagemaker_list_monitoring_schedules <- function(EndpointName = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL, LastModifiedTimeBefore = NULL, LastModifiedTimeAfter = NULL, StatusEquals = NULL) {
+sagemaker_list_monitoring_schedules <- function(EndpointName = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, NameContains = NULL, CreationTimeBefore = NULL, CreationTimeAfter = NULL, LastModifiedTimeBefore = NULL, LastModifiedTimeAfter = NULL, StatusEquals = NULL, MonitoringJobDefinitionName = NULL, MonitoringTypeEquals = NULL) {
   op <- new_operation(
     name = "ListMonitoringSchedules",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$list_monitoring_schedules_input(EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, StatusEquals = StatusEquals)
+  input <- .sagemaker$list_monitoring_schedules_input(EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, StatusEquals = StatusEquals, MonitoringJobDefinitionName = MonitoringJobDefinitionName, MonitoringTypeEquals = MonitoringTypeEquals)
   output <- .sagemaker$list_monitoring_schedules_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -6754,6 +11221,209 @@ sagemaker_list_notebook_instances <- function(NextToken = NULL, MaxResults = NUL
 }
 .sagemaker$operations$list_notebook_instances <- sagemaker_list_notebook_instances
 
+#' Gets a list of PipeLineExecutionStep objects
+#'
+#' Gets a list of `PipeLineExecutionStep` objects.
+#'
+#' @usage
+#' sagemaker_list_pipeline_execution_steps(PipelineExecutionArn, NextToken,
+#'   MaxResults, SortOrder)
+#'
+#' @param PipelineExecutionArn The Amazon Resource Name (ARN) of the pipeline execution.
+#' @param NextToken If the result of the previous `ListPipelineExecutionSteps` request was
+#' truncated, the response includes a `NextToken`. To retrieve the next set
+#' of pipeline execution steps, use the token in the next request.
+#' @param MaxResults The maximum number of pipeline execution steps to return in the
+#' response.
+#' @param SortOrder The field by which to sort results. The default is `CreatedTime`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_pipeline_execution_steps(
+#'   PipelineExecutionArn = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   SortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_pipeline_execution_steps
+sagemaker_list_pipeline_execution_steps <- function(PipelineExecutionArn = NULL, NextToken = NULL, MaxResults = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "ListPipelineExecutionSteps",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_pipeline_execution_steps_input(PipelineExecutionArn = PipelineExecutionArn, NextToken = NextToken, MaxResults = MaxResults, SortOrder = SortOrder)
+  output <- .sagemaker$list_pipeline_execution_steps_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_pipeline_execution_steps <- sagemaker_list_pipeline_execution_steps
+
+#' Gets a list of the pipeline executions
+#'
+#' Gets a list of the pipeline executions.
+#'
+#' @usage
+#' sagemaker_list_pipeline_executions(PipelineName, CreatedAfter,
+#'   CreatedBefore, SortBy, SortOrder, NextToken, MaxResults)
+#'
+#' @param PipelineName &#91;required&#93; The name of the pipeline.
+#' @param CreatedAfter A filter that returns the pipeline executions that were created after a
+#' specified time.
+#' @param CreatedBefore A filter that returns the pipeline executions that were created before a
+#' specified time.
+#' @param SortBy The field by which to sort results. The default is `CreatedTime`.
+#' @param SortOrder The sort order for results.
+#' @param NextToken If the result of the previous `ListPipelineExecutions` request was
+#' truncated, the response includes a `NextToken`. To retrieve the next set
+#' of pipeline executions, use the token in the next request.
+#' @param MaxResults The maximum number of pipeline executions to return in the response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_pipeline_executions(
+#'   PipelineName = "string",
+#'   CreatedAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreatedBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SortBy = "CreationTime"|"PipelineExecutionArn",
+#'   SortOrder = "Ascending"|"Descending",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_pipeline_executions
+sagemaker_list_pipeline_executions <- function(PipelineName, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListPipelineExecutions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_pipeline_executions_input(PipelineName = PipelineName, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$list_pipeline_executions_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_pipeline_executions <- sagemaker_list_pipeline_executions
+
+#' Gets a list of parameters for a pipeline execution
+#'
+#' Gets a list of parameters for a pipeline execution.
+#'
+#' @usage
+#' sagemaker_list_pipeline_parameters_for_execution(PipelineExecutionArn,
+#'   NextToken, MaxResults)
+#'
+#' @param PipelineExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the pipeline execution.
+#' @param NextToken If the result of the previous `ListPipelineParametersForExecution`
+#' request was truncated, the response includes a `NextToken`. To retrieve
+#' the next set of parameters, use the token in the next request.
+#' @param MaxResults The maximum number of parameters to return in the response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_pipeline_parameters_for_execution(
+#'   PipelineExecutionArn = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_pipeline_parameters_for_execution
+sagemaker_list_pipeline_parameters_for_execution <- function(PipelineExecutionArn, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListPipelineParametersForExecution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_pipeline_parameters_for_execution_input(PipelineExecutionArn = PipelineExecutionArn, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$list_pipeline_parameters_for_execution_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_pipeline_parameters_for_execution <- sagemaker_list_pipeline_parameters_for_execution
+
+#' Gets a list of pipelines
+#'
+#' Gets a list of pipelines.
+#'
+#' @usage
+#' sagemaker_list_pipelines(PipelineNamePrefix, CreatedAfter,
+#'   CreatedBefore, SortBy, SortOrder, NextToken, MaxResults)
+#'
+#' @param PipelineNamePrefix The prefix of the pipeline name.
+#' @param CreatedAfter A filter that returns the pipelines that were created after a specified
+#' time.
+#' @param CreatedBefore A filter that returns the pipelines that were created before a specified
+#' time.
+#' @param SortBy The field by which to sort results. The default is `CreatedTime`.
+#' @param SortOrder The sort order for results.
+#' @param NextToken If the result of the previous `ListPipelines` request was truncated, the
+#' response includes a `NextToken`. To retrieve the next set of pipelines,
+#' use the token in the next request.
+#' @param MaxResults The maximum number of pipelines to return in the response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_pipelines(
+#'   PipelineNamePrefix = "string",
+#'   CreatedAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreatedBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   SortBy = "Name"|"CreationTime",
+#'   SortOrder = "Ascending"|"Descending",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_pipelines
+sagemaker_list_pipelines <- function(PipelineNamePrefix = NULL, CreatedAfter = NULL, CreatedBefore = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListPipelines",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_pipelines_input(PipelineNamePrefix = PipelineNamePrefix, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$list_pipelines_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_pipelines <- sagemaker_list_pipelines
+
 #' Lists processing jobs that satisfy various filters
 #'
 #' Lists processing jobs that satisfy various filters.
@@ -6824,6 +11494,64 @@ sagemaker_list_processing_jobs <- function(CreationTimeAfter = NULL, CreationTim
   return(response)
 }
 .sagemaker$operations$list_processing_jobs <- sagemaker_list_processing_jobs
+
+#' Gets a list of the projects in an AWS account
+#'
+#' Gets a list of the projects in an AWS account.
+#'
+#' @usage
+#' sagemaker_list_projects(CreationTimeAfter, CreationTimeBefore,
+#'   MaxResults, NameContains, NextToken, SortBy, SortOrder)
+#'
+#' @param CreationTimeAfter A filter that returns the projects that were created after a specified
+#' time.
+#' @param CreationTimeBefore A filter that returns the projects that were created before a specified
+#' time.
+#' @param MaxResults The maximum number of projects to return in the response.
+#' @param NameContains A filter that returns the projects whose name contains a specified
+#' string.
+#' @param NextToken If the result of the previous `ListProjects` request was truncated, the
+#' response includes a `NextToken`. To retrieve the next set of projects,
+#' use the token in the next request.
+#' @param SortBy The field by which to sort results. The default is `CreationTime`.
+#' @param SortOrder The sort order for results. The default is `Ascending`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_projects(
+#'   CreationTimeAfter = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreationTimeBefore = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   MaxResults = 123,
+#'   NameContains = "string",
+#'   NextToken = "string",
+#'   SortBy = "Name"|"CreationTime",
+#'   SortOrder = "Ascending"|"Descending"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_projects
+sagemaker_list_projects <- function(CreationTimeAfter = NULL, CreationTimeBefore = NULL, MaxResults = NULL, NameContains = NULL, NextToken = NULL, SortBy = NULL, SortOrder = NULL) {
+  op <- new_operation(
+    name = "ListProjects",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_projects_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
+  output <- .sagemaker$list_projects_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_projects <- sagemaker_list_projects
 
 #' Gets a list of the work teams that you are subscribed to in the AWS
 #' Marketplace
@@ -7300,10 +12028,59 @@ sagemaker_list_user_profiles <- function(NextToken = NULL, MaxResults = NULL, So
 }
 .sagemaker$operations$list_user_profiles <- sagemaker_list_user_profiles
 
-#' Gets a list of work teams that you have defined in a region
+#' Use this operation to list all private and vendor workforces in an AWS
+#' Region
 #'
-#' Gets a list of work teams that you have defined in a region. The list
-#' may be empty if no work team satisfies the filter specified in the
+#' Use this operation to list all private and vendor workforces in an AWS
+#' Region. Note that you can only have one private workforce per AWS
+#' Region.
+#'
+#' @usage
+#' sagemaker_list_workforces(SortBy, SortOrder, NameContains, NextToken,
+#'   MaxResults)
+#'
+#' @param SortBy Sort workforces using the workforce name or creation date.
+#' @param SortOrder Sort workforces in ascending or descending order.
+#' @param NameContains A filter you can use to search for workforces using part of the
+#' workforce name.
+#' @param NextToken A token to resume pagination.
+#' @param MaxResults The maximum number of workforces returned in the response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_workforces(
+#'   SortBy = "Name"|"CreateDate",
+#'   SortOrder = "Ascending"|"Descending",
+#'   NameContains = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_workforces
+sagemaker_list_workforces <- function(SortBy = NULL, SortOrder = NULL, NameContains = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListWorkforces",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$list_workforces_input(SortBy = SortBy, SortOrder = SortOrder, NameContains = NameContains, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .sagemaker$list_workforces_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_workforces <- sagemaker_list_workforces
+
+#' Gets a list of private work teams that you have defined in a region
+#'
+#' Gets a list of private work teams that you have defined in a region. The
+#' list may be empty if no work team satisfies the filter specified in the
 #' `NameContains` parameter.
 #'
 #' @usage
@@ -7349,6 +12126,100 @@ sagemaker_list_workteams <- function(SortBy = NULL, SortOrder = NULL, NameContai
   return(response)
 }
 .sagemaker$operations$list_workteams <- sagemaker_list_workteams
+
+#' Adds a resouce policy to control access to a model group
+#'
+#' Adds a resouce policy to control access to a model group. For
+#' information about resoure policies, see [Identity-based policies and
+#' resource-based
+#' policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html)
+#' in the *AWS Identity and Access Management User Guide.*.
+#'
+#' @usage
+#' sagemaker_put_model_package_group_policy(ModelPackageGroupName,
+#'   ResourcePolicy)
+#'
+#' @param ModelPackageGroupName &#91;required&#93; The name of the model group to add a resource policy to.
+#' @param ResourcePolicy &#91;required&#93; The resource policy for the model group.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_model_package_group_policy(
+#'   ModelPackageGroupName = "string",
+#'   ResourcePolicy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_put_model_package_group_policy
+sagemaker_put_model_package_group_policy <- function(ModelPackageGroupName, ResourcePolicy) {
+  op <- new_operation(
+    name = "PutModelPackageGroupPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$put_model_package_group_policy_input(ModelPackageGroupName = ModelPackageGroupName, ResourcePolicy = ResourcePolicy)
+  output <- .sagemaker$put_model_package_group_policy_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$put_model_package_group_policy <- sagemaker_put_model_package_group_policy
+
+#' Register devices
+#'
+#' Register devices.
+#'
+#' @usage
+#' sagemaker_register_devices(DeviceFleetName, Devices, Tags)
+#'
+#' @param DeviceFleetName &#91;required&#93; The name of the fleet.
+#' @param Devices &#91;required&#93; A list of devices to register with SageMaker Edge Manager.
+#' @param Tags The tags associated with devices.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$register_devices(
+#'   DeviceFleetName = "string",
+#'   Devices = list(
+#'     list(
+#'       DeviceName = "string",
+#'       Description = "string",
+#'       IotThingName = "string"
+#'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_register_devices
+sagemaker_register_devices <- function(DeviceFleetName, Devices, Tags = NULL) {
+  op <- new_operation(
+    name = "RegisterDevices",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$register_devices_input(DeviceFleetName = DeviceFleetName, Devices = Devices, Tags = Tags)
+  output <- .sagemaker$register_devices_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$register_devices <- sagemaker_register_devices
 
 #' Renders the UI template so that you can preview the worker's experience
 #'
@@ -7434,7 +12305,7 @@ sagemaker_render_ui_template <- function(UiTemplate = NULL, Task, RoleArn, Human
 #' @section Request syntax:
 #' ```
 #' svc$search(
-#'   Resource = "TrainingJob"|"Experiment"|"ExperimentTrial"|"ExperimentTrialComponent",
+#'   Resource = "TrainingJob"|"Experiment"|"ExperimentTrial"|"ExperimentTrialComponent"|"Endpoint"|"ModelPackage"|"ModelPackageGroup"|"Pipeline"|"PipelineExecution"|"FeatureGroup",
 #'   SearchExpression = list(
 #'     Filters = list(
 #'       list(
@@ -7491,7 +12362,8 @@ sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, S
 #'
 #' Starts a previously stopped monitoring schedule.
 #' 
-#' New monitoring schedules are immediately started after creation.
+#' By default, when you successfully create a new schedule, the status of a
+#' monitoring schedule is `scheduled`.
 #'
 #' @usage
 #' sagemaker_start_monitoring_schedule(MonitoringScheduleName)
@@ -7565,6 +12437,59 @@ sagemaker_start_notebook_instance <- function(NotebookInstanceName) {
   return(response)
 }
 .sagemaker$operations$start_notebook_instance <- sagemaker_start_notebook_instance
+
+#' Starts a pipeline execution
+#'
+#' Starts a pipeline execution.
+#'
+#' @usage
+#' sagemaker_start_pipeline_execution(PipelineName,
+#'   PipelineExecutionDisplayName, PipelineParameters,
+#'   PipelineExecutionDescription, ClientRequestToken)
+#'
+#' @param PipelineName &#91;required&#93; The name of the pipeline.
+#' @param PipelineExecutionDisplayName The display name of the pipeline execution.
+#' @param PipelineParameters Contains a list of pipeline parameters. This list can be empty.
+#' @param PipelineExecutionDescription The description of the pipeline execution.
+#' @param ClientRequestToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the operation. An idempotent operation completes no more
+#' than one time.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_pipeline_execution(
+#'   PipelineName = "string",
+#'   PipelineExecutionDisplayName = "string",
+#'   PipelineParameters = list(
+#'     list(
+#'       Name = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   PipelineExecutionDescription = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_start_pipeline_execution
+sagemaker_start_pipeline_execution <- function(PipelineName, PipelineExecutionDisplayName = NULL, PipelineParameters = NULL, PipelineExecutionDescription = NULL, ClientRequestToken) {
+  op <- new_operation(
+    name = "StartPipelineExecution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$start_pipeline_execution_input(PipelineName = PipelineName, PipelineExecutionDisplayName = PipelineExecutionDisplayName, PipelineParameters = PipelineParameters, PipelineExecutionDescription = PipelineExecutionDescription, ClientRequestToken = ClientRequestToken)
+  output <- .sagemaker$start_pipeline_execution_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$start_pipeline_execution <- sagemaker_start_pipeline_execution
 
 #' A method for forcing the termination of a running job
 #'
@@ -7646,6 +12571,42 @@ sagemaker_stop_compilation_job <- function(CompilationJobName) {
   return(response)
 }
 .sagemaker$operations$stop_compilation_job <- sagemaker_stop_compilation_job
+
+#' Request to stop an edge packaging job
+#'
+#' Request to stop an edge packaging job.
+#'
+#' @usage
+#' sagemaker_stop_edge_packaging_job(EdgePackagingJobName)
+#'
+#' @param EdgePackagingJobName &#91;required&#93; The name of the edge packaging job.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_edge_packaging_job(
+#'   EdgePackagingJobName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_stop_edge_packaging_job
+sagemaker_stop_edge_packaging_job <- function(EdgePackagingJobName) {
+  op <- new_operation(
+    name = "StopEdgePackagingJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$stop_edge_packaging_job_input(EdgePackagingJobName = EdgePackagingJobName)
+  output <- .sagemaker$stop_edge_packaging_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$stop_edge_packaging_job <- sagemaker_stop_edge_packaging_job
 
 #' Stops a running hyperparameter tuning job and all running training jobs
 #' that the tuning job launched
@@ -7811,6 +12772,47 @@ sagemaker_stop_notebook_instance <- function(NotebookInstanceName) {
 }
 .sagemaker$operations$stop_notebook_instance <- sagemaker_stop_notebook_instance
 
+#' Stops a pipeline execution
+#'
+#' Stops a pipeline execution.
+#'
+#' @usage
+#' sagemaker_stop_pipeline_execution(PipelineExecutionArn,
+#'   ClientRequestToken)
+#'
+#' @param PipelineExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the pipeline execution.
+#' @param ClientRequestToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the operation. An idempotent operation completes no more
+#' than one time.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_pipeline_execution(
+#'   PipelineExecutionArn = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_stop_pipeline_execution
+sagemaker_stop_pipeline_execution <- function(PipelineExecutionArn, ClientRequestToken) {
+  op <- new_operation(
+    name = "StopPipelineExecution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$stop_pipeline_execution_input(PipelineExecutionArn = PipelineExecutionArn, ClientRequestToken = ClientRequestToken)
+  output <- .sagemaker$stop_pipeline_execution_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$stop_pipeline_execution <- sagemaker_stop_pipeline_execution
+
 #' Stops a processing job
 #'
 #' Stops a processing job.
@@ -7932,6 +12934,153 @@ sagemaker_stop_transform_job <- function(TransformJobName) {
 }
 .sagemaker$operations$stop_transform_job <- sagemaker_stop_transform_job
 
+#' Updates an action
+#'
+#' Updates an action.
+#'
+#' @usage
+#' sagemaker_update_action(ActionName, Description, Status, Properties,
+#'   PropertiesToRemove)
+#'
+#' @param ActionName &#91;required&#93; The name of the action to update.
+#' @param Description The new description for the action.
+#' @param Status The new status for the action.
+#' @param Properties The new list of properties. Overwrites the current property list.
+#' @param PropertiesToRemove A list of properties to remove.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_action(
+#'   ActionName = "string",
+#'   Description = "string",
+#'   Status = "Unknown"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped",
+#'   Properties = list(
+#'     "string"
+#'   ),
+#'   PropertiesToRemove = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_action
+sagemaker_update_action <- function(ActionName, Description = NULL, Status = NULL, Properties = NULL, PropertiesToRemove = NULL) {
+  op <- new_operation(
+    name = "UpdateAction",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_action_input(ActionName = ActionName, Description = Description, Status = Status, Properties = Properties, PropertiesToRemove = PropertiesToRemove)
+  output <- .sagemaker$update_action_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_action <- sagemaker_update_action
+
+#' Updates the properties of an AppImageConfig
+#'
+#' Updates the properties of an AppImageConfig.
+#'
+#' @usage
+#' sagemaker_update_app_image_config(AppImageConfigName,
+#'   KernelGatewayImageConfig)
+#'
+#' @param AppImageConfigName &#91;required&#93; The name of the AppImageConfig to update.
+#' @param KernelGatewayImageConfig The new KernelGateway app to run on the image.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_app_image_config(
+#'   AppImageConfigName = "string",
+#'   KernelGatewayImageConfig = list(
+#'     KernelSpecs = list(
+#'       list(
+#'         Name = "string",
+#'         DisplayName = "string"
+#'       )
+#'     ),
+#'     FileSystemConfig = list(
+#'       MountPath = "string",
+#'       DefaultUid = 123,
+#'       DefaultGid = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_app_image_config
+sagemaker_update_app_image_config <- function(AppImageConfigName, KernelGatewayImageConfig = NULL) {
+  op <- new_operation(
+    name = "UpdateAppImageConfig",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_app_image_config_input(AppImageConfigName = AppImageConfigName, KernelGatewayImageConfig = KernelGatewayImageConfig)
+  output <- .sagemaker$update_app_image_config_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_app_image_config <- sagemaker_update_app_image_config
+
+#' Updates an artifact
+#'
+#' Updates an artifact.
+#'
+#' @usage
+#' sagemaker_update_artifact(ArtifactArn, ArtifactName, Properties,
+#'   PropertiesToRemove)
+#'
+#' @param ArtifactArn &#91;required&#93; The Amazon Resource Name (ARN) of the artifact to update.
+#' @param ArtifactName The new name for the artifact.
+#' @param Properties The new list of properties. Overwrites the current property list.
+#' @param PropertiesToRemove A list of properties to remove.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_artifact(
+#'   ArtifactArn = "string",
+#'   ArtifactName = "string",
+#'   Properties = list(
+#'     "string"
+#'   ),
+#'   PropertiesToRemove = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_artifact
+sagemaker_update_artifact <- function(ArtifactArn, ArtifactName = NULL, Properties = NULL, PropertiesToRemove = NULL) {
+  op <- new_operation(
+    name = "UpdateArtifact",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_artifact_input(ArtifactArn = ArtifactArn, ArtifactName = ArtifactName, Properties = Properties, PropertiesToRemove = PropertiesToRemove)
+  output <- .sagemaker$update_artifact_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_artifact <- sagemaker_update_artifact
+
 #' Updates the specified Git repository with the specified values
 #'
 #' Updates the specified Git repository with the specified values.
@@ -7978,6 +13127,143 @@ sagemaker_update_code_repository <- function(CodeRepositoryName, GitConfig = NUL
 }
 .sagemaker$operations$update_code_repository <- sagemaker_update_code_repository
 
+#' Updates a context
+#'
+#' Updates a context.
+#'
+#' @usage
+#' sagemaker_update_context(ContextName, Description, Properties,
+#'   PropertiesToRemove)
+#'
+#' @param ContextName &#91;required&#93; The name of the context to update.
+#' @param Description The new description for the context.
+#' @param Properties The new list of properties. Overwrites the current property list.
+#' @param PropertiesToRemove A list of properties to remove.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_context(
+#'   ContextName = "string",
+#'   Description = "string",
+#'   Properties = list(
+#'     "string"
+#'   ),
+#'   PropertiesToRemove = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_context
+sagemaker_update_context <- function(ContextName, Description = NULL, Properties = NULL, PropertiesToRemove = NULL) {
+  op <- new_operation(
+    name = "UpdateContext",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_context_input(ContextName = ContextName, Description = Description, Properties = Properties, PropertiesToRemove = PropertiesToRemove)
+  output <- .sagemaker$update_context_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_context <- sagemaker_update_context
+
+#' Updates a fleet of devices
+#'
+#' Updates a fleet of devices.
+#'
+#' @usage
+#' sagemaker_update_device_fleet(DeviceFleetName, RoleArn, Description,
+#'   OutputConfig)
+#'
+#' @param DeviceFleetName &#91;required&#93; The name of the fleet.
+#' @param RoleArn The Amazon Resource Name (ARN) of the device.
+#' @param Description Description of the fleet.
+#' @param OutputConfig &#91;required&#93; Output configuration for storing sample data collected by the fleet.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_device_fleet(
+#'   DeviceFleetName = "string",
+#'   RoleArn = "string",
+#'   Description = "string",
+#'   OutputConfig = list(
+#'     S3OutputLocation = "string",
+#'     KmsKeyId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_device_fleet
+sagemaker_update_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Description = NULL, OutputConfig) {
+  op <- new_operation(
+    name = "UpdateDeviceFleet",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_device_fleet_input(DeviceFleetName = DeviceFleetName, RoleArn = RoleArn, Description = Description, OutputConfig = OutputConfig)
+  output <- .sagemaker$update_device_fleet_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_device_fleet <- sagemaker_update_device_fleet
+
+#' Updates one or more devices in a fleet
+#'
+#' Updates one or more devices in a fleet.
+#'
+#' @usage
+#' sagemaker_update_devices(DeviceFleetName, Devices)
+#'
+#' @param DeviceFleetName &#91;required&#93; The name of the fleet the devices belong to.
+#' @param Devices &#91;required&#93; List of devices to register with Edge Manager agent.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_devices(
+#'   DeviceFleetName = "string",
+#'   Devices = list(
+#'     list(
+#'       DeviceName = "string",
+#'       Description = "string",
+#'       IotThingName = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_devices
+sagemaker_update_devices <- function(DeviceFleetName, Devices) {
+  op <- new_operation(
+    name = "UpdateDevices",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_devices_input(DeviceFleetName = DeviceFleetName, Devices = Devices)
+  output <- .sagemaker$update_devices_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_devices <- sagemaker_update_devices
+
 #' Updates the default settings for new user profiles in the domain
 #'
 #' Updates the default settings for new user profiles in the domain.
@@ -8005,18 +13291,28 @@ sagemaker_update_code_repository <- function(CodeRepositoryName, GitConfig = NUL
 #'     JupyterServerAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     ),
 #'     KernelGatewayAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
+#'       ),
+#'       CustomImages = list(
+#'         list(
+#'           ImageName = "string",
+#'           ImageVersionNumber = 123,
+#'           AppImageConfigName = "string"
+#'         )
 #'       )
 #'     ),
 #'     TensorBoardAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     )
@@ -8071,22 +13367,26 @@ sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL) {
 #'
 #' @usage
 #' sagemaker_update_endpoint(EndpointName, EndpointConfigName,
-#'   RetainAllVariantProperties, ExcludeRetainedVariantProperties)
+#'   RetainAllVariantProperties, ExcludeRetainedVariantProperties,
+#'   DeploymentConfig)
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint whose configuration you want to update.
 #' @param EndpointConfigName &#91;required&#93; The name of the new endpoint configuration.
 #' @param RetainAllVariantProperties When updating endpoint resources, enables or disables the retention of
-#' variant properties, such as the instance count or the variant weight. To
-#' retain the variant properties of an endpoint when updating it, set
+#' [variant
+#' properties](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_VariantProperty.html),
+#' such as the instance count or the variant weight. To retain the variant
+#' properties of an endpoint when updating it, set
 #' `RetainAllVariantProperties` to `true`. To use the variant properties
 #' specified in a new `EndpointConfig` call when updating an endpoint, set
-#' `RetainAllVariantProperties` to `false`.
+#' `RetainAllVariantProperties` to `false`. The default is `false`.
 #' @param ExcludeRetainedVariantProperties When you are updating endpoint resources with
 #' UpdateEndpointInput$RetainAllVariantProperties, whose value is set to
 #' `true`, `ExcludeRetainedVariantProperties` specifies the list of type
 #' VariantProperty to override with the values provided by
 #' `EndpointConfig`. If you don't specify a value for
 #' `ExcludeAllVariantProperties`, no variant properties are overridden.
+#' @param DeploymentConfig The deployment configuration for the endpoint to be updated.
 #'
 #' @section Request syntax:
 #' ```
@@ -8098,6 +13398,27 @@ sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL) {
 #'     list(
 #'       VariantPropertyType = "DesiredInstanceCount"|"DesiredWeight"|"DataCaptureConfig"
 #'     )
+#'   ),
+#'   DeploymentConfig = list(
+#'     BlueGreenUpdatePolicy = list(
+#'       TrafficRoutingConfiguration = list(
+#'         Type = "ALL_AT_ONCE"|"CANARY",
+#'         WaitIntervalInSeconds = 123,
+#'         CanarySize = list(
+#'           Type = "INSTANCE_COUNT"|"CAPACITY_PERCENT",
+#'           Value = 123
+#'         )
+#'       ),
+#'       TerminationWaitInSeconds = 123,
+#'       MaximumExecutionTimeoutInSeconds = 123
+#'     ),
+#'     AutoRollbackConfiguration = list(
+#'       Alarms = list(
+#'         list(
+#'           AlarmName = "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -8105,14 +13426,14 @@ sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL) {
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_endpoint
-sagemaker_update_endpoint <- function(EndpointName, EndpointConfigName, RetainAllVariantProperties = NULL, ExcludeRetainedVariantProperties = NULL) {
+sagemaker_update_endpoint <- function(EndpointName, EndpointConfigName, RetainAllVariantProperties = NULL, ExcludeRetainedVariantProperties = NULL, DeploymentConfig = NULL) {
   op <- new_operation(
     name = "UpdateEndpoint",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$update_endpoint_input(EndpointName = EndpointName, EndpointConfigName = EndpointConfigName, RetainAllVariantProperties = RetainAllVariantProperties, ExcludeRetainedVariantProperties = ExcludeRetainedVariantProperties)
+  input <- .sagemaker$update_endpoint_input(EndpointName = EndpointName, EndpointConfigName = EndpointConfigName, RetainAllVariantProperties = RetainAllVariantProperties, ExcludeRetainedVariantProperties = ExcludeRetainedVariantProperties, DeploymentConfig = DeploymentConfig)
   output <- .sagemaker$update_endpoint_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -8216,6 +13537,97 @@ sagemaker_update_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 }
 .sagemaker$operations$update_experiment <- sagemaker_update_experiment
 
+#' Updates the properties of a SageMaker image
+#'
+#' Updates the properties of a SageMaker image. To change the image's tags,
+#' use the AddTags and DeleteTags APIs.
+#'
+#' @usage
+#' sagemaker_update_image(DeleteProperties, Description, DisplayName,
+#'   ImageName, RoleArn)
+#'
+#' @param DeleteProperties A list of properties to delete. Only the `Description` and `DisplayName`
+#' properties can be deleted.
+#' @param Description The new description for the image.
+#' @param DisplayName The new display name for the image.
+#' @param ImageName &#91;required&#93; The name of the image to update.
+#' @param RoleArn The new Amazon Resource Name (ARN) for the IAM role that enables Amazon
+#' SageMaker to perform tasks on your behalf.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_image(
+#'   DeleteProperties = list(
+#'     "string"
+#'   ),
+#'   Description = "string",
+#'   DisplayName = "string",
+#'   ImageName = "string",
+#'   RoleArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_image
+sagemaker_update_image <- function(DeleteProperties = NULL, Description = NULL, DisplayName = NULL, ImageName, RoleArn = NULL) {
+  op <- new_operation(
+    name = "UpdateImage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_image_input(DeleteProperties = DeleteProperties, Description = Description, DisplayName = DisplayName, ImageName = ImageName, RoleArn = RoleArn)
+  output <- .sagemaker$update_image_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_image <- sagemaker_update_image
+
+#' Updates a versioned model
+#'
+#' Updates a versioned model.
+#'
+#' @usage
+#' sagemaker_update_model_package(ModelPackageArn, ModelApprovalStatus,
+#'   ApprovalDescription)
+#'
+#' @param ModelPackageArn &#91;required&#93; The Amazon Resource Name (ARN) of the model.
+#' @param ModelApprovalStatus &#91;required&#93; The approval status of the model.
+#' @param ApprovalDescription A description for the approval status of the model.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_model_package(
+#'   ModelPackageArn = "string",
+#'   ModelApprovalStatus = "Approved"|"Rejected"|"PendingManualApproval",
+#'   ApprovalDescription = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_model_package
+sagemaker_update_model_package <- function(ModelPackageArn, ModelApprovalStatus, ApprovalDescription = NULL) {
+  op <- new_operation(
+    name = "UpdateModelPackage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_model_package_input(ModelPackageArn = ModelPackageArn, ModelApprovalStatus = ModelApprovalStatus, ApprovalDescription = ApprovalDescription)
+  output <- .sagemaker$update_model_package_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_model_package <- sagemaker_update_model_package
+
 #' Updates a previously created schedule
 #'
 #' Updates a previously created schedule.
@@ -8239,6 +13651,7 @@ sagemaker_update_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #'     ),
 #'     MonitoringJobDefinition = list(
 #'       BaselineConfig = list(
+#'         BaseliningJobName = "string",
 #'         ConstraintsResource = list(
 #'           S3Uri = "string"
 #'         ),
@@ -8252,7 +13665,13 @@ sagemaker_update_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #'             EndpointName = "string",
 #'             LocalPath = "string",
 #'             S3InputMode = "Pipe"|"File",
-#'             S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key"
+#'             S3DataDistributionType = "FullyReplicated"|"ShardedByS3Key",
+#'             FeaturesAttribute = "string",
+#'             InferenceAttribute = "string",
+#'             ProbabilityAttribute = "string",
+#'             ProbabilityThresholdAttribute = 123.0,
+#'             StartTimeOffset = "string",
+#'             EndTimeOffset = "string"
 #'           )
 #'         )
 #'       ),
@@ -8306,7 +13725,9 @@ sagemaker_update_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #'         )
 #'       ),
 #'       RoleArn = "string"
-#'     )
+#'     ),
+#'     MonitoringJobDefinitionName = "string",
+#'     MonitoringType = "DataQuality"|"ModelQuality"|"ModelBias"|"ModelExplainability"
 #'   )
 #' )
 #' ```
@@ -8510,6 +13931,157 @@ sagemaker_update_notebook_instance_lifecycle_config <- function(NotebookInstance
 }
 .sagemaker$operations$update_notebook_instance_lifecycle_config <- sagemaker_update_notebook_instance_lifecycle_config
 
+#' Updates a pipeline
+#'
+#' Updates a pipeline.
+#'
+#' @usage
+#' sagemaker_update_pipeline(PipelineName, PipelineDisplayName,
+#'   PipelineDefinition, PipelineDescription, RoleArn)
+#'
+#' @param PipelineName &#91;required&#93; The name of the pipeline to update.
+#' @param PipelineDisplayName The display name of the pipeline.
+#' @param PipelineDefinition The JSON pipeline definition.
+#' @param PipelineDescription The description of the pipeline.
+#' @param RoleArn The Amazon Resource Name (ARN) that the pipeline uses to execute.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_pipeline(
+#'   PipelineName = "string",
+#'   PipelineDisplayName = "string",
+#'   PipelineDefinition = "string",
+#'   PipelineDescription = "string",
+#'   RoleArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_pipeline
+sagemaker_update_pipeline <- function(PipelineName, PipelineDisplayName = NULL, PipelineDefinition = NULL, PipelineDescription = NULL, RoleArn = NULL) {
+  op <- new_operation(
+    name = "UpdatePipeline",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_pipeline_input(PipelineName = PipelineName, PipelineDisplayName = PipelineDisplayName, PipelineDefinition = PipelineDefinition, PipelineDescription = PipelineDescription, RoleArn = RoleArn)
+  output <- .sagemaker$update_pipeline_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_pipeline <- sagemaker_update_pipeline
+
+#' Updates a pipeline execution
+#'
+#' Updates a pipeline execution.
+#'
+#' @usage
+#' sagemaker_update_pipeline_execution(PipelineExecutionArn,
+#'   PipelineExecutionDescription, PipelineExecutionDisplayName)
+#'
+#' @param PipelineExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the pipeline execution.
+#' @param PipelineExecutionDescription The description of the pipeline execution.
+#' @param PipelineExecutionDisplayName The display name of the pipeline execution.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_pipeline_execution(
+#'   PipelineExecutionArn = "string",
+#'   PipelineExecutionDescription = "string",
+#'   PipelineExecutionDisplayName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_pipeline_execution
+sagemaker_update_pipeline_execution <- function(PipelineExecutionArn, PipelineExecutionDescription = NULL, PipelineExecutionDisplayName = NULL) {
+  op <- new_operation(
+    name = "UpdatePipelineExecution",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_pipeline_execution_input(PipelineExecutionArn = PipelineExecutionArn, PipelineExecutionDescription = PipelineExecutionDescription, PipelineExecutionDisplayName = PipelineExecutionDisplayName)
+  output <- .sagemaker$update_pipeline_execution_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_pipeline_execution <- sagemaker_update_pipeline_execution
+
+#' Update a model training job to request a new Debugger profiling
+#' configuration
+#'
+#' Update a model training job to request a new Debugger profiling
+#' configuration.
+#'
+#' @usage
+#' sagemaker_update_training_job(TrainingJobName, ProfilerConfig,
+#'   ProfilerRuleConfigurations)
+#'
+#' @param TrainingJobName &#91;required&#93; The name of a training job to update the Debugger profiling
+#' configuration.
+#' @param ProfilerConfig Configuration information for Debugger system monitoring, framework
+#' profiling, and storage paths.
+#' @param ProfilerRuleConfigurations Configuration information for Debugger rules for profiling system and
+#' framework metrics.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_training_job(
+#'   TrainingJobName = "string",
+#'   ProfilerConfig = list(
+#'     S3OutputPath = "string",
+#'     ProfilingIntervalInMilliseconds = 123,
+#'     ProfilingParameters = list(
+#'       "string"
+#'     ),
+#'     DisableProfiler = TRUE|FALSE
+#'   ),
+#'   ProfilerRuleConfigurations = list(
+#'     list(
+#'       RuleConfigurationName = "string",
+#'       LocalPath = "string",
+#'       S3OutputPath = "string",
+#'       RuleEvaluatorImage = "string",
+#'       InstanceType = "ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m4.xlarge"|"ml.m4.2xlarge"|"ml.m4.4xlarge"|"ml.m4.10xlarge"|"ml.m4.16xlarge"|"ml.c4.xlarge"|"ml.c4.2xlarge"|"ml.c4.4xlarge"|"ml.c4.8xlarge"|"ml.p2.xlarge"|"ml.p2.8xlarge"|"ml.p2.16xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.18xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.12xlarge"|"ml.m5.24xlarge"|"ml.r5.large"|"ml.r5.xlarge"|"ml.r5.2xlarge"|"ml.r5.4xlarge"|"ml.r5.8xlarge"|"ml.r5.12xlarge"|"ml.r5.16xlarge"|"ml.r5.24xlarge",
+#'       VolumeSizeInGB = 123,
+#'       RuleParameters = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_update_training_job
+sagemaker_update_training_job <- function(TrainingJobName, ProfilerConfig = NULL, ProfilerRuleConfigurations = NULL) {
+  op <- new_operation(
+    name = "UpdateTrainingJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$update_training_job_input(TrainingJobName = TrainingJobName, ProfilerConfig = ProfilerConfig, ProfilerRuleConfigurations = ProfilerRuleConfigurations)
+  output <- .sagemaker$update_training_job_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$update_training_job <- sagemaker_update_training_job
+
 #' Updates the display name of a trial
 #'
 #' Updates the display name of a trial.
@@ -8670,18 +14242,28 @@ sagemaker_update_trial_component <- function(TrialComponentName, DisplayName = N
 #'     JupyterServerAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     ),
 #'     KernelGatewayAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
+#'       ),
+#'       CustomImages = list(
+#'         list(
+#'           ImageName = "string",
+#'           ImageVersionNumber = 123,
+#'           AppImageConfigName = "string"
+#'         )
 #'       )
 #'     ),
 #'     TensorBoardAppSettings = list(
 #'       DefaultResourceSpec = list(
 #'         SageMakerImageArn = "string",
+#'         SageMakerImageVersionArn = "string",
 #'         InstanceType = "system"|"ml.t3.micro"|"ml.t3.small"|"ml.t3.medium"|"ml.t3.large"|"ml.t3.xlarge"|"ml.t3.2xlarge"|"ml.m5.large"|"ml.m5.xlarge"|"ml.m5.2xlarge"|"ml.m5.4xlarge"|"ml.m5.8xlarge"|"ml.m5.12xlarge"|"ml.m5.16xlarge"|"ml.m5.24xlarge"|"ml.c5.large"|"ml.c5.xlarge"|"ml.c5.2xlarge"|"ml.c5.4xlarge"|"ml.c5.9xlarge"|"ml.c5.12xlarge"|"ml.c5.18xlarge"|"ml.c5.24xlarge"|"ml.p3.2xlarge"|"ml.p3.8xlarge"|"ml.p3.16xlarge"|"ml.g4dn.xlarge"|"ml.g4dn.2xlarge"|"ml.g4dn.4xlarge"|"ml.g4dn.8xlarge"|"ml.g4dn.12xlarge"|"ml.g4dn.16xlarge"
 #'       )
 #'     )
@@ -8709,34 +14291,47 @@ sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSetting
 }
 .sagemaker$operations$update_user_profile <- sagemaker_update_user_profile
 
-#' Restricts access to tasks assigned to workers in the specified workforce
-#' to those within specific ranges of IP addresses
+#' Use this operation to update your workforce
 #'
-#' Restricts access to tasks assigned to workers in the specified workforce
-#' to those within specific ranges of IP addresses. You specify allowed IP
-#' addresses by creating a list of up to ten
-#' [CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html).
+#' Use this operation to update your workforce. You can use this operation
+#' to require that workers use specific IP addresses to work on tasks and
+#' to update your OpenID Connect (OIDC) Identity Provider (IdP) workforce
+#' configuration.
 #' 
+#' Use `SourceIpConfig` to restrict worker access to tasks to a specific
+#' range of IP addresses. You specify allowed IP addresses by creating a
+#' list of up to ten
+#' [CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html).
 #' By default, a workforce isn't restricted to specific IP addresses. If
 #' you specify a range of IP addresses, workers who attempt to access tasks
-#' using any IP address outside the specified range are denied access and
-#' get a `Not Found` error message on the worker portal. After restricting
-#' access with this operation, you can see the allowed IP values for a
-#' private workforce with the operation.
+#' using any IP address outside the specified range are denied and get a
+#' `Not Found` error message on the worker portal.
 #' 
-#' This operation applies only to private workforces.
+#' Use `OidcConfig` to update the configuration of a workforce created
+#' using your own OIDC IdP.
+#' 
+#' You can only update your OIDC IdP configuration when there are no work
+#' teams associated with your workforce. You can delete work teams using
+#' the operation.
+#' 
+#' After restricting access to a range of IP addresses or updating your
+#' OIDC IdP configuration with this operation, you can view details about
+#' your update workforce using the operation.
+#' 
+#' This operation only applies to private workforces.
 #'
 #' @usage
-#' sagemaker_update_workforce(WorkforceName, SourceIpConfig)
+#' sagemaker_update_workforce(WorkforceName, SourceIpConfig, OidcConfig)
 #'
-#' @param WorkforceName &#91;required&#93; The name of the private workforce whose access you want to restrict.
-#' `WorkforceName` is automatically set to `default` when a workforce is
-#' created and cannot be modified.
+#' @param WorkforceName &#91;required&#93; The name of the private workforce that you want to update. You can find
+#' your workforce name by using the operation.
 #' @param SourceIpConfig A list of one to ten worker IP address ranges
 #' ([CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html))
 #' that can be used to access tasks assigned to this workforce.
 #' 
 #' Maximum: Ten CIDR values
+#' @param OidcConfig Use this parameter to update your OIDC Identity Provider (IdP)
+#' configuration for a workforce made using your own IdP.
 #'
 #' @section Request syntax:
 #' ```
@@ -8746,6 +14341,16 @@ sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSetting
 #'     Cidrs = list(
 #'       "string"
 #'     )
+#'   ),
+#'   OidcConfig = list(
+#'     ClientId = "string",
+#'     ClientSecret = "string",
+#'     Issuer = "string",
+#'     AuthorizationEndpoint = "string",
+#'     TokenEndpoint = "string",
+#'     UserInfoEndpoint = "string",
+#'     LogoutEndpoint = "string",
+#'     JwksUri = "string"
 #'   )
 #' )
 #' ```
@@ -8753,14 +14358,14 @@ sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSetting
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_workforce
-sagemaker_update_workforce <- function(WorkforceName, SourceIpConfig = NULL) {
+sagemaker_update_workforce <- function(WorkforceName, SourceIpConfig = NULL, OidcConfig = NULL) {
   op <- new_operation(
     name = "UpdateWorkforce",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$update_workforce_input(WorkforceName = WorkforceName, SourceIpConfig = SourceIpConfig)
+  input <- .sagemaker$update_workforce_input(WorkforceName = WorkforceName, SourceIpConfig = SourceIpConfig, OidcConfig = OidcConfig)
   output <- .sagemaker$update_workforce_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -8780,8 +14385,31 @@ sagemaker_update_workforce <- function(WorkforceName, SourceIpConfig = NULL) {
 #'   NotificationConfiguration)
 #'
 #' @param WorkteamName &#91;required&#93; The name of the work team to update.
-#' @param MemberDefinitions A list of `MemberDefinition` objects that contain the updated work team
-#' members.
+#' @param MemberDefinitions A list of `MemberDefinition` objects that contains objects that identify
+#' the workers that make up the work team.
+#' 
+#' Workforces can be created using Amazon Cognito or your own OIDC Identity
+#' Provider (IdP). For private workforces created using Amazon Cognito use
+#' `CognitoMemberDefinition`. For workforces created using your own OIDC
+#' identity provider (IdP) use `OidcMemberDefinition`. You should not
+#' provide input for both of these parameters in a single request.
+#' 
+#' For workforces created using Amazon Cognito, private work teams
+#' correspond to Amazon Cognito *user groups* within the user pool used to
+#' create a workforce. All of the `CognitoMemberDefinition` objects that
+#' make up the member definition must have the same `ClientId` and
+#' `UserPool` values. To add a Amazon Cognito user group to an existing
+#' worker pool, see Adding groups to a User Pool. For more information
+#' about user pools, see [Amazon Cognito User
+#' Pools](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html).
+#' 
+#' For workforces created using your own OIDC IdP, specify the user groups
+#' that you want to include in your private work team in
+#' `OidcMemberDefinition` by listing those groups in `Groups`. Be aware
+#' that user groups that are already in the work team must also be listed
+#' in `Groups` when you make this request to remain on the work team. If
+#' you do not include these user groups, they will no longer be associated
+#' with the work team you update.
 #' @param Description An updated description for the work team.
 #' @param NotificationConfiguration Configures SNS topic notifications for available or expiring work items
 #'
@@ -8795,6 +14423,11 @@ sagemaker_update_workforce <- function(WorkforceName, SourceIpConfig = NULL) {
 #'         UserPool = "string",
 #'         UserGroup = "string",
 #'         ClientId = "string"
+#'       ),
+#'       OidcMemberDefinition = list(
+#'         Groups = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),

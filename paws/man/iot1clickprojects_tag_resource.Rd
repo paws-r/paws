@@ -15,7 +15,7 @@ for the maximum number of tags allowed per resource.}
 \description{
 Creates or modifies tags for a resource. Tags are key/value pairs
 (metadata) that can be used to manage a resource. For more information,
-see \href{https://aws.amazon.com/answers/account-management/aws-tagging-strategies/}{AWS Tagging Strategies}.
+see \href{https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf}{AWS Tagging Strategies}.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

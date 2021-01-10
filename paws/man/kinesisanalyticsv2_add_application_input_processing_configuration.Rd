@@ -2,7 +2,7 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_add_application_input_processing_configuration}
 \alias{kinesisanalyticsv2_add_application_input_processing_configuration}
-\title{Adds an InputProcessingConfiguration to an SQL-based Kinesis Data
+\title{Adds an InputProcessingConfiguration to a SQL-based Kinesis Data
 Analytics application}
 \usage{
 kinesisanalyticsv2_add_application_input_processing_configuration(
@@ -25,10 +25,10 @@ using the DescribeApplication operation.}
 \item{InputProcessingConfiguration}{[required] The InputProcessingConfiguration to add to the application.}
 }
 \description{
-Adds an InputProcessingConfiguration to an SQL-based Kinesis Data
+Adds an InputProcessingConfiguration to a SQL-based Kinesis Data
 Analytics application. An input processor pre-processes records on the
 input stream before the application's SQL code executes. Currently, the
-only input processor available is \href{https://aws.amazon.com/documentation/lambda/}{AWS Lambda}.
+only input processor available is \href{https://docs.aws.amazon.com/lambda/}{AWS Lambda}.
 }
 \section{Request syntax}{
 \preformatted{svc$add_application_input_processing_configuration(

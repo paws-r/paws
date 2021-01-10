@@ -33,10 +33,10 @@ Valid characters for key and value are letters, spaces, and numbers
 representable in UTF-8 format, and the following special characters: + -
 = . \\_ : / @.}
 
-\item{VpcEndpointId}{The ID of the VPC (Virtual Private Cloud) endpoint that the agent has
+\item{VpcEndpointId}{The ID of the VPC (virtual private cloud) endpoint that the agent has
 access to. This is the client-side VPC endpoint, also called a
 PrivateLink. If you don't have a PrivateLink VPC endpoint, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html#create-endpoint-service}{Creating a VPC Endpoint Service Configuration}
-in the AWS VPC User Guide.
+in the Amazon VPC User Guide.
 
 VPC endpoint ID looks like this: \verb{vpce-01234d5aff67890e1}.}
 
@@ -61,9 +61,9 @@ Region where your target locations (in Amazon S3 or Amazon EFS) reside.
 Your tasks are created in this AWS Region.
 }
 \details{
-You can activate the agent in a VPC (Virtual private Cloud) or provide
+You can activate the agent in a VPC (virtual private cloud) or provide
 the agent access to a VPC endpoint so you can run tasks without going
-over the public Internet.
+over the public internet.
 
 You can use an agent for more than one location. If a task uses multiple
 agents, all of them need to have status AVAILABLE for the task to run.

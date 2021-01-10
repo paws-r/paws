@@ -5,7 +5,7 @@
 \title{Attaches a network interface to an instance}
 \usage{
 ec2_attach_network_interface(DeviceIndex, DryRun, InstanceId,
-  NetworkInterfaceId)
+  NetworkInterfaceId, NetworkCardIndex)
 }
 \arguments{
 \item{DeviceIndex}{[required] The index of the device for the network interface attachment.}
@@ -18,6 +18,10 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{InstanceId}{[required] The ID of the instance.}
 
 \item{NetworkInterfaceId}{[required] The ID of the network interface.}
+
+\item{NetworkCardIndex}{The index of the network card. Some instance types support multiple
+network cards. The primary network interface must be assigned to network
+card index 0. The default is network card index 0.}
 }
 \description{
 Attaches a network interface to an instance.
@@ -27,7 +31,8 @@ Attaches a network interface to an instance.
   DeviceIndex = 123,
   DryRun = TRUE|FALSE,
   InstanceId = "string",
-  NetworkInterfaceId = "string"
+  NetworkInterfaceId = "string",
+  NetworkCardIndex = 123
 )
 }
 }

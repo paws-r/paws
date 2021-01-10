@@ -27,6 +27,42 @@ NULL
   return(populate(args, shape))
 }
 
+.sesv2$create_contact_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContactListName = structure(logical(0), tags = list(location = "uri", locationName = "ContactListName", type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), TopicPreferences = structure(list(structure(list(TopicName = structure(logical(0), tags = list(type = "string")), SubscriptionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UnsubscribeAll = structure(logical(0), tags = list(type = "boolean")), AttributesData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$create_contact_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$create_contact_list_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContactListName = structure(logical(0), tags = list(type = "string")), Topics = structure(list(structure(list(TopicName = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DefaultSubscriptionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Description = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$create_contact_list_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$create_custom_verification_email_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), FromEmailAddress = structure(logical(0), tags = list(type = "string")), TemplateSubject = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(logical(0), tags = list(type = "string")), SuccessRedirectionURL = structure(logical(0), tags = list(type = "string")), FailureRedirectionURL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$create_custom_verification_email_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .sesv2$create_dedicated_ip_pool_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PoolName = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -41,7 +77,7 @@ NULL
 
 .sesv2$create_deliverability_test_report_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ReportName = structure(logical(0), tags = list(type = "string")), FromEmailAddress = structure(logical(0), tags = list(type = "string")), Content = structure(list(Simple = structure(list(Subject = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Body = structure(list(Text = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Html = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Raw = structure(list(Data = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure")), Template = structure(list(TemplateArn = structure(logical(0), tags = list(type = "string")), TemplateData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ReportName = structure(logical(0), tags = list(type = "string")), FromEmailAddress = structure(logical(0), tags = list(type = "string")), Content = structure(list(Simple = structure(list(Subject = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Body = structure(list(Text = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Html = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Raw = structure(list(Data = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure")), Template = structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), TemplateArn = structure(logical(0), tags = list(type = "string")), TemplateData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -60,6 +96,42 @@ NULL
 .sesv2$create_email_identity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(IdentityType = structure(logical(0), tags = list(type = "string")), VerifiedForSendingStatus = structure(logical(0), tags = list(type = "boolean")), DkimAttributes = structure(list(SigningEnabled = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Tokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAttributesOrigin = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$create_email_identity_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(location = "uri", locationName = "EmailIdentity", type = "string")), PolicyName = structure(logical(0), tags = list(location = "uri", locationName = "PolicyName", type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$create_email_identity_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$create_email_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(list(Subject = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string")), Html = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$create_email_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$create_import_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ImportDestination = structure(list(SuppressionListDestination = structure(list(SuppressionListImportAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ContactListDestination = structure(list(ContactListName = structure(logical(0), tags = list(type = "string")), ContactListImportAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ImportDataSource = structure(list(S3Url = structure(logical(0), tags = list(type = "string")), DataFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$create_import_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -82,6 +154,42 @@ NULL
 }
 
 .sesv2$delete_configuration_set_event_destination_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$delete_contact_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContactListName = structure(logical(0), tags = list(location = "uri", locationName = "ContactListName", type = "string")), EmailAddress = structure(logical(0), tags = list(location = "uri", locationName = "EmailAddress", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$delete_contact_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$delete_contact_list_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContactListName = structure(logical(0), tags = list(location = "uri", locationName = "ContactListName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$delete_contact_list_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$delete_custom_verification_email_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateName = structure(logical(0), tags = list(location = "uri", locationName = "TemplateName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$delete_custom_verification_email_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -111,6 +219,30 @@ NULL
   return(populate(args, shape))
 }
 
+.sesv2$delete_email_identity_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(location = "uri", locationName = "EmailIdentity", type = "string")), PolicyName = structure(logical(0), tags = list(location = "uri", locationName = "PolicyName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$delete_email_identity_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$delete_email_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateName = structure(logical(0), tags = list(location = "uri", locationName = "TemplateName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$delete_email_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .sesv2$delete_suppressed_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(EmailAddress = structure(logical(0), tags = list(location = "uri", locationName = "EmailAddress", type = "string"))), tags = list(type = "structure"))
@@ -131,7 +263,7 @@ NULL
 
 .sesv2$get_account_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DedicatedIpAutoWarmupEnabled = structure(logical(0), tags = list(type = "boolean")), EnforcementStatus = structure(logical(0), tags = list(type = "string")), ProductionAccessEnabled = structure(logical(0), tags = list(type = "boolean")), SendQuota = structure(list(Max24HourSend = structure(logical(0), tags = list(type = "double")), MaxSendRate = structure(logical(0), tags = list(type = "double")), SentLast24Hours = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), SendingEnabled = structure(logical(0), tags = list(type = "boolean")), SuppressionAttributes = structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(DedicatedIpAutoWarmupEnabled = structure(logical(0), tags = list(type = "boolean")), EnforcementStatus = structure(logical(0), tags = list(type = "string")), ProductionAccessEnabled = structure(logical(0), tags = list(type = "boolean")), SendQuota = structure(list(Max24HourSend = structure(logical(0), tags = list(type = "double")), MaxSendRate = structure(logical(0), tags = list(type = "double")), SentLast24Hours = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), SendingEnabled = structure(logical(0), tags = list(type = "boolean")), SuppressionAttributes = structure(list(SuppressedReasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Details = structure(list(MailType = structure(logical(0), tags = list(type = "string")), WebsiteURL = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ContactLanguage = structure(logical(0), tags = list(type = "string")), UseCaseDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AdditionalContactEmailAddresses = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list", sensitive = TRUE)), ReviewDetails = structure(list(Status = structure(logical(0), tags = list(type = "string")), CaseId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -168,6 +300,42 @@ NULL
 .sesv2$get_configuration_set_event_destinations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(EventDestinations = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean")), MatchingEventTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), KinesisFirehoseDestination = structure(list(IamRoleArn = structure(logical(0), tags = list(type = "string")), DeliveryStreamArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CloudWatchDestination = structure(list(DimensionConfigurations = structure(list(structure(list(DimensionName = structure(logical(0), tags = list(type = "string")), DimensionValueSource = structure(logical(0), tags = list(type = "string")), DefaultDimensionValue = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), SnsDestination = structure(list(TopicArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), PinpointDestination = structure(list(ApplicationArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$get_contact_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContactListName = structure(logical(0), tags = list(location = "uri", locationName = "ContactListName", type = "string")), EmailAddress = structure(logical(0), tags = list(location = "uri", locationName = "EmailAddress", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$get_contact_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContactListName = structure(logical(0), tags = list(type = "string")), EmailAddress = structure(logical(0), tags = list(type = "string")), TopicPreferences = structure(list(structure(list(TopicName = structure(logical(0), tags = list(type = "string")), SubscriptionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TopicDefaultPreferences = structure(list(structure(list(TopicName = structure(logical(0), tags = list(type = "string")), SubscriptionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UnsubscribeAll = structure(logical(0), tags = list(type = "boolean")), AttributesData = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$get_contact_list_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContactListName = structure(logical(0), tags = list(location = "uri", locationName = "ContactListName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$get_contact_list_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContactListName = structure(logical(0), tags = list(type = "string")), Topics = structure(list(structure(list(TopicName = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DefaultSubscriptionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Description = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$get_custom_verification_email_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateName = structure(logical(0), tags = list(location = "uri", locationName = "TemplateName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$get_custom_verification_email_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), FromEmailAddress = structure(logical(0), tags = list(type = "string")), TemplateSubject = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(logical(0), tags = list(type = "string")), SuccessRedirectionURL = structure(logical(0), tags = list(type = "string")), FailureRedirectionURL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -251,7 +419,43 @@ NULL
 
 .sesv2$get_email_identity_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(IdentityType = structure(logical(0), tags = list(type = "string")), FeedbackForwardingStatus = structure(logical(0), tags = list(type = "boolean")), VerifiedForSendingStatus = structure(logical(0), tags = list(type = "boolean")), DkimAttributes = structure(list(SigningEnabled = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Tokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAttributesOrigin = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MailFromAttributes = structure(list(MailFromDomain = structure(logical(0), tags = list(type = "string")), MailFromDomainStatus = structure(logical(0), tags = list(type = "string")), BehaviorOnMxFailure = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(IdentityType = structure(logical(0), tags = list(type = "string")), FeedbackForwardingStatus = structure(logical(0), tags = list(type = "boolean")), VerifiedForSendingStatus = structure(logical(0), tags = list(type = "boolean")), DkimAttributes = structure(list(SigningEnabled = structure(logical(0), tags = list(type = "boolean")), Status = structure(logical(0), tags = list(type = "string")), Tokens = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SigningAttributesOrigin = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), MailFromAttributes = structure(list(MailFromDomain = structure(logical(0), tags = list(type = "string")), MailFromDomainStatus = structure(logical(0), tags = list(type = "string")), BehaviorOnMxFailure = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Policies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$get_email_identity_policies_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(location = "uri", locationName = "EmailIdentity", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$get_email_identity_policies_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Policies = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$get_email_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateName = structure(logical(0), tags = list(location = "uri", locationName = "TemplateName", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$get_email_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(list(Subject = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string")), Html = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$get_import_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(location = "uri", locationName = "JobId", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$get_import_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string")), ImportDestination = structure(list(SuppressionListDestination = structure(list(SuppressionListImportAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ContactListDestination = structure(list(ContactListName = structure(logical(0), tags = list(type = "string")), ContactListImportAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), ImportDataSource = structure(list(S3Url = structure(logical(0), tags = list(type = "string")), DataFormat = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), FailureInfo = structure(list(FailedRecordsS3Url = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), JobStatus = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp")), CompletedTimestamp = structure(logical(0), tags = list(type = "timestamp")), ProcessedRecordsCount = structure(logical(0), tags = list(type = "integer")), FailedRecordsCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -276,6 +480,42 @@ NULL
 .sesv2$list_configuration_sets_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ConfigurationSets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$list_contact_lists_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PageSize = structure(logical(0), tags = list(location = "querystring", locationName = "PageSize", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$list_contact_lists_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContactLists = structure(list(structure(list(ContactListName = structure(logical(0), tags = list(type = "string")), LastUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$list_contacts_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContactListName = structure(logical(0), tags = list(location = "uri", locationName = "ContactListName", type = "string")), Filter = structure(list(FilteredStatus = structure(logical(0), tags = list(type = "string")), TopicFilter = structure(list(TopicName = structure(logical(0), tags = list(type = "string")), UseDefaultIfPreferenceUnavailable = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))), tags = list(type = "structure")), PageSize = structure(logical(0), tags = list(location = "querystring", locationName = "PageSize", type = "integer")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$list_contacts_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Contacts = structure(list(structure(list(EmailAddress = structure(logical(0), tags = list(type = "string")), TopicPreferences = structure(list(structure(list(TopicName = structure(logical(0), tags = list(type = "string")), SubscriptionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), TopicDefaultPreferences = structure(list(structure(list(TopicName = structure(logical(0), tags = list(type = "string")), SubscriptionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UnsubscribeAll = structure(logical(0), tags = list(type = "boolean")), LastUpdatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$list_custom_verification_email_templates_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), PageSize = structure(logical(0), tags = list(location = "querystring", locationName = "PageSize", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$list_custom_verification_email_templates_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(CustomVerificationEmailTemplates = structure(list(structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), FromEmailAddress = structure(logical(0), tags = list(type = "string")), TemplateSubject = structure(logical(0), tags = list(type = "string")), SuccessRedirectionURL = structure(logical(0), tags = list(type = "string")), FailureRedirectionURL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -327,6 +567,30 @@ NULL
   return(populate(args, shape))
 }
 
+.sesv2$list_email_templates_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), PageSize = structure(logical(0), tags = list(location = "querystring", locationName = "PageSize", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$list_email_templates_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplatesMetadata = structure(list(structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$list_import_jobs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ImportDestinationType = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), PageSize = structure(logical(0), tags = list(location = "querystring", locationName = "PageSize", type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$list_import_jobs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ImportJobs = structure(list(structure(list(JobId = structure(logical(0), tags = list(type = "string")), ImportDestination = structure(list(SuppressionListDestination = structure(list(SuppressionListImportAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ContactListDestination = structure(list(ContactListName = structure(logical(0), tags = list(type = "string")), ContactListImportAction = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), JobStatus = structure(logical(0), tags = list(type = "string")), CreatedTimestamp = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .sesv2$list_suppressed_destinations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Reasons = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "Reason", type = "list")), StartDate = structure(logical(0), tags = list(location = "querystring", locationName = "StartDate", type = "timestamp")), EndDate = structure(logical(0), tags = list(location = "querystring", locationName = "EndDate", type = "timestamp")), NextToken = structure(logical(0), tags = list(location = "querystring", locationName = "NextToken", type = "string")), PageSize = structure(logical(0), tags = list(location = "querystring", locationName = "PageSize", type = "integer"))), tags = list(type = "structure"))
@@ -358,6 +622,18 @@ NULL
 }
 
 .sesv2$put_account_dedicated_ip_warmup_attributes_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$put_account_details_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MailType = structure(logical(0), tags = list(type = "string")), WebsiteURL = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ContactLanguage = structure(logical(0), tags = list(type = "string")), UseCaseDescription = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AdditionalContactEmailAddresses = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list", sensitive = TRUE)), ProductionAccessEnabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$put_account_details_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -543,9 +819,33 @@ NULL
   return(populate(args, shape))
 }
 
+.sesv2$send_bulk_email_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(FromEmailAddress = structure(logical(0), tags = list(type = "string")), FromEmailAddressIdentityArn = structure(logical(0), tags = list(type = "string")), ReplyToAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FeedbackForwardingEmailAddress = structure(logical(0), tags = list(type = "string")), FeedbackForwardingEmailAddressIdentityArn = structure(logical(0), tags = list(type = "string")), DefaultEmailTags = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), DefaultContent = structure(list(Template = structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), TemplateArn = structure(logical(0), tags = list(type = "string")), TemplateData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), BulkEmailEntries = structure(list(structure(list(Destination = structure(list(ToAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CcAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), BccAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ReplacementTags = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ReplacementEmailContent = structure(list(ReplacementTemplate = structure(list(ReplacementTemplateData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), ConfigurationSetName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$send_bulk_email_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(BulkEmailEntryResults = structure(list(structure(list(Status = structure(logical(0), tags = list(type = "string")), Error = structure(logical(0), tags = list(type = "string")), MessageId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$send_custom_verification_email_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EmailAddress = structure(logical(0), tags = list(type = "string")), TemplateName = structure(logical(0), tags = list(type = "string")), ConfigurationSetName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$send_custom_verification_email_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MessageId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .sesv2$send_email_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FromEmailAddress = structure(logical(0), tags = list(type = "string")), Destination = structure(list(ToAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CcAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), BccAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ReplyToAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FeedbackForwardingEmailAddress = structure(logical(0), tags = list(type = "string")), Content = structure(list(Simple = structure(list(Subject = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Body = structure(list(Text = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Html = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Raw = structure(list(Data = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure")), Template = structure(list(TemplateArn = structure(logical(0), tags = list(type = "string")), TemplateData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EmailTags = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConfigurationSetName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(FromEmailAddress = structure(logical(0), tags = list(type = "string")), FromEmailAddressIdentityArn = structure(logical(0), tags = list(type = "string")), Destination = structure(list(ToAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CcAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), BccAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ReplyToAddresses = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), FeedbackForwardingEmailAddress = structure(logical(0), tags = list(type = "string")), FeedbackForwardingEmailAddressIdentityArn = structure(logical(0), tags = list(type = "string")), Content = structure(list(Simple = structure(list(Subject = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Body = structure(list(Text = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Html = structure(list(Data = structure(logical(0), tags = list(type = "string")), Charset = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure")), Raw = structure(list(Data = structure(logical(0), tags = list(type = "blob"))), tags = list(type = "structure")), Template = structure(list(TemplateName = structure(logical(0), tags = list(type = "string")), TemplateArn = structure(logical(0), tags = list(type = "string")), TemplateData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), EmailTags = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ConfigurationSetName = structure(logical(0), tags = list(type = "string")), ListManagementOptions = structure(list(ContactListName = structure(logical(0), tags = list(type = "string")), TopicName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -564,6 +864,18 @@ NULL
 .sesv2$tag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$test_render_email_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateName = structure(logical(0), tags = list(location = "uri", locationName = "TemplateName", type = "string")), TemplateData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$test_render_email_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RenderedTemplate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -586,6 +898,66 @@ NULL
 }
 
 .sesv2$update_configuration_set_event_destination_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$update_contact_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContactListName = structure(logical(0), tags = list(location = "uri", locationName = "ContactListName", type = "string")), EmailAddress = structure(logical(0), tags = list(location = "uri", locationName = "EmailAddress", type = "string")), TopicPreferences = structure(list(structure(list(TopicName = structure(logical(0), tags = list(type = "string")), SubscriptionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), UnsubscribeAll = structure(logical(0), tags = list(type = "boolean")), AttributesData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$update_contact_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$update_contact_list_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ContactListName = structure(logical(0), tags = list(location = "uri", locationName = "ContactListName", type = "string")), Topics = structure(list(structure(list(TopicName = structure(logical(0), tags = list(type = "string")), DisplayName = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DefaultSubscriptionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$update_contact_list_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$update_custom_verification_email_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateName = structure(logical(0), tags = list(location = "uri", locationName = "TemplateName", type = "string")), FromEmailAddress = structure(logical(0), tags = list(type = "string")), TemplateSubject = structure(logical(0), tags = list(type = "string")), TemplateContent = structure(logical(0), tags = list(type = "string")), SuccessRedirectionURL = structure(logical(0), tags = list(type = "string")), FailureRedirectionURL = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$update_custom_verification_email_template_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$update_email_identity_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EmailIdentity = structure(logical(0), tags = list(location = "uri", locationName = "EmailIdentity", type = "string")), PolicyName = structure(logical(0), tags = list(location = "uri", locationName = "PolicyName", type = "string")), Policy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$update_email_identity_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$update_email_template_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TemplateName = structure(logical(0), tags = list(location = "uri", locationName = "TemplateName", type = "string")), TemplateContent = structure(list(Subject = structure(logical(0), tags = list(type = "string")), Text = structure(logical(0), tags = list(type = "string")), Html = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.sesv2$update_email_template_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

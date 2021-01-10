@@ -27,8 +27,8 @@ fleets for this build.
 \code{NextToken} to get results as a set of sequential pages.}
 
 \item{NextToken}{Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.}
+Use the token that is returned with a previous call to this operation.
+To start at the beginning of the result set, do not specify a value.}
 }
 \description{
 Retrieves build resources for all builds associated with the AWS account

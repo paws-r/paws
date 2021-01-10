@@ -26,11 +26,11 @@ to the instance with the specified device name.
 }
 \details{
 Encrypted EBS volumes must be attached to instances that support Amazon
-EBS encryption. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption}
+EBS encryption. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 After you attach an EBS volume, you must make it available. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html}{Making an EBS Volume Available For Use}.
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html}{Making an EBS volume available for use}.
 
 If a volume has an AWS Marketplace product code:
 \itemize{
@@ -43,7 +43,7 @@ the product. For example, you can't detach a volume from a Windows
 instance and attach it to a Linux instance.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html}{Attaching Amazon EBS Volumes}
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html}{Attaching Amazon EBS volumes}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{

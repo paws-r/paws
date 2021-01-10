@@ -12,7 +12,7 @@ gamelift_untag_resource(ResourceARN, TagKeys)
 that is assigned to and uniquely identifies the GameLift resource that
 you want to remove tags from. GameLift resource ARNs are included in the
 data object for the resource, which can be retrieved by calling a List
-or Describe action for the resource type.}
+or Describe operation for the resource type.}
 
 \item{TagKeys}{[required] A list of one or more tag keys to remove from the specified GameLift
 resource. An AWS resource can have only one tag with a specific tag key,
@@ -20,7 +20,7 @@ so specifying the tag key identifies which tag to remove.}
 }
 \description{
 Removes a tag that is assigned to a GameLift resource. Resource tags are
-used to organize AWS resources for a range of purposes. This action
+used to organize AWS resources for a range of purposes. This operation
 handles the permissions necessary to manage tags for the following
 GameLift resource types:
 }
@@ -37,7 +37,7 @@ GameLift resource types:
 
 To remove a tag from a resource, specify the unique ARN value for the
 resource and provide a string list containing one or more tags to be
-removed. This action succeeds even if the list includes tags that are
+removed. This operation succeeds even if the list includes tags that are
 not currently assigned to the specified resource.
 
 \strong{Learn more}
@@ -45,7 +45,7 @@ not currently assigned to the specified resource.
 \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}
 in the \emph{AWS General Reference}
 
-\href{http://aws.amazon.com/answers/account-management/aws-tagging-strategies/}{AWS Tagging Strategies}
+\href{https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf}{AWS Tagging Strategies}
 
 \strong{Related operations}
 \itemize{

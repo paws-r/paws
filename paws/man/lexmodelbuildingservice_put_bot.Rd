@@ -5,6 +5,7 @@
 \title{Creates an Amazon Lex conversational bot or replaces an existing bot}
 \usage{
 lexmodelbuildingservice_put_bot(name, description, intents,
+  enableModelImprovements, nluIntentConfidenceThreshold,
   clarificationPrompt, abortStatement, idleSessionTTLInSeconds, voiceId,
   checksum, processBehavior, locale, childDirected, detectSentiment,
   createVersion, tags)
@@ -17,6 +18,63 @@ lexmodelbuildingservice_put_bot(name, description, intents,
 \item{intents}{An array of \code{Intent} objects. Each intent represents a command that a
 user can express. For example, a pizza ordering bot might support an
 OrderPizza intent. For more information, see how-it-works.}
+
+\item{enableModelImprovements}{Set to \code{true} to enable access to natural language understanding
+improvements.
+
+When you set the \code{enableModelImprovements} parameter to \code{true} you can
+use the \code{nluIntentConfidenceThreshold} parameter to configure confidence
+scores. For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/confidence-scores.html}{Confidence Scores}.
+
+You can only set the \code{enableModelImprovements} parameter in certain
+Regions. If you set the parameter to \code{true}, your bot has access to
+accuracy improvements.
+
+The Regions where you can set the \code{enableModelImprovements} parameter to
+\code{true} are:
+\itemize{
+\item US East (N. Virginia) (us-east-1)
+\item US West (Oregon) (us-west-2)
+\item Asia Pacific (Sydney) (ap-southeast-2)
+\item EU (Ireland) (eu-west-1)
+}
+
+In other Regions, the \code{enableModelImprovements} parameter is set to
+\code{true} by default. In these Regions setting the parameter to \code{false}
+throws a \code{ValidationException} exception.}
+
+\item{nluIntentConfidenceThreshold}{Determines the threshold where Amazon Lex will insert the
+\code{AMAZON.FallbackIntent}, \code{AMAZON.KendraSearchIntent}, or both when
+returning alternative intents in a
+\href{https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html}{PostContent}
+or
+\href{https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html}{PostText}
+response. \code{AMAZON.FallbackIntent} and \code{AMAZON.KendraSearchIntent} are
+only inserted if they are configured for the bot.
+
+You must set the \code{enableModelImprovements} parameter to \code{true} to use
+confidence scores in the following regions.
+\itemize{
+\item US East (N. Virginia) (us-east-1)
+\item US West (Oregon) (us-west-2)
+\item Asia Pacific (Sydney) (ap-southeast-2)
+\item EU (Ireland) (eu-west-1)
+}
+
+In other Regions, the \code{enableModelImprovements} parameter is set to
+\code{true} by default.
+
+For example, suppose a bot is configured with the confidence threshold
+of 0.80 and the \code{AMAZON.FallbackIntent}. Amazon Lex returns three
+alternative intents with the following confidence scores: IntentA
+(0.70), IntentB (0.60), IntentC (0.50). The response from the \code{PostText}
+operation would be:
+\itemize{
+\item AMAZON.FallbackIntent
+\item IntentA
+\item IntentB
+\item IntentC
+}}
 
 \item{clarificationPrompt}{When Amazon Lex doesn't understand the user's intent, it uses this
 message to get clarification. To specify how many times Amazon Lex
@@ -55,7 +113,7 @@ clarification prompt to get an intent from the user, it returns a
 
 \item{abortStatement}{When Amazon Lex can't understand the user's input in context, it tries
 to elicit the information a few times. After that, Amazon Lex sends the
-message defined in \code{abortStatement} to the user, and then aborts the
+message defined in \code{abortStatement} to the user, and then cancels the
 conversation. To set the number of retries, use the
 \code{valueElicitationPrompt} field for the slot type.
 
@@ -69,7 +127,7 @@ of the intents. This intent might require the \code{CrustType} slot. You
 specify the \code{valueElicitationPrompt} field when you create the
 \code{CrustType} slot.
 
-If you have defined a fallback intent the abort statement will not be
+If you have defined a fallback intent the cancel statement will not be
 sent to the user, the fallback intent is used instead. For more
 information, see
 \href{https://docs.aws.amazon.com/lex/latest/dg/built-in-intent-fallback.html}{AMAZON.FallbackIntent}.}
@@ -141,7 +199,7 @@ application that is directed in whole or in part, to children under age
 13, you must obtain any required verifiable parental consent under
 COPPA. For information regarding the use of Amazon Lex in connection
 with websites, programs, or other applications that are directed or
-targeted, in whole or in part, to children under age 13, see the \href{https://aws.amazon.com/lex/faqs#data-security}{Amazon Lex FAQ.}}
+targeted, in whole or in part, to children under age 13, see the \href{https://aws.amazon.com/lex/faqs/#data-security}{Amazon Lex FAQ.}}
 
 \item{detectSentiment}{When set to \code{true} user utterances are sent to Amazon Comprehend for
 sentiment analysis. If you don't specify \code{detectSentiment}, the default
@@ -186,6 +244,8 @@ more information, see security-iam.
       intentVersion = "string"
     )
   ),
+  enableModelImprovements = TRUE|FALSE,
+  nluIntentConfidenceThreshold = 123.0,
   clarificationPrompt = list(
     messages = list(
       list(
@@ -211,7 +271,7 @@ more information, see security-iam.
   voiceId = "string",
   checksum = "string",
   processBehavior = "SAVE"|"BUILD",
-  locale = "en-US"|"en-GB"|"de-DE",
+  locale = "de-DE"|"en-AU"|"en-GB"|"en-US"|"es-419"|"es-ES"|"es-US"|"fr-FR"|"fr-CA"|"it-IT",
   childDirected = TRUE|FALSE,
   detectSentiment = TRUE|FALSE,
   createVersion = TRUE|FALSE,

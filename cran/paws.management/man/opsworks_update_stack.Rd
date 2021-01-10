@@ -22,7 +22,7 @@ attributes.}
 \item{ServiceRoleArn}{Do not use this parameter. You cannot update a stack's service role.}
 
 \item{DefaultInstanceProfileArn}{The ARN of an IAM profile that is the default profile for all of the
-stack's EC2 instances. For more information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
+stack's EC2 instances. For more information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{Using Identifiers}.}
 
 \item{DefaultOs}{The stack's operating system, which must be set to one of the following:
 \itemize{

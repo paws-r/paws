@@ -13,8 +13,7 @@ their relationship status with the master account. The default value is
 \code{TRUE}.
 
 If \code{OnlyAssociated} is set to \code{TRUE}, the response includes member
-accounts whose relationship status with the master is set to \code{ENABLED}
-or \code{DISABLED}.
+accounts whose relationship status with the master is set to \code{ENABLED}.
 
 If \code{OnlyAssociated} is set to \code{FALSE}, the response includes all
 existing member accounts.}
@@ -31,6 +30,10 @@ response.}
 \description{
 Lists details about all member accounts for the current Security Hub
 master account.
+}
+\details{
+The results include both member accounts that belong to an organization
+and member accounts that were invited manually.
 }
 \section{Request syntax}{
 \preformatted{svc$list_members(

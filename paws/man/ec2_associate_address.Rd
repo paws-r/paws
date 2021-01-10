@@ -2,7 +2,9 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_associate_address}
 \alias{ec2_associate_address}
-\title{Associates an Elastic IP address with an instance or a network interface}
+\title{Associates an Elastic IP address, or carrier IP address (for instances
+that are in subnets in Wavelength Zones) with an instance or a network
+interface}
 \usage{
 ec2_associate_address(AllocationId, InstanceId, PublicIp,
   AllowReassociation, DryRun, NetworkInterfaceId, PrivateIpAddress)
@@ -42,7 +44,8 @@ with the Elastic IP address. If no private IP address is specified, the
 Elastic IP address is associated with the primary private IP address.}
 }
 \description{
-Associates an Elastic IP address with an instance or a network
+Associates an Elastic IP address, or carrier IP address (for instances
+that are in subnets in Wavelength Zones) with an instance or a network
 interface. Before you can use an Elastic IP address, you must allocate
 it to your account.
 }
@@ -65,13 +68,16 @@ different instance or a network interface, you get an error unless you
 allow reassociation. You cannot associate an Elastic IP address with an
 instance or network interface that has an existing Elastic IP address.
 
+[Subnets in Wavelength Zones] You can associate an IP address from the
+telecommunication carrier to the instance or network interface.
+
 You cannot associate an Elastic IP address with an interface in a
 different network border group.
 
 This is an idempotent operation. If you perform the operation more than
 once, Amazon EC2 doesn't return an error, and you may be charged for
 each time the Elastic IP address is remapped to the same instance. For
-more information, see the \emph{Elastic IP Addresses} section of \href{http://aws.amazon.com/ec2/pricing/}{Amazon EC2 Pricing}.
+more information, see the \emph{Elastic IP Addresses} section of \href{https://aws.amazon.com/ec2/pricing/}{Amazon EC2 Pricing}.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_address(

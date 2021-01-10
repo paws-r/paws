@@ -31,7 +31,8 @@ Update a program in a multiplex.
       ConstantBitrate = 123,
       StatmuxSettings = list(
         MaximumBitrate = 123,
-        MinimumBitrate = 123
+        MinimumBitrate = 123,
+        Priority = 123
       )
     )
   ),

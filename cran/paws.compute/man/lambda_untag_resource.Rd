@@ -13,8 +13,8 @@ lambda_untag_resource(Resource, TagKeys)
 }
 \description{
 Removes
-\href{https://docs.aws.amazon.com/lambda/latest/dg/tagging.html}{tags} from a
-function.
+\href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags}
+from a function.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

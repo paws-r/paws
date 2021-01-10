@@ -8,12 +8,19 @@ specified by an ARN}
 resourcegroups_get_tags(Arn)
 }
 \arguments{
-\item{Arn}{[required] The ARN of the resource group for which you want a list of tags. The
-resource must exist within the account you are using.}
+\item{Arn}{[required] The ARN of the resource group whose tags you want to retrieve.}
 }
 \description{
 Returns a list of tags that are associated with a resource group,
 specified by an ARN.
+}
+\details{
+\strong{Minimum permissions}
+
+To run this command, you must have the following permissions:
+\itemize{
+\item \code{resource-groups:GetTags}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$get_tags(

@@ -23,7 +23,9 @@ servicecatalog_search_provisioned_products(AcceptLanguage,
 When the key is \code{SearchQuery}, the searchable fields are \code{arn},
 \code{createdTime}, \code{id}, \code{lastRecordId}, \code{idempotencyToken}, \code{name},
 \code{physicalId}, \code{productId}, \code{provisioningArtifact}, \code{type}, \code{status},
-\code{tags}, \code{userArn}, and \code{userArnSession}.
+\code{tags}, \code{userArn}, \code{userArnSession}, \code{lastProvisioningRecordId},
+\code{lastSuccessfulProvisioningRecordId}, \code{productName}, and
+\code{provisioningArtifactName}.
 
 Example: \verb{"SearchQuery":\\\["status:AVAILABLE"\\\]}}
 

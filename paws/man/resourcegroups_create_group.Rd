@@ -2,31 +2,51 @@
 % Please edit documentation in R/resourcegroups_operations.R
 \name{resourcegroups_create_group}
 \alias{resourcegroups_create_group}
-\title{Creates a group with a specified name, description, and resource query}
+\title{Creates a resource group with the specified name and description}
 \usage{
-resourcegroups_create_group(Name, Description, ResourceQuery, Tags)
+resourcegroups_create_group(Name, Description, ResourceQuery, Tags,
+  Configuration)
 }
 \arguments{
 \item{Name}{[required] The name of the group, which is the identifier of the group in other
-operations. A resource group name cannot be updated after it is created.
-A resource group name can have a maximum of 128 characters, including
-letters, numbers, hyphens, dots, and underscores. The name cannot start
-with \code{AWS} or \code{aws}; these are reserved. A resource group name must be
-unique within your account.}
+operations. You can't change the name of a resource group after you
+create it. A resource group name can consist of letters, numbers,
+hyphens, periods, and underscores. The name cannot start with \code{AWS} or
+\code{aws}; these are reserved. A resource group name must be unique within
+each AWS Region in your AWS account.}
 
-\item{Description}{The description of the resource group. Descriptions can have a maximum
-of 511 characters, including letters, numbers, hyphens, underscores,
-punctuation, and spaces.}
+\item{Description}{The description of the resource group. Descriptions can consist of
+letters, numbers, hyphens, underscores, periods, and spaces.}
 
-\item{ResourceQuery}{[required] The resource query that determines which AWS resources are members of
-this group.}
+\item{ResourceQuery}{The resource query that determines which AWS resources are members of
+this group. For more information about resource queries, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag}{Create a tag-based group in Resource Groups}.
 
-\item{Tags}{The tags to add to the group. A tag is a string-to-string map of
-key-value pairs. Tag keys can have a maximum character length of 128
-characters, and tag values can have a maximum length of 256 characters.}
+A resource group can contain either a \code{ResourceQuery} or a
+\code{Configuration}, but not both.}
+
+\item{Tags}{The tags to add to the group. A tag is key-value pair string.}
+
+\item{Configuration}{A configuration associates the resource group with an AWS service and
+specifies how the service can interact with the resources in the group.
+A configuration is an array of GroupConfigurationItem elements. For
+details about the syntax of service configurations, see \href{https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html}{Service configurations for resource groups}.
+
+A resource group can contain either a \code{Configuration} or a
+\code{ResourceQuery}, but not both.}
 }
 \description{
-Creates a group with a specified name, description, and resource query.
+Creates a resource group with the specified name and description. You
+can optionally include a resource query, or a service configuration. For
+more information about constructing a resource query, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag}{Create a tag-based group in Resource Groups}.
+For more information about service configurations, see \href{https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html}{Service configurations for resource groups}.
+}
+\details{
+\strong{Minimum permissions}
+
+To run this command, you must have the following permissions:
+\itemize{
+\item \code{resource-groups:CreateGroup}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$create_group(
@@ -38,6 +58,19 @@ Creates a group with a specified name, description, and resource query.
   ),
   Tags = list(
     "string"
+  ),
+  Configuration = list(
+    list(
+      Type = "string",
+      Parameters = list(
+        list(
+          Name = "string",
+          Values = list(
+            "string"
+          )
+        )
+      )
+    )
   )
 )
 }

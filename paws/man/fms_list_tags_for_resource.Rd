@@ -8,8 +8,8 @@ fms_list_tags_for_resource(ResourceArn)
 }
 \arguments{
 \item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the resource to return tags for. The
-Firewall Manager policy is the only AWS resource that supports tagging,
-so this ARN is a policy ARN..}
+AWS Firewall Manager resources that support tagging are policies,
+applications lists, and protocols lists.}
 }
 \description{
 Retrieves the list of tags for the specified AWS resource.

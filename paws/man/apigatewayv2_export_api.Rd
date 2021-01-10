@@ -13,7 +13,7 @@ apigatewayv2_export_api(ApiId, ExportVersion, IncludeExtensions,
 \item{ExportVersion}{The version of the API Gateway export algorithm. API Gateway uses the
 latest version by default. Currently, the only supported version is 1.0.}
 
-\item{IncludeExtensions}{Specifies whether to include \href{https://docs.aws.amazon.com//apigateway/latest/developerguide/api-gateway-swagger-extensions.html}{API Gateway extensions}
+\item{IncludeExtensions}{Specifies whether to include \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions.html}{API Gateway extensions}
 in the exported API definition. API Gateway extensions are included by
 default.}
 

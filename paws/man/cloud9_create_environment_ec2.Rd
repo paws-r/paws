@@ -7,7 +7,8 @@ Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
 instance to the environment}
 \usage{
 cloud9_create_environment_ec2(name, description, clientRequestToken,
-  instanceType, subnetId, automaticStopTimeMinutes, ownerArn, tags)
+  instanceType, subnetId, automaticStopTimeMinutes, ownerArn, tags,
+  connectionType)
 }
 \arguments{
 \item{name}{[required] The name of the environment to create.
@@ -19,7 +20,7 @@ This name is visible to other AWS IAM users in the same AWS account.}
 \item{clientRequestToken}{A unique, case-sensitive string that helps AWS Cloud9 to ensure this
 operation completes no more than one time.
 
-For more information, see \href{http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Client Tokens}
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Client Tokens}
 in the \emph{Amazon EC2 API Reference}.}
 
 \item{instanceType}{[required] The type of instance to connect to the environment (for example,
@@ -37,6 +38,8 @@ ARN defaults to this environment's creator.}
 
 \item{tags}{An array of key-value pairs that will be associated with the new AWS
 Cloud9 development environment.}
+
+\item{connectionType}{The connection type used for connecting to an Amazon EC2 environment.}
 }
 \description{
 Creates an AWS Cloud9 development environment, launches an Amazon
@@ -57,7 +60,8 @@ instance to the environment.
       Key = "string",
       Value = "string"
     )
-  )
+  ),
+  connectionType = "CONNECT_SSH"|"CONNECT_SSM"
 )
 }
 }

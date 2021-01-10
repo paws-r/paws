@@ -80,7 +80,7 @@ These function names are case-sensitive.
 \item Logical operators: \code{AND | OR | NOT}
 }
 
-For more information on condition expressions, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Condition Expressions}
+For more information on condition expressions, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ExpressionAttributeNames}{One or more substitution tokens for attribute names in an expression.
@@ -118,7 +118,7 @@ example:
 Tokens that begin with the \strong{:} character are \emph{expression attribute
 values}, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Specifying Item Attributes}
+For more information on expression attribute names, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html}{Specifying Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ExpressionAttributeValues}{One or more values that can be substituted in an expression.
@@ -137,7 +137,7 @@ You could then use these values in an expression, such as this:
 
 \verb{ProductStatus IN (:avail, :back, :disc)}
 
-For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Condition Expressions}
+For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 }
 \description{
@@ -150,42 +150,7 @@ has certain attribute values. You can return the item's attribute values
 in the same operation, using the \code{ReturnValues} parameter.
 }
 \details{
-This topic provides general information about the \code{PutItem} API.
 
-For information on how to call the \code{PutItem} API using the AWS SDK in
-specific languages, see the following:
-\itemize{
-\item \href{http://docs.aws.amazon.com/goto/aws-cli/dynamodb-2012-08-10/PutItem}{PutItem in the AWS Command Line Interface}
-\item \href{http://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for .NET}
-\item \href{http://docs.aws.amazon.com/goto/SdkForCpp/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for C++}
-\item \href{http://docs.aws.amazon.com/goto/SdkForGoV1/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for Go}
-\item \href{http://docs.aws.amazon.com/goto/SdkForJava/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for Java}
-\item \href{http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for JavaScript}
-\item \href{http://docs.aws.amazon.com/goto/SdkForPHPV3/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for PHP V3}
-\item \href{http://docs.aws.amazon.com/goto/boto3/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for Python}
-\item \href{http://docs.aws.amazon.com/goto/SdkForRubyV2/dynamodb-2012-08-10/PutItem}{PutItem in the AWS SDK for Ruby V2}
-}
-
-When you add an item, the primary key attributes are the only required
-attributes. Attribute values cannot be null.
-
-Empty String and Binary attribute values are allowed. Attribute values
-of type String and Binary must have a length greater than zero if the
-attribute is used as a key attribute for a table or index. Set type
-attributes cannot be empty.
-
-Invalid Requests with empty values will be rejected with a
-\code{ValidationException} exception.
-
-To prevent a new item from replacing an existing item, use a conditional
-expression that contains the \code{attribute_not_exists} function with the
-name of the attribute being used as the partition key for the table.
-Since every record must contain that attribute, the
-\code{attribute_not_exists} function will only succeed if no matching item
-exists.
-
-For more information about \code{PutItem}, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html}{Working with Items}
-in the \emph{Amazon DynamoDB Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_item(

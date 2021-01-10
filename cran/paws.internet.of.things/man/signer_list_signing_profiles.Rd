@@ -4,7 +4,8 @@
 \alias{signer_list_signing_profiles}
 \title{Lists all available signing profiles in your AWS account}
 \usage{
-signer_list_signing_profiles(includeCanceled, maxResults, nextToken)
+signer_list_signing_profiles(includeCanceled, maxResults, nextToken,
+  platformId, statuses)
 }
 \arguments{
 \item{includeCanceled}{Designates whether to include profiles with the status of \code{CANCELED}.}
@@ -15,6 +16,12 @@ signer_list_signing_profiles(includeCanceled, maxResults, nextToken)
 you receive a response with truncated results, use this parameter in a
 subsequent request. Set it to the value of \code{nextToken} from the response
 that you just received.}
+
+\item{platformId}{Filters results to return only signing jobs initiated for a specified
+signing platform.}
+
+\item{statuses}{Filters results to return only signing jobs with statuses in the
+specified list.}
 }
 \description{
 Lists all available signing profiles in your AWS account. Returns only
@@ -30,7 +37,11 @@ of your signing jobs have been returned.
 \preformatted{svc$list_signing_profiles(
   includeCanceled = TRUE|FALSE,
   maxResults = 123,
-  nextToken = "string"
+  nextToken = "string",
+  platformId = "string",
+  statuses = list(
+    "Active"|"Canceled"|"Revoked"
+  )
 )
 }
 }

@@ -100,9 +100,9 @@ snowball_cancel_job <- function(JobId) {
 }
 .snowball$operations$cancel_job <- snowball_cancel_job
 
-#' Creates an address for a Snowball to be shipped to
+#' Creates an address for a Snow device to be shipped to
 #'
-#' Creates an address for a Snowball to be shipped to. In most regions,
+#' Creates an address for a Snow device to be shipped to. In most regions,
 #' addresses are validated at the time of creation. The address you provide
 #' must be located within the serviceable area of your region. If the
 #' address is invalid or unsupported, then an exception is thrown.
@@ -110,7 +110,7 @@ snowball_cancel_job <- function(JobId) {
 #' @usage
 #' snowball_create_address(Address)
 #'
-#' @param Address &#91;required&#93; The address that you want the Snowball shipped to.
+#' @param Address &#91;required&#93; The address that you want the Snow device shipped to.
 #'
 #' @section Request syntax:
 #' ```
@@ -201,24 +201,24 @@ snowball_create_address <- function(Address) {
 #' values are created by using the
 #' [CreateRole](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
 #' API action in AWS Identity and Access Management (IAM).
-#' @param SnowballType The type of AWS Snowball device to use for this cluster.
+#' @param SnowballType The type of AWS Snow Family device to use for this cluster.
 #' 
-#' For cluster jobs, AWS Snowball currently supports only the `EDGE` device
-#' type.
+#' For cluster jobs, AWS Snow Family currently supports only the `EDGE`
+#' device type.
 #' @param ShippingOption &#91;required&#93; The shipping speed for each node in this cluster. This speed doesn't
 #' dictate how soon you'll get each Snowball Edge device, rather it
 #' represents how quickly each device moves to its destination while in
 #' transit. Regional shipping speeds are as follows:
 #' 
-#' -   In Australia, you have access to express shipping. Typically,
-#'     Snowballs shipped express are delivered in about a day.
+#' -   In Australia, you have access to express shipping. Typically, Snow
+#'     devices shipped express are delivered in about a day.
 #' 
 #' -   In the European Union (EU), you have access to express shipping.
-#'     Typically, Snowballs shipped express are delivered in about a day.
-#'     In addition, most countries in the EU have access to standard
+#'     Typically, Snow devices shipped express are delivered in about a
+#'     day. In addition, most countries in the EU have access to standard
 #'     shipping, which typically takes less than a week, one way.
 #' 
-#' -   In India, Snowballs are delivered in one to seven days.
+#' -   In India, Snow device are delivered in one to seven days.
 #' 
 #' -   In the United States of America (US), you have access to one-day
 #'     shipping and two-day shipping.
@@ -229,11 +229,11 @@ snowball_create_address <- function(Address) {
 #'     devices shipped express are delivered in about a day.
 #' 
 #' -   In the European Union (EU), you have access to express shipping.
-#'     Typically, Snowball Edges shipped express are delivered in about a
+#'     Typically, Snow devices shipped express are delivered in about a
 #'     day. In addition, most countries in the EU have access to standard
 #'     shipping, which typically takes less than a week, one way.
 #' 
-#' -   In India, Snowball Edges are delivered in one to seven days.
+#' -   In India, Snow device are delivered in one to seven days.
 #' 
 #' -   In the US, you have access to one-day shipping and two-day shipping.
 #' @param Notification The Amazon Simple Notification Service (Amazon SNS) notification
@@ -353,7 +353,7 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #'
 #' Creates a job to import or export data between Amazon S3 and your
 #' on-premises data center. Your AWS account must have the right trust
-#' policies and permissions in place to create a job for Snowball. If
+#' policies and permissions in place to create a job for a Snow device. If
 #' you're creating a job for a node in a cluster, you only need to provide
 #' the `clusterId` value; the other job attributes are inherited from the
 #' cluster.
@@ -378,7 +378,7 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' sorted.
 #' @param Description Defines an optional description of this specific job, for example
 #' `Important Photos 2016-08-11`.
-#' @param AddressId The ID for the address that you want the Snowball shipped to.
+#' @param AddressId The ID for the address that you want the Snow device shipped to.
 #' @param KmsKeyARN The `KmsKeyARN` that you want to associate with this job. `KmsKeyARN`s
 #' are created using the
 #' [CreateKey](https://docs.aws.amazon.com/kms/latest/APIReference/API_CreateKey.html)
@@ -388,22 +388,22 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' [CreateRole](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
 #' AWS Identity and Access Management (IAM) API action.
 #' @param SnowballCapacityPreference If your job is being created in one of the US regions, you have the
-#' option of specifying what size Snowball you'd like for this job. In all
-#' other regions, Snowballs come with 80 TB in storage capacity.
+#' option of specifying what size Snow device you'd like for this job. In
+#' all other regions, Snowballs come with 80 TB in storage capacity.
 #' @param ShippingOption The shipping speed for this job. This speed doesn't dictate how soon
-#' you'll get the Snowball, rather it represents how quickly the Snowball
-#' moves to its destination while in transit. Regional shipping speeds are
-#' as follows:
+#' you'll get the Snow device, rather it represents how quickly the Snow
+#' device moves to its destination while in transit. Regional shipping
+#' speeds are as follows:
 #' 
-#' -   In Australia, you have access to express shipping. Typically,
-#'     Snowballs shipped express are delivered in about a day.
+#' -   In Australia, you have access to express shipping. Typically, Snow
+#'     devices shipped express are delivered in about a day.
 #' 
 #' -   In the European Union (EU), you have access to express shipping.
-#'     Typically, Snowballs shipped express are delivered in about a day.
-#'     In addition, most countries in the EU have access to standard
+#'     Typically, Snow devices shipped express are delivered in about a
+#'     day. In addition, most countries in the EU have access to standard
 #'     shipping, which typically takes less than a week, one way.
 #' 
-#' -   In India, Snowballs are delivered in one to seven days.
+#' -   In India, Snow devices are delivered in one to seven days.
 #' 
 #' -   In the US, you have access to one-day shipping and two-day shipping.
 #' @param Notification Defines the Amazon Simple Notification Service (Amazon SNS) notification
@@ -411,12 +411,12 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' @param ClusterId The ID of a cluster. If you're creating a job for a node in a cluster,
 #' you need to provide only this `clusterId` value. The other job
 #' attributes are inherited from the cluster.
-#' @param SnowballType The type of AWS Snowball device to use for this job.
+#' @param SnowballType The type of AWS Snow Family device to use for this job.
 #' 
-#' For cluster jobs, AWS Snowball currently supports only the `EDGE` device
-#' type.
+#' For cluster jobs, AWS Snow Family currently supports only the `EDGE`
+#' device type.
 #' 
-#' The type of AWS Snowball device to use for this job. Currently, the only
+#' The type of AWS Snow device to use for this job. Currently, the only
 #' supported device type for cluster jobs is `EDGE`.
 #' 
 #' For more information, see [Snowball Edge Device
@@ -545,6 +545,50 @@ snowball_create_job <- function(JobType = NULL, Resources = NULL, Description = 
   return(response)
 }
 .snowball$operations$create_job <- snowball_create_job
+
+#' Creates a shipping label that will be used to return the Snow device to
+#' AWS
+#'
+#' Creates a shipping label that will be used to return the Snow device to
+#' AWS.
+#'
+#' @usage
+#' snowball_create_return_shipping_label(JobId, ShippingOption)
+#'
+#' @param JobId &#91;required&#93; The ID for a job that you want to create the return shipping label for.
+#' For example `JID123e4567-e89b-12d3-a456-426655440000`.
+#' @param ShippingOption The shipping speed for a particular job. This speed doesn't dictate how
+#' soon the device is returned to AWS. This speed represents how quickly it
+#' moves to its destination while in transit. Regional shipping speeds are
+#' as follows:
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_return_shipping_label(
+#'   JobId = "string",
+#'   ShippingOption = "SECOND_DAY"|"NEXT_DAY"|"EXPRESS"|"STANDARD"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname snowball_create_return_shipping_label
+snowball_create_return_shipping_label <- function(JobId, ShippingOption = NULL) {
+  op <- new_operation(
+    name = "CreateReturnShippingLabel",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .snowball$create_return_shipping_label_input(JobId = JobId, ShippingOption = ShippingOption)
+  output <- .snowball$create_return_shipping_label_output()
+  config <- get_config()
+  svc <- .snowball$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.snowball$operations$create_return_shipping_label <- snowball_create_return_shipping_label
 
 #' Takes an AddressId and returns specific details about that address in
 #' the form of an Address object
@@ -737,6 +781,45 @@ snowball_describe_job <- function(JobId) {
 }
 .snowball$operations$describe_job <- snowball_describe_job
 
+#' Information on the shipping label of a Snow device that is being
+#' returned to AWS
+#'
+#' Information on the shipping label of a Snow device that is being
+#' returned to AWS.
+#'
+#' @usage
+#' snowball_describe_return_shipping_label(JobId)
+#'
+#' @param JobId The automatically generated ID for a job, for example
+#' `JID123e4567-e89b-12d3-a456-426655440000`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_return_shipping_label(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname snowball_describe_return_shipping_label
+snowball_describe_return_shipping_label <- function(JobId = NULL) {
+  op <- new_operation(
+    name = "DescribeReturnShippingLabel",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .snowball$describe_return_shipping_label_input(JobId = JobId)
+  output <- .snowball$describe_return_shipping_label_output()
+  config <- get_config()
+  svc <- .snowball$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.snowball$operations$describe_return_shipping_label <- snowball_describe_return_shipping_label
+
 #' Returns a link to an Amazon S3 presigned URL for the manifest file
 #' associated with the specified JobId value
 #'
@@ -748,14 +831,14 @@ snowball_describe_job <- function(JobId) {
 #' 
 #' The manifest is an encrypted file that you can download after your job
 #' enters the `WithCustomer` status. The manifest is decrypted by using the
-#' `UnlockCode` code value, when you pass both values to the Snowball
+#' `UnlockCode` code value, when you pass both values to the Snow device
 #' through the Snowball client when the client is started for the first
 #' time.
 #' 
 #' As a best practice, we recommend that you don't save a copy of an
 #' `UnlockCode` value in the same location as the manifest file for that
 #' job. Saving these separately helps prevent unauthorized parties from
-#' gaining access to the Snowball associated with that job.
+#' gaining access to the Snow device associated with that job.
 #' 
 #' The credentials of a given job, including its manifest file and unlock
 #' code, expire 90 days after the job is created.
@@ -828,13 +911,13 @@ snowball_get_job_manifest <- function(JobId) {
 #' 
 #' The `UnlockCode` value is a 29-character code with 25 alphanumeric
 #' characters and 4 hyphens. This code is used to decrypt the manifest file
-#' when it is passed along with the manifest to the Snowball through the
+#' when it is passed along with the manifest to the Snow device through the
 #' Snowball client when the client is started for the first time.
 #' 
 #' As a best practice, we recommend that you don't save a copy of the
 #' `UnlockCode` in the same location as the manifest file for that job.
 #' Saving these separately helps prevent unauthorized parties from gaining
-#' access to the Snowball associated with that job.
+#' access to the Snow device associated with that job.
 #'
 #' @usage
 #' snowball_get_job_unlock_code(JobId)
@@ -890,15 +973,15 @@ snowball_get_job_unlock_code <- function(JobId) {
 }
 .snowball$operations$get_job_unlock_code <- snowball_get_job_unlock_code
 
-#' Returns information about the Snowball service limit for your account,
-#' and also the number of Snowballs your account has in use
+#' Returns information about the Snow Family service limit for your
+#' account, and also the number of Snow devices your account has in use
 #'
-#' Returns information about the Snowball service limit for your account,
-#' and also the number of Snowballs your account has in use.
+#' Returns information about the Snow Family service limit for your
+#' account, and also the number of Snow devices your account has in use.
 #' 
-#' The default service limit for the number of Snowballs that you can have
-#' at one time is 1. If you want to increase your service limit, contact
-#' AWS Support.
+#' The default service limit for the number of Snow devices that you can
+#' have at one time is 1. If you want to increase your service limit,
+#' contact AWS Support.
 #'
 #' @usage
 #' snowball_get_snowball_usage()
@@ -1085,13 +1168,13 @@ snowball_list_clusters <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' This action returns a list of the different Amazon EC2 Amazon Machine
 #' Images (AMIs) that are owned by your AWS account that would be supported
-#' for use on a Snowball Edge device
+#' for use on a Snow device
 #'
 #' This action returns a list of the different Amazon EC2 Amazon Machine
 #' Images (AMIs) that are owned by your AWS account that would be supported
-#' for use on a Snowball Edge device. Currently, supported AMIs are based
-#' on the CentOS 7 (x86\\_64) - with Updates HVM, Ubuntu Server 14.04 LTS
-#' (HVM), and Ubuntu 16.04 LTS - Xenial (HVM) images, available on the AWS
+#' for use on a Snow device. Currently, supported AMIs are based on the
+#' CentOS 7 (x86\\_64) - with Updates HVM, Ubuntu Server 14.04 LTS (HVM),
+#' and Ubuntu 16.04 LTS - Xenial (HVM) images, available on the AWS
 #' Marketplace.
 #'
 #' @usage
@@ -1401,3 +1484,48 @@ snowball_update_job <- function(JobId, RoleARN = NULL, Notification = NULL, Reso
   return(response)
 }
 .snowball$operations$update_job <- snowball_update_job
+
+#' Updates the state when a the shipment states changes to a different
+#' state
+#'
+#' Updates the state when a the shipment states changes to a different
+#' state.
+#'
+#' @usage
+#' snowball_update_job_shipment_state(JobId, ShipmentState)
+#'
+#' @param JobId &#91;required&#93; The job ID of the job whose shipment date you want to update, for
+#' example `JID123e4567-e89b-12d3-a456-426655440000`.
+#' @param ShipmentState &#91;required&#93; The state of a device when it is being shipped.
+#' 
+#' Set to `RECEIVED` when the device arrives at your location.
+#' 
+#' Set to `RETURNED` when you have returned the device to AWS.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_job_shipment_state(
+#'   JobId = "string",
+#'   ShipmentState = "RECEIVED"|"RETURNED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname snowball_update_job_shipment_state
+snowball_update_job_shipment_state <- function(JobId, ShipmentState) {
+  op <- new_operation(
+    name = "UpdateJobShipmentState",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .snowball$update_job_shipment_state_input(JobId = JobId, ShipmentState = ShipmentState)
+  output <- .snowball$update_job_shipment_state_output()
+  config <- get_config()
+  svc <- .snowball$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.snowball$operations$update_job_shipment_state <- snowball_update_job_shipment_state

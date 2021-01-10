@@ -2,6 +2,10 @@ context("iotsitewise")
 
 svc <- paws::iotsitewise()
 
+test_that("describe_default_encryption_configuration", {
+  expect_error(svc$describe_default_encryption_configuration(), NA)
+})
+
 test_that("describe_logging_options", {
   expect_error(svc$describe_logging_options(), NA)
 })

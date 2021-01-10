@@ -2,36 +2,38 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_resume_game_server_group}
 \alias{gamelift_resume_game_server_group}
-\title{This action is part of Amazon GameLift FleetIQ with game server groups,
-which is in preview release and is subject to change}
+\title{This operation is used with the Amazon GameLift FleetIQ solution and
+game server groups}
 \usage{
 gamelift_resume_game_server_group(GameServerGroupName, ResumeActions)
 }
 \arguments{
-\item{GameServerGroupName}{[required] The unique identifier of the game server group to resume activity on.
-Use either the GameServerGroup name or ARN value.}
+\item{GameServerGroupName}{[required] A unique identifier for the game server group. Use either the
+GameServerGroup name or ARN value.}
 
-\item{ResumeActions}{[required] The action to resume for this game server group.}
+\item{ResumeActions}{[required] The activity to resume for this game server group.}
 }
 \description{
-\strong{This action is part of Amazon GameLift FleetIQ with game server
-groups, which is in preview release and is subject to change.}
+\strong{This operation is used with the Amazon GameLift FleetIQ solution and
+game server groups.}
 }
 \details{
 Reinstates activity on a game server group after it has been suspended.
-A game server group may be suspended by calling SuspendGameServerGroup,
-or it may have been involuntarily suspended due to a configuration
-problem. You can manually resume activity on the group once the
-configuration problem has been resolved. Refer to the game server group
-status and status reason for more information on why group activity is
-suspended.
+A game server group might be suspended by theSuspendGameServerGroup
+operation, or it might be suspended involuntarily due to a configuration
+problem. In the second case, you can manually resume activity on the
+group once the configuration problem has been resolved. Refer to the
+game server group status and status reason for more information on why
+group activity is suspended.
 
 To resume activity, specify a game server group ARN and the type of
-activity to be resumed.
+activity to be resumed. If successful, a GameServerGroup object is
+returned showing that the resumed activity is no longer listed in
+\code{SuspendedActions}.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html}{GameLift FleetIQ Guide}
+\href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html}{GameLift FleetIQ Guide}
 
 \strong{Related operations}
 \itemize{
@@ -42,6 +44,7 @@ activity to be resumed.
 \item DeleteGameServerGroup
 \item ResumeGameServerGroup
 \item SuspendGameServerGroup
+\item DescribeGameServerInstances
 }
 }
 \section{Request syntax}{

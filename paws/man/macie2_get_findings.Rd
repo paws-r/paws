@@ -2,18 +2,18 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_get_findings}
 \alias{macie2_get_findings}
-\title{Retrieves information about one or more findings}
+\title{Retrieves the details of one or more findings}
 \usage{
 macie2_get_findings(findingIds, sortCriteria)
 }
 \arguments{
 \item{findingIds}{[required] An array of strings that lists the unique identifiers for the findings
-to retrieve information about.}
+to retrieve.}
 
 \item{sortCriteria}{The criteria for sorting the results of the request.}
 }
 \description{
-Retrieves information about one or more findings.
+Retrieves the details of one or more findings.
 }
 \section{Request syntax}{
 \preformatted{svc$get_findings(

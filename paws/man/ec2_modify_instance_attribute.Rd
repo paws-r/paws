@@ -104,7 +104,7 @@ has multiple ENIs, we recommend that you use the
 ModifyNetworkInterfaceAttribute action.
 
 To modify some attributes, the instance must be stopped. For more
-information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html}{Modifying attributes of a stopped instance}
+information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html}{Modifying attributes of a stopped instance}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
@@ -112,7 +112,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   SourceDestCheck = list(
     Value = TRUE|FALSE
   ),
-  Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport",
+  Attribute = "instanceType"|"kernel"|"ramdisk"|"userData"|"disableApiTermination"|"instanceInitiatedShutdownBehavior"|"rootDeviceName"|"blockDeviceMapping"|"productCodes"|"sourceDestCheck"|"groupSet"|"ebsOptimized"|"sriovNetSupport"|"enaSupport"|"enclaveOptions",
   BlockDeviceMappings = list(
     list(
       DeviceName = "string",

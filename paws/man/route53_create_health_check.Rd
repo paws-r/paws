@@ -63,7 +63,7 @@ the alarm. For example, you might create a CloudWatch metric that
 checks the status of the Amazon EC2 \code{StatusCheckFailed} metric, add
 an alarm to the metric, and then create a health check that is based
 on the state of the alarm. For information about creating CloudWatch
-metrics and alarms by using the CloudWatch console, see the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/WhatIsCloudWatch.html}{Amazon CloudWatch User Guide}.
+metrics and alarms by using the CloudWatch console, see the \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html}{Amazon CloudWatch User Guide}.
 }
 }
 \section{Request syntax}{

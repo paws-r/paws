@@ -8,8 +8,8 @@ lambda_get_account_settings()
 }
 \description{
 Retrieves details about your account's
-\href{https://docs.aws.amazon.com/lambda/latest/dg/limits.html}{limits} and
-usage in an AWS Region.
+\href{https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html}{limits}
+and usage in an AWS Region.
 }
 \section{Request syntax}{
 \preformatted{svc$get_account_settings()

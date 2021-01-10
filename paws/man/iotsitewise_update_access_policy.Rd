@@ -2,8 +2,8 @@
 % Please edit documentation in R/iotsitewise_operations.R
 \name{iotsitewise_update_access_policy}
 \alias{iotsitewise_update_access_policy}
-\title{Updates an existing access policy that specifies an AWS SSO user or
-group's access to an AWS IoT SiteWise Monitor portal or project resource}
+\title{Updates an existing access policy that specifies an identity's access to
+an AWS IoT SiteWise Monitor portal or project resource}
 \usage{
 iotsitewise_update_access_policy(accessPolicyId, accessPolicyIdentity,
   accessPolicyResource, accessPolicyPermission, clientToken)
@@ -11,11 +11,11 @@ iotsitewise_update_access_policy(accessPolicyId, accessPolicyIdentity,
 \arguments{
 \item{accessPolicyId}{[required] The ID of the access policy.}
 
-\item{accessPolicyIdentity}{[required] The identity for this access policy. Choose either a \code{user} or a \code{group}
-but not both.}
+\item{accessPolicyIdentity}{[required] The identity for this access policy. Choose an AWS SSO user, an AWS SSO
+group, or an IAM user.}
 
 \item{accessPolicyResource}{[required] The AWS IoT SiteWise Monitor resource for this access policy. Choose
-either \code{portal} or \code{project} but not both.}
+either a portal or a project.}
 
 \item{accessPolicyPermission}{[required] The permission level for this access policy. Note that a project
 \code{ADMINISTRATOR} is also known as a project owner.}
@@ -25,9 +25,8 @@ idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.}
 }
 \description{
-Updates an existing access policy that specifies an AWS SSO user or
-group's access to an AWS IoT SiteWise Monitor portal or project
-resource.
+Updates an existing access policy that specifies an identity's access to
+an AWS IoT SiteWise Monitor portal or project resource.
 }
 \section{Request syntax}{
 \preformatted{svc$update_access_policy(
@@ -38,6 +37,9 @@ resource.
     ),
     group = list(
       id = "string"
+    ),
+    iamUser = list(
+      arn = "string"
     )
   ),
   accessPolicyResource = list(

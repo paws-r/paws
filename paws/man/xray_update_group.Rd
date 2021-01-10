@@ -4,7 +4,8 @@
 \alias{xray_update_group}
 \title{Updates a group resource}
 \usage{
-xray_update_group(GroupName, GroupARN, FilterExpression)
+xray_update_group(GroupName, GroupARN, FilterExpression,
+  InsightsConfiguration)
 }
 \arguments{
 \item{GroupName}{The case-sensitive name of the group.}
@@ -13,6 +14,15 @@ xray_update_group(GroupName, GroupARN, FilterExpression)
 
 \item{FilterExpression}{The updated filter expression defining criteria by which to group
 traces.}
+
+\item{InsightsConfiguration}{The structure containing configurations related to insights.
+\itemize{
+\item The InsightsEnabled boolean can be set to true to enable insights
+for the group or false to disable insights for the group.
+\item The NotifcationsEnabled boolean can be set to true to enable
+insights notifications for the group. Notifications can only be
+enabled on a group with InsightsEnabled set to true.
+}}
 }
 \description{
 Updates a group resource.
@@ -21,7 +31,11 @@ Updates a group resource.
 \preformatted{svc$update_group(
   GroupName = "string",
   GroupARN = "string",
-  FilterExpression = "string"
+  FilterExpression = "string",
+  InsightsConfiguration = list(
+    InsightsEnabled = TRUE|FALSE,
+    NotificationsEnabled = TRUE|FALSE
+  )
 )
 }
 }

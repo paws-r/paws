@@ -5,7 +5,8 @@
 \title{Lists all your signing jobs}
 \usage{
 signer_list_signing_jobs(status, platformId, requestedBy, maxResults,
-  nextToken)
+  nextToken, isRevoked, signatureExpiresBefore, signatureExpiresAfter,
+  jobInvoker)
 }
 \arguments{
 \item{status}{A status value with which to filter your results.}
@@ -25,6 +26,17 @@ items.}
 you receive a response with truncated results, use this parameter in a
 subsequent request. Set it to the value of \code{nextToken} from the response
 that you just received.}
+
+\item{isRevoked}{Filters results to return only signing jobs with revoked signatures.}
+
+\item{signatureExpiresBefore}{Filters results to return only signing jobs with signatures expiring
+before a specified timestamp.}
+
+\item{signatureExpiresAfter}{Filters results to return only signing jobs with signatures expiring
+after a specified timestamp.}
+
+\item{jobInvoker}{Filters results to return only signing jobs initiated by a specified IAM
+entity.}
 }
 \description{
 Lists all your signing jobs. You can use the \code{maxResults} parameter to
@@ -42,7 +54,15 @@ been returned.
   platformId = "string",
   requestedBy = "string",
   maxResults = 123,
-  nextToken = "string"
+  nextToken = "string",
+  isRevoked = TRUE|FALSE,
+  signatureExpiresBefore = as.POSIXct(
+    "2015-01-01"
+  ),
+  signatureExpiresAfter = as.POSIXct(
+    "2015-01-01"
+  ),
+  jobInvoker = "string"
 )
 }
 }

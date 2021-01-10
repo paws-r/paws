@@ -9,8 +9,8 @@ eventbridge_describe_rule(Name, EventBusName)
 \arguments{
 \item{Name}{[required] The name of the rule.}
 
-\item{EventBusName}{The event bus associated with the rule. If you omit this, the default
-event bus is used.}
+\item{EventBusName}{The name or ARN of the event bus associated with the rule. If you omit
+this, the default event bus is used.}
 }
 \description{
 Describes the specified rule.

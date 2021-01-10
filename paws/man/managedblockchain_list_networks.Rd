@@ -3,7 +3,7 @@
 \name{managedblockchain_list_networks}
 \alias{managedblockchain_list_networks}
 \title{Returns information about the networks in which the current AWS account
-has members}
+participates}
 \usage{
 managedblockchain_list_networks(Name, Framework, Status, MaxResults,
   NextToken)
@@ -15,7 +15,9 @@ managedblockchain_list_networks(Name, Framework, Status, MaxResults,
 framework type are listed.}
 
 \item{Status}{An optional status specifier. If provided, only networks currently in
-this status are listed.}
+this status are listed.
+
+Applies only to Hyperledger Fabric.}
 
 \item{MaxResults}{The maximum number of networks to list.}
 
@@ -23,12 +25,15 @@ this status are listed.}
 }
 \description{
 Returns information about the networks in which the current AWS account
-has members.
+participates.
+}
+\details{
+Applies to Hyperledger Fabric and Ethereum.
 }
 \section{Request syntax}{
 \preformatted{svc$list_networks(
   Name = "string",
-  Framework = "HYPERLEDGER_FABRIC",
+  Framework = "HYPERLEDGER_FABRIC"|"ETHEREUM",
   Status = "CREATING"|"AVAILABLE"|"CREATE_FAILED"|"DELETING"|"DELETED",
   MaxResults = 123,
   NextToken = "string"

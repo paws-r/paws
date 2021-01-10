@@ -15,15 +15,34 @@ fsx_update_file_system(FileSystemId, ClientRequestToken,
 idempotent updates. This string is automatically filled on your behalf
 when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.}
 
-\item{StorageCapacity}{Use this parameter to increase the storage capacity of an Amazon FSx for
-Windows File Server file system. Specifies the storage capacity target
-value, GiB, for the file system you're updating. The storage capacity
-target value must be at least 10 percent (\%) greater than the current
-storage capacity value. In order to increase storage capacity, the file
-system needs to have at least 16 MB/s of throughput capacity. You cannot
-make a storage capacity increase request if there is an existing storage
-capacity increase request in progress. For more information, see
-\href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-capacity.html}{Managing Storage Capacity}.}
+\item{StorageCapacity}{Use this parameter to increase the storage capacity of an Amazon FSx
+file system. Specifies the storage capacity target value, GiB, to
+increase the storage capacity for the file system that you're updating.
+You cannot make a storage capacity increase request if there is an
+existing storage capacity increase request in progress.
+
+For Windows file systems, the storage capacity target value must be at
+least 10 percent (\%) greater than the current storage capacity value. In
+order to increase storage capacity, the file system must have at least
+16 MB/s of throughput capacity.
+
+For Lustre file systems, the storage capacity target value can be the
+following:
+\itemize{
+\item For \code{SCRATCH_2} and \verb{PERSISTENT_1 SSD} deployment types, valid
+values are in multiples of 2400 GiB. The value must be greater than
+the current storage capacity.
+\item For \verb{PERSISTENT HDD} file systems, valid values are multiples of
+6000 GiB for 12 MB/s/TiB file systems and multiples of 1800 GiB for
+40 MB/s/TiB file systems. The values must be greater than the
+current storage capacity.
+\item For \code{SCRATCH_1} file systems, you cannot increase the storage
+capacity.
+}
+
+For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-capacity.html}{Managing storage capacity}
+in the \emph{Amazon FSx for Windows File Server User Guide} and \href{https://docs.aws.amazon.com/fsx/latest/LustreGuide/managing-storage-capacity.html}{Managing storage and throughput capacity}
+in the \emph{Amazon FSx for Lustre User Guide}.}
 
 \item{WindowsConfiguration}{The configuration updates for an Amazon FSx for Windows File Server file
 system.}
@@ -32,11 +51,11 @@ system.}
 }
 \description{
 Use this operation to update the configuration of an existing Amazon FSx
-file system. For an Amazon FSx for Lustre file system, you can update
-only the WeeklyMaintenanceStartTime. For an Amazon for Windows File
-Server file system, you can update the following properties:
+file system. You can update multiple properties in a single request.
 }
 \details{
+For Amazon FSx for Windows File Server file systems, you can update the
+following properties:
 \itemize{
 \item AutomaticBackupRetentionDays
 \item DailyAutomaticBackupStartTime
@@ -46,7 +65,15 @@ Server file system, you can update the following properties:
 \item WeeklyMaintenanceStartTime
 }
 
-You can update multiple properties in a single request.
+For Amazon FSx for Lustre file systems, you can update the following
+properties:
+\itemize{
+\item AutoImportPolicy
+\item AutomaticBackupRetentionDays
+\item DailyAutomaticBackupStartTime
+\item StorageCapacity
+\item WeeklyMaintenanceStartTime
+}
 }
 \section{Request syntax}{
 \preformatted{svc$update_file_system(
@@ -69,7 +96,8 @@ You can update multiple properties in a single request.
   LustreConfiguration = list(
     WeeklyMaintenanceStartTime = "string",
     DailyAutomaticBackupStartTime = "string",
-    AutomaticBackupRetentionDays = 123
+    AutomaticBackupRetentionDays = 123,
+    AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"
   )
 )
 }

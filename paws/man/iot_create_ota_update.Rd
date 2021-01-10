@@ -93,6 +93,7 @@ Creates an AWS IoT OTAUpdate on a target group of things or groups.
   files = list(
     list(
       fileName = "string",
+      fileType = 123,
       fileVersion = "string",
       fileLocation = list(
         stream = list(

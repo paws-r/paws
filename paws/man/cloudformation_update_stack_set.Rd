@@ -75,20 +75,20 @@ permissions if necessary.
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGroupAddition}
 }
 
-For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in AWS CloudFormation Templates}.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in AWS CloudFormation Templates}.
 \item \code{CAPABILITY_AUTO_EXPAND}
 
 Some templates contain macros. If your stack template contains one
 or more macros, and you choose to update a stack directly from the
 processed template, without first reviewing the resulting changes in
 a change set, you must acknowledge this capability. For more
-information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using AWS CloudFormation Macros to Perform Custom Processing on Templates}.
+information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using AWS CloudFormation Macros to Perform Custom Processing on Templates}.
 
 Stack sets do not currently support macros in stack templates. (This
 includes the
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html}{AWS::Include}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html}{AWS::Include}
 and
-\href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
 transforms, which are macros hosted by AWS CloudFormation.) Even if
 you specify this capability, if you include a macro in your template
 the stack set operation will fail.
@@ -131,7 +131,7 @@ stack set.
 
 Specify an IAM role only if you are using customized administrator roles
 to control which users or groups can manage specific stack sets within
-the same administrator account. For more information, see \href{http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html}{Granting Permissions for Stack Set Operations}
+the same administrator account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html}{Granting Permissions for Stack Set Operations}
 in the \emph{AWS CloudFormation User Guide}.
 
 If you specified a customized administrator role when you created the
@@ -178,7 +178,7 @@ and execution roles required to deploy to target accounts. For more
 information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-self-managed.html}{Grant Self-Managed Stack Set Permissions}.
 \item With \code{service-managed} permissions, StackSets automatically creates
 the IAM roles required to deploy to accounts managed by AWS
-Organizations. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-service-managed.html}{Grant Service-Managed Stack Set Permissions}.
+Organizations. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{Grant Service-Managed Stack Set Permissions}.
 }}
 
 \item{AutoDeployment}{[\code{Service-managed} permissions] Describes whether StackSets

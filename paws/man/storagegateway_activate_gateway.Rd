@@ -52,7 +52,7 @@ Valid Values: \code{IBM-ULT3580-TD5}}
 \item{MediumChangerType}{The value that indicates the type of medium changer to use for tape
 gateway. This field is optional.
 
-Valid Values: \code{STK-L700} | \code{AWS-Gateway-VTL}}
+Valid Values: \code{STK-L700} | \code{AWS-Gateway-VTL} | \verb{IBM-03584L32-0402}}
 
 \item{Tags}{A list of up to 50 tags that you can assign to the gateway. Each tag is
 a key-value pair.

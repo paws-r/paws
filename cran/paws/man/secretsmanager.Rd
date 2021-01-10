@@ -16,7 +16,7 @@ AWS Secrets Manager provides a service to enable you to store, manage,
 and retrieve, secrets.
 
 This guide provides descriptions of the Secrets Manager API. For more
-information about using this service, see the \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/introduction.html}{AWS Secrets Manager User Guide}.
+information about using this service, see the \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/}{AWS Secrets Manager User Guide}.
 
 \strong{API Version}
 
@@ -30,7 +30,7 @@ SDKs provide a convenient way to create programmatic access to AWS
 Secrets Manager. For example, the SDKs provide cryptographically signing
 requests, managing errors, and retrying requests automatically. For more
 information about the AWS SDKs, including downloading and installing
-them, see \href{http://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
+them, see \href{https://aws.amazon.com/tools/}{Tools for Amazon Web Services}.
 
 We recommend you use the AWS SDKs to make programmatic API calls to
 Secrets Manager. However, you also can use the Secrets Manager HTTP
@@ -47,8 +47,8 @@ Therefore, for operations that require larger sizes, use a POST request.
 
 We welcome your feedback. Send your comments to
 \href{mailto:awssecretsmanager-feedback@amazon.com}{awssecretsmanager-feedback@amazon.com}, or post your feedback and
-questions in the \href{http://forums.aws.amazon.com/forum.jspa?forumID=296}{AWS Secrets Manager Discussion Forum}. For more
-information about the AWS Discussion Forums, see \href{http://forums.aws.amazon.com/help.jspa}{Forums Help}.
+questions in the \href{https://forums.aws.amazon.com/forum.jspa?forumID=296}{AWS Secrets Manager Discussion Forum}. For more
+information about the AWS Discussion Forums, see \href{https://forums.aws.amazon.com:443/help.jspa}{Forums Help}.
 
 \strong{How examples are presented}
 
@@ -68,9 +68,9 @@ API calls for your AWS account and delivers log files to an Amazon S3
 bucket. By using information that's collected by AWS CloudTrail, you can
 determine the requests successfully made to Secrets Manager, who made
 the request, when it was made, and so on. For more about AWS Secrets
-Manager and support for AWS CloudTrail, see \href{http://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail}{Logging AWS Secrets Manager Events with AWS CloudTrail}
+Manager and support for AWS CloudTrail, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail}{Logging AWS Secrets Manager Events with AWS CloudTrail}
 in the \emph{AWS Secrets Manager User Guide}. To learn more about CloudTrail,
-including enabling it and find your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html}{AWS CloudTrail User Guide}.
+including enabling it and find your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html}{AWS CloudTrail User Guide}.
 }
 \section{Service syntax}{
 \preformatted{svc <- secretsmanager(

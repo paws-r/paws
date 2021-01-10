@@ -113,7 +113,7 @@ iot1clickprojects_create_placement <- function(placementName, projectName, attri
 #' @param tags Optional tags (metadata key/value pairs) to be associated with the
 #' project. For example, `\{ \{"key1": "value1", "key2": "value2"\} \}`. For
 #' more information, see [AWS Tagging
-#' Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+#' Strategies](https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf).
 #'
 #' @section Request syntax:
 #' ```
@@ -517,7 +517,7 @@ iot1clickprojects_list_tags_for_resource <- function(resourceArn) {
 #' Creates or modifies tags for a resource. Tags are key/value pairs
 #' (metadata) that can be used to manage a resource. For more information,
 #' see [AWS Tagging
-#' Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+#' Strategies](https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf).
 #'
 #' @usage
 #' iot1clickprojects_tag_resource(resourceArn, tags)

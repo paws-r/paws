@@ -21,7 +21,7 @@ named Action.
 The endpoint for configuration service requests is region-specific:
 cloudsearch.\emph{region}.amazonaws.com. For example,
 cloudsearch.us-east-1.amazonaws.com. For a current list of supported
-regions and endpoints, see \href{http://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region}{Regions and Endpoints}.
+regions and endpoints, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#cloudsearch_region}{Regions and Endpoints}.
 }
 \section{Service syntax}{
 \preformatted{svc <- cloudsearch(

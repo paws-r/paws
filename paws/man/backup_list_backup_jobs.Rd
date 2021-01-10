@@ -2,7 +2,7 @@
 % Please edit documentation in R/backup_operations.R
 \name{backup_list_backup_jobs}
 \alias{backup_list_backup_jobs}
-\title{Returns metadata about your backup jobs}
+\title{Returns a list of existing backup jobs for an authenticated account}
 \usage{
 backup_list_backup_jobs(NextToken, MaxResults, ByResourceArn, ByState,
   ByBackupVaultName, ByCreatedBefore, ByCreatedAfter, ByResourceType,
@@ -44,7 +44,7 @@ They consist of lowercase letters, numbers, and hyphens.}
 associated with the specified account ID.}
 }
 \description{
-Returns metadata about your backup jobs.
+Returns a list of existing backup jobs for an authenticated account.
 }
 \section{Request syntax}{
 \preformatted{svc$list_backup_jobs(

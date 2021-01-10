@@ -16,7 +16,7 @@ iotsitewise_get_asset_property_aggregates(assetId, propertyId,
 \item{propertyAlias}{The property alias that identifies the property, such as an OPC-UA
 server data stream path (for example,
 \verb{/company/windfarm/3/turbine/7/temperature}). For more information, see
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html}{Mapping Industrial Data Streams to Asset Properties}
+\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html}{Mapping industrial data streams to asset properties}
 in the \emph{AWS IoT SiteWise User Guide}.}
 
 \item{aggregateTypes}{[required] The data aggregating function.}
@@ -31,15 +31,19 @@ expressed in seconds in Unix epoch time.}
 \item{endDate}{[required] The inclusive end of the range from which to query historical data,
 expressed in seconds in Unix epoch time.}
 
-\item{timeOrdering}{The chronological sorting order of the requested information.}
+\item{timeOrdering}{The chronological sorting order of the requested information.
+
+Default: \code{ASCENDING}}
 
 \item{nextToken}{The token to be used for the next set of paginated results.}
 
-\item{maxResults}{The maximum number of results to be returned per paginated request.}
+\item{maxResults}{The maximum number of results to be returned per paginated request.
+
+Default: 100}
 }
 \description{
 Gets aggregated values for an asset property. For more information, see
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#aggregates}{Querying Aggregated Property Values}
+\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#aggregates}{Querying aggregates}
 in the \emph{AWS IoT SiteWise User Guide}.
 }
 \details{

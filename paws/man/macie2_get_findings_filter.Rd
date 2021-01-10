@@ -2,8 +2,7 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_get_findings_filter}
 \alias{macie2_get_findings_filter}
-\title{Retrieves information about the criteria and other settings for a
-findings filter}
+\title{Retrieves the criteria and other settings for a findings filter}
 \usage{
 macie2_get_findings_filter(id)
 }
@@ -12,8 +11,7 @@ macie2_get_findings_filter(id)
 request applies to.}
 }
 \description{
-Retrieves information about the criteria and other settings for a
-findings filter.
+Retrieves the criteria and other settings for a findings filter.
 }
 \section{Request syntax}{
 \preformatted{svc$get_findings_filter(

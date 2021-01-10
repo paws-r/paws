@@ -8,19 +8,11 @@ rds_copy_option_group(SourceOptionGroupIdentifier,
   TargetOptionGroupIdentifier, TargetOptionGroupDescription, Tags)
 }
 \arguments{
-\item{SourceOptionGroupIdentifier}{[required] The identifier or ARN for the source option group. For information about
-creating an ARN, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing}{Constructing an ARN for Amazon RDS}
-in the \emph{Amazon RDS User Guide}.
+\item{SourceOptionGroupIdentifier}{[required] The identifier for the source option group.
 
 Constraints:
 \itemize{
 \item Must specify a valid option group.
-\item If the source option group is in the same AWS Region as the copy,
-specify a valid option group identifier, for example
-\code{my-option-group}, or a valid ARN.
-\item If the source option group is in a different AWS Region than the
-copy, specify a valid option group ARN, for example
-\code{arn:aws:rds:us-west-2:123456789012:og:special-options}.
 }}
 
 \item{TargetOptionGroupIdentifier}{[required] The identifier for the copied option group.

@@ -5,7 +5,7 @@
 \title{Initiates a signing job to be performed on the code provided}
 \usage{
 signer_start_signing_job(source, destination, profileName,
-  clientRequestToken)
+  clientRequestToken, profileOwner)
 }
 \arguments{
 \item{source}{[required] The S3 bucket that contains the object to sign or a BLOB that contains
@@ -14,10 +14,12 @@ your raw code.}
 \item{destination}{[required] The S3 bucket in which to save your signed object. The destination
 contains the name of your bucket and an optional prefix.}
 
-\item{profileName}{The name of the signing profile.}
+\item{profileName}{[required] The name of the signing profile.}
 
 \item{clientRequestToken}{[required] String that identifies the signing request. All calls after the first
 that use this token return the same response as the first call.}
+
+\item{profileOwner}{The AWS account ID of the signing profile owner.}
 }
 \description{
 Initiates a signing job to be performed on the code provided. Signing
@@ -27,7 +29,7 @@ they are performed. Note the following requirements:
 \details{
 \itemize{
 \item You must create an Amazon S3 source bucket. For more information,
-see \href{http://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html}{Create a Bucket}
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html}{Create a Bucket}
 in the \emph{Amazon S3 Getting Started Guide}.
 \item Your S3 source bucket must be version enabled.
 \item You must create an S3 destination bucket. Code signing uses your S3
@@ -42,7 +44,7 @@ You can call the DescribeSigningJob and the ListSigningJobs actions
 after you call \code{StartSigningJob}.
 
 For a Java example that shows how to use this action, see
-\url{http://docs.aws.amazon.com/acm/latest/userguide/}
+\href{https://docs.aws.amazon.com/acm/latest/userguide/}{http://docs.aws.amazon.com/acm/latest/userguide/}
 }
 \section{Request syntax}{
 \preformatted{svc$start_signing_job(
@@ -60,7 +62,8 @@ For a Java example that shows how to use this action, see
     )
   ),
   profileName = "string",
-  clientRequestToken = "string"
+  clientRequestToken = "string",
+  profileOwner = "string"
 )
 }
 }

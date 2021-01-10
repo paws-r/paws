@@ -4,7 +4,8 @@
 \alias{s3_list_bucket_analytics_configurations}
 \title{Lists the analytics configurations for the bucket}
 \usage{
-s3_list_bucket_analytics_configurations(Bucket, ContinuationToken)
+s3_list_bucket_analytics_configurations(Bucket, ContinuationToken,
+  ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket from which analytics configurations are
@@ -12,6 +13,10 @@ retrieved.}
 
 \item{ContinuationToken}{The ContinuationToken that represents a placeholder from where this
 request should begin.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Lists the analytics configurations for the bucket. You can have up to
@@ -38,15 +43,16 @@ For information about Amazon S3 analytics feature, see \href{https://docs.aws.am
 The following operations are related to
 \code{ListBucketAnalyticsConfigurations}:
 \itemize{
-\item GetBucketAnalyticsConfiguration
-\item DeleteBucketAnalyticsConfiguration
-\item PutBucketAnalyticsConfiguration
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketAnalyticsConfiguration.html}{GetBucketAnalyticsConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketAnalyticsConfiguration.html}{DeleteBucketAnalyticsConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketAnalyticsConfiguration.html}{PutBucketAnalyticsConfiguration}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$list_bucket_analytics_configurations(
   Bucket = "string",
-  ContinuationToken = "string"
+  ContinuationToken = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

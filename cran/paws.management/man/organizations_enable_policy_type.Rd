@@ -10,17 +10,17 @@ organizations_enable_policy_type(RootId, PolicyType)
 \item{RootId}{[required] The unique identifier (ID) of the root in which you want to enable a
 policy type. You can get the ID from the ListRoots operation.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a root ID
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a root ID
 string requires "r-" followed by from 4 to 32 lowercase letters or
 digits.}
 
 \item{PolicyType}{[required] The policy type that you want to enable. You can specify one of the
 following values:
 \itemize{
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html}{SERVICE\\_CONTROL\\_POLICY}
-\item \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html}{SERVICE\\_CONTROL\\_POLICY}
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{TAG\\_POLICY}
 }}
 }
 \description{
@@ -34,7 +34,7 @@ This is an asynchronous request that AWS performs in the background. AWS
 recommends that you first use ListRoots to see the status of policy
 types for a specified root, and then use this operation.
 
-This operation can be called only from the organization's master
+This operation can be called only from the organization's management
 account.
 
 You can enable a policy type in a root only if that policy type is

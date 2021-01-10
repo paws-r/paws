@@ -13,10 +13,14 @@ configservice_delete_organization_config_rule(
 }
 \description{
 Deletes the specified organization config rule and all of its evaluation
-results from all member accounts in that organization. Only a master
-account can delete an organization config rule.
+results from all member accounts in that organization.
 }
 \details{
+Only a master account and a delegated administrator account can delete
+an organization config rule. When calling this API with a delegated
+administrator, you must ensure AWS Organizations
+\code{ListDelegatedAdministrator} permissions are added.
+
 AWS Config sets the state of a rule to DELETE\\_IN\\_PROGRESS until the
 deletion is complete. You cannot update a rule while it is in this
 state.

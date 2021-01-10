@@ -10,8 +10,9 @@ iot_list_v2_logging_levels(targetType, nextToken, maxResults)
 \item{targetType}{The type of resource for which you are configuring logging. Must be
 \code{THING_Group}.}
 
-\item{nextToken}{The token used to get the next set of results, or \strong{null} if there are
-no additional results.}
+\item{nextToken}{To retrieve the next set of results, the \code{nextToken} value from a
+previous response; otherwise \strong{null} to receive the first set of
+results.}
 
 \item{maxResults}{The maximum number of results to return at one time.}
 }

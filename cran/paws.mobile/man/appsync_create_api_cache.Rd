@@ -23,11 +23,28 @@ creation.}
 \item{apiCachingBehavior}{[required] Caching behavior.
 \itemize{
 \item \strong{FULL\\_REQUEST\\_CACHING}: All requests are fully cached.
-\item \strong{PER\\_RESOLVER\\_CACHING}: Individual resovlers that you specify
+\item \strong{PER\\_RESOLVER\\_CACHING}: Individual resolvers that you specify
 are cached.
 }}
 
-\item{type}{[required] The cache instance type.
+\item{type}{[required] The cache instance type. Valid values are
+\itemize{
+\item \code{SMALL}
+\item \code{MEDIUM}
+\item \code{LARGE}
+\item \code{XLARGE}
+\item \code{LARGE_2X}
+\item \code{LARGE_4X}
+\item \code{LARGE_8X} (not available in all regions)
+\item \code{LARGE_12X}
+}
+
+Historically, instance types were identified by an EC2-style value. As
+of July 2020, this is deprecated, and the generic identifiers above
+should be used.
+
+The following legacy instance types are available, but their use is
+discouraged:
 \itemize{
 \item \strong{T2\\_SMALL}: A t2.small instance type.
 \item \strong{T2\\_MEDIUM}: A t2.medium instance type.

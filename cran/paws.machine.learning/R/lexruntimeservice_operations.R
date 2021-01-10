@@ -153,7 +153,8 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #'
 #' @usage
 #' lexruntimeservice_post_content(botName, botAlias, userId,
-#'   sessionAttributes, requestAttributes, contentType, accept, inputStream)
+#'   sessionAttributes, requestAttributes, contentType, accept, inputStream,
+#'   activeContexts)
 #'
 #' @param botName &#91;required&#93; Name of the Amazon Lex bot.
 #' @param botAlias &#91;required&#93; Alias of the Amazon Lex bot.
@@ -259,6 +260,13 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #' that captures all of the audio data before sending. In general, you get
 #' better performance if you stream audio data rather than buffering the
 #' data locally.
+#' @param activeContexts A list of contexts active for the request. A context can be activated
+#' when a previous intent is fulfilled, or by including the context in the
+#' request,
+#' 
+#' If you don't specify a list of contexts, Amazon Lex will use the current
+#' list of contexts for the session. If you specify an empty list, all
+#' contexts for the session are cleared.
 #'
 #' @section Request syntax:
 #' ```
@@ -270,21 +278,22 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 #'   requestAttributes = "string",
 #'   contentType = "string",
 #'   accept = "string",
-#'   inputStream = raw
+#'   inputStream = raw,
+#'   activeContexts = "string"
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname lexruntimeservice_post_content
-lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAttributes = NULL, requestAttributes = NULL, contentType, accept = NULL, inputStream) {
+lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAttributes = NULL, requestAttributes = NULL, contentType, accept = NULL, inputStream, activeContexts = NULL) {
   op <- new_operation(
     name = "PostContent",
     http_method = "POST",
     http_path = "/bot/{botName}/alias/{botAlias}/user/{userId}/content",
     paginator = list()
   )
-  input <- .lexruntimeservice$post_content_input(botName = botName, botAlias = botAlias, userId = userId, sessionAttributes = sessionAttributes, requestAttributes = requestAttributes, contentType = contentType, accept = accept, inputStream = inputStream)
+  input <- .lexruntimeservice$post_content_input(botName = botName, botAlias = botAlias, userId = userId, sessionAttributes = sessionAttributes, requestAttributes = requestAttributes, contentType = contentType, accept = accept, inputStream = inputStream, activeContexts = activeContexts)
   output <- .lexruntimeservice$post_content_output()
   config <- get_config()
   svc <- .lexruntimeservice$service(config)
@@ -351,7 +360,7 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #'
 #' @usage
 #' lexruntimeservice_post_text(botName, botAlias, userId,
-#'   sessionAttributes, requestAttributes, inputText)
+#'   sessionAttributes, requestAttributes, inputText, activeContexts)
 #'
 #' @param botName &#91;required&#93; The name of the Amazon Lex bot.
 #' @param botAlias &#91;required&#93; The alias of the Amazon Lex bot.
@@ -393,6 +402,13 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #' For more information, see [Setting Request
 #' Attributes](https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-request-attribs).
 #' @param inputText &#91;required&#93; The text that the user entered (Amazon Lex interprets this text).
+#' @param activeContexts A list of contexts active for the request. A context can be activated
+#' when a previous intent is fulfilled, or by including the context in the
+#' request,
+#' 
+#' If you don't specify a list of contexts, Amazon Lex will use the current
+#' list of contexts for the session. If you specify an empty list, all
+#' contexts for the session are cleared.
 #'
 #' @section Request syntax:
 #' ```
@@ -406,21 +422,33 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 #'   requestAttributes = list(
 #'     "string"
 #'   ),
-#'   inputText = "string"
+#'   inputText = "string",
+#'   activeContexts = list(
+#'     list(
+#'       name = "string",
+#'       timeToLive = list(
+#'         timeToLiveInSeconds = 123,
+#'         turnsToLive = 123
+#'       ),
+#'       parameters = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname lexruntimeservice_post_text
-lexruntimeservice_post_text <- function(botName, botAlias, userId, sessionAttributes = NULL, requestAttributes = NULL, inputText) {
+lexruntimeservice_post_text <- function(botName, botAlias, userId, sessionAttributes = NULL, requestAttributes = NULL, inputText, activeContexts = NULL) {
   op <- new_operation(
     name = "PostText",
     http_method = "POST",
     http_path = "/bot/{botName}/alias/{botAlias}/user/{userId}/text",
     paginator = list()
   )
-  input <- .lexruntimeservice$post_text_input(botName = botName, botAlias = botAlias, userId = userId, sessionAttributes = sessionAttributes, requestAttributes = requestAttributes, inputText = inputText)
+  input <- .lexruntimeservice$post_text_input(botName = botName, botAlias = botAlias, userId = userId, sessionAttributes = sessionAttributes, requestAttributes = requestAttributes, inputText = inputText, activeContexts = activeContexts)
   output <- .lexruntimeservice$post_text_output()
   config <- get_config()
   svc <- .lexruntimeservice$service(config)
@@ -442,7 +470,8 @@ lexruntimeservice_post_text <- function(botName, botAlias, userId, sessionAttrib
 #'
 #' @usage
 #' lexruntimeservice_put_session(botName, botAlias, userId,
-#'   sessionAttributes, dialogAction, recentIntentSummaryView, accept)
+#'   sessionAttributes, dialogAction, recentIntentSummaryView, accept,
+#'   activeContexts)
 #'
 #' @param botName &#91;required&#93; The name of the bot that contains the session data.
 #' @param botAlias &#91;required&#93; The alias in use for the bot that contains the session data.
@@ -499,6 +528,13 @@ lexruntimeservice_post_text <- function(botName, botAlias, userId, sessionAttrib
 #'     -   `audio/*` (defaults to mpeg)
 #' 
 #'     -   `text/plain; charset=utf-8`
+#' @param activeContexts A list of contexts active for the request. A context can be activated
+#' when a previous intent is fulfilled, or by including the context in the
+#' request,
+#' 
+#' If you don't specify a list of contexts, Amazon Lex will use the current
+#' list of contexts for the session. If you specify an empty list, all
+#' contexts for the session are cleared.
 #'
 #' @section Request syntax:
 #' ```
@@ -533,21 +569,33 @@ lexruntimeservice_post_text <- function(botName, botAlias, userId, sessionAttrib
 #'       slotToElicit = "string"
 #'     )
 #'   ),
-#'   accept = "string"
+#'   accept = "string",
+#'   activeContexts = list(
+#'     list(
+#'       name = "string",
+#'       timeToLive = list(
+#'         timeToLiveInSeconds = 123,
+#'         turnsToLive = 123
+#'       ),
+#'       parameters = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname lexruntimeservice_put_session
-lexruntimeservice_put_session <- function(botName, botAlias, userId, sessionAttributes = NULL, dialogAction = NULL, recentIntentSummaryView = NULL, accept = NULL) {
+lexruntimeservice_put_session <- function(botName, botAlias, userId, sessionAttributes = NULL, dialogAction = NULL, recentIntentSummaryView = NULL, accept = NULL, activeContexts = NULL) {
   op <- new_operation(
     name = "PutSession",
     http_method = "POST",
     http_path = "/bot/{botName}/alias/{botAlias}/user/{userId}/session",
     paginator = list()
   )
-  input <- .lexruntimeservice$put_session_input(botName = botName, botAlias = botAlias, userId = userId, sessionAttributes = sessionAttributes, dialogAction = dialogAction, recentIntentSummaryView = recentIntentSummaryView, accept = accept)
+  input <- .lexruntimeservice$put_session_input(botName = botName, botAlias = botAlias, userId = userId, sessionAttributes = sessionAttributes, dialogAction = dialogAction, recentIntentSummaryView = recentIntentSummaryView, accept = accept, activeContexts = activeContexts)
   output <- .lexruntimeservice$put_session_output()
   config <- get_config()
   svc <- .lexruntimeservice$service(config)

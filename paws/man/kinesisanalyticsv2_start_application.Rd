@@ -2,7 +2,7 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_start_application}
 \alias{kinesisanalyticsv2_start_application}
-\title{Starts the specified Amazon Kinesis Data Analytics application}
+\title{Starts the specified Kinesis Data Analytics application}
 \usage{
 kinesisanalyticsv2_start_application(ApplicationName, RunConfiguration)
 }
@@ -13,9 +13,9 @@ kinesisanalyticsv2_start_application(ApplicationName, RunConfiguration)
 Analytics application.}
 }
 \description{
-Starts the specified Amazon Kinesis Data Analytics application. After
-creating an application, you must exclusively call this operation to
-start your application.
+Starts the specified Kinesis Data Analytics application. After creating
+an application, you must exclusively call this operation to start your
+application.
 }
 \section{Request syntax}{
 \preformatted{svc$start_application(

@@ -3,6 +3,16 @@
 #' @include accessanalyzer_service.R
 NULL
 
+.accessanalyzer$apply_archive_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(analyzerArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ruleName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.accessanalyzer$apply_archive_rule_output <- function(...) {
+  list()
+}
+
 .accessanalyzer$create_analyzer_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(analyzerName = structure(logical(0), tags = list(type = "string")), archiveRules = structure(list(structure(list(filter = structure(list(structure(list(contains = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), eq = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), exists = structure(logical(0), tags = list(type = "boolean", box = TRUE)), neq = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "map")), ruleName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

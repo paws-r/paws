@@ -38,7 +38,7 @@ deliver ingested log events to the destination stream. You don't need to
 provide the ARN when you are working with a logical destination for
 cross-account delivery.}
 
-\item{distribution}{The method used to distribute log data to the destination. By default
+\item{distribution}{The method used to distribute log data to the destination. By default,
 log data is grouped by log stream, but the grouping can be set to random
 for a more even distribution. This property is only applicable when the
 destination is an Amazon Kinesis stream.}
@@ -48,10 +48,12 @@ Creates or updates a subscription filter and associates it with the
 specified log group. Subscription filters allow you to subscribe to a
 real-time stream of log events ingested through
 \href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html}{PutLogEvents}
-and have them delivered to a specific destination. Currently, the
-supported destinations are:
+and have them delivered to a specific destination. When log events are
+sent to the receiving service, they are Base64 encoded and compressed
+with the gzip format.
 }
 \details{
+The following destinations are supported for subscription filters:
 \itemize{
 \item An Amazon Kinesis stream belonging to the same account as the
 subscription filter, for same-account delivery.
@@ -67,6 +69,9 @@ There can only be one subscription filter associated with a log group.
 If you are updating an existing filter, you must specify the correct
 name in \code{filterName}. Otherwise, the call fails because you cannot
 associate a second filter with a log group.
+
+To perform a \code{PutSubscriptionFilter} operation, you must also have the
+\code{iam:PassRole} permission.
 }
 \section{Request syntax}{
 \preformatted{svc$put_subscription_filter(

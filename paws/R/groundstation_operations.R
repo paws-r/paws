@@ -99,7 +99,8 @@ groundstation_cancel_contact <- function(contactId) {
 #'       targetEirp = list(
 #'         units = "dBW",
 #'         value = 123.0
-#'       )
+#'       ),
+#'       transmitDisabled = TRUE|FALSE
 #'     ),
 #'     dataflowEndpointConfig = list(
 #'       dataflowEndpointName = "string",
@@ -169,6 +170,7 @@ groundstation_create_config <- function(configData, name, tags = NULL) {
 #'           name = "string",
 #'           port = 123
 #'         ),
+#'         mtu = 123,
 #'         name = "string",
 #'         status = "created"|"creating"|"deleted"|"deleting"|"failed"
 #'       ),
@@ -680,7 +682,7 @@ groundstation_list_configs <- function(maxResults = NULL, nextToken = NULL) {
 #'     "2015-01-01"
 #'   ),
 #'   statusList = list(
-#'     "AVAILABLE"|"AWS_CANCELLED"|"CANCELLED"|"CANCELLING"|"COMPLETED"|"FAILED"|"FAILED_TO_SCHEDULE"|"PASS"|"POSTPASS"|"PREPASS"|"SCHEDULED"|"SCHEDULING"
+#'     "AVAILABLE"|"AWS_CANCELLED"|"AWS_FAILED"|"CANCELLED"|"CANCELLING"|"COMPLETED"|"FAILED"|"FAILED_TO_SCHEDULE"|"PASS"|"POSTPASS"|"PREPASS"|"SCHEDULED"|"SCHEDULING"
 #'   )
 #' )
 #' ```
@@ -1094,7 +1096,8 @@ groundstation_untag_resource <- function(resourceArn, tagKeys) {
 #'       targetEirp = list(
 #'         units = "dBW",
 #'         value = 123.0
-#'       )
+#'       ),
+#'       transmitDisabled = TRUE|FALSE
 #'     ),
 #'     dataflowEndpointConfig = list(
 #'       dataflowEndpointName = "string",

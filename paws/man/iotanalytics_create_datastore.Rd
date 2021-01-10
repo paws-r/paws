@@ -5,20 +5,28 @@
 \title{Creates a data store, which is a repository for messages}
 \usage{
 iotanalytics_create_datastore(datastoreName, datastoreStorage,
-  retentionPeriod, tags)
+  retentionPeriod, tags, fileFormatConfiguration)
 }
 \arguments{
 \item{datastoreName}{[required] The name of the data store.}
 
-\item{datastoreStorage}{Where data store data is stored. You may choose one of
-"serviceManagedS3" or "customerManagedS3" storage. If not specified, the
-default is "serviceManagedS3". This cannot be changed after the data
-store is created.}
+\item{datastoreStorage}{Where data store data is stored. You can choose one of
+\code{serviceManagedS3} or \code{customerManagedS3} storage. If not specified, the
+default is \code{serviceManagedS3}. You cannot change this storage option
+after the data store is created.}
 
 \item{retentionPeriod}{How long, in days, message data is kept for the data store. When
-"customerManagedS3" storage is selected, this parameter is ignored.}
+\code{customerManagedS3} storage is selected, this parameter is ignored.}
 
 \item{tags}{Metadata which can be used to manage the data store.}
+
+\item{fileFormatConfiguration}{Contains the configuration information of file formats. AWS IoT
+Analytics data stores support JSON and
+\href{https://parquet.apache.org/}{Parquet}.
+
+The default file format is JSON. You can specify only one format.
+
+You can't change the file format after you create the data store.}
 }
 \description{
 Creates a data store, which is a repository for messages.
@@ -42,6 +50,19 @@ Creates a data store, which is a repository for messages.
     list(
       key = "string",
       value = "string"
+    )
+  ),
+  fileFormatConfiguration = list(
+    jsonConfiguration = list(),
+    parquetConfiguration = list(
+      schemaDefinition = list(
+        columns = list(
+          list(
+            name = "string",
+            type = "string"
+          )
+        )
+      )
     )
   )
 )

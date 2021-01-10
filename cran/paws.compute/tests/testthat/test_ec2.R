@@ -30,6 +30,14 @@ test_that("describe_capacity_reservations", {
   expect_error(svc$describe_capacity_reservations(MaxResults = 20), NA)
 })
 
+test_that("describe_carrier_gateways", {
+  expect_error(svc$describe_carrier_gateways(), NA)
+})
+
+test_that("describe_carrier_gateways", {
+  expect_error(svc$describe_carrier_gateways(MaxResults = 20), NA)
+})
+
 test_that("describe_classic_link_instances", {
   expect_error(svc$describe_classic_link_instances(), NA)
 })
@@ -334,6 +342,22 @@ test_that("describe_network_acls", {
   expect_error(svc$describe_network_acls(MaxResults = 20), NA)
 })
 
+test_that("describe_network_insights_analyses", {
+  expect_error(svc$describe_network_insights_analyses(), NA)
+})
+
+test_that("describe_network_insights_analyses", {
+  expect_error(svc$describe_network_insights_analyses(MaxResults = 20), NA)
+})
+
+test_that("describe_network_insights_paths", {
+  expect_error(svc$describe_network_insights_paths(), NA)
+})
+
+test_that("describe_network_insights_paths", {
+  expect_error(svc$describe_network_insights_paths(MaxResults = 20), NA)
+})
+
 test_that("describe_network_interface_permissions", {
   expect_error(svc$describe_network_interface_permissions(), NA)
 })
@@ -492,6 +516,22 @@ test_that("describe_transit_gateway_attachments", {
 
 test_that("describe_transit_gateway_attachments", {
   expect_error(svc$describe_transit_gateway_attachments(MaxResults = 20), NA)
+})
+
+test_that("describe_transit_gateway_connect_peers", {
+  expect_error(svc$describe_transit_gateway_connect_peers(), NA)
+})
+
+test_that("describe_transit_gateway_connect_peers", {
+  expect_error(svc$describe_transit_gateway_connect_peers(MaxResults = 20), NA)
+})
+
+test_that("describe_transit_gateway_connects", {
+  expect_error(svc$describe_transit_gateway_connects(), NA)
+})
+
+test_that("describe_transit_gateway_connects", {
+  expect_error(svc$describe_transit_gateway_connects(MaxResults = 20), NA)
 })
 
 test_that("describe_transit_gateway_multicast_domains", {

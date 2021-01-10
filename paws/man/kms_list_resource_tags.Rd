@@ -2,7 +2,7 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_list_resource_tags}
 \alias{kms_list_resource_tags}
-\title{Returns a list of all tags for the specified customer master key (CMK)}
+\title{Returns all tags on the specified customer master key (CMK)}
 \usage{
 kms_list_resource_tags(KeyId, Limit, Marker)
 }
@@ -35,10 +35,26 @@ Do not attempt to construct this value. Use only the value of
 \code{NextMarker} from the truncated response you just received.}
 }
 \description{
-Returns a list of all tags for the specified customer master key (CMK).
+Returns all tags on the specified customer master key (CMK).
 }
 \details{
-You cannot perform this operation on a CMK in a different AWS account.
+For general information about tags, including the format and syntax, see
+\href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
+in the \emph{Amazon Web Services General Reference}. For information about
+using tags in AWS KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/tagging-keys.html}{Tagging keys}.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
+a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:ListResourceTags}
+(key policy)
+
+\strong{Related operations:}
+\itemize{
+\item TagResource
+\item UntagResource
+}
 }
 \section{Request syntax}{
 \preformatted{svc$list_resource_tags(

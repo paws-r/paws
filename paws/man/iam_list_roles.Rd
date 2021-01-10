@@ -12,7 +12,7 @@ iam_list_roles(PathPrefix, Marker, MaxItems)
 \verb{/application_abc/component_xyz/}.
 
 This parameter is optional. If it is not included, it defaults to a
-slash (/), listing all roles. This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+slash (/), listing all roles. This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
@@ -37,7 +37,7 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the IAM roles that have the specified path prefix. If there are
 none, the operation returns an empty list. For more information about
-roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/WorkingWithRoles.html}{Working with Roles}.
+roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with Roles}.
 }
 \details{
 You can paginate the results using the \code{MaxItems} and \code{Marker}

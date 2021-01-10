@@ -2,8 +2,8 @@
 % Please edit documentation in R/datasync_operations.R
 \name{datasync_create_location_smb}
 \alias{datasync_create_location_smb}
-\title{Defines a file system on an Server Message Block (SMB) server that can
-be read from or written to}
+\title{Defines a file system on a Server Message Block (SMB) server that can be
+read from or written to}
 \usage{
 datasync_create_location_smb(Subdirectory, ServerHostname, User, Domain,
   Password, AgentArns, MountOptions, Tags)
@@ -15,7 +15,7 @@ path should be a path that's exported by the SMB server, or a
 subdirectory of that path. The path should be such that it can be
 mounted by other SMB clients in your network.
 
-\code{Subdirectory} must be specified with forward slashes. For example
+\code{Subdirectory} must be specified with forward slashes. For example,
 \verb{/path/to/folder}.
 
 To transfer all the data in the folder you specified, DataSync needs to
@@ -53,8 +53,8 @@ location. The value can be an empty string. We recommend using tags to
 name your resources.}
 }
 \description{
-Defines a file system on an Server Message Block (SMB) server that can
-be read from or written to.
+Defines a file system on a Server Message Block (SMB) server that can be
+read from or written to.
 }
 \section{Request syntax}{
 \preformatted{svc$create_location_smb(

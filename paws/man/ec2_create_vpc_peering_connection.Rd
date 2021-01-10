@@ -6,7 +6,7 @@
 you own and an accepter VPC with which to create the connection}
 \usage{
 ec2_create_vpc_peering_connection(DryRun, PeerOwnerId, PeerVpcId, VpcId,
-  PeerRegion)
+  PeerRegion, TagSpecifications)
 }
 \arguments{
 \item{DryRun}{Checks whether you have the required permissions for the action, without
@@ -28,6 +28,8 @@ request.}
 a Region other than the Region in which you make the request.
 
 Default: The Region in which you make the request.}
+
+\item{TagSpecifications}{The tags to assign to the peering connection.}
 }
 \description{
 Requests a VPC peering connection between two VPCs: a requester VPC that
@@ -56,7 +58,18 @@ overlapping CIDR blocks, the VPC peering connection has a status of
   PeerOwnerId = "string",
   PeerVpcId = "string",
   VpcId = "string",
-  PeerRegion = "string"
+  PeerRegion = "string",
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

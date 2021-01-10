@@ -11,6 +11,10 @@ securityhub_get_master_account()
 Provides the details for the Security Hub master account for the current
 member account.
 }
+\details{
+Can be used by both member accounts that are in an organization and
+accounts that were invited manually.
+}
 \section{Request syntax}{
 \preformatted{svc$get_master_account()
 }

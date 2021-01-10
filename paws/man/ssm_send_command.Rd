@@ -10,17 +10,29 @@ ssm_send_command(InstanceIds, Targets, DocumentName, DocumentVersion,
   MaxErrors, ServiceRoleArn, NotificationConfig, CloudWatchOutputConfig)
 }
 \arguments{
-\item{InstanceIds}{The instance IDs where the command should run. You can specify a maximum
-of 50 IDs. If you prefer not to list individual instance IDs, you can
-instead send commands to a fleet of instances using the Targets
-parameter, which accepts EC2 tags. For more information about how to use
-targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Using targets and rate controls to send commands to a fleet}
+\item{InstanceIds}{The IDs of the instances where the command should run. Specifying
+instance IDs is most useful when you are targeting a limited number of
+instances, though you can specify up to 50 IDs.
+
+To target a larger number of instances, or if you prefer not to list
+individual instance IDs, we recommend using the \code{Targets} option
+instead. Using \code{Targets}, which accepts tag key-value pairs to identify
+the instances to send commands to, you can a send command to tens,
+hundreds, or thousands of instances at once.
+
+For more information about how to use targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Using targets and rate controls to send commands to a fleet}
 in the \emph{AWS Systems Manager User Guide}.}
 
-\item{Targets}{(Optional) An array of search criteria that targets instances using a
-Key,Value combination that you specify. Targets is required if you don't
-provide one or more instance IDs in the call. For more information about
-how to use targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Sending commands to a fleet}
+\item{Targets}{An array of search criteria that targets instances using a \verb{Key,Value}
+combination that you specify. Specifying targets is most useful when you
+want to send a command to a large number of instances at once. Using
+\code{Targets}, which accepts tag key-value pairs to identify instances, you
+can send a command to tens, hundreds, or thousands of instances at once.
+
+To send a command to a smaller number of instances, you can use the
+\code{InstanceIds} option instead.
+
+For more information about how to use targets, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html}{Sending commands to a fleet}
 in the \emph{AWS Systems Manager User Guide}.}
 
 \item{DocumentName}{[required] Required. The name of the Systems Manager document to run. This can be a

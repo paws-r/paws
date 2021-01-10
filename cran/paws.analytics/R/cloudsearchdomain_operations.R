@@ -22,7 +22,7 @@ NULL
 #'     parser.
 #' 
 #' For more information, see [Searching Your
-#' Data](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html)
+#' Data](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html)
 #' in the *Amazon CloudSearch Developer Guide*.
 #' 
 #' The endpoint for submitting `Search` requests is domain-specific. You
@@ -44,7 +44,7 @@ NULL
 #' cursor value returned in the hits section of the response.
 #' 
 #' For more information, see [Paginating
-#' Results](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/paginating-results.html)
+#' Results](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/paginating-results.html)
 #' in the *Amazon CloudSearch Developer Guide*.
 #' @param expr Defines one or more numeric expressions that can be used to sort results
 #' or specify search or filter criteria. You can also specify expressions
@@ -58,7 +58,7 @@ NULL
 #' 
 #' For information about the variables, operators, and functions you can
 #' use in expressions, see [Writing
-#' Expressions](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html#writing-expressions)
+#' Expressions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html#writing-expressions)
 #' in the *Amazon CloudSearch Developer Guide*.
 #' @param facet Specifies one or more fields for which to get facet information, and
 #' options that control how the facet information is returned. Each
@@ -72,7 +72,7 @@ NULL
 #'     Ranges are specified using the same syntax that you use to search
 #'     for a range of values. For more information, see [Searching for a
 #'     Range of
-#'     Values](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-ranges.html)
+#'     Values](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-ranges.html)
 #'     in the *Amazon CloudSearch Developer Guide*. Buckets are returned in
 #'     the order they are specified in the request. The `sort` and `size`
 #'     options are not valid if you specify `buckets`.
@@ -114,7 +114,7 @@ NULL
 #' ` \{"year":\{"sort":"bucket"\}\} `
 #' 
 #' For more information, see [Getting and Using Facet
-#' Information](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/faceting.html)
+#' Information](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/faceting.html)
 #' in the *Amazon CloudSearch Developer Guide*.
 #' @param filterQuery Specifies a structured query that filters the results of a search
 #' without affecting how the results are scored and sorted. You use
@@ -125,7 +125,7 @@ NULL
 #' `filterQuery` parameter supports the full structured query syntax.
 #' 
 #' For more information about using filters, see [Filtering Matching
-#' Documents](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/filtering-results.html)
+#' Documents](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/filtering-results.html)
 #' in the *Amazon CloudSearch Developer Guide*.
 #' @param highlight Retrieves highlights for matches in the specified `text` or `text-array`
 #' fields. Each specified field must be highlight enabled in the domain
@@ -177,7 +177,7 @@ NULL
 #' 
 #' For more information about specifying search criteria, see [Searching
 #' Your
-#' Data](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html)
+#' Data](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching.html)
 #' in the *Amazon CloudSearch Developer Guide*.
 #' @param queryOptions Configures options for the query parser specified in the `queryParser`
 #' parameter. You specify the options in JSON using the following form
@@ -292,22 +292,22 @@ NULL
 #'     for a prefix. To search for a phrase rather than individual terms,
 #'     enclose the phrase in double quotes. For more information, see
 #'     [Searching for
-#'     Text](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-text.html)
+#'     Text](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-text.html)
 #'     in the *Amazon CloudSearch Developer Guide*.
 #' -   `structured`: perform advanced searches by combining multiple
 #'     expressions to define the search criteria. You can also search
 #'     within particular fields, search for values and ranges of values,
 #'     and use advanced options such as term boosting, `matchall`, and
 #'     `near`. For more information, see [Constructing Compound
-#'     Queries](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-compound-queries.html)
+#'     Queries](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/searching-compound-queries.html)
 #'     in the *Amazon CloudSearch Developer Guide*.
 #' -   `lucene`: search using the Apache Lucene query parser syntax. For
 #'     more information, see [Apache Lucene Query Parser
-#'     Syntax](http://lucene.apache.org/core/4_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description).
+#'     Syntax](https://lucene.apache.org/core/4_6_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description).
 #' -   `dismax`: search using the simplified subset of the Apache Lucene
 #'     query parser syntax defined by the DisMax query parser. For more
 #'     information, see [DisMax Query Parser
-#'     Syntax](http://wiki.apache.org/solr/DisMaxQParserPlugin#Query_Syntax).
+#'     Syntax](https://cwiki.apache.org/confluence/display/solr/DisMaxQParserPlugin#Query_Syntax).
 #' @param return Specifies the field and expression values to include in the response.
 #' Multiple fields or expressions are specified as a comma-separated list.
 #' By default, a search response includes all return enabled fields
@@ -326,7 +326,7 @@ NULL
 #' by document ID (`_id asc`) and version (`_version desc`).
 #' 
 #' For more information, see [Sorting
-#' Results](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/sorting-results.html)
+#' Results](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/sorting-results.html)
 #' in the *Amazon CloudSearch Developer Guide*.
 #' @param start Specifies the offset of the first search hit you want to return. Note
 #' that the result set is zero-based; the first result is at index 0. You
@@ -334,7 +334,7 @@ NULL
 #' are mutually exclusive.
 #' 
 #' For more information, see [Paginating
-#' Results](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/paginating-results.html)
+#' Results](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/paginating-results.html)
 #' in the *Amazon CloudSearch Developer Guide*.
 #' @param stats Specifies one or more fields for which to get statistics information.
 #' Each specified field must be facet-enabled in the domain configuration.
@@ -396,7 +396,7 @@ cloudsearchdomain_search <- function(cursor = NULL, expr = NULL, facet = NULL, f
 #' 
 #' For more information about configuring suggesters and retrieving
 #' suggestions, see [Getting
-#' Suggestions](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html)
+#' Suggestions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html)
 #' in the *Amazon CloudSearch Developer Guide*.
 #' 
 #' The endpoint for submitting `Suggest` requests is domain-specific. You
@@ -464,10 +464,10 @@ cloudsearchdomain_suggest <- function(query, suggester, size = NULL) {
 #' 
 #' For more information about formatting your data for Amazon CloudSearch,
 #' see [Preparing Your
-#' Data](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/preparing-data.html)
+#' Data](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/preparing-data.html)
 #' in the *Amazon CloudSearch Developer Guide*. For more information about
 #' uploading data for indexing, see [Uploading
-#' Data](http://docs.aws.amazon.com/cloudsearch/latest/developerguide/uploading-data.html)
+#' Data](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/uploading-data.html)
 #' in the *Amazon CloudSearch Developer Guide*.
 #'
 #' @usage

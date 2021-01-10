@@ -4,13 +4,13 @@
 \alias{organizations_create_organizational_unit}
 \title{Creates an organizational unit (OU) within a root or parent OU}
 \usage{
-organizations_create_organizational_unit(ParentId, Name)
+organizations_create_organizational_unit(ParentId, Name, Tags)
 }
 \arguments{
 \item{ParentId}{[required] The unique identifier (ID) of the parent root or OU that you want to
 create the new OU in.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a parent ID
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a parent ID
 string requires one of the following:
 \itemize{
 \item \strong{Root} - A string that begins with "r-" followed by from 4 to 32
@@ -22,6 +22,15 @@ dash and from 8 to 32 additional lowercase letters or digits.
 }}
 
 \item{Name}{[required] The friendly name to assign to the new OU.}
+
+\item{Tags}{A list of tags that you want to attach to the newly created OU. For each
+tag in the list, you must specify both a tag key and a value. You can
+set the value to an empty string, but you can't set it to \code{null}. For
+more information about tagging, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html}{Tagging AWS Organizations resources}
+in the AWS Organizations User Guide.
+
+If any one of the tags is invalid or if you exceed the allowed number of
+tags for an OU, then the entire request fails and the OU is not created.}
 }
 \description{
 Creates an organizational unit (OU) within a root or parent OU. An OU is
@@ -34,13 +43,22 @@ enabled for that root. For service control policies, the limit is five.
 For more information about OUs, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html}{Managing Organizational Units}
 in the \emph{AWS Organizations User Guide.}
 
-This operation can be called only from the organization's master
+If the request includes tags, then the requester must have the
+\code{organizations:TagResource} permission.
+
+This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{
 \preformatted{svc$create_organizational_unit(
   ParentId = "string",
-  Name = "string"
+  Name = "string",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

@@ -284,7 +284,7 @@ cognitoidentity_describe_identity_pool <- function(IdentityPoolId) {
 #' The Logins parameter is required when using identities associated with
 #' external identity providers such as FaceBook. For examples of `Logins`
 #' maps, see the code examples in the [External Identity
-#' Providers](http://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html)
+#' Providers](https://docs.aws.amazon.com/cognito/latest/developerguide/external-identity-providers.html)
 #' section of the Amazon Cognito Developer Guide.
 #' @param CustomRoleArn The Amazon Resource Name (ARN) of the role to be assumed when multiple
 #' roles were received in the token from the identity provider. For

@@ -2,20 +2,28 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_describe_query_definitions}
 \alias{cloudwatchlogs_describe_query_definitions}
-\title{Describe query definitions}
+\title{This operation returns a paginated list of your saved CloudWatch Logs
+Insights query definitions}
 \usage{
 cloudwatchlogs_describe_query_definitions(queryDefinitionNamePrefix,
   maxResults, nextToken)
 }
 \arguments{
-\item{queryDefinitionNamePrefix}{}
+\item{queryDefinitionNamePrefix}{Use this parameter to filter your results to only the query definitions
+that have names that start with the prefix you specify.}
 
-\item{maxResults}{}
+\item{maxResults}{Limits the number of returned query definitions to the specified number.}
 
 \item{nextToken}{}
 }
 \description{
-Describe query definitions
+This operation returns a paginated list of your saved CloudWatch Logs
+Insights query definitions.
+}
+\details{
+You can use the \code{queryDefinitionNamePrefix} parameter to limit the
+results to only the query definitions that have names that start with a
+certain string.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_query_definitions(

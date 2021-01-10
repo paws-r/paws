@@ -2,22 +2,20 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_request_service_quota_increase}
 \alias{servicequotas_request_service_quota_increase}
-\title{Retrieves the details of a service quota increase request}
+\title{Submits a quota increase request for the specified quota}
 \usage{
 servicequotas_request_service_quota_increase(ServiceCode, QuotaCode,
   DesiredValue)
 }
 \arguments{
-\item{ServiceCode}{[required] Specifies the service that you want to use.}
+\item{ServiceCode}{[required] The service identifier.}
 
-\item{QuotaCode}{[required] Specifies the service quota that you want to use.}
+\item{QuotaCode}{[required] The quota identifier.}
 
-\item{DesiredValue}{[required] Specifies the value submitted in the service quota increase request.}
+\item{DesiredValue}{[required] The new, increased value for the quota.}
 }
 \description{
-Retrieves the details of a service quota increase request. The response
-to this command provides the details in the RequestedServiceQuotaChange
-object.
+Submits a quota increase request for the specified quota.
 }
 \section{Request syntax}{
 \preformatted{svc$request_service_quota_increase(

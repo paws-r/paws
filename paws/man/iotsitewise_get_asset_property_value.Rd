@@ -14,12 +14,12 @@ iotsitewise_get_asset_property_value(assetId, propertyId, propertyAlias)
 \item{propertyAlias}{The property alias that identifies the property, such as an OPC-UA
 server data stream path (for example,
 \verb{/company/windfarm/3/turbine/7/temperature}). For more information, see
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html}{Mapping Industrial Data Streams to Asset Properties}
+\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html}{Mapping industrial data streams to asset properties}
 in the \emph{AWS IoT SiteWise User Guide}.}
 }
 \description{
 Gets an asset property's current value. For more information, see
-\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#current-values}{Querying Current Property Values}
+\href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#current-values}{Querying current values}
 in the \emph{AWS IoT SiteWise User Guide}.
 }
 \details{

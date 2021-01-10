@@ -37,10 +37,13 @@ want to register, see
 \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-cli-submit.html}{submit}
 in the \emph{CloudFormation CLI User Guide}.
 
-As part of registering a resource provider type, CloudFormation must be
-able to access the S3 bucket which contains the schema handler package
-for that resource provider. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry.html#registry-register-permissions}{IAM Permissions for Registering a Resource Provider}
-in the \emph{AWS CloudFormation User Guide}.}
+The user registering the resource provider type must be able to access
+the the schema handler package in the S3 bucket. That is, the user needs
+to have
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
+permissions for the schema handler package. For more information, see
+\href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html}{Actions, Resources, and Condition Keys for Amazon S3}
+in the \emph{AWS Identity and Access Management User Guide}.}
 
 \item{LoggingConfig}{Specifies logging configuration information for a type.}
 
@@ -87,7 +90,7 @@ to monitor the progress of the registration request.
 }
 \section{Request syntax}{
 \preformatted{svc$register_type(
-  Type = "RESOURCE",
+  Type = "RESOURCE"|"MODULE",
   TypeName = "string",
   SchemaHandlerPackage = "string",
   LoggingConfig = list(

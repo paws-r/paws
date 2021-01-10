@@ -10,11 +10,11 @@ outposts(config = list())
 \item{config}{Optional configuration of credentials, endpoint, and/or region.}
 }
 \description{
-AWS Outposts is a fully-managed service that extends AWS infrastructure,
-APIs, and tools to customer premises. By providing local access to
-AWS-managed infrastructure, AWS Outposts enables customers to build and
-run applications on premises using the same programming interfaces as in
-AWS Regions, while using local compute and storage resources for lower
+AWS Outposts is a fully managed service that extends AWS infrastructure,
+APIs, and tools to customer premises. By providing local access to AWS
+managed infrastructure, AWS Outposts enables customers to build and run
+applications on premises using the same programming interfaces as in AWS
+Regions, while using local compute and storage resources for lower
 latency and local data processing needs.
 }
 \section{Service syntax}{
@@ -44,7 +44,10 @@ latency and local data processing needs.
 \link[=outposts_get_outpost]{get_outpost} \tab Gets information about the specified Outpost\cr
 \link[=outposts_get_outpost_instance_types]{get_outpost_instance_types} \tab Lists the instance types for the specified Outpost\cr
 \link[=outposts_list_outposts]{list_outposts} \tab List the Outposts for your AWS account\cr
-\link[=outposts_list_sites]{list_sites} \tab Lists the sites for the specified AWS account
+\link[=outposts_list_sites]{list_sites} \tab Lists the sites for the specified AWS account\cr
+\link[=outposts_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
+\link[=outposts_tag_resource]{tag_resource} \tab Adds tags to the specified resource\cr
+\link[=outposts_untag_resource]{untag_resource} \tab Removes tags from the specified resource
 }
 }
 

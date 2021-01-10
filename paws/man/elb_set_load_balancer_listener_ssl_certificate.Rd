@@ -21,7 +21,7 @@ connections. The specified certificate replaces any prior certificate
 that was used on the same load balancer and port.
 }
 \details{
-For more information about updating your SSL certificate, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-update-ssl-cert.html}{Replace the SSL Certificate for Your Load Balancer}
+For more information about updating your SSL certificate, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-update-ssl-cert.html}{Replace the SSL Certificate for Your Load Balancer}
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{

@@ -16,7 +16,7 @@ name with "AMAZON." removed. For example, because there is a built-in
 slot type called \code{AMAZON.DATE}, you can't create a custom slot type
 called \code{DATE}.
 
-For a list of built-in slot types, see \href{https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference}{Slot Type Reference}
+For a list of built-in slot types, see \href{https://developer.amazon.com/en-US/docs/alexa/custom-skills/slot-type-reference.html}{Slot Type Reference}
 in the \emph{Alexa Skills Kit}.}
 
 \item{description}{A description of the slot type.}
@@ -25,6 +25,9 @@ in the \emph{Alexa Skills Kit}.}
 slot type can take. Each value can have a list of \code{synonyms}, which are
 additional values that help train the machine learning model about the
 values that it resolves for a slot.
+
+A regular expression slot type doesn't require enumeration values. All
+other slot types require a list of enumeration values.
 
 When Amazon Lex resolves a slot value, it generates a resolution list
 that contains up to five possible values for the slot. If you are using

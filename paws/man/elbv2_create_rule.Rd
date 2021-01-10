@@ -4,55 +4,32 @@
 \alias{elbv2_create_rule}
 \title{Creates a rule for the specified listener}
 \usage{
-elbv2_create_rule(ListenerArn, Conditions, Priority, Actions)
+elbv2_create_rule(ListenerArn, Conditions, Priority, Actions, Tags)
 }
 \arguments{
 \item{ListenerArn}{[required] The Amazon Resource Name (ARN) of the listener.}
 
-\item{Conditions}{[required] The conditions. Each rule can include zero or one of the following
-conditions: \code{http-request-method}, \code{host-header}, \code{path-pattern}, and
-\code{source-ip}, and zero or more of the following conditions: \code{http-header}
-and \code{query-string}.}
+\item{Conditions}{[required] The conditions.}
 
 \item{Priority}{[required] The rule priority. A listener can't have multiple rules with the same
 priority.}
 
-\item{Actions}{[required] The actions. Each rule must include exactly one of the following types
-of actions: \code{forward}, \code{fixed-response}, or \code{redirect}, and it must be
-the last action to be performed.
+\item{Actions}{[required] The actions.}
 
-If the action type is \code{forward}, you specify one or more target groups.
-The protocol of the target group must be HTTP or HTTPS for an
-Application Load Balancer. The protocol of the target group must be TCP,
-TLS, UDP, or TCP\\_UDP for a Network Load Balancer.
-
-[HTTPS listeners] If the action type is \code{authenticate-oidc}, you
-authenticate users through an identity provider that is OpenID Connect
-(OIDC) compliant.
-
-[HTTPS listeners] If the action type is \code{authenticate-cognito}, you
-authenticate users through the user pools supported by Amazon Cognito.
-
-[Application Load Balancer] If the action type is \code{redirect}, you
-redirect specified client requests from one URL to another.
-
-[Application Load Balancer] If the action type is \code{fixed-response},
-you drop specified client requests and return a custom HTTP response.}
+\item{Tags}{The tags to assign to the rule.}
 }
 \description{
 Creates a rule for the specified listener. The listener must be
 associated with an Application Load Balancer.
 }
 \details{
-Rules are evaluated in priority order, from the lowest value to the
-highest value. When the conditions for a rule are met, its actions are
-performed. If the conditions for no rules are met, the actions for the
-default rule are performed. For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules}{Listener Rules}
+Each rule consists of a priority, one or more actions, and one or more
+conditions. Rules are evaluated in priority order, from the lowest value
+to the highest value. When the conditions for a rule are met, its
+actions are performed. If the conditions for no rules are met, the
+actions for the default rule are performed. For more information, see
+\href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules}{Listener rules}
 in the \emph{Application Load Balancers Guide}.
-
-To view your current rules, use DescribeRules. To update a rule, use
-ModifyRule. To set the priorities of your rules, use SetRulePriorities.
-To delete a rule, use DeleteRule.
 }
 \section{Request syntax}{
 \preformatted{svc$create_rule(
@@ -158,6 +135,12 @@ To delete a rule, use DeleteRule.
           DurationSeconds = 123
         )
       )
+    )
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
     )
   )
 )

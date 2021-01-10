@@ -17,7 +17,7 @@ NULL
 
 .sts$assume_role_with_saml_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), PrincipalArn = structure(logical(0), tags = list(type = "string")), SAMLAssertion = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), PolicyArns = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Policy = structure(logical(0), tags = list(type = "string")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), PrincipalArn = structure(logical(0), tags = list(type = "string")), SAMLAssertion = structure(logical(0), tags = list(type = "string")), PolicyArns = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Policy = structure(logical(0), tags = list(type = "string")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -29,7 +29,7 @@ NULL
 
 .sts$assume_role_with_web_identity_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), RoleSessionName = structure(logical(0), tags = list(type = "string")), WebIdentityToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ProviderId = structure(logical(0), tags = list(type = "string")), PolicyArns = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Policy = structure(logical(0), tags = list(type = "string")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(RoleArn = structure(logical(0), tags = list(type = "string")), RoleSessionName = structure(logical(0), tags = list(type = "string")), WebIdentityToken = structure(logical(0), tags = list(type = "string")), ProviderId = structure(logical(0), tags = list(type = "string")), PolicyArns = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Policy = structure(logical(0), tags = list(type = "string")), DurationSeconds = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

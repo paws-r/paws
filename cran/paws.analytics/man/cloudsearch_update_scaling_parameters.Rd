@@ -18,14 +18,14 @@ count. Amazon CloudSearch will still automatically scale your domain
 based on the volume of data and traffic, but not below the desired
 instance type and replication count. If the Multi-AZ option is enabled,
 these values control the resources used per Availability Zone. For more
-information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html}{Configuring Scaling Options}
+information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html}{Configuring Scaling Options}
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_scaling_parameters(
   DomainName = "string",
   ScalingParameters = list(
-    DesiredInstanceType = "search.m1.small"|"search.m1.large"|"search.m2.xlarge"|"search.m2.2xlarge"|"search.m3.medium"|"search.m3.large"|"search.m3.xlarge"|"search.m3.2xlarge",
+    DesiredInstanceType = "search.m1.small"|"search.m1.large"|"search.m2.xlarge"|"search.m2.2xlarge"|"search.m3.medium"|"search.m3.large"|"search.m3.xlarge"|"search.m3.2xlarge"|"search.small"|"search.medium"|"search.large"|"search.xlarge"|"search.2xlarge",
     DesiredReplicationCount = 123,
     DesiredPartitionCount = 123
   )

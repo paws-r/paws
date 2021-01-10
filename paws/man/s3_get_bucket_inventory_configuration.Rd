@@ -5,13 +5,17 @@
 \title{Returns an inventory configuration (identified by the inventory
 configuration ID) from the bucket}
 \usage{
-s3_get_bucket_inventory_configuration(Bucket, Id)
+s3_get_bucket_inventory_configuration(Bucket, Id, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the inventory configuration to
 retrieve.}
 
 \item{Id}{[required] The ID used to identify the inventory configuration.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Returns an inventory configuration (identified by the inventory
@@ -29,15 +33,16 @@ For information about the Amazon S3 inventory feature, see \href{https://docs.aw
 The following operations are related to
 \code{GetBucketInventoryConfiguration}:
 \itemize{
-\item DeleteBucketInventoryConfiguration
-\item ListBucketInventoryConfigurations
-\item PutBucketInventoryConfiguration
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketInventoryConfiguration.html}{DeleteBucketInventoryConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketInventoryConfigurations.html}{ListBucketInventoryConfigurations}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketInventoryConfiguration.html}{PutBucketInventoryConfiguration}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_inventory_configuration(
   Bucket = "string",
-  Id = "string"
+  Id = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

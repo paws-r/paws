@@ -10,7 +10,7 @@ NULL
 #' users, security credentials such as access keys, and permissions that
 #' control which AWS resources users and applications can access. For more
 #' information about IAM, see [AWS Identity and Access Management
-#' (IAM)](http://aws.amazon.com/iam/) and the [AWS Identity and Access
+#' (IAM)](https://aws.amazon.com/iam/) and the [AWS Identity and Access
 #' Management User
 #' Guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/).
 #'

@@ -9,7 +9,7 @@ databasemigrationservice_describe_replication_tasks(Filters, MaxRecords,
   Marker, WithoutSettings)
 }
 \arguments{
-\item{Filters}{Filters applied to the describe action.
+\item{Filters}{Filters applied to replication tasks.
 
 Valid filter names: replication-task-arn | replication-task-id |
 migration-type | endpoint-arn | replication-instance-arn}

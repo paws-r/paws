@@ -35,12 +35,12 @@ organization and its accounts.
 \details{
 For more information about integrating other services with AWS
 Organizations, including the list of services that currently work with
-Organizations, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{Integrating AWS Organizations with Other AWS Services}
+Organizations, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{Integrating AWS Organizations with Other AWS Services}
 in the \emph{AWS Organizations User Guide.}
 
-This operation can be called only from the organization's master account
-or by a member account that is a delegated administrator for an AWS
-service.
+This operation can be called only from the organization's management
+account or by a member account that is a delegated administrator for an
+AWS service.
 }
 \section{Request syntax}{
 \preformatted{svc$list_aws_service_access_for_organization(

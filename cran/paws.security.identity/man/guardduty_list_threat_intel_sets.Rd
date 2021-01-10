@@ -24,7 +24,7 @@ data.}
 \description{
 Lists the ThreatIntelSets of the GuardDuty service specified by the
 detector ID. If you use this operation from a member account, the
-ThreatIntelSets associated with the master account are returned.
+ThreatIntelSets associated with the administrator account are returned.
 }
 \section{Request syntax}{
 \preformatted{svc$list_threat_intel_sets(

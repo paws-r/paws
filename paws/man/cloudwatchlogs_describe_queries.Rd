@@ -22,7 +22,7 @@ and \code{Scheduled}.}
 \description{
 Returns a list of CloudWatch Logs Insights queries that are scheduled,
 executing, or have been executed recently in this account. You can
-request all queries, or limit it to queries of a specific log group or
+request all queries or limit it to queries of a specific log group or
 queries with a certain status.
 }
 \section{Request syntax}{

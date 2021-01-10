@@ -15,7 +15,7 @@ Deletes a specific snapshot of a virtual private server (or \emph{instance}).
 \details{
 The \verb{delete instance snapshot} operation supports tag-based access
 control via resource tags applied to the resource identified by
-\verb{instance snapshot name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{instance snapshot name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_instance_snapshot(

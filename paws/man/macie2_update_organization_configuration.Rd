@@ -2,7 +2,7 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_update_organization_configuration}
 \alias{macie2_update_organization_configuration}
-\title{Updates Amazon Macie configuration settings for an AWS organization}
+\title{Updates the Amazon Macie configuration settings for an AWS organization}
 \usage{
 macie2_update_organization_configuration(autoEnable)
 }
@@ -11,7 +11,7 @@ macie2_update_organization_configuration(autoEnable)
 account, when the account is added to the AWS organization.}
 }
 \description{
-Updates Amazon Macie configuration settings for an AWS organization.
+Updates the Amazon Macie configuration settings for an AWS organization.
 }
 \section{Request syntax}{
 \preformatted{svc$update_organization_configuration(

@@ -21,11 +21,11 @@ information, see Recognizing Celebrities in the Amazon Rekognition
 Developer Guide.
 }
 \details{
-\code{RecognizeCelebrities} returns the 100 largest faces in the image. It
+\code{RecognizeCelebrities} returns the 64 largest faces in the image. It
 lists recognized celebrities in the \code{CelebrityFaces} array and
 unrecognized faces in the \code{UnrecognizedFaces} array.
 \code{RecognizeCelebrities} doesn't return celebrities whose faces aren't
-among the largest 100 faces in the image.
+among the largest 64 faces in the image.
 
 For each celebrity recognized, \code{RecognizeCelebrities} returns a
 \code{Celebrity} object. The \code{Celebrity} object contains the celebrity name,

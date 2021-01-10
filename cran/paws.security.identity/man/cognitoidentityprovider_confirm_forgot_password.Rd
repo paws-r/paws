@@ -19,7 +19,8 @@ message.}
 a forgotten password.}
 
 \item{ConfirmationCode}{[required] The confirmation code sent by a user's request to retrieve a forgotten
-password. For more information, see}
+password. For more information, see
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ForgotPassword.html}{ForgotPassword}.}
 
 \item{Password}{[required] The password sent by a user's request to retrieve a forgotten password.}
 

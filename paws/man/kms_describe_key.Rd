@@ -69,8 +69,24 @@ that is, an AWS alias with no key ID, AWS KMS creates an \href{https://docs.aws.
 Then, it associates the alias with the new CMK, and returns the \code{KeyId}
 and \code{Arn} of the new CMK in the response.
 
-To perform this operation on a CMK in a different AWS account, specify
-the key ARN or alias ARN in the value of the KeyId parameter.
+\strong{Cross-account use}: Yes. To perform this operation with a CMK in a
+different AWS account, specify the key ARN or alias ARN in the value of
+the \code{KeyId} parameter.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:DescribeKey}
+(key policy)
+
+\strong{Related operations:}
+\itemize{
+\item GetKeyPolicy
+\item GetKeyRotationStatus
+\item ListAliases
+\item ListGrants
+\item ListKeys
+\item ListResourceTags
+\item ListRetirableGrants
+}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_key(

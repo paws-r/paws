@@ -5,7 +5,8 @@
 \title{Creates the user pool client}
 \usage{
 cognitoidentityprovider_create_user_pool_client(UserPoolId, ClientName,
-  GenerateSecret, RefreshTokenValidity, ReadAttributes, WriteAttributes,
+  GenerateSecret, RefreshTokenValidity, AccessTokenValidity,
+  IdTokenValidity, TokenValidityUnits, ReadAttributes, WriteAttributes,
   ExplicitAuthFlows, SupportedIdentityProviders, CallbackURLs, LogoutURLs,
   DefaultRedirectURI, AllowedOAuthFlows, AllowedOAuthScopes,
   AllowedOAuthFlowsUserPoolClient, AnalyticsConfiguration,
@@ -22,6 +23,17 @@ pool client being created.}
 
 \item{RefreshTokenValidity}{The time limit, in days, after which the refresh token is no longer
 valid and cannot be used.}
+
+\item{AccessTokenValidity}{The time limit, between 5 minutes and 1 day, after which the access
+token is no longer valid and cannot be used. This value will be
+overridden if you have entered a value in TokenValidityUnits.}
+
+\item{IdTokenValidity}{The time limit, between 5 minutes and 1 day, after which the ID token is
+no longer valid and cannot be used. This value will be overridden if you
+have entered a value in TokenValidityUnits.}
+
+\item{TokenValidityUnits}{The units in which the validity times are represented in. Default for
+RefreshToken is days, and default for ID and access tokens are hours.}
 
 \item{ReadAttributes}{The read attributes.}
 
@@ -118,9 +130,10 @@ interacting with Cognito user pools.}
 \item{AnalyticsConfiguration}{The Amazon Pinpoint analytics configuration for collecting metrics for
 this user pool.
 
-Cognito User Pools only supports sending events to Amazon Pinpoint
-projects in the US East (N. Virginia) us-east-1 Region, regardless of
-the region in which the user pool resides.}
+In regions where Pinpoint is not available, Cognito User Pools only
+supports sending events to Amazon Pinpoint projects in us-east-1. In
+regions where Pinpoint is available, Cognito User Pools will support
+sending events to Amazon Pinpoint projects within that same region.}
 
 \item{PreventUserExistenceErrors}{Use this setting to choose which errors and responses are returned by
 Cognito APIs during authentication, account confirmation, and password
@@ -139,18 +152,6 @@ Valid values include:
 existence related errors are not prevented.
 }
 
-This setting affects the behavior of following APIs:
-\itemize{
-\item AdminInitiateAuth
-\item AdminRespondToAuthChallenge
-\item InitiateAuth
-\item RespondToAuthChallenge
-\item ForgotPassword
-\item ConfirmForgotPassword
-\item ConfirmSignUp
-\item ResendConfirmationCode
-}
-
 After February 15th 2020, the value of \code{PreventUserExistenceErrors} will
 default to \code{ENABLED} for newly created user pool clients if no value is
 provided.}
@@ -164,6 +165,13 @@ Creates the user pool client.
   ClientName = "string",
   GenerateSecret = TRUE|FALSE,
   RefreshTokenValidity = 123,
+  AccessTokenValidity = 123,
+  IdTokenValidity = 123,
+  TokenValidityUnits = list(
+    AccessToken = "seconds"|"minutes"|"hours"|"days",
+    IdToken = "seconds"|"minutes"|"hours"|"days",
+    RefreshToken = "seconds"|"minutes"|"hours"|"days"
+  ),
   ReadAttributes = list(
     "string"
   ),
@@ -192,6 +200,7 @@ Creates the user pool client.
   AllowedOAuthFlowsUserPoolClient = TRUE|FALSE,
   AnalyticsConfiguration = list(
     ApplicationId = "string",
+    ApplicationArn = "string",
     RoleArn = "string",
     ExternalId = "string",
     UserDataShared = TRUE|FALSE

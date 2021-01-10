@@ -29,9 +29,9 @@ associated with the source volume are propagated to the snapshot.
 
 You can take a snapshot of an attached volume that is in use. However,
 snapshots only capture data that has been written to your EBS volume at
-the time the snapshot command is issued; this may exclude any data that
-has been cached by any applications or the operating system. If you can
-pause any file systems on the volume long enough to take a snapshot,
+the time the snapshot command is issued; this might exclude any data
+that has been cached by any applications or the operating system. If you
+can pause any file systems on the volume long enough to take a snapshot,
 your snapshot should be complete. However, if you cannot pause all file
 writes to the volume, you should unmount the volume from within the
 instance, issue the snapshot command, and then remount the volume to
@@ -47,11 +47,11 @@ automatically encrypted. Your encrypted volumes and any associated
 snapshots always remain protected.
 
 You can tag your snapshots during creation. For more information, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Amazon EC2 Resources}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging your Amazon EC2 resources}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html}{Amazon Elastic Block Store}
-and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS Encryption}
+and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{
@@ -60,7 +60,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   VolumeId = "string",
   TagSpecifications = list(
     list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
       Tags = list(
         list(
           Key = "string",

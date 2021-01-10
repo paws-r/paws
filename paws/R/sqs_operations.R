@@ -13,7 +13,7 @@ NULL
 #' queue. Only you, the owner of the queue, can grant or deny permissions
 #' to the queue. For more information about these permissions, see [Allow
 #' Developers to Write Messages to a Shared
-#' Queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue)
+#' Queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-iam-policies.html#write-messages-to-shared-queue)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' -   `AddPermission` generates a policy for you. You can use
@@ -38,8 +38,8 @@ NULL
 #' `&amp;AttributeName.2=second`
 #' 
 #' Cross-account permissions don't apply to this action. For more
-#' information, see [Grant Cross-Account Permissions to a Role and a User
-#' Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#' information, see [Grant cross-account permissions to a role and a user
+#' name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
@@ -177,7 +177,7 @@ sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
 #' is changed. This parameter is returned by the ` <a>ReceiveMessage</a> `
 #' action.
 #' @param VisibilityTimeout &#91;required&#93; The new value for the message's visibility timeout (in seconds). Values
-#' values: `0` to `43200`. Maximum: 12 hours.
+#' range: `0` to `43200`. Maximum: 12 hours.
 #'
 #' @section Request syntax:
 #' ```
@@ -295,7 +295,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' 
 #' To successfully create a new queue, you must provide a queue name that
 #' adheres to the [limits related to
-#' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/limits-queues.html)
+#' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-quotas.html#quotas-queues)
 #' and is unique within the scope of your queues.
 #' 
 #' After you create a queue, you must wait at least one second after the
@@ -321,8 +321,8 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' `&amp;AttributeName.2=second`
 #' 
 #' Cross-account permissions don't apply to this action. For more
-#' information, see [Grant Cross-Account Permissions to a Role and a User
-#' Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#' information, see [Grant cross-account permissions to a role and a user
+#' name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
@@ -359,7 +359,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' 
 #' -   `Policy` – The queue's policy. A valid AWS policy. For more
 #'     information about policy structure, see [Overview of AWS IAM
-#'     Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html)
+#'     Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)
 #'     in the *Amazon IAM User Guide*.
 #' 
 #' -   `ReceiveMessageWaitTimeSeconds` – The length of time, in seconds,
@@ -420,24 +420,25 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' The following attributes apply only to [FIFO (first-in-first-out)
 #' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
 #' 
-#' -   `FifoQueue` – Designates a queue as FIFO. Valid values: `true`,
-#'     `false`. If you don't specify the `FifoQueue` attribute, Amazon SQS
-#'     creates a standard queue. You can provide this attribute only during
-#'     queue creation. You can't change it for an existing queue. When you
-#'     set this attribute, you must also provide the `MessageGroupId` for
-#'     your messages explicitly.
+#' -   `FifoQueue` – Designates a queue as FIFO. Valid values are `true`
+#'     and `false`. If you don't specify the `FifoQueue` attribute, Amazon
+#'     SQS creates a standard queue. You can provide this attribute only
+#'     during queue creation. You can't change it for an existing queue.
+#'     When you set this attribute, you must also provide the
+#'     `MessageGroupId` for your messages explicitly.
 #' 
 #'     For more information, see [FIFO Queue
 #'     Logic](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' -   `ContentBasedDeduplication` – Enables content-based deduplication.
-#'     Valid values: `true`, `false`. For more information, see
+#'     Valid values are `true` and `false`. For more information, see
 #'     [Exactly-Once
 #'     Processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
-#'     in the *Amazon Simple Queue Service Developer Guide*.
+#'     in the *Amazon Simple Queue Service Developer Guide*. Note the
+#'     following:
 #' 
-#'     -   Every message must have a unique `MessageDeduplicationId`,
+#'     -   Every message must have a unique `MessageDeduplicationId`.
 #' 
 #'         -   You may provide a `MessageDeduplicationId` explicitly.
 #' 
@@ -464,6 +465,52 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #'         the same as the one generated for the first
 #'         `MessageDeduplicationId`, the two messages are treated as
 #'         duplicates and only one copy of the message is delivered.
+#' 
+#' **Preview: High throughput for FIFO queues**
+#' 
+#' **High throughput for Amazon SQS FIFO queues is in preview release and
+#' is subject to change.** This feature provides a high number of
+#' transactions per second (TPS) for messages in FIFO queues. For
+#' information on throughput quotas, see [Quotas related to
+#' messages](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html)
+#' in the *Amazon Simple Queue Service Developer Guide*.
+#' 
+#' This preview includes two new attributes:
+#' 
+#' -   `DeduplicationScope` – Specifies whether message deduplication
+#'     occurs at the message group or queue level. Valid values are
+#'     `messageGroup` and `queue`.
+#' 
+#' -   `FifoThroughputLimit` – Specifies whether the FIFO queue throughput
+#'     quota applies to the entire queue or per message group. Valid values
+#'     are `perQueue` and `perMessageGroupId`. The `perMessageGroupId`
+#'     value is allowed only when the value for `DeduplicationScope` is
+#'     `messageGroup`.
+#' 
+#' To enable high throughput for FIFO queues, do the following:
+#' 
+#' -   Set `DeduplicationScope` to `messageGroup`.
+#' 
+#' -   Set `FifoThroughputLimit` to `perMessageGroupId`.
+#' 
+#' If you set these attributes to anything other than the values shown for
+#' enabling high throughput, standard throughput is in effect and
+#' deduplication occurs as specified.
+#' 
+#' This preview is available in the following AWS Regions:
+#' 
+#' -   US East (Ohio); us-east-2
+#' 
+#' -   US East (N. Virginia); us-east-1
+#' 
+#' -   US West (Oregon); us-west-2
+#' 
+#' -   Europe (Ireland); eu-west-1
+#' 
+#' For more information about high throughput for FIFO queues, see
+#' [Preview: High throughput for FIFO
+#' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html)
+#' in the *Amazon Simple Queue Service Developer Guide*.
 #' @param tags Add cost allocation tags to the specified Amazon SQS queue. For an
 #' overview, see [Tagging Your Amazon SQS
 #' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html)
@@ -482,15 +529,15 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #'     the existing tag.
 #' 
 #' For a full list of tag restrictions, see [Limits Related to
-#' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-queues)
+#' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-quotas.html#limits-queues)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' To be able to tag a queue on creation, you must have the
 #' `sqs:CreateQueue` and `sqs:TagQueue` permissions.
 #' 
 #' Cross-account permissions don't apply to this action. For more
-#' information, see [Grant Cross-Account Permissions to a Role and a User
-#' Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#' information, see [Grant cross-account permissions to a role and a user
+#' name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @section Request syntax:
@@ -664,8 +711,8 @@ sqs_delete_message_batch <- function(QueueUrl, Entries) {
 #' creating a queue with the same name.
 #' 
 #' Cross-account permissions don't apply to this action. For more
-#' information, see [Grant Cross-Account Permissions to a Role and a User
-#' Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#' information, see [Grant cross-account permissions to a role and a user
+#' name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
@@ -748,13 +795,13 @@ sqs_delete_queue <- function(QueueUrl) {
 #'     deleted or have not yet reached the end of their visibility window.
 #' 
 #' -   `CreatedTimestamp` – Returns the time when the queue was created in
-#'     seconds ([epoch time](http://en.wikipedia.org/wiki/Unix_time)).
+#'     seconds ([epoch time](https://en.wikipedia.org/wiki/Unix_time)).
 #' 
 #' -   `DelaySeconds` – Returns the default delay on the queue in seconds.
 #' 
 #' -   `LastModifiedTimestamp` – Returns the time when the queue was last
 #'     changed in seconds ([epoch
-#'     time](http://en.wikipedia.org/wiki/Unix_time)).
+#'     time](https://en.wikipedia.org/wiki/Unix_time)).
 #' 
 #' -   `MaximumMessageSize` – Returns the limit of how many bytes a message
 #'     can contain before Amazon SQS rejects it.
@@ -809,8 +856,8 @@ sqs_delete_queue <- function(QueueUrl) {
 #' The following attributes apply only to [FIFO (first-in-first-out)
 #' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
 #' 
-#' -   `FifoQueue` – Returns whether the queue is FIFO. For more
-#'     information, see [FIFO Queue
+#' -   `FifoQueue` – Returns information about whether the queue is FIFO.
+#'     For more information, see [FIFO Queue
 #'     Logic](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
@@ -823,13 +870,59 @@ sqs_delete_queue <- function(QueueUrl) {
 #'     [Exactly-Once
 #'     Processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
+#' 
+#' **Preview: High throughput for FIFO queues**
+#' 
+#' **High throughput for Amazon SQS FIFO queues is in preview release and
+#' is subject to change.** This feature provides a high number of
+#' transactions per second (TPS) for messages in FIFO queues. For
+#' information on throughput quotas, see [Quotas related to
+#' messages](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html)
+#' in the *Amazon Simple Queue Service Developer Guide*.
+#' 
+#' This preview includes two new attributes:
+#' 
+#' -   `DeduplicationScope` – Specifies whether message deduplication
+#'     occurs at the message group or queue level. Valid values are
+#'     `messageGroup` and `queue`.
+#' 
+#' -   `FifoThroughputLimit` – Specifies whether the FIFO queue throughput
+#'     quota applies to the entire queue or per message group. Valid values
+#'     are `perQueue` and `perMessageGroupId`. The `perMessageGroupId`
+#'     value is allowed only when the value for `DeduplicationScope` is
+#'     `messageGroup`.
+#' 
+#' To enable high throughput for FIFO queues, do the following:
+#' 
+#' -   Set `DeduplicationScope` to `messageGroup`.
+#' 
+#' -   Set `FifoThroughputLimit` to `perMessageGroupId`.
+#' 
+#' If you set these attributes to anything other than the values shown for
+#' enabling high throughput, standard throughput is in effect and
+#' deduplication occurs as specified.
+#' 
+#' This preview is available in the following AWS Regions:
+#' 
+#' -   US East (Ohio); us-east-2
+#' 
+#' -   US East (N. Virginia); us-east-1
+#' 
+#' -   US West (Oregon); us-west-2
+#' 
+#' -   Europe (Ireland); eu-west-1
+#' 
+#' For more information about high throughput for FIFO queues, see
+#' [Preview: High throughput for FIFO
+#' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html)
+#' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_queue_attributes(
 #'   QueueUrl = "string",
 #'   AttributeNames = list(
-#'     "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"
+#'     "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"|"DeduplicationScope"|"FifoThroughputLimit"
 #'   )
 #' )
 #' ```
@@ -864,7 +957,7 @@ sqs_get_queue_attributes <- function(QueueUrl, AttributeNames = NULL) {
 #' queue. For more information about shared queue access, see
 #' ` <a>AddPermission</a> ` or see [Allow Developers to Write Messages to a
 #' Shared
-#' Queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue)
+#' Queue](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-iam-policies.html#write-messages-to-shared-queue)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
@@ -911,6 +1004,15 @@ sqs_get_queue_url <- function(QueueName, QueueOwnerAWSAccountId = NULL) {
 #' Returns a list of your queues that have the `RedrivePolicy` queue
 #' attribute configured with a dead-letter queue.
 #' 
+#' The `ListDeadLetterSourceQueues` methods supports pagination. Set
+#' parameter `MaxResults` in the request to specify the maximum number of
+#' results to be returned in the response. If you do not set `MaxResults`,
+#' the response includes a maximum of 1,000 results. If you set
+#' `MaxResults` and there are additional results to display, the response
+#' includes a value for `NextToken`. Use `NextToken` as a parameter in your
+#' next request to `ListDeadLetterSourceQueues` to receive the next page of
+#' results.
+#' 
 #' For more information about using dead-letter queues, see [Using Amazon
 #' SQS Dead-Letter
 #' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
@@ -923,7 +1025,9 @@ sqs_get_queue_url <- function(QueueName, QueueOwnerAWSAccountId = NULL) {
 #' 
 #' Queue URLs and names are case-sensitive.
 #' @param NextToken Pagination token to request the next set of results.
-#' @param MaxResults Maximum number of results to include in the response.
+#' @param MaxResults Maximum number of results to include in the response. Value range is 1
+#' to 1000. You must set `MaxResults` to receive a value for `NextToken` in
+#' the response.
 #'
 #' @section Request syntax:
 #' ```
@@ -962,8 +1066,8 @@ sqs_list_dead_letter_source_queues <- function(QueueUrl, NextToken = NULL, MaxRe
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' Cross-account permissions don't apply to this action. For more
-#' information, see [Grant Cross-Account Permissions to a Role and a User
-#' Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#' information, see [Grant cross-account permissions to a role and a user
+#' name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
@@ -998,16 +1102,24 @@ sqs_list_queue_tags <- function(QueueUrl) {
 }
 .sqs$operations$list_queue_tags <- sqs_list_queue_tags
 
-#' Returns a list of your queues
+#' Returns a list of your queues in the current region
 #'
-#' Returns a list of your queues. The maximum number of queues that can be
-#' returned is 1,000. If you specify a value for the optional
-#' `QueueNamePrefix` parameter, only queues with a name that begins with
-#' the specified value are returned.
+#' Returns a list of your queues in the current region. The response
+#' includes a maximum of 1,000 results. If you specify a value for the
+#' optional `QueueNamePrefix` parameter, only queues with a name that
+#' begins with the specified value are returned.
+#' 
+#' The `listQueues` methods supports pagination. Set parameter `MaxResults`
+#' in the request to specify the maximum number of results to be returned
+#' in the response. If you do not set `MaxResults`, the response includes a
+#' maximum of 1,000 results. If you set `MaxResults` and there are
+#' additional results to display, the response includes a value for
+#' `NextToken`. Use `NextToken` as a parameter in your next request to
+#' `listQueues` to receive the next page of results.
 #' 
 #' Cross-account permissions don't apply to this action. For more
-#' information, see [Grant Cross-Account Permissions to a Role and a User
-#' Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#' information, see [Grant cross-account permissions to a role and a user
+#' name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
@@ -1018,7 +1130,9 @@ sqs_list_queue_tags <- function(QueueUrl) {
 #' 
 #' Queue URLs and names are case-sensitive.
 #' @param NextToken Pagination token to request the next set of results.
-#' @param MaxResults Maximum number of results to include in the response.
+#' @param MaxResults Maximum number of results to include in the response. Value range is 1
+#' to 1000. You must set `MaxResults` to receive a value for `NextToken` in
+#' the response.
 #'
 #' @section Request syntax:
 #' ```
@@ -1105,7 +1219,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #' Retrieves one or more messages (up to 10), from the specified queue.
 #' Using the `WaitTimeSeconds` parameter enables long-poll support. For
 #' more information, see [Amazon SQS Long
-#' Polling](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html)
+#' Polling](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-short-and-long-polling.html#sqs-long-polling)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' Short poll is the default behavior where a weighted random set of
@@ -1169,7 +1283,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #' 
 #' -   `ApproximateFirstReceiveTimestamp` – Returns the time the message
 #'     was first received from the queue ([epoch
-#'     time](http://en.wikipedia.org/wiki/Unix_time) in milliseconds).
+#'     time](https://en.wikipedia.org/wiki/Unix_time) in milliseconds).
 #' 
 #' -   `ApproximateReceiveCount` – Returns the number of times a message
 #'     has been received across all queues but not deleted.
@@ -1185,7 +1299,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #'         `ABCDE1F2GH3I4JK5LMNOP:i-a123b456`.
 #' 
 #' -   `SentTimestamp` – Returns the time the message was sent to the queue
-#'     ([epoch time](http://en.wikipedia.org/wiki/Unix_time) in
+#'     ([epoch time](https://en.wikipedia.org/wiki/Unix_time) in
 #'     milliseconds).
 #' 
 #' -   `MessageDeduplicationId` – Returns the value provided by the
@@ -1301,7 +1415,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #' svc$receive_message(
 #'   QueueUrl = "string",
 #'   AttributeNames = list(
-#'     "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"
+#'     "All"|"Policy"|"VisibilityTimeout"|"MaximumMessageSize"|"MessageRetentionPeriod"|"ApproximateNumberOfMessages"|"ApproximateNumberOfMessagesNotVisible"|"CreatedTimestamp"|"LastModifiedTimestamp"|"QueueArn"|"ApproximateNumberOfMessagesDelayed"|"DelaySeconds"|"ReceiveMessageWaitTimeSeconds"|"RedrivePolicy"|"FifoQueue"|"ContentBasedDeduplication"|"KmsMasterKeyId"|"KmsDataKeyReusePeriodSeconds"|"DeduplicationScope"|"FifoThroughputLimit"
 #'   ),
 #'   MessageAttributeNames = list(
 #'     "string"
@@ -1342,9 +1456,9 @@ sqs_receive_message <- function(QueueUrl, AttributeNames = NULL, MessageAttribut
 #' -   Only the owner of a queue can remove permissions from it.
 #' 
 #' -   Cross-account permissions don't apply to this action. For more
-#'     information, see [Grant Cross-Account Permissions to a Role and a
-#'     User
-#'     Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#'     information, see [Grant cross-account permissions to a role and a
+#'     user
+#'     name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' -   To remove the ability to change queue permissions, you must deny
@@ -1409,7 +1523,8 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue to which a message is sent.
 #' 
 #' Queue URLs and names are case-sensitive.
-#' @param MessageBody &#91;required&#93; The message to send. The maximum string size is 256 KB.
+#' @param MessageBody &#91;required&#93; The message to send. The minimum size is one character. The maximum size
+#' is 256 KB.
 #' 
 #' A message can include only XML, JSON, and unformatted text. The
 #' following Unicode characters are allowed:
@@ -1430,7 +1545,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' can set this parameter only on a queue level.
 #' @param MessageAttributes Each message attribute consists of a `Name`, `Type`, and `Value`. For
 #' more information, see [Amazon SQS Message
-#' Attributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
+#' Attributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' @param MessageSystemAttributes The message system attribute to send. Each message system attribute
 #' consists of a `Name`, `Type`, and `Value`.
@@ -1701,9 +1816,9 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #'     it can handle new attributes gracefully.
 #' 
 #' -   Cross-account permissions don't apply to this action. For more
-#'     information, see [Grant Cross-Account Permissions to a Role and a
-#'     User
-#'     Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#'     information, see [Grant cross-account permissions to a role and a
+#'     user
+#'     name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name)
 #'     in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' -   To remove the ability to change queue permissions, you must deny
@@ -1737,7 +1852,7 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' 
 #' -   `Policy` – The queue's policy. A valid AWS policy. For more
 #'     information about policy structure, see [Overview of AWS IAM
-#'     Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/PoliciesOverview.html)
+#'     Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)
 #'     in the *Amazon IAM User Guide*.
 #' 
 #' -   `ReceiveMessageWaitTimeSeconds` – The length of time, in seconds,
@@ -1801,9 +1916,10 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' -   `ContentBasedDeduplication` – Enables content-based deduplication.
 #'     For more information, see [Exactly-Once
 #'     Processing](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
-#'     in the *Amazon Simple Queue Service Developer Guide*.
+#'     in the *Amazon Simple Queue Service Developer Guide*. Note the
+#'     following:
 #' 
-#'     -   Every message must have a unique `MessageDeduplicationId`,
+#'     -   Every message must have a unique `MessageDeduplicationId`.
 #' 
 #'         -   You may provide a `MessageDeduplicationId` explicitly.
 #' 
@@ -1830,6 +1946,52 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #'         the same as the one generated for the first
 #'         `MessageDeduplicationId`, the two messages are treated as
 #'         duplicates and only one copy of the message is delivered.
+#' 
+#' **Preview: High throughput for FIFO queues**
+#' 
+#' **High throughput for Amazon SQS FIFO queues is in preview release and
+#' is subject to change.** This feature provides a high number of
+#' transactions per second (TPS) for messages in FIFO queues. For
+#' information on throughput quotas, see [Quotas related to
+#' messages](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html)
+#' in the *Amazon Simple Queue Service Developer Guide*.
+#' 
+#' This preview includes two new attributes:
+#' 
+#' -   `DeduplicationScope` – Specifies whether message deduplication
+#'     occurs at the message group or queue level. Valid values are
+#'     `messageGroup` and `queue`.
+#' 
+#' -   `FifoThroughputLimit` – Specifies whether the FIFO queue throughput
+#'     quota applies to the entire queue or per message group. Valid values
+#'     are `perQueue` and `perMessageGroupId`. The `perMessageGroupId`
+#'     value is allowed only when the value for `DeduplicationScope` is
+#'     `messageGroup`.
+#' 
+#' To enable high throughput for FIFO queues, do the following:
+#' 
+#' -   Set `DeduplicationScope` to `messageGroup`.
+#' 
+#' -   Set `FifoThroughputLimit` to `perMessageGroupId`.
+#' 
+#' If you set these attributes to anything other than the values shown for
+#' enabling high throughput, standard throughput is in effect and
+#' deduplication occurs as specified.
+#' 
+#' This preview is available in the following AWS Regions:
+#' 
+#' -   US East (Ohio); us-east-2
+#' 
+#' -   US East (N. Virginia); us-east-1
+#' 
+#' -   US West (Oregon); us-west-2
+#' 
+#' -   Europe (Ireland); eu-west-1
+#' 
+#' For more information about high throughput for FIFO queues, see
+#' [Preview: High throughput for FIFO
+#' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html)
+#' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -1881,12 +2043,12 @@ sqs_set_queue_attributes <- function(QueueUrl, Attributes) {
 #'     the existing tag.
 #' 
 #' For a full list of tag restrictions, see [Limits Related to
-#' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-queues)
+#' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-quotas.html#limits-queues)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' Cross-account permissions don't apply to this action. For more
-#' information, see [Grant Cross-Account Permissions to a Role and a User
-#' Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#' information, see [Grant cross-account permissions to a role and a user
+#' name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage
@@ -1933,8 +2095,8 @@ sqs_tag_queue <- function(QueueUrl, Tags) {
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #' 
 #' Cross-account permissions don't apply to this action. For more
-#' information, see [Grant Cross-Account Permissions to a Role and a User
-#' Name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
+#' information, see [Grant cross-account permissions to a role and a user
+#' name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon Simple Queue Service Developer Guide*.
 #'
 #' @usage

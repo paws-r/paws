@@ -11,7 +11,7 @@ iotanalytics_sample_channel_data(channelName, maxMessages, startTime,
 \arguments{
 \item{channelName}{[required] The name of the channel whose message samples are retrieved.}
 
-\item{maxMessages}{The number of sample messages to be retrieved. The limit is 10, the
+\item{maxMessages}{The number of sample messages to be retrieved. The limit is 10. The
 default is also 10.}
 
 \item{startTime}{The start of the time window from which sample messages are retrieved.}

@@ -2,43 +2,44 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_suspend_game_server_group}
 \alias{gamelift_suspend_game_server_group}
-\title{This action is part of Amazon GameLift FleetIQ with game server groups,
-which is in preview release and is subject to change}
+\title{This operation is used with the Amazon GameLift FleetIQ solution and
+game server groups}
 \usage{
 gamelift_suspend_game_server_group(GameServerGroupName, SuspendActions)
 }
 \arguments{
-\item{GameServerGroupName}{[required] The unique identifier of the game server group to stop activity on. Use
-either the GameServerGroup name or ARN value.}
+\item{GameServerGroupName}{[required] A unique identifier for the game server group. Use either the
+GameServerGroup name or ARN value.}
 
-\item{SuspendActions}{[required] The action to suspend for this game server group.}
+\item{SuspendActions}{[required] The activity to suspend for this game server group.}
 }
 \description{
-\strong{This action is part of Amazon GameLift FleetIQ with game server
-groups, which is in preview release and is subject to change.}
+\strong{This operation is used with the Amazon GameLift FleetIQ solution and
+game server groups.}
 }
 \details{
 Temporarily stops activity on a game server group without terminating
-instances or the game server group. Activity can be restarted by calling
-ResumeGameServerGroup. Activities that can suspended are:
+instances or the game server group. You can restart activity by calling
+ResumeGameServerGroup. You can suspend the following activity:
 \itemize{
-\item Instance type replacement. This activity evaluates the current Spot
-viability of all instance types that are defined for the game server
-group. It updates the Auto Scaling group to remove nonviable Spot
-instance types (which have a higher chance of game server
-interruptions) and rebalances capacity across the remaining viable
-Spot instance types. When this activity is suspended, the Auto
-Scaling group continues with its current balance, regardless of
-viability. Instance protection, utilization metrics, and capacity
-autoscaling activities continue to be active.
+\item \strong{Instance type replacement} - This activity evaluates the current
+game hosting viability of all Spot instance types that are defined
+for the game server group. It updates the Auto Scaling group to
+remove nonviable Spot Instance types, which have a higher chance of
+game server interruptions. It then balances capacity across the
+remaining viable Spot Instance types. When this activity is
+suspended, the Auto Scaling group continues with its current
+balance, regardless of viability. Instance protection, utilization
+metrics, and capacity scaling activities continue to be active.
 }
 
 To suspend activity, specify a game server group ARN and the type of
-activity to be suspended.
+activity to be suspended. If successful, a GameServerGroup object is
+returned showing that the activity is listed in \code{SuspendedActions}.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html}{GameLift FleetIQ Guide}
+\href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html}{GameLift FleetIQ Guide}
 
 \strong{Related operations}
 \itemize{
@@ -49,6 +50,7 @@ activity to be suspended.
 \item DeleteGameServerGroup
 \item ResumeGameServerGroup
 \item SuspendGameServerGroup
+\item DescribeGameServerInstances
 }
 }
 \section{Request syntax}{

@@ -12,14 +12,11 @@ NULL
 #' If the certificate in already in the certificate list, the call is
 #' successful but the certificate is not added again.
 #' 
-#' To get the certificate list for a listener, use
-#' DescribeListenerCertificates. To remove certificates from the
-#' certificate list for a listener, use RemoveListenerCertificates. To
-#' replace the default certificate for a listener, use ModifyListener.
-#' 
-#' For more information, see [SSL
-#' Certificates](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates)
-#' in the *Application Load Balancers Guide*.
+#' For more information, see [HTTPS
+#' listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html)
+#' in the *Application Load Balancers Guide* or [TLS
+#' listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html)
+#' in the *Network Load Balancers Guide*.
 #'
 #' @usage
 #' elbv2_add_listener_certificates(ListenerArn, Certificates)
@@ -65,13 +62,10 @@ elbv2_add_listener_certificates <- function(ListenerArn, Certificates) {
 #'
 #' Adds the specified tags to the specified Elastic Load Balancing
 #' resource. You can tag your Application Load Balancers, Network Load
-#' Balancers, and your target groups.
+#' Balancers, Gateway Load Balancers, target groups, listeners, and rules.
 #' 
 #' Each tag consists of a key and an optional value. If a resource already
 #' has a tag with the same key, `AddTags` updates its value.
-#' 
-#' To list the current tags for your resources, use DescribeTags. To remove
-#' tags from your resources, use RemoveTags.
 #'
 #' @usage
 #' elbv2_add_tags(ResourceArns, Tags)
@@ -134,91 +128,52 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 }
 .elbv2$operations$add_tags <- elbv2_add_tags
 
-#' Creates a listener for the specified Application Load Balancer or
-#' Network Load Balancer
+#' Creates a listener for the specified Application Load Balancer, Network
+#' Load Balancer
 #'
-#' Creates a listener for the specified Application Load Balancer or
-#' Network Load Balancer.
+#' Creates a listener for the specified Application Load Balancer, Network
+#' Load Balancer. or Gateway Load Balancer.
 #' 
-#' To update a listener, use ModifyListener. When you are finished with a
-#' listener, you can delete it using DeleteListener. If you are finished
-#' with both the listener and the load balancer, you can delete them both
-#' using DeleteLoadBalancer.
+#' For more information, see the following:
+#' 
+#' -   [Listeners for your Application Load
+#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html)
+#' 
+#' -   [Listeners for your Network Load
+#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)
+#' 
+#' -   [Listeners for your Gateway Load
+#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-listeners.html)
 #' 
 #' This operation is idempotent, which means that it completes at most one
 #' time. If you attempt to create multiple listeners with the same
 #' settings, each call succeeds.
-#' 
-#' For more information, see [Listeners for Your Application Load
-#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html)
-#' in the *Application Load Balancers Guide* and [Listeners for Your
-#' Network Load
-#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-listeners.html)
-#' in the *Network Load Balancers Guide*.
 #'
 #' @usage
 #' elbv2_create_listener(LoadBalancerArn, Protocol, Port, SslPolicy,
-#'   Certificates, DefaultActions, AlpnPolicy)
+#'   Certificates, DefaultActions, AlpnPolicy, Tags)
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
-#' @param Protocol &#91;required&#93; The protocol for connections from clients to the load balancer. For
+#' @param Protocol The protocol for connections from clients to the load balancer. For
 #' Application Load Balancers, the supported protocols are HTTP and HTTPS.
 #' For Network Load Balancers, the supported protocols are TCP, TLS, UDP,
-#' and TCP\\_UDP.
-#' @param Port &#91;required&#93; The port on which the load balancer is listening.
+#' and TCP\\_UDP. You can’t specify the UDP or TCP\\_UDP protocol if
+#' dual-stack mode is enabled. You cannot specify a protocol for a Gateway
+#' Load Balancer.
+#' @param Port The port on which the load balancer is listening. You cannot specify a
+#' port for a Gateway Load Balancer.
 #' @param SslPolicy \[HTTPS and TLS listeners\] The security policy that defines which
-#' protocols and ciphers are supported. The following are the possible
-#' values:
-#' 
-#' -   `ELBSecurityPolicy-2016-08`
-#' 
-#' -   `ELBSecurityPolicy-TLS-1-0-2015-04`
-#' 
-#' -   `ELBSecurityPolicy-TLS-1-1-2017-01`
-#' 
-#' -   `ELBSecurityPolicy-TLS-1-2-2017-01`
-#' 
-#' -   `ELBSecurityPolicy-TLS-1-2-Ext-2018-06`
-#' 
-#' -   `ELBSecurityPolicy-FS-2018-06`
-#' 
-#' -   `ELBSecurityPolicy-FS-1-1-2019-08`
-#' 
-#' -   `ELBSecurityPolicy-FS-1-2-2019-08`
-#' 
-#' -   `ELBSecurityPolicy-FS-1-2-Res-2019-08`
+#' protocols and ciphers are supported.
 #' 
 #' For more information, see [Security
-#' Policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
 #' in the *Application Load Balancers Guide* and [Security
-#' Policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies)
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies)
 #' in the *Network Load Balancers Guide*.
 #' @param Certificates \[HTTPS and TLS listeners\] The default certificate for the listener.
 #' You must provide exactly one certificate. Set `CertificateArn` to the
 #' certificate ARN but do not set `IsDefault`.
-#' 
-#' To create a certificate list for the listener, use
-#' AddListenerCertificates.
-#' @param DefaultActions &#91;required&#93; The actions for the default rule. The rule must include one forward
-#' action or one or more fixed-response actions.
-#' 
-#' If the action type is `forward`, you specify one or more target groups.
-#' The protocol of the target group must be HTTP or HTTPS for an
-#' Application Load Balancer. The protocol of the target group must be TCP,
-#' TLS, UDP, or TCP\\_UDP for a Network Load Balancer.
-#' 
-#' \[HTTPS listeners\] If the action type is `authenticate-oidc`, you
-#' authenticate users through an identity provider that is OpenID Connect
-#' (OIDC) compliant.
-#' 
-#' \[HTTPS listeners\] If the action type is `authenticate-cognito`, you
-#' authenticate users through the user pools supported by Amazon Cognito.
-#' 
-#' \[Application Load Balancer\] If the action type is `redirect`, you
-#' redirect specified client requests from one URL to another.
-#' 
-#' \[Application Load Balancer\] If the action type is `fixed-response`,
-#' you drop specified client requests and return a custom HTTP response.
+#' @param DefaultActions &#91;required&#93; The actions for the default rule.
 #' @param AlpnPolicy \[TLS listeners\] The name of the Application-Layer Protocol Negotiation
 #' (ALPN) policy. You can specify one policy name. The following are the
 #' possible values:
@@ -234,14 +189,15 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' -   `None`
 #' 
 #' For more information, see [ALPN
-#' Policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies)
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies)
 #' in the *Network Load Balancers Guide*.
+#' @param Tags The tags to assign to the listener.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_listener(
 #'   LoadBalancerArn = "string",
-#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP",
+#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
 #'   Port = 123,
 #'   SslPolicy = "string",
 #'   Certificates = list(
@@ -312,6 +268,12 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #'   ),
 #'   AlpnPolicy = list(
 #'     "string"
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -361,14 +323,14 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' @keywords internal
 #'
 #' @rdname elbv2_create_listener
-elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = NULL, Certificates = NULL, DefaultActions, AlpnPolicy = NULL) {
+elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL, SslPolicy = NULL, Certificates = NULL, DefaultActions, AlpnPolicy = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateListener",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elbv2$create_listener_input(LoadBalancerArn = LoadBalancerArn, Protocol = Protocol, Port = Port, SslPolicy = SslPolicy, Certificates = Certificates, DefaultActions = DefaultActions, AlpnPolicy = AlpnPolicy)
+  input <- .elbv2$create_listener_input(LoadBalancerArn = LoadBalancerArn, Protocol = Protocol, Port = Port, SslPolicy = SslPolicy, Certificates = Certificates, DefaultActions = DefaultActions, AlpnPolicy = AlpnPolicy, Tags = Tags)
   output <- .elbv2$create_listener_output()
   config <- get_config()
   svc <- .elbv2$service(config)
@@ -378,39 +340,31 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = N
 }
 .elbv2$operations$create_listener <- elbv2_create_listener
 
-#' Creates an Application Load Balancer or a Network Load Balancer
+#' Creates an Application Load Balancer, Network Load Balancer, or Gateway
+#' Load Balancer
 #'
-#' Creates an Application Load Balancer or a Network Load Balancer.
+#' Creates an Application Load Balancer, Network Load Balancer, or Gateway
+#' Load Balancer.
 #' 
-#' When you create a load balancer, you can specify security groups, public
-#' subnets, IP address type, and tags. Otherwise, you could do so later
-#' using SetSecurityGroups, SetSubnets, SetIpAddressType, and AddTags.
+#' For more information, see the following:
 #' 
-#' To create listeners for your load balancer, use CreateListener. To
-#' describe your current load balancers, see DescribeLoadBalancers. When
-#' you are finished with a load balancer, you can delete it using
-#' DeleteLoadBalancer.
+#' -   [Application Load
+#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html)
 #' 
-#' For limit information, see [Limits for Your Application Load
-#' Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
-#' in the *Application Load Balancers Guide* and [Limits for Your Network
-#' Load
-#' Balancer](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
-#' in the *Network Load Balancers Guide*.
+#' -   [Network Load
+#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html)
+#' 
+#' -   [Gateway Load
+#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-load-balancers.html)
 #' 
 #' This operation is idempotent, which means that it completes at most one
 #' time. If you attempt to create multiple load balancers with the same
 #' settings, each call succeeds.
-#' 
-#' For more information, see [Application Load
-#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html)
-#' in the *Application Load Balancers Guide* and [Network Load
-#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html)
-#' in the *Network Load Balancers Guide*.
 #'
 #' @usage
 #' elbv2_create_load_balancer(Name, Subnets, SubnetMappings,
-#'   SecurityGroups, Scheme, Tags, Type, IpAddressType)
+#'   SecurityGroups, Scheme, Tags, Type, IpAddressType,
+#'   CustomerOwnedIpv4Pool)
 #'
 #' @param Name &#91;required&#93; The name of the load balancer.
 #' 
@@ -424,7 +378,16 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = N
 #' \[Application Load Balancers\] You must specify subnets from at least
 #' two Availability Zones.
 #' 
+#' \[Application Load Balancers on Outposts\] You must specify one Outpost
+#' subnet.
+#' 
+#' \[Application Load Balancers on Local Zones\] You can specify subnets
+#' from one or more Local Zones.
+#' 
 #' \[Network Load Balancers\] You can specify subnets from one or more
+#' Availability Zones.
+#' 
+#' \[Gateway Load Balancers\] You can specify subnets from one or more
 #' Availability Zones.
 #' @param SubnetMappings The IDs of the public subnets. You can specify only one subnet per
 #' Availability Zone. You must specify either subnets or subnet mappings.
@@ -433,11 +396,22 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = N
 #' two Availability Zones. You cannot specify Elastic IP addresses for your
 #' subnets.
 #' 
+#' \[Application Load Balancers on Outposts\] You must specify one Outpost
+#' subnet.
+#' 
+#' \[Application Load Balancers on Local Zones\] You can specify subnets
+#' from one or more Local Zones.
+#' 
 #' \[Network Load Balancers\] You can specify subnets from one or more
 #' Availability Zones. You can specify one Elastic IP address per subnet if
 #' you need static IP addresses for your internet-facing load balancer. For
 #' internal load balancers, you can specify one private IP address per
-#' subnet from the IPv4 range of the subnet.
+#' subnet from the IPv4 range of the subnet. For internet-facing load
+#' balancer, you can specify one IPv6 address per subnet.
+#' 
+#' \[Gateway Load Balancers\] You can specify subnets from one or more
+#' Availability Zones. You cannot specify Elastic IP addresses for your
+#' subnets.
 #' @param SecurityGroups \[Application Load Balancers\] The IDs of the security groups for the
 #' load balancer.
 #' @param Scheme The nodes of an Internet-facing load balancer have public IP addresses.
@@ -452,12 +426,15 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = N
 #' balancer.
 #' 
 #' The default is an Internet-facing load balancer.
-#' @param Tags One or more tags to assign to the load balancer.
+#' 
+#' You cannot specify a scheme for a Gateway Load Balancer.
+#' @param Tags The tags to assign to the load balancer.
 #' @param Type The type of load balancer. The default is `application`.
-#' @param IpAddressType \[Application Load Balancers\] The type of IP addresses used by the
-#' subnets for your load balancer. The possible values are `ipv4` (for IPv4
-#' addresses) and `dualstack` (for IPv4 and IPv6 addresses). Internal load
-#' balancers must use `ipv4`.
+#' @param IpAddressType The type of IP addresses used by the subnets for your load balancer. The
+#' possible values are `ipv4` (for IPv4 addresses) and `dualstack` (for
+#' IPv4 and IPv6 addresses). Internal load balancers must use `ipv4`.
+#' @param CustomerOwnedIpv4Pool \[Application Load Balancers on Outposts\] The ID of the customer-owned
+#' address pool (CoIP pool).
 #'
 #' @section Request syntax:
 #' ```
@@ -470,7 +447,8 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = N
 #'     list(
 #'       SubnetId = "string",
 #'       AllocationId = "string",
-#'       PrivateIPv4Address = "string"
+#'       PrivateIPv4Address = "string",
+#'       IPv6Address = "string"
 #'     )
 #'   ),
 #'   SecurityGroups = list(
@@ -483,8 +461,9 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = N
 #'       Value = "string"
 #'     )
 #'   ),
-#'   Type = "application"|"network",
-#'   IpAddressType = "ipv4"|"dualstack"
+#'   Type = "application"|"network"|"gateway",
+#'   IpAddressType = "ipv4"|"dualstack",
+#'   CustomerOwnedIpv4Pool = "string"
 #' )
 #' ```
 #'
@@ -516,14 +495,14 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol, Port, SslPolicy = N
 #' @keywords internal
 #'
 #' @rdname elbv2_create_load_balancer
-elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NULL, SecurityGroups = NULL, Scheme = NULL, Tags = NULL, Type = NULL, IpAddressType = NULL) {
+elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NULL, SecurityGroups = NULL, Scheme = NULL, Tags = NULL, Type = NULL, IpAddressType = NULL, CustomerOwnedIpv4Pool = NULL) {
   op <- new_operation(
     name = "CreateLoadBalancer",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elbv2$create_load_balancer_input(Name = Name, Subnets = Subnets, SubnetMappings = SubnetMappings, SecurityGroups = SecurityGroups, Scheme = Scheme, Tags = Tags, Type = Type, IpAddressType = IpAddressType)
+  input <- .elbv2$create_load_balancer_input(Name = Name, Subnets = Subnets, SubnetMappings = SubnetMappings, SecurityGroups = SecurityGroups, Scheme = Scheme, Tags = Tags, Type = Type, IpAddressType = IpAddressType, CustomerOwnedIpv4Pool = CustomerOwnedIpv4Pool)
   output <- .elbv2$create_load_balancer_output()
   config <- get_config()
   svc <- .elbv2$service(config)
@@ -538,48 +517,24 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #' Creates a rule for the specified listener. The listener must be
 #' associated with an Application Load Balancer.
 #' 
-#' Rules are evaluated in priority order, from the lowest value to the
-#' highest value. When the conditions for a rule are met, its actions are
-#' performed. If the conditions for no rules are met, the actions for the
-#' default rule are performed. For more information, see [Listener
-#' Rules](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)
+#' Each rule consists of a priority, one or more actions, and one or more
+#' conditions. Rules are evaluated in priority order, from the lowest value
+#' to the highest value. When the conditions for a rule are met, its
+#' actions are performed. If the conditions for no rules are met, the
+#' actions for the default rule are performed. For more information, see
+#' [Listener
+#' rules](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html#listener-rules)
 #' in the *Application Load Balancers Guide*.
-#' 
-#' To view your current rules, use DescribeRules. To update a rule, use
-#' ModifyRule. To set the priorities of your rules, use SetRulePriorities.
-#' To delete a rule, use DeleteRule.
 #'
 #' @usage
-#' elbv2_create_rule(ListenerArn, Conditions, Priority, Actions)
+#' elbv2_create_rule(ListenerArn, Conditions, Priority, Actions, Tags)
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
-#' @param Conditions &#91;required&#93; The conditions. Each rule can include zero or one of the following
-#' conditions: `http-request-method`, `host-header`, `path-pattern`, and
-#' `source-ip`, and zero or more of the following conditions: `http-header`
-#' and `query-string`.
+#' @param Conditions &#91;required&#93; The conditions.
 #' @param Priority &#91;required&#93; The rule priority. A listener can't have multiple rules with the same
 #' priority.
-#' @param Actions &#91;required&#93; The actions. Each rule must include exactly one of the following types
-#' of actions: `forward`, `fixed-response`, or `redirect`, and it must be
-#' the last action to be performed.
-#' 
-#' If the action type is `forward`, you specify one or more target groups.
-#' The protocol of the target group must be HTTP or HTTPS for an
-#' Application Load Balancer. The protocol of the target group must be TCP,
-#' TLS, UDP, or TCP\\_UDP for a Network Load Balancer.
-#' 
-#' \[HTTPS listeners\] If the action type is `authenticate-oidc`, you
-#' authenticate users through an identity provider that is OpenID Connect
-#' (OIDC) compliant.
-#' 
-#' \[HTTPS listeners\] If the action type is `authenticate-cognito`, you
-#' authenticate users through the user pools supported by Amazon Cognito.
-#' 
-#' \[Application Load Balancer\] If the action type is `redirect`, you
-#' redirect specified client requests from one URL to another.
-#' 
-#' \[Application Load Balancer\] If the action type is `fixed-response`,
-#' you drop specified client requests and return a custom HTTP response.
+#' @param Actions &#91;required&#93; The actions.
+#' @param Tags The tags to assign to the rule.
 #'
 #' @section Request syntax:
 #' ```
@@ -687,6 +642,12 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #'         )
 #'       )
 #'     )
+#'   ),
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -719,14 +680,14 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 #' @keywords internal
 #'
 #' @rdname elbv2_create_rule
-elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions) {
+elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags = NULL) {
   op <- new_operation(
     name = "CreateRule",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elbv2$create_rule_input(ListenerArn = ListenerArn, Conditions = Conditions, Priority = Priority, Actions = Actions)
+  input <- .elbv2$create_rule_input(ListenerArn = ListenerArn, Conditions = Conditions, Priority = Priority, Actions = Actions, Tags = Tags)
   output <- .elbv2$create_rule_output()
   config <- get_config()
   svc <- .elbv2$service(config)
@@ -740,32 +701,27 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions) {
 #'
 #' Creates a target group.
 #' 
-#' To register targets with the target group, use RegisterTargets. To
-#' update the health check settings for the target group, use
-#' ModifyTargetGroup. To monitor the health of targets in the target group,
-#' use DescribeTargetHealth.
+#' For more information, see the following:
 #' 
-#' To route traffic to the targets in a target group, specify the target
-#' group in an action using CreateListener or CreateRule.
+#' -   [Target groups for your Application Load
+#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)
 #' 
-#' To delete a target group, use DeleteTargetGroup.
+#' -   [Target groups for your Network Load
+#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html)
+#' 
+#' -   [Target groups for your Gateway Load
+#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html)
 #' 
 #' This operation is idempotent, which means that it completes at most one
 #' time. If you attempt to create multiple target groups with the same
 #' settings, each call succeeds.
-#' 
-#' For more information, see [Target Groups for Your Application Load
-#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html)
-#' in the *Application Load Balancers Guide* or [Target Groups for Your
-#' Network Load
-#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html)
-#' in the *Network Load Balancers Guide*.
 #'
 #' @usage
-#' elbv2_create_target_group(Name, Protocol, Port, VpcId,
+#' elbv2_create_target_group(Name, Protocol, ProtocolVersion, Port, VpcId,
 #'   HealthCheckProtocol, HealthCheckPort, HealthCheckEnabled,
 #'   HealthCheckPath, HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds,
-#'   HealthyThresholdCount, UnhealthyThresholdCount, Matcher, TargetType)
+#'   HealthyThresholdCount, UnhealthyThresholdCount, Matcher, TargetType,
+#'   Tags)
 #'
 #' @param Name &#91;required&#93; The name of the target group.
 #' 
@@ -775,76 +731,91 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions) {
 #' @param Protocol The protocol to use for routing traffic to the targets. For Application
 #' Load Balancers, the supported protocols are HTTP and HTTPS. For Network
 #' Load Balancers, the supported protocols are TCP, TLS, UDP, or TCP\\_UDP.
-#' A TCP\\_UDP listener must be associated with a TCP\\_UDP target group. If
-#' the target is a Lambda function, this parameter does not apply.
+#' For Gateway Load Balancers, the supported protocol is GENEVE. A TCP\\_UDP
+#' listener must be associated with a TCP\\_UDP target group. If the target
+#' is a Lambda function, this parameter does not apply.
+#' @param ProtocolVersion \[HTTP/HTTPS protocol\] The protocol version. Specify `GRPC` to send
+#' requests to targets using gRPC. Specify `HTTP2` to send requests to
+#' targets using HTTP/2. The default is `HTTP1`, which sends requests to
+#' targets using HTTP/1.1.
 #' @param Port The port on which the targets receive traffic. This port is used unless
 #' you specify a port override when registering the target. If the target
-#' is a Lambda function, this parameter does not apply.
+#' is a Lambda function, this parameter does not apply. If the protocol is
+#' GENEVE, the supported port is 6081.
 #' @param VpcId The identifier of the virtual private cloud (VPC). If the target is a
 #' Lambda function, this parameter does not apply. Otherwise, this
 #' parameter is required.
 #' @param HealthCheckProtocol The protocol the load balancer uses when performing health checks on
 #' targets. For Application Load Balancers, the default is HTTP. For
-#' Network Load Balancers, the default is TCP. The TCP protocol is
-#' supported for health checks only if the protocol of the target group is
-#' TCP, TLS, UDP, or TCP\\_UDP. The TLS, UDP, and TCP\\_UDP protocols are not
-#' supported for health checks.
+#' Network Load Balancers and Gateway Load Balancers, the default is TCP.
+#' The TCP protocol is not supported for health checks if the protocol of
+#' the target group is HTTP or HTTPS. The GENEVE, TLS, UDP, and TCP\\_UDP
+#' protocols are not supported for health checks.
 #' @param HealthCheckPort The port the load balancer uses when performing health checks on
-#' targets. The default is `traffic-port`, which is the port on which each
-#' target receives traffic from the load balancer.
+#' targets. If the protocol is HTTP, HTTPS, TCP, TLS, UDP, or TCP\\_UDP, the
+#' default is `traffic-port`, which is the port on which each target
+#' receives traffic from the load balancer. If the protocol is GENEVE, the
+#' default is port 80.
 #' @param HealthCheckEnabled Indicates whether health checks are enabled. If the target type is
 #' `lambda`, health checks are disabled by default but can be enabled. If
 #' the target type is `instance` or `ip`, health checks are always enabled
 #' and cannot be disabled.
-#' @param HealthCheckPath \[HTTP/HTTPS health checks\] The ping path that is the destination on
-#' the targets for health checks. The default is /.
+#' @param HealthCheckPath \[HTTP/HTTPS health checks\] The destination for health checks on the
+#' targets.
+#' 
+#' \[HTTP1 or HTTP2 protocol version\] The ping path. The default is /.
+#' 
+#' \[GRPC protocol version\] The path of a custom health check method with
+#' the format /package.service/method. The default is /AWS.ALB/healthcheck.
 #' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an
-#' individual target. For HTTP and HTTPS health checks, the range is 5–300
-#' seconds. For TCP health checks, the supported values are 10 and 30
-#' seconds. If the target type is `instance` or `ip`, the default is 30
+#' individual target. For TCP health checks, the supported values are 10
+#' and 30 seconds. If the target type is `instance` or `ip`, the default is
+#' 30 seconds. If the target group protocol is GENEVE, the default is 10
 #' seconds. If the target type is `lambda`, the default is 35 seconds.
 #' @param HealthCheckTimeoutSeconds The amount of time, in seconds, during which no response from a target
-#' means a failed health check. For target groups with a protocol of HTTP
-#' or HTTPS, the default is 5 seconds. For target groups with a protocol of
-#' TCP or TLS, this value must be 6 seconds for HTTP health checks and 10
-#' seconds for TCP and HTTPS health checks. If the target type is `lambda`,
-#' the default is 30 seconds.
+#' means a failed health check. For target groups with a protocol of HTTP,
+#' HTTPS, or GENEVE, the default is 5 seconds. For target groups with a
+#' protocol of TCP or TLS, this value must be 6 seconds for HTTP health
+#' checks and 10 seconds for TCP and HTTPS health checks. If the target
+#' type is `lambda`, the default is 30 seconds.
 #' @param HealthyThresholdCount The number of consecutive health checks successes required before
 #' considering an unhealthy target healthy. For target groups with a
 #' protocol of HTTP or HTTPS, the default is 5. For target groups with a
-#' protocol of TCP or TLS, the default is 3. If the target type is
+#' protocol of TCP, TLS, or GENEVE, the default is 3. If the target type is
 #' `lambda`, the default is 5.
 #' @param UnhealthyThresholdCount The number of consecutive health check failures required before
-#' considering a target unhealthy. For target groups with a protocol of
-#' HTTP or HTTPS, the default is 2. For target groups with a protocol of
-#' TCP or TLS, this value must be the same as the healthy threshold count.
-#' If the target type is `lambda`, the default is 2.
-#' @param Matcher \[HTTP/HTTPS health checks\] The HTTP codes to use when checking for a
-#' successful response from a target.
+#' considering a target unhealthy. If the target group protocol is HTTP or
+#' HTTPS, the default is 2. If the target group protocol is TCP or TLS,
+#' this value must be the same as the healthy threshold count. If the
+#' target group protocol is GENEVE, the default is 3. If the target type is
+#' `lambda`, the default is 2.
+#' @param Matcher \[HTTP/HTTPS health checks\] The HTTP or gRPC codes to use when checking
+#' for a successful response from a target.
 #' @param TargetType The type of target that you must specify when registering targets with
 #' this target group. You can't specify targets for a target group using
 #' more than one target type.
 #' 
-#' -   `instance` - Targets are specified by instance ID. This is the
-#'     default value. If the target group protocol is UDP or TCP\\_UDP, the
-#'     target type must be `instance`.
+#' -   `instance` - Register targets by instance ID. This is the default
+#'     value.
 #' 
-#' -   `ip` - Targets are specified by IP address. You can specify IP
-#'     addresses from the subnets of the virtual private cloud (VPC) for
-#'     the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and
+#' -   `ip` - Register targets by IP address. You can specify IP addresses
+#'     from the subnets of the virtual private cloud (VPC) for the target
+#'     group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and
 #'     192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't
 #'     specify publicly routable IP addresses.
 #' 
-#' -   `lambda` - The target groups contains a single Lambda function.
+#' -   `lambda` - Register a single Lambda function as a target.
+#' @param Tags The tags to assign to the target group.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_target_group(
 #'   Name = "string",
-#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP",
+#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+#'   ProtocolVersion = "string",
 #'   Port = 123,
 #'   VpcId = "string",
-#'   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP",
+#'   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
 #'   HealthCheckPort = "string",
 #'   HealthCheckEnabled = TRUE|FALSE,
 #'   HealthCheckPath = "string",
@@ -853,9 +824,16 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions) {
 #'   HealthyThresholdCount = 123,
 #'   UnhealthyThresholdCount = 123,
 #'   Matcher = list(
-#'     HttpCode = "string"
+#'     HttpCode = "string",
+#'     GrpcCode = "string"
 #'   ),
-#'   TargetType = "instance"|"ip"|"lambda"
+#'   TargetType = "instance"|"ip"|"lambda",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -875,14 +853,14 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions) {
 #' @keywords internal
 #'
 #' @rdname elbv2_create_target_group
-elbv2_create_target_group <- function(Name, Protocol = NULL, Port = NULL, VpcId = NULL, HealthCheckProtocol = NULL, HealthCheckPort = NULL, HealthCheckEnabled = NULL, HealthCheckPath = NULL, HealthCheckIntervalSeconds = NULL, HealthCheckTimeoutSeconds = NULL, HealthyThresholdCount = NULL, UnhealthyThresholdCount = NULL, Matcher = NULL, TargetType = NULL) {
+elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = NULL, Port = NULL, VpcId = NULL, HealthCheckProtocol = NULL, HealthCheckPort = NULL, HealthCheckEnabled = NULL, HealthCheckPath = NULL, HealthCheckIntervalSeconds = NULL, HealthCheckTimeoutSeconds = NULL, HealthyThresholdCount = NULL, UnhealthyThresholdCount = NULL, Matcher = NULL, TargetType = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateTargetGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elbv2$create_target_group_input(Name = Name, Protocol = Protocol, Port = Port, VpcId = VpcId, HealthCheckProtocol = HealthCheckProtocol, HealthCheckPort = HealthCheckPort, HealthCheckEnabled = HealthCheckEnabled, HealthCheckPath = HealthCheckPath, HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds = HealthCheckTimeoutSeconds, HealthyThresholdCount = HealthyThresholdCount, UnhealthyThresholdCount = UnhealthyThresholdCount, Matcher = Matcher, TargetType = TargetType)
+  input <- .elbv2$create_target_group_input(Name = Name, Protocol = Protocol, ProtocolVersion = ProtocolVersion, Port = Port, VpcId = VpcId, HealthCheckProtocol = HealthCheckProtocol, HealthCheckPort = HealthCheckPort, HealthCheckEnabled = HealthCheckEnabled, HealthCheckPath = HealthCheckPath, HealthCheckIntervalSeconds = HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds = HealthCheckTimeoutSeconds, HealthyThresholdCount = HealthyThresholdCount, UnhealthyThresholdCount = UnhealthyThresholdCount, Matcher = Matcher, TargetType = TargetType, Tags = Tags)
   output <- .elbv2$create_target_group_output()
   config <- get_config()
   svc <- .elbv2$service(config)
@@ -897,7 +875,7 @@ elbv2_create_target_group <- function(Name, Protocol = NULL, Port = NULL, VpcId 
 #' Deletes the specified listener.
 #' 
 #' Alternatively, your listener is deleted when you delete the load
-#' balancer to which it is attached, using DeleteLoadBalancer.
+#' balancer to which it is attached.
 #'
 #' @usage
 #' elbv2_delete_listener(ListenerArn)
@@ -939,11 +917,12 @@ elbv2_delete_listener <- function(ListenerArn) {
 }
 .elbv2$operations$delete_listener <- elbv2_delete_listener
 
-#' Deletes the specified Application Load Balancer or Network Load Balancer
-#' and its attached listeners
+#' Deletes the specified Application Load Balancer, Network Load Balancer,
+#' or Gateway Load Balancer
 #'
-#' Deletes the specified Application Load Balancer or Network Load Balancer
-#' and its attached listeners.
+#' Deletes the specified Application Load Balancer, Network Load Balancer,
+#' or Gateway Load Balancer. Deleting a load balancer also deletes its
+#' listeners.
 #' 
 #' You can't delete a load balancer if deletion protection is enabled. If
 #' the load balancer does not exist or has already been deleted, the call
@@ -997,6 +976,8 @@ elbv2_delete_load_balancer <- function(LoadBalancerArn) {
 #' Deletes the specified rule
 #'
 #' Deletes the specified rule.
+#' 
+#' You can't delete the default rule.
 #'
 #' @usage
 #' elbv2_delete_rule(RuleArn)
@@ -1044,6 +1025,9 @@ elbv2_delete_rule <- function(RuleArn) {
 #' 
 #' You can delete a target group if it is not referenced by any actions.
 #' Deleting a target group also deletes any associated health checks.
+#' Deleting a target group does not affect its registered targets. For
+#' example, any EC2 instances continue to run until you stop or terminate
+#' them.
 #'
 #' @usage
 #' elbv2_delete_target_group(TargetGroupArn)
@@ -1153,12 +1137,16 @@ elbv2_deregister_targets <- function(TargetGroupArn, Targets) {
 #' Describes the current Elastic Load Balancing resource limits for your
 #' AWS account.
 #' 
-#' For more information, see [Limits for Your Application Load
-#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
-#' in the *Application Load Balancer Guide* or [Limits for Your Network
-#' Load
-#' Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
-#' in the *Network Load Balancers Guide*.
+#' For more information, see the following:
+#' 
+#' -   [Quotas for your Application Load
+#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html)
+#' 
+#' -   [Quotas for your Network Load
+#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html)
+#' 
+#' -   [Quotas for your Gateway Load
+#'     Balancers](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/quotas-limits.html)
 #'
 #' @usage
 #' elbv2_describe_account_limits(Marker, PageSize)
@@ -1206,8 +1194,10 @@ elbv2_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
 #' `IsDefault` set to false).
 #' 
 #' For more information, see [SSL
-#' Certificates](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates)
-#' in the *Application Load Balancers Guide*.
+#' certificates](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#https-listener-certificates)
+#' in the *Application Load Balancers Guide* or [Server
+#' certificates](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#tls-listener-certificate)
+#' in the *Network Load Balancers Guide*.
 #'
 #' @usage
 #' elbv2_describe_listener_certificates(ListenerArn, Marker, PageSize)
@@ -1247,15 +1237,13 @@ elbv2_describe_listener_certificates <- function(ListenerArn, Marker = NULL, Pag
 .elbv2$operations$describe_listener_certificates <- elbv2_describe_listener_certificates
 
 #' Describes the specified listeners or the listeners for the specified
-#' Application Load Balancer or Network Load Balancer
+#' Application Load Balancer, Network Load Balancer, or Gateway Load
+#' Balancer
 #'
 #' Describes the specified listeners or the listeners for the specified
-#' Application Load Balancer or Network Load Balancer. You must specify
-#' either a load balancer or one or more listeners.
-#' 
-#' For an HTTPS or TLS listener, the output includes the default
-#' certificate for the listener. To describe the certificate list for the
-#' listener, use DescribeListenerCertificates.
+#' Application Load Balancer, Network Load Balancer, or Gateway Load
+#' Balancer. You must specify either a load balancer or one or more
+#' listeners.
 #'
 #' @usage
 #' elbv2_describe_listeners(LoadBalancerArn, ListenerArns, Marker,
@@ -1309,17 +1297,25 @@ elbv2_describe_listeners <- function(LoadBalancerArn = NULL, ListenerArns = NULL
 }
 .elbv2$operations$describe_listeners <- elbv2_describe_listeners
 
-#' Describes the attributes for the specified Application Load Balancer or
-#' Network Load Balancer
+#' Describes the attributes for the specified Application Load Balancer,
+#' Network Load Balancer, or Gateway Load Balancer
 #'
-#' Describes the attributes for the specified Application Load Balancer or
-#' Network Load Balancer.
+#' Describes the attributes for the specified Application Load Balancer,
+#' Network Load Balancer, or Gateway Load Balancer.
 #' 
-#' For more information, see [Load Balancer
-#' Attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes)
-#' in the *Application Load Balancers Guide* or [Load Balancer
-#' Attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes)
-#' in the *Network Load Balancers Guide*.
+#' For more information, see the following:
+#' 
+#' -   [Load balancer
+#'     attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes)
+#'     in the *Application Load Balancers Guide*
+#' 
+#' -   [Load balancer
+#'     attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html#load-balancer-attributes)
+#'     in the *Network Load Balancers Guide*
+#' 
+#' -   [Load balancer
+#'     attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-load-balancers.html#load-balancer-attributes)
+#'     in the *Gateway Load Balancers Guide*
 #'
 #' @usage
 #' elbv2_describe_load_balancer_attributes(LoadBalancerArn)
@@ -1364,10 +1360,6 @@ elbv2_describe_load_balancer_attributes <- function(LoadBalancerArn) {
 #' Describes the specified load balancers or all of your load balancers
 #'
 #' Describes the specified load balancers or all of your load balancers.
-#' 
-#' To describe the listeners for a load balancer, use DescribeListeners. To
-#' describe the attributes for a load balancer, use
-#' DescribeLoadBalancerAttributes.
 #'
 #' @usage
 #' elbv2_describe_load_balancers(LoadBalancerArns, Names, Marker, PageSize)
@@ -1486,8 +1478,10 @@ elbv2_describe_rules <- function(ListenerArn = NULL, RuleArns = NULL, Marker = N
 #' negotiation.
 #' 
 #' For more information, see [Security
-#' Policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
-#' in the *Application Load Balancers Guide*.
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+#' in the *Application Load Balancers Guide* or [Security
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies)
+#' in the *Network Load Balancers Guide*.
 #'
 #' @usage
 #' elbv2_describe_ssl_policies(Names, Marker, PageSize)
@@ -1538,11 +1532,12 @@ elbv2_describe_ssl_policies <- function(Names = NULL, Marker = NULL, PageSize = 
 }
 .elbv2$operations$describe_ssl_policies <- elbv2_describe_ssl_policies
 
-#' Describes the tags for the specified resources
+#' Describes the tags for the specified Elastic Load Balancing resources
 #'
-#' Describes the tags for the specified resources. You can describe the
-#' tags for one or more Application Load Balancers, Network Load Balancers,
-#' and target groups.
+#' Describes the tags for the specified Elastic Load Balancing resources.
+#' You can describe the tags for one or more Application Load Balancers,
+#' Network Load Balancers, Gateway Load Balancers, target groups,
+#' listeners, or rules.
 #'
 #' @usage
 #' elbv2_describe_tags(ResourceArns)
@@ -1593,11 +1588,19 @@ elbv2_describe_tags <- function(ResourceArns) {
 #'
 #' Describes the attributes for the specified target group.
 #' 
-#' For more information, see [Target Group
-#' Attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes)
-#' in the *Application Load Balancers Guide* or [Target Group
-#' Attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes)
-#' in the *Network Load Balancers Guide*.
+#' For more information, see the following:
+#' 
+#' -   [Target group
+#'     attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes)
+#'     in the *Application Load Balancers Guide*
+#' 
+#' -   [Target group
+#'     attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#target-group-attributes)
+#'     in the *Network Load Balancers Guide*
+#' 
+#' -   [Target group
+#'     attributes](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html#target-group-attributes)
+#'     in the *Gateway Load Balancers Guide*
 #'
 #' @usage
 #' elbv2_describe_target_group_attributes(TargetGroupArn)
@@ -1646,10 +1649,6 @@ elbv2_describe_target_group_attributes <- function(TargetGroupArn) {
 #' one of the following to filter the results: the ARN of the load
 #' balancer, the names of one or more target groups, or the ARNs of one or
 #' more target groups.
-#' 
-#' To describe the targets for a target group, use DescribeTargetHealth. To
-#' describe the attributes of a target group, use
-#' DescribeTargetGroupAttributes.
 #'
 #' @usage
 #' elbv2_describe_target_groups(LoadBalancerArn, TargetGroupArns, Names,
@@ -1792,62 +1791,25 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #'   Certificates, DefaultActions, AlpnPolicy)
 #'
 #' @param ListenerArn &#91;required&#93; The Amazon Resource Name (ARN) of the listener.
-#' @param Port The port for connections from clients to the load balancer.
+#' @param Port The port for connections from clients to the load balancer. You cannot
+#' specify a port for a Gateway Load Balancer.
 #' @param Protocol The protocol for connections from clients to the load balancer.
 #' Application Load Balancers support the HTTP and HTTPS protocols. Network
-#' Load Balancers support the TCP, TLS, UDP, and TCP\\_UDP protocols.
+#' Load Balancers support the TCP, TLS, UDP, and TCP\\_UDP protocols. You
+#' can’t change the protocol to UDP or TCP\\_UDP if dual-stack mode is
+#' enabled. You cannot specify a protocol for a Gateway Load Balancer.
 #' @param SslPolicy \[HTTPS and TLS listeners\] The security policy that defines which
-#' protocols and ciphers are supported. The following are the possible
-#' values:
-#' 
-#' -   `ELBSecurityPolicy-2016-08`
-#' 
-#' -   `ELBSecurityPolicy-TLS-1-0-2015-04`
-#' 
-#' -   `ELBSecurityPolicy-TLS-1-1-2017-01`
-#' 
-#' -   `ELBSecurityPolicy-TLS-1-2-2017-01`
-#' 
-#' -   `ELBSecurityPolicy-TLS-1-2-Ext-2018-06`
-#' 
-#' -   `ELBSecurityPolicy-FS-2018-06`
-#' 
-#' -   `ELBSecurityPolicy-FS-1-1-2019-08`
-#' 
-#' -   `ELBSecurityPolicy-FS-1-2-2019-08`
-#' 
-#' -   `ELBSecurityPolicy-FS-1-2-Res-2019-08`
+#' protocols and ciphers are supported.
 #' 
 #' For more information, see [Security
-#' Policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
-#' in the *Application Load Balancers Guide* and [Security
-#' Policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies)
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+#' in the *Application Load Balancers Guide* or [Security
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies)
 #' in the *Network Load Balancers Guide*.
 #' @param Certificates \[HTTPS and TLS listeners\] The default certificate for the listener.
 #' You must provide exactly one certificate. Set `CertificateArn` to the
 #' certificate ARN but do not set `IsDefault`.
-#' 
-#' To create a certificate list, use AddListenerCertificates.
-#' @param DefaultActions The actions for the default rule. The rule must include one forward
-#' action or one or more fixed-response actions.
-#' 
-#' If the action type is `forward`, you specify one or more target groups.
-#' The protocol of the target group must be HTTP or HTTPS for an
-#' Application Load Balancer. The protocol of the target group must be TCP,
-#' TLS, UDP, or TCP\\_UDP for a Network Load Balancer.
-#' 
-#' \[HTTPS listeners\] If the action type is `authenticate-oidc`, you
-#' authenticate users through an identity provider that is OpenID Connect
-#' (OIDC) compliant.
-#' 
-#' \[HTTPS listeners\] If the action type is `authenticate-cognito`, you
-#' authenticate users through the user pools supported by Amazon Cognito.
-#' 
-#' \[Application Load Balancer\] If the action type is `redirect`, you
-#' redirect specified client requests from one URL to another.
-#' 
-#' \[Application Load Balancer\] If the action type is `fixed-response`,
-#' you drop specified client requests and return a custom HTTP response.
+#' @param DefaultActions The actions for the default rule.
 #' @param AlpnPolicy \[TLS listeners\] The name of the Application-Layer Protocol Negotiation
 #' (ALPN) policy. You can specify one policy name. The following are the
 #' possible values:
@@ -1863,7 +1825,7 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #' -   `None`
 #' 
 #' For more information, see [ALPN
-#' Policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies)
+#' policies](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies)
 #' in the *Network Load Balancers Guide*.
 #'
 #' @section Request syntax:
@@ -1871,7 +1833,7 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 #' svc$modify_listener(
 #'   ListenerArn = "string",
 #'   Port = 123,
-#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP",
+#'   Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
 #'   SslPolicy = "string",
 #'   Certificates = list(
 #'     list(
@@ -1991,10 +1953,10 @@ elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, Ssl
 .elbv2$operations$modify_listener <- elbv2_modify_listener
 
 #' Modifies the specified attributes of the specified Application Load
-#' Balancer or Network Load Balancer
+#' Balancer, Network Load Balancer, or Gateway Load Balancer
 #'
 #' Modifies the specified attributes of the specified Application Load
-#' Balancer or Network Load Balancer.
+#' Balancer, Network Load Balancer, or Gateway Load Balancer.
 #' 
 #' If any of the specified attributes can't be modified as requested, the
 #' call fails. Any existing attributes that you do not modify retain their
@@ -2096,38 +2058,13 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 #' To add an item to a list, remove an item from a list, or update an item
 #' in a list, you must provide the entire list. For example, to add an
 #' action, specify a list with the current actions plus the new action.
-#' 
-#' To modify the actions for the default rule, use ModifyListener.
 #'
 #' @usage
 #' elbv2_modify_rule(RuleArn, Conditions, Actions)
 #'
 #' @param RuleArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule.
-#' @param Conditions The conditions. Each rule can include zero or one of the following
-#' conditions: `http-request-method`, `host-header`, `path-pattern`, and
-#' `source-ip`, and zero or more of the following conditions: `http-header`
-#' and `query-string`.
-#' @param Actions The actions. Each rule must include exactly one of the following types
-#' of actions: `forward`, `fixed-response`, or `redirect`, and it must be
-#' the last action to be performed.
-#' 
-#' If the action type is `forward`, you specify one or more target groups.
-#' The protocol of the target group must be HTTP or HTTPS for an
-#' Application Load Balancer. The protocol of the target group must be TCP,
-#' TLS, UDP, or TCP\\_UDP for a Network Load Balancer.
-#' 
-#' \[HTTPS listeners\] If the action type is `authenticate-oidc`, you
-#' authenticate users through an identity provider that is OpenID Connect
-#' (OIDC) compliant.
-#' 
-#' \[HTTPS listeners\] If the action type is `authenticate-cognito`, you
-#' authenticate users through the user pools supported by Amazon Cognito.
-#' 
-#' \[Application Load Balancer\] If the action type is `redirect`, you
-#' redirect specified client requests from one URL to another.
-#' 
-#' \[Application Load Balancer\] If the action type is `fixed-response`,
-#' you drop specified client requests and return a custom HTTP response.
+#' @param Conditions The conditions.
+#' @param Actions The actions.
 #'
 #' @section Request syntax:
 #' ```
@@ -2279,8 +2216,6 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #'
 #' Modifies the health checks used when evaluating the health state of the
 #' targets in the specified target group.
-#' 
-#' To monitor the health of the targets, use DescribeTargetHealth.
 #'
 #' @usage
 #' elbv2_modify_target_group(TargetGroupArn, HealthCheckProtocol,
@@ -2291,19 +2226,23 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param HealthCheckProtocol The protocol the load balancer uses when performing health checks on
 #' targets. The TCP protocol is supported for health checks only if the
-#' protocol of the target group is TCP, TLS, UDP, or TCP\\_UDP. The TLS,
-#' UDP, and TCP\\_UDP protocols are not supported for health checks.
+#' protocol of the target group is TCP, TLS, UDP, or TCP\\_UDP. The GENEVE,
+#' TLS, UDP, and TCP\\_UDP protocols are not supported for health checks.
 #' 
 #' With Network Load Balancers, you can't modify this setting.
 #' @param HealthCheckPort The port the load balancer uses when performing health checks on
 #' targets.
-#' @param HealthCheckPath \[HTTP/HTTPS health checks\] The ping path that is the destination for
-#' the health check request.
+#' @param HealthCheckPath \[HTTP/HTTPS health checks\] The destination for health checks on the
+#' targets.
+#' 
+#' \[HTTP1 or HTTP2 protocol version\] The ping path. The default is /.
+#' 
+#' \[GRPC protocol version\] The path of a custom health check method with
+#' the format /package.service/method. The default is /AWS.ALB/healthcheck.
 #' @param HealthCheckEnabled Indicates whether health checks are enabled.
 #' @param HealthCheckIntervalSeconds The approximate amount of time, in seconds, between health checks of an
-#' individual target. For Application Load Balancers, the range is 5 to 300
-#' seconds. For Network Load Balancers, the supported values are 10 or 30
-#' seconds.
+#' individual target. For TCP health checks, the supported values are 10 or
+#' 30 seconds.
 #' 
 #' With Network Load Balancers, you can't modify this setting.
 #' @param HealthCheckTimeoutSeconds \[HTTP/HTTPS health checks\] The amount of time, in seconds, during
@@ -2313,10 +2252,10 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' @param HealthyThresholdCount The number of consecutive health checks successes required before
 #' considering an unhealthy target healthy.
 #' @param UnhealthyThresholdCount The number of consecutive health check failures required before
-#' considering the target unhealthy. For Network Load Balancers, this value
-#' must be the same as the healthy threshold count.
-#' @param Matcher \[HTTP/HTTPS health checks\] The HTTP codes to use when checking for a
-#' successful response from a target.
+#' considering the target unhealthy. For target groups with a protocol of
+#' TCP or TLS, this value must be the same as the healthy threshold count.
+#' @param Matcher \[HTTP/HTTPS health checks\] The HTTP or gRPC codes to use when checking
+#' for a successful response from a target.
 #' 
 #' With Network Load Balancers, you can't modify this setting.
 #'
@@ -2324,7 +2263,7 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' ```
 #' svc$modify_target_group(
 #'   TargetGroupArn = "string",
-#'   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP",
+#'   HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
 #'   HealthCheckPort = "string",
 #'   HealthCheckPath = "string",
 #'   HealthCheckEnabled = TRUE|FALSE,
@@ -2333,7 +2272,8 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #'   HealthyThresholdCount = 123,
 #'   UnhealthyThresholdCount = 123,
 #'   Matcher = list(
-#'     HttpCode = "string"
+#'     HttpCode = "string",
+#'     GrpcCode = "string"
 #'   )
 #' )
 #' ```
@@ -2444,18 +2384,12 @@ elbv2_modify_target_group_attributes <- function(TargetGroupArn, Attributes) {
 #' ID if they have the following instance types: C1, CC1, CC2, CG1, CG2,
 #' CR1, CS1, G1, G2, HI1, HS1, M1, M2, M3, and T1. You can register
 #' instances of these types by IP address.
-#' 
-#' To remove a target from a target group, use DeregisterTargets.
 #'
 #' @usage
 #' elbv2_register_targets(TargetGroupArn, Targets)
 #'
 #' @param TargetGroupArn &#91;required&#93; The Amazon Resource Name (ARN) of the target group.
 #' @param Targets &#91;required&#93; The targets.
-#' 
-#' To register a target by instance ID, specify the instance ID. To
-#' register a target by IP address, specify the IP address. To register a
-#' Lambda function, specify the ARN of the Lambda function.
 #'
 #' @section Request syntax:
 #' ```
@@ -2530,12 +2464,6 @@ elbv2_register_targets <- function(TargetGroupArn, Targets) {
 #'
 #' Removes the specified certificate from the certificate list for the
 #' specified HTTPS or TLS listener.
-#' 
-#' You can't remove the default certificate for a listener. To replace the
-#' default certificate, call ModifyListener.
-#' 
-#' To list the certificates for your listener, use
-#' DescribeListenerCertificates.
 #'
 #' @usage
 #' elbv2_remove_listener_certificates(ListenerArn, Certificates)
@@ -2578,12 +2506,12 @@ elbv2_remove_listener_certificates <- function(ListenerArn, Certificates) {
 .elbv2$operations$remove_listener_certificates <- elbv2_remove_listener_certificates
 
 #' Removes the specified tags from the specified Elastic Load Balancing
-#' resource
+#' resources
 #'
 #' Removes the specified tags from the specified Elastic Load Balancing
-#' resource.
-#' 
-#' To list the current tags for your resources, use DescribeTags.
+#' resources. You can remove the tags for one or more Application Load
+#' Balancers, Network Load Balancers, Gateway Load Balancers, target
+#' groups, listeners, or rules.
 #'
 #' @usage
 #' elbv2_remove_tags(ResourceArns, TagKeys)
@@ -2650,7 +2578,8 @@ elbv2_remove_tags <- function(ResourceArns, TagKeys) {
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #' @param IpAddressType &#91;required&#93; The IP address type. The possible values are `ipv4` (for IPv4 addresses)
 #' and `dualstack` (for IPv4 and IPv6 addresses). Internal load balancers
-#' must use `ipv4`. Network Load Balancers must use `ipv4`.
+#' must use `ipv4`. You can’t specify `dualstack` for a load balancer with
+#' a UDP or TCP\\_UDP listener.
 #'
 #' @section Request syntax:
 #' ```
@@ -2745,7 +2674,8 @@ elbv2_set_rule_priorities <- function(RulePriorities) {
 #' Load Balancer. The specified security groups override the previously
 #' associated security groups.
 #' 
-#' You can't specify a security group for a Network Load Balancer.
+#' You can't specify a security group for a Network Load Balancer or
+#' Gateway Load Balancer.
 #'
 #' @usage
 #' elbv2_set_security_groups(LoadBalancerArn, SecurityGroups)
@@ -2796,23 +2726,35 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
 .elbv2$operations$set_security_groups <- elbv2_set_security_groups
 
 #' Enables the Availability Zones for the specified public subnets for the
-#' specified load balancer
+#' specified Application Load Balancer or Network Load Balancer
 #'
 #' Enables the Availability Zones for the specified public subnets for the
-#' specified load balancer. The specified subnets replace the previously
-#' enabled subnets.
+#' specified Application Load Balancer or Network Load Balancer. The
+#' specified subnets replace the previously enabled subnets.
 #' 
 #' When you specify subnets for a Network Load Balancer, you must include
 #' all subnets that were enabled previously, with their existing
 #' configurations, plus any additional subnets.
 #'
 #' @usage
-#' elbv2_set_subnets(LoadBalancerArn, Subnets, SubnetMappings)
+#' elbv2_set_subnets(LoadBalancerArn, Subnets, SubnetMappings,
+#'   IpAddressType)
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
-#' @param Subnets The IDs of the public subnets. You must specify subnets from at least
-#' two Availability Zones. You can specify only one subnet per Availability
-#' Zone. You must specify either subnets or subnet mappings.
+#' @param Subnets The IDs of the public subnets. You can specify only one subnet per
+#' Availability Zone. You must specify either subnets or subnet mappings.
+#' 
+#' \[Application Load Balancers\] You must specify subnets from at least
+#' two Availability Zones.
+#' 
+#' \[Application Load Balancers on Outposts\] You must specify one Outpost
+#' subnet.
+#' 
+#' \[Application Load Balancers on Local Zones\] You can specify subnets
+#' from one or more Local Zones.
+#' 
+#' \[Network Load Balancers\] You can specify subnets from one or more
+#' Availability Zones.
 #' @param SubnetMappings The IDs of the public subnets. You can specify only one subnet per
 #' Availability Zone. You must specify either subnets or subnet mappings.
 #' 
@@ -2820,11 +2762,23 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
 #' two Availability Zones. You cannot specify Elastic IP addresses for your
 #' subnets.
 #' 
+#' \[Application Load Balancers on Outposts\] You must specify one Outpost
+#' subnet.
+#' 
+#' \[Application Load Balancers on Local Zones\] You can specify subnets
+#' from one or more Local Zones.
+#' 
 #' \[Network Load Balancers\] You can specify subnets from one or more
-#' Availability Zones. If you need static IP addresses for your
-#' internet-facing load balancer, you can specify one Elastic IP address
-#' per subnet. For internal load balancers, you can specify one private IP
-#' address per subnet from the IPv4 range of the subnet.
+#' Availability Zones. You can specify one Elastic IP address per subnet if
+#' you need static IP addresses for your internet-facing load balancer. For
+#' internal load balancers, you can specify one private IP address per
+#' subnet from the IPv4 range of the subnet. For internet-facing load
+#' balancer, you can specify one IPv6 address per subnet.
+#' @param IpAddressType \[Network Load Balancers\] The type of IP addresses used by the subnets
+#' for your load balancer. The possible values are `ipv4` (for IPv4
+#' addresses) and `dualstack` (for IPv4 and IPv6 addresses). You can’t
+#' specify `dualstack` for a load balancer with a UDP or TCP\\_UDP listener.
+#' Internal load balancers must use `ipv4`.
 #'
 #' @section Request syntax:
 #' ```
@@ -2837,9 +2791,11 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
 #'     list(
 #'       SubnetId = "string",
 #'       AllocationId = "string",
-#'       PrivateIPv4Address = "string"
+#'       PrivateIPv4Address = "string",
+#'       IPv6Address = "string"
 #'     )
-#'   )
+#'   ),
+#'   IpAddressType = "ipv4"|"dualstack"
 #' )
 #' ```
 #'
@@ -2859,14 +2815,14 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
 #' @keywords internal
 #'
 #' @rdname elbv2_set_subnets
-elbv2_set_subnets <- function(LoadBalancerArn, Subnets = NULL, SubnetMappings = NULL) {
+elbv2_set_subnets <- function(LoadBalancerArn, Subnets = NULL, SubnetMappings = NULL, IpAddressType = NULL) {
   op <- new_operation(
     name = "SetSubnets",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elbv2$set_subnets_input(LoadBalancerArn = LoadBalancerArn, Subnets = Subnets, SubnetMappings = SubnetMappings)
+  input <- .elbv2$set_subnets_input(LoadBalancerArn = LoadBalancerArn, Subnets = Subnets, SubnetMappings = SubnetMappings, IpAddressType = IpAddressType)
   output <- .elbv2$set_subnets_output()
   config <- get_config()
   svc <- .elbv2$service(config)

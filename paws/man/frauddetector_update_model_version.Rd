@@ -5,37 +5,42 @@
 \title{Updates a model version}
 \usage{
 frauddetector_update_model_version(modelId, modelType,
-  modelVersionNumber, description, status)
+  majorVersionNumber, externalEventsDetail, tags)
 }
 \arguments{
 \item{modelId}{[required] The model ID.}
 
 \item{modelType}{[required] The model type.}
 
-\item{modelVersionNumber}{[required] The model version.}
+\item{majorVersionNumber}{[required] The major version number.}
 
-\item{description}{[required] The model description.}
+\item{externalEventsDetail}{The event details.}
 
-\item{status}{[required] The new model status.}
+\item{tags}{A collection of key and value pairs.}
 }
 \description{
-Updates a model version. You can update the description and status
-attributes using this action. You can perform the following status
-updates:
-}
-\details{
-\enumerate{
-\item Change the \code{TRAINING_COMPLETE} status to \code{ACTIVE}
-\item Change \code{ACTIVE} back to \code{TRAINING_COMPLETE}
-}
+Updates a model version. Updating a model version retrains an existing
+model version using updated training data and produces a new minor
+version of the model. You can update the training data set location and
+data access role attributes using this action. This action creates and
+trains a new minor version of the model, for example version 1.01, 1.02,
+1.03.
 }
 \section{Request syntax}{
 \preformatted{svc$update_model_version(
   modelId = "string",
   modelType = "ONLINE_FRAUD_INSIGHTS",
-  modelVersionNumber = "string",
-  description = "string",
-  status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETE"|"ACTIVATE_REQUESTED"|"ACTIVATE_IN_PROGRESS"|"ACTIVE"|"INACTIVATE_IN_PROGRESS"|"INACTIVE"|"ERROR"
+  majorVersionNumber = "string",
+  externalEventsDetail = list(
+    dataLocation = "string",
+    dataAccessRoleArn = "string"
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

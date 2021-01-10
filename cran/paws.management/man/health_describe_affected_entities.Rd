@@ -34,6 +34,9 @@ unknown, include at least one entity indicating this.
 \details{
 At least one event ARN is required. Results are sorted by the
 \code{lastUpdatedTime} of the entity, starting with the most recent.
+
+This API operation uses pagination. Specify the \code{nextToken} parameter in
+the next request to return more results.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_affected_entities(

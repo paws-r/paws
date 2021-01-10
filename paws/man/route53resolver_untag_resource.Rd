@@ -11,12 +11,12 @@ route53resolver_untag_resource(ResourceArn, TagKeys)
 tags from. To get the ARN for a resource, use the applicable \code{Get} or
 \code{List} command:
 \itemize{
-\item GetResolverEndpoint
-\item GetResolverRule
-\item GetResolverRuleAssociation
-\item ListResolverEndpoints
-\item ListResolverRuleAssociations
-\item ListResolverRules
+\item \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverEndpoint.html}{GetResolverEndpoint}
+\item \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverRule.html}{GetResolverRule}
+\item \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverRuleAssociation.html}{GetResolverRuleAssociation}
+\item \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverEndpoints.html}{ListResolverEndpoints}
+\item \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRuleAssociations.html}{ListResolverRuleAssociations}
+\item \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRules.html}{ListResolverRules}
 }}
 
 \item{TagKeys}{[required] The tags that you want to remove to the specified resource.}

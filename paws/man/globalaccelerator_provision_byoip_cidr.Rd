@@ -22,12 +22,9 @@ Provisions an IP address range to use with your AWS resources through
 bring your own IP addresses (BYOIP) and creates a corresponding address
 pool. After the address range is provisioned, it is ready to be
 advertised using
-\href{https://docs.aws.amazon.com/global-accelerator/latest/api/AdvertiseByoipCidr.html}{AdvertiseByoipCidr}.
+\href{https://docs.aws.amazon.com/global-accelerator/latest/api/}{AdvertiseByoipCidr}.
 }
 \details{
-To see an AWS CLI example of provisioning an address range for BYOIP,
-scroll down to \strong{Example}.
-
 For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html}{Bring Your Own IP Addresses (BYOIP)}
 in the \emph{AWS Global Accelerator Developer Guide}.
 }

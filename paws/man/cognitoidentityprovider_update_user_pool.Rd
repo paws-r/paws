@@ -67,7 +67,8 @@ recovery method where SMS is preferred over email.}
 }
 \description{
 Updates the specified user pool with the specified attributes. You can
-get a list of the current user pool settings with .
+get a list of the current user pool settings using
+\href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeUserPool.html}{DescribeUserPool}.
 }
 \details{
 If you don't provide a value for an attribute, it will be set to the
@@ -96,7 +97,16 @@ default value.
     CreateAuthChallenge = "string",
     VerifyAuthChallengeResponse = "string",
     PreTokenGeneration = "string",
-    UserMigration = "string"
+    UserMigration = "string",
+    CustomSMSSender = list(
+      LambdaVersion = "V1_0",
+      LambdaArn = "string"
+    ),
+    CustomEmailSender = list(
+      LambdaVersion = "V1_0",
+      LambdaArn = "string"
+    ),
+    KMSKeyID = "string"
   ),
   AutoVerifiedAttributes = list(
     "phone_number"|"email"

@@ -20,7 +20,7 @@ NULL
 #' your data is rarely retrieved. If your application requires fast or
 #' frequent access to your data, consider using Amazon S3. For more
 #' information, see [Amazon Simple Storage Service (Amazon
-#' S3)](http://aws.amazon.com/s3/).
+#' S3)](https://aws.amazon.com/s3/).
 #' 
 #' You can store any kind of data in any format. There is no maximum limit
 #' on the total amount of data you can store in Glacier.

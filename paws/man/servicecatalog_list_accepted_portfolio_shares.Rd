@@ -23,8 +23,8 @@ results, use null.}
 \item{PortfolioShareType}{The type of shared portfolios to list. The default is to list imported
 portfolios.
 \itemize{
-\item \code{AWS_ORGANIZATIONS} - List portfolios shared by the master account
-of your organization
+\item \code{AWS_ORGANIZATIONS} - List portfolios shared by the management
+account of your organization
 \item \code{AWS_SERVICECATALOG} - List default portfolios
 \item \code{IMPORTED} - List imported portfolios
 }}

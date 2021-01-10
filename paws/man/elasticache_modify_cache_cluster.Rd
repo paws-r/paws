@@ -242,7 +242,7 @@ length
 }
 
 For more information, see AUTH password at
-\href{http://redis.io/commands/AUTH}{AUTH}.}
+\href{https://redis.io/commands/AUTH}{AUTH}.}
 
 \item{AuthTokenUpdateStrategy}{Specifies the strategy to use to update the AUTH token. This parameter
 must be specified with the \code{auth-token} parameter. Possible values:
@@ -286,7 +286,7 @@ parameters and the new values.
   SnapshotWindow = "string",
   CacheNodeType = "string",
   AuthToken = "string",
-  AuthTokenUpdateStrategy = "SET"|"ROTATE"
+  AuthTokenUpdateStrategy = "SET"|"ROTATE"|"DELETE"
 )
 }
 }

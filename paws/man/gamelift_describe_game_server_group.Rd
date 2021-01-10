@@ -2,28 +2,32 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_describe_game_server_group}
 \alias{gamelift_describe_game_server_group}
-\title{This action is part of Amazon GameLift FleetIQ with game server groups,
-which is in preview release and is subject to change}
+\title{This operation is used with the Amazon GameLift FleetIQ solution and
+game server groups}
 \usage{
 gamelift_describe_game_server_group(GameServerGroupName)
 }
 \arguments{
-\item{GameServerGroupName}{[required] The unique identifier for the game server group being requested. Use
-either the GameServerGroup name or ARN value.}
+\item{GameServerGroupName}{[required] A unique identifier for the game server group. Use either the
+GameServerGroup name or ARN value.}
 }
 \description{
-\strong{This action is part of Amazon GameLift FleetIQ with game server
-groups, which is in preview release and is subject to change.}
+\strong{This operation is used with the Amazon GameLift FleetIQ solution and
+game server groups.}
 }
 \details{
-Retrieves information on a game server group.
+Retrieves information on a game server group. This operation returns
+only properties related to GameLift FleetIQ. To view or update
+properties for the corresponding Auto Scaling group, such as launch
+template, auto scaling policies, and maximum/minimum group size, access
+the Auto Scaling group directly.
 
 To get attributes for a game server group, provide a group name or ARN
 value. If successful, a GameServerGroup object is returned.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html}{GameLift FleetIQ Guide}
+\href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html}{GameLift FleetIQ Guide}
 
 \strong{Related operations}
 \itemize{
@@ -34,6 +38,7 @@ value. If successful, a GameServerGroup object is returned.
 \item DeleteGameServerGroup
 \item ResumeGameServerGroup
 \item SuspendGameServerGroup
+\item DescribeGameServerInstances
 }
 }
 \section{Request syntax}{

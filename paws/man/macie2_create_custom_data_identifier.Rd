@@ -24,12 +24,12 @@ actions that they're allowed to perform in Amazon Macie.}
 exclude from the results. If the text matched by the regular expression
 is the same as any string in this array, Amazon Macie ignores it. The
 array can contain as many as 10 ignore words. Each ignore word can
-contain 4 - 90 characters.}
+contain 4 - 90 characters. Ignore words are case sensitive.}
 
 \item{keywords}{An array that lists specific character sequences (keywords), one of
 which must be within proximity (maximumMatchDistance) of the regular
 expression to match. The array can contain as many as 50 keywords. Each
-keyword can contain 4 - 90 characters.}
+keyword can contain 4 - 90 characters. Keywords aren't case sensitive.}
 
 \item{maximumMatchDistance}{The maximum number of characters that can exist between text that
 matches the regex pattern and the character sequences specified by the
@@ -52,9 +52,9 @@ expression can contain as many as 512 characters.}
 custom data identifier.
 
 A custom data identifier can have a maximum of 50 tags. Each tag
-consists of a required tag key and an associated tag value. The maximum
-length of a tag key is 128 characters. The maximum length of a tag value
-is 256 characters.}
+consists of a tag key and an associated tag value. The maximum length of
+a tag key is 128 characters. The maximum length of a tag value is 256
+characters.}
 }
 \description{
 Creates and defines the criteria and other settings for a custom data

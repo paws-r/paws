@@ -10,11 +10,20 @@ autoscalingplans_update_scaling_plan(ScalingPlanName,
 \arguments{
 \item{ScalingPlanName}{[required] The name of the scaling plan.}
 
-\item{ScalingPlanVersion}{[required] The version number of the scaling plan.}
+\item{ScalingPlanVersion}{[required] The version number of the scaling plan. The only valid value is \code{1}.
+Currently, you cannot have multiple scaling plan versions.}
 
-\item{ApplicationSource}{A CloudFormation stack or set of tags.}
+\item{ApplicationSource}{A CloudFormation stack or set of tags.
 
-\item{ScalingInstructions}{The scaling instructions.}
+For more information, see
+\href{https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ApplicationSource.html}{ApplicationSource}
+in the \emph{AWS Auto Scaling API Reference}.}
+
+\item{ScalingInstructions}{The scaling instructions.
+
+For more information, see
+\href{https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html}{ScalingInstruction}
+in the \emph{AWS Auto Scaling API Reference}.}
 }
 \description{
 Updates the specified scaling plan.

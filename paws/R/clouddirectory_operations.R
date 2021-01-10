@@ -2506,7 +2506,7 @@ clouddirectory_list_incoming_typed_links <- function(DirectoryArn, ObjectReferen
 #' @param MaxResults The maximum number of objects in a single page to retrieve from the
 #' index during a request. For more information, see [Amazon Cloud
 #' Directory
-#' Limits](http://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html).
+#' Limits](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/limits.html).
 #' @param NextToken The pagination token.
 #' @param ConsistencyLevel The consistency level to execute the request at.
 #'

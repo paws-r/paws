@@ -11,9 +11,7 @@ iotsitewise_delete_gateway(gatewayId)
 }
 \description{
 Deletes a gateway from AWS IoT SiteWise. When you delete a gateway, some
-of the gateway's files remain in your gateway's file system. For more
-information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/data-retention.html}{Data retention}
-in the \emph{AWS IoT SiteWise User Guide}.
+of the gateway's files remain in your gateway's file system.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_gateway(

@@ -2,10 +2,12 @@
 % Please edit documentation in R/elbv2_operations.R
 \name{elbv2_create_load_balancer}
 \alias{elbv2_create_load_balancer}
-\title{Creates an Application Load Balancer or a Network Load Balancer}
+\title{Creates an Application Load Balancer, Network Load Balancer, or Gateway
+Load Balancer}
 \usage{
 elbv2_create_load_balancer(Name, Subnets, SubnetMappings,
-  SecurityGroups, Scheme, Tags, Type, IpAddressType)
+  SecurityGroups, Scheme, Tags, Type, IpAddressType,
+  CustomerOwnedIpv4Pool)
 }
 \arguments{
 \item{Name}{[required] The name of the load balancer.
@@ -21,7 +23,16 @@ Availability Zone. You must specify either subnets or subnet mappings.
 [Application Load Balancers] You must specify subnets from at least
 two Availability Zones.
 
+[Application Load Balancers on Outposts] You must specify one Outpost
+subnet.
+
+[Application Load Balancers on Local Zones] You can specify subnets
+from one or more Local Zones.
+
 [Network Load Balancers] You can specify subnets from one or more
+Availability Zones.
+
+[Gateway Load Balancers] You can specify subnets from one or more
 Availability Zones.}
 
 \item{SubnetMappings}{The IDs of the public subnets. You can specify only one subnet per
@@ -31,11 +42,22 @@ Availability Zone. You must specify either subnets or subnet mappings.
 two Availability Zones. You cannot specify Elastic IP addresses for your
 subnets.
 
+[Application Load Balancers on Outposts] You must specify one Outpost
+subnet.
+
+[Application Load Balancers on Local Zones] You can specify subnets
+from one or more Local Zones.
+
 [Network Load Balancers] You can specify subnets from one or more
 Availability Zones. You can specify one Elastic IP address per subnet if
 you need static IP addresses for your internet-facing load balancer. For
 internal load balancers, you can specify one private IP address per
-subnet from the IPv4 range of the subnet.}
+subnet from the IPv4 range of the subnet. For internet-facing load
+balancer, you can specify one IPv6 address per subnet.
+
+[Gateway Load Balancers] You can specify subnets from one or more
+Availability Zones. You cannot specify Elastic IP addresses for your
+subnets.}
 
 \item{SecurityGroups}{[Application Load Balancers] The IDs of the security groups for the
 load balancer.}
@@ -51,41 +73,36 @@ private IP addresses of the nodes. Therefore, internal load balancers
 can route requests only from clients with access to the VPC for the load
 balancer.
 
-The default is an Internet-facing load balancer.}
+The default is an Internet-facing load balancer.
 
-\item{Tags}{One or more tags to assign to the load balancer.}
+You cannot specify a scheme for a Gateway Load Balancer.}
+
+\item{Tags}{The tags to assign to the load balancer.}
 
 \item{Type}{The type of load balancer. The default is \code{application}.}
 
-\item{IpAddressType}{[Application Load Balancers] The type of IP addresses used by the
-subnets for your load balancer. The possible values are \code{ipv4} (for IPv4
-addresses) and \code{dualstack} (for IPv4 and IPv6 addresses). Internal load
-balancers must use \code{ipv4}.}
+\item{IpAddressType}{The type of IP addresses used by the subnets for your load balancer. The
+possible values are \code{ipv4} (for IPv4 addresses) and \code{dualstack} (for
+IPv4 and IPv6 addresses). Internal load balancers must use \code{ipv4}.}
+
+\item{CustomerOwnedIpv4Pool}{[Application Load Balancers on Outposts] The ID of the customer-owned
+address pool (CoIP pool).}
 }
 \description{
-Creates an Application Load Balancer or a Network Load Balancer.
+Creates an Application Load Balancer, Network Load Balancer, or Gateway
+Load Balancer.
 }
 \details{
-When you create a load balancer, you can specify security groups, public
-subnets, IP address type, and tags. Otherwise, you could do so later
-using SetSecurityGroups, SetSubnets, SetIpAddressType, and AddTags.
-
-To create listeners for your load balancer, use CreateListener. To
-describe your current load balancers, see DescribeLoadBalancers. When
-you are finished with a load balancer, you can delete it using
-DeleteLoadBalancer.
-
-For limit information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html}{Limits for Your Application Load Balancer}
-in the \emph{Application Load Balancers Guide} and \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-limits.html}{Limits for Your Network Load Balancer}
-in the \emph{Network Load Balancers Guide}.
+For more information, see the following:
+\itemize{
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html}{Application Load Balancers}
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html}{Network Load Balancers}
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/gateway-load-balancers.html}{Gateway Load Balancers}
+}
 
 This operation is idempotent, which means that it completes at most one
 time. If you attempt to create multiple load balancers with the same
 settings, each call succeeds.
-
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html}{Application Load Balancers}
-in the \emph{Application Load Balancers Guide} and \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/network-load-balancers.html}{Network Load Balancers}
-in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_load_balancer(
@@ -97,7 +114,8 @@ in the \emph{Network Load Balancers Guide}.
     list(
       SubnetId = "string",
       AllocationId = "string",
-      PrivateIPv4Address = "string"
+      PrivateIPv4Address = "string",
+      IPv6Address = "string"
     )
   ),
   SecurityGroups = list(
@@ -110,8 +128,9 @@ in the \emph{Network Load Balancers Guide}.
       Value = "string"
     )
   ),
-  Type = "application"|"network",
-  IpAddressType = "ipv4"|"dualstack"
+  Type = "application"|"network"|"gateway",
+  IpAddressType = "ipv4"|"dualstack",
+  CustomerOwnedIpv4Pool = "string"
 )
 }
 }

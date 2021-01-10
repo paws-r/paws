@@ -61,10 +61,10 @@ more information, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHA
 The value can be either server time or commit time.
 
 Server time example: --cdc-stop-position
-“server\\_time:3018-02-09T12:12:12”
+“server\\_time:2018-02-09T12:12:12”
 
 Commit time example: --cdc-stop-position “commit\\_time:
-3018-02-09T12:12:12 “}
+2018-02-09T12:12:12 “}
 
 \item{TaskData}{Supplemental information that the task requires to migrate the data for
 certain source and target endpoints. For more information, see

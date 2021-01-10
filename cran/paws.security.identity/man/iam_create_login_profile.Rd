@@ -11,13 +11,13 @@ iam_create_login_profile(UserName, Password, PasswordResetRequired)
 \item{UserName}{[required] The name of the IAM user to create a password for. The user must already
 exist.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{Password}{[required] The new password for the user.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} that is used to
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
 validate this parameter is a string of characters. That string can
 include almost any printable ASCII character from the space (\code{U+0020})
 through the end of the ASCII character range (\verb{U+00FF}). You can also
@@ -33,7 +33,7 @@ sign-in.}
 \description{
 Creates a password for the specified user, giving the user the ability
 to access AWS services through the AWS Management Console. For more
-information about managing passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingLogins.html}{Managing Passwords}
+information about managing passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing Passwords}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

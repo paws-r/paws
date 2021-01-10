@@ -9,11 +9,11 @@ iam_upload_server_certificate(Path, ServerCertificateName,
 }
 \arguments{
 \item{Path}{The path for the server certificate. For more information about paths,
-see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{IAM Identifiers}
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{IAM Identifiers}
 in the \emph{IAM User Guide}.
 
 This parameter is optional. If it is not included, it defaults to a
-slash (/). This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+slash (/). This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
@@ -28,14 +28,15 @@ include a trailing slash (for example, \verb{/cloudfront/test/}).}
 \item{ServerCertificateName}{[required] The name for the server certificate. Do not include the path in this
 value. The name of the certificate cannot contain any spaces.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{CertificateBody}{[required] The contents of the public key certificate in PEM-encoded format.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
-this parameter is a string of characters consisting of the following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
+validate this parameter is a string of characters consisting of the
+following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
@@ -47,8 +48,9 @@ carriage return (\verb{U+000D})
 
 \item{PrivateKey}{[required] The contents of the private key in PEM-encoded format.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
-this parameter is a string of characters consisting of the following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
+validate this parameter is a string of characters consisting of the
+following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
@@ -61,8 +63,9 @@ carriage return (\verb{U+000D})
 \item{CertificateChain}{The contents of the certificate chain. This is typically a concatenation
 of the PEM-encoded public key certificates of the chain.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
-this parameter is a string of characters consisting of the following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
+validate this parameter is a string of characters consisting of the
+following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
@@ -90,7 +93,7 @@ in the \emph{IAM User Guide}. This topic includes a list of AWS services that
 can use the server certificates that you manage with IAM.
 
 For information about the number of server certificates you can upload,
-see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html}{Limitations on IAM Entities and Objects}
+see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{Limitations on IAM Entities and Objects}
 in the \emph{IAM User Guide}.
 
 Because the body of the public key certificate, private key, and the

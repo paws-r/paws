@@ -5,7 +5,7 @@
 \title{Lists jobs}
 \usage{
 iot_list_jobs(status, targetSelection, maxResults, nextToken,
-  thingGroupName, thingGroupId)
+  thingGroupName, thingGroupId, namespaceId)
 }
 \arguments{
 \item{status}{An optional filter that lets you search for jobs that have the specified
@@ -25,6 +25,16 @@ completed by all things originally in the group.}
 \item{thingGroupName}{A filter that limits the returned jobs to those for the specified group.}
 
 \item{thingGroupId}{A filter that limits the returned jobs to those for the specified group.}
+
+\item{namespaceId}{The namespace used to indicate that a job is a customer-managed job.
+
+When you specify a value for this parameter, AWS IoT Core sends jobs
+notifications to MQTT topics that contain the value in the following
+format.
+
+\verb{$aws/things/<i>THING_NAME</i>/jobs/<i>JOB_ID</i>/notify-namespace-<i>NAMESPACE_ID</i>/}
+
+The \code{namespaceId} feature is in public preview.}
 }
 \description{
 Lists jobs.
@@ -36,7 +46,8 @@ Lists jobs.
   maxResults = 123,
   nextToken = "string",
   thingGroupName = "string",
-  thingGroupId = "string"
+  thingGroupId = "string",
+  namespaceId = "string"
 )
 }
 }

@@ -18,7 +18,7 @@ accelerator.}
 
 \item{ClientAffinity}{Client affinity lets you direct all requests from a user to the same
 endpoint, if you have stateful applications, regardless of the port and
-protocol of the client request. Clienty affinity gives you control over
+protocol of the client request. Client affinity gives you control over
 whether to always route each client to the same specific endpoint.
 
 AWS Global Accelerator uses a consistent-flow hashing algorithm to
@@ -40,8 +40,7 @@ value.
 The default value is \code{NONE}.}
 }
 \description{
-Update a listener. To see an AWS CLI example of updating listener,
-scroll down to \strong{Example}.
+Update a listener.
 }
 \section{Request syntax}{
 \preformatted{svc$update_listener(

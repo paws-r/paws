@@ -16,7 +16,14 @@ ssm_update_maintenance_window_task(WindowId, WindowTaskId, Targets,
 
 \item{Targets}{The targets (either instances or tags) to modify. Instances are
 specified using Key=instanceids,Values=instanceID\\_1,instanceID\\_2. Tags
-are specified using Key=tag\\_name,Values=tag\\_value.}
+are specified using Key=tag\\_name,Values=tag\\_value.
+
+One or more targets must be specified for maintenance window Run
+Command-type tasks. Depending on the task, targets are optional for
+other maintenance window task types (Automation, AWS Lambda, and AWS
+Step Functions). For more information about running tasks that do not
+specify targets, see see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html}{Registering maintenance window tasks without targets}
+in the \emph{AWS Systems Manager User Guide}.}
 
 \item{TaskArn}{The task ARN to modify.}
 
@@ -48,16 +55,38 @@ Key: string, between 1 and 255 characters
 Value: an array of strings, each string is between 1 and 255 characters}
 
 \item{TaskInvocationParameters}{The parameters that the task should use during execution. Populate only
-the fields that match the task type. All other fields should be empty.}
+the fields that match the task type. All other fields should be empty.
+
+When you update a maintenance window task that has options specified in
+\code{TaskInvocationParameters}, you must provide again all the
+\code{TaskInvocationParameters} values that you want to retain. The values
+you do not specify again are removed. For example, suppose that when you
+registered a Run Command task, you specified \code{TaskInvocationParameters}
+values for \code{Comment}, \code{NotificationConfig}, and \code{OutputS3BucketName}. If
+you update the maintenance window task and specify only a different
+\code{OutputS3BucketName} value, the values for \code{Comment} and
+\code{NotificationConfig} are removed.}
 
 \item{Priority}{The new task priority to specify. The lower the number, the higher the
 priority. Tasks that have the same priority are scheduled in parallel.}
 
 \item{MaxConcurrency}{The new \code{MaxConcurrency} value you want to specify. \code{MaxConcurrency} is
-the number of targets that are allowed to run this task in parallel.}
+the number of targets that are allowed to run this task in parallel.
+
+For maintenance window tasks without a target specified, you cannot
+supply a value for this option. Instead, the system inserts a
+placeholder value of \code{1}, which may be reported in the response to this
+command. This value does not affect the running of your task and can be
+ignored.}
 
 \item{MaxErrors}{The new \code{MaxErrors} value to specify. \code{MaxErrors} is the maximum number
-of errors that are allowed before the task stops being scheduled.}
+of errors that are allowed before the task stops being scheduled.
+
+For maintenance window tasks without a target specified, you cannot
+supply a value for this option. Instead, the system inserts a
+placeholder value of \code{1}, which may be reported in the response to this
+command. This value does not affect the running of your task and can be
+ignored.}
 
 \item{LoggingInfo}{The new logging location in Amazon S3 to specify.
 
@@ -73,7 +102,7 @@ MaintenanceWindowTaskInvocationParameters.}
 \item{Description}{The new task description to specify.}
 
 \item{Replace}{If True, then all fields that are required by the
-RegisterTaskWithMaintenanceWndow action are also required for this API
+RegisterTaskWithMaintenanceWindow action are also required for this API
 request. Optional fields that are not specified are set to null.}
 }
 \description{
@@ -91,10 +120,28 @@ AWS-RunPowerShellScript to AWS-RunShellScript.
 \item MaxErrors
 }
 
-If a parameter is null, then the corresponding field is not modified.
-Also, if you set Replace to true, then all fields required by the
-RegisterTaskWithMaintenanceWindow action are required for this request.
-Optional fields that aren't specified are set to null.
+One or more targets must be specified for maintenance window Run
+Command-type tasks. Depending on the task, targets are optional for
+other maintenance window task types (Automation, AWS Lambda, and AWS
+Step Functions). For more information about running tasks that do not
+specify targets, see see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/maintenance-windows-targetless-tasks.html}{Registering maintenance window tasks without targets}
+in the \emph{AWS Systems Manager User Guide}.
+
+If the value for a parameter in \code{UpdateMaintenanceWindowTask} is null,
+then the corresponding field is not modified. If you set \code{Replace} to
+true, then all fields required by the RegisterTaskWithMaintenanceWindow
+action are required for this request. Optional fields that aren't
+specified are set to null.
+
+When you update a maintenance window task that has options specified in
+\code{TaskInvocationParameters}, you must provide again all the
+\code{TaskInvocationParameters} values that you want to retain. The values
+you do not specify again are removed. For example, suppose that when you
+registered a Run Command task, you specified \code{TaskInvocationParameters}
+values for \code{Comment}, \code{NotificationConfig}, and \code{OutputS3BucketName}. If
+you update the maintenance window task and specify only a different
+\code{OutputS3BucketName} value, the values for \code{Comment} and
+\code{NotificationConfig} are removed.
 }
 \section{Request syntax}{
 \preformatted{svc$update_maintenance_window_task(

@@ -8,7 +8,8 @@ acmpca_tag_certificate_authority(CertificateAuthorityArn, Tags)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-CreateCertificateAuthority. This must be of the form:
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html}{CreateCertificateAuthority}.
+This must be of the form:
 
 \verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
 
@@ -23,8 +24,10 @@ pair. You can apply a tag to just one private CA if you want to identify
 a specific characteristic of that CA, or you can apply the same tag to
 multiple private CAs if you want to filter for a common relationship
 among those CAs. To remove one or more tags, use the
-UntagCertificateAuthority action. Call the ListTags action to see what
-tags are associated with your CA.
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UntagCertificateAuthority.html}{UntagCertificateAuthority}
+action. Call the
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListTags.html}{ListTags}
+action to see what tags are associated with your CA.
 }
 \section{Request syntax}{
 \preformatted{svc$tag_certificate_authority(

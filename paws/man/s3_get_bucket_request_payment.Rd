@@ -4,11 +4,15 @@
 \alias{s3_get_bucket_request_payment}
 \title{Returns the request payment configuration of a bucket}
 \usage{
-s3_get_bucket_request_payment(Bucket)
+s3_get_bucket_request_payment(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket for which to get the payment request
 configuration}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Returns the request payment configuration of a bucket. To use this
@@ -18,12 +22,13 @@ information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/Requester
 \details{
 The following operations are related to \code{GetBucketRequestPayment}:
 \itemize{
-\item ListObjects
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html}{ListObjects}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_request_payment(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

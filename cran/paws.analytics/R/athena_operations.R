@@ -186,7 +186,7 @@ athena_create_data_catalog <- function(Name, Type, Description = NULL, Parameter
 #' access to the workgroup.
 #' 
 #' For code samples using the AWS SDK for Java, see [Examples and Code
-#' Samples](http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 #' in the *Amazon Athena User Guide*.
 #'
 #' @usage
@@ -350,7 +350,7 @@ athena_delete_data_catalog <- function(Name) {
 #' query was saved.
 #' 
 #' For code samples using the AWS SDK for Java, see [Examples and Code
-#' Samples](http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 #' in the *Amazon Athena User Guide*.
 #'
 #' @usage
@@ -805,7 +805,7 @@ athena_list_databases <- function(CatalogName, NextToken = NULL, MaxResults = NU
 #' the primary workgroup.
 #' 
 #' For code samples using the AWS SDK for Java, see [Examples and Code
-#' Samples](http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 #' in the *Amazon Athena User Guide*.
 #'
 #' @usage
@@ -858,7 +858,7 @@ athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkG
 #' access to the workgroup in which the queries ran.
 #' 
 #' For code samples using the AWS SDK for Java, see [Examples and Code
-#' Samples](http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 #' in the *Amazon Athena User Guide*.
 #'
 #' @usage
@@ -1046,7 +1046,7 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
 #' against an external catalog requires GetDataCatalog permission to the
 #' catalog. For code samples using the AWS SDK for Java, see [Examples and
 #' Code
-#' Samples](http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 #' in the *Amazon Athena User Guide*.
 #'
 #' @usage
@@ -1120,7 +1120,7 @@ athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL,
 #' which the query ran.
 #' 
 #' For code samples using the AWS SDK for Java, see [Examples and Code
-#' Samples](http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
+#' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 #' in the *Amazon Athena User Guide*.
 #'
 #' @usage
@@ -1165,7 +1165,7 @@ athena_stop_query_execution <- function(QueryExecutionId) {
 #' consistent set of tag keys to make it easier to search and filter
 #' workgroups or data catalogs in your account. For best practices, see
 #' [Tagging Best
-#' Practices](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+#' Practices](https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf).
 #' Tag keys can be from 1 to 128 UTF-8 Unicode characters, and tag values
 #' can be from 0 to 256 UTF-8 Unicode characters. Tags can use letters and
 #' numbers representable in UTF-8, and the following characters: + - = . \\_

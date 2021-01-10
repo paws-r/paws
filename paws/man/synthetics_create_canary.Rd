@@ -34,7 +34,7 @@ the trust policy. The role must also have the following permissions:
 \item \code{cloudwatch:PutMetricData}
 \item \code{logs:CreateLogGroup}
 \item \code{logs:CreateLogStream}
-\item \code{logs:CreateLogStream}
+\item \code{logs:PutLogEvents}
 }}
 
 \item{Schedule}{[required] A structure that contains information about how often the canary is to
@@ -51,9 +51,9 @@ is 1 to 455 days.}
 you omit this field, the default of 31 days is used. The valid range is
 1 to 455 days.}
 
-\item{RuntimeVersion}{[required] Specifies the runtime version to use for the canary. Currently, the only
-valid value is \code{syn-1.0}. For more information about runtime versions,
-see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html}{Canary Runtime Versions}.}
+\item{RuntimeVersion}{[required] Specifies the runtime version to use for the canary. For a list of valid
+runtime versions and more information about runtime versions, see
+\href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html}{Canary Runtime Versions}.}
 
 \item{VpcConfig}{If this canary is to test an endpoint in a VPC, this structure contains
 information about the subnet and security groups of the VPC endpoint.
@@ -81,7 +81,7 @@ instead.
 To create canaries, you must have the \code{CloudWatchSyntheticsFullAccess}
 policy. If you are creating a new IAM role for the canary, you also need
 the the \code{iam:CreateRole}, \code{iam:CreatePolicy} and \code{iam:AttachRolePolicy}
-permissions. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Roles}{Necessary Roles and Permissions}.
+permissions. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Roles.html}{Necessary Roles and Permissions}.
 
 Do not include secrets or proprietary information in your canary names.
 The canary name makes up part of the Amazon Resource Name (ARN) for the
@@ -106,7 +106,11 @@ more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/
   ),
   RunConfig = list(
     TimeoutInSeconds = 123,
-    MemoryInMB = 123
+    MemoryInMB = 123,
+    ActiveTracing = TRUE|FALSE,
+    EnvironmentVariables = list(
+      "string"
+    )
   ),
   SuccessRetentionPeriodInDays = 123,
   FailureRetentionPeriodInDays = 123,

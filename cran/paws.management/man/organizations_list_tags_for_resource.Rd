@@ -2,12 +2,23 @@
 % Please edit documentation in R/organizations_operations.R
 \name{organizations_list_tags_for_resource}
 \alias{organizations_list_tags_for_resource}
-\title{Lists tags for the specified resource}
+\title{Lists tags that are attached to the specified resource}
 \usage{
 organizations_list_tags_for_resource(ResourceId, NextToken)
 }
 \arguments{
-\item{ResourceId}{[required] The ID of the resource that you want to retrieve tags for.}
+\item{ResourceId}{[required] The ID of the resource with the tags to list.
+
+You can specify any of the following taggable resources.
+\itemize{
+\item AWS account – specify the account ID number.
+\item Organizational unit – specify the OU ID that begins with \verb{ou-} and
+looks similar to: \verb{ou-<i>1a2b-34uvwxyz</i> }
+\item Root – specify the root ID that begins with \verb{r-} and looks similar
+to: \verb{r-<i>1a2b</i> }
+\item Policy – specify the policy ID that begins with \verb{p-} andlooks
+similar to: \verb{p-<i>12abcdefg3</i> }
+}}
 
 \item{NextToken}{The parameter for receiving additional results if you receive a
 \code{NextToken} response in a previous request. A \code{NextToken} response
@@ -16,14 +27,20 @@ of the previous call's \code{NextToken} response to indicate where the output
 should continue from.}
 }
 \description{
-Lists tags for the specified resource.
+Lists tags that are attached to the specified resource.
 }
 \details{
-Currently, you can list tags on an account in AWS Organizations.
+You can attach tags to the following resources in AWS Organizations.
+\itemize{
+\item AWS account
+\item Organization root
+\item Organizational unit (OU)
+\item Policy (any type)
+}
 
-This operation can be called only from the organization's master account
-or by a member account that is a delegated administrator for an AWS
-service.
+This operation can be called only from the organization's management
+account or by a member account that is a delegated administrator for an
+AWS service.
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

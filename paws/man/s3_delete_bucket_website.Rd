@@ -4,10 +4,14 @@
 \alias{s3_delete_bucket_website}
 \title{This operation removes the website configuration for a bucket}
 \usage{
-s3_delete_bucket_website(Bucket)
+s3_delete_bucket_website(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name for which you want to remove the website configuration.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 This operation removes the website configuration for a bucket. Amazon S3
@@ -28,13 +32,14 @@ For more information about hosting websites, see \href{https://docs.aws.amazon.c
 
 The following operations are related to \code{DeleteBucketWebsite}:
 \itemize{
-\item GetBucketWebsite
-\item PutBucketWebsite
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketWebsite.html}{GetBucketWebsite}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketWebsite.html}{PutBucketWebsite}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bucket_website(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

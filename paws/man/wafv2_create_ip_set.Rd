@@ -14,7 +14,7 @@ you create it.}
 
 \item{Scope}{[required] Specifies whether this is for an AWS CloudFront distribution or for a
 regional application. A regional application can be an Application Load
-Balancer (ALB) or an API Gateway stage.
+Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:

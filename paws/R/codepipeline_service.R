@@ -67,7 +67,7 @@ NULL
 #' pipeline, including the stages of that pipeline. For more information
 #' about the structure of stages and actions, see [AWS CodePipeline
 #' Pipeline Structure
-#' Reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/pipeline-structure.html).
+#' Reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html).
 #' 
 #' Pipeline stages include *actions* that are categorized into categories
 #' such as source or build actions performed in a stage of a pipeline. For

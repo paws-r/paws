@@ -960,10 +960,8 @@ directconnect_create_direct_connect_gateway_association <- function(directConnec
 #' Creates a proposal to associate the specified virtual private gateway or
 #' transit gateway with the specified Direct Connect gateway.
 #' 
-#' You can only associate a Direct Connect gateway and virtual private
-#' gateway or transit gateway when the account that owns the Direct Connect
-#' gateway and the account that owns the virtual private gateway or transit
-#' gateway have the same AWS Payer ID.
+#' You can associate a Direct Connect gateway and virtual private gateway
+#' or transit gateway that is owned by any AWS account.
 #'
 #' @usage
 #' directconnect_create_direct_connect_gateway_association_proposal(
@@ -1094,30 +1092,30 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 .directconnect$operations$create_interconnect <- directconnect_create_interconnect
 
 #' Creates a link aggregation group (LAG) with the specified number of
-#' bundled physical connections between the customer network and a specific
-#' AWS Direct Connect location
+#' bundled physical dedicated connections between the customer network and
+#' a specific AWS Direct Connect location
 #'
 #' Creates a link aggregation group (LAG) with the specified number of
-#' bundled physical connections between the customer network and a specific
-#' AWS Direct Connect location. A LAG is a logical interface that uses the
-#' Link Aggregation Control Protocol (LACP) to aggregate multiple
-#' interfaces, enabling you to treat them as a single interface.
+#' bundled physical dedicated connections between the customer network and
+#' a specific AWS Direct Connect location. A LAG is a logical interface
+#' that uses the Link Aggregation Control Protocol (LACP) to aggregate
+#' multiple interfaces, enabling you to treat them as a single interface.
 #' 
-#' All connections in a LAG must use the same bandwidth and must terminate
-#' at the same AWS Direct Connect endpoint.
+#' All connections in a LAG must use the same bandwidth (either 1Gbps or
+#' 10Gbps) and must terminate at the same AWS Direct Connect endpoint.
 #' 
-#' You can have up to 10 connections per LAG. Regardless of this limit, if
-#' you request more connections for the LAG than AWS Direct Connect can
-#' allocate on a single endpoint, no LAG is created.
+#' You can have up to 10 dedicated connections per LAG. Regardless of this
+#' limit, if you request more connections for the LAG than AWS Direct
+#' Connect can allocate on a single endpoint, no LAG is created.
 #' 
-#' You can specify an existing physical connection or interconnect to
-#' include in the LAG (which counts towards the total number of
-#' connections). Doing so interrupts the current physical connection or
-#' hosted connections, and re-establishes them as a member of the LAG. The
-#' LAG will be created on the same AWS Direct Connect endpoint to which the
-#' connection terminates. Any virtual interfaces associated with the
-#' connection are automatically disassociated and re-associated with the
-#' LAG. The connection ID does not change.
+#' You can specify an existing physical dedicated connection or
+#' interconnect to include in the LAG (which counts towards the total
+#' number of connections). Doing so interrupts the current physical
+#' dedicated connection, and re-establishes them as a member of the LAG.
+#' The LAG will be created on the same AWS Direct Connect endpoint to which
+#' the dedicated connection terminates. Any virtual interfaces associated
+#' with the dedicated connection are automatically disassociated and
+#' re-associated with the LAG. The connection ID does not change.
 #' 
 #' If the AWS account used to create a LAG is a registered AWS Direct
 #' Connect Partner, the LAG is automatically enabled to host
@@ -1129,14 +1127,13 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #'   connectionsBandwidth, lagName, connectionId, tags, childConnectionTags,
 #'   providerName)
 #'
-#' @param numberOfConnections &#91;required&#93; The number of physical connections initially provisioned and bundled by
-#' the LAG.
+#' @param numberOfConnections &#91;required&#93; The number of physical dedicated connections initially provisioned and
+#' bundled by the LAG.
 #' @param location &#91;required&#93; The location for the LAG.
-#' @param connectionsBandwidth &#91;required&#93; The bandwidth of the individual physical connections bundled by the LAG.
-#' The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps, 400Mbps,
-#' 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps.
+#' @param connectionsBandwidth &#91;required&#93; The bandwidth of the individual physical dedicated connections bundled
+#' by the LAG. The possible values are 1Gbps and 10Gbps.
 #' @param lagName &#91;required&#93; The name of the LAG.
-#' @param connectionId The ID of an existing connection to migrate to the LAG.
+#' @param connectionId The ID of an existing dedicated connection to migrate to the LAG.
 #' @param tags The tags to associate with the LAG.
 #' @param childConnectionTags The tags to associate with the automtically created LAGs.
 #' @param providerName The name of the service provider associated with the LAG.

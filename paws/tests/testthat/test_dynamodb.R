@@ -22,6 +22,14 @@ test_that("list_contributor_insights", {
   expect_error(svc$list_contributor_insights(MaxResults = 20), NA)
 })
 
+test_that("list_exports", {
+  expect_error(svc$list_exports(), NA)
+})
+
+test_that("list_exports", {
+  expect_error(svc$list_exports(MaxResults = 20), NA)
+})
+
 test_that("list_global_tables", {
   expect_error(svc$list_global_tables(), NA)
 })

@@ -14,10 +14,9 @@ remove tags from. An ARN uniquely identifies a resource.}
 }
 \description{
 Remove tags from a Global Accelerator resource. When you specify a tag
-key, the action removes both that key and its associated value. To see
-an AWS CLI example of removing tags from an accelerator, scroll down to
-\strong{Example}. The operation succeeds even if you attempt to remove tags
-from an accelerator that was already removed.
+key, the action removes both that key and its associated value. The
+operation succeeds even if you attempt to remove tags from an
+accelerator that was already removed.
 }
 \details{
 For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html}{Tagging in AWS Global Accelerator}

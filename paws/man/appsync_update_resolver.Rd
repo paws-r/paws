@@ -17,7 +17,15 @@ appsync_update_resolver(apiId, typeName, fieldName, dataSourceName,
 
 \item{dataSourceName}{The new data source name.}
 
-\item{requestMappingTemplate}{[required] The new request mapping template.}
+\item{requestMappingTemplate}{The new request mapping template.
+
+A resolver uses a request mapping template to convert a GraphQL
+expression into a format that a data source can understand. Mapping
+templates are written in Apache Velocity Template Language (VTL).
+
+VTL request mapping templates are optional when using a Lambda data
+source. For all other data sources, VTL request and response mapping
+templates are required.}
 
 \item{responseMappingTemplate}{The new response mapping template.}
 

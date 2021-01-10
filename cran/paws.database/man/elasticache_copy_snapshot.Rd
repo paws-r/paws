@@ -22,7 +22,7 @@ ElastiCache has the needed permissions to this S3 bucket. For more
 information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-grant-access}{Step 2: Grant ElastiCache Access to Your Amazon S3 Bucket}
 in the \emph{Amazon ElastiCache User Guide}.
 
-For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Snapshots.Exporting.html}{Exporting a Snapshot}
+For more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/}{Exporting a Snapshot}
 in the \emph{Amazon ElastiCache User Guide}.}
 
 \item{KmsKeyId}{The ID of the KMS key used to encrypt the target snapshot.}

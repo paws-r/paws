@@ -17,24 +17,21 @@ revocation list (CRL) for the CA, the name of the S3 bucket to which ACM
 Private CA will write the CRL, and an optional CNAME alias that you can
 use to hide the name of your bucket in the \strong{CRL Distribution Points}
 extension of your CA certificate. For more information, see the
-CrlConfiguration structure.}
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CrlConfiguration.html}{CrlConfiguration}
+structure.}
 
 \item{CertificateAuthorityType}{[required] The type of the certificate authority.}
 
 \item{IdempotencyToken}{Alphanumeric string that can be used to distinguish between calls to
-\strong{CreateCertificateAuthority}. Idempotency tokens time out after five
-minutes. Therefore, if you call \strong{CreateCertificateAuthority} multiple
-times with the same idempotency token within a five minute period, ACM
-Private CA recognizes that you are requesting only one certificate. As a
-result, ACM Private CA issues only one. If you change the idempotency
-token for each call, however, ACM Private CA recognizes that you are
-requesting multiple certificates.}
+\strong{CreateCertificateAuthority}. For a given token, ACM Private CA
+creates exactly one CA. If you issue a subsequent call using the same
+token, ACM Private CA returns the ARN of the existing CA and takes no
+further action. If you change the idempotency token across multiple
+calls, ACM Private CA creates a unique CA for each unique token.}
 
 \item{Tags}{Key-value pairs that will be attached to the new private CA. You can
 associate up to 50 tags with a private CA. For information using tags
-with
-
-IAM to manage permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html}{Controlling Access Using IAM Tags}.}
+with IAM to manage permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_iam-tags.html}{Controlling Access Using IAM Tags}.}
 }
 \description{
 Creates a root or subordinate private certificate authority (CA). You
@@ -48,6 +45,15 @@ in days (the validity period of the CRL), the Amazon S3 bucket that will
 contain the CRL, and a CNAME alias for the S3 bucket that is included in
 certificates issued by the CA. If successful, this action returns the
 Amazon Resource Name (ARN) of the CA.
+}
+\details{
+ACM Private CAA assets that are stored in Amazon S3 can be protected
+with encryption. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreateCa.html#crl-encryption}{Encrypting Your CRLs}.
+
+Both PCA and the IAM principal must have permission to write to the S3
+bucket that you specify. If the IAM principal making the call does not
+have permission to write to the bucket, then an exception is thrown. For
+more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/}{Configure Access to ACM Private CA}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_certificate_authority(
@@ -69,6 +75,58 @@ Amazon Resource Name (ARN) of the CA.
       Initials = "string",
       Pseudonym = "string",
       GenerationQualifier = "string"
+    ),
+    CsrExtensions = list(
+      KeyUsage = list(
+        DigitalSignature = TRUE|FALSE,
+        NonRepudiation = TRUE|FALSE,
+        KeyEncipherment = TRUE|FALSE,
+        DataEncipherment = TRUE|FALSE,
+        KeyAgreement = TRUE|FALSE,
+        KeyCertSign = TRUE|FALSE,
+        CRLSign = TRUE|FALSE,
+        EncipherOnly = TRUE|FALSE,
+        DecipherOnly = TRUE|FALSE
+      ),
+      SubjectInformationAccess = list(
+        list(
+          AccessMethod = list(
+            CustomObjectIdentifier = "string",
+            AccessMethodType = "CA_REPOSITORY"|"RESOURCE_PKI_MANIFEST"|"RESOURCE_PKI_NOTIFY"
+          ),
+          AccessLocation = list(
+            OtherName = list(
+              TypeId = "string",
+              Value = "string"
+            ),
+            Rfc822Name = "string",
+            DnsName = "string",
+            DirectoryName = list(
+              Country = "string",
+              Organization = "string",
+              OrganizationalUnit = "string",
+              DistinguishedNameQualifier = "string",
+              State = "string",
+              CommonName = "string",
+              SerialNumber = "string",
+              Locality = "string",
+              Title = "string",
+              Surname = "string",
+              GivenName = "string",
+              Initials = "string",
+              Pseudonym = "string",
+              GenerationQualifier = "string"
+            ),
+            EdiPartyName = list(
+              PartyName = "string",
+              NameAssigner = "string"
+            ),
+            UniformResourceIdentifier = "string",
+            IpAddress = "string",
+            RegisteredId = "string"
+          )
+        )
+      )
     )
   ),
   RevocationConfiguration = list(

@@ -26,15 +26,14 @@ using the CMK. This association is stored as long as the data encrypted
 with the CMK is still within Amazon CloudWatch Logs. This enables Amazon
 CloudWatch Logs to decrypt this data whenever it is requested.
 
-\strong{Important:} CloudWatch Logs supports only symmetric CMKs. Do not use
-an associate an asymmetric CMK with your log group. For more
-information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}.
+CloudWatch Logs supports only symmetric CMKs. Do not use an associate an
+asymmetric CMK with your log group. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric Keys}.
 
-Note that it can take up to 5 minutes for this operation to take effect.
+It can take up to 5 minutes for this operation to take effect.
 
 If you attempt to associate a CMK with a log group but the CMK does not
-exist or the CMK is disabled, you will receive an
-\code{InvalidParameterException} error.
+exist or the CMK is disabled, you receive an \code{InvalidParameterException}
+error.
 }
 \section{Request syntax}{
 \preformatted{svc$associate_kms_key(

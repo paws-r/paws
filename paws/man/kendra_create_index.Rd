@@ -5,7 +5,8 @@
 \title{Creates a new Amazon Kendra index}
 \usage{
 kendra_create_index(Name, Edition, RoleArn,
-  ServerSideEncryptionConfiguration, Description, ClientToken, Tags)
+  ServerSideEncryptionConfiguration, Description, ClientToken, Tags,
+  UserTokenConfigurations, UserContextPolicy)
 }
 \arguments{
 \item{Name}{[required] The name for the new index.}
@@ -13,12 +14,15 @@ kendra_create_index(Name, Edition, RoleArn,
 \item{Edition}{The Amazon Kendra edition to use for the index. Choose
 \code{DEVELOPER_EDITION} for indexes intended for development, testing, or
 proof of concept. Use \code{ENTERPRISE_EDITION} for your production
-databases. Once you set the edition for an index, it can't be changed.}
+databases. Once you set the edition for an index, it can't be changed.
 
-\item{RoleArn}{[required] An IAM role that gives Amazon Kendra permissions to access your Amazon
-CloudWatch logs and metrics. This is also the role used when you use the
-\code{BatchPutDocument} operation to index documents from an Amazon S3
-bucket.}
+The \code{Edition} parameter is optional. If you don't supply a value, the
+default is \code{ENTERPRISE_EDITION}.}
+
+\item{RoleArn}{[required] An AWS Identity and Access Management (IAM) role that gives Amazon
+Kendra permissions to access your Amazon CloudWatch logs and metrics.
+This is also the role used when you use the \code{BatchPutDocument} operation
+to index documents from an Amazon S3 bucket.}
 
 \item{ServerSideEncryptionConfiguration}{The identifier of the AWS KMS customer managed key (CMK) to use to
 encrypt data indexed by Amazon Kendra. Amazon Kendra doesn't support
@@ -28,11 +32,28 @@ asymmetric CMKs.}
 
 \item{ClientToken}{A token that you provide to identify the request to create an index.
 Multiple calls to the \code{CreateIndex} operation with the same client token
-will create only one index.”}
+will create only one index.}
 
 \item{Tags}{A list of key-value pairs that identify the index. You can use the tags
 to identify and organize your resources and to control access to
 resources.}
+
+\item{UserTokenConfigurations}{The user token configuration.}
+
+\item{UserContextPolicy}{The user context policy.
+\subsection{ATTRIBUTE\\_FILTER}{
+
+All indexed content is searchable and displayable for all users. If
+there is an access control list, it is ignored. You can filter on user
+and group attributes.
+}
+
+\subsection{USER\\_TOKEN}{
+
+Enables SSO and token-based user access control. All documents with no
+access control and all documents accessible to the user will be
+searchable and displayable.
+}}
 }
 \description{
 Creates a new Amazon Kendra index. Index creation is an asynchronous
@@ -59,7 +80,25 @@ operation or using one of the supported data sources.
       Key = "string",
       Value = "string"
     )
-  )
+  ),
+  UserTokenConfigurations = list(
+    list(
+      JwtTokenTypeConfiguration = list(
+        KeyLocation = "URL"|"SECRET_MANAGER",
+        URL = "string",
+        SecretManagerArn = "string",
+        UserNameAttributeField = "string",
+        GroupAttributeField = "string",
+        Issuer = "string",
+        ClaimRegex = "string"
+      ),
+      JsonTokenTypeConfiguration = list(
+        UserNameAttributeField = "string",
+        GroupAttributeField = "string"
+      )
+    )
+  ),
+  UserContextPolicy = "ATTRIBUTE_FILTER"|"USER_TOKEN"
 )
 }
 }

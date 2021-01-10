@@ -24,8 +24,8 @@ in the \emph{Amazon EventBridge User Guide}.}
 
 \item{Tags}{The list of key-value pairs to associate with the rule.}
 
-\item{EventBusName}{The event bus to associate with this rule. If you omit this, the default
-event bus is used.}
+\item{EventBusName}{The name or ARN of the event bus to associate with this rule. If you
+omit this, the default event bus is used.}
 }
 \description{
 Creates or updates the specified rule. Rules are enabled by default, or

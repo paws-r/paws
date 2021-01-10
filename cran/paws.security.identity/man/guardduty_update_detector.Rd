@@ -5,7 +5,7 @@
 \title{Updates the Amazon GuardDuty detector specified by the detectorId}
 \usage{
 guardduty_update_detector(DetectorId, Enable,
-  FindingPublishingFrequency)
+  FindingPublishingFrequency, DataSources)
 }
 \arguments{
 \item{DetectorId}{[required] The unique ID of the detector to update.}
@@ -14,6 +14,8 @@ guardduty_update_detector(DetectorId, Enable,
 
 \item{FindingPublishingFrequency}{An enum value that specifies how frequently findings are exported, such
 as to CloudWatch Events.}
+
+\item{DataSources}{Describes which data sources will be updated.}
 }
 \description{
 Updates the Amazon GuardDuty detector specified by the detectorId.
@@ -22,7 +24,12 @@ Updates the Amazon GuardDuty detector specified by the detectorId.
 \preformatted{svc$update_detector(
   DetectorId = "string",
   Enable = TRUE|FALSE,
-  FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS"
+  FindingPublishingFrequency = "FIFTEEN_MINUTES"|"ONE_HOUR"|"SIX_HOURS",
+  DataSources = list(
+    S3Logs = list(
+      Enable = TRUE|FALSE
+    )
+  )
 )
 }
 }

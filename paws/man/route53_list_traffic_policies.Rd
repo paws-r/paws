@@ -30,6 +30,11 @@ Gets information about the latest version for every traffic policy that
 is associated with the current AWS account. Policies are listed in the
 order that they were created in.
 }
+\details{
+For information about how of deleting a traffic policy affects the
+response from \code{ListTrafficPolicies}, see
+\href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicy.html}{DeleteTrafficPolicy}.
+}
 \section{Request syntax}{
 \preformatted{svc$list_traffic_policies(
   TrafficPolicyIdMarker = "string",

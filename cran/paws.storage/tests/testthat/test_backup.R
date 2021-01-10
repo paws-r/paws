@@ -2,6 +2,10 @@ context("backup")
 
 svc <- paws::backup()
 
+test_that("describe_global_settings", {
+  expect_error(svc$describe_global_settings(), NA)
+})
+
 test_that("describe_region_settings", {
   expect_error(svc$describe_region_settings(), NA)
 })

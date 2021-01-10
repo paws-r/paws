@@ -10,7 +10,7 @@ iam_detach_group_policy(GroupName, PolicyArn)
 \item{GroupName}{[required] The name (friendly name, not ARN) of the IAM group to detach the policy
 from.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
@@ -25,7 +25,7 @@ Removes the specified managed policy from the specified IAM group.
 \details{
 A group can also have inline policies embedded with it. To delete an
 inline policy, use the DeleteGroupPolicy API. For information about
-policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

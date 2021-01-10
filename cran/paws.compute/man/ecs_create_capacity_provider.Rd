@@ -58,7 +58,8 @@ accounts in Regions supported by AWS Fargate.
       status = "ENABLED"|"DISABLED",
       targetCapacity = 123,
       minimumScalingStepSize = 123,
-      maximumScalingStepSize = 123
+      maximumScalingStepSize = 123,
+      instanceWarmupPeriod = 123
     ),
     managedTerminationProtection = "ENABLED"|"DISABLED"
   ),

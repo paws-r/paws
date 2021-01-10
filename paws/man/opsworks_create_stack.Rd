@@ -59,7 +59,7 @@ region.
 
 For more information about how to use AWS OpsWorks Stacks with a VPC,
 see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html}{Running a Stack in a VPC}.
-For more information about default VPC and EC2-Classic, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms}.}
+For more information about default VPC and EC2-Classic, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html}{Supported Platforms}.}
 
 \item{Attributes}{One or more user-defined key-value pairs to be added to the stack
 attributes.}
@@ -67,11 +67,11 @@ attributes.}
 \item{ServiceRoleArn}{[required] The stack's AWS Identity and Access Management (IAM) role, which allows
 AWS OpsWorks Stacks to work with AWS resources on your behalf. You must
 set this parameter to the Amazon Resource Name (ARN) for an existing IAM
-role. For more information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
+role. For more information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{Using Identifiers}.}
 
 \item{DefaultInstanceProfileArn}{[required] The Amazon Resource Name (ARN) of an IAM profile that is the default
 profile for all of the stack's EC2 instances. For more information about
-IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
+IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{Using Identifiers}.}
 
 \item{DefaultOs}{The stack's default operating system, which is installed on every
 instance unless you specify a different operating system when you create

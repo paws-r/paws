@@ -13,7 +13,8 @@ NULL
 #'
 #' @usage
 #' cloud9_create_environment_ec2(name, description, clientRequestToken,
-#'   instanceType, subnetId, automaticStopTimeMinutes, ownerArn, tags)
+#'   instanceType, subnetId, automaticStopTimeMinutes, ownerArn, tags,
+#'   connectionType)
 #'
 #' @param name &#91;required&#93; The name of the environment to create.
 #' 
@@ -23,7 +24,7 @@ NULL
 #' operation completes no more than one time.
 #' 
 #' For more information, see [Client
-#' Tokens](http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+#' Tokens](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 #' in the *Amazon EC2 API Reference*.
 #' @param instanceType &#91;required&#93; The type of instance to connect to the environment (for example,
 #' `t2.micro`).
@@ -36,6 +37,7 @@ NULL
 #' ARN defaults to this environment's creator.
 #' @param tags An array of key-value pairs that will be associated with the new AWS
 #' Cloud9 development environment.
+#' @param connectionType The connection type used for connecting to an Amazon EC2 environment.
 #'
 #' @section Request syntax:
 #' ```
@@ -52,7 +54,8 @@ NULL
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   connectionType = "CONNECT_SSH"|"CONNECT_SSM"
 #' )
 #' ```
 #'
@@ -72,14 +75,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname cloud9_create_environment_ec2
-cloud9_create_environment_ec2 <- function(name, description = NULL, clientRequestToken = NULL, instanceType, subnetId = NULL, automaticStopTimeMinutes = NULL, ownerArn = NULL, tags = NULL) {
+cloud9_create_environment_ec2 <- function(name, description = NULL, clientRequestToken = NULL, instanceType, subnetId = NULL, automaticStopTimeMinutes = NULL, ownerArn = NULL, tags = NULL, connectionType = NULL) {
   op <- new_operation(
     name = "CreateEnvironmentEC2",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloud9$create_environment_ec2_input(name = name, description = description, clientRequestToken = clientRequestToken, instanceType = instanceType, subnetId = subnetId, automaticStopTimeMinutes = automaticStopTimeMinutes, ownerArn = ownerArn, tags = tags)
+  input <- .cloud9$create_environment_ec2_input(name = name, description = description, clientRequestToken = clientRequestToken, instanceType = instanceType, subnetId = subnetId, automaticStopTimeMinutes = automaticStopTimeMinutes, ownerArn = ownerArn, tags = tags, connectionType = connectionType)
   output <- .cloud9$create_environment_ec2_output()
   config <- get_config()
   svc <- .cloud9$service(config)

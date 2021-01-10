@@ -19,10 +19,10 @@ data into the stream for data ingestion and processing.
 }
 \details{
 Each \code{PutRecords} request can support up to 500 records. Each record in
-the request can be as large as 1 MB, up to a limit of 5 MB for the
+the request can be as large as 1 MiB, up to a limit of 5 MiB for the
 entire request, including partition keys. Each shard can support writes
-up to 1,000 records per second, up to a maximum data write total of 1 MB
-per second.
+up to 1,000 records per second, up to a maximum data write total of 1
+MiB per second.
 
 You must specify the name of the stream that captures, stores, and
 transports the data; and an array of request \code{Records}, with each record
@@ -38,13 +38,13 @@ shard. An MD5 hash function is used to map partition keys to 128-bit
 integer values and to map associated data records to shards. As a result
 of this hashing mechanism, all data records with the same partition key
 map to the same shard within the stream. For more information, see
-\href{http://docs.aws.amazon.com/kinesis/latest/dev/developing-producers-with-sdk.html#kinesis-using-sdk-java-add-data-to-stream}{Adding Data to a Stream}
+\href{https://docs.aws.amazon.com/streams/latest/dev/developing-producers-with-sdk.html#kinesis-using-sdk-java-add-data-to-stream}{Adding Data to a Stream}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}.
 
 Each record in the \code{Records} array may include an optional parameter,
 \code{ExplicitHashKey}, which overrides the partition key to shard mapping.
 This parameter allows a data producer to determine explicitly the shard
-where the record is stored. For more information, see \href{http://docs.aws.amazon.com/kinesis/latest/dev/developing-producers-with-sdk.html#kinesis-using-sdk-java-putrecords}{Adding Multiple Records with PutRecords}
+where the record is stored. For more information, see \href{https://docs.aws.amazon.com/streams/latest/dev/developing-producers-with-sdk.html#kinesis-using-sdk-java-putrecords}{Adding Multiple Records with PutRecords}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}.
 
 The \code{PutRecords} response includes an array of response \code{Records}. Each
@@ -56,7 +56,10 @@ same number of records as the request array.
 The response \code{Records} array includes both successfully and
 unsuccessfully processed records. Kinesis Data Streams attempts to
 process all records in each \code{PutRecords} request. A single record
-failure does not stop the processing of subsequent records.
+failure does not stop the processing of subsequent records. As a result,
+PutRecords doesn't guarantee the ordering of records. If you need to
+read records in the same order they are written to the stream, use
+PutRecord instead of \code{PutRecords}, and write to the same shard.
 
 A successfully processed record includes \code{ShardId} and \code{SequenceNumber}
 values. The \code{ShardId} parameter identifies the shard in the stream where
@@ -70,8 +73,11 @@ one of the following values: \code{ProvisionedThroughputExceededException} or
 about the \code{ProvisionedThroughputExceededException} exception including
 the account ID, stream name, and shard ID of the record that was
 throttled. For more information about partially successful responses,
-see \href{http://docs.aws.amazon.com/kinesis/latest/dev/kinesis-using-sdk-java-add-data-to-stream.html#kinesis-using-sdk-java-putrecords}{Adding Multiple Records with PutRecords}
+see \href{https://docs.aws.amazon.com/streams/latest/dev/developing-producers-with-sdk.html#kinesis-using-sdk-java-putrecords}{Adding Multiple Records with PutRecords}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}.
+
+After you write a record to a stream, you cannot modify that record or
+its order within the stream.
 
 By default, data records are accessible for 24 hours from the time that
 they are added to a stream. You can use IncreaseStreamRetentionPeriod or

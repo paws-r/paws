@@ -63,7 +63,7 @@ Microsoft AD on AWS to a peer VPC.
 Before you call \emph{AddIpRoutes}, ensure that all of the required
 permissions have been explicitly granted through a policy. For details
 about what permissions are required to run the \emph{AddIpRoutes} operation,
-see \href{http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
+see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html}{AWS Directory Service API Permissions: Actions, Resources, and Conditions Reference}.
 }
 \section{Request syntax}{
 \preformatted{svc$add_ip_routes(

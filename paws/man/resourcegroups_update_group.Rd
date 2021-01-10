@@ -2,25 +2,35 @@
 % Please edit documentation in R/resourcegroups_operations.R
 \name{resourcegroups_update_group}
 \alias{resourcegroups_update_group}
-\title{Updates an existing group with a new or changed description}
+\title{Updates the description for an existing group}
 \usage{
-resourcegroups_update_group(GroupName, Description)
+resourcegroups_update_group(GroupName, Group, Description)
 }
 \arguments{
-\item{GroupName}{[required] The name of the resource group for which you want to update its
-description.}
+\item{GroupName}{Don't use this parameter. Use \code{Group} instead.}
 
-\item{Description}{The description of the resource group. Descriptions can have a maximum
-of 511 characters, including letters, numbers, hyphens, underscores,
-punctuation, and spaces.}
+\item{Group}{The name or the ARN of the resource group to modify.}
+
+\item{Description}{The new description that you want to update the resource group with.
+Descriptions can contain letters, numbers, hyphens, underscores,
+periods, and spaces.}
 }
 \description{
-Updates an existing group with a new or changed description. You cannot
-update the name of a resource group.
+Updates the description for an existing group. You cannot update the
+name of a resource group.
+}
+\details{
+\strong{Minimum permissions}
+
+To run this command, you must have the following permissions:
+\itemize{
+\item \code{resource-groups:UpdateGroup}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$update_group(
   GroupName = "string",
+  Group = "string",
   Description = "string"
 )
 }

@@ -2,38 +2,78 @@
 % Please edit documentation in R/resourcegroups_operations.R
 \name{resourcegroups_list_group_resources}
 \alias{resourcegroups_list_group_resources}
-\title{Returns a list of ARNs of resources that are members of a specified
+\title{Returns a list of ARNs of the resources that are members of a specified
 resource group}
 \usage{
-resourcegroups_list_group_resources(GroupName, Filters, MaxResults,
-  NextToken)
+resourcegroups_list_group_resources(GroupName, Group, Filters,
+  MaxResults, NextToken)
 }
 \arguments{
-\item{GroupName}{[required] The name of the resource group.}
+\item{GroupName}{\emph{\strong{Deprecated - don't use this parameter. Use the \code{Group} request field
+instead.}}}
+
+\item{Group}{The name or the ARN of the resource group}
 
 \item{Filters}{Filters, formatted as ResourceFilter objects, that you want to apply to
-a ListGroupResources operation.
+a \code{ListGroupResources} operation. Filters the results to include only
+those of the specified resource types.
 \itemize{
 \item \code{resource-type} - Filter resources by their type. Specify up to five
-resource types in the format AWS::ServiceCode::ResourceType. For
-example, AWS::EC2::Instance, or AWS::S3::Bucket.
-}}
+resource types in the format \verb{AWS::ServiceCode::ResourceType}. For
+example, \verb{AWS::EC2::Instance}, or \verb{AWS::S3::Bucket}.
+}
 
-\item{MaxResults}{The maximum number of group member ARNs that are returned in a single
-call by ListGroupResources, in paginated output. By default, this number
-is 50.}
+When you specify a \code{resource-type} filter for \code{ListGroupResources}, AWS
+Resource Groups validates your filter resource types against the types
+that are defined in the query associated with the group. For example, if
+a group contains only S3 buckets because its query specifies only that
+resource type, but your \code{resource-type} filter includes EC2 instances,
+AWS Resource Groups does not filter for EC2 instances. In this case, a
+\code{ListGroupResources} request returns a \code{BadRequestException} error with
+a message similar to the following:
 
-\item{NextToken}{The NextToken value that is returned in a paginated ListGroupResources
-request. To get the next page of results, run the call again, add the
-NextToken parameter, and specify the NextToken value.}
+\verb{The resource types specified as filters in the request are not valid.}
+
+The error includes a list of resource types that failed the validation
+because they are not part of the query associated with the group. This
+validation doesn't occur when the group query specifies
+\code{AWS::AllSupported}, because a group based on such a query can contain
+any of the allowed resource types for the query type (tag-based or AWS
+CloudFormation stack-based queries).}
+
+\item{MaxResults}{The total number of results that you want included on each page of the
+response. If you do not include this parameter, it defaults to a value
+that is specific to the operation. If additional items exist beyond the
+maximum you specify, the \code{NextToken} response element is present and has
+a value (is not null). Include that value as the \code{NextToken} request
+parameter in the next call to the operation to get the next part of the
+results. Note that the service might return fewer results than the
+maximum even when there are more results available. You should check
+\code{NextToken} after every operation to ensure that you receive all of the
+results.}
+
+\item{NextToken}{The parameter for receiving additional results if you receive a
+\code{NextToken} response in a previous request. A \code{NextToken} response
+indicates that more output is available. Set this parameter to the value
+provided by a previous call's \code{NextToken} response to indicate where the
+output should continue from.}
 }
 \description{
-Returns a list of ARNs of resources that are members of a specified
+Returns a list of ARNs of the resources that are members of a specified
 resource group.
+}
+\details{
+\strong{Minimum permissions}
+
+To run this command, you must have the following permissions:
+\itemize{
+\item \code{resource-groups:ListGroupResources}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$list_group_resources(
   GroupName = "string",
+  Group = "string",
   Filters = list(
     list(
       Name = "resource-type",

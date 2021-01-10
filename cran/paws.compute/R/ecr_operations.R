@@ -271,7 +271,7 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #'
 #' @usage
 #' ecr_create_repository(repositoryName, tags, imageTagMutability,
-#'   imageScanningConfiguration)
+#'   imageScanningConfiguration, encryptionConfiguration)
 #'
 #' @param repositoryName &#91;required&#93; The name to use for the repository. The repository name may be specified
 #' on its own (such as `nginx-web-app`) or it can be prepended with a
@@ -286,9 +286,11 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #' image tags to be overwritten. If `IMMUTABLE` is specified, all image
 #' tags within the repository will be immutable which will prevent them
 #' from being overwritten.
-#' @param imageScanningConfiguration The image scanning configuration for the repository. This setting
-#' determines whether images are scanned for known vulnerabilities after
-#' being pushed to the repository.
+#' @param imageScanningConfiguration The image scanning configuration for the repository. This determines
+#' whether images are scanned for known vulnerabilities after being pushed
+#' to the repository.
+#' @param encryptionConfiguration The encryption configuration for the repository. This determines how the
+#' contents of your repository are encrypted at rest.
 #'
 #' @section Request syntax:
 #' ```
@@ -303,6 +305,10 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #'   imageTagMutability = "MUTABLE"|"IMMUTABLE",
 #'   imageScanningConfiguration = list(
 #'     scanOnPush = TRUE|FALSE
+#'   ),
+#'   encryptionConfiguration = list(
+#'     encryptionType = "AES256"|"KMS",
+#'     kmsKey = "string"
 #'   )
 #' )
 #' ```
@@ -319,14 +325,14 @@ ecr_complete_layer_upload <- function(registryId = NULL, repositoryName, uploadI
 #' @keywords internal
 #'
 #' @rdname ecr_create_repository
-ecr_create_repository <- function(repositoryName, tags = NULL, imageTagMutability = NULL, imageScanningConfiguration = NULL) {
+ecr_create_repository <- function(repositoryName, tags = NULL, imageTagMutability = NULL, imageScanningConfiguration = NULL, encryptionConfiguration = NULL) {
   op <- new_operation(
     name = "CreateRepository",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .ecr$create_repository_input(repositoryName = repositoryName, tags = tags, imageTagMutability = imageTagMutability, imageScanningConfiguration = imageScanningConfiguration)
+  input <- .ecr$create_repository_input(repositoryName = repositoryName, tags = tags, imageTagMutability = imageTagMutability, imageScanningConfiguration = imageScanningConfiguration, encryptionConfiguration = encryptionConfiguration)
   output <- .ecr$create_repository_output()
   config <- get_config()
   svc <- .ecr$service(config)
@@ -375,6 +381,38 @@ ecr_delete_lifecycle_policy <- function(registryId = NULL, repositoryName) {
   return(response)
 }
 .ecr$operations$delete_lifecycle_policy <- ecr_delete_lifecycle_policy
+
+#' Deletes the registry permissions policy
+#'
+#' Deletes the registry permissions policy.
+#'
+#' @usage
+#' ecr_delete_registry_policy()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_registry_policy()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_delete_registry_policy
+ecr_delete_registry_policy <- function() {
+  op <- new_operation(
+    name = "DeleteRegistryPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$delete_registry_policy_input()
+  output <- .ecr$delete_registry_policy_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$delete_registry_policy <- ecr_delete_registry_policy
 
 #' Deletes a repository
 #'
@@ -618,6 +656,40 @@ ecr_describe_images <- function(registryId = NULL, repositoryName, imageIds = NU
   return(response)
 }
 .ecr$operations$describe_images <- ecr_describe_images
+
+#' Describes the settings for a registry
+#'
+#' Describes the settings for a registry. The replication configuration for
+#' a repository can be created or updated with the
+#' PutReplicationConfiguration API action.
+#'
+#' @usage
+#' ecr_describe_registry()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_registry()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_describe_registry
+ecr_describe_registry <- function() {
+  op <- new_operation(
+    name = "DescribeRegistry",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$describe_registry_input()
+  output <- .ecr$describe_registry_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$describe_registry <- ecr_describe_registry
 
 #' Describes image repositories in a registry
 #'
@@ -916,6 +988,38 @@ ecr_get_lifecycle_policy_preview <- function(registryId = NULL, repositoryName, 
 }
 .ecr$operations$get_lifecycle_policy_preview <- ecr_get_lifecycle_policy_preview
 
+#' Retrieves the permissions policy for a registry
+#'
+#' Retrieves the permissions policy for a registry.
+#'
+#' @usage
+#' ecr_get_registry_policy()
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_registry_policy()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_get_registry_policy
+ecr_get_registry_policy <- function() {
+  op <- new_operation(
+    name = "GetRegistryPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$get_registry_policy_input()
+  output <- .ecr$get_registry_policy_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$get_registry_policy <- ecr_get_registry_policy
+
 #' Retrieves the repository policy for the specified repository
 #'
 #' Retrieves the repository policy for the specified repository.
@@ -1157,7 +1261,8 @@ ecr_list_tags_for_resource <- function(resourceArn) {
 #' does not contain the `mediaType` field, you must specify the
 #' `imageManifestMediaType` in the request.
 #' @param imageTag The tag to associate with the image. This parameter is required for
-#' images that use the Docker Image Manifest V2 Schema 2 or OCI formats.
+#' images that use the Docker Image Manifest V2 Schema 2 or Open Container
+#' Initiative (OCI) formats.
 #' @param imageDigest The image digest of the image manifest corresponding to the image.
 #'
 #' @section Request syntax:
@@ -1334,6 +1439,110 @@ ecr_put_lifecycle_policy <- function(registryId = NULL, repositoryName, lifecycl
   return(response)
 }
 .ecr$operations$put_lifecycle_policy <- ecr_put_lifecycle_policy
+
+#' Creates or updates the permissions policy for your registry
+#'
+#' Creates or updates the permissions policy for your registry.
+#' 
+#' A registry policy is used to specify permissions for another AWS account
+#' and is used when configuring cross-account replication. For more
+#' information, see [Registry
+#' permissions](https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry-permissions.html)
+#' in the *Amazon Elastic Container Registry User Guide*.
+#'
+#' @usage
+#' ecr_put_registry_policy(policyText)
+#'
+#' @param policyText &#91;required&#93; The JSON policy text to apply to your registry. The policy text follows
+#' the same format as IAM policy text. For more information, see [Registry
+#' permissions](https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry-permissions.html)
+#' in the *Amazon Elastic Container Registry User Guide*.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_registry_policy(
+#'   policyText = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_put_registry_policy
+ecr_put_registry_policy <- function(policyText) {
+  op <- new_operation(
+    name = "PutRegistryPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$put_registry_policy_input(policyText = policyText)
+  output <- .ecr$put_registry_policy_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$put_registry_policy <- ecr_put_registry_policy
+
+#' Creates or updates the replication configuration for a registry
+#'
+#' Creates or updates the replication configuration for a registry. The
+#' existing replication configuration for a repository can be retrieved
+#' with the DescribeRegistry API action. The first time the
+#' PutReplicationConfiguration API is called, a service-linked IAM role is
+#' created in your account for the replication process. For more
+#' information, see [Using Service-Linked Roles for Amazon
+#' ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/using-service-linked-roles.html)
+#' in the *Amazon Elastic Container Registry User Guide*.
+#' 
+#' When configuring cross-account replication, the destination account must
+#' grant the source account permission to replicate. This permission is
+#' controlled using a registry permissions policy. For more information,
+#' see PutRegistryPolicy.
+#'
+#' @usage
+#' ecr_put_replication_configuration(replicationConfiguration)
+#'
+#' @param replicationConfiguration &#91;required&#93; An object representing the replication configuration for a registry.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_replication_configuration(
+#'   replicationConfiguration = list(
+#'     rules = list(
+#'       list(
+#'         destinations = list(
+#'           list(
+#'             region = "string",
+#'             registryId = "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ecr_put_replication_configuration
+ecr_put_replication_configuration <- function(replicationConfiguration) {
+  op <- new_operation(
+    name = "PutReplicationConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ecr$put_replication_configuration_input(replicationConfiguration = replicationConfiguration)
+  output <- .ecr$put_replication_configuration_output()
+  config <- get_config()
+  svc <- .ecr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ecr$operations$put_replication_configuration <- ecr_put_replication_configuration
 
 #' Applies a repository policy to the specified repository to control
 #' access permissions

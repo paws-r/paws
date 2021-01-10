@@ -90,23 +90,21 @@ Example: \code{mySubnetgroup}}
 \item{KmsKeyId}{The AWS KMS key identifier to use when restoring an encrypted DB cluster
 from an encrypted DB cluster.
 
-The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are restoring a DB cluster with the same AWS
-account that owns the KMS encryption key used to encrypt the new DB
-cluster, then you can use the KMS key alias instead of the ARN for the
-KMS encryption key.
+The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
+name for the AWS KMS customer master key (CMK). To use a CMK in a
+different AWS account, specify the key ARN or alias ARN.
 
 You can restore to a new DB cluster and encrypt the new DB cluster with
-a KMS key that is different than the KMS key used to encrypt the source
-DB cluster. The new DB cluster is encrypted with the KMS key identified
-by the \code{KmsKeyId} parameter.
+a AWS KMS CMK that is different than the AWS KMS key used to encrypt the
+source DB cluster. The new DB cluster is encrypted with the AWS KMS CMK
+identified by the \code{KmsKeyId} parameter.
 
 If you don't specify a value for the \code{KmsKeyId} parameter, then the
 following occurs:
 \itemize{
 \item If the DB cluster is encrypted, then the restored DB cluster is
-encrypted using the KMS key that was used to encrypt the source DB
-cluster.
+encrypted using the AWS KMS CMK that was used to encrypt the source
+DB cluster.
 \item If the DB cluster isn't encrypted, then the restored DB cluster
 isn't encrypted.
 }
@@ -165,7 +163,7 @@ The domain must be created prior to this operation.
 
 For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
 Authentication to authenticate users that connect to the DB cluster. For
-more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/kerberos-authentication.html}{Kerberos Authentication}
+more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/database-authentication.html}{Kerberos Authentication}
 in the \emph{Amazon Aurora User Guide}.}
 
 \item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the

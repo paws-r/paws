@@ -14,7 +14,7 @@ NULL
 #' docdb_add_tags_to_resource(ResourceName, Tags)
 #'
 #' @param ResourceName &#91;required&#93; The Amazon DocumentDB resource that the tags are added to. This value is
-#' an Amazon Resource Name (ARN).
+#' an Amazon Resource Name .
 #' @param Tags &#91;required&#93; The tags to be assigned to the Amazon DocumentDB resource.
 #'
 #' @section Request syntax:
@@ -50,11 +50,11 @@ docdb_add_tags_to_resource <- function(ResourceName, Tags) {
 }
 .docdb$operations$add_tags_to_resource <- docdb_add_tags_to_resource
 
-#' Applies a pending maintenance action to a resource (for example, to a DB
-#' instance)
+#' Applies a pending maintenance action to a resource (for example, to an
+#' Amazon DocumentDB instance)
 #'
-#' Applies a pending maintenance action to a resource (for example, to a DB
-#' instance).
+#' Applies a pending maintenance action to a resource (for example, to an
+#' Amazon DocumentDB instance).
 #'
 #' @usage
 #' docdb_apply_pending_maintenance_action(ResourceIdentifier, ApplyAction,
@@ -130,7 +130,7 @@ docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyActi
 #' 
 #' -   If the source parameter group is in a different AWS Region than the
 #'     copy, specify a valid cluster parameter group ARN; for example,
-#'     `arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1`.
+#'     `arn:aws:rds:us-east-1:123456789012:sample-cluster:sample-parameter-group`.
 #' @param TargetDBClusterParameterGroupIdentifier &#91;required&#93; The identifier for the copied cluster parameter group.
 #' 
 #' Constraints:
@@ -188,11 +188,12 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' 
 #' To copy a cluster snapshot from a shared manual cluster snapshot,
 #' `SourceDBClusterSnapshotIdentifier` must be the Amazon Resource Name
-#' (ARN) of the shared cluster snapshot.
+#' (ARN) of the shared cluster snapshot. You can only copy a shared DB
+#' cluster snapshot, whether encrypted or not, in the same AWS Region.
 #' 
 #' To cancel the copy operation after it is in progress, delete the target
 #' cluster snapshot identified by `TargetDBClusterSnapshotIdentifier` while
-#' that DB cluster snapshot is in the *copying* status.
+#' that cluster snapshot is in the *copying* status.
 #'
 #' @usage
 #' docdb_copy_db_cluster_snapshot(SourceDBClusterSnapshotIdentifier,
@@ -202,12 +203,9 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' @param SourceDBClusterSnapshotIdentifier &#91;required&#93; The identifier of the cluster snapshot to copy. This parameter is not
 #' case sensitive.
 #' 
-#' You can't copy an encrypted, shared cluster snapshot from one AWS Region
-#' to another.
-#' 
 #' Constraints:
 #' 
-#' -   Must specify a valid system snapshot in the "available" state.
+#' -   Must specify a valid system snapshot in the *available* state.
 #' 
 #' -   If the source snapshot is in the same AWS Region as the copy,
 #'     specify a valid snapshot identifier.
@@ -245,38 +243,40 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 #' `KmsKeyId` to the AWS KMS key ID that you want to use to encrypt the
 #' copy of the cluster snapshot in the destination Region. AWS KMS
 #' encryption keys are specific to the AWS Region that they are created in,
-#' and you can't use encryption keys from one Region in another Region.
+#' and you can't use encryption keys from one AWS Region in another AWS
+#' Region.
 #' 
 #' If you copy an unencrypted cluster snapshot and specify a value for the
 #' `KmsKeyId` parameter, an error is returned.
 #' @param PreSignedUrl The URL that contains a Signature Version 4 signed request for the
 #' `CopyDBClusterSnapshot` API action in the AWS Region that contains the
 #' source cluster snapshot to copy. You must use the `PreSignedUrl`
-#' parameter when copying an encrypted cluster snapshot from another AWS
-#' Region.
+#' parameter when copying a cluster snapshot from another AWS Region.
+#' 
+#' If you are using an AWS SDK tool or the AWS CLI, you can specify
+#' `SourceRegion` (or `--source-region` for the AWS CLI) instead of
+#' specifying `PreSignedUrl` manually. Specifying `SourceRegion`
+#' autogenerates a pre-signed URL that is a valid request for the operation
+#' that can be executed in the source AWS Region.
 #' 
 #' The presigned URL must be a valid request for the
-#' `CopyDBSClusterSnapshot` API action that can be executed in the source
-#' AWS Region that contains the encrypted DB cluster snapshot to be copied.
-#' The presigned URL request must contain the following parameter values:
+#' `CopyDBClusterSnapshot` API action that can be executed in the source
+#' AWS Region that contains the cluster snapshot to be copied. The
+#' presigned URL request must contain the following parameter values:
 #' 
-#' -   `KmsKeyId` - The AWS KMS key identifier for the key to use to
-#'     encrypt the copy of the cluster snapshot in the destination AWS
-#'     Region. This is the same identifier for both the
-#'     `CopyDBClusterSnapshot` action that is called in the destination AWS
-#'     Region, and the action contained in the presigned URL.
+#' -   `SourceRegion` - The ID of the region that contains the snapshot to
+#'     be copied.
 #' 
-#' -   `DestinationRegion` - The name of the AWS Region that the DB cluster
-#'     snapshot will be created in.
+#' -   `SourceDBClusterSnapshotIdentifier` - The identifier for the the
+#'     encrypted cluster snapshot to be copied. This identifier must be in
+#'     the Amazon Resource Name (ARN) format for the source AWS Region. For
+#'     example, if you are copying an encrypted cluster snapshot from the
+#'     us-east-1 AWS Region, then your `SourceDBClusterSnapshotIdentifier`
+#'     looks something like the following:
+#'     `arn:aws:rds:us-east-1:12345678012:sample-cluster:sample-cluster-snapshot`.
 #' 
-#' -   `SourceDBClusterSnapshotIdentifier` - The cluster snapshot
-#'     identifier for the encrypted cluster snapshot to be copied. This
-#'     identifier must be in the Amazon Resource Name (ARN) format for the
-#'     source AWS Region. For example, if you are copying an encrypted
-#'     cluster snapshot from the us-west-2 AWS Region, then your
-#'     `SourceDBClusterSnapshotIdentifier` looks like the following
-#'     example:
-#'     `arn:aws:rds:us-west-2:123456789012:cluster-snapshot:my-cluster-snapshot-20161115`.
+#' -   `TargetDBClusterSnapshotIdentifier` - The identifier for the new
+#'     cluster snapshot to be created. This parameter isn't case sensitive.
 #' @param CopyTags Set to `true` to copy all tags from the source cluster snapshot to the
 #' target cluster snapshot, and otherwise `false`. The default is `false`.
 #' @param Tags The tags to be assigned to the cluster snapshot.
@@ -327,8 +327,8 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'   DBClusterIdentifier, DBClusterParameterGroupName, VpcSecurityGroupIds,
 #'   DBSubnetGroupName, Engine, EngineVersion, Port, MasterUsername,
 #'   MasterUserPassword, PreferredBackupWindow, PreferredMaintenanceWindow,
-#'   Tags, StorageEncrypted, KmsKeyId, EnableCloudwatchLogsExports,
-#'   DeletionProtection)
+#'   Tags, StorageEncrypted, KmsKeyId, PreSignedUrl,
+#'   EnableCloudwatchLogsExports, DeletionProtection)
 #'
 #' @param AvailabilityZones A list of Amazon EC2 Availability Zones that instances in the cluster
 #' can be created in.
@@ -362,7 +362,10 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' @param Engine &#91;required&#93; The name of the database engine to be used for this cluster.
 #' 
 #' Valid values: `docdb`
-#' @param EngineVersion The version number of the database engine to use.
+#' @param EngineVersion The version number of the database engine to use. The --engine-version
+#' will default to the latest major engine version. For production
+#' workloads, we recommend explicitly declaring this parameter with the
+#' intended major engine version.
 #' @param Port The port number on which the instances in the cluster accept
 #' connections.
 #' @param MasterUsername &#91;required&#93; The name of the master user for the cluster.
@@ -419,23 +422,18 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' 
 #' If an encryption key is not specified in `KmsKeyId`:
 #' 
-#' -   If `ReplicationSourceIdentifier` identifies an encrypted source,
-#'     then Amazon DocumentDB uses the encryption key that is used to
-#'     encrypt the source. Otherwise, Amazon DocumentDB uses your default
-#'     encryption key.
-#' 
-#' -   If the `StorageEncrypted` parameter is `true` and
-#'     `ReplicationSourceIdentifier` is not specified, Amazon DocumentDB
+#' -   If the `StorageEncrypted` parameter is `true`, Amazon DocumentDB
 #'     uses your default encryption key.
 #' 
 #' AWS KMS creates the default encryption key for your AWS account. Your
 #' AWS account has a different default encryption key for each AWS Region.
-#' 
-#' If you create a replica of an encrypted cluster in another AWS Region,
-#' you must set `KmsKeyId` to a KMS key ID that is valid in the destination
-#' AWS Region. This key is used to encrypt the replica in that AWS Region.
+#' @param PreSignedUrl Not currently supported.
 #' @param EnableCloudwatchLogsExports A list of log types that need to be enabled for exporting to Amazon
-#' CloudWatch Logs.
+#' CloudWatch Logs. You can enable audit logs or profiler logs. For more
+#' information, see [Auditing Amazon DocumentDB
+#' Events](https://docs.aws.amazon.com/documentdb/latest/developerguide/event-auditing.html)
+#' and [Profiling Amazon DocumentDB
+#' Operations](https://docs.aws.amazon.com/documentdb/latest/developerguide/profiling.html).
 #' @param DeletionProtection Specifies whether this cluster can be deleted. If `DeletionProtection`
 #' is enabled, the cluster cannot be deleted unless it is modified and
 #' `DeletionProtection` is disabled. `DeletionProtection` protects clusters
@@ -469,6 +467,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #'   ),
 #'   StorageEncrypted = TRUE|FALSE,
 #'   KmsKeyId = "string",
+#'   PreSignedUrl = "string",
 #'   EnableCloudwatchLogsExports = list(
 #'     "string"
 #'   ),
@@ -479,14 +478,14 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 #' @keywords internal
 #'
 #' @rdname docdb_create_db_cluster
-docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername, MasterUserPassword, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL) {
+docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername, MasterUserPassword, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableCloudwatchLogsExports = NULL, DeletionProtection = NULL) {
   op <- new_operation(
     name = "CreateDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection)
+  input <- .docdb$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DeletionProtection = DeletionProtection)
   output <- .docdb$create_db_cluster_output()
   config <- get_config()
   svc <- .docdb$service(config)
@@ -501,24 +500,23 @@ docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPer
 #' Creates a new cluster parameter group.
 #' 
 #' Parameters in a cluster parameter group apply to all of the instances in
-#' a DB cluster.
+#' a cluster.
 #' 
 #' A cluster parameter group is initially created with the default
-#' parameters for the database engine used by instances in the cluster. To
-#' provide custom values for any of the parameters, you must modify the
-#' group after you create it. After you create a DB cluster parameter
-#' group, you must associate it with your cluster. For the new DB cluster
-#' parameter group and associated settings to take effect, you must then
-#' reboot the instances in the cluster without failover.
-#' 
-#' After you create a cluster parameter group, you should wait at least 5
-#' minutes before creating your first cluster that uses that cluster
-#' parameter group as the default parameter group. This allows Amazon
-#' DocumentDB to fully complete the create action before the cluster
-#' parameter group is used as the default for a new cluster. This step is
-#' especially important for parameters that are critical when creating the
-#' default database for a cluster, such as the character set for the
-#' default database defined by the `character_set_database` parameter.
+#' parameters for the database engine used by instances in the cluster. In
+#' Amazon DocumentDB, you cannot make modifications directly to the
+#' `default.docdb3.6` cluster parameter group. If your Amazon DocumentDB
+#' cluster is using the default cluster parameter group and you want to
+#' modify a value in it, you must first [create a new parameter
+#' group](https://docs.aws.amazon.com/documentdb/latest/developerguide/) or
+#' [copy an existing parameter
+#' group](https://docs.aws.amazon.com/documentdb/latest/developerguide/),
+#' modify it, and then apply the modified parameter group to your cluster.
+#' For the new cluster parameter group and associated settings to take
+#' effect, you must then reboot the instances in the cluster without
+#' failover. For more information, see [Modifying Amazon DocumentDB Cluster
+#' Parameter
+#' Groups](https://docs.aws.amazon.com/documentdb/latest/developerguide/).
 #'
 #' @usage
 #' docdb_create_db_cluster_parameter_group(DBClusterParameterGroupName,
@@ -665,10 +663,6 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' Region.
 #' 
 #' Example: `us-east-1d`
-#' 
-#' Constraint: The `AvailabilityZone` parameter can't be specified if the
-#' `MultiAZ` parameter is set to `true`. The specified Availability Zone
-#' must be in the same AWS Region as the current endpoint.
 #' @param PreferredMaintenanceWindow The time range each week during which system maintenance can occur, in
 #' Universal Coordinated Time (UTC).
 #' 
@@ -1493,7 +1487,7 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
 #' @param Engine The database engine to return.
 #' @param EngineVersion The database engine version to return.
 #' 
-#' Example: `5.1.49`
+#' Example: `3.6.0`
 #' @param DBParameterGroupFamily The name of a specific parameter group family to return details for.
 #' 
 #' Constraints:

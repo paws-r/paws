@@ -20,7 +20,7 @@ display possible matches before users finish typing their queries. Can
 be limited to specific suggesters by name. By default, shows all
 suggesters and includes any pending changes to the configuration. Set
 the \code{Deployed} option to \code{true} to show the active configuration and
-exclude pending changes. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Search Suggestions}
+exclude pending changes. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html}{Getting Search Suggestions}
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{

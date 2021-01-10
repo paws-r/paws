@@ -67,10 +67,9 @@ Example: \code{mySubnetgroup}}
 
 Valid Values: \code{neptune}}
 
-\item{EngineVersion}{The version number of the database engine to use. Currently, setting
-this parameter has no effect.
+\item{EngineVersion}{The version number of the database engine to use for the new DB cluster.
 
-Example: \verb{1.0.1}}
+Example: \verb{1.0.2.1}}
 
 \item{Port}{The port number on which the instances in the DB cluster accept
 connections.
@@ -99,8 +98,8 @@ parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region. To see the time blocks available, see
-\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html}{Adjusting the Preferred Maintenance Window}
-in the \emph{Amazon Neptune User Guide.}
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/}{Adjusting the Preferred Maintenance Window} in the
+\emph{Amazon Neptune User Guide.}
 
 Constraints:
 \itemize{
@@ -117,8 +116,8 @@ Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each AWS Region, occurring on a random day of the
-week. To see the time blocks available, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html}{Adjusting the Preferred Maintenance Window}
-in the \emph{Amazon Neptune User Guide.}
+week. To see the time blocks available, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/}{Adjusting the Preferred Maintenance Window} in the
+\emph{Amazon Neptune User Guide.}
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
@@ -160,10 +159,7 @@ that AWS Region.}
 
 \item{PreSignedUrl}{This parameter is not currently supported.}
 
-\item{EnableIAMDatabaseAuthentication}{True to enable mapping of AWS Identity and Access Management (IAM)
-accounts to database accounts, and otherwise false.
-
-Default: \code{false}}
+\item{EnableIAMDatabaseAuthentication}{Not supported by Neptune.}
 
 \item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to
 CloudWatch Logs.}

@@ -4,10 +4,14 @@
 \alias{s3_get_bucket_replication}
 \title{Returns the replication configuration of a bucket}
 \usage{
-s3_get_bucket_replication(Bucket)
+s3_get_bucket_replication(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name for which to get the replication information.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Returns the replication configuration of a bucket.
@@ -29,18 +33,18 @@ If you include the \code{Filter} element in a replication configuration, you
 must also include the \code{DeleteMarkerReplication} and \code{Priority} elements.
 The response also returns those elements.
 
-For information about \code{GetBucketReplication} errors, see
-ReplicationErrorCodeList
+For information about \code{GetBucketReplication} errors, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ReplicationErrorCodeList}{List of replication-related error codes}
 
 The following operations are related to \code{GetBucketReplication}:
 \itemize{
-\item PutBucketReplication
-\item DeleteBucketReplication
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketReplication.html}{PutBucketReplication}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketReplication.html}{DeleteBucketReplication}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_replication(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

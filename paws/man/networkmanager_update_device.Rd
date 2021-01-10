@@ -4,13 +4,15 @@
 \alias{networkmanager_update_device}
 \title{Updates the details for an existing device}
 \usage{
-networkmanager_update_device(GlobalNetworkId, DeviceId, Description,
-  Type, Vendor, Model, SerialNumber, Location, SiteId)
+networkmanager_update_device(GlobalNetworkId, DeviceId, AWSLocation,
+  Description, Type, Vendor, Model, SerialNumber, Location, SiteId)
 }
 \arguments{
 \item{GlobalNetworkId}{[required] The ID of the global network.}
 
 \item{DeviceId}{[required] The ID of the device.}
+
+\item{AWSLocation}{The AWS location of the device.}
 
 \item{Description}{A description of the device.
 
@@ -42,6 +44,10 @@ any of the parameters, specify an empty string.
 \preformatted{svc$update_device(
   GlobalNetworkId = "string",
   DeviceId = "string",
+  AWSLocation = list(
+    Zone = "string",
+    SubnetArn = "string"
+  ),
   Description = "string",
   Type = "string",
   Vendor = "string",

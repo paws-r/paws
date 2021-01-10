@@ -11,7 +11,7 @@ organizations_list_children(ParentId, ChildType, NextToken, MaxResults)
 \item{ParentId}{[required] The unique identifier (ID) for the parent root or OU whose children you
 want to list.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a parent ID
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a parent ID
 string requires one of the following:
 \itemize{
 \item \strong{Root} - A string that begins with "r-" followed by from 4 to 32
@@ -54,9 +54,9 @@ empty set of results even when there are more results available. The
 \code{NextToken} response parameter value is \code{null} \emph{only} when there are no
 more results to display.
 
-This operation can be called only from the organization's master account
-or by a member account that is a delegated administrator for an AWS
-service.
+This operation can be called only from the organization's management
+account or by a member account that is a delegated administrator for an
+AWS service.
 }
 \section{Request syntax}{
 \preformatted{svc$list_children(

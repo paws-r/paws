@@ -10,8 +10,16 @@ test_that("describe_product_as_admin", {
   expect_error(svc$describe_product_as_admin(), NA)
 })
 
+test_that("describe_provisioned_product", {
+  expect_error(svc$describe_provisioned_product(), NA)
+})
+
 test_that("describe_provisioning_artifact", {
   expect_error(svc$describe_provisioning_artifact(), NA)
+})
+
+test_that("describe_provisioning_parameters", {
+  expect_error(svc$describe_provisioning_parameters(), NA)
 })
 
 test_that("list_accepted_portfolio_shares", {

@@ -11,13 +11,13 @@ organizations_move_account(AccountId, SourceParentId,
 \arguments{
 \item{AccountId}{[required] The unique identifier (ID) of the account that you want to move.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for an account ID
-string requires exactly 12 digits.}
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for an account
+ID string requires exactly 12 digits.}
 
 \item{SourceParentId}{[required] The unique identifier (ID) of the root or organizational unit that you
 want to move the account from.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a parent ID
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a parent ID
 string requires one of the following:
 \itemize{
 \item \strong{Root} - A string that begins with "r-" followed by from 4 to 32
@@ -31,7 +31,7 @@ dash and from 8 to 32 additional lowercase letters or digits.
 \item{DestinationParentId}{[required] The unique identifier (ID) of the root or organizational unit that you
 want to move the account to.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a parent ID
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a parent ID
 string requires one of the following:
 \itemize{
 \item \strong{Root} - A string that begins with "r-" followed by from 4 to 32
@@ -47,7 +47,7 @@ Moves an account from its current source parent root or organizational
 unit (OU) to the specified destination parent root or OU.
 }
 \details{
-This operation can be called only from the organization's master
+This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{

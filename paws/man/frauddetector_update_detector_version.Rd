@@ -35,8 +35,8 @@ The default behavior is \code{FIRST_MATCHED}.}
 }
 \description{
 Updates a detector version. The detector version attributes that you can
-update include models, external model endpoints, rules, and description.
-You can only update a \code{DRAFT} detector version.
+update include models, external model endpoints, rules, rule execution
+mode, and description. You can only update a \code{DRAFT} detector version.
 }
 \section{Request syntax}{
 \preformatted{svc$update_detector_version(
@@ -57,7 +57,8 @@ You can only update a \code{DRAFT} detector version.
     list(
       modelId = "string",
       modelType = "ONLINE_FRAUD_INSIGHTS",
-      modelVersionNumber = "string"
+      modelVersionNumber = "string",
+      arn = "string"
     )
   ),
   ruleExecutionMode = "ALL_MATCHED"|"FIRST_MATCHED"

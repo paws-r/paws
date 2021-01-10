@@ -2,37 +2,51 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_update_workforce}
 \alias{sagemaker_update_workforce}
-\title{Restricts access to tasks assigned to workers in the specified workforce
-to those within specific ranges of IP addresses}
+\title{Use this operation to update your workforce}
 \usage{
-sagemaker_update_workforce(WorkforceName, SourceIpConfig)
+sagemaker_update_workforce(WorkforceName, SourceIpConfig, OidcConfig)
 }
 \arguments{
-\item{WorkforceName}{[required] The name of the private workforce whose access you want to restrict.
-\code{WorkforceName} is automatically set to \code{default} when a workforce is
-created and cannot be modified.}
+\item{WorkforceName}{[required] The name of the private workforce that you want to update. You can find
+your workforce name by using the operation.}
 
 \item{SourceIpConfig}{A list of one to ten worker IP address ranges
 (\href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{CIDRs})
 that can be used to access tasks assigned to this workforce.
 
 Maximum: Ten CIDR values}
+
+\item{OidcConfig}{Use this parameter to update your OIDC Identity Provider (IdP)
+configuration for a workforce made using your own IdP.}
 }
 \description{
-Restricts access to tasks assigned to workers in the specified workforce
-to those within specific ranges of IP addresses. You specify allowed IP
-addresses by creating a list of up to ten
-\href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{CIDRs}.
+Use this operation to update your workforce. You can use this operation
+to require that workers use specific IP addresses to work on tasks and
+to update your OpenID Connect (OIDC) Identity Provider (IdP) workforce
+configuration.
 }
 \details{
+Use \code{SourceIpConfig} to restrict worker access to tasks to a specific
+range of IP addresses. You specify allowed IP addresses by creating a
+list of up to ten
+\href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{CIDRs}.
 By default, a workforce isn't restricted to specific IP addresses. If
 you specify a range of IP addresses, workers who attempt to access tasks
-using any IP address outside the specified range are denied access and
-get a \verb{Not Found} error message on the worker portal. After restricting
-access with this operation, you can see the allowed IP values for a
-private workforce with the operation.
+using any IP address outside the specified range are denied and get a
+\verb{Not Found} error message on the worker portal.
 
-This operation applies only to private workforces.
+Use \code{OidcConfig} to update the configuration of a workforce created
+using your own OIDC IdP.
+
+You can only update your OIDC IdP configuration when there are no work
+teams associated with your workforce. You can delete work teams using
+the operation.
+
+After restricting access to a range of IP addresses or updating your
+OIDC IdP configuration with this operation, you can view details about
+your update workforce using the operation.
+
+This operation only applies to private workforces.
 }
 \section{Request syntax}{
 \preformatted{svc$update_workforce(
@@ -41,6 +55,16 @@ This operation applies only to private workforces.
     Cidrs = list(
       "string"
     )
+  ),
+  OidcConfig = list(
+    ClientId = "string",
+    ClientSecret = "string",
+    Issuer = "string",
+    AuthorizationEndpoint = "string",
+    TokenEndpoint = "string",
+    UserInfoEndpoint = "string",
+    LogoutEndpoint = "string",
+    JwksUri = "string"
   )
 )
 }

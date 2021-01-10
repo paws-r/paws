@@ -8,15 +8,19 @@ lambda_create_event_source_mapping(EventSourceArn, FunctionName,
   Enabled, BatchSize, MaximumBatchingWindowInSeconds,
   ParallelizationFactor, StartingPosition, StartingPositionTimestamp,
   DestinationConfig, MaximumRecordAgeInSeconds,
-  BisectBatchOnFunctionError, MaximumRetryAttempts)
+  BisectBatchOnFunctionError, MaximumRetryAttempts,
+  TumblingWindowInSeconds, Topics, Queues, SourceAccessConfigurations,
+  SelfManagedEventSource, FunctionResponseTypes)
 }
 \arguments{
-\item{EventSourceArn}{[required] The Amazon Resource Name (ARN) of the event source.
+\item{EventSourceArn}{The Amazon Resource Name (ARN) of the event source.
 \itemize{
 \item \strong{Amazon Kinesis} - The ARN of the data stream or a stream
 consumer.
 \item \strong{Amazon DynamoDB Streams} - The ARN of the stream.
 \item \strong{Amazon Simple Queue Service} - The ARN of the queue.
+\item \strong{Amazon Managed Streaming for Apache Kafka} - The ARN of the
+cluster.
 }}
 
 \item{FunctionName}{[required] The name of the Lambda function.
@@ -34,23 +38,28 @@ consumer.
 The length constraint applies only to the full ARN. If you specify only
 the function name, it's limited to 64 characters in length.}
 
-\item{Enabled}{Disables the event source mapping to pause polling and invocation.}
+\item{Enabled}{If true, the event source mapping is active. Set to false to pause
+polling and invocation.}
 
 \item{BatchSize}{The maximum number of items to retrieve in a single batch.
 \itemize{
 \item \strong{Amazon Kinesis} - Default 100. Max 10,000.
 \item \strong{Amazon DynamoDB Streams} - Default 100. Max 1,000.
-\item \strong{Amazon Simple Queue Service} - Default 10. Max 10.
+\item \strong{Amazon Simple Queue Service} - Default 10. For standard queues
+the max is 10,000. For FIFO queues the max is 10.
+\item \strong{Amazon Managed Streaming for Apache Kafka} - Default 100. Max
+10,000.
+\item \strong{Self-Managed Apache Kafka} - Default 100. Max 10,000.
 }}
 
-\item{MaximumBatchingWindowInSeconds}{(Streams) The maximum amount of time to gather records before invoking
-the function, in seconds.}
+\item{MaximumBatchingWindowInSeconds}{(Streams and SQS standard queues) The maximum amount of time to gather
+records before invoking the function, in seconds.}
 
 \item{ParallelizationFactor}{(Streams) The number of batches to process from each shard concurrently.}
 
 \item{StartingPosition}{The position in a stream from which to start reading. Required for
-Amazon Kinesis and Amazon DynamoDB Streams sources. \code{AT_TIMESTAMP} is
-only supported for Amazon Kinesis streams.}
+Amazon Kinesis, Amazon DynamoDB, and Amazon MSK Streams sources.
+\code{AT_TIMESTAMP} is only supported for Amazon Kinesis streams.}
 
 \item{StartingPositionTimestamp}{With \code{StartingPosition} set to \code{AT_TIMESTAMP}, the time from which to
 start reading.}
@@ -58,14 +67,30 @@ start reading.}
 \item{DestinationConfig}{(Streams) An Amazon SQS queue or Amazon SNS topic destination for
 discarded records.}
 
-\item{MaximumRecordAgeInSeconds}{(Streams) The maximum age of a record that Lambda sends to a function
-for processing.}
+\item{MaximumRecordAgeInSeconds}{(Streams) Discard records older than the specified age. The default
+value is infinite (-1).}
 
 \item{BisectBatchOnFunctionError}{(Streams) If the function returns an error, split the batch in two and
 retry.}
 
-\item{MaximumRetryAttempts}{(Streams) The maximum number of times to retry when the function returns
-an error.}
+\item{MaximumRetryAttempts}{(Streams) Discard records after the specified number of retries. The
+default value is infinite (-1). When set to infinite (-1), failed
+records will be retried until the record expires.}
+
+\item{TumblingWindowInSeconds}{(Streams) The duration of a processing window in seconds. The range is
+between 1 second up to 15 minutes.}
+
+\item{Topics}{The name of the Kafka topic.}
+
+\item{Queues}{(MQ) The name of the Amazon MQ broker destination queue to consume.}
+
+\item{SourceAccessConfigurations}{An array of the authentication protocol, or the VPC components to secure
+your event source.}
+
+\item{SelfManagedEventSource}{The Self-Managed Apache Kafka cluster to send records.}
+
+\item{FunctionResponseTypes}{(Streams) A list of current response type enums applied to the event
+source mapping.}
 }
 \description{
 Creates a mapping between an event source and an AWS Lambda function.
@@ -77,6 +102,9 @@ For details about each event source type, see the following topics.
 \item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html}{Using AWS Lambda with Amazon DynamoDB}
 \item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html}{Using AWS Lambda with Amazon Kinesis}
 \item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html}{Using AWS Lambda with Amazon SQS}
+\item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html}{Using AWS Lambda with Amazon MQ}
+\item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html}{Using AWS Lambda with Amazon MSK}
+\item \href{https://docs.aws.amazon.com/lambda/latest/dg/kafka-smaa.html}{Using AWS Lambda with Self-Managed Apache Kafka}
 }
 
 The following error handling options are only available for stream
@@ -87,9 +115,11 @@ split the batch in two and retry.
 \item \code{DestinationConfig} - Send discarded records to an Amazon SQS queue
 or Amazon SNS topic.
 \item \code{MaximumRecordAgeInSeconds} - Discard records older than the
-specified age.
+specified age. The default value is infinite (-1). When set to
+infinite (-1), failed records are retried until the record expires
 \item \code{MaximumRetryAttempts} - Discard records after the specified number
-of retries.
+of retries. The default value is infinite (-1). When set to infinite
+(-1), failed records are retried until the record expires.
 \item \code{ParallelizationFactor} - Process multiple batches from each shard
 concurrently.
 }
@@ -116,7 +146,30 @@ concurrently.
   ),
   MaximumRecordAgeInSeconds = 123,
   BisectBatchOnFunctionError = TRUE|FALSE,
-  MaximumRetryAttempts = 123
+  MaximumRetryAttempts = 123,
+  TumblingWindowInSeconds = 123,
+  Topics = list(
+    "string"
+  ),
+  Queues = list(
+    "string"
+  ),
+  SourceAccessConfigurations = list(
+    list(
+      Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH",
+      URI = "string"
+    )
+  ),
+  SelfManagedEventSource = list(
+    Endpoints = list(
+      list(
+        "string"
+      )
+    )
+  ),
+  FunctionResponseTypes = list(
+    "ReportBatchItemFailures"
+  )
 )
 }
 }

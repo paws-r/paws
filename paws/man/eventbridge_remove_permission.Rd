@@ -5,11 +5,14 @@
 \title{Revokes the permission of another AWS account to be able to put events
 to the specified event bus}
 \usage{
-eventbridge_remove_permission(StatementId, EventBusName)
+eventbridge_remove_permission(StatementId, RemoveAllPermissions,
+  EventBusName)
 }
 \arguments{
-\item{StatementId}{[required] The statement ID corresponding to the account that is no longer allowed
+\item{StatementId}{The statement ID corresponding to the account that is no longer allowed
 to put events to the default event bus.}
+
+\item{RemoveAllPermissions}{Specifies whether to remove all permissions.}
 
 \item{EventBusName}{The name of the event bus to revoke permissions for. If you omit this,
 the default event bus is used.}
@@ -24,6 +27,7 @@ granted it permission with \code{PutPermission}. You can find the
 \section{Request syntax}{
 \preformatted{svc$remove_permission(
   StatementId = "string",
+  RemoveAllPermissions = TRUE|FALSE,
   EventBusName = "string"
 )
 }

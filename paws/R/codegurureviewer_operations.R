@@ -32,31 +32,23 @@ NULL
 #' in the *CodeGuru Reviewer User Guide.*
 #'
 #' @usage
-#' codegurureviewer_associate_repository(Repository, ClientRequestToken)
+#' codegurureviewer_associate_repository(Repository, ClientRequestToken,
+#'   Tags)
 #'
 #' @param Repository &#91;required&#93; The repository to associate.
-#' @param ClientRequestToken Unique, case-sensitive identifier that you provide to ensure the
-#' idempotency of the request.
-#' 
-#' To add a new repository association, this parameter specifies a unique
-#' identifier for the new repository association that helps ensure
-#' idempotency.
-#' 
-#' If you use the AWS CLI or one of the AWS SDKs to call this operation,
-#' you can leave this parameter empty. The CLI or SDK generates a random
-#' UUID for you and includes that in the request. If you don't use the SDK
-#' and instead generate a raw HTTP request to the Secrets Manager service
-#' endpoint, you must generate a ClientRequestToken yourself for new
-#' versions and include that value in the request.
-#' 
-#' You typically interact with this value if you implement your own retry
-#' logic and want to ensure that a given repository association is not
-#' created twice. We recommend that you generate a UUID-type value to
-#' ensure uniqueness within the specified repository association.
-#' 
-#' Amazon CodeGuru Reviewer uses this value to prevent the accidental
+#' @param ClientRequestToken Amazon CodeGuru Reviewer uses this value to prevent the accidental
 #' creation of duplicate repository associations if there are failures and
 #' retries.
+#' @param Tags An array of key-value pairs used to tag an associated repository. A tag
+#' is a custom attribute label with two parts:
+#' 
+#' -   A *tag key* (for example, `CostCenter`, `Environment`, `Project`, or
+#'     `Secret`). Tag keys are case sensitive.
+#' 
+#' -   An optional field known as a *tag value* (for example,
+#'     `111122223333`, `Production`, or a team name). Omitting the tag
+#'     value is the same as using an empty string. Like tag keys, tag
+#'     values are case sensitive.
 #'
 #' @section Request syntax:
 #' ```
@@ -76,21 +68,24 @@ NULL
 #'       Owner = "string"
 #'     )
 #'   ),
-#'   ClientRequestToken = "string"
+#'   ClientRequestToken = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname codegurureviewer_associate_repository
-codegurureviewer_associate_repository <- function(Repository, ClientRequestToken = NULL) {
+codegurureviewer_associate_repository <- function(Repository, ClientRequestToken = NULL, Tags = NULL) {
   op <- new_operation(
     name = "AssociateRepository",
     http_method = "POST",
     http_path = "/associations",
     paginator = list()
   )
-  input <- .codegurureviewer$associate_repository_input(Repository = Repository, ClientRequestToken = ClientRequestToken)
+  input <- .codegurureviewer$associate_repository_input(Repository = Repository, ClientRequestToken = ClientRequestToken, Tags = Tags)
   output <- .codegurureviewer$associate_repository_output()
   config <- get_config()
   svc <- .codegurureviewer$service(config)
@@ -99,6 +94,71 @@ codegurureviewer_associate_repository <- function(Repository, ClientRequestToken
   return(response)
 }
 .codegurureviewer$operations$associate_repository <- codegurureviewer_associate_repository
+
+#' Use to create a code review with a CodeReviewType of RepositoryAnalysis
+#'
+#' Use to create a code review with a
+#' [`CodeReviewType`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReviewType.html)
+#' of `RepositoryAnalysis`. This type of code review analyzes all code
+#' under a specified branch in an associated repository. `PullRequest` code
+#' reviews are automatically triggered by a pull request so cannot be
+#' created using this method.
+#'
+#' @usage
+#' codegurureviewer_create_code_review(Name, RepositoryAssociationArn,
+#'   Type, ClientRequestToken)
+#'
+#' @param Name &#91;required&#93; The name of the code review. The name of each code review in your AWS
+#' account must be unique.
+#' @param RepositoryAssociationArn &#91;required&#93; The Amazon Resource Name (ARN) of the
+#' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
+#' object. You can retrieve this ARN by calling
+#' [`ListRepositoryAssociations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
+#' .
+#' 
+#' A code review can only be created on an associated repository. This is
+#' the ARN of the associated repository.
+#' @param Type &#91;required&#93; The type of code review to create. This is specified using a
+#' [`CodeReviewType`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReviewType.html)
+#' object. You can create a code review only of type `RepositoryAnalysis`.
+#' @param ClientRequestToken Amazon CodeGuru Reviewer uses this value to prevent the accidental
+#' creation of duplicate code reviews if there are failures and retries.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_code_review(
+#'   Name = "string",
+#'   RepositoryAssociationArn = "string",
+#'   Type = list(
+#'     RepositoryAnalysis = list(
+#'       RepositoryHead = list(
+#'         BranchName = "string"
+#'       )
+#'     )
+#'   ),
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codegurureviewer_create_code_review
+codegurureviewer_create_code_review <- function(Name, RepositoryAssociationArn, Type, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "CreateCodeReview",
+    http_method = "POST",
+    http_path = "/codereviews",
+    paginator = list()
+  )
+  input <- .codegurureviewer$create_code_review_input(Name = Name, RepositoryAssociationArn = RepositoryAssociationArn, Type = Type, ClientRequestToken = ClientRequestToken)
+  output <- .codegurureviewer$create_code_review_output()
+  config <- get_config()
+  svc <- .codegurureviewer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codegurureviewer$operations$create_code_review <- codegurureviewer_create_code_review
 
 #' Returns the metadata associated with the code review along with its
 #' status
@@ -204,7 +264,9 @@ codegurureviewer_describe_recommendation_feedback <- function(CodeReviewArn, Rec
 #'
 #' @param AssociationArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
-#' object. You can retrieve this ARN by calling `ListRepositories`.
+#' object. You can retrieve this ARN by calling
+#' [`ListRepositoryAssociations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
+#' .
 #'
 #' @section Request syntax:
 #' ```
@@ -244,7 +306,9 @@ codegurureviewer_describe_repository_association <- function(AssociationArn) {
 #'
 #' @param AssociationArn &#91;required&#93; The Amazon Resource Name (ARN) of the
 #' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
-#' object.
+#' object. You can retrieve this ARN by calling
+#' [`ListRepositoryAssociations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
+#' .
 #'
 #' @section Request syntax:
 #' ```
@@ -321,7 +385,7 @@ codegurureviewer_disassociate_repository <- function(AssociationArn) {
 #'   RepositoryNames = list(
 #'     "string"
 #'   ),
-#'   Type = "PullRequest",
+#'   Type = "PullRequest"|"RepositoryAnalysis",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -489,10 +553,11 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
 #'     -   Setting up pull request notifications. This is required for pull
 #'         requests to trigger a CodeGuru Reviewer review.
 #' 
-#'         If your repository `ProviderType` is `GitHub` or `Bitbucket`,
-#'         CodeGuru Reviewer creates webhooks in your repository to trigger
-#'         CodeGuru Reviewer reviews. If you delete these webhooks, reviews
-#'         of code in your repository cannot be triggered.
+#'         If your repository `ProviderType` is `GitHub`,
+#'         `GitHub Enterprise Server`, or `Bitbucket`, CodeGuru Reviewer
+#'         creates webhooks in your repository to trigger CodeGuru Reviewer
+#'         reviews. If you delete these webhooks, reviews of code in your
+#'         repository cannot be triggered.
 #' 
 #'     -   Setting up source code access. This is required for CodeGuru
 #'         Reviewer to securely clone code in your repository.
@@ -501,11 +566,21 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
 #' 
 #' -   **Disassociating**: CodeGuru Reviewer is removing the repository's
 #'     pull request notifications and source code access.
+#' 
+#' -   **Disassociated**: CodeGuru Reviewer successfully disassociated the
+#'     repository. You can create a new association with this repository if
+#'     you want to review source code in it later. You can control access
+#'     to code reviews created in an associated repository with tags after
+#'     it has been disassociated. For more information, see [Using tags to
+#'     control access to associated
+#'     repositories](https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/auth-and-access-control-using-tags.html)
+#'     in the *Amazon CodeGuru Reviewer User Guide*.
 #' @param Names List of repository names to use as a filter.
 #' @param Owners List of owners to use as a filter. For AWS CodeCommit, it is the name of
 #' the CodeCommit account that was used to associate the repository. For
-#' other repository source providers, such as Bitbucket, this is name of
-#' the account that was used to associate the repository.
+#' other repository source providers, such as Bitbucket and GitHub
+#' Enterprise Server, this is name of the account that was used to
+#' associate the repository.
 #' @param MaxResults The maximum number of repository association results returned by
 #' `ListRepositoryAssociations` in paginated output. When this parameter is
 #' used, `ListRepositoryAssociations` only returns `maxResults` results in
@@ -530,7 +605,7 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
 #'     "CodeCommit"|"GitHub"|"Bitbucket"|"GitHubEnterpriseServer"
 #'   ),
 #'   States = list(
-#'     "Associated"|"Associating"|"Failed"|"Disassociating"
+#'     "Associated"|"Associating"|"Failed"|"Disassociating"|"Disassociated"
 #'   ),
 #'   Names = list(
 #'     "string"
@@ -562,6 +637,48 @@ codegurureviewer_list_repository_associations <- function(ProviderTypes = NULL, 
   return(response)
 }
 .codegurureviewer$operations$list_repository_associations <- codegurureviewer_list_repository_associations
+
+#' Returns the list of tags associated with an associated repository
+#' resource
+#'
+#' Returns the list of tags associated with an associated repository
+#' resource.
+#'
+#' @usage
+#' codegurureviewer_list_tags_for_resource(resourceArn)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the
+#' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
+#' object. You can retrieve this ARN by calling
+#' [`ListRepositoryAssociations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
+#' .
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_tags_for_resource(
+#'   resourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codegurureviewer_list_tags_for_resource
+codegurureviewer_list_tags_for_resource <- function(resourceArn) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "GET",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .codegurureviewer$list_tags_for_resource_input(resourceArn = resourceArn)
+  output <- .codegurureviewer$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .codegurureviewer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codegurureviewer$operations$list_tags_for_resource <- codegurureviewer_list_tags_for_resource
 
 #' Stores customer feedback for a CodeGuru Reviewer recommendation
 #'
@@ -611,3 +728,101 @@ codegurureviewer_put_recommendation_feedback <- function(CodeReviewArn, Recommen
   return(response)
 }
 .codegurureviewer$operations$put_recommendation_feedback <- codegurureviewer_put_recommendation_feedback
+
+#' Adds one or more tags to an associated repository
+#'
+#' Adds one or more tags to an associated repository.
+#'
+#' @usage
+#' codegurureviewer_tag_resource(resourceArn, Tags)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the
+#' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
+#' object. You can retrieve this ARN by calling
+#' [`ListRepositoryAssociations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
+#' .
+#' @param Tags &#91;required&#93; An array of key-value pairs used to tag an associated repository. A tag
+#' is a custom attribute label with two parts:
+#' 
+#' -   A *tag key* (for example, `CostCenter`, `Environment`, `Project`, or
+#'     `Secret`). Tag keys are case sensitive.
+#' 
+#' -   An optional field known as a *tag value* (for example,
+#'     `111122223333`, `Production`, or a team name). Omitting the tag
+#'     value is the same as using an empty string. Like tag keys, tag
+#'     values are case sensitive.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$tag_resource(
+#'   resourceArn = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codegurureviewer_tag_resource
+codegurureviewer_tag_resource <- function(resourceArn, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .codegurureviewer$tag_resource_input(resourceArn = resourceArn, Tags = Tags)
+  output <- .codegurureviewer$tag_resource_output()
+  config <- get_config()
+  svc <- .codegurureviewer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codegurureviewer$operations$tag_resource <- codegurureviewer_tag_resource
+
+#' Removes a tag from an associated repository
+#'
+#' Removes a tag from an associated repository.
+#'
+#' @usage
+#' codegurureviewer_untag_resource(resourceArn, TagKeys)
+#'
+#' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the
+#' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
+#' object. You can retrieve this ARN by calling
+#' [`ListRepositoryAssociations`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html)
+#' .
+#' @param TagKeys &#91;required&#93; A list of the keys for each tag you want to remove from an associated
+#' repository.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$untag_resource(
+#'   resourceArn = "string",
+#'   TagKeys = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codegurureviewer_untag_resource
+codegurureviewer_untag_resource <- function(resourceArn, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "DELETE",
+    http_path = "/tags/{resourceArn}",
+    paginator = list()
+  )
+  input <- .codegurureviewer$untag_resource_input(resourceArn = resourceArn, TagKeys = TagKeys)
+  output <- .codegurureviewer$untag_resource_output()
+  config <- get_config()
+  svc <- .codegurureviewer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codegurureviewer$operations$untag_resource <- codegurureviewer_untag_resource

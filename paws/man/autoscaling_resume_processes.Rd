@@ -2,8 +2,8 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_resume_processes}
 \alias{autoscaling_resume_processes}
-\title{Resumes the specified suspended automatic scaling processes, or all
-suspended process, for the specified Auto Scaling group}
+\title{Resumes the specified suspended auto scaling processes, or all suspended
+process, for the specified Auto Scaling group}
 \usage{
 autoscaling_resume_processes(AutoScalingGroupName, ScalingProcesses)
 }
@@ -26,11 +26,11 @@ autoscaling_resume_processes(AutoScalingGroupName, ScalingProcesses)
 If you omit this parameter, all processes are specified.}
 }
 \description{
-Resumes the specified suspended automatic scaling processes, or all
-suspended process, for the specified Auto Scaling group.
+Resumes the specified suspended auto scaling processes, or all suspended
+process, for the specified Auto Scaling group.
 }
 \details{
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html}{Suspending and Resuming Scaling Processes}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html}{Suspending and resuming scaling processes}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

@@ -2476,7 +2476,7 @@ codecommit_list_repositories_for_approval_rule_template <- function(approvalRule
 #' Gets information about AWS tags for a specified Amazon Resource Name
 #' (ARN) in AWS CodeCommit. For a list of valid resources in AWS
 #' CodeCommit, see [CodeCommit Resources and
-#' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats)
+#' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats)
 #' in the *AWS CodeCommit User Guide*.
 #'
 #' @usage
@@ -3386,7 +3386,7 @@ codecommit_put_repository_triggers <- function(repositoryName, triggers) {
 #'
 #' Adds or updates tags for a resource in AWS CodeCommit. For a list of
 #' valid resources in AWS CodeCommit, see [CodeCommit Resources and
-#' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats)
+#' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats)
 #' in the *AWS CodeCommit User Guide*.
 #'
 #' @usage
@@ -3484,7 +3484,7 @@ codecommit_test_repository_triggers <- function(repositoryName, triggers) {
 #'
 #' Removes tags for a resource in AWS CodeCommit. For a list of valid
 #' resources in AWS CodeCommit, see [CodeCommit Resources and
-#' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-iam-access-control-identity-based.html#arn-formats)
+#' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats)
 #' in the *AWS CodeCommit User Guide*.
 #'
 #' @usage

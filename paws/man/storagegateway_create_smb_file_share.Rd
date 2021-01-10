@@ -8,8 +8,9 @@ gateway}
 storagegateway_create_smb_file_share(ClientToken, GatewayARN,
   KMSEncrypted, KMSKey, Role, LocationARN, DefaultStorageClass, ObjectACL,
   ReadOnly, GuessMIMETypeEnabled, RequesterPays, SMBACLEnabled,
-  AdminUserList, ValidUserList, InvalidUserList, AuditDestinationARN,
-  Authentication, CaseSensitivity, Tags, FileShareName, CacheAttributes)
+  AccessBasedEnumeration, AdminUserList, ValidUserList, InvalidUserList,
+  AuditDestinationARN, Authentication, CaseSensitivity, Tags,
+  FileShareName, CacheAttributes, NotificationPolicy)
 }
 \arguments{
 \item{ClientToken}{[required] A unique string value that you supply that is used by file gateway to
@@ -75,6 +76,9 @@ in the \emph{AWS Storage Gateway User Guide}.
 
 Valid Values: \code{true} | \code{false}}
 
+\item{AccessBasedEnumeration}{The files and folders on this share will only be visible to users with
+read access.}
+
 \item{AdminUserList}{A list of users or groups in the Active Directory that will be granted
 administrator privileges on the file share. These users can do all file
 operations as the super-user. Acceptable formats include:
@@ -121,11 +125,13 @@ the maximum length for a tag's value is 256.}
 \code{LocationARN}.}
 
 \item{CacheAttributes}{Refresh cache information.}
+
+\item{NotificationPolicy}{The notification policy of the file share.}
 }
 \description{
 Creates a Server Message Block (SMB) file share on an existing file
 gateway. In Storage Gateway, a file share is a file system mount point
-backed by Amazon S3 cloud storage. Storage Gateway expose file shares
+backed by Amazon S3 cloud storage. Storage Gateway exposes file shares
 using an SMB interface. This operation is only supported for file
 gateways.
 }
@@ -154,6 +160,7 @@ share.
   GuessMIMETypeEnabled = TRUE|FALSE,
   RequesterPays = TRUE|FALSE,
   SMBACLEnabled = TRUE|FALSE,
+  AccessBasedEnumeration = TRUE|FALSE,
   AdminUserList = list(
     "string"
   ),
@@ -175,7 +182,8 @@ share.
   FileShareName = "string",
   CacheAttributes = list(
     CacheStaleTimeoutInSeconds = 123
-  )
+  ),
+  NotificationPolicy = "string"
 )
 }
 }

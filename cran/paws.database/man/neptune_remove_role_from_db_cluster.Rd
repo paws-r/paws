@@ -5,7 +5,8 @@
 \title{Disassociates an Identity and Access Management (IAM) role from a DB
 cluster}
 \usage{
-neptune_remove_role_from_db_cluster(DBClusterIdentifier, RoleArn)
+neptune_remove_role_from_db_cluster(DBClusterIdentifier, RoleArn,
+  FeatureName)
 }
 \arguments{
 \item{DBClusterIdentifier}{[required] The name of the DB cluster to disassociate the IAM role from.}
@@ -13,6 +14,10 @@ neptune_remove_role_from_db_cluster(DBClusterIdentifier, RoleArn)
 \item{RoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role to disassociate from the
 DB cluster, for example
 \verb{arn:aws:iam::123456789012:role/NeptuneAccessRole}.}
+
+\item{FeatureName}{The name of the feature for the DB cluster that the IAM role is to be
+disassociated from. For the list of supported feature names, see
+DBEngineVersion.}
 }
 \description{
 Disassociates an Identity and Access Management (IAM) role from a DB
@@ -21,7 +26,8 @@ cluster.
 \section{Request syntax}{
 \preformatted{svc$remove_role_from_db_cluster(
   DBClusterIdentifier = "string",
-  RoleArn = "string"
+  RoleArn = "string",
+  FeatureName = "string"
 )
 }
 }

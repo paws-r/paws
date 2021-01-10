@@ -34,9 +34,9 @@ List the AWS services for which the specified account is a delegated
 administrator.
 }
 \details{
-This operation can be called only from the organization's master account
-or by a member account that is a delegated administrator for an AWS
-service.
+This operation can be called only from the organization's management
+account or by a member account that is a delegated administrator for an
+AWS service.
 }
 \section{Request syntax}{
 \preformatted{svc$list_delegated_services_for_account(

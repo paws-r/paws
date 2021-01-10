@@ -11,7 +11,7 @@ organizations_list_targets_for_policy(PolicyId, NextToken, MaxResults)
 \item{PolicyId}{[required] The unique identifier (ID) of the policy whose attachments you want to
 know.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} for a policy ID
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} for a policy ID
 string requires "p-" followed by from 8 to 128 lowercase or uppercase
 letters, digits, or the underscore character (\\_).}
 
@@ -43,9 +43,9 @@ empty set of results even when there are more results available. The
 \code{NextToken} response parameter value is \code{null} \emph{only} when there are no
 more results to display.
 
-This operation can be called only from the organization's master account
-or by a member account that is a delegated administrator for an AWS
-service.
+This operation can be called only from the organization's management
+account or by a member account that is a delegated administrator for an
+AWS service.
 }
 \section{Request syntax}{
 \preformatted{svc$list_targets_for_policy(

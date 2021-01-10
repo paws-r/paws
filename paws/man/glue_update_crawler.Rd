@@ -5,8 +5,8 @@
 \title{Updates a crawler}
 \usage{
 glue_update_crawler(Name, Role, DatabaseName, Description, Targets,
-  Schedule, Classifiers, TablePrefix, SchemaChangePolicy, Configuration,
-  CrawlerSecurityConfiguration)
+  Schedule, Classifiers, TablePrefix, SchemaChangePolicy, RecrawlPolicy,
+  LineageConfiguration, Configuration, CrawlerSecurityConfiguration)
 }
 \arguments{
 \item{Name}{[required] Name of the new crawler.}
@@ -34,6 +34,11 @@ classification.}
 
 \item{SchemaChangePolicy}{The policy for the crawler's update and deletion behavior.}
 
+\item{RecrawlPolicy}{A policy that specifies whether to crawl the entire dataset again, or to
+crawl only folders that were added since the last crawler run.}
+
+\item{LineageConfiguration}{Specifies data lineage configuration settings for the crawler.}
+
 \item{Configuration}{Crawler configuration information. This versioned JSON string allows
 users to specify aspects of a crawler's behavior. For more information,
 see \href{https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html}{Configuring a Crawler}.}
@@ -57,7 +62,8 @@ Updates a crawler. If a crawler is running, you must stop it using
         Path = "string",
         Exclusions = list(
           "string"
-        )
+        ),
+        ConnectionName = "string"
       )
     ),
     JdbcTargets = list(
@@ -67,6 +73,13 @@ Updates a crawler. If a crawler is running, you must stop it using
         Exclusions = list(
           "string"
         )
+      )
+    ),
+    MongoDBTargets = list(
+      list(
+        ConnectionName = "string",
+        Path = "string",
+        ScanAll = TRUE|FALSE
       )
     ),
     DynamoDBTargets = list(
@@ -93,6 +106,12 @@ Updates a crawler. If a crawler is running, you must stop it using
   SchemaChangePolicy = list(
     UpdateBehavior = "LOG"|"UPDATE_IN_DATABASE",
     DeleteBehavior = "LOG"|"DELETE_FROM_DATABASE"|"DEPRECATE_IN_DATABASE"
+  ),
+  RecrawlPolicy = list(
+    RecrawlBehavior = "CRAWL_EVERYTHING"|"CRAWL_NEW_FOLDERS_ONLY"
+  ),
+  LineageConfiguration = list(
+    CrawlerLineageSettings = "ENABLE"|"DISABLE"
   ),
   Configuration = "string",
   CrawlerSecurityConfiguration = "string"

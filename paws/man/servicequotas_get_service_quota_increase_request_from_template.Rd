@@ -2,22 +2,22 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_get_service_quota_increase_request_from_template}
 \alias{servicequotas_get_service_quota_increase_request_from_template}
-\title{Returns the details of the service quota increase request in your
-template}
+\title{Retrieves information about the specified quota increase request in your
+quota request template}
 \usage{
 servicequotas_get_service_quota_increase_request_from_template(
   ServiceCode, QuotaCode, AwsRegion)
 }
 \arguments{
-\item{ServiceCode}{[required] Specifies the service that you want to use.}
+\item{ServiceCode}{[required] The service identifier.}
 
-\item{QuotaCode}{[required] Specifies the quota you want.}
+\item{QuotaCode}{[required] The quota identifier.}
 
-\item{AwsRegion}{[required] Specifies the AWS Region for the quota that you want to use.}
+\item{AwsRegion}{[required] The AWS Region.}
 }
 \description{
-Returns the details of the service quota increase request in your
-template.
+Retrieves information about the specified quota increase request in your
+quota request template.
 }
 \section{Request syntax}{
 \preformatted{svc$get_service_quota_increase_request_from_template(

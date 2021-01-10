@@ -25,8 +25,8 @@ objects to define any combination of dimension filters. For more
 information, see
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}.}
 
-\item{Metrics}{Which metrics are returned in the query. For more information about
-blended and unblended rates, see \href{http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the "blended" annotation appear on some line items in my bill?}.
+\item{Metrics}{[required] Which metrics are returned in the query. For more information about
+blended and unblended rates, see \href{https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the "blended" annotation appear on some line items in my bill?}.
 
 Valid values are \code{AmortizedCost}, \code{BlendedCost}, \code{NetAmortizedCost},
 \code{NetUnblendedCost}, \code{NormalizedUsageAmount}, \code{UnblendedCost}, and
@@ -43,7 +43,7 @@ meaningful \code{UsageQuantity} metrics, filter by \code{UsageType} or
 \code{Metrics} is required for \code{GetCostAndUsage} requests.}
 
 \item{GroupBy}{You can group AWS costs using up to two different groups, either
-dimensions, tag keys, or both.
+dimensions, tag keys, cost categories, or any two group by types.
 
 When you group by tag key, you get all tag values, including empty
 strings.
@@ -64,8 +64,12 @@ filter and group your data by various dimensions, such as \code{SERVICE} or
 \code{AZ}, in a specific time range. For a complete list of valid dimensions,
 see the
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html}{GetDimensionValues}
-operation. Master accounts in an organization in AWS Organizations have
-access to all member accounts.
+operation. Management account in an organization in AWS Organizations
+have access to all member accounts.
+}
+\details{
+For information about filter limitations, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-limits.html}{Quotas and restrictions}
+in the \emph{Billing and Cost Management User Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_cost_and_usage(
@@ -83,12 +87,12 @@ access to all member accounts.
     ),
     Not = list(),
     Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
       Values = list(
         "string"
       ),
       MatchOptions = list(
-        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     Tags = list(
@@ -97,13 +101,16 @@ access to all member accounts.
         "string"
       ),
       MatchOptions = list(
-        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     CostCategories = list(
       Key = "string",
       Values = list(
         "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     )
   ),

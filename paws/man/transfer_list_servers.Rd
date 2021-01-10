@@ -8,13 +8,13 @@ with your AWS account}
 transfer_list_servers(MaxResults, NextToken)
 }
 \arguments{
-\item{MaxResults}{Specifies the number of file transfer protocol-enabled servers to return
-as a response to the \code{ListServers} query.}
+\item{MaxResults}{Specifies the number of servers to return as a response to the
+\code{ListServers} query.}
 
-\item{NextToken}{When additional results are obtained from the\code{ListServers} command, a
+\item{NextToken}{When additional results are obtained from the \code{ListServers} command, a
 \code{NextToken} parameter is returned in the output. You can then pass the
 \code{NextToken} parameter in a subsequent command to continue listing
-additional file transfer protocol-enabled servers.}
+additional servers.}
 }
 \description{
 Lists the file transfer protocol-enabled servers that are associated

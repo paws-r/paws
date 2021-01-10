@@ -4,7 +4,7 @@
 \alias{snowball_list_compatible_images}
 \title{This action returns a list of the different Amazon EC2 Amazon Machine
 Images (AMIs) that are owned by your AWS account that would be supported
-for use on a Snowball Edge device}
+for use on a Snow device}
 \usage{
 snowball_list_compatible_images(MaxResults, NextToken)
 }
@@ -19,9 +19,9 @@ the starting point for your list of returned images.}
 \description{
 This action returns a list of the different Amazon EC2 Amazon Machine
 Images (AMIs) that are owned by your AWS account that would be supported
-for use on a Snowball Edge device. Currently, supported AMIs are based
-on the CentOS 7 (x86\\_64) - with Updates HVM, Ubuntu Server 14.04 LTS
-(HVM), and Ubuntu 16.04 LTS - Xenial (HVM) images, available on the AWS
+for use on a Snow device. Currently, supported AMIs are based on the
+CentOS 7 (x86\\_64) - with Updates HVM, Ubuntu Server 14.04 LTS (HVM),
+and Ubuntu 16.04 LTS - Xenial (HVM) images, available on the AWS
 Marketplace.
 }
 \section{Request syntax}{

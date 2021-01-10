@@ -12,7 +12,7 @@ cloudsearch_delete_analysis_scheme(DomainName, AnalysisSchemeName)
 \item{AnalysisSchemeName}{[required] The name of the analysis scheme you want to delete.}
 }
 \description{
-Deletes an analysis scheme. For more information, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html}{Configuring Analysis Schemes}
+Deletes an analysis scheme. For more information, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html}{Configuring Analysis Schemes}
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{

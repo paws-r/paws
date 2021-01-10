@@ -13,6 +13,10 @@ invitations to Security Hub.}
 \description{
 Declines invitations to become a member account.
 }
+\details{
+This operation is only used by accounts that are not part of an
+organization. Organization accounts do not receive invitations.
+}
 \section{Request syntax}{
 \preformatted{svc$decline_invitations(
   AccountIds = list(

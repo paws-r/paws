@@ -2,7 +2,8 @@
 % Please edit documentation in R/autoscaling_operations.R
 \name{autoscaling_update_auto_scaling_group}
 \alias{autoscaling_update_auto_scaling_group}
-\title{Updates the configuration for the specified Auto Scaling group}
+\title{We strongly recommend that all Auto Scaling groups use launch templates
+to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2}
 \usage{
 autoscaling_update_auto_scaling_group(AutoScalingGroupName,
   LaunchConfigurationName, LaunchTemplate, MixedInstancesPolicy, MinSize,
@@ -10,7 +11,7 @@ autoscaling_update_auto_scaling_group(AutoScalingGroupName,
   HealthCheckType, HealthCheckGracePeriod, PlacementGroup,
   VPCZoneIdentifier, TerminationPolicies,
   NewInstancesProtectedFromScaleIn, ServiceLinkedRoleARN,
-  MaxInstanceLifetime)
+  MaxInstanceLifetime, CapacityRebalance)
 }
 \arguments{
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
@@ -21,21 +22,11 @@ autoscaling_update_auto_scaling_group(AutoScalingGroupName,
 
 \item{LaunchTemplate}{The launch template and version to use to specify the updates. If you
 specify \code{LaunchTemplate} in your update request, you can't specify
-\code{LaunchConfigurationName} or \code{MixedInstancesPolicy}.
+\code{LaunchConfigurationName} or \code{MixedInstancesPolicy}.}
 
-For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LaunchTemplateSpecification.html}{LaunchTemplateSpecification}
-in the \emph{Amazon EC2 Auto Scaling API Reference}.}
-
-\item{MixedInstancesPolicy}{An embedded object that specifies a mixed instances policy.
-
-In your call to \code{UpdateAutoScalingGroup}, you can make changes to the
-policy that is specified. All optional parameters are left unchanged if
-not specified.
-
-For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_MixedInstancesPolicy.html}{MixedInstancesPolicy}
-in the \emph{Amazon EC2 Auto Scaling API Reference} and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html}{Auto Scaling Groups with Multiple Instance Types and Purchase Options}
+\item{MixedInstancesPolicy}{An embedded object that specifies a mixed instances policy. When you
+make changes to an existing policy, all optional parameters are left
+unchanged if not specified. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html}{Auto Scaling groups with multiple instance types and purchase options}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MinSize}{The minimum size of the Auto Scaling group.}
@@ -45,22 +36,20 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 With a mixed instances policy that uses instance weighting, Amazon EC2
 Auto Scaling may need to go above \code{MaxSize} to meet your capacity
 requirements. In this event, Amazon EC2 Auto Scaling will never go above
-\code{MaxSize} by more than your maximum instance weight (weights that define
-how many capacity units each instance contributes to the capacity of the
+\code{MaxSize} by more than your largest instance weight (weights that define
+how many units each instance contributes to the desired capacity of the
 group).}
 
 \item{DesiredCapacity}{The desired capacity is the initial capacity of the Auto Scaling group
 after this operation completes and the capacity it attempts to maintain.
-
 This number must be greater than or equal to the minimum size of the
 group and less than or equal to the maximum size of the group.}
 
 \item{DefaultCooldown}{The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default value is \code{300}.
-
 This setting applies when using simple scaling policies, but not when
 using other scaling policies or scheduled scaling. For more information,
-see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling Cooldowns for Amazon EC2 Auto Scaling}
+see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html}{Scaling cooldowns for Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{AvailabilityZones}{One or more Availability Zones for the group.}
@@ -72,60 +61,58 @@ checks or the load balancer health checks.}
 
 \item{HealthCheckGracePeriod}{The amount of time, in seconds, that Amazon EC2 Auto Scaling waits
 before checking the health status of an EC2 instance that has come into
-service. The default value is \code{0}.
-
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html#health-check-grace-period}{Health Check Grace Period}
+service. The default value is \code{0}. For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html#health-check-grace-period}{Health check grace period}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
-Required if you are adding an \code{ELB} health check.}
+Conditional: Required if you are adding an \code{ELB} health check.}
 
-\item{PlacementGroup}{The name of the placement group into which to launch your instances, if
-any. A placement group is a logical grouping of instances within a
-single Availability Zone. You cannot specify multiple Availability Zones
-and a placement group. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups}
+\item{PlacementGroup}{The name of an existing placement group into which to launch your
+instances, if any. A placement group is a logical grouping of instances
+within a single Availability Zone. You cannot specify multiple
+Availability Zones and a placement group. For more information, see
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html}{Placement Groups}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.}
 
-\item{VPCZoneIdentifier}{A comma-separated list of subnet IDs for virtual private cloud (VPC).
-
+\item{VPCZoneIdentifier}{A comma-separated list of subnet IDs for a virtual private cloud (VPC).
 If you specify \code{VPCZoneIdentifier} with \code{AvailabilityZones}, the subnets
 that you specify for this parameter must reside in those Availability
 Zones.}
 
-\item{TerminationPolicies}{A standalone termination policy or a list of termination policies used
-to select the instance to terminate. The policies are executed in the
-order that they are listed.
-
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html}{Controlling Which Instances Auto Scaling Terminates During Scale In}
+\item{TerminationPolicies}{A policy or a list of policies that are used to select the instances to
+terminate. The policies are executed in the order that you list them.
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html}{Controlling which Auto Scaling instances terminate during scale in}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{NewInstancesProtectedFromScaleIn}{Indicates whether newly launched instances are protected from
-termination by Amazon EC2 Auto Scaling when scaling in.
-
-For more information about preventing instances from terminating on
-scale in, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection}{Instance Protection}
+termination by Amazon EC2 Auto Scaling when scaling in. For more
+information about preventing instances from terminating on scale in, see
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection}{Instance scale-in protection}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{ServiceLinkedRoleARN}{The Amazon Resource Name (ARN) of the service-linked role that the Auto
 Scaling group uses to call other AWS services on your behalf. For more
-information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-service-linked-role.html}{Service-Linked Roles}
+information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-service-linked-role.html}{Service-linked roles}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
 \item{MaxInstanceLifetime}{The maximum amount of time, in seconds, that an instance can be in
-service. The default is null.
+service. The default is null. If specified, the value must be either 0
+or a number equal to or greater than 86,400 seconds (1 day). To clear a
+previously set value, specify a new value of 0. For more information,
+see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html}{Replacing Auto Scaling instances based on maximum instance lifetime}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 
-This parameter is optional, but if you specify a value for it, you must
-specify a value of at least 604,800 seconds (7 days). To clear a
-previously set value, specify a new value of 0.
-
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html}{Replacing Auto Scaling Instances Based on Maximum Instance Lifetime}
-in the \emph{Amazon EC2 Auto Scaling User Guide}.
-
-Valid Range: Minimum value of 0.}
+\item{CapacityRebalance}{Enables or disables Capacity Rebalancing. For more information, see
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/capacity-rebalance.html}{Amazon EC2 Auto Scaling Capacity Rebalancing}
+in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{
-Updates the configuration for the specified Auto Scaling group.
+\strong{We strongly recommend that all Auto Scaling groups use launch
+templates to ensure full functionality for Amazon EC2 Auto Scaling and
+Amazon EC2.}
 }
 \details{
+Updates the configuration for the specified Auto Scaling group.
+
 To update an Auto Scaling group, specify the name of the group and the
 parameter that you want to change. Any parameters that you don't specify
 are not changed by this update request. The new settings take effect on
@@ -186,7 +173,12 @@ policies, you can update them by calling the PutScalingPolicy API.
       Overrides = list(
         list(
           InstanceType = "string",
-          WeightedCapacity = "string"
+          WeightedCapacity = "string",
+          LaunchTemplateSpecification = list(
+            LaunchTemplateId = "string",
+            LaunchTemplateName = "string",
+            Version = "string"
+          )
         )
       )
     ),
@@ -215,7 +207,8 @@ policies, you can update them by calling the PutScalingPolicy API.
   ),
   NewInstancesProtectedFromScaleIn = TRUE|FALSE,
   ServiceLinkedRoleARN = "string",
-  MaxInstanceLifetime = 123
+  MaxInstanceLifetime = 123,
+  CapacityRebalance = TRUE|FALSE
 )
 }
 }

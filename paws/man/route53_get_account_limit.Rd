@@ -37,7 +37,7 @@ in the \emph{Amazon Route 53 Developer Guide}. To request a higher limit,
 
 You can also view account limits in AWS Trusted Advisor. Sign in to the
 AWS Management Console and open the Trusted Advisor console at
-\href{https://console.aws.amazon.com/trustedadvisor}{https://console.aws.amazon.com/trustedadvisor/}.
+\href{https://console.aws.amazon.com/trustedadvisor/home}{https://console.aws.amazon.com/trustedadvisor/}.
 Then choose \strong{Service limits} in the navigation pane.
 }
 \section{Request syntax}{

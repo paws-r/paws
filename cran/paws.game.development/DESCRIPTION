@@ -1,6 +1,6 @@
 Package: paws.game.development
 Title: Amazon Web Services Game Development Services
-Version: 0.1.9
+Version: 0.1.10
 Authors@R: 
     c(person(given = "David",
              family = "Kretch",

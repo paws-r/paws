@@ -5,7 +5,7 @@
 \title{Updates the settings of a data store}
 \usage{
 iotanalytics_update_datastore(datastoreName, retentionPeriod,
-  datastoreStorage)
+  datastoreStorage, fileFormatConfiguration)
 }
 \arguments{
 \item{datastoreName}{[required] The name of the data store to be updated.}
@@ -14,10 +14,18 @@ iotanalytics_update_datastore(datastoreName, retentionPeriod,
 retention period cannot be updated if the data store's S3 storage is
 customer-managed.}
 
-\item{datastoreStorage}{Where data store data is stored. You may choose one of
-"serviceManagedS3" or "customerManagedS3" storage. If not specified, the
-default is "serviceManagedS3". This cannot be changed after the data
-store is created.}
+\item{datastoreStorage}{Where data store data is stored. You can choose one of
+\code{serviceManagedS3} or \code{customerManagedS3} storage. If not specified, the
+default is\code{serviceManagedS3}. You cannot change this storage option
+after the data store is created.}
+
+\item{fileFormatConfiguration}{Contains the configuration information of file formats. AWS IoT
+Analytics data stores support JSON and
+\href{https://parquet.apache.org/}{Parquet}.
+
+The default file format is JSON. You can specify only one format.
+
+You can't change the file format after you create the data store.}
 }
 \description{
 Updates the settings of a data store.
@@ -35,6 +43,19 @@ Updates the settings of a data store.
       bucket = "string",
       keyPrefix = "string",
       roleArn = "string"
+    )
+  ),
+  fileFormatConfiguration = list(
+    jsonConfiguration = list(),
+    parquetConfiguration = list(
+      schemaDefinition = list(
+        columns = list(
+          list(
+            name = "string",
+            type = "string"
+          )
+        )
+      )
     )
   )
 )

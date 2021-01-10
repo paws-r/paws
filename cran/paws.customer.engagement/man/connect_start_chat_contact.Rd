@@ -10,7 +10,14 @@ connect_start_chat_contact(InstanceId, ContactFlowId, Attributes,
 \arguments{
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance.}
 
-\item{ContactFlowId}{[required] The identifier of the contact flow for the chat.}
+\item{ContactFlowId}{[required] The identifier of the contact flow for initiating the chat. To see the
+ContactFlowId in the Amazon Connect console user interface, on the
+navigation menu go to \strong{Routing}, \strong{Contact Flows}. Choose the contact
+flow. On the contact flow page, under the name of the contact flow,
+choose \strong{Show additional flow information}. The ContactFlowId is the
+last part of the ARN, shown here in bold:
+
+arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/contact-flow/\strong{846ec553-a005-41c0-8341-xxxxxxxxxxxx}}
 
 \item{Attributes}{A custom key-value pair using an attribute map. The attributes are
 standard Amazon Connect attributes, and can be accessed in contact flows
@@ -39,6 +46,19 @@ subscribe to the participant’s connection for the created chat within 5
 minutes. This is achieved by invoking
 \href{https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html}{CreateParticipantConnection}
 with WEBSOCKET and CONNECTION\\_CREDENTIALS.
+
+A 429 error occurs in two situations:
+\itemize{
+\item API rate limit is exceeded. API TPS throttling returns a
+\code{TooManyRequests} exception from the API Gateway.
+\item The \href{https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html}{quota for concurrent active chats}
+is exceeded. Active chat throttling returns a
+\code{LimitExceededException}.
+}
+
+For more information about how chat works, see
+\href{https://docs.aws.amazon.com/connect/latest/adminguide/chat.html}{Chat}
+in the \emph{Amazon Connect Administrator Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$start_chat_contact(

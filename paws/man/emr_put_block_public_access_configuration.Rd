@@ -30,8 +30,8 @@ access is enabled by default in that Region.}
 \description{
 Creates or updates an Amazon EMR block public access configuration for
 your AWS account in the current Region. For more information see
-\href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/configure-block-public-access.html}{Configure Block Public Access for Amazon EMR}
-in the \emph{Amazon EMR Management Guide}.
+\href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/}{Configure Block Public Access for Amazon EMR} in the
+\emph{Amazon EMR Management Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_block_public_access_configuration(

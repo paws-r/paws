@@ -2,31 +2,32 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_list_game_server_groups}
 \alias{gamelift_list_game_server_groups}
-\title{This action is part of Amazon GameLift FleetIQ with game server groups,
-which is in preview release and is subject to change}
+\title{This operation is used with the Amazon GameLift FleetIQ solution and
+game server groups}
 \usage{
 gamelift_list_game_server_groups(Limit, NextToken)
 }
 \arguments{
 \item{Limit}{The maximum number of results to return. Use this parameter with
-\code{NextToken} to get results as a set of sequential pages.}
+\code{NextToken} to get results as a set of sequential segments.}
 
-\item{NextToken}{A token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.}
+\item{NextToken}{A token that indicates the start of the next sequential segment of
+results. Use the token returned with the previous call to this
+operation. To start at the beginning of the result set, do not specify a
+value.}
 }
 \description{
-\strong{This action is part of Amazon GameLift FleetIQ with game server
-groups, which is in preview release and is subject to change.}
+\strong{This operation is used with the Amazon GameLift FleetIQ solution and
+game server groups.}
 }
 \details{
 Retrieves information on all game servers groups that exist in the
-current AWS account for the selected region. Use the pagination
-parameters to retrieve results in a set of sequential pages.
+current AWS account for the selected Region. Use the pagination
+parameters to retrieve results in a set of sequential segments.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html}{GameLift FleetIQ Guide}
+\href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html}{GameLift FleetIQ Guide}
 
 \strong{Related operations}
 \itemize{
@@ -37,6 +38,7 @@ parameters to retrieve results in a set of sequential pages.
 \item DeleteGameServerGroup
 \item ResumeGameServerGroup
 \item SuspendGameServerGroup
+\item DescribeGameServerInstances
 }
 }
 \section{Request syntax}{

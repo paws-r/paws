@@ -5,10 +5,13 @@
 \title{Retrieves a list that describes one or more specified images, if the
 image identifiers are provided}
 \usage{
-workspaces_describe_workspace_images(ImageIds, NextToken, MaxResults)
+workspaces_describe_workspace_images(ImageIds, ImageType, NextToken,
+  MaxResults)
 }
 \arguments{
 \item{ImageIds}{The identifier of the image.}
+
+\item{ImageType}{The type (owned or shared) of the image.}
 
 \item{NextToken}{If you received a \code{NextToken} from a previous call that was paginated,
 provide this token to receive the next set of results.}
@@ -25,6 +28,7 @@ described.
   ImageIds = list(
     "string"
   ),
+  ImageType = "OWNED"|"SHARED",
   NextToken = "string",
   MaxResults = 123
 )

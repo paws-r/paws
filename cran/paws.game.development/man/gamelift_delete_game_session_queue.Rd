@@ -12,9 +12,9 @@ names must be unique within each Region. You can use either the queue ID
 or ARN value.}
 }
 \description{
-Deletes a game session queue. This action means that any
-StartGameSessionPlacement requests that reference this queue will fail.
-To delete a queue, specify the queue name.
+Deletes a game session queue. Once a queue is successfully deleted,
+unfulfilled StartGameSessionPlacement requests that reference the queue
+will fail. To delete a queue, specify the queue name.
 }
 \details{
 \strong{Learn more}

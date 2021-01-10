@@ -30,7 +30,7 @@ the consumers that are currently registered with a given data stream.
 The description of a consumer contains its name and ARN.
 }
 \details{
-This operation has a limit of five transactions per second per account.
+This operation has a limit of five transactions per second per stream.
 }
 \section{Request syntax}{
 \preformatted{svc$deregister_stream_consumer(

@@ -44,7 +44,7 @@ the rule by \code{ConfigRuleName}, \code{ConfigRuleId}, or \code{ConfigRuleArn} 
 
 The maximum number of rules that AWS Config supports is 150.
 
-For information about requesting a rule limit increase, see \href{http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config}{AWS Config Limits}
+For information about requesting a rule limit increase, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config}{AWS Config Limits}
 in the \emph{AWS General Reference Guide}.
 
 For more information about developing and using AWS Config rules, see

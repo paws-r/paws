@@ -14,14 +14,11 @@ elbv2_add_tags(ResourceArns, Tags)
 \description{
 Adds the specified tags to the specified Elastic Load Balancing
 resource. You can tag your Application Load Balancers, Network Load
-Balancers, and your target groups.
+Balancers, Gateway Load Balancers, target groups, listeners, and rules.
 }
 \details{
 Each tag consists of a key and an optional value. If a resource already
 has a tag with the same key, \code{AddTags} updates its value.
-
-To list the current tags for your resources, use DescribeTags. To remove
-tags from your resources, use RemoveTags.
 }
 \section{Request syntax}{
 \preformatted{svc$add_tags(

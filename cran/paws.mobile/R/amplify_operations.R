@@ -11,11 +11,11 @@ NULL
 #' amplify_create_app(name, description, repository, platform,
 #'   iamServiceRoleArn, oauthToken, accessToken, environmentVariables,
 #'   enableBranchAutoBuild, enableBranchAutoDeletion, enableBasicAuth,
-#'   basicAuthCredentials, customRules, tags, buildSpec,
+#'   basicAuthCredentials, customRules, tags, buildSpec, customHeaders,
 #'   enableAutoBranchCreation, autoBranchCreationPatterns,
 #'   autoBranchCreationConfig)
 #'
-#' @param name &#91;required&#93; The name for the Amplify app.
+#' @param name &#91;required&#93; The name for an Amplify app.
 #' @param description The description for an Amplify app.
 #' @param repository The repository for an Amplify app.
 #' @param platform The platform or framework for an Amplify app.
@@ -37,9 +37,10 @@ NULL
 #' @param customRules The custom rewrite and redirect rules for an Amplify app.
 #' @param tags The tag for an Amplify app.
 #' @param buildSpec The build specification (build spec) for an Amplify app.
-#' @param enableAutoBranchCreation Enables automated branch creation for the Amplify app.
-#' @param autoBranchCreationPatterns The automated branch creation glob patterns for the Amplify app.
-#' @param autoBranchCreationConfig The automated branch creation configuration for the Amplify app.
+#' @param customHeaders The custom HTTP headers for an Amplify app.
+#' @param enableAutoBranchCreation Enables automated branch creation for an Amplify app.
+#' @param autoBranchCreationPatterns The automated branch creation glob patterns for an Amplify app.
+#' @param autoBranchCreationConfig The automated branch creation configuration for an Amplify app.
 #'
 #' @section Request syntax:
 #' ```
@@ -70,6 +71,7 @@ NULL
 #'     "string"
 #'   ),
 #'   buildSpec = "string",
+#'   customHeaders = "string",
 #'   enableAutoBranchCreation = TRUE|FALSE,
 #'   autoBranchCreationPatterns = list(
 #'     "string"
@@ -83,6 +85,7 @@ NULL
 #'     ),
 #'     basicAuthCredentials = "string",
 #'     enableBasicAuth = TRUE|FALSE,
+#'     enablePerformanceMode = TRUE|FALSE,
 #'     buildSpec = "string",
 #'     enablePullRequestPreview = TRUE|FALSE,
 #'     pullRequestEnvironmentName = "string"
@@ -93,14 +96,14 @@ NULL
 #' @keywords internal
 #'
 #' @rdname amplify_create_app
-amplify_create_app <- function(name, description = NULL, repository = NULL, platform = NULL, iamServiceRoleArn = NULL, oauthToken = NULL, accessToken = NULL, environmentVariables = NULL, enableBranchAutoBuild = NULL, enableBranchAutoDeletion = NULL, enableBasicAuth = NULL, basicAuthCredentials = NULL, customRules = NULL, tags = NULL, buildSpec = NULL, enableAutoBranchCreation = NULL, autoBranchCreationPatterns = NULL, autoBranchCreationConfig = NULL) {
+amplify_create_app <- function(name, description = NULL, repository = NULL, platform = NULL, iamServiceRoleArn = NULL, oauthToken = NULL, accessToken = NULL, environmentVariables = NULL, enableBranchAutoBuild = NULL, enableBranchAutoDeletion = NULL, enableBasicAuth = NULL, basicAuthCredentials = NULL, customRules = NULL, tags = NULL, buildSpec = NULL, customHeaders = NULL, enableAutoBranchCreation = NULL, autoBranchCreationPatterns = NULL, autoBranchCreationConfig = NULL) {
   op <- new_operation(
     name = "CreateApp",
     http_method = "POST",
     http_path = "/apps",
     paginator = list()
   )
-  input <- .amplify$create_app_input(name = name, description = description, repository = repository, platform = platform, iamServiceRoleArn = iamServiceRoleArn, oauthToken = oauthToken, accessToken = accessToken, environmentVariables = environmentVariables, enableBranchAutoBuild = enableBranchAutoBuild, enableBranchAutoDeletion = enableBranchAutoDeletion, enableBasicAuth = enableBasicAuth, basicAuthCredentials = basicAuthCredentials, customRules = customRules, tags = tags, buildSpec = buildSpec, enableAutoBranchCreation = enableAutoBranchCreation, autoBranchCreationPatterns = autoBranchCreationPatterns, autoBranchCreationConfig = autoBranchCreationConfig)
+  input <- .amplify$create_app_input(name = name, description = description, repository = repository, platform = platform, iamServiceRoleArn = iamServiceRoleArn, oauthToken = oauthToken, accessToken = accessToken, environmentVariables = environmentVariables, enableBranchAutoBuild = enableBranchAutoBuild, enableBranchAutoDeletion = enableBranchAutoDeletion, enableBasicAuth = enableBasicAuth, basicAuthCredentials = basicAuthCredentials, customRules = customRules, tags = tags, buildSpec = buildSpec, customHeaders = customHeaders, enableAutoBranchCreation = enableAutoBranchCreation, autoBranchCreationPatterns = autoBranchCreationPatterns, autoBranchCreationConfig = autoBranchCreationConfig)
   output <- .amplify$create_app_output()
   config <- get_config()
   svc <- .amplify$service(config)
@@ -160,9 +163,9 @@ amplify_create_backend_environment <- function(appId, environmentName, stackName
 #' @usage
 #' amplify_create_branch(appId, branchName, description, stage, framework,
 #'   enableNotification, enableAutoBuild, environmentVariables,
-#'   basicAuthCredentials, enableBasicAuth, tags, buildSpec, ttl,
-#'   displayName, enablePullRequestPreview, pullRequestEnvironmentName,
-#'   backendEnvironmentArn)
+#'   basicAuthCredentials, enableBasicAuth, enablePerformanceMode, tags,
+#'   buildSpec, ttl, displayName, enablePullRequestPreview,
+#'   pullRequestEnvironmentName, backendEnvironmentArn)
 #'
 #' @param appId &#91;required&#93; The unique ID for an Amplify app.
 #' @param branchName &#91;required&#93; The name for the branch.
@@ -174,12 +177,18 @@ amplify_create_backend_environment <- function(appId, environmentName, stackName
 #' @param environmentVariables The environment variables for the branch.
 #' @param basicAuthCredentials The basic authorization credentials for the branch.
 #' @param enableBasicAuth Enables basic authorization for the branch.
+#' @param enablePerformanceMode Enables performance mode for the branch.
+#' 
+#' Performance mode optimizes for faster hosting performance by keeping
+#' content cached at the edge for a longer interval. When performance mode
+#' is enabled, hosting configuration or code changes can take up to 10
+#' minutes to roll out.
 #' @param tags The tag for the branch.
 #' @param buildSpec The build specification (build spec) for the branch.
 #' @param ttl The content Time To Live (TTL) for the website in seconds.
 #' @param displayName The display name for a branch. This is used as the default domain
 #' prefix.
-#' @param enablePullRequestPreview Enables pull request preview for this branch.
+#' @param enablePullRequestPreview Enables pull request previews for this branch.
 #' @param pullRequestEnvironmentName The Amplify environment name for the pull request.
 #' @param backendEnvironmentArn The Amazon Resource Name (ARN) for a backend environment that is part of
 #' an Amplify app.
@@ -199,6 +208,7 @@ amplify_create_backend_environment <- function(appId, environmentName, stackName
 #'   ),
 #'   basicAuthCredentials = "string",
 #'   enableBasicAuth = TRUE|FALSE,
+#'   enablePerformanceMode = TRUE|FALSE,
 #'   tags = list(
 #'     "string"
 #'   ),
@@ -214,14 +224,14 @@ amplify_create_backend_environment <- function(appId, environmentName, stackName
 #' @keywords internal
 #'
 #' @rdname amplify_create_branch
-amplify_create_branch <- function(appId, branchName, description = NULL, stage = NULL, framework = NULL, enableNotification = NULL, enableAutoBuild = NULL, environmentVariables = NULL, basicAuthCredentials = NULL, enableBasicAuth = NULL, tags = NULL, buildSpec = NULL, ttl = NULL, displayName = NULL, enablePullRequestPreview = NULL, pullRequestEnvironmentName = NULL, backendEnvironmentArn = NULL) {
+amplify_create_branch <- function(appId, branchName, description = NULL, stage = NULL, framework = NULL, enableNotification = NULL, enableAutoBuild = NULL, environmentVariables = NULL, basicAuthCredentials = NULL, enableBasicAuth = NULL, enablePerformanceMode = NULL, tags = NULL, buildSpec = NULL, ttl = NULL, displayName = NULL, enablePullRequestPreview = NULL, pullRequestEnvironmentName = NULL, backendEnvironmentArn = NULL) {
   op <- new_operation(
     name = "CreateBranch",
     http_method = "POST",
     http_path = "/apps/{appId}/branches",
     paginator = list()
   )
-  input <- .amplify$create_branch_input(appId = appId, branchName = branchName, description = description, stage = stage, framework = framework, enableNotification = enableNotification, enableAutoBuild = enableAutoBuild, environmentVariables = environmentVariables, basicAuthCredentials = basicAuthCredentials, enableBasicAuth = enableBasicAuth, tags = tags, buildSpec = buildSpec, ttl = ttl, displayName = displayName, enablePullRequestPreview = enablePullRequestPreview, pullRequestEnvironmentName = pullRequestEnvironmentName, backendEnvironmentArn = backendEnvironmentArn)
+  input <- .amplify$create_branch_input(appId = appId, branchName = branchName, description = description, stage = stage, framework = framework, enableNotification = enableNotification, enableAutoBuild = enableAutoBuild, environmentVariables = environmentVariables, basicAuthCredentials = basicAuthCredentials, enableBasicAuth = enableBasicAuth, enablePerformanceMode = enablePerformanceMode, tags = tags, buildSpec = buildSpec, ttl = ttl, displayName = displayName, enablePullRequestPreview = enablePullRequestPreview, pullRequestEnvironmentName = pullRequestEnvironmentName, backendEnvironmentArn = backendEnvironmentArn)
   output <- .amplify$create_branch_output()
   config <- get_config()
   svc <- .amplify$service(config)
@@ -1482,7 +1492,7 @@ amplify_untag_resource <- function(resourceArn, tagKeys) {
 #' amplify_update_app(appId, name, description, platform,
 #'   iamServiceRoleArn, environmentVariables, enableBranchAutoBuild,
 #'   enableBranchAutoDeletion, enableBasicAuth, basicAuthCredentials,
-#'   customRules, buildSpec, enableAutoBranchCreation,
+#'   customRules, buildSpec, customHeaders, enableAutoBranchCreation,
 #'   autoBranchCreationPatterns, autoBranchCreationConfig, repository,
 #'   oauthToken, accessToken)
 #'
@@ -1500,10 +1510,11 @@ amplify_untag_resource <- function(resourceArn, tagKeys) {
 #' @param basicAuthCredentials The basic authorization credentials for an Amplify app.
 #' @param customRules The custom redirect and rewrite rules for an Amplify app.
 #' @param buildSpec The build specification (build spec) for an Amplify app.
-#' @param enableAutoBranchCreation Enables automated branch creation for the Amplify app.
-#' @param autoBranchCreationPatterns Describes the automated branch creation glob patterns for the Amplify
+#' @param customHeaders The custom HTTP headers for an Amplify app.
+#' @param enableAutoBranchCreation Enables automated branch creation for an Amplify app.
+#' @param autoBranchCreationPatterns Describes the automated branch creation glob patterns for an Amplify
 #' app.
-#' @param autoBranchCreationConfig The automated branch creation configuration for the Amplify app.
+#' @param autoBranchCreationConfig The automated branch creation configuration for an Amplify app.
 #' @param repository The name of the repository for an Amplify app
 #' @param oauthToken The OAuth token for a third-party source control system for an Amplify
 #' app. The token is used to create a webhook and a read-only deploy key.
@@ -1536,6 +1547,7 @@ amplify_untag_resource <- function(resourceArn, tagKeys) {
 #'     )
 #'   ),
 #'   buildSpec = "string",
+#'   customHeaders = "string",
 #'   enableAutoBranchCreation = TRUE|FALSE,
 #'   autoBranchCreationPatterns = list(
 #'     "string"
@@ -1549,6 +1561,7 @@ amplify_untag_resource <- function(resourceArn, tagKeys) {
 #'     ),
 #'     basicAuthCredentials = "string",
 #'     enableBasicAuth = TRUE|FALSE,
+#'     enablePerformanceMode = TRUE|FALSE,
 #'     buildSpec = "string",
 #'     enablePullRequestPreview = TRUE|FALSE,
 #'     pullRequestEnvironmentName = "string"
@@ -1562,14 +1575,14 @@ amplify_untag_resource <- function(resourceArn, tagKeys) {
 #' @keywords internal
 #'
 #' @rdname amplify_update_app
-amplify_update_app <- function(appId, name = NULL, description = NULL, platform = NULL, iamServiceRoleArn = NULL, environmentVariables = NULL, enableBranchAutoBuild = NULL, enableBranchAutoDeletion = NULL, enableBasicAuth = NULL, basicAuthCredentials = NULL, customRules = NULL, buildSpec = NULL, enableAutoBranchCreation = NULL, autoBranchCreationPatterns = NULL, autoBranchCreationConfig = NULL, repository = NULL, oauthToken = NULL, accessToken = NULL) {
+amplify_update_app <- function(appId, name = NULL, description = NULL, platform = NULL, iamServiceRoleArn = NULL, environmentVariables = NULL, enableBranchAutoBuild = NULL, enableBranchAutoDeletion = NULL, enableBasicAuth = NULL, basicAuthCredentials = NULL, customRules = NULL, buildSpec = NULL, customHeaders = NULL, enableAutoBranchCreation = NULL, autoBranchCreationPatterns = NULL, autoBranchCreationConfig = NULL, repository = NULL, oauthToken = NULL, accessToken = NULL) {
   op <- new_operation(
     name = "UpdateApp",
     http_method = "POST",
     http_path = "/apps/{appId}",
     paginator = list()
   )
-  input <- .amplify$update_app_input(appId = appId, name = name, description = description, platform = platform, iamServiceRoleArn = iamServiceRoleArn, environmentVariables = environmentVariables, enableBranchAutoBuild = enableBranchAutoBuild, enableBranchAutoDeletion = enableBranchAutoDeletion, enableBasicAuth = enableBasicAuth, basicAuthCredentials = basicAuthCredentials, customRules = customRules, buildSpec = buildSpec, enableAutoBranchCreation = enableAutoBranchCreation, autoBranchCreationPatterns = autoBranchCreationPatterns, autoBranchCreationConfig = autoBranchCreationConfig, repository = repository, oauthToken = oauthToken, accessToken = accessToken)
+  input <- .amplify$update_app_input(appId = appId, name = name, description = description, platform = platform, iamServiceRoleArn = iamServiceRoleArn, environmentVariables = environmentVariables, enableBranchAutoBuild = enableBranchAutoBuild, enableBranchAutoDeletion = enableBranchAutoDeletion, enableBasicAuth = enableBasicAuth, basicAuthCredentials = basicAuthCredentials, customRules = customRules, buildSpec = buildSpec, customHeaders = customHeaders, enableAutoBranchCreation = enableAutoBranchCreation, autoBranchCreationPatterns = autoBranchCreationPatterns, autoBranchCreationConfig = autoBranchCreationConfig, repository = repository, oauthToken = oauthToken, accessToken = accessToken)
   output <- .amplify$update_app_output()
   config <- get_config()
   svc <- .amplify$service(config)
@@ -1586,8 +1599,8 @@ amplify_update_app <- function(appId, name = NULL, description = NULL, platform 
 #' @usage
 #' amplify_update_branch(appId, branchName, description, framework, stage,
 #'   enableNotification, enableAutoBuild, environmentVariables,
-#'   basicAuthCredentials, enableBasicAuth, buildSpec, ttl, displayName,
-#'   enablePullRequestPreview, pullRequestEnvironmentName,
+#'   basicAuthCredentials, enableBasicAuth, enablePerformanceMode, buildSpec,
+#'   ttl, displayName, enablePullRequestPreview, pullRequestEnvironmentName,
 #'   backendEnvironmentArn)
 #'
 #' @param appId &#91;required&#93; The unique ID for an Amplify app.
@@ -1600,11 +1613,17 @@ amplify_update_app <- function(appId, name = NULL, description = NULL, platform 
 #' @param environmentVariables The environment variables for the branch.
 #' @param basicAuthCredentials The basic authorization credentials for the branch.
 #' @param enableBasicAuth Enables basic authorization for the branch.
+#' @param enablePerformanceMode Enables performance mode for the branch.
+#' 
+#' Performance mode optimizes for faster hosting performance by keeping
+#' content cached at the edge for a longer interval. When performance mode
+#' is enabled, hosting configuration or code changes can take up to 10
+#' minutes to roll out.
 #' @param buildSpec The build specification (build spec) for the branch.
 #' @param ttl The content Time to Live (TTL) for the website in seconds.
 #' @param displayName The display name for a branch. This is used as the default domain
 #' prefix.
-#' @param enablePullRequestPreview Enables pull request preview for this branch.
+#' @param enablePullRequestPreview Enables pull request previews for this branch.
 #' @param pullRequestEnvironmentName The Amplify environment name for the pull request.
 #' @param backendEnvironmentArn The Amazon Resource Name (ARN) for a backend environment that is part of
 #' an Amplify app.
@@ -1624,6 +1643,7 @@ amplify_update_app <- function(appId, name = NULL, description = NULL, platform 
 #'   ),
 #'   basicAuthCredentials = "string",
 #'   enableBasicAuth = TRUE|FALSE,
+#'   enablePerformanceMode = TRUE|FALSE,
 #'   buildSpec = "string",
 #'   ttl = "string",
 #'   displayName = "string",
@@ -1636,14 +1656,14 @@ amplify_update_app <- function(appId, name = NULL, description = NULL, platform 
 #' @keywords internal
 #'
 #' @rdname amplify_update_branch
-amplify_update_branch <- function(appId, branchName, description = NULL, framework = NULL, stage = NULL, enableNotification = NULL, enableAutoBuild = NULL, environmentVariables = NULL, basicAuthCredentials = NULL, enableBasicAuth = NULL, buildSpec = NULL, ttl = NULL, displayName = NULL, enablePullRequestPreview = NULL, pullRequestEnvironmentName = NULL, backendEnvironmentArn = NULL) {
+amplify_update_branch <- function(appId, branchName, description = NULL, framework = NULL, stage = NULL, enableNotification = NULL, enableAutoBuild = NULL, environmentVariables = NULL, basicAuthCredentials = NULL, enableBasicAuth = NULL, enablePerformanceMode = NULL, buildSpec = NULL, ttl = NULL, displayName = NULL, enablePullRequestPreview = NULL, pullRequestEnvironmentName = NULL, backendEnvironmentArn = NULL) {
   op <- new_operation(
     name = "UpdateBranch",
     http_method = "POST",
     http_path = "/apps/{appId}/branches/{branchName}",
     paginator = list()
   )
-  input <- .amplify$update_branch_input(appId = appId, branchName = branchName, description = description, framework = framework, stage = stage, enableNotification = enableNotification, enableAutoBuild = enableAutoBuild, environmentVariables = environmentVariables, basicAuthCredentials = basicAuthCredentials, enableBasicAuth = enableBasicAuth, buildSpec = buildSpec, ttl = ttl, displayName = displayName, enablePullRequestPreview = enablePullRequestPreview, pullRequestEnvironmentName = pullRequestEnvironmentName, backendEnvironmentArn = backendEnvironmentArn)
+  input <- .amplify$update_branch_input(appId = appId, branchName = branchName, description = description, framework = framework, stage = stage, enableNotification = enableNotification, enableAutoBuild = enableAutoBuild, environmentVariables = environmentVariables, basicAuthCredentials = basicAuthCredentials, enableBasicAuth = enableBasicAuth, enablePerformanceMode = enablePerformanceMode, buildSpec = buildSpec, ttl = ttl, displayName = displayName, enablePullRequestPreview = enablePullRequestPreview, pullRequestEnvironmentName = pullRequestEnvironmentName, backendEnvironmentArn = backendEnvironmentArn)
   output <- .amplify$update_branch_output()
   config <- get_config()
   svc <- .amplify$service(config)

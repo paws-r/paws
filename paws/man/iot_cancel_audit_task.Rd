@@ -12,7 +12,7 @@ that is "IN\\_PROGRESS".}
 }
 \description{
 Cancels an audit that is in progress. The audit can be either scheduled
-or on-demand. If the audit is not in progress, an
+or on demand. If the audit isn't in progress, an
 "InvalidRequestException" occurs.
 }
 \section{Request syntax}{

@@ -5,7 +5,8 @@
 \title{Sends user input (text or speech) to Amazon Lex}
 \usage{
 lexruntimeservice_post_content(botName, botAlias, userId,
-  sessionAttributes, requestAttributes, contentType, accept, inputStream)
+  sessionAttributes, requestAttributes, contentType, accept, inputStream,
+  activeContexts)
 }
 \arguments{
 \item{botName}{[required] Name of the Amazon Lex bot.}
@@ -110,6 +111,14 @@ You can stream audio data to Amazon Lex or you can create a local buffer
 that captures all of the audio data before sending. In general, you get
 better performance if you stream audio data rather than buffering the
 data locally.}
+
+\item{activeContexts}{A list of contexts active for the request. A context can be activated
+when a previous intent is fulfilled, or by including the context in the
+request,
+
+If you don't specify a list of contexts, Amazon Lex will use the current
+list of contexts for the session. If you specify an empty list, all
+contexts for the session are cleared.}
 }
 \description{
 Sends user input (text or speech) to Amazon Lex. Clients use this API to
@@ -175,7 +184,8 @@ In addition, Amazon Lex also returns your application-specific
   requestAttributes = "string",
   contentType = "string",
   accept = "string",
-  inputStream = raw
+  inputStream = raw,
+  activeContexts = "string"
 )
 }
 }

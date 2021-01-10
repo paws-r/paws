@@ -14,7 +14,7 @@ you create it.}
 
 \item{Scope}{[required] Specifies whether this is for an AWS CloudFront distribution or for a
 regional application. A regional application can be an Application Load
-Balancer (ALB) or an API Gateway stage.
+Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
@@ -55,8 +55,8 @@ assign a default action to take (allow, block) for any request that does
 not match any of the rules. The rules in a Web ACL can be a combination
 of the types Rule, RuleGroup, and managed rule group. You can associate
 a Web ACL with one or more AWS resources to protect. The resources can
-be Amazon CloudFront, an Amazon API Gateway API, or an Application Load
-Balancer.
+be Amazon CloudFront, an Amazon API Gateway REST API, an Application
+Load Balancer, or an AWS AppSync GraphQL API.
 }
 \section{Request syntax}{
 \preformatted{svc$create_web_acl(

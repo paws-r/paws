@@ -129,7 +129,7 @@ datapipeline_add_tags <- function(pipelineId, tags) {
 #' @param tags A list of tags to associate with the pipeline at creation. Tags let you
 #' control access to pipelines. For more information, see [Controlling User
 #' Access to
-#' Pipelines](http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html)
+#' Pipelines](https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-control-access.html)
 #' in the *AWS Data Pipeline Developer Guide*.
 #'
 #' @section Request syntax:
@@ -516,7 +516,7 @@ datapipeline_list_pipelines <- function(marker = NULL) {
 #' runner. You can get this value from the instance using
 #' `http://169.254.169.254/latest/meta-data/instance-id`. For more
 #' information, see [Instance
-#' Metadata](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AESDG-chapter-instancedata.html)
+#' Metadata](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
 #' in the *Amazon Elastic Compute Cloud User Guide.* Passing in this value
 #' proves that your task runner is running on an EC2 instance, and ensures
 #' the proper AWS Data Pipeline service charges are applied to your

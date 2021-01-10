@@ -2,7 +2,7 @@
 % Please edit documentation in R/quicksight_operations.R
 \name{quicksight_search_dashboards}
 \alias{quicksight_search_dashboards}
-\title{Searchs for dashboards that belong to a user}
+\title{Searches for dashboards that belong to a user}
 \usage{
 quicksight_search_dashboards(AwsAccountId, Filters, NextToken,
   MaxResults)
@@ -21,7 +21,7 @@ results.}
 \item{MaxResults}{The maximum number of results to be returned per request.}
 }
 \description{
-Searchs for dashboards that belong to a user.
+Searches for dashboards that belong to a user.
 }
 \section{Request syntax}{
 \preformatted{svc$search_dashboards(

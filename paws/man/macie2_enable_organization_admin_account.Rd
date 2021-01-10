@@ -2,20 +2,21 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_enable_organization_admin_account}
 \alias{macie2_enable_organization_admin_account}
-\title{Enables an account as a delegated administrator of Amazon Macie for an
-AWS organization}
+\title{Designates an account as the delegated Amazon Macie administrator
+account for an AWS organization}
 \usage{
 macie2_enable_organization_admin_account(adminAccountId, clientToken)
 }
 \arguments{
-\item{adminAccountId}{[required] The AWS account ID for the account.}
+\item{adminAccountId}{[required] The AWS account ID for the account to designate as the delegated Amazon
+Macie administrator account for the organization.}
 
 \item{clientToken}{A unique, case-sensitive token that you provide to ensure the
 idempotency of the request.}
 }
 \description{
-Enables an account as a delegated administrator of Amazon Macie for an
-AWS organization.
+Designates an account as the delegated Amazon Macie administrator
+account for an AWS organization.
 }
 \section{Request syntax}{
 \preformatted{svc$enable_organization_admin_account(

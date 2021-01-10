@@ -51,7 +51,7 @@ subnet mask.
 \preformatted{svc$test_dns_answer(
   HostedZoneId = "string",
   RecordName = "string",
-  RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
+  RecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
   ResolverIP = "string",
   EDNS0ClientSubnetIP = "string",
   EDNS0ClientSubnetMask = "string"

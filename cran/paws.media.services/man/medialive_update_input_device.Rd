@@ -4,14 +4,17 @@
 \alias{medialive_update_input_device}
 \title{Updates the parameters for the input device}
 \usage{
-medialive_update_input_device(HdDeviceSettings, InputDeviceId, Name)
+medialive_update_input_device(HdDeviceSettings, InputDeviceId, Name,
+  UhdDeviceSettings)
 }
 \arguments{
-\item{HdDeviceSettings}{The settings that you want to apply to the input device.}
+\item{HdDeviceSettings}{The settings that you want to apply to the HD input device.}
 
 \item{InputDeviceId}{[required] The unique ID of the input device. For example, hd-123456789abcdef.}
 
 \item{Name}{The name that you assigned to this input device (not the unique ID).}
+
+\item{UhdDeviceSettings}{The settings that you want to apply to the UHD input device.}
 }
 \description{
 Updates the parameters for the input device.
@@ -23,7 +26,11 @@ Updates the parameters for the input device.
     MaxBitrate = 123
   ),
   InputDeviceId = "string",
-  Name = "string"
+  Name = "string",
+  UhdDeviceSettings = list(
+    ConfiguredInput = "AUTO"|"HDMI"|"SDI",
+    MaxBitrate = 123
+  )
 )
 }
 }

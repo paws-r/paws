@@ -25,7 +25,16 @@ To get the names of key policies, use ListKeyPolicies.}
 }
 \description{
 Gets a key policy attached to the specified customer master key (CMK).
-You cannot perform this operation on a CMK in a different AWS account.
+}
+\details{
+\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
+a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:GetKeyPolicy}
+(key policy)
+
+\strong{Related operations}: PutKeyPolicy
 }
 \section{Request syntax}{
 \preformatted{svc$get_key_policy(

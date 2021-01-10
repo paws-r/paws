@@ -5,7 +5,8 @@
 \title{Sets a metrics configuration (specified by the metrics configuration ID)
 for the bucket}
 \usage{
-s3_put_bucket_metrics_configuration(Bucket, Id, MetricsConfiguration)
+s3_put_bucket_metrics_configuration(Bucket, Id, MetricsConfiguration,
+  ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket for which the metrics configuration is set.}
@@ -13,6 +14,10 @@ s3_put_bucket_metrics_configuration(Bucket, Id, MetricsConfiguration)
 \item{Id}{[required] The ID used to identify the metrics configuration.}
 
 \item{MetricsConfiguration}{[required] Specifies the metrics configuration.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Sets a metrics configuration (specified by the metrics configuration ID)
@@ -33,9 +38,9 @@ For information about CloudWatch request metrics for Amazon S3, see
 
 The following operations are related to \code{PutBucketMetricsConfiguration}:
 \itemize{
-\item DeleteBucketMetricsConfiguration
-\item PutBucketMetricsConfiguration
-\item ListBucketMetricsConfigurations
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketMetricsConfiguration.html}{DeleteBucketMetricsConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketMetricsConfiguration.html}{PutBucketMetricsConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketMetricsConfigurations.html}{ListBucketMetricsConfigurations}
 }
 
 \code{GetBucketLifecycle} has the following special error:
@@ -70,7 +75,8 @@ but have already reached the 1,000-configuration limit.
         )
       )
     )
-  )
+  ),
+  ExpectedBucketOwner = "string"
 )
 }
 }

@@ -8,7 +8,7 @@ codebuild_update_project(name, description, source, secondarySources,
   sourceVersion, secondarySourceVersions, artifacts, secondaryArtifacts,
   cache, environment, serviceRole, timeoutInMinutes,
   queuedTimeoutInMinutes, encryptionKey, tags, vpcConfig, badgeEnabled,
-  logsConfig, fileSystemLocations)
+  logsConfig, fileSystemLocations, buildBatchConfig)
 }
 \arguments{
 \item{name}{[required] The name of the build project.
@@ -80,7 +80,7 @@ artifacts if your service role has permission to that key.
 
 You can specify either the Amazon Resource Name (ARN) of the CMK or, if
 available, the CMK's alias (using the format
-\verb{alias/<i>alias-name</i> }).}
+\verb{alias/&lt;alias-name&gt;}).}
 
 \item{tags}{An updated list of tag key and value pairs associated with this build
 project.
@@ -100,6 +100,8 @@ in Amazon CloudWatch Logs, logs in an S3 bucket, or both.}
 project. A \code{ProjectFileSystemLocation} object specifies the
 \code{identifier}, \code{location}, \code{mountOptions}, \code{mountPoint}, and \code{type} of a
 file system created using Amazon Elastic File System.}
+
+\item{buildBatchConfig}{}
 }
 \description{
 Changes the settings of a build project.
@@ -189,7 +191,7 @@ Changes the settings of a build project.
     )
   ),
   environment = list(
-    type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER",
+    type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
     image = "string",
     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
     environmentVariables = list(
@@ -247,6 +249,17 @@ Changes the settings of a build project.
       identifier = "string",
       mountOptions = "string"
     )
+  ),
+  buildBatchConfig = list(
+    serviceRole = "string",
+    combineArtifacts = TRUE|FALSE,
+    restrictions = list(
+      maximumBuildsAllowed = 123,
+      computeTypesAllowed = list(
+        "string"
+      )
+    ),
+    timeoutInMins = 123
   )
 )
 }

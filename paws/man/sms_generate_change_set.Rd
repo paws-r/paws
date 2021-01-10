@@ -8,9 +8,9 @@ it to an Amazon S3 object in the customer’s Amazon S3 bucket}
 sms_generate_change_set(appId, changesetFormat)
 }
 \arguments{
-\item{appId}{ID of the application associated with the change set.}
+\item{appId}{The ID of the application associated with the change set.}
 
-\item{changesetFormat}{Format for the change set.}
+\item{changesetFormat}{The format for the change set.}
 }
 \description{
 Generates a target change set for a currently launched stack and writes

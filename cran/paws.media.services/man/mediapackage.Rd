@@ -33,6 +33,7 @@ AWS Elemental MediaPackage
 \section{Operations}{
 
 \tabular{ll}{
+\link[=mediapackage_configure_logs]{configure_logs} \tab Changes the Channel's properities to configure log subscription\cr
 \link[=mediapackage_create_channel]{create_channel} \tab Creates a new Channel\cr
 \link[=mediapackage_create_harvest_job]{create_harvest_job} \tab Creates a new HarvestJob record\cr
 \link[=mediapackage_create_origin_endpoint]{create_origin_endpoint} \tab Creates a new OriginEndpoint record\cr
@@ -57,7 +58,7 @@ AWS Elemental MediaPackage
 \examples{
 \dontrun{
 svc <- mediapackage()
-svc$create_channel(
+svc$configure_logs(
   Foo = 123
 )
 }

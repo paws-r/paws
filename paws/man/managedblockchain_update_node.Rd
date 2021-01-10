@@ -8,17 +8,21 @@ managedblockchain_update_node(NetworkId, MemberId, NodeId,
   LogPublishingConfiguration)
 }
 \arguments{
-\item{NetworkId}{[required] The unique ID of the Managed Blockchain network to which the node
-belongs.}
+\item{NetworkId}{[required] The unique identifier of the network that the node is on.}
 
-\item{MemberId}{[required] The unique ID of the member that owns the node.}
+\item{MemberId}{The unique identifier of the member that owns the node.
 
-\item{NodeId}{[required] The unique ID of the node.}
+Applies only to Hyperledger Fabric.}
+
+\item{NodeId}{[required] The unique identifier of the node.}
 
 \item{LogPublishingConfiguration}{Configuration properties for publishing to Amazon CloudWatch Logs.}
 }
 \description{
 Updates a node configuration with new parameters.
+}
+\details{
+Applies only to Hyperledger Fabric.
 }
 \section{Request syntax}{
 \preformatted{svc$update_node(

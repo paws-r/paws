@@ -21,6 +21,9 @@ approved proposal to remove a member. If \code{MemberId} is the last member
 in a network specified by the last AWS account, the network is deleted
 also.
 }
+\details{
+Applies only to Hyperledger Fabric.
+}
 \section{Request syntax}{
 \preformatted{svc$delete_member(
   NetworkId = "string",

@@ -24,22 +24,20 @@ it is highly recommended.
 For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{Encryption Context}
 in the \emph{AWS Key Management Service Developer Guide}.}
 
-\item{SourceKeyId}{A unique identifier for the CMK that is used to decrypt the ciphertext
-before it reencrypts it using the destination CMK.
+\item{SourceKeyId}{Specifies the customer master key (CMK) that AWS KMS will use to decrypt
+the ciphertext before it is re-encrypted. Enter a key ID of the CMK that
+was used to encrypt the ciphertext.
 
 This parameter is required only when the ciphertext was encrypted under
-an asymmetric CMK. Otherwise, AWS KMS uses the metadata that it adds to
-the ciphertext blob to determine which CMK was used to encrypt the
-ciphertext. However, you can use this parameter to ensure that a
-particular CMK (of any kind) is used to decrypt the ciphertext before it
-is reencrypted.
-
-If you specify a \code{KeyId} value, the decrypt part of the \code{ReEncrypt}
-operation succeeds only if the specified CMK was used to encrypt the
-ciphertext.
+an asymmetric CMK. If you used a symmetric CMK, AWS KMS can get the CMK
+from metadata that it adds to the symmetric ciphertext blob. However, it
+is always recommended as a best practice. This practice ensures that you
+use the CMK that you intend.
 
 To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
 name, or alias ARN. When using an alias name, prefix it with \code{"alias/"}.
+To specify a CMK in a different AWS account, you must use the key ARN or
+alias ARN.
 
 For example:
 \itemize{
@@ -137,19 +135,25 @@ When you use the \code{ReEncrypt} operation, you need to provide information
 for the decrypt operation and the subsequent encrypt operation.
 \itemize{
 \item If your ciphertext was encrypted under an asymmetric CMK, you must
-identify the \emph{source CMK}, that is, the CMK that encrypted the
-ciphertext. You must also supply the encryption algorithm that was
-used. This information is required to decrypt the data.
-\item It is optional, but you can specify a source CMK even when the
-ciphertext was encrypted under a symmetric CMK. This ensures that
-the ciphertext is decrypted only by using a particular CMK. If the
-CMK that you specify cannot decrypt the ciphertext, the \code{ReEncrypt}
-operation fails.
-\item To reencrypt the data, you must specify the \emph{destination CMK}, that
-is, the CMK that re-encrypts the data after it is decrypted. You can
-select a symmetric or asymmetric CMK. If the destination CMK is an
-asymmetric CMK, you must also provide the encryption algorithm. The
-algorithm that you choose must be compatible with the CMK.
+use the \code{SourceKeyId} parameter to identify the CMK that encrypted
+the ciphertext. You must also supply the encryption algorithm that
+was used. This information is required to decrypt the data.
+\item If your ciphertext was encrypted under a symmetric CMK, the
+\code{SourceKeyId} parameter is optional. AWS KMS can get this
+information from metadata that it adds to the symmetric ciphertext
+blob. This feature adds durability to your implementation by
+ensuring that authorized users can decrypt ciphertext decades after
+it was encrypted, even if they've lost track of the CMK ID. However,
+specifying the source CMK is always recommended as a best practice.
+When you use the \code{SourceKeyId} parameter to specify a CMK, AWS KMS
+uses only the CMK you specify. If the ciphertext was encrypted under
+a different CMK, the \code{ReEncrypt} operation fails. This practice
+ensures that you use the CMK that you intend.
+\item To reencrypt the data, you must use the \code{DestinationKeyId} parameter
+specify the CMK that re-encrypts the data after it is decrypted. You
+can select a symmetric or asymmetric CMK. If the destination CMK is
+an asymmetric CMK, you must also provide the encryption algorithm.
+The algorithm that you choose must be compatible with the CMK.
 
 When you use an asymmetric CMK to encrypt or reencrypt data, be sure
 to record the CMK and encryption algorithm that you choose. You will
@@ -164,11 +168,20 @@ ciphertext generated with asymmetric keys. The standard format for
 asymmetric key ciphertext does not include configurable fields.
 }
 
-Unlike other AWS KMS API operations, \code{ReEncrypt} callers must have two
-permissions:
+The CMK that you use for this operation must be in a compatible key
+state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
+in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: Yes. The source CMK and destination CMK can be in
+different AWS accounts. Either or both CMKs can be in a different
+account than the caller.
+
+\strong{Required permissions}:
 \itemize{
-\item \code{kms:ReEncryptFrom} permission on the source CMK
-\item \code{kms:ReEncryptTo} permission on the destination CMK
+\item \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:ReEncryptFrom}
+permission on the source CMK (key policy)
+\item \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:ReEncryptTo}
+permission on the destination CMK (key policy)
 }
 
 To permit reencryption from or to a CMK, include the \code{"kms:ReEncrypt*"}
@@ -178,9 +191,13 @@ the console to create a CMK. But you must include it manually when you
 create a CMK programmatically or when you use the PutKeyPolicy operation
 to set a key policy.
 
-The CMK that you use for this operation must be in a compatible key
-state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
-in the \emph{AWS Key Management Service Developer Guide}.
+\strong{Related operations:}
+\itemize{
+\item Decrypt
+\item Encrypt
+\item GenerateDataKey
+\item GenerateDataKeyPair
+}
 }
 \section{Request syntax}{
 \preformatted{svc$re_encrypt(

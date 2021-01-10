@@ -44,7 +44,7 @@ the request.
 You only need to specify your own value if you implement your own retry
 logic and want to ensure that a given secret is not created twice. We
 recommend that you generate a
-\href{https://wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
+\href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
 value to ensure uniqueness within the specified secret.
 
 Secrets Manager uses this value to prevent the accidental creation of

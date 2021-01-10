@@ -9,7 +9,8 @@ acmpca_import_certificate_authority_certificate(CertificateAuthorityArn,
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-CreateCertificateAuthority. This must be of the form:
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html}{CreateCertificateAuthority}.
+This must be of the form:
 
 \verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
 
@@ -33,31 +34,72 @@ preparations must in place:
 }
 \details{
 \enumerate{
-\item In ACM Private CA, call the CreateCertificateAuthority action to
-create the private CA that that you plan to back with the imported
-certificate.
-\item Call the GetCertificateAuthorityCsr action to generate a certificate
-signing request (CSR).
-\item Sign the CSR using a root or intermediate CA hosted either by an
-on-premises PKI hierarchy or a commercial CA..
+\item In ACM Private CA, call the
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html}{CreateCertificateAuthority}
+action to create the private CA that that you plan to back with the
+imported certificate.
+\item Call the
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetCertificateAuthorityCsr.html}{GetCertificateAuthorityCsr}
+action to generate a certificate signing request (CSR).
+\item Sign the CSR using a root or intermediate CA hosted by either an
+on-premises PKI hierarchy or by a commercial CA.
 \item Create a certificate chain and copy the signed certificate and the
 certificate chain to your working directory.
 }
 
-The following requirements apply when you import a CA certificate.
+ACM Private CA supports three scenarios for installing a CA certificate:
 \itemize{
-\item You cannot import a non-self-signed certificate for use as a root
-CA.
-\item You cannot import a self-signed certificate for use as a subordinate
-CA.
+\item Installing a certificate for a root CA hosted by ACM Private CA.
+\item Installing a subordinate CA certificate whose parent authority is
+hosted by ACM Private CA.
+\item Installing a subordinate CA certificate whose parent authority is
+externally hosted.
+}
+
+The following addtitional requirements apply when you import a CA
+certificate.
+\itemize{
+\item Only a self-signed certificate can be imported as a root CA.
+\item A self-signed certificate cannot be imported as a subordinate CA.
 \item Your certificate chain must not include the private CA certificate
 that you are importing.
-\item Your ACM Private CA-hosted or on-premises CA certificate must be the
-last certificate in your chain. The subordinate certificate, if any,
-that your root CA signed must be next to last. The subordinate
-certificate signed by the preceding subordinate CA must come next,
-and so on until your chain is built.
+\item Your root CA must be the last certificate in your chain. The
+subordinate certificate, if any, that your root CA signed must be
+next to last. The subordinate certificate signed by the preceding
+subordinate CA must come next, and so on until your chain is built.
 \item The chain must be PEM-encoded.
+\item The maximum allowed size of a certificate is 32 KB.
+\item The maximum allowed size of a certificate chain is 2 MB.
+}
+
+\emph{Enforcement of Critical Constraints}
+
+ACM Private CA allows the following extensions to be marked critical in
+the imported CA certificate or chain.
+\itemize{
+\item Basic constraints (\emph{must} be marked critical)
+\item Subject alternative names
+\item Key usage
+\item Extended key usage
+\item Authority key identifier
+\item Subject key identifier
+\item Issuer alternative name
+\item Subject directory attributes
+\item Subject information access
+\item Certificate policies
+\item Policy mappings
+\item Inhibit anyPolicy
+}
+
+ACM Private CA rejects the following extensions when they are marked
+critical in an imported CA certificate or chain.
+\itemize{
+\item Name constraints
+\item Policy constraints
+\item CRL distribution points
+\item Authority information access
+\item Freshest CRL
+\item Any other extension
 }
 }
 \section{Request syntax}{

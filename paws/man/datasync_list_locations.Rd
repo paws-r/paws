@@ -2,18 +2,23 @@
 % Please edit documentation in R/datasync_operations.R
 \name{datasync_list_locations}
 \alias{datasync_list_locations}
-\title{Returns a lists of source and destination locations}
+\title{Returns a list of source and destination locations}
 \usage{
-datasync_list_locations(MaxResults, NextToken)
+datasync_list_locations(MaxResults, NextToken, Filters)
 }
 \arguments{
 \item{MaxResults}{The maximum number of locations to return.}
 
 \item{NextToken}{An opaque string that indicates the position at which to begin the next
 list of locations.}
+
+\item{Filters}{You can use API filters to narrow down the list of resources returned by
+\code{ListLocations}. For example, to retrieve all tasks on a specific source
+location, you can use \code{ListLocations} with filter name \verb{LocationType S3}
+and \verb{Operator Equals}.}
 }
 \description{
-Returns a lists of source and destination locations.
+Returns a list of source and destination locations.
 }
 \details{
 If you have more locations than are returned in a response (that is, the
@@ -24,7 +29,16 @@ next page of locations.
 \section{Request syntax}{
 \preformatted{svc$list_locations(
   MaxResults = 123,
-  NextToken = "string"
+  NextToken = "string",
+  Filters = list(
+    list(
+      Name = "LocationUri"|"LocationType"|"CreationTime",
+      Values = list(
+        "string"
+      ),
+      Operator = "Equals"|"NotEquals"|"In"|"LessThanOrEqual"|"LessThan"|"GreaterThanOrEqual"|"GreaterThan"|"Contains"|"NotContains"|"BeginsWith"
+    )
+  )
 )
 }
 }

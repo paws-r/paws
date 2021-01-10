@@ -2,9 +2,10 @@
 % Please edit documentation in R/cloudtrail_operations.R
 \name{cloudtrail_put_event_selectors}
 \alias{cloudtrail_put_event_selectors}
-\title{Configures an event selector for your trail}
+\title{Configures an event selector or advanced event selectors for your trail}
 \usage{
-cloudtrail_put_event_selectors(TrailName, EventSelectors)
+cloudtrail_put_event_selectors(TrailName, EventSelectors,
+  AdvancedEventSelectors)
 }
 \arguments{
 \item{TrailName}{[required] Specifies the name of the trail or trail ARN. If you specify a trail
@@ -23,21 +24,34 @@ If you specify a trail ARN, it must be in the format:
 
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 
-\item{EventSelectors}{[required] Specifies the settings for your event selectors. You can configure up to
-five event selectors for a trail.}
+\item{EventSelectors}{Specifies the settings for your event selectors. You can configure up to
+five event selectors for a trail. You can use either \code{EventSelectors} or
+\code{AdvancedEventSelectors} in a \code{PutEventSelectors} request, but not both.
+If you apply \code{EventSelectors} to a trail, any existing
+\code{AdvancedEventSelectors} are overwritten.}
+
+\item{AdvancedEventSelectors}{Specifies the settings for advanced event selectors. You can add
+advanced event selectors, and conditions for your advanced event
+selectors, up to a maximum of 500 values for all conditions and
+selectors on a trail. You can use either \code{AdvancedEventSelectors} or
+\code{EventSelectors}, but not both. If you apply \code{AdvancedEventSelectors} to
+a trail, any existing \code{EventSelectors} are overwritten. For more
+information about advanced event selectors, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html}{Logging data events for trails}
+in the \emph{AWS CloudTrail User Guide}.}
 }
 \description{
-Configures an event selector for your trail. Use event selectors to
-further specify the management and data event settings for your trail.
-By default, trails created without specific event selectors will be
-configured to log all read and write management events, and no data
-events.
+Configures an event selector or advanced event selectors for your trail.
+Use event selectors or advanced event selectors to specify management
+and data event settings for your trail. By default, trails created
+without specific event selectors are configured to log all read and
+write management events, and no data events.
 }
 \details{
 When an event occurs in your account, CloudTrail evaluates the event
-selectors in all trails. For each trail, if the event matches any event
-selector, the trail processes and logs the event. If the event doesn't
-match any event selector, the trail doesn't log the event.
+selectors or advanced event selectors in all trails. For each trail, if
+the event matches any event selector, the trail processes and logs the
+event. If the event doesn't match any event selector, the trail doesn't
+log the event.
 
 Example
 \enumerate{
@@ -48,17 +62,25 @@ in your account.
 \item CloudTrail evaluates whether the events match your event selectors.
 \item The \code{RunInstances} is a write-only event and it matches your event
 selector. The trail logs the event.
-\item The \code{GetConsoleOutput} is a read-only event but it doesn't match
-your event selector. The trail doesn't log the event.
+\item The \code{GetConsoleOutput} is a read-only event that doesn't match your
+event selector. The trail doesn't log the event.
 }
 
 The \code{PutEventSelectors} operation must be called from the region in
 which the trail was created; otherwise, an \code{InvalidHomeRegionException}
-is thrown.
+exception is thrown.
 
 You can configure up to five event selectors for each trail. For more
-information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html}{Logging Data and Management Events for Trails}
-and \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html}{Limits in AWS CloudTrail}
+information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/}{Logging data and management events for trails} and
+\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html}{Quotas in AWS CloudTrail}
+in the \emph{AWS CloudTrail User Guide}.
+
+You can add advanced event selectors, and conditions for your advanced
+event selectors, up to a maximum of 500 values for all conditions and
+selectors on a trail. You can use either \code{AdvancedEventSelectors} or
+\code{EventSelectors}, but not both. If you apply \code{AdvancedEventSelectors} to
+a trail, any existing \code{EventSelectors} are overwritten. For more
+information about advanced event selectors, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html}{Logging data events for trails}
 in the \emph{AWS CloudTrail User Guide}.
 }
 \section{Request syntax}{
@@ -78,6 +100,34 @@ in the \emph{AWS CloudTrail User Guide}.
       ),
       ExcludeManagementEventSources = list(
         "string"
+      )
+    )
+  ),
+  AdvancedEventSelectors = list(
+    list(
+      Name = "string",
+      FieldSelectors = list(
+        list(
+          Field = "string",
+          Equals = list(
+            "string"
+          ),
+          StartsWith = list(
+            "string"
+          ),
+          EndsWith = list(
+            "string"
+          ),
+          NotEquals = list(
+            "string"
+          ),
+          NotStartsWith = list(
+            "string"
+          ),
+          NotEndsWith = list(
+            "string"
+          )
+        )
       )
     )
   )

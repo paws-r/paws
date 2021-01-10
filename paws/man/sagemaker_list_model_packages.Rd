@@ -5,7 +5,8 @@
 \title{Lists the model packages that have been created}
 \usage{
 sagemaker_list_model_packages(CreationTimeAfter, CreationTimeBefore,
-  MaxResults, NameContains, NextToken, SortBy, SortOrder)
+  MaxResults, NameContains, ModelApprovalStatus, ModelPackageGroupName,
+  ModelPackageType, NextToken, SortBy, SortOrder)
 }
 \arguments{
 \item{CreationTimeAfter}{A filter that returns only model packages created after the specified
@@ -18,6 +19,20 @@ time (timestamp).}
 
 \item{NameContains}{A string in the model package name. This filter returns only model
 packages whose name contains the specified string.}
+
+\item{ModelApprovalStatus}{A filter that returns only the model packages with the specified
+approval status.}
+
+\item{ModelPackageGroupName}{A filter that returns only model versions that belong to the specified
+model group.}
+
+\item{ModelPackageType}{A filter that returns onlyl the model packages of the specified type.
+This can be one of the following values.
+\itemize{
+\item \code{VERSIONED} - List only versioned models.
+\item \code{UNVERSIONED} - List only unversioined models.
+\item \code{BOTH} - List both versioned and unversioned models.
+}}
 
 \item{NextToken}{If the response to a previous \code{ListModelPackages} request was truncated,
 the response includes a \code{NextToken}. To retrieve the next set of model
@@ -41,6 +56,9 @@ Lists the model packages that have been created.
   ),
   MaxResults = 123,
   NameContains = "string",
+  ModelApprovalStatus = "Approved"|"Rejected"|"PendingManualApproval",
+  ModelPackageGroupName = "string",
+  ModelPackageType = "Versioned"|"Unversioned"|"Both",
   NextToken = "string",
   SortBy = "Name"|"CreationTime",
   SortOrder = "Ascending"|"Descending"

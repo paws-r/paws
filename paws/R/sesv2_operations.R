@@ -113,7 +113,7 @@ sesv2_create_configuration_set <- function(ConfigurationSetName, TrackingOptions
 #'   EventDestination = list(
 #'     Enabled = TRUE|FALSE,
 #'     MatchingEventTypes = list(
-#'       "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"|"DELIVERY_DELAY"
+#'       "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"|"DELIVERY_DELAY"|"SUBSCRIPTION"
 #'     ),
 #'     KinesisFirehoseDestination = list(
 #'       IamRoleArn = "string",
@@ -157,6 +157,176 @@ sesv2_create_configuration_set_event_destination <- function(ConfigurationSetNam
   return(response)
 }
 .sesv2$operations$create_configuration_set_event_destination <- sesv2_create_configuration_set_event_destination
+
+#' Creates a contact, which is an end-user who is receiving the email, and
+#' adds them to a contact list
+#'
+#' Creates a contact, which is an end-user who is receiving the email, and
+#' adds them to a contact list.
+#'
+#' @usage
+#' sesv2_create_contact(ContactListName, EmailAddress, TopicPreferences,
+#'   UnsubscribeAll, AttributesData)
+#'
+#' @param ContactListName &#91;required&#93; The name of the contact list to which the contact should be added.
+#' @param EmailAddress &#91;required&#93; The contact's email address.
+#' @param TopicPreferences The contact's preferences for being opted-in to or opted-out of topics.
+#' @param UnsubscribeAll A boolean value status noting if the contact is unsubscribed from all
+#' contact list topics.
+#' @param AttributesData The attribute data attached to a contact.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_contact(
+#'   ContactListName = "string",
+#'   EmailAddress = "string",
+#'   TopicPreferences = list(
+#'     list(
+#'       TopicName = "string",
+#'       SubscriptionStatus = "OPT_IN"|"OPT_OUT"
+#'     )
+#'   ),
+#'   UnsubscribeAll = TRUE|FALSE,
+#'   AttributesData = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_create_contact
+sesv2_create_contact <- function(ContactListName, EmailAddress, TopicPreferences = NULL, UnsubscribeAll = NULL, AttributesData = NULL) {
+  op <- new_operation(
+    name = "CreateContact",
+    http_method = "POST",
+    http_path = "/v2/email/contact-lists/{ContactListName}/contacts",
+    paginator = list()
+  )
+  input <- .sesv2$create_contact_input(ContactListName = ContactListName, EmailAddress = EmailAddress, TopicPreferences = TopicPreferences, UnsubscribeAll = UnsubscribeAll, AttributesData = AttributesData)
+  output <- .sesv2$create_contact_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$create_contact <- sesv2_create_contact
+
+#' Creates a contact list
+#'
+#' Creates a contact list.
+#'
+#' @usage
+#' sesv2_create_contact_list(ContactListName, Topics, Description, Tags)
+#'
+#' @param ContactListName &#91;required&#93; The name of the contact list.
+#' @param Topics An interest group, theme, or label within a list. A contact list can
+#' have multiple topics.
+#' @param Description A description of what the contact list is about.
+#' @param Tags The tags associated with a contact list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_contact_list(
+#'   ContactListName = "string",
+#'   Topics = list(
+#'     list(
+#'       TopicName = "string",
+#'       DisplayName = "string",
+#'       Description = "string",
+#'       DefaultSubscriptionStatus = "OPT_IN"|"OPT_OUT"
+#'     )
+#'   ),
+#'   Description = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_create_contact_list
+sesv2_create_contact_list <- function(ContactListName, Topics = NULL, Description = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateContactList",
+    http_method = "POST",
+    http_path = "/v2/email/contact-lists",
+    paginator = list()
+  )
+  input <- .sesv2$create_contact_list_input(ContactListName = ContactListName, Topics = Topics, Description = Description, Tags = Tags)
+  output <- .sesv2$create_contact_list_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$create_contact_list <- sesv2_create_contact_list
+
+#' Creates a new custom verification email template
+#'
+#' Creates a new custom verification email template.
+#' 
+#' For more information about custom verification email templates, see
+#' [Using Custom Verification Email
+#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
+#' in the *Amazon SES Developer Guide*.
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_create_custom_verification_email_template(TemplateName,
+#'   FromEmailAddress, TemplateSubject, TemplateContent,
+#'   SuccessRedirectionURL, FailureRedirectionURL)
+#'
+#' @param TemplateName &#91;required&#93; The name of the custom verification email template.
+#' @param FromEmailAddress &#91;required&#93; The email address that the custom verification email is sent from.
+#' @param TemplateSubject &#91;required&#93; The subject line of the custom verification email.
+#' @param TemplateContent &#91;required&#93; The content of the custom verification email. The total size of the
+#' email must be less than 10 MB. The message body may contain HTML, with
+#' some limitations. For more information, see [Custom Verification Email
+#' Frequently Asked
+#' Questions](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html#custom-verification-emails-faq)
+#' in the *Amazon SES Developer Guide*.
+#' @param SuccessRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
+#' or her address is successfully verified.
+#' @param FailureRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
+#' or her address is not successfully verified.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_custom_verification_email_template(
+#'   TemplateName = "string",
+#'   FromEmailAddress = "string",
+#'   TemplateSubject = "string",
+#'   TemplateContent = "string",
+#'   SuccessRedirectionURL = "string",
+#'   FailureRedirectionURL = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_create_custom_verification_email_template
+sesv2_create_custom_verification_email_template <- function(TemplateName, FromEmailAddress, TemplateSubject, TemplateContent, SuccessRedirectionURL, FailureRedirectionURL) {
+  op <- new_operation(
+    name = "CreateCustomVerificationEmailTemplate",
+    http_method = "POST",
+    http_path = "/v2/email/custom-verification-email-templates",
+    paginator = list()
+  )
+  input <- .sesv2$create_custom_verification_email_template_input(TemplateName = TemplateName, FromEmailAddress = FromEmailAddress, TemplateSubject = TemplateSubject, TemplateContent = TemplateContent, SuccessRedirectionURL = SuccessRedirectionURL, FailureRedirectionURL = FailureRedirectionURL)
+  output <- .sesv2$create_custom_verification_email_template_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$create_custom_verification_email_template <- sesv2_create_custom_verification_email_template
 
 #' Create a new pool of dedicated IP addresses
 #'
@@ -257,6 +427,7 @@ sesv2_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
 #'       Data = raw
 #'     ),
 #'     Template = list(
+#'       TemplateName = "string",
 #'       TemplateArn = "string",
 #'       TemplateData = "string"
 #'     )
@@ -309,7 +480,7 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #' configuration for your domain. Your domain is verified when Amazon SES
 #' detects these records in the DNS configuration for your domain. This
 #' verification method is known as [Easy
-#' DKIM](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
+#' DKIM](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim-easy.html).
 #' 
 #' Alternatively, you can perform the verification process by providing
 #' your own public-private key pair. This verification method is known as
@@ -329,7 +500,7 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 #' @param DkimSigningAttributes If your request includes this object, Amazon SES configures the identity
 #' to use Bring Your Own DKIM (BYODKIM) for DKIM authentication purposes,
 #' as opposed to the default method, [Easy
-#' DKIM](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
+#' DKIM](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim-easy.html).
 #' 
 #' You can only specify this object if the email identity is a domain, as
 #' opposed to an address.
@@ -370,6 +541,162 @@ sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL, DkimSigningA
   return(response)
 }
 .sesv2$operations$create_email_identity <- sesv2_create_email_identity
+
+#' Creates the specified sending authorization policy for the given
+#' identity (an email address or a domain)
+#'
+#' Creates the specified sending authorization policy for the given
+#' identity (an email address or a domain).
+#' 
+#' This API is for the identity owner only. If you have not verified the
+#' identity, this API will return an error.
+#' 
+#' Sending authorization is a feature that enables an identity owner to
+#' authorize other senders to use its identities. For information about
+#' using sending authorization, see the [Amazon SES Developer
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_create_email_identity_policy(EmailIdentity, PolicyName, Policy)
+#'
+#' @param EmailIdentity &#91;required&#93; The email identity for which you want to create a policy.
+#' @param PolicyName &#91;required&#93; The name of the policy.
+#' 
+#' The policy name cannot exceed 64 characters and can only include
+#' alphanumeric characters, dashes, and underscores.
+#' @param Policy &#91;required&#93; The text of the policy in JSON format. The policy cannot exceed 4 KB.
+#' 
+#' For information about the syntax of sending authorization policies, see
+#' the [Amazon SES Developer
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_email_identity_policy(
+#'   EmailIdentity = "string",
+#'   PolicyName = "string",
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_create_email_identity_policy
+sesv2_create_email_identity_policy <- function(EmailIdentity, PolicyName, Policy) {
+  op <- new_operation(
+    name = "CreateEmailIdentityPolicy",
+    http_method = "POST",
+    http_path = "/v2/email/identities/{EmailIdentity}/policies/{PolicyName}",
+    paginator = list()
+  )
+  input <- .sesv2$create_email_identity_policy_input(EmailIdentity = EmailIdentity, PolicyName = PolicyName, Policy = Policy)
+  output <- .sesv2$create_email_identity_policy_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$create_email_identity_policy <- sesv2_create_email_identity_policy
+
+#' Creates an email template
+#'
+#' Creates an email template. Email templates enable you to send
+#' personalized email to one or more destinations in a single API
+#' operation. For more information, see the [Amazon SES Developer
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html).
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_create_email_template(TemplateName, TemplateContent)
+#'
+#' @param TemplateName &#91;required&#93; The name of the template you want to create.
+#' @param TemplateContent &#91;required&#93; The content of the email template, composed of a subject line, an HTML
+#' part, and a text-only part.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_email_template(
+#'   TemplateName = "string",
+#'   TemplateContent = list(
+#'     Subject = "string",
+#'     Text = "string",
+#'     Html = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_create_email_template
+sesv2_create_email_template <- function(TemplateName, TemplateContent) {
+  op <- new_operation(
+    name = "CreateEmailTemplate",
+    http_method = "POST",
+    http_path = "/v2/email/templates",
+    paginator = list()
+  )
+  input <- .sesv2$create_email_template_input(TemplateName = TemplateName, TemplateContent = TemplateContent)
+  output <- .sesv2$create_email_template_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$create_email_template <- sesv2_create_email_template
+
+#' Creates an import job for a data destination
+#'
+#' Creates an import job for a data destination.
+#'
+#' @usage
+#' sesv2_create_import_job(ImportDestination, ImportDataSource)
+#'
+#' @param ImportDestination &#91;required&#93; The destination for the import job.
+#' @param ImportDataSource &#91;required&#93; The data source for the import job.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_import_job(
+#'   ImportDestination = list(
+#'     SuppressionListDestination = list(
+#'       SuppressionListImportAction = "DELETE"|"PUT"
+#'     ),
+#'     ContactListDestination = list(
+#'       ContactListName = "string",
+#'       ContactListImportAction = "DELETE"|"PUT"
+#'     )
+#'   ),
+#'   ImportDataSource = list(
+#'     S3Url = "string",
+#'     DataFormat = "CSV"|"JSON"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_create_import_job
+sesv2_create_import_job <- function(ImportDestination, ImportDataSource) {
+  op <- new_operation(
+    name = "CreateImportJob",
+    http_method = "POST",
+    http_path = "/v2/email/import-jobs",
+    paginator = list()
+  )
+  input <- .sesv2$create_import_job_input(ImportDestination = ImportDestination, ImportDataSource = ImportDataSource)
+  output <- .sesv2$create_import_job_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$create_import_job <- sesv2_create_import_job
 
 #' Delete an existing configuration set
 #'
@@ -460,6 +787,123 @@ sesv2_delete_configuration_set_event_destination <- function(ConfigurationSetNam
 }
 .sesv2$operations$delete_configuration_set_event_destination <- sesv2_delete_configuration_set_event_destination
 
+#' Removes a contact from a contact list
+#'
+#' Removes a contact from a contact list.
+#'
+#' @usage
+#' sesv2_delete_contact(ContactListName, EmailAddress)
+#'
+#' @param ContactListName &#91;required&#93; The name of the contact list from which the contact should be removed.
+#' @param EmailAddress &#91;required&#93; The contact's email address.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_contact(
+#'   ContactListName = "string",
+#'   EmailAddress = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_delete_contact
+sesv2_delete_contact <- function(ContactListName, EmailAddress) {
+  op <- new_operation(
+    name = "DeleteContact",
+    http_method = "DELETE",
+    http_path = "/v2/email/contact-lists/{ContactListName}/contacts/{EmailAddress}",
+    paginator = list()
+  )
+  input <- .sesv2$delete_contact_input(ContactListName = ContactListName, EmailAddress = EmailAddress)
+  output <- .sesv2$delete_contact_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$delete_contact <- sesv2_delete_contact
+
+#' Deletes a contact list and all of the contacts on that list
+#'
+#' Deletes a contact list and all of the contacts on that list.
+#'
+#' @usage
+#' sesv2_delete_contact_list(ContactListName)
+#'
+#' @param ContactListName &#91;required&#93; The name of the contact list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_contact_list(
+#'   ContactListName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_delete_contact_list
+sesv2_delete_contact_list <- function(ContactListName) {
+  op <- new_operation(
+    name = "DeleteContactList",
+    http_method = "DELETE",
+    http_path = "/v2/email/contact-lists/{ContactListName}",
+    paginator = list()
+  )
+  input <- .sesv2$delete_contact_list_input(ContactListName = ContactListName)
+  output <- .sesv2$delete_contact_list_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$delete_contact_list <- sesv2_delete_contact_list
+
+#' Deletes an existing custom verification email template
+#'
+#' Deletes an existing custom verification email template.
+#' 
+#' For more information about custom verification email templates, see
+#' Using Custom Verification Email Templates in the *Amazon SES Developer
+#' Guide*.
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_delete_custom_verification_email_template(TemplateName)
+#'
+#' @param TemplateName &#91;required&#93; The name of the custom verification email template that you want to
+#' delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_custom_verification_email_template(
+#'   TemplateName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_delete_custom_verification_email_template
+sesv2_delete_custom_verification_email_template <- function(TemplateName) {
+  op <- new_operation(
+    name = "DeleteCustomVerificationEmailTemplate",
+    http_method = "DELETE",
+    http_path = "/v2/email/custom-verification-email-templates/{TemplateName}",
+    paginator = list()
+  )
+  input <- .sesv2$delete_custom_verification_email_template_input(TemplateName = TemplateName)
+  output <- .sesv2$delete_custom_verification_email_template_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$delete_custom_verification_email_template <- sesv2_delete_custom_verification_email_template
+
 #' Delete a dedicated IP pool
 #'
 #' Delete a dedicated IP pool.
@@ -533,6 +977,98 @@ sesv2_delete_email_identity <- function(EmailIdentity) {
   return(response)
 }
 .sesv2$operations$delete_email_identity <- sesv2_delete_email_identity
+
+#' Deletes the specified sending authorization policy for the given
+#' identity (an email address or a domain)
+#'
+#' Deletes the specified sending authorization policy for the given
+#' identity (an email address or a domain). This API returns successfully
+#' even if a policy with the specified name does not exist.
+#' 
+#' This API is for the identity owner only. If you have not verified the
+#' identity, this API will return an error.
+#' 
+#' Sending authorization is a feature that enables an identity owner to
+#' authorize other senders to use its identities. For information about
+#' using sending authorization, see the [Amazon SES Developer
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_delete_email_identity_policy(EmailIdentity, PolicyName)
+#'
+#' @param EmailIdentity &#91;required&#93; The email identity for which you want to delete a policy.
+#' @param PolicyName &#91;required&#93; The name of the policy.
+#' 
+#' The policy name cannot exceed 64 characters and can only include
+#' alphanumeric characters, dashes, and underscores.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_email_identity_policy(
+#'   EmailIdentity = "string",
+#'   PolicyName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_delete_email_identity_policy
+sesv2_delete_email_identity_policy <- function(EmailIdentity, PolicyName) {
+  op <- new_operation(
+    name = "DeleteEmailIdentityPolicy",
+    http_method = "DELETE",
+    http_path = "/v2/email/identities/{EmailIdentity}/policies/{PolicyName}",
+    paginator = list()
+  )
+  input <- .sesv2$delete_email_identity_policy_input(EmailIdentity = EmailIdentity, PolicyName = PolicyName)
+  output <- .sesv2$delete_email_identity_policy_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$delete_email_identity_policy <- sesv2_delete_email_identity_policy
+
+#' Deletes an email template
+#'
+#' Deletes an email template.
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_delete_email_template(TemplateName)
+#'
+#' @param TemplateName &#91;required&#93; The name of the template to be deleted.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_email_template(
+#'   TemplateName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_delete_email_template
+sesv2_delete_email_template <- function(TemplateName) {
+  op <- new_operation(
+    name = "DeleteEmailTemplate",
+    http_method = "DELETE",
+    http_path = "/v2/email/templates/{TemplateName}",
+    paginator = list()
+  )
+  input <- .sesv2$delete_email_template_input(TemplateName = TemplateName)
+  output <- .sesv2$delete_email_template_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$delete_email_template <- sesv2_delete_email_template
 
 #' Removes an email address from the suppression list for your account
 #'
@@ -739,6 +1275,127 @@ sesv2_get_configuration_set_event_destinations <- function(ConfigurationSetName)
 }
 .sesv2$operations$get_configuration_set_event_destinations <- sesv2_get_configuration_set_event_destinations
 
+#' Returns a contact from a contact list
+#'
+#' Returns a contact from a contact list.
+#'
+#' @usage
+#' sesv2_get_contact(ContactListName, EmailAddress)
+#'
+#' @param ContactListName &#91;required&#93; The name of the contact list to which the contact belongs.
+#' @param EmailAddress &#91;required&#93; The contact's email addres.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_contact(
+#'   ContactListName = "string",
+#'   EmailAddress = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_get_contact
+sesv2_get_contact <- function(ContactListName, EmailAddress) {
+  op <- new_operation(
+    name = "GetContact",
+    http_method = "GET",
+    http_path = "/v2/email/contact-lists/{ContactListName}/contacts/{EmailAddress}",
+    paginator = list()
+  )
+  input <- .sesv2$get_contact_input(ContactListName = ContactListName, EmailAddress = EmailAddress)
+  output <- .sesv2$get_contact_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$get_contact <- sesv2_get_contact
+
+#' Returns contact list metadata
+#'
+#' Returns contact list metadata. It does not return any information about
+#' the contacts present in the list.
+#'
+#' @usage
+#' sesv2_get_contact_list(ContactListName)
+#'
+#' @param ContactListName &#91;required&#93; The name of the contact list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_contact_list(
+#'   ContactListName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_get_contact_list
+sesv2_get_contact_list <- function(ContactListName) {
+  op <- new_operation(
+    name = "GetContactList",
+    http_method = "GET",
+    http_path = "/v2/email/contact-lists/{ContactListName}",
+    paginator = list()
+  )
+  input <- .sesv2$get_contact_list_input(ContactListName = ContactListName)
+  output <- .sesv2$get_contact_list_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$get_contact_list <- sesv2_get_contact_list
+
+#' Returns the custom email verification template for the template name you
+#' specify
+#'
+#' Returns the custom email verification template for the template name you
+#' specify.
+#' 
+#' For more information about custom verification email templates, see
+#' [Using Custom Verification Email
+#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
+#' in the *Amazon SES Developer Guide*.
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_get_custom_verification_email_template(TemplateName)
+#'
+#' @param TemplateName &#91;required&#93; The name of the custom verification email template that you want to
+#' retrieve.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_custom_verification_email_template(
+#'   TemplateName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_get_custom_verification_email_template
+sesv2_get_custom_verification_email_template <- function(TemplateName) {
+  op <- new_operation(
+    name = "GetCustomVerificationEmailTemplate",
+    http_method = "GET",
+    http_path = "/v2/email/custom-verification-email-templates/{TemplateName}",
+    paginator = list()
+  )
+  input <- .sesv2$get_custom_verification_email_template_input(TemplateName = TemplateName)
+  output <- .sesv2$get_custom_verification_email_template_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$get_custom_verification_email_template <- sesv2_get_custom_verification_email_template
+
 #' Get information about a dedicated IP address, including the name of the
 #' dedicated IP pool that it's associated with, as well information about
 #' the automatic warm-up process for the address
@@ -841,7 +1498,7 @@ sesv2_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, PageSize 
 #' subscription charge, in addition to any other fees that you accrue by
 #' using Amazon SES and other AWS services. For more information about the
 #' features and cost of a Deliverability dashboard subscription, see
-#' [Amazon SES Pricing](http://aws.amazon.com/ses/pricing/).
+#' [Amazon SES Pricing](https://aws.amazon.com/ses/pricing/).
 #'
 #' @usage
 #' sesv2_get_deliverability_dashboard_options()
@@ -996,12 +1653,12 @@ sesv2_get_domain_statistics_report <- function(Domain, StartDate, EndDate) {
 .sesv2$operations$get_domain_statistics_report <- sesv2_get_domain_statistics_report
 
 #' Provides information about a specific identity, including the identity's
-#' verification status, its DKIM authentication status, and its custom
-#' Mail-From settings
+#' verification status, sending authorization policies, its DKIM
+#' authentication status, and its custom Mail-From settings
 #'
 #' Provides information about a specific identity, including the identity's
-#' verification status, its DKIM authentication status, and its custom
-#' Mail-From settings.
+#' verification status, sending authorization policies, its DKIM
+#' authentication status, and its custom Mail-From settings.
 #'
 #' @usage
 #' sesv2_get_email_identity(EmailIdentity)
@@ -1034,6 +1691,132 @@ sesv2_get_email_identity <- function(EmailIdentity) {
   return(response)
 }
 .sesv2$operations$get_email_identity <- sesv2_get_email_identity
+
+#' Returns the requested sending authorization policies for the given
+#' identity (an email address or a domain)
+#'
+#' Returns the requested sending authorization policies for the given
+#' identity (an email address or a domain). The policies are returned as a
+#' map of policy names to policy contents. You can retrieve a maximum of 20
+#' policies at a time.
+#' 
+#' This API is for the identity owner only. If you have not verified the
+#' identity, this API will return an error.
+#' 
+#' Sending authorization is a feature that enables an identity owner to
+#' authorize other senders to use its identities. For information about
+#' using sending authorization, see the [Amazon SES Developer
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_get_email_identity_policies(EmailIdentity)
+#'
+#' @param EmailIdentity &#91;required&#93; The email identity that you want to retrieve policies for.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_email_identity_policies(
+#'   EmailIdentity = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_get_email_identity_policies
+sesv2_get_email_identity_policies <- function(EmailIdentity) {
+  op <- new_operation(
+    name = "GetEmailIdentityPolicies",
+    http_method = "GET",
+    http_path = "/v2/email/identities/{EmailIdentity}/policies",
+    paginator = list()
+  )
+  input <- .sesv2$get_email_identity_policies_input(EmailIdentity = EmailIdentity)
+  output <- .sesv2$get_email_identity_policies_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$get_email_identity_policies <- sesv2_get_email_identity_policies
+
+#' Displays the template object (which includes the subject line, HTML part
+#' and text part) for the template you specify
+#'
+#' Displays the template object (which includes the subject line, HTML part
+#' and text part) for the template you specify.
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_get_email_template(TemplateName)
+#'
+#' @param TemplateName &#91;required&#93; The name of the template you want to retrieve.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_email_template(
+#'   TemplateName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_get_email_template
+sesv2_get_email_template <- function(TemplateName) {
+  op <- new_operation(
+    name = "GetEmailTemplate",
+    http_method = "GET",
+    http_path = "/v2/email/templates/{TemplateName}",
+    paginator = list()
+  )
+  input <- .sesv2$get_email_template_input(TemplateName = TemplateName)
+  output <- .sesv2$get_email_template_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$get_email_template <- sesv2_get_email_template
+
+#' Provides information about an import job
+#'
+#' Provides information about an import job.
+#'
+#' @usage
+#' sesv2_get_import_job(JobId)
+#'
+#' @param JobId &#91;required&#93; The ID of the import job.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_import_job(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_get_import_job
+sesv2_get_import_job <- function(JobId) {
+  op <- new_operation(
+    name = "GetImportJob",
+    http_method = "GET",
+    http_path = "/v2/email/import-jobs/{JobId}",
+    paginator = list()
+  )
+  input <- .sesv2$get_import_job_input(JobId = JobId)
+  output <- .sesv2$get_import_job_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$get_import_job <- sesv2_get_import_job
 
 #' Retrieves information about a specific email address that's on the
 #' suppression list for your account
@@ -1122,6 +1905,161 @@ sesv2_list_configuration_sets <- function(NextToken = NULL, PageSize = NULL) {
   return(response)
 }
 .sesv2$operations$list_configuration_sets <- sesv2_list_configuration_sets
+
+#' Lists all of the contact lists available
+#'
+#' Lists all of the contact lists available.
+#'
+#' @usage
+#' sesv2_list_contact_lists(PageSize, NextToken)
+#'
+#' @param PageSize Maximum number of contact lists to return at once. Use this parameter to
+#' paginate results. If additional contact lists exist beyond the specified
+#' limit, the `NextToken` element is sent in the response. Use the
+#' `NextToken` value in subsequent requests to retrieve additional lists.
+#' @param NextToken A string token indicating that there might be additional contact lists
+#' available to be listed. Use the token provided in the Response to use in
+#' the subsequent call to ListContactLists with the same parameters to
+#' retrieve the next page of contact lists.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_contact_lists(
+#'   PageSize = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_list_contact_lists
+sesv2_list_contact_lists <- function(PageSize = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListContactLists",
+    http_method = "GET",
+    http_path = "/v2/email/contact-lists",
+    paginator = list()
+  )
+  input <- .sesv2$list_contact_lists_input(PageSize = PageSize, NextToken = NextToken)
+  output <- .sesv2$list_contact_lists_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$list_contact_lists <- sesv2_list_contact_lists
+
+#' Lists the contacts present in a specific contact list
+#'
+#' Lists the contacts present in a specific contact list.
+#'
+#' @usage
+#' sesv2_list_contacts(ContactListName, Filter, PageSize, NextToken)
+#'
+#' @param ContactListName &#91;required&#93; The name of the contact list.
+#' @param Filter A filter that can be applied to a list of contacts.
+#' @param PageSize The number of contacts that may be returned at once, which is dependent
+#' on if there are more or less contacts than the value of the PageSize.
+#' Use this parameter to paginate results. If additional contacts exist
+#' beyond the specified limit, the `NextToken` element is sent in the
+#' response. Use the `NextToken` value in subsequent requests to retrieve
+#' additional contacts.
+#' @param NextToken A string token indicating that there might be additional contacts
+#' available to be listed. Use the token provided in the Response to use in
+#' the subsequent call to ListContacts with the same parameters to retrieve
+#' the next page of contacts.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_contacts(
+#'   ContactListName = "string",
+#'   Filter = list(
+#'     FilteredStatus = "OPT_IN"|"OPT_OUT",
+#'     TopicFilter = list(
+#'       TopicName = "string",
+#'       UseDefaultIfPreferenceUnavailable = TRUE|FALSE
+#'     )
+#'   ),
+#'   PageSize = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_list_contacts
+sesv2_list_contacts <- function(ContactListName, Filter = NULL, PageSize = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListContacts",
+    http_method = "GET",
+    http_path = "/v2/email/contact-lists/{ContactListName}/contacts",
+    paginator = list()
+  )
+  input <- .sesv2$list_contacts_input(ContactListName = ContactListName, Filter = Filter, PageSize = PageSize, NextToken = NextToken)
+  output <- .sesv2$list_contacts_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$list_contacts <- sesv2_list_contacts
+
+#' Lists the existing custom verification email templates for your account
+#' in the current AWS Region
+#'
+#' Lists the existing custom verification email templates for your account
+#' in the current AWS Region.
+#' 
+#' For more information about custom verification email templates, see
+#' [Using Custom Verification Email
+#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
+#' in the *Amazon SES Developer Guide*.
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_list_custom_verification_email_templates(NextToken, PageSize)
+#'
+#' @param NextToken A token returned from a previous call to
+#' `ListCustomVerificationEmailTemplates` to indicate the position in the
+#' list of custom verification email templates.
+#' @param PageSize The number of results to show in a single call to
+#' `ListCustomVerificationEmailTemplates`. If the number of results is
+#' larger than the number you specified in this parameter, then the
+#' response includes a `NextToken` element, which you can use to obtain
+#' additional results.
+#' 
+#' The value you specify has to be at least 1, and can be no more than 50.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_custom_verification_email_templates(
+#'   NextToken = "string",
+#'   PageSize = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_list_custom_verification_email_templates
+sesv2_list_custom_verification_email_templates <- function(NextToken = NULL, PageSize = NULL) {
+  op <- new_operation(
+    name = "ListCustomVerificationEmailTemplates",
+    http_method = "GET",
+    http_path = "/v2/email/custom-verification-email-templates",
+    paginator = list()
+  )
+  input <- .sesv2$list_custom_verification_email_templates_input(NextToken = NextToken, PageSize = PageSize)
+  output <- .sesv2$list_custom_verification_email_templates_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$list_custom_verification_email_templates <- sesv2_list_custom_verification_email_templates
 
 #' List all of the dedicated IP pools that exist in your AWS account in the
 #' current Region
@@ -1329,6 +2267,102 @@ sesv2_list_email_identities <- function(NextToken = NULL, PageSize = NULL) {
 }
 .sesv2$operations$list_email_identities <- sesv2_list_email_identities
 
+#' Lists the email templates present in your Amazon SES account in the
+#' current AWS Region
+#'
+#' Lists the email templates present in your Amazon SES account in the
+#' current AWS Region.
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_list_email_templates(NextToken, PageSize)
+#'
+#' @param NextToken A token returned from a previous call to `ListEmailTemplates` to
+#' indicate the position in the list of email templates.
+#' @param PageSize The number of results to show in a single call to `ListEmailTemplates`.
+#' If the number of results is larger than the number you specified in this
+#' parameter, then the response includes a `NextToken` element, which you
+#' can use to obtain additional results.
+#' 
+#' The value you specify has to be at least 1, and can be no more than 10.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_email_templates(
+#'   NextToken = "string",
+#'   PageSize = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_list_email_templates
+sesv2_list_email_templates <- function(NextToken = NULL, PageSize = NULL) {
+  op <- new_operation(
+    name = "ListEmailTemplates",
+    http_method = "GET",
+    http_path = "/v2/email/templates",
+    paginator = list()
+  )
+  input <- .sesv2$list_email_templates_input(NextToken = NextToken, PageSize = PageSize)
+  output <- .sesv2$list_email_templates_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$list_email_templates <- sesv2_list_email_templates
+
+#' Lists all of the import jobs
+#'
+#' Lists all of the import jobs.
+#'
+#' @usage
+#' sesv2_list_import_jobs(ImportDestinationType, NextToken, PageSize)
+#'
+#' @param ImportDestinationType The destination of the import job, which can be used to list import jobs
+#' that have a certain `ImportDestinationType`.
+#' @param NextToken A string token indicating that there might be additional import jobs
+#' available to be listed. Copy this token to a subsequent call to
+#' `ListImportJobs` with the same parameters to retrieve the next page of
+#' import jobs.
+#' @param PageSize Maximum number of import jobs to return at once. Use this parameter to
+#' paginate results. If additional import jobs exist beyond the specified
+#' limit, the `NextToken` element is sent in the response. Use the
+#' `NextToken` value in subsequent requests to retrieve additional
+#' addresses.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_import_jobs(
+#'   ImportDestinationType = "SUPPRESSION_LIST"|"CONTACT_LIST",
+#'   NextToken = "string",
+#'   PageSize = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_list_import_jobs
+sesv2_list_import_jobs <- function(ImportDestinationType = NULL, NextToken = NULL, PageSize = NULL) {
+  op <- new_operation(
+    name = "ListImportJobs",
+    http_method = "GET",
+    http_path = "/v2/email/import-jobs",
+    paginator = list()
+  )
+  input <- .sesv2$list_import_jobs_input(ImportDestinationType = ImportDestinationType, NextToken = NextToken, PageSize = PageSize)
+  output <- .sesv2$list_import_jobs_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$list_import_jobs <- sesv2_list_import_jobs
+
 #' Retrieves a list of email addresses that are on the suppression list for
 #' your account
 #'
@@ -1473,6 +2507,70 @@ sesv2_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupEnabled =
   return(response)
 }
 .sesv2$operations$put_account_dedicated_ip_warmup_attributes <- sesv2_put_account_dedicated_ip_warmup_attributes
+
+#' Update your Amazon SES account details
+#'
+#' Update your Amazon SES account details.
+#'
+#' @usage
+#' sesv2_put_account_details(MailType, WebsiteURL, ContactLanguage,
+#'   UseCaseDescription, AdditionalContactEmailAddresses,
+#'   ProductionAccessEnabled)
+#'
+#' @param MailType &#91;required&#93; The type of email your account will send.
+#' @param WebsiteURL &#91;required&#93; The URL of your website. This information helps us better understand the
+#' type of content that you plan to send.
+#' @param ContactLanguage The language you would prefer to be contacted with.
+#' @param UseCaseDescription &#91;required&#93; A description of the types of email that you plan to send.
+#' @param AdditionalContactEmailAddresses Additional email addresses that you would like to be notified regarding
+#' Amazon SES matters.
+#' @param ProductionAccessEnabled Indicates whether or not your account should have production access in
+#' the current AWS Region.
+#' 
+#' If the value is `false`, then your account is in the *sandbox*. When
+#' your account is in the sandbox, you can only send email to verified
+#' identities. Additionally, the maximum number of emails you can send in a
+#' 24-hour period (your sending quota) is 200, and the maximum number of
+#' emails you can send per second (your maximum sending rate) is 1.
+#' 
+#' If the value is `true`, then your account has production access. When
+#' your account has production access, you can send email to any address.
+#' The sending quota and maximum sending rate for your account vary based
+#' on your specific use case.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_account_details(
+#'   MailType = "MARKETING"|"TRANSACTIONAL",
+#'   WebsiteURL = "string",
+#'   ContactLanguage = "EN"|"JA",
+#'   UseCaseDescription = "string",
+#'   AdditionalContactEmailAddresses = list(
+#'     "string"
+#'   ),
+#'   ProductionAccessEnabled = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_put_account_details
+sesv2_put_account_details <- function(MailType, WebsiteURL, ContactLanguage = NULL, UseCaseDescription, AdditionalContactEmailAddresses = NULL, ProductionAccessEnabled = NULL) {
+  op <- new_operation(
+    name = "PutAccountDetails",
+    http_method = "POST",
+    http_path = "/v2/email/account/details",
+    paginator = list()
+  )
+  input <- .sesv2$put_account_details_input(MailType = MailType, WebsiteURL = WebsiteURL, ContactLanguage = ContactLanguage, UseCaseDescription = UseCaseDescription, AdditionalContactEmailAddresses = AdditionalContactEmailAddresses, ProductionAccessEnabled = ProductionAccessEnabled)
+  output <- .sesv2$put_account_details_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$put_account_details <- sesv2_put_account_details
 
 #' Enable or disable the ability of your account to send email
 #'
@@ -1891,7 +2989,7 @@ sesv2_put_dedicated_ip_warmup_attributes <- function(Ip, WarmupPercentage) {
 #' subscription charge, in addition to any other fees that you accrue by
 #' using Amazon SES and other AWS services. For more information about the
 #' features and cost of a Deliverability dashboard subscription, see
-#' [Amazon SES Pricing](http://aws.amazon.com/ses/pricing/).
+#' [Amazon SES Pricing](https://aws.amazon.com/ses/pricing/).
 #'
 #' @usage
 #' sesv2_put_deliverability_dashboard_option(DashboardEnabled,
@@ -2012,7 +3110,7 @@ sesv2_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabl
 #' There are two possible values:
 #' 
 #' -   `AWS_SES` – Configure DKIM for the identity by using [Easy
-#'     DKIM](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim.html).
+#'     DKIM](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-authentication-dkim-easy.html).
 #' 
 #' -   `EXTERNAL` – Configure DKIM for the identity by using Bring Your Own
 #'     DKIM (BYODKIM).
@@ -2215,6 +3313,189 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 }
 .sesv2$operations$put_suppressed_destination <- sesv2_put_suppressed_destination
 
+#' Composes an email message to multiple destinations
+#'
+#' Composes an email message to multiple destinations.
+#'
+#' @usage
+#' sesv2_send_bulk_email(FromEmailAddress, FromEmailAddressIdentityArn,
+#'   ReplyToAddresses, FeedbackForwardingEmailAddress,
+#'   FeedbackForwardingEmailAddressIdentityArn, DefaultEmailTags,
+#'   DefaultContent, BulkEmailEntries, ConfigurationSetName)
+#'
+#' @param FromEmailAddress The email address that you want to use as the "From" address for the
+#' email. The address that you specify has to be verified.
+#' @param FromEmailAddressIdentityArn This parameter is used only for sending authorization. It is the ARN of
+#' the identity that is associated with the sending authorization policy
+#' that permits you to use the email address specified in the
+#' `FromEmailAddress` parameter.
+#' 
+#' For example, if the owner of example.com (which has ARN
+#' arn:aws:ses:us-east-1:123456789012:identity/example.com) attaches a
+#' policy to it that authorizes you to use sender@@example.com, then you
+#' would specify the `FromEmailAddressIdentityArn` to be
+#' arn:aws:ses:us-east-1:123456789012:identity/example.com, and the
+#' `FromEmailAddress` to be sender@@example.com.
+#' 
+#' For more information about sending authorization, see the [Amazon SES
+#' Developer
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' @param ReplyToAddresses The "Reply-to" email addresses for the message. When the recipient
+#' replies to the message, each Reply-to address receives the reply.
+#' @param FeedbackForwardingEmailAddress The address that you want bounce and complaint notifications to be sent
+#' to.
+#' @param FeedbackForwardingEmailAddressIdentityArn This parameter is used only for sending authorization. It is the ARN of
+#' the identity that is associated with the sending authorization policy
+#' that permits you to use the email address specified in the
+#' `FeedbackForwardingEmailAddress` parameter.
+#' 
+#' For example, if the owner of example.com (which has ARN
+#' arn:aws:ses:us-east-1:123456789012:identity/example.com) attaches a
+#' policy to it that authorizes you to use feedback@@example.com, then you
+#' would specify the `FeedbackForwardingEmailAddressIdentityArn` to be
+#' arn:aws:ses:us-east-1:123456789012:identity/example.com, and the
+#' `FeedbackForwardingEmailAddress` to be feedback@@example.com.
+#' 
+#' For more information about sending authorization, see the [Amazon SES
+#' Developer
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' @param DefaultEmailTags A list of tags, in the form of name/value pairs, to apply to an email
+#' that you send using the `SendEmail` operation. Tags correspond to
+#' characteristics of the email that you define, so that you can publish
+#' email sending events.
+#' @param DefaultContent &#91;required&#93; An object that contains the body of the message. You can specify a
+#' template message.
+#' @param BulkEmailEntries &#91;required&#93; The list of bulk email entry objects.
+#' @param ConfigurationSetName The name of the configuration set that you want to use when sending the
+#' email.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$send_bulk_email(
+#'   FromEmailAddress = "string",
+#'   FromEmailAddressIdentityArn = "string",
+#'   ReplyToAddresses = list(
+#'     "string"
+#'   ),
+#'   FeedbackForwardingEmailAddress = "string",
+#'   FeedbackForwardingEmailAddressIdentityArn = "string",
+#'   DefaultEmailTags = list(
+#'     list(
+#'       Name = "string",
+#'       Value = "string"
+#'     )
+#'   ),
+#'   DefaultContent = list(
+#'     Template = list(
+#'       TemplateName = "string",
+#'       TemplateArn = "string",
+#'       TemplateData = "string"
+#'     )
+#'   ),
+#'   BulkEmailEntries = list(
+#'     list(
+#'       Destination = list(
+#'         ToAddresses = list(
+#'           "string"
+#'         ),
+#'         CcAddresses = list(
+#'           "string"
+#'         ),
+#'         BccAddresses = list(
+#'           "string"
+#'         )
+#'       ),
+#'       ReplacementTags = list(
+#'         list(
+#'           Name = "string",
+#'           Value = "string"
+#'         )
+#'       ),
+#'       ReplacementEmailContent = list(
+#'         ReplacementTemplate = list(
+#'           ReplacementTemplateData = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ConfigurationSetName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_send_bulk_email
+sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityArn = NULL, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, FeedbackForwardingEmailAddressIdentityArn = NULL, DefaultEmailTags = NULL, DefaultContent, BulkEmailEntries, ConfigurationSetName = NULL) {
+  op <- new_operation(
+    name = "SendBulkEmail",
+    http_method = "POST",
+    http_path = "/v2/email/outbound-bulk-emails",
+    paginator = list()
+  )
+  input <- .sesv2$send_bulk_email_input(FromEmailAddress = FromEmailAddress, FromEmailAddressIdentityArn = FromEmailAddressIdentityArn, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, FeedbackForwardingEmailAddressIdentityArn = FeedbackForwardingEmailAddressIdentityArn, DefaultEmailTags = DefaultEmailTags, DefaultContent = DefaultContent, BulkEmailEntries = BulkEmailEntries, ConfigurationSetName = ConfigurationSetName)
+  output <- .sesv2$send_bulk_email_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$send_bulk_email <- sesv2_send_bulk_email
+
+#' Adds an email address to the list of identities for your Amazon SES
+#' account in the current AWS Region and attempts to verify it
+#'
+#' Adds an email address to the list of identities for your Amazon SES
+#' account in the current AWS Region and attempts to verify it. As a result
+#' of executing this operation, a customized verification email is sent to
+#' the specified address.
+#' 
+#' To use this operation, you must first create a custom verification email
+#' template. For more information about creating and using custom
+#' verification email templates, see [Using Custom Verification Email
+#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
+#' in the *Amazon SES Developer Guide*.
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_send_custom_verification_email(EmailAddress, TemplateName,
+#'   ConfigurationSetName)
+#'
+#' @param EmailAddress &#91;required&#93; The email address to verify.
+#' @param TemplateName &#91;required&#93; The name of the custom verification email template to use when sending
+#' the verification email.
+#' @param ConfigurationSetName Name of a configuration set to use when sending the verification email.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$send_custom_verification_email(
+#'   EmailAddress = "string",
+#'   TemplateName = "string",
+#'   ConfigurationSetName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_send_custom_verification_email
+sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, ConfigurationSetName = NULL) {
+  op <- new_operation(
+    name = "SendCustomVerificationEmail",
+    http_method = "POST",
+    http_path = "/v2/email/outbound-custom-verification-emails",
+    paginator = list()
+  )
+  input <- .sesv2$send_custom_verification_email_input(EmailAddress = EmailAddress, TemplateName = TemplateName, ConfigurationSetName = ConfigurationSetName)
+  output <- .sesv2$send_custom_verification_email_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$send_custom_verification_email <- sesv2_send_custom_verification_email
+
 #' Sends an email message
 #'
 #' Sends an email message. You can use the Amazon SES API v2 to send two
@@ -2229,32 +3510,74 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #'     well as the message body. You can use this message type to send
 #'     messages that contain attachments. The message that you specify has
 #'     to be a valid MIME message.
+#' 
+#' -   **Templated** – A message that contains personalization tags. When
+#'     you send this type of email, Amazon SES API v2 automatically
+#'     replaces the tags with values that you specify.
 #'
 #' @usage
-#' sesv2_send_email(FromEmailAddress, Destination, ReplyToAddresses,
-#'   FeedbackForwardingEmailAddress, Content, EmailTags,
-#'   ConfigurationSetName)
+#' sesv2_send_email(FromEmailAddress, FromEmailAddressIdentityArn,
+#'   Destination, ReplyToAddresses, FeedbackForwardingEmailAddress,
+#'   FeedbackForwardingEmailAddressIdentityArn, Content, EmailTags,
+#'   ConfigurationSetName, ListManagementOptions)
 #'
 #' @param FromEmailAddress The email address that you want to use as the "From" address for the
 #' email. The address that you specify has to be verified.
-#' @param Destination &#91;required&#93; An object that contains the recipients of the email message.
+#' @param FromEmailAddressIdentityArn This parameter is used only for sending authorization. It is the ARN of
+#' the identity that is associated with the sending authorization policy
+#' that permits you to use the email address specified in the
+#' `FromEmailAddress` parameter.
+#' 
+#' For example, if the owner of example.com (which has ARN
+#' arn:aws:ses:us-east-1:123456789012:identity/example.com) attaches a
+#' policy to it that authorizes you to use sender@@example.com, then you
+#' would specify the `FromEmailAddressIdentityArn` to be
+#' arn:aws:ses:us-east-1:123456789012:identity/example.com, and the
+#' `FromEmailAddress` to be sender@@example.com.
+#' 
+#' For more information about sending authorization, see the [Amazon SES
+#' Developer
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' 
+#' For Raw emails, the `FromEmailAddressIdentityArn` value overrides the
+#' X-SES-SOURCE-ARN and X-SES-FROM-ARN headers specified in raw email
+#' message content.
+#' @param Destination An object that contains the recipients of the email message.
 #' @param ReplyToAddresses The "Reply-to" email addresses for the message. When the recipient
 #' replies to the message, each Reply-to address receives the reply.
 #' @param FeedbackForwardingEmailAddress The address that you want bounce and complaint notifications to be sent
 #' to.
+#' @param FeedbackForwardingEmailAddressIdentityArn This parameter is used only for sending authorization. It is the ARN of
+#' the identity that is associated with the sending authorization policy
+#' that permits you to use the email address specified in the
+#' `FeedbackForwardingEmailAddress` parameter.
+#' 
+#' For example, if the owner of example.com (which has ARN
+#' arn:aws:ses:us-east-1:123456789012:identity/example.com) attaches a
+#' policy to it that authorizes you to use feedback@@example.com, then you
+#' would specify the `FeedbackForwardingEmailAddressIdentityArn` to be
+#' arn:aws:ses:us-east-1:123456789012:identity/example.com, and the
+#' `FeedbackForwardingEmailAddress` to be feedback@@example.com.
+#' 
+#' For more information about sending authorization, see the [Amazon SES
+#' Developer
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
 #' @param Content &#91;required&#93; An object that contains the body of the message. You can send either a
-#' Simple message or a Raw message.
+#' Simple message Raw message or a template Message.
 #' @param EmailTags A list of tags, in the form of name/value pairs, to apply to an email
 #' that you send using the `SendEmail` operation. Tags correspond to
 #' characteristics of the email that you define, so that you can publish
 #' email sending events.
 #' @param ConfigurationSetName The name of the configuration set that you want to use when sending the
 #' email.
+#' @param ListManagementOptions An object used to specify a list or topic to which an email belongs,
+#' which will be used when a contact chooses to unsubscribe.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$send_email(
 #'   FromEmailAddress = "string",
+#'   FromEmailAddressIdentityArn = "string",
 #'   Destination = list(
 #'     ToAddresses = list(
 #'       "string"
@@ -2270,6 +3593,7 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #'     "string"
 #'   ),
 #'   FeedbackForwardingEmailAddress = "string",
+#'   FeedbackForwardingEmailAddressIdentityArn = "string",
 #'   Content = list(
 #'     Simple = list(
 #'       Subject = list(
@@ -2291,6 +3615,7 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #'       Data = raw
 #'     ),
 #'     Template = list(
+#'       TemplateName = "string",
 #'       TemplateArn = "string",
 #'       TemplateData = "string"
 #'     )
@@ -2301,21 +3626,25 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 #'       Value = "string"
 #'     )
 #'   ),
-#'   ConfigurationSetName = "string"
+#'   ConfigurationSetName = "string",
+#'   ListManagementOptions = list(
+#'     ContactListName = "string",
+#'     TopicName = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname sesv2_send_email
-sesv2_send_email <- function(FromEmailAddress = NULL, Destination, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, Content, EmailTags = NULL, ConfigurationSetName = NULL) {
+sesv2_send_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityArn = NULL, Destination = NULL, ReplyToAddresses = NULL, FeedbackForwardingEmailAddress = NULL, FeedbackForwardingEmailAddressIdentityArn = NULL, Content, EmailTags = NULL, ConfigurationSetName = NULL, ListManagementOptions = NULL) {
   op <- new_operation(
     name = "SendEmail",
     http_method = "POST",
     http_path = "/v2/email/outbound-emails",
     paginator = list()
   )
-  input <- .sesv2$send_email_input(FromEmailAddress = FromEmailAddress, Destination = Destination, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, Content = Content, EmailTags = EmailTags, ConfigurationSetName = ConfigurationSetName)
+  input <- .sesv2$send_email_input(FromEmailAddress = FromEmailAddress, FromEmailAddressIdentityArn = FromEmailAddressIdentityArn, Destination = Destination, ReplyToAddresses = ReplyToAddresses, FeedbackForwardingEmailAddress = FeedbackForwardingEmailAddress, FeedbackForwardingEmailAddressIdentityArn = FeedbackForwardingEmailAddressIdentityArn, Content = Content, EmailTags = EmailTags, ConfigurationSetName = ConfigurationSetName, ListManagementOptions = ListManagementOptions)
   output <- .sesv2$send_email_output()
   config <- get_config()
   svc <- .sesv2$service(config)
@@ -2380,6 +3709,50 @@ sesv2_tag_resource <- function(ResourceArn, Tags) {
   return(response)
 }
 .sesv2$operations$tag_resource <- sesv2_tag_resource
+
+#' Creates a preview of the MIME content of an email when provided with a
+#' template and a set of replacement data
+#'
+#' Creates a preview of the MIME content of an email when provided with a
+#' template and a set of replacement data.
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_test_render_email_template(TemplateName, TemplateData)
+#'
+#' @param TemplateName &#91;required&#93; The name of the template that you want to render.
+#' @param TemplateData &#91;required&#93; A list of replacement values to apply to the template. This parameter is
+#' a JSON object, typically consisting of key-value pairs in which the keys
+#' correspond to replacement tags in the email template.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$test_render_email_template(
+#'   TemplateName = "string",
+#'   TemplateData = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_test_render_email_template
+sesv2_test_render_email_template <- function(TemplateName, TemplateData) {
+  op <- new_operation(
+    name = "TestRenderEmailTemplate",
+    http_method = "POST",
+    http_path = "/v2/email/templates/{TemplateName}/render",
+    paginator = list()
+  )
+  input <- .sesv2$test_render_email_template_input(TemplateName = TemplateName, TemplateData = TemplateData)
+  output <- .sesv2$test_render_email_template_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$test_render_email_template <- sesv2_test_render_email_template
 
 #' Remove one or more tags (keys and values) from a specified resource
 #'
@@ -2458,7 +3831,7 @@ sesv2_untag_resource <- function(ResourceArn, TagKeys) {
 #'   EventDestination = list(
 #'     Enabled = TRUE|FALSE,
 #'     MatchingEventTypes = list(
-#'       "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"|"DELIVERY_DELAY"
+#'       "SEND"|"REJECT"|"BOUNCE"|"COMPLAINT"|"DELIVERY"|"OPEN"|"CLICK"|"RENDERING_FAILURE"|"DELIVERY_DELAY"|"SUBSCRIPTION"
 #'     ),
 #'     KinesisFirehoseDestination = list(
 #'       IamRoleArn = "string",
@@ -2502,3 +3875,276 @@ sesv2_update_configuration_set_event_destination <- function(ConfigurationSetNam
   return(response)
 }
 .sesv2$operations$update_configuration_set_event_destination <- sesv2_update_configuration_set_event_destination
+
+#' Updates a contact's preferences for a list
+#'
+#' Updates a contact's preferences for a list. It is not necessary to
+#' specify all existing topic preferences in the TopicPreferences object,
+#' just the ones that need updating.
+#'
+#' @usage
+#' sesv2_update_contact(ContactListName, EmailAddress, TopicPreferences,
+#'   UnsubscribeAll, AttributesData)
+#'
+#' @param ContactListName &#91;required&#93; The name of the contact list.
+#' @param EmailAddress &#91;required&#93; The contact's email addres.
+#' @param TopicPreferences The contact's preference for being opted-in to or opted-out of a topic.
+#' @param UnsubscribeAll A boolean value status noting if the contact is unsubscribed from all
+#' contact list topics.
+#' @param AttributesData The attribute data attached to a contact.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_contact(
+#'   ContactListName = "string",
+#'   EmailAddress = "string",
+#'   TopicPreferences = list(
+#'     list(
+#'       TopicName = "string",
+#'       SubscriptionStatus = "OPT_IN"|"OPT_OUT"
+#'     )
+#'   ),
+#'   UnsubscribeAll = TRUE|FALSE,
+#'   AttributesData = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_update_contact
+sesv2_update_contact <- function(ContactListName, EmailAddress, TopicPreferences = NULL, UnsubscribeAll = NULL, AttributesData = NULL) {
+  op <- new_operation(
+    name = "UpdateContact",
+    http_method = "PUT",
+    http_path = "/v2/email/contact-lists/{ContactListName}/contacts/{EmailAddress}",
+    paginator = list()
+  )
+  input <- .sesv2$update_contact_input(ContactListName = ContactListName, EmailAddress = EmailAddress, TopicPreferences = TopicPreferences, UnsubscribeAll = UnsubscribeAll, AttributesData = AttributesData)
+  output <- .sesv2$update_contact_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$update_contact <- sesv2_update_contact
+
+#' Updates contact list metadata
+#'
+#' Updates contact list metadata. This operation does a complete
+#' replacement.
+#'
+#' @usage
+#' sesv2_update_contact_list(ContactListName, Topics, Description)
+#'
+#' @param ContactListName &#91;required&#93; The name of the contact list.
+#' @param Topics An interest group, theme, or label within a list. A contact list can
+#' have multiple topics.
+#' @param Description A description of what the contact list is about.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_contact_list(
+#'   ContactListName = "string",
+#'   Topics = list(
+#'     list(
+#'       TopicName = "string",
+#'       DisplayName = "string",
+#'       Description = "string",
+#'       DefaultSubscriptionStatus = "OPT_IN"|"OPT_OUT"
+#'     )
+#'   ),
+#'   Description = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_update_contact_list
+sesv2_update_contact_list <- function(ContactListName, Topics = NULL, Description = NULL) {
+  op <- new_operation(
+    name = "UpdateContactList",
+    http_method = "PUT",
+    http_path = "/v2/email/contact-lists/{ContactListName}",
+    paginator = list()
+  )
+  input <- .sesv2$update_contact_list_input(ContactListName = ContactListName, Topics = Topics, Description = Description)
+  output <- .sesv2$update_contact_list_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$update_contact_list <- sesv2_update_contact_list
+
+#' Updates an existing custom verification email template
+#'
+#' Updates an existing custom verification email template.
+#' 
+#' For more information about custom verification email templates, see
+#' [Using Custom Verification Email
+#' Templates](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html)
+#' in the *Amazon SES Developer Guide*.
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_update_custom_verification_email_template(TemplateName,
+#'   FromEmailAddress, TemplateSubject, TemplateContent,
+#'   SuccessRedirectionURL, FailureRedirectionURL)
+#'
+#' @param TemplateName &#91;required&#93; The name of the custom verification email template that you want to
+#' update.
+#' @param FromEmailAddress &#91;required&#93; The email address that the custom verification email is sent from.
+#' @param TemplateSubject &#91;required&#93; The subject line of the custom verification email.
+#' @param TemplateContent &#91;required&#93; The content of the custom verification email. The total size of the
+#' email must be less than 10 MB. The message body may contain HTML, with
+#' some limitations. For more information, see [Custom Verification Email
+#' Frequently Asked
+#' Questions](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html#custom-verification-emails-faq)
+#' in the *Amazon SES Developer Guide*.
+#' @param SuccessRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
+#' or her address is successfully verified.
+#' @param FailureRedirectionURL &#91;required&#93; The URL that the recipient of the verification email is sent to if his
+#' or her address is not successfully verified.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_custom_verification_email_template(
+#'   TemplateName = "string",
+#'   FromEmailAddress = "string",
+#'   TemplateSubject = "string",
+#'   TemplateContent = "string",
+#'   SuccessRedirectionURL = "string",
+#'   FailureRedirectionURL = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_update_custom_verification_email_template
+sesv2_update_custom_verification_email_template <- function(TemplateName, FromEmailAddress, TemplateSubject, TemplateContent, SuccessRedirectionURL, FailureRedirectionURL) {
+  op <- new_operation(
+    name = "UpdateCustomVerificationEmailTemplate",
+    http_method = "PUT",
+    http_path = "/v2/email/custom-verification-email-templates/{TemplateName}",
+    paginator = list()
+  )
+  input <- .sesv2$update_custom_verification_email_template_input(TemplateName = TemplateName, FromEmailAddress = FromEmailAddress, TemplateSubject = TemplateSubject, TemplateContent = TemplateContent, SuccessRedirectionURL = SuccessRedirectionURL, FailureRedirectionURL = FailureRedirectionURL)
+  output <- .sesv2$update_custom_verification_email_template_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$update_custom_verification_email_template <- sesv2_update_custom_verification_email_template
+
+#' Updates the specified sending authorization policy for the given
+#' identity (an email address or a domain)
+#'
+#' Updates the specified sending authorization policy for the given
+#' identity (an email address or a domain). This API returns successfully
+#' even if a policy with the specified name does not exist.
+#' 
+#' This API is for the identity owner only. If you have not verified the
+#' identity, this API will return an error.
+#' 
+#' Sending authorization is a feature that enables an identity owner to
+#' authorize other senders to use its identities. For information about
+#' using sending authorization, see the [Amazon SES Developer
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization.html).
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_update_email_identity_policy(EmailIdentity, PolicyName, Policy)
+#'
+#' @param EmailIdentity &#91;required&#93; The email identity for which you want to update policy.
+#' @param PolicyName &#91;required&#93; The name of the policy.
+#' 
+#' The policy name cannot exceed 64 characters and can only include
+#' alphanumeric characters, dashes, and underscores.
+#' @param Policy &#91;required&#93; The text of the policy in JSON format. The policy cannot exceed 4 KB.
+#' 
+#' For information about the syntax of sending authorization policies, see
+#' the [Amazon SES Developer
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authorization-policies.html).
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_email_identity_policy(
+#'   EmailIdentity = "string",
+#'   PolicyName = "string",
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_update_email_identity_policy
+sesv2_update_email_identity_policy <- function(EmailIdentity, PolicyName, Policy) {
+  op <- new_operation(
+    name = "UpdateEmailIdentityPolicy",
+    http_method = "PUT",
+    http_path = "/v2/email/identities/{EmailIdentity}/policies/{PolicyName}",
+    paginator = list()
+  )
+  input <- .sesv2$update_email_identity_policy_input(EmailIdentity = EmailIdentity, PolicyName = PolicyName, Policy = Policy)
+  output <- .sesv2$update_email_identity_policy_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$update_email_identity_policy <- sesv2_update_email_identity_policy
+
+#' Updates an email template
+#'
+#' Updates an email template. Email templates enable you to send
+#' personalized email to one or more destinations in a single API
+#' operation. For more information, see the [Amazon SES Developer
+#' Guide](https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html).
+#' 
+#' You can execute this operation no more than once per second.
+#'
+#' @usage
+#' sesv2_update_email_template(TemplateName, TemplateContent)
+#'
+#' @param TemplateName &#91;required&#93; The name of the template you want to update.
+#' @param TemplateContent &#91;required&#93; The content of the email template, composed of a subject line, an HTML
+#' part, and a text-only part.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_email_template(
+#'   TemplateName = "string",
+#'   TemplateContent = list(
+#'     Subject = "string",
+#'     Text = "string",
+#'     Html = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_update_email_template
+sesv2_update_email_template <- function(TemplateName, TemplateContent) {
+  op <- new_operation(
+    name = "UpdateEmailTemplate",
+    http_method = "PUT",
+    http_path = "/v2/email/templates/{TemplateName}",
+    paginator = list()
+  )
+  input <- .sesv2$update_email_template_input(TemplateName = TemplateName, TemplateContent = TemplateContent)
+  output <- .sesv2$update_email_template_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$update_email_template <- sesv2_update_email_template

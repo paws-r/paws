@@ -17,7 +17,7 @@ lightsail_create_instances_from_snapshot(instanceNames,
 
 \item{availabilityZone}{[required] The Availability Zone where you want to create your instances. Use the
 following formatting: \verb{us-east-2a} (case sensitive). You can get a list
-of Availability Zones by using the \href{http://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html}{get regions}
+of Availability Zones by using the \href{https://docs.aws.amazon.com/lightsail/2016-11-28/api-reference/API_GetRegions.html}{get regions}
 operation. Be sure to add the \verb{include Availability Zones} parameter to
 your request.}
 
@@ -41,14 +41,13 @@ user data. For example, \verb{apt-get -y update}.
 Depending on the machine image you choose, the command to get software
 on your instance varies. Amazon Linux and CentOS use \code{yum}, Debian and
 Ubuntu use \code{apt-get}, and FreeBSD uses \code{pkg}. For a complete list, see
-the \href{https://lightsail.aws.amazon.com/ls/docs/getting-started/article/compare-options-choose-lightsail-instance-image}{Dev Guide}.}
+the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/compare-options-choose-lightsail-instance-image}{Dev Guide}.}
 
 \item{keyPairName}{The name for your key pair.}
 
 \item{tags}{The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the \verb{tag resource}
-operation.}
+Use the \code{TagResource} action to tag a resource after it's created.}
 
 \item{addOns}{An array of objects representing the add-ons to enable for the new
 instance.}
@@ -100,7 +99,7 @@ an instance.
 The \verb{create instances from snapshot} operation supports tag-based access
 control via request tags and resource tags applied to the resource
 identified by \verb{instance snapshot name}. For more information, see the
-\href{https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_instances_from_snapshot(

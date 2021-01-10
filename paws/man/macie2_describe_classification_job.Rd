@@ -2,8 +2,7 @@
 % Please edit documentation in R/macie2_operations.R
 \name{macie2_describe_classification_job}
 \alias{macie2_describe_classification_job}
-\title{Retrieves information about the status and settings for a classification
-job}
+\title{Retrieves the status and settings for a classification job}
 \usage{
 macie2_describe_classification_job(jobId)
 }
@@ -11,8 +10,7 @@ macie2_describe_classification_job(jobId)
 \item{jobId}{[required] The unique identifier for the classification job.}
 }
 \description{
-Retrieves information about the status and settings for a classification
-job.
+Retrieves the status and settings for a classification job.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_classification_job(

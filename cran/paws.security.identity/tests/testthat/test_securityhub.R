@@ -14,6 +14,10 @@ test_that("describe_hub", {
   expect_error(svc$describe_hub(), NA)
 })
 
+test_that("describe_organization_configuration", {
+  expect_error(svc$describe_organization_configuration(), NA)
+})
+
 test_that("describe_products", {
   expect_error(svc$describe_products(), NA)
 })
@@ -52,4 +56,12 @@ test_that("list_members", {
 
 test_that("list_members", {
   expect_error(svc$list_members(MaxResults = 20), NA)
+})
+
+test_that("list_organization_admin_accounts", {
+  expect_error(svc$list_organization_admin_accounts(), NA)
+})
+
+test_that("list_organization_admin_accounts", {
+  expect_error(svc$list_organization_admin_accounts(MaxResults = 20), NA)
 })

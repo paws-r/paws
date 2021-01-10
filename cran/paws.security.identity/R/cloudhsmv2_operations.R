@@ -56,8 +56,15 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #' Creates a new AWS CloudHSM cluster.
 #'
 #' @usage
-#' cloudhsmv2_create_cluster(SubnetIds, HsmType, SourceBackupId, TagList)
+#' cloudhsmv2_create_cluster(BackupRetentionPolicy, HsmType,
+#'   SourceBackupId, SubnetIds, TagList)
 #'
+#' @param BackupRetentionPolicy A policy that defines how the service retains backups.
+#' @param HsmType &#91;required&#93; The type of HSM to use in the cluster. Currently the only allowed value
+#' is `hsm1.medium`.
+#' @param SourceBackupId The identifier (ID) of the cluster backup to restore. Use this value to
+#' restore the cluster from a backup instead of creating a new cluster. To
+#' find the backup ID, use DescribeBackups.
 #' @param SubnetIds &#91;required&#93; The identifiers (IDs) of the subnets where you are creating the cluster.
 #' You must specify at least one subnet. If you specify multiple subnets,
 #' they must meet the following criteria:
@@ -65,21 +72,20 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #' -   All subnets must be in the same virtual private cloud (VPC).
 #' 
 #' -   You can specify only one subnet per Availability Zone.
-#' @param HsmType &#91;required&#93; The type of HSM to use in the cluster. Currently the only allowed value
-#' is `hsm1.medium`.
-#' @param SourceBackupId The identifier (ID) of the cluster backup to restore. Use this value to
-#' restore the cluster from a backup instead of creating a new cluster. To
-#' find the backup ID, use DescribeBackups.
 #' @param TagList Tags to apply to the CloudHSM cluster during creation.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_cluster(
-#'   SubnetIds = list(
-#'     "string"
+#'   BackupRetentionPolicy = list(
+#'     Type = "DAYS",
+#'     Value = "string"
 #'   ),
 #'   HsmType = "string",
 #'   SourceBackupId = "string",
+#'   SubnetIds = list(
+#'     "string"
+#'   ),
 #'   TagList = list(
 #'     list(
 #'       Key = "string",
@@ -92,14 +98,14 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #' @keywords internal
 #'
 #' @rdname cloudhsmv2_create_cluster
-cloudhsmv2_create_cluster <- function(SubnetIds, HsmType, SourceBackupId = NULL, TagList = NULL) {
+cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, SourceBackupId = NULL, SubnetIds, TagList = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudhsmv2$create_cluster_input(SubnetIds = SubnetIds, HsmType = HsmType, SourceBackupId = SourceBackupId, TagList = TagList)
+  input <- .cloudhsmv2$create_cluster_input(BackupRetentionPolicy = BackupRetentionPolicy, HsmType = HsmType, SourceBackupId = SourceBackupId, SubnetIds = SubnetIds, TagList = TagList)
   output <- .cloudhsmv2$create_cluster_output()
   config <- get_config()
   svc <- .cloudhsmv2$service(config)
@@ -317,6 +323,11 @@ cloudhsmv2_delete_hsm <- function(ClusterId, HsmId = NULL, EniId = NULL, EniIp =
 #' 
 #' Use the `states` filter to return only backups that match the specified
 #' state.
+#' 
+#' Use the `neverExpires` filter to return backups filtered by the value in
+#' the `neverExpires` parameter. `True` returns all backups exempt from the
+#' backup retention policy. `False` returns all backups with a backup
+#' retention policy defined at the cluster.
 #' @param SortAscending Designates whether or not to sort the return backups by ascending
 #' chronological order of generation.
 #'
@@ -521,6 +532,90 @@ cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL
   return(response)
 }
 .cloudhsmv2$operations$list_tags <- cloudhsmv2_list_tags
+
+#' Modifies attributes for AWS CloudHSM backup
+#'
+#' Modifies attributes for AWS CloudHSM backup.
+#'
+#' @usage
+#' cloudhsmv2_modify_backup_attributes(BackupId, NeverExpires)
+#'
+#' @param BackupId &#91;required&#93; The identifier (ID) of the backup to modify. To find the ID of a backup,
+#' use the DescribeBackups operation.
+#' @param NeverExpires &#91;required&#93; Specifies whether the service should exempt a backup from the retention
+#' policy for the cluster. `True` exempts a backup from the retention
+#' policy. `False` means the service applies the backup retention policy
+#' defined at the cluster.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_backup_attributes(
+#'   BackupId = "string",
+#'   NeverExpires = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudhsmv2_modify_backup_attributes
+cloudhsmv2_modify_backup_attributes <- function(BackupId, NeverExpires) {
+  op <- new_operation(
+    name = "ModifyBackupAttributes",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudhsmv2$modify_backup_attributes_input(BackupId = BackupId, NeverExpires = NeverExpires)
+  output <- .cloudhsmv2$modify_backup_attributes_output()
+  config <- get_config()
+  svc <- .cloudhsmv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudhsmv2$operations$modify_backup_attributes <- cloudhsmv2_modify_backup_attributes
+
+#' Modifies AWS CloudHSM cluster
+#'
+#' Modifies AWS CloudHSM cluster.
+#'
+#' @usage
+#' cloudhsmv2_modify_cluster(BackupRetentionPolicy, ClusterId)
+#'
+#' @param BackupRetentionPolicy &#91;required&#93; A policy that defines how the service retains backups.
+#' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you want to modify. To find the
+#' cluster ID, use DescribeClusters.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$modify_cluster(
+#'   BackupRetentionPolicy = list(
+#'     Type = "DAYS",
+#'     Value = "string"
+#'   ),
+#'   ClusterId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname cloudhsmv2_modify_cluster
+cloudhsmv2_modify_cluster <- function(BackupRetentionPolicy, ClusterId) {
+  op <- new_operation(
+    name = "ModifyCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudhsmv2$modify_cluster_input(BackupRetentionPolicy = BackupRetentionPolicy, ClusterId = ClusterId)
+  output <- .cloudhsmv2$modify_cluster_output()
+  config <- get_config()
+  svc <- .cloudhsmv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudhsmv2$operations$modify_cluster <- cloudhsmv2_modify_cluster
 
 #' Restores a specified AWS CloudHSM backup that is in the PENDING_DELETION
 #' state

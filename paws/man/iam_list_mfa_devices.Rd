@@ -9,7 +9,7 @@ iam_list_mfa_devices(UserName, Marker, MaxItems)
 \arguments{
 \item{UserName}{The name of the user whose MFA devices you want to list.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 

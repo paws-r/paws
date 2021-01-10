@@ -17,7 +17,7 @@ the CIDR block.}
 \item{VpcId}{[required] The ID of the VPC.}
 
 \item{Ipv6CidrBlockNetworkBorderGroup}{The name of the location from which we advertise the IPV6 CIDR block.
-Use this parameter to limit the CiDR block to this location.
+Use this parameter to limit the CIDR block to this location.
 
 You must set \code{AmazonProvidedIpv6CidrBlock} to \code{true} to use this
 parameter.

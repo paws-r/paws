@@ -13,7 +13,7 @@ docdb_describe_db_engine_versions(Engine, EngineVersion,
 
 \item{EngineVersion}{The database engine version to return.
 
-Example: \verb{5.1.49}}
+Example: \verb{3.6.0}}
 
 \item{DBParameterGroupFamily}{The name of a specific parameter group family to return details for.
 

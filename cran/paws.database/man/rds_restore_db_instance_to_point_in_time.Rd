@@ -13,7 +13,8 @@ rds_restore_db_instance_to_point_in_time(SourceDBInstanceIdentifier,
   DomainIAMRoleName, EnableIAMDatabaseAuthentication,
   EnableCloudwatchLogsExports, ProcessorFeatures,
   UseDefaultProcessorFeatures, DBParameterGroupName, DeletionProtection,
-  SourceDbiResourceId)
+  SourceDbiResourceId, MaxAllocatedStorage,
+  SourceDBInstanceAutomatedBackupsArn, EnableCustomerOwnedIp)
 }
 \arguments{
 \item{SourceDBInstanceIdentifier}{The identifier of the source DB instance from which to restore.
@@ -181,17 +182,10 @@ VPC.}
 
 \item{Domain}{Specify the Active Directory directory ID to restore the DB instance in.
 The domain must be created prior to this operation. Currently, only
-Microsoft SQL Server and Oracle DB instances can be created in an Active
-Directory Domain.
+MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances can be
+created in an Active Directory Domain.
 
-For Microsoft SQL Server DB instances, Amazon RDS can use Windows
-Authentication to authenticate users that connect to the DB instance.
-For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html}{Using Windows Authentication with an Amazon RDS DB Instance Running Microsoft SQL Server}
-in the \emph{Amazon RDS User Guide}.
-
-For Oracle DB instances, Amazon RDS can use Kerberos authentication to
-authenticate users that connect to the DB instance. For more
-information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html}{Using Kerberos Authentication with Amazon RDS for Oracle}
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html}{Kerberos Authentication}
 in the \emph{Amazon RDS User Guide}.}
 
 \item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
@@ -199,8 +193,7 @@ Directory Service.}
 
 \item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of AWS Identity and
 Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled. For information about the supported DB engines, see
-CreateDBInstance.
+mapping is disabled.
 
 For more information about IAM database authentication, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication for MySQL and PostgreSQL}
 in the \emph{Amazon RDS User Guide.}}
@@ -235,6 +228,27 @@ enabled. By default, deletion protection is disabled. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 
 \item{SourceDbiResourceId}{The resource ID of the source DB instance from which to restore.}
+
+\item{MaxAllocatedStorage}{The upper limit to which Amazon RDS can automatically scale the storage
+of the DB instance.}
+
+\item{SourceDBInstanceAutomatedBackupsArn}{The Amazon Resource Name (ARN) of the replicated automated backups from
+which to restore, for example,
+\code{arn:aws:rds:useast-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE}.}
+
+\item{EnableCustomerOwnedIp}{A value that indicates whether to enable a customer-owned IP address
+(CoIP) for an RDS on Outposts DB instance.
+
+A \emph{CoIP} provides local or external connectivity to resources in your
+Outpost subnets through your on-premises network. For some use cases, a
+CoIP can provide lower latency for connections to the DB instance from
+outside of its virtual private cloud (VPC) on your local network.
+
+For more information about RDS on Outposts, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on AWS Outposts}
+in the \emph{Amazon RDS User Guide}.
+
+For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing}{Customer-owned IP addresses}
+in the \emph{AWS Outposts User Guide}.}
 }
 \description{
 Restores a DB instance to an arbitrary point in time. You can restore to
@@ -302,7 +316,10 @@ Aurora, use \code{RestoreDBClusterToPointInTime}.
   UseDefaultProcessorFeatures = TRUE|FALSE,
   DBParameterGroupName = "string",
   DeletionProtection = TRUE|FALSE,
-  SourceDbiResourceId = "string"
+  SourceDbiResourceId = "string",
+  MaxAllocatedStorage = 123,
+  SourceDBInstanceAutomatedBackupsArn = "string",
+  EnableCustomerOwnedIp = TRUE|FALSE
 )
 }
 }

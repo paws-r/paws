@@ -9,7 +9,9 @@ iot_list_thing_groups_for_thing(thingName, nextToken, maxResults)
 \arguments{
 \item{thingName}{[required] The thing name.}
 
-\item{nextToken}{The token to retrieve the next set of results.}
+\item{nextToken}{To retrieve the next set of results, the \code{nextToken} value from a
+previous response; otherwise \strong{null} to receive the first set of
+results.}
 
 \item{maxResults}{The maximum number of results to return at one time.}
 }

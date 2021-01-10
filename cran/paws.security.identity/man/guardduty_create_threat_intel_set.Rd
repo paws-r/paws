@@ -30,7 +30,7 @@ uploaded ThreatIntelSet.}
 \description{
 Creates a new ThreatIntelSet. ThreatIntelSets consist of known malicious
 IP addresses. GuardDuty generates findings based on ThreatIntelSets.
-Only users of the master account can use this operation.
+Only users of the administrator account can use this operation.
 }
 \section{Request syntax}{
 \preformatted{svc$create_threat_intel_set(

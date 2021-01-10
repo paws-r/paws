@@ -198,7 +198,7 @@ want to stop routing traffic to a resource, change the value of
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-Inverted}{Inverted}.
 
 Charges for a health check still apply when the health check is
-disabled. For more information, see \href{http://aws.amazon.com/route53/pricing/}{Amazon Route 53 Pricing}.}
+disabled. For more information, see \href{https://aws.amazon.com/route53/pricing/}{Amazon Route 53 Pricing}.}
 
 \item{HealthThreshold}{The number of child health checks that are associated with a
 \code{CALCULATED} health that Amazon Route 53 must consider healthy for the

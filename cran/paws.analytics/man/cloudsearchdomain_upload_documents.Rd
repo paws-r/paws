@@ -38,9 +38,9 @@ domain's endpoints are also displayed on the domain dashboard in the
 Amazon CloudSearch console.
 
 For more information about formatting your data for Amazon CloudSearch,
-see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/preparing-data.html}{Preparing Your Data}
+see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/preparing-data.html}{Preparing Your Data}
 in the \emph{Amazon CloudSearch Developer Guide}. For more information about
-uploading data for indexing, see \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide/uploading-data.html}{Uploading Data}
+uploading data for indexing, see \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/uploading-data.html}{Uploading Data}
 in the \emph{Amazon CloudSearch Developer Guide}.
 }
 \section{Request syntax}{

@@ -38,7 +38,7 @@ identity (an email address or a domain).
 To send emails using the specified MAIL FROM domain, you must add an MX
 record to your MAIL FROM domain's DNS settings. If you want your emails
 to pass Sender Policy Framework (SPF) checks, you must also add or
-update an SPF record. For more information, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/mail-from-set.html}{Amazon SES Developer Guide}.
+update an SPF record. For more information, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.
 }

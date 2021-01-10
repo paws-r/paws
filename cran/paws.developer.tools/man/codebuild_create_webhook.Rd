@@ -7,7 +7,8 @@ stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to
 start rebuilding the source code every time a code change is pushed to
 the repository}
 \usage{
-codebuild_create_webhook(projectName, branchFilter, filterGroups)
+codebuild_create_webhook(projectName, branchFilter, filterGroups,
+  buildType)
 }
 \arguments{
 \item{projectName}{[required] The name of the AWS CodeBuild project.}
@@ -26,6 +27,8 @@ specify \code{EVENT} as its \code{type}.
 For a build to be triggered, at least one filter group in the
 \code{filterGroups} array must pass. For a filter group to pass, each of its
 filters must pass.}
+
+\item{buildType}{Specifies the type of build this webhook will trigger.}
 }
 \description{
 For an existing AWS CodeBuild build project that has its source code
@@ -55,7 +58,8 @@ information, see step 5 in \href{https://docs.aws.amazon.com/codebuild/latest/us
         excludeMatchedPattern = TRUE|FALSE
       )
     )
-  )
+  ),
+  buildType = "BUILD"|"BUILD_BATCH"
 )
 }
 }

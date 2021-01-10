@@ -102,7 +102,7 @@ mount target state.
 We recommend that you create a mount target in each of the Availability
 Zones. There are cost considerations for using a file system in an
 Availability Zone through a mount target created in another Availability
-Zone. For more information, see \href{http://aws.amazon.com/efs/}{Amazon EFS}. In addition, by always using a mount
+Zone. For more information, see \href{https://aws.amazon.com/efs/}{Amazon EFS}. In addition, by always using a mount
 target local to the instance's Availability Zone, you eliminate a
 partial failure scenario. If the Availability Zone in which your mount
 target is created goes down, then you can't access your file system

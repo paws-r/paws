@@ -14,7 +14,7 @@ the status of the task or to cancel it.}
 
 \item{target}{[required] Specifies the audit findings to which the mitigation actions are
 applied. You can apply them to a type of audit check, to all findings
-from an audit, or to a speecific set of findings.}
+from an audit, or to a specific set of findings.}
 
 \item{auditCheckToActionsMapping}{[required] For an audit check, specifies which mitigation actions to apply. Those
 actions must be defined in your AWS account.}

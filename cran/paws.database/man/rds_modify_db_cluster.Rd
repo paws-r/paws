@@ -187,7 +187,10 @@ combination with the \code{AllowMajorVersionUpgrade} parameter.
 
 \item{Domain}{The Active Directory directory ID to move the DB cluster to. Specify
 \code{none} to remove the cluster from its current domain. The domain must be
-created prior to this operation.}
+created prior to this operation.
+
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/database-authentication.html}{Kerberos Authentication}
+in the \emph{Amazon Aurora User Guide}.}
 
 \item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
 Directory Service.}

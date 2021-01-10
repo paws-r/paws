@@ -15,10 +15,10 @@ job. This message is also recorded in the AWS Batch activity logs.}
 }
 \description{
 Cancels a job in an AWS Batch job queue. Jobs that are in the
-\code{SUBMITTED}, \code{PENDING}, or \code{RUNNABLE} state are cancelled. Jobs that
-have progressed to \code{STARTING} or \code{RUNNING} are not cancelled (but the
-API operation still succeeds, even if no job is cancelled); these jobs
-must be terminated with the TerminateJob operation.
+\code{SUBMITTED}, \code{PENDING}, or \code{RUNNABLE} state are canceled. Jobs that have
+progressed to \code{STARTING} or \code{RUNNING} are not canceled (but the API
+operation still succeeds, even if no job is canceled); these jobs must
+be terminated with the TerminateJob operation.
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_job(

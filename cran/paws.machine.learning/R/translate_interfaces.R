@@ -3,6 +3,30 @@
 #' @include translate_service.R
 NULL
 
+.translate$create_parallel_data_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ParallelDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EncryptionKey = structure(list(Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.translate$create_parallel_data_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.translate$delete_parallel_data_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.translate$delete_parallel_data_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .translate$delete_terminology_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -21,7 +45,19 @@ NULL
 
 .translate$describe_text_translation_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TextTranslationJobProperties = structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), JobDetails = structure(list(TranslatedDocumentsCount = structure(logical(0), tags = list(type = "integer")), DocumentsWithErrorsCount = structure(logical(0), tags = list(type = "integer")), InputDocumentsCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCodes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TerminologyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Message = structure(logical(0), tags = list(type = "string")), SubmittedTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(TextTranslationJobProperties = structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), JobDetails = structure(list(TranslatedDocumentsCount = structure(logical(0), tags = list(type = "integer")), DocumentsWithErrorsCount = structure(logical(0), tags = list(type = "integer")), InputDocumentsCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCodes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TerminologyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ParallelDataNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Message = structure(logical(0), tags = list(type = "string")), SubmittedTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.translate$get_parallel_data_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.translate$get_parallel_data_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ParallelDataProperties = structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCodes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ParallelDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Message = structure(logical(0), tags = list(type = "string")), ImportedDataSize = structure(logical(0), tags = list(type = "long")), ImportedRecordCount = structure(logical(0), tags = list(type = "long")), FailedRecordCount = structure(logical(0), tags = list(type = "long")), SkippedRecordCount = structure(logical(0), tags = list(type = "long")), EncryptionKey = structure(list(Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LatestUpdateAttemptStatus = structure(logical(0), tags = list(type = "string")), LatestUpdateAttemptAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), DataLocation = structure(list(RepositoryType = structure(logical(0), tags = list(type = "string")), Location = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), AuxiliaryDataLocation = structure(list(RepositoryType = structure(logical(0), tags = list(type = "string")), Location = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LatestUpdateAttemptAuxiliaryDataLocation = structure(list(RepositoryType = structure(logical(0), tags = list(type = "string")), Location = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -49,6 +85,18 @@ NULL
   return(populate(args, shape))
 }
 
+.translate$list_parallel_data_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.translate$list_parallel_data_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ParallelDataPropertiesList = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCodes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ParallelDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Message = structure(logical(0), tags = list(type = "string")), ImportedDataSize = structure(logical(0), tags = list(type = "long")), ImportedRecordCount = structure(logical(0), tags = list(type = "long")), FailedRecordCount = structure(logical(0), tags = list(type = "long")), SkippedRecordCount = structure(logical(0), tags = list(type = "long")), EncryptionKey = structure(list(Type = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), LatestUpdateAttemptStatus = structure(logical(0), tags = list(type = "string")), LatestUpdateAttemptAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .translate$list_terminologies_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -69,13 +117,13 @@ NULL
 
 .translate$list_text_translation_jobs_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TextTranslationJobPropertiesList = structure(list(structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), JobDetails = structure(list(TranslatedDocumentsCount = structure(logical(0), tags = list(type = "integer")), DocumentsWithErrorsCount = structure(logical(0), tags = list(type = "integer")), InputDocumentsCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCodes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TerminologyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Message = structure(logical(0), tags = list(type = "string")), SubmittedTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(TextTranslationJobPropertiesList = structure(list(structure(list(JobId = structure(logical(0), tags = list(type = "string")), JobName = structure(logical(0), tags = list(type = "string")), JobStatus = structure(logical(0), tags = list(type = "string")), JobDetails = structure(list(TranslatedDocumentsCount = structure(logical(0), tags = list(type = "integer")), DocumentsWithErrorsCount = structure(logical(0), tags = list(type = "integer")), InputDocumentsCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCodes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TerminologyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ParallelDataNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Message = structure(logical(0), tags = list(type = "string")), SubmittedTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .translate$start_text_translation_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobName = structure(logical(0), tags = list(type = "string")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCodes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TerminologyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(JobName = structure(logical(0), tags = list(type = "string")), InputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), ContentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCodes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), TerminologyNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ParallelDataNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -106,5 +154,17 @@ NULL
 .translate$translate_text_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(TranslatedText = structure(logical(0), tags = list(type = "string")), SourceLanguageCode = structure(logical(0), tags = list(type = "string")), TargetLanguageCode = structure(logical(0), tags = list(type = "string")), AppliedTerminologies = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Terms = structure(list(structure(list(SourceText = structure(logical(0), tags = list(type = "string")), TargetText = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.translate$update_parallel_data_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), ParallelDataConfig = structure(list(S3Uri = structure(logical(0), tags = list(type = "string")), Format = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.translate$update_parallel_data_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), LatestUpdateAttemptStatus = structure(logical(0), tags = list(type = "string")), LatestUpdateAttemptAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

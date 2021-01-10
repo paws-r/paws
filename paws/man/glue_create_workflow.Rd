@@ -4,7 +4,8 @@
 \alias{glue_create_workflow}
 \title{Creates a new workflow}
 \usage{
-glue_create_workflow(Name, Description, DefaultRunProperties, Tags)
+glue_create_workflow(Name, Description, DefaultRunProperties, Tags,
+  MaxConcurrentRuns)
 }
 \arguments{
 \item{Name}{[required] The name to be assigned to the workflow. It should be unique within your
@@ -16,6 +17,12 @@ account.}
 workflow.}
 
 \item{Tags}{The tags to be used with this workflow.}
+
+\item{MaxConcurrentRuns}{You can use this parameter to prevent unwanted multiple updates to data,
+to control costs, or in some cases, to prevent exceeding the maximum
+number of concurrent runs of any of the component jobs. If you leave
+this parameter blank, there is no limit to the number of concurrent
+workflow runs.}
 }
 \description{
 Creates a new workflow.
@@ -29,7 +36,8 @@ Creates a new workflow.
   ),
   Tags = list(
     "string"
-  )
+  ),
+  MaxConcurrentRuns = 123
 )
 }
 }

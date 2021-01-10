@@ -8,8 +8,8 @@ batch_list_jobs(jobQueue, arrayJobId, multiNodeJobId, jobStatus,
   maxResults, nextToken)
 }
 \arguments{
-\item{jobQueue}{The name or full Amazon Resource Name (ARN) of the job queue with which
-to list jobs.}
+\item{jobQueue}{The name or full Amazon Resource Name (ARN) of the job queue used to
+list jobs.}
 
 \item{arrayJobId}{The job ID for an array job. Specifying an array job ID with this
 parameter lists all child jobs from within the specified array.}
@@ -18,15 +18,15 @@ parameter lists all child jobs from within the specified array.}
 parallel job ID with this parameter lists all nodes that are associated
 with the specified job.}
 
-\item{jobStatus}{The job status with which to filter jobs in the specified queue. If you
-do not specify a status, only \code{RUNNING} jobs are returned.}
+\item{jobStatus}{The job status used to filter jobs in the specified queue. If you don't
+specify a status, only \code{RUNNING} jobs are returned.}
 
 \item{maxResults}{The maximum number of results returned by \code{ListJobs} in paginated
 output. When this parameter is used, \code{ListJobs} only returns
 \code{maxResults} results in a single page along with a \code{nextToken} response
 element. The remaining results of the initial request can be seen by
 sending another \code{ListJobs} request with the returned \code{nextToken} value.
-This value can be between 1 and 100. If this parameter is not used, then
+This value can be between 1 and 100. If this parameter isn't used, then
 \code{ListJobs} returns up to 100 results and a \code{nextToken} value if
 applicable.}
 
@@ -36,23 +36,23 @@ of that parameter. Pagination continues from the end of the previous
 results that returned the \code{nextToken} value. This value is \code{null} when
 there are no more results to return.
 
-This token should be treated as an opaque identifier that is only used
-to retrieve the next items in a list and not for other programmatic
+This token should be treated as an opaque identifier that's only used to
+retrieve the next items in a list and not for other programmatic
 purposes.}
 }
 \description{
 Returns a list of AWS Batch jobs.
 }
 \details{
-You must specify only one of the following:
+You must specify only one of the following items:
 \itemize{
-\item a job queue ID to return a list of jobs in that job queue
-\item a multi-node parallel job ID to return a list of that job's nodes
-\item an array job ID to return a list of that job's children
+\item A job queue ID to return a list of jobs in that job queue
+\item A multi-node parallel job ID to return a list of that job's nodes
+\item An array job ID to return a list of that job's children
 }
 
 You can filter the results by job status with the \code{jobStatus} parameter.
-If you do not specify a status, only \code{RUNNING} jobs are returned.
+If you don't specify a status, only \code{RUNNING} jobs are returned.
 }
 \section{Request syntax}{
 \preformatted{svc$list_jobs(

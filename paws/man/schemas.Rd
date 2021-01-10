@@ -45,6 +45,7 @@ Amazon EventBridge Schema Registry
 \link[=schemas_describe_discoverer]{describe_discoverer} \tab Describes the discoverer\cr
 \link[=schemas_describe_registry]{describe_registry} \tab Describes the registry\cr
 \link[=schemas_describe_schema]{describe_schema} \tab Retrieve the schema definition\cr
+\link[=schemas_export_schema]{export_schema} \tab Export schema\cr
 \link[=schemas_get_code_binding_source]{get_code_binding_source} \tab Get the code binding source URI\cr
 \link[=schemas_get_discovered_schema]{get_discovered_schema} \tab Get the discovered schema that was generated based on sampled events\cr
 \link[=schemas_get_resource_policy]{get_resource_policy} \tab Retrieves the resource-based policy attached to a given registry\cr

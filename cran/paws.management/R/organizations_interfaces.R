@@ -39,7 +39,7 @@ NULL
 
 .organizations$create_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RoleName = structure(logical(0), tags = list(type = "string")), IamUserAccessToBilling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RoleName = structure(logical(0), tags = list(type = "string")), IamUserAccessToBilling = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -51,7 +51,7 @@ NULL
 
 .organizations$create_gov_cloud_account_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RoleName = structure(logical(0), tags = list(type = "string")), IamUserAccessToBilling = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Email = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AccountName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), RoleName = structure(logical(0), tags = list(type = "string")), IamUserAccessToBilling = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -75,7 +75,7 @@ NULL
 
 .organizations$create_organizational_unit_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ParentId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ParentId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -87,7 +87,7 @@ NULL
 
 .organizations$create_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Content = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Content = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -297,7 +297,7 @@ NULL
 
 .organizations$invite_account_to_organization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Target = structure(list(Id = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Notes = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(Target = structure(list(Id = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Notes = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

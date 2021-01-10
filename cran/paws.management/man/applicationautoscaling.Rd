@@ -22,9 +22,11 @@ capacity
 \item Amazon Aurora Replicas
 \item Amazon SageMaker endpoint variants
 \item Custom resources provided by your own applications or services
-\item Amazon Comprehend document classification endpoints
+\item Amazon Comprehend document classification and entity recognizer
+endpoints
 \item AWS Lambda function provisioned concurrency
 \item Amazon Keyspaces (for Apache Cassandra) tables
+\item Amazon Managed Streaming for Apache Kafka cluster storage
 }
 
 \strong{API Summary}

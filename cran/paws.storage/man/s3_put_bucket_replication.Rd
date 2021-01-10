@@ -5,18 +5,25 @@
 \title{Creates a replication configuration or replaces an existing one}
 \usage{
 s3_put_bucket_replication(Bucket, ContentMD5, ReplicationConfiguration,
-  Token)
+  Token, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket}
 
 \item{ContentMD5}{The base64-encoded 128-bit MD5 digest of the data. You must use this
 header as a message integrity check to verify that the request body was
-not corrupted in transit. For more information, see \href{http://www.ietf.org/rfc/rfc1864.txt}{RFC 1864}.}
+not corrupted in transit. For more information, see \href{https://www.ietf.org/rfc/rfc1864.txt}{RFC 1864}.
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.}
 
 \item{ReplicationConfiguration}{[required]}
 
-\item{Token}{}
+\item{Token}{A token to allow Object Lock to be enabled for an existing bucket.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Creates a replication configuration or replaces an existing one. For
@@ -32,15 +39,14 @@ permission.
 
 Specify the replication configuration in the request body. In the
 replication configuration, you provide the name of the destination
-bucket where you want Amazon S3 to replicate objects, the IAM role that
-Amazon S3 can assume to replicate objects on your behalf, and other
-relevant information.
+bucket or buckets where you want Amazon S3 to replicate objects, the IAM
+role that Amazon S3 can assume to replicate objects on your behalf, and
+other relevant information.
 
 A replication configuration must include at least one rule, and can
 contain a maximum of 1,000. Each rule identifies a subset of objects to
 replicate by filtering the objects in the source bucket. To choose
 additional subsets of objects to replicate, add a rule for each subset.
-All rules must specify the same destination bucket.
 
 To specify a subset of the objects in the source bucket to apply a
 replication rule to, add the Filter element as a child of the Rule
@@ -48,6 +54,10 @@ element. You can filter objects based on an object key prefix, one or
 more object tags, or both. When you add the Filter element in the
 configuration, you must also add the following elements:
 \code{DeleteMarkerReplication}, \code{Status}, and \code{Priority}.
+
+If you are using an earlier version of the replication configuration,
+Amazon S3 handles replication of delete markers differently. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations}{Backward Compatibility}.
 
 For information about enabling versioning on a bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/Versioning.html}{Using Versioning}.
 
@@ -66,13 +76,12 @@ AWS KMS-encrypted objects, add the following: \code{SourceSelectionCriteria},
 \code{ReplicaKmsKeyID}. For information about replication configuration, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-config-for-kms-objects.html}{Replicating Objects Created with SSE Using CMKs stored in AWS KMS}.
 
-For information on \code{PutBucketReplication} errors, see
-ReplicationErrorCodeList
+For information on \code{PutBucketReplication} errors, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html#ReplicationErrorCodeList}{List of replication-related error codes}
 
 The following operations are related to \code{PutBucketReplication}:
 \itemize{
-\item GetBucketReplication
-\item DeleteBucketReplication
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketReplication.html}{GetBucketReplication}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketReplication.html}{DeleteBucketReplication}
 }
 }
 \section{Request syntax}{
@@ -106,6 +115,9 @@ The following operations are related to \code{PutBucketReplication}:
         SourceSelectionCriteria = list(
           SseKmsEncryptedObjects = list(
             Status = "Enabled"|"Disabled"
+          ),
+          ReplicaModifications = list(
+            Status = "Enabled"|"Disabled"
           )
         ),
         ExistingObjectReplication = list(
@@ -114,7 +126,7 @@ The following operations are related to \code{PutBucketReplication}:
         Destination = list(
           Bucket = "string",
           Account = "string",
-          StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE",
+          StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS",
           AccessControlTranslation = list(
             Owner = "Destination"
           ),
@@ -140,7 +152,8 @@ The following operations are related to \code{PutBucketReplication}:
       )
     )
   ),
-  Token = "string"
+  Token = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

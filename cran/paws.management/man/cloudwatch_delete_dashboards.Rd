@@ -10,7 +10,7 @@ cloudwatch_delete_dashboards(DashboardNames)
 \item{DashboardNames}{[required] The dashboards to be deleted. This parameter is required.}
 }
 \description{
-Deletes all dashboards that you specify. You may specify up to 100
+Deletes all dashboards that you specify. You can specify up to 100
 dashboards to delete. If there is an error during this call, no
 dashboards are deleted.
 }

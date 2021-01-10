@@ -17,8 +17,10 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes one or more specified VPC endpoints. Deleting a gateway endpoint
 also deletes the endpoint routes in the route tables that were
-associated with the endpoint. Deleting an interface endpoint deletes the
-endpoint network interfaces.
+associated with the endpoint. Deleting an interface endpoint or a
+Gateway Load Balancer endpoint deletes the endpoint network interfaces.
+Gateway Load Balancer endpoints can only be deleted if the routes that
+are associated with the endpoint are deleted.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_vpc_endpoints(

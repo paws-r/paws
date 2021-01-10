@@ -8,8 +8,7 @@ OFFLINE to ONLINE}
 transfer_start_server(ServerId)
 }
 \arguments{
-\item{ServerId}{[required] A system-assigned unique identifier for a file transfer protocol-enabled
-server that you start.}
+\item{ServerId}{[required] A system-assigned unique identifier for a server that you start.}
 }
 \description{
 Changes the state of a file transfer protocol-enabled server from

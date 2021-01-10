@@ -21,12 +21,12 @@ Support API.
 \item If you call the AWS Support API from an account that does not have a
 Business or Enterprise support plan, the
 \code{SubscriptionRequiredException} error message appears. For
-information about changing your support plan, see \href{http://aws.amazon.com/premiumsupport/}{AWS Support}.
+information about changing your support plan, see \href{https://aws.amazon.com/premiumsupport/}{AWS Support}.
 }
 
-The AWS Support service also exposes a set of \href{http://aws.amazon.com/premiumsupport/trustedadvisor/}{AWS Trusted Advisor} features.
-You can retrieve a list of checks and their descriptions, get check
-results, specify checks to refresh, and get the refresh status of
+The AWS Support service also exposes a set of \href{https://aws.amazon.com/premiumsupport/technology/trusted-advisor/}{AWS Trusted Advisor}
+features. You can retrieve a list of checks and their descriptions, get
+check results, specify checks to refresh, and get the refresh status of
 checks.
 
 The following list describes the AWS Support case management operations:

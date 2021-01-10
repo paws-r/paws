@@ -8,18 +8,19 @@ to OFFLINE}
 transfer_stop_server(ServerId)
 }
 \arguments{
-\item{ServerId}{[required] A system-assigned unique identifier for a file transfer protocol-enabled
-server that you stopped.}
+\item{ServerId}{[required] A system-assigned unique identifier for a server that you stopped.}
 }
 \description{
 Changes the state of a file transfer protocol-enabled server from
 \code{ONLINE} to \code{OFFLINE}. An \code{OFFLINE} server cannot accept and process
 file transfer jobs. Information tied to your server, such as server and
-user properties, are not affected by stopping your server. Stopping the
-server will not reduce or impact your file transfer protocol endpoint
-billing.
+user properties, are not affected by stopping your server.
 }
 \details{
+Stopping the server will not reduce or impact your file transfer
+protocol endpoint billing; you must delete the server to stop being
+billed.
+
 The state of \code{STOPPING} indicates that the server is in an intermediate
 state, either not fully able to respond, or not fully offline. The
 values of \code{STOP_FAILED} can indicate an error condition.

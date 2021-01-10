@@ -22,7 +22,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{SourceRegion}{[required] The Region that contains the source AFI.}
 
 \item{ClientToken}{Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+idempotency of the request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
 }
 \description{
 Copies the specified Amazon FPGA Image (AFI) to the current Region.

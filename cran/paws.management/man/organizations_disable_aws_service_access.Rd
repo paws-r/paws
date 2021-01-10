@@ -16,7 +16,7 @@ form of a URL, such as \verb{ <i>service-abbreviation</i>.amazonaws.com}.}
 Disables the integration of an AWS service (the service that is
 specified by \code{ServicePrincipal}) with AWS Organizations. When you
 disable integration, the specified service no longer can create a
-\href{http://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{service-linked role}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{service-linked role}
 in \emph{new} accounts in your organization. This means the service can't
 perform operations on your behalf on any new accounts in your
 organization. The service can still perform operations in older accounts
@@ -38,10 +38,10 @@ are attached to your roles.
 
 For more information about integrating other services with AWS
 Organizations, including the list of services that work with
-Organizations, see \href{http://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{Integrating AWS Organizations with Other AWS Services}
+Organizations, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{Integrating AWS Organizations with Other AWS Services}
 in the \emph{AWS Organizations User Guide.}
 
-This operation can be called only from the organization's master
+This operation can be called only from the organization's management
 account.
 }
 \section{Request syntax}{

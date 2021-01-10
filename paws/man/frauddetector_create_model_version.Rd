@@ -2,25 +2,57 @@
 % Please edit documentation in R/frauddetector_operations.R
 \name{frauddetector_create_model_version}
 \alias{frauddetector_create_model_version}
-\title{Creates a version of the model using the specified model type}
+\title{Creates a version of the model using the specified model type and model
+id}
 \usage{
-frauddetector_create_model_version(modelId, modelType, description)
+frauddetector_create_model_version(modelId, modelType,
+  trainingDataSource, trainingDataSchema, externalEventsDetail, tags)
 }
 \arguments{
 \item{modelId}{[required] The model ID.}
 
 \item{modelType}{[required] The model type.}
 
-\item{description}{The model version description.}
+\item{trainingDataSource}{[required] The training data source location in Amazon S3.}
+
+\item{trainingDataSchema}{[required] The training data schema.}
+
+\item{externalEventsDetail}{Details for the external events data used for model version training.
+Required if \code{trainingDataSource} is \code{EXTERNAL_EVENTS}.}
+
+\item{tags}{A collection of key and value pairs.}
 }
 \description{
-Creates a version of the model using the specified model type.
+Creates a version of the model using the specified model type and model
+id.
 }
 \section{Request syntax}{
 \preformatted{svc$create_model_version(
   modelId = "string",
   modelType = "ONLINE_FRAUD_INSIGHTS",
-  description = "string"
+  trainingDataSource = "EXTERNAL_EVENTS",
+  trainingDataSchema = list(
+    modelVariables = list(
+      "string"
+    ),
+    labelSchema = list(
+      labelMapper = list(
+        list(
+          "string"
+        )
+      )
+    )
+  ),
+  externalEventsDetail = list(
+    dataLocation = "string",
+    dataAccessRoleArn = "string"
+  ),
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

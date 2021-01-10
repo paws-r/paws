@@ -13,7 +13,7 @@ chime_get_voice_connector_logging_configuration(VoiceConnectorId)
 \description{
 Retrieves the logging configuration details for the specified Amazon
 Chime Voice Connector. Shows whether SIP message logs are enabled for
-sending to Amazon CloudWatch Logs.
+sending to Amazon CloudWatch.
 }
 \section{Request syntax}{
 \preformatted{svc$get_voice_connector_logging_configuration(

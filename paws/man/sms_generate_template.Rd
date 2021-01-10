@@ -2,20 +2,20 @@
 % Please edit documentation in R/sms_operations.R
 \name{sms_generate_template}
 \alias{sms_generate_template}
-\title{Generates an Amazon CloudFormation template based on the current launch
+\title{Generates an AWS CloudFormation template based on the current launch
 configuration and writes it to an Amazon S3 object in the customer’s
 Amazon S3 bucket}
 \usage{
 sms_generate_template(appId, templateFormat)
 }
 \arguments{
-\item{appId}{ID of the application associated with the Amazon CloudFormation
+\item{appId}{The ID of the application associated with the AWS CloudFormation
 template.}
 
-\item{templateFormat}{Format for generating the Amazon CloudFormation template.}
+\item{templateFormat}{The format for generating the AWS CloudFormation template.}
 }
 \description{
-Generates an Amazon CloudFormation template based on the current launch
+Generates an AWS CloudFormation template based on the current launch
 configuration and writes it to an Amazon S3 object in the customer’s
 Amazon S3 bucket.
 }

@@ -6,7 +6,7 @@
 node group}
 \usage{
 eks_update_nodegroup_version(clusterName, nodegroupName, version,
-  releaseVersion, force, clientRequestToken)
+  releaseVersion, launchTemplate, force, clientRequestToken)
 }
 \arguments{
 \item{clusterName}{[required] The name of the Amazon EKS cluster that is associated with the managed
@@ -17,12 +17,25 @@ node group to update.}
 \item{version}{The Kubernetes version to update to. If no version is specified, then
 the Kubernetes version of the node group does not change. You can
 specify the Kubernetes version of the cluster to update the node group
-to the latest AMI version of the cluster's Kubernetes version.}
+to the latest AMI version of the cluster's Kubernetes version. If you
+specify \code{launchTemplate}, and your launch template uses a custom AMI,
+then don't specify \code{version}, or the node group update will fail. For
+more information about using launch templates with Amazon EKS, see
+\href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
+in the Amazon EKS User Guide.}
 
-\item{releaseVersion}{The AMI version of the Amazon EKS-optimized AMI to use for the update.
+\item{releaseVersion}{The AMI version of the Amazon EKS optimized AMI to use for the update.
 By default, the latest available AMI version for the node group's
-Kubernetes version is used. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html}{Amazon EKS-Optimized Linux AMI Versions}
-in the \emph{Amazon EKS User Guide}.}
+Kubernetes version is used. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html}{Amazon EKS optimized Amazon Linux 2 AMI versions}
+in the \emph{Amazon EKS User Guide}. If you specify \code{launchTemplate}, and
+your launch template uses a custom AMI, then don't specify
+\code{releaseVersion}, or the node group update will fail. For more
+information about using launch templates with Amazon EKS, see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}
+in the Amazon EKS User Guide.}
+
+\item{launchTemplate}{An object representing a node group's launch template specification. You
+can only update a node group using a launch template if the node group
+was originally deployed with a launch template.}
 
 \item{force}{Force the update if the existing node group's pods are unable to be
 drained due to a pod disruption budget issue. If an update fails because
@@ -37,11 +50,19 @@ Updates the Kubernetes version or AMI version of an Amazon EKS managed
 node group.
 }
 \details{
-You can update to the latest available AMI version of a node group's
-current Kubernetes version by not specifying a Kubernetes version in the
-request. You can update to the latest AMI version of your cluster's
-current Kubernetes version by specifying your cluster's Kubernetes
-version in the request. For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html}{Amazon EKS-Optimized Linux AMI Versions}
+You can update a node group using a launch template only if the node
+group was originally deployed with a launch template. If you need to
+update a custom AMI in a node group that was deployed with a launch
+template, then update your custom AMI, specify the new ID in a new
+version of the launch template, and then update the node group to the
+new version of the launch template.
+
+If you update without a launch template, then you can update to the
+latest available AMI version of a node group's current Kubernetes
+version by not specifying a Kubernetes version in the request. You can
+update to the latest AMI version of your cluster's current Kubernetes
+version by specifying your cluster's Kubernetes version in the request.
+For more information, see \href{https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html}{Amazon EKS optimized Amazon Linux 2 AMI versions}
 in the \emph{Amazon EKS User Guide}.
 
 You cannot roll back a node group to an earlier Kubernetes version or
@@ -59,6 +80,11 @@ nodes as a result of a pod disruption budget issue.
   nodegroupName = "string",
   version = "string",
   releaseVersion = "string",
+  launchTemplate = list(
+    name = "string",
+    version = "string",
+    id = "string"
+  ),
   force = TRUE|FALSE,
   clientRequestToken = "string"
 )

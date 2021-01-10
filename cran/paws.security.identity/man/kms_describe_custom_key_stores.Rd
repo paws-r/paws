@@ -63,6 +63,22 @@ number of HSMs required for the operation, if any.
 
 For help repairing your custom key store, see the \href{https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html}{Troubleshooting Custom Key Stores}
 topic in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a custom
+key store in a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:DescribeCustomKeyStores}
+(IAM policy)
+
+\strong{Related operations:}
+\itemize{
+\item ConnectCustomKeyStore
+\item CreateCustomKeyStore
+\item DeleteCustomKeyStore
+\item DisconnectCustomKeyStore
+\item UpdateCustomKeyStore
+}
 }
 \section{Request syntax}{
 \preformatted{svc$describe_custom_key_stores(

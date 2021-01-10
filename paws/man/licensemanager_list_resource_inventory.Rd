@@ -26,6 +26,9 @@ are \code{EQUALS} | \code{NOT_EQUALS}. Possible values are
 \code{EQUALS} | \code{BEGINS_WITH}.
 \item \code{resource_id} - The ID of the resource. Logical operators are
 \code{EQUALS} | \code{NOT_EQUALS}.
+\item \verb{tag:&lt;key&gt;} - The key/value combination of a tag assigned to
+the resource. Logical operators are \code{EQUALS} (single account) or
+\code{EQUALS} | \code{NOT_EQUALS} (cross account).
 }}
 }
 \description{

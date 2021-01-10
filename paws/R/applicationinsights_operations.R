@@ -116,8 +116,19 @@ applicationinsights_create_component <- function(ResourceGroupName, ComponentNam
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
 #' @param PatternName &#91;required&#93; The name of the log pattern.
-#' @param Pattern &#91;required&#93; The log pattern.
-#' @param Rank &#91;required&#93; Rank of the log pattern.
+#' @param Pattern &#91;required&#93; The log pattern. The pattern must be DFA compatible. Patterns that
+#' utilize forward lookahead or backreference constructions are not
+#' supported.
+#' @param Rank &#91;required&#93; Rank of the log pattern. Must be a value between `1` and `1,000,000`.
+#' The patterns are sorted by rank, so we recommend that you set your
+#' highest priority patterns with the lowest rank. A pattern of rank `1`
+#' will be the first to get matched to a log line. A pattern of rank
+#' `1,000,000` will be last to get matched. When you configure custom log
+#' patterns from the console, a `Low` severity pattern translates to a
+#' `750,000` rank. A `Medium` severity pattern translates to a `500,000`
+#' rank. And a `High` severity pattern translates to a `250,000` rank. Rank
+#' values less than `1` or greater than `1,000,000` are reserved for
+#' AWS-provided patterns.
 #'
 #' @section Request syntax:
 #' ```
@@ -402,7 +413,7 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
 #' svc$describe_component_configuration_recommendation(
 #'   ResourceGroupName = "string",
 #'   ComponentName = "string",
-#'   Tier = "DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB"|"SQL_SERVER"
+#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE"
 #' )
 #' ```
 #'
@@ -1152,7 +1163,7 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 #'   ResourceGroupName = "string",
 #'   ComponentName = "string",
 #'   Monitor = TRUE|FALSE,
-#'   Tier = "DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB"|"SQL_SERVER",
+#'   Tier = "CUSTOM"|"DEFAULT"|"DOT_NET_CORE"|"DOT_NET_WORKER"|"DOT_NET_WEB_TIER"|"DOT_NET_WEB"|"SQL_SERVER"|"SQL_SERVER_ALWAYSON_AVAILABILITY_GROUP"|"MYSQL"|"POSTGRESQL"|"JAVA_JMX"|"ORACLE",
 #'   ComponentConfiguration = "string"
 #' )
 #' ```
@@ -1188,8 +1199,19 @@ applicationinsights_update_component_configuration <- function(ResourceGroupName
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
 #' @param PatternName &#91;required&#93; The name of the log pattern.
-#' @param Pattern The log pattern.
-#' @param Rank Rank of the log pattern.
+#' @param Pattern The log pattern. The pattern must be DFA compatible. Patterns that
+#' utilize forward lookahead or backreference constructions are not
+#' supported.
+#' @param Rank Rank of the log pattern. Must be a value between `1` and `1,000,000`.
+#' The patterns are sorted by rank, so we recommend that you set your
+#' highest priority patterns with the lowest rank. A pattern of rank `1`
+#' will be the first to get matched to a log line. A pattern of rank
+#' `1,000,000` will be last to get matched. When you configure custom log
+#' patterns from the console, a `Low` severity pattern translates to a
+#' `750,000` rank. A `Medium` severity pattern translates to a `500,000`
+#' rank. And a `High` severity pattern translates to a `250,000` rank. Rank
+#' values less than `1` or greater than `1,000,000` are reserved for
+#' AWS-provided patterns.
 #'
 #' @section Request syntax:
 #' ```

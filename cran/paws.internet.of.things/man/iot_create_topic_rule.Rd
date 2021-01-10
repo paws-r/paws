@@ -84,7 +84,8 @@ processed by the rule.
         firehose = list(
           roleArn = "string",
           deliveryStreamName = "string",
-          separator = "string"
+          separator = "string",
+          batchMode = TRUE|FALSE
         ),
         cloudwatchMetric = list(
           roleArn = "string",
@@ -118,11 +119,13 @@ processed by the rule.
         iotAnalytics = list(
           channelArn = "string",
           channelName = "string",
+          batchMode = TRUE|FALSE,
           roleArn = "string"
         ),
         iotEvents = list(
           inputName = "string",
           messageId = "string",
+          batchMode = TRUE|FALSE,
           roleArn = "string"
         ),
         iotSiteWise = list(
@@ -156,6 +159,21 @@ processed by the rule.
           stateMachineName = "string",
           roleArn = "string"
         ),
+        timestream = list(
+          roleArn = "string",
+          databaseName = "string",
+          tableName = "string",
+          dimensions = list(
+            list(
+              name = "string",
+              value = "string"
+            )
+          ),
+          timestamp = list(
+            value = "string",
+            unit = "string"
+          )
+        ),
         http = list(
           url = "string",
           confirmationUrl = "string",
@@ -171,6 +189,15 @@ processed by the rule.
               serviceName = "string",
               roleArn = "string"
             )
+          )
+        ),
+        kafka = list(
+          destinationArn = "string",
+          topic = "string",
+          key = "string",
+          partition = "string",
+          clientProperties = list(
+            "string"
           )
         )
       )
@@ -228,7 +255,8 @@ processed by the rule.
       firehose = list(
         roleArn = "string",
         deliveryStreamName = "string",
-        separator = "string"
+        separator = "string",
+        batchMode = TRUE|FALSE
       ),
       cloudwatchMetric = list(
         roleArn = "string",
@@ -262,11 +290,13 @@ processed by the rule.
       iotAnalytics = list(
         channelArn = "string",
         channelName = "string",
+        batchMode = TRUE|FALSE,
         roleArn = "string"
       ),
       iotEvents = list(
         inputName = "string",
         messageId = "string",
+        batchMode = TRUE|FALSE,
         roleArn = "string"
       ),
       iotSiteWise = list(
@@ -300,6 +330,21 @@ processed by the rule.
         stateMachineName = "string",
         roleArn = "string"
       ),
+      timestream = list(
+        roleArn = "string",
+        databaseName = "string",
+        tableName = "string",
+        dimensions = list(
+          list(
+            name = "string",
+            value = "string"
+          )
+        ),
+        timestamp = list(
+          value = "string",
+          unit = "string"
+        )
+      ),
       http = list(
         url = "string",
         confirmationUrl = "string",
@@ -315,6 +360,15 @@ processed by the rule.
             serviceName = "string",
             roleArn = "string"
           )
+        )
+      ),
+      kafka = list(
+        destinationArn = "string",
+        topic = "string",
+        key = "string",
+        partition = "string",
+        clientProperties = list(
+          "string"
         )
       )
     )

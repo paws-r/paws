@@ -203,7 +203,7 @@ lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, 
 #' Creates an alias for a Lambda function version
 #'
 #' Creates an
-#' [alias](https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
+#' [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html)
 #' for a Lambda function version. Use aliases to provide clients with a
 #' function identifier that you can update to invoke a different version.
 #' 
@@ -282,6 +282,57 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 }
 .lambda$operations$create_alias <- lambda_create_alias
 
+#' Creates a code signing configuration
+#'
+#' Creates a code signing configuration. A [code signing
+#' configuration](https://docs.aws.amazon.com/lambda/latest/dg/) defines a
+#' list of allowed signing profiles and defines the code-signing validation
+#' policy (action to be taken if deployment validation checks fail).
+#'
+#' @usage
+#' lambda_create_code_signing_config(Description, AllowedPublishers,
+#'   CodeSigningPolicies)
+#'
+#' @param Description Descriptive name for this code signing configuration.
+#' @param AllowedPublishers &#91;required&#93; Signing profiles for this code signing configuration.
+#' @param CodeSigningPolicies The code signing policies define the actions to take if the validation
+#' checks fail.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_code_signing_config(
+#'   Description = "string",
+#'   AllowedPublishers = list(
+#'     SigningProfileVersionArns = list(
+#'       "string"
+#'     )
+#'   ),
+#'   CodeSigningPolicies = list(
+#'     UntrustedArtifactOnDeployment = "Warn"|"Enforce"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_create_code_signing_config
+lambda_create_code_signing_config <- function(Description = NULL, AllowedPublishers, CodeSigningPolicies = NULL) {
+  op <- new_operation(
+    name = "CreateCodeSigningConfig",
+    http_method = "POST",
+    http_path = "/2020-04-22/code-signing-configs/",
+    paginator = list()
+  )
+  input <- .lambda$create_code_signing_config_input(Description = Description, AllowedPublishers = AllowedPublishers, CodeSigningPolicies = CodeSigningPolicies)
+  output <- .lambda$create_code_signing_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$create_code_signing_config <- lambda_create_code_signing_config
+
 #' Creates a mapping between an event source and an AWS Lambda function
 #'
 #' Creates a mapping between an event source and an AWS Lambda function.
@@ -298,6 +349,15 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #' -   [Using AWS Lambda with Amazon
 #'     SQS](https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html)
 #' 
+#' -   [Using AWS Lambda with Amazon
+#'     MQ](https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html)
+#' 
+#' -   [Using AWS Lambda with Amazon
+#'     MSK](https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html)
+#' 
+#' -   [Using AWS Lambda with Self-Managed Apache
+#'     Kafka](https://docs.aws.amazon.com/lambda/latest/dg/kafka-smaa.html)
+#' 
 #' The following error handling options are only available for stream
 #' sources (DynamoDB and Kinesis):
 #' 
@@ -308,10 +368,12 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #'     or Amazon SNS topic.
 #' 
 #' -   `MaximumRecordAgeInSeconds` - Discard records older than the
-#'     specified age.
+#'     specified age. The default value is infinite (-1). When set to
+#'     infinite (-1), failed records are retried until the record expires
 #' 
 #' -   `MaximumRetryAttempts` - Discard records after the specified number
-#'     of retries.
+#'     of retries. The default value is infinite (-1). When set to infinite
+#'     (-1), failed records are retried until the record expires.
 #' 
 #' -   `ParallelizationFactor` - Process multiple batches from each shard
 #'     concurrently.
@@ -321,9 +383,11 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #'   Enabled, BatchSize, MaximumBatchingWindowInSeconds,
 #'   ParallelizationFactor, StartingPosition, StartingPositionTimestamp,
 #'   DestinationConfig, MaximumRecordAgeInSeconds,
-#'   BisectBatchOnFunctionError, MaximumRetryAttempts)
+#'   BisectBatchOnFunctionError, MaximumRetryAttempts,
+#'   TumblingWindowInSeconds, Topics, Queues, SourceAccessConfigurations,
+#'   SelfManagedEventSource, FunctionResponseTypes)
 #'
-#' @param EventSourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the event source.
+#' @param EventSourceArn The Amazon Resource Name (ARN) of the event source.
 #' 
 #' -   **Amazon Kinesis** - The ARN of the data stream or a stream
 #'     consumer.
@@ -331,6 +395,9 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #' -   **Amazon DynamoDB Streams** - The ARN of the stream.
 #' 
 #' -   **Amazon Simple Queue Service** - The ARN of the queue.
+#' 
+#' -   **Amazon Managed Streaming for Apache Kafka** - The ARN of the
+#'     cluster.
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
 #' **Name formats**
@@ -347,30 +414,47 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it's limited to 64 characters in length.
-#' @param Enabled Disables the event source mapping to pause polling and invocation.
+#' @param Enabled If true, the event source mapping is active. Set to false to pause
+#' polling and invocation.
 #' @param BatchSize The maximum number of items to retrieve in a single batch.
 #' 
 #' -   **Amazon Kinesis** - Default 100. Max 10,000.
 #' 
 #' -   **Amazon DynamoDB Streams** - Default 100. Max 1,000.
 #' 
-#' -   **Amazon Simple Queue Service** - Default 10. Max 10.
-#' @param MaximumBatchingWindowInSeconds (Streams) The maximum amount of time to gather records before invoking
-#' the function, in seconds.
+#' -   **Amazon Simple Queue Service** - Default 10. For standard queues
+#'     the max is 10,000. For FIFO queues the max is 10.
+#' 
+#' -   **Amazon Managed Streaming for Apache Kafka** - Default 100. Max
+#'     10,000.
+#' 
+#' -   **Self-Managed Apache Kafka** - Default 100. Max 10,000.
+#' @param MaximumBatchingWindowInSeconds (Streams and SQS standard queues) The maximum amount of time to gather
+#' records before invoking the function, in seconds.
 #' @param ParallelizationFactor (Streams) The number of batches to process from each shard concurrently.
 #' @param StartingPosition The position in a stream from which to start reading. Required for
-#' Amazon Kinesis and Amazon DynamoDB Streams sources. `AT_TIMESTAMP` is
-#' only supported for Amazon Kinesis streams.
+#' Amazon Kinesis, Amazon DynamoDB, and Amazon MSK Streams sources.
+#' `AT_TIMESTAMP` is only supported for Amazon Kinesis streams.
 #' @param StartingPositionTimestamp With `StartingPosition` set to `AT_TIMESTAMP`, the time from which to
 #' start reading.
 #' @param DestinationConfig (Streams) An Amazon SQS queue or Amazon SNS topic destination for
 #' discarded records.
-#' @param MaximumRecordAgeInSeconds (Streams) The maximum age of a record that Lambda sends to a function
-#' for processing.
+#' @param MaximumRecordAgeInSeconds (Streams) Discard records older than the specified age. The default
+#' value is infinite (-1).
 #' @param BisectBatchOnFunctionError (Streams) If the function returns an error, split the batch in two and
 #' retry.
-#' @param MaximumRetryAttempts (Streams) The maximum number of times to retry when the function returns
-#' an error.
+#' @param MaximumRetryAttempts (Streams) Discard records after the specified number of retries. The
+#' default value is infinite (-1). When set to infinite (-1), failed
+#' records will be retried until the record expires.
+#' @param TumblingWindowInSeconds (Streams) The duration of a processing window in seconds. The range is
+#' between 1 second up to 15 minutes.
+#' @param Topics The name of the Kafka topic.
+#' @param Queues (MQ) The name of the Amazon MQ broker destination queue to consume.
+#' @param SourceAccessConfigurations An array of the authentication protocol, or the VPC components to secure
+#' your event source.
+#' @param SelfManagedEventSource The Self-Managed Apache Kafka cluster to send records.
+#' @param FunctionResponseTypes (Streams) A list of current response type enums applied to the event
+#' source mapping.
 #'
 #' @section Request syntax:
 #' ```
@@ -395,7 +479,30 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #'   ),
 #'   MaximumRecordAgeInSeconds = 123,
 #'   BisectBatchOnFunctionError = TRUE|FALSE,
-#'   MaximumRetryAttempts = 123
+#'   MaximumRetryAttempts = 123,
+#'   TumblingWindowInSeconds = 123,
+#'   Topics = list(
+#'     "string"
+#'   ),
+#'   Queues = list(
+#'     "string"
+#'   ),
+#'   SourceAccessConfigurations = list(
+#'     list(
+#'       Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH",
+#'       URI = "string"
+#'     )
+#'   ),
+#'   SelfManagedEventSource = list(
+#'     Endpoints = list(
+#'       list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   FunctionResponseTypes = list(
+#'     "ReportBatchItemFailures"
+#'   )
 #' )
 #' ```
 #'
@@ -413,14 +520,14 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 #' @keywords internal
 #'
 #' @rdname lambda_create_event_source_mapping
-lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Enabled = NULL, BatchSize = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL) {
+lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionName, Enabled = NULL, BatchSize = NULL, MaximumBatchingWindowInSeconds = NULL, ParallelizationFactor = NULL, StartingPosition = NULL, StartingPositionTimestamp = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, TumblingWindowInSeconds = NULL, Topics = NULL, Queues = NULL, SourceAccessConfigurations = NULL, SelfManagedEventSource = NULL, FunctionResponseTypes = NULL) {
   op <- new_operation(
     name = "CreateEventSourceMapping",
     http_method = "POST",
     http_path = "/2015-03-31/event-source-mappings/",
     paginator = list()
   )
-  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts)
+  input <- .lambda$create_event_source_mapping_input(EventSourceArn = EventSourceArn, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, ParallelizationFactor = ParallelizationFactor, StartingPosition = StartingPosition, StartingPositionTimestamp = StartingPositionTimestamp, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, TumblingWindowInSeconds = TumblingWindowInSeconds, Topics = Topics, Queues = Queues, SourceAccessConfigurations = SourceAccessConfigurations, SelfManagedEventSource = SelfManagedEventSource, FunctionResponseTypes = FunctionResponseTypes)
   output <- .lambda$create_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config)
@@ -433,12 +540,13 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' Creates a Lambda function
 #'
 #' Creates a Lambda function. To create a function, you need a [deployment
-#' package](https://docs.aws.amazon.com/lambda/latest/dg/deployment-package-v2.html)
+#' package](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html)
 #' and an [execution
-#' role](https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role).
-#' The deployment package contains your function code. The execution role
-#' grants the function permission to use AWS services, such as Amazon
-#' CloudWatch Logs for log streaming and AWS X-Ray for request tracing.
+#' role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role).
+#' The deployment package is a .zip file archive or container image that
+#' contains your function code. The execution role grants the function
+#' permission to use AWS services, such as Amazon CloudWatch Logs for log
+#' streaming and AWS X-Ray for request tracing.
 #' 
 #' When you create a function, Lambda provisions an instance of the
 #' function and its supporting resources. If your function connects to a
@@ -464,6 +572,14 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' (TagResource) and per-function concurrency limits
 #' (PutFunctionConcurrency).
 #' 
+#' You can use code signing if your deployment package is a .zip file
+#' archive. To enable code signing for this function, specify the ARN of a
+#' code-signing configuration. When a user attempts to deploy a code
+#' package with UpdateFunctionCode, Lambda checks that the code package has
+#' a valid signature from a trusted publisher. The code-signing
+#' configuration includes set set of signing profiles, which define the
+#' trusted publishers for this function.
+#' 
 #' If another account or an AWS service invokes your function, use
 #' AddPermission to grant permission by creating a resource-based IAM
 #' policy. You can grant permissions at the function level, on a version,
@@ -477,8 +593,9 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #'
 #' @usage
 #' lambda_create_function(FunctionName, Runtime, Role, Handler, Code,
-#'   Description, Timeout, MemorySize, Publish, VpcConfig, DeadLetterConfig,
-#'   Environment, KMSKeyArn, TracingConfig, Tags, Layers, FileSystemConfigs)
+#'   Description, Timeout, MemorySize, Publish, VpcConfig, PackageType,
+#'   DeadLetterConfig, Environment, KMSKeyArn, TracingConfig, Tags, Layers,
+#'   FileSystemConfigs, ImageConfig, CodeSigningConfigArn)
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -493,21 +610,21 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it is limited to 64 characters in length.
-#' @param Runtime &#91;required&#93; The identifier of the function's
+#' @param Runtime The identifier of the function's
 #' [runtime](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
 #' @param Role &#91;required&#93; The Amazon Resource Name (ARN) of the function's execution role.
-#' @param Handler &#91;required&#93; The name of the method within your code that Lambda calls to execute
+#' @param Handler The name of the method within your code that Lambda calls to execute
 #' your function. The format includes the file name. It can also include
 #' namespaces and other qualifiers, depending on the runtime. For more
 #' information, see [Programming
-#' Model](https://docs.aws.amazon.com/lambda/latest/dg/programming-model-v2.html).
+#' Model](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-features.html).
 #' @param Code &#91;required&#93; The code for the function.
 #' @param Description A description of the function.
 #' @param Timeout The amount of time that Lambda allows a function to run before stopping
 #' it. The default is 3 seconds. The maximum allowed value is 900 seconds.
-#' @param MemorySize The amount of memory that your function has access to. Increasing the
-#' function's memory also increases its CPU allocation. The default value
-#' is 128 MB. The value must be a multiple of 64 MB.
+#' @param MemorySize The amount of memory available to the function at runtime. Increasing
+#' the function's memory also increases its CPU allocation. The default
+#' value is 128 MB. The value can be any multiple of 1 MB.
 #' @param Publish Set to true to publish the first version of the function during
 #' creation.
 #' @param VpcConfig For network connectivity to AWS resources in a VPC, specify a list of
@@ -515,6 +632,8 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' VPC, it can only access resources and the internet through that VPC. For
 #' more information, see [VPC
 #' Settings](https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).
+#' @param PackageType The type of deployment package. Set to `Image` for container image and
+#' set `Zip` for ZIP archive.
 #' @param DeadLetterConfig A dead letter queue configuration that specifies the queue or topic
 #' where Lambda sends asynchronous events when they fail processing. For
 #' more information, see [Dead Letter
@@ -527,26 +646,32 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' @param TracingConfig Set `Mode` to `Active` to sample and trace a subset of incoming requests
 #' with AWS X-Ray.
 #' @param Tags A list of
-#' [tags](https://docs.aws.amazon.com/lambda/latest/dg/tagging.html) to
-#' apply to the function.
+#' [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html)
+#' to apply to the function.
 #' @param Layers A list of [function
 #' layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
 #' to add to the function's execution environment. Specify each layer by
 #' its ARN, including the version.
 #' @param FileSystemConfigs Connection settings for an Amazon EFS file system.
+#' @param ImageConfig Configuration values that override the container image Dockerfile.
+#' @param CodeSigningConfigArn To enable code signing for this function, specify the ARN of a
+#' code-signing configuration. A code-signing configuration includes a set
+#' of signing profiles, which define the trusted publishers for this
+#' function.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$create_function(
 #'   FunctionName = "string",
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
 #'   Role = "string",
 #'   Handler = "string",
 #'   Code = list(
 #'     ZipFile = raw,
 #'     S3Bucket = "string",
 #'     S3Key = "string",
-#'     S3ObjectVersion = "string"
+#'     S3ObjectVersion = "string",
+#'     ImageUri = "string"
 #'   ),
 #'   Description = "string",
 #'   Timeout = 123,
@@ -560,6 +685,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #'       "string"
 #'     )
 #'   ),
+#'   PackageType = "Zip"|"Image",
 #'   DeadLetterConfig = list(
 #'     TargetArn = "string"
 #'   ),
@@ -583,7 +709,17 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #'       Arn = "string",
 #'       LocalMountPath = "string"
 #'     )
-#'   )
+#'   ),
+#'   ImageConfig = list(
+#'     EntryPoint = list(
+#'       "string"
+#'     ),
+#'     Command = list(
+#'       "string"
+#'     ),
+#'     WorkingDirectory = "string"
+#'   ),
+#'   CodeSigningConfigArn = "string"
 #' )
 #' ```
 #'
@@ -623,14 +759,14 @@ lambda_create_event_source_mapping <- function(EventSourceArn, FunctionName, Ena
 #' @keywords internal
 #'
 #' @rdname lambda_create_function
-lambda_create_function <- function(FunctionName, Runtime, Role, Handler, Code, Description = NULL, Timeout = NULL, MemorySize = NULL, Publish = NULL, VpcConfig = NULL, DeadLetterConfig = NULL, Environment = NULL, KMSKeyArn = NULL, TracingConfig = NULL, Tags = NULL, Layers = NULL, FileSystemConfigs = NULL) {
+lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler = NULL, Code, Description = NULL, Timeout = NULL, MemorySize = NULL, Publish = NULL, VpcConfig = NULL, PackageType = NULL, DeadLetterConfig = NULL, Environment = NULL, KMSKeyArn = NULL, TracingConfig = NULL, Tags = NULL, Layers = NULL, FileSystemConfigs = NULL, ImageConfig = NULL, CodeSigningConfigArn = NULL) {
   op <- new_operation(
     name = "CreateFunction",
     http_method = "POST",
     http_path = "/2015-03-31/functions",
     paginator = list()
   )
-  input <- .lambda$create_function_input(FunctionName = FunctionName, Runtime = Runtime, Role = Role, Handler = Handler, Code = Code, Description = Description, Timeout = Timeout, MemorySize = MemorySize, Publish = Publish, VpcConfig = VpcConfig, DeadLetterConfig = DeadLetterConfig, Environment = Environment, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, Tags = Tags, Layers = Layers, FileSystemConfigs = FileSystemConfigs)
+  input <- .lambda$create_function_input(FunctionName = FunctionName, Runtime = Runtime, Role = Role, Handler = Handler, Code = Code, Description = Description, Timeout = Timeout, MemorySize = MemorySize, Publish = Publish, VpcConfig = VpcConfig, PackageType = PackageType, DeadLetterConfig = DeadLetterConfig, Environment = Environment, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, Tags = Tags, Layers = Layers, FileSystemConfigs = FileSystemConfigs, ImageConfig = ImageConfig, CodeSigningConfigArn = CodeSigningConfigArn)
   output <- .lambda$create_function_output()
   config <- get_config()
   svc <- .lambda$service(config)
@@ -643,7 +779,7 @@ lambda_create_function <- function(FunctionName, Runtime, Role, Handler, Code, D
 #' Deletes a Lambda function alias
 #'
 #' Deletes a Lambda function
-#' [alias](https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+#' [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html).
 #'
 #' @usage
 #' lambda_delete_alias(FunctionName, Name)
@@ -701,10 +837,47 @@ lambda_delete_alias <- function(FunctionName, Name) {
 }
 .lambda$operations$delete_alias <- lambda_delete_alias
 
+#' Deletes the code signing configuration
+#'
+#' Deletes the code signing configuration. You can delete the code signing
+#' configuration only if no function is using it.
+#'
+#' @usage
+#' lambda_delete_code_signing_config(CodeSigningConfigArn)
+#'
+#' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_code_signing_config(
+#'   CodeSigningConfigArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_delete_code_signing_config
+lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
+  op <- new_operation(
+    name = "DeleteCodeSigningConfig",
+    http_method = "DELETE",
+    http_path = "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}",
+    paginator = list()
+  )
+  input <- .lambda$delete_code_signing_config_input(CodeSigningConfigArn = CodeSigningConfigArn)
+  output <- .lambda$delete_code_signing_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$delete_code_signing_config <- lambda_delete_code_signing_config
+
 #' Deletes an event source mapping
 #'
 #' Deletes an [event source
-#' mapping](https://docs.aws.amazon.com/lambda/latest/dg/intro-invocation-modes.html).
+#' mapping](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html).
 #' You can get the identifier of a mapping from the output of
 #' ListEventSourceMappings.
 #' 
@@ -821,6 +994,54 @@ lambda_delete_function <- function(FunctionName, Qualifier = NULL) {
   return(response)
 }
 .lambda$operations$delete_function <- lambda_delete_function
+
+#' Removes the code signing configuration from the function
+#'
+#' Removes the code signing configuration from the function.
+#'
+#' @usage
+#' lambda_delete_function_code_signing_config(FunctionName)
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only
+#' the function name, it is limited to 64 characters in length.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_function_code_signing_config(
+#'   FunctionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_delete_function_code_signing_config
+lambda_delete_function_code_signing_config <- function(FunctionName) {
+  op <- new_operation(
+    name = "DeleteFunctionCodeSigningConfig",
+    http_method = "DELETE",
+    http_path = "/2020-06-30/functions/{FunctionName}/code-signing-config",
+    paginator = list()
+  )
+  input <- .lambda$delete_function_code_signing_config_input(FunctionName = FunctionName)
+  output <- .lambda$delete_function_code_signing_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$delete_function_code_signing_config <- lambda_delete_function_code_signing_config
 
 #' Removes a concurrent execution limit from a function
 #'
@@ -1060,8 +1281,8 @@ lambda_delete_provisioned_concurrency_config <- function(FunctionName, Qualifier
 #' Retrieves details about your account's limits and usage in an AWS Region
 #'
 #' Retrieves details about your account's
-#' [limits](https://docs.aws.amazon.com/lambda/latest/dg/limits.html) and
-#' usage in an AWS Region.
+#' [limits](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html)
+#' and usage in an AWS Region.
 #'
 #' @usage
 #' lambda_get_account_settings()
@@ -1101,7 +1322,7 @@ lambda_get_account_settings <- function() {
 #' Returns details about a Lambda function alias
 #'
 #' Returns details about a Lambda function
-#' [alias](https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+#' [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html).
 #'
 #' @usage
 #' lambda_get_alias(FunctionName, Name)
@@ -1158,6 +1379,42 @@ lambda_get_alias <- function(FunctionName, Name) {
   return(response)
 }
 .lambda$operations$get_alias <- lambda_get_alias
+
+#' Returns information about the specified code signing configuration
+#'
+#' Returns information about the specified code signing configuration.
+#'
+#' @usage
+#' lambda_get_code_signing_config(CodeSigningConfigArn)
+#'
+#' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_code_signing_config(
+#'   CodeSigningConfigArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_get_code_signing_config
+lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
+  op <- new_operation(
+    name = "GetCodeSigningConfig",
+    http_method = "GET",
+    http_path = "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}",
+    paginator = list()
+  )
+  input <- .lambda$get_code_signing_config_input(CodeSigningConfigArn = CodeSigningConfigArn)
+  output <- .lambda$get_code_signing_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$get_code_signing_config <- lambda_get_code_signing_config
 
 #' Returns details about an event source mapping
 #'
@@ -1271,6 +1528,54 @@ lambda_get_function <- function(FunctionName, Qualifier = NULL) {
   return(response)
 }
 .lambda$operations$get_function <- lambda_get_function
+
+#' Returns the code signing configuration for the specified function
+#'
+#' Returns the code signing configuration for the specified function.
+#'
+#' @usage
+#' lambda_get_function_code_signing_config(FunctionName)
+#'
+#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only
+#' the function name, it is limited to 64 characters in length.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_function_code_signing_config(
+#'   FunctionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_get_function_code_signing_config
+lambda_get_function_code_signing_config <- function(FunctionName) {
+  op <- new_operation(
+    name = "GetFunctionCodeSigningConfig",
+    http_method = "GET",
+    http_path = "/2020-06-30/functions/{FunctionName}/code-signing-config",
+    paginator = list()
+  )
+  input <- .lambda$get_function_code_signing_config_input(FunctionName = FunctionName)
+  output <- .lambda$get_function_code_signing_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$get_function_code_signing_config <- lambda_get_function_code_signing_config
 
 #' Returns details about the reserved concurrency configuration for a
 #' function
@@ -1750,16 +2055,16 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
 #' details about the function response, including errors, are included in
 #' the response body and headers. For either invocation type, you can find
 #' more information in the [execution
-#' log](https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html)
+#' log](https://docs.aws.amazon.com/lambda/latest/dg/lambda-monitoring.html)
 #' and
-#' [trace](https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html).
+#' [trace](https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html).
 #' 
 #' When an error occurs, your function may be invoked multiple times. Retry
 #' behavior varies by error type, client, event source, and invocation
 #' type. For example, if you invoke a function asynchronously and it
 #' returns an error, Lambda executes the function up to two more times. For
 #' more information, see [Retry
-#' Behavior](https://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html).
+#' Behavior](https://docs.aws.amazon.com/lambda/latest/dg/invocation-retries.html).
 #' 
 #' For [asynchronous
 #' invocation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html),
@@ -1773,11 +2078,11 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
 #' The status code in the API response doesn't reflect function errors.
 #' Error codes are reserved for errors that prevent your function from
 #' executing, such as permissions errors, [limit
-#' errors](https://docs.aws.amazon.com/lambda/latest/dg/limits.html), or
-#' issues with your function's code and configuration. For example, Lambda
-#' returns `TooManyRequestsException` if executing the function would cause
-#' you to exceed a concurrency limit at either the account level
-#' (`ConcurrentInvocationLimitExceeded`) or function level
+#' errors](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html),
+#' or issues with your function's code and configuration. For example,
+#' Lambda returns `TooManyRequestsException` if executing the function
+#' would cause you to exceed a concurrency limit at either the account
+#' level (`ConcurrentInvocationLimitExceeded`) or function level
 #' (`ReservedFunctionConcurrentInvocationLimitExceeded`).
 #' 
 #' For functions with a long timeout, your client might be disconnected
@@ -1786,7 +2091,7 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
 #' long connections with timeout or keep-alive settings.
 #' 
 #' This operation requires permission for the
-#' [lambda:InvokeFunction](https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awslambda.html)
+#' [lambda:InvokeFunction](https://docs.aws.amazon.com/service-authorization/latest/reference/list_awslambda.html)
 #' action.
 #'
 #' @usage
@@ -1944,7 +2249,7 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 #' Returns a list of aliases for a Lambda function
 #'
 #' Returns a list of
-#' [aliases](https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
+#' [aliases](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html)
 #' for a Lambda function.
 #'
 #' @usage
@@ -2008,6 +2313,48 @@ lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = N
 }
 .lambda$operations$list_aliases <- lambda_list_aliases
 
+#' Returns a list of code signing configurations
+#'
+#' Returns a list of [code signing
+#' configurations](https://docs.aws.amazon.com/lambda/latest/dg/). A
+#' request returns up to 10,000 configurations per call. You can use the
+#' `MaxItems` parameter to return fewer configurations per call.
+#'
+#' @usage
+#' lambda_list_code_signing_configs(Marker, MaxItems)
+#'
+#' @param Marker Specify the pagination token that's returned by a previous request to
+#' retrieve the next page of results.
+#' @param MaxItems Maximum number of items to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_code_signing_configs(
+#'   Marker = "string",
+#'   MaxItems = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_list_code_signing_configs
+lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListCodeSigningConfigs",
+    http_method = "GET",
+    http_path = "/2020-04-22/code-signing-configs/",
+    paginator = list()
+  )
+  input <- .lambda$list_code_signing_configs_input(Marker = Marker, MaxItems = MaxItems)
+  output <- .lambda$list_code_signing_configs_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$list_code_signing_configs <- lambda_list_code_signing_configs
+
 #' Lists event source mappings
 #'
 #' Lists event source mappings. Specify an `EventSourceArn` to only show
@@ -2025,6 +2372,9 @@ lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = N
 #' -   **Amazon DynamoDB Streams** - The ARN of the stream.
 #' 
 #' -   **Amazon Simple Queue Service** - The ARN of the queue.
+#' 
+#' -   **Amazon Managed Streaming for Apache Kafka** - The ARN of the
+#'     cluster.
 #' @param FunctionName The name of the Lambda function.
 #' 
 #' **Name formats**
@@ -2210,6 +2560,50 @@ lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, M
 }
 .lambda$operations$list_functions <- lambda_list_functions
 
+#' List the functions that use the specified code signing configuration
+#'
+#' List the functions that use the specified code signing configuration.
+#' You can use this method prior to deleting a code signing configuration,
+#' to verify that no functions are using it.
+#'
+#' @usage
+#' lambda_list_functions_by_code_signing_config(CodeSigningConfigArn,
+#'   Marker, MaxItems)
+#'
+#' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
+#' @param Marker Specify the pagination token that's returned by a previous request to
+#' retrieve the next page of results.
+#' @param MaxItems Maximum number of items to return.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_functions_by_code_signing_config(
+#'   CodeSigningConfigArn = "string",
+#'   Marker = "string",
+#'   MaxItems = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_list_functions_by_code_signing_config
+lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, Marker = NULL, MaxItems = NULL) {
+  op <- new_operation(
+    name = "ListFunctionsByCodeSigningConfig",
+    http_method = "GET",
+    http_path = "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}/functions",
+    paginator = list()
+  )
+  input <- .lambda$list_functions_by_code_signing_config_input(CodeSigningConfigArn = CodeSigningConfigArn, Marker = Marker, MaxItems = MaxItems)
+  output <- .lambda$list_functions_by_code_signing_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$list_functions_by_code_signing_config <- lambda_list_functions_by_code_signing_config
+
 #' Lists the versions of an AWS Lambda layer
 #'
 #' Lists the versions of an [AWS Lambda
@@ -2231,7 +2625,7 @@ lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, M
 #' @section Request syntax:
 #' ```
 #' svc$list_layer_versions(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
 #'   LayerName = "string",
 #'   Marker = "string",
 #'   MaxItems = 123
@@ -2288,7 +2682,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' @section Request syntax:
 #' ```
 #' svc$list_layers(
-#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided",
+#'   CompatibleRuntime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
 #'   Marker = "string",
 #'   MaxItems = 123
 #' )
@@ -2391,8 +2785,8 @@ lambda_list_provisioned_concurrency_configs <- function(FunctionName, Marker = N
 #' Returns a function's tags
 #'
 #' Returns a function's
-#' [tags](https://docs.aws.amazon.com/lambda/latest/dg/tagging.html). You
-#' can also view tags with GetFunction.
+#' [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html).
+#' You can also view tags with GetFunction.
 #'
 #' @usage
 #' lambda_list_tags(Resource)
@@ -2439,7 +2833,7 @@ lambda_list_tags <- function(Resource) {
 #' each
 #'
 #' Returns a list of
-#' [versions](https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html),
+#' [versions](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html),
 #' with the version-specific configuration of each. Lambda returns up to 50
 #' versions per call.
 #'
@@ -2543,7 +2937,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 #'     ZipFile = raw
 #'   ),
 #'   CompatibleRuntimes = list(
-#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"
+#'     "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2"
 #'   ),
 #'   LicenseInfo = "string"
 #' )
@@ -2592,7 +2986,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 #' Creates a version from the current code and configuration of a function
 #'
 #' Creates a
-#' [version](https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
+#' [version](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html)
 #' from the current code and configuration of a function. Use versions to
 #' create a snapshot of your function code and configuration that doesn't
 #' change.
@@ -2672,6 +3066,59 @@ lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description 
 }
 .lambda$operations$publish_version <- lambda_publish_version
 
+#' Update the code signing configuration for the function
+#'
+#' Update the code signing configuration for the function. Changes to the
+#' code signing configuration take effect the next time a user tries to
+#' deploy a code package to the function.
+#'
+#' @usage
+#' lambda_put_function_code_signing_config(CodeSigningConfigArn,
+#'   FunctionName)
+#'
+#' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
+#' @param FunctionName &#91;required&#93; The name of the Lambda function.
+#' 
+#' **Name formats**
+#' 
+#' -   **Function name** - `MyFunction`.
+#' 
+#' -   **Function ARN** -
+#'     `arn:aws:lambda:us-west-2:123456789012:function:MyFunction`.
+#' 
+#' -   **Partial ARN** - `123456789012:function:MyFunction`.
+#' 
+#' The length constraint applies only to the full ARN. If you specify only
+#' the function name, it is limited to 64 characters in length.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_function_code_signing_config(
+#'   CodeSigningConfigArn = "string",
+#'   FunctionName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_put_function_code_signing_config
+lambda_put_function_code_signing_config <- function(CodeSigningConfigArn, FunctionName) {
+  op <- new_operation(
+    name = "PutFunctionCodeSigningConfig",
+    http_method = "PUT",
+    http_path = "/2020-06-30/functions/{FunctionName}/code-signing-config",
+    paginator = list()
+  )
+  input <- .lambda$put_function_code_signing_config_input(CodeSigningConfigArn = CodeSigningConfigArn, FunctionName = FunctionName)
+  output <- .lambda$put_function_code_signing_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$put_function_code_signing_config <- lambda_put_function_code_signing_config
+
 #' Sets the maximum number of simultaneous executions for a function, and
 #' reserves capacity for that concurrency level
 #'
@@ -2689,7 +3136,7 @@ lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description 
 #' leave at least 100 simultaneous executions unreserved for functions that
 #' aren't configured with a per-function limit. For more information, see
 #' [Managing
-#' Concurrency](https://docs.aws.amazon.com/lambda/latest/dg/concurrent-executions.html).
+#' Concurrency](https://docs.aws.amazon.com/lambda/latest/dg/invocation-scaling.html).
 #'
 #' @usage
 #' lambda_put_function_concurrency(FunctionName,
@@ -3060,7 +3507,8 @@ lambda_remove_permission <- function(FunctionName, StatementId, Qualifier = NULL
 
 #' Adds tags to a function
 #'
-#' Adds [tags](https://docs.aws.amazon.com/lambda/latest/dg/tagging.html)
+#' Adds
+#' [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html)
 #' to a function.
 #'
 #' @usage
@@ -3114,8 +3562,8 @@ lambda_tag_resource <- function(Resource, Tags) {
 #' Removes tags from a function
 #'
 #' Removes
-#' [tags](https://docs.aws.amazon.com/lambda/latest/dg/tagging.html) from a
-#' function.
+#' [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html)
+#' from a function.
 #'
 #' @usage
 #' lambda_untag_resource(Resource, TagKeys)
@@ -3168,7 +3616,7 @@ lambda_untag_resource <- function(Resource, TagKeys) {
 #' Updates the configuration of a Lambda function alias
 #'
 #' Updates the configuration of a Lambda function
-#' [alias](https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+#' [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html).
 #'
 #' @usage
 #' lambda_update_alias(FunctionName, Name, FunctionVersion, Description,
@@ -3249,6 +3697,57 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 }
 .lambda$operations$update_alias <- lambda_update_alias
 
+#' Update the code signing configuration
+#'
+#' Update the code signing configuration. Changes to the code signing
+#' configuration take effect the next time a user tries to deploy a code
+#' package to the function.
+#'
+#' @usage
+#' lambda_update_code_signing_config(CodeSigningConfigArn, Description,
+#'   AllowedPublishers, CodeSigningPolicies)
+#'
+#' @param CodeSigningConfigArn &#91;required&#93; The The Amazon Resource Name (ARN) of the code signing configuration.
+#' @param Description Descriptive name for this code signing configuration.
+#' @param AllowedPublishers Signing profiles for this code signing configuration.
+#' @param CodeSigningPolicies The code signing policy.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_code_signing_config(
+#'   CodeSigningConfigArn = "string",
+#'   Description = "string",
+#'   AllowedPublishers = list(
+#'     SigningProfileVersionArns = list(
+#'       "string"
+#'     )
+#'   ),
+#'   CodeSigningPolicies = list(
+#'     UntrustedArtifactOnDeployment = "Warn"|"Enforce"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lambda_update_code_signing_config
+lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description = NULL, AllowedPublishers = NULL, CodeSigningPolicies = NULL) {
+  op <- new_operation(
+    name = "UpdateCodeSigningConfig",
+    http_method = "PUT",
+    http_path = "/2020-04-22/code-signing-configs/{CodeSigningConfigArn}",
+    paginator = list()
+  )
+  input <- .lambda$update_code_signing_config_input(CodeSigningConfigArn = CodeSigningConfigArn, Description = Description, AllowedPublishers = AllowedPublishers, CodeSigningPolicies = CodeSigningPolicies)
+  output <- .lambda$update_code_signing_config_output()
+  config <- get_config()
+  svc <- .lambda$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lambda$operations$update_code_signing_config <- lambda_update_code_signing_config
+
 #' Updates an event source mapping
 #'
 #' Updates an event source mapping. You can change the function that AWS
@@ -3265,10 +3764,12 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #'     or Amazon SNS topic.
 #' 
 #' -   `MaximumRecordAgeInSeconds` - Discard records older than the
-#'     specified age.
+#'     specified age. The default value is infinite (-1). When set to
+#'     infinite (-1), failed records are retried until the record expires
 #' 
 #' -   `MaximumRetryAttempts` - Discard records after the specified number
-#'     of retries.
+#'     of retries. The default value is infinite (-1). When set to infinite
+#'     (-1), failed records are retried until the record expires.
 #' 
 #' -   `ParallelizationFactor` - Process multiple batches from each shard
 #'     concurrently.
@@ -3277,7 +3778,8 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #' lambda_update_event_source_mapping(UUID, FunctionName, Enabled,
 #'   BatchSize, MaximumBatchingWindowInSeconds, DestinationConfig,
 #'   MaximumRecordAgeInSeconds, BisectBatchOnFunctionError,
-#'   MaximumRetryAttempts, ParallelizationFactor)
+#'   MaximumRetryAttempts, ParallelizationFactor, SourceAccessConfigurations,
+#'   TumblingWindowInSeconds, FunctionResponseTypes)
 #'
 #' @param UUID &#91;required&#93; The identifier of the event source mapping.
 #' @param FunctionName The name of the Lambda function.
@@ -3296,25 +3798,39 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #' 
 #' The length constraint applies only to the full ARN. If you specify only
 #' the function name, it's limited to 64 characters in length.
-#' @param Enabled Disables the event source mapping to pause polling and invocation.
+#' @param Enabled If true, the event source mapping is active. Set to false to pause
+#' polling and invocation.
 #' @param BatchSize The maximum number of items to retrieve in a single batch.
 #' 
 #' -   **Amazon Kinesis** - Default 100. Max 10,000.
 #' 
 #' -   **Amazon DynamoDB Streams** - Default 100. Max 1,000.
 #' 
-#' -   **Amazon Simple Queue Service** - Default 10. Max 10.
-#' @param MaximumBatchingWindowInSeconds (Streams) The maximum amount of time to gather records before invoking
-#' the function, in seconds.
+#' -   **Amazon Simple Queue Service** - Default 10. For standard queues
+#'     the max is 10,000. For FIFO queues the max is 10.
+#' 
+#' -   **Amazon Managed Streaming for Apache Kafka** - Default 100. Max
+#'     10,000.
+#' 
+#' -   **Self-Managed Apache Kafka** - Default 100. Max 10,000.
+#' @param MaximumBatchingWindowInSeconds (Streams and SQS standard queues) The maximum amount of time to gather
+#' records before invoking the function, in seconds.
 #' @param DestinationConfig (Streams) An Amazon SQS queue or Amazon SNS topic destination for
 #' discarded records.
-#' @param MaximumRecordAgeInSeconds (Streams) The maximum age of a record that Lambda sends to a function
-#' for processing.
+#' @param MaximumRecordAgeInSeconds (Streams) Discard records older than the specified age. The default
+#' value is infinite (-1).
 #' @param BisectBatchOnFunctionError (Streams) If the function returns an error, split the batch in two and
 #' retry.
-#' @param MaximumRetryAttempts (Streams) The maximum number of times to retry when the function returns
-#' an error.
+#' @param MaximumRetryAttempts (Streams) Discard records after the specified number of retries. The
+#' default value is infinite (-1). When set to infinite (-1), failed
+#' records will be retried until the record expires.
 #' @param ParallelizationFactor (Streams) The number of batches to process from each shard concurrently.
+#' @param SourceAccessConfigurations An array of the authentication protocol, or the VPC components to secure
+#' your event source.
+#' @param TumblingWindowInSeconds (Streams) The duration of a processing window in seconds. The range is
+#' between 1 second up to 15 minutes.
+#' @param FunctionResponseTypes (Streams) A list of current response type enums applied to the event
+#' source mapping.
 #'
 #' @section Request syntax:
 #' ```
@@ -3335,7 +3851,17 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #'   MaximumRecordAgeInSeconds = 123,
 #'   BisectBatchOnFunctionError = TRUE|FALSE,
 #'   MaximumRetryAttempts = 123,
-#'   ParallelizationFactor = 123
+#'   ParallelizationFactor = 123,
+#'   SourceAccessConfigurations = list(
+#'     list(
+#'       Type = "BASIC_AUTH"|"VPC_SUBNET"|"VPC_SECURITY_GROUP"|"SASL_SCRAM_512_AUTH"|"SASL_SCRAM_256_AUTH",
+#'       URI = "string"
+#'     )
+#'   ),
+#'   TumblingWindowInSeconds = 123,
+#'   FunctionResponseTypes = list(
+#'     "ReportBatchItemFailures"
+#'   )
 #' )
 #' ```
 #'
@@ -3353,14 +3879,14 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 #' @keywords internal
 #'
 #' @rdname lambda_update_event_source_mapping
-lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL) {
+lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enabled = NULL, BatchSize = NULL, MaximumBatchingWindowInSeconds = NULL, DestinationConfig = NULL, MaximumRecordAgeInSeconds = NULL, BisectBatchOnFunctionError = NULL, MaximumRetryAttempts = NULL, ParallelizationFactor = NULL, SourceAccessConfigurations = NULL, TumblingWindowInSeconds = NULL, FunctionResponseTypes = NULL) {
   op <- new_operation(
     name = "UpdateEventSourceMapping",
     http_method = "PUT",
     http_path = "/2015-03-31/event-source-mappings/{UUID}",
     paginator = list()
   )
-  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor)
+  input <- .lambda$update_event_source_mapping_input(UUID = UUID, FunctionName = FunctionName, Enabled = Enabled, BatchSize = BatchSize, MaximumBatchingWindowInSeconds = MaximumBatchingWindowInSeconds, DestinationConfig = DestinationConfig, MaximumRecordAgeInSeconds = MaximumRecordAgeInSeconds, BisectBatchOnFunctionError = BisectBatchOnFunctionError, MaximumRetryAttempts = MaximumRetryAttempts, ParallelizationFactor = ParallelizationFactor, SourceAccessConfigurations = SourceAccessConfigurations, TumblingWindowInSeconds = TumblingWindowInSeconds, FunctionResponseTypes = FunctionResponseTypes)
   output <- .lambda$update_event_source_mapping_output()
   config <- get_config()
   svc <- .lambda$service(config)
@@ -3372,14 +3898,21 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 
 #' Updates a Lambda function's code
 #'
-#' Updates a Lambda function's code.
+#' Updates a Lambda function's code. If code signing is enabled for the
+#' function, the code package must be signed by a trusted publisher. For
+#' more information, see [Configuring code
+#' signing](https://docs.aws.amazon.com/lambda/latest/dg/).
 #' 
 #' The function's code is locked when you publish a version. You can't
 #' modify the code of a published version, only the unpublished version.
+#' 
+#' For a function defined as a container image, Lambda resolves the image
+#' tag to an image digest. In Amazon ECR, if you update the image tag to a
+#' new image, Lambda does not automatically update the function.
 #'
 #' @usage
 #' lambda_update_function_code(FunctionName, ZipFile, S3Bucket, S3Key,
-#'   S3ObjectVersion, Publish, DryRun, RevisionId)
+#'   S3ObjectVersion, ImageUri, Publish, DryRun, RevisionId)
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -3401,6 +3934,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' @param S3Key The Amazon S3 key of the deployment package.
 #' @param S3ObjectVersion For versioned objects, the version of the deployment package object to
 #' use.
+#' @param ImageUri URI of a container image in the Amazon ECR registry.
 #' @param Publish Set to true to publish a new version of the function after updating the
 #' code. This has the same effect as calling PublishVersion separately.
 #' @param DryRun Set to true to validate the request parameters and access permissions
@@ -3417,6 +3951,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #'   S3Bucket = "string",
 #'   S3Key = "string",
 #'   S3ObjectVersion = "string",
+#'   ImageUri = "string",
 #'   Publish = TRUE|FALSE,
 #'   DryRun = TRUE|FALSE,
 #'   RevisionId = "string"
@@ -3438,14 +3973,14 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 #' @keywords internal
 #'
 #' @rdname lambda_update_function_code
-lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket = NULL, S3Key = NULL, S3ObjectVersion = NULL, Publish = NULL, DryRun = NULL, RevisionId = NULL) {
+lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket = NULL, S3Key = NULL, S3ObjectVersion = NULL, ImageUri = NULL, Publish = NULL, DryRun = NULL, RevisionId = NULL) {
   op <- new_operation(
     name = "UpdateFunctionCode",
     http_method = "PUT",
     http_path = "/2015-03-31/functions/{FunctionName}/code",
     paginator = list()
   )
-  input <- .lambda$update_function_code_input(FunctionName = FunctionName, ZipFile = ZipFile, S3Bucket = S3Bucket, S3Key = S3Key, S3ObjectVersion = S3ObjectVersion, Publish = Publish, DryRun = DryRun, RevisionId = RevisionId)
+  input <- .lambda$update_function_code_input(FunctionName = FunctionName, ZipFile = ZipFile, S3Bucket = S3Bucket, S3Key = S3Key, S3ObjectVersion = S3ObjectVersion, ImageUri = ImageUri, Publish = Publish, DryRun = DryRun, RevisionId = RevisionId)
   output <- .lambda$update_function_code_output()
   config <- get_config()
   svc <- .lambda$service(config)
@@ -3480,7 +4015,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' lambda_update_function_configuration(FunctionName, Role, Handler,
 #'   Description, Timeout, MemorySize, VpcConfig, Environment, Runtime,
 #'   DeadLetterConfig, KMSKeyArn, TracingConfig, RevisionId, Layers,
-#'   FileSystemConfigs)
+#'   FileSystemConfigs, ImageConfig)
 #'
 #' @param FunctionName &#91;required&#93; The name of the Lambda function.
 #' 
@@ -3500,13 +4035,13 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' your function. The format includes the file name. It can also include
 #' namespaces and other qualifiers, depending on the runtime. For more
 #' information, see [Programming
-#' Model](https://docs.aws.amazon.com/lambda/latest/dg/programming-model-v2.html).
+#' Model](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-features.html).
 #' @param Description A description of the function.
 #' @param Timeout The amount of time that Lambda allows a function to run before stopping
 #' it. The default is 3 seconds. The maximum allowed value is 900 seconds.
-#' @param MemorySize The amount of memory that your function has access to. Increasing the
-#' function's memory also increases its CPU allocation. The default value
-#' is 128 MB. The value must be a multiple of 64 MB.
+#' @param MemorySize The amount of memory available to the function at runtime. Increasing
+#' the function's memory also increases its CPU allocation. The default
+#' value is 128 MB. The value can be any multiple of 1 MB.
 #' @param VpcConfig For network connectivity to AWS resources in a VPC, specify a list of
 #' security groups and subnets in the VPC. When you connect a function to a
 #' VPC, it can only access resources and the internet through that VPC. For
@@ -3533,6 +4068,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' to add to the function's execution environment. Specify each layer by
 #' its ARN, including the version.
 #' @param FileSystemConfigs Connection settings for an Amazon EFS file system.
+#' @param ImageConfig Configuration values that override the container image Dockerfile.
 #'
 #' @section Request syntax:
 #' ```
@@ -3556,7 +4092,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'       "string"
 #'     )
 #'   ),
-#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided",
+#'   Runtime = "nodejs"|"nodejs4.3"|"nodejs6.10"|"nodejs8.10"|"nodejs10.x"|"nodejs12.x"|"java8"|"java8.al2"|"java11"|"python2.7"|"python3.6"|"python3.7"|"python3.8"|"dotnetcore1.0"|"dotnetcore2.0"|"dotnetcore2.1"|"dotnetcore3.1"|"nodejs4.3-edge"|"go1.x"|"ruby2.5"|"ruby2.7"|"provided"|"provided.al2",
 #'   DeadLetterConfig = list(
 #'     TargetArn = "string"
 #'   ),
@@ -3573,6 +4109,15 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #'       Arn = "string",
 #'       LocalMountPath = "string"
 #'     )
+#'   ),
+#'   ImageConfig = list(
+#'     EntryPoint = list(
+#'       "string"
+#'     ),
+#'     Command = list(
+#'       "string"
+#'     ),
+#'     WorkingDirectory = "string"
 #'   )
 #' )
 #' ```
@@ -3590,14 +4135,14 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' @keywords internal
 #'
 #' @rdname lambda_update_function_configuration
-lambda_update_function_configuration <- function(FunctionName, Role = NULL, Handler = NULL, Description = NULL, Timeout = NULL, MemorySize = NULL, VpcConfig = NULL, Environment = NULL, Runtime = NULL, DeadLetterConfig = NULL, KMSKeyArn = NULL, TracingConfig = NULL, RevisionId = NULL, Layers = NULL, FileSystemConfigs = NULL) {
+lambda_update_function_configuration <- function(FunctionName, Role = NULL, Handler = NULL, Description = NULL, Timeout = NULL, MemorySize = NULL, VpcConfig = NULL, Environment = NULL, Runtime = NULL, DeadLetterConfig = NULL, KMSKeyArn = NULL, TracingConfig = NULL, RevisionId = NULL, Layers = NULL, FileSystemConfigs = NULL, ImageConfig = NULL) {
   op <- new_operation(
     name = "UpdateFunctionConfiguration",
     http_method = "PUT",
     http_path = "/2015-03-31/functions/{FunctionName}/configuration",
     paginator = list()
   )
-  input <- .lambda$update_function_configuration_input(FunctionName = FunctionName, Role = Role, Handler = Handler, Description = Description, Timeout = Timeout, MemorySize = MemorySize, VpcConfig = VpcConfig, Environment = Environment, Runtime = Runtime, DeadLetterConfig = DeadLetterConfig, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, RevisionId = RevisionId, Layers = Layers, FileSystemConfigs = FileSystemConfigs)
+  input <- .lambda$update_function_configuration_input(FunctionName = FunctionName, Role = Role, Handler = Handler, Description = Description, Timeout = Timeout, MemorySize = MemorySize, VpcConfig = VpcConfig, Environment = Environment, Runtime = Runtime, DeadLetterConfig = DeadLetterConfig, KMSKeyArn = KMSKeyArn, TracingConfig = TracingConfig, RevisionId = RevisionId, Layers = Layers, FileSystemConfigs = FileSystemConfigs, ImageConfig = ImageConfig)
   output <- .lambda$update_function_configuration_output()
   config <- get_config()
   svc <- .lambda$service(config)

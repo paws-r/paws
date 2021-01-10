@@ -2411,6 +2411,42 @@ greengrass_get_subscription_definition_version <- function(NextToken = NULL, Sub
 }
 .greengrass$operations$get_subscription_definition_version <- greengrass_get_subscription_definition_version
 
+#' Get the runtime configuration of a thing
+#'
+#' Get the runtime configuration of a thing.
+#'
+#' @usage
+#' greengrass_get_thing_runtime_configuration(ThingName)
+#'
+#' @param ThingName &#91;required&#93; The thing name.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_thing_runtime_configuration(
+#'   ThingName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname greengrass_get_thing_runtime_configuration
+greengrass_get_thing_runtime_configuration <- function(ThingName) {
+  op <- new_operation(
+    name = "GetThingRuntimeConfiguration",
+    http_method = "GET",
+    http_path = "/greengrass/things/{ThingName}/runtimeconfig",
+    paginator = list()
+  )
+  input <- .greengrass$get_thing_runtime_configuration_input(ThingName = ThingName)
+  output <- .greengrass$get_thing_runtime_configuration_output()
+  config <- get_config()
+  svc <- .greengrass$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.greengrass$operations$get_thing_runtime_configuration <- greengrass_get_thing_runtime_configuration
+
 #' Gets a paginated list of the deployments that have been started in a
 #' bulk deployment operation, and their current deployment status
 #'
@@ -3824,3 +3860,44 @@ greengrass_update_subscription_definition <- function(Name = NULL, SubscriptionD
   return(response)
 }
 .greengrass$operations$update_subscription_definition <- greengrass_update_subscription_definition
+
+#' Updates the runtime configuration of a thing
+#'
+#' Updates the runtime configuration of a thing.
+#'
+#' @usage
+#' greengrass_update_thing_runtime_configuration(TelemetryConfiguration,
+#'   ThingName)
+#'
+#' @param TelemetryConfiguration Configuration for telemetry service.
+#' @param ThingName &#91;required&#93; The thing name.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_thing_runtime_configuration(
+#'   TelemetryConfiguration = list(
+#'     Telemetry = "On"|"Off"
+#'   ),
+#'   ThingName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname greengrass_update_thing_runtime_configuration
+greengrass_update_thing_runtime_configuration <- function(TelemetryConfiguration = NULL, ThingName) {
+  op <- new_operation(
+    name = "UpdateThingRuntimeConfiguration",
+    http_method = "PUT",
+    http_path = "/greengrass/things/{ThingName}/runtimeconfig",
+    paginator = list()
+  )
+  input <- .greengrass$update_thing_runtime_configuration_input(TelemetryConfiguration = TelemetryConfiguration, ThingName = ThingName)
+  output <- .greengrass$update_thing_runtime_configuration_output()
+  config <- get_config()
+  svc <- .greengrass$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.greengrass$operations$update_thing_runtime_configuration <- greengrass_update_thing_runtime_configuration

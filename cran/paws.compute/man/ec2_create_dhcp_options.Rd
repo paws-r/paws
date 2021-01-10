@@ -21,7 +21,7 @@ Creates a set of DHCP options for your VPC. After creating the set, you
 must associate it with the VPC, causing all existing and new instances
 that you launch in the VPC to use this set of DHCP options. The
 following are the individual DHCP options you can specify. For more
-information about the options, see \href{http://www.ietf.org/rfc/rfc2132.txt}{RFC 2132}.
+information about the options, see \href{https://www.ietf.org/rfc/rfc2132.txt}{RFC 2132}.
 }
 \details{
 \itemize{
@@ -50,7 +50,7 @@ servers.
 \item \code{netbios-node-type} - The NetBIOS node type (1, 2, 4, or 8). We
 recommend that you specify 2 (broadcast and multicast are not
 currently supported). For more information about these node types,
-see \href{http://www.ietf.org/rfc/rfc2132.txt}{RFC 2132}.
+see \href{https://www.ietf.org/rfc/rfc2132.txt}{RFC 2132}.
 }
 
 Your VPC automatically starts out with a set of DHCP options that
@@ -73,7 +73,7 @@ in the \emph{Amazon Virtual Private Cloud User Guide}.
   ),
   TagSpecifications = list(
     list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
       Tags = list(
         list(
           Key = "string",

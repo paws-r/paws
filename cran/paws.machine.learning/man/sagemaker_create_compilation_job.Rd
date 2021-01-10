@@ -5,7 +5,7 @@
 \title{Starts a model compilation job}
 \usage{
 sagemaker_create_compilation_job(CompilationJobName, RoleArn,
-  InputConfig, OutputConfig, StoppingCondition)
+  InputConfig, OutputConfig, StoppingCondition, Tags)
 }
 \arguments{
 \item{CompilationJobName}{[required] A name for the model compilation job. The name must be unique within the
@@ -36,6 +36,10 @@ and the target device the model runs on.}
 \item{StoppingCondition}{[required] Specifies a limit to how long a model compilation job can run. When the
 job reaches the time limit, Amazon SageMaker ends the compilation job.
 Use this API to cap model training costs.}
+
+\item{Tags}{An array of key-value pairs. You can use tags to categorize your AWS
+resources in different ways, for example, by purpose, owner, or
+environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
 }
 \description{
 Starts a model compilation job. After the model has been compiled,
@@ -54,7 +58,8 @@ In the request body, you provide the following:
 \item Information about the input model artifacts
 \item The output location for the compiled model and the device (target)
 that the model runs on
-\item \verb{The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker assumes to perform the model compilation job}
+\item The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker
+assumes to perform the model compilation job.
 }
 
 You can also provide a \code{Tag} to track the model compilation job's
@@ -73,15 +78,28 @@ compilation jobs, use ListCompilationJobs.
   InputConfig = list(
     S3Uri = "string",
     DataInputConfig = "string",
-    Framework = "TENSORFLOW"|"KERAS"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"|"TFLITE"
+    Framework = "TENSORFLOW"|"KERAS"|"MXNET"|"ONNX"|"PYTORCH"|"XGBOOST"|"TFLITE"|"DARKNET"|"SKLEARN"
   ),
   OutputConfig = list(
     S3OutputLocation = "string",
-    TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_inf1"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv22"
+    TargetDevice = "lambda"|"ml_m4"|"ml_m5"|"ml_c4"|"ml_c5"|"ml_p2"|"ml_p3"|"ml_g4dn"|"ml_inf1"|"jetson_tx1"|"jetson_tx2"|"jetson_nano"|"jetson_xavier"|"rasp3b"|"imx8qm"|"deeplens"|"rk3399"|"rk3288"|"aisage"|"sbe_c"|"qcs605"|"qcs603"|"sitara_am57x"|"amba_cv22"|"x86_win32"|"x86_win64"|"coreml"|"jacinto_tda4vm",
+    TargetPlatform = list(
+      Os = "ANDROID"|"LINUX",
+      Arch = "X86_64"|"X86"|"ARM64"|"ARM_EABI"|"ARM_EABIHF",
+      Accelerator = "INTEL_GRAPHICS"|"MALI"|"NVIDIA"
+    ),
+    CompilerOptions = "string",
+    KmsKeyId = "string"
   ),
   StoppingCondition = list(
     MaxRuntimeInSeconds = 123,
     MaxWaitTimeInSeconds = 123
+  ),
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
   )
 )
 }

@@ -26,7 +26,7 @@ NULL
 #' Android. The SDKs provide a convenient way to create programmatic access
 #' to AWS SSO and other AWS services. For more information about the AWS
 #' SDKs, including how to download and install them, see [Tools for Amazon
-#' Web Services](http://aws.amazon.com/tools/).
+#' Web Services](https://aws.amazon.com/tools/).
 #'
 #' @param
 #' config

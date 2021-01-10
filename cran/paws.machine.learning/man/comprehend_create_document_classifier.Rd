@@ -73,8 +73,17 @@ how-document-classification.
     )
   ),
   InputDataConfig = list(
+    DataFormat = "COMPREHEND_CSV"|"AUGMENTED_MANIFEST",
     S3Uri = "string",
-    LabelDelimiter = "string"
+    LabelDelimiter = "string",
+    AugmentedManifests = list(
+      list(
+        S3Uri = "string",
+        AttributeNames = list(
+          "string"
+        )
+      )
+    )
   ),
   OutputDataConfig = list(
     S3Uri = "string",

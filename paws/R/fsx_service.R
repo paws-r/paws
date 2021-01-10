@@ -47,6 +47,7 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=fsx_associate_file_system_aliases]{associate_file_system_aliases} \tab Use this action to associate one or more Domain Name Server (DNS) aliases with an existing Amazon FSx for Windows File Server file system\cr
 #'  \link[=fsx_cancel_data_repository_task]{cancel_data_repository_task} \tab Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the PENDING or EXECUTING state\cr
 #'  \link[=fsx_create_backup]{create_backup} \tab Creates a backup of an existing Amazon FSx file system\cr
 #'  \link[=fsx_create_data_repository_task]{create_data_repository_task} \tab Creates an Amazon FSx for Lustre data repository task\cr
@@ -56,7 +57,9 @@ NULL
 #'  \link[=fsx_delete_file_system]{delete_file_system} \tab Deletes a file system, deleting its contents\cr
 #'  \link[=fsx_describe_backups]{describe_backups} \tab Returns the description of specific Amazon FSx backups, if a BackupIds value is provided for that backup\cr
 #'  \link[=fsx_describe_data_repository_tasks]{describe_data_repository_tasks} \tab Returns the description of specific Amazon FSx for Lustre data repository tasks, if one or more TaskIds values are provided in the request, or if filters are used in the request\cr
+#'  \link[=fsx_describe_file_system_aliases]{describe_file_system_aliases} \tab Returns the DNS aliases that are associated with the specified Amazon FSx for Windows File Server file system\cr
 #'  \link[=fsx_describe_file_systems]{describe_file_systems} \tab Returns the description of specific Amazon FSx file systems, if a FileSystemIds value is provided for that file system\cr
+#'  \link[=fsx_disassociate_file_system_aliases]{disassociate_file_system_aliases} \tab Use this action to disassociate, or remove, one or more Domain Name Service (DNS) aliases from an Amazon FSx for Windows File Server file system\cr
 #'  \link[=fsx_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for an Amazon FSx file systems and backups in the case of Amazon FSx for Windows File Server\cr
 #'  \link[=fsx_tag_resource]{tag_resource} \tab Tags an Amazon FSx resource\cr
 #'  \link[=fsx_untag_resource]{untag_resource} \tab This action removes a tag from an Amazon FSx resource\cr

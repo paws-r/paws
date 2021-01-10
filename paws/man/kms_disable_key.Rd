@@ -2,8 +2,7 @@
 % Please edit documentation in R/kms_operations.R
 \name{kms_disable_key}
 \alias{kms_disable_key}
-\title{Sets the state of a customer master key (CMK) to disabled, thereby
-preventing its use for cryptographic operations}
+\title{Sets the state of a customer master key (CMK) to disabled}
 \usage{
 kms_disable_key(KeyId)
 }
@@ -22,9 +21,8 @@ For example:
 To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 }
 \description{
-Sets the state of a customer master key (CMK) to disabled, thereby
-preventing its use for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}.
-You cannot perform this operation on a CMK in a different AWS account.
+Sets the state of a customer master key (CMK) to disabled. This change
+temporarily prevents use of the CMK for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}.
 }
 \details{
 For more information about how key state affects the use of a CMK, see
@@ -34,6 +32,15 @@ in the \strong{AWS Key Management Service Developer Guide} .
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
+a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:DisableKey}
+(key policy)
+
+\strong{Related operations}: EnableKey
 }
 \section{Request syntax}{
 \preformatted{svc$disable_key(

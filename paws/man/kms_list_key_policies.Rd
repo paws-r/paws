@@ -38,8 +38,21 @@ truncated response you just received.}
 Gets the names of the key policies that are attached to a customer
 master key (CMK). This operation is designed to get policy names that
 you can use in a GetKeyPolicy operation. However, the only valid policy
-name is \code{default}. You cannot perform this operation on a CMK in a
-different AWS account.
+name is \code{default}.
+}
+\details{
+\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
+a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:ListKeyPolicies}
+(key policy)
+
+\strong{Related operations:}
+\itemize{
+\item GetKeyPolicy
+\item PutKeyPolicy
+}
 }
 \section{Request syntax}{
 \preformatted{svc$list_key_policies(

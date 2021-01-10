@@ -37,7 +37,7 @@ WorkGroupConfiguration$EnforceWorkGroupConfiguration.}
 Runs the SQL query statements contained in the \code{Query}. Requires you to
 have access to the workgroup in which the query ran. Running queries
 against an external catalog requires GetDataCatalog permission to the
-catalog. For code samples using the AWS SDK for Java, see \href{http://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
+catalog. For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
 in the \emph{Amazon Athena User Guide}.
 }
 \section{Request syntax}{

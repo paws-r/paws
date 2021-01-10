@@ -38,7 +38,8 @@ Modifies the specified VPC attachment.
   ),
   Options = list(
     DnsSupport = "enable"|"disable",
-    Ipv6Support = "enable"|"disable"
+    Ipv6Support = "enable"|"disable",
+    ApplianceModeSupport = "enable"|"disable"
   ),
   DryRun = TRUE|FALSE
 )

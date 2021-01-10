@@ -11,9 +11,9 @@ lexmodelbuildingservice_delete_utterances(botName, userId)
 
 \item{userId}{[required] The unique identifier for the user that made the utterances. This is the
 user ID that was sent in the
-\href{http://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html}{PostContent}
+\href{https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html}{PostContent}
 or
-\href{http://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html}{PostText}
+\href{https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html}{PostText}
 operation request that contained the utterance.}
 }
 \description{

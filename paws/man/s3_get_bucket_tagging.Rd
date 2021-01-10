@@ -4,10 +4,14 @@
 \alias{s3_get_bucket_tagging}
 \title{Returns the tag set associated with the bucket}
 \usage{
-s3_get_bucket_tagging(Bucket)
+s3_get_bucket_tagging(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket for which to get the tagging information.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Returns the tag set associated with the bucket.
@@ -27,13 +31,14 @@ permission and can grant this permission to others.
 
 The following operations are related to \code{GetBucketTagging}:
 \itemize{
-\item PutBucketTagging
-\item DeleteBucketTagging
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html}{PutBucketTagging}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html}{DeleteBucketTagging}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_tagging(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

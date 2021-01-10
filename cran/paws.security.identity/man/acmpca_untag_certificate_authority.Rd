@@ -8,7 +8,8 @@ acmpca_untag_certificate_authority(CertificateAuthorityArn, Tags)
 }
 \arguments{
 \item{CertificateAuthorityArn}{[required] The Amazon Resource Name (ARN) that was returned when you called
-CreateCertificateAuthority. This must be of the form:
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html}{CreateCertificateAuthority}.
+This must be of the form:
 
 \verb{arn:aws:acm-pca:<i>region</i>:<i>account</i>:certificate-authority/<i>12345678-1234-1234-1234-123456789012</i> }}
 
@@ -20,8 +21,10 @@ key-value pair. If you do not specify the value portion of the tag when
 calling this action, the tag will be removed regardless of value. If you
 specify a value, the tag is removed only if it is associated with the
 specified value. To add tags to a private CA, use the
-TagCertificateAuthority. Call the ListTags action to see what tags are
-associated with your CA.
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_TagCertificateAuthority.html}{TagCertificateAuthority}.
+Call the
+\href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListTags.html}{ListTags}
+action to see what tags are associated with your CA.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_certificate_authority(

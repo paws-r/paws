@@ -2,7 +2,7 @@
 % Please edit documentation in R/iotanalytics_operations.R
 \name{iotanalytics_delete_dataset}
 \alias{iotanalytics_delete_dataset}
-\title{Deletes the specified data set}
+\title{Deletes the specified dataset}
 \usage{
 iotanalytics_delete_dataset(datasetName)
 }
@@ -10,10 +10,10 @@ iotanalytics_delete_dataset(datasetName)
 \item{datasetName}{[required] The name of the data set to delete.}
 }
 \description{
-Deletes the specified data set.
+Deletes the specified dataset.
 }
 \details{
-You do not have to delete the content of the data set before you perform
+You do not have to delete the content of the dataset before you perform
 this operation.
 }
 \section{Request syntax}{

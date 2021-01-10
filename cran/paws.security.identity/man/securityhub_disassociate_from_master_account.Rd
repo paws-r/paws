@@ -11,6 +11,12 @@ securityhub_disassociate_from_master_account()
 Disassociates the current Security Hub member account from the
 associated master account.
 }
+\details{
+This operation is only used by accounts that are not part of an
+organization. For organization accounts, only the master account (the
+designated Security Hub administrator) can disassociate a member
+account.
+}
 \section{Request syntax}{
 \preformatted{svc$disassociate_from_master_account()
 }

@@ -24,8 +24,9 @@ instances is part of model hosting. For more information, see \href{https://docs
 To be able to pass this role to Amazon SageMaker, the caller of this API
 must have the \code{iam:PassRole} permission.}
 
-\item{Tags}{An array of key-value pairs. For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what}{Using Cost Allocation Tags}
-in the \emph{AWS Billing and Cost Management User Guide}.}
+\item{Tags}{An array of key-value pairs. You can use tags to categorize your AWS
+resources in different ways, for example, by purpose, owner, or
+environment. For more information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS Resources}.}
 
 \item{VpcConfig}{A VpcConfig object that specifies the VPC that you want your model to
 connect to. Control access to and from your model container by
@@ -76,6 +77,9 @@ grant necessary permissions via this role.
   PrimaryContainer = list(
     ContainerHostname = "string",
     Image = "string",
+    ImageConfig = list(
+      RepositoryAccessMode = "Platform"|"Vpc"
+    ),
     Mode = "SingleModel"|"MultiModel",
     ModelDataUrl = "string",
     Environment = list(
@@ -87,6 +91,9 @@ grant necessary permissions via this role.
     list(
       ContainerHostname = "string",
       Image = "string",
+      ImageConfig = list(
+        RepositoryAccessMode = "Platform"|"Vpc"
+      ),
       Mode = "SingleModel"|"MultiModel",
       ModelDataUrl = "string",
       Environment = list(

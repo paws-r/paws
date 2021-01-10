@@ -31,6 +31,11 @@ specified product.
 \details{
 You cannot create a provisioning artifact for a product that was shared
 with you.
+
+The user or role that performs this operation must have the
+\code{cloudformation:GetTemplate} IAM policy permission. This policy
+permission is required when using the \code{ImportFromPhysicalId} template
+source in the information data section.
 }
 \section{Request syntax}{
 \preformatted{svc$create_provisioning_artifact(

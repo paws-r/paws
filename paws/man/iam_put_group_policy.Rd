@@ -10,13 +10,13 @@ iam_put_group_policy(GroupName, PolicyName, PolicyDocument)
 \arguments{
 \item{GroupName}{[required] The name of the group to associate the policy with.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-.}
 
 \item{PolicyName}{[required] The name of the policy document.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
@@ -27,8 +27,9 @@ CloudFormation templates formatted in YAML, you can provide the policy
 in JSON or YAML format. AWS CloudFormation always converts a YAML policy
 to JSON format before submitting it to IAM.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
-this parameter is a string of characters consisting of the following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
+validate this parameter is a string of characters consisting of the
+following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
@@ -46,16 +47,16 @@ specified IAM group.
 A user can also have managed policies attached to it. To attach a
 managed policy to a group, use AttachGroupPolicy. To create a new
 managed policy, use CreatePolicy. For information about policies, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html}{Managed Policies and Inline Policies}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}
 in the \emph{IAM User Guide}.
 
 For information about limits on the number of inline policies that you
-can embed in a group, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/LimitationsOnEntities.html}{Limitations on IAM Entities}
+can embed in a group, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{Limitations on IAM Entities}
 in the \emph{IAM User Guide}.
 
 Because policy documents can be large, you should use POST rather than
 GET when calling \code{PutGroupPolicy}. For general information about using
-the Query API with IAM, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/IAM_UsingQueryAPI.html}{Making Query Requests}
+the Query API with IAM, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/programming.html}{Making Query Requests}
 in the \emph{IAM User Guide}.
 }
 \section{Request syntax}{

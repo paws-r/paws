@@ -2,7 +2,7 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_add_application_input}
 \alias{kinesisanalyticsv2_add_application_input}
-\title{Adds a streaming source to your SQL-based Amazon Kinesis Data Analytics
+\title{Adds a streaming source to your SQL-based Kinesis Data Analytics
 application}
 \usage{
 kinesisanalyticsv2_add_application_input(ApplicationName,
@@ -18,7 +18,7 @@ DescribeApplication operation to find the current application version.}
 \item{Input}{[required] The Input to add.}
 }
 \description{
-Adds a streaming source to your SQL-based Amazon Kinesis Data Analytics
+Adds a streaming source to your SQL-based Kinesis Data Analytics
 application.
 }
 \details{

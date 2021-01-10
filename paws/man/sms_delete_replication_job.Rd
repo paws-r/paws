@@ -7,7 +7,7 @@
 sms_delete_replication_job(replicationJobId)
 }
 \arguments{
-\item{replicationJobId}{[required] The identifier of the replication job.}
+\item{replicationJobId}{[required] The ID of the replication job.}
 }
 \description{
 Deletes the specified replication job.

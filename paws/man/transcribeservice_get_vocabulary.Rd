@@ -7,8 +7,8 @@
 transcribeservice_get_vocabulary(VocabularyName)
 }
 \arguments{
-\item{VocabularyName}{[required] The name of the vocabulary to return information about. The name is
-case-sensitive.}
+\item{VocabularyName}{[required] The name of the vocabulary to return information about. The name is case
+sensitive.}
 }
 \description{
 Gets information about a vocabulary.

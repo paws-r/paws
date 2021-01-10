@@ -5,7 +5,7 @@
 \title{Allocates an Elastic IP address to your AWS account}
 \usage{
 ec2_allocate_address(Domain, Address, PublicIpv4Pool,
-  NetworkBorderGroup, CustomerOwnedIpv4Pool, DryRun)
+  NetworkBorderGroup, CustomerOwnedIpv4Pool, DryRun, TagSpecifications)
 }
 \arguments{
 \item{Domain}{Indicates whether the Elastic IP address is for use with instances in a
@@ -21,12 +21,10 @@ address pool.}
 EC2 select an address from the address pool. To specify a specific
 address from the address pool, use the \code{Address} parameter instead.}
 
-\item{NetworkBorderGroup}{The location from which the IP address is advertised. Use this parameter
-to limit the address to this location.
-
-A network border group is a unique set of Availability Zones or Local
-Zones from where AWS advertises IP addresses and limits the addresses to
-the group. IP addresses cannot move between network border groups.
+\item{NetworkBorderGroup}{A unique set of Availability Zones, Local Zones, or Wavelength Zones
+from which AWS advertises IP addresses. Use this parameter to limit the
+IP address to this location. IP addresses cannot move between network
+border groups.
 
 Use
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html}{DescribeAvailabilityZones}
@@ -44,6 +42,8 @@ specify a specific address from the address pool.}
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{TagSpecifications}{The tags to assign to the Elastic IP address.}
 }
 \description{
 Allocates an Elastic IP address to your AWS account. After you allocate
@@ -71,6 +71,10 @@ Region.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
+
+You can allocate a carrier IP address which is a public IP address from
+a telecommunication carrier, to a network interface which resides in a
+subnet in a Wavelength Zone (for example an EC2 instance).
 }
 \section{Request syntax}{
 \preformatted{svc$allocate_address(
@@ -79,7 +83,18 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.
   PublicIpv4Pool = "string",
   NetworkBorderGroup = "string",
   CustomerOwnedIpv4Pool = "string",
-  DryRun = TRUE|FALSE
+  DryRun = TRUE|FALSE,
+  TagSpecifications = list(
+    list(
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      Tags = list(
+        list(
+          Key = "string",
+          Value = "string"
+        )
+      )
+    )
+  )
 )
 }
 }

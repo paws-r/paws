@@ -4,19 +4,43 @@
 \alias{kinesisanalyticsv2_stop_application}
 \title{Stops the application from processing data}
 \usage{
-kinesisanalyticsv2_stop_application(ApplicationName)
+kinesisanalyticsv2_stop_application(ApplicationName, Force)
 }
 \arguments{
 \item{ApplicationName}{[required] The name of the running application to stop.}
+
+\item{Force}{Set to \code{true} to force the application to stop. If you set \code{Force} to
+\code{true}, Kinesis Data Analytics stops the application without taking a
+snapshot.
+
+Force-stopping your application may lead to data loss or duplication. To
+prevent data loss or duplicate processing of data during application
+restarts, we recommend you to take frequent snapshots of your
+application.
+
+You can only force stop a Flink-based Kinesis Data Analytics
+application. You can't force stop a SQL-based Kinesis Data Analytics
+application.
+
+The application must be in the \code{STARTING}, \code{UPDATING}, \code{STOPPING},
+\code{AUTOSCALING}, or \code{RUNNING} status.}
 }
 \description{
 Stops the application from processing data. You can stop an application
-only if it is in the running state. You can use the DescribeApplication
-operation to find the application state.
+only if it is in the running status, unless you set the \code{Force}
+parameter to \code{true}.
+}
+\details{
+You can use the DescribeApplication operation to find the application
+status.
+
+Kinesis Data Analytics takes a snapshot when the application is stopped,
+unless \code{Force} is set to \code{true}.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_application(
-  ApplicationName = "string"
+  ApplicationName = "string",
+  Force = TRUE|FALSE
 )
 }
 }

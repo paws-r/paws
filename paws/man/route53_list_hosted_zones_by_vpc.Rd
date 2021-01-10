@@ -17,8 +17,8 @@ you created the VPC in.}
 \item{MaxItems}{(Optional) The maximum number of hosted zones that you want Amazon Route
 53 to return. If the specified VPC is associated with more than
 \code{MaxItems} hosted zones, the response includes a \code{NextToken} element.
-\code{NextToken} contains the hosted zone ID of the first hosted zone that
-Route 53 will return if you submit another request.}
+\code{NextToken} contains an encrypted token that identifies the first hosted
+zone that Route 53 will return if you submit another request.}
 
 \item{NextToken}{If the previous response included a \code{NextToken} element, the specified
 VPC is associated with more hosted zones. To get more hosted zones,

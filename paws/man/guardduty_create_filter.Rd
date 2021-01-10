@@ -8,10 +8,12 @@ guardduty_create_filter(DetectorId, Name, Description, Action, Rank,
   FindingCriteria, ClientToken, Tags)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector of the GuardDuty account that you want to
-create a filter for.}
+\item{DetectorId}{[required] The ID of the detector belonging to the GuardDuty account that you want
+to create a filter for.}
 
-\item{Name}{[required] The name of the filter.}
+\item{Name}{[required] The name of the filter. Minimum length of 3. Maximum length of 64. Valid
+characters include alphanumeric characters, dot (.), underscore (\\_),
+and dash (-). Spaces are not allowed.}
 
 \item{Description}{The description of the filter.}
 
@@ -52,6 +54,7 @@ You can only use the following attributes to query findings:
 \item service.action.actionType
 \item service.action.awsApiCallAction.api
 \item service.action.awsApiCallAction.callerType
+\item service.action.awsApiCallAction.errorCode
 \item service.action.awsApiCallAction.remoteIpDetails.city.cityName
 \item service.action.awsApiCallAction.remoteIpDetails.country.countryName
 \item service.action.awsApiCallAction.remoteIpDetails.ipAddressV4

@@ -4,7 +4,8 @@
 \alias{s3_put_object_tagging}
 \title{Sets the supplied tag-set to an object that already exists in a bucket}
 \usage{
-s3_put_object_tagging(Bucket, Key, VersionId, ContentMD5, Tagging)
+s3_put_object_tagging(Bucket, Key, VersionId, ContentMD5, Tagging,
+  ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The bucket name containing the object.
@@ -12,18 +13,34 @@ s3_put_object_tagging(Bucket, Key, VersionId, ContentMD5, Tagging)
 When using this API with an access point, you must direct requests to
 the access point hostname. The access point hostname takes the form
 \emph{AccessPointName}-\emph{AccountId}.s3-accesspoint.\emph{Region}.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
+When using this operation with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
 information about access point ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html}{Using Access Points}
+in the \emph{Amazon Simple Storage Service Developer Guide}.
+
+When using this API with Amazon S3 on Outposts, you must direct requests
+to the S3 on Outposts hostname. The S3 on Outposts hostname takes the
+form
+\emph{AccessPointName}-\emph{AccountId}.\emph{outpostID}.s3-outposts.\emph{Region}.amazonaws.com.
+When using this operation using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.}
 
-\item{Key}{[required] Name of the tag.}
+\item{Key}{[required] Name of the object key.}
 
 \item{VersionId}{The versionId of the object that the tag-set will be added to.}
 
-\item{ContentMD5}{The MD5 hash for the request body.}
+\item{ContentMD5}{The MD5 hash for the request body.
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.}
 
 \item{Tagging}{[required] Container for the \code{TagSet} and \code{Tag} elements}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Sets the supplied tag-set to an object that already exists in a bucket.
@@ -32,7 +49,8 @@ Sets the supplied tag-set to an object that already exists in a bucket.
 A tag is a key-value pair. You can associate tags with an object by
 sending a PUT request against the tagging subresource that is associated
 with the object. You can retrieve tags by sending a GET request. For
-more information, see GetObjectTagging.
+more information, see
+\href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html}{GetObjectTagging}.
 
 For tagging-related restrictions related to characters and encodings,
 see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html}{Tag Restrictions}.
@@ -51,20 +69,17 @@ For information about the Amazon S3 object tagging feature, see \href{https://do
 \strong{Special Errors}
 \itemize{
 \item 
-}\preformatted{-   *Code: InvalidTagError*
-
--   *Cause: The tag provided was not a valid tag. This error can
-    occur if the tag did not pass input validation. For more
-    information, see [Object
-    Tagging](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html).*
-}
 \itemize{
+\item \emph{Code: InvalidTagError}
+\item \emph{Cause: The tag provided was not a valid tag. This error can
+occur if the tag did not pass input validation. For more
+information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html}{Object Tagging}.}
+}
 \item 
-}\preformatted{-   *Code: MalformedXMLError*
-
--   *Cause: The XML provided does not match the schema.*
-}
 \itemize{
+\item \emph{Code: MalformedXMLError}
+\item \emph{Cause: The XML provided does not match the schema.}
+}
 \item 
 \itemize{
 \item \emph{Code: OperationAbortedError}
@@ -81,7 +96,7 @@ object.}
 
 \strong{Related Resources}
 \itemize{
-\item GetObjectTagging
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html}{GetObjectTagging}
 }
 }
 \section{Request syntax}{
@@ -97,7 +112,8 @@ object.}
         Value = "string"
       )
     )
-  )
+  ),
+  ExpectedBucketOwner = "string"
 )
 }
 }

@@ -4,8 +4,8 @@
 \alias{guardduty_invite_members}
 \title{Invites other AWS accounts (created as members of the current AWS
 account by CreateMembers) to enable GuardDuty, and allow the current AWS
-account to view and manage these accounts' GuardDuty findings on their
-behalf as the master account}
+account to view and manage these accounts' findings on their behalf as
+the GuardDuty administrator account}
 \usage{
 guardduty_invite_members(DetectorId, AccountIds,
   DisableEmailNotification, Message)
@@ -18,17 +18,17 @@ invite members with.}
 GuardDuty as members.}
 
 \item{DisableEmailNotification}{A Boolean value that specifies whether you want to disable email
-notification to the accounts that you’re inviting to GuardDuty as
+notification to the accounts that you are inviting to GuardDuty as
 members.}
 
-\item{Message}{The invitation message that you want to send to the accounts that you’re
+\item{Message}{The invitation message that you want to send to the accounts that you're
 inviting to GuardDuty as members.}
 }
 \description{
 Invites other AWS accounts (created as members of the current AWS
 account by CreateMembers) to enable GuardDuty, and allow the current AWS
-account to view and manage these accounts' GuardDuty findings on their
-behalf as the master account.
+account to view and manage these accounts' findings on their behalf as
+the GuardDuty administrator account.
 }
 \section{Request syntax}{
 \preformatted{svc$invite_members(

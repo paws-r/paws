@@ -2,7 +2,7 @@
 % Please edit documentation in R/iotsitewise_operations.R
 \name{iotsitewise_describe_asset_property}
 \alias{iotsitewise_describe_asset_property}
-\title{Retrieves information about an asset's property}
+\title{Retrieves information about an asset property}
 \usage{
 iotsitewise_describe_asset_property(assetId, propertyId)
 }
@@ -12,7 +12,17 @@ iotsitewise_describe_asset_property(assetId, propertyId)
 \item{propertyId}{[required] The ID of the asset property.}
 }
 \description{
-Retrieves information about an asset's property.
+Retrieves information about an asset property.
+}
+\details{
+When you call this operation for an attribute property, this response
+includes the default attribute value that you define in the asset model.
+If you update the default value in the model, this operation's response
+includes the new default value.
+
+This operation doesn't return the value of the asset property. To get
+the value of an asset property, use
+\href{https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_GetAssetPropertyValue.html}{GetAssetPropertyValue}.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_asset_property(

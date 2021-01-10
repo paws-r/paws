@@ -8,12 +8,16 @@ account}
 securityhub_disassociate_members(AccountIds)
 }
 \arguments{
-\item{AccountIds}{The account IDs of the member accounts to disassociate from the master
+\item{AccountIds}{[required] The account IDs of the member accounts to disassociate from the master
 account.}
 }
 \description{
 Disassociates the specified member accounts from the associated master
 account.
+}
+\details{
+Can be used to disassociate both accounts that are in an organization
+and accounts that were invited manually.
 }
 \section{Request syntax}{
 \preformatted{svc$disassociate_members(

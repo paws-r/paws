@@ -2,8 +2,8 @@
 % Please edit documentation in R/directoryservice_operations.R
 \name{directoryservice_deregister_certificate}
 \alias{directoryservice_deregister_certificate}
-\title{Deletes from the system the certificate that was registered for a
-secured LDAP connection}
+\title{Deletes from the system the certificate that was registered for secure
+LDAP or client certificate authentication}
 \usage{
 directoryservice_deregister_certificate(DirectoryId, CertificateId)
 }
@@ -13,8 +13,8 @@ directoryservice_deregister_certificate(DirectoryId, CertificateId)
 \item{CertificateId}{[required] The identifier of the certificate.}
 }
 \description{
-Deletes from the system the certificate that was registered for a
-secured LDAP connection.
+Deletes from the system the certificate that was registered for secure
+LDAP or client certificate authentication.
 }
 \section{Request syntax}{
 \preformatted{svc$deregister_certificate(

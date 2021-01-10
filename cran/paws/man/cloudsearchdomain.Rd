@@ -20,7 +20,7 @@ The domain endpoints are also displayed on the domain dashboard in the
 Amazon CloudSearch console. You submit suggest requests to the search
 endpoint.
 
-For more information, see the \href{http://docs.aws.amazon.com/cloudsearch/latest/developerguide}{Amazon CloudSearch Developer Guide}.
+For more information, see the \href{https://docs.aws.amazon.com/cloudsearch/latest/developerguide/}{Amazon CloudSearch Developer Guide}.
 }
 \section{Service syntax}{
 \preformatted{svc <- cloudsearchdomain(

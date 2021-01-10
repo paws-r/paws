@@ -3,16 +3,28 @@
 \name{elbv2_set_subnets}
 \alias{elbv2_set_subnets}
 \title{Enables the Availability Zones for the specified public subnets for the
-specified load balancer}
+specified Application Load Balancer or Network Load Balancer}
 \usage{
-elbv2_set_subnets(LoadBalancerArn, Subnets, SubnetMappings)
+elbv2_set_subnets(LoadBalancerArn, Subnets, SubnetMappings,
+  IpAddressType)
 }
 \arguments{
 \item{LoadBalancerArn}{[required] The Amazon Resource Name (ARN) of the load balancer.}
 
-\item{Subnets}{The IDs of the public subnets. You must specify subnets from at least
-two Availability Zones. You can specify only one subnet per Availability
-Zone. You must specify either subnets or subnet mappings.}
+\item{Subnets}{The IDs of the public subnets. You can specify only one subnet per
+Availability Zone. You must specify either subnets or subnet mappings.
+
+[Application Load Balancers] You must specify subnets from at least
+two Availability Zones.
+
+[Application Load Balancers on Outposts] You must specify one Outpost
+subnet.
+
+[Application Load Balancers on Local Zones] You can specify subnets
+from one or more Local Zones.
+
+[Network Load Balancers] You can specify subnets from one or more
+Availability Zones.}
 
 \item{SubnetMappings}{The IDs of the public subnets. You can specify only one subnet per
 Availability Zone. You must specify either subnets or subnet mappings.
@@ -21,16 +33,29 @@ Availability Zone. You must specify either subnets or subnet mappings.
 two Availability Zones. You cannot specify Elastic IP addresses for your
 subnets.
 
+[Application Load Balancers on Outposts] You must specify one Outpost
+subnet.
+
+[Application Load Balancers on Local Zones] You can specify subnets
+from one or more Local Zones.
+
 [Network Load Balancers] You can specify subnets from one or more
-Availability Zones. If you need static IP addresses for your
-internet-facing load balancer, you can specify one Elastic IP address
-per subnet. For internal load balancers, you can specify one private IP
-address per subnet from the IPv4 range of the subnet.}
+Availability Zones. You can specify one Elastic IP address per subnet if
+you need static IP addresses for your internet-facing load balancer. For
+internal load balancers, you can specify one private IP address per
+subnet from the IPv4 range of the subnet. For internet-facing load
+balancer, you can specify one IPv6 address per subnet.}
+
+\item{IpAddressType}{[Network Load Balancers] The type of IP addresses used by the subnets
+for your load balancer. The possible values are \code{ipv4} (for IPv4
+addresses) and \code{dualstack} (for IPv4 and IPv6 addresses). You can’t
+specify \code{dualstack} for a load balancer with a UDP or TCP\\_UDP listener.
+Internal load balancers must use \code{ipv4}.}
 }
 \description{
 Enables the Availability Zones for the specified public subnets for the
-specified load balancer. The specified subnets replace the previously
-enabled subnets.
+specified Application Load Balancer or Network Load Balancer. The
+specified subnets replace the previously enabled subnets.
 }
 \details{
 When you specify subnets for a Network Load Balancer, you must include
@@ -47,9 +72,11 @@ configurations, plus any additional subnets.
     list(
       SubnetId = "string",
       AllocationId = "string",
-      PrivateIPv4Address = "string"
+      PrivateIPv4Address = "string",
+      IPv6Address = "string"
     )
-  )
+  ),
+  IpAddressType = "ipv4"|"dualstack"
 )
 }
 }

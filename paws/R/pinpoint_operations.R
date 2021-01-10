@@ -906,6 +906,34 @@ pinpoint_create_import_job <- function(ApplicationId, ImportJobRequest) {
 #'     StartActivity = "string",
 #'     StartCondition = list(
 #'       Description = "string",
+#'       EventStartCondition = list(
+#'         EventFilter = list(
+#'           Dimensions = list(
+#'             Attributes = list(
+#'               list(
+#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             EventType = list(
+#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             Metrics = list(
+#'               list(
+#'                 ComparisonOperator = "string",
+#'                 Value = 123.0
+#'               )
+#'             )
+#'           ),
+#'           FilterType = "SYSTEM"|"ENDPOINT"
+#'         ),
+#'         SegmentId = "string"
+#'       ),
 #'       SegmentStartCondition = list(
 #'         SegmentId = "string"
 #'       )
@@ -5727,6 +5755,7 @@ pinpoint_update_apns_voip_sandbox_channel <- function(APNSVoipSandboxChannelRequ
 #'       WebUrl = "string"
 #'     ),
 #'     CloudWatchMetricsEnabled = TRUE|FALSE,
+#'     EventTaggingEnabled = TRUE|FALSE,
 #'     Limits = list(
 #'       Daily = 123,
 #'       MaximumDuration = 123,
@@ -6883,6 +6912,34 @@ pinpoint_update_gcm_channel <- function(ApplicationId, GCMChannelRequest) {
 #'     StartActivity = "string",
 #'     StartCondition = list(
 #'       Description = "string",
+#'       EventStartCondition = list(
+#'         EventFilter = list(
+#'           Dimensions = list(
+#'             Attributes = list(
+#'               list(
+#'                 AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+#'                 Values = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             ),
+#'             EventType = list(
+#'               DimensionType = "INCLUSIVE"|"EXCLUSIVE",
+#'               Values = list(
+#'                 "string"
+#'               )
+#'             ),
+#'             Metrics = list(
+#'               list(
+#'                 ComparisonOperator = "string",
+#'                 Value = 123.0
+#'               )
+#'             )
+#'           ),
+#'           FilterType = "SYSTEM"|"ENDPOINT"
+#'         ),
+#'         SegmentId = "string"
+#'       ),
 #'       SegmentStartCondition = list(
 #'         SegmentId = "string"
 #'       )

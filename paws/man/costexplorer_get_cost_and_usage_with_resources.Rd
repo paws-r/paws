@@ -20,7 +20,7 @@ is exclusive. For example, if \code{start} is \code{2017-01-01} and \code{end} i
 \code{Granularity} isn't set, the response object doesn't include the
 \code{Granularity}, \code{MONTHLY}, \code{DAILY}, or \code{HOURLY}.}
 
-\item{Filter}{Filters Amazon Web Services costs by different dimensions. For example,
+\item{Filter}{[required] Filters Amazon Web Services costs by different dimensions. For example,
 you can specify \code{SERVICE} and \code{LINKED_ACCOUNT} and get the costs that
 are associated with that account's usage of that service. You can nest
 \code{Expression} objects to define any combination of dimension filters. For
@@ -28,10 +28,12 @@ more information, see
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}.
 
 The \code{GetCostAndUsageWithResources} operation requires that you either
-group by or filter by a \code{ResourceId}.}
+group by or filter by a \code{ResourceId}. It requires the
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html}{Expression}
+\code{"SERVICE = Amazon Elastic Compute Cloud - Compute"} in the filter.}
 
 \item{Metrics}{Which metrics are returned in the query. For more information about
-blended and unblended rates, see \href{http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the "blended" annotation appear on some line items in my bill?}.
+blended and unblended rates, see \href{https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/}{Why does the "blended" annotation appear on some line items in my bill?}.
 
 Valid values are \code{AmortizedCost}, \code{BlendedCost}, \code{NetAmortizedCost},
 \code{NetUnblendedCost}, \code{NormalizedUsageAmount}, \code{UnblendedCost}, and
@@ -48,7 +50,7 @@ meaningful \code{UsageQuantity} metrics, filter by \code{UsageType} or
 \code{Metrics} is required for \code{GetCostAndUsageWithResources} requests.}
 
 \item{GroupBy}{You can group Amazon Web Services costs using up to two different
-groups: either dimensions, tag keys, or both.}
+groups: \code{DIMENSION}, \code{TAG}, \code{COST_CATEGORY}.}
 
 \item{NextPageToken}{The token to retrieve the next set of results. AWS provides the token
 when the response from a previous call has more results than the maximum
@@ -62,9 +64,9 @@ filter and group your data by various dimensions, such as \code{SERVICE} or
 \code{AZ}, in a specific time range. For a complete list of valid dimensions,
 see the
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html}{GetDimensionValues}
-operation. Master accounts in an organization in AWS Organizations have
-access to all member accounts. This API is currently available for the
-Amazon Elastic Compute Cloud – Compute service only.
+operation. Management account in an organization in AWS Organizations
+have access to all member accounts. This API is currently available for
+the Amazon Elastic Compute Cloud – Compute service only.
 }
 \details{
 This is an opt-in only feature. You can enable this feature from the
@@ -88,12 +90,12 @@ in the \emph{AWS Billing and Cost Management User Guide}.
     ),
     Not = list(),
     Dimensions = list(
-      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION",
+      Key = "AZ"|"INSTANCE_TYPE"|"LINKED_ACCOUNT"|"LINKED_ACCOUNT_NAME"|"OPERATION"|"PURCHASE_TYPE"|"REGION"|"SERVICE"|"SERVICE_CODE"|"USAGE_TYPE"|"USAGE_TYPE_GROUP"|"RECORD_TYPE"|"OPERATING_SYSTEM"|"TENANCY"|"SCOPE"|"PLATFORM"|"SUBSCRIPTION_ID"|"LEGAL_ENTITY_NAME"|"DEPLOYMENT_OPTION"|"DATABASE_ENGINE"|"CACHE_ENGINE"|"INSTANCE_TYPE_FAMILY"|"BILLING_ENTITY"|"RESERVATION_ID"|"RESOURCE_ID"|"RIGHTSIZING_TYPE"|"SAVINGS_PLANS_TYPE"|"SAVINGS_PLAN_ARN"|"PAYMENT_OPTION"|"AGREEMENT_END_DATE_TIME_AFTER"|"AGREEMENT_END_DATE_TIME_BEFORE",
       Values = list(
         "string"
       ),
       MatchOptions = list(
-        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     Tags = list(
@@ -102,13 +104,16 @@ in the \emph{AWS Billing and Cost Management User Guide}.
         "string"
       ),
       MatchOptions = list(
-        "EQUALS"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     ),
     CostCategories = list(
       Key = "string",
       Values = list(
         "string"
+      ),
+      MatchOptions = list(
+        "EQUALS"|"ABSENT"|"STARTS_WITH"|"ENDS_WITH"|"CONTAINS"|"CASE_SENSITIVE"|"CASE_INSENSITIVE"
       )
     )
   ),

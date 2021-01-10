@@ -7,7 +7,11 @@
 iot_list_attached_policies(target, recursive, marker, pageSize)
 }
 \arguments{
-\item{target}{[required] The group or principal for which the policies will be listed.}
+\item{target}{[required] The group or principal for which the policies will be listed. Valid
+principals are CertificateArn
+(arn:aws:iot:\emph{region}:\emph{accountId}:cert/\emph{certificateId}), thingGroupArn
+(arn:aws:iot:\emph{region}:\emph{accountId}:thinggroup/\emph{groupName}) and CognitoId
+(\emph{region}:\emph{id}).}
 
 \item{recursive}{When true, recursively list attached policies.}
 

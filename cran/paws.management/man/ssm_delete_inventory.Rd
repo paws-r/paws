@@ -2,14 +2,14 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_delete_inventory}
 \alias{ssm_delete_inventory}
-\title{Delete a custom inventory type, or the data associated with a custom
+\title{Delete a custom inventory type or the data associated with a custom
 Inventory type}
 \usage{
 ssm_delete_inventory(TypeName, SchemaDeleteOption, DryRun, ClientToken)
 }
 \arguments{
 \item{TypeName}{[required] The name of the custom inventory type for which you want to delete
-either all previously collected data, or the inventory type itself.}
+either all previously collected data or the inventory type itself.}
 
 \item{SchemaDeleteOption}{Use the \code{SchemaDeleteOption} to delete a custom inventory type (schema).
 If you don't choose this option, the system only deletes existing
@@ -33,7 +33,7 @@ without specifying the \code{DryRun} option.}
 \item{ClientToken}{User-provided idempotency token.}
 }
 \description{
-Delete a custom inventory type, or the data associated with a custom
+Delete a custom inventory type or the data associated with a custom
 Inventory type. Deleting a custom inventory type is also referred to as
 deleting a custom inventory schema.
 }

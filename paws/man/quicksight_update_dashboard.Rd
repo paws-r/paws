@@ -44,7 +44,7 @@ which can be used for ad hoc (one-time) filtering. This option is
 \code{ENABLED} by default.
 \item \code{AvailabilityStatus} for \code{ExportToCSVOption} - This status can be
 either \code{ENABLED} or \code{DISABLED}. The visual option to export data to
-.csv format isn't enabled when this is set to \code{DISABLED}. This
+.CSV format isn't enabled when this is set to \code{DISABLED}. This
 option is \code{ENABLED} by default.
 \item \code{VisibilityState} for \code{SheetControlsOption} - This visibility state
 can be either \code{COLLAPSED} or \code{EXPANDED}. This option is \code{COLLAPSED}

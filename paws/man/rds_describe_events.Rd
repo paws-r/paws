@@ -2,8 +2,9 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_describe_events}
 \alias{rds_describe_events}
-\title{Returns events related to DB instances, DB security groups, DB
-snapshots, and DB parameter groups for the past 14 days}
+\title{Returns events related to DB instances, DB clusters, DB parameter
+groups, DB security groups, DB snapshots, and DB cluster snapshots for
+the past 14 days}
 \usage{
 rds_describe_events(SourceIdentifier, SourceType, StartTime, EndTime,
   Duration, EventCategories, Filters, MaxRecords, Marker)
@@ -14,15 +15,20 @@ specified, then all sources are included in the response.
 
 Constraints:
 \itemize{
-\item If SourceIdentifier is supplied, SourceType must also be provided.
-\item If the source type is \code{DBInstance}, then a \code{DBInstanceIdentifier}
+\item If \code{SourceIdentifier} is supplied, \code{SourceType} must also be
+provided.
+\item If the source type is a DB instance, a \code{DBInstanceIdentifier} value
 must be supplied.
-\item If the source type is \code{DBSecurityGroup}, a \code{DBSecurityGroupName}
+\item If the source type is a DB cluster, a \code{DBClusterIdentifier} value
 must be supplied.
-\item If the source type is \code{DBParameterGroup}, a \code{DBParameterGroupName}
+\item If the source type is a DB parameter group, a \code{DBParameterGroupName}
+value must be supplied.
+\item If the source type is a DB security group, a \code{DBSecurityGroupName}
+value must be supplied.
+\item If the source type is a DB snapshot, a \code{DBSnapshotIdentifier} value
 must be supplied.
-\item If the source type is \code{DBSnapshot}, a \code{DBSnapshotIdentifier} must be
-supplied.
+\item If the source type is a DB cluster snapshot, a
+\code{DBClusterSnapshotIdentifier} value must be supplied.
 \item Can't end with a hyphen or contain two consecutive hyphens.
 }}
 
@@ -30,12 +36,12 @@ supplied.
 events are returned.}
 
 \item{StartTime}{The beginning of the time interval to retrieve events for, specified in
-ISO 8601 format. For more information about ISO 8601, go to the \href{http://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
+ISO 8601 format. For more information about ISO 8601, go to the \href{https://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
 
 Example: 2009-07-08T18:00Z}
 
 \item{EndTime}{The end of the time interval for which to retrieve events, specified in
-ISO 8601 format. For more information about ISO 8601, go to the \href{http://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
+ISO 8601 format. For more information about ISO 8601, go to the \href{https://en.wikipedia.org/wiki/ISO_8601}{ISO8601 Wikipedia page.}
 
 Example: 2009-07-08T18:00Z}
 
@@ -62,11 +68,15 @@ request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 }
 \description{
-Returns events related to DB instances, DB security groups, DB
-snapshots, and DB parameter groups for the past 14 days. Events specific
-to a particular DB instance, DB security group, database snapshot, or DB
-parameter group can be obtained by providing the name as a parameter. By
-default, the past hour of events are returned.
+Returns events related to DB instances, DB clusters, DB parameter
+groups, DB security groups, DB snapshots, and DB cluster snapshots for
+the past 14 days. Events specific to a particular DB instances, DB
+clusters, DB parameter groups, DB security groups, DB snapshots, and DB
+cluster snapshots group can be obtained by providing the name as a
+parameter.
+}
+\details{
+By default, the past hour of events are returned.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_events(

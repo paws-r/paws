@@ -8,7 +8,7 @@ docdb_add_tags_to_resource(ResourceName, Tags)
 }
 \arguments{
 \item{ResourceName}{[required] The Amazon DocumentDB resource that the tags are added to. This value is
-an Amazon Resource Name (ARN).}
+an Amazon Resource Name .}
 
 \item{Tags}{[required] The tags to be assigned to the Amazon DocumentDB resource.}
 }

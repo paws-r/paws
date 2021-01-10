@@ -6,7 +6,7 @@
 CloudFormation}
 \usage{
 cloudformation_list_types(Visibility, ProvisioningType,
-  DeprecatedStatus, MaxResults, NextToken)
+  DeprecatedStatus, Type, MaxResults, NextToken)
 }
 \arguments{
 \item{Visibility}{The scope at which the type is visible and usable in CloudFormation
@@ -48,6 +48,8 @@ Valid values include:
 used in CloudFormation operations.
 }}
 
+\item{Type}{The type of extension.}
+
 \item{MaxResults}{The maximum number of results to be returned with a single call. If the
 number of available results exceeds this maximum, the response includes
 a \code{NextToken} value that you can assign to the \code{NextToken} request
@@ -69,6 +71,7 @@ CloudFormation.
   Visibility = "PUBLIC"|"PRIVATE",
   ProvisioningType = "NON_PROVISIONABLE"|"IMMUTABLE"|"FULLY_MUTABLE",
   DeprecatedStatus = "LIVE"|"DEPRECATED",
+  Type = "RESOURCE"|"MODULE",
   MaxResults = 123,
   NextToken = "string"
 )

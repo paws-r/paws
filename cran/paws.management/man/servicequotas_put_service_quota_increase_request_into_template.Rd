@@ -2,26 +2,22 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_put_service_quota_increase_request_into_template}
 \alias{servicequotas_put_service_quota_increase_request_into_template}
-\title{Defines and adds a quota to the service quota template}
+\title{Adds a quota increase request to your quota request template}
 \usage{
 servicequotas_put_service_quota_increase_request_into_template(
   QuotaCode, ServiceCode, AwsRegion, DesiredValue)
 }
 \arguments{
-\item{QuotaCode}{[required] Specifies the service quota that you want to use.}
+\item{QuotaCode}{[required] The quota identifier.}
 
-\item{ServiceCode}{[required] Specifies the service that you want to use.}
+\item{ServiceCode}{[required] The service identifier.}
 
-\item{AwsRegion}{[required] Specifies the AWS Region for the quota.}
+\item{AwsRegion}{[required] The AWS Region.}
 
-\item{DesiredValue}{[required] Specifies the new, increased value for the quota.}
+\item{DesiredValue}{[required] The new, increased value for the quota.}
 }
 \description{
-Defines and adds a quota to the service quota template. To add a quota
-to the template, you must provide the \code{ServiceCode}, \code{QuotaCode},
-\code{AwsRegion}, and \code{DesiredValue}. Once you add a quota to the template,
-use ListServiceQuotaIncreaseRequestsInTemplate to see the list of quotas
-in the template.
+Adds a quota increase request to your quota request template.
 }
 \section{Request syntax}{
 \preformatted{svc$put_service_quota_increase_request_into_template(

@@ -44,19 +44,25 @@ expects. Any virtual service that your virtual node expects to
 communicate to is specified as a \code{backend}.
 
 The response metadata for your new virtual node contains the \code{arn} that
-is associated with the virtual node. Set this value (either the full ARN
-or the truncated resource name: for example,
-\code{mesh/default/virtualNode/simpleapp}) as the \code{APPMESH_VIRTUAL_NODE_NAME}
-environment variable for your task group's Envoy proxy container in your
-task definition or pod spec. This is then mapped to the \code{node.id} and
-\code{node.cluster} Envoy parameters.
+is associated with the virtual node. Set this value to the full ARN; for
+example,
+\code{arn:aws:appmesh:us-west-2:123456789012:myMesh/default/virtualNode/myApp})
+as the \code{APPMESH_RESOURCE_ARN} environment variable for your task group's
+Envoy proxy container in your task definition or pod spec. This is then
+mapped to the \code{node.id} and \code{node.cluster} Envoy parameters.
 
-If you require your Envoy stats or tracing to use a different name, you
-can override the \code{node.cluster} value that is set by
-\code{APPMESH_VIRTUAL_NODE_NAME} with the \code{APPMESH_VIRTUAL_NODE_CLUSTER}
-environment variable.
+By default, App Mesh uses the name of the resource you specified in
+\code{APPMESH_RESOURCE_ARN} when Envoy is referring to itself in metrics and
+traces. You can override this behavior by setting the
+\code{APPMESH_RESOURCE_CLUSTER} environment variable with your own name.
+
+AWS Cloud Map is not available in the eu-south-1 Region.
 
 For more information about virtual nodes, see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_nodes.html}{Virtual nodes}.
+You must be using \verb{1.15.0} or later of the Envoy image when setting
+these variables. For more information about App Mesh Envoy variables,
+see \href{https://docs.aws.amazon.com/app-mesh/latest/userguide/envoy.html}{Envoy image}
+in the AWS App Mesh User Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$create_virtual_node(
@@ -115,53 +121,80 @@ For more information about virtual nodes, see \href{https://docs.aws.amazon.com/
     ),
     listeners = list(
       list(
+        connectionPool = list(
+          grpc = list(
+            maxRequests = 123
+          ),
+          http = list(
+            maxConnections = 123,
+            maxPendingRequests = 123
+          ),
+          http2 = list(
+            maxRequests = 123
+          ),
+          tcp = list(
+            maxConnections = 123
+          )
+        ),
         healthCheck = list(
           healthyThreshold = 123,
           intervalMillis = 123,
           path = "string",
           port = 123,
-          protocol = "grpc"|"http"|"http2"|"tcp",
+          protocol = "http"|"tcp"|"http2"|"grpc",
           timeoutMillis = 123,
           unhealthyThreshold = 123
         ),
+        outlierDetection = list(
+          baseEjectionDuration = list(
+            unit = "s"|"ms",
+            value = 123
+          ),
+          interval = list(
+            unit = "s"|"ms",
+            value = 123
+          ),
+          maxEjectionPercent = 123,
+          maxServerErrors = 123
+        ),
         portMapping = list(
           port = 123,
-          protocol = "grpc"|"http"|"http2"|"tcp"
+          protocol = "http"|"tcp"|"http2"|"grpc"
         ),
         timeout = list(
           grpc = list(
             idle = list(
-              unit = "ms"|"s",
+              unit = "s"|"ms",
               value = 123
             ),
             perRequest = list(
-              unit = "ms"|"s",
+              unit = "s"|"ms",
               value = 123
             )
           ),
           http = list(
             idle = list(
-              unit = "ms"|"s",
+              unit = "s"|"ms",
               value = 123
             ),
             perRequest = list(
-              unit = "ms"|"s",
+              unit = "s"|"ms",
               value = 123
             )
           ),
           http2 = list(
             idle = list(
-              unit = "ms"|"s",
+              unit = "s"|"ms",
               value = 123
             ),
             perRequest = list(
-              unit = "ms"|"s",
+              unit = "s"|"ms",
               value = 123
             )
           ),
           tcp = list(
             idle = list(
-              unit = "ms"|"s",
+              unit = "s"|"ms",
               value = 123
             )
           )
@@ -176,7 +209,7 @@ For more information about virtual nodes, see \href{https://docs.aws.amazon.com/
               privateKey = "string"
             )
           ),
-          mode = "DISABLED"|"PERMISSIVE"|"STRICT"
+          mode = "STRICT"|"PERMISSIVE"|"DISABLED"
         )
       )
     ),

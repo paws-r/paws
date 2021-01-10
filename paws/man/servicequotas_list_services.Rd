@@ -2,30 +2,21 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_list_services}
 \alias{servicequotas_list_services}
-\title{Lists the AWS services available in Service Quotas}
+\title{Lists the names and codes for the services integrated with Service
+Quotas}
 \usage{
 servicequotas_list_services(NextToken, MaxResults)
 }
 \arguments{
-\item{NextToken}{(Optional) Use this parameter in a request if you receive a \code{NextToken}
-response in a previous request that indicates that there's more output
-available. In a subsequent call, set it to the value of the previous
-call's \code{NextToken} response to indicate where the output should continue
-from.}
+\item{NextToken}{The token for the next page of results.}
 
-\item{MaxResults}{(Optional) Limits the number of results that you want to include in the
-response. If you don't include this parameter, the response defaults to
-a value that's specific to the operation. If additional items exist
-beyond the specified maximum, the \code{NextToken} element is present and has
-a value (isn't null). Include that value as the \code{NextToken} request
-parameter in the call to the operation to get the next part of the
-results. You should check \code{NextToken} after every operation to ensure
-that you receive all of the results.}
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, if any, make another call with the token returned
+from this call.}
 }
 \description{
-Lists the AWS services available in Service Quotas. Not all AWS services
-are available in Service Quotas. To list the see the list of the service
-quotas for a specific service, use ListServiceQuotas.
+Lists the names and codes for the services integrated with Service
+Quotas.
 }
 \section{Request syntax}{
 \preformatted{svc$list_services(

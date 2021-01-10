@@ -3,16 +3,26 @@
 \name{sagemaker_create_model_package}
 \alias{sagemaker_create_model_package}
 \title{Creates a model package that you can use to create Amazon SageMaker
-models or list on AWS Marketplace}
+models or list on AWS Marketplace, or a versioned model that is part of
+a model group}
 \usage{
-sagemaker_create_model_package(ModelPackageName,
+sagemaker_create_model_package(ModelPackageName, ModelPackageGroupName,
   ModelPackageDescription, InferenceSpecification,
   ValidationSpecification, SourceAlgorithmSpecification,
-  CertifyForMarketplace)
+  CertifyForMarketplace, Tags, ModelApprovalStatus, MetadataProperties,
+  ModelMetrics, ClientToken)
 }
 \arguments{
-\item{ModelPackageName}{[required] The name of the model package. The name must have 1 to 63 characters.
-Valid characters are a-z, A-Z, 0-9, and - (hyphen).}
+\item{ModelPackageName}{The name of the model package. The name must have 1 to 63 characters.
+Valid characters are a-z, A-Z, 0-9, and - (hyphen).
+
+This parameter is required for unversioned models. It is not applicable
+to versioned models.}
+
+\item{ModelPackageGroupName}{The name of the model group that this model version belongs to.
+
+This parameter is required for versioned models, and does not apply to
+unversioned models.}
 
 \item{ModelPackageDescription}{A description of the model package.}
 
@@ -32,12 +42,34 @@ SageMaker runs to test the model package.}
 
 \item{SourceAlgorithmSpecification}{Details about the algorithm that was used to create the model package.}
 
-\item{CertifyForMarketplace}{Whether to certify the model package for listing on AWS Marketplace.}
+\item{CertifyForMarketplace}{Whether to certify the model package for listing on AWS Marketplace.
+
+This parameter is optional for unversioned models, and does not apply to
+versioned models.}
+
+\item{Tags}{A list of key value pairs associated with the model. For more
+information, see \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
+in the \emph{AWS General Reference Guide}.}
+
+\item{ModelApprovalStatus}{Whether the model is approved for deployment.
+
+This parameter is optional for versioned models, and does not apply to
+unversioned models.
+
+For versioned models, the value of this parameter must be set to
+\code{Approved} to deploy the model.}
+
+\item{MetadataProperties}{}
+
+\item{ModelMetrics}{A structure that contains model metrics reports.}
+
+\item{ClientToken}{A unique token that guarantees that the call to this API is idempotent.}
 }
 \description{
 Creates a model package that you can use to create Amazon SageMaker
-models or list on AWS Marketplace. Buyers can subscribe to model
-packages listed on AWS Marketplace to create models in Amazon SageMaker.
+models or list on AWS Marketplace, or a versioned model that is part of
+a model group. Buyers can subscribe to model packages listed on AWS
+Marketplace to create models in Amazon SageMaker.
 }
 \details{
 To create a model package by specifying a Docker container that contains
@@ -45,10 +77,18 @@ your inference code and the Amazon S3 location of your model artifacts,
 provide values for \code{InferenceSpecification}. To create a model from an
 algorithm resource that you created or subscribed to in AWS Marketplace,
 provide a value for \code{SourceAlgorithmSpecification}.
+
+There are two types of model packages:
+\itemize{
+\item Versioned - a model that is part of a model group in the model
+registry.
+\item Unversioned - a model package that is not part of a model group.
+}
 }
 \section{Request syntax}{
 \preformatted{svc$create_model_package(
   ModelPackageName = "string",
+  ModelPackageGroupName = "string",
   ModelPackageDescription = "string",
   InferenceSpecification = list(
     Containers = list(
@@ -119,7 +159,61 @@ provide a value for \code{SourceAlgorithmSpecification}.
       )
     )
   ),
-  CertifyForMarketplace = TRUE|FALSE
+  CertifyForMarketplace = TRUE|FALSE,
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  ),
+  ModelApprovalStatus = "Approved"|"Rejected"|"PendingManualApproval",
+  MetadataProperties = list(
+    CommitId = "string",
+    Repository = "string",
+    GeneratedBy = "string",
+    ProjectId = "string"
+  ),
+  ModelMetrics = list(
+    ModelQuality = list(
+      Statistics = list(
+        ContentType = "string",
+        ContentDigest = "string",
+        S3Uri = "string"
+      ),
+      Constraints = list(
+        ContentType = "string",
+        ContentDigest = "string",
+        S3Uri = "string"
+      )
+    ),
+    ModelDataQuality = list(
+      Statistics = list(
+        ContentType = "string",
+        ContentDigest = "string",
+        S3Uri = "string"
+      ),
+      Constraints = list(
+        ContentType = "string",
+        ContentDigest = "string",
+        S3Uri = "string"
+      )
+    ),
+    Bias = list(
+      Report = list(
+        ContentType = "string",
+        ContentDigest = "string",
+        S3Uri = "string"
+      )
+    ),
+    Explainability = list(
+      Report = list(
+        ContentType = "string",
+        ContentDigest = "string",
+        S3Uri = "string"
+      )
+    )
+  ),
+  ClientToken = "string"
 )
 }
 }

@@ -767,7 +767,7 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #' act on the user's behalf when interacting with AWS services.
 #' @param triggerConfigurations Information about triggers to create when the deployment group is
 #' created. For examples, see [Create a Trigger for an AWS CodeDeploy
-#' Event](https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-sns.html)
+#' Event](https://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html)
 #' in the *AWS CodeDeploy User Guide*.
 #' @param alarmConfiguration Information to add about Amazon CloudWatch alarms when the deployment
 #' group is created.
@@ -2497,7 +2497,7 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #' @param serviceRoleArn A replacement ARN for the service role, if you want to change it.
 #' @param triggerConfigurations Information about triggers to change when the deployment group is
 #' updated. For examples, see [Edit a Trigger in a CodeDeploy Deployment
-#' Group](https://docs.aws.amazon.com/codedeploy/latest/userguide/how-to-notify-edit.html)
+#' Group](https://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-edit-trigger.html)
 #' in the *AWS CodeDeploy User Guide*.
 #' @param alarmConfiguration Information to add or change about Amazon CloudWatch alarms when the
 #' deployment group is updated.

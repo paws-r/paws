@@ -27,6 +27,18 @@ NULL
   return(populate(args, shape))
 }
 
+.directoryservice$add_region_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), RegionName = structure(logical(0), tags = list(type = "string")), VPCSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directoryservice$add_region_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .directoryservice$add_tags_to_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -251,7 +263,7 @@ NULL
 
 .directoryservice$describe_certificate_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Certificate = structure(list(CertificateId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), CommonName = structure(logical(0), tags = list(type = "string")), RegisteredDateTime = structure(logical(0), tags = list(type = "timestamp")), ExpiryDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Certificate = structure(list(CertificateId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(logical(0), tags = list(type = "string")), CommonName = structure(logical(0), tags = list(type = "string")), RegisteredDateTime = structure(logical(0), tags = list(type = "timestamp")), ExpiryDateTime = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string")), ClientCertAuthSettings = structure(list(OCSPUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -275,7 +287,7 @@ NULL
 
 .directoryservice$describe_directories_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryDescriptions = structure(list(structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ShortName = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "string")), Edition = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), AccessUrl = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DnsIpAddrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Stage = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), ShareMethod = structure(logical(0), tags = list(type = "string")), ShareNotes = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LaunchTime = structure(logical(0), tags = list(type = "timestamp")), StageLastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string")), VpcSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupId = structure(logical(0), tags = list(type = "string")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ConnectSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CustomerUserName = structure(logical(0), tags = list(type = "string")), SecurityGroupId = structure(logical(0), tags = list(type = "string")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ConnectIps = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), RadiusSettings = structure(list(RadiusServers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RadiusPort = structure(logical(0), tags = list(type = "integer")), RadiusTimeout = structure(logical(0), tags = list(type = "integer")), RadiusRetries = structure(logical(0), tags = list(type = "integer")), SharedSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationProtocol = structure(logical(0), tags = list(type = "string")), DisplayLabel = structure(logical(0), tags = list(type = "string")), UseSameUsername = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), RadiusStatus = structure(logical(0), tags = list(type = "string")), StageReason = structure(logical(0), tags = list(type = "string")), SsoEnabled = structure(logical(0), tags = list(type = "boolean")), DesiredNumberOfDomainControllers = structure(logical(0), tags = list(type = "integer")), OwnerDirectoryDescription = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), DnsIpAddrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), VpcSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupId = structure(logical(0), tags = list(type = "string")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), RadiusSettings = structure(list(RadiusServers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RadiusPort = structure(logical(0), tags = list(type = "integer")), RadiusTimeout = structure(logical(0), tags = list(type = "integer")), RadiusRetries = structure(logical(0), tags = list(type = "integer")), SharedSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationProtocol = structure(logical(0), tags = list(type = "string")), DisplayLabel = structure(logical(0), tags = list(type = "string")), UseSameUsername = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), RadiusStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DirectoryDescriptions = structure(list(structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), ShortName = structure(logical(0), tags = list(type = "string")), Size = structure(logical(0), tags = list(type = "string")), Edition = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), AccessUrl = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), DnsIpAddrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Stage = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), ShareMethod = structure(logical(0), tags = list(type = "string")), ShareNotes = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), LaunchTime = structure(logical(0), tags = list(type = "timestamp")), StageLastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string")), VpcSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupId = structure(logical(0), tags = list(type = "string")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ConnectSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), CustomerUserName = structure(logical(0), tags = list(type = "string")), SecurityGroupId = structure(logical(0), tags = list(type = "string")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ConnectIps = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), RadiusSettings = structure(list(RadiusServers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RadiusPort = structure(logical(0), tags = list(type = "integer")), RadiusTimeout = structure(logical(0), tags = list(type = "integer")), RadiusRetries = structure(logical(0), tags = list(type = "integer")), SharedSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationProtocol = structure(logical(0), tags = list(type = "string")), DisplayLabel = structure(logical(0), tags = list(type = "string")), UseSameUsername = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), RadiusStatus = structure(logical(0), tags = list(type = "string")), StageReason = structure(logical(0), tags = list(type = "string")), SsoEnabled = structure(logical(0), tags = list(type = "boolean")), DesiredNumberOfDomainControllers = structure(logical(0), tags = list(type = "integer")), OwnerDirectoryDescription = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), AccountId = structure(logical(0), tags = list(type = "string")), DnsIpAddrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), VpcSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SecurityGroupId = structure(logical(0), tags = list(type = "string")), AvailabilityZones = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), RadiusSettings = structure(list(RadiusServers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), RadiusPort = structure(logical(0), tags = list(type = "integer")), RadiusTimeout = structure(logical(0), tags = list(type = "integer")), RadiusRetries = structure(logical(0), tags = list(type = "integer")), SharedSecret = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), AuthenticationProtocol = structure(logical(0), tags = list(type = "string")), DisplayLabel = structure(logical(0), tags = list(type = "string")), UseSameUsername = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure")), RadiusStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RegionsInfo = structure(list(PrimaryRegion = structure(logical(0), tags = list(type = "string")), AdditionalRegions = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -315,6 +327,18 @@ NULL
   return(populate(args, shape))
 }
 
+.directoryservice$describe_regions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), RegionName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directoryservice$describe_regions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RegionsDescription = structure(list(structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), RegionName = structure(logical(0), tags = list(type = "string")), RegionType = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), VpcSettings = structure(list(VpcId = structure(logical(0), tags = list(type = "string")), SubnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), DesiredNumberOfDomainControllers = structure(logical(0), tags = list(type = "integer")), LaunchTime = structure(logical(0), tags = list(type = "timestamp")), StatusLastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .directoryservice$describe_shared_directories_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OwnerDirectoryId = structure(logical(0), tags = list(type = "string")), SharedDirectoryIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), Limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -351,6 +375,18 @@ NULL
   return(populate(args, shape))
 }
 
+.directoryservice$disable_client_authentication_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directoryservice$disable_client_authentication_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .directoryservice$disable_ldaps_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -382,6 +418,18 @@ NULL
 }
 
 .directoryservice$disable_sso_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directoryservice$enable_client_authentication_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directoryservice$enable_client_authentication_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -455,7 +503,7 @@ NULL
 
 .directoryservice$list_certificates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), CertificatesInfo = structure(list(structure(list(CertificateId = structure(logical(0), tags = list(type = "string")), CommonName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ExpiryDateTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), CertificatesInfo = structure(list(structure(list(CertificateId = structure(logical(0), tags = list(type = "string")), CommonName = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), ExpiryDateTime = structure(logical(0), tags = list(type = "timestamp")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -509,7 +557,7 @@ NULL
 
 .directoryservice$register_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), CertificateData = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), CertificateData = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), ClientCertAuthSettings = structure(list(OCSPUrl = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -550,6 +598,18 @@ NULL
 }
 
 .directoryservice$remove_ip_routes_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directoryservice$remove_region_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.directoryservice$remove_region_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))

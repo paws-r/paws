@@ -2,21 +2,32 @@
 % Please edit documentation in R/resourcegroups_operations.R
 \name{resourcegroups_delete_group}
 \alias{resourcegroups_delete_group}
-\title{Deletes a specified resource group}
+\title{Deletes the specified resource group}
 \usage{
-resourcegroups_delete_group(GroupName)
+resourcegroups_delete_group(GroupName, Group)
 }
 \arguments{
-\item{GroupName}{[required] The name of the resource group to delete.}
+\item{GroupName}{Deprecated - don't use this parameter. Use \code{Group} instead.}
+
+\item{Group}{The name or the ARN of the resource group to delete.}
 }
 \description{
-Deletes a specified resource group. Deleting a resource group does not
-delete resources that are members of the group; it only deletes the
+Deletes the specified resource group. Deleting a resource group does not
+delete any resources that are members of the group; it only deletes the
 group structure.
+}
+\details{
+\strong{Minimum permissions}
+
+To run this command, you must have the following permissions:
+\itemize{
+\item \code{resource-groups:DeleteGroup}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$delete_group(
-  GroupName = "string"
+  GroupName = "string",
+  Group = "string"
 )
 }
 }

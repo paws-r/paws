@@ -8,11 +8,11 @@ you specify}
 transfer_delete_user(ServerId, UserName)
 }
 \arguments{
-\item{ServerId}{[required] A system-assigned unique identifier for a file transfer protocol-enabled
-server instance that has the user assigned to it.}
+\item{ServerId}{[required] A system-assigned unique identifier for a server instance that has the
+user assigned to it.}
 
-\item{UserName}{[required] A unique string that identifies a user that is being deleted from a file
-transfer protocol-enabled server.}
+\item{UserName}{[required] A unique string that identifies a user that is being deleted from a
+server.}
 }
 \description{
 Deletes the user belonging to a file transfer protocol-enabled server

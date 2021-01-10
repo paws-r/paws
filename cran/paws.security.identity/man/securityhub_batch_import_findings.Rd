@@ -25,15 +25,23 @@ After a finding is created, \code{BatchImportFindings} cannot be used to
 update the following finding fields and objects, which Security Hub
 customers use to manage their investigation workflow.
 \itemize{
-\item \code{Confidence}
-\item \code{Criticality}
 \item \code{Note}
-\item \code{RelatedFindings}
-\item \code{Severity}
-\item \code{Types}
 \item \code{UserDefinedFields}
 \item \code{VerificationState}
 \item \code{Workflow}
+}
+
+\code{BatchImportFindings} can be used to update the following finding fields
+and objects only if they have not been updated using
+\code{BatchUpdateFindings}. After they are updated using
+\code{BatchUpdateFindings}, these fields cannot be updated using
+\code{BatchImportFindings}.
+\itemize{
+\item \code{Confidence}
+\item \code{Criticality}
+\item \code{RelatedFindings}
+\item \code{Severity}
+\item \code{Types}
 }
 }
 \section{Request syntax}{
@@ -180,6 +188,7 @@ customers use to manage their investigation workflow.
           Id = "string",
           Partition = "aws"|"aws-cn"|"aws-us-gov",
           Region = "string",
+          ResourceRole = "string",
           Tags = list(
             "string"
           ),
@@ -223,6 +232,17 @@ customers use to manage their investigation workflow.
               )
             ),
             AwsCloudFrontDistribution = list(
+              CacheBehaviors = list(
+                Items = list(
+                  list(
+                    ViewerProtocolPolicy = "string"
+                  )
+                )
+              ),
+              DefaultCacheBehavior = list(
+                ViewerProtocolPolicy = "string"
+              ),
+              DefaultRootObject = "string",
               DomainName = "string",
               ETag = "string",
               LastModifiedTime = "string",
@@ -237,7 +257,24 @@ customers use to manage their investigation workflow.
                   list(
                     DomainName = "string",
                     Id = "string",
-                    OriginPath = "string"
+                    OriginPath = "string",
+                    S3OriginConfig = list(
+                      OriginAccessIdentity = "string"
+                    )
+                  )
+                )
+              ),
+              OriginGroups = list(
+                Items = list(
+                  list(
+                    FailoverCriteria = list(
+                      StatusCodes = list(
+                        Items = list(
+                          123
+                        ),
+                        Quantity = 123
+                      )
+                    )
                   )
                 )
               ),
@@ -382,6 +419,18 @@ customers use to manage their investigation workflow.
               DhcpOptionsId = "string",
               State = "string"
             ),
+            AwsEc2Eip = list(
+              InstanceId = "string",
+              PublicIp = "string",
+              AllocationId = "string",
+              AssociationId = "string",
+              Domain = "string",
+              PublicIpv4Pool = "string",
+              NetworkBorderGroup = "string",
+              NetworkInterfaceId = "string",
+              NetworkInterfaceOwnerId = "string",
+              PrivateIpAddress = "string"
+            ),
             AwsElbv2LoadBalancer = list(
               AvailabilityZones = list(
                 list(
@@ -460,19 +509,682 @@ customers use to manage their investigation workflow.
               ServerSideEncryption = "string",
               SSEKMSKeyId = "string"
             ),
+            AwsSecretsManagerSecret = list(
+              RotationRules = list(
+                AutomaticallyAfterDays = 123
+              ),
+              RotationOccurredWithinFrequency = TRUE|FALSE,
+              KmsKeyId = "string",
+              RotationEnabled = TRUE|FALSE,
+              RotationLambdaArn = "string",
+              Deleted = TRUE|FALSE,
+              Name = "string",
+              Description = "string"
+            ),
             AwsIamAccessKey = list(
               UserName = "string",
               Status = "Active"|"Inactive",
               CreatedAt = "string",
               PrincipalId = "string",
               PrincipalType = "string",
-              PrincipalName = "string"
+              PrincipalName = "string",
+              AccountId = "string",
+              AccessKeyId = "string",
+              SessionContext = list(
+                Attributes = list(
+                  MfaAuthenticated = TRUE|FALSE,
+                  CreationDate = "string"
+                ),
+                SessionIssuer = list(
+                  Type = "string",
+                  PrincipalId = "string",
+                  Arn = "string",
+                  AccountId = "string",
+                  UserName = "string"
+                )
+              )
+            ),
+            AwsIamUser = list(
+              AttachedManagedPolicies = list(
+                list(
+                  PolicyName = "string",
+                  PolicyArn = "string"
+                )
+              ),
+              CreateDate = "string",
+              GroupList = list(
+                "string"
+              ),
+              Path = "string",
+              PermissionsBoundary = list(
+                PermissionsBoundaryArn = "string",
+                PermissionsBoundaryType = "string"
+              ),
+              UserId = "string",
+              UserName = "string",
+              UserPolicyList = list(
+                list(
+                  PolicyName = "string"
+                )
+              )
+            ),
+            AwsIamPolicy = list(
+              AttachmentCount = 123,
+              CreateDate = "string",
+              DefaultVersionId = "string",
+              Description = "string",
+              IsAttachable = TRUE|FALSE,
+              Path = "string",
+              PermissionsBoundaryUsageCount = 123,
+              PolicyId = "string",
+              PolicyName = "string",
+              PolicyVersionList = list(
+                list(
+                  VersionId = "string",
+                  IsDefaultVersion = TRUE|FALSE,
+                  CreateDate = "string"
+                )
+              ),
+              UpdateDate = "string"
+            ),
+            AwsApiGatewayV2Stage = list(
+              CreatedDate = "string",
+              Description = "string",
+              DefaultRouteSettings = list(
+                DetailedMetricsEnabled = TRUE|FALSE,
+                LoggingLevel = "string",
+                DataTraceEnabled = TRUE|FALSE,
+                ThrottlingBurstLimit = 123,
+                ThrottlingRateLimit = 123.0
+              ),
+              DeploymentId = "string",
+              LastUpdatedDate = "string",
+              RouteSettings = list(
+                DetailedMetricsEnabled = TRUE|FALSE,
+                LoggingLevel = "string",
+                DataTraceEnabled = TRUE|FALSE,
+                ThrottlingBurstLimit = 123,
+                ThrottlingRateLimit = 123.0
+              ),
+              StageName = "string",
+              StageVariables = list(
+                "string"
+              ),
+              AccessLogSettings = list(
+                Format = "string",
+                DestinationArn = "string"
+              ),
+              AutoDeploy = TRUE|FALSE,
+              LastDeploymentStatusMessage = "string",
+              ApiGatewayManaged = TRUE|FALSE
+            ),
+            AwsApiGatewayV2Api = list(
+              ApiEndpoint = "string",
+              ApiId = "string",
+              ApiKeySelectionExpression = "string",
+              CreatedDate = "string",
+              Description = "string",
+              Version = "string",
+              Name = "string",
+              ProtocolType = "string",
+              RouteSelectionExpression = "string",
+              CorsConfiguration = list(
+                AllowOrigins = list(
+                  "string"
+                ),
+                AllowCredentials = TRUE|FALSE,
+                ExposeHeaders = list(
+                  "string"
+                ),
+                MaxAge = 123,
+                AllowMethods = list(
+                  "string"
+                ),
+                AllowHeaders = list(
+                  "string"
+                )
+              )
+            ),
+            AwsDynamoDbTable = list(
+              AttributeDefinitions = list(
+                list(
+                  AttributeName = "string",
+                  AttributeType = "string"
+                )
+              ),
+              BillingModeSummary = list(
+                BillingMode = "string",
+                LastUpdateToPayPerRequestDateTime = "string"
+              ),
+              CreationDateTime = "string",
+              GlobalSecondaryIndexes = list(
+                list(
+                  Backfilling = TRUE|FALSE,
+                  IndexArn = "string",
+                  IndexName = "string",
+                  IndexSizeBytes = 123,
+                  IndexStatus = "string",
+                  ItemCount = 123,
+                  KeySchema = list(
+                    list(
+                      AttributeName = "string",
+                      KeyType = "string"
+                    )
+                  ),
+                  Projection = list(
+                    NonKeyAttributes = list(
+                      "string"
+                    ),
+                    ProjectionType = "string"
+                  ),
+                  ProvisionedThroughput = list(
+                    LastDecreaseDateTime = "string",
+                    LastIncreaseDateTime = "string",
+                    NumberOfDecreasesToday = 123,
+                    ReadCapacityUnits = 123,
+                    WriteCapacityUnits = 123
+                  )
+                )
+              ),
+              GlobalTableVersion = "string",
+              ItemCount = 123,
+              KeySchema = list(
+                list(
+                  AttributeName = "string",
+                  KeyType = "string"
+                )
+              ),
+              LatestStreamArn = "string",
+              LatestStreamLabel = "string",
+              LocalSecondaryIndexes = list(
+                list(
+                  IndexArn = "string",
+                  IndexName = "string",
+                  KeySchema = list(
+                    list(
+                      AttributeName = "string",
+                      KeyType = "string"
+                    )
+                  ),
+                  Projection = list(
+                    NonKeyAttributes = list(
+                      "string"
+                    ),
+                    ProjectionType = "string"
+                  )
+                )
+              ),
+              ProvisionedThroughput = list(
+                LastDecreaseDateTime = "string",
+                LastIncreaseDateTime = "string",
+                NumberOfDecreasesToday = 123,
+                ReadCapacityUnits = 123,
+                WriteCapacityUnits = 123
+              ),
+              Replicas = list(
+                list(
+                  GlobalSecondaryIndexes = list(
+                    list(
+                      IndexName = "string",
+                      ProvisionedThroughputOverride = list(
+                        ReadCapacityUnits = 123
+                      )
+                    )
+                  ),
+                  KmsMasterKeyId = "string",
+                  ProvisionedThroughputOverride = list(
+                    ReadCapacityUnits = 123
+                  ),
+                  RegionName = "string",
+                  ReplicaStatus = "string",
+                  ReplicaStatusDescription = "string"
+                )
+              ),
+              RestoreSummary = list(
+                SourceBackupArn = "string",
+                SourceTableArn = "string",
+                RestoreDateTime = "string",
+                RestoreInProgress = TRUE|FALSE
+              ),
+              SseDescription = list(
+                InaccessibleEncryptionDateTime = "string",
+                Status = "string",
+                SseType = "string",
+                KmsMasterKeyArn = "string"
+              ),
+              StreamSpecification = list(
+                StreamEnabled = TRUE|FALSE,
+                StreamViewType = "string"
+              ),
+              TableId = "string",
+              TableName = "string",
+              TableSizeBytes = 123,
+              TableStatus = "string"
+            ),
+            AwsApiGatewayStage = list(
+              DeploymentId = "string",
+              ClientCertificateId = "string",
+              StageName = "string",
+              Description = "string",
+              CacheClusterEnabled = TRUE|FALSE,
+              CacheClusterSize = "string",
+              CacheClusterStatus = "string",
+              MethodSettings = list(
+                list(
+                  MetricsEnabled = TRUE|FALSE,
+                  LoggingLevel = "string",
+                  DataTraceEnabled = TRUE|FALSE,
+                  ThrottlingBurstLimit = 123,
+                  ThrottlingRateLimit = 123.0,
+                  CachingEnabled = TRUE|FALSE,
+                  CacheTtlInSeconds = 123,
+                  CacheDataEncrypted = TRUE|FALSE,
+                  RequireAuthorizationForCacheControl = TRUE|FALSE,
+                  UnauthorizedCacheControlHeaderStrategy = "string",
+                  HttpMethod = "string",
+                  ResourcePath = "string"
+                )
+              ),
+              Variables = list(
+                "string"
+              ),
+              DocumentationVersion = "string",
+              AccessLogSettings = list(
+                Format = "string",
+                DestinationArn = "string"
+              ),
+              CanarySettings = list(
+                PercentTraffic = 123.0,
+                DeploymentId = "string",
+                StageVariableOverrides = list(
+                  "string"
+                ),
+                UseStageCache = TRUE|FALSE
+              ),
+              TracingEnabled = TRUE|FALSE,
+              CreatedDate = "string",
+              LastUpdatedDate = "string",
+              WebAclArn = "string"
+            ),
+            AwsApiGatewayRestApi = list(
+              Id = "string",
+              Name = "string",
+              Description = "string",
+              CreatedDate = "string",
+              Version = "string",
+              BinaryMediaTypes = list(
+                "string"
+              ),
+              MinimumCompressionSize = 123,
+              ApiKeySource = "string",
+              EndpointConfiguration = list(
+                Types = list(
+                  "string"
+                )
+              )
+            ),
+            AwsCloudTrailTrail = list(
+              CloudWatchLogsLogGroupArn = "string",
+              CloudWatchLogsRoleArn = "string",
+              HasCustomEventSelectors = TRUE|FALSE,
+              HomeRegion = "string",
+              IncludeGlobalServiceEvents = TRUE|FALSE,
+              IsMultiRegionTrail = TRUE|FALSE,
+              IsOrganizationTrail = TRUE|FALSE,
+              KmsKeyId = "string",
+              LogFileValidationEnabled = TRUE|FALSE,
+              Name = "string",
+              S3BucketName = "string",
+              S3KeyPrefix = "string",
+              SnsTopicArn = "string",
+              SnsTopicName = "string",
+              TrailArn = "string"
+            ),
+            AwsCertificateManagerCertificate = list(
+              CertificateAuthorityArn = "string",
+              CreatedAt = "string",
+              DomainName = "string",
+              DomainValidationOptions = list(
+                list(
+                  DomainName = "string",
+                  ResourceRecord = list(
+                    Name = "string",
+                    Type = "string",
+                    Value = "string"
+                  ),
+                  ValidationDomain = "string",
+                  ValidationEmails = list(
+                    "string"
+                  ),
+                  ValidationMethod = "string",
+                  ValidationStatus = "string"
+                )
+              ),
+              ExtendedKeyUsages = list(
+                list(
+                  Name = "string",
+                  OId = "string"
+                )
+              ),
+              FailureReason = "string",
+              ImportedAt = "string",
+              InUseBy = list(
+                "string"
+              ),
+              IssuedAt = "string",
+              Issuer = "string",
+              KeyAlgorithm = "string",
+              KeyUsages = list(
+                list(
+                  Name = "string"
+                )
+              ),
+              NotAfter = "string",
+              NotBefore = "string",
+              Options = list(
+                CertificateTransparencyLoggingPreference = "string"
+              ),
+              RenewalEligibility = "string",
+              RenewalSummary = list(
+                DomainValidationOptions = list(
+                  list(
+                    DomainName = "string",
+                    ResourceRecord = list(
+                      Name = "string",
+                      Type = "string",
+                      Value = "string"
+                    ),
+                    ValidationDomain = "string",
+                    ValidationEmails = list(
+                      "string"
+                    ),
+                    ValidationMethod = "string",
+                    ValidationStatus = "string"
+                  )
+                ),
+                RenewalStatus = "string",
+                RenewalStatusReason = "string",
+                UpdatedAt = "string"
+              ),
+              Serial = "string",
+              SignatureAlgorithm = "string",
+              Status = "string",
+              Subject = "string",
+              SubjectAlternativeNames = list(
+                "string"
+              ),
+              Type = "string"
+            ),
+            AwsRedshiftCluster = list(
+              AllowVersionUpgrade = TRUE|FALSE,
+              AutomatedSnapshotRetentionPeriod = 123,
+              AvailabilityZone = "string",
+              ClusterAvailabilityStatus = "string",
+              ClusterCreateTime = "string",
+              ClusterIdentifier = "string",
+              ClusterNodes = list(
+                list(
+                  NodeRole = "string",
+                  PrivateIpAddress = "string",
+                  PublicIpAddress = "string"
+                )
+              ),
+              ClusterParameterGroups = list(
+                list(
+                  ClusterParameterStatusList = list(
+                    list(
+                      ParameterName = "string",
+                      ParameterApplyStatus = "string",
+                      ParameterApplyErrorDescription = "string"
+                    )
+                  ),
+                  ParameterApplyStatus = "string",
+                  ParameterGroupName = "string"
+                )
+              ),
+              ClusterPublicKey = "string",
+              ClusterRevisionNumber = "string",
+              ClusterSecurityGroups = list(
+                list(
+                  ClusterSecurityGroupName = "string",
+                  Status = "string"
+                )
+              ),
+              ClusterSnapshotCopyStatus = list(
+                DestinationRegion = "string",
+                ManualSnapshotRetentionPeriod = 123,
+                RetentionPeriod = 123,
+                SnapshotCopyGrantName = "string"
+              ),
+              ClusterStatus = "string",
+              ClusterSubnetGroupName = "string",
+              ClusterVersion = "string",
+              DBName = "string",
+              DeferredMaintenanceWindows = list(
+                list(
+                  DeferMaintenanceEndTime = "string",
+                  DeferMaintenanceIdentifier = "string",
+                  DeferMaintenanceStartTime = "string"
+                )
+              ),
+              ElasticIpStatus = list(
+                ElasticIp = "string",
+                Status = "string"
+              ),
+              ElasticResizeNumberOfNodeOptions = "string",
+              Encrypted = TRUE|FALSE,
+              Endpoint = list(
+                Address = "string",
+                Port = 123
+              ),
+              EnhancedVpcRouting = TRUE|FALSE,
+              ExpectedNextSnapshotScheduleTime = "string",
+              ExpectedNextSnapshotScheduleTimeStatus = "string",
+              HsmStatus = list(
+                HsmClientCertificateIdentifier = "string",
+                HsmConfigurationIdentifier = "string",
+                Status = "string"
+              ),
+              IamRoles = list(
+                list(
+                  ApplyStatus = "string",
+                  IamRoleArn = "string"
+                )
+              ),
+              KmsKeyId = "string",
+              MaintenanceTrackName = "string",
+              ManualSnapshotRetentionPeriod = 123,
+              MasterUsername = "string",
+              NextMaintenanceWindowStartTime = "string",
+              NodeType = "string",
+              NumberOfNodes = 123,
+              PendingActions = list(
+                "string"
+              ),
+              PendingModifiedValues = list(
+                AutomatedSnapshotRetentionPeriod = 123,
+                ClusterIdentifier = "string",
+                ClusterType = "string",
+                ClusterVersion = "string",
+                EncryptionType = "string",
+                EnhancedVpcRouting = TRUE|FALSE,
+                MaintenanceTrackName = "string",
+                MasterUserPassword = "string",
+                NodeType = "string",
+                NumberOfNodes = 123,
+                PubliclyAccessible = TRUE|FALSE
+              ),
+              PreferredMaintenanceWindow = "string",
+              PubliclyAccessible = TRUE|FALSE,
+              ResizeInfo = list(
+                AllowCancelResize = TRUE|FALSE,
+                ResizeType = "string"
+              ),
+              RestoreStatus = list(
+                CurrentRestoreRateInMegaBytesPerSecond = 123.0,
+                ElapsedTimeInSeconds = 123,
+                EstimatedTimeToCompletionInSeconds = 123,
+                ProgressInMegaBytes = 123,
+                SnapshotSizeInMegaBytes = 123,
+                Status = "string"
+              ),
+              SnapshotScheduleIdentifier = "string",
+              SnapshotScheduleState = "string",
+              VpcId = "string",
+              VpcSecurityGroups = list(
+                list(
+                  Status = "string",
+                  VpcSecurityGroupId = "string"
+                )
+              )
+            ),
+            AwsElbLoadBalancer = list(
+              AvailabilityZones = list(
+                "string"
+              ),
+              BackendServerDescriptions = list(
+                list(
+                  InstancePort = 123,
+                  PolicyNames = list(
+                    "string"
+                  )
+                )
+              ),
+              CanonicalHostedZoneName = "string",
+              CanonicalHostedZoneNameID = "string",
+              CreatedTime = "string",
+              DnsName = "string",
+              HealthCheck = list(
+                HealthyThreshold = 123,
+                Interval = 123,
+                Target = "string",
+                Timeout = 123,
+                UnhealthyThreshold = 123
+              ),
+              Instances = list(
+                list(
+                  InstanceId = "string"
+                )
+              ),
+              ListenerDescriptions = list(
+                list(
+                  Listener = list(
+                    InstancePort = 123,
+                    InstanceProtocol = "string",
+                    LoadBalancerPort = 123,
+                    Protocol = "string",
+                    SslCertificateId = "string"
+                  ),
+                  PolicyNames = list(
+                    "string"
+                  )
+                )
+              ),
+              LoadBalancerAttributes = list(
+                AccessLog = list(
+                  EmitInterval = 123,
+                  Enabled = TRUE|FALSE,
+                  S3BucketName = "string",
+                  S3BucketPrefix = "string"
+                ),
+                ConnectionDraining = list(
+                  Enabled = TRUE|FALSE,
+                  Timeout = 123
+                ),
+                ConnectionSettings = list(
+                  IdleTimeout = 123
+                ),
+                CrossZoneLoadBalancing = list(
+                  Enabled = TRUE|FALSE
+                )
+              ),
+              LoadBalancerName = "string",
+              Policies = list(
+                AppCookieStickinessPolicies = list(
+                  list(
+                    CookieName = "string",
+                    PolicyName = "string"
+                  )
+                ),
+                LbCookieStickinessPolicies = list(
+                  list(
+                    CookieExpirationPeriod = 123,
+                    PolicyName = "string"
+                  )
+                ),
+                OtherPolicies = list(
+                  "string"
+                )
+              ),
+              Scheme = "string",
+              SecurityGroups = list(
+                "string"
+              ),
+              SourceSecurityGroup = list(
+                GroupName = "string",
+                OwnerAlias = "string"
+              ),
+              Subnets = list(
+                "string"
+              ),
+              VpcId = "string"
+            ),
+            AwsIamGroup = list(
+              AttachedManagedPolicies = list(
+                list(
+                  PolicyName = "string",
+                  PolicyArn = "string"
+                )
+              ),
+              CreateDate = "string",
+              GroupId = "string",
+              GroupName = "string",
+              GroupPolicyList = list(
+                list(
+                  PolicyName = "string"
+                )
+              ),
+              Path = "string"
             ),
             AwsIamRole = list(
               AssumeRolePolicyDocument = "string",
+              AttachedManagedPolicies = list(
+                list(
+                  PolicyName = "string",
+                  PolicyArn = "string"
+                )
+              ),
               CreateDate = "string",
+              InstanceProfileList = list(
+                list(
+                  Arn = "string",
+                  CreateDate = "string",
+                  InstanceProfileId = "string",
+                  InstanceProfileName = "string",
+                  Path = "string",
+                  Roles = list(
+                    list(
+                      Arn = "string",
+                      AssumeRolePolicyDocument = "string",
+                      CreateDate = "string",
+                      Path = "string",
+                      RoleId = "string",
+                      RoleName = "string"
+                    )
+                  )
+                )
+              ),
+              PermissionsBoundary = list(
+                PermissionsBoundaryArn = "string",
+                PermissionsBoundaryType = "string"
+              ),
               RoleId = "string",
               RoleName = "string",
+              RolePolicyList = list(
+                list(
+                  PolicyName = "string"
+                )
+              ),
               MaxSessionDuration = 123,
               Path = "string"
             ),
@@ -482,7 +1194,8 @@ customers use to manage their investigation workflow.
               KeyId = "string",
               KeyManager = "string",
               KeyState = "string",
-              Origin = "string"
+              Origin = "string",
+              Description = "string"
             ),
             AwsLambdaFunction = list(
               Code = list(
@@ -575,7 +1288,129 @@ customers use to manage their investigation workflow.
                   VpcSecurityGroupId = "string",
                   Status = "string"
                 )
-              )
+              ),
+              MultiAz = TRUE|FALSE,
+              EnhancedMonitoringResourceArn = "string",
+              DbInstanceStatus = "string",
+              MasterUsername = "string",
+              AllocatedStorage = 123,
+              PreferredBackupWindow = "string",
+              BackupRetentionPeriod = 123,
+              DbSecurityGroups = list(
+                "string"
+              ),
+              DbParameterGroups = list(
+                list(
+                  DbParameterGroupName = "string",
+                  ParameterApplyStatus = "string"
+                )
+              ),
+              AvailabilityZone = "string",
+              DbSubnetGroup = list(
+                DbSubnetGroupName = "string",
+                DbSubnetGroupDescription = "string",
+                VpcId = "string",
+                SubnetGroupStatus = "string",
+                Subnets = list(
+                  list(
+                    SubnetIdentifier = "string",
+                    SubnetAvailabilityZone = list(
+                      Name = "string"
+                    ),
+                    SubnetStatus = "string"
+                  )
+                ),
+                DbSubnetGroupArn = "string"
+              ),
+              PreferredMaintenanceWindow = "string",
+              PendingModifiedValues = list(
+                DbInstanceClass = "string",
+                AllocatedStorage = 123,
+                MasterUserPassword = "string",
+                Port = 123,
+                BackupRetentionPeriod = 123,
+                MultiAZ = TRUE|FALSE,
+                EngineVersion = "string",
+                LicenseModel = "string",
+                Iops = 123,
+                DbInstanceIdentifier = "string",
+                StorageType = "string",
+                CaCertificateIdentifier = "string",
+                DbSubnetGroupName = "string",
+                PendingCloudWatchLogsExports = list(
+                  LogTypesToEnable = list(
+                    "string"
+                  ),
+                  LogTypesToDisable = list(
+                    "string"
+                  )
+                ),
+                ProcessorFeatures = list(
+                  list(
+                    Name = "string",
+                    Value = "string"
+                  )
+                )
+              ),
+              LatestRestorableTime = "string",
+              AutoMinorVersionUpgrade = TRUE|FALSE,
+              ReadReplicaSourceDBInstanceIdentifier = "string",
+              ReadReplicaDBInstanceIdentifiers = list(
+                "string"
+              ),
+              ReadReplicaDBClusterIdentifiers = list(
+                "string"
+              ),
+              LicenseModel = "string",
+              Iops = 123,
+              OptionGroupMemberships = list(
+                list(
+                  OptionGroupName = "string",
+                  Status = "string"
+                )
+              ),
+              CharacterSetName = "string",
+              SecondaryAvailabilityZone = "string",
+              StatusInfos = list(
+                list(
+                  StatusType = "string",
+                  Normal = TRUE|FALSE,
+                  Status = "string",
+                  Message = "string"
+                )
+              ),
+              StorageType = "string",
+              DomainMemberships = list(
+                list(
+                  Domain = "string",
+                  Status = "string",
+                  Fqdn = "string",
+                  IamRoleName = "string"
+                )
+              ),
+              CopyTagsToSnapshot = TRUE|FALSE,
+              MonitoringInterval = 123,
+              MonitoringRoleArn = "string",
+              PromotionTier = 123,
+              Timezone = "string",
+              PerformanceInsightsEnabled = TRUE|FALSE,
+              PerformanceInsightsKmsKeyId = "string",
+              PerformanceInsightsRetentionPeriod = 123,
+              EnabledCloudWatchLogsExports = list(
+                "string"
+              ),
+              ProcessorFeatures = list(
+                list(
+                  Name = "string",
+                  Value = "string"
+                )
+              ),
+              ListenerEndpoint = list(
+                Address = "string",
+                Port = 123,
+                HostedZoneId = "string"
+              ),
+              MaxAllocatedStorage = 123
             ),
             AwsSnsTopic = list(
               KmsMasterKeyId = "string",
@@ -616,6 +1451,138 @@ customers use to manage their investigation workflow.
                 )
               ),
               WebAclId = "string"
+            ),
+            AwsRdsDbSnapshot = list(
+              DbSnapshotIdentifier = "string",
+              DbInstanceIdentifier = "string",
+              SnapshotCreateTime = "string",
+              Engine = "string",
+              AllocatedStorage = 123,
+              Status = "string",
+              Port = 123,
+              AvailabilityZone = "string",
+              VpcId = "string",
+              InstanceCreateTime = "string",
+              MasterUsername = "string",
+              EngineVersion = "string",
+              LicenseModel = "string",
+              SnapshotType = "string",
+              Iops = 123,
+              OptionGroupName = "string",
+              PercentProgress = 123,
+              SourceRegion = "string",
+              SourceDbSnapshotIdentifier = "string",
+              StorageType = "string",
+              TdeCredentialArn = "string",
+              Encrypted = TRUE|FALSE,
+              KmsKeyId = "string",
+              Timezone = "string",
+              IamDatabaseAuthenticationEnabled = TRUE|FALSE,
+              ProcessorFeatures = list(
+                list(
+                  Name = "string",
+                  Value = "string"
+                )
+              ),
+              DbiResourceId = "string"
+            ),
+            AwsRdsDbClusterSnapshot = list(
+              AvailabilityZones = list(
+                "string"
+              ),
+              SnapshotCreateTime = "string",
+              Engine = "string",
+              AllocatedStorage = 123,
+              Status = "string",
+              Port = 123,
+              VpcId = "string",
+              ClusterCreateTime = "string",
+              MasterUsername = "string",
+              EngineVersion = "string",
+              LicenseModel = "string",
+              SnapshotType = "string",
+              PercentProgress = 123,
+              StorageEncrypted = TRUE|FALSE,
+              KmsKeyId = "string",
+              DbClusterIdentifier = "string",
+              DbClusterSnapshotIdentifier = "string",
+              IamDatabaseAuthenticationEnabled = TRUE|FALSE
+            ),
+            AwsRdsDbCluster = list(
+              AllocatedStorage = 123,
+              AvailabilityZones = list(
+                "string"
+              ),
+              BackupRetentionPeriod = 123,
+              DatabaseName = "string",
+              Status = "string",
+              Endpoint = "string",
+              ReaderEndpoint = "string",
+              CustomEndpoints = list(
+                "string"
+              ),
+              MultiAz = TRUE|FALSE,
+              Engine = "string",
+              EngineVersion = "string",
+              Port = 123,
+              MasterUsername = "string",
+              PreferredBackupWindow = "string",
+              PreferredMaintenanceWindow = "string",
+              ReadReplicaIdentifiers = list(
+                "string"
+              ),
+              VpcSecurityGroups = list(
+                list(
+                  VpcSecurityGroupId = "string",
+                  Status = "string"
+                )
+              ),
+              HostedZoneId = "string",
+              StorageEncrypted = TRUE|FALSE,
+              KmsKeyId = "string",
+              DbClusterResourceId = "string",
+              AssociatedRoles = list(
+                list(
+                  RoleArn = "string",
+                  Status = "string"
+                )
+              ),
+              ClusterCreateTime = "string",
+              EnabledCloudWatchLogsExports = list(
+                "string"
+              ),
+              EngineMode = "string",
+              DeletionProtection = TRUE|FALSE,
+              HttpEndpointEnabled = TRUE|FALSE,
+              ActivityStreamStatus = "string",
+              CopyTagsToSnapshot = TRUE|FALSE,
+              CrossAccountClone = TRUE|FALSE,
+              DomainMemberships = list(
+                list(
+                  Domain = "string",
+                  Status = "string",
+                  Fqdn = "string",
+                  IamRoleName = "string"
+                )
+              ),
+              DbClusterParameterGroup = "string",
+              DbSubnetGroup = "string",
+              DbClusterOptionGroupMemberships = list(
+                list(
+                  DbClusterOptionGroupName = "string",
+                  Status = "string"
+                )
+              ),
+              DbClusterIdentifier = "string",
+              DbClusterMembers = list(
+                list(
+                  IsClusterWriter = TRUE|FALSE,
+                  PromotionTier = 123,
+                  DbInstanceIdentifier = "string",
+                  DbClusterParameterGroupStatus = "string"
+                )
+              ),
+              IamDatabaseAuthenticationEnabled = TRUE|FALSE
             ),
             Container = list(
               Name = "string",
@@ -691,6 +1658,19 @@ customers use to manage their investigation workflow.
             "string"
           )
         )
+      ),
+      PatchSummary = list(
+        Id = "string",
+        InstalledCount = 123,
+        MissingCount = 123,
+        FailedCount = 123,
+        InstalledOtherCount = 123,
+        InstalledRejectedCount = 123,
+        InstalledPendingReboot = 123,
+        OperationStartTime = "string",
+        OperationEndTime = "string",
+        RebootOption = "string",
+        Operation = "string"
       )
     )
   )

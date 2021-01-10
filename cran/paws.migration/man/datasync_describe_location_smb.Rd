@@ -2,16 +2,16 @@
 % Please edit documentation in R/datasync_operations.R
 \name{datasync_describe_location_smb}
 \alias{datasync_describe_location_smb}
-\title{Returns metadata, such as the path and user information about a SMB
+\title{Returns metadata, such as the path and user information about an SMB
 location}
 \usage{
 datasync_describe_location_smb(LocationArn)
 }
 \arguments{
-\item{LocationArn}{[required] The Amazon resource Name (ARN) of the SMB location to describe.}
+\item{LocationArn}{[required] The Amazon Resource Name (ARN) of the SMB location to describe.}
 }
 \description{
-Returns metadata, such as the path and user information about a SMB
+Returns metadata, such as the path and user information about an SMB
 location.
 }
 \section{Request syntax}{

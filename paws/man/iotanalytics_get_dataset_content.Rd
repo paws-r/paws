@@ -2,7 +2,7 @@
 % Please edit documentation in R/iotanalytics_operations.R
 \name{iotanalytics_get_dataset_content}
 \alias{iotanalytics_get_dataset_content}
-\title{Retrieves the contents of a data set as pre-signed URIs}
+\title{Retrieves the contents of a data set as presigned URIs}
 \usage{
 iotanalytics_get_dataset_content(datasetName, versionId)
 }
@@ -15,7 +15,7 @@ contents of the latest or latest successfully completed data set. If not
 specified, "$LATEST\\_SUCCEEDED" is the default.}
 }
 \description{
-Retrieves the contents of a data set as pre-signed URIs.
+Retrieves the contents of a data set as presigned URIs.
 }
 \section{Request syntax}{
 \preformatted{svc$get_dataset_content(

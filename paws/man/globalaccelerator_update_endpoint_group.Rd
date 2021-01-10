@@ -7,12 +7,13 @@
 globalaccelerator_update_endpoint_group(EndpointGroupArn,
   EndpointConfigurations, TrafficDialPercentage, HealthCheckPort,
   HealthCheckProtocol, HealthCheckPath, HealthCheckIntervalSeconds,
-  ThresholdCount)
+  ThresholdCount, PortOverrides)
 }
 \arguments{
 \item{EndpointGroupArn}{[required] The Amazon Resource Name (ARN) of the endpoint group.}
 
-\item{EndpointConfigurations}{The list of endpoint objects.}
+\item{EndpointConfigurations}{The list of endpoint objects. A resource must be valid and active when
+you add it as an endpoint.}
 
 \item{TrafficDialPercentage}{The percentage of traffic to send to an AWS Region. Additional traffic
 is distributed to other endpoint groups for this listener.
@@ -42,10 +43,19 @@ endpoint. The default value is 30.}
 \item{ThresholdCount}{The number of consecutive health checks required to set the state of a
 healthy endpoint to unhealthy, or to set an unhealthy endpoint to
 healthy. The default value is 3.}
+
+\item{PortOverrides}{Override specific listener ports used to route traffic to endpoints that
+are part of this endpoint group. For example, you can create a port
+override in which the listener receives user traffic on ports 80 and
+443, but your accelerator routes that traffic to ports 1080 and 1443,
+respectively, on the endpoints.
+
+For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html}{Port overrides}
+in the \emph{AWS Global Accelerator Developer Guide}.}
 }
 \description{
-Update an endpoint group. To see an AWS CLI example of updating an
-endpoint group, scroll down to \strong{Example}.
+Update an endpoint group. A resource must be valid and active when you
+add it as an endpoint.
 }
 \section{Request syntax}{
 \preformatted{svc$update_endpoint_group(
@@ -62,7 +72,13 @@ endpoint group, scroll down to \strong{Example}.
   HealthCheckProtocol = "TCP"|"HTTP"|"HTTPS",
   HealthCheckPath = "string",
   HealthCheckIntervalSeconds = 123,
-  ThresholdCount = 123
+  ThresholdCount = 123,
+  PortOverrides = list(
+    list(
+      ListenerPort = 123,
+      EndpointPort = 123
+    )
+  )
 )
 }
 }

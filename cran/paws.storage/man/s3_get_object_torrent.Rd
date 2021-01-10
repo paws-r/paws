@@ -2,9 +2,9 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_get_object_torrent}
 \alias{s3_get_object_torrent}
-\title{Return torrent files from a bucket}
+\title{Returns torrent files from a bucket}
 \usage{
-s3_get_object_torrent(Bucket, Key, RequestPayer)
+s3_get_object_torrent(Bucket, Key, RequestPayer, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the object for which to get the
@@ -13,29 +13,36 @@ torrent files.}
 \item{Key}{[required] The object key for which to get the information.}
 
 \item{RequestPayer}{}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
-Return torrent files from a bucket. BitTorrent can save you bandwidth
+Returns torrent files from a bucket. BitTorrent can save you bandwidth
 when you're distributing large files. For more information about
-BitTorrent, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3Torrent.html}{Amazon S3 Torrent}.
+BitTorrent, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3Torrent.html}{Using BitTorrent with Amazon S3}.
 }
 \details{
-You can get torrent only for objects that are less than 5 GB in size and
-that are not encrypted using server-side encryption with
+You can get torrent only for objects that are less than 5 GB in size,
+and that are not encrypted using server-side encryption with a
 customer-provided encryption key.
 
 To use GET, you must have READ access to the object.
 
+This action is not supported by Amazon S3 on Outposts.
+
 The following operation is related to \code{GetObjectTorrent}:
 \itemize{
-\item GetObject
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html}{GetObject}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$get_object_torrent(
   Bucket = "string",
   Key = "string",
-  RequestPayer = "requester"
+  RequestPayer = "requester",
+  ExpectedBucketOwner = "string"
 )
 }
 }

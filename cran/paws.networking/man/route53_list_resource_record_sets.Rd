@@ -132,7 +132,7 @@ of results, get the values of \code{NextRecordName}, \code{NextRecordType}, and
 \preformatted{svc$list_resource_record_sets(
   HostedZoneId = "string",
   StartRecordName = "string",
-  StartRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA",
+  StartRecordType = "SOA"|"A"|"TXT"|"NS"|"CNAME"|"MX"|"NAPTR"|"PTR"|"SRV"|"SPF"|"AAAA"|"CAA"|"DS",
   StartRecordIdentifier = "string",
   MaxItems = "string"
 )

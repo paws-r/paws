@@ -24,8 +24,9 @@ in the \emph{AWS General Reference}.}
 \item{PolicyInputList}{An optional list of additional policies for which you want the list of
 context keys that are referenced.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
-this parameter is a string of characters consisting of the following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
+validate this parameter is a string of characters consisting of the
+following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range

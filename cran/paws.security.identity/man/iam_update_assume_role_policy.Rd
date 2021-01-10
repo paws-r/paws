@@ -9,7 +9,7 @@ iam_update_assume_role_policy(RoleName, PolicyDocument)
 \arguments{
 \item{RoleName}{[required] The name of the role to update with the new policy.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
@@ -20,8 +20,9 @@ CloudFormation templates formatted in YAML, you can provide the policy
 in JSON or YAML format. AWS CloudFormation always converts a YAML policy
 to JSON format before submitting it to IAM.
 
-The \href{http://wikipedia.org/wiki/regex}{regex pattern} used to validate
-this parameter is a string of characters consisting of the following:
+The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
+validate this parameter is a string of characters consisting of the
+following:
 \itemize{
 \item Any printable ASCII character ranging from the space character
 (\code{U+0020}) through the end of the ASCII character range
@@ -34,7 +35,7 @@ carriage return (\verb{U+000D})
 \description{
 Updates the policy that grants an IAM entity permission to assume a
 role. This is typically referred to as the "role trust policy". For more
-information about roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/roles-toplevel.html}{Using Roles to Delegate Permissions and Federate Identities}.
+information about roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Using Roles to Delegate Permissions and Federate Identities}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_assume_role_policy(

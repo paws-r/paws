@@ -21,23 +21,26 @@ matchmaking configurations that use this rule set.}
 is limited to 10.}
 
 \item{NextToken}{A token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.}
+Use the token that is returned with a previous call to this operation.
+To start at the beginning of the result set, do not specify a value.}
 }
 \description{
-Retrieves the details of FlexMatch matchmaking configurations. With this
-operation, you have the following options: (1) retrieve all existing
-configurations, (2) provide the names of one or more configurations to
-retrieve, or (3) retrieve all configurations that use a specified rule
-set name. When requesting multiple items, use the pagination parameters
-to retrieve results as a set of sequential pages. If successful, a
-configuration is returned for each requested name. When specifying a
-list of names, only configurations that currently exist are returned.
+Retrieves the details of FlexMatch matchmaking configurations.
 }
 \details{
+This operation offers the following options: (1) retrieve all
+matchmaking configurations, (2) retrieve configurations for a specified
+list, or (3) retrieve all configurations that use a specified rule set
+name. When requesting multiple items, use the pagination parameters to
+retrieve results as a set of sequential pages.
+
+If successful, a configuration is returned for each requested name. When
+specifying a list of names, only configurations that currently exist are
+returned.
+
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/matchmaker-build.html}{Setting Up FlexMatch Matchmakers}
+\href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/matchmaker-build.html}{Setting Up FlexMatch Matchmakers}
 
 \strong{Related operations}
 \itemize{

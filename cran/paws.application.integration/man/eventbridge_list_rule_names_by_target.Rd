@@ -10,8 +10,8 @@ eventbridge_list_rule_names_by_target(TargetArn, EventBusName,
 \arguments{
 \item{TargetArn}{[required] The Amazon Resource Name (ARN) of the target resource.}
 
-\item{EventBusName}{Limits the results to show only the rules associated with the specified
-event bus.}
+\item{EventBusName}{The name or ARN of the event bus to list rules for. If you omit this,
+the default event bus is used.}
 
 \item{NextToken}{The token returned by a previous call to retrieve the next set of
 results.}

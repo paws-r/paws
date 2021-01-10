@@ -26,7 +26,7 @@ the valid values listed below.}
 \item{PathPrefix}{The path prefix for filtering the results. This parameter is optional.
 If it is not included, it defaults to a slash (/), listing all entities.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character

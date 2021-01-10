@@ -59,7 +59,7 @@ Gets a list of labeling jobs.
   NameContains = "string",
   SortBy = "Name"|"CreationTime"|"Status",
   SortOrder = "Ascending"|"Descending",
-  StatusEquals = "InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"
+  StatusEquals = "Initializing"|"InProgress"|"Completed"|"Failed"|"Stopping"|"Stopped"
 )
 }
 }

@@ -2,22 +2,29 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_put_public_access_block}
 \alias{s3control_put_public_access_block}
-\title{Creates or modifies the PublicAccessBlock configuration for an Amazon
-Web Services account}
+\title{Creates or modifies the PublicAccessBlock configuration for an AWS
+account}
 \usage{
 s3control_put_public_access_block(PublicAccessBlockConfiguration,
   AccountId)
 }
 \arguments{
 \item{PublicAccessBlockConfiguration}{[required] The \code{PublicAccessBlock} configuration that you want to apply to the
-specified Amazon Web Services account.}
+specified AWS account.}
 
-\item{AccountId}{[required] The account ID for the Amazon Web Services account whose
-\code{PublicAccessBlock} configuration you want to set.}
+\item{AccountId}{[required] The account ID for the AWS account whose \code{PublicAccessBlock}
+configuration you want to set.}
 }
 \description{
-Creates or modifies the \code{PublicAccessBlock} configuration for an Amazon
-Web Services account.
+Creates or modifies the \code{PublicAccessBlock} configuration for an AWS
+account. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html}{Using Amazon S3 block public access}.
+}
+\details{
+Related actions include:
+\itemize{
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetPublicAccessBlock.html}{GetPublicAccessBlock}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeletePublicAccessBlock.html}{DeletePublicAccessBlock}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$put_public_access_block(

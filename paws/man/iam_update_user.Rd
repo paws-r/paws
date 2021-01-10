@@ -10,14 +10,14 @@ iam_update_user(UserName, NewPath, NewUserName)
 \item{UserName}{[required] Name of the user to update. If you're changing the name of the user,
 this is the original user name.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 
 \item{NewPath}{New path for the IAM user. Include this parameter only if you're
 changing the user's path.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of either a forward slash (/) by itself or a string that must
 begin and end with forward slashes. In addition, it can contain any
 ASCII character from the ! (\code{U+0021}) through the DEL character
@@ -44,7 +44,7 @@ To change a user name, the requester must have appropriate permissions
 on both the source object and the target object. For example, to change
 Bob to Robert, the entity making the request must have permission on Bob
 and Robert, or must have permission on all (*). For more information
-about permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/PermissionsAndPolicies.html}{Permissions and Policies}.
+about permissions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access.html}{Permissions and Policies}.
 }
 \section{Request syntax}{
 \preformatted{svc$update_user(

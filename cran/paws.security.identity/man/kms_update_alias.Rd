@@ -12,8 +12,9 @@ kms_update_alias(AliasName, TargetKeyId)
 with \verb{alias/} followed by the alias name, such as \code{alias/ExampleAlias}.
 You cannot use UpdateAlias to change the alias name.}
 
-\item{TargetKeyId}{[required] Identifies the CMK to associate with the alias. When the update
-operation completes, the alias will point to this CMK.
+\item{TargetKeyId}{[required] Identifies the \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed CMK}
+to associate with the alias. You don't have permission to associate an
+alias with an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{AWS managed CMK}.
 
 The CMK must be in the same AWS account and Region as the alias. Also,
 the new target CMK must be the same type as the current target CMK (both
@@ -36,8 +37,7 @@ To verify that the alias is mapped to the correct CMK, use ListAliases.}
 Associates an existing AWS KMS alias with a different customer master
 key (CMK). Each alias is associated with only one CMK at a time,
 although a CMK can have multiple aliases. The alias and the CMK must be
-in the same AWS account and region. You cannot perform this operation on
-an alias in a different AWS account.
+in the same AWS account and region.
 }
 \details{
 The current and new CMK must be the same type (both symmetric or both
@@ -59,6 +59,29 @@ aliases of all CMKs in the account, use the ListAliases operation.
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
+a different AWS account.
+
+\strong{Required permissions}
+\itemize{
+\item \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:UpdateAlias}
+on the alias (IAM policy).
+\item \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:UpdateAlias}
+on the current CMK (key policy).
+\item \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:UpdateAlias}
+on the new CMK (key policy).
+}
+
+For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-alias.html#alias-access}{Controlling access to aliases}
+in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Related operations:}
+\itemize{
+\item CreateAlias
+\item DeleteAlias
+\item ListAliases
+}
 }
 \section{Request syntax}{
 \preformatted{svc$update_alias(

@@ -2,7 +2,7 @@
 % Please edit documentation in R/kinesisanalyticsv2_operations.R
 \name{kinesisanalyticsv2_tag_resource}
 \alias{kinesisanalyticsv2_tag_resource}
-\title{Adds one or more key-value tags to a Kinesis Analytics application}
+\title{Adds one or more key-value tags to a Kinesis Data Analytics application}
 \usage{
 kinesisanalyticsv2_tag_resource(ResourceARN, Tags)
 }
@@ -12,9 +12,9 @@ kinesisanalyticsv2_tag_resource(ResourceARN, Tags)
 \item{Tags}{[required] The key-value tags to assign to the application.}
 }
 \description{
-Adds one or more key-value tags to a Kinesis Analytics application. Note
-that the maximum number of application tags includes system tags. The
-maximum number of user-defined application tags is 50. For more
+Adds one or more key-value tags to a Kinesis Data Analytics application.
+Note that the maximum number of application tags includes system tags.
+The maximum number of user-defined application tags is 50. For more
 information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html}{Using Tagging}.
 }
 \section{Request syntax}{

@@ -15,11 +15,14 @@ default and the only supported value at this time.}
 }
 \description{
 Returns detailed information about one or more specified events.
-Information includes standard event data (region, service, and so on, as
-returned by DescribeEvents), a detailed event description, and possible
-additional metadata that depends upon the nature of the event. Affected
-entities are not included; to retrieve those, use the
-DescribeAffectedEntities operation.
+Information includes standard event data (Region, service, and so on, as
+returned by
+\href{https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEvents.html}{DescribeEvents}),
+a detailed event description, and possible additional metadata that
+depends upon the nature of the event. Affected entities are not
+included. To retrieve those, use the
+\href{https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntities.html}{DescribeAffectedEntities}
+operation.
 }
 \details{
 If a specified event cannot be retrieved, an error message is returned

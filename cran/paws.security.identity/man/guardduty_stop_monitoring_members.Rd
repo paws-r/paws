@@ -7,8 +7,8 @@
 guardduty_stop_monitoring_members(DetectorId, AccountIds)
 }
 \arguments{
-\item{DetectorId}{[required] The unique ID of the detector associated with the GuardDuty master
-account that is monitoring member accounts.}
+\item{DetectorId}{[required] The unique ID of the detector associated with the GuardDuty
+administrator account that is monitoring member accounts.}
 
 \item{AccountIds}{[required] A list of account IDs for the member accounts to stop monitoring.}
 }

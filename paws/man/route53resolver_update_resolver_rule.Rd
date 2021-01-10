@@ -2,17 +2,17 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_update_resolver_rule}
 \alias{route53resolver_update_resolver_rule}
-\title{Updates settings for a specified resolver rule}
+\title{Updates settings for a specified Resolver rule}
 \usage{
 route53resolver_update_resolver_rule(ResolverRuleId, Config)
 }
 \arguments{
-\item{ResolverRuleId}{[required] The ID of the resolver rule that you want to update.}
+\item{ResolverRuleId}{[required] The ID of the Resolver rule that you want to update.}
 
-\item{Config}{[required] The new settings for the resolver rule.}
+\item{Config}{[required] The new settings for the Resolver rule.}
 }
 \description{
-Updates settings for a specified resolver rule. \code{ResolverRuleId} is
+Updates settings for a specified Resolver rule. \code{ResolverRuleId} is
 required, and all other parameters are optional. If you don't specify a
 parameter, it retains its current value.
 }

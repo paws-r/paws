@@ -54,7 +54,7 @@ value. This data is passed to a game server process in the GameSession
 object with a request to start a new game session (see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession}{Start a Game Session}).}
 }
 \description{
-Creates a multiplayer game session for players. This action creates a
+Creates a multiplayer game session for players. This operation creates a
 game session record and assigns an available server process in the
 specified fleet to host the game session. A fleet must have an \code{ACTIVE}
 status before a game session can be created in it.

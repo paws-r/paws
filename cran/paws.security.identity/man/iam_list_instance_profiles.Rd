@@ -13,7 +13,7 @@ starts with \verb{/application_abc/component_xyz/}.
 
 This parameter is optional. If it is not included, it defaults to a
 slash (/), listing all instance profiles. This parameter allows (through
-its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of
+its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of
 characters consisting of either a forward slash (/) by itself or a
 string that must begin and end with forward slashes. In addition, it can
 contain any ASCII character from the ! (\code{U+0021}) through the DEL
@@ -38,7 +38,7 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the instance profiles that have the specified path prefix. If
 there are none, the operation returns an empty list. For more
-information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/AboutInstanceProfiles.html}{About Instance Profiles}.
+information about instance profiles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About Instance Profiles}.
 }
 \details{
 You can paginate the results using the \code{MaxItems} and \code{Marker}

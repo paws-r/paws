@@ -18,6 +18,10 @@ test_that("list_active_violations", {
   expect_error(svc$list_active_violations(), NA)
 })
 
+test_that("list_audit_suppressions", {
+  expect_error(svc$list_audit_suppressions(), NA)
+})
+
 test_that("list_authorizers", {
   expect_error(svc$list_authorizers(), NA)
 })
@@ -32,6 +36,14 @@ test_that("list_ca_certificates", {
 
 test_that("list_certificates", {
   expect_error(svc$list_certificates(), NA)
+})
+
+test_that("list_custom_metrics", {
+  expect_error(svc$list_custom_metrics(), NA)
+})
+
+test_that("list_detect_mitigation_actions_executions", {
+  expect_error(svc$list_detect_mitigation_actions_executions(), NA)
 })
 
 test_that("list_dimensions", {

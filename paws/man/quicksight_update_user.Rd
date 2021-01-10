@@ -4,7 +4,8 @@
 \alias{quicksight_update_user}
 \title{Updates an Amazon QuickSight user}
 \usage{
-quicksight_update_user(UserName, AwsAccountId, Namespace, Email, Role)
+quicksight_update_user(UserName, AwsAccountId, Namespace, Email, Role,
+  CustomPermissionsName, UnapplyCustomPermissions)
 }
 \arguments{
 \item{UserName}{[required] The Amazon QuickSight user name that you want to update.}
@@ -16,15 +17,49 @@ ID for the AWS account that contains your Amazon QuickSight account.}
 
 \item{Email}{[required] The email address of the user that you want to update.}
 
-\item{Role}{[required] The Amazon QuickSight role of the user. The user role can be one of the
-following:
+\item{Role}{[required] The Amazon QuickSight role of the user. The role can be one of the
+following default security cohorts:
 \itemize{
 \item \code{READER}: A user who has read-only access to dashboards.
 \item \code{AUTHOR}: A user who can create data sources, datasets, analyses,
 and dashboards.
 \item \code{ADMIN}: A user who is an author, who can also manage Amazon
 QuickSight settings.
-}}
+}
+
+The name of the QuickSight role is invisible to the user except for the
+console screens dealing with permissions.}
+
+\item{CustomPermissionsName}{(Enterprise edition only) The name of the custom permissions profile
+that you want to assign to this user. Customized permissions allows you
+to control a user's access by restricting access the following
+operations:
+\itemize{
+\item Create and update data sources
+\item Create and update datasets
+\item Create and update email reports
+\item Subscribe to email reports
+}
+
+A set of custom permissions includes any combination of these
+restrictions. Currently, you need to create the profile names for custom
+permission sets by using the QuickSight console. Then, you use the
+\code{RegisterUser} API operation to assign the named set of permissions to a
+QuickSight user.
+
+QuickSight custom permissions are applied through IAM policies.
+Therefore, they override the permissions typically granted by assigning
+QuickSight users to one of the default security cohorts in QuickSight
+(admin, author, reader).
+
+This feature is available only to QuickSight Enterprise edition
+subscriptions that use SAML 2.0-Based Federation for Single Sign-On
+(SSO).}
+
+\item{UnapplyCustomPermissions}{A flag that you use to indicate that you want to remove all custom
+permissions from this user. Using this parameter resets the user to the
+state it was in before a custom permissions profile was applied. This
+parameter defaults to NULL and it doesn't accept any other value.}
 }
 \description{
 Updates an Amazon QuickSight user.
@@ -35,7 +70,9 @@ Updates an Amazon QuickSight user.
   AwsAccountId = "string",
   Namespace = "string",
   Email = "string",
-  Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER"
+  Role = "ADMIN"|"AUTHOR"|"READER"|"RESTRICTED_AUTHOR"|"RESTRICTED_READER",
+  CustomPermissionsName = "string",
+  UnapplyCustomPermissions = TRUE|FALSE
 )
 }
 }

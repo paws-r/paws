@@ -2,17 +2,27 @@
 % Please edit documentation in R/resourcegroups_operations.R
 \name{resourcegroups_untag}
 \alias{resourcegroups_untag}
-\title{Deletes specified tags from a specified resource}
+\title{Deletes tags from a specified resource group}
 \usage{
 resourcegroups_untag(Arn, Keys)
 }
 \arguments{
-\item{Arn}{[required] The ARN of the resource from which to remove tags.}
+\item{Arn}{[required] The ARN of the resource group from which to remove tags. The command
+removed both the specified keys and any values associated with those
+keys.}
 
 \item{Keys}{[required] The keys of the tags to be removed.}
 }
 \description{
-Deletes specified tags from a specified resource.
+Deletes tags from a specified resource group.
+}
+\details{
+\strong{Minimum permissions}
+
+To run this command, you must have the following permissions:
+\itemize{
+\item \code{resource-groups:Untag}
+}
 }
 \section{Request syntax}{
 \preformatted{svc$untag(

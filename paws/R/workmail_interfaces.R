@@ -27,6 +27,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workmail$cancel_mailbox_export_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), JobId = structure(logical(0), tags = list(type = "string")), OrganizationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$cancel_mailbox_export_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workmail$create_alias_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -48,6 +60,18 @@ NULL
 .workmail$create_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$create_organization_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Domains = structure(list(structure(list(DomainName = structure(logical(0), tags = list(type = "string")), HostedZoneId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), KmsKeyArn = structure(logical(0), tags = list(type = "string")), EnableInteroperability = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$create_organization_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -123,6 +147,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workmail$delete_organization_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), OrganizationId = structure(logical(0), tags = list(type = "string")), DeleteDirectory = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$delete_organization_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workmail$delete_resource_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -180,6 +216,18 @@ NULL
 .workmail$describe_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Email = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), EnabledDate = structure(logical(0), tags = list(type = "timestamp")), DisabledDate = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$describe_mailbox_export_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string")), OrganizationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$describe_mailbox_export_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(EntityId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), KmsKeyArn = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), S3Prefix = structure(logical(0), tags = list(type = "string")), S3Path = structure(logical(0), tags = list(type = "string")), EstimatedProgress = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), ErrorInfo = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -327,6 +375,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workmail$list_mailbox_export_jobs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$list_mailbox_export_jobs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Jobs = structure(list(structure(list(JobId = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), S3Path = structure(logical(0), tags = list(type = "string")), EstimatedProgress = structure(logical(0), tags = list(type = "integer")), State = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), EndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workmail$list_mailbox_permissions_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
@@ -347,7 +407,7 @@ NULL
 
 .workmail$list_organizations_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationSummaries = structure(list(structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationSummaries = structure(list(structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), DefaultMailDomain = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -425,7 +485,7 @@ NULL
 
 .workmail$put_retention_policy_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), FolderConfigurations = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Period = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(OrganizationId = structure(logical(0), tags = list(type = "string")), Id = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), FolderConfigurations = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Action = structure(logical(0), tags = list(type = "string")), Period = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -456,6 +516,18 @@ NULL
 .workmail$reset_password_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$start_mailbox_export_job_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), OrganizationId = structure(logical(0), tags = list(type = "string")), EntityId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), KmsKeyArn = structure(logical(0), tags = list(type = "string")), S3BucketName = structure(logical(0), tags = list(type = "string")), S3Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workmail$start_mailbox_export_job_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

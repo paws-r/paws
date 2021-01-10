@@ -8,6 +8,9 @@ NULL
 #'
 #' For a specific time period, retrieve the top `N` dimension keys for a
 #' metric.
+#' 
+#' Each response element returns a maximum of 500 bytes. For larger
+#' elements, such as SQL statements, only the first 500 bytes are returned.
 #'
 #' @usage
 #' pi_describe_dimension_keys(ServiceType, Identifier, StartTime, EndTime,
@@ -15,21 +18,22 @@ NULL
 #'   NextToken)
 #'
 #' @param ServiceType &#91;required&#93; The AWS service for which Performance Insights will return metrics. The
-#' only valid value for *ServiceType* is: `RDS`
+#' only valid value for *ServiceType* is `RDS`.
 #' @param Identifier &#91;required&#93; An immutable, AWS Region-unique identifier for a data source.
 #' Performance Insights gathers metrics from this data source.
 #' 
 #' To use an Amazon RDS instance as a data source, you specify its
-#' `DbiResourceId` value - for example: `db-FAIHNTYBKTGAUSUZQYPDS2GW4A`
+#' `DbiResourceId` value. For example, specify
+#' `db-FAIHNTYBKTGAUSUZQYPDS2GW4A`
 #' @param StartTime &#91;required&#93; The date and time specifying the beginning of the requested time series
-#' data. You can't specify a `StartTime` that's earlier than 7 days ago.
-#' The value specified is *inclusive* - data points equal to or greater
-#' than `StartTime` will be returned.
+#' data. You must specify a `StartTime` within the past 7 days. The value
+#' specified is *inclusive*, which means that data points equal to or
+#' greater than `StartTime` are returned.
 #' 
 #' The value for `StartTime` must be earlier than the value for `EndTime`.
 #' @param EndTime &#91;required&#93; The date and time specifying the end of the requested time series data.
-#' The value specified is *exclusive* - data points less than (but not
-#' equal to) `EndTime` will be returned.
+#' The value specified is *exclusive*, which means that data points less
+#' than (but not equal to) `EndTime` are returned.
 #' 
 #' The value for `EndTime` must be later than the value for `StartTime`.
 #' @param Metric &#91;required&#93; The name of a Performance Insights metric to be measured.
@@ -41,6 +45,14 @@ NULL
 #' 
 #' -   `db.sampledload.avg` - the raw number of active sessions for the
 #'     database engine.
+#' 
+#' If the number of active sessions is less than an internal Performance
+#' Insights threshold, `db.load.avg` and `db.sampledload.avg` are the same
+#' value. If the number of active sessions is greater than the internal
+#' threshold, Performance Insights samples the active sessions, with
+#' `db.load.avg` showing the scaled values, `db.sampledload.avg` showing
+#' the raw values, and `db.sampledload.avg` less than `db.load.avg`. For
+#' most use cases, you can query `db.load.avg` only.
 #' @param PeriodInSeconds The granularity, in seconds, of the data points returned from
 #' Performance Insights. A period can be as short as one second, or as long
 #' as one day (86400 seconds). Valid values are:
@@ -55,15 +67,14 @@ NULL
 #' 
 #' -   `86400` (twenty-four hours)
 #' 
-#' If you don't specify `PeriodInSeconds`, then Performance Insights will
-#' choose a value for you, with a goal of returning roughly 100-200 data
+#' If you don't specify `PeriodInSeconds`, then Performance Insights
+#' chooses a value for you, with a goal of returning roughly 100-200 data
 #' points in the response.
 #' @param GroupBy &#91;required&#93; A specification for how to aggregate the data points from a query
 #' result. You must specify a valid dimension group. Performance Insights
-#' will return all of the dimensions within that group, unless you provide
-#' the names of specific dimensions within that group. You can also request
-#' that Performance Insights return a limited number of values for a
-#' dimension.
+#' returns all dimensions within this group, unless you provide the names
+#' of specific dimensions within this group. You can also request that
+#' Performance Insights return a limited number of values for a dimension.
 #' @param PartitionBy For each dimension specified in `GroupBy`, specify a secondary dimension
 #' to further subdivide the partition keys in the response.
 #' @param Filter One or more filters to apply in the request. Restrictions:
@@ -140,18 +151,21 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
 #' Retrieve Performance Insights metrics for a set of data sources, over a
 #' time period. You can provide specific dimension groups and dimensions,
 #' and provide aggregation and filtering criteria for each group.
+#' 
+#' Each response element returns a maximum of 500 bytes. For larger
+#' elements, such as SQL statements, only the first 500 bytes are returned.
 #'
 #' @usage
 #' pi_get_resource_metrics(ServiceType, Identifier, MetricQueries,
 #'   StartTime, EndTime, PeriodInSeconds, MaxResults, NextToken)
 #'
-#' @param ServiceType &#91;required&#93; The AWS service for which Performance Insights will return metrics. The
-#' only valid value for *ServiceType* is: `RDS`
+#' @param ServiceType &#91;required&#93; The AWS service for which Performance Insights returns metrics. The only
+#' valid value for *ServiceType* is `RDS`.
 #' @param Identifier &#91;required&#93; An immutable, AWS Region-unique identifier for a data source.
 #' Performance Insights gathers metrics from this data source.
 #' 
-#' To use an Amazon RDS instance as a data source, you specify its
-#' `DbiResourceId` value - for example: `db-FAIHNTYBKTGAUSUZQYPDS2GW4A`
+#' To use a DB instance as a data source, specify its `DbiResourceId`
+#' value. For example, specify `db-FAIHNTYBKTGAUSUZQYPDS2GW4A`.
 #' @param MetricQueries &#91;required&#93; An array of one or more queries to perform. Each query must specify a
 #' Performance Insights metric, and can optionally specify aggregation and
 #' filtering criteria.
@@ -161,7 +175,7 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
 #' than `StartTime` will be returned.
 #' 
 #' The value for `StartTime` must be earlier than the value for `EndTime`.
-#' @param EndTime &#91;required&#93; The date and time specifiying the end of the requested time series data.
+#' @param EndTime &#91;required&#93; The date and time specifying the end of the requested time series data.
 #' The value specified is *exclusive* - data points less than (but not
 #' equal to) `EndTime` will be returned.
 #' 

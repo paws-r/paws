@@ -4,10 +4,14 @@
 \alias{s3_get_bucket_notification_configuration}
 \title{Returns the notification configuration of a bucket}
 \usage{
-s3_get_bucket_notification_configuration(Bucket)
+s3_get_bucket_notification_configuration(Bucket, ExpectedBucketOwner)
 }
 \arguments{
-\item{Bucket}{[required] Name of the bucket for which to get the notification configuration.}
+\item{Bucket}{[required] The name of the bucket for which to get the notification configuration.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Returns the notification configuration of a bucket.
@@ -27,12 +31,13 @@ For more information about bucket policies, see \href{https://docs.aws.amazon.co
 
 The following operation is related to \code{GetBucketNotification}:
 \itemize{
-\item PutBucketNotification
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketNotification.html}{PutBucketNotification}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$get_bucket_notification_configuration(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

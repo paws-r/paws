@@ -17,7 +17,7 @@ appsync_update_api_key(apiId, id, description, expires)
 represented as seconds since the epoch. For more information, see .}
 }
 \description{
-Updates an API key.
+Updates an API key. The key can be updated while it is not deleted.
 }
 \section{Request syntax}{
 \preformatted{svc$update_api_key(

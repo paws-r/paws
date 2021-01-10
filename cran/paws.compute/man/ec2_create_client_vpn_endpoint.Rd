@@ -7,7 +7,8 @@
 ec2_create_client_vpn_endpoint(ClientCidrBlock, ServerCertificateArn,
   AuthenticationOptions, ConnectionLogOptions, DnsServers,
   TransportProtocol, VpnPort, Description, SplitTunnel, DryRun,
-  ClientToken, TagSpecifications, SecurityGroupIds, VpcId)
+  ClientToken, TagSpecifications, SecurityGroupIds, VpcId,
+  SelfServicePortal, ClientConnectOptions)
 }
 \arguments{
 \item{ClientCidrBlock}{[required] The IPv4 address range, in CIDR notation, from which to assign client IP
@@ -76,6 +77,14 @@ groups.}
 \item{VpcId}{The ID of the VPC to associate with the Client VPN endpoint. If no
 security group IDs are specified in the request, the default security
 group for the VPC is applied.}
+
+\item{SelfServicePortal}{Specify whether to enable the self-service portal for the Client VPN
+endpoint.
+
+Default Value: \code{enabled}}
+
+\item{ClientConnectOptions}{The options for managing connection authorization for new client
+connections.}
 }
 \description{
 Creates a Client VPN endpoint. A Client VPN endpoint is the resource you
@@ -96,7 +105,8 @@ destination endpoint at which all client VPN sessions are terminated.
         ClientRootCertificateChainArn = "string"
       ),
       FederatedAuthentication = list(
-        SAMLProviderArn = "string"
+        SAMLProviderArn = "string",
+        SelfServiceSAMLProviderArn = "string"
       )
     )
   ),
@@ -116,7 +126,7 @@ destination endpoint at which all client VPN sessions are terminated.
   ClientToken = "string",
   TagSpecifications = list(
     list(
-      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
+      ResourceType = "client-vpn-endpoint"|"customer-gateway"|"dedicated-host"|"dhcp-options"|"egress-only-internet-gateway"|"elastic-ip"|"elastic-gpu"|"export-image-task"|"export-instance-task"|"fleet"|"fpga-image"|"host-reservation"|"image"|"import-image-task"|"import-snapshot-task"|"instance"|"internet-gateway"|"key-pair"|"launch-template"|"local-gateway-route-table-vpc-association"|"natgateway"|"network-acl"|"network-interface"|"network-insights-analysis"|"network-insights-path"|"placement-group"|"reserved-instances"|"route-table"|"security-group"|"snapshot"|"spot-fleet-request"|"spot-instances-request"|"subnet"|"traffic-mirror-filter"|"traffic-mirror-session"|"traffic-mirror-target"|"transit-gateway"|"transit-gateway-attachment"|"transit-gateway-connect-peer"|"transit-gateway-multicast-domain"|"transit-gateway-route-table"|"volume"|"vpc"|"vpc-peering-connection"|"vpn-connection"|"vpn-gateway"|"vpc-flow-log",
       Tags = list(
         list(
           Key = "string",
@@ -128,7 +138,12 @@ destination endpoint at which all client VPN sessions are terminated.
   SecurityGroupIds = list(
     "string"
   ),
-  VpcId = "string"
+  VpcId = "string",
+  SelfServicePortal = "enabled"|"disabled",
+  ClientConnectOptions = list(
+    Enabled = TRUE|FALSE,
+    LambdaFunctionArn = "string"
+  )
 )
 }
 }

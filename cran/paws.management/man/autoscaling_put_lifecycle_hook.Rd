@@ -88,7 +88,7 @@ RecordLifecycleActionHeartbeat API call.
 action using the CompleteLifecycleAction API call.
 }
 
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html}{Amazon EC2 Auto Scaling Lifecycle Hooks}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html}{Amazon EC2 Auto Scaling lifecycle hooks}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 If you exceed your maximum limit of lifecycle hooks, which by default is

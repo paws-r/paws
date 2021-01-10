@@ -50,12 +50,12 @@ thumbprint string would be the hex-encoded SHA-1 hash value of the
 certificate used by https://keys.server.example.com.
 
 For more information about obtaining the OIDC provider's thumbprint, see
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/identity-providers-oidc-obtain-thumbprint.html}{Obtaining the Thumbprint for an OpenID Connect Provider}
+\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html}{Obtaining the Thumbprint for an OpenID Connect Provider}
 in the \emph{IAM User Guide}.}
 }
 \description{
 Creates an IAM entity to describe an identity provider (IdP) that
-supports \href{http://openid.net/connect/}{OpenID Connect (OIDC)}.
+supports \href{https://openid.net/connect/}{OpenID Connect (OIDC)}.
 }
 \details{
 The OIDC provider that you create with this operation can be used as a

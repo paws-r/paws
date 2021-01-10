@@ -96,7 +96,8 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #' @param customDataIdentifierIds The custom data identifiers to use for data analysis and classification.
 #' @param description A custom description of the job. The description can contain as many as
 #' 200 characters.
-#' @param initialRun Specifies whether to run the job immediately, after it's created.
+#' @param initialRun Specifies whether to analyze all existing, eligible objects immediately
+#' after the job is created.
 #' @param jobType &#91;required&#93; The schedule for running the job. Valid values are:
 #' 
 #' -   ONE\\_TIME - Run the job only once. If you specify this value, don't
@@ -111,16 +112,17 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 #' that analysis.
 #' @param samplingPercentage The sampling depth, as a percentage, to apply when processing objects.
 #' This value determines the percentage of eligible objects that the job
-#' analyzes. If the value is less than 100, Amazon Macie randomly selects
-#' the objects to analyze, up to the specified percentage.
+#' analyzes. If this value is less than 100, Amazon Macie selects the
+#' objects to analyze at random, up to the specified percentage, and
+#' analyzes all the data in those objects.
 #' @param scheduleFrequency The recurrence pattern for running the job. To run the job only once,
-#' don't specify a value for this property and set the value of the jobType
-#' property to ONE\\_TIME.
+#' don't specify a value for this property and set the value for the
+#' jobType property to ONE\\_TIME.
 #' @param tags A map of key-value pairs that specifies the tags to associate with the
 #' job.
 #' 
-#' A job can have a maximum of 50 tags. Each tag consists of a required tag
-#' key and an associated tag value. The maximum length of a tag key is 128
+#' A job can have a maximum of 50 tags. Each tag consists of a tag key and
+#' an associated tag value. The maximum length of a tag key is 128
 #' characters. The maximum length of a tag value is 256 characters.
 #'
 #' @section Request syntax:
@@ -253,11 +255,11 @@ macie2_create_classification_job <- function(clientToken, customDataIdentifierId
 #' exclude from the results. If the text matched by the regular expression
 #' is the same as any string in this array, Amazon Macie ignores it. The
 #' array can contain as many as 10 ignore words. Each ignore word can
-#' contain 4 - 90 characters.
+#' contain 4 - 90 characters. Ignore words are case sensitive.
 #' @param keywords An array that lists specific character sequences (keywords), one of
 #' which must be within proximity (maximumMatchDistance) of the regular
 #' expression to match. The array can contain as many as 50 keywords. Each
-#' keyword can contain 4 - 90 characters.
+#' keyword can contain 4 - 90 characters. Keywords aren't case sensitive.
 #' @param maximumMatchDistance The maximum number of characters that can exist between text that
 #' matches the regex pattern and the character sequences specified by the
 #' keywords array. Macie includes or excludes a result based on the
@@ -276,9 +278,9 @@ macie2_create_classification_job <- function(clientToken, customDataIdentifierId
 #' custom data identifier.
 #' 
 #' A custom data identifier can have a maximum of 50 tags. Each tag
-#' consists of a required tag key and an associated tag value. The maximum
-#' length of a tag key is 128 characters. The maximum length of a tag value
-#' is 256 characters.
+#' consists of a tag key and an associated tag value. The maximum length of
+#' a tag key is 128 characters. The maximum length of a tag value is 256
+#' characters.
 #'
 #' @section Request syntax:
 #' ```
@@ -359,9 +361,8 @@ macie2_create_custom_data_identifier <- function(clientToken = NULL, description
 #' filter.
 #' 
 #' A findings filter can have a maximum of 50 tags. Each tag consists of a
-#' required tag key and an associated tag value. The maximum length of a
-#' tag key is 128 characters. The maximum length of a tag value is 256
-#' characters.
+#' tag key and an associated tag value. The maximum length of a tag key is
+#' 128 characters. The maximum length of a tag value is 256 characters.
 #'
 #' @section Request syntax:
 #' ```
@@ -373,6 +374,9 @@ macie2_create_custom_data_identifier <- function(clientToken = NULL, description
 #'     criterion = list(
 #'       list(
 #'         eq = list(
+#'           "string"
+#'         ),
+#'         eqExactMatch = list(
 #'           "string"
 #'         ),
 #'         gt = 123,
@@ -472,10 +476,9 @@ macie2_create_invitations <- function(accountIds, disableEmailNotification = NUL
 #' @param tags A map of key-value pairs that specifies the tags to associate with the
 #' account in Amazon Macie.
 #' 
-#' An account can have a maximum of 50 tags. Each tag consists of a
-#' required tag key and an associated tag value. The maximum length of a
-#' tag key is 128 characters. The maximum length of a tag value is 256
-#' characters.
+#' An account can have a maximum of 50 tags. Each tag consists of a tag key
+#' and an associated tag value. The maximum length of a tag key is 128
+#' characters. The maximum length of a tag value is 256 characters.
 #'
 #' @section Request syntax:
 #' ```
@@ -807,11 +810,9 @@ macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToke
 }
 .macie2$operations$describe_buckets <- macie2_describe_buckets
 
-#' Retrieves information about the status and settings for a classification
-#' job
+#' Retrieves the status and settings for a classification job
 #'
-#' Retrieves information about the status and settings for a classification
-#' job.
+#' Retrieves the status and settings for a classification job.
 #'
 #' @usage
 #' macie2_describe_classification_job(jobId)
@@ -845,11 +846,11 @@ macie2_describe_classification_job <- function(jobId) {
 }
 .macie2$operations$describe_classification_job <- macie2_describe_classification_job
 
-#' Retrieves information about the Amazon Macie configuration settings for
-#' an AWS organization
+#' Retrieves the Amazon Macie configuration settings for an AWS
+#' organization
 #'
-#' Retrieves information about the Amazon Macie configuration settings for
-#' an AWS organization.
+#' Retrieves the Amazon Macie configuration settings for an AWS
+#' organization.
 #'
 #' @usage
 #' macie2_describe_organization_configuration()
@@ -913,11 +914,11 @@ macie2_disable_macie <- function() {
 }
 .macie2$operations$disable_macie <- macie2_disable_macie
 
-#' Disables an account as a delegated administrator of Amazon Macie for an
-#' AWS organization
+#' Disables an account as the delegated Amazon Macie administrator account
+#' for an AWS organization
 #'
-#' Disables an account as a delegated administrator of Amazon Macie for an
-#' AWS organization.
+#' Disables an account as the delegated Amazon Macie administrator account
+#' for an AWS organization.
 #'
 #' @usage
 #' macie2_disable_organization_admin_account(adminAccountId)
@@ -1064,16 +1065,17 @@ macie2_enable_macie <- function(clientToken = NULL, findingPublishingFrequency =
 }
 .macie2$operations$enable_macie <- macie2_enable_macie
 
-#' Enables an account as a delegated administrator of Amazon Macie for an
-#' AWS organization
+#' Designates an account as the delegated Amazon Macie administrator
+#' account for an AWS organization
 #'
-#' Enables an account as a delegated administrator of Amazon Macie for an
-#' AWS organization.
+#' Designates an account as the delegated Amazon Macie administrator
+#' account for an AWS organization.
 #'
 #' @usage
 #' macie2_enable_organization_admin_account(adminAccountId, clientToken)
 #'
-#' @param adminAccountId &#91;required&#93; The AWS account ID for the account.
+#' @param adminAccountId &#91;required&#93; The AWS account ID for the account to designate as the delegated Amazon
+#' Macie administrator account for the organization.
 #' @param clientToken A unique, case-sensitive token that you provide to ensure the
 #' idempotency of the request.
 #'
@@ -1176,11 +1178,9 @@ macie2_get_classification_export_configuration <- function() {
 }
 .macie2$operations$get_classification_export_configuration <- macie2_get_classification_export_configuration
 
-#' Retrieves information about the criteria and other settings for a custom
-#' data identifier
+#' Retrieves the criteria and other settings for a custom data identifier
 #'
-#' Retrieves information about the criteria and other settings for a custom
-#' data identifier.
+#' Retrieves the criteria and other settings for a custom data identifier.
 #'
 #' @usage
 #' macie2_get_custom_data_identifier(id)
@@ -1233,8 +1233,8 @@ macie2_get_custom_data_identifier <- function(id) {
 #' -   resourcesAffected.s3Bucket.name - The name of the S3 bucket that the
 #'     finding applies to.
 #' 
-#' -   severity.description - The severity of the finding, such as High or
-#'     Medium.
+#' -   severity.description - The severity level of the finding, such as
+#'     High or Medium.
 #' 
 #' -   type - The type of finding, such as Policy:IAMUser/S3BucketPublic
 #'     and SensitiveData:S3Object/Personal.
@@ -1248,6 +1248,9 @@ macie2_get_custom_data_identifier <- function(id) {
 #'     criterion = list(
 #'       list(
 #'         eq = list(
+#'           "string"
+#'         ),
+#'         eqExactMatch = list(
 #'           "string"
 #'         ),
 #'         gt = 123,
@@ -1289,15 +1292,15 @@ macie2_get_finding_statistics <- function(findingCriteria = NULL, groupBy, size 
 }
 .macie2$operations$get_finding_statistics <- macie2_get_finding_statistics
 
-#' Retrieves information about one or more findings
+#' Retrieves the details of one or more findings
 #'
-#' Retrieves information about one or more findings.
+#' Retrieves the details of one or more findings.
 #'
 #' @usage
 #' macie2_get_findings(findingIds, sortCriteria)
 #'
 #' @param findingIds &#91;required&#93; An array of strings that lists the unique identifiers for the findings
-#' to retrieve information about.
+#' to retrieve.
 #' @param sortCriteria The criteria for sorting the results of the request.
 #'
 #' @section Request syntax:
@@ -1333,11 +1336,9 @@ macie2_get_findings <- function(findingIds, sortCriteria = NULL) {
 }
 .macie2$operations$get_findings <- macie2_get_findings
 
-#' Retrieves information about the criteria and other settings for a
-#' findings filter
+#' Retrieves the criteria and other settings for a findings filter
 #'
-#' Retrieves information about the criteria and other settings for a
-#' findings filter.
+#' Retrieves the criteria and other settings for a findings filter.
 #'
 #' @usage
 #' macie2_get_findings_filter(id)
@@ -1406,11 +1407,11 @@ macie2_get_invitations_count <- function() {
 }
 .macie2$operations$get_invitations_count <- macie2_get_invitations_count
 
-#' Retrieves information about the current status and configuration
-#' settings for an Amazon Macie account
+#' Retrieves the current status and configuration settings for an Amazon
+#' Macie account
 #'
-#' Retrieves information about the current status and configuration
-#' settings for an Amazon Macie account.
+#' Retrieves the current status and configuration settings for an Amazon
+#' Macie account.
 #'
 #' @usage
 #' macie2_get_macie_session()
@@ -1522,7 +1523,9 @@ macie2_get_member <- function(id) {
 #' @usage
 #' macie2_get_usage_statistics(filterBy, maxResults, nextToken, sortBy)
 #'
-#' @param filterBy The criteria to use to filter the query results.
+#' @param filterBy An array of objects, one for each condition to use to filter the query
+#' results. If the array contains more than one object, Amazon Macie uses
+#' an AND operator to join the conditions specified by the objects.
 #' @param maxResults The maximum number of items to include in each page of the response.
 #' @param nextToken The nextToken string that specifies which page of results to return in a
 #' paginated response.
@@ -1533,7 +1536,8 @@ macie2_get_member <- function(id) {
 #' svc$get_usage_statistics(
 #'   filterBy = list(
 #'     list(
-#'       key = "accountId",
+#'       comparator = "GT"|"GTE"|"LT"|"LTE"|"EQ"|"NE"|"CONTAINS",
+#'       key = "accountId"|"serviceLimit"|"freeTrialStartDate"|"total",
 #'       values = list(
 #'         "string"
 #'       )
@@ -1542,7 +1546,7 @@ macie2_get_member <- function(id) {
 #'   maxResults = 123,
 #'   nextToken = "string",
 #'   sortBy = list(
-#'     key = "accountId"|"total",
+#'     key = "accountId"|"total"|"serviceLimitValue"|"freeTrialStartDate",
 #'     orderBy = "ASC"|"DESC"
 #'   )
 #' )
@@ -1730,6 +1734,9 @@ macie2_list_custom_data_identifiers <- function(maxResults = NULL, nextToken = N
 #'         eq = list(
 #'           "string"
 #'         ),
+#'         eqExactMatch = list(
+#'           "string"
+#'         ),
 #'         gt = 123,
 #'         gte = 123,
 #'         lt = 123,
@@ -1900,11 +1907,11 @@ macie2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAssocia
 }
 .macie2$operations$list_members <- macie2_list_members
 
-#' Retrieves information about the account that's designated as the
-#' delegated administrator of Amazon Macie for an AWS organization
+#' Retrieves information about the delegated Amazon Macie administrator
+#' account for an AWS organization
 #'
-#' Retrieves information about the account that's designated as the
-#' delegated administrator of Amazon Macie for an AWS organization.
+#' Retrieves information about the delegated Amazon Macie administrator
+#' account for an AWS organization.
 #'
 #' @usage
 #' macie2_list_organization_admin_accounts(maxResults, nextToken)
@@ -2044,10 +2051,9 @@ macie2_put_classification_export_configuration <- function(configuration) {
 #' @param tags &#91;required&#93; A map of key-value pairs that specifies the tags to associate with the
 #' resource.
 #' 
-#' A resource can have a maximum of 50 tags. Each tag consists of a
-#' required tag key and an associated tag value. The maximum length of a
-#' tag key is 128 characters. The maximum length of a tag value is 256
-#' characters.
+#' A resource can have a maximum of 50 tags. Each tag consists of a tag key
+#' and an associated tag value. The maximum length of a tag key is 128
+#' characters. The maximum length of a tag value is 256 characters.
 #'
 #' @section Request syntax:
 #' ```
@@ -2091,11 +2097,11 @@ macie2_tag_resource <- function(resourceArn, tags) {
 #' exclude from the results. If the text matched by the regular expression
 #' is the same as any string in this array, Amazon Macie ignores it. The
 #' array can contain as many as 10 ignore words. Each ignore word can
-#' contain 4 - 90 characters.
+#' contain 4 - 90 characters. Ignore words are case sensitive.
 #' @param keywords An array that lists specific character sequences (keywords), one of
 #' which must be within proximity (maximumMatchDistance) of the regular
 #' expression to match. The array can contain as many as 50 keywords. Each
-#' keyword can contain 4 - 90 characters.
+#' keyword can contain 4 - 90 characters. Keywords aren't case sensitive.
 #' @param maximumMatchDistance The maximum number of characters that can exist between text that
 #' matches the regex pattern and the character sequences specified by the
 #' keywords array. Macie includes or excludes a result based on the
@@ -2186,22 +2192,50 @@ macie2_untag_resource <- function(resourceArn, tagKeys) {
 }
 .macie2$operations$untag_resource <- macie2_untag_resource
 
-#' Cancels a classification job
+#' Changes the status of a classification job
 #'
-#' Cancels a classification job.
+#' Changes the status of a classification job.
 #'
 #' @usage
 #' macie2_update_classification_job(jobId, jobStatus)
 #'
 #' @param jobId &#91;required&#93; The unique identifier for the classification job.
-#' @param jobStatus &#91;required&#93; The status to change the job's status to. The only supported value is
-#' CANCELLED, which cancels the job completely.
+#' @param jobStatus &#91;required&#93; The new status for the job. Valid values are:
+#' 
+#' -   CANCELLED - Stops the job permanently and cancels it. This value is
+#'     valid only if the job's current status is IDLE, PAUSED, RUNNING, or
+#'     USER\\_PAUSED.
+#' 
+#'     If you specify this value and the job's current status is RUNNING,
+#'     Amazon Macie immediately begins to stop all processing tasks for the
+#'     job. You can't resume or restart a job after you cancel it.
+#' 
+#' -   RUNNING - Resumes the job. This value is valid only if the job's
+#'     current status is USER\\_PAUSED.
+#' 
+#'     If you paused the job while it was actively running and you specify
+#'     this value less than 30 days after you paused the job, Macie
+#'     immediately resumes processing from the point where you paused the
+#'     job. Otherwise, Macie resumes the job according to the schedule and
+#'     other settings for the job.
+#' 
+#' -   USER\\_PAUSED - Pauses the job temporarily. This value is valid only
+#'     if the job's current status is IDLE or RUNNING. If you specify this
+#'     value and the job's current status is RUNNING, Macie immediately
+#'     begins to pause all processing tasks for the job.
+#' 
+#'     If you pause a one-time job and you don't resume it within 30 days,
+#'     the job expires and Macie cancels the job. If you pause a recurring
+#'     job when its status is RUNNING and you don't resume it within 30
+#'     days, the job run expires and Macie cancels the run. To check the
+#'     expiration date, refer to the UserPausedDetails.jobExpiresAt
+#'     property.
 #'
 #' @section Request syntax:
 #' ```
 #' svc$update_classification_job(
 #'   jobId = "string",
-#'   jobStatus = "RUNNING"|"PAUSED"|"CANCELLED"|"COMPLETE"|"IDLE"
+#'   jobStatus = "RUNNING"|"PAUSED"|"CANCELLED"|"COMPLETE"|"IDLE"|"USER_PAUSED"
 #' )
 #' ```
 #'
@@ -2268,6 +2302,9 @@ macie2_update_classification_job <- function(jobId, jobStatus) {
 #'     criterion = list(
 #'       list(
 #'         eq = list(
+#'           "string"
+#'         ),
+#'         eqExactMatch = list(
 #'           "string"
 #'         ),
 #'         gt = 123,
@@ -2390,9 +2427,9 @@ macie2_update_member_session <- function(id, status) {
 }
 .macie2$operations$update_member_session <- macie2_update_member_session
 
-#' Updates Amazon Macie configuration settings for an AWS organization
+#' Updates the Amazon Macie configuration settings for an AWS organization
 #'
-#' Updates Amazon Macie configuration settings for an AWS organization.
+#' Updates the Amazon Macie configuration settings for an AWS organization.
 #'
 #' @usage
 #' macie2_update_organization_configuration(autoEnable)

@@ -45,10 +45,15 @@ NULL
 #'  \link[=mediaconnect_create_flow]{create_flow} \tab Creates a new flow\cr
 #'  \link[=mediaconnect_delete_flow]{delete_flow} \tab Deletes a flow\cr
 #'  \link[=mediaconnect_describe_flow]{describe_flow} \tab Displays the details of a flow\cr
+#'  \link[=mediaconnect_describe_offering]{describe_offering} \tab Displays the details of an offering\cr
+#'  \link[=mediaconnect_describe_reservation]{describe_reservation} \tab Displays the details of a reservation\cr
 #'  \link[=mediaconnect_grant_flow_entitlements]{grant_flow_entitlements} \tab Grants entitlements to an existing flow\cr
 #'  \link[=mediaconnect_list_entitlements]{list_entitlements} \tab Displays a list of all entitlements that have been granted to this account\cr
 #'  \link[=mediaconnect_list_flows]{list_flows} \tab Displays a list of flows that are associated with this account\cr
+#'  \link[=mediaconnect_list_offerings]{list_offerings} \tab Displays a list of all offerings that are available to this account in the current AWS Region\cr
+#'  \link[=mediaconnect_list_reservations]{list_reservations} \tab Displays a list of all reservations that have been purchased by this account in the current AWS Region\cr
 #'  \link[=mediaconnect_list_tags_for_resource]{list_tags_for_resource} \tab List all tags on an AWS Elemental MediaConnect resource\cr
+#'  \link[=mediaconnect_purchase_offering]{purchase_offering} \tab Submits a request to purchase an offering\cr
 #'  \link[=mediaconnect_remove_flow_output]{remove_flow_output} \tab Removes an output from an existing flow\cr
 #'  \link[=mediaconnect_remove_flow_source]{remove_flow_source} \tab Removes a source from an existing flow\cr
 #'  \link[=mediaconnect_remove_flow_vpc_interface]{remove_flow_vpc_interface} \tab Removes a VPC Interface from an existing flow\cr

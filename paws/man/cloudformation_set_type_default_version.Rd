@@ -31,7 +31,7 @@ will be used in CloudFormation operations.
 \section{Request syntax}{
 \preformatted{svc$set_type_default_version(
   Arn = "string",
-  Type = "RESOURCE",
+  Type = "RESOURCE"|"MODULE",
   TypeName = "string",
   VersionId = "string"
 )

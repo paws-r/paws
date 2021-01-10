@@ -6,8 +6,8 @@
 \usage{
 amplify_update_branch(appId, branchName, description, framework, stage,
   enableNotification, enableAutoBuild, environmentVariables,
-  basicAuthCredentials, enableBasicAuth, buildSpec, ttl, displayName,
-  enablePullRequestPreview, pullRequestEnvironmentName,
+  basicAuthCredentials, enableBasicAuth, enablePerformanceMode, buildSpec,
+  ttl, displayName, enablePullRequestPreview, pullRequestEnvironmentName,
   backendEnvironmentArn)
 }
 \arguments{
@@ -31,6 +31,13 @@ amplify_update_branch(appId, branchName, description, framework, stage,
 
 \item{enableBasicAuth}{Enables basic authorization for the branch.}
 
+\item{enablePerformanceMode}{Enables performance mode for the branch.
+
+Performance mode optimizes for faster hosting performance by keeping
+content cached at the edge for a longer interval. When performance mode
+is enabled, hosting configuration or code changes can take up to 10
+minutes to roll out.}
+
 \item{buildSpec}{The build specification (build spec) for the branch.}
 
 \item{ttl}{The content Time to Live (TTL) for the website in seconds.}
@@ -38,7 +45,7 @@ amplify_update_branch(appId, branchName, description, framework, stage,
 \item{displayName}{The display name for a branch. This is used as the default domain
 prefix.}
 
-\item{enablePullRequestPreview}{Enables pull request preview for this branch.}
+\item{enablePullRequestPreview}{Enables pull request previews for this branch.}
 
 \item{pullRequestEnvironmentName}{The Amplify environment name for the pull request.}
 
@@ -62,6 +69,7 @@ Updates a branch for an Amplify app.
   ),
   basicAuthCredentials = "string",
   enableBasicAuth = TRUE|FALSE,
+  enablePerformanceMode = TRUE|FALSE,
   buildSpec = "string",
   ttl = "string",
   displayName = "string",

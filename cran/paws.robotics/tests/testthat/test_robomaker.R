@@ -29,3 +29,19 @@ test_that("list_simulation_job_batches", {
 test_that("list_simulation_jobs", {
   expect_error(svc$list_simulation_jobs(), NA)
 })
+
+test_that("list_world_export_jobs", {
+  expect_error(svc$list_world_export_jobs(), NA)
+})
+
+test_that("list_world_generation_jobs", {
+  expect_error(svc$list_world_generation_jobs(), NA)
+})
+
+test_that("list_world_templates", {
+  expect_error(svc$list_world_templates(), NA)
+})
+
+test_that("list_worlds", {
+  expect_error(svc$list_worlds(), NA)
+})

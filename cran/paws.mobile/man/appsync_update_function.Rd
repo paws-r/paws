@@ -19,7 +19,7 @@ appsync_update_function(apiId, name, description, functionId,
 
 \item{dataSourceName}{[required] The \code{Function} \code{DataSource} name.}
 
-\item{requestMappingTemplate}{[required] The \code{Function} request mapping template. Functions support only the
+\item{requestMappingTemplate}{The \code{Function} request mapping template. Functions support only the
 2018-05-29 version of the request mapping template.}
 
 \item{responseMappingTemplate}{The \code{Function} request mapping template.}

@@ -11,32 +11,17 @@ autoscalingplans_get_scaling_plan_resource_forecast_data(
 \arguments{
 \item{ScalingPlanName}{[required] The name of the scaling plan.}
 
-\item{ScalingPlanVersion}{[required] The version number of the scaling plan.}
+\item{ScalingPlanVersion}{[required] The version number of the scaling plan. Currently, the only valid value
+is \code{1}.}
 
-\item{ServiceNamespace}{[required] The namespace of the AWS service.}
+\item{ServiceNamespace}{[required] The namespace of the AWS service. The only valid value is \code{autoscaling}.}
 
-\item{ResourceId}{[required] The ID of the resource. This string consists of the resource type and
-unique identifier.
-\itemize{
-\item Auto Scaling group - The resource type is \code{autoScalingGroup} and the
-unique identifier is the name of the Auto Scaling group. Example:
-\code{autoScalingGroup/my-asg}.
-\item ECS service - The resource type is \code{service} and the unique
-identifier is the cluster name and service name. Example:
-\code{service/default/sample-webapp}.
-\item Spot Fleet request - The resource type is \code{spot-fleet-request} and
-the unique identifier is the Spot Fleet request ID. Example:
-\verb{spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE}.
-\item DynamoDB table - The resource type is \code{table} and the unique
-identifier is the resource ID. Example: \code{table/my-table}.
-\item DynamoDB global secondary index - The resource type is \code{index} and
-the unique identifier is the resource ID. Example:
-\code{table/my-table/index/my-table-index}.
-\item Aurora DB cluster - The resource type is \code{cluster} and the unique
-identifier is the cluster name. Example: \code{cluster:my-db-cluster}.
-}}
+\item{ResourceId}{[required] The ID of the resource. This string consists of a prefix
+(\code{autoScalingGroup}) followed by the name of a specified Auto Scaling
+group (\code{my-asg}). Example: \code{autoScalingGroup/my-asg}.}
 
-\item{ScalableDimension}{[required] The scalable dimension for the resource.}
+\item{ScalableDimension}{[required] The scalable dimension for the resource. The only valid value is
+\code{autoscaling:autoScalingGroup:DesiredCapacity}.}
 
 \item{ForecastDataType}{[required] The type of forecast data to get.
 \itemize{

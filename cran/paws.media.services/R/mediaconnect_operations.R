@@ -215,6 +215,7 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 #'         SecretArn = "string",
 #'         Url = "string"
 #'       ),
+#'       EntitlementStatus = "ENABLED"|"DISABLED",
 #'       Name = "string",
 #'       Subscribers = list(
 #'         "string"
@@ -409,6 +410,78 @@ mediaconnect_describe_flow <- function(FlowArn) {
 }
 .mediaconnect$operations$describe_flow <- mediaconnect_describe_flow
 
+#' Displays the details of an offering
+#'
+#' Displays the details of an offering. The response includes the offering description, duration, outbound bandwidth, price, and Amazon Resource Name (ARN).
+#'
+#' @usage
+#' mediaconnect_describe_offering(OfferingArn)
+#'
+#' @param OfferingArn &#91;required&#93; The Amazon Resource Name (ARN) of the offering.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_offering(
+#'   OfferingArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediaconnect_describe_offering
+mediaconnect_describe_offering <- function(OfferingArn) {
+  op <- new_operation(
+    name = "DescribeOffering",
+    http_method = "GET",
+    http_path = "/v1/offerings/{offeringArn}",
+    paginator = list()
+  )
+  input <- .mediaconnect$describe_offering_input(OfferingArn = OfferingArn)
+  output <- .mediaconnect$describe_offering_output()
+  config <- get_config()
+  svc <- .mediaconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediaconnect$operations$describe_offering <- mediaconnect_describe_offering
+
+#' Displays the details of a reservation
+#'
+#' Displays the details of a reservation. The response includes the reservation name, state, start date and time, and the details of the offering that make up the rest of the reservation (such as price, duration, and outbound bandwidth).
+#'
+#' @usage
+#' mediaconnect_describe_reservation(ReservationArn)
+#'
+#' @param ReservationArn &#91;required&#93; The Amazon Resource Name (ARN) of the reservation.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_reservation(
+#'   ReservationArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediaconnect_describe_reservation
+mediaconnect_describe_reservation <- function(ReservationArn) {
+  op <- new_operation(
+    name = "DescribeReservation",
+    http_method = "GET",
+    http_path = "/v1/reservations/{reservationArn}",
+    paginator = list()
+  )
+  input <- .mediaconnect$describe_reservation_input(ReservationArn = ReservationArn)
+  output <- .mediaconnect$describe_reservation_output()
+  config <- get_config()
+  svc <- .mediaconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediaconnect$operations$describe_reservation <- mediaconnect_describe_reservation
+
 #' Grants entitlements to an existing flow
 #'
 #' Grants entitlements to an existing flow.
@@ -437,6 +510,7 @@ mediaconnect_describe_flow <- function(FlowArn) {
 #'         SecretArn = "string",
 #'         Url = "string"
 #'       ),
+#'       EntitlementStatus = "ENABLED"|"DISABLED",
 #'       Name = "string",
 #'       Subscribers = list(
 #'         "string"
@@ -544,6 +618,84 @@ mediaconnect_list_flows <- function(MaxResults = NULL, NextToken = NULL) {
 }
 .mediaconnect$operations$list_flows <- mediaconnect_list_flows
 
+#' Displays a list of all offerings that are available to this account in
+#' the current AWS Region
+#'
+#' Displays a list of all offerings that are available to this account in the current AWS Region. If you have an active reservation (which means you've purchased an offering that has already started and hasn't expired yet), your account isn't eligible for other offerings.
+#'
+#' @usage
+#' mediaconnect_list_offerings(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of results to return per API request. For example, you submit a ListOfferings request with MaxResults set at 5. Although 20 items match your request, the service returns no more than the first 5 items. (The service also returns a NextToken value that you can use to fetch the next batch of results.) The service might return fewer results than the MaxResults value. If MaxResults is not included in the request, the service defaults to pagination with a maximum of 10 results per page.
+#' @param NextToken The token that identifies which batch of results that you want to see. For example, you submit a ListOfferings request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListOfferings request a second time and specify the NextToken value.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_offerings(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediaconnect_list_offerings
+mediaconnect_list_offerings <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListOfferings",
+    http_method = "GET",
+    http_path = "/v1/offerings",
+    paginator = list()
+  )
+  input <- .mediaconnect$list_offerings_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .mediaconnect$list_offerings_output()
+  config <- get_config()
+  svc <- .mediaconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediaconnect$operations$list_offerings <- mediaconnect_list_offerings
+
+#' Displays a list of all reservations that have been purchased by this
+#' account in the current AWS Region
+#'
+#' Displays a list of all reservations that have been purchased by this account in the current AWS Region. This list includes all reservations in all states (such as active and expired).
+#'
+#' @usage
+#' mediaconnect_list_reservations(MaxResults, NextToken)
+#'
+#' @param MaxResults The maximum number of results to return per API request. For example, you submit a ListReservations request with MaxResults set at 5. Although 20 items match your request, the service returns no more than the first 5 items. (The service also returns a NextToken value that you can use to fetch the next batch of results.) The service might return fewer results than the MaxResults value. If MaxResults is not included in the request, the service defaults to pagination with a maximum of 10 results per page.
+#' @param NextToken The token that identifies which batch of results that you want to see. For example, you submit a ListReservations request with MaxResults set at 5. The service returns the first batch of results (up to 5) and a NextToken value. To see the next batch of results, you can submit the ListOfferings request a second time and specify the NextToken value.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_reservations(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediaconnect_list_reservations
+mediaconnect_list_reservations <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListReservations",
+    http_method = "GET",
+    http_path = "/v1/reservations",
+    paginator = list()
+  )
+  input <- .mediaconnect$list_reservations_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .mediaconnect$list_reservations_output()
+  config <- get_config()
+  svc <- .mediaconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediaconnect$operations$list_reservations <- mediaconnect_list_reservations
+
 #' List all tags on an AWS Elemental MediaConnect resource
 #'
 #' List all tags on an AWS Elemental MediaConnect resource
@@ -579,6 +731,46 @@ mediaconnect_list_tags_for_resource <- function(ResourceArn) {
   return(response)
 }
 .mediaconnect$operations$list_tags_for_resource <- mediaconnect_list_tags_for_resource
+
+#' Submits a request to purchase an offering
+#'
+#' Submits a request to purchase an offering. If you already have an active reservation, you can't purchase another offering.
+#'
+#' @usage
+#' mediaconnect_purchase_offering(OfferingArn, ReservationName, Start)
+#'
+#' @param OfferingArn &#91;required&#93; The Amazon Resource Name (ARN) of the offering.
+#' @param ReservationName &#91;required&#93; The name that you want to use for the reservation.
+#' @param Start &#91;required&#93; The date and time that you want the reservation to begin, in Coordinated Universal Time (UTC). You can specify any date and time between 12:00am on the first day of the current month to the current time on today's date, inclusive. Specify the start in a 24-hour notation. Use the following format: YYYY-MM-DDTHH:mm:SSZ, where T and Z are literal characters. For example, to specify 11:30pm on March 5, 2020, enter 2020-03-05T23:30:00Z.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$purchase_offering(
+#'   OfferingArn = "string",
+#'   ReservationName = "string",
+#'   Start = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname mediaconnect_purchase_offering
+mediaconnect_purchase_offering <- function(OfferingArn, ReservationName, Start) {
+  op <- new_operation(
+    name = "PurchaseOffering",
+    http_method = "POST",
+    http_path = "/v1/offerings/{offeringArn}",
+    paginator = list()
+  )
+  input <- .mediaconnect$purchase_offering_input(OfferingArn = OfferingArn, ReservationName = ReservationName, Start = Start)
+  output <- .mediaconnect$purchase_offering_output()
+  config <- get_config()
+  svc <- .mediaconnect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mediaconnect$operations$purchase_offering <- mediaconnect_purchase_offering
 
 #' Removes an output from an existing flow
 #'
@@ -932,11 +1124,12 @@ mediaconnect_update_flow <- function(FlowArn, SourceFailoverConfig = NULL) {
 #'
 #' @usage
 #' mediaconnect_update_flow_entitlement(Description, Encryption,
-#'   EntitlementArn, FlowArn, Subscribers)
+#'   EntitlementArn, EntitlementStatus, FlowArn, Subscribers)
 #'
 #' @param Description A description of the entitlement. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the subscriber or end user.
 #' @param Encryption The type of encryption that will be used on the output associated with this entitlement.
 #' @param EntitlementArn &#91;required&#93; The ARN of the entitlement that you want to update.
+#' @param EntitlementStatus An indication of whether you want to enable the entitlement to allow access, or disable it to stop streaming content to the subscriber’s flow temporarily. If you don’t specify the entitlementStatus field in your request, MediaConnect leaves the value unchanged.
 #' @param FlowArn &#91;required&#93; The flow that is associated with the entitlement that you want to update.
 #' @param Subscribers The AWS account IDs that you want to share your content with. The receiving accounts (subscribers) will be allowed to create their own flow using your content as the source.
 #'
@@ -956,6 +1149,7 @@ mediaconnect_update_flow <- function(FlowArn, SourceFailoverConfig = NULL) {
 #'     Url = "string"
 #'   ),
 #'   EntitlementArn = "string",
+#'   EntitlementStatus = "ENABLED"|"DISABLED",
 #'   FlowArn = "string",
 #'   Subscribers = list(
 #'     "string"
@@ -966,14 +1160,14 @@ mediaconnect_update_flow <- function(FlowArn, SourceFailoverConfig = NULL) {
 #' @keywords internal
 #'
 #' @rdname mediaconnect_update_flow_entitlement
-mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption = NULL, EntitlementArn, FlowArn, Subscribers = NULL) {
+mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption = NULL, EntitlementArn, EntitlementStatus = NULL, FlowArn, Subscribers = NULL) {
   op <- new_operation(
     name = "UpdateFlowEntitlement",
     http_method = "PUT",
     http_path = "/v1/flows/{flowArn}/entitlements/{entitlementArn}",
     paginator = list()
   )
-  input <- .mediaconnect$update_flow_entitlement_input(Description = Description, Encryption = Encryption, EntitlementArn = EntitlementArn, FlowArn = FlowArn, Subscribers = Subscribers)
+  input <- .mediaconnect$update_flow_entitlement_input(Description = Description, Encryption = Encryption, EntitlementArn = EntitlementArn, EntitlementStatus = EntitlementStatus, FlowArn = FlowArn, Subscribers = Subscribers)
   output <- .mediaconnect$update_flow_entitlement_output()
   config <- get_config()
   svc <- .mediaconnect$service(config)

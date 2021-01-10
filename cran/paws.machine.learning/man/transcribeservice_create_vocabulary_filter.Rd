@@ -10,9 +10,8 @@ transcribeservice_create_vocabulary_filter(VocabularyFilterName,
 }
 \arguments{
 \item{VocabularyFilterName}{[required] The vocabulary filter name. The name must be unique within the account
-that contains it.If you try to create a vocabulary filter with the same
-name as a previous vocabulary filter you will receive a
-\code{ConflictException} error.}
+that contains it. If you try to create a vocabulary filter with the same
+name as another vocabulary filter, you get a \code{ConflictException} error.}
 
 \item{LanguageCode}{[required] The language code of the words in the vocabulary filter. All words in
 the filter must be in the same language. The vocabulary filter can only
@@ -42,7 +41,7 @@ as profane words, from the output of a transcription job.
 \section{Request syntax}{
 \preformatted{svc$create_vocabulary_filter(
   VocabularyFilterName = "string",
-  LanguageCode = "en-US"|"es-US"|"en-AU"|"fr-CA"|"en-GB"|"de-DE"|"pt-BR"|"fr-FR"|"it-IT"|"ko-KR"|"es-ES"|"en-IN"|"hi-IN"|"ar-SA"|"ru-RU"|"zh-CN"|"nl-NL"|"id-ID"|"ta-IN"|"fa-IR"|"en-IE"|"en-AB"|"en-WL"|"pt-PT"|"te-IN"|"tr-TR"|"de-CH"|"he-IL"|"ms-MY"|"ja-JP"|"ar-AE",
+  LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"cy-GB"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"ga-IE"|"gd-GB"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN",
   Words = list(
     "string"
   ),

@@ -3,6 +3,45 @@
 #' @include robomaker_service.R
 NULL
 
+#' Deletes one or more worlds in a batch operation
+#'
+#' Deletes one or more worlds in a batch operation.
+#'
+#' @usage
+#' robomaker_batch_delete_worlds(worlds)
+#'
+#' @param worlds &#91;required&#93; A list of Amazon Resource Names (arns) that correspond to worlds to
+#' delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_delete_worlds(
+#'   worlds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_batch_delete_worlds
+robomaker_batch_delete_worlds <- function(worlds) {
+  op <- new_operation(
+    name = "BatchDeleteWorlds",
+    http_method = "POST",
+    http_path = "/batchDeleteWorlds",
+    paginator = list()
+  )
+  input <- .robomaker$batch_delete_worlds_input(worlds = worlds)
+  output <- .robomaker$batch_delete_worlds_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$batch_delete_worlds <- robomaker_batch_delete_worlds
+
 #' Describes one or more simulation jobs
 #'
 #' Describes one or more simulation jobs.
@@ -150,6 +189,78 @@ robomaker_cancel_simulation_job_batch <- function(batch) {
   return(response)
 }
 .robomaker$operations$cancel_simulation_job_batch <- robomaker_cancel_simulation_job_batch
+
+#' Cancels the specified export job
+#'
+#' Cancels the specified export job.
+#'
+#' @usage
+#' robomaker_cancel_world_export_job(job)
+#'
+#' @param job &#91;required&#93; The Amazon Resource Name (arn) of the world export job to cancel.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_world_export_job(
+#'   job = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_cancel_world_export_job
+robomaker_cancel_world_export_job <- function(job) {
+  op <- new_operation(
+    name = "CancelWorldExportJob",
+    http_method = "POST",
+    http_path = "/cancelWorldExportJob",
+    paginator = list()
+  )
+  input <- .robomaker$cancel_world_export_job_input(job = job)
+  output <- .robomaker$cancel_world_export_job_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$cancel_world_export_job <- robomaker_cancel_world_export_job
+
+#' Cancels the specified world generator job
+#'
+#' Cancels the specified world generator job.
+#'
+#' @usage
+#' robomaker_cancel_world_generation_job(job)
+#'
+#' @param job &#91;required&#93; The Amazon Resource Name (arn) of the world generator job to cancel.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$cancel_world_generation_job(
+#'   job = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_cancel_world_generation_job
+robomaker_cancel_world_generation_job <- function(job) {
+  op <- new_operation(
+    name = "CancelWorldGenerationJob",
+    http_method = "POST",
+    http_path = "/cancelWorldGenerationJob",
+    paginator = list()
+  )
+  input <- .robomaker$cancel_world_generation_job_input(job = job)
+  output <- .robomaker$cancel_world_generation_job_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$cancel_world_generation_job <- robomaker_cancel_world_generation_job
 
 #' Deploys a specific version of a robot application to robots in a fleet
 #'
@@ -628,6 +739,11 @@ robomaker_create_simulation_application_version <- function(application, current
 #'           )
 #'         ),
 #'         streamUI = TRUE|FALSE
+#'       ),
+#'       worldConfigs = list(
+#'         list(
+#'           world = "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -677,6 +793,170 @@ robomaker_create_simulation_job <- function(clientRequestToken = NULL, outputLoc
   return(response)
 }
 .robomaker$operations$create_simulation_job <- robomaker_create_simulation_job
+
+#' Creates a world export job
+#'
+#' Creates a world export job.
+#'
+#' @usage
+#' robomaker_create_world_export_job(clientRequestToken, worlds,
+#'   outputLocation, iamRole, tags)
+#'
+#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param worlds &#91;required&#93; A list of Amazon Resource Names (arns) that correspond to worlds to
+#' export.
+#' @param outputLocation &#91;required&#93; 
+#' @param iamRole &#91;required&#93; The IAM role that the world export process uses to access the Amazon S3
+#' bucket and put the export.
+#' @param tags A map that contains tag keys and tag values that are attached to the
+#' world export job.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_world_export_job(
+#'   clientRequestToken = "string",
+#'   worlds = list(
+#'     "string"
+#'   ),
+#'   outputLocation = list(
+#'     s3Bucket = "string",
+#'     s3Prefix = "string"
+#'   ),
+#'   iamRole = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_create_world_export_job
+robomaker_create_world_export_job <- function(clientRequestToken = NULL, worlds, outputLocation, iamRole, tags = NULL) {
+  op <- new_operation(
+    name = "CreateWorldExportJob",
+    http_method = "POST",
+    http_path = "/createWorldExportJob",
+    paginator = list()
+  )
+  input <- .robomaker$create_world_export_job_input(clientRequestToken = clientRequestToken, worlds = worlds, outputLocation = outputLocation, iamRole = iamRole, tags = tags)
+  output <- .robomaker$create_world_export_job_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$create_world_export_job <- robomaker_create_world_export_job
+
+#' Creates worlds using the specified template
+#'
+#' Creates worlds using the specified template.
+#'
+#' @usage
+#' robomaker_create_world_generation_job(clientRequestToken, template,
+#'   worldCount, tags, worldTags)
+#'
+#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param template &#91;required&#93; The Amazon Resource Name (arn) of the world template describing the
+#' worlds you want to create.
+#' @param worldCount &#91;required&#93; Information about the world count.
+#' @param tags A map that contains tag keys and tag values that are attached to the
+#' world generator job.
+#' @param worldTags A map that contains tag keys and tag values that are attached to the
+#' generated worlds.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_world_generation_job(
+#'   clientRequestToken = "string",
+#'   template = "string",
+#'   worldCount = list(
+#'     floorplanCount = 123,
+#'     interiorCountPerFloorplan = 123
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   worldTags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_create_world_generation_job
+robomaker_create_world_generation_job <- function(clientRequestToken = NULL, template, worldCount, tags = NULL, worldTags = NULL) {
+  op <- new_operation(
+    name = "CreateWorldGenerationJob",
+    http_method = "POST",
+    http_path = "/createWorldGenerationJob",
+    paginator = list()
+  )
+  input <- .robomaker$create_world_generation_job_input(clientRequestToken = clientRequestToken, template = template, worldCount = worldCount, tags = tags, worldTags = worldTags)
+  output <- .robomaker$create_world_generation_job_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$create_world_generation_job <- robomaker_create_world_generation_job
+
+#' Creates a world template
+#'
+#' Creates a world template.
+#'
+#' @usage
+#' robomaker_create_world_template(clientRequestToken, name, templateBody,
+#'   templateLocation, tags)
+#'
+#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param name The name of the world template.
+#' @param templateBody The world template body.
+#' @param templateLocation The location of the world template.
+#' @param tags A map that contains tag keys and tag values that are attached to the
+#' world template.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_world_template(
+#'   clientRequestToken = "string",
+#'   name = "string",
+#'   templateBody = "string",
+#'   templateLocation = list(
+#'     s3Bucket = "string",
+#'     s3Key = "string"
+#'   ),
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_create_world_template
+robomaker_create_world_template <- function(clientRequestToken = NULL, name = NULL, templateBody = NULL, templateLocation = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateWorldTemplate",
+    http_method = "POST",
+    http_path = "/createWorldTemplate",
+    paginator = list()
+  )
+  input <- .robomaker$create_world_template_input(clientRequestToken = clientRequestToken, name = name, templateBody = templateBody, templateLocation = templateLocation, tags = tags)
+  output <- .robomaker$create_world_template_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$create_world_template <- robomaker_create_world_template
 
 #' Deletes a fleet
 #'
@@ -825,6 +1105,42 @@ robomaker_delete_simulation_application <- function(application, applicationVers
   return(response)
 }
 .robomaker$operations$delete_simulation_application <- robomaker_delete_simulation_application
+
+#' Deletes a world template
+#'
+#' Deletes a world template.
+#'
+#' @usage
+#' robomaker_delete_world_template(template)
+#'
+#' @param template &#91;required&#93; The Amazon Resource Name (arn) of the world template you want to delete.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_world_template(
+#'   template = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_delete_world_template
+robomaker_delete_world_template <- function(template) {
+  op <- new_operation(
+    name = "DeleteWorldTemplate",
+    http_method = "POST",
+    http_path = "/deleteWorldTemplate",
+    paginator = list()
+  )
+  input <- .robomaker$delete_world_template_input(template = template)
+  output <- .robomaker$delete_world_template_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$delete_world_template <- robomaker_delete_world_template
 
 #' Deregisters a robot
 #'
@@ -1121,6 +1437,189 @@ robomaker_describe_simulation_job_batch <- function(batch) {
 }
 .robomaker$operations$describe_simulation_job_batch <- robomaker_describe_simulation_job_batch
 
+#' Describes a world
+#'
+#' Describes a world.
+#'
+#' @usage
+#' robomaker_describe_world(world)
+#'
+#' @param world &#91;required&#93; The Amazon Resource Name (arn) of the world you want to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_world(
+#'   world = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_describe_world
+robomaker_describe_world <- function(world) {
+  op <- new_operation(
+    name = "DescribeWorld",
+    http_method = "POST",
+    http_path = "/describeWorld",
+    paginator = list()
+  )
+  input <- .robomaker$describe_world_input(world = world)
+  output <- .robomaker$describe_world_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$describe_world <- robomaker_describe_world
+
+#' Describes a world export job
+#'
+#' Describes a world export job.
+#'
+#' @usage
+#' robomaker_describe_world_export_job(job)
+#'
+#' @param job &#91;required&#93; The Amazon Resource Name (arn) of the world export job to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_world_export_job(
+#'   job = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_describe_world_export_job
+robomaker_describe_world_export_job <- function(job) {
+  op <- new_operation(
+    name = "DescribeWorldExportJob",
+    http_method = "POST",
+    http_path = "/describeWorldExportJob",
+    paginator = list()
+  )
+  input <- .robomaker$describe_world_export_job_input(job = job)
+  output <- .robomaker$describe_world_export_job_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$describe_world_export_job <- robomaker_describe_world_export_job
+
+#' Describes a world generation job
+#'
+#' Describes a world generation job.
+#'
+#' @usage
+#' robomaker_describe_world_generation_job(job)
+#'
+#' @param job &#91;required&#93; The Amazon Resource Name (arn) of the world generation job to describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_world_generation_job(
+#'   job = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_describe_world_generation_job
+robomaker_describe_world_generation_job <- function(job) {
+  op <- new_operation(
+    name = "DescribeWorldGenerationJob",
+    http_method = "POST",
+    http_path = "/describeWorldGenerationJob",
+    paginator = list()
+  )
+  input <- .robomaker$describe_world_generation_job_input(job = job)
+  output <- .robomaker$describe_world_generation_job_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$describe_world_generation_job <- robomaker_describe_world_generation_job
+
+#' Describes a world template
+#'
+#' Describes a world template.
+#'
+#' @usage
+#' robomaker_describe_world_template(template)
+#'
+#' @param template &#91;required&#93; The Amazon Resource Name (arn) of the world template you want to
+#' describe.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_world_template(
+#'   template = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_describe_world_template
+robomaker_describe_world_template <- function(template) {
+  op <- new_operation(
+    name = "DescribeWorldTemplate",
+    http_method = "POST",
+    http_path = "/describeWorldTemplate",
+    paginator = list()
+  )
+  input <- .robomaker$describe_world_template_input(template = template)
+  output <- .robomaker$describe_world_template_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$describe_world_template <- robomaker_describe_world_template
+
+#' Gets the world template body
+#'
+#' Gets the world template body.
+#'
+#' @usage
+#' robomaker_get_world_template_body(template, generationJob)
+#'
+#' @param template The Amazon Resource Name (arn) of the world template.
+#' @param generationJob The Amazon Resource Name (arn) of the world generator job.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_world_template_body(
+#'   template = "string",
+#'   generationJob = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_get_world_template_body
+robomaker_get_world_template_body <- function(template = NULL, generationJob = NULL) {
+  op <- new_operation(
+    name = "GetWorldTemplateBody",
+    http_method = "POST",
+    http_path = "/getWorldTemplateBody",
+    paginator = list()
+  )
+  input <- .robomaker$get_world_template_body_input(template = template, generationJob = generationJob)
+  output <- .robomaker$get_world_template_body_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$get_world_template_body <- robomaker_get_world_template_body
+
 #' Returns a list of deployment jobs for a fleet
 #'
 #' Returns a list of deployment jobs for a fleet. You can optionally
@@ -1136,10 +1635,12 @@ robomaker_describe_simulation_job_batch <- function(batch) {
 #' three filters, but they must be for the same named item. For example, if
 #' you are looking for items with the status `InProgress` or the status
 #' `Pending`.
-#' @param nextToken The `nextToken` value returned from a previous paginated
-#' `ListDeploymentJobs` request where `maxResults` was used and the results
-#' exceeded the value of that parameter. Pagination continues from the end
-#' of the previous results that returned the `nextToken` value.
+#' @param nextToken If the previous paginated request did not return all of the remaining
+#' results, the response object's `nextToken` parameter value is set to a
+#' token. To retrieve the next set of results, call `ListDeploymentJobs`
+#' again and assign that token to the request object's `nextToken`
+#' parameter. If there are no remaining results, the previous response
+#' object's NextToken parameter is set to null.
 #' @param maxResults When this parameter is used, `ListDeploymentJobs` only returns
 #' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
@@ -1192,10 +1693,12 @@ robomaker_list_deployment_jobs <- function(filters = NULL, nextToken = NULL, max
 #' @usage
 #' robomaker_list_fleets(nextToken, maxResults, filters)
 #'
-#' @param nextToken The `nextToken` value returned from a previous paginated `ListFleets`
-#' request where `maxResults` was used and the results exceeded the value
-#' of that parameter. Pagination continues from the end of the previous
-#' results that returned the `nextToken` value.
+#' @param nextToken If the previous paginated request did not return all of the remaining
+#' results, the response object's `nextToken` parameter value is set to a
+#' token. To retrieve the next set of results, call `ListFleets` again and
+#' assign that token to the request object's `nextToken` parameter. If
+#' there are no remaining results, the previous response object's NextToken
+#' parameter is set to null.
 #' 
 #' This token should be treated as an opaque identifier that is only used
 #' to retrieve the next items in a list and not for other programmatic
@@ -1257,10 +1760,12 @@ robomaker_list_fleets <- function(nextToken = NULL, maxResults = NULL, filters =
 #'   maxResults, filters)
 #'
 #' @param versionQualifier The version qualifier of the robot application.
-#' @param nextToken The `nextToken` value returned from a previous paginated
-#' `ListRobotApplications` request where `maxResults` was used and the
-#' results exceeded the value of that parameter. Pagination continues from
-#' the end of the previous results that returned the `nextToken` value.
+#' @param nextToken If the previous paginated request did not return all of the remaining
+#' results, the response object's `nextToken` parameter value is set to a
+#' token. To retrieve the next set of results, call `ListRobotApplications`
+#' again and assign that token to the request object's `nextToken`
+#' parameter. If there are no remaining results, the previous response
+#' object's NextToken parameter is set to null.
 #' @param maxResults When this parameter is used, `ListRobotApplications` only returns
 #' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
@@ -1318,10 +1823,12 @@ robomaker_list_robot_applications <- function(versionQualifier = NULL, nextToken
 #' @usage
 #' robomaker_list_robots(nextToken, maxResults, filters)
 #'
-#' @param nextToken The `nextToken` value returned from a previous paginated `ListRobots`
-#' request where `maxResults` was used and the results exceeded the value
-#' of that parameter. Pagination continues from the end of the previous
-#' results that returned the `nextToken` value.
+#' @param nextToken If the previous paginated request did not return all of the remaining
+#' results, the response object's `nextToken` parameter value is set to a
+#' token. To retrieve the next set of results, call `ListRobots` again and
+#' assign that token to the request object's `nextToken` parameter. If
+#' there are no remaining results, the previous response object's NextToken
+#' parameter is set to null.
 #' @param maxResults When this parameter is used, `ListRobots` only returns `maxResults`
 #' results in a single page along with a `nextToken` response element. The
 #' remaining results of the initial request can be seen by sending another
@@ -1382,10 +1889,12 @@ robomaker_list_robots <- function(nextToken = NULL, maxResults = NULL, filters =
 #'   maxResults, filters)
 #'
 #' @param versionQualifier The version qualifier of the simulation application.
-#' @param nextToken The `nextToken` value returned from a previous paginated
-#' `ListSimulationApplications` request where `maxResults` was used and the
-#' results exceeded the value of that parameter. Pagination continues from
-#' the end of the previous results that returned the `nextToken` value.
+#' @param nextToken If the previous paginated request did not return all of the remaining
+#' results, the response object's `nextToken` parameter value is set to a
+#' token. To retrieve the next set of results, call
+#' `ListSimulationApplications` again and assign that token to the request
+#' object's `nextToken` parameter. If there are no remaining results, the
+#' previous response object's NextToken parameter is set to null.
 #' @param maxResults When this parameter is used, `ListSimulationApplications` only returns
 #' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
@@ -1443,10 +1952,12 @@ robomaker_list_simulation_applications <- function(versionQualifier = NULL, next
 #' @usage
 #' robomaker_list_simulation_job_batches(nextToken, maxResults, filters)
 #'
-#' @param nextToken The `nextToken` value returned from a previous paginated
-#' `ListSimulationJobBatches` request where `maxResults` was used and the
-#' results exceeded the value of that parameter. Pagination continues from
-#' the end of the previous results that returned the `nextToken` value.
+#' @param nextToken If the previous paginated request did not return all of the remaining
+#' results, the response object's `nextToken` parameter value is set to a
+#' token. To retrieve the next set of results, call
+#' `ListSimulationJobBatches` again and assign that token to the request
+#' object's `nextToken` parameter. If there are no remaining results, the
+#' previous response object's NextToken parameter is set to null.
 #' @param maxResults When this parameter is used, `ListSimulationJobBatches` only returns
 #' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
@@ -1498,14 +2009,12 @@ robomaker_list_simulation_job_batches <- function(nextToken = NULL, maxResults =
 #' @usage
 #' robomaker_list_simulation_jobs(nextToken, maxResults, filters)
 #'
-#' @param nextToken The `nextToken` value returned from a previous paginated
-#' `ListSimulationJobs` request where `maxResults` was used and the results
-#' exceeded the value of that parameter. Pagination continues from the end
-#' of the previous results that returned the `nextToken` value.
-#' 
-#' This token should be treated as an opaque identifier that is only used
-#' to retrieve the next items in a list and not for other programmatic
-#' purposes.
+#' @param nextToken If the previous paginated request did not return all of the remaining
+#' results, the response object's `nextToken` parameter value is set to a
+#' token. To retrieve the next set of results, call `ListSimulationJobs`
+#' again and assign that token to the request object's `nextToken`
+#' parameter. If there are no remaining results, the previous response
+#' object's NextToken parameter is set to null.
 #' @param maxResults When this parameter is used, `ListSimulationJobs` only returns
 #' `maxResults` results in a single page along with a `nextToken` response
 #' element. The remaining results of the initial request can be seen by
@@ -1592,6 +2101,231 @@ robomaker_list_tags_for_resource <- function(resourceArn) {
   return(response)
 }
 .robomaker$operations$list_tags_for_resource <- robomaker_list_tags_for_resource
+
+#' Lists world export jobs
+#'
+#' Lists world export jobs.
+#'
+#' @usage
+#' robomaker_list_world_export_jobs(nextToken, maxResults, filters)
+#'
+#' @param nextToken If the previous paginated request did not return all of the remaining
+#' results, the response object's `nextToken` parameter value is set to a
+#' token. To retrieve the next set of results, call `ListWorldExportJobs`
+#' again and assign that token to the request object's `nextToken`
+#' parameter. If there are no remaining results, the previous response
+#' object's NextToken parameter is set to null.
+#' @param maxResults When this parameter is used, `ListWorldExportJobs` only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another `ListWorldExportJobs` request with the returned
+#' `nextToken` value. This value can be between 1 and 100. If this
+#' parameter is not used, then `ListWorldExportJobs` returns up to 100
+#' results and a `nextToken` value if applicable.
+#' @param filters Optional filters to limit results. You can use `generationJobId` and
+#' `templateId`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_world_export_jobs(
+#'   nextToken = "string",
+#'   maxResults = 123,
+#'   filters = list(
+#'     list(
+#'       name = "string",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_list_world_export_jobs
+robomaker_list_world_export_jobs <- function(nextToken = NULL, maxResults = NULL, filters = NULL) {
+  op <- new_operation(
+    name = "ListWorldExportJobs",
+    http_method = "POST",
+    http_path = "/listWorldExportJobs",
+    paginator = list()
+  )
+  input <- .robomaker$list_world_export_jobs_input(nextToken = nextToken, maxResults = maxResults, filters = filters)
+  output <- .robomaker$list_world_export_jobs_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$list_world_export_jobs <- robomaker_list_world_export_jobs
+
+#' Lists world generator jobs
+#'
+#' Lists world generator jobs.
+#'
+#' @usage
+#' robomaker_list_world_generation_jobs(nextToken, maxResults, filters)
+#'
+#' @param nextToken If the previous paginated request did not return all of the remaining
+#' results, the response object's `nextToken` parameter value is set to a
+#' token. To retrieve the next set of results, call
+#' `ListWorldGenerationJobsRequest` again and assign that token to the
+#' request object's `nextToken` parameter. If there are no remaining
+#' results, the previous response object's NextToken parameter is set to
+#' null.
+#' @param maxResults When this parameter is used, `ListWorldGeneratorJobs` only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another `ListWorldGeneratorJobs` request with the returned
+#' `nextToken` value. This value can be between 1 and 100. If this
+#' parameter is not used, then `ListWorldGeneratorJobs` returns up to 100
+#' results and a `nextToken` value if applicable.
+#' @param filters Optional filters to limit results. You can use `status` and
+#' `templateId`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_world_generation_jobs(
+#'   nextToken = "string",
+#'   maxResults = 123,
+#'   filters = list(
+#'     list(
+#'       name = "string",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_list_world_generation_jobs
+robomaker_list_world_generation_jobs <- function(nextToken = NULL, maxResults = NULL, filters = NULL) {
+  op <- new_operation(
+    name = "ListWorldGenerationJobs",
+    http_method = "POST",
+    http_path = "/listWorldGenerationJobs",
+    paginator = list()
+  )
+  input <- .robomaker$list_world_generation_jobs_input(nextToken = nextToken, maxResults = maxResults, filters = filters)
+  output <- .robomaker$list_world_generation_jobs_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$list_world_generation_jobs <- robomaker_list_world_generation_jobs
+
+#' Lists world templates
+#'
+#' Lists world templates.
+#'
+#' @usage
+#' robomaker_list_world_templates(nextToken, maxResults)
+#'
+#' @param nextToken If the previous paginated request did not return all of the remaining
+#' results, the response object's `nextToken` parameter value is set to a
+#' token. To retrieve the next set of results, call `ListWorldTemplates`
+#' again and assign that token to the request object's `nextToken`
+#' parameter. If there are no remaining results, the previous response
+#' object's NextToken parameter is set to null.
+#' @param maxResults When this parameter is used, `ListWorldTemplates` only returns
+#' `maxResults` results in a single page along with a `nextToken` response
+#' element. The remaining results of the initial request can be seen by
+#' sending another `ListWorldTemplates` request with the returned
+#' `nextToken` value. This value can be between 1 and 100. If this
+#' parameter is not used, then `ListWorldTemplates` returns up to 100
+#' results and a `nextToken` value if applicable.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_world_templates(
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_list_world_templates
+robomaker_list_world_templates <- function(nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListWorldTemplates",
+    http_method = "POST",
+    http_path = "/listWorldTemplates",
+    paginator = list()
+  )
+  input <- .robomaker$list_world_templates_input(nextToken = nextToken, maxResults = maxResults)
+  output <- .robomaker$list_world_templates_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$list_world_templates <- robomaker_list_world_templates
+
+#' Lists worlds
+#'
+#' Lists worlds.
+#'
+#' @usage
+#' robomaker_list_worlds(nextToken, maxResults, filters)
+#'
+#' @param nextToken If the previous paginated request did not return all of the remaining
+#' results, the response object's `nextToken` parameter value is set to a
+#' token. To retrieve the next set of results, call `ListWorlds` again and
+#' assign that token to the request object's `nextToken` parameter. If
+#' there are no remaining results, the previous response object's NextToken
+#' parameter is set to null.
+#' @param maxResults When this parameter is used, `ListWorlds` only returns `maxResults`
+#' results in a single page along with a `nextToken` response element. The
+#' remaining results of the initial request can be seen by sending another
+#' `ListWorlds` request with the returned `nextToken` value. This value can
+#' be between 1 and 100. If this parameter is not used, then `ListWorlds`
+#' returns up to 100 results and a `nextToken` value if applicable.
+#' @param filters Optional filters to limit results. You can use `status`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_worlds(
+#'   nextToken = "string",
+#'   maxResults = 123,
+#'   filters = list(
+#'     list(
+#'       name = "string",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_list_worlds
+robomaker_list_worlds <- function(nextToken = NULL, maxResults = NULL, filters = NULL) {
+  op <- new_operation(
+    name = "ListWorlds",
+    http_method = "POST",
+    http_path = "/listWorlds",
+    paginator = list()
+  )
+  input <- .robomaker$list_worlds_input(nextToken = nextToken, maxResults = maxResults, filters = filters)
+  output <- .robomaker$list_worlds_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$list_worlds <- robomaker_list_worlds
 
 #' Registers a robot with a fleet
 #'
@@ -1747,6 +2481,11 @@ robomaker_restart_simulation_job <- function(job) {
 #'               )
 #'             ),
 #'             streamUI = TRUE|FALSE
+#'           ),
+#'           worldConfigs = list(
+#'             list(
+#'               world = "string"
+#'             )
 #'           )
 #'         )
 #'       ),
@@ -2054,3 +2793,49 @@ robomaker_update_simulation_application <- function(application, sources, simula
   return(response)
 }
 .robomaker$operations$update_simulation_application <- robomaker_update_simulation_application
+
+#' Updates a world template
+#'
+#' Updates a world template.
+#'
+#' @usage
+#' robomaker_update_world_template(template, name, templateBody,
+#'   templateLocation)
+#'
+#' @param template &#91;required&#93; The Amazon Resource Name (arn) of the world template to update.
+#' @param name The name of the template.
+#' @param templateBody The world template body.
+#' @param templateLocation The location of the world template.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_world_template(
+#'   template = "string",
+#'   name = "string",
+#'   templateBody = "string",
+#'   templateLocation = list(
+#'     s3Bucket = "string",
+#'     s3Key = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname robomaker_update_world_template
+robomaker_update_world_template <- function(template, name = NULL, templateBody = NULL, templateLocation = NULL) {
+  op <- new_operation(
+    name = "UpdateWorldTemplate",
+    http_method = "POST",
+    http_path = "/updateWorldTemplate",
+    paginator = list()
+  )
+  input <- .robomaker$update_world_template_input(template = template, name = name, templateBody = templateBody, templateLocation = templateLocation)
+  output <- .robomaker$update_world_template_output()
+  config <- get_config()
+  svc <- .robomaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.robomaker$operations$update_world_template <- robomaker_update_world_template

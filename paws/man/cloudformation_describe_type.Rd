@@ -39,7 +39,7 @@ default type version.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_type(
-  Type = "RESOURCE",
+  Type = "RESOURCE"|"MODULE",
   TypeName = "string",
   Arn = "string",
   VersionId = "string"

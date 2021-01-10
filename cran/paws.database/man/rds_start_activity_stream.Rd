@@ -7,7 +7,7 @@
 rds_start_activity_stream(ResourceArn, Mode, KmsKeyId, ApplyImmediately)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the DB cluster, for example
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the DB cluster, for example,
 \code{arn:aws:rds:us-east-1:12345667890:cluster:das-cluster}.}
 
 \item{Mode}{[required] Specifies the mode of the database activity stream. Database events such
@@ -15,8 +15,8 @@ as a change or access generate an activity stream event. The database
 session can handle these events either synchronously or asynchronously.}
 
 \item{KmsKeyId}{[required] The AWS KMS key identifier for encrypting messages in the database
-activity stream. The key identifier can be either a key ID, a key ARN,
-or a key alias.}
+activity stream. The AWS KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the AWS KMS customer master key (CMK).}
 
 \item{ApplyImmediately}{Specifies whether or not the database activity stream is to start as
 soon as possible, regardless of the maintenance window for the database.}

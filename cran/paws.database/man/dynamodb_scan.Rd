@@ -33,7 +33,7 @@ off. Also, if the processed dataset size exceeds 1 MB before DynamoDB
 reaches this limit, it stops the operation and returns the matching
 values up to the limit, and a key in \code{LastEvaluatedKey} to apply in a
 subsequent operation to continue the operation. For more information,
-see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html}{Working with Queries}
+see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html}{Working with Queries}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{Select}{The attributes to be returned in the result. You can retrieve all item
@@ -142,7 +142,7 @@ If no attribute names are specified, then all attributes will be
 returned. If any of the requested attributes are not found, they will
 not appear in the result.
 
-For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Specifying Item Attributes}
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html}{Specifying Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{FilterExpression}{A string that contains conditions that DynamoDB applies after the \code{Scan}
@@ -153,7 +153,7 @@ A \code{FilterExpression} is applied after the items have already been read;
 the process of filtering does not consume any additional read capacity
 units.
 
-For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults}{Filter Expressions}
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#FilteringResults}{Filter Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ExpressionAttributeNames}{One or more substitution tokens for attribute names in an expression.
@@ -191,7 +191,7 @@ example:
 Tokens that begin with the \strong{:} character are \emph{expression attribute
 values}, which are placeholders for the actual value at runtime.
 
-For more information on expression attribute names, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html}{Specifying Item Attributes}
+For more information on expression attribute names, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html}{Specifying Item Attributes}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ExpressionAttributeValues}{One or more values that can be substituted in an expression.
@@ -210,7 +210,7 @@ You could then use these values in an expression, such as this:
 
 \verb{ProductStatus IN (:avail, :back, :disc)}
 
-For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html}{Condition Expressions}
+For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ConsistentRead}{A Boolean value that determines the read consistency model during the

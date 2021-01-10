@@ -11,7 +11,7 @@ computeoptimizer_get_recommendation_summaries(accountIds, nextToken,
 \item{accountIds}{The IDs of the AWS accounts for which to return recommendation
 summaries.
 
-If your account is the master account of an organization, use this
+If your account is the management account of an organization, use this
 parameter to specify the member accounts for which you want to return
 recommendation summaries.
 

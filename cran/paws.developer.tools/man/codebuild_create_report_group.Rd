@@ -25,7 +25,7 @@ Creates a report group. A report group contains a collection of reports.
 \section{Request syntax}{
 \preformatted{svc$create_report_group(
   name = "string",
-  type = "TEST",
+  type = "TEST"|"CODE_COVERAGE",
   exportConfig = list(
     exportConfigType = "S3"|"NO_EXPORT",
     s3Destination = list(

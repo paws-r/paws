@@ -169,7 +169,7 @@ by Amazon EC2. If you specify subnet IDs, the VPC must have "Auto Assign
 Public IP" enabled.
 
 For more information about supported Amazon EC2 platforms, see
-\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html}{Supported Platforms}.}
+\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html}{Supported Platforms}.}
 
 \item{Tags}{A map that contains tag keys and tag values to attach to an AWS OpsWorks
 for Chef Automate or AWS OpsWorks for Puppet Enterprise server.

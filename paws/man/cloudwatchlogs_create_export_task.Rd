@@ -32,7 +32,10 @@ you don't specify a value, the default is \code{exportedlogs}.}
 }
 \description{
 Creates an export task, which allows you to efficiently export data from
-a log group to an Amazon S3 bucket.
+a log group to an Amazon S3 bucket. When you perform a
+\code{CreateExportTask} operation, you must use credentials that have
+permission to write to the S3 bucket that you specify as the
+destination.
 }
 \details{
 This is an asynchronous call. If all the required information is

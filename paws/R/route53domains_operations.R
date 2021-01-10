@@ -821,7 +821,7 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' 
 #' -   Charges your AWS account an amount based on the top-level domain.
 #'     For more information, see [Amazon Route 53
-#'     Pricing](http://aws.amazon.com/route53/pricing/).
+#'     Pricing](https://aws.amazon.com/route53/pricing/).
 #'
 #' @usage
 #' route53domains_register_domain(DomainName, IdnLangCode, DurationInYears,

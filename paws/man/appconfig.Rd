@@ -51,7 +51,7 @@ application when a dependency or other external factor impacts the
 system.
 }
 
-This reference is intended to be used with the \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig.html}{AWS AppConfig User Guide}.
+This reference is intended to be used with the \href{https://docs.aws.amazon.com/appconfig/latest/userguide/what-is-appconfig.html}{AWS AppConfig User Guide}.
 }
 \section{Service syntax}{
 \preformatted{svc <- appconfig(

@@ -21,7 +21,7 @@ the copy, specify a valid parameter group identifier; for example,
 \code{my-db-cluster-param-group}, or a valid ARN.
 \item If the source parameter group is in a different AWS Region than the
 copy, specify a valid cluster parameter group ARN; for example,
-\code{arn:aws:rds:us-east-1:123456789012:cluster-pg:custom-cluster-group1}.
+\code{arn:aws:rds:us-east-1:123456789012:sample-cluster:sample-parameter-group}.
 }}
 
 \item{TargetDBClusterParameterGroupIdentifier}{[required] The identifier for the copied cluster parameter group.

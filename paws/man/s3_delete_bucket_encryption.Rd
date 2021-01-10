@@ -5,11 +5,15 @@
 \title{This implementation of the DELETE operation removes default encryption
 from the bucket}
 \usage{
-s3_delete_bucket_encryption(Bucket)
+s3_delete_bucket_encryption(Bucket, ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the server-side encryption
 configuration to delete.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 This implementation of the DELETE operation removes default encryption
@@ -27,13 +31,14 @@ in the \emph{Amazon Simple Storage Service Developer Guide}.
 
 \strong{Related Resources}
 \itemize{
-\item PutBucketEncryption
-\item GetBucketEncryption
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketEncryption.html}{PutBucketEncryption}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketEncryption.html}{GetBucketEncryption}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bucket_encryption(
-  Bucket = "string"
+  Bucket = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

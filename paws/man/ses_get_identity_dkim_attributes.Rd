@@ -32,7 +32,7 @@ This operation is throttled at one request per second and can only get
 DKIM attributes for up to 100 identities at a time.
 
 For more information about creating DNS records using DKIM tokens, go to
-the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/easy-dkim-dns-records.html}{Amazon SES Developer Guide}.
+the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/}{Amazon SES Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$get_identity_dkim_attributes(

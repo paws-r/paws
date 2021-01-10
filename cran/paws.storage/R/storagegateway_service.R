@@ -38,7 +38,7 @@ NULL
 #'     errors, and examples of requests and responses.
 #' 
 #' -   [AWS Storage Gateway endpoints and
-#'     quotas:](https://docs.aws.amazon.com/general/latest/gr/sg.html)
+#'     quotas](https://docs.aws.amazon.com/general/latest/gr/sg.html):
 #'     Provides a list of each AWS Region and the endpoints available for
 #'     use with AWS Storage Gateway.
 #' 
@@ -56,7 +56,7 @@ NULL
 #' string. Starting in April 2016, you will be able to use these longer IDs
 #' so you can test your systems with the new format. For more information,
 #' see [Longer EC2 and EBS resource
-#' IDs](http://aws.amazon.com/ec2/faqs/#longer-ids).
+#' IDs](https://aws.amazon.com/ec2/faqs/#longer-ids).
 #' 
 #' For example, a volume Amazon Resource Name (ARN) with the longer volume
 #' ID format looks like the following:
@@ -68,7 +68,7 @@ NULL
 #' 
 #' For more information, see [Announcement: Heads-up – Longer AWS Storage
 #' Gateway volume and snapshot IDs coming in
-#' 2016](http://forums.aws.amazon.com/ann.jspa?annID=3557).
+#' 2016](https://forums.aws.amazon.com:443/ann.jspa?annID=3557).
 #'
 #' @param
 #' config
@@ -124,6 +124,7 @@ NULL
 #'  \link[=storagegateway_create_snapshot]{create_snapshot} \tab Initiates a snapshot of a volume\cr
 #'  \link[=storagegateway_create_snapshot_from_volume_recovery_point]{create_snapshot_from_volume_recovery_point} \tab Initiates a snapshot of a gateway from a volume recovery point\cr
 #'  \link[=storagegateway_create_storedi_scsi_volume]{create_storedi_scsi_volume} \tab Creates a volume on a specified gateway\cr
+#'  \link[=storagegateway_create_tape_pool]{create_tape_pool} \tab Creates a new custom tape pool\cr
 #'  \link[=storagegateway_create_tapes]{create_tapes} \tab Creates one or more virtual tapes\cr
 #'  \link[=storagegateway_create_tape_with_barcode]{create_tape_with_barcode} \tab Creates a virtual tape by using your own barcode\cr
 #'  \link[=storagegateway_delete_automatic_tape_creation_policy]{delete_automatic_tape_creation_policy} \tab Deletes the automatic tape creation policy of a gateway\cr
@@ -134,9 +135,11 @@ NULL
 #'  \link[=storagegateway_delete_snapshot_schedule]{delete_snapshot_schedule} \tab Deletes a snapshot of a volume\cr
 #'  \link[=storagegateway_delete_tape]{delete_tape} \tab Deletes the specified virtual tape\cr
 #'  \link[=storagegateway_delete_tape_archive]{delete_tape_archive} \tab Deletes the specified virtual tape from the virtual tape shelf (VTS)\cr
+#'  \link[=storagegateway_delete_tape_pool]{delete_tape_pool} \tab Delete a custom tape pool\cr
 #'  \link[=storagegateway_delete_volume]{delete_volume} \tab Deletes the specified storage volume that you previously created using the CreateCachediSCSIVolume or CreateStorediSCSIVolume API\cr
 #'  \link[=storagegateway_describe_availability_monitor_test]{describe_availability_monitor_test} \tab Returns information about the most recent High Availability monitoring test that was performed on the host in a cluster\cr
 #'  \link[=storagegateway_describe_bandwidth_rate_limit]{describe_bandwidth_rate_limit} \tab Returns the bandwidth rate limits of a gateway\cr
+#'  \link[=storagegateway_describe_bandwidth_rate_limit_schedule]{describe_bandwidth_rate_limit_schedule} \tab Returns information about the bandwidth rate limit schedule of a gateway\cr
 #'  \link[=storagegateway_describe_cache]{describe_cache} \tab Returns information about the cache of a gateway\cr
 #'  \link[=storagegateway_describe_cachedi_scsi_volumes]{describe_cachedi_scsi_volumes} \tab Returns a description of the gateway volumes specified in the request\cr
 #'  \link[=storagegateway_describe_chap_credentials]{describe_chap_credentials} \tab Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a specified iSCSI target, one for each target-initiator pair\cr
@@ -161,6 +164,7 @@ NULL
 #'  \link[=storagegateway_list_gateways]{list_gateways} \tab Lists gateways owned by an AWS account in an AWS Region specified in the request\cr
 #'  \link[=storagegateway_list_local_disks]{list_local_disks} \tab Returns a list of the gateway's local disks\cr
 #'  \link[=storagegateway_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that have been added to the specified resource\cr
+#'  \link[=storagegateway_list_tape_pools]{list_tape_pools} \tab Lists custom tape pools\cr
 #'  \link[=storagegateway_list_tapes]{list_tapes} \tab Lists virtual tapes in your virtual tape library (VTL) and your virtual tape shelf (VTS)\cr
 #'  \link[=storagegateway_list_volume_initiators]{list_volume_initiators} \tab Lists iSCSI initiators that are connected to a volume\cr
 #'  \link[=storagegateway_list_volume_recovery_points]{list_volume_recovery_points} \tab Lists the recovery points for a specified gateway\cr
@@ -178,12 +182,14 @@ NULL
 #'  \link[=storagegateway_start_gateway]{start_gateway} \tab Starts a gateway that you previously shut down (see ShutdownGateway)\cr
 #'  \link[=storagegateway_update_automatic_tape_creation_policy]{update_automatic_tape_creation_policy} \tab Updates the automatic tape creation policy of a gateway\cr
 #'  \link[=storagegateway_update_bandwidth_rate_limit]{update_bandwidth_rate_limit} \tab Updates the bandwidth rate limits of a gateway\cr
+#'  \link[=storagegateway_update_bandwidth_rate_limit_schedule]{update_bandwidth_rate_limit_schedule} \tab Updates the bandwidth rate limit schedule for a specified gateway\cr
 #'  \link[=storagegateway_update_chap_credentials]{update_chap_credentials} \tab Updates the Challenge-Handshake Authentication Protocol (CHAP) credentials for a specified iSCSI target\cr
 #'  \link[=storagegateway_update_gateway_information]{update_gateway_information} \tab Updates a gateway's metadata, which includes the gateway's name and time zone\cr
 #'  \link[=storagegateway_update_gateway_software_now]{update_gateway_software_now} \tab Updates the gateway virtual machine (VM) software\cr
 #'  \link[=storagegateway_update_maintenance_start_time]{update_maintenance_start_time} \tab Updates a gateway's weekly maintenance start time information, including day and time of the week\cr
 #'  \link[=storagegateway_update_nfs_file_share]{update_nfs_file_share} \tab Updates a Network File System (NFS) file share\cr
 #'  \link[=storagegateway_update_smb_file_share]{update_smb_file_share} \tab Updates a Server Message Block (SMB) file share\cr
+#'  \link[=storagegateway_update_smb_file_share_visibility]{update_smb_file_share_visibility} \tab Controls whether the shares on a gateway are visible in a net view or browse list\cr
 #'  \link[=storagegateway_update_smb_security_strategy]{update_smb_security_strategy} \tab Updates the SMB security strategy on a file gateway\cr
 #'  \link[=storagegateway_update_snapshot_schedule]{update_snapshot_schedule} \tab Updates a snapshot schedule configured for a gateway volume\cr
 #'  \link[=storagegateway_update_vtl_device_type]{update_vtl_device_type} \tab Updates the type of medium changer in a tape gateway

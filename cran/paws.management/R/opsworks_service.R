@@ -12,7 +12,7 @@ NULL
 #' AWS OpsWorks Stacks is an application management service that provides
 #' an integrated experience for overseeing the complete application
 #' lifecycle. For information about this product, go to the [AWS
-#' OpsWorks](http://aws.amazon.com/opsworks/) details page.
+#' OpsWorks](https://aws.amazon.com/opsworks/) details page.
 #' 
 #' **SDKs and CLI**
 #' 
@@ -28,15 +28,15 @@ NULL
 #'     Java](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html)
 #' 
 #' -   [AWS SDK for
-#'     .NET](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/html/N_Amazon_OpsWorks.htm)
+#'     .NET](https://docs.aws.amazon.com/sdkfornet/latest/apidocs/Index.html)
 #' 
 #' -   [AWS SDK for PHP
-#'     2](https://docs.aws.amazon.com/aws-sdk-php-2/latest/class-Aws.OpsWorks.OpsWorksClient.html)
+#'     2](https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.OpsWorks.OpsWorksClient.html)
 #' 
-#' -   [AWS SDK for Ruby](http://docs.aws.amazon.com/sdkforruby/api/)
+#' -   [AWS SDK for Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/)
 #' 
 #' -   [AWS SDK for
-#'     Node.js](http://aws.amazon.com/documentation/sdkforjavascript/)
+#'     Node.js](https://docs.aws.amazon.com/sdk-for-javascript/index.html)
 #' 
 #' -   [AWS SDK for
 #'     Python(Boto)](http://docs.pythonboto.org/en/latest/ref/opsworks.html)

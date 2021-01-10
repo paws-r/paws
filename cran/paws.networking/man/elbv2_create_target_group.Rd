@@ -4,10 +4,11 @@
 \alias{elbv2_create_target_group}
 \title{Creates a target group}
 \usage{
-elbv2_create_target_group(Name, Protocol, Port, VpcId,
+elbv2_create_target_group(Name, Protocol, ProtocolVersion, Port, VpcId,
   HealthCheckProtocol, HealthCheckPort, HealthCheckEnabled,
   HealthCheckPath, HealthCheckIntervalSeconds, HealthCheckTimeoutSeconds,
-  HealthyThresholdCount, UnhealthyThresholdCount, Matcher, TargetType)
+  HealthyThresholdCount, UnhealthyThresholdCount, Matcher, TargetType,
+  Tags)
 }
 \arguments{
 \item{Name}{[required] The name of the target group.
@@ -19,12 +20,19 @@ must not begin or end with a hyphen.}
 \item{Protocol}{The protocol to use for routing traffic to the targets. For Application
 Load Balancers, the supported protocols are HTTP and HTTPS. For Network
 Load Balancers, the supported protocols are TCP, TLS, UDP, or TCP\\_UDP.
-A TCP\\_UDP listener must be associated with a TCP\\_UDP target group. If
-the target is a Lambda function, this parameter does not apply.}
+For Gateway Load Balancers, the supported protocol is GENEVE. A TCP\\_UDP
+listener must be associated with a TCP\\_UDP target group. If the target
+is a Lambda function, this parameter does not apply.}
+
+\item{ProtocolVersion}{[HTTP/HTTPS protocol] The protocol version. Specify \code{GRPC} to send
+requests to targets using gRPC. Specify \code{HTTP2} to send requests to
+targets using HTTP/2. The default is \code{HTTP1}, which sends requests to
+targets using HTTP/1.1.}
 
 \item{Port}{The port on which the targets receive traffic. This port is used unless
 you specify a port override when registering the target. If the target
-is a Lambda function, this parameter does not apply.}
+is a Lambda function, this parameter does not apply. If the protocol is
+GENEVE, the supported port is 6081.}
 
 \item{VpcId}{The identifier of the virtual private cloud (VPC). If the target is a
 Lambda function, this parameter does not apply. Otherwise, this
@@ -32,95 +40,98 @@ parameter is required.}
 
 \item{HealthCheckProtocol}{The protocol the load balancer uses when performing health checks on
 targets. For Application Load Balancers, the default is HTTP. For
-Network Load Balancers, the default is TCP. The TCP protocol is
-supported for health checks only if the protocol of the target group is
-TCP, TLS, UDP, or TCP\\_UDP. The TLS, UDP, and TCP\\_UDP protocols are not
-supported for health checks.}
+Network Load Balancers and Gateway Load Balancers, the default is TCP.
+The TCP protocol is not supported for health checks if the protocol of
+the target group is HTTP or HTTPS. The GENEVE, TLS, UDP, and TCP\\_UDP
+protocols are not supported for health checks.}
 
 \item{HealthCheckPort}{The port the load balancer uses when performing health checks on
-targets. The default is \code{traffic-port}, which is the port on which each
-target receives traffic from the load balancer.}
+targets. If the protocol is HTTP, HTTPS, TCP, TLS, UDP, or TCP\\_UDP, the
+default is \code{traffic-port}, which is the port on which each target
+receives traffic from the load balancer. If the protocol is GENEVE, the
+default is port 80.}
 
 \item{HealthCheckEnabled}{Indicates whether health checks are enabled. If the target type is
 \code{lambda}, health checks are disabled by default but can be enabled. If
 the target type is \code{instance} or \code{ip}, health checks are always enabled
 and cannot be disabled.}
 
-\item{HealthCheckPath}{[HTTP/HTTPS health checks] The ping path that is the destination on
-the targets for health checks. The default is /.}
+\item{HealthCheckPath}{[HTTP/HTTPS health checks] The destination for health checks on the
+targets.
+
+[HTTP1 or HTTP2 protocol version] The ping path. The default is /.
+
+[GRPC protocol version] The path of a custom health check method with
+the format /package.service/method. The default is /AWS.ALB/healthcheck.}
 
 \item{HealthCheckIntervalSeconds}{The approximate amount of time, in seconds, between health checks of an
-individual target. For HTTP and HTTPS health checks, the range is 5–300
-seconds. For TCP health checks, the supported values are 10 and 30
-seconds. If the target type is \code{instance} or \code{ip}, the default is 30
+individual target. For TCP health checks, the supported values are 10
+and 30 seconds. If the target type is \code{instance} or \code{ip}, the default is
+30 seconds. If the target group protocol is GENEVE, the default is 10
 seconds. If the target type is \code{lambda}, the default is 35 seconds.}
 
 \item{HealthCheckTimeoutSeconds}{The amount of time, in seconds, during which no response from a target
-means a failed health check. For target groups with a protocol of HTTP
-or HTTPS, the default is 5 seconds. For target groups with a protocol of
-TCP or TLS, this value must be 6 seconds for HTTP health checks and 10
-seconds for TCP and HTTPS health checks. If the target type is \code{lambda},
-the default is 30 seconds.}
+means a failed health check. For target groups with a protocol of HTTP,
+HTTPS, or GENEVE, the default is 5 seconds. For target groups with a
+protocol of TCP or TLS, this value must be 6 seconds for HTTP health
+checks and 10 seconds for TCP and HTTPS health checks. If the target
+type is \code{lambda}, the default is 30 seconds.}
 
 \item{HealthyThresholdCount}{The number of consecutive health checks successes required before
 considering an unhealthy target healthy. For target groups with a
 protocol of HTTP or HTTPS, the default is 5. For target groups with a
-protocol of TCP or TLS, the default is 3. If the target type is
+protocol of TCP, TLS, or GENEVE, the default is 3. If the target type is
 \code{lambda}, the default is 5.}
 
 \item{UnhealthyThresholdCount}{The number of consecutive health check failures required before
-considering a target unhealthy. For target groups with a protocol of
-HTTP or HTTPS, the default is 2. For target groups with a protocol of
-TCP or TLS, this value must be the same as the healthy threshold count.
-If the target type is \code{lambda}, the default is 2.}
+considering a target unhealthy. If the target group protocol is HTTP or
+HTTPS, the default is 2. If the target group protocol is TCP or TLS,
+this value must be the same as the healthy threshold count. If the
+target group protocol is GENEVE, the default is 3. If the target type is
+\code{lambda}, the default is 2.}
 
-\item{Matcher}{[HTTP/HTTPS health checks] The HTTP codes to use when checking for a
-successful response from a target.}
+\item{Matcher}{[HTTP/HTTPS health checks] The HTTP or gRPC codes to use when checking
+for a successful response from a target.}
 
 \item{TargetType}{The type of target that you must specify when registering targets with
 this target group. You can't specify targets for a target group using
 more than one target type.
 \itemize{
-\item \code{instance} - Targets are specified by instance ID. This is the
-default value. If the target group protocol is UDP or TCP\\_UDP, the
-target type must be \code{instance}.
-\item \code{ip} - Targets are specified by IP address. You can specify IP
-addresses from the subnets of the virtual private cloud (VPC) for
-the target group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and
+\item \code{instance} - Register targets by instance ID. This is the default
+value.
+\item \code{ip} - Register targets by IP address. You can specify IP addresses
+from the subnets of the virtual private cloud (VPC) for the target
+group, the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and
 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10). You can't
 specify publicly routable IP addresses.
-\item \code{lambda} - The target groups contains a single Lambda function.
+\item \code{lambda} - Register a single Lambda function as a target.
 }}
+
+\item{Tags}{The tags to assign to the target group.}
 }
 \description{
 Creates a target group.
 }
 \details{
-To register targets with the target group, use RegisterTargets. To
-update the health check settings for the target group, use
-ModifyTargetGroup. To monitor the health of targets in the target group,
-use DescribeTargetHealth.
-
-To route traffic to the targets in a target group, specify the target
-group in an action using CreateListener or CreateRule.
-
-To delete a target group, use DeleteTargetGroup.
+For more information, see the following:
+\itemize{
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html}{Target groups for your Application Load Balancers}
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html}{Target groups for your Network Load Balancers}
+\item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html}{Target groups for your Gateway Load Balancers}
+}
 
 This operation is idempotent, which means that it completes at most one
 time. If you attempt to create multiple target groups with the same
 settings, each call succeeds.
-
-For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html}{Target Groups for Your Application Load Balancers}
-in the \emph{Application Load Balancers Guide} or \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html}{Target Groups for Your Network Load Balancers}
-in the \emph{Network Load Balancers Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_target_group(
   Name = "string",
-  Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP",
+  Protocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
+  ProtocolVersion = "string",
   Port = 123,
   VpcId = "string",
-  HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP",
+  HealthCheckProtocol = "HTTP"|"HTTPS"|"TCP"|"TLS"|"UDP"|"TCP_UDP"|"GENEVE",
   HealthCheckPort = "string",
   HealthCheckEnabled = TRUE|FALSE,
   HealthCheckPath = "string",
@@ -129,9 +140,16 @@ in the \emph{Network Load Balancers Guide}.
   HealthyThresholdCount = 123,
   UnhealthyThresholdCount = 123,
   Matcher = list(
-    HttpCode = "string"
+    HttpCode = "string",
+    GrpcCode = "string"
   ),
-  TargetType = "instance"|"ip"|"lambda"
+  TargetType = "instance"|"ip"|"lambda",
+  Tags = list(
+    list(
+      Key = "string",
+      Value = "string"
+    )
+  )
 )
 }
 }

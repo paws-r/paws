@@ -2,50 +2,23 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_list_aws_default_service_quotas}
 \alias{servicequotas_list_aws_default_service_quotas}
-\title{Lists all default service quotas for the specified AWS service or all
-AWS services}
+\title{Lists the default values for the quotas for the specified AWS service}
 \usage{
 servicequotas_list_aws_default_service_quotas(ServiceCode, NextToken,
   MaxResults)
 }
 \arguments{
-\item{ServiceCode}{[required] Specifies the service that you want to use.}
+\item{ServiceCode}{[required] The service identifier.}
 
-\item{NextToken}{(Optional) Use this parameter in a request if you receive a \code{NextToken}
-response in a previous request that indicates that there's more output
-available. In a subsequent call, set it to the value of the previous
-call's \code{NextToken} response to indicate where the output should continue
-from. If additional items exist beyond the specified maximum, the
-\code{NextToken} element is present and has a value (isn't null). Include
-that value as the \code{NextToken} request parameter in the call to the
-operation to get the next part of the results. You should check
-\code{NextToken} after every operation to ensure that you receive all of the
-results.}
+\item{NextToken}{The token for the next page of results.}
 
-\item{MaxResults}{(Optional) Limits the number of results that you want to include in the
-response. If you don't include this parameter, the response defaults to
-a value that's specific to the operation. If additional items exist
-beyond the specified maximum, the \code{NextToken} element is present and has
-a value (isn't null). Include that value as the \code{NextToken} request
-parameter in the call to the operation to get the next part of the
-results. You should check \code{NextToken} after every operation to ensure
-that you receive all of the results.}
+\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
+the remaining results, if any, make another call with the token returned
+from this call.}
 }
 \description{
-Lists all default service quotas for the specified AWS service or all
-AWS services. ListAWSDefaultServiceQuotas is similar to
-ListServiceQuotas except for the Value object. The Value object returned
-by \code{ListAWSDefaultServiceQuotas} is the default value assigned by AWS.
-This request returns a list of all service quotas for the specified
-service. The listing of each you'll see the default values are the
-values that AWS provides for the quotas.
-}
-\details{
-Always check the \code{NextToken} response parameter when calling any of the
-\verb{List*} operations. These operations can return an unexpected list of
-results, even when there are more results available. When this happens,
-the \code{NextToken} response parameter contains a value to pass the next
-call to the same API to request the next part of the list.
+Lists the default values for the quotas for the specified AWS service. A
+default value does not reflect any quota increases.
 }
 \section{Request syntax}{
 \preformatted{svc$list_aws_default_service_quotas(

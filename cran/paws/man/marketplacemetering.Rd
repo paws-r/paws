@@ -55,7 +55,7 @@ BatchMeterUsage API calls are captured by AWS CloudTrail. You can use
 Cloudtrail to verify that the SaaS metering records that you sent are
 accurate by searching for records with the eventName of BatchMeterUsage.
 You can also use CloudTrail to audit records over time. For more
-information, see the \emph{\href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}}
+information, see the \emph{\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}}
 .
 }
 \section{Service syntax}{

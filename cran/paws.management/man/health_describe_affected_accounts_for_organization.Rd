@@ -25,13 +25,18 @@ inclusive.}
 }
 \description{
 Returns a list of accounts in the organization from AWS Organizations
-that are affected by the provided event.
+that are affected by the provided event. For more information about the
+different types of AWS Health events, see
+\href{https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html}{Event}.
 }
 \details{
 Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
-EnableHealthServiceAccessForOrganization operation from your
-organization's master account.
+\href{https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html}{EnableHealthServiceAccessForOrganization}
+operation from your organization's master account.
+
+This API operation uses pagination. Specify the \code{nextToken} parameter in
+the next request to return more results.
 }
 \section{Request syntax}{
 \preformatted{svc$describe_affected_accounts_for_organization(

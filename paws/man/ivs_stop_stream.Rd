@@ -2,7 +2,7 @@
 % Please edit documentation in R/ivs_operations.R
 \name{ivs_stop_stream}
 \alias{ivs_stop_stream}
-\title{Disconnects the stream for the specified channel}
+\title{Disconnects the incoming RTMPS stream for the specified channel}
 \usage{
 ivs_stop_stream(channelArn)
 }
@@ -10,14 +10,14 @@ ivs_stop_stream(channelArn)
 \item{channelArn}{[required] ARN of the channel for which the stream is to be stopped.}
 }
 \description{
-Disconnects the stream for the specified channel. This disconnects the
-incoming RTMP stream from the client. Can be used in conjunction with
-DeleteStreamKey to prevent further streaming to a channel.
+Disconnects the incoming RTMPS stream for the specified channel. Can be
+used in conjunction with DeleteStreamKey to prevent further streaming to
+a channel.
 }
 \details{
 Many streaming client-software libraries automatically reconnect a
-dropped RTMP session, so to stop the stream permanently, you may want to
-first revoke the \code{streamKey} attached to the channel.
+dropped RTMPS session, so to stop the stream permanently, you may want
+to first revoke the \code{streamKey} attached to the channel.
 }
 \section{Request syntax}{
 \preformatted{svc$stop_stream(

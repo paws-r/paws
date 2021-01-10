@@ -84,7 +84,16 @@ Updates a metadata table in the Data Catalog.
           "string"
         )
       ),
-      StoredAsSubDirectories = TRUE|FALSE
+      StoredAsSubDirectories = TRUE|FALSE,
+      SchemaReference = list(
+        SchemaId = list(
+          SchemaArn = "string",
+          SchemaName = "string",
+          RegistryName = "string"
+        ),
+        SchemaVersionId = "string",
+        SchemaVersionNumber = 123
+      )
     ),
     PartitionKeys = list(
       list(

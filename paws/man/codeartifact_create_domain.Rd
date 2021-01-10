@@ -4,7 +4,7 @@
 \alias{codeartifact_create_domain}
 \title{Creates a domain}
 \usage{
-codeartifact_create_domain(domain, encryptionKey)
+codeartifact_create_domain(domain, encryptionKey, tags)
 }
 \arguments{
 \item{domain}{[required] The name of the domain to create. All domain names in an AWS Region that
@@ -25,6 +25,8 @@ in the \emph{AWS Key Management Service Developer Guide}.
 CodeArtifact supports only symmetric CMKs. Do not associate an
 asymmetric CMK with your domain. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using symmetric and asymmetric keys}
 in the \emph{AWS Key Management Service Developer Guide}.}
+
+\item{tags}{One or more tag key-value pairs for the domain.}
 }
 \description{
 Creates a domain. CodeArtifact \emph{domains} make it easier to manage
@@ -42,7 +44,13 @@ domain to test changes to the production domain configuration.
 \section{Request syntax}{
 \preformatted{svc$create_domain(
   domain = "string",
-  encryptionKey = "string"
+  encryptionKey = "string",
+  tags = list(
+    list(
+      key = "string",
+      value = "string"
+    )
+  )
 )
 }
 }

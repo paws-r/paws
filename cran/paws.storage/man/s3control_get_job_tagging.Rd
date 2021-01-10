@@ -2,28 +2,27 @@
 % Please edit documentation in R/s3control_operations.R
 \name{s3control_get_job_tagging}
 \alias{s3control_get_job_tagging}
-\title{Returns the tags on an Amazon S3 Batch Operations job}
+\title{Returns the tags on an S3 Batch Operations job}
 \usage{
 s3control_get_job_tagging(AccountId, JobId)
 }
 \arguments{
-\item{AccountId}{[required] The AWS account ID associated with the Amazon S3 Batch Operations job.}
+\item{AccountId}{[required] The AWS account ID associated with the S3 Batch Operations job.}
 
-\item{JobId}{[required] The ID for the Amazon S3 Batch Operations job whose tags you want to
-retrieve.}
+\item{JobId}{[required] The ID for the S3 Batch Operations job whose tags you want to retrieve.}
 }
 \description{
-Returns the tags on an Amazon S3 Batch Operations job. To use this
-operation, you must have permission to perform the \code{s3:GetJobTagging}
-action. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags}{Using Job Tags}
+Returns the tags on an S3 Batch Operations job. To use this operation,
+you must have permission to perform the \code{s3:GetJobTagging} action. For
+more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags}{Controlling access and labeling jobs using tags}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 }
 \details{
 Related actions include:
 \itemize{
-\item CreateJob
-\item PutJobTagging
-\item DeleteJobTagging
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html}{CreateJob}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutJobTagging.html}{PutJobTagging}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_DeleteJobTagging.html}{DeleteJobTagging}
 }
 }
 \section{Request syntax}{

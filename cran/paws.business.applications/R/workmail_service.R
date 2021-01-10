@@ -75,19 +75,23 @@ NULL
 #' \tabular{ll}{
 #'  \link[=workmail_associate_delegate_to_resource]{associate_delegate_to_resource} \tab Adds a member (user or group) to the resource's set of delegates\cr
 #'  \link[=workmail_associate_member_to_group]{associate_member_to_group} \tab Adds a member (user or group) to the group's set\cr
+#'  \link[=workmail_cancel_mailbox_export_job]{cancel_mailbox_export_job} \tab Cancels a mailbox export job\cr
 #'  \link[=workmail_create_alias]{create_alias} \tab Adds an alias to the set of a given member (user or group) of Amazon WorkMail\cr
 #'  \link[=workmail_create_group]{create_group} \tab Creates a group that can be used in Amazon WorkMail by calling the RegisterToWorkMail operation\cr
+#'  \link[=workmail_create_organization]{create_organization} \tab Creates a new Amazon WorkMail organization\cr
 #'  \link[=workmail_create_resource]{create_resource} \tab Creates a new Amazon WorkMail resource\cr
 #'  \link[=workmail_create_user]{create_user} \tab Creates a user who can be used in Amazon WorkMail by calling the RegisterToWorkMail operation\cr
 #'  \link[=workmail_delete_access_control_rule]{delete_access_control_rule} \tab Deletes an access control rule for the specified WorkMail organization\cr
 #'  \link[=workmail_delete_alias]{delete_alias} \tab Remove one or more specified aliases from a set of aliases for a given user\cr
 #'  \link[=workmail_delete_group]{delete_group} \tab Deletes a group from Amazon WorkMail\cr
 #'  \link[=workmail_delete_mailbox_permissions]{delete_mailbox_permissions} \tab Deletes permissions granted to a member (user or group)\cr
+#'  \link[=workmail_delete_organization]{delete_organization} \tab Deletes an Amazon WorkMail organization and all underlying AWS resources managed by Amazon WorkMail as part of the organization\cr
 #'  \link[=workmail_delete_resource]{delete_resource} \tab Deletes the specified resource\cr
 #'  \link[=workmail_delete_retention_policy]{delete_retention_policy} \tab Deletes the specified retention policy from the specified organization\cr
 #'  \link[=workmail_delete_user]{delete_user} \tab Deletes a user from Amazon WorkMail and all subsequent systems\cr
 #'  \link[=workmail_deregister_from_work_mail]{deregister_from_work_mail} \tab Mark a user, group, or resource as no longer used in Amazon WorkMail\cr
 #'  \link[=workmail_describe_group]{describe_group} \tab Returns the data available for the group\cr
+#'  \link[=workmail_describe_mailbox_export_job]{describe_mailbox_export_job} \tab Describes the current status of a mailbox export job\cr
 #'  \link[=workmail_describe_organization]{describe_organization} \tab Provides more information regarding a given organization based on its identifier\cr
 #'  \link[=workmail_describe_resource]{describe_resource} \tab Returns the data available for the resource\cr
 #'  \link[=workmail_describe_user]{describe_user} \tab Provides information regarding the user\cr
@@ -100,6 +104,7 @@ NULL
 #'  \link[=workmail_list_aliases]{list_aliases} \tab Creates a paginated call to list the aliases associated with a given entity\cr
 #'  \link[=workmail_list_group_members]{list_group_members} \tab Returns an overview of the members of a group\cr
 #'  \link[=workmail_list_groups]{list_groups} \tab Returns summaries of the organization's groups\cr
+#'  \link[=workmail_list_mailbox_export_jobs]{list_mailbox_export_jobs} \tab Lists the mailbox export jobs started for the specified organization within the last seven days\cr
 #'  \link[=workmail_list_mailbox_permissions]{list_mailbox_permissions} \tab Lists the mailbox permissions associated with a user, group, or resource mailbox\cr
 #'  \link[=workmail_list_organizations]{list_organizations} \tab Returns summaries of the customer's organizations\cr
 #'  \link[=workmail_list_resource_delegates]{list_resource_delegates} \tab Lists the delegates associated with a resource\cr
@@ -111,6 +116,7 @@ NULL
 #'  \link[=workmail_put_retention_policy]{put_retention_policy} \tab Puts a retention policy to the specified organization\cr
 #'  \link[=workmail_register_to_work_mail]{register_to_work_mail} \tab Registers an existing and disabled user, group, or resource for Amazon WorkMail use by associating a mailbox and calendaring capabilities\cr
 #'  \link[=workmail_reset_password]{reset_password} \tab Allows the administrator to reset the password for a user\cr
+#'  \link[=workmail_start_mailbox_export_job]{start_mailbox_export_job} \tab Starts a mailbox export job to export MIME-format email messages and calendar items from the specified mailbox to the specified Amazon Simple Storage Service (Amazon S3) bucket\cr
 #'  \link[=workmail_tag_resource]{tag_resource} \tab Applies the specified tags to the specified Amazon WorkMail organization resource\cr
 #'  \link[=workmail_untag_resource]{untag_resource} \tab Untags the specified tags from the specified Amazon WorkMail organization resource\cr
 #'  \link[=workmail_update_mailbox_quota]{update_mailbox_quota} \tab Updates a user's current mailbox quota for a specified organization and user\cr

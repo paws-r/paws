@@ -28,7 +28,7 @@ sorted.}
 \item{Description}{Defines an optional description of this specific job, for example
 \verb{Important Photos 2016-08-11}.}
 
-\item{AddressId}{The ID for the address that you want the Snowball shipped to.}
+\item{AddressId}{The ID for the address that you want the Snow device shipped to.}
 
 \item{KmsKeyARN}{The \code{KmsKeyARN} that you want to associate with this job. \code{KmsKeyARN}s
 are created using the
@@ -41,21 +41,21 @@ created using the
 AWS Identity and Access Management (IAM) API action.}
 
 \item{SnowballCapacityPreference}{If your job is being created in one of the US regions, you have the
-option of specifying what size Snowball you'd like for this job. In all
-other regions, Snowballs come with 80 TB in storage capacity.}
+option of specifying what size Snow device you'd like for this job. In
+all other regions, Snowballs come with 80 TB in storage capacity.}
 
 \item{ShippingOption}{The shipping speed for this job. This speed doesn't dictate how soon
-you'll get the Snowball, rather it represents how quickly the Snowball
-moves to its destination while in transit. Regional shipping speeds are
-as follows:
+you'll get the Snow device, rather it represents how quickly the Snow
+device moves to its destination while in transit. Regional shipping
+speeds are as follows:
 \itemize{
-\item In Australia, you have access to express shipping. Typically,
-Snowballs shipped express are delivered in about a day.
+\item In Australia, you have access to express shipping. Typically, Snow
+devices shipped express are delivered in about a day.
 \item In the European Union (EU), you have access to express shipping.
-Typically, Snowballs shipped express are delivered in about a day.
-In addition, most countries in the EU have access to standard
+Typically, Snow devices shipped express are delivered in about a
+day. In addition, most countries in the EU have access to standard
 shipping, which typically takes less than a week, one way.
-\item In India, Snowballs are delivered in one to seven days.
+\item In India, Snow devices are delivered in one to seven days.
 \item In the US, you have access to one-day shipping and two-day shipping.
 }}
 
@@ -66,12 +66,12 @@ settings for this job.}
 you need to provide only this \code{clusterId} value. The other job
 attributes are inherited from the cluster.}
 
-\item{SnowballType}{The type of AWS Snowball device to use for this job.
+\item{SnowballType}{The type of AWS Snow Family device to use for this job.
 
-For cluster jobs, AWS Snowball currently supports only the \code{EDGE} device
-type.
+For cluster jobs, AWS Snow Family currently supports only the \code{EDGE}
+device type.
 
-The type of AWS Snowball device to use for this job. Currently, the only
+The type of AWS Snow device to use for this job. Currently, the only
 supported device type for cluster jobs is \code{EDGE}.
 
 For more information, see \href{https://docs.aws.amazon.com/snowball/latest/developer-guide/device-differences.html}{Snowball Edge Device Options}
@@ -87,7 +87,7 @@ regions.}
 \description{
 Creates a job to import or export data between Amazon S3 and your
 on-premises data center. Your AWS account must have the right trust
-policies and permissions in place to create a job for Snowball. If
+policies and permissions in place to create a job for a Snow device. If
 you're creating a job for a node in a cluster, you only need to provide
 the \code{clusterId} value; the other job attributes are inherited from the
 cluster.

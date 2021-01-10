@@ -11,7 +11,7 @@ iam_get_server_certificate(ServerCertificateName)
 \item{ServerCertificateName}{[required] The name of the server certificate you want to retrieve information
 about.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 }

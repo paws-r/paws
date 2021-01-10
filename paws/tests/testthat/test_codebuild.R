@@ -2,6 +2,14 @@ context("codebuild")
 
 svc <- paws::codebuild()
 
+test_that("list_build_batches", {
+  expect_error(svc$list_build_batches(), NA)
+})
+
+test_that("list_build_batches_for_project", {
+  expect_error(svc$list_build_batches_for_project(), NA)
+})
+
 test_that("list_builds", {
   expect_error(svc$list_builds(), NA)
 })

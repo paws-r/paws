@@ -16,8 +16,8 @@ instance.}
 following:
 \itemize{
 \item If the service that is specified by \code{ServiceId} includes settings
-for an SRV record, the value of \code{InstanceId} is automatically
-included as part of the value for the SRV record. For more
+for an \code{SRV} record, the value of \code{InstanceId} is automatically
+included as part of the value for the \code{SRV} record. For more
 information, see \href{https://docs.aws.amazon.com/cloud-map/latest/api/API_DnsRecord.html#cloudmap-Type-DnsRecord-Type}{DnsRecord > Type}.
 \item You can use this value to update an existing instance.
 \item To register a new instance, you must specify a value that is unique
@@ -51,28 +51,38 @@ Supported attribute keys include the following:
 
 \strong{AWS\\_ALIAS\\_DNS\\_NAME}
 
-If you want AWS Cloud Map to create an Amazon Route 53 alias record that
+If you want AWS Cloud Map to create an Amazon Route 53 alias record that
 routes traffic to an Elastic Load Balancing load balancer, specify the
 DNS name that is associated with the load balancer. For information
 about how to get the DNS name, see "DNSName" in the topic
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html}{AliasTarget}
-in the \emph{Route 53 API Reference}.
+in the \emph{Route 53 API Reference}.
 
 Note the following:
 \itemize{
 \item The configuration for the service that is specified by \code{ServiceId}
-must include settings for an A record, an AAAA record, or both.
+must include settings for an \code{A} record, an \code{AAAA} record, or both.
 \item In the service that is specified by \code{ServiceId}, the value of
 \code{RoutingPolicy} must be \code{WEIGHTED}.
 \item If the service that is specified by \code{ServiceId} includes
-\code{HealthCheckConfig} settings, AWS Cloud Map will create the Route 53
+\code{HealthCheckConfig} settings, AWS Cloud Map will create the Route 53
 health check, but it won't associate the health check with the alias
 record.
 \item Auto naming currently doesn't support creating alias records that
-route traffic to AWS resources other than ELB load balancers.
+route traffic to AWS resources other than Elastic Load Balancing
+load balancers.
 \item If you specify a value for \code{AWS_ALIAS_DNS_NAME}, don't specify
 values for any of the \code{AWS_INSTANCE} attributes.
 }
+
+\strong{AWS\\_EC2\\_INSTANCE\\_ID}
+
+\emph{HTTP namespaces only.} The Amazon EC2 instance ID for the instance. If
+the \code{AWS_EC2_INSTANCE_ID} attribute is specified, then the only other
+attribute that can be specified is \code{AWS_INIT_HEALTH_STATUS}. When the
+\code{AWS_EC2_INSTANCE_ID} attribute is specified, then the
+\code{AWS_INSTANCE_IPV4} attribute will be filled out with the primary
+private IPv4 address.
 
 \strong{AWS\\_INIT\\_HEALTH\\_STATUS}
 
@@ -83,51 +93,51 @@ a value for \code{AWS_INIT_HEALTH_STATUS}, the initial status is \code{HEALTHY}.
 
 \strong{AWS\\_INSTANCE\\_CNAME}
 
-If the service configuration includes a CNAME record, the domain name
-that you want Route 53 to return in response to DNS queries, for
+If the service configuration includes a \code{CNAME} record, the domain name
+that you want Route 53 to return in response to DNS queries, for
 example, \code{example.com}.
 
 This value is required if the service specified by \code{ServiceId} includes
-settings for an CNAME record.
+settings for an \code{CNAME} record.
 
 \strong{AWS\\_INSTANCE\\_IPV4}
 
-If the service configuration includes an A record, the IPv4 address that
-you want Route 53 to return in response to DNS queries, for example,
-\verb{192.0.2.44}.
+If the service configuration includes an \code{A} record, the IPv4 address
+that you want Route 53 to return in response to DNS queries, for
+example, \verb{192.0.2.44}.
 
 This value is required if the service specified by \code{ServiceId} includes
-settings for an A record. If the service includes settings for an SRV
-record, you must specify a value for \code{AWS_INSTANCE_IPV4},
+settings for an \code{A} record. If the service includes settings for an
+\code{SRV} record, you must specify a value for \code{AWS_INSTANCE_IPV4},
 \code{AWS_INSTANCE_IPV6}, or both.
 
 \strong{AWS\\_INSTANCE\\_IPV6}
 
-If the service configuration includes an AAAA record, the IPv6 address
-that you want Route 53 to return in response to DNS queries, for
+If the service configuration includes an \code{AAAA} record, the IPv6 address
+that you want Route 53 to return in response to DNS queries, for
 example, \verb{2001:0db8:85a3:0000:0000:abcd:0001:2345}.
 
 This value is required if the service specified by \code{ServiceId} includes
-settings for an AAAA record. If the service includes settings for an SRV
-record, you must specify a value for \code{AWS_INSTANCE_IPV4},
+settings for an \code{AAAA} record. If the service includes settings for an
+\code{SRV} record, you must specify a value for \code{AWS_INSTANCE_IPV4},
 \code{AWS_INSTANCE_IPV6}, or both.
 
 \strong{AWS\\_INSTANCE\\_PORT}
 
-If the service includes an SRV record, the value that you want Route 53
-to return for the port.
+If the service includes an \code{SRV} record, the value that you want
+Route 53 to return for the port.
 
 If the service includes \code{HealthCheckConfig}, the port on the endpoint
-that you want Route 53 to send requests to.
+that you want Route 53 to send requests to.
 
-This value is required if you specified settings for an SRV record or a
-Route 53 health check when you created the service.
+This value is required if you specified settings for an \code{SRV} record or
+a Route 53 health check when you created the service.
 
 \strong{Custom attributes}
 
 You can add up to 30 custom attributes. For each key-value pair, the
 maximum length of the attribute name is 255 characters, and the maximum
-length of the attribute value is 1,024 characters. Total size of all
+length of the attribute value is 1,024 characters. The total size of all
 provided attributes (sum of all keys and values) must not exceed 5,000
 characters.}
 }
@@ -163,7 +173,7 @@ for the last healthy instance
 the records
 }
 
-For the current limit on the number of instances that you can register
+For the current quota on the number of instances that you can register
 using the same namespace and using the same service, see \href{https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html}{AWS Cloud Map Limits}
 in the \emph{AWS Cloud Map Developer Guide}.
 }

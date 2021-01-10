@@ -44,9 +44,8 @@ to the findings.}
 filter.
 
 A findings filter can have a maximum of 50 tags. Each tag consists of a
-required tag key and an associated tag value. The maximum length of a
-tag key is 128 characters. The maximum length of a tag value is 256
-characters.}
+tag key and an associated tag value. The maximum length of a tag key is
+128 characters. The maximum length of a tag value is 256 characters.}
 }
 \description{
 Creates and defines the criteria and other settings for a findings
@@ -61,6 +60,9 @@ filter.
     criterion = list(
       list(
         eq = list(
+          "string"
+        ),
+        eqExactMatch = list(
           "string"
         ),
         gt = 123,

@@ -5,7 +5,7 @@ NULL
 
 .frauddetector$batch_create_variable_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(variableEntries = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), dataType = structure(logical(0), tags = list(type = "string")), dataSource = structure(logical(0), tags = list(type = "string")), defaultValue = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), variableType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(variableEntries = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), dataType = structure(logical(0), tags = list(type = "string")), dataSource = structure(logical(0), tags = list(type = "string")), defaultValue = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), variableType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -23,13 +23,13 @@ NULL
 
 .frauddetector$batch_get_variable_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(variables = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), dataType = structure(logical(0), tags = list(type = "string")), dataSource = structure(logical(0), tags = list(type = "string")), defaultValue = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), variableType = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), errors = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "integer")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(variables = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), dataType = structure(logical(0), tags = list(type = "string")), dataSource = structure(logical(0), tags = list(type = "string")), defaultValue = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), variableType = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), errors = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), code = structure(logical(0), tags = list(type = "integer")), message = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .frauddetector$create_detector_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(detectorId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), externalModelEndpoints = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), rules = structure(list(structure(list(detectorId = structure(logical(0), tags = list(type = "string")), ruleId = structure(logical(0), tags = list(type = "string")), ruleVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), modelVersions = structure(list(structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), modelVersionNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ruleExecutionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(detectorId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), externalModelEndpoints = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), rules = structure(list(structure(list(detectorId = structure(logical(0), tags = list(type = "string")), ruleId = structure(logical(0), tags = list(type = "string")), ruleVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), modelVersions = structure(list(structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), modelVersionNumber = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ruleExecutionMode = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -39,9 +39,21 @@ NULL
   return(populate(args, shape))
 }
 
+.frauddetector$create_model_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), eventTypeName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$create_model_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .frauddetector$create_model_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), trainingDataSource = structure(logical(0), tags = list(type = "string")), trainingDataSchema = structure(list(modelVariables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), labelSchema = structure(list(labelMapper = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), externalEventsDetail = structure(list(dataLocation = structure(logical(0), tags = list(type = "string")), dataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -53,7 +65,7 @@ NULL
 
 .frauddetector$create_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ruleId = structure(logical(0), tags = list(type = "string")), detectorId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string")), language = structure(logical(0), tags = list(type = "string")), outcomes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ruleId = structure(logical(0), tags = list(type = "string")), detectorId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), language = structure(logical(0), tags = list(type = "string")), outcomes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -65,7 +77,7 @@ NULL
 
 .frauddetector$create_variable_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), dataType = structure(logical(0), tags = list(type = "string")), dataSource = structure(logical(0), tags = list(type = "string")), defaultValue = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), variableType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), dataType = structure(logical(0), tags = list(type = "string")), dataSource = structure(logical(0), tags = list(type = "string")), defaultValue = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), variableType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -99,9 +111,21 @@ NULL
   return(populate(args, shape))
 }
 
+.frauddetector$delete_entity_type_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$delete_entity_type_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .frauddetector$delete_event_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(eventId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(eventId = structure(logical(0), tags = list(type = "string")), eventTypeName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -111,13 +135,97 @@ NULL
   return(populate(args, shape))
 }
 
-.frauddetector$delete_rule_version_input <- function(...) {
+.frauddetector$delete_event_type_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(detectorId = structure(logical(0), tags = list(type = "string")), ruleId = structure(logical(0), tags = list(type = "string")), ruleVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
-.frauddetector$delete_rule_version_output <- function(...) {
+.frauddetector$delete_event_type_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$delete_external_model_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(modelEndpoint = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$delete_external_model_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$delete_label_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$delete_label_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$delete_model_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$delete_model_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$delete_model_version_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), modelVersionNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$delete_model_version_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$delete_outcome_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$delete_outcome_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$delete_rule_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(rule = structure(list(detectorId = structure(logical(0), tags = list(type = "string")), ruleId = structure(logical(0), tags = list(type = "string")), ruleVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$delete_rule_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$delete_variable_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$delete_variable_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -131,7 +239,7 @@ NULL
 
 .frauddetector$describe_detector_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(detectorId = structure(logical(0), tags = list(type = "string")), detectorVersionSummaries = structure(list(structure(list(detectorVersionId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(detectorId = structure(logical(0), tags = list(type = "string")), detectorVersionSummaries = structure(list(structure(list(detectorVersionId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -143,7 +251,7 @@ NULL
 
 .frauddetector$describe_model_versions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelVersionDetails = structure(list(structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), modelVersionNumber = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), trainingDataSource = structure(list(dataLocation = structure(logical(0), tags = list(type = "string")), dataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), modelVariables = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), index = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), labelSchema = structure(list(labelKey = structure(logical(0), tags = list(type = "string")), labelMapper = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), validationMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), trainingMetrics = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(modelVersionDetails = structure(list(structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), modelVersionNumber = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), trainingDataSource = structure(logical(0), tags = list(type = "string")), trainingDataSchema = structure(list(modelVariables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), labelSchema = structure(list(labelMapper = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), externalEventsDetail = structure(list(dataLocation = structure(logical(0), tags = list(type = "string")), dataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), trainingResult = structure(list(dataValidationMetrics = structure(list(fileLevelMessages = structure(list(structure(list(title = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), fieldLevelMessages = structure(list(structure(list(fieldName = structure(logical(0), tags = list(type = "string")), identifier = structure(logical(0), tags = list(type = "string")), title = structure(logical(0), tags = list(type = "string")), content = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), trainingMetrics = structure(list(auc = structure(logical(0), tags = list(type = "float")), metricDataPoints = structure(list(structure(list(fpr = structure(logical(0), tags = list(type = "float")), precision = structure(logical(0), tags = list(type = "float")), tpr = structure(logical(0), tags = list(type = "float")), threshold = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -155,7 +263,7 @@ NULL
 
 .frauddetector$get_detector_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(detectorId = structure(logical(0), tags = list(type = "string")), detectorVersionId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), externalModelEndpoints = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), modelVersions = structure(list(structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), modelVersionNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), rules = structure(list(structure(list(detectorId = structure(logical(0), tags = list(type = "string")), ruleId = structure(logical(0), tags = list(type = "string")), ruleVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string")), ruleExecutionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(detectorId = structure(logical(0), tags = list(type = "string")), detectorVersionId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), externalModelEndpoints = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), modelVersions = structure(list(structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), modelVersionNumber = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), rules = structure(list(structure(list(detectorId = structure(logical(0), tags = list(type = "string")), ruleId = structure(logical(0), tags = list(type = "string")), ruleVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), status = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string")), ruleExecutionMode = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -167,7 +275,43 @@ NULL
 
 .frauddetector$get_detectors_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(detectors = structure(list(structure(list(detectorId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(detectors = structure(list(structure(list(detectorId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), eventTypeName = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$get_entity_types_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$get_entity_types_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(entityTypes = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$get_event_prediction_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(detectorId = structure(logical(0), tags = list(type = "string")), detectorVersionId = structure(logical(0), tags = list(type = "string")), eventId = structure(logical(0), tags = list(type = "string")), eventTypeName = structure(logical(0), tags = list(type = "string")), entities = structure(list(structure(list(entityType = structure(logical(0), tags = list(type = "string")), entityId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), eventTimestamp = structure(logical(0), tags = list(type = "string")), eventVariables = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), externalModelEndpointDataBlobs = structure(list(structure(list(byteBuffer = structure(logical(0), tags = list(type = "blob")), contentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$get_event_prediction_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(modelScores = structure(list(structure(list(modelVersion = structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), modelVersionNumber = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), scores = structure(list(structure(logical(0), tags = list(type = "float"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), ruleResults = structure(list(structure(list(ruleId = structure(logical(0), tags = list(type = "string")), outcomes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$get_event_types_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$get_event_types_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(eventTypes = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), eventVariables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), entityTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -179,7 +323,29 @@ NULL
 
 .frauddetector$get_external_models_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(externalModels = structure(list(structure(list(modelEndpoint = structure(logical(0), tags = list(type = "string")), modelSource = structure(logical(0), tags = list(type = "string")), role = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), inputConfiguration = structure(list(format = structure(logical(0), tags = list(type = "string")), isOpaque = structure(logical(0), tags = list(type = "boolean")), jsonInputTemplate = structure(logical(0), tags = list(type = "string")), csvInputTemplate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), outputConfiguration = structure(list(format = structure(logical(0), tags = list(type = "string")), jsonKeyToVariableMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), csvIndexToVariableMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), modelEndpointStatus = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(externalModels = structure(list(structure(list(modelEndpoint = structure(logical(0), tags = list(type = "string")), modelSource = structure(logical(0), tags = list(type = "string")), invokeModelEndpointRoleArn = structure(logical(0), tags = list(type = "string")), inputConfiguration = structure(list(eventTypeName = structure(logical(0), tags = list(type = "string")), format = structure(logical(0), tags = list(type = "string")), useEventVariables = structure(logical(0), tags = list(type = "boolean")), jsonInputTemplate = structure(logical(0), tags = list(type = "string")), csvInputTemplate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), outputConfiguration = structure(list(format = structure(logical(0), tags = list(type = "string")), jsonKeyToVariableMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), csvIndexToVariableMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), modelEndpointStatus = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$get_kms_encryption_key_input <- function(...) {
+  list()
+}
+
+.frauddetector$get_kms_encryption_key_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(kmsKey = structure(list(kmsEncryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$get_labels_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$get_labels_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(labels = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -191,19 +357,19 @@ NULL
 
 .frauddetector$get_model_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), modelVersionNumber = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), modelVersionNumber = structure(logical(0), tags = list(type = "string")), trainingDataSource = structure(logical(0), tags = list(type = "string")), trainingDataSchema = structure(list(modelVariables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), labelSchema = structure(list(labelMapper = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure")), externalEventsDetail = structure(list(dataLocation = structure(logical(0), tags = list(type = "string")), dataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .frauddetector$get_models_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelType = structure(logical(0), tags = list(type = "string")), modelId = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .frauddetector$get_models_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), models = structure(list(structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), trainingDataSource = structure(list(dataLocation = structure(logical(0), tags = list(type = "string")), dataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), modelVariables = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), index = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), labelSchema = structure(list(labelKey = structure(logical(0), tags = list(type = "string")), labelMapper = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), models = structure(list(structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), eventTypeName = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -215,19 +381,7 @@ NULL
 
 .frauddetector$get_outcomes_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(outcomes = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
-  return(populate(args, shape))
-}
-
-.frauddetector$get_prediction_input <- function(...) {
-  args <- c(as.list(environment()), list(...))
-  shape <- structure(list(detectorId = structure(logical(0), tags = list(type = "string")), detectorVersionId = structure(logical(0), tags = list(type = "string")), eventId = structure(logical(0), tags = list(type = "string")), eventAttributes = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "map")), externalModelEndpointDataBlobs = structure(list(structure(list(byteBuffer = structure(logical(0), tags = list(type = "blob")), contentType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))
-  return(populate(args, shape))
-}
-
-.frauddetector$get_prediction_output <- function(...) {
-  args <- c(as.list(environment()), list(...))
-  shape <- structure(list(outcomes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), modelScores = structure(list(structure(list(modelVersion = structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), modelVersionNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), scores = structure(list(structure(logical(0), tags = list(type = "float"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), ruleResults = structure(list(structure(list(ruleId = structure(logical(0), tags = list(type = "string")), outcomes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(outcomes = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -239,7 +393,7 @@ NULL
 
 .frauddetector$get_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ruleDetails = structure(list(structure(list(ruleId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), detectorId = structure(logical(0), tags = list(type = "string")), ruleVersion = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string")), language = structure(logical(0), tags = list(type = "string")), outcomes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ruleDetails = structure(list(structure(list(ruleId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), detectorId = structure(logical(0), tags = list(type = "string")), ruleVersion = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), language = structure(logical(0), tags = list(type = "string")), outcomes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -251,13 +405,25 @@ NULL
 
 .frauddetector$get_variables_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(variables = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), dataType = structure(logical(0), tags = list(type = "string")), dataSource = structure(logical(0), tags = list(type = "string")), defaultValue = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), variableType = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(variables = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), dataType = structure(logical(0), tags = list(type = "string")), dataSource = structure(logical(0), tags = list(type = "string")), defaultValue = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), variableType = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "string")), createdTime = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceARN = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .frauddetector$put_detector_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(detectorId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(detectorId = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), eventTypeName = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -267,9 +433,33 @@ NULL
   return(populate(args, shape))
 }
 
+.frauddetector$put_entity_type_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$put_entity_type_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$put_event_type_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), eventVariables = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), entityTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$put_event_type_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .frauddetector$put_external_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelEndpoint = structure(logical(0), tags = list(type = "string")), modelSource = structure(logical(0), tags = list(type = "string")), role = structure(list(arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), inputConfiguration = structure(list(format = structure(logical(0), tags = list(type = "string")), isOpaque = structure(logical(0), tags = list(type = "boolean")), jsonInputTemplate = structure(logical(0), tags = list(type = "string")), csvInputTemplate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), outputConfiguration = structure(list(format = structure(logical(0), tags = list(type = "string")), jsonKeyToVariableMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), csvIndexToVariableMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), modelEndpointStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(modelEndpoint = structure(logical(0), tags = list(type = "string")), modelSource = structure(logical(0), tags = list(type = "string")), invokeModelEndpointRoleArn = structure(logical(0), tags = list(type = "string")), inputConfiguration = structure(list(eventTypeName = structure(logical(0), tags = list(type = "string")), format = structure(logical(0), tags = list(type = "string")), useEventVariables = structure(logical(0), tags = list(type = "boolean")), jsonInputTemplate = structure(logical(0), tags = list(type = "string")), csvInputTemplate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), outputConfiguration = structure(list(format = structure(logical(0), tags = list(type = "string")), jsonKeyToVariableMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), csvIndexToVariableMap = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure")), modelEndpointStatus = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -279,13 +469,25 @@ NULL
   return(populate(args, shape))
 }
 
-.frauddetector$put_model_input <- function(...) {
+.frauddetector$put_kms_encryption_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), trainingDataSource = structure(list(dataLocation = structure(logical(0), tags = list(type = "string")), dataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), modelVariables = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), index = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), labelSchema = structure(list(labelKey = structure(logical(0), tags = list(type = "string")), labelMapper = structure(list(structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(kmsEncryptionKeyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
-.frauddetector$put_model_output <- function(...) {
+.frauddetector$put_kms_encryption_key_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$put_label_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$put_label_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -293,7 +495,7 @@ NULL
 
 .frauddetector$put_outcome_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -303,9 +505,33 @@ NULL
   return(populate(args, shape))
 }
 
+.frauddetector$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceARN = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(resourceARN = structure(logical(0), tags = list(type = "string")), tagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .frauddetector$update_detector_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(detectorId = structure(logical(0), tags = list(type = "string")), detectorVersionId = structure(logical(0), tags = list(type = "string")), externalModelEndpoints = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), rules = structure(list(structure(list(detectorId = structure(logical(0), tags = list(type = "string")), ruleId = structure(logical(0), tags = list(type = "string")), ruleVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string")), modelVersions = structure(list(structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), modelVersionNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ruleExecutionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(detectorId = structure(logical(0), tags = list(type = "string")), detectorVersionId = structure(logical(0), tags = list(type = "string")), externalModelEndpoints = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), rules = structure(list(structure(list(detectorId = structure(logical(0), tags = list(type = "string")), ruleId = structure(logical(0), tags = list(type = "string")), ruleVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), description = structure(logical(0), tags = list(type = "string")), modelVersions = structure(list(structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), modelVersionNumber = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), ruleExecutionMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -339,13 +565,37 @@ NULL
   return(populate(args, shape))
 }
 
+.frauddetector$update_model_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$update_model_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .frauddetector$update_model_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), modelVersionNumber = structure(logical(0), tags = list(type = "string")), description = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), majorVersionNumber = structure(logical(0), tags = list(type = "string")), externalEventsDetail = structure(list(dataLocation = structure(logical(0), tags = list(type = "string")), dataAccessRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .frauddetector$update_model_version_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), modelVersionNumber = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$update_model_version_status_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(modelId = structure(logical(0), tags = list(type = "string")), modelType = structure(logical(0), tags = list(type = "string")), modelVersionNumber = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.frauddetector$update_model_version_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
   return(populate(args, shape))
@@ -365,7 +615,7 @@ NULL
 
 .frauddetector$update_rule_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(rule = structure(list(detectorId = structure(logical(0), tags = list(type = "string")), ruleId = structure(logical(0), tags = list(type = "string")), ruleVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string")), language = structure(logical(0), tags = list(type = "string")), outcomes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(rule = structure(list(detectorId = structure(logical(0), tags = list(type = "string")), ruleId = structure(logical(0), tags = list(type = "string")), ruleVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), description = structure(logical(0), tags = list(type = "string")), expression = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), language = structure(logical(0), tags = list(type = "string")), outcomes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

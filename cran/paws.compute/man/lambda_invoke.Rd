@@ -55,15 +55,15 @@ asynchronously, set \code{InvocationType} to \code{Event}.
 For \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-sync.html}{synchronous invocation},
 details about the function response, including errors, are included in
 the response body and headers. For either invocation type, you can find
-more information in the \href{https://docs.aws.amazon.com/lambda/latest/dg/monitoring-functions.html}{execution log}
+more information in the \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-monitoring.html}{execution log}
 and
-\href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-x-ray.html}{trace}.
+\href{https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html}{trace}.
 
 When an error occurs, your function may be invoked multiple times. Retry
 behavior varies by error type, client, event source, and invocation
 type. For example, if you invoke a function asynchronously and it
 returns an error, Lambda executes the function up to two more times. For
-more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/retries-on-errors.html}{Retry Behavior}.
+more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-retries.html}{Retry Behavior}.
 
 For \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html}{asynchronous invocation},
 Lambda adds events to a queue before sending them to your function. If
@@ -74,11 +74,11 @@ were not processed, configure your function with a \href{https://docs.aws.amazon
 
 The status code in the API response doesn't reflect function errors.
 Error codes are reserved for errors that prevent your function from
-executing, such as permissions errors, \href{https://docs.aws.amazon.com/lambda/latest/dg/limits.html}{limit errors}, or
-issues with your function's code and configuration. For example, Lambda
-returns \code{TooManyRequestsException} if executing the function would cause
-you to exceed a concurrency limit at either the account level
-(\code{ConcurrentInvocationLimitExceeded}) or function level
+executing, such as permissions errors, \href{https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html}{limit errors},
+or issues with your function's code and configuration. For example,
+Lambda returns \code{TooManyRequestsException} if executing the function
+would cause you to exceed a concurrency limit at either the account
+level (\code{ConcurrentInvocationLimitExceeded}) or function level
 (\code{ReservedFunctionConcurrentInvocationLimitExceeded}).
 
 For functions with a long timeout, your client might be disconnected
@@ -87,7 +87,7 @@ your HTTP client, SDK, firewall, proxy, or operating system to allow for
 long connections with timeout or keep-alive settings.
 
 This operation requires permission for the
-\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awslambda.html}{lambda:InvokeFunction}
+\href{https://docs.aws.amazon.com/service-authorization/latest/reference/list_awslambda.html}{lambda:InvokeFunction}
 action.
 }
 \section{Request syntax}{

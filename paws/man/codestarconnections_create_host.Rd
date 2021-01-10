@@ -39,7 +39,7 @@ the console.
 \section{Request syntax}{
 \preformatted{svc$create_host(
   Name = "string",
-  ProviderType = "Bitbucket"|"GitHubEnterpriseServer",
+  ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
   ProviderEndpoint = "string",
   VpcConfiguration = list(
     VpcId = "string",

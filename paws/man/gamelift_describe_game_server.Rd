@@ -2,24 +2,25 @@
 % Please edit documentation in R/gamelift_operations.R
 \name{gamelift_describe_game_server}
 \alias{gamelift_describe_game_server}
-\title{This action is part of Amazon GameLift FleetIQ with game server groups,
-which is in preview release and is subject to change}
+\title{This operation is used with the Amazon GameLift FleetIQ solution and
+game server groups}
 \usage{
 gamelift_describe_game_server(GameServerGroupName, GameServerId)
 }
 \arguments{
-\item{GameServerGroupName}{[required] An identifier for the game server group where the game server is
+\item{GameServerGroupName}{[required] A unique identifier for the game server group where the game server is
 running. Use either the GameServerGroup name or ARN value.}
 
-\item{GameServerId}{[required] The identifier for the game server to be retrieved.}
+\item{GameServerId}{[required] A custom string that uniquely identifies the game server information to
+be retrieved.}
 }
 \description{
-\strong{This action is part of Amazon GameLift FleetIQ with game server
-groups, which is in preview release and is subject to change.}
+\strong{This operation is used with the Amazon GameLift FleetIQ solution and
+game server groups.}
 }
 \details{
-Retrieves information for a game server resource. Information includes
-the game server statuses, health check info, and the instance the game
+Retrieves information for a registered game server. Information includes
+game server status, health check info, and the instance that the game
 server is running on.
 
 To retrieve game server information, specify the game server ID. If
@@ -27,7 +28,7 @@ successful, the requested game server object is returned.
 
 \strong{Learn more}
 
-\href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gsg-intro.html}{GameLift FleetIQ Guide}
+\href{https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html}{GameLift FleetIQ Guide}
 
 \strong{Related operations}
 \itemize{

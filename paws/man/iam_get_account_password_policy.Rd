@@ -8,7 +8,7 @@ iam_get_account_password_policy()
 }
 \description{
 Retrieves the password policy for the AWS account. For more information
-about using a password policy, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_ManagingPasswordPolicies.html}{Managing an IAM Password Policy}.
+about using a password policy, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html}{Managing an IAM Password Policy}.
 }
 \examples{
 \dontrun{

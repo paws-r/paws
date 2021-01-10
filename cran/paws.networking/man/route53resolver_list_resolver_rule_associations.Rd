@@ -2,7 +2,7 @@
 % Please edit documentation in R/route53resolver_operations.R
 \name{route53resolver_list_resolver_rule_associations}
 \alias{route53resolver_list_resolver_rule_associations}
-\title{Lists the associations that were created between resolver rules and VPCs
+\title{Lists the associations that were created between Resolver rules and VPCs
 using the current AWS account}
 \usage{
 route53resolver_list_resolver_rule_associations(MaxResults, NextToken,
@@ -21,15 +21,15 @@ another \code{ListResolverRuleAssociation} request to get the next group of
 rule associations. In the next request, specify the value of \code{NextToken}
 from the previous response.}
 
-\item{Filters}{An optional specification to return a subset of resolver rules, such as
-resolver rules that are associated with the same VPC ID.
+\item{Filters}{An optional specification to return a subset of Resolver rules, such as
+Resolver rules that are associated with the same VPC ID.
 
 If you submit a second or subsequent \code{ListResolverRuleAssociations}
 request and specify the \code{NextToken} parameter, you must use the same
 values for \code{Filters}, if any, as in the previous request.}
 }
 \description{
-Lists the associations that were created between resolver rules and VPCs
+Lists the associations that were created between Resolver rules and VPCs
 using the current AWS account.
 }
 \section{Request syntax}{

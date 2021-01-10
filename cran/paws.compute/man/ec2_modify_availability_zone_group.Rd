@@ -2,16 +2,18 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_modify_availability_zone_group}
 \alias{ec2_modify_availability_zone_group}
-\title{Enables or disables an Availability Zone group for your account}
+\title{Changes the opt-in status of the Local Zone and Wavelength Zone group
+for your account}
 \usage{
 ec2_modify_availability_zone_group(GroupName, OptInStatus, DryRun)
 }
 \arguments{
-\item{GroupName}{[required] The name of the Availability Zone Group.}
+\item{GroupName}{[required] The name of the Availability Zone group, Local Zone group, or Wavelength
+Zone group.}
 
-\item{OptInStatus}{[required] Indicates whether to enable or disable membership. The valid values are
-\verb{opted-in}. You must contact \href{https://console.aws.amazon.com/support/home#/case/create?issueType=customer-service&serviceCode=general-info&getting-started&categoryCode=using-aws&services}{AWS Support}
-to disable an Availability Zone group.}
+\item{OptInStatus}{[required] Indicates whether you are opted in to the Local Zone group or Wavelength
+Zone group. The only valid value is \verb{opted-in}. You must contact \href{https://console.aws.amazon.com/support/home#/case/create?issueType=customer-service&serviceCode=general-info&getting-started&categoryCode=using-aws&services}{AWS Support}
+to opt out of a Local Zone group, or Wavelength Zone group.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -19,7 +21,8 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Enables or disables an Availability Zone group for your account.
+Changes the opt-in status of the Local Zone and Wavelength Zone group
+for your account.
 }
 \details{
 Use

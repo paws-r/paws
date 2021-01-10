@@ -2,7 +2,8 @@
 % Please edit documentation in R/frauddetector_operations.R
 \name{frauddetector_get_rules}
 \alias{frauddetector_get_rules}
-\title{Gets all rules available for the specified detector}
+\title{Get all rules for a detector (paginated) if ruleId and ruleVersion are
+not specified}
 \usage{
 frauddetector_get_rules(ruleId, detectorId, ruleVersion, nextToken,
   maxResults)
@@ -19,7 +20,17 @@ frauddetector_get_rules(ruleId, detectorId, ruleVersion, nextToken,
 \item{maxResults}{The maximum number of rules to return for the request.}
 }
 \description{
-Gets all rules available for the specified detector.
+Get all rules for a detector (paginated) if \code{ruleId} and \code{ruleVersion}
+are not specified. Gets all rules for the detector and the \code{ruleId} if
+present (paginated). Gets a specific rule if both the \code{ruleId} and the
+\code{ruleVersion} are specified.
+}
+\details{
+This is a paginated API. Providing null maxResults results in retrieving
+maximum of 100 records per page. If you provide maxResults the value
+must be between 50 and 100. To get the next page result, a provide a
+pagination token from GetRulesResult as part of your request. Null
+pagination token fetches the records from the beginning.
 }
 \section{Request syntax}{
 \preformatted{svc$get_rules(

@@ -2,15 +2,17 @@
 % Please edit documentation in R/sms_operations.R
 \name{sms_start_app_replication}
 \alias{sms_start_app_replication}
-\title{Starts replicating an application}
+\title{Starts replicating the specified application by creating replication
+jobs for each server in the application}
 \usage{
 sms_start_app_replication(appId)
 }
 \arguments{
-\item{appId}{ID of the application to replicate.}
+\item{appId}{The ID of the application.}
 }
 \description{
-Starts replicating an application.
+Starts replicating the specified application by creating replication
+jobs for each server in the application.
 }
 \section{Request syntax}{
 \preformatted{svc$start_app_replication(

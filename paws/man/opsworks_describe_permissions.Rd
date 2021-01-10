@@ -8,7 +8,7 @@ opsworks_describe_permissions(IamUserArn, StackId)
 }
 \arguments{
 \item{IamUserArn}{The user's IAM ARN. This can also be a federated user's ARN. For more
-information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html}{Using Identifiers}.}
+information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html}{Using Identifiers}.}
 
 \item{StackId}{The stack ID.}
 }

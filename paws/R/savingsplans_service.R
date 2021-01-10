@@ -45,6 +45,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=savingsplans_create_savings_plan]{create_savings_plan} \tab Creates a Savings Plan\cr
+#'  \link[=savingsplans_delete_queued_savings_plan]{delete_queued_savings_plan} \tab Deletes the queued purchase for the specified Savings Plan\cr
 #'  \link[=savingsplans_describe_savings_plan_rates]{describe_savings_plan_rates} \tab Describes the specified Savings Plans rates\cr
 #'  \link[=savingsplans_describe_savings_plans]{describe_savings_plans} \tab Describes the specified Savings Plans\cr
 #'  \link[=savingsplans_describe_savings_plans_offering_rates]{describe_savings_plans_offering_rates} \tab Describes the specified Savings Plans offering rates\cr

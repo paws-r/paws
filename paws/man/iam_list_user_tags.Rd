@@ -9,9 +9,9 @@ iam_list_user_tags(UserName, Marker, MaxItems)
 \arguments{
 \item{UserName}{[required] The name of the IAM user whose tags you want to see.
 
-This parameter accepts (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters that
-consist of upper and lowercase alphanumeric characters with no spaces.
-You can also include any of the following characters: =,.@-}
+This parameter accepts (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
+that consist of upper and lowercase alphanumeric characters with no
+spaces. You can also include any of the following characters: =,.@-}
 
 \item{Marker}{Use this parameter only when paginating results and only after you
 receive a response indicating that the results are truncated. Set it to

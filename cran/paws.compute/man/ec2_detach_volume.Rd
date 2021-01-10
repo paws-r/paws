@@ -41,7 +41,7 @@ the root volume, stop the instance first.
 When a volume with an AWS Marketplace product code is detached from an
 instance, the product code is no longer associated with the instance.
 
-For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html}{Detaching an Amazon EBS Volume}
+For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html}{Detaching an Amazon EBS volume}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }
 \section{Request syntax}{

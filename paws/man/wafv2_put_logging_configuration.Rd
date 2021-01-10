@@ -64,7 +64,8 @@ in the \emph{AWS WAF Developer Guide}.
         Body = list(),
         Method = list()
       )
-    )
+    ),
+    ManagedByFirewallManager = TRUE|FALSE
   )
 )
 }

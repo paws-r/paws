@@ -7,7 +7,7 @@
 apigateway_create_domain_name(domainName, certificateName,
   certificateBody, certificatePrivateKey, certificateChain,
   certificateArn, regionalCertificateName, regionalCertificateArn,
-  endpointConfiguration, tags, securityPolicy)
+  endpointConfiguration, tags, securityPolicy, mutualTlsAuthentication)
 }
 \arguments{
 \item{domainName}{[required] [Required] The name of the DomainName resource.}
@@ -50,6 +50,8 @@ start with \verb{aws:}. The tag value can be up to 256 characters.}
 
 \item{securityPolicy}{The Transport Layer Security (TLS) version + cipher suite for this
 DomainName. The valid values are \code{TLS_1_0} and \code{TLS_1_2}.}
+
+\item{mutualTlsAuthentication}{}
 }
 \description{
 Creates a new domain name.
@@ -75,7 +77,11 @@ Creates a new domain name.
   tags = list(
     "string"
   ),
-  securityPolicy = "TLS_1_0"|"TLS_1_2"
+  securityPolicy = "TLS_1_0"|"TLS_1_2",
+  mutualTlsAuthentication = list(
+    truststoreUri = "string",
+    truststoreVersion = "string"
+  )
 )
 }
 }

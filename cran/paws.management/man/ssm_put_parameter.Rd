@@ -28,8 +28,8 @@ levels.
 }
 
 For additional information about valid values for parameter names, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-parameter-name-constraints.html}{About requirements and constraints for parameter names}
-in the \emph{AWS Systems Manager User Guide}.
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{About requirements and constraints for parameter names} in
+the \emph{AWS Systems Manager User Guide}.
 
 The maximum length constraint listed below includes capacity for
 additional system attributes that are not part of the name. The maximum
@@ -46,12 +46,16 @@ Do not enter personally identifiable information in this field.}
 
 \item{Value}{[required] The parameter value that you want to add to the system. Standard
 parameters have a value limit of 4 KB. Advanced parameters have a value
-limit of 8 KB.}
+limit of 8 KB.
+
+Parameters can't be referenced or nested in the values of other
+parameters. You can't include \verb{\\\{\\\{\\\}\\\}} or \verb{\\\{\\\{ssm:<i>parameter-name</i>\\\}\\\}}
+in a parameter value.}
 
 \item{Type}{The type of parameter that you want to add to the system.
 
 \code{SecureString} is not currently supported for AWS CloudFormation
-templates or in the China Regions.
+templates.
 
 Items in a \code{StringList} must be separated by a comma (,). You can't use
 other punctuation or special character to escape items in the list. If
@@ -164,8 +168,8 @@ current Region.
 }
 
 For more information about configuring the default tier option, see
-\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/ps-default-tier.html}{Specifying a default parameter tier}
-in the \emph{AWS Systems Manager User Guide}.}
+\href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Specifying a default parameter tier} in
+the \emph{AWS Systems Manager User Guide}.}
 
 \item{Policies}{One or more policies to apply to a parameter. This action takes a JSON
 array. Parameter Store supports the following policy types:
@@ -202,7 +206,7 @@ plain text and Amazon Machine Image IDs.
 When you create a \code{String} parameter and specify \code{aws:ec2:image},
 Systems Manager validates the parameter value is in the required format,
 such as \verb{ami-12345abcdeEXAMPLE}, and that the specified AMI is available
-in your AWS account. For more information, see \href{http://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html}{Native parameter support for Amazon Machine Image IDs}
+in your AWS account. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html}{Native parameter support for Amazon Machine Image IDs}
 in the \emph{AWS Systems Manager User Guide}.}
 }
 \description{

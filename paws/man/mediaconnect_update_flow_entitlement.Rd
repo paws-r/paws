@@ -5,7 +5,7 @@
 \title{You can change an entitlement's description, subscribers, and encryption}
 \usage{
 mediaconnect_update_flow_entitlement(Description, Encryption,
-  EntitlementArn, FlowArn, Subscribers)
+  EntitlementArn, EntitlementStatus, FlowArn, Subscribers)
 }
 \arguments{
 \item{Description}{A description of the entitlement. This description appears only on the AWS Elemental MediaConnect console and will not be seen by the subscriber or end user.}
@@ -13,6 +13,8 @@ mediaconnect_update_flow_entitlement(Description, Encryption,
 \item{Encryption}{The type of encryption that will be used on the output associated with this entitlement.}
 
 \item{EntitlementArn}{[required] The ARN of the entitlement that you want to update.}
+
+\item{EntitlementStatus}{An indication of whether you want to enable the entitlement to allow access, or disable it to stop streaming content to the subscriber’s flow temporarily. If you don’t specify the entitlementStatus field in your request, MediaConnect leaves the value unchanged.}
 
 \item{FlowArn}{[required] The flow that is associated with the entitlement that you want to update.}
 
@@ -36,6 +38,7 @@ You can change an entitlement's description, subscribers, and encryption. If you
     Url = "string"
   ),
   EntitlementArn = "string",
+  EntitlementStatus = "ENABLED"|"DISABLED",
   FlowArn = "string",
   Subscribers = list(
     "string"

@@ -32,11 +32,7 @@ Valid value: \code{docdb}}
 Default: A random, system-chosen Availability Zone in the endpoint's AWS
 Region.
 
-Example: \verb{us-east-1d}
-
-Constraint: The \code{AvailabilityZone} parameter can't be specified if the
-\code{MultiAZ} parameter is set to \code{true}. The specified Availability Zone
-must be in the same AWS Region as the current endpoint.}
+Example: \verb{us-east-1d}}
 
 \item{PreferredMaintenanceWindow}{The time range each week during which system maintenance can occur, in
 Universal Coordinated Time (UTC).

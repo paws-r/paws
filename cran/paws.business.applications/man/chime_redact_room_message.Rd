@@ -2,7 +2,7 @@
 % Please edit documentation in R/chime_operations.R
 \name{chime_redact_room_message}
 \alias{chime_redact_room_message}
-\title{Redacts the specified message from the specified Amazon Chime chat room}
+\title{Redacts the specified message from the specified Amazon Chime channel}
 \usage{
 chime_redact_room_message(AccountId, RoomId, MessageId)
 }
@@ -14,7 +14,7 @@ chime_redact_room_message(AccountId, RoomId, MessageId)
 \item{MessageId}{[required] The message ID.}
 }
 \description{
-Redacts the specified message from the specified Amazon Chime chat room.
+Redacts the specified message from the specified Amazon Chime channel.
 }
 \section{Request syntax}{
 \preformatted{svc$redact_room_message(

@@ -7,10 +7,9 @@ NULL
 #' @description
 #' [AWS Service Catalog](https://aws.amazon.com/servicecatalog/) enables
 #' organizations to create and manage catalogs of IT services that are
-#' approved for use on AWS. To get the most out of this documentation, you
-#' should be familiar with the terminology discussed in [AWS Service
-#' Catalog
-#' Concepts](http://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html).
+#' approved for AWS. To get the most out of this documentation, you should
+#' be familiar with the terminology discussed in [AWS Service Catalog
+#' Concepts](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html).
 #'
 #' @param
 #' config
@@ -72,6 +71,7 @@ NULL
 #'  \link[=servicecatalog_describe_constraint]{describe_constraint} \tab Gets information about the specified constraint\cr
 #'  \link[=servicecatalog_describe_copy_product_status]{describe_copy_product_status} \tab Gets the status of the specified copy product operation\cr
 #'  \link[=servicecatalog_describe_portfolio]{describe_portfolio} \tab Gets information about the specified portfolio\cr
+#'  \link[=servicecatalog_describe_portfolio_shares]{describe_portfolio_shares} \tab Returns a summary of each of the portfolio shares that were created for the specified portfolio\cr
 #'  \link[=servicecatalog_describe_portfolio_share_status]{describe_portfolio_share_status} \tab Gets the status of the specified portfolio share operation\cr
 #'  \link[=servicecatalog_describe_product]{describe_product} \tab Gets information about the specified product\cr
 #'  \link[=servicecatalog_describe_product_as_admin]{describe_product_as_admin} \tab Gets information about the specified product\cr
@@ -94,6 +94,8 @@ NULL
 #'  \link[=servicecatalog_execute_provisioned_product_plan]{execute_provisioned_product_plan} \tab Provisions or modifies a product based on the resource changes for the specified plan\cr
 #'  \link[=servicecatalog_execute_provisioned_product_service_action]{execute_provisioned_product_service_action} \tab Executes a self-service action against a provisioned product\cr
 #'  \link[=servicecatalog_get_aws_organizations_access_status]{get_aws_organizations_access_status} \tab Get the Access Status for AWS Organization portfolio share feature\cr
+#'  \link[=servicecatalog_get_provisioned_product_outputs]{get_provisioned_product_outputs} \tab This API takes either a ProvisonedProductId or a ProvisionedProductName, along with a list of one or more output keys, and responds with the key/value pairs of those outputs\cr
+#'  \link[=servicecatalog_import_as_provisioned_product]{import_as_provisioned_product} \tab Requests the import of a resource as a Service Catalog provisioned product that is associated to a Service Catalog product and provisioning artifact\cr
 #'  \link[=servicecatalog_list_accepted_portfolio_shares]{list_accepted_portfolio_shares} \tab Lists all portfolios for which sharing was accepted by this account\cr
 #'  \link[=servicecatalog_list_budgets_for_resource]{list_budgets_for_resource} \tab Lists all the budgets associated to the specified resource\cr
 #'  \link[=servicecatalog_list_constraints_for_portfolio]{list_constraints_for_portfolio} \tab Lists the constraints for the specified portfolio and product\cr
@@ -121,6 +123,7 @@ NULL
 #'  \link[=servicecatalog_terminate_provisioned_product]{terminate_provisioned_product} \tab Terminates the specified provisioned product\cr
 #'  \link[=servicecatalog_update_constraint]{update_constraint} \tab Updates the specified constraint\cr
 #'  \link[=servicecatalog_update_portfolio]{update_portfolio} \tab Updates the specified portfolio\cr
+#'  \link[=servicecatalog_update_portfolio_share]{update_portfolio_share} \tab Updates the specified portfolio share\cr
 #'  \link[=servicecatalog_update_product]{update_product} \tab Updates the specified product\cr
 #'  \link[=servicecatalog_update_provisioned_product]{update_provisioned_product} \tab Requests updates to the configuration of the specified provisioned product\cr
 #'  \link[=servicecatalog_update_provisioned_product_properties]{update_provisioned_product_properties} \tab Requests updates to the properties of the specified provisioned product\cr

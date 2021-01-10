@@ -11,7 +11,7 @@ frauddetector_describe_model_versions(modelId, modelVersionNumber,
 \arguments{
 \item{modelId}{The model ID.}
 
-\item{modelVersionNumber}{The model version.}
+\item{modelVersionNumber}{The model version number.}
 
 \item{modelType}{The model type.}
 

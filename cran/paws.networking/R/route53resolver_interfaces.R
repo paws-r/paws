@@ -15,6 +15,18 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$associate_resolver_query_log_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResolverQueryLogConfigId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$associate_resolver_query_log_config_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResolverQueryLogConfigAssociation = structure(list(Id = structure(logical(0), tags = list(type = "string")), ResolverQueryLogConfigId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Error = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$associate_resolver_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResolverRuleId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -39,6 +51,18 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$create_resolver_query_log_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Name = structure(logical(0), tags = list(type = "string")), DestinationArn = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$create_resolver_query_log_config_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResolverQueryLogConfig = structure(list(Id = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), AssociationCount = structure(logical(0), tags = list(type = "integer")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DestinationArn = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$create_resolver_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(CreatorRequestId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), RuleType = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), TargetIps = structure(list(structure(list(Ip = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list")), ResolverEndpointId = structure(logical(0), tags = list(box = TRUE, type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list"))), tags = list(type = "structure"))
@@ -47,7 +71,7 @@ NULL
 
 .route53resolver$create_resolver_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResolverRule = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), RuleType = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), TargetIps = structure(list(structure(list(Ip = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ResolverEndpointId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ResolverRule = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), RuleType = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), TargetIps = structure(list(structure(list(Ip = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ResolverEndpointId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -63,6 +87,18 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$delete_resolver_query_log_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResolverQueryLogConfigId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$delete_resolver_query_log_config_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResolverQueryLogConfig = structure(list(Id = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), AssociationCount = structure(logical(0), tags = list(type = "integer")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DestinationArn = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$delete_resolver_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResolverRuleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -71,7 +107,7 @@ NULL
 
 .route53resolver$delete_resolver_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResolverRule = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), RuleType = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), TargetIps = structure(list(structure(list(Ip = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ResolverEndpointId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ResolverRule = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), RuleType = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), TargetIps = structure(list(structure(list(Ip = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ResolverEndpointId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -87,6 +123,18 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$disassociate_resolver_query_log_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResolverQueryLogConfigId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$disassociate_resolver_query_log_config_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResolverQueryLogConfigAssociation = structure(list(Id = structure(logical(0), tags = list(type = "string")), ResolverQueryLogConfigId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Error = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$disassociate_resolver_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(VPCId = structure(logical(0), tags = list(type = "string")), ResolverRuleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -96,6 +144,18 @@ NULL
 .route53resolver$disassociate_resolver_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResolverRuleAssociation = structure(list(Id = structure(logical(0), tags = list(type = "string")), ResolverRuleId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), VPCId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_resolver_dnssec_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_resolver_dnssec_config_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResolverDNSSECConfig = structure(list(Id = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ValidationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -111,6 +171,42 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$get_resolver_query_log_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResolverQueryLogConfigId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_resolver_query_log_config_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResolverQueryLogConfig = structure(list(Id = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), AssociationCount = structure(logical(0), tags = list(type = "integer")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DestinationArn = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_resolver_query_log_config_association_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResolverQueryLogConfigAssociationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_resolver_query_log_config_association_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResolverQueryLogConfigAssociation = structure(list(Id = structure(logical(0), tags = list(type = "string")), ResolverQueryLogConfigId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Error = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_resolver_query_log_config_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$get_resolver_query_log_config_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResolverQueryLogConfigPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$get_resolver_rule_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResolverRuleId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -119,7 +215,7 @@ NULL
 
 .route53resolver$get_resolver_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResolverRule = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), RuleType = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), TargetIps = structure(list(structure(list(Ip = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ResolverEndpointId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ResolverRule = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), RuleType = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), TargetIps = structure(list(structure(list(Ip = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ResolverEndpointId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -147,6 +243,18 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$list_resolver_dnssec_configs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(box = TRUE, type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_resolver_dnssec_configs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ResolverDnssecConfigs = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ValidationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$list_resolver_endpoint_ip_addresses_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResolverEndpointId = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
@@ -171,6 +279,30 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$list_resolver_query_log_config_associations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_resolver_query_log_config_associations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), TotalCount = structure(logical(0), tags = list(type = "integer")), TotalFilteredCount = structure(logical(0), tags = list(type = "integer")), ResolverQueryLogConfigAssociations = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), ResolverQueryLogConfigId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), Error = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_resolver_query_log_configs_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(box = TRUE, type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list")), SortBy = structure(logical(0), tags = list(type = "string")), SortOrder = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$list_resolver_query_log_configs_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), TotalCount = structure(logical(0), tags = list(type = "integer")), TotalFilteredCount = structure(logical(0), tags = list(type = "integer")), ResolverQueryLogConfigs = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), AssociationCount = structure(logical(0), tags = list(type = "integer")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), DestinationArn = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$list_resolver_rule_associations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(MaxResults = structure(logical(0), tags = list(box = TRUE, type = "integer")), NextToken = structure(logical(0), tags = list(box = TRUE, type = "string")), Filters = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Values = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(box = TRUE, type = "list"))), tags = list(type = "structure"))
@@ -191,7 +323,7 @@ NULL
 
 .route53resolver$list_resolver_rules_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), ResolverRules = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), RuleType = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), TargetIps = structure(list(structure(list(Ip = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ResolverEndpointId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), ResolverRules = structure(list(structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), RuleType = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), TargetIps = structure(list(structure(list(Ip = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ResolverEndpointId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -204,6 +336,18 @@ NULL
 .route53resolver$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$put_resolver_query_log_config_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Arn = structure(logical(0), tags = list(type = "string")), ResolverQueryLogConfigPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$put_resolver_query_log_config_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ReturnValue = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -243,6 +387,18 @@ NULL
   return(populate(args, shape))
 }
 
+.route53resolver$update_resolver_dnssec_config_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceId = structure(logical(0), tags = list(type = "string")), Validation = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.route53resolver$update_resolver_dnssec_config_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResolverDNSSECConfig = structure(list(Id = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ResourceId = structure(logical(0), tags = list(type = "string")), ValidationStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .route53resolver$update_resolver_endpoint_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ResolverEndpointId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(box = TRUE, type = "string"))), tags = list(type = "structure"))
@@ -263,6 +419,6 @@ NULL
 
 .route53resolver$update_resolver_rule_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ResolverRule = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), RuleType = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), TargetIps = structure(list(structure(list(Ip = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ResolverEndpointId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ResolverRule = structure(list(Id = structure(logical(0), tags = list(type = "string")), CreatorRequestId = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), DomainName = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), RuleType = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), TargetIps = structure(list(structure(list(Ip = structure(logical(0), tags = list(type = "string")), Port = structure(logical(0), tags = list(box = TRUE, type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list")), ResolverEndpointId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), ShareStatus = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "string")), ModificationTime = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

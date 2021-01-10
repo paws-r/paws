@@ -24,8 +24,7 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 \description{
 Cancels the deletion of a customer master key (CMK). When this operation
 succeeds, the key state of the CMK is \code{Disabled}. To enable the CMK, use
-EnableKey. You cannot perform this operation on a CMK in a different AWS
-account.
+EnableKey.
 }
 \details{
 For more information about scheduling and canceling deletion of a CMK,
@@ -35,6 +34,15 @@ in the \emph{AWS Key Management Service Developer Guide}.
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.
+
+\strong{Cross-account use}: No. You cannot perform this operation on a CMK in
+a different AWS account.
+
+\strong{Required permissions}:
+\href{https://docs.aws.amazon.com/kms/latest/developerguide/kms-api-permissions-reference.html}{kms:CancelKeyDeletion}
+(key policy)
+
+\strong{Related operations}: ScheduleKeyDeletion
 }
 \section{Request syntax}{
 \preformatted{svc$cancel_key_deletion(

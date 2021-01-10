@@ -32,9 +32,9 @@ You can use DescribeLoadBalancers or DescribeLoadBalancerPolicies to
 verify that the policy is associated with the EC2 instance.
 
 For more information about enabling back-end instance authentication,
-see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html#configure_backendauth_clt}{Configure Back-end Instance Authentication}
+see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/elb-create-https-ssl-load-balancer.html#configure_backendauth_clt}{Configure Back-end Instance Authentication}
 in the \emph{Classic Load Balancers Guide}. For more information about Proxy
-Protocol, see \href{http://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-proxy-protocol.html}{Configure Proxy Protocol Support}
+Protocol, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-proxy-protocol.html}{Configure Proxy Protocol Support}
 in the \emph{Classic Load Balancers Guide}.
 }
 \section{Request syntax}{

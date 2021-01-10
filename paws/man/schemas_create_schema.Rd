@@ -35,7 +35,7 @@ Inactive schemas will be deleted after two years.
   Tags = list(
     "string"
   ),
-  Type = "OpenApi3"
+  Type = "OpenApi3"|"JSONSchemaDraft4"
 )
 }
 }

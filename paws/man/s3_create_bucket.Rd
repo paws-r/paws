@@ -2,7 +2,7 @@
 % Please edit documentation in R/s3_operations.R
 \name{s3_create_bucket}
 \alias{s3_create_bucket}
-\title{Creates a new bucket}
+\title{Creates a new S3 bucket}
 \usage{
 s3_create_bucket(ACL, Bucket, CreateBucketConfiguration,
   GrantFullControl, GrantRead, GrantReadACP, GrantWrite, GrantWriteACP,
@@ -31,21 +31,23 @@ bucket.}
 bucket.}
 }
 \description{
-Creates a new bucket. To create a bucket, you must register with Amazon
-S3 and have a valid AWS Access Key ID to authenticate requests.
+Creates a new S3 bucket. To create a bucket, you must register with
+Amazon S3 and have a valid AWS Access Key ID to authenticate requests.
 Anonymous requests are never allowed to create buckets. By creating the
 bucket, you become the bucket owner.
 }
 \details{
-Not every string is an acceptable bucket name. For information on bucket
-naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html}{Working with Amazon S3 Buckets}.
+Not every string is an acceptable bucket name. For information about
+bucket naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html}{Working with Amazon S3 buckets}.
+
+If you want to create an Amazon S3 on Outposts bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html}{Create Bucket}.
 
 By default, the bucket is created in the US East (N. Virginia) Region.
 You can optionally specify a Region in the request body. You might
 choose a Region to optimize latency, minimize costs, or address
 regulatory requirements. For example, if you reside in Europe, you will
 probably find it advantageous to create buckets in the Europe (Ireland)
-Region. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html#access-bucket-intro}{How to Select a Region for Your Buckets}.
+Region. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html#access-bucket-intro}{Accessing a bucket}.
 
 If you send your create bucket request to the \code{s3.amazonaws.com}
 endpoint, the request goes to the us-east-1 Region. Accordingly, the
@@ -53,7 +55,7 @@ signature calculations in Signature Version 4 must use us-east-1 as the
 Region, even if the location constraint in the request specifies another
 Region where the bucket is to be created. If you create a bucket in a
 Region other than US East (N. Virginia), your application must be able
-to handle 307 redirect. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html}{Virtual Hosting of Buckets}.
+to handle 307 redirect. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html}{Virtual hosting of buckets}.
 
 When creating a bucket using this operation, you can optionally specify
 the accounts or groups that should be granted specific permissions on
@@ -68,7 +70,7 @@ more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-
 \code{x-amz-grant-write}, \code{x-amz-grant-read-acp},
 \code{x-amz-grant-write-acp}, and \code{x-amz-grant-full-control} headers.
 These headers map to the set of permissions Amazon S3 supports in an
-ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access Control List (ACL) Overview}.
+ACL. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html}{Access control list (ACL) overview}.
 
 You specify each grantee as a type=value pair, where the type is one
 of the following:
@@ -109,8 +111,8 @@ explicitly. You cannot do both.
 
 The following operations are related to \code{CreateBucket}:
 \itemize{
-\item PutObject
-\item DeleteBucket
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html}{PutObject}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html}{DeleteBucket}
 }
 }
 \section{Request syntax}{
@@ -118,7 +120,7 @@ The following operations are related to \code{CreateBucket}:
   ACL = "private"|"public-read"|"public-read-write"|"authenticated-read",
   Bucket = "string",
   CreateBucketConfiguration = list(
-    LocationConstraint = "EU"|"eu-west-1"|"us-west-1"|"us-west-2"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ap-northeast-1"|"sa-east-1"|"cn-north-1"|"eu-central-1"
+    LocationConstraint = "af-south-1"|"ap-east-1"|"ap-northeast-1"|"ap-northeast-2"|"ap-northeast-3"|"ap-south-1"|"ap-southeast-1"|"ap-southeast-2"|"ca-central-1"|"cn-north-1"|"cn-northwest-1"|"EU"|"eu-central-1"|"eu-north-1"|"eu-south-1"|"eu-west-1"|"eu-west-2"|"eu-west-3"|"me-south-1"|"sa-east-1"|"us-east-2"|"us-gov-east-1"|"us-gov-west-1"|"us-west-1"|"us-west-2"
   ),
   GrantFullControl = "string",
   GrantRead = "string",

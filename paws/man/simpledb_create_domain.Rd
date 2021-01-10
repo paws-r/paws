@@ -22,7 +22,7 @@ the same domain name will not result in an error response.
 The client can create up to 100 domains per account.
 
 If the client requires additional domains, go to
-\url{http://aws.amazon.com/contact-us/simpledb-limit-request/}.
+\href{https://console.aws.amazon.com/support/home#case/create?issueType=service-limit-increase&limitType=service-code-simpledb-domains&type=service_limit_increase&serviceLimitIncreaseType=simpledb-domains}{http://aws.amazon.com/contact-us/simpledb-limit-request/}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_domain(

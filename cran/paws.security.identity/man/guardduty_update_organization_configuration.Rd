@@ -4,13 +4,16 @@
 \alias{guardduty_update_organization_configuration}
 \title{Updates the delegated administrator account with the values provided}
 \usage{
-guardduty_update_organization_configuration(DetectorId, AutoEnable)
+guardduty_update_organization_configuration(DetectorId, AutoEnable,
+  DataSources)
 }
 \arguments{
 \item{DetectorId}{[required] The ID of the detector to update the delegated administrator for.}
 
 \item{AutoEnable}{[required] Indicates whether to automatically enable member accounts in the
 organization.}
+
+\item{DataSources}{Describes which data sources will be updated.}
 }
 \description{
 Updates the delegated administrator account with the values provided.
@@ -18,7 +21,12 @@ Updates the delegated administrator account with the values provided.
 \section{Request syntax}{
 \preformatted{svc$update_organization_configuration(
   DetectorId = "string",
-  AutoEnable = TRUE|FALSE
+  AutoEnable = TRUE|FALSE,
+  DataSources = list(
+    S3Logs = list(
+      AutoEnable = TRUE|FALSE
+    )
+  )
 )
 }
 }

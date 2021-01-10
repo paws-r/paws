@@ -106,13 +106,12 @@ ebs_get_snapshot_block <- function(SnapshotId, BlockIndex, BlockToken) {
 }
 .ebs$operations$get_snapshot_block <- ebs_get_snapshot_block
 
-#' Returns the block indexes and block tokens for blocks that are different
-#' between two Amazon Elastic Block Store snapshots of the same
-#' volume/snapshot lineage
+#' Returns information about the blocks that are different between two
+#' Amazon Elastic Block Store snapshots of the same volume/snapshot lineage
 #'
-#' Returns the block indexes and block tokens for blocks that are different
-#' between two Amazon Elastic Block Store snapshots of the same
-#' volume/snapshot lineage.
+#' Returns information about the blocks that are different between two
+#' Amazon Elastic Block Store snapshots of the same volume/snapshot
+#' lineage.
 #'
 #' @usage
 #' ebs_list_changed_blocks(FirstSnapshotId, SecondSnapshotId, NextToken,
@@ -164,11 +163,11 @@ ebs_list_changed_blocks <- function(FirstSnapshotId = NULL, SecondSnapshotId, Ne
 }
 .ebs$operations$list_changed_blocks <- ebs_list_changed_blocks
 
-#' Returns the block indexes and block tokens for blocks in an Amazon
-#' Elastic Block Store snapshot
+#' Returns information about the blocks in an Amazon Elastic Block Store
+#' snapshot
 #'
-#' Returns the block indexes and block tokens for blocks in an Amazon
-#' Elastic Block Store snapshot.
+#' Returns information about the blocks in an Amazon Elastic Block Store
+#' snapshot.
 #'
 #' @usage
 #' ebs_list_snapshot_blocks(SnapshotId, NextToken, MaxResults,
@@ -211,11 +210,11 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
 }
 .ebs$operations$list_snapshot_blocks <- ebs_list_snapshot_blocks
 
-#' Writes a block of data to a block in the snapshot
+#' Writes a block of data to a snapshot
 #'
-#' Writes a block of data to a block in the snapshot. If the specified
-#' block contains data, the existing data is overwritten. The target
-#' snapshot must be in the `pending` state.
+#' Writes a block of data to a snapshot. If the specified block contains
+#' data, the existing data is overwritten. The target snapshot must be in
+#' the `pending` state.
 #' 
 #' Data written to a snapshot must be aligned with 512-byte sectors.
 #'
@@ -225,10 +224,10 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
 #'
 #' @param SnapshotId &#91;required&#93; The ID of the snapshot.
 #' @param BlockIndex &#91;required&#93; The block index of the block in which to write the data. A block index
-#' is the offset position of a block within a snapshot, and it is used to
-#' identify the block. To identify the logical offset of the data in the
-#' logical volume, multiply the block index with the block size (Block
-#' index * 512 bytes).
+#' is a logical index in units of `512` KiB blocks. To identify the block
+#' index, divide the logical offset of the data in the logical volume by
+#' the block size (logical offset of data/`524288`). The logical offset of
+#' the data must be `512` KiB aligned.
 #' @param BlockData &#91;required&#93; The data to write to the block.
 #' 
 #' The block data is not signed as part of the Signature Version 4 signing

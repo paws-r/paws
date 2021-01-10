@@ -32,14 +32,19 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- medialive()
-#' svc$batch_update_schedule(
+#' svc$accept_input_device_transfer(
 #'   Foo = 123
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
+#'  \link[=medialive_accept_input_device_transfer]{accept_input_device_transfer} \tab Accept an incoming input device transfer\cr
+#'  \link[=medialive_batch_delete]{batch_delete} \tab Starts delete of resources\cr
+#'  \link[=medialive_batch_start]{batch_start} \tab Starts existing resources\cr
+#'  \link[=medialive_batch_stop]{batch_stop} \tab Stops running resources\cr
 #'  \link[=medialive_batch_update_schedule]{batch_update_schedule} \tab Update a channel schedule\cr
+#'  \link[=medialive_cancel_input_device_transfer]{cancel_input_device_transfer} \tab Cancel an input device transfer that you have requested\cr
 #'  \link[=medialive_create_channel]{create_channel} \tab Creates a new channel\cr
 #'  \link[=medialive_create_input]{create_input} \tab Create an input\cr
 #'  \link[=medialive_create_input_security_group]{create_input_security_group} \tab Creates a Input Security Group\cr
@@ -57,6 +62,7 @@ NULL
 #'  \link[=medialive_describe_channel]{describe_channel} \tab Gets details about a channel\cr
 #'  \link[=medialive_describe_input]{describe_input} \tab Produces details about an input\cr
 #'  \link[=medialive_describe_input_device]{describe_input_device} \tab Gets the details for the input device\cr
+#'  \link[=medialive_describe_input_device_thumbnail]{describe_input_device_thumbnail} \tab Get the latest thumbnail data for the input device\cr
 #'  \link[=medialive_describe_input_security_group]{describe_input_security_group} \tab Produces a summary of an Input Security Group\cr
 #'  \link[=medialive_describe_multiplex]{describe_multiplex} \tab Gets details about a multiplex\cr
 #'  \link[=medialive_describe_multiplex_program]{describe_multiplex_program} \tab Get the details for a program in a multiplex\cr
@@ -65,6 +71,7 @@ NULL
 #'  \link[=medialive_describe_schedule]{describe_schedule} \tab Get a channel schedule\cr
 #'  \link[=medialive_list_channels]{list_channels} \tab Produces list of channels that have been created\cr
 #'  \link[=medialive_list_input_devices]{list_input_devices} \tab List input devices\cr
+#'  \link[=medialive_list_input_device_transfers]{list_input_device_transfers} \tab List input devices that are currently being transferred\cr
 #'  \link[=medialive_list_inputs]{list_inputs} \tab Produces list of inputs that have been created\cr
 #'  \link[=medialive_list_input_security_groups]{list_input_security_groups} \tab Produces a list of Input Security Groups for an account\cr
 #'  \link[=medialive_list_multiplexes]{list_multiplexes} \tab Retrieve a list of the existing multiplexes\cr
@@ -73,10 +80,12 @@ NULL
 #'  \link[=medialive_list_reservations]{list_reservations} \tab List purchased reservations\cr
 #'  \link[=medialive_list_tags_for_resource]{list_tags_for_resource} \tab Produces list of tags that have been created for a resource\cr
 #'  \link[=medialive_purchase_offering]{purchase_offering} \tab Purchase an offering and create a reservation\cr
+#'  \link[=medialive_reject_input_device_transfer]{reject_input_device_transfer} \tab Reject the transfer of the specified input device to your AWS account\cr
 #'  \link[=medialive_start_channel]{start_channel} \tab Starts an existing channel\cr
 #'  \link[=medialive_start_multiplex]{start_multiplex} \tab Start (run) the multiplex\cr
 #'  \link[=medialive_stop_channel]{stop_channel} \tab Stops a running channel\cr
 #'  \link[=medialive_stop_multiplex]{stop_multiplex} \tab Stops a running multiplex\cr
+#'  \link[=medialive_transfer_input_device]{transfer_input_device} \tab Start an input device transfer to another AWS account\cr
 #'  \link[=medialive_update_channel]{update_channel} \tab Updates a channel\cr
 #'  \link[=medialive_update_channel_class]{update_channel_class} \tab Changes the class of the channel\cr
 #'  \link[=medialive_update_input]{update_input} \tab Updates an input\cr

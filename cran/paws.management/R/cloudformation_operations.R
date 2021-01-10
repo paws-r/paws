@@ -193,12 +193,16 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' When you are satisfied with the changes the change set will make,
 #' execute the change set by using the ExecuteChangeSet action. AWS
 #' CloudFormation doesn't make changes until you execute the change set.
+#' 
+#' To create a change set for the entire stack hierachy, set
+#' `IncludeNestedStacks` to `True`.
 #'
 #' @usage
 #' cloudformation_create_change_set(StackName, TemplateBody, TemplateURL,
 #'   UsePreviousTemplate, Parameters, Capabilities, ResourceTypes, RoleARN,
 #'   RollbackConfiguration, NotificationARNs, Tags, ChangeSetName,
-#'   ClientToken, Description, ChangeSetType, ResourcesToImport)
+#'   ClientToken, Description, ChangeSetType, ResourcesToImport,
+#'   IncludeNestedStacks)
 #'
 #' @param StackName &#91;required&#93; The name or the unique ID of the stack for which you are creating a
 #' change set. AWS CloudFormation generates the change set by comparing
@@ -263,7 +267,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' 
 #'     For more information, see [Acknowledging IAM Resources in AWS
 #'     CloudFormation
-#'     Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
 #' 
 #' -   `CAPABILITY_AUTO_EXPAND`
 #' 
@@ -277,23 +281,22 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #'     create a stack directly from the processed template, without first
 #'     reviewing the resulting changes in a change set, you must
 #'     acknowledge this capability. This includes the
-#'     [AWS::Include](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
+#'     [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
 #'     and
-#'     [AWS::Serverless](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
+#'     [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
 #'     transforms, which are macros hosted by AWS CloudFormation.
 #' 
 #'     This capacity does not apply to creating change sets, and specifying
 #'     it when creating change sets has no effect.
 #' 
-#'     Also, change sets do not currently support nested stacks. If you
-#'     want to create a stack from a stack template that contains macros
-#'     *and* nested stacks, you must create or update the stack directly
-#'     from the template using the CreateStack or UpdateStack action, and
-#'     specifying this capability.
+#'     If you want to create a stack from a stack template that contains
+#'     macros *and* nested stacks, you must create or update the stack
+#'     directly from the template using the CreateStack or UpdateStack
+#'     action, and specifying this capability.
 #' 
 #'     For more information on macros, see [Using AWS CloudFormation Macros
 #'     to Perform Custom Processing on
-#'     Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' @param ResourceTypes The template resource types that you have permissions to work with if
 #' you execute this change set, such as `AWS::EC2::Instance`,
 #' `AWS::EC2::*`, or `Custom::MyCustomInstance`.
@@ -354,6 +357,9 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' `UPDATE` type to create a change set for a new stack or the `CREATE`
 #' type to create a change set for an existing stack.
 #' @param ResourcesToImport The resources to import into your stack.
+#' @param IncludeNestedStacks Creates a change set for the all nested stacks specified in the
+#' template. The default behavior of this action is set to `False`. To
+#' include nested sets in a change set, specify `True`.
 #'
 #' @section Request syntax:
 #' ```
@@ -407,21 +413,22 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #'         "string"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   IncludeNestedStacks = TRUE|FALSE
 #' )
 #' ```
 #'
 #' @keywords internal
 #'
 #' @rdname cloudformation_create_change_set
-cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, NotificationARNs = NULL, Tags = NULL, ChangeSetName, ClientToken = NULL, Description = NULL, ChangeSetType = NULL, ResourcesToImport = NULL) {
+cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, NotificationARNs = NULL, Tags = NULL, ChangeSetName, ClientToken = NULL, Description = NULL, ChangeSetType = NULL, ResourcesToImport = NULL, IncludeNestedStacks = NULL) {
   op <- new_operation(
     name = "CreateChangeSet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$create_change_set_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, NotificationARNs = NotificationARNs, Tags = Tags, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, ChangeSetType = ChangeSetType, ResourcesToImport = ResourcesToImport)
+  input <- .cloudformation$create_change_set_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, NotificationARNs = NotificationARNs, Tags = Tags, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, ChangeSetType = ChangeSetType, ResourcesToImport = ResourcesToImport, IncludeNestedStacks = IncludeNestedStacks)
   output <- .cloudformation$create_change_set_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -526,7 +533,7 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' 
 #'     For more information, see [Acknowledging IAM Resources in AWS
 #'     CloudFormation
-#'     Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
 #' 
 #' -   `CAPABILITY_AUTO_EXPAND`
 #' 
@@ -540,15 +547,14 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #'     create a stack directly from the processed template, without first
 #'     reviewing the resulting changes in a change set, you must
 #'     acknowledge this capability. This includes the
-#'     [AWS::Include](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
+#'     [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
 #'     and
-#'     [AWS::Serverless](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
+#'     [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
 #'     transforms, which are macros hosted by AWS CloudFormation.
 #' 
-#'     Change sets do not currently support nested stacks. If you want to
-#'     create a stack from a stack template that contains macros *and*
-#'     nested stacks, you must create the stack directly from the template
-#'     using this capability.
+#'     If you want to create a stack from a stack template that contains
+#'     macros *and* nested stacks, you must create the stack directly from
+#'     the template using this capability.
 #' 
 #'     You should only create stacks directly from a stack template that
 #'     contains macros if you know what processing the macro performs.
@@ -560,7 +566,7 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' 
 #'     For more information, see [Using AWS CloudFormation Macros to
 #'     Perform Custom Processing on
-#'     Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' @param ResourceTypes The template resource types that you have permissions to work with for
 #' this create stack action, such as `AWS::EC2::Instance`, `AWS::EC2::*`,
 #' or `Custom::MyCustomInstance`. Use the following syntax to describe
@@ -630,12 +636,12 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' user attempts to delete a stack with termination protection enabled, the
 #' operation fails and the stack remains unchanged. For more information,
 #' see [Protecting a Stack From Being
-#' Deleted](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html)
+#' Deleted](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html)
 #' in the *AWS CloudFormation User Guide*. Termination protection is
 #' disabled on stacks by default.
 #' 
 #' For [nested
-#' stacks](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html),
+#' stacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html),
 #' termination protection is set on the root stack and cannot be changed
 #' directly on the nested stack.
 #'
@@ -920,7 +926,7 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #'     For more information, see [Acknowledging IAM Resources in AWS
 #'     CloudFormation
-#'     Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
 #' 
 #' -   `CAPABILITY_AUTO_EXPAND`
 #' 
@@ -930,13 +936,13 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #'     a change set, you must acknowledge this capability. For more
 #'     information, see [Using AWS CloudFormation Macros to Perform Custom
 #'     Processing on
-#'     Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' 
 #'     Stack sets do not currently support macros in stack templates. (This
 #'     includes the
-#'     [AWS::Include](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
+#'     [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
 #'     and
-#'     [AWS::Serverless](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
+#'     [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
 #'     transforms, which are macros hosted by AWS CloudFormation.) Even if
 #'     you specify this capability, if you include a macro in your template
 #'     the stack set operation will fail.
@@ -956,7 +962,7 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' to control which users or groups can manage specific stack sets within
 #' the same administrator account. For more information, see
 #' [Prerequisites: Granting Permissions for Stack Set
-#' Operations](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
+#' Operations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
 #' in the *AWS CloudFormation User Guide*.
 #' @param ExecutionRoleName The name of the IAM execution role to use to create the stack set. If
 #' you do not specify an execution role, AWS CloudFormation uses the
@@ -978,7 +984,7 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #'     the IAM roles required to deploy to accounts managed by AWS
 #'     Organizations. For more information, see [Grant Service-Managed
 #'     Stack Set
-#'     Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-service-managed.html).
+#'     Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/).
 #' @param AutoDeployment Describes whether StackSets automatically deploys to AWS Organizations
 #' accounts that are added to the target organization or organizational
 #' unit (OU). Specify only if `PermissionModel` is `SERVICE_MANAGED`.
@@ -1053,6 +1059,11 @@ cloudformation_create_stack_set <- function(StackSetName, Description = NULL, Te
 #' 
 #' If the call successfully completes, AWS CloudFormation successfully
 #' deleted the change set.
+#' 
+#' If `IncludeNestedStacks` specifies `True` during the creation of the
+#' nested change set, then `DeleteChangeSet` will delete all change sets
+#' that belong to the stacks hierarchy and will also delete all change sets
+#' for nested stacks with the status of `REVIEW_IN_PROGRESS`.
 #'
 #' @usage
 #' cloudformation_delete_change_set(ChangeSetName, StackName)
@@ -1340,7 +1351,7 @@ cloudformation_delete_stack_set <- function(StackSetName) {
 #' ```
 #' svc$deregister_type(
 #'   Arn = "string",
-#'   Type = "RESOURCE",
+#'   Type = "RESOURCE"|"MODULE",
 #'   TypeName = "string",
 #'   VersionId = "string"
 #' )
@@ -1518,7 +1529,7 @@ cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetec
 #' Returns all stack related events for a specified stack in reverse
 #' chronological order. For more information about a stack's event history,
 #' go to
-#' [Stacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/concept-stack.html)
+#' [Stacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html)
 #' in the AWS CloudFormation User Guide.
 #' 
 #' You can list events for stacks that have failed to create or have been
@@ -1679,7 +1690,7 @@ cloudformation_describe_stack_resource <- function(StackName, LogicalResourceId)
 #' support drift detection are not checked, and so not included. For a list
 #' of resources that support drift detection, see [Resources that Support
 #' Drift
-#' Detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+#' Detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html).
 #' 
 #' Use DetectStackResourceDrift to detect drift on individual resources, or
 #' DetectStackDrift to detect drift on all supported resources for a given
@@ -1987,7 +1998,7 @@ cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$describe_type(
-#'   Type = "RESOURCE",
+#'   Type = "RESOURCE"|"MODULE",
 #'   TypeName = "string",
 #'   Arn = "string",
 #'   VersionId = "string"
@@ -2084,7 +2095,7 @@ cloudformation_describe_type_registration <- function(RegistrationToken) {
 #' 
 #' For a list of stack resources that currently support drift detection,
 #' see [Resources that Support Drift
-#' Detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+#' Detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html).
 #' 
 #' `DetectStackDrift` can take up to several minutes, depending on the
 #' number of resources contained within the stack. Use
@@ -2154,7 +2165,7 @@ cloudformation_detect_stack_drift <- function(StackName, LogicalResourceIds = NU
 #' Resources that do not currently support drift detection cannot be
 #' checked. For a list of resources that support drift detection, see
 #' [Resources that Support Drift
-#' Detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift-resource-list.html).
+#' Detection](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html).
 #'
 #' @usage
 #' cloudformation_detect_stack_resource_drift(StackName, LogicalResourceId)
@@ -2356,6 +2367,9 @@ cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateU
 #' If a stack policy is associated with the stack, AWS CloudFormation
 #' enforces the policy during the update. You can't specify a temporary
 #' stack policy that overrides the current policy.
+#' 
+#' To create a change set for the entire stack hierachy,
+#' `IncludeNestedStacks` must have been set to `True`.
 #'
 #' @usage
 #' cloudformation_execute_change_set(ChangeSetName, StackName,
@@ -3066,7 +3080,7 @@ cloudformation_list_stacks <- function(NextToken = NULL, StackStatusFilter = NUL
 #' @section Request syntax:
 #' ```
 #' svc$list_type_registrations(
-#'   Type = "RESOURCE",
+#'   Type = "RESOURCE"|"MODULE",
 #'   TypeName = "string",
 #'   TypeArn = "string",
 #'   RegistrationStatusFilter = "COMPLETE"|"IN_PROGRESS"|"FAILED",
@@ -3142,7 +3156,7 @@ cloudformation_list_type_registrations <- function(Type = NULL, TypeName = NULL,
 #' @section Request syntax:
 #' ```
 #' svc$list_type_versions(
-#'   Type = "RESOURCE",
+#'   Type = "RESOURCE"|"MODULE",
 #'   TypeName = "string",
 #'   Arn = "string",
 #'   MaxResults = 123,
@@ -3179,7 +3193,7 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
 #'
 #' @usage
 #' cloudformation_list_types(Visibility, ProvisioningType,
-#'   DeprecatedStatus, MaxResults, NextToken)
+#'   DeprecatedStatus, Type, MaxResults, NextToken)
 #'
 #' @param Visibility The scope at which the type is visible and usable in CloudFormation
 #' operations.
@@ -3218,6 +3232,7 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
 #' 
 #' -   `DEPRECATED`: The type has been deregistered and can no longer be
 #'     used in CloudFormation operations.
+#' @param Type The type of extension.
 #' @param MaxResults The maximum number of results to be returned with a single call. If the
 #' number of available results exceeds this maximum, the response includes
 #' a `NextToken` value that you can assign to the `NextToken` request
@@ -3235,6 +3250,7 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
 #'   Visibility = "PUBLIC"|"PRIVATE",
 #'   ProvisioningType = "NON_PROVISIONABLE"|"IMMUTABLE"|"FULLY_MUTABLE",
 #'   DeprecatedStatus = "LIVE"|"DEPRECATED",
+#'   Type = "RESOURCE"|"MODULE",
 #'   MaxResults = 123,
 #'   NextToken = "string"
 #' )
@@ -3243,14 +3259,14 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
 #' @keywords internal
 #'
 #' @rdname cloudformation_list_types
-cloudformation_list_types <- function(Visibility = NULL, ProvisioningType = NULL, DeprecatedStatus = NULL, MaxResults = NULL, NextToken = NULL) {
+cloudformation_list_types <- function(Visibility = NULL, ProvisioningType = NULL, DeprecatedStatus = NULL, Type = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "ListTypes",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$list_types_input(Visibility = Visibility, ProvisioningType = ProvisioningType, DeprecatedStatus = DeprecatedStatus, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .cloudformation$list_types_input(Visibility = Visibility, ProvisioningType = ProvisioningType, DeprecatedStatus = DeprecatedStatus, Type = Type, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudformation$list_types_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -3382,12 +3398,14 @@ cloudformation_record_handler_progress <- function(BearerToken, OperationStatus,
 #' [submit](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-cli-submit.html)
 #' in the *CloudFormation CLI User Guide*.
 #' 
-#' As part of registering a resource provider type, CloudFormation must be
-#' able to access the S3 bucket which contains the schema handler package
-#' for that resource provider. For more information, see [IAM Permissions
-#' for Registering a Resource
-#' Provider](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry.html#registry-register-permissions)
-#' in the *AWS CloudFormation User Guide*.
+#' The user registering the resource provider type must be able to access
+#' the the schema handler package in the S3 bucket. That is, the user needs
+#' to have
+#' [GetObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObject.html)
+#' permissions for the schema handler package. For more information, see
+#' [Actions, Resources, and Condition Keys for Amazon
+#' S3](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazons3.html)
+#' in the *AWS Identity and Access Management User Guide*.
 #' @param LoggingConfig Specifies logging configuration information for a type.
 #' @param ExecutionRoleArn The Amazon Resource Name (ARN) of the IAM role for CloudFormation to
 #' assume when invoking the resource provider. If your resource type calls
@@ -3408,7 +3426,7 @@ cloudformation_record_handler_progress <- function(BearerToken, OperationStatus,
 #' @section Request syntax:
 #' ```
 #' svc$register_type(
-#'   Type = "RESOURCE",
+#'   Type = "RESOURCE"|"MODULE",
 #'   TypeName = "string",
 #'   SchemaHandlerPackage = "string",
 #'   LoggingConfig = list(
@@ -3514,7 +3532,7 @@ cloudformation_set_stack_policy <- function(StackName, StackPolicyBody = NULL, S
 #' ```
 #' svc$set_type_default_version(
 #'   Arn = "string",
-#'   Type = "RESOURCE",
+#'   Type = "RESOURCE"|"MODULE",
 #'   TypeName = "string",
 #'   VersionId = "string"
 #' )
@@ -3748,7 +3766,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId) {
 #' 
 #'     For more information, see [Acknowledging IAM Resources in AWS
 #'     CloudFormation
-#'     Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
 #' 
 #' -   `CAPABILITY_AUTO_EXPAND`
 #' 
@@ -3762,15 +3780,14 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId) {
 #'     update a stack directly from the processed template, without first
 #'     reviewing the resulting changes in a change set, you must
 #'     acknowledge this capability. This includes the
-#'     [AWS::Include](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
+#'     [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
 #'     and
-#'     [AWS::Serverless](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
+#'     [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
 #'     transforms, which are macros hosted by AWS CloudFormation.
 #' 
-#'     Change sets do not currently support nested stacks. If you want to
-#'     update a stack from a stack template that contains macros *and*
-#'     nested stacks, you must update the stack directly from the template
-#'     using this capability.
+#'     If you want to update a stack from a stack template that contains
+#'     macros *and* nested stacks, you must update the stack directly from
+#'     the template using this capability.
 #' 
 #'     You should only update stacks directly from a stack template that
 #'     contains macros if you know what processing the macro performs.
@@ -3782,7 +3799,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId) {
 #' 
 #'     For more information, see [Using AWS CloudFormation Macros to
 #'     Perform Custom Processing on
-#'     Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' @param ResourceTypes The template resource types that you have permissions to work with for
 #' this update stack action, such as `AWS::EC2::Instance`, `AWS::EC2::*`,
 #' or `Custom::MyCustomInstance`.
@@ -4171,7 +4188,7 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #'     For more information, see [Acknowledging IAM Resources in AWS
 #'     CloudFormation
-#'     Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
 #' 
 #' -   `CAPABILITY_AUTO_EXPAND`
 #' 
@@ -4181,13 +4198,13 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #'     a change set, you must acknowledge this capability. For more
 #'     information, see [Using AWS CloudFormation Macros to Perform Custom
 #'     Processing on
-#'     Templates](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 #' 
 #'     Stack sets do not currently support macros in stack templates. (This
 #'     includes the
-#'     [AWS::Include](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
+#'     [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
 #'     and
-#'     [AWS::Serverless](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
+#'     [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
 #'     transforms, which are macros hosted by AWS CloudFormation.) Even if
 #'     you specify this capability, if you include a macro in your template
 #'     the stack set operation will fail.
@@ -4229,7 +4246,7 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' to control which users or groups can manage specific stack sets within
 #' the same administrator account. For more information, see [Granting
 #' Permissions for Stack Set
-#' Operations](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
+#' Operations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
 #' in the *AWS CloudFormation User Guide*.
 #' 
 #' If you specified a customized administrator role when you created the
@@ -4277,7 +4294,7 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #'     the IAM roles required to deploy to accounts managed by AWS
 #'     Organizations. For more information, see [Grant Service-Managed
 #'     Stack Set
-#'     Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs-service-managed.html).
+#'     Permissions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/).
 #' @param AutoDeployment \[`Service-managed` permissions\] Describes whether StackSets
 #' automatically deploys to AWS Organizations accounts that are added to a
 #' target organization or organizational unit (OU).

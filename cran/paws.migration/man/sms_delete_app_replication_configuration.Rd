@@ -2,15 +2,15 @@
 % Please edit documentation in R/sms_operations.R
 \name{sms_delete_app_replication_configuration}
 \alias{sms_delete_app_replication_configuration}
-\title{Deletes existing replication configuration for an application}
+\title{Deletes the replication configuration for the specified application}
 \usage{
 sms_delete_app_replication_configuration(appId)
 }
 \arguments{
-\item{appId}{ID of the application associated with the replication configuration.}
+\item{appId}{The ID of the application.}
 }
 \description{
-Deletes existing replication configuration for an application.
+Deletes the replication configuration for the specified application.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_app_replication_configuration(

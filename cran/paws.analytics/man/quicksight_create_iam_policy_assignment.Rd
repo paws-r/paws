@@ -12,7 +12,8 @@ quicksight_create_iam_policy_assignment(AwsAccountId, AssignmentName,
 \item{AwsAccountId}{[required] The ID of the AWS account where you want to assign an IAM policy to
 QuickSight users or groups.}
 
-\item{AssignmentName}{[required] The name of the assignment. It must be unique within an AWS account.}
+\item{AssignmentName}{[required] The name of the assignment, also called a rule. It must be unique within
+an AWS account.}
 
 \item{AssignmentStatus}{[required] The status of the assignment. Possible values are as follows:
 \itemize{
@@ -34,9 +35,10 @@ to.}
 }
 \description{
 Creates an assignment with one specified IAM policy, identified by its
-Amazon Resource Name (ARN). This policy will be assigned to specified
-groups or users of Amazon QuickSight. The users and groups need to be in
-the same namespace.
+Amazon Resource Name (ARN). This policy assignment is attached to the
+specified groups or users of Amazon QuickSight. Assignment names are
+unique per AWS account. To avoid overwriting rules in other namespaces,
+use assignment names that are unique.
 }
 \section{Request syntax}{
 \preformatted{svc$create_iam_policy_assignment(

@@ -18,8 +18,10 @@ The ARN must be in one of the following formats:
 \itemize{
 \item For an Application Load Balancer:
 \verb{arn:aws:elasticloadbalancing:<i>region</i>:<i>account-id</i>:loadbalancer/app/<i>load-balancer-name</i>/<i>load-balancer-id</i> }
-\item For an Amazon API Gateway stage:
+\item For an API Gateway REST API:
 \verb{arn:aws:apigateway:<i>region</i>::/restapis/<i>api-id</i>/stages/<i>stage-name</i> }
+\item For an AppSync GraphQL API:
+\verb{arn:aws:appsync:<i>region</i>:<i>account-id</i>:apis/<i>GraphQLApiId</i> }
 }}
 }
 \description{
@@ -30,7 +32,7 @@ resources from the prior release, see the \href{https://docs.aws.amazon.com/waf/
 \details{
 Associates a Web ACL with a regional application resource, to protect
 the resource. A regional application can be an Application Load Balancer
-(ALB) or an API Gateway stage.
+(ALB), an API Gateway REST API, or an AppSync GraphQL API.
 
 For AWS CloudFront, don't use this call. Instead, use your CloudFront
 distribution configuration. To associate a Web ACL, in the CloudFront

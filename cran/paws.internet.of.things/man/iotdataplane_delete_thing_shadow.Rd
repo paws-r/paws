@@ -16,7 +16,7 @@ Deletes the shadow for the specified thing.
 }
 \details{
 For more information, see
-\href{http://docs.aws.amazon.com/iot/latest/developerguide/API_DeleteThingShadow.html}{DeleteThingShadow}
+\href{https://docs.aws.amazon.com/iot/latest/developerguide/device-shadow-rest-api.html#API_DeleteThingShadow}{DeleteThingShadow}
 in the AWS IoT Developer Guide.
 }
 \section{Request syntax}{

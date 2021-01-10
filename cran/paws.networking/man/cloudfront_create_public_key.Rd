@@ -2,18 +2,17 @@
 % Please edit documentation in R/cloudfront_operations.R
 \name{cloudfront_create_public_key}
 \alias{cloudfront_create_public_key}
-\title{Add a new public key to CloudFront to use, for example, for field-level
-encryption}
+\title{Uploads a public key to CloudFront that you can use with signed URLs and
+signed cookies, or with field-level encryption}
 \usage{
 cloudfront_create_public_key(PublicKeyConfig)
 }
 \arguments{
-\item{PublicKeyConfig}{[required] The request to add a public key to CloudFront.}
+\item{PublicKeyConfig}{[required] A CloudFront public key configuration.}
 }
 \description{
-Add a new public key to CloudFront to use, for example, for field-level
-encryption. You can add a maximum of 10 public keys with one AWS
-account.
+Uploads a public key to CloudFront that you can use with \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html}{signed URLs and signed cookies},
+or with \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/field-level-encryption.html}{field-level encryption}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_public_key(

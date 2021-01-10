@@ -10,12 +10,14 @@ databasemigrationservice_create_endpoint(EndpointIdentifier,
   SslMode, ServiceAccessRoleArn, ExternalTableDefinition,
   DynamoDbSettings, S3Settings, DmsTransferSettings, MongoDbSettings,
   KinesisSettings, KafkaSettings, ElasticsearchSettings, NeptuneSettings,
-  RedshiftSettings)
+  RedshiftSettings, PostgreSQLSettings, MySQLSettings, OracleSettings,
+  SybaseSettings, MicrosoftSQLServerSettings, IBMDb2Settings,
+  ResourceIdentifier, DocDbSettings)
 }
 \arguments{
 \item{EndpointIdentifier}{[required] The database endpoint identifier. Identifiers must begin with a letter
 and must contain only ASCII letters, digits, and hyphens. They can't end
-with a hyphen or contain two consecutive hyphens.}
+with a hyphen, or contain two consecutive hyphens.}
 
 \item{EndpointType}{[required] The type of endpoint. Valid values are \code{source} and \code{target}.}
 
@@ -23,8 +25,8 @@ with a hyphen or contain two consecutive hyphens.}
 \code{EndpointType} value, include \code{"mysql"}, \code{"oracle"}, \code{"postgres"},
 \code{"mariadb"}, \code{"aurora"}, \code{"aurora-postgresql"}, \code{"redshift"}, \code{"s3"},
 \code{"db2"}, \code{"azuredb"}, \code{"sybase"}, \code{"dynamodb"}, \code{"mongodb"},
-\code{"kinesis"}, \code{"kafka"}, \code{"elasticsearch"}, \code{"documentdb"},
-\code{"sqlserver"}, and \code{"neptune"}.}
+\code{"kinesis"}, \code{"kafka"}, \code{"elasticsearch"}, \code{"docdb"}, \code{"sqlserver"}, and
+\code{"neptune"}.}
 
 \item{Username}{The user name to be used to log in to the endpoint database.}
 
@@ -112,6 +114,48 @@ information about the available settings, see \href{https://docs.aws.amazon.com/
 in the \emph{AWS Database Migration Service User Guide.}}
 
 \item{RedshiftSettings}{}
+
+\item{PostgreSQLSettings}{Settings in JSON format for the source and target PostgreSQL endpoint.
+For information about other available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.PostgreSQL.html}{Extra connection attributes when using PostgreSQL as a source for AWS DMS}
+and \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.PostgreSQL.html}{Extra connection attributes when using PostgreSQL as a target for AWS DMS}
+in the \emph{AWS Database Migration Service User Guide.}}
+
+\item{MySQLSettings}{Settings in JSON format for the source and target MySQL endpoint. For
+information about other available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MySQL.html}{Extra connection attributes when using MySQL as a source for AWS DMS}
+and \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.MySQL.html}{Extra connection attributes when using a MySQL-compatible database as a target for AWS DMS}
+in the \emph{AWS Database Migration Service User Guide.}}
+
+\item{OracleSettings}{Settings in JSON format for the source and target Oracle endpoint. For
+information about other available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.Oracle.html}{Extra connection attributes when using Oracle as a source for AWS DMS}
+and \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Oracle.html}{Extra connection attributes when using Oracle as a target for AWS DMS}
+in the \emph{AWS Database Migration Service User Guide.}}
+
+\item{SybaseSettings}{Settings in JSON format for the source and target SAP ASE endpoint. For
+information about other available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.SAP.html}{Extra connection attributes when using SAP ASE as a source for AWS DMS}
+and \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.SAP.html}{Extra connection attributes when using SAP ASE as a target for AWS DMS}
+in the \emph{AWS Database Migration Service User Guide.}}
+
+\item{MicrosoftSQLServerSettings}{Settings in JSON format for the source and target Microsoft SQL Server
+endpoint. For information about other available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.SQLServer.html}{Extra connection attributes when using SQL Server as a source for AWS DMS}
+and \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.SQLServer.html}{Extra connection attributes when using SQL Server as a target for AWS DMS}
+in the \emph{AWS Database Migration Service User Guide.}}
+
+\item{IBMDb2Settings}{Settings in JSON format for the source IBM Db2 LUW endpoint. For
+information about other available settings, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.DB2.html}{Extra connection attributes when using Db2 LUW as a source for AWS DMS}
+in the \emph{AWS Database Migration Service User Guide.}}
+
+\item{ResourceIdentifier}{A friendly name for the resource identifier at the end of the
+\code{EndpointArn} response parameter that is returned in the created
+\code{Endpoint} object. The value for this parameter can have up to 31
+characters. It can contain only ASCII letters, digits, and hyphen ('-').
+Also, it can't end with a hyphen or contain two consecutive hyphens, and
+can only begin with a letter, such as \code{Example-App-ARN1}. For example,
+this value might result in the \code{EndpointArn} value
+\code{arn:aws:dms:eu-west-1:012345678901:rep:Example-App-ARN1}. If you don't
+specify a \code{ResourceIdentifier} value, AWS DMS generates a default
+identifier value for the end of \code{EndpointArn}.}
+
+\item{DocDbSettings}{}
 }
 \description{
 Creates an endpoint using the provided settings.
@@ -162,7 +206,14 @@ Creates an endpoint using the provided settings.
     CdcInsertsOnly = TRUE|FALSE,
     TimestampColumnName = "string",
     ParquetTimestampInMillisecond = TRUE|FALSE,
-    CdcInsertsAndUpdates = TRUE|FALSE
+    CdcInsertsAndUpdates = TRUE|FALSE,
+    DatePartitionEnabled = TRUE|FALSE,
+    DatePartitionSequence = "YYYYMMDD"|"YYYYMMDDHH"|"YYYYMM"|"MMYYYYDD"|"DDMMYYYY",
+    DatePartitionDelimiter = "SLASH"|"UNDERSCORE"|"DASH"|"NONE",
+    UseCsvNoSupValue = TRUE|FALSE,
+    CsvNoSupValue = "string",
+    PreserveTransactions = TRUE|FALSE,
+    CdcPath = "string"
   ),
   DmsTransferSettings = list(
     ServiceAccessRoleArn = "string",
@@ -180,7 +231,9 @@ Creates an endpoint using the provided settings.
     ExtractDocId = "string",
     DocsToInvestigate = "string",
     AuthSource = "string",
-    KmsKeyId = "string"
+    KmsKeyId = "string",
+    SecretsManagerAccessRoleArn = "string",
+    SecretsManagerSecretId = "string"
   ),
   KinesisSettings = list(
     StreamArn = "string",
@@ -190,11 +243,20 @@ Creates an endpoint using the provided settings.
     IncludePartitionValue = TRUE|FALSE,
     PartitionIncludeSchemaTable = TRUE|FALSE,
     IncludeTableAlterOperations = TRUE|FALSE,
-    IncludeControlDetails = TRUE|FALSE
+    IncludeControlDetails = TRUE|FALSE,
+    IncludeNullAndEmpty = TRUE|FALSE
   ),
   KafkaSettings = list(
     Broker = "string",
-    Topic = "string"
+    Topic = "string",
+    MessageFormat = "json"|"json-unformatted",
+    IncludeTransactionDetails = TRUE|FALSE,
+    IncludePartitionValue = TRUE|FALSE,
+    PartitionIncludeSchemaTable = TRUE|FALSE,
+    IncludeTableAlterOperations = TRUE|FALSE,
+    IncludeControlDetails = TRUE|FALSE,
+    MessageMaxBytes = 123,
+    IncludeNullAndEmpty = TRUE|FALSE
   ),
   ElasticsearchSettings = list(
     ServiceAccessRoleArn = "string",
@@ -216,11 +278,14 @@ Creates an endpoint using the provided settings.
     AfterConnectScript = "string",
     BucketFolder = "string",
     BucketName = "string",
+    CaseSensitiveNames = TRUE|FALSE,
+    CompUpdate = TRUE|FALSE,
     ConnectionTimeout = 123,
     DatabaseName = "string",
     DateFormat = "string",
     EmptyAsNull = TRUE|FALSE,
     EncryptionMode = "sse-s3"|"sse-kms",
+    ExplicitIds = TRUE|FALSE,
     FileTransferUploadStreams = 123,
     LoadTimeout = 123,
     MaxFileSize = 123,
@@ -236,7 +301,125 @@ Creates an endpoint using the provided settings.
     TrimBlanks = TRUE|FALSE,
     TruncateColumns = TRUE|FALSE,
     Username = "string",
-    WriteBufferSize = 123
+    WriteBufferSize = 123,
+    SecretsManagerAccessRoleArn = "string",
+    SecretsManagerSecretId = "string"
+  ),
+  PostgreSQLSettings = list(
+    AfterConnectScript = "string",
+    CaptureDdls = TRUE|FALSE,
+    MaxFileSize = 123,
+    DatabaseName = "string",
+    DdlArtifactsSchema = "string",
+    ExecuteTimeout = 123,
+    FailTasksOnLobTruncation = TRUE|FALSE,
+    Password = "string",
+    Port = 123,
+    ServerName = "string",
+    Username = "string",
+    SlotName = "string",
+    SecretsManagerAccessRoleArn = "string",
+    SecretsManagerSecretId = "string"
+  ),
+  MySQLSettings = list(
+    AfterConnectScript = "string",
+    DatabaseName = "string",
+    EventsPollInterval = 123,
+    TargetDbType = "specific-database"|"multiple-databases",
+    MaxFileSize = 123,
+    ParallelLoadThreads = 123,
+    Password = "string",
+    Port = 123,
+    ServerName = "string",
+    ServerTimezone = "string",
+    Username = "string",
+    SecretsManagerAccessRoleArn = "string",
+    SecretsManagerSecretId = "string"
+  ),
+  OracleSettings = list(
+    AddSupplementalLogging = TRUE|FALSE,
+    ArchivedLogDestId = 123,
+    AdditionalArchivedLogDestId = 123,
+    AllowSelectNestedTables = TRUE|FALSE,
+    ParallelAsmReadThreads = 123,
+    ReadAheadBlocks = 123,
+    AccessAlternateDirectly = TRUE|FALSE,
+    UseAlternateFolderForOnline = TRUE|FALSE,
+    OraclePathPrefix = "string",
+    UsePathPrefix = "string",
+    ReplacePathPrefix = TRUE|FALSE,
+    EnableHomogenousTablespace = TRUE|FALSE,
+    DirectPathNoLog = TRUE|FALSE,
+    ArchivedLogsOnly = TRUE|FALSE,
+    AsmPassword = "string",
+    AsmServer = "string",
+    AsmUser = "string",
+    CharLengthSemantics = "default"|"char"|"byte",
+    DatabaseName = "string",
+    DirectPathParallelLoad = TRUE|FALSE,
+    FailTasksOnLobTruncation = TRUE|FALSE,
+    NumberDatatypeScale = 123,
+    Password = "string",
+    Port = 123,
+    ReadTableSpaceName = TRUE|FALSE,
+    RetryInterval = 123,
+    SecurityDbEncryption = "string",
+    SecurityDbEncryptionName = "string",
+    ServerName = "string",
+    Username = "string",
+    SecretsManagerAccessRoleArn = "string",
+    SecretsManagerSecretId = "string",
+    SecretsManagerOracleAsmAccessRoleArn = "string",
+    SecretsManagerOracleAsmSecretId = "string"
+  ),
+  SybaseSettings = list(
+    DatabaseName = "string",
+    Password = "string",
+    Port = 123,
+    ServerName = "string",
+    Username = "string",
+    SecretsManagerAccessRoleArn = "string",
+    SecretsManagerSecretId = "string"
+  ),
+  MicrosoftSQLServerSettings = list(
+    Port = 123,
+    BcpPacketSize = 123,
+    DatabaseName = "string",
+    ControlTablesFileGroup = "string",
+    Password = "string",
+    ReadBackupOnly = TRUE|FALSE,
+    SafeguardPolicy = "rely-on-sql-server-replication-agent"|"exclusive-automatic-truncation"|"shared-automatic-truncation",
+    ServerName = "string",
+    Username = "string",
+    UseBcpFullLoad = TRUE|FALSE,
+    SecretsManagerAccessRoleArn = "string",
+    SecretsManagerSecretId = "string"
+  ),
+  IBMDb2Settings = list(
+    DatabaseName = "string",
+    Password = "string",
+    Port = 123,
+    ServerName = "string",
+    SetDataCaptureChanges = TRUE|FALSE,
+    CurrentLsn = "string",
+    MaxKBytesPerRead = 123,
+    Username = "string",
+    SecretsManagerAccessRoleArn = "string",
+    SecretsManagerSecretId = "string"
+  ),
+  ResourceIdentifier = "string",
+  DocDbSettings = list(
+    Username = "string",
+    Password = "string",
+    ServerName = "string",
+    Port = 123,
+    DatabaseName = "string",
+    NestingLevel = "none"|"one",
+    ExtractDocId = TRUE|FALSE,
+    DocsToInvestigate = 123,
+    KmsKeyId = "string",
+    SecretsManagerAccessRoleArn = "string",
+    SecretsManagerSecretId = "string"
   )
 )
 }

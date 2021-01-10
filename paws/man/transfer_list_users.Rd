@@ -16,8 +16,8 @@ request.}
 subsequent command to the \code{NextToken} parameter to continue listing
 additional users.}
 
-\item{ServerId}{[required] A system-assigned unique identifier for a file transfer protocol-enabled
-server that has users assigned to it.}
+\item{ServerId}{[required] A system-assigned unique identifier for a server that has users assigned
+to it.}
 }
 \description{
 Lists the users for a file transfer protocol-enabled server that you

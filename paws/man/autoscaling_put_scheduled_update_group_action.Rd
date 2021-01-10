@@ -33,7 +33,7 @@ Scaling does not perform the action after this time.}
 format consists of five fields separated by white spaces: [Minute]
 [Hour] [Day\\_of\\_Month] [Month\\_of\\_Year] [Day\\_of\\_Week]. The
 value must be in quotes (for example, \code{"30 0 1 1,6,12 *"}). For more
-information about this format, see \href{http://crontab.org}{Crontab}.
+information about this format, see \href{http://crontab.org/}{Crontab}.
 
 When \code{StartTime} and \code{EndTime} are specified with \code{Recurrence}, they
 form the boundaries of when the recurring action starts and stops.}
@@ -53,7 +53,7 @@ If you leave a parameter unspecified when updating a scheduled scaling
 action, the corresponding value remains unchanged.
 }
 \details{
-For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html}{Scheduled Scaling}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html}{Scheduled scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

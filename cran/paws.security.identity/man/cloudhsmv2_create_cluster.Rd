@@ -4,16 +4,11 @@
 \alias{cloudhsmv2_create_cluster}
 \title{Creates a new AWS CloudHSM cluster}
 \usage{
-cloudhsmv2_create_cluster(SubnetIds, HsmType, SourceBackupId, TagList)
+cloudhsmv2_create_cluster(BackupRetentionPolicy, HsmType,
+  SourceBackupId, SubnetIds, TagList)
 }
 \arguments{
-\item{SubnetIds}{[required] The identifiers (IDs) of the subnets where you are creating the cluster.
-You must specify at least one subnet. If you specify multiple subnets,
-they must meet the following criteria:
-\itemize{
-\item All subnets must be in the same virtual private cloud (VPC).
-\item You can specify only one subnet per Availability Zone.
-}}
+\item{BackupRetentionPolicy}{A policy that defines how the service retains backups.}
 
 \item{HsmType}{[required] The type of HSM to use in the cluster. Currently the only allowed value
 is \code{hsm1.medium}.}
@@ -22,6 +17,14 @@ is \code{hsm1.medium}.}
 restore the cluster from a backup instead of creating a new cluster. To
 find the backup ID, use DescribeBackups.}
 
+\item{SubnetIds}{[required] The identifiers (IDs) of the subnets where you are creating the cluster.
+You must specify at least one subnet. If you specify multiple subnets,
+they must meet the following criteria:
+\itemize{
+\item All subnets must be in the same virtual private cloud (VPC).
+\item You can specify only one subnet per Availability Zone.
+}}
+
 \item{TagList}{Tags to apply to the CloudHSM cluster during creation.}
 }
 \description{
@@ -29,11 +32,15 @@ Creates a new AWS CloudHSM cluster.
 }
 \section{Request syntax}{
 \preformatted{svc$create_cluster(
-  SubnetIds = list(
-    "string"
+  BackupRetentionPolicy = list(
+    Type = "DAYS",
+    Value = "string"
   ),
   HsmType = "string",
   SourceBackupId = "string",
+  SubnetIds = list(
+    "string"
+  ),
   TagList = list(
     list(
       Key = "string",

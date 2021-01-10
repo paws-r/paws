@@ -97,10 +97,10 @@ the user guide.
 \link[=rds_create_db_parameter_group]{create_db_parameter_group} \tab Creates a new DB parameter group\cr
 \link[=rds_create_db_proxy]{create_db_proxy} \tab Creates a new DB proxy\cr
 \link[=rds_create_db_security_group]{create_db_security_group} \tab Creates a new DB security group\cr
-\link[=rds_create_db_snapshot]{create_db_snapshot} \tab Creates a DBSnapshot\cr
+\link[=rds_create_db_snapshot]{create_db_snapshot} \tab Creates a snapshot of a DB instance\cr
 \link[=rds_create_db_subnet_group]{create_db_subnet_group} \tab Creates a new DB subnet group\cr
 \link[=rds_create_event_subscription]{create_event_subscription} \tab Creates an RDS event notification subscription\cr
-\link[=rds_create_global_cluster]{create_global_cluster} \tab Creates an Aurora global database spread across multiple regions\cr
+\link[=rds_create_global_cluster]{create_global_cluster} \tab Creates an Aurora global database spread across multiple AWS Regions\cr
 \link[=rds_create_option_group]{create_option_group} \tab Creates a new option group\cr
 \link[=rds_delete_custom_availability_zone]{delete_custom_availability_zone} \tab Deletes a custom Availability Zone (AZ)\cr
 \link[=rds_delete_db_cluster]{delete_db_cluster} \tab The DeleteDBCluster action deletes a previously provisioned DB cluster\cr
@@ -108,7 +108,7 @@ the user guide.
 \link[=rds_delete_db_cluster_parameter_group]{delete_db_cluster_parameter_group} \tab Deletes a specified DB cluster parameter group\cr
 \link[=rds_delete_db_cluster_snapshot]{delete_db_cluster_snapshot} \tab Deletes a DB cluster snapshot\cr
 \link[=rds_delete_db_instance]{delete_db_instance} \tab The DeleteDBInstance action deletes a previously provisioned DB instance\cr
-\link[=rds_delete_db_instance_automated_backup]{delete_db_instance_automated_backup} \tab Deletes automated backups based on the source instance's DbiResourceId value or the restorable instance's resource ID\cr
+\link[=rds_delete_db_instance_automated_backup]{delete_db_instance_automated_backup} \tab Deletes automated backups using the DbiResourceId value of the source DB instance or the Amazon Resource Name (ARN) of the automated backups\cr
 \link[=rds_delete_db_parameter_group]{delete_db_parameter_group} \tab Deletes a specified DB parameter group\cr
 \link[=rds_delete_db_proxy]{delete_db_proxy} \tab Deletes an existing proxy\cr
 \link[=rds_delete_db_security_group]{delete_db_security_group} \tab Deletes a DB security group\cr
@@ -145,7 +145,7 @@ the user guide.
 \link[=rds_describe_engine_default_cluster_parameters]{describe_engine_default_cluster_parameters} \tab Returns the default engine and system parameter information for the cluster database engine\cr
 \link[=rds_describe_engine_default_parameters]{describe_engine_default_parameters} \tab Returns the default engine and system parameter information for the specified database engine\cr
 \link[=rds_describe_event_categories]{describe_event_categories} \tab Displays a list of categories for all event source types, or, if specified, for a specified source type\cr
-\link[=rds_describe_events]{describe_events} \tab Returns events related to DB instances, DB security groups, DB snapshots, and DB parameter groups for the past 14 days\cr
+\link[=rds_describe_events]{describe_events} \tab Returns events related to DB instances, DB clusters, DB parameter groups, DB security groups, DB snapshots, and DB cluster snapshots for the past 14 days\cr
 \link[=rds_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists all the subscription descriptions for a customer account\cr
 \link[=rds_describe_export_tasks]{describe_export_tasks} \tab Returns information about a snapshot export to Amazon S3\cr
 \link[=rds_describe_global_clusters]{describe_global_clusters} \tab Returns information about Aurora global database clusters\cr
@@ -156,7 +156,7 @@ the user guide.
 \link[=rds_describe_pending_maintenance_actions]{describe_pending_maintenance_actions} \tab Returns a list of resources (for example, DB instances) that have at least one pending maintenance action\cr
 \link[=rds_describe_reserved_db_instances]{describe_reserved_db_instances} \tab Returns information about reserved DB instances for this account, or about a specified reserved DB instance\cr
 \link[=rds_describe_reserved_db_instances_offerings]{describe_reserved_db_instances_offerings} \tab Lists available reserved DB instance offerings\cr
-\link[=rds_describe_source_regions]{describe_source_regions} \tab Returns a list of the source AWS Regions where the current AWS Region can create a read replica or copy a DB snapshot from\cr
+\link[=rds_describe_source_regions]{describe_source_regions} \tab Returns a list of the source AWS Regions where the current AWS Region can create a read replica, copy a DB snapshot from, or replicate automated backups from\cr
 \link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications} \tab You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your DB instance\cr
 \link[=rds_download_db_log_file_portion]{download_db_log_file_portion} \tab Downloads all or a portion of the specified log file, up to 1 MB in size\cr
 \link[=rds_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a DB cluster\cr
@@ -190,7 +190,7 @@ the user guide.
 \link[=rds_remove_tags_from_resource]{remove_tags_from_resource} \tab Removes metadata tags from an Amazon RDS resource\cr
 \link[=rds_reset_db_cluster_parameter_group]{reset_db_cluster_parameter_group} \tab Modifies the parameters of a DB cluster parameter group to the default value\cr
 \link[=rds_reset_db_parameter_group]{reset_db_parameter_group} \tab Modifies the parameters of a DB parameter group to the engine/system default value\cr
-\link[=rds_restore_db_cluster_from_s3]{restore_db_cluster_from_s3} \tab Creates an Amazon Aurora DB cluster from data stored in an Amazon S3 bucket\cr
+\link[=rds_restore_db_cluster_from_s3]{restore_db_cluster_from_s3} \tab Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon S3 bucket\cr
 \link[=rds_restore_db_cluster_from_snapshot]{restore_db_cluster_from_snapshot} \tab Creates a new DB cluster from a DB snapshot or DB cluster snapshot\cr
 \link[=rds_restore_db_cluster_to_point_in_time]{restore_db_cluster_to_point_in_time} \tab Restores a DB cluster to an arbitrary point in time\cr
 \link[=rds_restore_db_instance_from_db_snapshot]{restore_db_instance_from_db_snapshot} \tab Creates a new DB instance from a DB snapshot\cr
@@ -200,10 +200,12 @@ the user guide.
 \link[=rds_start_activity_stream]{start_activity_stream} \tab Starts a database activity stream to monitor activity on the database\cr
 \link[=rds_start_db_cluster]{start_db_cluster} \tab Starts an Amazon Aurora DB cluster that was stopped using the AWS console, the stop-db-cluster AWS CLI command, or the StopDBCluster action\cr
 \link[=rds_start_db_instance]{start_db_instance} \tab Starts an Amazon RDS DB instance that was stopped using the AWS console, the stop-db-instance AWS CLI command, or the StopDBInstance action\cr
+\link[=rds_start_db_instance_automated_backups_replication]{start_db_instance_automated_backups_replication} \tab Enables replication of automated backups to a different AWS Region\cr
 \link[=rds_start_export_task]{start_export_task} \tab Starts an export of a snapshot to Amazon S3\cr
 \link[=rds_stop_activity_stream]{stop_activity_stream} \tab Stops a database activity stream that was started using the AWS console, the start-activity-stream AWS CLI command, or the StartActivityStream action\cr
 \link[=rds_stop_db_cluster]{stop_db_cluster} \tab Stops an Amazon Aurora DB cluster\cr
-\link[=rds_stop_db_instance]{stop_db_instance} \tab Stops an Amazon RDS DB instance
+\link[=rds_stop_db_instance]{stop_db_instance} \tab Stops an Amazon RDS DB instance\cr
+\link[=rds_stop_db_instance_automated_backups_replication]{stop_db_instance_automated_backups_replication} \tab Stops automated backup replication for a DB instance
 }
 }
 

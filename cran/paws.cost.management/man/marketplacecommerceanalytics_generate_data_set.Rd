@@ -86,6 +86,22 @@ from one month prior.
 
 From 2017-09-15 to present: Available monthly on the 15th day of the
 month by 24:00 UTC.
+\item \strong{disbursed\\_amount\\_by\\_product\\_with\\_uncollected\\_funds}
+
+This data set is deprecated. Download related reports from AMMP
+instead!
+\item \strong{customer\\_profile\\_by\\_industry}
+
+This data set is deprecated. Download related reports from AMMP
+instead!
+\item \strong{customer\\_profile\\_by\\_revenue}
+
+This data set is deprecated. Download related reports from AMMP
+instead!
+\item \strong{customer\\_profile\\_by\\_geography}
+
+This data set is deprecated. Download related reports from AMMP
+instead!
 }}
 
 \item{dataSetPublicationDate}{[required] The date a data set was published. For daily data sets, provide a date with day-level granularity for the desired day. For monthly data sets except those with prefix disbursed_amount, provide a date with month-level granularity for the desired month (the day value will be ignored). For data sets with prefix disbursed_amount, provide a date with day-level granularity for the desired day. For these data sets we will look backwards in time over the range of 31 days until the first data set is found (the latest one).}

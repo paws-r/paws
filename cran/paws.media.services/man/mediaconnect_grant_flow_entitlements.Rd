@@ -31,6 +31,7 @@ Grants entitlements to an existing flow.
         SecretArn = "string",
         Url = "string"
       ),
+      EntitlementStatus = "ENABLED"|"DISABLED",
       Name = "string",
       Subscribers = list(
         "string"

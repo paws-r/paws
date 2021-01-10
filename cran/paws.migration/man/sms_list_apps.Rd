@@ -2,21 +2,21 @@
 % Please edit documentation in R/sms_operations.R
 \name{sms_list_apps}
 \alias{sms_list_apps}
-\title{Returns a list of summaries for all applications}
+\title{Retrieves summaries for all applications}
 \usage{
 sms_list_apps(appIds, nextToken, maxResults)
 }
 \arguments{
-\item{appIds}{}
+\item{appIds}{The unique application IDs.}
 
 \item{nextToken}{The token for the next set of results.}
 
 \item{maxResults}{The maximum number of results to return in a single call. The default
-value is 50. To retrieve the remaining results, make another call with
+value is 100. To retrieve the remaining results, make another call with
 the returned \code{NextToken} value.}
 }
 \description{
-Returns a list of summaries for all applications.
+Retrieves summaries for all applications.
 }
 \section{Request syntax}{
 \preformatted{svc$list_apps(

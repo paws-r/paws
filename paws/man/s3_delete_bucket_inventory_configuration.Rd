@@ -5,12 +5,17 @@
 \title{Deletes an inventory configuration (identified by the inventory ID) from
 the bucket}
 \usage{
-s3_delete_bucket_inventory_configuration(Bucket, Id)
+s3_delete_bucket_inventory_configuration(Bucket, Id,
+  ExpectedBucketOwner)
 }
 \arguments{
 \item{Bucket}{[required] The name of the bucket containing the inventory configuration to delete.}
 
 \item{Id}{[required] The ID used to identify the inventory configuration.}
+
+\item{ExpectedBucketOwner}{The account id of the expected bucket owner. If the bucket is owned by a
+different account, the request will fail with an HTTP
+\verb{403 (Access Denied)} error.}
 }
 \description{
 Deletes an inventory configuration (identified by the inventory ID) from
@@ -27,15 +32,16 @@ For information about the Amazon S3 inventory feature, see \href{https://docs.aw
 
 Operations related to \code{DeleteBucketInventoryConfiguration} include:
 \itemize{
-\item GetBucketInventoryConfiguration
-\item PutBucketInventoryConfiguration
-\item ListBucketInventoryConfigurations
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketInventoryConfiguration.html}{GetBucketInventoryConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketInventoryConfiguration.html}{PutBucketInventoryConfiguration}
+\item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListBucketInventoryConfigurations.html}{ListBucketInventoryConfigurations}
 }
 }
 \section{Request syntax}{
 \preformatted{svc$delete_bucket_inventory_configuration(
   Bucket = "string",
-  Id = "string"
+  Id = "string",
+  ExpectedBucketOwner = "string"
 )
 }
 }

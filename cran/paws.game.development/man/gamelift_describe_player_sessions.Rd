@@ -35,13 +35,13 @@ limit (60 seconds).
 session ID is specified, this parameter is ignored.}
 
 \item{NextToken}{Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value. If a
-player session ID is specified, this parameter is ignored.}
+Use the token that is returned with a previous call to this operation.
+To start at the beginning of the result set, do not specify a value. If
+a player session ID is specified, this parameter is ignored.}
 }
 \description{
-Retrieves properties for one or more player sessions. This action can be
-used in several ways: (1) provide a \code{PlayerSessionId} to request
+Retrieves properties for one or more player sessions. This operation can
+be used in several ways: (1) provide a \code{PlayerSessionId} to request
 properties for a specific player session; (2) provide a \code{GameSessionId}
 to request properties for all player sessions in the specified game
 session; (3) provide a \code{PlayerId} to request properties for all player

@@ -95,7 +95,7 @@ iot1clickdevicesservice_describe_device <- function(DeviceId) {
 #' @param Tags A collection of key/value pairs defining the resource tags. For example,
 #' \{ "tags": \{"key1": "value1", "key2": "value2"\} \}. For more information,
 #' see [AWS Tagging
-#' Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+#' Strategies](https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf).
 #'
 #' @section Request syntax:
 #' ```
@@ -396,7 +396,7 @@ iot1clickdevicesservice_list_tags_for_resource <- function(ResourceArn) {
 #' @param Tags &#91;required&#93; A collection of key/value pairs defining the resource tags. For example,
 #' \{ "tags": \{"key1": "value1", "key2": "value2"\} \}. For more information,
 #' see [AWS Tagging
-#' Strategies](https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+#' Strategies](https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf).
 #'
 #' @section Request syntax:
 #' ```

@@ -10,7 +10,7 @@ iam_delete_login_profile(UserName)
 \arguments{
 \item{UserName}{[required] The name of the user whose password you want to delete.
 
-This parameter allows (through its \href{http://wikipedia.org/wiki/regex}{regex pattern}) a string of characters
+This parameter allows (through its \href{https://en.wikipedia.org/wiki/Regex}{regex pattern}) a string of characters
 consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: \\_+=,.@-}
 }

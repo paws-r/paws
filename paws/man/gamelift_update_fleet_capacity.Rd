@@ -20,9 +20,9 @@ set is 0.}
 set is 1.}
 }
 \description{
-Updates capacity settings for a fleet. Use this action to specify the
+Updates capacity settings for a fleet. Use this operation to specify the
 number of EC2 instances (hosts) that you want this fleet to contain.
-Before calling this action, you may want to call
+Before calling this operation, you may want to call
 DescribeEC2InstanceLimits to get the maximum capacity based on the
 fleet's EC2 instance type.
 }

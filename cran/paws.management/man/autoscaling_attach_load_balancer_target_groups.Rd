@@ -11,20 +11,29 @@ autoscaling_attach_load_balancer_target_groups(AutoScalingGroupName,
 \item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 
 \item{TargetGroupARNs}{[required] The Amazon Resource Names (ARN) of the target groups. You can specify up
-to 10 target groups.}
+to 10 target groups. To get the ARN of a target group, use the Elastic
+Load Balancing
+\href{https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeTargetGroups.html}{DescribeTargetGroups}
+API operation.}
 }
 \description{
 Attaches one or more target groups to the specified Auto Scaling group.
 }
 \details{
+This operation is used with the following load balancer types:
+\itemize{
+\item Application Load Balancer - Operates at the application layer
+(layer 7) and supports HTTP and HTTPS.
+\item Network Load Balancer - Operates at the transport layer (layer 4)
+and supports TCP, TLS, and UDP.
+\item Gateway Load Balancer - Operates at the network layer (layer 3).
+}
+
 To describe the target groups for an Auto Scaling group, call the
 DescribeLoadBalancerTargetGroups API. To detach the target group from
 the Auto Scaling group, call the DetachLoadBalancerTargetGroups API.
 
-With Application Load Balancers and Network Load Balancers, instances
-are registered as targets with a target group. With Classic Load
-Balancers, instances are registered with the load balancer. For more
-information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html}{Attaching a Load Balancer to Your Auto Scaling Group}
+For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html}{Elastic Load Balancing and Amazon EC2 Auto Scaling}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }
 \section{Request syntax}{

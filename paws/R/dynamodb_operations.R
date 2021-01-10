@@ -3,6 +3,73 @@
 #' @include dynamodb_service.R
 NULL
 
+#' This operation allows you to perform batch reads and writes on data
+#' stored in DynamoDB, using PartiQL
+#'
+#' This operation allows you to perform batch reads and writes on data
+#' stored in DynamoDB, using PartiQL.
+#'
+#' @usage
+#' dynamodb_batch_execute_statement(Statements)
+#'
+#' @param Statements &#91;required&#93; The list of PartiQL statements representing the batch to run.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_execute_statement(
+#'   Statements = list(
+#'     list(
+#'       Statement = "string",
+#'       Parameters = list(
+#'         list(
+#'           S = "string",
+#'           N = "string",
+#'           B = raw,
+#'           SS = list(
+#'             "string"
+#'           ),
+#'           NS = list(
+#'             "string"
+#'           ),
+#'           BS = list(
+#'             raw
+#'           ),
+#'           M = list(
+#'             list()
+#'           ),
+#'           L = list(
+#'             list()
+#'           ),
+#'           NULL = TRUE|FALSE,
+#'           BOOL = TRUE|FALSE
+#'         )
+#'       ),
+#'       ConsistentRead = TRUE|FALSE
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_batch_execute_statement
+dynamodb_batch_execute_statement <- function(Statements) {
+  op <- new_operation(
+    name = "BatchExecuteStatement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .dynamodb$batch_execute_statement_input(Statements = Statements)
+  output <- .dynamodb$batch_execute_statement_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$batch_execute_statement <- dynamodb_batch_execute_statement
+
 #' The BatchGetItem operation returns the attributes of one or more items
 #' from one or more tables
 #'
@@ -43,7 +110,7 @@ NULL
 #' more likely to succeed.
 #' 
 #' For more information, see [Batch Operations and Error
-#' Handling](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
+#' Handling](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#BatchOperations)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' By default, `BatchGetItem` performs eventually consistent reads on every
@@ -113,7 +180,7 @@ NULL
 #' 
 #'     For more information about expression attribute names, see
 #'     [Accessing Item
-#'     Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#'     Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html)
 #'     in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' -   `Keys` - An array of primary key attribute values that define
@@ -133,7 +200,7 @@ NULL
 #'     not appear in the result.
 #' 
 #'     For more information, see [Accessing Item
-#'     Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#'     Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html)
 #'     in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' -   `AttributesToGet` - This is a legacy parameter. Use
@@ -281,7 +348,7 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' more likely to succeed.
 #' 
 #' For more information, see [Batch Operations and Error
-#' Handling](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#Programming.Errors.BatchOperations)
+#' Handling](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Programming.Errors.html#Programming.Errors.BatchOperations)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' With `BatchWriteItem`, you can efficiently write or delete large amounts
@@ -696,7 +763,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' @param KeySchema &#91;required&#93; Specifies the attributes that make up the primary key for a table or an
 #' index. The attributes in `KeySchema` must also be defined in the
 #' `AttributeDefinitions` array. For more information, see [Data
-#' Model](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html)
+#' Model](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' 
 #' Each `KeySchemaElement` in the array is composed of:
@@ -823,7 +890,8 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 #' property.
 #' 
 #' For current minimum and maximum provisioned throughput values, see
-#' [Limits](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+#' [Service, Account, and Table
+#' Quotas](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param StreamSpecification The settings for DynamoDB Streams on the table. These settings consist
 #' of:
@@ -1092,7 +1160,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' -   Logical operators: `AND | OR | NOT`
 #' 
 #' For more information about condition expressions, see [Condition
-#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
@@ -1129,7 +1197,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' values*, which are placeholders for the actual value at runtime.
 #' 
 #' For more information on expression attribute names, see [Specifying Item
-#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeValues One or more values that can be substituted in an expression.
 #' 
@@ -1148,7 +1216,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 #' `ProductStatus IN (:avail, :back, :disc)`
 #' 
 #' For more information on expression attribute values, see [Condition
-#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @section Request syntax:
@@ -1527,6 +1595,42 @@ dynamodb_describe_endpoints <- function() {
 }
 .dynamodb$operations$describe_endpoints <- dynamodb_describe_endpoints
 
+#' Describes an existing table export
+#'
+#' Describes an existing table export.
+#'
+#' @usage
+#' dynamodb_describe_export(ExportArn)
+#'
+#' @param ExportArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the export.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_export(
+#'   ExportArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_describe_export
+dynamodb_describe_export <- function(ExportArn) {
+  op <- new_operation(
+    name = "DescribeExport",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .dynamodb$describe_export_input(ExportArn = ExportArn)
+  output <- .dynamodb$describe_export_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$describe_export <- dynamodb_describe_export
+
 #' Returns information about the specified global table
 #'
 #' Returns information about the specified global table.
@@ -1611,33 +1715,69 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 }
 .dynamodb$operations$describe_global_table_settings <- dynamodb_describe_global_table_settings
 
-#' Returns the current provisioned-capacity limits for your AWS account in
+#' Returns information about the status of Kinesis streaming
+#'
+#' Returns information about the status of Kinesis streaming.
+#'
+#' @usage
+#' dynamodb_describe_kinesis_streaming_destination(TableName)
+#'
+#' @param TableName &#91;required&#93; The name of the table being described.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_kinesis_streaming_destination(
+#'   TableName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_describe_kinesis_streaming_destination
+dynamodb_describe_kinesis_streaming_destination <- function(TableName) {
+  op <- new_operation(
+    name = "DescribeKinesisStreamingDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .dynamodb$describe_kinesis_streaming_destination_input(TableName = TableName)
+  output <- .dynamodb$describe_kinesis_streaming_destination_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$describe_kinesis_streaming_destination <- dynamodb_describe_kinesis_streaming_destination
+
+#' Returns the current provisioned-capacity quotas for your AWS account in
 #' a Region, both for the Region as a whole and for any one DynamoDB table
 #' that you create there
 #'
-#' Returns the current provisioned-capacity limits for your AWS account in
+#' Returns the current provisioned-capacity quotas for your AWS account in
 #' a Region, both for the Region as a whole and for any one DynamoDB table
 #' that you create there.
 #' 
-#' When you establish an AWS account, the account has initial limits on the
+#' When you establish an AWS account, the account has initial quotas on the
 #' maximum read capacity units and write capacity units that you can
 #' provision across all of your DynamoDB tables in a given Region. Also,
-#' there are per-table limits that apply when you create a table there. For
-#' more information, see
-#' [Limits](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+#' there are per-table quotas that apply when you create a table there. For
+#' more information, see [Service, Account, and Table
+#' Quotas](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 #' page in the *Amazon DynamoDB Developer Guide*.
 #' 
-#' Although you can increase these limits by filing a case at [AWS Support
+#' Although you can increase these quotas by filing a case at [AWS Support
 #' Center](https://console.aws.amazon.com/support/home#/), obtaining the
 #' increase is not instantaneous. The `DescribeLimits` action lets you
 #' write code to compare the capacity you are currently using to those
-#' limits imposed by your account so that you have enough time to apply for
-#' an increase before you hit a limit.
+#' quotas imposed by your account so that you have enough time to apply for
+#' an increase before you hit a quota.
 #' 
 #' For example, you could use one of the AWS SDKs to do the following:
 #' 
 #' 1.  Call `DescribeLimits` for a particular Region to obtain your current
-#'     account limits on provisioned capacity there.
+#'     account quotas on provisioned capacity there.
 #' 
 #' 2.  Create a variable to hold the aggregate read capacity units
 #'     provisioned for all your tables in that Region, and one to hold the
@@ -1657,21 +1797,21 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 #'         loop over these GSIs and add their provisioned capacity values
 #'         to your variables as well.
 #' 
-#' 5.  Report the account limits for that Region returned by
+#' 5.  Report the account quotas for that Region returned by
 #'     `DescribeLimits`, along with the total current provisioned capacity
 #'     levels you have calculated.
 #' 
 #' This will let you see whether you are getting close to your
-#' account-level limits.
+#' account-level quotas.
 #' 
-#' The per-table limits apply only when you are creating a new table. They
+#' The per-table quotas apply only when you are creating a new table. They
 #' restrict the sum of the provisioned capacity of the new table itself and
 #' all its global secondary indexes.
 #' 
 #' For existing tables and their GSIs, DynamoDB doesn't let you increase
-#' provisioned capacity extremely rapidly. But the only upper limit that
-#' applies is that the aggregate provisioned capacity over all your tables
-#' and GSIs cannot exceed either of the per-account limits.
+#' provisioned capacity extremely rapidly, but the only quota that applies
+#' is that the aggregate provisioned capacity over all your tables and GSIs
+#' cannot exceed either of the per-account quotas.
 #' 
 #' `DescribeLimits` should only be called periodically. You can expect
 #' throttling errors if you call it more than once in a minute.
@@ -1847,6 +1987,307 @@ dynamodb_describe_time_to_live <- function(TableName) {
 }
 .dynamodb$operations$describe_time_to_live <- dynamodb_describe_time_to_live
 
+#' Stops replication from the DynamoDB table to the Kinesis data stream
+#'
+#' Stops replication from the DynamoDB table to the Kinesis data stream.
+#' This is done without deleting either of the resources.
+#'
+#' @usage
+#' dynamodb_disable_kinesis_streaming_destination(TableName, StreamArn)
+#'
+#' @param TableName &#91;required&#93; The name of the DynamoDB table.
+#' @param StreamArn &#91;required&#93; The ARN for a Kinesis data stream.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disable_kinesis_streaming_destination(
+#'   TableName = "string",
+#'   StreamArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_disable_kinesis_streaming_destination
+dynamodb_disable_kinesis_streaming_destination <- function(TableName, StreamArn) {
+  op <- new_operation(
+    name = "DisableKinesisStreamingDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .dynamodb$disable_kinesis_streaming_destination_input(TableName = TableName, StreamArn = StreamArn)
+  output <- .dynamodb$disable_kinesis_streaming_destination_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$disable_kinesis_streaming_destination <- dynamodb_disable_kinesis_streaming_destination
+
+#' Starts table data replication to the specified Kinesis data stream at a
+#' timestamp chosen during the enable workflow
+#'
+#' Starts table data replication to the specified Kinesis data stream at a
+#' timestamp chosen during the enable workflow. If this operation doesn't
+#' return results immediately, use DescribeKinesisStreamingDestination to
+#' check if streaming to the Kinesis data stream is ACTIVE.
+#'
+#' @usage
+#' dynamodb_enable_kinesis_streaming_destination(TableName, StreamArn)
+#'
+#' @param TableName &#91;required&#93; The name of the DynamoDB table.
+#' @param StreamArn &#91;required&#93; The ARN for a Kinesis data stream.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$enable_kinesis_streaming_destination(
+#'   TableName = "string",
+#'   StreamArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_enable_kinesis_streaming_destination
+dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn) {
+  op <- new_operation(
+    name = "EnableKinesisStreamingDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .dynamodb$enable_kinesis_streaming_destination_input(TableName = TableName, StreamArn = StreamArn)
+  output <- .dynamodb$enable_kinesis_streaming_destination_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$enable_kinesis_streaming_destination <- dynamodb_enable_kinesis_streaming_destination
+
+#' This operation allows you to perform reads and singleton writes on data
+#' stored in DynamoDB, using PartiQL
+#'
+#' This operation allows you to perform reads and singleton writes on data
+#' stored in DynamoDB, using PartiQL.
+#'
+#' @usage
+#' dynamodb_execute_statement(Statement, Parameters, ConsistentRead,
+#'   NextToken)
+#'
+#' @param Statement &#91;required&#93; The PartiQL statement representing the operation to run.
+#' @param Parameters The parameters for the PartiQL statement, if any.
+#' @param ConsistentRead The consistency of a read operation. If set to `true`, then a strongly
+#' consistent read is used; otherwise, an eventually consistent read is
+#' used.
+#' @param NextToken Set this value to get remaining results, if `NextToken` was returned in
+#' the statement response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$execute_statement(
+#'   Statement = "string",
+#'   Parameters = list(
+#'     list(
+#'       S = "string",
+#'       N = "string",
+#'       B = raw,
+#'       SS = list(
+#'         "string"
+#'       ),
+#'       NS = list(
+#'         "string"
+#'       ),
+#'       BS = list(
+#'         raw
+#'       ),
+#'       M = list(
+#'         list()
+#'       ),
+#'       L = list(
+#'         list()
+#'       ),
+#'       NULL = TRUE|FALSE,
+#'       BOOL = TRUE|FALSE
+#'     )
+#'   ),
+#'   ConsistentRead = TRUE|FALSE,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_execute_statement
+dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentRead = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ExecuteStatement",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .dynamodb$execute_statement_input(Statement = Statement, Parameters = Parameters, ConsistentRead = ConsistentRead, NextToken = NextToken)
+  output <- .dynamodb$execute_statement_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$execute_statement <- dynamodb_execute_statement
+
+#' This operation allows you to perform transactional reads or writes on
+#' data stored in DynamoDB, using PartiQL
+#'
+#' This operation allows you to perform transactional reads or writes on
+#' data stored in DynamoDB, using PartiQL.
+#'
+#' @usage
+#' dynamodb_execute_transaction(TransactStatements, ClientRequestToken)
+#'
+#' @param TransactStatements &#91;required&#93; The list of PartiQL statements representing the transaction to run.
+#' @param ClientRequestToken Set this value to get remaining results, if `NextToken` was returned in
+#' the statement response.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$execute_transaction(
+#'   TransactStatements = list(
+#'     list(
+#'       Statement = "string",
+#'       Parameters = list(
+#'         list(
+#'           S = "string",
+#'           N = "string",
+#'           B = raw,
+#'           SS = list(
+#'             "string"
+#'           ),
+#'           NS = list(
+#'             "string"
+#'           ),
+#'           BS = list(
+#'             raw
+#'           ),
+#'           M = list(
+#'             list()
+#'           ),
+#'           L = list(
+#'             list()
+#'           ),
+#'           NULL = TRUE|FALSE,
+#'           BOOL = TRUE|FALSE
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_execute_transaction
+dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "ExecuteTransaction",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .dynamodb$execute_transaction_input(TransactStatements = TransactStatements, ClientRequestToken = ClientRequestToken)
+  output <- .dynamodb$execute_transaction_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$execute_transaction <- dynamodb_execute_transaction
+
+#' Exports table data to an S3 bucket
+#'
+#' Exports table data to an S3 bucket. The table must have point in time
+#' recovery enabled, and you can export data from any time within the point
+#' in time recovery window.
+#'
+#' @usage
+#' dynamodb_export_table_to_point_in_time(TableArn, ExportTime,
+#'   ClientToken, S3Bucket, S3BucketOwner, S3Prefix, S3SseAlgorithm,
+#'   S3SseKmsKeyId, ExportFormat)
+#'
+#' @param TableArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the table to export.
+#' @param ExportTime Time in the past from which to export table data. The table export will
+#' be a snapshot of the table's state at this point in time.
+#' @param ClientToken Providing a `ClientToken` makes the call to
+#' `ExportTableToPointInTimeInput` idempotent, meaning that multiple
+#' identical calls have the same effect as one single call.
+#' 
+#' A client token is valid for 8 hours after the first request that uses it
+#' is completed. After 8 hours, any request with the same client token is
+#' treated as a new request. Do not resubmit the same request with the same
+#' client token for more than 8 hours, or the result might not be
+#' idempotent.
+#' 
+#' If you submit a request with the same client token but a change in other
+#' parameters within the 8-hour idempotency window, DynamoDB returns an
+#' `IdempotentParameterMismatch` exception.
+#' @param S3Bucket &#91;required&#93; The name of the Amazon S3 bucket to export the snapshot to.
+#' @param S3BucketOwner The ID of the AWS account that owns the bucket the export will be stored
+#' in.
+#' @param S3Prefix The Amazon S3 bucket prefix to use as the file name and path of the
+#' exported snapshot.
+#' @param S3SseAlgorithm Type of encryption used on the bucket where export data will be stored.
+#' Valid values for `S3SseAlgorithm` are:
+#' 
+#' -   `AES256` - server-side encryption with Amazon S3 managed keys
+#' 
+#' -   `KMS` - server-side encryption with AWS KMS managed keys
+#' @param S3SseKmsKeyId The ID of the AWS KMS managed key used to encrypt the S3 bucket where
+#' export data will be stored (if applicable).
+#' @param ExportFormat The format for the exported data. Valid values for `ExportFormat` are
+#' `DYNAMODB_JSON` or `ION`.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$export_table_to_point_in_time(
+#'   TableArn = "string",
+#'   ExportTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ClientToken = "string",
+#'   S3Bucket = "string",
+#'   S3BucketOwner = "string",
+#'   S3Prefix = "string",
+#'   S3SseAlgorithm = "AES256"|"KMS",
+#'   S3SseKmsKeyId = "string",
+#'   ExportFormat = "DYNAMODB_JSON"|"ION"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_export_table_to_point_in_time
+dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, ClientToken = NULL, S3Bucket, S3BucketOwner = NULL, S3Prefix = NULL, S3SseAlgorithm = NULL, S3SseKmsKeyId = NULL, ExportFormat = NULL) {
+  op <- new_operation(
+    name = "ExportTableToPointInTime",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .dynamodb$export_table_to_point_in_time_input(TableArn = TableArn, ExportTime = ExportTime, ClientToken = ClientToken, S3Bucket = S3Bucket, S3BucketOwner = S3BucketOwner, S3Prefix = S3Prefix, S3SseAlgorithm = S3SseAlgorithm, S3SseKmsKeyId = S3SseKmsKeyId, ExportFormat = ExportFormat)
+  output <- .dynamodb$export_table_to_point_in_time_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$export_table_to_point_in_time <- dynamodb_export_table_to_point_in_time
+
 #' The GetItem operation returns a set of attributes for the item with the
 #' given primary key
 #'
@@ -1888,7 +2329,7 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' the result.
 #' 
 #' For more information, see [Specifying Item
-#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
@@ -1925,7 +2366,7 @@ dynamodb_describe_time_to_live <- function(TableName) {
 #' values*, which are placeholders for the actual value at runtime.
 #' 
 #' For more information on expression attribute names, see [Specifying Item
-#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @section Request syntax:
@@ -2011,10 +2452,10 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
 #' List backups associated with an AWS account. To list backups for a given
 #' table, specify `TableName`. `ListBackups` returns a paginated list of
 #' results with at most 1 MB worth of items in a page. You can also specify
-#' a limit for the maximum number of entries to be returned in a page.
+#' a maximum number of entries to be returned in a page.
 #' 
 #' In the request, start time is inclusive, but end time is exclusive. Note
-#' that these limits are for the time at which the original backup was
+#' that these boundaries are for the time at which the original backup was
 #' requested.
 #' 
 #' You can call `ListBackups` a maximum of five times per second.
@@ -2121,6 +2562,48 @@ dynamodb_list_contributor_insights <- function(TableName = NULL, NextToken = NUL
   return(response)
 }
 .dynamodb$operations$list_contributor_insights <- dynamodb_list_contributor_insights
+
+#' Lists completed exports within the past 90 days
+#'
+#' Lists completed exports within the past 90 days.
+#'
+#' @usage
+#' dynamodb_list_exports(TableArn, MaxResults, NextToken)
+#'
+#' @param TableArn The Amazon Resource Name (ARN) associated with the exported table.
+#' @param MaxResults Maximum number of results to return per page.
+#' @param NextToken An optional string that, if supplied, must be copied from the output of
+#' a previous call to `ListExports`. When provided in this manner, the API
+#' fetches the next page of results.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_exports(
+#'   TableArn = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname dynamodb_list_exports
+dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListExports",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .dynamodb$list_exports_input(TableArn = TableArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .dynamodb$list_exports_output()
+  config <- get_config()
+  svc <- .dynamodb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.dynamodb$operations$list_exports <- dynamodb_list_exports
 
 #' Lists all global tables that have a replica in the specified Region
 #'
@@ -2287,31 +2770,31 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' specific languages, see the following:
 #' 
 #' -   [PutItem in the AWS Command Line
-#'     Interface](http://docs.aws.amazon.com/goto/aws-cli/dynamodb-2012-08-10/PutItem)
+#'     Interface](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/put-item.html)
 #' 
 #' -   [PutItem in the AWS SDK for
-#'     .NET](http://docs.aws.amazon.com/goto/DotNetSDKV3/dynamodb-2012-08-10/PutItem)
+#'     .NET](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=DynamoDBv2%2FMDynamoDBPutItemPutItemRequest.html)
 #' 
 #' -   [PutItem in the AWS SDK for
-#'     C++](http://docs.aws.amazon.com/goto/SdkForCpp/dynamodb-2012-08-10/PutItem)
+#'     C++](https://sdk.amazonaws.com/cpp/api/crosslink_redirect.html?uid=dynamodb-2012-08-10&type=PutItem)
 #' 
 #' -   [PutItem in the AWS SDK for
-#'     Go](http://docs.aws.amazon.com/goto/SdkForGoV1/dynamodb-2012-08-10/PutItem)
+#'     Go](https://docs.aws.amazon.com/sdk-for-go/api/service/dynamodb/#DynamoDB.PutItem)
 #' 
 #' -   [PutItem in the AWS SDK for
-#'     Java](http://docs.aws.amazon.com/goto/SdkForJava/dynamodb-2012-08-10/PutItem)
+#'     Java](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDB.html#putItem-com.amazonaws.services.dynamodbv2.model.PutItemRequest-)
 #' 
 #' -   [PutItem in the AWS SDK for
-#'     JavaScript](http://docs.aws.amazon.com/goto/AWSJavaScriptSDK/dynamodb-2012-08-10/PutItem)
+#'     JavaScript](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#putItem-property)
 #' 
 #' -   [PutItem in the AWS SDK for PHP
-#'     V3](http://docs.aws.amazon.com/goto/SdkForPHPV3/dynamodb-2012-08-10/PutItem)
+#'     V3](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-dynamodb-2012-08-10.html#putitem)
 #' 
 #' -   [PutItem in the AWS SDK for
-#'     Python](http://docs.aws.amazon.com/goto/boto3/dynamodb-2012-08-10/PutItem)
+#'     Python](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html)
 #' 
 #' -   [PutItem in the AWS SDK for Ruby
-#'     V2](http://docs.aws.amazon.com/goto/SdkForRubyV2/dynamodb-2012-08-10/PutItem)
+#'     V2](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/DynamoDB/Client.html#put_item-instance_method)
 #' 
 #' When you add an item, the primary key attributes are the only required
 #' attributes. Attribute values cannot be null.
@@ -2407,7 +2890,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' -   Logical operators: `AND | OR | NOT`
 #' 
 #' For more information on condition expressions, see [Condition
-#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
@@ -2444,7 +2927,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' values*, which are placeholders for the actual value at runtime.
 #' 
 #' For more information on expression attribute names, see [Specifying Item
-#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeValues One or more values that can be substituted in an expression.
 #' 
@@ -2463,7 +2946,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #' `ProductStatus IN (:avail, :back, :disc)`
 #' 
 #' For more information on expression attribute values, see [Condition
-#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @section Request syntax:
@@ -2749,7 +3232,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' values up to the limit, and a key in `LastEvaluatedKey` to apply in a
 #' subsequent operation to continue the operation. For more information,
 #' see [Query and
-#' Scan](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html)
+#' Scan](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ConsistentRead Determines the read consistency model: If set to `true`, then the
 #' operation uses strongly consistent reads; otherwise, the operation uses
@@ -2801,7 +3284,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' not appear in the result.
 #' 
 #' For more information, see [Accessing Item
-#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param FilterExpression A string that contains conditions that DynamoDB applies after the
 #' `Query` operation, but before the data is returned to you. Items that do
@@ -2815,7 +3298,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' units.
 #' 
 #' For more information, see [Filter
-#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults)
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#FilteringResults)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param KeyConditionExpression The condition that specifies the key values for items to be retrieved by
 #' the `Query` action.
@@ -2890,7 +3373,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' For more information on `ExpressionAttributeNames` and
 #' `ExpressionAttributeValues`, see [Using Placeholders for Attribute Names
 #' and
-#' Values](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ExpressionPlaceholders.html)
+#' Values](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ExpressionAttributeNames.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
@@ -2927,7 +3410,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' values*, which are placeholders for the actual value at runtime.
 #' 
 #' For more information on expression attribute names, see [Specifying Item
-#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeValues One or more values that can be substituted in an expression.
 #' 
@@ -2946,7 +3429,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 #' `ProductStatus IN (:avail, :back, :disc)`
 #' 
 #' For more information on expression attribute values, see [Specifying
-#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @section Request syntax:
@@ -3442,7 +3925,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' values up to the limit, and a key in `LastEvaluatedKey` to apply in a
 #' subsequent operation to continue the operation. For more information,
 #' see [Working with
-#' Queries](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html)
+#' Queries](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param Select The attributes to be returned in the result. You can retrieve all item
 #' attributes, specific item attributes, the count of matching items, or in
@@ -3546,7 +4029,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' not appear in the result.
 #' 
 #' For more information, see [Specifying Item
-#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param FilterExpression A string that contains conditions that DynamoDB applies after the `Scan`
 #' operation, but before the data is returned to you. Items that do not
@@ -3557,7 +4040,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' units.
 #' 
 #' For more information, see [Filter
-#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults)
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#FilteringResults)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
@@ -3594,7 +4077,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' values*, which are placeholders for the actual value at runtime.
 #' 
 #' For more information on expression attribute names, see [Specifying Item
-#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeValues One or more values that can be substituted in an expression.
 #' 
@@ -3613,7 +4096,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' `ProductStatus IN (:avail, :back, :disc)`
 #' 
 #' For more information on expression attribute values, see [Condition
-#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ConsistentRead A Boolean value that determines the read consistency model during the
 #' scan:
@@ -4775,7 +5258,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' `SET a=:value1, b=:value2 DELETE :value3, :value4, :value5`
 #' 
 #' For more information on update expressions, see [Modifying Items and
-#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Modifying.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.UpdateExpressions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ConditionExpression A condition that must be satisfied in order for a conditional update to
 #' succeed.
@@ -4793,7 +5276,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' -   Logical operators: `AND | OR | NOT`
 #' 
 #' For more information about condition expressions, see [Specifying
-#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' Conditions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:
@@ -4831,7 +5314,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' 
 #' For more information about expression attribute names, see [Specifying
 #' Item
-#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+#' Attributes](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Attributes.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeValues One or more values that can be substituted in an expression.
 #' 
@@ -4850,7 +5333,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' `ProductStatus IN (:avail, :back, :disc)`
 #' 
 #' For more information on expression attribute values, see [Condition
-#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html)
 #' in the *Amazon DynamoDB Developer Guide*.
 #'
 #' @section Request syntax:

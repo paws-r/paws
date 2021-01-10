@@ -357,6 +357,34 @@ Creates a journey for an application.
     StartActivity = "string",
     StartCondition = list(
       Description = "string",
+      EventStartCondition = list(
+        EventFilter = list(
+          Dimensions = list(
+            Attributes = list(
+              list(
+                AttributeType = "INCLUSIVE"|"EXCLUSIVE",
+                Values = list(
+                  "string"
+                )
+              )
+            ),
+            EventType = list(
+              DimensionType = "INCLUSIVE"|"EXCLUSIVE",
+              Values = list(
+                "string"
+              )
+            ),
+            Metrics = list(
+              list(
+                ComparisonOperator = "string",
+                Value = 123.0
+              )
+            )
+          ),
+          FilterType = "SYSTEM"|"ENDPOINT"
+        ),
+        SegmentId = "string"
+      ),
       SegmentStartCondition = list(
         SegmentId = "string"
       )
