@@ -328,7 +328,7 @@ escape_special_chars <- function(text) {
   result <- gsub("`\\`", "`\\\\`", result, fixed = TRUE)
 
   # Special characters -- not already escaped
-  for (char in c("{", "}")) {
+  for (char in c("{", "}", "%")) {
     result <- gsub(paste0("(?<!\\\\)", char), paste0("\\\\", char), result, perl = TRUE)
   }
 
