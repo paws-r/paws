@@ -1,4 +1,4 @@
-# paws 0.1.10
+# paws 0.1.9
 
 * Support the S3 operation `SelectObjectContent` in `s3$select_object_content`.
   This operation allows you to query a data file in S3 using SQL.
