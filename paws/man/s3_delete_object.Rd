@@ -50,8 +50,7 @@ different account, the request will fail with an HTTP
 Removes the null version (if there is one) of an object and inserts a
 delete marker, which becomes the latest version of the object. If there
 isn't a null version, Amazon S3 does not remove any objects.
-}
-\details{
+
 To remove a specific version, you must be the bucket owner and you must
 use the version Id subresource. Using this subresource permanently
 deletes the version. If the object deleted is a delete marker, Amazon S3

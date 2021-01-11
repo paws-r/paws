@@ -11,8 +11,7 @@ dax_delete_subnet_group(SubnetGroupName)
 }
 \description{
 Deletes a subnet group.
-}
-\details{
+
 You cannot delete a subnet group if it is associated with any DAX
 clusters.
 }

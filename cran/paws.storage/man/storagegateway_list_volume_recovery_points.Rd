@@ -12,8 +12,7 @@ storagegateway_list_volume_recovery_points(GatewayARN)
 \description{
 Lists the recovery points for a specified gateway. This operation is
 only supported in the cached volume gateway type.
-}
-\details{
+
 Each cache volume has one recovery point. A volume recovery point is a
 point in time at which all data of the volume is consistent and from
 which you can create a snapshot or clone a new cached volume from a

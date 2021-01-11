@@ -5,6 +5,7 @@ NULL
 
 #' Use to check if a device is registered with SageMaker Edge Manager
 #'
+#' @description
 #' Use to check if a device is registered with SageMaker Edge Manager.
 #'
 #' @usage
@@ -46,6 +47,7 @@ sagemakeredgemanager_get_device_registration <- function(DeviceName, DeviceFleet
 #' Use to get the current status of devices registered on SageMaker Edge
 #' Manager
 #'
+#' @description
 #' Use to get the current status of devices registered on SageMaker Edge
 #' Manager.
 #'

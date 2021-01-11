@@ -22,8 +22,7 @@ ascending creation order.}
 \description{
 Lists the policies attached to the specified principal. If you use an
 Cognito identity, the ID must be in \href{https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax}{AmazonCognito Identity format}.
-}
-\details{
+
 \strong{Note:} This API is deprecated. Please use ListAttachedPolicies
 instead.
 }

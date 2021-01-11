@@ -24,8 +24,7 @@ the memory store will be capable of holding 24 hours of data, but will
 be populated with 24 hours of data 22 hours after this change was made.
 Timestream does not retrieve data from the magnetic store to populate
 the memory store.
-}
-\details{
+
 Service quotas apply. For more information, see \href{https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html}{Access Management}
 in the Timestream Developer Guide.
 }

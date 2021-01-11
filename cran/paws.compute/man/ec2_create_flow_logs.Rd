@@ -97,8 +97,7 @@ Default: 600}
 \description{
 Creates one or more flow logs to capture information about IP traffic
 for a specific network interface, subnet, or VPC.
-}
-\details{
+
 Flow log data for a monitored network interface is recorded as flow log
 records, which are log events consisting of fields that describe the
 traffic flow. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html#flow-log-records}{Flow Log Records}

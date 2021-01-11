@@ -28,7 +28,7 @@ NextToken value in the next NextToken parameter and retrying the
 command. If the NextToken field is empty, all response records have been
 retrieved for the request.}
 
-\item{SchemaPattern}{A pattern to filter results by schema name. Within a schema pattern, "\%"
+\item{SchemaPattern}{A pattern to filter results by schema name. Within a schema pattern, "\\%"
 means match any substring of 0 or more characters and "\\_" means match
 any one character. Only schema name entries matching the search pattern
 are returned. If \code{SchemaPattern} is not specified, then all tables that
@@ -38,7 +38,7 @@ match \code{TablePattern} are returned. If neither \code{SchemaPattern} or
 \item{SecretArn}{The name or ARN of the secret that enables access to the database. This
 parameter is required when authenticating using AWS Secrets Manager.}
 
-\item{TablePattern}{A pattern to filter results by table name. Within a table pattern, "\%"
+\item{TablePattern}{A pattern to filter results by table name. Within a table pattern, "\\%"
 means match any substring of 0 or more characters and "\\_" means match
 any one character. Only table name entries matching the search pattern
 are returned. If \code{TablePattern} is not specified, then all tables that
@@ -51,8 +51,6 @@ List the tables in a database. If neither \code{SchemaPattern} nor
 returned. A token is returned to page through the table list. Depending
 on the authorization method, use one of the following combinations of
 request parameters:
-}
-\details{
 \itemize{
 \item AWS Secrets Manager - specify the Amazon Resource Name (ARN) of the
 secret and the cluster identifier that matches the cluster in the

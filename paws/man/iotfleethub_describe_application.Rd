@@ -13,8 +13,7 @@ iotfleethub_describe_application(applicationId)
 \description{
 Gets information about a Fleet Hub for AWS IoT Device Management web
 application.
-}
-\details{
+
 Fleet Hub for AWS IoT Device Management is in public preview and is
 subject to change.
 }

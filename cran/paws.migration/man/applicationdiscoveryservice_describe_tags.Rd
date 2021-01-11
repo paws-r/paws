@@ -24,8 +24,7 @@ results.}
 Retrieves a list of configuration items that have tags as specified by
 the key-value pairs, name and value, passed to the optional parameter
 \code{filters}.
-}
-\details{
+
 There are three valid tag filter names:
 \itemize{
 \item tagKey

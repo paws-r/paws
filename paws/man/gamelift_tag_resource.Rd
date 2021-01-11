@@ -26,8 +26,6 @@ create IAM permissions policies to manage access to groups of resources,
 customize AWS cost breakdowns, etc. This operation handles the
 permissions necessary to manage tags for the following GameLift resource
 types:
-}
-\details{
 \itemize{
 \item Build
 \item Script

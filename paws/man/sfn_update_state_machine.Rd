@@ -26,8 +26,7 @@ Updates an existing state machine by modifying its \code{definition},
 to use the previous \code{definition} and \code{roleArn}. You must include at
 least one of \code{definition} or \code{roleArn} or you will receive a
 \code{MissingRequiredParameter} error.
-}
-\details{
+
 All \code{StartExecution} calls within a few seconds will use the updated
 \code{definition} and \code{roleArn}. Executions started immediately after calling
 \code{UpdateStateMachine} may use the previous state machine \code{definition} and

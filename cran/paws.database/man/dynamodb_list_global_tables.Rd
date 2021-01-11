@@ -23,8 +23,7 @@ parameter.}
 }
 \description{
 Lists all global tables that have a replica in the specified Region.
-}
-\details{
+
 This operation only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html}{Version 2017.11.29}
 of global tables.
 }

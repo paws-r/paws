@@ -8,8 +8,7 @@ kinesis_describe_limits()
 }
 \description{
 Describes the shard limits and usage for the account.
-}
-\details{
+
 If you update your account limits, the old limits might be returned for
 a few minutes.
 

@@ -18,8 +18,7 @@ for.}
 }
 \description{
 Returns a list of tags associated with the specified stream.
-}
-\details{
+
 In the request, you must specify either the \code{StreamName} or the
 \code{StreamARN}.
 }

@@ -17,8 +17,7 @@ and \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymme
 \description{
 Associates the specified AWS Key Management Service (AWS KMS) customer
 master key (CMK) with the specified log group.
-}
-\details{
+
 Associating an AWS KMS CMK with a log group overrides any existing
 associations between the log group and a CMK. After a CMK is associated
 with a log group, all newly ingested data for the log group is encrypted

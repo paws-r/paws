@@ -31,8 +31,7 @@ length of 256 characters.}
 }
 \description{
 Creates a virtual router within a service mesh.
-}
-\details{
+
 Specify a \code{listener} for any inbound traffic that your virtual router
 receives. Create a virtual router for each protocol and port that you
 need to route. Virtual routers handle traffic for one or more virtual

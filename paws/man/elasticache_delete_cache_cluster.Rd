@@ -21,8 +21,7 @@ all associated cache nodes, node endpoints and the cluster itself. When
 you receive a successful response from this operation, Amazon
 ElastiCache immediately begins deleting the cluster; you cannot cancel
 or revert this operation.
-}
-\details{
+
 This operation is not valid for:
 \itemize{
 \item Redis (cluster mode enabled) clusters

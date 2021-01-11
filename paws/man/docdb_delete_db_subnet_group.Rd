@@ -19,8 +19,7 @@ Example: \code{mySubnetgroup}}
 }
 \description{
 Deletes a subnet group.
-}
-\details{
+
 The specified database subnet group must not be associated with any DB
 instances.
 }

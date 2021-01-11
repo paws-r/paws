@@ -21,8 +21,7 @@ in \emph{new} accounts in your organization. This means the service can't
 perform operations on your behalf on any new accounts in your
 organization. The service can still perform operations in older accounts
 until the service completes its clean-up from AWS Organizations.
-}
-\details{
+
 We recommend that you disable integration between AWS Organizations and
 the specified AWS service by using the console or commands that are
 provided by the specified service. Doing so ensures that the other

@@ -21,8 +21,7 @@ Registers a player's acceptance or rejection of a proposed FlexMatch
 match. A matchmaking configuration may require player acceptance; if so,
 then matches built with that configuration cannot be completed unless
 all players accept the proposed match within a specified time limit.
-}
-\details{
+
 When FlexMatch builds a match, all the matchmaking tickets involved in
 the proposed match are placed into status \code{REQUIRES_ACCEPTANCE}. This is
 a trigger for your game to get acceptance from all players in the

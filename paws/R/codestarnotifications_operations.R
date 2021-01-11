@@ -5,6 +5,7 @@ NULL
 
 #' Creates a notification rule for a resource
 #'
+#' @description
 #' Creates a notification rule for a resource. The rule specifies the
 #' events you want notifications about and the targets (such as SNS topics)
 #' where you want to receive them.
@@ -87,6 +88,7 @@ codestarnotifications_create_notification_rule <- function(Name, EventTypeIds, R
 
 #' Deletes a notification rule for a resource
 #'
+#' @description
 #' Deletes a notification rule for a resource.
 #'
 #' @usage
@@ -124,6 +126,7 @@ codestarnotifications_delete_notification_rule <- function(Arn) {
 
 #' Deletes a specified target for notifications
 #'
+#' @description
 #' Deletes a specified target for notifications.
 #'
 #' @usage
@@ -165,6 +168,7 @@ codestarnotifications_delete_target <- function(TargetAddress, ForceUnsubscribeA
 
 #' Returns information about a specified notification rule
 #'
+#' @description
 #' Returns information about a specified notification rule.
 #'
 #' @usage
@@ -202,6 +206,7 @@ codestarnotifications_describe_notification_rule <- function(Arn) {
 #' Returns information about the event types available for configuring
 #' notifications
 #'
+#' @description
 #' Returns information about the event types available for configuring
 #' notifications.
 #'
@@ -251,6 +256,7 @@ codestarnotifications_list_event_types <- function(Filters = NULL, NextToken = N
 
 #' Returns a list of the notification rules for an AWS account
 #'
+#' @description
 #' Returns a list of the notification rules for an AWS account.
 #'
 #' @usage
@@ -304,6 +310,7 @@ codestarnotifications_list_notification_rules <- function(Filters = NULL, NextTo
 
 #' Returns a list of the tags associated with a notification rule
 #'
+#' @description
 #' Returns a list of the tags associated with a notification rule.
 #'
 #' @usage
@@ -340,6 +347,7 @@ codestarnotifications_list_tags_for_resource <- function(Arn) {
 
 #' Returns a list of the notification rule targets for an AWS account
 #'
+#' @description
 #' Returns a list of the notification rule targets for an AWS account.
 #'
 #' @usage
@@ -394,6 +402,7 @@ codestarnotifications_list_targets <- function(Filters = NULL, NextToken = NULL,
 #' that the associated target can receive notifications when the events
 #' described in the rule are triggered
 #'
+#' @description
 #' Creates an association between a notification rule and an SNS topic so
 #' that the associated target can receive notifications when the events
 #' described in the rule are triggered.
@@ -441,6 +450,7 @@ codestarnotifications_subscribe <- function(Arn, Target, ClientRequestToken = NU
 
 #' Associates a set of provided tags with a notification rule
 #'
+#' @description
 #' Associates a set of provided tags with a notification rule.
 #'
 #' @usage
@@ -484,6 +494,7 @@ codestarnotifications_tag_resource <- function(Arn, Tags) {
 #' topic so that subscribers to that topic stop receiving notifications
 #' when the events described in the rule are triggered
 #'
+#' @description
 #' Removes an association between a notification rule and an Amazon SNS
 #' topic so that subscribers to that topic stop receiving notifications
 #' when the events described in the rule are triggered.
@@ -525,6 +536,7 @@ codestarnotifications_unsubscribe <- function(Arn, TargetAddress) {
 #' Removes the association between one or more provided tags and a
 #' notification rule
 #'
+#' @description
 #' Removes the association between one or more provided tags and a
 #' notification rule.
 #'
@@ -567,6 +579,7 @@ codestarnotifications_untag_resource <- function(Arn, TagKeys) {
 
 #' Updates a notification rule for a resource
 #'
+#' @description
 #' Updates a notification rule for a resource. You can change the events
 #' that trigger the notification rule, the status of the rule, and the
 #' targets that receive the notifications.

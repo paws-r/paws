@@ -32,8 +32,7 @@ receive either a \emph{ResourceNotFoundException} or an
 }
 \description{
 Deletes the resource-based permission policy attached to the secret.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

@@ -5,6 +5,7 @@ NULL
 
 #' Cancels the specified task
 #'
+#' @description
 #' Cancels the specified task.
 #'
 #' @usage
@@ -43,6 +44,7 @@ braket_cancel_quantum_task <- function(clientToken, quantumTaskArn) {
 
 #' Creates a quantum task
 #'
+#' @description
 #' Creates a quantum task.
 #'
 #' @usage
@@ -97,6 +99,7 @@ braket_create_quantum_task <- function(action, clientToken, deviceArn, devicePar
 
 #' Retrieves the devices available in Amazon Braket
 #'
+#' @description
 #' Retrieves the devices available in Amazon Braket.
 #'
 #' @usage
@@ -133,6 +136,7 @@ braket_get_device <- function(deviceArn) {
 
 #' Retrieves the specified quantum task
 #'
+#' @description
 #' Retrieves the specified quantum task.
 #'
 #' @usage
@@ -169,6 +173,7 @@ braket_get_quantum_task <- function(quantumTaskArn) {
 
 #' Shows the tags associated with this resource
 #'
+#' @description
 #' Shows the tags associated with this resource.
 #'
 #' @usage
@@ -205,6 +210,7 @@ braket_list_tags_for_resource <- function(resourceArn) {
 
 #' Searches for devices using the specified filters
 #'
+#' @description
 #' Searches for devices using the specified filters.
 #'
 #' @usage
@@ -254,6 +260,7 @@ braket_search_devices <- function(filters, maxResults = NULL, nextToken = NULL) 
 
 #' Searches for tasks that match the specified filter values
 #'
+#' @description
 #' Searches for tasks that match the specified filter values.
 #'
 #' @usage
@@ -304,6 +311,7 @@ braket_search_quantum_tasks <- function(filters, maxResults = NULL, nextToken = 
 
 #' Add a tag to the specified resource
 #'
+#' @description
 #' Add a tag to the specified resource.
 #'
 #' @usage
@@ -344,6 +352,7 @@ braket_tag_resource <- function(resourceArn, tags) {
 
 #' Remove tags from a resource
 #'
+#' @description
 #' Remove tags from a resource.
 #'
 #' @usage

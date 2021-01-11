@@ -27,8 +27,7 @@ accounts own (\code{false}). If omitted, all members are listed.}
 \description{
 Returns a list of the members in a network and properties of their
 configurations.
-}
-\details{
+
 Applies only to Hyperledger Fabric.
 }
 \section{Request syntax}{

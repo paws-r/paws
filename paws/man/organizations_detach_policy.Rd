@@ -34,8 +34,7 @@ dash and from 8 to 32 additional lowercase letters or digits.
 \description{
 Detaches a policy from a target root, organizational unit (OU), or
 account.
-}
-\details{
+
 If the policy being detached is a service control policy (SCP), the
 changes to permissions for AWS Identity and Access Management (IAM)
 users and roles in affected accounts are immediate.

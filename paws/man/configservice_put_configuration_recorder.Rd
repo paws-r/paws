@@ -14,8 +14,7 @@ made to the resources.}
 \description{
 Creates a new configuration recorder to record the selected resource
 configurations.
-}
-\details{
+
 You can use this action to change the role \code{roleARN} or the
 \code{recordingGroup} of an existing recorder. To change the role, call the
 action on the existing configuration recorder and specify a role.

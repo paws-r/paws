@@ -17,8 +17,7 @@ routing endpoint.}
 \description{
 Associate a virtual private cloud (VPC) subnet endpoint with your custom
 routing accelerator.
-}
-\details{
+
 The listener port range must be large enough to support the number of IP
 addresses that can be specified in your subnet. The number of ports
 required is: subnet size times the number of ports per destination EC2

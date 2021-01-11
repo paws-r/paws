@@ -22,8 +22,7 @@ versions of a parameter. When you modify a parameter, Systems Manager
 automatically saves a new version and increments the version number by
 one. A label can help you remember the purpose of a parameter when there
 are multiple versions.
-}
-\details{
+
 Parameter labels have the following requirements and restrictions.
 \itemize{
 \item A version of a parameter can have a maximum of 10 labels.

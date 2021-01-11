@@ -17,8 +17,7 @@ API fetches the next page of results.}
 \description{
 List all tags on an Amazon DynamoDB resource. You can call
 ListTagsOfResource up to 10 times per second, per account.
-}
-\details{
+
 For an overview on tagging DynamoDB resources, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html}{Tagging for DynamoDB}
 in the \emph{Amazon DynamoDB Developer Guide}.
 }

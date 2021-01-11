@@ -22,8 +22,6 @@ CreateFacetRequest$ObjectType for more details.}
 }
 \description{
 Does the following:
-}
-\details{
 \enumerate{
 \item Adds new \code{Attributes}, \code{Rules}, or \code{ObjectTypes}.
 \item Updates existing \code{Attributes}, \code{Rules}, or \code{ObjectTypes}.

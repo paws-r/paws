@@ -17,8 +17,7 @@ you might see an \code{InvalidParameterValue} error.}
 Returns the refresh status of the AWS Trusted Advisor checks that have
 the specified check IDs. You can get the check IDs by calling the
 DescribeTrustedAdvisorChecks operation.
-}
-\details{
+
 Some checks are refreshed automatically, and you can't return their
 refresh statuses by using the
 \code{DescribeTrustedAdvisorCheckRefreshStatuses} operation. If you call this

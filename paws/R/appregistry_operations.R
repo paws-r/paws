@@ -6,6 +6,7 @@ NULL
 #' Associates an attribute group with an application to augment the
 #' application's metadata with the group's attributes
 #'
+#' @description
 #' Associates an attribute group with an application to augment the
 #' application's metadata with the group's attributes. This feature enables
 #' applications to be described with user-defined details that are
@@ -48,6 +49,7 @@ appregistry_associate_attribute_group <- function(application, attributeGroup) {
 
 #' Associates a resource with an application
 #'
+#' @description
 #' Associates a resource with an application. Both the resource and the
 #' application can be specified either by ID or name.
 #'
@@ -91,6 +93,7 @@ appregistry_associate_resource <- function(application, resourceType, resource) 
 #' Creates a new application that is the top-level node in a hierarchy of
 #' related cloud resource abstractions
 #'
+#' @description
 #' Creates a new application that is the top-level node in a hierarchy of
 #' related cloud resource abstractions.
 #'
@@ -141,6 +144,7 @@ appregistry_create_application <- function(name, description = NULL, tags = NULL
 
 #' Creates a new attribute group as a container for user-defined attributes
 #'
+#' @description
 #' Creates a new attribute group as a container for user-defined
 #' attributes. This feature enables users to have full control over their
 #' cloud application's metadata in a rich machine-readable format to
@@ -197,6 +201,7 @@ appregistry_create_attribute_group <- function(name, description = NULL, attribu
 #' Deletes an application that is specified either by its application ID or
 #' name
 #'
+#' @description
 #' Deletes an application that is specified either by its application ID or
 #' name. All associated attribute groups and resources must be
 #' disassociated from it before deleting an application.
@@ -236,6 +241,7 @@ appregistry_delete_application <- function(application) {
 #' Deletes an attribute group, specified either by its attribute group ID
 #' or name
 #'
+#' @description
 #' Deletes an attribute group, specified either by its attribute group ID
 #' or name.
 #'
@@ -276,6 +282,7 @@ appregistry_delete_attribute_group <- function(attributeGroup) {
 #' attributes contained in the attribute group from the application's
 #' metadata
 #'
+#' @description
 #' Disassociates an attribute group from an application to remove the extra
 #' attributes contained in the attribute group from the application's
 #' metadata. This operation reverts `AssociateAttributeGroup`.
@@ -317,6 +324,7 @@ appregistry_disassociate_attribute_group <- function(application, attributeGroup
 
 #' Disassociates a resource from application
 #'
+#' @description
 #' Disassociates a resource from application. Both the resource and the
 #' application can be specified either by ID or name.
 #'
@@ -358,6 +366,7 @@ appregistry_disassociate_resource <- function(application, resourceType, resourc
 
 #' Retrieves metadata information about one of your applications
 #'
+#' @description
 #' Retrieves metadata information about one of your applications. The
 #' application can be specified either by its unique ID or by its name
 #' (which is unique within one account in one region at a given point in
@@ -400,6 +409,7 @@ appregistry_get_application <- function(application) {
 
 #' Retrieves an attribute group, either by its name or its ID
 #'
+#' @description
 #' Retrieves an attribute group, either by its name or its ID. The
 #' attribute group can be specified either by its unique ID or by its name.
 #'
@@ -438,6 +448,7 @@ appregistry_get_attribute_group <- function(attributeGroup) {
 
 #' Retrieves a list of all of your applications
 #'
+#' @description
 #' Retrieves a list of all of your applications. Results are paginated.
 #'
 #' @usage
@@ -479,6 +490,7 @@ appregistry_list_applications <- function(nextToken = NULL, maxResults = NULL) {
 #' Lists all attribute groups that are associated with specified
 #' application
 #'
+#' @description
 #' Lists all attribute groups that are associated with specified
 #' application. Results are paginated.
 #'
@@ -523,6 +535,7 @@ appregistry_list_associated_attribute_groups <- function(application, nextToken 
 
 #' Lists all resources that are associated with specified application
 #'
+#' @description
 #' Lists all resources that are associated with specified application.
 #' Results are paginated.
 #'
@@ -567,6 +580,7 @@ appregistry_list_associated_resources <- function(application, nextToken = NULL,
 
 #' Lists all attribute groups which you have access to
 #'
+#' @description
 #' Lists all attribute groups which you have access to. Results are
 #' paginated.
 #'
@@ -608,6 +622,7 @@ appregistry_list_attribute_groups <- function(nextToken = NULL, maxResults = NUL
 
 #' Lists all of the tags on the resource
 #'
+#' @description
 #' Lists all of the tags on the resource.
 #'
 #' @usage
@@ -644,6 +659,7 @@ appregistry_list_tags_for_resource <- function(resourceArn) {
 
 #' Syncs the resource with what is currently recorded in App registry
 #'
+#' @description
 #' Syncs the resource with what is currently recorded in App registry.
 #' Specifically, the resource’s App registry system tags are synced with
 #' its associated application. The resource is removed if it is not
@@ -688,6 +704,7 @@ appregistry_sync_resource <- function(resourceType, resource) {
 
 #' Assigns one or more tags (key-value pairs) to the specified resource
 #'
+#' @description
 #' Assigns one or more tags (key-value pairs) to the specified resource.
 #' 
 #' Each tag consists of a key and an optional value. If a tag with the same
@@ -734,6 +751,7 @@ appregistry_tag_resource <- function(resourceArn, tags) {
 
 #' Removes tags from a resource
 #'
+#' @description
 #' Removes tags from a resource.
 #' 
 #' This operation returns an empty response if the call was successful.
@@ -776,6 +794,7 @@ appregistry_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates an existing application with new attributes
 #'
+#' @description
 #' Updates an existing application with new attributes.
 #'
 #' @usage
@@ -817,6 +836,7 @@ appregistry_update_application <- function(application, name = NULL, description
 
 #' Updates an existing attribute group with new details
 #'
+#' @description
 #' Updates an existing attribute group with new details.
 #'
 #' @usage

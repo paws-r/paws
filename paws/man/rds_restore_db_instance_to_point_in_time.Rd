@@ -255,8 +255,7 @@ Restores a DB instance to an arbitrary point in time. You can restore to
 any point in time before the time identified by the LatestRestorableTime
 property. You can restore to a point up to the number of days specified
 by the BackupRetentionPeriod property.
-}
-\details{
+
 The target database is created with most of the original configuration,
 but in a system-selected Availability Zone, with the default security
 group, the default subnet group, and the default DB parameter group. By

@@ -61,8 +61,7 @@ shipping, or billing.}
 }
 \description{
 Creates a standard profile.
-}
-\details{
+
 A standard profile represents the following attributes for a customer
 profile in a domain.
 }

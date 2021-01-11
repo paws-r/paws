@@ -15,8 +15,7 @@ connect_associate_approved_origin(InstanceId, Origin)
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Associates an approved origin to an Amazon Connect instance.
 }
 \section{Request syntax}{

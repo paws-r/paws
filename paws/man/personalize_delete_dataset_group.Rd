@@ -12,8 +12,6 @@ personalize_delete_dataset_group(datasetGroupArn)
 \description{
 Deletes a dataset group. Before you delete a dataset group, you must
 delete the following:
-}
-\details{
 \itemize{
 \item All associated event trackers.
 \item All associated solutions.

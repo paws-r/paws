@@ -5,6 +5,7 @@ NULL
 
 #' Ends a given Amazon QLDB journal stream
 #'
+#' @description
 #' Ends a given Amazon QLDB journal stream. Before a stream can be
 #' canceled, its current status must be `ACTIVE`.
 #' 
@@ -48,6 +49,7 @@ qldb_cancel_journal_kinesis_stream <- function(LedgerName, StreamId) {
 
 #' Creates a new ledger in your AWS account
 #'
+#' @description
 #' Creates a new ledger in your AWS account.
 #'
 #' @usage
@@ -107,6 +109,7 @@ qldb_create_ledger <- function(Name, Tags = NULL, PermissionsMode, DeletionProte
 
 #' Deletes a ledger and all of its contents
 #'
+#' @description
 #' Deletes a ledger and all of its contents. This action is irreversible.
 #' 
 #' If deletion protection is enabled, you must first disable it before you
@@ -149,6 +152,7 @@ qldb_delete_ledger <- function(Name) {
 
 #' Returns detailed information about a given Amazon QLDB journal stream
 #'
+#' @description
 #' Returns detailed information about a given Amazon QLDB journal stream.
 #' The output includes the Amazon Resource Name (ARN), stream name, current
 #' status, creation time, and the parameters of your original stream
@@ -192,6 +196,7 @@ qldb_describe_journal_kinesis_stream <- function(LedgerName, StreamId) {
 #' name, export ID, when it was created, current status, and its start and
 #' end time export parameters
 #'
+#' @description
 #' Returns information about a journal export job, including the ledger
 #' name, export ID, when it was created, current status, and its start and
 #' end time export parameters.
@@ -244,6 +249,7 @@ qldb_describe_journal_s3_export <- function(Name, ExportId) {
 #' Returns information about a ledger, including its state and when it was
 #' created
 #'
+#' @description
 #' Returns information about a ledger, including its state and when it was
 #' created.
 #'
@@ -282,6 +288,7 @@ qldb_describe_ledger <- function(Name) {
 #' Exports journal contents within a date and time range from a ledger into
 #' a specified Amazon Simple Storage Service (Amazon S3) bucket
 #'
+#' @description
 #' Exports journal contents within a date and time range from a ledger into
 #' a specified Amazon Simple Storage Service (Amazon S3) bucket. The data
 #' is written as files in Amazon Ion format.
@@ -375,6 +382,7 @@ qldb_export_journal_to_s3 <- function(Name, InclusiveStartTime, ExclusiveEndTime
 
 #' Returns a block object at a specified address in a journal
 #'
+#' @description
 #' Returns a block object at a specified address in a journal. Also returns
 #' a proof of the specified block for verification if `DigestTipAddress` is
 #' provided.
@@ -442,6 +450,7 @@ qldb_get_block <- function(Name, BlockAddress, DigestTipAddress = NULL) {
 #' Returns the digest of a ledger at the latest committed block in the
 #' journal
 #'
+#' @description
 #' Returns the digest of a ledger at the latest committed block in the
 #' journal. The response includes a 256-bit hash value and a block address.
 #'
@@ -480,6 +489,7 @@ qldb_get_digest <- function(Name) {
 #' Returns a revision data object for a specified document ID and block
 #' address
 #'
+#' @description
 #' Returns a revision data object for a specified document ID and block
 #' address. Also returns a proof of the specified revision for verification
 #' if `DigestTipAddress` is provided.
@@ -537,6 +547,7 @@ qldb_get_revision <- function(Name, BlockAddress, DocumentId, DigestTipAddress =
 #' Returns an array of all Amazon QLDB journal stream descriptors for a
 #' given ledger
 #'
+#' @description
 #' Returns an array of all Amazon QLDB journal stream descriptors for a
 #' given ledger. The output of each stream descriptor includes the same
 #' details that are returned by `DescribeJournalKinesisStream`.
@@ -590,6 +601,7 @@ qldb_list_journal_kinesis_streams_for_ledger <- function(LedgerName, MaxResults 
 #' Returns an array of journal export job descriptions for all ledgers that
 #' are associated with the current AWS account and Region
 #'
+#' @description
 #' Returns an array of journal export job descriptions for all ledgers that
 #' are associated with the current AWS account and Region.
 #' 
@@ -644,6 +656,7 @@ qldb_list_journal_s3_exports <- function(MaxResults = NULL, NextToken = NULL) {
 #' Returns an array of journal export job descriptions for a specified
 #' ledger
 #'
+#' @description
 #' Returns an array of journal export job descriptions for a specified
 #' ledger.
 #' 
@@ -700,6 +713,7 @@ qldb_list_journal_s3_exports_for_ledger <- function(Name, MaxResults = NULL, Nex
 #' Returns an array of ledger summaries that are associated with the
 #' current AWS account and Region
 #'
+#' @description
 #' Returns an array of ledger summaries that are associated with the
 #' current AWS account and Region.
 #' 
@@ -746,6 +760,7 @@ qldb_list_ledgers <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Returns all tags for a specified Amazon QLDB resource
 #'
+#' @description
 #' Returns all tags for a specified Amazon QLDB resource.
 #'
 #' @usage
@@ -785,6 +800,7 @@ qldb_list_tags_for_resource <- function(ResourceArn) {
 
 #' Creates a journal stream for a given Amazon QLDB ledger
 #'
+#' @description
 #' Creates a journal stream for a given Amazon QLDB ledger. The stream
 #' captures every document revision that is committed to the ledger's
 #' journal and delivers the data to a specified Amazon Kinesis Data Streams
@@ -873,6 +889,7 @@ qldb_stream_journal_to_kinesis <- function(LedgerName, RoleArn, Tags = NULL, Inc
 
 #' Adds one or more tags to a specified Amazon QLDB resource
 #'
+#' @description
 #' Adds one or more tags to a specified Amazon QLDB resource.
 #' 
 #' A resource can have up to 50 tags. If you try to create more than 50
@@ -922,6 +939,7 @@ qldb_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes one or more tags from a specified Amazon QLDB resource
 #'
+#' @description
 #' Removes one or more tags from a specified Amazon QLDB resource. You can
 #' specify up to 50 tag keys to remove.
 #'
@@ -966,6 +984,7 @@ qldb_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates properties on a ledger
 #'
+#' @description
 #' Updates properties on a ledger.
 #'
 #' @usage

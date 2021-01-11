@@ -18,8 +18,7 @@ servicecatalog_delete_constraint(AcceptLanguage, Id)
 }
 \description{
 Deletes the specified constraint.
-}
-\details{
+
 A delegated admin is authorized to invoke this command.
 }
 \section{Request syntax}{

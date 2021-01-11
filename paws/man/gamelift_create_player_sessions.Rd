@@ -25,8 +25,7 @@ single player to a game session, use CreatePlayerSession. When a player
 connects to the game server and references a player session ID, the game
 server contacts the Amazon GameLift service to validate the player
 reservation and accept the player.
-}
-\details{
+
 To create player sessions, specify a game session ID, a list of player
 IDs, and optionally a set of player data strings. If successful, a slot
 is reserved in the game session for each player and a set of new

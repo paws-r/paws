@@ -16,7 +16,7 @@ A name must \emph{not} contain:
 \item white space
 \item brackets \verb{&lt; &gt; \\\{ \\\} \\\[ \\\]}
 \item wildcard characters \verb{? *}
-\item special characters \verb{\\" # \% \\\\ ^ | ~ \\` $ &amp; , ; : /}
+\item special characters \verb{\\" # \\\% \\\\ ^ | ~ \\` $ &amp; , ; : /}
 \item control characters (\verb{U+0000-001F}, \verb{U+007F-009F})
 }
 
@@ -39,8 +39,7 @@ Functions. Activities must poll Step Functions using the
 This function lets Step Functions know the existence of your activity
 and returns an identifier for use in a state machine and when polling
 from the activity.
-}
-\details{
+
 This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
 

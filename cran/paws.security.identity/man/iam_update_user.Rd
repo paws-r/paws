@@ -33,8 +33,7 @@ create resources named both "MyResource" and "myresource".}
 }
 \description{
 Updates the name and/or the path of the specified IAM user.
-}
-\details{
+
 You should understand the implications of changing an IAM user's path or
 name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_renaming}{Renaming an IAM User}
 and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_groups_manage_rename.html}{Renaming an IAM Group}

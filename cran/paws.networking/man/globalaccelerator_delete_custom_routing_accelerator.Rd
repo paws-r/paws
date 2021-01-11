@@ -15,8 +15,7 @@ Delete a custom routing accelerator. Before you can delete an
 accelerator, you must disable it and remove all dependent resources
 (listeners and endpoint groups). To disable the accelerator, update the
 accelerator to set \code{Enabled} to false.
-}
-\details{
+
 When you create a custom routing accelerator, by default, Global
 Accelerator provides you with a set of two static IP addresses.
 

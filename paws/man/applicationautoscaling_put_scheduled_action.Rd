@@ -141,8 +141,7 @@ Scaling scales in to the maximum capacity.}
 \description{
 Creates or updates a scheduled action for an Application Auto Scaling
 scalable target.
-}
-\details{
+
 Each scalable target is identified by a service namespace, resource ID,
 and scalable dimension. A scheduled action applies to the scalable
 target identified by those three attributes. You cannot create a

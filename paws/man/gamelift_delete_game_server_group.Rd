@@ -26,8 +26,7 @@ the EC2 Auto Scaling group as is.
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}
-}
-\details{
+
 Terminates a game server group and permanently deletes the game server
 group record. You have several options for how these resources are
 impacted when deleting the game server group. Depending on the type of

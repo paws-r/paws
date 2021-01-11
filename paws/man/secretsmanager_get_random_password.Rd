@@ -28,7 +28,7 @@ The following are the punctuation characters that \emph{can} be included in
 the generated password if you don't explicitly exclude them with
 \code{ExcludeCharacters} or \code{ExcludePunctuation}:
 
-\verb{! \\" # $ \% &amp; \\' ( ) * + , - . / : ; &lt; = &gt; ? @ \\\[ \\\\ \\\] ^ _ \\` \\\{ | \\\} ~}}
+\verb{! \\" # $ \\\% &amp; \\' ( ) * + , - . / : ; &lt; = &gt; ? @ \\\[ \\\\ \\\] ^ _ \\` \\\{ | \\\} ~}}
 
 \item{ExcludeUppercase}{Specifies that the generated password should not include uppercase
 letters. The default if you do not include this switch parameter is that
@@ -53,8 +53,7 @@ is intended for use in the Lambda rotation function. Per best practice,
 we recommend that you specify the maximum length and include every
 character type that the system you are generating a password for can
 support.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

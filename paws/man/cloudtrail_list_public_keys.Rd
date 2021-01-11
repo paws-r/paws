@@ -23,8 +23,7 @@ Returns all public keys whose private keys were used to sign the digest
 files within the specified time range. The public key is needed to
 validate digest files that were signed with its corresponding private
 key.
-}
-\details{
+
 CloudTrail uses different private/public key pairs per region. Each
 digest file is signed with a private key unique to its region.
 Therefore, when you validate a digest file from a particular region, you

@@ -25,8 +25,7 @@ Management (IAM) policy.}
 \description{
 Deletes the Systems Manager document and all instance associations to
 the document.
-}
-\details{
+
 Before you delete the document, we recommend that you use
 DeleteAssociation to disassociate all instances that are associated with
 the document.

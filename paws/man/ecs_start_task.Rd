@@ -89,8 +89,7 @@ definition to start. If a \code{revision} is not specified, the latest
 \description{
 Starts a new task from the specified task definition on the specified
 container instance or instances.
-}
-\details{
+
 Alternatively, you can use RunTask to place tasks for you. For more
 information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html}{Scheduling Tasks}
 in the \emph{Amazon Elastic Container Service Developer Guide}.

@@ -30,8 +30,7 @@ For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide
 \description{
 Attaches an IAM policy to the specified resource. Use this to share a
 rule group across accounts.
-}
-\details{
+
 You must be the owner of the rule group to perform this operation.
 
 This action is subject to the following restrictions:

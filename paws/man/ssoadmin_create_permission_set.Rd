@@ -26,8 +26,7 @@ authentication process.}
 }
 \description{
 Creates a permission set within a specified SSO instance.
-}
-\details{
+
 To grant users and groups access to AWS account resources, use
 \verb{<a>CreateAccountAssignment</a>}.
 }

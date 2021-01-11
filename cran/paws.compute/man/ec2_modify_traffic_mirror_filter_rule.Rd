@@ -45,8 +45,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Modifies the specified Traffic Mirror rule.
-}
-\details{
+
 \code{DestinationCidrBlock} and \code{SourceCidrBlock} must both be an IPv4 range
 or an IPv6 range.
 }

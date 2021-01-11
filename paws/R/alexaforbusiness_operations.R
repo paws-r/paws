@@ -6,6 +6,7 @@ NULL
 #' Associates a skill with the organization under the customer's AWS
 #' account
 #'
+#' @description
 #' Associates a skill with the organization under the customer's AWS
 #' account. If a skill is private, the user implicitly accepts access to
 #' this skill during enablement.
@@ -44,6 +45,7 @@ alexaforbusiness_approve_skill <- function(SkillId) {
 
 #' Associates a contact with a given address book
 #'
+#' @description
 #' Associates a contact with a given address book.
 #'
 #' @usage
@@ -83,6 +85,7 @@ alexaforbusiness_associate_contact_with_address_book <- function(ContactArn, Add
 
 #' Associates a device with the specified network profile
 #'
+#' @description
 #' Associates a device with the specified network profile.
 #'
 #' @usage
@@ -122,6 +125,7 @@ alexaforbusiness_associate_device_with_network_profile <- function(DeviceArn, Ne
 
 #' Associates a device with a given room
 #'
+#' @description
 #' Associates a device with a given room. This applies all the settings
 #' from the room profile to the device, and all the skills in any skill
 #' groups added to that room. This operation requires the device to be
@@ -163,6 +167,7 @@ alexaforbusiness_associate_device_with_room <- function(DeviceArn = NULL, RoomAr
 
 #' Associates a skill group with a given room
 #'
+#' @description
 #' Associates a skill group with a given room. This enables all skills in
 #' the associated skill group on all devices in the room.
 #'
@@ -202,6 +207,7 @@ alexaforbusiness_associate_skill_group_with_room <- function(SkillGroupArn = NUL
 
 #' Associates a skill with a skill group
 #'
+#' @description
 #' Associates a skill with a skill group.
 #'
 #' @usage
@@ -242,6 +248,7 @@ alexaforbusiness_associate_skill_with_skill_group <- function(SkillGroupArn = NU
 #' Makes a private skill available for enrolled users to enable on their
 #' devices
 #'
+#' @description
 #' Makes a private skill available for enrolled users to enable on their
 #' devices.
 #'
@@ -279,6 +286,7 @@ alexaforbusiness_associate_skill_with_users <- function(SkillId) {
 
 #' Creates an address book with the specified details
 #'
+#' @description
 #' Creates an address book with the specified details.
 #'
 #' @usage
@@ -322,6 +330,7 @@ alexaforbusiness_create_address_book <- function(Name, Description = NULL, Clien
 #' Creates a recurring schedule for usage reports to deliver to the
 #' specified S3 location with a specified daily or weekly interval
 #'
+#' @description
 #' Creates a recurring schedule for usage reports to deliver to the
 #' specified S3 location with a specified daily or weekly interval.
 #'
@@ -388,6 +397,7 @@ alexaforbusiness_create_business_report_schedule <- function(ScheduleName = NULL
 
 #' Adds a new conference provider under the user's AWS account
 #'
+#' @description
 #' Adds a new conference provider under the user's AWS account.
 #'
 #' @usage
@@ -446,6 +456,7 @@ alexaforbusiness_create_conference_provider <- function(ConferenceProviderName, 
 
 #' Creates a contact with the specified details
 #'
+#' @description
 #' Creates a contact with the specified details.
 #'
 #' @usage
@@ -511,6 +522,7 @@ alexaforbusiness_create_contact <- function(DisplayName = NULL, FirstName, LastN
 
 #' Creates a gateway group with the specified details
 #'
+#' @description
 #' Creates a gateway group with the specified details.
 #'
 #' @usage
@@ -553,6 +565,7 @@ alexaforbusiness_create_gateway_group <- function(Name, Description = NULL, Clie
 
 #' Creates a network profile with the specified details
 #'
+#' @description
 #' Creates a network profile with the specified details.
 #'
 #' @usage
@@ -619,6 +632,7 @@ alexaforbusiness_create_network_profile <- function(NetworkProfileName, Descript
 
 #' Creates a new room profile with the specified details
 #'
+#' @description
 #' Creates a new room profile with the specified details.
 #'
 #' @usage
@@ -705,6 +719,7 @@ alexaforbusiness_create_profile <- function(ProfileName, Timezone, Address, Dist
 
 #' Creates a room with the specified details
 #'
+#' @description
 #' Creates a room with the specified details.
 #'
 #' @usage
@@ -758,6 +773,7 @@ alexaforbusiness_create_room <- function(RoomName, Description = NULL, ProfileAr
 
 #' Creates a skill group with a specified name and description
 #'
+#' @description
 #' Creates a skill group with a specified name and description.
 #'
 #' @usage
@@ -807,6 +823,7 @@ alexaforbusiness_create_skill_group <- function(SkillGroupName, Description = NU
 
 #' Creates a user
 #'
+#' @description
 #' Creates a user.
 #'
 #' @usage
@@ -860,6 +877,7 @@ alexaforbusiness_create_user <- function(UserId, FirstName = NULL, LastName = NU
 
 #' Deletes an address book by the address book ARN
 #'
+#' @description
 #' Deletes an address book by the address book ARN.
 #'
 #' @usage
@@ -897,6 +915,7 @@ alexaforbusiness_delete_address_book <- function(AddressBookArn) {
 #' Deletes the recurring report delivery schedule with the specified
 #' schedule ARN
 #'
+#' @description
 #' Deletes the recurring report delivery schedule with the specified
 #' schedule ARN.
 #'
@@ -934,6 +953,7 @@ alexaforbusiness_delete_business_report_schedule <- function(ScheduleArn) {
 
 #' Deletes a conference provider
 #'
+#' @description
 #' Deletes a conference provider.
 #'
 #' @usage
@@ -970,6 +990,7 @@ alexaforbusiness_delete_conference_provider <- function(ConferenceProviderArn) {
 
 #' Deletes a contact by the contact ARN
 #'
+#' @description
 #' Deletes a contact by the contact ARN.
 #'
 #' @usage
@@ -1006,6 +1027,7 @@ alexaforbusiness_delete_contact <- function(ContactArn) {
 
 #' Removes a device from Alexa For Business
 #'
+#' @description
 #' Removes a device from Alexa For Business.
 #'
 #' @usage
@@ -1044,6 +1066,7 @@ alexaforbusiness_delete_device <- function(DeviceArn) {
 #' authorized users to delete the device's entire previous history of voice
 #' input data and associated response data
 #'
+#' @description
 #' When this action is called for a specified shared device, it allows
 #' authorized users to delete the device's entire previous history of voice
 #' input data and associated response data. This action can be called once
@@ -1085,6 +1108,7 @@ alexaforbusiness_delete_device_usage_data <- function(DeviceArn, DeviceUsageType
 
 #' Deletes a gateway group
 #'
+#' @description
 #' Deletes a gateway group.
 #'
 #' @usage
@@ -1121,6 +1145,7 @@ alexaforbusiness_delete_gateway_group <- function(GatewayGroupArn) {
 
 #' Deletes a network profile by the network profile ARN
 #'
+#' @description
 #' Deletes a network profile by the network profile ARN.
 #'
 #' @usage
@@ -1157,6 +1182,7 @@ alexaforbusiness_delete_network_profile <- function(NetworkProfileArn) {
 
 #' Deletes a room profile by the profile ARN
 #'
+#' @description
 #' Deletes a room profile by the profile ARN.
 #'
 #' @usage
@@ -1193,6 +1219,7 @@ alexaforbusiness_delete_profile <- function(ProfileArn = NULL) {
 
 #' Deletes a room by the room ARN
 #'
+#' @description
 #' Deletes a room by the room ARN.
 #'
 #' @usage
@@ -1230,6 +1257,7 @@ alexaforbusiness_delete_room <- function(RoomArn = NULL) {
 #' Deletes room skill parameter details by room, skill, and parameter key
 #' ID
 #'
+#' @description
 #' Deletes room skill parameter details by room, skill, and parameter key
 #' ID.
 #'
@@ -1274,6 +1302,7 @@ alexaforbusiness_delete_room_skill_parameter <- function(RoomArn = NULL, SkillId
 
 #' Unlinks a third-party account from a skill
 #'
+#' @description
 #' Unlinks a third-party account from a skill.
 #'
 #' @usage
@@ -1312,6 +1341,7 @@ alexaforbusiness_delete_skill_authorization <- function(SkillId, RoomArn = NULL)
 
 #' Deletes a skill group by skill group ARN
 #'
+#' @description
 #' Deletes a skill group by skill group ARN.
 #'
 #' @usage
@@ -1348,6 +1378,7 @@ alexaforbusiness_delete_skill_group <- function(SkillGroupArn = NULL) {
 
 #' Deletes a specified user by user ARN and enrollment ARN
 #'
+#' @description
 #' Deletes a specified user by user ARN and enrollment ARN.
 #'
 #' @usage
@@ -1386,6 +1417,7 @@ alexaforbusiness_delete_user <- function(UserArn = NULL, EnrollmentId) {
 
 #' Disassociates a contact from a given address book
 #'
+#' @description
 #' Disassociates a contact from a given address book.
 #'
 #' @usage
@@ -1425,6 +1457,7 @@ alexaforbusiness_disassociate_contact_from_address_book <- function(ContactArn, 
 
 #' Disassociates a device from its current room
 #'
+#' @description
 #' Disassociates a device from its current room. The device continues to be
 #' connected to the Wi-Fi network and is still registered to the account.
 #' The device settings and skills are removed from the room.
@@ -1463,6 +1496,7 @@ alexaforbusiness_disassociate_device_from_room <- function(DeviceArn = NULL) {
 
 #' Disassociates a skill from a skill group
 #'
+#' @description
 #' Disassociates a skill from a skill group.
 #'
 #' @usage
@@ -1503,6 +1537,7 @@ alexaforbusiness_disassociate_skill_from_skill_group <- function(SkillGroupArn =
 #' Makes a private skill unavailable for enrolled users and prevents them
 #' from enabling it on their devices
 #'
+#' @description
 #' Makes a private skill unavailable for enrolled users and prevents them
 #' from enabling it on their devices.
 #'
@@ -1540,6 +1575,7 @@ alexaforbusiness_disassociate_skill_from_users <- function(SkillId) {
 
 #' Disassociates a skill group from a specified room
 #'
+#' @description
 #' Disassociates a skill group from a specified room. This disables all
 #' skills in the skill group on all devices in the room.
 #'
@@ -1581,6 +1617,7 @@ alexaforbusiness_disassociate_skill_group_from_room <- function(SkillGroupArn = 
 
 #' Forgets smart home appliances associated to a room
 #'
+#' @description
 #' Forgets smart home appliances associated to a room.
 #'
 #' @usage
@@ -1617,6 +1654,7 @@ alexaforbusiness_forget_smart_home_appliances <- function(RoomArn) {
 
 #' Gets address the book details by the address book ARN
 #'
+#' @description
 #' Gets address the book details by the address book ARN.
 #'
 #' @usage
@@ -1653,6 +1691,7 @@ alexaforbusiness_get_address_book <- function(AddressBookArn) {
 
 #' Retrieves the existing conference preferences
 #'
+#' @description
 #' Retrieves the existing conference preferences.
 #'
 #' @usage
@@ -1685,6 +1724,7 @@ alexaforbusiness_get_conference_preference <- function() {
 
 #' Gets details about a specific conference provider
 #'
+#' @description
 #' Gets details about a specific conference provider.
 #'
 #' @usage
@@ -1721,6 +1761,7 @@ alexaforbusiness_get_conference_provider <- function(ConferenceProviderArn) {
 
 #' Gets the contact details by the contact ARN
 #'
+#' @description
 #' Gets the contact details by the contact ARN.
 #'
 #' @usage
@@ -1757,6 +1798,7 @@ alexaforbusiness_get_contact <- function(ContactArn) {
 
 #' Gets the details of a device by device ARN
 #'
+#' @description
 #' Gets the details of a device by device ARN.
 #'
 #' @usage
@@ -1793,6 +1835,7 @@ alexaforbusiness_get_device <- function(DeviceArn = NULL) {
 
 #' Retrieves the details of a gateway
 #'
+#' @description
 #' Retrieves the details of a gateway.
 #'
 #' @usage
@@ -1829,6 +1872,7 @@ alexaforbusiness_get_gateway <- function(GatewayArn) {
 
 #' Retrieves the details of a gateway group
 #'
+#' @description
 #' Retrieves the details of a gateway group.
 #'
 #' @usage
@@ -1866,6 +1910,7 @@ alexaforbusiness_get_gateway_group <- function(GatewayGroupArn) {
 #' Retrieves the configured values for the user enrollment invitation email
 #' template
 #'
+#' @description
 #' Retrieves the configured values for the user enrollment invitation email
 #' template.
 #'
@@ -1899,6 +1944,7 @@ alexaforbusiness_get_invitation_configuration <- function() {
 
 #' Gets the network profile details by the network profile ARN
 #'
+#' @description
 #' Gets the network profile details by the network profile ARN.
 #'
 #' @usage
@@ -1935,6 +1981,7 @@ alexaforbusiness_get_network_profile <- function(NetworkProfileArn) {
 
 #' Gets the details of a room profile by profile ARN
 #'
+#' @description
 #' Gets the details of a room profile by profile ARN.
 #'
 #' @usage
@@ -1971,6 +2018,7 @@ alexaforbusiness_get_profile <- function(ProfileArn = NULL) {
 
 #' Gets room details by room ARN
 #'
+#' @description
 #' Gets room details by room ARN.
 #'
 #' @usage
@@ -2007,6 +2055,7 @@ alexaforbusiness_get_room <- function(RoomArn = NULL) {
 
 #' Gets room skill parameter details by room, skill, and parameter key ARN
 #'
+#' @description
 #' Gets room skill parameter details by room, skill, and parameter key ARN.
 #'
 #' @usage
@@ -2049,6 +2098,7 @@ alexaforbusiness_get_room_skill_parameter <- function(RoomArn = NULL, SkillId, P
 
 #' Gets skill group details by skill group ARN
 #'
+#' @description
 #' Gets skill group details by skill group ARN.
 #'
 #' @usage
@@ -2085,6 +2135,7 @@ alexaforbusiness_get_skill_group <- function(SkillGroupArn = NULL) {
 
 #' Lists the details of the schedules that a user configured
 #'
+#' @description
 #' Lists the details of the schedules that a user configured. A download
 #' URL of the report associated with each schedule is returned every time
 #' this action is called. A new download URL is returned each time, and is
@@ -2127,6 +2178,7 @@ alexaforbusiness_list_business_report_schedules <- function(NextToken = NULL, Ma
 
 #' Lists conference providers under a specific AWS account
 #'
+#' @description
 #' Lists conference providers under a specific AWS account.
 #'
 #' @usage
@@ -2167,6 +2219,7 @@ alexaforbusiness_list_conference_providers <- function(NextToken = NULL, MaxResu
 #' Lists the device event history, including device connection status, for
 #' up to 30 days
 #'
+#' @description
 #' Lists the device event history, including device connection status, for
 #' up to 30 days.
 #'
@@ -2221,6 +2274,7 @@ alexaforbusiness_list_device_events <- function(DeviceArn, EventType = NULL, Nex
 
 #' Retrieves a list of gateway group summaries
 #'
+#' @description
 #' Retrieves a list of gateway group summaries. Use GetGatewayGroup to
 #' retrieve details of a specific gateway group.
 #'
@@ -2262,6 +2316,7 @@ alexaforbusiness_list_gateway_groups <- function(NextToken = NULL, MaxResults = 
 
 #' Retrieves a list of gateway summaries
 #'
+#' @description
 #' Retrieves a list of gateway summaries. Use GetGateway to retrieve
 #' details of a specific gateway. An optional gateway group ARN can be
 #' provided to only retrieve gateway summaries of gateways that are
@@ -2305,6 +2360,7 @@ alexaforbusiness_list_gateways <- function(GatewayGroupArn = NULL, NextToken = N
 
 #' Lists all enabled skills in a specific skill group
 #'
+#' @description
 #' Lists all enabled skills in a specific skill group.
 #'
 #' @usage
@@ -2355,6 +2411,7 @@ alexaforbusiness_list_skills <- function(SkillGroupArn = NULL, EnablementType = 
 
 #' Lists all categories in the Alexa skill store
 #'
+#' @description
 #' Lists all categories in the Alexa skill store.
 #'
 #' @usage
@@ -2393,6 +2450,7 @@ alexaforbusiness_list_skills_store_categories <- function(NextToken = NULL, MaxR
 
 #' Lists all skills in the Alexa skill store by category
 #'
+#' @description
 #' Lists all skills in the Alexa skill store by category.
 #'
 #' @usage
@@ -2435,6 +2493,7 @@ alexaforbusiness_list_skills_store_skills_by_category <- function(CategoryId, Ne
 
 #' Lists all of the smart home appliances associated with a room
 #'
+#' @description
 #' Lists all of the smart home appliances associated with a room.
 #'
 #' @usage
@@ -2476,6 +2535,7 @@ alexaforbusiness_list_smart_home_appliances <- function(RoomArn, MaxResults = NU
 
 #' Lists all tags for the specified resource
 #'
+#' @description
 #' Lists all tags for the specified resource.
 #'
 #' @usage
@@ -2522,6 +2582,7 @@ alexaforbusiness_list_tags <- function(Arn, NextToken = NULL, MaxResults = NULL)
 #' Sets the conference preferences on a specific conference provider at the
 #' account level
 #'
+#' @description
 #' Sets the conference preferences on a specific conference provider at the
 #' account level.
 #'
@@ -2562,6 +2623,7 @@ alexaforbusiness_put_conference_preference <- function(ConferencePreference) {
 #' Configures the email template for the user enrollment invitation with
 #' the specified attributes
 #'
+#' @description
 #' Configures the email template for the user enrollment invitation with
 #' the specified attributes.
 #'
@@ -2609,6 +2671,7 @@ alexaforbusiness_put_invitation_configuration <- function(OrganizationName, Cont
 #' Updates room skill parameter details by room, skill, and parameter key
 #' ID
 #'
+#' @description
 #' Updates room skill parameter details by room, skill, and parameter key
 #' ID. Not all skills have a room skill parameter.
 #'
@@ -2654,6 +2717,7 @@ alexaforbusiness_put_room_skill_parameter <- function(RoomArn = NULL, SkillId, R
 
 #' Links a user's account to a third-party skill provider
 #'
+#' @description
 #' Links a user's account to a third-party skill provider. If this API
 #' operation is called by an assumed IAM role, the skill being linked must
 #' be a private skill. Also, the skill must be owned by the AWS account
@@ -2703,6 +2767,7 @@ alexaforbusiness_put_skill_authorization <- function(AuthorizationResult, SkillI
 #' Registers an Alexa-enabled device built by an Original Equipment
 #' Manufacturer (OEM) using Alexa Voice Service (AVS)
 #'
+#' @description
 #' Registers an Alexa-enabled device built by an Original Equipment
 #' Manufacturer (OEM) using Alexa Voice Service (AVS).
 #'
@@ -2756,6 +2821,7 @@ alexaforbusiness_register_avs_device <- function(ClientId, UserCode, ProductId, 
 
 #' Disassociates a skill from the organization under a user's AWS account
 #'
+#' @description
 #' Disassociates a skill from the organization under a user's AWS account.
 #' If the skill is a private skill, it moves to an AcceptStatus of PENDING.
 #' Any private or public skill that is rejected can be added later by
@@ -2796,6 +2862,7 @@ alexaforbusiness_reject_skill <- function(SkillId) {
 #' Determines the details for the room from which a skill request was
 #' invoked
 #'
+#' @description
 #' Determines the details for the room from which a skill request was
 #' invoked. This operation is used by skill developers.
 #'
@@ -2835,6 +2902,7 @@ alexaforbusiness_resolve_room <- function(UserId, SkillId) {
 
 #' Revokes an invitation and invalidates the enrollment URL
 #'
+#' @description
 #' Revokes an invitation and invalidates the enrollment URL.
 #'
 #' @usage
@@ -2875,6 +2943,7 @@ alexaforbusiness_revoke_invitation <- function(UserArn = NULL, EnrollmentId = NU
 #' Searches address books and lists the ones that meet a set of filter and
 #' sort criteria
 #'
+#' @description
 #' Searches address books and lists the ones that meet a set of filter and
 #' sort criteria.
 #'
@@ -2939,6 +3008,7 @@ alexaforbusiness_search_address_books <- function(Filters = NULL, SortCriteria =
 #' Searches contacts and lists the ones that meet a set of filter and sort
 #' criteria
 #'
+#' @description
 #' Searches contacts and lists the ones that meet a set of filter and sort
 #' criteria.
 #'
@@ -3003,6 +3073,7 @@ alexaforbusiness_search_contacts <- function(Filters = NULL, SortCriteria = NULL
 
 #' Searches devices and lists the ones that meet a set of filter criteria
 #'
+#' @description
 #' Searches devices and lists the ones that meet a set of filter criteria.
 #'
 #' @usage
@@ -3071,6 +3142,7 @@ alexaforbusiness_search_devices <- function(NextToken = NULL, MaxResults = NULL,
 #' Searches network profiles and lists the ones that meet a set of filter
 #' and sort criteria
 #'
+#' @description
 #' Searches network profiles and lists the ones that meet a set of filter
 #' and sort criteria.
 #'
@@ -3135,6 +3207,7 @@ alexaforbusiness_search_network_profiles <- function(NextToken = NULL, MaxResult
 #' Searches room profiles and lists the ones that meet a set of filter
 #' criteria
 #'
+#' @description
 #' Searches room profiles and lists the ones that meet a set of filter
 #' criteria.
 #'
@@ -3199,6 +3272,7 @@ alexaforbusiness_search_profiles <- function(NextToken = NULL, MaxResults = NULL
 #' Searches rooms and lists the ones that meet a set of filter and sort
 #' criteria
 #'
+#' @description
 #' Searches rooms and lists the ones that meet a set of filter and sort
 #' criteria.
 #'
@@ -3263,6 +3337,7 @@ alexaforbusiness_search_rooms <- function(NextToken = NULL, MaxResults = NULL, F
 #' Searches skill groups and lists the ones that meet a set of filter and
 #' sort criteria
 #'
+#' @description
 #' Searches skill groups and lists the ones that meet a set of filter and
 #' sort criteria.
 #'
@@ -3327,6 +3402,7 @@ alexaforbusiness_search_skill_groups <- function(NextToken = NULL, MaxResults = 
 #' Searches users and lists the ones that meet a set of filter and sort
 #' criteria
 #'
+#' @description
 #' Searches users and lists the ones that meet a set of filter and sort
 #' criteria.
 #'
@@ -3394,6 +3470,7 @@ alexaforbusiness_search_users <- function(NextToken = NULL, MaxResults = NULL, F
 #' Triggers an asynchronous flow to send text, SSML, or audio announcements
 #' to rooms that are identified by a search or filter
 #'
+#' @description
 #' Triggers an asynchronous flow to send text, SSML, or audio announcements
 #' to rooms that are identified by a search or filter.
 #'
@@ -3469,6 +3546,7 @@ alexaforbusiness_send_announcement <- function(RoomFilters, Content, TimeToLiveI
 
 #' Sends an enrollment invitation email with a URL to a user
 #'
+#' @description
 #' Sends an enrollment invitation email with a URL to a user. The URL is
 #' valid for 30 days or until you call this operation again, whichever
 #' comes first.
@@ -3507,6 +3585,7 @@ alexaforbusiness_send_invitation <- function(UserArn = NULL) {
 
 #' Resets a device and its account to the known default settings
 #'
+#' @description
 #' Resets a device and its account to the known default settings. This
 #' clears all information and settings set by previous users in the
 #' following ways:
@@ -3567,6 +3646,7 @@ alexaforbusiness_start_device_sync <- function(RoomArn = NULL, DeviceArn = NULL,
 #' Initiates the discovery of any smart home appliances associated with the
 #' room
 #'
+#' @description
 #' Initiates the discovery of any smart home appliances associated with the
 #' room.
 #'
@@ -3604,6 +3684,7 @@ alexaforbusiness_start_smart_home_appliance_discovery <- function(RoomArn) {
 
 #' Adds metadata tags to a specified resource
 #'
+#' @description
 #' Adds metadata tags to a specified resource.
 #'
 #' @usage
@@ -3648,6 +3729,7 @@ alexaforbusiness_tag_resource <- function(Arn, Tags) {
 
 #' Removes metadata tags from a specified resource
 #'
+#' @description
 #' Removes metadata tags from a specified resource.
 #'
 #' @usage
@@ -3689,6 +3771,7 @@ alexaforbusiness_untag_resource <- function(Arn, TagKeys) {
 
 #' Updates address book details by the address book ARN
 #'
+#' @description
 #' Updates address book details by the address book ARN.
 #'
 #' @usage
@@ -3730,6 +3813,7 @@ alexaforbusiness_update_address_book <- function(AddressBookArn, Name = NULL, De
 #' Updates the configuration of the report delivery schedule with the
 #' specified schedule ARN
 #'
+#' @description
 #' Updates the configuration of the report delivery schedule with the
 #' specified schedule ARN.
 #'
@@ -3781,6 +3865,7 @@ alexaforbusiness_update_business_report_schedule <- function(ScheduleArn, S3Buck
 
 #' Updates an existing conference provider's settings
 #'
+#' @description
 #' Updates an existing conference provider's settings.
 #'
 #' @usage
@@ -3836,6 +3921,7 @@ alexaforbusiness_update_conference_provider <- function(ConferenceProviderArn, C
 
 #' Updates the contact details by the contact ARN
 #'
+#' @description
 #' Updates the contact details by the contact ARN.
 #'
 #' @usage
@@ -3898,6 +3984,7 @@ alexaforbusiness_update_contact <- function(ContactArn, DisplayName = NULL, Firs
 
 #' Updates the device name by device ARN
 #'
+#' @description
 #' Updates the device name by device ARN.
 #'
 #' @usage
@@ -3936,6 +4023,7 @@ alexaforbusiness_update_device <- function(DeviceArn = NULL, DeviceName = NULL) 
 
 #' Updates the details of a gateway
 #'
+#' @description
 #' Updates the details of a gateway. If any optional field is not provided,
 #' the existing corresponding value is left unmodified.
 #'
@@ -3981,6 +4069,7 @@ alexaforbusiness_update_gateway <- function(GatewayArn, Name = NULL, Description
 
 #' Updates the details of a gateway group
 #'
+#' @description
 #' Updates the details of a gateway group. If any optional field is not
 #' provided, the existing corresponding value is left unmodified.
 #'
@@ -4023,6 +4112,7 @@ alexaforbusiness_update_gateway_group <- function(GatewayGroupArn, Name = NULL, 
 
 #' Updates a network profile by the network profile ARN
 #'
+#' @description
 #' Updates a network profile by the network profile ARN.
 #'
 #' @usage
@@ -4081,6 +4171,7 @@ alexaforbusiness_update_network_profile <- function(NetworkProfileArn, NetworkPr
 
 #' Updates an existing room profile by room profile ARN
 #'
+#' @description
 #' Updates an existing room profile by room profile ARN.
 #'
 #' @usage
@@ -4163,6 +4254,7 @@ alexaforbusiness_update_profile <- function(ProfileArn = NULL, ProfileName = NUL
 
 #' Updates room details by room ARN
 #'
+#' @description
 #' Updates room details by room ARN.
 #'
 #' @usage
@@ -4208,6 +4300,7 @@ alexaforbusiness_update_room <- function(RoomArn = NULL, RoomName = NULL, Descri
 
 #' Updates skill group details by skill group ARN
 #'
+#' @description
 #' Updates skill group details by skill group ARN.
 #'
 #' @usage

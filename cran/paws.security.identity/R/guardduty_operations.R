@@ -6,6 +6,7 @@ NULL
 #' Accepts the invitation to be monitored by a GuardDuty administrator
 #' account
 #'
+#' @description
 #' Accepts the invitation to be monitored by a GuardDuty administrator
 #' account.
 #'
@@ -50,6 +51,7 @@ guardduty_accept_invitation <- function(DetectorId, MasterId, InvitationId) {
 #' Archives GuardDuty findings that are specified by the list of finding
 #' IDs
 #'
+#' @description
 #' Archives GuardDuty findings that are specified by the list of finding
 #' IDs.
 #' 
@@ -95,6 +97,7 @@ guardduty_archive_findings <- function(DetectorId, FindingIds) {
 
 #' Creates a single Amazon GuardDuty detector
 #'
+#' @description
 #' Creates a single Amazon GuardDuty detector. A detector is a resource
 #' that represents the GuardDuty service. To start using GuardDuty, you
 #' must create a detector in each Region where you enable the service. You
@@ -150,6 +153,7 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 
 #' Creates a filter using the specified finding criteria
 #'
+#' @description
 #' Creates a filter using the specified finding criteria.
 #'
 #' @usage
@@ -347,6 +351,7 @@ guardduty_create_filter <- function(DetectorId, Name, Description = NULL, Action
 #' Creates a new IPSet, which is called a trusted IP list in the console
 #' user interface
 #'
+#' @description
 #' Creates a new IPSet, which is called a trusted IP list in the console
 #' user interface. An IPSet is a list of IP addresses that are trusted for
 #' secure communication with AWS infrastructure and applications. GuardDuty
@@ -409,6 +414,7 @@ guardduty_create_ip_set <- function(DetectorId, Name, Format, Location, Activate
 #' Creates member accounts of the current AWS account by specifying a list
 #' of AWS account IDs
 #'
+#' @description
 #' Creates member accounts of the current AWS account by specifying a list
 #' of AWS account IDs. This step is a prerequisite for managing the
 #' associated member accounts either by invitation or through an
@@ -467,6 +473,7 @@ guardduty_create_members <- function(DetectorId, AccountDetails) {
 
 #' Creates a publishing destination to export findings to
 #'
+#' @description
 #' Creates a publishing destination to export findings to. The resource to
 #' export findings to must exist before you use this operation.
 #'
@@ -518,6 +525,7 @@ guardduty_create_publishing_destination <- function(DetectorId, DestinationType,
 #' Generates example findings of types specified by the list of finding
 #' types
 #'
+#' @description
 #' Generates example findings of types specified by the list of finding
 #' types. If 'NULL' is specified for `findingTypes`, the API generates
 #' example findings of all supported finding types.
@@ -560,6 +568,7 @@ guardduty_create_sample_findings <- function(DetectorId, FindingTypes = NULL) {
 
 #' Creates a new ThreatIntelSet
 #'
+#' @description
 #' Creates a new ThreatIntelSet. ThreatIntelSets consist of known malicious
 #' IP addresses. GuardDuty generates findings based on ThreatIntelSets.
 #' Only users of the administrator account can use this operation.
@@ -619,6 +628,7 @@ guardduty_create_threat_intel_set <- function(DetectorId, Name, Format, Location
 #' Declines invitations sent to the current member account by AWS accounts
 #' specified by their account IDs
 #'
+#' @description
 #' Declines invitations sent to the current member account by AWS accounts
 #' specified by their account IDs.
 #'
@@ -660,6 +670,7 @@ guardduty_decline_invitations <- function(AccountIds) {
 #' Deletes an Amazon GuardDuty detector that is specified by the detector
 #' ID
 #'
+#' @description
 #' Deletes an Amazon GuardDuty detector that is specified by the detector
 #' ID.
 #'
@@ -697,6 +708,7 @@ guardduty_delete_detector <- function(DetectorId) {
 
 #' Deletes the filter specified by the filter name
 #'
+#' @description
 #' Deletes the filter specified by the filter name.
 #'
 #' @usage
@@ -735,6 +747,7 @@ guardduty_delete_filter <- function(DetectorId, FilterName) {
 
 #' Deletes the IPSet specified by the ipSetId
 #'
+#' @description
 #' Deletes the IPSet specified by the `ipSetId`. IPSets are called trusted
 #' IP lists in the console user interface.
 #'
@@ -775,6 +788,7 @@ guardduty_delete_ip_set <- function(DetectorId, IpSetId) {
 #' Deletes invitations sent to the current member account by AWS accounts
 #' specified by their account IDs
 #'
+#' @description
 #' Deletes invitations sent to the current member account by AWS accounts
 #' specified by their account IDs.
 #'
@@ -816,6 +830,7 @@ guardduty_delete_invitations <- function(AccountIds) {
 #' Deletes GuardDuty member accounts (to the current GuardDuty
 #' administrator account) specified by the account IDs
 #'
+#' @description
 #' Deletes GuardDuty member accounts (to the current GuardDuty
 #' administrator account) specified by the account IDs.
 #'
@@ -859,6 +874,7 @@ guardduty_delete_members <- function(DetectorId, AccountIds) {
 
 #' Deletes the publishing definition with the specified destinationId
 #'
+#' @description
 #' Deletes the publishing definition with the specified `destinationId`.
 #'
 #' @usage
@@ -898,6 +914,7 @@ guardduty_delete_publishing_destination <- function(DetectorId, DestinationId) {
 
 #' Deletes the ThreatIntelSet specified by the ThreatIntelSet ID
 #'
+#' @description
 #' Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.
 #'
 #' @usage
@@ -938,6 +955,7 @@ guardduty_delete_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #' Returns information about the account selected as the delegated
 #' administrator for GuardDuty
 #'
+#' @description
 #' Returns information about the account selected as the delegated
 #' administrator for GuardDuty.
 #'
@@ -977,6 +995,7 @@ guardduty_describe_organization_configuration <- function(DetectorId) {
 #' Returns information about the publishing destination specified by the
 #' provided destinationId
 #'
+#' @description
 #' Returns information about the publishing destination specified by the
 #' provided `destinationId`.
 #'
@@ -1018,6 +1037,7 @@ guardduty_describe_publishing_destination <- function(DetectorId, DestinationId)
 #' Disables an AWS account within the Organization as the GuardDuty
 #' delegated administrator
 #'
+#' @description
 #' Disables an AWS account within the Organization as the GuardDuty
 #' delegated administrator.
 #'
@@ -1057,6 +1077,7 @@ guardduty_disable_organization_admin_account <- function(AdminAccountId) {
 #' Disassociates the current GuardDuty member account from its
 #' administrator account
 #'
+#' @description
 #' Disassociates the current GuardDuty member account from its
 #' administrator account.
 #'
@@ -1095,6 +1116,7 @@ guardduty_disassociate_from_master_account <- function(DetectorId) {
 #' Disassociates GuardDuty member accounts (to the current GuardDuty
 #' administrator account) specified by the account IDs
 #'
+#' @description
 #' Disassociates GuardDuty member accounts (to the current GuardDuty
 #' administrator account) specified by the account IDs.
 #'
@@ -1139,6 +1161,7 @@ guardduty_disassociate_members <- function(DetectorId, AccountIds) {
 #' Enables an AWS account within the organization as the GuardDuty
 #' delegated administrator
 #'
+#' @description
 #' Enables an AWS account within the organization as the GuardDuty
 #' delegated administrator.
 #'
@@ -1177,6 +1200,7 @@ guardduty_enable_organization_admin_account <- function(AdminAccountId) {
 
 #' Retrieves an Amazon GuardDuty detector specified by the detectorId
 #'
+#' @description
 #' Retrieves an Amazon GuardDuty detector specified by the detectorId.
 #'
 #' @usage
@@ -1213,6 +1237,7 @@ guardduty_get_detector <- function(DetectorId) {
 
 #' Returns the details of the filter specified by the filter name
 #'
+#' @description
 #' Returns the details of the filter specified by the filter name.
 #'
 #' @usage
@@ -1251,6 +1276,7 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 
 #' Describes Amazon GuardDuty findings specified by finding IDs
 #'
+#' @description
 #' Describes Amazon GuardDuty findings specified by finding IDs.
 #'
 #' @usage
@@ -1297,6 +1323,7 @@ guardduty_get_findings <- function(DetectorId, FindingIds, SortCriteria = NULL) 
 
 #' Lists Amazon GuardDuty findings statistics for the specified detector ID
 #'
+#' @description
 #' Lists Amazon GuardDuty findings statistics for the specified detector
 #' ID.
 #'
@@ -1367,6 +1394,7 @@ guardduty_get_findings_statistics <- function(DetectorId, FindingStatisticTypes,
 
 #' Retrieves the IPSet specified by the ipSetId
 #'
+#' @description
 #' Retrieves the IPSet specified by the `ipSetId`.
 #'
 #' @usage
@@ -1406,6 +1434,7 @@ guardduty_get_ip_set <- function(DetectorId, IpSetId) {
 #' Returns the count of all GuardDuty membership invitations that were sent
 #' to the current member account except the currently accepted invitation
 #'
+#' @description
 #' Returns the count of all GuardDuty membership invitations that were sent
 #' to the current member account except the currently accepted invitation.
 #'
@@ -1440,6 +1469,7 @@ guardduty_get_invitations_count <- function() {
 #' Provides the details for the GuardDuty administrator account associated
 #' with the current GuardDuty member account
 #'
+#' @description
 #' Provides the details for the GuardDuty administrator account associated
 #' with the current GuardDuty member account.
 #'
@@ -1478,6 +1508,7 @@ guardduty_get_master_account <- function(DetectorId) {
 #' Describes which data sources are enabled for the member account's
 #' detector
 #'
+#' @description
 #' Describes which data sources are enabled for the member account's
 #' detector.
 #'
@@ -1520,6 +1551,7 @@ guardduty_get_member_detectors <- function(DetectorId, AccountIds) {
 #' Retrieves GuardDuty member accounts (of the current GuardDuty
 #' administrator account) specified by the account IDs
 #'
+#' @description
 #' Retrieves GuardDuty member accounts (of the current GuardDuty
 #' administrator account) specified by the account IDs.
 #'
@@ -1563,6 +1595,7 @@ guardduty_get_members <- function(DetectorId, AccountIds) {
 
 #' Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID
 #'
+#' @description
 #' Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet ID.
 #'
 #' @usage
@@ -1603,6 +1636,7 @@ guardduty_get_threat_intel_set <- function(DetectorId, ThreatIntelSetId) {
 #' Lists Amazon GuardDuty usage statistics over the last 30 days for the
 #' specified detector ID
 #'
+#' @description
 #' Lists Amazon GuardDuty usage statistics over the last 30 days for the
 #' specified detector ID. For newly enabled detectors or data sources the
 #' cost returned will include only the usage so far under 30 days, this may
@@ -1674,6 +1708,7 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
 #' account to view and manage these accounts' findings on their behalf as
 #' the GuardDuty administrator account
 #'
+#' @description
 #' Invites other AWS accounts (created as members of the current AWS
 #' account by CreateMembers) to enable GuardDuty, and allow the current AWS
 #' account to view and manage these accounts' findings on their behalf as
@@ -1728,6 +1763,7 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
 #' Lists detectorIds of all the existing Amazon GuardDuty detector
 #' resources
 #'
+#' @description
 #' Lists detectorIds of all the existing Amazon GuardDuty detector
 #' resources.
 #'
@@ -1772,6 +1808,7 @@ guardduty_list_detectors <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Returns a paginated list of the current filters
 #'
+#' @description
 #' Returns a paginated list of the current filters.
 #'
 #' @usage
@@ -1817,6 +1854,7 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
 
 #' Lists Amazon GuardDuty findings for the specified detector ID
 #'
+#' @description
 #' Lists Amazon GuardDuty findings for the specified detector ID.
 #'
 #' @usage
@@ -2001,6 +2039,7 @@ guardduty_list_findings <- function(DetectorId, FindingCriteria = NULL, SortCrit
 
 #' Lists the IPSets of the GuardDuty service specified by the detector ID
 #'
+#' @description
 #' Lists the IPSets of the GuardDuty service specified by the detector ID.
 #' If you use this operation from a member account, the IPSets returned are
 #' the IPSets from the associated administrator account.
@@ -2048,6 +2087,7 @@ guardduty_list_ip_sets <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' Lists all GuardDuty membership invitations that were sent to the current
 #' AWS account
 #'
+#' @description
 #' Lists all GuardDuty membership invitations that were sent to the current
 #' AWS account.
 #'
@@ -2093,6 +2133,7 @@ guardduty_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' Lists details about all member accounts for the current GuardDuty
 #' administrator account
 #'
+#' @description
 #' Lists details about all member accounts for the current GuardDuty
 #' administrator account.
 #'
@@ -2143,6 +2184,7 @@ guardduty_list_members <- function(DetectorId, MaxResults = NULL, NextToken = NU
 
 #' Lists the accounts configured as GuardDuty delegated administrators
 #'
+#' @description
 #' Lists the accounts configured as GuardDuty delegated administrators.
 #'
 #' @usage
@@ -2185,6 +2227,7 @@ guardduty_list_organization_admin_accounts <- function(MaxResults = NULL, NextTo
 #' Returns a list of publishing destinations associated with the specified
 #' dectectorId
 #'
+#' @description
 #' Returns a list of publishing destinations associated with the specified
 #' `dectectorId`.
 #'
@@ -2230,6 +2273,7 @@ guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL
 
 #' Lists tags for a resource
 #'
+#' @description
 #' Lists tags for a resource. Tagging is currently supported for detectors,
 #' finding filters, IP sets, and threat intel sets, with a limit of 50 tags
 #' per resource. When invoked, this operation returns all assigned tags for
@@ -2270,6 +2314,7 @@ guardduty_list_tags_for_resource <- function(ResourceArn) {
 #' Lists the ThreatIntelSets of the GuardDuty service specified by the
 #' detector ID
 #'
+#' @description
 #' Lists the ThreatIntelSets of the GuardDuty service specified by the
 #' detector ID. If you use this operation from a member account, the
 #' ThreatIntelSets associated with the administrator account are returned.
@@ -2319,6 +2364,7 @@ guardduty_list_threat_intel_sets <- function(DetectorId, MaxResults = NULL, Next
 
 #' Turns on GuardDuty monitoring of the specified member accounts
 #'
+#' @description
 #' Turns on GuardDuty monitoring of the specified member accounts. Use this
 #' operation to restart monitoring of accounts that you stopped monitoring
 #' with the `StopMonitoringMembers` operation.
@@ -2363,6 +2409,7 @@ guardduty_start_monitoring_members <- function(DetectorId, AccountIds) {
 
 #' Stops GuardDuty monitoring for the specified member accounts
 #'
+#' @description
 #' Stops GuardDuty monitoring for the specified member accounts. Use the
 #' `StartMonitoringMembers` operation to restart monitoring for those
 #' accounts.
@@ -2406,6 +2453,7 @@ guardduty_stop_monitoring_members <- function(DetectorId, AccountIds) {
 
 #' Adds tags to a resource
 #'
+#' @description
 #' Adds tags to a resource.
 #'
 #' @usage
@@ -2447,6 +2495,7 @@ guardduty_tag_resource <- function(ResourceArn, Tags) {
 
 #' Unarchives GuardDuty findings specified by the findingIds
 #'
+#' @description
 #' Unarchives GuardDuty findings specified by the `findingIds`.
 #'
 #' @usage
@@ -2487,6 +2536,7 @@ guardduty_unarchive_findings <- function(DetectorId, FindingIds) {
 
 #' Removes tags from a resource
 #'
+#' @description
 #' Removes tags from a resource.
 #'
 #' @usage
@@ -2527,6 +2577,7 @@ guardduty_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates the Amazon GuardDuty detector specified by the detectorId
 #'
+#' @description
 #' Updates the Amazon GuardDuty detector specified by the detectorId.
 #'
 #' @usage
@@ -2575,6 +2626,7 @@ guardduty_update_detector <- function(DetectorId, Enable = NULL, FindingPublishi
 
 #' Updates the filter specified by the filter name
 #'
+#' @description
 #' Updates the filter specified by the filter name.
 #'
 #' @usage
@@ -2651,6 +2703,7 @@ guardduty_update_filter <- function(DetectorId, FilterName, Description = NULL, 
 
 #' Marks the specified GuardDuty findings as useful or not useful
 #'
+#' @description
 #' Marks the specified GuardDuty findings as useful or not useful.
 #'
 #' @usage
@@ -2697,6 +2750,7 @@ guardduty_update_findings_feedback <- function(DetectorId, FindingIds, Feedback,
 
 #' Updates the IPSet specified by the IPSet ID
 #'
+#' @description
 #' Updates the IPSet specified by the IPSet ID.
 #'
 #' @usage
@@ -2744,6 +2798,7 @@ guardduty_update_ip_set <- function(DetectorId, IpSetId, Name = NULL, Location =
 
 #' Contains information on member accounts to be updated
 #'
+#' @description
 #' Contains information on member accounts to be updated.
 #'
 #' @usage
@@ -2790,6 +2845,7 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 
 #' Updates the delegated administrator account with the values provided
 #'
+#' @description
 #' Updates the delegated administrator account with the values provided.
 #'
 #' @usage
@@ -2837,6 +2893,7 @@ guardduty_update_organization_configuration <- function(DetectorId, AutoEnable, 
 #' Updates information about the publishing destination specified by the
 #' destinationId
 #'
+#' @description
 #' Updates information about the publishing destination specified by the
 #' `destinationId`.
 #'
@@ -2884,6 +2941,7 @@ guardduty_update_publishing_destination <- function(DetectorId, DestinationId, D
 
 #' Updates the ThreatIntelSet specified by the ThreatIntelSet ID
 #'
+#' @description
 #' Updates the ThreatIntelSet specified by the ThreatIntelSet ID.
 #'
 #' @usage

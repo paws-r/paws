@@ -33,8 +33,7 @@ Adds permissions to the resource-based policy of a version of an \href{https://d
 Use this action to grant layer usage permission to other accounts. You
 can grant permission to a single account, all AWS accounts, or all
 accounts in an organization.
-}
-\details{
+
 To revoke permission, call RemoveLayerVersionPermission with the
 statement ID that you specified when you added it.
 }

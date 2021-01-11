@@ -15,8 +15,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 Returns the notification configuration of a bucket.
-}
-\details{
+
 If notifications are not enabled on the bucket, the operation returns an
 empty \code{NotificationConfiguration} element.
 

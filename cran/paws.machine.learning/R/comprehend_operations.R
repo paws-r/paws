@@ -6,6 +6,7 @@ NULL
 #' Determines the dominant language of the input text for a batch of
 #' documents
 #'
+#' @description
 #' Determines the dominant language of the input text for a batch of
 #' documents. For a list of languages that Amazon Comprehend can detect,
 #' see [Amazon Comprehend Supported
@@ -51,6 +52,7 @@ comprehend_batch_detect_dominant_language <- function(TextList) {
 #' Inspects the text of a batch of documents for named entities and returns
 #' information about them
 #'
+#' @description
 #' Inspects the text of a batch of documents for named entities and returns
 #' information about them. For more information about named entities, see
 #' how-entities
@@ -97,6 +99,7 @@ comprehend_batch_detect_entities <- function(TextList, LanguageCode) {
 
 #' Detects the key noun phrases found in a batch of documents
 #'
+#' @description
 #' Detects the key noun phrases found in a batch of documents.
 #'
 #' @usage
@@ -142,6 +145,7 @@ comprehend_batch_detect_key_phrases <- function(TextList, LanguageCode) {
 #' Inspects a batch of documents and returns an inference of the prevailing
 #' sentiment, POSITIVE, NEUTRAL, MIXED, or NEGATIVE, in each one
 #'
+#' @description
 #' Inspects a batch of documents and returns an inference of the prevailing
 #' sentiment, `POSITIVE`, `NEUTRAL`, `MIXED`, or `NEGATIVE`, in each one.
 #'
@@ -188,6 +192,7 @@ comprehend_batch_detect_sentiment <- function(TextList, LanguageCode) {
 #' Inspects the text of a batch of documents for the syntax and part of
 #' speech of the words in the document and returns information about them
 #'
+#' @description
 #' Inspects the text of a batch of documents for the syntax and part of
 #' speech of the words in the document and returns information about them.
 #' For more information, see how-syntax.
@@ -237,6 +242,7 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 #' document in real-time, using a previously created and trained custom
 #' model and an endpoint
 #'
+#' @description
 #' Creates a new document classification request to analyze a single
 #' document in real-time, using a previously created and trained custom
 #' model and an endpoint.
@@ -278,6 +284,7 @@ comprehend_classify_document <- function(Text, EndpointArn) {
 #' Creates a new document classifier that you can use to categorize
 #' documents
 #'
+#' @description
 #' Creates a new document classifier that you can use to categorize
 #' documents. To create a classifier, you provide a set of training
 #' documents that labeled with the categories that you want to use. After
@@ -392,6 +399,7 @@ comprehend_create_document_classifier <- function(DocumentClassifierName, DataAc
 #' Creates a model-specific endpoint for synchronous inference for a
 #' previously trained custom model
 #'
+#' @description
 #' Creates a model-specific endpoint for synchronous inference for a
 #' previously trained custom model
 #'
@@ -452,6 +460,7 @@ comprehend_create_endpoint <- function(EndpointName, ModelArn, DesiredInferenceU
 
 #' Creates an entity recognizer using submitted files
 #'
+#' @description
 #' Creates an entity recognizer using submitted files. After your
 #' `CreateEntityRecognizer` request is submitted, you can check job status
 #' using the API.
@@ -567,6 +576,7 @@ comprehend_create_entity_recognizer <- function(RecognizerName, DataAccessRoleAr
 #' Deletes a previously created document classifier Only those classifiers
 #' that are in terminated states (IN_ERROR, TRAINED) will be deleted
 #'
+#' @description
 #' Deletes a previously created document classifier
 #' 
 #' Only those classifiers that are in terminated states (IN\\_ERROR,
@@ -612,6 +622,7 @@ comprehend_delete_document_classifier <- function(DocumentClassifierArn) {
 
 #' Deletes a model-specific endpoint for a previously-trained custom model
 #'
+#' @description
 #' Deletes a model-specific endpoint for a previously-trained custom model.
 #' All endpoints must be deleted in order for the model to be deleted.
 #'
@@ -649,6 +660,7 @@ comprehend_delete_endpoint <- function(EndpointArn) {
 
 #' Deletes an entity recognizer
 #'
+#' @description
 #' Deletes an entity recognizer.
 #' 
 #' Only those recognizers that are in terminated states (IN\\_ERROR,
@@ -694,6 +706,7 @@ comprehend_delete_entity_recognizer <- function(EntityRecognizerArn) {
 
 #' Gets the properties associated with a document classification job
 #'
+#' @description
 #' Gets the properties associated with a document classification job. Use
 #' this operation to get the status of a classification job.
 #'
@@ -732,6 +745,7 @@ comprehend_describe_document_classification_job <- function(JobId) {
 
 #' Gets the properties associated with a document classifier
 #'
+#' @description
 #' Gets the properties associated with a document classifier.
 #'
 #' @usage
@@ -769,6 +783,7 @@ comprehend_describe_document_classifier <- function(DocumentClassifierArn) {
 
 #' Gets the properties associated with a dominant language detection job
 #'
+#' @description
 #' Gets the properties associated with a dominant language detection job.
 #' Use this operation to get the status of a detection job.
 #'
@@ -807,6 +822,7 @@ comprehend_describe_dominant_language_detection_job <- function(JobId) {
 
 #' Gets the properties associated with a specific endpoint
 #'
+#' @description
 #' Gets the properties associated with a specific endpoint. Use this
 #' operation to get the status of an endpoint.
 #'
@@ -844,6 +860,7 @@ comprehend_describe_endpoint <- function(EndpointArn) {
 
 #' Gets the properties associated with an entities detection job
 #'
+#' @description
 #' Gets the properties associated with an entities detection job. Use this
 #' operation to get the status of a detection job.
 #'
@@ -883,6 +900,7 @@ comprehend_describe_entities_detection_job <- function(JobId) {
 #' Provides details about an entity recognizer including status, S3 buckets
 #' containing training data, recognizer metadata, metrics, and so on
 #'
+#' @description
 #' Provides details about an entity recognizer including status, S3 buckets
 #' containing training data, recognizer metadata, metrics, and so on.
 #'
@@ -920,6 +938,7 @@ comprehend_describe_entity_recognizer <- function(EntityRecognizerArn) {
 
 #' Gets the status and details of an events detection job
 #'
+#' @description
 #' Gets the status and details of an events detection job.
 #'
 #' @usage
@@ -956,6 +975,7 @@ comprehend_describe_events_detection_job <- function(JobId) {
 
 #' Gets the properties associated with a key phrases detection job
 #'
+#' @description
 #' Gets the properties associated with a key phrases detection job. Use
 #' this operation to get the status of a detection job.
 #'
@@ -994,6 +1014,7 @@ comprehend_describe_key_phrases_detection_job <- function(JobId) {
 
 #' Gets the properties associated with a PII entities detection job
 #'
+#' @description
 #' Gets the properties associated with a PII entities detection job. For
 #' example, you can use this operation to get the job status.
 #'
@@ -1032,6 +1053,7 @@ comprehend_describe_pii_entities_detection_job <- function(JobId) {
 
 #' Gets the properties associated with a sentiment detection job
 #'
+#' @description
 #' Gets the properties associated with a sentiment detection job. Use this
 #' operation to get the status of a detection job.
 #'
@@ -1070,6 +1092,7 @@ comprehend_describe_sentiment_detection_job <- function(JobId) {
 
 #' Gets the properties associated with a topic detection job
 #'
+#' @description
 #' Gets the properties associated with a topic detection job. Use this
 #' operation to get the status of a detection job.
 #'
@@ -1107,6 +1130,7 @@ comprehend_describe_topics_detection_job <- function(JobId) {
 
 #' Determines the dominant language of the input text
 #'
+#' @description
 #' Determines the dominant language of the input text. For a list of
 #' languages that Amazon Comprehend can detect, see [Amazon Comprehend
 #' Supported
@@ -1147,6 +1171,7 @@ comprehend_detect_dominant_language <- function(Text) {
 
 #' Inspects text for named entities, and returns information about them
 #'
+#' @description
 #' Inspects text for named entities, and returns information about them.
 #' For more information, about named entities, see how-entities.
 #'
@@ -1202,6 +1227,7 @@ comprehend_detect_entities <- function(Text, LanguageCode = NULL, EndpointArn = 
 
 #' Detects the key noun phrases found in the text
 #'
+#' @description
 #' Detects the key noun phrases found in the text.
 #'
 #' @usage
@@ -1244,6 +1270,7 @@ comprehend_detect_key_phrases <- function(Text, LanguageCode) {
 #' Inspects the input text for entities that contain personally
 #' identifiable information (PII) and returns information about them
 #'
+#' @description
 #' Inspects the input text for entities that contain personally
 #' identifiable information (PII) and returns information about them.
 #'
@@ -1285,6 +1312,7 @@ comprehend_detect_pii_entities <- function(Text, LanguageCode) {
 #' Inspects text and returns an inference of the prevailing sentiment
 #' (POSITIVE, NEUTRAL, MIXED, or NEGATIVE)
 #'
+#' @description
 #' Inspects text and returns an inference of the prevailing sentiment
 #' (`POSITIVE`, `NEUTRAL`, `MIXED`, or `NEGATIVE`).
 #'
@@ -1327,6 +1355,7 @@ comprehend_detect_sentiment <- function(Text, LanguageCode) {
 
 #' Inspects text for syntax and the part of speech of words in the document
 #'
+#' @description
 #' Inspects text for syntax and the part of speech of words in the
 #' document. For more information, how-syntax.
 #'
@@ -1371,6 +1400,7 @@ comprehend_detect_syntax <- function(Text, LanguageCode) {
 #' Gets a list of the documentation classification jobs that you have
 #' submitted
 #'
+#' @description
 #' Gets a list of the documentation classification jobs that you have
 #' submitted.
 #'
@@ -1425,6 +1455,7 @@ comprehend_list_document_classification_jobs <- function(Filter = NULL, NextToke
 
 #' Gets a list of the document classifiers that you have created
 #'
+#' @description
 #' Gets a list of the document classifiers that you have created.
 #'
 #' @usage
@@ -1477,6 +1508,7 @@ comprehend_list_document_classifiers <- function(Filter = NULL, NextToken = NULL
 #' Gets a list of the dominant language detection jobs that you have
 #' submitted
 #'
+#' @description
 #' Gets a list of the dominant language detection jobs that you have
 #' submitted.
 #'
@@ -1531,6 +1563,7 @@ comprehend_list_dominant_language_detection_jobs <- function(Filter = NULL, Next
 
 #' Gets a list of all existing endpoints that you've created
 #'
+#' @description
 #' Gets a list of all existing endpoints that you've created.
 #'
 #' @usage
@@ -1583,6 +1616,7 @@ comprehend_list_endpoints <- function(Filter = NULL, NextToken = NULL, MaxResult
 
 #' Gets a list of the entity detection jobs that you have submitted
 #'
+#' @description
 #' Gets a list of the entity detection jobs that you have submitted.
 #'
 #' @usage
@@ -1636,6 +1670,7 @@ comprehend_list_entities_detection_jobs <- function(Filter = NULL, NextToken = N
 #' Gets a list of the properties of all entity recognizers that you
 #' created, including recognizers currently in training
 #'
+#' @description
 #' Gets a list of the properties of all entity recognizers that you
 #' created, including recognizers currently in training. Allows you to
 #' filter the list of recognizers based on criteria such as status and
@@ -1694,6 +1729,7 @@ comprehend_list_entity_recognizers <- function(Filter = NULL, NextToken = NULL, 
 
 #' Gets a list of the events detection jobs that you have submitted
 #'
+#' @description
 #' Gets a list of the events detection jobs that you have submitted.
 #'
 #' @usage
@@ -1745,6 +1781,7 @@ comprehend_list_events_detection_jobs <- function(Filter = NULL, NextToken = NUL
 
 #' Get a list of key phrase detection jobs that you have submitted
 #'
+#' @description
 #' Get a list of key phrase detection jobs that you have submitted.
 #'
 #' @usage
@@ -1798,6 +1835,7 @@ comprehend_list_key_phrases_detection_jobs <- function(Filter = NULL, NextToken 
 
 #' Gets a list of the PII entity detection jobs that you have submitted
 #'
+#' @description
 #' Gets a list of the PII entity detection jobs that you have submitted.
 #'
 #' @usage
@@ -1850,6 +1888,7 @@ comprehend_list_pii_entities_detection_jobs <- function(Filter = NULL, NextToken
 
 #' Gets a list of sentiment detection jobs that you have submitted
 #'
+#' @description
 #' Gets a list of sentiment detection jobs that you have submitted.
 #'
 #' @usage
@@ -1902,6 +1941,7 @@ comprehend_list_sentiment_detection_jobs <- function(Filter = NULL, NextToken = 
 
 #' Lists all tags associated with a given Amazon Comprehend resource
 #'
+#' @description
 #' Lists all tags associated with a given Amazon Comprehend resource.
 #'
 #' @usage
@@ -1939,6 +1979,7 @@ comprehend_list_tags_for_resource <- function(ResourceArn) {
 
 #' Gets a list of the topic detection jobs that you have submitted
 #'
+#' @description
 #' Gets a list of the topic detection jobs that you have submitted.
 #'
 #' @usage
@@ -1991,6 +2032,7 @@ comprehend_list_topics_detection_jobs <- function(Filter = NULL, NextToken = NUL
 
 #' Starts an asynchronous document classification job
 #'
+#' @description
 #' Starts an asynchronous document classification job. Use the operation to
 #' track the progress of the job.
 #'
@@ -2072,6 +2114,7 @@ comprehend_start_document_classification_job <- function(JobName = NULL, Documen
 #' Starts an asynchronous dominant language detection job for a collection
 #' of documents
 #'
+#' @description
 #' Starts an asynchronous dominant language detection job for a collection
 #' of documents. Use the operation to track the status of a job.
 #'
@@ -2152,6 +2195,7 @@ comprehend_start_dominant_language_detection_job <- function(InputDataConfig, Ou
 #' Starts an asynchronous entity detection job for a collection of
 #' documents
 #'
+#' @description
 #' Starts an asynchronous entity detection job for a collection of
 #' documents. Use the operation to track the status of a job.
 #' 
@@ -2245,6 +2289,7 @@ comprehend_start_entities_detection_job <- function(InputDataConfig, OutputDataC
 
 #' Starts an asynchronous event detection job for a collection of documents
 #'
+#' @description
 #' Starts an asynchronous event detection job for a collection of
 #' documents.
 #'
@@ -2307,6 +2352,7 @@ comprehend_start_events_detection_job <- function(InputDataConfig, OutputDataCon
 #' Starts an asynchronous key phrase detection job for a collection of
 #' documents
 #'
+#' @description
 #' Starts an asynchronous key phrase detection job for a collection of
 #' documents. Use the operation to track the status of a job.
 #'
@@ -2391,6 +2437,7 @@ comprehend_start_key_phrases_detection_job <- function(InputDataConfig, OutputDa
 #' Starts an asynchronous PII entity detection job for a collection of
 #' documents
 #'
+#' @description
 #' Starts an asynchronous PII entity detection job for a collection of
 #' documents.
 #'
@@ -2465,6 +2512,7 @@ comprehend_start_pii_entities_detection_job <- function(InputDataConfig, OutputD
 #' Starts an asynchronous sentiment detection job for a collection of
 #' documents
 #'
+#' @description
 #' Starts an asynchronous sentiment detection job for a collection of
 #' documents. use the operation to track the status of a job.
 #'
@@ -2548,6 +2596,7 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 
 #' Starts an asynchronous topic detection job
 #'
+#' @description
 #' Starts an asynchronous topic detection job. Use the
 #' `DescribeTopicDetectionJob` operation to track the status of a job.
 #'
@@ -2632,6 +2681,7 @@ comprehend_start_topics_detection_job <- function(InputDataConfig, OutputDataCon
 
 #' Stops a dominant language detection job in progress
 #'
+#' @description
 #' Stops a dominant language detection job in progress.
 #' 
 #' If the job state is `IN_PROGRESS` the job is marked for termination and
@@ -2680,6 +2730,7 @@ comprehend_stop_dominant_language_detection_job <- function(JobId) {
 
 #' Stops an entities detection job in progress
 #'
+#' @description
 #' Stops an entities detection job in progress.
 #' 
 #' If the job state is `IN_PROGRESS` the job is marked for termination and
@@ -2728,6 +2779,7 @@ comprehend_stop_entities_detection_job <- function(JobId) {
 
 #' Stops an events detection job in progress
 #'
+#' @description
 #' Stops an events detection job in progress.
 #'
 #' @usage
@@ -2764,6 +2816,7 @@ comprehend_stop_events_detection_job <- function(JobId) {
 
 #' Stops a key phrases detection job in progress
 #'
+#' @description
 #' Stops a key phrases detection job in progress.
 #' 
 #' If the job state is `IN_PROGRESS` the job is marked for termination and
@@ -2812,6 +2865,7 @@ comprehend_stop_key_phrases_detection_job <- function(JobId) {
 
 #' Stops a PII entities detection job in progress
 #'
+#' @description
 #' Stops a PII entities detection job in progress.
 #'
 #' @usage
@@ -2848,6 +2902,7 @@ comprehend_stop_pii_entities_detection_job <- function(JobId) {
 
 #' Stops a sentiment detection job in progress
 #'
+#' @description
 #' Stops a sentiment detection job in progress.
 #' 
 #' If the job state is `IN_PROGRESS` the job is marked for termination and
@@ -2896,6 +2951,7 @@ comprehend_stop_sentiment_detection_job <- function(JobId) {
 
 #' Stops a document classifier training job while in progress
 #'
+#' @description
 #' Stops a document classifier training job while in progress.
 #' 
 #' If the training job state is `TRAINING`, the job is marked for
@@ -2939,6 +2995,7 @@ comprehend_stop_training_document_classifier <- function(DocumentClassifierArn) 
 
 #' Stops an entity recognizer training job while in progress
 #'
+#' @description
 #' Stops an entity recognizer training job while in progress.
 #' 
 #' If the training job state is `TRAINING`, the job is marked for
@@ -2983,6 +3040,7 @@ comprehend_stop_training_entity_recognizer <- function(EntityRecognizerArn) {
 
 #' Associates a specific tag with an Amazon Comprehend resource
 #'
+#' @description
 #' Associates a specific tag with an Amazon Comprehend resource. A tag is a
 #' key-value pair that adds as a metadata to a resource used by Amazon
 #' Comprehend. For example, a tag with "Sales" as the key might be added to
@@ -3032,6 +3090,7 @@ comprehend_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes a specific tag associated with an Amazon Comprehend resource
 #'
+#' @description
 #' Removes a specific tag associated with an Amazon Comprehend resource.
 #'
 #' @usage
@@ -3076,6 +3135,7 @@ comprehend_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates information about the specified endpoint
 #'
+#' @description
 #' Updates information about the specified endpoint.
 #'
 #' @usage

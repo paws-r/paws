@@ -50,7 +50,8 @@ number of nodes) of the service.}
 
 \item{tags}{The tag keys and optional values for the container service.
 
-For more information about tags in Lightsail, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-tags}{Lightsail Dev Guide}.}
+For more information about tags in Lightsail, see the Lightsail Dev
+Guide.}
 
 \item{publicDomainNames}{The public domain names to use with the container service, such as
 \code{example.com} and \code{www.example.com}.
@@ -82,8 +83,7 @@ the health check configuration.}
 }
 \description{
 Creates an Amazon Lightsail container service.
-}
-\details{
+
 A Lightsail container service is a compute resource to which you can
 deploy containers. For more information, see Container services in
 Amazon Lightsail in the \emph{Lightsail Dev Guide}.

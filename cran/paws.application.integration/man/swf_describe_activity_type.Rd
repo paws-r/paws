@@ -17,8 +17,7 @@ activity was registered.}
 Returns information about the specified activity type. This includes
 configuration settings provided when the type was registered and other
 general information about the type.
-}
-\details{
+
 \strong{Access Control}
 
 You can use IAM policies to control this action's access to Amazon SWF

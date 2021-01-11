@@ -28,8 +28,7 @@ associations, use a hyphen ("-") as the \code{nameContains} parameter.}
 }
 \description{
 Returns a list of all of the channels associated with the specified bot.
-}
-\details{
+
 The \code{GetBotChannelAssociations} operation requires permissions for the
 \code{lex:GetBotChannelAssociations} action.
 }

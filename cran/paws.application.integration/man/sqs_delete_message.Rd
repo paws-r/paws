@@ -21,8 +21,7 @@ delete a message from a queue even if a visibility timeout setting
 causes the message to be locked by another consumer. Amazon SQS
 automatically deletes messages left in a queue longer than the retention
 period configured for the queue.
-}
-\details{
+
 The \code{ReceiptHandle} is associated with a \emph{specific instance} of
 receiving a message. If you receive a message more than once, the
 \code{ReceiptHandle} is different each time you receive a message. When you

@@ -30,8 +30,7 @@ that you specify. To indicate whether you want to increase or decrease
 the data retention period, specify the \code{Operation} parameter in the
 request body. In the request, you must specify either the \code{StreamName}
 or the \code{StreamARN}.
-}
-\details{
+
 The retention period that you specify replaces the current value.
 
 This operation requires permission for the

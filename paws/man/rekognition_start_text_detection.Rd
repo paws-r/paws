@@ -26,8 +26,7 @@ included in your response.}
 }
 \description{
 Starts asynchronous detection of text in a stored video.
-}
-\details{
+
 Amazon Rekognition Video can detect text in a video stored in an Amazon
 S3 bucket. Use Video to specify the bucket name and the filename of the
 video. \code{StartTextDetection} returns a job identifier (\code{JobId}) which you

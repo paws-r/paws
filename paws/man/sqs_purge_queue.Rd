@@ -14,8 +14,7 @@ Queue URLs and names are case-sensitive.}
 }
 \description{
 Deletes the messages in a queue specified by the \code{QueueURL} parameter.
-}
-\details{
+
 When you use the \code{PurgeQueue} action, you can't retrieve any messages
 deleted from a queue.
 

@@ -19,8 +19,7 @@ different account, the request will fail with an HTTP
 \description{
 Enables notifications of specified events for a bucket. For more
 information about event notifications, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html}{Configuring Event Notifications}.
-}
-\details{
+
 Using this API, you can replace an existing notification configuration.
 The configuration is an XML file that defines the event types that you
 want Amazon S3 to publish and the destination where you want Amazon S3

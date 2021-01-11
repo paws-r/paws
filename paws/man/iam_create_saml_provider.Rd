@@ -27,8 +27,7 @@ spaces. You can also include any of the following characters: \\_+=,.@-}
 \description{
 Creates an IAM resource that describes an identity provider (IdP) that
 supports SAML 2.0.
-}
-\details{
+
 The SAML provider resource that you create with this operation can be
 used as a principal in an IAM role's trust policy. Such a policy can
 enable federated users who sign in using the SAML IdP to assume the

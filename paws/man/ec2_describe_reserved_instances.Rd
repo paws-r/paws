@@ -70,8 +70,7 @@ the 2011-11-01 API version, you only have access to the
 }
 \description{
 Describes one or more of the Reserved Instances that you purchased.
-}
-\details{
+
 For more information about Reserved Instances, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-reserved-instances.html}{Reserved Instances}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }

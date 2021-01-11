@@ -28,8 +28,7 @@ more clusters than the number you specify, the response contains a
 }
 \description{
 Gets information about AWS CloudHSM clusters.
-}
-\details{
+
 This is a paginated operation, which means that each response might
 contain only a subset of all the clusters. When the response contains
 only a subset of clusters, it includes a \code{NextToken} value. Use this

@@ -15,8 +15,7 @@ specified EFS resource.}
 \description{
 Removes tags from an EFS resource. You can remove tags from EFS file
 systems and access points using this API operation.
-}
-\details{
+
 This operation requires permissions for the
 \code{elasticfilesystem:UntagResource} action.
 }

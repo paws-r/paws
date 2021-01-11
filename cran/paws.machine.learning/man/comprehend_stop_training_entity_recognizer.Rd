@@ -12,8 +12,7 @@ currently being trained.}
 }
 \description{
 Stops an entity recognizer training job while in progress.
-}
-\details{
+
 If the training job state is \code{TRAINING}, the job is marked for
 termination and put into the \code{STOP_REQUESTED} state. If the training job
 completes before it can be stopped, it is put into the \code{TRAINED};

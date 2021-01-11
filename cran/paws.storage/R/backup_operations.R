@@ -5,6 +5,7 @@ NULL
 
 #' Creates a backup plan using a backup plan name and backup rules
 #'
+#' @description
 #' Creates a backup plan using a backup plan name and backup rules. A
 #' backup plan is a document that contains information that AWS Backup uses
 #' to schedule tasks that create recovery points for resources.
@@ -94,6 +95,7 @@ backup_create_backup_plan <- function(BackupPlan, BackupPlanTags = NULL, Creator
 #' Creates a JSON document that specifies a set of resources to assign to a
 #' backup plan
 #'
+#' @description
 #' Creates a JSON document that specifies a set of resources to assign to a
 #' backup plan. Resources can be included by specifying patterns for a
 #' `ListOfTags` and selected `Resources`.
@@ -180,6 +182,7 @@ backup_create_backup_selection <- function(BackupPlanId, BackupSelection, Creato
 
 #' Creates a logical container where backups are stored
 #'
+#' @description
 #' Creates a logical container where backups are stored. A
 #' `CreateBackupVault` request includes a name, optionally one or more
 #' resource tags, an encryption key, and a request ID.
@@ -237,6 +240,7 @@ backup_create_backup_vault <- function(BackupVaultName, BackupVaultTags = NULL, 
 
 #' Deletes a backup plan
 #'
+#' @description
 #' Deletes a backup plan. A backup plan can only be deleted after all
 #' associated selections of resources have been deleted. Deleting a backup
 #' plan deletes the current version of a backup plan. Previous versions, if
@@ -277,6 +281,7 @@ backup_delete_backup_plan <- function(BackupPlanId) {
 #' Deletes the resource selection associated with a backup plan that is
 #' specified by the SelectionId
 #'
+#' @description
 #' Deletes the resource selection associated with a backup plan that is
 #' specified by the `SelectionId`.
 #'
@@ -317,6 +322,7 @@ backup_delete_backup_selection <- function(BackupPlanId, SelectionId) {
 
 #' Deletes the backup vault identified by its name
 #'
+#' @description
 #' Deletes the backup vault identified by its name. A vault can be deleted
 #' only if it is empty.
 #'
@@ -357,6 +363,7 @@ backup_delete_backup_vault <- function(BackupVaultName) {
 
 #' Deletes the policy document that manages permissions on a backup vault
 #'
+#' @description
 #' Deletes the policy document that manages permissions on a backup vault.
 #'
 #' @usage
@@ -396,6 +403,7 @@ backup_delete_backup_vault_access_policy <- function(BackupVaultName) {
 
 #' Deletes event notifications for the specified backup vault
 #'
+#' @description
 #' Deletes event notifications for the specified backup vault.
 #'
 #' @usage
@@ -435,6 +443,7 @@ backup_delete_backup_vault_notifications <- function(BackupVaultName) {
 
 #' Deletes the recovery point specified by a recovery point ID
 #'
+#' @description
 #' Deletes the recovery point specified by a recovery point ID.
 #'
 #' @usage
@@ -478,6 +487,7 @@ backup_delete_recovery_point <- function(BackupVaultName, RecoveryPointArn) {
 
 #' Returns backup job details for the specified BackupJobId
 #'
+#' @description
 #' Returns backup job details for the specified `BackupJobId`.
 #'
 #' @usage
@@ -514,6 +524,7 @@ backup_describe_backup_job <- function(BackupJobId) {
 
 #' Returns metadata about a backup vault specified by its name
 #'
+#' @description
 #' Returns metadata about a backup vault specified by its name.
 #'
 #' @usage
@@ -553,6 +564,7 @@ backup_describe_backup_vault <- function(BackupVaultName) {
 
 #' Returns metadata associated with creating a copy of a resource
 #'
+#' @description
 #' Returns metadata associated with creating a copy of a resource.
 #'
 #' @usage
@@ -589,6 +601,7 @@ backup_describe_copy_job <- function(CopyJobId) {
 
 #' The current feature settings for the AWS Account
 #'
+#' @description
 #' The current feature settings for the AWS Account.
 #'
 #' @usage
@@ -623,6 +636,7 @@ backup_describe_global_settings <- function() {
 #' was backed up, its Amazon Resource Name (ARN), and the AWS service type
 #' of the saved resource
 #'
+#' @description
 #' Returns information about a saved resource, including the last time it
 #' was backed up, its Amazon Resource Name (ARN), and the AWS service type
 #' of the saved resource.
@@ -663,6 +677,7 @@ backup_describe_protected_resource <- function(ResourceArn) {
 #' Returns metadata associated with a recovery point, including ID, status,
 #' encryption, and lifecycle
 #'
+#' @description
 #' Returns metadata associated with a recovery point, including ID, status,
 #' encryption, and lifecycle.
 #'
@@ -707,6 +722,7 @@ backup_describe_recovery_point <- function(BackupVaultName, RecoveryPointArn) {
 
 #' Returns the current service opt-in settings for the Region
 #'
+#' @description
 #' Returns the current service opt-in settings for the Region. If
 #' service-opt-in is enabled for a service, AWS Backup tries to protect
 #' that service's resources in this Region, when the resource is included
@@ -745,6 +761,7 @@ backup_describe_region_settings <- function() {
 #' Returns metadata associated with a restore job that is specified by a
 #' job ID
 #'
+#' @description
 #' Returns metadata associated with a restore job that is specified by a
 #' job ID.
 #'
@@ -783,6 +800,7 @@ backup_describe_restore_job <- function(RestoreJobId) {
 #' Returns the backup plan that is specified by the plan ID as a backup
 #' template
 #'
+#' @description
 #' Returns the backup plan that is specified by the plan ID as a backup
 #' template.
 #'
@@ -820,6 +838,7 @@ backup_export_backup_plan_template <- function(BackupPlanId) {
 
 #' Returns BackupPlan details for the specified BackupPlanId
 #'
+#' @description
 #' Returns `BackupPlan` details for the specified `BackupPlanId`. Returns
 #' the body of a backup plan in JSON format, in addition to plan metadata.
 #'
@@ -860,6 +879,7 @@ backup_get_backup_plan <- function(BackupPlanId, VersionId = NULL) {
 
 #' Returns a valid JSON document specifying a backup plan or an error
 #'
+#' @description
 #' Returns a valid JSON document specifying a backup plan or an error.
 #'
 #' @usage
@@ -896,6 +916,7 @@ backup_get_backup_plan_from_json <- function(BackupPlanTemplateJson) {
 
 #' Returns the template specified by its templateId as a backup plan
 #'
+#' @description
 #' Returns the template specified by its `templateId` as a backup plan.
 #'
 #' @usage
@@ -933,6 +954,7 @@ backup_get_backup_plan_from_template <- function(BackupPlanTemplateId) {
 #' Returns selection metadata and a document in JSON format that specifies
 #' a list of resources that are associated with a backup plan
 #'
+#' @description
 #' Returns selection metadata and a document in JSON format that specifies
 #' a list of resources that are associated with a backup plan.
 #'
@@ -974,6 +996,7 @@ backup_get_backup_selection <- function(BackupPlanId, SelectionId) {
 #' Returns the access policy document that is associated with the named
 #' backup vault
 #'
+#' @description
 #' Returns the access policy document that is associated with the named
 #' backup vault.
 #'
@@ -1014,6 +1037,7 @@ backup_get_backup_vault_access_policy <- function(BackupVaultName) {
 
 #' Returns event notifications for the specified backup vault
 #'
+#' @description
 #' Returns event notifications for the specified backup vault.
 #'
 #' @usage
@@ -1054,6 +1078,7 @@ backup_get_backup_vault_notifications <- function(BackupVaultName) {
 #' Returns a set of metadata key-value pairs that were used to create the
 #' backup
 #'
+#' @description
 #' Returns a set of metadata key-value pairs that were used to create the
 #' backup.
 #'
@@ -1099,6 +1124,7 @@ backup_get_recovery_point_restore_metadata <- function(BackupVaultName, Recovery
 
 #' Returns the AWS resource types supported by AWS Backup
 #'
+#' @description
 #' Returns the AWS resource types supported by AWS Backup.
 #'
 #' @usage
@@ -1130,6 +1156,7 @@ backup_get_supported_resource_types <- function() {
 
 #' Returns a list of existing backup jobs for an authenticated account
 #'
+#' @description
 #' Returns a list of existing backup jobs for an authenticated account.
 #'
 #' @usage
@@ -1209,6 +1236,7 @@ backup_list_backup_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResou
 #' Returns metadata of your saved backup plan templates, including the
 #' template ID, name, and the creation and deletion dates
 #'
+#' @description
 #' Returns metadata of your saved backup plan templates, including the
 #' template ID, name, and the creation and deletion dates.
 #'
@@ -1253,6 +1281,7 @@ backup_list_backup_plan_templates <- function(NextToken = NULL, MaxResults = NUL
 #' Names (ARNs), backup plan IDs, creation and deletion dates, plan names,
 #' and version IDs
 #'
+#' @description
 #' Returns version metadata of your backup plans, including Amazon Resource
 #' Names (ARNs), backup plan IDs, creation and deletion dates, plan names,
 #' and version IDs.
@@ -1298,6 +1327,7 @@ backup_list_backup_plan_versions <- function(BackupPlanId, NextToken = NULL, Max
 
 #' Returns a list of existing backup plans for an authenticated account
 #'
+#' @description
 #' Returns a list of existing backup plans for an authenticated account.
 #' The list is populated only if the advanced option is set for the backup
 #' plan. The list contains information such as Amazon Resource Names
@@ -1347,6 +1377,7 @@ backup_list_backup_plans <- function(NextToken = NULL, MaxResults = NULL, Includ
 #' Returns an array containing metadata of the resources associated with
 #' the target backup plan
 #'
+#' @description
 #' Returns an array containing metadata of the resources associated with
 #' the target backup plan.
 #'
@@ -1392,6 +1423,7 @@ backup_list_backup_selections <- function(BackupPlanId, NextToken = NULL, MaxRes
 #' Returns a list of recovery point storage containers along with
 #' information about them
 #'
+#' @description
 #' Returns a list of recovery point storage containers along with
 #' information about them.
 #'
@@ -1434,6 +1466,7 @@ backup_list_backup_vaults <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Returns metadata about your copy jobs
 #'
+#' @description
 #' Returns metadata about your copy jobs.
 #'
 #' @usage
@@ -1513,6 +1546,7 @@ backup_list_copy_jobs <- function(NextToken = NULL, MaxResults = NULL, ByResourc
 #' including the time the resource was saved, an Amazon Resource Name (ARN)
 #' of the resource, and a resource type
 #'
+#' @description
 #' Returns an array of resources successfully backed up by AWS Backup,
 #' including the time the resource was saved, an Amazon Resource Name (ARN)
 #' of the resource, and a resource type.
@@ -1557,6 +1591,7 @@ backup_list_protected_resources <- function(NextToken = NULL, MaxResults = NULL)
 #' Returns detailed information about the recovery points stored in a
 #' backup vault
 #'
+#' @description
 #' Returns detailed information about the recovery points stored in a
 #' backup vault.
 #'
@@ -1624,6 +1659,7 @@ backup_list_recovery_points_by_backup_vault <- function(BackupVaultName, NextTok
 #' Returns detailed information about recovery points of the type specified
 #' by a resource Amazon Resource Name (ARN)
 #'
+#' @description
 #' Returns detailed information about recovery points of the type specified
 #' by a resource Amazon Resource Name (ARN).
 #'
@@ -1671,6 +1707,7 @@ backup_list_recovery_points_by_resource <- function(ResourceArn, NextToken = NUL
 #' Returns a list of jobs that AWS Backup initiated to restore a saved
 #' resource, including metadata about the recovery process
 #'
+#' @description
 #' Returns a list of jobs that AWS Backup initiated to restore a saved
 #' resource, including metadata about the recovery process.
 #'
@@ -1728,6 +1765,7 @@ backup_list_restore_jobs <- function(NextToken = NULL, MaxResults = NULL, ByAcco
 #' Returns a list of key-value pairs assigned to a target recovery point,
 #' backup plan, or backup vault
 #'
+#' @description
 #' Returns a list of key-value pairs assigned to a target recovery point,
 #' backup plan, or backup vault.
 #' 
@@ -1777,6 +1815,7 @@ backup_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL) {
 #' Sets a resource-based policy that is used to manage access permissions
 #' on the target backup vault
 #'
+#' @description
 #' Sets a resource-based policy that is used to manage access permissions
 #' on the target backup vault. Requires a backup vault name and an access
 #' policy document in JSON format.
@@ -1821,6 +1860,7 @@ backup_put_backup_vault_access_policy <- function(BackupVaultName, Policy = NULL
 #' Turns on notifications on a backup vault for the specified topic and
 #' events
 #'
+#' @description
 #' Turns on notifications on a backup vault for the specified topic and
 #' events.
 #'
@@ -1871,6 +1911,7 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
 
 #' Starts an on-demand backup job for the specified resource
 #'
+#' @description
 #' Starts an on-demand backup job for the specified resource.
 #'
 #' @usage
@@ -1956,6 +1997,7 @@ backup_start_backup_job <- function(BackupVaultName, ResourceArn, IamRoleArn, Id
 
 #' Starts a job to create a one-time copy of the specified resource
 #'
+#' @description
 #' Starts a job to create a one-time copy of the specified resource.
 #'
 #' @usage
@@ -2015,6 +2057,7 @@ backup_start_copy_job <- function(RecoveryPointArn, SourceBackupVaultName, Desti
 
 #' Recovers the saved resource identified by an Amazon Resource Name (ARN)
 #'
+#' @description
 #' Recovers the saved resource identified by an Amazon Resource Name (ARN).
 #'
 #' @usage
@@ -2115,6 +2158,7 @@ backup_start_restore_job <- function(RecoveryPointArn, Metadata, IamRoleArn, Ide
 
 #' Attempts to cancel a job to create a one-time backup of a resource
 #'
+#' @description
 #' Attempts to cancel a job to create a one-time backup of a resource.
 #'
 #' @usage
@@ -2152,6 +2196,7 @@ backup_stop_backup_job <- function(BackupJobId) {
 #' Assigns a set of key-value pairs to a recovery point, backup plan, or
 #' backup vault identified by an Amazon Resource Name (ARN)
 #'
+#' @description
 #' Assigns a set of key-value pairs to a recovery point, backup plan, or
 #' backup vault identified by an Amazon Resource Name (ARN).
 #'
@@ -2196,6 +2241,7 @@ backup_tag_resource <- function(ResourceArn, Tags) {
 #' Removes a set of key-value pairs from a recovery point, backup plan, or
 #' backup vault identified by an Amazon Resource Name (ARN)
 #'
+#' @description
 #' Removes a set of key-value pairs from a recovery point, backup plan, or
 #' backup vault identified by an Amazon Resource Name (ARN)
 #'
@@ -2240,6 +2286,7 @@ backup_untag_resource <- function(ResourceArn, TagKeyList) {
 #' Updates an existing backup plan identified by its backupPlanId with the
 #' input document in JSON format
 #'
+#' @description
 #' Updates an existing backup plan identified by its `backupPlanId` with
 #' the input document in JSON format. The new version is uniquely
 #' identified by a `VersionId`.
@@ -2316,6 +2363,7 @@ backup_update_backup_plan <- function(BackupPlanId, BackupPlan) {
 
 #' Updates the current global settings for the AWS Account
 #'
+#' @description
 #' Updates the current global settings for the AWS Account. Use the
 #' `DescribeGlobalSettings` API to determine the current settings.
 #'
@@ -2355,6 +2403,7 @@ backup_update_global_settings <- function(GlobalSettings = NULL) {
 
 #' Sets the transition lifecycle of a recovery point
 #'
+#' @description
 #' Sets the transition lifecycle of a recovery point.
 #' 
 #' The lifecycle defines when a protected resource is transitioned to cold
@@ -2422,6 +2471,7 @@ backup_update_recovery_point_lifecycle <- function(BackupVaultName, RecoveryPoin
 
 #' Updates the current service opt-in settings for the Region
 #'
+#' @description
 #' Updates the current service opt-in settings for the Region. If
 #' service-opt-in is enabled for a service, AWS Backup tries to protect
 #' that service's resources in this Region, when the resource is included

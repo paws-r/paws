@@ -19,8 +19,6 @@ Used to test if the caller has permission to make the call.}
 Deletes a progress update stream, including all of its tasks, which was
 previously created as an AWS resource used for access control. This API
 has the following traits:
-}
-\details{
 \itemize{
 \item The only parameter needed for \code{DeleteProgressUpdateStream} is the
 stream name (same as a \code{CreateProgressUpdateStream} call).

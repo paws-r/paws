@@ -44,8 +44,7 @@ the \href{https://aws.amazon.com/location/pricing/}{Amazon Location Service pric
 Creates a Place index resource in your AWS account, which supports
 Places functions with geospatial data sourced from your chosen data
 provider.
-}
-\details{
+
 By using Places, you agree that AWS may transmit your API queries to
 your selected third party provider for processing, which may be outside
 the AWS region you are currently using.

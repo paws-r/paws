@@ -58,8 +58,7 @@ route traffic to and from your Microsoft AD on Amazon Web Services.
 \emph{AddIpRoutes} adds this address block. You can also use \emph{AddIpRoutes} to
 facilitate routing traffic that uses public IP ranges from your
 Microsoft AD on AWS to a peer VPC.
-}
-\details{
+
 Before you call \emph{AddIpRoutes}, ensure that all of the required
 permissions have been explicitly granted through a policy. For details
 about what permissions are required to run the \emph{AddIpRoutes} operation,

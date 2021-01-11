@@ -11,8 +11,7 @@ glue_start_ml_evaluation_task_run(TransformId)
 }
 \description{
 Starts a task to estimate the quality of the transform.
-}
-\details{
+
 When you provide label sets as examples of truth, AWS Glue machine
 learning uses some of those examples to learn from them. The rest of the
 labels are used as a test to estimate quality.

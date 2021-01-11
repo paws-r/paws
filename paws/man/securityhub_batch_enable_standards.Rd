@@ -13,8 +13,7 @@ securityhub_batch_enable_standards(StandardsSubscriptionRequests)
 Enables the standards specified by the provided \code{StandardsArn}. To
 obtain the ARN for a standard, use the \verb{<a>DescribeStandards</a>}
 operation.
-}
-\details{
+
 For more information, see the \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html}{Security Standards}
 section of the \emph{AWS Security Hub User Guide}.
 }

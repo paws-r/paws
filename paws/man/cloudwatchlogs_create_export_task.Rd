@@ -36,8 +36,7 @@ a log group to an Amazon S3 bucket. When you perform a
 \code{CreateExportTask} operation, you must use credentials that have
 permission to write to the S3 bucket that you specify as the
 destination.
-}
-\details{
+
 This is an asynchronous call. If all the required information is
 provided, this operation initiates an export task and responds with the
 ID of the task. After the task has started, you can use

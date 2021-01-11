@@ -19,8 +19,7 @@ resource type and storage config for the given instance ID.}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Removes the storage type configurations for the specified resource type
 and association ID.
 }

@@ -59,8 +59,7 @@ uses to deploy models. In the configuration, you identify one or more
 models, created using the \code{CreateModel} API, to deploy and the resources
 that you want Amazon SageMaker to provision. Then you call the
 CreateEndpoint API.
-}
-\details{
+
 Use this API if you want to use Amazon SageMaker hosting services to
 deploy models into production.
 

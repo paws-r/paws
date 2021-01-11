@@ -37,8 +37,7 @@ server side,using SSE-S3.}
 \description{
 Starts the asynchronous detection of text in a document. Amazon Textract
 can detect lines of text and the words that make up a line of text.
-}
-\details{
+
 \code{StartDocumentTextDetection} can analyze text in documents that are in
 JPEG, PNG, and PDF format. The documents are stored in an Amazon S3
 bucket. Use DocumentLocation to specify the bucket name and file name of

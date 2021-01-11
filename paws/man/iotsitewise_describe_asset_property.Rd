@@ -13,8 +13,7 @@ iotsitewise_describe_asset_property(assetId, propertyId)
 }
 \description{
 Retrieves information about an asset property.
-}
-\details{
+
 When you call this operation for an attribute property, this response
 includes the default attribute value that you define in the asset model.
 If you update the default value in the model, this operation's response

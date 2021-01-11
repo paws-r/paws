@@ -29,8 +29,7 @@ person are sorted by detection confidence. The default sort is by
 \description{
 Gets the path tracking results of a Amazon Rekognition Video analysis
 started by StartPersonTracking.
-}
-\details{
+
 The person path tracking operation is started by a call to
 \code{StartPersonTracking} which returns a job identifier (\code{JobId}). When the
 operation finishes, Amazon Rekognition Video publishes a completion

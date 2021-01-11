@@ -23,8 +23,7 @@ Returns the tags associated with a file system. The order of tags
 returned in the response of one \code{DescribeTags} call and the order of
 tags returned across the responses of a multiple-call iteration (when
 using pagination) is unspecified.
-}
-\details{
+
 This operation requires permissions for the
 \code{elasticfilesystem:DescribeTags} action.
 }

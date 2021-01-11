@@ -15,8 +15,7 @@ Cancels a matchmaking ticket or match backfill ticket that is currently
 being processed. To stop the matchmaking operation, specify the ticket
 ID. If successful, work on the ticket is stopped, and the ticket status
 is changed to \code{CANCELLED}.
-}
-\details{
+
 This call is also used to turn off automatic backfill for an individual
 game session. This is for game sessions that are created with a
 matchmaking configuration that has automatic backfill enabled. The

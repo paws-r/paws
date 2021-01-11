@@ -27,8 +27,7 @@ fleet IDs.}
 \description{
 Retrieves core properties, including configuration, status, and
 metadata, for a fleet.
-}
-\details{
+
 To get attributes for one or more fleets, provide a list of fleet IDs or
 fleet ARNs. To get attributes for all fleets, do not specify a fleet
 identifier. When requesting attributes for multiple fleets, use the

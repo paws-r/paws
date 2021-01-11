@@ -15,8 +15,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 Returns the cors configuration information set for the bucket.
-}
-\details{
+
 To use this operation, you must have permission to perform the
 s3:GetBucketCORS action. By default, the bucket owner has this
 permission and can grant it to others.

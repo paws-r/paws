@@ -18,8 +18,7 @@ Otherwise, it returns a description of every array.}
 }
 \description{
 Describe an instance's RAID arrays.
-}
-\details{
+
 This call accepts only one resource-identifying parameter.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a

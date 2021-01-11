@@ -31,8 +31,7 @@ OpsWorks-CM resources.
 Creates an application-level backup of a server. While the server is in
 the \code{BACKING_UP} state, the server cannot be changed, and no additional
 backup can be created.
-}
-\details{
+
 Backups can be created for servers in \code{RUNNING}, \code{HEALTHY}, and
 \code{UNHEALTHY} states. By default, you can create a maximum of 50 manual
 backups.

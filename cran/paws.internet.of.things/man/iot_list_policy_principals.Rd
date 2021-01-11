@@ -18,8 +18,7 @@ ascending creation order.}
 }
 \description{
 Lists the principals associated with the specified policy.
-}
-\details{
+
 \strong{Note:} This API is deprecated. Please use ListTargetsForPolicy
 instead.
 }

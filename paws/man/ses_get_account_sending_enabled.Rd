@@ -10,8 +10,7 @@ ses_get_account_sending_enabled()
 \description{
 Returns the email sending status of the Amazon SES account for the
 current region.
-}
-\details{
+
 You can execute this operation no more than once per second.
 }
 \examples{

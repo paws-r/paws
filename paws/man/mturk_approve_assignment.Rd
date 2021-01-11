@@ -21,8 +21,7 @@ previously rejected. Defaults to \code{False}.}
 \description{
 The \code{ApproveAssignment} operation approves the results of a completed
 assignment.
-}
-\details{
+
 Approving an assignment initiates two payments from the Requester's
 Amazon.com account
 \itemize{

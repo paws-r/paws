@@ -37,8 +37,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Changes the default customer master key (CMK) for EBS encryption by
 default for your account in this Region.
-}
-\details{
+
 AWS creates a unique AWS managed CMK in each Region for use with
 encryption by default. If you change the default CMK to a symmetric
 customer managed CMK, it is used instead of the AWS managed CMK. To

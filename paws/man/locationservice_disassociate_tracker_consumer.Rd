@@ -21,8 +21,7 @@ resource across all AWS.
 \description{
 Removes the association bewteen a tracker resource and a geofence
 collection.
-}
-\details{
+
 Once you unlink a tracker resource from a geofence collection, the
 tracker positions will no longer be automatically evaluated against
 geofences.

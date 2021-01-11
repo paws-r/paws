@@ -15,8 +15,7 @@ instances for the specified layers.}
 }
 \description{
 Describes a stack's Elastic Load Balancing instances.
-}
-\details{
+
 This call accepts only one resource-identifying parameter.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a

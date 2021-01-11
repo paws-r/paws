@@ -18,8 +18,7 @@ API response.}
 \description{
 Creates the participant's connection. Note that ParticipantToken is used
 for invoking this API instead of ConnectionToken.
-}
-\details{
+
 The participant token is valid for the lifetime of the participant –
 until they are part of a contact.
 

@@ -41,8 +41,7 @@ You must specify the ARN or the name, and you can specify both.}
 Associates the specified subnets in the Amazon VPC to the firewall. You
 can specify one subnet for each of the Availability Zones that the VPC
 spans.
-}
-\details{
+
 This request creates an AWS Network Firewall firewall endpoint in each
 of the subnets. To enable the firewall's protections, you must also
 modify the VPC's route tables for each subnet's Availability Zone, to

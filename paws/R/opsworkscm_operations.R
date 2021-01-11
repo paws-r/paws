@@ -5,6 +5,7 @@ NULL
 
 #' Associates a new node with the server
 #'
+#' @description
 #' Associates a new node with the server. For more information about how to
 #' disassociate a node, see DisassociateNode.
 #' 
@@ -84,6 +85,7 @@ opsworkscm_associate_node <- function(ServerName, NodeName, EngineAttributes) {
 
 #' Creates an application-level backup of a server
 #'
+#' @description
 #' Creates an application-level backup of a server. While the server is in
 #' the `BACKING_UP` state, the server cannot be changed, and no additional
 #' backup can be created.
@@ -161,6 +163,7 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 
 #' Creates and immedately starts a new server
 #'
+#' @description
 #' Creates and immedately starts a new server. The server is ready to use
 #' when it is in the `HEALTHY` state. By default, you can create a maximum
 #' of 10 servers.
@@ -260,7 +263,7 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #'     user in the Chef Automate web-based dashboard. The password length
 #'     is a minimum of eight characters, and a maximum of 32. The password
 #'     can contain letters, numbers, and special characters
-#'     (!/@@\\#$%^&+=\\_). The password must contain at least one lower case
+#'     (!/@@\\#$\%^&+=\\_). The password must contain at least one lower case
 #'     letter, one upper case letter, one number, and one special
 #'     character. When no CHEF\\_AUTOMATE\\_ADMIN\\_PASSWORD is set, one is
 #'     generated and returned in the response.
@@ -432,6 +435,7 @@ opsworkscm_create_server <- function(AssociatePublicIpAddress = NULL, CustomDoma
 
 #' Deletes a backup
 #'
+#' @description
 #' Deletes a backup. You can delete both manual and automated backups. This
 #' operation is asynchronous.
 #' 
@@ -477,6 +481,7 @@ opsworkscm_delete_backup <- function(BackupId) {
 #' Deletes the server and the underlying AWS CloudFormation stacks
 #' (including the server's EC2 instance)
 #'
+#' @description
 #' Deletes the server and the underlying AWS CloudFormation stacks
 #' (including the server's EC2 instance). When you run this command, the
 #' server state is updated to `DELETING`. After the server is deleted, it
@@ -524,6 +529,7 @@ opsworkscm_delete_server <- function(ServerName) {
 
 #' Describes your OpsWorks-CM account attributes
 #'
+#' @description
 #' Describes your OpsWorks-CM account attributes.
 #' 
 #' This operation is synchronous.
@@ -558,6 +564,7 @@ opsworkscm_describe_account_attributes <- function() {
 
 #' Describes backups
 #'
+#' @description
 #' Describes backups. The results are ordered by time, with newest backups
 #' first. If you do not specify a BackupId or ServerName, the command
 #' returns all backups.
@@ -608,6 +615,7 @@ opsworkscm_describe_backups <- function(BackupId = NULL, ServerName = NULL, Next
 
 #' Describes events for a specified server
 #'
+#' @description
 #' Describes events for a specified server. Results are ordered by time,
 #' with newest events first.
 #' 
@@ -667,6 +675,7 @@ opsworkscm_describe_events <- function(ServerName, NextToken = NULL, MaxResults 
 #' Returns the current status of an existing association or disassociation
 #' request
 #'
+#' @description
 #' Returns the current status of an existing association or disassociation
 #' request.
 #' 
@@ -714,6 +723,7 @@ opsworkscm_describe_node_association_status <- function(NodeAssociationStatusTok
 #' Lists all configuration management servers that are identified with your
 #' account
 #'
+#' @description
 #' Lists all configuration management servers that are identified with your
 #' account. Only the stored results from Amazon DynamoDB are returned. AWS
 #' OpsWorks CM does not query other services.
@@ -763,6 +773,7 @@ opsworkscm_describe_servers <- function(ServerName = NULL, NextToken = NULL, Max
 #' Disassociates a node from an AWS OpsWorks CM server, and removes the
 #' node from the server's managed nodes
 #'
+#' @description
 #' Disassociates a node from an AWS OpsWorks CM server, and removes the
 #' node from the server's managed nodes. After a node is disassociated, the
 #' node key pair is no longer valid for accessing the configuration
@@ -825,6 +836,7 @@ opsworkscm_disassociate_node <- function(ServerName, NodeName, EngineAttributes 
 
 #' Exports a specified server engine attribute as a base64-encoded string
 #'
+#' @description
 #' Exports a specified server engine attribute as a base64-encoded string.
 #' For example, you can export user data that you can use in EC2 to
 #' associate nodes with a server.
@@ -903,6 +915,7 @@ opsworkscm_export_server_engine_attribute <- function(ExportAttributeName, Serve
 #' for Chef Automate or AWS OpsWorks for Puppet Enterprise servers or
 #' backups
 #'
+#' @description
 #' Returns a list of tags that are applied to the specified AWS OpsWorks
 #' for Chef Automate or AWS OpsWorks for Puppet Enterprise servers or
 #' backups.
@@ -960,6 +973,7 @@ opsworkscm_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, Max
 #' Restores a backup to a server that is in a CONNECTION_LOST, HEALTHY,
 #' RUNNING, UNHEALTHY, or TERMINATED state
 #'
+#' @description
 #' Restores a backup to a server that is in a `CONNECTION_LOST`, `HEALTHY`,
 #' `RUNNING`, `UNHEALTHY`, or `TERMINATED` state. When you run
 #' RestoreServer, the server's EC2 instance is deleted, and a new EC2
@@ -1025,6 +1039,7 @@ opsworkscm_restore_server <- function(BackupId, ServerName, InstanceType = NULL,
 
 #' Manually starts server maintenance
 #'
+#' @description
 #' Manually starts server maintenance. This command can be useful if an
 #' earlier maintenance attempt failed, and the underlying cause of
 #' maintenance failure has been resolved. The server is in an
@@ -1088,6 +1103,7 @@ opsworkscm_start_maintenance <- function(ServerName, EngineAttributes = NULL) {
 #' Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
 #' Puppet Enterprise server, or to server backups
 #'
+#' @description
 #' Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for
 #' Puppet Enterprise server, or to server backups.
 #'
@@ -1151,6 +1167,7 @@ opsworkscm_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes specified tags from an AWS OpsWorks-CM server or backup
 #'
+#' @description
 #' Removes specified tags from an AWS OpsWorks-CM server or backup.
 #'
 #' @usage
@@ -1193,6 +1210,7 @@ opsworkscm_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates settings for a server
 #'
+#' @description
 #' Updates settings for a server.
 #' 
 #' This operation is synchronous.
@@ -1241,6 +1259,7 @@ opsworkscm_update_server <- function(DisableAutomatedBackup = NULL, BackupRetent
 
 #' Updates engine-specific attributes on a specified server
 #'
+#' @description
 #' Updates engine-specific attributes on a specified server. The server
 #' enters the `MODIFYING` state when this operation is in progress. Only
 #' one update can occur at a time. You can use this command to reset a Chef

@@ -22,8 +22,7 @@ to be retried without the risk of running the operation twice.}
 Creates a JSON document that specifies a set of resources to assign to a
 backup plan. Resources can be included by specifying patterns for a
 \code{ListOfTags} and selected \code{Resources}.
-}
-\details{
+
 For example, consider the following patterns:
 \itemize{
 \item \code{Resources: "arn:aws:ec2:region:account-id:volume/volume-id"}

@@ -14,8 +14,7 @@ information.}
 \description{
 The DeletePreset operation removes a preset that you've added in an AWS
 region.
-}
-\details{
+
 You can't delete the default presets that are included with Elastic
 Transcoder.
 }

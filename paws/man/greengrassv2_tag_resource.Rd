@@ -12,8 +12,8 @@ greengrassv2_tag_resource(resourceArn, tags)
 of the resource to tag.}
 
 \item{tags}{[required] A list of key-value pairs that contain metadata for the resource. For
-more information, see \href{https://docs.aws.amazon.com/greengrass/v2/}{Tag your resources} in the \emph{AWS IoT
-Greengrass V2 Developer Guide}.}
+more information, see Tag your resources in the \emph{AWS IoT Greengrass V2
+Developer Guide}.}
 }
 \description{
 Adds tags to an AWS IoT Greengrass resource. If a tag already exists for

@@ -38,8 +38,7 @@ Deploys the new \code{EndpointConfig} specified in the request, switches to
 using newly created endpoint, and then deletes resources provisioned for
 the endpoint using the previous \code{EndpointConfig} (there is no
 availability loss).
-}
-\details{
+
 When Amazon SageMaker receives the request, it sets the endpoint status
 to \code{Updating}. After updating the endpoint, it sets the status to
 \code{InService}. To check the status of an endpoint, use the

@@ -5,6 +5,7 @@ NULL
 
 #' Copy an AWS CloudHSM cluster backup to a different region
 #'
+#' @description
 #' Copy an AWS CloudHSM cluster backup to a different region.
 #'
 #' @usage
@@ -53,6 +54,7 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 
 #' Creates a new AWS CloudHSM cluster
 #'
+#' @description
 #' Creates a new AWS CloudHSM cluster.
 #'
 #' @usage
@@ -118,6 +120,7 @@ cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, Sou
 #' Creates a new hardware security module (HSM) in the specified AWS
 #' CloudHSM cluster
 #'
+#' @description
 #' Creates a new hardware security module (HSM) in the specified AWS
 #' CloudHSM cluster.
 #'
@@ -164,6 +167,7 @@ cloudhsmv2_create_hsm <- function(ClusterId, AvailabilityZone, IpAddress = NULL)
 
 #' Deletes a specified AWS CloudHSM backup
 #'
+#' @description
 #' Deletes a specified AWS CloudHSM backup. A backup can be restored up to
 #' 7 days after the DeleteBackup request is made. For more information on
 #' restoring a backup, see RestoreBackup.
@@ -203,6 +207,7 @@ cloudhsmv2_delete_backup <- function(BackupId) {
 
 #' Deletes the specified AWS CloudHSM cluster
 #'
+#' @description
 #' Deletes the specified AWS CloudHSM cluster. Before you can delete a
 #' cluster, you must delete all HSMs in the cluster. To see if the cluster
 #' contains any HSMs, use DescribeClusters. To delete an HSM, use
@@ -243,6 +248,7 @@ cloudhsmv2_delete_cluster <- function(ClusterId) {
 
 #' Deletes the specified HSM
 #'
+#' @description
 #' Deletes the specified HSM. To specify an HSM, you can use its identifier
 #' (ID), the IP address of the HSM's elastic network interface (ENI), or
 #' the ID of the HSM's ENI. You need to specify only one of these values.
@@ -291,6 +297,7 @@ cloudhsmv2_delete_hsm <- function(ClusterId, HsmId = NULL, EniId = NULL, EniIp =
 
 #' Gets information about backups of AWS CloudHSM clusters
 #'
+#' @description
 #' Gets information about backups of AWS CloudHSM clusters.
 #' 
 #' This is a paginated operation, which means that each response might
@@ -367,6 +374,7 @@ cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Fil
 
 #' Gets information about AWS CloudHSM clusters
 #'
+#' @description
 #' Gets information about AWS CloudHSM clusters.
 #' 
 #' This is a paginated operation, which means that each response might
@@ -433,6 +441,7 @@ cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxRe
 #' issued by your issuing certificate authority (CA) and the CA's root
 #' certificate
 #'
+#' @description
 #' Claims an AWS CloudHSM cluster by submitting the cluster certificate
 #' issued by your issuing certificate authority (CA) and the CA's root
 #' certificate. Before you can claim a cluster, you must sign the cluster's
@@ -484,6 +493,7 @@ cloudhsmv2_initialize_cluster <- function(ClusterId, SignedCert, TrustAnchor) {
 
 #' Gets a list of tags for the specified AWS CloudHSM cluster
 #'
+#' @description
 #' Gets a list of tags for the specified AWS CloudHSM cluster.
 #' 
 #' This is a paginated operation, which means that each response might
@@ -535,6 +545,7 @@ cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL
 
 #' Modifies attributes for AWS CloudHSM backup
 #'
+#' @description
 #' Modifies attributes for AWS CloudHSM backup.
 #'
 #' @usage
@@ -577,6 +588,7 @@ cloudhsmv2_modify_backup_attributes <- function(BackupId, NeverExpires) {
 
 #' Modifies AWS CloudHSM cluster
 #'
+#' @description
 #' Modifies AWS CloudHSM cluster.
 #'
 #' @usage
@@ -620,6 +632,7 @@ cloudhsmv2_modify_cluster <- function(BackupRetentionPolicy, ClusterId) {
 #' Restores a specified AWS CloudHSM backup that is in the PENDING_DELETION
 #' state
 #'
+#' @description
 #' Restores a specified AWS CloudHSM backup that is in the
 #' `PENDING_DELETION` state. For mor information on deleting a backup, see
 #' DeleteBackup.
@@ -660,6 +673,7 @@ cloudhsmv2_restore_backup <- function(BackupId) {
 #' Adds or overwrites one or more tags for the specified AWS CloudHSM
 #' cluster
 #'
+#' @description
 #' Adds or overwrites one or more tags for the specified AWS CloudHSM
 #' cluster.
 #'
@@ -706,6 +720,7 @@ cloudhsmv2_tag_resource <- function(ResourceId, TagList) {
 #' Removes the specified tag or tags from the specified AWS CloudHSM
 #' cluster
 #'
+#' @description
 #' Removes the specified tag or tags from the specified AWS CloudHSM
 #' cluster.
 #'

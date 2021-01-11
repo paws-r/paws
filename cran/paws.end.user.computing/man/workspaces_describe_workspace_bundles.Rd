@@ -21,8 +21,7 @@ previous call.)}
 }
 \description{
 Retrieves a list that describes the available WorkSpace bundles.
-}
-\details{
+
 You can filter the results using either bundle ID or owner, but not
 both.
 }

@@ -5,6 +5,7 @@ NULL
 
 #' Describes recommendation export jobs created in the last seven days
 #'
+#' @description
 #' Describes recommendation export jobs created in the last seven days.
 #' 
 #' Use the `ExportAutoScalingGroupRecommendations` or
@@ -73,6 +74,7 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 
 #' Exports optimization recommendations for Auto Scaling groups
 #'
+#' @description
 #' Exports optimization recommendations for Auto Scaling groups.
 #' 
 #' Recommendations are exported in a comma-separated values (.csv) file,
@@ -189,6 +191,7 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
 
 #' Exports optimization recommendations for Amazon EC2 instances
 #'
+#' @description
 #' Exports optimization recommendations for Amazon EC2 instances.
 #' 
 #' Recommendations are exported in a comma-separated values (.csv) file,
@@ -302,6 +305,7 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
 
 #' Returns Auto Scaling group recommendations
 #'
+#' @description
 #' Returns Auto Scaling group recommendations.
 #' 
 #' AWS Compute Optimizer generates recommendations for Amazon EC2 Auto
@@ -378,6 +382,7 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
 
 #' Returns Amazon Elastic Block Store (Amazon EBS) volume recommendations
 #'
+#' @description
 #' Returns Amazon Elastic Block Store (Amazon EBS) volume recommendations.
 #' 
 #' AWS Compute Optimizer generates recommendations for Amazon EBS volumes
@@ -452,6 +457,7 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 
 #' Returns Amazon EC2 instance recommendations
 #'
+#' @description
 #' Returns Amazon EC2 instance recommendations.
 #' 
 #' AWS Compute Optimizer generates recommendations for Amazon Elastic
@@ -528,6 +534,7 @@ computeoptimizer_get_ec2_instance_recommendations <- function(instanceArns = NUL
 #' Returns the projected utilization metrics of Amazon EC2 instance
 #' recommendations
 #'
+#' @description
 #' Returns the projected utilization metrics of Amazon EC2 instance
 #' recommendations.
 #' 
@@ -587,6 +594,7 @@ computeoptimizer_get_ec2_recommendation_projected_metrics <- function(instanceAr
 #' Returns the enrollment (opt in) status of an account to the AWS Compute
 #' Optimizer service
 #'
+#' @description
 #' Returns the enrollment (opt in) status of an account to the AWS Compute
 #' Optimizer service.
 #' 
@@ -624,6 +632,7 @@ computeoptimizer_get_enrollment_status <- function() {
 
 #' Returns AWS Lambda function recommendations
 #'
+#' @description
 #' Returns AWS Lambda function recommendations.
 #' 
 #' AWS Compute Optimizer generates recommendations for functions that meet
@@ -708,6 +717,7 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
 
 #' Returns the optimization findings for an account
 #'
+#' @description
 #' Returns the optimization findings for an account.
 #' 
 #' For example, it returns the number of Amazon EC2 instances in an account
@@ -768,6 +778,7 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' Updates the enrollment (opt in) status of an account to the AWS Compute
 #' Optimizer service
 #'
+#' @description
 #' Updates the enrollment (opt in) status of an account to the AWS Compute
 #' Optimizer service.
 #' 

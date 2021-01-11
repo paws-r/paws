@@ -62,8 +62,7 @@ contexts for the session are cleared.}
 Sends user input to Amazon Lex. Client applications can use this API to
 send requests to Amazon Lex at runtime. Amazon Lex then interprets the
 user input using the machine learning model it built for the bot.
-}
-\details{
+
 In response, Amazon Lex returns the next \code{message} to convey to the user
 an optional \code{responseCard} to display. Consider the following example
 messages:

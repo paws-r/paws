@@ -13,8 +13,7 @@ configservice_describe_delivery_channels(DeliveryChannelNames)
 Returns details about the specified delivery channel. If a delivery
 channel is not specified, this action returns the details of all
 delivery channels associated with the account.
-}
-\details{
+
 Currently, you can specify only one delivery channel per region in your
 account.
 }

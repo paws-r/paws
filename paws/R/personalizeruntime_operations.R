@@ -5,6 +5,7 @@ NULL
 
 #' Re-ranks a list of recommended items for the given user
 #'
+#' @description
 #' Re-ranks a list of recommended items for the given user. The first item
 #' in the list is deemed the most likely item to be of interest to the
 #' user.
@@ -86,6 +87,7 @@ personalizeruntime_get_personalized_ranking <- function(campaignArn, inputList, 
 
 #' Returns a list of recommended items
 #'
+#' @description
 #' Returns a list of recommended items. The required input depends on the
 #' recipe type used to create the solution backing the campaign, as
 #' follows:

@@ -27,8 +27,7 @@ input. The
 and
 \href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_RevokeCertificate.html}{RevokeCertificate}
 actions use the private key.
-}
-\details{
+
 Both PCA and the IAM principal must have permission to write to the S3
 bucket that you specify. If the IAM principal making the call does not
 have permission to write to the bucket, then an exception is thrown. For

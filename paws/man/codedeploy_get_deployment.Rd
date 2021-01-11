@@ -12,8 +12,7 @@ account.}
 }
 \description{
 Gets information about a deployment.
-}
-\details{
+
 The \code{content} property of the \code{appSpecContent} object in the returned
 revision is always null. Use \code{GetApplicationRevision} and the \code{sha256}
 property of the returned \code{appSpecContent} object to get the content of

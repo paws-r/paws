@@ -37,8 +37,7 @@ modify the source identifiers using this call. To change source
 identifiers for a subscription, use the
 \code{AddSourceIdentifierToSubscription} and
 \code{RemoveSourceIdentifierFromSubscription} calls.
-}
-\details{
+
 You can see a list of the event categories for a given source type
 (\code{SourceType}) in
 \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.html}{Events}

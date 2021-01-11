@@ -57,8 +57,7 @@ internet for a domain, such as example.com, and its subdomains
 hosted zone to define how you want to route traffic for a domain and its
 subdomains within one or more Amazon Virtual Private Clouds (Amazon
 VPCs).
-}
-\details{
+
 You can't convert a public hosted zone to a private hosted zone or vice
 versa. Instead, you must create a new hosted zone with the same name and
 create new resource record sets.

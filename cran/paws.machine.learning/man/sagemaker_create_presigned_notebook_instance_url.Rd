@@ -19,8 +19,7 @@ notebook instance. In the Amazon SageMaker console, when you choose
 \code{Open} next to a notebook instance, Amazon SageMaker opens a new tab
 showing the Jupyter server home page from the notebook instance. The
 console uses this API to get the URL and show the page.
-}
-\details{
+
 The IAM role or user used to call this API defines the permissions to
 access the notebook instance. Once the presigned URL is created, no
 additional permission is required to access this URL. IAM authorization

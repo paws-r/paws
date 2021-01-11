@@ -25,8 +25,7 @@ regardless of the default thresholds that the model version applies.}
 \description{
 Detects custom labels in a supplied image by using an Amazon Rekognition
 Custom Labels model.
-}
-\details{
+
 You specify which version of a model version to use by using the
 \code{ProjectVersionArn} input parameter.
 

@@ -42,8 +42,7 @@ subsequent call that tells the service where to continue from.}
 }
 \description{
 Lists all managed policies that are attached to the specified IAM group.
-}
-\details{
+
 An IAM group can also have inline policies embedded with it. To list the
 inline policies for a group, use the ListGroupPolicies API. For
 information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}

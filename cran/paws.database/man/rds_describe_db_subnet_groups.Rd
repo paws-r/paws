@@ -30,8 +30,7 @@ specified by \code{MaxRecords}.}
 Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is
 specified, the list will contain only the descriptions of the specified
 DBSubnetGroup.
-}
-\details{
+
 For an overview of CIDR ranges, go to the \href{https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing}{Wikipedia Tutorial}.
 }
 \section{Request syntax}{

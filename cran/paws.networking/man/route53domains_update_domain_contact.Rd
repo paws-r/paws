@@ -20,8 +20,7 @@ route53domains_update_domain_contact(DomainName, AdminContact,
 This operation updates the contact information for a particular domain.
 You must specify information for at least one contact: registrant,
 administrator, or technical.
-}
-\details{
+
 If the update is successful, this method returns an operation ID that
 you can use to track the progress and completion of the action. If the
 request is not completed successfully, the domain registrant will be

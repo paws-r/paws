@@ -19,8 +19,7 @@ associated with the first interaction with the contact center.}
 \description{
 When a contact is being recorded, and the recording has been suspended
 using SuspendContactRecording, this API resumes recording the call.
-}
-\details{
+
 Only voice recordings are supported at this time.
 }
 \section{Request syntax}{

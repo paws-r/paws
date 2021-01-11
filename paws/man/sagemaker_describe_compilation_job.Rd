@@ -11,8 +11,7 @@ sagemaker_describe_compilation_job(CompilationJobName)
 }
 \description{
 Returns information about a model compilation job.
-}
-\details{
+
 To create a model compilation job, use CreateCompilationJob. To get
 information about multiple model compilation jobs, use
 ListCompilationJobs.

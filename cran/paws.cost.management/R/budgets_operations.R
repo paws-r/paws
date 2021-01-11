@@ -5,6 +5,7 @@ NULL
 
 #' Creates a budget and, if included, notifications and subscribers
 #'
+#' @description
 #' Creates a budget and, if included, notifications and subscribers.
 #' 
 #' Only one of `BudgetLimit` or `PlannedBudgetLimits` can be present in the
@@ -125,6 +126,7 @@ budgets_create_budget <- function(AccountId, Budget, NotificationsWithSubscriber
 
 #' Creates a budget action
 #'
+#' @description
 #' Creates a budget action.
 #'
 #' @usage
@@ -216,6 +218,7 @@ budgets_create_budget_action <- function(AccountId, BudgetName, NotificationType
 
 #' Creates a notification
 #'
+#' @description
 #' Creates a notification. You must create the budget before you create the
 #' associated notification.
 #'
@@ -275,6 +278,7 @@ budgets_create_notification <- function(AccountId, BudgetName, Notification, Sub
 
 #' Creates a subscriber
 #'
+#' @description
 #' Creates a subscriber. You must create the associated budget and
 #' notification before you create the subscriber.
 #'
@@ -330,6 +334,7 @@ budgets_create_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 
 #' Deletes a budget
 #'
+#' @description
 #' Deletes a budget. You can delete your budget at any time.
 #' 
 #' Deleting a budget also deletes the notifications and subscribers that
@@ -372,6 +377,7 @@ budgets_delete_budget <- function(AccountId, BudgetName) {
 
 #' Deletes a budget action
 #'
+#' @description
 #' Deletes a budget action.
 #'
 #' @usage
@@ -412,6 +418,7 @@ budgets_delete_budget_action <- function(AccountId, BudgetName, ActionId) {
 
 #' Deletes a notification
 #'
+#' @description
 #' Deletes a notification.
 #' 
 #' Deleting a notification also deletes the subscribers that are associated
@@ -462,6 +469,7 @@ budgets_delete_notification <- function(AccountId, BudgetName, Notification) {
 
 #' Deletes a subscriber
 #'
+#' @description
 #' Deletes a subscriber.
 #' 
 #' Deleting the last subscriber to a notification also deletes the
@@ -518,6 +526,7 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 
 #' Describes a budget
 #'
+#' @description
 #' Describes a budget.
 #' 
 #' The Request Syntax section shows the `BudgetLimit` syntax. For
@@ -562,6 +571,7 @@ budgets_describe_budget <- function(AccountId, BudgetName) {
 
 #' Describes a budget action detail
 #'
+#' @description
 #' Describes a budget action detail.
 #'
 #' @usage
@@ -602,6 +612,7 @@ budgets_describe_budget_action <- function(AccountId, BudgetName, ActionId) {
 
 #' Describes a budget action history detail
 #'
+#' @description
 #' Describes a budget action history detail.
 #'
 #' @usage
@@ -656,6 +667,7 @@ budgets_describe_budget_action_histories <- function(AccountId, BudgetName, Acti
 
 #' Describes all of the budget actions for an account
 #'
+#' @description
 #' Describes all of the budget actions for an account.
 #'
 #' @usage
@@ -697,6 +709,7 @@ budgets_describe_budget_actions_for_account <- function(AccountId, MaxResults = 
 
 #' Describes all of the budget actions for a budget
 #'
+#' @description
 #' Describes all of the budget actions for a budget.
 #'
 #' @usage
@@ -740,6 +753,7 @@ budgets_describe_budget_actions_for_budget <- function(AccountId, BudgetName, Ma
 
 #' Describes the history for DAILY, MONTHLY, and QUARTERLY budgets
 #'
+#' @description
 #' Describes the history for `DAILY`, `MONTHLY`, and `QUARTERLY` budgets.
 #' Budget history isn't available for `ANNUAL` budgets.
 #'
@@ -794,6 +808,7 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 
 #' Lists the budgets that are associated with an account
 #'
+#' @description
 #' Lists the budgets that are associated with an account.
 #' 
 #' The Request Syntax section shows the `BudgetLimit` syntax. For
@@ -842,6 +857,7 @@ budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = N
 
 #' Lists the notifications that are associated with a budget
 #'
+#' @description
 #' Lists the notifications that are associated with a budget.
 #'
 #' @usage
@@ -888,6 +904,7 @@ budgets_describe_notifications_for_budget <- function(AccountId, BudgetName, Max
 
 #' Lists the subscribers that are associated with a notification
 #'
+#' @description
 #' Lists the subscribers that are associated with a notification.
 #'
 #' @usage
@@ -942,6 +959,7 @@ budgets_describe_subscribers_for_notification <- function(AccountId, BudgetName,
 
 #' Executes a budget action
 #'
+#' @description
 #' Executes a budget action.
 #'
 #' @usage
@@ -985,6 +1003,7 @@ budgets_execute_budget_action <- function(AccountId, BudgetName, ActionId, Execu
 
 #' Updates a budget
 #'
+#' @description
 #' Updates a budget. You can change every part of a budget except for the
 #' `budgetName` and the `calculatedSpend`. When you modify a budget, the
 #' `calculatedSpend` drops to zero until AWS has new usage data to use for
@@ -1087,6 +1106,7 @@ budgets_update_budget <- function(AccountId, NewBudget) {
 
 #' Updates a budget action
 #'
+#' @description
 #' Updates a budget action.
 #'
 #' @usage
@@ -1176,6 +1196,7 @@ budgets_update_budget_action <- function(AccountId, BudgetName, ActionId, Notifi
 
 #' Updates a notification
 #'
+#' @description
 #' Updates a notification.
 #'
 #' @usage
@@ -1232,6 +1253,7 @@ budgets_update_notification <- function(AccountId, BudgetName, OldNotification, 
 
 #' Updates a subscriber
 #'
+#' @description
 #' Updates a subscriber.
 #'
 #' @usage

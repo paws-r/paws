@@ -23,7 +23,7 @@ documentation parts. To import from an OpenAPI file, this is a JSON
 object.}
 }
 \description{
-Import documentation parts
+
 }
 \section{Request syntax}{
 \preformatted{svc$import_documentation_parts(

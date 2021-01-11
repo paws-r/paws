@@ -24,8 +24,7 @@ Provides a list of available query IDs only for queries saved in the
 specified workgroup. Requires that you have access to the specified
 workgroup. If a workgroup is not specified, lists the saved queries for
 the primary workgroup.
-}
-\details{
+
 For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
 in the \emph{Amazon Athena User Guide}.
 }

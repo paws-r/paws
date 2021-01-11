@@ -25,8 +25,7 @@ in the real-time log data. You must provide an integer between 1 and
 }
 \description{
 Creates a real-time log configuration.
-}
-\details{
+
 After you create a real-time log configuration, you can attach it to one
 or more cache behaviors to send real-time log data to the specified
 Amazon Kinesis data stream.

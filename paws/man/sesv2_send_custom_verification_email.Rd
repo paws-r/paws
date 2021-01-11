@@ -21,8 +21,7 @@ Adds an email address to the list of identities for your Amazon SES
 account in the current AWS Region and attempts to verify it. As a result
 of executing this operation, a customized verification email is sent to
 the specified address.
-}
-\details{
+
 To use this operation, you must first create a custom verification email
 template. For more information about creating and using custom
 verification email templates, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html}{Using Custom Verification Email Templates}

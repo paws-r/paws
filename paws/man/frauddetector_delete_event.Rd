@@ -13,8 +13,7 @@ frauddetector_delete_event(eventId, eventTypeName)
 }
 \description{
 Deletes the specified event.
-}
-\details{
+
 When you delete an event, Amazon Fraud Detector permanently deletes that
 event from the evaluation history, and the event data is no longer
 stored in Amazon Fraud Detector.

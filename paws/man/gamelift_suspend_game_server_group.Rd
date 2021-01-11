@@ -16,8 +16,7 @@ GameServerGroup name or ARN value.}
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}
-}
-\details{
+
 Temporarily stops activity on a game server group without terminating
 instances or the game server group. You can restart activity by calling
 ResumeGameServerGroup. You can suspend the following activity:

@@ -54,8 +54,7 @@ retrieve the forecast for a single item at low latency, use the
 operation. To export the complete forecast into your Amazon Simple
 Storage Service (Amazon S3) bucket, use the CreateForecastExportJob
 operation.
-}
-\details{
+
 The range of the forecast is determined by the \code{ForecastHorizon} value,
 which you specify in the CreatePredictor request. When you query a
 forecast, you can request a specific date range within the forecast.

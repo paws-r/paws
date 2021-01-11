@@ -5,6 +5,7 @@ NULL
 
 #' Creates a new capacity provider
 #'
+#' @description
 #' Creates a new capacity provider. Capacity providers are associated with
 #' an Amazon ECS cluster and are used in capacity provider strategies to
 #' facilitate cluster auto scaling.
@@ -97,6 +98,7 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 
 #' Creates a new Amazon ECS cluster
 #'
+#' @description
 #' Creates a new Amazon ECS cluster. By default, your account receives a
 #' `default` cluster when you launch your first container instance.
 #' However, you can create your own cluster with a unique name with the
@@ -252,6 +254,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' Runs and maintains a desired number of tasks from a specified task
 #' definition
 #'
+#' @description
 #' Runs and maintains a desired number of tasks from a specified task
 #' definition. If the number of tasks running in a service drops below the
 #' `desiredCount`, Amazon ECS runs another copy of the task in the
@@ -296,8 +299,8 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' The deployment is triggered by changing properties, such as the task
 #' definition or the desired count of a service, with an UpdateService
 #' operation. The default value for a replica service for
-#' `minimumHealthyPercent` is 100%. The default value for a daemon service
-#' for `minimumHealthyPercent` is 0%.
+#' `minimumHealthyPercent` is 100\%. The default value for a daemon service
+#' for `minimumHealthyPercent` is 0\%.
 #' 
 #' If a service is using the `ECS` deployment controller, the minimum
 #' healthy percent represents a lower limit on the number of tasks in a
@@ -307,13 +310,13 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' if the service contains tasks using the EC2 launch type. This parameter
 #' enables you to deploy without using additional cluster capacity. For
 #' example, if your service has a desired number of four tasks and a
-#' minimum healthy percent of 50%, the scheduler might stop two existing
+#' minimum healthy percent of 50\%, the scheduler might stop two existing
 #' tasks to free up cluster capacity before starting two new tasks. Tasks
 #' for services that *do not* use a load balancer are considered healthy if
 #' they're in the `RUNNING` state. Tasks for services that *do* use a load
 #' balancer are considered healthy if they're in the `RUNNING` state and
 #' they're reported as healthy by the load balancer. The default value for
-#' minimum healthy percent is 100%.
+#' minimum healthy percent is 100\%.
 #' 
 #' If a service is using the `ECS` deployment controller, the **maximum
 #' percent** parameter represents an upper limit on the number of tasks in
@@ -323,10 +326,10 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' `DRAINING` state if the service contains tasks using the EC2 launch
 #' type. This parameter enables you to define the deployment batch size.
 #' For example, if your service has a desired number of four tasks and a
-#' maximum percent value of 200%, the scheduler may start four new tasks
+#' maximum percent value of 200\%, the scheduler may start four new tasks
 #' before stopping the four older tasks (provided that the cluster
 #' resources required to do this are available). The default value for
-#' maximum percent is 200%.
+#' maximum percent is 200\%.
 #' 
 #' If a service is using either the `CODE_DEPLOY` or `EXTERNAL` deployment
 #' controller types and tasks that use the EC2 launch type, the **minimum
@@ -749,6 +752,7 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 
 #' Create a task set in the specified cluster and service
 #'
+#' @description
 #' Create a task set in the specified cluster and service. This is used
 #' when a service uses the `EXTERNAL` deployment controller type. For more
 #' information, see [Amazon ECS Deployment
@@ -927,6 +931,7 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 #' Disables an account setting for a specified IAM user, IAM role, or the
 #' root user for an account
 #'
+#' @description
 #' Disables an account setting for a specified IAM user, IAM role, or the
 #' root user for an account.
 #'
@@ -994,6 +999,7 @@ ecs_delete_account_setting <- function(name, principalArn = NULL) {
 
 #' Deletes one or more custom attributes from an Amazon ECS resource
 #'
+#' @description
 #' Deletes one or more custom attributes from an Amazon ECS resource.
 #'
 #' @usage
@@ -1044,6 +1050,7 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 
 #' Deletes the specified capacity provider
 #'
+#' @description
 #' Deletes the specified capacity provider.
 #' 
 #' The `FARGATE` and `FARGATE_SPOT` capacity providers are reserved and
@@ -1096,6 +1103,7 @@ ecs_delete_capacity_provider <- function(capacityProvider) {
 
 #' Deletes the specified cluster
 #'
+#' @description
 #' Deletes the specified cluster. The cluster will transition to the
 #' `INACTIVE` state. Clusters with an `INACTIVE` status may remain
 #' discoverable in your account for a period of time. However, this
@@ -1150,6 +1158,7 @@ ecs_delete_cluster <- function(cluster) {
 
 #' Deletes a specified service within a cluster
 #'
+#' @description
 #' Deletes a specified service within a cluster. You can delete a service
 #' if you have no running tasks in it and the desired task count is zero.
 #' If the service is actively maintaining tasks, you cannot delete it, and
@@ -1221,6 +1230,7 @@ ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
 
 #' Deletes a specified task set within a service
 #'
+#' @description
 #' Deletes a specified task set within a service. This is used when a
 #' service uses the `EXTERNAL` deployment controller type. For more
 #' information, see [Amazon ECS Deployment
@@ -1271,6 +1281,7 @@ ecs_delete_task_set <- function(cluster, service, taskSet, force = NULL) {
 
 #' Deregisters an Amazon ECS container instance from the specified cluster
 #'
+#' @description
 #' Deregisters an Amazon ECS container instance from the specified cluster.
 #' This instance is no longer available to run tasks.
 #' 
@@ -1359,6 +1370,7 @@ ecs_deregister_container_instance <- function(cluster = NULL, containerInstance,
 
 #' Deregisters the specified task definition by family and revision
 #'
+#' @description
 #' Deregisters the specified task definition by family and revision. Upon
 #' deregistration, the task definition is marked as `INACTIVE`. Existing
 #' tasks and services that reference an `INACTIVE` task definition continue
@@ -1413,6 +1425,7 @@ ecs_deregister_task_definition <- function(taskDefinition) {
 
 #' Describes one or more of your capacity providers
 #'
+#' @description
 #' Describes one or more of your capacity providers.
 #'
 #' @usage
@@ -1480,6 +1493,7 @@ ecs_describe_capacity_providers <- function(capacityProviders = NULL, include = 
 
 #' Describes one or more of your clusters
 #'
+#' @description
 #' Describes one or more of your clusters.
 #'
 #' @usage
@@ -1564,6 +1578,7 @@ ecs_describe_clusters <- function(clusters = NULL, include = NULL) {
 
 #' Describes Amazon Elastic Container Service container instances
 #'
+#' @description
 #' Describes Amazon Elastic Container Service container instances. Returns
 #' metadata about registered and remaining resources on each container
 #' instance requested.
@@ -1630,6 +1645,7 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 
 #' Describes the specified services running in your cluster
 #'
+#' @description
 #' Describes the specified services running in your cluster.
 #'
 #' @usage
@@ -1692,6 +1708,7 @@ ecs_describe_services <- function(cluster = NULL, services, include = NULL) {
 
 #' Describes a task definition
 #'
+#' @description
 #' Describes a task definition. You can specify a `family` and `revision`
 #' to find information about a specific task definition, or you can simply
 #' specify the family to find the latest `ACTIVE` revision in that family.
@@ -1749,6 +1766,7 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 
 #' Describes the task sets in the specified cluster and service
 #'
+#' @description
 #' Describes the task sets in the specified cluster and service. This is
 #' used when a service uses the `EXTERNAL` deployment controller type. For
 #' more information, see [Amazon ECS Deployment
@@ -1803,6 +1821,7 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = 
 
 #' Describes a specified task or tasks
 #'
+#' @description
 #' Describes a specified task or tasks.
 #'
 #' @usage
@@ -1865,6 +1884,7 @@ ecs_describe_tasks <- function(cluster = NULL, tasks, include = NULL) {
 #' This action is only used by the Amazon ECS agent, and it is not intended
 #' for use outside of the agent
 #'
+#' @description
 #' This action is only used by the Amazon ECS agent, and it is not intended
 #' for use outside of the agent.
 #' 
@@ -1912,6 +1932,7 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
 
 #' Lists the account settings for a specified principal
 #'
+#' @description
 #' Lists the account settings for a specified principal.
 #'
 #' @usage
@@ -1996,6 +2017,7 @@ ecs_list_account_settings <- function(name = NULL, value = NULL, principalArn = 
 #' Lists the attributes for Amazon ECS resources within a specified target
 #' type and cluster
 #'
+#' @description
 #' Lists the attributes for Amazon ECS resources within a specified target
 #' type and cluster. When you specify a target type and cluster,
 #' `ListAttributes` returns a list of attribute objects, one for each
@@ -2067,6 +2089,7 @@ ecs_list_attributes <- function(cluster = NULL, targetType, attributeName = NULL
 
 #' Returns a list of existing clusters
 #'
+#' @description
 #' Returns a list of existing clusters.
 #'
 #' @usage
@@ -2126,6 +2149,7 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Returns a list of container instances in a specified cluster
 #'
+#' @description
 #' Returns a list of container instances in a specified cluster. You can
 #' filter the results of a `ListContainerInstances` operation with cluster
 #' query language statements inside the `filter` parameter. For more
@@ -2210,6 +2234,7 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
 
 #' Lists the services that are running in a specified cluster
 #'
+#' @description
 #' Lists the services that are running in a specified cluster.
 #'
 #' @usage
@@ -2278,6 +2303,7 @@ ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NUL
 
 #' List the tags for an Amazon ECS resource
 #'
+#' @description
 #' List the tags for an Amazon ECS resource.
 #'
 #' @usage
@@ -2326,6 +2352,7 @@ ecs_list_tags_for_resource <- function(resourceArn) {
 #' account (which may include task definition families that no longer have
 #' any ACTIVE task definition revisions)
 #'
+#' @description
 #' Returns a list of task definition families that are registered to your
 #' account (which may include task definition families that no longer have
 #' any `ACTIVE` task definition revisions).
@@ -2413,6 +2440,7 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
 
 #' Returns a list of task definitions that are registered to your account
 #'
+#' @description
 #' Returns a list of task definitions that are registered to your account.
 #' You can filter the results by family name with the `familyPrefix`
 #' parameter or by status with the `status` parameter.
@@ -2498,6 +2526,7 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
 
 #' Returns a list of tasks for a specified cluster
 #'
+#' @description
 #' Returns a list of tasks for a specified cluster. You can filter the
 #' results by family name, by a particular container instance, or by the
 #' desired status of the task with the `family`, `containerInstance`, and
@@ -2608,6 +2637,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 
 #' Modifies an account setting
 #'
+#' @description
 #' Modifies an account setting. Account settings are set on a per-Region
 #' basis.
 #' 
@@ -2720,6 +2750,7 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' Modifies an account setting for all IAM users on an account for whom no
 #' individual account setting has been specified
 #'
+#' @description
 #' Modifies an account setting for all IAM users on an account for whom no
 #' individual account setting has been specified. Account settings are set
 #' on a per-Region basis.
@@ -2781,6 +2812,7 @@ ecs_put_account_setting_default <- function(name, value) {
 
 #' Create or update an attribute on an Amazon ECS resource
 #'
+#' @description
 #' Create or update an attribute on an Amazon ECS resource. If the
 #' attribute does not exist, it is created. If the attribute exists, its
 #' value is replaced with the specified value. To delete an attribute, use
@@ -2836,6 +2868,7 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
 #' Modifies the available capacity providers and the default capacity
 #' provider strategy for a cluster
 #'
+#' @description
 #' Modifies the available capacity providers and the default capacity
 #' provider strategy for a cluster.
 #' 
@@ -2935,6 +2968,7 @@ ecs_put_cluster_capacity_providers <- function(cluster, capacityProviders, defau
 #' This action is only used by the Amazon ECS agent, and it is not intended
 #' for use outside of the agent
 #'
+#' @description
 #' This action is only used by the Amazon ECS agent, and it is not intended
 #' for use outside of the agent.
 #' 
@@ -3063,6 +3097,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' Registers a new task definition from the supplied family and
 #' containerDefinitions
 #'
+#' @description
 #' Registers a new task definition from the supplied `family` and
 #' `containerDefinitions`. Optionally, you can add data volumes to your
 #' containers with the `volumes` parameter. For more information about task
@@ -3612,6 +3647,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 
 #' Starts a new task using the specified task definition
 #'
+#' @description
 #' Starts a new task using the specified task definition.
 #' 
 #' You can allow Amazon ECS to place tasks for you, or you can customize
@@ -3898,6 +3934,7 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' Starts a new task from the specified task definition on the specified
 #' container instance or instances
 #'
+#' @description
 #' Starts a new task from the specified task definition on the specified
 #' container instance or instances.
 #' 
@@ -4079,6 +4116,7 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
 
 #' Stops a running task
 #'
+#' @description
 #' Stops a running task. Any tags associated with the task will be deleted.
 #' 
 #' When StopTask is called on a task, the equivalent of `docker stop` is
@@ -4139,6 +4177,7 @@ ecs_stop_task <- function(cluster = NULL, task, reason = NULL) {
 #' This action is only used by the Amazon ECS agent, and it is not intended
 #' for use outside of the agent
 #'
+#' @description
 #' This action is only used by the Amazon ECS agent, and it is not intended
 #' for use outside of the agent.
 #' 
@@ -4187,6 +4226,7 @@ ecs_submit_attachment_state_changes <- function(cluster = NULL, attachments) {
 #' This action is only used by the Amazon ECS agent, and it is not intended
 #' for use outside of the agent
 #'
+#' @description
 #' This action is only used by the Amazon ECS agent, and it is not intended
 #' for use outside of the agent.
 #' 
@@ -4250,6 +4290,7 @@ ecs_submit_container_state_change <- function(cluster = NULL, task = NULL, conta
 #' This action is only used by the Amazon ECS agent, and it is not intended
 #' for use outside of the agent
 #'
+#' @description
 #' This action is only used by the Amazon ECS agent, and it is not intended
 #' for use outside of the agent.
 #' 
@@ -4336,6 +4377,7 @@ ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = N
 #' Associates the specified tags to a resource with the specified
 #' resourceArn
 #'
+#' @description
 #' Associates the specified tags to a resource with the specified
 #' `resourceArn`. If existing tags on a resource are not specified in the
 #' request parameters, they are not changed. When a resource is deleted,
@@ -4423,6 +4465,7 @@ ecs_tag_resource <- function(resourceArn, tags) {
 
 #' Deletes specified tags from a resource
 #'
+#' @description
 #' Deletes specified tags from a resource.
 #'
 #' @usage
@@ -4477,6 +4520,7 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Modifies the parameters for a capacity provider
 #'
+#' @description
 #' Modifies the parameters for a capacity provider.
 #'
 #' @usage
@@ -4525,6 +4569,7 @@ ecs_update_capacity_provider <- function(name, autoScalingGroupProvider) {
 
 #' Modifies the settings to use for a cluster
 #'
+#' @description
 #' Modifies the settings to use for a cluster.
 #'
 #' @usage
@@ -4571,6 +4616,7 @@ ecs_update_cluster_settings <- function(cluster, settings) {
 
 #' Updates the Amazon ECS container agent on a specified container instance
 #'
+#' @description
 #' Updates the Amazon ECS container agent on a specified container
 #' instance. Updating the Amazon ECS container agent does not interrupt
 #' running tasks or services on the container instance. The process for
@@ -4624,6 +4670,7 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 
 #' Modifies the status of an Amazon ECS container instance
 #'
+#' @description
 #' Modifies the status of an Amazon ECS container instance.
 #' 
 #' Once a container instance has reached an `ACTIVE` state, you can change
@@ -4648,11 +4695,11 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #' You can change the deployment configuration of your service using
 #' UpdateService.
 #' 
-#' -   If `minimumHealthyPercent` is below 100%, the scheduler can ignore
+#' -   If `minimumHealthyPercent` is below 100\%, the scheduler can ignore
 #'     `desiredCount` temporarily during task replacement. For example,
-#'     `desiredCount` is four tasks, a minimum of 50% allows the scheduler
+#'     `desiredCount` is four tasks, a minimum of 50\% allows the scheduler
 #'     to stop two existing tasks before starting two new tasks. If the
-#'     minimum is 100%, the service scheduler can't remove existing tasks
+#'     minimum is 100\%, the service scheduler can't remove existing tasks
 #'     until the replacement tasks are considered healthy. Tasks for
 #'     services that do not use a load balancer are considered healthy if
 #'     they are in the `RUNNING` state. Tasks for services that use a load
@@ -4663,9 +4710,9 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #' -   The `maximumPercent` parameter represents an upper limit on the
 #'     number of running tasks during task replacement, which enables you
 #'     to define the replacement batch size. For example, if `desiredCount`
-#'     is four tasks, a maximum of 200% starts four new tasks before
+#'     is four tasks, a maximum of 200\% starts four new tasks before
 #'     stopping the four tasks to be drained, provided that the cluster
-#'     resources required to do this are available. If the maximum is 100%,
+#'     resources required to do this are available. If the maximum is 100\%,
 #'     then replacement tasks can't start until the draining tasks have
 #'     stopped.
 #' 
@@ -4731,6 +4778,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' subject to the Beta Service Participation Service Terms located at
 #' https://aws
 #'
+#' @description
 #' Updating the task placement strategies and constraints on an Amazon ECS
 #' service remains in preview and is a Beta Service as defined by and
 #' subject to the Beta Service Participation Service Terms located at
@@ -4785,9 +4833,9 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' `minimumHealthyPercent` and `maximumPercent`, to determine the
 #' deployment strategy.
 #' 
-#' -   If `minimumHealthyPercent` is below 100%, the scheduler can ignore
+#' -   If `minimumHealthyPercent` is below 100\%, the scheduler can ignore
 #'     `desiredCount` temporarily during a deployment. For example, if
-#'     `desiredCount` is four tasks, a minimum of 50% allows the scheduler
+#'     `desiredCount` is four tasks, a minimum of 50\% allows the scheduler
 #'     to stop two existing tasks before starting two new tasks. Tasks for
 #'     services that do not use a load balancer are considered healthy if
 #'     they are in the `RUNNING` state. Tasks for services that use a load
@@ -4798,7 +4846,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' -   The `maximumPercent` parameter represents an upper limit on the
 #'     number of running tasks during a deployment, which enables you to
 #'     define the deployment batch size. For example, if `desiredCount` is
-#'     four tasks, a maximum of 200% starts four new tasks before stopping
+#'     four tasks, a maximum of 200\% starts four new tasks before stopping
 #'     the four older tasks (provided that the cluster resources required
 #'     to do this are available).
 #' 
@@ -5024,6 +5072,7 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
 
 #' Modifies which task set in a service is the primary task set
 #'
+#' @description
 #' Modifies which task set in a service is the primary task set. Any
 #' parameters that are updated on the primary task set in a service will
 #' transition to the service. This is used when a service uses the
@@ -5073,6 +5122,7 @@ ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet
 
 #' Modifies a task set
 #'
+#' @description
 #' Modifies a task set. This is used when a service uses the `EXTERNAL`
 #' deployment controller type. For more information, see [Amazon ECS
 #' Deployment

@@ -35,8 +35,7 @@ virtual router resource.}
 }
 \description{
 Creates a route that is associated with a virtual router.
-}
-\details{
+
 You can route several different protocols and define a retry policy for
 a route. Traffic can be routed to one or more virtual nodes.
 

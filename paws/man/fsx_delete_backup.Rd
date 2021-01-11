@@ -16,8 +16,7 @@ using the AWS CLI or SDK.}
 \description{
 Deletes an Amazon FSx backup, deleting its contents. After deletion, the
 backup no longer exists, and its data is gone.
-}
-\details{
+
 The \code{DeleteBackup} call returns instantly. The backup will not show up
 in later \code{DescribeBackups} calls.
 

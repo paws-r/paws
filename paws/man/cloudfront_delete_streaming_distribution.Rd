@@ -15,8 +15,7 @@ streaming distribution. For example: \code{E2QWRUHAPOMQZL}.}
 \description{
 Delete a streaming distribution. To delete an RTMP distribution using
 the CloudFront API, perform the following steps.
-}
-\details{
+
 \strong{To delete an RTMP distribution using the CloudFront API}:
 \enumerate{
 \item Disable the RTMP distribution.

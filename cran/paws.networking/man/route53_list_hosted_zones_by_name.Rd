@@ -36,8 +36,7 @@ zone in the next group of \code{maxitems} hosted zones.}
 Retrieves a list of your hosted zones in lexicographic order. The
 response includes a \code{HostedZones} child element for each hosted zone
 created by the current AWS account.
-}
-\details{
+
 \code{ListHostedZonesByName} sorts hosted zones by name with the labels
 reversed. For example:
 

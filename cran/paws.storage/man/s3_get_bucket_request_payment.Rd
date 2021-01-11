@@ -18,8 +18,7 @@ different account, the request will fail with an HTTP
 Returns the request payment configuration of a bucket. To use this
 version of the operation, you must be the bucket owner. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html}{Requester Pays Buckets}.
-}
-\details{
+
 The following operations are related to \code{GetBucketRequestPayment}:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html}{ListObjects}

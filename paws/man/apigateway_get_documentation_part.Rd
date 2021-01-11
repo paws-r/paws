@@ -12,7 +12,7 @@ apigateway_get_documentation_part(restApiId, documentationPartId)
 \item{documentationPartId}{[required] [Required] The string identifier of the associated RestApi.}
 }
 \description{
-Get documentation part
+
 }
 \section{Request syntax}{
 \preformatted{svc$get_documentation_part(

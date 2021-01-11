@@ -24,8 +24,7 @@ value.}
 }
 \description{
 Describes your Spot Fleet requests.
-}
-\details{
+
 Spot Fleet requests are deleted 48 hours after they are canceled and
 their instances are terminated.
 }

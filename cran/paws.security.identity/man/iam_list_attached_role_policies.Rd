@@ -41,8 +41,7 @@ subsequent call that tells the service where to continue from.}
 }
 \description{
 Lists all managed policies that are attached to the specified IAM role.
-}
-\details{
+
 An IAM role can also have inline policies embedded with it. To list the
 inline policies for a role, use the ListRolePolicies API. For
 information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}

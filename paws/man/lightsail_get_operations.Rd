@@ -15,8 +15,7 @@ you can specify as the page token in a subsequent request.}
 }
 \description{
 Returns information about all operations.
-}
-\details{
+
 Results are returned from oldest to newest, up to a maximum of 200.
 Results can be paged by making each subsequent call to \code{GetOperations}
 use the maximum (last) \code{statusChangedAt} value from the previous

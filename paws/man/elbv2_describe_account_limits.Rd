@@ -16,8 +16,7 @@ previous call.)}
 \description{
 Describes the current Elastic Load Balancing resource limits for your
 AWS account.
-}
-\details{
+
 For more information, see the following:
 \itemize{
 \item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html}{Quotas for your Application Load Balancers}

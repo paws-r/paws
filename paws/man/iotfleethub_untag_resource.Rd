@@ -13,8 +13,7 @@ iotfleethub_untag_resource(resourceArn, tagKeys)
 }
 \description{
 Removes the specified tags (metadata) from the resource.
-}
-\details{
+
 Fleet Hub for AWS IoT Device Management is in public preview and is
 subject to change.
 }

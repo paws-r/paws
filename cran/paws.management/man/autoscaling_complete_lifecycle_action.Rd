@@ -27,8 +27,7 @@ created the lifecycle hook.}
 \description{
 Completes the lifecycle action for the specified token or instance with
 the specified result.
-}
-\details{
+
 This step is a part of the procedure for adding a lifecycle hook to an
 Auto Scaling group:
 \enumerate{

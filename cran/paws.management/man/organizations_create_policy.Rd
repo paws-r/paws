@@ -42,8 +42,7 @@ created.}
 \description{
 Creates a policy of a specified type that you can attach to a root, an
 organizational unit (OU), or an individual AWS account.
-}
-\details{
+
 For more information about policies and their use, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html}{Managing Organization Policies}.
 
 If the request includes tags, then the requester must have the

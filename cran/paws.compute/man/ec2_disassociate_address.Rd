@@ -20,8 +20,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Disassociates an Elastic IP address from the instance or network
 interface it's associated with.
-}
-\details{
+
 An Elastic IP address is for use in either the EC2-Classic platform or
 in a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

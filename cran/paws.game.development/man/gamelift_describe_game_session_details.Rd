@@ -34,8 +34,7 @@ or more game sessions. This operation can be used in several ways: (1)
 provide a \code{GameSessionId} or \code{GameSessionArn} to request details for a
 specific game session; (2) provide either a \code{FleetId} or an \code{AliasId} to
 request properties for all game sessions running on a fleet.
-}
-\details{
+
 To get game session record(s), specify just one of the following: game
 session ID, fleet ID, or alias ID. You can filter this request by game
 session status. Use the pagination parameters to retrieve results as a

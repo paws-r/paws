@@ -13,8 +13,7 @@ lightsail_get_container_service_deployments(serviceName)
 }
 \description{
 Returns the deployments for your Amazon Lightsail container service
-}
-\details{
+
 A deployment specifies the settings, such as the ports and launch
 command, of containers that are deployed to your container service.
 

@@ -5,6 +5,7 @@ NULL
 
 #' Creates a new connector profile associated with your AWS account
 #'
+#' @description
 #' Creates a new connector profile associated with your AWS account. There
 #' is a soft quota of 100 connector profiles per AWS account. If you need
 #' more connector profiles than this quota allows, you can submit a request
@@ -196,6 +197,7 @@ appflow_create_connector_profile <- function(connectorProfileName, kmsArn = NULL
 
 #' Enables your application to create a new flow using Amazon AppFlow
 #'
+#' @description
 #' Enables your application to create a new flow using Amazon AppFlow. You
 #' must create a connector profile before calling this API. Please note
 #' that the Request Syntax below shows syntax for multiple destinations,
@@ -431,6 +433,7 @@ appflow_create_flow <- function(flowName, description = NULL, kmsArn = NULL, tri
 
 #' Enables you to delete an existing connector profile
 #'
+#' @description
 #' Enables you to delete an existing connector profile.
 #'
 #' @usage
@@ -471,6 +474,7 @@ appflow_delete_connector_profile <- function(connectorProfileName, forceDelete =
 
 #' Enables your application to delete an existing flow
 #'
+#' @description
 #' Enables your application to delete an existing flow. Before deleting the
 #' flow, Amazon AppFlow validates the request by checking the flow
 #' configuration and status. You can delete flows one at a time.
@@ -514,6 +518,7 @@ appflow_delete_flow <- function(flowName, forceDelete = NULL) {
 #' Provides details regarding the entity used with the connector, with a
 #' description of the data model for each entity
 #'
+#' @description
 #' Provides details regarding the entity used with the connector, with a
 #' description of the data model for each entity.
 #'
@@ -559,6 +564,7 @@ appflow_describe_connector_entity <- function(connectorEntityName, connectorType
 #' Returns a list of connector-profile details matching the provided
 #' connector-profile names and connector-types
 #'
+#' @description
 #' Returns a list of `connector-profile` details matching the provided
 #' `connector-profile` names and `connector-types`. Both input lists are
 #' optional, and you can use them to filter the result.
@@ -614,6 +620,7 @@ appflow_describe_connector_profiles <- function(connectorProfileNames = NULL, co
 #' Describes the connectors vended by Amazon AppFlow for specified
 #' connector types
 #'
+#' @description
 #' Describes the connectors vended by Amazon AppFlow for specified
 #' connector types. If you don't specify a connector type, this operation
 #' describes all connectors vended by Amazon AppFlow. If there are more
@@ -659,6 +666,7 @@ appflow_describe_connectors <- function(connectorTypes = NULL, nextToken = NULL)
 
 #' Provides a description of the specified flow
 #'
+#' @description
 #' Provides a description of the specified flow.
 #'
 #' @usage
@@ -696,6 +704,7 @@ appflow_describe_flow <- function(flowName) {
 
 #' Fetches the execution history of the flow
 #'
+#' @description
 #' Fetches the execution history of the flow.
 #'
 #' @usage
@@ -740,6 +749,7 @@ appflow_describe_flow_execution_records <- function(flowName, maxResults = NULL,
 #' Returns the list of available connector entities supported by Amazon
 #' AppFlow
 #'
+#' @description
 #' Returns the list of available connector entities supported by Amazon
 #' AppFlow. For example, you can query Salesforce for *Account* and
 #' *Opportunity* entities, or query ServiceNow for the *Incident* entity.
@@ -790,6 +800,7 @@ appflow_list_connector_entities <- function(connectorProfileName = NULL, connect
 
 #' Lists all of the flows associated with your account
 #'
+#' @description
 #' Lists all of the flows associated with your account.
 #'
 #' @usage
@@ -829,6 +840,7 @@ appflow_list_flows <- function(maxResults = NULL, nextToken = NULL) {
 
 #' Retrieves the tags that are associated with a specified flow
 #'
+#' @description
 #' Retrieves the tags that are associated with a specified flow.
 #'
 #' @usage
@@ -865,6 +877,7 @@ appflow_list_tags_for_resource <- function(resourceArn) {
 
 #' Activates an existing flow
 #'
+#' @description
 #' Activates an existing flow. For on-demand flows, this operation runs the
 #' flow immediately. For schedule and event-triggered flows, this operation
 #' activates the flow.
@@ -904,6 +917,7 @@ appflow_start_flow <- function(flowName) {
 
 #' Deactivates the existing flow
 #'
+#' @description
 #' Deactivates the existing flow. For on-demand flows, this operation
 #' returns an `unsupportedOperationException` error message. For schedule
 #' and event-triggered flows, this operation deactivates the flow.
@@ -943,6 +957,7 @@ appflow_stop_flow <- function(flowName) {
 
 #' Applies a tag to the specified flow
 #'
+#' @description
 #' Applies a tag to the specified flow.
 #'
 #' @usage
@@ -983,6 +998,7 @@ appflow_tag_resource <- function(resourceArn, tags) {
 
 #' Removes a tag from the specified flow
 #'
+#' @description
 #' Removes a tag from the specified flow.
 #'
 #' @usage
@@ -1024,6 +1040,7 @@ appflow_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates a given connector profile associated with your account
 #'
+#' @description
 #' Updates a given connector profile associated with your account.
 #'
 #' @usage
@@ -1203,6 +1220,7 @@ appflow_update_connector_profile <- function(connectorProfileName, connectionMod
 
 #' Updates an existing flow
 #'
+#' @description
 #' Updates an existing flow.
 #'
 #' @usage

@@ -96,8 +96,7 @@ in the \emph{Amazon SWF Developer Guide}.}
 \description{
 Registers a new \emph{workflow type} and its configuration settings in the
 specified domain.
-}
-\details{
+
 The retention period for the workflow history is set by the
 RegisterDomain action.
 

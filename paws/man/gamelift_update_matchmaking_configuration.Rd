@@ -98,8 +98,7 @@ Updates settings for a FlexMatch matchmaking configuration. These
 changes affect all matches and game sessions that are created after the
 update. To update settings, specify the configuration name to be updated
 and provide the new settings.
-}
-\details{
+
 \strong{Learn more}
 
 \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-configuration.html}{Design a FlexMatch Matchmaker}

@@ -16,8 +16,6 @@ using \code{ListCachePolicies}.}
 }
 \description{
 Gets a cache policy, including the following metadata:
-}
-\details{
 \itemize{
 \item The policy’s identifier.
 \item The date and time when the policy was last modified.

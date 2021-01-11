@@ -6,6 +6,7 @@ NULL
 #' Associates the specified connection alias with the specified directory
 #' to enable cross-Region redirection
 #'
+#' @description
 #' Associates the specified connection alias with the specified directory
 #' to enable cross-Region redirection. For more information, see
 #' [Cross-Region Redirection for Amazon
@@ -53,6 +54,7 @@ workspaces_associate_connection_alias <- function(AliasId, ResourceId) {
 #' Associates the specified IP access control group with the specified
 #' directory
 #'
+#' @description
 #' Associates the specified IP access control group with the specified
 #' directory.
 #'
@@ -94,6 +96,7 @@ workspaces_associate_ip_groups <- function(DirectoryId, GroupIds) {
 
 #' Adds one or more rules to the specified IP access control group
 #'
+#' @description
 #' Adds one or more rules to the specified IP access control group.
 #' 
 #' This action gives users permission to access their WorkSpaces from the
@@ -141,6 +144,7 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
 #' Copies the specified image from the specified Region to the current
 #' Region
 #'
+#' @description
 #' Copies the specified image from the specified Region to the current
 #' Region. For more information about copying images, see [Copy a Custom
 #' WorkSpaces
@@ -209,6 +213,7 @@ workspaces_copy_workspace_image <- function(Name, Description = NULL, SourceImag
 #' Creates the specified connection alias for use with cross-Region
 #' redirection
 #'
+#' @description
 #' Creates the specified connection alias for use with cross-Region
 #' redirection. For more information, see [Cross-Region Redirection for
 #' Amazon
@@ -262,6 +267,7 @@ workspaces_create_connection_alias <- function(ConnectionString, Tags = NULL) {
 
 #' Creates an IP access control group
 #'
+#' @description
 #' Creates an IP access control group.
 #' 
 #' An IP access control group provides you with the ability to control the
@@ -327,6 +333,7 @@ workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = 
 
 #' Creates the specified tags for the specified WorkSpaces resource
 #'
+#' @description
 #' Creates the specified tags for the specified WorkSpaces resource.
 #'
 #' @usage
@@ -372,6 +379,7 @@ workspaces_create_tags <- function(ResourceId, Tags) {
 
 #' Creates one or more WorkSpaces
 #'
+#' @description
 #' Creates one or more WorkSpaces.
 #' 
 #' This operation is asynchronous and returns before the WorkSpaces are
@@ -433,6 +441,7 @@ workspaces_create_workspaces <- function(Workspaces) {
 
 #' Deletes the specified connection alias
 #'
+#' @description
 #' Deletes the specified connection alias. For more information, see
 #' [Cross-Region Redirection for Amazon
 #' WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
@@ -484,6 +493,7 @@ workspaces_delete_connection_alias <- function(AliasId) {
 
 #' Deletes the specified IP access control group
 #'
+#' @description
 #' Deletes the specified IP access control group.
 #' 
 #' You cannot delete an IP access control group that is associated with a
@@ -523,6 +533,7 @@ workspaces_delete_ip_group <- function(GroupId) {
 
 #' Deletes the specified tags from the specified WorkSpaces resource
 #'
+#' @description
 #' Deletes the specified tags from the specified WorkSpaces resource.
 #'
 #' @usage
@@ -565,6 +576,7 @@ workspaces_delete_tags <- function(ResourceId, TagKeys) {
 
 #' Deletes the specified image from your account
 #'
+#' @description
 #' Deletes the specified image from your account. To delete an image, you
 #' must first delete any bundles that are associated with the image and
 #' unshare the image if it is shared with other accounts.
@@ -603,6 +615,7 @@ workspaces_delete_workspace_image <- function(ImageId) {
 
 #' Deregisters the specified directory
 #'
+#' @description
 #' Deregisters the specified directory. This operation is asynchronous and
 #' returns before the WorkSpace directory is deregistered. If any
 #' WorkSpaces are registered to this directory, you must remove them before
@@ -658,6 +671,7 @@ workspaces_deregister_workspace_directory <- function(DirectoryId) {
 #' Retrieves a list that describes the configuration of Bring Your Own
 #' License (BYOL) for the specified account
 #'
+#' @description
 #' Retrieves a list that describes the configuration of Bring Your Own
 #' License (BYOL) for the specified account.
 #'
@@ -692,6 +706,7 @@ workspaces_describe_account <- function() {
 #' Retrieves a list that describes modifications to the configuration of
 #' Bring Your Own License (BYOL) for the specified account
 #'
+#' @description
 #' Retrieves a list that describes modifications to the configuration of
 #' Bring Your Own License (BYOL) for the specified account.
 #'
@@ -731,6 +746,7 @@ workspaces_describe_account_modifications <- function(NextToken = NULL) {
 #' Retrieves a list that describes one or more specified Amazon WorkSpaces
 #' clients
 #'
+#' @description
 #' Retrieves a list that describes one or more specified Amazon WorkSpaces
 #' clients.
 #'
@@ -771,6 +787,7 @@ workspaces_describe_client_properties <- function(ResourceIds) {
 #' Describes the permissions that the owner of a connection alias has
 #' granted to another AWS account for the specified connection alias
 #'
+#' @description
 #' Describes the permissions that the owner of a connection alias has
 #' granted to another AWS account for the specified connection alias. For
 #' more information, see [Cross-Region Redirection for Amazon
@@ -817,6 +834,7 @@ workspaces_describe_connection_alias_permissions <- function(AliasId, NextToken 
 #' Retrieves a list that describes the connection aliases used for
 #' cross-Region redirection
 #'
+#' @description
 #' Retrieves a list that describes the connection aliases used for
 #' cross-Region redirection. For more information, see [Cross-Region
 #' Redirection for Amazon
@@ -866,6 +884,7 @@ workspaces_describe_connection_aliases <- function(AliasIds = NULL, ResourceId =
 
 #' Describes one or more of your IP access control groups
 #'
+#' @description
 #' Describes one or more of your IP access control groups.
 #'
 #' @usage
@@ -909,6 +928,7 @@ workspaces_describe_ip_groups <- function(GroupIds = NULL, NextToken = NULL, Max
 
 #' Describes the specified tags for the specified WorkSpaces resource
 #'
+#' @description
 #' Describes the specified tags for the specified WorkSpaces resource.
 #'
 #' @usage
@@ -947,6 +967,7 @@ workspaces_describe_tags <- function(ResourceId) {
 
 #' Retrieves a list that describes the available WorkSpace bundles
 #'
+#' @description
 #' Retrieves a list that describes the available WorkSpace bundles.
 #' 
 #' You can filter the results using either bundle ID or owner, but not
@@ -999,6 +1020,7 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #' Describes the available directories that are registered with Amazon
 #' WorkSpaces
 #'
+#' @description
 #' Describes the available directories that are registered with Amazon
 #' WorkSpaces.
 #'
@@ -1046,6 +1068,7 @@ workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Limit
 #' Describes the permissions that the owner of an image has granted to
 #' other AWS accounts for an image
 #'
+#' @description
 #' Describes the permissions that the owner of an image has granted to
 #' other AWS accounts for an image.
 #'
@@ -1090,6 +1113,7 @@ workspaces_describe_workspace_image_permissions <- function(ImageId, NextToken =
 #' Retrieves a list that describes one or more specified images, if the
 #' image identifiers are provided
 #'
+#' @description
 #' Retrieves a list that describes one or more specified images, if the
 #' image identifiers are provided. Otherwise, all images in the account are
 #' described.
@@ -1138,6 +1162,7 @@ workspaces_describe_workspace_images <- function(ImageIds = NULL, ImageType = NU
 
 #' Describes the snapshots for the specified WorkSpace
 #'
+#' @description
 #' Describes the snapshots for the specified WorkSpace.
 #'
 #' @usage
@@ -1174,6 +1199,7 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 
 #' Describes the specified WorkSpaces
 #'
+#' @description
 #' Describes the specified WorkSpaces.
 #' 
 #' You can filter the results by using the bundle identifier, directory
@@ -1237,6 +1263,7 @@ workspaces_describe_workspaces <- function(WorkspaceIds = NULL, DirectoryId = NU
 
 #' Describes the connection status of the specified WorkSpaces
 #'
+#' @description
 #' Describes the connection status of the specified WorkSpaces.
 #'
 #' @usage
@@ -1279,6 +1306,7 @@ workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL
 
 #' Disassociates a connection alias from a directory
 #'
+#' @description
 #' Disassociates a connection alias from a directory. Disassociating a
 #' connection alias disables cross-Region redirection between two
 #' directories in different AWS Regions. For more information, see
@@ -1325,6 +1353,7 @@ workspaces_disassociate_connection_alias <- function(AliasId) {
 #' Disassociates the specified IP access control group from the specified
 #' directory
 #'
+#' @description
 #' Disassociates the specified IP access control group from the specified
 #' directory.
 #'
@@ -1367,6 +1396,7 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
 #' Imports the specified Windows 10 Bring Your Own License (BYOL) image
 #' into Amazon WorkSpaces
 #'
+#' @description
 #' Imports the specified Windows 10 Bring Your Own License (BYOL) image
 #' into Amazon WorkSpaces. The image must be an already licensed Amazon EC2
 #' image that is in your AWS account, and you must own the image. For more
@@ -1442,6 +1472,7 @@ workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, Imag
 #' that you can use for the network management interface when you enable
 #' Bring Your Own License (BYOL)
 #'
+#' @description
 #' Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks,
 #' that you can use for the network management interface when you enable
 #' Bring Your Own License (BYOL).
@@ -1498,15 +1529,16 @@ workspaces_list_available_management_cidr_ranges <- function(ManagementCidrRange
 #' Migrates a WorkSpace from one operating system or bundle type to
 #' another, while retaining the data on the user volume
 #'
+#' @description
 #' Migrates a WorkSpace from one operating system or bundle type to
 #' another, while retaining the data on the user volume.
 #' 
 #' The migration process recreates the WorkSpace by using a new root volume
 #' from the target bundle image and the user volume from the last available
 #' snapshot of the original WorkSpace. During migration, the original
-#' `D:\\Users%USERNAME%` user profile folder is renamed to
-#' `D:\\Users%USERNAME%MMddyyTHHmmss%.NotMigrated`. A new
-#' `D:\\Users%USERNAME%\` folder is generated by the new OS. Certain files
+#' `D:\\Users\%USERNAME\%` user profile folder is renamed to
+#' `D:\\Users\%USERNAME\%MMddyyTHHmmss\%.NotMigrated`. A new
+#' `D:\\Users\%USERNAME\%\` folder is generated by the new OS. Certain files
 #' in the old user profile are moved to the new user profile.
 #' 
 #' For available migration scenarios, details about what happens during
@@ -1550,6 +1582,7 @@ workspaces_migrate_workspace <- function(SourceWorkspaceId, BundleId) {
 #' Modifies the configuration of Bring Your Own License (BYOL) for the
 #' specified account
 #'
+#' @description
 #' Modifies the configuration of Bring Your Own License (BYOL) for the
 #' specified account.
 #'
@@ -1595,6 +1628,7 @@ workspaces_modify_account <- function(DedicatedTenancySupport = NULL, DedicatedT
 
 #' Modifies the properties of the specified Amazon WorkSpaces clients
 #'
+#' @description
 #' Modifies the properties of the specified Amazon WorkSpaces clients.
 #'
 #' @usage
@@ -1636,6 +1670,7 @@ workspaces_modify_client_properties <- function(ResourceId, ClientProperties) {
 #' Modifies the self-service WorkSpace management capabilities for your
 #' users
 #'
+#' @description
 #' Modifies the self-service WorkSpace management capabilities for your
 #' users. For more information, see [Enable Self-Service WorkSpace
 #' Management Capabilities for Your
@@ -1685,6 +1720,7 @@ workspaces_modify_selfservice_permissions <- function(ResourceId, SelfservicePer
 #' Specifies which devices and operating systems users can use to access
 #' their WorkSpaces
 #'
+#' @description
 #' Specifies which devices and operating systems users can use to access
 #' their WorkSpaces. For more information, see [Control Device
 #' Access](https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access).
@@ -1734,6 +1770,7 @@ workspaces_modify_workspace_access_properties <- function(ResourceId, WorkspaceA
 
 #' Modify the default properties used to create WorkSpaces
 #'
+#' @description
 #' Modify the default properties used to create WorkSpaces.
 #'
 #' @usage
@@ -1780,6 +1817,7 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 
 #' Modifies the specified WorkSpace properties
 #'
+#' @description
 #' Modifies the specified WorkSpace properties. For important information
 #' about how to modify the size of the root and user volumes, see [Modify a
 #' WorkSpace](https://docs.aws.amazon.com/workspaces/latest/adminguide/modify-workspaces.html).
@@ -1826,6 +1864,7 @@ workspaces_modify_workspace_properties <- function(WorkspaceId, WorkspacePropert
 
 #' Sets the state of the specified WorkSpace
 #'
+#' @description
 #' Sets the state of the specified WorkSpace.
 #' 
 #' To maintain a WorkSpace without being interrupted, set the WorkSpace
@@ -1870,6 +1909,7 @@ workspaces_modify_workspace_state <- function(WorkspaceId, WorkspaceState) {
 
 #' Reboots the specified WorkSpaces
 #'
+#' @description
 #' Reboots the specified WorkSpaces.
 #' 
 #' You cannot reboot a WorkSpace unless its state is `AVAILABLE` or
@@ -1916,6 +1956,7 @@ workspaces_reboot_workspaces <- function(RebootWorkspaceRequests) {
 
 #' Rebuilds the specified WorkSpace
 #'
+#' @description
 #' Rebuilds the specified WorkSpace.
 #' 
 #' You cannot rebuild a WorkSpace unless its state is `AVAILABLE`, `ERROR`,
@@ -1966,6 +2007,7 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 
 #' Registers the specified directory
 #'
+#' @description
 #' Registers the specified directory. This operation is asynchronous and
 #' returns before the WorkSpace directory is registered. If this is the
 #' first time you are registering a directory, you will need to create the
@@ -2043,6 +2085,7 @@ workspaces_register_workspace_directory <- function(DirectoryId, SubnetIds = NUL
 
 #' Restores the specified WorkSpace to its last known healthy state
 #'
+#' @description
 #' Restores the specified WorkSpace to its last known healthy state.
 #' 
 #' You cannot restore a WorkSpace unless its state is ` AVAILABLE`,
@@ -2089,6 +2132,7 @@ workspaces_restore_workspace <- function(WorkspaceId) {
 
 #' Removes one or more rules from the specified IP access control group
 #'
+#' @description
 #' Removes one or more rules from the specified IP access control group.
 #'
 #' @usage
@@ -2129,6 +2173,7 @@ workspaces_revoke_ip_rules <- function(GroupId, UserRules) {
 
 #' Starts the specified WorkSpaces
 #'
+#' @description
 #' Starts the specified WorkSpaces.
 #' 
 #' You cannot start a WorkSpace unless it has a running mode of `AutoStop`
@@ -2172,6 +2217,7 @@ workspaces_start_workspaces <- function(StartWorkspaceRequests) {
 
 #' Stops the specified WorkSpaces
 #'
+#' @description
 #' Stops the specified WorkSpaces.
 #' 
 #' You cannot stop a WorkSpace unless it has a running mode of `AutoStop`
@@ -2215,6 +2261,7 @@ workspaces_stop_workspaces <- function(StopWorkspaceRequests) {
 
 #' Terminates the specified WorkSpaces
 #'
+#' @description
 #' Terminates the specified WorkSpaces.
 #' 
 #' Terminating a WorkSpace is a permanent action and cannot be undone. The
@@ -2286,6 +2333,7 @@ workspaces_terminate_workspaces <- function(TerminateWorkspaceRequests) {
 #' whether that account has permission to associate the connection alias
 #' with a directory
 #'
+#' @description
 #' Shares or unshares a connection alias with one account by specifying
 #' whether that account has permission to associate the connection alias
 #' with a directory. If the association permission is granted, the
@@ -2349,6 +2397,7 @@ workspaces_update_connection_alias_permission <- function(AliasId, ConnectionAli
 #' Replaces the current rules of the specified IP access control group with
 #' the specified rules
 #'
+#' @description
 #' Replaces the current rules of the specified IP access control group with
 #' the specified rules.
 #'
@@ -2394,6 +2443,7 @@ workspaces_update_rules_of_ip_group <- function(GroupId, UserRules) {
 #' Shares or unshares an image with one account in the same AWS Region by
 #' specifying whether that account has permission to copy the image
 #'
+#' @description
 #' Shares or unshares an image with one account in the same AWS Region by
 #' specifying whether that account has permission to copy the image. If the
 #' copy image permission is granted, the image is shared with that account.

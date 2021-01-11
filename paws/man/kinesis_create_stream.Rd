@@ -23,8 +23,7 @@ records that are continuously emitted from different data sources or
 \emph{producers}. Scale-out within a stream is explicitly supported by means
 of shards, which are uniquely identified groups of data records in a
 stream.
-}
-\details{
+
 You specify and control the number of shards that a stream is composed
 of. Each shard can support reads up to five transactions per second, up
 to a maximum data read total of 2 MiB per second. Each shard can support

@@ -17,8 +17,7 @@ Constraints:
 }
 \description{
 Deletes a specified Amazon Redshift parameter group.
-}
-\details{
+
 You cannot delete a parameter group if it is associated with a cluster.
 }
 \section{Request syntax}{

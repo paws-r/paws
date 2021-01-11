@@ -121,8 +121,7 @@ parameter is not used, the operation returns up to 50 results and a
 \description{
 Describes the Application Auto Scaling scaling policies for the
 specified service namespace.
-}
-\details{
+
 You can filter the results using \code{ResourceId}, \code{ScalableDimension}, and
 \code{PolicyNames}.
 

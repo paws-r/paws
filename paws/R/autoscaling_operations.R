@@ -5,6 +5,7 @@ NULL
 
 #' Attaches one or more EC2 instances to the specified Auto Scaling group
 #'
+#' @description
 #' Attaches one or more EC2 instances to the specified Auto Scaling group.
 #' 
 #' When you attach instances, Amazon EC2 Auto Scaling increases the desired
@@ -71,6 +72,7 @@ autoscaling_attach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 
 #' Attaches one or more target groups to the specified Auto Scaling group
 #'
+#' @description
 #' Attaches one or more target groups to the specified Auto Scaling group.
 #' 
 #' This operation is used with the following load balancer types:
@@ -148,6 +150,7 @@ autoscaling_attach_load_balancer_target_groups <- function(AutoScalingGroupName,
 #' Gateway Load Balancer, use the AttachLoadBalancerTargetGroups API
 #' operation instead
 #'
+#' @description
 #' To attach an Application Load Balancer, Network Load Balancer, or
 #' Gateway Load Balancer, use the AttachLoadBalancerTargetGroups API
 #' operation instead.
@@ -217,6 +220,7 @@ autoscaling_attach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
 #' Deletes one or more scheduled actions for the specified Auto Scaling
 #' group
 #'
+#' @description
 #' Deletes one or more scheduled actions for the specified Auto Scaling
 #' group.
 #'
@@ -261,6 +265,7 @@ autoscaling_batch_delete_scheduled_action <- function(AutoScalingGroupName, Sche
 #' Creates or updates one or more scheduled scaling actions for an Auto
 #' Scaling group
 #'
+#' @description
 #' Creates or updates one or more scheduled scaling actions for an Auto
 #' Scaling group. If you leave a parameter unspecified when updating a
 #' scheduled scaling action, the corresponding value remains unchanged.
@@ -316,6 +321,7 @@ autoscaling_batch_put_scheduled_update_group_action <- function(AutoScalingGroup
 
 #' Cancels an instance refresh operation in progress
 #'
+#' @description
 #' Cancels an instance refresh operation in progress. Cancellation does not
 #' roll back any replacements that have already been completed, but it
 #' prevents new replacements from being started.
@@ -367,6 +373,7 @@ autoscaling_cancel_instance_refresh <- function(AutoScalingGroupName) {
 #' Completes the lifecycle action for the specified token or instance with
 #' the specified result
 #'
+#' @description
 #' Completes the lifecycle action for the specified token or instance with
 #' the specified result.
 #' 
@@ -457,6 +464,7 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' operation to ensure full functionality for Amazon EC2 Auto Scaling and
 #' Amazon EC2
 #'
+#' @description
 #' **We strongly recommend using a launch template when calling this
 #' operation to ensure full functionality for Amazon EC2 Auto Scaling and
 #' Amazon EC2.**
@@ -810,6 +818,7 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 
 #' Creates a launch configuration
 #'
+#' @description
 #' Creates a launch configuration.
 #' 
 #' If you exceed your maximum limit of launch configurations, the call
@@ -1073,6 +1082,7 @@ autoscaling_create_launch_configuration <- function(LaunchConfigurationName, Ima
 
 #' Creates or updates tags for the specified Auto Scaling group
 #'
+#' @description
 #' Creates or updates tags for the specified Auto Scaling group.
 #' 
 #' When you specify a tag with a key that already exists, the operation
@@ -1148,6 +1158,7 @@ autoscaling_create_or_update_tags <- function(Tags) {
 
 #' Deletes the specified Auto Scaling group
 #'
+#' @description
 #' Deletes the specified Auto Scaling group.
 #' 
 #' If the group has instances or scaling activities in progress, you must
@@ -1220,6 +1231,7 @@ autoscaling_delete_auto_scaling_group <- function(AutoScalingGroupName, ForceDel
 
 #' Deletes the specified launch configuration
 #'
+#' @description
 #' Deletes the specified launch configuration.
 #' 
 #' The launch configuration must not be attached to an Auto Scaling group.
@@ -1268,6 +1280,7 @@ autoscaling_delete_launch_configuration <- function(LaunchConfigurationName) {
 
 #' Deletes the specified lifecycle hook
 #'
+#' @description
 #' Deletes the specified lifecycle hook.
 #' 
 #' If there are any outstanding lifecycle actions, they are completed first
@@ -1320,6 +1333,7 @@ autoscaling_delete_lifecycle_hook <- function(LifecycleHookName, AutoScalingGrou
 
 #' Deletes the specified notification
 #'
+#' @description
 #' Deletes the specified notification.
 #'
 #' @usage
@@ -1370,6 +1384,7 @@ autoscaling_delete_notification_configuration <- function(AutoScalingGroupName, 
 
 #' Deletes the specified scaling policy
 #'
+#' @description
 #' Deletes the specified scaling policy.
 #' 
 #' Deleting either a step scaling policy or a simple scaling policy deletes
@@ -1425,6 +1440,7 @@ autoscaling_delete_policy <- function(AutoScalingGroupName = NULL, PolicyName) {
 
 #' Deletes the specified scheduled action
 #'
+#' @description
 #' Deletes the specified scheduled action.
 #'
 #' @usage
@@ -1474,6 +1490,7 @@ autoscaling_delete_scheduled_action <- function(AutoScalingGroupName, ScheduledA
 
 #' Deletes the specified tags
 #'
+#' @description
 #' Deletes the specified tags.
 #'
 #' @usage
@@ -1535,6 +1552,7 @@ autoscaling_delete_tags <- function(Tags) {
 #' Describes the current Amazon EC2 Auto Scaling resource quotas for your
 #' AWS account
 #'
+#' @description
 #' Describes the current Amazon EC2 Auto Scaling resource quotas for your
 #' AWS account.
 #' 
@@ -1579,6 +1597,7 @@ autoscaling_describe_account_limits <- function() {
 #' Describes the available adjustment types for Amazon EC2 Auto Scaling
 #' scaling policies
 #'
+#' @description
 #' Describes the available adjustment types for Amazon EC2 Auto Scaling
 #' scaling policies. These settings apply to step scaling policies and
 #' simple scaling policies; they do not apply to target tracking scaling
@@ -1627,6 +1646,7 @@ autoscaling_describe_adjustment_types <- function() {
 
 #' Describes one or more Auto Scaling groups
 #'
+#' @description
 #' Describes one or more Auto Scaling groups.
 #'
 #' @usage
@@ -1686,6 +1706,7 @@ autoscaling_describe_auto_scaling_groups <- function(AutoScalingGroupNames = NUL
 
 #' Describes one or more Auto Scaling instances
 #'
+#' @description
 #' Describes one or more Auto Scaling instances.
 #'
 #' @usage
@@ -1744,6 +1765,7 @@ autoscaling_describe_auto_scaling_instances <- function(InstanceIds = NULL, MaxR
 #' Describes the notification types that are supported by Amazon EC2 Auto
 #' Scaling
 #'
+#' @description
 #' Describes the notification types that are supported by Amazon EC2 Auto
 #' Scaling.
 #'
@@ -1782,6 +1804,7 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 
 #' Describes one or more instance refreshes
 #'
+#' @description
 #' Describes one or more instance refreshes.
 #' 
 #' You can determine the status of a request by looking at the `Status`
@@ -1861,6 +1884,7 @@ autoscaling_describe_instance_refreshes <- function(AutoScalingGroupName, Instan
 
 #' Describes one or more launch configurations
 #'
+#' @description
 #' Describes one or more launch configurations.
 #'
 #' @usage
@@ -1917,6 +1941,7 @@ autoscaling_describe_launch_configurations <- function(LaunchConfigurationNames 
 
 #' Describes the available types of lifecycle hooks
 #'
+#' @description
 #' Describes the available types of lifecycle hooks.
 #' 
 #' The following hook types are supported:
@@ -1960,6 +1985,7 @@ autoscaling_describe_lifecycle_hook_types <- function() {
 
 #' Describes the lifecycle hooks for the specified Auto Scaling group
 #'
+#' @description
 #' Describes the lifecycle hooks for the specified Auto Scaling group.
 #'
 #' @usage
@@ -2011,6 +2037,7 @@ autoscaling_describe_lifecycle_hooks <- function(AutoScalingGroupName, Lifecycle
 
 #' Describes the target groups for the specified Auto Scaling group
 #'
+#' @description
 #' Describes the target groups for the specified Auto Scaling group.
 #'
 #' @usage
@@ -2063,6 +2090,7 @@ autoscaling_describe_load_balancer_target_groups <- function(AutoScalingGroupNam
 
 #' Describes the load balancers for the specified Auto Scaling group
 #'
+#' @description
 #' Describes the load balancers for the specified Auto Scaling group.
 #' 
 #' This operation describes only Classic Load Balancers. If you have
@@ -2119,6 +2147,7 @@ autoscaling_describe_load_balancers <- function(AutoScalingGroupName, NextToken 
 
 #' Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling
 #'
+#' @description
 #' Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling.
 #' 
 #' The `GroupStandbyInstances` metric is not returned by default. You must
@@ -2161,6 +2190,7 @@ autoscaling_describe_metric_collection_types <- function() {
 #' Describes the notification actions associated with the specified Auto
 #' Scaling group
 #'
+#' @description
 #' Describes the notification actions associated with the specified Auto
 #' Scaling group.
 #'
@@ -2218,6 +2248,7 @@ autoscaling_describe_notification_configurations <- function(AutoScalingGroupNam
 
 #' Describes the policies for the specified Auto Scaling group
 #'
+#' @description
 #' Describes the policies for the specified Auto Scaling group.
 #'
 #' @usage
@@ -2283,6 +2314,7 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
 #' Describes one or more scaling activities for the specified Auto Scaling
 #' group
 #'
+#' @description
 #' Describes one or more scaling activities for the specified Auto Scaling
 #' group.
 #'
@@ -2345,6 +2377,7 @@ autoscaling_describe_scaling_activities <- function(ActivityIds = NULL, AutoScal
 #' Describes the scaling process types for use with the ResumeProcesses and
 #' SuspendProcesses APIs
 #'
+#' @description
 #' Describes the scaling process types for use with the ResumeProcesses and
 #' SuspendProcesses APIs.
 #'
@@ -2384,6 +2417,7 @@ autoscaling_describe_scaling_process_types <- function() {
 #' Describes the actions scheduled for your Auto Scaling group that haven't
 #' run or that have not reached their end time
 #'
+#' @description
 #' Describes the actions scheduled for your Auto Scaling group that haven't
 #' run or that have not reached their end time. To describe the actions
 #' that have already run, call the DescribeScalingActivities API.
@@ -2455,6 +2489,7 @@ autoscaling_describe_scheduled_actions <- function(AutoScalingGroupName = NULL, 
 
 #' Describes the specified tags
 #'
+#' @description
 #' Describes the specified tags.
 #' 
 #' You can use filters to limit the results. For example, you can query for
@@ -2533,6 +2568,7 @@ autoscaling_describe_tags <- function(Filters = NULL, NextToken = NULL, MaxRecor
 
 #' Describes the termination policies supported by Amazon EC2 Auto Scaling
 #'
+#' @description
 #' Describes the termination policies supported by Amazon EC2 Auto Scaling.
 #' 
 #' For more information, see [Controlling which Auto Scaling instances
@@ -2575,6 +2611,7 @@ autoscaling_describe_termination_policy_types <- function() {
 
 #' Removes one or more instances from the specified Auto Scaling group
 #'
+#' @description
 #' Removes one or more instances from the specified Auto Scaling group.
 #' 
 #' After the instances are detached, you can manage them independent of the
@@ -2648,6 +2685,7 @@ autoscaling_detach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 
 #' Detaches one or more target groups from the specified Auto Scaling group
 #'
+#' @description
 #' Detaches one or more target groups from the specified Auto Scaling
 #' group.
 #'
@@ -2704,6 +2742,7 @@ autoscaling_detach_load_balancer_target_groups <- function(AutoScalingGroupName,
 #' Detaches one or more Classic Load Balancers from the specified Auto
 #' Scaling group
 #'
+#' @description
 #' Detaches one or more Classic Load Balancers from the specified Auto
 #' Scaling group.
 #' 
@@ -2768,6 +2807,7 @@ autoscaling_detach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
 
 #' Disables group metrics for the specified Auto Scaling group
 #'
+#' @description
 #' Disables group metrics for the specified Auto Scaling group.
 #'
 #' @usage
@@ -2848,6 +2888,7 @@ autoscaling_disable_metrics_collection <- function(AutoScalingGroupName, Metrics
 
 #' Enables group metrics for the specified Auto Scaling group
 #'
+#' @description
 #' Enables group metrics for the specified Auto Scaling group. For more
 #' information, see [Monitoring CloudWatch metrics for your Auto Scaling
 #' groups and
@@ -2938,6 +2979,7 @@ autoscaling_enable_metrics_collection <- function(AutoScalingGroupName, Metrics 
 
 #' Moves the specified instances into the standby state
 #'
+#' @description
 #' Moves the specified instances into the standby state.
 #' 
 #' If you choose to decrement the desired capacity of the Auto Scaling
@@ -3008,6 +3050,7 @@ autoscaling_enter_standby <- function(InstanceIds = NULL, AutoScalingGroupName, 
 
 #' Executes the specified policy
 #'
+#' @description
 #' Executes the specified policy. This can be useful for testing the design
 #' of your scaling policy.
 #'
@@ -3084,6 +3127,7 @@ autoscaling_execute_policy <- function(AutoScalingGroupName = NULL, PolicyName, 
 
 #' Moves the specified instances out of the standby state
 #'
+#' @description
 #' Moves the specified instances out of the standby state.
 #' 
 #' After you put the instances back in service, the desired capacity is
@@ -3143,6 +3187,7 @@ autoscaling_exit_standby <- function(InstanceIds = NULL, AutoScalingGroupName) {
 
 #' Creates or updates a lifecycle hook for the specified Auto Scaling group
 #'
+#' @description
 #' Creates or updates a lifecycle hook for the specified Auto Scaling
 #' group.
 #' 
@@ -3281,6 +3326,7 @@ autoscaling_put_lifecycle_hook <- function(LifecycleHookName, AutoScalingGroupNa
 #' Configures an Auto Scaling group to send notifications when specified
 #' events take place
 #'
+#' @description
 #' Configures an Auto Scaling group to send notifications when specified
 #' events take place. Subscribers to the specified topic can have messages
 #' delivered to an endpoint such as a web server or an email address.
@@ -3352,6 +3398,7 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 
 #' Creates or updates a scaling policy for an Auto Scaling group
 #'
+#' @description
 #' Creates or updates a scaling policy for an Auto Scaling group.
 #' 
 #' For more information about using scaling policies to scale your Auto
@@ -3546,6 +3593,7 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
 
 #' Creates or updates a scheduled scaling action for an Auto Scaling group
 #'
+#' @description
 #' Creates or updates a scheduled scaling action for an Auto Scaling group.
 #' If you leave a parameter unspecified when updating a scheduled scaling
 #' action, the corresponding value remains unchanged.
@@ -3648,6 +3696,7 @@ autoscaling_put_scheduled_update_group_action <- function(AutoScalingGroupName, 
 #' Records a heartbeat for the lifecycle action associated with the
 #' specified token or instance
 #'
+#' @description
 #' Records a heartbeat for the lifecycle action associated with the
 #' specified token or instance. This extends the timeout by the length of
 #' time defined using the PutLifecycleHook API call.
@@ -3733,6 +3782,7 @@ autoscaling_record_lifecycle_action_heartbeat <- function(LifecycleHookName, Aut
 #' Resumes the specified suspended auto scaling processes, or all suspended
 #' process, for the specified Auto Scaling group
 #'
+#' @description
 #' Resumes the specified suspended auto scaling processes, or all suspended
 #' process, for the specified Auto Scaling group.
 #' 
@@ -3810,6 +3860,7 @@ autoscaling_resume_processes <- function(AutoScalingGroupName, ScalingProcesses 
 
 #' Sets the size of the specified Auto Scaling group
 #'
+#' @description
 #' Sets the size of the specified Auto Scaling group.
 #' 
 #' If a scale-in activity occurs as a result of a new `DesiredCapacity`
@@ -3875,6 +3926,7 @@ autoscaling_set_desired_capacity <- function(AutoScalingGroupName, DesiredCapaci
 
 #' Sets the health status of the specified instance
 #'
+#' @description
 #' Sets the health status of the specified instance.
 #' 
 #' For more information, see [Health checks for Auto Scaling
@@ -3940,6 +3992,7 @@ autoscaling_set_instance_health <- function(InstanceId, HealthStatus, ShouldResp
 
 #' Updates the instance protection settings of the specified instances
 #'
+#' @description
 #' Updates the instance protection settings of the specified instances.
 #' 
 #' For more information about preventing instances that are part of an Auto
@@ -4015,6 +4068,7 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #' replacement of all previously launched instances in the Auto Scaling
 #' group with a new group of instances
 #'
+#' @description
 #' Starts a new instance refresh operation, which triggers a rolling
 #' replacement of all previously launched instances in the Auto Scaling
 #' group with a new group of instances.
@@ -4103,6 +4157,7 @@ autoscaling_start_instance_refresh <- function(AutoScalingGroupName, Strategy = 
 #' Suspends the specified auto scaling processes, or all processes, for the
 #' specified Auto Scaling group
 #'
+#' @description
 #' Suspends the specified auto scaling processes, or all processes, for the
 #' specified Auto Scaling group.
 #' 
@@ -4186,6 +4241,7 @@ autoscaling_suspend_processes <- function(AutoScalingGroupName, ScalingProcesses
 #' Terminates the specified instance and optionally adjusts the desired
 #' group size
 #'
+#' @description
 #' Terminates the specified instance and optionally adjusts the desired
 #' group size.
 #' 
@@ -4257,6 +4313,7 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' We strongly recommend that all Auto Scaling groups use launch templates
 #' to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2
 #'
+#' @description
 #' **We strongly recommend that all Auto Scaling groups use launch
 #' templates to ensure full functionality for Amazon EC2 Auto Scaling and
 #' Amazon EC2.**
@@ -4274,8 +4331,8 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' originally launched with. When you update a group to specify a mixed
 #' instances policy instead of a launch configuration or template, existing
 #' instances may be replaced to match the new purchasing options that you
-#' specified in the policy. For example, if the group currently has 100%
-#' On-Demand capacity and the policy specifies 50% Spot capacity, this
+#' specified in the policy. For example, if the group currently has 100\%
+#' On-Demand capacity and the policy specifies 50\% Spot capacity, this
 #' means that half of your instances will be gradually terminated and
 #' relaunched as Spot Instances. When replacing instances, Amazon EC2 Auto
 #' Scaling launches new instances before terminating the old ones, so that

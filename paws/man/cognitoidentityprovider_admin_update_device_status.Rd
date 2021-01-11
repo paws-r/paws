@@ -18,8 +18,7 @@ cognitoidentityprovider_admin_update_device_status(UserPoolId, Username,
 }
 \description{
 Updates the device status as an administrator.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

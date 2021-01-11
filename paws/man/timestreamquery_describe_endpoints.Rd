@@ -11,8 +11,7 @@ timestreamquery_describe_endpoints()
 DescribeEndpoints returns a list of available endpoints to make
 Timestream API calls against. This API is available through both Write
 and Query.
-}
-\details{
+
 Because Timestream’s SDKs are designed to transparently work with the
 service’s architecture, including the management and mapping of the
 service endpoints, \emph{it is not recommended that you use this API unless}:

@@ -38,8 +38,7 @@ symbols: \verb{_ . : / = + - @}.}
 }
 \description{
 Registers a new domain.
-}
-\details{
+
 \strong{Access Control}
 
 You can use IAM policies to control this action's access to Amazon SWF

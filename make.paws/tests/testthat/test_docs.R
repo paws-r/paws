@@ -25,6 +25,7 @@ test_that("make_doc_title", {
 test_that("make_doc_desc", {
   operation <- list(documentation = "<body><p>Foo.</p><p>Bar.</p></body>")
   expected <- paste(
+    "#' @description",
     "#' Foo.",
     "#' ",
     "#' Bar.",
@@ -36,7 +37,8 @@ test_that("make_doc_desc", {
 test_that("make_doc_desc with special characters", {
   operation <- list(documentation = "<body><p>Foo%</p><p>Bar{</p><p>}Baz</p><p>\\Qux</p></body>")
   expected <- paste(
-    "#' Foo%",
+    "#' @description",
+    "#' Foo\\%",
     "#' ",
     "#' Bar\\{",
     "#' ",
@@ -455,11 +457,11 @@ test_that("convert", {
   expect_equal(convert(text), expected)
 
   text <- "<body>%{}\\</body>"
-  expected <- "%\\{\\}\\\\"
+  expected <- "\\%\\{\\}\\\\"
   expect_equal(convert(text), expected)
 
   text <- "<body>123%{}</body>"
-  expected <- "123%\\{\\}"
+  expected <- "123\\%\\{\\}"
   expect_equal(convert(text), expected)
 
   text <- "<body>*</body>"
@@ -514,8 +516,8 @@ test_that("convert", {
   expected <- c("[foo](https://example.com/)")
   expect_equal(convert(text), expected)
 
-  text <- "<a href='https://console.aws.amazon.com/support/home#/case/create%3FissueType=customer-service%26serviceCode=general-info%26getting-started%26categoryCode=using-aws%26services'>foo</a>"
-  expected <- c("[foo](https://console.aws.amazon.com/support/home#/case/create?issueType=customer-service&serviceCode=general-info&getting-started&categoryCode=using-aws&services)")
+  text <- "<a href='https://httpbin.org/anything#foo?bar=baz'>foo</a>"
+  expected <- c("[foo](https://httpbin.org/anything#foo?bar=baz)")
   expect_equal(convert(text), expected)
 
   text <- "<dt>Description</dt><dd>Definition.</dd>"

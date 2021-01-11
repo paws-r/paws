@@ -20,8 +20,7 @@ gateway.}
 \description{
 Updates the specified attributes of the Direct Connect gateway
 association.
-}
-\details{
+
 Add or remove prefixes from the association.
 }
 \section{Request syntax}{

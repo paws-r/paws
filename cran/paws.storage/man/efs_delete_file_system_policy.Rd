@@ -15,8 +15,7 @@ Deletes the \code{FileSystemPolicy} for the specified file system. The
 default \code{FileSystemPolicy} goes into effect once the existing policy is
 deleted. For more information about the default file system policy, see
 \href{https://docs.aws.amazon.com/efs/latest/ug/}{Using Resource-based Policies with EFS}.
-}
-\details{
+
 This operation requires permissions for the
 \code{elasticfilesystem:DeleteFileSystemPolicy} action.
 }

@@ -17,8 +17,7 @@ locationservice_batch_get_device_position(DeviceIds, TrackerName)
 }
 \description{
 A batch request to retrieve device positions.
-}
-\details{
+
 The response will return the device positions from the last 24 hours.
 }
 \section{Request syntax}{

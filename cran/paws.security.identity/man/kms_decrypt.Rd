@@ -76,8 +76,6 @@ the only supported algorithm that is valid for symmetric CMKs.}
 \description{
 Decrypts ciphertext that was encrypted by a AWS KMS customer master key
 (CMK) using any of the following operations:
-}
-\details{
 \itemize{
 \item Encrypt
 \item GenerateDataKey

@@ -19,8 +19,7 @@ that have names that start with the prefix you specify.}
 \description{
 This operation returns a paginated list of your saved CloudWatch Logs
 Insights query definitions.
-}
-\details{
+
 You can use the \code{queryDefinitionNamePrefix} parameter to limit the
 results to only the query definitions that have names that start with a
 certain string.

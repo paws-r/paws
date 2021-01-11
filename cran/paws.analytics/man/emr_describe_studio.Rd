@@ -13,8 +13,7 @@ emr_describe_studio(StudioId)
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.
-}
-\details{
+
 Returns details for the specified Amazon EMR Studio including ID, Name,
 VPC, Studio access URL, and so on.
 }

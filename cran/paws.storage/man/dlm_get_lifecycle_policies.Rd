@@ -29,8 +29,7 @@ tags.}
 \description{
 Gets summary information about all or the specified data lifecycle
 policies.
-}
-\details{
+
 To get complete information about a policy, use GetLifecyclePolicy.
 }
 \section{Request syntax}{

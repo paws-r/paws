@@ -35,8 +35,7 @@ the workflow types.}
 Returns information about workflow types in the specified domain. The
 results may be split into multiple pages that can be retrieved by making
 the call repeatedly.
-}
-\details{
+
 \strong{Access Control}
 
 You can use IAM policies to control this action's access to Amazon SWF

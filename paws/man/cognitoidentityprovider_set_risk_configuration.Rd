@@ -29,8 +29,7 @@ configuration for the client is used instead.}
 Configures actions on detected risks. To delete the risk configuration
 for \code{UserPoolId} or \code{ClientId}, pass null values for all four
 configuration types.
-}
-\details{
+
 To enable Amazon Cognito advanced security features, update the user
 pool to include the \code{UserPoolAddOns} key\code{AdvancedSecurityMode}.
 }

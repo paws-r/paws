@@ -13,8 +13,7 @@ directconnect_create_bgp_peer(virtualInterfaceId, newBGPPeer)
 }
 \description{
 Creates a BGP peer on the specified virtual interface.
-}
-\details{
+
 You must create a BGP peer for the corresponding address family
 (IPv4/IPv6) in order to access AWS resources that also use that address
 family.

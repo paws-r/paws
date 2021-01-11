@@ -27,8 +27,7 @@ in the \emph{AWS Auto Scaling API Reference}.}
 }
 \description{
 Updates the specified scaling plan.
-}
-\details{
+
 You cannot update a scaling plan if it is in the process of being
 created, updated, or deleted.
 }

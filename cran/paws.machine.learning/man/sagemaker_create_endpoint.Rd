@@ -24,8 +24,7 @@ Creates an endpoint using the endpoint configuration specified in the
 request. Amazon SageMaker uses the endpoint to provision resources and
 deploy models. You create the endpoint configuration with the
 CreateEndpointConfig API.
-}
-\details{
+
 Use this API to deploy models using Amazon SageMaker hosting services.
 
 For an example that calls this method when deploying a model to Amazon
@@ -70,11 +69,11 @@ deactivated AWS STS for a region, you need to reactivate AWS STS for
 that region. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html}{Activating and Deactivating AWS STS in an AWS Region}
 in the \emph{AWS Identity and Access Management User Guide}.
 
-To add the IAM role policies for using this API operation, go to the
-\href{https://console.aws.amazon.com/iam/}{IAM console}, and choose Roles in
-the left navigation pane. Search the IAM role that you want to grant
-access to use the CreateEndpoint and CreateEndpointConfig API
-operations, add the following policies to the role.
+To add the IAM role policies for using this API operation, go to the IAM
+console, and choose Roles in the left navigation pane. Search the IAM
+role that you want to grant access to use the CreateEndpoint and
+CreateEndpointConfig API operations, add the following policies to the
+role.
 \itemize{
 \item Option 1: For a full Amazon SageMaker access, search and attach the
 \code{AmazonSageMakerFullAccess} policy.

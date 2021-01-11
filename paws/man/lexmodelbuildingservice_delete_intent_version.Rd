@@ -16,8 +16,7 @@ DeleteIntent operation.}
 \description{
 Deletes a specific version of an intent. To delete all versions of a
 intent, use the DeleteIntent operation.
-}
-\details{
+
 This operation requires permissions for the \code{lex:DeleteIntentVersion}
 action.
 }

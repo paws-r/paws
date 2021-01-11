@@ -35,8 +35,6 @@ Lists all the private hosted zones that a specified VPC is associated
 with, regardless of which AWS account or AWS service owns the hosted
 zones. The \code{HostedZoneOwner} structure in the response contains one of
 the following values:
-}
-\details{
 \itemize{
 \item An \code{OwningAccount} element, which contains the account number of
 either the current AWS account or another AWS account. Some

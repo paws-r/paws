@@ -37,8 +37,7 @@ in the \emph{Amazon EC2 Auto Scaling API Reference}.}
 Starts a new instance refresh operation, which triggers a rolling
 replacement of all previously launched instances in the Auto Scaling
 group with a new group of instances.
-}
-\details{
+
 If successful, this call creates a new instance refresh request with a
 unique ID that you can use to track its progress. To query its status,
 call the DescribeInstanceRefreshes API. To describe the instance

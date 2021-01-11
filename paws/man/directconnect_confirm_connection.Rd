@@ -13,8 +13,7 @@ directconnect_confirm_connection(connectionId)
 \description{
 Confirms the creation of the specified hosted connection on an
 interconnect.
-}
-\details{
+
 Upon creation, the hosted connection is initially in the \code{Ordering}
 state, and remains in this state until the owner confirms creation of
 the hosted connection.

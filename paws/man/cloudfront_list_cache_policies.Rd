@@ -25,8 +25,7 @@ response.}
 }
 \description{
 Gets a list of cache policies.
-}
-\details{
+
 You can optionally apply a filter to return only the managed policies
 created by AWS, or only the custom policies created in your AWS account.
 

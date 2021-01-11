@@ -21,8 +21,7 @@ returned.}
 \description{
 Lists all Channels created under a single Chime App as a paginated list.
 You can specify filters to narrow results.
-}
-\details{
+
 \strong{Functionality & restrictions}
 \itemize{
 \item Use privacy = \code{PUBLIC} to retrieve all public channels in the

@@ -62,8 +62,7 @@ Optional fields that are not specified are set to null.}
 \description{
 Updates an existing maintenance window. Only specified parameters are
 modified.
-}
-\details{
+
 The value you specify for \code{Duration} determines the specific end time
 for the maintenance window based on the time it begins. No maintenance
 window tasks are permitted to start after the resulting endtime minus

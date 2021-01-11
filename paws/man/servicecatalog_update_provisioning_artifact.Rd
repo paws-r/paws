@@ -43,8 +43,7 @@ provisioned products using a deprecated version.}
 \description{
 Updates the specified provisioning artifact (also known as a version)
 for the specified product.
-}
-\details{
+
 You cannot update a provisioning artifact for a product that was shared
 with you.
 }

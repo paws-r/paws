@@ -13,8 +13,7 @@ emr_list_studios(Marker)
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.
-}
-\details{
+
 Returns a list of all Amazon EMR Studios associated with the AWS
 account. The list includes details such as ID, Studio Access URL, and
 creation time for each Studio.

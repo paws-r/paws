@@ -7,6 +7,7 @@ NULL
 #' configuration information, including URIs, username, and password which
 #' can be used to configure the WebRTC connection
 #'
+#' @description
 #' Gets the Interactive Connectivity Establishment (ICE) server
 #' configuration information, including URIs, username, and password which
 #' can be used to configure the WebRTC connection. The ICE component uses
@@ -71,6 +72,7 @@ kinesisvideosignalingchannels_get_ice_server_config <- function(ChannelARN, Clie
 #' This API allows you to connect WebRTC-enabled devices with Alexa display
 #' devices
 #'
+#' @description
 #' This API allows you to connect WebRTC-enabled devices with Alexa display
 #' devices. When invoked, it sends the Alexa Session Description Protocol
 #' (SDP) offer to the master peer. The offer is delivered as soon as the

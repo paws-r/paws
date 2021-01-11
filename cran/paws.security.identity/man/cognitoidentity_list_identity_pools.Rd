@@ -13,8 +13,7 @@ cognitoidentity_list_identity_pools(MaxResults, NextToken)
 }
 \description{
 Lists all of the Cognito identity pools registered for your account.
-}
-\details{
+
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{

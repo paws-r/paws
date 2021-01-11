@@ -19,8 +19,6 @@ disassociating from the specified hosted zone.}
 \description{
 Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an
 Amazon Route 53 private hosted zone. Note the following:
-}
-\details{
 \itemize{
 \item You can't disassociate the last Amazon VPC from a private hosted
 zone.

@@ -24,8 +24,7 @@ request ID.}
 \description{
 The \code{CreateAdditionalAssignmentsForHIT} operation increases the maximum
 number of assignments of an existing HIT.
-}
-\details{
+
 To extend the maximum number of assignments, specify the number of
 additional assignments.
 \itemize{

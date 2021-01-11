@@ -26,8 +26,6 @@ Adds additional customer communication to an AWS Support case. Use the
 You can list a set of email addresses to copy on the communication by
 using the \code{ccEmailAddresses} parameter. The \code{communicationBody} value
 contains the text of the communication.
-}
-\details{
 \itemize{
 \item You must have a Business or Enterprise support plan to use the AWS
 Support API.

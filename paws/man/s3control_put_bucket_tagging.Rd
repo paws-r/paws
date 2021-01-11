@@ -30,8 +30,7 @@ This action puts tags on an Amazon S3 on Outposts bucket. To put tags on
 an S3 bucket, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html}{PutBucketTagging}
 in the \emph{Amazon Simple Storage Service API}.
-}
-\details{
+
 Sets the tags for an Outposts bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
 

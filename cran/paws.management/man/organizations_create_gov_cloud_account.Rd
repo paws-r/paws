@@ -70,8 +70,6 @@ not created.}
 }
 \description{
 This action is available if all of the following are true:
-}
-\details{
 \itemize{
 \item You're authorized to create accounts in the AWS GovCloud (US)
 Region. For more information on the AWS GovCloud (US) Region, see
@@ -157,10 +155,10 @@ from your organization later, you can do so only after you provide
 the missing information. Follow the steps at \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization as a member account}
 in the \emph{AWS Organizations User Guide.}
 \item If you get an exception that indicates that you exceeded your
-account limits for the organization, contact \href{https://console.aws.amazon.com/support/home#/}{AWS Support}.
+account limits for the organization, contact AWS Support.
 \item If you get an exception that indicates that the operation failed
 because your organization is still initializing, wait one hour and
-then try again. If the error persists, contact \href{https://console.aws.amazon.com/support/home#/}{AWS Support}.
+then try again. If the error persists, contact AWS Support.
 \item Using \code{CreateGovCloudAccount} to create multiple temporary accounts
 isn't recommended. You can only close an account from the AWS
 Billing and Cost Management console, and you must be signed in as

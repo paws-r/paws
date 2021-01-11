@@ -17,8 +17,7 @@ connect_disassociate_lex_bot(InstanceId, BotName, LexRegion)
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Revokes authorization from the specified instance to access the
 specified Amazon Lex bot.
 }

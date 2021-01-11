@@ -29,8 +29,7 @@ referenced by an alias.}
 Deletes a Lambda function. To delete a specific function version, use
 the \code{Qualifier} parameter. Otherwise, all versions and aliases are
 deleted.
-}
-\details{
+
 To delete Lambda event source mappings that invoke a function, use
 DeleteEventSourceMapping. For AWS services and resources that invoke
 your function directly, delete the trigger in the service where you

@@ -6,6 +6,7 @@ NULL
 #' Allows the destination domain owner to accept an inbound cross-cluster
 #' search connection request
 #'
+#' @description
 #' Allows the destination domain owner to accept an inbound cross-cluster
 #' search connection request.
 #'
@@ -44,6 +45,7 @@ elasticsearchservice_accept_inbound_cross_cluster_search_connection <- function(
 
 #' Attaches tags to an existing Elasticsearch domain
 #'
+#' @description
 #' Attaches tags to an existing Elasticsearch domain. Tags are a set of
 #' case-sensitive key value pairs. An Elasticsearch domain may have up to
 #' 10 tags. See [Tagging Amazon Elasticsearch Service Domains for more
@@ -90,6 +92,7 @@ elasticsearchservice_add_tags <- function(ARN, TagList) {
 
 #' Associates a package with an Amazon ES domain
 #'
+#' @description
 #' Associates a package with an Amazon ES domain.
 #'
 #' @usage
@@ -129,6 +132,7 @@ elasticsearchservice_associate_package <- function(PackageID, DomainName) {
 
 #' Cancels a scheduled service software update for an Amazon ES domain
 #'
+#' @description
 #' Cancels a scheduled service software update for an Amazon ES domain. You
 #' can only perform this operation before the `AutomatedUpdateDate` and
 #' when the `UpdateStatus` is in the `PENDING_UPDATE` state.
@@ -169,6 +173,7 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 
 #' Creates a new Elasticsearch domain
 #'
+#' @description
 #' Creates a new Elasticsearch domain. For more information, see [Creating
 #' Elasticsearch
 #' Domains](https://docs.aws.amazon.com/elasticsearch-service/latest/developerguide/es-createupdatedomains.html#es-createdomains)
@@ -330,6 +335,7 @@ elasticsearchservice_create_elasticsearch_domain <- function(DomainName, Elastic
 #' Creates a new cross-cluster search connection from a source domain to a
 #' destination domain
 #'
+#' @description
 #' Creates a new cross-cluster search connection from a source domain to a
 #' destination domain.
 #'
@@ -383,6 +389,7 @@ elasticsearchservice_create_outbound_cross_cluster_search_connection <- function
 
 #' Create a package for use with Amazon ES domains
 #'
+#' @description
 #' Create a package for use with Amazon ES domains.
 #'
 #' @usage
@@ -430,6 +437,7 @@ elasticsearchservice_create_package <- function(PackageName, PackageType, Packag
 #' Permanently deletes the specified Elasticsearch domain and all of its
 #' data
 #'
+#' @description
 #' Permanently deletes the specified Elasticsearch domain and all of its
 #' data. Once a domain is deleted, it cannot be recovered.
 #'
@@ -469,6 +477,7 @@ elasticsearchservice_delete_elasticsearch_domain <- function(DomainName) {
 #' Deletes the service-linked role that Elasticsearch Service uses to
 #' manage and maintain VPC domains
 #'
+#' @description
 #' Deletes the service-linked role that Elasticsearch Service uses to
 #' manage and maintain VPC domains. Role deletion will fail if any existing
 #' VPC domains use the role. You must delete any such Elasticsearch domains
@@ -506,6 +515,7 @@ elasticsearchservice_delete_elasticsearch_service_role <- function() {
 #' Allows the destination domain owner to delete an existing inbound
 #' cross-cluster search connection
 #'
+#' @description
 #' Allows the destination domain owner to delete an existing inbound
 #' cross-cluster search connection.
 #'
@@ -545,6 +555,7 @@ elasticsearchservice_delete_inbound_cross_cluster_search_connection <- function(
 #' Allows the source domain owner to delete an existing outbound
 #' cross-cluster search connection
 #'
+#' @description
 #' Allows the source domain owner to delete an existing outbound
 #' cross-cluster search connection.
 #'
@@ -583,6 +594,7 @@ elasticsearchservice_delete_outbound_cross_cluster_search_connection <- function
 
 #' Delete the package
 #'
+#' @description
 #' Delete the package.
 #'
 #' @usage
@@ -622,6 +634,7 @@ elasticsearchservice_delete_package <- function(PackageID) {
 #' Elasticsearch domain, including the domain ID, domain endpoint, and
 #' domain ARN
 #'
+#' @description
 #' Returns domain configuration information about the specified
 #' Elasticsearch domain, including the domain ID, domain endpoint, and
 #' domain ARN.
@@ -662,6 +675,7 @@ elasticsearchservice_describe_elasticsearch_domain <- function(DomainName) {
 #' Elasticsearch domain, such as the state, creation date, update version,
 #' and update date for cluster options
 #'
+#' @description
 #' Provides cluster configuration information about the specified
 #' Elasticsearch domain, such as the state, creation date, update version,
 #' and update date for cluster options.
@@ -702,6 +716,7 @@ elasticsearchservice_describe_elasticsearch_domain_config <- function(DomainName
 #' Elasticsearch domains, including the domain ID, domain endpoint, and
 #' domain ARN
 #'
+#' @description
 #' Returns domain configuration information about the specified
 #' Elasticsearch domains, including the domain ID, domain endpoint, and
 #' domain ARN.
@@ -743,6 +758,7 @@ elasticsearchservice_describe_elasticsearch_domains <- function(DomainNames) {
 #' Describe Elasticsearch Limits for a given InstanceType and
 #' ElasticsearchVersion
 #'
+#' @description
 #' Describe Elasticsearch Limits for a given InstanceType and
 #' ElasticsearchVersion. When modifying existing Domain, specify the
 #' ` <a>DomainName</a> ` to know what Limits are supported for modifying.
@@ -790,6 +806,7 @@ elasticsearchservice_describe_elasticsearch_instance_type_limits <- function(Dom
 #' Lists all the inbound cross-cluster search connections for a destination
 #' domain
 #'
+#' @description
 #' Lists all the inbound cross-cluster search connections for a destination
 #' domain.
 #'
@@ -850,6 +867,7 @@ elasticsearchservice_describe_inbound_cross_cluster_search_connections <- functi
 #' Lists all the outbound cross-cluster search connections for a source
 #' domain
 #'
+#' @description
 #' Lists all the outbound cross-cluster search connections for a source
 #' domain.
 #'
@@ -909,6 +927,7 @@ elasticsearchservice_describe_outbound_cross_cluster_search_connections <- funct
 
 #' Describes all packages available to Amazon ES
 #'
+#' @description
 #' Describes all packages available to Amazon ES. Includes options for
 #' filtering, limiting the number of results, and pagination.
 #'
@@ -960,6 +979,7 @@ elasticsearchservice_describe_packages <- function(Filters = NULL, MaxResults = 
 
 #' Lists available reserved Elasticsearch instance offerings
 #'
+#' @description
 #' Lists available reserved Elasticsearch instance offerings.
 #'
 #' @usage
@@ -1006,6 +1026,7 @@ elasticsearchservice_describe_reserved_elasticsearch_instance_offerings <- funct
 #' Returns information about reserved Elasticsearch instances for this
 #' account
 #'
+#' @description
 #' Returns information about reserved Elasticsearch instances for this
 #' account.
 #'
@@ -1052,6 +1073,7 @@ elasticsearchservice_describe_reserved_elasticsearch_instances <- function(Reser
 
 #' Dissociates a package from the Amazon ES domain
 #'
+#' @description
 #' Dissociates a package from the Amazon ES domain.
 #'
 #' @usage
@@ -1091,6 +1113,7 @@ elasticsearchservice_dissociate_package <- function(PackageID, DomainName) {
 
 #' Returns a list of upgrade compatible Elastisearch versions
 #'
+#' @description
 #' Returns a list of upgrade compatible Elastisearch versions. You can
 #' optionally pass a ` <a>DomainName</a> ` to get all upgrade compatible
 #' Elasticsearch versions for that specific domain.
@@ -1130,6 +1153,7 @@ elasticsearchservice_get_compatible_elasticsearch_versions <- function(DomainNam
 #' Returns a list of versions of the package, along with their creation
 #' time and commit message
 #'
+#' @description
 #' Returns a list of versions of the package, along with their creation
 #' time and commit message.
 #'
@@ -1175,6 +1199,7 @@ elasticsearchservice_get_package_version_history <- function(PackageID, MaxResul
 #' Retrieves the complete history of the last 10 upgrades that were
 #' performed on the domain
 #'
+#' @description
 #' Retrieves the complete history of the last 10 upgrades that were
 #' performed on the domain.
 #'
@@ -1218,6 +1243,7 @@ elasticsearchservice_get_upgrade_history <- function(DomainName, MaxResults = NU
 #' Retrieves the latest status of the last upgrade or upgrade eligibility
 #' check that was performed on the domain
 #'
+#' @description
 #' Retrieves the latest status of the last upgrade or upgrade eligibility
 #' check that was performed on the domain.
 #'
@@ -1256,6 +1282,7 @@ elasticsearchservice_get_upgrade_status <- function(DomainName) {
 #' Returns the name of all Elasticsearch domains owned by the current
 #' user's account
 #'
+#' @description
 #' Returns the name of all Elasticsearch domains owned by the current
 #' user's account.
 #'
@@ -1288,6 +1315,7 @@ elasticsearchservice_list_domain_names <- function() {
 
 #' Lists all Amazon ES domains associated with the package
 #'
+#' @description
 #' Lists all Amazon ES domains associated with the package.
 #'
 #' @usage
@@ -1332,6 +1360,7 @@ elasticsearchservice_list_domains_for_package <- function(PackageID, MaxResults 
 #' List all Elasticsearch instance types that are supported for given
 #' ElasticsearchVersion
 #'
+#' @description
 #' List all Elasticsearch instance types that are supported for given
 #' ElasticsearchVersion
 #'
@@ -1381,6 +1410,7 @@ elasticsearchservice_list_elasticsearch_instance_types <- function(Elasticsearch
 
 #' List all supported Elasticsearch versions
 #'
+#' @description
 #' List all supported Elasticsearch versions
 #'
 #' @usage
@@ -1420,6 +1450,7 @@ elasticsearchservice_list_elasticsearch_versions <- function(MaxResults = NULL, 
 
 #' Lists all packages associated with the Amazon ES domain
 #'
+#' @description
 #' Lists all packages associated with the Amazon ES domain.
 #'
 #' @usage
@@ -1463,6 +1494,7 @@ elasticsearchservice_list_packages_for_domain <- function(DomainName, MaxResults
 
 #' Returns all tags for the given Elasticsearch domain
 #'
+#' @description
 #' Returns all tags for the given Elasticsearch domain.
 #'
 #' @usage
@@ -1500,6 +1532,7 @@ elasticsearchservice_list_tags <- function(ARN) {
 
 #' Allows you to purchase reserved Elasticsearch instances
 #'
+#' @description
 #' Allows you to purchase reserved Elasticsearch instances.
 #'
 #' @usage
@@ -1542,6 +1575,7 @@ elasticsearchservice_purchase_reserved_elasticsearch_instance_offering <- functi
 #' Allows the destination domain owner to reject an inbound cross-cluster
 #' search connection request
 #'
+#' @description
 #' Allows the destination domain owner to reject an inbound cross-cluster
 #' search connection request.
 #'
@@ -1581,6 +1615,7 @@ elasticsearchservice_reject_inbound_cross_cluster_search_connection <- function(
 #' Removes the specified set of tags from the specified Elasticsearch
 #' domain
 #'
+#' @description
 #' Removes the specified set of tags from the specified Elasticsearch
 #' domain.
 #'
@@ -1624,6 +1659,7 @@ elasticsearchservice_remove_tags <- function(ARN, TagKeys) {
 
 #' Schedules a service software update for an Amazon ES domain
 #'
+#' @description
 #' Schedules a service software update for an Amazon ES domain.
 #'
 #' @usage
@@ -1663,6 +1699,7 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' Modifies the cluster configuration of the specified Elasticsearch
 #' domain, setting as setting the instance type and the number of instances
 #'
+#' @description
 #' Modifies the cluster configuration of the specified Elasticsearch
 #' domain, setting as setting the instance type and the number of
 #' instances.
@@ -1803,6 +1840,7 @@ elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, 
 
 #' Updates a package for use with Amazon ES domains
 #'
+#' @description
 #' Updates a package for use with Amazon ES domains.
 #'
 #' @usage
@@ -1851,6 +1889,7 @@ elasticsearchservice_update_package <- function(PackageID, PackageSource, Packag
 #' Allows you to either upgrade your domain or perform an Upgrade
 #' eligibility check to a compatible Elasticsearch version
 #'
+#' @description
 #' Allows you to either upgrade your domain or perform an Upgrade
 #' eligibility check to a compatible Elasticsearch version.
 #'

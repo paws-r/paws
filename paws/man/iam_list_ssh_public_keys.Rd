@@ -34,8 +34,7 @@ subsequent call that tells the service where to continue from.}
 \description{
 Returns information about the SSH public keys associated with the
 specified IAM user. If none exists, the operation returns an empty list.
-}
-\details{
+
 The SSH public keys returned by this operation are used only for
 authenticating the IAM user to an AWS CodeCommit repository. For more
 information about using SSH keys to authenticate to an AWS CodeCommit

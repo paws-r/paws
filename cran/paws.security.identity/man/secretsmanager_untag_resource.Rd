@@ -40,8 +40,7 @@ in the \emph{AWS CLI User Guide}.}
 }
 \description{
 Removes one or more tags from the specified secret.
-}
-\details{
+
 This operation is idempotent. If a requested tag is not attached to the
 secret, no error is returned and the secret metadata is unchanged.
 

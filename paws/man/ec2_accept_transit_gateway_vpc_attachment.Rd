@@ -17,8 +17,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Accepts a request to attach a VPC to a transit gateway.
-}
-\details{
+
 The VPC attachment must be in the \code{pendingAcceptance} state. Use
 DescribeTransitGatewayVpcAttachments to view your pending VPC attachment
 requests. Use RejectTransitGatewayVpcAttachment to reject a VPC

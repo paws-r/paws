@@ -24,8 +24,7 @@ results, use null.}
 }
 \description{
 Gets information about the specified request operation.
-}
-\details{
+
 Use this operation after calling a request operation (for example,
 ProvisionProduct, TerminateProvisionedProduct, or
 UpdateProvisionedProduct).

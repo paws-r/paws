@@ -30,8 +30,7 @@ subresource. To configure a bucket as a website, you can add this
 subresource on the bucket with website configuration information such as
 the file name of the index document and any redirect rules. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html}{Hosting Websites on Amazon S3}.
-}
-\details{
+
 This PUT operation requires the \code{S3:PutBucketWebsite} permission. By
 default, only the bucket owner can configure the website attached to a
 bucket; however, bucket owners can allow other users to set the website

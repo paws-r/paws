@@ -24,8 +24,7 @@ specify a filter to select a subset of objects to which the rule
 applies. If you are using a previous version of the lifecycle
 configuration, it still works. For the earlier API description, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycle.html}{GetBucketLifecycle}.
-}
-\details{
+
 Returns the lifecycle configuration information set on the bucket. For
 information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html}{Object Lifecycle Management}.
 

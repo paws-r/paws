@@ -93,8 +93,7 @@ different account, the request will fail with an HTTP
 Retrieves objects from Amazon S3. To use \code{GET}, you must have \code{READ}
 access to the object. If you grant \code{READ} access to the anonymous user,
 you can return the object without using an authorization header.
-}
-\details{
+
 An Amazon S3 bucket has no directory hierarchy such as you would find in
 a typical computer file system. You can, however, create a logical
 hierarchy by using object key names that imply a folder structure. For

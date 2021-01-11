@@ -24,8 +24,7 @@ representable in UTF-8, and the following special characters:
 Adds or overwrites one or more tags for the specified AppStream 2.0
 resource. You can tag AppStream 2.0 image builders, images, fleets, and
 stacks.
-}
-\details{
+
 Each tag consists of a key and an optional value. If a resource already
 has a tag with the same key, this operation updates its value.
 

@@ -28,8 +28,7 @@ Returns a list of insights in your AWS account. You can specify which
 insights are returned by their start time, one or more statuses
 (\code{ONGOING}, \code{CLOSED}, and \code{CLOSED}), one or more severities (\code{LOW},
 \code{MEDIUM}, and \code{HIGH}), and type (\code{REACTIVE} or \code{PROACTIVE}).
-}
-\details{
+
 Use the \code{Filters} parameter to specify status and severity search
 parameters. Use the \code{Type} parameter to specify \code{REACTIVE} or
 \code{PROACTIVE} in your search.

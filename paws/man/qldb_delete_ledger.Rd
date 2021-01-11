@@ -11,8 +11,7 @@ qldb_delete_ledger(Name)
 }
 \description{
 Deletes a ledger and all of its contents. This action is irreversible.
-}
-\details{
+
 If deletion protection is enabled, you must first disable it before you
 can delete the ledger using the QLDB API or the AWS Command Line
 Interface (AWS CLI). You can disable it by calling the \code{UpdateLedger}

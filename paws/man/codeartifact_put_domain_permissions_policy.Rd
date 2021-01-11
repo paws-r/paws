@@ -24,8 +24,7 @@ control resource policy on the provided domain.}
 \description{
 Sets a resource policy on a domain that specifies permissions to access
 it.
-}
-\details{
+
 When you call \code{PutDomainPermissionsPolicy}, the resource policy on the
 domain is ignored when evaluting permissions. This ensures that the
 owner of a domain cannot lock themselves out of the domain, which would

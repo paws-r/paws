@@ -25,8 +25,7 @@ fragments to return.}
 \description{
 Returns a list of Fragment objects from the specified stream and
 timestamp range within the archived data.
-}
-\details{
+
 Listing fragments is eventually consistent. This means that even if the
 producer receives an acknowledgment that a fragment is persisted, the
 result might not be returned immediately from a request to

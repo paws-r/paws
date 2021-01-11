@@ -15,8 +15,7 @@ eks_delete_addon(clusterName, addonName)
 }
 \description{
 Delete an Amazon EKS add-on.
-}
-\details{
+
 When you remove the add-on, it will also be deleted from the cluster.
 You can always manually start an add-on on the cluster using the
 Kubernetes API.

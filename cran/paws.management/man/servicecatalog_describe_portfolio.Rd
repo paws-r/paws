@@ -18,8 +18,7 @@ servicecatalog_describe_portfolio(AcceptLanguage, Id)
 }
 \description{
 Gets information about the specified portfolio.
-}
-\details{
+
 A delegated admin is authorized to invoke this command.
 }
 \section{Request syntax}{

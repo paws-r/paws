@@ -37,6 +37,7 @@ make_doc_desc <- function(operation) {
   docs <- convert(operation$documentation)
   description <- glue::glue("#' {docs}")
   description <- glue::glue_collapse(description, sep = "\n")
+  description <- paste("#' @description", description, sep = "\n")
   return(as.character(description))
 }
 
@@ -327,7 +328,7 @@ escape_special_chars <- function(text) {
   result <- gsub("`\\`", "`\\\\`", result, fixed = TRUE)
 
   # Special characters -- not already escaped
-  for (char in c("{", "}")) {
+  for (char in c("{", "}", "%")) {
     result <- gsub(paste0("(?<!\\\\)", char), paste0("\\\\", char), result, perl = TRUE)
   }
 

@@ -28,17 +28,16 @@ policy records in the Amazon Route 53 console.)
 \description{
 Gets the specified limit for the current account, for example, the
 maximum number of health checks that you can create using the account.
-}
-\details{
+
 For the default limit, see
 \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html}{Limits}
 in the \emph{Amazon Route 53 Developer Guide}. To request a higher limit,
-\href{https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53}{open a case}.
+open a case.
 
 You can also view account limits in AWS Trusted Advisor. Sign in to the
 AWS Management Console and open the Trusted Advisor console at
-\href{https://console.aws.amazon.com/trustedadvisor/home}{https://console.aws.amazon.com/trustedadvisor/}.
-Then choose \strong{Service limits} in the navigation pane.
+https://console.aws.amazon.com/trustedadvisor/. Then choose \strong{Service
+limits} in the navigation pane.
 }
 \section{Request syntax}{
 \preformatted{svc$get_account_limit(

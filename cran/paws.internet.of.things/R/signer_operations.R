@@ -5,6 +5,7 @@ NULL
 
 #' Adds cross-account permissions to a signing profile
 #'
+#' @description
 #' Adds cross-account permissions to a signing profile.
 #'
 #' @usage
@@ -53,6 +54,7 @@ signer_add_profile_permission <- function(profileName, profileVersion = NULL, ac
 
 #' Changes the state of an ACTIVE signing profile to CANCELED
 #'
+#' @description
 #' Changes the state of an `ACTIVE` signing profile to `CANCELED`. A
 #' canceled profile is still viewable with the `ListSigningProfiles`
 #' operation, but it cannot perform new signing jobs, and is deleted two
@@ -92,6 +94,7 @@ signer_cancel_signing_profile <- function(profileName) {
 
 #' Returns information about a specific code signing job
 #'
+#' @description
 #' Returns information about a specific code signing job. You specify the
 #' job by using the `jobId` value that is returned by the StartSigningJob
 #' operation.
@@ -130,6 +133,7 @@ signer_describe_signing_job <- function(jobId) {
 
 #' Returns information on a specific signing platform
 #'
+#' @description
 #' Returns information on a specific signing platform.
 #'
 #' @usage
@@ -166,6 +170,7 @@ signer_get_signing_platform <- function(platformId) {
 
 #' Returns information on a specific signing profile
 #'
+#' @description
 #' Returns information on a specific signing profile.
 #'
 #' @usage
@@ -204,6 +209,7 @@ signer_get_signing_profile <- function(profileName, profileOwner = NULL) {
 
 #' Lists the cross-account permissions associated with a signing profile
 #'
+#' @description
 #' Lists the cross-account permissions associated with a signing profile.
 #'
 #' @usage
@@ -242,6 +248,7 @@ signer_list_profile_permissions <- function(profileName, nextToken = NULL) {
 
 #' Lists all your signing jobs
 #'
+#' @description
 #' Lists all your signing jobs. You can use the `maxResults` parameter to
 #' limit the number of signing jobs that are returned in the response. If
 #' additional jobs remain to be listed, code signing returns a `nextToken`
@@ -319,6 +326,7 @@ signer_list_signing_jobs <- function(status = NULL, platformId = NULL, requested
 #' Lists all signing platforms available in code signing that match the
 #' request parameters
 #'
+#' @description
 #' Lists all signing platforms available in code signing that match the
 #' request parameters. If additional jobs remain to be listed, code signing
 #' returns a `nextToken` value. Use this value in subsequent calls to
@@ -373,6 +381,7 @@ signer_list_signing_platforms <- function(category = NULL, partner = NULL, targe
 
 #' Lists all available signing profiles in your AWS account
 #'
+#' @description
 #' Lists all available signing profiles in your AWS account. Returns only
 #' profiles with an `ACTIVE` status unless the `includeCanceled` request
 #' field is set to `true`. If additional jobs remain to be listed, code
@@ -432,6 +441,7 @@ signer_list_signing_profiles <- function(includeCanceled = NULL, maxResults = NU
 
 #' Returns a list of the tags associated with a signing profile resource
 #'
+#' @description
 #' Returns a list of the tags associated with a signing profile resource.
 #'
 #' @usage
@@ -468,6 +478,7 @@ signer_list_tags_for_resource <- function(resourceArn) {
 
 #' Creates a signing profile
 #'
+#' @description
 #' Creates a signing profile. A signing profile is a code signing template
 #' that can be used to carry out a pre-defined signing job. For more
 #' information, see
@@ -540,6 +551,7 @@ signer_put_signing_profile <- function(profileName, signingMaterial = NULL, sign
 
 #' Removes cross-account permissions from a signing profile
 #'
+#' @description
 #' Removes cross-account permissions from a signing profile.
 #'
 #' @usage
@@ -582,6 +594,7 @@ signer_remove_profile_permission <- function(profileName, revisionId, statementI
 
 #' Changes the state of a signing job to REVOKED
 #'
+#' @description
 #' Changes the state of a signing job to REVOKED. This indicates that the
 #' signature is no longer valid.
 #'
@@ -623,6 +636,7 @@ signer_revoke_signature <- function(jobId, jobOwner = NULL, reason) {
 
 #' Changes the state of a signing profile to REVOKED
 #'
+#' @description
 #' Changes the state of a signing profile to REVOKED. This indicates that
 #' signatures generated using the signing profile after an effective start
 #' date are no longer valid.
@@ -672,6 +686,7 @@ signer_revoke_signing_profile <- function(profileName, profileVersion, reason, e
 
 #' Initiates a signing job to be performed on the code provided
 #'
+#' @description
 #' Initiates a signing job to be performed on the code provided. Signing
 #' jobs are viewable by the `ListSigningJobs` operation for two years after
 #' they are performed. Note the following requirements:
@@ -755,6 +770,7 @@ signer_start_signing_job <- function(source, destination, profileName, clientReq
 
 #' Adds one or more tags to a signing profile
 #'
+#' @description
 #' Adds one or more tags to a signing profile. Tags are labels that you can
 #' use to identify and organize your AWS resources. Each tag consists of a
 #' key and an optional value. To specify the signing profile, use its
@@ -798,6 +814,7 @@ signer_tag_resource <- function(resourceArn, tags) {
 
 #' Removes one or more tags from a signing profile
 #'
+#' @description
 #' Removes one or more tags from a signing profile. To remove the tags,
 #' specify a list of tag keys.
 #'

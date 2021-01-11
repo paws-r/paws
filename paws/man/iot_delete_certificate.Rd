@@ -15,8 +15,7 @@ attached to an IoT thing.}
 }
 \description{
 Deletes the specified certificate.
-}
-\details{
+
 A certificate cannot be deleted if it has a policy or IoT thing attached
 to it or if its status is set to ACTIVE. To delete a certificate, first
 use the DetachPrincipalPolicy API to detach all policies. Next, use the

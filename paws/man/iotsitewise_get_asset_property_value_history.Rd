@@ -41,8 +41,7 @@ Default: 100}
 Gets the history of an asset property's values. For more information,
 see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#historical-values}{Querying historical values}
 in the \emph{AWS IoT SiteWise User Guide}.
-}
-\details{
+
 To identify an asset property, you must specify one of the following:
 \itemize{
 \item The \code{assetId} and \code{propertyId} of an asset property.

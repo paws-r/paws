@@ -25,8 +25,7 @@ information on game servers using ListGameServers or ClaimGameServer.}
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}
-}
-\details{
+
 Locates an available game server and temporarily reserves it to host
 gameplay and players. This operation is called from a game client or
 client service (such as a matchmaker) to request hosting resources for a

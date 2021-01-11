@@ -13,8 +13,7 @@ dynamodb_create_backup(TableName, BackupName)
 }
 \description{
 Creates a backup for an existing table.
-}
-\details{
+
 Each time you create an on-demand backup, the entire table data is
 backed up. There is no limit to the number of on-demand backups that can
 be taken.

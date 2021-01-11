@@ -83,8 +83,7 @@ to \code{0}. You can use \code{NONE} to specify unlimited duration.}
 \description{
 Registers a new \emph{activity type} along with its configuration settings in
 the specified domain.
-}
-\details{
+
 A \code{TypeAlreadyExists} fault is returned if the type already exists in
 the domain. You cannot change any configuration settings of the type
 after its registration, and it must be registered as a new version.

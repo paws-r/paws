@@ -12,8 +12,7 @@ assigned to.}
 }
 \description{
 Lists the tags that are assigned to an Amazon Cognito identity pool.
-}
-\details{
+
 A tag is a label that you can apply to identity pools to categorize and
 manage them in different ways, such as by purpose, owner, environment,
 or other criteria.

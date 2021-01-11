@@ -13,8 +13,7 @@ storagegateway_disable_gateway(GatewayARN)
 Disables a tape gateway when the gateway is no longer functioning. For
 example, if your gateway VM is damaged, you can disable the gateway so
 you can recover virtual tapes.
-}
-\details{
+
 Use this operation for a tape gateway that is not reachable or not
 functioning. This operation is only supported in the tape gateway type.
 

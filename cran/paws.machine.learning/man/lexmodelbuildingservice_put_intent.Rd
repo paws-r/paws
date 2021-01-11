@@ -135,8 +135,7 @@ intent activates when the intent is fulfilled.}
 }
 \description{
 Creates an intent or replaces an existing intent.
-}
-\details{
+
 To define the interaction between the user and your bot, you use one or
 more intents. For a pizza ordering bot, for example, you would create an
 \code{OrderPizza} intent.

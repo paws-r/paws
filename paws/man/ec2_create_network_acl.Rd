@@ -20,8 +20,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Creates a network ACL in a VPC. Network ACLs provide an optional layer
 of security (in addition to security groups) for the instances in your
 VPC.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Network ACLs} in the \emph{Amazon
 Virtual Private Cloud User Guide}.
 }

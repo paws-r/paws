@@ -25,8 +25,7 @@ cloudformation_record_handler_progress(BearerToken, OperationStatus,
 }
 \description{
 Reports progress of a resource handler to CloudFormation.
-}
-\details{
+
 Reserved for use by the \href{https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html}{CloudFormation CLI}.
 Do not use this API in your code.
 }

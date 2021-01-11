@@ -23,8 +23,7 @@ Default: There is no default value.}
 }
 \description{
 Returns a description of the specified resource in the specified stack.
-}
-\details{
+
 For deleted stacks, DescribeStackResource returns resource information
 for up to 90 days after the stack has been deleted.
 }

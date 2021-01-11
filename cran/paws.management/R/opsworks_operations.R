@@ -5,6 +5,7 @@ NULL
 
 #' Assign a registered instance to a layer
 #'
+#' @description
 #' Assign a registered instance to a layer.
 #' 
 #' -   You can assign registered on-premises instances to any layer type.
@@ -61,6 +62,7 @@ opsworks_assign_instance <- function(InstanceId, LayerIds) {
 #' Assigns one of the stack's registered Amazon EBS volumes to a specified
 #' instance
 #'
+#' @description
 #' Assigns one of the stack's registered Amazon EBS volumes to a specified
 #' instance. The volume must first be registered with the stack by calling
 #' RegisterVolume. After you register the volume, you must call
@@ -111,6 +113,7 @@ opsworks_assign_volume <- function(VolumeId, InstanceId = NULL) {
 #' Associates one of the stack's registered Elastic IP addresses with a
 #' specified instance
 #'
+#' @description
 #' Associates one of the stack's registered Elastic IP addresses with a
 #' specified instance. The address must first be registered with the stack
 #' by calling RegisterElasticIp. For more information, see [Resource
@@ -158,6 +161,7 @@ opsworks_associate_elastic_ip <- function(ElasticIp, InstanceId = NULL) {
 
 #' Attaches an Elastic Load Balancing load balancer to a specified layer
 #'
+#' @description
 #' Attaches an Elastic Load Balancing load balancer to a specified layer.
 #' AWS OpsWorks Stacks does not support Application Load Balancer. You can
 #' only use Classic Load Balancer with AWS OpsWorks Stacks. For more
@@ -212,6 +216,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 
 #' Creates a clone of a specified stack
 #'
+#' @description
 #' Creates a clone of a specified stack. For more information, see [Clone a
 #' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-cloning.html).
 #' By default, all parameters are set to the values used by the parent
@@ -505,6 +510,7 @@ opsworks_clone_stack <- function(SourceStackId, Name = NULL, Region = NULL, VpcI
 
 #' Creates an app for a specified stack
 #'
+#' @description
 #' Creates an app for a specified stack. For more information, see
 #' [Creating
 #' Apps](https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-creating.html).
@@ -621,6 +627,7 @@ opsworks_create_app <- function(StackId, Shortname = NULL, Name, Description = N
 
 #' Runs deployment or stack commands
 #'
+#' @description
 #' Runs deployment or stack commands. For more information, see [Deploying
 #' Apps](https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html)
 #' and [Run Stack
@@ -702,6 +709,7 @@ opsworks_create_deployment <- function(StackId, AppId = NULL, InstanceIds = NULL
 
 #' Creates an instance in a specified stack
 #'
+#' @description
 #' Creates an instance in a specified stack. For more information, see
 #' [Adding an Instance to a
 #' Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html).
@@ -894,6 +902,7 @@ opsworks_create_instance <- function(StackId, LayerIds, InstanceType, AutoScalin
 
 #' Creates a layer
 #'
+#' @description
 #' Creates a layer. For more information, see [How to Create a
 #' Layer](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-create.html).
 #' 
@@ -1075,6 +1084,7 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 
 #' Creates a new stack
 #'
+#' @description
 #' Creates a new stack. For more information, see [Create a New
 #' Stack](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html).
 #' 
@@ -1369,6 +1379,7 @@ opsworks_create_stack <- function(Name, Region, VpcId = NULL, Attributes = NULL,
 
 #' Creates a new user profile
 #'
+#' @description
 #' Creates a new user profile.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have an
@@ -1424,6 +1435,7 @@ opsworks_create_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
 
 #' Deletes a specified app
 #'
+#' @description
 #' Deletes a specified app.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -1467,6 +1479,7 @@ opsworks_delete_app <- function(AppId) {
 #' Deletes a specified instance, which terminates the associated Amazon EC2
 #' instance
 #'
+#' @description
 #' Deletes a specified instance, which terminates the associated Amazon EC2
 #' instance. You must stop an instance before you can delete it.
 #' 
@@ -1517,6 +1530,7 @@ opsworks_delete_instance <- function(InstanceId, DeleteElasticIp = NULL, DeleteV
 
 #' Deletes a specified layer
 #'
+#' @description
 #' Deletes a specified layer. You must first stop and then delete all
 #' associated instances or unassign registered instances. For more
 #' information, see [How to Delete a
@@ -1562,6 +1576,7 @@ opsworks_delete_layer <- function(LayerId) {
 
 #' Deletes a specified stack
 #'
+#' @description
 #' Deletes a specified stack. You must first delete all instances, layers,
 #' and apps or deregister registered instances. For more information, see
 #' [Shut Down a
@@ -1607,6 +1622,7 @@ opsworks_delete_stack <- function(StackId) {
 
 #' Deletes a user profile
 #'
+#' @description
 #' Deletes a user profile.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have an
@@ -1648,6 +1664,7 @@ opsworks_delete_user_profile <- function(IamUserArn) {
 
 #' Deregisters a specified Amazon ECS cluster from a stack
 #'
+#' @description
 #' Deregisters a specified Amazon ECS cluster from a stack. For more
 #' information, see [Resource
 #' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html#workinglayers-ecscluster-delete).
@@ -1692,6 +1709,7 @@ opsworks_deregister_ecs_cluster <- function(EcsClusterArn) {
 
 #' Deregisters a specified Elastic IP address
 #'
+#' @description
 #' Deregisters a specified Elastic IP address. The address can then be
 #' registered by another stack. For more information, see [Resource
 #' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
@@ -1736,6 +1754,7 @@ opsworks_deregister_elastic_ip <- function(ElasticIp) {
 
 #' Deregister a registered Amazon EC2 or on-premises instance
 #'
+#' @description
 #' Deregister a registered Amazon EC2 or on-premises instance. This action
 #' removes the instance from the stack and returns it to your control. This
 #' action cannot be used with instances that were created with AWS OpsWorks
@@ -1781,6 +1800,7 @@ opsworks_deregister_instance <- function(InstanceId) {
 
 #' Deregisters an Amazon RDS instance
 #'
+#' @description
 #' Deregisters an Amazon RDS instance.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -1823,6 +1843,7 @@ opsworks_deregister_rds_db_instance <- function(RdsDbInstanceArn) {
 
 #' Deregisters an Amazon EBS volume
 #'
+#' @description
 #' Deregisters an Amazon EBS volume. The volume can then be registered by
 #' another stack. For more information, see [Resource
 #' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
@@ -1869,6 +1890,7 @@ opsworks_deregister_volume <- function(VolumeId) {
 
 #' Describes the available AWS OpsWorks Stacks agent versions
 #'
+#' @description
 #' Describes the available AWS OpsWorks Stacks agent versions. You must
 #' specify a stack ID or a configuration manager. `DescribeAgentVersions`
 #' returns a list of available agent versions for the specified stack or
@@ -1913,6 +1935,7 @@ opsworks_describe_agent_versions <- function(StackId = NULL, ConfigurationManage
 
 #' Requests a description of a specified set of apps
 #'
+#' @description
 #' Requests a description of a specified set of apps.
 #' 
 #' This call accepts only one resource-identifying parameter.
@@ -1964,6 +1987,7 @@ opsworks_describe_apps <- function(StackId = NULL, AppIds = NULL) {
 
 #' Describes the results of specified commands
 #'
+#' @description
 #' Describes the results of specified commands.
 #' 
 #' This call accepts only one resource-identifying parameter.
@@ -2020,6 +2044,7 @@ opsworks_describe_commands <- function(DeploymentId = NULL, InstanceId = NULL, C
 
 #' Requests a description of a specified set of deployments
 #'
+#' @description
 #' Requests a description of a specified set of deployments.
 #' 
 #' This call accepts only one resource-identifying parameter.
@@ -2074,6 +2099,7 @@ opsworks_describe_deployments <- function(StackId = NULL, AppId = NULL, Deployme
 
 #' Describes Amazon ECS clusters that are registered with a stack
 #'
+#' @description
 #' Describes Amazon ECS clusters that are registered with a stack. If you
 #' specify only a stack ID, you can use the `MaxResults` and `NextToken`
 #' parameters to paginate the response. However, AWS OpsWorks Stacks
@@ -2141,6 +2167,7 @@ opsworks_describe_ecs_clusters <- function(EcsClusterArns = NULL, StackId = NULL
 
 #' Describes Elastic IP addresses
 #'
+#' @description
 #' Describes [Elastic IP
 #' addresses](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html).
 #' 
@@ -2199,6 +2226,7 @@ opsworks_describe_elastic_ips <- function(InstanceId = NULL, StackId = NULL, Ips
 
 #' Describes a stack's Elastic Load Balancing instances
 #'
+#' @description
 #' Describes a stack's Elastic Load Balancing instances.
 #' 
 #' This call accepts only one resource-identifying parameter.
@@ -2249,6 +2277,7 @@ opsworks_describe_elastic_load_balancers <- function(StackId = NULL, LayerIds = 
 
 #' Requests a description of a set of instances
 #'
+#' @description
 #' Requests a description of a set of instances.
 #' 
 #' This call accepts only one resource-identifying parameter.
@@ -2303,6 +2332,7 @@ opsworks_describe_instances <- function(StackId = NULL, LayerId = NULL, Instance
 
 #' Requests a description of one or more layers in a specified stack
 #'
+#' @description
 #' Requests a description of one or more layers in a specified stack.
 #' 
 #' This call accepts only one resource-identifying parameter.
@@ -2353,6 +2383,7 @@ opsworks_describe_layers <- function(StackId = NULL, LayerIds = NULL) {
 
 #' Describes load-based auto scaling configurations for specified layers
 #'
+#' @description
 #' Describes load-based auto scaling configurations for specified layers.
 #' 
 #' You must specify at least one of the parameters.
@@ -2399,6 +2430,7 @@ opsworks_describe_load_based_auto_scaling <- function(LayerIds) {
 
 #' Describes a user's SSH information
 #'
+#' @description
 #' Describes a user's SSH information.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have
@@ -2437,6 +2469,7 @@ opsworks_describe_my_user_profile <- function() {
 #' Describes the operating systems that are supported by AWS OpsWorks
 #' Stacks
 #'
+#' @description
 #' Describes the operating systems that are supported by AWS OpsWorks
 #' Stacks.
 #'
@@ -2469,6 +2502,7 @@ opsworks_describe_operating_systems <- function() {
 
 #' Describes the permissions for a specified stack
 #'
+#' @description
 #' Describes the permissions for a specified stack.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -2515,6 +2549,7 @@ opsworks_describe_permissions <- function(IamUserArn = NULL, StackId = NULL) {
 
 #' Describe an instance's RAID arrays
 #'
+#' @description
 #' Describe an instance's RAID arrays.
 #' 
 #' This call accepts only one resource-identifying parameter.
@@ -2568,6 +2603,7 @@ opsworks_describe_raid_arrays <- function(InstanceId = NULL, StackId = NULL, Rai
 
 #' Describes Amazon RDS instances
 #'
+#' @description
 #' Describes Amazon RDS instances.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -2617,6 +2653,7 @@ opsworks_describe_rds_db_instances <- function(StackId, RdsDbInstanceArns = NULL
 
 #' Describes AWS OpsWorks Stacks service errors
 #'
+#' @description
 #' Describes AWS OpsWorks Stacks service errors.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -2672,6 +2709,7 @@ opsworks_describe_service_errors <- function(StackId = NULL, InstanceId = NULL, 
 
 #' Requests a description of a stack's provisioning parameters
 #'
+#' @description
 #' Requests a description of a stack's provisioning parameters.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -2715,6 +2753,7 @@ opsworks_describe_stack_provisioning_parameters <- function(StackId) {
 #' Describes the number of layers and apps in a specified stack, and the
 #' number of instances in each state, such as running_setup or online
 #'
+#' @description
 #' Describes the number of layers and apps in a specified stack, and the
 #' number of instances in each state, such as `running_setup` or `online`.
 #' 
@@ -2758,6 +2797,7 @@ opsworks_describe_stack_summary <- function(StackId) {
 
 #' Requests a description of one or more stacks
 #'
+#' @description
 #' Requests a description of one or more stacks.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -2804,6 +2844,7 @@ opsworks_describe_stacks <- function(StackIds = NULL) {
 
 #' Describes time-based auto scaling configurations for specified instances
 #'
+#' @description
 #' Describes time-based auto scaling configurations for specified
 #' instances.
 #' 
@@ -2851,6 +2892,7 @@ opsworks_describe_time_based_auto_scaling <- function(InstanceIds) {
 
 #' Describe specified users
 #'
+#' @description
 #' Describe specified users.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have an
@@ -2895,6 +2937,7 @@ opsworks_describe_user_profiles <- function(IamUserArns = NULL) {
 
 #' Describes an instance's Amazon EBS volumes
 #'
+#' @description
 #' Describes an instance's Amazon EBS volumes.
 #' 
 #' This call accepts only one resource-identifying parameter.
@@ -2952,6 +2995,7 @@ opsworks_describe_volumes <- function(InstanceId = NULL, StackId = NULL, RaidArr
 
 #' Detaches a specified Elastic Load Balancing instance from its layer
 #'
+#' @description
 #' Detaches a specified Elastic Load Balancing instance from its layer.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -2997,6 +3041,7 @@ opsworks_detach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 
 #' Disassociates an Elastic IP address from its instance
 #'
+#' @description
 #' Disassociates an Elastic IP address from its instance. The address
 #' remains registered with the stack. For more information, see [Resource
 #' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
@@ -3042,6 +3087,7 @@ opsworks_disassociate_elastic_ip <- function(ElasticIp) {
 #' Gets a generated host name for the specified layer, based on the current
 #' host name theme
 #'
+#' @description
 #' Gets a generated host name for the specified layer, based on the current
 #' host name theme.
 #' 
@@ -3085,6 +3131,7 @@ opsworks_get_hostname_suggestion <- function(LayerId) {
 
 #' This action can be used only with Windows stacks
 #'
+#' @description
 #' This action can be used only with Windows stacks.
 #' 
 #' Grants RDP access to a Windows instance for a specified time period.
@@ -3128,6 +3175,7 @@ opsworks_grant_access <- function(InstanceId, ValidForInMinutes = NULL) {
 
 #' Returns a list of tags that are applied to the specified stack or layer
 #'
+#' @description
 #' Returns a list of tags that are applied to the specified stack or layer.
 #'
 #' @usage
@@ -3170,6 +3218,7 @@ opsworks_list_tags <- function(ResourceArn, MaxResults = NULL, NextToken = NULL)
 
 #' Reboots a specified instance
 #'
+#' @description
 #' Reboots a specified instance. For more information, see [Starting,
 #' Stopping, and Rebooting
 #' Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
@@ -3214,6 +3263,7 @@ opsworks_reboot_instance <- function(InstanceId) {
 
 #' Registers a specified Amazon ECS cluster with a stack
 #'
+#' @description
 #' Registers a specified Amazon ECS cluster with a stack. You can register
 #' only one cluster with a stack. A cluster can be registered with only one
 #' stack. For more information, see [Resource
@@ -3261,6 +3311,7 @@ opsworks_register_ecs_cluster <- function(EcsClusterArn, StackId) {
 
 #' Registers an Elastic IP address with a specified stack
 #'
+#' @description
 #' Registers an Elastic IP address with a specified stack. An address can
 #' be registered with only one stack at a time. If the address is already
 #' registered, you must first deregister it by calling DeregisterElasticIp.
@@ -3310,6 +3361,7 @@ opsworks_register_elastic_ip <- function(ElasticIp, StackId) {
 #' Registers instances that were created outside of AWS OpsWorks Stacks
 #' with a specified stack
 #'
+#' @description
 #' Registers instances that were created outside of AWS OpsWorks Stacks
 #' with a specified stack.
 #' 
@@ -3386,6 +3438,7 @@ opsworks_register_instance <- function(StackId, Hostname = NULL, PublicIp = NULL
 
 #' Registers an Amazon RDS instance with a stack
 #'
+#' @description
 #' Registers an Amazon RDS instance with a stack.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -3435,6 +3488,7 @@ opsworks_register_rds_db_instance <- function(StackId, RdsDbInstanceArn, DbUser,
 
 #' Registers an Amazon EBS volume with a specified stack
 #'
+#' @description
 #' Registers an Amazon EBS volume with a specified stack. A volume can be
 #' registered with only one stack at a time. If the volume is already
 #' registered, you must first deregister it by calling DeregisterVolume.
@@ -3483,6 +3537,7 @@ opsworks_register_volume <- function(Ec2VolumeId = NULL, StackId) {
 
 #' Specify the load-based auto scaling configuration for a specified layer
 #'
+#' @description
 #' Specify the load-based auto scaling configuration for a specified layer.
 #' For more information, see [Managing Load with Time-based and Load-based
 #' Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html).
@@ -3565,6 +3620,7 @@ opsworks_set_load_based_auto_scaling <- function(LayerId, Enable = NULL, UpScali
 
 #' Specifies a user's permissions
 #'
+#' @description
 #' Specifies a user's permissions. For more information, see [Security and
 #' Permissions](https://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html).
 #' 
@@ -3632,6 +3688,7 @@ opsworks_set_permission <- function(StackId, IamUserArn, AllowSsh = NULL, AllowS
 #' Specify the time-based auto scaling configuration for a specified
 #' instance
 #'
+#' @description
 #' Specify the time-based auto scaling configuration for a specified
 #' instance. For more information, see [Managing Load with Time-based and
 #' Load-based
@@ -3701,6 +3758,7 @@ opsworks_set_time_based_auto_scaling <- function(InstanceId, AutoScalingSchedule
 
 #' Starts a specified instance
 #'
+#' @description
 #' Starts a specified instance. For more information, see [Starting,
 #' Stopping, and Rebooting
 #' Instances](https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html).
@@ -3745,6 +3803,7 @@ opsworks_start_instance <- function(InstanceId) {
 
 #' Starts a stack's instances
 #'
+#' @description
 #' Starts a stack's instances.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -3787,6 +3846,7 @@ opsworks_start_stack <- function(StackId) {
 
 #' Stops a specified instance
 #'
+#' @description
 #' Stops a specified instance. When you stop a standard instance, the data
 #' disappears and must be reinstalled when you restart the instance. You
 #' can stop an Amazon EBS-backed instance without losing data. For more
@@ -3841,6 +3901,7 @@ opsworks_stop_instance <- function(InstanceId, Force = NULL) {
 
 #' Stops a specified stack
 #'
+#' @description
 #' Stops a specified stack.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -3884,6 +3945,7 @@ opsworks_stop_stack <- function(StackId) {
 #' Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks
 #' Stacks
 #'
+#' @description
 #' Apply cost-allocation tags to a specified stack or layer in AWS OpsWorks
 #' Stacks. For more information about how tagging works, see
 #' [Tags](https://docs.aws.amazon.com/opsworks/latest/userguide/tagging.html)
@@ -3944,6 +4006,7 @@ opsworks_tag_resource <- function(ResourceArn, Tags) {
 #' Unassigns a registered instance from all layers that are using the
 #' instance
 #'
+#' @description
 #' Unassigns a registered instance from all layers that are using the
 #' instance. The instance remains in the stack as an unassigned instance,
 #' and can be assigned to another layer as needed. You cannot use this
@@ -3989,6 +4052,7 @@ opsworks_unassign_instance <- function(InstanceId) {
 
 #' Unassigns an assigned Amazon EBS volume
 #'
+#' @description
 #' Unassigns an assigned Amazon EBS volume. The volume remains registered
 #' with the stack. For more information, see [Resource
 #' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
@@ -4033,6 +4097,7 @@ opsworks_unassign_volume <- function(VolumeId) {
 
 #' Removes tags from a specified stack or layer
 #'
+#' @description
 #' Removes tags from a specified stack or layer.
 #'
 #' @usage
@@ -4073,6 +4138,7 @@ opsworks_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates a specified app
 #'
+#' @description
 #' Updates a specified app.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -4180,6 +4246,7 @@ opsworks_update_app <- function(AppId, Name = NULL, Description = NULL, DataSour
 
 #' Updates a registered Elastic IP address's name
 #'
+#' @description
 #' Updates a registered Elastic IP address's name. For more information,
 #' see [Resource
 #' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).
@@ -4226,6 +4293,7 @@ opsworks_update_elastic_ip <- function(ElasticIp, Name = NULL) {
 
 #' Updates a specified instance
 #'
+#' @description
 #' Updates a specified instance.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -4368,6 +4436,7 @@ opsworks_update_instance <- function(InstanceId, LayerIds = NULL, InstanceType =
 
 #' Updates a specified layer
 #'
+#' @description
 #' Updates a specified layer.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -4531,6 +4600,7 @@ opsworks_update_layer <- function(LayerId, Name = NULL, Shortname = NULL, Attrib
 
 #' Updates a user's SSH public key
 #'
+#' @description
 #' Updates a user's SSH public key.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have
@@ -4573,6 +4643,7 @@ opsworks_update_my_user_profile <- function(SshPublicKey = NULL) {
 
 #' Updates an Amazon RDS instance
 #'
+#' @description
 #' Updates an Amazon RDS instance.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -4619,6 +4690,7 @@ opsworks_update_rds_db_instance <- function(RdsDbInstanceArn, DbUser = NULL, DbP
 
 #' Updates a specified stack
 #'
+#' @description
 #' Updates a specified stack.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have a
@@ -4856,6 +4928,7 @@ opsworks_update_stack <- function(StackId, Name = NULL, Attributes = NULL, Servi
 
 #' Updates a specified user profile
 #'
+#' @description
 #' Updates a specified user profile.
 #' 
 #' **Required Permissions**: To use this action, an IAM user must have an
@@ -4910,6 +4983,7 @@ opsworks_update_user_profile <- function(IamUserArn, SshUsername = NULL, SshPubl
 
 #' Updates an Amazon EBS volume's name or mount point
 #'
+#' @description
 #' Updates an Amazon EBS volume's name or mount point. For more
 #' information, see [Resource
 #' Management](https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html).

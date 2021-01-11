@@ -13,8 +13,7 @@ autoscaling_delete_policy(AutoScalingGroupName, PolicyName)
 }
 \description{
 Deletes the specified scaling policy.
-}
-\details{
+
 Deleting either a step scaling policy or a simple scaling policy deletes
 the underlying alarm action, but does not delete the alarm, even if it
 no longer has an associated action.

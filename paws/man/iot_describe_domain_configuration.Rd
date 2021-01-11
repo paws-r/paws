@@ -11,8 +11,7 @@ iot_describe_domain_configuration(domainConfigurationName)
 }
 \description{
 Gets summary information about a domain configuration.
-}
-\details{
+
 The domain configuration feature is in public preview and is subject to
 change.
 }

@@ -19,8 +19,7 @@ Each AppIntegration association can have only one of each use case type.}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Creates a use case for an AppIntegration association.
 }
 \section{Request syntax}{

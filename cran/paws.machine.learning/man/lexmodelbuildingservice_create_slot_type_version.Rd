@@ -23,8 +23,7 @@ Creates a new version of a slot type based on the \verb{$LATEST} version of
 the specified slot type. If the \verb{$LATEST} version of this resource has
 not changed since the last version that you created, Amazon Lex doesn't
 create a new version. It returns the last version that you created.
-}
-\details{
+
 You can update only the \verb{$LATEST} version of a slot type. You can't
 update the numbered versions that you create with the
 \code{CreateSlotTypeVersion} operation.

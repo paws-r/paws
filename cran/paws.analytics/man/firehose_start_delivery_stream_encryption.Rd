@@ -16,8 +16,7 @@ needed for Server-Side Encryption (SSE).}
 }
 \description{
 Enables server-side encryption (SSE) for the delivery stream.
-}
-\details{
+
 This operation is asynchronous. It returns immediately. When you invoke
 it, Kinesis Data Firehose first sets the encryption status of the stream
 to \code{ENABLING}, and then to \code{ENABLED}. The encryption status of a

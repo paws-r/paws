@@ -16,8 +16,7 @@ Otherwise, it returns a description of every app.}
 }
 \description{
 Requests a description of a specified set of apps.
-}
-\details{
+
 This call accepts only one resource-identifying parameter.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a

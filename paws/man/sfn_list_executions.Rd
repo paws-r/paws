@@ -32,8 +32,7 @@ error.}
 Lists the executions of a state machine that meet the filtering
 criteria. Results are sorted by time, with the most recent execution
 first.
-}
-\details{
+
 If \code{nextToken} is returned, there are more results available. The value
 of \code{nextToken} is a unique pagination token for each page. Make the call
 again using the returned token to retrieve the next page. Keep all other

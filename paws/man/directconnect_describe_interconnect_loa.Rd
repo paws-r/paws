@@ -19,8 +19,7 @@ value is application/pdf.}
 }
 \description{
 Deprecated. Use DescribeLoa instead.
-}
-\details{
+
 Gets the LOA-CFA for the specified interconnect.
 
 The Letter of Authorization - Connecting Facility Assignment (LOA-CFA)

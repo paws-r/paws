@@ -25,8 +25,7 @@ CreateOpenIDConnectProvider.}
 Replaces the existing list of server certificate thumbprints associated
 with an OpenID Connect (OIDC) provider resource object with a new list
 of thumbprints.
-}
-\details{
+
 The list that you pass with this operation completely replaces the
 existing list of thumbprints. (The lists are not merged.)
 

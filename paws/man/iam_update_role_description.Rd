@@ -13,8 +13,7 @@ iam_update_role_description(RoleName, Description)
 }
 \description{
 Use UpdateRole instead.
-}
-\details{
+
 Modifies only the description of a role. This operation performs the
 same function as the \code{Description} parameter in the \code{UpdateRole}
 operation.

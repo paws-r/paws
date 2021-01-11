@@ -59,8 +59,7 @@ interleaves events from multiple log streams within a log group.}
 Lists log events from the specified log group. You can list all the log
 events or filter the results using a filter pattern, a time range, and
 the name of the log stream.
-}
-\details{
+
 By default, this operation returns as many log events as can fit in 1 MB
 (up to 10,000 log events) or all the events found within the time range
 that you specify. If the results include a token, then there are more

@@ -14,8 +14,7 @@ list of backup IDs. Backup IDs are in the format
 \description{
 Deletes a backup. You can delete both manual and automated backups. This
 operation is asynchronous.
-}
-\details{
+
 An \code{InvalidStateException} is thrown when a backup deletion is already
 in progress. A \code{ResourceNotFoundException} is thrown when the backup
 does not exist. A \code{ValidationException} is thrown when parameters of the

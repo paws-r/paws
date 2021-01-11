@@ -22,8 +22,7 @@ meet to be included in your response.}
 \description{
 Detects text in the input image and converts it into machine-readable
 text.
-}
-\details{
+
 Pass the input image as base64-encoded image bytes or as a reference to
 an image in an Amazon S3 bucket. If you use the AWS CLI to call Amazon
 Rekognition operations, you must pass it as a reference to an image in

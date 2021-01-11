@@ -24,8 +24,7 @@ For example: \verb{\\\{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49\\\}}}
 Returns a block object at a specified address in a journal. Also returns
 a proof of the specified block for verification if \code{DigestTipAddress} is
 provided.
-}
-\details{
+
 For information about the data contents in a block, see \href{https://docs.aws.amazon.com/qldb/latest/developerguide/journal-contents.html}{Journal contents}
 in the \emph{Amazon QLDB Developer Guide}.
 

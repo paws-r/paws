@@ -39,8 +39,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 Applies a Legal Hold configuration to the specified object.
-}
-\details{
+
 This action is not supported by Amazon S3 on Outposts.
 
 \strong{Related Resources}

@@ -28,8 +28,7 @@ One of \code{SchemaArn} or \code{SchemaName} has to be provided.
 \description{
 Updates the description, compatibility setting, or version checkpoint
 for a schema set.
-}
-\details{
+
 For updating the compatibility setting, the call will not validate
 compatibility for the entire set of schema versions with the new
 compatibility setting. If the value for \code{Compatibility} is provided, the

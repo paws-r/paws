@@ -5,6 +5,7 @@ NULL
 
 #' Creates an EFS access point
 #'
+#' @description
 #' Creates an EFS access point. An access point is an application-specific
 #' view into an EFS file system that applies an operating system user and
 #' group, and a file system path, to any file system request made through
@@ -89,6 +90,7 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 
 #' Creates a new, empty file system
 #'
+#' @description
 #' Creates a new, empty file system. The operation requires a creation
 #' token in the request that Amazon EFS uses to ensure idempotent creation
 #' (calling the operation with same creation token has no effect). If a
@@ -260,6 +262,7 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
 
 #' Creates a mount target for a file system
 #'
+#' @description
 #' Creates a mount target for a file system. You can then mount the file
 #' system on EC2 instances by using the mount target.
 #' 
@@ -422,6 +425,7 @@ efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, Se
 
 #' Creates or overwrites tags associated with a file system
 #'
+#' @description
 #' Creates or overwrites tags associated with a file system. Each tag is a
 #' key-value pair. If a tag key specified in the request already exists on
 #' the file system, this operation overwrites its value with the value
@@ -488,6 +492,7 @@ efs_create_tags <- function(FileSystemId, Tags) {
 
 #' Deletes the specified access point
 #'
+#' @description
 #' Deletes the specified access point. After deletion is complete, new
 #' clients can no longer connect to the access points. Clients connected to
 #' the access point at the time of deletion will continue to function until
@@ -530,6 +535,7 @@ efs_delete_access_point <- function(AccessPointId) {
 
 #' Deletes a file system, permanently severing access to its contents
 #'
+#' @description
 #' Deletes a file system, permanently severing access to its contents. Upon
 #' return, the file system no longer exists and you can't access any
 #' contents of the deleted file system.
@@ -590,6 +596,7 @@ efs_delete_file_system <- function(FileSystemId) {
 
 #' Deletes the FileSystemPolicy for the specified file system
 #'
+#' @description
 #' Deletes the `FileSystemPolicy` for the specified file system. The
 #' default `FileSystemPolicy` goes into effect once the existing policy is
 #' deleted. For more information about the default file system policy, see
@@ -634,6 +641,7 @@ efs_delete_file_system_policy <- function(FileSystemId) {
 
 #' Deletes the specified mount target
 #'
+#' @description
 #' Deletes the specified mount target.
 #' 
 #' This operation forcibly breaks any mounts of the file system by using
@@ -703,6 +711,7 @@ efs_delete_mount_target <- function(MountTargetId) {
 
 #' Deletes the specified tags from a file system
 #'
+#' @description
 #' Deletes the specified tags from a file system. If the `DeleteTags`
 #' request includes a tag key that doesn't exist, Amazon EFS ignores it and
 #' doesn't cause an error. For more information about tags and related
@@ -763,6 +772,7 @@ efs_delete_tags <- function(FileSystemId, TagKeys) {
 #' Returns the description of a specific Amazon EFS access point if the
 #' AccessPointId is provided
 #'
+#' @description
 #' Returns the description of a specific Amazon EFS access point if the
 #' `AccessPointId` is provided. If you provide an EFS `FileSystemId`, it
 #' returns descriptions of all access points for that file system. You can
@@ -819,6 +829,7 @@ efs_describe_access_points <- function(MaxResults = NULL, NextToken = NULL, Acce
 
 #' Returns the backup policy for the specified EFS file system
 #'
+#' @description
 #' Returns the backup policy for the specified EFS file system.
 #'
 #' @usage
@@ -855,6 +866,7 @@ efs_describe_backup_policy <- function(FileSystemId) {
 
 #' Returns the FileSystemPolicy for the specified EFS file system
 #'
+#' @description
 #' Returns the `FileSystemPolicy` for the specified EFS file system.
 #' 
 #' This operation requires permissions for the
@@ -895,6 +907,7 @@ efs_describe_file_system_policy <- function(FileSystemId) {
 #' Returns the description of a specific Amazon EFS file system if either
 #' the file system CreationToken or the FileSystemId is provided
 #'
+#' @description
 #' Returns the description of a specific Amazon EFS file system if either
 #' the file system `CreationToken` or the `FileSystemId` is provided.
 #' Otherwise, it returns descriptions of all file systems owned by the
@@ -977,6 +990,7 @@ efs_describe_file_systems <- function(MaxItems = NULL, Marker = NULL, CreationTo
 #' Returns the current LifecycleConfiguration object for the specified
 #' Amazon EFS file system
 #'
+#' @description
 #' Returns the current `LifecycleConfiguration` object for the specified
 #' Amazon EFS file system. EFS lifecycle management uses the
 #' `LifecycleConfiguration` object to identify which files to move to the
@@ -1032,6 +1046,7 @@ efs_describe_lifecycle_configuration <- function(FileSystemId) {
 
 #' Returns the security groups currently in effect for a mount target
 #'
+#' @description
 #' Returns the security groups currently in effect for a mount target. This
 #' operation requires that the network interface of the mount target has
 #' been created and the lifecycle state of the mount target is not
@@ -1089,6 +1104,7 @@ efs_describe_mount_target_security_groups <- function(MountTargetId) {
 #' Returns the descriptions of all the current mount targets, or a specific
 #' mount target, for a file system
 #'
+#' @description
 #' Returns the descriptions of all the current mount targets, or a specific
 #' mount target, for a file system. When requesting all of the current
 #' mount targets, the order of mount targets returned in the response is
@@ -1163,6 +1179,7 @@ efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSyste
 
 #' Returns the tags associated with a file system
 #'
+#' @description
 #' Returns the tags associated with a file system. The order of tags
 #' returned in the response of one `DescribeTags` call and the order of
 #' tags returned across the responses of a multiple-call iteration (when
@@ -1222,6 +1239,7 @@ efs_describe_tags <- function(MaxItems = NULL, Marker = NULL, FileSystemId) {
 
 #' Lists all tags for a top-level EFS resource
 #'
+#' @description
 #' Lists all tags for a top-level EFS resource. You must provide the ID of
 #' the resource that you want to retrieve the tags for.
 #' 
@@ -1270,6 +1288,7 @@ efs_list_tags_for_resource <- function(ResourceId, MaxResults = NULL, NextToken 
 
 #' Modifies the set of security groups in effect for a mount target
 #'
+#' @description
 #' Modifies the set of security groups in effect for a mount target.
 #' 
 #' When you create a mount target, Amazon EFS also creates a new network
@@ -1338,6 +1357,7 @@ efs_modify_mount_target_security_groups <- function(MountTargetId, SecurityGroup
 
 #' Updates the file system's backup policy
 #'
+#' @description
 #' Updates the file system's backup policy. Use this action to start or
 #' stop automatic backups of the file system.
 #'
@@ -1379,6 +1399,7 @@ efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
 
 #' Applies an Amazon EFS FileSystemPolicy to an Amazon EFS file system
 #'
+#' @description
 #' Applies an Amazon EFS `FileSystemPolicy` to an Amazon EFS file system. A
 #' file system policy is an IAM resource-based policy and can contain
 #' multiple policy statements. A file system always has exactly one file
@@ -1442,6 +1463,7 @@ efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockout
 #' Enables lifecycle management by creating a new LifecycleConfiguration
 #' object
 #'
+#' @description
 #' Enables lifecycle management by creating a new `LifecycleConfiguration`
 #' object. A `LifecycleConfiguration` object defines when files in an
 #' Amazon EFS file system are automatically transitioned to the lower-cost
@@ -1533,6 +1555,7 @@ efs_put_lifecycle_configuration <- function(FileSystemId, LifecyclePolicies) {
 
 #' Creates a tag for an EFS resource
 #'
+#' @description
 #' Creates a tag for an EFS resource. You can create tags for EFS file
 #' systems and access points using this API operation.
 #' 
@@ -1580,6 +1603,7 @@ efs_tag_resource <- function(ResourceId, Tags) {
 
 #' Removes tags from an EFS resource
 #'
+#' @description
 #' Removes tags from an EFS resource. You can remove tags from EFS file
 #' systems and access points using this API operation.
 #' 
@@ -1626,6 +1650,7 @@ efs_untag_resource <- function(ResourceId, TagKeys) {
 #' Updates the throughput mode or the amount of provisioned throughput of
 #' an existing file system
 #'
+#' @description
 #' Updates the throughput mode or the amount of provisioned throughput of
 #' an existing file system.
 #'

@@ -23,8 +23,6 @@ character.}
 \description{
 This operation initiates the vault locking process by doing the
 following:
-}
-\details{
 \itemize{
 \item Installing a vault lock policy on the specified vault.
 \item Setting the lock state of vault lock to \code{InProgress}.

@@ -12,8 +12,7 @@ forecastservice_describe_dataset_group(DatasetGroupArn)
 \description{
 Describes a dataset group created using the CreateDatasetGroup
 operation.
-}
-\details{
+
 In addition to listing the parameters provided in the
 \code{CreateDatasetGroup} request, this operation includes the following
 properties:

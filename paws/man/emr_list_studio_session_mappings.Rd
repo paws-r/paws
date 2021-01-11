@@ -19,8 +19,7 @@ and groups.}
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.
-}
-\details{
+
 Returns a list of all user or group session mappings for the EMR Studio
 specified by \code{StudioId}.
 }

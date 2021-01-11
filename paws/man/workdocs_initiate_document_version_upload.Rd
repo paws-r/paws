@@ -28,8 +28,7 @@ administrator credentials to access the API.}
 }
 \description{
 Creates a new document object and version object.
-}
-\details{
+
 The client specifies the parent folder ID and name of the document to
 upload. The ID is optionally specified when creating a new version of an
 existing document. This is the first step to upload a document. Next,

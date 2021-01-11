@@ -18,8 +18,7 @@ periods, and spaces.}
 \description{
 Updates the description for an existing group. You cannot update the
 name of a resource group.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

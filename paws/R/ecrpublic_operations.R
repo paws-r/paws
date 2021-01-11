@@ -6,6 +6,7 @@ NULL
 #' Checks the availability of one or more image layers within a repository
 #' in a public registry
 #'
+#' @description
 #' Checks the availability of one or more image layers within a repository
 #' in a public registry. When an image is pushed to a repository, each
 #' image layer is checked to verify if it has been uploaded before. If it
@@ -60,6 +61,7 @@ ecrpublic_batch_check_layer_availability <- function(registryId = NULL, reposito
 #' Deletes a list of specified images within a repository in a public
 #' registry
 #'
+#' @description
 #' Deletes a list of specified images within a repository in a public
 #' registry. Images are specified with either an `imageTag` or
 #' `imageDigest`.
@@ -119,6 +121,7 @@ ecrpublic_batch_delete_image <- function(registryId = NULL, repositoryName, imag
 #' Informs Amazon ECR that the image layer upload has completed for a
 #' specified public registry, repository name, and upload ID
 #'
+#' @description
 #' Informs Amazon ECR that the image layer upload has completed for a
 #' specified public registry, repository name, and upload ID. You can
 #' optionally provide a `sha256` digest of the image layer for data
@@ -178,6 +181,7 @@ ecrpublic_complete_layer_upload <- function(registryId = NULL, repositoryName, u
 
 #' Creates a repository in a public registry
 #'
+#' @description
 #' Creates a repository in a public registry. For more information, see
 #' [Amazon ECR
 #' repositories](https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html)
@@ -235,6 +239,7 @@ ecrpublic_create_repository <- function(repositoryName, catalogData = NULL) {
 
 #' Deletes a repository in a public registry
 #'
+#' @description
 #' Deletes a repository in a public registry. If the repository contains
 #' images, you must either delete all images in the repository or use the
 #' `force` option which deletes all images on your behalf before deleting
@@ -280,6 +285,7 @@ ecrpublic_delete_repository <- function(registryId = NULL, repositoryName, force
 
 #' Deletes the repository policy associated with the specified repository
 #'
+#' @description
 #' Deletes the repository policy associated with the specified repository.
 #'
 #' @usage
@@ -321,6 +327,7 @@ ecrpublic_delete_repository_policy <- function(registryId = NULL, repositoryName
 
 #' Returns the image tag details for a repository in a public registry
 #'
+#' @description
 #' Returns the image tag details for a repository in a public registry.
 #'
 #' @usage
@@ -380,6 +387,7 @@ ecrpublic_describe_image_tags <- function(registryId = NULL, repositoryName, nex
 
 #' Returns metadata about the images in a repository in a public registry
 #'
+#' @description
 #' Returns metadata about the images in a repository in a public registry.
 #' 
 #' Beginning with Docker version 1.9, the Docker client compresses image
@@ -451,6 +459,7 @@ ecrpublic_describe_images <- function(registryId = NULL, repositoryName, imageId
 
 #' Returns details for a public registry
 #'
+#' @description
 #' Returns details for a public registry.
 #'
 #' @usage
@@ -504,6 +513,7 @@ ecrpublic_describe_registries <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Describes repositories in a public registry
 #'
+#' @description
 #' Describes repositories in a public registry.
 #'
 #' @usage
@@ -571,6 +581,7 @@ ecrpublic_describe_repositories <- function(registryId = NULL, repositoryNames =
 
 #' Retrieves an authorization token
 #'
+#' @description
 #' Retrieves an authorization token. An authorization token represents your
 #' IAM authentication credentials and can be used to access any Amazon ECR
 #' registry that your IAM principal has access to. The authorization token
@@ -608,6 +619,7 @@ ecrpublic_get_authorization_token <- function() {
 
 #' Retrieves catalog metadata for a public registry
 #'
+#' @description
 #' Retrieves catalog metadata for a public registry.
 #'
 #' @usage
@@ -640,6 +652,7 @@ ecrpublic_get_registry_catalog_data <- function() {
 
 #' Retrieve catalog metadata for a repository in a public registry
 #'
+#' @description
 #' Retrieve catalog metadata for a repository in a public registry. This
 #' metadata is displayed publicly in the Amazon ECR Public Gallery.
 #'
@@ -681,6 +694,7 @@ ecrpublic_get_repository_catalog_data <- function(registryId = NULL, repositoryN
 
 #' Retrieves the repository policy for the specified repository
 #'
+#' @description
 #' Retrieves the repository policy for the specified repository.
 #'
 #' @usage
@@ -721,6 +735,7 @@ ecrpublic_get_repository_policy <- function(registryId = NULL, repositoryName) {
 
 #' Notifies Amazon ECR that you intend to upload an image layer
 #'
+#' @description
 #' Notifies Amazon ECR that you intend to upload an image layer.
 #' 
 #' When an image is pushed, the InitiateLayerUpload API is called once per
@@ -770,6 +785,7 @@ ecrpublic_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 
 #' Creates or updates the image manifest and tags associated with an image
 #'
+#' @description
 #' Creates or updates the image manifest and tags associated with an image.
 #' 
 #' When an image is pushed and all new image layers have been uploaded, the
@@ -831,6 +847,7 @@ ecrpublic_put_image <- function(registryId = NULL, repositoryName, imageManifest
 
 #' Create or updates the catalog data for a public registry
 #'
+#' @description
 #' Create or updates the catalog data for a public registry.
 #'
 #' @usage
@@ -872,6 +889,7 @@ ecrpublic_put_registry_catalog_data <- function(displayName = NULL) {
 #' Creates or updates the catalog data for a repository in a public
 #' registry
 #'
+#' @description
 #' Creates or updates the catalog data for a repository in a public
 #' registry.
 #'
@@ -929,6 +947,7 @@ ecrpublic_put_repository_catalog_data <- function(registryId = NULL, repositoryN
 #' Applies a repository policy to the specified public repository to
 #' control access permissions
 #'
+#' @description
 #' Applies a repository policy to the specified public repository to
 #' control access permissions. For more information, see [Amazon ECR
 #' Repository
@@ -984,6 +1003,7 @@ ecrpublic_set_repository_policy <- function(registryId = NULL, repositoryName, p
 
 #' Uploads an image layer part to Amazon ECR
 #'
+#' @description
 #' Uploads an image layer part to Amazon ECR.
 #' 
 #' When an image is pushed, each new image layer is uploaded in parts. The

@@ -119,8 +119,7 @@ parameter is not used, the operation returns up to 50 results and a
 \description{
 Provides descriptive information about the scaling activities in the
 specified namespace from the previous six weeks.
-}
-\details{
+
 You can filter the results using \code{ResourceId} and \code{ScalableDimension}.
 }
 \section{Request syntax}{

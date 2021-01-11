@@ -19,8 +19,7 @@ Updates phone number details, such as product type or calling name, for
 the specified phone number ID. You can update one phone number detail at
 a time. For example, you can update either the product type or the
 calling name in one action.
-}
-\details{
+
 For toll-free numbers, you must use the Amazon Chime Voice Connector
 product type.
 

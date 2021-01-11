@@ -11,8 +11,7 @@ ses_verify_domain_dkim(Domain)
 }
 \description{
 Returns a set of DKIM tokens for a domain identity.
-}
-\details{
+
 When you execute the \code{VerifyDomainDkim} operation, the domain that you
 specify is added to the list of identities that are associated with your
 account. This is true even if you haven't already associated the domain

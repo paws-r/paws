@@ -28,8 +28,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Releases the specified Elastic IP address.
-}
-\details{
+
 [EC2-Classic, default VPC] Releasing an Elastic IP address
 automatically disassociates it from any instance that it's associated
 with. To disassociate an Elastic IP address without releasing it, use

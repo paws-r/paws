@@ -11,8 +11,7 @@ frauddetector_delete_external_model(modelEndpoint)
 }
 \description{
 Removes a SageMaker model from Amazon Fraud Detector.
-}
-\details{
+
 You can remove an Amazon SageMaker model if it is not associated with a
 detector version. Removing a SageMaker model disconnects it from Amazon
 Fraud Detector, but the model remains available in SageMaker.

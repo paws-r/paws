@@ -36,8 +36,7 @@ This action puts a bucket policy to an Amazon S3 on Outposts bucket. To
 put a policy on an S3 bucket, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketPolicy.html}{PutBucketPolicy}
 in the \emph{Amazon Simple Storage Service API}.
-}
-\details{
+
 Applies an Amazon S3 bucket policy to an Outposts bucket. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.

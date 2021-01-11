@@ -13,8 +13,7 @@ sagemaker_describe_model_package(ModelPackageName)
 \description{
 Returns a description of the specified model package, which is used to
 create Amazon SageMaker models or list them on AWS Marketplace.
-}
-\details{
+
 To create models in Amazon SageMaker, buyers can subscribe to model
 packages listed on AWS Marketplace.
 }

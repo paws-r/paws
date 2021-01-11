@@ -5,6 +5,7 @@ NULL
 
 #' Sends messages to a channel
 #'
+#' @description
 #' Sends messages to a channel.
 #'
 #' @usage
@@ -71,6 +72,7 @@ iotanalytics_batch_put_message <- function(channelName, messages) {
 
 #' Cancels the reprocessing of data through the pipeline
 #'
+#' @description
 #' Cancels the reprocessing of data through the pipeline.
 #'
 #' @usage
@@ -110,6 +112,7 @@ iotanalytics_cancel_pipeline_reprocessing <- function(pipelineName, reprocessing
 
 #' Creates a channel
 #'
+#' @description
 #' Creates a channel. A channel collects data from an MQTT topic and
 #' archives the raw, unprocessed messages before publishing the data to a
 #' pipeline.
@@ -174,6 +177,7 @@ iotanalytics_create_channel <- function(channelName, channelStorage = NULL, rete
 
 #' Creates a dataset
 #'
+#' @description
 #' Creates a dataset. A dataset stores data retrieved from a data store by
 #' applying a `queryAction` (a SQL query) or a `containerAction` (executing
 #' a containerized application). This operation creates the skeleton of a
@@ -336,6 +340,7 @@ iotanalytics_create_dataset <- function(datasetName, actions, triggers = NULL, c
 #' Creates the content of a data set by applying a queryAction (a SQL
 #' query) or a containerAction (executing a containerized application)
 #'
+#' @description
 #' Creates the content of a data set by applying a `queryAction` (a SQL
 #' query) or a `containerAction` (executing a containerized application).
 #'
@@ -378,6 +383,7 @@ iotanalytics_create_dataset_content <- function(datasetName, versionId = NULL) {
 
 #' Creates a data store, which is a repository for messages
 #'
+#' @description
 #' Creates a data store, which is a repository for messages.
 #'
 #' @usage
@@ -460,6 +466,7 @@ iotanalytics_create_datastore <- function(datastoreName, datastoreStorage = NULL
 
 #' Creates a pipeline
 #'
+#' @description
 #' Creates a pipeline. A pipeline consumes messages from a channel and
 #' allows you to process the messages before storing them in a data store.
 #' You must specify both a `channel` and a `datastore` activity and,
@@ -583,6 +590,7 @@ iotanalytics_create_pipeline <- function(pipelineName, pipelineActivities, tags 
 
 #' Deletes the specified channel
 #'
+#' @description
 #' Deletes the specified channel.
 #'
 #' @usage
@@ -619,6 +627,7 @@ iotanalytics_delete_channel <- function(channelName) {
 
 #' Deletes the specified dataset
 #'
+#' @description
 #' Deletes the specified dataset.
 #' 
 #' You do not have to delete the content of the dataset before you perform
@@ -658,6 +667,7 @@ iotanalytics_delete_dataset <- function(datasetName) {
 
 #' Deletes the content of the specified dataset
 #'
+#' @description
 #' Deletes the content of the specified dataset.
 #'
 #' @usage
@@ -699,6 +709,7 @@ iotanalytics_delete_dataset_content <- function(datasetName, versionId = NULL) {
 
 #' Deletes the specified data store
 #'
+#' @description
 #' Deletes the specified data store.
 #'
 #' @usage
@@ -735,6 +746,7 @@ iotanalytics_delete_datastore <- function(datastoreName) {
 
 #' Deletes the specified pipeline
 #'
+#' @description
 #' Deletes the specified pipeline.
 #'
 #' @usage
@@ -771,6 +783,7 @@ iotanalytics_delete_pipeline <- function(pipelineName) {
 
 #' Retrieves information about a channel
 #'
+#' @description
 #' Retrieves information about a channel.
 #'
 #' @usage
@@ -811,6 +824,7 @@ iotanalytics_describe_channel <- function(channelName, includeStatistics = NULL)
 
 #' Retrieves information about a dataset
 #'
+#' @description
 #' Retrieves information about a dataset.
 #'
 #' @usage
@@ -847,6 +861,7 @@ iotanalytics_describe_dataset <- function(datasetName) {
 
 #' Retrieves information about a data store
 #'
+#' @description
 #' Retrieves information about a data store.
 #'
 #' @usage
@@ -887,6 +902,7 @@ iotanalytics_describe_datastore <- function(datastoreName, includeStatistics = N
 
 #' Retrieves the current settings of the AWS IoT Analytics logging options
 #'
+#' @description
 #' Retrieves the current settings of the AWS IoT Analytics logging options.
 #'
 #' @usage
@@ -919,6 +935,7 @@ iotanalytics_describe_logging_options <- function() {
 
 #' Retrieves information about a pipeline
 #'
+#' @description
 #' Retrieves information about a pipeline.
 #'
 #' @usage
@@ -955,6 +972,7 @@ iotanalytics_describe_pipeline <- function(pipelineName) {
 
 #' Retrieves the contents of a data set as presigned URIs
 #'
+#' @description
 #' Retrieves the contents of a data set as presigned URIs.
 #'
 #' @usage
@@ -996,6 +1014,7 @@ iotanalytics_get_dataset_content <- function(datasetName, versionId = NULL) {
 
 #' Retrieves a list of channels
 #'
+#' @description
 #' Retrieves a list of channels.
 #'
 #' @usage
@@ -1036,6 +1055,7 @@ iotanalytics_list_channels <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Lists information about data set contents that have been created
 #'
+#' @description
 #' Lists information about data set contents that have been created.
 #'
 #' @usage
@@ -1089,6 +1109,7 @@ iotanalytics_list_dataset_contents <- function(datasetName, nextToken = NULL, ma
 
 #' Retrieves information about data sets
 #'
+#' @description
 #' Retrieves information about data sets.
 #'
 #' @usage
@@ -1129,6 +1150,7 @@ iotanalytics_list_datasets <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Retrieves a list of data stores
 #'
+#' @description
 #' Retrieves a list of data stores.
 #'
 #' @usage
@@ -1169,6 +1191,7 @@ iotanalytics_list_datastores <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Retrieves a list of pipelines
 #'
+#' @description
 #' Retrieves a list of pipelines.
 #'
 #' @usage
@@ -1209,6 +1232,7 @@ iotanalytics_list_pipelines <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Lists the tags (metadata) that you have assigned to the resource
 #'
+#' @description
 #' Lists the tags (metadata) that you have assigned to the resource.
 #'
 #' @usage
@@ -1245,6 +1269,7 @@ iotanalytics_list_tags_for_resource <- function(resourceArn) {
 
 #' Sets or updates the AWS IoT Analytics logging options
 #'
+#' @description
 #' Sets or updates the AWS IoT Analytics logging options.
 #' 
 #' If you update the value of any `loggingOptions` field, it takes up to
@@ -1292,6 +1317,7 @@ iotanalytics_put_logging_options <- function(loggingOptions) {
 #' Simulates the results of running a pipeline activity on a message
 #' payload
 #'
+#' @description
 #' Simulates the results of running a pipeline activity on a message
 #' payload.
 #'
@@ -1401,6 +1427,7 @@ iotanalytics_run_pipeline_activity <- function(pipelineActivity, payloads) {
 #' Retrieves a sample of messages from the specified channel ingested
 #' during the specified timeframe
 #'
+#' @description
 #' Retrieves a sample of messages from the specified channel ingested
 #' during the specified timeframe. Up to 10 messages can be retrieved.
 #'
@@ -1450,6 +1477,7 @@ iotanalytics_sample_channel_data <- function(channelName, maxMessages = NULL, st
 
 #' Starts the reprocessing of raw message data through the pipeline
 #'
+#' @description
 #' Starts the reprocessing of raw message data through the pipeline.
 #'
 #' @usage
@@ -1511,6 +1539,7 @@ iotanalytics_start_pipeline_reprocessing <- function(pipelineName, startTime = N
 
 #' Adds to or modifies the tags of the given resource
 #'
+#' @description
 #' Adds to or modifies the tags of the given resource. Tags are metadata
 #' that can be used to manage a resource.
 #'
@@ -1555,6 +1584,7 @@ iotanalytics_tag_resource <- function(resourceArn, tags) {
 
 #' Removes the given tags (metadata) from the resource
 #'
+#' @description
 #' Removes the given tags (metadata) from the resource.
 #'
 #' @usage
@@ -1595,6 +1625,7 @@ iotanalytics_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates the settings of a channel
 #'
+#' @description
 #' Updates the settings of a channel.
 #'
 #' @usage
@@ -1651,6 +1682,7 @@ iotanalytics_update_channel <- function(channelName, channelStorage = NULL, rete
 
 #' Updates the settings of a data set
 #'
+#' @description
 #' Updates the settings of a data set.
 #'
 #' @usage
@@ -1791,6 +1823,7 @@ iotanalytics_update_dataset <- function(datasetName, actions, triggers = NULL, c
 
 #' Updates the settings of a data store
 #'
+#' @description
 #' Updates the settings of a data store.
 #'
 #' @usage
@@ -1867,6 +1900,7 @@ iotanalytics_update_datastore <- function(datastoreName, retentionPeriod = NULL,
 
 #' Updates the settings of a pipeline
 #'
+#' @description
 #' Updates the settings of a pipeline. You must specify both a `channel`
 #' and a `datastore` activity and, optionally, as many as 23 additional
 #' activities in the `pipelineActivities` array.

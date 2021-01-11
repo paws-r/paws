@@ -24,8 +24,7 @@ Constraints: Must be the name of valid cluster.}
 Deletes the specified manual snapshot. The snapshot must be in the
 \code{available} state, with no other users authorized to access the
 snapshot.
-}
-\details{
+
 Unlike automated snapshots, manual snapshots are retained even after you
 delete your cluster. Amazon Redshift does not delete your manual
 snapshots. You must delete manual snapshot explicitly to avoid getting

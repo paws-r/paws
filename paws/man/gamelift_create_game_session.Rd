@@ -58,8 +58,7 @@ Creates a multiplayer game session for players. This operation creates a
 game session record and assigns an available server process in the
 specified fleet to host the game session. A fleet must have an \code{ACTIVE}
 status before a game session can be created in it.
-}
-\details{
+
 To create a game session, specify either fleet ID or alias ID and
 indicate a maximum number of players to allow in the game session. You
 can also provide a name and game-specific properties for this game

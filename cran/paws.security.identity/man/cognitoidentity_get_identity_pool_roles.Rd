@@ -11,8 +11,7 @@ cognitoidentity_get_identity_pool_roles(IdentityPoolId)
 }
 \description{
 Gets the roles for an identity pool.
-}
-\details{
+
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{

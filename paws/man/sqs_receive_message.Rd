@@ -128,7 +128,7 @@ messages in the queue remain in a strict order.
 The maximum length of \code{ReceiveRequestAttemptId} is 128 characters.
 \code{ReceiveRequestAttemptId} can contain alphanumeric characters (\code{a-z},
 \code{A-Z}, \code{0-9}) and punctuation
-(\verb{!\\"#$\%&amp;\\'()*+,-./:;&lt;=&gt;?@\\\[\\\\\]^_\\`\\\{|\\\}~}).
+(\verb{!\\"#$\\\%&amp;\\'()*+,-./:;&lt;=&gt;?@\\\[\\\\\]^_\\`\\\{|\\\}~}).
 
 For best practices of using \code{ReceiveRequestAttemptId}, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html}{Using the ReceiveRequestAttemptId Request Parameter}
 in the \emph{Amazon Simple Queue Service Developer Guide}.}
@@ -138,8 +138,7 @@ Retrieves one or more messages (up to 10), from the specified queue.
 Using the \code{WaitTimeSeconds} parameter enables long-poll support. For
 more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-short-and-long-polling.html#sqs-long-polling}{Amazon SQS Long Polling}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
-}
-\details{
+
 Short poll is the default behavior where a weighted random set of
 machines is sampled on a \code{ReceiveMessage} call. Thus, only the messages
 on the sampled machines are returned. If the number of messages in the

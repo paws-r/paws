@@ -5,6 +5,7 @@ NULL
 
 #' Adds an IAM user to the team for an AWS CodeStar project
 #'
+#' @description
 #' Adds an IAM user to the team for an AWS CodeStar project.
 #'
 #' @usage
@@ -55,6 +56,7 @@ codestar_associate_team_member <- function(projectId, clientRequestToken = NULL,
 
 #' Creates a project, including project resources
 #'
+#' @description
 #' Creates a project, including project resources. This action creates a
 #' project based on a submitted project request. A set of source code files
 #' and a toolchain template file can be included with the project request.
@@ -151,6 +153,7 @@ codestar_create_project <- function(name, id, description = NULL, clientRequestT
 #' display name and email address assocciated with the user, in AWS
 #' CodeStar
 #'
+#' @description
 #' Creates a profile for a user that includes user preferences, such as the
 #' display name and email address assocciated with the user, in AWS
 #' CodeStar. The user profile is not project-specific. Information in the
@@ -203,6 +206,7 @@ codestar_create_user_profile <- function(userArn, displayName, emailAddress, ssh
 
 #' Deletes a project, including project resources
 #'
+#' @description
 #' Deletes a project, including project resources. Does not delete users
 #' associated with the project, but does delete the IAM roles that allowed
 #' access to the project.
@@ -253,6 +257,7 @@ codestar_delete_project <- function(id, clientRequestToken = NULL, deleteStack =
 #' preference data associated with that profile, such as display name and
 #' email address
 #'
+#' @description
 #' Deletes a user profile in AWS CodeStar, including all personal
 #' preference data associated with that profile, such as display name and
 #' email address. It does not delete the history of that user, for example
@@ -292,6 +297,7 @@ codestar_delete_user_profile <- function(userArn) {
 
 #' Describes a project and its resources
 #'
+#' @description
 #' Describes a project and its resources.
 #'
 #' @usage
@@ -329,6 +335,7 @@ codestar_describe_project <- function(id) {
 #' Describes a user in AWS CodeStar and the user attributes across all
 #' projects
 #'
+#' @description
 #' Describes a user in AWS CodeStar and the user attributes across all
 #' projects.
 #'
@@ -366,6 +373,7 @@ codestar_describe_user_profile <- function(userArn) {
 
 #' Removes a user from a project
 #'
+#' @description
 #' Removes a user from a project. Removing a user from a project also
 #' removes the IAM policies from that user that allowed access to the
 #' project and its resources. Disassociating a team member does not remove
@@ -410,6 +418,7 @@ codestar_disassociate_team_member <- function(projectId, userArn) {
 
 #' Lists all projects in AWS CodeStar associated with your AWS account
 #'
+#' @description
 #' Lists all projects in AWS CodeStar associated with your AWS account.
 #'
 #' @usage
@@ -450,6 +459,7 @@ codestar_list_projects <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Lists resources associated with a project in AWS CodeStar
 #'
+#' @description
 #' Lists resources associated with a project in AWS CodeStar.
 #'
 #' @usage
@@ -492,6 +502,7 @@ codestar_list_resources <- function(projectId, nextToken = NULL, maxResults = NU
 
 #' Gets the tags for a project
 #'
+#' @description
 #' Gets the tags for a project.
 #'
 #' @usage
@@ -532,6 +543,7 @@ codestar_list_tags_for_project <- function(id, nextToken = NULL, maxResults = NU
 
 #' Lists all team members associated with a project
 #'
+#' @description
 #' Lists all team members associated with a project.
 #'
 #' @usage
@@ -574,6 +586,7 @@ codestar_list_team_members <- function(projectId, nextToken = NULL, maxResults =
 #' Lists all the user profiles configured for your AWS account in AWS
 #' CodeStar
 #'
+#' @description
 #' Lists all the user profiles configured for your AWS account in AWS
 #' CodeStar.
 #'
@@ -614,6 +627,7 @@ codestar_list_user_profiles <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Adds tags to a project
 #'
+#' @description
 #' Adds tags to a project.
 #'
 #' @usage
@@ -654,6 +668,7 @@ codestar_tag_project <- function(id, tags) {
 
 #' Removes tags from a project
 #'
+#' @description
 #' Removes tags from a project.
 #'
 #' @usage
@@ -694,6 +709,7 @@ codestar_untag_project <- function(id, tags) {
 
 #' Updates a project in AWS CodeStar
 #'
+#' @description
 #' Updates a project in AWS CodeStar.
 #'
 #' @usage
@@ -734,6 +750,7 @@ codestar_update_project <- function(id, name = NULL, description = NULL) {
 
 #' Updates a team member's attributes in an AWS CodeStar project
 #'
+#' @description
 #' Updates a team member's attributes in an AWS CodeStar project. For
 #' example, you can change a team member's role in the project, or change
 #' whether they have remote access to project resources.
@@ -786,6 +803,7 @@ codestar_update_team_member <- function(projectId, userArn, projectRole = NULL, 
 
 #' Updates a user's profile in AWS CodeStar
 #'
+#' @description
 #' Updates a user's profile in AWS CodeStar. The user profile is not
 #' project-specific. Information in the user profile is displayed wherever
 #' the user's information appears to other users in AWS CodeStar.

@@ -15,8 +15,7 @@ is \code{1}.}
 }
 \description{
 Deletes the specified scaling plan.
-}
-\details{
+
 Deleting a scaling plan deletes the underlying ScalingInstruction for
 all of the scalable resources that are covered by the plan.
 

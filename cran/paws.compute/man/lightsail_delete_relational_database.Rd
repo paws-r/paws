@@ -34,11 +34,11 @@ Constraints:
 }
 \description{
 Deletes a database in Amazon Lightsail.
-}
-\details{
+
 The \verb{delete relational database} operation supports tag-based access
 control via resource tags applied to the resource identified by
-relationalDatabaseName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+relationalDatabaseName. For more information, see the Lightsail Dev
+Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_relational_database(

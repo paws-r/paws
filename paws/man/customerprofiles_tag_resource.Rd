@@ -19,8 +19,7 @@ categorize your resources. You can also use them to scope user
 permissions by granting a user permission to access or change only
 resources with certain tag values. In Connect Customer Profiles,
 domains, profile object types, and integrations can be tagged.
-}
-\details{
+
 Tags don't have any semantic meaning to AWS and are interpreted strictly
 as strings of characters.
 

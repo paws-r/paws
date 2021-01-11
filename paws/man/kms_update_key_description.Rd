@@ -25,8 +25,7 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 \description{
 Updates the description of a customer master key (CMK). To see the
 description of a CMK, use DescribeKey.
-}
-\details{
+
 The CMK that you use for this operation must be in a compatible key
 state. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects Use of a Customer Master Key}
 in the \emph{AWS Key Management Service Developer Guide}.

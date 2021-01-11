@@ -22,8 +22,7 @@ trigger a \emph{kernel panic} (on Linux instances), or a \emph{blue screen}/\emp
 error} (on Windows instances). For instances based on Intel and AMD
 processors, the interrupt is received as a \emph{non-maskable interrupt}
 (NMI).
-}
-\details{
+
 In general, the operating system crashes and reboots when a kernel panic
 or stop error is triggered. The operating system can also be configured
 to perform diagnostic tasks, such as generating a memory dump file,

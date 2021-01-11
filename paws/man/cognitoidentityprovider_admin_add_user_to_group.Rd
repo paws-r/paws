@@ -16,8 +16,7 @@ cognitoidentityprovider_admin_add_user_to_group(UserPoolId, Username,
 }
 \description{
 Adds the specified user to the specified group.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

@@ -36,8 +36,7 @@ results.}
 \description{
 Lists the current handshakes that are associated with the account of the
 requesting user.
-}
-\details{
+
 Handshakes that are \code{ACCEPTED}, \code{DECLINED}, or \code{CANCELED} appear in the
 results of this API for only 30 days after changing to that state. After
 that, they're deleted and no longer accessible.

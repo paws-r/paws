@@ -6,6 +6,7 @@ NULL
 #' Accepts a directory sharing request that was sent from the directory
 #' owner account
 #'
+#' @description
 #' Accepts a directory sharing request that was sent from the directory
 #' owner account.
 #'
@@ -46,6 +47,7 @@ directoryservice_accept_shared_directory <- function(SharedDirectoryId) {
 #' addressable IP address, you must add a CIDR address block to correctly
 #' route traffic to and from your Microsoft AD on Amazon Web Services
 #'
+#' @description
 #' If the DNS server for your on-premises domain uses a publicly
 #' addressable IP address, you must add a CIDR address block to correctly
 #' route traffic to and from your Microsoft AD on Amazon Web Services.
@@ -154,6 +156,7 @@ directoryservice_add_ip_routes <- function(DirectoryId, IpRoutes, UpdateSecurity
 #' Adds two domain controllers in the specified Region for the specified
 #' directory
 #'
+#' @description
 #' Adds two domain controllers in the specified Region for the specified
 #' directory.
 #'
@@ -202,6 +205,7 @@ directoryservice_add_region <- function(DirectoryId, RegionName, VPCSettings) {
 
 #' Adds or overwrites one or more tags for the specified directory
 #'
+#' @description
 #' Adds or overwrites one or more tags for the specified directory. Each
 #' directory can have a maximum of 50 tags. Each tag consists of a key and
 #' optional value. Tag keys must be unique to each resource.
@@ -247,6 +251,7 @@ directoryservice_add_tags_to_resource <- function(ResourceId, Tags) {
 
 #' Cancels an in-progress schema extension to a Microsoft AD directory
 #'
+#' @description
 #' Cancels an in-progress schema extension to a Microsoft AD directory.
 #' Once a schema extension has started replicating to all domain
 #' controllers, the task can no longer be canceled. A schema extension can
@@ -289,6 +294,7 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 
 #' Creates an AD Connector to connect to an on-premises directory
 #'
+#' @description
 #' Creates an AD Connector to connect to an on-premises directory.
 #' 
 #' Before you call `ConnectDirectory`, ensure that all of the required
@@ -361,6 +367,7 @@ directoryservice_connect_directory <- function(Name, ShortName = NULL, Password,
 
 #' Creates an alias for a directory and assigns the alias to the directory
 #'
+#' @description
 #' Creates an alias for a directory and assigns the alias to the directory.
 #' The alias is used to construct the access URL for the directory, such as
 #' `http://&lt;alias&gt;.awsapps.com`.
@@ -408,6 +415,7 @@ directoryservice_create_alias <- function(DirectoryId, Alias) {
 
 #' Creates an Active Directory computer object in the specified directory
 #'
+#' @description
 #' Creates an Active Directory computer object in the specified directory.
 #'
 #' @usage
@@ -461,6 +469,7 @@ directoryservice_create_computer <- function(DirectoryId, ComputerName, Password
 
 #' Creates a conditional forwarder associated with your AWS directory
 #'
+#' @description
 #' Creates a conditional forwarder associated with your AWS directory.
 #' Conditional forwarders are required in order to set up a trust
 #' relationship with another domain. The conditional forwarder points to
@@ -510,6 +519,7 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 
 #' Creates a Simple AD directory
 #'
+#' @description
 #' Creates a Simple AD directory. For more information, see [Simple Active
 #' Directory](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html)
 #' in the *AWS Directory Service Admin Guide*.
@@ -611,6 +621,7 @@ directoryservice_create_directory <- function(Name, ShortName = NULL, Password, 
 #' controller security logs to the specified Amazon CloudWatch log group in
 #' your AWS account
 #'
+#' @description
 #' Creates a subscription to forward real-time Directory Service domain
 #' controller security logs to the specified Amazon CloudWatch log group in
 #' your AWS account.
@@ -653,6 +664,7 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 
 #' Creates a Microsoft AD directory in the AWS Cloud
 #'
+#' @description
 #' Creates a Microsoft AD directory in the AWS Cloud. For more information,
 #' see [AWS Managed Microsoft
 #' AD](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html)
@@ -733,6 +745,7 @@ directoryservice_create_microsoft_ad <- function(Name, ShortName = NULL, Passwor
 #' Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS
 #' cloud
 #'
+#' @description
 #' Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS
 #' cloud.
 #' 
@@ -775,6 +788,7 @@ directoryservice_create_snapshot <- function(DirectoryId, Name = NULL) {
 #' AWS Directory Service for Microsoft Active Directory allows you to
 #' configure trust relationships
 #'
+#' @description
 #' AWS Directory Service for Microsoft Active Directory allows you to
 #' configure trust relationships. For example, you can establish a trust
 #' between your AWS Managed Microsoft AD directory, and your existing
@@ -842,6 +856,7 @@ directoryservice_create_trust <- function(DirectoryId, RemoteDomainName, TrustPa
 #' Deletes a conditional forwarder that has been set up for your AWS
 #' directory
 #'
+#' @description
 #' Deletes a conditional forwarder that has been set up for your AWS
 #' directory.
 #'
@@ -883,6 +898,7 @@ directoryservice_delete_conditional_forwarder <- function(DirectoryId, RemoteDom
 
 #' Deletes an AWS Directory Service directory
 #'
+#' @description
 #' Deletes an AWS Directory Service directory.
 #' 
 #' Before you call `DeleteDirectory`, ensure that all of the required
@@ -926,6 +942,7 @@ directoryservice_delete_directory <- function(DirectoryId) {
 
 #' Deletes the specified log subscription
 #'
+#' @description
 #' Deletes the specified log subscription.
 #'
 #' @usage
@@ -962,6 +979,7 @@ directoryservice_delete_log_subscription <- function(DirectoryId) {
 
 #' Deletes a directory snapshot
 #'
+#' @description
 #' Deletes a directory snapshot.
 #'
 #' @usage
@@ -999,6 +1017,7 @@ directoryservice_delete_snapshot <- function(SnapshotId) {
 #' Deletes an existing trust relationship between your AWS Managed
 #' Microsoft AD directory and an external domain
 #'
+#' @description
 #' Deletes an existing trust relationship between your AWS Managed
 #' Microsoft AD directory and an external domain.
 #'
@@ -1040,6 +1059,7 @@ directoryservice_delete_trust <- function(TrustId, DeleteAssociatedConditionalFo
 #' Deletes from the system the certificate that was registered for secure
 #' LDAP or client certificate authentication
 #'
+#' @description
 #' Deletes from the system the certificate that was registered for secure
 #' LDAP or client certificate authentication.
 #'
@@ -1080,6 +1100,7 @@ directoryservice_deregister_certificate <- function(DirectoryId, CertificateId) 
 #' Removes the specified directory as a publisher to the specified SNS
 #' topic
 #'
+#' @description
 #' Removes the specified directory as a publisher to the specified SNS
 #' topic.
 #'
@@ -1122,6 +1143,7 @@ directoryservice_deregister_event_topic <- function(DirectoryId, TopicName) {
 #' Displays information about the certificate registered for secure LDAP or
 #' client certificate authentication
 #'
+#' @description
 #' Displays information about the certificate registered for secure LDAP or
 #' client certificate authentication.
 #'
@@ -1161,6 +1183,7 @@ directoryservice_describe_certificate <- function(DirectoryId, CertificateId) {
 
 #' Obtains information about the conditional forwarders for this account
 #'
+#' @description
 #' Obtains information about the conditional forwarders for this account.
 #' 
 #' If no input parameters are provided for RemoteDomainNames, this request
@@ -1208,6 +1231,7 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
 
 #' Obtains information about the directories that belong to this account
 #'
+#' @description
 #' Obtains information about the directories that belong to this account.
 #' 
 #' You can retrieve information about specific directories by passing the
@@ -1270,6 +1294,7 @@ directoryservice_describe_directories <- function(DirectoryIds = NULL, NextToken
 
 #' Provides information about any domain controllers in your directory
 #'
+#' @description
 #' Provides information about any domain controllers in your directory.
 #'
 #' @usage
@@ -1319,6 +1344,7 @@ directoryservice_describe_domain_controllers <- function(DirectoryId, DomainCont
 #' Obtains information about which SNS topics receive status messages from
 #' the specified directory
 #'
+#' @description
 #' Obtains information about which SNS topics receive status messages from
 #' the specified directory.
 #' 
@@ -1368,6 +1394,7 @@ directoryservice_describe_event_topics <- function(DirectoryId = NULL, TopicName
 
 #' Describes the status of LDAP security for the specified directory
 #'
+#' @description
 #' Describes the status of LDAP security for the specified directory.
 #'
 #' @usage
@@ -1413,6 +1440,7 @@ directoryservice_describe_ldaps_settings <- function(DirectoryId, Type = NULL, N
 #' Provides information about the Regions that are configured for
 #' multi-Region replication
 #'
+#' @description
 #' Provides information about the Regions that are configured for
 #' multi-Region replication.
 #'
@@ -1455,6 +1483,7 @@ directoryservice_describe_regions <- function(DirectoryId, RegionName = NULL, Ne
 
 #' Returns the shared directories in your account
 #'
+#' @description
 #' Returns the shared directories in your account.
 #'
 #' @usage
@@ -1502,6 +1531,7 @@ directoryservice_describe_shared_directories <- function(OwnerDirectoryId, Share
 #' Obtains information about the directory snapshots that belong to this
 #' account
 #'
+#' @description
 #' Obtains information about the directory snapshots that belong to this
 #' account.
 #' 
@@ -1560,6 +1590,7 @@ directoryservice_describe_snapshots <- function(DirectoryId = NULL, SnapshotIds 
 
 #' Obtains information about the trust relationships for this account
 #'
+#' @description
 #' Obtains information about the trust relationships for this account.
 #' 
 #' If no input parameters are provided, such as DirectoryId or TrustIds,
@@ -1616,6 +1647,7 @@ directoryservice_describe_trusts <- function(DirectoryId = NULL, TrustIds = NULL
 #' Disables alternative client authentication methods for the specified
 #' directory
 #'
+#' @description
 #' Disables alternative client authentication methods for the specified
 #' directory.
 #'
@@ -1656,6 +1688,7 @@ directoryservice_disable_client_authentication <- function(DirectoryId, Type) {
 
 #' Deactivates LDAP secure calls for the specified directory
 #'
+#' @description
 #' Deactivates LDAP secure calls for the specified directory.
 #'
 #' @usage
@@ -1697,6 +1730,7 @@ directoryservice_disable_ldaps <- function(DirectoryId, Type) {
 #' Authentication Dial In User Service (RADIUS) server for an AD Connector
 #' or Microsoft AD directory
 #'
+#' @description
 #' Disables multi-factor authentication (MFA) with the Remote
 #' Authentication Dial In User Service (RADIUS) server for an AD Connector
 #' or Microsoft AD directory.
@@ -1735,6 +1769,7 @@ directoryservice_disable_radius <- function(DirectoryId) {
 
 #' Disables single-sign on for a directory
 #'
+#' @description
 #' Disables single-sign on for a directory.
 #'
 #' @usage
@@ -1786,6 +1821,7 @@ directoryservice_disable_sso <- function(DirectoryId, UserName = NULL, Password 
 #' Enables alternative client authentication methods for the specified
 #' directory
 #'
+#' @description
 #' Enables alternative client authentication methods for the specified
 #' directory.
 #'
@@ -1829,6 +1865,7 @@ directoryservice_enable_client_authentication <- function(DirectoryId, Type) {
 #' Activates the switch for the specific directory to always use LDAP
 #' secure calls
 #'
+#' @description
 #' Activates the switch for the specific directory to always use LDAP
 #' secure calls.
 #'
@@ -1871,6 +1908,7 @@ directoryservice_enable_ldaps <- function(DirectoryId, Type) {
 #' Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD
 #' directory
 #'
+#' @description
 #' Enables multi-factor authentication (MFA) with the Remote Authentication
 #' Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD
 #' directory.
@@ -1923,6 +1961,7 @@ directoryservice_enable_radius <- function(DirectoryId, RadiusSettings) {
 
 #' Enables single sign-on for a directory
 #'
+#' @description
 #' Enables single sign-on for a directory. Single sign-on allows users in
 #' your directory to access certain AWS services from a computer joined to
 #' the directory without having to enter their credentials separately.
@@ -1975,6 +2014,7 @@ directoryservice_enable_sso <- function(DirectoryId, UserName = NULL, Password =
 
 #' Obtains directory limit information for the current Region
 #'
+#' @description
 #' Obtains directory limit information for the current Region.
 #'
 #' @usage
@@ -2007,6 +2047,7 @@ directoryservice_get_directory_limits <- function() {
 
 #' Obtains the manual snapshot limits for a directory
 #'
+#' @description
 #' Obtains the manual snapshot limits for a directory.
 #'
 #' @usage
@@ -2044,6 +2085,7 @@ directoryservice_get_snapshot_limits <- function(DirectoryId) {
 #' For the specified directory, lists all the certificates registered for a
 #' secure LDAP or client certificate authentication
 #'
+#' @description
 #' For the specified directory, lists all the certificates registered for a
 #' secure LDAP or client certificate authentication.
 #'
@@ -2088,6 +2130,7 @@ directoryservice_list_certificates <- function(DirectoryId, NextToken = NULL, Li
 
 #' Lists the address blocks that you have added to a directory
 #'
+#' @description
 #' Lists the address blocks that you have added to a directory.
 #'
 #' @usage
@@ -2131,6 +2174,7 @@ directoryservice_list_ip_routes <- function(DirectoryId, NextToken = NULL, Limit
 
 #' Lists the active log subscriptions for the AWS account
 #'
+#' @description
 #' Lists the active log subscriptions for the AWS account.
 #'
 #' @usage
@@ -2175,6 +2219,7 @@ directoryservice_list_log_subscriptions <- function(DirectoryId = NULL, NextToke
 
 #' Lists all schema extensions applied to a Microsoft AD Directory
 #'
+#' @description
 #' Lists all schema extensions applied to a Microsoft AD Directory.
 #'
 #' @usage
@@ -2217,6 +2262,7 @@ directoryservice_list_schema_extensions <- function(DirectoryId, NextToken = NUL
 
 #' Lists all tags on a directory
 #'
+#' @description
 #' Lists all tags on a directory.
 #'
 #' @usage
@@ -2258,6 +2304,7 @@ directoryservice_list_tags_for_resource <- function(ResourceId, NextToken = NULL
 #' Registers a certificate for a secure LDAP or client certificate
 #' authentication
 #'
+#' @description
 #' Registers a certificate for a secure LDAP or client certificate
 #' authentication.
 #'
@@ -2307,6 +2354,7 @@ directoryservice_register_certificate <- function(DirectoryId, CertificateData, 
 
 #' Associates a directory with an SNS topic
 #'
+#' @description
 #' Associates a directory with an SNS topic. This establishes the directory
 #' as a publisher to the specified SNS topic. You can then receive email or
 #' text (SMS) messages when the status of your directory changes. You get
@@ -2352,6 +2400,7 @@ directoryservice_register_event_topic <- function(DirectoryId, TopicName) {
 #' Rejects a directory sharing request that was sent from the directory
 #' owner account
 #'
+#' @description
 #' Rejects a directory sharing request that was sent from the directory
 #' owner account.
 #'
@@ -2390,6 +2439,7 @@ directoryservice_reject_shared_directory <- function(SharedDirectoryId) {
 
 #' Removes IP address blocks from a directory
 #'
+#' @description
 #' Removes IP address blocks from a directory.
 #'
 #' @usage
@@ -2432,6 +2482,7 @@ directoryservice_remove_ip_routes <- function(DirectoryId, CidrIps) {
 #' Stops all replication and removes the domain controllers from the
 #' specified Region
 #'
+#' @description
 #' Stops all replication and removes the domain controllers from the
 #' specified Region. You cannot remove the primary Region with this
 #' operation. Instead, use the `DeleteDirectory` API.
@@ -2471,6 +2522,7 @@ directoryservice_remove_region <- function(DirectoryId) {
 
 #' Removes tags from a directory
 #'
+#' @description
 #' Removes tags from a directory.
 #'
 #' @usage
@@ -2512,6 +2564,7 @@ directoryservice_remove_tags_from_resource <- function(ResourceId, TagKeys) {
 #' Resets the password for any user in your AWS Managed Microsoft AD or
 #' Simple AD directory
 #'
+#' @description
 #' Resets the password for any user in your AWS Managed Microsoft AD or
 #' Simple AD directory.
 #' 
@@ -2570,6 +2623,7 @@ directoryservice_reset_user_password <- function(DirectoryId, UserName, NewPassw
 
 #' Restores a directory using an existing directory snapshot
 #'
+#' @description
 #' Restores a directory using an existing directory snapshot.
 #' 
 #' When you restore a directory from a snapshot, any changes made to the
@@ -2616,6 +2670,7 @@ directoryservice_restore_from_snapshot <- function(SnapshotId) {
 #' Shares a specified directory (DirectoryId) in your AWS account
 #' (directory owner) with another AWS account (directory consumer)
 #'
+#' @description
 #' Shares a specified directory (`DirectoryId`) in your AWS account
 #' (directory owner) with another AWS account (directory consumer). With
 #' this operation you can use your directory from any AWS account and from
@@ -2688,6 +2743,7 @@ directoryservice_share_directory <- function(DirectoryId, ShareNotes = NULL, Sha
 
 #' Applies a schema extension to a Microsoft AD directory
 #'
+#' @description
 #' Applies a schema extension to a Microsoft AD directory.
 #'
 #' @usage
@@ -2737,6 +2793,7 @@ directoryservice_start_schema_extension <- function(DirectoryId, CreateSnapshotB
 #' Stops the directory sharing between the directory owner and consumer
 #' accounts
 #'
+#' @description
 #' Stops the directory sharing between the directory owner and consumer
 #' accounts.
 #'
@@ -2782,6 +2839,7 @@ directoryservice_unshare_directory <- function(DirectoryId, UnshareTarget) {
 #' Updates a conditional forwarder that has been set up for your AWS
 #' directory
 #'
+#' @description
 #' Updates a conditional forwarder that has been set up for your AWS
 #' directory.
 #'
@@ -2829,6 +2887,7 @@ directoryservice_update_conditional_forwarder <- function(DirectoryId, RemoteDom
 
 #' Adds or removes domain controllers to or from the directory
 #'
+#' @description
 #' Adds or removes domain controllers to or from the directory. Based on
 #' the difference between current value and new value (provided through
 #' this API call), domain controllers will be added or removed. It may take
@@ -2875,6 +2934,7 @@ directoryservice_update_number_of_domain_controllers <- function(DirectoryId, De
 #' Updates the Remote Authentication Dial In User Service (RADIUS) server
 #' information for an AD Connector or Microsoft AD directory
 #'
+#' @description
 #' Updates the Remote Authentication Dial In User Service (RADIUS) server
 #' information for an AD Connector or Microsoft AD directory.
 #'
@@ -2928,6 +2988,7 @@ directoryservice_update_radius <- function(DirectoryId, RadiusSettings) {
 #' Updates the trust that has been set up between your AWS Managed
 #' Microsoft AD directory and an on-premises Active Directory
 #'
+#' @description
 #' Updates the trust that has been set up between your AWS Managed
 #' Microsoft AD directory and an on-premises Active Directory.
 #'
@@ -2968,6 +3029,7 @@ directoryservice_update_trust <- function(TrustId, SelectiveAuth = NULL) {
 #' AWS Directory Service for Microsoft Active Directory allows you to
 #' configure and verify trust relationships
 #'
+#' @description
 #' AWS Directory Service for Microsoft Active Directory allows you to
 #' configure and verify trust relationships.
 #' 

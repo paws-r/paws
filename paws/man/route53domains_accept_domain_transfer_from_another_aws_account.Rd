@@ -22,8 +22,7 @@ request.}
 Accepts the transfer of a domain from another AWS account to the current
 AWS account. You initiate a transfer between AWS accounts using
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html}{TransferDomainToAnotherAwsAccount}.
-}
-\details{
+
 Use either
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ListOperations.html}{ListOperations}
 or

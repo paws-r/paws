@@ -19,8 +19,7 @@ OpenId Connect provider, always include the \code{id_token}.}
 Gets an OpenID token, using a known Cognito ID. This known Cognito ID is
 returned by GetId. You can optionally add additional logins for the
 identity. Supplying multiple logins creates an implicit link.
-}
-\details{
+
 The OpenId token is valid for 10 minutes.
 
 This is a public API. You do not need any credentials to call this API.

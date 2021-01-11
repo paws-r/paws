@@ -11,8 +11,7 @@ licensemanager_delete_license_configuration(LicenseConfigurationArn)
 }
 \description{
 Deletes the specified license configuration.
-}
-\details{
+
 You cannot delete a license configuration that is in use.
 }
 \section{Request syntax}{

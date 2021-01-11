@@ -16,8 +16,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Resets the default customer master key (CMK) for EBS encryption for your
 account in this Region to the AWS managed CMK for EBS.
-}
-\details{
+
 After resetting the default CMK to the AWS managed CMK, you can continue
 to encrypt by a customer managed CMK by specifying it when you create
 the volume. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}

@@ -33,8 +33,7 @@ Retrieves entries from the specified fleet's event log. You can specify
 a time range to limit the result set. Use the pagination parameters to
 retrieve results as a set of sequential pages. If successful, a
 collection of event log entries matching the request are returned.
-}
-\details{
+
 \strong{Learn more}
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}

@@ -36,10 +36,7 @@ deployed Stage.}
 }
 \description{
 Simulate the execution of an Authorizer in your RestApi with headers,
-parameters, and an incoming request body.
-}
-\details{
-<div class="seeAlso">
+parameters, and an incoming request body.<div class="seeAlso">
 
 
 \href{https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-use-lambda-authorizer.html}{Use Lambda Function as Authorizer}

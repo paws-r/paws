@@ -18,8 +18,7 @@ using \code{ListOriginRequestPolicies}, \code{GetOriginRequestPolicy}, or
 }
 \description{
 Deletes an origin request policy.
-}
-\details{
+
 You cannot delete an origin request policy if it’s attached to any cache
 behaviors. First update your distributions to remove the origin request
 policy from all cache behaviors, then delete the origin request policy.

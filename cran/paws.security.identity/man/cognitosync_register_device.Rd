@@ -19,8 +19,7 @@ Cognito. Here, the ID of the pool that the identity belongs to.}
 }
 \description{
 Registers a device to receive push sync notifications.
-}
-\details{
+
 This API can only be called with temporary credentials provided by
 Cognito Identity. You cannot call this API with developer credentials.
 }

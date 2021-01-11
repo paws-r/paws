@@ -12,8 +12,6 @@ route53resolver_delete_resolver_endpoint(ResolverEndpointId)
 \description{
 Deletes a Resolver endpoint. The effect of deleting a Resolver endpoint
 depends on whether it's an inbound or an outbound Resolver endpoint:
-}
-\details{
 \itemize{
 \item \strong{Inbound}: DNS queries from your network are no longer routed to
 the DNS service for the specified VPC.

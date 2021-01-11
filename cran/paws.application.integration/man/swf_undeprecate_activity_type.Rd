@@ -15,8 +15,7 @@ swf_undeprecate_activity_type(domain, activityType)
 Undeprecates a previously deprecated \emph{activity type}. After an activity
 type has been undeprecated, you can create new tasks of that activity
 type.
-}
-\details{
+
 This operation is eventually consistent. The results are best effort and
 may not exactly reflect recent updates and changes.
 

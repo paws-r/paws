@@ -31,8 +31,7 @@ PrincipalIds in AWS SSO, see the AWS SSO Identity Store API Reference.}
 \description{
 Assigns access to a principal for a specified AWS account using a
 specified permission set.
-}
-\details{
+
 The term \emph{principal} here refers to a user or group that is defined in
 AWS SSO.
 

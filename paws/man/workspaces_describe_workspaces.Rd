@@ -33,8 +33,7 @@ provide this token to receive the next set of results.}
 }
 \description{
 Describes the specified WorkSpaces.
-}
-\details{
+
 You can filter the results by using the bundle identifier, directory
 identifier, or owner, but you can specify only one filter at a time.
 }

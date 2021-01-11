@@ -31,8 +31,7 @@ hosts the task.}
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended
 for use outside of the agent.
-}
-\details{
+
 Sent to acknowledge that a task changed states.
 }
 \section{Request syntax}{

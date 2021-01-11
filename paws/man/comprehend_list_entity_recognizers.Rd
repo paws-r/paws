@@ -23,8 +23,7 @@ created, including recognizers currently in training. Allows you to
 filter the list of recognizers based on criteria such as status and
 submission time. This call returns up to 500 entity recognizers in the
 list, with a default number of 100 recognizers in the list.
-}
-\details{
+
 The results of this list are not in any particular order. Please get the
 list and sort locally if needed.
 }

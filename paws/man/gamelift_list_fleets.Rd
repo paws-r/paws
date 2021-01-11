@@ -29,8 +29,7 @@ Retrieves a collection of fleet resources for this AWS account. You can
 filter the result set to find only those fleets that are deployed with a
 specific build or script. Use the pagination parameters to retrieve
 results in sequential pages.
-}
-\details{
+
 Fleet resources are not listed in a particular order.
 
 \strong{Learn more}

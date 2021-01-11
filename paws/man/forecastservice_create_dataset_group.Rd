@@ -54,8 +54,7 @@ count against your tags per resource limit.
 Creates a dataset group, which holds a collection of related datasets.
 You can add datasets to the dataset group when you create the dataset
 group, or later by using the UpdateDatasetGroup operation.
-}
-\details{
+
 After creating a dataset group and adding datasets, you use the dataset
 group when you create a predictor. For more information, see
 howitworks-datasets-groups.

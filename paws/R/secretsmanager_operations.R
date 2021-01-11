@@ -6,6 +6,7 @@ NULL
 #' Disables automatic scheduled rotation and cancels the rotation of a
 #' secret if currently in progress
 #'
+#' @description
 #' Disables automatic scheduled rotation and cancels the rotation of a
 #' secret if currently in progress.
 #' 
@@ -116,6 +117,7 @@ secretsmanager_cancel_rotate_secret <- function(SecretId) {
 
 #' Creates a new secret
 #'
+#' @description
 #' Creates a new secret. A secret in Secrets Manager consists of both the
 #' protected secret data and the important information needed to manage the
 #' secret.
@@ -395,6 +397,7 @@ secretsmanager_create_secret <- function(Name, ClientRequestToken = NULL, Descri
 
 #' Deletes the resource-based permission policy attached to the secret
 #'
+#' @description
 #' Deletes the resource-based permission policy attached to the secret.
 #' 
 #' **Minimum permissions**
@@ -476,6 +479,7 @@ secretsmanager_delete_resource_policy <- function(SecretId) {
 
 #' Deletes an entire secret and all of its versions
 #'
+#' @description
 #' Deletes an entire secret and all of its versions. You can optionally
 #' include a recovery window during which you can restore the secret. If
 #' you don't specify a recovery window value, the operation defaults to 30
@@ -605,6 +609,7 @@ secretsmanager_delete_secret <- function(SecretId, RecoveryWindowInDays = NULL, 
 
 #' Retrieves the details of a secret
 #'
+#' @description
 #' Retrieves the details of a secret. It does not include the encrypted
 #' fields. Secrets Manager only returns fields populated with a value in
 #' the response.
@@ -689,6 +694,7 @@ secretsmanager_describe_secret <- function(SecretId) {
 
 #' Generates a random password of the specified complexity
 #'
+#' @description
 #' Generates a random password of the specified complexity. This operation
 #' is intended for use in the Lambda rotation function. Per best practice,
 #' we recommend that you specify the maximum length and include every
@@ -722,7 +728,7 @@ secretsmanager_describe_secret <- function(SecretId) {
 #' the generated password if you don't explicitly exclude them with
 #' `ExcludeCharacters` or `ExcludePunctuation`:
 #' 
-#' `` ! \" # $ % &amp; \' ( ) * + , - . / : ; &lt; = &gt; ? @@ \\[ \\ \\] ^ _ \` \{ | \} ~ ``
+#' `` ! \" # $ \% &amp; \' ( ) * + , - . / : ; &lt; = &gt; ? @@ \\[ \\ \\] ^ _ \` \{ | \} ~ ``
 #' @param ExcludeUppercase Specifies that the generated password should not include uppercase
 #' letters. The default if you do not include this switch parameter is that
 #' uppercase letters can be included.
@@ -787,6 +793,7 @@ secretsmanager_get_random_password <- function(PasswordLength = NULL, ExcludeCha
 #' Retrieves the JSON text of the resource-based policy document attached
 #' to the specified secret
 #'
+#' @description
 #' Retrieves the JSON text of the resource-based policy document attached
 #' to the specified secret. The JSON request string input and response
 #' output displays formatted code with white space and line breaks for
@@ -873,6 +880,7 @@ secretsmanager_get_resource_policy <- function(SecretId) {
 #' SecretBinary from the specified version of a secret, whichever contains
 #' content
 #'
+#' @description
 #' Retrieves the contents of the encrypted fields `SecretString` or
 #' `SecretBinary` from the specified version of a secret, whichever
 #' contains content.
@@ -982,6 +990,7 @@ secretsmanager_get_secret_value <- function(SecretId, VersionId = NULL, VersionS
 
 #' Lists all of the versions attached to the specified secret
 #'
+#' @description
 #' Lists all of the versions attached to the specified secret. The output
 #' does not include the `SecretString` or `SecretBinary` fields. By
 #' default, the list includes only versions that have at least one staging
@@ -1092,6 +1101,7 @@ secretsmanager_list_secret_version_ids <- function(SecretId, MaxResults = NULL, 
 #' Lists all of the secrets that are stored by Secrets Manager in the AWS
 #' account
 #'
+#' @description
 #' Lists all of the secrets that are stored by Secrets Manager in the AWS
 #' account. To list the versions currently stored for a specific secret,
 #' use ListSecretVersionIds. The encrypted fields `SecretString` and
@@ -1182,6 +1192,7 @@ secretsmanager_list_secrets <- function(MaxResults = NULL, NextToken = NULL, Fil
 #' Attaches the contents of the specified resource-based permission policy
 #' to a secret
 #'
+#' @description
 #' Attaches the contents of the specified resource-based permission policy
 #' to a secret. A resource-based policy is optional. Alternatively, you can
 #' use IAM identity-based policies that specify the secret's Amazon
@@ -1288,6 +1299,7 @@ secretsmanager_put_resource_policy <- function(SecretId, ResourcePolicy, BlockPu
 
 #' Stores a new encrypted secret value in the specified secret
 #'
+#' @description
 #' Stores a new encrypted secret value in the specified secret. To do this,
 #' the operation creates a new version and attaches it to the secret. The
 #' version can contain a new `SecretString` value or a new `SecretBinary`
@@ -1515,6 +1527,7 @@ secretsmanager_put_secret_value <- function(SecretId, ClientRequestToken = NULL,
 #' Cancels the scheduled deletion of a secret by removing the DeletedDate
 #' time stamp
 #'
+#' @description
 #' Cancels the scheduled deletion of a secret by removing the `DeletedDate`
 #' time stamp. This makes the secret accessible to query once again.
 #' 
@@ -1592,6 +1605,7 @@ secretsmanager_restore_secret <- function(SecretId) {
 
 #' Configures and starts the asynchronous process of rotating this secret
 #'
+#' @description
 #' Configures and starts the asynchronous process of rotating this secret.
 #' If you include the configuration parameters, the operation sets those
 #' values for the secret and then immediately starts a rotation. If you do
@@ -1763,6 +1777,7 @@ secretsmanager_rotate_secret <- function(SecretId, ClientRequestToken = NULL, Ro
 #' Attaches one or more tags, each consisting of a key name and a value, to
 #' the specified secret
 #'
+#' @description
 #' Attaches one or more tags, each consisting of a key name and a value, to
 #' the specified secret. Tags are part of the secret's overall metadata,
 #' and are not associated with any specific version of the secret. This
@@ -1899,6 +1914,7 @@ secretsmanager_tag_resource <- function(SecretId, Tags) {
 
 #' Removes one or more tags from the specified secret
 #'
+#' @description
 #' Removes one or more tags from the specified secret.
 #' 
 #' This operation is idempotent. If a requested tag is not attached to the
@@ -2003,6 +2019,7 @@ secretsmanager_untag_resource <- function(SecretId, TagKeys) {
 
 #' Modifies many of the details of the specified secret
 #'
+#' @description
 #' Modifies many of the details of the specified secret. If you include a
 #' `ClientRequestToken` and *either* `SecretString` or `SecretBinary` then
 #' it also creates a new version attached to the secret.
@@ -2245,6 +2262,7 @@ secretsmanager_update_secret <- function(SecretId, ClientRequestToken = NULL, De
 
 #' Modifies the staging labels attached to a version of a secret
 #'
+#' @description
 #' Modifies the staging labels attached to a version of a secret. Staging
 #' labels are used to track a version as it progresses through the secret
 #' rotation process. You can attach a staging label to only one version of
@@ -2388,6 +2406,7 @@ secretsmanager_update_secret_version_stage <- function(SecretId, VersionStage, R
 #' Validates the JSON text of the resource-based policy document attached
 #' to the specified secret
 #'
+#' @description
 #' Validates the JSON text of the resource-based policy document attached
 #' to the specified secret. The JSON request string input and response
 #' output displays formatted code with white space and line breaks for

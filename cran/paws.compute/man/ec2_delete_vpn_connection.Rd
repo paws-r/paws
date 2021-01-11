@@ -16,8 +16,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Deletes the specified VPN connection.
-}
-\details{
+
 If you're deleting the VPC and its associated components, we recommend
 that you detach the virtual private gateway from the VPC and delete the
 VPC before deleting the VPN connection. If you believe that the tunnel

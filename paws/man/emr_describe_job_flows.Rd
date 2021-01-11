@@ -20,8 +20,7 @@ emr_describe_job_flows(CreatedAfter, CreatedBefore, JobFlowIds,
 This API is no longer supported and will eventually be removed. We
 recommend you use ListClusters, DescribeCluster, ListSteps,
 ListInstanceGroups and ListBootstrapActions instead.
-}
-\details{
+
 DescribeJobFlows returns a list of job flows that match all of the
 supplied parameters. The parameters can include a list of job flow IDs,
 job flow states, and restrictions on job flow creation date and time.

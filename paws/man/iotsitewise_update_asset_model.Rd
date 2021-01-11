@@ -51,8 +51,7 @@ model. Each asset created from the model inherits the updated asset
 model's property and hierarchy definitions. For more information, see
 \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html}{Updating assets and models}
 in the \emph{AWS IoT SiteWise User Guide}.
-}
-\details{
+
 This operation overwrites the existing model with the provided model. To
 avoid deleting your asset model's properties or hierarchies, you must
 include their IDs and definitions in the updated asset model payload.

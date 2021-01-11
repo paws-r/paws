@@ -20,8 +20,7 @@ specified number.}
 \description{
 Returns a description of specified virtual tapes in the virtual tape
 shelf (VTS). This operation is only supported in the tape gateway type.
-}
-\details{
+
 If a specific \code{TapeARN} is not specified, AWS Storage Gateway returns a
 description of all virtual tapes found in the VTS associated with your
 account.

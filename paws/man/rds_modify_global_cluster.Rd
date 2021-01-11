@@ -39,8 +39,7 @@ or more database configuration parameters by specifying these parameters
 and the new values in the request. For more information on Amazon
 Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
-}
-\details{
+
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{

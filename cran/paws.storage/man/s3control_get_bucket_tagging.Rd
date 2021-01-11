@@ -28,8 +28,7 @@ This operation gets an Amazon S3 on Outposts bucket's tags. To get an S3
 bucket tags, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html}{GetBucketTagging}
 in the \emph{Amazon Simple Storage Service API}.
-}
-\details{
+
 Returns the tag set associated with the Outposts bucket. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.

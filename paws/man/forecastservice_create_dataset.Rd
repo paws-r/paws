@@ -70,8 +70,6 @@ count against your tags per resource limit.
 Creates an Amazon Forecast dataset. The information about the dataset
 that you provide helps Forecast understand how to consume the data for
 model training. This includes the following:
-}
-\details{
 \itemize{
 \item \emph{\code{DataFrequency}} - How frequently your historical time-series data
 is collected.

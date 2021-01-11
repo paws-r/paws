@@ -45,8 +45,7 @@ AWS General Reference for actual tagging limits.}
 Creates a new Amazon GameLift build resource for your game server binary
 files. Game server binaries must be combined into a zip file for use
 with Amazon GameLift.
-}
-\details{
+
 When setting up a new game build for GameLift, we recommend using the
 AWS CLI command
 \strong{\href{https://docs.aws.amazon.com/cli/latest/reference/gamelift/upload-build.html}{upload-build}}

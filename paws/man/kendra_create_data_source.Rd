@@ -55,8 +55,7 @@ client token will create only one data source.}
 }
 \description{
 Creates a data source that you use to with an Amazon Kendra index.
-}
-\details{
+
 You specify a name, data source connector type and description for your
 data source. You also specify configuration information such as document
 metadata (author, source URI, and so on) and user context information.

@@ -5,6 +5,7 @@ NULL
 
 #' This API sets up the home region for the calling account only
 #'
+#' @description
 #' This API sets up the home region for the calling account only.
 #'
 #' @usage
@@ -51,6 +52,7 @@ migrationhubconfig_create_home_region_control <- function(HomeRegion, Target, Dr
 
 #' This API permits filtering on the ControlId and HomeRegion fields
 #'
+#' @description
 #' This API permits filtering on the `ControlId` and `HomeRegion` fields.
 #'
 #' @usage
@@ -104,6 +106,7 @@ migrationhubconfig_describe_home_region_controls <- function(ControlId = NULL, H
 
 #' Returns the calling account’s home region, if configured
 #'
+#' @description
 #' Returns the calling account’s home region, if configured. This API is
 #' used by other AWS services to determine the regional endpoint for
 #' calling AWS Application Discovery Service and Migration Hub. You must

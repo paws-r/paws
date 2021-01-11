@@ -15,8 +15,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 Deletes the replication configuration from the bucket.
-}
-\details{
+
 To use this operation, you must have permissions to perform the
 \code{s3:PutReplicationConfiguration} action. The bucket owner has these
 permissions by default and can grant it to others. For more information

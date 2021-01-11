@@ -50,8 +50,7 @@ Allocates an Elastic IP address to your AWS account. After you allocate
 the Elastic IP address you can associate it with an instance or network
 interface. After you release an Elastic IP address, it is released to
 the IP address pool and can be allocated to a different AWS account.
-}
-\details{
+
 You can allocate an Elastic IP address from an address pool owned by AWS
 or from an address pool created from a public IPv4 address range that
 you have brought to AWS for use with your AWS resources using bring your

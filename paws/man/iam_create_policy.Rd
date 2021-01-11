@@ -58,8 +58,7 @@ cannot be changed.}
 }
 \description{
 Creates a new managed policy for your AWS account.
-}
-\details{
+
 This operation creates a policy version with a version identifier of
 \code{v1} and sets v1 as the policy's default version. For more information
 about policy versions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-versioning.html}{Versioning for Managed Policies}

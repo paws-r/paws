@@ -18,8 +18,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Enables detailed monitoring for a running instance. Otherwise, basic
 monitoring is enabled. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html}{Monitoring your instances and volumes}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\details{
+
 To disable detailed monitoring, see .
 }
 \section{Request syntax}{

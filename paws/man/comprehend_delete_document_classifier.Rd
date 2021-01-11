@@ -12,8 +12,7 @@ comprehend_delete_document_classifier(DocumentClassifierArn)
 }
 \description{
 Deletes a previously created document classifier
-}
-\details{
+
 Only those classifiers that are in terminated states (IN\\_ERROR,
 TRAINED) will be deleted. If an active inference job is using the model,
 a \code{ResourceInUseException} will be returned.

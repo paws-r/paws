@@ -66,8 +66,7 @@ training.}
 Creates a \code{DataSource} object from an \href{https://aws.amazon.com/rds/}{Amazon Relational Database Service} (Amazon RDS). A \code{DataSource}
 references data that can be used to perform \code{CreateMLModel},
 \code{CreateEvaluation}, or \code{CreateBatchPrediction} operations.
-}
-\details{
+
 \code{CreateDataSourceFromRDS} is an asynchronous operation. In response to
 \code{CreateDataSourceFromRDS}, Amazon Machine Learning (Amazon ML)
 immediately returns and sets the \code{DataSource} status to \code{PENDING}. After

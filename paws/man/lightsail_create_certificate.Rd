@@ -30,8 +30,7 @@ Use the \code{TagResource} action to tag a resource after it's created.}
 \description{
 Creates an SSL/TLS certificate for a Amazon Lightsail content delivery
 network (CDN) distribution.
-}
-\details{
+
 After the certificate is created, use the
 \code{AttachCertificateToDistribution} action to attach the certificate to
 your distribution.

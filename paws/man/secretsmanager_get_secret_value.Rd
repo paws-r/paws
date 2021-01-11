@@ -55,8 +55,7 @@ with the \code{VersionStage} value of \code{AWSCURRENT}.}
 Retrieves the contents of the encrypted fields \code{SecretString} or
 \code{SecretBinary} from the specified version of a secret, whichever
 contains content.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

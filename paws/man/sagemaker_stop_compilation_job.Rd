@@ -11,8 +11,7 @@ sagemaker_stop_compilation_job(CompilationJobName)
 }
 \description{
 Stops a model compilation job.
-}
-\details{
+
 To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal.
 This gracefully shuts the job down. If the job hasn't stopped, it sends
 the SIGKILL signal.

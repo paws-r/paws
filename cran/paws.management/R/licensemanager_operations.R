@@ -5,6 +5,7 @@ NULL
 
 #' Accepts the specified grant
 #'
+#' @description
 #' Accepts the specified grant.
 #'
 #' @usage
@@ -41,6 +42,7 @@ licensemanager_accept_grant <- function(GrantArn) {
 
 #' Checks in the specified license
 #'
+#' @description
 #' Checks in the specified license. Check in a license when it is no longer
 #' in use.
 #'
@@ -80,6 +82,7 @@ licensemanager_check_in_license <- function(LicenseConsumptionToken, Beneficiary
 
 #' Checks out the specified license for offline use
 #'
+#' @description
 #' Checks out the specified license for offline use.
 #'
 #' @usage
@@ -142,6 +145,7 @@ licensemanager_checkout_borrow_license <- function(LicenseArn, Entitlements, Dig
 
 #' Checks out the specified license
 #'
+#' @description
 #' Checks out the specified license.
 #'
 #' @usage
@@ -198,6 +202,7 @@ licensemanager_checkout_license <- function(ProductSKU, CheckoutType, KeyFingerp
 
 #' Creates a grant for the specified license
 #'
+#' @description
 #' Creates a grant for the specified license. A grant shares the use of
 #' license entitlements with specific AWS accounts.
 #'
@@ -251,6 +256,7 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
 
 #' Creates a new version of the specified grant
 #'
+#' @description
 #' Creates a new version of the specified grant.
 #'
 #' @usage
@@ -301,6 +307,7 @@ licensemanager_create_grant_version <- function(ClientToken, GrantArn, GrantName
 
 #' Creates a license
 #'
+#' @description
 #' Creates a license.
 #'
 #' @usage
@@ -392,6 +399,7 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 
 #' Creates a license configuration
 #'
+#' @description
 #' Creates a license configuration.
 #' 
 #' A license configuration is an abstraction of a customer license
@@ -495,6 +503,7 @@ licensemanager_create_license_configuration <- function(Name, Description = NULL
 
 #' Creates a new version of the specified license
 #'
+#' @description
 #' Creates a new version of the specified license.
 #'
 #' @usage
@@ -589,6 +598,7 @@ licensemanager_create_license_version <- function(LicenseArn, LicenseName, Produ
 
 #' Creates a long-lived token
 #'
+#' @description
 #' Creates a long-lived token.
 #' 
 #' A refresh token is a JWT token used to get an access token. With an
@@ -647,6 +657,7 @@ licensemanager_create_token <- function(LicenseArn, RoleArns = NULL, ExpirationI
 
 #' Deletes the specified grant
 #'
+#' @description
 #' Deletes the specified grant.
 #'
 #' @usage
@@ -685,6 +696,7 @@ licensemanager_delete_grant <- function(GrantArn, Version) {
 
 #' Deletes the specified license
 #'
+#' @description
 #' Deletes the specified license.
 #'
 #' @usage
@@ -723,6 +735,7 @@ licensemanager_delete_license <- function(LicenseArn, SourceVersion) {
 
 #' Deletes the specified license configuration
 #'
+#' @description
 #' Deletes the specified license configuration.
 #' 
 #' You cannot delete a license configuration that is in use.
@@ -761,6 +774,7 @@ licensemanager_delete_license_configuration <- function(LicenseConfigurationArn)
 
 #' Deletes the specified token
 #'
+#' @description
 #' Deletes the specified token. Must be called in the license home Region.
 #'
 #' @usage
@@ -797,6 +811,7 @@ licensemanager_delete_token <- function(TokenId) {
 
 #' Extends the expiration date for license consumption
 #'
+#' @description
 #' Extends the expiration date for license consumption.
 #'
 #' @usage
@@ -838,6 +853,7 @@ licensemanager_extend_license_consumption <- function(LicenseConsumptionToken, D
 
 #' Gets a temporary access token to use with AssumeRoleWithWebIdentity
 #'
+#' @description
 #' Gets a temporary access token to use with AssumeRoleWithWebIdentity.
 #' Access tokens are valid for one hour.
 #'
@@ -879,6 +895,7 @@ licensemanager_get_access_token <- function(Token, TokenProperties = NULL) {
 
 #' Gets detailed information about the specified grant
 #'
+#' @description
 #' Gets detailed information about the specified grant.
 #'
 #' @usage
@@ -917,6 +934,7 @@ licensemanager_get_grant <- function(GrantArn, Version = NULL) {
 
 #' Gets detailed information about the specified license
 #'
+#' @description
 #' Gets detailed information about the specified license.
 #'
 #' @usage
@@ -955,6 +973,7 @@ licensemanager_get_license <- function(LicenseArn, Version = NULL) {
 
 #' Gets detailed information about the specified license configuration
 #'
+#' @description
 #' Gets detailed information about the specified license configuration.
 #'
 #' @usage
@@ -991,6 +1010,7 @@ licensemanager_get_license_configuration <- function(LicenseConfigurationArn) {
 
 #' Gets detailed information about the usage of the specified license
 #'
+#' @description
 #' Gets detailed information about the usage of the specified license.
 #'
 #' @usage
@@ -1027,6 +1047,7 @@ licensemanager_get_license_usage <- function(LicenseArn) {
 
 #' Gets the License Manager settings for the current Region
 #'
+#' @description
 #' Gets the License Manager settings for the current Region.
 #'
 #' @usage
@@ -1059,6 +1080,7 @@ licensemanager_get_service_settings <- function() {
 
 #' Lists the resource associations for the specified license configuration
 #'
+#' @description
 #' Lists the resource associations for the specified license configuration.
 #' 
 #' Resource associations need not consume licenses from a license
@@ -1104,6 +1126,7 @@ licensemanager_list_associations_for_license_configuration <- function(LicenseCo
 
 #' Lists the grants distributed for the specified license
 #'
+#' @description
 #' Lists the grants distributed for the specified license.
 #'
 #' @usage
@@ -1164,6 +1187,7 @@ licensemanager_list_distributed_grants <- function(GrantArns = NULL, Filters = N
 
 #' Lists the license configuration operations that failed
 #'
+#' @description
 #' Lists the license configuration operations that failed.
 #'
 #' @usage
@@ -1205,6 +1229,7 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
 
 #' Lists the license configurations for your account
 #'
+#' @description
 #' Lists the license configurations for your account.
 #'
 #' @usage
@@ -1270,6 +1295,7 @@ licensemanager_list_license_configurations <- function(LicenseConfigurationArns 
 
 #' Describes the license configurations for the specified resource
 #'
+#' @description
 #' Describes the license configurations for the specified resource.
 #'
 #' @usage
@@ -1312,6 +1338,7 @@ licensemanager_list_license_specifications_for_resource <- function(ResourceArn,
 
 #' Lists all versions of the specified license
 #'
+#' @description
 #' Lists all versions of the specified license.
 #'
 #' @usage
@@ -1352,6 +1379,7 @@ licensemanager_list_license_versions <- function(LicenseArn, NextToken = NULL, M
 
 #' Lists the licenses for your account
 #'
+#' @description
 #' Lists the licenses for your account.
 #'
 #' @usage
@@ -1412,6 +1440,7 @@ licensemanager_list_licenses <- function(LicenseArns = NULL, Filters = NULL, Nex
 
 #' Lists grants that are received but not accepted
 #'
+#' @description
 #' Lists grants that are received but not accepted.
 #'
 #' @usage
@@ -1468,6 +1497,7 @@ licensemanager_list_received_grants <- function(GrantArns = NULL, Filters = NULL
 
 #' Lists received licenses
 #'
+#' @description
 #' Lists received licenses.
 #'
 #' @usage
@@ -1528,6 +1558,7 @@ licensemanager_list_received_licenses <- function(LicenseArns = NULL, Filters = 
 
 #' Lists resources managed using Systems Manager inventory
 #'
+#' @description
 #' Lists resources managed using Systems Manager inventory.
 #'
 #' @usage
@@ -1596,6 +1627,7 @@ licensemanager_list_resource_inventory <- function(MaxResults = NULL, NextToken 
 
 #' Lists the tags for the specified license configuration
 #'
+#' @description
 #' Lists the tags for the specified license configuration.
 #'
 #' @usage
@@ -1632,6 +1664,7 @@ licensemanager_list_tags_for_resource <- function(ResourceArn) {
 
 #' Lists your tokens
 #'
+#' @description
 #' Lists your tokens.
 #'
 #' @usage
@@ -1686,6 +1719,7 @@ licensemanager_list_tokens <- function(TokenIds = NULL, Filters = NULL, NextToke
 #' Lists all license usage records for a license configuration, displaying
 #' license consumption details by resource at a selected point in time
 #'
+#' @description
 #' Lists all license usage records for a license configuration, displaying
 #' license consumption details by resource at a selected point in time. Use
 #' this action to audit the current license consumption for any license
@@ -1750,6 +1784,7 @@ licensemanager_list_usage_for_license_configuration <- function(LicenseConfigura
 
 #' Rejects the specified grant
 #'
+#' @description
 #' Rejects the specified grant.
 #'
 #' @usage
@@ -1786,6 +1821,7 @@ licensemanager_reject_grant <- function(GrantArn) {
 
 #' Adds the specified tags to the specified license configuration
 #'
+#' @description
 #' Adds the specified tags to the specified license configuration.
 #'
 #' @usage
@@ -1829,6 +1865,7 @@ licensemanager_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes the specified tags from the specified license configuration
 #'
+#' @description
 #' Removes the specified tags from the specified license configuration.
 #'
 #' @usage
@@ -1869,6 +1906,7 @@ licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Modifies the attributes of an existing license configuration
 #'
+#' @description
 #' Modifies the attributes of an existing license configuration.
 #'
 #' @usage
@@ -1941,6 +1979,7 @@ licensemanager_update_license_configuration <- function(LicenseConfigurationArn,
 #' Adds or removes the specified license configurations for the specified
 #' AWS resource
 #'
+#' @description
 #' Adds or removes the specified license configurations for the specified
 #' AWS resource.
 #' 
@@ -1998,6 +2037,7 @@ licensemanager_update_license_specifications_for_resource <- function(ResourceAr
 
 #' Updates License Manager settings for the current Region
 #'
+#' @description
 #' Updates License Manager settings for the current Region.
 #'
 #' @usage

@@ -23,8 +23,7 @@ You must specify either the StreamName or the StreamARN.}
 \description{
 Downloads an MP4 file (clip) containing the archived, on-demand media
 from the specified video stream over the specified time range.
-}
-\details{
+
 Both the StreamName and the StreamARN parameters are optional, but you
 must specify either the StreamName or the StreamARN when invoking this
 API operation.

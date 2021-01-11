@@ -21,8 +21,7 @@ conjunction with Amazon CloudWatch alarms to temporarily pause email
 sending for a configuration set when the reputation metrics for that
 configuration set (such as your bounce on complaint rate) exceed certain
 thresholds.
-}
-\details{
+
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{

@@ -28,8 +28,7 @@ comes alphabetically immediately after the name you specify in
 }
 \description{
 Lists your delivery streams in alphabetical order of their names.
-}
-\details{
+
 The number of delivery streams might be too large to return using a
 single call to \code{ListDeliveryStreams}. You can limit the number of
 delivery streams returned, using the \code{Limit} parameter. To determine

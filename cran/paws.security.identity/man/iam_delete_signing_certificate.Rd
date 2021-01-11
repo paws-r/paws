@@ -21,8 +21,7 @@ characters that can be upper- or lower-cased letters or digits.}
 }
 \description{
 Deletes a signing certificate associated with the specified IAM user.
-}
-\details{
+
 If you do not specify a user name, IAM determines the user name
 implicitly based on the AWS access key ID signing the request. This
 operation works for access keys under the AWS account. Consequently, you

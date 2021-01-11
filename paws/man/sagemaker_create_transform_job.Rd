@@ -85,8 +85,7 @@ in the \emph{AWS Billing and Cost Management User Guide}.}
 Starts a transform job. A transform job uses a trained model to get
 inferences on a dataset and saves these results to an Amazon S3 location
 that you specify.
-}
-\details{
+
 To perform batch transformations, you create a transform job and use the
 data that you have readily available.
 

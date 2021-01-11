@@ -23,8 +23,7 @@ in the \emph{AWS General Reference}.}
 \description{
 Updates the metadata document for an existing SAML provider resource
 object.
-}
-\details{
+
 This operation requires \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 }
 \section{Request syntax}{

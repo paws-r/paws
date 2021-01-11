@@ -21,8 +21,7 @@ string.}
 Adds one or more tags to an IAM role. The role can be a regular role or
 a service-linked role. If a tag with the same key name already exists,
 then that tag is overwritten with the new value.
-}
-\details{
+
 A tag consists of a key name and an associated value. By assigning tags
 to your resources, you can do the following:
 \itemize{

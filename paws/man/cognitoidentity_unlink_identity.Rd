@@ -18,8 +18,7 @@ tokens.}
 Unlinks a federated identity from an existing account. Unlinked logins
 will be considered new identities next time they are seen. Removing the
 last linked login will make this identity inaccessible.
-}
-\details{
+
 This is a public API. You do not need any credentials to call this API.
 }
 \section{Request syntax}{

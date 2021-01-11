@@ -21,8 +21,7 @@ bundle IDs that you can specify.}
 \description{
 Updates the bundle of your Amazon Lightsail content delivery network
 (CDN) distribution.
-}
-\details{
+
 A distribution bundle specifies the monthly network transfer quota and
 monthly cost of your dsitribution.
 

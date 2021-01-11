@@ -20,8 +20,7 @@ cluster. If no resize operation has ever been initiated for the
 specified cluster, a \verb{HTTP 404} error is returned. If a resize operation
 was initiated and completed, the status of the resize remains as
 \code{SUCCEEDED} until the next resize.
-}
-\details{
+
 A resize operation can be requested using ModifyCluster and specifying a
 different number or type of nodes for the cluster.
 }

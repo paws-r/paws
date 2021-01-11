@@ -16,8 +16,7 @@ symbols: \verb{_ . : / = + - @}.}
 }
 \description{
 Add a tag to a Amazon SWF domain.
-}
-\details{
+
 Amazon SWF supports a maximum of 50 tags per resource.
 }
 \section{Request syntax}{

@@ -48,8 +48,7 @@ Associates an Elastic IP address, or carrier IP address (for instances
 that are in subnets in Wavelength Zones) with an instance or a network
 interface. Before you can use an Elastic IP address, you must allocate
 it to your account.
-}
-\details{
+
 An Elastic IP address is for use in either the EC2-Classic platform or
 in a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html}{Elastic IP Addresses}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

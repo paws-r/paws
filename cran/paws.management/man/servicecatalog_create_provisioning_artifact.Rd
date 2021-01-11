@@ -27,8 +27,7 @@ returned for each repeated request.}
 \description{
 Creates a provisioning artifact (also known as a version) for the
 specified product.
-}
-\details{
+
 You cannot create a provisioning artifact for a product that was shared
 with you.
 

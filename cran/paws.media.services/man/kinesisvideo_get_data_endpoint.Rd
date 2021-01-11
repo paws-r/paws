@@ -21,8 +21,7 @@ Gets an endpoint for a specified stream for either reading or writing.
 Use this endpoint in your application to read from the specified stream
 (using the \code{GetMedia} or \code{GetMediaForFragmentList} operations) or write
 to it (using the \code{PutMedia} operation).
-}
-\details{
+
 The returned endpoint does not have the API name appended. The client
 needs to add the API name to the returned endpoint.
 

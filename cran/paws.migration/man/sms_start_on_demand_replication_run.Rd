@@ -15,8 +15,7 @@ sms_start_on_demand_replication_run(replicationJobId, description)
 Starts an on-demand replication run for the specified replication job.
 This replication run starts immediately. This replication run is in
 addition to the ones already scheduled.
-}
-\details{
+
 There is a limit on the number of on-demand replications runs that you
 can request in a 24-hour period.
 }

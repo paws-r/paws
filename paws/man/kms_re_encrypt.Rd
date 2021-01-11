@@ -119,8 +119,7 @@ a CMK or change the CMK that protects a ciphertext. You can also use it
 to reencrypt ciphertext under the same CMK, such as to change the
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{encryption context}
 of a ciphertext.
-}
-\details{
+
 The \code{ReEncrypt} operation can decrypt ciphertext that was encrypted by
 using an AWS KMS CMK in an AWS KMS operation, such as Encrypt or
 GenerateDataKey. It can also decrypt ciphertext that was encrypted by

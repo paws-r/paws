@@ -17,8 +17,7 @@ results.}
 \description{
 The Amazon AppIntegrations APIs are in preview release and are subject
 to change.
-}
-\details{
+
 Returns a paginated list of event integrations in the account.
 }
 \section{Request syntax}{

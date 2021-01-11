@@ -21,8 +21,7 @@ will evaluate. Use the value that was returned for
 Returns an array of stream ARNs associated with the current account and
 endpoint. If the \code{TableName} parameter is present, then \code{ListStreams}
 will return only the streams ARNs for that table.
-}
-\details{
+
 You can call \code{ListStreams} at a maximum rate of 5 times per second.
 }
 \section{Request syntax}{

@@ -5,6 +5,7 @@ NULL
 
 #' Creates an association between the source and the destination
 #'
+#' @description
 #' Creates an *association* between the source and the destination. A
 #' source can be associated with multiple destinations, and a destination
 #' can be associated with multiple sources. An association is a lineage
@@ -65,6 +66,7 @@ sagemaker_add_association <- function(SourceArn, DestinationArn, AssociationType
 #' Adds or overwrites one or more tags for the specified Amazon SageMaker
 #' resource
 #'
+#' @description
 #' Adds or overwrites one or more tags for the specified Amazon SageMaker
 #' resource. You can add tags to notebook instances, training jobs,
 #' hyperparameter tuning jobs, batch transform jobs, models, labeling jobs,
@@ -128,6 +130,7 @@ sagemaker_add_tags <- function(ResourceArn, Tags) {
 
 #' Associates a trial component with a trial
 #'
+#' @description
 #' Associates a trial component with a trial. A trial component can be
 #' associated with multiple trials. To disassociate a trial component from
 #' a trial, call the DisassociateTrialComponent API.
@@ -168,6 +171,7 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 
 #' Creates an action
 #'
+#' @description
 #' Creates an *action*. An action is a lineage tracking entity that
 #' represents an action or activity. For example, a model deployment or an
 #' HPO job. Generally, an action involves at least one input or output
@@ -240,6 +244,7 @@ sagemaker_create_action <- function(ActionName, Source, ActionType, Description 
 #' Create a machine learning algorithm that you can use in Amazon SageMaker
 #' and list in the AWS Marketplace
 #'
+#' @description
 #' Create a machine learning algorithm that you can use in Amazon SageMaker
 #' and list in the AWS Marketplace.
 #'
@@ -499,6 +504,7 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 
 #' Creates a running App for the specified UserProfile
 #'
+#' @description
 #' Creates a running App for the specified UserProfile. Supported Apps are
 #' JupyterServer and KernelGateway. This operation is automatically invoked
 #' by Amazon SageMaker Studio upon access to the associated Domain, and
@@ -562,6 +568,7 @@ sagemaker_create_app <- function(DomainId, UserProfileName, AppType, AppName, Ta
 #' Creates a configuration for running a SageMaker image as a KernelGateway
 #' app
 #'
+#' @description
 #' Creates a configuration for running a SageMaker image as a KernelGateway
 #' app. The configuration specifies the Amazon Elastic File System (EFS)
 #' storage volume on the image, and a list of the kernels in the image.
@@ -622,6 +629,7 @@ sagemaker_create_app_image_config <- function(AppImageConfigName, Tags = NULL, K
 
 #' Creates an artifact
 #'
+#' @description
 #' Creates an *artifact*. An artifact is a lineage tracking entity that
 #' represents a URI addressable object or data. Some examples are the S3
 #' URI of a dataset and the ECR registry path of an image. For more
@@ -694,6 +702,7 @@ sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType,
 
 #' Creates an Autopilot job
 #'
+#' @description
 #' Creates an Autopilot job.
 #' 
 #' Find the best performing model after you run an Autopilot job by calling
@@ -807,6 +816,7 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
 
 #' Creates a Git repository as a resource in your Amazon SageMaker account
 #'
+#' @description
 #' Creates a Git repository as a resource in your Amazon SageMaker account.
 #' You can associate the repository with notebook instances so that you can
 #' use Git source control for the notebooks you create. The Git repository
@@ -871,6 +881,7 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig, Tags
 
 #' Starts a model compilation job
 #'
+#' @description
 #' Starts a model compilation job. After the model has been compiled,
 #' Amazon SageMaker saves the resulting model artifacts to an Amazon Simple
 #' Storage Service (Amazon S3) bucket that you specify.
@@ -993,6 +1004,7 @@ sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, InputC
 
 #' Creates a context
 #'
+#' @description
 #' Creates a *context*. A context is a lineage tracking entity that
 #' represents a logical grouping of other tracking or experiment entities.
 #' Some examples are an endpoint and a model package. For more information,
@@ -1056,6 +1068,7 @@ sagemaker_create_context <- function(ContextName, Source, ContextType, Descripti
 
 #' Creates a definition for a job that monitors data quality and drift
 #'
+#' @description
 #' Creates a definition for a job that monitors data quality and drift. For
 #' information about model monitor, see [Amazon SageMaker Model
 #' Monitor](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html).
@@ -1190,6 +1203,7 @@ sagemaker_create_data_quality_job_definition <- function(JobDefinitionName, Data
 
 #' Creates a device fleet
 #'
+#' @description
 #' Creates a device fleet.
 #'
 #' @usage
@@ -1244,6 +1258,7 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 
 #' Creates a Domain used by Amazon SageMaker Studio
 #'
+#' @description
 #' Creates a `Domain` used by Amazon SageMaker Studio. A domain consists of
 #' an associated Amazon Elastic File System (EFS) volume, a list of
 #' authorized users, and a variety of security, application, policy, and
@@ -1397,6 +1412,7 @@ sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, S
 
 #' Starts a SageMaker Edge Manager model packaging job
 #'
+#' @description
 #' Starts a SageMaker Edge Manager model packaging job. Edge Manager will
 #' use the model artifacts from the Amazon Simple Storage Service bucket
 #' that you specify. After the model has been packaged, Amazon SageMaker
@@ -1465,6 +1481,7 @@ sagemaker_create_edge_packaging_job <- function(EdgePackagingJobName, Compilatio
 #' Creates an endpoint using the endpoint configuration specified in the
 #' request
 #'
+#' @description
 #' Creates an endpoint using the endpoint configuration specified in the
 #' request. Amazon SageMaker uses the endpoint to provision resources and
 #' deploy models. You create the endpoint configuration with the
@@ -1518,11 +1535,11 @@ sagemaker_create_edge_packaging_job <- function(EdgePackagingJobName, Compilatio
 #' Region](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
 #' in the *AWS Identity and Access Management User Guide*.
 #' 
-#' To add the IAM role policies for using this API operation, go to the
-#' [IAM console](https://console.aws.amazon.com/iam/), and choose Roles in
-#' the left navigation pane. Search the IAM role that you want to grant
-#' access to use the CreateEndpoint and CreateEndpointConfig API
-#' operations, add the following policies to the role.
+#' To add the IAM role policies for using this API operation, go to the IAM
+#' console, and choose Roles in the left navigation pane. Search the IAM
+#' role that you want to grant access to use the CreateEndpoint and
+#' CreateEndpointConfig API operations, add the following policies to the
+#' role.
 #' 
 #' -   Option 1: For a full Amazon SageMaker access, search and attach the
 #'     `AmazonSageMakerFullAccess` policy.
@@ -1595,6 +1612,7 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Tags = N
 #' Creates an endpoint configuration that Amazon SageMaker hosting services
 #' uses to deploy models
 #'
+#' @description
 #' Creates an endpoint configuration that Amazon SageMaker hosting services
 #' uses to deploy models. In the configuration, you identify one or more
 #' models, created using the `CreateModel` API, to deploy and the resources
@@ -1751,6 +1769,7 @@ sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVaria
 
 #' Creates an SageMaker experiment
 #'
+#' @description
 #' Creates an SageMaker *experiment*. An experiment is a collection of
 #' *trials* that are observed, compared and evaluated as a group. A trial
 #' is a set of steps, called *trial components*, that produce a machine
@@ -1828,6 +1847,7 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 
 #' Create a new FeatureGroup
 #'
+#' @description
 #' Create a new `FeatureGroup`. A `FeatureGroup` is a group of `Features`
 #' defined in the `FeatureStore` to describe a `Record`.
 #' 
@@ -1983,6 +2003,7 @@ sagemaker_create_feature_group <- function(FeatureGroupName, RecordIdentifierFea
 
 #' Creates a flow definition
 #'
+#' @description
 #' Creates a flow definition.
 #'
 #' @usage
@@ -2075,6 +2096,7 @@ sagemaker_create_flow_definition <- function(FlowDefinitionName, HumanLoopReques
 #' Defines the settings you will use for the human review workflow user
 #' interface
 #'
+#' @description
 #' Defines the settings you will use for the human review workflow user
 #' interface. Reviewers will see a three-panel interface with an
 #' instruction area, the item to review, and an input area.
@@ -2126,6 +2148,7 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 
 #' Starts a hyperparameter tuning job
 #'
+#' @description
 #' Starts a hyperparameter tuning job. A hyperparameter tuning job finds
 #' the best version of a model by running many training jobs on your
 #' dataset using the algorithm you choose and values for hyperparameters
@@ -2141,7 +2164,7 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #' @param HyperParameterTuningJobName &#91;required&#93; The name of the tuning job. This name is the prefix for the names of all
 #' training jobs that this tuning job launches. The name must be unique
 #' within the same AWS account and AWS Region. The name must have 1 to 32
-#' characters. Valid characters are a-z, A-Z, 0-9, and : + = @@ \\_ % -
+#' characters. Valid characters are a-z, A-Z, 0-9, and : + = @@ \\_ \% -
 #' (hyphen). The name is not case sensitive.
 #' @param HyperParameterTuningJobConfig &#91;required&#93; The HyperParameterTuningJobConfig object that describes the tuning job,
 #' including the search strategy, the objective metric used to evaluate
@@ -2474,6 +2497,7 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 
 #' Creates a custom SageMaker image
 #'
+#' @description
 #' Creates a custom SageMaker image. A SageMaker image is a set of image
 #' versions. Each image version represents a container image stored in
 #' Amazon Container Registry (ECR). For more information, see [Bring your
@@ -2530,6 +2554,7 @@ sagemaker_create_image <- function(Description = NULL, DisplayName = NULL, Image
 
 #' Creates a version of the SageMaker image specified by ImageName
 #'
+#' @description
 #' Creates a version of the SageMaker image specified by `ImageName`. The
 #' version represents the Amazon Container Registry (ECR) container image
 #' specified by `BaseImage`.
@@ -2578,6 +2603,7 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName) {
 #' Creates a job that uses workers to label the data objects in your input
 #' dataset
 #'
+#' @description
 #' Creates a job that uses workers to label the data objects in your input
 #' dataset. You can use the labeled data to train machine learning models.
 #' 
@@ -2784,6 +2810,7 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 
 #' Creates a model in Amazon SageMaker
 #'
+#' @description
 #' Creates a model in Amazon SageMaker. In the request, you name the model
 #' and describe a primary container. For the primary container, you specify
 #' the Docker image that contains inference code, artifacts (from prior
@@ -2925,6 +2952,7 @@ sagemaker_create_model <- function(ModelName, PrimaryContainer = NULL, Container
 
 #' Creates the definition for a model bias job
 #'
+#' @description
 #' Creates the definition for a model bias job.
 #'
 #' @usage
@@ -3050,6 +3078,7 @@ sagemaker_create_model_bias_job_definition <- function(JobDefinitionName, ModelB
 
 #' Creates the definition for a model explainability job
 #'
+#' @description
 #' Creates the definition for a model explainability job.
 #'
 #' @usage
@@ -3175,6 +3204,7 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #' models or list on AWS Marketplace, or a versioned model that is part of
 #' a model group
 #'
+#' @description
 #' Creates a model package that you can use to create Amazon SageMaker
 #' models or list on AWS Marketplace, or a versioned model that is part of
 #' a model group. Buyers can subscribe to model packages listed on AWS
@@ -3398,6 +3428,7 @@ sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackage
 
 #' Creates a model group
 #'
+#' @description
 #' Creates a model group. A model group contains a group of model versions.
 #'
 #' @usage
@@ -3447,6 +3478,7 @@ sagemaker_create_model_package_group <- function(ModelPackageGroupName, ModelPac
 
 #' Creates a definition for a job that monitors model quality and drift
 #'
+#' @description
 #' Creates a definition for a job that monitors model quality and drift.
 #' For information about model monitor, see [Amazon SageMaker Model
 #' Monitor](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html).
@@ -3583,6 +3615,7 @@ sagemaker_create_model_quality_job_definition <- function(JobDefinitionName, Mod
 #' Creates a schedule that regularly starts Amazon SageMaker Processing
 #' Jobs to monitor the data captured for an Amazon SageMaker Endoint
 #'
+#' @description
 #' Creates a schedule that regularly starts Amazon SageMaker Processing
 #' Jobs to monitor the data captured for an Amazon SageMaker Endoint.
 #'
@@ -3717,6 +3750,7 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 
 #' Creates an Amazon SageMaker notebook instance
 #'
+#' @description
 #' Creates an Amazon SageMaker notebook instance. A notebook instance is a
 #' machine learning (ML) compute instance running on a Jupyter notebook.
 #' 
@@ -3893,6 +3927,7 @@ sagemaker_create_notebook_instance <- function(NotebookInstanceName, InstanceTyp
 #' Creates a lifecycle configuration that you can associate with a notebook
 #' instance
 #'
+#' @description
 #' Creates a lifecycle configuration that you can associate with a notebook
 #' instance. A *lifecycle configuration* is a collection of shell scripts
 #' that run when you create or start a notebook instance.
@@ -3964,6 +3999,7 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 
 #' Creates a pipeline using a JSON pipeline definition
 #'
+#' @description
 #' Creates a pipeline using a JSON pipeline definition.
 #'
 #' @usage
@@ -4022,6 +4058,7 @@ sagemaker_create_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
 
 #' Creates a URL for a specified UserProfile in a Domain
 #'
+#' @description
 #' Creates a URL for a specified UserProfile in a Domain. When accessed in
 #' a web browser, the user will be automatically signed in to Amazon
 #' SageMaker Studio, and granted access to all of the Apps and files
@@ -4073,6 +4110,7 @@ sagemaker_create_presigned_domain_url <- function(DomainId, UserProfileName, Ses
 #' Returns a URL that you can use to connect to the Jupyter server from a
 #' notebook instance
 #'
+#' @description
 #' Returns a URL that you can use to connect to the Jupyter server from a
 #' notebook instance. In the Amazon SageMaker console, when you choose
 #' `Open` next to a notebook instance, Amazon SageMaker opens a new tab
@@ -4135,6 +4173,7 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 
 #' Creates a processing job
 #'
+#' @description
 #' Creates a processing job.
 #'
 #' @usage
@@ -4297,6 +4336,7 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #' templates that set up an ML pipeline from training to deploying an
 #' approved model
 #'
+#' @description
 #' Creates a machine learning (ML) project that can contain one or more
 #' templates that set up an ML pipeline from training to deploying an
 #' approved model.
@@ -4362,6 +4402,7 @@ sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, Ser
 
 #' Starts a model training job
 #'
+#' @description
 #' Starts a model training job. After training completes, Amazon SageMaker
 #' saves the resulting model artifacts to an Amazon S3 location that you
 #' specify.
@@ -4394,7 +4435,7 @@ sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, Ser
 #'     training, you specify more than one instance.
 #' 
 #' -   `EnableManagedSpotTraining` - Optimize the cost of training machine
-#'     learning models by up to 80% by using Amazon EC2 Spot instances. For
+#'     learning models by up to 80\% by using Amazon EC2 Spot instances. For
 #'     more information, see [Managed Spot
 #'     Training](https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html).
 #' 
@@ -4696,6 +4737,7 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 
 #' Starts a transform job
 #'
+#' @description
 #' Starts a transform job. A transform job uses a trained model to get
 #' inferences on a dataset and saves these results to an Amazon S3 location
 #' that you specify.
@@ -4873,6 +4915,7 @@ sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcu
 
 #' Creates an Amazon SageMaker trial
 #'
+#' @description
 #' Creates an Amazon SageMaker *trial*. A trial is a set of steps called
 #' *trial components* that produce a machine learning model. A trial is
 #' part of a single Amazon SageMaker *experiment*.
@@ -4945,6 +4988,7 @@ sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName
 
 #' Creates a trial component, which is a stage of a machine learning trial
 #'
+#' @description
 #' Creates a *trial component*, which is a stage of a machine learning
 #' *trial*. A trial is composed of one or more trial components. A trial
 #' component can be used in multiple trials.
@@ -5064,6 +5108,7 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 
 #' Creates a user profile
 #'
+#' @description
 #' Creates a user profile. A user profile represents a single user within a
 #' domain, and is the main way to reference a "person" for the purposes of
 #' sharing, reporting, and other user-oriented features. This entity is
@@ -5168,6 +5213,7 @@ sagemaker_create_user_profile <- function(DomainId, UserProfileName, SingleSignO
 
 #' Use this operation to create a workforce
 #'
+#' @description
 #' Use this operation to create a workforce. This operation will return an
 #' error if a workforce already exists in the AWS Region that you specify.
 #' You can only create one workforce in each AWS Region per AWS account.
@@ -5263,6 +5309,7 @@ sagemaker_create_workforce <- function(CognitoConfig = NULL, OidcConfig = NULL, 
 
 #' Creates a new work team for labeling your data
 #'
+#' @description
 #' Creates a new work team for labeling your data. A work team is defined
 #' by one or more Amazon Cognito user pools. You must first create the user
 #' pools before you can create a work team.
@@ -5361,6 +5408,7 @@ sagemaker_create_workteam <- function(WorkteamName, WorkforceName = NULL, Member
 
 #' Deletes an action
 #'
+#' @description
 #' Deletes an action.
 #'
 #' @usage
@@ -5397,6 +5445,7 @@ sagemaker_delete_action <- function(ActionName) {
 
 #' Removes the specified algorithm from your account
 #'
+#' @description
 #' Removes the specified algorithm from your account.
 #'
 #' @usage
@@ -5433,6 +5482,7 @@ sagemaker_delete_algorithm <- function(AlgorithmName) {
 
 #' Used to stop and delete an app
 #'
+#' @description
 #' Used to stop and delete an app.
 #'
 #' @usage
@@ -5475,6 +5525,7 @@ sagemaker_delete_app <- function(DomainId, UserProfileName, AppType, AppName) {
 
 #' Deletes an AppImageConfig
 #'
+#' @description
 #' Deletes an AppImageConfig.
 #'
 #' @usage
@@ -5511,6 +5562,7 @@ sagemaker_delete_app_image_config <- function(AppImageConfigName) {
 
 #' Deletes an artifact
 #'
+#' @description
 #' Deletes an artifact. Either `ArtifactArn` or `Source` must be specified.
 #'
 #' @usage
@@ -5557,6 +5609,7 @@ sagemaker_delete_artifact <- function(ArtifactArn = NULL, Source = NULL) {
 
 #' Deletes an association
 #'
+#' @description
 #' Deletes an association.
 #'
 #' @usage
@@ -5595,6 +5648,7 @@ sagemaker_delete_association <- function(SourceArn, DestinationArn) {
 
 #' Deletes the specified Git repository from your account
 #'
+#' @description
 #' Deletes the specified Git repository from your account.
 #'
 #' @usage
@@ -5631,6 +5685,7 @@ sagemaker_delete_code_repository <- function(CodeRepositoryName) {
 
 #' Deletes an context
 #'
+#' @description
 #' Deletes an context.
 #'
 #' @usage
@@ -5667,6 +5722,7 @@ sagemaker_delete_context <- function(ContextName) {
 
 #' Deletes a data quality monitoring job definition
 #'
+#' @description
 #' Deletes a data quality monitoring job definition.
 #'
 #' @usage
@@ -5703,6 +5759,7 @@ sagemaker_delete_data_quality_job_definition <- function(JobDefinitionName) {
 
 #' Deletes a fleet
 #'
+#' @description
 #' Deletes a fleet.
 #'
 #' @usage
@@ -5739,6 +5796,7 @@ sagemaker_delete_device_fleet <- function(DeviceFleetName) {
 
 #' Used to delete a domain
 #'
+#' @description
 #' Used to delete a domain. If you onboarded with IAM mode, you will need
 #' to delete your domain to onboard again using SSO. Use with caution. All
 #' of the members of the domain will lose access to their EFS volume,
@@ -5784,6 +5842,7 @@ sagemaker_delete_domain <- function(DomainId, RetentionPolicy = NULL) {
 
 #' Deletes an endpoint
 #'
+#' @description
 #' Deletes an endpoint. Amazon SageMaker frees up all of the resources that
 #' were deployed when the endpoint was created.
 #' 
@@ -5826,6 +5885,7 @@ sagemaker_delete_endpoint <- function(EndpointName) {
 
 #' Deletes an endpoint configuration
 #'
+#' @description
 #' Deletes an endpoint configuration. The `DeleteEndpointConfig` API
 #' deletes only the specified configuration. It does not delete endpoints
 #' created using the configuration.
@@ -5871,6 +5931,7 @@ sagemaker_delete_endpoint_config <- function(EndpointConfigName) {
 
 #' Deletes an Amazon SageMaker experiment
 #'
+#' @description
 #' Deletes an Amazon SageMaker experiment. All trials associated with the
 #' experiment must be deleted first. Use the ListTrials API to get a list
 #' of the trials associated with the experiment.
@@ -5910,6 +5971,7 @@ sagemaker_delete_experiment <- function(ExperimentName) {
 #' Delete the FeatureGroup and any data that was written to the OnlineStore
 #' of the FeatureGroup
 #'
+#' @description
 #' Delete the `FeatureGroup` and any data that was written to the
 #' `OnlineStore` of the `FeatureGroup`. Data cannot be accessed from the
 #' `OnlineStore` immediately after `DeleteFeatureGroup` is called.
@@ -5953,6 +6015,7 @@ sagemaker_delete_feature_group <- function(FeatureGroupName) {
 
 #' Deletes the specified flow definition
 #'
+#' @description
 #' Deletes the specified flow definition.
 #'
 #' @usage
@@ -5990,6 +6053,7 @@ sagemaker_delete_flow_definition <- function(FlowDefinitionName) {
 #' Use this operation to delete a human task user interface (worker task
 #' template)
 #'
+#' @description
 #' Use this operation to delete a human task user interface (worker task
 #' template).
 #' 
@@ -6032,6 +6096,7 @@ sagemaker_delete_human_task_ui <- function(HumanTaskUiName) {
 
 #' Deletes a SageMaker image and all versions of the image
 #'
+#' @description
 #' Deletes a SageMaker image and all versions of the image. The container
 #' images aren't deleted.
 #'
@@ -6069,6 +6134,7 @@ sagemaker_delete_image <- function(ImageName) {
 
 #' Deletes a version of a SageMaker image
 #'
+#' @description
 #' Deletes a version of a SageMaker image. The container image the version
 #' represents isn't deleted.
 #'
@@ -6108,6 +6174,7 @@ sagemaker_delete_image_version <- function(ImageName, Version) {
 
 #' Deletes a model
 #'
+#' @description
 #' Deletes a model. The `DeleteModel` API deletes only the model entry that
 #' was created in Amazon SageMaker when you called the CreateModel API. It
 #' does not delete model artifacts, inference code, or the IAM role that
@@ -6147,6 +6214,7 @@ sagemaker_delete_model <- function(ModelName) {
 
 #' Deletes an Amazon SageMaker model bias job definition
 #'
+#' @description
 #' Deletes an Amazon SageMaker model bias job definition.
 #'
 #' @usage
@@ -6183,6 +6251,7 @@ sagemaker_delete_model_bias_job_definition <- function(JobDefinitionName) {
 
 #' Deletes an Amazon SageMaker model explainability job definition
 #'
+#' @description
 #' Deletes an Amazon SageMaker model explainability job definition.
 #'
 #' @usage
@@ -6219,6 +6288,7 @@ sagemaker_delete_model_explainability_job_definition <- function(JobDefinitionNa
 
 #' Deletes a model package
 #'
+#' @description
 #' Deletes a model package.
 #' 
 #' A model package is used to create Amazon SageMaker models or list on AWS
@@ -6260,6 +6330,7 @@ sagemaker_delete_model_package <- function(ModelPackageName) {
 
 #' Deletes the specified model group
 #'
+#' @description
 #' Deletes the specified model group.
 #'
 #' @usage
@@ -6296,6 +6367,7 @@ sagemaker_delete_model_package_group <- function(ModelPackageGroupName) {
 
 #' Deletes a model group resource policy
 #'
+#' @description
 #' Deletes a model group resource policy.
 #'
 #' @usage
@@ -6332,6 +6404,7 @@ sagemaker_delete_model_package_group_policy <- function(ModelPackageGroupName) {
 
 #' Deletes the secified model quality monitoring job definition
 #'
+#' @description
 #' Deletes the secified model quality monitoring job definition.
 #'
 #' @usage
@@ -6368,6 +6441,7 @@ sagemaker_delete_model_quality_job_definition <- function(JobDefinitionName) {
 
 #' Deletes a monitoring schedule
 #'
+#' @description
 #' Deletes a monitoring schedule. Also stops the schedule had not already
 #' been stopped. This does not delete the job execution history of the
 #' monitoring schedule.
@@ -6406,6 +6480,7 @@ sagemaker_delete_monitoring_schedule <- function(MonitoringScheduleName) {
 
 #' Deletes an Amazon SageMaker notebook instance
 #'
+#' @description
 #' Deletes an Amazon SageMaker notebook instance. Before you can delete a
 #' notebook instance, you must call the `StopNotebookInstance` API.
 #' 
@@ -6447,6 +6522,7 @@ sagemaker_delete_notebook_instance <- function(NotebookInstanceName) {
 
 #' Deletes a notebook instance lifecycle configuration
 #'
+#' @description
 #' Deletes a notebook instance lifecycle configuration.
 #'
 #' @usage
@@ -6484,6 +6560,7 @@ sagemaker_delete_notebook_instance_lifecycle_config <- function(NotebookInstance
 
 #' Deletes a pipeline if there are no in-progress executions
 #'
+#' @description
 #' Deletes a pipeline if there are no in-progress executions.
 #'
 #' @usage
@@ -6524,6 +6601,7 @@ sagemaker_delete_pipeline <- function(PipelineName, ClientRequestToken) {
 
 #' Delete the specified project
 #'
+#' @description
 #' Delete the specified project.
 #'
 #' @usage
@@ -6560,6 +6638,7 @@ sagemaker_delete_project <- function(ProjectName) {
 
 #' Deletes the specified tags from an Amazon SageMaker resource
 #'
+#' @description
 #' Deletes the specified tags from an Amazon SageMaker resource.
 #' 
 #' To list a resource's tags, use the `ListTags` API.
@@ -6607,6 +6686,7 @@ sagemaker_delete_tags <- function(ResourceArn, TagKeys) {
 
 #' Deletes the specified trial
 #'
+#' @description
 #' Deletes the specified trial. All trial components that make up the trial
 #' must be deleted first. Use the DescribeTrialComponent API to get the
 #' list of trial components.
@@ -6645,6 +6725,7 @@ sagemaker_delete_trial <- function(TrialName) {
 
 #' Deletes the specified trial component
 #'
+#' @description
 #' Deletes the specified trial component. A trial component must be
 #' disassociated from all trials before the trial component can be deleted.
 #' To disassociate a trial component from a trial, call the
@@ -6684,6 +6765,7 @@ sagemaker_delete_trial_component <- function(TrialComponentName) {
 
 #' Deletes a user profile
 #'
+#' @description
 #' Deletes a user profile. When a user profile is deleted, the user loses
 #' access to their EFS volume, including data, notebooks, and other
 #' artifacts.
@@ -6724,6 +6806,7 @@ sagemaker_delete_user_profile <- function(DomainId, UserProfileName) {
 
 #' Use this operation to delete a workforce
 #'
+#' @description
 #' Use this operation to delete a workforce.
 #' 
 #' If you want to create a new workforce in an AWS Region where a workforce
@@ -6769,6 +6852,7 @@ sagemaker_delete_workforce <- function(WorkforceName) {
 
 #' Deletes an existing work team
 #'
+#' @description
 #' Deletes an existing work team. This operation can't be undone.
 #'
 #' @usage
@@ -6805,6 +6889,7 @@ sagemaker_delete_workteam <- function(WorkteamName) {
 
 #' Deregisters the specified devices
 #'
+#' @description
 #' Deregisters the specified devices. After you deregister a device, you
 #' will need to re-register the devices.
 #'
@@ -6846,6 +6931,7 @@ sagemaker_deregister_devices <- function(DeviceFleetName, DeviceNames) {
 
 #' Describes an action
 #'
+#' @description
 #' Describes an action.
 #'
 #' @usage
@@ -6882,6 +6968,7 @@ sagemaker_describe_action <- function(ActionName) {
 
 #' Returns a description of the specified algorithm that is in your account
 #'
+#' @description
 #' Returns a description of the specified algorithm that is in your
 #' account.
 #'
@@ -6919,6 +7006,7 @@ sagemaker_describe_algorithm <- function(AlgorithmName) {
 
 #' Describes the app
 #'
+#' @description
 #' Describes the app.
 #'
 #' @usage
@@ -6961,6 +7049,7 @@ sagemaker_describe_app <- function(DomainId, UserProfileName, AppType, AppName) 
 
 #' Describes an AppImageConfig
 #'
+#' @description
 #' Describes an AppImageConfig.
 #'
 #' @usage
@@ -6997,6 +7086,7 @@ sagemaker_describe_app_image_config <- function(AppImageConfigName) {
 
 #' Describes an artifact
 #'
+#' @description
 #' Describes an artifact.
 #'
 #' @usage
@@ -7033,6 +7123,7 @@ sagemaker_describe_artifact <- function(ArtifactArn) {
 
 #' Returns information about an Amazon SageMaker job
 #'
+#' @description
 #' Returns information about an Amazon SageMaker job.
 #'
 #' @usage
@@ -7069,6 +7160,7 @@ sagemaker_describe_auto_ml_job <- function(AutoMLJobName) {
 
 #' Gets details about the specified Git repository
 #'
+#' @description
 #' Gets details about the specified Git repository.
 #'
 #' @usage
@@ -7105,6 +7197,7 @@ sagemaker_describe_code_repository <- function(CodeRepositoryName) {
 
 #' Returns information about a model compilation job
 #'
+#' @description
 #' Returns information about a model compilation job.
 #' 
 #' To create a model compilation job, use CreateCompilationJob. To get
@@ -7145,6 +7238,7 @@ sagemaker_describe_compilation_job <- function(CompilationJobName) {
 
 #' Describes a context
 #'
+#' @description
 #' Describes a context.
 #'
 #' @usage
@@ -7181,6 +7275,7 @@ sagemaker_describe_context <- function(ContextName) {
 
 #' Gets the details of a data quality monitoring job definition
 #'
+#' @description
 #' Gets the details of a data quality monitoring job definition.
 #'
 #' @usage
@@ -7217,6 +7312,7 @@ sagemaker_describe_data_quality_job_definition <- function(JobDefinitionName) {
 
 #' Describes the device
 #'
+#' @description
 #' Describes the device.
 #'
 #' @usage
@@ -7257,6 +7353,7 @@ sagemaker_describe_device <- function(NextToken = NULL, DeviceName, DeviceFleetN
 
 #' A description of the fleet the device belongs to
 #'
+#' @description
 #' A description of the fleet the device belongs to.
 #'
 #' @usage
@@ -7293,6 +7390,7 @@ sagemaker_describe_device_fleet <- function(DeviceFleetName) {
 
 #' The description of the domain
 #'
+#' @description
 #' The description of the domain.
 #'
 #' @usage
@@ -7329,6 +7427,7 @@ sagemaker_describe_domain <- function(DomainId) {
 
 #' A description of edge packaging jobs
 #'
+#' @description
 #' A description of edge packaging jobs.
 #'
 #' @usage
@@ -7365,6 +7464,7 @@ sagemaker_describe_edge_packaging_job <- function(EdgePackagingJobName) {
 
 #' Returns the description of an endpoint
 #'
+#' @description
 #' Returns the description of an endpoint.
 #'
 #' @usage
@@ -7402,6 +7502,7 @@ sagemaker_describe_endpoint <- function(EndpointName) {
 #' Returns the description of an endpoint configuration created using the
 #' CreateEndpointConfig API
 #'
+#' @description
 #' Returns the description of an endpoint configuration created using the
 #' `CreateEndpointConfig` API.
 #'
@@ -7439,6 +7540,7 @@ sagemaker_describe_endpoint_config <- function(EndpointConfigName) {
 
 #' Provides a list of an experiment's properties
 #'
+#' @description
 #' Provides a list of an experiment's properties.
 #'
 #' @usage
@@ -7475,6 +7577,7 @@ sagemaker_describe_experiment <- function(ExperimentName) {
 
 #' Use this operation to describe a FeatureGroup
 #'
+#' @description
 #' Use this operation to describe a `FeatureGroup`. The response includes
 #' information on the creation time, `FeatureGroup` name, the unique
 #' identifier for each `FeatureGroup`, and more.
@@ -7516,6 +7619,7 @@ sagemaker_describe_feature_group <- function(FeatureGroupName, NextToken = NULL)
 
 #' Returns information about the specified flow definition
 #'
+#' @description
 #' Returns information about the specified flow definition.
 #'
 #' @usage
@@ -7553,6 +7657,7 @@ sagemaker_describe_flow_definition <- function(FlowDefinitionName) {
 #' Returns information about the requested human task user interface
 #' (worker task template)
 #'
+#' @description
 #' Returns information about the requested human task user interface
 #' (worker task template).
 #'
@@ -7591,6 +7696,7 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
 
 #' Gets a description of a hyperparameter tuning job
 #'
+#' @description
 #' Gets a description of a hyperparameter tuning job.
 #'
 #' @usage
@@ -7628,6 +7734,7 @@ sagemaker_describe_hyper_parameter_tuning_job <- function(HyperParameterTuningJo
 
 #' Describes a SageMaker image
 #'
+#' @description
 #' Describes a SageMaker image.
 #'
 #' @usage
@@ -7664,6 +7771,7 @@ sagemaker_describe_image <- function(ImageName) {
 
 #' Describes a version of a SageMaker image
 #'
+#' @description
 #' Describes a version of a SageMaker image.
 #'
 #' @usage
@@ -7703,6 +7811,7 @@ sagemaker_describe_image_version <- function(ImageName, Version = NULL) {
 
 #' Gets information about a labeling job
 #'
+#' @description
 #' Gets information about a labeling job.
 #'
 #' @usage
@@ -7739,6 +7848,7 @@ sagemaker_describe_labeling_job <- function(LabelingJobName) {
 
 #' Describes a model that you created using the CreateModel API
 #'
+#' @description
 #' Describes a model that you created using the `CreateModel` API.
 #'
 #' @usage
@@ -7775,6 +7885,7 @@ sagemaker_describe_model <- function(ModelName) {
 
 #' Returns a description of a model bias job definition
 #'
+#' @description
 #' Returns a description of a model bias job definition.
 #'
 #' @usage
@@ -7812,6 +7923,7 @@ sagemaker_describe_model_bias_job_definition <- function(JobDefinitionName) {
 
 #' Returns a description of a model explainability job definition
 #'
+#' @description
 #' Returns a description of a model explainability job definition.
 #'
 #' @usage
@@ -7851,6 +7963,7 @@ sagemaker_describe_model_explainability_job_definition <- function(JobDefinition
 #' Returns a description of the specified model package, which is used to
 #' create Amazon SageMaker models or list them on AWS Marketplace
 #'
+#' @description
 #' Returns a description of the specified model package, which is used to
 #' create Amazon SageMaker models or list them on AWS Marketplace.
 #' 
@@ -7891,6 +8004,7 @@ sagemaker_describe_model_package <- function(ModelPackageName) {
 
 #' Gets a description for the specified model group
 #'
+#' @description
 #' Gets a description for the specified model group.
 #'
 #' @usage
@@ -7927,6 +8041,7 @@ sagemaker_describe_model_package_group <- function(ModelPackageGroupName) {
 
 #' Returns a description of a model quality job definition
 #'
+#' @description
 #' Returns a description of a model quality job definition.
 #'
 #' @usage
@@ -7964,6 +8079,7 @@ sagemaker_describe_model_quality_job_definition <- function(JobDefinitionName) {
 
 #' Describes the schedule for a monitoring job
 #'
+#' @description
 #' Describes the schedule for a monitoring job.
 #'
 #' @usage
@@ -8000,6 +8116,7 @@ sagemaker_describe_monitoring_schedule <- function(MonitoringScheduleName) {
 
 #' Returns information about a notebook instance
 #'
+#' @description
 #' Returns information about a notebook instance.
 #'
 #' @usage
@@ -8036,6 +8153,7 @@ sagemaker_describe_notebook_instance <- function(NotebookInstanceName) {
 
 #' Returns a description of a notebook instance lifecycle configuration
 #'
+#' @description
 #' Returns a description of a notebook instance lifecycle configuration.
 #' 
 #' For information about notebook instance lifestyle configurations, see
@@ -8077,6 +8195,7 @@ sagemaker_describe_notebook_instance_lifecycle_config <- function(NotebookInstan
 
 #' Describes the details of a pipeline
 #'
+#' @description
 #' Describes the details of a pipeline.
 #'
 #' @usage
@@ -8113,6 +8232,7 @@ sagemaker_describe_pipeline <- function(PipelineName) {
 
 #' Describes the details of an execution's pipeline definition
 #'
+#' @description
 #' Describes the details of an execution's pipeline definition.
 #'
 #' @usage
@@ -8150,6 +8270,7 @@ sagemaker_describe_pipeline_definition_for_execution <- function(PipelineExecuti
 
 #' Describes the details of a pipeline execution
 #'
+#' @description
 #' Describes the details of a pipeline execution.
 #'
 #' @usage
@@ -8186,6 +8307,7 @@ sagemaker_describe_pipeline_execution <- function(PipelineExecutionArn) {
 
 #' Returns a description of a processing job
 #'
+#' @description
 #' Returns a description of a processing job.
 #'
 #' @usage
@@ -8223,6 +8345,7 @@ sagemaker_describe_processing_job <- function(ProcessingJobName) {
 
 #' Describes the details of a project
 #'
+#' @description
 #' Describes the details of a project.
 #'
 #' @usage
@@ -8259,6 +8382,7 @@ sagemaker_describe_project <- function(ProjectName) {
 
 #' Gets information about a work team provided by a vendor
 #'
+#' @description
 #' Gets information about a work team provided by a vendor. It returns
 #' details about the subscription with a vendor in the AWS Marketplace.
 #'
@@ -8296,6 +8420,7 @@ sagemaker_describe_subscribed_workteam <- function(WorkteamArn) {
 
 #' Returns information about a training job
 #'
+#' @description
 #' Returns information about a training job.
 #'
 #' @usage
@@ -8332,6 +8457,7 @@ sagemaker_describe_training_job <- function(TrainingJobName) {
 
 #' Returns information about a transform job
 #'
+#' @description
 #' Returns information about a transform job.
 #'
 #' @usage
@@ -8368,6 +8494,7 @@ sagemaker_describe_transform_job <- function(TransformJobName) {
 
 #' Provides a list of a trial's properties
 #'
+#' @description
 #' Provides a list of a trial's properties.
 #'
 #' @usage
@@ -8404,6 +8531,7 @@ sagemaker_describe_trial <- function(TrialName) {
 
 #' Provides a list of a trials component's properties
 #'
+#' @description
 #' Provides a list of a trials component's properties.
 #'
 #' @usage
@@ -8440,6 +8568,7 @@ sagemaker_describe_trial_component <- function(TrialComponentName) {
 
 #' Describes a user profile
 #'
+#' @description
 #' Describes a user profile. For more information, see `CreateUserProfile`.
 #'
 #' @usage
@@ -8480,6 +8609,7 @@ sagemaker_describe_user_profile <- function(DomainId, UserProfileName) {
 #' Resource Name (ARN), and, if applicable, allowed IP address ranges
 #' (CIDRs)
 #'
+#' @description
 #' Lists private workforce information, including workforce name, Amazon
 #' Resource Name (ARN), and, if applicable, allowed IP address ranges
 #' ([CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)).
@@ -8524,6 +8654,7 @@ sagemaker_describe_workforce <- function(WorkforceName) {
 
 #' Gets information about a specific work team
 #'
+#' @description
 #' Gets information about a specific work team. You can see information
 #' such as the create date, the last updated date, membership information,
 #' and the work team's Amazon Resource Name (ARN).
@@ -8562,6 +8693,7 @@ sagemaker_describe_workteam <- function(WorkteamName) {
 
 #' Disables using Service Catalog in SageMaker
 #'
+#' @description
 #' Disables using Service Catalog in SageMaker. Service Catalog is used to
 #' create SageMaker projects.
 #'
@@ -8595,6 +8727,7 @@ sagemaker_disable_sagemaker_servicecatalog_portfolio <- function() {
 
 #' Disassociates a trial component from a trial
 #'
+#' @description
 #' Disassociates a trial component from a trial. This doesn't effect other
 #' trials the component is associated with. Before you can delete a
 #' component, you must disassociate the component from all trials it is
@@ -8642,6 +8775,7 @@ sagemaker_disassociate_trial_component <- function(TrialComponentName, TrialName
 
 #' Enables using Service Catalog in SageMaker
 #'
+#' @description
 #' Enables using Service Catalog in SageMaker. Service Catalog is used to
 #' create SageMaker projects.
 #'
@@ -8675,6 +8809,7 @@ sagemaker_enable_sagemaker_servicecatalog_portfolio <- function() {
 
 #' Describes a fleet
 #'
+#' @description
 #' Describes a fleet.
 #'
 #' @usage
@@ -8711,6 +8846,7 @@ sagemaker_get_device_fleet_report <- function(DeviceFleetName) {
 
 #' Gets a resource policy that manages access for a model group
 #'
+#' @description
 #' Gets a resource policy that manages access for a model group. For
 #' information about resource policies, see [Identity-based policies and
 #' resource-based
@@ -8751,6 +8887,7 @@ sagemaker_get_model_package_group_policy <- function(ModelPackageGroupName) {
 
 #' Gets the status of Service Catalog in SageMaker
 #'
+#' @description
 #' Gets the status of Service Catalog in SageMaker. Service Catalog is used
 #' to create SageMaker projects.
 #'
@@ -8785,6 +8922,7 @@ sagemaker_get_sagemaker_servicecatalog_portfolio_status <- function() {
 #' An auto-complete API for the search functionality in the Amazon
 #' SageMaker console
 #'
+#' @description
 #' An auto-complete API for the search functionality in the Amazon
 #' SageMaker console. It returns suggestions of possible matches for the
 #' property name to use in `Search` queries. Provides suggestions for
@@ -8830,6 +8968,7 @@ sagemaker_get_search_suggestions <- function(Resource, SuggestionQuery = NULL) {
 
 #' Lists the actions in your account and their properties
 #'
+#' @description
 #' Lists the actions in your account and their properties.
 #'
 #' @usage
@@ -8889,6 +9028,7 @@ sagemaker_list_actions <- function(SourceUri = NULL, ActionType = NULL, CreatedA
 
 #' Lists the machine learning algorithms that have been created
 #'
+#' @description
 #' Lists the machine learning algorithms that have been created.
 #'
 #' @usage
@@ -8948,6 +9088,7 @@ sagemaker_list_algorithms <- function(CreationTimeAfter = NULL, CreationTimeBefo
 
 #' Lists the AppImageConfigs in your account and their properties
 #'
+#' @description
 #' Lists the AppImageConfigs in your account and their properties. The list
 #' can be filtered by creation time or modified time, and whether the
 #' AppImageConfig name contains a specified string.
@@ -9020,6 +9161,7 @@ sagemaker_list_app_image_configs <- function(MaxResults = NULL, NextToken = NULL
 
 #' Lists apps
 #'
+#' @description
 #' Lists apps.
 #'
 #' @usage
@@ -9068,6 +9210,7 @@ sagemaker_list_apps <- function(NextToken = NULL, MaxResults = NULL, SortOrder =
 
 #' Lists the artifacts in your account and their properties
 #'
+#' @description
 #' Lists the artifacts in your account and their properties.
 #'
 #' @usage
@@ -9128,6 +9271,7 @@ sagemaker_list_artifacts <- function(SourceUri = NULL, ArtifactType = NULL, Crea
 
 #' Lists the associations in your account and their properties
 #'
+#' @description
 #' Lists the associations in your account and their properties.
 #'
 #' @usage
@@ -9197,6 +9341,7 @@ sagemaker_list_associations <- function(SourceArn = NULL, DestinationArn = NULL,
 
 #' Request a list of jobs
 #'
+#' @description
 #' Request a list of jobs.
 #'
 #' @usage
@@ -9263,6 +9408,7 @@ sagemaker_list_auto_ml_jobs <- function(CreationTimeAfter = NULL, CreationTimeBe
 
 #' List the Candidates created for the job
 #'
+#' @description
 #' List the Candidates created for the job.
 #'
 #' @usage
@@ -9313,6 +9459,7 @@ sagemaker_list_candidates_for_auto_ml_job <- function(AutoMLJobName, StatusEqual
 
 #' Gets a list of the Git repositories in your account
 #'
+#' @description
 #' Gets a list of the Git repositories in your account.
 #'
 #' @usage
@@ -9382,6 +9529,7 @@ sagemaker_list_code_repositories <- function(CreationTimeAfter = NULL, CreationT
 
 #' Lists model compilation jobs that satisfy various filters
 #'
+#' @description
 #' Lists model compilation jobs that satisfy various filters.
 #' 
 #' To create a model compilation job, use CreateCompilationJob. To get
@@ -9458,6 +9606,7 @@ sagemaker_list_compilation_jobs <- function(NextToken = NULL, MaxResults = NULL,
 
 #' Lists the contexts in your account and their properties
 #'
+#' @description
 #' Lists the contexts in your account and their properties.
 #'
 #' @usage
@@ -9517,6 +9666,7 @@ sagemaker_list_contexts <- function(SourceUri = NULL, ContextType = NULL, Create
 
 #' Lists the data quality job definitions in your account
 #'
+#' @description
 #' Lists the data quality job definitions in your account.
 #'
 #' @usage
@@ -9581,6 +9731,7 @@ sagemaker_list_data_quality_job_definitions <- function(EndpointName = NULL, Sor
 
 #' Returns a list of devices in the fleet
 #'
+#' @description
 #' Returns a list of devices in the fleet.
 #'
 #' @usage
@@ -9645,6 +9796,7 @@ sagemaker_list_device_fleets <- function(NextToken = NULL, MaxResults = NULL, Cr
 
 #' A list of devices
 #'
+#' @description
 #' A list of devices.
 #'
 #' @usage
@@ -9694,6 +9846,7 @@ sagemaker_list_devices <- function(NextToken = NULL, MaxResults = NULL, LatestHe
 
 #' Lists the domains
 #'
+#' @description
 #' Lists the domains.
 #'
 #' @usage
@@ -9733,6 +9886,7 @@ sagemaker_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Returns a list of edge packaging jobs
 #'
+#' @description
 #' Returns a list of edge packaging jobs.
 #'
 #' @usage
@@ -9801,6 +9955,7 @@ sagemaker_list_edge_packaging_jobs <- function(NextToken = NULL, MaxResults = NU
 
 #' Lists endpoint configurations
 #'
+#' @description
 #' Lists endpoint configurations.
 #'
 #' @usage
@@ -9859,6 +10014,7 @@ sagemaker_list_endpoint_configs <- function(SortBy = NULL, SortOrder = NULL, Nex
 
 #' Lists endpoints
 #'
+#' @description
 #' Lists endpoints.
 #'
 #' @usage
@@ -9930,6 +10086,7 @@ sagemaker_list_endpoints <- function(SortBy = NULL, SortOrder = NULL, NextToken 
 
 #' Lists all the experiments in your account
 #'
+#' @description
 #' Lists all the experiments in your account. The list can be filtered to
 #' show only experiments that were created in a specific time range. The
 #' list can be sorted by experiment name or creation time.
@@ -9987,6 +10144,7 @@ sagemaker_list_experiments <- function(CreatedAfter = NULL, CreatedBefore = NULL
 
 #' List FeatureGroups based on given filter and order
 #'
+#' @description
 #' List `FeatureGroup`s based on given filter and order.
 #'
 #' @usage
@@ -10048,6 +10206,7 @@ sagemaker_list_feature_groups <- function(NameContains = NULL, FeatureGroupStatu
 
 #' Returns information about the flow definitions in your account
 #'
+#' @description
 #' Returns information about the flow definitions in your account.
 #'
 #' @usage
@@ -10103,6 +10262,7 @@ sagemaker_list_flow_definitions <- function(CreationTimeAfter = NULL, CreationTi
 
 #' Returns information about the human task user interfaces in your account
 #'
+#' @description
 #' Returns information about the human task user interfaces in your
 #' account.
 #'
@@ -10160,6 +10320,7 @@ sagemaker_list_human_task_uis <- function(CreationTimeAfter = NULL, CreationTime
 #' Gets a list of HyperParameterTuningJobSummary objects that describe the
 #' hyperparameter tuning jobs launched in your account
 #'
+#' @description
 #' Gets a list of HyperParameterTuningJobSummary objects that describe the
 #' hyperparameter tuning jobs launched in your account.
 #'
@@ -10232,6 +10393,7 @@ sagemaker_list_hyper_parameter_tuning_jobs <- function(NextToken = NULL, MaxResu
 
 #' Lists the versions of a specified image and their properties
 #'
+#' @description
 #' Lists the versions of a specified image and their properties. The list
 #' can be filtered by creation time or modified time.
 #'
@@ -10302,6 +10464,7 @@ sagemaker_list_image_versions <- function(CreationTimeAfter = NULL, CreationTime
 
 #' Lists the images in your account and their properties
 #'
+#' @description
 #' Lists the images in your account and their properties. The list can be
 #' filtered by creation time or modified time, and whether the image name
 #' contains a specified string.
@@ -10373,6 +10536,7 @@ sagemaker_list_images <- function(CreationTimeAfter = NULL, CreationTimeBefore =
 
 #' Gets a list of labeling jobs
 #'
+#' @description
 #' Gets a list of labeling jobs.
 #'
 #' @usage
@@ -10445,6 +10609,7 @@ sagemaker_list_labeling_jobs <- function(CreationTimeAfter = NULL, CreationTimeB
 
 #' Gets a list of labeling jobs assigned to a specified work team
 #'
+#' @description
 #' Gets a list of labeling jobs assigned to a specified work team.
 #'
 #' @usage
@@ -10508,6 +10673,7 @@ sagemaker_list_labeling_jobs_for_workteam <- function(WorkteamArn, MaxResults = 
 
 #' Lists model bias jobs definitions that satisfy various filters
 #'
+#' @description
 #' Lists model bias jobs definitions that satisfy various filters.
 #'
 #' @usage
@@ -10570,6 +10736,7 @@ sagemaker_list_model_bias_job_definitions <- function(EndpointName = NULL, SortB
 
 #' Lists model explainability job definitions that satisfy various filters
 #'
+#' @description
 #' Lists model explainability job definitions that satisfy various filters.
 #'
 #' @usage
@@ -10633,6 +10800,7 @@ sagemaker_list_model_explainability_job_definitions <- function(EndpointName = N
 
 #' Gets a list of the model groups in your AWS account
 #'
+#' @description
 #' Gets a list of the model groups in your AWS account.
 #'
 #' @usage
@@ -10692,6 +10860,7 @@ sagemaker_list_model_package_groups <- function(CreationTimeAfter = NULL, Creati
 
 #' Lists the model packages that have been created
 #'
+#' @description
 #' Lists the model packages that have been created.
 #'
 #' @usage
@@ -10767,6 +10936,7 @@ sagemaker_list_model_packages <- function(CreationTimeAfter = NULL, CreationTime
 
 #' Gets a list of model quality monitoring job definitions in your account
 #'
+#' @description
 #' Gets a list of model quality monitoring job definitions in your account.
 #'
 #' @usage
@@ -10832,6 +11002,7 @@ sagemaker_list_model_quality_job_definitions <- function(EndpointName = NULL, So
 
 #' Lists models created with the CreateModel API
 #'
+#' @description
 #' Lists models created with the CreateModel API.
 #'
 #' @usage
@@ -10890,6 +11061,7 @@ sagemaker_list_models <- function(SortBy = NULL, SortOrder = NULL, NextToken = N
 
 #' Returns list of all monitoring job executions
 #'
+#' @description
 #' Returns list of all monitoring job executions.
 #'
 #' @usage
@@ -10976,6 +11148,7 @@ sagemaker_list_monitoring_executions <- function(MonitoringScheduleName = NULL, 
 
 #' Returns list of all monitoring schedules
 #'
+#' @description
 #' Returns list of all monitoring schedules.
 #'
 #' @usage
@@ -11059,6 +11232,7 @@ sagemaker_list_monitoring_schedules <- function(EndpointName = NULL, SortBy = NU
 #' Lists notebook instance lifestyle configurations created with the
 #' CreateNotebookInstanceLifecycleConfig API
 #'
+#' @description
 #' Lists notebook instance lifestyle configurations created with the
 #' CreateNotebookInstanceLifecycleConfig API.
 #'
@@ -11131,6 +11305,7 @@ sagemaker_list_notebook_instance_lifecycle_configs <- function(NextToken = NULL,
 #' Returns a list of the Amazon SageMaker notebook instances in the
 #' requester's account in an AWS Region
 #'
+#' @description
 #' Returns a list of the Amazon SageMaker notebook instances in the
 #' requester's account in an AWS Region.
 #'
@@ -11223,6 +11398,7 @@ sagemaker_list_notebook_instances <- function(NextToken = NULL, MaxResults = NUL
 
 #' Gets a list of PipeLineExecutionStep objects
 #'
+#' @description
 #' Gets a list of `PipeLineExecutionStep` objects.
 #'
 #' @usage
@@ -11269,6 +11445,7 @@ sagemaker_list_pipeline_execution_steps <- function(PipelineExecutionArn = NULL,
 
 #' Gets a list of the pipeline executions
 #'
+#' @description
 #' Gets a list of the pipeline executions.
 #'
 #' @usage
@@ -11326,6 +11503,7 @@ sagemaker_list_pipeline_executions <- function(PipelineName, CreatedAfter = NULL
 
 #' Gets a list of parameters for a pipeline execution
 #'
+#' @description
 #' Gets a list of parameters for a pipeline execution.
 #'
 #' @usage
@@ -11369,6 +11547,7 @@ sagemaker_list_pipeline_parameters_for_execution <- function(PipelineExecutionAr
 
 #' Gets a list of pipelines
 #'
+#' @description
 #' Gets a list of pipelines.
 #'
 #' @usage
@@ -11426,6 +11605,7 @@ sagemaker_list_pipelines <- function(PipelineNamePrefix = NULL, CreatedAfter = N
 
 #' Lists processing jobs that satisfy various filters
 #'
+#' @description
 #' Lists processing jobs that satisfy various filters.
 #'
 #' @usage
@@ -11497,6 +11677,7 @@ sagemaker_list_processing_jobs <- function(CreationTimeAfter = NULL, CreationTim
 
 #' Gets a list of the projects in an AWS account
 #'
+#' @description
 #' Gets a list of the projects in an AWS account.
 #'
 #' @usage
@@ -11556,6 +11737,7 @@ sagemaker_list_projects <- function(CreationTimeAfter = NULL, CreationTimeBefore
 #' Gets a list of the work teams that you are subscribed to in the AWS
 #' Marketplace
 #'
+#' @description
 #' Gets a list of the work teams that you are subscribed to in the AWS
 #' Marketplace. The list may be empty if no work team satisfies the filter
 #' specified in the `NameContains` parameter.
@@ -11601,6 +11783,7 @@ sagemaker_list_subscribed_workteams <- function(NameContains = NULL, NextToken =
 
 #' Returns the tags for the specified Amazon SageMaker resource
 #'
+#' @description
 #' Returns the tags for the specified Amazon SageMaker resource.
 #'
 #' @usage
@@ -11644,6 +11827,7 @@ sagemaker_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL
 
 #' Lists training jobs
 #'
+#' @description
 #' Lists training jobs.
 #'
 #' @usage
@@ -11716,6 +11900,7 @@ sagemaker_list_training_jobs <- function(NextToken = NULL, MaxResults = NULL, Cr
 #' Gets a list of TrainingJobSummary objects that describe the training
 #' jobs that a hyperparameter tuning job launched
 #'
+#' @description
 #' Gets a list of TrainingJobSummary objects that describe the training
 #' jobs that a hyperparameter tuning job launched.
 #'
@@ -11771,6 +11956,7 @@ sagemaker_list_training_jobs_for_hyper_parameter_tuning_job <- function(HyperPar
 
 #' Lists transform jobs
 #'
+#' @description
 #' Lists transform jobs.
 #'
 #' @usage
@@ -11843,6 +12029,7 @@ sagemaker_list_transform_jobs <- function(CreationTimeAfter = NULL, CreationTime
 
 #' Lists the trial components in your account
 #'
+#' @description
 #' Lists the trial components in your account. You can sort the list by
 #' trial component name or creation time. You can filter the list to show
 #' only components that were created in a specific time range. You can also
@@ -11918,6 +12105,7 @@ sagemaker_list_trial_components <- function(ExperimentName = NULL, TrialName = N
 
 #' Lists the trials in your account
 #'
+#' @description
 #' Lists the trials in your account. Specify an experiment name to limit
 #' the list to the trials that are part of that experiment. Specify a trial
 #' component name to limit the list to the trials that associated with that
@@ -11982,6 +12170,7 @@ sagemaker_list_trials <- function(ExperimentName = NULL, TrialComponentName = NU
 
 #' Lists user profiles
 #'
+#' @description
 #' Lists user profiles.
 #'
 #' @usage
@@ -12031,6 +12220,7 @@ sagemaker_list_user_profiles <- function(NextToken = NULL, MaxResults = NULL, So
 #' Use this operation to list all private and vendor workforces in an AWS
 #' Region
 #'
+#' @description
 #' Use this operation to list all private and vendor workforces in an AWS
 #' Region. Note that you can only have one private workforce per AWS
 #' Region.
@@ -12079,6 +12269,7 @@ sagemaker_list_workforces <- function(SortBy = NULL, SortOrder = NULL, NameConta
 
 #' Gets a list of private work teams that you have defined in a region
 #'
+#' @description
 #' Gets a list of private work teams that you have defined in a region. The
 #' list may be empty if no work team satisfies the filter specified in the
 #' `NameContains` parameter.
@@ -12129,6 +12320,7 @@ sagemaker_list_workteams <- function(SortBy = NULL, SortOrder = NULL, NameContai
 
 #' Adds a resouce policy to control access to a model group
 #'
+#' @description
 #' Adds a resouce policy to control access to a model group. For
 #' information about resoure policies, see [Identity-based policies and
 #' resource-based
@@ -12172,6 +12364,7 @@ sagemaker_put_model_package_group_policy <- function(ModelPackageGroupName, Reso
 
 #' Register devices
 #'
+#' @description
 #' Register devices.
 #'
 #' @usage
@@ -12223,6 +12416,7 @@ sagemaker_register_devices <- function(DeviceFleetName, Devices, Tags = NULL) {
 
 #' Renders the UI template so that you can preview the worker's experience
 #'
+#' @description
 #' Renders the UI template so that you can preview the worker's experience.
 #'
 #' @usage
@@ -12274,6 +12468,7 @@ sagemaker_render_ui_template <- function(UiTemplate = NULL, Task, RoleArn, Human
 
 #' Finds Amazon SageMaker resources that match a search query
 #'
+#' @description
 #' Finds Amazon SageMaker resources that match a search query. Matching
 #' resources are returned as a list of `SearchRecord` objects in the
 #' response. You can sort the search results by any resource property in a
@@ -12360,6 +12555,7 @@ sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, S
 
 #' Starts a previously stopped monitoring schedule
 #'
+#' @description
 #' Starts a previously stopped monitoring schedule.
 #' 
 #' By default, when you successfully create a new schedule, the status of a
@@ -12400,6 +12596,7 @@ sagemaker_start_monitoring_schedule <- function(MonitoringScheduleName) {
 #' Launches an ML compute instance with the latest version of the libraries
 #' and attaches your ML storage volume
 #'
+#' @description
 #' Launches an ML compute instance with the latest version of the libraries
 #' and attaches your ML storage volume. After configuring the notebook
 #' instance, Amazon SageMaker sets the notebook instance status to
@@ -12440,6 +12637,7 @@ sagemaker_start_notebook_instance <- function(NotebookInstanceName) {
 
 #' Starts a pipeline execution
 #'
+#' @description
 #' Starts a pipeline execution.
 #'
 #' @usage
@@ -12493,6 +12691,7 @@ sagemaker_start_pipeline_execution <- function(PipelineName, PipelineExecutionDi
 
 #' A method for forcing the termination of a running job
 #'
+#' @description
 #' A method for forcing the termination of a running job.
 #'
 #' @usage
@@ -12529,6 +12728,7 @@ sagemaker_stop_auto_ml_job <- function(AutoMLJobName) {
 
 #' Stops a model compilation job
 #'
+#' @description
 #' Stops a model compilation job.
 #' 
 #' To stop a job, Amazon SageMaker sends the algorithm the SIGTERM signal.
@@ -12574,6 +12774,7 @@ sagemaker_stop_compilation_job <- function(CompilationJobName) {
 
 #' Request to stop an edge packaging job
 #'
+#' @description
 #' Request to stop an edge packaging job.
 #'
 #' @usage
@@ -12611,6 +12812,7 @@ sagemaker_stop_edge_packaging_job <- function(EdgePackagingJobName) {
 #' Stops a running hyperparameter tuning job and all running training jobs
 #' that the tuning job launched
 #'
+#' @description
 #' Stops a running hyperparameter tuning job and all running training jobs
 #' that the tuning job launched.
 #' 
@@ -12654,6 +12856,7 @@ sagemaker_stop_hyper_parameter_tuning_job <- function(HyperParameterTuningJobNam
 
 #' Stops a running labeling job
 #'
+#' @description
 #' Stops a running labeling job. A job that is stopped cannot be restarted.
 #' Any results obtained before the job is stopped are placed in the Amazon
 #' S3 output bucket.
@@ -12692,6 +12895,7 @@ sagemaker_stop_labeling_job <- function(LabelingJobName) {
 
 #' Stops a previously started monitoring schedule
 #'
+#' @description
 #' Stops a previously started monitoring schedule.
 #'
 #' @usage
@@ -12728,6 +12932,7 @@ sagemaker_stop_monitoring_schedule <- function(MonitoringScheduleName) {
 
 #' Terminates the ML compute instance
 #'
+#' @description
 #' Terminates the ML compute instance. Before terminating the instance,
 #' Amazon SageMaker disconnects the ML storage volume from it. Amazon
 #' SageMaker preserves the ML storage volume. Amazon SageMaker stops
@@ -12774,6 +12979,7 @@ sagemaker_stop_notebook_instance <- function(NotebookInstanceName) {
 
 #' Stops a pipeline execution
 #'
+#' @description
 #' Stops a pipeline execution.
 #'
 #' @usage
@@ -12815,6 +13021,7 @@ sagemaker_stop_pipeline_execution <- function(PipelineExecutionArn, ClientReques
 
 #' Stops a processing job
 #'
+#' @description
 #' Stops a processing job.
 #'
 #' @usage
@@ -12851,6 +13058,7 @@ sagemaker_stop_processing_job <- function(ProcessingJobName) {
 
 #' Stops a training job
 #'
+#' @description
 #' Stops a training job. To stop a job, Amazon SageMaker sends the
 #' algorithm the `SIGTERM` signal, which delays job termination for 120
 #' seconds. Algorithms might use this 120-second window to save the model
@@ -12894,6 +13102,7 @@ sagemaker_stop_training_job <- function(TrainingJobName) {
 
 #' Stops a transform job
 #'
+#' @description
 #' Stops a transform job.
 #' 
 #' When Amazon SageMaker receives a `StopTransformJob` request, the status
@@ -12936,6 +13145,7 @@ sagemaker_stop_transform_job <- function(TransformJobName) {
 
 #' Updates an action
 #'
+#' @description
 #' Updates an action.
 #'
 #' @usage
@@ -12985,6 +13195,7 @@ sagemaker_update_action <- function(ActionName, Description = NULL, Status = NUL
 
 #' Updates the properties of an AppImageConfig
 #'
+#' @description
 #' Updates the properties of an AppImageConfig.
 #'
 #' @usage
@@ -13036,6 +13247,7 @@ sagemaker_update_app_image_config <- function(AppImageConfigName, KernelGatewayI
 
 #' Updates an artifact
 #'
+#' @description
 #' Updates an artifact.
 #'
 #' @usage
@@ -13083,6 +13295,7 @@ sagemaker_update_artifact <- function(ArtifactArn, ArtifactName = NULL, Properti
 
 #' Updates the specified Git repository with the specified values
 #'
+#' @description
 #' Updates the specified Git repository with the specified values.
 #'
 #' @usage
@@ -13129,6 +13342,7 @@ sagemaker_update_code_repository <- function(CodeRepositoryName, GitConfig = NUL
 
 #' Updates a context
 #'
+#' @description
 #' Updates a context.
 #'
 #' @usage
@@ -13176,6 +13390,7 @@ sagemaker_update_context <- function(ContextName, Description = NULL, Properties
 
 #' Updates a fleet of devices
 #'
+#' @description
 #' Updates a fleet of devices.
 #'
 #' @usage
@@ -13222,6 +13437,7 @@ sagemaker_update_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 
 #' Updates one or more devices in a fleet
 #'
+#' @description
 #' Updates one or more devices in a fleet.
 #'
 #' @usage
@@ -13266,6 +13482,7 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
 
 #' Updates the default settings for new user profiles in the domain
 #'
+#' @description
 #' Updates the default settings for new user profiles in the domain.
 #'
 #' @usage
@@ -13345,6 +13562,7 @@ sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL) {
 #' the endpoint using the previous EndpointConfig (there is no availability
 #' loss)
 #'
+#' @description
 #' Deploys the new `EndpointConfig` specified in the request, switches to
 #' using newly created endpoint, and then deletes resources provisioned for
 #' the endpoint using the previous `EndpointConfig` (there is no
@@ -13447,6 +13665,7 @@ sagemaker_update_endpoint <- function(EndpointName, EndpointConfigName, RetainAl
 #' existing endpoint, or capacity of one variant associated with an
 #' existing endpoint
 #'
+#' @description
 #' Updates variant weight of one or more variants associated with an
 #' existing endpoint, or capacity of one variant associated with an
 #' existing endpoint. When it receives the request, Amazon SageMaker sets
@@ -13497,6 +13716,7 @@ sagemaker_update_endpoint_weights_and_capacities <- function(EndpointName, Desir
 
 #' Adds, updates, or removes the description of an experiment
 #'
+#' @description
 #' Adds, updates, or removes the description of an experiment. Updates the
 #' display name of an experiment.
 #'
@@ -13539,6 +13759,7 @@ sagemaker_update_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 
 #' Updates the properties of a SageMaker image
 #'
+#' @description
 #' Updates the properties of a SageMaker image. To change the image's tags,
 #' use the AddTags and DeleteTags APIs.
 #'
@@ -13589,6 +13810,7 @@ sagemaker_update_image <- function(DeleteProperties = NULL, Description = NULL, 
 
 #' Updates a versioned model
 #'
+#' @description
 #' Updates a versioned model.
 #'
 #' @usage
@@ -13630,6 +13852,7 @@ sagemaker_update_model_package <- function(ModelPackageArn, ModelApprovalStatus,
 
 #' Updates a previously created schedule
 #'
+#' @description
 #' Updates a previously created schedule.
 #'
 #' @usage
@@ -13754,6 +13977,7 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 
 #' Updates a notebook instance
 #'
+#' @description
 #' Updates a notebook instance. NotebookInstance updates include upgrading
 #' or downgrading the ML compute instance used for your notebook instance
 #' to accommodate changes in your workload requirements.
@@ -13880,6 +14104,7 @@ sagemaker_update_notebook_instance <- function(NotebookInstanceName, InstanceTyp
 #' Updates a notebook instance lifecycle configuration created with the
 #' CreateNotebookInstanceLifecycleConfig API
 #'
+#' @description
 #' Updates a notebook instance lifecycle configuration created with the
 #' CreateNotebookInstanceLifecycleConfig API.
 #'
@@ -13933,6 +14158,7 @@ sagemaker_update_notebook_instance_lifecycle_config <- function(NotebookInstance
 
 #' Updates a pipeline
 #'
+#' @description
 #' Updates a pipeline.
 #'
 #' @usage
@@ -13978,6 +14204,7 @@ sagemaker_update_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
 
 #' Updates a pipeline execution
 #'
+#' @description
 #' Updates a pipeline execution.
 #'
 #' @usage
@@ -14020,6 +14247,7 @@ sagemaker_update_pipeline_execution <- function(PipelineExecutionArn, PipelineEx
 #' Update a model training job to request a new Debugger profiling
 #' configuration
 #'
+#' @description
 #' Update a model training job to request a new Debugger profiling
 #' configuration.
 #'
@@ -14084,6 +14312,7 @@ sagemaker_update_training_job <- function(TrainingJobName, ProfilerConfig = NULL
 
 #' Updates the display name of a trial
 #'
+#' @description
 #' Updates the display name of a trial.
 #'
 #' @usage
@@ -14123,6 +14352,7 @@ sagemaker_update_trial <- function(TrialName, DisplayName = NULL) {
 
 #' Updates one or more properties of a trial component
 #'
+#' @description
 #' Updates one or more properties of a trial component.
 #'
 #' @usage
@@ -14215,6 +14445,7 @@ sagemaker_update_trial_component <- function(TrialComponentName, DisplayName = N
 
 #' Updates a user profile
 #'
+#' @description
 #' Updates a user profile.
 #'
 #' @usage
@@ -14293,6 +14524,7 @@ sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSetting
 
 #' Use this operation to update your workforce
 #'
+#' @description
 #' Use this operation to update your workforce. You can use this operation
 #' to require that workers use specific IP addresses to work on tasks and
 #' to update your OpenID Connect (OIDC) Identity Provider (IdP) workforce
@@ -14377,6 +14609,7 @@ sagemaker_update_workforce <- function(WorkforceName, SourceIpConfig = NULL, Oid
 
 #' Updates an existing work team with new member definitions or description
 #'
+#' @description
 #' Updates an existing work team with new member definitions or
 #' description.
 #'

@@ -55,8 +55,7 @@ status of the deletion. The delete operation cannot be canceled or
 reverted once submitted. For more information about managing clusters,
 go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
 in the \emph{Amazon Redshift Cluster Management Guide}.
-}
-\details{
+
 If you want to shut down the cluster and retain it for future use, set
 \emph{SkipFinalClusterSnapshot} to \code{false} and specify a name for
 \emph{FinalClusterSnapshotIdentifier}. You can later restore this snapshot to

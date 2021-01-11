@@ -14,8 +14,6 @@ gamelift_describe_game_session_placement(PlacementId)
 Retrieves properties and current status of a game session placement
 request. To get game session placement details, specify the placement
 ID. If successful, a GameSessionPlacement object is returned.
-}
-\details{
 \itemize{
 \item CreateGameSession
 \item DescribeGameSessions

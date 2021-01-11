@@ -18,8 +18,7 @@ Valid principals are CertificateArn
 }
 \description{
 Removes the specified policy from the specified certificate.
-}
-\details{
+
 \strong{Note:} This API is deprecated. Please use DetachPolicy instead.
 }
 \section{Request syntax}{

@@ -15,8 +15,7 @@ Amazon Simple Notification Service (Amazon SNS).}
 Adds a notification channel to DevOps Guru. A notification channel is
 used to notify you about important DevOps Guru events, such as when an
 insight is generated.
-}
-\details{
+
 If you use an Amazon SNS topic in another account, you must attach a
 policy to it that grants DevOps Guru permission to it notifications.
 DevOps Guru adds the required policy on your behalf to send

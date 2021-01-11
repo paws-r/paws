@@ -38,8 +38,7 @@ ignored when creating a new version unless they are explicitly included.}
 \description{
 Creates a new version for a launch template. You can specify an existing
 version of launch template from which to base the new version.
-}
-\details{
+
 Launch template versions are numbered in the order in which they are
 created. You cannot specify, change, or replace the numbering of launch
 template versions.

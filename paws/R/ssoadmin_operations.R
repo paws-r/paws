@@ -5,6 +5,7 @@ NULL
 
 #' Attaches an IAM managed policy ARN to a permission set
 #'
+#' @description
 #' Attaches an IAM managed policy ARN to a permission set.
 #' 
 #' If the permission set is already referenced by one or more account
@@ -55,6 +56,7 @@ ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, Permis
 #' Assigns access to a principal for a specified AWS account using a
 #' specified permission set
 #'
+#' @description
 #' Assigns access to a principal for a specified AWS account using a
 #' specified permission set.
 #' 
@@ -122,6 +124,7 @@ ssoadmin_create_account_assignment <- function(InstanceArn, TargetId, TargetType
 #' Enables the attributes-based access control (ABAC) feature for the
 #' specified AWS SSO instance
 #'
+#' @description
 #' Enables the attributes-based access control (ABAC) feature for the
 #' specified AWS SSO instance. You can also specify new attributes to add
 #' to your ABAC configuration during the enabling process. For more
@@ -181,6 +184,7 @@ ssoadmin_create_instance_access_control_attribute_configuration <- function(Inst
 
 #' Creates a permission set within a specified SSO instance
 #'
+#' @description
 #' Creates a permission set within a specified SSO instance.
 #' 
 #' To grant users and groups access to AWS account resources, use
@@ -241,6 +245,7 @@ ssoadmin_create_permission_set <- function(Name, Description = NULL, InstanceArn
 #' Deletes a principal's access from a specified AWS account using a
 #' specified permission set
 #'
+#' @description
 #' Deletes a principal's access from a specified AWS account using a
 #' specified permission set.
 #'
@@ -295,6 +300,7 @@ ssoadmin_delete_account_assignment <- function(InstanceArn, TargetId, TargetType
 
 #' Deletes the inline policy from a specified permission set
 #'
+#' @description
 #' Deletes the inline policy from a specified permission set.
 #'
 #' @usage
@@ -338,6 +344,7 @@ ssoadmin_delete_inline_policy_from_permission_set <- function(InstanceArn, Permi
 #' specified AWS SSO instance and deletes all of the attribute mappings
 #' that have been configured
 #'
+#' @description
 #' Disables the attributes-based access control (ABAC) feature for the
 #' specified AWS SSO instance and deletes all of the attribute mappings
 #' that have been configured. Once deleted, any attributes that are
@@ -380,6 +387,7 @@ ssoadmin_delete_instance_access_control_attribute_configuration <- function(Inst
 
 #' Deletes the specified permission set
 #'
+#' @description
 #' Deletes the specified permission set.
 #'
 #' @usage
@@ -420,6 +428,7 @@ ssoadmin_delete_permission_set <- function(InstanceArn, PermissionSetArn) {
 
 #' Describes the status of the assignment creation request
 #'
+#' @description
 #' Describes the status of the assignment creation request.
 #'
 #' @usage
@@ -461,6 +470,7 @@ ssoadmin_describe_account_assignment_creation_status <- function(InstanceArn, Ac
 
 #' Describes the status of the assignment deletion request
 #'
+#' @description
 #' Describes the status of the assignment deletion request.
 #'
 #' @usage
@@ -504,6 +514,7 @@ ssoadmin_describe_account_assignment_deletion_status <- function(InstanceArn, Ac
 #' configured to work with attributes-based access control (ABAC) for the
 #' specified AWS SSO instance
 #'
+#' @description
 #' Returns the list of AWS SSO identity store attributes that have been
 #' configured to work with attributes-based access control (ABAC) for the
 #' specified AWS SSO instance. This will not return attributes configured
@@ -545,6 +556,7 @@ ssoadmin_describe_instance_access_control_attribute_configuration <- function(In
 
 #' Gets the details of the permission set
 #'
+#' @description
 #' Gets the details of the permission set.
 #'
 #' @usage
@@ -585,6 +597,7 @@ ssoadmin_describe_permission_set <- function(InstanceArn, PermissionSetArn) {
 
 #' Describes the status for the given permission set provisioning request
 #'
+#' @description
 #' Describes the status for the given permission set provisioning request.
 #'
 #' @usage
@@ -628,6 +641,7 @@ ssoadmin_describe_permission_set_provisioning_status <- function(InstanceArn, Pr
 #' Detaches the attached IAM managed policy ARN from the specified
 #' permission set
 #'
+#' @description
 #' Detaches the attached IAM managed policy ARN from the specified
 #' permission set.
 #'
@@ -672,6 +686,7 @@ ssoadmin_detach_managed_policy_from_permission_set <- function(InstanceArn, Perm
 
 #' Obtains the inline policy assigned to the permission set
 #'
+#' @description
 #' Obtains the inline policy assigned to the permission set.
 #'
 #' @usage
@@ -714,6 +729,7 @@ ssoadmin_get_inline_policy_for_permission_set <- function(InstanceArn, Permissio
 #' Lists the status of the AWS account assignment creation requests for a
 #' specified SSO instance
 #'
+#' @description
 #' Lists the status of the AWS account assignment creation requests for a
 #' specified SSO instance.
 #'
@@ -764,6 +780,7 @@ ssoadmin_list_account_assignment_creation_status <- function(InstanceArn, MaxRes
 #' Lists the status of the AWS account assignment deletion requests for a
 #' specified SSO instance
 #'
+#' @description
 #' Lists the status of the AWS account assignment deletion requests for a
 #' specified SSO instance.
 #'
@@ -814,6 +831,7 @@ ssoadmin_list_account_assignment_deletion_status <- function(InstanceArn, MaxRes
 #' Lists the assignee of the specified AWS account with the specified
 #' permission set
 #'
+#' @description
 #' Lists the assignee of the specified AWS account with the specified
 #' permission set.
 #'
@@ -864,6 +882,7 @@ ssoadmin_list_account_assignments <- function(InstanceArn, AccountId, Permission
 #' Lists all the AWS accounts where the specified permission set is
 #' provisioned
 #'
+#' @description
 #' Lists all the AWS accounts where the specified permission set is
 #' provisioned.
 #'
@@ -914,6 +933,7 @@ ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, P
 
 #' Lists the SSO instances that the caller has access to
 #'
+#' @description
 #' Lists the SSO instances that the caller has access to.
 #'
 #' @usage
@@ -954,6 +974,7 @@ ssoadmin_list_instances <- function(MaxResults = NULL, NextToken = NULL) {
 #' Lists the IAM managed policy that is attached to a specified permission
 #' set
 #'
+#' @description
 #' Lists the IAM managed policy that is attached to a specified permission
 #' set.
 #'
@@ -1002,6 +1023,7 @@ ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, Permis
 #' Lists the status of the permission set provisioning requests for a
 #' specified SSO instance
 #'
+#' @description
 #' Lists the status of the permission set provisioning requests for a
 #' specified SSO instance.
 #'
@@ -1051,6 +1073,7 @@ ssoadmin_list_permission_set_provisioning_status <- function(InstanceArn, MaxRes
 
 #' Lists the PermissionSets in an SSO instance
 #'
+#' @description
 #' Lists the PermissionSets in an SSO instance.
 #'
 #' @usage
@@ -1095,6 +1118,7 @@ ssoadmin_list_permission_sets <- function(InstanceArn, NextToken = NULL, MaxResu
 #' Lists all the permission sets that are provisioned to a specified AWS
 #' account
 #'
+#' @description
 #' Lists all the permission sets that are provisioned to a specified AWS
 #' account.
 #'
@@ -1144,6 +1168,7 @@ ssoadmin_list_permission_sets_provisioned_to_account <- function(InstanceArn, Ac
 
 #' Lists the tags that are attached to a specified resource
 #'
+#' @description
 #' Lists the tags that are attached to a specified resource.
 #'
 #' @usage
@@ -1188,6 +1213,7 @@ ssoadmin_list_tags_for_resource <- function(InstanceArn, ResourceArn, NextToken 
 #' The process by which a specified permission set is provisioned to the
 #' specified target
 #'
+#' @description
 #' The process by which a specified permission set is provisioned to the
 #' specified target.
 #'
@@ -1235,6 +1261,7 @@ ssoadmin_provision_permission_set <- function(InstanceArn, PermissionSetArn, Tar
 
 #' Attaches an IAM inline policy to a permission set
 #'
+#' @description
 #' Attaches an IAM inline policy to a permission set.
 #' 
 #' If the permission set is already referenced by one or more account
@@ -1283,6 +1310,7 @@ ssoadmin_put_inline_policy_to_permission_set <- function(InstanceArn, Permission
 
 #' Associates a set of tags with a specified resource
 #'
+#' @description
 #' Associates a set of tags with a specified resource.
 #'
 #' @usage
@@ -1330,6 +1358,7 @@ ssoadmin_tag_resource <- function(InstanceArn, ResourceArn, Tags) {
 
 #' Disassociates a set of tags from a specified resource
 #'
+#' @description
 #' Disassociates a set of tags from a specified resource.
 #'
 #' @usage
@@ -1375,6 +1404,7 @@ ssoadmin_untag_resource <- function(InstanceArn, ResourceArn, TagKeys) {
 #' Updates the AWS SSO identity store attributes to use with the AWS SSO
 #' instance for attributes-based access control (ABAC)
 #'
+#' @description
 #' Updates the AWS SSO identity store attributes to use with the AWS SSO
 #' instance for attributes-based access control (ABAC). When using an
 #' external identity provider as an identity source, you can pass
@@ -1432,6 +1462,7 @@ ssoadmin_update_instance_access_control_attribute_configuration <- function(Inst
 
 #' Updates an existing permission set
 #'
+#' @description
 #' Updates an existing permission set.
 #'
 #' @usage

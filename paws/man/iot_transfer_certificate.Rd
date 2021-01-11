@@ -17,8 +17,7 @@ contains the certificate ID.)}
 }
 \description{
 Transfers the specified certificate to the specified AWS account.
-}
-\details{
+
 You can cancel the transfer until it is acknowledged by the recipient.
 
 No notification is sent to the transfer destination's account. It is up

@@ -21,8 +21,7 @@ Use this API to retrieve media content from a Kinesis video stream. In
 the request, you identify the stream name or stream Amazon Resource Name
 (ARN), and the starting chunk. Kinesis Video Streams then returns a
 stream of chunks in order by fragment number.
-}
-\details{
+
 You must first call the \code{GetDataEndpoint} API to get an endpoint. Then
 send the \code{GetMedia} requests to this endpoint using the \href{https://docs.aws.amazon.com/cli/latest/reference/}{--endpoint-url parameter}.
 

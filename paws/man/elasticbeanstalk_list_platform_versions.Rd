@@ -24,8 +24,7 @@ Lists the platform versions available for your account in an AWS Region.
 Provides summary information about each platform version. Compare to
 DescribePlatformVersion, which provides full details about a single
 platform version.
-}
-\details{
+
 For definitions of platform version and other platform-related terms,
 see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html}{AWS Elastic Beanstalk Platforms Glossary}.
 }

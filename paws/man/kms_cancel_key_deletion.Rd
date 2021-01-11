@@ -25,8 +25,7 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 Cancels the deletion of a customer master key (CMK). When this operation
 succeeds, the key state of the CMK is \code{Disabled}. To enable the CMK, use
 EnableKey.
-}
-\details{
+
 For more information about scheduling and canceling deletion of a CMK,
 see \href{https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html}{Deleting Customer Master Keys}
 in the \emph{AWS Key Management Service Developer Guide}.

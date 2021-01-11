@@ -22,8 +22,7 @@ can use to identify and organize your AWS resources. Each tag consists
 of a \code{key} and an optional \code{value}. You specify the certificate on input
 by its Amazon Resource Name (ARN). You specify the tag by using a
 key-value pair.
-}
-\details{
+
 You can apply a tag to just one certificate if you want to identify a
 specific characteristic of that certificate, or you can apply the same
 tag to multiple certificates if you want to filter for a common

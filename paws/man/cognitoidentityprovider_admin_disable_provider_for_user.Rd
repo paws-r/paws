@@ -23,8 +23,7 @@ The next time the external user (no longer attached to the previously
 linked \code{DestinationUser}) signs in, they must create a new user account.
 See
 \href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AdminLinkProviderForUser.html}{AdminLinkProviderForUser}.
-}
-\details{
+
 This action is enabled only for admin access and requires developer
 credentials.
 

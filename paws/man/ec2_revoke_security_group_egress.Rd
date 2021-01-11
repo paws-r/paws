@@ -40,8 +40,7 @@ security group.}
 for EC2-VPC. This action does not apply to security groups for use in
 EC2-Classic. To remove a rule, the values that you specify (for example,
 ports) must match the existing rule's values exactly.
-}
-\details{
+
 [Default VPC] If the values you specify do not match the existing
 rule's values, no error is returned, and the output describes the
 security group rules that were not revoked.

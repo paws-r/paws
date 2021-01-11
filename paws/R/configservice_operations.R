@@ -6,6 +6,7 @@ NULL
 #' Returns the current configuration items for resources that are present
 #' in your AWS Config aggregator
 #'
+#' @description
 #' Returns the current configuration items for resources that are present
 #' in your AWS Config aggregator. The operation also returns a list of
 #' resources that are not processed in the current request. If there are no
@@ -61,6 +62,7 @@ configservice_batch_get_aggregate_resource_config <- function(ConfigurationAggre
 
 #' Returns the current configuration for one or more requested resources
 #'
+#' @description
 #' Returns the current configuration for one or more requested resources.
 #' The operation also returns a list of resources that are not processed in
 #' the current request. If there are no unprocessed resources, the
@@ -113,6 +115,7 @@ configservice_batch_get_resource_config <- function(resourceKeys) {
 #' Deletes the authorization granted to the specified configuration
 #' aggregator account in a specified region
 #'
+#' @description
 #' Deletes the authorization granted to the specified configuration
 #' aggregator account in a specified region.
 #'
@@ -153,6 +156,7 @@ configservice_delete_aggregation_authorization <- function(AuthorizedAccountId, 
 
 #' Deletes the specified AWS Config rule and all of its evaluation results
 #'
+#' @description
 #' Deletes the specified AWS Config rule and all of its evaluation results.
 #' 
 #' AWS Config sets the state of a rule to `DELETING` until the deletion is
@@ -198,6 +202,7 @@ configservice_delete_config_rule <- function(ConfigRuleName) {
 #' Deletes the specified configuration aggregator and the aggregated data
 #' associated with the aggregator
 #'
+#' @description
 #' Deletes the specified configuration aggregator and the aggregated data
 #' associated with the aggregator.
 #'
@@ -236,6 +241,7 @@ configservice_delete_configuration_aggregator <- function(ConfigurationAggregato
 
 #' Deletes the configuration recorder
 #'
+#' @description
 #' Deletes the configuration recorder.
 #' 
 #' After the configuration recorder is deleted, AWS Config will not record
@@ -286,6 +292,7 @@ configservice_delete_configuration_recorder <- function(ConfigurationRecorderNam
 #' remediation actions, and all evaluation results within that conformance
 #' pack
 #'
+#' @description
 #' Deletes the specified conformance pack and all the AWS Config rules,
 #' remediation actions, and all evaluation results within that conformance
 #' pack.
@@ -328,6 +335,7 @@ configservice_delete_conformance_pack <- function(ConformancePackName) {
 
 #' Deletes the delivery channel
 #'
+#' @description
 #' Deletes the delivery channel.
 #' 
 #' Before you can delete the delivery channel, you must stop the
@@ -367,6 +375,7 @@ configservice_delete_delivery_channel <- function(DeliveryChannelName) {
 
 #' Deletes the evaluation results for the specified AWS Config rule
 #'
+#' @description
 #' Deletes the evaluation results for the specified AWS Config rule. You
 #' can specify one AWS Config rule per request. After you delete the
 #' evaluation results, you can call the StartConfigRulesEvaluation API to
@@ -408,6 +417,7 @@ configservice_delete_evaluation_results <- function(ConfigRuleName) {
 #' Deletes the specified organization config rule and all of its evaluation
 #' results from all member accounts in that organization
 #'
+#' @description
 #' Deletes the specified organization config rule and all of its evaluation
 #' results from all member accounts in that organization.
 #' 
@@ -457,6 +467,7 @@ configservice_delete_organization_config_rule <- function(OrganizationConfigRule
 #' config rules and remediation actions from all member accounts in that
 #' organization
 #'
+#' @description
 #' Deletes the specified organization conformance pack and all of the
 #' config rules and remediation actions from all member accounts in that
 #' organization.
@@ -506,6 +517,7 @@ configservice_delete_organization_conformance_pack <- function(OrganizationConfo
 #' Deletes pending authorization requests for a specified aggregator
 #' account in a specified region
 #'
+#' @description
 #' Deletes pending authorization requests for a specified aggregator
 #' account in a specified region.
 #'
@@ -546,6 +558,7 @@ configservice_delete_pending_aggregation_request <- function(RequesterAccountId,
 
 #' Deletes the remediation configuration
 #'
+#' @description
 #' Deletes the remediation configuration.
 #'
 #' @usage
@@ -587,6 +600,7 @@ configservice_delete_remediation_configuration <- function(ConfigRuleName, Resou
 #' Deletes one or more remediation exceptions mentioned in the resource
 #' keys
 #'
+#' @description
 #' Deletes one or more remediation exceptions mentioned in the resource
 #' keys.
 #' 
@@ -640,6 +654,7 @@ configservice_delete_remediation_exceptions <- function(ConfigRuleName, Resource
 #' Records the configuration state for a custom resource that has been
 #' deleted
 #'
+#' @description
 #' Records the configuration state for a custom resource that has been
 #' deleted. This API records a new ConfigurationItem with a ResourceDeleted
 #' status. You can retrieve the ConfigurationItems recorded for this
@@ -681,6 +696,7 @@ configservice_delete_resource_config <- function(ResourceType, ResourceId) {
 
 #' Deletes the retention configuration
 #'
+#' @description
 #' Deletes the retention configuration.
 #'
 #' @usage
@@ -717,6 +733,7 @@ configservice_delete_retention_configuration <- function(RetentionConfigurationN
 
 #' Deletes the stored query for an AWS account in an AWS Region
 #'
+#' @description
 #' Deletes the stored query for an AWS account in an AWS Region.
 #'
 #' @usage
@@ -754,6 +771,7 @@ configservice_delete_stored_query <- function(QueryName) {
 #' Schedules delivery of a configuration snapshot to the Amazon S3 bucket
 #' in the specified delivery channel
 #'
+#' @description
 #' Schedules delivery of a configuration snapshot to the Amazon S3 bucket
 #' in the specified delivery channel. After the delivery has started, AWS
 #' Config sends the following notifications using an Amazon SNS topic that
@@ -802,6 +820,7 @@ configservice_deliver_config_snapshot <- function(deliveryChannelName) {
 #' Returns a list of compliant and noncompliant rules with the number of
 #' resources for compliant and noncompliant rules
 #'
+#' @description
 #' Returns a list of compliant and noncompliant rules with the number of
 #' resources for compliant and noncompliant rules.
 #' 
@@ -857,6 +876,7 @@ configservice_describe_aggregate_compliance_by_config_rules <- function(Configur
 #' Returns a list of authorizations granted to various aggregator accounts
 #' and regions
 #'
+#' @description
 #' Returns a list of authorizations granted to various aggregator accounts
 #' and regions.
 #'
@@ -898,6 +918,7 @@ configservice_describe_aggregation_authorizations <- function(Limit = NULL, Next
 
 #' Indicates whether the specified AWS Config rules are compliant
 #'
+#' @description
 #' Indicates whether the specified AWS Config rules are compliant. If a
 #' rule is noncompliant, this action returns the number of AWS resources
 #' that do not comply with the rule.
@@ -970,6 +991,7 @@ configservice_describe_compliance_by_config_rule <- function(ConfigRuleNames = N
 
 #' Indicates whether the specified AWS resources are compliant
 #'
+#' @description
 #' Indicates whether the specified AWS resources are compliant. If a
 #' resource is noncompliant, this action returns the number of AWS Config
 #' rules that the resource does not comply with.
@@ -1052,6 +1074,7 @@ configservice_describe_compliance_by_resource <- function(ResourceType = NULL, R
 
 #' Returns status information for each of your AWS managed Config rules
 #'
+#' @description
 #' Returns status information for each of your AWS managed Config rules.
 #' The status includes information such as the last time AWS Config invoked
 #' the rule, the last time AWS Config failed to invoke the rule, and the
@@ -1108,6 +1131,7 @@ configservice_describe_config_rule_evaluation_status <- function(ConfigRuleNames
 
 #' Returns details about your AWS Config rules
 #'
+#' @description
 #' Returns details about your AWS Config rules.
 #'
 #' @usage
@@ -1150,6 +1174,7 @@ configservice_describe_config_rules <- function(ConfigRuleNames = NULL, NextToke
 
 #' Returns status information for sources within an aggregator
 #'
+#' @description
 #' Returns status information for sources within an aggregator. The status
 #' includes information about the last time AWS Config verified
 #' authorization between the source account and an aggregator account. In
@@ -1207,6 +1232,7 @@ configservice_describe_configuration_aggregator_sources_status <- function(Confi
 
 #' Returns the details of one or more configuration aggregators
 #'
+#' @description
 #' Returns the details of one or more configuration aggregators. If the
 #' configuration aggregator is not specified, this action returns the
 #' details for all the configuration aggregators associated with the
@@ -1255,6 +1281,7 @@ configservice_describe_configuration_aggregators <- function(ConfigurationAggreg
 
 #' Returns the current status of the specified configuration recorder
 #'
+#' @description
 #' Returns the current status of the specified configuration recorder. If a
 #' configuration recorder is not specified, this action returns the status
 #' of all configuration recorders associated with the account.
@@ -1301,6 +1328,7 @@ configservice_describe_configuration_recorder_status <- function(ConfigurationRe
 
 #' Returns the details for the specified configuration recorders
 #'
+#' @description
 #' Returns the details for the specified configuration recorders. If the
 #' configuration recorder is not specified, this action returns the details
 #' for all configuration recorders associated with the account.
@@ -1345,6 +1373,7 @@ configservice_describe_configuration_recorders <- function(ConfigurationRecorder
 
 #' Returns compliance details for each rule in that conformance pack
 #'
+#' @description
 #' Returns compliance details for each rule in that conformance pack.
 #' 
 #' You must provide exact rule names.
@@ -1397,6 +1426,7 @@ configservice_describe_conformance_pack_compliance <- function(ConformancePackNa
 
 #' Provides one or more conformance packs deployment status
 #'
+#' @description
 #' Provides one or more conformance packs deployment status.
 #' 
 #' If there are no conformance packs then you will see an empty result.
@@ -1443,6 +1473,7 @@ configservice_describe_conformance_pack_status <- function(ConformancePackNames 
 
 #' Returns a list of one or more conformance packs
 #'
+#' @description
 #' Returns a list of one or more conformance packs.
 #'
 #' @usage
@@ -1489,6 +1520,7 @@ configservice_describe_conformance_packs <- function(ConformancePackNames = NULL
 
 #' Returns the current status of the specified delivery channel
 #'
+#' @description
 #' Returns the current status of the specified delivery channel. If a
 #' delivery channel is not specified, this action returns the current
 #' status of all delivery channels associated with the account.
@@ -1532,6 +1564,7 @@ configservice_describe_delivery_channel_status <- function(DeliveryChannelNames 
 
 #' Returns details about the specified delivery channel
 #'
+#' @description
 #' Returns details about the specified delivery channel. If a delivery
 #' channel is not specified, this action returns the details of all
 #' delivery channels associated with the account.
@@ -1575,6 +1608,7 @@ configservice_describe_delivery_channels <- function(DeliveryChannelNames = NULL
 
 #' Provides organization config rule deployment status for an organization
 #'
+#' @description
 #' Provides organization config rule deployment status for an organization.
 #' 
 #' The status is not considered successful until organization config rule
@@ -1632,6 +1666,7 @@ configservice_describe_organization_config_rule_statuses <- function(Organizatio
 
 #' Returns a list of organization config rules
 #'
+#' @description
 #' Returns a list of organization config rules.
 #' 
 #' When you specify the limit and the next token, you receive a paginated
@@ -1686,6 +1721,7 @@ configservice_describe_organization_config_rules <- function(OrganizationConfigR
 #' Provides organization conformance pack deployment status for an
 #' organization
 #'
+#' @description
 #' Provides organization conformance pack deployment status for an
 #' organization.
 #' 
@@ -1744,6 +1780,7 @@ configservice_describe_organization_conformance_pack_statuses <- function(Organi
 
 #' Returns a list of organization conformance packs
 #'
+#' @description
 #' Returns a list of organization conformance packs.
 #' 
 #' When you specify the limit and the next token, you receive a paginated
@@ -1797,6 +1834,7 @@ configservice_describe_organization_conformance_packs <- function(OrganizationCo
 
 #' Returns a list of all pending aggregation requests
 #'
+#' @description
 #' Returns a list of all pending aggregation requests.
 #'
 #' @usage
@@ -1837,6 +1875,7 @@ configservice_describe_pending_aggregation_requests <- function(Limit = NULL, Ne
 
 #' Returns the details of one or more remediation configurations
 #'
+#' @description
 #' Returns the details of one or more remediation configurations.
 #'
 #' @usage
@@ -1876,6 +1915,7 @@ configservice_describe_remediation_configurations <- function(ConfigRuleNames) {
 
 #' Returns the details of one or more remediation exceptions
 #'
+#' @description
 #' Returns the details of one or more remediation exceptions. A detailed
 #' view of a remediation exception for a set of resources that includes an
 #' explanation of an exception and the time when the exception will be
@@ -1944,6 +1984,7 @@ configservice_describe_remediation_exceptions <- function(ConfigRuleName, Resour
 #' resources including state, timestamps for when steps for the remediation
 #' execution occur, and any error messages for steps that have failed
 #'
+#' @description
 #' Provides a detailed view of a Remediation Execution for a set of
 #' resources including state, timestamps for when steps for the remediation
 #' execution occur, and any error messages for steps that have failed. When
@@ -2000,6 +2041,7 @@ configservice_describe_remediation_execution_status <- function(ConfigRuleName, 
 
 #' Returns the details of one or more retention configurations
 #'
+#' @description
 #' Returns the details of one or more retention configurations. If the
 #' retention configuration name is not specified, this action returns the
 #' details for all the retention configurations for that account.
@@ -2053,6 +2095,7 @@ configservice_describe_retention_configurations <- function(RetentionConfigurati
 #' Returns the evaluation results for the specified AWS Config rule for a
 #' specific resource in a rule
 #'
+#' @description
 #' Returns the evaluation results for the specified AWS Config rule for a
 #' specific resource in a rule. The results indicate which AWS resources
 #' were evaluated by the rule, when each resource was last evaluated, and
@@ -2118,6 +2161,7 @@ configservice_get_aggregate_compliance_details_by_config_rule <- function(Config
 #' Returns the number of compliant and noncompliant rules for one or more
 #' accounts and regions in an aggregator
 #'
+#' @description
 #' Returns the number of compliant and noncompliant rules for one or more
 #' accounts and regions in an aggregator.
 #' 
@@ -2175,6 +2219,7 @@ configservice_get_aggregate_config_rule_compliance_summary <- function(Configura
 #' Returns the resource counts across accounts and regions that are present
 #' in your AWS Config aggregator
 #'
+#' @description
 #' Returns the resource counts across accounts and regions that are present
 #' in your AWS Config aggregator. You can request the resource counts by
 #' providing filters and GroupByKey.
@@ -2236,6 +2281,7 @@ configservice_get_aggregate_discovered_resource_counts <- function(Configuration
 #' Returns configuration item that is aggregated for your specific resource
 #' in a specific source account and region
 #'
+#' @description
 #' Returns configuration item that is aggregated for your specific resource
 #' in a specific source account and region.
 #'
@@ -2282,6 +2328,7 @@ configservice_get_aggregate_resource_config <- function(ConfigurationAggregatorN
 
 #' Returns the evaluation results for the specified AWS Config rule
 #'
+#' @description
 #' Returns the evaluation results for the specified AWS Config rule. The
 #' results indicate which AWS resources were evaluated by the rule, when
 #' each resource was last evaluated, and whether each resource complies
@@ -2337,6 +2384,7 @@ configservice_get_compliance_details_by_config_rule <- function(ConfigRuleName, 
 
 #' Returns the evaluation results for the specified AWS resource
 #'
+#' @description
 #' Returns the evaluation results for the specified AWS resource. The
 #' results indicate which AWS Config rules were used to evaluate the
 #' resource, when each rule was last used, and whether the resource
@@ -2390,6 +2438,7 @@ configservice_get_compliance_details_by_resource <- function(ResourceType, Resou
 #' Returns the number of AWS Config rules that are compliant and
 #' noncompliant, up to a maximum of 25 for each
 #'
+#' @description
 #' Returns the number of AWS Config rules that are compliant and
 #' noncompliant, up to a maximum of 25 for each.
 #'
@@ -2423,6 +2472,7 @@ configservice_get_compliance_summary_by_config_rule <- function() {
 #' Returns the number of resources that are compliant and the number that
 #' are noncompliant
 #'
+#' @description
 #' Returns the number of resources that are compliant and the number that
 #' are noncompliant. You can specify one or more resource types to get
 #' these numbers for each resource type. The maximum number returned is
@@ -2471,6 +2521,7 @@ configservice_get_compliance_summary_by_resource_type <- function(ResourceTypes 
 #' Returns compliance details of a conformance pack for all AWS resources
 #' that are monitered by conformance pack
 #'
+#' @description
 #' Returns compliance details of a conformance pack for all AWS resources
 #' that are monitered by conformance pack.
 #'
@@ -2527,6 +2578,7 @@ configservice_get_conformance_pack_compliance_details <- function(ConformancePac
 #' Returns compliance details for the conformance pack based on the
 #' cumulative compliance results of all the rules in that conformance pack
 #'
+#' @description
 #' Returns compliance details for the conformance pack based on the
 #' cumulative compliance results of all the rules in that conformance pack.
 #'
@@ -2574,6 +2626,7 @@ configservice_get_conformance_pack_compliance_summary <- function(ConformancePac
 #' total number of resources that AWS Config is recording in this region
 #' for your AWS account
 #'
+#' @description
 #' Returns the resource types, the number of each resource type, and the
 #' total number of resources that AWS Config is recording in this region
 #' for your AWS account.
@@ -2668,6 +2721,7 @@ configservice_get_discovered_resource_counts <- function(resourceTypes = NULL, l
 #' Returns detailed status for each member account within an organization
 #' for a given organization config rule
 #'
+#' @description
 #' Returns detailed status for each member account within an organization
 #' for a given organization config rule.
 #'
@@ -2720,6 +2774,7 @@ configservice_get_organization_config_rule_detailed_status <- function(Organizat
 #' Returns detailed status for each member account within an organization
 #' for a given organization conformance pack
 #'
+#' @description
 #' Returns detailed status for each member account within an organization
 #' for a given organization conformance pack.
 #'
@@ -2771,6 +2826,7 @@ configservice_get_organization_conformance_pack_detailed_status <- function(Orga
 
 #' Returns a list of configuration items for the specified resource
 #'
+#' @description
 #' Returns a list of configuration items for the specified resource. The
 #' list contains details about each state of the resource during the
 #' specified time interval. If you specified a retention period to retain
@@ -2847,6 +2903,7 @@ configservice_get_resource_config_history <- function(resourceType, resourceId, 
 
 #' Returns the details of a specific stored query
 #'
+#' @description
 #' Returns the details of a specific stored query.
 #'
 #' @usage
@@ -2884,6 +2941,7 @@ configservice_get_stored_query <- function(QueryName) {
 #' Accepts a resource type and returns a list of resource identifiers that
 #' are aggregated for a specific resource type across accounts and regions
 #'
+#' @description
 #' Accepts a resource type and returns a list of resource identifiers that
 #' are aggregated for a specific resource type across accounts and regions.
 #' A resource identifier includes the resource type, ID, (if available) the
@@ -2948,6 +3006,7 @@ configservice_list_aggregate_discovered_resources <- function(ConfigurationAggre
 #' Accepts a resource type and returns a list of resource identifiers for
 #' the resources of that type
 #'
+#' @description
 #' Accepts a resource type and returns a list of resource identifiers for
 #' the resources of that type. A resource identifier includes the resource
 #' type, ID, and (if available) the custom resource name. The results
@@ -3020,6 +3079,7 @@ configservice_list_discovered_resources <- function(resourceType, resourceIds = 
 
 #' List the stored queries for an AWS account in an AWS Region
 #'
+#' @description
 #' List the stored queries for an AWS account in an AWS Region. The default
 #' is 100.
 #'
@@ -3060,6 +3120,7 @@ configservice_list_stored_queries <- function(NextToken = NULL, MaxResults = NUL
 
 #' List the tags for AWS Config resource
 #'
+#' @description
 #' List the tags for AWS Config resource.
 #'
 #' @usage
@@ -3106,6 +3167,7 @@ configservice_list_tags_for_resource <- function(ResourceArn, Limit = NULL, Next
 #' Authorizes the aggregator account and region to collect data from the
 #' source account and region
 #'
+#' @description
 #' Authorizes the aggregator account and region to collect data from the
 #' source account and region.
 #'
@@ -3154,6 +3216,7 @@ configservice_put_aggregation_authorization <- function(AuthorizedAccountId, Aut
 #' Adds or updates an AWS Config rule for evaluating whether your AWS
 #' resources comply with your desired configurations
 #'
+#' @description
 #' Adds or updates an AWS Config rule for evaluating whether your AWS
 #' resources comply with your desired configurations.
 #' 
@@ -3264,6 +3327,7 @@ configservice_put_config_rule <- function(ConfigRule, Tags = NULL) {
 #' Creates and updates the configuration aggregator with the selected
 #' source accounts and regions
 #'
+#' @description
 #' Creates and updates the configuration aggregator with the selected
 #' source accounts and regions. The source account can be individual
 #' account(s) or an organization.
@@ -3339,6 +3403,7 @@ configservice_put_configuration_aggregator <- function(ConfigurationAggregatorNa
 #' Creates a new configuration recorder to record the selected resource
 #' configurations
 #'
+#' @description
 #' Creates a new configuration recorder to record the selected resource
 #' configurations.
 #' 
@@ -3398,6 +3463,7 @@ configservice_put_configuration_recorder <- function(ConfigurationRecorder) {
 
 #' Creates or updates a conformance pack
 #'
+#' @description
 #' Creates or updates a conformance pack. A conformance pack is a
 #' collection of AWS Config rules that can be easily deployed in an account
 #' and a region and across AWS Organization.
@@ -3473,6 +3539,7 @@ configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Ur
 #' Creates a delivery channel object to deliver configuration information
 #' to an Amazon S3 bucket and Amazon SNS topic
 #'
+#' @description
 #' Creates a delivery channel object to deliver configuration information
 #' to an Amazon S3 bucket and Amazon SNS topic.
 #' 
@@ -3533,6 +3600,7 @@ configservice_put_delivery_channel <- function(DeliveryChannel) {
 #' Used by an AWS Lambda function to deliver evaluation results to AWS
 #' Config
 #'
+#' @description
 #' Used by an AWS Lambda function to deliver evaluation results to AWS
 #' Config. This action is required in every AWS Lambda function that is
 #' invoked by an AWS Config rule.
@@ -3594,6 +3662,7 @@ configservice_put_evaluations <- function(Evaluations = NULL, ResultToken, TestM
 
 #' Put external evaluation
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -3643,6 +3712,7 @@ configservice_put_external_evaluation <- function(ConfigRuleName, ExternalEvalua
 #' evaluating whether your AWS resources comply with your desired
 #' configurations
 #'
+#' @description
 #' Adds or updates organization config rule for your entire organization
 #' evaluating whether your AWS resources comply with your desired
 #' configurations.
@@ -3753,6 +3823,7 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 
 #' Deploys conformance packs across member accounts in an AWS Organization
 #'
+#' @description
 #' Deploys conformance packs across member accounts in an AWS Organization.
 #' 
 #' Only a master account and a delegated administrator can call this API.
@@ -3853,6 +3924,7 @@ configservice_put_organization_conformance_pack <- function(OrganizationConforma
 #' Adds or updates the remediation configuration with a specific AWS Config
 #' rule with the selected target or action
 #'
+#' @description
 #' Adds or updates the remediation configuration with a specific AWS Config
 #' rule with the selected target or action. The API creates the
 #' `RemediationConfiguration` object for the AWS Config rule. The AWS
@@ -3934,6 +4006,7 @@ configservice_put_remediation_configurations <- function(RemediationConfiguratio
 #' A remediation exception is when a specific resource is no longer
 #' considered for auto-remediation
 #'
+#' @description
 #' A remediation exception is when a specific resource is no longer
 #' considered for auto-remediation. This API adds a new exception or
 #' updates an exisiting exception for a specific resource with a specific
@@ -3994,6 +4067,7 @@ configservice_put_remediation_exceptions <- function(ConfigRuleName, ResourceKey
 
 #' Records the configuration state for the resource provided in the request
 #'
+#' @description
 #' Records the configuration state for the resource provided in the
 #' request. The configuration state of a resource is represented in AWS
 #' Config as Configuration Items. Once this API records the configuration
@@ -4069,6 +4143,7 @@ configservice_put_resource_config <- function(ResourceType, SchemaVersionId, Res
 #' retention period (number of days) that AWS Config stores your historical
 #' information
 #'
+#' @description
 #' Creates and updates the retention configuration with details about
 #' retention period (number of days) that AWS Config stores your historical
 #' information. The API creates the `RetentionConfiguration` object and
@@ -4115,6 +4190,7 @@ configservice_put_retention_configuration <- function(RetentionPeriodInDays) {
 
 #' Saves a new query or updates an existing saved query
 #'
+#' @description
 #' Saves a new query or updates an existing saved query. The `QueryName`
 #' must be unique for an AWS account in an AWS Region. You can create upto
 #' 300 queries in an AWS account in an AWS Region.
@@ -4170,6 +4246,7 @@ configservice_put_stored_query <- function(StoredQuery, Tags = NULL) {
 #' accounts and regions, performs the corresponding search, and returns
 #' resource configurations matching the properties
 #'
+#' @description
 #' Accepts a structured query language (SQL) SELECT command and an
 #' aggregator to query configuration state of AWS resources across multiple
 #' accounts and regions, performs the corresponding search, and returns
@@ -4226,6 +4303,7 @@ configservice_select_aggregate_resource_config <- function(Expression, Configura
 #' corresponding search, and returns resource configurations matching the
 #' properties
 #'
+#' @description
 #' Accepts a structured query language (SQL) `SELECT` command, performs the
 #' corresponding search, and returns resource configurations matching the
 #' properties.
@@ -4274,6 +4352,7 @@ configservice_select_resource_config <- function(Expression, Limit = NULL, NextT
 #' Runs an on-demand evaluation for the specified AWS Config rules against
 #' the last known configuration state of the resources
 #'
+#' @description
 #' Runs an on-demand evaluation for the specified AWS Config rules against
 #' the last known configuration state of the resources. Use
 #' `StartConfigRulesEvaluation` when you want to test that a rule you
@@ -4347,6 +4426,7 @@ configservice_start_config_rules_evaluation <- function(ConfigRuleNames = NULL) 
 #' Starts recording configurations of the AWS resources you have selected
 #' to record in your AWS account
 #'
+#' @description
 #' Starts recording configurations of the AWS resources you have selected
 #' to record in your AWS account.
 #' 
@@ -4389,6 +4469,7 @@ configservice_start_configuration_recorder <- function(ConfigurationRecorderName
 #' Runs an on-demand remediation for the specified AWS Config rules against
 #' the last known remediation configuration
 #'
+#' @description
 #' Runs an on-demand remediation for the specified AWS Config rules against
 #' the last known remediation configuration. It runs an execution against
 #' the current state of your resources. Remediation execution is
@@ -4442,6 +4523,7 @@ configservice_start_remediation_execution <- function(ConfigRuleName, ResourceKe
 #' Stops recording configurations of the AWS resources you have selected to
 #' record in your AWS account
 #'
+#' @description
 #' Stops recording configurations of the AWS resources you have selected to
 #' record in your AWS account.
 #'
@@ -4481,6 +4563,7 @@ configservice_stop_configuration_recorder <- function(ConfigurationRecorderName)
 #' Associates the specified tags to a resource with the specified
 #' resourceArn
 #'
+#' @description
 #' Associates the specified tags to a resource with the specified
 #' resourceArn. If existing tags on a resource are not specified in the
 #' request parameters, they are not changed. When a resource is deleted,
@@ -4529,6 +4612,7 @@ configservice_tag_resource <- function(ResourceArn, Tags) {
 
 #' Deletes specified tags from a resource
 #'
+#' @description
 #' Deletes specified tags from a resource.
 #'
 #' @usage

@@ -11,8 +11,7 @@ autoscaling_create_or_update_tags(Tags)
 }
 \description{
 Creates or updates tags for the specified Auto Scaling group.
-}
-\details{
+
 When you specify a tag with a key that already exists, the operation
 overwrites the previous tag definition, and you do not get an error
 message.

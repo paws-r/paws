@@ -11,8 +11,7 @@ dynamodb_describe_global_table(GlobalTableName)
 }
 \description{
 Returns information about the specified global table.
-}
-\details{
+
 This operation only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html}{Version 2017.11.29}
 of global tables. If you are using global tables \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html}{Version 2019.11.21}
 you can use

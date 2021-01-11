@@ -14,8 +14,7 @@ Delete an accelerator. Before you can delete an accelerator, you must
 disable it and remove all dependent resources (listeners and endpoint
 groups). To disable the accelerator, update the accelerator to set
 \code{Enabled} to false.
-}
-\details{
+
 When you create an accelerator, by default, Global Accelerator provides
 you with a set of two static IP addresses. Alternatively, you can bring
 your own IP address ranges to Global Accelerator and assign IP addresses

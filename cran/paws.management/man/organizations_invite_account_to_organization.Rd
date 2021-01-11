@@ -54,8 +54,6 @@ member account. AWS Organizations sends email on your behalf to the
 email address that is associated with the other account's owner. The
 invitation is implemented as a Handshake whose details are in the
 response.
-}
-\details{
 \itemize{
 \item You can invite AWS accounts only from the same seller as the
 management account. For example, if your organization's management
@@ -66,7 +64,8 @@ from any other AWS seller. For more information, see \href{https://docs.aws.amaz
 \item If you receive an exception that indicates that you exceeded your
 account limits for the organization or that the operation failed
 because your organization is still initializing, wait one hour and
-then try again. If the error persists after an hour, contact \href{https://console.aws.amazon.com/support/home#/}{AWS Support}.
+then try again. If the error persists after an hour, contact AWS
+Support.
 }
 
 If the request includes tags, then the requester must have the

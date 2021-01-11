@@ -25,8 +25,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Uploads a client certificate revocation list to the specified Client VPN
 endpoint. Uploading a client certificate revocation list overwrites the
 existing client certificate revocation list.
-}
-\details{
+
 Uploading a client certificate revocation list resets existing client
 connections.
 }

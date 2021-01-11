@@ -26,8 +26,7 @@ use an identity to send email, you first have to verify it. By verifying
 an identity, you demonstrate that you're the owner of the identity, and
 that you've given Amazon SES API v2 permission to send email from the
 identity.
-}
-\details{
+
 When you verify an email address, Amazon SES sends an email to the
 address. Your email address is verified as soon as you follow the link
 in the verification email.

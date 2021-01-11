@@ -19,8 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a route table for the specified VPC. After you create a route
 table, you can add routes and associate the table with a subnet.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html}{Route Tables}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }

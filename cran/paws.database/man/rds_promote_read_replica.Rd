@@ -48,8 +48,6 @@ Constraints:
 }
 \description{
 Promotes a read replica DB instance to a standalone DB instance.
-}
-\details{
 \itemize{
 \item Backup duration is a function of the amount of changes to the
 database since the previous backup. If you plan to promote a read

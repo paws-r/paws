@@ -15,8 +15,7 @@ are available after the first page of results.}
 \description{
 Returns a list of phone numbers that are opted out, meaning you cannot
 send SMS messages to them.
-}
-\details{
+
 The results for \code{ListPhoneNumbersOptedOut} are paginated, and each page
 returns up to 100 phone numbers. If additional phone numbers are
 available after the first page of results, then a \code{NextToken} string

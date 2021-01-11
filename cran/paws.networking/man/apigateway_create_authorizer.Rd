@@ -83,10 +83,7 @@ will cache authorizer responses. If this field is not set, the default
 value is 300. The maximum value is 3600, or 1 hour.}
 }
 \description{
-Adds a new Authorizer resource to an existing RestApi resource.
-}
-\details{
-<div class="seeAlso">
+Adds a new Authorizer resource to an existing RestApi resource.<div class="seeAlso">
 
 
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-authorizer.html}{AWS CLI}</div>

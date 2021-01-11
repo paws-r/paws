@@ -17,8 +17,7 @@ the returned \code{NextToken} value.}
 }
 \description{
 Describes the servers in your server catalog.
-}
-\details{
+
 Before you can describe your servers, you must import them using
 ImportServerCatalog.
 }

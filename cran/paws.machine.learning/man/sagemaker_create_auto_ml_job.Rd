@@ -40,8 +40,7 @@ unique per resource.}
 }
 \description{
 Creates an Autopilot job.
-}
-\details{
+
 Find the best performing model after you run an Autopilot job by calling
 . Deploy that model by following the steps described in \href{https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html}{Step 6.1: Deploy the Model to Amazon SageMaker Hosting Services}.
 

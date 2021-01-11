@@ -5,6 +5,7 @@ NULL
 
 #' Creates an Amazon EKS add-on
 #'
+#' @description
 #' Creates an Amazon EKS add-on.
 #' 
 #' Amazon EKS add-ons help to automate the provisioning and lifecycle
@@ -84,6 +85,7 @@ eks_create_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 
 #' Creates an Amazon EKS control plane
 #'
+#' @description
 #' Creates an Amazon EKS control plane.
 #' 
 #' The Amazon EKS control plane consists of control plane instances that
@@ -263,6 +265,7 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
 
 #' Creates an AWS Fargate profile for your Amazon EKS cluster
 #'
+#' @description
 #' Creates an AWS Fargate profile for your Amazon EKS cluster. You must
 #' have at least one Fargate profile in a cluster to be able to run pods on
 #' Fargate.
@@ -376,6 +379,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 
 #' Creates a managed worker node group for an Amazon EKS cluster
 #'
+#' @description
 #' Creates a managed worker node group for an Amazon EKS cluster. You can
 #' only create a node group for your cluster that is equal to the current
 #' Kubernetes version for the cluster. All node groups are created with the
@@ -563,6 +567,7 @@ eks_create_nodegroup <- function(clusterName, nodegroupName, scalingConfig = NUL
 
 #' Delete an Amazon EKS add-on
 #'
+#' @description
 #' Delete an Amazon EKS add-on.
 #' 
 #' When you remove the add-on, it will also be deleted from the cluster.
@@ -607,6 +612,7 @@ eks_delete_addon <- function(clusterName, addonName) {
 
 #' Deletes the Amazon EKS cluster control plane
 #'
+#' @description
 #' Deletes the Amazon EKS cluster control plane.
 #' 
 #' If you have active services in your cluster that are associated with a
@@ -664,6 +670,7 @@ eks_delete_cluster <- function(name) {
 
 #' Deletes an AWS Fargate profile
 #'
+#' @description
 #' Deletes an AWS Fargate profile.
 #' 
 #' When you delete a Fargate profile, any pods running on Fargate that were
@@ -713,6 +720,7 @@ eks_delete_fargate_profile <- function(clusterName, fargateProfileName) {
 
 #' Deletes an Amazon EKS node group for a cluster
 #'
+#' @description
 #' Deletes an Amazon EKS node group for a cluster.
 #'
 #' @usage
@@ -752,6 +760,7 @@ eks_delete_nodegroup <- function(clusterName, nodegroupName) {
 
 #' Describes an Amazon EKS add-on
 #'
+#' @description
 #' Describes an Amazon EKS add-on.
 #'
 #' @usage
@@ -792,6 +801,7 @@ eks_describe_addon <- function(clusterName, addonName) {
 
 #' Describes the Kubernetes versions that the add-on can be used with
 #'
+#' @description
 #' Describes the Kubernetes versions that the add-on can be used with.
 #'
 #' @usage
@@ -844,6 +854,7 @@ eks_describe_addon_versions <- function(kubernetesVersion = NULL, maxResults = N
 
 #' Returns descriptive information about an Amazon EKS cluster
 #'
+#' @description
 #' Returns descriptive information about an Amazon EKS cluster.
 #' 
 #' The API server endpoint and certificate authority data returned by this
@@ -898,6 +909,7 @@ eks_describe_cluster <- function(name) {
 
 #' Returns descriptive information about an AWS Fargate profile
 #'
+#' @description
 #' Returns descriptive information about an AWS Fargate profile.
 #'
 #' @usage
@@ -936,6 +948,7 @@ eks_describe_fargate_profile <- function(clusterName, fargateProfileName) {
 
 #' Returns descriptive information about an Amazon EKS node group
 #'
+#' @description
 #' Returns descriptive information about an Amazon EKS node group.
 #'
 #' @usage
@@ -975,6 +988,7 @@ eks_describe_nodegroup <- function(clusterName, nodegroupName) {
 #' Returns descriptive information about an update against your Amazon EKS
 #' cluster or associated managed node group
 #'
+#' @description
 #' Returns descriptive information about an update against your Amazon EKS
 #' cluster or associated managed node group.
 #' 
@@ -1024,6 +1038,7 @@ eks_describe_update <- function(name, updateId, nodegroupName = NULL, addonName 
 
 #' Lists the available add-ons
 #'
+#' @description
 #' Lists the available add-ons.
 #'
 #' @usage
@@ -1079,6 +1094,7 @@ eks_list_addons <- function(clusterName, maxResults = NULL, nextToken = NULL) {
 #' Lists the Amazon EKS clusters in your AWS account in the specified
 #' Region
 #'
+#' @description
 #' Lists the Amazon EKS clusters in your AWS account in the specified
 #' Region.
 #'
@@ -1140,6 +1156,7 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL) {
 #' Lists the AWS Fargate profiles associated with the specified cluster in
 #' your AWS account in the specified Region
 #'
+#' @description
 #' Lists the AWS Fargate profiles associated with the specified cluster in
 #' your AWS account in the specified Region.
 #'
@@ -1193,6 +1210,7 @@ eks_list_fargate_profiles <- function(clusterName, maxResults = NULL, nextToken 
 #' Lists the Amazon EKS managed node groups associated with the specified
 #' cluster in your AWS account in the specified Region
 #'
+#' @description
 #' Lists the Amazon EKS managed node groups associated with the specified
 #' cluster in your AWS account in the specified Region. Self-managed node
 #' groups are not listed.
@@ -1246,6 +1264,7 @@ eks_list_nodegroups <- function(clusterName, maxResults = NULL, nextToken = NULL
 
 #' List the tags for an Amazon EKS resource
 #'
+#' @description
 #' List the tags for an Amazon EKS resource.
 #'
 #' @usage
@@ -1293,6 +1312,7 @@ eks_list_tags_for_resource <- function(resourceArn) {
 #' Lists the updates associated with an Amazon EKS cluster or managed node
 #' group in your AWS account, in the specified Region
 #'
+#' @description
 #' Lists the updates associated with an Amazon EKS cluster or managed node
 #' group in your AWS account, in the specified Region.
 #'
@@ -1349,6 +1369,7 @@ eks_list_updates <- function(name, nodegroupName = NULL, addonName = NULL, nextT
 #' Associates the specified tags to a resource with the specified
 #' resourceArn
 #'
+#' @description
 #' Associates the specified tags to a resource with the specified
 #' `resourceArn`. If existing tags on a resource are not specified in the
 #' request parameters, they are not changed. When a resource is deleted,
@@ -1398,6 +1419,7 @@ eks_tag_resource <- function(resourceArn, tags) {
 
 #' Deletes specified tags from a resource
 #'
+#' @description
 #' Deletes specified tags from a resource.
 #'
 #' @usage
@@ -1440,6 +1462,7 @@ eks_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates an Amazon EKS add-on
 #'
+#' @description
 #' Updates an Amazon EKS add-on.
 #'
 #' @usage
@@ -1506,6 +1529,7 @@ eks_update_addon <- function(clusterName, addonName, addonVersion = NULL, servic
 
 #' Updates an Amazon EKS cluster configuration
 #'
+#' @description
 #' Updates an Amazon EKS cluster configuration. Your cluster continues to
 #' function during the update. The response output includes an update ID
 #' that you can use to track the status of your cluster update with the
@@ -1609,6 +1633,7 @@ eks_update_cluster_config <- function(name, resourcesVpcConfig = NULL, logging =
 
 #' Updates an Amazon EKS cluster to the specified Kubernetes version
 #'
+#' @description
 #' Updates an Amazon EKS cluster to the specified Kubernetes version. Your
 #' cluster continues to function during the update. The response output
 #' includes an update ID that you can use to track the status of your
@@ -1662,6 +1687,7 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
 
 #' Updates an Amazon EKS managed node group configuration
 #'
+#' @description
 #' Updates an Amazon EKS managed node group configuration. Your node group
 #' continues to function during the update. The response output includes an
 #' update ID that you can use to track the status of your node group update
@@ -1727,6 +1753,7 @@ eks_update_nodegroup_config <- function(clusterName, nodegroupName, labels = NUL
 #' Updates the Kubernetes version or AMI version of an Amazon EKS managed
 #' node group
 #'
+#' @description
 #' Updates the Kubernetes version or AMI version of an Amazon EKS managed
 #' node group.
 #' 

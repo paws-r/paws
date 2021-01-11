@@ -12,8 +12,7 @@ ListTestGridProjects.}
 }
 \description{
 Deletes a Selenium testing project and all content generated under it.
-}
-\details{
+
 You cannot undo this operation.
 
 You cannot delete a project if it has active sessions.

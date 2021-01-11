@@ -14,8 +14,7 @@ configservice_describe_configuration_recorders(
 Returns the details for the specified configuration recorders. If the
 configuration recorder is not specified, this action returns the details
 for all configuration recorders associated with the account.
-}
-\details{
+
 Currently, you can specify only one configuration recorder per region in
 your account.
 }

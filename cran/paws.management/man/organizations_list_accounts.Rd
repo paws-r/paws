@@ -28,8 +28,7 @@ results.}
 Lists all the accounts in the organization. To request only the accounts
 in a specified root or organizational unit (OU), use the
 ListAccountsForParent operation instead.
-}
-\details{
+
 Always check the \code{NextToken} response parameter for a \code{null} value when
 calling a \verb{List*} operation. These operations can occasionally return an
 empty set of results even when there are more results available. The

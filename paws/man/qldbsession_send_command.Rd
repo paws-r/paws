@@ -33,8 +33,7 @@ the response.}
 }
 \description{
 Sends a command to an Amazon QLDB ledger.
-}
-\details{
+
 Instead of interacting directly with this API, we recommend using the
 QLDB driver or the QLDB shell to execute data transactions on a ledger.
 \itemize{

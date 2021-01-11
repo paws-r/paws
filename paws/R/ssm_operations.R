@@ -5,6 +5,7 @@ NULL
 
 #' Adds or overwrites one or more tags for the specified resource
 #'
+#' @description
 #' Adds or overwrites one or more tags for the specified resource. Tags are
 #' metadata that you can assign to your documents, managed instances,
 #' maintenance windows, Parameter Store parameters, and patch baselines.
@@ -94,6 +95,7 @@ ssm_add_tags_to_resource <- function(ResourceType, ResourceId, Tags) {
 
 #' Attempts to cancel the command specified by the Command ID
 #'
+#' @description
 #' Attempts to cancel the command specified by the Command ID. There is no
 #' guarantee that the command will be terminated and the underlying process
 #' stopped.
@@ -139,6 +141,7 @@ ssm_cancel_command <- function(CommandId, InstanceIds = NULL) {
 #' Stops a maintenance window execution that is already in progress and
 #' cancels any tasks in the window that have not already starting running
 #'
+#' @description
 #' Stops a maintenance window execution that is already in progress and
 #' cancels any tasks in the window that have not already starting running.
 #' (Tasks already in progress will continue to completion.)
@@ -178,6 +181,7 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' Generates an activation code and activation ID you can use to register
 #' your on-premises server or virtual machine (VM) with Systems Manager
 #'
+#' @description
 #' Generates an activation code and activation ID you can use to register
 #' your on-premises server or virtual machine (VM) with Systems Manager.
 #' Registering these machines with Systems Manager makes it possible to
@@ -283,6 +287,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' A State Manager association defines the state that you want to maintain
 #' on your instances
 #'
+#' @description
 #' A State Manager association defines the state that you want to maintain
 #' on your instances. For example, an association can specify that
 #' anti-virus software must be installed and running on your instances, or
@@ -350,11 +355,11 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' @param MaxErrors The number of errors that are allowed before the system stops sending
 #' requests to run the association on additional targets. You can specify
 #' either an absolute number of errors, for example 10, or a percentage of
-#' the target set, for example 10%. If you specify 3, for example, the
+#' the target set, for example 10\%. If you specify 3, for example, the
 #' system stops sending requests when the fourth error is received. If you
 #' specify 0, then the system stops sending requests after the first error
 #' is returned. If you run an association on 50 instances and set MaxError
-#' to 10%, then the system stops sending the request when the sixth error
+#' to 10\%, then the system stops sending the request when the sixth error
 #' is received.
 #' 
 #' Executions that are already running an association when MaxErrors is
@@ -364,7 +369,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' one at a time.
 #' @param MaxConcurrency The maximum number of targets allowed to run the association at the same
 #' time. You can specify a number, for example 10, or a percentage of the
-#' target set, for example 10%. The default value is 100%, which means all
+#' target set, for example 10\%. The default value is 100\%, which means all
 #' targets run the association at the same time.
 #' 
 #' If a new instance starts and attempts to run an association while
@@ -468,6 +473,7 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
 #' Associates the specified Systems Manager document with the specified
 #' instances or targets
 #'
+#' @description
 #' Associates the specified Systems Manager document with the specified
 #' instances or targets.
 #' 
@@ -560,6 +566,7 @@ ssm_create_association_batch <- function(Entries) {
 
 #' Creates a Systems Manager (SSM) document
 #'
+#' @description
 #' Creates a Systems Manager (SSM) document. An SSM document defines the
 #' actions that Systems Manager performs on your managed instances. For
 #' more information about SSM documents, including information about
@@ -690,6 +697,7 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
 
 #' Creates a new maintenance window
 #'
+#' @description
 #' Creates a new maintenance window.
 #' 
 #' The value you specify for `Duration` determines the specific end time
@@ -804,6 +812,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 
 #' Creates a new OpsItem
 #'
+#' @description
 #' Creates a new OpsItem. You must have permission in AWS Identity and
 #' Access Management (IAM) to create a new OpsItem. For more information,
 #' see [Getting started with
@@ -956,6 +965,7 @@ ssm_create_ops_item <- function(Description, OpsItemType = NULL, OperationalData
 #' calls this API action to specify information about the new application,
 #' including the application type
 #'
+#' @description
 #' If you create a new application in Application Manager, Systems Manager
 #' calls this API action to specify information about the new application,
 #' including the application type.
@@ -1000,6 +1010,7 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL) {
 
 #' Creates a patch baseline
 #'
+#' @description
 #' Creates a patch baseline.
 #' 
 #' For information about valid key and value pairs in `PatchFilters` for
@@ -1157,6 +1168,7 @@ ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilter
 #' A resource data sync helps you view data from multiple sources in a
 #' single location
 #'
+#' @description
 #' A resource data sync helps you view data from multiple sources in a
 #' single location. Systems Manager offers two types of resource data sync:
 #' `SyncToDestination` and `SyncFromSource`.
@@ -1261,6 +1273,7 @@ ssm_create_resource_data_sync <- function(SyncName, S3Destination = NULL, SyncTy
 
 #' Deletes an activation
 #'
+#' @description
 #' Deletes an activation. You are not required to delete an activation. If
 #' you delete an activation, you can no longer use it to register
 #' additional managed instances. Deleting an activation does not
@@ -1302,6 +1315,7 @@ ssm_delete_activation <- function(ActivationId) {
 #' Disassociates the specified Systems Manager document from the specified
 #' instance
 #'
+#' @description
 #' Disassociates the specified Systems Manager document from the specified
 #' instance.
 #' 
@@ -1350,6 +1364,7 @@ ssm_delete_association <- function(Name = NULL, InstanceId = NULL, AssociationId
 #' Deletes the Systems Manager document and all instance associations to
 #' the document
 #'
+#' @description
 #' Deletes the Systems Manager document and all instance associations to
 #' the document.
 #' 
@@ -1404,6 +1419,7 @@ ssm_delete_document <- function(Name, DocumentVersion = NULL, VersionName = NULL
 #' Delete a custom inventory type or the data associated with a custom
 #' Inventory type
 #'
+#' @description
 #' Delete a custom inventory type or the data associated with a custom
 #' Inventory type. Deleting a custom inventory type is also referred to as
 #' deleting a custom inventory schema.
@@ -1464,6 +1480,7 @@ ssm_delete_inventory <- function(TypeName, SchemaDeleteOption = NULL, DryRun = N
 
 #' Deletes a maintenance window
 #'
+#' @description
 #' Deletes a maintenance window.
 #'
 #' @usage
@@ -1500,6 +1517,7 @@ ssm_delete_maintenance_window <- function(WindowId) {
 
 #' Delete OpsMetadata related to an application
 #'
+#' @description
 #' Delete OpsMetadata related to an application.
 #'
 #' @usage
@@ -1536,6 +1554,7 @@ ssm_delete_ops_metadata <- function(OpsMetadataArn) {
 
 #' Delete a parameter from the system
 #'
+#' @description
 #' Delete a parameter from the system.
 #'
 #' @usage
@@ -1572,6 +1591,7 @@ ssm_delete_parameter <- function(Name) {
 
 #' Delete a list of parameters
 #'
+#' @description
 #' Delete a list of parameters.
 #'
 #' @usage
@@ -1610,6 +1630,7 @@ ssm_delete_parameters <- function(Names) {
 
 #' Deletes a patch baseline
 #'
+#' @description
 #' Deletes a patch baseline.
 #'
 #' @usage
@@ -1646,6 +1667,7 @@ ssm_delete_patch_baseline <- function(BaselineId) {
 
 #' Deletes a Resource Data Sync configuration
 #'
+#' @description
 #' Deletes a Resource Data Sync configuration. After the configuration is
 #' deleted, changes to data on managed instances are no longer synced to or
 #' from the target. Deleting a sync configuration does not delete data.
@@ -1687,6 +1709,7 @@ ssm_delete_resource_data_sync <- function(SyncName, SyncType = NULL) {
 #' Removes the server or virtual machine from the list of registered
 #' servers
 #'
+#' @description
 #' Removes the server or virtual machine from the list of registered
 #' servers. You can reregister the instance again at any time. If you don't
 #' plan to use Run Command on the server, we suggest uninstalling SSM Agent
@@ -1727,6 +1750,7 @@ ssm_deregister_managed_instance <- function(InstanceId) {
 
 #' Removes a patch group from a patch baseline
 #'
+#' @description
 #' Removes a patch group from a patch baseline.
 #'
 #' @usage
@@ -1766,6 +1790,7 @@ ssm_deregister_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup
 
 #' Removes a target from a maintenance window
 #'
+#' @description
 #' Removes a target from a maintenance window.
 #'
 #' @usage
@@ -1809,6 +1834,7 @@ ssm_deregister_target_from_maintenance_window <- function(WindowId, WindowTarget
 
 #' Removes a task from a maintenance window
 #'
+#' @description
 #' Removes a task from a maintenance window.
 #'
 #' @usage
@@ -1850,6 +1876,7 @@ ssm_deregister_task_from_maintenance_window <- function(WindowId, WindowTaskId) 
 #' the instances in the activation, and the number of instances registered
 #' by using this activation
 #'
+#' @description
 #' Describes details about the activation, such as the date and time the
 #' activation was created, its expiration date, the IAM role assigned to
 #' the instances in the activation, and the number of instances registered
@@ -1903,6 +1930,7 @@ ssm_describe_activations <- function(Filters = NULL, MaxResults = NULL, NextToke
 
 #' Describes the association for the specified target or instance
 #'
+#' @description
 #' Describes the association for the specified target or instance. If you
 #' created the association by using the `Targets` parameter, then you must
 #' retrieve the association by using the association ID. If you created the
@@ -1956,6 +1984,7 @@ ssm_describe_association <- function(Name = NULL, InstanceId = NULL, Association
 #' Use this API action to view information about a specific execution of a
 #' specific association
 #'
+#' @description
 #' Use this API action to view information about a specific execution of a
 #' specific association.
 #'
@@ -2018,6 +2047,7 @@ ssm_describe_association_execution_targets <- function(AssociationId, ExecutionI
 
 #' Use this API action to view all executions for a specific association ID
 #'
+#' @description
 #' Use this API action to view all executions for a specific association
 #' ID.
 #'
@@ -2078,6 +2108,7 @@ ssm_describe_association_executions <- function(AssociationId, Filters = NULL, M
 
 #' Provides details about all active and terminated Automation executions
 #'
+#' @description
 #' Provides details about all active and terminated Automation executions.
 #'
 #' @usage
@@ -2129,6 +2160,7 @@ ssm_describe_automation_executions <- function(Filters = NULL, MaxResults = NULL
 #' Information about all active and terminated step executions in an
 #' Automation workflow
 #'
+#' @description
 #' Information about all active and terminated step executions in an
 #' Automation workflow.
 #'
@@ -2188,6 +2220,7 @@ ssm_describe_automation_step_executions <- function(AutomationExecutionId, Filte
 
 #' Lists all patches eligible to be included in a patch baseline
 #'
+#' @description
 #' Lists all patches eligible to be included in a patch baseline.
 #'
 #' @usage
@@ -2236,6 +2269,7 @@ ssm_describe_available_patches <- function(Filters = NULL, MaxResults = NULL, Ne
 
 #' Describes the specified Systems Manager document
 #'
+#' @description
 #' Describes the specified Systems Manager document.
 #'
 #' @usage
@@ -2279,6 +2313,7 @@ ssm_describe_document <- function(Name, DocumentVersion = NULL, VersionName = NU
 
 #' Describes the permissions for a Systems Manager document
 #'
+#' @description
 #' Describes the permissions for a Systems Manager document. If you created
 #' the document, you are the owner. If a document is shared, it can either
 #' be shared privately (by specifying a user's AWS account ID) or publicly
@@ -2321,6 +2356,7 @@ ssm_describe_document_permission <- function(Name, PermissionType) {
 
 #' All associations for the instance(s)
 #'
+#' @description
 #' All associations for the instance(s).
 #'
 #' @usage
@@ -2366,6 +2402,7 @@ ssm_describe_effective_instance_associations <- function(InstanceId, MaxResults 
 #' Retrieves the current effective patches (the patch and the approval
 #' state) for the specified patch baseline
 #'
+#' @description
 #' Retrieves the current effective patches (the patch and the approval
 #' state) for the specified patch baseline. Note that this API applies only
 #' to Windows patch baselines.
@@ -2410,6 +2447,7 @@ ssm_describe_effective_patches_for_patch_baseline <- function(BaselineId, MaxRes
 
 #' The status of the associations for the instance(s)
 #'
+#' @description
 #' The status of the associations for the instance(s).
 #'
 #' @usage
@@ -2456,6 +2494,7 @@ ssm_describe_instance_associations_status <- function(InstanceId, MaxResults = N
 #' operating system platform, the version of SSM Agent installed on the
 #' instance, instance status, and so on
 #'
+#' @description
 #' Describes one or more of your instances, including information about the
 #' operating system platform, the version of SSM Agent installed on the
 #' instance, instance status, and so on.
@@ -2536,6 +2575,7 @@ ssm_describe_instance_information <- function(InstanceInformationFilterList = NU
 
 #' Retrieves the high-level patch state of one or more instances
 #'
+#' @description
 #' Retrieves the high-level patch state of one or more instances.
 #'
 #' @usage
@@ -2581,6 +2621,7 @@ ssm_describe_instance_patch_states <- function(InstanceIds, NextToken = NULL, Ma
 #' Retrieves the high-level patch state for the instances in the specified
 #' patch group
 #'
+#' @description
 #' Retrieves the high-level patch state for the instances in the specified
 #' patch group.
 #'
@@ -2642,6 +2683,7 @@ ssm_describe_instance_patch_states_for_patch_group <- function(PatchGroup, Filte
 #' Retrieves information about the patches on the specified instance and
 #' their state relative to the patch baseline being used for the instance
 #'
+#' @description
 #' Retrieves information about the patches on the specified instance and
 #' their state relative to the patch baseline being used for the instance.
 #'
@@ -2697,6 +2739,7 @@ ssm_describe_instance_patches <- function(InstanceId, Filters = NULL, NextToken 
 
 #' Describes a specific delete inventory operation
 #'
+#' @description
 #' Describes a specific delete inventory operation.
 #'
 #' @usage
@@ -2742,6 +2785,7 @@ ssm_describe_inventory_deletions <- function(DeletionId = NULL, NextToken = NULL
 #' Retrieves the individual task executions (one per target) for a
 #' particular task run as part of a maintenance window execution
 #'
+#' @description
 #' Retrieves the individual task executions (one per target) for a
 #' particular task run as part of a maintenance window execution.
 #'
@@ -2801,6 +2845,7 @@ ssm_describe_maintenance_window_execution_task_invocations <- function(WindowExe
 
 #' For a given maintenance window execution, lists the tasks that were run
 #'
+#' @description
 #' For a given maintenance window execution, lists the tasks that were run.
 #'
 #' @usage
@@ -2857,6 +2902,7 @@ ssm_describe_maintenance_window_execution_tasks <- function(WindowExecutionId, F
 
 #' Lists the executions of a maintenance window
 #'
+#' @description
 #' Lists the executions of a maintenance window. This includes information
 #' about when the maintenance window was scheduled to be active, and
 #' information about tasks registered and run with the maintenance window.
@@ -2919,6 +2965,7 @@ ssm_describe_maintenance_window_executions <- function(WindowId, Filters = NULL,
 
 #' Retrieves information about upcoming executions of a maintenance window
 #'
+#' @description
 #' Retrieves information about upcoming executions of a maintenance window.
 #'
 #' @usage
@@ -2986,6 +3033,7 @@ ssm_describe_maintenance_window_schedule <- function(WindowId = NULL, Targets = 
 
 #' Lists the targets registered with the maintenance window
 #'
+#' @description
 #' Lists the targets registered with the maintenance window.
 #'
 #' @usage
@@ -3041,6 +3089,7 @@ ssm_describe_maintenance_window_targets <- function(WindowId, Filters = NULL, Ma
 
 #' Lists the tasks in a maintenance window
 #'
+#' @description
 #' Lists the tasks in a maintenance window.
 #' 
 #' For maintenance window tasks without a specified target, you cannot
@@ -3102,6 +3151,7 @@ ssm_describe_maintenance_window_tasks <- function(WindowId, Filters = NULL, MaxR
 
 #' Retrieves the maintenance windows in an AWS account
 #'
+#' @description
 #' Retrieves the maintenance windows in an AWS account.
 #'
 #' @usage
@@ -3154,6 +3204,7 @@ ssm_describe_maintenance_windows <- function(Filters = NULL, MaxResults = NULL, 
 #' Retrieves information about the maintenance window targets or tasks that
 #' an instance is associated with
 #'
+#' @description
 #' Retrieves information about the maintenance window targets or tasks that
 #' an instance is associated with.
 #'
@@ -3209,6 +3260,7 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 
 #' Query a set of OpsItems
 #'
+#' @description
 #' Query a set of OpsItems. You must have permission in AWS Identity and
 #' Access Management (IAM) to query a list of OpsItems. For more
 #' information, see [Getting started with
@@ -3327,6 +3379,7 @@ ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, Nex
 
 #' Get information about a parameter
 #'
+#' @description
 #' Get information about a parameter.
 #' 
 #' Request results are returned on a best-effort basis. If you specify
@@ -3396,6 +3449,7 @@ ssm_describe_parameters <- function(Filters = NULL, ParameterFilters = NULL, Max
 
 #' Lists the patch baselines in your AWS account
 #'
+#' @description
 #' Lists the patch baselines in your AWS account.
 #'
 #' @usage
@@ -3448,6 +3502,7 @@ ssm_describe_patch_baselines <- function(Filters = NULL, MaxResults = NULL, Next
 
 #' Returns high-level aggregated patch compliance state for a patch group
 #'
+#' @description
 #' Returns high-level aggregated patch compliance state for a patch group.
 #'
 #' @usage
@@ -3484,6 +3539,7 @@ ssm_describe_patch_group_state <- function(PatchGroup) {
 
 #' Lists all patch groups that have been registered with patch baselines
 #'
+#' @description
 #' Lists all patch groups that have been registered with patch baselines.
 #'
 #' @usage
@@ -3551,6 +3607,7 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
 #' family, classification, severity, and other properties of available
 #' patches
 #'
+#' @description
 #' Lists the properties of available patches organized by product, product
 #' family, classification, severity, and other properties of available
 #' patches. You can use the reported properties in the filters you specify
@@ -3651,6 +3708,7 @@ ssm_describe_patch_properties <- function(OperatingSystem, Property, PatchSet = 
 #' Retrieves a list of all active sessions (both connected and
 #' disconnected) or terminated sessions from the past 30 days
 #'
+#' @description
 #' Retrieves a list of all active sessions (both connected and
 #' disconnected) or terminated sessions from the past 30 days.
 #'
@@ -3704,6 +3762,7 @@ ssm_describe_sessions <- function(State, MaxResults = NULL, NextToken = NULL, Fi
 
 #' Get detailed information about a particular Automation execution
 #'
+#' @description
 #' Get detailed information about a particular Automation execution.
 #'
 #' @usage
@@ -3743,6 +3802,7 @@ ssm_get_automation_execution <- function(AutomationExecutionId) {
 #' Gets the state of the AWS Systems Manager Change Calendar at an
 #' optional, specified time
 #'
+#' @description
 #' Gets the state of the AWS Systems Manager Change Calendar at an
 #' optional, specified time. If you specify a time, `GetCalendarState`
 #' returns the state of the calendar at a specific time, and returns the
@@ -3803,6 +3863,7 @@ ssm_get_calendar_state <- function(CalendarNames, AtTime = NULL) {
 #' Returns detailed information about command execution for an invocation
 #' or plugin
 #'
+#' @description
 #' Returns detailed information about command execution for an invocation
 #' or plugin.
 #'
@@ -3853,6 +3914,7 @@ ssm_get_command_invocation <- function(CommandId, InstanceId, PluginName = NULL)
 #' determine whether it is running and ready to receive Session Manager
 #' connections
 #'
+#' @description
 #' Retrieves the Session Manager connection status for an instance to
 #' determine whether it is running and ready to receive Session Manager
 #' connections.
@@ -3891,6 +3953,7 @@ ssm_get_connection_status <- function(Target) {
 
 #' Retrieves the default patch baseline
 #'
+#' @description
 #' Retrieves the default patch baseline. Note that Systems Manager supports
 #' creating multiple default patch baselines. For example, you can create a
 #' default patch baseline for each operating system.
@@ -3932,6 +3995,7 @@ ssm_get_default_patch_baseline <- function(OperatingSystem = NULL) {
 
 #' Retrieves the current snapshot for the patch baseline the instance uses
 #'
+#' @description
 #' Retrieves the current snapshot for the patch baseline the instance uses.
 #' This API is primarily used by the AWS-RunPatchBaseline Systems Manager
 #' document.
@@ -3973,6 +4037,7 @@ ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotI
 
 #' Gets the contents of the specified Systems Manager document
 #'
+#' @description
 #' Gets the contents of the specified Systems Manager document.
 #'
 #' @usage
@@ -4018,6 +4083,7 @@ ssm_get_document <- function(Name, VersionName = NULL, DocumentVersion = NULL, D
 
 #' Query inventory information
 #'
+#' @description
 #' Query inventory information.
 #'
 #' @usage
@@ -4102,6 +4168,7 @@ ssm_get_inventory <- function(Filters = NULL, Aggregators = NULL, ResultAttribut
 #' Return a list of inventory type names for the account, or return a list
 #' of attribute names for a specific Inventory item type
 #'
+#' @description
 #' Return a list of inventory type names for the account, or return a list
 #' of attribute names for a specific Inventory item type.
 #'
@@ -4154,6 +4221,7 @@ ssm_get_inventory_schema <- function(TypeName = NULL, NextToken = NULL, MaxResul
 
 #' Retrieves a maintenance window
 #'
+#' @description
 #' Retrieves a maintenance window.
 #'
 #' @usage
@@ -4191,6 +4259,7 @@ ssm_get_maintenance_window <- function(WindowId) {
 
 #' Retrieves details about a specific a maintenance window execution
 #'
+#' @description
 #' Retrieves details about a specific a maintenance window execution.
 #'
 #' @usage
@@ -4228,6 +4297,7 @@ ssm_get_maintenance_window_execution <- function(WindowExecutionId) {
 #' Retrieves the details about a specific task run as part of a maintenance
 #' window execution
 #'
+#' @description
 #' Retrieves the details about a specific task run as part of a maintenance
 #' window execution.
 #'
@@ -4268,6 +4338,7 @@ ssm_get_maintenance_window_execution_task <- function(WindowExecutionId, TaskId)
 
 #' Retrieves information about a specific task running on a specific target
 #'
+#' @description
 #' Retrieves information about a specific task running on a specific
 #' target.
 #'
@@ -4311,6 +4382,7 @@ ssm_get_maintenance_window_execution_task_invocation <- function(WindowExecution
 
 #' Lists the tasks in a maintenance window
 #'
+#' @description
 #' Lists the tasks in a maintenance window.
 #' 
 #' For maintenance window tasks without a specified target, you cannot
@@ -4355,6 +4427,7 @@ ssm_get_maintenance_window_task <- function(WindowId, WindowTaskId) {
 
 #' Get information about an OpsItem by using the ID
 #'
+#' @description
 #' Get information about an OpsItem by using the ID. You must have
 #' permission in AWS Identity and Access Management (IAM) to view
 #' information about an OpsItem. For more information, see [Getting started
@@ -4404,6 +4477,7 @@ ssm_get_ops_item <- function(OpsItemId) {
 #' View operational metadata related to an application in Application
 #' Manager
 #'
+#' @description
 #' View operational metadata related to an application in Application
 #' Manager.
 #'
@@ -4448,6 +4522,7 @@ ssm_get_ops_metadata <- function(OpsMetadataArn, MaxResults = NULL, NextToken = 
 
 #' View a summary of OpsItems based on specified filters and aggregators
 #'
+#' @description
 #' View a summary of OpsItems based on specified filters and aggregators.
 #'
 #' @usage
@@ -4530,6 +4605,7 @@ ssm_get_ops_summary <- function(SyncName = NULL, Filters = NULL, Aggregators = N
 
 #' Get information about a parameter by using the parameter name
 #'
+#' @description
 #' Get information about a parameter by using the parameter name. Don't
 #' confuse this API action with the GetParameters API action.
 #'
@@ -4570,6 +4646,7 @@ ssm_get_parameter <- function(Name, WithDecryption = NULL) {
 
 #' Retrieves the history of all changes to a parameter
 #'
+#' @description
 #' Retrieves the history of all changes to a parameter.
 #'
 #' @usage
@@ -4616,6 +4693,7 @@ ssm_get_parameter_history <- function(Name, WithDecryption = NULL, MaxResults = 
 
 #' Get details of a parameter
 #'
+#' @description
 #' Get details of a parameter. Don't confuse this API action with the
 #' GetParameter API action.
 #'
@@ -4660,6 +4738,7 @@ ssm_get_parameters <- function(Names, WithDecryption = NULL) {
 #' Retrieve information about one or more parameters in a specific
 #' hierarchy
 #'
+#' @description
 #' Retrieve information about one or more parameters in a specific
 #' hierarchy.
 #' 
@@ -4742,6 +4821,7 @@ ssm_get_parameters_by_path <- function(Path, Recursive = NULL, ParameterFilters 
 
 #' Retrieves information about a patch baseline
 #'
+#' @description
 #' Retrieves information about a patch baseline.
 #'
 #' @usage
@@ -4779,6 +4859,7 @@ ssm_get_patch_baseline <- function(BaselineId) {
 #' Retrieves the patch baseline that should be used for the specified patch
 #' group
 #'
+#' @description
 #' Retrieves the patch baseline that should be used for the specified patch
 #' group.
 #'
@@ -4819,6 +4900,7 @@ ssm_get_patch_baseline_for_patch_group <- function(PatchGroup, OperatingSystem =
 
 #' ServiceSetting is an account-level setting for an AWS service
 #'
+#' @description
 #' `ServiceSetting` is an account-level setting for an AWS service. This
 #' setting defines how a user interacts with or uses a service or a feature
 #' of a service. For example, if an AWS service charges money to the
@@ -4875,6 +4957,7 @@ ssm_get_service_setting <- function(SettingId) {
 #' A parameter label is a user-defined alias to help you manage different
 #' versions of a parameter
 #'
+#' @description
 #' A parameter label is a user-defined alias to help you manage different
 #' versions of a parameter. When you modify a parameter, Systems Manager
 #' automatically saves a new version and increments the version number by
@@ -4950,6 +5033,7 @@ ssm_label_parameter_version <- function(Name, ParameterVersion = NULL, Labels) {
 
 #' Retrieves all versions of an association for a specific association ID
 #'
+#' @description
 #' Retrieves all versions of an association for a specific association ID.
 #'
 #' @usage
@@ -4994,6 +5078,7 @@ ssm_list_association_versions <- function(AssociationId, MaxResults = NULL, Next
 #' Returns all State Manager associations in the current AWS account and
 #' Region
 #'
+#' @description
 #' Returns all State Manager associations in the current AWS account and
 #' Region. You can limit the results to a specific State Manager
 #' association document or instance by specifying a filter.
@@ -5050,6 +5135,7 @@ ssm_list_associations <- function(AssociationFilterList = NULL, MaxResults = NUL
 
 #' An invocation is copy of a command sent to a specific instance
 #'
+#' @description
 #' An invocation is copy of a command sent to a specific instance. A
 #' command can apply to one or more instances. A command invocation applies
 #' to one instance. For example, if a user runs SendCommand against three
@@ -5112,6 +5198,7 @@ ssm_list_command_invocations <- function(CommandId = NULL, InstanceId = NULL, Ma
 
 #' Lists the commands requested by users of the AWS account
 #'
+#' @description
 #' Lists the commands requested by users of the AWS account.
 #'
 #' @usage
@@ -5170,6 +5257,7 @@ ssm_list_commands <- function(CommandId = NULL, InstanceId = NULL, MaxResults = 
 #' For a specified resource ID, this API action returns a list of
 #' compliance statuses for different resource types
 #'
+#' @description
 #' For a specified resource ID, this API action returns a list of
 #' compliance statuses for different resource types. Currently, you can
 #' only specify one resource ID per call. List results depend on the
@@ -5237,6 +5325,7 @@ ssm_list_compliance_items <- function(Filters = NULL, ResourceIds = NULL, Resour
 #' Returns a summary count of compliant and non-compliant resources for a
 #' compliance type
 #'
+#' @description
 #' Returns a summary count of compliant and non-compliant resources for a
 #' compliance type. For example, this call can return State Manager
 #' associations, patches, or custom compliance types according to the
@@ -5292,6 +5381,7 @@ ssm_list_compliance_summaries <- function(Filters = NULL, NextToken = NULL, MaxR
 
 #' Information about approval reviews for a version of an SSM document
 #'
+#' @description
 #' Information about approval reviews for a version of an SSM document.
 #'
 #' @usage
@@ -5341,6 +5431,7 @@ ssm_list_document_metadata_history <- function(Name, DocumentVersion = NULL, Met
 
 #' List all versions for a document
 #'
+#' @description
 #' List all versions for a document.
 #'
 #' @usage
@@ -5385,6 +5476,7 @@ ssm_list_document_versions <- function(Name, MaxResults = NULL, NextToken = NULL
 #' Returns all Systems Manager (SSM) documents in the current AWS account
 #' and Region
 #'
+#' @description
 #' Returns all Systems Manager (SSM) documents in the current AWS account
 #' and Region. You can limit the results of this request by using a filter.
 #'
@@ -5449,6 +5541,7 @@ ssm_list_documents <- function(DocumentFilterList = NULL, Filters = NULL, MaxRes
 
 #' A list of inventory items returned by the request
 #'
+#' @description
 #' A list of inventory items returned by the request.
 #'
 #' @usage
@@ -5507,6 +5600,7 @@ ssm_list_inventory_entries <- function(InstanceId, TypeName, Filters = NULL, Nex
 #' Returns a list of all OpsItem events in the current AWS account and
 #' Region
 #'
+#' @description
 #' Returns a list of all OpsItem events in the current AWS account and
 #' Region. You can limit the results to events associated with specific
 #' OpsItems by specifying a filter.
@@ -5562,6 +5656,7 @@ ssm_list_ops_item_events <- function(Filters = NULL, MaxResults = NULL, NextToke
 #' Systems Manager calls this API action when displaying all Application
 #' Manager OpsMetadata objects or blobs
 #'
+#' @description
 #' Systems Manager calls this API action when displaying all Application
 #' Manager OpsMetadata objects or blobs.
 #'
@@ -5614,6 +5709,7 @@ ssm_list_ops_metadata <- function(Filters = NULL, MaxResults = NULL, NextToken =
 
 #' Returns a resource-level summary count
 #'
+#' @description
 #' Returns a resource-level summary count. The summary includes information
 #' about compliant and non-compliant statuses and detailed compliance-item
 #' severity counts, according to the filter criteria you specify.
@@ -5668,6 +5764,7 @@ ssm_list_resource_compliance_summaries <- function(Filters = NULL, NextToken = N
 
 #' Lists your resource data sync configurations
 #'
+#' @description
 #' Lists your resource data sync configurations. Includes information about
 #' the last time a sync attempted to start, the last sync status, and the
 #' last time a sync successfully completed.
@@ -5724,6 +5821,7 @@ ssm_list_resource_data_sync <- function(SyncType = NULL, NextToken = NULL, MaxRe
 
 #' Returns a list of the tags assigned to the specified resource
 #'
+#' @description
 #' Returns a list of the tags assigned to the specified resource.
 #'
 #' @usage
@@ -5762,6 +5860,7 @@ ssm_list_tags_for_resource <- function(ResourceType, ResourceId) {
 
 #' Shares a Systems Manager document publicly or privately
 #'
+#' @description
 #' Shares a Systems Manager document publicly or privately. If you share a
 #' document privately, you must specify the AWS user account IDs for those
 #' people who can use the document. If you share a document publicly, you
@@ -5822,6 +5921,7 @@ ssm_modify_document_permission <- function(Name, PermissionType, AccountIdsToAdd
 #' Registers a compliance type and other compliance details on a designated
 #' resource
 #'
+#' @description
 #' Registers a compliance type and other compliance details on a designated
 #' resource. This action lets you register custom compliance details with a
 #' resource. This call overwrites existing compliance information on the
@@ -5951,6 +6051,7 @@ ssm_put_compliance_items <- function(ResourceId, ResourceType, ComplianceType, E
 
 #' Bulk update custom inventory items on one more instance
 #'
+#' @description
 #' Bulk update custom inventory items on one more instance. The request
 #' adds an inventory item, if it doesn't already exist, or updates an
 #' inventory item, if it does exist.
@@ -6006,6 +6107,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 
 #' Add a parameter to the system
 #'
+#' @description
 #' Add a parameter to the system.
 #'
 #' @usage
@@ -6260,6 +6362,7 @@ ssm_put_parameter <- function(Name, Description = NULL, Value, Type = NULL, KeyI
 
 #' Defines the default patch baseline for the relevant operating system
 #'
+#' @description
 #' Defines the default patch baseline for the relevant operating system.
 #' 
 #' To reset the AWS predefined patch baseline as the default, specify the
@@ -6302,6 +6405,7 @@ ssm_register_default_patch_baseline <- function(BaselineId) {
 
 #' Registers a patch baseline for a patch group
 #'
+#' @description
 #' Registers a patch baseline for a patch group.
 #'
 #' @usage
@@ -6341,6 +6445,7 @@ ssm_register_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup) 
 
 #' Registers a target with a maintenance window
 #'
+#' @description
 #' Registers a target with a maintenance window.
 #'
 #' @usage
@@ -6433,6 +6538,7 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 
 #' Adds a new task to a maintenance window
 #'
+#' @description
 #' Adds a new task to a maintenance window.
 #'
 #' @usage
@@ -6618,6 +6724,7 @@ ssm_register_task_with_maintenance_window <- function(WindowId, Targets = NULL, 
 
 #' Removes tag keys from the specified resource
 #'
+#' @description
 #' Removes tag keys from the specified resource.
 #'
 #' @usage
@@ -6676,6 +6783,7 @@ ssm_remove_tags_from_resource <- function(ResourceType, ResourceId, TagKeys) {
 
 #' ServiceSetting is an account-level setting for an AWS service
 #'
+#' @description
 #' `ServiceSetting` is an account-level setting for an AWS service. This
 #' setting defines how a user interacts with or uses a service or a feature
 #' of a service. For example, if an AWS service charges money to the
@@ -6732,6 +6840,7 @@ ssm_reset_service_setting <- function(SettingId) {
 
 #' Reconnects a session to an instance after it has been disconnected
 #'
+#' @description
 #' Reconnects a session to an instance after it has been disconnected.
 #' Connections can be resumed for disconnected sessions, but not terminated
 #' sessions.
@@ -6775,6 +6884,7 @@ ssm_resume_session <- function(SessionId) {
 #' Sends a signal to an Automation execution to change the current behavior
 #' or status of the execution
 #'
+#' @description
 #' Sends a signal to an Automation execution to change the current behavior
 #' or status of the execution.
 #'
@@ -6837,6 +6947,7 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 
 #' Runs commands on one or more managed instances
 #'
+#' @description
 #' Runs commands on one or more managed instances.
 #'
 #' @usage
@@ -6907,14 +7018,14 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' be stored.
 #' @param MaxConcurrency (Optional) The maximum number of instances that are allowed to run the
 #' command at the same time. You can specify a number such as 10 or a
-#' percentage such as 10%. The default value is 50. For more information
+#' percentage such as 10\%. The default value is 50. For more information
 #' about how to use MaxConcurrency, see [Using concurrency
 #' controls](https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-velocity)
 #' in the *AWS Systems Manager User Guide*.
 #' @param MaxErrors The maximum number of errors allowed without the command failing. When
 #' the command fails one more time beyond the value of MaxErrors, the
 #' systems stops sending the command to additional targets. You can specify
-#' a number like 10 or a percentage like 10%. The default value is 0. For
+#' a number like 10 or a percentage like 10\%. The default value is 0. For
 #' more information about how to use MaxErrors, see [Using error
 #' controls](https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-maxerrors)
 #' in the *AWS Systems Manager User Guide*.
@@ -6992,6 +7103,7 @@ ssm_send_command <- function(InstanceIds = NULL, Targets = NULL, DocumentName, D
 
 #' Use this API action to run an association immediately and only one time
 #'
+#' @description
 #' Use this API action to run an association immediately and only one time.
 #' This action can be helpful when troubleshooting associations.
 #'
@@ -7031,6 +7143,7 @@ ssm_start_associations_once <- function(AssociationIds) {
 
 #' Initiates execution of an Automation document
 #'
+#' @description
 #' Initiates execution of an Automation document.
 #'
 #' @usage
@@ -7053,16 +7166,16 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' @param TargetMaps A key-value mapping of document parameters to target resources. Both
 #' Targets and TargetMaps cannot be specified together.
 #' @param MaxConcurrency The maximum number of targets allowed to run this task in parallel. You
-#' can specify a number, such as 10, or a percentage, such as 10%. The
+#' can specify a number, such as 10, or a percentage, such as 10\%. The
 #' default value is 10.
 #' @param MaxErrors The number of errors that are allowed before the system stops running
 #' the automation on additional targets. You can specify either an absolute
 #' number of errors, for example 10, or a percentage of the target set, for
-#' example 10%. If you specify 3, for example, the system stops running the
+#' example 10\%. If you specify 3, for example, the system stops running the
 #' automation when the fourth error is received. If you specify 0, then the
 #' system stops running the automation on additional targets after the
 #' first error result is returned. If you run an automation on 50 resources
-#' and set max-errors to 10%, then the system stops running the automation
+#' and set max-errors to 10\%, then the system stops running the automation
 #' on additional targets when the sixth error is received.
 #' 
 #' Executions that are already running an automation when max-errors is
@@ -7164,6 +7277,7 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 
 #' Creates a change request for Change Manager
 #'
+#' @description
 #' Creates a change request for Change Manager. The runbooks (Automation
 #' documents) specified in the change request run only after all required
 #' approvals for the change request have been received.
@@ -7286,6 +7400,7 @@ ssm_start_change_request_execution <- function(ScheduledTime = NULL, DocumentNam
 #' Initiates a connection to a target (for example, an instance) for a
 #' Session Manager session
 #'
+#' @description
 #' Initiates a connection to a target (for example, an instance) for a
 #' Session Manager session. Returns a URL and token that can be used to
 #' open a WebSocket connection for sending input and receiving outputs.
@@ -7346,6 +7461,7 @@ ssm_start_session <- function(Target, DocumentName = NULL, Parameters = NULL) {
 
 #' Stop an Automation that is currently running
 #'
+#' @description
 #' Stop an Automation that is currently running.
 #'
 #' @usage
@@ -7386,6 +7502,7 @@ ssm_stop_automation_execution <- function(AutomationExecutionId, Type = NULL) {
 #' Permanently ends a session and closes the data connection between the
 #' Session Manager client and SSM Agent on the instance
 #'
+#' @description
 #' Permanently ends a session and closes the data connection between the
 #' Session Manager client and SSM Agent on the instance. A terminated
 #' session cannot be resumed.
@@ -7424,6 +7541,7 @@ ssm_terminate_session <- function(SessionId) {
 
 #' Updates an association
 #'
+#' @description
 #' Updates an association. You can update the association name and version,
 #' the document version, schedule, parameters, and Amazon S3 output.
 #' 
@@ -7481,11 +7599,11 @@ ssm_terminate_session <- function(SessionId) {
 #' @param MaxErrors The number of errors that are allowed before the system stops sending
 #' requests to run the association on additional targets. You can specify
 #' either an absolute number of errors, for example 10, or a percentage of
-#' the target set, for example 10%. If you specify 3, for example, the
+#' the target set, for example 10\%. If you specify 3, for example, the
 #' system stops sending requests when the fourth error is received. If you
 #' specify 0, then the system stops sending requests after the first error
 #' is returned. If you run an association on 50 instances and set MaxError
-#' to 10%, then the system stops sending the request when the sixth error
+#' to 10\%, then the system stops sending the request when the sixth error
 #' is received.
 #' 
 #' Executions that are already running an association when MaxErrors is
@@ -7495,7 +7613,7 @@ ssm_terminate_session <- function(SessionId) {
 #' one at a time.
 #' @param MaxConcurrency The maximum number of targets allowed to run the association at the same
 #' time. You can specify a number, for example 10, or a percentage of the
-#' target set, for example 10%. The default value is 100%, which means all
+#' target set, for example 10\%. The default value is 100\%, which means all
 #' targets run the association at the same time.
 #' 
 #' If a new instance starts and attempts to run an association while
@@ -7606,6 +7724,7 @@ ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVer
 #' Updates the status of the Systems Manager document associated with the
 #' specified instance
 #'
+#' @description
 #' Updates the status of the Systems Manager document associated with the
 #' specified instance.
 #'
@@ -7654,6 +7773,7 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
 
 #' Updates one or more values for an SSM document
 #'
+#' @description
 #' Updates one or more values for an SSM document.
 #'
 #' @usage
@@ -7719,6 +7839,7 @@ ssm_update_document <- function(Content, Attachments = NULL, Name, VersionName =
 
 #' Set the default version of a document
 #'
+#' @description
 #' Set the default version of a document.
 #'
 #' @usage
@@ -7760,6 +7881,7 @@ ssm_update_document_default_version <- function(Name, DocumentVersion) {
 #' Updates information related to approval reviews for a specific version
 #' of a document
 #'
+#' @description
 #' Updates information related to approval reviews for a specific version
 #' of a document.
 #'
@@ -7809,6 +7931,7 @@ ssm_update_document_metadata <- function(Name, DocumentVersion = NULL, DocumentR
 
 #' Updates an existing maintenance window
 #'
+#' @description
 #' Updates an existing maintenance window. Only specified parameters are
 #' modified.
 #' 
@@ -7904,6 +8027,7 @@ ssm_update_maintenance_window <- function(WindowId, Name = NULL, Description = N
 
 #' Modifies the target of an existing maintenance window
 #'
+#' @description
 #' Modifies the target of an existing maintenance window. You can change
 #' the following:
 #' 
@@ -7980,6 +8104,7 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 
 #' Modifies a task assigned to a maintenance window
 #'
+#' @description
 #' Modifies a task assigned to a maintenance window. You can't change the
 #' task type, but you can change the following values:
 #' 
@@ -8216,6 +8341,7 @@ ssm_update_maintenance_window_task <- function(WindowId, WindowTaskId, Targets =
 #' Changes the Amazon Identity and Access Management (IAM) role that is
 #' assigned to the on-premises instance or virtual machines (VM)
 #'
+#' @description
 #' Changes the Amazon Identity and Access Management (IAM) role that is
 #' assigned to the on-premises instance or virtual machines (VM). IAM roles
 #' are first assigned to these hybrid instances during the activation
@@ -8257,6 +8383,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 
 #' Edit or change an OpsItem
 #'
+#' @description
 #' Edit or change an OpsItem. You must have permission in AWS Identity and
 #' Access Management (IAM) to update an OpsItem. For more information, see
 #' [Getting started with
@@ -8398,6 +8525,7 @@ ssm_update_ops_item <- function(Description = NULL, OperationalData = NULL, Oper
 #' Systems Manager calls this API action when you edit OpsMetadata in
 #' Application Manager
 #'
+#' @description
 #' Systems Manager calls this API action when you edit OpsMetadata in
 #' Application Manager.
 #'
@@ -8445,6 +8573,7 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 
 #' Modifies an existing patch baseline
 #'
+#' @description
 #' Modifies an existing patch baseline. Fields not specified in the request
 #' are left unchanged.
 #' 
@@ -8582,6 +8711,7 @@ ssm_update_patch_baseline <- function(BaselineId, Name = NULL, GlobalFilters = N
 
 #' Update a resource data sync
 #'
+#' @description
 #' Update a resource data sync. After you create a resource data sync for a
 #' Region, you can't change the account options for that sync. For example,
 #' if you create a sync in the us-east-2 (Ohio) Region and you choose the
@@ -8646,6 +8776,7 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
 
 #' ServiceSetting is an account-level setting for an AWS service
 #'
+#' @description
 #' `ServiceSetting` is an account-level setting for an AWS service. This
 #' setting defines how a user interacts with or uses a service or a feature
 #' of a service. For example, if an AWS service charges money to the

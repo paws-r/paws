@@ -34,8 +34,7 @@ receive either a \emph{ResourceNotFoundException} or an
 \description{
 Disables automatic scheduled rotation and cancels the rotation of a
 secret if currently in progress.
-}
-\details{
+
 To re-enable scheduled rotation, call RotateSecret with
 \code{AutomaticallyRotateAfterDays} set to a value greater than 0. This
 immediately rotates your secret and then enables the automatic schedule.

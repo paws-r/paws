@@ -23,8 +23,7 @@ if you have no running tasks in it and the desired task count is zero.
 If the service is actively maintaining tasks, you cannot delete it, and
 you must update the service to a desired task count of zero. For more
 information, see UpdateService.
-}
-\details{
+
 When you delete a service, if there are still running tasks that require
 cleanup, the service status moves from \code{ACTIVE} to \code{DRAINING}, and the
 service is no longer visible in the console or in the ListServices API

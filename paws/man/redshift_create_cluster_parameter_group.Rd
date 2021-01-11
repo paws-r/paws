@@ -37,8 +37,7 @@ family name is "redshift-1.0".}
 }
 \description{
 Creates an Amazon Redshift parameter group.
-}
-\details{
+
 Creating parameter groups is independent of creating clusters. You can
 associate a cluster with a parameter group when you create the cluster.
 You can also associate an existing cluster with a parameter group after

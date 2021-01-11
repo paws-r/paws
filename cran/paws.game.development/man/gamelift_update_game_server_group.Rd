@@ -62,8 +62,7 @@ this balancing strategy is in force.
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}
-}
-\details{
+
 Updates GameLift FleetIQ-specific properties for a game server group.
 Many Auto Scaling group properties are updated on the Auto Scaling group
 directly, including the launch template, Auto Scaling policies, and

@@ -13,8 +13,7 @@ ssm_get_default_patch_baseline(OperatingSystem)
 Retrieves the default patch baseline. Note that Systems Manager supports
 creating multiple default patch baselines. For example, you can create a
 default patch baseline for each operating system.
-}
-\details{
+
 If you do not specify an operating system value, the default patch
 baseline for Windows is returned.
 }

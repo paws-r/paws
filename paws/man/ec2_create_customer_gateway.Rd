@@ -38,8 +38,7 @@ customer gateway is the appliance at your end of the VPN connection.
 gateway.) You must provide the internet-routable IP address of the
 customer gateway's external interface. The IP address must be static and
 can be behind a device performing network address translation (NAT).
-}
-\details{
+
 For devices that use Border Gateway Protocol (BGP), you can also provide
 the device's BGP Autonomous System Number (ASN). You can use an existing
 ASN assigned to your network. If you don't have an ASN already, you can

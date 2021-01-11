@@ -14,8 +14,7 @@ for.}
 \description{
 Returns a list of DB cluster snapshot attribute names and values for a
 manual DB cluster snapshot.
-}
-\details{
+
 When sharing snapshots with other AWS accounts,
 \code{DescribeDBClusterSnapshotAttributes} returns the \code{restore} attribute
 and a list of IDs for the AWS accounts that are authorized to copy or

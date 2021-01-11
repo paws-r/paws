@@ -28,8 +28,7 @@ value to less than 500 shards.
 \description{
 Updates the shard count of the specified stream to the specified number
 of shards.
-}
-\details{
+
 Updating the shard count is an asynchronous operation. Upon receiving
 the request, Kinesis Data Streams returns immediately and sets the
 status of the stream to \code{UPDATING}. After the update is complete,
@@ -44,9 +43,9 @@ created, in addition to the final shards. These short-lived shards count
 towards your total shard limit for your account in the Region.
 
 When using this operation, we recommend that you specify a target shard
-count that is a multiple of 25\% (25\%, 50\%, 75\%, 100\%). You can specify
+count that is a multiple of 25\\% (25\\%, 50\\%, 75\\%, 100\\%). You can specify
 any target value within your shard limit. However, if you specify a
-target that isn't a multiple of 25\%, the scaling action might take
+target that isn't a multiple of 25\\%, the scaling action might take
 longer to complete.
 
 This operation has the following default limits. By default, you cannot
@@ -64,7 +63,7 @@ less than 500 shards
 For the default limits for an AWS account, see \href{https://docs.aws.amazon.com/streams/latest/dev/service-sizes-and-limits.html}{Streams Limits}
 in the \emph{Amazon Kinesis Data Streams Developer Guide}. To request an
 increase in the call rate limit, the shard limit for this API, or your
-overall shard limit, use the \href{https://console.aws.amazon.com/support/v1#/case/create?issueType=service-limit-increase&limitType=service-code-kinesis}{limits form}.
+overall shard limit, use the limits form.
 }
 \section{Request syntax}{
 \preformatted{svc$update_shard_count(

@@ -14,8 +14,7 @@ directconnect_tag_resource(resourceArn, tags)
 \description{
 Adds the specified tags to the specified AWS Direct Connect resource.
 Each resource can have a maximum of 50 tags.
-}
-\details{
+
 Each tag consists of a key and an optional value. If a tag with the same
 key is already associated with the resource, this action updates its
 value.

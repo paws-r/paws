@@ -23,8 +23,7 @@ specific users, groups, and roles that the policy is attached to, use
 the ListEntitiesForPolicy API. This API returns metadata about the
 policy. To retrieve the actual policy document for a specific version of
 the policy, use GetPolicyVersion.
-}
-\details{
+
 This API retrieves information about managed policies. To retrieve
 information about an inline policy that is embedded with an IAM user,
 group, or role, use the GetUserPolicy, GetGroupPolicy, or GetRolePolicy

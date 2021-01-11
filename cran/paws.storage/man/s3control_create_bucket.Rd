@@ -54,8 +54,7 @@ This is required by Amazon S3 on Outposts buckets.}
 This API operation creates an Amazon S3 on Outposts bucket. To create an
 S3 bucket, see \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{Create Bucket}
 in the \emph{Amazon Simple Storage Service API}.
-}
-\details{
+
 Creates a new Outposts bucket. By creating the bucket, you become the
 bucket owner. To create an Outposts bucket, you must have S3 on
 Outposts. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}

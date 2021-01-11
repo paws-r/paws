@@ -16,8 +16,7 @@ name or ID (ARN) that is associated with it.}
 \description{
 Deletes the specified change set. Deleting change sets ensures that no
 one executes the wrong change set.
-}
-\details{
+
 If the call successfully completes, AWS CloudFormation successfully
 deleted the change set.
 

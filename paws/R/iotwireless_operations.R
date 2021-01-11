@@ -5,6 +5,7 @@ NULL
 
 #' Associates a partner account with your AWS account
 #'
+#' @description
 #' Associates a partner account with your AWS account.
 #'
 #' @usage
@@ -50,6 +51,7 @@ iotwireless_associate_aws_account_with_partner_account <- function(Sidewalk, Cli
 
 #' Associates a wireless device with a thing
 #'
+#' @description
 #' Associates a wireless device with a thing.
 #'
 #' @usage
@@ -88,6 +90,7 @@ iotwireless_associate_wireless_device_with_thing <- function(Id, ThingArn) {
 
 #' Associates a wireless gateway with a certificate
 #'
+#' @description
 #' Associates a wireless gateway with a certificate.
 #'
 #' @usage
@@ -127,6 +130,7 @@ iotwireless_associate_wireless_gateway_with_certificate <- function(Id, IotCerti
 
 #' Associates a wireless gateway with a thing
 #'
+#' @description
 #' Associates a wireless gateway with a thing.
 #'
 #' @usage
@@ -165,6 +169,7 @@ iotwireless_associate_wireless_gateway_with_thing <- function(Id, ThingArn) {
 
 #' Creates a new destination that maps a device message to an AWS IoT rule
 #'
+#' @description
 #' Creates a new destination that maps a device message to an AWS IoT rule.
 #'
 #' @usage
@@ -223,6 +228,7 @@ iotwireless_create_destination <- function(Name, ExpressionType, Expression, Des
 
 #' Creates a new device profile
 #'
+#' @description
 #' Creates a new device profile.
 #'
 #' @usage
@@ -297,6 +303,7 @@ iotwireless_create_device_profile <- function(Name = NULL, LoRaWAN = NULL, Tags 
 
 #' Creates a new service profile
 #'
+#' @description
 #' Creates a new service profile.
 #'
 #' @usage
@@ -351,6 +358,7 @@ iotwireless_create_service_profile <- function(Name = NULL, LoRaWAN = NULL, Tags
 
 #' Provisions a wireless device
 #'
+#' @description
 #' Provisions a wireless device.
 #'
 #' @usage
@@ -431,6 +439,7 @@ iotwireless_create_wireless_device <- function(Type, Name = NULL, Description = 
 
 #' Provisions a wireless gateway
 #'
+#' @description
 #' Provisions a wireless gateway.
 #'
 #' @usage
@@ -489,6 +498,7 @@ iotwireless_create_wireless_gateway <- function(Name = NULL, Description = NULL,
 
 #' Creates a task for a wireless gateway
 #'
+#' @description
 #' Creates a task for a wireless gateway.
 #'
 #' @usage
@@ -528,6 +538,7 @@ iotwireless_create_wireless_gateway_task <- function(Id, WirelessGatewayTaskDefi
 
 #' Creates a gateway task definition
 #'
+#' @description
 #' Creates a gateway task definition.
 #'
 #' @usage
@@ -593,6 +604,7 @@ iotwireless_create_wireless_gateway_task_definition <- function(AutoCreateTasks,
 
 #' Deletes a destination
 #'
+#' @description
 #' Deletes a destination.
 #'
 #' @usage
@@ -629,6 +641,7 @@ iotwireless_delete_destination <- function(Name) {
 
 #' Deletes a device profile
 #'
+#' @description
 #' Deletes a device profile.
 #'
 #' @usage
@@ -665,6 +678,7 @@ iotwireless_delete_device_profile <- function(Id) {
 
 #' Deletes a service profile
 #'
+#' @description
 #' Deletes a service profile.
 #'
 #' @usage
@@ -701,6 +715,7 @@ iotwireless_delete_service_profile <- function(Id) {
 
 #' Deletes a wireless device
 #'
+#' @description
 #' Deletes a wireless device.
 #'
 #' @usage
@@ -737,6 +752,7 @@ iotwireless_delete_wireless_device <- function(Id) {
 
 #' Deletes a wireless gateway
 #'
+#' @description
 #' Deletes a wireless gateway.
 #'
 #' @usage
@@ -773,6 +789,7 @@ iotwireless_delete_wireless_gateway <- function(Id) {
 
 #' Deletes a wireless gateway task
 #'
+#' @description
 #' Deletes a wireless gateway task.
 #'
 #' @usage
@@ -809,6 +826,7 @@ iotwireless_delete_wireless_gateway_task <- function(Id) {
 
 #' Deletes a wireless gateway task definition
 #'
+#' @description
 #' Deletes a wireless gateway task definition. Deleting this task
 #' definition does not affect tasks that are currently in progress.
 #'
@@ -846,6 +864,7 @@ iotwireless_delete_wireless_gateway_task_definition <- function(Id) {
 
 #' Disassociates your AWS account from a partner account
 #'
+#' @description
 #' Disassociates your AWS account from a partner account. If
 #' `PartnerAccountId` and `PartnerType` are `null`, disassociates your AWS
 #' account from all partner accounts.
@@ -887,6 +906,7 @@ iotwireless_disassociate_aws_account_from_partner_account <- function(PartnerAcc
 
 #' Disassociates a wireless device from its currently associated thing
 #'
+#' @description
 #' Disassociates a wireless device from its currently associated thing.
 #'
 #' @usage
@@ -924,6 +944,7 @@ iotwireless_disassociate_wireless_device_from_thing <- function(Id) {
 #' Disassociates a wireless gateway from its currently associated
 #' certificate
 #'
+#' @description
 #' Disassociates a wireless gateway from its currently associated
 #' certificate.
 #'
@@ -961,6 +982,7 @@ iotwireless_disassociate_wireless_gateway_from_certificate <- function(Id) {
 
 #' Disassociates a wireless gateway from its currently associated thing
 #'
+#' @description
 #' Disassociates a wireless gateway from its currently associated thing.
 #'
 #' @usage
@@ -997,6 +1019,7 @@ iotwireless_disassociate_wireless_gateway_from_thing <- function(Id) {
 
 #' Gets information about a destination
 #'
+#' @description
 #' Gets information about a destination.
 #'
 #' @usage
@@ -1033,6 +1056,7 @@ iotwireless_get_destination <- function(Name) {
 
 #' Gets information about a device profile
 #'
+#' @description
 #' Gets information about a device profile.
 #'
 #' @usage
@@ -1069,6 +1093,7 @@ iotwireless_get_device_profile <- function(Id) {
 
 #' Gets information about a partner account
 #'
+#' @description
 #' Gets information about a partner account. If `PartnerAccountId` and
 #' `PartnerType` are `null`, returns all partner accounts.
 #'
@@ -1109,6 +1134,7 @@ iotwireless_get_partner_account <- function(PartnerAccountId, PartnerType) {
 #' Gets the account-specific endpoint for Configuration and Update Server
 #' (CUPS) protocol or LoRaWAN Network Server (LNS) connections
 #'
+#' @description
 #' Gets the account-specific endpoint for Configuration and Update Server
 #' (CUPS) protocol or LoRaWAN Network Server (LNS) connections.
 #'
@@ -1148,6 +1174,7 @@ iotwireless_get_service_endpoint <- function(ServiceType = NULL) {
 
 #' Gets information about a service profile
 #'
+#' @description
 #' Gets information about a service profile.
 #'
 #' @usage
@@ -1184,6 +1211,7 @@ iotwireless_get_service_profile <- function(Id) {
 
 #' Gets information about a wireless device
 #'
+#' @description
 #' Gets information about a wireless device.
 #'
 #' @usage
@@ -1222,6 +1250,7 @@ iotwireless_get_wireless_device <- function(Identifier, IdentifierType) {
 
 #' Gets operating information about a wireless device
 #'
+#' @description
 #' Gets operating information about a wireless device.
 #'
 #' @usage
@@ -1258,6 +1287,7 @@ iotwireless_get_wireless_device_statistics <- function(WirelessDeviceId) {
 
 #' Gets information about a wireless gateway
 #'
+#' @description
 #' Gets information about a wireless gateway.
 #'
 #' @usage
@@ -1297,6 +1327,7 @@ iotwireless_get_wireless_gateway <- function(Identifier, IdentifierType) {
 #' Gets the ID of the certificate that is currently associated with a
 #' wireless gateway
 #'
+#' @description
 #' Gets the ID of the certificate that is currently associated with a
 #' wireless gateway.
 #'
@@ -1334,6 +1365,7 @@ iotwireless_get_wireless_gateway_certificate <- function(Id) {
 
 #' Gets the firmware version and other information about a wireless gateway
 #'
+#' @description
 #' Gets the firmware version and other information about a wireless
 #' gateway.
 #'
@@ -1371,6 +1403,7 @@ iotwireless_get_wireless_gateway_firmware_information <- function(Id) {
 
 #' Gets operating information about a wireless gateway
 #'
+#' @description
 #' Gets operating information about a wireless gateway.
 #'
 #' @usage
@@ -1407,6 +1440,7 @@ iotwireless_get_wireless_gateway_statistics <- function(WirelessGatewayId) {
 
 #' Gets information about a wireless gateway task
 #'
+#' @description
 #' Gets information about a wireless gateway task.
 #'
 #' @usage
@@ -1443,6 +1477,7 @@ iotwireless_get_wireless_gateway_task <- function(Id) {
 
 #' Gets information about a wireless gateway task definition
 #'
+#' @description
 #' Gets information about a wireless gateway task definition.
 #'
 #' @usage
@@ -1479,6 +1514,7 @@ iotwireless_get_wireless_gateway_task_definition <- function(Id) {
 
 #' Lists the destinations registered to your AWS account
 #'
+#' @description
 #' Lists the destinations registered to your AWS account.
 #'
 #' @usage
@@ -1519,6 +1555,7 @@ iotwireless_list_destinations <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Lists the device profiles registered to your AWS account
 #'
+#' @description
 #' Lists the device profiles registered to your AWS account.
 #'
 #' @usage
@@ -1559,6 +1596,7 @@ iotwireless_list_device_profiles <- function(NextToken = NULL, MaxResults = NULL
 
 #' Lists the partner accounts associated with your AWS account
 #'
+#' @description
 #' Lists the partner accounts associated with your AWS account.
 #'
 #' @usage
@@ -1599,6 +1637,7 @@ iotwireless_list_partner_accounts <- function(NextToken = NULL, MaxResults = NUL
 
 #' Lists the service profiles registered to your AWS account
 #'
+#' @description
 #' Lists the service profiles registered to your AWS account.
 #'
 #' @usage
@@ -1639,6 +1678,7 @@ iotwireless_list_service_profiles <- function(NextToken = NULL, MaxResults = NUL
 
 #' Lists the tags (metadata) you have assigned to the resource
 #'
+#' @description
 #' Lists the tags (metadata) you have assigned to the resource.
 #'
 #' @usage
@@ -1675,6 +1715,7 @@ iotwireless_list_tags_for_resource <- function(ResourceArn) {
 
 #' Lists the wireless devices registered to your AWS account
 #'
+#' @description
 #' Lists the wireless devices registered to your AWS account.
 #'
 #' @usage
@@ -1727,6 +1768,7 @@ iotwireless_list_wireless_devices <- function(MaxResults = NULL, NextToken = NUL
 #' List the wireless gateway tasks definitions registered to your AWS
 #' account
 #'
+#' @description
 #' List the wireless gateway tasks definitions registered to your AWS
 #' account.
 #'
@@ -1772,6 +1814,7 @@ iotwireless_list_wireless_gateway_task_definitions <- function(MaxResults = NULL
 
 #' Lists the wireless gateways registered to your AWS account
 #'
+#' @description
 #' Lists the wireless gateways registered to your AWS account.
 #'
 #' @usage
@@ -1812,6 +1855,7 @@ iotwireless_list_wireless_gateways <- function(NextToken = NULL, MaxResults = NU
 
 #' Sends a decrypted application data frame to a device
 #'
+#' @description
 #' Sends a decrypted application data frame to a device.
 #'
 #' @usage
@@ -1864,6 +1908,7 @@ iotwireless_send_data_to_wireless_device <- function(Id, TransmitMode, PayloadDa
 
 #' Adds a tag to a resource
 #'
+#' @description
 #' Adds a tag to a resource.
 #'
 #' @usage
@@ -1909,6 +1954,7 @@ iotwireless_tag_resource <- function(ResourceArn, Tags) {
 #' Simulates a provisioned device by sending an uplink data payload of
 #' Hello
 #'
+#' @description
 #' Simulates a provisioned device by sending an uplink data payload of
 #' `Hello`.
 #'
@@ -1946,6 +1992,7 @@ iotwireless_test_wireless_device <- function(Id) {
 
 #' Removes one or more tags from a resource
 #'
+#' @description
 #' Removes one or more tags from a resource.
 #'
 #' @usage
@@ -1986,6 +2033,7 @@ iotwireless_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates properties of a destination
 #'
+#' @description
 #' Updates properties of a destination.
 #'
 #' @usage
@@ -2031,6 +2079,7 @@ iotwireless_update_destination <- function(Name, ExpressionType = NULL, Expressi
 
 #' Updates properties of a partner account
 #'
+#' @description
 #' Updates properties of a partner account.
 #'
 #' @usage
@@ -2074,6 +2123,7 @@ iotwireless_update_partner_account <- function(Sidewalk, PartnerAccountId, Partn
 
 #' Updates properties of a wireless device
 #'
+#' @description
 #' Updates properties of a wireless device.
 #'
 #' @usage
@@ -2122,6 +2172,7 @@ iotwireless_update_wireless_device <- function(Id, DestinationName = NULL, Name 
 
 #' Updates properties of a wireless gateway
 #'
+#' @description
 #' Updates properties of a wireless gateway.
 #'
 #' @usage

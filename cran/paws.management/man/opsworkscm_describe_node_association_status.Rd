@@ -17,8 +17,7 @@ DisassociateNodeResponse.}
 \description{
 Returns the current status of an existing association or disassociation
 request.
-}
-\details{
+
 A \code{ResourceNotFoundException} is thrown when no recent association or
 disassociation request with the specified token is found, or when the
 server does not exist. A \code{ValidationException} is raised when parameters

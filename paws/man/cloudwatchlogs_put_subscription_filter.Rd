@@ -51,8 +51,7 @@ real-time stream of log events ingested through
 and have them delivered to a specific destination. When log events are
 sent to the receiving service, they are Base64 encoded and compressed
 with the gzip format.
-}
-\details{
+
 The following destinations are supported for subscription filters:
 \itemize{
 \item An Amazon Kinesis stream belonging to the same account as the

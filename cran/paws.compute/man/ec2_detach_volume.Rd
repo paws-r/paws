@@ -36,8 +36,7 @@ indefinitely until you unmount the volume, force detachment, reboot the
 instance, or all three. If an EBS volume is the root device of an
 instance, it can't be detached while the instance is running. To detach
 the root volume, stop the instance first.
-}
-\details{
+
 When a volume with an AWS Marketplace product code is detached from an
 instance, the product code is no longer associated with the instance.
 

@@ -26,8 +26,7 @@ performance instances. The default credit option is set at the account
 level per AWS Region, and is specified per instance family. All new
 burstable performance instances in the account launch using the default
 credit option.
-}
-\details{
+
 \code{ModifyDefaultCreditSpecification} is an asynchronous operation, which
 works at an AWS Region level and modifies the credit option for each
 Availability Zone. All zones in a Region are updated within five

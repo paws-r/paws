@@ -33,8 +33,7 @@ the ID of that reusable delegation set.}
 Retrieves a list of the public and private hosted zones that are
 associated with the current AWS account. The response includes a
 \code{HostedZones} child element for each hosted zone.
-}
-\details{
+
 Amazon Route 53 returns a maximum of 100 items in each response. If you
 have a lot of hosted zones, you can use the \code{maxitems} parameter to list
 them in groups of up to 100.

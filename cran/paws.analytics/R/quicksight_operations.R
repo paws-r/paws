@@ -5,6 +5,7 @@ NULL
 
 #' Cancels an ongoing ingestion of data into SPICE
 #'
+#' @description
 #' Cancels an ongoing ingestion of data into SPICE.
 #'
 #' @usage
@@ -45,6 +46,7 @@ quicksight_cancel_ingestion <- function(AwsAccountId, DataSetId, IngestionId) {
 
 #' Creates Amazon QuickSight customizations the current AWS Region
 #'
+#' @description
 #' Creates Amazon QuickSight customizations the current AWS Region.
 #' Currently, you can add a custom default theme by using the
 #' `CreateAccountCustomization` or `UpdateAccountCustomization` API
@@ -123,6 +125,7 @@ quicksight_create_account_customization <- function(AwsAccountId, Namespace = NU
 
 #' Creates an analysis in Amazon QuickSight
 #'
+#' @description
 #' Creates an analysis in Amazon QuickSight.
 #'
 #' @usage
@@ -246,6 +249,7 @@ quicksight_create_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
 
 #' Creates a dashboard from a template
 #'
+#' @description
 #' Creates a dashboard from a template. To first create a template, see the
 #' ` <a>CreateTemplate</a> ` API operation.
 #' 
@@ -412,6 +416,7 @@ quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Paramet
 
 #' Creates a dataset
 #'
+#' @description
 #' Creates a dataset.
 #'
 #' @usage
@@ -615,6 +620,7 @@ quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTa
 
 #' Creates a data source
 #'
+#' @description
 #' Creates a data source.
 #'
 #' @usage
@@ -886,6 +892,7 @@ quicksight_create_data_source <- function(AwsAccountId, DataSourceId, Name, Type
 
 #' Creates an Amazon QuickSight group
 #'
+#' @description
 #' Creates an Amazon QuickSight group.
 #' 
 #' The permissions resource is
@@ -934,6 +941,7 @@ quicksight_create_group <- function(GroupName, Description = NULL, AwsAccountId,
 
 #' Adds an Amazon QuickSight user to an Amazon QuickSight group
 #'
+#' @description
 #' Adds an Amazon QuickSight user to an Amazon QuickSight group.
 #'
 #' @usage
@@ -979,6 +987,7 @@ quicksight_create_group_membership <- function(MemberName, GroupName, AwsAccount
 #' Creates an assignment with one specified IAM policy, identified by its
 #' Amazon Resource Name (ARN)
 #'
+#' @description
 #' Creates an assignment with one specified IAM policy, identified by its
 #' Amazon Resource Name (ARN). This policy assignment is attached to the
 #' specified groups or users of Amazon QuickSight. Assignment names are
@@ -1049,6 +1058,7 @@ quicksight_create_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' operating on tagged datasets inherit the same tags automatically for use
 #' in access control
 #'
+#' @description
 #' Creates and starts a new SPICE ingestion on a dataset
 #' 
 #' Any ingestions operating on tagged datasets inherit the same tags
@@ -1097,6 +1107,7 @@ quicksight_create_ingestion <- function(DataSetId, IngestionId, AwsAccountId) {
 #' (Enterprise edition only) Creates a new namespace for you to use with
 #' Amazon QuickSight
 #'
+#' @description
 #' (Enterprise edition only) Creates a new namespace for you to use with
 #' Amazon QuickSight.
 #' 
@@ -1158,6 +1169,7 @@ quicksight_create_namespace <- function(AwsAccountId, Namespace, IdentityStore, 
 
 #' Creates a template from an existing QuickSight analysis or template
 #'
+#' @description
 #' Creates a template from an existing QuickSight analysis or template. You
 #' can use the resulting template to create a dashboard.
 #' 
@@ -1260,6 +1272,7 @@ quicksight_create_template <- function(AwsAccountId, TemplateId, Name = NULL, Pe
 
 #' Creates a template alias for a template
 #'
+#' @description
 #' Creates a template alias for a template.
 #'
 #' @usage
@@ -1306,6 +1319,7 @@ quicksight_create_template_alias <- function(AwsAccountId, TemplateId, AliasName
 
 #' Creates a theme
 #'
+#' @description
 #' Creates a theme.
 #' 
 #' A *theme* is set of configuration options for color and layout. Themes
@@ -1426,6 +1440,7 @@ quicksight_create_theme <- function(AwsAccountId, ThemeId, Name, BaseThemeId, Ve
 
 #' Creates a theme alias for a theme
 #'
+#' @description
 #' Creates a theme alias for a theme.
 #'
 #' @usage
@@ -1473,6 +1488,7 @@ quicksight_create_theme_alias <- function(AwsAccountId, ThemeId, AliasName, Them
 #' Deletes all Amazon QuickSight customizations in this AWS Region for the
 #' specified AWS account and QuickSight namespace
 #'
+#' @description
 #' Deletes all Amazon QuickSight customizations in this AWS Region for the
 #' specified AWS account and QuickSight namespace.
 #'
@@ -1513,6 +1529,7 @@ quicksight_delete_account_customization <- function(AwsAccountId, Namespace = NU
 
 #' Deletes an analysis from Amazon QuickSight
 #'
+#' @description
 #' Deletes an analysis from Amazon QuickSight. You can optionally include a
 #' recovery window during which you can restore the analysis. If you don't
 #' specify a recovery window value, the operation defaults to 30 days.
@@ -1576,6 +1593,7 @@ quicksight_delete_analysis <- function(AwsAccountId, AnalysisId, RecoveryWindowI
 
 #' Deletes a dashboard
 #'
+#' @description
 #' Deletes a dashboard.
 #'
 #' @usage
@@ -1618,6 +1636,7 @@ quicksight_delete_dashboard <- function(AwsAccountId, DashboardId, VersionNumber
 
 #' Deletes a dataset
 #'
+#' @description
 #' Deletes a dataset.
 #'
 #' @usage
@@ -1657,6 +1676,7 @@ quicksight_delete_data_set <- function(AwsAccountId, DataSetId) {
 
 #' Deletes the data source permanently
 #'
+#' @description
 #' Deletes the data source permanently. This operation breaks all the
 #' datasets that reference the deleted data source.
 #'
@@ -1697,6 +1717,7 @@ quicksight_delete_data_source <- function(AwsAccountId, DataSourceId) {
 
 #' Removes a user group from Amazon QuickSight
 #'
+#' @description
 #' Removes a user group from Amazon QuickSight.
 #'
 #' @usage
@@ -1739,6 +1760,7 @@ quicksight_delete_group <- function(GroupName, AwsAccountId, Namespace) {
 #' Removes a user from a group so that the user is no longer a member of
 #' the group
 #'
+#' @description
 #' Removes a user from a group so that the user is no longer a member of
 #' the group.
 #'
@@ -1784,6 +1806,7 @@ quicksight_delete_group_membership <- function(MemberName, GroupName, AwsAccount
 
 #' Deletes an existing IAM policy assignment
 #'
+#' @description
 #' Deletes an existing IAM policy assignment.
 #'
 #' @usage
@@ -1826,6 +1849,7 @@ quicksight_delete_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' Deletes a namespace and the users and groups that are associated with
 #' the namespace
 #'
+#' @description
 #' Deletes a namespace and the users and groups that are associated with
 #' the namespace. This is an asynchronous process. Assets including
 #' dashboards, analyses, datasets and data sources are not deleted. To
@@ -1868,6 +1892,7 @@ quicksight_delete_namespace <- function(AwsAccountId, Namespace) {
 
 #' Deletes a template
 #'
+#' @description
 #' Deletes a template.
 #'
 #' @usage
@@ -1911,6 +1936,7 @@ quicksight_delete_template <- function(AwsAccountId, TemplateId, VersionNumber =
 
 #' Deletes the item that the specified template alias points to
 #'
+#' @description
 #' Deletes the item that the specified template alias points to. If you
 #' provide a specific alias, you delete the version of the template that
 #' the alias points to.
@@ -1956,6 +1982,7 @@ quicksight_delete_template_alias <- function(AwsAccountId, TemplateId, AliasName
 
 #' Deletes a theme
 #'
+#' @description
 #' Deletes a theme.
 #'
 #' @usage
@@ -2000,6 +2027,7 @@ quicksight_delete_theme <- function(AwsAccountId, ThemeId, VersionNumber = NULL)
 #' Deletes the version of the theme that the specified theme alias points
 #' to
 #'
+#' @description
 #' Deletes the version of the theme that the specified theme alias points
 #' to. If you provide a specific alias, you delete the version of the theme
 #' that the alias points to.
@@ -2044,6 +2072,7 @@ quicksight_delete_theme_alias <- function(AwsAccountId, ThemeId, AliasName) {
 #' of the AWS Identity and Access Management (IAM) user or role that's
 #' making the call
 #'
+#' @description
 #' Deletes the Amazon QuickSight user that is associated with the identity
 #' of the AWS Identity and Access Management (IAM) user or role that's
 #' making the call. The IAM user isn't deleted as a result of this call.
@@ -2087,6 +2116,7 @@ quicksight_delete_user <- function(UserName, AwsAccountId, Namespace) {
 
 #' Deletes a user identified by its principal ID
 #'
+#' @description
 #' Deletes a user identified by its principal ID.
 #'
 #' @usage
@@ -2130,6 +2160,7 @@ quicksight_delete_user_by_principal_id <- function(PrincipalId, AwsAccountId, Na
 #' Describes the customizations associated with the provided AWS account
 #' and Amazon QuickSight namespace in an AWS Region
 #'
+#' @description
 #' Describes the customizations associated with the provided AWS account
 #' and Amazon QuickSight namespace in an AWS Region. The QuickSight console
 #' evaluates which customizations to apply by running this API operation
@@ -2228,6 +2259,7 @@ quicksight_describe_account_customization <- function(AwsAccountId, Namespace = 
 #' Describes the settings that were used when your QuickSight subscription
 #' was first created in this AWS account
 #'
+#' @description
 #' Describes the settings that were used when your QuickSight subscription
 #' was first created in this AWS account.
 #'
@@ -2266,6 +2298,7 @@ quicksight_describe_account_settings <- function(AwsAccountId) {
 
 #' Provides a summary of the metadata for an analysis
 #'
+#' @description
 #' Provides a summary of the metadata for an analysis.
 #'
 #' @usage
@@ -2306,6 +2339,7 @@ quicksight_describe_analysis <- function(AwsAccountId, AnalysisId) {
 
 #' Provides the read and write permissions for an analysis
 #'
+#' @description
 #' Provides the read and write permissions for an analysis.
 #'
 #' @usage
@@ -2347,6 +2381,7 @@ quicksight_describe_analysis_permissions <- function(AwsAccountId, AnalysisId) {
 
 #' Provides a summary for a dashboard
 #'
+#' @description
 #' Provides a summary for a dashboard.
 #'
 #' @usage
@@ -2392,6 +2427,7 @@ quicksight_describe_dashboard <- function(AwsAccountId, DashboardId, VersionNumb
 
 #' Describes read and write permissions for a dashboard
 #'
+#' @description
 #' Describes read and write permissions for a dashboard.
 #'
 #' @usage
@@ -2431,6 +2467,7 @@ quicksight_describe_dashboard_permissions <- function(AwsAccountId, DashboardId)
 
 #' Describes a dataset
 #'
+#' @description
 #' Describes a dataset.
 #'
 #' @usage
@@ -2470,6 +2507,7 @@ quicksight_describe_data_set <- function(AwsAccountId, DataSetId) {
 
 #' Describes the permissions on a dataset
 #'
+#' @description
 #' Describes the permissions on a dataset.
 #' 
 #' The permissions resource is
@@ -2512,6 +2550,7 @@ quicksight_describe_data_set_permissions <- function(AwsAccountId, DataSetId) {
 
 #' Describes a data source
 #'
+#' @description
 #' Describes a data source.
 #'
 #' @usage
@@ -2551,6 +2590,7 @@ quicksight_describe_data_source <- function(AwsAccountId, DataSourceId) {
 
 #' Describes the resource permissions for a data source
 #'
+#' @description
 #' Describes the resource permissions for a data source.
 #'
 #' @usage
@@ -2591,6 +2631,7 @@ quicksight_describe_data_source_permissions <- function(AwsAccountId, DataSource
 #' Returns an Amazon QuickSight group's description and Amazon Resource
 #' Name (ARN)
 #'
+#' @description
 #' Returns an Amazon QuickSight group's description and Amazon Resource
 #' Name (ARN).
 #'
@@ -2634,6 +2675,7 @@ quicksight_describe_group <- function(GroupName, AwsAccountId, Namespace) {
 #' Describes an existing IAM policy assignment, as specified by the
 #' assignment name
 #'
+#' @description
 #' Describes an existing IAM policy assignment, as specified by the
 #' assignment name.
 #'
@@ -2677,6 +2719,7 @@ quicksight_describe_iam_policy_assignment <- function(AwsAccountId, AssignmentNa
 
 #' Describes a SPICE ingestion
 #'
+#' @description
 #' Describes a SPICE ingestion.
 #'
 #' @usage
@@ -2717,6 +2760,7 @@ quicksight_describe_ingestion <- function(AwsAccountId, DataSetId, IngestionId) 
 
 #' Describes the current namespace
 #'
+#' @description
 #' Describes the current namespace.
 #'
 #' @usage
@@ -2756,6 +2800,7 @@ quicksight_describe_namespace <- function(AwsAccountId, Namespace) {
 
 #' Describes a template's metadata
 #'
+#' @description
 #' Describes a template's metadata.
 #'
 #' @usage
@@ -2806,6 +2851,7 @@ quicksight_describe_template <- function(AwsAccountId, TemplateId, VersionNumber
 
 #' Describes the template alias for a template
 #'
+#' @description
 #' Describes the template alias for a template.
 #'
 #' @usage
@@ -2851,6 +2897,7 @@ quicksight_describe_template_alias <- function(AwsAccountId, TemplateId, AliasNa
 
 #' Describes read and write permissions on a template
 #'
+#' @description
 #' Describes read and write permissions on a template.
 #'
 #' @usage
@@ -2890,6 +2937,7 @@ quicksight_describe_template_permissions <- function(AwsAccountId, TemplateId) {
 
 #' Describes a theme
 #'
+#' @description
 #' Describes a theme.
 #'
 #' @usage
@@ -2940,6 +2988,7 @@ quicksight_describe_theme <- function(AwsAccountId, ThemeId, VersionNumber = NUL
 
 #' Describes the alias for a theme
 #'
+#' @description
 #' Describes the alias for a theme.
 #'
 #' @usage
@@ -2981,6 +3030,7 @@ quicksight_describe_theme_alias <- function(AwsAccountId, ThemeId, AliasName) {
 
 #' Describes the read and write permissions for a theme
 #'
+#' @description
 #' Describes the read and write permissions for a theme.
 #'
 #' @usage
@@ -3020,6 +3070,7 @@ quicksight_describe_theme_permissions <- function(AwsAccountId, ThemeId) {
 
 #' Returns information about a user, given the user name
 #'
+#' @description
 #' Returns information about a user, given the user name.
 #'
 #' @usage
@@ -3062,6 +3113,7 @@ quicksight_describe_user <- function(UserName, AwsAccountId, Namespace) {
 #' Generates a session URL and authorization code that you can use to embed
 #' an Amazon QuickSight read-only dashboard in your web server code
 #'
+#' @description
 #' Generates a session URL and authorization code that you can use to embed
 #' an Amazon QuickSight read-only dashboard in your web server code. Before
 #' you use this command, make sure that you have configured the dashboards
@@ -3173,6 +3225,7 @@ quicksight_get_dashboard_embed_url <- function(AwsAccountId, DashboardId, Identi
 #' Generates a session URL and authorization code that you can use to embed
 #' the Amazon QuickSight console in your web server code
 #'
+#' @description
 #' Generates a session URL and authorization code that you can use to embed
 #' the Amazon QuickSight console in your web server code. Use
 #' `GetSessionEmbedUrl` where you want to provide an authoring portal that
@@ -3262,6 +3315,7 @@ quicksight_get_session_embed_url <- function(AwsAccountId, EntryPoint = NULL, Se
 
 #' Lists Amazon QuickSight analyses that exist in the specified AWS account
 #'
+#' @description
 #' Lists Amazon QuickSight analyses that exist in the specified AWS
 #' account.
 #'
@@ -3303,6 +3357,7 @@ quicksight_list_analyses <- function(AwsAccountId, NextToken = NULL, MaxResults 
 
 #' Lists all the versions of the dashboards in the QuickSight subscription
 #'
+#' @description
 #' Lists all the versions of the dashboards in the QuickSight subscription.
 #'
 #' @usage
@@ -3348,6 +3403,7 @@ quicksight_list_dashboard_versions <- function(AwsAccountId, DashboardId, NextTo
 
 #' Lists dashboards in an AWS account
 #'
+#' @description
 #' Lists dashboards in an AWS account.
 #'
 #' @usage
@@ -3391,6 +3447,7 @@ quicksight_list_dashboards <- function(AwsAccountId, NextToken = NULL, MaxResult
 #' Lists all of the datasets belonging to the current AWS account in an AWS
 #' Region
 #'
+#' @description
 #' Lists all of the datasets belonging to the current AWS account in an AWS
 #' Region.
 #' 
@@ -3436,6 +3493,7 @@ quicksight_list_data_sets <- function(AwsAccountId, NextToken = NULL, MaxResults
 
 #' Lists data sources in current AWS Region that belong to this AWS account
 #'
+#' @description
 #' Lists data sources in current AWS Region that belong to this AWS
 #' account.
 #'
@@ -3478,6 +3536,7 @@ quicksight_list_data_sources <- function(AwsAccountId, NextToken = NULL, MaxResu
 
 #' Lists member users in a group
 #'
+#' @description
 #' Lists member users in a group.
 #'
 #' @usage
@@ -3524,6 +3583,7 @@ quicksight_list_group_memberships <- function(GroupName, NextToken = NULL, MaxRe
 
 #' Lists all user groups in Amazon QuickSight
 #'
+#' @description
 #' Lists all user groups in Amazon QuickSight.
 #'
 #' @usage
@@ -3567,6 +3627,7 @@ quicksight_list_groups <- function(AwsAccountId, NextToken = NULL, MaxResults = 
 
 #' Lists IAM policy assignments in the current Amazon QuickSight account
 #'
+#' @description
 #' Lists IAM policy assignments in the current Amazon QuickSight account.
 #'
 #' @usage
@@ -3615,6 +3676,7 @@ quicksight_list_iam_policy_assignments <- function(AwsAccountId, AssignmentStatu
 #' Names (ARNs) for the IAM policies assigned to the specified user and
 #' group or groups that the user belongs to
 #'
+#' @description
 #' Lists all the IAM policy assignments, including the Amazon Resource
 #' Names (ARNs) for the IAM policies assigned to the specified user and
 #' group or groups that the user belongs to.
@@ -3663,6 +3725,7 @@ quicksight_list_iam_policy_assignments_for_user <- function(AwsAccountId, UserNa
 
 #' Lists the history of SPICE ingestions for a dataset
 #'
+#' @description
 #' Lists the history of SPICE ingestions for a dataset.
 #'
 #' @usage
@@ -3707,6 +3770,7 @@ quicksight_list_ingestions <- function(DataSetId, NextToken = NULL, AwsAccountId
 
 #' Lists the namespaces for the specified AWS account
 #'
+#' @description
 #' Lists the namespaces for the specified AWS account.
 #'
 #' @usage
@@ -3748,6 +3812,7 @@ quicksight_list_namespaces <- function(AwsAccountId, NextToken = NULL, MaxResult
 
 #' Lists the tags assigned to a resource
 #'
+#' @description
 #' Lists the tags assigned to a resource.
 #'
 #' @usage
@@ -3785,6 +3850,7 @@ quicksight_list_tags_for_resource <- function(ResourceArn) {
 
 #' Lists all the aliases of a template
 #'
+#' @description
 #' Lists all the aliases of a template.
 #'
 #' @usage
@@ -3831,6 +3897,7 @@ quicksight_list_template_aliases <- function(AwsAccountId, TemplateId, NextToken
 #' Lists all the versions of the templates in the current Amazon QuickSight
 #' account
 #'
+#' @description
 #' Lists all the versions of the templates in the current Amazon QuickSight
 #' account.
 #'
@@ -3877,6 +3944,7 @@ quicksight_list_template_versions <- function(AwsAccountId, TemplateId, NextToke
 
 #' Lists all the templates in the current Amazon QuickSight account
 #'
+#' @description
 #' Lists all the templates in the current Amazon QuickSight account.
 #'
 #' @usage
@@ -3919,6 +3987,7 @@ quicksight_list_templates <- function(AwsAccountId, NextToken = NULL, MaxResults
 
 #' Lists all the aliases of a theme
 #'
+#' @description
 #' Lists all the aliases of a theme.
 #'
 #' @usage
@@ -3964,6 +4033,7 @@ quicksight_list_theme_aliases <- function(AwsAccountId, ThemeId, NextToken = NUL
 
 #' Lists all the versions of the themes in the current AWS account
 #'
+#' @description
 #' Lists all the versions of the themes in the current AWS account.
 #'
 #' @usage
@@ -4008,6 +4078,7 @@ quicksight_list_theme_versions <- function(AwsAccountId, ThemeId, NextToken = NU
 
 #' Lists all the themes in the current AWS account
 #'
+#' @description
 #' Lists all the themes in the current AWS account.
 #'
 #' @usage
@@ -4061,6 +4132,7 @@ quicksight_list_themes <- function(AwsAccountId, NextToken = NULL, MaxResults = 
 #' Lists the Amazon QuickSight groups that an Amazon QuickSight user is a
 #' member of
 #'
+#' @description
 #' Lists the Amazon QuickSight groups that an Amazon QuickSight user is a
 #' member of.
 #'
@@ -4110,6 +4182,7 @@ quicksight_list_user_groups <- function(UserName, AwsAccountId, Namespace, NextT
 #' Returns a list of all of the Amazon QuickSight users belonging to this
 #' account
 #'
+#' @description
 #' Returns a list of all of the Amazon QuickSight users belonging to this
 #' account.
 #'
@@ -4156,6 +4229,7 @@ quicksight_list_users <- function(AwsAccountId, NextToken = NULL, MaxResults = N
 #' AWS Identity and Access Management (IAM) identity or role specified in
 #' the request
 #'
+#' @description
 #' Creates an Amazon QuickSight user, whose identity is associated with the
 #' AWS Identity and Access Management (IAM) identity or role specified in
 #' the request.
@@ -4269,6 +4343,7 @@ quicksight_register_user <- function(IdentityType, Email, UserRole, IamArn = NUL
 
 #' Restores an analysis
 #'
+#' @description
 #' Restores an analysis.
 #'
 #' @usage
@@ -4307,6 +4382,7 @@ quicksight_restore_analysis <- function(AwsAccountId, AnalysisId) {
 
 #' Searches for analyses that belong to the user specified in the filter
 #'
+#' @description
 #' Searches for analyses that belong to the user specified in the filter.
 #'
 #' @usage
@@ -4357,6 +4433,7 @@ quicksight_search_analyses <- function(AwsAccountId, Filters, NextToken = NULL, 
 
 #' Searches for dashboards that belong to a user
 #'
+#' @description
 #' Searches for dashboards that belong to a user.
 #'
 #' @usage
@@ -4411,6 +4488,7 @@ quicksight_search_dashboards <- function(AwsAccountId, Filters, NextToken = NULL
 #' Assigns one or more tags (key-value pairs) to the specified QuickSight
 #' resource
 #'
+#' @description
 #' Assigns one or more tags (key-value pairs) to the specified QuickSight
 #' resource.
 #' 
@@ -4478,6 +4556,7 @@ quicksight_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes a tag or tags from a resource
 #'
+#' @description
 #' Removes a tag or tags from a resource.
 #'
 #' @usage
@@ -4519,6 +4598,7 @@ quicksight_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates Amazon QuickSight customizations the current AWS Region
 #'
+#' @description
 #' Updates Amazon QuickSight customizations the current AWS Region.
 #' Currently, the only customization you can use is a theme.
 #' 
@@ -4570,6 +4650,7 @@ quicksight_update_account_customization <- function(AwsAccountId, Namespace = NU
 
 #' Updates the Amazon QuickSight settings in your AWS account
 #'
+#' @description
 #' Updates the Amazon QuickSight settings in your AWS account.
 #'
 #' @usage
@@ -4616,6 +4697,7 @@ quicksight_update_account_settings <- function(AwsAccountId, DefaultNamespace, N
 
 #' Updates an analysis in Amazon QuickSight
 #'
+#' @description
 #' Updates an analysis in Amazon QuickSight
 #'
 #' @usage
@@ -4717,6 +4799,7 @@ quicksight_update_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
 
 #' Updates the read and write permissions for an analysis
 #'
+#' @description
 #' Updates the read and write permissions for an analysis.
 #'
 #' @usage
@@ -4779,6 +4862,7 @@ quicksight_update_analysis_permissions <- function(AwsAccountId, AnalysisId, Gra
 
 #' Updates a dashboard in an AWS account
 #'
+#' @description
 #' Updates a dashboard in an AWS account.
 #'
 #' @usage
@@ -4918,6 +5002,7 @@ quicksight_update_dashboard <- function(AwsAccountId, DashboardId, Name, SourceE
 
 #' Updates read and write permissions on a dashboard
 #'
+#' @description
 #' Updates read and write permissions on a dashboard.
 #'
 #' @usage
@@ -4976,6 +5061,7 @@ quicksight_update_dashboard_permissions <- function(AwsAccountId, DashboardId, G
 
 #' Updates the published version of a dashboard
 #'
+#' @description
 #' Updates the published version of a dashboard.
 #'
 #' @usage
@@ -5018,6 +5104,7 @@ quicksight_update_dashboard_published_version <- function(AwsAccountId, Dashboar
 
 #' Updates a dataset
 #'
+#' @description
 #' Updates a dataset.
 #'
 #' @usage
@@ -5202,6 +5289,7 @@ quicksight_update_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTa
 
 #' Updates the permissions on a dataset
 #'
+#' @description
 #' Updates the permissions on a dataset.
 #' 
 #' The permissions resource is
@@ -5263,6 +5351,7 @@ quicksight_update_data_set_permissions <- function(AwsAccountId, DataSetId, Gran
 
 #' Updates a data source
 #'
+#' @description
 #' Updates a data source.
 #'
 #' @usage
@@ -5512,6 +5601,7 @@ quicksight_update_data_source <- function(AwsAccountId, DataSourceId, Name, Data
 
 #' Updates the permissions to a data source
 #'
+#' @description
 #' Updates the permissions to a data source.
 #'
 #' @usage
@@ -5572,6 +5662,7 @@ quicksight_update_data_source_permissions <- function(AwsAccountId, DataSourceId
 
 #' Changes a group description
 #'
+#' @description
 #' Changes a group description.
 #'
 #' @usage
@@ -5615,6 +5706,7 @@ quicksight_update_group <- function(GroupName, Description = NULL, AwsAccountId,
 
 #' Updates an existing IAM policy assignment
 #'
+#' @description
 #' Updates an existing IAM policy assignment. This operation updates only
 #' the optional parameter or parameters that are specified in the request.
 #' This overwrites all of the users included in `Identities`.
@@ -5681,6 +5773,7 @@ quicksight_update_iam_policy_assignment <- function(AwsAccountId, AssignmentName
 #' Updates a template from an existing Amazon QuickSight analysis or
 #' another template
 #'
+#' @description
 #' Updates a template from an existing Amazon QuickSight analysis or
 #' another template.
 #'
@@ -5756,6 +5849,7 @@ quicksight_update_template <- function(AwsAccountId, TemplateId, SourceEntity, V
 
 #' Updates the template alias of a template
 #'
+#' @description
 #' Updates the template alias of a template.
 #'
 #' @usage
@@ -5804,6 +5898,7 @@ quicksight_update_template_alias <- function(AwsAccountId, TemplateId, AliasName
 
 #' Updates the resource permissions for a template
 #'
+#' @description
 #' Updates the resource permissions for a template.
 #'
 #' @usage
@@ -5861,6 +5956,7 @@ quicksight_update_template_permissions <- function(AwsAccountId, TemplateId, Gra
 
 #' Updates a theme
 #'
+#' @description
 #' Updates a theme.
 #'
 #' @usage
@@ -5955,6 +6051,7 @@ quicksight_update_theme <- function(AwsAccountId, ThemeId, Name = NULL, BaseThem
 
 #' Updates an alias of a theme
 #'
+#' @description
 #' Updates an alias of a theme.
 #'
 #' @usage
@@ -5999,6 +6096,7 @@ quicksight_update_theme_alias <- function(AwsAccountId, ThemeId, AliasName, Them
 
 #' Updates the resource permissions for a theme
 #'
+#' @description
 #' Updates the resource permissions for a theme. Permissions apply to the
 #' action to grant or revoke permissions on, for example
 #' `"quicksight:DescribeTheme"`.
@@ -6098,6 +6196,7 @@ quicksight_update_theme_permissions <- function(AwsAccountId, ThemeId, GrantPerm
 
 #' Updates an Amazon QuickSight user
 #'
+#' @description
 #' Updates an Amazon QuickSight user.
 #'
 #' @usage

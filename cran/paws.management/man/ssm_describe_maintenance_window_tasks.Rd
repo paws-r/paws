@@ -23,8 +23,7 @@ from a previous call.)}
 }
 \description{
 Lists the tasks in a maintenance window.
-}
-\details{
+
 For maintenance window tasks without a specified target, you cannot
 supply values for \code{--max-errors} and \code{--max-concurrency}. Instead, the
 system inserts a placeholder value of \code{1}, which may be reported in the

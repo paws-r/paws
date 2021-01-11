@@ -23,8 +23,7 @@ Amazon Resource Name (ARN) of the private CA that you want to delete.
 You can find the ARN by calling the
 \href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html}{ListCertificateAuthorities}
 action.
-}
-\details{
+
 Deleting a CA will invalidate other CAs and certificates below it in
 your CA hierarchy.
 

@@ -32,8 +32,7 @@ setting a value for the \code{workerGroup} parameter. The task returned can
 come from any of the pipelines that match the \code{workerGroup} value passed
 in by the task runner and that was launched using the IAM user
 credentials specified by the task runner.
-}
-\details{
+
 If tasks are ready in the work queue, \code{PollForTask} returns a response
 immediately. If no tasks are available in the queue, \code{PollForTask} uses
 long-polling and holds on to a poll connection for up to a 90 seconds,

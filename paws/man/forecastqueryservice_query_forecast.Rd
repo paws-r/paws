@@ -36,8 +36,7 @@ token in the next request. Tokens expire after 24 hours.}
 \description{
 Retrieves a forecast for a single item, filtered by the supplied
 criteria.
-}
-\details{
+
 The criteria is a key-value pair. The key is either \code{item_id} (or the
 equivalent non-timestamp, non-target field) from the
 \code{TARGET_TIME_SERIES} dataset, or one of the forecast dimensions

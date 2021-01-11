@@ -17,8 +17,7 @@ returns a limited list of subscriptions, up to 100. If there are more
 subscriptions, a \code{NextToken} is also returned. Use the \code{NextToken}
 parameter in a new \code{ListSubscriptionsByTopic} call to get further
 results.
-}
-\details{
+
 This action is throttled at 30 transactions per second (TPS).
 }
 \section{Request syntax}{

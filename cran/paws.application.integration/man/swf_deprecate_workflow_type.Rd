@@ -17,8 +17,7 @@ deprecated, you cannot create new executions of that type. Executions
 that were started before the type was deprecated continues to run. A
 deprecated workflow type may still be used when calling visibility
 actions.
-}
-\details{
+
 This operation is eventually consistent. The results are best effort and
 may not exactly reflect recent updates and changes.
 

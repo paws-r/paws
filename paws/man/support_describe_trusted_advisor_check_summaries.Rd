@@ -14,8 +14,7 @@ support_describe_trusted_advisor_check_summaries(checkIds)
 Returns the results for the AWS Trusted Advisor check summaries for the
 check IDs that you specified. You can get the check IDs by calling the
 DescribeTrustedAdvisorChecks operation.
-}
-\details{
+
 The response contains an array of TrustedAdvisorCheckSummary objects.
 \itemize{
 \item You must have a Business or Enterprise support plan to use the AWS

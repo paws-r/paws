@@ -5,6 +5,7 @@ NULL
 
 #' Creates a cache for the GraphQL API
 #'
+#' @description
 #' Creates a cache for the GraphQL API.
 #'
 #' @usage
@@ -99,6 +100,7 @@ appsync_create_api_cache <- function(apiId, ttl, transitEncryptionEnabled = NULL
 #' Creates a unique key that you can distribute to clients who are
 #' executing your API
 #'
+#' @description
 #' Creates a unique key that you can distribute to clients who are
 #' executing your API.
 #'
@@ -143,6 +145,7 @@ appsync_create_api_key <- function(apiId, description = NULL, expires = NULL) {
 
 #' Creates a DataSource object
 #'
+#' @description
 #' Creates a `DataSource` object.
 #'
 #' @usage
@@ -233,6 +236,7 @@ appsync_create_data_source <- function(apiId, name, description = NULL, type, se
 
 #' Creates a Function object
 #'
+#' @description
 #' Creates a `Function` object.
 #' 
 #' A function is a reusable entity. Multiple functions can be used to
@@ -287,6 +291,7 @@ appsync_create_function <- function(apiId, name, description = NULL, dataSourceN
 
 #' Creates a GraphqlApi object
 #'
+#' @description
 #' Creates a `GraphqlApi` object.
 #'
 #' @usage
@@ -371,6 +376,7 @@ appsync_create_graphql_api <- function(name, logConfig = NULL, authenticationTyp
 
 #' Creates a Resolver object
 #'
+#' @description
 #' Creates a `Resolver` object.
 #' 
 #' A resolver converts incoming requests into a format that a data source
@@ -462,6 +468,7 @@ appsync_create_resolver <- function(apiId, typeName, fieldName, dataSourceName =
 
 #' Creates a Type object
 #'
+#' @description
 #' Creates a `Type` object.
 #'
 #' @usage
@@ -505,6 +512,7 @@ appsync_create_type <- function(apiId, definition, format) {
 
 #' Deletes an ApiCache object
 #'
+#' @description
 #' Deletes an `ApiCache` object.
 #'
 #' @usage
@@ -541,6 +549,7 @@ appsync_delete_api_cache <- function(apiId) {
 
 #' Deletes an API key
 #'
+#' @description
 #' Deletes an API key.
 #'
 #' @usage
@@ -579,6 +588,7 @@ appsync_delete_api_key <- function(apiId, id) {
 
 #' Deletes a DataSource object
 #'
+#' @description
 #' Deletes a `DataSource` object.
 #'
 #' @usage
@@ -617,6 +627,7 @@ appsync_delete_data_source <- function(apiId, name) {
 
 #' Deletes a Function
 #'
+#' @description
 #' Deletes a `Function`.
 #'
 #' @usage
@@ -655,6 +666,7 @@ appsync_delete_function <- function(apiId, functionId) {
 
 #' Deletes a GraphqlApi object
 #'
+#' @description
 #' Deletes a `GraphqlApi` object.
 #'
 #' @usage
@@ -691,6 +703,7 @@ appsync_delete_graphql_api <- function(apiId) {
 
 #' Deletes a Resolver object
 #'
+#' @description
 #' Deletes a `Resolver` object.
 #'
 #' @usage
@@ -731,6 +744,7 @@ appsync_delete_resolver <- function(apiId, typeName, fieldName) {
 
 #' Deletes a Type object
 #'
+#' @description
 #' Deletes a `Type` object.
 #'
 #' @usage
@@ -769,6 +783,7 @@ appsync_delete_type <- function(apiId, typeName) {
 
 #' Flushes an ApiCache object
 #'
+#' @description
 #' Flushes an `ApiCache` object.
 #'
 #' @usage
@@ -805,6 +820,7 @@ appsync_flush_api_cache <- function(apiId) {
 
 #' Retrieves an ApiCache object
 #'
+#' @description
 #' Retrieves an `ApiCache` object.
 #'
 #' @usage
@@ -841,6 +857,7 @@ appsync_get_api_cache <- function(apiId) {
 
 #' Retrieves a DataSource object
 #'
+#' @description
 #' Retrieves a `DataSource` object.
 #'
 #' @usage
@@ -879,6 +896,7 @@ appsync_get_data_source <- function(apiId, name) {
 
 #' Get a Function
 #'
+#' @description
 #' Get a `Function`.
 #'
 #' @usage
@@ -917,6 +935,7 @@ appsync_get_function <- function(apiId, functionId) {
 
 #' Retrieves a GraphqlApi object
 #'
+#' @description
 #' Retrieves a `GraphqlApi` object.
 #'
 #' @usage
@@ -953,6 +972,7 @@ appsync_get_graphql_api <- function(apiId) {
 
 #' Retrieves the introspection schema for a GraphQL API
 #'
+#' @description
 #' Retrieves the introspection schema for a GraphQL API.
 #'
 #' @usage
@@ -994,6 +1014,7 @@ appsync_get_introspection_schema <- function(apiId, format, includeDirectives = 
 
 #' Retrieves a Resolver object
 #'
+#' @description
 #' Retrieves a `Resolver` object.
 #'
 #' @usage
@@ -1034,6 +1055,7 @@ appsync_get_resolver <- function(apiId, typeName, fieldName) {
 
 #' Retrieves the current status of a schema creation operation
 #'
+#' @description
 #' Retrieves the current status of a schema creation operation.
 #'
 #' @usage
@@ -1070,6 +1092,7 @@ appsync_get_schema_creation_status <- function(apiId) {
 
 #' Retrieves a Type object
 #'
+#' @description
 #' Retrieves a `Type` object.
 #'
 #' @usage
@@ -1110,6 +1133,7 @@ appsync_get_type <- function(apiId, typeName, format) {
 
 #' Lists the API keys for a given API
 #'
+#' @description
 #' Lists the API keys for a given API.
 #' 
 #' API keys are deleted automatically 60 days after they expire. However,
@@ -1157,6 +1181,7 @@ appsync_list_api_keys <- function(apiId, nextToken = NULL, maxResults = NULL) {
 
 #' Lists the data sources for a given API
 #'
+#' @description
 #' Lists the data sources for a given API.
 #'
 #' @usage
@@ -1199,6 +1224,7 @@ appsync_list_data_sources <- function(apiId, nextToken = NULL, maxResults = NULL
 
 #' List multiple functions
 #'
+#' @description
 #' List multiple functions.
 #'
 #' @usage
@@ -1241,6 +1267,7 @@ appsync_list_functions <- function(apiId, nextToken = NULL, maxResults = NULL) {
 
 #' Lists your GraphQL APIs
 #'
+#' @description
 #' Lists your GraphQL APIs.
 #'
 #' @usage
@@ -1281,6 +1308,7 @@ appsync_list_graphql_apis <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Lists the resolvers for a given API and type
 #'
+#' @description
 #' Lists the resolvers for a given API and type.
 #'
 #' @usage
@@ -1325,6 +1353,7 @@ appsync_list_resolvers <- function(apiId, typeName, nextToken = NULL, maxResults
 
 #' List the resolvers that are associated with a specific function
 #'
+#' @description
 #' List the resolvers that are associated with a specific function.
 #'
 #' @usage
@@ -1370,6 +1399,7 @@ appsync_list_resolvers_by_function <- function(apiId, functionId, nextToken = NU
 
 #' Lists the tags for a resource
 #'
+#' @description
 #' Lists the tags for a resource.
 #'
 #' @usage
@@ -1406,6 +1436,7 @@ appsync_list_tags_for_resource <- function(resourceArn) {
 
 #' Lists the types for a given API
 #'
+#' @description
 #' Lists the types for a given API.
 #'
 #' @usage
@@ -1450,6 +1481,7 @@ appsync_list_types <- function(apiId, format, nextToken = NULL, maxResults = NUL
 
 #' Adds a new schema to your GraphQL API
 #'
+#' @description
 #' Adds a new schema to your GraphQL API.
 #' 
 #' This operation is asynchronous. Use to determine when it has completed.
@@ -1490,6 +1522,7 @@ appsync_start_schema_creation <- function(apiId, definition) {
 
 #' Tags a resource with user-supplied tags
 #'
+#' @description
 #' Tags a resource with user-supplied tags.
 #'
 #' @usage
@@ -1530,6 +1563,7 @@ appsync_tag_resource <- function(resourceArn, tags) {
 
 #' Untags a resource
 #'
+#' @description
 #' Untags a resource.
 #'
 #' @usage
@@ -1570,6 +1604,7 @@ appsync_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates the cache for the GraphQL API
 #'
+#' @description
 #' Updates the cache for the GraphQL API.
 #'
 #' @usage
@@ -1656,6 +1691,7 @@ appsync_update_api_cache <- function(apiId, ttl, apiCachingBehavior, type) {
 
 #' Updates an API key
 #'
+#' @description
 #' Updates an API key. The key can be updated while it is not deleted.
 #'
 #' @usage
@@ -1699,6 +1735,7 @@ appsync_update_api_key <- function(apiId, id, description = NULL, expires = NULL
 
 #' Updates a DataSource object
 #'
+#' @description
 #' Updates a `DataSource` object.
 #'
 #' @usage
@@ -1788,6 +1825,7 @@ appsync_update_data_source <- function(apiId, name, description = NULL, type, se
 
 #' Updates a Function object
 #'
+#' @description
 #' Updates a `Function` object.
 #'
 #' @usage
@@ -1842,6 +1880,7 @@ appsync_update_function <- function(apiId, name, description = NULL, functionId,
 
 #' Updates a GraphqlApi object
 #'
+#' @description
 #' Updates a `GraphqlApi` object.
 #'
 #' @usage
@@ -1924,6 +1963,7 @@ appsync_update_graphql_api <- function(apiId, name, logConfig = NULL, authentica
 
 #' Updates a Resolver object
 #'
+#' @description
 #' Updates a `Resolver` object.
 #'
 #' @usage
@@ -2012,6 +2052,7 @@ appsync_update_resolver <- function(apiId, typeName, fieldName, dataSourceName =
 
 #' Updates a Type object
 #'
+#' @description
 #' Updates a `Type` object.
 #'
 #' @usage

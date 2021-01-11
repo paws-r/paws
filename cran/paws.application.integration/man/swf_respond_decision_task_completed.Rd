@@ -26,8 +26,7 @@ for details.}
 Used by deciders to tell the service that the DecisionTask identified by
 the \code{taskToken} has successfully completed. The \code{decisions} argument
 specifies the list of decisions made while processing the task.
-}
-\details{
+
 A \code{DecisionTaskCompleted} event is added to the workflow history. The
 \code{executionContext} specified is attached to the event in the workflow
 execution history.

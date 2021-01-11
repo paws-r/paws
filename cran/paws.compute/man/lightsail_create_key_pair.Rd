@@ -15,10 +15,9 @@ Use the \code{TagResource} action to tag a resource after it's created.}
 }
 \description{
 Creates an SSH key pair.
-}
-\details{
+
 The \verb{create key pair} operation supports tag-based access control via
-request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+request tags. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$create_key_pair(

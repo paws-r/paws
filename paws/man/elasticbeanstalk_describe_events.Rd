@@ -50,8 +50,7 @@ results.}
 \description{
 Returns list of event descriptions matching criteria up to the last 6
 weeks.
-}
-\details{
+
 This action returns the most recent 1,000 events from the specified
 \code{NextToken}.
 }

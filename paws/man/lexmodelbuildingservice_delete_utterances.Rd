@@ -18,8 +18,7 @@ operation request that contained the utterance.}
 }
 \description{
 Deletes stored utterances.
-}
-\details{
+
 Amazon Lex stores the utterances that users send to your bot. Utterances
 are stored for 15 days for use with the GetUtterancesView operation, and
 then stored indefinitely for use in improving the ability of your bot to

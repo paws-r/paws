@@ -18,8 +18,7 @@ Cognito. This is the ID of the pool to modify.}
 }
 \description{
 Sets the necessary configuration for push sync.
-}
-\details{
+
 This API can only be called with developer credentials. You cannot call
 this API with the temporary user credentials provided by Cognito
 Identity.

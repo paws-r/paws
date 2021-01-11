@@ -13,8 +13,7 @@ connect_describe_contact_flow(InstanceId, ContactFlowId)
 }
 \description{
 Describes the specified contact flow.
-}
-\details{
+
 You can also create and update contact flows using the \href{https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html}{Amazon Connect Flow language}.
 }
 \section{Request syntax}{

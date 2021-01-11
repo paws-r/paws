@@ -189,8 +189,7 @@ a list of API operations and AWS resources to determine the policies'
 effective permissions. The entity can be an IAM user, group, or role. If
 you specify a user, then the simulation also includes all of the
 policies that are attached to groups that the user belongs to.
-}
-\details{
+
 You can optionally include a list of one or more additional policies
 specified as strings to include in the simulation. If you want to
 simulate only policies specified as strings, use SimulateCustomPolicy

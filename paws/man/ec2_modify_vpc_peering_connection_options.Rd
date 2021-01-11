@@ -24,8 +24,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Modifies the VPC peering connection options on one side of a VPC peering
 connection. You can do the following:
-}
-\details{
 \itemize{
 \item Enable/disable communication over the peering connection between an
 EC2-Classic instance that's linked to your VPC (using ClassicLink)

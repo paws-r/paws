@@ -12,8 +12,8 @@ ec2_modify_availability_zone_group(GroupName, OptInStatus, DryRun)
 Zone group.}
 
 \item{OptInStatus}{[required] Indicates whether you are opted in to the Local Zone group or Wavelength
-Zone group. The only valid value is \verb{opted-in}. You must contact \href{https://console.aws.amazon.com/support/home#/case/create?issueType=customer-service&serviceCode=general-info&getting-started&categoryCode=using-aws&services}{AWS Support}
-to opt out of a Local Zone group, or Wavelength Zone group.}
+Zone group. The only valid value is \verb{opted-in}. You must contact AWS
+Support to opt out of a Local Zone group, or Wavelength Zone group.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -23,8 +23,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Changes the opt-in status of the Local Zone and Wavelength Zone group
 for your account.
-}
-\details{
+
 Use
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html}{DescribeAvailabilityZones}
 to view the value for \code{GroupName}.

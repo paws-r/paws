@@ -24,8 +24,7 @@ types: Agent (USER), External (PHONE\\_NUMBER), or Queue (QUEUE).}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Provides information about the quick connects for the specified Amazon
 Connect instance.
 }

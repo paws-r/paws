@@ -5,6 +5,7 @@ NULL
 
 #' Closes a tunnel identified by the unique tunnel id
 #'
+#' @description
 #' Closes a tunnel identified by the unique tunnel id. When a `CloseTunnel`
 #' request is received, we close the WebSocket connections between the
 #' client and proxy server so no data can be transmitted.
@@ -46,6 +47,7 @@ iotsecuretunneling_close_tunnel <- function(tunnelId, delete = NULL) {
 
 #' Gets information about a tunnel identified by the unique tunnel id
 #'
+#' @description
 #' Gets information about a tunnel identified by the unique tunnel id.
 #'
 #' @usage
@@ -82,6 +84,7 @@ iotsecuretunneling_describe_tunnel <- function(tunnelId) {
 
 #' Lists the tags for the specified resource
 #'
+#' @description
 #' Lists the tags for the specified resource.
 #'
 #' @usage
@@ -118,6 +121,7 @@ iotsecuretunneling_list_tags_for_resource <- function(resourceArn) {
 
 #' List all tunnels for an AWS account
 #'
+#' @description
 #' List all tunnels for an AWS account. Tunnels are listed by creation time
 #' in descending order, newer tunnels will be listed before older tunnels.
 #'
@@ -160,6 +164,7 @@ iotsecuretunneling_list_tunnels <- function(thingName = NULL, maxResults = NULL,
 #' Creates a new tunnel, and returns two client access tokens for clients
 #' to use to connect to the AWS IoT Secure Tunneling proxy server
 #'
+#' @description
 #' Creates a new tunnel, and returns two client access tokens for clients
 #' to use to connect to the AWS IoT Secure Tunneling proxy server.
 #'
@@ -216,6 +221,7 @@ iotsecuretunneling_open_tunnel <- function(description = NULL, tags = NULL, dest
 
 #' A resource tag
 #'
+#' @description
 #' A resource tag.
 #'
 #' @usage
@@ -259,6 +265,7 @@ iotsecuretunneling_tag_resource <- function(resourceArn, tags) {
 
 #' Removes a tag from a resource
 #'
+#' @description
 #' Removes a tag from a resource.
 #'
 #' @usage

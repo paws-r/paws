@@ -50,8 +50,7 @@ scripts are JavaScript that provide configuration settings and optional
 custom game logic for your game. The script is deployed when you create
 a Realtime Servers fleet to host your game sessions. Script logic is
 executed during an active game session.
-}
-\details{
+
 To create a new script record, specify a script name and provide the
 script file(s). The script files and all dependencies must be zipped
 into a single file. You can pull the zip file from either of these

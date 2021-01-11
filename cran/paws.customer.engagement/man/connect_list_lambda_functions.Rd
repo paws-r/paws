@@ -19,8 +19,7 @@ results.}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Returns a paginated list of all the Lambda functions that show up in the
 drop-down options in the relevant contact flow blocks.
 }

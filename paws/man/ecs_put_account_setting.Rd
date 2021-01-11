@@ -30,8 +30,7 @@ omitted, the setting is changed only for the authenticated user.}
 \description{
 Modifies an account setting. Account settings are set on a per-Region
 basis.
-}
-\details{
+
 If you change the account setting for the root user, the default
 settings for all of the IAM users and roles for which no individual
 account setting has been specified are reset. For more information, see

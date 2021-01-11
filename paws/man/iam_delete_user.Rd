@@ -19,8 +19,6 @@ you delete a user programmatically, you must delete the items attached
 to the user manually, or the deletion fails. For more information, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_manage.html#id_users_deleting_cli}{Deleting an IAM User}.
 Before attempting to delete a user, remove the following items:
-}
-\details{
 \itemize{
 \item Password (DeleteLoginProfile)
 \item Access keys (DeleteAccessKey)

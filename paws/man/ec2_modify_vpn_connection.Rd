@@ -27,8 +27,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Modifies the customer gateway or the target gateway of an AWS
 Site-to-Site VPN connection. To modify the target gateway, the following
 migration options are available:
-}
-\details{
 \itemize{
 \item An existing virtual private gateway to a new virtual private gateway
 \item An existing virtual private gateway to a transit gateway

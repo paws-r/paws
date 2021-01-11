@@ -23,8 +23,6 @@ using the returned token in \code{NextToken}.}
 \description{
 Lists the created artifacts attached to a given migration task in an
 update stream. This API has the following traits:
-}
-\details{
 \itemize{
 \item Gets the list of the created artifacts while migration is taking
 place.

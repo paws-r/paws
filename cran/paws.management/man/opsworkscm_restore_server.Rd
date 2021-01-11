@@ -28,8 +28,7 @@ RestoreServer, the server's EC2 instance is deleted, and a new EC2
 instance is configured. RestoreServer maintains the existing server
 endpoint, so configuration management of the server's client devices
 (nodes) should continue to work.
-}
-\details{
+
 Restoring from a backup is performed by creating a new EC2 instance. If
 restoration is successful, and the server is in a \code{HEALTHY} state, AWS
 OpsWorks CM switches traffic over to the new instance. After restoration

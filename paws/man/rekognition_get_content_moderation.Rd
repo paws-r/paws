@@ -29,8 +29,7 @@ The default sort is by \code{TIMESTAMP}.}
 \description{
 Gets the unsafe content analysis results for a Amazon Rekognition Video
 analysis started by StartContentModeration.
-}
-\details{
+
 Unsafe content analysis of a video is an asynchronous operation. You
 start analysis by calling StartContentModeration which returns a job
 identifier (\code{JobId}). When analysis finishes, Amazon Rekognition Video

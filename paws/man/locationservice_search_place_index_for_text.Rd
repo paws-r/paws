@@ -62,8 +62,7 @@ free-form text format. For example, \verb{123 Any Street}.}
 \description{
 Geocodes free-form text, such as an address, name, city, or region to
 allow you to search for Places or points of interest.
-}
-\details{
+
 Includes the option to apply additional parameters to narrow your list
 of results.
 

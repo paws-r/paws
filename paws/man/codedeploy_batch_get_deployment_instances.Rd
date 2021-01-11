@@ -15,8 +15,7 @@ of instance IDs you can specify is 25.}
 \description{
 This method works, but is deprecated. Use \code{BatchGetDeploymentTargets}
 instead.
-}
-\details{
+
 Returns an array of one or more instances associated with a deployment.
 This method works with EC2/On-premises and AWS Lambda compute platforms.
 The newer \code{BatchGetDeploymentTargets} works with all compute platforms.

@@ -39,8 +39,7 @@ DescribeCompilationJobResponse$CompilationJobStatus status.}
 }
 \description{
 Lists model compilation jobs that satisfy various filters.
-}
-\details{
+
 To create a model compilation job, use CreateCompilationJob. To get
 information about a particular model compilation job you have created,
 use DescribeCompilationJob.

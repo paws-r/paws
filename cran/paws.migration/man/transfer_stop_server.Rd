@@ -15,8 +15,7 @@ Changes the state of a file transfer protocol-enabled server from
 \code{ONLINE} to \code{OFFLINE}. An \code{OFFLINE} server cannot accept and process
 file transfer jobs. Information tied to your server, such as server and
 user properties, are not affected by stopping your server.
-}
-\details{
+
 Stopping the server will not reduce or impact your file transfer
 protocol endpoint billing; you must delete the server to stop being
 billed.

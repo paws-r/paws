@@ -16,8 +16,7 @@ a registration request using \verb{<a>RegisterType</a>}.}
 \description{
 Returns information about a type's registration, including its current
 status and type and version identifiers.
-}
-\details{
+
 When you initiate a registration request using \verb{<a>RegisterType</a>},
 you can then use \verb{<a>DescribeTypeRegistration</a>} to monitor the
 progress of that registration request.

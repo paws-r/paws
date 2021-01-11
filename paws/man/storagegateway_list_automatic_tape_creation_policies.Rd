@@ -13,8 +13,7 @@ storagegateway_list_automatic_tape_creation_policies(GatewayARN)
 Lists the automatic tape creation policies for a gateway. If there are
 no automatic tape creation policies for the gateway, it returns an empty
 list.
-}
-\details{
+
 This operation is only supported for tape gateways.
 }
 \section{Request syntax}{

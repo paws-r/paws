@@ -60,8 +60,7 @@ previously deleted instances. Current instances with retention periods
 greater than zero (0) are returned for both the
 \code{DescribeDBInstanceAutomatedBackups} and \code{DescribeDBInstances}
 operations.
-}
-\details{
+
 All parameters are optional.
 }
 \section{Request syntax}{

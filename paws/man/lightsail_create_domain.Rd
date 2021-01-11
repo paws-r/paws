@@ -20,10 +20,9 @@ Use the \code{TagResource} action to tag a resource after it's created.}
 }
 \description{
 Creates a domain resource for the specified domain (e.g., example.com).
-}
-\details{
+
 The \verb{create domain} operation supports tag-based access control via
-request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+request tags. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$create_domain(

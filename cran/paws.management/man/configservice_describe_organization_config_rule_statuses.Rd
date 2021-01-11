@@ -21,8 +21,7 @@ the next page of results in a paginated response.}
 }
 \description{
 Provides organization config rule deployment status for an organization.
-}
-\details{
+
 The status is not considered successful until organization config rule
 is successfully deployed in all the member accounts with an exception of
 excluded accounts.

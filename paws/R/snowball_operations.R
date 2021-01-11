@@ -5,6 +5,7 @@ NULL
 
 #' Cancels a cluster job
 #'
+#' @description
 #' Cancels a cluster job. You can only cancel a cluster job while it's in
 #' the `AwaitingQuorum` status. You'll have at least an hour after creating
 #' a cluster job to cancel it.
@@ -53,6 +54,7 @@ snowball_cancel_cluster <- function(ClusterId) {
 
 #' Cancels the specified job
 #'
+#' @description
 #' Cancels the specified job. You can only cancel a job before its
 #' `JobState` value changes to `PreparingAppliance`. Requesting the
 #' `ListJobs` or `DescribeJob` action returns a job's `JobState` as part of
@@ -102,6 +104,7 @@ snowball_cancel_job <- function(JobId) {
 
 #' Creates an address for a Snow device to be shipped to
 #'
+#' @description
 #' Creates an address for a Snow device to be shipped to. In most regions,
 #' addresses are validated at the time of creation. The address you provide
 #' must be located within the serviceable area of your region. If the
@@ -176,6 +179,7 @@ snowball_create_address <- function(Address) {
 
 #' Creates an empty cluster
 #'
+#' @description
 #' Creates an empty cluster. Each cluster supports five nodes. You use the
 #' CreateJob action separately to create the jobs for each of these nodes.
 #' The cluster does not ship until these five node jobs have been created.
@@ -351,6 +355,7 @@ snowball_create_cluster <- function(JobType, Resources, Description = NULL, Addr
 #' Creates a job to import or export data between Amazon S3 and your
 #' on-premises data center
 #'
+#' @description
 #' Creates a job to import or export data between Amazon S3 and your
 #' on-premises data center. Your AWS account must have the right trust
 #' policies and permissions in place to create a job for a Snow device. If
@@ -549,6 +554,7 @@ snowball_create_job <- function(JobType = NULL, Resources = NULL, Description = 
 #' Creates a shipping label that will be used to return the Snow device to
 #' AWS
 #'
+#' @description
 #' Creates a shipping label that will be used to return the Snow device to
 #' AWS.
 #'
@@ -593,6 +599,7 @@ snowball_create_return_shipping_label <- function(JobId, ShippingOption = NULL) 
 #' Takes an AddressId and returns specific details about that address in
 #' the form of an Address object
 #'
+#' @description
 #' Takes an `AddressId` and returns specific details about that address in
 #' the form of an `Address` object.
 #'
@@ -638,6 +645,7 @@ snowball_describe_address <- function(AddressId) {
 
 #' Returns a specified number of ADDRESS objects
 #'
+#' @description
 #' Returns a specified number of `ADDRESS` objects. Calling this API in one
 #' of the US regions will return addresses from the list of all addresses
 #' associated with this account in all US regions.
@@ -690,6 +698,7 @@ snowball_describe_addresses <- function(MaxResults = NULL, NextToken = NULL) {
 #' Returns information about a specific cluster including shipping
 #' information, cluster status, and other important metadata
 #'
+#' @description
 #' Returns information about a specific cluster including shipping
 #' information, cluster status, and other important metadata.
 #'
@@ -737,6 +746,7 @@ snowball_describe_cluster <- function(ClusterId) {
 #' Returns information about a specific job including shipping information,
 #' job status, and other important metadata
 #'
+#' @description
 #' Returns information about a specific job including shipping information,
 #' job status, and other important metadata.
 #'
@@ -784,6 +794,7 @@ snowball_describe_job <- function(JobId) {
 #' Information on the shipping label of a Snow device that is being
 #' returned to AWS
 #'
+#' @description
 #' Information on the shipping label of a Snow device that is being
 #' returned to AWS.
 #'
@@ -823,6 +834,7 @@ snowball_describe_return_shipping_label <- function(JobId = NULL) {
 #' Returns a link to an Amazon S3 presigned URL for the manifest file
 #' associated with the specified JobId value
 #'
+#' @description
 #' Returns a link to an Amazon S3 presigned URL for the manifest file
 #' associated with the specified `JobId` value. You can access the manifest
 #' file for up to 60 minutes after this request has been made. To access
@@ -905,6 +917,7 @@ snowball_get_job_manifest <- function(JobId) {
 
 #' Returns the UnlockCode code value for the specified job
 #'
+#' @description
 #' Returns the `UnlockCode` code value for the specified job. A particular
 #' `UnlockCode` value can be accessed for up to 90 days after the
 #' associated job has been created.
@@ -976,6 +989,7 @@ snowball_get_job_unlock_code <- function(JobId) {
 #' Returns information about the Snow Family service limit for your
 #' account, and also the number of Snow devices your account has in use
 #'
+#' @description
 #' Returns information about the Snow Family service limit for your
 #' account, and also the number of Snow devices your account has in use.
 #' 
@@ -1025,6 +1039,7 @@ snowball_get_snowball_usage <- function() {
 #' Returns an Amazon S3 presigned URL for an update file associated with a
 #' specified JobId
 #'
+#' @description
 #' Returns an Amazon S3 presigned URL for an update file associated with a
 #' specified `JobId`.
 #'
@@ -1063,6 +1078,7 @@ snowball_get_software_updates <- function(JobId) {
 
 #' Returns an array of JobListEntry objects of the specified length
 #'
+#' @description
 #' Returns an array of `JobListEntry` objects of the specified length. Each
 #' `JobListEntry` object is for a job in the specified cluster and contains
 #' a job's state, a job's ID, and other information.
@@ -1118,6 +1134,7 @@ snowball_list_cluster_jobs <- function(ClusterId, MaxResults = NULL, NextToken =
 
 #' Returns an array of ClusterListEntry objects of the specified length
 #'
+#' @description
 #' Returns an array of `ClusterListEntry` objects of the specified length.
 #' Each `ClusterListEntry` object contains a cluster's state, a cluster's
 #' ID, and other important status information.
@@ -1170,6 +1187,7 @@ snowball_list_clusters <- function(MaxResults = NULL, NextToken = NULL) {
 #' Images (AMIs) that are owned by your AWS account that would be supported
 #' for use on a Snow device
 #'
+#' @description
 #' This action returns a list of the different Amazon EC2 Amazon Machine
 #' Images (AMIs) that are owned by your AWS account that would be supported
 #' for use on a Snow device. Currently, supported AMIs are based on the
@@ -1216,6 +1234,7 @@ snowball_list_compatible_images <- function(MaxResults = NULL, NextToken = NULL)
 
 #' Returns an array of JobListEntry objects of the specified length
 #'
+#' @description
 #' Returns an array of `JobListEntry` objects of the specified length. Each
 #' `JobListEntry` object contains a job's state, a job's ID, and a value
 #' that indicates whether the job is a job part, in the case of export
@@ -1272,6 +1291,7 @@ snowball_list_jobs <- function(MaxResults = NULL, NextToken = NULL) {
 #' While a cluster's ClusterState value is in the AwaitingQuorum state, you
 #' can update some of the information associated with a cluster
 #'
+#' @description
 #' While a cluster's `ClusterState` value is in the `AwaitingQuorum` state,
 #' you can update some of the information associated with a cluster. Once
 #' the cluster changes to a different job state, usually 60 minutes after
@@ -1378,6 +1398,7 @@ snowball_update_cluster <- function(ClusterId, RoleARN = NULL, Description = NUL
 #' While a job's JobState value is New, you can update some of the
 #' information associated with a job
 #'
+#' @description
 #' While a job's `JobState` value is `New`, you can update some of the
 #' information associated with a job. Once the job changes to a different
 #' job state, usually within 60 minutes of the job being created, this
@@ -1488,6 +1509,7 @@ snowball_update_job <- function(JobId, RoleARN = NULL, Notification = NULL, Reso
 #' Updates the state when a the shipment states changes to a different
 #' state
 #'
+#' @description
 #' Updates the state when a the shipment states changes to a different
 #' state.
 #'

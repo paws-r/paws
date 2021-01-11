@@ -10,8 +10,7 @@ ses_list_receipt_filters()
 \description{
 Lists the IP address filters associated with your AWS account in the
 current AWS Region.
-}
-\details{
+
 For information about managing IP address filters, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.

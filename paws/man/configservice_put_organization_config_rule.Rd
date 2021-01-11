@@ -24,8 +24,7 @@ organization config rule.}
 Adds or updates organization config rule for your entire organization
 evaluating whether your AWS resources comply with your desired
 configurations.
-}
-\details{
+
 Only a master account and a delegated administrator can create or update
 an organization config rule. When calling this API with a delegated
 administrator, you must ensure AWS Organizations

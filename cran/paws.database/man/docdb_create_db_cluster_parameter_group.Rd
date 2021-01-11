@@ -25,8 +25,7 @@ This value is stored as a lowercase string.}
 }
 \description{
 Creates a new cluster parameter group.
-}
-\details{
+
 Parameters in a cluster parameter group apply to all of the instances in
 a cluster.
 

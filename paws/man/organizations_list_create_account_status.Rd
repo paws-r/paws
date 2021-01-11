@@ -31,8 +31,7 @@ results.}
 \description{
 Lists the account creation requests that match the specified status that
 is currently being tracked for the organization.
-}
-\details{
+
 Always check the \code{NextToken} response parameter for a \code{null} value when
 calling a \verb{List*} operation. These operations can occasionally return an
 empty set of results even when there are more results available. The

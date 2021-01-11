@@ -63,8 +63,7 @@ either the Amazon Redshift console, the Amazon SNS console, or the
 Amazon SNS API. To obtain an ARN with Amazon SNS, you must create a
 topic in Amazon SNS and subscribe to the topic. The ARN is displayed in
 the SNS console.
-}
-\details{
+
 You can specify the source type, and lists of Amazon Redshift source
 IDs, event categories, and event severities. Notifications will be sent
 for all events you want that match those criteria. For example, you can

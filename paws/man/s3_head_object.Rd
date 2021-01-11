@@ -82,8 +82,7 @@ The HEAD operation retrieves metadata from an object without returning
 the object itself. This operation is useful if you're only interested in
 an object's metadata. To use HEAD, you must have READ access to the
 object.
-}
-\details{
+
 A \code{HEAD} request has the same options as a \code{GET} operation on an object.
 The response is identical to the \code{GET} response except that there is no
 response body.

@@ -42,8 +42,7 @@ the specified bucket has more than 1,000 access points (or the number
 specified in \code{maxResults}, whichever is less), the response will include
 a continuation token that you can use to list the additional access
 points.
-}
-\details{
+
 All Amazon S3 on Outposts REST API requests for this action require an
 additional parameter of \code{x-amz-outpost-id} to be passed with the request
 and an S3 on Outposts endpoint hostname prefix instead of \code{s3-control}.

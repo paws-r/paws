@@ -26,8 +26,7 @@ notification services, such as APNS and GCM (Firebase Cloud Messaging),
 to which devices and mobile apps may register. You must specify
 \code{PlatformPrincipal} and \code{PlatformCredential} attributes when using the
 \code{CreatePlatformApplication} action.
-}
-\details{
+
 \code{PlatformPrincipal} and \code{PlatformCredential} are received from the
 notification service.
 \itemize{

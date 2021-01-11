@@ -33,8 +33,7 @@ Create a custom routing accelerator. A custom routing accelerator
 directs traffic to one of possibly thousands of Amazon EC2 instance
 destinations running in a single or multiple virtual private clouds
 (VPC) subnet endpoints.
-}
-\details{
+
 Be aware that, by default, all destination EC2 instances in a VPC subnet
 endpoint cannot receive traffic. To enable all destinations to receive
 traffic, or to specify individual port mappings that can receive

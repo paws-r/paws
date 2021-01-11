@@ -30,8 +30,7 @@ in the root. After you perform this operation, you no longer can attach
 policies of the specified type to that root or to any organizational
 unit (OU) or account in that root. You can undo this by using the
 EnablePolicyType operation.
-}
-\details{
+
 This is an asynchronous request that AWS performs in the background. If
 you disable a policy type for a root, it still appears enabled for the
 organization if \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{all features}

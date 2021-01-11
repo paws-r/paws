@@ -27,8 +27,7 @@ Valid values: \code{application/vnd.docker.distribution.manifest.v1+json} |
 \description{
 Gets detailed information for an image. Images are specified with either
 an \code{imageTag} or \code{imageDigest}.
-}
-\details{
+
 When an image is pulled, the BatchGetImage API is called once to
 retrieve the image manifest.
 }

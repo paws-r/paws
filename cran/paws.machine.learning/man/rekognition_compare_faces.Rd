@@ -44,8 +44,7 @@ associated with version 3 of the face model or higher.}
 \description{
 Compares a face in the \emph{source} input image with each of the 100 largest
 faces detected in the \emph{target} input image.
-}
-\details{
+
 If the source image contains multiple faces, the service detects the
 largest face and compares it with each face detected in the target
 image.
@@ -64,7 +63,7 @@ box contains a face). The response also provides a similarity score,
 which indicates how closely the faces match.
 
 By default, only faces with a similarity score of greater than or equal
-to 80\% are returned in the response. You can change this value by
+to 80\\% are returned in the response. You can change this value by
 specifying the \code{SimilarityThreshold} parameter.
 
 \code{CompareFaces} also returns an array of faces that don't match the

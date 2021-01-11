@@ -18,8 +18,7 @@ Fabric.}
 }
 \description{
 Returns detailed information about a node.
-}
-\details{
+
 Applies to Hyperledger Fabric and Ethereum.
 }
 \section{Request syntax}{

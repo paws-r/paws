@@ -12,8 +12,7 @@ information about.}
 }
 \description{
 Gets information about a specified configuration for DNS query logging.
-}
-\details{
+
 For more information about DNS query logs, see
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html}{CreateQueryLoggingConfig}
 and \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html}{Logging DNS Queries}.

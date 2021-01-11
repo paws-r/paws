@@ -38,8 +38,7 @@ returned as a part of the response. If you supply both,
 values are verified against the database, the response returns both
 values and is the same as the request. Otherwise a
 \code{ResourceConflictException} is thrown.
-}
-\details{
+
 \code{LookupDeveloperIdentity} is intended for low-throughput control plane
 operations: for example, to enable customer service to locate an
 identity ID by username. If you are using it for higher-volume

@@ -78,8 +78,7 @@ Adds a grant to a customer master key (CMK). The grant allows the
 grantee principal to use the CMK when the conditions specified in the
 grant are met. When setting permissions, grants are an alternative to
 key policies.
-}
-\details{
+
 To create a grant that allows a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operation}
 only when the request includes a particular \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{encryption context},
 use the \code{Constraints} parameter. For details, see GrantConstraints.

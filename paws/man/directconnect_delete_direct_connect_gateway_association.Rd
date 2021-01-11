@@ -18,8 +18,7 @@ directconnect_delete_direct_connect_gateway_association(associationId,
 \description{
 Deletes the association between the specified Direct Connect gateway and
 virtual private gateway.
-}
-\details{
+
 We recommend that you specify the \code{associationID} to delete the
 association. Alternatively, if you own virtual gateway and a Direct
 Connect gateway association, you can specify the \code{virtualGatewayId} and

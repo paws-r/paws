@@ -31,8 +31,7 @@ the domains.}
 Returns the list of domains registered in the account. The results may
 be split into multiple pages. To retrieve subsequent pages, make the
 call again using the nextPageToken returned by the initial call.
-}
-\details{
+
 This operation is eventually consistent. The results are best effort and
 may not exactly reflect recent updates and changes.
 

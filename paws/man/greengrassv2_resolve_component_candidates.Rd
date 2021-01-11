@@ -17,8 +17,7 @@ Retrieves a list of components that meet the component, version, and
 platform requirements of a deployment. AWS IoT Greengrass core devices
 call this operation when they receive a deployment to identify the
 components to install.
-}
-\details{
+
 This operation identifies components that meet all dependency
 requirements for a deployment. If the requirements conflict, then this
 operation returns an error and the deployment fails. For example, this

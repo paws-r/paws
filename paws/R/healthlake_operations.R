@@ -5,6 +5,7 @@ NULL
 
 #' Creates a Data Store that can ingest and export FHIR formatted data
 #'
+#' @description
 #' Creates a Data Store that can ingest and export FHIR formatted data.
 #'
 #' @usage
@@ -52,6 +53,7 @@ healthlake_create_fhir_datastore <- function(DatastoreName = NULL, DatastoreType
 
 #' Deletes a Data Store
 #'
+#' @description
 #' Deletes a Data Store.
 #'
 #' @usage
@@ -90,6 +92,7 @@ healthlake_delete_fhir_datastore <- function(DatastoreId = NULL) {
 #' Data Store ID, Data Store ARN, Data Store name, Data Store status,
 #' created at, Data Store type version, and Data Store endpoint
 #'
+#' @description
 #' Gets the properties associated with the FHIR Data Store, including the
 #' Data Store ID, Data Store ARN, Data Store name, Data Store status,
 #' created at, Data Store type version, and Data Store endpoint.
@@ -130,6 +133,7 @@ healthlake_describe_fhir_datastore <- function(DatastoreId = NULL) {
 #' Displays the properties of a FHIR export job, including the ID, ARN,
 #' name, and the status of the job
 #'
+#' @description
 #' Displays the properties of a FHIR export job, including the ID, ARN,
 #' name, and the status of the job.
 #'
@@ -171,6 +175,7 @@ healthlake_describe_fhir_export_job <- function(DatastoreId, JobId) {
 #' Displays the properties of a FHIR import job, including the ID, ARN,
 #' name, and the status of the job
 #'
+#' @description
 #' Displays the properties of a FHIR import job, including the ID, ARN,
 #' name, and the status of the job.
 #'
@@ -211,6 +216,7 @@ healthlake_describe_fhir_import_job <- function(DatastoreId, JobId) {
 #' Lists all FHIR Data Stores that are in the user’s account, regardless of
 #' Data Store status
 #'
+#' @description
 #' Lists all FHIR Data Stores that are in the user’s account, regardless of
 #' Data Store status.
 #'
@@ -262,6 +268,7 @@ healthlake_list_fhir_datastores <- function(Filter = NULL, NextToken = NULL, Max
 
 #' Begins a FHIR export job
 #'
+#' @description
 #' Begins a FHIR export job.
 #'
 #' @usage
@@ -311,6 +318,7 @@ healthlake_start_fhir_export_job <- function(JobName = NULL, OutputDataConfig, D
 
 #' Begins a FHIR Import job
 #'
+#' @description
 #' Begins a FHIR Import job.
 #'
 #' @usage

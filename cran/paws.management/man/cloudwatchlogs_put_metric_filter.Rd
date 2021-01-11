@@ -22,8 +22,7 @@ Creates or updates a metric filter and associates it with the specified
 log group. Metric filters allow you to configure rules to extract metric
 data from log events ingested through
 \href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutLogEvents.html}{PutLogEvents}.
-}
-\details{
+
 The maximum number of metric filters that can be associated with a log
 group is 100.
 }

@@ -42,7 +42,7 @@ use. When you create a firewall, the operation initializes this setting
 to \code{TRUE}.}
 }
 \description{
-Update subnet change protection
+
 }
 \section{Request syntax}{
 \preformatted{svc$update_subnet_change_protection(

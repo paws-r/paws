@@ -16,8 +16,7 @@ running. Use either the GameServerGroup name or ARN value.}
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}
-}
-\details{
+
 Removes the game server from a game server group. As a result of this
 operation, the deregistered game server can no longer be claimed and
 will not be returned in a list of active game servers.

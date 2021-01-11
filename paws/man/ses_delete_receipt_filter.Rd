@@ -11,8 +11,7 @@ ses_delete_receipt_filter(FilterName)
 }
 \description{
 Deletes the specified IP address filter.
-}
-\details{
+
 For information about managing IP address filters, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-ip-filters.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.

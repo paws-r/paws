@@ -18,8 +18,7 @@ wellarchitected_create_workload_share(WorkloadId, SharedWith,
 }
 \description{
 Create a workload share.
-}
-\details{
+
 The owner of a workload can share it with other AWS accounts and IAM
 users in the same AWS Region. Shared access to a workload is not removed
 until the workload invitation is deleted.

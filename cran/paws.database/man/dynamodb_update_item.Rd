@@ -228,8 +228,7 @@ it does not already exist. You can put, delete, or add attribute values.
 You can also perform a conditional update on an existing item (insert a
 new attribute name-value pair if it doesn't exist, or replace an
 existing name-value pair if it has certain expected attribute values).
-}
-\details{
+
 You can also return the item's attribute values in the same \code{UpdateItem}
 operation using the \code{ReturnValues} parameter.
 }

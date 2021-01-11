@@ -11,8 +11,7 @@ Provides sending statistics for the current AWS Region. The result is a
 list of data points, representing the last two weeks of sending
 activity. Each data point in the list contains statistics for a
 15-minute period of time.
-}
-\details{
+
 You can execute this operation no more than once per second.
 }
 \examples{

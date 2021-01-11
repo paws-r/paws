@@ -34,8 +34,7 @@ the repository's pull requests and provides automatic recommendations.
 You can view recommendations using the CodeGuru Reviewer console. For
 more information, see \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/recommendations.html}{Recommendations in Amazon CodeGuru Reviewer}
 in the \emph{Amazon CodeGuru Reviewer User Guide.}
-}
-\details{
+
 If you associate a CodeCommit repository, it must be in the same AWS
 Region and AWS account where its CodeGuru Reviewer code reviews are
 configured.

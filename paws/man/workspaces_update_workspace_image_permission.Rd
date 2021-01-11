@@ -25,8 +25,7 @@ specifying whether that account has permission to copy the image. If the
 copy image permission is granted, the image is shared with that account.
 If the copy image permission is revoked, the image is unshared with the
 account.
-}
-\details{
+
 After an image has been shared, the recipient account can copy the image
 to other AWS Regions as needed.
 

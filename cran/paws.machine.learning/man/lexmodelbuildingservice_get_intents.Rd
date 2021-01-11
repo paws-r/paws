@@ -23,8 +23,6 @@ part of its name matches the substring. For example, "xyz" matches both
 }
 \description{
 Returns intent information as follows:
-}
-\details{
 \itemize{
 \item If you specify the \code{nameContains} field, returns the \verb{$LATEST}
 version of all intents that contain the specified string.

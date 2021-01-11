@@ -15,8 +15,7 @@ another AWS account.}
 Cancels the transfer of a domain from the current AWS account to another
 AWS account. You initiate a transfer between AWS accounts using
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_TransferDomainToAnotherAwsAccount.html}{TransferDomainToAnotherAwsAccount}.
-}
-\details{
+
 You must cancel the transfer before the other AWS account accepts the
 transfer using
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_AcceptDomainTransferFromAnotherAwsAccount.html}{AcceptDomainTransferFromAnotherAwsAccount}.

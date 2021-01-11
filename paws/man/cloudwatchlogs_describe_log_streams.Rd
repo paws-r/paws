@@ -42,8 +42,7 @@ default is up to 50 items.}
 Lists the log streams for the specified log group. You can list all the
 log streams or filter the results by prefix. You can also control how
 the results are ordered.
-}
-\details{
+
 This operation has a limit of five transactions per second, after which
 transactions are throttled.
 }

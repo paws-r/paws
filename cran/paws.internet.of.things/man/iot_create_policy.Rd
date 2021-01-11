@@ -25,8 +25,7 @@ For the cli-input-json file use format: "tags":
 }
 \description{
 Creates an AWS IoT policy.
-}
-\details{
+
 The created policy is the default version for the policy. This operation
 creates a policy version with a version identifier of \strong{1} and sets
 \strong{1} as the policy's default version.

@@ -12,8 +12,7 @@ sagemaker_delete_notebook_instance(NotebookInstanceName)
 \description{
 Deletes an Amazon SageMaker notebook instance. Before you can delete a
 notebook instance, you must call the \code{StopNotebookInstance} API.
-}
-\details{
+
 When you delete a notebook instance, you lose all of your data. Amazon
 SageMaker removes the ML compute instance, and deletes the ML storage
 volume and the network interface associated with the notebook instance.

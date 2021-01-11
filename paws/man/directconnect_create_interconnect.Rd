@@ -24,8 +24,7 @@ directconnect_create_interconnect(interconnectName, bandwidth, location,
 \description{
 Creates an interconnect between an AWS Direct Connect Partner's network
 and a specific AWS Direct Connect location.
-}
-\details{
+
 An interconnect is a connection that is capable of hosting other
 connections. The AWS Direct Connect partner can use an interconnect to
 provide AWS Direct Connect hosted connections to customers through their

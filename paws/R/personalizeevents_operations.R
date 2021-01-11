@@ -5,6 +5,7 @@ NULL
 
 #' Records user interaction event data
 #'
+#' @description
 #' Records user interaction event data. For more information see
 #' event-record-api.
 #'
@@ -69,6 +70,7 @@ personalizeevents_put_events <- function(trackingId, userId = NULL, sessionId, e
 
 #' Adds one or more items to an Items dataset
 #'
+#' @description
 #' Adds one or more items to an Items dataset. For more information see
 #' importing-items.
 #'
@@ -114,6 +116,7 @@ personalizeevents_put_items <- function(datasetArn, items) {
 
 #' Adds one or more users to a Users dataset
 #'
+#' @description
 #' Adds one or more users to a Users dataset. For more information see
 #' importing-users.
 #'

@@ -15,8 +15,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 Returns the tag set associated with the bucket.
-}
-\details{
+
 To use this operation, you must have permission to perform the
 \code{s3:GetBucketTagging} action. By default, the bucket owner has this
 permission and can grant this permission to others.

@@ -31,8 +31,7 @@ check, Route 53 creates the health check.
 }
 \description{
 Creates a new health check.
-}
-\details{
+
 For information about adding health checks to resource record sets, see
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_ResourceRecordSet.html#Route53-Type-ResourceRecordSet-HealthCheckId}{HealthCheckId}
 in

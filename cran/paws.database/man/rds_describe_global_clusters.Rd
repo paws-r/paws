@@ -43,8 +43,7 @@ specified by \code{MaxRecords}.}
 \description{
 Returns information about Aurora global database clusters. This API
 supports pagination.
-}
-\details{
+
 For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
 

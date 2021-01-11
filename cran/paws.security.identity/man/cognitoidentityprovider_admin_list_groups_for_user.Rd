@@ -20,8 +20,7 @@ list.}
 }
 \description{
 Lists the groups that the user belongs to.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

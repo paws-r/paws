@@ -14,8 +14,7 @@ frauddetector_delete_detector_version(detectorId, detectorVersionId)
 \description{
 Deletes the detector version. You cannot delete detector versions that
 are in \code{ACTIVE} status.
-}
-\details{
+
 When you delete a detector version, Amazon Fraud Detector permanently
 deletes the detector and the data is no longer stored in Amazon Fraud
 Detector.

@@ -149,8 +149,7 @@ set of Amazon Elastic Compute Cloud (Amazon EC2) instances, each of
 which can host multiple game sessions. When creating a fleet, you choose
 the hardware specifications, set some configuration options, and specify
 the game server to deploy on the new fleet.
-}
-\details{
+
 To create a new fleet, provide the following: (1) a fleet name, (2) an
 EC2 instance type and fleet type (spot or on-demand), (3) the build ID
 for your game build or script ID if using Realtime Servers, and (4) a

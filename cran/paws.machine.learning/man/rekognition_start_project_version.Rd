@@ -19,8 +19,7 @@ model. You are charged for the number of inference units that you use.}
 Starts the running of the version of a model. Starting a model takes a
 while to complete. To check the current state of the model, use
 DescribeProjectVersions.
-}
-\details{
+
 Once the model is running, you can detect custom labels in new images by
 calling DetectCustomLabels.
 

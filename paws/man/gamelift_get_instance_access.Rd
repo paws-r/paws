@@ -20,8 +20,7 @@ access an instance in any status.}
 Requests remote access to a fleet instance. Remote access is useful for
 debugging, gathering benchmarking data, or observing activity in real
 time.
-}
-\details{
+
 To remotely access an instance, you need credentials that match the
 operating system of the instance. For a Windows instance, Amazon
 GameLift returns a user name and password as strings for use with a

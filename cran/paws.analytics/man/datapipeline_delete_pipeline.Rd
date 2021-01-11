@@ -13,8 +13,7 @@ datapipeline_delete_pipeline(pipelineId)
 Deletes a pipeline, its pipeline definition, and its run history. AWS
 Data Pipeline attempts to cancel instances associated with the pipeline
 that are currently being processed by task runners.
-}
-\details{
+
 Deleting a pipeline cannot be undone. You cannot query or restore a
 deleted pipeline. To temporarily pause a pipeline instead of deleting
 it, call SetStatus with the status set to \code{PAUSE} on individual

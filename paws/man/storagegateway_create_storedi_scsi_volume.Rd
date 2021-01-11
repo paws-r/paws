@@ -64,8 +64,7 @@ the maximum length for a tag's value is 256.}
 \description{
 Creates a volume on a specified gateway. This operation is only
 supported in the stored volume gateway type.
-}
-\details{
+
 The size of the volume to create is inferred from the disk size. You can
 choose to preserve existing data on the disk, create volume from an
 existing snapshot, or create an empty volume. If you choose to create an

@@ -15,8 +15,7 @@ cognitosync_describe_identity_usage(IdentityPoolId, IdentityId)
 \description{
 Gets usage information for an identity, including number of datasets and
 data usage.
-}
-\details{
+
 This API can be called with temporary user credentials provided by
 Cognito Identity or with developer credentials.
 }

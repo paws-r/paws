@@ -18,8 +18,7 @@ operation is only supported in the cached volume and stored volume
 types. For stored volume gateways, the local disk that was configured as
 the storage volume is not deleted. You can reuse the local disk to
 create another storage volume.
-}
-\details{
+
 Before you delete a volume, make sure there are no iSCSI connections to
 the volume you are deleting. You should also make sure there is no
 snapshot in progress. You can use the Amazon Elastic Compute Cloud

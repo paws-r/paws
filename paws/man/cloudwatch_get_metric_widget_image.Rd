@@ -57,8 +57,7 @@ of one or more Amazon CloudWatch metrics as a bitmap image. You can then
 embed this image into your services and products, such as wiki pages,
 reports, and documents. You could also retrieve images regularly, such
 as every minute, and create your own custom live dashboard.
-}
-\details{
+
 The graph you retrieve can include all CloudWatch metric graph features,
 including metric math and horizontal and vertical annotations.
 

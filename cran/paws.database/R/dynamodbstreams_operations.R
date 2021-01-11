@@ -7,6 +7,7 @@ NULL
 #' stream, its Amazon Resource Name (ARN), the composition of its shards,
 #' and its corresponding DynamoDB table
 #'
+#' @description
 #' Returns information about a stream, including the current status of the
 #' stream, its Amazon Resource Name (ARN), the composition of its shards,
 #' and its corresponding DynamoDB table.
@@ -68,6 +69,7 @@ dynamodbstreams_describe_stream <- function(StreamArn, Limit = NULL, ExclusiveSt
 
 #' Retrieves the stream records from a given shard
 #'
+#' @description
 #' Retrieves the stream records from a given shard.
 #' 
 #' Specify a shard iterator using the `ShardIterator` parameter. The shard
@@ -127,6 +129,7 @@ dynamodbstreams_get_records <- function(ShardIterator, Limit = NULL) {
 
 #' Returns a shard iterator
 #'
+#' @description
 #' Returns a shard iterator. A shard iterator provides information about
 #' how to retrieve the stream records from within a shard. Use the shard
 #' iterator in a subsequent `GetRecords` request to read the stream records
@@ -207,6 +210,7 @@ dynamodbstreams_get_shard_iterator <- function(StreamArn, ShardId, ShardIterator
 #' Returns an array of stream ARNs associated with the current account and
 #' endpoint
 #'
+#' @description
 #' Returns an array of stream ARNs associated with the current account and
 #' endpoint. If the `TableName` parameter is present, then `ListStreams`
 #' will return only the streams ARNs for that table.

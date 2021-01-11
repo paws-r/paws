@@ -5,6 +5,7 @@ NULL
 
 #' Sends a command to an Amazon QLDB ledger
 #'
+#' @description
 #' Sends a command to an Amazon QLDB ledger.
 #' 
 #' Instead of interacting directly with this API, we recommend using the

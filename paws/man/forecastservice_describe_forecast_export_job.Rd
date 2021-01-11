@@ -13,8 +13,7 @@ forecastservice_describe_forecast_export_job(ForecastExportJobArn)
 \description{
 Describes a forecast export job created using the
 CreateForecastExportJob operation.
-}
-\details{
+
 In addition to listing the properties provided by the user in the
 \code{CreateForecastExportJob} request, this operation lists the following
 properties:

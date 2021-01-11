@@ -53,8 +53,7 @@ associated with them.}
 Returns information about Amazon Redshift security groups. If the name
 of a security group is specified, the response will contain only
 information about only that security group.
-}
-\details{
+
 For information about managing security groups, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html}{Amazon Redshift Cluster Security Groups}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 

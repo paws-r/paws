@@ -13,8 +13,7 @@ ses_delete_receipt_rule_set(RuleSetName)
 \description{
 Deletes the specified receipt rule set and all of the receipt rules it
 contains.
-}
-\details{
+
 The currently active rule set cannot be deleted.
 
 For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html}{Amazon SES Developer Guide}.

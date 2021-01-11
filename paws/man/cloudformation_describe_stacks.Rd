@@ -24,8 +24,7 @@ retrieve.}
 \description{
 Returns the description for the specified stack; if no stack name was
 specified, then it returns the description for all the stacks created.
-}
-\details{
+
 If the stack does not exist, an \code{AmazonCloudFormationException} is
 returned.
 }

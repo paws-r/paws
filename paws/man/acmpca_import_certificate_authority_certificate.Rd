@@ -31,8 +31,6 @@ Imports a signed private CA certificate into ACM Private CA. This action
 is used when you are using a chain of trust whose root is located
 outside ACM Private CA. Before you can call this action, the following
 preparations must in place:
-}
-\details{
 \enumerate{
 \item In ACM Private CA, call the
 \href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html}{CreateCertificateAuthority}

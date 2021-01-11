@@ -22,8 +22,7 @@ using the AWS CLI or SDK.}
 Deletes a file system, deleting its contents. After deletion, the file
 system no longer exists, and its data is gone. Any existing automatic
 backups will also be deleted.
-}
-\details{
+
 By default, when you delete an Amazon FSx for Windows File Server file
 system, a final backup is created upon deletion. This final backup is
 not subject to the file system's retention policy, and must be manually

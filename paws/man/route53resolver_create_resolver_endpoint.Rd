@@ -41,8 +41,6 @@ endpoint.}
 \description{
 Creates a Resolver endpoint. There are two types of Resolver endpoints,
 inbound and outbound:
-}
-\details{
 \itemize{
 \item An \emph{inbound Resolver endpoint} forwards DNS queries to the DNS
 service for a VPC from your network.

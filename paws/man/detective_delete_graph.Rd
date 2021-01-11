@@ -13,8 +13,7 @@ detective_delete_graph(GraphArn)
 Disables the specified behavior graph and queues it to be deleted. This
 operation removes the graph from each member account's list of behavior
 graphs.
-}
-\details{
+
 \code{DeleteGraph} can only be called by the master account for a behavior
 graph.
 }

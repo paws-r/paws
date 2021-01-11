@@ -14,8 +14,7 @@ iotfleethub_tag_resource(resourceArn, tags)
 \description{
 Adds to or modifies the tags of the specified resource. Tags are
 metadata which can be used to manage a resource.
-}
-\details{
+
 Fleet Hub for AWS IoT Device Management is in public preview and is
 subject to change.
 }

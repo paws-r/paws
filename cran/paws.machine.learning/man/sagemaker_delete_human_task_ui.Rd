@@ -14,8 +14,7 @@ to delete.}
 \description{
 Use this operation to delete a human task user interface (worker task
 template).
-}
-\details{
+
 To see a list of human task user interfaces (work task templates) in
 your account, use . When you delete a worker task template, it no longer
 appears when you call \code{ListHumanTaskUis}.

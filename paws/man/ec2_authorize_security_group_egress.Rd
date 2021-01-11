@@ -38,8 +38,7 @@ security group.}
 \description{
 [VPC only] Adds the specified egress rules to a security group for use
 with a VPC.
-}
-\details{
+
 An outbound rule permits instances to send traffic to the specified IPv4
 or IPv6 CIDR address ranges, or to the instances associated with the
 specified destination security groups.

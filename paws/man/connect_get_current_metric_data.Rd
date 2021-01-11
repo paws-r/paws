@@ -149,8 +149,7 @@ parameters as the request that generated the token.}
 \description{
 Gets the real-time metric data from the specified Amazon Connect
 instance.
-}
-\details{
+
 For a description of each metric, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/real-time-metrics-definitions.html}{Real-time Metrics Definitions}
 in the \emph{Amazon Connect Administrator Guide}.
 }

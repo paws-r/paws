@@ -6,6 +6,7 @@ NULL
 #' Creates a parallel data resource in Amazon Translate by importing an
 #' input file from Amazon S3
 #'
+#' @description
 #' Creates a parallel data resource in Amazon Translate by importing an
 #' input file from Amazon S3. Parallel data files contain examples of
 #' source phrases and their translations from your translation memory. By
@@ -63,6 +64,7 @@ translate_create_parallel_data <- function(Name, Description = NULL, ParallelDat
 
 #' Deletes a parallel data resource in Amazon Translate
 #'
+#' @description
 #' Deletes a parallel data resource in Amazon Translate.
 #'
 #' @usage
@@ -99,6 +101,7 @@ translate_delete_parallel_data <- function(Name) {
 
 #' A synchronous action that deletes a custom terminology
 #'
+#' @description
 #' A synchronous action that deletes a custom terminology.
 #'
 #' @usage
@@ -137,6 +140,7 @@ translate_delete_terminology <- function(Name) {
 #' job including name, ID, status, source and target languages,
 #' input/output S3 buckets, and so on
 #'
+#' @description
 #' Gets the properties associated with an asycnhronous batch translation
 #' job including name, ID, status, source and target languages,
 #' input/output S3 buckets, and so on.
@@ -177,6 +181,7 @@ translate_describe_text_translation_job <- function(JobId) {
 
 #' Provides information about a parallel data resource
 #'
+#' @description
 #' Provides information about a parallel data resource.
 #'
 #' @usage
@@ -213,6 +218,7 @@ translate_get_parallel_data <- function(Name) {
 
 #' Retrieves a custom terminology
 #'
+#' @description
 #' Retrieves a custom terminology.
 #'
 #' @usage
@@ -253,6 +259,7 @@ translate_get_terminology <- function(Name, TerminologyDataFormat) {
 #' Creates or updates a custom terminology, depending on whether or not one
 #' already exists for the given terminology name
 #'
+#' @description
 #' Creates or updates a custom terminology, depending on whether or not one
 #' already exists for the given terminology name. Importing a terminology
 #' with the same name as an existing one will merge the terminologies based
@@ -317,6 +324,7 @@ translate_import_terminology <- function(Name, MergeStrategy, Description = NULL
 
 #' Provides a list of your parallel data resources in Amazon Translate
 #'
+#' @description
 #' Provides a list of your parallel data resources in Amazon Translate.
 #'
 #' @usage
@@ -356,6 +364,7 @@ translate_list_parallel_data <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Provides a list of custom terminologies associated with your account
 #'
+#' @description
 #' Provides a list of custom terminologies associated with your account.
 #'
 #' @usage
@@ -395,6 +404,7 @@ translate_list_terminologies <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Gets a list of the batch translation jobs that you have submitted
 #'
+#' @description
 #' Gets a list of the batch translation jobs that you have submitted.
 #'
 #' @usage
@@ -447,6 +457,7 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
 
 #' Starts an asynchronous batch translation job
 #'
+#' @description
 #' Starts an asynchronous batch translation job. Batch translation jobs can
 #' be used to translate large volumes of text across multiple documents at
 #' once. For more information, see async.
@@ -533,6 +544,7 @@ translate_start_text_translation_job <- function(JobName = NULL, InputDataConfig
 
 #' Stops an asynchronous batch translation job that is in progress
 #'
+#' @description
 #' Stops an asynchronous batch translation job that is in progress.
 #' 
 #' If the job's state is `IN_PROGRESS`, the job will be marked for
@@ -579,6 +591,7 @@ translate_stop_text_translation_job <- function(JobId) {
 
 #' Translates input text from the source language to the target language
 #'
+#' @description
 #' Translates input text from the source language to the target language.
 #' For a list of available languages and language codes, see
 #' what-is-languages.
@@ -640,6 +653,7 @@ translate_translate_text <- function(Text, TerminologyNames = NULL, SourceLangua
 #' Updates a previously created parallel data resource by importing a new
 #' input file from Amazon S3
 #'
+#' @description
 #' Updates a previously created parallel data resource by importing a new
 #' input file from Amazon S3.
 #'

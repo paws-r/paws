@@ -44,8 +44,7 @@ don't use it to provide sensitive information.
 \description{
 Confirms user registration as an admin without using a confirmation
 code. Works on any user.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

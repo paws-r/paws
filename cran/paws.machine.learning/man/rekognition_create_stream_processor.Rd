@@ -30,8 +30,7 @@ attributes to detect.}
 \description{
 Creates an Amazon Rekognition stream processor that you can use to
 detect and recognize faces in a streaming video.
-}
-\details{
+
 Amazon Rekognition Video is a consumer of live video from Amazon Kinesis
 Video Streams. Amazon Rekognition Video sends analysis results to Amazon
 Kinesis Data Streams.

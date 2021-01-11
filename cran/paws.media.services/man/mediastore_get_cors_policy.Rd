@@ -13,8 +13,7 @@ mediastore_get_cors_policy(ContainerName)
 \description{
 Returns the cross-origin resource sharing (CORS) configuration
 information that is set for the container.
-}
-\details{
+
 To use this operation, you must have permission to perform the
 \code{MediaStore:GetCorsPolicy} action. By default, the container owner has
 this permission and can grant it to others.

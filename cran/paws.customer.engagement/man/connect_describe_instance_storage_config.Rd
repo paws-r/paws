@@ -19,8 +19,7 @@ resource type and storage config for the given instance ID.}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Retrieves the current storage configurations for the specified resource
 type, association ID, and instance ID.
 }

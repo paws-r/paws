@@ -16,8 +16,7 @@ GameServerGroup name or ARN value.}
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}
-}
-\details{
+
 Reinstates activity on a game server group after it has been suspended.
 A game server group might be suspended by theSuspendGameServerGroup
 operation, or it might be suspended involuntarily due to a configuration

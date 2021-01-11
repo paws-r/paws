@@ -44,8 +44,7 @@ Supplying multiple logins will create an implicit linked account. You
 can only specify one developer provider as part of the \code{Logins} map,
 which is linked to the identity pool. The developer provider is the
 "domain" by which Cognito will refer to your users.
-}
-\details{
+
 You can use \code{GetOpenIdTokenForDeveloperIdentity} to create a new
 identity and to link new logins (that is, user credentials issued by a
 public provider or developer provider) to an existing identity. When you

@@ -22,8 +22,7 @@ system default.}
 Override the system-default Secure Sockets Layer/Transport Layer
 Security (SSL/TLS) certificate for Amazon RDS for new DB instances
 temporarily, or remove the override.
-}
-\details{
+
 By using this operation, you can specify an RDS-approved SSL/TLS
 certificate for new DB instances that is different from the default
 certificate provided by RDS. You can also use this operation to remove

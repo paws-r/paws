@@ -5,6 +5,7 @@ NULL
 
 #' Creates an access point and associates it with the specified bucket
 #'
+#' @description
 #' Creates an access point and associates it with the specified bucket. For
 #' more information, see [Managing Data Access with Amazon S3 Access
 #' Points](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-points.html)
@@ -112,6 +113,7 @@ s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfigurat
 
 #' This API operation creates an Amazon S3 on Outposts bucket
 #'
+#' @description
 #' This API operation creates an Amazon S3 on Outposts bucket. To create an
 #' S3 bucket, see [Create
 #' Bucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
@@ -235,6 +237,7 @@ s3control_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguratio
 #' S3 Batch Operations performs large-scale Batch Operations on Amazon S3
 #' objects
 #'
+#' @description
 #' S3 Batch Operations performs large-scale Batch Operations on Amazon S3
 #' objects. Batch Operations can run a single operation or action on lists
 #' of Amazon S3 objects that you specify. For more information, see [S3
@@ -447,6 +450,7 @@ s3control_create_job <- function(AccountId, ConfirmationRequired = NULL, Operati
 
 #' Deletes the specified access point
 #'
+#' @description
 #' Deletes the specified access point.
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
@@ -514,6 +518,7 @@ s3control_delete_access_point <- function(AccountId, Name) {
 
 #' Deletes the access point policy for the specified access point
 #'
+#' @description
 #' Deletes the access point policy for the specified access point.
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
@@ -579,6 +584,7 @@ s3control_delete_access_point_policy <- function(AccountId, Name) {
 
 #' This API operation deletes an Amazon S3 on Outposts bucket
 #'
+#' @description
 #' This API operation deletes an Amazon S3 on Outposts bucket. To delete an
 #' S3 bucket, see
 #' [DeleteBucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html)
@@ -657,6 +663,7 @@ s3control_delete_bucket <- function(AccountId, Bucket) {
 #' This API action deletes an Amazon S3 on Outposts bucket's lifecycle
 #' configuration
 #'
+#' @description
 #' This API action deletes an Amazon S3 on Outposts bucket's lifecycle
 #' configuration. To delete an S3 bucket's lifecycle configuration, see
 #' [DeleteBucketLifecycle](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html)
@@ -743,6 +750,7 @@ s3control_delete_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
 
 #' This API operation deletes an Amazon S3 on Outposts bucket policy
 #'
+#' @description
 #' This API operation deletes an Amazon S3 on Outposts bucket policy. To
 #' delete an S3 bucket policy, see
 #' [DeleteBucketPolicy](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketPolicy.html)
@@ -833,6 +841,7 @@ s3control_delete_bucket_policy <- function(AccountId, Bucket) {
 
 #' This operation deletes an Amazon S3 on Outposts bucket's tags
 #'
+#' @description
 #' This operation deletes an Amazon S3 on Outposts bucket's tags. To delete
 #' an S3 bucket tags, see
 #' [DeleteBucketTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html)
@@ -910,6 +919,7 @@ s3control_delete_bucket_tagging <- function(AccountId, Bucket) {
 
 #' Removes the entire tag set from the specified S3 Batch Operations job
 #'
+#' @description
 #' Removes the entire tag set from the specified S3 Batch Operations job.
 #' To use this operation, you must have permission to perform the
 #' `s3:DeleteJobTagging` action. For more information, see [Controlling
@@ -961,6 +971,7 @@ s3control_delete_job_tagging <- function(AccountId, JobId) {
 
 #' Removes the PublicAccessBlock configuration for an AWS account
 #'
+#' @description
 #' Removes the `PublicAccessBlock` configuration for an AWS account. For
 #' more information, see [Using Amazon S3 block public
 #' access](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html).
@@ -1006,6 +1017,7 @@ s3control_delete_public_access_block <- function(AccountId) {
 
 #' Deletes the Amazon S3 Storage Lens configuration
 #'
+#' @description
 #' Deletes the Amazon S3 Storage Lens configuration. For more information
 #' about S3 Storage Lens, see Working with Amazon S3 Storage Lens in the
 #' *Amazon Simple Storage Service Developer Guide*.
@@ -1052,6 +1064,7 @@ s3control_delete_storage_lens_configuration <- function(ConfigId, AccountId) {
 
 #' Deletes the Amazon S3 Storage Lens configuration tags
 #'
+#' @description
 #' Deletes the Amazon S3 Storage Lens configuration tags. For more
 #' information about S3 Storage Lens, see Working with Amazon S3 Storage
 #' Lens in the *Amazon Simple Storage Service Developer Guide*.
@@ -1099,6 +1112,7 @@ s3control_delete_storage_lens_configuration_tagging <- function(ConfigId, Accoun
 #' Retrieves the configuration parameters and status for a Batch Operations
 #' job
 #'
+#' @description
 #' Retrieves the configuration parameters and status for a Batch Operations
 #' job. For more information, see [S3 Batch
 #' Operations](https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html)
@@ -1150,6 +1164,7 @@ s3control_describe_job <- function(AccountId, JobId) {
 
 #' Returns configuration information about the specified access point
 #'
+#' @description
 #' Returns configuration information about the specified access point.
 #' 
 #' All Amazon S3 on Outposts REST API requests for this action require an
@@ -1219,6 +1234,7 @@ s3control_get_access_point <- function(AccountId, Name) {
 #' Returns the access point policy associated with the specified access
 #' point
 #'
+#' @description
 #' Returns the access point policy associated with the specified access
 #' point.
 #' 
@@ -1277,6 +1293,7 @@ s3control_get_access_point_policy <- function(AccountId, Name) {
 #' Indicates whether the specified access point currently has a policy that
 #' allows public access
 #'
+#' @description
 #' Indicates whether the specified access point currently has a policy that
 #' allows public access. For more information about public access through
 #' access points, see [Managing Data Access with Amazon S3 Access
@@ -1319,6 +1336,7 @@ s3control_get_access_point_policy_status <- function(AccountId, Name) {
 
 #' Gets an Amazon S3 on Outposts bucket
 #'
+#' @description
 #' Gets an Amazon S3 on Outposts bucket. For more information, see [Using
 #' Amazon S3 on
 #' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html)
@@ -1402,6 +1420,7 @@ s3control_get_bucket <- function(AccountId, Bucket) {
 #' This operation gets an Amazon S3 on Outposts bucket's lifecycle
 #' configuration
 #'
+#' @description
 #' This operation gets an Amazon S3 on Outposts bucket's lifecycle
 #' configuration. To get an S3 bucket's lifecycle configuration, see
 #' [GetBucketLifecycleConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html)
@@ -1496,6 +1515,7 @@ s3control_get_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
 
 #' This action gets a bucket policy for an Amazon S3 on Outposts bucket
 #'
+#' @description
 #' This action gets a bucket policy for an Amazon S3 on Outposts bucket. To
 #' get a policy for an S3 bucket, see
 #' [GetBucketPolicy](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketPolicy.html)
@@ -1590,6 +1610,7 @@ s3control_get_bucket_policy <- function(AccountId, Bucket) {
 
 #' This operation gets an Amazon S3 on Outposts bucket's tags
 #'
+#' @description
 #' This operation gets an Amazon S3 on Outposts bucket's tags. To get an S3
 #' bucket tags, see
 #' [GetBucketTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html)
@@ -1673,6 +1694,7 @@ s3control_get_bucket_tagging <- function(AccountId, Bucket) {
 
 #' Returns the tags on an S3 Batch Operations job
 #'
+#' @description
 #' Returns the tags on an S3 Batch Operations job. To use this operation,
 #' you must have permission to perform the `s3:GetJobTagging` action. For
 #' more information, see [Controlling access and labeling jobs using
@@ -1723,6 +1745,7 @@ s3control_get_job_tagging <- function(AccountId, JobId) {
 
 #' Retrieves the PublicAccessBlock configuration for an AWS account
 #'
+#' @description
 #' Retrieves the `PublicAccessBlock` configuration for an AWS account. For
 #' more information, see [Using Amazon S3 block public
 #' access](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html).
@@ -1768,6 +1791,7 @@ s3control_get_public_access_block <- function(AccountId) {
 
 #' Gets the Amazon S3 Storage Lens configuration
 #'
+#' @description
 #' Gets the Amazon S3 Storage Lens configuration. For more information, see
 #' Working with Amazon S3 Storage Lens in the *Amazon Simple Storage
 #' Service Developer Guide*.
@@ -1814,6 +1838,7 @@ s3control_get_storage_lens_configuration <- function(ConfigId, AccountId) {
 
 #' Gets the tags of Amazon S3 Storage Lens configuration
 #'
+#' @description
 #' Gets the tags of Amazon S3 Storage Lens configuration. For more
 #' information about S3 Storage Lens, see Working with Amazon S3 Storage
 #' Lens in the *Amazon Simple Storage Service Developer Guide*.
@@ -1861,6 +1886,7 @@ s3control_get_storage_lens_configuration_tagging <- function(ConfigId, AccountId
 #' Returns a list of the access points currently associated with the
 #' specified bucket
 #'
+#' @description
 #' Returns a list of the access points currently associated with the
 #' specified bucket. You can retrieve up to 1000 access points per call. If
 #' the specified bucket has more than 1,000 access points (or the number
@@ -1945,6 +1971,7 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
 #' Lists current S3 Batch Operations jobs and jobs that have ended within
 #' the last 30 days for the AWS account making the request
 #'
+#' @description
 #' Lists current S3 Batch Operations jobs and jobs that have ended within
 #' the last 30 days for the AWS account making the request. For more
 #' information, see [S3 Batch
@@ -2010,6 +2037,7 @@ s3control_list_jobs <- function(AccountId, JobStatuses = NULL, NextToken = NULL,
 #' Returns a list of all Outposts buckets in an Outpost that are owned by
 #' the authenticated sender of the request
 #'
+#' @description
 #' Returns a list of all Outposts buckets in an Outpost that are owned by
 #' the authenticated sender of the request. For more information, see
 #' [Using Amazon S3 on
@@ -2065,6 +2093,7 @@ s3control_list_regional_buckets <- function(AccountId, NextToken = NULL, MaxResu
 
 #' Gets a list of Amazon S3 Storage Lens configurations
 #'
+#' @description
 #' Gets a list of Amazon S3 Storage Lens configurations. For more
 #' information about S3 Storage Lens, see Working with Amazon S3 Storage
 #' Lens in the *Amazon Simple Storage Service Developer Guide*.
@@ -2111,6 +2140,7 @@ s3control_list_storage_lens_configurations <- function(AccountId, NextToken = NU
 
 #' Associates an access policy with the specified access point
 #'
+#' @description
 #' Associates an access policy with the specified access point. Each access
 #' point can have only one policy, so a request made to this API replaces
 #' any existing policy associated with the specified access point.
@@ -2187,6 +2217,7 @@ s3control_put_access_point_policy <- function(AccountId, Name, Policy) {
 #' This action puts a lifecycle configuration to an Amazon S3 on Outposts
 #' bucket
 #'
+#' @description
 #' This action puts a lifecycle configuration to an Amazon S3 on Outposts
 #' bucket. To put a lifecycle configuration to an S3 bucket, see
 #' [PutBucketLifecycleConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html)
@@ -2304,6 +2335,7 @@ s3control_put_bucket_lifecycle_configuration <- function(AccountId, Bucket, Life
 
 #' This action puts a bucket policy to an Amazon S3 on Outposts bucket
 #'
+#' @description
 #' This action puts a bucket policy to an Amazon S3 on Outposts bucket. To
 #' put a policy on an S3 bucket, see
 #' [PutBucketPolicy](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketPolicy.html)
@@ -2403,6 +2435,7 @@ s3control_put_bucket_policy <- function(AccountId, Bucket, ConfirmRemoveSelfBuck
 
 #' This action puts tags on an Amazon S3 on Outposts bucket
 #'
+#' @description
 #' This action puts tags on an Amazon S3 on Outposts bucket. To put tags on
 #' an S3 bucket, see
 #' [PutBucketTagging](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html)
@@ -2534,6 +2567,7 @@ s3control_put_bucket_tagging <- function(AccountId, Bucket, Tagging) {
 
 #' Sets the supplied tag-set on an S3 Batch Operations job
 #'
+#' @description
 #' Sets the supplied tag-set on an S3 Batch Operations job.
 #' 
 #' A tag is a key-value pair. You can associate S3 Batch Operations tags
@@ -2631,6 +2665,7 @@ s3control_put_job_tagging <- function(AccountId, JobId, Tags) {
 #' Creates or modifies the PublicAccessBlock configuration for an AWS
 #' account
 #'
+#' @description
 #' Creates or modifies the `PublicAccessBlock` configuration for an AWS
 #' account. For more information, see [Using Amazon S3 block public
 #' access](https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html).
@@ -2685,6 +2720,7 @@ s3control_put_public_access_block <- function(PublicAccessBlockConfiguration, Ac
 
 #' Puts an Amazon S3 Storage Lens configuration
 #'
+#' @description
 #' Puts an Amazon S3 Storage Lens configuration. For more information about
 #' S3 Storage Lens, see Working with Amazon S3 Storage Lens in the *Amazon
 #' Simple Storage Service Developer Guide*.
@@ -2801,6 +2837,7 @@ s3control_put_storage_lens_configuration <- function(ConfigId, AccountId, Storag
 
 #' Put or replace tags on an existing Amazon S3 Storage Lens configuration
 #'
+#' @description
 #' Put or replace tags on an existing Amazon S3 Storage Lens configuration.
 #' For more information about S3 Storage Lens, see Working with Amazon S3
 #' Storage Lens in the *Amazon Simple Storage Service Developer Guide*.
@@ -2857,6 +2894,7 @@ s3control_put_storage_lens_configuration_tagging <- function(ConfigId, AccountId
 
 #' Updates an existing S3 Batch Operations job's priority
 #'
+#' @description
 #' Updates an existing S3 Batch Operations job's priority. For more
 #' information, see [S3 Batch
 #' Operations](https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html)
@@ -2910,6 +2948,7 @@ s3control_update_job_priority <- function(AccountId, JobId, Priority) {
 
 #' Updates the status for the specified job
 #'
+#' @description
 #' Updates the status for the specified job. Use this operation to confirm
 #' that you want to run a job or to cancel an existing job. For more
 #' information, see [S3 Batch

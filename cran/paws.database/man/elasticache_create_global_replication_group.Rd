@@ -33,8 +33,6 @@ secure cross-region replication. Using Global Datastore for Redis, you
 can create cross-region read replica clusters for ElastiCache for Redis
 to enable low-latency reads and disaster recovery across regions. For
 more information, see \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html}{Replication Across Regions Using Global Datastore}.
-}
-\details{
 \itemize{
 \item The \strong{GlobalReplicationGroupIdSuffix} is the name of the Global
 Datastore.

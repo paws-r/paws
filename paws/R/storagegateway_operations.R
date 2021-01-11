@@ -5,6 +5,7 @@ NULL
 
 #' Activates the gateway you previously deployed on your host
 #'
+#' @description
 #' Activates the gateway you previously deployed on your host. In the
 #' activation process, you specify information such as the AWS Region that
 #' you want to use for storing snapshots or tapes, the time zone for
@@ -125,6 +126,7 @@ storagegateway_activate_gateway <- function(ActivationKey, GatewayName, GatewayT
 
 #' Configures one or more gateway local disks as cache for a gateway
 #'
+#' @description
 #' Configures one or more gateway local disks as cache for a gateway. This
 #' operation is only supported in the cached volume, tape, and file gateway
 #' type (see [How AWS Storage Gateway works
@@ -187,6 +189,7 @@ storagegateway_add_cache <- function(GatewayARN, DiskIds) {
 
 #' Adds one or more tags to the specified resource
 #'
+#' @description
 #' Adds one or more tags to the specified resource. You use tags to add
 #' metadata to resources, which you can use to categorize these resources.
 #' For example, you can categorize resources by purpose, owner,
@@ -266,6 +269,7 @@ storagegateway_add_tags_to_resource <- function(ResourceARN, Tags) {
 #' Configures one or more gateway local disks as upload buffer for a
 #' specified gateway
 #'
+#' @description
 #' Configures one or more gateway local disks as upload buffer for a
 #' specified gateway. This operation is supported for the stored volume,
 #' cached volume and tape gateway types.
@@ -328,6 +332,7 @@ storagegateway_add_upload_buffer <- function(GatewayARN, DiskIds) {
 #' Configures one or more gateway local disks as working storage for a
 #' gateway
 #'
+#' @description
 #' Configures one or more gateway local disks as working storage for a
 #' gateway. This operation is only supported in the stored volume gateway
 #' type. This operation is deprecated in cached volume API version
@@ -394,6 +399,7 @@ storagegateway_add_working_storage <- function(GatewayARN, DiskIds) {
 
 #' Assigns a tape to a tape pool for archiving
 #'
+#' @description
 #' Assigns a tape to a tape pool for archiving. The tape assigned to a pool
 #' is archived in the S3 storage class that is associated with the pool.
 #' When you use your backup application to eject the tape, the tape is
@@ -456,6 +462,7 @@ storagegateway_assign_tape_pool <- function(TapeARN, PoolId, BypassGovernanceRet
 #' Connects a volume to an iSCSI connection and then attaches the volume to
 #' the specified gateway
 #'
+#' @description
 #' Connects a volume to an iSCSI connection and then attaches the volume to
 #' the specified gateway. Detaching and attaching a volume enables you to
 #' recover your data from one gateway to a different gateway without
@@ -521,6 +528,7 @@ storagegateway_attach_volume <- function(GatewayARN, TargetName = NULL, VolumeAR
 #' Cancels archiving of a virtual tape to the virtual tape shelf (VTS)
 #' after the archiving process is initiated
 #'
+#' @description
 #' Cancels archiving of a virtual tape to the virtual tape shelf (VTS)
 #' after the archiving process is initiated. This operation is only
 #' supported in the tape gateway type.
@@ -573,6 +581,7 @@ storagegateway_cancel_archival <- function(GatewayARN, TapeARN) {
 #' Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to
 #' a gateway after the retrieval process is initiated
 #'
+#' @description
 #' Cancels retrieval of a virtual tape from the virtual tape shelf (VTS) to
 #' a gateway after the retrieval process is initiated. The virtual tape is
 #' returned to the VTS. This operation is only supported in the tape
@@ -625,6 +634,7 @@ storagegateway_cancel_retrieval <- function(GatewayARN, TapeARN) {
 
 #' Creates a cached volume on a specified cached volume gateway
 #'
+#' @description
 #' Creates a cached volume on a specified cached volume gateway. This
 #' operation is only supported in the cached volume gateway type.
 #' 
@@ -751,6 +761,7 @@ storagegateway_create_cachedi_scsi_volume <- function(GatewayARN, VolumeSizeInBy
 #' Creates a Network File System (NFS) file share on an existing file
 #' gateway
 #'
+#' @description
 #' Creates a Network File System (NFS) file share on an existing file
 #' gateway. In Storage Gateway, a file share is a file system mount point
 #' backed by Amazon S3 cloud storage. Storage Gateway exposes file shares
@@ -907,6 +918,7 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' Creates a Server Message Block (SMB) file share on an existing file
 #' gateway
 #'
+#' @description
 #' Creates a Server Message Block (SMB) file share on an existing file
 #' gateway. In Storage Gateway, a file share is a file system mount point
 #' backed by Amazon S3 cloud storage. Storage Gateway exposes file shares
@@ -1092,6 +1104,7 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 
 #' Initiates a snapshot of a volume
 #'
+#' @description
 #' Initiates a snapshot of a volume.
 #' 
 #' AWS Storage Gateway provides the ability to back up point-in-time
@@ -1186,6 +1199,7 @@ storagegateway_create_snapshot <- function(VolumeARN, SnapshotDescription, Tags 
 
 #' Initiates a snapshot of a gateway from a volume recovery point
 #'
+#' @description
 #' Initiates a snapshot of a gateway from a volume recovery point. This
 #' operation is only supported in the cached volume gateway type.
 #' 
@@ -1274,6 +1288,7 @@ storagegateway_create_snapshot_from_volume_recovery_point <- function(VolumeARN,
 
 #' Creates a volume on a specified gateway
 #'
+#' @description
 #' Creates a volume on a specified gateway. This operation is only
 #' supported in the stored volume gateway type.
 #' 
@@ -1392,6 +1407,7 @@ storagegateway_create_storedi_scsi_volume <- function(GatewayARN, DiskId, Snapsh
 
 #' Creates a new custom tape pool
 #'
+#' @description
 #' Creates a new custom tape pool. You can use custom tape pool to enable
 #' tape retention lock on tapes that are archived in the custom pool.
 #'
@@ -1457,6 +1473,7 @@ storagegateway_create_tape_pool <- function(PoolName, StorageClass, RetentionLoc
 
 #' Creates a virtual tape by using your own barcode
 #'
+#' @description
 #' Creates a virtual tape by using your own barcode. You write data to the
 #' virtual tape and then archive the tape. A barcode is unique and cannot
 #' be reused if it has already been used on a tape. This applies to
@@ -1557,6 +1574,7 @@ storagegateway_create_tape_with_barcode <- function(GatewayARN, TapeSizeInBytes,
 
 #' Creates one or more virtual tapes
 #'
+#' @description
 #' Creates one or more virtual tapes. You write data to the virtual tapes
 #' and then archive the tapes. This operation is only supported in the tape
 #' gateway type.
@@ -1667,6 +1685,7 @@ storagegateway_create_tapes <- function(GatewayARN, TapeSizeInBytes, ClientToken
 
 #' Deletes the automatic tape creation policy of a gateway
 #'
+#' @description
 #' Deletes the automatic tape creation policy of a gateway. If you delete
 #' this policy, new virtual tapes must be created manually. Use the Amazon
 #' Resource Name (ARN) of the gateway in your request to remove the policy.
@@ -1705,6 +1724,7 @@ storagegateway_delete_automatic_tape_creation_policy <- function(GatewayARN) {
 
 #' Deletes the bandwidth rate limits of a gateway
 #'
+#' @description
 #' Deletes the bandwidth rate limits of a gateway. You can delete either
 #' the upload and download bandwidth rate limit, or you can delete both. If
 #' you delete only one of the limits, the other limit remains unchanged. To
@@ -1762,6 +1782,7 @@ storagegateway_delete_bandwidth_rate_limit <- function(GatewayARN, BandwidthType
 #' Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials
 #' for a specified iSCSI target and initiator pair
 #'
+#' @description
 #' Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials
 #' for a specified iSCSI target and initiator pair. This operation is
 #' supported in volume and tape gateway types.
@@ -1814,6 +1835,7 @@ storagegateway_delete_chap_credentials <- function(TargetARN, InitiatorName) {
 
 #' Deletes a file share from a file gateway
 #'
+#' @description
 #' Deletes a file share from a file gateway. This operation is only
 #' supported for file gateways.
 #'
@@ -1859,6 +1881,7 @@ storagegateway_delete_file_share <- function(FileShareARN, ForceDelete = NULL) {
 
 #' Deletes a gateway
 #'
+#' @description
 #' Deletes a gateway. To specify which gateway to delete, use the Amazon
 #' Resource Name (ARN) of the gateway in your request. The operation
 #' deletes the gateway; however, it does not delete the gateway virtual
@@ -1921,6 +1944,7 @@ storagegateway_delete_gateway <- function(GatewayARN) {
 
 #' Deletes a snapshot of a volume
 #'
+#' @description
 #' Deletes a snapshot of a volume.
 #' 
 #' You can take snapshots of your gateway volumes on a scheduled or ad hoc
@@ -1978,6 +2002,7 @@ storagegateway_delete_snapshot_schedule <- function(VolumeARN) {
 
 #' Deletes the specified virtual tape
 #'
+#' @description
 #' Deletes the specified virtual tape. This operation is only supported in
 #' the tape gateway type.
 #'
@@ -2034,6 +2059,7 @@ storagegateway_delete_tape <- function(GatewayARN, TapeARN, BypassGovernanceRete
 
 #' Deletes the specified virtual tape from the virtual tape shelf (VTS)
 #'
+#' @description
 #' Deletes the specified virtual tape from the virtual tape shelf (VTS).
 #' This operation is only supported in the tape gateway type.
 #'
@@ -2085,6 +2111,7 @@ storagegateway_delete_tape_archive <- function(TapeARN, BypassGovernanceRetentio
 
 #' Delete a custom tape pool
 #'
+#' @description
 #' Delete a custom tape pool. A custom tape pool can only be deleted if
 #' there are no tapes in the pool and if there are no automatic tape
 #' creation policies that reference the custom tape pool.
@@ -2124,6 +2151,7 @@ storagegateway_delete_tape_pool <- function(PoolARN) {
 #' Deletes the specified storage volume that you previously created using
 #' the CreateCachediSCSIVolume or CreateStorediSCSIVolume API
 #'
+#' @description
 #' Deletes the specified storage volume that you previously created using
 #' the CreateCachediSCSIVolume or CreateStorediSCSIVolume API. This
 #' operation is only supported in the cached volume and stored volume
@@ -2187,6 +2215,7 @@ storagegateway_delete_volume <- function(VolumeARN) {
 #' Returns information about the most recent High Availability monitoring
 #' test that was performed on the host in a cluster
 #'
+#' @description
 #' Returns information about the most recent High Availability monitoring
 #' test that was performed on the host in a cluster. If a test isn't
 #' performed, the status and start time in the response would be null.
@@ -2225,6 +2254,7 @@ storagegateway_describe_availability_monitor_test <- function(GatewayARN) {
 
 #' Returns the bandwidth rate limits of a gateway
 #'
+#' @description
 #' Returns the bandwidth rate limits of a gateway. By default, these limits
 #' are not set, which means no bandwidth rate limiting is in effect. This
 #' operation is supported for the stored volume, cached volume, and tape
@@ -2279,6 +2309,7 @@ storagegateway_describe_bandwidth_rate_limit <- function(GatewayARN) {
 
 #' Returns information about the bandwidth rate limit schedule of a gateway
 #'
+#' @description
 #' Returns information about the bandwidth rate limit schedule of a
 #' gateway. By default, gateways do not have bandwidth rate limit
 #' schedules, which means no bandwidth rate limiting is in effect. This
@@ -2333,6 +2364,7 @@ storagegateway_describe_bandwidth_rate_limit_schedule <- function(GatewayARN) {
 
 #' Returns information about the cache of a gateway
 #'
+#' @description
 #' Returns information about the cache of a gateway. This operation is only
 #' supported in the cached volume, tape, and file gateway types.
 #' 
@@ -2381,6 +2413,7 @@ storagegateway_describe_cache <- function(GatewayARN) {
 
 #' Returns a description of the gateway volumes specified in the request
 #'
+#' @description
 #' Returns a description of the gateway volumes specified in the request.
 #' This operation is only supported in the cached volume gateway types.
 #' 
@@ -2440,6 +2473,7 @@ storagegateway_describe_cachedi_scsi_volumes <- function(VolumeARNs) {
 #' credentials information for a specified iSCSI target, one for each
 #' target-initiator pair
 #'
+#' @description
 #' Returns an array of Challenge-Handshake Authentication Protocol (CHAP)
 #' credentials information for a specified iSCSI target, one for each
 #' target-initiator pair. This operation is supported in the volume and
@@ -2493,6 +2527,7 @@ storagegateway_describe_chap_credentials <- function(TargetARN) {
 #' configured time zone, and the state (whether the gateway is running or
 #' not)
 #'
+#' @description
 #' Returns metadata about a gateway such as its name, network interfaces,
 #' configured time zone, and the state (whether the gateway is running or
 #' not). To specify which gateway to describe, use the Amazon Resource Name
@@ -2543,6 +2578,7 @@ storagegateway_describe_gateway_information <- function(GatewayARN) {
 #' Returns your gateway's weekly maintenance start time including the day
 #' and time of the week
 #'
+#' @description
 #' Returns your gateway's weekly maintenance start time including the day
 #' and time of the week. Note that values are in terms of the gateway's
 #' time zone.
@@ -2591,6 +2627,7 @@ storagegateway_describe_maintenance_start_time <- function(GatewayARN) {
 #' Gets a description for one or more Network File System (NFS) file shares
 #' from a file gateway
 #'
+#' @description
 #' Gets a description for one or more Network File System (NFS) file shares
 #' from a file gateway. This operation is only supported for file gateways.
 #'
@@ -2632,6 +2669,7 @@ storagegateway_describe_nfs_file_shares <- function(FileShareARNList) {
 #' Gets a description for one or more Server Message Block (SMB) file
 #' shares from a file gateway
 #'
+#' @description
 #' Gets a description for one or more Server Message Block (SMB) file
 #' shares from a file gateway. This operation is only supported for file
 #' gateways.
@@ -2674,6 +2712,7 @@ storagegateway_describe_smb_file_shares <- function(FileShareARNList) {
 #' Gets a description of a Server Message Block (SMB) file share settings
 #' from a file gateway
 #'
+#' @description
 #' Gets a description of a Server Message Block (SMB) file share settings
 #' from a file gateway. This operation is only supported for file gateways.
 #'
@@ -2711,6 +2750,7 @@ storagegateway_describe_smb_settings <- function(GatewayARN) {
 
 #' Describes the snapshot schedule for the specified gateway volume
 #'
+#' @description
 #' Describes the snapshot schedule for the specified gateway volume. The
 #' snapshot schedule information includes intervals at which snapshots are
 #' automatically initiated on the volume. This operation is only supported
@@ -2760,6 +2800,7 @@ storagegateway_describe_snapshot_schedule <- function(VolumeARN) {
 
 #' Returns the description of the gateway volumes specified in the request
 #'
+#' @description
 #' Returns the description of the gateway volumes specified in the request.
 #' The list of gateway volumes in the request must be from one gateway. In
 #' the response, AWS Storage Gateway returns volume information sorted by
@@ -2817,6 +2858,7 @@ storagegateway_describe_storedi_scsi_volumes <- function(VolumeARNs) {
 #' Returns a description of specified virtual tapes in the virtual tape
 #' shelf (VTS)
 #'
+#' @description
 #' Returns a description of specified virtual tapes in the virtual tape
 #' shelf (VTS). This operation is only supported in the tape gateway type.
 #' 
@@ -2882,6 +2924,7 @@ storagegateway_describe_tape_archives <- function(TapeARNs = NULL, Marker = NULL
 #' Returns a list of virtual tape recovery points that are available for
 #' the specified tape gateway
 #'
+#' @description
 #' Returns a list of virtual tape recovery points that are available for
 #' the specified tape gateway.
 #' 
@@ -2942,6 +2985,7 @@ storagegateway_describe_tape_recovery_points <- function(GatewayARN, Marker = NU
 #' Returns a description of the specified Amazon Resource Name (ARN) of
 #' virtual tapes
 #'
+#' @description
 #' Returns a description of the specified Amazon Resource Name (ARN) of
 #' virtual tapes. If a `TapeARN` is not specified, returns a description of
 #' all virtual tapes associated with the specified gateway. This operation
@@ -3014,6 +3058,7 @@ storagegateway_describe_tapes <- function(GatewayARN, TapeARNs = NULL, Marker = 
 
 #' Returns information about the upload buffer of a gateway
 #'
+#' @description
 #' Returns information about the upload buffer of a gateway. This operation
 #' is supported for the stored volume, cached volume, and tape gateway
 #' types.
@@ -3072,6 +3117,7 @@ storagegateway_describe_upload_buffer <- function(GatewayARN) {
 #' Returns a description of virtual tape library (VTL) devices for the
 #' specified tape gateway
 #'
+#' @description
 #' Returns a description of virtual tape library (VTL) devices for the
 #' specified tape gateway. In the response, AWS Storage Gateway returns VTL
 #' device information.
@@ -3140,6 +3186,7 @@ storagegateway_describe_vtl_devices <- function(GatewayARN, VTLDeviceARNs = NULL
 
 #' Returns information about the working storage of a gateway
 #'
+#' @description
 #' Returns information about the working storage of a gateway. This
 #' operation is only supported in the stored volumes gateway type. This
 #' operation is deprecated in cached volumes API version (20120630). Use
@@ -3197,6 +3244,7 @@ storagegateway_describe_working_storage <- function(GatewayARN) {
 #' Disconnects a volume from an iSCSI connection and then detaches the
 #' volume from the specified gateway
 #'
+#' @description
 #' Disconnects a volume from an iSCSI connection and then detaches the
 #' volume from the specified gateway. Detaching and attaching a volume
 #' enables you to recover your data from one gateway to a different gateway
@@ -3245,6 +3293,7 @@ storagegateway_detach_volume <- function(VolumeARN, ForceDetach = NULL) {
 
 #' Disables a tape gateway when the gateway is no longer functioning
 #'
+#' @description
 #' Disables a tape gateway when the gateway is no longer functioning. For
 #' example, if your gateway VM is damaged, you can disable the gateway so
 #' you can recover virtual tapes.
@@ -3297,6 +3346,7 @@ storagegateway_disable_gateway <- function(GatewayARN) {
 
 #' Adds a file gateway to an Active Directory domain
 #'
+#' @description
 #' Adds a file gateway to an Active Directory domain. This operation is
 #' only supported for file gateways that support the SMB file protocol.
 #'
@@ -3360,6 +3410,7 @@ storagegateway_join_domain <- function(GatewayARN, DomainName, OrganizationalUni
 
 #' Lists the automatic tape creation policies for a gateway
 #'
+#' @description
 #' Lists the automatic tape creation policies for a gateway. If there are
 #' no automatic tape creation policies for the gateway, it returns an empty
 #' list.
@@ -3401,6 +3452,7 @@ storagegateway_list_automatic_tape_creation_policies <- function(GatewayARN = NU
 #' Gets a list of the file shares for a specific file gateway, or the list
 #' of file shares that belong to the calling user account
 #'
+#' @description
 #' Gets a list of the file shares for a specific file gateway, or the list
 #' of file shares that belong to the calling user account. This operation
 #' is only supported for file gateways.
@@ -3449,6 +3501,7 @@ storagegateway_list_file_shares <- function(GatewayARN = NULL, Limit = NULL, Mar
 #' Lists gateways owned by an AWS account in an AWS Region specified in the
 #' request
 #'
+#' @description
 #' Lists gateways owned by an AWS account in an AWS Region specified in the
 #' request. The returned list is ordered by gateway Amazon Resource Name
 #' (ARN).
@@ -3511,6 +3564,7 @@ storagegateway_list_gateways <- function(Marker = NULL, Limit = NULL) {
 
 #' Returns a list of the gateway's local disks
 #'
+#' @description
 #' Returns a list of the gateway's local disks. To specify which gateway to
 #' describe, you use the Amazon Resource Name (ARN) of the gateway in the
 #' body of the request.
@@ -3566,6 +3620,7 @@ storagegateway_list_local_disks <- function(GatewayARN) {
 
 #' Lists the tags that have been added to the specified resource
 #'
+#' @description
 #' Lists the tags that have been added to the specified resource. This
 #' operation is supported in storage gateways of all types.
 #'
@@ -3620,6 +3675,7 @@ storagegateway_list_tags_for_resource <- function(ResourceARN, Marker = NULL, Li
 
 #' Lists custom tape pools
 #'
+#' @description
 #' Lists custom tape pools. You specify custom tape pools to list by
 #' specifying one or more custom tape pool Amazon Resource Names (ARNs). If
 #' you don't specify a custom tape pool ARN, the operation lists all custom
@@ -3676,6 +3732,7 @@ storagegateway_list_tape_pools <- function(PoolARNs = NULL, Marker = NULL, Limit
 #' Lists virtual tapes in your virtual tape library (VTL) and your virtual
 #' tape shelf (VTS)
 #'
+#' @description
 #' Lists virtual tapes in your virtual tape library (VTL) and your virtual
 #' tape shelf (VTS). You specify the tapes to list by specifying one or
 #' more tape Amazon Resource Names (ARNs). If you don't specify a tape ARN,
@@ -3731,6 +3788,7 @@ storagegateway_list_tapes <- function(TapeARNs = NULL, Marker = NULL, Limit = NU
 
 #' Lists iSCSI initiators that are connected to a volume
 #'
+#' @description
 #' Lists iSCSI initiators that are connected to a volume. You can use this
 #' operation to determine whether a volume is being used or not. This
 #' operation is only supported in the cached volume and stored volume
@@ -3771,6 +3829,7 @@ storagegateway_list_volume_initiators <- function(VolumeARN) {
 
 #' Lists the recovery points for a specified gateway
 #'
+#' @description
 #' Lists the recovery points for a specified gateway. This operation is
 #' only supported in the cached volume gateway type.
 #' 
@@ -3823,6 +3882,7 @@ storagegateway_list_volume_recovery_points <- function(GatewayARN) {
 
 #' Lists the iSCSI stored volumes of a gateway
 #'
+#' @description
 #' Lists the iSCSI stored volumes of a gateway. Results are sorted by
 #' volume ARN. The response includes only the volume ARNs. If you want
 #' additional volume information, use the DescribeStorediSCSIVolumes or the
@@ -3889,6 +3949,7 @@ storagegateway_list_volumes <- function(GatewayARN = NULL, Marker = NULL, Limit 
 #' Sends you notification through CloudWatch Events when all files written
 #' to your file share have been uploaded to Amazon S3
 #'
+#' @description
 #' Sends you notification through CloudWatch Events when all files written
 #' to your file share have been uploaded to Amazon S3.
 #' 
@@ -3940,6 +4001,7 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 
 #' Refreshes the cache for the specified file share
 #'
+#' @description
 #' Refreshes the cache for the specified file share. This operation finds
 #' objects in the Amazon S3 bucket that were added, removed, or replaced
 #' since the gateway last listed the bucket's contents and cached the
@@ -4025,6 +4087,7 @@ storagegateway_refresh_cache <- function(FileShareARN, FolderList = NULL, Recurs
 
 #' Removes one or more tags from the specified resource
 #'
+#' @description
 #' Removes one or more tags from the specified resource. This operation is
 #' supported in storage gateways of all types.
 #'
@@ -4082,6 +4145,7 @@ storagegateway_remove_tags_from_resource <- function(ResourceARN, TagKeys) {
 #' Resets all cache disks that have encountered an error and makes the
 #' disks available for reconfiguration as cache storage
 #'
+#' @description
 #' Resets all cache disks that have encountered an error and makes the
 #' disks available for reconfiguration as cache storage. If your cache disk
 #' encounters an error, the gateway prevents read and write operations on
@@ -4141,6 +4205,7 @@ storagegateway_reset_cache <- function(GatewayARN) {
 #' Retrieves an archived virtual tape from the virtual tape shelf (VTS) to
 #' a tape gateway
 #'
+#' @description
 #' Retrieves an archived virtual tape from the virtual tape shelf (VTS) to
 #' a tape gateway. Virtual tapes archived in the VTS are not associated
 #' with any gateway. However after a tape is retrieved, it is associated
@@ -4205,6 +4270,7 @@ storagegateway_retrieve_tape_archive <- function(TapeARN, GatewayARN) {
 
 #' Retrieves the recovery point for the specified virtual tape
 #'
+#' @description
 #' Retrieves the recovery point for the specified virtual tape. This
 #' operation is only supported in the tape gateway type.
 #' 
@@ -4262,6 +4328,7 @@ storagegateway_retrieve_tape_recovery_point <- function(TapeARN, GatewayARN) {
 
 #' Sets the password for your VM local console
 #'
+#' @description
 #' Sets the password for your VM local console. When you log in to the
 #' local console for the first time, you log in to the VM with the default
 #' credentials. We recommend that you set a new password. You don't need to
@@ -4313,6 +4380,7 @@ storagegateway_set_local_console_password <- function(GatewayARN, LocalConsolePa
 
 #' Sets the password for the guest user smbguest
 #'
+#' @description
 #' Sets the password for the guest user `smbguest`. The `smbguest` user is
 #' the user when the authentication method for the file share is set to
 #' `GuestAccess`.
@@ -4354,6 +4422,7 @@ storagegateway_set_smb_guest_password <- function(GatewayARN, Password) {
 
 #' Shuts down a gateway
 #'
+#' @description
 #' Shuts down a gateway. To specify which gateway to shut down, use the
 #' Amazon Resource Name (ARN) of the gateway in the body of your request.
 #' 
@@ -4422,6 +4491,7 @@ storagegateway_shutdown_gateway <- function(GatewayARN) {
 #' Start a test that verifies that the specified gateway is configured for
 #' High Availability monitoring in your host environment
 #'
+#' @description
 #' Start a test that verifies that the specified gateway is configured for
 #' High Availability monitoring in your host environment. This request only
 #' initiates the test and that a successful response only indicates that
@@ -4465,6 +4535,7 @@ storagegateway_start_availability_monitor_test <- function(GatewayARN) {
 
 #' Starts a gateway that you previously shut down (see ShutdownGateway)
 #'
+#' @description
 #' Starts a gateway that you previously shut down (see ShutdownGateway).
 #' After the gateway starts, you can then make other API calls, your
 #' applications can read from or write to the gateway's storage volumes and
@@ -4521,6 +4592,7 @@ storagegateway_start_gateway <- function(GatewayARN) {
 
 #' Updates the automatic tape creation policy of a gateway
 #'
+#' @description
 #' Updates the automatic tape creation policy of a gateway. Use this to
 #' update the policy with a new set of automatic tape creation rules. This
 #' is only supported for tape gateways.
@@ -4576,6 +4648,7 @@ storagegateway_update_automatic_tape_creation_policy <- function(AutomaticTapeCr
 
 #' Updates the bandwidth rate limits of a gateway
 #'
+#' @description
 #' Updates the bandwidth rate limits of a gateway. You can update both the
 #' upload and download bandwidth rate limit or specify only one of the two.
 #' If you don't set a bandwidth rate limit, the existing rate limit
@@ -4642,6 +4715,7 @@ storagegateway_update_bandwidth_rate_limit <- function(GatewayARN, AverageUpload
 
 #' Updates the bandwidth rate limit schedule for a specified gateway
 #'
+#' @description
 #' Updates the bandwidth rate limit schedule for a specified gateway. By
 #' default, gateways do not have bandwidth rate limit schedules, which
 #' means no bandwidth rate limiting is in effect. Use this to initiate or
@@ -4700,6 +4774,7 @@ storagegateway_update_bandwidth_rate_limit_schedule <- function(GatewayARN, Band
 #' Updates the Challenge-Handshake Authentication Protocol (CHAP)
 #' credentials for a specified iSCSI target
 #'
+#' @description
 #' Updates the Challenge-Handshake Authentication Protocol (CHAP)
 #' credentials for a specified iSCSI target. By default, a gateway does not
 #' have CHAP enabled; however, for added security, you might use it. This
@@ -4773,6 +4848,7 @@ storagegateway_update_chap_credentials <- function(TargetARN, SecretToAuthentica
 #' Updates a gateway's metadata, which includes the gateway's name and time
 #' zone
 #'
+#' @description
 #' Updates a gateway's metadata, which includes the gateway's name and time
 #' zone. To specify which gateway to update, use the Amazon Resource Name
 #' (ARN) of the gateway in your request.
@@ -4837,6 +4913,7 @@ storagegateway_update_gateway_information <- function(GatewayARN, GatewayName = 
 
 #' Updates the gateway virtual machine (VM) software
 #'
+#' @description
 #' Updates the gateway virtual machine (VM) software. The request
 #' immediately triggers the software update.
 #' 
@@ -4899,6 +4976,7 @@ storagegateway_update_gateway_software_now <- function(GatewayARN) {
 #' Updates a gateway's weekly maintenance start time information, including
 #' day and time of the week
 #'
+#' @description
 #' Updates a gateway's weekly maintenance start time information, including
 #' day and time of the week. The maintenance time is the time in your
 #' gateway's time zone.
@@ -4967,6 +5045,7 @@ storagegateway_update_maintenance_start_time <- function(GatewayARN, HourOfDay, 
 
 #' Updates a Network File System (NFS) file share
 #'
+#' @description
 #' Updates a Network File System (NFS) file share. This operation is only
 #' supported in the file gateway type.
 #' 
@@ -5098,6 +5177,7 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 
 #' Updates a Server Message Block (SMB) file share
 #'
+#' @description
 #' Updates a Server Message Block (SMB) file share. This operation is only
 #' supported for file gateways.
 #' 
@@ -5255,6 +5335,7 @@ storagegateway_update_smb_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' Controls whether the shares on a gateway are visible in a net view or
 #' browse list
 #'
+#' @description
 #' Controls whether the shares on a gateway are visible in a net view or
 #' browse list.
 #'
@@ -5295,6 +5376,7 @@ storagegateway_update_smb_file_share_visibility <- function(GatewayARN, FileShar
 
 #' Updates the SMB security strategy on a file gateway
 #'
+#' @description
 #' Updates the SMB security strategy on a file gateway. This action is only
 #' supported in file gateways.
 #' 
@@ -5355,6 +5437,7 @@ storagegateway_update_smb_security_strategy <- function(GatewayARN, SMBSecurityS
 
 #' Updates a snapshot schedule configured for a gateway volume
 #'
+#' @description
 #' Updates a snapshot schedule configured for a gateway volume. This
 #' operation is only supported in the cached volume and stored volume
 #' gateway types.
@@ -5437,6 +5520,7 @@ storagegateway_update_snapshot_schedule <- function(VolumeARN, StartAt, Recurren
 
 #' Updates the type of medium changer in a tape gateway
 #'
+#' @description
 #' Updates the type of medium changer in a tape gateway. When you activate
 #' a tape gateway, you select a medium changer type for the tape gateway.
 #' This operation enables you to select a different type of medium changer

@@ -42,8 +42,7 @@ carriage return (\verb{U+000D})
 \description{
 Adds or updates an inline policy document that is embedded in the
 specified IAM user.
-}
-\details{
+
 An IAM user can also have a managed policy attached to it. To attach a
 managed policy to a user, use AttachUserPolicy. To create a new managed
 policy, use CreatePolicy. For information about policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}

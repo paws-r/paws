@@ -6,6 +6,7 @@ NULL
 #' Creates a connection that can then be given to other AWS services like
 #' CodePipeline so that it can access third-party code repositories
 #'
+#' @description
 #' Creates a connection that can then be given to other AWS services like
 #' CodePipeline so that it can access third-party code repositories. The
 #' connection is in pending status until the third-party connection
@@ -61,6 +62,7 @@ codestarconnections_create_connection <- function(ProviderType = NULL, Connectio
 #' Creates a resource that represents the infrastructure where a
 #' third-party provider is installed
 #'
+#' @description
 #' Creates a resource that represents the infrastructure where a
 #' third-party provider is installed. The host is used when you create
 #' connections to an installed third-party provider type, such as GitHub
@@ -128,6 +130,7 @@ codestarconnections_create_host <- function(Name, ProviderType, ProviderEndpoint
 
 #' The connection to be deleted
 #'
+#' @description
 #' The connection to be deleted.
 #'
 #' @usage
@@ -166,6 +169,7 @@ codestarconnections_delete_connection <- function(ConnectionArn) {
 
 #' The host to be deleted
 #'
+#' @description
 #' The host to be deleted. Before you delete a host, all connections
 #' associated to the host must be deleted.
 #' 
@@ -207,6 +211,7 @@ codestarconnections_delete_host <- function(HostArn) {
 #' Returns the connection ARN and details such as status, owner, and
 #' provider type
 #'
+#' @description
 #' Returns the connection ARN and details such as status, owner, and
 #' provider type.
 #'
@@ -245,6 +250,7 @@ codestarconnections_get_connection <- function(ConnectionArn) {
 #' Returns the host ARN and details such as status, provider type,
 #' endpoint, and, if applicable, the VPC configuration
 #'
+#' @description
 #' Returns the host ARN and details such as status, provider type,
 #' endpoint, and, if applicable, the VPC configuration.
 #'
@@ -282,6 +288,7 @@ codestarconnections_get_host <- function(HostArn) {
 
 #' Lists the connections associated with your account
 #'
+#' @description
 #' Lists the connections associated with your account.
 #'
 #' @usage
@@ -330,6 +337,7 @@ codestarconnections_list_connections <- function(ProviderTypeFilter = NULL, Host
 
 #' Lists the hosts associated with your account
 #'
+#' @description
 #' Lists the hosts associated with your account.
 #'
 #' @usage
@@ -372,6 +380,7 @@ codestarconnections_list_hosts <- function(MaxResults = NULL, NextToken = NULL) 
 #' Gets the set of key-value pairs (metadata) that are used to manage the
 #' resource
 #'
+#' @description
 #' Gets the set of key-value pairs (metadata) that are used to manage the
 #' resource.
 #'
@@ -410,6 +419,7 @@ codestarconnections_list_tags_for_resource <- function(ResourceArn) {
 
 #' Adds to or modifies the tags of the given resource
 #'
+#' @description
 #' Adds to or modifies the tags of the given resource. Tags are metadata
 #' that can be used to manage a resource.
 #'
@@ -455,6 +465,7 @@ codestarconnections_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes tags from an AWS resource
 #'
+#' @description
 #' Removes tags from an AWS resource.
 #'
 #' @usage
@@ -495,6 +506,7 @@ codestarconnections_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates a specified host with the provided configurations
 #'
+#' @description
 #' Updates a specified host with the provided configurations.
 #'
 #' @usage

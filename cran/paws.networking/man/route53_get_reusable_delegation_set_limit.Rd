@@ -17,12 +17,11 @@ delegation set.}
 \description{
 Gets the maximum number of hosted zones that you can associate with the
 specified reusable delegation set.
-}
-\details{
+
 For the default limit, see
 \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html}{Limits}
 in the \emph{Amazon Route 53 Developer Guide}. To request a higher limit,
-\href{https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53}{open a case}.
+open a case.
 }
 \section{Request syntax}{
 \preformatted{svc$get_reusable_delegation_set_limit(

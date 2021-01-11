@@ -16,8 +16,7 @@ information will be published to.}
 }
 \description{
 Creates a configuration set event destination.
-}
-\details{
+
 When you create or update an event destination, you must provide one,
 and only one, destination. The destination can be CloudWatch, Amazon
 Kinesis Firehose, or Amazon Simple Notification Service (Amazon SNS).

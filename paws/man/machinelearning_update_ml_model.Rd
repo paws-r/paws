@@ -21,8 +21,7 @@ than the \code{ScoreThreshold} receive a negative response from the
 }
 \description{
 Updates the \code{MLModelName} and the \code{ScoreThreshold} of an \code{MLModel}.
-}
-\details{
+
 You can use the \code{GetMLModel} operation to view the contents of the
 updated data element.
 }

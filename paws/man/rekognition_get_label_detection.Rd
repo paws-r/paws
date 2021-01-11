@@ -30,8 +30,7 @@ sort is by \code{TIMESTAMP}.}
 \description{
 Gets the label detection results of a Amazon Rekognition Video analysis
 started by StartLabelDetection.
-}
-\details{
+
 The label detection operation is started by a call to
 StartLabelDetection which returns a job identifier (\code{JobId}). When the
 label detection operation finishes, Amazon Rekognition publishes a

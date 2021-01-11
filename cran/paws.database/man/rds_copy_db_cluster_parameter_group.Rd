@@ -45,8 +45,7 @@ Example: \code{my-cluster-param-group1}}
 }
 \description{
 Copies the specified DB cluster parameter group.
-}
-\details{
+
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{

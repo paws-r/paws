@@ -14,8 +14,7 @@ the configuration name or ARN value.}
 Permanently removes a FlexMatch matchmaking configuration. To delete,
 specify the configuration name. A matchmaking configuration cannot be
 deleted if it is being used in any active matchmaking tickets.
-}
-\details{
+
 \strong{Related operations}
 \itemize{
 \item CreateMatchmakingConfiguration

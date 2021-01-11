@@ -17,8 +17,7 @@ description.}
 }
 \description{
 Updates the specified application to have the specified properties.
-}
-\details{
+
 If a property (for example, \code{description}) is not provided, the value
 remains unchanged. To clear these properties, specify an empty string.
 }

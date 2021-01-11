@@ -16,8 +16,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes whether EBS encryption by default is enabled for your account
 in the current Region.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }

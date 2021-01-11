@@ -6,6 +6,7 @@ NULL
 #' Authorizes the DDoS Response Team (DRT) to access the specified Amazon
 #' S3 bucket containing your AWS WAF logs
 #'
+#' @description
 #' Authorizes the DDoS Response Team (DRT) to access the specified Amazon
 #' S3 bucket containing your AWS WAF logs. You can associate up to 10
 #' Amazon S3 buckets with your subscription.
@@ -52,6 +53,7 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' access your AWS account to assist with DDoS attack mitigation during
 #' potential attacks
 #'
+#' @description
 #' Authorizes the DDoS Response Team (DRT), using the specified role, to
 #' access your AWS account to assist with DDoS attack mitigation during
 #' potential attacks. This enables the DRT to inspect your AWS WAF
@@ -62,11 +64,11 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' associated role, the new `RoleArn` will replace the existing `RoleArn`.
 #' 
 #' Prior to making the `AssociateDRTRole` request, you must attach the
-#' [AWSShieldDRTAccessPolicy](https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy)
-#' managed policy to the role you will specify in the request. For more
-#' information see Attaching and Detaching IAM Policies. The role must also
-#' trust the service principal ` drt.shield.amazonaws.com`. For more
-#' information, see [IAM JSON Policy Elements:
+#' AWSShieldDRTAccessPolicy managed policy to the role you will specify in
+#' the request. For more information see Attaching and Detaching IAM
+#' Policies. The role must also trust the service principal
+#' ` drt.shield.amazonaws.com`. For more information, see [IAM JSON Policy
+#' Elements:
 #' Principal](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html).
 #' 
 #' The DRT will have access only to your AWS WAF and Shield resources. By
@@ -93,9 +95,8 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' your AWS account.
 #' 
 #' Prior to making the `AssociateDRTRole` request, you must attach the
-#' [AWSShieldDRTAccessPolicy](https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy)
-#' managed policy to this role. For more information see Attaching and
-#' Detaching IAM Policies.
+#' AWSShieldDRTAccessPolicy managed policy to this role. For more
+#' information see Attaching and Detaching IAM Policies.
 #'
 #' @section Request syntax:
 #' ```
@@ -127,6 +128,7 @@ shield_associate_drt_role <- function(RoleArn) {
 #' Adds health-based detection to the Shield Advanced protection for a
 #' resource
 #'
+#' @description
 #' Adds health-based detection to the Shield Advanced protection for a
 #' resource. Shield Advanced health-based detection uses the health of your
 #' AWS resource to improve responsiveness and accuracy in attack detection
@@ -178,6 +180,7 @@ shield_associate_health_check <- function(ProtectionId, HealthCheckArn) {
 #' Initializes proactive engagement and sets the list of contacts for the
 #' DDoS Response Team (DRT) to use
 #'
+#' @description
 #' Initializes proactive engagement and sets the list of contacts for the
 #' DDoS Response Team (DRT) to use. You must provide at least one phone
 #' number in the emergency contact list.
@@ -245,6 +248,7 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 
 #' Enables AWS Shield Advanced for a specific AWS resource
 #'
+#' @description
 #' Enables AWS Shield Advanced for a specific AWS resource. The resource
 #' can be an Amazon CloudFront distribution, Elastic Load Balancing load
 #' balancer, AWS Global Accelerator accelerator, Elastic IP Address, or an
@@ -316,6 +320,7 @@ shield_create_protection <- function(Name, ResourceArn) {
 #' Creates a grouping of protected resources so they can be handled as a
 #' collective
 #'
+#' @description
 #' Creates a grouping of protected resources so they can be handled as a
 #' collective. This resource grouping improves the accuracy of detection
 #' and reduces false positives.
@@ -390,6 +395,7 @@ shield_create_protection_group <- function(ProtectionGroupId, Aggregation, Patte
 
 #' Activates AWS Shield Advanced for an account
 #'
+#' @description
 #' Activates AWS Shield Advanced for an account.
 #' 
 #' When you initally create a subscription, your subscription is set to be
@@ -426,6 +432,7 @@ shield_create_subscription <- function() {
 
 #' Deletes an AWS Shield Advanced Protection
 #'
+#' @description
 #' Deletes an AWS Shield Advanced Protection.
 #'
 #' @usage
@@ -462,6 +469,7 @@ shield_delete_protection <- function(ProtectionId) {
 
 #' Removes the specified protection group
 #'
+#' @description
 #' Removes the specified protection group.
 #'
 #' @usage
@@ -500,6 +508,7 @@ shield_delete_protection_group <- function(ProtectionGroupId) {
 
 #' Removes AWS Shield Advanced from an account
 #'
+#' @description
 #' Removes AWS Shield Advanced from an account. AWS Shield Advanced
 #' requires a 1-year subscription commitment. You cannot delete a
 #' subscription prior to the completion of that commitment.
@@ -534,6 +543,7 @@ shield_delete_subscription <- function() {
 
 #' Describes the details of a DDoS attack
 #'
+#' @description
 #' Describes the details of a DDoS attack.
 #'
 #' @usage
@@ -572,6 +582,7 @@ shield_describe_attack <- function(AttackId) {
 #' detected in the last year for all resources that belong to your account,
 #' regardless of whether you've defined Shield protections for them
 #'
+#' @description
 #' Provides information about the number and type of attacks AWS Shield has
 #' detected in the last year for all resources that belong to your account,
 #' regardless of whether you've defined Shield protections for them. This
@@ -619,6 +630,7 @@ shield_describe_attack_statistics <- function() {
 #' DDoS Response Team (DRT) to access your AWS account while assisting with
 #' attack mitigation
 #'
+#' @description
 #' Returns the current role and list of Amazon S3 log buckets used by the
 #' DDoS Response Team (DRT) to access your AWS account while assisting with
 #' attack mitigation.
@@ -655,6 +667,7 @@ shield_describe_drt_access <- function() {
 #' (DRT) can use to contact you if you have proactive engagement enabled,
 #' for escalations to the DRT and to initiate proactive customer support
 #'
+#' @description
 #' A list of email addresses and phone numbers that the DDoS Response Team
 #' (DRT) can use to contact you if you have proactive engagement enabled,
 #' for escalations to the DRT and to initiate proactive customer support.
@@ -689,6 +702,7 @@ shield_describe_emergency_contact_settings <- function() {
 
 #' Lists the details of a Protection object
 #'
+#' @description
 #' Lists the details of a Protection object.
 #'
 #' @usage
@@ -732,6 +746,7 @@ shield_describe_protection <- function(ProtectionId = NULL, ResourceArn = NULL) 
 
 #' Returns the specification for the specified protection group
 #'
+#' @description
 #' Returns the specification for the specified protection group.
 #'
 #' @usage
@@ -771,6 +786,7 @@ shield_describe_protection_group <- function(ProtectionGroupId) {
 #' Provides details about the AWS Shield Advanced subscription for an
 #' account
 #'
+#' @description
 #' Provides details about the AWS Shield Advanced subscription for an
 #' account.
 #'
@@ -806,6 +822,7 @@ shield_describe_subscription <- function() {
 #' contacts about escalations to the DRT and to initiate proactive customer
 #' support
 #'
+#' @description
 #' Removes authorization from the DDoS Response Team (DRT) to notify
 #' contacts about escalations to the DRT and to initiate proactive customer
 #' support.
@@ -841,6 +858,7 @@ shield_disable_proactive_engagement <- function() {
 #' Removes the DDoS Response Team's (DRT) access to the specified Amazon S3
 #' bucket containing your AWS WAF logs
 #'
+#' @description
 #' Removes the DDoS Response Team's (DRT) access to the specified Amazon S3
 #' bucket containing your AWS WAF logs.
 #' 
@@ -887,6 +905,7 @@ shield_disassociate_drt_log_bucket <- function(LogBucket) {
 
 #' Removes the DDoS Response Team's (DRT) access to your AWS account
 #'
+#' @description
 #' Removes the DDoS Response Team's (DRT) access to your AWS account.
 #' 
 #' To make a `DisassociateDRTRole` request, you must be subscribed to the
@@ -929,6 +948,7 @@ shield_disassociate_drt_role <- function() {
 #' Removes health-based detection from the Shield Advanced protection for a
 #' resource
 #'
+#' @description
 #' Removes health-based detection from the Shield Advanced protection for a
 #' resource. Shield Advanced health-based detection uses the health of your
 #' AWS resource to improve responsiveness and accuracy in attack detection
@@ -981,6 +1001,7 @@ shield_disassociate_health_check <- function(ProtectionId, HealthCheckArn) {
 #' contacts about escalations to the DRT and to initiate proactive customer
 #' support
 #'
+#' @description
 #' Authorizes the DDoS Response Team (DRT) to use email and phone to notify
 #' contacts about escalations to the DRT and to initiate proactive customer
 #' support.
@@ -1015,6 +1036,7 @@ shield_enable_proactive_engagement <- function() {
 
 #' Returns the SubscriptionState, either Active or Inactive
 #'
+#' @description
 #' Returns the `SubscriptionState`, either `Active` or `Inactive`.
 #'
 #' @usage
@@ -1048,6 +1070,7 @@ shield_get_subscription_state <- function() {
 #' Returns all ongoing DDoS attacks or all DDoS attacks during a specified
 #' time period
 #'
+#' @description
 #' Returns all ongoing DDoS attacks or all DDoS attacks during a specified
 #' time period.
 #'
@@ -1130,6 +1153,7 @@ shield_list_attacks <- function(ResourceArns = NULL, StartTime = NULL, EndTime =
 
 #' Retrieves the ProtectionGroup objects for the account
 #'
+#' @description
 #' Retrieves the ProtectionGroup objects for the account.
 #'
 #' @usage
@@ -1177,6 +1201,7 @@ shield_list_protection_groups <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Lists all Protection objects for the account
 #'
+#' @description
 #' Lists all Protection objects for the account.
 #'
 #' @usage
@@ -1224,6 +1249,7 @@ shield_list_protections <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Retrieves the resources that are included in the protection group
 #'
+#' @description
 #' Retrieves the resources that are included in the protection group.
 #'
 #' @usage
@@ -1279,6 +1305,7 @@ shield_list_resources_in_protection_group <- function(ProtectionGroupId, NextTok
 #' proactive engagement enabled, for escalations to the DRT and to initiate
 #' proactive customer support
 #'
+#' @description
 #' Updates the details of the list of email addresses and phone numbers
 #' that the DDoS Response Team (DRT) can use to contact you if you have
 #' proactive engagement enabled, for escalations to the DRT and to initiate
@@ -1329,6 +1356,7 @@ shield_update_emergency_contact_settings <- function(EmergencyContactList = NULL
 
 #' Updates an existing protection group
 #'
+#' @description
 #' Updates an existing protection group. A protection group is a grouping
 #' of protected resources so they can be handled as a collective. This
 #' resource grouping improves the accuracy of detection and reduces false
@@ -1403,6 +1431,7 @@ shield_update_protection_group <- function(ProtectionGroupId, Aggregation, Patte
 
 #' Updates the details of an existing subscription
 #'
+#' @description
 #' Updates the details of an existing subscription. Only enter values for
 #' parameters you want to change. Empty parameters are not updated.
 #'

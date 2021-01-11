@@ -38,8 +38,7 @@ subsequent call that tells the service where to continue from.}
 Lists the IAM roles that have the specified path prefix. If there are
 none, the operation returns an empty list. For more information about
 roles, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{Working with Roles}.
-}
-\details{
+
 You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }

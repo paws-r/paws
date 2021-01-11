@@ -12,8 +12,7 @@ rekognition_create_collection(CollectionId)
 \description{
 Creates a collection in an AWS Region. You can add faces to the
 collection using the IndexFaces operation.
-}
-\details{
+
 For example, you might create collections, one for each of your
 application users. A user can then index faces using the \code{IndexFaces}
 operation and persist results in a specific collection. Then, a user can

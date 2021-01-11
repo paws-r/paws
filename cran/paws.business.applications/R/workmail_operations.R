@@ -5,6 +5,7 @@ NULL
 
 #' Adds a member (user or group) to the resource's set of delegates
 #'
+#' @description
 #' Adds a member (user or group) to the resource's set of delegates.
 #'
 #' @usage
@@ -46,6 +47,7 @@ workmail_associate_delegate_to_resource <- function(OrganizationId, ResourceId, 
 
 #' Adds a member (user or group) to the group's set
 #'
+#' @description
 #' Adds a member (user or group) to the group's set.
 #'
 #' @usage
@@ -86,6 +88,7 @@ workmail_associate_member_to_group <- function(OrganizationId, GroupId, MemberId
 
 #' Cancels a mailbox export job
 #'
+#' @description
 #' Cancels a mailbox export job.
 #' 
 #' If the mailbox export job is near completion, it might not be possible
@@ -130,6 +133,7 @@ workmail_cancel_mailbox_export_job <- function(ClientToken, JobId, OrganizationI
 #' Adds an alias to the set of a given member (user or group) of Amazon
 #' WorkMail
 #'
+#' @description
 #' Adds an alias to the set of a given member (user or group) of Amazon
 #' WorkMail.
 #'
@@ -172,6 +176,7 @@ workmail_create_alias <- function(OrganizationId, EntityId, Alias) {
 #' Creates a group that can be used in Amazon WorkMail by calling the
 #' RegisterToWorkMail operation
 #'
+#' @description
 #' Creates a group that can be used in Amazon WorkMail by calling the
 #' RegisterToWorkMail operation.
 #'
@@ -211,6 +216,7 @@ workmail_create_group <- function(OrganizationId, Name) {
 
 #' Creates a new Amazon WorkMail organization
 #'
+#' @description
 #' Creates a new Amazon WorkMail organization. Optionally, you can choose
 #' to associate an existing AWS Directory Service directory with your
 #' organization. If an AWS Directory Service directory ID is specified, the
@@ -288,6 +294,7 @@ workmail_create_organization <- function(DirectoryId = NULL, Alias, ClientToken 
 
 #' Creates a new Amazon WorkMail resource
 #'
+#' @description
 #' Creates a new Amazon WorkMail resource.
 #'
 #' @usage
@@ -331,6 +338,7 @@ workmail_create_resource <- function(OrganizationId, Name, Type) {
 #' Creates a user who can be used in Amazon WorkMail by calling the
 #' RegisterToWorkMail operation
 #'
+#' @description
 #' Creates a user who can be used in Amazon WorkMail by calling the
 #' RegisterToWorkMail operation.
 #'
@@ -375,6 +383,7 @@ workmail_create_user <- function(OrganizationId, Name, DisplayName, Password) {
 
 #' Deletes an access control rule for the specified WorkMail organization
 #'
+#' @description
 #' Deletes an access control rule for the specified WorkMail organization.
 #'
 #' @usage
@@ -414,6 +423,7 @@ workmail_delete_access_control_rule <- function(OrganizationId, Name) {
 #' Remove one or more specified aliases from a set of aliases for a given
 #' user
 #'
+#' @description
 #' Remove one or more specified aliases from a set of aliases for a given
 #' user.
 #'
@@ -458,6 +468,7 @@ workmail_delete_alias <- function(OrganizationId, EntityId, Alias) {
 
 #' Deletes a group from Amazon WorkMail
 #'
+#' @description
 #' Deletes a group from Amazon WorkMail.
 #'
 #' @usage
@@ -496,6 +507,7 @@ workmail_delete_group <- function(OrganizationId, GroupId) {
 
 #' Deletes permissions granted to a member (user or group)
 #'
+#' @description
 #' Deletes permissions granted to a member (user or group).
 #'
 #' @usage
@@ -539,6 +551,7 @@ workmail_delete_mailbox_permissions <- function(OrganizationId, EntityId, Grante
 #' Deletes an Amazon WorkMail organization and all underlying AWS resources
 #' managed by Amazon WorkMail as part of the organization
 #'
+#' @description
 #' Deletes an Amazon WorkMail organization and all underlying AWS resources
 #' managed by Amazon WorkMail as part of the organization. You can choose
 #' whether to delete the associated directory. For more information, see
@@ -586,6 +599,7 @@ workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, Del
 
 #' Deletes the specified resource
 #'
+#' @description
 #' Deletes the specified resource.
 #'
 #' @usage
@@ -625,6 +639,7 @@ workmail_delete_resource <- function(OrganizationId, ResourceId) {
 
 #' Deletes the specified retention policy from the specified organization
 #'
+#' @description
 #' Deletes the specified retention policy from the specified organization.
 #'
 #' @usage
@@ -663,6 +678,7 @@ workmail_delete_retention_policy <- function(OrganizationId, Id) {
 
 #' Deletes a user from Amazon WorkMail and all subsequent systems
 #'
+#' @description
 #' Deletes a user from Amazon WorkMail and all subsequent systems. Before
 #' you can delete a user, the user state must be `DISABLED`. Use the
 #' DescribeUser action to confirm the user state.
@@ -706,6 +722,7 @@ workmail_delete_user <- function(OrganizationId, UserId) {
 
 #' Mark a user, group, or resource as no longer used in Amazon WorkMail
 #'
+#' @description
 #' Mark a user, group, or resource as no longer used in Amazon WorkMail.
 #' This action disassociates the mailbox and schedules it for clean-up.
 #' WorkMail keeps mailboxes for 30 days before they are permanently
@@ -748,6 +765,7 @@ workmail_deregister_from_work_mail <- function(OrganizationId, EntityId) {
 
 #' Returns the data available for the group
 #'
+#' @description
 #' Returns the data available for the group.
 #'
 #' @usage
@@ -786,6 +804,7 @@ workmail_describe_group <- function(OrganizationId, GroupId) {
 
 #' Describes the current status of a mailbox export job
 #'
+#' @description
 #' Describes the current status of a mailbox export job.
 #'
 #' @usage
@@ -825,6 +844,7 @@ workmail_describe_mailbox_export_job <- function(JobId, OrganizationId) {
 #' Provides more information regarding a given organization based on its
 #' identifier
 #'
+#' @description
 #' Provides more information regarding a given organization based on its
 #' identifier.
 #'
@@ -862,6 +882,7 @@ workmail_describe_organization <- function(OrganizationId) {
 
 #' Returns the data available for the resource
 #'
+#' @description
 #' Returns the data available for the resource.
 #'
 #' @usage
@@ -901,6 +922,7 @@ workmail_describe_resource <- function(OrganizationId, ResourceId) {
 
 #' Provides information regarding the user
 #'
+#' @description
 #' Provides information regarding the user.
 #'
 #' @usage
@@ -939,6 +961,7 @@ workmail_describe_user <- function(OrganizationId, UserId) {
 
 #' Removes a member from the resource's set of delegates
 #'
+#' @description
 #' Removes a member from the resource's set of delegates.
 #'
 #' @usage
@@ -982,6 +1005,7 @@ workmail_disassociate_delegate_from_resource <- function(OrganizationId, Resourc
 
 #' Removes a member from a group
 #'
+#' @description
 #' Removes a member from a group.
 #'
 #' @usage
@@ -1024,6 +1048,7 @@ workmail_disassociate_member_from_group <- function(OrganizationId, GroupId, Mem
 #' Gets the effects of an organization's access control rules as they apply
 #' to a specified IPv4 address, access protocol action, or user ID
 #'
+#' @description
 #' Gets the effects of an organization's access control rules as they apply
 #' to a specified IPv4 address, access protocol action, or user ID.
 #'
@@ -1069,6 +1094,7 @@ workmail_get_access_control_effect <- function(OrganizationId, IpAddress, Action
 
 #' Gets the default retention policy details for the specified organization
 #'
+#' @description
 #' Gets the default retention policy details for the specified
 #' organization.
 #'
@@ -1106,6 +1132,7 @@ workmail_get_default_retention_policy <- function(OrganizationId) {
 
 #' Requests a user's mailbox details for a specified organization and user
 #'
+#' @description
 #' Requests a user's mailbox details for a specified organization and user.
 #'
 #' @usage
@@ -1145,6 +1172,7 @@ workmail_get_mailbox_details <- function(OrganizationId, UserId) {
 
 #' Lists the access control rules for the specified organization
 #'
+#' @description
 #' Lists the access control rules for the specified organization.
 #'
 #' @usage
@@ -1182,6 +1210,7 @@ workmail_list_access_control_rules <- function(OrganizationId) {
 #' Creates a paginated call to list the aliases associated with a given
 #' entity
 #'
+#' @description
 #' Creates a paginated call to list the aliases associated with a given
 #' entity.
 #'
@@ -1226,6 +1255,7 @@ workmail_list_aliases <- function(OrganizationId, EntityId, NextToken = NULL, Ma
 
 #' Returns an overview of the members of a group
 #'
+#' @description
 #' Returns an overview of the members of a group. Users and groups can be
 #' members of a group.
 #'
@@ -1272,6 +1302,7 @@ workmail_list_group_members <- function(OrganizationId, GroupId, NextToken = NUL
 
 #' Returns summaries of the organization's groups
 #'
+#' @description
 #' Returns summaries of the organization's groups.
 #'
 #' @usage
@@ -1314,6 +1345,7 @@ workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = 
 #' Lists the mailbox export jobs started for the specified organization
 #' within the last seven days
 #'
+#' @description
 #' Lists the mailbox export jobs started for the specified organization
 #' within the last seven days.
 #'
@@ -1356,6 +1388,7 @@ workmail_list_mailbox_export_jobs <- function(OrganizationId, NextToken = NULL, 
 #' Lists the mailbox permissions associated with a user, group, or resource
 #' mailbox
 #'
+#' @description
 #' Lists the mailbox permissions associated with a user, group, or resource
 #' mailbox.
 #'
@@ -1403,6 +1436,7 @@ workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToke
 
 #' Returns summaries of the customer's organizations
 #'
+#' @description
 #' Returns summaries of the customer's organizations.
 #'
 #' @usage
@@ -1442,6 +1476,7 @@ workmail_list_organizations <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Lists the delegates associated with a resource
 #'
+#' @description
 #' Lists the delegates associated with a resource. Users and groups can be
 #' resource delegates and answer requests on behalf of the resource.
 #'
@@ -1488,6 +1523,7 @@ workmail_list_resource_delegates <- function(OrganizationId, ResourceId, NextTok
 
 #' Returns summaries of the organization's resources
 #'
+#' @description
 #' Returns summaries of the organization's resources.
 #'
 #' @usage
@@ -1529,6 +1565,7 @@ workmail_list_resources <- function(OrganizationId, NextToken = NULL, MaxResults
 
 #' Lists the tags applied to an Amazon WorkMail organization resource
 #'
+#' @description
 #' Lists the tags applied to an Amazon WorkMail organization resource.
 #'
 #' @usage
@@ -1565,6 +1602,7 @@ workmail_list_tags_for_resource <- function(ResourceARN) {
 
 #' Returns summaries of the organization's users
 #'
+#' @description
 #' Returns summaries of the organization's users.
 #'
 #' @usage
@@ -1606,6 +1644,7 @@ workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = N
 
 #' Adds a new access control rule for the specified organization
 #'
+#' @description
 #' Adds a new access control rule for the specified organization. The rule
 #' allows or denies access to the organization for the specified IPv4
 #' addresses, access protocol actions, and user IDs. Adding a new rule with
@@ -1680,6 +1719,7 @@ workmail_put_access_control_rule <- function(Name, Effect, Description, IpRanges
 
 #' Sets permissions for a user, group, or resource
 #'
+#' @description
 #' Sets permissions for a user, group, or resource. This replaces any
 #' pre-existing permissions.
 #'
@@ -1735,6 +1775,7 @@ workmail_put_mailbox_permissions <- function(OrganizationId, EntityId, GranteeId
 
 #' Puts a retention policy to the specified organization
 #'
+#' @description
 #' Puts a retention policy to the specified organization.
 #'
 #' @usage
@@ -1787,6 +1828,7 @@ workmail_put_retention_policy <- function(OrganizationId, Id = NULL, Name, Descr
 #' Registers an existing and disabled user, group, or resource for Amazon
 #' WorkMail use by associating a mailbox and calendaring capabilities
 #'
+#' @description
 #' Registers an existing and disabled user, group, or resource for Amazon
 #' WorkMail use by associating a mailbox and calendaring capabilities. It
 #' performs no change if the user, group, or resource is enabled and fails
@@ -1838,6 +1880,7 @@ workmail_register_to_work_mail <- function(OrganizationId, EntityId, Email) {
 
 #' Allows the administrator to reset the password for a user
 #'
+#' @description
 #' Allows the administrator to reset the password for a user.
 #'
 #' @usage
@@ -1881,6 +1924,7 @@ workmail_reset_password <- function(OrganizationId, UserId, Password) {
 #' calendar items from the specified mailbox to the specified Amazon Simple
 #' Storage Service (Amazon S3) bucket
 #'
+#' @description
 #' Starts a mailbox export job to export MIME-format email messages and
 #' calendar items from the specified mailbox to the specified Amazon Simple
 #' Storage Service (Amazon S3) bucket. For more information, see [Exporting
@@ -1940,6 +1984,7 @@ workmail_start_mailbox_export_job <- function(ClientToken, OrganizationId, Entit
 #' Applies the specified tags to the specified Amazon WorkMail organization
 #' resource
 #'
+#' @description
 #' Applies the specified tags to the specified Amazon WorkMail organization
 #' resource.
 #'
@@ -1985,6 +2030,7 @@ workmail_tag_resource <- function(ResourceARN, Tags) {
 #' Untags the specified tags from the specified Amazon WorkMail
 #' organization resource
 #'
+#' @description
 #' Untags the specified tags from the specified Amazon WorkMail
 #' organization resource.
 #'
@@ -2027,6 +2073,7 @@ workmail_untag_resource <- function(ResourceARN, TagKeys) {
 #' Updates a user's current mailbox quota for a specified organization and
 #' user
 #'
+#' @description
 #' Updates a user's current mailbox quota for a specified organization and
 #' user.
 #'
@@ -2069,6 +2116,7 @@ workmail_update_mailbox_quota <- function(OrganizationId, UserId, MailboxQuota) 
 
 #' Updates the primary email for a user, group, or resource
 #'
+#' @description
 #' Updates the primary email for a user, group, or resource. The current
 #' email is moved into the list of aliases (or swapped between an existing
 #' alias and the current primary email), and the email provided in the
@@ -2112,6 +2160,7 @@ workmail_update_primary_email_address <- function(OrganizationId, EntityId, Emai
 
 #' Updates data for the resource
 #'
+#' @description
 #' Updates data for the resource. To have the latest information, it must
 #' be preceded by a DescribeResource call. The dataset in the request
 #' should be the one expected when performing another `DescribeResource`

@@ -13,8 +13,7 @@ route53domains_delete_tags_for_domain(DomainName, TagsToDelete)
 }
 \description{
 This operation deletes the specified tags for a domain.
-}
-\details{
+
 All tag operations are eventually consistent; subsequent operations
 might not immediately represent all issued operations.
 }

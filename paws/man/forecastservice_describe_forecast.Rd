@@ -11,8 +11,7 @@ forecastservice_describe_forecast(ForecastArn)
 }
 \description{
 Describes a forecast created using the CreateForecast operation.
-}
-\details{
+
 In addition to listing the properties provided in the \code{CreateForecast}
 request, this operation lists the following properties:
 \itemize{

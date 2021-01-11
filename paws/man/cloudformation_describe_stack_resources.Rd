@@ -44,8 +44,7 @@ Returns AWS resource descriptions for running and deleted stacks. If
 the stack are returned. If \code{PhysicalResourceId} is specified, the
 associated resources of the stack that the resource belongs to are
 returned.
-}
-\details{
+
 Only the first 100 resources will be returned. If your stack has more
 resources than this, you should use \code{ListStackResources} instead.
 

@@ -20,8 +20,7 @@ lowercase letters or digits.}
 \description{
 Retrieves the current status of an asynchronous request to create an
 account.
-}
-\details{
+
 This operation can be called only from the organization's management
 account or by a member account that is a delegated administrator for an
 AWS service.

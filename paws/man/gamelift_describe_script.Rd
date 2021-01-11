@@ -12,8 +12,7 @@ You can use either the script ID or ARN value.}
 }
 \description{
 Retrieves properties for a Realtime script.
-}
-\details{
+
 To request a script record, specify the script ID. If successful, an
 object containing the script properties is returned.
 

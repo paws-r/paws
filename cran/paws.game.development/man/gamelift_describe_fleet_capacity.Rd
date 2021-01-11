@@ -25,8 +25,7 @@ Retrieves the current capacity statistics for one or more fleets. These
 statistics present a snapshot of the fleet's instances and provide
 insight on current or imminent scaling activity. To get statistics on
 game hosting activity in the fleet, see DescribeFleetUtilization.
-}
-\details{
+
 You can request capacity for all fleets or specify a list of one or more
 fleet identifiers. When requesting multiple fleets, use the pagination
 parameters to retrieve results as a set of sequential pages. If

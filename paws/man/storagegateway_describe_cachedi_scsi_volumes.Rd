@@ -15,8 +15,7 @@ gateway.}
 \description{
 Returns a description of the gateway volumes specified in the request.
 This operation is only supported in the cached volume gateway types.
-}
-\details{
+
 The list of gateway volumes in the request must be from one gateway. In
 the response, AWS Storage Gateway returns volume information sorted by
 volume Amazon Resource Name (ARN).

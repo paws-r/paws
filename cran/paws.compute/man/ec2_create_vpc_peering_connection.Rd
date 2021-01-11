@@ -37,8 +37,7 @@ you own and an accepter VPC with which to create the connection. The
 accepter VPC can belong to another AWS account and can be in a different
 Region to the requester VPC. The requester VPC and accepter VPC cannot
 have overlapping CIDR blocks.
-}
-\details{
+
 Limitations and rules apply to a VPC peering connection. For more
 information, see the
 \href{https://docs.aws.amazon.com/vpc/latest/peering/vpc-peering-basics.html#vpc-peering-limitations}{limitations}

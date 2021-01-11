@@ -37,8 +37,7 @@ name your resources.}
 }
 \description{
 Creates an endpoint for an Amazon S3 bucket.
-}
-\details{
+
 For more information, see
 https://docs.aws.amazon.com/datasync/latest/userguide/create-locations-cli.html\\#create-location-s3-cli
 in the \emph{AWS DataSync User Guide}.

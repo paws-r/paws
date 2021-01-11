@@ -21,8 +21,7 @@ topics that you want the action to send a test notification to.}
 }
 \description{
 The TestRole operation tests the IAM role used to create the pipeline.
-}
-\details{
+
 The \code{TestRole} action lets you determine whether the IAM role you are
 using has sufficient permissions to let Elastic Transcoder perform tasks
 associated with the transcoding process. The action attempts to assume

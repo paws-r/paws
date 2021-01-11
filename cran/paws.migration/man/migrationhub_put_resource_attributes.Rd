@@ -43,8 +43,6 @@ Used to test if the caller has permission to make the call.}
 Provides identifying details of the resource being migrated so that it
 can be associated in the Application Discovery Service repository. This
 association occurs asynchronously after \code{PutResourceAttributes} returns.
-}
-\details{
 \itemize{
 \item Keep in mind that subsequent calls to PutResourceAttributes will
 override previously stored attributes. For example, if it is first

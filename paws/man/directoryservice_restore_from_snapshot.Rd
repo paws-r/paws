@@ -11,8 +11,7 @@ directoryservice_restore_from_snapshot(SnapshotId)
 }
 \description{
 Restores a directory using an existing directory snapshot.
-}
-\details{
+
 When you restore a directory from a snapshot, any changes made to the
 directory after the snapshot date are overwritten.
 

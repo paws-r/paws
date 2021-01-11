@@ -6,6 +6,7 @@ NULL
 #' Retrieves the group metadata and attributes from GroupId in an identity
 #' store
 #'
+#' @description
 #' Retrieves the group metadata and attributes from `GroupId` in an
 #' identity store.
 #'
@@ -50,6 +51,7 @@ identitystore_describe_group <- function(IdentityStoreId, GroupId) {
 #' Retrieves the user metadata and attributes from UserId in an identity
 #' store
 #'
+#' @description
 #' Retrieves the user metadata and attributes from `UserId` in an identity
 #' store.
 #'
@@ -94,6 +96,7 @@ identitystore_describe_user <- function(IdentityStoreId, UserId) {
 #' Lists the attribute name and value of the group that you specified in
 #' the search
 #'
+#' @description
 #' Lists the attribute name and value of the group that you specified in
 #' the search. We only support `DisplayName` as a valid filter attribute
 #' path currently, and filter is required. This API returns minimum
@@ -157,6 +160,7 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
 #' Lists the attribute name and value of the user that you specified in the
 #' search
 #'
+#' @description
 #' Lists the attribute name and value of the user that you specified in the
 #' search. We only support `UserName` as a valid filter attribute path
 #' currently, and filter is required. This API returns minimum attributes,

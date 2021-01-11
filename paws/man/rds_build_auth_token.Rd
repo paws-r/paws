@@ -21,7 +21,7 @@ with.}
 Return an authentication token used as the password for a database connection.
 }
 \details{
-See \href{http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{\emph{IAM Database Authentication for MySQL and PostgreSQL}}
+See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{\emph{IAM Database Authentication for MySQL and PostgreSQL}}
 for more information on using IAM database authentication with RDS.
 }
 \section{Request syntax}{

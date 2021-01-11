@@ -55,8 +55,7 @@ Replaces an existing route within a route table in a VPC. You must
 provide only one of the following: internet gateway, virtual private
 gateway, NAT instance, NAT gateway, VPC peering connection, network
 interface, egress-only internet gateway, or transit gateway.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Route_Tables.html}{Route Tables}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }

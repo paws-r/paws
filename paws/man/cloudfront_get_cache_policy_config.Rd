@@ -15,8 +15,7 @@ using \code{ListCachePolicies}.}
 }
 \description{
 Gets a cache policy configuration.
-}
-\details{
+
 To get a cache policy configuration, you must provide the policy’s
 identifier. If the cache policy is attached to a distribution’s cache
 behavior, you can get the policy’s identifier using \code{ListDistributions}

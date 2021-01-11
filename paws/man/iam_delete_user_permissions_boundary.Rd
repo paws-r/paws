@@ -12,8 +12,7 @@ remove the permissions boundary.}
 }
 \description{
 Deletes the permissions boundary for the specified IAM user.
-}
-\details{
+
 Deleting the permissions boundary for a user might increase its
 permissions by allowing the user to perform all the actions granted in
 its permissions policies.

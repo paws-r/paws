@@ -28,8 +28,7 @@ One of the following (case insensitive) values:
 \description{
 Creates an empty dataset and adds it to the specified dataset group. Use
 CreateDatasetImportJob to import your training data to a dataset.
-}
-\details{
+
 There are three types of datasets:
 \itemize{
 \item Interactions

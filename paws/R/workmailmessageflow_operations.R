@@ -5,6 +5,7 @@ NULL
 
 #' Retrieves the raw content of an in-transit email message, in MIME format
 #'
+#' @description
 #' Retrieves the raw content of an in-transit email message, in MIME
 #' format.
 #'

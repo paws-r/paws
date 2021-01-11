@@ -5,6 +5,7 @@ NULL
 
 #' Cancels a deployment
 #'
+#' @description
 #' Cancels a deployment. This operation cancels the deployment for devices
 #' that haven't yet received it. If a device already received the
 #' deployment, this operation doesn't change anything for that device.
@@ -43,6 +44,7 @@ greengrassv2_cancel_deployment <- function(deploymentId) {
 
 #' Creates a component
 #'
+#' @description
 #' Creates a component. Components are software that run on AWS IoT
 #' Greengrass core devices. After you develop and test a component on your
 #' core device, you can use this operation to upload your component to AWS
@@ -102,9 +104,8 @@ greengrassv2_cancel_deployment <- function(deploymentId) {
 #' 
 #' You must specify either `inlineRecipe` or `lambdaFunction`.
 #' @param tags A list of key-value pairs that contain metadata for the resource. For
-#' more information, see [Tag your
-#' resources](https://docs.aws.amazon.com/greengrass/v2/) in the *AWS IoT
-#' Greengrass V2 Developer Guide*.
+#' more information, see Tag your resources in the *AWS IoT Greengrass V2
+#' Developer Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -201,6 +202,7 @@ greengrassv2_create_component_version <- function(inlineRecipe = NULL, lambdaFun
 #' Creates a continuous deployment for a target, which is a AWS IoT
 #' Greengrass core device or group of core devices
 #'
+#' @description
 #' Creates a continuous deployment for a target, which is a AWS IoT
 #' Greengrass core device or group of core devices. When you add a new core
 #' device to a group of core devices that has a deployment, AWS IoT
@@ -241,9 +243,8 @@ greengrassv2_create_component_version <- function(inlineRecipe = NULL, lambdaFun
 #' @param deploymentPolicies The deployment policies for the deployment. These policies define how
 #' the deployment updates components and handles failure.
 #' @param tags A list of key-value pairs that contain metadata for the resource. For
-#' more information, see [Tag your
-#' resources](https://docs.aws.amazon.com/greengrass/v2/) in the *AWS IoT
-#' Greengrass V2 Developer Guide*.
+#' more information, see Tag your resources in the *AWS IoT Greengrass V2
+#' Developer Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -328,6 +329,7 @@ greengrassv2_create_deployment <- function(targetArn, deploymentName = NULL, com
 
 #' Deletes a version of a component from AWS IoT Greengrass
 #'
+#' @description
 #' Deletes a version of a component from AWS IoT Greengrass.
 #' 
 #' This operation deletes the component's recipe and artifacts. As a
@@ -372,6 +374,7 @@ greengrassv2_delete_component <- function(arn) {
 
 #' Deletes a AWS IoT Greengrass core device, which is an AWS IoT thing
 #'
+#' @description
 #' Deletes a AWS IoT Greengrass core device, which is an AWS IoT thing.
 #' This operation removes the core device from the list of core devices.
 #' This operation doesn't delete the AWS IoT thing. For more information
@@ -413,6 +416,7 @@ greengrassv2_delete_core_device <- function(coreDeviceThingName) {
 
 #' Retrieves metadata for a version of a component
 #'
+#' @description
 #' Retrieves metadata for a version of a component.
 #'
 #' @usage
@@ -451,6 +455,7 @@ greengrassv2_describe_component <- function(arn) {
 
 #' Gets the recipe for a version of a component
 #'
+#' @description
 #' Gets the recipe for a version of a component. Core devices can call this
 #' operation to identify the artifacts and requirements to install a
 #' component.
@@ -493,6 +498,7 @@ greengrassv2_get_component <- function(recipeOutputFormat = NULL, arn) {
 
 #' Gets the pre-signed URL to a component artifact in an S3 bucket
 #'
+#' @description
 #' Gets the pre-signed URL to a component artifact in an S3 bucket. Core
 #' devices can call this operation to identify the URL that they can use to
 #' download an artifact to install.
@@ -535,6 +541,7 @@ greengrassv2_get_component_version_artifact <- function(arn, artifactName) {
 
 #' Retrieves metadata for a AWS IoT Greengrass core device
 #'
+#' @description
 #' Retrieves metadata for a AWS IoT Greengrass core device.
 #'
 #' @usage
@@ -571,6 +578,7 @@ greengrassv2_get_core_device <- function(coreDeviceThingName) {
 
 #' Gets a deployment
 #'
+#' @description
 #' Gets a deployment. Deployments define the components that run on AWS IoT
 #' Greengrass core devices.
 #'
@@ -608,6 +616,7 @@ greengrassv2_get_deployment <- function(deploymentId) {
 
 #' Retrieves a paginated list of all versions for a component
 #'
+#' @description
 #' Retrieves a paginated list of all versions for a component.
 #'
 #' @usage
@@ -650,6 +659,7 @@ greengrassv2_list_component_versions <- function(arn, maxResults = NULL, nextTok
 
 #' Retrieves a paginated list of component summaries
 #'
+#' @description
 #' Retrieves a paginated list of component summaries. This list includes
 #' components that you have permission to view.
 #'
@@ -693,6 +703,7 @@ greengrassv2_list_components <- function(scope = NULL, maxResults = NULL, nextTo
 
 #' Retrieves a paginated list of AWS IoT Greengrass core devices
 #'
+#' @description
 #' Retrieves a paginated list of AWS IoT Greengrass core devices.
 #'
 #' @usage
@@ -748,6 +759,7 @@ greengrassv2_list_core_devices <- function(thingGroupArn = NULL, status = NULL, 
 
 #' Retrieves a paginated list of deployments
 #'
+#' @description
 #' Retrieves a paginated list of deployments.
 #'
 #' @usage
@@ -802,6 +814,7 @@ greengrassv2_list_deployments <- function(targetArn = NULL, historyFilter = NULL
 #' Retrieves a paginated list of deployment jobs that AWS IoT Greengrass
 #' sends to AWS IoT Greengrass core devices
 #'
+#' @description
 #' Retrieves a paginated list of deployment jobs that AWS IoT Greengrass
 #' sends to AWS IoT Greengrass core devices.
 #'
@@ -845,6 +858,7 @@ greengrassv2_list_effective_deployments <- function(coreDeviceThingName, maxResu
 #' Retrieves a paginated list of the components that a AWS IoT Greengrass
 #' core device runs
 #'
+#' @description
 #' Retrieves a paginated list of the components that a AWS IoT Greengrass
 #' core device runs.
 #'
@@ -887,6 +901,7 @@ greengrassv2_list_installed_components <- function(coreDeviceThingName, maxResul
 
 #' Retrieves the list of tags for an AWS IoT Greengrass resource
 #'
+#' @description
 #' Retrieves the list of tags for an AWS IoT Greengrass resource.
 #'
 #' @usage
@@ -926,6 +941,7 @@ greengrassv2_list_tags_for_resource <- function(resourceArn) {
 #' Retrieves a list of components that meet the component, version, and
 #' platform requirements of a deployment
 #'
+#' @description
 #' Retrieves a list of components that meet the component, version, and
 #' platform requirements of a deployment. AWS IoT Greengrass core devices
 #' call this operation when they receive a deployment to identify the
@@ -995,6 +1011,7 @@ greengrassv2_resolve_component_candidates <- function(platform, componentCandida
 
 #' Adds tags to an AWS IoT Greengrass resource
 #'
+#' @description
 #' Adds tags to an AWS IoT Greengrass resource. If a tag already exists for
 #' the resource, this operation updates the tag's value.
 #'
@@ -1005,9 +1022,8 @@ greengrassv2_resolve_component_candidates <- function(platform, componentCandida
 #' [ARN](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 #' of the resource to tag.
 #' @param tags &#91;required&#93; A list of key-value pairs that contain metadata for the resource. For
-#' more information, see [Tag your
-#' resources](https://docs.aws.amazon.com/greengrass/v2/) in the *AWS IoT
-#' Greengrass V2 Developer Guide*.
+#' more information, see Tag your resources in the *AWS IoT Greengrass V2
+#' Developer Guide*.
 #'
 #' @section Request syntax:
 #' ```
@@ -1041,6 +1057,7 @@ greengrassv2_tag_resource <- function(resourceArn, tags) {
 
 #' Removes a tag from an AWS IoT Greengrass resource
 #'
+#' @description
 #' Removes a tag from an AWS IoT Greengrass resource.
 #'
 #' @usage

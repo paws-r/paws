@@ -23,8 +23,7 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 \description{
 Sets the state of a customer master key (CMK) to disabled. This change
 temporarily prevents use of the CMK for \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}.
-}
-\details{
+
 For more information about how key state affects the use of a CMK, see
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html}{How Key State Affects the Use of a Customer Master Key}
 in the \strong{AWS Key Management Service Developer Guide} .

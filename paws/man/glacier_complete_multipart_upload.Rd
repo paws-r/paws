@@ -39,8 +39,7 @@ After you upload an archive, you should save the archive ID returned to
 retrieve the archive at a later point. You can also get the vault
 inventory to obtain a list of archive IDs in a vault. For more
 information, see InitiateJob.
-}
-\details{
+
 In the request, you must include the computed SHA256 tree hash of the
 entire archive you have uploaded. For information about computing a
 SHA256 tree hash, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/checksum-calculations.html}{Computing Checksums}.

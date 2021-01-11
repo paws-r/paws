@@ -43,8 +43,7 @@ range. If your resource received fewer requests than the value of
 This is the latest version of \strong{AWS WAF}, named AWS WAFV2, released in
 November, 2019. For information, including how to migrate your AWS WAF
 resources from the prior release, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-}
-\details{
+
 Gets detailed information about a specified number of requests--a
 sample--that AWS WAF randomly selects from among the first 5,000
 requests that your AWS resource received during a time range that you

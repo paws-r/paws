@@ -22,8 +22,7 @@ value.}
 \description{
 Describes the IP address ranges that were specified in calls to
 ProvisionByoipCidr.
-}
-\details{
+
 To describe the address pools that were created when you provisioned the
 address ranges, use DescribePublicIpv4Pools or DescribeIpv6Pools.
 }

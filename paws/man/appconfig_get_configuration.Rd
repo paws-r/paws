@@ -41,8 +41,7 @@ in the \emph{AWS AppConfig User Guide}.}
 }
 \description{
 Receive information about a configuration.
-}
-\details{
+
 AWS AppConfig uses the value of the \code{ClientConfigurationVersion}
 parameter to identify the configuration version on your clients. If you
 don’t send \code{ClientConfigurationVersion} with each call to

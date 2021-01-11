@@ -13,8 +13,7 @@ rds_describe_db_snapshot_attributes(DBSnapshotIdentifier)
 \description{
 Returns a list of DB snapshot attribute names and values for a manual DB
 snapshot.
-}
-\details{
+
 When sharing snapshots with other AWS accounts,
 \code{DescribeDBSnapshotAttributes} returns the \code{restore} attribute and a
 list of IDs for the AWS accounts that are authorized to copy or restore

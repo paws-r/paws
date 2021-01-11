@@ -11,8 +11,7 @@ ses_delete_template(TemplateName)
 }
 \description{
 Deletes an email template.
-}
-\details{
+
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{

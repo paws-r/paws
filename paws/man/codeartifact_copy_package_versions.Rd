@@ -68,8 +68,7 @@ is false. For more information, see \href{https://docs.aws.amazon.com/codeartifa
 \description{
 Copies package versions from one repository to another repository in the
 same domain.
-}
-\details{
+
 You must specify \code{versions} or \code{versionRevisions}. You cannot specify
 both.
 }

@@ -25,8 +25,7 @@ Creates a backup of an existing Amazon FSx file system. Creating regular
 backups for your file system is a best practice, enabling you to restore
 a file system from a backup if an issue arises with the original file
 system.
-}
-\details{
+
 For Amazon FSx for Lustre file systems, you can create a backup only for
 file systems with the following configuration:
 \itemize{

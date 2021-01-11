@@ -35,8 +35,7 @@ Creates a new S3 bucket. To create a bucket, you must register with
 Amazon S3 and have a valid AWS Access Key ID to authenticate requests.
 Anonymous requests are never allowed to create buckets. By creating the
 bucket, you become the bucket owner.
-}
-\details{
+
 Not every string is an acceptable bucket name. For information about
 bucket naming restrictions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingBucket.html}{Working with Amazon S3 buckets}.
 

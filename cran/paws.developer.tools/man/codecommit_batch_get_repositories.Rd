@@ -14,8 +14,7 @@ itself can be empty.}
 }
 \description{
 Returns information about one or more repositories.
-}
-\details{
+
 The description field for a repository accepts all HTML characters and
 all valid Unicode characters. Applications that do not HTML-encode the
 description and display it in a webpage can expose users to potentially

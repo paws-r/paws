@@ -29,8 +29,7 @@ one \code{EVENT} \code{WebhookFilter}.}
 }
 \description{
 Updates the webhook associated with an AWS CodeBuild build project.
-}
-\details{
+
 If you use Bitbucket for your repository, \code{rotateSecret} is ignored.
 }
 \section{Request syntax}{

@@ -181,8 +181,7 @@ Simulate how a set of IAM policies and optionally a resource-based
 policy works with a list of API operations and AWS resources to
 determine the policies' effective permissions. The policies are provided
 as strings.
-}
-\details{
+
 The simulation does not perform the API operations; it only checks the
 authorization to determine if the simulated policies allow or deny the
 operations.

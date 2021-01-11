@@ -52,8 +52,7 @@ don't use it to provide sensitive information.
 \description{
 Updates the specified user's attributes, including developer attributes,
 as an administrator. Works on any user.
-}
-\details{
+
 For custom attributes, you must prepend the \verb{custom:} prefix to the
 attribute name.
 

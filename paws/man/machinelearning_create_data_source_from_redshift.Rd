@@ -60,8 +60,7 @@ Creates a \code{DataSource} from a database hosted on an Amazon Redshift
 cluster. A \code{DataSource} references data that can be used to perform
 either \code{CreateMLModel}, \code{CreateEvaluation}, or \code{CreateBatchPrediction}
 operations.
-}
-\details{
+
 \code{CreateDataSourceFromRedshift} is an asynchronous operation. In response
 to \code{CreateDataSourceFromRedshift}, Amazon Machine Learning (Amazon ML)
 immediately returns and sets the \code{DataSource} status to \code{PENDING}. After

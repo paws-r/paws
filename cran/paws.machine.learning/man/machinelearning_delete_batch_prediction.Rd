@@ -12,8 +12,7 @@ machinelearning_delete_batch_prediction(BatchPredictionId)
 \description{
 Assigns the DELETED status to a \code{BatchPrediction}, rendering it
 unusable.
-}
-\details{
+
 After using the \code{DeleteBatchPrediction} operation, you can use the
 GetBatchPrediction operation to verify that the status of the
 \code{BatchPrediction} changed to DELETED.

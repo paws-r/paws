@@ -25,8 +25,6 @@ Used to test if the caller has permission to make the call.}
 Associates a created artifact of an AWS cloud resource, the target
 receiving the migration, with the migration task performed by a
 migration tool. This API has the following traits:
-}
-\details{
 \itemize{
 \item Migration tools can call the \code{AssociateCreatedArtifact} operation to
 indicate which AWS artifact is associated with a migration task.

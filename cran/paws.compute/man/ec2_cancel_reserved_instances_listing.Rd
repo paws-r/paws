@@ -13,8 +13,7 @@ ec2_cancel_reserved_instances_listing(ReservedInstancesListingId)
 \description{
 Cancels the specified Reserved Instance listing in the Reserved Instance
 Marketplace.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html}{Reserved Instance Marketplace}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }

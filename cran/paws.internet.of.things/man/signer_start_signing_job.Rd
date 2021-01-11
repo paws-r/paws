@@ -25,8 +25,6 @@ that use this token return the same response as the first call.}
 Initiates a signing job to be performed on the code provided. Signing
 jobs are viewable by the \code{ListSigningJobs} operation for two years after
 they are performed. Note the following requirements:
-}
-\details{
 \itemize{
 \item You must create an Amazon S3 source bucket. For more information,
 see \href{https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html}{Create a Bucket}

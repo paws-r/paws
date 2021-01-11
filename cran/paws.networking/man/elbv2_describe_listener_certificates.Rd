@@ -18,8 +18,7 @@ previous call.)}
 \description{
 Describes the default certificate and the certificate list for the
 specified HTTPS or TLS listener.
-}
-\details{
+
 If the default certificate is also in the certificate list, it appears
 twice in the results (once with \code{IsDefault} set to true and once with
 \code{IsDefault} set to false).

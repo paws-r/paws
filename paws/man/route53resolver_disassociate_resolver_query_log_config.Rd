@@ -16,8 +16,7 @@ query logging configuration.}
 }
 \description{
 Disassociates a VPC from a query logging configuration.
-}
-\details{
+
 Before you can delete a query logging configuration, you must first
 disassociate all VPCs from the configuration. If you used Resource
 Access Manager (RAM) to share a query logging configuration with other

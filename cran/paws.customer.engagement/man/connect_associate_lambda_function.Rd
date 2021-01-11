@@ -16,8 +16,7 @@ Maximum number of characters allowed is 140.}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Allows the specified Amazon Connect instance to access the specified
 Lambda function.
 }

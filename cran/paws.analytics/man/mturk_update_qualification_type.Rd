@@ -57,8 +57,7 @@ The \code{UpdateQualificationType} operation modifies the attributes of an
 existing Qualification type, which is represented by a QualificationType
 data structure. Only the owner of a Qualification type can modify its
 attributes.
-}
-\details{
+
 Most attributes of a Qualification type can be changed after the type
 has been created. However, the Name and Keywords fields cannot be
 modified. The RetryDelayInSeconds parameter can be modified or added to

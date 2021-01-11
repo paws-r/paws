@@ -25,8 +25,7 @@ Lists the metrics configurations for the bucket. The metrics
 configurations are only for the request metrics of the bucket and do not
 provide information on daily storage metrics. You can have up to 1,000
 configurations per bucket.
-}
-\details{
+
 This operation supports list pagination and does not return more than
 100 configurations at a time. Always check the \code{IsTruncated} element in
 the response. If there are no more configurations to list, \code{IsTruncated}

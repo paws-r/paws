@@ -22,8 +22,7 @@ DescribeLoadBalancerPolicyTypes.}
 \description{
 Creates a policy with the specified attributes for the specified load
 balancer.
-}
-\details{
+
 Policies are settings that are saved for your load balancer and that can
 be applied to the listener or the application server, depending on the
 policy type.

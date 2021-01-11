@@ -85,8 +85,7 @@ in \emph{AWS General Reference}.}
 \description{
 Submits an AWS Batch job from a job definition. Parameters specified
 during SubmitJob override parameters defined in the job definition.
-}
-\details{
+
 Jobs run on Fargate resources don't run for more than 14 days. After 14
 days, the Fargate resources might no longer be available and the job is
 terminated.

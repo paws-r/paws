@@ -5,6 +5,7 @@ NULL
 
 #' Associates a customer gateway with a device and optionally, with a link
 #'
+#' @description
 #' Associates a customer gateway with a device and optionally, with a link.
 #' If you specify a link, it must be associated with the specified device.
 #' 
@@ -63,6 +64,7 @@ networkmanager_associate_customer_gateway <- function(CustomerGatewayArn, Global
 
 #' Associates a link to a device
 #'
+#' @description
 #' Associates a link to a device. A device can be associated to multiple
 #' links and a link can be associated to multiple devices. The device and
 #' link must be in the same global network and the same site.
@@ -106,6 +108,7 @@ networkmanager_associate_link <- function(GlobalNetworkId, DeviceId, LinkId) {
 #' Associates a transit gateway Connect peer with a device, and optionally,
 #' with a link
 #'
+#' @description
 #' Associates a transit gateway Connect peer with a device, and optionally,
 #' with a link. If you specify a link, it must be associated with the
 #' specified device.
@@ -157,6 +160,7 @@ networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkI
 
 #' Creates a connection between two devices
 #'
+#' @description
 #' Creates a connection between two devices. The devices can be a physical
 #' or virtual appliance that connects to a third-party appliance in a VPC,
 #' or a physical appliance that connects to another physical appliance in
@@ -216,6 +220,7 @@ networkmanager_create_connection <- function(GlobalNetworkId, DeviceId, Connecte
 
 #' Creates a new device in a global network
 #'
+#' @description
 #' Creates a new device in a global network. If you specify both a site ID
 #' and a location, the location of the site is used for visualization in
 #' the Network Manager console.
@@ -293,6 +298,7 @@ networkmanager_create_device <- function(GlobalNetworkId, AWSLocation = NULL, De
 
 #' Creates a new, empty global network
 #'
+#' @description
 #' Creates a new, empty global network.
 #'
 #' @usage
@@ -338,6 +344,7 @@ networkmanager_create_global_network <- function(Description = NULL, Tags = NULL
 
 #' Creates a new link for a specified site
 #'
+#' @description
 #' Creates a new link for a specified site.
 #'
 #' @usage
@@ -405,6 +412,7 @@ networkmanager_create_link <- function(GlobalNetworkId, Description = NULL, Type
 
 #' Creates a new site in a global network
 #'
+#' @description
 #' Creates a new site in a global network.
 #'
 #' @usage
@@ -466,6 +474,7 @@ networkmanager_create_site <- function(GlobalNetworkId, Description = NULL, Loca
 
 #' Deletes the specified connection in your global network
 #'
+#' @description
 #' Deletes the specified connection in your global network.
 #'
 #' @usage
@@ -504,6 +513,7 @@ networkmanager_delete_connection <- function(GlobalNetworkId, ConnectionId) {
 
 #' Deletes an existing device
 #'
+#' @description
 #' Deletes an existing device. You must first disassociate the device from
 #' any links and customer gateways.
 #'
@@ -543,6 +553,7 @@ networkmanager_delete_device <- function(GlobalNetworkId, DeviceId) {
 
 #' Deletes an existing global network
 #'
+#' @description
 #' Deletes an existing global network. You must first delete all global
 #' network objects (devices, links, and sites) and deregister all transit
 #' gateways.
@@ -581,6 +592,7 @@ networkmanager_delete_global_network <- function(GlobalNetworkId) {
 
 #' Deletes an existing link
 #'
+#' @description
 #' Deletes an existing link. You must first disassociate the link from any
 #' devices and customer gateways.
 #'
@@ -620,6 +632,7 @@ networkmanager_delete_link <- function(GlobalNetworkId, LinkId) {
 
 #' Deletes an existing site
 #'
+#' @description
 #' Deletes an existing site. The site cannot be associated with any device
 #' or link.
 #'
@@ -659,6 +672,7 @@ networkmanager_delete_site <- function(GlobalNetworkId, SiteId) {
 
 #' Deregisters a transit gateway from your global network
 #'
+#' @description
 #' Deregisters a transit gateway from your global network. This action does
 #' not delete your transit gateway, or modify any of its attachments. This
 #' action removes any customer gateway associations.
@@ -700,6 +714,7 @@ networkmanager_deregister_transit_gateway <- function(GlobalNetworkId, TransitGa
 
 #' Describes one or more global networks
 #'
+#' @description
 #' Describes one or more global networks. By default, all global networks
 #' are described. To describe the objects in your global network, you must
 #' use the appropriate `Get*` action. For example, to list the transit
@@ -746,6 +761,7 @@ networkmanager_describe_global_networks <- function(GlobalNetworkIds = NULL, Max
 
 #' Disassociates a customer gateway from a device and a link
 #'
+#' @description
 #' Disassociates a customer gateway from a device and a link.
 #'
 #' @usage
@@ -787,6 +803,7 @@ networkmanager_disassociate_customer_gateway <- function(GlobalNetworkId, Custom
 
 #' Disassociates an existing device from a link
 #'
+#' @description
 #' Disassociates an existing device from a link. You must first
 #' disassociate any customer gateways that are associated with the link.
 #'
@@ -828,6 +845,7 @@ networkmanager_disassociate_link <- function(GlobalNetworkId, DeviceId, LinkId) 
 
 #' Disassociates a transit gateway Connect peer from a device and link
 #'
+#' @description
 #' Disassociates a transit gateway Connect peer from a device and link.
 #'
 #' @usage
@@ -868,6 +886,7 @@ networkmanager_disassociate_transit_gateway_connect_peer <- function(GlobalNetwo
 #' Gets information about one or more of your connections in a global
 #' network
 #'
+#' @description
 #' Gets information about one or more of your connections in a global
 #' network.
 #'
@@ -917,6 +936,7 @@ networkmanager_get_connections <- function(GlobalNetworkId, ConnectionIds = NULL
 #' Gets the association information for customer gateways that are
 #' associated with devices and links in your global network
 #'
+#' @description
 #' Gets the association information for customer gateways that are
 #' associated with devices and links in your global network.
 #'
@@ -966,6 +986,7 @@ networkmanager_get_customer_gateway_associations <- function(GlobalNetworkId, Cu
 
 #' Gets information about one or more of your devices in a global network
 #'
+#' @description
 #' Gets information about one or more of your devices in a global network.
 #'
 #' @usage
@@ -1013,6 +1034,7 @@ networkmanager_get_devices <- function(GlobalNetworkId, DeviceIds = NULL, SiteId
 
 #' Gets the link associations for a device or a link
 #'
+#' @description
 #' Gets the link associations for a device or a link. Either the device ID
 #' or the link ID must be specified.
 #'
@@ -1059,6 +1081,7 @@ networkmanager_get_link_associations <- function(GlobalNetworkId, DeviceId = NUL
 
 #' Gets information about one or more links in a specified global network
 #'
+#' @description
 #' Gets information about one or more links in a specified global network.
 #' 
 #' If you specify the site ID, you cannot specify the type or provider in
@@ -1114,6 +1137,7 @@ networkmanager_get_links <- function(GlobalNetworkId, LinkIds = NULL, SiteId = N
 
 #' Gets information about one or more of your sites in a global network
 #'
+#' @description
 #' Gets information about one or more of your sites in a global network.
 #'
 #' @usage
@@ -1160,6 +1184,7 @@ networkmanager_get_sites <- function(GlobalNetworkId, SiteIds = NULL, MaxResults
 #' Gets information about one or more of your transit gateway Connect peer
 #' associations in a global network
 #'
+#' @description
 #' Gets information about one or more of your transit gateway Connect peer
 #' associations in a global network.
 #'
@@ -1207,6 +1232,7 @@ networkmanager_get_transit_gateway_connect_peer_associations <- function(GlobalN
 #' Gets information about the transit gateway registrations in a specified
 #' global network
 #'
+#' @description
 #' Gets information about the transit gateway registrations in a specified
 #' global network.
 #'
@@ -1254,6 +1280,7 @@ networkmanager_get_transit_gateway_registrations <- function(GlobalNetworkId, Tr
 
 #' Lists the tags for a specified resource
 #'
+#' @description
 #' Lists the tags for a specified resource.
 #'
 #' @usage
@@ -1290,6 +1317,7 @@ networkmanager_list_tags_for_resource <- function(ResourceArn) {
 
 #' Registers a transit gateway in your global network
 #'
+#' @description
 #' Registers a transit gateway in your global network. The transit gateway
 #' can be in any AWS Region, but it must be owned by the same AWS account
 #' that owns the global network. You cannot register a transit gateway in
@@ -1334,6 +1362,7 @@ networkmanager_register_transit_gateway <- function(GlobalNetworkId, TransitGate
 
 #' Tags a specified resource
 #'
+#' @description
 #' Tags a specified resource.
 #'
 #' @usage
@@ -1377,6 +1406,7 @@ networkmanager_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes tags from a specified resource
 #'
+#' @description
 #' Removes tags from a specified resource.
 #'
 #' @usage
@@ -1417,6 +1447,7 @@ networkmanager_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates the information for an existing connection
 #'
+#' @description
 #' Updates the information for an existing connection. To remove
 #' information for any of the parameters, specify an empty string.
 #'
@@ -1465,6 +1496,7 @@ networkmanager_update_connection <- function(GlobalNetworkId, ConnectionId, Link
 
 #' Updates the details for an existing device
 #'
+#' @description
 #' Updates the details for an existing device. To remove information for
 #' any of the parameters, specify an empty string.
 #'
@@ -1536,6 +1568,7 @@ networkmanager_update_device <- function(GlobalNetworkId, DeviceId, AWSLocation 
 
 #' Updates an existing global network
 #'
+#' @description
 #' Updates an existing global network. To remove information for any of the
 #' parameters, specify an empty string.
 #'
@@ -1577,6 +1610,7 @@ networkmanager_update_global_network <- function(GlobalNetworkId, Description = 
 
 #' Updates the details for an existing link
 #'
+#' @description
 #' Updates the details for an existing link. To remove information for any
 #' of the parameters, specify an empty string.
 #'
@@ -1634,6 +1668,7 @@ networkmanager_update_link <- function(GlobalNetworkId, LinkId, Description = NU
 
 #' Updates the information for an existing site
 #'
+#' @description
 #' Updates the information for an existing site. To remove information for
 #' any of the parameters, specify an empty string.
 #'

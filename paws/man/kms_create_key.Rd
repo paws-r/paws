@@ -174,8 +174,7 @@ permission in an IAM policy.}
 \description{
 Creates a unique customer managed \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master-keys}{customer master key}
 (CMK) in your AWS account and Region.
-}
-\details{
+
 You can use the \code{CreateKey} operation to create symmetric or asymmetric
 CMKs.
 \itemize{

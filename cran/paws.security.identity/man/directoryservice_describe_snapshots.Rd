@@ -24,8 +24,7 @@ DescribeSnapshots. Pass null if this is the first call.}
 \description{
 Obtains information about the directory snapshots that belong to this
 account.
-}
-\details{
+
 This operation supports pagination with the use of the \emph{NextToken}
 request and response parameters. If more results are available, the
 \emph{DescribeSnapshots.NextToken} member contains a token that you pass in

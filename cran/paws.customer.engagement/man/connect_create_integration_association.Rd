@@ -24,8 +24,7 @@ connect_create_integration_association(InstanceId, IntegrationType,
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Create an AppIntegration association with an Amazon Connect instance.
 }
 \section{Request syntax}{

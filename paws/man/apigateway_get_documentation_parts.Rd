@@ -26,7 +26,7 @@ and the maximum value is 500.}
 \code{UNDOCUMENTED} for DocumentationPart resources without content.}
 }
 \description{
-Get documentation parts
+
 }
 \section{Request syntax}{
 \preformatted{svc$get_documentation_parts(

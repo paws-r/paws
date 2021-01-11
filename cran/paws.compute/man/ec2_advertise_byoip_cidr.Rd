@@ -20,8 +20,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Advertises an IPv4 or IPv6 address range that is provisioned for use
 with your AWS resources through bring your own IP addresses (BYOIP).
-}
-\details{
+
 You can perform this operation at most once every 10 seconds, even if
 you specify different address ranges each time.
 

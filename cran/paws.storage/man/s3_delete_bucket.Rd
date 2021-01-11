@@ -17,8 +17,7 @@ different account, the request will fail with an HTTP
 Deletes the S3 bucket. All objects (including all object versions and
 delete markers) in the bucket must be deleted before the bucket itself
 can be deleted.
-}
-\details{
+
 \strong{Related Resources}
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}

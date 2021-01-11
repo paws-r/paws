@@ -28,8 +28,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Attaches the specified VPC to the specified transit gateway.
-}
-\details{
+
 If you attach a VPC with a CIDR range that overlaps the CIDR range of a
 VPC that is already attached, the new VPC CIDR range is not propagated
 to the default propagation route table.

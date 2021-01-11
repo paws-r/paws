@@ -19,8 +19,7 @@ which can achieve higher throughput per producer than when writing
 single records. To write single data records into a delivery stream, use
 PutRecord. Applications using these operations are referred to as
 producers.
-}
-\details{
+
 For information about service quota, see \href{https://docs.aws.amazon.com/firehose/latest/dev/limits.html}{Amazon Kinesis Data Firehose Quota}.
 
 Each PutRecordBatch request supports up to 500 records. Each record in

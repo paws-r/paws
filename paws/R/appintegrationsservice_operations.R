@@ -6,6 +6,7 @@ NULL
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change
 #'
+#' @description
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change.
 #' 
@@ -66,6 +67,7 @@ appintegrationsservice_create_event_integration <- function(Name, Description = 
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change
 #'
+#' @description
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change.
 #' 
@@ -107,6 +109,7 @@ appintegrationsservice_delete_event_integration <- function(Name) {
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change
 #'
+#' @description
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change.
 #' 
@@ -147,6 +150,7 @@ appintegrationsservice_get_event_integration <- function(Name) {
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change
 #'
+#' @description
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change.
 #' 
@@ -195,6 +199,7 @@ appintegrationsservice_list_event_integration_associations <- function(EventInte
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change
 #'
+#' @description
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change.
 #' 
@@ -239,6 +244,7 @@ appintegrationsservice_list_event_integrations <- function(NextToken = NULL, Max
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change
 #'
+#' @description
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change.
 #' 
@@ -279,6 +285,7 @@ appintegrationsservice_list_tags_for_resource <- function(resourceArn) {
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change
 #'
+#' @description
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change.
 #' 
@@ -323,6 +330,7 @@ appintegrationsservice_tag_resource <- function(resourceArn, tags) {
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change
 #'
+#' @description
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change.
 #' 
@@ -367,6 +375,7 @@ appintegrationsservice_untag_resource <- function(resourceArn, tagKeys) {
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change
 #'
+#' @description
 #' The Amazon AppIntegrations APIs are in preview release and are subject
 #' to change.
 #' 

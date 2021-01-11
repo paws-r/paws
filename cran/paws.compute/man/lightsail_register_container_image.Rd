@@ -39,8 +39,7 @@ version number will be \code{3}, and so on.}
 }
 \description{
 Registers a container image to your Amazon Lightsail container service.
-}
-\details{
+
 This action is not required if you install and use the Lightsail Control
 (lightsailctl) plugin to push container images to your Lightsail
 container service. For more information, see Pushing and managing

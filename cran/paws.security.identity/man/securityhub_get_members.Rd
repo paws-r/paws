@@ -14,8 +14,7 @@ the details for.}
 \description{
 Returns the details for the Security Hub member accounts for the
 specified account IDs.
-}
-\details{
+
 A master account can be either a delegated Security Hub administrator
 account for an organization or a master account that enabled Security
 Hub manually.

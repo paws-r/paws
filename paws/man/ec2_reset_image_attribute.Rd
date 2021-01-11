@@ -19,8 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Resets an attribute of an AMI to its default value.
-}
-\details{
+
 The productCodes attribute can't be reset.
 }
 \section{Request syntax}{

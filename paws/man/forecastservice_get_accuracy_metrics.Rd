@@ -15,8 +15,7 @@ Provides metrics on the accuracy of the models that were trained by the
 CreatePredictor operation. Use metrics to see how well the model
 performed and to decide whether to use the predictor to generate a
 forecast. For more information, see \href{https://docs.aws.amazon.com/forecast/latest/dg/metrics.html}{Predictor Metrics}.
-}
-\details{
+
 This operation generates metrics for each backtest window that was
 evaluated. The number of backtest windows (\code{NumberOfBacktestWindows}) is
 specified using the EvaluationParameters object, which is optionally

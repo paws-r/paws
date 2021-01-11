@@ -29,8 +29,7 @@ with other AWS resources. You can peer with VPCs in any AWS account that
 you have access to, including the account that you use to manage your
 Amazon GameLift fleets. You cannot peer with VPCs that are in different
 Regions. For more information, see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.
-}
-\details{
+
 Before calling this operation to establish the peering connection, you
 first need to call CreateVpcPeeringAuthorization and identify the VPC
 you want to peer with. Once the authorization for the specified VPC is

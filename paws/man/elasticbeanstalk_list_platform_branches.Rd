@@ -53,8 +53,7 @@ If no \code{NextToken} is specified, the first page is retrieved.}
 \description{
 Lists the platform branches available for your account in an AWS Region.
 Provides summary information about each platform branch.
-}
-\details{
+
 For definitions of platform branch and other platform-related terms, see
 \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html}{AWS Elastic Beanstalk Platforms Glossary}.
 }

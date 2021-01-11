@@ -6,6 +6,7 @@ NULL
 #' Accepts an Amazon Macie membership invitation that was received from a
 #' specific account
 #'
+#' @description
 #' Accepts an Amazon Macie membership invitation that was received from a
 #' specific account.
 #'
@@ -45,6 +46,7 @@ macie2_accept_invitation <- function(invitationId, masterAccount) {
 
 #' Retrieves information about one or more custom data identifiers
 #'
+#' @description
 #' Retrieves information about one or more custom data identifiers.
 #'
 #' @usage
@@ -84,6 +86,7 @@ macie2_batch_get_custom_data_identifiers <- function(ids = NULL) {
 
 #' Creates and defines the settings for a classification job
 #'
+#' @description
 #'  <p>Creates and defines the settings for a classification job.</p>
 #'
 #' @usage
@@ -235,6 +238,7 @@ macie2_create_classification_job <- function(clientToken, customDataIdentifierId
 #' Creates and defines the criteria and other settings for a custom data
 #' identifier
 #'
+#' @description
 #' Creates and defines the criteria and other settings for a custom data
 #' identifier.
 #'
@@ -325,6 +329,7 @@ macie2_create_custom_data_identifier <- function(clientToken = NULL, description
 #' Creates and defines the criteria and other settings for a findings
 #' filter
 #'
+#' @description
 #' Creates and defines the criteria and other settings for a findings
 #' filter.
 #'
@@ -419,6 +424,7 @@ macie2_create_findings_filter <- function(action, clientToken = NULL, descriptio
 
 #' Sends an Amazon Macie membership invitation to one or more accounts
 #'
+#' @description
 #'  <p>Sends an Amazon Macie membership invitation to one or more accounts.</p>
 #'
 #' @usage
@@ -467,6 +473,7 @@ macie2_create_invitations <- function(accountIds, disableEmailNotification = NUL
 
 #' Associates an account with an Amazon Macie master account
 #'
+#' @description
 #'  <p>Associates an account with an Amazon Macie master account.</p>
 #'
 #' @usage
@@ -515,6 +522,7 @@ macie2_create_member <- function(account, tags = NULL) {
 
 #' Creates sample findings
 #'
+#' @description
 #'  <p>Creates sample findings.</p>
 #'
 #' @usage
@@ -556,6 +564,7 @@ macie2_create_sample_findings <- function(findingTypes = NULL) {
 #' Declines Amazon Macie membership invitations that were received from
 #' specific accounts
 #'
+#' @description
 #' Declines Amazon Macie membership invitations that were received from
 #' specific accounts.
 #'
@@ -596,6 +605,7 @@ macie2_decline_invitations <- function(accountIds) {
 
 #' Soft deletes a custom data identifier
 #'
+#' @description
 #' Soft deletes a custom data identifier.
 #'
 #' @usage
@@ -633,6 +643,7 @@ macie2_delete_custom_data_identifier <- function(id) {
 
 #' Deletes a findings filter
 #'
+#' @description
 #' Deletes a findings filter.
 #'
 #' @usage
@@ -671,6 +682,7 @@ macie2_delete_findings_filter <- function(id) {
 #' Deletes Amazon Macie membership invitations that were received from
 #' specific accounts
 #'
+#' @description
 #' Deletes Amazon Macie membership invitations that were received from
 #' specific accounts.
 #'
@@ -712,6 +724,7 @@ macie2_delete_invitations <- function(accountIds) {
 #' Deletes the association between an Amazon Macie master account and an
 #' account
 #'
+#' @description
 #' Deletes the association between an Amazon Macie master account and an
 #' account.
 #'
@@ -751,6 +764,7 @@ macie2_delete_member <- function(id) {
 #' Retrieves (queries) statistical data and other information about one or
 #' more S3 buckets that Amazon Macie monitors and analyzes
 #'
+#' @description
 #'  <p>Retrieves (queries) statistical data and other information about one or more S3 buckets that Amazon Macie monitors and analyzes.</p>
 #'
 #' @usage
@@ -812,6 +826,7 @@ macie2_describe_buckets <- function(criteria = NULL, maxResults = NULL, nextToke
 
 #' Retrieves the status and settings for a classification job
 #'
+#' @description
 #' Retrieves the status and settings for a classification job.
 #'
 #' @usage
@@ -849,6 +864,7 @@ macie2_describe_classification_job <- function(jobId) {
 #' Retrieves the Amazon Macie configuration settings for an AWS
 #' organization
 #'
+#' @description
 #' Retrieves the Amazon Macie configuration settings for an AWS
 #' organization.
 #'
@@ -883,6 +899,7 @@ macie2_describe_organization_configuration <- function() {
 #' Disables an Amazon Macie account and deletes Macie resources for the
 #' account
 #'
+#' @description
 #' Disables an Amazon Macie account and deletes Macie resources for the
 #' account.
 #'
@@ -917,6 +934,7 @@ macie2_disable_macie <- function() {
 #' Disables an account as the delegated Amazon Macie administrator account
 #' for an AWS organization
 #'
+#' @description
 #' Disables an account as the delegated Amazon Macie administrator account
 #' for an AWS organization.
 #'
@@ -954,6 +972,7 @@ macie2_disable_organization_admin_account <- function(adminAccountId) {
 
 #' Disassociates a member account from its Amazon Macie master account
 #'
+#' @description
 #' Disassociates a member account from its Amazon Macie master account.
 #'
 #' @usage
@@ -986,6 +1005,7 @@ macie2_disassociate_from_master_account <- function() {
 
 #' Disassociates an Amazon Macie master account from a member account
 #'
+#' @description
 #' Disassociates an Amazon Macie master account from a member account.
 #'
 #' @usage
@@ -1024,6 +1044,7 @@ macie2_disassociate_member <- function(id) {
 #' Enables Amazon Macie and specifies the configuration settings for a
 #' Macie account
 #'
+#' @description
 #' Enables Amazon Macie and specifies the configuration settings for a
 #' Macie account.
 #'
@@ -1068,6 +1089,7 @@ macie2_enable_macie <- function(clientToken = NULL, findingPublishingFrequency =
 #' Designates an account as the delegated Amazon Macie administrator
 #' account for an AWS organization
 #'
+#' @description
 #' Designates an account as the delegated Amazon Macie administrator
 #' account for an AWS organization.
 #'
@@ -1110,6 +1132,7 @@ macie2_enable_organization_admin_account <- function(adminAccountId, clientToken
 #' Retrieves (queries) aggregated statistical data for all the S3 buckets
 #' that Amazon Macie monitors and analyzes
 #'
+#' @description
 #'  <p>Retrieves (queries) aggregated statistical data for all the S3 buckets that Amazon Macie monitors and analyzes.</p>
 #'
 #' @usage
@@ -1147,6 +1170,7 @@ macie2_get_bucket_statistics <- function(accountId = NULL) {
 #' Retrieves the configuration settings for storing data classification
 #' results
 #'
+#' @description
 #' Retrieves the configuration settings for storing data classification
 #' results.
 #'
@@ -1180,6 +1204,7 @@ macie2_get_classification_export_configuration <- function() {
 
 #' Retrieves the criteria and other settings for a custom data identifier
 #'
+#' @description
 #' Retrieves the criteria and other settings for a custom data identifier.
 #'
 #' @usage
@@ -1217,6 +1242,7 @@ macie2_get_custom_data_identifier <- function(id) {
 
 #' Retrieves (queries) aggregated statistical data about findings
 #'
+#' @description
 #'  <p>Retrieves (queries) aggregated statistical data about findings.</p>
 #'
 #' @usage
@@ -1294,6 +1320,7 @@ macie2_get_finding_statistics <- function(findingCriteria = NULL, groupBy, size 
 
 #' Retrieves the details of one or more findings
 #'
+#' @description
 #' Retrieves the details of one or more findings.
 #'
 #' @usage
@@ -1338,6 +1365,7 @@ macie2_get_findings <- function(findingIds, sortCriteria = NULL) {
 
 #' Retrieves the criteria and other settings for a findings filter
 #'
+#' @description
 #' Retrieves the criteria and other settings for a findings filter.
 #'
 #' @usage
@@ -1376,6 +1404,7 @@ macie2_get_findings_filter <- function(id) {
 #' Retrieves the count of Amazon Macie membership invitations that were
 #' received by an account
 #'
+#' @description
 #' Retrieves the count of Amazon Macie membership invitations that were
 #' received by an account.
 #'
@@ -1410,6 +1439,7 @@ macie2_get_invitations_count <- function() {
 #' Retrieves the current status and configuration settings for an Amazon
 #' Macie account
 #'
+#' @description
 #' Retrieves the current status and configuration settings for an Amazon
 #' Macie account.
 #'
@@ -1444,6 +1474,7 @@ macie2_get_macie_session <- function() {
 #' Retrieves information about the Amazon Macie master account for an
 #' account
 #'
+#' @description
 #' Retrieves information about the Amazon Macie master account for an
 #' account.
 #'
@@ -1478,6 +1509,7 @@ macie2_get_master_account <- function() {
 #' Retrieves information about a member account that's associated with an
 #' Amazon Macie master account
 #'
+#' @description
 #' Retrieves information about a member account that's associated with an
 #' Amazon Macie master account.
 #'
@@ -1517,6 +1549,7 @@ macie2_get_member <- function(id) {
 #' Retrieves (queries) quotas and aggregated usage data for one or more
 #' accounts
 #'
+#' @description
 #' Retrieves (queries) quotas and aggregated usage data for one or more
 #' accounts.
 #'
@@ -1574,6 +1607,7 @@ macie2_get_usage_statistics <- function(filterBy = NULL, maxResults = NULL, next
 
 #' Retrieves (queries) aggregated usage data for an account
 #'
+#' @description
 #' Retrieves (queries) aggregated usage data for an account.
 #'
 #' @usage
@@ -1606,6 +1640,7 @@ macie2_get_usage_totals <- function() {
 
 #' Retrieves a subset of information about one or more classification jobs
 #'
+#' @description
 #' Retrieves a subset of information about one or more classification jobs.
 #'
 #' @usage
@@ -1673,6 +1708,7 @@ macie2_list_classification_jobs <- function(filterCriteria = NULL, maxResults = 
 #' Retrieves a subset of information about all the custom data identifiers
 #' for an account
 #'
+#' @description
 #' Retrieves a subset of information about all the custom data identifiers
 #' for an account.
 #'
@@ -1713,6 +1749,7 @@ macie2_list_custom_data_identifiers <- function(maxResults = NULL, nextToken = N
 
 #' Retrieves a subset of information about one or more findings
 #'
+#' @description
 #'  <p>Retrieves a subset of information about one or more findings.</p>
 #'
 #' @usage
@@ -1779,6 +1816,7 @@ macie2_list_findings <- function(findingCriteria = NULL, maxResults = NULL, next
 #' Retrieves a subset of information about all the findings filters for an
 #' account
 #'
+#' @description
 #' Retrieves a subset of information about all the findings filters for an
 #' account.
 #'
@@ -1821,6 +1859,7 @@ macie2_list_findings_filters <- function(maxResults = NULL, nextToken = NULL) {
 #' Retrieves information about all the Amazon Macie membership invitations
 #' that were received by an account
 #'
+#' @description
 #' Retrieves information about all the Amazon Macie membership invitations
 #' that were received by an account.
 #'
@@ -1863,6 +1902,7 @@ macie2_list_invitations <- function(maxResults = NULL, nextToken = NULL) {
 #' Retrieves information about the accounts that are associated with an
 #' Amazon Macie master account
 #'
+#' @description
 #' Retrieves information about the accounts that are associated with an
 #' Amazon Macie master account.
 #'
@@ -1910,6 +1950,7 @@ macie2_list_members <- function(maxResults = NULL, nextToken = NULL, onlyAssocia
 #' Retrieves information about the delegated Amazon Macie administrator
 #' account for an AWS organization
 #'
+#' @description
 #' Retrieves information about the delegated Amazon Macie administrator
 #' account for an AWS organization.
 #'
@@ -1953,6 +1994,7 @@ macie2_list_organization_admin_accounts <- function(maxResults = NULL, nextToken
 #' classification job, custom data identifier, findings filter, or member
 #' account
 #'
+#' @description
 #' Retrieves the tags (keys and values) that are associated with a
 #' classification job, custom data identifier, findings filter, or member
 #' account.
@@ -1993,6 +2035,7 @@ macie2_list_tags_for_resource <- function(resourceArn) {
 #' Creates or updates the configuration settings for storing data
 #' classification results
 #'
+#' @description
 #' Creates or updates the configuration settings for storing data
 #' classification results.
 #'
@@ -2039,6 +2082,7 @@ macie2_put_classification_export_configuration <- function(configuration) {
 #' with a classification job, custom data identifier, findings filter, or
 #' member account
 #'
+#' @description
 #' Adds or updates one or more tags (keys and values) that are associated
 #' with a classification job, custom data identifier, findings filter, or
 #' member account.
@@ -2087,6 +2131,7 @@ macie2_tag_resource <- function(resourceArn, tags) {
 
 #' Tests a custom data identifier
 #'
+#' @description
 #' Tests a custom data identifier.
 #'
 #' @usage
@@ -2150,6 +2195,7 @@ macie2_test_custom_data_identifier <- function(ignoreWords = NULL, keywords = NU
 #' Removes one or more tags (keys and values) from a classification job,
 #' custom data identifier, findings filter, or member account
 #'
+#' @description
 #' Removes one or more tags (keys and values) from a classification job,
 #' custom data identifier, findings filter, or member account.
 #'
@@ -2194,6 +2240,7 @@ macie2_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Changes the status of a classification job
 #'
+#' @description
 #' Changes the status of a classification job.
 #'
 #' @usage
@@ -2261,6 +2308,7 @@ macie2_update_classification_job <- function(jobId, jobStatus) {
 
 #' Updates the criteria and other settings for a findings filter
 #'
+#' @description
 #' Updates the criteria and other settings for a findings filter.
 #'
 #' @usage
@@ -2346,6 +2394,7 @@ macie2_update_findings_filter <- function(action = NULL, description = NULL, fin
 #' Suspends or re-enables an Amazon Macie account, or updates the
 #' configuration settings for a Macie account
 #'
+#' @description
 #' Suspends or re-enables an Amazon Macie account, or updates the
 #' configuration settings for a Macie account.
 #'
@@ -2388,6 +2437,7 @@ macie2_update_macie_session <- function(findingPublishingFrequency = NULL, statu
 #' Enables an Amazon Macie master account to suspend or re-enable a member
 #' account
 #'
+#' @description
 #'  <p>Enables an Amazon Macie master account to suspend or re-enable a member account.</p>
 #'
 #' @usage
@@ -2429,6 +2479,7 @@ macie2_update_member_session <- function(id, status) {
 
 #' Updates the Amazon Macie configuration settings for an AWS organization
 #'
+#' @description
 #' Updates the Amazon Macie configuration settings for an AWS organization.
 #'
 #' @usage

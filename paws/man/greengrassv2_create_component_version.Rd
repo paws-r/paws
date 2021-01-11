@@ -19,8 +19,8 @@ You must specify either \code{inlineRecipe} or \code{lambdaFunction}.}
 You must specify either \code{inlineRecipe} or \code{lambdaFunction}.}
 
 \item{tags}{A list of key-value pairs that contain metadata for the resource. For
-more information, see \href{https://docs.aws.amazon.com/greengrass/v2/}{Tag your resources} in the \emph{AWS IoT
-Greengrass V2 Developer Guide}.}
+more information, see Tag your resources in the \emph{AWS IoT Greengrass V2
+Developer Guide}.}
 }
 \description{
 Creates a component. Components are software that run on AWS IoT
@@ -28,8 +28,7 @@ Greengrass core devices. After you develop and test a component on your
 core device, you can use this operation to upload your component to AWS
 IoT Greengrass. Then, you can deploy the component to other core
 devices.
-}
-\details{
+
 You can use this operation to do the following:
 \itemize{
 \item \strong{Create components from recipes}

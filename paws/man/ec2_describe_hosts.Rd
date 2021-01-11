@@ -41,8 +41,7 @@ request.}
 }
 \description{
 Describes the specified Dedicated Hosts or all your Dedicated Hosts.
-}
-\details{
+
 The results describe only the Dedicated Hosts in the Region you're
 currently using. All listed instances consume capacity on your Dedicated
 Host. Dedicated Hosts that have recently been released are listed with

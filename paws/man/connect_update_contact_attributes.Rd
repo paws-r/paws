@@ -24,8 +24,7 @@ underscore characters.}
 \description{
 Creates or updates the contact attributes associated with the specified
 contact.
-}
-\details{
+
 You can add or update attributes for both ongoing and completed
 contacts. For example, you can update the customer's name or the reason
 the customer called while the call is active, or add notes about steps

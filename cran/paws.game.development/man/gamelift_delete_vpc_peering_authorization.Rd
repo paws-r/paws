@@ -21,8 +21,6 @@ Management Console. Learn more about VPC peering in \href{https://docs.aws.amazo
 Cancels a pending VPC peering authorization for the specified VPC. If
 you need to delete an existing VPC peering connection, call
 DeleteVpcPeeringConnection.
-}
-\details{
 \itemize{
 \item CreateVpcPeeringAuthorization
 \item DescribeVpcPeeringAuthorizations

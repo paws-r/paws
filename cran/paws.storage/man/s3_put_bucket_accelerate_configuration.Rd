@@ -20,8 +20,7 @@ different account, the request will fail with an HTTP
 Sets the accelerate configuration of an existing bucket. Amazon S3
 Transfer Acceleration is a bucket-level feature that enables you to
 perform faster data transfers to Amazon S3.
-}
-\details{
+
 To use this operation, you must have permission to perform the
 s3:PutAccelerateConfiguration action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to

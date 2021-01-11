@@ -13,8 +13,7 @@ appintegrationsservice_delete_event_integration(Name)
 \description{
 The Amazon AppIntegrations APIs are in preview release and are subject
 to change.
-}
-\details{
+
 Deletes the specified existing event integration. If the event
 integration is associated with clients, the request is rejected.
 }

@@ -11,8 +11,7 @@ comprehend_stop_entities_detection_job(JobId)
 }
 \description{
 Stops an entities detection job in progress.
-}
-\details{
+
 If the job state is \code{IN_PROGRESS} the job is marked for termination and
 put into the \code{STOP_REQUESTED} state. If the job completes before it can
 be stopped, it is put into the \code{COMPLETED} state; otherwise the job is

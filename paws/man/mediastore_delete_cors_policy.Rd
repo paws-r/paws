@@ -13,8 +13,7 @@ mediastore_delete_cors_policy(ContainerName)
 \description{
 Deletes the cross-origin resource sharing (CORS) configuration
 information that is set for the container.
-}
-\details{
+
 To use this operation, you must have permission to perform the
 \code{MediaStore:DeleteCorsPolicy} action. The container owner has this
 permission by default and can grant this permission to others.

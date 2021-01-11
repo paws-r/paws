@@ -21,8 +21,7 @@ download.}
 Retrieves the pre-signed Amazon S3 download URL corresponding to an
 image layer. You can only get URLs for image layers that are referenced
 in an image.
-}
-\details{
+
 When an image is pulled, the GetDownloadUrlForLayer API is called once
 per image layer that is not already cached.
 

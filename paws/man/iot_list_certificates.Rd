@@ -16,8 +16,7 @@ ascending order, based on the creation date.}
 }
 \description{
 Lists the certificates registered in your AWS account.
-}
-\details{
+
 The results are paginated with a default page size of 25. You can use
 the returned marker to retrieve additional results.
 }

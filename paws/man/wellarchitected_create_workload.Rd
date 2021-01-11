@@ -40,8 +40,7 @@ wellarchitected_create_workload(WorkloadName, Description, Environment,
 }
 \description{
 Create a new workload.
-}
-\details{
+
 The owner of a workload can share the workload with other AWS accounts
 and IAM users in the same AWS Region. Only the owner of a workload can
 delete it.

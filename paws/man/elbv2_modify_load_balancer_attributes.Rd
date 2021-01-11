@@ -15,8 +15,7 @@ elbv2_modify_load_balancer_attributes(LoadBalancerArn, Attributes)
 \description{
 Modifies the specified attributes of the specified Application Load
 Balancer, Network Load Balancer, or Gateway Load Balancer.
-}
-\details{
+
 If any of the specified attributes can't be modified as requested, the
 call fails. Any existing attributes that you do not modify retain their
 current values.

@@ -35,8 +35,7 @@ on the load balancer or target group.}
 \description{
 Deregisters an Amazon ECS container instance from the specified cluster.
 This instance is no longer available to run tasks.
-}
-\details{
+
 If you intend to use the container instance for some other purpose after
 deregistration, you should stop all of the tasks running on the
 container instance before deregistration. That prevents any orphaned

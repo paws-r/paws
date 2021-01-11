@@ -14,8 +14,7 @@ appstream_untag_resource(ResourceArn, TagKeys)
 \description{
 Disassociates one or more specified tags from the specified AppStream
 2.0 resource.
-}
-\details{
+
 To list the current tags for your resources, use ListTagsForResource.
 
 For more information about tags, see \href{https://docs.aws.amazon.com/appstream2/latest/developerguide/tagging-basic.html}{Tagging Your Resources}

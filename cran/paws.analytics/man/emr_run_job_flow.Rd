@@ -168,8 +168,7 @@ the last step of the job flow to store results in Amazon S3. If the
 JobFlowInstancesConfig \code{KeepJobFlowAliveWhenNoSteps} parameter is set to
 \code{TRUE}, the cluster transitions to the WAITING state rather than
 shutting down after the steps have completed.
-}
-\details{
+
 For additional protection, you can set the JobFlowInstancesConfig
 \code{TerminationProtected} parameter to \code{TRUE} to lock the cluster and
 prevent it from being terminated by API call, user intervention, or in

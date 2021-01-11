@@ -16,8 +16,7 @@ details about how to track and manage content delivery. Send a \code{POST}
 request to the
 \verb{/<i>CloudFront API version</i>/distribution}/\verb{distribution ID}
 resource.
-}
-\details{
+
 When you update a distribution, there are more required fields than when
 you create a distribution. When you update your distribution by using
 \href{https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html}{UpdateDistribution},

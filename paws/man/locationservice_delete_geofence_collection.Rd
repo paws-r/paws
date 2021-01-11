@@ -11,8 +11,7 @@ locationservice_delete_geofence_collection(CollectionName)
 }
 \description{
 Deletes a geofence collection from your AWS account.
-}
-\details{
+
 This action deletes the resource permanently. You can't undo this
 action. If the geofence collection is the target of a tracker resource,
 the devices will no longer be monitored.

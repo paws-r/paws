@@ -14,8 +14,7 @@ to.}
 }
 \description{
 Detaches a specified Elastic Load Balancing instance from its layer.
-}
-\details{
+
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user permissions,

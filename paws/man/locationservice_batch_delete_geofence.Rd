@@ -13,8 +13,7 @@ locationservice_batch_delete_geofence(CollectionName, GeofenceIds)
 }
 \description{
 Deletes a batch of geofences from a geofence collection.
-}
-\details{
+
 This action deletes the resource permanently. You can't undo this
 action.
 }

@@ -28,8 +28,7 @@ example, \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z).}
 Purchases a Reserved Instance for use with your account. With Reserved
 Instances, you pay a lower hourly rate compared to On-Demand instance
 pricing.
-}
-\details{
+
 Use DescribeReservedInstancesOfferings to get a list of Reserved
 Instance offerings that match your specifications. After you've
 purchased a Reserved Instance, you can check for your new Reserved

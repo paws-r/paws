@@ -23,8 +23,7 @@ already passed.}
 }
 \description{
 Modifies the settings for a snapshot.
-}
-\details{
+
 This exanmple modifies the manual retention period setting for a cluster
 snapshot.
 }

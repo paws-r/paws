@@ -19,8 +19,7 @@ deployments. Otherwise, it returns a description of every deployment.}
 }
 \description{
 Requests a description of a specified set of deployments.
-}
-\details{
+
 This call accepts only one resource-identifying parameter.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a

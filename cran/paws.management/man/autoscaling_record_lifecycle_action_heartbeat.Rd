@@ -24,8 +24,7 @@ hook.}
 Records a heartbeat for the lifecycle action associated with the
 specified token or instance. This extends the timeout by the length of
 time defined using the PutLifecycleHook API call.
-}
-\details{
+
 This step is a part of the procedure for adding a lifecycle hook to an
 Auto Scaling group:
 \enumerate{

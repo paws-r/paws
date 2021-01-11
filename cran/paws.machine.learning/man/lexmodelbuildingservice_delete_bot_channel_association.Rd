@@ -19,8 +19,7 @@ which this association is being made.}
 \description{
 Deletes the association between an Amazon Lex bot and a messaging
 platform.
-}
-\details{
+
 This operation requires permission for the
 \code{lex:DeleteBotChannelAssociation} action.
 }

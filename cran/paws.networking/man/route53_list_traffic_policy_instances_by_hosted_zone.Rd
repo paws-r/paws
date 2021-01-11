@@ -46,8 +46,7 @@ return if you submit another request.}
 \description{
 Gets information about the traffic policy instances that you created in
 a specified hosted zone.
-}
-\details{
+
 After you submit a \code{CreateTrafficPolicyInstance} or an
 \code{UpdateTrafficPolicyInstance} request, there's a brief delay while
 Amazon Route 53 creates the resource record sets that are specified in

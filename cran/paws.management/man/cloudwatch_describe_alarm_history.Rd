@@ -35,8 +35,7 @@ Retrieves the history for the specified alarm. You can filter the
 results by date range or item type. If an alarm name is not specified,
 the histories for either all metric alarms or all composite alarms are
 returned.
-}
-\details{
+
 CloudWatch retains the history of an alarm even if you delete the alarm.
 }
 \section{Request syntax}{

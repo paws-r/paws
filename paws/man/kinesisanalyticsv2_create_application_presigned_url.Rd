@@ -20,8 +20,7 @@ Currently, the only valid extension URL type is \code{FLINK_DASHBOARD_URL}.}
 Creates and returns a URL that you can use to connect to an
 application's extension. Currently, the only available extension is the
 Apache Flink dashboard.
-}
-\details{
+
 The IAM role or user used to call this API defines the permissions to
 access the extension. Once the presigned URL is created, no additional
 permission is required to access this URL. IAM authorization policies

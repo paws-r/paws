@@ -20,8 +20,7 @@ use.}
 }
 \description{
 Detects anomalies in an image that you supply.
-}
-\details{
+
 The response from \code{DetectAnomalies} includes a boolean prediction that
 the image contains one or more anomalies and a confidence value for the
 prediction.

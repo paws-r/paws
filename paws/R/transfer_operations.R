@@ -6,6 +6,7 @@ NULL
 #' Instantiates an autoscaling virtual server based on the selected file
 #' transfer protocol in AWS
 #'
+#' @description
 #' Instantiates an autoscaling virtual server based on the selected file
 #' transfer protocol in AWS. When you make updates to your file transfer
 #' protocol-enabled server or when you work with users, use the
@@ -178,6 +179,7 @@ transfer_create_server <- function(Certificate = NULL, Domain = NULL, EndpointDe
 #' Creates a user and associates them with an existing file transfer
 #' protocol-enabled server
 #'
+#' @description
 #' Creates a user and associates them with an existing file transfer
 #' protocol-enabled server. You can only create and associate users with
 #' servers that have the `IdentityProviderType` set to `SERVICE_MANAGED`.
@@ -314,6 +316,7 @@ transfer_create_user <- function(HomeDirectory = NULL, HomeDirectoryType = NULL,
 
 #' Deletes the file transfer protocol-enabled server that you specify
 #'
+#' @description
 #' Deletes the file transfer protocol-enabled server that you specify.
 #' 
 #' No response returns from this operation.
@@ -352,6 +355,7 @@ transfer_delete_server <- function(ServerId) {
 
 #' Deletes a user's Secure Shell (SSH) public key
 #'
+#' @description
 #' Deletes a user's Secure Shell (SSH) public key.
 #' 
 #' No response is returned from this operation.
@@ -397,6 +401,7 @@ transfer_delete_ssh_public_key <- function(ServerId, SshPublicKeyId, UserName) {
 #' Deletes the user belonging to a file transfer protocol-enabled server
 #' you specify
 #'
+#' @description
 #' Deletes the user belonging to a file transfer protocol-enabled server
 #' you specify.
 #' 
@@ -443,6 +448,7 @@ transfer_delete_user <- function(ServerId, UserName) {
 #' Describes the security policy that is attached to your file transfer
 #' protocol-enabled server
 #'
+#' @description
 #' Describes the security policy that is attached to your file transfer
 #' protocol-enabled server. The response contains a description of the
 #' security policy's properties. For more information about security
@@ -485,6 +491,7 @@ transfer_describe_security_policy <- function(SecurityPolicyName) {
 #' Describes a file transfer protocol-enabled server that you specify by
 #' passing the ServerId parameter
 #'
+#' @description
 #' Describes a file transfer protocol-enabled server that you specify by
 #' passing the `ServerId` parameter.
 #' 
@@ -527,6 +534,7 @@ transfer_describe_server <- function(ServerId) {
 #' Describes the user assigned to the specific file transfer
 #' protocol-enabled server, as identified by its ServerId property
 #'
+#' @description
 #' Describes the user assigned to the specific file transfer
 #' protocol-enabled server, as identified by its `ServerId` property.
 #' 
@@ -574,6 +582,7 @@ transfer_describe_user <- function(ServerId, UserName) {
 #' UserName value assigned to the specific file transfer protocol-enabled
 #' server, identified by ServerId
 #'
+#' @description
 #' Adds a Secure Shell (SSH) public key to a user account identified by a
 #' `UserName` value assigned to the specific file transfer protocol-enabled
 #' server, identified by `ServerId`.
@@ -620,6 +629,7 @@ transfer_import_ssh_public_key <- function(ServerId, SshPublicKeyBody, UserName)
 #' Lists the security policies that are attached to your file transfer
 #' protocol-enabled servers
 #'
+#' @description
 #' Lists the security policies that are attached to your file transfer
 #' protocol-enabled servers.
 #'
@@ -664,6 +674,7 @@ transfer_list_security_policies <- function(MaxResults = NULL, NextToken = NULL)
 #' Lists the file transfer protocol-enabled servers that are associated
 #' with your AWS account
 #'
+#' @description
 #' Lists the file transfer protocol-enabled servers that are associated
 #' with your AWS account.
 #'
@@ -708,6 +719,7 @@ transfer_list_servers <- function(MaxResults = NULL, NextToken = NULL) {
 #' Lists all of the tags associated with the Amazon Resource Number (ARN)
 #' you specify
 #'
+#' @description
 #' Lists all of the tags associated with the Amazon Resource Number (ARN)
 #' you specify. The resource can be a user, server, or role.
 #'
@@ -756,6 +768,7 @@ transfer_list_tags_for_resource <- function(Arn, MaxResults = NULL, NextToken = 
 #' Lists the users for a file transfer protocol-enabled server that you
 #' specify by passing the ServerId parameter
 #'
+#' @description
 #' Lists the users for a file transfer protocol-enabled server that you
 #' specify by passing the `ServerId` parameter.
 #'
@@ -803,6 +816,7 @@ transfer_list_users <- function(MaxResults = NULL, NextToken = NULL, ServerId) {
 #' Changes the state of a file transfer protocol-enabled server from
 #' OFFLINE to ONLINE
 #'
+#' @description
 #' Changes the state of a file transfer protocol-enabled server from
 #' `OFFLINE` to `ONLINE`. It has no impact on a server that is already
 #' `ONLINE`. An `ONLINE` server can accept and process file transfer jobs.
@@ -848,6 +862,7 @@ transfer_start_server <- function(ServerId) {
 #' Changes the state of a file transfer protocol-enabled server from ONLINE
 #' to OFFLINE
 #'
+#' @description
 #' Changes the state of a file transfer protocol-enabled server from
 #' `ONLINE` to `OFFLINE`. An `OFFLINE` server cannot accept and process
 #' file transfer jobs. Information tied to your server, such as server and
@@ -898,6 +913,7 @@ transfer_stop_server <- function(ServerId) {
 #' Attaches a key-value pair to a resource, as identified by its Amazon
 #' Resource Name (ARN)
 #'
+#' @description
 #' Attaches a key-value pair to a resource, as identified by its Amazon
 #' Resource Name (ARN). Resources are users, servers, roles, and other
 #' entities.
@@ -949,6 +965,7 @@ transfer_tag_resource <- function(Arn, Tags) {
 #' If the IdentityProviderType of a file transfer protocol-enabled server
 #' is API_Gateway, tests whether your API Gateway is set up successfully
 #'
+#' @description
 #' If the `IdentityProviderType` of a file transfer protocol-enabled server
 #' is `API_Gateway`, tests whether your API Gateway is set up successfully.
 #' We highly recommend that you call this operation to test your
@@ -1009,6 +1026,7 @@ transfer_test_identity_provider <- function(ServerId, ServerProtocol = NULL, Sou
 #' Detaches a key-value pair from a resource, as identified by its Amazon
 #' Resource Name (ARN)
 #'
+#' @description
 #' Detaches a key-value pair from a resource, as identified by its Amazon
 #' Resource Name (ARN). Resources are users, servers, roles, and other
 #' entities.
@@ -1058,6 +1076,7 @@ transfer_untag_resource <- function(Arn, TagKeys) {
 #' Updates the file transfer protocol-enabled server's properties after
 #' that server has been created
 #'
+#' @description
 #' Updates the file transfer protocol-enabled server's properties after
 #' that server has been created.
 #' 
@@ -1214,6 +1233,7 @@ transfer_update_server <- function(Certificate = NULL, EndpointDetails = NULL, E
 
 #' Assigns new properties to a user
 #'
+#' @description
 #' Assigns new properties to a user. Parameters you pass modify any or all
 #' of the following: the home directory, role, and policy for the
 #' `UserName` and `ServerId` you specify.

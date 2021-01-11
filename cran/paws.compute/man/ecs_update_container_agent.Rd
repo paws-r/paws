@@ -21,8 +21,7 @@ running tasks or services on the container instance. The process for
 updating the agent differs depending on whether your container instance
 was launched with the Amazon ECS-optimized AMI or another operating
 system.
-}
-\details{
+
 \code{UpdateContainerAgent} requires the Amazon ECS-optimized AMI or Amazon
 Linux with the \code{ecs-init} service installed and running. For help
 updating the Amazon ECS container agent on other operating systems, see

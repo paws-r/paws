@@ -13,8 +13,7 @@ rekognition_delete_collection(CollectionId)
 Deletes the specified collection. Note that this operation removes all
 faces in the collection. For an example, see
 delete-collection-procedure.
-}
-\details{
+
 This operation requires permissions to perform the
 \code{rekognition:DeleteCollection} action.
 }

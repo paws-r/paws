@@ -5,6 +5,7 @@ NULL
 
 #' Associates a device with a concrete thing that is in the user's registry
 #'
+#' @description
 #' Associates a device with a concrete thing that is in the user's
 #' registry.
 #' 
@@ -56,6 +57,7 @@ iotthingsgraph_associate_entity_to_thing <- function(thingName, entityId, namesp
 
 #' Creates a workflow template
 #'
+#' @description
 #' Creates a workflow template. Workflows can be created only in the user's
 #' namespace. (The public namespace contains only entities.) The workflow
 #' can contain only entities in the specified namespace. The workflow is
@@ -104,6 +106,7 @@ iotthingsgraph_create_flow_template <- function(definition, compatibleNamespaceV
 
 #' Creates a system instance
 #'
+#' @description
 #' Creates a system instance.
 #' 
 #' This action validates the system instance, prepares the
@@ -195,6 +198,7 @@ iotthingsgraph_create_system_instance <- function(tags = NULL, definition, targe
 
 #' Creates a system
 #'
+#' @description
 #' Creates a system. The system is validated against the entities in the
 #' latest version of the user's namespace unless another namespace version
 #' is specified in the request.
@@ -241,6 +245,7 @@ iotthingsgraph_create_system_template <- function(definition, compatibleNamespac
 
 #' Deletes a workflow
 #'
+#' @description
 #' Deletes a workflow. Any new system or deployment that contains this
 #' workflow will fail to update or deploy. Existing deployments that
 #' contain the workflow will continue to run (since they use a snapshot of
@@ -284,6 +289,7 @@ iotthingsgraph_delete_flow_template <- function(id) {
 
 #' Deletes the specified namespace
 #'
+#' @description
 #' Deletes the specified namespace. This action deletes all of the entities
 #' in the namespace. Delete the systems and flows that use entities in the
 #' namespace before performing this action.
@@ -318,6 +324,7 @@ iotthingsgraph_delete_namespace <- function() {
 
 #' Deletes a system instance
 #'
+#' @description
 #' Deletes a system instance. Only system instances that have never been
 #' deployed, or that have been undeployed can be deleted.
 #' 
@@ -358,6 +365,7 @@ iotthingsgraph_delete_system_instance <- function(id = NULL) {
 
 #' Deletes a system
 #'
+#' @description
 #' Deletes a system. New deployments can't contain the system after its
 #' deletion. Existing deployments that contain the system will continue to
 #' work because they use a snapshot of the system that is taken when it is
@@ -402,6 +410,7 @@ iotthingsgraph_delete_system_template <- function(id) {
 #' Greengrass and Cloud Deployments Deploys the system instance to the
 #' target specified in CreateSystemInstance
 #'
+#' @description
 #' **Greengrass and Cloud Deployments**
 #' 
 #' Deploys the system instance to the target specified in
@@ -461,6 +470,7 @@ iotthingsgraph_deploy_system_instance <- function(id = NULL) {
 
 #' Deprecates the specified workflow
 #'
+#' @description
 #' Deprecates the specified workflow. This action marks the workflow for
 #' deletion. Deprecated flows can't be deployed, but existing deployments
 #' will continue to run.
@@ -503,6 +513,7 @@ iotthingsgraph_deprecate_flow_template <- function(id) {
 
 #' Deprecates the specified system
 #'
+#' @description
 #' Deprecates the specified system.
 #'
 #' @usage
@@ -544,6 +555,7 @@ iotthingsgraph_deprecate_system_template <- function(id) {
 #' Gets the latest version of the user's namespace and the public version
 #' that it is tracking
 #'
+#' @description
 #' Gets the latest version of the user's namespace and the public version
 #' that it is tracking.
 #'
@@ -582,6 +594,7 @@ iotthingsgraph_describe_namespace <- function(namespaceName = NULL) {
 
 #' Dissociates a device entity from a concrete thing
 #'
+#' @description
 #' Dissociates a device entity from a concrete thing. The action takes only
 #' the type of the entity that you need to dissociate because only one
 #' entity of a particular type can be associated with a thing.
@@ -622,6 +635,7 @@ iotthingsgraph_dissociate_entity_from_thing <- function(thingName, entityType) {
 
 #' Gets definitions of the specified entities
 #'
+#' @description
 #' Gets definitions of the specified entities. Uses the latest version of
 #' the user's namespace by default. This API returns the following TDM
 #' entities.
@@ -691,6 +705,7 @@ iotthingsgraph_get_entities <- function(ids, namespaceVersion = NULL) {
 #' Gets the latest version of the DefinitionDocument and
 #' FlowTemplateSummary for the specified workflow
 #'
+#' @description
 #' Gets the latest version of the `DefinitionDocument` and
 #' `FlowTemplateSummary` for the specified workflow.
 #'
@@ -734,6 +749,7 @@ iotthingsgraph_get_flow_template <- function(id, revisionNumber = NULL) {
 
 #' Gets revisions of the specified workflow
 #'
+#' @description
 #' Gets revisions of the specified workflow. Only the last 100 revisions
 #' are stored. If the workflow has been deprecated, this action will return
 #' revisions that occurred before the deprecation. This action won't work
@@ -782,6 +798,7 @@ iotthingsgraph_get_flow_template_revisions <- function(id, nextToken = NULL, max
 
 #' Gets the status of a namespace deletion task
 #'
+#' @description
 #' Gets the status of a namespace deletion task.
 #'
 #' @usage
@@ -814,6 +831,7 @@ iotthingsgraph_get_namespace_deletion_status <- function() {
 
 #' Gets a system instance
 #'
+#' @description
 #' Gets a system instance.
 #'
 #' @usage
@@ -855,6 +873,7 @@ iotthingsgraph_get_system_instance <- function(id) {
 
 #' Gets a system
 #'
+#' @description
 #' Gets a system.
 #'
 #' @usage
@@ -897,6 +916,7 @@ iotthingsgraph_get_system_template <- function(id, revisionNumber = NULL) {
 
 #' Gets revisions made to the specified system template
 #'
+#' @description
 #' Gets revisions made to the specified system template. Only the previous
 #' 100 revisions are stored. If the system has been deprecated, this action
 #' will return the revisions that occurred before its deprecation. This
@@ -945,6 +965,7 @@ iotthingsgraph_get_system_template_revisions <- function(id, nextToken = NULL, m
 
 #' Gets the status of the specified upload
 #'
+#' @description
 #' Gets the status of the specified upload.
 #'
 #' @usage
@@ -983,6 +1004,7 @@ iotthingsgraph_get_upload_status <- function(uploadId) {
 #' Returns a list of objects that contain information about events in a
 #' flow execution
 #'
+#' @description
 #' Returns a list of objects that contain information about events in a
 #' flow execution.
 #'
@@ -1026,6 +1048,7 @@ iotthingsgraph_list_flow_execution_messages <- function(flowExecutionId, nextTok
 
 #' Lists all tags on an AWS IoT Things Graph resource
 #'
+#' @description
 #' Lists all tags on an AWS IoT Things Graph resource.
 #'
 #' @usage
@@ -1068,6 +1091,7 @@ iotthingsgraph_list_tags_for_resource <- function(maxResults = NULL, resourceArn
 
 #' Searches for entities of the specified type
 #'
+#' @description
 #' Searches for entities of the specified type. You can search for entities
 #' in your namespace and the public namespace that you're tracking.
 #'
@@ -1132,6 +1156,7 @@ iotthingsgraph_search_entities <- function(entityTypes, filters = NULL, nextToke
 
 #' Searches for AWS IoT Things Graph workflow execution instances
 #'
+#' @description
 #' Searches for AWS IoT Things Graph workflow execution instances.
 #'
 #' @usage
@@ -1184,6 +1209,7 @@ iotthingsgraph_search_flow_executions <- function(systemInstanceId, flowExecutio
 
 #' Searches for summary information about workflows
 #'
+#' @description
 #' Searches for summary information about workflows.
 #'
 #' @usage
@@ -1233,6 +1259,7 @@ iotthingsgraph_search_flow_templates <- function(filters = NULL, nextToken = NUL
 
 #' Searches for system instances in the user's account
 #'
+#' @description
 #' Searches for system instances in the user's account.
 #'
 #' @usage
@@ -1285,6 +1312,7 @@ iotthingsgraph_search_system_instances <- function(filters = NULL, nextToken = N
 
 #' Searches for summary information about systems in the user's account
 #'
+#' @description
 #' Searches for summary information about systems in the user's account.
 #' You can filter by the ID of a workflow to return only systems that use
 #' the specified workflow.
@@ -1336,6 +1364,7 @@ iotthingsgraph_search_system_templates <- function(filters = NULL, nextToken = N
 
 #' Searches for things associated with the specified entity
 #'
+#' @description
 #' Searches for things associated with the specified entity. You can search
 #' by both device and device model.
 #' 
@@ -1394,6 +1423,7 @@ iotthingsgraph_search_things <- function(entityId, nextToken = NULL, maxResults 
 
 #' Creates a tag for the specified resource
 #'
+#' @description
 #' Creates a tag for the specified resource.
 #'
 #' @usage
@@ -1437,6 +1467,7 @@ iotthingsgraph_tag_resource <- function(resourceArn, tags) {
 
 #' Removes a system instance from its target (Cloud or Greengrass)
 #'
+#' @description
 #' Removes a system instance from its target (Cloud or Greengrass).
 #'
 #' @usage
@@ -1473,6 +1504,7 @@ iotthingsgraph_undeploy_system_instance <- function(id = NULL) {
 
 #' Removes a tag from the specified resource
 #'
+#' @description
 #' Removes a tag from the specified resource.
 #'
 #' @usage
@@ -1521,6 +1553,7 @@ iotthingsgraph_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates the specified workflow
 #'
+#' @description
 #' Updates the specified workflow. All deployed systems and system
 #' instances that use the workflow will see the changes in the flow when it
 #' is redeployed. If you don't want this behavior, copy the workflow
@@ -1577,6 +1610,7 @@ iotthingsgraph_update_flow_template <- function(id, definition, compatibleNamesp
 
 #' Updates the specified system
 #'
+#' @description
 #' Updates the specified system. You don't need to run this action after
 #' updating a workflow. Any deployment that uses the system will see the
 #' changes in the system when it is redeployed.
@@ -1631,6 +1665,7 @@ iotthingsgraph_update_system_template <- function(id, definition, compatibleName
 #' Asynchronously uploads one or more entity definitions to the user's
 #' namespace
 #'
+#' @description
 #' Asynchronously uploads one or more entity definitions to the user's
 #' namespace. The `document` parameter is required if
 #' `syncWithPublicNamespace` and `deleteExistingEntites` are false. If the

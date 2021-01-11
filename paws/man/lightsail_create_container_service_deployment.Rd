@@ -18,8 +18,7 @@ container service.}
 }
 \description{
 Creates a deployment for your Amazon Lightsail container service.
-}
-\details{
+
 A deployment specifies the containers that will be launched on the
 container service and their settings, such as the ports to open, the
 environment variables to apply, and the launch command to run. It also
@@ -29,8 +28,8 @@ the health check configuration.
 
 You can deploy containers to your container service using container
 images from a public registry like Docker Hub, or from your local
-machine. For more information, see \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-creating-container-images}{Creating container images for your Amazon Lightsail container services}
-in the \emph{Lightsail Dev Guide}.
+machine. For more information, see Creating container images for your
+Amazon Lightsail container services in the \emph{Lightsail Dev Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$create_container_service_deployment(

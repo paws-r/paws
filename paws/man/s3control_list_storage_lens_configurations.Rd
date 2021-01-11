@@ -15,8 +15,7 @@ s3control_list_storage_lens_configurations(AccountId, NextToken)
 Gets a list of Amazon S3 Storage Lens configurations. For more
 information about S3 Storage Lens, see Working with Amazon S3 Storage
 Lens in the \emph{Amazon Simple Storage Service Developer Guide}.
-}
-\details{
+
 To use this action, you must have permission to perform the
 \code{s3:ListStorageLensConfigurations} action. For more information, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/storage_lens.html#storage_lens_IAM}{Setting permissions to use Amazon S3 Storage Lens}

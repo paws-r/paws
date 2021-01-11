@@ -28,8 +28,7 @@ history and creates a decision task for the workflow execution
 identified by the given domain, workflowId and runId. The event is
 recorded with the specified user defined signalName and input (if
 provided).
-}
-\details{
+
 If a runId isn't specified, then the \code{WorkflowExecutionSignaled} event
 is recorded in the history of the current open workflow with the
 matching workflowId in the domain.

@@ -31,8 +31,7 @@ shorter than this duration.}
 }
 \description{
 Updates a mission profile.
-}
-\details{
+
 Updating a mission profile will not update the execution parameters for
 existing future contacts.
 }

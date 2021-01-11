@@ -17,8 +17,7 @@ in the current AWS Region. You can use this operation in conjunction
 with Amazon CloudWatch alarms to temporarily pause email sending across
 your Amazon SES account in a given AWS Region when reputation metrics
 (such as your bounce or complaint rates) reach certain thresholds.
-}
-\details{
+
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{

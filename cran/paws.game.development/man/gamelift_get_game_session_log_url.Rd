@@ -15,8 +15,7 @@ Retrieves the location of stored game session logs for a specified game
 session. When a game session is terminated, Amazon GameLift
 automatically stores the logs in Amazon S3 and retains them for 14 days.
 Use this URL to download the logs.
-}
-\details{
+
 See the \href{https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_gamelift}{AWS Service Limits}
 page for maximum log file sizes. Log files that exceed this limit are
 not saved.

@@ -28,8 +28,7 @@ or ARN of the consumer that you want to deregister, you can use the
 ListStreamConsumers operation to get a list of the descriptions of all
 the consumers that are currently registered with a given data stream.
 The description of a consumer contains its name and ARN.
-}
-\details{
+
 This operation has a limit of five transactions per second per stream.
 }
 \section{Request syntax}{

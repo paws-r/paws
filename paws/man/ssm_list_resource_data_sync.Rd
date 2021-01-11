@@ -23,8 +23,7 @@ next set of results.}
 Lists your resource data sync configurations. Includes information about
 the last time a sync attempted to start, the last sync status, and the
 last time a sync successfully completed.
-}
-\details{
+
 The number of sync configurations might be too large to return using a
 single call to \code{ListResourceDataSync}. You can limit the number of sync
 configurations returned by using the \code{MaxResults} parameter. To

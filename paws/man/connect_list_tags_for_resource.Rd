@@ -11,8 +11,7 @@ connect_list_tags_for_resource(resourceArn)
 }
 \description{
 Lists the tags for the specified resource.
-}
-\details{
+
 For sample policies that use tags, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/security_iam_id-based-policy-examples.html}{Amazon Connect Identity-Based Policy Examples}
 in the \emph{Amazon Connect Administrator Guide}.
 }

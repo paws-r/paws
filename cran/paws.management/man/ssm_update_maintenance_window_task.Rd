@@ -108,8 +108,6 @@ request. Optional fields that are not specified are set to null.}
 \description{
 Modifies a task assigned to a maintenance window. You can't change the
 task type, but you can change the following values:
-}
-\details{
 \itemize{
 \item TaskARN. For example, you can change a RUN\\_COMMAND task from
 AWS-RunPowerShellScript to AWS-RunShellScript.

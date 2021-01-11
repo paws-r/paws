@@ -35,8 +35,7 @@ training.}
 Creates a \code{DataSource} object. A \code{DataSource} references data that can
 be used to perform \code{CreateMLModel}, \code{CreateEvaluation}, or
 \code{CreateBatchPrediction} operations.
-}
-\details{
+
 \code{CreateDataSourceFromS3} is an asynchronous operation. In response to
 \code{CreateDataSourceFromS3}, Amazon Machine Learning (Amazon ML)
 immediately returns and sets the \code{DataSource} status to \code{PENDING}. After

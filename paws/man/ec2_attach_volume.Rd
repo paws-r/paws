@@ -23,8 +23,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Attaches an EBS volume to a running or stopped instance and exposes it
 to the instance with the specified device name.
-}
-\details{
+
 Encrypted EBS volumes must be attached to instances that support Amazon
 EBS encryption. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html}{Amazon EBS encryption}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

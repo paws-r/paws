@@ -11,8 +11,7 @@ personalize_describe_recipe(recipeArn)
 }
 \description{
 Describes a recipe.
-}
-\details{
+
 A recipe contains three items:
 \itemize{
 \item An algorithm that trains a model.

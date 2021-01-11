@@ -14,8 +14,7 @@ Account.}
 \description{
 Deletes the specified identity (an email address or a domain) from the
 list of verified identities.
-}
-\details{
+
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{

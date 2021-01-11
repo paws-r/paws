@@ -35,8 +35,7 @@ is \code{CLOUD}.}
 }
 \description{
 Creates a system instance.
-}
-\details{
+
 This action validates the system instance, prepares the
 deployment-related resources. For Greengrass deployments, it updates the
 Greengrass group that is specified by the \code{greengrassGroupName}

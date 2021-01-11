@@ -13,8 +13,7 @@ stack.}
 }
 \description{
 Requests a description of one or more stacks.
-}
-\details{
+
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information about

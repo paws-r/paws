@@ -18,8 +18,7 @@ frauddetector_update_model_version_status(modelId, modelType,
 }
 \description{
 Updates the status of a model version.
-}
-\details{
+
 You can perform the following status updates:
 \enumerate{
 \item Change the \code{TRAINING_COMPLETE} status to \code{ACTIVE}.

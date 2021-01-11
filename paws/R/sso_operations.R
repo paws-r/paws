@@ -6,6 +6,7 @@ NULL
 #' Returns the STS short-term credentials for a given role name that is
 #' assigned to the user
 #'
+#' @description
 #' Returns the STS short-term credentials for a given role name that is
 #' assigned to the user.
 #'
@@ -50,6 +51,7 @@ sso_get_role_credentials <- function(roleName, accountId, accessToken) {
 
 #' Lists all roles that are assigned to the user for a given AWS account
 #'
+#' @description
 #' Lists all roles that are assigned to the user for a given AWS account.
 #'
 #' @usage
@@ -96,6 +98,7 @@ sso_list_account_roles <- function(nextToken = NULL, maxResults = NULL, accessTo
 
 #' Lists all AWS accounts assigned to the user
 #'
+#' @description
 #' Lists all AWS accounts assigned to the user. These AWS accounts are
 #' assigned by the administrator of the account. For more information, see
 #' [Assign User
@@ -146,6 +149,7 @@ sso_list_accounts <- function(nextToken = NULL, maxResults = NULL, accessToken) 
 #' Removes the client- and server-side session that is associated with the
 #' user
 #'
+#' @description
 #' Removes the client- and server-side session that is associated with the
 #' user.
 #'

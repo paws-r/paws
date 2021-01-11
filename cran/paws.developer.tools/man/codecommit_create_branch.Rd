@@ -15,8 +15,7 @@ codecommit_create_branch(repositoryName, branchName, commitId)
 }
 \description{
 Creates a branch in a repository and points the branch to a commit.
-}
-\details{
+
 Calling the create branch operation does not set a repository's default
 branch. To do this, call the update default branch operation.
 }

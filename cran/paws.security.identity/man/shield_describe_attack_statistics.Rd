@@ -14,8 +14,7 @@ detected in the last year for all resources that belong to your account,
 regardless of whether you've defined Shield protections for them. This
 operation is available to Shield customers as well as to Shield Advanced
 customers.
-}
-\details{
+
 The operation returns data for the time range of midnight UTC, one year
 ago, to midnight UTC, today. For example, if the current time is
 \verb{2020-10-26 15:39:32 PDT}, equal to \verb{2020-10-26 22:39:32 UTC}, then the

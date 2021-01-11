@@ -48,8 +48,7 @@ idempotency of the request.}
 \description{
 Updates the Kubernetes version or AMI version of an Amazon EKS managed
 node group.
-}
-\details{
+
 You can update a node group using a launch template only if the node
 group was originally deployed with a launch template. If you need to
 update a custom AMI in a node group that was deployed with a launch

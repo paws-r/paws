@@ -28,8 +28,7 @@ if any.}
 \description{
 The CreatePreset operation creates a preset with settings that you
 specify.
-}
-\details{
+
 Elastic Transcoder checks the CreatePreset settings to ensure that they
 meet Elastic Transcoder requirements and to determine whether they
 comply with H.264 standards. If your settings are not valid for Elastic

@@ -20,8 +20,7 @@ Provides an endpoint for the specified signaling channel to send and
 receive messages. This API uses the
 \code{SingleMasterChannelEndpointConfiguration} input parameter, which
 consists of the \code{Protocols} and \code{Role} properties.
-}
-\details{
+
 \code{Protocols} is used to determine the communication mechanism. For
 example, if you specify \code{WSS} as the protocol, this API produces a
 secure websocket endpoint. If you specify \code{HTTPS} as the protocol, this

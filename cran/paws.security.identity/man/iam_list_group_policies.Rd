@@ -32,8 +32,7 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the names of the inline policies that are embedded in the
 specified IAM group.
-}
-\details{
+
 An IAM group can also have managed policies attached to it. To list the
 managed policies that are attached to a group, use
 ListAttachedGroupPolicies. For more information about policies, see

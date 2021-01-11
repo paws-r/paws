@@ -26,8 +26,7 @@ The \code{AssociateQualificationWithWorker} operation gives a Worker a
 Qualification. \code{AssociateQualificationWithWorker} does not require that
 the Worker submit a Qualification request. It gives the Qualification
 directly to the Worker.
-}
-\details{
+
 You can only assign a Qualification of a Qualification type that you
 created (using the \code{CreateQualificationType} operation).
 

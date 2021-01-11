@@ -32,8 +32,7 @@ Uploads an X.509 signing certificate and associates it with the
 specified IAM user. Some AWS services use X.509 signing certificates to
 validate requests that are signed with a corresponding private key. When
 you upload the certificate, its default status is \code{Active}.
-}
-\details{
+
 If the \code{UserName} is not specified, the IAM user name is determined
 implicitly based on the AWS access key ID used to sign the request. This
 operation works for access keys under the AWS account. Consequently, you

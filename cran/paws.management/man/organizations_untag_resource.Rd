@@ -24,8 +24,7 @@ similar to: \verb{p-<i>12abcdefg3</i> }
 }
 \description{
 Removes any tags with the specified keys from the specified resource.
-}
-\details{
+
 You can attach tags to the following resources in AWS Organizations.
 \itemize{
 \item AWS account

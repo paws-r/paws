@@ -15,8 +15,7 @@ keys.}
 }
 \description{
 Deletes tags from a specified resource group.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

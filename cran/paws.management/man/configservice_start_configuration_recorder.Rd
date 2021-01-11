@@ -14,8 +14,7 @@ made to the resources.}
 \description{
 Starts recording configurations of the AWS resources you have selected
 to record in your AWS account.
-}
-\details{
+
 You must have created at least one delivery channel to successfully
 start the configuration recorder.
 }

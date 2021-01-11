@@ -32,8 +32,7 @@ vault. An in-progress multipart upload is a multipart upload that has
 been initiated by an InitiateMultipartUpload request, but has not yet
 been completed or aborted. The list returned in the List Multipart
 Upload response has no guaranteed order.
-}
-\details{
+
 The List Multipart Uploads operation supports pagination. By default,
 this operation returns up to 50 multipart uploads in the response. You
 should always check the response for a \code{marker} at which to continue the

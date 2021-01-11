@@ -35,8 +35,7 @@ truncated response you just received.}
 \description{
 Gets information about \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key stores}
 in the account and region.
-}
-\details{
+
 This operation is part of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature}
 feature in AWS KMS, which combines the convenience and extensive
 integration of AWS KMS with the isolation and control of a single-tenant

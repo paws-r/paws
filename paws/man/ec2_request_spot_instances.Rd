@@ -109,8 +109,7 @@ it has been created, see
 }
 \description{
 Creates a Spot Instance request.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html}{Spot Instance requests}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
 }

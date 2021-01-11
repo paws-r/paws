@@ -29,8 +29,7 @@ This operation gets an Amazon S3 on Outposts bucket's lifecycle
 configuration. To get an S3 bucket's lifecycle configuration, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html}{GetBucketLifecycleConfiguration}
 in the \emph{Amazon Simple Storage Service API}.
-}
-\details{
+
 Returns the lifecycle configuration information set on the Outposts
 bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
 and for information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html}{Object Lifecycle Management}

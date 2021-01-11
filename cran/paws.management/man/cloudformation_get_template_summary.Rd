@@ -42,8 +42,7 @@ Returns information about a new or existing template. The
 \code{GetTemplateSummary} action is useful for viewing parameter information,
 such as default parameter values and parameter types, before you create
 or update a stack or stack set.
-}
-\details{
+
 You can use the \code{GetTemplateSummary} action when you submit a template,
 or you can get template information for a stack set, or a running or
 deleted stack.

@@ -30,8 +30,7 @@ shorter than this duration.}
 }
 \description{
 Creates a mission profile.
-}
-\details{
+
 \code{dataflowEdges} is a list of lists of strings. Each lower level list of
 strings has two elements: a \emph{from} ARN and a \emph{to} ARN.
 }

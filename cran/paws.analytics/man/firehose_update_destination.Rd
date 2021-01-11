@@ -37,8 +37,7 @@ configuration.}
 }
 \description{
 Updates the specified destination of the specified delivery stream.
-}
-\details{
+
 Use this operation to change the destination type (for example, to
 replace the Amazon S3 destination with Amazon Redshift) or change the
 parameters associated with a destination (for example, to change the

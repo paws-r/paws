@@ -11,8 +11,7 @@ iot_delete_domain_configuration(domainConfigurationName)
 }
 \description{
 Deletes the specified domain configuration.
-}
-\details{
+
 The domain configuration feature is in public preview and is subject to
 change.
 }

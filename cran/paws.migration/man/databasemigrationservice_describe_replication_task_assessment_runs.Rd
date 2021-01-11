@@ -27,8 +27,7 @@ marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Returns a paginated list of premigration assessment runs based on filter
 settings.
-}
-\details{
+
 These filter settings can specify a combination of premigration
 assessment runs, migration tasks, replication instances, and assessment
 run status values.

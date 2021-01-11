@@ -6,6 +6,7 @@ NULL
 #' Returns information about a specified job and whether that job has been
 #' received by the job worker
 #'
+#' @description
 #' Returns information about a specified job and whether that job has been
 #' received by the job worker. Used for custom actions only.
 #'
@@ -48,6 +49,7 @@ codepipeline_acknowledge_job <- function(jobId, nonce) {
 
 #' Confirms a job worker has received the specified job
 #'
+#' @description
 #' Confirms a job worker has received the specified job. Used for partner
 #' actions only.
 #'
@@ -94,6 +96,7 @@ codepipeline_acknowledge_third_party_job <- function(jobId, nonce, clientToken) 
 #' Creates a new custom action that can be used in all pipelines associated
 #' with the AWS account
 #'
+#' @description
 #' Creates a new custom action that can be used in all pipelines associated
 #' with the AWS account. Only used for custom actions.
 #'
@@ -181,6 +184,7 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 
 #' Creates a pipeline
 #'
+#' @description
 #' Creates a pipeline.
 #' 
 #' In the pipeline structure, you must include either `artifactStore` or
@@ -291,6 +295,7 @@ codepipeline_create_pipeline <- function(pipeline, tags = NULL) {
 
 #' Marks a custom action as deleted
 #'
+#' @description
 #' Marks a custom action as deleted. `PollForJobs` for the custom action
 #' fails after the action is marked for deletion. Used for custom actions
 #' only.
@@ -341,6 +346,7 @@ codepipeline_delete_custom_action_type <- function(category, provider, version) 
 
 #' Deletes the specified pipeline
 #'
+#' @description
 #' Deletes the specified pipeline.
 #'
 #' @usage
@@ -377,6 +383,7 @@ codepipeline_delete_pipeline <- function(name) {
 
 #' Deletes a previously created webhook by name
 #'
+#' @description
 #' Deletes a previously created webhook by name. Deleting the webhook stops
 #' AWS CodePipeline from starting a pipeline every time an external event
 #' occurs. The API returns successfully when trying to delete a webhook
@@ -418,6 +425,7 @@ codepipeline_delete_webhook <- function(name) {
 #' Removes the connection between the webhook that was created by
 #' CodePipeline and the external tool with events to be detected
 #'
+#' @description
 #' Removes the connection between the webhook that was created by
 #' CodePipeline and the external tool with events to be detected. Currently
 #' supported only for webhooks that target an action type of GitHub.
@@ -457,6 +465,7 @@ codepipeline_deregister_webhook_with_third_party <- function(webhookName = NULL)
 #' Prevents artifacts in a pipeline from transitioning to the next stage in
 #' the pipeline
 #'
+#' @description
 #' Prevents artifacts in a pipeline from transitioning to the next stage in
 #' the pipeline.
 #'
@@ -508,6 +517,7 @@ codepipeline_disable_stage_transition <- function(pipelineName, stageName, trans
 
 #' Enables artifacts in a pipeline to transition to a stage in a pipeline
 #'
+#' @description
 #' Enables artifacts in a pipeline to transition to a stage in a pipeline.
 #'
 #' @usage
@@ -555,6 +565,7 @@ codepipeline_enable_stage_transition <- function(pipelineName, stageName, transi
 
 #' Returns information about a job
 #'
+#' @description
 #' Returns information about a job. Used for custom actions only.
 #' 
 #' When this API is called, AWS CodePipeline returns temporary credentials
@@ -596,6 +607,7 @@ codepipeline_get_job_details <- function(jobId) {
 
 #' Returns the metadata, structure, stages, and actions of a pipeline
 #'
+#' @description
 #' Returns the metadata, structure, stages, and actions of a pipeline. Can
 #' be used to return the entire structure of a pipeline in JSON format,
 #' which can then be modified and used to update the pipeline structure
@@ -641,6 +653,7 @@ codepipeline_get_pipeline <- function(name, version = NULL) {
 #' about artifacts, the pipeline execution ID, and the name, version, and
 #' status of the pipeline
 #'
+#' @description
 #' Returns information about an execution of a pipeline, including details
 #' about artifacts, the pipeline execution ID, and the name, version, and
 #' status of the pipeline.
@@ -683,6 +696,7 @@ codepipeline_get_pipeline_execution <- function(pipelineName, pipelineExecutionI
 #' Returns information about the state of a pipeline, including the stages
 #' and actions
 #'
+#' @description
 #' Returns information about the state of a pipeline, including the stages
 #' and actions.
 #' 
@@ -724,6 +738,7 @@ codepipeline_get_pipeline_state <- function(name) {
 
 #' Requests the details of a job for a third party action
 #'
+#' @description
 #' Requests the details of a job for a third party action. Used for partner
 #' actions only.
 #' 
@@ -770,6 +785,7 @@ codepipeline_get_third_party_job_details <- function(jobId, clientToken) {
 
 #' Lists the action executions that have occurred in a pipeline
 #'
+#' @description
 #' Lists the action executions that have occurred in a pipeline.
 #'
 #' @usage
@@ -825,6 +841,7 @@ codepipeline_list_action_executions <- function(pipelineName, filter = NULL, max
 #' Gets a summary of all AWS CodePipeline action types associated with your
 #' account
 #'
+#' @description
 #' Gets a summary of all AWS CodePipeline action types associated with your
 #' account.
 #'
@@ -866,6 +883,7 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 
 #' Gets a summary of the most recent executions for a pipeline
 #'
+#' @description
 #' Gets a summary of the most recent executions for a pipeline.
 #'
 #' @usage
@@ -913,6 +931,7 @@ codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NUL
 
 #' Gets a summary of all of the pipelines associated with your account
 #'
+#' @description
 #' Gets a summary of all of the pipelines associated with your account.
 #'
 #' @usage
@@ -951,6 +970,7 @@ codepipeline_list_pipelines <- function(nextToken = NULL) {
 #' Gets the set of key-value pairs (metadata) that are used to manage the
 #' resource
 #'
+#' @description
 #' Gets the set of key-value pairs (metadata) that are used to manage the
 #' resource.
 #'
@@ -994,6 +1014,7 @@ codepipeline_list_tags_for_resource <- function(resourceArn, nextToken = NULL, m
 
 #' Gets a listing of all the webhooks in this AWS Region for this account
 #'
+#' @description
 #' Gets a listing of all the webhooks in this AWS Region for this account.
 #' The output lists all webhooks and includes the webhook URL and ARN and
 #' the configuration for each webhook.
@@ -1037,6 +1058,7 @@ codepipeline_list_webhooks <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Returns information about any jobs for AWS CodePipeline to act on
 #'
+#' @description
 #' Returns information about any jobs for AWS CodePipeline to act on.
 #' `PollForJobs` is valid only for action types with "Custom" in the owner
 #' field. If the action type contains "AWS" or "ThirdParty" in the owner
@@ -1097,6 +1119,7 @@ codepipeline_poll_for_jobs <- function(actionTypeId, maxBatchSize = NULL, queryP
 #' Determines whether there are any third party jobs for a job worker to
 #' act on
 #'
+#' @description
 #' Determines whether there are any third party jobs for a job worker to
 #' act on. Used for partner actions only.
 #' 
@@ -1145,6 +1168,7 @@ codepipeline_poll_for_third_party_jobs <- function(actionTypeId, maxBatchSize = 
 
 #' Provides information to AWS CodePipeline about new revisions to a source
 #'
+#' @description
 #' Provides information to AWS CodePipeline about new revisions to a
 #' source.
 #'
@@ -1197,6 +1221,7 @@ codepipeline_put_action_revision <- function(pipelineName, stageName, actionName
 
 #' Provides the response to a manual approval request to AWS CodePipeline
 #'
+#' @description
 #' Provides the response to a manual approval request to AWS CodePipeline.
 #' Valid responses include Approved and Rejected.
 #'
@@ -1250,6 +1275,7 @@ codepipeline_put_approval_result <- function(pipelineName, stageName, actionName
 #' Represents the failure of a job as returned to the pipeline by a job
 #' worker
 #'
+#' @description
 #' Represents the failure of a job as returned to the pipeline by a job
 #' worker. Used for custom actions only.
 #'
@@ -1295,6 +1321,7 @@ codepipeline_put_job_failure_result <- function(jobId, failureDetails) {
 #' Represents the success of a job as returned to the pipeline by a job
 #' worker
 #'
+#' @description
 #' Represents the success of a job as returned to the pipeline by a job
 #' worker. Used for custom actions only.
 #'
@@ -1365,6 +1392,7 @@ codepipeline_put_job_success_result <- function(jobId, currentRevision = NULL, c
 #' Represents the failure of a third party job as returned to the pipeline
 #' by a job worker
 #'
+#' @description
 #' Represents the failure of a third party job as returned to the pipeline
 #' by a job worker. Used for partner actions only.
 #'
@@ -1415,6 +1443,7 @@ codepipeline_put_third_party_job_failure_result <- function(jobId, clientToken, 
 #' Represents the success of a third party job as returned to the pipeline
 #' by a job worker
 #'
+#' @description
 #' Represents the success of a third party job as returned to the pipeline
 #' by a job worker. Used for partner actions only.
 #'
@@ -1482,6 +1511,7 @@ codepipeline_put_third_party_job_success_result <- function(jobId, clientToken, 
 #' Defines a webhook and returns a unique webhook URL generated by
 #' CodePipeline
 #'
+#' @description
 #' Defines a webhook and returns a unique webhook URL generated by
 #' CodePipeline. This URL can be supplied to third party source hosting
 #' providers to call every time there's a code change. When CodePipeline
@@ -1553,6 +1583,7 @@ codepipeline_put_webhook <- function(webhook, tags = NULL) {
 #' Configures a connection between the webhook that was created and the
 #' external tool with events to be detected
 #'
+#' @description
 #' Configures a connection between the webhook that was created and the
 #' external tool with events to be detected.
 #'
@@ -1592,6 +1623,7 @@ codepipeline_register_webhook_with_third_party <- function(webhookName = NULL) {
 #' Resumes the pipeline execution by retrying the last failed actions in a
 #' stage
 #'
+#' @description
 #' Resumes the pipeline execution by retrying the last failed actions in a
 #' stage. You can retry a stage immediately if any of the actions in the
 #' stage fail. When you retry, all actions that are still in progress
@@ -1641,6 +1673,7 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
 
 #' Starts the specified pipeline
 #'
+#' @description
 #' Starts the specified pipeline. Specifically, it begins processing the
 #' latest commit to the source location specified as part of the pipeline.
 #'
@@ -1681,6 +1714,7 @@ codepipeline_start_pipeline_execution <- function(name, clientRequestToken = NUL
 
 #' Stops the specified pipeline execution
 #'
+#' @description
 #' Stops the specified pipeline execution. You choose to either stop the
 #' pipeline execution by completing in-progress actions without starting
 #' subsequent actions, or by abandoning in-progress actions. While
@@ -1735,6 +1769,7 @@ codepipeline_stop_pipeline_execution <- function(pipelineName, pipelineExecution
 
 #' Adds to or modifies the tags of the given resource
 #'
+#' @description
 #' Adds to or modifies the tags of the given resource. Tags are metadata
 #' that can be used to manage a resource.
 #'
@@ -1779,6 +1814,7 @@ codepipeline_tag_resource <- function(resourceArn, tags) {
 
 #' Removes tags from an AWS resource
 #'
+#' @description
 #' Removes tags from an AWS resource.
 #'
 #' @usage
@@ -1819,6 +1855,7 @@ codepipeline_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates a specified pipeline with edits or changes to its structure
 #'
+#' @description
 #' Updates a specified pipeline with edits or changes to its structure. Use
 #' a JSON file with the pipeline structure and `UpdatePipeline` to provide
 #' the full structure of the pipeline. Updating the pipeline increases the

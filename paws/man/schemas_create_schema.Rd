@@ -22,8 +22,7 @@ schemas_create_schema(Content, Description, RegistryName, SchemaName,
 }
 \description{
 Creates a schema definition.
-}
-\details{
+
 Inactive schemas will be deleted after two years.
 }
 \section{Request syntax}{

@@ -47,8 +47,7 @@ horizon, the iterator returned is for the oldest untrimmed data record
 \description{
 Gets an Amazon Kinesis shard iterator. A shard iterator expires 5
 minutes after it is returned to the requester.
-}
-\details{
+
 A shard iterator specifies the shard position from which to start
 reading data records sequentially. The position is specified using the
 sequence number of a data record in a shard. A sequence number is the

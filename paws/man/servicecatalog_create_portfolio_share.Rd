@@ -36,8 +36,7 @@ organization node. Shares to an organization node can only be created by
 the management account of an organization or by a delegated
 administrator. You can share portfolios to an organization, an
 organizational unit, or a specific account.
-}
-\details{
+
 Note that if a delegated admin is de-registered, they can no longer
 create portfolio shares.
 

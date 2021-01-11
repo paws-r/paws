@@ -41,8 +41,7 @@ Writes a single data record into an Amazon Kinesis data stream. Call
 subsequent processing, one record at a time. Each shard can support
 writes up to 1,000 records per second, up to a maximum data write total
 of 1 MiB per second.
-}
-\details{
+
 You must specify the name of the stream that captures, stores, and
 transports the data; a partition key; and the data blob itself.
 

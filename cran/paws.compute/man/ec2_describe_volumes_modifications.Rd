@@ -44,8 +44,7 @@ paginated request.}
 \description{
 Describes the most recent volume modification request for the specified
 EBS volumes.
-}
-\details{
+
 If a volume has never been modified, some information in the output will
 be null. If a volume has been modified more than once, the output
 includes only the most recent modification request.

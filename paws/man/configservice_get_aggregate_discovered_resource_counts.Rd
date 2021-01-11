@@ -26,8 +26,7 @@ the next page of results in a paginated response.}
 Returns the resource counts across accounts and regions that are present
 in your AWS Config aggregator. You can request the resource counts by
 providing filters and GroupByKey.
-}
-\details{
+
 For example, if the input contains accountID 12345678910 and region
 us-east-1 in filters, the API returns the count of resources in account
 ID 12345678910 and region us-east-1. If the input contains ACCOUNT\\_ID

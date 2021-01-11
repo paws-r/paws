@@ -30,8 +30,7 @@ call to \code{StartModel}. An idempotency token is active for 8 hours.}
 Starts the running of the version of an Amazon Lookout for Vision model.
 Starting a model takes a while to complete. To check the current state
 of the model, use DescribeModel.
-}
-\details{
+
 Once the model is running, you can detect custom labels in new images by
 calling DetectAnomalies.
 

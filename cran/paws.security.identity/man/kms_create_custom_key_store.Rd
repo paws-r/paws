@@ -36,8 +36,7 @@ change the password in the AWS CloudHSM cluster.}
 Creates a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
 that is associated with an \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/clusters.html}{AWS CloudHSM cluster}
 that you own and manage.
-}
-\details{
+
 This operation is part of the \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{Custom Key Store feature}
 feature in AWS KMS, which combines the convenience and extensive
 integration of AWS KMS with the isolation and control of a single-tenant

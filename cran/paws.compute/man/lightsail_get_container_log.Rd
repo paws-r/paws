@@ -67,8 +67,7 @@ that you can specify as the page token in a subsequent request.}
 \description{
 Returns the log events of a container of your Amazon Lightsail container
 service.
-}
-\details{
+
 If your container service has more than one node (i.e., a scale greater
 than 1), then the log events that are returned for the specified
 container are merged from all nodes on your container service.

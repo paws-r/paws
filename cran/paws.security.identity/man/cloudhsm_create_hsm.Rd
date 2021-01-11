@@ -34,8 +34,7 @@ service only supports one syslog monitoring server.}
 This is documentation for \strong{AWS CloudHSM Classic}. For more
 information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the \href{https://docs.aws.amazon.com/cloudhsm/classic/userguide/}{AWS CloudHSM Classic User Guide},
 and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
-}
-\details{
+
 \strong{For information about the current version of AWS CloudHSM}, see \href{https://aws.amazon.com/cloudhsm/}{AWS CloudHSM}, the \href{https://docs.aws.amazon.com/cloudhsm/latest/userguide/}{AWS CloudHSM User Guide}, and the
 \href{https://docs.aws.amazon.com/cloudhsm/latest/APIReference/}{AWS CloudHSM API Reference}.
 
@@ -44,8 +43,8 @@ Creates an uninitialized HSM instance.
 There is an upfront fee charged for each HSM instance that you create
 with the \code{CreateHsm} operation. If you accidentally provision an HSM and
 want to request a refund, delete the instance using the DeleteHsm
-operation, go to the \href{https://console.aws.amazon.com/support/home}{AWS Support Center}, create a new case,
-and select \strong{Account and Billing Support}.
+operation, go to the AWS Support Center, create a new case, and select
+\strong{Account and Billing Support}.
 
 It can take up to 20 minutes to create and provision an HSM. You can
 monitor the status of the HSM with the DescribeHsm operation. The HSM is

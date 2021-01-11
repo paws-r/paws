@@ -67,8 +67,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 Uploads a part in a multipart upload.
-}
-\details{
+
 In this operation, you provide part data in your request. However, you
 have an option to specify your existing Amazon S3 object as a data
 source for the part you are uploading. To upload a part from an existing

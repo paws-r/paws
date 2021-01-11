@@ -19,8 +19,6 @@ using the returned token in \code{NextToken}.}
 \description{
 Lists all, or filtered by resource name, migration tasks associated with
 the user account making this call. This API has the following traits:
-}
-\details{
 \itemize{
 \item Can show a summary list of the most recent migration tasks.
 \item Can show a summary list of migration tasks associated with a given

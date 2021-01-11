@@ -16,8 +16,7 @@ is 1000.}
 }
 \description{
 Retrieves the stream records from a given shard.
-}
-\details{
+
 Specify a shard iterator using the \code{ShardIterator} parameter. The shard
 iterator specifies the position in the shard from which you want to
 start reading stream records sequentially. If there are no stream

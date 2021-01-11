@@ -16,8 +16,7 @@ descriptions are limited to 1,000 characters.}
 }
 \description{
 Sets or changes the comment or description for a repository.
-}
-\details{
+
 The description field for a repository accepts all HTML characters and
 all valid Unicode characters. Applications that do not HTML-encode the
 description and display it in a webpage can expose users to potentially

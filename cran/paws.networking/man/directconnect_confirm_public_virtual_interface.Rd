@@ -13,8 +13,7 @@ directconnect_confirm_public_virtual_interface(virtualInterfaceId)
 \description{
 Accepts ownership of a public virtual interface created by another AWS
 account.
-}
-\details{
+
 After the virtual interface owner makes this call, the specified virtual
 interface is created and made available to handle traffic.
 }

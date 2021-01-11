@@ -31,8 +31,7 @@ certificate might be \code{example.com}.}
 \description{
 Attaches an SSL/TLS certificate to your Amazon Lightsail content
 delivery network (CDN) distribution.
-}
-\details{
+
 After the certificate is attached, your distribution accepts HTTPS
 traffic for all of the domains that are associated with the certificate.
 

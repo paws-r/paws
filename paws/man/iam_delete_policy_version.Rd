@@ -25,8 +25,7 @@ in the \emph{IAM User Guide}.}
 }
 \description{
 Deletes the specified version from the specified managed policy.
-}
-\details{
+
 You cannot delete the default version from a policy using this API. To
 delete the default version from a policy, use DeletePolicy. To find out
 which version of a policy is marked as the default version, use

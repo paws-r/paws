@@ -17,8 +17,7 @@ request the next page of results in a paginated response.}
 }
 \description{
 Provides one or more conformance packs deployment status.
-}
-\details{
+
 If there are no conformance packs then you will see an empty result.
 }
 \section{Request syntax}{

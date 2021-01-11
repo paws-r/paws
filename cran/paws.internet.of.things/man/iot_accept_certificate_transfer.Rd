@@ -15,8 +15,7 @@ contains the certificate ID.)}
 \description{
 Accepts a pending certificate transfer. The default state of the
 certificate is INACTIVE.
-}
-\details{
+
 To check for pending certificate transfers, call ListCertificates to
 enumerate your certificates.
 }

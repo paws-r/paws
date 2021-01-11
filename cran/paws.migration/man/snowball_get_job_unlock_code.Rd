@@ -14,8 +14,7 @@ example \verb{JID123e4567-e89b-12d3-a456-426655440000}.}
 Returns the \code{UnlockCode} code value for the specified job. A particular
 \code{UnlockCode} value can be accessed for up to 90 days after the
 associated job has been created.
-}
-\details{
+
 The \code{UnlockCode} value is a 29-character code with 25 alphanumeric
 characters and 4 hyphens. This code is used to decrypt the manifest file
 when it is passed along with the manifest to the Snow device through the

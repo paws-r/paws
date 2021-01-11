@@ -26,8 +26,7 @@ Specify at least one of these parameters: \code{TagsToAdd}, \code{TagsToRemove}.
 Update the list of tags applied to an AWS Elastic Beanstalk resource.
 Two lists can be passed: \code{TagsToAdd} for tags to add or update, and
 \code{TagsToRemove}.
-}
-\details{
+
 Elastic Beanstalk supports tagging of all of its resources. For details
 about resource tagging, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html}{Tagging Application Resources}.
 

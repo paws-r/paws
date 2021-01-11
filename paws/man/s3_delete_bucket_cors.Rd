@@ -15,8 +15,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 Deletes the \code{cors} configuration information set for the bucket.
-}
-\details{
+
 To use this operation, you must have permission to perform the
 \code{s3:PutBucketCORS} action. The bucket owner has this permission by
 default and can grant this permission to others.

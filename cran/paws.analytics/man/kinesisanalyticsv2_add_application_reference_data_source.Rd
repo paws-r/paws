@@ -24,8 +24,7 @@ key name, and the resulting in-application table that is created.}
 \description{
 Adds a reference data source to an existing SQL-based Kinesis Data
 Analytics application.
-}
-\details{
+
 Kinesis Data Analytics reads reference data (that is, an Amazon S3
 object) and creates an in-application table within your application. In
 the request, you provide the source (S3 bucket name and object key

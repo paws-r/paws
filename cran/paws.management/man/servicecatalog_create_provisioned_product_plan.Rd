@@ -52,8 +52,7 @@ have a \code{RESOURCE_UPDATE} constraint with
 Creates a plan. A plan includes the list of resources to be created
 (when provisioning a new product) or modified (when updating a
 provisioned product) when the plan is executed.
-}
-\details{
+
 You can create one plan per provisioned product. To create a plan for an
 existing provisioned product, the product status must be AVAILBLE or
 TAINTED.

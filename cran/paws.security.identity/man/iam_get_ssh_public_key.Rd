@@ -25,8 +25,7 @@ public key in PEM format, use \code{PEM}.}
 \description{
 Retrieves the specified SSH public key, including metadata about the
 key.
-}
-\details{
+
 The SSH public key retrieved by this operation is used only for
 authenticating the associated IAM user to an AWS CodeCommit repository.
 For more information about using SSH keys to authenticate to an AWS

@@ -5,6 +5,7 @@ NULL
 
 #' Delete the connection with the provided id
 #'
+#' @description
 #' Delete the connection with the provided id.
 #'
 #' @usage
@@ -41,6 +42,7 @@ apigatewaymanagementapi_delete_connection <- function(ConnectionId) {
 
 #' Get information about the connection with the provided id
 #'
+#' @description
 #' Get information about the connection with the provided id.
 #'
 #' @usage
@@ -77,6 +79,7 @@ apigatewaymanagementapi_get_connection <- function(ConnectionId) {
 
 #' Sends the provided data to the specified connection
 #'
+#' @description
 #' Sends the provided data to the specified connection.
 #'
 #' @usage

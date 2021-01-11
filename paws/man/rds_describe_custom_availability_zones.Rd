@@ -29,8 +29,7 @@ the value specified by \code{MaxRecords}.}
 }
 \description{
 Returns information about custom Availability Zones (AZs).
-}
-\details{
+
 A custom AZ is an on-premises AZ that is integrated with a VMware
 vSphere cluster.
 

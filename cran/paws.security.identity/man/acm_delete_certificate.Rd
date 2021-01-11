@@ -20,8 +20,7 @@ succeeds, the certificate no longer appears in the list that can be
 displayed by calling the ListCertificates action or be retrieved by
 calling the GetCertificate action. The certificate will not be available
 for use by AWS services integrated with ACM.
-}
-\details{
+
 You cannot delete an ACM certificate that is being used by another AWS
 service. To delete a certificate that is in use, the certificate
 association must first be removed.

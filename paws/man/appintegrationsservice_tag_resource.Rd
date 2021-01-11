@@ -15,8 +15,7 @@ appintegrationsservice_tag_resource(resourceArn, tags)
 \description{
 The Amazon AppIntegrations APIs are in preview release and are subject
 to change.
-}
-\details{
+
 Adds the specified tags to the specified resource.
 }
 \section{Request syntax}{

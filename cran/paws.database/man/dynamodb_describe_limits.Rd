@@ -12,8 +12,7 @@ dynamodb_describe_limits()
 Returns the current provisioned-capacity quotas for your AWS account in
 a Region, both for the Region as a whole and for any one DynamoDB table
 that you create there.
-}
-\details{
+
 When you establish an AWS account, the account has initial quotas on the
 maximum read capacity units and write capacity units that you can
 provision across all of your DynamoDB tables in a given Region. Also,
@@ -21,11 +20,11 @@ there are per-table quotas that apply when you create a table there. For
 more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html}{Service, Account, and Table Quotas}
 page in the \emph{Amazon DynamoDB Developer Guide}.
 
-Although you can increase these quotas by filing a case at \href{https://console.aws.amazon.com/support/home#/}{AWS Support Center}, obtaining the
-increase is not instantaneous. The \code{DescribeLimits} action lets you
-write code to compare the capacity you are currently using to those
-quotas imposed by your account so that you have enough time to apply for
-an increase before you hit a quota.
+Although you can increase these quotas by filing a case at AWS Support
+Center, obtaining the increase is not instantaneous. The
+\code{DescribeLimits} action lets you write code to compare the capacity you
+are currently using to those quotas imposed by your account so that you
+have enough time to apply for an increase before you hit a quota.
 
 For example, you could use one of the AWS SDKs to do the following:
 \enumerate{

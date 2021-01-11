@@ -32,8 +32,7 @@ Lists all the subscription descriptions for a customer account. The
 description for a subscription includes \code{SubscriptionName},
 \code{SNSTopicARN}, \code{CustomerID}, \code{SourceType}, \code{SourceID}, \code{CreationTime},
 and \code{Status}.
-}
-\details{
+
 If you specify a \code{SubscriptionName}, lists the description for that
 subscription.
 }

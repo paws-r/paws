@@ -21,8 +21,7 @@ different account, the request will fail with an HTTP
 \description{
 Lists the analytics configurations for the bucket. You can have up to
 1,000 analytics configurations per bucket.
-}
-\details{
+
 This operation supports list pagination and does not return more than
 100 configurations at a time. You should always check the \code{IsTruncated}
 element in the response. If there are no more configurations to list,

@@ -15,8 +15,7 @@ dynamodb_describe_table(TableName)
 Returns information about the table, including the current status of the
 table, when it was created, the primary key schema, and any indexes on
 the table.
-}
-\details{
+
 If you issue a \code{DescribeTable} request immediately after a \code{CreateTable}
 request, DynamoDB might return a \code{ResourceNotFoundException}. This is
 because \code{DescribeTable} uses an eventually consistent query, and the

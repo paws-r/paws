@@ -135,8 +135,7 @@ type is \code{TargetTrackingScaling}.}
 \description{
 Creates or updates a scaling policy for an Application Auto Scaling
 scalable target.
-}
-\details{
+
 Each scalable target is identified by a service namespace, resource ID,
 and scalable dimension. A scaling policy applies to the scalable target
 identified by those three attributes. You cannot create a scaling policy
@@ -151,7 +150,7 @@ gives precedence to the policy that provides the largest capacity for
 both scale out and scale in. For example, if one policy increases
 capacity by 3, another policy increases capacity by 200 percent, and the
 current capacity is 10, Application Auto Scaling uses the policy with
-the highest calculated capacity (200\% of 10 = 20) and scales out to 30.
+the highest calculated capacity (200\\% of 10 = 20) and scales out to 30.
 
 We recommend caution, however, when using target tracking scaling
 policies with step scaling policies because conflicts between these

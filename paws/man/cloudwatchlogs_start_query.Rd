@@ -37,8 +37,7 @@ values are returned. The default is 1000.}
 Schedules a query of a log group using CloudWatch Logs Insights. You
 specify the log group and time range to query and the query string to
 use.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html}{CloudWatch Logs Insights Query Syntax}.
 
 Queries time out after 15 minutes of execution. If your queries are

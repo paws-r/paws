@@ -23,8 +23,7 @@ bring your own IP addresses (BYOIP) and creates a corresponding address
 pool. After the address range is provisioned, it is ready to be
 advertised using
 \href{https://docs.aws.amazon.com/global-accelerator/latest/api/}{AdvertiseByoipCidr}.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html}{Bring Your Own IP Addresses (BYOIP)}
 in the \emph{AWS Global Accelerator Developer Guide}.
 }

@@ -14,8 +14,7 @@ enabled, you gain access to reputation, deliverability, and other
 metrics for the domains that you use to send email using Amazon
 Pinpoint. You also gain the ability to perform predictive inbox
 placement tests.
-}
-\details{
+
 When you use the Deliverability dashboard, you pay a monthly
 subscription charge, in addition to any other fees that you accrue by
 using Amazon Pinpoint. For more information about the features and cost

@@ -21,8 +21,8 @@ crossed. During that interval, if you continue to send SMS messages, you
 will incur costs that exceed your limit.
 
 By default, the spend limit is set to the maximum allowed by Amazon SNS.
-If you want to raise the limit, submit an \href{https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns}{SNS Limit Increase case}.
-For \strong{New limit value}, enter your desired monthly spend limit. In the
+If you want to raise the limit, submit an SNS Limit Increase case. For
+\strong{New limit value}, enter your desired monthly spend limit. In the
 \strong{Use Case Description} field, explain that you are requesting an SMS
 monthly spend limit increase.
 
@@ -35,7 +35,7 @@ message failed), the message dwell time, and other information.
 \code{DeliveryStatusSuccessSamplingRate} – The percentage of successful SMS
 deliveries for which Amazon SNS will write logs in CloudWatch Logs. The
 value can be an integer from 0 - 100. For example, to write logs only
-for failed deliveries, set this value to \code{0}. To write logs for 10\% of
+for failed deliveries, set this value to \code{0}. To write logs for 10\\% of
 your successful deliveries, set it to \code{10}.
 
 \code{DefaultSenderID} – A string, such as your business brand, that is
@@ -82,8 +82,7 @@ the \emph{Amazon SNS Developer Guide}.}
 \description{
 Use this request to set the default settings for sending SMS messages
 and receiving daily SMS usage reports.
-}
-\details{
+
 You can override some of these settings for a single message when you
 use the \code{Publish} action with the \code{MessageAttributes.entry.N} parameter.
 For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html}{Publishing to a mobile phone}

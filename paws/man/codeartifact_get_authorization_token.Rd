@@ -26,8 +26,7 @@ Generates a temporary authorization token for accessing repositories in
 the domain. This API requires the \code{codeartifact:GetAuthorizationToken}
 and \code{sts:GetServiceBearerToken} permissions. For more information about
 authorization tokens, see \href{https://docs.aws.amazon.com/codeartifact/latest/ug/tokens-authentication.html}{AWS CodeArtifact authentication and tokens}.
-}
-\details{
+
 CodeArtifact authorization tokens are valid for a period of 12 hours
 when created with the \code{login} command. You can call \code{login} periodically
 to refresh the token. When you create an authorization token with the

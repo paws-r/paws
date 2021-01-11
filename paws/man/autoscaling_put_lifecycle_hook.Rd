@@ -63,8 +63,7 @@ can be either \code{CONTINUE} or \code{ABANDON}. The default value is \code{ABAN
 \description{
 Creates or updates a lifecycle hook for the specified Auto Scaling
 group.
-}
-\details{
+
 A lifecycle hook tells Amazon EC2 Auto Scaling to perform an action on
 an instance when the instance launches (before it is put into service)
 or as the instance terminates (before it is fully terminated).

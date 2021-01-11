@@ -18,8 +18,6 @@ Required.}
 Resets a device and its account to the known default settings. This
 clears all information and settings set by previous users in the
 following ways:
-}
-\details{
 \itemize{
 \item Bluetooth - This unpairs all bluetooth devices paired with your echo
 device.

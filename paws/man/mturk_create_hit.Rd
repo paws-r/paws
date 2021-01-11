@@ -109,8 +109,7 @@ information, see HITLayout.}
 The \code{CreateHIT} operation creates a new Human Intelligence Task (HIT).
 The new HIT is made available for Workers to find and accept on the
 Amazon Mechanical Turk website.
-}
-\details{
+
 This operation allows you to specify a new HIT by passing in values for
 the properties of the HIT, such as its title, reward amount and number
 of assignments. When you pass these values to \code{CreateHIT}, a new HIT is

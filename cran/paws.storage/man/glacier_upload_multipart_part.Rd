@@ -31,8 +31,7 @@ follows RFC 2616. An example header is Content-Range:bytes 0-4194303/*.}
 This operation uploads a part of an archive. You can upload archive
 parts in any order. You can also upload them in parallel. You can upload
 up to 10,000 parts for a multipart upload.
-}
-\details{
+
 Amazon Glacier rejects your upload part request if any of the following
 conditions is true:
 \itemize{

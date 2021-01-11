@@ -19,8 +19,7 @@ more information, see Images in the Amazon Rekognition developer guide.}
 Returns an array of celebrities recognized in the input image. For more
 information, see Recognizing Celebrities in the Amazon Rekognition
 Developer Guide.
-}
-\details{
+
 \code{RecognizeCelebrities} returns the 64 largest faces in the image. It
 lists recognized celebrities in the \code{CelebrityFaces} array and
 unrecognized faces in the \code{UnrecognizedFaces} array.

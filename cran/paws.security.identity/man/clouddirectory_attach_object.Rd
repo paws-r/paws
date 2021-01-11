@@ -20,8 +20,6 @@ both objects reside. For more information, see arns.}
 \description{
 Attaches an existing object to another object. An object can be accessed
 in two ways:
-}
-\details{
 \enumerate{
 \item Using the path
 \item Using \code{ObjectIdentifier}

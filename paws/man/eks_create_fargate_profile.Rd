@@ -42,8 +42,7 @@ such as the pods that are scheduled with it.}
 Creates an AWS Fargate profile for your Amazon EKS cluster. You must
 have at least one Fargate profile in a cluster to be able to run pods on
 Fargate.
-}
-\details{
+
 The Fargate profile allows an administrator to declare which pods run on
 Fargate and specify which pods run on which Fargate profile. This
 declaration is done through the profile’s selectors. Each profile can

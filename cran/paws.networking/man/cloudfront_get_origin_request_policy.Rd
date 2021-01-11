@@ -17,8 +17,6 @@ cache behavior, you can get the identifier using
 }
 \description{
 Gets an origin request policy, including the following metadata:
-}
-\details{
 \itemize{
 \item The policy’s identifier.
 \item The date and time when the policy was last modified.

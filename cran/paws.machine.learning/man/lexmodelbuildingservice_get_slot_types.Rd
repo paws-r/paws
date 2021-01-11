@@ -24,8 +24,6 @@ both "xyzabc" and "abcxyz."}
 }
 \description{
 Returns slot type information as follows:
-}
-\details{
 \itemize{
 \item If you specify the \code{nameContains} field, returns the \verb{$LATEST}
 version of all slot types that contain the specified string.

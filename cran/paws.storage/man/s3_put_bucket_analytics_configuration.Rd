@@ -23,8 +23,7 @@ different account, the request will fail with an HTTP
 Sets an analytics configuration for the bucket (specified by the
 analytics configuration ID). You can have up to 1,000 analytics
 configurations per bucket.
-}
-\details{
+
 You can choose to have storage class analysis export analysis reports
 sent to a comma-separated values (CSV) flat file. See the \code{DataExport}
 request element. Reports are updated daily and are based on the object

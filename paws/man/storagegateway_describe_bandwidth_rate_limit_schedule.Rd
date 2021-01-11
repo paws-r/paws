@@ -14,8 +14,7 @@ Returns information about the bandwidth rate limit schedule of a
 gateway. By default, gateways do not have bandwidth rate limit
 schedules, which means no bandwidth rate limiting is in effect. This
 operation is supported only in the volume and tape gateway types.
-}
-\details{
+
 This operation returns information about a gateway's bandwidth rate
 limit schedule. A bandwidth rate limit schedule consists of one or more
 bandwidth rate limit intervals. A bandwidth rate limit interval defines

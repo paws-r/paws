@@ -37,8 +37,7 @@ When privacy protection is enabled, contact information such as email
 address is replaced either with contact information for Amazon Registrar
 (for .com, .net, and .org domains) or with contact information for our
 registrar associate, Gandi.
-}
-\details{
+
 This operation affects only the contact information for the specified
 contact type (registrant, administrator, or tech). If the request
 succeeds, Amazon Route 53 returns an operation ID that you can use with

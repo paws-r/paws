@@ -18,8 +18,7 @@ cognitoidentityprovider_set_ui_customization(UserPoolId, ClientId, CSS,
 }
 \description{
 Sets the UI customization information for a user pool's built-in app UI.
-}
-\details{
+
 You can specify app UI customization settings for a single client (with
 a specific \code{clientId}) or for all clients (by setting the \code{clientId} to
 \code{ALL}). If you specify \code{ALL}, the default configuration will be used for

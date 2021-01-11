@@ -5,6 +5,7 @@ NULL
 
 #' Provides a list of analysis segments for a real-time analysis session
 #'
+#' @description
 #' Provides a list of analysis segments for a real-time analysis session.
 #'
 #' @usage

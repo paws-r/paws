@@ -19,8 +19,7 @@ removes all the lifecycle configuration rules in the lifecycle
 subresource associated with the bucket. Your objects never expire, and
 Amazon S3 no longer automatically deletes any objects on the basis of
 rules contained in the deleted lifecycle configuration.
-}
-\details{
+
 To use this operation, you must have permission to perform the
 \code{s3:PutLifecycleConfiguration} action. By default, the bucket owner has
 this permission and the bucket owner can grant this permission to

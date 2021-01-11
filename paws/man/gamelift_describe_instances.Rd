@@ -24,8 +24,7 @@ To start at the beginning of the result set, do not specify a value.}
 Retrieves information about a fleet's instances, including instance IDs.
 Use this operation to get details on all instances in the fleet or get
 details on one specific instance.
-}
-\details{
+
 To get a specific instance, specify fleet ID and instance ID. To get all
 instances in a fleet, specify a fleet ID only. Use the pagination
 parameters to retrieve results as a set of sequential pages. If

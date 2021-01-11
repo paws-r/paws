@@ -25,8 +25,7 @@ depends upon the nature of the event. Affected entities are not
 included; to retrieve those, use the
 \href{https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntitiesForOrganization.html}{DescribeAffectedEntitiesForOrganization}
 operation.
-}
-\details{
+
 Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
 \href{https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html}{EnableHealthServiceAccessForOrganization}

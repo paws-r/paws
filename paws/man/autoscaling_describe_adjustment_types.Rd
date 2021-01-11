@@ -12,8 +12,7 @@ Describes the available adjustment types for Amazon EC2 Auto Scaling
 scaling policies. These settings apply to step scaling policies and
 simple scaling policies; they do not apply to target tracking scaling
 policies.
-}
-\details{
+
 The following adjustment types are supported:
 \itemize{
 \item ChangeInCapacity

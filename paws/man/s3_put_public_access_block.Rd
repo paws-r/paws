@@ -32,8 +32,7 @@ Creates or modifies the \code{PublicAccessBlock} configuration for an Amazon
 S3 bucket. To use this operation, you must have the
 \code{s3:PutBucketPublicAccessBlock} permission. For more information about
 Amazon S3 permissions, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html}{Specifying Permissions in a Policy}.
-}
-\details{
+
 When Amazon S3 evaluates the \code{PublicAccessBlock} configuration for a
 bucket or an object, it checks the \code{PublicAccessBlock} configuration for
 both the bucket (or the bucket that contains the object) and the bucket

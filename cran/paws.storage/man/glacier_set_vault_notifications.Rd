@@ -22,8 +22,7 @@ account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation configures notifications that will be sent when specific
 events happen to a vault. By default, you don't get any notifications.
-}
-\details{
+
 To configure vault notifications, send a PUT request to the
 \code{notification-configuration} subresource of the vault. The request
 should include a JSON document that provides an Amazon SNS topic and

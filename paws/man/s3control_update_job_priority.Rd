@@ -17,8 +17,7 @@ s3control_update_job_priority(AccountId, JobId, Priority)
 Updates an existing S3 Batch Operations job's priority. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html}{S3 Batch Operations}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
-}
-\details{
+
 Related actions include:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html}{CreateJob}

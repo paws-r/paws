@@ -16,7 +16,7 @@ schemas_export_schema(RegistryName, SchemaName, SchemaVersion, Type)
 \item{Type}{[required]}
 }
 \description{
-Export schema
+
 }
 \section{Request syntax}{
 \preformatted{svc$export_schema(

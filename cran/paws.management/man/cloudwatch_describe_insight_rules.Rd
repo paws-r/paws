@@ -15,8 +15,7 @@ this parameter, the default of 500 is used.}
 }
 \description{
 Returns a list of all the Contributor Insights rules in your account.
-}
-\details{
+
 For more information about Contributor Insights, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html}{Using Contributor Insights to Analyze High-Cardinality Data}.
 }
 \section{Request syntax}{

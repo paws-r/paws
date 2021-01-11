@@ -11,8 +11,7 @@ sagemaker_delete_workforce(WorkforceName)
 }
 \description{
 Use this operation to delete a workforce.
-}
-\details{
+
 If you want to create a new workforce in an AWS Region where a workforce
 already exists, use this operation to delete the existing workforce and
 then use to create a new workforce.

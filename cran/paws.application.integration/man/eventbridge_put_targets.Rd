@@ -18,8 +18,7 @@ this, the default event bus is used.}
 \description{
 Adds the specified targets to the specified rule, or updates the targets
 if they are already associated with the rule.
-}
-\details{
+
 Targets are the resources that are invoked when a rule is triggered.
 
 You can configure the following as targets for Events:

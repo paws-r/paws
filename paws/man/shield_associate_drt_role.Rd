@@ -13,27 +13,24 @@ shield_associate_drt_role(RoleArn)
 your AWS account.
 
 Prior to making the \code{AssociateDRTRole} request, you must attach the
-\href{https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy}{AWSShieldDRTAccessPolicy}
-managed policy to this role. For more information see Attaching and
-Detaching IAM Policies.}
+AWSShieldDRTAccessPolicy managed policy to this role. For more
+information see Attaching and Detaching IAM Policies.}
 }
 \description{
 Authorizes the DDoS Response Team (DRT), using the specified role, to
 access your AWS account to assist with DDoS attack mitigation during
 potential attacks. This enables the DRT to inspect your AWS WAF
 configuration and create or update AWS WAF rules and web ACLs.
-}
-\details{
+
 You can associate only one \code{RoleArn} with your subscription. If you
 submit an \code{AssociateDRTRole} request for an account that already has an
 associated role, the new \code{RoleArn} will replace the existing \code{RoleArn}.
 
 Prior to making the \code{AssociateDRTRole} request, you must attach the
-\href{https://console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy}{AWSShieldDRTAccessPolicy}
-managed policy to the role you will specify in the request. For more
-information see Attaching and Detaching IAM Policies. The role must also
-trust the service principal \code{ drt.shield.amazonaws.com}. For more
-information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html}{IAM JSON Policy Elements: Principal}.
+AWSShieldDRTAccessPolicy managed policy to the role you will specify in
+the request. For more information see Attaching and Detaching IAM
+Policies. The role must also trust the service principal
+\code{ drt.shield.amazonaws.com}. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html}{IAM JSON Policy Elements: Principal}.
 
 The DRT will have access only to your AWS WAF and Shield resources. By
 submitting this request, you authorize the DRT to inspect your AWS WAF

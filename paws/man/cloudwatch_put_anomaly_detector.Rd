@@ -26,8 +26,7 @@ The configuration can also include the time zone to use for the metric.}
 Creates an anomaly detection model for a CloudWatch metric. You can use
 the model to display a band of expected normal values when the metric is
 graphed.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Anomaly_Detection.html}{CloudWatch Anomaly Detection}.
 }
 \section{Request syntax}{

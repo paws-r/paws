@@ -28,8 +28,7 @@ Enables a policy type in a root. After you enable a policy type in a
 root, you can attach policies of that type to the root, any
 organizational unit (OU), or account in that root. You can undo this by
 using the DisablePolicyType operation.
-}
-\details{
+
 This is an asynchronous request that AWS performs in the background. AWS
 recommends that you first use ListRoots to see the status of policy
 types for a specified root, and then use this operation.

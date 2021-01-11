@@ -78,8 +78,7 @@ contexts for the session are cleared.}
 Creates a new session or modifies an existing session with an Amazon Lex
 bot. Use this operation to enable your application to set the state of
 the bot.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/lex/latest/dg/how-session-api.html}{Managing Sessions}.
 }
 \section{Request syntax}{

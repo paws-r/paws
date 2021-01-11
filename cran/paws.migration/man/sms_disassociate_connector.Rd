@@ -11,8 +11,7 @@ sms_disassociate_connector(connectorId)
 }
 \description{
 Disassociates the specified connector from AWS SMS.
-}
-\details{
+
 After you disassociate a connector, it is no longer available to support
 replication jobs.
 }

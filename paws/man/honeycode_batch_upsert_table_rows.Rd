@@ -48,8 +48,7 @@ rows are found, it will update the cells in the matching rows to new
 values specified in the request. If no matching rows are found, a new
 row is added at the end of the table and the cells in that row are set
 to the new values specified in the request.
-}
-\details{
+
 You can specify the values to set in some or all of the columns in the
 table for the matching or newly appended rows. If a column is not
 explicitly specified for a particular row, then that column will not be

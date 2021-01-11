@@ -45,8 +45,7 @@ schedule is 100 hours.}
 }
 \description{
 Finds available schedules that meet the specified criteria.
-}
-\details{
+
 You can search for an available schedule no more than 3 months in
 advance. You must meet the minimum required duration of 1,200 hours per
 year. For example, the minimum daily schedule is 4 hours, the minimum

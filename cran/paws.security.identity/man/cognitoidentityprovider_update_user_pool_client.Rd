@@ -149,8 +149,7 @@ Updates the specified user pool app client with the specified
 attributes. You can get a list of the current user pool app client
 settings using
 \href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeUserPoolClient.html}{DescribeUserPoolClient}.
-}
-\details{
+
 If you don't provide a value for an attribute, it will be set to the
 default value.
 }

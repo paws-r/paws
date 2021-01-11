@@ -21,8 +21,7 @@ that's in standby or "sleep" mode.}
 \description{
 Retrieve a JPG-format screenshot of a running instance to help with
 troubleshooting.
-}
-\details{
+
 The returned content is Base64-encoded.
 }
 \section{Request syntax}{

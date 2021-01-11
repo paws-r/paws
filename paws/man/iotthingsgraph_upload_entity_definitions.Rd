@@ -28,8 +28,7 @@ namespace will synchronize with the latest version of the public
 namespace. If \code{deprecateExistingEntities} is set to true, all entities
 in the latest version will be deleted before the new
 \code{DefinitionDocument} is uploaded.
-}
-\details{
+
 When a user uploads entity definitions for the first time, the service
 creates a new namespace for the user. The new namespace tracks the
 public namespace. Currently users can have only one namespace. The

@@ -11,8 +11,7 @@ efs_delete_mount_target(MountTargetId)
 }
 \description{
 Deletes the specified mount target.
-}
-\details{
+
 This operation forcibly breaks any mounts of the file system by using
 the mount target that is being deleted, which might disrupt instances or
 applications using those mounts. To avoid applications getting cut off

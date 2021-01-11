@@ -32,8 +32,7 @@ request.}
 \description{
 Returns a list of parameter settings for the specified parameter group
 family.
-}
-\details{
+
 For more information about parameters and parameter groups, go to
 \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Amazon Redshift Parameter Groups}
 in the \emph{Amazon Redshift Cluster Management Guide}.

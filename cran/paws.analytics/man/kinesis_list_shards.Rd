@@ -68,8 +68,7 @@ parameter.}
 Lists the shards in a stream and provides information about each shard.
 This operation has a limit of 100 transactions per second per data
 stream.
-}
-\details{
+
 This API is a new operation that is used by the Amazon Kinesis Client
 Library (KCL). If you have a fine-grained IAM policy that only allows
 specific operations, you must update your policy to allow calls to this

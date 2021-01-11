@@ -19,8 +19,7 @@ none is supplied, the AWS account ID is used by default.}
 }
 \description{
 Retrieves table statistics of columns.
-}
-\details{
+
 The Identity and Access Management (IAM) permission required for this
 operation is \code{GetTable}.
 }

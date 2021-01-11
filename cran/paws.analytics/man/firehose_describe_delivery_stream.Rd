@@ -22,8 +22,7 @@ Describes the specified delivery stream and its status. For example,
 after your delivery stream is created, call \code{DescribeDeliveryStream} to
 see whether the delivery stream is \code{ACTIVE} and therefore ready for data
 to be sent to it.
-}
-\details{
+
 If the status of a delivery stream is \code{CREATING_FAILED}, this status
 doesn't change, and you can't invoke CreateDeliveryStream again on it.
 However, you can invoke the DeleteDeliveryStream operation to delete it.

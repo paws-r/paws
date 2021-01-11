@@ -23,8 +23,7 @@ Adds up to 50 cost allocation tags to the named resource. A cost
 allocation tag is a key-value pair where the key and value are
 case-sensitive. You can use cost allocation tags to categorize and track
 your AWS costs.
-}
-\details{
+
 When you apply tags to your ElastiCache resources, AWS generates a cost
 allocation report as a comma-separated value (CSV) file with your usage
 and costs aggregated by your tags. You can apply tags that represent

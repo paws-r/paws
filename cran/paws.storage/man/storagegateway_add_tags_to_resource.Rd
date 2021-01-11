@@ -23,8 +23,6 @@ metadata to resources, which you can use to categorize these resources.
 For example, you can categorize resources by purpose, owner,
 environment, or team. Each tag consists of a key and a value, which you
 define. You can add tags to the following AWS Storage Gateway resources:
-}
-\details{
 \itemize{
 \item Storage gateways of all types
 \item Storage volumes

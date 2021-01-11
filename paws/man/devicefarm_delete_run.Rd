@@ -11,8 +11,7 @@ devicefarm_delete_run(arn)
 }
 \description{
 Deletes the run, given the run ARN.
-}
-\details{
+
 Deleting this resource does not stop an in-progress run.
 }
 \section{Request syntax}{

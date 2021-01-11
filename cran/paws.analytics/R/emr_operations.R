@@ -5,6 +5,7 @@ NULL
 
 #' Adds an instance fleet to a running cluster
 #'
+#' @description
 #' Adds an instance fleet to a running cluster.
 #' 
 #' The instance fleet configuration is available only in Amazon EMR
@@ -92,6 +93,7 @@ emr_add_instance_fleet <- function(ClusterId, InstanceFleet) {
 
 #' Adds one or more instance groups to a running cluster
 #'
+#' @description
 #' Adds one or more instance groups to a running cluster.
 #'
 #' @usage
@@ -199,6 +201,7 @@ emr_add_instance_groups <- function(InstanceGroups, JobFlowId) {
 
 #' AddJobFlowSteps adds new steps to a running cluster
 #'
+#' @description
 #' AddJobFlowSteps adds new steps to a running cluster. A maximum of 256
 #' steps are allowed in each job flow.
 #' 
@@ -280,6 +283,7 @@ emr_add_job_flow_steps <- function(JobFlowId, Steps) {
 
 #' Adds tags to an Amazon EMR resource
 #'
+#' @description
 #' Adds tags to an Amazon EMR resource. Tags make it easier to associate
 #' clusters in various ways, such as grouping clusters to track your Amazon
 #' EMR resource allocation costs. For more information, see [Tag
@@ -330,6 +334,7 @@ emr_add_tags <- function(ResourceId, Tags) {
 
 #' Cancels a pending step or steps in a running cluster
 #'
+#' @description
 #' Cancels a pending step or steps in a running cluster. Available only in
 #' Amazon EMR versions 4.8.0 and later, excluding version 5.0.0. A maximum
 #' of 256 steps are allowed in each CancelSteps request. CancelSteps is
@@ -381,6 +386,7 @@ emr_cancel_steps <- function(ClusterId, StepIds, StepCancellationOption = NULL) 
 #' Creates a security configuration, which is stored in the service and can
 #' be specified when a cluster is created
 #'
+#' @description
 #' Creates a security configuration, which is stored in the service and can
 #' be specified when a cluster is created.
 #'
@@ -424,6 +430,7 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change
 #'
+#' @description
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change.
 #' 
@@ -512,6 +519,7 @@ emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetI
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change
 #'
+#' @description
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change.
 #' 
@@ -577,6 +585,7 @@ emr_create_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
 
 #' Deletes a security configuration
 #'
+#' @description
 #' Deletes a security configuration.
 #'
 #' @usage
@@ -614,6 +623,7 @@ emr_delete_security_configuration <- function(Name) {
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change
 #'
+#' @description
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change.
 #' 
@@ -654,6 +664,7 @@ emr_delete_studio <- function(StudioId) {
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change
 #'
+#' @description
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change.
 #' 
@@ -714,6 +725,7 @@ emr_delete_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
 #' Provides cluster-level details including status, hardware and software
 #' configuration, VPC settings, and so on
 #'
+#' @description
 #' Provides cluster-level details including status, hardware and software
 #' configuration, VPC settings, and so on.
 #'
@@ -751,6 +763,7 @@ emr_describe_cluster <- function(ClusterId) {
 
 #' This API is no longer supported and will eventually be removed
 #'
+#' @description
 #' This API is no longer supported and will eventually be removed. We
 #' recommend you use ListClusters, DescribeCluster, ListSteps,
 #' ListInstanceGroups and ListBootstrapActions instead.
@@ -821,6 +834,7 @@ emr_describe_job_flows <- function(CreatedAfter = NULL, CreatedBefore = NULL, Jo
 
 #' Provides details of a notebook execution
 #'
+#' @description
 #' Provides details of a notebook execution.
 #'
 #' @usage
@@ -858,6 +872,7 @@ emr_describe_notebook_execution <- function(NotebookExecutionId) {
 #' Provides the details of a security configuration by returning the
 #' configuration JSON
 #'
+#' @description
 #' Provides the details of a security configuration by returning the
 #' configuration JSON.
 #'
@@ -895,6 +910,7 @@ emr_describe_security_configuration <- function(Name) {
 
 #' Provides more detail about the cluster step
 #'
+#' @description
 #' Provides more detail about the cluster step.
 #'
 #' @usage
@@ -934,6 +950,7 @@ emr_describe_step <- function(ClusterId, StepId) {
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change
 #'
+#' @description
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change.
 #' 
@@ -975,6 +992,7 @@ emr_describe_studio <- function(StudioId) {
 #' Returns the Amazon EMR block public access configuration for your AWS
 #' account in the current Region
 #'
+#' @description
 #' Returns the Amazon EMR block public access configuration for your AWS
 #' account in the current Region. For more information see [Configure Block
 #' Public Access for Amazon
@@ -1011,6 +1029,7 @@ emr_get_block_public_access_configuration <- function() {
 
 #' Fetches the attached managed scaling policy for an Amazon EMR cluster
 #'
+#' @description
 #' Fetches the attached managed scaling policy for an Amazon EMR cluster.
 #'
 #' @usage
@@ -1049,6 +1068,7 @@ emr_get_managed_scaling_policy <- function(ClusterId) {
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change
 #'
+#' @description
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change.
 #' 
@@ -1108,6 +1128,7 @@ emr_get_studio_session_mapping <- function(StudioId, IdentityId = NULL, Identity
 #' Provides information about the bootstrap actions associated with a
 #' cluster
 #'
+#' @description
 #' Provides information about the bootstrap actions associated with a
 #' cluster.
 #'
@@ -1147,6 +1168,7 @@ emr_list_bootstrap_actions <- function(ClusterId, Marker = NULL) {
 
 #' Provides the status of all clusters visible to this AWS account
 #'
+#' @description
 #' Provides the status of all clusters visible to this AWS account. Allows
 #' you to filter the list of clusters based on certain criteria; for
 #' example, filtering by cluster creation date and time or by status. This
@@ -1199,6 +1221,7 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
 
 #' Lists all available details about the instance fleets in a cluster
 #'
+#' @description
 #' Lists all available details about the instance fleets in a cluster.
 #' 
 #' The instance fleet configuration is available only in Amazon EMR
@@ -1240,6 +1263,7 @@ emr_list_instance_fleets <- function(ClusterId, Marker = NULL) {
 
 #' Provides all available details about the instance groups in a cluster
 #'
+#' @description
 #' Provides all available details about the instance groups in a cluster.
 #'
 #' @usage
@@ -1279,6 +1303,7 @@ emr_list_instance_groups <- function(ClusterId, Marker = NULL) {
 #' Provides information for all active EC2 instances and EC2 instances
 #' terminated in the last 30 days, up to a maximum of 2,000
 #'
+#' @description
 #' Provides information for all active EC2 instances and EC2 instances
 #' terminated in the last 30 days, up to a maximum of 2,000. EC2 instances
 #' in any of the following states are considered active:
@@ -1336,6 +1361,7 @@ emr_list_instances <- function(ClusterId, InstanceGroupId = NULL, InstanceGroupT
 
 #' Provides summaries of all notebook executions
 #'
+#' @description
 #' Provides summaries of all notebook executions. You can filter the list
 #' based on multiple criteria such as status, time range, and editor id.
 #' Returns a maximum of 50 notebook executions and a marker to track the
@@ -1420,6 +1446,7 @@ emr_list_notebook_executions <- function(EditorId = NULL, Status = NULL, From = 
 #' Lists all the security configurations visible to this account, providing
 #' their creation dates and times, and their names
 #'
+#' @description
 #' Lists all the security configurations visible to this account, providing
 #' their creation dates and times, and their names. This call returns a
 #' maximum of 50 clusters per call, but returns a marker to track the
@@ -1461,6 +1488,7 @@ emr_list_security_configurations <- function(Marker = NULL) {
 #' Provides a list of steps for the cluster in reverse order unless you
 #' specify stepIds with the request of filter by StepStates
 #'
+#' @description
 #' Provides a list of steps for the cluster in reverse order unless you
 #' specify `stepIds` with the request of filter by `StepStates`. You can
 #' specify a maximum of ten `stepIDs`.
@@ -1512,6 +1540,7 @@ emr_list_steps <- function(ClusterId, StepStates = NULL, StepIds = NULL, Marker 
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change
 #'
+#' @description
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change.
 #' 
@@ -1559,6 +1588,7 @@ emr_list_studio_session_mappings <- function(StudioId = NULL, IdentityType = NUL
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change
 #'
+#' @description
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change.
 #' 
@@ -1601,6 +1631,7 @@ emr_list_studios <- function(Marker = NULL) {
 #' Modifies the number of steps that can be executed concurrently for the
 #' cluster specified using ClusterID
 #'
+#' @description
 #' Modifies the number of steps that can be executed concurrently for the
 #' cluster specified using ClusterID.
 #'
@@ -1643,6 +1674,7 @@ emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL) {
 #' instance fleet with the specified InstanceFleetID within the cluster
 #' specified using ClusterID
 #'
+#' @description
 #' Modifies the target On-Demand and target Spot capacities for the
 #' instance fleet with the specified InstanceFleetID within the cluster
 #' specified using ClusterID. The call either succeeds or fails atomically.
@@ -1691,6 +1723,7 @@ emr_modify_instance_fleet <- function(ClusterId, InstanceFleet) {
 #' ModifyInstanceGroups modifies the number of nodes and configuration
 #' settings of an instance group
 #'
+#' @description
 #' ModifyInstanceGroups modifies the number of nodes and configuration
 #' settings of an instance group. The input parameters include the new
 #' target instance count for the group and the instance group ID. The call
@@ -1762,6 +1795,7 @@ emr_modify_instance_groups <- function(ClusterId = NULL, InstanceGroups = NULL) 
 #' Creates or updates an automatic scaling policy for a core instance group
 #' or task instance group in an Amazon EMR cluster
 #'
+#' @description
 #' Creates or updates an automatic scaling policy for a core instance group
 #' or task instance group in an Amazon EMR cluster. The automatic scaling
 #' policy defines how an instance group dynamically adds and terminates EC2
@@ -1846,6 +1880,7 @@ emr_put_auto_scaling_policy <- function(ClusterId, InstanceGroupId, AutoScalingP
 #' Creates or updates an Amazon EMR block public access configuration for
 #' your AWS account in the current Region
 #'
+#' @description
 #' Creates or updates an Amazon EMR block public access configuration for
 #' your AWS account in the current Region. For more information see
 #' [Configure Block Public Access for Amazon
@@ -1911,6 +1946,7 @@ emr_put_block_public_access_configuration <- function(BlockPublicAccessConfigura
 
 #' Creates or updates a managed scaling policy for an Amazon EMR cluster
 #'
+#' @description
 #' Creates or updates a managed scaling policy for an Amazon EMR cluster.
 #' The managed scaling policy defines the limits for resources, such as EC2
 #' instances that can be added or terminated from a cluster. The policy
@@ -1963,6 +1999,7 @@ emr_put_managed_scaling_policy <- function(ClusterId, ManagedScalingPolicy) {
 #' Removes an automatic scaling policy from a specified instance group
 #' within an EMR cluster
 #'
+#' @description
 #' Removes an automatic scaling policy from a specified instance group
 #' within an EMR cluster.
 #'
@@ -2004,6 +2041,7 @@ emr_remove_auto_scaling_policy <- function(ClusterId, InstanceGroupId) {
 
 #' Removes a managed scaling policy from a specified EMR cluster
 #'
+#' @description
 #' Removes a managed scaling policy from a specified EMR cluster.
 #'
 #' @usage
@@ -2041,6 +2079,7 @@ emr_remove_managed_scaling_policy <- function(ClusterId) {
 
 #' Removes tags from an Amazon EMR resource
 #'
+#' @description
 #' Removes tags from an Amazon EMR resource. Tags make it easier to
 #' associate clusters in various ways, such as grouping clusters to track
 #' your Amazon EMR resource allocation costs. For more information, see
@@ -2089,6 +2128,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 
 #' RunJobFlow creates and starts running a new cluster (job flow)
 #'
+#' @description
 #' RunJobFlow creates and starts running a new cluster (job flow). The
 #' cluster runs the steps specified. After the steps complete, the cluster
 #' stops and the HDFS partition is lost. To prevent loss of data, configure
@@ -2549,6 +2589,7 @@ emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, 
 #' in the cluster cannot be terminated by user intervention, an API call,
 #' or in the event of a job-flow error
 #'
+#' @description
 #' SetTerminationProtection locks a cluster (job flow) so the EC2 instances
 #' in the cluster cannot be terminated by user intervention, an API call,
 #' or in the event of a job-flow error. The cluster still terminates upon
@@ -2614,6 +2655,7 @@ emr_set_termination_protection <- function(JobFlowIds, TerminationProtected) {
 #' cluster is visible to all IAM users of the AWS account associated with
 #' the cluster
 #'
+#' @description
 #' Sets the Cluster$VisibleToAllUsers value, which determines whether the
 #' cluster is visible to all IAM users of the AWS account associated with
 #' the cluster. Only the IAM user who created the cluster or the AWS
@@ -2666,6 +2708,7 @@ emr_set_visible_to_all_users <- function(JobFlowIds, VisibleToAllUsers) {
 
 #' Starts a notebook execution
 #'
+#' @description
 #' Starts a notebook execution.
 #'
 #' @usage
@@ -2741,6 +2784,7 @@ emr_start_notebook_execution <- function(EditorId, RelativePath, NotebookExecuti
 
 #' Stops a notebook execution
 #'
+#' @description
 #' Stops a notebook execution.
 #'
 #' @usage
@@ -2777,6 +2821,7 @@ emr_stop_notebook_execution <- function(NotebookExecutionId) {
 
 #' TerminateJobFlows shuts a list of clusters (job flows) down
 #'
+#' @description
 #' TerminateJobFlows shuts a list of clusters (job flows) down. When a job
 #' flow is shut down, any step not yet completed is canceled and the EC2
 #' instances on which the cluster is running are stopped. Any log files not
@@ -2825,6 +2870,7 @@ emr_terminate_job_flows <- function(JobFlowIds) {
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change
 #'
+#' @description
 #' The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 #' subject to change.
 #' 

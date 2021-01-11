@@ -50,8 +50,7 @@ to \code{TRUE}.}
 \description{
 Creates an AWS Network Firewall Firewall and accompanying FirewallStatus
 for a VPC.
-}
-\details{
+
 The firewall defines the configuration settings for an AWS Network
 Firewall firewall. The settings that you can define at creation include
 the firewall policy, the subnets in your VPC to use for the firewall

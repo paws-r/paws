@@ -19,8 +19,7 @@ check.}
 }
 \description{
 Checks the availability of one or more image layers in a repository.
-}
-\details{
+
 When an image is pushed to a repository, each image layer is checked to
 verify if it has been uploaded before. If it has been uploaded, then the
 image layer is skipped.

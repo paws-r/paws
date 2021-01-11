@@ -16,8 +16,7 @@ CreateCertificate operation) or an Amazon Cognito ID.}
 \description{
 Attaches the specified policy to the specified principal (certificate or
 other credential).
-}
-\details{
+
 \strong{Note:} This API is deprecated. Please use AttachPolicy instead.
 }
 \section{Request syntax}{

@@ -14,8 +14,7 @@ elb_modify_load_balancer_attributes(LoadBalancerName,
 }
 \description{
 Modifies the attributes of the specified load balancer.
-}
-\details{
+
 You can modify the load balancer attributes, such as \code{AccessLogs},
 \code{ConnectionDraining}, and \code{CrossZoneLoadBalancing} by either enabling or
 disabling them. Or, you can modify the load balancer attribute

@@ -45,8 +45,7 @@ different account, the request will fail with an HTTP
 Returns metadata about all versions of the objects in a bucket. You can
 also use request parameters as selection criteria to return metadata
 about a subset of all the object versions.
-}
-\details{
+
 A 200 OK response can contain valid or invalid XML. Make sure to design
 your application to parse the contents of the response and handle it
 appropriately.

@@ -20,8 +20,7 @@ checking the \code{ManagedBy} field of the response.}
 }
 \description{
 Deletes the specified rule.
-}
-\details{
+
 Before you can delete the rule, you must remove all targets, using
 RemoveTargets.
 

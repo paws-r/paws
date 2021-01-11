@@ -40,8 +40,6 @@ or \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-c
 that are captured by CloudTrail. You can look up events that occurred in
 a region within the last 90 days. Lookup supports the following
 attributes for management events:
-}
-\details{
 \itemize{
 \item AWS access key
 \item Event ID

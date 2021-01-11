@@ -5,6 +5,7 @@ NULL
 
 #' This operation cancels a job
 #'
+#' @description
 #' This operation cancels a job. Jobs can be cancelled only when they are
 #' in the WAITING state.
 #'
@@ -42,6 +43,7 @@ dataexchange_cancel_job <- function(JobId) {
 
 #' This operation creates a data set
 #'
+#' @description
 #' This operation creates a data set.
 #'
 #' @usage
@@ -92,6 +94,7 @@ dataexchange_create_data_set <- function(AssetType, Description, Name, Tags = NU
 
 #' This operation creates a job
 #'
+#' @description
 #' This operation creates a job.
 #'
 #' @usage
@@ -167,6 +170,7 @@ dataexchange_create_job <- function(Details, Type) {
 
 #' This operation creates a revision for a data set
 #'
+#' @description
 #' This operation creates a revision for a data set.
 #'
 #' @usage
@@ -213,6 +217,7 @@ dataexchange_create_revision <- function(Comment = NULL, DataSetId, Tags = NULL)
 
 #' This operation deletes an asset
 #'
+#' @description
 #' This operation deletes an asset.
 #'
 #' @usage
@@ -253,6 +258,7 @@ dataexchange_delete_asset <- function(AssetId, DataSetId, RevisionId) {
 
 #' This operation deletes a data set
 #'
+#' @description
 #' This operation deletes a data set.
 #'
 #' @usage
@@ -289,6 +295,7 @@ dataexchange_delete_data_set <- function(DataSetId) {
 
 #' This operation deletes a revision
 #'
+#' @description
 #' This operation deletes a revision.
 #'
 #' @usage
@@ -327,6 +334,7 @@ dataexchange_delete_revision <- function(DataSetId, RevisionId) {
 
 #' This operation returns information about an asset
 #'
+#' @description
 #' This operation returns information about an asset.
 #'
 #' @usage
@@ -367,6 +375,7 @@ dataexchange_get_asset <- function(AssetId, DataSetId, RevisionId) {
 
 #' This operation returns information about a data set
 #'
+#' @description
 #' This operation returns information about a data set.
 #'
 #' @usage
@@ -403,6 +412,7 @@ dataexchange_get_data_set <- function(DataSetId) {
 
 #' This operation returns information about a job
 #'
+#' @description
 #' This operation returns information about a job.
 #'
 #' @usage
@@ -439,6 +449,7 @@ dataexchange_get_job <- function(JobId) {
 
 #' This operation returns information about a revision
 #'
+#' @description
 #' This operation returns information about a revision.
 #'
 #' @usage
@@ -478,6 +489,7 @@ dataexchange_get_revision <- function(DataSetId, RevisionId) {
 #' This operation lists a data set's revisions sorted by CreatedAt in
 #' descending order
 #'
+#' @description
 #' This operation lists a data set's revisions sorted by CreatedAt in
 #' descending order.
 #'
@@ -520,6 +532,7 @@ dataexchange_list_data_set_revisions <- function(DataSetId, MaxResults = NULL, N
 
 #' This operation lists your data sets
 #'
+#' @description
 #' This operation lists your data sets. When listing by origin OWNED,
 #' results are sorted by CreatedAt in descending order. When listing by
 #' origin ENTITLED, there is no order and the maxResults parameter is
@@ -565,6 +578,7 @@ dataexchange_list_data_sets <- function(MaxResults = NULL, NextToken = NULL, Ori
 
 #' This operation lists your jobs sorted by CreatedAt in descending order
 #'
+#' @description
 #' This operation lists your jobs sorted by CreatedAt in descending order.
 #'
 #' @usage
@@ -609,6 +623,7 @@ dataexchange_list_jobs <- function(DataSetId = NULL, MaxResults = NULL, NextToke
 #' This operation lists a revision's assets sorted alphabetically in
 #' descending order
 #'
+#' @description
 #' This operation lists a revision's assets sorted alphabetically in
 #' descending order.
 #'
@@ -654,6 +669,7 @@ dataexchange_list_revision_assets <- function(DataSetId, MaxResults = NULL, Next
 
 #' This operation lists the tags on the resource
 #'
+#' @description
 #' This operation lists the tags on the resource.
 #'
 #' @usage
@@ -690,6 +706,7 @@ dataexchange_list_tags_for_resource <- function(ResourceArn) {
 
 #' This operation starts a job
 #'
+#' @description
 #' This operation starts a job.
 #'
 #' @usage
@@ -726,6 +743,7 @@ dataexchange_start_job <- function(JobId) {
 
 #' This operation tags a resource
 #'
+#' @description
 #' This operation tags a resource.
 #'
 #' @usage
@@ -766,6 +784,7 @@ dataexchange_tag_resource <- function(ResourceArn, Tags) {
 
 #' This operation removes one or more tags from a resource
 #'
+#' @description
 #' This operation removes one or more tags from a resource.
 #'
 #' @usage
@@ -806,6 +825,7 @@ dataexchange_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' This operation updates an asset
 #'
+#' @description
 #' This operation updates an asset.
 #'
 #' @usage
@@ -850,6 +870,7 @@ dataexchange_update_asset <- function(AssetId, DataSetId, Name, RevisionId) {
 
 #' This operation updates a data set
 #'
+#' @description
 #' This operation updates a data set.
 #'
 #' @usage
@@ -890,6 +911,7 @@ dataexchange_update_data_set <- function(DataSetId, Description = NULL, Name = N
 
 #' This operation updates a revision
 #'
+#' @description
 #' This operation updates a revision.
 #'
 #' @usage

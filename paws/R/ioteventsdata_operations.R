@@ -5,6 +5,7 @@ NULL
 
 #' Sends a set of messages to the AWS IoT Events system
 #'
+#' @description
 #' Sends a set of messages to the AWS IoT Events system. Each message
 #' payload is transformed into the input you specify (`"inputName"`) and
 #' ingested into any detectors that monitor that input. If multiple
@@ -54,6 +55,7 @@ ioteventsdata_batch_put_message <- function(messages) {
 #' Updates the state, variable values, and timer settings of one or more
 #' detectors (instances) of a specified detector model
 #'
+#' @description
 #' Updates the state, variable values, and timer settings of one or more
 #' detectors (instances) of a specified detector model.
 #'
@@ -113,6 +115,7 @@ ioteventsdata_batch_update_detector <- function(detectors) {
 
 #' Returns information about the specified detector (instance)
 #'
+#' @description
 #' Returns information about the specified detector (instance).
 #'
 #' @usage
@@ -153,6 +156,7 @@ ioteventsdata_describe_detector <- function(detectorModelName, keyValue = NULL) 
 
 #' Lists detectors (the instances of a detector model)
 #'
+#' @description
 #' Lists detectors (the instances of a detector model).
 #'
 #' @usage

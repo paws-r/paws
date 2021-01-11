@@ -5,6 +5,7 @@ NULL
 
 #' Creates a gateway route
 #'
+#' @description
 #' Creates a gateway route.
 #' 
 #' A gateway route is attached to a virtual gateway and routes traffic to
@@ -115,6 +116,7 @@ appmesh_create_gateway_route <- function(clientToken = NULL, gatewayRouteName, m
 
 #' Creates a service mesh
 #'
+#' @description
 #' Creates a service mesh.
 #' 
 #' A service mesh is a logical boundary for network traffic between
@@ -181,6 +183,7 @@ appmesh_create_mesh <- function(clientToken = NULL, meshName, spec = NULL, tags 
 
 #' Creates a route that is associated with a virtual router
 #'
+#' @description
 #' Creates a route that is associated with a virtual router.
 #' 
 #' You can route several different protocols and define a retry policy for
@@ -435,6 +438,7 @@ appmesh_create_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 
 #' Creates a virtual gateway
 #'
+#' @description
 #' Creates a virtual gateway.
 #' 
 #' A virtual gateway allows resources outside your mesh to communicate to
@@ -578,6 +582,7 @@ appmesh_create_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 
 #' Creates a virtual node within a service mesh
 #'
+#' @description
 #' Creates a virtual node within a service mesh.
 #' 
 #' A virtual node acts as a logical pointer to a particular task group,
@@ -839,6 +844,7 @@ appmesh_create_virtual_node <- function(clientToken = NULL, meshName, meshOwner 
 
 #' Creates a virtual router within a service mesh
 #'
+#' @description
 #' Creates a virtual router within a service mesh.
 #' 
 #' Specify a `listener` for any inbound traffic that your virtual router
@@ -920,6 +926,7 @@ appmesh_create_virtual_router <- function(clientToken = NULL, meshName, meshOwne
 
 #' Creates a virtual service within a service mesh
 #'
+#' @description
 #' Creates a virtual service within a service mesh.
 #' 
 #' A virtual service is an abstraction of a real service that is provided
@@ -1001,6 +1008,7 @@ appmesh_create_virtual_service <- function(clientToken = NULL, meshName, meshOwn
 
 #' Deletes an existing gateway route
 #'
+#' @description
 #' Deletes an existing gateway route.
 #'
 #' @usage
@@ -1048,6 +1056,7 @@ appmesh_delete_gateway_route <- function(gatewayRouteName, meshName, meshOwner =
 
 #' Deletes an existing service mesh
 #'
+#' @description
 #' Deletes an existing service mesh.
 #' 
 #' You must delete all resources (virtual services, routes, virtual
@@ -1088,6 +1097,7 @@ appmesh_delete_mesh <- function(meshName) {
 
 #' Deletes an existing route
 #'
+#' @description
 #' Deletes an existing route.
 #'
 #' @usage
@@ -1134,6 +1144,7 @@ appmesh_delete_route <- function(meshName, meshOwner = NULL, routeName, virtualR
 
 #' Deletes an existing virtual gateway
 #'
+#' @description
 #' Deletes an existing virtual gateway. You cannot delete a virtual gateway
 #' if any gateway routes are associated to it.
 #'
@@ -1179,6 +1190,7 @@ appmesh_delete_virtual_gateway <- function(meshName, meshOwner = NULL, virtualGa
 
 #' Deletes an existing virtual node
 #'
+#' @description
 #' Deletes an existing virtual node.
 #' 
 #' You must delete any virtual services that list a virtual node as a
@@ -1226,6 +1238,7 @@ appmesh_delete_virtual_node <- function(meshName, meshOwner = NULL, virtualNodeN
 
 #' Deletes an existing virtual router
 #'
+#' @description
 #' Deletes an existing virtual router.
 #' 
 #' You must delete any routes associated with the virtual router before you
@@ -1273,6 +1286,7 @@ appmesh_delete_virtual_router <- function(meshName, meshOwner = NULL, virtualRou
 
 #' Deletes an existing virtual service
 #'
+#' @description
 #' Deletes an existing virtual service.
 #'
 #' @usage
@@ -1317,6 +1331,7 @@ appmesh_delete_virtual_service <- function(meshName, meshOwner = NULL, virtualSe
 
 #' Describes an existing gateway route
 #'
+#' @description
 #' Describes an existing gateway route.
 #'
 #' @usage
@@ -1365,6 +1380,7 @@ appmesh_describe_gateway_route <- function(gatewayRouteName, meshName, meshOwner
 
 #' Describes an existing service mesh
 #'
+#' @description
 #' Describes an existing service mesh.
 #'
 #' @usage
@@ -1407,6 +1423,7 @@ appmesh_describe_mesh <- function(meshName, meshOwner = NULL) {
 
 #' Describes an existing route
 #'
+#' @description
 #' Describes an existing route.
 #'
 #' @usage
@@ -1454,6 +1471,7 @@ appmesh_describe_route <- function(meshName, meshOwner = NULL, routeName, virtua
 
 #' Describes an existing virtual gateway
 #'
+#' @description
 #' Describes an existing virtual gateway.
 #'
 #' @usage
@@ -1499,6 +1517,7 @@ appmesh_describe_virtual_gateway <- function(meshName, meshOwner = NULL, virtual
 
 #' Describes an existing virtual node
 #'
+#' @description
 #' Describes an existing virtual node.
 #'
 #' @usage
@@ -1543,6 +1562,7 @@ appmesh_describe_virtual_node <- function(meshName, meshOwner = NULL, virtualNod
 
 #' Describes an existing virtual router
 #'
+#' @description
 #' Describes an existing virtual router.
 #'
 #' @usage
@@ -1587,6 +1607,7 @@ appmesh_describe_virtual_router <- function(meshName, meshOwner = NULL, virtualR
 
 #' Describes an existing virtual service
 #'
+#' @description
 #' Describes an existing virtual service.
 #'
 #' @usage
@@ -1633,6 +1654,7 @@ appmesh_describe_virtual_service <- function(meshName, meshOwner = NULL, virtual
 #' Returns a list of existing gateway routes that are associated to a
 #' virtual gateway
 #'
+#' @description
 #' Returns a list of existing gateway routes that are associated to a
 #' virtual gateway.
 #'
@@ -1693,6 +1715,7 @@ appmesh_list_gateway_routes <- function(limit = NULL, meshName, meshOwner = NULL
 
 #' Returns a list of existing service meshes
 #'
+#' @description
 #' Returns a list of existing service meshes.
 #'
 #' @usage
@@ -1744,6 +1767,7 @@ appmesh_list_meshes <- function(limit = NULL, nextToken = NULL) {
 
 #' Returns a list of existing routes in a service mesh
 #'
+#' @description
 #' Returns a list of existing routes in a service mesh.
 #'
 #' @usage
@@ -1802,6 +1826,7 @@ appmesh_list_routes <- function(limit = NULL, meshName, meshOwner = NULL, nextTo
 
 #' List the tags for an App Mesh resource
 #'
+#' @description
 #' List the tags for an App Mesh resource.
 #'
 #' @usage
@@ -1853,6 +1878,7 @@ appmesh_list_tags_for_resource <- function(limit = NULL, nextToken = NULL, resou
 
 #' Returns a list of existing virtual gateways in a service mesh
 #'
+#' @description
 #' Returns a list of existing virtual gateways in a service mesh.
 #'
 #' @usage
@@ -1909,6 +1935,7 @@ appmesh_list_virtual_gateways <- function(limit = NULL, meshName, meshOwner = NU
 
 #' Returns a list of existing virtual nodes
 #'
+#' @description
 #' Returns a list of existing virtual nodes.
 #'
 #' @usage
@@ -1965,6 +1992,7 @@ appmesh_list_virtual_nodes <- function(limit = NULL, meshName, meshOwner = NULL,
 
 #' Returns a list of existing virtual routers in a service mesh
 #'
+#' @description
 #' Returns a list of existing virtual routers in a service mesh.
 #'
 #' @usage
@@ -2021,6 +2049,7 @@ appmesh_list_virtual_routers <- function(limit = NULL, meshName, meshOwner = NUL
 
 #' Returns a list of existing virtual services in a service mesh
 #'
+#' @description
 #' Returns a list of existing virtual services in a service mesh.
 #'
 #' @usage
@@ -2078,6 +2107,7 @@ appmesh_list_virtual_services <- function(limit = NULL, meshName, meshOwner = NU
 #' Associates the specified tags to a resource with the specified
 #' resourceArn
 #'
+#' @description
 #' Associates the specified tags to a resource with the specified
 #' `resourceArn`. If existing tags on a resource aren't specified in the
 #' request parameters, they aren't changed. When a resource is deleted, the
@@ -2126,6 +2156,7 @@ appmesh_tag_resource <- function(resourceArn, tags) {
 
 #' Deletes specified tags from a resource
 #'
+#' @description
 #' Deletes specified tags from a resource.
 #'
 #' @usage
@@ -2167,6 +2198,7 @@ appmesh_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates an existing gateway route that is associated to a specified
 #' virtual gateway in a service mesh
 #'
+#' @description
 #' Updates an existing gateway route that is associated to a specified
 #' virtual gateway in a service mesh.
 #'
@@ -2260,6 +2292,7 @@ appmesh_update_gateway_route <- function(clientToken = NULL, gatewayRouteName, m
 
 #' Updates an existing service mesh
 #'
+#' @description
 #' Updates an existing service mesh.
 #'
 #' @usage
@@ -2307,6 +2340,7 @@ appmesh_update_mesh <- function(clientToken = NULL, meshName, spec = NULL) {
 #' Updates an existing route for a specified service mesh and virtual
 #' router
 #'
+#' @description
 #' Updates an existing route for a specified service mesh and virtual
 #' router.
 #'
@@ -2543,6 +2577,7 @@ appmesh_update_route <- function(clientToken = NULL, meshName, meshOwner = NULL,
 
 #' Updates an existing virtual gateway in a specified service mesh
 #'
+#' @description
 #' Updates an existing virtual gateway in a specified service mesh.
 #'
 #' @usage
@@ -2666,6 +2701,7 @@ appmesh_update_virtual_gateway <- function(clientToken = NULL, meshName, meshOwn
 
 #' Updates an existing virtual node in a specified service mesh
 #'
+#' @description
 #' Updates an existing virtual node in a specified service mesh.
 #'
 #' @usage
@@ -2884,6 +2920,7 @@ appmesh_update_virtual_node <- function(clientToken = NULL, meshName, meshOwner 
 
 #' Updates an existing virtual router in a specified service mesh
 #'
+#' @description
 #' Updates an existing virtual router in a specified service mesh.
 #'
 #' @usage
@@ -2945,6 +2982,7 @@ appmesh_update_virtual_router <- function(clientToken = NULL, meshName, meshOwne
 
 #' Updates an existing virtual service in a specified service mesh
 #'
+#' @description
 #' Updates an existing virtual service in a specified service mesh.
 #'
 #' @usage

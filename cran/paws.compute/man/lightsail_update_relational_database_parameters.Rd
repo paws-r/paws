@@ -16,8 +16,7 @@ lightsail_update_relational_database_parameters(relationalDatabaseName,
 \description{
 Allows the update of one or more parameters of a database in Amazon
 Lightsail.
-}
-\details{
+
 Parameter updates don't cause outages; therefore, their application is
 not subject to the preferred maintenance window. However, there are two
 ways in which parameter updates are applied: \code{dynamic} or
@@ -28,7 +27,8 @@ type are applied only after the database is rebooted using the
 
 The \verb{update relational database parameters} operation supports tag-based
 access control via resource tags applied to the resource identified by
-relationalDatabaseName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+relationalDatabaseName. For more information, see the Lightsail Dev
+Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$update_relational_database_parameters(

@@ -5,7 +5,7 @@ NULL
 #'
 #' Return an authentication token used as the password for a database connection.
 #'
-#' See [*IAM Database Authentication for MySQL and PostgreSQL*](http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
+#' See [*IAM Database Authentication for MySQL and PostgreSQL*](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html)
 #' for more information on using IAM database authentication with RDS.
 #'
 #' @usage

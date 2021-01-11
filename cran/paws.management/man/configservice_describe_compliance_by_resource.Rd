@@ -32,8 +32,7 @@ the next page of results in a paginated response.}
 Indicates whether the specified AWS resources are compliant. If a
 resource is noncompliant, this action returns the number of AWS Config
 rules that the resource does not comply with.
-}
-\details{
+
 A resource is compliant if it complies with all the AWS Config rules
 that evaluate it. It is noncompliant if it does not comply with one or
 more of these rules.

@@ -29,8 +29,7 @@ The application must be in the \code{STARTING}, \code{UPDATING}, \code{STOPPING}
 Stops the application from processing data. You can stop an application
 only if it is in the running status, unless you set the \code{Force}
 parameter to \code{true}.
-}
-\details{
+
 You can use the DescribeApplication operation to find the application
 status.
 

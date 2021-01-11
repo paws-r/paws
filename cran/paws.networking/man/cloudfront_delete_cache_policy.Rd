@@ -16,8 +16,7 @@ the cache policy’s \code{ETag} value, which you can get using
 }
 \description{
 Deletes a cache policy.
-}
-\details{
+
 You cannot delete a cache policy if it’s attached to a cache behavior.
 First update your distributions to remove the cache policy from all
 cache behaviors, then delete the cache policy.

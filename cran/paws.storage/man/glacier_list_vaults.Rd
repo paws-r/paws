@@ -24,8 +24,7 @@ but the number of returned vaults never exceeds the limit.}
 \description{
 This operation lists all vaults owned by the calling user's account. The
 list returned in the response is ASCII-sorted by vault name.
-}
-\details{
+
 By default, this operation returns up to 10 items. If there are more
 vaults to list, the response \code{marker} field contains the vault Amazon
 Resource Name (ARN) at which to continue the list with a new List Vaults

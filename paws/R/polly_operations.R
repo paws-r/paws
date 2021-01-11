@@ -5,6 +5,7 @@ NULL
 
 #' Deletes the specified pronunciation lexicon stored in an AWS Region
 #'
+#' @description
 #' Deletes the specified pronunciation lexicon stored in an AWS Region. A
 #' lexicon which has been deleted is not available for speech synthesis,
 #' nor is it possible to retrieve it using either the `GetLexicon` or
@@ -57,6 +58,7 @@ polly_delete_lexicon <- function(Name) {
 #' Returns the list of voices that are available for use when requesting
 #' speech synthesis
 #'
+#' @description
 #' Returns the list of voices that are available for use when requesting
 #' speech synthesis. Each voice speaks a specified language, is either male
 #' or female, and is identified by an ID, which is the ASCII version of the
@@ -140,6 +142,7 @@ polly_describe_voices <- function(Engine = NULL, LanguageCode = NULL, IncludeAdd
 #' Returns the content of the specified pronunciation lexicon stored in an
 #' AWS Region
 #'
+#' @description
 #' Returns the content of the specified pronunciation lexicon stored in an
 #' AWS Region. For more information, see [Managing
 #' Lexicons](https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
@@ -187,6 +190,7 @@ polly_get_lexicon <- function(Name) {
 
 #' Retrieves a specific SpeechSynthesisTask object based on its TaskID
 #'
+#' @description
 #' Retrieves a specific SpeechSynthesisTask object based on its TaskID.
 #' This object contains information about the given speech synthesis task,
 #' including the status of the task, and a link to the S3 bucket containing
@@ -226,6 +230,7 @@ polly_get_speech_synthesis_task <- function(TaskId) {
 
 #' Returns a list of pronunciation lexicons stored in an AWS Region
 #'
+#' @description
 #' Returns a list of pronunciation lexicons stored in an AWS Region. For
 #' more information, see [Managing
 #' Lexicons](https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html).
@@ -272,6 +277,7 @@ polly_list_lexicons <- function(NextToken = NULL) {
 #' Returns a list of SpeechSynthesisTask objects ordered by their creation
 #' date
 #'
+#' @description
 #' Returns a list of SpeechSynthesisTask objects ordered by their creation
 #' date. This operation can filter the tasks by their status, for example,
 #' allowing users to list only tasks that are completed.
@@ -315,6 +321,7 @@ polly_list_speech_synthesis_tasks <- function(MaxResults = NULL, NextToken = NUL
 
 #' Stores a pronunciation lexicon in an AWS Region
 #'
+#' @description
 #' Stores a pronunciation lexicon in an AWS Region. If a lexicon with the
 #' same name already exists in the region, it is overwritten by the new
 #' lexicon. Lexicon operations have eventual consistency, therefore, it
@@ -372,6 +379,7 @@ polly_put_lexicon <- function(Name, Content) {
 #' Allows the creation of an asynchronous synthesis task, by starting a new
 #' SpeechSynthesisTask
 #'
+#' @description
 #' Allows the creation of an asynchronous synthesis task, by starting a new
 #' `SpeechSynthesisTask`. This operation requires all the standard
 #' information needed for speech synthesis, plus the name of an Amazon S3
@@ -468,6 +476,7 @@ polly_start_speech_synthesis_task <- function(Engine = NULL, LanguageCode = NULL
 
 #' Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes
 #'
+#' @description
 #' Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML
 #' input must be valid, well-formed SSML. Some alphabets might not be
 #' available with all the voices (for example, Cyrillic might not be read

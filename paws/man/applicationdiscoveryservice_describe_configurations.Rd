@@ -11,8 +11,7 @@ applicationdiscoveryservice_describe_configurations(configurationIds)
 }
 \description{
 Retrieves attributes for a list of configuration item IDs.
-}
-\details{
+
 All of the supplied IDs must be for the same asset type from one of the
 following:
 \itemize{

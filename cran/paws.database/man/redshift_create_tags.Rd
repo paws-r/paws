@@ -19,8 +19,7 @@ tags with a space. For example,
 }
 \description{
 Adds tags to a cluster.
-}
-\details{
+
 A resource can have up to 50 tags. If you try to create more than 50
 tags for a resource, you will receive an error and the attempt will
 fail.

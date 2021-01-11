@@ -27,8 +27,7 @@ the function name, it is limited to 64 characters in length.}
 \description{
 Sets the maximum number of simultaneous executions for a function, and
 reserves capacity for that concurrency level.
-}
-\details{
+
 Concurrency settings apply to the function as a whole, including all
 published versions and the unpublished version. Reserving concurrency
 both ensures that your function has capacity to process the specified

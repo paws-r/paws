@@ -28,8 +28,7 @@ This API operation deletes an Amazon S3 on Outposts bucket policy. To
 delete an S3 bucket policy, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketPolicy.html}{DeleteBucketPolicy}
 in the \emph{Amazon Simple Storage Service API}.
-}
-\details{
+
 This implementation of the DELETE operation uses the policy subresource
 to delete the policy of a specified Amazon S3 on Outposts bucket. If you
 are using an identity other than the root user of the AWS account that

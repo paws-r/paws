@@ -140,8 +140,7 @@ revision is used.}
 }
 \description{
 Starts a new task using the specified task definition.
-}
-\details{
+
 You can allow Amazon ECS to place tasks for you, or you can customize
 how Amazon ECS places tasks using placement constraints and placement
 strategies. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/scheduling_tasks.html}{Scheduling Tasks}

@@ -13,8 +13,7 @@ opsworks_delete_layer(LayerId)
 Deletes a specified layer. You must first stop and then delete all
 associated instances or unassign registered instances. For more
 information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-basics-delete.html}{How to Delete a Layer}.
-}
-\details{
+
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user permissions,

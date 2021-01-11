@@ -6,6 +6,7 @@ NULL
 #' Creates an association between a geofence collection and a tracker
 #' resource
 #'
+#' @description
 #' Creates an association between a geofence collection and a tracker
 #' resource. This allows the tracker resource to communicate location data
 #' to the linked geofence collection.
@@ -52,6 +53,7 @@ locationservice_associate_tracker_consumer <- function(ConsumerArn, TrackerName)
 
 #' Deletes a batch of geofences from a geofence collection
 #'
+#' @description
 #' Deletes a batch of geofences from a geofence collection.
 #' 
 #' This action deletes the resource permanently. You can't undo this
@@ -95,6 +97,7 @@ locationservice_batch_delete_geofence <- function(CollectionName, GeofenceIds) {
 
 #' Used in geofence monitoring
 #'
+#' @description
 #' Used in geofence monitoring. Evaluates device positions against the
 #' position of geofences in a given geofence collection.
 #'
@@ -147,6 +150,7 @@ locationservice_batch_evaluate_geofences <- function(CollectionName, DevicePosit
 
 #' A batch request to retrieve device positions
 #'
+#' @description
 #' A batch request to retrieve device positions.
 #' 
 #' The response will return the device positions from the last 24 hours.
@@ -192,6 +196,7 @@ locationservice_batch_get_device_position <- function(DeviceIds, TrackerName) {
 
 #' A batch request for storing geofences into a given geofence collection
 #'
+#' @description
 #' A batch request for storing geofences into a given geofence collection.
 #'
 #' @usage
@@ -243,6 +248,7 @@ locationservice_batch_put_geofence <- function(CollectionName, Entries) {
 
 #' Uploads a position update for one or more devices to a tracker resource
 #'
+#' @description
 #' Uploads a position update for one or more devices to a tracker resource.
 #' The data is used for API queries requesting the device position and
 #' position history.
@@ -296,6 +302,7 @@ locationservice_batch_update_device_position <- function(TrackerName, Updates) {
 
 #' Creates a geofence collection, which manages and stores geofences
 #'
+#' @description
 #' Creates a geofence collection, which manages and stores geofences.
 #'
 #' @usage
@@ -361,6 +368,7 @@ locationservice_create_geofence_collection <- function(CollectionName, Descripti
 #' Creates a map resource in your AWS account, which provides map tiles of
 #' different styles sourced from global location data providers
 #'
+#' @description
 #' Creates a map resource in your AWS account, which provides map tiles of
 #' different styles sourced from global location data providers.
 #' 
@@ -438,6 +446,7 @@ locationservice_create_map <- function(Configuration, Description = NULL, MapNam
 #' Places functions with geospatial data sourced from your chosen data
 #' provider
 #'
+#' @description
 #' Creates a Place index resource in your AWS account, which supports
 #' Places functions with geospatial data sourced from your chosen data
 #' provider.
@@ -520,6 +529,7 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #' Creates a tracker resource in your AWS account, which lets you retrieve
 #' current and historical location of devices
 #'
+#' @description
 #' Creates a tracker resource in your AWS account, which lets you retrieve
 #' current and historical location of devices.
 #'
@@ -584,6 +594,7 @@ locationservice_create_tracker <- function(Description = NULL, PricingPlan, Trac
 
 #' Deletes a geofence collection from your AWS account
 #'
+#' @description
 #' Deletes a geofence collection from your AWS account.
 #' 
 #' This action deletes the resource permanently. You can't undo this
@@ -624,6 +635,7 @@ locationservice_delete_geofence_collection <- function(CollectionName) {
 
 #' Deletes a map resource from your AWS account
 #'
+#' @description
 #' Deletes a map resource from your AWS account.
 #' 
 #' This action deletes the resource permanently. You cannot undo this
@@ -664,6 +676,7 @@ locationservice_delete_map <- function(MapName) {
 
 #' Deletes a Place index resource from your AWS account
 #'
+#' @description
 #' Deletes a Place index resource from your AWS account.
 #' 
 #' This action deletes the resource permanently. You cannot undo this
@@ -703,6 +716,7 @@ locationservice_delete_place_index <- function(IndexName) {
 
 #' Deletes a tracker resource from your AWS account
 #'
+#' @description
 #' Deletes a tracker resource from your AWS account.
 #' 
 #' This action deletes the resource permanently. You can't undo this
@@ -744,6 +758,7 @@ locationservice_delete_tracker <- function(TrackerName) {
 
 #' Retrieves the geofence collection details
 #'
+#' @description
 #' Retrieves the geofence collection details.
 #'
 #' @usage
@@ -780,6 +795,7 @@ locationservice_describe_geofence_collection <- function(CollectionName) {
 
 #' Retrieves the map resource details
 #'
+#' @description
 #' Retrieves the map resource details.
 #'
 #' @usage
@@ -816,6 +832,7 @@ locationservice_describe_map <- function(MapName) {
 
 #' Retrieves the Place index resource details
 #'
+#' @description
 #' Retrieves the Place index resource details.
 #'
 #' @usage
@@ -852,6 +869,7 @@ locationservice_describe_place_index <- function(IndexName) {
 
 #' Retrieves the tracker resource details
 #'
+#' @description
 #' Retrieves the tracker resource details.
 #'
 #' @usage
@@ -889,6 +907,7 @@ locationservice_describe_tracker <- function(TrackerName) {
 #' Removes the association bewteen a tracker resource and a geofence
 #' collection
 #'
+#' @description
 #' Removes the association bewteen a tracker resource and a geofence
 #' collection.
 #' 
@@ -937,6 +956,7 @@ locationservice_disassociate_tracker_consumer <- function(ConsumerArn, TrackerNa
 
 #' Retrieves the latest device position
 #'
+#' @description
 #' Retrieves the latest device position.
 #' 
 #' Limitation — Device positions are deleted after one year.
@@ -978,6 +998,7 @@ locationservice_get_device_position <- function(DeviceId, TrackerName) {
 #' Retrieves the device position history from a tracker resource within a
 #' specified range of time
 #'
+#' @description
 #' Retrieves the device position history from a tracker resource within a
 #' specified range of time.
 #' 
@@ -1044,6 +1065,7 @@ locationservice_get_device_position_history <- function(DeviceId, EndTimeExclusi
 
 #' Retrieves the geofence details from a geofence collection
 #'
+#' @description
 #' Retrieves the geofence details from a geofence collection.
 #'
 #' @usage
@@ -1082,6 +1104,7 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 
 #' Retrieves glyphs used to display labels on a map
 #'
+#' @description
 #' Retrieves glyphs used to display labels on a map.
 #'
 #' @usage
@@ -1125,6 +1148,7 @@ locationservice_get_map_glyphs <- function(FontStack, FontUnicodeRange, MapName)
 
 #' Retrieves the sprite sheet corresponding to a map resource
 #'
+#' @description
 #' Retrieves the sprite sheet corresponding to a map resource. The sprite
 #' sheet is a PNG image paired with a JSON document describing the offsets
 #' of individual icons that will be displayed on a rendered map.
@@ -1177,6 +1201,7 @@ locationservice_get_map_sprites <- function(FileName, MapName) {
 
 #' Retrieves the map style descriptor from a map resource
 #'
+#' @description
 #' Retrieves the map style descriptor from a map resource.
 #' 
 #' The style descriptor contains speciﬁcations on how features render on a
@@ -1218,6 +1243,7 @@ locationservice_get_map_style_descriptor <- function(MapName) {
 
 #' Retrieves a vector data tile from the map resource
 #'
+#' @description
 #' Retrieves a vector data tile from the map resource. Map tiles are used
 #' by clients to render a map. They are addressed using a grid arrangement
 #' with an X coordinate, Y coordinate, and Z (zoom) level.
@@ -1267,6 +1293,7 @@ locationservice_get_map_tile <- function(MapName, X, Y, Z) {
 
 #' Lists geofence collections in your AWS account
 #'
+#' @description
 #' Lists geofence collections in your AWS account.
 #'
 #' @usage
@@ -1310,6 +1337,7 @@ locationservice_list_geofence_collections <- function(MaxResults = NULL, NextTok
 
 #' Lists geofences stored in a given geofence collection
 #'
+#' @description
 #' Lists geofences stored in a given geofence collection.
 #'
 #' @usage
@@ -1351,6 +1379,7 @@ locationservice_list_geofences <- function(CollectionName, NextToken = NULL) {
 
 #' Lists map resources in your AWS account
 #'
+#' @description
 #' Lists map resources in your AWS account.
 #'
 #' @usage
@@ -1394,6 +1423,7 @@ locationservice_list_maps <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Lists Place index resources in your AWS account
 #'
+#' @description
 #' Lists Place index resources in your AWS account.
 #'
 #' @usage
@@ -1439,6 +1469,7 @@ locationservice_list_place_indexes <- function(MaxResults = NULL, NextToken = NU
 #' Lists geofence collections currently associated to the given tracker
 #' resource
 #'
+#' @description
 #' Lists geofence collections currently associated to the given tracker
 #' resource.
 #'
@@ -1487,6 +1518,7 @@ locationservice_list_tracker_consumers <- function(MaxResults = NULL, NextToken 
 
 #' Lists tracker resources in your AWS account
 #'
+#' @description
 #' Lists tracker resources in your AWS account.
 #'
 #' @usage
@@ -1532,6 +1564,7 @@ locationservice_list_trackers <- function(MaxResults = NULL, NextToken = NULL) {
 #' geometry of an existing geofence if a geofence ID is included in the
 #' request
 #'
+#' @description
 #' Stores a geofence to a given geofence collection, or updates the
 #' geometry of an existing geofence if a geofence ID is included in the
 #' request.
@@ -1582,6 +1615,7 @@ locationservice_put_geofence <- function(CollectionName, GeofenceId, Geometry) {
 
 #' Reverse geocodes a given coordinate and returns a legible address
 #'
+#' @description
 #' Reverse geocodes a given coordinate and returns a legible address.
 #' Allows you to search for Places or points of interest near a given
 #' position.
@@ -1646,6 +1680,7 @@ locationservice_search_place_index_for_position <- function(IndexName, MaxResult
 #' Geocodes free-form text, such as an address, name, city, or region to
 #' allow you to search for Places or points of interest
 #'
+#' @description
 #' Geocodes free-form text, such as an address, name, city, or region to
 #' allow you to search for Places or points of interest.
 #' 

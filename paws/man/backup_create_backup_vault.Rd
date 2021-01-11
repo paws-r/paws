@@ -27,8 +27,7 @@ to be retried without the risk of running the operation twice.}
 Creates a logical container where backups are stored. A
 \code{CreateBackupVault} request includes a name, optionally one or more
 resource tags, an encryption key, and a request ID.
-}
-\details{
+
 Sensitive data, such as passport numbers, should not be included the
 name of a backup vault.
 }

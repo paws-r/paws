@@ -20,8 +20,7 @@ be for the same VPC as subnet specified.}
 \description{
 Creates a mount target for a file system. You can then mount the file
 system on EC2 instances by using the mount target.
-}
-\details{
+
 You can create one mount target in each Availability Zone in your VPC.
 All EC2 instances in a VPC within a given Availability Zone share a
 single mount target for a given file system. If you have multiple

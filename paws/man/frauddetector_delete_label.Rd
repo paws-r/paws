@@ -11,8 +11,7 @@ frauddetector_delete_label(name)
 }
 \description{
 Deletes a label.
-}
-\details{
+
 You cannot delete labels that are included in an event type in Amazon
 Fraud Detector.
 

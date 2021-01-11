@@ -19,8 +19,7 @@ This operation applies any modified cache parameter groups to the
 cluster. The reboot operation takes place as soon as possible, and
 results in a momentary outage to the cluster. During the reboot, the
 cluster status is set to REBOOTING.
-}
-\details{
+
 The reboot causes the contents of the cache (for each cache node being
 rebooted) to be lost.
 

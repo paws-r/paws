@@ -28,8 +28,7 @@ specified number.}
 Returns a description of virtual tape library (VTL) devices for the
 specified tape gateway. In the response, AWS Storage Gateway returns VTL
 device information.
-}
-\details{
+
 This operation is only supported in the tape gateway type.
 }
 \section{Request syntax}{

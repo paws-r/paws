@@ -19,8 +19,7 @@ same name already exists in the region, it is overwritten by the new
 lexicon. Lexicon operations have eventual consistency, therefore, it
 might take some time before the lexicon is available to the
 SynthesizeSpeech operation.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
 }
 \section{Request syntax}{

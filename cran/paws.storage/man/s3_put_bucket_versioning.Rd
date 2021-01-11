@@ -29,8 +29,7 @@ different account, the request will fail with an HTTP
 \description{
 Sets the versioning state of an existing bucket. To set the versioning
 state, you must be the bucket owner.
-}
-\details{
+
 You can set the versioning state with one of the following values:
 
 \strong{Enabled}—Enables versioning for the objects in the bucket. All

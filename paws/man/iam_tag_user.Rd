@@ -19,8 +19,7 @@ of a key name and an associated value.}
 \description{
 Adds one or more tags to an IAM user. If a tag with the same key name
 already exists, then that tag is overwritten with the new value.
-}
-\details{
+
 A tag consists of a key name and an associated value. By assigning tags
 to your resources, you can do the following:
 \itemize{

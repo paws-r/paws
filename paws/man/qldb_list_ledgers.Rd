@@ -19,8 +19,7 @@ here.}
 \description{
 Returns an array of ledger summaries that are associated with the
 current AWS account and Region.
-}
-\details{
+
 This action returns a maximum of 100 items and is paginated so that you
 can retrieve all the items by calling \code{ListLedgers} multiple times.
 }

@@ -53,8 +53,7 @@ prior call in your next request.}
 }
 \description{
 Retrieves an array of Cost Category names and values incurred cost.
-}
-\details{
+
 If some Cost Category names and values are not associated with any cost,
 they will not be returned by this API.
 }

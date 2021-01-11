@@ -210,8 +210,7 @@ is owned by a different account, the request will fail with an HTTP
 }
 \description{
 Creates a copy of an object that is already stored in Amazon S3.
-}
-\details{
+
 You can store individual objects of up to 5 TB in Amazon S3. You create
 a copy of your object up to 5 GB in size in a single atomic operation
 using this API. However, to copy an object greater than 5 GB, you must

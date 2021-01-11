@@ -101,8 +101,7 @@ resources.}
 \description{
 Creates the specified stateless or stateful rule group, which includes
 the rules for network traffic inspection, a capacity setting, and tags.
-}
-\details{
+
 You provide your rule group specification in your request using either
 \code{RuleGroup} or \code{Rules}.
 }

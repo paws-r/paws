@@ -37,8 +37,7 @@ Provisions an IPv4 or IPv6 address range for use with your AWS resources
 through bring your own IP addresses (BYOIP) and creates a corresponding
 address pool. After the address range is provisioned, it is ready to be
 advertised using AdvertiseByoipCidr.
-}
-\details{
+
 AWS verifies that you own the address range and are authorized to
 advertise it. You must ensure that the address range is registered to
 you and that you created an RPKI ROA to authorize Amazon ASNs 16509 and

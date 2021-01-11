@@ -19,8 +19,7 @@ the labeling set.}
 Starts the active learning workflow for your machine learning transform
 to improve the transform's quality by generating label sets and adding
 labels.
-}
-\details{
+
 When the \code{StartMLLabelingSetGenerationTaskRun} finishes, AWS Glue will
 have generated a "labeling set" or a set of questions for humans to
 answer.

@@ -5,6 +5,7 @@ NULL
 
 #' Adds device(s) to your account (i
 #'
+#' @description
 #' Adds device(s) to your account (i.e., claim one or more devices) if and
 #' only if you received a claim code with the device(s).
 #'
@@ -44,6 +45,7 @@ iot1clickdevicesservice_claim_devices_by_claim_code <- function(ClaimCode) {
 #' Given a device ID, returns a DescribeDeviceResponse object describing
 #' the details of the device
 #'
+#' @description
 #' Given a device ID, returns a DescribeDeviceResponse object describing
 #' the details of the device.
 #'
@@ -81,6 +83,7 @@ iot1clickdevicesservice_describe_device <- function(DeviceId) {
 
 #' Given a device ID, finalizes the claim request for the associated device
 #'
+#' @description
 #' Given a device ID, finalizes the claim request for the associated
 #' device.
 #' 
@@ -130,6 +133,7 @@ iot1clickdevicesservice_finalize_device_claim <- function(DeviceId, Tags = NULL)
 #' Given a device ID, returns the invokable methods associated with the
 #' device
 #'
+#' @description
 #' Given a device ID, returns the invokable methods associated with the
 #' device.
 #'
@@ -167,6 +171,7 @@ iot1clickdevicesservice_get_device_methods <- function(DeviceId) {
 
 #' Given a device ID, initiates a claim request for the associated device
 #'
+#' @description
 #' Given a device ID, initiates a claim request for the associated device.
 #' 
 #' Claiming a device consists of initiating a claim, then publishing a
@@ -208,6 +213,7 @@ iot1clickdevicesservice_initiate_device_claim <- function(DeviceId) {
 #' Given a device ID, issues a request to invoke a named device method
 #' (with possible parameters)
 #'
+#' @description
 #' Given a device ID, issues a request to invoke a named device method
 #' (with possible parameters). See the "Example POST" code snippet below.
 #'
@@ -254,6 +260,7 @@ iot1clickdevicesservice_invoke_device_method <- function(DeviceId, DeviceMethod 
 #' Using a device ID, returns a DeviceEventsResponse object containing an
 #' array of events for the device
 #'
+#' @description
 #' Using a device ID, returns a DeviceEventsResponse object containing an
 #' array of events for the device.
 #'
@@ -307,6 +314,7 @@ iot1clickdevicesservice_list_device_events <- function(DeviceId, FromTimeStamp, 
 
 #' Lists the 1-Click compatible devices associated with your AWS account
 #'
+#' @description
 #' Lists the 1-Click compatible devices associated with your AWS account.
 #'
 #' @usage
@@ -348,6 +356,7 @@ iot1clickdevicesservice_list_devices <- function(DeviceType = NULL, MaxResults =
 
 #' Lists the tags associated with the specified resource ARN
 #'
+#' @description
 #' Lists the tags associated with the specified resource ARN.
 #'
 #' @usage
@@ -384,6 +393,7 @@ iot1clickdevicesservice_list_tags_for_resource <- function(ResourceArn) {
 
 #' Adds or updates the tags associated with the resource ARN
 #'
+#' @description
 #' Adds or updates the tags associated with the resource ARN. See [AWS IoT
 #' 1-Click Service
 #' Limits](https://docs.aws.amazon.com/iot-1-click/latest/developerguide/1click-appendix.html#1click-limits)
@@ -430,6 +440,7 @@ iot1clickdevicesservice_tag_resource <- function(ResourceArn, Tags) {
 
 #' Disassociates a device from your AWS account using its device ID
 #'
+#' @description
 #' Disassociates a device from your AWS account using its device ID.
 #'
 #' @usage
@@ -467,6 +478,7 @@ iot1clickdevicesservice_unclaim_device <- function(DeviceId) {
 #' Using tag keys, deletes the tags (key/value pairs) associated with the
 #' specified resource ARN
 #'
+#' @description
 #' Using tag keys, deletes the tags (key/value pairs) associated with the
 #' specified resource ARN.
 #'
@@ -509,6 +521,7 @@ iot1clickdevicesservice_untag_resource <- function(ResourceArn, TagKeys) {
 #' Using a Boolean value (true or false), this operation enables or
 #' disables the device given a device ID
 #'
+#' @description
 #' Using a Boolean value (true or false), this operation enables or
 #' disables the device given a device ID.
 #'

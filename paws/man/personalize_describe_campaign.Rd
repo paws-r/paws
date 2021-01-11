@@ -11,8 +11,7 @@ personalize_describe_campaign(campaignArn)
 }
 \description{
 Describes the given campaign, including its status.
-}
-\details{
+
 A campaign can be in one of the following states:
 \itemize{
 \item CREATE PENDING > CREATE IN\\_PROGRESS > ACTIVE -or- CREATE

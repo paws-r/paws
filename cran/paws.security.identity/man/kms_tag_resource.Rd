@@ -31,8 +31,7 @@ the current tag value with the specified one.}
 }
 \description{
 Adds or edits tags on a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed CMK}.
-}
-\details{
+
 Each tag consists of a tag key and a tag value, both of which are
 case-sensitive strings. The tag value can be an empty (null) string.
 

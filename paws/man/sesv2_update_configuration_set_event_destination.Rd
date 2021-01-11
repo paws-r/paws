@@ -18,8 +18,7 @@ that you want to modify.}
 \description{
 Update the configuration of an event destination for a configuration
 set.
-}
-\details{
+
 \emph{Events} include message sends, deliveries, opens, clicks, bounces, and
 complaints. \emph{Event destinations} are places that you can send
 information about these events to. For example, you can send event data

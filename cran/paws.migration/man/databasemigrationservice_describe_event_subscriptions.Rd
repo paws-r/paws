@@ -30,8 +30,7 @@ Lists all the event subscriptions for a customer account. The
 description of a subscription includes \code{SubscriptionName},
 \code{SNSTopicARN}, \code{CustomerID}, \code{SourceType}, \code{SourceID}, \code{CreationTime},
 and \code{Status}.
-}
-\details{
+
 If you specify \code{SubscriptionName}, this action lists the description for
 that subscription.
 }

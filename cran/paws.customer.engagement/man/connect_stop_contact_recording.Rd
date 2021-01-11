@@ -22,8 +22,7 @@ StartContactRecording to restart it. For scenarios where the recording
 has started and you want to suspend it for sensitive information (for
 example, to collect a credit card number), and then restart it, use
 SuspendContactRecording and ResumeContactRecording.
-}
-\details{
+
 Only voice recordings are supported at this time.
 }
 \section{Request syntax}{

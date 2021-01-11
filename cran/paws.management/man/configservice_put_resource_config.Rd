@@ -35,8 +35,7 @@ request. The configuration state of a resource is represented in AWS
 Config as Configuration Items. Once this API records the configuration
 item, you can retrieve the list of configuration items for the custom
 resource type using existing AWS Config APIs.
-}
-\details{
+
 The custom resource type must be registered with AWS CloudFormation.
 This API accepts the configuration item registered with AWS
 CloudFormation.

@@ -50,8 +50,7 @@ This operation enables you to delete multiple objects from a bucket
 using a single HTTP request. If you know the object keys that you want
 to delete, then this operation provides a suitable alternative to
 sending individual delete requests, reducing per-request overhead.
-}
-\details{
+
 The request contains a list of up to 1000 keys that you want to delete.
 In the XML, you provide the object key names, and optionally, version
 IDs if you want to delete a specific version of the object from a

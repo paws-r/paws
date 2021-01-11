@@ -95,8 +95,7 @@ source mapping.}
 \description{
 Creates a mapping between an event source and an AWS Lambda function.
 Lambda reads items from the event source and triggers the function.
-}
-\details{
+
 For details about each event source type, see the following topics.
 \itemize{
 \item \href{https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html}{Using AWS Lambda with Amazon DynamoDB}

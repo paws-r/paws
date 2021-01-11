@@ -12,8 +12,7 @@ sns_delete_endpoint(EndpointArn)
 \description{
 Deletes the endpoint for a device and mobile app from Amazon SNS. This
 action is idempotent. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.
-}
-\details{
+
 When you delete an endpoint that is also subscribed to a topic, then you
 must also unsubscribe the endpoint from the topic.
 }

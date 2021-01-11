@@ -21,8 +21,7 @@ Add one or more tags (keys and values) to a specified application. A
 application. Tags can help you categorize and manage application in
 different ways, such as by purpose, owner, environment, or other
 criteria.
-}
-\details{
+
 Each tag consists of a required \emph{tag key} and an associated \emph{tag value},
 both of which you define. A tag key is a general label that acts as a
 category for more specific tag values. A tag value acts as a descriptor

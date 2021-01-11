@@ -16,8 +16,7 @@ Deletes the server and the underlying AWS CloudFormation stacks
 server state is updated to \code{DELETING}. After the server is deleted, it
 is no longer returned by \code{DescribeServer} requests. If the AWS
 CloudFormation stack cannot be deleted, the server cannot be deleted.
-}
-\details{
+
 This operation is asynchronous.
 
 An \code{InvalidStateException} is thrown when a server deletion is already

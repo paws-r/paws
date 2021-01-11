@@ -15,8 +15,7 @@ ID string requires exactly 12 digits.}
 }
 \description{
 Removes the specified account from the organization.
-}
-\details{
+
 The removed account becomes a standalone account that isn't a member of
 any organization. It's no longer subject to any policies and is
 responsible for its own bill payments. The organization's management

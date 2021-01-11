@@ -15,8 +15,7 @@ groundstation_create_config(configData, name, tags)
 }
 \description{
 Creates a \code{Config} with the specified \code{configData} parameters.
-}
-\details{
+
 Only one type of \code{configData} can be specified.
 }
 \section{Request syntax}{

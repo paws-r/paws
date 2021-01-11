@@ -24,8 +24,7 @@ part of its name matches the substring. For example, "xyz" matches both
 }
 \description{
 Returns a list of aliases for a specified Amazon Lex bot.
-}
-\details{
+
 This operation requires permissions for the \code{lex:GetBotAliases} action.
 }
 \section{Request syntax}{

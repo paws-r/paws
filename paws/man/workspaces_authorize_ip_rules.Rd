@@ -13,8 +13,7 @@ workspaces_authorize_ip_rules(GroupId, UserRules)
 }
 \description{
 Adds one or more rules to the specified IP access control group.
-}
-\details{
+
 This action gives users permission to access their WorkSpaces from the
 CIDR address ranges specified in the rules.
 }

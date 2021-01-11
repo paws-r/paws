@@ -17,8 +17,7 @@ If you don't use this parameter, Amazon SNS returns all SMS attributes.}
 }
 \description{
 Returns the settings for sending SMS messages from your account.
-}
-\details{
+
 These settings are set with the \code{SetSMSAttributes} action.
 }
 \section{Request syntax}{

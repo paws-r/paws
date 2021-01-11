@@ -100,8 +100,7 @@ ModifyDBClusterSnapshotAttribute API action.}
 \description{
 Returns information about DB cluster snapshots. This API action supports
 pagination.
-}
-\details{
+
 For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
 

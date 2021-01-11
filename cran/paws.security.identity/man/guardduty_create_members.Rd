@@ -19,8 +19,7 @@ Creates member accounts of the current AWS account by specifying a list
 of AWS account IDs. This step is a prerequisite for managing the
 associated member accounts either by invitation or through an
 organization.
-}
-\details{
+
 When using \verb{Create Members} as an organizations delegated administrator
 this action will enable GuardDuty in the added member accounts, with the
 exception of the organization delegated administrator account, which

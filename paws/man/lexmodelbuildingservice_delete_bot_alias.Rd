@@ -13,8 +13,7 @@ lexmodelbuildingservice_delete_bot_alias(name, botName)
 }
 \description{
 Deletes an alias for the specified bot.
-}
-\details{
+
 You can't delete an alias that is used in the association between a bot
 and a messaging channel. If an alias is used in a channel association,
 the \code{DeleteBot} operation returns a \code{ResourceInUseException} exception

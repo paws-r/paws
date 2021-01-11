@@ -27,8 +27,7 @@ parameter to get the next set of results.}
 \description{
 Describes events for a specified server. Results are ordered by time,
 with newest events first.
-}
-\details{
+
 This operation is synchronous.
 
 A \code{ResourceNotFoundException} is thrown when the server does not exist.

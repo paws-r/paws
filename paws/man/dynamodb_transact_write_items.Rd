@@ -51,8 +51,7 @@ but not in different AWS accounts or Regions, and no two actions can
 target the same item. For example, you cannot both \code{ConditionCheck} and
 \code{Update} the same item. The aggregate size of the items in the
 transaction cannot exceed 4 MB.
-}
-\details{
+
 The actions are completed atomically so that either all of them succeed,
 or all of them fail. They are defined by the following objects:
 \itemize{

@@ -13,8 +13,7 @@ ssm_resume_session(SessionId)
 Reconnects a session to an instance after it has been disconnected.
 Connections can be resumed for disconnected sessions, but not terminated
 sessions.
-}
-\details{
+
 This command is primarily for use by client machines to automatically
 reconnect during intermittent network issues. It is not intended for any
 other use.

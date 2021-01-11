@@ -11,8 +11,7 @@ translate_stop_text_translation_job(JobId)
 }
 \description{
 Stops an asynchronous batch translation job that is in progress.
-}
-\details{
+
 If the job's state is \code{IN_PROGRESS}, the job will be marked for
 termination and put into the \code{STOP_REQUESTED} state. If the job
 completes before it can be stopped, it is put into the \code{COMPLETED}

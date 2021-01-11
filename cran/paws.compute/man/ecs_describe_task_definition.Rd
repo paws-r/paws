@@ -19,8 +19,7 @@ field is omitted, tags are not included in the response.}
 Describes a task definition. You can specify a \code{family} and \code{revision}
 to find information about a specific task definition, or you can simply
 specify the family to find the latest \code{ACTIVE} revision in that family.
-}
-\details{
+
 You can only describe \code{INACTIVE} task definitions while an active task
 or service references them.
 }

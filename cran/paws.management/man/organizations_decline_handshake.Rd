@@ -17,8 +17,7 @@ digits.}
 \description{
 Declines a handshake request. This sets the handshake state to
 \code{DECLINED} and effectively deactivates the request.
-}
-\details{
+
 This operation can be called only from the account that received the
 handshake. The originator of the handshake can use CancelHandshake
 instead. The originator can't reactivate a declined request, but can

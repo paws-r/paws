@@ -82,8 +82,7 @@ Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is
 HTTP/S or email, or if the endpoint and the topic are not in the same
 AWS account, the endpoint owner must run the \code{ConfirmSubscription}
 action to confirm the subscription.
-}
-\details{
+
 You call the \code{ConfirmSubscription} action with the token from the
 subscription response. Confirmation tokens are valid for three days.
 

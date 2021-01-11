@@ -70,8 +70,7 @@ scheduled snapshots the gateway snapshot schedule window, an activation
 key, and a name for your gateway. The activation process also associates
 your gateway with your account. For more information, see
 UpdateGatewayInformation.
-}
-\details{
+
 You must turn on the gateway VM before you can activate your gateway.
 }
 \section{Request syntax}{

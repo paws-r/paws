@@ -41,7 +41,7 @@ user data. For example, \verb{apt-get -y update}.
 Depending on the machine image you choose, the command to get software
 on your instance varies. Amazon Linux and CentOS use \code{yum}, Debian and
 Ubuntu use \code{apt-get}, and FreeBSD uses \code{pkg}. For a complete list, see
-the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/compare-options-choose-lightsail-instance-image}{Dev Guide}.}
+the Dev Guide.}
 
 \item{keyPairName}{The name for your key pair.}
 
@@ -61,7 +61,8 @@ Constraints:
 \verb{instance snapshot name} parameter. The \verb{source instance name} and
 \verb{instance snapshot name} parameters are mutually exclusive.
 \item Define this parameter only when creating a new instance from an
-automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+automatic snapshot. For more information, see the Lightsail Dev
+Guide.
 }}
 
 \item{restoreDate}{The date of the automatic snapshot to use for the new instance. Use the
@@ -76,7 +77,8 @@ Constraints:
 and \verb{use latest restorable auto snapshot} parameters are mutually
 exclusive.
 \item Define this parameter only when creating a new instance from an
-automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+automatic snapshot. For more information, see the Lightsail Dev
+Guide.
 }}
 
 \item{useLatestRestorableAutoSnapshot}{A Boolean value to indicate whether to use the latest available
@@ -88,18 +90,18 @@ Constraints:
 parameter. The \verb{use latest restorable auto snapshot} and
 \verb{restore date} parameters are mutually exclusive.
 \item Define this parameter only when creating a new instance from an
-automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+automatic snapshot. For more information, see the Lightsail Dev
+Guide.
 }}
 }
 \description{
 Creates one or more new instances from a manual or automatic snapshot of
 an instance.
-}
-\details{
+
 The \verb{create instances from snapshot} operation supports tag-based access
 control via request tags and resource tags applied to the resource
 identified by \verb{instance snapshot name}. For more information, see the
-\href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$create_instances_from_snapshot(

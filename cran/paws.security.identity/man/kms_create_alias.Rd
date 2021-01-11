@@ -40,8 +40,7 @@ Creates a friendly name for a customer master key (CMK). You can use an
 alias to identify a CMK in the AWS KMS console, in the DescribeKey
 operation and in \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations},
 such as Encrypt and GenerateDataKey.
-}
-\details{
+
 You can also change the CMK that's associated with the alias
 (UpdateAlias) or delete the alias (DeleteAlias) at any time. These
 operations don't affect the underlying CMK.

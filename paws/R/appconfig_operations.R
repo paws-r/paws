@@ -6,6 +6,7 @@ NULL
 #' An application in AppConfig is a logical unit of code that provides
 #' capabilities for your customers
 #'
+#' @description
 #' An application in AppConfig is a logical unit of code that provides
 #' capabilities for your customers. For example, an application can be a
 #' microservice that runs on Amazon EC2 instances, a mobile application
@@ -54,6 +55,7 @@ appconfig_create_application <- function(Name, Description = NULL, Tags = NULL) 
 
 #' Information that enables AppConfig to access the configuration source
 #'
+#' @description
 #' Information that enables AppConfig to access the configuration source.
 #' Valid configuration sources include Systems Manager (SSM) documents, SSM
 #' Parameter Store parameters, and Amazon S3 objects. A configuration
@@ -137,6 +139,7 @@ appconfig_create_configuration_profile <- function(ApplicationId, Name, Descript
 #' A deployment strategy defines important criteria for rolling out your
 #' configuration to the designated targets
 #'
+#' @description
 #' A deployment strategy defines important criteria for rolling out your
 #' configuration to the designated targets. A deployment strategy includes:
 #' the overall duration required, a percentage of targets to receive the
@@ -164,7 +167,7 @@ appconfig_create_configuration_profile <- function(ApplicationId, Name, Descript
 #' `Step percentage`. For example, a linear deployment that uses a
 #' `Step percentage` of 10 deploys the configuration to 10 percent of the
 #' hosts. After those deployments are complete, the system deploys the
-#' configuration to the next 10 percent. This continues until 100% of the
+#' configuration to the next 10 percent. This continues until 100\% of the
 #' targets have successfully received the configuration.
 #' 
 #' **Exponential**: For this type, AppConfig processes the deployment
@@ -180,8 +183,8 @@ appconfig_create_configuration_profile <- function(ApplicationId, Name, Descript
 #' 
 #' `2*(2^2)`
 #' 
-#' Expressed numerically, the deployment rolls out as follows: 2% of the
-#' targets, 4% of the targets, 8% of the targets, and continues until the
+#' Expressed numerically, the deployment rolls out as follows: 2\% of the
+#' targets, 4\% of the targets, 8\% of the targets, and continues until the
 #' configuration has been deployed to all targets.
 #' @param ReplicateTo &#91;required&#93; Save the deployment strategy to a Systems Manager (SSM) document.
 #' @param Tags Metadata to assign to the deployment strategy. Tags help organize and
@@ -226,6 +229,7 @@ appconfig_create_deployment_strategy <- function(Name, Description = NULL, Deplo
 
 #' For each application, you define one or more environments
 #'
+#' @description
 #' For each application, you define one or more environments. An
 #' environment is a logical deployment group of AppConfig targets, such as
 #' applications in a `Beta` or `Production` environment. You can also
@@ -287,6 +291,7 @@ appconfig_create_environment <- function(ApplicationId, Name, Description = NULL
 
 #' Create a new configuration in the AppConfig configuration store
 #'
+#' @description
 #' Create a new configuration in the AppConfig configuration store.
 #'
 #' @usage
@@ -340,6 +345,7 @@ appconfig_create_hosted_configuration_version <- function(ApplicationId, Configu
 
 #' Delete an application
 #'
+#' @description
 #' Delete an application. Deleting an application does not delete a
 #' configuration from a host.
 #'
@@ -377,6 +383,7 @@ appconfig_delete_application <- function(ApplicationId) {
 
 #' Delete a configuration profile
 #'
+#' @description
 #' Delete a configuration profile. Deleting a configuration profile does
 #' not delete a configuration from a host.
 #'
@@ -418,6 +425,7 @@ appconfig_delete_configuration_profile <- function(ApplicationId, ConfigurationP
 
 #' Delete a deployment strategy
 #'
+#' @description
 #' Delete a deployment strategy. Deleting a deployment strategy does not
 #' delete a configuration from a host.
 #'
@@ -455,6 +463,7 @@ appconfig_delete_deployment_strategy <- function(DeploymentStrategyId) {
 
 #' Delete an environment
 #'
+#' @description
 #' Delete an environment. Deleting an environment does not delete a
 #' configuration from a host.
 #'
@@ -495,6 +504,7 @@ appconfig_delete_environment <- function(ApplicationId, EnvironmentId) {
 #' Delete a version of a configuration from the AppConfig configuration
 #' store
 #'
+#' @description
 #' Delete a version of a configuration from the AppConfig configuration
 #' store.
 #'
@@ -537,6 +547,7 @@ appconfig_delete_hosted_configuration_version <- function(ApplicationId, Configu
 
 #' Retrieve information about an application
 #'
+#' @description
 #' Retrieve information about an application.
 #'
 #' @usage
@@ -573,6 +584,7 @@ appconfig_get_application <- function(ApplicationId) {
 
 #' Receive information about a configuration
 #'
+#' @description
 #' Receive information about a configuration.
 #' 
 #' AWS AppConfig uses the value of the `ClientConfigurationVersion`
@@ -653,6 +665,7 @@ appconfig_get_configuration <- function(Application, Environment, Configuration,
 
 #' Retrieve information about a configuration profile
 #'
+#' @description
 #' Retrieve information about a configuration profile.
 #'
 #' @usage
@@ -693,6 +706,7 @@ appconfig_get_configuration_profile <- function(ApplicationId, ConfigurationProf
 
 #' Retrieve information about a configuration deployment
 #'
+#' @description
 #' Retrieve information about a configuration deployment.
 #'
 #' @usage
@@ -733,6 +747,7 @@ appconfig_get_deployment <- function(ApplicationId, EnvironmentId, DeploymentNum
 
 #' Retrieve information about a deployment strategy
 #'
+#' @description
 #' Retrieve information about a deployment strategy. A deployment strategy
 #' defines important criteria for rolling out your configuration to the
 #' designated targets. A deployment strategy includes: the overall duration
@@ -773,6 +788,7 @@ appconfig_get_deployment_strategy <- function(DeploymentStrategyId) {
 
 #' Retrieve information about an environment
 #'
+#' @description
 #' Retrieve information about an environment. An environment is a logical
 #' deployment group of AppConfig applications, such as applications in a
 #' `Production` environment or in an `EU_Region` environment. Each
@@ -816,6 +832,7 @@ appconfig_get_environment <- function(ApplicationId, EnvironmentId) {
 
 #' Get information about a specific configuration version
 #'
+#' @description
 #' Get information about a specific configuration version.
 #'
 #' @usage
@@ -857,6 +874,7 @@ appconfig_get_hosted_configuration_version <- function(ApplicationId, Configurat
 
 #' List all applications in your AWS account
 #'
+#' @description
 #' List all applications in your AWS account.
 #'
 #' @usage
@@ -898,6 +916,7 @@ appconfig_list_applications <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Lists the configuration profiles for an application
 #'
+#' @description
 #' Lists the configuration profiles for an application.
 #'
 #' @usage
@@ -942,6 +961,7 @@ appconfig_list_configuration_profiles <- function(ApplicationId, MaxResults = NU
 
 #' List deployment strategies
 #'
+#' @description
 #' List deployment strategies.
 #'
 #' @usage
@@ -983,6 +1003,7 @@ appconfig_list_deployment_strategies <- function(MaxResults = NULL, NextToken = 
 
 #' Lists the deployments for an environment
 #'
+#' @description
 #' Lists the deployments for an environment.
 #'
 #' @usage
@@ -1029,6 +1050,7 @@ appconfig_list_deployments <- function(ApplicationId, EnvironmentId, MaxResults 
 
 #' List the environments for an application
 #'
+#' @description
 #' List the environments for an application.
 #'
 #' @usage
@@ -1073,6 +1095,7 @@ appconfig_list_environments <- function(ApplicationId, MaxResults = NULL, NextTo
 #' View a list of configurations stored in the AppConfig configuration
 #' store by version
 #'
+#' @description
 #' View a list of configurations stored in the AppConfig configuration
 #' store by version.
 #'
@@ -1120,6 +1143,7 @@ appconfig_list_hosted_configuration_versions <- function(ApplicationId, Configur
 
 #' Retrieves the list of key-value tags assigned to the resource
 #'
+#' @description
 #' Retrieves the list of key-value tags assigned to the resource.
 #'
 #' @usage
@@ -1156,6 +1180,7 @@ appconfig_list_tags_for_resource <- function(ResourceArn) {
 
 #' Starts a deployment
 #'
+#' @description
 #' Starts a deployment.
 #'
 #' @usage
@@ -1210,6 +1235,7 @@ appconfig_start_deployment <- function(ApplicationId, EnvironmentId, DeploymentS
 
 #' Stops a deployment
 #'
+#' @description
 #' Stops a deployment. This API action works only on deployments that have
 #' a status of `DEPLOYING`. This action moves the deployment to a status of
 #' `ROLLED_BACK`.
@@ -1253,6 +1279,7 @@ appconfig_stop_deployment <- function(ApplicationId, EnvironmentId, DeploymentNu
 
 #' Metadata to assign to an AppConfig resource
 #'
+#' @description
 #' Metadata to assign to an AppConfig resource. Tags help organize and
 #' categorize your AppConfig resources. Each tag consists of a key and an
 #' optional value, both of which you define. You can specify a maximum of
@@ -1298,6 +1325,7 @@ appconfig_tag_resource <- function(ResourceArn, Tags) {
 
 #' Deletes a tag key and value from an AppConfig resource
 #'
+#' @description
 #' Deletes a tag key and value from an AppConfig resource.
 #'
 #' @usage
@@ -1338,6 +1366,7 @@ appconfig_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates an application
 #'
+#' @description
 #' Updates an application.
 #'
 #' @usage
@@ -1378,6 +1407,7 @@ appconfig_update_application <- function(ApplicationId, Name = NULL, Description
 
 #' Updates a configuration profile
 #'
+#' @description
 #' Updates a configuration profile.
 #'
 #' @usage
@@ -1431,6 +1461,7 @@ appconfig_update_configuration_profile <- function(ApplicationId, ConfigurationP
 
 #' Updates a deployment strategy
 #'
+#' @description
 #' Updates a deployment strategy.
 #'
 #' @usage
@@ -1454,7 +1485,7 @@ appconfig_update_configuration_profile <- function(ApplicationId, ConfigurationP
 #' time. For example, a linear deployment that uses a growth factor of 20
 #' initially makes the configuration available to 20 percent of the
 #' targets. After 1/5th of the deployment time has passed, the system
-#' updates the percentage to 40 percent. This continues until 100% of the
+#' updates the percentage to 40 percent. This continues until 100\% of the
 #' targets are set to receive the deployed configuration.
 #' 
 #' **Exponential**: For this type, AppConfig processes the deployment
@@ -1470,8 +1501,8 @@ appconfig_update_configuration_profile <- function(ApplicationId, ConfigurationP
 #' 
 #' `2*(2^2)`
 #' 
-#' Expressed numerically, the deployment rolls out as follows: 2% of the
-#' targets, 4% of the targets, 8% of the targets, and continues until the
+#' Expressed numerically, the deployment rolls out as follows: 2\% of the
+#' targets, 4\% of the targets, 8\% of the targets, and continues until the
 #' configuration has been deployed to all targets.
 #'
 #' @section Request syntax:
@@ -1508,6 +1539,7 @@ appconfig_update_deployment_strategy <- function(DeploymentStrategyId, Descripti
 
 #' Updates an environment
 #'
+#' @description
 #' Updates an environment.
 #'
 #' @usage
@@ -1559,6 +1591,7 @@ appconfig_update_environment <- function(ApplicationId, EnvironmentId, Name = NU
 #' Uses the validators in a configuration profile to validate a
 #' configuration
 #'
+#' @description
 #' Uses the validators in a configuration profile to validate a
 #' configuration.
 #'

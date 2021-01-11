@@ -20,8 +20,7 @@ identities in the response.}
 }
 \description{
 Lists the identities in an identity pool.
-}
-\details{
+
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{

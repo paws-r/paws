@@ -31,8 +31,7 @@ TECHNICAL\\_CUE and SHOT.}
 }
 \description{
 Starts asynchronous detection of segment detection in a stored video.
-}
-\details{
+
 Amazon Rekognition Video can detect segments in a video stored in an
 Amazon S3 bucket. Use Video to specify the bucket name and the filename
 of the video. \code{StartSegmentDetection} returns a job identifier (\code{JobId})

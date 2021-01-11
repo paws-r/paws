@@ -17,8 +17,7 @@ data. For more information, see \href{https://docs.aws.amazon.com/general/latest
 \description{
 Creates a log group with the specified name. You can create up to 20,000
 log groups per account.
-}
-\details{
+
 You must use the following guidelines when naming a log group:
 \itemize{
 \item Log group names must be unique within a region for an AWS account.

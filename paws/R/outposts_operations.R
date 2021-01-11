@@ -5,6 +5,7 @@ NULL
 
 #' Creates an Outpost
 #'
+#' @description
 #' Creates an Outpost.
 #'
 #' @usage
@@ -54,6 +55,7 @@ outposts_create_outpost <- function(Name, Description = NULL, SiteId, Availabili
 
 #' Deletes the Outpost
 #'
+#' @description
 #' Deletes the Outpost.
 #'
 #' @usage
@@ -90,6 +92,7 @@ outposts_delete_outpost <- function(OutpostId) {
 
 #' Deletes the site
 #'
+#' @description
 #' Deletes the site.
 #'
 #' @usage
@@ -126,6 +129,7 @@ outposts_delete_site <- function(SiteId) {
 
 #' Gets information about the specified Outpost
 #'
+#' @description
 #' Gets information about the specified Outpost.
 #'
 #' @usage
@@ -162,6 +166,7 @@ outposts_get_outpost <- function(OutpostId) {
 
 #' Lists the instance types for the specified Outpost
 #'
+#' @description
 #' Lists the instance types for the specified Outpost.
 #'
 #' @usage
@@ -202,6 +207,7 @@ outposts_get_outpost_instance_types <- function(OutpostId, NextToken = NULL, Max
 
 #' List the Outposts for your AWS account
 #'
+#' @description
 #' List the Outposts for your AWS account.
 #'
 #' @usage
@@ -240,6 +246,7 @@ outposts_list_outposts <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Lists the sites for the specified AWS account
 #'
+#' @description
 #' Lists the sites for the specified AWS account.
 #'
 #' @usage
@@ -278,6 +285,7 @@ outposts_list_sites <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Lists the tags for the specified resource
 #'
+#' @description
 #' Lists the tags for the specified resource.
 #'
 #' @usage
@@ -314,6 +322,7 @@ outposts_list_tags_for_resource <- function(ResourceArn) {
 
 #' Adds tags to the specified resource
 #'
+#' @description
 #' Adds tags to the specified resource.
 #'
 #' @usage
@@ -354,6 +363,7 @@ outposts_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes tags from the specified resource
 #'
+#' @description
 #' Removes tags from the specified resource.
 #'
 #' @usage

@@ -122,8 +122,7 @@ Cognito advanced security.}
 }
 \description{
 Initiates the authentication flow, as an administrator.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

@@ -39,8 +39,7 @@ Lists the handshakes that are associated with the organization that the
 requesting user is part of. The \code{ListHandshakesForOrganization}
 operation returns a list of handshake structures. Each structure
 contains details and status about a handshake.
-}
-\details{
+
 Handshakes that are \code{ACCEPTED}, \code{DECLINED}, or \code{CANCELED} appear in the
 results of this API for only 30 days after changing to that state. After
 that, they're deleted and no longer accessible.

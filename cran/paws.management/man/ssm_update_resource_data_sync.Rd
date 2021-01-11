@@ -22,8 +22,7 @@ Include only the current account option, you can't edit that sync later
 and choose the Include all accounts from my AWS Organizations
 configuration option. Instead, you must delete the first resource data
 sync, and create a new one.
-}
-\details{
+
 This API action only supports a resource data sync that was created with
 a SyncFromSource \code{SyncType}.
 }

@@ -61,8 +61,7 @@ operation returns a plaintext public key, a plaintext private key, and a
 copy of the private key that is encrypted under the symmetric CMK you
 specify. You can use the data key pair to perform asymmetric
 cryptography outside of AWS KMS.
-}
-\details{
+
 \code{GenerateDataKeyPair} returns a unique data key pair for each request.
 The bytes in the keys are not related to the caller or the CMK that is
 used to encrypt the private key.

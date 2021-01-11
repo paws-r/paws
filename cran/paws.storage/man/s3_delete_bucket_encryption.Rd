@@ -20,8 +20,7 @@ This implementation of the DELETE operation removes default encryption
 from the bucket. For information about the Amazon S3 default encryption
 feature, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html}{Amazon S3 Default Bucket Encryption}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
-}
-\details{
+
 To use this operation, you must have permissions to perform the
 \code{s3:PutEncryptionConfiguration} action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to

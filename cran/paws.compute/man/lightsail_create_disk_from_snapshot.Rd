@@ -47,7 +47,8 @@ Constraints:
 \verb{disk snapshot name} parameter. The \verb{source disk name} and
 \verb{disk snapshot name} parameters are mutually exclusive.
 \item Define this parameter only when creating a new disk from an
-automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+automatic snapshot. For more information, see the Lightsail Dev
+Guide.
 }}
 
 \item{restoreDate}{The date of the automatic snapshot to use for the new disk. Use the
@@ -62,7 +63,8 @@ Constraints:
 and \verb{use latest restorable auto snapshot} parameters are mutually
 exclusive.
 \item Define this parameter only when creating a new disk from an
-automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+automatic snapshot. For more information, see the Lightsail Dev
+Guide.
 }}
 
 \item{useLatestRestorableAutoSnapshot}{A Boolean value to indicate whether to use the latest available
@@ -74,19 +76,19 @@ Constraints:
 parameter. The \verb{use latest restorable auto snapshot} and
 \verb{restore date} parameters are mutually exclusive.
 \item Define this parameter only when creating a new disk from an
-automatic snapshot. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots}{Lightsail Dev Guide}.
+automatic snapshot. For more information, see the Lightsail Dev
+Guide.
 }}
 }
 \description{
 Creates a block storage disk from a manual or automatic snapshot of a
 disk. The resulting disk can be attached to an Amazon Lightsail instance
 in the same Availability Zone (e.g., \verb{us-east-2a}).
-}
-\details{
+
 The \verb{create disk from snapshot} operation supports tag-based access
 control via request tags and resource tags applied to the resource
 identified by \verb{disk snapshot name}. For more information, see the
-\href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$create_disk_from_snapshot(

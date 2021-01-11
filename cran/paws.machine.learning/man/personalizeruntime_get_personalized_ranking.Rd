@@ -45,8 +45,7 @@ For more information, see \href{https://docs.aws.amazon.com/personalize/latest/d
 Re-ranks a list of recommended items for the given user. The first item
 in the list is deemed the most likely item to be of interest to the
 user.
-}
-\details{
+
 The solution backing the campaign must have been created using a recipe
 of type PERSONALIZED\\_RANKING.
 }

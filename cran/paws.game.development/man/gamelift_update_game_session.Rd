@@ -34,8 +34,6 @@ session creation policy, which controls whether or not new players can
 join the session. To update a game session, specify the game session ID
 and the values you want to change. If successful, an updated GameSession
 object is returned.
-}
-\details{
 \itemize{
 \item CreateGameSession
 \item DescribeGameSessions

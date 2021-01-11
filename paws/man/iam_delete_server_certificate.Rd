@@ -15,8 +15,7 @@ spaces. You can also include any of the following characters: \\_+=,.@-}
 }
 \description{
 Deletes the specified server certificate.
-}
-\details{
+
 For more information about working with server certificates, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_server-certs.html}{Working with Server Certificates}
 in the \emph{IAM User Guide}. This topic also includes a list of AWS services

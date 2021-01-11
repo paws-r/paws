@@ -6,6 +6,7 @@ NULL
 #' Retrieves a forecast for a single item, filtered by the supplied
 #' criteria
 #'
+#' @description
 #' Retrieves a forecast for a single item, filtered by the supplied
 #' criteria.
 #' 

@@ -22,8 +22,7 @@ you specify a tag that already exists, the tag value is replaced with
 the value that you specify in the request. For more information, see
 \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html}{Using Cost Allocation Tags}
 in the \emph{AWS Billing and Cost Management User Guide}.
-}
-\details{
+
 You must provide either the \code{StreamName} or the \code{StreamARN}.
 
 This operation requires permission for the \code{KinesisVideo:TagStream}

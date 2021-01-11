@@ -5,6 +5,7 @@ NULL
 
 #' Creates a signaling channel
 #'
+#' @description
 #' Creates a signaling channel.
 #' 
 #' `CreateSignalingChannel` is an asynchronous operation.
@@ -61,6 +62,7 @@ kinesisvideo_create_signaling_channel <- function(ChannelName, ChannelType = NUL
 
 #' Creates a new Kinesis video stream
 #'
+#' @description
 #' Creates a new Kinesis video stream.
 #' 
 #' When you create a new stream, Kinesis Video Streams assigns it a version
@@ -156,6 +158,7 @@ kinesisvideo_create_stream <- function(DeviceName = NULL, StreamName, MediaType 
 
 #' Deletes a specified signaling channel
 #'
+#' @description
 #' Deletes a specified signaling channel. `DeleteSignalingChannel` is an
 #' asynchronous operation. If you don't specify the channel's current
 #' version, the most recent version is deleted.
@@ -199,6 +202,7 @@ kinesisvideo_delete_signaling_channel <- function(ChannelARN, CurrentVersion = N
 
 #' Deletes a Kinesis video stream and the data contained in the stream
 #'
+#' @description
 #' Deletes a Kinesis video stream and the data contained in the stream.
 #' 
 #' This method marks the stream for deletion, and makes the data in the
@@ -255,6 +259,7 @@ kinesisvideo_delete_stream <- function(StreamARN, CurrentVersion = NULL) {
 
 #' Returns the most current information about the signaling channel
 #'
+#' @description
 #' Returns the most current information about the signaling channel. You
 #' must specify either the name or the Amazon Resource Name (ARN) of the
 #' channel that you want to describe.
@@ -295,6 +300,7 @@ kinesisvideo_describe_signaling_channel <- function(ChannelName = NULL, ChannelA
 
 #' Returns the most current information about the specified stream
 #'
+#' @description
 #' Returns the most current information about the specified stream. You
 #' must specify either the `StreamName` or the `StreamARN`.
 #'
@@ -334,6 +340,7 @@ kinesisvideo_describe_stream <- function(StreamName = NULL, StreamARN = NULL) {
 
 #' Gets an endpoint for a specified stream for either reading or writing
 #'
+#' @description
 #' Gets an endpoint for a specified stream for either reading or writing.
 #' Use this endpoint in your application to read from the specified stream
 #' (using the `GetMedia` or `GetMediaForFragmentList` operations) or write
@@ -387,6 +394,7 @@ kinesisvideo_get_data_endpoint <- function(StreamName = NULL, StreamARN = NULL, 
 #' Provides an endpoint for the specified signaling channel to send and
 #' receive messages
 #'
+#' @description
 #' Provides an endpoint for the specified signaling channel to send and
 #' receive messages. This API uses the
 #' `SingleMasterChannelEndpointConfiguration` input parameter, which
@@ -447,6 +455,7 @@ kinesisvideo_get_signaling_channel_endpoint <- function(ChannelARN, SingleMaster
 
 #' Returns an array of ChannelInfo objects
 #'
+#' @description
 #' Returns an array of `ChannelInfo` objects. Each object describes a
 #' signaling channel. To retrieve only those channels that satisfy a
 #' specific condition, you can specify a `ChannelNameCondition`.
@@ -497,6 +506,7 @@ kinesisvideo_list_signaling_channels <- function(MaxResults = NULL, NextToken = 
 
 #' Returns an array of StreamInfo objects
 #'
+#' @description
 #' Returns an array of `StreamInfo` objects. Each object describes a
 #' stream. To retrieve only streams that satisfy a specific condition, you
 #' can specify a `StreamNameCondition`.
@@ -548,6 +558,7 @@ kinesisvideo_list_streams <- function(MaxResults = NULL, NextToken = NULL, Strea
 
 #' Returns a list of tags associated with the specified signaling channel
 #'
+#' @description
 #' Returns a list of tags associated with the specified signaling channel.
 #'
 #' @usage
@@ -589,6 +600,7 @@ kinesisvideo_list_tags_for_resource <- function(NextToken = NULL, ResourceARN) {
 
 #' Returns a list of tags associated with the specified stream
 #'
+#' @description
 #' Returns a list of tags associated with the specified stream.
 #' 
 #' In the request, you must specify either the `StreamName` or the
@@ -635,6 +647,7 @@ kinesisvideo_list_tags_for_stream <- function(NextToken = NULL, StreamARN = NULL
 
 #' Adds one or more tags to a signaling channel
 #'
+#' @description
 #' Adds one or more tags to a signaling channel. A *tag* is a key-value
 #' pair (the value is optional) that you can define and assign to AWS
 #' resources. If you specify a tag that already exists, the tag value is
@@ -686,6 +699,7 @@ kinesisvideo_tag_resource <- function(ResourceARN, Tags) {
 
 #' Adds one or more tags to a stream
 #'
+#' @description
 #' Adds one or more tags to a stream. A *tag* is a key-value pair (the
 #' value is optional) that you can define and assign to AWS resources. If
 #' you specify a tag that already exists, the tag value is replaced with
@@ -743,6 +757,7 @@ kinesisvideo_tag_stream <- function(StreamARN = NULL, StreamName = NULL, Tags) {
 
 #' Removes one or more tags from a signaling channel
 #'
+#' @description
 #' Removes one or more tags from a signaling channel. In the request,
 #' specify only a tag key or keys; don't specify the value. If you specify
 #' a tag key that does not exist, it's ignored.
@@ -786,6 +801,7 @@ kinesisvideo_untag_resource <- function(ResourceARN, TagKeyList) {
 
 #' Removes one or more tags from a stream
 #'
+#' @description
 #' Removes one or more tags from a stream. In the request, specify only a
 #' tag key or keys; don't specify the value. If you specify a tag key that
 #' does not exist, it's ignored.
@@ -834,6 +850,7 @@ kinesisvideo_untag_stream <- function(StreamARN = NULL, StreamName = NULL, TagKe
 #' Increases or decreases the stream's data retention period by the value
 #' that you specify
 #'
+#' @description
 #' Increases or decreases the stream's data retention period by the value
 #' that you specify. To indicate whether you want to increase or decrease
 #' the data retention period, specify the `Operation` parameter in the
@@ -907,6 +924,7 @@ kinesisvideo_update_data_retention <- function(StreamName = NULL, StreamARN = NU
 
 #' Updates the existing signaling channel
 #'
+#' @description
 #' Updates the existing signaling channel. This is an asynchronous
 #' operation and takes time to complete.
 #' 
@@ -958,6 +976,7 @@ kinesisvideo_update_signaling_channel <- function(ChannelARN, CurrentVersion, Si
 
 #' Updates stream metadata, such as the device name and media type
 #'
+#' @description
 #' Updates stream metadata, such as the device name and media type.
 #' 
 #' You must provide the stream name or the Amazon Resource Name (ARN) of

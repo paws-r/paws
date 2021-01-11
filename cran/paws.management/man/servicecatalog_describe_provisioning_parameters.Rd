@@ -38,8 +38,7 @@ provide the name or ID, but not both.}
 \description{
 Gets information about the configuration required to provision the
 specified product using the specified provisioning artifact.
-}
-\details{
+
 If the output contains a TagOption key with an empty list of values,
 there is a TagOption conflict for that key. The end user cannot take
 action to fix the conflict, and launch is not blocked. In subsequent

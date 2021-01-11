@@ -17,8 +17,7 @@ Associate a set of tags with an Amazon DynamoDB resource. You can then
 activate these user-defined tags so that they appear on the Billing and
 Cost Management console for cost allocation tracking. You can call
 TagResource up to five times per second, per account.
-}
-\details{
+
 For an overview on tagging DynamoDB resources, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html}{Tagging for DynamoDB}
 in the \emph{Amazon DynamoDB Developer Guide}.
 }

@@ -19,8 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Initiates the verification process to prove that the service provider
 owns the private DNS name domain for the endpoint service.
-}
-\details{
+
 The service provider must successfully perform the verification before
 the consumer can use the name to access the service.
 

@@ -26,8 +26,7 @@ The value must be URL encoded.}
 }
 \description{
 Returns configuration information about the specified access point.
-}
-\details{
+
 All Amazon S3 on Outposts REST API requests for this action require an
 additional parameter of \code{x-amz-outpost-id} to be passed with the request
 and an S3 on Outposts endpoint hostname prefix instead of \code{s3-control}.

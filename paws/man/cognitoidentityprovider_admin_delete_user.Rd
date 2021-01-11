@@ -13,8 +13,7 @@ cognitoidentityprovider_admin_delete_user(UserPoolId, Username)
 }
 \description{
 Deletes a user as an administrator. Works on any user.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

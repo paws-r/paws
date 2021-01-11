@@ -11,8 +11,7 @@ route53_delete_hosted_zone(Id)
 }
 \description{
 Deletes a hosted zone.
-}
-\details{
+
 If the hosted zone was created by another service, such as AWS Cloud
 Map, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DeleteHostedZone.html#delete-public-hosted-zone-created-by-another-service}{Deleting Public Hosted Zones That Were Created by Another Service}
 in the \emph{Amazon Route 53 Developer Guide} for information about how to

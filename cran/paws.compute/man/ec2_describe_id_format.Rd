@@ -26,8 +26,7 @@ basis, for example, to view which resource types are enabled for longer
 IDs. This request only returns information about resource types whose ID
 formats can be modified; it does not return information about other
 resource types.
-}
-\details{
+
 The following resource types support longer IDs: \code{bundle} |
 \code{conversion-task} | \code{customer-gateway} | \code{dhcp-options} |
 \code{elastic-ip-allocation} | \code{elastic-ip-association} | \code{export-task} |

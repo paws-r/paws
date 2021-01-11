@@ -44,8 +44,7 @@ the template maintains a description of the version in the
 \description{
 Creates a template from an existing QuickSight analysis or template. You
 can use the resulting template to create a dashboard.
-}
-\details{
+
 A \emph{template} is an entity in QuickSight that encapsulates the metadata
 required to create an analysis and that you can use to create s
 dashboard. A template adds a layer of abstraction by using placeholders

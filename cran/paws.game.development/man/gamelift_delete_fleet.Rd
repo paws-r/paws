@@ -13,8 +13,7 @@ fleet ID or ARN value.}
 \description{
 Deletes everything related to a fleet. Before deleting a fleet, you must
 set the fleet's desired capacity to zero. See UpdateFleetCapacity.
-}
-\details{
+
 If the fleet being deleted has a VPC peering connection, you first need
 to get a valid authorization (good for 24 hours) by calling
 CreateVpcPeeringAuthorization. You do not need to explicitly delete the

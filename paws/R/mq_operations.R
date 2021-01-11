@@ -5,6 +5,7 @@ NULL
 
 #' Creates a broker
 #'
+#' @description
 #' Creates a broker. Note: This API is asynchronous.
 #'
 #' @usage
@@ -123,6 +124,7 @@ mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 
 #' Creates a new configuration for the specified configuration name
 #'
+#' @description
 #' Creates a new configuration for the specified configuration name. Amazon MQ uses the default configuration (the engine type and version).
 #'
 #' @usage
@@ -170,6 +172,7 @@ mq_create_configuration <- function(AuthenticationStrategy = NULL, EngineType = 
 
 #' Add a tag to a resource
 #'
+#' @description
 #' Add a tag to a resource.
 #'
 #' @usage
@@ -210,6 +213,7 @@ mq_create_tags <- function(ResourceArn, Tags = NULL) {
 
 #' Creates an ActiveMQ user
 #'
+#' @description
 #' Creates an ActiveMQ user.
 #'
 #' @usage
@@ -256,6 +260,7 @@ mq_create_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Passwo
 
 #' Deletes a broker
 #'
+#' @description
 #' Deletes a broker. Note: This API is asynchronous.
 #'
 #' @usage
@@ -292,6 +297,7 @@ mq_delete_broker <- function(BrokerId) {
 
 #' Removes a tag from a resource
 #'
+#' @description
 #' Removes a tag from a resource.
 #'
 #' @usage
@@ -332,6 +338,7 @@ mq_delete_tags <- function(ResourceArn, TagKeys) {
 
 #' Deletes an ActiveMQ user
 #'
+#' @description
 #' Deletes an ActiveMQ user.
 #'
 #' @usage
@@ -370,6 +377,7 @@ mq_delete_user <- function(BrokerId, Username) {
 
 #' Returns information about the specified broker
 #'
+#' @description
 #' Returns information about the specified broker.
 #'
 #' @usage
@@ -406,6 +414,7 @@ mq_describe_broker <- function(BrokerId) {
 
 #' Describe available engine types and versions
 #'
+#' @description
 #' Describe available engine types and versions.
 #'
 #' @usage
@@ -446,6 +455,7 @@ mq_describe_broker_engine_types <- function(EngineType = NULL, MaxResults = NULL
 
 #' Describe available broker instance options
 #'
+#' @description
 #' Describe available broker instance options.
 #'
 #' @usage
@@ -491,6 +501,7 @@ mq_describe_broker_instance_options <- function(EngineType = NULL, HostInstanceT
 
 #' Returns information about the specified configuration
 #'
+#' @description
 #' Returns information about the specified configuration.
 #'
 #' @usage
@@ -528,6 +539,7 @@ mq_describe_configuration <- function(ConfigurationId) {
 #' Returns the specified configuration revision for the specified
 #' configuration
 #'
+#' @description
 #' Returns the specified configuration revision for the specified configuration.
 #'
 #' @usage
@@ -567,6 +579,7 @@ mq_describe_configuration_revision <- function(ConfigurationId, ConfigurationRev
 
 #' Returns information about an ActiveMQ user
 #'
+#' @description
 #' Returns information about an ActiveMQ user.
 #'
 #' @usage
@@ -605,6 +618,7 @@ mq_describe_user <- function(BrokerId, Username) {
 
 #' Returns a list of all brokers
 #'
+#' @description
 #' Returns a list of all brokers.
 #'
 #' @usage
@@ -643,6 +657,7 @@ mq_list_brokers <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Returns a list of all revisions for the specified configuration
 #'
+#' @description
 #' Returns a list of all revisions for the specified configuration.
 #'
 #' @usage
@@ -683,6 +698,7 @@ mq_list_configuration_revisions <- function(ConfigurationId, MaxResults = NULL, 
 
 #' Returns a list of all configurations
 #'
+#' @description
 #' Returns a list of all configurations.
 #'
 #' @usage
@@ -721,6 +737,7 @@ mq_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Lists tags for a resource
 #'
+#' @description
 #' Lists tags for a resource.
 #'
 #' @usage
@@ -757,6 +774,7 @@ mq_list_tags <- function(ResourceArn) {
 
 #' Returns a list of all ActiveMQ users
 #'
+#' @description
 #' Returns a list of all ActiveMQ users.
 #'
 #' @usage
@@ -797,6 +815,7 @@ mq_list_users <- function(BrokerId, MaxResults = NULL, NextToken = NULL) {
 
 #' Reboots a broker
 #'
+#' @description
 #' Reboots a broker. Note: This API is asynchronous.
 #'
 #' @usage
@@ -833,6 +852,7 @@ mq_reboot_broker <- function(BrokerId) {
 
 #' Adds a pending configuration change to a broker
 #'
+#' @description
 #' Adds a pending configuration change to a broker.
 #'
 #' @usage
@@ -909,6 +929,7 @@ mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 
 #' Updates the specified configuration
 #'
+#' @description
 #' Updates the specified configuration.
 #'
 #' @usage
@@ -949,6 +970,7 @@ mq_update_configuration <- function(ConfigurationId, Data = NULL, Description = 
 
 #' Updates the information for an ActiveMQ user
 #'
+#' @description
 #' Updates the information for an ActiveMQ user.
 #'
 #' @usage

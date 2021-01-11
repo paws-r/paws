@@ -72,8 +72,7 @@ is \code{null} when there are no more results to return.}
 }
 \description{
 Describes the specified EBS volumes or all of your EBS volumes.
-}
-\details{
+
 If you are describing a long list of volumes, we recommend that you
 paginate the output to make the list more manageable. The \code{MaxResults}
 parameter sets the maximum number of results returned in a single page.

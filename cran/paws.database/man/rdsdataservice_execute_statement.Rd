@@ -45,8 +45,7 @@ parameter.}
 }
 \description{
 Runs a SQL statement against a database.
-}
-\details{
+
 If a call isn't part of a transaction because it doesn't include the
 \code{transactionID} parameter, changes that result from the call are
 committed automatically.

@@ -5,6 +5,7 @@ NULL
 
 #' Associates a phone number with the specified Amazon Chime user
 #'
+#' @description
 #' Associates a phone number with the specified Amazon Chime user.
 #'
 #' @usage
@@ -46,6 +47,7 @@ chime_associate_phone_number_with_user <- function(AccountId, UserId, E164PhoneN
 
 #' Associates phone numbers with the specified Amazon Chime Voice Connector
 #'
+#' @description
 #' Associates phone numbers with the specified Amazon Chime Voice
 #' Connector.
 #'
@@ -94,6 +96,7 @@ chime_associate_phone_numbers_with_voice_connector <- function(VoiceConnectorId,
 #' Associates phone numbers with the specified Amazon Chime Voice Connector
 #' group
 #'
+#' @description
 #' Associates phone numbers with the specified Amazon Chime Voice Connector
 #' group.
 #'
@@ -142,6 +145,7 @@ chime_associate_phone_numbers_with_voice_connector_group <- function(VoiceConnec
 #' Associates the specified sign-in delegate groups with the specified
 #' Amazon Chime account
 #'
+#' @description
 #' Associates the specified sign-in delegate groups with the specified
 #' Amazon Chime account.
 #'
@@ -186,6 +190,7 @@ chime_associate_signin_delegate_groups_with_account <- function(AccountId, Signi
 
 #' Creates up to 100 new attendees for an active Amazon Chime SDK meeting
 #'
+#' @description
 #' Creates up to 100 new attendees for an active Amazon Chime SDK meeting.
 #' For more information about the Amazon Chime SDK, see [Using the Amazon
 #' Chime
@@ -239,6 +244,7 @@ chime_batch_create_attendee <- function(MeetingId, Attendees) {
 #' Adds up to 50 members to a chat room in an Amazon Chime Enterprise
 #' account
 #'
+#' @description
 #' Adds up to 50 members to a chat room in an Amazon Chime Enterprise
 #' account. Members can be either users or bots. The member role designates
 #' whether the member is a chat room administrator or a general chat room
@@ -288,6 +294,7 @@ chime_batch_create_room_membership <- function(AccountId, RoomId, MembershipItem
 
 #' Moves phone numbers into the Deletion queue
 #'
+#' @description
 #' Moves phone numbers into the **Deletion queue**. Phone numbers must be
 #' disassociated from any users or Amazon Chime Voice Connectors before
 #' they can be deleted.
@@ -332,6 +339,7 @@ chime_batch_delete_phone_number <- function(PhoneNumberIds) {
 #' Suspends up to 50 users from a Team or EnterpriseLWA Amazon Chime
 #' account
 #'
+#' @description
 #' Suspends up to 50 users from a `Team` or `EnterpriseLWA` Amazon Chime
 #' account. For more information about different account types, see
 #' [Managing Your Amazon Chime
@@ -390,6 +398,7 @@ chime_batch_suspend_user <- function(AccountId, UserIdList) {
 #' Removes the suspension from up to 50 previously suspended users for the
 #' specified Amazon Chime EnterpriseLWA account
 #'
+#' @description
 #' Removes the suspension from up to 50 previously suspended users for the
 #' specified Amazon Chime `EnterpriseLWA` account. Only users on
 #' `EnterpriseLWA` accounts can be unsuspended using this action. For more
@@ -440,6 +449,7 @@ chime_batch_unsuspend_user <- function(AccountId, UserIdList) {
 
 #' Updates phone number product types or calling names
 #'
+#' @description
 #' Updates phone number product types or calling names. You can update one
 #' attribute at a time for each `UpdatePhoneNumberRequestItem`. For
 #' example, you can update either the product type or the calling name.
@@ -494,6 +504,7 @@ chime_batch_update_phone_number <- function(UpdatePhoneNumberRequestItems) {
 #' Updates user details within the UpdateUserRequestItem object for up to
 #' 20 users for the specified Amazon Chime account
 #'
+#' @description
 #' Updates user details within the UpdateUserRequestItem object for up to
 #' 20 users for the specified Amazon Chime account. Currently, only
 #' `LicenseType` updates are supported for this action.
@@ -544,6 +555,7 @@ chime_batch_update_user <- function(AccountId, UpdateUserRequestItems) {
 
 #' Creates an Amazon Chime account under the administrator's AWS account
 #'
+#' @description
 #' Creates an Amazon Chime account under the administrator's AWS account.
 #' Only `Team` account types are currently supported for this action. For
 #' more information about different account types, see [Managing Your
@@ -585,6 +597,7 @@ chime_create_account <- function(Name) {
 
 #' Creates an Amazon Chime Messaging SDK AppInstance under an AWS Account
 #'
+#' @description
 #' Creates an Amazon Chime Messaging SDK `AppInstance` under an AWS
 #' Account. Only Messaging SDK customers use this API. `CreateAppInstance`
 #' supports `idempotency` behavior as described in the AWS API Standard.
@@ -627,6 +640,7 @@ chime_create_app_instance <- function(Name, Metadata = NULL, ClientRequestToken)
 
 #' Promotes an AppInstanceUser to an AppInstanceAdmin
 #'
+#' @description
 #' Promotes an `AppInstanceUser` to an `AppInstanceAdmin`. The promoted
 #' user can perform the following actions.
 #' 
@@ -672,6 +686,7 @@ chime_create_app_instance_admin <- function(AppInstanceAdminArn, AppInstanceArn)
 
 #' Creates a user under an Amazon Chime AppInstance
 #'
+#' @description
 #' Creates a user under an Amazon Chime `AppInstance`. The request consists
 #' of a unique `appInstanceUserId` and `Name` for that user.
 #'
@@ -718,6 +733,7 @@ chime_create_app_instance_user <- function(AppInstanceArn, AppInstanceUserId, Na
 
 #' Creates a new attendee for an active Amazon Chime SDK meeting
 #'
+#' @description
 #' Creates a new attendee for an active Amazon Chime SDK meeting. For more
 #' information about the Amazon Chime SDK, see [Using the Amazon Chime
 #' SDK](https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
@@ -769,6 +785,7 @@ chime_create_attendee <- function(MeetingId, ExternalUserId, Tags = NULL) {
 
 #' Creates a bot for an Amazon Chime Enterprise account
 #'
+#' @description
 #' Creates a bot for an Amazon Chime Enterprise account.
 #'
 #' @usage
@@ -809,6 +826,7 @@ chime_create_bot <- function(AccountId, DisplayName, Domain = NULL) {
 
 #' Creates a channel to which you can add users and send messages
 #'
+#' @description
 #' Creates a channel to which you can add users and send messages.
 #' 
 #' **Restriction**: You can't change a channel's privacy.
@@ -870,6 +888,7 @@ chime_create_channel <- function(AppInstanceArn, Name, Mode = NULL, Privacy = NU
 
 #' Permanently bans a member from a channel
 #'
+#' @description
 #' Permanently bans a member from a channel. Moderators can't add banned
 #' members to a channel. To undo a ban, you first have to
 #' `DeleteChannelBan`, and then `CreateChannelMembership`. Bans are cleaned
@@ -914,6 +933,7 @@ chime_create_channel_ban <- function(ChannelArn, MemberArn) {
 
 #' Adds a user to a channel
 #'
+#' @description
 #' Adds a user to a channel. The `InvitedBy` response field is derived from
 #' the request header. A channel member can:
 #' 
@@ -976,6 +996,7 @@ chime_create_channel_membership <- function(ChannelArn, MemberArn, Type) {
 
 #' Creates a new ChannelModerator
 #'
+#' @description
 #' Creates a new `ChannelModerator`. A channel moderator can:
 #' 
 #' -   Add and remove other members of the channel.
@@ -1025,6 +1046,7 @@ chime_create_channel_moderator <- function(ChannelArn, ChannelModeratorArn) {
 #' Creates a new Amazon Chime SDK meeting in the specified media Region
 #' with no initial attendees
 #'
+#' @description
 #' Creates a new Amazon Chime SDK meeting in the specified media Region
 #' with no initial attendees. For more information about specifying media
 #' Regions, see [Amazon Chime SDK Media
@@ -1097,6 +1119,7 @@ chime_create_meeting <- function(ClientRequestToken, ExternalMeetingId = NULL, M
 #' To number, and so forth) to initiate an outbound call to a public
 #' switched telephone network (PSTN) and joins them into Chime meeting
 #'
+#' @description
 #' Uses the join token and call metadata in a meeting request (From number,
 #' To number, and so forth) to initiate an outbound call to a public
 #' switched telephone network (PSTN) and joins them into Chime meeting.
@@ -1156,6 +1179,7 @@ chime_create_meeting_dial_out <- function(MeetingId, FromPhoneNumber, ToPhoneNum
 #' Creates a new Amazon Chime SDK meeting in the specified media Region,
 #' with attendees
 #'
+#' @description
 #' Creates a new Amazon Chime SDK meeting in the specified media Region,
 #' with attendees. For more information about specifying media Regions, see
 #' [Amazon Chime SDK Media
@@ -1238,6 +1262,7 @@ chime_create_meeting_with_attendees <- function(ClientRequestToken, ExternalMeet
 
 #' Creates an order for phone numbers to be provisioned
 #'
+#' @description
 #' Creates an order for phone numbers to be provisioned. Choose from Amazon
 #' Chime Business Calling and Amazon Chime Voice Connector product types.
 #' For toll-free numbers, you must use the Amazon Chime Voice Connector
@@ -1282,6 +1307,7 @@ chime_create_phone_number_order <- function(ProductType, E164PhoneNumbers) {
 #' Creates a proxy session on the specified Amazon Chime Voice Connector
 #' for the specified participant phone numbers
 #'
+#' @description
 #' Creates a proxy session on the specified Amazon Chime Voice Connector
 #' for the specified participant phone numbers.
 #'
@@ -1344,6 +1370,7 @@ chime_create_proxy_session <- function(VoiceConnectorId, ParticipantPhoneNumbers
 
 #' Creates a chat room for the specified Amazon Chime Enterprise account
 #'
+#' @description
 #' Creates a chat room for the specified Amazon Chime Enterprise account.
 #'
 #' @usage
@@ -1384,6 +1411,7 @@ chime_create_room <- function(AccountId, Name, ClientRequestToken = NULL) {
 
 #' Adds a member to a chat room in an Amazon Chime Enterprise account
 #'
+#' @description
 #' Adds a member to a chat room in an Amazon Chime Enterprise account. A
 #' member can be either a user or a bot. The member role designates whether
 #' the member is a chat room administrator or a general chat room member.
@@ -1428,6 +1456,7 @@ chime_create_room_membership <- function(AccountId, RoomId, MemberId, Role = NUL
 
 #' Creates a SIP media application
 #'
+#' @description
 #' Creates a SIP media application.
 #'
 #' @usage
@@ -1475,6 +1504,7 @@ chime_create_sip_media_application <- function(AwsRegion, Name = NULL, Endpoints
 #' specified in the request, and it invokes the endpoint of the specified
 #' sipMediaApplicationId
 #'
+#' @description
 #' Creates an outbound call to a phone number from the phone number
 #' specified in the request, and it invokes the endpoint of the specified
 #' `sipMediaApplicationId`.
@@ -1519,6 +1549,7 @@ chime_create_sip_media_application_call <- function(FromPhoneNumber = NULL, ToPh
 #' Creates a SIP rule which can be used to run a SIP media application as a
 #' target for a specific trigger type
 #'
+#' @description
 #' Creates a SIP rule which can be used to run a SIP media application as a
 #' target for a specific trigger type.
 #'
@@ -1584,6 +1615,7 @@ chime_create_sip_rule <- function(Name, TriggerType, TriggerValue, Disabled = NU
 
 #' Creates a user under the specified Amazon Chime account
 #'
+#' @description
 #' Creates a user under the specified Amazon Chime account.
 #'
 #' @usage
@@ -1627,6 +1659,7 @@ chime_create_user <- function(AccountId, Username = NULL, Email = NULL, UserType
 #' Creates an Amazon Chime Voice Connector under the administrator's AWS
 #' account
 #'
+#' @description
 #' Creates an Amazon Chime Voice Connector under the administrator's AWS
 #' account. You can choose to create an Amazon Chime Voice Connector in a
 #' specific AWS Region.
@@ -1676,6 +1709,7 @@ chime_create_voice_connector <- function(Name, AwsRegion = NULL, RequireEncrypti
 #' Creates an Amazon Chime Voice Connector group under the administrator's
 #' AWS account
 #'
+#' @description
 #' Creates an Amazon Chime Voice Connector group under the administrator's
 #' AWS account. You can associate Amazon Chime Voice Connectors with the
 #' Amazon Chime Voice Connector group by including `VoiceConnectorItems` in
@@ -1726,6 +1760,7 @@ chime_create_voice_connector_group <- function(Name, VoiceConnectorItems = NULL)
 
 #' Deletes the specified Amazon Chime account
 #'
+#' @description
 #' Deletes the specified Amazon Chime account. You must suspend all users
 #' before deleting a `Team` account. You can use the BatchSuspendUser
 #' action to do so.
@@ -1775,6 +1810,7 @@ chime_delete_account <- function(AccountId) {
 
 #' Deletes an AppInstance and all associated data asynchronously
 #'
+#' @description
 #' Deletes an `AppInstance` and all associated data asynchronously.
 #'
 #' @usage
@@ -1811,6 +1847,7 @@ chime_delete_app_instance <- function(AppInstanceArn) {
 
 #' Demotes an AppInstanceAdmin to an AppInstanceUser
 #'
+#' @description
 #' Demotes an `AppInstanceAdmin` to an `AppInstanceUser`. This action does
 #' not delete the user.
 #'
@@ -1850,6 +1887,7 @@ chime_delete_app_instance_admin <- function(AppInstanceAdminArn, AppInstanceArn)
 
 #' Deletes the streaming configurations of an app instance
 #'
+#' @description
 #' Deletes the streaming configurations of an app instance.
 #'
 #' @usage
@@ -1886,6 +1924,7 @@ chime_delete_app_instance_streaming_configurations <- function(AppInstanceArn) {
 
 #' Deletes an AppInstanceUser
 #'
+#' @description
 #' Deletes an `AppInstanceUser`.
 #'
 #' @usage
@@ -1923,6 +1962,7 @@ chime_delete_app_instance_user <- function(AppInstanceUserArn) {
 #' Deletes an attendee from the specified Amazon Chime SDK meeting and
 #' deletes their JoinToken
 #'
+#' @description
 #' Deletes an attendee from the specified Amazon Chime SDK meeting and
 #' deletes their `JoinToken`. Attendees are automatically deleted when a
 #' Amazon Chime SDK meeting is deleted. For more information about the
@@ -1967,6 +2007,7 @@ chime_delete_attendee <- function(MeetingId, AttendeeId) {
 #' Immediately makes a channel and its memberships inaccessible and marks
 #' them for deletion
 #'
+#' @description
 #' Immediately makes a channel and its memberships inaccessible and marks
 #' them for deletion. This is an irreversible process.
 #'
@@ -2004,6 +2045,7 @@ chime_delete_channel <- function(ChannelArn) {
 
 #' Removes a user from a channel's ban list
 #'
+#' @description
 #' Removes a user from a channel's ban list.
 #'
 #' @usage
@@ -2042,6 +2084,7 @@ chime_delete_channel_ban <- function(ChannelArn, MemberArn) {
 
 #' Removes a member from a channel
 #'
+#' @description
 #' Removes a member from a channel.
 #'
 #' @usage
@@ -2080,6 +2123,7 @@ chime_delete_channel_membership <- function(ChannelArn, MemberArn) {
 
 #' Deletes a channel message
 #'
+#' @description
 #' Deletes a channel message. Only admins can perform this action. Deletion
 #' makes messages inaccessible immediately. A background process deletes
 #' any revisions created by `UpdateChannelMessage`.
@@ -2120,6 +2164,7 @@ chime_delete_channel_message <- function(ChannelArn, MessageId) {
 
 #' Deletes a channel moderator
 #'
+#' @description
 #' Deletes a channel moderator.
 #'
 #' @usage
@@ -2159,6 +2204,7 @@ chime_delete_channel_moderator <- function(ChannelArn, ChannelModeratorArn) {
 #' Deletes the events configuration that allows a bot to receive outgoing
 #' events
 #'
+#' @description
 #' Deletes the events configuration that allows a bot to receive outgoing
 #' events.
 #'
@@ -2198,6 +2244,7 @@ chime_delete_events_configuration <- function(AccountId, BotId) {
 
 #' Deletes the specified Amazon Chime SDK meeting
 #'
+#' @description
 #' Deletes the specified Amazon Chime SDK meeting. When a meeting is
 #' deleted, its attendees are also deleted and clients can no longer join
 #' it. For more information about the Amazon Chime SDK, see [Using the
@@ -2239,6 +2286,7 @@ chime_delete_meeting <- function(MeetingId) {
 
 #' Moves the specified phone number into the Deletion queue
 #'
+#' @description
 #' Moves the specified phone number into the **Deletion queue**. A phone
 #' number must be disassociated from any users or Amazon Chime Voice
 #' Connectors before it can be deleted.
@@ -2281,6 +2329,7 @@ chime_delete_phone_number <- function(PhoneNumberId) {
 #' Deletes the specified proxy session from the specified Amazon Chime
 #' Voice Connector
 #'
+#' @description
 #' Deletes the specified proxy session from the specified Amazon Chime
 #' Voice Connector.
 #'
@@ -2320,6 +2369,7 @@ chime_delete_proxy_session <- function(VoiceConnectorId, ProxySessionId) {
 
 #' Deletes a chat room in an Amazon Chime Enterprise account
 #'
+#' @description
 #' Deletes a chat room in an Amazon Chime Enterprise account.
 #'
 #' @usage
@@ -2358,6 +2408,7 @@ chime_delete_room <- function(AccountId, RoomId) {
 
 #' Removes a member from a chat room in an Amazon Chime Enterprise account
 #'
+#' @description
 #' Removes a member from a chat room in an Amazon Chime Enterprise account.
 #'
 #' @usage
@@ -2398,6 +2449,7 @@ chime_delete_room_membership <- function(AccountId, RoomId, MemberId) {
 
 #' Deletes a SIP media application
 #'
+#' @description
 #' Deletes a SIP media application.
 #'
 #' @usage
@@ -2434,6 +2486,7 @@ chime_delete_sip_media_application <- function(SipMediaApplicationId) {
 
 #' Deletes a SIP rule
 #'
+#' @description
 #' Deletes a SIP rule. You must disable a SIP rule before you can delete
 #' it.
 #'
@@ -2471,6 +2524,7 @@ chime_delete_sip_rule <- function(SipRuleId) {
 
 #' Deletes the specified Amazon Chime Voice Connector
 #'
+#' @description
 #' Deletes the specified Amazon Chime Voice Connector. Any phone numbers
 #' associated with the Amazon Chime Voice Connector must be disassociated
 #' from it before it can be deleted.
@@ -2510,6 +2564,7 @@ chime_delete_voice_connector <- function(VoiceConnectorId) {
 #' Deletes the emergency calling configuration details from the specified
 #' Amazon Chime Voice Connector
 #'
+#' @description
 #' Deletes the emergency calling configuration details from the specified
 #' Amazon Chime Voice Connector.
 #'
@@ -2548,6 +2603,7 @@ chime_delete_voice_connector_emergency_calling_configuration <- function(VoiceCo
 
 #' Deletes the specified Amazon Chime Voice Connector group
 #'
+#' @description
 #' Deletes the specified Amazon Chime Voice Connector group. Any
 #' `VoiceConnectorItems` and phone numbers associated with the group must
 #' be removed before it can be deleted.
@@ -2587,6 +2643,7 @@ chime_delete_voice_connector_group <- function(VoiceConnectorGroupId) {
 #' Deletes the origination settings for the specified Amazon Chime Voice
 #' Connector
 #'
+#' @description
 #' Deletes the origination settings for the specified Amazon Chime Voice
 #' Connector.
 #' 
@@ -2628,6 +2685,7 @@ chime_delete_voice_connector_origination <- function(VoiceConnectorId) {
 #' Deletes the proxy configuration from the specified Amazon Chime Voice
 #' Connector
 #'
+#' @description
 #' Deletes the proxy configuration from the specified Amazon Chime Voice
 #' Connector.
 #'
@@ -2666,6 +2724,7 @@ chime_delete_voice_connector_proxy <- function(VoiceConnectorId) {
 #' Deletes the streaming configuration for the specified Amazon Chime Voice
 #' Connector
 #'
+#' @description
 #' Deletes the streaming configuration for the specified Amazon Chime Voice
 #' Connector.
 #'
@@ -2704,6 +2763,7 @@ chime_delete_voice_connector_streaming_configuration <- function(VoiceConnectorI
 #' Deletes the termination settings for the specified Amazon Chime Voice
 #' Connector
 #'
+#' @description
 #' Deletes the termination settings for the specified Amazon Chime Voice
 #' Connector.
 #' 
@@ -2745,6 +2805,7 @@ chime_delete_voice_connector_termination <- function(VoiceConnectorId) {
 #' Deletes the specified SIP credentials used by your equipment to
 #' authenticate during call termination
 #'
+#' @description
 #' Deletes the specified SIP credentials used by your equipment to
 #' authenticate during call termination.
 #'
@@ -2788,6 +2849,7 @@ chime_delete_voice_connector_termination_credentials <- function(VoiceConnectorI
 
 #' Returns the full details of an AppInstance
 #'
+#' @description
 #' Returns the full details of an `AppInstance`.
 #'
 #' @usage
@@ -2824,6 +2886,7 @@ chime_describe_app_instance <- function(AppInstanceArn) {
 
 #' Returns the full details of an AppInstanceAdmin
 #'
+#' @description
 #' Returns the full details of an `AppInstanceAdmin`.
 #'
 #' @usage
@@ -2862,6 +2925,7 @@ chime_describe_app_instance_admin <- function(AppInstanceAdminArn, AppInstanceAr
 
 #' Returns the full details of an AppInstanceUser
 #'
+#' @description
 #' Returns the full details of an `AppInstanceUser`.
 #'
 #' @usage
@@ -2898,6 +2962,7 @@ chime_describe_app_instance_user <- function(AppInstanceUserArn) {
 
 #' Returns the full details of a channel in an Amazon Chime app instance
 #'
+#' @description
 #' Returns the full details of a channel in an Amazon Chime app instance.
 #'
 #' @usage
@@ -2934,6 +2999,7 @@ chime_describe_channel <- function(ChannelArn) {
 
 #' Returns the full details of a channel ban
 #'
+#' @description
 #' Returns the full details of a channel ban.
 #'
 #' @usage
@@ -2972,6 +3038,7 @@ chime_describe_channel_ban <- function(ChannelArn, MemberArn) {
 
 #' Returns the full details of a user's channel membership
 #'
+#' @description
 #' Returns the full details of a user's channel membership.
 #'
 #' @usage
@@ -3011,6 +3078,7 @@ chime_describe_channel_membership <- function(ChannelArn, MemberArn) {
 #' Returns the details of a channel based on the membership of the
 #' AppInstanceUser specified
 #'
+#' @description
 #' Returns the details of a channel based on the membership of the
 #' `AppInstanceUser` specified.
 #'
@@ -3052,6 +3120,7 @@ chime_describe_channel_membership_for_app_instance_user <- function(ChannelArn, 
 #' Returns the full details of a channel moderated by the specified
 #' AppInstanceUser
 #'
+#' @description
 #' Returns the full details of a channel moderated by the specified
 #' `AppInstanceUser`.
 #'
@@ -3092,6 +3161,7 @@ chime_describe_channel_moderated_by_app_instance_user <- function(ChannelArn, Ap
 
 #' Returns the full details of a single ChannelModerator
 #'
+#' @description
 #' Returns the full details of a single ChannelModerator.
 #'
 #' @usage
@@ -3131,6 +3201,7 @@ chime_describe_channel_moderator <- function(ChannelArn, ChannelModeratorArn) {
 #' Disassociates the primary provisioned phone number from the specified
 #' Amazon Chime user
 #'
+#' @description
 #' Disassociates the primary provisioned phone number from the specified
 #' Amazon Chime user.
 #'
@@ -3171,6 +3242,7 @@ chime_disassociate_phone_number_from_user <- function(AccountId, UserId) {
 #' Disassociates the specified phone numbers from the specified Amazon
 #' Chime Voice Connector
 #'
+#' @description
 #' Disassociates the specified phone numbers from the specified Amazon
 #' Chime Voice Connector.
 #'
@@ -3214,6 +3286,7 @@ chime_disassociate_phone_numbers_from_voice_connector <- function(VoiceConnector
 #' Disassociates the specified phone numbers from the specified Amazon
 #' Chime Voice Connector group
 #'
+#' @description
 #' Disassociates the specified phone numbers from the specified Amazon
 #' Chime Voice Connector group.
 #'
@@ -3257,6 +3330,7 @@ chime_disassociate_phone_numbers_from_voice_connector_group <- function(VoiceCon
 #' Disassociates the specified sign-in delegate groups from the specified
 #' Amazon Chime account
 #'
+#' @description
 #' Disassociates the specified sign-in delegate groups from the specified
 #' Amazon Chime account.
 #'
@@ -3300,6 +3374,7 @@ chime_disassociate_signin_delegate_groups_from_account <- function(AccountId, Gr
 #' Retrieves details for the specified Amazon Chime account, such as
 #' account type and supported licenses
 #'
+#' @description
 #' Retrieves details for the specified Amazon Chime account, such as
 #' account type and supported licenses.
 #'
@@ -3338,6 +3413,7 @@ chime_get_account <- function(AccountId) {
 #' Retrieves account settings for the specified Amazon Chime account ID,
 #' such as remote control and dial out settings
 #'
+#' @description
 #' Retrieves account settings for the specified Amazon Chime account ID,
 #' such as remote control and dial out settings. For more information about
 #' these settings, see [Use the Policies
@@ -3378,6 +3454,7 @@ chime_get_account_settings <- function(AccountId) {
 
 #' Gets the retention settings for an app instance
 #'
+#' @description
 #' Gets the retention settings for an app instance.
 #'
 #' @usage
@@ -3414,6 +3491,7 @@ chime_get_app_instance_retention_settings <- function(AppInstanceArn) {
 
 #' Gets the streaming settings for an app instance
 #'
+#' @description
 #' Gets the streaming settings for an app instance.
 #'
 #' @usage
@@ -3451,6 +3529,7 @@ chime_get_app_instance_streaming_configurations <- function(AppInstanceArn) {
 #' Gets the Amazon Chime SDK attendee details for a specified meeting ID
 #' and attendee ID
 #'
+#' @description
 #' Gets the Amazon Chime SDK attendee details for a specified meeting ID
 #' and attendee ID. For more information about the Amazon Chime SDK, see
 #' [Using the Amazon Chime
@@ -3494,6 +3573,7 @@ chime_get_attendee <- function(MeetingId, AttendeeId) {
 #' Retrieves details for the specified bot, such as bot email address, bot
 #' type, status, and display name
 #'
+#' @description
 #' Retrieves details for the specified bot, such as bot email address, bot
 #' type, status, and display name.
 #'
@@ -3533,6 +3613,7 @@ chime_get_bot <- function(AccountId, BotId) {
 
 #' Gets the full details of a channel message
 #'
+#' @description
 #' Gets the full details of a channel message.
 #'
 #' @usage
@@ -3572,6 +3653,7 @@ chime_get_channel_message <- function(ChannelArn, MessageId) {
 #' Gets details for an events configuration that allows a bot to receive
 #' outgoing events, such as an HTTPS endpoint or Lambda function ARN
 #'
+#' @description
 #' Gets details for an events configuration that allows a bot to receive
 #' outgoing events, such as an HTTPS endpoint or Lambda function ARN.
 #'
@@ -3612,6 +3694,7 @@ chime_get_events_configuration <- function(AccountId, BotId) {
 #' Retrieves global settings for the administrator's AWS account, such as
 #' Amazon Chime Business Calling and Amazon Chime Voice Connector settings
 #'
+#' @description
 #' Retrieves global settings for the administrator's AWS account, such as
 #' Amazon Chime Business Calling and Amazon Chime Voice Connector settings.
 #'
@@ -3644,6 +3727,7 @@ chime_get_global_settings <- function() {
 
 #' Gets the Amazon Chime SDK meeting details for the specified meeting ID
 #'
+#' @description
 #' Gets the Amazon Chime SDK meeting details for the specified meeting ID.
 #' For more information about the Amazon Chime SDK, see [Using the Amazon
 #' Chime
@@ -3684,6 +3768,7 @@ chime_get_meeting <- function(MeetingId) {
 
 #' The endpoint for the messaging session
 #'
+#' @description
 #' The endpoint for the messaging session.
 #'
 #' @usage
@@ -3717,6 +3802,7 @@ chime_get_messaging_session_endpoint <- function() {
 #' Retrieves details for the specified phone number ID, such as
 #' associations, capabilities, and product type
 #'
+#' @description
 #' Retrieves details for the specified phone number ID, such as
 #' associations, capabilities, and product type.
 #'
@@ -3755,6 +3841,7 @@ chime_get_phone_number <- function(PhoneNumberId) {
 #' Retrieves details for the specified phone number order, such as order
 #' creation timestamp, phone numbers in E
 #'
+#' @description
 #' Retrieves details for the specified phone number order, such as order
 #' creation timestamp, phone numbers in E.164 format, product type, and
 #' order status.
@@ -3794,6 +3881,7 @@ chime_get_phone_number_order <- function(PhoneNumberOrderId) {
 #' Retrieves the phone number settings for the administrator's AWS account,
 #' such as the default outbound calling name
 #'
+#' @description
 #' Retrieves the phone number settings for the administrator's AWS account,
 #' such as the default outbound calling name.
 #'
@@ -3827,6 +3915,7 @@ chime_get_phone_number_settings <- function() {
 #' Gets the specified proxy session details for the specified Amazon Chime
 #' Voice Connector
 #'
+#' @description
 #' Gets the specified proxy session details for the specified Amazon Chime
 #' Voice Connector.
 #'
@@ -3867,6 +3956,7 @@ chime_get_proxy_session <- function(VoiceConnectorId, ProxySessionId) {
 #' Gets the retention settings for the specified Amazon Chime Enterprise
 #' account
 #'
+#' @description
 #' Gets the retention settings for the specified Amazon Chime Enterprise
 #' account. For more information about retention settings, see [Managing
 #' Chat Retention Policies](https://docs.aws.amazon.com/chime/latest/ag/)
@@ -3907,6 +3997,7 @@ chime_get_retention_settings <- function(AccountId) {
 #' Retrieves room details, such as the room name, for a room in an Amazon
 #' Chime Enterprise account
 #'
+#' @description
 #' Retrieves room details, such as the room name, for a room in an Amazon
 #' Chime Enterprise account.
 #'
@@ -3947,6 +4038,7 @@ chime_get_room <- function(AccountId, RoomId) {
 #' Retrieves the information for a SIP media application, including name,
 #' AWS Region, and endpoints
 #'
+#' @description
 #' Retrieves the information for a SIP media application, including name,
 #' AWS Region, and endpoints.
 #'
@@ -3985,6 +4077,7 @@ chime_get_sip_media_application <- function(SipMediaApplicationId) {
 #' Returns the logging configuration for the specified SIP media
 #' application
 #'
+#' @description
 #' Returns the logging configuration for the specified SIP media
 #' application.
 #'
@@ -4024,6 +4117,7 @@ chime_get_sip_media_application_logging_configuration <- function(SipMediaApplic
 #' Retrieves the details of a SIP rule, such as the rule ID, name,
 #' triggers, and target endpoints
 #'
+#' @description
 #' Retrieves the details of a SIP rule, such as the rule ID, name,
 #' triggers, and target endpoints.
 #'
@@ -4062,6 +4156,7 @@ chime_get_sip_rule <- function(SipRuleId) {
 #' Retrieves details for the specified user ID, such as primary email
 #' address, license type, and personal meeting PIN
 #'
+#' @description
 #' Retrieves details for the specified user ID, such as primary email
 #' address, license type, and personal meeting PIN.
 #' 
@@ -4105,6 +4200,7 @@ chime_get_user <- function(AccountId, UserId) {
 #' Retrieves settings for the specified user ID, such as any associated
 #' phone number settings
 #'
+#' @description
 #' Retrieves settings for the specified user ID, such as any associated
 #' phone number settings.
 #'
@@ -4145,6 +4241,7 @@ chime_get_user_settings <- function(AccountId, UserId) {
 #' Retrieves details for the specified Amazon Chime Voice Connector, such
 #' as timestamps, name, outbound host, and encryption requirements
 #'
+#' @description
 #' Retrieves details for the specified Amazon Chime Voice Connector, such
 #' as timestamps, name, outbound host, and encryption requirements.
 #'
@@ -4183,6 +4280,7 @@ chime_get_voice_connector <- function(VoiceConnectorId) {
 #' Gets the emergency calling configuration details for the specified
 #' Amazon Chime Voice Connector
 #'
+#' @description
 #' Gets the emergency calling configuration details for the specified
 #' Amazon Chime Voice Connector.
 #'
@@ -4222,6 +4320,7 @@ chime_get_voice_connector_emergency_calling_configuration <- function(VoiceConne
 #' Retrieves details for the specified Amazon Chime Voice Connector group,
 #' such as timestamps, name, and associated VoiceConnectorItems
 #'
+#' @description
 #' Retrieves details for the specified Amazon Chime Voice Connector group,
 #' such as timestamps, name, and associated `VoiceConnectorItems`.
 #'
@@ -4260,6 +4359,7 @@ chime_get_voice_connector_group <- function(VoiceConnectorGroupId) {
 #' Retrieves the logging configuration details for the specified Amazon
 #' Chime Voice Connector
 #'
+#' @description
 #' Retrieves the logging configuration details for the specified Amazon
 #' Chime Voice Connector. Shows whether SIP message logs are enabled for
 #' sending to Amazon CloudWatch.
@@ -4299,6 +4399,7 @@ chime_get_voice_connector_logging_configuration <- function(VoiceConnectorId) {
 #' Retrieves origination setting details for the specified Amazon Chime
 #' Voice Connector
 #'
+#' @description
 #' Retrieves origination setting details for the specified Amazon Chime
 #' Voice Connector.
 #'
@@ -4337,6 +4438,7 @@ chime_get_voice_connector_origination <- function(VoiceConnectorId) {
 #' Gets the proxy configuration details for the specified Amazon Chime
 #' Voice Connector
 #'
+#' @description
 #' Gets the proxy configuration details for the specified Amazon Chime
 #' Voice Connector.
 #'
@@ -4375,6 +4477,7 @@ chime_get_voice_connector_proxy <- function(VoiceConnectorId) {
 #' Retrieves the streaming configuration details for the specified Amazon
 #' Chime Voice Connector
 #'
+#' @description
 #' Retrieves the streaming configuration details for the specified Amazon
 #' Chime Voice Connector. Shows whether media streaming is enabled for
 #' sending to Amazon Kinesis. It also shows the retention period, in hours,
@@ -4415,6 +4518,7 @@ chime_get_voice_connector_streaming_configuration <- function(VoiceConnectorId) 
 #' Retrieves termination setting details for the specified Amazon Chime
 #' Voice Connector
 #'
+#' @description
 #' Retrieves termination setting details for the specified Amazon Chime
 #' Voice Connector.
 #'
@@ -4454,6 +4558,7 @@ chime_get_voice_connector_termination <- function(VoiceConnectorId) {
 #' received from your SIP infrastructure for the specified Amazon Chime
 #' Voice Connector
 #'
+#' @description
 #' Retrieves information about the last time a SIP `OPTIONS` ping was
 #' received from your SIP infrastructure for the specified Amazon Chime
 #' Voice Connector.
@@ -4493,6 +4598,7 @@ chime_get_voice_connector_termination_health <- function(VoiceConnectorId) {
 #' Sends email to a maximum of 50 users, inviting them to the specified
 #' Amazon Chime Team account
 #'
+#' @description
 #' Sends email to a maximum of 50 users, inviting them to the specified
 #' Amazon Chime `Team` account. Only `Team` account types are currently
 #' supported for this action.
@@ -4537,6 +4643,7 @@ chime_invite_users <- function(AccountId, UserEmailList, UserType = NULL) {
 
 #' Lists the Amazon Chime accounts under the administrator's AWS account
 #'
+#' @description
 #' Lists the Amazon Chime accounts under the administrator's AWS account.
 #' You can filter accounts by account name prefix. To find out which Amazon
 #' Chime account a user belongs to, you can filter by the user's email
@@ -4583,6 +4690,7 @@ chime_list_accounts <- function(Name = NULL, UserEmail = NULL, NextToken = NULL,
 
 #' Returns a list of the administrators in the app instance
 #'
+#' @description
 #' Returns a list of the administrators in the app instance.
 #'
 #' @usage
@@ -4624,6 +4732,7 @@ chime_list_app_instance_admins <- function(AppInstanceArn, MaxResults = NULL, Ne
 
 #' List all AppInstanceUsers created under a single app instance
 #'
+#' @description
 #' List all `AppInstanceUsers` created under a single app instance.
 #'
 #' @usage
@@ -4665,6 +4774,7 @@ chime_list_app_instance_users <- function(AppInstanceArn, MaxResults = NULL, Nex
 
 #' Lists all Amazon Chime app instances created under a single AWS account
 #'
+#' @description
 #' Lists all Amazon Chime app instances created under a single AWS account.
 #'
 #' @usage
@@ -4704,6 +4814,7 @@ chime_list_app_instances <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Lists the tags applied to an Amazon Chime SDK attendee resource
 #'
+#' @description
 #' Lists the tags applied to an Amazon Chime SDK attendee resource.
 #'
 #' @usage
@@ -4742,6 +4853,7 @@ chime_list_attendee_tags <- function(MeetingId, AttendeeId) {
 
 #' Lists the attendees for the specified Amazon Chime SDK meeting
 #'
+#' @description
 #' Lists the attendees for the specified Amazon Chime SDK meeting. For more
 #' information about the Amazon Chime SDK, see [Using the Amazon Chime
 #' SDK](https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
@@ -4786,6 +4898,7 @@ chime_list_attendees <- function(MeetingId, NextToken = NULL, MaxResults = NULL)
 #' Lists the bots associated with the administrator's Amazon Chime
 #' Enterprise account ID
 #'
+#' @description
 #' Lists the bots associated with the administrator's Amazon Chime
 #' Enterprise account ID.
 #'
@@ -4828,6 +4941,7 @@ chime_list_bots <- function(AccountId, MaxResults = NULL, NextToken = NULL) {
 
 #' Lists all the users banned from a particular channel
 #'
+#' @description
 #' Lists all the users banned from a particular channel.
 #'
 #' @usage
@@ -4869,6 +4983,7 @@ chime_list_channel_bans <- function(ChannelArn, MaxResults = NULL, NextToken = N
 
 #' Lists all channel memberships in a channel
 #'
+#' @description
 #' Lists all channel memberships in a channel.
 #'
 #' @usage
@@ -4915,6 +5030,7 @@ chime_list_channel_memberships <- function(ChannelArn, Type = NULL, MaxResults =
 
 #' Lists all channels that a particular AppInstanceUser is a part of
 #'
+#' @description
 #' Lists all channels that a particular `AppInstanceUser` is a part of.
 #' Only an `AppInstanceAdmin` can call the API with a user ARN that is not
 #' their own.
@@ -4959,6 +5075,7 @@ chime_list_channel_memberships_for_app_instance_user <- function(AppInstanceUser
 
 #' List all the messages in a channel
 #'
+#' @description
 #' List all the messages in a channel. Returns a paginated list of
 #' `ChannelMessages`. Sorted in descending order by default, based on the
 #' creation timestamp.
@@ -5018,6 +5135,7 @@ chime_list_channel_messages <- function(ChannelArn, SortOrder = NULL, NotBefore 
 
 #' Lists all the moderators for a channel
 #'
+#' @description
 #' Lists all the moderators for a channel.
 #'
 #' @usage
@@ -5059,6 +5177,7 @@ chime_list_channel_moderators <- function(ChannelArn, MaxResults = NULL, NextTok
 
 #' Lists all Channels created under a single Chime App as a paginated list
 #'
+#' @description
 #' Lists all Channels created under a single Chime App as a paginated list.
 #' You can specify filters to narrow results.
 #' 
@@ -5113,6 +5232,7 @@ chime_list_channels <- function(AppInstanceArn, Privacy = NULL, MaxResults = NUL
 
 #' A list of the channels moderated by an app instance user
 #'
+#' @description
 #' A list of the channels moderated by an app instance user.
 #'
 #' @usage
@@ -5155,6 +5275,7 @@ chime_list_channels_moderated_by_app_instance_user <- function(AppInstanceUserAr
 
 #' Lists the tags applied to an Amazon Chime SDK meeting resource
 #'
+#' @description
 #' Lists the tags applied to an Amazon Chime SDK meeting resource.
 #'
 #' @usage
@@ -5191,6 +5312,7 @@ chime_list_meeting_tags <- function(MeetingId) {
 
 #' Lists up to 100 active Amazon Chime SDK meetings
 #'
+#' @description
 #' Lists up to 100 active Amazon Chime SDK meetings. For more information
 #' about the Amazon Chime SDK, see [Using the Amazon Chime
 #' SDK](https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
@@ -5233,6 +5355,7 @@ chime_list_meetings <- function(NextToken = NULL, MaxResults = NULL) {
 #' Lists the phone number orders for the administrator's Amazon Chime
 #' account
 #'
+#' @description
 #' Lists the phone number orders for the administrator's Amazon Chime
 #' account.
 #'
@@ -5274,6 +5397,7 @@ chime_list_phone_number_orders <- function(NextToken = NULL, MaxResults = NULL) 
 #' Chime user, Amazon Chime Voice Connector, or Amazon Chime Voice
 #' Connector group
 #'
+#' @description
 #' Lists the phone numbers for the specified Amazon Chime account, Amazon
 #' Chime user, Amazon Chime Voice Connector, or Amazon Chime Voice
 #' Connector group.
@@ -5323,6 +5447,7 @@ chime_list_phone_numbers <- function(Status = NULL, ProductType = NULL, FilterNa
 
 #' Lists the proxy sessions for the specified Amazon Chime Voice Connector
 #'
+#' @description
 #' Lists the proxy sessions for the specified Amazon Chime Voice Connector.
 #'
 #' @usage
@@ -5367,6 +5492,7 @@ chime_list_proxy_sessions <- function(VoiceConnectorId, Status = NULL, NextToken
 #' Lists the membership details for the specified room in an Amazon Chime
 #' Enterprise account, such as the members' IDs, email addresses, and names
 #'
+#' @description
 #' Lists the membership details for the specified room in an Amazon Chime
 #' Enterprise account, such as the members' IDs, email addresses, and
 #' names.
@@ -5411,6 +5537,7 @@ chime_list_room_memberships <- function(AccountId, RoomId, MaxResults = NULL, Ne
 
 #' Lists the room details for the specified Amazon Chime Enterprise account
 #'
+#' @description
 #' Lists the room details for the specified Amazon Chime Enterprise
 #' account. Optionally, filter the results by a member ID (user ID or bot
 #' ID) to see a list of rooms that the member belongs to.
@@ -5455,6 +5582,7 @@ chime_list_rooms <- function(AccountId, MemberId = NULL, MaxResults = NULL, Next
 
 #' Lists the SIP media applications under the administrator's AWS account
 #'
+#' @description
 #' Lists the SIP media applications under the administrator's AWS account.
 #'
 #' @usage
@@ -5494,6 +5622,7 @@ chime_list_sip_media_applications <- function(MaxResults = NULL, NextToken = NUL
 
 #' Lists the SIP rules under the administrator's AWS account
 #'
+#' @description
 #' Lists the SIP rules under the administrator's AWS account.
 #'
 #' @usage
@@ -5535,6 +5664,7 @@ chime_list_sip_rules <- function(SipMediaApplicationId = NULL, MaxResults = NULL
 
 #' Lists the tags applied to an Amazon Chime SDK meeting resource
 #'
+#' @description
 #' Lists the tags applied to an Amazon Chime SDK meeting resource.
 #'
 #' @usage
@@ -5571,6 +5701,7 @@ chime_list_tags_for_resource <- function(ResourceARN) {
 
 #' Lists the users that belong to the specified Amazon Chime account
 #'
+#' @description
 #' Lists the users that belong to the specified Amazon Chime account. You
 #' can specify an email address to list only the user that the email
 #' address belongs to.
@@ -5619,6 +5750,7 @@ chime_list_users <- function(AccountId, UserEmail = NULL, UserType = NULL, MaxRe
 #' Lists the Amazon Chime Voice Connector groups for the administrator's
 #' AWS account
 #'
+#' @description
 #' Lists the Amazon Chime Voice Connector groups for the administrator's
 #' AWS account.
 #'
@@ -5658,6 +5790,7 @@ chime_list_voice_connector_groups <- function(NextToken = NULL, MaxResults = NUL
 
 #' Lists the SIP credentials for the specified Amazon Chime Voice Connector
 #'
+#' @description
 #' Lists the SIP credentials for the specified Amazon Chime Voice
 #' Connector.
 #'
@@ -5696,6 +5829,7 @@ chime_list_voice_connector_termination_credentials <- function(VoiceConnectorId)
 #' Lists the Amazon Chime Voice Connectors for the administrator's AWS
 #' account
 #'
+#' @description
 #' Lists the Amazon Chime Voice Connectors for the administrator's AWS
 #' account.
 #'
@@ -5736,6 +5870,7 @@ chime_list_voice_connectors <- function(NextToken = NULL, MaxResults = NULL) {
 #' Logs out the specified user from all of the devices they are currently
 #' logged into
 #'
+#' @description
 #' Logs out the specified user from all of the devices they are currently
 #' logged into.
 #'
@@ -5775,6 +5910,7 @@ chime_logout_user <- function(AccountId, UserId) {
 
 #' Sets the amount of time in days that a given app instance retains data
 #'
+#' @description
 #' Sets the amount of time in days that a given app instance retains data.
 #'
 #' @usage
@@ -5818,6 +5954,7 @@ chime_put_app_instance_retention_settings <- function(AppInstanceArn, AppInstanc
 
 #' The data streaming configurations of an app instance
 #'
+#' @description
 #' The data streaming configurations of an app instance.
 #'
 #' @usage
@@ -5863,6 +6000,7 @@ chime_put_app_instance_streaming_configurations <- function(AppInstanceArn, AppI
 #' Creates an events configuration that allows a bot to receive outgoing
 #' events sent by Amazon Chime
 #'
+#' @description
 #' Creates an events configuration that allows a bot to receive outgoing
 #' events sent by Amazon Chime. Choose either an HTTPS endpoint or a Lambda
 #' function ARN. For more information, see Bot.
@@ -5909,6 +6047,7 @@ chime_put_events_configuration <- function(AccountId, BotId, OutboundEventsHTTPS
 #' Puts retention settings for the specified Amazon Chime Enterprise
 #' account
 #'
+#' @description
 #' Puts retention settings for the specified Amazon Chime Enterprise
 #' account. We recommend using AWS CloudTrail to monitor usage of this API
 #' for your account. For more information, see [Logging Amazon Chime API
@@ -5966,6 +6105,7 @@ chime_put_retention_settings <- function(AccountId, RetentionSettings) {
 #' Updates the logging configuration for the specified SIP media
 #' application
 #'
+#' @description
 #' Updates the logging configuration for the specified SIP media
 #' application.
 #'
@@ -6010,6 +6150,7 @@ chime_put_sip_media_application_logging_configuration <- function(SipMediaApplic
 #' Chime Voice Connector, such as emergency phone numbers and calling
 #' countries
 #'
+#' @description
 #' Puts emergency calling configuration details to the specified Amazon
 #' Chime Voice Connector, such as emergency phone numbers and calling
 #' countries. Origination and termination settings must be enabled for the
@@ -6061,6 +6202,7 @@ chime_put_voice_connector_emergency_calling_configuration <- function(VoiceConne
 #' Adds a logging configuration for the specified Amazon Chime Voice
 #' Connector
 #'
+#' @description
 #' Adds a logging configuration for the specified Amazon Chime Voice
 #' Connector. The logging configuration specifies whether SIP message logs
 #' are enabled for sending to Amazon CloudWatch Logs.
@@ -6104,6 +6246,7 @@ chime_put_voice_connector_logging_configuration <- function(VoiceConnectorId, Lo
 
 #' Adds origination settings for the specified Amazon Chime Voice Connector
 #'
+#' @description
 #' Adds origination settings for the specified Amazon Chime Voice
 #' Connector.
 #' 
@@ -6158,6 +6301,7 @@ chime_put_voice_connector_origination <- function(VoiceConnectorId, Origination)
 #' Puts the specified proxy configuration to the specified Amazon Chime
 #' Voice Connector
 #'
+#' @description
 #' Puts the specified proxy configuration to the specified Amazon Chime
 #' Voice Connector.
 #'
@@ -6209,6 +6353,7 @@ chime_put_voice_connector_proxy <- function(VoiceConnectorId, DefaultSessionExpi
 #' Adds a streaming configuration for the specified Amazon Chime Voice
 #' Connector
 #'
+#' @description
 #' Adds a streaming configuration for the specified Amazon Chime Voice
 #' Connector. The streaming configuration specifies whether media streaming
 #' is enabled for sending to Amazon Kinesis. It also sets the retention
@@ -6259,6 +6404,7 @@ chime_put_voice_connector_streaming_configuration <- function(VoiceConnectorId, 
 
 #' Adds termination settings for the specified Amazon Chime Voice Connector
 #'
+#' @description
 #' Adds termination settings for the specified Amazon Chime Voice
 #' Connector.
 #' 
@@ -6312,6 +6458,7 @@ chime_put_voice_connector_termination <- function(VoiceConnectorId, Termination)
 #' Adds termination SIP credentials for the specified Amazon Chime Voice
 #' Connector
 #'
+#' @description
 #' Adds termination SIP credentials for the specified Amazon Chime Voice
 #' Connector.
 #'
@@ -6357,6 +6504,7 @@ chime_put_voice_connector_termination_credentials <- function(VoiceConnectorId, 
 
 #' Redacts message content, but not metadata
 #'
+#' @description
 #' Redacts message content, but not metadata. The message exists in the
 #' back end, but the action returns null content, and the state shows as
 #' redacted.
@@ -6398,6 +6546,7 @@ chime_redact_channel_message <- function(ChannelArn, MessageId) {
 #' Redacts the specified message from the specified Amazon Chime
 #' conversation
 #'
+#' @description
 #' Redacts the specified message from the specified Amazon Chime
 #' conversation.
 #'
@@ -6439,6 +6588,7 @@ chime_redact_conversation_message <- function(AccountId, ConversationId, Message
 
 #' Redacts the specified message from the specified Amazon Chime channel
 #'
+#' @description
 #' Redacts the specified message from the specified Amazon Chime channel.
 #'
 #' @usage
@@ -6479,6 +6629,7 @@ chime_redact_room_message <- function(AccountId, RoomId, MessageId) {
 
 #' Regenerates the security token for a bot
 #'
+#' @description
 #' Regenerates the security token for a bot.
 #'
 #' @usage
@@ -6518,6 +6669,7 @@ chime_regenerate_security_token <- function(AccountId, BotId) {
 #' Resets the personal meeting PIN for the specified user on an Amazon
 #' Chime account
 #'
+#' @description
 #' Resets the personal meeting PIN for the specified user on an Amazon
 #' Chime account. Returns the User object with the updated personal meeting
 #' PIN.
@@ -6559,6 +6711,7 @@ chime_reset_personal_pin <- function(AccountId, UserId) {
 #' Moves a phone number from the Deletion queue back into the phone number
 #' Inventory
 #'
+#' @description
 #' Moves a phone number from the **Deletion queue** back into the phone
 #' number **Inventory**.
 #'
@@ -6596,6 +6749,7 @@ chime_restore_phone_number <- function(PhoneNumberId) {
 
 #' Searches phone numbers that can be ordered
 #'
+#' @description
 #' Searches phone numbers that can be ordered.
 #'
 #' @usage
@@ -6645,6 +6799,7 @@ chime_search_available_phone_numbers <- function(AreaCode = NULL, City = NULL, C
 
 #' Sends a message to a particular channel that the member is a part of
 #'
+#' @description
 #' Sends a message to a particular channel that the member is a part of.
 #' 
 #' `STANDARD` messages can contain 4KB of data and the 1KB of metadata.
@@ -6696,6 +6851,7 @@ chime_send_channel_message <- function(ChannelArn, Content, Type, Persistence, M
 
 #' Applies the specified tags to the specified Amazon Chime SDK attendee
 #'
+#' @description
 #' Applies the specified tags to the specified Amazon Chime SDK attendee.
 #'
 #' @usage
@@ -6741,6 +6897,7 @@ chime_tag_attendee <- function(MeetingId, AttendeeId, Tags) {
 
 #' Applies the specified tags to the specified Amazon Chime SDK meeting
 #'
+#' @description
 #' Applies the specified tags to the specified Amazon Chime SDK meeting.
 #'
 #' @usage
@@ -6785,6 +6942,7 @@ chime_tag_meeting <- function(MeetingId, Tags) {
 #' Applies the specified tags to the specified Amazon Chime SDK meeting
 #' resource
 #'
+#' @description
 #' Applies the specified tags to the specified Amazon Chime SDK meeting
 #' resource.
 #'
@@ -6829,6 +6987,7 @@ chime_tag_resource <- function(ResourceARN, Tags) {
 
 #' Untags the specified tags from the specified Amazon Chime SDK attendee
 #'
+#' @description
 #' Untags the specified tags from the specified Amazon Chime SDK attendee.
 #'
 #' @usage
@@ -6871,6 +7030,7 @@ chime_untag_attendee <- function(MeetingId, AttendeeId, TagKeys) {
 
 #' Untags the specified tags from the specified Amazon Chime SDK meeting
 #'
+#' @description
 #' Untags the specified tags from the specified Amazon Chime SDK meeting.
 #'
 #' @usage
@@ -6912,6 +7072,7 @@ chime_untag_meeting <- function(MeetingId, TagKeys) {
 #' Untags the specified tags from the specified Amazon Chime SDK meeting
 #' resource
 #'
+#' @description
 #' Untags the specified tags from the specified Amazon Chime SDK meeting
 #' resource.
 #'
@@ -6953,6 +7114,7 @@ chime_untag_resource <- function(ResourceARN, TagKeys) {
 
 #' Updates account details for the specified Amazon Chime account
 #'
+#' @description
 #' Updates account details for the specified Amazon Chime account.
 #' Currently, only account name updates are supported for this action.
 #'
@@ -6992,6 +7154,7 @@ chime_update_account <- function(AccountId, Name = NULL) {
 
 #' Updates the settings for the specified Amazon Chime account
 #'
+#' @description
 #' Updates the settings for the specified Amazon Chime account. You can
 #' update settings for remote control of shared screens, or for the
 #' dial-out option. For more information about these settings, see [Use the
@@ -7038,6 +7201,7 @@ chime_update_account_settings <- function(AccountId, AccountSettings) {
 
 #' Updates AppInstance metadata
 #'
+#' @description
 #' Updates `AppInstance` metadata.
 #'
 #' @usage
@@ -7078,6 +7242,7 @@ chime_update_app_instance <- function(AppInstanceArn, Name, Metadata = NULL) {
 
 #' Updates the details for an AppInstanceUser
 #'
+#' @description
 #' Updates the details for an `AppInstanceUser`. You can update names and
 #' metadata.
 #'
@@ -7120,6 +7285,7 @@ chime_update_app_instance_user <- function(AppInstanceUserArn, Name, Metadata = 
 #' Updates the status of the specified bot, such as starting or stopping
 #' the bot from running in your Amazon Chime Enterprise account
 #'
+#' @description
 #' Updates the status of the specified bot, such as starting or stopping
 #' the bot from running in your Amazon Chime Enterprise account.
 #'
@@ -7161,6 +7327,7 @@ chime_update_bot <- function(AccountId, BotId, Disabled = NULL) {
 
 #' Update a channel's attributes
 #'
+#' @description
 #' Update a channel's attributes.
 #' 
 #' **Restriction**: You can't change a channel's privacy.
@@ -7205,6 +7372,7 @@ chime_update_channel <- function(ChannelArn, Name, Mode, Metadata = NULL) {
 
 #' Updates the content of a message
 #'
+#' @description
 #' Updates the content of a message.
 #'
 #' @usage
@@ -7248,6 +7416,7 @@ chime_update_channel_message <- function(ChannelArn, MessageId, Content = NULL, 
 #' Sets the timestamp to the point when a user last read messages in a
 #' channel
 #'
+#' @description
 #' Sets the timestamp to the point when a user last read messages in a
 #' channel.
 #'
@@ -7286,6 +7455,7 @@ chime_update_channel_read_marker <- function(ChannelArn) {
 #' Updates global settings for the administrator's AWS account, such as
 #' Amazon Chime Business Calling and Amazon Chime Voice Connector settings
 #'
+#' @description
 #' Updates global settings for the administrator's AWS account, such as
 #' Amazon Chime Business Calling and Amazon Chime Voice Connector settings.
 #'
@@ -7330,6 +7500,7 @@ chime_update_global_settings <- function(BusinessCalling, VoiceConnector) {
 #' Updates phone number details, such as product type or calling name, for
 #' the specified phone number ID
 #'
+#' @description
 #' Updates phone number details, such as product type or calling name, for
 #' the specified phone number ID. You can update one phone number detail at
 #' a time. For example, you can update either the product type or the
@@ -7381,6 +7552,7 @@ chime_update_phone_number <- function(PhoneNumberId, ProductType = NULL, Calling
 #' Updates the phone number settings for the administrator's AWS account,
 #' such as the default outbound calling name
 #'
+#' @description
 #' Updates the phone number settings for the administrator's AWS account,
 #' such as the default outbound calling name. You can update the default
 #' outbound calling name once every seven days. Outbound calling names can
@@ -7421,6 +7593,7 @@ chime_update_phone_number_settings <- function(CallingName) {
 #' Updates the specified proxy session details, such as voice or SMS
 #' capabilities
 #'
+#' @description
 #' Updates the specified proxy session details, such as voice or SMS
 #' capabilities.
 #'
@@ -7468,6 +7641,7 @@ chime_update_proxy_session <- function(VoiceConnectorId, ProxySessionId, Capabil
 #' Updates room details, such as the room name, for a room in an Amazon
 #' Chime Enterprise account
 #'
+#' @description
 #' Updates room details, such as the room name, for a room in an Amazon
 #' Chime Enterprise account.
 #'
@@ -7510,6 +7684,7 @@ chime_update_room <- function(AccountId, RoomId, Name = NULL) {
 #' Updates room membership details, such as the member role, for a room in
 #' an Amazon Chime Enterprise account
 #'
+#' @description
 #' Updates room membership details, such as the member role, for a room in
 #' an Amazon Chime Enterprise account. The member role designates whether
 #' the member is a chat room administrator or a general chat room member.
@@ -7555,6 +7730,7 @@ chime_update_room_membership <- function(AccountId, RoomId, MemberId, Role = NUL
 
 #' Updates the details for the specified SIP media application
 #'
+#' @description
 #' Updates the details for the specified SIP media application.
 #'
 #' @usage
@@ -7600,6 +7776,7 @@ chime_update_sip_media_application <- function(SipMediaApplicationId, Name = NUL
 
 #' Updates the details for the specified SIP rule
 #'
+#' @description
 #' Updates the details for the specified SIP rule.
 #'
 #' @usage
@@ -7648,6 +7825,7 @@ chime_update_sip_rule <- function(SipRuleId, Name, Disabled = NULL, TargetApplic
 
 #' Updates user details for a specified user ID
 #'
+#' @description
 #' Updates user details for a specified user ID. Currently, only
 #' `LicenseType` updates are supported for this action.
 #'
@@ -7699,6 +7877,7 @@ chime_update_user <- function(AccountId, UserId, LicenseType = NULL, UserType = 
 #' Updates the settings for the specified user, such as phone number
 #' settings
 #'
+#' @description
 #' Updates the settings for the specified user, such as phone number
 #' settings.
 #'
@@ -7746,6 +7925,7 @@ chime_update_user_settings <- function(AccountId, UserId, UserSettings) {
 
 #' Updates details for the specified Amazon Chime Voice Connector
 #'
+#' @description
 #' Updates details for the specified Amazon Chime Voice Connector.
 #'
 #' @usage
@@ -7787,6 +7967,7 @@ chime_update_voice_connector <- function(VoiceConnectorId, Name, RequireEncrypti
 #' Updates details for the specified Amazon Chime Voice Connector group,
 #' such as the name and Amazon Chime Voice Connector priority ranking
 #'
+#' @description
 #' Updates details for the specified Amazon Chime Voice Connector group,
 #' such as the name and Amazon Chime Voice Connector priority ranking.
 #'

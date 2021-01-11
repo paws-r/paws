@@ -88,8 +88,7 @@ Creates a new OpsItem. You must have permission in AWS Identity and
 Access Management (IAM) to create a new OpsItem. For more information,
 see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html}{Getting started with OpsCenter}
 in the \emph{AWS Systems Manager User Guide}.
-}
-\details{
+
 Operations engineers and IT professionals use OpsCenter to view,
 investigate, and remediate operational issues impacting the performance
 and health of their AWS resources. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter.html}{AWS Systems Manager OpsCenter}

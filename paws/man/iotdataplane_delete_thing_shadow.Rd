@@ -13,8 +13,7 @@ iotdataplane_delete_thing_shadow(thingName, shadowName)
 }
 \description{
 Deletes the shadow for the specified thing.
-}
-\details{
+
 For more information, see
 \href{https://docs.aws.amazon.com/iot/latest/developerguide/device-shadow-rest-api.html#API_DeleteThingShadow}{DeleteThingShadow}
 in the AWS IoT Developer Guide.

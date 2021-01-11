@@ -49,8 +49,7 @@ associated with them.}
 Lists descriptions of all the Amazon Redshift event notification
 subscriptions for a customer account. If you specify a subscription
 name, lists the description for that subscription.
-}
-\details{
+
 If you specify both tag keys and tag values in the same request, Amazon
 Redshift returns all event notification subscriptions that match any
 combination of the specified keys and values. For example, if you have

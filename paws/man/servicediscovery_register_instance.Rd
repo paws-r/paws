@@ -145,8 +145,6 @@ characters.}
 Creates or updates one or more records and, optionally, creates a health
 check based on the settings in a specified service. When you submit a
 \code{RegisterInstance} request, the following occurs:
-}
-\details{
 \itemize{
 \item For each DNS record that you define in the service that is specified
 by \code{ServiceId}, a record is created or updated in the hosted zone

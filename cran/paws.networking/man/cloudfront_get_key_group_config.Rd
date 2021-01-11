@@ -12,8 +12,7 @@ get the identifier, use \code{ListKeyGroups}.}
 }
 \description{
 Gets a key group configuration.
-}
-\details{
+
 To get a key group configuration, you must provide the key group’s
 identifier. If the key group is referenced in a distribution’s cache
 behavior, you can get the key group’s identifier using

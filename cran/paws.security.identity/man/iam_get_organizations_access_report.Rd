@@ -36,8 +36,7 @@ Retrieves the service last accessed data report for AWS Organizations
 that was previously generated using the
 \verb{<a>GenerateOrganizationsAccessReport</a>} operation. This operation
 retrieves the status of your report job and the report contents.
-}
-\details{
+
 Depending on the parameters that you passed when you generated the
 report, the data returned could include different information. For
 details, see GenerateOrganizationsAccessReport.

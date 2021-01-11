@@ -21,8 +21,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Creates a transit gateway.
-}
-\details{
+
 You can use a transit gateway to interconnect your virtual private
 clouds (VPC) and on-premises networks. After the transit gateway enters
 the \code{available} state, you can attach your VPCs and VPN connections to

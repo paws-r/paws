@@ -6,6 +6,7 @@ NULL
 #' Performs multiple DeleteAttributes operations in a single call, which
 #' reduces round trips and latencies
 #'
+#' @description
 #' Performs multiple DeleteAttributes operations in a single call, which
 #' reduces round trips and latencies. This enables Amazon SimpleDB to
 #' optimize requests, which generally yields better throughput.
@@ -80,6 +81,7 @@ simpledb_batch_delete_attributes <- function(DomainName, Items) {
 #' The BatchPutAttributes operation creates or replaces attributes within
 #' one or more items
 #'
+#' @description
 #' The `BatchPutAttributes` operation creates or replaces attributes within
 #' one or more items. By using this operation, the client can perform
 #' multiple PutAttribute operation with a single call. This helps yield
@@ -179,6 +181,7 @@ simpledb_batch_put_attributes <- function(DomainName, Items) {
 
 #' The CreateDomain operation creates a new domain
 #'
+#' @description
 #' The `CreateDomain` operation creates a new domain. The domain name
 #' should be unique among the domains associated with the Access Key ID
 #' provided in the request. The `CreateDomain` operation may take 10 or
@@ -190,7 +193,7 @@ simpledb_batch_put_attributes <- function(DomainName, Items) {
 #' The client can create up to 100 domains per account.
 #' 
 #' If the client requires additional domains, go to
-#' [http://aws.amazon.com/contact-us/simpledb-limit-request/](https://console.aws.amazon.com/support/home#case/create?issueType=service-limit-increase&limitType=service-code-simpledb-domains&type=service_limit_increase&serviceLimitIncreaseType=simpledb-domains).
+#' http://aws.amazon.com/contact-us/simpledb-limit-request/.
 #'
 #' @usage
 #' simpledb_create_domain(DomainName)
@@ -226,6 +229,7 @@ simpledb_create_domain <- function(DomainName) {
 
 #' Deletes one or more attributes associated with an item
 #'
+#' @description
 #' Deletes one or more attributes associated with an item. If all
 #' attributes of the item are deleted, the item is deleted.
 #' 
@@ -289,6 +293,7 @@ simpledb_delete_attributes <- function(DomainName, ItemName, Attributes = NULL, 
 
 #' The DeleteDomain operation deletes a domain
 #'
+#' @description
 #' The `DeleteDomain` operation deletes a domain. Any items (and their
 #' attributes) in the domain are deleted as well. The `DeleteDomain`
 #' operation might take 10 or more seconds to complete.
@@ -333,6 +338,7 @@ simpledb_delete_domain <- function(DomainName) {
 #' created, the number of items and attributes in the domain, and the size
 #' of the attribute names and values
 #'
+#' @description
 #' Returns information about the domain, including when the domain was
 #' created, the number of items and attributes in the domain, and the size
 #' of the attribute names and values.
@@ -371,6 +377,7 @@ simpledb_domain_metadata <- function(DomainName) {
 
 #' Returns all of the attributes associated with the specified item
 #'
+#' @description
 #' Returns all of the attributes associated with the specified item.
 #' Optionally, the attributes returned can be limited to one or more
 #' attributes by specifying an attribute name parameter.
@@ -426,6 +433,7 @@ simpledb_get_attributes <- function(DomainName, ItemName, AttributeNames = NULL,
 #' The ListDomains operation lists all domains associated with the Access
 #' Key ID
 #'
+#' @description
 #' The `ListDomains` operation lists all domains associated with the Access
 #' Key ID. It returns domain names up to the limit set by
 #' MaxNumberOfDomains. A NextToken is returned if there are more than
@@ -470,6 +478,7 @@ simpledb_list_domains <- function(MaxNumberOfDomains = NULL, NextToken = NULL) {
 
 #' The PutAttributes operation creates or replaces attributes in an item
 #'
+#' @description
 #' The PutAttributes operation creates or replaces attributes in an item.
 #' The client may specify new attributes using a combination of the
 #' `Attribute.X.Name` and `Attribute.X.Value` parameters. The client
@@ -561,6 +570,7 @@ simpledb_put_attributes <- function(DomainName, ItemName, Attributes, Expected =
 #' The Select operation returns a set of attributes for ItemNames that
 #' match the select expression
 #'
+#' @description
 #' The `Select` operation returns a set of attributes for `ItemNames` that
 #' match the select expression. `Select` is similar to the standard SQL
 #' SELECT statement.

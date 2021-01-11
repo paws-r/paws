@@ -30,8 +30,7 @@ in the \emph{AWS Organizations User Guide.}}
 Updates an existing policy with a new name, description, or content. If
 you don't supply any parameter, that value remains unchanged. You can't
 change a policy's type.
-}
-\details{
+
 This operation can be called only from the organization's management
 account.
 }

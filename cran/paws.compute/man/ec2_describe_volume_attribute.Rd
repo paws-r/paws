@@ -19,8 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified attribute of the specified volume. You can
 specify only one attribute at a time.
-}
-\details{
+
 For more information about EBS volumes, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes.html}{Amazon EBS volumes}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }

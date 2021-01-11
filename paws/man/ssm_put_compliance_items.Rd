@@ -49,8 +49,7 @@ resource. This action lets you register custom compliance details with a
 resource. This call overwrites existing compliance information on the
 resource, so you must provide a full list of compliance items each time
 that you send the request.
-}
-\details{
+
 ComplianceType can be one of the following:
 \itemize{
 \item ExecutionId: The execution ID when the patch, association, or custom

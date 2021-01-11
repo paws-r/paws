@@ -18,8 +18,7 @@ connect_associate_instance_storage_config(InstanceId, ResourceType,
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Associates a storage resource type for the first time. You can only
 associate one type of storage configuration in a single call. This
 means, for example, that you can't define an instance with multiple S3

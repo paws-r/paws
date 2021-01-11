@@ -45,8 +45,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Creates a subnet in a specified VPC.
-}
-\details{
+
 You must specify an IPv4 CIDR block for the subnet. After you create a
 subnet, you can't change its CIDR block. The allowed block size is
 between a /16 netmask (65,536 IP addresses) and /28 netmask (16 IP

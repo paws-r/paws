@@ -62,8 +62,7 @@ format (JSON, CSV, or Apache Parquet) of the object. Amazon S3 uses this
 format to parse object data into records, and returns only records that
 match the specified SQL expression. You must also specify the data
 serialization format for the response.
-}
-\details{
+
 This action is not supported by Amazon S3 on Outposts.
 
 For more information about Amazon S3 Select, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/selecting-content-from-objects.html}{Selecting Content from Objects}

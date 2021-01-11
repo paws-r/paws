@@ -20,8 +20,7 @@ results in a CloudFormation stack record that can be used to track the
 AWS CloudFormation stack created. Use the
 \verb{get cloud formation stack records} operation to get a list of the
 CloudFormation stacks created.
-}
-\details{
+
 Wait until after your new Amazon EC2 instance is created before running
 the \verb{create cloud formation stack} operation again with the same export
 snapshot record.

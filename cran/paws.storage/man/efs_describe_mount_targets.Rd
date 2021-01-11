@@ -37,8 +37,7 @@ Returns the descriptions of all the current mount targets, or a specific
 mount target, for a file system. When requesting all of the current
 mount targets, the order of mount targets returned in the response is
 unspecified.
-}
-\details{
+
 This operation requires permissions for the
 \code{elasticfilesystem:DescribeMountTargets} action, on either the file
 system ID that you specify in \code{FileSystemId}, or on the file system of

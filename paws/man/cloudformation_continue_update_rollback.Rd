@@ -79,8 +79,7 @@ Depending on the cause of the failure, you can manually \href{https://docs.aws.a
 and continue the rollback. By continuing the rollback, you can return
 your stack to a working state (the \code{UPDATE_ROLLBACK_COMPLETE} state),
 and then try to update the stack again.
-}
-\details{
+
 A stack goes into the \code{UPDATE_ROLLBACK_FAILED} state when AWS
 CloudFormation cannot roll back all changes after a failed stack update.
 For example, you might have a stack that is rolling back to an old

@@ -27,8 +27,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Bundles an Amazon instance store-backed Windows instance.
-}
-\details{
+
 During bundling, only the root device volume (C:\\) is bundled. Data on
 other instance store volumes is not preserved.
 

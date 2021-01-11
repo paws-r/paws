@@ -91,8 +91,7 @@ address pool (CoIP pool).}
 \description{
 Creates an Application Load Balancer, Network Load Balancer, or Gateway
 Load Balancer.
-}
-\details{
+
 For more information, see the following:
 \itemize{
 \item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html}{Application Load Balancers}

@@ -31,8 +31,7 @@ different account, the request will fail with an HTTP
 Places an Object Lock configuration on the specified bucket. The rule
 specified in the Object Lock configuration will be applied by default to
 every new object placed in the specified bucket.
-}
-\details{
+
 \code{DefaultRetention} requires either Days or Years. You can't specify both
 at the same time.
 

@@ -15,8 +15,7 @@ mturk_get_qualification_score(QualificationTypeId, WorkerId)
 \description{
 The \code{GetQualificationScore} operation returns the value of a Worker's
 Qualification for a given Qualification type.
-}
-\details{
+
 To get a Worker's Qualification, you must know the Worker's ID. The
 Worker's ID is included in the assignment data returned by the
 \code{ListAssignmentsForHIT} operation.

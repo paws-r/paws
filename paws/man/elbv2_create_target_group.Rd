@@ -111,8 +111,7 @@ specify publicly routable IP addresses.
 }
 \description{
 Creates a target group.
-}
-\details{
+
 For more information, see the following:
 \itemize{
 \item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html}{Target groups for your Application Load Balancers}

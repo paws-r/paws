@@ -30,8 +30,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Creates a virtual private gateway. A virtual private gateway is the
 endpoint on the VPC side of your VPN connection. You can create a
 virtual private gateway before creating the VPC itself.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the
 \emph{AWS Site-to-Site VPN User Guide}.
 }

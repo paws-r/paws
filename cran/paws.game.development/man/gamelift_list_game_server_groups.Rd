@@ -19,8 +19,7 @@ value.}
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}
-}
-\details{
+
 Retrieves information on all game servers groups that exist in the
 current AWS account for the selected Region. Use the pagination
 parameters to retrieve results in a set of sequential segments.

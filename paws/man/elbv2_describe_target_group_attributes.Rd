@@ -11,8 +11,7 @@ elbv2_describe_target_group_attributes(TargetGroupArn)
 }
 \description{
 Describes the attributes for the specified target group.
-}
-\details{
+
 For more information, see the following:
 \itemize{
 \item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#target-group-attributes}{Target group attributes}

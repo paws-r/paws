@@ -41,8 +41,7 @@ response is \code{true}.}
 }
 \description{
 Retrieves a list of supported geographic locations.
-}
-\details{
+
 Countries are listed first, and continents are listed last. If Amazon
 Route 53 supports subdivisions for a country (for example, states or
 provinces), the subdivisions for that country are listed in alphabetical

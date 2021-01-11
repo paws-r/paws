@@ -20,8 +20,7 @@ receive data from the stream using enhanced fan-out, at a rate of up to
 2 MiB per second for every shard you subscribe to. This rate is
 unaffected by the total number of consumers that read from the same
 stream.
-}
-\details{
+
 You can register up to 20 consumers per stream. A given consumer can
 only be registered with one stream at a time.
 

@@ -20,8 +20,7 @@ does not honor the cooldown period during manual scaling activities.}
 }
 \description{
 Sets the size of the specified Auto Scaling group.
-}
-\details{
+
 If a scale-in activity occurs as a result of a new \code{DesiredCapacity}
 value that is lower than the current size of the group, the Auto Scaling
 group uses its termination policy to determine which instances to

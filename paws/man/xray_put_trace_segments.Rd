@@ -15,8 +15,7 @@ Uploads segment documents to AWS X-Ray. The \href{https://docs.aws.amazon.com/xr
 documents and sends them to the X-Ray daemon, which uploads them in
 batches. A segment document can be a completed segment, an in-progress
 segment, or an array of subsegments.
-}
-\details{
+
 Segments must include the following fields. For the full segment
 document schema, see \href{https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html}{AWS X-Ray Segment Documents}
 in the \emph{AWS X-Ray Developer Guide}.

@@ -15,8 +15,7 @@ about the user.}
 \description{
 Gets the specified user by user name in a user pool as an administrator.
 Works on any user.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

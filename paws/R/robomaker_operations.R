@@ -5,6 +5,7 @@ NULL
 
 #' Deletes one or more worlds in a batch operation
 #'
+#' @description
 #' Deletes one or more worlds in a batch operation.
 #'
 #' @usage
@@ -44,6 +45,7 @@ robomaker_batch_delete_worlds <- function(worlds) {
 
 #' Describes one or more simulation jobs
 #'
+#' @description
 #' Describes one or more simulation jobs.
 #'
 #' @usage
@@ -82,6 +84,7 @@ robomaker_batch_describe_simulation_job <- function(jobs) {
 
 #' Cancels the specified deployment job
 #'
+#' @description
 #' Cancels the specified deployment job.
 #'
 #' @usage
@@ -118,6 +121,7 @@ robomaker_cancel_deployment_job <- function(job) {
 
 #' Cancels the specified simulation job
 #'
+#' @description
 #' Cancels the specified simulation job.
 #'
 #' @usage
@@ -154,6 +158,7 @@ robomaker_cancel_simulation_job <- function(job) {
 
 #' Cancels a simulation job batch
 #'
+#' @description
 #' Cancels a simulation job batch. When you cancel a simulation job batch,
 #' you are also cancelling all of the active simulation jobs created as
 #' part of the batch.
@@ -192,6 +197,7 @@ robomaker_cancel_simulation_job_batch <- function(batch) {
 
 #' Cancels the specified export job
 #'
+#' @description
 #' Cancels the specified export job.
 #'
 #' @usage
@@ -228,6 +234,7 @@ robomaker_cancel_world_export_job <- function(job) {
 
 #' Cancels the specified world generator job
 #'
+#' @description
 #' Cancels the specified world generator job.
 #'
 #' @usage
@@ -264,6 +271,7 @@ robomaker_cancel_world_generation_job <- function(job) {
 
 #' Deploys a specific version of a robot application to robots in a fleet
 #'
+#' @description
 #' Deploys a specific version of a robot application to robots in a fleet.
 #' 
 #' The robot application must have a numbered `applicationVersion` for
@@ -345,6 +353,7 @@ robomaker_create_deployment_job <- function(deploymentConfig = NULL, clientReque
 #' Creates a fleet, a logical group of robots running the same robot
 #' application
 #'
+#' @description
 #' Creates a fleet, a logical group of robots running the same robot
 #' application.
 #'
@@ -387,6 +396,7 @@ robomaker_create_fleet <- function(name, tags = NULL) {
 
 #' Creates a robot
 #'
+#' @description
 #' Creates a robot.
 #'
 #' @usage
@@ -432,6 +442,7 @@ robomaker_create_robot <- function(name, architecture, greengrassGroupId, tags =
 
 #' Creates a robot application
 #'
+#' @description
 #' Creates a robot application.
 #'
 #' @usage
@@ -488,6 +499,7 @@ robomaker_create_robot_application <- function(name, sources, robotSoftwareSuite
 
 #' Creates a version of a robot application
 #'
+#' @description
 #' Creates a version of a robot application.
 #'
 #' @usage
@@ -529,6 +541,7 @@ robomaker_create_robot_application_version <- function(application, currentRevis
 
 #' Creates a simulation application
 #'
+#' @description
 #' Creates a simulation application.
 #'
 #' @usage
@@ -595,6 +608,7 @@ robomaker_create_simulation_application <- function(name, sources, simulationSof
 
 #' Creates a simulation application with a specific revision id
 #'
+#' @description
 #' Creates a simulation application with a specific revision id.
 #'
 #' @usage
@@ -636,6 +650,7 @@ robomaker_create_simulation_application_version <- function(application, current
 
 #' Creates a simulation job
 #'
+#' @description
 #' Creates a simulation job.
 #' 
 #' After 90 days, simulation jobs expire and will be deleted. They will no
@@ -796,6 +811,7 @@ robomaker_create_simulation_job <- function(clientRequestToken = NULL, outputLoc
 
 #' Creates a world export job
 #'
+#' @description
 #' Creates a world export job.
 #'
 #' @usage
@@ -852,6 +868,7 @@ robomaker_create_world_export_job <- function(clientRequestToken = NULL, worlds,
 
 #' Creates worlds using the specified template
 #'
+#' @description
 #' Creates worlds using the specified template.
 #'
 #' @usage
@@ -908,6 +925,7 @@ robomaker_create_world_generation_job <- function(clientRequestToken = NULL, tem
 
 #' Creates a world template
 #'
+#' @description
 #' Creates a world template.
 #'
 #' @usage
@@ -960,6 +978,7 @@ robomaker_create_world_template <- function(clientRequestToken = NULL, name = NU
 
 #' Deletes a fleet
 #'
+#' @description
 #' Deletes a fleet.
 #'
 #' @usage
@@ -996,6 +1015,7 @@ robomaker_delete_fleet <- function(fleet) {
 
 #' Deletes a robot
 #'
+#' @description
 #' Deletes a robot.
 #'
 #' @usage
@@ -1032,6 +1052,7 @@ robomaker_delete_robot <- function(robot) {
 
 #' Deletes a robot application
 #'
+#' @description
 #' Deletes a robot application.
 #'
 #' @usage
@@ -1070,6 +1091,7 @@ robomaker_delete_robot_application <- function(application, applicationVersion =
 
 #' Deletes a simulation application
 #'
+#' @description
 #' Deletes a simulation application.
 #'
 #' @usage
@@ -1108,6 +1130,7 @@ robomaker_delete_simulation_application <- function(application, applicationVers
 
 #' Deletes a world template
 #'
+#' @description
 #' Deletes a world template.
 #'
 #' @usage
@@ -1144,6 +1167,7 @@ robomaker_delete_world_template <- function(template) {
 
 #' Deregisters a robot
 #'
+#' @description
 #' Deregisters a robot.
 #'
 #' @usage
@@ -1182,6 +1206,7 @@ robomaker_deregister_robot <- function(fleet, robot) {
 
 #' Describes a deployment job
 #'
+#' @description
 #' Describes a deployment job.
 #'
 #' @usage
@@ -1218,6 +1243,7 @@ robomaker_describe_deployment_job <- function(job) {
 
 #' Describes a fleet
 #'
+#' @description
 #' Describes a fleet.
 #'
 #' @usage
@@ -1254,6 +1280,7 @@ robomaker_describe_fleet <- function(fleet) {
 
 #' Describes a robot
 #'
+#' @description
 #' Describes a robot.
 #'
 #' @usage
@@ -1290,6 +1317,7 @@ robomaker_describe_robot <- function(robot) {
 
 #' Describes a robot application
 #'
+#' @description
 #' Describes a robot application.
 #'
 #' @usage
@@ -1328,6 +1356,7 @@ robomaker_describe_robot_application <- function(application, applicationVersion
 
 #' Describes a simulation application
 #'
+#' @description
 #' Describes a simulation application.
 #'
 #' @usage
@@ -1367,6 +1396,7 @@ robomaker_describe_simulation_application <- function(application, applicationVe
 
 #' Describes a simulation job
 #'
+#' @description
 #' Describes a simulation job.
 #'
 #' @usage
@@ -1403,6 +1433,7 @@ robomaker_describe_simulation_job <- function(job) {
 
 #' Describes a simulation job batch
 #'
+#' @description
 #' Describes a simulation job batch.
 #'
 #' @usage
@@ -1439,6 +1470,7 @@ robomaker_describe_simulation_job_batch <- function(batch) {
 
 #' Describes a world
 #'
+#' @description
 #' Describes a world.
 #'
 #' @usage
@@ -1475,6 +1507,7 @@ robomaker_describe_world <- function(world) {
 
 #' Describes a world export job
 #'
+#' @description
 #' Describes a world export job.
 #'
 #' @usage
@@ -1511,6 +1544,7 @@ robomaker_describe_world_export_job <- function(job) {
 
 #' Describes a world generation job
 #'
+#' @description
 #' Describes a world generation job.
 #'
 #' @usage
@@ -1547,6 +1581,7 @@ robomaker_describe_world_generation_job <- function(job) {
 
 #' Describes a world template
 #'
+#' @description
 #' Describes a world template.
 #'
 #' @usage
@@ -1584,6 +1619,7 @@ robomaker_describe_world_template <- function(template) {
 
 #' Gets the world template body
 #'
+#' @description
 #' Gets the world template body.
 #'
 #' @usage
@@ -1622,6 +1658,7 @@ robomaker_get_world_template_body <- function(template = NULL, generationJob = N
 
 #' Returns a list of deployment jobs for a fleet
 #'
+#' @description
 #' Returns a list of deployment jobs for a fleet. You can optionally
 #' provide filters to retrieve specific deployment jobs.
 #'
@@ -1687,6 +1724,7 @@ robomaker_list_deployment_jobs <- function(filters = NULL, nextToken = NULL, max
 
 #' Returns a list of fleets
 #'
+#' @description
 #' Returns a list of fleets. You can optionally provide filters to retrieve
 #' specific fleets.
 #'
@@ -1752,6 +1790,7 @@ robomaker_list_fleets <- function(nextToken = NULL, maxResults = NULL, filters =
 
 #' Returns a list of robot application
 #'
+#' @description
 #' Returns a list of robot application. You can optionally provide filters
 #' to retrieve specific robot applications.
 #'
@@ -1817,6 +1856,7 @@ robomaker_list_robot_applications <- function(versionQualifier = NULL, nextToken
 
 #' Returns a list of robots
 #'
+#' @description
 #' Returns a list of robots. You can optionally provide filters to retrieve
 #' specific robots.
 #'
@@ -1881,6 +1921,7 @@ robomaker_list_robots <- function(nextToken = NULL, maxResults = NULL, filters =
 
 #' Returns a list of simulation applications
 #'
+#' @description
 #' Returns a list of simulation applications. You can optionally provide
 #' filters to retrieve specific simulation applications.
 #'
@@ -1946,6 +1987,7 @@ robomaker_list_simulation_applications <- function(versionQualifier = NULL, next
 
 #' Returns a list simulation job batches
 #'
+#' @description
 #' Returns a list simulation job batches. You can optionally provide
 #' filters to retrieve specific simulation batch jobs.
 #'
@@ -2003,6 +2045,7 @@ robomaker_list_simulation_job_batches <- function(nextToken = NULL, maxResults =
 
 #' Returns a list of simulation jobs
 #'
+#' @description
 #' Returns a list of simulation jobs. You can optionally provide filters to
 #' retrieve specific simulation jobs.
 #'
@@ -2068,6 +2111,7 @@ robomaker_list_simulation_jobs <- function(nextToken = NULL, maxResults = NULL, 
 
 #' Lists all tags on a AWS RoboMaker resource
 #'
+#' @description
 #' Lists all tags on a AWS RoboMaker resource.
 #'
 #' @usage
@@ -2104,6 +2148,7 @@ robomaker_list_tags_for_resource <- function(resourceArn) {
 
 #' Lists world export jobs
 #'
+#' @description
 #' Lists world export jobs.
 #'
 #' @usage
@@ -2163,6 +2208,7 @@ robomaker_list_world_export_jobs <- function(nextToken = NULL, maxResults = NULL
 
 #' Lists world generator jobs
 #'
+#' @description
 #' Lists world generator jobs.
 #'
 #' @usage
@@ -2223,6 +2269,7 @@ robomaker_list_world_generation_jobs <- function(nextToken = NULL, maxResults = 
 
 #' Lists world templates
 #'
+#' @description
 #' Lists world templates.
 #'
 #' @usage
@@ -2272,6 +2319,7 @@ robomaker_list_world_templates <- function(nextToken = NULL, maxResults = NULL) 
 
 #' Lists worlds
 #'
+#' @description
 #' Lists worlds.
 #'
 #' @usage
@@ -2329,6 +2377,7 @@ robomaker_list_worlds <- function(nextToken = NULL, maxResults = NULL, filters =
 
 #' Registers a robot with a fleet
 #'
+#' @description
 #' Registers a robot with a fleet.
 #'
 #' @usage
@@ -2367,6 +2416,7 @@ robomaker_register_robot <- function(fleet, robot) {
 
 #' Restarts a running simulation job
 #'
+#' @description
 #' Restarts a running simulation job.
 #'
 #' @usage
@@ -2403,6 +2453,7 @@ robomaker_restart_simulation_job <- function(job) {
 
 #' Starts a new simulation job batch
 #'
+#' @description
 #' Starts a new simulation job batch. The batch is defined using one or
 #' more `SimulationJobRequest` objects.
 #'
@@ -2543,6 +2594,7 @@ robomaker_start_simulation_job_batch <- function(clientRequestToken = NULL, batc
 
 #' Syncrhonizes robots in a fleet to the latest deployment
 #'
+#' @description
 #' Syncrhonizes robots in a fleet to the latest deployment. This is helpful
 #' if robots were added after a deployment.
 #'
@@ -2583,6 +2635,7 @@ robomaker_sync_deployment_job <- function(clientRequestToken, fleet) {
 
 #' Adds or edits tags for a AWS RoboMaker resource
 #'
+#' @description
 #' Adds or edits tags for a AWS RoboMaker resource.
 #' 
 #' Each tag consists of a tag key and a tag value. Tag keys and tag values
@@ -2633,6 +2686,7 @@ robomaker_tag_resource <- function(resourceArn, tags) {
 
 #' Removes the specified tags from the specified AWS RoboMaker resource
 #'
+#' @description
 #' Removes the specified tags from the specified AWS RoboMaker resource.
 #' 
 #' To remove a tag, specify the tag key. To change the tag value of an
@@ -2680,6 +2734,7 @@ robomaker_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates a robot application
 #'
+#' @description
 #' Updates a robot application.
 #'
 #' @usage
@@ -2733,6 +2788,7 @@ robomaker_update_robot_application <- function(application, sources, robotSoftwa
 
 #' Updates a simulation application
 #'
+#' @description
 #' Updates a simulation application.
 #'
 #' @usage
@@ -2796,6 +2852,7 @@ robomaker_update_simulation_application <- function(application, sources, simula
 
 #' Updates a world template
 #'
+#' @description
 #' Updates a world template.
 #'
 #' @usage

@@ -15,8 +15,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 Returns the versioning state of a bucket.
-}
-\details{
+
 To retrieve the versioning state of a bucket, you must be the bucket
 owner.
 

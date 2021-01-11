@@ -106,8 +106,7 @@ default value is \code{ClientSpecified}.}
 \description{
 Updates a Server Message Block (SMB) file share. This operation is only
 supported for file gateways.
-}
-\details{
+
 To leave a file share field unchanged, set the corresponding input field
 to null.
 

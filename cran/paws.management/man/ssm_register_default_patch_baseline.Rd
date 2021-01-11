@@ -11,8 +11,7 @@ ssm_register_default_patch_baseline(BaselineId)
 }
 \description{
 Defines the default patch baseline for the relevant operating system.
-}
-\details{
+
 To reset the AWS predefined patch baseline as the default, specify the
 full patch baseline ARN as the baseline ID value. For example, for
 CentOS, specify

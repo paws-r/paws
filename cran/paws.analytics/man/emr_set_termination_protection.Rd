@@ -24,8 +24,7 @@ or in the event of a job-flow error. The cluster still terminates upon
 successful completion of the job flow. Calling
 \code{SetTerminationProtection} on a cluster is similar to calling the Amazon
 EC2 \code{DisableAPITermination} API on all EC2 instances in a cluster.
-}
-\details{
+
 \code{SetTerminationProtection} is used to prevent accidental termination of
 a cluster and to ensure that in the event of an error, the instances
 persist so that you can recover any data stored in their ephemeral

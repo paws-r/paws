@@ -16,8 +16,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Creates a Spot Fleet request.
-}
-\details{
+
 The Spot Fleet request specifies the total target capacity and the
 On-Demand target capacity. Amazon EC2 calculates the difference between
 the total capacity and On-Demand capacity, and launches the difference

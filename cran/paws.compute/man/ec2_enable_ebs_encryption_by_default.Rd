@@ -15,8 +15,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Enables EBS encryption by default for your account in the current
 Region.
-}
-\details{
+
 After you enable encryption by default, the EBS volumes that you create
 are are always encrypted, either using the default CMK or the CMK that
 you specified when you created each volume. For more information, see

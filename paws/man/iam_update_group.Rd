@@ -33,8 +33,7 @@ create resources named both "MyResource" and "myresource".}
 }
 \description{
 Updates the name and/or the path of the specified IAM group.
-}
-\details{
+
 You should understand the implications of changing a group's path or
 name. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html}{Renaming Users and Groups} in the
 \emph{IAM User Guide}.

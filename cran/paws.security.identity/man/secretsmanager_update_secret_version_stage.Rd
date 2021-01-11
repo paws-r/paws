@@ -57,8 +57,7 @@ to another version, then it is moved--removed from the other version
 first and then attached to this one. For more information about staging
 labels, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/terms-concepts.html#term_staging-label}{Staging Labels}
 in the \emph{AWS Secrets Manager User Guide}.
-}
-\details{
+
 The staging labels that you specify in the \code{VersionStage} parameter are
 added to the existing list of staging labels--they don't replace it.
 

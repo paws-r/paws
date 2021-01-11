@@ -18,8 +18,7 @@ the Amazon Kinesis \code{PutRecord} operation on the destination stream.}
 \description{
 Creates or updates a destination. This operation is used only to create
 destinations for cross-account subscriptions.
-}
-\details{
+
 A destination encapsulates a physical resource (such as an Amazon
 Kinesis stream) and enables you to subscribe to a real-time stream of
 log events for a different account, ingested using

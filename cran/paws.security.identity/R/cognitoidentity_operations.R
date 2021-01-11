@@ -5,6 +5,7 @@ NULL
 
 #' Creates a new identity pool
 #'
+#' @description
 #' Creates a new identity pool. The identity pool is a store of user
 #' identity information that is specific to your AWS account. The keys for
 #' `SupportedLoginProviders` are as follows:
@@ -102,6 +103,7 @@ cognitoidentity_create_identity_pool <- function(IdentityPoolName, AllowUnauthen
 
 #' Deletes identities from an identity pool
 #'
+#' @description
 #' Deletes identities from an identity pool. You can specify a list of 1-60
 #' identities that you want to delete.
 #' 
@@ -143,6 +145,7 @@ cognitoidentity_delete_identities <- function(IdentityIdsToDelete) {
 
 #' Deletes an identity pool
 #'
+#' @description
 #' Deletes an identity pool. Once a pool is deleted, users will not be able
 #' to authenticate with the pool.
 #' 
@@ -183,6 +186,7 @@ cognitoidentity_delete_identity_pool <- function(IdentityPoolId) {
 #' Returns metadata related to the given identity, including when the
 #' identity was created and any associated linked logins
 #'
+#' @description
 #' Returns metadata related to the given identity, including when the
 #' identity was created and any associated linked logins.
 #' 
@@ -223,6 +227,7 @@ cognitoidentity_describe_identity <- function(IdentityId) {
 #' Gets details about a particular identity pool, including the pool name,
 #' ID description, creation date, and current number of users
 #'
+#' @description
 #' Gets details about a particular identity pool, including the pool name,
 #' ID description, creation date, and current number of users.
 #' 
@@ -262,6 +267,7 @@ cognitoidentity_describe_identity_pool <- function(IdentityPoolId) {
 
 #' Returns credentials for the provided identity ID
 #'
+#' @description
 #' Returns credentials for the provided identity ID. Any provided logins
 #' will be validated against supported login providers. If the token is for
 #' cognito-identity.amazonaws.com, it will be passed through to AWS
@@ -324,6 +330,7 @@ cognitoidentity_get_credentials_for_identity <- function(IdentityId, Logins = NU
 
 #' Generates (or retrieves) a Cognito ID
 #'
+#' @description
 #' Generates (or retrieves) a Cognito ID. Supplying multiple logins will
 #' create an implicit linked account.
 #' 
@@ -385,6 +392,7 @@ cognitoidentity_get_id <- function(AccountId = NULL, IdentityPoolId, Logins = NU
 
 #' Gets the roles for an identity pool
 #'
+#' @description
 #' Gets the roles for an identity pool.
 #' 
 #' You must use AWS Developer credentials to call this API.
@@ -423,6 +431,7 @@ cognitoidentity_get_identity_pool_roles <- function(IdentityPoolId) {
 
 #' Gets an OpenID token, using a known Cognito ID
 #'
+#' @description
 #' Gets an OpenID token, using a known Cognito ID. This known Cognito ID is
 #' returned by GetId. You can optionally add additional logins for the
 #' identity. Supplying multiple logins creates an implicit link.
@@ -474,6 +483,7 @@ cognitoidentity_get_open_id_token <- function(IdentityId, Logins = NULL) {
 #' Registers (or retrieves) a Cognito IdentityId and an OpenID Connect
 #' token for a user authenticated by your backend authentication process
 #'
+#' @description
 #' Registers (or retrieves) a Cognito `IdentityId` and an OpenID Connect
 #' token for a user authenticated by your backend authentication process.
 #' Supplying multiple logins will create an implicit linked account. You
@@ -555,6 +565,7 @@ cognitoidentity_get_open_id_token_for_developer_identity <- function(IdentityPoo
 
 #' Lists the identities in an identity pool
 #'
+#' @description
 #' Lists the identities in an identity pool.
 #' 
 #' You must use AWS Developer credentials to call this API.
@@ -602,6 +613,7 @@ cognitoidentity_list_identities <- function(IdentityPoolId, MaxResults, NextToke
 
 #' Lists all of the Cognito identity pools registered for your account
 #'
+#' @description
 #' Lists all of the Cognito identity pools registered for your account.
 #' 
 #' You must use AWS Developer credentials to call this API.
@@ -642,6 +654,7 @@ cognitoidentity_list_identity_pools <- function(MaxResults, NextToken = NULL) {
 
 #' Lists the tags that are assigned to an Amazon Cognito identity pool
 #'
+#' @description
 #' Lists the tags that are assigned to an Amazon Cognito identity pool.
 #' 
 #' A tag is a label that you can apply to identity pools to categorize and
@@ -687,6 +700,7 @@ cognitoidentity_list_tags_for_resource <- function(ResourceArn) {
 #' the list of DeveloperUserIdentifier values associated with an IdentityId
 #' for an existing identity
 #'
+#' @description
 #' Retrieves the `IdentityID` associated with a `DeveloperUserIdentifier`
 #' or the list of `DeveloperUserIdentifier` values associated with an
 #' `IdentityId` for an existing identity. Either `IdentityID` or
@@ -758,6 +772,7 @@ cognitoidentity_lookup_developer_identity <- function(IdentityPoolId, IdentityId
 #' Merges two users having different IdentityIds, existing in the same
 #' identity pool, and identified by the same developer provider
 #'
+#' @description
 #' Merges two users having different `IdentityId`s, existing in the same
 #' identity pool, and identified by the same developer provider. You can
 #' use this action to request that discrete users be merged and identified
@@ -822,6 +837,7 @@ cognitoidentity_merge_developer_identities <- function(SourceUserIdentifier, Des
 
 #' Sets the roles for an identity pool
 #'
+#' @description
 #' Sets the roles for an identity pool. These roles are used when making
 #' calls to GetCredentialsForIdentity action.
 #' 
@@ -890,6 +906,7 @@ cognitoidentity_set_identity_pool_roles <- function(IdentityPoolId, Roles, RoleM
 
 #' Assigns a set of tags to an Amazon Cognito identity pool
 #'
+#' @description
 #' Assigns a set of tags to an Amazon Cognito identity pool. A tag is a
 #' label that you can use to categorize and manage identity pools in
 #' different ways, such as by purpose, owner, environment, or other
@@ -950,6 +967,7 @@ cognitoidentity_tag_resource <- function(ResourceArn, Tags) {
 
 #' Unlinks a DeveloperUserIdentifier from an existing identity
 #'
+#' @description
 #' Unlinks a `DeveloperUserIdentifier` from an existing identity. Unlinked
 #' developer users will be considered new identities next time they are
 #' seen. If, for a given Cognito identity, you remove all federated
@@ -1000,6 +1018,7 @@ cognitoidentity_unlink_developer_identity <- function(IdentityId, IdentityPoolId
 
 #' Unlinks a federated identity from an existing account
 #'
+#' @description
 #' Unlinks a federated identity from an existing account. Unlinked logins
 #' will be considered new identities next time they are seen. Removing the
 #' last linked login will make this identity inaccessible.
@@ -1049,6 +1068,7 @@ cognitoidentity_unlink_identity <- function(IdentityId, Logins, LoginsToRemove) 
 
 #' Removes the specified tags from an Amazon Cognito identity pool
 #'
+#' @description
 #' Removes the specified tags from an Amazon Cognito identity pool. You can
 #' use this action up to 5 times per second, per account
 #'
@@ -1091,6 +1111,7 @@ cognitoidentity_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates an identity pool
 #'
+#' @description
 #' Updates an identity pool.
 #' 
 #' You must use AWS Developer credentials to call this API.

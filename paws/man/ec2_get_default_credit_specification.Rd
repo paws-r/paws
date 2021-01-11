@@ -18,8 +18,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the default credit option for CPU usage of a burstable
 performance instance family.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable performance instances}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }

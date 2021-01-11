@@ -17,8 +17,7 @@ underscores (\\_), or dashes (-).
 }
 \description{
 Creates an empty receipt rule set.
-}
-\details{
+
 For information about setting up receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.

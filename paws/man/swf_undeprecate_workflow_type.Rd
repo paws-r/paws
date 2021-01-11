@@ -14,8 +14,7 @@ swf_undeprecate_workflow_type(domain, workflowType)
 \description{
 Undeprecates a previously deprecated \emph{workflow type}. After a workflow
 type has been undeprecated, you can create new executions of that type.
-}
-\details{
+
 This operation is eventually consistent. The results are best effort and
 may not exactly reflect recent updates and changes.
 

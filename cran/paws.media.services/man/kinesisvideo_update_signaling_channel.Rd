@@ -19,8 +19,7 @@ of the signaling channel that you want to update.}
 \description{
 Updates the existing signaling channel. This is an asynchronous
 operation and takes time to complete.
-}
-\details{
+
 If the \code{MessageTtlSeconds} value is updated (either increased or
 reduced), it only applies to new messages sent via this channel after
 it's been updated. Existing messages are still expired as per the

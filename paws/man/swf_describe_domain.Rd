@@ -13,8 +13,7 @@ swf_describe_domain(name)
 \description{
 Returns information about the specified domain, including description
 and status.
-}
-\details{
+
 \strong{Access Control}
 
 You can use IAM policies to control this action's access to Amazon SWF

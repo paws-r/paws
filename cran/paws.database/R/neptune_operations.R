@@ -6,6 +6,7 @@ NULL
 #' Associates an Identity and Access Management (IAM) role from an Neptune
 #' DB cluster
 #'
+#' @description
 #' Associates an Identity and Access Management (IAM) role from an Neptune
 #' DB cluster.
 #'
@@ -52,6 +53,7 @@ neptune_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn, Feature
 
 #' Adds a source identifier to an existing event notification subscription
 #'
+#' @description
 #' Adds a source identifier to an existing event notification subscription.
 #'
 #' @usage
@@ -106,6 +108,7 @@ neptune_add_source_identifier_to_subscription <- function(SubscriptionName, Sour
 
 #' Adds metadata tags to an Amazon Neptune resource
 #'
+#' @description
 #' Adds metadata tags to an Amazon Neptune resource. These tags can also be
 #' used with cost allocation reporting to track cost associated with Amazon
 #' Neptune resources, or used in a Condition statement in an IAM policy for
@@ -156,6 +159,7 @@ neptune_add_tags_to_resource <- function(ResourceName, Tags) {
 #' Applies a pending maintenance action to a resource (for example, to a DB
 #' instance)
 #'
+#' @description
 #' Applies a pending maintenance action to a resource (for example, to a DB
 #' instance).
 #'
@@ -214,6 +218,7 @@ neptune_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAc
 
 #' Copies the specified DB cluster parameter group
 #'
+#' @description
 #' Copies the specified DB cluster parameter group.
 #'
 #' @usage
@@ -292,6 +297,7 @@ neptune_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGrou
 
 #' Copies a snapshot of a DB cluster
 #'
+#' @description
 #' Copies a snapshot of a DB cluster.
 #' 
 #' To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
@@ -391,6 +397,7 @@ neptune_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, 
 
 #' Copies the specified DB parameter group
 #'
+#' @description
 #' Copies the specified DB parameter group.
 #'
 #' @usage
@@ -461,6 +468,7 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 
 #' Creates a new Amazon Neptune DB cluster
 #'
+#' @description
 #' Creates a new Amazon Neptune DB cluster.
 #' 
 #' You can use the `ReplicationSourceIdentifier` parameter to create the DB
@@ -683,6 +691,7 @@ neptune_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionP
 #' Creates a new custom endpoint and associates it with an Amazon Neptune
 #' DB cluster
 #'
+#' @description
 #' Creates a new custom endpoint and associates it with an Amazon Neptune
 #' DB cluster.
 #'
@@ -746,6 +755,7 @@ neptune_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEnd
 
 #' Creates a new DB cluster parameter group
 #'
+#' @description
 #' Creates a new DB cluster parameter group.
 #' 
 #' Parameters in a DB cluster parameter group apply to all of the instances
@@ -769,9 +779,8 @@ neptune_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEnd
 #' especially important for parameters that are critical when creating the
 #' default database for a DB cluster, such as the character set for the
 #' default database defined by the `character_set_database` parameter. You
-#' can use the *Parameter Groups* option of the [Amazon Neptune
-#' console](https://console.aws.amazon.com/rds/) or the
-#' DescribeDBClusterParameters command to verify that your DB cluster
+#' can use the *Parameter Groups* option of the Amazon Neptune console or
+#' the DescribeDBClusterParameters command to verify that your DB cluster
 #' parameter group has been created or modified.
 #'
 #' @usage
@@ -830,6 +839,7 @@ neptune_create_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 
 #' Creates a snapshot of a DB cluster
 #'
+#' @description
 #' Creates a snapshot of a DB cluster.
 #'
 #' @usage
@@ -894,6 +904,7 @@ neptune_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCl
 
 #' Creates a new DB instance
 #'
+#' @description
 #' Creates a new DB instance.
 #'
 #' @usage
@@ -1189,6 +1200,7 @@ neptune_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allo
 
 #' Creates a new DB parameter group
 #'
+#' @description
 #' Creates a new DB parameter group.
 #' 
 #' A DB parameter group is initially created with the default parameters
@@ -1271,6 +1283,7 @@ neptune_create_db_parameter_group <- function(DBParameterGroupName, DBParameterG
 
 #' Creates a new DB subnet group
 #'
+#' @description
 #' Creates a new DB subnet group. DB subnet groups must contain at least
 #' one subnet in at least two AZs in the AWS Region.
 #'
@@ -1328,6 +1341,7 @@ neptune_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
 
 #' Creates an event notification subscription
 #'
+#' @description
 #' Creates an event notification subscription. This action requires a topic
 #' ARN (Amazon Resource Name) created by either the Neptune console, the
 #' SNS console, or the SNS API. To obtain an ARN with SNS, you must create
@@ -1439,6 +1453,7 @@ neptune_create_event_subscription <- function(SubscriptionName, SnsTopicArn, Sou
 
 #' The DeleteDBCluster action deletes a previously provisioned DB cluster
 #'
+#' @description
 #' The DeleteDBCluster action deletes a previously provisioned DB cluster.
 #' When you delete a DB cluster, all automated backups for that DB cluster
 #' are deleted and can't be recovered. Manual DB cluster snapshots of the
@@ -1513,6 +1528,7 @@ neptune_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = N
 #' Deletes a custom endpoint and removes it from an Amazon Neptune DB
 #' cluster
 #'
+#' @description
 #' Deletes a custom endpoint and removes it from an Amazon Neptune DB
 #' cluster.
 #'
@@ -1551,6 +1567,7 @@ neptune_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
 
 #' Deletes a specified DB cluster parameter group
 #'
+#' @description
 #' Deletes a specified DB cluster parameter group. The DB cluster parameter
 #' group to be deleted can't be associated with any DB clusters.
 #'
@@ -1596,6 +1613,7 @@ neptune_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 
 #' Deletes a DB cluster snapshot
 #'
+#' @description
 #' Deletes a DB cluster snapshot. If the snapshot is being copied, the copy
 #' operation is terminated.
 #' 
@@ -1638,6 +1656,7 @@ neptune_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 
 #' The DeleteDBInstance action deletes a previously provisioned DB instance
 #'
+#' @description
 #' The DeleteDBInstance action deletes a previously provisioned DB
 #' instance. When you delete a DB instance, all automated backups for that
 #' instance are deleted and can't be recovered. Manual DB snapshots of the
@@ -1727,6 +1746,7 @@ neptune_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot =
 
 #' Deletes a specified DBParameterGroup
 #'
+#' @description
 #' Deletes a specified DBParameterGroup. The DBParameterGroup to be deleted
 #' can't be associated with any DB instances.
 #'
@@ -1772,6 +1792,7 @@ neptune_delete_db_parameter_group <- function(DBParameterGroupName) {
 
 #' Deletes a DB subnet group
 #'
+#' @description
 #' Deletes a DB subnet group.
 #' 
 #' The specified database subnet group must not be associated with any DB
@@ -1820,6 +1841,7 @@ neptune_delete_db_subnet_group <- function(DBSubnetGroupName) {
 
 #' Deletes an event notification subscription
 #'
+#' @description
 #' Deletes an event notification subscription.
 #'
 #' @usage
@@ -1856,6 +1878,7 @@ neptune_delete_event_subscription <- function(SubscriptionName) {
 
 #' Returns information about endpoints for an Amazon Neptune DB cluster
 #'
+#' @description
 #' Returns information about endpoints for an Amazon Neptune DB cluster.
 #' 
 #' This operation can also return information for Amazon RDS clusters and
@@ -1933,6 +1956,7 @@ neptune_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DB
 
 #' Returns a list of DBClusterParameterGroup descriptions
 #'
+#' @description
 #' Returns a list of `DBClusterParameterGroup` descriptions. If a
 #' `DBClusterParameterGroupName` parameter is specified, the list will
 #' contain only the description of the specified DB cluster parameter
@@ -2002,6 +2026,7 @@ neptune_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroup
 #' Returns the detailed parameter list for a particular DB cluster
 #' parameter group
 #'
+#' @description
 #' Returns the detailed parameter list for a particular DB cluster
 #' parameter group.
 #'
@@ -2073,6 +2098,7 @@ neptune_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, 
 #' Returns a list of DB cluster snapshot attribute names and values for a
 #' manual DB cluster snapshot
 #'
+#' @description
 #' Returns a list of DB cluster snapshot attribute names and values for a
 #' manual DB cluster snapshot.
 #' 
@@ -2123,6 +2149,7 @@ neptune_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIde
 
 #' Returns information about DB cluster snapshots
 #'
+#' @description
 #' Returns information about DB cluster snapshots. This API action supports
 #' pagination.
 #'
@@ -2247,6 +2274,7 @@ neptune_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DB
 #' Returns information about provisioned DB clusters, and supports
 #' pagination
 #'
+#' @description
 #' Returns information about provisioned DB clusters, and supports
 #' pagination.
 #' 
@@ -2328,6 +2356,7 @@ neptune_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = N
 
 #' Returns a list of the available DB engines
 #'
+#' @description
 #' Returns a list of the available DB engines.
 #'
 #' @usage
@@ -2409,6 +2438,7 @@ neptune_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = N
 
 #' Returns information about provisioned instances, and supports pagination
 #'
+#' @description
 #' Returns information about provisioned instances, and supports
 #' pagination.
 #' 
@@ -2492,6 +2522,7 @@ neptune_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters =
 
 #' Returns a list of DBParameterGroup descriptions
 #'
+#' @description
 #' Returns a list of `DBParameterGroup` descriptions. If a
 #' `DBParameterGroupName` is specified, the list will contain only the
 #' description of the specified DB parameter group.
@@ -2559,6 +2590,7 @@ neptune_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Fi
 
 #' Returns the detailed parameter list for a particular DB parameter group
 #'
+#' @description
 #' Returns the detailed parameter list for a particular DB parameter group.
 #'
 #' @usage
@@ -2629,6 +2661,7 @@ neptune_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, 
 
 #' Returns a list of DBSubnetGroup descriptions
 #'
+#' @description
 #' Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is
 #' specified, the list will contain only the descriptions of the specified
 #' DBSubnetGroup.
@@ -2695,6 +2728,7 @@ neptune_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters 
 #' Returns the default engine and system parameter information for the
 #' cluster database engine
 #'
+#' @description
 #' Returns the default engine and system parameter information for the
 #' cluster database engine.
 #'
@@ -2758,6 +2792,7 @@ neptune_describe_engine_default_cluster_parameters <- function(DBParameterGroupF
 #' Returns the default engine and system parameter information for the
 #' specified database engine
 #'
+#' @description
 #' Returns the default engine and system parameter information for the
 #' specified database engine.
 #'
@@ -2820,6 +2855,7 @@ neptune_describe_engine_default_parameters <- function(DBParameterGroupFamily, F
 #' Displays a list of categories for all event source types, or, if
 #' specified, for a specified source type
 #'
+#' @description
 #' Displays a list of categories for all event source types, or, if
 #' specified, for a specified source type.
 #'
@@ -2869,6 +2905,7 @@ neptune_describe_event_categories <- function(SourceType = NULL, Filters = NULL)
 
 #' Lists all the subscription descriptions for a customer account
 #'
+#' @description
 #' Lists all the subscription descriptions for a customer account. The
 #' description for a subscription includes SubscriptionName, SNSTopicARN,
 #' CustomerID, SourceType, SourceID, CreationTime, and Status.
@@ -2935,6 +2972,7 @@ neptune_describe_event_subscriptions <- function(SubscriptionName = NULL, Filter
 #' Returns events related to DB instances, DB security groups, DB
 #' snapshots, and DB parameter groups for the past 14 days
 #'
+#' @description
 #' Returns events related to DB instances, DB security groups, DB
 #' snapshots, and DB parameter groups for the past 14 days. Events specific
 #' to a particular DB instance, DB security group, database snapshot, or DB
@@ -3045,6 +3083,7 @@ neptune_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, 
 
 #' Returns a list of orderable DB instance options for the specified engine
 #'
+#' @description
 #' Returns a list of orderable DB instance options for the specified
 #' engine.
 #'
@@ -3119,6 +3158,7 @@ neptune_describe_orderable_db_instance_options <- function(Engine, EngineVersion
 #' Returns a list of resources (for example, DB instances) that have at
 #' least one pending maintenance action
 #'
+#' @description
 #' Returns a list of resources (for example, DB instances) that have at
 #' least one pending maintenance action.
 #'
@@ -3193,6 +3233,7 @@ neptune_describe_pending_maintenance_actions <- function(ResourceIdentifier = NU
 #' You can call DescribeValidDBInstanceModifications to learn what
 #' modifications you can make to your DB instance
 #'
+#' @description
 #' You can call DescribeValidDBInstanceModifications to learn what
 #' modifications you can make to your DB instance. You can use this
 #' information when you call ModifyDBInstance.
@@ -3231,6 +3272,7 @@ neptune_describe_valid_db_instance_modifications <- function(DBInstanceIdentifie
 
 #' Forces a failover for a DB cluster
 #'
+#' @description
 #' Forces a failover for a DB cluster.
 #' 
 #' A failover for a DB cluster promotes one of the Read Replicas (read-only
@@ -3289,6 +3331,7 @@ neptune_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInst
 
 #' Lists all tags on an Amazon Neptune resource
 #'
+#' @description
 #' Lists all tags on an Amazon Neptune resource.
 #'
 #' @usage
@@ -3337,6 +3380,7 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 
 #' Modify a setting for a DB cluster
 #'
+#' @description
 #' Modify a setting for a DB cluster. You can change one or more database
 #' configuration parameters by specifying these parameters and the new
 #' values in the request.
@@ -3501,6 +3545,7 @@ neptune_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifie
 
 #' Modifies the properties of an endpoint in an Amazon Neptune DB cluster
 #'
+#' @description
 #' Modifies the properties of an endpoint in an Amazon Neptune DB cluster.
 #'
 #' @usage
@@ -3552,6 +3597,7 @@ neptune_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, Endp
 
 #' Modifies the parameters of a DB cluster parameter group
 #'
+#' @description
 #' Modifies the parameters of a DB cluster parameter group. To modify more
 #' than one parameter, submit a list of the following: `ParameterName`,
 #' `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be
@@ -3624,6 +3670,7 @@ neptune_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupNam
 #' Adds an attribute and values to, or removes an attribute and values
 #' from, a manual DB cluster snapshot
 #'
+#' @description
 #' Adds an attribute and values to, or removes an attribute and values
 #' from, a manual DB cluster snapshot.
 #' 
@@ -3707,6 +3754,7 @@ neptune_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdenti
 
 #' Modifies settings for a DB instance
 #'
+#' @description
 #' Modifies settings for a DB instance. You can change one or more database
 #' configuration parameters by specifying these parameters and the new
 #' values in the request. To learn what modifications you can make to your
@@ -4008,6 +4056,7 @@ neptune_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = 
 
 #' Modifies the parameters of a DB parameter group
 #'
+#' @description
 #' Modifies the parameters of a DB parameter group. To modify more than one
 #' parameter, submit a list of the following: `ParameterName`,
 #' `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be
@@ -4091,6 +4140,7 @@ neptune_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) 
 
 #' Modifies an existing DB subnet group
 #'
+#' @description
 #' Modifies an existing DB subnet group. DB subnet groups must contain at
 #' least one subnet in at least two AZs in the AWS Region.
 #'
@@ -4141,6 +4191,7 @@ neptune_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescr
 
 #' Modifies an existing event notification subscription
 #'
+#' @description
 #' Modifies an existing event notification subscription. Note that you
 #' can't modify the source identifiers using this call; to change source
 #' identifiers for a subscription, use the
@@ -4205,6 +4256,7 @@ neptune_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NU
 
 #' Not supported
 #'
+#' @description
 #' Not supported.
 #'
 #' @usage
@@ -4242,6 +4294,7 @@ neptune_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
 #' You might need to reboot your DB instance, usually for maintenance
 #' reasons
 #'
+#' @description
 #' You might need to reboot your DB instance, usually for maintenance
 #' reasons. For example, if you make certain modifications, or if you
 #' change the DB parameter group associated with the DB instance, you must
@@ -4296,6 +4349,7 @@ neptune_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NUL
 #' Disassociates an Identity and Access Management (IAM) role from a DB
 #' cluster
 #'
+#' @description
 #' Disassociates an Identity and Access Management (IAM) role from a DB
 #' cluster.
 #'
@@ -4343,6 +4397,7 @@ neptune_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn, Fe
 #' Removes a source identifier from an existing event notification
 #' subscription
 #'
+#' @description
 #' Removes a source identifier from an existing event notification
 #' subscription.
 #'
@@ -4386,6 +4441,7 @@ neptune_remove_source_identifier_from_subscription <- function(SubscriptionName,
 
 #' Removes metadata tags from an Amazon Neptune resource
 #'
+#' @description
 #' Removes metadata tags from an Amazon Neptune resource.
 #'
 #' @usage
@@ -4430,6 +4486,7 @@ neptune_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' Modifies the parameters of a DB cluster parameter group to the default
 #' value
 #'
+#' @description
 #' Modifies the parameters of a DB cluster parameter group to the default
 #' value. To reset specific parameters submit a list of the following:
 #' `ParameterName` and `ApplyMethod`. To reset the entire DB cluster
@@ -4500,6 +4557,7 @@ neptune_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName
 #' Modifies the parameters of a DB parameter group to the engine/system
 #' default value
 #'
+#' @description
 #' Modifies the parameters of a DB parameter group to the engine/system
 #' default value. To reset specific parameters, provide a list of the
 #' following: `ParameterName` and `ApplyMethod`. To reset the entire DB
@@ -4573,6 +4631,7 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 
 #' Creates a new DB cluster from a DB snapshot or DB cluster snapshot
 #'
+#' @description
 #' Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
 #' 
 #' If a DB snapshot is specified, the target DB cluster is created from the
@@ -4727,6 +4786,7 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 
 #' Restores a DB cluster to an arbitrary point in time
 #'
+#' @description
 #' Restores a DB cluster to an arbitrary point in time. Users can restore
 #' to any point in time before `LatestRestorableTime` for up to
 #' `BackupRetentionPeriod` days. The target DB cluster is created from the
@@ -4910,6 +4970,7 @@ neptune_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Res
 #' Starts an Amazon Neptune DB cluster that was stopped using the AWS
 #' console, the AWS CLI stop-db-cluster command, or the StopDBCluster API
 #'
+#' @description
 #' Starts an Amazon Neptune DB cluster that was stopped using the AWS
 #' console, the AWS CLI stop-db-cluster command, or the StopDBCluster API.
 #'
@@ -4948,6 +5009,7 @@ neptune_start_db_cluster <- function(DBClusterIdentifier) {
 
 #' Stops an Amazon Neptune DB cluster
 #'
+#' @description
 #' Stops an Amazon Neptune DB cluster. When you stop a DB cluster, Neptune
 #' retains the DB cluster's metadata, including its endpoints and DB
 #' parameter groups.

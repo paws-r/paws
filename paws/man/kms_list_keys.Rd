@@ -22,8 +22,7 @@ truncated response you just received.}
 \description{
 Gets a list of all customer master keys (CMKs) in the caller's AWS
 account and Region.
-}
-\details{
+
 \strong{Cross-account use}: No. You cannot perform this operation on a CMK in
 a different AWS account.
 

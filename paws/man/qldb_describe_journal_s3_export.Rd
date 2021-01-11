@@ -17,8 +17,7 @@ qldb_describe_journal_s3_export(Name, ExportId)
 Returns information about a journal export job, including the ledger
 name, export ID, when it was created, current status, and its start and
 end time export parameters.
-}
-\details{
+
 This action does not return any expired export jobs. For more
 information, see \href{https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration}{Export Job Expiration}
 in the \emph{Amazon QLDB Developer Guide}.

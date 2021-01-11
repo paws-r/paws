@@ -11,8 +11,7 @@ codepipeline_get_job_details(jobId)
 }
 \description{
 Returns information about a job. Used for custom actions only.
-}
-\details{
+
 When this API is called, AWS CodePipeline returns temporary credentials
 for the S3 bucket used to store artifacts for the pipeline, if the
 action requires access to that S3 bucket for input or output artifacts.

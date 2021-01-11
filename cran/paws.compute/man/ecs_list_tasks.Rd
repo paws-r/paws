@@ -66,8 +66,7 @@ Returns a list of tasks for a specified cluster. You can filter the
 results by family name, by a particular container instance, or by the
 desired status of the task with the \code{family}, \code{containerInstance}, and
 \code{desiredStatus} parameters.
-}
-\details{
+
 Recently stopped tasks might appear in the returned results. Currently,
 stopped tasks appear in the returned results for at least one hour.
 }

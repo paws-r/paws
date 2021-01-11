@@ -19,8 +19,7 @@ Associates a virtual interface with a specified link aggregation group
 the virtual interface is being migrated. If the target connection or LAG
 has an associated virtual interface with a conflicting VLAN number or a
 conflicting IP address, the operation fails.
-}
-\details{
+
 Virtual interfaces associated with a hosted connection cannot be
 associated with a LAG; hosted connections must be migrated along with
 their virtual interfaces using AssociateHostedConnection.

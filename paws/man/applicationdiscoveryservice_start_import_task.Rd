@@ -37,8 +37,7 @@ Discovery Connector or Discovery Agent. This gives you the option to
 perform migration assessment and planning directly from your imported
 data, including the ability to group your devices as applications and
 track their migration status.
-}
-\details{
+
 To start an import request, do this:
 \enumerate{
 \item Download the specially formatted comma separated value (CSV) import

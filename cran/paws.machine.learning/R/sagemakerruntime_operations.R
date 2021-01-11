@@ -7,6 +7,7 @@ NULL
 #' services, your client applications use this API to get inferences from
 #' the model hosted at the specified endpoint
 #'
+#' @description
 #' After you deploy a model into production using Amazon SageMaker hosting
 #' services, your client applications use this API to get inferences from
 #' the model hosted at the specified endpoint.

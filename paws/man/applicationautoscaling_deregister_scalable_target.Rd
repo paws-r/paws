@@ -107,8 +107,7 @@ GiB) for brokers in an Amazon MSK cluster.
 Deregisters an Application Auto Scaling scalable target when you have
 finished using it. To see which resources have been registered, use
 \href{https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html}{DescribeScalableTargets}.
-}
-\details{
+
 Deregistering a scalable target deletes the scaling policies and the
 scheduled actions that are associated with it.
 }

@@ -23,8 +23,7 @@ API operation is generally used as part of the active learning workflow
 that starts with the \code{StartMLLabelingSetGenerationTaskRun} call and that
 ultimately results in improving the quality of your machine learning
 transform.
-}
-\details{
+
 After the \code{StartMLLabelingSetGenerationTaskRun} finishes, AWS Glue
 machine learning will have generated a series of questions for humans to
 answer. (Answering these questions is often called 'labeling' in the

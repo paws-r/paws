@@ -14,8 +14,7 @@ personalize_create_schema(name, schema)
 \description{
 Creates an Amazon Personalize schema from the specified schema string.
 The schema you create must be in Avro JSON format.
-}
-\details{
+
 Amazon Personalize recognizes three schema variants. Each schema is
 associated with a dataset type and has a set of required field and
 keywords. You specify a schema when you call CreateDataset.

@@ -6,6 +6,7 @@ NULL
 #' Associates an Identity and Access Management (IAM) role from an Amazon
 #' Aurora DB cluster
 #'
+#' @description
 #' Associates an Identity and Access Management (IAM) role from an Amazon
 #' Aurora DB cluster. For more information, see [Authorizing Amazon Aurora
 #' MySQL to Access Other AWS Services on Your
@@ -57,6 +58,7 @@ rds_add_role_to_db_cluster <- function(DBClusterIdentifier, RoleArn, FeatureName
 #' Associates an AWS Identity and Access Management (IAM) role with a DB
 #' instance
 #'
+#' @description
 #' Associates an AWS Identity and Access Management (IAM) role with a DB
 #' instance.
 #' 
@@ -105,6 +107,7 @@ rds_add_role_to_db_instance <- function(DBInstanceIdentifier, RoleArn, FeatureNa
 #' Adds a source identifier to an existing RDS event notification
 #' subscription
 #'
+#' @description
 #' Adds a source identifier to an existing RDS event notification
 #' subscription.
 #'
@@ -166,6 +169,7 @@ rds_add_source_identifier_to_subscription <- function(SubscriptionName, SourceId
 
 #' Adds metadata tags to an Amazon RDS resource
 #'
+#' @description
 #' Adds metadata tags to an Amazon RDS resource. These tags can also be
 #' used with cost allocation reporting to track cost associated with Amazon
 #' RDS resources, or used in a Condition statement in an IAM policy for
@@ -219,6 +223,7 @@ rds_add_tags_to_resource <- function(ResourceName, Tags) {
 #' Applies a pending maintenance action to a resource (for example, to a DB
 #' instance)
 #'
+#' @description
 #' Applies a pending maintenance action to a resource (for example, to a DB
 #' instance).
 #'
@@ -279,6 +284,7 @@ rds_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyAction
 #' Enables ingress to a DBSecurityGroup using one of two forms of
 #' authorization
 #'
+#' @description
 #' Enables ingress to a DBSecurityGroup using one of two forms of
 #' authorization. First, EC2 or VPC security groups can be added to the
 #' DBSecurityGroup if the application using the database is running on EC2
@@ -350,6 +356,7 @@ rds_authorize_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP 
 #' Backtracks a DB cluster to a specific time, without creating a new DB
 #' cluster
 #'
+#' @description
 #' Backtracks a DB cluster to a specific time, without creating a new DB
 #' cluster.
 #' 
@@ -434,6 +441,7 @@ rds_backtrack_db_cluster <- function(DBClusterIdentifier, BacktrackTo, Force = N
 #' Cancels an export task in progress that is exporting a snapshot to
 #' Amazon S3
 #'
+#' @description
 #' Cancels an export task in progress that is exporting a snapshot to
 #' Amazon S3. Any data that has already been written to the S3 bucket isn't
 #' removed.
@@ -472,6 +480,7 @@ rds_cancel_export_task <- function(ExportTaskIdentifier) {
 
 #' Copies the specified DB cluster parameter group
 #'
+#' @description
 #' Copies the specified DB cluster parameter group.
 #' 
 #' This action only applies to Aurora DB clusters.
@@ -553,6 +562,7 @@ rds_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupIde
 
 #' Copies a snapshot of a DB cluster
 #'
+#' @description
 #' Copies a snapshot of a DB cluster.
 #' 
 #' To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
@@ -783,6 +793,7 @@ rds_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Targ
 
 #' Copies the specified DB parameter group
 #'
+#' @description
 #' Copies the specified DB parameter group.
 #'
 #' @usage
@@ -854,6 +865,7 @@ rds_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Target
 
 #' Copies the specified DB snapshot
 #'
+#' @description
 #' Copies the specified DB snapshot. The source DB snapshot must be in the
 #' `available` state.
 #' 
@@ -1041,6 +1053,7 @@ rds_copy_db_snapshot <- function(SourceDBSnapshotIdentifier, TargetDBSnapshotIde
 
 #' Copies the specified option group
 #'
+#' @description
 #' Copies the specified option group.
 #'
 #' @usage
@@ -1105,6 +1118,7 @@ rds_copy_option_group <- function(SourceOptionGroupIdentifier, TargetOptionGroup
 
 #' Creates a custom Availability Zone (AZ)
 #'
+#' @description
 #' Creates a custom Availability Zone (AZ).
 #' 
 #' A custom AZ is an on-premises AZ that is integrated with a VMware
@@ -1161,6 +1175,7 @@ rds_create_custom_availability_zone <- function(CustomAvailabilityZoneName, Exis
 
 #' Creates a new Amazon Aurora DB cluster
 #'
+#' @description
 #' Creates a new Amazon Aurora DB cluster.
 #' 
 #' You can use the `ReplicationSourceIdentifier` parameter to create the DB
@@ -1570,6 +1585,7 @@ rds_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPerio
 #' Creates a new custom endpoint and associates it with an Amazon Aurora DB
 #' cluster
 #'
+#' @description
 #' Creates a new custom endpoint and associates it with an Amazon Aurora DB
 #' cluster.
 #' 
@@ -1635,6 +1651,7 @@ rds_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEndpoin
 
 #' Creates a new DB cluster parameter group
 #'
+#' @description
 #' Creates a new DB cluster parameter group.
 #' 
 #' Parameters in a DB cluster parameter group apply to all of the instances
@@ -1658,8 +1675,7 @@ rds_create_db_cluster_endpoint <- function(DBClusterIdentifier, DBClusterEndpoin
 #' especially important for parameters that are critical when creating the
 #' default database for a DB cluster, such as the character set for the
 #' default database defined by the `character_set_database` parameter. You
-#' can use the *Parameter Groups* option of the [Amazon RDS
-#' console](https://console.aws.amazon.com/rds/) or the
+#' can use the *Parameter Groups* option of the Amazon RDS console or the
 #' `DescribeDBClusterParameters` action to verify that your DB cluster
 #' parameter group has been created or modified.
 #' 
@@ -1733,6 +1749,7 @@ rds_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName, D
 
 #' Creates a snapshot of a DB cluster
 #'
+#' @description
 #' Creates a snapshot of a DB cluster. For more information on Amazon
 #' Aurora, see [What Is Amazon
 #' Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html)
@@ -1802,6 +1819,7 @@ rds_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBCluste
 
 #' Creates a new DB instance
 #'
+#' @description
 #' Creates a new DB instance.
 #'
 #' @usage
@@ -2649,6 +2667,7 @@ rds_create_db_instance <- function(DBName = NULL, DBInstanceIdentifier, Allocate
 #' Creates a new DB instance that acts as a read replica for an existing
 #' source DB instance
 #'
+#' @description
 #' Creates a new DB instance that acts as a read replica for an existing
 #' source DB instance. You can create a read replica for a DB instance
 #' running MySQL, MariaDB, Oracle, PostgreSQL, or SQL Server. For more
@@ -3061,6 +3080,7 @@ rds_create_db_instance_read_replica <- function(DBInstanceIdentifier, SourceDBIn
 
 #' Creates a new DB parameter group
 #'
+#' @description
 #' Creates a new DB parameter group.
 #' 
 #' A DB parameter group is initially created with the default parameters
@@ -3080,10 +3100,9 @@ rds_create_db_instance_read_replica <- function(DBInstanceIdentifier, SourceDBIn
 #' parameters that are critical when creating the default database for a DB
 #' instance, such as the character set for the default database defined by
 #' the `character_set_database` parameter. You can use the *Parameter
-#' Groups* option of the [Amazon RDS
-#' console](https://console.aws.amazon.com/rds/) or the
-#' *DescribeDBParameters* command to verify that your DB parameter group
-#' has been created or modified.
+#' Groups* option of the Amazon RDS console or the *DescribeDBParameters*
+#' command to verify that your DB parameter group has been created or
+#' modified.
 #'
 #' @usage
 #' rds_create_db_parameter_group(DBParameterGroupName,
@@ -3151,6 +3170,7 @@ rds_create_db_parameter_group <- function(DBParameterGroupName, DBParameterGroup
 
 #' Creates a new DB proxy
 #'
+#' @description
 #' Creates a new DB proxy.
 #'
 #' @usage
@@ -3243,6 +3263,7 @@ rds_create_db_proxy <- function(DBProxyName, EngineFamily, Auth, RoleArn, VpcSub
 
 #' Creates a new DB security group
 #'
+#' @description
 #' Creates a new DB security group. DB security groups control access to a
 #' DB instance.
 #' 
@@ -3306,6 +3327,7 @@ rds_create_db_security_group <- function(DBSecurityGroupName, DBSecurityGroupDes
 
 #' Creates a snapshot of a DB instance
 #'
+#' @description
 #' Creates a snapshot of a DB instance. The source DB instance must be in
 #' the `available` or `storage-optimization` state.
 #'
@@ -3369,6 +3391,7 @@ rds_create_db_snapshot <- function(DBSnapshotIdentifier, DBInstanceIdentifier, T
 
 #' Creates a new DB subnet group
 #'
+#' @description
 #' Creates a new DB subnet group. DB subnet groups must contain at least
 #' one subnet in at least two AZs in the AWS Region.
 #'
@@ -3426,6 +3449,7 @@ rds_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 
 #' Creates an RDS event notification subscription
 #'
+#' @description
 #' Creates an RDS event notification subscription. This action requires a
 #' topic Amazon Resource Name (ARN) created by either the RDS console, the
 #' SNS console, or the SNS API. To obtain an ARN with SNS, you must create
@@ -3553,6 +3577,7 @@ rds_create_event_subscription <- function(SubscriptionName, SnsTopicArn, SourceT
 
 #' Creates an Aurora global database spread across multiple AWS Regions
 #'
+#' @description
 #' Creates an Aurora global database spread across multiple AWS Regions.
 #' The global database contains a single primary cluster with read-write
 #' capability, and a read-only secondary cluster that receives data from
@@ -3618,6 +3643,7 @@ rds_create_global_cluster <- function(GlobalClusterIdentifier = NULL, SourceDBCl
 
 #' Creates a new option group
 #'
+#' @description
 #' Creates a new option group. You can create up to 20 option groups.
 #'
 #' @usage
@@ -3680,6 +3706,7 @@ rds_create_option_group <- function(OptionGroupName, EngineName, MajorEngineVers
 
 #' Deletes a custom Availability Zone (AZ)
 #'
+#' @description
 #' Deletes a custom Availability Zone (AZ).
 #' 
 #' A custom AZ is an on-premises AZ that is integrated with a VMware
@@ -3722,6 +3749,7 @@ rds_delete_custom_availability_zone <- function(CustomAvailabilityZoneId) {
 
 #' The DeleteDBCluster action deletes a previously provisioned DB cluster
 #'
+#' @description
 #' The DeleteDBCluster action deletes a previously provisioned DB cluster.
 #' When you delete a DB cluster, all automated backups for that DB cluster
 #' are deleted and can't be recovered. Manual DB cluster snapshots of the
@@ -3799,6 +3827,7 @@ rds_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NULL,
 #' Deletes a custom endpoint and removes it from an Amazon Aurora DB
 #' cluster
 #'
+#' @description
 #' Deletes a custom endpoint and removes it from an Amazon Aurora DB
 #' cluster.
 #' 
@@ -3839,6 +3868,7 @@ rds_delete_db_cluster_endpoint <- function(DBClusterEndpointIdentifier) {
 
 #' Deletes a specified DB cluster parameter group
 #'
+#' @description
 #' Deletes a specified DB cluster parameter group. The DB cluster parameter
 #' group to be deleted can't be associated with any DB clusters.
 #' 
@@ -3890,6 +3920,7 @@ rds_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName) {
 
 #' Deletes a DB cluster snapshot
 #'
+#' @description
 #' Deletes a DB cluster snapshot. If the snapshot is being copied, the copy
 #' operation is terminated.
 #' 
@@ -3938,6 +3969,7 @@ rds_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 
 #' The DeleteDBInstance action deletes a previously provisioned DB instance
 #'
+#' @description
 #' The DeleteDBInstance action deletes a previously provisioned DB
 #' instance. When you delete a DB instance, all automated backups for that
 #' instance are deleted and can't be recovered. Manual DB snapshots of the
@@ -4045,6 +4077,7 @@ rds_delete_db_instance <- function(DBInstanceIdentifier, SkipFinalSnapshot = NUL
 #' Deletes automated backups using the DbiResourceId value of the source DB
 #' instance or the Amazon Resource Name (ARN) of the automated backups
 #'
+#' @description
 #' Deletes automated backups using the `DbiResourceId` value of the source
 #' DB instance or the Amazon Resource Name (ARN) of the automated backups.
 #'
@@ -4088,6 +4121,7 @@ rds_delete_db_instance_automated_backup <- function(DbiResourceId = NULL, DBInst
 
 #' Deletes a specified DB parameter group
 #'
+#' @description
 #' Deletes a specified DB parameter group. The DB parameter group to be
 #' deleted can't be associated with any DB instances.
 #'
@@ -4133,6 +4167,7 @@ rds_delete_db_parameter_group <- function(DBParameterGroupName) {
 
 #' Deletes an existing proxy
 #'
+#' @description
 #' Deletes an existing proxy.
 #'
 #' @usage
@@ -4169,6 +4204,7 @@ rds_delete_db_proxy <- function(DBProxyName) {
 
 #' Deletes a DB security group
 #'
+#' @description
 #' Deletes a DB security group.
 #' 
 #' The specified DB security group must not be associated with any DB
@@ -4220,6 +4256,7 @@ rds_delete_db_security_group <- function(DBSecurityGroupName) {
 
 #' Deletes a DB snapshot
 #'
+#' @description
 #' Deletes a DB snapshot. If the snapshot is being copied, the copy
 #' operation is terminated.
 #' 
@@ -4262,6 +4299,7 @@ rds_delete_db_snapshot <- function(DBSnapshotIdentifier) {
 
 #' Deletes a DB subnet group
 #'
+#' @description
 #' Deletes a DB subnet group.
 #' 
 #' The specified database subnet group must not be associated with any DB
@@ -4310,6 +4348,7 @@ rds_delete_db_subnet_group <- function(DBSubnetGroupName) {
 
 #' Deletes an RDS event notification subscription
 #'
+#' @description
 #' Deletes an RDS event notification subscription.
 #'
 #' @usage
@@ -4346,6 +4385,7 @@ rds_delete_event_subscription <- function(SubscriptionName) {
 
 #' Deletes a global database cluster
 #'
+#' @description
 #' Deletes a global database cluster. The primary and secondary clusters
 #' must already be detached or destroyed first.
 #' 
@@ -4386,6 +4426,7 @@ rds_delete_global_cluster <- function(GlobalClusterIdentifier) {
 #' Deletes the installation medium for a DB engine that requires an
 #' on-premises customer provided license, such as Microsoft SQL Server
 #'
+#' @description
 #' Deletes the installation medium for a DB engine that requires an
 #' on-premises customer provided license, such as Microsoft SQL Server.
 #'
@@ -4423,6 +4464,7 @@ rds_delete_installation_media <- function(InstallationMediaId) {
 
 #' Deletes an existing option group
 #'
+#' @description
 #' Deletes an existing option group.
 #'
 #' @usage
@@ -4462,6 +4504,7 @@ rds_delete_option_group <- function(OptionGroupName) {
 #' Remove the association between one or more DBProxyTarget data structures
 #' and a DBProxyTargetGroup
 #'
+#' @description
 #' Remove the association between one or more `DBProxyTarget` data
 #' structures and a `DBProxyTargetGroup`.
 #'
@@ -4511,6 +4554,7 @@ rds_deregister_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL,
 
 #' Lists all of the attributes for a customer account
 #'
+#' @description
 #' Lists all of the attributes for a customer account. The attributes
 #' include Amazon RDS quotas for the account, such as the number of DB
 #' instances allowed. The description for a quota includes the quota name,
@@ -4549,6 +4593,7 @@ rds_describe_account_attributes <- function() {
 #' Lists the set of CA certificates provided by Amazon RDS for this AWS
 #' account
 #'
+#' @description
 #' Lists the set of CA certificates provided by Amazon RDS for this AWS
 #' account.
 #'
@@ -4616,6 +4661,7 @@ rds_describe_certificates <- function(CertificateIdentifier = NULL, Filters = NU
 
 #' Returns information about custom Availability Zones (AZs)
 #'
+#' @description
 #' Returns information about custom Availability Zones (AZs).
 #' 
 #' A custom AZ is an on-premises AZ that is integrated with a VMware
@@ -4683,6 +4729,7 @@ rds_describe_custom_availability_zones <- function(CustomAvailabilityZoneId = NU
 
 #' Returns information about backtracks for a DB cluster
 #'
+#' @description
 #' Returns information about backtracks for a DB cluster.
 #' 
 #' For more information on Amazon Aurora, see [What Is Amazon
@@ -4790,6 +4837,7 @@ rds_describe_db_cluster_backtracks <- function(DBClusterIdentifier, BacktrackIde
 
 #' Returns information about endpoints for an Amazon Aurora DB cluster
 #'
+#' @description
 #' Returns information about endpoints for an Amazon Aurora DB cluster.
 #' 
 #' This action only applies to Aurora DB clusters.
@@ -4866,6 +4914,7 @@ rds_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DBClus
 
 #' Returns a list of DBClusterParameterGroup descriptions
 #'
+#' @description
 #' Returns a list of `DBClusterParameterGroup` descriptions. If a
 #' `DBClusterParameterGroupName` parameter is specified, the list will
 #' contain only the description of the specified DB cluster parameter
@@ -4941,6 +4990,7 @@ rds_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupName
 #' Returns the detailed parameter list for a particular DB cluster
 #' parameter group
 #'
+#' @description
 #' Returns the detailed parameter list for a particular DB cluster
 #' parameter group.
 #' 
@@ -5018,6 +5068,7 @@ rds_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, Sour
 #' Returns a list of DB cluster snapshot attribute names and values for a
 #' manual DB cluster snapshot
 #'
+#' @description
 #' Returns a list of DB cluster snapshot attribute names and values for a
 #' manual DB cluster snapshot.
 #' 
@@ -5069,6 +5120,7 @@ rds_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentif
 
 #' Returns information about DB cluster snapshots
 #'
+#' @description
 #' Returns information about DB cluster snapshots. This API action supports
 #' pagination.
 #' 
@@ -5210,6 +5262,7 @@ rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClus
 
 #' Returns information about provisioned Aurora DB clusters
 #'
+#' @description
 #' Returns information about provisioned Aurora DB clusters. This API
 #' supports pagination.
 #' 
@@ -5292,6 +5345,7 @@ rds_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NULL,
 
 #' Returns a list of the available DB engines
 #'
+#' @description
 #' Returns a list of the available DB engines.
 #'
 #' @usage
@@ -5382,6 +5436,7 @@ rds_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NULL,
 
 #' Displays backups for both current and deleted instances
 #'
+#' @description
 #' Displays backups for both current and deleted instances. For example,
 #' use this operation to find details about automated backups for
 #' previously deleted instances. Current instances with retention periods
@@ -5478,6 +5533,7 @@ rds_describe_db_instance_automated_backups <- function(DbiResourceId = NULL, DBI
 
 #' Returns information about provisioned RDS instances
 #'
+#' @description
 #' Returns information about provisioned RDS instances. This API supports
 #' pagination.
 #' 
@@ -5570,6 +5626,7 @@ rds_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = NUL
 
 #' Returns a list of DB log files for the DB instance
 #'
+#' @description
 #' Returns a list of DB log files for the DB instance.
 #'
 #' @usage
@@ -5639,6 +5696,7 @@ rds_describe_db_log_files <- function(DBInstanceIdentifier, FilenameContains = N
 
 #' Returns a list of DBParameterGroup descriptions
 #'
+#' @description
 #' Returns a list of `DBParameterGroup` descriptions. If a
 #' `DBParameterGroupName` is specified, the list will contain only the
 #' description of the specified DB parameter group.
@@ -5706,6 +5764,7 @@ rds_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Filter
 
 #' Returns the detailed parameter list for a particular DB parameter group
 #'
+#' @description
 #' Returns the detailed parameter list for a particular DB parameter group.
 #'
 #' @usage
@@ -5776,6 +5835,7 @@ rds_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, Filt
 
 #' Returns information about DB proxies
 #'
+#' @description
 #' Returns information about DB proxies.
 #'
 #' @usage
@@ -5835,6 +5895,7 @@ rds_describe_db_proxies <- function(DBProxyName = NULL, Filters = NULL, Marker =
 #' Returns information about DB proxy target groups, represented by
 #' DBProxyTargetGroup data structures
 #'
+#' @description
 #' Returns information about DB proxy target groups, represented by
 #' `DBProxyTargetGroup` data structures.
 #'
@@ -5897,6 +5958,7 @@ rds_describe_db_proxy_target_groups <- function(DBProxyName, TargetGroupName = N
 
 #' Returns information about DBProxyTarget objects
 #'
+#' @description
 #' Returns information about `DBProxyTarget` objects. This API supports
 #' pagination.
 #'
@@ -5959,6 +6021,7 @@ rds_describe_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, F
 
 #' Returns a list of DBSecurityGroup descriptions
 #'
+#' @description
 #' Returns a list of `DBSecurityGroup` descriptions. If a
 #' `DBSecurityGroupName` is specified, the list will contain only the
 #' descriptions of the specified DB security group.
@@ -6022,6 +6085,7 @@ rds_describe_db_security_groups <- function(DBSecurityGroupName = NULL, Filters 
 #' Returns a list of DB snapshot attribute names and values for a manual DB
 #' snapshot
 #'
+#' @description
 #' Returns a list of DB snapshot attribute names and values for a manual DB
 #' snapshot.
 #' 
@@ -6070,6 +6134,7 @@ rds_describe_db_snapshot_attributes <- function(DBSnapshotIdentifier) {
 
 #' Returns information about DB snapshots
 #'
+#' @description
 #' Returns information about DB snapshots. This API action supports
 #' pagination.
 #'
@@ -6215,6 +6280,7 @@ rds_describe_db_snapshots <- function(DBInstanceIdentifier = NULL, DBSnapshotIde
 
 #' Returns a list of DBSubnetGroup descriptions
 #'
+#' @description
 #' Returns a list of DBSubnetGroup descriptions. If a DBSubnetGroupName is
 #' specified, the list will contain only the descriptions of the specified
 #' DBSubnetGroup.
@@ -6281,6 +6347,7 @@ rds_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = NU
 #' Returns the default engine and system parameter information for the
 #' cluster database engine
 #'
+#' @description
 #' Returns the default engine and system parameter information for the
 #' cluster database engine.
 #' 
@@ -6348,6 +6415,7 @@ rds_describe_engine_default_cluster_parameters <- function(DBParameterGroupFamil
 #' Returns the default engine and system parameter information for the
 #' specified database engine
 #'
+#' @description
 #' Returns the default engine and system parameter information for the
 #' specified database engine.
 #'
@@ -6410,6 +6478,7 @@ rds_describe_engine_default_parameters <- function(DBParameterGroupFamily, Filte
 #' Displays a list of categories for all event source types, or, if
 #' specified, for a specified source type
 #'
+#' @description
 #' Displays a list of categories for all event source types, or, if
 #' specified, for a specified source type. You can see a list of the event
 #' categories and source types in
@@ -6462,6 +6531,7 @@ rds_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
 
 #' Lists all the subscription descriptions for a customer account
 #'
+#' @description
 #' Lists all the subscription descriptions for a customer account. The
 #' description for a subscription includes `SubscriptionName`,
 #' `SNSTopicARN`, `CustomerID`, `SourceType`, `SourceID`, `CreationTime`,
@@ -6531,6 +6601,7 @@ rds_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters = 
 #' groups, DB security groups, DB snapshots, and DB cluster snapshots for
 #' the past 14 days
 #'
+#' @description
 #' Returns events related to DB instances, DB clusters, DB parameter
 #' groups, DB security groups, DB snapshots, and DB cluster snapshots for
 #' the past 14 days. Events specific to a particular DB instances, DB
@@ -6651,6 +6722,7 @@ rds_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, Star
 
 #' Returns information about a snapshot export to Amazon S3
 #'
+#' @description
 #' Returns information about a snapshot export to Amazon S3. This API
 #' operation supports pagination.
 #'
@@ -6729,6 +6801,7 @@ rds_describe_export_tasks <- function(ExportTaskIdentifier = NULL, SourceArn = N
 
 #' Returns information about Aurora global database clusters
 #'
+#' @description
 #' Returns information about Aurora global database clusters. This API
 #' supports pagination.
 #' 
@@ -6809,6 +6882,7 @@ rds_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filters
 #' Describes the available installation media for a DB engine that requires
 #' an on-premises customer provided license, such as Microsoft SQL Server
 #'
+#' @description
 #' Describes the available installation media for a DB engine that requires
 #' an on-premises customer provided license, such as Microsoft SQL Server.
 #'
@@ -6877,6 +6951,7 @@ rds_describe_installation_media <- function(InstallationMediaId = NULL, Filters 
 
 #' Describes all available options
 #'
+#' @description
 #' Describes all available options.
 #'
 #' @usage
@@ -6940,6 +7015,7 @@ rds_describe_option_group_options <- function(EngineName, MajorEngineVersion = N
 
 #' Describes the available option groups
 #'
+#' @description
 #' Describes the available option groups.
 #'
 #' @usage
@@ -7007,6 +7083,7 @@ rds_describe_option_groups <- function(OptionGroupName = NULL, Filters = NULL, M
 
 #' Returns a list of orderable DB instance options for the specified engine
 #'
+#' @description
 #' Returns a list of orderable DB instance options for the specified
 #' engine.
 #'
@@ -7088,6 +7165,7 @@ rds_describe_orderable_db_instance_options <- function(Engine, EngineVersion = N
 #' Returns a list of resources (for example, DB instances) that have at
 #' least one pending maintenance action
 #'
+#' @description
 #' Returns a list of resources (for example, DB instances) that have at
 #' least one pending maintenance action.
 #'
@@ -7162,6 +7240,7 @@ rds_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL, 
 #' Returns information about reserved DB instances for this account, or
 #' about a specified reserved DB instance
 #'
+#' @description
 #' Returns information about reserved DB instances for this account, or
 #' about a specified reserved DB instance.
 #'
@@ -7252,6 +7331,7 @@ rds_describe_reserved_db_instances <- function(ReservedDBInstanceId = NULL, Rese
 
 #' Lists available reserved DB instance offerings
 #'
+#' @description
 #' Lists available reserved DB instance offerings.
 #'
 #' @usage
@@ -7338,6 +7418,7 @@ rds_describe_reserved_db_instances_offerings <- function(ReservedDBInstancesOffe
 #' can create a read replica, copy a DB snapshot from, or replicate
 #' automated backups from
 #'
+#' @description
 #' Returns a list of the source AWS Regions where the current AWS Region
 #' can create a read replica, copy a DB snapshot from, or replicate
 #' automated backups from. This API action supports pagination.
@@ -7404,6 +7485,7 @@ rds_describe_source_regions <- function(RegionName = NULL, MaxRecords = NULL, Ma
 #' You can call DescribeValidDBInstanceModifications to learn what
 #' modifications you can make to your DB instance
 #'
+#' @description
 #' You can call `DescribeValidDBInstanceModifications` to learn what
 #' modifications you can make to your DB instance. You can use this
 #' information when you call `ModifyDBInstance`.
@@ -7442,6 +7524,7 @@ rds_describe_valid_db_instance_modifications <- function(DBInstanceIdentifier) {
 
 #' Downloads all or a portion of the specified log file, up to 1 MB in size
 #'
+#' @description
 #' Downloads all or a portion of the specified log file, up to 1 MB in
 #' size.
 #'
@@ -7516,6 +7599,7 @@ rds_download_db_log_file_portion <- function(DBInstanceIdentifier, LogFileName, 
 
 #' Forces a failover for a DB cluster
 #'
+#' @description
 #' Forces a failover for a DB cluster.
 #' 
 #' A failover for a DB cluster promotes one of the Aurora Replicas
@@ -7580,6 +7664,7 @@ rds_failover_db_cluster <- function(DBClusterIdentifier, TargetDBInstanceIdentif
 #' Imports the installation media for a DB engine that requires an
 #' on-premises customer provided license, such as SQL Server
 #'
+#' @description
 #' Imports the installation media for a DB engine that requires an
 #' on-premises customer provided license, such as SQL Server.
 #'
@@ -7658,6 +7743,7 @@ rds_import_installation_media <- function(CustomAvailabilityZoneId, Engine, Engi
 
 #' Lists all tags on an Amazon RDS resource
 #'
+#' @description
 #' Lists all tags on an Amazon RDS resource.
 #' 
 #' For an overview on tagging an Amazon RDS resource, see [Tagging Amazon
@@ -7714,6 +7800,7 @@ rds_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' Security (SSL/TLS) certificate for Amazon RDS for new DB instances
 #' temporarily, or remove the override
 #'
+#' @description
 #' Override the system-default Secure Sockets Layer/Transport Layer
 #' Security (SSL/TLS) certificate for Amazon RDS for new DB instances
 #' temporarily, or remove the override.
@@ -7788,6 +7875,7 @@ rds_modify_certificates <- function(CertificateIdentifier = NULL, RemoveCustomer
 
 #' Set the capacity of an Aurora Serverless DB cluster to a specific value
 #'
+#' @description
 #' Set the capacity of an Aurora Serverless DB cluster to a specific value.
 #' 
 #' Aurora Serverless scales seamlessly based on the workload on the DB
@@ -7880,6 +7968,7 @@ rds_modify_current_db_cluster_capacity <- function(DBClusterIdentifier, Capacity
 
 #' Modify a setting for an Amazon Aurora DB cluster
 #'
+#' @description
 #' Modify a setting for an Amazon Aurora DB cluster. You can change one or
 #' more database configuration parameters by specifying these parameters
 #' and the new values in the request. For more information on Amazon
@@ -8159,6 +8248,7 @@ rds_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = 
 
 #' Modifies the properties of an endpoint in an Amazon Aurora DB cluster
 #'
+#' @description
 #' Modifies the properties of an endpoint in an Amazon Aurora DB cluster.
 #' 
 #' This action only applies to Aurora DB clusters.
@@ -8212,6 +8302,7 @@ rds_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, Endpoint
 
 #' Modifies the parameters of a DB cluster parameter group
 #'
+#' @description
 #' Modifies the parameters of a DB cluster parameter group. To modify more
 #' than one parameter, submit a list of the following: `ParameterName`,
 #' `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be
@@ -8233,8 +8324,7 @@ rds_modify_db_cluster_endpoint <- function(DBClusterEndpointIdentifier, Endpoint
 #' important for parameters that are critical when creating the default
 #' database for a DB cluster, such as the character set for the default
 #' database defined by the `character_set_database` parameter. You can use
-#' the *Parameter Groups* option of the [Amazon RDS
-#' console](https://console.aws.amazon.com/rds/) or the
+#' the *Parameter Groups* option of the Amazon RDS console or the
 #' `DescribeDBClusterParameters` action to verify that your DB cluster
 #' parameter group has been created or modified.
 #' 
@@ -8300,6 +8390,7 @@ rds_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName, P
 #' Adds an attribute and values to, or removes an attribute and values
 #' from, a manual DB cluster snapshot
 #'
+#' @description
 #' Adds an attribute and values to, or removes an attribute and values
 #' from, a manual DB cluster snapshot.
 #' 
@@ -8393,6 +8484,7 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 
 #' Modifies settings for a DB instance
 #'
+#' @description
 #' Modifies settings for a DB instance. You can change one or more database
 #' configuration parameters by specifying these parameters and the new
 #' values in the request. To learn what modifications you can make to your
@@ -8425,9 +8517,9 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' instance.
 #' 
 #' For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be
-#' at least 10% greater than the current value. Values that are not at
-#' least 10% greater than the existing value are rounded up so that they
-#' are 10% greater than the current value.
+#' at least 10\% greater than the current value. Values that are not at
+#' least 10\% greater than the existing value are rounded up so that they
+#' are 10\% greater than the current value.
 #' 
 #' For the valid values for allocated storage for each engine, see
 #' `CreateDBInstance`.
@@ -8666,9 +8758,9 @@ rds_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifier
 #' creating a DB snapshot of the instance.
 #' 
 #' Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL, the value
-#' supplied must be at least 10% greater than the current value. Values
-#' that are not at least 10% greater than the existing value are rounded up
-#' so that they are 10% greater than the current value.
+#' supplied must be at least 10\% greater than the current value. Values
+#' that are not at least 10\% greater than the existing value are rounded up
+#' so that they are 10\% greater than the current value.
 #' 
 #' Default: Uses existing setting
 #' @param OptionGroupName Indicates that the DB instance should be associated with the specified
@@ -9021,6 +9113,7 @@ rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL
 
 #' Modifies the parameters of a DB parameter group
 #'
+#' @description
 #' Modifies the parameters of a DB parameter group. To modify more than one
 #' parameter, submit a list of the following: `ParameterName`,
 #' `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be
@@ -9038,10 +9131,9 @@ rds_modify_db_instance <- function(DBInstanceIdentifier, AllocatedStorage = NULL
 #' parameters that are critical when creating the default database for a DB
 #' instance, such as the character set for the default database defined by
 #' the `character_set_database` parameter. You can use the *Parameter
-#' Groups* option of the [Amazon RDS
-#' console](https://console.aws.amazon.com/rds/) or the
-#' *DescribeDBParameters* command to verify that your DB parameter group
-#' has been created or modified.
+#' Groups* option of the Amazon RDS console or the *DescribeDBParameters*
+#' command to verify that your DB parameter group has been created or
+#' modified.
 #'
 #' @usage
 #' rds_modify_db_parameter_group(DBParameterGroupName, Parameters)
@@ -9108,6 +9200,7 @@ rds_modify_db_parameter_group <- function(DBParameterGroupName, Parameters) {
 
 #' Changes the settings for an existing DB proxy
 #'
+#' @description
 #' Changes the settings for an existing DB proxy.
 #'
 #' @usage
@@ -9183,6 +9276,7 @@ rds_modify_db_proxy <- function(DBProxyName, NewDBProxyName = NULL, Auth = NULL,
 
 #' Modifies the properties of a DBProxyTargetGroup
 #'
+#' @description
 #' Modifies the properties of a `DBProxyTargetGroup`.
 #'
 #' @usage
@@ -9237,6 +9331,7 @@ rds_modify_db_proxy_target_group <- function(TargetGroupName, DBProxyName, Conne
 
 #' Updates a manual DB snapshot with a new engine version
 #'
+#' @description
 #' Updates a manual DB snapshot with a new engine version. The snapshot can
 #' be encrypted or unencrypted, but not shared or public.
 #' 
@@ -9310,6 +9405,7 @@ rds_modify_db_snapshot <- function(DBSnapshotIdentifier, EngineVersion = NULL, O
 #' Adds an attribute and values to, or removes an attribute and values
 #' from, a manual DB snapshot
 #'
+#' @description
 #' Adds an attribute and values to, or removes an attribute and values
 #' from, a manual DB snapshot.
 #' 
@@ -9398,6 +9494,7 @@ rds_modify_db_snapshot_attribute <- function(DBSnapshotIdentifier, AttributeName
 
 #' Modifies an existing DB subnet group
 #'
+#' @description
 #' Modifies an existing DB subnet group. DB subnet groups must contain at
 #' least one subnet in at least two AZs in the AWS Region.
 #'
@@ -9448,6 +9545,7 @@ rds_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescripti
 
 #' Modifies an existing RDS event notification subscription
 #'
+#' @description
 #' Modifies an existing RDS event notification subscription. You can't
 #' modify the source identifiers using this call. To change source
 #' identifiers for a subscription, use the
@@ -9518,6 +9616,7 @@ rds_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, 
 
 #' Modify a setting for an Amazon Aurora global cluster
 #'
+#' @description
 #' Modify a setting for an Amazon Aurora global cluster. You can change one
 #' or more database configuration parameters by specifying these parameters
 #' and the new values in the request. For more information on Amazon
@@ -9585,6 +9684,7 @@ rds_modify_global_cluster <- function(GlobalClusterIdentifier = NULL, NewGlobalC
 
 #' Modifies an existing option group
 #'
+#' @description
 #' Modifies an existing option group.
 #'
 #' @usage
@@ -9663,6 +9763,7 @@ rds_modify_option_group <- function(OptionGroupName, OptionsToInclude = NULL, Op
 
 #' Promotes a read replica DB instance to a standalone DB instance
 #'
+#' @description
 #' Promotes a read replica DB instance to a standalone DB instance.
 #' 
 #' -   Backup duration is a function of the amount of changes to the
@@ -9749,6 +9850,7 @@ rds_promote_read_replica <- function(DBInstanceIdentifier, BackupRetentionPeriod
 
 #' Promotes a read replica DB cluster to a standalone DB cluster
 #'
+#' @description
 #' Promotes a read replica DB cluster to a standalone DB cluster.
 #' 
 #' This action only applies to Aurora DB clusters.
@@ -9794,6 +9896,7 @@ rds_promote_read_replica_db_cluster <- function(DBClusterIdentifier) {
 
 #' Purchases a reserved DB instance offering
 #'
+#' @description
 #' Purchases a reserved DB instance offering.
 #'
 #' @usage
@@ -9850,6 +9953,7 @@ rds_purchase_reserved_db_instances_offering <- function(ReservedDBInstancesOffer
 #' You might need to reboot your DB instance, usually for maintenance
 #' reasons
 #'
+#' @description
 #' You might need to reboot your DB instance, usually for maintenance
 #' reasons. For example, if you make certain modifications, or if you
 #' change the DB parameter group associated with the DB instance, you must
@@ -9909,6 +10013,7 @@ rds_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL) {
 #' Associate one or more DBProxyTarget data structures with a
 #' DBProxyTargetGroup
 #'
+#' @description
 #' Associate one or more `DBProxyTarget` data structures with a
 #' `DBProxyTargetGroup`.
 #'
@@ -9959,6 +10064,7 @@ rds_register_db_proxy_targets <- function(DBProxyName, TargetGroupName = NULL, D
 #' Detaches an Aurora secondary cluster from an Aurora global database
 #' cluster
 #'
+#' @description
 #' Detaches an Aurora secondary cluster from an Aurora global database
 #' cluster. The cluster becomes a standalone cluster with read-write
 #' capability instead of being read-only and receiving data from a primary
@@ -10006,6 +10112,7 @@ rds_remove_from_global_cluster <- function(GlobalClusterIdentifier = NULL, DbClu
 #' Disassociates an AWS Identity and Access Management (IAM) role from an
 #' Amazon Aurora DB cluster
 #'
+#' @description
 #' Disassociates an AWS Identity and Access Management (IAM) role from an
 #' Amazon Aurora DB cluster. For more information, see [Authorizing Amazon
 #' Aurora MySQL to Access Other AWS Services on Your
@@ -10058,6 +10165,7 @@ rds_remove_role_from_db_cluster <- function(DBClusterIdentifier, RoleArn, Featur
 #' Disassociates an AWS Identity and Access Management (IAM) role from a DB
 #' instance
 #'
+#' @description
 #' Disassociates an AWS Identity and Access Management (IAM) role from a DB
 #' instance.
 #'
@@ -10104,6 +10212,7 @@ rds_remove_role_from_db_instance <- function(DBInstanceIdentifier, RoleArn, Feat
 #' Removes a source identifier from an existing RDS event notification
 #' subscription
 #'
+#' @description
 #' Removes a source identifier from an existing RDS event notification
 #' subscription.
 #'
@@ -10147,6 +10256,7 @@ rds_remove_source_identifier_from_subscription <- function(SubscriptionName, Sou
 
 #' Removes metadata tags from an Amazon RDS resource
 #'
+#' @description
 #' Removes metadata tags from an Amazon RDS resource.
 #' 
 #' For an overview on tagging an Amazon RDS resource, see [Tagging Amazon
@@ -10197,6 +10307,7 @@ rds_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' Modifies the parameters of a DB cluster parameter group to the default
 #' value
 #'
+#' @description
 #' Modifies the parameters of a DB cluster parameter group to the default
 #' value. To reset specific parameters submit a list of the following:
 #' `ParameterName` and `ApplyMethod`. To reset the entire DB cluster
@@ -10276,6 +10387,7 @@ rds_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, Re
 #' Modifies the parameters of a DB parameter group to the engine/system
 #' default value
 #'
+#' @description
 #' Modifies the parameters of a DB parameter group to the engine/system
 #' default value. To reset specific parameters, provide a list of the
 #' following: `ParameterName` and `ApplyMethod`. To reset the entire DB
@@ -10370,6 +10482,7 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon
 #' S3 bucket
 #'
+#' @description
 #' Creates an Amazon Aurora DB cluster from MySQL data stored in an Amazon
 #' S3 bucket. Amazon RDS must be authorized to access the Amazon S3 bucket
 #' and the data must be created using the Percona XtraBackup utility as
@@ -10669,6 +10782,7 @@ rds_restore_db_cluster_from_s3 <- function(AvailabilityZones = NULL, BackupReten
 
 #' Creates a new DB cluster from a DB snapshot or DB cluster snapshot
 #'
+#' @description
 #' Creates a new DB cluster from a DB snapshot or DB cluster snapshot. This
 #' action only applies to Aurora DB clusters.
 #' 
@@ -10916,6 +11030,7 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 
 #' Restores a DB cluster to an arbitrary point in time
 #'
+#' @description
 #' Restores a DB cluster to an arbitrary point in time. Users can restore
 #' to any point in time before `LatestRestorableTime` for up to
 #' `BackupRetentionPeriod` days. The target DB cluster is created from the
@@ -11147,6 +11262,7 @@ rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Restore
 
 #' Creates a new DB instance from a DB snapshot
 #'
+#' @description
 #' Creates a new DB instance from a DB snapshot. The target database is
 #' created from the source database restore point with most of the source's
 #' original configuration, including the default security group and DB
@@ -11463,6 +11579,7 @@ rds_restore_db_instance_from_db_snapshot <- function(DBInstanceIdentifier, DBSna
 #' Amazon Relational Database Service (Amazon RDS) supports importing MySQL
 #' databases by using backup files
 #'
+#' @description
 #' Amazon Relational Database Service (Amazon RDS) supports importing MySQL
 #' databases by using backup files. You can create a backup of your
 #' on-premises database, store it on Amazon Simple Storage Service (Amazon
@@ -11816,6 +11933,7 @@ rds_restore_db_instance_from_s3 <- function(DBName = NULL, DBInstanceIdentifier,
 
 #' Restores a DB instance to an arbitrary point in time
 #'
+#' @description
 #' Restores a DB instance to an arbitrary point in time. You can restore to
 #' any point in time before the time identified by the LatestRestorableTime
 #' property. You can restore to a point up to the number of days specified
@@ -12145,6 +12263,7 @@ rds_restore_db_instance_to_point_in_time <- function(SourceDBInstanceIdentifier 
 #' Revokes ingress from a DBSecurityGroup for previously authorized IP
 #' ranges or EC2 or VPC Security Groups
 #'
+#' @description
 #' Revokes ingress from a DBSecurityGroup for previously authorized IP
 #' ranges or EC2 or VPC Security Groups. Required parameters for this API
 #' are one of CIDRIP, EC2SecurityGroupId for VPC, or
@@ -12206,6 +12325,7 @@ rds_revoke_db_security_group_ingress <- function(DBSecurityGroupName, CIDRIP = N
 
 #' Starts a database activity stream to monitor activity on the database
 #'
+#' @description
 #' Starts a database activity stream to monitor activity on the database.
 #' For more information, see [Database Activity
 #' Streams](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/DBActivityStreams.html)
@@ -12259,6 +12379,7 @@ rds_start_activity_stream <- function(ResourceArn, Mode, KmsKeyId, ApplyImmediat
 #' console, the stop-db-cluster AWS CLI command, or the StopDBCluster
 #' action
 #'
+#' @description
 #' Starts an Amazon Aurora DB cluster that was stopped using the AWS
 #' console, the stop-db-cluster AWS CLI command, or the StopDBCluster
 #' action.
@@ -12305,6 +12426,7 @@ rds_start_db_cluster <- function(DBClusterIdentifier) {
 #' Starts an Amazon RDS DB instance that was stopped using the AWS console,
 #' the stop-db-instance AWS CLI command, or the StopDBInstance action
 #'
+#' @description
 #' Starts an Amazon RDS DB instance that was stopped using the AWS console,
 #' the stop-db-instance AWS CLI command, or the StopDBInstance action.
 #' 
@@ -12350,6 +12472,7 @@ rds_start_db_instance <- function(DBInstanceIdentifier) {
 
 #' Enables replication of automated backups to a different AWS Region
 #'
+#' @description
 #' Enables replication of automated backups to a different AWS Region.
 #' 
 #' For more information, see [Replicating Automated Backups to Another AWS
@@ -12407,6 +12530,7 @@ rds_start_db_instance_automated_backups_replication <- function(SourceDBInstance
 
 #' Starts an export of a snapshot to Amazon S3
 #'
+#' @description
 #' Starts an export of a snapshot to Amazon S3. The provided IAM role must
 #' have access to the S3 bucket.
 #'
@@ -12503,6 +12627,7 @@ rds_start_export_task <- function(ExportTaskIdentifier, SourceArn, S3BucketName,
 #' the start-activity-stream AWS CLI command, or the StartActivityStream
 #' action
 #'
+#' @description
 #' Stops a database activity stream that was started using the AWS console,
 #' the `start-activity-stream` AWS CLI command, or the
 #' `StartActivityStream` action.
@@ -12550,6 +12675,7 @@ rds_stop_activity_stream <- function(ResourceArn, ApplyImmediately = NULL) {
 
 #' Stops an Amazon Aurora DB cluster
 #'
+#' @description
 #' Stops an Amazon Aurora DB cluster. When you stop a DB cluster, Aurora
 #' retains the DB cluster's metadata, including its endpoints and DB
 #' parameter groups. Aurora also retains the transaction logs so you can do
@@ -12596,6 +12722,7 @@ rds_stop_db_cluster <- function(DBClusterIdentifier) {
 
 #' Stops an Amazon RDS DB instance
 #'
+#' @description
 #' Stops an Amazon RDS DB instance. When you stop a DB instance, Amazon RDS
 #' retains the DB instance's metadata, including its endpoint, DB parameter
 #' group, and option group membership. Amazon RDS also retains the
@@ -12645,6 +12772,7 @@ rds_stop_db_instance <- function(DBInstanceIdentifier, DBSnapshotIdentifier = NU
 
 #' Stops automated backup replication for a DB instance
 #'
+#' @description
 #' Stops automated backup replication for a DB instance.
 #' 
 #' For more information, see [Replicating Automated Backups to Another AWS

@@ -5,6 +5,7 @@ NULL
 
 #' Batch operation to grant permissions to the principal
 #'
+#' @description
 #' Batch operation to grant permissions to the principal.
 #'
 #' @usage
@@ -90,6 +91,7 @@ lakeformation_batch_grant_permissions <- function(CatalogId = NULL, Entries) {
 
 #' Batch operation to revoke permissions from the principal
 #'
+#' @description
 #' Batch operation to revoke permissions from the principal.
 #'
 #' @usage
@@ -175,6 +177,7 @@ lakeformation_batch_revoke_permissions <- function(CatalogId = NULL, Entries) {
 
 #' Deregisters the resource as managed by the Data Catalog
 #'
+#' @description
 #' Deregisters the resource as managed by the Data Catalog.
 #' 
 #' When you deregister a path, Lake Formation removes the path from the
@@ -216,6 +219,7 @@ lakeformation_deregister_resource <- function(ResourceArn) {
 #' Retrieves the current data access role for the given resource registered
 #' in AWS Lake Formation
 #'
+#' @description
 #' Retrieves the current data access role for the given resource registered
 #' in AWS Lake Formation.
 #'
@@ -254,6 +258,7 @@ lakeformation_describe_resource <- function(ResourceArn) {
 #' Retrieves the list of the data lake administrators of a Lake
 #' Formation-managed data lake
 #'
+#' @description
 #' Retrieves the list of the data lake administrators of a Lake
 #' Formation-managed data lake.
 #'
@@ -295,6 +300,7 @@ lakeformation_get_data_lake_settings <- function(CatalogId = NULL) {
 #' Returns the Lake Formation permissions for a specified table or database
 #' resource located at a path in Amazon S3
 #'
+#' @description
 #' Returns the Lake Formation permissions for a specified table or database
 #' resource located at a path in Amazon S3.
 #' `GetEffectivePermissionsForPath` will not return databases and tables if
@@ -347,6 +353,7 @@ lakeformation_get_effective_permissions_for_path <- function(CatalogId = NULL, R
 #' Grants permissions to the principal to access metadata in the Data
 #' Catalog and data organized in underlying data storage such as Amazon S3
 #'
+#' @description
 #' Grants permissions to the principal to access metadata in the Data
 #' Catalog and data organized in underlying data storage such as Amazon S3.
 #' 
@@ -448,6 +455,7 @@ lakeformation_grant_permissions <- function(CatalogId = NULL, Principal, Resourc
 #' Returns a list of the principal permissions on the resource, filtered by
 #' the permissions of the caller
 #'
+#' @description
 #' Returns a list of the principal permissions on the resource, filtered by
 #' the permissions of the caller. For example, if you are granted an ALTER
 #' permission, you are able to see only the principal permissions for
@@ -543,6 +551,7 @@ lakeformation_list_permissions <- function(CatalogId = NULL, Principal = NULL, R
 
 #' Lists the resources registered to be managed by the Data Catalog
 #'
+#' @description
 #' Lists the resources registered to be managed by the Data Catalog.
 #'
 #' @usage
@@ -594,6 +603,7 @@ lakeformation_list_resources <- function(FilterConditionList = NULL, MaxResults 
 #' Sets the list of data lake administrators who have admin privileges on
 #' all resources managed by Lake Formation
 #'
+#' @description
 #' Sets the list of data lake administrators who have admin privileges on
 #' all resources managed by Lake Formation. For more information on admin
 #' privileges, see [Granting Lake Formation
@@ -672,6 +682,7 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 
 #' Registers the resource as managed by the Data Catalog
 #'
+#' @description
 #' Registers the resource as managed by the Data Catalog.
 #' 
 #' To add or update data, Lake Formation needs read/write access to the
@@ -740,6 +751,7 @@ lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = 
 #' Revokes permissions to the principal to access metadata in the Data
 #' Catalog and data organized in underlying data storage such as Amazon S3
 #'
+#' @description
 #' Revokes permissions to the principal to access metadata in the Data
 #' Catalog and data organized in underlying data storage such as Amazon S3.
 #'
@@ -828,6 +840,7 @@ lakeformation_revoke_permissions <- function(CatalogId = NULL, Principal, Resour
 #' Updates the data access role used for vending access to the given
 #' (registered) resource in AWS Lake Formation
 #'
+#' @description
 #' Updates the data access role used for vending access to the given
 #' (registered) resource in AWS Lake Formation.
 #'

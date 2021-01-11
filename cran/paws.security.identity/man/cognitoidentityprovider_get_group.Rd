@@ -13,8 +13,7 @@ cognitoidentityprovider_get_group(GroupName, UserPoolId)
 }
 \description{
 Gets a group.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

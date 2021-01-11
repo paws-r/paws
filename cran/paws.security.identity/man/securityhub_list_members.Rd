@@ -30,8 +30,7 @@ response.}
 \description{
 Lists details about all member accounts for the current Security Hub
 master account.
-}
-\details{
+
 The results include both member accounts that belong to an organization
 and member accounts that were invited manually.
 }

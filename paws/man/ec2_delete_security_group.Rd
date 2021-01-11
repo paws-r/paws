@@ -19,8 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Deletes a security group.
-}
-\details{
+
 If you attempt to delete a security group that is associated with an
 instance, or is referenced by another security group, the operation
 fails with \code{InvalidGroup.InUse} in EC2-Classic or \code{DependencyViolation}

@@ -54,8 +54,6 @@ with the \verb{<a>UpdateUser</a>} API operation. Use
 \verb{<a>RegisterUser</a>} API operation to add a new user with a custom
 permission profile attached. For more information, see the following
 sections in the \emph{Amazon QuickSight User Guide}:
-}
-\details{
 \itemize{
 \item \href{https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html}{Embedding the Amazon QuickSight Console}
 \item \href{https://docs.aws.amazon.com/quicksight/latest/user/customizing-permissions-to-the-quicksight-console.html}{Customizing Access to the Amazon QuickSight Console}

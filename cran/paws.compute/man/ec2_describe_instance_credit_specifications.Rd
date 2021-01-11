@@ -36,8 +36,7 @@ parameter and the instance IDs parameter in the same call.}
 Describes the credit option for CPU usage of the specified burstable
 performance instances. The credit options are \code{standard} and
 \code{unlimited}.
-}
-\details{
+
 If you do not specify an instance ID, Amazon EC2 returns burstable
 performance instances with the \code{unlimited} credit option, as well as
 instances that were previously configured as T2, T3, and T3a with the

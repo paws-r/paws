@@ -26,8 +26,7 @@ whether Amazon SES forwards bounce and complaint notifications as email.
 Feedback forwarding can only be disabled when Amazon Simple Notification
 Service (Amazon SNS) topics are specified for both bounces and
 complaints.
-}
-\details{
+
 Feedback forwarding does not apply to delivery notifications. Delivery
 notifications are only available through Amazon SNS.
 

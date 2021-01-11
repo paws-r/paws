@@ -70,8 +70,7 @@ and the maximum length for a tag's value is 256 characters.
 \description{
 Creates a cached volume on a specified cached volume gateway. This
 operation is only supported in the cached volume gateway type.
-}
-\details{
+
 Cache storage must be allocated to the gateway before you can create a
 cached volume. Use the AddCache operation to add cache storage to a
 gateway.

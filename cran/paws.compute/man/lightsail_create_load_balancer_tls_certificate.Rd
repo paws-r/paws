@@ -33,14 +33,13 @@ Use the \code{TagResource} action to tag a resource after it's created.}
 }
 \description{
 Creates a Lightsail load balancer TLS certificate.
-}
-\details{
+
 TLS is just an updated, more secure version of Secure Socket Layer
 (SSL).
 
 The \code{CreateLoadBalancerTlsCertificate} operation supports tag-based
 access control via resource tags applied to the resource identified by
-\verb{load balancer name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{load balancer name}. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$create_load_balancer_tls_certificate(

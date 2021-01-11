@@ -31,8 +31,7 @@ Applies only to Hyperledger Fabric.}
 }
 \description{
 Creates a node on the specified blockchain network.
-}
-\details{
+
 Applies to Hyperledger Fabric and Ethereum.
 }
 \section{Request syntax}{

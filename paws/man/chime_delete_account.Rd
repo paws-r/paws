@@ -13,8 +13,7 @@ chime_delete_account(AccountId)
 Deletes the specified Amazon Chime account. You must suspend all users
 before deleting a \code{Team} account. You can use the BatchSuspendUser
 action to do so.
-}
-\details{
+
 For \code{EnterpriseLWA} and \code{EnterpriseAD} accounts, you must release the
 claimed domains for your Amazon Chime account before deletion. As soon
 as you release the domain, all users under that account are suspended.

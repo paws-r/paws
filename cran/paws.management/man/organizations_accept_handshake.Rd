@@ -17,8 +17,7 @@ digits.}
 \description{
 Sends a response to the originator of a handshake agreeing to the action
 proposed by the handshake request.
-}
-\details{
+
 This operation can be called only by the following principals when they
 also have the relevant IAM permissions:
 \itemize{

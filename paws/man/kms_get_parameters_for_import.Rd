@@ -34,8 +34,7 @@ Returns the items you need to import key material into a symmetric,
 customer managed customer master key (CMK). For more information about
 importing key material into AWS KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}
 in the \emph{AWS Key Management Service Developer Guide}.
-}
-\details{
+
 This operation returns a public key and an import token. Use the public
 key to encrypt the symmetric key material. Store the import token to
 send with a subsequent ImportKeyMaterial request.

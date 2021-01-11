@@ -39,8 +39,7 @@ You must specify the ARN or the name, and you can specify both.}
 }
 \description{
 Associates a FirewallPolicy to a Firewall.
-}
-\details{
+
 A firewall policy defines how to monitor and manage your VPC network
 traffic, using a collection of inspection rule groups and other
 settings. Each firewall requires one firewall policy association, and

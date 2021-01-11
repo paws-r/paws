@@ -20,8 +20,7 @@ default is 10.}
 }
 \description{
 Gets information about all versions of a slot type.
-}
-\details{
+
 The \code{GetSlotTypeVersions} operation returns a \code{SlotTypeMetadata} object
 for each version of a slot type. For example, if a slot type has three
 numbered versions, the \code{GetSlotTypeVersions} operation returns four

@@ -6,6 +6,7 @@ NULL
 #' Associates the specified AWS Key Management Service (AWS KMS) customer
 #' master key (CMK) with the specified log group
 #'
+#' @description
 #' Associates the specified AWS Key Management Service (AWS KMS) customer
 #' master key (CMK) with the specified log group.
 #' 
@@ -68,6 +69,7 @@ cloudwatchlogs_associate_kms_key <- function(logGroupName, kmsKeyId) {
 
 #' Cancels the specified export task
 #'
+#' @description
 #' Cancels the specified export task.
 #' 
 #' The task must be in the `PENDING` or `RUNNING` state.
@@ -107,6 +109,7 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 #' Creates an export task, which allows you to efficiently export data from
 #' a log group to an Amazon S3 bucket
 #'
+#' @description
 #' Creates an export task, which allows you to efficiently export data from
 #' a log group to an Amazon S3 bucket. When you perform a
 #' `CreateExportTask` operation, you must use credentials that have
@@ -184,6 +187,7 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 
 #' Creates a log group with the specified name
 #'
+#' @description
 #' Creates a log group with the specified name. You can create up to 20,000
 #' log groups per account.
 #' 
@@ -260,6 +264,7 @@ cloudwatchlogs_create_log_group <- function(logGroupName, kmsKeyId = NULL, tags 
 
 #' Creates a log stream for the specified log group
 #'
+#' @description
 #' Creates a log stream for the specified log group. A log stream is a
 #' sequence of log events that originate from a single source, such as an
 #' application instance or a resource that is being monitored.
@@ -313,6 +318,7 @@ cloudwatchlogs_create_log_stream <- function(logGroupName, logStreamName) {
 #' Deletes the specified destination, and eventually disables all the
 #' subscription filters that publish to it
 #'
+#' @description
 #' Deletes the specified destination, and eventually disables all the
 #' subscription filters that publish to it. This operation does not delete
 #' the physical resource encapsulated by the destination.
@@ -352,6 +358,7 @@ cloudwatchlogs_delete_destination <- function(destinationName) {
 #' Deletes the specified log group and permanently deletes all the archived
 #' log events associated with the log group
 #'
+#' @description
 #' Deletes the specified log group and permanently deletes all the archived
 #' log events associated with the log group.
 #'
@@ -390,6 +397,7 @@ cloudwatchlogs_delete_log_group <- function(logGroupName) {
 #' Deletes the specified log stream and permanently deletes all the
 #' archived log events associated with the log stream
 #'
+#' @description
 #' Deletes the specified log stream and permanently deletes all the
 #' archived log events associated with the log stream.
 #'
@@ -429,6 +437,7 @@ cloudwatchlogs_delete_log_stream <- function(logGroupName, logStreamName) {
 
 #' Deletes the specified metric filter
 #'
+#' @description
 #' Deletes the specified metric filter.
 #'
 #' @usage
@@ -467,6 +476,7 @@ cloudwatchlogs_delete_metric_filter <- function(logGroupName, filterName) {
 
 #' Deletes a saved CloudWatch Logs Insights query definition
 #'
+#' @description
 #' Deletes a saved CloudWatch Logs Insights query definition. A query
 #' definition contains details about a saved CloudWatch Logs Insights
 #' query.
@@ -512,6 +522,7 @@ cloudwatchlogs_delete_query_definition <- function(queryDefinitionId) {
 
 #' Deletes a resource policy from this account
 #'
+#' @description
 #' Deletes a resource policy from this account. This revokes the access of
 #' the identities in that policy to put log events to this account.
 #'
@@ -549,6 +560,7 @@ cloudwatchlogs_delete_resource_policy <- function(policyName = NULL) {
 
 #' Deletes the specified retention policy
 #'
+#' @description
 #' Deletes the specified retention policy.
 #' 
 #' Log events do not expire if they belong to log groups without a
@@ -588,6 +600,7 @@ cloudwatchlogs_delete_retention_policy <- function(logGroupName) {
 
 #' Deletes the specified subscription filter
 #'
+#' @description
 #' Deletes the specified subscription filter.
 #'
 #' @usage
@@ -626,6 +639,7 @@ cloudwatchlogs_delete_subscription_filter <- function(logGroupName, filterName) 
 
 #' Lists all your destinations
 #'
+#' @description
 #' Lists all your destinations. The results are ASCII-sorted by destination
 #' name.
 #'
@@ -671,6 +685,7 @@ cloudwatchlogs_describe_destinations <- function(DestinationNamePrefix = NULL, n
 
 #' Lists the specified export tasks
 #'
+#' @description
 #' Lists the specified export tasks. You can list all your export tasks or
 #' filter the results based on task ID or task status.
 #'
@@ -719,6 +734,7 @@ cloudwatchlogs_describe_export_tasks <- function(taskId = NULL, statusCode = NUL
 
 #' Lists the specified log groups
 #'
+#' @description
 #' Lists the specified log groups. You can list all your log groups or
 #' filter the results by prefix. The results are ASCII-sorted by log group
 #' name.
@@ -763,6 +779,7 @@ cloudwatchlogs_describe_log_groups <- function(logGroupNamePrefix = NULL, nextTo
 
 #' Lists the log streams for the specified log group
 #'
+#' @description
 #' Lists the log streams for the specified log group. You can list all the
 #' log streams or filter the results by prefix. You can also control how
 #' the results are ordered.
@@ -833,6 +850,7 @@ cloudwatchlogs_describe_log_streams <- function(logGroupName, logStreamNamePrefi
 
 #' Lists the specified metric filters
 #'
+#' @description
 #' Lists the specified metric filters. You can list all of the metric
 #' filters or filter the results by log name, prefix, metric name, or
 #' metric namespace. The results are ASCII-sorted by filter name.
@@ -890,6 +908,7 @@ cloudwatchlogs_describe_metric_filters <- function(logGroupName = NULL, filterNa
 #' Returns a list of CloudWatch Logs Insights queries that are scheduled,
 #' executing, or have been executed recently in this account
 #'
+#' @description
 #' Returns a list of CloudWatch Logs Insights queries that are scheduled,
 #' executing, or have been executed recently in this account. You can
 #' request all queries or limit it to queries of a specific log group or
@@ -939,6 +958,7 @@ cloudwatchlogs_describe_queries <- function(logGroupName = NULL, status = NULL, 
 #' This operation returns a paginated list of your saved CloudWatch Logs
 #' Insights query definitions
 #'
+#' @description
 #' This operation returns a paginated list of your saved CloudWatch Logs
 #' Insights query definitions.
 #' 
@@ -986,6 +1006,7 @@ cloudwatchlogs_describe_query_definitions <- function(queryDefinitionNamePrefix 
 
 #' Lists the resource policies in this account
 #'
+#' @description
 #' Lists the resource policies in this account.
 #'
 #' @usage
@@ -1025,6 +1046,7 @@ cloudwatchlogs_describe_resource_policies <- function(nextToken = NULL, limit = 
 
 #' Lists the subscription filters for the specified log group
 #'
+#' @description
 #' Lists the subscription filters for the specified log group. You can list
 #' all the subscription filters or filter the results by prefix. The
 #' results are ASCII-sorted by filter name.
@@ -1074,6 +1096,7 @@ cloudwatchlogs_describe_subscription_filters <- function(logGroupName, filterNam
 #' Disassociates the associated AWS Key Management Service (AWS KMS)
 #' customer master key (CMK) from the specified log group
 #'
+#' @description
 #' Disassociates the associated AWS Key Management Service (AWS KMS)
 #' customer master key (CMK) from the specified log group.
 #' 
@@ -1119,6 +1142,7 @@ cloudwatchlogs_disassociate_kms_key <- function(logGroupName) {
 
 #' Lists log events from the specified log group
 #'
+#' @description
 #' Lists log events from the specified log group. You can list all the log
 #' events or filter the results using a filter pattern, a time range, and
 #' the name of the log stream.
@@ -1217,6 +1241,7 @@ cloudwatchlogs_filter_log_events <- function(logGroupName, logStreamNames = NULL
 
 #' Lists log events from the specified log stream
 #'
+#' @description
 #' Lists log events from the specified log stream. You can list all of the
 #' log events or filter using a time range.
 #' 
@@ -1290,6 +1315,7 @@ cloudwatchlogs_get_log_events <- function(logGroupName, logStreamName, startTime
 #' specified log group, along with the percentage of log events that
 #' contain each field
 #'
+#' @description
 #' Returns a list of the fields that are included in log events in the
 #' specified log group, along with the percentage of log events that
 #' contain each field. The search is limited to a time period that you
@@ -1345,6 +1371,7 @@ cloudwatchlogs_get_log_group_fields <- function(logGroupName, time = NULL) {
 
 #' Retrieves all of the fields and values of a single log event
 #'
+#' @description
 #' Retrieves all of the fields and values of a single log event. All fields
 #' are retrieved, even if the original query that produced the
 #' `logRecordPointer` retrieved only a subset of fields. Fields are
@@ -1389,6 +1416,7 @@ cloudwatchlogs_get_log_record <- function(logRecordPointer) {
 
 #' Returns the results from the specified query
 #'
+#' @description
 #' Returns the results from the specified query.
 #' 
 #' Only the fields requested in the query are returned, along with a `@@ptr`
@@ -1439,6 +1467,7 @@ cloudwatchlogs_get_query_results <- function(queryId) {
 
 #' Lists the tags for the specified log group
 #'
+#' @description
 #' Lists the tags for the specified log group.
 #'
 #' @usage
@@ -1475,6 +1504,7 @@ cloudwatchlogs_list_tags_log_group <- function(logGroupName) {
 
 #' Creates or updates a destination
 #'
+#' @description
 #' Creates or updates a destination. This operation is used only to create
 #' destinations for cross-account subscriptions.
 #' 
@@ -1536,6 +1566,7 @@ cloudwatchlogs_put_destination <- function(destinationName, targetArn, roleArn) 
 #' Creates or updates an access policy associated with an existing
 #' destination
 #'
+#' @description
 #' Creates or updates an access policy associated with an existing
 #' destination. An access policy is an [IAM policy
 #' document](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)
@@ -1580,6 +1611,7 @@ cloudwatchlogs_put_destination_policy <- function(destinationName, accessPolicy)
 
 #' Uploads a batch of log events to the specified log stream
 #'
+#' @description
 #' Uploads a batch of log events to the specified log stream.
 #' 
 #' You must include the sequence token obtained from the response of the
@@ -1673,6 +1705,7 @@ cloudwatchlogs_put_log_events <- function(logGroupName, logStreamName, logEvents
 #' Creates or updates a metric filter and associates it with the specified
 #' log group
 #'
+#' @description
 #' Creates or updates a metric filter and associates it with the specified
 #' log group. Metric filters allow you to configure rules to extract metric
 #' data from log events ingested through
@@ -1729,6 +1762,7 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
 
 #' Creates or updates a query definition for CloudWatch Logs Insights
 #'
+#' @description
 #' Creates or updates a query definition for CloudWatch Logs Insights. For
 #' more information, see [Analyzing Log Data with CloudWatch Logs
 #' Insights](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html).
@@ -1805,6 +1839,7 @@ cloudwatchlogs_put_query_definition <- function(name, queryDefinitionId = NULL, 
 #' Creates or updates a resource policy allowing other AWS services to put
 #' log events to this account, such as Amazon Route 53
 #'
+#' @description
 #' Creates or updates a resource policy allowing other AWS services to put
 #' log events to this account, such as Amazon Route 53. An account can have
 #' up to 10 resource policies per AWS Region.
@@ -1854,6 +1889,7 @@ cloudwatchlogs_put_resource_policy <- function(policyName = NULL, policyDocument
 
 #' Sets the retention of the specified log group
 #'
+#' @description
 #' Sets the retention of the specified log group. A retention policy allows
 #' you to configure the number of days for which to retain log events in
 #' the specified log group.
@@ -1895,6 +1931,7 @@ cloudwatchlogs_put_retention_policy <- function(logGroupName, retentionInDays) {
 #' Creates or updates a subscription filter and associates it with the
 #' specified log group
 #'
+#' @description
 #' Creates or updates a subscription filter and associates it with the
 #' specified log group. Subscription filters allow you to subscribe to a
 #' real-time stream of log events ingested through
@@ -1994,6 +2031,7 @@ cloudwatchlogs_put_subscription_filter <- function(logGroupName, filterName, fil
 
 #' Schedules a query of a log group using CloudWatch Logs Insights
 #'
+#' @description
 #' Schedules a query of a log group using CloudWatch Logs Insights. You
 #' specify the log group and time range to query and the query string to
 #' use.
@@ -2067,6 +2105,7 @@ cloudwatchlogs_start_query <- function(logGroupName = NULL, logGroupNames = NULL
 
 #' Stops a CloudWatch Logs Insights query that is in progress
 #'
+#' @description
 #' Stops a CloudWatch Logs Insights query that is in progress. If the query
 #' has already ended, the operation returns an error indicating that the
 #' specified query is not running.
@@ -2106,6 +2145,7 @@ cloudwatchlogs_stop_query <- function(queryId) {
 
 #' Adds or updates the specified tags for the specified log group
 #'
+#' @description
 #' Adds or updates the specified tags for the specified log group.
 #' 
 #' To list the tags for a log group, use
@@ -2157,6 +2197,7 @@ cloudwatchlogs_tag_log_group <- function(logGroupName, tags) {
 #' Tests the filter pattern of a metric filter against a sample of log
 #' event messages
 #'
+#' @description
 #' Tests the filter pattern of a metric filter against a sample of log
 #' event messages. You can use this operation to validate the correctness
 #' of a metric filter pattern.
@@ -2199,6 +2240,7 @@ cloudwatchlogs_test_metric_filter <- function(filterPattern, logEventMessages) {
 
 #' Removes the specified tags from the specified log group
 #'
+#' @description
 #' Removes the specified tags from the specified log group.
 #' 
 #' To list the tags for a log group, use

@@ -73,8 +73,6 @@ length of 256 characters.}
 \description{
 Creates a service, which defines the configuration for the following
 entities:
-}
-\details{
 \itemize{
 \item For public and private DNS namespaces, one of the following
 combinations of DNS records in Amazon Route 53:

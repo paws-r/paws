@@ -6,6 +6,7 @@ NULL
 #' Use this action to associate one or more Domain Name Server (DNS)
 #' aliases with an existing Amazon FSx for Windows File Server file system
 #'
+#' @description
 #' Use this action to associate one or more Domain Name Server (DNS)
 #' aliases with an existing Amazon FSx for Windows File Server file system.
 #' A file systen can have a maximum of 50 DNS aliases associated with it at
@@ -81,6 +82,7 @@ fsx_associate_file_system_aliases <- function(ClientRequestToken = NULL, FileSys
 #' Cancels an existing Amazon FSx for Lustre data repository task if that
 #' task is in either the PENDING or EXECUTING state
 #'
+#' @description
 #' Cancels an existing Amazon FSx for Lustre data repository task if that
 #' task is in either the `PENDING` or `EXECUTING` state. When you cancel a
 #' task, Amazon FSx does the following.
@@ -126,6 +128,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 
 #' Creates a backup of an existing Amazon FSx file system
 #'
+#' @description
 #' Creates a backup of an existing Amazon FSx file system. Creating regular
 #' backups for your file system is a best practice, enabling you to restore
 #' a file system from a backup if an issue arises with the original file
@@ -234,6 +237,7 @@ fsx_create_backup <- function(FileSystemId, ClientRequestToken = NULL, Tags = NU
 
 #' Creates an Amazon FSx for Lustre data repository task
 #'
+#' @description
 #' Creates an Amazon FSx for Lustre data repository task. You use data
 #' repository tasks to perform bulk operations between your Amazon FSx file
 #' system and its linked data repository. An example of a data repository
@@ -316,6 +320,7 @@ fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Re
 
 #' Creates a new, empty Amazon FSx file system
 #'
+#' @description
 #' Creates a new, empty Amazon FSx file system.
 #' 
 #' If a file system with the specified client request token exists and the
@@ -527,6 +532,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 
 #' Creates a new Amazon FSx file system from an existing Amazon FSx backup
 #'
+#' @description
 #' Creates a new Amazon FSx file system from an existing Amazon FSx backup.
 #' 
 #' If a file system with the specified client request token exists and the
@@ -709,6 +715,7 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 
 #' Deletes an Amazon FSx backup, deleting its contents
 #'
+#' @description
 #' Deletes an Amazon FSx backup, deleting its contents. After deletion, the
 #' backup no longer exists, and its data is gone.
 #' 
@@ -764,6 +771,7 @@ fsx_delete_backup <- function(BackupId, ClientRequestToken = NULL) {
 
 #' Deletes a file system, deleting its contents
 #'
+#' @description
 #' Deletes a file system, deleting its contents. After deletion, the file
 #' system no longer exists, and its data is gone. Any existing automatic
 #' backups will also be deleted.
@@ -855,6 +863,7 @@ fsx_delete_file_system <- function(FileSystemId, ClientRequestToken = NULL, Wind
 #' Returns the description of specific Amazon FSx backups, if a BackupIds
 #' value is provided for that backup
 #'
+#' @description
 #' Returns the description of specific Amazon FSx backups, if a `BackupIds`
 #' value is provided for that backup. Otherwise, it returns all backups
 #' owned by your AWS account in the AWS Region of the endpoint that you're
@@ -944,6 +953,7 @@ fsx_describe_backups <- function(BackupIds = NULL, Filters = NULL, MaxResults = 
 #' repository tasks, if one or more TaskIds values are provided in the
 #' request, or if filters are used in the request
 #'
+#' @description
 #' Returns the description of specific Amazon FSx for Lustre data
 #' repository tasks, if one or more `TaskIds` values are provided in the
 #' request, or if filters are used in the request. You can use filters to
@@ -1013,6 +1023,7 @@ fsx_describe_data_repository_tasks <- function(TaskIds = NULL, Filters = NULL, M
 #' Returns the DNS aliases that are associated with the specified Amazon
 #' FSx for Windows File Server file system
 #'
+#' @description
 #' Returns the DNS aliases that are associated with the specified Amazon
 #' FSx for Windows File Server file system. A history of all DNS aliases
 #' that have been associated with and disassociated from the file system is
@@ -1068,6 +1079,7 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #' Returns the description of specific Amazon FSx file systems, if a
 #' FileSystemIds value is provided for that file system
 #'
+#' @description
 #' Returns the description of specific Amazon FSx file systems, if a
 #' `FileSystemIds` value is provided for that file system. Otherwise, it
 #' returns descriptions of all file systems owned by your AWS account in
@@ -1150,6 +1162,7 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #' Service (DNS) aliases from an Amazon FSx for Windows File Server file
 #' system
 #'
+#' @description
 #' Use this action to disassociate, or remove, one or more Domain Name
 #' Service (DNS) aliases from an Amazon FSx for Windows File Server file
 #' system. If you attempt to disassociate a DNS alias that is not
@@ -1205,6 +1218,7 @@ fsx_disassociate_file_system_aliases <- function(ClientRequestToken = NULL, File
 #' Lists tags for an Amazon FSx file systems and backups in the case of
 #' Amazon FSx for Windows File Server
 #'
+#' @description
 #' Lists tags for an Amazon FSx file systems and backups in the case of
 #' Amazon FSx for Windows File Server.
 #' 
@@ -1280,6 +1294,7 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 
 #' Tags an Amazon FSx resource
 #'
+#' @description
 #' Tags an Amazon FSx resource.
 #'
 #' @usage
@@ -1339,6 +1354,7 @@ fsx_tag_resource <- function(ResourceARN, Tags) {
 
 #' This action removes a tag from an Amazon FSx resource
 #'
+#' @description
 #' This action removes a tag from an Amazon FSx resource.
 #'
 #' @usage
@@ -1392,6 +1408,7 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 #' Use this operation to update the configuration of an existing Amazon FSx
 #' file system
 #'
+#' @description
 #' Use this operation to update the configuration of an existing Amazon FSx
 #' file system. You can update multiple properties in a single request.
 #' 
@@ -1438,7 +1455,7 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 #' existing storage capacity increase request in progress.
 #' 
 #' For Windows file systems, the storage capacity target value must be at
-#' least 10 percent (%) greater than the current storage capacity value. In
+#' least 10 percent (\%) greater than the current storage capacity value. In
 #' order to increase storage capacity, the file system must have at least
 #' 16 MB/s of throughput capacity.
 #' 

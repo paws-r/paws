@@ -11,8 +11,7 @@ route53_delete_health_check(HealthCheckId)
 }
 \description{
 Deletes a health check.
-}
-\details{
+
 Amazon Route 53 does not prevent you from deleting a health check even
 if the health check is associated with one or more resource record sets.
 If you delete a health check and you don't update the associated

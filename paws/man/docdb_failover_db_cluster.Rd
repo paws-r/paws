@@ -23,8 +23,7 @@ replica in the cluster. For example, \code{mydbcluster-replica1}.}
 }
 \description{
 Forces a failover for a cluster.
-}
-\details{
+
 A failover for a cluster promotes one of the Amazon DocumentDB replicas
 (read-only instances) in the cluster to be the primary instance (the
 cluster writer).

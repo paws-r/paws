@@ -25,8 +25,7 @@ inclusive.}
 Returns the event types that meet the specified filter criteria. If no
 filter criteria are specified, all event types are returned, in no
 particular order.
-}
-\details{
+
 This API operation uses pagination. Specify the \code{nextToken} parameter in
 the next request to return more results.
 }

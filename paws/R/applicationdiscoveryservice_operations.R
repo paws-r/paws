@@ -5,6 +5,7 @@ NULL
 
 #' Associates one or more configuration items with an application
 #'
+#' @description
 #' Associates one or more configuration items with an application.
 #'
 #' @usage
@@ -47,6 +48,7 @@ applicationdiscoveryservice_associate_configuration_items_to_application <- func
 
 #' Deletes one or more import tasks, each identified by their import ID
 #'
+#' @description
 #' Deletes one or more import tasks, each identified by their import ID.
 #' Each import task has a number of records that can identify servers or
 #' applications.
@@ -95,6 +97,7 @@ applicationdiscoveryservice_batch_delete_import_data <- function(importTaskIds) 
 
 #' Creates an application with the given name and description
 #'
+#' @description
 #' Creates an application with the given name and description.
 #'
 #' @usage
@@ -133,6 +136,7 @@ applicationdiscoveryservice_create_application <- function(name, description = N
 
 #' Creates one or more tags for configuration items
 #'
+#' @description
 #' Creates one or more tags for configuration items. Tags are metadata that
 #' help you categorize IT assets. This API accepts a list of multiple
 #' configuration items.
@@ -185,6 +189,7 @@ applicationdiscoveryservice_create_tags <- function(configurationIds, tags) {
 #' Deletes a list of applications and their associations with configuration
 #' items
 #'
+#' @description
 #' Deletes a list of applications and their associations with configuration
 #' items.
 #'
@@ -224,6 +229,7 @@ applicationdiscoveryservice_delete_applications <- function(configurationIds) {
 
 #' Deletes the association between configuration items and one or more tags
 #'
+#' @description
 #' Deletes the association between configuration items and one or more
 #' tags. This API accepts a list of multiple configuration items.
 #'
@@ -274,6 +280,7 @@ applicationdiscoveryservice_delete_tags <- function(configurationIds, tags = NUL
 
 #' Lists agents or connectors as specified by ID or other filters
 #'
+#' @description
 #' Lists agents or connectors as specified by ID or other filters. All
 #' agents/connectors associated with your user account can be listed if you
 #' call `DescribeAgents` as is without passing any parameters.
@@ -339,6 +346,7 @@ applicationdiscoveryservice_describe_agents <- function(agentIds = NULL, filters
 
 #' Retrieves attributes for a list of configuration item IDs
 #'
+#' @description
 #' Retrieves attributes for a list of configuration item IDs.
 #' 
 #' All of the supplied IDs must be for the same asset type from one of the
@@ -398,6 +406,7 @@ applicationdiscoveryservice_describe_configurations <- function(configurationIds
 
 #' Lists exports as specified by ID
 #'
+#' @description
 #' Lists exports as specified by ID. All continuous exports associated with
 #' your user account can be listed if you call `DescribeContinuousExports`
 #' as is without passing any parameters.
@@ -444,6 +453,7 @@ applicationdiscoveryservice_describe_continuous_exports <- function(exportIds = 
 
 #' DescribeExportConfigurations is deprecated
 #'
+#' @description
 #' `DescribeExportConfigurations` is deprecated. Use
 #' [DescribeImportTasks](https://docs.aws.amazon.com/application-discovery/latest/APIReference/API_DescribeExportTasks.html),
 #' instead.
@@ -490,6 +500,7 @@ applicationdiscoveryservice_describe_export_configurations <- function(exportIds
 
 #' Retrieve status of one or more export tasks
 #'
+#' @description
 #' Retrieve status of one or more export tasks. You can retrieve the status
 #' of up to 100 export tasks.
 #'
@@ -556,6 +567,7 @@ applicationdiscoveryservice_describe_export_tasks <- function(exportIds = NULL, 
 #' information, times, IDs, the Amazon S3 Object URL for the import file,
 #' and more
 #'
+#' @description
 #' Returns an array of import tasks for your account, including status
 #' information, times, IDs, the Amazon S3 Object URL for the import file,
 #' and more.
@@ -611,6 +623,7 @@ applicationdiscoveryservice_describe_import_tasks <- function(filters = NULL, ma
 #' the key-value pairs, name and value, passed to the optional parameter
 #' filters
 #'
+#' @description
 #' Retrieves a list of configuration items that have tags as specified by
 #' the key-value pairs, name and value, passed to the optional parameter
 #' `filters`.
@@ -677,6 +690,7 @@ applicationdiscoveryservice_describe_tags <- function(filters = NULL, maxResults
 
 #' Disassociates one or more configuration items from an application
 #'
+#' @description
 #' Disassociates one or more configuration items from an application.
 #'
 #' @usage
@@ -719,6 +733,7 @@ applicationdiscoveryservice_disassociate_configuration_items_from_application <-
 
 #' Deprecated
 #'
+#' @description
 #' Deprecated. Use `StartExportTask` instead.
 #' 
 #' Exports all discovered configuration data to an Amazon S3 bucket or an
@@ -757,6 +772,7 @@ applicationdiscoveryservice_export_configurations <- function() {
 
 #' Retrieves a short summary of discovered assets
 #'
+#' @description
 #' Retrieves a short summary of discovered assets.
 #' 
 #' This API operation takes no request parameters and is called as is at
@@ -793,6 +809,7 @@ applicationdiscoveryservice_get_discovery_summary <- function() {
 #' Retrieves a list of configuration items as specified by the value passed
 #' to the required parameter configurationType
 #'
+#' @description
 #' Retrieves a list of configuration items as specified by the value passed
 #' to the required parameter `configurationType`. Optional filtering may be
 #' applied to refine search results.
@@ -870,6 +887,7 @@ applicationdiscoveryservice_list_configurations <- function(configurationType, f
 #' Retrieves a list of servers that are one network hop away from a
 #' specified server
 #'
+#' @description
 #' Retrieves a list of servers that are one network hop away from a
 #' specified server.
 #'
@@ -924,6 +942,7 @@ applicationdiscoveryservice_list_server_neighbors <- function(configurationId, p
 
 #' Start the continuous flow of agent's discovered data into Amazon Athena
 #'
+#' @description
 #' Start the continuous flow of agent's discovered data into Amazon Athena.
 #'
 #' @usage
@@ -956,6 +975,7 @@ applicationdiscoveryservice_start_continuous_export <- function() {
 
 #' Instructs the specified agents or connectors to start collecting data
 #'
+#' @description
 #' Instructs the specified agents or connectors to start collecting data.
 #'
 #' @usage
@@ -1001,6 +1021,7 @@ applicationdiscoveryservice_start_data_collection_by_agent_ids <- function(agent
 
 #' Begins the export of discovered data to an S3 bucket
 #'
+#' @description
 #' Begins the export of discovered data to an S3 bucket.
 #' 
 #' If you specify `agentIds` in a filter, the task exports up to 72 hours
@@ -1083,6 +1104,7 @@ applicationdiscoveryservice_start_export_task <- function(exportDataFormat = NUL
 #' to use the Application Discovery Service (ADS) tools such as the
 #' Discovery Connector or Discovery Agent
 #'
+#' @description
 #' Starts an import task, which allows you to import details of your
 #' on-premises environment directly into AWS Migration Hub without having
 #' to use the Application Discovery Service (ADS) tools such as the
@@ -1167,6 +1189,7 @@ applicationdiscoveryservice_start_import_task <- function(clientRequestToken = N
 
 #' Stop the continuous flow of agent's discovered data into Amazon Athena
 #'
+#' @description
 #' Stop the continuous flow of agent's discovered data into Amazon Athena.
 #'
 #' @usage
@@ -1203,6 +1226,7 @@ applicationdiscoveryservice_stop_continuous_export <- function(exportId) {
 
 #' Instructs the specified agents or connectors to stop collecting data
 #'
+#' @description
 #' Instructs the specified agents or connectors to stop collecting data.
 #'
 #' @usage
@@ -1241,6 +1265,7 @@ applicationdiscoveryservice_stop_data_collection_by_agent_ids <- function(agentI
 
 #' Updates metadata about an application
 #'
+#' @description
 #' Updates metadata about an application.
 #'
 #' @usage

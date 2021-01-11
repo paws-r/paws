@@ -53,8 +53,7 @@ permitted by all of the relevant policies. For more information, see
 For the complete description of the AWS policy syntax and grammar, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html}{IAM JSON Policy Reference}
 in the \emph{IAM User Guide}.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

@@ -44,8 +44,7 @@ returned for each repeated request.}
 }
 \description{
 Creates a product.
-}
-\details{
+
 A delegated admin is authorized to invoke this command.
 
 The user or role that performs this operation must have the

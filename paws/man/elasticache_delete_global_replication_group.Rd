@@ -17,8 +17,6 @@ group.}
 }
 \description{
 Deleting a Global Datastore is a two-step process:
-}
-\details{
 \itemize{
 \item First, you must DisassociateGlobalReplicationGroup to remove the
 secondary clusters in the Global Datastore.

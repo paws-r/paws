@@ -15,8 +15,7 @@ chime_get_user(AccountId, UserId)
 \description{
 Retrieves details for the specified user ID, such as primary email
 address, license type, and personal meeting PIN.
-}
-\details{
+
 To retrieve user details with an email address instead of a user ID, use
 the ListUsers action, and then filter by email address.
 }

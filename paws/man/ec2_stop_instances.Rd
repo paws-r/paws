@@ -30,8 +30,7 @@ Default: \code{false}}
 }
 \description{
 Stops an Amazon EBS-backed instance.
-}
-\details{
+
 You can use the Stop action to hibernate an instance if the instance is
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#enabling-hibernation}{enabled for hibernation}
 and it meets the \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites}{hibernation prerequisites}.

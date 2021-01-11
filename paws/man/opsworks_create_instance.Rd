@@ -126,8 +126,7 @@ information about dedicated instances, see \href{https://docs.aws.amazon.com/vpc
 \description{
 Creates an instance in a specified stack. For more information, see
 \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-add.html}{Adding an Instance to a Layer}.
-}
-\details{
+
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user permissions,

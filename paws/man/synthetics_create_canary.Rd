@@ -72,8 +72,7 @@ APIs from the outside-in. Canaries help you check the availability and
 latency of your web services and troubleshoot anomalies by investigating
 load time data, screenshots of the UI, logs, and metrics. You can set up
 a canary to run continuously or just once.
-}
-\details{
+
 Do not use \code{CreateCanary} to modify an existing canary. Use
 \href{https://docs.aws.amazon.com/AmazonSynthetics/latest/APIReference/API_UpdateCanary.html}{UpdateCanary}
 instead.

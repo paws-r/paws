@@ -5,6 +5,7 @@ NULL
 
 #' Creates a new AMP workspace
 #'
+#' @description
 #' Creates a new AMP workspace.
 #'
 #' @usage
@@ -45,6 +46,7 @@ prometheusservice_create_workspace <- function(alias = NULL, clientToken = NULL)
 
 #' Deletes an AMP workspace
 #'
+#' @description
 #' Deletes an AMP workspace.
 #'
 #' @usage
@@ -84,6 +86,7 @@ prometheusservice_delete_workspace <- function(clientToken = NULL, workspaceId) 
 
 #' Describes an existing AMP workspace
 #'
+#' @description
 #' Describes an existing AMP workspace.
 #'
 #' @usage
@@ -120,6 +123,7 @@ prometheusservice_describe_workspace <- function(workspaceId) {
 
 #' Lists all AMP workspaces, including workspaces being created or deleted
 #'
+#' @description
 #' Lists all AMP workspaces, including workspaces being created or deleted.
 #'
 #' @usage
@@ -163,6 +167,7 @@ prometheusservice_list_workspaces <- function(alias = NULL, maxResults = NULL, n
 
 #' Updates an AMP workspace alias
 #'
+#' @description
 #' Updates an AMP workspace alias.
 #'
 #' @usage

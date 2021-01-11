@@ -16,8 +16,7 @@ information about.}
 Get information about an existing configuration set, including the
 dedicated IP pool that it's associated with, whether or not it's enabled
 for sending email, and more.
-}
-\details{
+
 In Amazon Pinpoint, \emph{configuration sets} are groups of rules that you
 can apply to the emails you send. You apply a configuration set to an
 email by including a reference to the configuration set in the headers

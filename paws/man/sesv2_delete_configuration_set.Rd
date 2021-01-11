@@ -11,8 +11,7 @@ sesv2_delete_configuration_set(ConfigurationSetName)
 }
 \description{
 Delete an existing configuration set.
-}
-\details{
+
 \emph{Configuration sets} are groups of rules that you can apply to the
 emails you send. You apply a configuration set to an email by including
 a reference to the configuration set in the headers of the email. When

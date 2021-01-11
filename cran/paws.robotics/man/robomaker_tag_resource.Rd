@@ -15,8 +15,7 @@ resource.}
 }
 \description{
 Adds or edits tags for a AWS RoboMaker resource.
-}
-\details{
+
 Each tag consists of a tag key and a tag value. Tag keys and tag values
 are both required, but tag values can be empty strings.
 

@@ -24,8 +24,7 @@ DescribeApplication operation to get the reference ID.}
 \description{
 Deletes a reference data source configuration from the specified
 SQL-based Kinesis Data Analytics application's configuration.
-}
-\details{
+
 If the application is running, Kinesis Data Analytics immediately
 removes the in-application table that you created using the
 AddApplicationReferenceDataSource operation.

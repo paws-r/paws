@@ -32,8 +32,7 @@ specify only a stack ID, you can use the \code{MaxResults} and \code{NextToken}
 parameters to paginate the response. However, AWS OpsWorks Stacks
 currently supports only one cluster per layer, so the result set has a
 maximum of one element.
-}
-\details{
+
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack or an attached
 policy that explicitly grants permission. For more information about

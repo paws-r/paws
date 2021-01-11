@@ -18,8 +18,7 @@ API operation.}
 }
 \description{
 Attaches one or more target groups to the specified Auto Scaling group.
-}
-\details{
+
 This operation is used with the following load balancer types:
 \itemize{
 \item Application Load Balancer - Operates at the application layer

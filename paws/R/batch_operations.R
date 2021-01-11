@@ -5,6 +5,7 @@ NULL
 
 #' Cancels a job in an AWS Batch job queue
 #'
+#' @description
 #' Cancels a job in an AWS Batch job queue. Jobs that are in the
 #' `SUBMITTED`, `PENDING`, or `RUNNABLE` state are canceled. Jobs that have
 #' progressed to `STARTING` or `RUNNING` are not canceled (but the API
@@ -58,6 +59,7 @@ batch_cancel_job <- function(jobId, reason) {
 
 #' Creates an AWS Batch compute environment
 #'
+#' @description
 #' Creates an AWS Batch compute environment. You can create `MANAGED` or
 #' `UNMANAGED` compute environments. `MANAGED` compute environments can use
 #' Amazon EC2 or AWS Fargate resources. `UNMANAGED` compute environments
@@ -312,6 +314,7 @@ batch_create_compute_environment <- function(computeEnvironmentName, type, state
 
 #' Creates an AWS Batch job queue
 #'
+#' @description
 #' Creates an AWS Batch job queue. When you create a job queue, you
 #' associate one or more compute environments to the queue and assign an
 #' order of preference for the compute environments.
@@ -433,6 +436,7 @@ batch_create_job_queue <- function(jobQueueName, state = NULL, priority, compute
 
 #' Deletes an AWS Batch compute environment
 #'
+#' @description
 #' Deletes an AWS Batch compute environment.
 #' 
 #' Before you can delete a compute environment, you must set its state to
@@ -486,6 +490,7 @@ batch_delete_compute_environment <- function(computeEnvironment) {
 
 #' Deletes the specified job queue
 #'
+#' @description
 #' Deletes the specified job queue. You must first disable submissions for
 #' a queue with the UpdateJobQueue operation. All jobs in the queue are
 #' eventually terminated when you delete a job queue. The jobs are
@@ -537,6 +542,7 @@ batch_delete_job_queue <- function(jobQueue) {
 
 #' Deregisters an AWS Batch job definition
 #'
+#' @description
 #' Deregisters an AWS Batch job definition. Job definitions are permanently
 #' deleted after 180 days.
 #'
@@ -583,6 +589,7 @@ batch_deregister_job_definition <- function(jobDefinition) {
 
 #' Describes one or more of your compute environments
 #'
+#' @description
 #' Describes one or more of your compute environments.
 #' 
 #' If you're using an unmanaged compute environment, you can use the
@@ -657,6 +664,7 @@ batch_describe_compute_environments <- function(computeEnvironments = NULL, maxR
 
 #' Describes a list of job definitions
 #'
+#' @description
 #' Describes a list of job definitions. You can specify a `status` (such as
 #' `ACTIVE`) to only return job definitions that match that status.
 #'
@@ -729,6 +737,7 @@ batch_describe_job_definitions <- function(jobDefinitions = NULL, maxResults = N
 
 #' Describes one or more of your job queues
 #'
+#' @description
 #' Describes one or more of your job queues.
 #'
 #' @usage
@@ -797,6 +806,7 @@ batch_describe_job_queues <- function(jobQueues = NULL, maxResults = NULL, nextT
 
 #' Describes a list of AWS Batch jobs
 #'
+#' @description
 #' Describes a list of AWS Batch jobs.
 #'
 #' @usage
@@ -845,6 +855,7 @@ batch_describe_jobs <- function(jobs) {
 
 #' Returns a list of AWS Batch jobs
 #'
+#' @description
 #' Returns a list of AWS Batch jobs.
 #' 
 #' You must specify only one of the following items:
@@ -938,6 +949,7 @@ batch_list_jobs <- function(jobQueue = NULL, arrayJobId = NULL, multiNodeJobId =
 
 #' Lists the tags for an AWS Batch resource
 #'
+#' @description
 #' Lists the tags for an AWS Batch resource. AWS Batch resources that
 #' support tags are compute environments, jobs, job definitions, and job
 #' queues. ARNs for child jobs of array and multi-node parallel (MNP) jobs
@@ -988,6 +1000,7 @@ batch_list_tags_for_resource <- function(resourceArn) {
 
 #' Registers an AWS Batch job definition
 #'
+#' @description
 #' Registers an AWS Batch job definition.
 #'
 #' @usage
@@ -1345,6 +1358,7 @@ batch_register_job_definition <- function(jobDefinitionName, type, parameters = 
 
 #' Submits an AWS Batch job from a job definition
 #'
+#' @description
 #' Submits an AWS Batch job from a job definition. Parameters specified
 #' during SubmitJob override parameters defined in the job definition.
 #' 
@@ -1543,6 +1557,7 @@ batch_submit_job <- function(jobName, jobQueue, arrayProperties = NULL, dependsO
 #' Associates the specified tags to a resource with the specified
 #' resourceArn
 #'
+#' @description
 #' Associates the specified tags to a resource with the specified
 #' `resourceArn`. If existing tags on a resource aren't specified in the
 #' request parameters, they aren't changed. When a resource is deleted, the
@@ -1607,6 +1622,7 @@ batch_tag_resource <- function(resourceArn, tags) {
 
 #' Terminates a job in a job queue
 #'
+#' @description
 #' Terminates a job in a job queue. Jobs that are in the `STARTING` or
 #' `RUNNING` state are terminated, which causes them to transition to
 #' `FAILED`. Jobs that have not progressed to the `STARTING` state are
@@ -1659,6 +1675,7 @@ batch_terminate_job <- function(jobId, reason) {
 
 #' Deletes specified tags from an AWS Batch resource
 #'
+#' @description
 #' Deletes specified tags from an AWS Batch resource.
 #'
 #' @usage
@@ -1713,6 +1730,7 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates an AWS Batch compute environment
 #'
+#' @description
 #' Updates an AWS Batch compute environment.
 #'
 #' @usage
@@ -1810,6 +1828,7 @@ batch_update_compute_environment <- function(computeEnvironment, state = NULL, c
 
 #' Updates a job queue
 #'
+#' @description
 #' Updates a job queue.
 #'
 #' @usage

@@ -13,8 +13,7 @@ swf_undeprecate_domain(name)
 Undeprecates a previously deprecated domain. After a domain has been
 undeprecated it can be used to create new workflow executions or
 register new types.
-}
-\details{
+
 This operation is eventually consistent. The results are best effort and
 may not exactly reflect recent updates and changes.
 

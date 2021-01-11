@@ -33,8 +33,7 @@ return the same template. By default, AWS CloudFormation specifies
 \description{
 Returns the template body for a specified stack. You can get the
 template for running or deleted stacks.
-}
-\details{
+
 For deleted stacks, GetTemplate returns the template for up to 90 days
 after the stack has been deleted.
 

@@ -24,8 +24,7 @@ to false, the accelerator can be deleted.}
 }
 \description{
 Update an accelerator.
-}
-\details{
+
 Global Accelerator is a global service that supports endpoints in
 multiple AWS Regions but you must specify the US West (Oregon) Region to
 create or update accelerators.

@@ -26,8 +26,7 @@ ASCII character range.}
 Renames the specified organizational unit (OU). The ID and ARN don't
 change. The child OUs and accounts remain in place, and any attached
 policies of the OU remain attached.
-}
-\details{
+
 This operation can be called only from the organization's management
 account.
 }

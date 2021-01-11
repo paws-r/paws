@@ -90,8 +90,7 @@ automatically.}
 Updates the parameter values for stack instances for the specified
 accounts, within the specified Regions. A stack instance refers to a
 stack in a specific account and Region.
-}
-\details{
+
 You can only update stack instances in Regions and accounts where they
 already exist; to create additional stack instances, use
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html}{CreateStackInstances}.

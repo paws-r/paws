@@ -5,6 +5,7 @@ NULL
 
 #' Creates a Fleet Hub for AWS IoT Device Management web application
 #'
+#' @description
 #' Creates a Fleet Hub for AWS IoT Device Management web application.
 #' 
 #' Fleet Hub for AWS IoT Device Management is in public preview and is
@@ -62,6 +63,7 @@ iotfleethub_create_application <- function(applicationName, applicationDescripti
 
 #' Deletes a Fleet Hub for AWS IoT Device Management web application
 #'
+#' @description
 #' Deletes a Fleet Hub for AWS IoT Device Management web application.
 #' 
 #' Fleet Hub for AWS IoT Device Management is in public preview and is
@@ -106,6 +108,7 @@ iotfleethub_delete_application <- function(applicationId, clientToken = NULL) {
 #' Gets information about a Fleet Hub for AWS IoT Device Management web
 #' application
 #'
+#' @description
 #' Gets information about a Fleet Hub for AWS IoT Device Management web
 #' application.
 #' 
@@ -147,6 +150,7 @@ iotfleethub_describe_application <- function(applicationId) {
 #' Gets a list of Fleet Hub for AWS IoT Device Management web applications
 #' for the current account
 #'
+#' @description
 #' Gets a list of Fleet Hub for AWS IoT Device Management web applications
 #' for the current account.
 #' 
@@ -187,6 +191,7 @@ iotfleethub_list_applications <- function(nextToken = NULL) {
 
 #' Lists the tags for the specified resource
 #'
+#' @description
 #' Lists the tags for the specified resource.
 #' 
 #' Fleet Hub for AWS IoT Device Management is in public preview and is
@@ -226,6 +231,7 @@ iotfleethub_list_tags_for_resource <- function(resourceArn) {
 
 #' Adds to or modifies the tags of the specified resource
 #'
+#' @description
 #' Adds to or modifies the tags of the specified resource. Tags are
 #' metadata which can be used to manage a resource.
 #' 
@@ -270,6 +276,7 @@ iotfleethub_tag_resource <- function(resourceArn, tags) {
 
 #' Removes the specified tags (metadata) from the resource
 #'
+#' @description
 #' Removes the specified tags (metadata) from the resource.
 #' 
 #' Fleet Hub for AWS IoT Device Management is in public preview and is
@@ -314,6 +321,7 @@ iotfleethub_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates information about a Fleet Hub for a AWS IoT Device Management
 #' web application
 #'
+#' @description
 #' Updates information about a Fleet Hub for a AWS IoT Device Management
 #' web application.
 #' 

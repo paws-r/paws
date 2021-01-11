@@ -20,8 +20,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Shuts down the specified instances. This operation is idempotent; if you
 terminate an instance more than once, each call succeeds.
-}
-\details{
+
 If you specify multiple instances and the request fails (for example,
 because of a single incorrect instance ID), none of the instances are
 terminated.

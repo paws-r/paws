@@ -73,8 +73,7 @@ in the \emph{AWS Database Migration Service User Guide.}}
 }
 \description{
 Modifies the specified replication task.
-}
-\details{
+
 You can't modify the task endpoints. The task must be stopped before you
 can modify it.
 

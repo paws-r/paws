@@ -20,8 +20,7 @@ in the \emph{AWS General Reference}.}
 }
 \description{
 Attaches the specified managed policy to the specified IAM group.
-}
-\details{
+
 You use this API to attach a managed policy to a group. To embed an
 inline policy in a group, use PutGroupPolicy.
 

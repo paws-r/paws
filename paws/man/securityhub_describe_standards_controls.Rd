@@ -24,8 +24,7 @@ response.}
 }
 \description{
 Returns a list of security standards controls.
-}
-\details{
+
 For each control, the results include information about whether it is
 currently enabled, the severity, and a link to remediation information.
 }

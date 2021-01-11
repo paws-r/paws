@@ -23,8 +23,7 @@ length of 256 characters.}
 }
 \description{
 Creates a service mesh.
-}
-\details{
+
 A service mesh is a logical boundary for network traffic between
 services that are represented by resources within the mesh. After you
 create your service mesh, you can create virtual services, virtual

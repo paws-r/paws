@@ -12,8 +12,7 @@ delete.}
 }
 \description{
 Deletes an AWS Batch compute environment.
-}
-\details{
+
 Before you can delete a compute environment, you must set its state to
 \code{DISABLED} with the UpdateComputeEnvironment API operation and
 disassociate it from any job queues with the UpdateJobQueue API

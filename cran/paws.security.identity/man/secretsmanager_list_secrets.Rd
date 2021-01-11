@@ -34,8 +34,7 @@ account. To list the versions currently stored for a specific secret,
 use ListSecretVersionIds. The encrypted fields \code{SecretString} and
 \code{SecretBinary} are not included in the output. To get that information,
 call the GetSecretValue operation.
-}
-\details{
+
 Always check the \code{NextToken} response parameter when calling any of the
 \verb{List*} operations. These operations can occasionally return an empty or
 shorter than expected list of results even when there more results

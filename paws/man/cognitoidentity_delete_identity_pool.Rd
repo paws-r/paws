@@ -12,8 +12,7 @@ cognitoidentity_delete_identity_pool(IdentityPoolId)
 \description{
 Deletes an identity pool. Once a pool is deleted, users will not be able
 to authenticate with the pool.
-}
-\details{
+
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{

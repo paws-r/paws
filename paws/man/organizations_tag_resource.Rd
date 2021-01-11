@@ -32,8 +32,7 @@ is not created.}
 }
 \description{
 Adds one or more tags to the specified resource.
-}
-\details{
+
 Currently, you can attach tags to the following resources in AWS
 Organizations.
 \itemize{

@@ -25,8 +25,7 @@ Returns the contents of the effective policy for specified policy type
 and account. The effective policy is the aggregation of any policies of
 the specified type that the account inherits, plus any policy of that
 type that is directly attached to the account.
-}
-\details{
+
 This operation applies only to policy types \emph{other} than service control
 policies (SCPs).
 

@@ -24,8 +24,7 @@ in the \emph{Amazon Connect Administrator Guide}.}
 }
 \description{
 Creates a contact flow for the specified Amazon Connect instance.
-}
-\details{
+
 You can also create and update contact flows using the \href{https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html}{Amazon Connect Flow language}.
 }
 \section{Request syntax}{

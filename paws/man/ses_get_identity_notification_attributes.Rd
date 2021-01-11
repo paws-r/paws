@@ -16,8 +16,7 @@ its name or by using its Amazon Resource Name (ARN). Examples:
 \description{
 Given a list of verified identities (email addresses and/or domains),
 returns a structure describing identity notification attributes.
-}
-\details{
+
 This operation is throttled at one request per second and can only get
 notification attributes for up to 100 identities at a time.
 

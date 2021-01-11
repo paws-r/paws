@@ -59,8 +59,7 @@ Generates a unique symmetric data key. This operation returns a data key
 that is encrypted under a customer master key (CMK) that you specify. To
 request an asymmetric data key pair, use the GenerateDataKeyPair or
 GenerateDataKeyPairWithoutPlaintext operations.
-}
-\details{
+
 \code{GenerateDataKeyWithoutPlaintext} is identical to the GenerateDataKey
 operation except that returns only the encrypted copy of the data key.
 This operation is useful for systems that need to encrypt data at some

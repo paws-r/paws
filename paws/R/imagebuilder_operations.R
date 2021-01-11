@@ -5,6 +5,7 @@ NULL
 
 #' CancelImageCreation cancels the creation of Image
 #'
+#' @description
 #' CancelImageCreation cancels the creation of Image. This operation can
 #' only be used on images in a non-terminal state.
 #'
@@ -46,6 +47,7 @@ imagebuilder_cancel_image_creation <- function(imageBuildVersionArn, clientToken
 #' Creates a new component that can be used to build, validate, test, and
 #' assess your image
 #'
+#' @description
 #' Creates a new component that can be used to build, validate, test, and
 #' assess your image.
 #'
@@ -120,6 +122,7 @@ imagebuilder_create_component <- function(name, semanticVersion, description = N
 
 #' Creates a new container recipe
 #'
+#' @description
 #' Creates a new container recipe. Container recipes define how images are
 #' configured, tested, and assessed.
 #'
@@ -201,6 +204,7 @@ imagebuilder_create_container_recipe <- function(containerType, name, descriptio
 
 #' Creates a new distribution configuration
 #'
+#' @description
 #' Creates a new distribution configuration. Distribution configurations
 #' define and configure the outputs of your pipeline.
 #'
@@ -285,6 +289,7 @@ imagebuilder_create_distribution_configuration <- function(name, description = N
 
 #' Creates a new image
 #'
+#' @description
 #' Creates a new image. This request will create a new image along with all
 #' of the configured output resources defined in the distribution
 #' configuration.
@@ -352,6 +357,7 @@ imagebuilder_create_image <- function(imageRecipeArn = NULL, containerRecipeArn 
 
 #' Creates a new image pipeline
 #'
+#' @description
 #' Creates a new image pipeline. Image pipelines enable you to automate the
 #' creation and distribution of images.
 #'
@@ -430,6 +436,7 @@ imagebuilder_create_image_pipeline <- function(name, description = NULL, imageRe
 
 #' Creates a new image recipe
 #'
+#' @description
 #' Creates a new image recipe. Image recipes define how images are
 #' configured, tested, and assessed.
 #'
@@ -513,6 +520,7 @@ imagebuilder_create_image_recipe <- function(name, description = NULL, semanticV
 
 #' Creates a new infrastructure configuration
 #'
+#' @description
 #' Creates a new infrastructure configuration. An infrastructure
 #' configuration defines the environment in which your image will be built
 #' and tested.
@@ -600,6 +608,7 @@ imagebuilder_create_infrastructure_configuration <- function(name, description =
 
 #' Deletes a component build version
 #'
+#' @description
 #' Deletes a component build version.
 #'
 #' @usage
@@ -636,6 +645,7 @@ imagebuilder_delete_component <- function(componentBuildVersionArn) {
 
 #' Deletes a container recipe
 #'
+#' @description
 #' Deletes a container recipe.
 #'
 #' @usage
@@ -672,6 +682,7 @@ imagebuilder_delete_container_recipe <- function(containerRecipeArn) {
 
 #' Deletes a distribution configuration
 #'
+#' @description
 #' Deletes a distribution configuration.
 #'
 #' @usage
@@ -710,6 +721,7 @@ imagebuilder_delete_distribution_configuration <- function(distributionConfigura
 
 #' Deletes an image
 #'
+#' @description
 #' Deletes an image.
 #'
 #' @usage
@@ -746,6 +758,7 @@ imagebuilder_delete_image <- function(imageBuildVersionArn) {
 
 #' Deletes an image pipeline
 #'
+#' @description
 #' Deletes an image pipeline.
 #'
 #' @usage
@@ -782,6 +795,7 @@ imagebuilder_delete_image_pipeline <- function(imagePipelineArn) {
 
 #' Deletes an image recipe
 #'
+#' @description
 #' Deletes an image recipe.
 #'
 #' @usage
@@ -818,6 +832,7 @@ imagebuilder_delete_image_recipe <- function(imageRecipeArn) {
 
 #' Deletes an infrastructure configuration
 #'
+#' @description
 #' Deletes an infrastructure configuration.
 #'
 #' @usage
@@ -856,6 +871,7 @@ imagebuilder_delete_infrastructure_configuration <- function(infrastructureConfi
 
 #' Gets a component object
 #'
+#' @description
 #' Gets a component object.
 #'
 #' @usage
@@ -893,6 +909,7 @@ imagebuilder_get_component <- function(componentBuildVersionArn) {
 
 #' Gets a component policy
 #'
+#' @description
 #' Gets a component policy.
 #'
 #' @usage
@@ -930,6 +947,7 @@ imagebuilder_get_component_policy <- function(componentArn) {
 
 #' Retrieves a container recipe
 #'
+#' @description
 #' Retrieves a container recipe.
 #'
 #' @usage
@@ -966,6 +984,7 @@ imagebuilder_get_container_recipe <- function(containerRecipeArn) {
 
 #' Retrieves the policy for a container recipe
 #'
+#' @description
 #' Retrieves the policy for a container recipe.
 #'
 #' @usage
@@ -1003,6 +1022,7 @@ imagebuilder_get_container_recipe_policy <- function(containerRecipeArn) {
 
 #' Gets a distribution configuration
 #'
+#' @description
 #' Gets a distribution configuration.
 #'
 #' @usage
@@ -1041,6 +1061,7 @@ imagebuilder_get_distribution_configuration <- function(distributionConfiguratio
 
 #' Gets an image
 #'
+#' @description
 #' Gets an image.
 #'
 #' @usage
@@ -1077,6 +1098,7 @@ imagebuilder_get_image <- function(imageBuildVersionArn) {
 
 #' Gets an image pipeline
 #'
+#' @description
 #' Gets an image pipeline.
 #'
 #' @usage
@@ -1114,6 +1136,7 @@ imagebuilder_get_image_pipeline <- function(imagePipelineArn) {
 
 #' Gets an image policy
 #'
+#' @description
 #' Gets an image policy.
 #'
 #' @usage
@@ -1151,6 +1174,7 @@ imagebuilder_get_image_policy <- function(imageArn) {
 
 #' Gets an image recipe
 #'
+#' @description
 #' Gets an image recipe.
 #'
 #' @usage
@@ -1188,6 +1212,7 @@ imagebuilder_get_image_recipe <- function(imageRecipeArn) {
 
 #' Gets an image recipe policy
 #'
+#' @description
 #' Gets an image recipe policy.
 #'
 #' @usage
@@ -1225,6 +1250,7 @@ imagebuilder_get_image_recipe_policy <- function(imageRecipeArn) {
 
 #' Gets an infrastructure configuration
 #'
+#' @description
 #' Gets an infrastructure configuration.
 #'
 #' @usage
@@ -1263,6 +1289,7 @@ imagebuilder_get_infrastructure_configuration <- function(infrastructureConfigur
 
 #' Imports a component and transforms its data into a component document
 #'
+#' @description
 #' Imports a component and transforms its data into a component document.
 #'
 #' @usage
@@ -1336,6 +1363,7 @@ imagebuilder_import_component <- function(name, semanticVersion, description = N
 #' Returns the list of component build versions for the specified semantic
 #' version
 #'
+#' @description
 #' Returns the list of component build versions for the specified semantic
 #' version.
 #'
@@ -1381,6 +1409,7 @@ imagebuilder_list_component_build_versions <- function(componentVersionArn, maxR
 #' Returns the list of component build versions for the specified semantic
 #' version
 #'
+#' @description
 #' Returns the list of component build versions for the specified semantic
 #' version.
 #'
@@ -1440,6 +1469,7 @@ imagebuilder_list_components <- function(owner = NULL, filters = NULL, byName = 
 
 #' Returns a list of container recipes
 #'
+#' @description
 #' Returns a list of container recipes.
 #'
 #' @usage
@@ -1495,6 +1525,7 @@ imagebuilder_list_container_recipes <- function(owner = NULL, filters = NULL, ma
 
 #' Returns a list of distribution configurations
 #'
+#' @description
 #' Returns a list of distribution configurations.
 #'
 #' @usage
@@ -1546,6 +1577,7 @@ imagebuilder_list_distribution_configurations <- function(filters = NULL, maxRes
 
 #' Returns a list of image build versions
 #'
+#' @description
 #' Returns a list of image build versions.
 #'
 #' @usage
@@ -1598,6 +1630,7 @@ imagebuilder_list_image_build_versions <- function(imageVersionArn, filters = NU
 
 #' Returns a list of images created by the specified pipeline
 #'
+#' @description
 #' Returns a list of images created by the specified pipeline.
 #'
 #' @usage
@@ -1650,6 +1683,7 @@ imagebuilder_list_image_pipeline_images <- function(imagePipelineArn, filters = 
 
 #' Returns a list of image pipelines
 #'
+#' @description
 #' Returns a list of image pipelines.
 #'
 #' @usage
@@ -1698,6 +1732,7 @@ imagebuilder_list_image_pipelines <- function(filters = NULL, maxResults = NULL,
 
 #' Returns a list of image recipes
 #'
+#' @description
 #' Returns a list of image recipes.
 #'
 #' @usage
@@ -1752,6 +1787,7 @@ imagebuilder_list_image_recipes <- function(owner = NULL, filters = NULL, maxRes
 
 #' Returns the list of images that you have access to
 #'
+#' @description
 #' Returns the list of images that you have access to.
 #'
 #' @usage
@@ -1811,6 +1847,7 @@ imagebuilder_list_images <- function(owner = NULL, filters = NULL, byName = NULL
 
 #' Returns a list of infrastructure configurations
 #'
+#' @description
 #' Returns a list of infrastructure configurations.
 #'
 #' @usage
@@ -1860,6 +1897,7 @@ imagebuilder_list_infrastructure_configurations <- function(filters = NULL, maxR
 
 #' Returns the list of tags for the specified resource
 #'
+#' @description
 #' Returns the list of tags for the specified resource.
 #'
 #' @usage
@@ -1897,6 +1935,7 @@ imagebuilder_list_tags_for_resource <- function(resourceArn) {
 
 #' Applies a policy to a component
 #'
+#' @description
 #' Applies a policy to a component. We recommend that you call the RAM API
 #' [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html)
 #' to share resources. If you call the Image Builder API
@@ -1942,6 +1981,7 @@ imagebuilder_put_component_policy <- function(componentArn, policy) {
 
 #' Applies a policy to a container image
 #'
+#' @description
 #' Applies a policy to a container image. We recommend that you call the
 #' RAM API CreateResourceShare
 #' (https://docs.aws.amazon.com/ram/latest/APIReference/API\\_CreateResourceShare.html)
@@ -1989,6 +2029,7 @@ imagebuilder_put_container_recipe_policy <- function(containerRecipeArn, policy)
 
 #' Applies a policy to an image
 #'
+#' @description
 #' Applies a policy to an image. We recommend that you call the RAM API
 #' [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html)
 #' to share resources. If you call the Image Builder API `PutImagePolicy`,
@@ -2034,6 +2075,7 @@ imagebuilder_put_image_policy <- function(imageArn, policy) {
 
 #' Applies a policy to an image recipe
 #'
+#' @description
 #' Applies a policy to an image recipe. We recommend that you call the RAM
 #' API
 #' [CreateResourceShare](https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html)
@@ -2080,6 +2122,7 @@ imagebuilder_put_image_recipe_policy <- function(imageRecipeArn, policy) {
 
 #' Manually triggers a pipeline to create an image
 #'
+#' @description
 #' Manually triggers a pipeline to create an image.
 #'
 #' @usage
@@ -2120,6 +2163,7 @@ imagebuilder_start_image_pipeline_execution <- function(imagePipelineArn, client
 
 #' Adds a tag to a resource
 #'
+#' @description
 #' Adds a tag to a resource.
 #'
 #' @usage
@@ -2160,6 +2204,7 @@ imagebuilder_tag_resource <- function(resourceArn, tags) {
 
 #' Removes a tag from a resource
 #'
+#' @description
 #' Removes a tag from a resource.
 #'
 #' @usage
@@ -2200,6 +2245,7 @@ imagebuilder_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates a new distribution configuration
 #'
+#' @description
 #' Updates a new distribution configuration. Distribution configurations
 #' define and configure the outputs of your pipeline.
 #'
@@ -2281,6 +2327,7 @@ imagebuilder_update_distribution_configuration <- function(distributionConfigura
 
 #' Updates a new image pipeline
 #'
+#' @description
 #' Updates a new image pipeline. Image pipelines enable you to automate the
 #' creation and distribution of images.
 #'
@@ -2355,6 +2402,7 @@ imagebuilder_update_image_pipeline <- function(imagePipelineArn, description = N
 
 #' Updates a new infrastructure configuration
 #'
+#' @description
 #' Updates a new infrastructure configuration. An infrastructure
 #' configuration defines the environment in which your image will be built
 #' and tested.

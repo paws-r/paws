@@ -27,8 +27,7 @@ parameter updates the game server's \emph{LastHealthCheckTime} timestamp.}
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}
-}
-\details{
+
 Updates information about a registered game server to help GameLift
 FleetIQ to track game server availability. This operation is called by a
 game server process that is running on an instance in a game server

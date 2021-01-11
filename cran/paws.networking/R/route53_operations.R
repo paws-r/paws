@@ -6,6 +6,7 @@ NULL
 #' Activates a key signing key (KSK) so that it can be used for signing by
 #' DNSSEC
 #'
+#' @description
 #' Activates a key signing key (KSK) so that it can be used for signing by
 #' DNSSEC. This operation changes the KSK status to `ACTIVE`.
 #'
@@ -45,6 +46,7 @@ route53_activate_key_signing_key <- function(HostedZoneId, Name) {
 
 #' Associates an Amazon VPC with a private hosted zone
 #'
+#' @description
 #' Associates an Amazon VPC with a private hosted zone.
 #' 
 #' To perform the association, the VPC and the private hosted zone must
@@ -120,6 +122,7 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' authoritative DNS information for a specified domain name or subdomain
 #' name
 #'
+#' @description
 #' Creates, changes, or deletes a resource record set, which contains
 #' authoritative DNS information for a specified domain name or subdomain
 #' name. For example, you can use `ChangeResourceRecordSets` to create a
@@ -751,6 +754,7 @@ route53_change_resource_record_sets <- function(HostedZoneId, ChangeBatch) {
 
 #' Adds, edits, or deletes tags for a health check or a hosted zone
 #'
+#' @description
 #' Adds, edits, or deletes tags for a health check or a hosted zone.
 #' 
 #' For information about using tags for cost allocation, see [Using Cost
@@ -840,6 +844,7 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
 
 #' Creates a new health check
 #'
+#' @description
 #' Creates a new health check.
 #' 
 #' For information about adding health checks to resource record sets, see
@@ -959,6 +964,7 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 
 #' Creates a new public or private hosted zone
 #'
+#' @description
 #' Creates a new public or private hosted zone. You create records in a
 #' public hosted zone to define how you want to route traffic on the
 #' internet for a domain, such as example.com, and its subdomains
@@ -1083,6 +1089,7 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 
 #' Creates a new key signing key (KSK) associated with a hosted zone
 #'
+#' @description
 #' Creates a new key signing key (KSK) associated with a hosted zone. You
 #' can only have two KSKs per hosted zone.
 #'
@@ -1168,6 +1175,7 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 
 #' Creates a configuration for DNS query logging
 #'
+#' @description
 #' Creates a configuration for DNS query logging. After you create a query
 #' logging configuration, Amazon Route 53 begins to publish log data to an
 #' Amazon CloudWatch Logs log group.
@@ -1334,6 +1342,7 @@ route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogG
 #' reused by multiple hosted zones that were created by the same AWS
 #' account
 #'
+#' @description
 #' Creates a delegation set (a group of four name servers) that can be
 #' reused by multiple hosted zones that were created by the same AWS
 #' account.
@@ -1428,6 +1437,7 @@ route53_create_reusable_delegation_set <- function(CallerReference, HostedZoneId
 #' Creates a traffic policy, which you use to create multiple DNS resource
 #' record sets for one domain name (such as example
 #'
+#' @description
 #' Creates a traffic policy, which you use to create multiple DNS resource
 #' record sets for one domain name (such as example.com) or one subdomain
 #' name (such as www.example.com).
@@ -1474,6 +1484,7 @@ route53_create_traffic_policy <- function(Name, Document, Comment = NULL) {
 #' Creates resource record sets in a specified hosted zone based on the
 #' settings in a specified traffic policy version
 #'
+#' @description
 #' Creates resource record sets in a specified hosted zone based on the
 #' settings in a specified traffic policy version. In addition,
 #' `CreateTrafficPolicyInstance` associates the resource record sets with a
@@ -1532,6 +1543,7 @@ route53_create_traffic_policy_instance <- function(HostedZoneId, Name, TTL, Traf
 
 #' Creates a new version of an existing traffic policy
 #'
+#' @description
 #' Creates a new version of an existing traffic policy. When you create a
 #' new version of a traffic policy, you specify the ID of the traffic
 #' policy that you want to update and a JSON-formatted document that
@@ -1585,6 +1597,7 @@ route53_create_traffic_policy_version <- function(Id, Document, Comment = NULL) 
 #' AssociateVPCWithHostedZone request to associate the VPC with a specified
 #' hosted zone that was created by a different account
 #'
+#' @description
 #' Authorizes the AWS account that created a specified VPC to submit an
 #' `AssociateVPCWithHostedZone` request to associate the VPC with a
 #' specified hosted zone that was created by a different account. To submit
@@ -1639,6 +1652,7 @@ route53_create_vpc_association_authorization <- function(HostedZoneId, VPC) {
 #' Deactivates a key signing key (KSK) so that it will not be used for
 #' signing by DNSSEC
 #'
+#' @description
 #' Deactivates a key signing key (KSK) so that it will not be used for
 #' signing by DNSSEC. This operation changes the KSK status to `INACTIVE`.
 #'
@@ -1678,6 +1692,7 @@ route53_deactivate_key_signing_key <- function(HostedZoneId, Name) {
 
 #' Deletes a health check
 #'
+#' @description
 #' Deletes a health check.
 #' 
 #' Amazon Route 53 does not prevent you from deleting a health check even
@@ -1731,6 +1746,7 @@ route53_delete_health_check <- function(HealthCheckId) {
 
 #' Deletes a hosted zone
 #'
+#' @description
 #' Deletes a hosted zone.
 #' 
 #' If the hosted zone was created by another service, such as AWS Cloud
@@ -1817,6 +1833,7 @@ route53_delete_hosted_zone <- function(Id) {
 
 #' Deletes a key signing key (KSK)
 #'
+#' @description
 #' Deletes a key signing key (KSK). Before you can delete a KSK, you must
 #' deactivate it. The KSK must be deactived before you can delete it
 #' regardless of whether the hosted zone is enabled for DNSSEC signing.
@@ -1857,6 +1874,7 @@ route53_delete_key_signing_key <- function(HostedZoneId, Name) {
 
 #' Deletes a configuration for DNS query logging
 #'
+#' @description
 #' Deletes a configuration for DNS query logging. If you delete a
 #' configuration, Amazon Route 53 stops sending query logs to CloudWatch
 #' Logs. Route 53 doesn't delete any logs that are already in CloudWatch
@@ -1899,6 +1917,7 @@ route53_delete_query_logging_config <- function(Id) {
 
 #' Deletes a reusable delegation set
 #'
+#' @description
 #' Deletes a reusable delegation set.
 #' 
 #' You can delete a reusable delegation set only if it isn't associated
@@ -1944,6 +1963,7 @@ route53_delete_reusable_delegation_set <- function(Id) {
 
 #' Deletes a traffic policy
 #'
+#' @description
 #' Deletes a traffic policy.
 #' 
 #' When you delete a traffic policy, Route 53 sets a flag on the policy to
@@ -1996,6 +2016,7 @@ route53_delete_traffic_policy <- function(Id, Version) {
 #' Deletes a traffic policy instance and all of the resource record sets
 #' that Amazon Route 53 created when you created the instance
 #'
+#' @description
 #' Deletes a traffic policy instance and all of the resource record sets
 #' that Amazon Route 53 created when you created the instance.
 #' 
@@ -2042,6 +2063,7 @@ route53_delete_traffic_policy_instance <- function(Id) {
 #' associate a specified VPC with a hosted zone that was created by a
 #' different account
 #'
+#' @description
 #' Removes authorization to submit an `AssociateVPCWithHostedZone` request
 #' to associate a specified VPC with a hosted zone that was created by a
 #' different account. You must use the account that created the hosted zone
@@ -2097,6 +2119,7 @@ route53_delete_vpc_association_authorization <- function(HostedZoneId, VPC) {
 
 #' Disables DNSSEC signing in a specific hosted zone
 #'
+#' @description
 #' Disables DNSSEC signing in a specific hosted zone. This action does not
 #' deactivate any key signing keys (KSKs) that are active in the hosted
 #' zone.
@@ -2136,6 +2159,7 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an
 #' Amazon Route 53 private hosted zone
 #'
+#' @description
 #' Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an
 #' Amazon Route 53 private hosted zone. Note the following:
 #' 
@@ -2204,6 +2228,7 @@ route53_disassociate_vpc_from_hosted_zone <- function(HostedZoneId, VPC, Comment
 
 #' Enables DNSSEC signing in a specific hosted zone
 #'
+#' @description
 #' Enables DNSSEC signing in a specific hosted zone.
 #'
 #' @usage
@@ -2241,19 +2266,19 @@ route53_enable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' Gets the specified limit for the current account, for example, the
 #' maximum number of health checks that you can create using the account
 #'
+#' @description
 #' Gets the specified limit for the current account, for example, the
 #' maximum number of health checks that you can create using the account.
 #' 
 #' For the default limit, see
 #' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
 #' in the *Amazon Route 53 Developer Guide*. To request a higher limit,
-#' [open a
-#' case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
+#' open a case.
 #' 
 #' You can also view account limits in AWS Trusted Advisor. Sign in to the
 #' AWS Management Console and open the Trusted Advisor console at
-#' [https://console.aws.amazon.com/trustedadvisor/](https://console.aws.amazon.com/trustedadvisor/home).
-#' Then choose **Service limits** in the navigation pane.
+#' https://console.aws.amazon.com/trustedadvisor/. Then choose **Service
+#' limits** in the navigation pane.
 #'
 #' @usage
 #' route53_get_account_limit(Type)
@@ -2307,6 +2332,7 @@ route53_get_account_limit <- function(Type) {
 
 #' Returns the current status of a change batch request
 #'
+#' @description
 #' Returns the current status of a change batch request. The status is one
 #' of the following values:
 #' 
@@ -2354,6 +2380,7 @@ route53_get_change <- function(Id) {
 #' GetCheckerIpRanges still works, but we recommend that you download
 #' ip-ranges
 #'
+#' @description
 #' `GetCheckerIpRanges` still works, but we recommend that you download
 #' ip-ranges.json, which includes IP address ranges for all AWS services.
 #' For more information, see [IP Address Ranges of Amazon Route 53
@@ -2392,6 +2419,7 @@ route53_get_checker_ip_ranges <- function() {
 #' the key signing keys (KSKs) and zone signing keys (ZSKs) in the hosted
 #' zone
 #'
+#' @description
 #' Returns information about DNSSEC for a specific hosted zone, including
 #' the key signing keys (KSKs) and zone signing keys (ZSKs) in the hosted
 #' zone.
@@ -2431,6 +2459,7 @@ route53_get_dnssec <- function(HostedZoneId) {
 #' Gets information about whether a specified geographic location is
 #' supported for Amazon Route 53 geolocation resource record sets
 #'
+#' @description
 #' Gets information about whether a specified geographic location is
 #' supported for Amazon Route 53 geolocation resource record sets.
 #' 
@@ -2511,6 +2540,7 @@ route53_get_geo_location <- function(ContinentCode = NULL, CountryCode = NULL, S
 
 #' Gets information about a specified health check
 #'
+#' @description
 #' Gets information about a specified health check.
 #'
 #' @usage
@@ -2551,6 +2581,7 @@ route53_get_health_check <- function(HealthCheckId) {
 #' Retrieves the number of health checks that are associated with the
 #' current AWS account
 #'
+#' @description
 #' Retrieves the number of health checks that are associated with the
 #' current AWS account.
 #'
@@ -2584,6 +2615,7 @@ route53_get_health_check_count <- function() {
 
 #' Gets the reason that a specified health check failed most recently
 #'
+#' @description
 #' Gets the reason that a specified health check failed most recently.
 #'
 #' @usage
@@ -2627,6 +2659,7 @@ route53_get_health_check_last_failure_reason <- function(HealthCheckId) {
 
 #' Gets status of a specified health check
 #'
+#' @description
 #' Gets status of a specified health check.
 #'
 #' @usage
@@ -2670,6 +2703,7 @@ route53_get_health_check_status <- function(HealthCheckId) {
 #' Gets information about a specified hosted zone including the four name
 #' servers assigned to the hosted zone
 #'
+#' @description
 #' Gets information about a specified hosted zone including the four name
 #' servers assigned to the hosted zone.
 #'
@@ -2717,6 +2751,7 @@ route53_get_hosted_zone <- function(Id) {
 #' Retrieves the number of hosted zones that are associated with the
 #' current AWS account
 #'
+#' @description
 #' Retrieves the number of hosted zones that are associated with the
 #' current AWS account.
 #'
@@ -2751,14 +2786,14 @@ route53_get_hosted_zone_count <- function() {
 #' Gets the specified limit for a specified hosted zone, for example, the
 #' maximum number of records that you can create in the hosted zone
 #'
+#' @description
 #' Gets the specified limit for a specified hosted zone, for example, the
 #' maximum number of records that you can create in the hosted zone.
 #' 
 #' For the default limit, see
 #' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
 #' in the *Amazon Route 53 Developer Guide*. To request a higher limit,
-#' [open a
-#' case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
+#' open a case.
 #'
 #' @usage
 #' route53_get_hosted_zone_limit(Type, HostedZoneId)
@@ -2802,6 +2837,7 @@ route53_get_hosted_zone_limit <- function(Type, HostedZoneId) {
 
 #' Gets information about a specified configuration for DNS query logging
 #'
+#' @description
 #' Gets information about a specified configuration for DNS query logging.
 #' 
 #' For more information about DNS query logs, see
@@ -2845,6 +2881,7 @@ route53_get_query_logging_config <- function(Id) {
 #' Retrieves information about a specified reusable delegation set,
 #' including the four name servers that are assigned to the delegation set
 #'
+#' @description
 #' Retrieves information about a specified reusable delegation set,
 #' including the four name servers that are assigned to the delegation set.
 #'
@@ -2884,14 +2921,14 @@ route53_get_reusable_delegation_set <- function(Id) {
 #' Gets the maximum number of hosted zones that you can associate with the
 #' specified reusable delegation set
 #'
+#' @description
 #' Gets the maximum number of hosted zones that you can associate with the
 #' specified reusable delegation set.
 #' 
 #' For the default limit, see
 #' [Limits](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
 #' in the *Amazon Route 53 Developer Guide*. To request a higher limit,
-#' [open a
-#' case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
+#' open a case.
 #'
 #' @usage
 #' route53_get_reusable_delegation_set_limit(Type, DelegationSetId)
@@ -2931,6 +2968,7 @@ route53_get_reusable_delegation_set_limit <- function(Type, DelegationSetId) {
 
 #' Gets information about a specific traffic policy version
 #'
+#' @description
 #' Gets information about a specific traffic policy version.
 #' 
 #' For information about how of deleting a traffic policy affects the
@@ -2974,6 +3012,7 @@ route53_get_traffic_policy <- function(Id, Version) {
 
 #' Gets information about a specified traffic policy instance
 #'
+#' @description
 #' Gets information about a specified traffic policy instance.
 #' 
 #' After you submit a `CreateTrafficPolicyInstance` or an
@@ -3021,6 +3060,7 @@ route53_get_traffic_policy_instance <- function(Id) {
 #' Gets the number of traffic policy instances that are associated with the
 #' current AWS account
 #'
+#' @description
 #' Gets the number of traffic policy instances that are associated with the
 #' current AWS account.
 #'
@@ -3054,6 +3094,7 @@ route53_get_traffic_policy_instance_count <- function() {
 
 #' Retrieves a list of supported geographic locations
 #'
+#' @description
 #' Retrieves a list of supported geographic locations.
 #' 
 #' Countries are listed first, and continents are listed last. If Amazon
@@ -3130,6 +3171,7 @@ route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCo
 #' Retrieve a list of the health checks that are associated with the
 #' current AWS account
 #'
+#' @description
 #' Retrieve a list of the health checks that are associated with the
 #' current AWS account.
 #'
@@ -3182,6 +3224,7 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
 #' Retrieves a list of the public and private hosted zones that are
 #' associated with the current AWS account
 #'
+#' @description
 #' Retrieves a list of the public and private hosted zones that are
 #' associated with the current AWS account. The response includes a
 #' `HostedZones` child element for each hosted zone.
@@ -3243,6 +3286,7 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 
 #' Retrieves a list of your hosted zones in lexicographic order
 #'
+#' @description
 #' Retrieves a list of your hosted zones in lexicographic order. The
 #' response includes a `HostedZones` child element for each hosted zone
 #' created by the current AWS account.
@@ -3358,6 +3402,7 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 #' with, regardless of which AWS account or AWS service owns the hosted
 #' zones
 #'
+#' @description
 #' Lists all the private hosted zones that a specified VPC is associated
 #' with, regardless of which AWS account or AWS service owns the hosted
 #' zones. The `HostedZoneOwner` structure in the response contains one of
@@ -3428,6 +3473,7 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
 #' the current AWS account or the configuration that is associated with a
 #' specified hosted zone
 #'
+#' @description
 #' Lists the configurations for DNS query logging that are associated with
 #' the current AWS account or the configuration that is associated with a
 #' specified hosted zone.
@@ -3498,6 +3544,7 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 
 #' Lists the resource record sets in a specified hosted zone
 #'
+#' @description
 #' Lists the resource record sets in a specified hosted zone.
 #' 
 #' `ListResourceRecordSets` returns up to 100 resource record sets at a
@@ -3514,7 +3561,7 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #' Note the trailing dot, which can change the sort order when the record
 #' name contains characters that appear before `.` (decimal 46) in the
 #' ASCII table. These characters include the following:
-#' `! \" # $ % &amp; \' ( ) * + , -`
+#' `! \" # $ \% &amp; \' ( ) * + , -`
 #' 
 #' When multiple records have the same DNS name, `ListResourceRecordSets`
 #' sorts results by the record type.
@@ -3652,6 +3699,7 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
 #' Retrieves a list of the reusable delegation sets that are associated
 #' with the current AWS account
 #'
+#' @description
 #' Retrieves a list of the reusable delegation sets that are associated
 #' with the current AWS account.
 #'
@@ -3702,6 +3750,7 @@ route53_list_reusable_delegation_sets <- function(Marker = NULL, MaxItems = NULL
 
 #' Lists tags for one health check or hosted zone
 #'
+#' @description
 #' Lists tags for one health check or hosted zone.
 #' 
 #' For information about using tags for cost allocation, see [Using Cost
@@ -3749,6 +3798,7 @@ route53_list_tags_for_resource <- function(ResourceType, ResourceId) {
 
 #' Lists tags for up to 10 health checks or hosted zones
 #'
+#' @description
 #' Lists tags for up to 10 health checks or hosted zones.
 #' 
 #' For information about using tags for cost allocation, see [Using Cost
@@ -3800,6 +3850,7 @@ route53_list_tags_for_resources <- function(ResourceType, ResourceIds) {
 #' Gets information about the latest version for every traffic policy that
 #' is associated with the current AWS account
 #'
+#' @description
 #' Gets information about the latest version for every traffic policy that
 #' is associated with the current AWS account. Policies are listed in the
 #' order that they were created in.
@@ -3858,6 +3909,7 @@ route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems
 #' Gets information about the traffic policy instances that you created by
 #' using the current AWS account
 #'
+#' @description
 #' Gets information about the traffic policy instances that you created by
 #' using the current AWS account.
 #' 
@@ -3945,6 +3997,7 @@ route53_list_traffic_policy_instances <- function(HostedZoneIdMarker = NULL, Tra
 #' Gets information about the traffic policy instances that you created in
 #' a specified hosted zone
 #'
+#' @description
 #' Gets information about the traffic policy instances that you created in
 #' a specified hosted zone.
 #' 
@@ -4026,6 +4079,7 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
 #' Gets information about the traffic policy instances that you created by
 #' using a specify traffic policy version
 #'
+#' @description
 #' Gets information about the traffic policy instances that you created by
 #' using a specify traffic policy version.
 #' 
@@ -4126,6 +4180,7 @@ route53_list_traffic_policy_instances_by_policy <- function(TrafficPolicyId, Tra
 #' Gets information about all of the versions for a specified traffic
 #' policy
 #'
+#' @description
 #' Gets information about all of the versions for a specified traffic
 #' policy.
 #' 
@@ -4187,6 +4242,7 @@ route53_list_traffic_policy_versions <- function(Id, TrafficPolicyVersionMarker 
 #' be associated with a specified hosted zone because you've submitted one
 #' or more CreateVPCAssociationAuthorization requests
 #'
+#' @description
 #' Gets a list of the VPCs that were created by other accounts and that can
 #' be associated with a specified hosted zone because you've submitted one
 #' or more `CreateVPCAssociationAuthorization` requests.
@@ -4241,6 +4297,7 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
 #' Gets the value that Amazon Route 53 returns in response to a DNS request
 #' for a specified record name and type
 #'
+#' @description
 #' Gets the value that Amazon Route 53 returns in response to a DNS request
 #' for a specified record name and type. You can optionally specify the IP
 #' address of a DNS resolver, an EDNS0 client subnet IP address, and a
@@ -4311,6 +4368,7 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 
 #' Updates an existing health check
 #'
+#' @description
 #' Updates an existing health check. Note that some values can't be
 #' updated.
 #' 
@@ -4646,6 +4704,7 @@ route53_update_health_check <- function(HealthCheckId, HealthCheckVersion = NULL
 
 #' Updates the comment for a specified hosted zone
 #'
+#' @description
 #' Updates the comment for a specified hosted zone.
 #'
 #' @usage
@@ -4686,6 +4745,7 @@ route53_update_hosted_zone_comment <- function(Id, Comment = NULL) {
 
 #' Updates the comment for a specified traffic policy version
 #'
+#' @description
 #' Updates the comment for a specified traffic policy version.
 #'
 #' @usage
@@ -4729,6 +4789,7 @@ route53_update_traffic_policy_comment <- function(Id, Version, Comment) {
 #' Updates the resource record sets in a specified hosted zone that were
 #' created based on the settings in a specified traffic policy version
 #'
+#' @description
 #' Updates the resource record sets in a specified hosted zone that were
 #' created based on the settings in a specified traffic policy version.
 #' 

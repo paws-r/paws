@@ -17,8 +17,7 @@ your account. For more information about mesh sharing, see \href{https://docs.aw
 }
 \description{
 Deletes an existing virtual node.
-}
-\details{
+
 You must delete any virtual services that list a virtual node as a
 service provider before you can delete the virtual node itself.
 }

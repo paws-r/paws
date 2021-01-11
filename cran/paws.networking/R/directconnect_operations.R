@@ -6,6 +6,7 @@ NULL
 #' Accepts a proposal request to attach a virtual private gateway or
 #' transit gateway to a Direct Connect gateway
 #'
+#' @description
 #' Accepts a proposal request to attach a virtual private gateway or
 #' transit gateway to a Direct Connect gateway.
 #'
@@ -61,6 +62,7 @@ directconnect_accept_direct_connect_gateway_association_proposal <- function(dir
 
 #' Deprecated
 #'
+#' @description
 #' Deprecated. Use AllocateHostedConnection instead.
 #' 
 #' Creates a hosted connection on an interconnect.
@@ -119,6 +121,7 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
 #' Creates a hosted connection on the specified interconnect or a link
 #' aggregation group (LAG) of interconnects
 #'
+#' @description
 #' Creates a hosted connection on the specified interconnect or a link
 #' aggregation group (LAG) of interconnects.
 #' 
@@ -185,6 +188,7 @@ directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount,
 #' Provisions a private virtual interface to be owned by the specified AWS
 #' account
 #'
+#' @description
 #' Provisions a private virtual interface to be owned by the specified AWS
 #' account.
 #' 
@@ -249,6 +253,7 @@ directconnect_allocate_private_virtual_interface <- function(connectionId, owner
 #' Provisions a public virtual interface to be owned by the specified AWS
 #' account
 #'
+#' @description
 #' Provisions a public virtual interface to be owned by the specified AWS
 #' account.
 #' 
@@ -324,6 +329,7 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
 #' Provisions a transit virtual interface to be owned by the specified AWS
 #' account
 #'
+#' @description
 #' Provisions a transit virtual interface to be owned by the specified AWS
 #' account. Use this type of interface to connect a transit gateway to your
 #' Direct Connect gateway.
@@ -391,6 +397,7 @@ directconnect_allocate_transit_virtual_interface <- function(connectionId, owner
 
 #' Associates an existing connection with a link aggregation group (LAG)
 #'
+#' @description
 #' Associates an existing connection with a link aggregation group (LAG).
 #' The connection is interrupted and re-established as a member of the LAG
 #' (connectivity to AWS is interrupted). The connection must be hosted on
@@ -447,6 +454,7 @@ directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
 #' Associates a hosted connection and its virtual interfaces with a link
 #' aggregation group (LAG) or interconnect
 #'
+#' @description
 #' Associates a hosted connection and its virtual interfaces with a link
 #' aggregation group (LAG) or interconnect. If the target interconnect or
 #' LAG has an existing hosted connection with a conflicting VLAN number or
@@ -493,6 +501,7 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
 #' Associates a virtual interface with a specified link aggregation group
 #' (LAG) or connection
 #'
+#' @description
 #' Associates a virtual interface with a specified link aggregation group
 #' (LAG) or connection. Connectivity to AWS is temporarily interrupted as
 #' the virtual interface is being migrated. If the target connection or LAG
@@ -546,6 +555,7 @@ directconnect_associate_virtual_interface <- function(virtualInterfaceId, connec
 #' Confirms the creation of the specified hosted connection on an
 #' interconnect
 #'
+#' @description
 #' Confirms the creation of the specified hosted connection on an
 #' interconnect.
 #' 
@@ -588,6 +598,7 @@ directconnect_confirm_connection <- function(connectionId) {
 #' Accepts ownership of a private virtual interface created by another AWS
 #' account
 #'
+#' @description
 #' Accepts ownership of a private virtual interface created by another AWS
 #' account.
 #' 
@@ -635,6 +646,7 @@ directconnect_confirm_private_virtual_interface <- function(virtualInterfaceId, 
 #' Accepts ownership of a public virtual interface created by another AWS
 #' account
 #'
+#' @description
 #' Accepts ownership of a public virtual interface created by another AWS
 #' account.
 #' 
@@ -676,6 +688,7 @@ directconnect_confirm_public_virtual_interface <- function(virtualInterfaceId) {
 #' Accepts ownership of a transit virtual interface created by another AWS
 #' account
 #'
+#' @description
 #' Accepts ownership of a transit virtual interface created by another AWS
 #' account.
 #' 
@@ -720,6 +733,7 @@ directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, 
 
 #' Creates a BGP peer on the specified virtual interface
 #'
+#' @description
 #' Creates a BGP peer on the specified virtual interface.
 #' 
 #' You must create a BGP peer for the corresponding address family
@@ -780,6 +794,7 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #' Creates a connection between a customer network and a specific AWS
 #' Direct Connect location
 #'
+#' @description
 #' Creates a connection between a customer network and a specific AWS
 #' Direct Connect location.
 #' 
@@ -849,6 +864,7 @@ directconnect_create_connection <- function(location, bandwidth, connectionName,
 #' enables you to connect a set of virtual interfaces and virtual private
 #' gateways
 #'
+#' @description
 #' Creates a Direct Connect gateway, which is an intermediate object that
 #' enables you to connect a set of virtual interfaces and virtual private
 #' gateways. A Direct Connect gateway is global and visible in any AWS
@@ -899,6 +915,7 @@ directconnect_create_direct_connect_gateway <- function(directConnectGatewayName
 #' Creates an association between a Direct Connect gateway and a virtual
 #' private gateway
 #'
+#' @description
 #' Creates an association between a Direct Connect gateway and a virtual
 #' private gateway. The virtual private gateway must be attached to a VPC
 #' and must not be associated with another Direct Connect gateway.
@@ -957,6 +974,7 @@ directconnect_create_direct_connect_gateway_association <- function(directConnec
 #' Creates a proposal to associate the specified virtual private gateway or
 #' transit gateway with the specified Direct Connect gateway
 #'
+#' @description
 #' Creates a proposal to associate the specified virtual private gateway or
 #' transit gateway with the specified Direct Connect gateway.
 #' 
@@ -1018,6 +1036,7 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #' Creates an interconnect between an AWS Direct Connect Partner's network
 #' and a specific AWS Direct Connect location
 #'
+#' @description
 #' Creates an interconnect between an AWS Direct Connect Partner's network
 #' and a specific AWS Direct Connect location.
 #' 
@@ -1095,6 +1114,7 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #' bundled physical dedicated connections between the customer network and
 #' a specific AWS Direct Connect location
 #'
+#' @description
 #' Creates a link aggregation group (LAG) with the specified number of
 #' bundled physical dedicated connections between the customer network and
 #' a specific AWS Direct Connect location. A LAG is a logical interface
@@ -1184,6 +1204,7 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 
 #' Creates a private virtual interface
 #'
+#' @description
 #' Creates a private virtual interface. A virtual interface is the VLAN
 #' that transports AWS Direct Connect traffic. A private virtual interface
 #' can be connected to either a Direct Connect gateway or a Virtual Private
@@ -1255,6 +1276,7 @@ directconnect_create_private_virtual_interface <- function(connectionId, newPriv
 
 #' Creates a public virtual interface
 #'
+#' @description
 #' Creates a public virtual interface. A virtual interface is the VLAN that
 #' transports AWS Direct Connect traffic. A public virtual interface
 #' supports sending traffic to public services of AWS such as Amazon S3.
@@ -1319,6 +1341,7 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 
 #' Creates a transit virtual interface
 #'
+#' @description
 #' Creates a transit virtual interface. A transit virtual interface should
 #' be used to access one or more transit gateways associated with Direct
 #' Connect gateways. A transit virtual interface enables the connection of
@@ -1392,6 +1415,7 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
 #' Deletes the specified BGP peer on the specified virtual interface with
 #' the specified customer address and ASN
 #'
+#' @description
 #' Deletes the specified BGP peer on the specified virtual interface with
 #' the specified customer address and ASN.
 #' 
@@ -1439,6 +1463,7 @@ directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL,
 
 #' Deletes the specified connection
 #'
+#' @description
 #' Deletes the specified connection.
 #' 
 #' Deleting a connection only stops the AWS Direct Connect port hour and
@@ -1480,6 +1505,7 @@ directconnect_delete_connection <- function(connectionId) {
 
 #' Deletes the specified Direct Connect gateway
 #'
+#' @description
 #' Deletes the specified Direct Connect gateway. You must first delete all
 #' virtual interfaces that are attached to the Direct Connect gateway and
 #' disassociate all virtual private gateways associated with the Direct
@@ -1520,6 +1546,7 @@ directconnect_delete_direct_connect_gateway <- function(directConnectGatewayId) 
 #' Deletes the association between the specified Direct Connect gateway and
 #' virtual private gateway
 #'
+#' @description
 #' Deletes the association between the specified Direct Connect gateway and
 #' virtual private gateway.
 #' 
@@ -1568,6 +1595,7 @@ directconnect_delete_direct_connect_gateway_association <- function(associationI
 #' Deletes the association proposal request between the specified Direct
 #' Connect gateway and virtual private gateway or transit gateway
 #'
+#' @description
 #' Deletes the association proposal request between the specified Direct
 #' Connect gateway and virtual private gateway or transit gateway.
 #'
@@ -1606,6 +1634,7 @@ directconnect_delete_direct_connect_gateway_association_proposal <- function(pro
 
 #' Deletes the specified interconnect
 #'
+#' @description
 #' Deletes the specified interconnect.
 #' 
 #' Intended for use by AWS Direct Connect Partners only.
@@ -1644,6 +1673,7 @@ directconnect_delete_interconnect <- function(interconnectId) {
 
 #' Deletes the specified link aggregation group (LAG)
 #'
+#' @description
 #' Deletes the specified link aggregation group (LAG). You cannot delete a
 #' LAG if it has active virtual interfaces or hosted connections.
 #'
@@ -1681,6 +1711,7 @@ directconnect_delete_lag <- function(lagId) {
 
 #' Deletes a virtual interface
 #'
+#' @description
 #' Deletes a virtual interface.
 #'
 #' @usage
@@ -1717,6 +1748,7 @@ directconnect_delete_virtual_interface <- function(virtualInterfaceId) {
 
 #' Deprecated
 #'
+#' @description
 #' Deprecated. Use DescribeLoa instead.
 #' 
 #' Gets the LOA-CFA for a connection.
@@ -1771,6 +1803,7 @@ directconnect_describe_connection_loa <- function(connectionId, providerName = N
 
 #' Displays the specified connection or all connections in this Region
 #'
+#' @description
 #' Displays the specified connection or all connections in this Region.
 #'
 #' @usage
@@ -1807,6 +1840,7 @@ directconnect_describe_connections <- function(connectionId = NULL) {
 
 #' Deprecated
 #'
+#' @description
 #' Deprecated. Use DescribeHostedConnections instead.
 #' 
 #' Lists the connections that have been provisioned on the specified
@@ -1849,6 +1883,7 @@ directconnect_describe_connections_on_interconnect <- function(interconnectId) {
 #' Describes one or more association proposals for connection between a
 #' virtual private gateway or transit gateway and a Direct Connect gateway
 #'
+#' @description
 #' Describes one or more association proposals for connection between a
 #' virtual private gateway or transit gateway and a Direct Connect gateway.
 #'
@@ -1902,6 +1937,7 @@ directconnect_describe_direct_connect_gateway_association_proposals <- function(
 #' Lists the associations between your Direct Connect gateways and virtual
 #' private gateways
 #'
+#' @description
 #' Lists the associations between your Direct Connect gateways and virtual
 #' private gateways. You must specify a Direct Connect gateway, a virtual
 #' private gateway, or both. If you specify a Direct Connect gateway, the
@@ -1964,6 +2000,7 @@ directconnect_describe_direct_connect_gateway_associations <- function(associati
 #' Lists the attachments between your Direct Connect gateways and virtual
 #' interfaces
 #'
+#' @description
 #' Lists the attachments between your Direct Connect gateways and virtual
 #' interfaces. You must specify a Direct Connect gateway, a virtual
 #' interface, or both. If you specify a Direct Connect gateway, the
@@ -2020,6 +2057,7 @@ directconnect_describe_direct_connect_gateway_attachments <- function(directConn
 #' Lists all your Direct Connect gateways or only the specified Direct
 #' Connect gateway
 #'
+#' @description
 #' Lists all your Direct Connect gateways or only the specified Direct
 #' Connect gateway. Deleted Direct Connect gateways are not returned.
 #'
@@ -2068,6 +2106,7 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
 #' Lists the hosted connections that have been provisioned on the specified
 #' interconnect or link aggregation group (LAG)
 #'
+#' @description
 #' Lists the hosted connections that have been provisioned on the specified
 #' interconnect or link aggregation group (LAG).
 #' 
@@ -2107,6 +2146,7 @@ directconnect_describe_hosted_connections <- function(connectionId) {
 
 #' Deprecated
 #'
+#' @description
 #' Deprecated. Use DescribeLoa instead.
 #' 
 #' Gets the LOA-CFA for the specified interconnect.
@@ -2161,6 +2201,7 @@ directconnect_describe_interconnect_loa <- function(interconnectId, providerName
 #' Lists the interconnects owned by the AWS account or only the specified
 #' interconnect
 #'
+#' @description
 #' Lists the interconnects owned by the AWS account or only the specified
 #' interconnect.
 #'
@@ -2198,6 +2239,7 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
 
 #' Describes all your link aggregation groups (LAG) or the specified LAG
 #'
+#' @description
 #' Describes all your link aggregation groups (LAG) or the specified LAG.
 #'
 #' @usage
@@ -2235,6 +2277,7 @@ directconnect_describe_lags <- function(lagId = NULL) {
 #' Gets the LOA-CFA for a connection, interconnect, or link aggregation
 #' group (LAG)
 #'
+#' @description
 #' Gets the LOA-CFA for a connection, interconnect, or link aggregation
 #' group (LAG).
 #' 
@@ -2286,6 +2329,7 @@ directconnect_describe_loa <- function(connectionId, providerName = NULL, loaCon
 
 #' Lists the AWS Direct Connect locations in the current AWS Region
 #'
+#' @description
 #' Lists the AWS Direct Connect locations in the current AWS Region. These
 #' are the locations that can be selected when calling CreateConnection or
 #' CreateInterconnect.
@@ -2320,6 +2364,7 @@ directconnect_describe_locations <- function() {
 #' Describes the tags associated with the specified AWS Direct Connect
 #' resources
 #'
+#' @description
 #' Describes the tags associated with the specified AWS Direct Connect
 #' resources.
 #'
@@ -2359,6 +2404,7 @@ directconnect_describe_tags <- function(resourceArns) {
 
 #' Lists the virtual private gateways owned by the AWS account
 #'
+#' @description
 #' Lists the virtual private gateways owned by the AWS account.
 #' 
 #' You can create one or more AWS Direct Connect private virtual interfaces
@@ -2393,6 +2439,7 @@ directconnect_describe_virtual_gateways <- function() {
 
 #' Displays all virtual interfaces for an AWS account
 #'
+#' @description
 #' Displays all virtual interfaces for an AWS account. Virtual interfaces
 #' deleted fewer than 15 minutes before you make the request are also
 #' returned. If you specify a connection ID, only the virtual interfaces
@@ -2439,6 +2486,7 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
 
 #' Disassociates a connection from a link aggregation group (LAG)
 #'
+#' @description
 #' Disassociates a connection from a link aggregation group (LAG). The
 #' connection is interrupted and re-established as a standalone connection
 #' (the connection is not deleted; to delete the connection, use the
@@ -2489,6 +2537,7 @@ directconnect_disassociate_connection_from_lag <- function(connectionId, lagId) 
 
 #' Lists the virtual interface failover test history
 #'
+#' @description
 #' Lists the virtual interface failover test history.
 #'
 #' @usage
@@ -2546,6 +2595,7 @@ directconnect_list_virtual_interface_test_history <- function(testId = NULL, vir
 #' configuration meets your resiliency requirements by placing the BGP
 #' peering session in the DOWN state
 #'
+#' @description
 #' Starts the virtual interface failover test that verifies your
 #' configuration meets your resiliency requirements by placing the BGP
 #' peering session in the DOWN state. You can then send traffic to verify
@@ -2606,6 +2656,7 @@ directconnect_start_bgp_failover_test <- function(virtualInterfaceId, bgpPeers =
 
 #' Stops the virtual interface failover test
 #'
+#' @description
 #' Stops the virtual interface failover test.
 #'
 #' @usage
@@ -2642,6 +2693,7 @@ directconnect_stop_bgp_failover_test <- function(virtualInterfaceId) {
 
 #' Adds the specified tags to the specified AWS Direct Connect resource
 #'
+#' @description
 #' Adds the specified tags to the specified AWS Direct Connect resource.
 #' Each resource can have a maximum of 50 tags.
 #' 
@@ -2690,6 +2742,7 @@ directconnect_tag_resource <- function(resourceArn, tags) {
 
 #' Removes one or more tags from the specified AWS Direct Connect resource
 #'
+#' @description
 #' Removes one or more tags from the specified AWS Direct Connect resource.
 #'
 #' @usage
@@ -2731,6 +2784,7 @@ directconnect_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates the specified attributes of the Direct Connect gateway
 #' association
 #'
+#' @description
 #' Updates the specified attributes of the Direct Connect gateway
 #' association.
 #' 
@@ -2785,6 +2839,7 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 
 #' Updates the attributes of the specified link aggregation group (LAG)
 #'
+#' @description
 #' Updates the attributes of the specified link aggregation group (LAG).
 #' 
 #' You can update the following attributes:
@@ -2841,6 +2896,7 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL)
 #' Updates the specified attributes of the specified virtual private
 #' interface
 #'
+#' @description
 #' Updates the specified attributes of the specified virtual private
 #' interface.
 #' 

@@ -13,8 +13,7 @@ ses_delete_configuration_set(ConfigurationSetName)
 Deletes a configuration set. Configuration sets enable you to publish
 email sending events. For information about using configuration sets,
 see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.
-}
-\details{
+
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{

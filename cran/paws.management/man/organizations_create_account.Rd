@@ -70,8 +70,6 @@ operates asynchronously, it can return a successful completion message
 even though account initialization might still be in progress. You might
 need to wait a few minutes before you can successfully access the
 account. To check the status of the request, do one of the following:
-}
-\details{
 \itemize{
 \item Use the \code{Id} member of the \code{CreateAccountStatus} response element
 from this operation to provide as a parameter to the
@@ -114,10 +112,10 @@ your organization later, you can do so only after you provide the
 missing information. Follow the steps at \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info}{To leave an organization as a member account}
 in the \emph{AWS Organizations User Guide}.
 \item If you get an exception that indicates that you exceeded your
-account limits for the organization, contact \href{https://console.aws.amazon.com/support/home#/}{AWS Support}.
+account limits for the organization, contact AWS Support.
 \item If you get an exception that indicates that the operation failed
 because your organization is still initializing, wait one hour and
-then try again. If the error persists, contact \href{https://console.aws.amazon.com/support/home#/}{AWS Support}.
+then try again. If the error persists, contact AWS Support.
 \item Using \code{CreateAccount} to create multiple temporary accounts isn't
 recommended. You can only close an account from the Billing and Cost
 Management Console, and you must be signed in as the root user. For

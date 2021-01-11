@@ -45,8 +45,7 @@ in days (the validity period of the CRL), the Amazon S3 bucket that will
 contain the CRL, and a CNAME alias for the S3 bucket that is included in
 certificates issued by the CA. If successful, this action returns the
 Amazon Resource Name (ARN) of the CA.
-}
-\details{
+
 ACM Private CAA assets that are stored in Amazon S3 can be protected
 with encryption. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreateCa.html#crl-encryption}{Encrypting Your CRLs}.
 

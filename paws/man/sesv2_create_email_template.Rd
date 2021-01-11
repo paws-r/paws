@@ -16,8 +16,7 @@ part, and a text-only part.}
 Creates an email template. Email templates enable you to send
 personalized email to one or more destinations in a single API
 operation. For more information, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-personalized-email-api.html}{Amazon SES Developer Guide}.
-}
-\details{
+
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{

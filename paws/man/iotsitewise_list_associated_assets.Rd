@@ -40,8 +40,7 @@ Default: 50}
 }
 \description{
 Retrieves a paginated list of associated assets.
-}
-\details{
+
 You can use this operation to do the following:
 \itemize{
 \item List child assets associated to a parent asset by a hierarchy that

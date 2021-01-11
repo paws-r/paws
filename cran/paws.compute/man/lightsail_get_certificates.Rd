@@ -31,8 +31,7 @@ Region where the request is made.}
 \description{
 Returns information about one or more Amazon Lightsail SSL/TLS
 certificates.
-}
-\details{
+
 To get a summary of a certificate, ommit \code{includeCertificateDetails}
 from your request. The response will include only the certificate Amazon
 Resource Name (ARN), certificate name, domain name, and tags.

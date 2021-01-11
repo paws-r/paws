@@ -18,8 +18,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Stops advertising an address range that is provisioned as an address
 pool.
-}
-\details{
+
 You can perform this operation at most once every 10 seconds, even if
 you specify different address ranges each time.
 

@@ -15,8 +15,7 @@ topic.}
 \description{
 Creates a delivery channel object to deliver configuration information
 to an Amazon S3 bucket and Amazon SNS topic.
-}
-\details{
+
 Before you can create a delivery channel, you must create a
 configuration recorder.
 

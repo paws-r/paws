@@ -24,8 +24,7 @@ that value as input here.}
 Returns an array of all Amazon QLDB journal stream descriptors for a
 given ledger. The output of each stream descriptor includes the same
 details that are returned by \code{DescribeJournalKinesisStream}.
-}
-\details{
+
 This action returns a maximum of \code{MaxResults} items. It is paginated so
 that you can retrieve all the items by calling
 \code{ListJournalKinesisStreamsForLedger} multiple times.

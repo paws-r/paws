@@ -14,8 +14,7 @@ policy types defined by Elastic Load Balancing.}
 \description{
 Describes the specified load balancer policy types or all load balancer
 policy types.
-}
-\details{
+
 The description of each type indicates how it can be used. For example,
 some policies can be used only with layer 7 listeners, some policies can
 be used only with layer 4 listeners, and some policies can be used only

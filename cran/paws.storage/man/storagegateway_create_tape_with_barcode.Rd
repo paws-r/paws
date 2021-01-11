@@ -56,8 +56,7 @@ virtual tape and then archive the tape. A barcode is unique and cannot
 be reused if it has already been used on a tape. This applies to
 barcodes used on deleted tapes. This operation is only supported in the
 tape gateway type.
-}
-\details{
+
 Cache storage must be allocated to the gateway before you can create a
 virtual tape. Use the AddCache operation to add cache storage to a
 gateway.

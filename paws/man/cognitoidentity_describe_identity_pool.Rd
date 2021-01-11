@@ -13,8 +13,7 @@ cognitoidentity_describe_identity_pool(IdentityPoolId)
 \description{
 Gets details about a particular identity pool, including the pool name,
 ID description, creation date, and current number of users.
-}
-\details{
+
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{

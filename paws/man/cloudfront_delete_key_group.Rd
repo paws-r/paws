@@ -16,8 +16,7 @@ key group’s \code{ETag} value. To get the \code{ETag}, use \code{GetKeyGroup} 
 }
 \description{
 Deletes a key group.
-}
-\details{
+
 You cannot delete a key group that is referenced in a cache behavior.
 First update your distributions to remove the key group from all cache
 behaviors, then delete the key group.

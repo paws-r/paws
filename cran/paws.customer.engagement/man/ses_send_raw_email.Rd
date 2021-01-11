@@ -116,8 +116,7 @@ events.}
 }
 \description{
 Composes an email message and immediately queues it for sending.
-}
-\details{
+
 This operation is more flexible than the \code{SendEmail} API operation. When
 you use the \code{SendRawEmail} operation, you can specify the headers of the
 message as well as its content. This flexibility is useful, for example,

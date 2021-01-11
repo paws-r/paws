@@ -5,6 +5,7 @@ NULL
 
 #' Associates the specified fleet with the specified stack
 #'
+#' @description
 #' Associates the specified fleet with the specified stack.
 #'
 #' @usage
@@ -43,6 +44,7 @@ appstream_associate_fleet <- function(FleetName, StackName) {
 
 #' Associates the specified users with the specified stacks
 #'
+#' @description
 #' Associates the specified users with the specified stacks. Users in a
 #' user pool cannot be assigned to stacks with fleets that are joined to an
 #' Active Directory domain.
@@ -88,6 +90,7 @@ appstream_batch_associate_user_stack <- function(UserStackAssociations) {
 
 #' Disassociates the specified users from the specified stacks
 #'
+#' @description
 #' Disassociates the specified users from the specified stacks.
 #'
 #' @usage
@@ -132,6 +135,7 @@ appstream_batch_disassociate_user_stack <- function(UserStackAssociations) {
 #' Copies the image within the same region or to a new region within the
 #' same AWS account
 #'
+#' @description
 #' Copies the image within the same region or to a new region within the
 #' same AWS account. Note that any tags you added to the image will not be
 #' copied.
@@ -179,6 +183,7 @@ appstream_copy_image <- function(SourceImageName, DestinationImageName, Destinat
 
 #' Creates a Directory Config object in AppStream 2
 #'
+#' @description
 #' Creates a Directory Config object in AppStream 2.0. This object includes
 #' the configuration information required to join fleets and image builders
 #' to Microsoft Active Directory domains.
@@ -230,6 +235,7 @@ appstream_create_directory_config <- function(DirectoryName, OrganizationalUnitD
 
 #' Creates a fleet
 #'
+#' @description
 #' Creates a fleet. A fleet consists of streaming instances that run a
 #' specified image.
 #'
@@ -459,6 +465,7 @@ appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, Inst
 
 #' Creates an image builder
 #'
+#' @description
 #' Creates an image builder. An image builder is a virtual machine that is
 #' used to create an image.
 #' 
@@ -637,6 +644,7 @@ appstream_create_image_builder <- function(Name, ImageName = NULL, ImageArn = NU
 
 #' Creates a URL to start an image builder streaming session
 #'
+#' @description
 #' Creates a URL to start an image builder streaming session.
 #'
 #' @usage
@@ -676,6 +684,7 @@ appstream_create_image_builder_streaming_url <- function(Name, Validity = NULL) 
 
 #' Creates a stack to start streaming applications to users
 #'
+#' @description
 #' Creates a stack to start streaming applications to users. A stack
 #' consists of an associated fleet, user access policies, and storage
 #' configurations.
@@ -783,6 +792,7 @@ appstream_create_stack <- function(Name, Description = NULL, DisplayName = NULL,
 
 #' Creates a temporary URL to start an AppStream 2
 #'
+#' @description
 #' Creates a temporary URL to start an AppStream 2.0 streaming session for
 #' the specified user. A streaming URL enables application streaming to be
 #' tested without user setup.
@@ -836,6 +846,7 @@ appstream_create_streaming_url <- function(StackName, FleetName, UserId, Applica
 
 #' Creates a usage report subscription
 #'
+#' @description
 #' Creates a usage report subscription. Usage reports are generated daily.
 #'
 #' @usage
@@ -868,6 +879,7 @@ appstream_create_usage_report_subscription <- function() {
 
 #' Creates a new user in the user pool
 #'
+#' @description
 #' Creates a new user in the user pool.
 #'
 #' @usage
@@ -925,6 +937,7 @@ appstream_create_user <- function(UserName, MessageAction = NULL, FirstName = NU
 
 #' Deletes the specified Directory Config object from AppStream 2
 #'
+#' @description
 #' Deletes the specified Directory Config object from AppStream 2.0. This
 #' object includes the information required to join streaming instances to
 #' an Active Directory domain.
@@ -963,6 +976,7 @@ appstream_delete_directory_config <- function(DirectoryName) {
 
 #' Deletes the specified fleet
 #'
+#' @description
 #' Deletes the specified fleet.
 #'
 #' @usage
@@ -999,6 +1013,7 @@ appstream_delete_fleet <- function(Name) {
 
 #' Deletes the specified image
 #'
+#' @description
 #' Deletes the specified image. You cannot delete an image when it is in
 #' use. After you delete an image, you cannot provision new capacity using
 #' the image.
@@ -1037,6 +1052,7 @@ appstream_delete_image <- function(Name) {
 
 #' Deletes the specified image builder and releases the capacity
 #'
+#' @description
 #' Deletes the specified image builder and releases the capacity.
 #'
 #' @usage
@@ -1073,6 +1089,7 @@ appstream_delete_image_builder <- function(Name) {
 
 #' Deletes permissions for the specified private image
 #'
+#' @description
 #' Deletes permissions for the specified private image. After you delete
 #' permissions for an image, AWS accounts to which you previously granted
 #' these permissions can no longer use the image.
@@ -1114,6 +1131,7 @@ appstream_delete_image_permissions <- function(Name, SharedAccountId) {
 
 #' Deletes the specified stack
 #'
+#' @description
 #' Deletes the specified stack. After the stack is deleted, the application
 #' streaming environment provided by the stack is no longer available to
 #' users. Also, any reservations made for application streaming sessions
@@ -1153,6 +1171,7 @@ appstream_delete_stack <- function(Name) {
 
 #' Disables usage report generation
 #'
+#' @description
 #' Disables usage report generation.
 #'
 #' @usage
@@ -1185,6 +1204,7 @@ appstream_delete_usage_report_subscription <- function() {
 
 #' Deletes a user from the user pool
 #'
+#' @description
 #' Deletes a user from the user pool.
 #'
 #' @usage
@@ -1226,6 +1246,7 @@ appstream_delete_user <- function(UserName, AuthenticationType) {
 #' Retrieves a list that describes one or more specified Directory Config
 #' objects for AppStream 2
 #'
+#' @description
 #' Retrieves a list that describes one or more specified Directory Config
 #' objects for AppStream 2.0, if the names for these objects are provided.
 #' Otherwise, all Directory Config objects in the account are described.
@@ -1278,6 +1299,7 @@ appstream_describe_directory_configs <- function(DirectoryNames = NULL, MaxResul
 #' Retrieves a list that describes one or more specified fleets, if the
 #' fleet names are provided
 #'
+#' @description
 #' Retrieves a list that describes one or more specified fleets, if the
 #' fleet names are provided. Otherwise, all fleets in the account are
 #' described.
@@ -1322,6 +1344,7 @@ appstream_describe_fleets <- function(Names = NULL, NextToken = NULL) {
 #' Retrieves a list that describes one or more specified image builders, if
 #' the image builder names are provided
 #'
+#' @description
 #' Retrieves a list that describes one or more specified image builders, if
 #' the image builder names are provided. Otherwise, all image builders in
 #' the account are described.
@@ -1368,6 +1391,7 @@ appstream_describe_image_builders <- function(Names = NULL, MaxResults = NULL, N
 #' Retrieves a list that describes the permissions for shared AWS account
 #' IDs on a private image that you own
 #'
+#' @description
 #' Retrieves a list that describes the permissions for shared AWS account
 #' IDs on a private image that you own.
 #'
@@ -1418,6 +1442,7 @@ appstream_describe_image_permissions <- function(Name, MaxResults = NULL, Shared
 #' Retrieves a list that describes one or more specified images, if the
 #' image names or image ARNs are provided
 #'
+#' @description
 #' Retrieves a list that describes one or more specified images, if the
 #' image names or image ARNs are provided. Otherwise, all images in the
 #' account are described.
@@ -1470,6 +1495,7 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #' Retrieves a list that describes the streaming sessions for a specified
 #' stack and fleet
 #'
+#' @description
 #' Retrieves a list that describes the streaming sessions for a specified
 #' stack and fleet. If a UserId is provided for the stack and fleet, only
 #' streaming sessions for that user are described. If an authentication
@@ -1527,6 +1553,7 @@ appstream_describe_sessions <- function(StackName, FleetName, UserId = NULL, Nex
 #' Retrieves a list that describes one or more specified stacks, if the
 #' stack names are provided
 #'
+#' @description
 #' Retrieves a list that describes one or more specified stacks, if the
 #' stack names are provided. Otherwise, all stacks in the account are
 #' described.
@@ -1570,6 +1597,7 @@ appstream_describe_stacks <- function(Names = NULL, NextToken = NULL) {
 
 #' Retrieves a list that describes one or more usage report subscriptions
 #'
+#' @description
 #' Retrieves a list that describes one or more usage report subscriptions.
 #'
 #' @usage
@@ -1609,6 +1637,7 @@ appstream_describe_usage_report_subscriptions <- function(MaxResults = NULL, Nex
 
 #' Retrieves a list that describes the UserStackAssociation objects
 #'
+#' @description
 #' Retrieves a list that describes the UserStackAssociation objects. You
 #' must specify either or both of the following:
 #' 
@@ -1665,6 +1694,7 @@ appstream_describe_user_stack_associations <- function(StackName = NULL, UserNam
 #' Retrieves a list that describes one or more specified users in the user
 #' pool
 #'
+#' @description
 #' Retrieves a list that describes one or more specified users in the user
 #' pool.
 #'
@@ -1708,6 +1738,7 @@ appstream_describe_users <- function(AuthenticationType, MaxResults = NULL, Next
 
 #' Disables the specified user in the user pool
 #'
+#' @description
 #' Disables the specified user in the user pool. Users can't sign in to
 #' AppStream 2.0 until they are re-enabled. This action does not delete the
 #' user.
@@ -1750,6 +1781,7 @@ appstream_disable_user <- function(UserName, AuthenticationType) {
 
 #' Disassociates the specified fleet from the specified stack
 #'
+#' @description
 #' Disassociates the specified fleet from the specified stack.
 #'
 #' @usage
@@ -1788,6 +1820,7 @@ appstream_disassociate_fleet <- function(FleetName, StackName) {
 
 #' Enables a user in the user pool
 #'
+#' @description
 #' Enables a user in the user pool. After being enabled, users can sign in
 #' to AppStream 2.0 and open applications from the stacks to which they are
 #' assigned.
@@ -1833,6 +1866,7 @@ appstream_enable_user <- function(UserName, AuthenticationType) {
 
 #' Immediately stops the specified streaming session
 #'
+#' @description
 #' Immediately stops the specified streaming session.
 #'
 #' @usage
@@ -1870,6 +1904,7 @@ appstream_expire_session <- function(SessionId) {
 #' Retrieves the name of the fleet that is associated with the specified
 #' stack
 #'
+#' @description
 #' Retrieves the name of the fleet that is associated with the specified
 #' stack.
 #'
@@ -1911,6 +1946,7 @@ appstream_list_associated_fleets <- function(StackName, NextToken = NULL) {
 #' Retrieves the name of the stack with which the specified fleet is
 #' associated
 #'
+#' @description
 #' Retrieves the name of the stack with which the specified fleet is
 #' associated.
 #'
@@ -1951,6 +1987,7 @@ appstream_list_associated_stacks <- function(FleetName, NextToken = NULL) {
 
 #' Retrieves a list of all tags for the specified AppStream 2
 #'
+#' @description
 #' Retrieves a list of all tags for the specified AppStream 2.0 resource.
 #' You can tag AppStream 2.0 image builders, images, fleets, and stacks.
 #' 
@@ -1992,6 +2029,7 @@ appstream_list_tags_for_resource <- function(ResourceArn) {
 
 #' Starts the specified fleet
 #'
+#' @description
 #' Starts the specified fleet.
 #'
 #' @usage
@@ -2028,6 +2066,7 @@ appstream_start_fleet <- function(Name) {
 
 #' Starts the specified image builder
 #'
+#' @description
 #' Starts the specified image builder.
 #'
 #' @usage
@@ -2067,6 +2106,7 @@ appstream_start_image_builder <- function(Name, AppstreamAgentVersion = NULL) {
 
 #' Stops the specified fleet
 #'
+#' @description
 #' Stops the specified fleet.
 #'
 #' @usage
@@ -2103,6 +2143,7 @@ appstream_stop_fleet <- function(Name) {
 
 #' Stops the specified image builder
 #'
+#' @description
 #' Stops the specified image builder.
 #'
 #' @usage
@@ -2139,6 +2180,7 @@ appstream_stop_image_builder <- function(Name) {
 
 #' Adds or overwrites one or more tags for the specified AppStream 2
 #'
+#' @description
 #' Adds or overwrites one or more tags for the specified AppStream 2.0
 #' resource. You can tag AppStream 2.0 image builders, images, fleets, and
 #' stacks.
@@ -2200,6 +2242,7 @@ appstream_tag_resource <- function(ResourceArn, Tags) {
 
 #' Disassociates one or more specified tags from the specified AppStream 2
 #'
+#' @description
 #' Disassociates one or more specified tags from the specified AppStream
 #' 2.0 resource.
 #' 
@@ -2247,6 +2290,7 @@ appstream_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates the specified Directory Config object in AppStream 2
 #'
+#' @description
 #' Updates the specified Directory Config object in AppStream 2.0. This
 #' object includes the configuration information required to join fleets
 #' and image builders to Microsoft Active Directory domains.
@@ -2297,6 +2341,7 @@ appstream_update_directory_config <- function(DirectoryName, OrganizationalUnitD
 
 #' Updates the specified fleet
 #'
+#' @description
 #' Updates the specified fleet.
 #' 
 #' If the fleet is in the `STOPPED` state, you can update any attribute
@@ -2507,6 +2552,7 @@ appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NUL
 
 #' Adds or updates permissions for the specified private image
 #'
+#' @description
 #' Adds or updates permissions for the specified private image.
 #'
 #' @usage
@@ -2552,6 +2598,7 @@ appstream_update_image_permissions <- function(Name, SharedAccountId, ImagePermi
 
 #' Updates the specified fields for the specified stack
 #'
+#' @description
 #' Updates the specified fields for the specified stack.
 #'
 #' @usage

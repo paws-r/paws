@@ -21,8 +21,7 @@ Lists the iSCSI stored volumes of a gateway. Results are sorted by
 volume ARN. The response includes only the volume ARNs. If you want
 additional volume information, use the DescribeStorediSCSIVolumes or the
 DescribeCachediSCSIVolumes API.
-}
-\details{
+
 The operation supports pagination. By default, the operation returns a
 maximum of up to 100 volumes. You can optionally specify the \code{Limit}
 field in the body to limit the number of volumes in the response. If the

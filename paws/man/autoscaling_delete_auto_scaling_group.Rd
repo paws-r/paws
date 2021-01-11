@@ -16,8 +16,7 @@ with the group.}
 }
 \description{
 Deletes the specified Auto Scaling group.
-}
-\details{
+
 If the group has instances or scaling activities in progress, you must
 specify the option to force the deletion in order for it to succeed.
 

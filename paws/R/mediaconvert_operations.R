@@ -6,6 +6,7 @@ NULL
 #' Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN)
 #' with AWS Elemental MediaConvert
 #'
+#' @description
 #' Associates an AWS Certificate Manager (ACM) Amazon Resource Name (ARN) with AWS Elemental MediaConvert.
 #'
 #' @usage
@@ -42,6 +43,7 @@ mediaconvert_associate_certificate <- function(Arn) {
 
 #' Permanently cancel a job
 #'
+#' @description
 #' Permanently cancel a job. Once you have canceled a job, you can't start it again.
 #'
 #' @usage
@@ -78,6 +80,7 @@ mediaconvert_cancel_job <- function(Id) {
 
 #' Create a new transcoding job
 #'
+#' @description
 #' Create a new transcoding job. For information about jobs and job settings, see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 #'
 #' @usage
@@ -1276,6 +1279,7 @@ mediaconvert_create_job <- function(AccelerationSettings = NULL, BillingTagsSour
 
 #' Create a new job template
 #'
+#' @description
 #' Create a new job template. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 #'
 #' @usage
@@ -2455,6 +2459,7 @@ mediaconvert_create_job_template <- function(AccelerationSettings = NULL, Catego
 
 #' Create a new preset
 #'
+#' @description
 #' Create a new preset. For information about job templates see the User Guide at http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 #'
 #' @usage
@@ -3149,6 +3154,7 @@ mediaconvert_create_preset <- function(Category = NULL, Description = NULL, Name
 
 #' Create a new transcoding queue
 #'
+#' @description
 #' Create a new transcoding queue. For information about queues, see Working With Queues in the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html
 #'
 #' @usage
@@ -3202,6 +3208,7 @@ mediaconvert_create_queue <- function(Description = NULL, Name, PricingPlan = NU
 
 #' Permanently delete a job template you have created
 #'
+#' @description
 #' Permanently delete a job template you have created.
 #'
 #' @usage
@@ -3238,6 +3245,7 @@ mediaconvert_delete_job_template <- function(Name) {
 
 #' Permanently delete a preset you have created
 #'
+#' @description
 #' Permanently delete a preset you have created.
 #'
 #' @usage
@@ -3274,6 +3282,7 @@ mediaconvert_delete_preset <- function(Name) {
 
 #' Permanently delete a queue you have created
 #'
+#' @description
 #' Permanently delete a queue you have created.
 #'
 #' @usage
@@ -3311,6 +3320,7 @@ mediaconvert_delete_queue <- function(Name) {
 #' Send an request with an empty body to the regional API endpoint to get
 #' your account API endpoint
 #'
+#' @description
 #' Send an request with an empty body to the regional API endpoint to get your account API endpoint.
 #'
 #' @usage
@@ -3353,6 +3363,7 @@ mediaconvert_describe_endpoints <- function(MaxResults = NULL, Mode = NULL, Next
 #' Certificate Manager (ACM) certificate and an AWS Elemental MediaConvert
 #' resource
 #'
+#' @description
 #' Removes an association between the Amazon Resource Name (ARN) of an AWS Certificate Manager (ACM) certificate and an AWS Elemental MediaConvert resource.
 #'
 #' @usage
@@ -3389,6 +3400,7 @@ mediaconvert_disassociate_certificate <- function(Arn) {
 
 #' Retrieve the JSON for a specific completed transcoding job
 #'
+#' @description
 #' Retrieve the JSON for a specific completed transcoding job.
 #'
 #' @usage
@@ -3425,6 +3437,7 @@ mediaconvert_get_job <- function(Id) {
 
 #' Retrieve the JSON for a specific job template
 #'
+#' @description
 #' Retrieve the JSON for a specific job template.
 #'
 #' @usage
@@ -3461,6 +3474,7 @@ mediaconvert_get_job_template <- function(Name) {
 
 #' Retrieve the JSON for a specific preset
 #'
+#' @description
 #' Retrieve the JSON for a specific preset.
 #'
 #' @usage
@@ -3497,6 +3511,7 @@ mediaconvert_get_preset <- function(Name) {
 
 #' Retrieve the JSON for a specific queue
 #'
+#' @description
 #' Retrieve the JSON for a specific queue.
 #'
 #' @usage
@@ -3533,6 +3548,7 @@ mediaconvert_get_queue <- function(Name) {
 
 #' Retrieve a JSON array of up to twenty of your job templates
 #'
+#' @description
 #' Retrieve a JSON array of up to twenty of your job templates. This will return the templates themselves, not just a list of them. To retrieve the next twenty templates, use the nextToken string returned with the array
 #'
 #' @usage
@@ -3578,6 +3594,7 @@ mediaconvert_list_job_templates <- function(Category = NULL, ListBy = NULL, MaxR
 
 #' Retrieve a JSON array of up to twenty of your most recently created jobs
 #'
+#' @description
 #' Retrieve a JSON array of up to twenty of your most recently created jobs. This array includes in-process, completed, and errored jobs. This will return the jobs themselves, not just a list of the jobs. To retrieve the twenty next most recent jobs, use the nextToken string returned with the array.
 #'
 #' @usage
@@ -3622,6 +3639,7 @@ mediaconvert_list_jobs <- function(MaxResults = NULL, NextToken = NULL, Order = 
 
 #' Retrieve a JSON array of up to twenty of your presets
 #'
+#' @description
 #' Retrieve a JSON array of up to twenty of your presets. This will return the presets themselves, not just a list of them. To retrieve the next twenty presets, use the nextToken string returned with the array.
 #'
 #' @usage
@@ -3667,6 +3685,7 @@ mediaconvert_list_presets <- function(Category = NULL, ListBy = NULL, MaxResults
 
 #' Retrieve a JSON array of up to twenty of your queues
 #'
+#' @description
 #' Retrieve a JSON array of up to twenty of your queues. This will return the queues themselves, not just a list of them. To retrieve the next twenty queues, use the nextToken string returned with the array.
 #'
 #' @usage
@@ -3709,6 +3728,7 @@ mediaconvert_list_queues <- function(ListBy = NULL, MaxResults = NULL, NextToken
 
 #' Retrieve the tags for a MediaConvert resource
 #'
+#' @description
 #' Retrieve the tags for a MediaConvert resource.
 #'
 #' @usage
@@ -3745,6 +3765,7 @@ mediaconvert_list_tags_for_resource <- function(Arn) {
 
 #' Add tags to a MediaConvert queue, preset, or job template
 #'
+#' @description
 #' Add tags to a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 #'
 #' @usage
@@ -3785,6 +3806,7 @@ mediaconvert_tag_resource <- function(Arn, Tags) {
 
 #' Remove tags from a MediaConvert queue, preset, or job template
 #'
+#' @description
 #' Remove tags from a MediaConvert queue, preset, or job template. For information about tagging, see the User Guide at https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 #'
 #' @usage
@@ -3825,6 +3847,7 @@ mediaconvert_untag_resource <- function(Arn, TagKeys = NULL) {
 
 #' Modify one of your existing job templates
 #'
+#' @description
 #' Modify one of your existing job templates.
 #'
 #' @usage
@@ -5000,6 +5023,7 @@ mediaconvert_update_job_template <- function(AccelerationSettings = NULL, Catego
 
 #' Modify one of your existing presets
 #'
+#' @description
 #' Modify one of your existing presets.
 #'
 #' @usage
@@ -5690,6 +5714,7 @@ mediaconvert_update_preset <- function(Category = NULL, Description = NULL, Name
 
 #' Modify one of your existing queues
 #'
+#' @description
 #' Modify one of your existing queues.
 #'
 #' @usage

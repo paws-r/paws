@@ -26,8 +26,7 @@ Updates a stack using the input information that was provided when the
 specified change set was created. After the call successfully completes,
 AWS CloudFormation starts updating the stack. Use the DescribeStacks
 action to view the status of the update.
-}
-\details{
+
 When you execute a change set, AWS CloudFormation deletes all other
 change sets associated with the stack because they aren't valid for the
 updated stack.

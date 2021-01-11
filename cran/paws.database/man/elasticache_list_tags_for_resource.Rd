@@ -19,8 +19,7 @@ Lists all cost allocation tags currently on the named resource. A
 \verb{cost allocation tag} is a key-value pair where the key is
 case-sensitive and the value is optional. You can use cost allocation
 tags to categorize and track your AWS costs.
-}
-\details{
+
 If the cluster is not in the \emph{available} state, \code{ListTagsForResource}
 returns an error.
 

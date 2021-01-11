@@ -11,8 +11,7 @@ frauddetector_delete_outcome(name)
 }
 \description{
 Deletes an outcome.
-}
-\details{
+
 You cannot delete an outcome that is used in a rule version.
 
 When you delete an outcome, Amazon Fraud Detector permanently deletes

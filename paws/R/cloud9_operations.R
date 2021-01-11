@@ -7,6 +7,7 @@ NULL
 #' Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
 #' instance to the environment
 #'
+#' @description
 #' Creates an AWS Cloud9 development environment, launches an Amazon
 #' Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
 #' instance to the environment.
@@ -94,6 +95,7 @@ cloud9_create_environment_ec2 <- function(name, description = NULL, clientReques
 
 #' Adds an environment member to an AWS Cloud9 development environment
 #'
+#' @description
 #' Adds an environment member to an AWS Cloud9 development environment.
 #'
 #' @usage
@@ -152,6 +154,7 @@ cloud9_create_environment_membership <- function(environmentId, userArn, permiss
 
 #' Deletes an AWS Cloud9 development environment
 #'
+#' @description
 #' Deletes an AWS Cloud9 development environment. If an Amazon EC2 instance
 #' is connected to the environment, also terminates the instance.
 #'
@@ -197,6 +200,7 @@ cloud9_delete_environment <- function(environmentId) {
 
 #' Deletes an environment member from an AWS Cloud9 development environment
 #'
+#' @description
 #' Deletes an environment member from an AWS Cloud9 development
 #' environment.
 #'
@@ -247,6 +251,7 @@ cloud9_delete_environment_membership <- function(environmentId, userArn) {
 #' Gets information about environment members for an AWS Cloud9 development
 #' environment
 #'
+#' @description
 #' Gets information about environment members for an AWS Cloud9 development
 #' environment.
 #'
@@ -336,6 +341,7 @@ cloud9_describe_environment_memberships <- function(userArn = NULL, environmentI
 
 #' Gets status information for an AWS Cloud9 development environment
 #'
+#' @description
 #' Gets status information for an AWS Cloud9 development environment.
 #'
 #' @usage
@@ -380,6 +386,7 @@ cloud9_describe_environment_status <- function(environmentId) {
 
 #' Gets information about AWS Cloud9 development environments
 #'
+#' @description
 #' Gets information about AWS Cloud9 development environments.
 #'
 #' @usage
@@ -429,6 +436,7 @@ cloud9_describe_environments <- function(environmentIds) {
 
 #' Gets a list of AWS Cloud9 development environment identifiers
 #'
+#' @description
 #' Gets a list of AWS Cloud9 development environment identifiers.
 #'
 #' @usage
@@ -479,6 +487,7 @@ cloud9_list_environments <- function(nextToken = NULL, maxResults = NULL) {
 #' Gets a list of the tags associated with an AWS Cloud9 development
 #' environment
 #'
+#' @description
 #' Gets a list of the tags associated with an AWS Cloud9 development
 #' environment.
 #'
@@ -517,6 +526,7 @@ cloud9_list_tags_for_resource <- function(ResourceARN) {
 
 #' Adds tags to an AWS Cloud9 development environment
 #'
+#' @description
 #' Adds tags to an AWS Cloud9 development environment.
 #' 
 #' Tags that you add to an AWS Cloud9 environment by using this method will
@@ -564,6 +574,7 @@ cloud9_tag_resource <- function(ResourceARN, Tags) {
 
 #' Removes tags from an AWS Cloud9 development environment
 #'
+#' @description
 #' Removes tags from an AWS Cloud9 development environment.
 #'
 #' @usage
@@ -606,6 +617,7 @@ cloud9_untag_resource <- function(ResourceARN, TagKeys) {
 
 #' Changes the settings of an existing AWS Cloud9 development environment
 #'
+#' @description
 #' Changes the settings of an existing AWS Cloud9 development environment.
 #'
 #' @usage
@@ -657,6 +669,7 @@ cloud9_update_environment <- function(environmentId, name = NULL, description = 
 #' Changes the settings of an existing environment member for an AWS Cloud9
 #' development environment
 #'
+#' @description
 #' Changes the settings of an existing environment member for an AWS Cloud9
 #' development environment.
 #'

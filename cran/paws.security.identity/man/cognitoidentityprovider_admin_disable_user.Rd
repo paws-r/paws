@@ -13,8 +13,7 @@ cognitoidentityprovider_admin_disable_user(UserPoolId, Username)
 }
 \description{
 Disables the specified user.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

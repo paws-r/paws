@@ -5,6 +5,7 @@ NULL
 
 #' Creates a storage container to hold objects
 #'
+#' @description
 #' Creates a storage container to hold objects. A container is similar to a
 #' bucket in the Amazon S3 service.
 #'
@@ -60,6 +61,7 @@ mediastore_create_container <- function(ContainerName, Tags = NULL) {
 
 #' Deletes the specified container
 #'
+#' @description
 #' Deletes the specified container. Before you make a `DeleteContainer`
 #' request, delete any objects in the container or in any folders in the
 #' container. You can delete only empty containers.
@@ -99,6 +101,7 @@ mediastore_delete_container <- function(ContainerName) {
 #' Deletes the access policy that is associated with the specified
 #' container
 #'
+#' @description
 #' Deletes the access policy that is associated with the specified
 #' container.
 #'
@@ -137,6 +140,7 @@ mediastore_delete_container_policy <- function(ContainerName) {
 #' Deletes the cross-origin resource sharing (CORS) configuration
 #' information that is set for the container
 #'
+#' @description
 #' Deletes the cross-origin resource sharing (CORS) configuration
 #' information that is set for the container.
 #' 
@@ -178,6 +182,7 @@ mediastore_delete_cors_policy <- function(ContainerName) {
 
 #' Removes an object lifecycle policy from a container
 #'
+#' @description
 #' Removes an object lifecycle policy from a container. It takes up to 20
 #' minutes for the change to take effect.
 #'
@@ -216,6 +221,7 @@ mediastore_delete_lifecycle_policy <- function(ContainerName) {
 #' Deletes the metric policy that is associated with the specified
 #' container
 #'
+#' @description
 #' Deletes the metric policy that is associated with the specified
 #' container. If there is no metric policy associated with the container,
 #' MediaStore doesn't send metrics to CloudWatch.
@@ -255,6 +261,7 @@ mediastore_delete_metric_policy <- function(ContainerName) {
 
 #' Retrieves the properties of the requested container
 #'
+#' @description
 #' Retrieves the properties of the requested container. This request is
 #' commonly used to retrieve the endpoint of a container. An endpoint is a
 #' value assigned by the service when a new container is created. A
@@ -297,6 +304,7 @@ mediastore_describe_container <- function(ContainerName = NULL) {
 
 #' Retrieves the access policy for the specified container
 #'
+#' @description
 #' Retrieves the access policy for the specified container. For information
 #' about the data that is included in an access policy, see the [AWS
 #' Identity and Access Management User
@@ -337,6 +345,7 @@ mediastore_get_container_policy <- function(ContainerName) {
 #' Returns the cross-origin resource sharing (CORS) configuration
 #' information that is set for the container
 #'
+#' @description
 #' Returns the cross-origin resource sharing (CORS) configuration
 #' information that is set for the container.
 #' 
@@ -378,6 +387,7 @@ mediastore_get_cors_policy <- function(ContainerName) {
 
 #' Retrieves the object lifecycle policy that is assigned to a container
 #'
+#' @description
 #' Retrieves the object lifecycle policy that is assigned to a container.
 #'
 #' @usage
@@ -415,6 +425,7 @@ mediastore_get_lifecycle_policy <- function(ContainerName) {
 
 #' Returns the metric policy for the specified container
 #'
+#' @description
 #' Returns the metric policy for the specified container.
 #'
 #' @usage
@@ -451,6 +462,7 @@ mediastore_get_metric_policy <- function(ContainerName) {
 
 #' Lists the properties of all containers in AWS Elemental MediaStore
 #'
+#' @description
 #' Lists the properties of all containers in AWS Elemental MediaStore.
 #' 
 #' You can query to receive all the containers in one response. Or you can
@@ -503,6 +515,7 @@ mediastore_list_containers <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Returns a list of the tags assigned to the specified container
 #'
+#' @description
 #' Returns a list of the tags assigned to the specified container.
 #'
 #' @usage
@@ -540,6 +553,7 @@ mediastore_list_tags_for_resource <- function(Resource) {
 #' Creates an access policy for the specified container to restrict the
 #' users and clients that can access it
 #'
+#' @description
 #' Creates an access policy for the specified container to restrict the
 #' users and clients that can access it. For information about the data
 #' that is included in an access policy, see the [AWS Identity and Access
@@ -590,6 +604,7 @@ mediastore_put_container_policy <- function(ContainerName, Policy) {
 #' Sets the cross-origin resource sharing (CORS) configuration on a
 #' container so that the container can service cross-origin requests
 #'
+#' @description
 #' Sets the cross-origin resource sharing (CORS) configuration on a
 #' container so that the container can service cross-origin requests. For
 #' example, you might want to enable a request whose origin is
@@ -660,6 +675,7 @@ mediastore_put_cors_policy <- function(ContainerName, CorsPolicy) {
 
 #' Writes an object lifecycle policy to a container
 #'
+#' @description
 #' Writes an object lifecycle policy to a container. If the container
 #' already has an object lifecycle policy, the service replaces the
 #' existing policy with the new policy. It takes up to 20 minutes for the
@@ -706,6 +722,7 @@ mediastore_put_lifecycle_policy <- function(ContainerName, LifecyclePolicy) {
 
 #' The metric policy that you want to add to the container
 #'
+#' @description
 #' The metric policy that you want to add to the container. A metric policy
 #' allows AWS Elemental MediaStore to send metrics to Amazon CloudWatch. It
 #' takes up to 20 minutes for the new policy to take effect.
@@ -770,6 +787,7 @@ mediastore_put_metric_policy <- function(ContainerName, MetricPolicy) {
 
 #' Starts access logging on the specified container
 #'
+#' @description
 #' Starts access logging on the specified container. When you enable access
 #' logging on a container, MediaStore delivers access logs for objects
 #' stored in that container to Amazon CloudWatch Logs.
@@ -808,6 +826,7 @@ mediastore_start_access_logging <- function(ContainerName) {
 
 #' Stops access logging on the specified container
 #'
+#' @description
 #' Stops access logging on the specified container. When you stop access
 #' logging on a container, MediaStore stops sending access logs to Amazon
 #' CloudWatch Logs. These access logs are not saved and are not
@@ -847,6 +866,7 @@ mediastore_stop_access_logging <- function(ContainerName) {
 
 #' Adds tags to the specified AWS Elemental MediaStore container
 #'
+#' @description
 #' Adds tags to the specified AWS Elemental MediaStore container. Tags are
 #' key:value pairs that you can associate with AWS resources. For example,
 #' the tag key might be "customer" and the tag value might be "companyA."
@@ -902,6 +922,7 @@ mediastore_tag_resource <- function(Resource, Tags) {
 
 #' Removes tags from the specified container
 #'
+#' @description
 #' Removes tags from the specified container. You can specify one or more
 #' tags to remove.
 #'

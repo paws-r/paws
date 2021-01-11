@@ -32,8 +32,7 @@ Constraint: You can remove only \code{UserDefined} configuration options.}
 \description{
 Updates the specified configuration template to have the specified
 properties or configuration option values.
-}
-\details{
+
 If a property (for example, \code{ApplicationName}) is not provided, its
 value remains unchanged. To clear such properties, specify an empty
 string.

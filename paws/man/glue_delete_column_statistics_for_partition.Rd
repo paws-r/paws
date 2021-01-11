@@ -21,8 +21,7 @@ none is supplied, the AWS account ID is used by default.}
 }
 \description{
 Delete the partition column statistics of a column.
-}
-\details{
+
 The Identity and Access Management (IAM) permission required for this
 operation is \code{DeletePartition}.
 }

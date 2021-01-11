@@ -11,8 +11,7 @@ workspaces_restore_workspace(WorkspaceId)
 }
 \description{
 Restores the specified WorkSpace to its last known healthy state.
-}
-\details{
+
 You cannot restore a WorkSpace unless its state is \code{ AVAILABLE},
 \code{ERROR}, \code{UNHEALTHY}, or \code{STOPPED}.
 

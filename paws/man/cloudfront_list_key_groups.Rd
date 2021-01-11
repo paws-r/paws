@@ -17,8 +17,7 @@ response.}
 }
 \description{
 Gets a list of key groups.
-}
-\details{
+
 You can optionally specify the maximum number of items to receive in the
 response. If the total number of items in the list exceeds the maximum
 that you specify, or the default maximum, the response is paginated. To

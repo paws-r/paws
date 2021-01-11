@@ -16,8 +16,7 @@ Retrieves an authorization token. An authorization token represents your
 IAM authentication credentials and can be used to access any Amazon ECR
 registry that your IAM principal has access to. The authorization token
 is valid for 12 hours.
-}
-\details{
+
 The \code{authorizationToken} returned is a base64 encoded string that can be
 decoded and used in a \verb{docker login} command to authenticate to a
 registry. The AWS CLI offers an \code{get-login-password} command that

@@ -18,11 +18,10 @@ disk.}
 \description{
 Attaches a block storage disk to a running or stopped Lightsail instance
 and exposes it to the instance with the specified disk name.
-}
-\details{
+
 The \verb{attach disk} operation supports tag-based access control via
 resource tags applied to the resource identified by \verb{disk name}. For
-more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$attach_disk(

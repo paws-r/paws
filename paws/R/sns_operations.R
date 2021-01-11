@@ -6,6 +6,7 @@ NULL
 #' Adds a statement to a topic's access control policy, granting access for
 #' the specified AWS accounts to the specified actions
 #'
+#' @description
 #' Adds a statement to a topic's access control policy, granting access for
 #' the specified AWS accounts to the specified actions.
 #'
@@ -58,6 +59,7 @@ sns_add_permission <- function(TopicArn, Label, AWSAccountId, ActionName) {
 #' Accepts a phone number and indicates whether the phone holder has opted
 #' out of receiving SMS messages from your account
 #'
+#' @description
 #' Accepts a phone number and indicates whether the phone holder has opted
 #' out of receiving SMS messages from your account. You cannot send SMS
 #' messages to a number that is opted out.
@@ -100,6 +102,7 @@ sns_check_if_phone_number_is_opted_out <- function(phoneNumber) {
 #' Verifies an endpoint owner's intent to receive messages by validating
 #' the token sent to the endpoint by an earlier Subscribe action
 #'
+#' @description
 #' Verifies an endpoint owner's intent to receive messages by validating
 #' the token sent to the endpoint by an earlier `Subscribe` action. If the
 #' token is valid, the action creates a new subscription and returns its
@@ -149,6 +152,7 @@ sns_confirm_subscription <- function(TopicArn, Token, AuthenticateOnUnsubscribe 
 #' notification services, such as APNS and GCM (Firebase Cloud Messaging),
 #' to which devices and mobile apps may register
 #'
+#' @description
 #' Creates a platform application object for one of the supported push
 #' notification services, such as APNS and GCM (Firebase Cloud Messaging),
 #' to which devices and mobile apps may register. You must specify
@@ -226,6 +230,7 @@ sns_create_platform_application <- function(Name, Platform, Attributes) {
 #' push notification services, such as GCM (Firebase Cloud Messaging) and
 #' APNS
 #'
+#' @description
 #' Creates an endpoint for a device and mobile app on one of the supported
 #' push notification services, such as GCM (Firebase Cloud Messaging) and
 #' APNS. `CreatePlatformEndpoint` requires the `PlatformApplicationArn`
@@ -295,6 +300,7 @@ sns_create_platform_endpoint <- function(PlatformApplicationArn, Token, CustomUs
 
 #' Creates a topic to which notifications can be published
 #'
+#' @description
 #' Creates a topic to which notifications can be published. Users can
 #' create at most 100,000 standard topics (at most 1,000 FIFO topics). For
 #' more information, see
@@ -406,6 +412,7 @@ sns_create_topic <- function(Name, Attributes = NULL, Tags = NULL) {
 
 #' Deletes the endpoint for a device and mobile app from Amazon SNS
 #'
+#' @description
 #' Deletes the endpoint for a device and mobile app from Amazon SNS. This
 #' action is idempotent. For more information, see [Using Amazon SNS Mobile
 #' Push
@@ -449,6 +456,7 @@ sns_delete_endpoint <- function(EndpointArn) {
 #' Deletes a platform application object for one of the supported push
 #' notification services, such as APNS and GCM (Firebase Cloud Messaging)
 #'
+#' @description
 #' Deletes a platform application object for one of the supported push
 #' notification services, such as APNS and GCM (Firebase Cloud Messaging).
 #' For more information, see [Using Amazon SNS Mobile Push
@@ -488,6 +496,7 @@ sns_delete_platform_application <- function(PlatformApplicationArn) {
 
 #' Deletes a topic and all its subscriptions
 #'
+#' @description
 #' Deletes a topic and all its subscriptions. Deleting a topic might
 #' prevent some messages previously sent to the topic from being delivered
 #' to subscribers. This action is idempotent, so deleting a topic that does
@@ -529,6 +538,7 @@ sns_delete_topic <- function(TopicArn) {
 #' push notification services, such as GCM (Firebase Cloud Messaging) and
 #' APNS
 #'
+#' @description
 #' Retrieves the endpoint attributes for a device on one of the supported
 #' push notification services, such as GCM (Firebase Cloud Messaging) and
 #' APNS. For more information, see [Using Amazon SNS Mobile Push
@@ -570,6 +580,7 @@ sns_get_endpoint_attributes <- function(EndpointArn) {
 #' supported push notification services, such as APNS and GCM (Firebase
 #' Cloud Messaging)
 #'
+#' @description
 #' Retrieves the attributes of the platform application object for the
 #' supported push notification services, such as APNS and GCM (Firebase
 #' Cloud Messaging). For more information, see [Using Amazon SNS Mobile
@@ -610,6 +621,7 @@ sns_get_platform_application_attributes <- function(PlatformApplicationArn) {
 
 #' Returns the settings for sending SMS messages from your account
 #'
+#' @description
 #' Returns the settings for sending SMS messages from your account.
 #' 
 #' These settings are set with the `SetSMSAttributes` action.
@@ -656,6 +668,7 @@ sns_get_sms_attributes <- function(attributes = NULL) {
 
 #' Returns all of the properties of a subscription
 #'
+#' @description
 #' Returns all of the properties of a subscription.
 #'
 #' @usage
@@ -692,6 +705,7 @@ sns_get_subscription_attributes <- function(SubscriptionArn) {
 
 #' Returns all of the properties of a topic
 #'
+#' @description
 #' Returns all of the properties of a topic. Topic properties returned
 #' might differ based on the authorization of the user.
 #'
@@ -731,6 +745,7 @@ sns_get_topic_attributes <- function(TopicArn) {
 #' push notification service, such as GCM (Firebase Cloud Messaging) and
 #' APNS
 #'
+#' @description
 #' Lists the endpoints and endpoint attributes for devices in a supported
 #' push notification service, such as GCM (Firebase Cloud Messaging) and
 #' APNS. The results for `ListEndpointsByPlatformApplication` are paginated
@@ -786,6 +801,7 @@ sns_list_endpoints_by_platform_application <- function(PlatformApplicationArn, N
 #' Returns a list of phone numbers that are opted out, meaning you cannot
 #' send SMS messages to them
 #'
+#' @description
 #' Returns a list of phone numbers that are opted out, meaning you cannot
 #' send SMS messages to them.
 #' 
@@ -834,6 +850,7 @@ sns_list_phone_numbers_opted_out <- function(nextToken = NULL) {
 #' Lists the platform application objects for the supported push
 #' notification services, such as APNS and GCM (Firebase Cloud Messaging)
 #'
+#' @description
 #' Lists the platform application objects for the supported push
 #' notification services, such as APNS and GCM (Firebase Cloud Messaging).
 #' The results for `ListPlatformApplications` are paginated and return a
@@ -883,6 +900,7 @@ sns_list_platform_applications <- function(NextToken = NULL) {
 
 #' Returns a list of the requester's subscriptions
 #'
+#' @description
 #' Returns a list of the requester's subscriptions. Each call returns a
 #' limited list of subscriptions, up to 100. If there are more
 #' subscriptions, a `NextToken` is also returned. Use the `NextToken`
@@ -924,6 +942,7 @@ sns_list_subscriptions <- function(NextToken = NULL) {
 
 #' Returns a list of the subscriptions to a specific topic
 #'
+#' @description
 #' Returns a list of the subscriptions to a specific topic. Each call
 #' returns a limited list of subscriptions, up to 100. If there are more
 #' subscriptions, a `NextToken` is also returned. Use the `NextToken`
@@ -968,6 +987,7 @@ sns_list_subscriptions_by_topic <- function(TopicArn, NextToken = NULL) {
 
 #' List all tags added to the specified Amazon SNS topic
 #'
+#' @description
 #' List all tags added to the specified Amazon SNS topic. For an overview,
 #' see [Amazon SNS
 #' Tags](https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html) in the
@@ -1007,6 +1027,7 @@ sns_list_tags_for_resource <- function(ResourceArn) {
 
 #' Returns a list of the requester's topics
 #'
+#' @description
 #' Returns a list of the requester's topics. Each call returns a limited
 #' list of topics, up to 100. If there are more topics, a `NextToken` is
 #' also returned. Use the `NextToken` parameter in a new `ListTopics` call
@@ -1049,6 +1070,7 @@ sns_list_topics <- function(NextToken = NULL) {
 #' Use this request to opt in a phone number that is opted out, which
 #' enables you to resume sending SMS messages to the number
 #'
+#' @description
 #' Use this request to opt in a phone number that is opted out, which
 #' enables you to resume sending SMS messages to the number.
 #' 
@@ -1090,6 +1112,7 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' directly to a phone number, or a message to a mobile platform endpoint
 #' (when you specify the TargetArn)
 #'
+#' @description
 #' Sends a message to an Amazon SNS topic, a text message (SMS message)
 #' directly to a phone number, or a message to a mobile platform endpoint
 #' (when you specify the `TargetArn`).
@@ -1207,7 +1230,7 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' @param MessageDeduplicationId This parameter applies only to FIFO (first-in-first-out) topics. The
 #' `MessageDeduplicationId` can contain up to 128 alphanumeric characters
 #' (a-z, A-Z, 0-9) and punctuation
-#' `` (!\"#$%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~) ``.
+#' `` (!\"#$\%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~) ``.
 #' 
 #' Every message must have a unique `MessageDeduplicationId`, which is a
 #' token used for deduplication of sent messages. If a message with a
@@ -1221,7 +1244,7 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' @param MessageGroupId This parameter applies only to FIFO (first-in-first-out) topics. The
 #' `MessageGroupId` can contain up to 128 alphanumeric characters (a-z,
 #' A-Z, 0-9) and punctuation
-#' `` (!\"#$%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~) ``.
+#' `` (!\"#$\%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~) ``.
 #' 
 #' The `MessageGroupId` is a tag that specifies that a message belongs to a
 #' specific message group. Messages that belong to the same message group
@@ -1272,6 +1295,7 @@ sns_publish <- function(TopicArn = NULL, TargetArn = NULL, PhoneNumber = NULL, M
 
 #' Removes a statement from a topic's access control policy
 #'
+#' @description
 #' Removes a statement from a topic's access control policy.
 #'
 #' @usage
@@ -1312,6 +1336,7 @@ sns_remove_permission <- function(TopicArn, Label) {
 #' push notification services, such as GCM (Firebase Cloud Messaging) and
 #' APNS
 #'
+#' @description
 #' Sets the attributes for an endpoint for a device on one of the supported
 #' push notification services, such as GCM (Firebase Cloud Messaging) and
 #' APNS. For more information, see [Using Amazon SNS Mobile Push
@@ -1372,6 +1397,7 @@ sns_set_endpoint_attributes <- function(EndpointArn, Attributes) {
 #' push notification services, such as APNS and GCM (Firebase Cloud
 #' Messaging)
 #'
+#' @description
 #' Sets the attributes of the platform application object for the supported
 #' push notification services, such as APNS and GCM (Firebase Cloud
 #' Messaging). For more information, see [Using Amazon SNS Mobile Push
@@ -1454,6 +1480,7 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
 #' Use this request to set the default settings for sending SMS messages
 #' and receiving daily SMS usage reports
 #'
+#' @description
 #' Use this request to set the default settings for sending SMS messages
 #' and receiving daily SMS usage reports.
 #' 
@@ -1479,9 +1506,8 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
 #' will incur costs that exceed your limit.
 #' 
 #' By default, the spend limit is set to the maximum allowed by Amazon SNS.
-#' If you want to raise the limit, submit an [SNS Limit Increase
-#' case](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sns).
-#' For **New limit value**, enter your desired monthly spend limit. In the
+#' If you want to raise the limit, submit an SNS Limit Increase case. For
+#' **New limit value**, enter your desired monthly spend limit. In the
 #' **Use Case Description** field, explain that you are requesting an SMS
 #' monthly spend limit increase.
 #' 
@@ -1494,7 +1520,7 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
 #' `DeliveryStatusSuccessSamplingRate` – The percentage of successful SMS
 #' deliveries for which Amazon SNS will write logs in CloudWatch Logs. The
 #' value can be an integer from 0 - 100. For example, to write logs only
-#' for failed deliveries, set this value to `0`. To write logs for 10% of
+#' for failed deliveries, set this value to `0`. To write logs for 10\% of
 #' your successful deliveries, set it to `10`.
 #' 
 #' `DefaultSenderID` – A string, such as your business brand, that is
@@ -1577,6 +1603,7 @@ sns_set_sms_attributes <- function(attributes) {
 #' Allows a subscription owner to set an attribute of the subscription to a
 #' new value
 #'
+#' @description
 #' Allows a subscription owner to set an attribute of the subscription to a
 #' new value.
 #'
@@ -1641,6 +1668,7 @@ sns_set_subscription_attributes <- function(SubscriptionArn, AttributeName, Attr
 
 #' Allows a topic owner to set an attribute of the topic to a new value
 #'
+#' @description
 #' Allows a topic owner to set an attribute of the topic to a new value.
 #'
 #' @usage
@@ -1725,6 +1753,7 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 
 #' Subscribes an endpoint to an Amazon SNS topic
 #'
+#' @description
 #' Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is
 #' HTTP/S or email, or if the endpoint and the topic are not in the same
 #' AWS account, the endpoint owner must run the `ConfirmSubscription`
@@ -1853,6 +1882,7 @@ sns_subscribe <- function(TopicArn, Protocol, Endpoint = NULL, Attributes = NULL
 
 #' Add tags to the specified Amazon SNS topic
 #'
+#' @description
 #' Add tags to the specified Amazon SNS topic. For an overview, see [Amazon
 #' SNS Tags](https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html) in
 #' the *Amazon SNS Developer Guide*.
@@ -1871,8 +1901,7 @@ sns_subscribe <- function(TopicArn, Protocol, Endpoint = NULL, Attributes = NULL
 #' 
 #' -   Tagging actions are limited to 10 TPS per AWS account, per AWS
 #'     region. If your application requires a higher throughput, file a
-#'     [technical support
-#'     request](https://console.aws.amazon.com/support/home#/case/create?issueType=technical).
+#'     technical support request.
 #'
 #' @usage
 #' sns_tag_resource(ResourceArn, Tags)
@@ -1916,6 +1945,7 @@ sns_tag_resource <- function(ResourceArn, Tags) {
 
 #' Deletes a subscription
 #'
+#' @description
 #' Deletes a subscription. If the subscription requires authentication for
 #' deletion, only the owner of the subscription or the topic's owner can
 #' unsubscribe, and an AWS signature is required. If the `Unsubscribe` call
@@ -1960,6 +1990,7 @@ sns_unsubscribe <- function(SubscriptionArn) {
 
 #' Remove tags from the specified Amazon SNS topic
 #'
+#' @description
 #' Remove tags from the specified Amazon SNS topic. For an overview, see
 #' [Amazon SNS
 #' Tags](https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html) in the

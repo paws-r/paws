@@ -18,8 +18,7 @@ tasks and services that reference an \code{INACTIVE} task definition continue
 to run without disruption. Existing services that reference an
 \code{INACTIVE} task definition can still scale up or down by modifying the
 service's desired count.
-}
-\details{
+
 You cannot use an \code{INACTIVE} task definition to run new tasks or create
 new services, and you cannot update an existing service to reference an
 \code{INACTIVE} task definition. However, there may be up to a 10-minute

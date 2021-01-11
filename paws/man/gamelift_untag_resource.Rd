@@ -23,8 +23,6 @@ Removes a tag that is assigned to a GameLift resource. Resource tags are
 used to organize AWS resources for a range of purposes. This operation
 handles the permissions necessary to manage tags for the following
 GameLift resource types:
-}
-\details{
 \itemize{
 \item Build
 \item Script

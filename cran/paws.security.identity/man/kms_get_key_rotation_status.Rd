@@ -25,8 +25,7 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 \description{
 Gets a Boolean value that indicates whether \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material}
 is enabled for the specified customer master key (CMK).
-}
-\details{
+
 You cannot enable automatic rotation of asymmetric CMKs, CMKs with
 imported key material, or CMKs in a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}.
 The key rotation status for these CMKs is always \code{false}.

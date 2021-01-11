@@ -13,8 +13,7 @@ kinesis_describe_stream_summary(StreamName)
 \description{
 Provides a summarized description of the specified Kinesis data stream
 without the shard list.
-}
-\details{
+
 The information returned includes the stream name, Amazon Resource Name
 (ARN), status, record retention period, approximate creation time,
 monitoring, encryption details, and open shard count.

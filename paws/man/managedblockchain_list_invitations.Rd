@@ -13,8 +13,7 @@ managedblockchain_list_invitations(MaxResults, NextToken)
 }
 \description{
 Returns a list of all invitations for the current AWS account.
-}
-\details{
+
 Applies only to Hyperledger Fabric.
 }
 \section{Request syntax}{

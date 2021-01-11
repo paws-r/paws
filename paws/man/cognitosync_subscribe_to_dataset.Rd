@@ -22,8 +22,7 @@ Cognito. The ID of the pool to which the identity belongs.}
 \description{
 Subscribes to receive notifications when a dataset is modified by
 another device.
-}
-\details{
+
 This API can only be called with temporary credentials provided by
 Cognito Identity. You cannot call this API with developer credentials.
 }

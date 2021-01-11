@@ -18,8 +18,7 @@ states, then DynamoDB returns a \code{ResourceInUseException}. If the
 specified table does not exist, DynamoDB returns a
 \code{ResourceNotFoundException}. If table is already in the \code{DELETING}
 state, no error is returned.
-}
-\details{
+
 DynamoDB might continue to accept data read and write operations, such
 as \code{GetItem} and \code{PutItem}, on a table in the \code{DELETING} state until the
 table deletion is complete.

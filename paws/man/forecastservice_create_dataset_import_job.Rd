@@ -92,8 +92,7 @@ Imports your training data to an Amazon Forecast dataset. You provide
 the location of your training data in an Amazon Simple Storage Service
 (Amazon S3) bucket and the Amazon Resource Name (ARN) of the dataset
 that you want to import the data to.
-}
-\details{
+
 You must specify a DataSource object that includes an AWS Identity and
 Access Management (IAM) role that Amazon Forecast can assume to access
 the data, as Amazon Forecast makes a copy of your data and processes it

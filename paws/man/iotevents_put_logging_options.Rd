@@ -11,8 +11,7 @@ iotevents_put_logging_options(loggingOptions)
 }
 \description{
 Sets or updates the AWS IoT Events logging options.
-}
-\details{
+
 If you update the value of any \code{loggingOptions} field, it takes up to
 one minute for the change to take effect. If you change the policy
 attached to the role you specified in the \code{roleArn} field (for example,

@@ -23,8 +23,7 @@ different account, the request will fail with an HTTP
 This implementation of the \code{PUT} operation adds an inventory
 configuration (identified by the inventory ID) to the bucket. You can
 have up to 1,000 inventory configurations per bucket.
-}
-\details{
+
 Amazon S3 inventory generates inventories of the objects in the bucket
 on a daily or weekly basis, and the results are published to a flat
 file. The bucket that is inventoried is called the \emph{source} bucket, and

@@ -56,8 +56,7 @@ associated with a Wavelength Zone.}
 }
 \description{
 Creates a route in a route table within a VPC.
-}
-\details{
+
 You must specify one of the following targets: internet gateway or
 virtual private gateway, NAT instance, NAT gateway, VPC peering
 connection, network interface, egress-only internet gateway, or transit

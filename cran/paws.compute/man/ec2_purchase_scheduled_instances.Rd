@@ -19,8 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Purchases the Scheduled Instances with the specified schedule.
-}
-\details{
+
 Scheduled Instances enable you to purchase Amazon EC2 compute capacity
 by the hour for a one-year term. Before you can purchase a Scheduled
 Instance, you must call DescribeScheduledInstanceAvailability to check

@@ -5,6 +5,7 @@ NULL
 
 #' Creates a new Amplify app
 #'
+#' @description
 #' Creates a new Amplify app.
 #'
 #' @usage
@@ -115,6 +116,7 @@ amplify_create_app <- function(name, description = NULL, repository = NULL, plat
 
 #' Creates a new backend environment for an Amplify app
 #'
+#' @description
 #' Creates a new backend environment for an Amplify app.
 #'
 #' @usage
@@ -158,6 +160,7 @@ amplify_create_backend_environment <- function(appId, environmentName, stackName
 
 #' Creates a new branch for an Amplify app
 #'
+#' @description
 #' Creates a new branch for an Amplify app.
 #'
 #' @usage
@@ -243,6 +246,7 @@ amplify_create_branch <- function(appId, branchName, description = NULL, stage =
 
 #' Creates a deployment for a manually deployed Amplify app
 #'
+#' @description
 #' Creates a deployment for a manually deployed Amplify app. Manually
 #' deployed apps are not connected to a repository.
 #'
@@ -289,6 +293,7 @@ amplify_create_deployment <- function(appId, branchName, fileMap = NULL) {
 
 #' Creates a new domain association for an Amplify app
 #'
+#' @description
 #' Creates a new domain association for an Amplify app. This action
 #' associates a custom domain with the Amplify app
 #'
@@ -346,6 +351,7 @@ amplify_create_domain_association <- function(appId, domainName, enableAutoSubDo
 
 #' Creates a new webhook on an Amplify app
 #'
+#' @description
 #' Creates a new webhook on an Amplify app.
 #'
 #' @usage
@@ -386,6 +392,7 @@ amplify_create_webhook <- function(appId, branchName, description = NULL) {
 
 #' Deletes an existing Amplify app specified by an app ID
 #'
+#' @description
 #' Deletes an existing Amplify app specified by an app ID.
 #'
 #' @usage
@@ -422,6 +429,7 @@ amplify_delete_app <- function(appId) {
 
 #' Deletes a backend environment for an Amplify app
 #'
+#' @description
 #' Deletes a backend environment for an Amplify app.
 #'
 #' @usage
@@ -460,6 +468,7 @@ amplify_delete_backend_environment <- function(appId, environmentName) {
 
 #' Deletes a branch for an Amplify app
 #'
+#' @description
 #' Deletes a branch for an Amplify app.
 #'
 #' @usage
@@ -498,6 +507,7 @@ amplify_delete_branch <- function(appId, branchName) {
 
 #' Deletes a domain association for an Amplify app
 #'
+#' @description
 #' Deletes a domain association for an Amplify app.
 #'
 #' @usage
@@ -536,6 +546,7 @@ amplify_delete_domain_association <- function(appId, domainName) {
 
 #' Deletes a job for a branch of an Amplify app
 #'
+#' @description
 #' Deletes a job for a branch of an Amplify app.
 #'
 #' @usage
@@ -576,6 +587,7 @@ amplify_delete_job <- function(appId, branchName, jobId) {
 
 #' Deletes a webhook
 #'
+#' @description
 #' Deletes a webhook.
 #'
 #' @usage
@@ -613,6 +625,7 @@ amplify_delete_webhook <- function(webhookId) {
 #' Returns the website access logs for a specific time range using a
 #' presigned URL
 #'
+#' @description
 #' Returns the website access logs for a specific time range using a
 #' presigned URL.
 #'
@@ -662,6 +675,7 @@ amplify_generate_access_logs <- function(startTime = NULL, endTime = NULL, domai
 
 #' Returns an existing Amplify app by appID
 #'
+#' @description
 #' Returns an existing Amplify app by appID.
 #'
 #' @usage
@@ -698,6 +712,7 @@ amplify_get_app <- function(appId) {
 
 #' Returns the artifact info that corresponds to an artifact id
 #'
+#' @description
 #' Returns the artifact info that corresponds to an artifact id.
 #'
 #' @usage
@@ -734,6 +749,7 @@ amplify_get_artifact_url <- function(artifactId) {
 
 #' Returns a backend environment for an Amplify app
 #'
+#' @description
 #' Returns a backend environment for an Amplify app.
 #'
 #' @usage
@@ -772,6 +788,7 @@ amplify_get_backend_environment <- function(appId, environmentName) {
 
 #' Returns a branch for an Amplify app
 #'
+#' @description
 #' Returns a branch for an Amplify app.
 #'
 #' @usage
@@ -810,6 +827,7 @@ amplify_get_branch <- function(appId, branchName) {
 
 #' Returns the domain information for an Amplify app
 #'
+#' @description
 #' Returns the domain information for an Amplify app.
 #'
 #' @usage
@@ -848,6 +866,7 @@ amplify_get_domain_association <- function(appId, domainName) {
 
 #' Returns a job for a branch of an Amplify app
 #'
+#' @description
 #' Returns a job for a branch of an Amplify app.
 #'
 #' @usage
@@ -889,6 +908,7 @@ amplify_get_job <- function(appId, branchName, jobId) {
 #' Returns the webhook information that corresponds to a specified webhook
 #' ID
 #'
+#' @description
 #' Returns the webhook information that corresponds to a specified webhook
 #' ID.
 #'
@@ -926,6 +946,7 @@ amplify_get_webhook <- function(webhookId) {
 
 #' Returns a list of the existing Amplify apps
 #'
+#' @description
 #' Returns a list of the existing Amplify apps.
 #'
 #' @usage
@@ -965,6 +986,7 @@ amplify_list_apps <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Returns a list of artifacts for a specified app, branch, and job
 #'
+#' @description
 #' Returns a list of artifacts for a specified app, branch, and job.
 #'
 #' @usage
@@ -1011,6 +1033,7 @@ amplify_list_artifacts <- function(appId, branchName, jobId, nextToken = NULL, m
 
 #' Lists the backend environments for an Amplify app
 #'
+#' @description
 #' Lists the backend environments for an Amplify app.
 #'
 #' @usage
@@ -1056,6 +1079,7 @@ amplify_list_backend_environments <- function(appId, environmentName = NULL, nex
 
 #' Lists the branches of an Amplify app
 #'
+#' @description
 #' Lists the branches of an Amplify app.
 #'
 #' @usage
@@ -1098,6 +1122,7 @@ amplify_list_branches <- function(appId, nextToken = NULL, maxResults = NULL) {
 
 #' Returns the domain associations for an Amplify app
 #'
+#' @description
 #' Returns the domain associations for an Amplify app.
 #'
 #' @usage
@@ -1140,6 +1165,7 @@ amplify_list_domain_associations <- function(appId, nextToken = NULL, maxResults
 
 #' Lists the jobs for a branch of an Amplify app
 #'
+#' @description
 #' Lists the jobs for a branch of an Amplify app.
 #'
 #' @usage
@@ -1184,6 +1210,7 @@ amplify_list_jobs <- function(appId, branchName, nextToken = NULL, maxResults = 
 
 #' Returns a list of tags for a specified Amazon Resource Name (ARN)
 #'
+#' @description
 #' Returns a list of tags for a specified Amazon Resource Name (ARN).
 #'
 #' @usage
@@ -1220,6 +1247,7 @@ amplify_list_tags_for_resource <- function(resourceArn) {
 
 #' Returns a list of webhooks for an Amplify app
 #'
+#' @description
 #' Returns a list of webhooks for an Amplify app.
 #'
 #' @usage
@@ -1262,6 +1290,7 @@ amplify_list_webhooks <- function(appId, nextToken = NULL, maxResults = NULL) {
 
 #' Starts a deployment for a manually deployed app
 #'
+#' @description
 #' Starts a deployment for a manually deployed app. Manually deployed apps
 #' are not connected to a repository.
 #'
@@ -1308,6 +1337,7 @@ amplify_start_deployment <- function(appId, branchName, jobId = NULL, sourceUrl 
 
 #' Starts a new job for a branch of an Amplify app
 #'
+#' @description
 #' Starts a new job for a branch of an Amplify app.
 #'
 #' @usage
@@ -1366,6 +1396,7 @@ amplify_start_job <- function(appId, branchName, jobId = NULL, jobType, jobReaso
 
 #' Stops a job that is in progress for a branch of an Amplify app
 #'
+#' @description
 #' Stops a job that is in progress for a branch of an Amplify app.
 #'
 #' @usage
@@ -1406,6 +1437,7 @@ amplify_stop_job <- function(appId, branchName, jobId) {
 
 #' Tags the resource with a tag key and value
 #'
+#' @description
 #' Tags the resource with a tag key and value.
 #'
 #' @usage
@@ -1446,6 +1478,7 @@ amplify_tag_resource <- function(resourceArn, tags) {
 
 #' Untags a resource with a specified Amazon Resource Name (ARN)
 #'
+#' @description
 #' Untags a resource with a specified Amazon Resource Name (ARN).
 #'
 #' @usage
@@ -1486,6 +1519,7 @@ amplify_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates an existing Amplify app
 #'
+#' @description
 #' Updates an existing Amplify app.
 #'
 #' @usage
@@ -1594,6 +1628,7 @@ amplify_update_app <- function(appId, name = NULL, description = NULL, platform 
 
 #' Updates a branch for an Amplify app
 #'
+#' @description
 #' Updates a branch for an Amplify app.
 #'
 #' @usage
@@ -1675,6 +1710,7 @@ amplify_update_branch <- function(appId, branchName, description = NULL, framewo
 
 #' Creates a new domain association for an Amplify app
 #'
+#' @description
 #' Creates a new domain association for an Amplify app.
 #'
 #' @usage
@@ -1731,6 +1767,7 @@ amplify_update_domain_association <- function(appId, domainName, enableAutoSubDo
 
 #' Updates a webhook
 #'
+#' @description
 #' Updates a webhook.
 #'
 #' @usage

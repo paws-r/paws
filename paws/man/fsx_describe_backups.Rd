@@ -27,8 +27,7 @@ Returns the description of specific Amazon FSx backups, if a \code{BackupIds}
 value is provided for that backup. Otherwise, it returns all backups
 owned by your AWS account in the AWS Region of the endpoint that you're
 calling.
-}
-\details{
+
 When retrieving all backups, you can optionally specify the \code{MaxResults}
 parameter to limit the number of backups in a response. If more backups
 remain, Amazon FSx returns a \code{NextToken} value in the response. In this

@@ -30,8 +30,7 @@ DeadLetterQueue.}
 \description{
 Updates the properties of a domain, including creating or selecting a
 dead letter queue or an encryption key.
-}
-\details{
+
 Once a domain is created, the name can’t be changed.
 }
 \section{Request syntax}{

@@ -16,8 +16,7 @@ machinelearning_predict(MLModelId, Record, PredictEndpoint)
 \description{
 Generates a prediction for the observation using the specified
 \verb{ML Model}.
-}
-\details{
+
 Note
 
 Not all response parameters will be populated. Whether a response

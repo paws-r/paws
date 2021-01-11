@@ -15,8 +15,7 @@ to the container image registry of your Amazon Lightsail account so that
 you can use them with your Lightsail container service. The log in
 credentials expire 12 hours after they are created, at which point you
 will need to create a new set of log in credentials.
-}
-\details{
+
 You can only push container images to the container service registry of
 your Lightsail account. You cannot pull container images perform any
 other container image management actions on the container service

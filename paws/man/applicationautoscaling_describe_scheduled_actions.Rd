@@ -121,8 +121,7 @@ parameter is not used, the operation returns up to 50 results and a
 \description{
 Describes the Application Auto Scaling scheduled actions for the
 specified service namespace.
-}
-\details{
+
 You can filter the results using the \code{ResourceId}, \code{ScalableDimension},
 and \code{ScheduledActionNames} parameters.
 

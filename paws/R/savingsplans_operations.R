@@ -5,6 +5,7 @@ NULL
 
 #' Creates a Savings Plan
 #'
+#' @description
 #' Creates a Savings Plan.
 #'
 #' @usage
@@ -62,6 +63,7 @@ savingsplans_create_savings_plan <- function(savingsPlanOfferingId, commitment, 
 
 #' Deletes the queued purchase for the specified Savings Plan
 #'
+#' @description
 #' Deletes the queued purchase for the specified Savings Plan.
 #'
 #' @usage
@@ -98,6 +100,7 @@ savingsplans_delete_queued_savings_plan <- function(savingsPlanId) {
 
 #' Describes the specified Savings Plans rates
 #'
+#' @description
 #' Describes the specified Savings Plans rates.
 #'
 #' @usage
@@ -149,6 +152,7 @@ savingsplans_describe_savings_plan_rates <- function(savingsPlanId, filters = NU
 
 #' Describes the specified Savings Plans
 #'
+#' @description
 #' Describes the specified Savings Plans.
 #'
 #' @usage
@@ -210,6 +214,7 @@ savingsplans_describe_savings_plans <- function(savingsPlanArns = NULL, savingsP
 
 #' Describes the specified Savings Plans offering rates
 #'
+#' @description
 #' Describes the specified Savings Plans offering rates.
 #'
 #' @usage
@@ -289,6 +294,7 @@ savingsplans_describe_savings_plans_offering_rates <- function(savingsPlanOfferi
 
 #' Describes the specified Savings Plans offerings
 #'
+#' @description
 #' Describes the specified Savings Plans offerings.
 #'
 #' @usage
@@ -378,6 +384,7 @@ savingsplans_describe_savings_plans_offerings <- function(offeringIds = NULL, pa
 
 #' Lists the tags for the specified resource
 #'
+#' @description
 #' Lists the tags for the specified resource.
 #'
 #' @usage
@@ -414,6 +421,7 @@ savingsplans_list_tags_for_resource <- function(resourceArn) {
 
 #' Adds the specified tags to the specified resource
 #'
+#' @description
 #' Adds the specified tags to the specified resource.
 #'
 #' @usage
@@ -455,6 +463,7 @@ savingsplans_tag_resource <- function(resourceArn, tags) {
 
 #' Removes the specified tags from the specified resource
 #'
+#' @description
 #' Removes the specified tags from the specified resource.
 #'
 #' @usage

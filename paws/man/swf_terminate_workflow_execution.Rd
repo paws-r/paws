@@ -46,8 +46,7 @@ workflow execution identified by the given domain, runId, and
 workflowId. The child policy, registered with the workflow type or
 specified when starting this execution, is applied to any open child
 workflow executions of this workflow execution.
-}
-\details{
+
 If the identified workflow execution was in progress, it is terminated
 immediately.
 

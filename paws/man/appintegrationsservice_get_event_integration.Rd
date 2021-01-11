@@ -13,8 +13,7 @@ appintegrationsservice_get_event_integration(Name)
 \description{
 The Amazon AppIntegrations APIs are in preview release and are subject
 to change.
-}
-\details{
+
 Return information about the event integration.
 }
 \section{Request syntax}{

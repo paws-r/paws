@@ -16,8 +16,6 @@ servicediscovery_update_service(Id, Service)
 }
 \description{
 Submits a request to perform the following operations:
-}
-\details{
 \itemize{
 \item Update the TTL setting for existing \code{DnsRecords} configurations
 \item Add, update, or delete \code{HealthCheckConfig} for a specified service

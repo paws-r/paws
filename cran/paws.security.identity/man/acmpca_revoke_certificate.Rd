@@ -40,8 +40,7 @@ certificate is revoked. If for any reason the CRL update fails, ACM
 Private CA attempts makes further attempts every 15 minutes. With Amazon
 CloudWatch, you can create alarms for the metrics \code{CRLGenerated} and
 \code{MisconfiguredCRLBucket}. For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCloudWatch.html}{Supported CloudWatch Metrics}.
-}
-\details{
+
 Both PCA and the IAM principal must have permission to write to the S3
 bucket that you specify. If the IAM principal making the call does not
 have permission to write to the bucket, then an exception is thrown. For

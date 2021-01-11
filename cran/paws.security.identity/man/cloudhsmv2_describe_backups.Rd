@@ -40,8 +40,7 @@ chronological order of generation.}
 }
 \description{
 Gets information about backups of AWS CloudHSM clusters.
-}
-\details{
+
 This is a paginated operation, which means that each response might
 contain only a subset of all the backups. When the response contains
 only a subset of backups, it includes a \code{NextToken} value. Use this

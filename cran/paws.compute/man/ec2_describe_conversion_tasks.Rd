@@ -17,8 +17,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified conversion tasks or all your conversion tasks.
 For more information, see the \href{https://docs.aws.amazon.com/vm-import/latest/userguide/}{VM Import/Export User Guide}.
-}
-\details{
+
 For information about the import manifest referenced by this API action,
 see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{VM Import Manifest}.
 }

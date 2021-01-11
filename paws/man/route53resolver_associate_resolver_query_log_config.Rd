@@ -22,8 +22,7 @@ Route 53 Resolver logs DNS queries that originate in all of the Amazon
 VPCs that are associated with a specified query logging configuration.
 To associate more than one VPC with a configuration, submit one
 \code{AssociateResolverQueryLogConfig} request for each VPC.
-}
-\details{
+
 The VPCs that you associate with a query logging configuration must be
 in the same Region as the configuration.
 

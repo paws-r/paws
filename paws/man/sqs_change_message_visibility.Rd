@@ -26,8 +26,7 @@ new value. The default visibility timeout for a message is 30 seconds.
 The minimum is 0 seconds. The maximum is 12 hours. For more information,
 see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
-}
-\details{
+
 For example, you have a message with a visibility timeout of 5 minutes.
 After 3 minutes, you call \code{ChangeMessageVisibility} with a timeout of 10
 minutes. You can continue to call \code{ChangeMessageVisibility} to extend
@@ -59,7 +58,7 @@ the queue). If you reach this limit, Amazon SQS returns the \code{OverLimit}
 error message. To avoid reaching the limit, you should delete messages
 from the queue after they're processed. You can also increase the number
 of queues you use to process your messages. To request a limit increase,
-\href{https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sqs}{file a support request}.
+file a support request.
 
 For FIFO queues, there can be a maximum of 20,000 inflight messages
 (received from a queue by a consumer, but not yet deleted from the

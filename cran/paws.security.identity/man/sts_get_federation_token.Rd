@@ -144,8 +144,7 @@ usually in a server-based application. For a comparison of
 temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials}
 and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison}{Comparing the AWS STS API operations}
 in the \emph{IAM User Guide}.
-}
-\details{
+
 You can create a mobile-based or browser-based app that can authenticate
 users using a web identity provider like Login with Amazon, Facebook,
 Google, or an OpenID Connect-compatible identity provider. In this case,

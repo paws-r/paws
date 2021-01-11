@@ -26,8 +26,7 @@ your AWS account. VPC peering enables the game servers on your fleet to
 communicate directly with other AWS resources. Once you've received
 authorization, call CreateVpcPeeringConnection to establish the peering
 connection. For more information, see \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html}{VPC Peering with Amazon GameLift Fleets}.
-}
-\details{
+
 You can peer with VPCs that are owned by any AWS account you have access
 to, including the account that you use to manage your Amazon GameLift
 fleets. You cannot peer with VPCs that are in different Regions.

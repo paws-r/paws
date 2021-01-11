@@ -16,8 +16,7 @@ of this list will be removed from the DynamoDB resource.}
 \description{
 Removes the association of tags from an Amazon DynamoDB resource. You
 can call \code{UntagResource} up to five times per second, per account.
-}
-\details{
+
 For an overview on tagging DynamoDB resources, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html}{Tagging for DynamoDB}
 in the \emph{Amazon DynamoDB Developer Guide}.
 }

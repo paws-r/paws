@@ -32,8 +32,7 @@ system policy, which can be the default policy or an explicit policy set
 or updated using this API operation. When an explicit policy is set, it
 overrides the default policy. For more information about the default
 file system policy, see \href{https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html#default-filesystempolicy}{Default EFS File System Policy}.
-}
-\details{
+
 This operation requires permissions for the
 \code{elasticfilesystem:PutFileSystemPolicy} action.
 }

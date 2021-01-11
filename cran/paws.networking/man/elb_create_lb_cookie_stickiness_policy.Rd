@@ -25,8 +25,7 @@ the browser session.}
 Generates a stickiness policy with sticky session lifetimes controlled
 by the lifetime of the browser (user-agent) or a specified expiration
 period. This policy can be associated only with HTTP/HTTPS listeners.
-}
-\details{
+
 When a load balancer implements this policy, the load balancer uses a
 special cookie to track the instance for each request. When the load
 balancer receives a request, it first checks to see if this cookie is

@@ -14,8 +14,6 @@ fsx_cancel_data_repository_task(TaskId)
 Cancels an existing Amazon FSx for Lustre data repository task if that
 task is in either the \code{PENDING} or \code{EXECUTING} state. When you cancel a
 task, Amazon FSx does the following.
-}
-\details{
 \itemize{
 \item Any files that FSx has already exported are not reverted.
 \item FSx continues to export any files that are "in-flight" when the

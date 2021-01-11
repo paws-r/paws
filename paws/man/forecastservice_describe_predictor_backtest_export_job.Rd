@@ -14,8 +14,7 @@ forecastservice_describe_predictor_backtest_export_job(
 \description{
 Describes a predictor backtest export job created using the
 CreatePredictorBacktestExportJob operation.
-}
-\details{
+
 In addition to listing the properties provided by the user in the
 \code{CreatePredictorBacktestExportJob} request, this operation lists the
 following properties:

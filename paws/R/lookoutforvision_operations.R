@@ -5,6 +5,7 @@ NULL
 
 #' Creates a new dataset in an Amazon Lookout for Vision project
 #'
+#' @description
 #' Creates a new dataset in an Amazon Lookout for Vision project.
 #' `CreateDataset` can create a training or a test dataset from a valid
 #' dataset source (`DatasetSource`).
@@ -86,6 +87,7 @@ lookoutforvision_create_dataset <- function(ProjectName, DatasetType, DatasetSou
 #' Creates a new version of a model within an an Amazon Lookout for Vision
 #' project
 #'
+#' @description
 #' Creates a new version of a model within an an Amazon Lookout for Vision
 #' project. `CreateModel` is an asynchronous operation in which Amazon
 #' Lookout for Vision trains, tests, and evaluates a new version of a
@@ -192,6 +194,7 @@ lookoutforvision_create_model <- function(ProjectName, Description = NULL, Clien
 
 #' Creates an empty Amazon Lookout for Vision project
 #'
+#' @description
 #' Creates an empty Amazon Lookout for Vision project. After you create the
 #' project, add a dataset by calling CreateDataset.
 #'
@@ -238,6 +241,7 @@ lookoutforvision_create_project <- function(ProjectName, ClientToken = NULL) {
 
 #' Deletes an existing Amazon Lookout for Vision dataset
 #'
+#' @description
 #' Deletes an existing Amazon Lookout for Vision `dataset`.
 #' 
 #' If your the project has a single dataset, you must create a new dataset
@@ -306,6 +310,7 @@ lookoutforvision_delete_dataset <- function(ProjectName, DatasetType, ClientToke
 
 #' Deletes an Amazon Lookout for Vision model
 #'
+#' @description
 #' Deletes an Amazon Lookout for Vision model. You can't delete a running
 #' model. To stop a running model, use the StopModel operation.
 #'
@@ -354,6 +359,7 @@ lookoutforvision_delete_model <- function(ProjectName, ModelVersion, ClientToken
 
 #' Deletes an Amazon Lookout for Vision project
 #'
+#' @description
 #' Deletes an Amazon Lookout for Vision project.
 #' 
 #' To delete a project, you must first delete each version of the model
@@ -406,6 +412,7 @@ lookoutforvision_delete_project <- function(ProjectName, ClientToken = NULL) {
 
 #' Describe an Amazon Lookout for Vision dataset
 #'
+#' @description
 #' Describe an Amazon Lookout for Vision dataset.
 #'
 #' @usage
@@ -447,6 +454,7 @@ lookoutforvision_describe_dataset <- function(ProjectName, DatasetType) {
 
 #' Describes a version of an Amazon Lookout for Vision model
 #'
+#' @description
 #' Describes a version of an Amazon Lookout for Vision model.
 #'
 #' @usage
@@ -486,6 +494,7 @@ lookoutforvision_describe_model <- function(ProjectName, ModelVersion) {
 
 #' Describes an Amazon Lookout for Vision project
 #'
+#' @description
 #' Describes an Amazon Lookout for Vision project.
 #'
 #' @usage
@@ -522,6 +531,7 @@ lookoutforvision_describe_project <- function(ProjectName) {
 
 #' Detects anomalies in an image that you supply
 #'
+#' @description
 #' Detects anomalies in an image that you supply.
 #' 
 #' The response from `DetectAnomalies` includes a boolean prediction that
@@ -577,6 +587,7 @@ lookoutforvision_detect_anomalies <- function(ProjectName, ModelVersion, Body, C
 
 #' Lists the JSON Lines within a dataset
 #'
+#' @description
 #' Lists the JSON Lines within a dataset. An Amazon Lookout for Vision JSON
 #' Line contains the anomaly information for a single image, including the
 #' image location and the assigned label.
@@ -651,6 +662,7 @@ lookoutforvision_list_dataset_entries <- function(ProjectName, DatasetType, Labe
 
 #' Lists the versions of a model in an Amazon Lookout for Vision project
 #'
+#' @description
 #' Lists the versions of a model in an Amazon Lookout for Vision project.
 #'
 #' @usage
@@ -697,6 +709,7 @@ lookoutforvision_list_models <- function(ProjectName, NextToken = NULL, MaxResul
 
 #' Lists the Amazon Lookout for Vision projects in your AWS account
 #'
+#' @description
 #' Lists the Amazon Lookout for Vision projects in your AWS account.
 #'
 #' @usage
@@ -740,6 +753,7 @@ lookoutforvision_list_projects <- function(NextToken = NULL, MaxResults = NULL) 
 
 #' Starts the running of the version of an Amazon Lookout for Vision model
 #'
+#' @description
 #' Starts the running of the version of an Amazon Lookout for Vision model.
 #' Starting a model takes a while to complete. To check the current state
 #' of the model, use DescribeModel.
@@ -801,6 +815,7 @@ lookoutforvision_start_model <- function(ProjectName, ModelVersion, MinInference
 
 #' Stops a running model
 #'
+#' @description
 #' Stops a running model. The operation might take a while to complete. To
 #' check the current status, call DescribeModel.
 #'
@@ -849,6 +864,7 @@ lookoutforvision_stop_model <- function(ProjectName, ModelVersion, ClientToken =
 
 #' Adds one or more JSON Line entries to a dataset
 #'
+#' @description
 #' Adds one or more JSON Line entries to a dataset. A JSON Line includes
 #' information about an image used for training or testing an Amazon
 #' Lookout for Vision model. The following is an example JSON Line.

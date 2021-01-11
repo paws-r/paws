@@ -32,8 +32,7 @@ and the rules for an acceptable match. When a matchmaking request
 identifies a group of players who want to play together, FlexMatch finds
 additional players to fill the match. Match type, rules, and other
 features are defined in a \code{MatchmakingConfiguration}.
-}
-\details{
+
 To start matchmaking, provide a unique ticket ID, specify a matchmaking
 configuration, and include the players to be matched. For each player,
 you must also include the player attribute values that are required by

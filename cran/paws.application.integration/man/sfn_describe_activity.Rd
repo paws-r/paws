@@ -11,8 +11,7 @@ sfn_describe_activity(activityArn)
 }
 \description{
 Describes an activity.
-}
-\details{
+
 This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
 }

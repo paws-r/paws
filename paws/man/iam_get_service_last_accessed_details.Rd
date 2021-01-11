@@ -36,8 +36,7 @@ parameter in \code{GetServiceLastAccessedDetails} to retrieve the status of
 your report job. When the report is complete, you can retrieve the
 generated report. The report includes a list of AWS services that the
 resource (user, group, role, or managed policy) can access.
-}
-\details{
+
 Service last accessed data does not use other policy types when
 determining whether a resource could access a service. These other
 policy types include resource-based policies, access control lists, AWS

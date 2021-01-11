@@ -12,8 +12,7 @@ AWS account.}
 }
 \description{
 Deletes a deployment configuration.
-}
-\details{
+
 A deployment configuration cannot be deleted if it is currently in use.
 Predefined configurations cannot be deleted.
 }

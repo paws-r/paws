@@ -25,8 +25,7 @@ error. You can use DescribeVault to return the number of archives in a
 vault, and you can use \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html}{Initiate a Job (POST jobs)}
 to initiate a new inventory retrieval for a vault. The inventory
 contains the archive IDs you use to delete archives using \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html}{Delete Archive (DELETE archive)}.
-}
-\details{
+
 This operation is idempotent.
 
 An AWS account has full permission to perform all operations (actions).

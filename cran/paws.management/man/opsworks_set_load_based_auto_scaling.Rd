@@ -25,8 +25,7 @@ instances.}
 \description{
 Specify the load-based auto scaling configuration for a specified layer.
 For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-autoscaling.html}{Managing Load with Time-based and Load-based Instances}.
-}
-\details{
+
 To use load-based auto scaling, you must create a set of load-based auto
 scaling instances. Load-based auto scaling operates only on the
 instances from that set, so you must ensure that you have created enough

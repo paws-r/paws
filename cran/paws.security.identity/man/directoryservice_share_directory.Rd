@@ -30,8 +30,7 @@ Shares a specified directory (\code{DirectoryId}) in your AWS account
 (directory owner) with another AWS account (directory consumer). With
 this operation you can use your directory from any AWS account and from
 any Amazon VPC within an AWS Region.
-}
-\details{
+
 When you share your AWS Managed Microsoft AD directory, AWS Directory
 Service creates a shared directory in the directory consumer account.
 This shared directory contains the metadata to provide access to the

@@ -15,8 +15,7 @@ operation.}
 \description{
 Connects or reconnects a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store}
 to its associated AWS CloudHSM cluster.
-}
-\details{
+
 The custom key store must be connected before you can create customer
 master keys (CMKs) in the key store or use the CMKs it contains. You can
 disconnect and reconnect a custom key store at any time.

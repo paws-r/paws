@@ -43,8 +43,7 @@ which you define.}
 }
 \description{
 Creates an Amazon EKS add-on.
-}
-\details{
+
 Amazon EKS add-ons help to automate the provisioning and lifecycle
 management of common operational software for Amazon EKS clusters.
 Amazon EKS add-ons can only be used with Amazon EKS clusters running

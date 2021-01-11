@@ -23,8 +23,7 @@ Required.}
 }
 \description{
 Sends a message to a particular channel that the member is a part of.
-}
-\details{
+
 \code{STANDARD} messages can contain 4KB of data and the 1KB of metadata.
 \code{CONTROL} messages can contain 30 bytes of data and no metadata.
 }

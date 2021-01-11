@@ -5,6 +5,7 @@ NULL
 
 #' Adds metadata tags to an Amazon DocumentDB resource
 #'
+#' @description
 #' Adds metadata tags to an Amazon DocumentDB resource. You can use these
 #' tags with cost allocation reporting to track costs that are associated
 #' with Amazon DocumentDB resources. or in a `Condition` statement in an
@@ -53,6 +54,7 @@ docdb_add_tags_to_resource <- function(ResourceName, Tags) {
 #' Applies a pending maintenance action to a resource (for example, to an
 #' Amazon DocumentDB instance)
 #'
+#' @description
 #' Applies a pending maintenance action to a resource (for example, to an
 #' Amazon DocumentDB instance).
 #'
@@ -109,6 +111,7 @@ docdb_apply_pending_maintenance_action <- function(ResourceIdentifier, ApplyActi
 
 #' Copies the specified cluster parameter group
 #'
+#' @description
 #' Copies the specified cluster parameter group.
 #'
 #' @usage
@@ -184,6 +187,7 @@ docdb_copy_db_cluster_parameter_group <- function(SourceDBClusterParameterGroupI
 
 #' Copies a snapshot of a cluster
 #'
+#' @description
 #' Copies a snapshot of a cluster.
 #' 
 #' To copy a cluster snapshot from a shared manual cluster snapshot,
@@ -320,6 +324,7 @@ docdb_copy_db_cluster_snapshot <- function(SourceDBClusterSnapshotIdentifier, Ta
 
 #' Creates a new Amazon DocumentDB cluster
 #'
+#' @description
 #' Creates a new Amazon DocumentDB cluster.
 #'
 #' @usage
@@ -497,6 +502,7 @@ docdb_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPer
 
 #' Creates a new cluster parameter group
 #'
+#' @description
 #' Creates a new cluster parameter group.
 #' 
 #' Parameters in a cluster parameter group apply to all of the instances in
@@ -570,6 +576,7 @@ docdb_create_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 
 #' Creates a snapshot of a cluster
 #'
+#' @description
 #' Creates a snapshot of a cluster.
 #'
 #' @usage
@@ -634,6 +641,7 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 
 #' Creates a new instance
 #'
+#' @description
 #' Creates a new instance.
 #'
 #' @usage
@@ -732,6 +740,7 @@ docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engi
 
 #' Creates a new subnet group
 #'
+#' @description
 #' Creates a new subnet group. subnet groups must contain at least one
 #' subnet in at least two Availability Zones in the AWS Region.
 #'
@@ -789,6 +798,7 @@ docdb_create_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 
 #' Deletes a previously provisioned cluster
 #'
+#' @description
 #' Deletes a previously provisioned cluster. When you delete a cluster, all
 #' automated backups for that cluster are deleted and can't be recovered.
 #' Manual DB cluster snapshots of the specified cluster are not deleted.
@@ -857,6 +867,7 @@ docdb_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NUL
 
 #' Deletes a specified cluster parameter group
 #'
+#' @description
 #' Deletes a specified cluster parameter group. The cluster parameter group
 #' to be deleted can't be associated with any clusters.
 #'
@@ -902,6 +913,7 @@ docdb_delete_db_cluster_parameter_group <- function(DBClusterParameterGroupName)
 
 #' Deletes a cluster snapshot
 #'
+#' @description
 #' Deletes a cluster snapshot. If the snapshot is being copied, the copy
 #' operation is terminated.
 #' 
@@ -944,6 +956,7 @@ docdb_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 
 #' Deletes a previously provisioned instance
 #'
+#' @description
 #' Deletes a previously provisioned instance.
 #'
 #' @usage
@@ -985,6 +998,7 @@ docdb_delete_db_instance <- function(DBInstanceIdentifier) {
 
 #' Deletes a subnet group
 #'
+#' @description
 #' Deletes a subnet group.
 #' 
 #' The specified database subnet group must not be associated with any DB
@@ -1033,6 +1047,7 @@ docdb_delete_db_subnet_group <- function(DBSubnetGroupName) {
 #' Returns a list of certificate authority (CA) certificates provided by
 #' Amazon DocumentDB for this AWS account
 #'
+#' @description
 #' Returns a list of certificate authority (CA) certificates provided by
 #' Amazon DocumentDB for this AWS account.
 #'
@@ -1105,6 +1120,7 @@ docdb_describe_certificates <- function(CertificateIdentifier = NULL, Filters = 
 
 #' Returns a list of DBClusterParameterGroup descriptions
 #'
+#' @description
 #' Returns a list of `DBClusterParameterGroup` descriptions. If a
 #' `DBClusterParameterGroupName` parameter is specified, the list contains
 #' only the description of the specified cluster parameter group.
@@ -1172,6 +1188,7 @@ docdb_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupNa
 #' Returns the detailed parameter list for a particular cluster parameter
 #' group
 #'
+#' @description
 #' Returns the detailed parameter list for a particular cluster parameter
 #' group.
 #'
@@ -1242,6 +1259,7 @@ docdb_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, So
 #' Returns a list of cluster snapshot attribute names and values for a
 #' manual DB cluster snapshot
 #'
+#' @description
 #' Returns a list of cluster snapshot attribute names and values for a
 #' manual DB cluster snapshot.
 #' 
@@ -1287,6 +1305,7 @@ docdb_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdent
 
 #' Returns information about cluster snapshots
 #'
+#' @description
 #' Returns information about cluster snapshots. This API operation supports
 #' pagination.
 #'
@@ -1401,6 +1420,7 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
 
 #' Returns information about provisioned Amazon DocumentDB clusters
 #'
+#' @description
 #' Returns information about provisioned Amazon DocumentDB clusters. This
 #' API operation supports pagination. For certain management features such
 #' as cluster and instance lifecycle management, Amazon DocumentDB
@@ -1477,6 +1497,7 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
 
 #' Returns a list of the available engines
 #'
+#' @description
 #' Returns a list of the available engines.
 #'
 #' @usage
@@ -1558,6 +1579,7 @@ docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NUL
 
 #' Returns information about provisioned Amazon DocumentDB instances
 #'
+#' @description
 #' Returns information about provisioned Amazon DocumentDB instances. This
 #' API supports pagination.
 #'
@@ -1635,6 +1657,7 @@ docdb_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = N
 
 #' Returns a list of DBSubnetGroup descriptions
 #'
+#' @description
 #' Returns a list of `DBSubnetGroup` descriptions. If a `DBSubnetGroupName`
 #' is specified, the list will contain only the descriptions of the
 #' specified `DBSubnetGroup`.
@@ -1697,6 +1720,7 @@ docdb_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = 
 #' Returns the default engine and system parameter information for the
 #' cluster database engine
 #'
+#' @description
 #' Returns the default engine and system parameter information for the
 #' cluster database engine.
 #'
@@ -1759,6 +1783,7 @@ docdb_describe_engine_default_cluster_parameters <- function(DBParameterGroupFam
 #' Displays a list of categories for all event source types, or, if
 #' specified, for a specified source type
 #'
+#' @description
 #' Displays a list of categories for all event source types, or, if
 #' specified, for a specified source type.
 #'
@@ -1809,6 +1834,7 @@ docdb_describe_event_categories <- function(SourceType = NULL, Filters = NULL) {
 #' Returns events related to instances, security groups, snapshots, and DB
 #' parameter groups for the past 14 days
 #'
+#' @description
 #' Returns events related to instances, security groups, snapshots, and DB
 #' parameter groups for the past 14 days. You can obtain events specific to
 #' a particular DB instance, security group, snapshot, or parameter group
@@ -1918,6 +1944,7 @@ docdb_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, St
 
 #' Returns a list of orderable instance options for the specified engine
 #'
+#' @description
 #' Returns a list of orderable instance options for the specified engine.
 #'
 #' @usage
@@ -1990,6 +2017,7 @@ docdb_describe_orderable_db_instance_options <- function(Engine, EngineVersion =
 #' Returns a list of resources (for example, instances) that have at least
 #' one pending maintenance action
 #'
+#' @description
 #' Returns a list of resources (for example, instances) that have at least
 #' one pending maintenance action.
 #'
@@ -2061,6 +2089,7 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
 
 #' Forces a failover for a cluster
 #'
+#' @description
 #' Forces a failover for a cluster.
 #' 
 #' A failover for a cluster promotes one of the Amazon DocumentDB replicas
@@ -2117,6 +2146,7 @@ docdb_failover_db_cluster <- function(DBClusterIdentifier = NULL, TargetDBInstan
 
 #' Lists all tags on an Amazon DocumentDB resource
 #'
+#' @description
 #' Lists all tags on an Amazon DocumentDB resource.
 #'
 #' @usage
@@ -2163,6 +2193,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 
 #' Modifies a setting for an Amazon DocumentDB cluster
 #'
+#' @description
 #' Modifies a setting for an Amazon DocumentDB cluster. You can change one
 #' or more database configuration parameters by specifying these parameters
 #' and the new values in the request.
@@ -2319,6 +2350,7 @@ docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier 
 
 #' Modifies the parameters of a cluster parameter group
 #'
+#' @description
 #' Modifies the parameters of a cluster parameter group. To modify more
 #' than one parameter, submit a list of the following: `ParameterName`,
 #' `ParameterValue`, and `ApplyMethod`. A maximum of 20 parameters can be
@@ -2388,6 +2420,7 @@ docdb_modify_db_cluster_parameter_group <- function(DBClusterParameterGroupName,
 #' Adds an attribute and values to, or removes an attribute and values
 #' from, a manual DB cluster snapshot
 #'
+#' @description
 #' Adds an attribute and values to, or removes an attribute and values
 #' from, a manual DB cluster snapshot.
 #' 
@@ -2467,6 +2500,7 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 
 #' Modifies settings for an instance
 #'
+#' @description
 #' Modifies settings for an instance. You can change one or more database
 #' configuration parameters by specifying these parameters and the new
 #' values in the request.
@@ -2583,6 +2617,7 @@ docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NUL
 
 #' Modifies an existing subnet group
 #'
+#' @description
 #' Modifies an existing subnet group. subnet groups must contain at least
 #' one subnet in at least two Availability Zones in the AWS Region.
 #'
@@ -2633,6 +2668,7 @@ docdb_modify_db_subnet_group <- function(DBSubnetGroupName, DBSubnetGroupDescrip
 
 #' You might need to reboot your instance, usually for maintenance reasons
 #'
+#' @description
 #' You might need to reboot your instance, usually for maintenance reasons.
 #' For example, if you make certain changes, or if you change the cluster
 #' parameter group that is associated with the instance, you must reboot
@@ -2685,6 +2721,7 @@ docdb_reboot_db_instance <- function(DBInstanceIdentifier, ForceFailover = NULL)
 
 #' Removes metadata tags from an Amazon DocumentDB resource
 #'
+#' @description
 #' Removes metadata tags from an Amazon DocumentDB resource.
 #'
 #' @usage
@@ -2727,6 +2764,7 @@ docdb_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' Modifies the parameters of a cluster parameter group to the default
 #' value
 #'
+#' @description
 #' Modifies the parameters of a cluster parameter group to the default
 #' value. To reset specific parameters, submit a list of the following:
 #' `ParameterName` and `ApplyMethod`. To reset the entire cluster parameter
@@ -2794,6 +2832,7 @@ docdb_reset_db_cluster_parameter_group <- function(DBClusterParameterGroupName, 
 
 #' Creates a new cluster from a snapshot or cluster snapshot
 #'
+#' @description
 #' Creates a new cluster from a snapshot or cluster snapshot.
 #' 
 #' If a snapshot is specified, the target cluster is created from the
@@ -2930,6 +2969,7 @@ docdb_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBC
 
 #' Restores a cluster to an arbitrary point in time
 #'
+#' @description
 #' Restores a cluster to an arbitrary point in time. Users can restore to
 #' any point in time before `LatestRestorableTime` for up to
 #' `BackupRetentionPeriod` days. The target cluster is created from the
@@ -3076,6 +3116,7 @@ docdb_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, Sourc
 
 #' Restarts the stopped cluster that is specified by DBClusterIdentifier
 #'
+#' @description
 #' Restarts the stopped cluster that is specified by `DBClusterIdentifier`.
 #' For more information, see [Stopping and Starting an Amazon DocumentDB
 #' Cluster](https://docs.aws.amazon.com/documentdb/latest/developerguide/db-cluster-stop-start.html).
@@ -3115,6 +3156,7 @@ docdb_start_db_cluster <- function(DBClusterIdentifier) {
 
 #' Stops the running cluster that is specified by DBClusterIdentifier
 #'
+#' @description
 #' Stops the running cluster that is specified by `DBClusterIdentifier`.
 #' The cluster must be in the *available* state. For more information, see
 #' [Stopping and Starting an Amazon DocumentDB

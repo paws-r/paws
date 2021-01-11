@@ -12,8 +12,7 @@ activity.}
 }
 \description{
 List tags for a given resource.
-}
-\details{
+
 Tags may only contain Unicode letters, digits, white space, or these
 symbols: \verb{_ . : / = + - @}.
 }

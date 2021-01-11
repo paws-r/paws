@@ -5,6 +5,7 @@ NULL
 
 #' Deletes the specified human loop for a flow definition
 #'
+#' @description
 #' Deletes the specified human loop for a flow definition.
 #'
 #' @usage
@@ -41,6 +42,7 @@ augmentedairuntime_delete_human_loop <- function(HumanLoopName) {
 
 #' Returns information about the specified human loop
 #'
+#' @description
 #' Returns information about the specified human loop.
 #'
 #' @usage
@@ -77,6 +79,7 @@ augmentedairuntime_describe_human_loop <- function(HumanLoopName) {
 
 #' Returns information about human loops, given the specified parameters
 #'
+#' @description
 #' Returns information about human loops, given the specified parameters.
 #' If a human loop was deleted, it will not be included.
 #'
@@ -136,6 +139,7 @@ augmentedairuntime_list_human_loops <- function(CreationTimeAfter = NULL, Creati
 #' Starts a human loop, provided that at least one activation condition is
 #' met
 #'
+#' @description
 #' Starts a human loop, provided that at least one activation condition is
 #' met.
 #'
@@ -189,6 +193,7 @@ augmentedairuntime_start_human_loop <- function(HumanLoopName, FlowDefinitionArn
 
 #' Stops the specified human loop
 #'
+#' @description
 #' Stops the specified human loop.
 #'
 #' @usage

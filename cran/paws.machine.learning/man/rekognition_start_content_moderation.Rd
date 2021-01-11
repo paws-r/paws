@@ -35,8 +35,7 @@ the completion notification.}
 }
 \description{
 Starts asynchronous detection of unsafe content in a stored video.
-}
-\details{
+
 Amazon Rekognition Video can moderate content in a video stored in an
 Amazon S3 bucket. Use Video to specify the bucket name and the filename
 of the video. \code{StartContentModeration} returns a job identifier

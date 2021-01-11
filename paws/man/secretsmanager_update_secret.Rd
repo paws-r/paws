@@ -121,8 +121,7 @@ double-quotes. All of the embedded double quotes are escaped:
 Modifies many of the details of the specified secret. If you include a
 \code{ClientRequestToken} and \emph{either} \code{SecretString} or \code{SecretBinary} then
 it also creates a new version attached to the secret.
-}
-\details{
+
 To modify the rotation configuration of a secret, use RotateSecret
 instead.
 

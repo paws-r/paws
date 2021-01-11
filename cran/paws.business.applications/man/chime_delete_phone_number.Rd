@@ -13,8 +13,7 @@ chime_delete_phone_number(PhoneNumberId)
 Moves the specified phone number into the \strong{Deletion queue}. A phone
 number must be disassociated from any users or Amazon Chime Voice
 Connectors before it can be deleted.
-}
-\details{
+
 Deleted phone numbers remain in the \strong{Deletion queue} for 7 days before
 they are deleted permanently.
 }

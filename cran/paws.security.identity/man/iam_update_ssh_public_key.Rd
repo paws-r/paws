@@ -27,8 +27,7 @@ Sets the status of an IAM user's SSH public key to active or inactive.
 SSH public keys that are inactive cannot be used for authentication.
 This operation can be used to disable a user's SSH public key as part of
 a key rotation work flow.
-}
-\details{
+
 The SSH public key affected by this operation is used only for
 authenticating the associated IAM user to an AWS CodeCommit repository.
 For more information about using SSH keys to authenticate to an AWS

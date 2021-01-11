@@ -17,8 +17,7 @@ value by the number of instances detached.}
 }
 \description{
 Removes one or more instances from the specified Auto Scaling group.
-}
-\details{
+
 After the instances are detached, you can manage them independent of the
 Auto Scaling group.
 

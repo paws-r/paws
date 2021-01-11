@@ -20,8 +20,7 @@ is \code{50} and the maximum value is \code{100}.}
 }
 \description{
 Describes one or more instance refreshes.
-}
-\details{
+
 You can determine the status of a request by looking at the \code{Status}
 parameter. The following are the possible statuses:
 \itemize{

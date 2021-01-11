@@ -20,8 +20,6 @@ the user's namespace.}
 Gets definitions of the specified entities. Uses the latest version of
 the user's namespace by default. This API returns the following TDM
 entities.
-}
-\details{
 \itemize{
 \item Properties
 \item States

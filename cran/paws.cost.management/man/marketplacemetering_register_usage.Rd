@@ -27,8 +27,6 @@ RegisterUsage, but you may choose to do so if you would like to receive
 usage data in your seller reports. The sections below explain the
 behavior of RegisterUsage. RegisterUsage performs two primary functions:
 metering and entitlement.
-}
-\details{
 \itemize{
 \item \emph{Entitlement}: RegisterUsage allows you to verify that the customer
 running your paid software is subscribed to your product on AWS

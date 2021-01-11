@@ -14,8 +14,7 @@ replace the current description.}
 }
 \description{
 Updates the \code{DataSourceName} of a \code{DataSource}.
-}
-\details{
+
 You can use the \code{GetDataSource} operation to view the contents of the
 updated data element.
 }

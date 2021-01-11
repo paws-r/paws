@@ -23,8 +23,7 @@ a \code{CreateVPCAssociationAuthorization} request, you must use the account
 that created the hosted zone. After you authorize the association, use
 the account that created the VPC to submit an
 \code{AssociateVPCWithHostedZone} request.
-}
-\details{
+
 If you want to associate multiple VPCs that you created by using one
 account with a hosted zone that you created by using a different
 account, you must submit one authorization request for each VPC.

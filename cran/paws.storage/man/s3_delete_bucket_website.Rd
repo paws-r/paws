@@ -20,8 +20,7 @@ configuration on the specified bucket. You will get a \verb{200 OK} response
 if the website configuration you are trying to delete does not exist on
 the bucket. Amazon S3 returns a \code{404} response if the bucket specified
 in the request does not exist.
-}
-\details{
+
 This DELETE operation requires the \code{S3:DeleteBucketWebsite} permission.
 By default, only the bucket owner can delete the website configuration
 attached to a bucket. However, bucket owners can grant other users

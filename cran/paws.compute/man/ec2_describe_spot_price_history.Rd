@@ -56,8 +56,7 @@ retrieving the price history data, in UTC format (for example,
 \description{
 Describes the Spot price history. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html}{Spot Instance pricing history}
 in the \emph{Amazon EC2 User Guide for Linux Instances}.
-}
-\details{
+
 When you specify a start and end time, this operation returns the prices
 of the instance types within the time range that you specified and the
 time when the price changed. The price is valid within the time period

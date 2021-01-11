@@ -14,8 +14,7 @@ pipeline.}
 }
 \description{
 Creates a pipeline.
-}
-\details{
+
 In the pipeline structure, you must include either \code{artifactStore} or
 \code{artifactStores} in your pipeline, but you cannot use both. If you
 create a cross-region action in your pipeline, you must use

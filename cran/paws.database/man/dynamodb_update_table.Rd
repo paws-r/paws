@@ -65,8 +65,7 @@ of global tables.}
 \description{
 Modifies the provisioned throughput settings, global secondary indexes,
 or DynamoDB Streams settings for a given table.
-}
-\details{
+
 You can only perform one of the following operations at once:
 \itemize{
 \item Modify the provisioned throughput settings of the table.

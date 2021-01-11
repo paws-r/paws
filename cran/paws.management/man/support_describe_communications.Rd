@@ -28,8 +28,7 @@ Returns communications and attachments for one or more support cases.
 Use the \code{afterTime} and \code{beforeTime} parameters to filter by date. You
 can use the \code{caseId} parameter to restrict the results to a specific
 case.
-}
-\details{
+
 Case data is available for 12 months after creation. If a case was
 created more than 12 months ago, a request for data might cause an
 error.

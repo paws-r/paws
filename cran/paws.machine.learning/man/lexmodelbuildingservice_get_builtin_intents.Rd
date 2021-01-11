@@ -26,8 +26,7 @@ the next request.}
 }
 \description{
 Gets a list of built-in intents that meet the specified criteria.
-}
-\details{
+
 This operation requires permission for the \code{lex:GetBuiltinIntents}
 action.
 }

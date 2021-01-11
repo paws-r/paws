@@ -83,8 +83,7 @@ lowercase string.}
 Modifies the replication instance to apply new settings. You can change
 one or more parameters by specifying these parameters and the new values
 in the request.
-}
-\details{
+
 Some settings are applied during the maintenance window.
 }
 \section{Request syntax}{

@@ -6,6 +6,7 @@ NULL
 #' Associate a virtual private cloud (VPC) subnet endpoint with your custom
 #' routing accelerator
 #'
+#' @description
 #' Associate a virtual private cloud (VPC) subnet endpoint with your custom
 #' routing accelerator.
 #' 
@@ -67,6 +68,7 @@ globalaccelerator_add_custom_routing_endpoints <- function(EndpointConfiguration
 #' Advertises an IPv4 address range that is provisioned for use with your
 #' AWS resources through bring your own IP addresses (BYOIP)
 #'
+#' @description
 #' Advertises an IPv4 address range that is provisioned for use with your
 #' AWS resources through bring your own IP addresses (BYOIP). It can take a
 #' few minutes before traffic to the specified addresses starts routing to
@@ -117,6 +119,7 @@ globalaccelerator_advertise_byoip_cidr <- function(Cidr) {
 #' a VPC subnet endpoint that can receive traffic for a custom routing
 #' accelerator
 #'
+#' @description
 #' Specify the Amazon EC2 instance (destination) IP addresses and ports for
 #' a VPC subnet endpoint that can receive traffic for a custom routing
 #' accelerator. You can allow traffic to all destinations in the subnet
@@ -199,6 +202,7 @@ globalaccelerator_allow_custom_routing_traffic <- function(EndpointGroupArn, End
 
 #' Create an accelerator
 #'
+#' @description
 #' Create an accelerator. An accelerator includes one or more listeners
 #' that process inbound connections and direct traffic to one or more
 #' endpoint groups, each of which includes endpoints, such as Network Load
@@ -287,6 +291,7 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
 
 #' Create a custom routing accelerator
 #'
+#' @description
 #' Create a custom routing accelerator. A custom routing accelerator
 #' directs traffic to one of possibly thousands of Amazon EC2 instance
 #' destinations running in a single or multiple virtual private clouds
@@ -359,6 +364,7 @@ globalaccelerator_create_custom_routing_accelerator <- function(Name, IpAddressT
 #' Create an endpoint group for the specified listener for a custom routing
 #' accelerator
 #'
+#' @description
 #' Create an endpoint group for the specified listener for a custom routing
 #' accelerator. An endpoint group is a collection of endpoints in one AWS
 #' Region.
@@ -418,6 +424,7 @@ globalaccelerator_create_custom_routing_endpoint_group <- function(ListenerArn, 
 #' Create a listener to process inbound connections from clients to a
 #' custom routing accelerator
 #'
+#' @description
 #' Create a listener to process inbound connections from clients to a
 #' custom routing accelerator. Connections arrive to assigned static IP
 #' addresses on the port range that you specify.
@@ -473,6 +480,7 @@ globalaccelerator_create_custom_routing_listener <- function(AcceleratorArn, Por
 
 #' Create an endpoint group for the specified listener
 #'
+#' @description
 #' Create an endpoint group for the specified listener. An endpoint group
 #' is a collection of endpoints in one AWS Region. A resource must be valid
 #' and active when you add it as an endpoint.
@@ -574,6 +582,7 @@ globalaccelerator_create_endpoint_group <- function(ListenerArn, EndpointGroupRe
 #' Create a listener to process inbound connections from clients to an
 #' accelerator
 #'
+#' @description
 #' Create a listener to process inbound connections from clients to an
 #' accelerator. Connections arrive to assigned static IP addresses on a
 #' port, port range, or list of port ranges that you specify.
@@ -649,6 +658,7 @@ globalaccelerator_create_listener <- function(AcceleratorArn, PortRanges, Protoc
 
 #' Delete an accelerator
 #'
+#' @description
 #' Delete an accelerator. Before you can delete an accelerator, you must
 #' disable it and remove all dependent resources (listeners and endpoint
 #' groups). To disable the accelerator, update the accelerator to set
@@ -705,6 +715,7 @@ globalaccelerator_delete_accelerator <- function(AcceleratorArn) {
 
 #' Delete a custom routing accelerator
 #'
+#' @description
 #' Delete a custom routing accelerator. Before you can delete an
 #' accelerator, you must disable it and remove all dependent resources
 #' (listeners and endpoint groups). To disable the accelerator, update the
@@ -761,6 +772,7 @@ globalaccelerator_delete_custom_routing_accelerator <- function(AcceleratorArn) 
 #' Delete an endpoint group from a listener for a custom routing
 #' accelerator
 #'
+#' @description
 #' Delete an endpoint group from a listener for a custom routing
 #' accelerator.
 #'
@@ -798,6 +810,7 @@ globalaccelerator_delete_custom_routing_endpoint_group <- function(EndpointGroup
 
 #' Delete a listener for a custom routing accelerator
 #'
+#' @description
 #' Delete a listener for a custom routing accelerator.
 #'
 #' @usage
@@ -834,6 +847,7 @@ globalaccelerator_delete_custom_routing_listener <- function(ListenerArn) {
 
 #' Delete an endpoint group from a listener
 #'
+#' @description
 #' Delete an endpoint group from a listener.
 #'
 #' @usage
@@ -870,6 +884,7 @@ globalaccelerator_delete_endpoint_group <- function(EndpointGroupArn) {
 
 #' Delete a listener from an accelerator
 #'
+#' @description
 #' Delete a listener from an accelerator.
 #'
 #' @usage
@@ -908,6 +923,7 @@ globalaccelerator_delete_listener <- function(ListenerArn) {
 #' a VPC subnet endpoint that cannot receive traffic for a custom routing
 #' accelerator
 #'
+#' @description
 #' Specify the Amazon EC2 instance (destination) IP addresses and ports for
 #' a VPC subnet endpoint that cannot receive traffic for a custom routing
 #' accelerator. You can deny traffic to all destinations in the VPC
@@ -988,6 +1004,7 @@ globalaccelerator_deny_custom_routing_traffic <- function(EndpointGroupArn, Endp
 #' your AWS resources through bring your own IP addresses (BYOIP) and
 #' deletes the corresponding address pool
 #'
+#' @description
 #' Releases the specified address range that you provisioned to use with
 #' your AWS resources through bring your own IP addresses (BYOIP) and
 #' deletes the corresponding address pool.
@@ -1037,6 +1054,7 @@ globalaccelerator_deprovision_byoip_cidr <- function(Cidr) {
 
 #' Describe an accelerator
 #'
+#' @description
 #' Describe an accelerator.
 #'
 #' @usage
@@ -1073,6 +1091,7 @@ globalaccelerator_describe_accelerator <- function(AcceleratorArn) {
 
 #' Describe the attributes of an accelerator
 #'
+#' @description
 #' Describe the attributes of an accelerator.
 #'
 #' @usage
@@ -1110,6 +1129,7 @@ globalaccelerator_describe_accelerator_attributes <- function(AcceleratorArn) {
 
 #' Describe a custom routing accelerator
 #'
+#' @description
 #' Describe a custom routing accelerator.
 #'
 #' @usage
@@ -1146,6 +1166,7 @@ globalaccelerator_describe_custom_routing_accelerator <- function(AcceleratorArn
 
 #' Describe the attributes of a custom routing accelerator
 #'
+#' @description
 #' Describe the attributes of a custom routing accelerator.
 #'
 #' @usage
@@ -1184,6 +1205,7 @@ globalaccelerator_describe_custom_routing_accelerator_attributes <- function(Acc
 
 #' Describe an endpoint group for a custom routing accelerator
 #'
+#' @description
 #' Describe an endpoint group for a custom routing accelerator.
 #'
 #' @usage
@@ -1221,6 +1243,7 @@ globalaccelerator_describe_custom_routing_endpoint_group <- function(EndpointGro
 
 #' The description of a listener for a custom routing accelerator
 #'
+#' @description
 #' The description of a listener for a custom routing accelerator.
 #'
 #' @usage
@@ -1257,6 +1280,7 @@ globalaccelerator_describe_custom_routing_listener <- function(ListenerArn) {
 
 #' Describe an endpoint group
 #'
+#' @description
 #' Describe an endpoint group.
 #'
 #' @usage
@@ -1293,6 +1317,7 @@ globalaccelerator_describe_endpoint_group <- function(EndpointGroupArn) {
 
 #' Describe a listener
 #'
+#' @description
 #' Describe a listener.
 #'
 #' @usage
@@ -1329,6 +1354,7 @@ globalaccelerator_describe_listener <- function(ListenerArn) {
 
 #' List the accelerators for an AWS account
 #'
+#' @description
 #' List the accelerators for an AWS account.
 #'
 #' @usage
@@ -1371,6 +1397,7 @@ globalaccelerator_list_accelerators <- function(MaxResults = NULL, NextToken = N
 #' ProvisionByoipCidr, including the current state and a history of state
 #' changes
 #'
+#' @description
 #' Lists the IP address ranges that were specified in calls to
 #' [ProvisionByoipCidr](https://docs.aws.amazon.com/global-accelerator/latest/api/),
 #' including the current state and a history of state changes.
@@ -1413,6 +1440,7 @@ globalaccelerator_list_byoip_cidrs <- function(MaxResults = NULL, NextToken = NU
 
 #' List the custom routing accelerators for an AWS account
 #'
+#' @description
 #' List the custom routing accelerators for an AWS account.
 #'
 #' @usage
@@ -1455,6 +1483,7 @@ globalaccelerator_list_custom_routing_accelerators <- function(MaxResults = NULL
 #' List the endpoint groups that are associated with a listener for a
 #' custom routing accelerator
 #'
+#' @description
 #' List the endpoint groups that are associated with a listener for a
 #' custom routing accelerator.
 #'
@@ -1500,6 +1529,7 @@ globalaccelerator_list_custom_routing_endpoint_groups <- function(ListenerArn, M
 
 #' List the listeners for a custom routing accelerator
 #'
+#' @description
 #' List the listeners for a custom routing accelerator.
 #'
 #' @usage
@@ -1545,6 +1575,7 @@ globalaccelerator_list_custom_routing_listeners <- function(AcceleratorArn, MaxR
 #' port to destination EC2 instance IP addresses and ports in the virtual
 #' public cloud (VPC) subnet endpoint for a custom routing accelerator
 #'
+#' @description
 #' Provides a complete mapping from the public accelerator IP address and
 #' port to destination EC2 instance IP addresses and ports in the virtual
 #' public cloud (VPC) subnet endpoint for a custom routing accelerator. For
@@ -1609,6 +1640,7 @@ globalaccelerator_list_custom_routing_port_mappings <- function(AcceleratorArn, 
 #' List the port mappings for a specific EC2 instance (destination) in a
 #' VPC subnet endpoint
 #'
+#' @description
 #' List the port mappings for a specific EC2 instance (destination) in a
 #' VPC subnet endpoint. The response is the mappings for one destination IP
 #' address. This is useful when your subnet endpoint has mappings that span
@@ -1660,6 +1692,7 @@ globalaccelerator_list_custom_routing_port_mappings_by_destination <- function(E
 
 #' List the endpoint groups that are associated with a listener
 #'
+#' @description
 #' List the endpoint groups that are associated with a listener.
 #'
 #' @usage
@@ -1703,6 +1736,7 @@ globalaccelerator_list_endpoint_groups <- function(ListenerArn, MaxResults = NUL
 
 #' List the listeners for an accelerator
 #'
+#' @description
 #' List the listeners for an accelerator.
 #'
 #' @usage
@@ -1746,6 +1780,7 @@ globalaccelerator_list_listeners <- function(AcceleratorArn, MaxResults = NULL, 
 
 #' List all tags for an accelerator
 #'
+#' @description
 #' List all tags for an accelerator.
 #' 
 #' For more information, see [Tagging in AWS Global
@@ -1789,6 +1824,7 @@ globalaccelerator_list_tags_for_resource <- function(ResourceArn) {
 #' bring your own IP addresses (BYOIP) and creates a corresponding address
 #' pool
 #'
+#' @description
 #' Provisions an IP address range to use with your AWS resources through
 #' bring your own IP addresses (BYOIP) and creates a corresponding address
 #' pool. After the address range is provisioned, it is ready to be
@@ -1842,6 +1878,7 @@ globalaccelerator_provision_byoip_cidr <- function(Cidr, CidrAuthorizationContex
 
 #' Remove endpoints from a custom routing accelerator
 #'
+#' @description
 #' Remove endpoints from a custom routing accelerator.
 #'
 #' @usage
@@ -1885,6 +1922,7 @@ globalaccelerator_remove_custom_routing_endpoints <- function(EndpointIds, Endpo
 
 #' Add tags to an accelerator resource
 #'
+#' @description
 #' Add tags to an accelerator resource.
 #' 
 #' For more information, see [Tagging in AWS Global
@@ -1934,6 +1972,7 @@ globalaccelerator_tag_resource <- function(ResourceArn, Tags) {
 
 #' Remove tags from a Global Accelerator resource
 #'
+#' @description
 #' Remove tags from a Global Accelerator resource. When you specify a tag
 #' key, the action removes both that key and its associated value. The
 #' operation succeeds even if you attempt to remove tags from an
@@ -1982,6 +2021,7 @@ globalaccelerator_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Update an accelerator
 #'
+#' @description
 #' Update an accelerator.
 #' 
 #' Global Accelerator is a global service that supports endpoints in
@@ -2035,6 +2075,7 @@ globalaccelerator_update_accelerator <- function(AcceleratorArn, Name = NULL, Ip
 
 #' Update the attributes for an accelerator
 #'
+#' @description
 #' Update the attributes for an accelerator.
 #'
 #' @usage
@@ -2096,6 +2137,7 @@ globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn, Flow
 
 #' Update a custom routing accelerator
 #'
+#' @description
 #' Update a custom routing accelerator.
 #'
 #' @usage
@@ -2145,6 +2187,7 @@ globalaccelerator_update_custom_routing_accelerator <- function(AcceleratorArn, 
 
 #' Update the attributes for a custom routing accelerator
 #'
+#' @description
 #' Update the attributes for a custom routing accelerator.
 #'
 #' @usage
@@ -2206,6 +2249,7 @@ globalaccelerator_update_custom_routing_accelerator_attributes <- function(Accel
 
 #' Update a listener for a custom routing accelerator
 #'
+#' @description
 #' Update a listener for a custom routing accelerator.
 #'
 #' @usage
@@ -2256,6 +2300,7 @@ globalaccelerator_update_custom_routing_listener <- function(ListenerArn, PortRa
 
 #' Update an endpoint group
 #'
+#' @description
 #' Update an endpoint group. A resource must be valid and active when you
 #' add it as an endpoint.
 #'
@@ -2349,6 +2394,7 @@ globalaccelerator_update_endpoint_group <- function(EndpointGroupArn, EndpointCo
 
 #' Update a listener
 #'
+#' @description
 #' Update a listener.
 #'
 #' @usage
@@ -2421,6 +2467,7 @@ globalaccelerator_update_listener <- function(ListenerArn, PortRanges = NULL, Pr
 #' Stops advertising an address range that is provisioned as an address
 #' pool
 #'
+#' @description
 #' Stops advertising an address range that is provisioned as an address
 #' pool. You can perform this operation at most once every 10 seconds, even
 #' if you specify different address ranges each time.

@@ -30,8 +30,7 @@ retrieve additional items.}
 \description{
 List all permissions on a private CA, if any, granted to the AWS
 Certificate Manager (ACM) service principal (acm.amazonaws.com).
-}
-\details{
+
 These permissions allow ACM to issue and renew ACM certificates that
 reside in the same AWS account as the CA.
 

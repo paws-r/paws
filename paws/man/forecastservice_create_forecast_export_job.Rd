@@ -51,8 +51,7 @@ count against your tags per resource limit.
 Exports a forecast created by the CreateForecast operation to your
 Amazon Simple Storage Service (Amazon S3) bucket. The forecast file name
 will match the following conventions:
-}
-\details{
+
 <ForecastExportJobName>\\\emph{<ExportTimestamp>\\}<PartNumber>
 
 where the <ExportTimestamp> component is in Java SimpleDateFormat

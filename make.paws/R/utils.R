@@ -110,9 +110,10 @@ get_url <- function(url, tries = 3) {
         error = function(e) NULL
       )
       if (!is.null(resp)) {
-        if (resp$status_code == 404) {
+        if (resp$status_code >= 400) {
           return(NULL)
         } else if (300 <= resp$status_code && resp$status_code < 400) {
+          # Check whether the redirect is valid.
           return(get_url(update_url(url, resp$url), tries = tries - 1))
         } else {
           return(update_url(url, resp$url))

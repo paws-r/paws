@@ -29,8 +29,7 @@ Default: \code{ALL}}
 }
 \description{
 Retrieves a paginated list of asset summaries.
-}
-\details{
+
 You can use this operation to do the following:
 \itemize{
 \item List assets based on a specific asset model.

@@ -38,8 +38,7 @@ Requests the import of a resource as a Service Catalog provisioned
 product that is associated to a Service Catalog product and provisioning
 artifact. Once imported, all supported Service Catalog governance
 actions are supported on the provisioned product.
-}
-\details{
+
 Resource import only supports CloudFormation stack ARNs. CloudFormation
 StackSets and non-root nested stacks are not supported.
 

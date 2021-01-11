@@ -60,8 +60,6 @@ are using an asymmetric CMK, we recommend RSAES\\_OAEP\\_SHA\\_256.}
 \description{
 Encrypts plaintext into ciphertext by using a customer master key (CMK).
 The \code{Encrypt} operation has two primary use cases:
-}
-\details{
 \itemize{
 \item You can encrypt small amounts of arbitrary data, such as a personal
 identifier or database password, or other sensitive information.

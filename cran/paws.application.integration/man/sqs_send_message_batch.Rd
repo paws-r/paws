@@ -17,8 +17,7 @@ Queue URLs and names are case-sensitive.}
 Delivers up to ten messages to the specified queue. This is a batch
 version of \verb{ <a>SendMessage</a>.} For a FIFO queue, multiple messages
 within a single batch are enqueued in the order they are sent.
-}
-\details{
+
 The result of sending each message is reported individually in the
 response. Because the batch request can result in a combination of
 successful and unsuccessful actions, you should check for batch errors

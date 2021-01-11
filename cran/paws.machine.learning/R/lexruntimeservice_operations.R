@@ -5,6 +5,7 @@ NULL
 
 #' Removes session information for a specified bot, alias, and user ID
 #'
+#' @description
 #' Removes session information for a specified bot, alias, and user ID.
 #'
 #' @usage
@@ -45,6 +46,7 @@ lexruntimeservice_delete_session <- function(botName, botAlias, userId) {
 
 #' Returns session information for a specified bot, alias, and user ID
 #'
+#' @description
 #' Returns session information for a specified bot, alias, and user ID.
 #'
 #' @usage
@@ -93,6 +95,7 @@ lexruntimeservice_get_session <- function(botName, botAlias, userId, checkpointL
 
 #' Sends user input (text or speech) to Amazon Lex
 #'
+#' @description
 #' Sends user input (text or speech) to Amazon Lex. Clients use this API to
 #' send text and audio requests to Amazon Lex at runtime. Amazon Lex
 #' interprets the user input using the machine learning model that it built
@@ -305,6 +308,7 @@ lexruntimeservice_post_content <- function(botName, botAlias, userId, sessionAtt
 
 #' Sends user input to Amazon Lex
 #'
+#' @description
 #' Sends user input to Amazon Lex. Client applications can use this API to
 #' send requests to Amazon Lex at runtime. Amazon Lex then interprets the
 #' user input using the machine learning model it built for the bot.
@@ -461,6 +465,7 @@ lexruntimeservice_post_text <- function(botName, botAlias, userId, sessionAttrib
 #' Creates a new session or modifies an existing session with an Amazon Lex
 #' bot
 #'
+#' @description
 #' Creates a new session or modifies an existing session with an Amazon Lex
 #' bot. Use this operation to enable your application to set the state of
 #' the bot.

@@ -74,8 +74,7 @@ This operation lists in-progress multipart uploads. An in-progress
 multipart upload is a multipart upload that has been initiated using the
 Initiate Multipart Upload request, but has not yet been completed or
 aborted.
-}
-\details{
+
 This operation returns at most 1,000 multipart uploads in the response.
 1,000 multipart uploads is the maximum number of uploads a response can
 include, which is also the default value. You can further limit the

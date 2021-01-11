@@ -29,8 +29,7 @@ Gets the face search results for Amazon Rekognition Video face search
 started by StartFaceSearch. The search returns faces in a collection
 that match the faces of persons detected in a video. It also includes
 the time(s) that faces are matched in the video.
-}
-\details{
+
 Face search in a video is an asynchronous operation. You start face
 search by calling to StartFaceSearch which returns a job identifier
 (\code{JobId}). When the search operation finishes, Amazon Rekognition Video

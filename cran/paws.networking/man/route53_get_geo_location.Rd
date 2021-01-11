@@ -35,8 +35,7 @@ If you specify \code{subdivisioncode}, you must also specify \code{US} for
 \description{
 Gets information about whether a specified geographic location is
 supported for Amazon Route 53 geolocation resource record sets.
-}
-\details{
+
 Use the following syntax to determine whether a continent is supported
 for geolocation:
 

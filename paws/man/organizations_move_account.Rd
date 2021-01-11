@@ -45,8 +45,7 @@ dash and from 8 to 32 additional lowercase letters or digits.
 \description{
 Moves an account from its current source parent root or organizational
 unit (OU) to the specified destination parent root or OU.
-}
-\details{
+
 This operation can be called only from the organization's management
 account.
 }

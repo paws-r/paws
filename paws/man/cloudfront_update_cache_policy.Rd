@@ -19,8 +19,7 @@ returned in the cache policy’s \code{ETag} field in the response to
 }
 \description{
 Updates a cache policy configuration.
-}
-\details{
+
 When you update a cache policy configuration, all the fields are updated
 with the values provided in the request. You cannot update some fields
 independent of others. To update a cache policy configuration:

@@ -23,8 +23,7 @@ returned. This parameter is optional.}
 Creates a backup plan using a backup plan name and backup rules. A
 backup plan is a document that contains information that AWS Backup uses
 to schedule tasks that create recovery points for resources.
-}
-\details{
+
 If you call \code{CreateBackupPlan} with a plan that already exists, an
 \code{AlreadyExistsException} is returned.
 }

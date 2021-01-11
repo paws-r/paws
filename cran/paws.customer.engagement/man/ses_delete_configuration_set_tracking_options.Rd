@@ -14,8 +14,7 @@ tracking options.}
 \description{
 Deletes an association between a configuration set and a custom domain
 for open and click event tracking.
-}
-\details{
+
 By default, images and links used for tracking open and click events are
 hosted on domains operated by Amazon SES. You can configure a subdomain
 of your own to handle these events. For information about using custom

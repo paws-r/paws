@@ -22,8 +22,7 @@ permissions you want to add in \code{InboundPermissionAuthorizations}, and
 permissions you want to remove in \code{InboundPermissionRevocations}.
 Permissions to be removed must match existing fleet permissions. If
 successful, the fleet ID for the updated fleet is returned.
-}
-\details{
+
 \strong{Learn more}
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/fleets-intro.html}{Setting up GameLift Fleets}

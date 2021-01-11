@@ -15,8 +15,7 @@ returned by RunJobFlow and can also be obtained from ListClusters.}
 \description{
 AddJobFlowSteps adds new steps to a running cluster. A maximum of 256
 steps are allowed in each job flow.
-}
-\details{
+
 If your cluster is long-running (such as a Hive data warehouse) or
 complex, you may require more than 256 steps to process your data. You
 can bypass the 256-step limitation in various ways, including using SSH

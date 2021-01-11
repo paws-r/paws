@@ -33,8 +33,7 @@ Lists and describes the models in an Amazon Rekognition Custom Labels
 project. You can specify up to 10 model versions in
 \code{ProjectVersionArns}. If you don't specify a value, descriptions for all
 models are returned.
-}
-\details{
+
 This operation requires permissions to perform the
 \code{rekognition:DescribeProjectVersions} action.
 }

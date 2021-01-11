@@ -41,8 +41,7 @@ returned \code{NextToken} value.}
 }
 \description{
 Returns AWS Lambda function recommendations.
-}
-\details{
+
 AWS Compute Optimizer generates recommendations for functions that meet
 a specific set of requirements. For more information, see the \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html}{Supported resources and requirements}
 in the \emph{AWS Compute Optimizer User Guide}.

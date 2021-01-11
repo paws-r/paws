@@ -18,8 +18,7 @@ Deletes a fleet scaling policy. Once deleted, the policy is no longer in
 force and GameLift removes all record of it. To delete a scaling policy,
 specify both the scaling policy name and the fleet ID it is associated
 with.
-}
-\details{
+
 To temporarily suspend scaling policies, call StopFleetActions. This
 operation suspends all policies for the fleet.
 \itemize{

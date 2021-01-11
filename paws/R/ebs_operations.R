@@ -6,6 +6,7 @@ NULL
 #' Seals and completes the snapshot after all of the required blocks of
 #' data have been written to it
 #'
+#' @description
 #' Seals and completes the snapshot after all of the required blocks of
 #' data have been written to it. Completing the snapshot changes the status
 #' to `completed`. You cannot write new blocks to a snapshot after it has
@@ -62,6 +63,7 @@ ebs_complete_snapshot <- function(SnapshotId, ChangedBlocksCount, Checksum = NUL
 
 #' Returns the data in a block in an Amazon Elastic Block Store snapshot
 #'
+#' @description
 #' Returns the data in a block in an Amazon Elastic Block Store snapshot.
 #'
 #' @usage
@@ -109,6 +111,7 @@ ebs_get_snapshot_block <- function(SnapshotId, BlockIndex, BlockToken) {
 #' Returns information about the blocks that are different between two
 #' Amazon Elastic Block Store snapshots of the same volume/snapshot lineage
 #'
+#' @description
 #' Returns information about the blocks that are different between two
 #' Amazon Elastic Block Store snapshots of the same volume/snapshot
 #' lineage.
@@ -166,6 +169,7 @@ ebs_list_changed_blocks <- function(FirstSnapshotId = NULL, SecondSnapshotId, Ne
 #' Returns information about the blocks in an Amazon Elastic Block Store
 #' snapshot
 #'
+#' @description
 #' Returns information about the blocks in an Amazon Elastic Block Store
 #' snapshot.
 #'
@@ -212,6 +216,7 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
 
 #' Writes a block of data to a snapshot
 #'
+#' @description
 #' Writes a block of data to a snapshot. If the specified block contains
 #' data, the existing data is overwritten. The target snapshot must be in
 #' the `pending` state.
@@ -287,6 +292,7 @@ ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength
 
 #' Creates a new Amazon EBS snapshot
 #'
+#' @description
 #' Creates a new Amazon EBS snapshot. The new snapshot enters the `pending`
 #' state after the request completes.
 #' 

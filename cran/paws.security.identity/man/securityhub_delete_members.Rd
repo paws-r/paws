@@ -11,8 +11,7 @@ securityhub_delete_members(AccountIds)
 }
 \description{
 Deletes the specified member accounts from Security Hub.
-}
-\details{
+
 Can be used to delete member accounts that belong to an organization as
 well as member accounts that were invited manually.
 }

@@ -15,8 +15,7 @@ Sends a list of asset property values to AWS IoT SiteWise. Each value is
 a timestamp-quality-value (TQV) data point. For more information, see
 \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/ingest-api.html}{Ingesting data using the API}
 in the \emph{AWS IoT SiteWise User Guide}.
-}
-\details{
+
 To identify an asset property, you must specify one of the following:
 \itemize{
 \item The \code{assetId} and \code{propertyId} of an asset property.

@@ -35,8 +35,7 @@ change the description of a set after you create it.}
 This is the latest version of \strong{AWS WAF}, named AWS WAFV2, released in
 November, 2019. For information, including how to migrate your AWS WAF
 resources from the prior release, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-}
-\details{
+
 Creates a RegexPatternSet, which you reference in a
 RegexPatternSetReferenceStatement, to have AWS WAF inspect a web request
 component for the specified patterns.

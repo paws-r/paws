@@ -5,6 +5,7 @@ NULL
 
 #' Creates a policy to manage the lifecycle of the specified AWS resources
 #'
+#' @description
 #' Creates a policy to manage the lifecycle of the specified AWS resources.
 #' You can create up to 100 lifecycle policies.
 #'
@@ -159,6 +160,7 @@ dlm_create_lifecycle_policy <- function(ExecutionRoleArn, Description, State, Po
 #' Deletes the specified lifecycle policy and halts the automated
 #' operations that the policy specified
 #'
+#' @description
 #' Deletes the specified lifecycle policy and halts the automated
 #' operations that the policy specified.
 #'
@@ -197,6 +199,7 @@ dlm_delete_lifecycle_policy <- function(PolicyId) {
 #' Gets summary information about all or the specified data lifecycle
 #' policies
 #'
+#' @description
 #' Gets summary information about all or the specified data lifecycle
 #' policies.
 #' 
@@ -260,6 +263,7 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
 
 #' Gets detailed information about the specified lifecycle policy
 #'
+#' @description
 #' Gets detailed information about the specified lifecycle policy.
 #'
 #' @usage
@@ -296,6 +300,7 @@ dlm_get_lifecycle_policy <- function(PolicyId) {
 
 #' Lists the tags for the specified resource
 #'
+#' @description
 #' Lists the tags for the specified resource.
 #'
 #' @usage
@@ -332,6 +337,7 @@ dlm_list_tags_for_resource <- function(ResourceArn) {
 
 #' Adds the specified tags to the specified resource
 #'
+#' @description
 #' Adds the specified tags to the specified resource.
 #'
 #' @usage
@@ -372,6 +378,7 @@ dlm_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes the specified tags from the specified resource
 #'
+#' @description
 #' Removes the specified tags from the specified resource.
 #'
 #' @usage
@@ -412,6 +419,7 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates the specified lifecycle policy
 #'
+#' @description
 #' Updates the specified lifecycle policy.
 #'
 #' @usage

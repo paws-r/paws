@@ -20,8 +20,7 @@ DBEngineVersion.}
 \description{
 Associates an AWS Identity and Access Management (IAM) role with a DB
 instance.
-}
-\details{
+
 To add a role to a DB instance, the status of the DB instance must be
 \code{available}.
 }

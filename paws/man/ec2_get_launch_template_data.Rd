@@ -17,8 +17,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Retrieves the configuration data of the specified instance. You can use
 this data to create a launch template.
-}
-\details{
+
 This action calls on other describe actions to get instance information.
 Depending on your instance configuration, you may need to allow the
 following actions in your IAM policy: DescribeSpotInstanceRequests,

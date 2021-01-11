@@ -16,8 +16,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Deletes the specified snapshot.
-}
-\details{
+
 When you make periodic snapshots of a volume, the snapshots are
 incremental, and only the blocks on the device that have changed since
 your last snapshot are saved in the new snapshot. When you delete a

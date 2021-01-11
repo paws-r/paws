@@ -48,8 +48,7 @@ which you define.}
 }
 \description{
 Creates an Amazon EKS control plane.
-}
-\details{
+
 The Amazon EKS control plane consists of control plane instances that
 run the Kubernetes software, such as \code{etcd} and the API server. The
 control plane runs in an account managed by AWS, and the Kubernetes API

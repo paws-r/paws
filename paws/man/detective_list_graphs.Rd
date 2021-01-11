@@ -19,8 +19,7 @@ currently 200.}
 \description{
 Returns the list of behavior graphs that the calling account is a master
 of. This operation can only be called by a master account.
-}
-\details{
+
 Because an account can currently only be the master of one behavior
 graph within a Region, the results always contain a single graph.
 }

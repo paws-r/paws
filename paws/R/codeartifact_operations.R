@@ -5,6 +5,7 @@ NULL
 
 #' Adds an existing external connection to a repository
 #'
+#' @description
 #' Adds an existing external connection to a repository. One external
 #' connection is allowed per repository.
 #' 
@@ -69,6 +70,7 @@ codeartifact_associate_external_connection <- function(domain, domainOwner = NUL
 #' Copies package versions from one repository to another repository in the
 #' same domain
 #'
+#' @description
 #' Copies package versions from one repository to another repository in the
 #' same domain.
 #' 
@@ -173,6 +175,7 @@ codeartifact_copy_package_versions <- function(domain, domainOwner = NULL, sourc
 
 #' Creates a domain
 #'
+#' @description
 #' Creates a domain. CodeArtifact *domains* make it easier to manage
 #' multiple repositories across an organization. You can use a domain to
 #' apply permissions across many repositories owned by different AWS
@@ -246,6 +249,7 @@ codeartifact_create_domain <- function(domain, encryptionKey = NULL, tags = NULL
 
 #' Creates a repository
 #'
+#' @description
 #' Creates a repository.
 #'
 #' @usage
@@ -307,6 +311,7 @@ codeartifact_create_repository <- function(domain, domainOwner = NULL, repositor
 
 #' Deletes a domain
 #'
+#' @description
 #' Deletes a domain. You cannot delete a domain that contains repositories.
 #' If you want to delete a domain with repositories, first delete its
 #' repositories.
@@ -348,6 +353,7 @@ codeartifact_delete_domain <- function(domain, domainOwner = NULL) {
 
 #' Deletes the resource policy set on a domain
 #'
+#' @description
 #' Deletes the resource policy set on a domain.
 #'
 #' @usage
@@ -393,6 +399,7 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 
 #' Deletes one or more versions of a package
 #'
+#' @description
 #' Deletes one or more versions of a package. A deleted package version
 #' cannot be restored in your repository. If you want to remove a package
 #' version from your repository and be able to restore it later, set its
@@ -483,6 +490,7 @@ codeartifact_delete_package_versions <- function(domain, domainOwner = NULL, rep
 
 #' Deletes a repository
 #'
+#' @description
 #' Deletes a repository.
 #'
 #' @usage
@@ -524,6 +532,7 @@ codeartifact_delete_repository <- function(domain, domainOwner = NULL, repositor
 
 #' Deletes the resource policy that is set on a repository
 #'
+#' @description
 #' Deletes the resource policy that is set on a repository. After a
 #' resource policy is deleted, the permissions allowed and denied by the
 #' deleted policy are removed. The effect of deleting a resource policy
@@ -581,6 +590,7 @@ codeartifact_delete_repository_permissions_policy <- function(domain, domainOwne
 #' Returns a DomainDescription object that contains information about the
 #' requested domain
 #'
+#' @description
 #' Returns a
 #' [`DomainDescription`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DomainDescription.html)
 #' object that contains information about the requested domain.
@@ -623,6 +633,7 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #' Returns a PackageVersionDescription object that contains information
 #' about the requested package version
 #'
+#' @description
 #' Returns a
 #' [`PackageVersionDescription`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html)
 #' object that contains information about the requested package version.
@@ -697,6 +708,7 @@ codeartifact_describe_package_version <- function(domain, domainOwner = NULL, re
 #' Returns a RepositoryDescription object that contains detailed
 #' information about the requested repository
 #'
+#' @description
 #' Returns a `RepositoryDescription` object that contains detailed
 #' information about the requested repository.
 #'
@@ -739,6 +751,7 @@ codeartifact_describe_repository <- function(domain, domainOwner = NULL, reposit
 
 #' Removes an existing external connection from a repository
 #'
+#' @description
 #' Removes an existing external connection from a repository.
 #'
 #' @usage
@@ -786,6 +799,7 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #' Deletes the assets in package versions and sets the package versions'
 #' status to Disposed
 #'
+#' @description
 #' Deletes the assets in package versions and sets the package versions'
 #' status to `Disposed`. A disposed package version cannot be restored in
 #' your repository because its assets are deleted.
@@ -888,6 +902,7 @@ codeartifact_dispose_package_versions <- function(domain, domainOwner = NULL, re
 #' Generates a temporary authorization token for accessing repositories in
 #' the domain
 #'
+#' @description
 #' Generates a temporary authorization token for accessing repositories in
 #' the domain. This API requires the `codeartifact:GetAuthorizationToken`
 #' and `sts:GetServiceBearerToken` permissions. For more information about
@@ -958,6 +973,7 @@ codeartifact_get_authorization_token <- function(domain, domainOwner = NULL, dur
 
 #' Returns the resource policy attached to the specified domain
 #'
+#' @description
 #' Returns the resource policy attached to the specified domain.
 #' 
 #' The policy is a resource-based policy, not an identity-based policy. For
@@ -1002,6 +1018,7 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
 
 #' Returns an asset (or file) that is in a package
 #'
+#' @description
 #' Returns an asset (or file) that is in a package. For example, for a
 #' Maven package version, use `GetPackageVersionAsset` to download a `JAR`
 #' file, a `POM` file, or any other assets in the package version.
@@ -1082,6 +1099,7 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 
 #' Gets the readme file or descriptive text for a package version
 #'
+#' @description
 #' Gets the readme file or descriptive text for a package version. For
 #' packages that do not contain a readme file, CodeArtifact extracts a
 #' description from a metadata file. For example, from the
@@ -1159,6 +1177,7 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 
 #' Returns the endpoint of a repository for a specific package format
 #'
+#' @description
 #' Returns the endpoint of a repository for a specific package format. A
 #' repository has one endpoint for each package format:
 #' 
@@ -1221,6 +1240,7 @@ codeartifact_get_repository_endpoint <- function(domain, domainOwner = NULL, rep
 
 #' Returns the resource policy that is set on a repository
 #'
+#' @description
 #' Returns the resource policy that is set on a repository.
 #'
 #' @usage
@@ -1266,6 +1286,7 @@ codeartifact_get_repository_permissions_policy <- function(domain, domainOwner =
 #' Returns a list of DomainSummary objects for all domains owned by the AWS
 #' account that makes this call
 #'
+#' @description
 #' Returns a list of
 #' ` <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html">DomainSummary</a> `
 #' objects for all domains owned by the AWS account that makes this call.
@@ -1310,6 +1331,7 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
 
 #' Returns a list of AssetSummary objects for assets in a package version
 #'
+#' @description
 #' Returns a list of
 #' [`AssetSummary`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_AssetSummary.html)
 #' objects for assets in a package version.
@@ -1393,6 +1415,7 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 
 #' Returns the direct dependencies for a package version
 #'
+#' @description
 #' Returns the direct dependencies for a package version. The dependencies
 #' are returned as
 #' [`PackageDependency`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDependency.html)
@@ -1477,6 +1500,7 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #' Returns a list of PackageVersionSummary objects for package versions in
 #' a repository that match the request parameters
 #'
+#' @description
 #' Returns a list of
 #' [`PackageVersionSummary`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionSummary.html)
 #' objects for package versions in a repository that match the request
@@ -1572,6 +1596,7 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #' Returns a list of PackageSummary objects for packages in a repository
 #' that match the request parameters
 #'
+#' @description
 #' Returns a list of
 #' [`PackageSummary`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageSummary.html)
 #' objects for packages in a repository that match the request parameters.
@@ -1650,6 +1675,7 @@ codeartifact_list_packages <- function(domain, domainOwner = NULL, repository, f
 
 #' Returns a list of RepositorySummary objects
 #'
+#' @description
 #' Returns a list of
 #' [`RepositorySummary`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_RepositorySummary.html)
 #' objects. Each `RepositorySummary` contains information about a
@@ -1697,6 +1723,7 @@ codeartifact_list_repositories <- function(repositoryPrefix = NULL, maxResults =
 
 #' Returns a list of RepositorySummary objects
 #'
+#' @description
 #' Returns a list of
 #' [`RepositorySummary`](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_RepositorySummary.html)
 #' objects. Each `RepositorySummary` contains information about a
@@ -1754,6 +1781,7 @@ codeartifact_list_repositories_in_domain <- function(domain, domainOwner = NULL,
 #' Gets information about AWS tags for a specified Amazon Resource Name
 #' (ARN) in AWS CodeArtifact
 #'
+#' @description
 #' Gets information about AWS tags for a specified Amazon Resource Name
 #' (ARN) in AWS CodeArtifact.
 #'
@@ -1792,6 +1820,7 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
 #' Sets a resource policy on a domain that specifies permissions to access
 #' it
 #'
+#' @description
 #' Sets a resource policy on a domain that specifies permissions to access
 #' it.
 #' 
@@ -1846,6 +1875,7 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' Sets the resource policy on a repository that specifies permissions to
 #' access it
 #'
+#' @description
 #' Sets the resource policy on a repository that specifies permissions to
 #' access it.
 #' 
@@ -1903,6 +1933,7 @@ codeartifact_put_repository_permissions_policy <- function(domain, domainOwner =
 
 #' Adds or updates tags for a resource in AWS CodeArtifact
 #'
+#' @description
 #' Adds or updates tags for a resource in AWS CodeArtifact.
 #'
 #' @usage
@@ -1947,6 +1978,7 @@ codeartifact_tag_resource <- function(resourceArn, tags) {
 
 #' Removes tags from a resource in AWS CodeArtifact
 #'
+#' @description
 #' Removes tags from a resource in AWS CodeArtifact.
 #'
 #' @usage
@@ -1988,6 +2020,7 @@ codeartifact_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates the status of one or more versions of a package
 #'
+#' @description
 #' Updates the status of one or more versions of a package.
 #'
 #' @usage
@@ -2077,6 +2110,7 @@ codeartifact_update_package_versions_status <- function(domain, domainOwner = NU
 
 #' Update the properties of a repository
 #'
+#' @description
 #' Update the properties of a repository.
 #'
 #' @usage

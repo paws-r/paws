@@ -85,15 +85,15 @@ Default: \code{false}}
 \description{
 Allows the update of one or more attributes of a database in Amazon
 Lightsail.
-}
-\details{
+
 Updates are applied immediately, or in cases where the updates could
 result in an outage, are applied during the database's predefined
 maintenance window.
 
 The \verb{update relational database} operation supports tag-based access
 control via resource tags applied to the resource identified by
-relationalDatabaseName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+relationalDatabaseName. For more information, see the Lightsail Dev
+Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$update_relational_database(

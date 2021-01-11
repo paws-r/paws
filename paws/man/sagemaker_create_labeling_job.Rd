@@ -89,8 +89,7 @@ in the \emph{AWS Billing and Cost Management User Guide}.}
 \description{
 Creates a job that uses workers to label the data objects in your input
 dataset. You can use the labeled data to train machine learning models.
-}
-\details{
+
 You can select your workforce from one of three providers:
 \itemize{
 \item A private workforce that you create. It can include employees,

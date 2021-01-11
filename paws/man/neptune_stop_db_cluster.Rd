@@ -14,8 +14,7 @@ parameter is stored as a lowercase string.}
 Stops an Amazon Neptune DB cluster. When you stop a DB cluster, Neptune
 retains the DB cluster's metadata, including its endpoints and DB
 parameter groups.
-}
-\details{
+
 Neptune also retains the transaction logs so you can do a point-in-time
 restore if necessary.
 }

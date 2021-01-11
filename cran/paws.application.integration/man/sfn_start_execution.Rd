@@ -19,7 +19,7 @@ A name must \emph{not} contain:
 \item white space
 \item brackets \verb{&lt; &gt; \\\{ \\\} \\\[ \\\]}
 \item wildcard characters \verb{? *}
-\item special characters \verb{\\" # \% \\\\ ^ | ~ \\` $ &amp; , ; : /}
+\item special characters \verb{\\" # \\\% \\\\ ^ | ~ \\` $ &amp; , ; : /}
 \item control characters (\verb{U+0000-001F}, \verb{U+007F-009F})
 }
 
@@ -42,8 +42,7 @@ in the request payload.}
 }
 \description{
 Starts a state machine execution.
-}
-\details{
+
 \code{StartExecution} is idempotent. If \code{StartExecution} is called with the
 same name and input as a running execution, the call will succeed and
 return the same response as the original request. If the execution is

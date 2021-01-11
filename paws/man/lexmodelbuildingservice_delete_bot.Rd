@@ -14,8 +14,7 @@ Deletes all versions of the bot, including the \verb{$LATEST} version. To
 delete a specific version of the bot, use the DeleteBotVersion
 operation. The \code{DeleteBot} operation doesn't immediately remove the bot
 schema. Instead, it is marked for deletion and removed later.
-}
-\details{
+
 Amazon Lex stores utterances indefinitely for improving the ability of
 your bot to respond to user inputs. These utterances are not removed
 when the bot is deleted. To remove the utterances, use the

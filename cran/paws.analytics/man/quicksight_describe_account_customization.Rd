@@ -27,8 +27,7 @@ Describes the customizations associated with the provided AWS account
 and Amazon QuickSight namespace in an AWS Region. The QuickSight console
 evaluates which customizations to apply by running this API operation
 with the \code{Resolved} flag included.
-}
-\details{
+
 To determine what customizations display when you run this command, it
 can help to visualize the relationship of the entities involved.
 \itemize{

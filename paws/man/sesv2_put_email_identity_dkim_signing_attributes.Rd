@@ -28,8 +28,6 @@ the identity.}
 Used to configure or change the DKIM authentication settings for an
 email domain identity. You can use this operation to do any of the
 following:
-}
-\details{
 \itemize{
 \item Update the signing attributes for an identity that uses Bring Your
 Own DKIM (BYODKIM).

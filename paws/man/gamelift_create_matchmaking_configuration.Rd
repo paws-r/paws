@@ -111,8 +111,7 @@ matchmaking system can use multiple configurations to handle different
 game scenarios. All matchmaking requests (StartMatchmaking or
 StartMatchBackfill) identify the matchmaking configuration to use and
 provide player attributes consistent with that configuration.
-}
-\details{
+
 To create a matchmaking configuration, you must provide the following:
 configuration name and FlexMatch mode (with or without GameLift
 hosting); a rule set that specifies how to evaluate players and find

@@ -215,8 +215,7 @@ parameter and the instance IDs parameter in the same call.}
 }
 \description{
 Describes the specified instances or all instances.
-}
-\details{
+
 If you specify instance IDs, the output includes information for only
 the specified instances. If you specify filters, the output includes
 information for only those instances that meet the filter criteria. If

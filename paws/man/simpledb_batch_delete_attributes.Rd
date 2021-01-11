@@ -16,8 +16,7 @@ simpledb_batch_delete_attributes(DomainName, Items)
 Performs multiple DeleteAttributes operations in a single call, which
 reduces round trips and latencies. This enables Amazon SimpleDB to
 optimize requests, which generally yields better throughput.
-}
-\details{
+
 If you specify BatchDeleteAttributes without attributes or values, all
 the attributes for the item are deleted.
 

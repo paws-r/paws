@@ -48,8 +48,7 @@ for \code{honorVcpuOptimization} are \code{True} and \code{False}.}
 }
 \description{
 Creates a license configuration.
-}
-\details{
+
 A license configuration is an abstraction of a customer license
 agreement that can be consumed and enforced by License Manager.
 Components include specifications for the license type (licensing by

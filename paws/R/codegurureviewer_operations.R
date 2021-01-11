@@ -6,6 +6,7 @@ NULL
 #' Use to associate an AWS CodeCommit repository or a repostory managed by
 #' AWS CodeStar Connections with Amazon CodeGuru Reviewer
 #'
+#' @description
 #' Use to associate an AWS CodeCommit repository or a repostory managed by
 #' AWS CodeStar Connections with Amazon CodeGuru Reviewer. When you
 #' associate a repository, CodeGuru Reviewer reviews source code changes in
@@ -97,6 +98,7 @@ codegurureviewer_associate_repository <- function(Repository, ClientRequestToken
 
 #' Use to create a code review with a CodeReviewType of RepositoryAnalysis
 #'
+#' @description
 #' Use to create a code review with a
 #' [`CodeReviewType`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReviewType.html)
 #' of `RepositoryAnalysis`. This type of code review analyzes all code
@@ -163,6 +165,7 @@ codegurureviewer_create_code_review <- function(Name, RepositoryAssociationArn, 
 #' Returns the metadata associated with the code review along with its
 #' status
 #'
+#' @description
 #' Returns the metadata associated with the code review along with its
 #' status.
 #'
@@ -202,6 +205,7 @@ codegurureviewer_describe_code_review <- function(CodeReviewArn) {
 
 #' Describes the customer feedback for a CodeGuru Reviewer recommendation
 #'
+#' @description
 #' Describes the customer feedback for a CodeGuru Reviewer recommendation.
 #'
 #' @usage
@@ -254,6 +258,7 @@ codegurureviewer_describe_recommendation_feedback <- function(CodeReviewArn, Rec
 #' Returns a RepositoryAssociation object that contains information about
 #' the requested repository association
 #'
+#' @description
 #' Returns a
 #' [`RepositoryAssociation`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
 #' object that contains information about the requested repository
@@ -298,6 +303,7 @@ codegurureviewer_describe_repository_association <- function(AssociationArn) {
 #' Removes the association between Amazon CodeGuru Reviewer and a
 #' repository
 #'
+#' @description
 #' Removes the association between Amazon CodeGuru Reviewer and a
 #' repository.
 #'
@@ -340,6 +346,7 @@ codegurureviewer_disassociate_repository <- function(AssociationArn) {
 #' Lists all the code reviews that the customer has created in the past 90
 #' days
 #'
+#' @description
 #' Lists all the code reviews that the customer has created in the past 90
 #' days.
 #'
@@ -414,6 +421,7 @@ codegurureviewer_list_code_reviews <- function(ProviderTypes = NULL, States = NU
 #' Returns a list of RecommendationFeedbackSummary objects that contain
 #' customer recommendation feedback for all CodeGuru Reviewer users
 #'
+#' @description
 #' Returns a list of
 #' [`RecommendationFeedbackSummary`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RecommendationFeedbackSummary.html)
 #' objects that contain customer recommendation feedback for all CodeGuru
@@ -479,6 +487,7 @@ codegurureviewer_list_recommendation_feedback <- function(NextToken = NULL, MaxR
 
 #' Returns the list of all recommendations for a completed code review
 #'
+#' @description
 #' Returns the list of all recommendations for a completed code review.
 #'
 #' @usage
@@ -524,6 +533,7 @@ codegurureviewer_list_recommendations <- function(NextToken = NULL, MaxResults =
 #' Returns a list of RepositoryAssociationSummary objects that contain
 #' summary information about a repository association
 #'
+#' @description
 #' Returns a list of
 #' [`RepositoryAssociationSummary`](https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html)
 #' objects that contain summary information about a repository association.
@@ -641,6 +651,7 @@ codegurureviewer_list_repository_associations <- function(ProviderTypes = NULL, 
 #' Returns the list of tags associated with an associated repository
 #' resource
 #'
+#' @description
 #' Returns the list of tags associated with an associated repository
 #' resource.
 #'
@@ -682,6 +693,7 @@ codegurureviewer_list_tags_for_resource <- function(resourceArn) {
 
 #' Stores customer feedback for a CodeGuru Reviewer recommendation
 #'
+#' @description
 #' Stores customer feedback for a CodeGuru Reviewer recommendation. When
 #' this API is called again with different reactions the previous feedback
 #' is overwritten.
@@ -731,6 +743,7 @@ codegurureviewer_put_recommendation_feedback <- function(CodeReviewArn, Recommen
 
 #' Adds one or more tags to an associated repository
 #'
+#' @description
 #' Adds one or more tags to an associated repository.
 #'
 #' @usage
@@ -784,6 +797,7 @@ codegurureviewer_tag_resource <- function(resourceArn, Tags) {
 
 #' Removes a tag from an associated repository
 #'
+#' @description
 #' Removes a tag from an associated repository.
 #'
 #' @usage

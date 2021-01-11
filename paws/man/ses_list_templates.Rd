@@ -19,8 +19,7 @@ return up to 10 results.}
 \description{
 Lists the email templates present in your Amazon SES account in the
 current AWS Region.
-}
-\details{
+
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{

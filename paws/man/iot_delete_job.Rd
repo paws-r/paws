@@ -35,8 +35,7 @@ The \code{namespaceId} feature is in public preview.}
 }
 \description{
 Deletes a job and its related job executions.
-}
-\details{
+
 Deleting a job may take time, depending on the number of job executions
 created for the job and various other factors. While the job is being
 deleted, the status of the job will be shown as

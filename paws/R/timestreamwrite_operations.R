@@ -5,6 +5,7 @@ NULL
 
 #' Creates a new Timestream database
 #'
+#' @description
 #' Creates a new Timestream database. If the KMS key is not specified, the
 #' database will be encrypted with a Timestream managed KMS key located in
 #' your account. Refer to [AWS managed KMS
@@ -61,6 +62,7 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 #' The CreateTable operation adds a new table to an existing database in
 #' your account
 #'
+#' @description
 #' The CreateTable operation adds a new table to an existing database in
 #' your account. In an AWS account, table names must be at least unique
 #' within each Region if they are in the same database. You may have
@@ -121,6 +123,7 @@ timestreamwrite_create_table <- function(DatabaseName, TableName, RetentionPrope
 
 #' Deletes a given Timestream database
 #'
+#' @description
 #' Deletes a given Timestream database. *This is an irreversible operation.
 #' After a database is deleted, the time series data from its tables cannot
 #' be recovered.*
@@ -166,6 +169,7 @@ timestreamwrite_delete_database <- function(DatabaseName) {
 
 #' Deletes a given Timestream table
 #'
+#' @description
 #' Deletes a given Timestream table. This is an irreversible operation.
 #' After a Timestream database table is deleted, the time series data
 #' stored in the table cannot be recovered.
@@ -212,6 +216,7 @@ timestreamwrite_delete_table <- function(DatabaseName, TableName) {
 #' time that the database was created, and the total number of tables found
 #' within the database
 #'
+#' @description
 #' Returns information about the database, including the database name,
 #' time that the database was created, and the total number of tables found
 #' within the database. Service quotas apply. For more information, see
@@ -254,6 +259,7 @@ timestreamwrite_describe_database <- function(DatabaseName) {
 #' DescribeEndpoints returns a list of available endpoints to make
 #' Timestream API calls against
 #'
+#' @description
 #' DescribeEndpoints returns a list of available endpoints to make
 #' Timestream API calls against. This API is available through both Write
 #' and Query.
@@ -302,6 +308,7 @@ timestreamwrite_describe_endpoints <- function() {
 #' Returns information about the table, including the table name, database
 #' name, retention duration of the memory store and the magnetic store
 #'
+#' @description
 #' Returns information about the table, including the table name, database
 #' name, retention duration of the memory store and the magnetic store.
 #' Service quotas apply. For more information, see [Access
@@ -344,6 +351,7 @@ timestreamwrite_describe_table <- function(DatabaseName, TableName) {
 
 #' Returns a list of your Timestream databases
 #'
+#' @description
 #' Returns a list of your Timestream databases. Service quotas apply. For
 #' more information, see [Access
 #' Management](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html)
@@ -390,6 +398,7 @@ timestreamwrite_list_databases <- function(NextToken = NULL, MaxResults = NULL) 
 #' A list of tables, along with the name, status and retention properties
 #' of each table
 #'
+#' @description
 #' A list of tables, along with the name, status and retention properties
 #' of each table.
 #'
@@ -435,6 +444,7 @@ timestreamwrite_list_tables <- function(DatabaseName = NULL, NextToken = NULL, M
 
 #' List all tags on a Timestream resource
 #'
+#' @description
 #' List all tags on a Timestream resource.
 #'
 #' @usage
@@ -472,6 +482,7 @@ timestreamwrite_list_tags_for_resource <- function(ResourceARN) {
 
 #' Associate a set of tags with a Timestream resource
 #'
+#' @description
 #' Associate a set of tags with a Timestream resource. You can then
 #' activate these user-defined tags so that they appear on the Billing and
 #' Cost Management console for cost allocation tracking.
@@ -518,6 +529,7 @@ timestreamwrite_tag_resource <- function(ResourceARN, Tags) {
 
 #' Removes the association of tags from a Timestream resource
 #'
+#' @description
 #' Removes the association of tags from a Timestream resource.
 #'
 #' @usage
@@ -560,6 +572,7 @@ timestreamwrite_untag_resource <- function(ResourceARN, TagKeys) {
 
 #' Modifies the KMS key for an existing database
 #'
+#' @description
 #' Modifies the KMS key for an existing database. While updating the
 #' database, you must specify the database name and the identifier of the
 #' new KMS key to be used (`KmsKeyId`). If there are any concurrent
@@ -616,6 +629,7 @@ timestreamwrite_update_database <- function(DatabaseName, KmsKeyId) {
 #' Modifies the retention duration of the memory store and magnetic store
 #' for your Timestream table
 #'
+#' @description
 #' Modifies the retention duration of the memory store and magnetic store
 #' for your Timestream table. Note that the change in retention duration
 #' takes effect immediately. For example, if the retention period of the
@@ -672,6 +686,7 @@ timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionPrope
 #' The WriteRecords operation enables you to write your time series data
 #' into Timestream
 #'
+#' @description
 #' The WriteRecords operation enables you to write your time series data
 #' into Timestream. You can specify a single data point or a batch of data
 #' points to be inserted into the system. Timestream offers you with a

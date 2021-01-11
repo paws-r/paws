@@ -20,10 +20,10 @@ Use the \code{TagResource} action to tag a resource after it's created.}
 Creates a snapshot of a specific virtual private server, or \emph{instance}.
 You can use a snapshot to create a new instance that is based on that
 snapshot.
-}
-\details{
+
 The \verb{create instance snapshot} operation supports tag-based access
-control via request tags. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+control via request tags. For more information, see the Lightsail Dev
+Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$create_instance_snapshot(

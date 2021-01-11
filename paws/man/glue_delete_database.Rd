@@ -15,8 +15,7 @@ all lowercase.}
 }
 \description{
 Removes a specified database from a Data Catalog.
-}
-\details{
+
 After completing this operation, you no longer have access to the tables
 (and all table versions and partitions that might belong to the tables)
 and the user-defined functions in the deleted database. AWS Glue deletes

@@ -28,8 +28,7 @@ If you omit this parameter, all processes are specified.}
 \description{
 Resumes the specified suspended auto scaling processes, or all suspended
 process, for the specified Auto Scaling group.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html}{Suspending and resuming scaling processes}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }

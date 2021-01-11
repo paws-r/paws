@@ -31,8 +31,6 @@ To remove an instance from a placement group, specify an empty string
 \description{
 Modifies the placement attributes for a specified instance. You can do
 the following:
-}
-\details{
 \itemize{
 \item Modify the affinity between an instance and a \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html}{Dedicated Host}.
 When affinity is set to \code{host} and the instance is not associated

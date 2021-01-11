@@ -17,8 +17,7 @@ connect_update_instance_attribute(InstanceId, AttributeType, Value)
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Updates the value for the specified attribute type.
 }
 \section{Request syntax}{

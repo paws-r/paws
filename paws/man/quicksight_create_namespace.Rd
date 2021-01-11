@@ -23,8 +23,7 @@ creating.}
 \description{
 (Enterprise edition only) Creates a new namespace for you to use with
 Amazon QuickSight.
-}
-\details{
+
 A namespace allows you to isolate the QuickSight users and groups that
 are registered for that namespace. Users that access the namespace can
 share assets only with other users or groups in the same namespace. They

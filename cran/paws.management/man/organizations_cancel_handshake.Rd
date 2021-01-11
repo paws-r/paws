@@ -17,8 +17,7 @@ digits.}
 \description{
 Cancels a handshake. Canceling a handshake sets the handshake state to
 \code{CANCELED}.
-}
-\details{
+
 This operation can be called only from the account that originated the
 handshake. The recipient of the handshake can't cancel it, but can use
 DeclineHandshake instead. After a handshake is canceled, the recipient

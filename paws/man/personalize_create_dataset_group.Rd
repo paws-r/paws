@@ -19,8 +19,6 @@ datasets.}
 Creates an empty dataset group. A dataset group contains related
 datasets that supply data for training a model. A dataset group can
 contain at most three datasets, one for each type of dataset:
-}
-\details{
 \itemize{
 \item Interactions
 \item Items

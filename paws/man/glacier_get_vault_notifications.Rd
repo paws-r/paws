@@ -19,8 +19,7 @@ account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation retrieves the \code{notification-configuration} subresource of
 the specified vault.
-}
-\details{
+
 For information about setting a notification configuration on a vault,
 see SetVaultNotifications. If a notification configuration for a vault
 is not set, the operation returns a \verb{404 Not Found} error. For more

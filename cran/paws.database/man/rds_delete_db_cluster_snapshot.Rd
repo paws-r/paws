@@ -15,8 +15,7 @@ Constraints: Must be the name of an existing DB cluster snapshot in the
 \description{
 Deletes a DB cluster snapshot. If the snapshot is being copied, the copy
 operation is terminated.
-}
-\details{
+
 The DB cluster snapshot must be in the \code{available} state to be deleted.
 
 For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}

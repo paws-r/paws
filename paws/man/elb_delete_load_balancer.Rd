@@ -11,8 +11,7 @@ elb_delete_load_balancer(LoadBalancerName)
 }
 \description{
 Deletes the specified load balancer.
-}
-\details{
+
 If you are attempting to recreate a load balancer, you must reconfigure
 all settings. The DNS name associated with a deleted load balancer are
 no longer usable. The name and associated DNS record of the deleted load

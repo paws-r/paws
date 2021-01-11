@@ -29,8 +29,7 @@ Constraints: Up to 255 ASCII characters}
 Creates a placement group in which to launch instances. The strategy of
 the placement group determines how the instances are organized within
 the group.
-}
-\details{
+
 A \code{cluster} placement group is a logical grouping of instances within a
 single Availability Zone that benefit from low network latency, high
 network throughput. A \code{spread} placement group places instances on

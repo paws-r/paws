@@ -11,8 +11,7 @@ efs_describe_file_system_policy(FileSystemId)
 }
 \description{
 Returns the \code{FileSystemPolicy} for the specified EFS file system.
-}
-\details{
+
 This operation requires permissions for the
 \code{elasticfilesystem:DescribeFileSystemPolicy} action.
 }

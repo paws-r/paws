@@ -16,8 +16,7 @@ Resolver stops logging DNS queries for all of the Amazon VPCs that are
 associated with the configuration. This also applies if the query
 logging configuration is shared with other AWS accounts, and the other
 accounts have associated VPCs with the shared configuration.
-}
-\details{
+
 Before you can delete a query logging configuration, you must first
 disassociate all VPCs from the configuration. See
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DisassociateResolverQueryLogConfig.html}{DisassociateResolverQueryLogConfig}.

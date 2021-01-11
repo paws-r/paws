@@ -37,8 +37,7 @@ marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Provides a list of individual assessments that you can specify for a new
 premigration assessment run, given one or more parameters.
-}
-\details{
+
 If you specify an existing migration task, this operation provides the
 default individual assessments you can specify for that task. Otherwise,
 the specified parameters model elements of a possible migration task on

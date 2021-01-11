@@ -71,8 +71,7 @@ Updates the environment description, deploys a new application version,
 updates the configuration settings to an entirely new configuration
 template, or updates select configuration option values in the running
 environment.
-}
-\details{
+
 Attempting to update both the release and configuration is not allowed
 and AWS Elastic Beanstalk returns an \code{InvalidParameterCombination}
 error.

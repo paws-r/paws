@@ -15,8 +15,7 @@ list.}
 }
 \description{
 Gets information about unique problems, such as exceptions or crashes.
-}
-\details{
+
 Unique problems are defined as a single instance of an error across a
 run, job, or suite. For example, if a call in your application
 consistently raises an exception

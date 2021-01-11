@@ -15,8 +15,7 @@ registry is assumed.}
 }
 \description{
 Notifies Amazon ECR that you intend to upload an image layer.
-}
-\details{
+
 When an image is pushed, the InitiateLayerUpload API is called once per
 image layer that has not already been uploaded. Whether or not an image
 layer has been uploaded is determined by the BatchCheckLayerAvailability

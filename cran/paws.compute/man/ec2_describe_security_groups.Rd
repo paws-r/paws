@@ -90,8 +90,7 @@ parameter is not specified, then all results are returned.}
 }
 \description{
 Describes the specified security groups or all of your security groups.
-}
-\details{
+
 A security group is for use with instances either in the EC2-Classic
 platform or in a specific VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security-groups.html}{Amazon EC2 Security Groups}
 in the \emph{Amazon Elastic Compute Cloud User Guide} and \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_SecurityGroups.html}{Security Groups for Your VPC}

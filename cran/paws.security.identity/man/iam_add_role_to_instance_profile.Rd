@@ -29,8 +29,7 @@ change to appear across all of AWS because of \href{https://en.wikipedia.org/wik
 force the change, you must \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DisassociateIamInstanceProfile.html}{disassociate the instance profile}
 and then \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_AssociateIamInstanceProfile.html}{associate the instance profile},
 or you can stop your instance and then restart it.
-}
-\details{
+
 The caller of this API must be granted the \code{PassRole} permission on the
 IAM role by a permissions policy.
 

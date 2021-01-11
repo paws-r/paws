@@ -15,8 +15,7 @@ Constraints: Must be the name of an existing DB snapshot in the
 \description{
 Deletes a DB snapshot. If the snapshot is being copied, the copy
 operation is terminated.
-}
-\details{
+
 The DB snapshot must be in the \code{available} state to be deleted.
 }
 \section{Request syntax}{

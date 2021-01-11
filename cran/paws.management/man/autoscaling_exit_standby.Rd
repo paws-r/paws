@@ -13,8 +13,7 @@ autoscaling_exit_standby(InstanceIds, AutoScalingGroupName)
 }
 \description{
 Moves the specified instances out of the standby state.
-}
-\details{
+
 After you put the instances back in service, the desired capacity is
 incremented.
 

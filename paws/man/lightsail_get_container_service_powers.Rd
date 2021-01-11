@@ -10,8 +10,7 @@ lightsail_get_container_service_powers()
 \description{
 Returns the list of powers that can be specified for your Amazon
 Lightsail container services.
-}
-\details{
+
 The power specifies the amount of memory, the number of vCPUs, and the
 base price of the container service.
 }

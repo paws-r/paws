@@ -37,8 +37,7 @@ Returns a list of predictor backtest export jobs created using the
 CreatePredictorBacktestExportJob operation. This operation returns a
 summary for each backtest export job. You can filter the list using an
 array of Filter objects.
-}
-\details{
+
 To retrieve the complete set of properties for a particular backtest
 export job, use the ARN with the DescribePredictorBacktestExportJob
 operation.

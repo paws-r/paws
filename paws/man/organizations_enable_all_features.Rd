@@ -14,8 +14,7 @@ access only to consolidated billing, and you can't use any of the
 advanced account administration features that AWS Organizations
 supports. For more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html}{Enabling All Features in Your Organization}
 in the \emph{AWS Organizations User Guide.}
-}
-\details{
+
 This operation is required only for organizations that were created
 explicitly with only the consolidated billing features enabled. Calling
 this operation sends a handshake to every invited account in the

@@ -336,8 +336,7 @@ source DB instance. You can create a read replica for a DB instance
 running MySQL, MariaDB, Oracle, PostgreSQL, or SQL Server. For more
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html}{Working with Read Replicas}
 in the \emph{Amazon RDS User Guide}.
-}
-\details{
+
 Amazon Aurora doesn't support this action. Call the \code{CreateDBInstance}
 action to create a DB instance for an Aurora DB cluster.
 

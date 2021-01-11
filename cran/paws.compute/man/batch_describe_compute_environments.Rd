@@ -33,8 +33,7 @@ purposes.}
 }
 \description{
 Describes one or more of your compute environments.
-}
-\details{
+
 If you're using an unmanaged compute environment, you can use the
 \code{DescribeComputeEnvironment} operation to determine the \code{ecsClusterArn}
 that you should launch your Amazon ECS container instances into.

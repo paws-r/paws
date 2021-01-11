@@ -19,8 +19,7 @@ lowercase letters or digits.}
 }
 \description{
 Retrieves information about an organizational unit (OU).
-}
-\details{
+
 This operation can be called only from the organization's management
 account or by a member account that is a delegated administrator for an
 AWS service.

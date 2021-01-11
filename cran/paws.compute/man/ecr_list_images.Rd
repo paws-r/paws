@@ -37,8 +37,7 @@ value, if applicable.}
 }
 \description{
 Lists all the image IDs for the specified repository.
-}
-\details{
+
 You can filter images based on whether or not they are tagged by using
 the \code{tagStatus} filter and specifying either \code{TAGGED}, \code{UNTAGGED} or
 \code{ANY}. For example, you can filter your results to return only

@@ -16,8 +16,7 @@ Deregisters the specified directory. This operation is asynchronous and
 returns before the WorkSpace directory is deregistered. If any
 WorkSpaces are registered to this directory, you must remove them before
 you can deregister the directory.
-}
-\details{
+
 Simple AD and AD Connector are made available to you free of charge to
 use with WorkSpaces. If there are no WorkSpaces being used with your
 Simple AD or AD Connector directory for 30 consecutive days, this

@@ -15,8 +15,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 Returns the replication configuration of a bucket.
-}
-\details{
+
 It can take a while to propagate the put or delete a replication
 configuration to all Amazon S3 systems. Therefore, a get request soon
 after put or delete can return a wrong result.

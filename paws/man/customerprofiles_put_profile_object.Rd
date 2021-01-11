@@ -15,8 +15,7 @@ customerprofiles_put_profile_object(ObjectTypeName, Object, DomainName)
 }
 \description{
 Adds additional objects to customer profiles of a given ObjectType.
-}
-\details{
+
 When adding a specific profile object, like a Contact Trace Record
 (CTR), an inferred profile can get created if it is not mapped to an
 existing profile. The resulting profile will only have a phone number

@@ -16,8 +16,7 @@ operation.}
 }
 \description{
 Returns a random byte string that is cryptographically secure.
-}
-\details{
+
 By default, the random byte string is generated in AWS KMS. To generate
 the byte string in the AWS CloudHSM cluster that is associated with a
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key store},

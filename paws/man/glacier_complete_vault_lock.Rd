@@ -28,8 +28,7 @@ causes the vault lock policy to become unchangeable. A vault lock is put
 into the \code{InProgress} state by calling InitiateVaultLock. You can obtain
 the state of the vault lock by calling GetVaultLock. For more
 information about the vault locking process, \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
-}
-\details{
+
 This operation is idempotent. This request is always successful if the
 vault lock is in the \code{Locked} state and the provided lock ID matches the
 lock ID originally used to lock the vault.

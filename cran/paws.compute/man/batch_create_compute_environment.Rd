@@ -69,8 +69,7 @@ Creates an AWS Batch compute environment. You can create \code{MANAGED} or
 \code{UNMANAGED} compute environments. \code{MANAGED} compute environments can use
 Amazon EC2 or AWS Fargate resources. \code{UNMANAGED} compute environments
 can only use EC2 resources.
-}
-\details{
+
 In a managed compute environment, AWS Batch manages the capacity and
 instance types of the compute resources within the environment. This is
 based on the compute resource specification that you define or the

@@ -31,8 +31,7 @@ length of 256 characters.}
 }
 \description{
 Creates a virtual node within a service mesh.
-}
-\details{
+
 A virtual node acts as a logical pointer to a particular task group,
 such as an Amazon ECS service or a Kubernetes deployment. When you
 create a virtual node, you can specify the service discovery information

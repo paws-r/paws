@@ -44,8 +44,6 @@ Describes the detailed information about a table from metadata in the
 cluster. The information includes its columns. A token is returned to
 page through the column list. Depending on the authorization method, use
 one of the following combinations of request parameters:
-}
-\details{
 \itemize{
 \item AWS Secrets Manager - specify the Amazon Resource Name (ARN) of the
 secret and the cluster identifier that matches the cluster in the

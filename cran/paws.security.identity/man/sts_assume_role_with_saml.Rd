@@ -102,8 +102,7 @@ configuration. For a comparison of \code{AssumeRoleWithSAML} with the other
 API operations that produce temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials}
 and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison}{Comparing the AWS STS API operations}
 in the \emph{IAM User Guide}.
-}
-\details{
+
 The temporary security credentials returned by this operation consist of
 an access key ID, a secret access key, and a security token.
 Applications can use these temporary security credentials to sign calls

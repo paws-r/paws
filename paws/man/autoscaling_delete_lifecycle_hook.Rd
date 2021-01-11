@@ -14,8 +14,7 @@ autoscaling_delete_lifecycle_hook(LifecycleHookName,
 }
 \description{
 Deletes the specified lifecycle hook.
-}
-\details{
+
 If there are any outstanding lifecycle actions, they are completed first
 (\code{ABANDON} for launching instances, \code{CONTINUE} for terminating
 instances).

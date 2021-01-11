@@ -179,8 +179,7 @@ different account, the request will fail with an HTTP
 \description{
 Adds an object to a bucket. You must have WRITE permissions on a bucket
 to add an object to it.
-}
-\details{
+
 Amazon S3 never adds partial objects; if you receive a success response,
 Amazon S3 added the entire object to the bucket.
 

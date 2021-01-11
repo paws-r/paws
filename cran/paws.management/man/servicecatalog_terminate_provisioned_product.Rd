@@ -38,8 +38,7 @@ product. The default value is false.}
 }
 \description{
 Terminates the specified provisioned product.
-}
-\details{
+
 This operation does not delete any records associated with the
 provisioned product.
 

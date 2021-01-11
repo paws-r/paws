@@ -5,6 +5,7 @@ NULL
 
 #' Indexes the search suggestions
 #'
+#' @description
 #' Indexes the search suggestions. For more information, see [Configuring
 #' Suggesters](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html#configuring-suggesters)
 #' in the *Amazon CloudSearch Developer Guide*.
@@ -43,6 +44,7 @@ cloudsearch_build_suggesters <- function(DomainName) {
 
 #' Creates a new search domain
 #'
+#' @description
 #' Creates a new search domain. For more information, see [Creating a
 #' Search
 #' Domain](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html)
@@ -86,6 +88,7 @@ cloudsearch_create_domain <- function(DomainName) {
 #' Configures an analysis scheme that can be applied to a text or
 #' text-array field to define language-specific text processing options
 #'
+#' @description
 #' Configures an analysis scheme that can be applied to a `text` or
 #' `text-array` field to define language-specific text processing options.
 #' For more information, see [Configuring Analysis
@@ -138,6 +141,7 @@ cloudsearch_define_analysis_scheme <- function(DomainName, AnalysisScheme) {
 
 #' Configures an Expression for the search domain
 #'
+#' @description
 #' Configures an `<a>Expression</a>` for the search domain. Used to create
 #' new expressions and modify existing ones. If the expression exists, the
 #' new configuration replaces the old one. For more information, see
@@ -184,6 +188,7 @@ cloudsearch_define_expression <- function(DomainName, Expression) {
 
 #' Configures an IndexField for the search domain
 #'
+#' @description
 #' Configures an `<a>IndexField</a>` for the search domain. Used to create
 #' new fields and modify existing ones. You must specify the name of the
 #' domain you are configuring and an index field configuration. The index
@@ -317,6 +322,7 @@ cloudsearch_define_index_field <- function(DomainName, IndexField) {
 
 #' Configures a suggester for a domain
 #'
+#' @description
 #' Configures a suggester for a domain. A suggester enables you to display
 #' possible matches before users finish typing their queries. When you
 #' configure a suggester, you must specify the name of the text field you
@@ -368,6 +374,7 @@ cloudsearch_define_suggester <- function(DomainName, Suggester) {
 
 #' Deletes an analysis scheme
 #'
+#' @description
 #' Deletes an analysis scheme. For more information, see [Configuring
 #' Analysis
 #' Schemes](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html)
@@ -409,6 +416,7 @@ cloudsearch_delete_analysis_scheme <- function(DomainName, AnalysisSchemeName) {
 
 #' Permanently deletes a search domain and all of its data
 #'
+#' @description
 #' Permanently deletes a search domain and all of its data. Once a domain
 #' has been deleted, it cannot be recovered. For more information, see
 #' [Deleting a Search
@@ -449,6 +457,7 @@ cloudsearch_delete_domain <- function(DomainName) {
 
 #' Removes an Expression from the search domain
 #'
+#' @description
 #' Removes an `<a>Expression</a>` from the search domain. For more
 #' information, see [Configuring
 #' Expressions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html)
@@ -490,6 +499,7 @@ cloudsearch_delete_expression <- function(DomainName, ExpressionName) {
 
 #' Removes an IndexField from the search domain
 #'
+#' @description
 #' Removes an `<a>IndexField</a>` from the search domain. For more
 #' information, see [Configuring Index
 #' Fields](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html)
@@ -532,6 +542,7 @@ cloudsearch_delete_index_field <- function(DomainName, IndexFieldName) {
 
 #' Deletes a suggester
 #'
+#' @description
 #' Deletes a suggester. For more information, see [Getting Search
 #' Suggestions](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html)
 #' in the *Amazon CloudSearch Developer Guide*.
@@ -572,6 +583,7 @@ cloudsearch_delete_suggester <- function(DomainName, SuggesterName) {
 
 #' Gets the analysis schemes configured for a domain
 #'
+#' @description
 #' Gets the analysis schemes configured for a domain. An analysis scheme
 #' defines language-specific text processing options for a `text` field.
 #' Can be limited to specific analysis schemes by name. By default, shows
@@ -624,6 +636,7 @@ cloudsearch_describe_analysis_schemes <- function(DomainName, AnalysisSchemeName
 
 #' Gets the availability options configured for a domain
 #'
+#' @description
 #' Gets the availability options configured for a domain. By default, shows
 #' the configuration with any pending changes. Set the `Deployed` option to
 #' `true` to show the active configuration and exclude pending changes. For
@@ -669,6 +682,7 @@ cloudsearch_describe_availability_options <- function(DomainName, Deployed = NUL
 #' Returns the domain's endpoint options, specifically whether all requests
 #' to the domain must arrive over HTTPS
 #'
+#' @description
 #' Returns the domain's endpoint options, specifically whether all requests
 #' to the domain must arrive over HTTPS. For more information, see
 #' [Configuring Domain Endpoint
@@ -713,6 +727,7 @@ cloudsearch_describe_domain_endpoint_options <- function(DomainName, Deployed = 
 
 #' Gets information about the search domains owned by this account
 #'
+#' @description
 #' Gets information about the search domains owned by this account. Can be
 #' limited to specific domains. Shows all domains by default. To get the
 #' number of searchable documents in a domain, use the console or submit a
@@ -758,6 +773,7 @@ cloudsearch_describe_domains <- function(DomainNames = NULL) {
 
 #' Gets the expressions configured for the search domain
 #'
+#' @description
 #' Gets the expressions configured for the search domain. Can be limited to
 #' specific expressions by name. By default, shows all expressions and
 #' includes any pending changes to the configuration. Set the `Deployed`
@@ -808,6 +824,7 @@ cloudsearch_describe_expressions <- function(DomainName, ExpressionNames = NULL,
 
 #' Gets information about the index fields configured for the search domain
 #'
+#' @description
 #' Gets information about the index fields configured for the search
 #' domain. Can be limited to specific fields by name. By default, shows all
 #' fields and includes any pending changes to the configuration. Set the
@@ -858,6 +875,7 @@ cloudsearch_describe_index_fields <- function(DomainName, FieldNames = NULL, Dep
 
 #' Gets the scaling parameters configured for a domain
 #'
+#' @description
 #' Gets the scaling parameters configured for a domain. A domain's scaling
 #' parameters specify the desired search instance type and replication
 #' count. For more information, see [Configuring Scaling
@@ -899,6 +917,7 @@ cloudsearch_describe_scaling_parameters <- function(DomainName) {
 #' Gets information about the access policies that control access to the
 #' domain's document and search endpoints
 #'
+#' @description
 #' Gets information about the access policies that control access to the
 #' domain's document and search endpoints. By default, shows the
 #' configuration with any pending changes. Set the `Deployed` option to
@@ -944,6 +963,7 @@ cloudsearch_describe_service_access_policies <- function(DomainName, Deployed = 
 
 #' Gets the suggesters configured for a domain
 #'
+#' @description
 #' Gets the suggesters configured for a domain. A suggester enables you to
 #' display possible matches before users finish typing their queries. Can
 #' be limited to specific suggesters by name. By default, shows all
@@ -995,6 +1015,7 @@ cloudsearch_describe_suggesters <- function(DomainName, SuggesterNames = NULL, D
 #' Tells the search domain to start indexing its documents using the latest
 #' indexing options
 #'
+#' @description
 #' Tells the search domain to start indexing its documents using the latest
 #' indexing options. This operation must be invoked to activate options
 #' whose OptionStatus is `RequiresIndexDocuments`.
@@ -1033,6 +1054,7 @@ cloudsearch_index_documents <- function(DomainName) {
 
 #' Lists all search domains owned by an account
 #'
+#' @description
 #' Lists all search domains owned by an account.
 #'
 #' @usage
@@ -1064,6 +1086,7 @@ cloudsearch_list_domain_names <- function() {
 
 #' Configures the availability options for a domain
 #'
+#' @description
 #' Configures the availability options for a domain. Enabling the Multi-AZ
 #' option expands an Amazon CloudSearch domain to an additional
 #' Availability Zone in the same Region to increase fault tolerance in the
@@ -1113,6 +1136,7 @@ cloudsearch_update_availability_options <- function(DomainName, MultiAZ) {
 #' Updates the domain's endpoint options, specifically whether all requests
 #' to the domain must arrive over HTTPS
 #'
+#' @description
 #' Updates the domain's endpoint options, specifically whether all requests
 #' to the domain must arrive over HTTPS. For more information, see
 #' [Configuring Domain Endpoint
@@ -1162,6 +1186,7 @@ cloudsearch_update_domain_endpoint_options <- function(DomainName, DomainEndpoin
 
 #' Configures scaling parameters for a domain
 #'
+#' @description
 #' Configures scaling parameters for a domain. A domain's scaling
 #' parameters specify the desired search instance type and replication
 #' count. Amazon CloudSearch will still automatically scale your domain
@@ -1213,6 +1238,7 @@ cloudsearch_update_scaling_parameters <- function(DomainName, ScalingParameters)
 #' Configures the access rules that control access to the domain's document
 #' and search endpoints
 #'
+#' @description
 #' Configures the access rules that control access to the domain's document
 #' and search endpoints. For more information, see [Configuring Access for
 #' an Amazon CloudSearch

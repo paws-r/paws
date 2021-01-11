@@ -43,8 +43,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 Places an Object Retention configuration on an object.
-}
-\details{
+
 This action is not supported by Amazon S3 on Outposts.
 
 \strong{Related Resources}

@@ -58,8 +58,7 @@ This allows you to create a link from the existing user account to an
 external federated user identity that has not yet been used to sign in,
 so that the federated user identity can be used to sign in as the
 existing user account.
-}
-\details{
+
 For example, if there is an existing user with a username and password,
 this API links that user to a federated user identity, so that when the
 federated user identity is used, the user signs in as the existing user

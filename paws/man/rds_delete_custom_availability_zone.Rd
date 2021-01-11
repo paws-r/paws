@@ -11,8 +11,7 @@ rds_delete_custom_availability_zone(CustomAvailabilityZoneId)
 }
 \description{
 Deletes a custom Availability Zone (AZ).
-}
-\details{
+
 A custom AZ is an on-premises AZ that is integrated with a VMware
 vSphere cluster.
 

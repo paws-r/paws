@@ -15,8 +15,7 @@ Stops an Amazon Aurora DB cluster. When you stop a DB cluster, Aurora
 retains the DB cluster's metadata, including its endpoints and DB
 parameter groups. Aurora also retains the transaction logs so you can do
 a point-in-time restore if necessary.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-cluster-stop-start.html}{Stopping and Starting an Aurora Cluster}
 in the \emph{Amazon Aurora User Guide.}
 

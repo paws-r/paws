@@ -19,8 +19,7 @@ aggregation group (LAG) or interconnect. If the target interconnect or
 LAG has an existing hosted connection with a conflicting VLAN number or
 IP address, the operation fails. This action temporarily interrupts the
 hosted connection's connectivity to AWS as it is being migrated.
-}
-\details{
+
 Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{

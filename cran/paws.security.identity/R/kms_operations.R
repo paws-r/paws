@@ -5,6 +5,7 @@ NULL
 
 #' Cancels the deletion of a customer master key (CMK)
 #'
+#' @description
 #' Cancels the deletion of a customer master key (CMK). When this operation
 #' succeeds, the key state of the CMK is `Disabled`. To enable the CMK, use
 #' EnableKey.
@@ -83,6 +84,7 @@ kms_cancel_key_deletion <- function(KeyId) {
 #' Connects or reconnects a custom key store to its associated AWS CloudHSM
 #' cluster
 #'
+#' @description
 #' Connects or reconnects a [custom key
 #' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
 #' to its associated AWS CloudHSM cluster.
@@ -185,6 +187,7 @@ kms_connect_custom_key_store <- function(CustomKeyStoreId) {
 
 #' Creates a friendly name for a customer master key (CMK)
 #'
+#' @description
 #' Creates a friendly name for a customer master key (CMK). You can use an
 #' alias to identify a CMK in the AWS KMS console, in the DescribeKey
 #' operation and in [cryptographic
@@ -311,6 +314,7 @@ kms_create_alias <- function(AliasName, TargetKeyId) {
 #' Creates a custom key store that is associated with an AWS CloudHSM
 #' cluster that you own and manage
 #'
+#' @description
 #' Creates a [custom key
 #' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
 #' that is associated with an [AWS CloudHSM
@@ -419,6 +423,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId, T
 
 #' Adds a grant to a customer master key (CMK)
 #'
+#' @description
 #' Adds a grant to a customer master key (CMK). The grant allows the
 #' grantee principal to use the CMK when the conditions specified in the
 #' grant are met. When setting permissions, grants are an alternative to
@@ -626,6 +631,7 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' Creates a unique customer managed customer master key (CMK) in your AWS
 #' account and Region
 #'
+#' @description
 #' Creates a unique customer managed [customer master
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master-keys)
 #' (CMK) in your AWS account and Region.
@@ -958,6 +964,7 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' decrypt ciphertext that was encrypted under a symmetric or asymmetric
 #' CMK
 #'
+#' @description
 #' Decrypts ciphertext that was encrypted by a AWS KMS customer master key
 #' (CMK) using any of the following operations:
 #' 
@@ -1143,6 +1150,7 @@ kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = 
 
 #' Deletes the specified alias
 #'
+#' @description
 #' Deletes the specified alias.
 #' 
 #' Because an alias is not a property of a CMK, you can delete and change
@@ -1221,6 +1229,7 @@ kms_delete_alias <- function(AliasName) {
 
 #' Deletes a custom key store
 #'
+#' @description
 #' Deletes a [custom key
 #' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
 #' This operation does not delete the AWS CloudHSM cluster that is
@@ -1313,6 +1322,7 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
 
 #' Deletes key material that you previously imported
 #'
+#' @description
 #' Deletes key material that you previously imported. This operation makes
 #' the specified customer master key (CMK) unusable. For more information
 #' about importing key material into AWS KMS, see [Importing Key
@@ -1399,6 +1409,7 @@ kms_delete_imported_key_material <- function(KeyId) {
 
 #' Gets information about custom key stores in the account and region
 #'
+#' @description
 #' Gets information about [custom key
 #' stores](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
 #' in the account and region.
@@ -1509,6 +1520,7 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
 
 #' Provides detailed information about a customer master key (CMK)
 #'
+#' @description
 #' Provides detailed information about a customer master key (CMK). You can
 #' run `DescribeKey` on a [customer managed
 #' CMK](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk)
@@ -1647,6 +1659,7 @@ kms_describe_key <- function(KeyId, GrantTokens = NULL) {
 
 #' Sets the state of a customer master key (CMK) to disabled
 #'
+#' @description
 #' Sets the state of a customer master key (CMK) to disabled. This change
 #' temporarily prevents use of the CMK for [cryptographic
 #' operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations).
@@ -1724,6 +1737,7 @@ kms_disable_key <- function(KeyId) {
 #' Disables automatic rotation of the key material for the specified
 #' symmetric customer master key (CMK)
 #'
+#' @description
 #' Disables [automatic rotation of the key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
 #' for the specified symmetric customer master key (CMK).
@@ -1811,6 +1825,7 @@ kms_disable_key_rotation <- function(KeyId) {
 #' Disconnects the custom key store from its associated AWS CloudHSM
 #' cluster
 #'
+#' @description
 #' Disconnects the [custom key
 #' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html)
 #' from its associated AWS CloudHSM cluster. While a custom key store is
@@ -1891,6 +1906,7 @@ kms_disconnect_custom_key_store <- function(CustomKeyStoreId) {
 
 #' Sets the key state of a customer master key (CMK) to enabled
 #'
+#' @description
 #' Sets the key state of a customer master key (CMK) to enabled. This
 #' allows you to use the CMK for [cryptographic
 #' operations](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations).
@@ -1963,6 +1979,7 @@ kms_enable_key <- function(KeyId) {
 #' Enables automatic rotation of the key material for the specified
 #' symmetric customer master key (CMK)
 #'
+#' @description
 #' Enables [automatic rotation of the key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
 #' for the specified symmetric customer master key (CMK).
@@ -2046,6 +2063,7 @@ kms_enable_key_rotation <- function(KeyId) {
 
 #' Encrypts plaintext into ciphertext by using a customer master key (CMK)
 #'
+#' @description
 #' Encrypts plaintext into ciphertext by using a customer master key (CMK).
 #' The `Encrypt` operation has two primary use cases:
 #' 
@@ -2241,6 +2259,7 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 
 #' Generates a unique symmetric data key for client-side encryption
 #'
+#' @description
 #' Generates a unique symmetric data key for client-side encryption. This
 #' operation returns a plaintext copy of the data key and a copy that is
 #' encrypted under a customer master key (CMK) that you specify. You can
@@ -2432,6 +2451,7 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 
 #' Generates a unique asymmetric data key pair
 #'
+#' @description
 #' Generates a unique asymmetric data key pair. The `GenerateDataKeyPair`
 #' operation returns a plaintext public key, a plaintext private key, and a
 #' copy of the private key that is encrypted under the symmetric CMK you
@@ -2584,6 +2604,7 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 
 #' Generates a unique asymmetric data key pair
 #'
+#' @description
 #' Generates a unique asymmetric data key pair. The
 #' `GenerateDataKeyPairWithoutPlaintext` operation returns a plaintext
 #' public key and a copy of the private key that is encrypted under the
@@ -2728,6 +2749,7 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 
 #' Generates a unique symmetric data key
 #'
+#' @description
 #' Generates a unique symmetric data key. This operation returns a data key
 #' that is encrypted under a customer master key (CMK) that you specify. To
 #' request an asymmetric data key pair, use the GenerateDataKeyPair or
@@ -2892,6 +2914,7 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 
 #' Returns a random byte string that is cryptographically secure
 #'
+#' @description
 #' Returns a random byte string that is cryptographically secure.
 #' 
 #' By default, the random byte string is generated in AWS KMS. To generate
@@ -2957,6 +2980,7 @@ kms_generate_random <- function(NumberOfBytes = NULL, CustomKeyStoreId = NULL) {
 
 #' Gets a key policy attached to the specified customer master key (CMK)
 #'
+#' @description
 #' Gets a key policy attached to the specified customer master key (CMK).
 #' 
 #' **Cross-account use**: No. You cannot perform this operation on a CMK in
@@ -3027,6 +3051,7 @@ kms_get_key_policy <- function(KeyId, PolicyName) {
 #' Gets a Boolean value that indicates whether automatic rotation of the
 #' key material is enabled for the specified customer master key (CMK)
 #'
+#' @description
 #' Gets a Boolean value that indicates whether [automatic rotation of the
 #' key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
@@ -3121,6 +3146,7 @@ kms_get_key_rotation_status <- function(KeyId) {
 #' Returns the items you need to import key material into a symmetric,
 #' customer managed customer master key (CMK)
 #'
+#' @description
 #' Returns the items you need to import key material into a symmetric,
 #' customer managed customer master key (CMK). For more information about
 #' importing key material into AWS KMS, see [Importing Key
@@ -3228,6 +3254,7 @@ kms_get_parameters_for_import <- function(KeyId, WrappingAlgorithm, WrappingKeyS
 
 #' Returns the public key of an asymmetric CMK
 #'
+#' @description
 #' Returns the public key of an asymmetric CMK. Unlike the private key of a
 #' asymmetric CMK, which never leaves AWS KMS unencrypted, callers with
 #' `kms:GetPublicKey` permission can download the public key of an
@@ -3349,6 +3376,7 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #' Imports key material into an existing symmetric AWS KMS customer master
 #' key (CMK) that was created without key material
 #'
+#' @description
 #' Imports key material into an existing symmetric AWS KMS customer master
 #' key (CMK) that was created without key material. After you successfully
 #' import key material into a CMK, you can [reimport the same key
@@ -3500,6 +3528,7 @@ kms_import_key_material <- function(KeyId, ImportToken, EncryptedKeyMaterial, Va
 
 #' Gets a list of aliases in the caller's AWS account and region
 #'
+#' @description
 #' Gets a list of aliases in the caller's AWS account and region. For more
 #' information about aliases, see CreateAlias.
 #' 
@@ -3604,6 +3633,7 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
 
 #' Gets a list of all grants for the specified customer master key (CMK)
 #'
+#' @description
 #' Gets a list of all grants for the specified customer master key (CMK).
 #' 
 #' The `GranteePrincipal` field in the `ListGrants` response usually
@@ -3697,6 +3727,7 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId) {
 #' Gets the names of the key policies that are attached to a customer
 #' master key (CMK)
 #'
+#' @description
 #' Gets the names of the key policies that are attached to a customer
 #' master key (CMK). This operation is designed to get policy names that
 #' you can use in a GetKeyPolicy operation. However, the only valid policy
@@ -3782,6 +3813,7 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' Gets a list of all customer master keys (CMKs) in the caller's AWS
 #' account and Region
 #'
+#' @description
 #' Gets a list of all customer master keys (CMKs) in the caller's AWS
 #' account and Region.
 #' 
@@ -3851,6 +3883,7 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
 
 #' Returns all tags on the specified customer master key (CMK)
 #'
+#' @description
 #' Returns all tags on the specified customer master key (CMK).
 #' 
 #' For general information about tags, including the format and syntax, see
@@ -3941,6 +3974,7 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
 #' Returns all grants in which the specified principal is the
 #' RetiringPrincipal in the grant
 #'
+#' @description
 #' Returns all grants in which the specified principal is the
 #' `RetiringPrincipal` in the grant.
 #' 
@@ -4035,6 +4069,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
 
 #' Attaches a key policy to the specified customer master key (CMK)
 #'
+#' @description
 #' Attaches a key policy to the specified customer master key (CMK).
 #' 
 #' For more information about key policies, see [Key
@@ -4157,6 +4192,7 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 
 #' Decrypts ciphertext and then reencrypts it entirely within AWS KMS
 #'
+#' @description
 #' Decrypts ciphertext and then reencrypts it entirely within AWS KMS. You
 #' can use this operation to change the customer master key (CMK) under
 #' which data is encrypted, such as when you [manually
@@ -4411,6 +4447,7 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 
 #' Retires a grant
 #'
+#' @description
 #' Retires a grant. To clean up, you can retire a grant when you're done
 #' using it. You should revoke a grant when you intend to actively deny
 #' operations that depend on it. The following are permitted to call this
@@ -4502,6 +4539,7 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
 
 #' Revokes the specified grant for the specified customer master key (CMK)
 #'
+#' @description
 #' Revokes the specified grant for the specified customer master key (CMK).
 #' You can revoke a grant to actively deny operations that depend on it.
 #' 
@@ -4581,6 +4619,7 @@ kms_revoke_grant <- function(KeyId, GrantId) {
 
 #' Schedules the deletion of a customer master key (CMK)
 #'
+#' @description
 #' Schedules the deletion of a customer master key (CMK). You may provide a
 #' waiting period, specified in days, before deletion occurs. If you do not
 #' provide a waiting period, the default period of 30 days is used. When
@@ -4688,6 +4727,7 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' Creates a digital signature for a message or message digest by using the
 #' private key in an asymmetric CMK
 #'
+#' @description
 #' Creates a [digital
 #' signature](https://en.wikipedia.org/wiki/Digital_signature) for a
 #' message or message digest by using the private key in an asymmetric CMK.
@@ -4821,6 +4861,7 @@ kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, Sig
 
 #' Adds or edits tags on a customer managed CMK
 #'
+#' @description
 #' Adds or edits tags on a [customer managed
 #' CMK](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk).
 #' 
@@ -4936,6 +4977,7 @@ kms_tag_resource <- function(KeyId, Tags) {
 
 #' Deletes tags from a customer managed CMK
 #'
+#' @description
 #' Deletes tags from a [customer managed
 #' CMK](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk).
 #' To delete a tag, specify the tag key and the CMK.
@@ -5032,6 +5074,7 @@ kms_untag_resource <- function(KeyId, TagKeys) {
 #' Associates an existing AWS KMS alias with a different customer master
 #' key (CMK)
 #'
+#' @description
 #' Associates an existing AWS KMS alias with a different customer master
 #' key (CMK). Each alias is associated with only one CMK at a time,
 #' although a CMK can have multiple aliases. The alias and the CMK must be
@@ -5153,6 +5196,7 @@ kms_update_alias <- function(AliasName, TargetKeyId) {
 
 #' Changes the properties of a custom key store
 #'
+#' @description
 #' Changes the properties of a custom key store. Use the `CustomKeyStoreId`
 #' parameter to identify the custom key store you want to edit. Use the
 #' remaining parameters to change the properties of the custom key store.
@@ -5272,6 +5316,7 @@ kms_update_custom_key_store <- function(CustomKeyStoreId, NewCustomKeyStoreName 
 
 #' Updates the description of a customer master key (CMK)
 #'
+#' @description
 #' Updates the description of a customer master key (CMK). To see the
 #' description of a CMK, use DescribeKey.
 #' 
@@ -5349,6 +5394,7 @@ kms_update_key_description <- function(KeyId, Description) {
 
 #' Verifies a digital signature that was generated by the Sign operation
 #'
+#' @description
 #' Verifies a digital signature that was generated by the Sign operation.
 #' 
 #' Verification confirms that an authorized user signed the message with

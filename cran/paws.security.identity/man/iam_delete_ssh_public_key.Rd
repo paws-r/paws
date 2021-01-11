@@ -20,8 +20,7 @@ that can consist of any upper or lowercased letter or digit.}
 }
 \description{
 Deletes the specified SSH public key.
-}
-\details{
+
 The SSH public key deleted by this operation is used only for
 authenticating the associated IAM user to an AWS CodeCommit repository.
 For more information about using SSH keys to authenticate to an AWS

@@ -14,8 +14,7 @@ lexmodelbuildingservice_get_bot(name, versionOrAlias)
 \description{
 Returns metadata information for a specific bot. You must provide the
 bot name and the bot version or alias.
-}
-\details{
+
 This operation requires permissions for the \code{lex:GetBot} action.
 }
 \section{Request syntax}{

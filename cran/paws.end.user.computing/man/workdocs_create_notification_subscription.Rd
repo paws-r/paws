@@ -21,8 +21,7 @@ JSON-encoded messages using HTTPS POST.}
 \description{
 Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint
 receives a confirmation message, and must confirm the subscription.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/workdocs/latest/developerguide/subscribe-notifications.html}{Subscribe to Notifications}
 in the \emph{Amazon WorkDocs Developer Guide}.
 }

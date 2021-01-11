@@ -143,8 +143,7 @@ in the \emph{Amazon Simple Queue Service Developer Guide}.}
 }
 \description{
 Gets attributes for the specified queue.
-}
-\details{
+
 To determine whether a queue is
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO},
 you can check whether \code{QueueName} ends with the \code{.fifo} suffix.

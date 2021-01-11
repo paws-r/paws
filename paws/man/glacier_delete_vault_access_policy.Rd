@@ -22,8 +22,7 @@ vault. The operation is eventually consistent; that is, it might take
 some time for Amazon S3 Glacier to completely remove the access policy,
 and you might still see the effect of the policy for a short time after
 you send the delete request.
-}
-\details{
+
 This operation is idempotent. You can invoke delete multiple times, even
 if there is no policy associated with the vault. For more information
 about vault access policies, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html}{Amazon Glacier Access Control with Vault Access Policies}.

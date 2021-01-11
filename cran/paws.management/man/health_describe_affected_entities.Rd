@@ -30,8 +30,7 @@ individual customer resources, groups of customer resources, or any
 other construct, depending on the AWS service. Events that have impact
 beyond that of the affected entities, or where the extent of impact is
 unknown, include at least one entity indicating this.
-}
-\details{
+
 At least one event ARN is required. Results are sorted by the
 \code{lastUpdatedTime} of the entity, starting with the most recent.
 

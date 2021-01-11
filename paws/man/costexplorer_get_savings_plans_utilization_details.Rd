@@ -61,8 +61,7 @@ single response similar to \code{GetSavingsPlanUtilization}, but you have the
 option to make multiple calls to \code{GetSavingsPlanUtilizationDetails} by
 providing individual dates. You can use \code{GetDimensionValues} in
 \code{SAVINGS_PLANS} to determine the possible dimension values.
-}
-\details{
+
 \code{GetSavingsPlanUtilizationDetails} internally groups data by
 \code{SavingsPlansArn}.
 }

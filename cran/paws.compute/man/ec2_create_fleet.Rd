@@ -68,8 +68,7 @@ For information about tagging after launch, see \href{https://docs.aws.amazon.co
 }
 \description{
 Launches an EC2 Fleet.
-}
-\details{
+
 You can create a single EC2 Fleet that includes multiple launch
 specifications that vary by instance type, AMI, Availability Zone, or
 subnet.

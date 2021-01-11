@@ -35,8 +35,7 @@ during an in-progress multipart upload before you complete the upload
 (see CompleteMultipartUpload. List Parts returns an error for completed
 uploads. The list returned in the List Parts response is sorted by part
 range.
-}
-\details{
+
 The List Parts operation supports pagination. By default, this operation
 returns up to 50 uploaded parts in the response. You should always check
 the response for a \code{marker} at which to continue the list; if there are

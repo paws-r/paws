@@ -69,8 +69,7 @@ associated with version 3 of the face model or higher.}
 \description{
 Detects faces in the input image and adds them to the specified
 collection.
-}
-\details{
+
 Amazon Rekognition doesn't save the actual faces that are detected.
 Instead, the underlying detection algorithm first detects the faces in
 the input image. For each face, the algorithm extracts facial features

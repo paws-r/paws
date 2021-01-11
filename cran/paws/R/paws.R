@@ -1188,8 +1188,8 @@ lambda <- function(config = list()) {
 #' 
 #' You can manage your Lightsail resources using the Lightsail console,
 #' Lightsail API, AWS Command Line Interface (AWS CLI), or SDKs. For more
-#' information about Lightsail concepts and tasks, see the [Lightsail Dev
-#' Guide](https://lightsail.aws.amazon.com/ls/docs/en_us/articles/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli).
+#' information about Lightsail concepts and tasks, see the Lightsail Dev
+#' Guide.
 #' 
 #' This API Reference provides detailed information about the actions, data
 #' types, parameters, and errors of the Lightsail service. For more
@@ -12063,8 +12063,8 @@ ram <- function(config = list()) {
 #' We welcome your feedback. Send your comments to
 #' <awssecretsmanager-feedback@@amazon.com>, or post your feedback and
 #' questions in the [AWS Secrets Manager Discussion
-#' Forum](https://forums.aws.amazon.com/forum.jspa?forumID=296). For more
-#' information about the AWS Discussion Forums, see [Forums
+#' Forum](https://forums.aws.amazon.com:443/forum.jspa?forumID=296). For
+#' more information about the AWS Discussion Forums, see [Forums
 #' Help](https://forums.aws.amazon.com:443/help.jspa).
 #' 
 #' **How examples are presented**

@@ -11,8 +11,7 @@ transfer_delete_server(ServerId)
 }
 \description{
 Deletes the file transfer protocol-enabled server that you specify.
-}
-\details{
+
 No response returns from this operation.
 }
 \section{Request syntax}{

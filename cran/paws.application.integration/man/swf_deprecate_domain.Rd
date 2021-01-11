@@ -16,8 +16,7 @@ However, you can still use visibility actions on this domain.
 Deprecating a domain also deprecates all activity and workflow types
 registered in the domain. Executions that were started before the domain
 was deprecated continues to run.
-}
-\details{
+
 This operation is eventually consistent. The results are best effort and
 may not exactly reflect recent updates and changes.
 

@@ -35,8 +35,7 @@ For more information about sending authorization, see the \href{https://docs.aws
 Generates and sends a bounce message to the sender of an email you
 received through Amazon SES. You can only use this API on an email up to
 24 hours after you receive it.
-}
-\details{
+
 You cannot use this API to send generic bounces for mail that was not
 received by Amazon SES.
 

@@ -31,8 +31,7 @@ in the \emph{AWS SSO Identity Store API Reference}. Either \code{IdentityName} o
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.
-}
-\details{
+
 Fetches mapping details for the specified Amazon EMR Studio and identity
 (user or group).
 }

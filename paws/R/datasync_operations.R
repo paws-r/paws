@@ -5,6 +5,7 @@ NULL
 
 #' Cancels execution of a task
 #'
+#' @description
 #' Cancels execution of a task.
 #' 
 #' When you cancel a task execution, the transfer of some files is abruptly
@@ -51,6 +52,7 @@ datasync_cancel_task_execution <- function(TaskExecutionArn) {
 
 #' Activates an AWS DataSync agent that you have deployed on your host
 #'
+#' @description
 #' Activates an AWS DataSync agent that you have deployed on your host. The
 #' activation process associates your agent with your account. In the
 #' activation process, you specify information such as the AWS Region that
@@ -158,6 +160,7 @@ datasync_create_agent <- function(ActivationKey, AgentName = NULL, Tags = NULL, 
 
 #' Creates an endpoint for an Amazon EFS file system
 #'
+#' @description
 #' Creates an endpoint for an Amazon EFS file system.
 #'
 #' @usage
@@ -240,6 +243,7 @@ datasync_create_location_efs <- function(Subdirectory = NULL, EfsFilesystemArn, 
 
 #' Creates an endpoint for an Amazon FSx for Windows file system
 #'
+#' @description
 #' Creates an endpoint for an Amazon FSx for Windows file system.
 #'
 #' @usage
@@ -307,6 +311,7 @@ datasync_create_location_fsx_windows <- function(Subdirectory = NULL, FsxFilesys
 #' Defines a file system on a Network File System (NFS) server that can be
 #' read from or written to
 #'
+#' @description
 #' Defines a file system on a Network File System (NFS) server that can be
 #' read from or written to.
 #'
@@ -408,6 +413,7 @@ datasync_create_location_nfs <- function(Subdirectory, ServerHostname, OnPremCon
 
 #' Creates an endpoint for a self-managed object storage bucket
 #'
+#' @description
 #' Creates an endpoint for a self-managed object storage bucket. For more
 #' information about self-managed object storage locations, see
 #' create-object-location.
@@ -489,6 +495,7 @@ datasync_create_location_object_storage <- function(ServerHostname, ServerPort =
 
 #' Creates an endpoint for an Amazon S3 bucket
 #'
+#' @description
 #' Creates an endpoint for an Amazon S3 bucket.
 #' 
 #' For more information, see
@@ -566,6 +573,7 @@ datasync_create_location_s3 <- function(Subdirectory = NULL, S3BucketArn, S3Stor
 #' Defines a file system on a Server Message Block (SMB) server that can be
 #' read from or written to
 #'
+#' @description
 #' Defines a file system on a Server Message Block (SMB) server that can be
 #' read from or written to.
 #'
@@ -654,6 +662,7 @@ datasync_create_location_smb <- function(Subdirectory, ServerHostname, User, Dom
 
 #' Creates a task
 #'
+#' @description
 #' Creates a task. A task is a set of two locations (source and
 #' destination) and a set of Options that you use to control the behavior
 #' of a task. If you don't specify Options when you create a task, AWS
@@ -764,6 +773,7 @@ datasync_create_task <- function(SourceLocationArn, DestinationLocationArn, Clou
 
 #' Deletes an agent
 #'
+#' @description
 #' Deletes an agent. To specify which agent to delete, use the Amazon
 #' Resource Name (ARN) of the agent in your request. The operation
 #' disassociates the agent from your AWS account. However, it doesn't
@@ -805,6 +815,7 @@ datasync_delete_agent <- function(AgentArn) {
 
 #' Deletes the configuration of a location used by AWS DataSync
 #'
+#' @description
 #' Deletes the configuration of a location used by AWS DataSync.
 #'
 #' @usage
@@ -841,6 +852,7 @@ datasync_delete_location <- function(LocationArn) {
 
 #' Deletes a task
 #'
+#' @description
 #' Deletes a task.
 #'
 #' @usage
@@ -878,6 +890,7 @@ datasync_delete_task <- function(TaskArn) {
 #' Returns metadata such as the name, the network interfaces, and the
 #' status (that is, whether the agent is running or not) for an agent
 #'
+#' @description
 #' Returns metadata such as the name, the network interfaces, and the
 #' status (that is, whether the agent is running or not) for an agent. To
 #' specify which agent to describe, use the Amazon Resource Name (ARN) of
@@ -918,6 +931,7 @@ datasync_describe_agent <- function(AgentArn) {
 #' Returns metadata, such as the path information about an Amazon EFS
 #' location
 #'
+#' @description
 #' Returns metadata, such as the path information about an Amazon EFS
 #' location.
 #'
@@ -956,6 +970,7 @@ datasync_describe_location_efs <- function(LocationArn) {
 #' Returns metadata, such as the path information about an Amazon FSx for
 #' Windows location
 #'
+#' @description
 #' Returns metadata, such as the path information about an Amazon FSx for
 #' Windows location.
 #'
@@ -994,6 +1009,7 @@ datasync_describe_location_fsx_windows <- function(LocationArn) {
 
 #' Returns metadata, such as the path information, about an NFS location
 #'
+#' @description
 #' Returns metadata, such as the path information, about an NFS location.
 #'
 #' @usage
@@ -1030,6 +1046,7 @@ datasync_describe_location_nfs <- function(LocationArn) {
 
 #' Returns metadata about a self-managed object storage server location
 #'
+#' @description
 #' Returns metadata about a self-managed object storage server location.
 #' For more information about self-managed object storage locations, see
 #' create-object-location.
@@ -1070,6 +1087,7 @@ datasync_describe_location_object_storage <- function(LocationArn) {
 #' Returns metadata, such as bucket name, about an Amazon S3 bucket
 #' location
 #'
+#' @description
 #' Returns metadata, such as bucket name, about an Amazon S3 bucket
 #' location.
 #'
@@ -1109,6 +1127,7 @@ datasync_describe_location_s3 <- function(LocationArn) {
 #' Returns metadata, such as the path and user information about an SMB
 #' location
 #'
+#' @description
 #' Returns metadata, such as the path and user information about an SMB
 #' location.
 #'
@@ -1146,6 +1165,7 @@ datasync_describe_location_smb <- function(LocationArn) {
 
 #' Returns metadata about a task
 #'
+#' @description
 #' Returns metadata about a task.
 #'
 #' @usage
@@ -1182,6 +1202,7 @@ datasync_describe_task <- function(TaskArn) {
 
 #' Returns detailed metadata about a task that is being executed
 #'
+#' @description
 #' Returns detailed metadata about a task that is being executed.
 #'
 #' @usage
@@ -1219,6 +1240,7 @@ datasync_describe_task_execution <- function(TaskExecutionArn) {
 #' Returns a list of agents owned by an AWS account in the AWS Region
 #' specified in the request
 #'
+#' @description
 #' Returns a list of agents owned by an AWS account in the AWS Region
 #' specified in the request. The returned list is ordered by agent Amazon
 #' Resource Name (ARN).
@@ -1269,6 +1291,7 @@ datasync_list_agents <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Returns a list of source and destination locations
 #'
+#' @description
 #' Returns a list of source and destination locations.
 #' 
 #' If you have more locations than are returned in a response (that is, the
@@ -1326,6 +1349,7 @@ datasync_list_locations <- function(MaxResults = NULL, NextToken = NULL, Filters
 
 #' Returns all the tags associated with a specified resource
 #'
+#' @description
 #' Returns all the tags associated with a specified resource.
 #'
 #' @usage
@@ -1367,6 +1391,7 @@ datasync_list_tags_for_resource <- function(ResourceArn, MaxResults = NULL, Next
 
 #' Returns a list of executed tasks
 #'
+#' @description
 #' Returns a list of executed tasks.
 #'
 #' @usage
@@ -1408,6 +1433,7 @@ datasync_list_task_executions <- function(TaskArn = NULL, MaxResults = NULL, Nex
 
 #' Returns a list of all the tasks
 #'
+#' @description
 #' Returns a list of all the tasks.
 #'
 #' @usage
@@ -1460,6 +1486,7 @@ datasync_list_tasks <- function(MaxResults = NULL, NextToken = NULL, Filters = N
 
 #' Starts a specific invocation of a task
 #'
+#' @description
 #' Starts a specific invocation of a task. A `TaskExecution` value
 #' represents an individual run of a task. Each task can have at most one
 #' `TaskExecution` at a time.
@@ -1530,6 +1557,7 @@ datasync_start_task_execution <- function(TaskArn, OverrideOptions = NULL, Inclu
 
 #' Applies a key-value pair to an AWS resource
 #'
+#' @description
 #' Applies a key-value pair to an AWS resource.
 #'
 #' @usage
@@ -1573,6 +1601,7 @@ datasync_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes a tag from an AWS resource
 #'
+#' @description
 #' Removes a tag from an AWS resource.
 #'
 #' @usage
@@ -1613,6 +1642,7 @@ datasync_untag_resource <- function(ResourceArn, Keys) {
 
 #' Updates the name of an agent
 #'
+#' @description
 #' Updates the name of an agent.
 #'
 #' @usage
@@ -1651,6 +1681,7 @@ datasync_update_agent <- function(AgentArn, Name = NULL) {
 
 #' Updates the metadata associated with a task
 #'
+#' @description
 #' Updates the metadata associated with a task.
 #'
 #' @usage
@@ -1728,12 +1759,12 @@ datasync_update_task <- function(TaskArn, Options = NULL, Excludes = NULL, Sched
 
 #' Updates execution of a task
 #'
+#' @description
 #' Updates execution of a task.
 #' 
 #' You can modify bandwidth throttling for a task execution that is running
-#' or queued. For more information, see [Adjusting Bandwidth Throttling for
-#' a Task
-#' Execution](https://docs.aws.amazon.com/datasync/latest/#adjust-bandwidth-throttling).
+#' or queued. For more information, see Adjusting Bandwidth Throttling for
+#' a Task Execution.
 #' 
 #' The only `Option` that can be modified by `UpdateTaskExecution` is
 #' ` <a href="https://docs.aws.amazon.com/datasync/latest/userguide/API_Options.html#DataSync-Type-Options-BytesPerSecond">BytesPerSecond</a> `.

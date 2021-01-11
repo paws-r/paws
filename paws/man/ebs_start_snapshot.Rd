@@ -78,8 +78,7 @@ If no value is specified, the timeout defaults to \code{60} minutes.}
 \description{
 Creates a new Amazon EBS snapshot. The new snapshot enters the \code{pending}
 state after the request completes.
-}
-\details{
+
 After creating the snapshot, use
 \href{https://docs.aws.amazon.com/ebs/latest/APIReference/API_PutSnapshotBlock.html}{PutSnapshotBlock}
 to write blocks of data to the snapshot.

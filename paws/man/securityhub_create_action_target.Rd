@@ -15,8 +15,7 @@ securityhub_create_action_target(Name, Description, Id)
 }
 \description{
 Creates a custom action target in Security Hub.
-}
-\details{
+
 You can use custom actions on findings and insights in Security Hub to
 trigger target actions in Amazon CloudWatch Events.
 }

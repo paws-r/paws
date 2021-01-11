@@ -103,8 +103,7 @@ returned for each repeated request.}
 }
 \description{
 Creates a constraint.
-}
-\details{
+
 A delegated admin is authorized to invoke this command.
 }
 \section{Request syntax}{

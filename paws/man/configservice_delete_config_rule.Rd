@@ -11,8 +11,7 @@ configservice_delete_config_rule(ConfigRuleName)
 }
 \description{
 Deletes the specified AWS Config rule and all of its evaluation results.
-}
-\details{
+
 AWS Config sets the state of a rule to \code{DELETING} until the deletion is
 complete. You cannot update a rule while it is in this state. If you
 make a \code{PutConfigRule} or \code{DeleteConfigRule} request for the rule, you

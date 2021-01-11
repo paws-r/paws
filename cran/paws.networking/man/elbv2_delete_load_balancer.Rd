@@ -14,8 +14,7 @@ elbv2_delete_load_balancer(LoadBalancerArn)
 Deletes the specified Application Load Balancer, Network Load Balancer,
 or Gateway Load Balancer. Deleting a load balancer also deletes its
 listeners.
-}
-\details{
+
 You can't delete a load balancer if deletion protection is enabled. If
 the load balancer does not exist or has already been deleted, the call
 succeeds.

@@ -42,8 +42,7 @@ rule group or firewall policy. Use this to share rule groups and
 firewall policies between accounts. This operation works in conjunction
 with the AWS Resource Access Manager (RAM) service to manage resource
 sharing for Network Firewall.
-}
-\details{
+
 Use this operation to create or update a resource policy for your rule
 group or firewall policy. In the policy, you specify the accounts that
 you want to share the resource with and the operations that you want the

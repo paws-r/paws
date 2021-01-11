@@ -5,6 +5,7 @@ NULL
 
 #' Cancels a running query
 #'
+#' @description
 #' Cancels a running query. To be canceled, a query must be running.
 #'
 #' @usage
@@ -45,6 +46,7 @@ redshiftdataapiservice_cancel_statement <- function(Id) {
 #' Describes the details about a specific instance when a query was run by
 #' the Amazon Redshift Data API
 #'
+#' @description
 #' Describes the details about a specific instance when a query was run by
 #' the Amazon Redshift Data API. The information includes when the query
 #' started, when it finished, the query status, the number of rows
@@ -88,6 +90,7 @@ redshiftdataapiservice_describe_statement <- function(Id) {
 #' Describes the detailed information about a table from metadata in the
 #' cluster
 #'
+#' @description
 #' Describes the detailed information about a table from metadata in the
 #' cluster. The information includes its columns. A token is returned to
 #' page through the column list. Depending on the authorization method, use
@@ -166,6 +169,7 @@ redshiftdataapiservice_describe_table <- function(ClusterIdentifier, Database = 
 #' Runs an SQL statement, which can be data manipulation language (DML) or
 #' data definition language (DDL)
 #'
+#' @description
 #' Runs an SQL statement, which can be data manipulation language (DML) or
 #' data definition language (DDL). This statement must be a single SQL
 #' statement. Depending on the authorization method, use one of the
@@ -233,6 +237,7 @@ redshiftdataapiservice_execute_statement <- function(ClusterIdentifier, Database
 
 #' Fetches the temporarily cached result of an SQL statement
 #'
+#' @description
 #' Fetches the temporarily cached result of an SQL statement. A token is
 #' returned to page through the statement results.
 #'
@@ -280,6 +285,7 @@ redshiftdataapiservice_get_statement_result <- function(Id, NextToken = NULL) {
 
 #' List the databases in a cluster
 #'
+#' @description
 #' List the databases in a cluster. A token is returned to page through the
 #' database list. Depending on the authorization method, use one of the
 #' following combinations of request parameters:
@@ -349,6 +355,7 @@ redshiftdataapiservice_list_databases <- function(ClusterIdentifier, Database = 
 
 #' Lists the schemas in a database
 #'
+#' @description
 #' Lists the schemas in a database. A token is returned to page through the
 #' schema list. Depending on the authorization method, use one of the
 #' following combinations of request parameters:
@@ -381,7 +388,7 @@ redshiftdataapiservice_list_databases <- function(ClusterIdentifier, Database = 
 #' NextToken value in the next NextToken parameter and retrying the
 #' command. If the NextToken field is empty, all response records have been
 #' retrieved for the request.
-#' @param SchemaPattern A pattern to filter results by schema name. Within a schema pattern, "%"
+#' @param SchemaPattern A pattern to filter results by schema name. Within a schema pattern, "\%"
 #' means match any substring of 0 or more characters and "\\_" means match
 #' any one character. Only schema name entries matching the search pattern
 #' are returned.
@@ -423,6 +430,7 @@ redshiftdataapiservice_list_schemas <- function(ClusterIdentifier, Database, DbU
 
 #' List of SQL statements
 #'
+#' @description
 #' List of SQL statements. By default, only finished statements are shown.
 #' A token is returned to page through the statement list.
 #'
@@ -495,6 +503,7 @@ redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken 
 
 #' List the tables in a database
 #'
+#' @description
 #' List the tables in a database. If neither `SchemaPattern` nor
 #' `TablePattern` are specified, then all tables in the database are
 #' returned. A token is returned to page through the table list. Depending
@@ -529,7 +538,7 @@ redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken 
 #' NextToken value in the next NextToken parameter and retrying the
 #' command. If the NextToken field is empty, all response records have been
 #' retrieved for the request.
-#' @param SchemaPattern A pattern to filter results by schema name. Within a schema pattern, "%"
+#' @param SchemaPattern A pattern to filter results by schema name. Within a schema pattern, "\%"
 #' means match any substring of 0 or more characters and "\\_" means match
 #' any one character. Only schema name entries matching the search pattern
 #' are returned. If `SchemaPattern` is not specified, then all tables that
@@ -537,7 +546,7 @@ redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken 
 #' `TablePattern` are specified, then all tables are returned.
 #' @param SecretArn The name or ARN of the secret that enables access to the database. This
 #' parameter is required when authenticating using AWS Secrets Manager.
-#' @param TablePattern A pattern to filter results by table name. Within a table pattern, "%"
+#' @param TablePattern A pattern to filter results by table name. Within a table pattern, "\%"
 #' means match any substring of 0 or more characters and "\\_" means match
 #' any one character. Only table name entries matching the search pattern
 #' are returned. If `TablePattern` is not specified, then all tables that

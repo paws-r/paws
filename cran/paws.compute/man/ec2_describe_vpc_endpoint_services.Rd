@@ -40,8 +40,7 @@ from a prior call.)}
 }
 \description{
 Describes available services to which you can create a VPC endpoint.
-}
-\details{
+
 When the service provider and the consumer have different accounts
 multiple Availability Zones, and the consumer views the VPC endpoint
 service information, the response only includes the common Availability

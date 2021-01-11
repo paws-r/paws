@@ -44,8 +44,7 @@ to search on the tags.}
 Creates a \emph{trial component}, which is a stage of a machine learning
 \emph{trial}. A trial is composed of one or more trial components. A trial
 component can be used in multiple trials.
-}
-\details{
+
 Trial components include pre-processing jobs, training jobs, and batch
 transform jobs.
 

@@ -31,8 +31,7 @@ evaluating sample records on the specified streaming source (Kinesis
 data stream or Kinesis Data Firehose delivery stream) or Amazon S3
 object. In the response, the operation returns the inferred schema and
 also the sample records that the operation used to infer the schema.
-}
-\details{
+
 You can use the inferred schema when configuring a streaming source for
 your application. When you create an application using the Kinesis Data
 Analytics console, the console uses this operation to infer a schema and

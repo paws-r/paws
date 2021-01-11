@@ -6,6 +6,7 @@ NULL
 #' Adds permissions to the resource-based policy of a version of an AWS
 #' Lambda layer
 #'
+#' @description
 #' Adds permissions to the resource-based policy of a version of an [AWS
 #' Lambda
 #' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
@@ -81,6 +82,7 @@ lambda_add_layer_version_permission <- function(LayerName, VersionNumber, Statem
 
 #' Grants an AWS service or another account permission to use a function
 #'
+#' @description
 #' Grants an AWS service or another account permission to use a function.
 #' You can apply the policy at the function level, or specify a qualifier
 #' to restrict access to a single version or alias. If you use a qualifier,
@@ -202,6 +204,7 @@ lambda_add_permission <- function(FunctionName, StatementId, Action, Principal, 
 
 #' Creates an alias for a Lambda function version
 #'
+#' @description
 #' Creates an
 #' [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html)
 #' for a Lambda function version. Use aliases to provide clients with a
@@ -284,6 +287,7 @@ lambda_create_alias <- function(FunctionName, Name, FunctionVersion, Description
 
 #' Creates a code signing configuration
 #'
+#' @description
 #' Creates a code signing configuration. A [code signing
 #' configuration](https://docs.aws.amazon.com/lambda/latest/dg/) defines a
 #' list of allowed signing profiles and defines the code-signing validation
@@ -335,6 +339,7 @@ lambda_create_code_signing_config <- function(Description = NULL, AllowedPublish
 
 #' Creates a mapping between an event source and an AWS Lambda function
 #'
+#' @description
 #' Creates a mapping between an event source and an AWS Lambda function.
 #' Lambda reads items from the event source and triggers the function.
 #' 
@@ -539,6 +544,7 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 
 #' Creates a Lambda function
 #'
+#' @description
 #' Creates a Lambda function. To create a function, you need a [deployment
 #' package](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html)
 #' and an [execution
@@ -778,6 +784,7 @@ lambda_create_function <- function(FunctionName, Runtime = NULL, Role, Handler =
 
 #' Deletes a Lambda function alias
 #'
+#' @description
 #' Deletes a Lambda function
 #' [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html).
 #'
@@ -839,6 +846,7 @@ lambda_delete_alias <- function(FunctionName, Name) {
 
 #' Deletes the code signing configuration
 #'
+#' @description
 #' Deletes the code signing configuration. You can delete the code signing
 #' configuration only if no function is using it.
 #'
@@ -876,6 +884,7 @@ lambda_delete_code_signing_config <- function(CodeSigningConfigArn) {
 
 #' Deletes an event source mapping
 #'
+#' @description
 #' Deletes an [event source
 #' mapping](https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html).
 #' You can get the identifier of a mapping from the output of
@@ -927,6 +936,7 @@ lambda_delete_event_source_mapping <- function(UUID) {
 
 #' Deletes a Lambda function
 #'
+#' @description
 #' Deletes a Lambda function. To delete a specific function version, use
 #' the `Qualifier` parameter. Otherwise, all versions and aliases are
 #' deleted.
@@ -997,6 +1007,7 @@ lambda_delete_function <- function(FunctionName, Qualifier = NULL) {
 
 #' Removes the code signing configuration from the function
 #'
+#' @description
 #' Removes the code signing configuration from the function.
 #'
 #' @usage
@@ -1045,6 +1056,7 @@ lambda_delete_function_code_signing_config <- function(FunctionName) {
 
 #' Removes a concurrent execution limit from a function
 #'
+#' @description
 #' Removes a concurrent execution limit from a function.
 #'
 #' @usage
@@ -1103,6 +1115,7 @@ lambda_delete_function_concurrency <- function(FunctionName) {
 #' Deletes the configuration for asynchronous invocation for a function,
 #' version, or alias
 #'
+#' @description
 #' Deletes the configuration for asynchronous invocation for a function,
 #' version, or alias.
 #' 
@@ -1169,6 +1182,7 @@ lambda_delete_function_event_invoke_config <- function(FunctionName, Qualifier =
 
 #' Deletes a version of an AWS Lambda layer
 #'
+#' @description
 #' Deletes a version of an [AWS Lambda
 #' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 #' Deleted versions can no longer be viewed or added to functions. To avoid
@@ -1220,6 +1234,7 @@ lambda_delete_layer_version <- function(LayerName, VersionNumber) {
 
 #' Deletes the provisioned concurrency configuration for a function
 #'
+#' @description
 #' Deletes the provisioned concurrency configuration for a function.
 #'
 #' @usage
@@ -1280,6 +1295,7 @@ lambda_delete_provisioned_concurrency_config <- function(FunctionName, Qualifier
 
 #' Retrieves details about your account's limits and usage in an AWS Region
 #'
+#' @description
 #' Retrieves details about your account's
 #' [limits](https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-limits.html)
 #' and usage in an AWS Region.
@@ -1321,6 +1337,7 @@ lambda_get_account_settings <- function() {
 
 #' Returns details about a Lambda function alias
 #'
+#' @description
 #' Returns details about a Lambda function
 #' [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html).
 #'
@@ -1382,6 +1399,7 @@ lambda_get_alias <- function(FunctionName, Name) {
 
 #' Returns information about the specified code signing configuration
 #'
+#' @description
 #' Returns information about the specified code signing configuration.
 #'
 #' @usage
@@ -1418,6 +1436,7 @@ lambda_get_code_signing_config <- function(CodeSigningConfigArn) {
 
 #' Returns details about an event source mapping
 #'
+#' @description
 #' Returns details about an event source mapping. You can get the
 #' identifier of a mapping from the output of ListEventSourceMappings.
 #'
@@ -1465,6 +1484,7 @@ lambda_get_event_source_mapping <- function(UUID) {
 #' Returns information about the function or function version, with a link
 #' to download the deployment package that's valid for 10 minutes
 #'
+#' @description
 #' Returns information about the function or function version, with a link
 #' to download the deployment package that's valid for 10 minutes. If you
 #' specify a function version, only details that are specific to that
@@ -1531,6 +1551,7 @@ lambda_get_function <- function(FunctionName, Qualifier = NULL) {
 
 #' Returns the code signing configuration for the specified function
 #'
+#' @description
 #' Returns the code signing configuration for the specified function.
 #'
 #' @usage
@@ -1580,6 +1601,7 @@ lambda_get_function_code_signing_config <- function(FunctionName) {
 #' Returns details about the reserved concurrency configuration for a
 #' function
 #'
+#' @description
 #' Returns details about the reserved concurrency configuration for a
 #' function. To set a concurrency limit for a function, use
 #' PutFunctionConcurrency.
@@ -1639,6 +1661,7 @@ lambda_get_function_concurrency <- function(FunctionName) {
 
 #' Returns the version-specific settings of a Lambda function or version
 #'
+#' @description
 #' Returns the version-specific settings of a Lambda function or version.
 #' The output includes only options that can vary between versions of a
 #' function. To modify these settings, use UpdateFunctionConfiguration.
@@ -1708,6 +1731,7 @@ lambda_get_function_configuration <- function(FunctionName, Qualifier = NULL) {
 #' Retrieves the configuration for asynchronous invocation for a function,
 #' version, or alias
 #'
+#' @description
 #' Retrieves the configuration for asynchronous invocation for a function,
 #' version, or alias.
 #' 
@@ -1775,6 +1799,7 @@ lambda_get_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 #' Returns information about a version of an AWS Lambda layer, with a link
 #' to download the layer archive that's valid for 10 minutes
 #'
+#' @description
 #' Returns information about a version of an [AWS Lambda
 #' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html),
 #' with a link to download the layer archive that's valid for 10 minutes.
@@ -1826,6 +1851,7 @@ lambda_get_layer_version <- function(LayerName, VersionNumber) {
 #' Returns information about a version of an AWS Lambda layer, with a link
 #' to download the layer archive that's valid for 10 minutes
 #'
+#' @description
 #' Returns information about a version of an [AWS Lambda
 #' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html),
 #' with a link to download the layer archive that's valid for 10 minutes.
@@ -1873,6 +1899,7 @@ lambda_get_layer_version_by_arn <- function(Arn) {
 
 #' Returns the permission policy for a version of an AWS Lambda layer
 #'
+#' @description
 #' Returns the permission policy for a version of an [AWS Lambda
 #' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 #' For more information, see AddLayerVersionPermission.
@@ -1913,6 +1940,7 @@ lambda_get_layer_version_policy <- function(LayerName, VersionNumber) {
 
 #' Returns the resource-based IAM policy for a function, version, or alias
 #'
+#' @description
 #' Returns the [resource-based IAM
 #' policy](https://docs.aws.amazon.com/lambda/latest/dg/access-control-resource-based.html)
 #' for a function, version, or alias.
@@ -1978,6 +2006,7 @@ lambda_get_policy <- function(FunctionName, Qualifier = NULL) {
 #' Retrieves the provisioned concurrency configuration for a function's
 #' alias or version
 #'
+#' @description
 #' Retrieves the provisioned concurrency configuration for a function's
 #' alias or version.
 #'
@@ -2046,6 +2075,7 @@ lambda_get_provisioned_concurrency_config <- function(FunctionName, Qualifier) {
 
 #' Invokes a Lambda function
 #'
+#' @description
 #' Invokes a Lambda function. You can invoke a function synchronously (and
 #' wait for the response), or asynchronously. To invoke a function
 #' asynchronously, set `InvocationType` to `Event`.
@@ -2187,6 +2217,7 @@ lambda_invoke <- function(FunctionName, InvocationType = NULL, LogType = NULL, C
 
 #' For asynchronous function invocation, use Invoke
 #'
+#' @description
 #' For asynchronous function invocation, use Invoke.
 #' 
 #' Invokes a function asynchronously.
@@ -2248,6 +2279,7 @@ lambda_invoke_async <- function(FunctionName, InvokeArgs) {
 
 #' Returns a list of aliases for a Lambda function
 #'
+#' @description
 #' Returns a list of
 #' [aliases](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html)
 #' for a Lambda function.
@@ -2315,6 +2347,7 @@ lambda_list_aliases <- function(FunctionName, FunctionVersion = NULL, Marker = N
 
 #' Returns a list of code signing configurations
 #'
+#' @description
 #' Returns a list of [code signing
 #' configurations](https://docs.aws.amazon.com/lambda/latest/dg/). A
 #' request returns up to 10,000 configurations per call. You can use the
@@ -2357,6 +2390,7 @@ lambda_list_code_signing_configs <- function(Marker = NULL, MaxItems = NULL) {
 
 #' Lists event source mappings
 #'
+#' @description
 #' Lists event source mappings. Specify an `EventSourceArn` to only show
 #' event source mappings for a single event source.
 #'
@@ -2436,6 +2470,7 @@ lambda_list_event_source_mappings <- function(EventSourceArn = NULL, FunctionNam
 #' Retrieves a list of configurations for asynchronous invocation for a
 #' function
 #'
+#' @description
 #' Retrieves a list of configurations for asynchronous invocation for a
 #' function.
 #' 
@@ -2504,6 +2539,7 @@ lambda_list_function_event_invoke_configs <- function(FunctionName, Marker = NUL
 #' Returns a list of Lambda functions, with the version-specific
 #' configuration of each
 #'
+#' @description
 #' Returns a list of Lambda functions, with the version-specific
 #' configuration of each. Lambda returns up to 50 functions per call.
 #' 
@@ -2562,6 +2598,7 @@ lambda_list_functions <- function(MasterRegion = NULL, FunctionVersion = NULL, M
 
 #' List the functions that use the specified code signing configuration
 #'
+#' @description
 #' List the functions that use the specified code signing configuration.
 #' You can use this method prior to deleting a code signing configuration,
 #' to verify that no functions are using it.
@@ -2606,6 +2643,7 @@ lambda_list_functions_by_code_signing_config <- function(CodeSigningConfigArn, M
 
 #' Lists the versions of an AWS Lambda layer
 #'
+#' @description
 #' Lists the versions of an [AWS Lambda
 #' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 #' Versions that have been deleted aren't listed. Specify a [runtime
@@ -2664,6 +2702,7 @@ lambda_list_layer_versions <- function(CompatibleRuntime = NULL, LayerName, Mark
 #' Lists AWS Lambda layers and shows information about the latest version
 #' of each
 #'
+#' @description
 #' Lists [AWS Lambda
 #' layers](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
 #' and shows information about the latest version of each. Specify a
@@ -2720,6 +2759,7 @@ lambda_list_layers <- function(CompatibleRuntime = NULL, Marker = NULL, MaxItems
 #' Retrieves a list of provisioned concurrency configurations for a
 #' function
 #'
+#' @description
 #' Retrieves a list of provisioned concurrency configurations for a
 #' function.
 #'
@@ -2784,6 +2824,7 @@ lambda_list_provisioned_concurrency_configs <- function(FunctionName, Marker = N
 
 #' Returns a function's tags
 #'
+#' @description
 #' Returns a function's
 #' [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html).
 #' You can also view tags with GetFunction.
@@ -2832,6 +2873,7 @@ lambda_list_tags <- function(Resource) {
 #' Returns a list of versions, with the version-specific configuration of
 #' each
 #'
+#' @description
 #' Returns a list of
 #' [versions](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html),
 #' with the version-specific configuration of each. Lambda returns up to 50
@@ -2897,6 +2939,7 @@ lambda_list_versions_by_function <- function(FunctionName, Marker = NULL, MaxIte
 
 #' Creates an AWS Lambda layer from a ZIP archive
 #'
+#' @description
 #' Creates an [AWS Lambda
 #' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
 #' from a ZIP archive. Each time you call `PublishLayerVersion` with the
@@ -2985,6 +3028,7 @@ lambda_publish_layer_version <- function(LayerName, Description = NULL, Content,
 
 #' Creates a version from the current code and configuration of a function
 #'
+#' @description
 #' Creates a
 #' [version](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html)
 #' from the current code and configuration of a function. Use versions to
@@ -3068,6 +3112,7 @@ lambda_publish_version <- function(FunctionName, CodeSha256 = NULL, Description 
 
 #' Update the code signing configuration for the function
 #'
+#' @description
 #' Update the code signing configuration for the function. Changes to the
 #' code signing configuration take effect the next time a user tries to
 #' deploy a code package to the function.
@@ -3122,6 +3167,7 @@ lambda_put_function_code_signing_config <- function(CodeSigningConfigArn, Functi
 #' Sets the maximum number of simultaneous executions for a function, and
 #' reserves capacity for that concurrency level
 #'
+#' @description
 #' Sets the maximum number of simultaneous executions for a function, and
 #' reserves capacity for that concurrency level.
 #' 
@@ -3198,6 +3244,7 @@ lambda_put_function_concurrency <- function(FunctionName, ReservedConcurrentExec
 #' Configures options for asynchronous invocation on a function, version,
 #' or alias
 #'
+#' @description
 #' Configures options for [asynchronous
 #' invocation](https://docs.aws.amazon.com/lambda/latest/dg/invocation-async.html)
 #' on a function, version, or alias. If a configuration already exists for
@@ -3309,6 +3356,7 @@ lambda_put_function_event_invoke_config <- function(FunctionName, Qualifier = NU
 #' Adds a provisioned concurrency configuration to a function's alias or
 #' version
 #'
+#' @description
 #' Adds a provisioned concurrency configuration to a function's alias or
 #' version.
 #'
@@ -3376,6 +3424,7 @@ lambda_put_provisioned_concurrency_config <- function(FunctionName, Qualifier, P
 #' Removes a statement from the permissions policy for a version of an AWS
 #' Lambda layer
 #'
+#' @description
 #' Removes a statement from the permissions policy for a version of an [AWS
 #' Lambda
 #' layer](https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
@@ -3435,6 +3484,7 @@ lambda_remove_layer_version_permission <- function(LayerName, VersionNumber, Sta
 
 #' Revokes function-use permission from an AWS service or another account
 #'
+#' @description
 #' Revokes function-use permission from an AWS service or another account.
 #' You can get the ID of the statement from the output of GetPolicy.
 #'
@@ -3507,6 +3557,7 @@ lambda_remove_permission <- function(FunctionName, StatementId, Qualifier = NULL
 
 #' Adds tags to a function
 #'
+#' @description
 #' Adds
 #' [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html)
 #' to a function.
@@ -3561,6 +3612,7 @@ lambda_tag_resource <- function(Resource, Tags) {
 
 #' Removes tags from a function
 #'
+#' @description
 #' Removes
 #' [tags](https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html)
 #' from a function.
@@ -3615,6 +3667,7 @@ lambda_untag_resource <- function(Resource, TagKeys) {
 
 #' Updates the configuration of a Lambda function alias
 #'
+#' @description
 #' Updates the configuration of a Lambda function
 #' [alias](https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html).
 #'
@@ -3699,6 +3752,7 @@ lambda_update_alias <- function(FunctionName, Name, FunctionVersion = NULL, Desc
 
 #' Update the code signing configuration
 #'
+#' @description
 #' Update the code signing configuration. Changes to the code signing
 #' configuration take effect the next time a user tries to deploy a code
 #' package to the function.
@@ -3750,6 +3804,7 @@ lambda_update_code_signing_config <- function(CodeSigningConfigArn, Description 
 
 #' Updates an event source mapping
 #'
+#' @description
 #' Updates an event source mapping. You can change the function that AWS
 #' Lambda invokes, or pause invocation and resume later from the same
 #' location.
@@ -3898,6 +3953,7 @@ lambda_update_event_source_mapping <- function(UUID, FunctionName = NULL, Enable
 
 #' Updates a Lambda function's code
 #'
+#' @description
 #' Updates a Lambda function's code. If code signing is enabled for the
 #' function, the code package must be signed by a trusted publisher. For
 #' more information, see [Configuring code
@@ -3992,6 +4048,7 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 
 #' Modify the version-specific settings of a Lambda function
 #'
+#' @description
 #' Modify the version-specific settings of a Lambda function.
 #' 
 #' When you update a function, Lambda provisions an instance of the
@@ -4155,6 +4212,7 @@ lambda_update_function_configuration <- function(FunctionName, Role = NULL, Hand
 #' Updates the configuration for asynchronous invocation for a function,
 #' version, or alias
 #'
+#' @description
 #' Updates the configuration for asynchronous invocation for a function,
 #' version, or alias.
 #' 

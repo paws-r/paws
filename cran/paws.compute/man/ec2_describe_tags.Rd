@@ -39,8 +39,7 @@ call with the returned \code{NextToken} value.}
 }
 \description{
 Describes the specified tags for your EC2 resources.
-}
-\details{
+
 For more information about tags, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html}{Tagging Your Resources}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }

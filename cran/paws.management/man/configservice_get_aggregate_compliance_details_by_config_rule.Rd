@@ -37,8 +37,7 @@ Returns the evaluation results for the specified AWS Config rule for a
 specific resource in a rule. The results indicate which AWS resources
 were evaluated by the rule, when each resource was last evaluated, and
 whether each resource complies with the rule.
-}
-\details{
+
 The results can return an empty result page. But if you have a
 \code{nextToken}, the results are displayed on the next page.
 }

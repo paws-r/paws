@@ -33,8 +33,7 @@ subsequent call that tells the service where to continue from.}
 Returns information about the access key IDs associated with the
 specified IAM user. If there is none, the operation returns an empty
 list.
-}
-\details{
+
 Although each user is limited to a small number of keys, you can still
 paginate the results using the \code{MaxItems} and \code{Marker} parameters.
 

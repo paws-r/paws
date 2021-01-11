@@ -26,8 +26,7 @@ Generates a report that includes details about when an IAM resource
 services. Recent activity usually appears within four hours. IAM reports
 activity for the last 365 days, or less if your Region began supporting
 this feature within the last year. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#access-advisor_tracking-period}{Regions Where Data Is Tracked}.
-}
-\details{
+
 The service last accessed data includes all attempts to access an AWS
 API, not just the successful ones. This includes all attempts that were
 made using the AWS Management Console, the AWS API through any of the

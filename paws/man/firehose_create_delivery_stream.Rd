@@ -60,8 +60,7 @@ You can specify up to 50 tags when creating a delivery stream.}
 }
 \description{
 Creates a Kinesis Data Firehose delivery stream.
-}
-\details{
+
 By default, you can create up to 50 delivery streams per AWS Region.
 
 This is an asynchronous operation that immediately returns. The initial

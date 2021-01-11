@@ -32,8 +32,7 @@ exclude some or all of the indexes at the time of restore.}
 Creates a new table from an existing backup. Any number of users can
 execute up to 4 concurrent restores (any type of restore) in a given
 account.
-}
-\details{
+
 You can call \code{RestoreTableFromBackup} at a maximum rate of 10 times per
 second.
 

@@ -19,8 +19,7 @@ alphanumeric characters, dashes, and underscores.}
 Deletes the specified sending authorization policy for the given
 identity (an email address or a domain). This API returns successfully
 even if a policy with the specified name does not exist.
-}
-\details{
+
 This API is for the identity owner only. If you have not verified the
 identity, this API will return an error.
 

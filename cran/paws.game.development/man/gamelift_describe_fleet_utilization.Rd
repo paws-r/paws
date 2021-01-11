@@ -28,8 +28,7 @@ Retrieves utilization statistics for one or more fleets. These
 statistics provide insight into how available hosting resources are
 currently being used. To get statistics on available hosting resources,
 see DescribeFleetCapacity.
-}
-\details{
+
 You can request utilization data for all fleets, or specify a list of
 one or more fleet IDs. When requesting multiple fleets, use the
 pagination parameters to retrieve results as a set of sequential pages.

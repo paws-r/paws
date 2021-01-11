@@ -13,8 +13,7 @@ emr_delete_studio(StudioId)
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.
-}
-\details{
+
 Removes an Amazon EMR Studio from the Studio metadata store.
 }
 \section{Request syntax}{

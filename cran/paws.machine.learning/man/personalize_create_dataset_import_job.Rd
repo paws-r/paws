@@ -25,8 +25,7 @@ Personalize to import the training data, you must specify an AWS
 Identity and Access Management (IAM) role that has permission to read
 from the data source, as Amazon Personalize makes a copy of your data
 and processes it in an internal AWS system.
-}
-\details{
+
 The dataset import job replaces any previous data in the dataset.
 
 \strong{Status}

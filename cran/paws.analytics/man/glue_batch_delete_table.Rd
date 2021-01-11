@@ -17,8 +17,7 @@ For Hive compatibility, this name is entirely lowercase.}
 }
 \description{
 Deletes multiple tables at once.
-}
-\details{
+
 After completing this operation, you no longer have access to the table
 versions and partitions that belong to the deleted table. AWS Glue
 deletes these "orphaned" resources asynchronously in a timely manner, at

@@ -10,8 +10,7 @@ securityhub_disable_security_hub()
 Disables Security Hub in your account only in the current Region. To
 disable Security Hub in all Regions, you must submit one request per
 Region where you have enabled Security Hub.
-}
-\details{
+
 When you disable Security Hub for a master account, it doesn't disable
 Security Hub for any associated member accounts.
 

@@ -36,8 +36,7 @@ operation.}
 Creates a Microsoft AD directory in the AWS Cloud. For more information,
 see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html}{AWS Managed Microsoft AD}
 in the \emph{AWS Directory Service Admin Guide}.
-}
-\details{
+
 Before you call \emph{CreateMicrosoftAD}, ensure that all of the required
 permissions have been explicitly granted through a policy. For details
 about what permissions are required to run the \emph{CreateMicrosoftAD}

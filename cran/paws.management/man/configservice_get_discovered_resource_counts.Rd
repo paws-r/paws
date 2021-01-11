@@ -34,8 +34,7 @@ the next page of results in a paginated response.}
 Returns the resource types, the number of each resource type, and the
 total number of resources that AWS Config is recording in this region
 for your AWS account.
-}
-\details{
+
 \strong{Example}
 \enumerate{
 \item AWS Config is recording three resource types in the US East (Ohio)

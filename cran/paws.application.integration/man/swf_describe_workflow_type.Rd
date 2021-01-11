@@ -15,8 +15,7 @@ swf_describe_workflow_type(domain, workflowType)
 Returns information about the specified \emph{workflow type}. This includes
 configuration settings specified when the type was registered and other
 information such as creation date, current status, etc.
-}
-\details{
+
 \strong{Access Control}
 
 You can use IAM policies to control this action's access to Amazon SWF

@@ -19,8 +19,7 @@ notifications and subscribers for you.}
 }
 \description{
 Creates a budget and, if included, notifications and subscribers.
-}
-\details{
+
 Only one of \code{BudgetLimit} or \code{PlannedBudgetLimits} can be present in the
 syntax at one time. Use the syntax that matches your case. The Request
 Syntax section shows the \code{BudgetLimit} syntax. For

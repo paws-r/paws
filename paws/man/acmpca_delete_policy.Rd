@@ -17,8 +17,7 @@ action. The ARN value must have the form
 Deletes the resource-based policy attached to a private CA. Deletion
 will remove any access that the policy has granted. If there is no
 policy attached to the private CA, this action will return successful.
-}
-\details{
+
 If you delete a policy that was applied through AWS Resource Access
 Manager (RAM), the CA will be removed from all shares in which it was
 included.

@@ -32,17 +32,17 @@ TargetParameterName.}
 Targets and TargetMaps cannot be specified together.}
 
 \item{MaxConcurrency}{The maximum number of targets allowed to run this task in parallel. You
-can specify a number, such as 10, or a percentage, such as 10\%. The
+can specify a number, such as 10, or a percentage, such as 10\\%. The
 default value is 10.}
 
 \item{MaxErrors}{The number of errors that are allowed before the system stops running
 the automation on additional targets. You can specify either an absolute
 number of errors, for example 10, or a percentage of the target set, for
-example 10\%. If you specify 3, for example, the system stops running the
+example 10\\%. If you specify 3, for example, the system stops running the
 automation when the fourth error is received. If you specify 0, then the
 system stops running the automation on additional targets after the
 first error result is returned. If you run an automation on 50 resources
-and set max-errors to 10\%, then the system stops running the automation
+and set max-errors to 10\\%, then the system stops running the automation
 on additional targets when the sixth error is received.
 
 Executions that are already running an automation when max-errors is

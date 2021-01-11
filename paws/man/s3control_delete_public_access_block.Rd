@@ -13,8 +13,7 @@ configuration you want to remove.}
 \description{
 Removes the \code{PublicAccessBlock} configuration for an AWS account. For
 more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html}{Using Amazon S3 block public access}.
-}
-\details{
+
 Related actions include:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_GetPublicAccessBlock.html}{GetPublicAccessBlock}

@@ -25,8 +25,7 @@ other. If you don't know the name or ARN of the consumer that you want
 to describe, you can use the ListStreamConsumers operation to get a list
 of the descriptions of all the consumers that are currently registered
 with a given data stream.
-}
-\details{
+
 This operation has a limit of 20 transactions per second per stream.
 }
 \section{Request syntax}{

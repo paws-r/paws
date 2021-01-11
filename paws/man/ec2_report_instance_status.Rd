@@ -49,8 +49,7 @@ in the \code{running} state. If your experience with the instance differs
 from the instance status returned by DescribeInstanceStatus, use
 ReportInstanceStatus to report your experience with the instance. Amazon
 EC2 collects this information to improve the accuracy of status checks.
-}
-\details{
+
 Use of this action does not change the value returned by
 DescribeInstanceStatus.
 }

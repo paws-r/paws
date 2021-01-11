@@ -16,8 +16,7 @@ spaces. You can also include any of the following characters: \\_+=,.@-}
 \description{
 Deletes the specified instance profile. The instance profile must not
 have an associated role.
-}
-\details{
+
 Make sure that you do not have any Amazon EC2 instances running with the
 instance profile you are about to delete. Deleting a role or instance
 profile that is associated with a running instance will break any

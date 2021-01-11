@@ -17,8 +17,7 @@ list.}
 }
 \description{
 Lists the groups associated with a user pool.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

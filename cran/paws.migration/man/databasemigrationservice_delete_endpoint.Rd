@@ -12,8 +12,7 @@ endpoint.}
 }
 \description{
 Deletes the specified endpoint.
-}
-\details{
+
 All tasks associated with the endpoint must be deleted before you can
 delete the endpoint.
 }

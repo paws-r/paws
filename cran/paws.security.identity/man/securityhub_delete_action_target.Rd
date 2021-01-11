@@ -11,8 +11,7 @@ securityhub_delete_action_target(ActionTargetArn)
 }
 \description{
 Deletes a custom action target from Security Hub.
-}
-\details{
+
 Deleting a custom action target does not affect any findings or insights
 that were already sent to Amazon CloudWatch Events using the custom
 action.

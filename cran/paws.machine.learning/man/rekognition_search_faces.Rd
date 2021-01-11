@@ -18,15 +18,14 @@ number of faces with the highest confidence in the match.}
 
 \item{FaceMatchThreshold}{Optional value specifying the minimum confidence in the face match to
 return. For example, don't return any matches where confidence in
-matches is less than 70\%. The default value is 80\%.}
+matches is less than 70\\%. The default value is 80\\%.}
 }
 \description{
 For a given input face ID, searches for matching faces in the collection
 the face belongs to. You get a face ID when you add a face to the
 collection using the IndexFaces operation. The operation compares the
 features of the input face with faces in the specified collection.
-}
-\details{
+
 You can also search faces without indexing faces by using the
 \code{SearchFacesByImage} operation.
 

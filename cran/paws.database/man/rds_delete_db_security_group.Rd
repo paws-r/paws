@@ -21,8 +21,7 @@ Constraints:
 }
 \description{
 Deletes a DB security group.
-}
-\details{
+
 The specified DB security group must not be associated with any DB
 instances.
 }

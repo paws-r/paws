@@ -11,8 +11,7 @@ iotanalytics_delete_dataset(datasetName)
 }
 \description{
 Deletes the specified dataset.
-}
-\details{
+
 You do not have to delete the content of the dataset before you perform
 this operation.
 }

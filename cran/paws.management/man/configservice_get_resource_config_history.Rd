@@ -36,8 +36,7 @@ specified time interval. If you specified a retention period to retain
 your \code{ConfigurationItems} between a minimum of 30 days and a maximum of
 7 years (2557 days), AWS Config returns the \code{ConfigurationItems} for the
 specified retention period.
-}
-\details{
+
 The response is paginated. By default, AWS Config returns a limit of 10
 configuration items per page. You can customize this number with the
 \code{limit} parameter. The response includes a \code{nextToken} string. To get

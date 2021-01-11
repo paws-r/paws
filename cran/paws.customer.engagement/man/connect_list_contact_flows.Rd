@@ -22,8 +22,7 @@ results.}
 \description{
 Provides information about the contact flows for the specified Amazon
 Connect instance.
-}
-\details{
+
 You can also create and update contact flows using the \href{https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html}{Amazon Connect Flow language}.
 
 For more information about contact flows, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/concepts-contact-flows.html}{Contact Flows}

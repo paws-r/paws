@@ -12,8 +12,7 @@ ec2_disassociate_iam_instance_profile(AssociationId)
 \description{
 Disassociates an IAM instance profile from a running or stopped
 instance.
-}
-\details{
+
 Use DescribeIamInstanceProfileAssociations to get the association ID.
 }
 \section{Request syntax}{

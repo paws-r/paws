@@ -64,8 +64,7 @@ not specified are set to null.}
 \description{
 Modifies an existing patch baseline. Fields not specified in the request
 are left unchanged.
-}
-\details{
+
 For information about valid key and value pairs in \code{PatchFilters} for
 each supported operating system type, see
 \href{https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PatchFilter.html}{PatchFilter}.

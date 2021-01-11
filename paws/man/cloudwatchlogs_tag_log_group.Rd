@@ -13,8 +13,7 @@ cloudwatchlogs_tag_log_group(logGroupName, tags)
 }
 \description{
 Adds or updates the specified tags for the specified log group.
-}
-\details{
+
 To list the tags for a log group, use
 \href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_ListTagsLogGroup.html}{ListTagsLogGroup}.
 To remove tags, use

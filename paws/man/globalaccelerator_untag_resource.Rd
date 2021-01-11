@@ -17,8 +17,7 @@ Remove tags from a Global Accelerator resource. When you specify a tag
 key, the action removes both that key and its associated value. The
 operation succeeds even if you attempt to remove tags from an
 accelerator that was already removed.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html}{Tagging in AWS Global Accelerator}
 in the \emph{AWS Global Accelerator Developer Guide}.
 }

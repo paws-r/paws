@@ -28,8 +28,7 @@ This action gets a bucket policy for an Amazon S3 on Outposts bucket. To
 get a policy for an S3 bucket, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketPolicy.html}{GetBucketPolicy}
 in the \emph{Amazon Simple Storage Service API}.
-}
-\details{
+
 Returns the policy of a specified Outposts bucket. For more information,
 see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.

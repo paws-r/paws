@@ -16,8 +16,7 @@ permissions specify the range of IP addresses and port settings that
 incoming traffic can use to access server processes in the fleet. Game
 sessions that are running on instances in the fleet use connections that
 fall in this range.
-}
-\details{
+
 To get a fleet's inbound connection permissions, specify the fleet's
 unique identifier. If successful, a collection of IpPermission objects
 is returned for the requested fleet ID. If the requested fleet has been

@@ -25,8 +25,7 @@ manipulation, and commit statements.}
 }
 \description{
 Runs one or more SQL statements.
-}
-\details{
+
 This operation is deprecated. Use the \code{BatchExecuteStatement} or
 \code{ExecuteStatement} operation.
 }

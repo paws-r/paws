@@ -25,8 +25,7 @@ as part of an Amazon Rekognition Custom Labels project. You can specify
 one training dataset and one testing dataset. The response from
 \code{CreateProjectVersion} is an Amazon Resource Name (ARN) for the version
 of the model.
-}
-\details{
+
 Training takes a while to complete. You can get the current status by
 calling DescribeProjectVersions.
 

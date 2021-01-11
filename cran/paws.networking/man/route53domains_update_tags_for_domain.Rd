@@ -15,8 +15,7 @@ replaced.}
 }
 \description{
 This operation adds or updates tags for a specified domain.
-}
-\details{
+
 All tag operations are eventually consistent; subsequent operations
 might not immediately represent all issued operations.
 }

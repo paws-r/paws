@@ -13,8 +13,7 @@ opsworks_describe_stack_summary(StackId)
 \description{
 Describes the number of layers and apps in a specified stack, and the
 number of instances in each state, such as \code{running_setup} or \code{online}.
-}
-\details{
+
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information about

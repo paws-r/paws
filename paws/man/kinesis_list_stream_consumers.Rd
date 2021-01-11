@@ -49,8 +49,7 @@ You can't specify this parameter if you specify the NextToken parameter.}
 \description{
 Lists the consumers registered to receive data from a stream using
 enhanced fan-out, and provides information about each consumer.
-}
-\details{
+
 This operation has a limit of 5 transactions per second per stream.
 }
 \section{Request syntax}{

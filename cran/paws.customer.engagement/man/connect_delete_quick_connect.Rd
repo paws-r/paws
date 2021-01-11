@@ -15,8 +15,7 @@ connect_delete_quick_connect(InstanceId, QuickConnectId)
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Deletes a quick connect.
 }
 \section{Request syntax}{

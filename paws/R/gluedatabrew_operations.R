@@ -5,6 +5,7 @@ NULL
 
 #' Deletes one or more versions of a recipe at a time
 #'
+#' @description
 #' Deletes one or more versions of a recipe at a time.
 #'
 #' @usage
@@ -45,6 +46,7 @@ gluedatabrew_batch_delete_recipe_version <- function(Name, RecipeVersions) {
 
 #' Creates a new AWS Glue DataBrew dataset for this AWS account
 #'
+#' @description
 #' Creates a new AWS Glue DataBrew dataset for this AWS account.
 #'
 #' @usage
@@ -116,6 +118,7 @@ gluedatabrew_create_dataset <- function(Name, FormatOptions = NULL, Input, Tags 
 #' Creates a new job to profile an AWS Glue DataBrew dataset that exists in
 #' the current AWS account
 #'
+#' @description
 #' Creates a new job to profile an AWS Glue DataBrew dataset that exists in
 #' the current AWS account.
 #'
@@ -191,6 +194,7 @@ gluedatabrew_create_profile_job <- function(DatasetName, EncryptionKeyArn = NULL
 
 #' Creates a new AWS Glue DataBrew project in the current AWS account
 #'
+#' @description
 #' Creates a new AWS Glue DataBrew project in the current AWS account.
 #'
 #' @usage
@@ -244,6 +248,7 @@ gluedatabrew_create_project <- function(DatasetName, Name, RecipeName, Sample = 
 
 #' Creates a new AWS Glue DataBrew recipe for the current AWS account
 #'
+#' @description
 #' Creates a new AWS Glue DataBrew recipe for the current AWS account.
 #'
 #' @usage
@@ -307,6 +312,7 @@ gluedatabrew_create_recipe <- function(Description = NULL, Name, Steps, Tags = N
 #' Creates a new job for an existing AWS Glue DataBrew recipe in the
 #' current AWS account
 #'
+#' @description
 #' Creates a new job for an existing AWS Glue DataBrew recipe in the
 #' current AWS account. You can create a standalone job using either a
 #' project, or a combination of a recipe and a dataset.
@@ -400,6 +406,7 @@ gluedatabrew_create_recipe_job <- function(DatasetName = NULL, EncryptionKeyArn 
 
 #' Creates a new schedule for one or more AWS Glue DataBrew jobs
 #'
+#' @description
 #' Creates a new schedule for one or more AWS Glue DataBrew jobs. Jobs can
 #' be run at a specific date and time, or at regular intervals.
 #'
@@ -448,6 +455,7 @@ gluedatabrew_create_schedule <- function(JobNames = NULL, CronExpression, Tags =
 
 #' Deletes a dataset from AWS Glue DataBrew
 #'
+#' @description
 #' Deletes a dataset from AWS Glue DataBrew.
 #'
 #' @usage
@@ -484,6 +492,7 @@ gluedatabrew_delete_dataset <- function(Name) {
 
 #' Deletes the specified AWS Glue DataBrew job from the current AWS account
 #'
+#' @description
 #' Deletes the specified AWS Glue DataBrew job from the current AWS
 #' account. The job can be for a recipe or for a profile.
 #'
@@ -522,6 +531,7 @@ gluedatabrew_delete_job <- function(Name) {
 #' Deletes an existing AWS Glue DataBrew project from the current AWS
 #' account
 #'
+#' @description
 #' Deletes an existing AWS Glue DataBrew project from the current AWS
 #' account.
 #'
@@ -559,6 +569,7 @@ gluedatabrew_delete_project <- function(Name) {
 
 #' Deletes a single version of an AWS Glue DataBrew recipe
 #'
+#' @description
 #' Deletes a single version of an AWS Glue DataBrew recipe.
 #'
 #' @usage
@@ -598,6 +609,7 @@ gluedatabrew_delete_recipe_version <- function(Name, RecipeVersion) {
 #' Deletes the specified AWS Glue DataBrew schedule from the current AWS
 #' account
 #'
+#' @description
 #' Deletes the specified AWS Glue DataBrew schedule from the current AWS
 #' account.
 #'
@@ -636,6 +648,7 @@ gluedatabrew_delete_schedule <- function(Name) {
 #' Returns the definition of a specific AWS Glue DataBrew dataset that is
 #' in the current AWS account
 #'
+#' @description
 #' Returns the definition of a specific AWS Glue DataBrew dataset that is
 #' in the current AWS account.
 #'
@@ -674,6 +687,7 @@ gluedatabrew_describe_dataset <- function(Name) {
 #' Returns the definition of a specific AWS Glue DataBrew job that is in
 #' the current AWS account
 #'
+#' @description
 #' Returns the definition of a specific AWS Glue DataBrew job that is in
 #' the current AWS account.
 #'
@@ -712,6 +726,7 @@ gluedatabrew_describe_job <- function(Name) {
 #' Returns the definition of a specific AWS Glue DataBrew project that is
 #' in the current AWS account
 #'
+#' @description
 #' Returns the definition of a specific AWS Glue DataBrew project that is
 #' in the current AWS account.
 #'
@@ -750,6 +765,7 @@ gluedatabrew_describe_project <- function(Name) {
 #' Returns the definition of a specific AWS Glue DataBrew recipe that is in
 #' the current AWS account
 #'
+#' @description
 #' Returns the definition of a specific AWS Glue DataBrew recipe that is in
 #' the current AWS account.
 #'
@@ -791,6 +807,7 @@ gluedatabrew_describe_recipe <- function(Name, RecipeVersion = NULL) {
 #' Returns the definition of a specific AWS Glue DataBrew schedule that is
 #' in the current AWS account
 #'
+#' @description
 #' Returns the definition of a specific AWS Glue DataBrew schedule that is
 #' in the current AWS account.
 #'
@@ -828,6 +845,7 @@ gluedatabrew_describe_schedule <- function(Name) {
 
 #' Lists all of the AWS Glue DataBrew datasets for the current AWS account
 #'
+#' @description
 #' Lists all of the AWS Glue DataBrew datasets for the current AWS account.
 #'
 #' @usage
@@ -870,6 +888,7 @@ gluedatabrew_list_datasets <- function(MaxResults = NULL, NextToken = NULL) {
 #' Lists all of the previous runs of a particular AWS Glue DataBrew job in
 #' the current AWS account
 #'
+#' @description
 #' Lists all of the previous runs of a particular AWS Glue DataBrew job in
 #' the current AWS account.
 #'
@@ -914,6 +933,7 @@ gluedatabrew_list_job_runs <- function(Name, MaxResults = NULL, NextToken = NULL
 
 #' Lists the AWS Glue DataBrew jobs in the current AWS account
 #'
+#' @description
 #' Lists the AWS Glue DataBrew jobs in the current AWS account.
 #'
 #' @usage
@@ -961,6 +981,7 @@ gluedatabrew_list_jobs <- function(DatasetName = NULL, MaxResults = NULL, NextTo
 
 #' Lists all of the DataBrew projects in the current AWS account
 #'
+#' @description
 #' Lists all of the DataBrew projects in the current AWS account.
 #'
 #' @usage
@@ -1000,6 +1021,7 @@ gluedatabrew_list_projects <- function(NextToken = NULL, MaxResults = NULL) {
 #' Lists all of the versions of a particular AWS Glue DataBrew recipe in
 #' the current AWS account
 #'
+#' @description
 #' Lists all of the versions of a particular AWS Glue DataBrew recipe in
 #' the current AWS account.
 #'
@@ -1041,6 +1063,7 @@ gluedatabrew_list_recipe_versions <- function(MaxResults = NULL, NextToken = NUL
 
 #' Lists all of the AWS Glue DataBrew recipes in the current AWS account
 #'
+#' @description
 #' Lists all of the AWS Glue DataBrew recipes in the current AWS account.
 #'
 #' @usage
@@ -1082,6 +1105,7 @@ gluedatabrew_list_recipes <- function(MaxResults = NULL, NextToken = NULL, Recip
 
 #' Lists the AWS Glue DataBrew schedules in the current AWS account
 #'
+#' @description
 #' Lists the AWS Glue DataBrew schedules in the current AWS account.
 #'
 #' @usage
@@ -1122,6 +1146,7 @@ gluedatabrew_list_schedules <- function(JobName = NULL, MaxResults = NULL, NextT
 
 #' Lists all the tags for an AWS Glue DataBrew resource
 #'
+#' @description
 #' Lists all the tags for an AWS Glue DataBrew resource.
 #'
 #' @usage
@@ -1160,6 +1185,7 @@ gluedatabrew_list_tags_for_resource <- function(ResourceArn) {
 #' Publishes a new major version of an AWS Glue DataBrew recipe that exists
 #' in the current AWS account
 #'
+#' @description
 #' Publishes a new major version of an AWS Glue DataBrew recipe that exists
 #' in the current AWS account.
 #'
@@ -1201,6 +1227,7 @@ gluedatabrew_publish_recipe <- function(Description = NULL, Name) {
 #' Performs a recipe step within an interactive AWS Glue DataBrew session
 #' that's currently open
 #'
+#' @description
 #' Performs a recipe step within an interactive AWS Glue DataBrew session
 #' that's currently open.
 #'
@@ -1273,6 +1300,7 @@ gluedatabrew_send_project_session_action <- function(Preview = NULL, Name, Recip
 
 #' Runs an AWS Glue DataBrew job that exists in the current AWS account
 #'
+#' @description
 #' Runs an AWS Glue DataBrew job that exists in the current AWS account.
 #'
 #' @usage
@@ -1310,6 +1338,7 @@ gluedatabrew_start_job_run <- function(Name) {
 #' Creates an interactive session, enabling you to manipulate an AWS Glue
 #' DataBrew project
 #'
+#' @description
 #' Creates an interactive session, enabling you to manipulate an AWS Glue
 #' DataBrew project.
 #'
@@ -1350,6 +1379,7 @@ gluedatabrew_start_project_session <- function(Name, AssumeControl = NULL) {
 
 #' Stops the specified job from running in the current AWS account
 #'
+#' @description
 #' Stops the specified job from running in the current AWS account.
 #'
 #' @usage
@@ -1389,6 +1419,7 @@ gluedatabrew_stop_job_run <- function(Name, RunId) {
 #' Adds metadata tags to an AWS Glue DataBrew resource, such as a dataset,
 #' job, project, or recipe
 #'
+#' @description
 #' Adds metadata tags to an AWS Glue DataBrew resource, such as a dataset,
 #' job, project, or recipe.
 #'
@@ -1432,6 +1463,7 @@ gluedatabrew_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes metadata tags from an AWS Glue DataBrew resource
 #'
+#' @description
 #' Removes metadata tags from an AWS Glue DataBrew resource.
 #'
 #' @usage
@@ -1474,6 +1506,7 @@ gluedatabrew_untag_resource <- function(ResourceArn, TagKeys) {
 #' Modifies the definition of an existing AWS Glue DataBrew dataset in the
 #' current AWS account
 #'
+#' @description
 #' Modifies the definition of an existing AWS Glue DataBrew dataset in the
 #' current AWS account.
 #'
@@ -1542,6 +1575,7 @@ gluedatabrew_update_dataset <- function(Name, FormatOptions = NULL, Input) {
 #' Modifies the definition of an existing AWS Glue DataBrew job in the
 #' current AWS account
 #'
+#' @description
 #' Modifies the definition of an existing AWS Glue DataBrew job in the
 #' current AWS account.
 #'
@@ -1611,6 +1645,7 @@ gluedatabrew_update_profile_job <- function(EncryptionKeyArn = NULL, EncryptionM
 #' Modifies the definition of an existing AWS Glue DataBrew project in the
 #' current AWS account
 #'
+#' @description
 #' Modifies the definition of an existing AWS Glue DataBrew project in the
 #' current AWS account.
 #'
@@ -1657,6 +1692,7 @@ gluedatabrew_update_project <- function(Sample = NULL, RoleArn, Name) {
 #' Modifies the definition of the latest working version of an AWS Glue
 #' DataBrew recipe in the current AWS account
 #'
+#' @description
 #' Modifies the definition of the latest working version of an AWS Glue
 #' DataBrew recipe in the current AWS account.
 #'
@@ -1716,6 +1752,7 @@ gluedatabrew_update_recipe <- function(Description = NULL, Name, Steps = NULL) {
 #' Modifies the definition of an existing AWS Glue DataBrew recipe job in
 #' the current AWS account
 #'
+#' @description
 #' Modifies the definition of an existing AWS Glue DataBrew recipe job in
 #' the current AWS account.
 #'
@@ -1794,6 +1831,7 @@ gluedatabrew_update_recipe_job <- function(EncryptionKeyArn = NULL, EncryptionMo
 #' Modifies the definition of an existing AWS Glue DataBrew schedule in the
 #' current AWS account
 #'
+#' @description
 #' Modifies the definition of an existing AWS Glue DataBrew schedule in the
 #' current AWS account.
 #'

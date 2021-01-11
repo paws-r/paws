@@ -40,8 +40,7 @@ parameter.}
 }
 \description{
 Runs a batch SQL statement over an array of data.
-}
-\details{
+
 You can run bulk update and insert operations for multiple records using
 a DML statement with different parameter sets. Bulk operations can
 provide a significant performance improvement over individual insert and

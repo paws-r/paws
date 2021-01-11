@@ -16,8 +16,7 @@ Deprecates the specified \emph{activity type}. After an activity type has
 been deprecated, you cannot create new tasks of that activity type.
 Tasks of this type that were scheduled before the type was deprecated
 continue to run.
-}
-\details{
+
 This operation is eventually consistent. The results are best effort and
 may not exactly reflect recent updates and changes.
 

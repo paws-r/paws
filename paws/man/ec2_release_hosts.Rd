@@ -17,8 +17,7 @@ state. The host ID of Dedicated Hosts that have been released can no
 longer be specified in another request, for example, to modify the host.
 You must stop or terminate all instances on a host before it can be
 released.
-}
-\details{
+
 When Dedicated Hosts are released, it may take some time for them to
 stop counting toward your limit and you may receive capacity errors when
 trying to allocate new Dedicated Hosts. Wait a few minutes and then try

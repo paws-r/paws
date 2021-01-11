@@ -5,6 +5,7 @@ NULL
 
 #' Deletes the playback configuration for the specified name
 #'
+#' @description
 #' Deletes the playback configuration for the specified name.
 #'
 #' @usage
@@ -41,6 +42,7 @@ mediatailor_delete_playback_configuration <- function(Name) {
 
 #' Returns the playback configuration for the specified name
 #'
+#' @description
 #' Returns the playback configuration for the specified name.
 #'
 #' @usage
@@ -78,6 +80,7 @@ mediatailor_get_playback_configuration <- function(Name) {
 #' Returns a list of the playback configurations defined in AWS Elemental
 #' MediaTailor
 #'
+#' @description
 #' Returns a list of the playback configurations defined in AWS Elemental
 #' MediaTailor. You can specify a maximum number of configurations to
 #' return at a time. The default maximum is 50. Results are returned in
@@ -123,6 +126,7 @@ mediatailor_list_playback_configurations <- function(MaxResults = NULL, NextToke
 #' Returns a list of the tags assigned to the specified playback
 #' configuration resource
 #'
+#' @description
 #' Returns a list of the tags assigned to the specified playback
 #' configuration resource.
 #'
@@ -161,6 +165,7 @@ mediatailor_list_tags_for_resource <- function(ResourceArn) {
 
 #' Adds a new playback configuration to AWS Elemental MediaTailor
 #'
+#' @description
 #' Adds a new playback configuration to AWS Elemental MediaTailor.
 #'
 #' @usage
@@ -268,6 +273,7 @@ mediatailor_put_playback_configuration <- function(AdDecisionServerUrl = NULL, A
 
 #' Adds tags to the specified playback configuration resource
 #'
+#' @description
 #' Adds tags to the specified playback configuration resource. You can
 #' specify one or more tags to add.
 #'
@@ -311,6 +317,7 @@ mediatailor_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes tags from the specified playback configuration resource
 #'
+#' @description
 #' Removes tags from the specified playback configuration resource. You can
 #' specify one or more tags to remove.
 #'

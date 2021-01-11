@@ -46,8 +46,7 @@ as a solution. After the configuration is created, you train the model
 (create a solution) by calling the CreateSolutionVersion operation.
 Every time you call \code{CreateSolutionVersion}, a new version of the
 solution is created.
-}
-\details{
+
 After creating a solution version, you check its accuracy by calling
 GetSolutionMetrics. When you are satisfied with the version, you deploy
 it using CreateCampaign. The campaign provides recommendations to a

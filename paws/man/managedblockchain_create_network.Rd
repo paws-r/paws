@@ -33,8 +33,7 @@ approved.}
 }
 \description{
 Creates a new blockchain network using Amazon Managed Blockchain.
-}
-\details{
+
 Applies only to Hyperledger Fabric.
 }
 \section{Request syntax}{

@@ -5,6 +5,7 @@ NULL
 
 #' Creates a Device Advisor test suite
 #'
+#' @description
 #' Creates a Device Advisor test suite.
 #'
 #' @usage
@@ -57,6 +58,7 @@ iotdeviceadvisor_create_suite_definition <- function(suiteDefinitionConfiguratio
 
 #' Deletes a Device Advisor test suite
 #'
+#' @description
 #' Deletes a Device Advisor test suite.
 #'
 #' @usage
@@ -93,6 +95,7 @@ iotdeviceadvisor_delete_suite_definition <- function(suiteDefinitionId) {
 
 #' Gets information about a Device Advisor test suite
 #'
+#' @description
 #' Gets information about a Device Advisor test suite.
 #'
 #' @usage
@@ -132,6 +135,7 @@ iotdeviceadvisor_get_suite_definition <- function(suiteDefinitionId, suiteDefini
 
 #' Gets information about a Device Advisor test suite run
 #'
+#' @description
 #' Gets information about a Device Advisor test suite run.
 #'
 #' @usage
@@ -173,6 +177,7 @@ iotdeviceadvisor_get_suite_run <- function(suiteDefinitionId, suiteRunId) {
 #' Gets a report download link for a successful Device Advisor qualifying
 #' test suite run
 #'
+#' @description
 #' Gets a report download link for a successful Device Advisor qualifying
 #' test suite run.
 #'
@@ -212,6 +217,7 @@ iotdeviceadvisor_get_suite_run_report <- function(suiteDefinitionId, suiteRunId)
 
 #' Lists the Device Advisor test suites you have created
 #'
+#' @description
 #' Lists the Device Advisor test suites you have created.
 #'
 #' @usage
@@ -250,6 +256,7 @@ iotdeviceadvisor_list_suite_definitions <- function(maxResults = NULL, nextToken
 
 #' Lists the runs of the specified Device Advisor test suite
 #'
+#' @description
 #' Lists the runs of the specified Device Advisor test suite. You can list
 #' all runs of the test suite, or the runs of a specific version of the
 #' test suite.
@@ -297,6 +304,7 @@ iotdeviceadvisor_list_suite_runs <- function(suiteDefinitionId = NULL, suiteDefi
 
 #' Lists the tags attached to an IoT Device Advisor resource
 #'
+#' @description
 #' Lists the tags attached to an IoT Device Advisor resource.
 #'
 #' @usage
@@ -333,6 +341,7 @@ iotdeviceadvisor_list_tags_for_resource <- function(resourceArn) {
 
 #' Lists all the test cases in the test suite
 #'
+#' @description
 #' Lists all the test cases in the test suite.
 #'
 #' @usage
@@ -374,6 +383,7 @@ iotdeviceadvisor_list_test_cases <- function(intendedForQualification = NULL, ma
 
 #' Starts a Device Advisor test suite run
 #'
+#' @description
 #' Starts a Device Advisor test suite run.
 #'
 #' @usage
@@ -431,6 +441,7 @@ iotdeviceadvisor_start_suite_run <- function(suiteDefinitionId, suiteDefinitionV
 
 #' Adds to and modifies existing tags of an IoT Device Advisor resource
 #'
+#' @description
 #' Adds to and modifies existing tags of an IoT Device Advisor resource.
 #'
 #' @usage
@@ -471,6 +482,7 @@ iotdeviceadvisor_tag_resource <- function(resourceArn, tags) {
 
 #' Removes tags from an IoT Device Advisor resource
 #'
+#' @description
 #' Removes tags from an IoT Device Advisor resource.
 #'
 #' @usage
@@ -511,6 +523,7 @@ iotdeviceadvisor_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates a Device Advisor test suite
 #'
+#' @description
 #' Updates a Device Advisor test suite.
 #'
 #' @usage

@@ -13,8 +13,7 @@ resourcegroups_group_resources(Group, ResourceArns)
 }
 \description{
 Adds the specified resources to the specified group.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

@@ -17,8 +17,7 @@ correspond to replacement tags in the email template.}
 \description{
 Creates a preview of the MIME content of an email when provided with a
 template and a set of replacement data.
-}
-\details{
+
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{

@@ -25,8 +25,7 @@ use Git source control for the notebooks you create. The Git repository
 is a resource in your Amazon SageMaker account, so it can be associated
 with more than one notebook instance, and it persists independently from
 the lifecycle of any notebook instances it is associated with.
-}
-\details{
+
 The repository can be hosted either in \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{AWS CodeCommit}
 or in any other Git repository.
 }

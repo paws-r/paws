@@ -23,8 +23,7 @@ The default value is false.}
 }
 \description{
 Deletes a delivery stream and its data.
-}
-\details{
+
 To check the state of a delivery stream, use DescribeDeliveryStream. You
 can delete a delivery stream only if it is in one of the following
 states: \code{ACTIVE}, \code{DELETING}, \code{CREATING_FAILED}, or \code{DELETING_FAILED}.

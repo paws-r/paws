@@ -260,8 +260,7 @@ Availability Zones after the cluster is created.}
 }
 \description{
 Creates a new cluster with the specified parameters.
-}
-\details{
+
 To create a cluster in Virtual Private Cloud (VPC), you must provide a
 cluster subnet group name. The cluster subnet group identifies the
 subnets of your VPC that Amazon Redshift uses when creating the cluster.

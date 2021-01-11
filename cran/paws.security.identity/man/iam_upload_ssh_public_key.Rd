@@ -32,8 +32,7 @@ carriage return (\verb{U+000D})
 }
 \description{
 Uploads an SSH public key and associates it with the specified IAM user.
-}
-\details{
+
 The SSH public key uploaded by this operation can be used only for
 authenticating the associated IAM user to an AWS CodeCommit repository.
 For more information about using SSH keys to authenticate to an AWS

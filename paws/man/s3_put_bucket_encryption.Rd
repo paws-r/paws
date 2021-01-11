@@ -30,8 +30,7 @@ different account, the request will fail with an HTTP
 \description{
 This operation uses the \code{encryption} subresource to configure default
 encryption and Amazon S3 Bucket Key for an existing bucket.
-}
-\details{
+
 Default encryption for a bucket can use server-side encryption with
 Amazon S3-managed keys (SSE-S3) or AWS KMS customer master keys
 (SSE-KMS). If you specify default encryption using SSE-KMS, you can also

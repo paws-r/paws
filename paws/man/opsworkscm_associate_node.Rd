@@ -31,8 +31,7 @@ that is created by the node.
 \description{
 Associates a new node with the server. For more information about how to
 disassociate a node, see DisassociateNode.
-}
-\details{
+
 On a Chef server: This command is an alternative to \verb{knife bootstrap}.
 
 Example (Chef):

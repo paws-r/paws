@@ -26,8 +26,7 @@ returned.}
 List all the messages in a channel. Returns a paginated list of
 \code{ChannelMessages}. Sorted in descending order by default, based on the
 creation timestamp.
-}
-\details{
+
 Redacted messages appear in the results as empty, since they are only
 redacted, not deleted. Deleted messages do not appear in the results.
 This action always returns the latest version of an edited message.

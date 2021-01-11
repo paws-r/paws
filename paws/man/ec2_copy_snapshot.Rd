@@ -76,8 +76,7 @@ Copies a point-in-time snapshot of an EBS volume and stores it in Amazon
 S3. You can copy the snapshot within the same Region or from one Region
 to another. You can use the snapshot to create EBS volumes or Amazon
 Machine Images (AMIs).
-}
-\details{
+
 Copies of encrypted EBS snapshots remain encrypted. Copies of
 unencrypted snapshots remain unencrypted, unless you enable encryption
 for the snapshot copy operation. By default, encrypted snapshot copies

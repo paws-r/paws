@@ -28,8 +28,7 @@ function name, it is limited to 64 characters in length.}
 \description{
 Deletes the configuration for asynchronous invocation for a function,
 version, or alias.
-}
-\details{
+
 To configure options for asynchronous invocation, use
 PutFunctionEventInvokeConfig.
 }

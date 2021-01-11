@@ -39,8 +39,7 @@ in the \emph{AWS Key Management Service Developer Guide}.}
 Provides detailed information about a customer master key (CMK). You can
 run \code{DescribeKey} on a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed CMK}
 or an \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk}{AWS managed CMK}.
-}
-\details{
+
 This detailed information includes the key ARN, creation date (and
 deletion date, if applicable), the key state, and the origin and
 expiration date (if any) of the key material. For CMKs in custom key

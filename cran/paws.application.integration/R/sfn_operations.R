@@ -5,6 +5,7 @@ NULL
 
 #' Creates an activity
 #'
+#' @description
 #' Creates an activity. An activity is a task that you write in any
 #' programming language and host on any machine that has access to AWS Step
 #' Functions. Activities must poll Step Functions using the
@@ -40,7 +41,7 @@ NULL
 #' 
 #' -   wildcard characters `? *`
 #' 
-#' -   special characters `` \" # % \\ ^ | ~ \` $ &amp; , ; : / ``
+#' -   special characters `` \" # \% \\ ^ | ~ \` $ &amp; , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
 #' 
@@ -93,6 +94,7 @@ sfn_create_activity <- function(name, tags = NULL) {
 
 #' Creates a state machine
 #'
+#' @description
 #' Creates a state machine. A state machine consists of a collection of
 #' states that can do work (`Task` states), determine to which states to
 #' transition next (`Choice` states), stop an execution with an error
@@ -128,7 +130,7 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' 
 #' -   wildcard characters `? *`
 #' 
-#' -   special characters `` \" # % \\ ^ | ~ \` $ &amp; , ; : / ``
+#' -   special characters `` \" # \% \\ ^ | ~ \` $ &amp; , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
 #' 
@@ -213,6 +215,7 @@ sfn_create_state_machine <- function(name, definition, roleArn, type = NULL, log
 
 #' Deletes an activity
 #'
+#' @description
 #' Deletes an activity.
 #'
 #' @usage
@@ -249,6 +252,7 @@ sfn_delete_activity <- function(activityArn) {
 
 #' Deletes a state machine
 #'
+#' @description
 #' Deletes a state machine. This is an asynchronous operation: It sets the
 #' state machine's status to `DELETING` and begins the deletion process.
 #' 
@@ -290,6 +294,7 @@ sfn_delete_state_machine <- function(stateMachineArn) {
 
 #' Describes an activity
 #'
+#' @description
 #' Describes an activity.
 #' 
 #' This operation is eventually consistent. The results are best effort and
@@ -329,6 +334,7 @@ sfn_describe_activity <- function(activityArn) {
 
 #' Describes an execution
 #'
+#' @description
 #' Describes an execution.
 #' 
 #' This operation is eventually consistent. The results are best effort and
@@ -370,6 +376,7 @@ sfn_describe_execution <- function(executionArn) {
 
 #' Describes a state machine
 #'
+#' @description
 #' Describes a state machine.
 #' 
 #' This operation is eventually consistent. The results are best effort and
@@ -409,6 +416,7 @@ sfn_describe_state_machine <- function(stateMachineArn) {
 
 #' Describes the state machine associated with a specific execution
 #'
+#' @description
 #' Describes the state machine associated with a specific execution.
 #' 
 #' This operation is eventually consistent. The results are best effort and
@@ -452,6 +460,7 @@ sfn_describe_state_machine_for_execution <- function(executionArn) {
 #' Used by workers to retrieve a task (with the specified activity ARN)
 #' which has been scheduled for execution by a running state machine
 #'
+#' @description
 #' Used by workers to retrieve a task (with the specified activity ARN)
 #' which has been scheduled for execution by a running state machine. This
 #' initiates a long poll, where the service holds the HTTP connection open
@@ -508,6 +517,7 @@ sfn_get_activity_task <- function(activityArn, workerName = NULL) {
 
 #' Returns the history of the specified execution as a list of events
 #'
+#' @description
 #' Returns the history of the specified execution as a list of events. By
 #' default, the results are returned in ascending order of the `timeStamp`
 #' of the events. Use the `reverseOrder` parameter to get the latest events
@@ -576,6 +586,7 @@ sfn_get_execution_history <- function(executionArn, maxResults = NULL, reverseOr
 
 #' Lists the existing activities
 #'
+#' @description
 #' Lists the existing activities.
 #' 
 #' If `nextToken` is returned, there are more results available. The value
@@ -634,6 +645,7 @@ sfn_list_activities <- function(maxResults = NULL, nextToken = NULL) {
 
 #' Lists the executions of a state machine that meet the filtering criteria
 #'
+#' @description
 #' Lists the executions of a state machine that meet the filtering
 #' criteria. Results are sorted by time, with the most recent execution
 #' first.
@@ -703,6 +715,7 @@ sfn_list_executions <- function(stateMachineArn, statusFilter = NULL, maxResults
 
 #' Lists the existing state machines
 #'
+#' @description
 #' Lists the existing state machines.
 #' 
 #' If `nextToken` is returned, there are more results available. The value
@@ -761,6 +774,7 @@ sfn_list_state_machines <- function(maxResults = NULL, nextToken = NULL) {
 
 #' List tags for a given resource
 #'
+#' @description
 #' List tags for a given resource.
 #' 
 #' Tags may only contain Unicode letters, digits, white space, or these
@@ -802,6 +816,7 @@ sfn_list_tags_for_resource <- function(resourceArn) {
 #' Used by activity workers and task states using the callback pattern to
 #' report that the task identified by the taskToken failed
 #'
+#' @description
 #' Used by activity workers and task states using the
 #' [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
 #' pattern to report that the task identified by the `taskToken` failed.
@@ -850,6 +865,7 @@ sfn_send_task_failure <- function(taskToken, error = NULL, cause = NULL) {
 #' report to Step Functions that the task represented by the specified
 #' taskToken is still making progress
 #'
+#' @description
 #' Used by activity workers and task states using the
 #' [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
 #' pattern to report to Step Functions that the task represented by the
@@ -909,6 +925,7 @@ sfn_send_task_heartbeat <- function(taskToken) {
 #' Used by activity workers and task states using the callback pattern to
 #' report that the task identified by the taskToken completed successfully
 #'
+#' @description
 #' Used by activity workers and task states using the
 #' [callback](https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token)
 #' pattern to report that the task identified by the `taskToken` completed
@@ -955,6 +972,7 @@ sfn_send_task_success <- function(taskToken, output) {
 
 #' Starts a state machine execution
 #'
+#' @description
 #' Starts a state machine execution.
 #' 
 #' `StartExecution` is idempotent. If `StartExecution` is called with the
@@ -981,7 +999,7 @@ sfn_send_task_success <- function(taskToken, output) {
 #' 
 #' -   wildcard characters `? *`
 #' 
-#' -   special characters `` \" # % \\ ^ | ~ \` $ &amp; , ; : / ``
+#' -   special characters `` \" # \% \\ ^ | ~ \` $ &amp; , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
 #' 
@@ -1032,6 +1050,7 @@ sfn_start_execution <- function(stateMachineArn, name = NULL, input = NULL, trac
 
 #' Starts a Synchronous Express state machine execution
 #'
+#' @description
 #' Starts a Synchronous Express state machine execution.
 #'
 #' @usage
@@ -1084,6 +1103,7 @@ sfn_start_sync_execution <- function(stateMachineArn, name = NULL, input = NULL,
 
 #' Stops an execution
 #'
+#' @description
 #' Stops an execution.
 #' 
 #' This API action is not supported by `EXPRESS` state machines.
@@ -1126,6 +1146,7 @@ sfn_stop_execution <- function(executionArn, error = NULL, cause = NULL) {
 
 #' Add a tag to a Step Functions resource
 #'
+#' @description
 #' Add a tag to a Step Functions resource.
 #' 
 #' An array of key-value pairs. For more information, see [Using Cost
@@ -1183,6 +1204,7 @@ sfn_tag_resource <- function(resourceArn, tags) {
 
 #' Remove a tag from a Step Functions resource
 #'
+#' @description
 #' Remove a tag from a Step Functions resource
 #'
 #' @usage
@@ -1225,6 +1247,7 @@ sfn_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates an existing state machine by modifying its definition, roleArn,
 #' or loggingConfiguration
 #'
+#' @description
 #' Updates an existing state machine by modifying its `definition`,
 #' `roleArn`, or `loggingConfiguration`. Running executions will continue
 #' to use the previous `definition` and `roleArn`. You must include at

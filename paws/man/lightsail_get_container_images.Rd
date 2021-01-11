@@ -14,8 +14,7 @@ container images.}
 \description{
 Returns the container images that are registered to your Amazon
 Lightsail container service.
-}
-\details{
+
 If you created a deployment on your Lightsail container service that
 uses container images from a public registry like Docker Hub, those
 images are not returned as part of this action. Those images are not

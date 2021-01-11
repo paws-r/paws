@@ -23,8 +23,7 @@ returns the state of the calendar at a specific time, and returns the
 next time that the Change Calendar state will transition. If you do not
 specify a time, \code{GetCalendarState} assumes the current time. Change
 Calendar entries have two possible states: \code{OPEN} or \code{CLOSED}.
-}
-\details{
+
 If you specify more than one calendar in a request, the command returns
 the status of \code{OPEN} only if all calendars in the request are open. If
 one or more calendars in the request are closed, the status returned is

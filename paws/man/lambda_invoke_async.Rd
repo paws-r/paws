@@ -24,8 +24,7 @@ the function name, it is limited to 64 characters in length.}
 }
 \description{
 For asynchronous function invocation, use Invoke.
-}
-\details{
+
 Invokes a function asynchronously.
 }
 \section{Request syntax}{

@@ -22,8 +22,7 @@ to the instance is launched by default.}
 Initiates a connection to a target (for example, an instance) for a
 Session Manager session. Returns a URL and token that can be used to
 open a WebSocket connection for sending input and receiving outputs.
-}
-\details{
+
 AWS CLI usage: \code{start-session} is an interactive command that requires
 the Session Manager plugin to be installed on the client machine making
 the call. For information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-install-plugin.html}{Install the Session Manager plugin for the AWS CLI}

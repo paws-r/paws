@@ -6,6 +6,7 @@ NULL
 #' This operation allows you to perform batch reads and writes on data
 #' stored in DynamoDB, using PartiQL
 #'
+#' @description
 #' This operation allows you to perform batch reads and writes on data
 #' stored in DynamoDB, using PartiQL.
 #'
@@ -73,6 +74,7 @@ dynamodb_batch_execute_statement <- function(Statements) {
 #' The BatchGetItem operation returns the attributes of one or more items
 #' from one or more tables
 #'
+#' @description
 #' The `BatchGetItem` operation returns the attributes of one or more items
 #' from one or more tables. You identify requested items by primary key.
 #' 
@@ -316,6 +318,7 @@ dynamodb_batch_get_item <- function(RequestItems, ReturnConsumedCapacity = NULL)
 #' The BatchWriteItem operation puts or deletes multiple items in one or
 #' more tables
 #'
+#' @description
 #' The `BatchWriteItem` operation puts or deletes multiple items in one or
 #' more tables. A single call to `BatchWriteItem` can write up to 16 MB of
 #' data, which can comprise as many as 25 put or delete requests.
@@ -577,6 +580,7 @@ dynamodb_batch_write_item <- function(RequestItems, ReturnConsumedCapacity = NUL
 
 #' Creates a backup for an existing table
 #'
+#' @description
 #' Creates a backup for an existing table.
 #' 
 #' Each time you create an on-demand backup, the entire table data is
@@ -646,6 +650,7 @@ dynamodb_create_backup <- function(TableName, BackupName) {
 
 #' Creates a global table from an existing table
 #'
+#' @description
 #' Creates a global table from an existing table. A global table creates a
 #' replication relationship between two or more DynamoDB tables with the
 #' same table name in the provided Regions.
@@ -733,6 +738,7 @@ dynamodb_create_global_table <- function(GlobalTableName, ReplicationGroup) {
 
 #' The CreateTable operation adds a new table to your account
 #'
+#' @description
 #' The `CreateTable` operation adds a new table to your account. In an AWS
 #' account, table names must be unique within each Region. That is, you can
 #' have two tables with same name if you create the tables in different
@@ -1050,6 +1056,7 @@ dynamodb_create_table <- function(AttributeDefinitions, TableName, KeySchema, Lo
 
 #' Deletes an existing backup of a table
 #'
+#' @description
 #' Deletes an existing backup of a table.
 #' 
 #' You can call `DeleteBackup` at a maximum rate of 10 times per second.
@@ -1088,6 +1095,7 @@ dynamodb_delete_backup <- function(BackupArn) {
 
 #' Deletes a single item in a table by primary key
 #'
+#' @description
 #' Deletes a single item in a table by primary key. You can perform a
 #' conditional delete operation that deletes the item if it exists, or if
 #' it has an expected attribute value.
@@ -1372,6 +1380,7 @@ dynamodb_delete_item <- function(TableName, Key, Expected = NULL, ConditionalOpe
 
 #' The DeleteTable operation deletes a table and all of its items
 #'
+#' @description
 #' The `DeleteTable` operation deletes a table and all of its items. After
 #' a `DeleteTable` request, the specified table is in the `DELETING` state
 #' until DynamoDB completes the deletion. If the table is in the `ACTIVE`
@@ -1435,6 +1444,7 @@ dynamodb_delete_table <- function(TableName) {
 
 #' Describes an existing backup of a table
 #'
+#' @description
 #' Describes an existing backup of a table.
 #' 
 #' You can call `DescribeBackup` at a maximum rate of 10 times per second.
@@ -1474,6 +1484,7 @@ dynamodb_describe_backup <- function(BackupArn) {
 #' Checks the status of continuous backups and point in time recovery on
 #' the specified table
 #'
+#' @description
 #' Checks the status of continuous backups and point in time recovery on
 #' the specified table. Continuous backups are `ENABLED` on all tables at
 #' table creation. If point in time recovery is enabled,
@@ -1526,6 +1537,7 @@ dynamodb_describe_continuous_backups <- function(TableName) {
 #' Returns information about contributor insights, for a given table or
 #' global secondary index
 #'
+#' @description
 #' Returns information about contributor insights, for a given table or
 #' global secondary index.
 #'
@@ -1565,6 +1577,7 @@ dynamodb_describe_contributor_insights <- function(TableName, IndexName = NULL) 
 
 #' Returns the regional endpoint information
 #'
+#' @description
 #' Returns the regional endpoint information.
 #'
 #' @usage
@@ -1597,6 +1610,7 @@ dynamodb_describe_endpoints <- function() {
 
 #' Describes an existing table export
 #'
+#' @description
 #' Describes an existing table export.
 #'
 #' @usage
@@ -1633,6 +1647,7 @@ dynamodb_describe_export <- function(ExportArn) {
 
 #' Returns information about the specified global table
 #'
+#' @description
 #' Returns information about the specified global table.
 #' 
 #' This operation only applies to [Version
@@ -1677,6 +1692,7 @@ dynamodb_describe_global_table <- function(GlobalTableName) {
 
 #' Describes Region-specific settings for a global table
 #'
+#' @description
 #' Describes Region-specific settings for a global table.
 #' 
 #' This operation only applies to [Version
@@ -1717,6 +1733,7 @@ dynamodb_describe_global_table_settings <- function(GlobalTableName) {
 
 #' Returns information about the status of Kinesis streaming
 #'
+#' @description
 #' Returns information about the status of Kinesis streaming.
 #'
 #' @usage
@@ -1755,6 +1772,7 @@ dynamodb_describe_kinesis_streaming_destination <- function(TableName) {
 #' a Region, both for the Region as a whole and for any one DynamoDB table
 #' that you create there
 #'
+#' @description
 #' Returns the current provisioned-capacity quotas for your AWS account in
 #' a Region, both for the Region as a whole and for any one DynamoDB table
 #' that you create there.
@@ -1767,12 +1785,11 @@ dynamodb_describe_kinesis_streaming_destination <- function(TableName) {
 #' Quotas](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 #' page in the *Amazon DynamoDB Developer Guide*.
 #' 
-#' Although you can increase these quotas by filing a case at [AWS Support
-#' Center](https://console.aws.amazon.com/support/home#/), obtaining the
-#' increase is not instantaneous. The `DescribeLimits` action lets you
-#' write code to compare the capacity you are currently using to those
-#' quotas imposed by your account so that you have enough time to apply for
-#' an increase before you hit a quota.
+#' Although you can increase these quotas by filing a case at AWS Support
+#' Center, obtaining the increase is not instantaneous. The
+#' `DescribeLimits` action lets you write code to compare the capacity you
+#' are currently using to those quotas imposed by your account so that you
+#' have enough time to apply for an increase before you hit a quota.
 #' 
 #' For example, you could use one of the AWS SDKs to do the following:
 #' 
@@ -1857,6 +1874,7 @@ dynamodb_describe_limits <- function() {
 #' table, when it was created, the primary key schema, and any indexes on
 #' the table
 #'
+#' @description
 #' Returns information about the table, including the current status of the
 #' table, when it was created, the primary key schema, and any indexes on
 #' the table.
@@ -1910,6 +1928,7 @@ dynamodb_describe_table <- function(TableName) {
 #' Describes auto scaling settings across replicas of the global table at
 #' once
 #'
+#' @description
 #' Describes auto scaling settings across replicas of the global table at
 #' once.
 #' 
@@ -1952,6 +1971,7 @@ dynamodb_describe_table_replica_auto_scaling <- function(TableName) {
 #' Gives a description of the Time to Live (TTL) status on the specified
 #' table
 #'
+#' @description
 #' Gives a description of the Time to Live (TTL) status on the specified
 #' table.
 #'
@@ -1989,6 +2009,7 @@ dynamodb_describe_time_to_live <- function(TableName) {
 
 #' Stops replication from the DynamoDB table to the Kinesis data stream
 #'
+#' @description
 #' Stops replication from the DynamoDB table to the Kinesis data stream.
 #' This is done without deleting either of the resources.
 #'
@@ -2029,6 +2050,7 @@ dynamodb_disable_kinesis_streaming_destination <- function(TableName, StreamArn)
 #' Starts table data replication to the specified Kinesis data stream at a
 #' timestamp chosen during the enable workflow
 #'
+#' @description
 #' Starts table data replication to the specified Kinesis data stream at a
 #' timestamp chosen during the enable workflow. If this operation doesn't
 #' return results immediately, use DescribeKinesisStreamingDestination to
@@ -2071,6 +2093,7 @@ dynamodb_enable_kinesis_streaming_destination <- function(TableName, StreamArn) 
 #' This operation allows you to perform reads and singleton writes on data
 #' stored in DynamoDB, using PartiQL
 #'
+#' @description
 #' This operation allows you to perform reads and singleton writes on data
 #' stored in DynamoDB, using PartiQL.
 #'
@@ -2142,6 +2165,7 @@ dynamodb_execute_statement <- function(Statement, Parameters = NULL, ConsistentR
 #' This operation allows you to perform transactional reads or writes on
 #' data stored in DynamoDB, using PartiQL
 #'
+#' @description
 #' This operation allows you to perform transactional reads or writes on
 #' data stored in DynamoDB, using PartiQL.
 #'
@@ -2210,6 +2234,7 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 
 #' Exports table data to an S3 bucket
 #'
+#' @description
 #' Exports table data to an S3 bucket. The table must have point in time
 #' recovery enabled, and you can export data from any time within the point
 #' in time recovery window.
@@ -2291,6 +2316,7 @@ dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, 
 #' The GetItem operation returns a set of attributes for the item with the
 #' given primary key
 #'
+#' @description
 #' The `GetItem` operation returns a set of attributes for the item with
 #' the given primary key. If there is no matching item, `GetItem` does not
 #' return any data and there will be no `Item` element in the response.
@@ -2449,6 +2475,7 @@ dynamodb_get_item <- function(TableName, Key, AttributesToGet = NULL, Consistent
 
 #' List backups associated with an AWS account
 #'
+#' @description
 #' List backups associated with an AWS account. To list backups for a given
 #' table, specify `TableName`. `ListBackups` returns a paginated list of
 #' results with at most 1 MB worth of items in a page. You can also specify
@@ -2524,6 +2551,7 @@ dynamodb_list_backups <- function(TableName = NULL, Limit = NULL, TimeRangeLower
 #' Returns a list of ContributorInsightsSummary for a table and all its
 #' global secondary indexes
 #'
+#' @description
 #' Returns a list of ContributorInsightsSummary for a table and all its
 #' global secondary indexes.
 #'
@@ -2565,6 +2593,7 @@ dynamodb_list_contributor_insights <- function(TableName = NULL, NextToken = NUL
 
 #' Lists completed exports within the past 90 days
 #'
+#' @description
 #' Lists completed exports within the past 90 days.
 #'
 #' @usage
@@ -2607,6 +2636,7 @@ dynamodb_list_exports <- function(TableArn = NULL, MaxResults = NULL, NextToken 
 
 #' Lists all global tables that have a replica in the specified Region
 #'
+#' @description
 #' Lists all global tables that have a replica in the specified Region.
 #' 
 #' This operation only applies to [Version
@@ -2660,6 +2690,7 @@ dynamodb_list_global_tables <- function(ExclusiveStartGlobalTableName = NULL, Li
 #' Returns an array of table names associated with the current account and
 #' endpoint
 #'
+#' @description
 #' Returns an array of table names associated with the current account and
 #' endpoint. The output from `ListTables` is paginated, with each page
 #' returning a maximum of 100 table names.
@@ -2710,6 +2741,7 @@ dynamodb_list_tables <- function(ExclusiveStartTableName = NULL, Limit = NULL) {
 
 #' List all tags on an Amazon DynamoDB resource
 #'
+#' @description
 #' List all tags on an Amazon DynamoDB resource. You can call
 #' ListTagsOfResource up to 10 times per second, per account.
 #' 
@@ -2756,6 +2788,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 
 #' Creates a new item, or replaces an old item with a new item
 #'
+#' @description
 #' Creates a new item, or replaces an old item with a new item. If an item
 #' that has the same primary key as the new item already exists in the
 #' specified table, the new item completely replaces the existing item. You
@@ -2773,7 +2806,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #'     Interface](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/put-item.html)
 #' 
 #' -   [PutItem in the AWS SDK for
-#'     .NET](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=DynamoDBv2%2FMDynamoDBPutItemPutItemRequest.html)
+#'     .NET](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=DynamoDBv2\%2FMDynamoDBPutItemPutItemRequest.html)
 #' 
 #' -   [PutItem in the AWS SDK for
 #'     C++](https://sdk.amazonaws.com/cpp/api/crosslink_redirect.html?uid=dynamodb-2012-08-10&type=PutItem)
@@ -3106,6 +3139,7 @@ dynamodb_put_item <- function(TableName, Item, Expected = NULL, ReturnValues = N
 
 #' The Query operation finds items based on primary key values
 #'
+#' @description
 #' The `Query` operation finds items based on primary key values. You can
 #' query any table or secondary index that has a composite primary key (a
 #' partition key and a sort key).
@@ -3601,6 +3635,7 @@ dynamodb_query <- function(TableName, IndexName = NULL, Select = NULL, Attribute
 
 #' Creates a new table from an existing backup
 #'
+#' @description
 #' Creates a new table from an existing backup. Any number of users can
 #' execute up to 4 concurrent restores (any type of restore) in a given
 #' account.
@@ -3719,6 +3754,7 @@ dynamodb_restore_table_from_backup <- function(TargetTableName, BackupArn, Billi
 #' Restores the specified table to the specified point in time within
 #' EarliestRestorableDateTime and LatestRestorableDateTime
 #'
+#' @description
 #' Restores the specified table to the specified point in time within
 #' `EarliestRestorableDateTime` and `LatestRestorableDateTime`. You can
 #' restore your table to any point in time during the last 35 days. Any
@@ -3868,6 +3904,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' The Scan operation returns one or more items and item attributes by
 #' accessing every item in a table or a secondary index
 #'
+#' @description
 #' The `Scan` operation returns one or more items and item attributes by
 #' accessing every item in a table or a secondary index. To have DynamoDB
 #' return fewer items, you can provide a `FilterExpression` operation.
@@ -4258,6 +4295,7 @@ dynamodb_scan <- function(TableName, IndexName = NULL, AttributesToGet = NULL, L
 
 #' Associate a set of tags with an Amazon DynamoDB resource
 #'
+#' @description
 #' Associate a set of tags with an Amazon DynamoDB resource. You can then
 #' activate these user-defined tags so that they appear on the Billing and
 #' Cost Management console for cost allocation tracking. You can call
@@ -4311,6 +4349,7 @@ dynamodb_tag_resource <- function(ResourceArn, Tags) {
 #' multiple items from one or more tables (but not from indexes) in a
 #' single account and Region
 #'
+#' @description
 #' `TransactGetItems` is a synchronous operation that atomically retrieves
 #' multiple items from one or more tables (but not from indexes) in a
 #' single account and Region. A `TransactGetItems` call can contain up to
@@ -4408,6 +4447,7 @@ dynamodb_transact_get_items <- function(TransactItems, ReturnConsumedCapacity = 
 #' TransactWriteItems is a synchronous write operation that groups up to 25
 #' action requests
 #'
+#' @description
 #' `TransactWriteItems` is a synchronous write operation that groups up to
 #' 25 action requests. These actions can target items in different tables,
 #' but not in different AWS accounts or Regions, and no two actions can
@@ -4761,6 +4801,7 @@ dynamodb_transact_write_items <- function(TransactItems, ReturnConsumedCapacity 
 
 #' Removes the association of tags from an Amazon DynamoDB resource
 #'
+#' @description
 #' Removes the association of tags from an Amazon DynamoDB resource. You
 #' can call `UntagResource` up to five times per second, per account.
 #' 
@@ -4809,6 +4850,7 @@ dynamodb_untag_resource <- function(ResourceArn, TagKeys) {
 #' UpdateContinuousBackups enables or disables point in time recovery for
 #' the specified table
 #'
+#' @description
 #' `UpdateContinuousBackups` enables or disables point in time recovery for
 #' the specified table. A successful `UpdateContinuousBackups` call returns
 #' the current `ContinuousBackupsDescription`. Continuous backups are
@@ -4863,6 +4905,7 @@ dynamodb_update_continuous_backups <- function(TableName, PointInTimeRecoverySpe
 #' Updates the status for contributor insights for a specific table or
 #' index
 #'
+#' @description
 #' Updates the status for contributor insights for a specific table or
 #' index.
 #'
@@ -4905,6 +4948,7 @@ dynamodb_update_contributor_insights <- function(TableName, IndexName = NULL, Co
 
 #' Adds or removes replicas in the specified global table
 #'
+#' @description
 #' Adds or removes replicas in the specified global table. The global table
 #' must already exist to be able to use this operation. Any replica to be
 #' added must be empty, have the same name as the global table, have the
@@ -4971,6 +5015,7 @@ dynamodb_update_global_table <- function(GlobalTableName, ReplicaUpdates) {
 
 #' Updates settings for a global table
 #'
+#' @description
 #' Updates settings for a global table.
 #'
 #' @usage
@@ -5111,6 +5156,7 @@ dynamodb_update_global_table_settings <- function(GlobalTableName, GlobalTableBi
 #' Edits an existing item's attributes, or adds a new item to the table if
 #' it does not already exist
 #'
+#' @description
 #' Edits an existing item's attributes, or adds a new item to the table if
 #' it does not already exist. You can put, delete, or add attribute values.
 #' You can also perform a conditional update on an existing item (insert a
@@ -5534,6 +5580,7 @@ dynamodb_update_item <- function(TableName, Key, AttributeUpdates = NULL, Expect
 #' Modifies the provisioned throughput settings, global secondary indexes,
 #' or DynamoDB Streams settings for a given table
 #'
+#' @description
 #' Modifies the provisioned throughput settings, global secondary indexes,
 #' or DynamoDB Streams settings for a given table.
 #' 
@@ -5742,6 +5789,7 @@ dynamodb_update_table <- function(AttributeDefinitions = NULL, TableName, Billin
 
 #' Updates auto scaling settings on your global tables at once
 #'
+#' @description
 #' Updates auto scaling settings on your global tables at once.
 #' 
 #' This operation only applies to [Version
@@ -5864,6 +5912,7 @@ dynamodb_update_table_replica_auto_scaling <- function(GlobalSecondaryIndexUpdat
 #' The UpdateTimeToLive method enables or disables Time to Live (TTL) for
 #' the specified table
 #'
+#' @description
 #' The `UpdateTimeToLive` method enables or disables Time to Live (TTL) for
 #' the specified table. A successful `UpdateTimeToLive` call returns the
 #' current `TimeToLiveSpecification`. It can take up to one hour for the

@@ -16,8 +16,7 @@ This parameter is stored as a lowercase string.}
 Starts an Amazon Aurora DB cluster that was stopped using the AWS
 console, the stop-db-cluster AWS CLI command, or the StopDBCluster
 action.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-cluster-stop-start.html}{Stopping and Starting an Aurora Cluster}
 in the \emph{Amazon Aurora User Guide.}
 

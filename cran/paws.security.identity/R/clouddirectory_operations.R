@@ -5,6 +5,7 @@ NULL
 
 #' Adds a new Facet to an object
 #'
+#' @description
 #' Adds a new Facet to an object. An object can have more than one facet
 #' applied on it.
 #'
@@ -74,6 +75,7 @@ clouddirectory_add_facet_to_object <- function(DirectoryArn, SchemaFacet, Object
 #' Copies the input published schema, at the specified version, into the
 #' Directory with the same name and version as that of the published schema
 #'
+#' @description
 #' Copies the input published schema, at the specified version, into the
 #' Directory with the same name and version as that of the published
 #' schema.
@@ -116,6 +118,7 @@ clouddirectory_apply_schema <- function(PublishedSchemaArn, DirectoryArn) {
 
 #' Attaches an existing object to another object
 #'
+#' @description
 #' Attaches an existing object to another object. An object can be accessed
 #' in two ways:
 #' 
@@ -169,6 +172,7 @@ clouddirectory_attach_object <- function(DirectoryArn, ParentReference, ChildRef
 
 #' Attaches a policy object to a regular object
 #'
+#' @description
 #' Attaches a policy object to a regular object. An object can have a
 #' limited number of attached policies.
 #'
@@ -217,6 +221,7 @@ clouddirectory_attach_policy <- function(DirectoryArn, PolicyReference, ObjectRe
 
 #' Attaches the specified object to the specified index
 #'
+#' @description
 #' Attaches the specified object to the specified index.
 #'
 #' @usage
@@ -263,6 +268,7 @@ clouddirectory_attach_to_index <- function(DirectoryArn, IndexReference, TargetR
 
 #' Attaches a typed link to a specified source and target object
 #'
+#' @description
 #' Attaches a typed link to a specified source and target object. For more
 #' information, see [Typed
 #' Links](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
@@ -331,6 +337,7 @@ clouddirectory_attach_typed_link <- function(DirectoryArn, SourceObjectReference
 
 #' Performs all the read operations in a batch
 #'
+#' @description
 #' Performs all the read operations in a batch.
 #'
 #' @usage
@@ -599,6 +606,7 @@ clouddirectory_batch_read <- function(DirectoryArn, Operations, ConsistencyLevel
 
 #' Performs all the write operations in a batch
 #'
+#' @description
 #' Performs all the write operations in a batch. Either all the operations
 #' succeed or none.
 #'
@@ -906,6 +914,7 @@ clouddirectory_batch_write <- function(DirectoryArn, Operations) {
 
 #' Creates a Directory by copying the published schema into the directory
 #'
+#' @description
 #' Creates a Directory by copying the published schema into the directory.
 #' A directory cannot be created without a schema.
 #' 
@@ -951,6 +960,7 @@ clouddirectory_create_directory <- function(Name, SchemaArn) {
 
 #' Creates a new Facet in a schema
 #'
+#' @description
 #' Creates a new Facet in a schema. Facet creation is allowed only in
 #' development or applied schemas.
 #'
@@ -1048,6 +1058,7 @@ clouddirectory_create_facet <- function(SchemaArn, Name, Attributes = NULL, Obje
 
 #' Creates an index object
 #'
+#' @description
 #' Creates an index object. See [Indexing and
 #' search](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/indexing_search.html)
 #' for more information.
@@ -1105,6 +1116,7 @@ clouddirectory_create_index <- function(DirectoryArn, OrderedIndexedAttributeLis
 
 #' Creates an object in a Directory
 #'
+#' @description
 #' Creates an object in a Directory. Additionally attaches the object to a
 #' parent, if a parent reference and `LinkName` is specified. An object is
 #' simply a collection of Facet attributes. You can also use this API call
@@ -1182,6 +1194,7 @@ clouddirectory_create_object <- function(DirectoryArn, SchemaFacets, ObjectAttri
 
 #' Creates a new schema in a development state
 #'
+#' @description
 #' Creates a new schema in a development state. A schema can exist in three
 #' phases:
 #' 
@@ -1232,6 +1245,7 @@ clouddirectory_create_schema <- function(Name) {
 
 #' Creates a TypedLinkFacet
 #'
+#' @description
 #' Creates a TypedLinkFacet. For more information, see [Typed
 #' Links](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 #'
@@ -1302,6 +1316,7 @@ clouddirectory_create_typed_link_facet <- function(SchemaArn, Facet) {
 
 #' Deletes a directory
 #'
+#' @description
 #' Deletes a directory. Only disabled directories can be deleted. A deleted
 #' directory cannot be undone. Exercise extreme caution when deleting
 #' directories.
@@ -1340,6 +1355,7 @@ clouddirectory_delete_directory <- function(DirectoryArn) {
 
 #' Deletes a given Facet
 #'
+#' @description
 #' Deletes a given Facet. All attributes and Rules that are associated with
 #' the facet will be deleted. Only development schema facets are allowed
 #' deletion.
@@ -1381,6 +1397,7 @@ clouddirectory_delete_facet <- function(SchemaArn, Name) {
 
 #' Deletes an object and its associated attributes
 #'
+#' @description
 #' Deletes an object and its associated attributes. Only objects with no
 #' children and no parents can be deleted. The maximum number of attributes
 #' that can be deleted during an object deletion is 30. For more
@@ -1426,6 +1443,7 @@ clouddirectory_delete_object <- function(DirectoryArn, ObjectReference) {
 
 #' Deletes a given schema
 #'
+#' @description
 #' Deletes a given schema. Schemas in a development and published state can
 #' only be deleted.
 #'
@@ -1464,6 +1482,7 @@ clouddirectory_delete_schema <- function(SchemaArn) {
 
 #' Deletes a TypedLinkFacet
 #'
+#' @description
 #' Deletes a TypedLinkFacet. For more information, see [Typed
 #' Links](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 #'
@@ -1504,6 +1523,7 @@ clouddirectory_delete_typed_link_facet <- function(SchemaArn, Name) {
 
 #' Detaches the specified object from the specified index
 #'
+#' @description
 #' Detaches the specified object from the specified index.
 #'
 #' @usage
@@ -1550,6 +1570,7 @@ clouddirectory_detach_from_index <- function(DirectoryArn, IndexReference, Targe
 
 #' Detaches a given object from the parent object
 #'
+#' @description
 #' Detaches a given object from the parent object. The object that is to be
 #' detached from the parent is specified by the link name.
 #'
@@ -1595,6 +1616,7 @@ clouddirectory_detach_object <- function(DirectoryArn, ParentReference, LinkName
 
 #' Detaches a policy from an object
 #'
+#' @description
 #' Detaches a policy from an object.
 #'
 #' @usage
@@ -1642,6 +1664,7 @@ clouddirectory_detach_policy <- function(DirectoryArn, PolicyReference, ObjectRe
 
 #' Detaches a typed link from a specified source and target object
 #'
+#' @description
 #' Detaches a typed link from a specified source and target object. For
 #' more information, see [Typed
 #' Links](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
@@ -1708,6 +1731,7 @@ clouddirectory_detach_typed_link <- function(DirectoryArn, TypedLinkSpecifier) {
 
 #' Disables the specified directory
 #'
+#' @description
 #' Disables the specified directory. Disabled directories cannot be read or
 #' written to. Only enabled directories can be disabled. Disabled
 #' directories may be reenabled.
@@ -1746,6 +1770,7 @@ clouddirectory_disable_directory <- function(DirectoryArn) {
 
 #' Enables the specified directory
 #'
+#' @description
 #' Enables the specified directory. Only disabled directories can be
 #' enabled. Once enabled, the directory can then be read and written to.
 #'
@@ -1784,6 +1809,7 @@ clouddirectory_enable_directory <- function(DirectoryArn) {
 #' Returns current applied schema version ARN, including the minor version
 #' in use
 #'
+#' @description
 #' Returns current applied schema version ARN, including the minor version
 #' in use.
 #'
@@ -1821,6 +1847,7 @@ clouddirectory_get_applied_schema_version <- function(SchemaArn) {
 
 #' Retrieves metadata about a directory
 #'
+#' @description
 #' Retrieves metadata about a directory.
 #'
 #' @usage
@@ -1858,6 +1885,7 @@ clouddirectory_get_directory <- function(DirectoryArn) {
 #' Gets details of the Facet, such as facet name, attributes, Rules, or
 #' ObjectType
 #'
+#' @description
 #' Gets details of the Facet, such as facet name, attributes, Rules, or
 #' `ObjectType`. You can call this on all kinds of schema facets --
 #' published, development, or applied.
@@ -1899,6 +1927,7 @@ clouddirectory_get_facet <- function(SchemaArn, Name) {
 
 #' Retrieves attributes that are associated with a typed link
 #'
+#' @description
 #' Retrieves attributes that are associated with a typed link.
 #'
 #' @usage
@@ -1972,6 +2001,7 @@ clouddirectory_get_link_attributes <- function(DirectoryArn, TypedLinkSpecifier,
 
 #' Retrieves attributes within a facet that are associated with an object
 #'
+#' @description
 #' Retrieves attributes within a facet that are associated with an object.
 #'
 #' @usage
@@ -2026,6 +2056,7 @@ clouddirectory_get_object_attributes <- function(DirectoryArn, ObjectReference, 
 
 #' Retrieves metadata about an object
 #'
+#' @description
 #' Retrieves metadata about an object.
 #'
 #' @usage
@@ -2069,6 +2100,7 @@ clouddirectory_get_object_information <- function(DirectoryArn, ObjectReference,
 
 #' Retrieves a JSON representation of the schema
 #'
+#' @description
 #' Retrieves a JSON representation of the schema. See [JSON Schema
 #' Format](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json)
 #' for more information.
@@ -2107,6 +2139,7 @@ clouddirectory_get_schema_as_json <- function(SchemaArn) {
 
 #' Returns the identity attribute order for a specific TypedLinkFacet
 #'
+#' @description
 #' Returns the identity attribute order for a specific TypedLinkFacet. For
 #' more information, see [Typed
 #' Links](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
@@ -2148,6 +2181,7 @@ clouddirectory_get_typed_link_facet_information <- function(SchemaArn, Name) {
 
 #' Lists schema major versions applied to a directory
 #'
+#' @description
 #' Lists schema major versions applied to a directory. If `SchemaArn` is
 #' provided, lists the minor version.
 #'
@@ -2193,6 +2227,7 @@ clouddirectory_list_applied_schema_arns <- function(DirectoryArn, SchemaArn = NU
 
 #' Lists indices attached to the specified object
 #'
+#' @description
 #' Lists indices attached to the specified object.
 #'
 #' @usage
@@ -2241,6 +2276,7 @@ clouddirectory_list_attached_indices <- function(DirectoryArn, TargetReference, 
 #' Retrieves each Amazon Resource Name (ARN) of schemas in the development
 #' state
 #'
+#' @description
 #' Retrieves each Amazon Resource Name (ARN) of schemas in the development
 #' state.
 #'
@@ -2280,6 +2316,7 @@ clouddirectory_list_development_schema_arns <- function(NextToken = NULL, MaxRes
 
 #' Lists directories created within an account
 #'
+#' @description
 #' Lists directories created within an account.
 #'
 #' @usage
@@ -2321,6 +2358,7 @@ clouddirectory_list_directories <- function(NextToken = NULL, MaxResults = NULL,
 
 #' Retrieves attributes attached to the facet
 #'
+#' @description
 #' Retrieves attributes attached to the facet.
 #'
 #' @usage
@@ -2364,6 +2402,7 @@ clouddirectory_list_facet_attributes <- function(SchemaArn, Name, NextToken = NU
 
 #' Retrieves the names of facets that exist in a schema
 #'
+#' @description
 #' Retrieves the names of facets that exist in a schema.
 #'
 #' @usage
@@ -2405,6 +2444,7 @@ clouddirectory_list_facet_names <- function(SchemaArn, NextToken = NULL, MaxResu
 #' Returns a paginated list of all the incoming TypedLinkSpecifier
 #' information for an object
 #'
+#' @description
 #' Returns a paginated list of all the incoming TypedLinkSpecifier
 #' information for an object. It also supports filtering by typed link
 #' facet and identity attributes. For more information, see [Typed
@@ -2494,6 +2534,7 @@ clouddirectory_list_incoming_typed_links <- function(DirectoryArn, ObjectReferen
 
 #' Lists objects attached to the specified index
 #'
+#' @description
 #' Lists objects attached to the specified index.
 #'
 #' @usage
@@ -2576,6 +2617,7 @@ clouddirectory_list_index <- function(DirectoryArn, RangesOnIndexedValues = NULL
 
 #' Lists the major version families of each managed schema
 #'
+#' @description
 #' Lists the major version families of each managed schema. If a major
 #' version ARN is provided as SchemaArn, the minor version revisions in
 #' that family are listed instead.
@@ -2620,6 +2662,7 @@ clouddirectory_list_managed_schema_arns <- function(SchemaArn = NULL, NextToken 
 
 #' Lists all attributes that are associated with an object
 #'
+#' @description
 #' Lists all attributes that are associated with an object.
 #'
 #' @usage
@@ -2679,6 +2722,7 @@ clouddirectory_list_object_attributes <- function(DirectoryArn, ObjectReference,
 #' Returns a paginated list of child objects that are associated with a
 #' given object
 #'
+#' @description
 #' Returns a paginated list of child objects that are associated with a
 #' given object.
 #'
@@ -2733,6 +2777,7 @@ clouddirectory_list_object_children <- function(DirectoryArn, ObjectReference, N
 #' Retrieves all available parent paths for any object type such as node,
 #' leaf node, policy node, and index node objects
 #'
+#' @description
 #' Retrieves all available parent paths for any object type such as node,
 #' leaf node, policy node, and index node objects. For more information
 #' about objects, see [Directory
@@ -2791,6 +2836,7 @@ clouddirectory_list_object_parent_paths <- function(DirectoryArn, ObjectReferenc
 #' Lists parent objects that are associated with a given object in
 #' pagination fashion
 #'
+#' @description
 #' Lists parent objects that are associated with a given object in
 #' pagination fashion.
 #'
@@ -2847,6 +2893,7 @@ clouddirectory_list_object_parents <- function(DirectoryArn, ObjectReference, Ne
 
 #' Returns policies attached to an object in pagination fashion
 #'
+#' @description
 #' Returns policies attached to an object in pagination fashion.
 #'
 #' @usage
@@ -2899,6 +2946,7 @@ clouddirectory_list_object_policies <- function(DirectoryArn, ObjectReference, N
 #' Returns a paginated list of all the outgoing TypedLinkSpecifier
 #' information for an object
 #'
+#' @description
 #' Returns a paginated list of all the outgoing TypedLinkSpecifier
 #' information for an object. It also supports filtering by typed link
 #' facet and identity attributes. For more information, see [Typed
@@ -2988,6 +3036,7 @@ clouddirectory_list_outgoing_typed_links <- function(DirectoryArn, ObjectReferen
 
 #' Returns all of the ObjectIdentifiers to which a given policy is attached
 #'
+#' @description
 #' Returns all of the `ObjectIdentifiers` to which a given policy is
 #' attached.
 #'
@@ -3040,6 +3089,7 @@ clouddirectory_list_policy_attachments <- function(DirectoryArn, PolicyReference
 
 #' Lists the major version families of each published schema
 #'
+#' @description
 #' Lists the major version families of each published schema. If a major
 #' version ARN is provided as `SchemaArn`, the minor version revisions in
 #' that family are listed instead.
@@ -3084,6 +3134,7 @@ clouddirectory_list_published_schema_arns <- function(SchemaArn = NULL, NextToke
 
 #' Returns tags for a resource
 #'
+#' @description
 #' Returns tags for a resource. Tagging is currently supported only for
 #' directories with a limit of 50 tags per directory. All 50 tags are
 #' returned for a given directory with this API call.
@@ -3131,6 +3182,7 @@ clouddirectory_list_tags_for_resource <- function(ResourceArn, NextToken = NULL,
 #' Returns a paginated list of all attribute definitions for a particular
 #' TypedLinkFacet
 #'
+#' @description
 #' Returns a paginated list of all attribute definitions for a particular
 #' TypedLinkFacet. For more information, see [Typed
 #' Links](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
@@ -3178,6 +3230,7 @@ clouddirectory_list_typed_link_facet_attributes <- function(SchemaArn, Name, Nex
 #' Returns a paginated list of TypedLink facet names for a particular
 #' schema
 #'
+#' @description
 #' Returns a paginated list of `TypedLink` facet names for a particular
 #' schema. For more information, see [Typed
 #' Links](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
@@ -3223,6 +3276,7 @@ clouddirectory_list_typed_link_facet_names <- function(SchemaArn, NextToken = NU
 #' Lists all policies from the root of the Directory to the object
 #' specified
 #'
+#' @description
 #' Lists all policies from the root of the Directory to the object
 #' specified. If there are no policies present, an empty list is returned.
 #' If policies are present, and if some objects don't have the policies
@@ -3278,6 +3332,7 @@ clouddirectory_lookup_policy <- function(DirectoryArn, ObjectReference, NextToke
 #' Publishes a development schema with a major version and a recommended
 #' minor version
 #'
+#' @description
 #' Publishes a development schema with a major version and a recommended
 #' minor version.
 #'
@@ -3327,6 +3382,7 @@ clouddirectory_publish_schema <- function(DevelopmentSchemaArn, Version, MinorVe
 
 #' Allows a schema to be updated using JSON upload
 #'
+#' @description
 #' Allows a schema to be updated using JSON upload. Only available for
 #' development schemas. See [JSON Schema
 #' Format](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json)
@@ -3368,6 +3424,7 @@ clouddirectory_put_schema_from_json <- function(SchemaArn, Document) {
 
 #' Removes the specified facet from the specified object
 #'
+#' @description
 #' Removes the specified facet from the specified object.
 #'
 #' @usage
@@ -3414,6 +3471,7 @@ clouddirectory_remove_facet_from_object <- function(DirectoryArn, SchemaFacet, O
 
 #' An API operation for adding tags to a resource
 #'
+#' @description
 #' An API operation for adding tags to a resource.
 #'
 #' @usage
@@ -3458,6 +3516,7 @@ clouddirectory_tag_resource <- function(ResourceArn, Tags) {
 
 #' An API operation for removing tags from a resource
 #'
+#' @description
 #' An API operation for removing tags from a resource.
 #'
 #' @usage
@@ -3499,6 +3558,7 @@ clouddirectory_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Does the following: 1
 #'
+#' @description
 #' Does the following:
 #' 
 #' 1.  Adds new `Attributes`, `Rules`, or `ObjectTypes`.
@@ -3585,6 +3645,7 @@ clouddirectory_update_facet <- function(SchemaArn, Name, AttributeUpdates = NULL
 
 #' Updates a given typed link’s attributes
 #'
+#' @description
 #' Updates a given typed link’s attributes. Attributes to be updated must
 #' not contribute to the typed link’s identity, as defined by its
 #' `IdentityAttributeOrder`.
@@ -3676,6 +3737,7 @@ clouddirectory_update_link_attributes <- function(DirectoryArn, TypedLinkSpecifi
 
 #' Updates a given object's attributes
 #'
+#' @description
 #' Updates a given object's attributes.
 #'
 #' @usage
@@ -3740,6 +3802,7 @@ clouddirectory_update_object_attributes <- function(DirectoryArn, ObjectReferenc
 
 #' Updates the schema name with a new name
 #'
+#' @description
 #' Updates the schema name with a new name. Only development schema names
 #' can be updated.
 #'
@@ -3780,6 +3843,7 @@ clouddirectory_update_schema <- function(SchemaArn, Name) {
 
 #' Updates a TypedLinkFacet
 #'
+#' @description
 #' Updates a TypedLinkFacet. For more information, see [Typed
 #' Links](https://docs.aws.amazon.com/clouddirectory/latest/developerguide/directory_objects_links.html#directory_objects_links_typedlink).
 #'
@@ -3864,6 +3928,7 @@ clouddirectory_update_typed_link_facet <- function(SchemaArn, Name, AttributeUpd
 #' Upgrades a single directory in-place using the PublishedSchemaArn with
 #' schema updates found in MinorVersion
 #'
+#' @description
 #' Upgrades a single directory in-place using the `PublishedSchemaArn` with
 #' schema updates found in `MinorVersion`. Backwards-compatible minor
 #' version upgrades are instantaneously available for readers on all
@@ -3915,6 +3980,7 @@ clouddirectory_upgrade_applied_schema <- function(PublishedSchemaArn, DirectoryA
 #' Upgrades a published schema under a new minor version revision using the
 #' current contents of DevelopmentSchemaArn
 #'
+#' @description
 #' Upgrades a published schema under a new minor version revision using the
 #' current contents of `DevelopmentSchemaArn`.
 #'

@@ -22,8 +22,7 @@ description of every volume.}
 }
 \description{
 Describes an instance's Amazon EBS volumes.
-}
-\details{
+
 This call accepts only one resource-identifying parameter.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a

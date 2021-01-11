@@ -21,8 +21,7 @@ authoritative DNS information for a specified domain name or subdomain
 name. For example, you can use \code{ChangeResourceRecordSets} to create a
 resource record set that routes traffic for test.example.com to a web
 server that has an IP address of 192.0.2.44.
-}
-\details{
+
 \strong{Deleting Resource Record Sets}
 
 To delete a resource record set, you must specify all the same values

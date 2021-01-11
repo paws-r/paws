@@ -15,8 +15,7 @@ you define.}
 }
 \description{
 Add tags to an accelerator resource.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html}{Tagging in AWS Global Accelerator}
 in the \emph{AWS Global Accelerator Developer Guide}.
 }

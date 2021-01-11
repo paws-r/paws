@@ -20,8 +20,7 @@ Otherwise, it returns a description of every error.}
 }
 \description{
 Describes AWS OpsWorks Stacks service errors.
-}
-\details{
+
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Show, Deploy, or Manage permissions level for the stack, or an attached
 policy that explicitly grants permissions. For more information about

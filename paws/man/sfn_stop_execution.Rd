@@ -15,8 +15,7 @@ sfn_stop_execution(executionArn, error, cause)
 }
 \description{
 Stops an execution.
-}
-\details{
+
 This API action is not supported by \code{EXPRESS} state machines.
 }
 \section{Request syntax}{

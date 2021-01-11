@@ -5,6 +5,7 @@ NULL
 
 #' Associates your quota request template with your organization
 #'
+#' @description
 #' Associates your quota request template with your organization. When a
 #' new account is created in your organization, the quota increase requests
 #' in the template are automatically applied to the account. You can add a
@@ -41,6 +42,7 @@ servicequotas_associate_service_quota_template <- function() {
 #' Deletes the quota increase request for the specified quota from your
 #' quota request template
 #'
+#' @description
 #' Deletes the quota increase request for the specified quota from your
 #' quota request template.
 #'
@@ -83,6 +85,7 @@ servicequotas_delete_service_quota_increase_request_from_template <- function(Se
 
 #' Disables your quota request template
 #'
+#' @description
 #' Disables your quota request template. After a template is disabled, the
 #' quota increase requests in the template are not applied to new accounts
 #' in your organization. Disabling a quota request template does not apply
@@ -118,6 +121,7 @@ servicequotas_disassociate_service_quota_template <- function() {
 
 #' Retrieves the default value for the specified quota
 #'
+#' @description
 #' Retrieves the default value for the specified quota. The default value
 #' does not reflect any quota increases.
 #'
@@ -157,6 +161,7 @@ servicequotas_get_aws_default_service_quota <- function(ServiceCode, QuotaCode) 
 
 #' Retrieves the status of the association for the quota request template
 #'
+#' @description
 #' Retrieves the status of the association for the quota request template.
 #'
 #' @usage
@@ -189,6 +194,7 @@ servicequotas_get_association_for_service_quota_template <- function() {
 
 #' Retrieves information about the specified quota increase request
 #'
+#' @description
 #' Retrieves information about the specified quota increase request.
 #'
 #' @usage
@@ -225,6 +231,7 @@ servicequotas_get_requested_service_quota_change <- function(RequestId) {
 
 #' Retrieves the applied quota value for the specified quota
 #'
+#' @description
 #' Retrieves the applied quota value for the specified quota. For some
 #' quotas, only the default values are available. If the applied quota
 #' value is not available for a quota, the quota is not retrieved.
@@ -266,6 +273,7 @@ servicequotas_get_service_quota <- function(ServiceCode, QuotaCode) {
 #' Retrieves information about the specified quota increase request in your
 #' quota request template
 #'
+#' @description
 #' Retrieves information about the specified quota increase request in your
 #' quota request template.
 #'
@@ -308,6 +316,7 @@ servicequotas_get_service_quota_increase_request_from_template <- function(Servi
 
 #' Lists the default values for the quotas for the specified AWS service
 #'
+#' @description
 #' Lists the default values for the quotas for the specified AWS service. A
 #' default value does not reflect any quota increases.
 #'
@@ -352,6 +361,7 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
 
 #' Retrieves the quota increase requests for the specified service
 #'
+#' @description
 #' Retrieves the quota increase requests for the specified service.
 #'
 #' @usage
@@ -397,6 +407,7 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
 
 #' Retrieves the quota increase requests for the specified quota
 #'
+#' @description
 #' Retrieves the quota increase requests for the specified quota.
 #'
 #' @usage
@@ -445,6 +456,7 @@ servicequotas_list_requested_service_quota_change_history_by_quota <- function(S
 #' Lists the quota increase requests in the specified quota request
 #' template
 #'
+#' @description
 #' Lists the quota increase requests in the specified quota request
 #' template.
 #'
@@ -491,6 +503,7 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
 
 #' Lists the applied quota values for the specified AWS service
 #'
+#' @description
 #' Lists the applied quota values for the specified AWS service. For some
 #' quotas, only the default values are available. If the applied quota
 #' value is not available for a quota, the quota is not retrieved.
@@ -536,6 +549,7 @@ servicequotas_list_service_quotas <- function(ServiceCode, NextToken = NULL, Max
 #' Lists the names and codes for the services integrated with Service
 #' Quotas
 #'
+#' @description
 #' Lists the names and codes for the services integrated with Service
 #' Quotas.
 #'
@@ -577,6 +591,7 @@ servicequotas_list_services <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Returns a list of the tags assigned to the specified applied quota
 #'
+#' @description
 #' Returns a list of the tags assigned to the specified applied quota.
 #'
 #' @usage
@@ -619,6 +634,7 @@ servicequotas_list_tags_for_resource <- function(ResourceARN) {
 
 #' Adds a quota increase request to your quota request template
 #'
+#' @description
 #' Adds a quota increase request to your quota request template.
 #'
 #' @usage
@@ -662,6 +678,7 @@ servicequotas_put_service_quota_increase_request_into_template <- function(Quota
 
 #' Submits a quota increase request for the specified quota
 #'
+#' @description
 #' Submits a quota increase request for the specified quota.
 #'
 #' @usage
@@ -703,6 +720,7 @@ servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode,
 
 #' Adds tags to the specified applied quota
 #'
+#' @description
 #' Adds tags to the specified applied quota. You can include one or more
 #' tags to add to the quota.
 #'
@@ -753,6 +771,7 @@ servicequotas_tag_resource <- function(ResourceARN, Tags) {
 
 #' Removes tags from the specified applied quota
 #'
+#' @description
 #' Removes tags from the specified applied quota. You can specify one or
 #' more tags to remove.
 #'

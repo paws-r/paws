@@ -17,8 +17,7 @@ chime_update_channel(ChannelArn, Name, Mode, Metadata)
 }
 \description{
 Update a channel's attributes.
-}
-\details{
+
 \strong{Restriction}: You can't change a channel's privacy.
 }
 \section{Request syntax}{

@@ -20,8 +20,7 @@ This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications. Version 2 of the API supports
 SQL and Java applications. For more information about version 2, see
 Amazon Kinesis Data Analytics API V2 Documentation.
-}
-\details{
+
 Starts the specified Amazon Kinesis Analytics application. After
 creating an application, you must exclusively call this operation to
 start your application.
