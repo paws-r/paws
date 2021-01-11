@@ -76,8 +76,7 @@ value.}
 }
 \description{
 Describes one or more of your route tables.
-}
-\details{
+
 Each subnet in your VPC must be associated with a route table. If a
 subnet is not explicitly associated with any route table, it is
 implicitly associated with the main route table. This command does not

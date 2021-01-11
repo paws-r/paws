@@ -16,8 +16,7 @@ distribution's configuration. For example: \code{E2QWRUHAPOMQZL}.}
 }
 \description{
 Updates the configuration for a web distribution.
-}
-\details{
+
 When you update a distribution, there are more required fields than when
 you create a distribution. When you update your distribution by using
 this API action, follow the steps here to get the current configuration

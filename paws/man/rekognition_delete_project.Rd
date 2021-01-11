@@ -13,8 +13,7 @@ rekognition_delete_project(ProjectArn)
 Deletes an Amazon Rekognition Custom Labels project. To delete a project
 you must first delete all models associated with the project. To delete
 a model, see DeleteProjectVersion.
-}
-\details{
+
 This operation requires permissions to perform the
 \code{rekognition:DeleteProject} action.
 }

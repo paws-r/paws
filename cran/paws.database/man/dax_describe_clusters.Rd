@@ -26,8 +26,7 @@ specified by \code{MaxResults}.}
 Returns information about all provisioned DAX clusters if no cluster
 identifier is specified, or about a specific DAX cluster if a cluster
 identifier is supplied.
-}
-\details{
+
 If the cluster is in the CREATING state, only cluster level information
 will be displayed until all of the nodes are successfully provisioned.
 

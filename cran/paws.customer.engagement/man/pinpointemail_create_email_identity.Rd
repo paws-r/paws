@@ -19,8 +19,7 @@ you send email. Before you can use an identity to send email with Amazon
 Pinpoint, you first have to verify it. By verifying an address, you
 demonstrate that you're the owner of the address, and that you've given
 Amazon Pinpoint permission to send email from the address.
-}
-\details{
+
 When you verify an email address, Amazon Pinpoint sends an email to the
 address. Your email address is verified as soon as you follow the link
 in the verification email.

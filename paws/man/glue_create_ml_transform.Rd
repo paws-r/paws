@@ -110,8 +110,7 @@ Amazon S3 using KMS.}
 \description{
 Creates an AWS Glue machine learning transform. This operation creates
 the transform and all the necessary parameters to train it.
-}
-\details{
+
 Call this operation as the first step in the process of using a machine
 learning transform (such as the \code{FindMatches} transform) for
 deduplicating data. You can provide an optional \code{Description}, in

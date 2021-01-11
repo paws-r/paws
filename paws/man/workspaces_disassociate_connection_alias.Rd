@@ -14,8 +14,7 @@ Disassociates a connection alias from a directory. Disassociating a
 connection alias disables cross-Region redirection between two
 directories in different AWS Regions. For more information, see
 \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
-}
-\details{
+
 Before performing this operation, call
 \href{https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliases.html}{DescribeConnectionAliases}
 to make sure that the current state of the connection alias is

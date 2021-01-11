@@ -5,6 +5,7 @@ NULL
 
 #' Deletes a Record from a FeatureGroup
 #'
+#' @description
 #' Deletes a `Record` from a `FeatureGroup`. A new record will show up in
 #' the `OfflineStore` when the `DeleteRecord` API is called. This record
 #' will have a value of `True` in the `is_deleted` column.
@@ -50,6 +51,7 @@ sagemakerfeaturestoreruntime_delete_record <- function(FeatureGroupName, RecordI
 
 #' Use for OnlineStore serving from a FeatureStore
 #'
+#' @description
 #' Use for `OnlineStore` serving from a `FeatureStore`. Only the latest
 #' records stored in the `OnlineStore` can be retrieved. If no Record with
 #' `RecordIdentifierValue` is found, then an empty result is returned.
@@ -97,6 +99,7 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
 
 #' Used for data ingestion into the FeatureStore
 #'
+#' @description
 #' Used for data ingestion into the `FeatureStore`. The `PutRecord` API
 #' writes to both the `OnlineStore` and `OfflineStore`. If the record is
 #' the latest record for the `recordIdentifier`, the record is written to

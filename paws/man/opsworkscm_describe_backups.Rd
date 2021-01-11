@@ -19,8 +19,7 @@ opsworkscm_describe_backups(BackupId, ServerName, NextToken, MaxResults)
 Describes backups. The results are ordered by time, with newest backups
 first. If you do not specify a BackupId or ServerName, the command
 returns all backups.
-}
-\details{
+
 This operation is synchronous.
 
 A \code{ResourceNotFoundException} is thrown when the backup does not exist.

@@ -17,8 +17,7 @@ pagination, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage
 Returns a list of Kinesis Data Analytics applications in your account.
 For each application, the response includes the application name, Amazon
 Resource Name (ARN), and status.
-}
-\details{
+
 If you want detailed information about a specific application, use
 DescribeApplication.
 }

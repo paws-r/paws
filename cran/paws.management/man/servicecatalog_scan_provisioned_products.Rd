@@ -24,8 +24,7 @@ results, use null.}
 }
 \description{
 Lists the provisioned products that are available (not terminated).
-}
-\details{
+
 To use additional filtering, see SearchProvisionedProducts.
 }
 \section{Request syntax}{

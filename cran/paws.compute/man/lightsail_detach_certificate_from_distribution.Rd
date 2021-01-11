@@ -16,8 +16,7 @@ that you can specify.}
 \description{
 Detaches an SSL/TLS certificate from your Amazon Lightsail content
 delivery network (CDN) distribution.
-}
-\details{
+
 After the certificate is detached, your distribution stops accepting
 traffic for all of the domains that are associated with the certificate.
 }

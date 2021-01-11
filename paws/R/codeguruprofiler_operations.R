@@ -5,6 +5,7 @@ NULL
 
 #' Add up to 2 anomaly notifications channels for a profiling group
 #'
+#' @description
 #' Add up to 2 anomaly notifications channels for a profiling group.
 #'
 #' @usage
@@ -53,6 +54,7 @@ codeguruprofiler_add_notification_channels <- function(channels, profilingGroupN
 #' Returns the time series of values for a requested list of frame metrics
 #' from a time period
 #'
+#' @description
 #' Returns the time series of values for a requested list of frame metrics
 #' from a time period.
 #'
@@ -136,6 +138,7 @@ codeguruprofiler_batch_get_frame_metric_data <- function(endTime = NULL, frameMe
 #' Used by profiler agents to report their current state and to receive
 #' remote configuration updates
 #'
+#' @description
 #' Used by profiler agents to report their current state and to receive
 #' remote configuration updates. For example, `ConfigureAgent` can be used
 #' to tell and agent whether to profile or not and for how long to return
@@ -212,6 +215,7 @@ codeguruprofiler_configure_agent <- function(fleetInstanceId = NULL, metadata = 
 
 #' Creates a profiling group
 #'
+#' @description
 #' Creates a profiling group.
 #'
 #' @usage
@@ -268,6 +272,7 @@ codeguruprofiler_create_profiling_group <- function(agentOrchestrationConfig = N
 
 #' Deletes a profiling group
 #'
+#' @description
 #' Deletes a profiling group.
 #'
 #' @usage
@@ -305,6 +310,7 @@ codeguruprofiler_delete_profiling_group <- function(profilingGroupName) {
 #' Returns a ProfilingGroupDescription object that contains information
 #' about the requested profiling group
 #'
+#' @description
 #' Returns a
 #' [`ProfilingGroupDescription`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html)
 #' object that contains information about the requested profiling group.
@@ -344,6 +350,7 @@ codeguruprofiler_describe_profiling_group <- function(profilingGroupName) {
 #' Returns a list of FindingsReportSummary objects that contain analysis
 #' results for all profiling groups in your AWS account
 #'
+#' @description
 #' Returns a list of
 #' [`FindingsReportSummary`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_FindingsReportSummary.html)
 #' objects that contain analysis results for all profiling groups in your
@@ -406,6 +413,7 @@ codeguruprofiler_get_findings_report_account_summary <- function(dailyReportsOnl
 #' Get the current configuration for anomaly notifications for a profiling
 #' group
 #'
+#' @description
 #' Get the current configuration for anomaly notifications for a profiling
 #' group.
 #'
@@ -444,6 +452,7 @@ codeguruprofiler_get_notification_configuration <- function(profilingGroupName) 
 
 #' Returns the JSON-formatted resource-based policy on a profiling group
 #'
+#' @description
 #' Returns the JSON-formatted resource-based policy on a profiling group.
 #'
 #' @usage
@@ -481,6 +490,7 @@ codeguruprofiler_get_policy <- function(profilingGroupName) {
 #' Gets the aggregated profile of a profiling group for a specified time
 #' range
 #'
+#' @description
 #' Gets the aggregated profile of a profiling group for a specified time
 #' range. Amazon CodeGuru Profiler collects posted agent profiles for a
 #' profiling group into aggregated profiles.
@@ -558,6 +568,7 @@ codeguruprofiler_get_profile <- function(accept = NULL, endTime = NULL, maxDepth
 #' Returns a list of Recommendation objects that contain recommendations
 #' for a profiling group for a given time period
 #'
+#' @description
 #' Returns a list of
 #' [`Recommendation`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_Recommendation.html)
 #' objects that contain recommendations for a profiling group for a given
@@ -640,6 +651,7 @@ codeguruprofiler_get_recommendations <- function(endTime, locale = NULL, profili
 
 #' List the available reports for a given profiling group and time range
 #'
+#' @description
 #' List the available reports for a given profiling group and time range.
 #'
 #' @usage
@@ -714,6 +726,7 @@ codeguruprofiler_list_findings_reports <- function(dailyReportsOnly = NULL, endT
 #' profiling group for an aggregation period within the specified time
 #' range
 #'
+#' @description
 #' Lists the start times of the available aggregated profiles of a
 #' profiling group for an aggregation period within the specified time
 #' range.
@@ -790,6 +803,7 @@ codeguruprofiler_list_profile_times <- function(endTime, maxResults = NULL, next
 
 #' Returns a list of profiling groups
 #'
+#' @description
 #' Returns a list of profiling groups. The profiling groups are returned as
 #' [`ProfilingGroupDescription`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ProfilingGroupDescription.html)
 #' objects.
@@ -849,6 +863,7 @@ codeguruprofiler_list_profiling_groups <- function(includeDescription = NULL, ma
 
 #' Returns a list of the tags that are assigned to a specified resource
 #'
+#' @description
 #' Returns a list of the tags that are assigned to a specified resource.
 #'
 #' @usage
@@ -886,6 +901,7 @@ codeguruprofiler_list_tags_for_resource <- function(resourceArn) {
 
 #' Submits profiling data to an aggregated profile of a profiling group
 #'
+#' @description
 #' Submits profiling data to an aggregated profile of a profiling group. To
 #' get an aggregated profile that is created with this profiling data, use
 #' [`GetProfile`](https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_GetProfile.html)
@@ -940,6 +956,7 @@ codeguruprofiler_post_agent_profile <- function(agentProfile, contentType, profi
 #' Adds permissions to a profiling group's resource-based policy that are
 #' provided using an action group
 #'
+#' @description
 #' Adds permissions to a profiling group's resource-based policy that are
 #' provided using an action group. If a profiling group doesn't have a
 #' resource-based policy, one is created for it using the permissions in
@@ -998,6 +1015,7 @@ codeguruprofiler_put_permission <- function(actionGroup, principals, profilingGr
 
 #' Remove one anomaly notifications channel for a profiling group
 #'
+#' @description
 #' Remove one anomaly notifications channel for a profiling group.
 #'
 #' @usage
@@ -1039,6 +1057,7 @@ codeguruprofiler_remove_notification_channel <- function(channelId, profilingGro
 #' Removes permissions from a profiling group's resource-based policy that
 #' are provided using an action group
 #'
+#' @description
 #' Removes permissions from a profiling group's resource-based policy that
 #' are provided using an action group. The one supported action group that
 #' can be removed is `agentPermission` which grants `ConfigureAgent` and
@@ -1095,6 +1114,7 @@ codeguruprofiler_remove_permission <- function(actionGroup, profilingGroupName, 
 #' Sends feedback to CodeGuru Profiler about whether the anomaly detected
 #' by the analysis is useful or not
 #'
+#' @description
 #' Sends feedback to CodeGuru Profiler about whether the anomaly detected
 #' by the analysis is useful or not.
 #'
@@ -1142,6 +1162,7 @@ codeguruprofiler_submit_feedback <- function(anomalyInstanceId, comment = NULL, 
 
 #' Use to assign one or more tags to a resource
 #'
+#' @description
 #' Use to assign one or more tags to a resource.
 #'
 #' @usage
@@ -1183,6 +1204,7 @@ codeguruprofiler_tag_resource <- function(resourceArn, tags) {
 
 #' Use to remove one or more tags from a resource
 #'
+#' @description
 #' Use to remove one or more tags from a resource.
 #'
 #' @usage
@@ -1225,6 +1247,7 @@ codeguruprofiler_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates a profiling group
 #'
+#' @description
 #' Updates a profiling group.
 #'
 #' @usage

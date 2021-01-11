@@ -29,8 +29,7 @@ servicecatalog_update_portfolio(AcceptLanguage, Id, DisplayName,
 }
 \description{
 Updates the specified portfolio.
-}
-\details{
+
 You cannot update a product that was shared with you.
 }
 \section{Request syntax}{

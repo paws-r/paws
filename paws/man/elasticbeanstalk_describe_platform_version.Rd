@@ -13,8 +13,7 @@ elasticbeanstalk_describe_platform_version(PlatformArn)
 Describes a platform version. Provides full details. Compare to
 ListPlatformVersions, which provides summary information about a list of
 platform versions.
-}
-\details{
+
 For definitions of platform version and other platform-related terms,
 see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/platforms-glossary.html}{AWS Elastic Beanstalk Platforms Glossary}.
 }

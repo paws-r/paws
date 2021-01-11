@@ -41,8 +41,7 @@ Returns a detailed list of parameters contained within the specified
 Amazon Redshift parameter group. For each parameter the response
 includes information such as parameter name, description, data type,
 value, whether the parameter value is modifiable, and so on.
-}
-\details{
+
 You can specify \emph{source} filter to retrieve parameters of only specific
 type. For example, to retrieve parameters that were modified by a user
 action such as from ModifyClusterParameterGroup, you can specify

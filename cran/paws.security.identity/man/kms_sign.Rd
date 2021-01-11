@@ -57,8 +57,7 @@ To verify the signature, use the Verify operation, or use the public key
 in the same asymmetric CMK outside of AWS KMS. For information about
 symmetric and asymmetric CMKs, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric CMKs}
 in the \emph{AWS Key Management Service Developer Guide}.
-}
-\details{
+
 Digital signatures are generated and verified by using asymmetric key
 pair, such as an RSA or ECC pair that is represented by an asymmetric
 customer master key (CMK). The key owner (or an authorized user) uses

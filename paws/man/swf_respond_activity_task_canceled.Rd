@@ -21,8 +21,7 @@ with results.}
 Used by workers to tell the service that the ActivityTask identified by
 the \code{taskToken} was successfully canceled. Additional \code{details} can be
 provided using the \code{details} argument.
-}
-\details{
+
 These \code{details} (if provided) appear in the \code{ActivityTaskCanceled} event
 added to the workflow history.
 

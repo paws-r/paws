@@ -6,6 +6,7 @@ NULL
 #' Accepts the Convertible Reserved Instance exchange quote described in
 #' the GetReservedInstancesExchangeQuote call
 #'
+#' @description
 #' Accepts the Convertible Reserved Instance exchange quote described in
 #' the GetReservedInstancesExchangeQuote call.
 #'
@@ -61,6 +62,7 @@ ec2_accept_reserved_instances_exchange_quote <- function(DryRun = NULL, Reserved
 #' Accepts a request to associate subnets with a transit gateway multicast
 #' domain
 #'
+#' @description
 #' Accepts a request to associate subnets with a transit gateway multicast
 #' domain.
 #'
@@ -112,6 +114,7 @@ ec2_accept_transit_gateway_multicast_domain_associations <- function(TransitGate
 
 #' Accepts a transit gateway peering attachment request
 #'
+#' @description
 #' Accepts a transit gateway peering attachment request. The peering
 #' attachment must be in the `pendingAcceptance` state.
 #'
@@ -155,6 +158,7 @@ ec2_accept_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
 
 #' Accepts a request to attach a VPC to a transit gateway
 #'
+#' @description
 #' Accepts a request to attach a VPC to a transit gateway.
 #' 
 #' The VPC attachment must be in the `pendingAcceptance` state. Use
@@ -203,6 +207,7 @@ ec2_accept_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #' Accepts one or more interface VPC endpoint connection requests to your
 #' VPC endpoint service
 #'
+#' @description
 #' Accepts one or more interface VPC endpoint connection requests to your
 #' VPC endpoint service.
 #'
@@ -249,6 +254,7 @@ ec2_accept_vpc_endpoint_connections <- function(DryRun = NULL, ServiceId, VpcEnd
 
 #' Accept a VPC peering connection request
 #'
+#' @description
 #' Accept a VPC peering connection request. To accept a request, the VPC
 #' peering connection must be in the `pending-acceptance` state, and you
 #' must be the owner of the peer VPC. Use DescribeVpcPeeringConnections to
@@ -298,6 +304,7 @@ ec2_accept_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 #' Advertises an IPv4 or IPv6 address range that is provisioned for use
 #' with your AWS resources through bring your own IP addresses (BYOIP)
 #'
+#' @description
 #' Advertises an IPv4 or IPv6 address range that is provisioned for use
 #' with your AWS resources through bring your own IP addresses (BYOIP).
 #' 
@@ -356,6 +363,7 @@ ec2_advertise_byoip_cidr <- function(Cidr, DryRun = NULL) {
 
 #' Allocates an Elastic IP address to your AWS account
 #'
+#' @description
 #' Allocates an Elastic IP address to your AWS account. After you allocate
 #' the Elastic IP address you can associate it with an instance or network
 #' interface. After you release an Elastic IP address, it is released to
@@ -482,6 +490,7 @@ ec2_allocate_address <- function(Domain = NULL, Address = NULL, PublicIpv4Pool =
 
 #' Allocates a Dedicated Host to your account
 #'
+#' @description
 #' Allocates a Dedicated Host to your account. At a minimum, specify the
 #' supported instance type or instance family, the Availability Zone in
 #' which to allocate the host, and the number of hosts to allocate.
@@ -576,6 +585,7 @@ ec2_allocate_hosts <- function(AutoPlacement = NULL, AvailabilityZone, ClientTok
 #' Applies a security group to the association between the target network
 #' and the Client VPN endpoint
 #'
+#' @description
 #' Applies a security group to the association between the target network
 #' and the Client VPN endpoint. This action replaces the existing security
 #' groups with the specified security groups.
@@ -628,6 +638,7 @@ ec2_apply_security_groups_to_client_vpn_target_network <- function(ClientVpnEndp
 
 #' Assigns one or more IPv6 addresses to the specified network interface
 #'
+#' @description
 #' Assigns one or more IPv6 addresses to the specified network interface.
 #' You can specify one or more specific IPv6 addresses, or you can specify
 #' the number of IPv6 addresses to be automatically assigned from within
@@ -687,6 +698,7 @@ ec2_assign_ipv_6_addresses <- function(Ipv6AddressCount = NULL, Ipv6Addresses = 
 #' Assigns one or more secondary private IP addresses to the specified
 #' network interface
 #'
+#' @description
 #' Assigns one or more secondary private IP addresses to the specified
 #' network interface.
 #' 
@@ -788,6 +800,7 @@ ec2_assign_private_ip_addresses <- function(AllowReassignment = NULL, NetworkInt
 #' that are in subnets in Wavelength Zones) with an instance or a network
 #' interface
 #'
+#' @description
 #' Associates an Elastic IP address, or carrier IP address (for instances
 #' that are in subnets in Wavelength Zones) with an instance or a network
 #' interface. Before you can use an Elastic IP address, you must allocate
@@ -914,6 +927,7 @@ ec2_associate_address <- function(AllocationId = NULL, InstanceId = NULL, Public
 
 #' Associates a target network with a Client VPN endpoint
 #'
+#' @description
 #' Associates a target network with a Client VPN endpoint. A target network
 #' is a subnet in a VPC. You can associate multiple subnets from the same
 #' VPC with a Client VPN endpoint. You can associate only one subnet in
@@ -973,6 +987,7 @@ ec2_associate_client_vpn_target_network <- function(ClientVpnEndpointId, SubnetI
 #' Associates a set of DHCP options (that you've previously created) with
 #' the specified VPC, or associates no DHCP options with the VPC
 #'
+#' @description
 #' Associates a set of DHCP options (that you've previously created) with
 #' the specified VPC, or associates no DHCP options with the VPC.
 #' 
@@ -1047,6 +1062,7 @@ ec2_associate_dhcp_options <- function(DhcpOptionsId, VpcId, DryRun = NULL) {
 #' Associates an AWS Identity and Access Management (IAM) role with an AWS
 #' Certificate Manager (ACM) certificate
 #'
+#' @description
 #' Associates an AWS Identity and Access Management (IAM) role with an AWS
 #' Certificate Manager (ACM) certificate. This enables the certificate to
 #' be used by the ACM for Nitro Enclaves application inside an enclave. For
@@ -1112,6 +1128,7 @@ ec2_associate_enclave_certificate_iam_role <- function(CertificateArn = NULL, Ro
 
 #' Associates an IAM instance profile with a running or stopped instance
 #'
+#' @description
 #' Associates an IAM instance profile with a running or stopped instance.
 #' You cannot associate more than one IAM instance profile with an
 #' instance.
@@ -1168,6 +1185,7 @@ ec2_associate_iam_instance_profile <- function(IamInstanceProfile, InstanceId) {
 #' Associates a subnet in your VPC or an internet gateway or virtual
 #' private gateway attached to your VPC with a route table in your VPC
 #'
+#' @description
 #' Associates a subnet in your VPC or an internet gateway or virtual
 #' private gateway attached to your VPC with a route table in your VPC.
 #' This association causes traffic from the subnet or gateway to be routed
@@ -1232,6 +1250,7 @@ ec2_associate_route_table <- function(DryRun = NULL, RouteTableId, SubnetId = NU
 
 #' Associates a CIDR block with your subnet
 #'
+#' @description
 #' Associates a CIDR block with your subnet. You can only associate a
 #' single IPv6 CIDR block with your subnet. An IPv6 CIDR block must have a
 #' prefix length of /64.
@@ -1274,6 +1293,7 @@ ec2_associate_subnet_cidr_block <- function(Ipv6CidrBlock, SubnetId) {
 #' Associates the specified subnets and transit gateway attachments with
 #' the specified transit gateway multicast domain
 #'
+#' @description
 #' Associates the specified subnets and transit gateway attachments with
 #' the specified transit gateway multicast domain.
 #' 
@@ -1332,6 +1352,7 @@ ec2_associate_transit_gateway_multicast_domain <- function(TransitGatewayMultica
 #' Associates the specified attachment with the specified transit gateway
 #' route table
 #'
+#' @description
 #' Associates the specified attachment with the specified transit gateway
 #' route table. You can associate only one route table with an attachment.
 #'
@@ -1377,6 +1398,7 @@ ec2_associate_transit_gateway_route_table <- function(TransitGatewayRouteTableId
 
 #' Associates a CIDR block with your VPC
 #'
+#' @description
 #' Associates a CIDR block with your VPC. You can associate a secondary
 #' IPv4 CIDR block, an Amazon-provided IPv6 CIDR block, or an IPv6 CIDR
 #' block from an IPv6 address pool that you provisioned through bring your
@@ -1450,6 +1472,7 @@ ec2_associate_vpc_cidr_block <- function(AmazonProvidedIpv6CidrBlock = NULL, Cid
 #' Links an EC2-Classic instance to a ClassicLink-enabled VPC through one
 #' or more of the VPC's security groups
 #'
+#' @description
 #' Links an EC2-Classic instance to a ClassicLink-enabled VPC through one
 #' or more of the VPC's security groups. You cannot link an EC2-Classic
 #' instance to more than one VPC at a time. You can only link an instance
@@ -1512,6 +1535,7 @@ ec2_attach_classic_link_vpc <- function(DryRun = NULL, Groups, InstanceId, VpcId
 #' Attaches an internet gateway or a virtual private gateway to a VPC,
 #' enabling connectivity between the internet and the VPC
 #'
+#' @description
 #' Attaches an internet gateway or a virtual private gateway to a VPC,
 #' enabling connectivity between the internet and the VPC. For more
 #' information about your VPC and internet gateway, see the [Amazon Virtual
@@ -1569,6 +1593,7 @@ ec2_attach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
 
 #' Attaches a network interface to an instance
 #'
+#' @description
 #' Attaches a network interface to an instance.
 #'
 #' @usage
@@ -1631,6 +1656,7 @@ ec2_attach_network_interface <- function(DeviceIndex, DryRun = NULL, InstanceId,
 #' Attaches an EBS volume to a running or stopped instance and exposes it
 #' to the instance with the specified device name
 #'
+#' @description
 #' Attaches an EBS volume to a running or stopped instance and exposes it
 #' to the instance with the specified device name.
 #' 
@@ -1715,6 +1741,7 @@ ec2_attach_volume <- function(Device, InstanceId, VolumeId, DryRun = NULL) {
 
 #' Attaches a virtual private gateway to a VPC
 #'
+#' @description
 #' Attaches a virtual private gateway to a VPC. You can attach one virtual
 #' private gateway to one VPC at a time.
 #' 
@@ -1763,6 +1790,7 @@ ec2_attach_vpn_gateway <- function(VpcId, VpnGatewayId, DryRun = NULL) {
 
 #' Adds an ingress authorization rule to a Client VPN endpoint
 #'
+#' @description
 #' Adds an ingress authorization rule to a Client VPN endpoint. Ingress
 #' authorization rules act as firewall rules that grant access to networks.
 #' You must configure ingress authorization rules to enable clients to
@@ -1826,6 +1854,7 @@ ec2_authorize_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkC
 #' &#91;VPC only&#93; Adds the specified egress rules to a security group
 #' for use with a VPC
 #'
+#' @description
 #' \[VPC only\] Adds the specified egress rules to a security group for use
 #' with a VPC.
 #' 
@@ -1977,6 +2006,7 @@ ec2_authorize_security_group_egress <- function(DryRun = NULL, GroupId, IpPermis
 
 #' Adds the specified ingress rules to a security group
 #'
+#' @description
 #' Adds the specified ingress rules to a security group.
 #' 
 #' An inbound rule permits instances to receive traffic from the specified
@@ -2189,6 +2219,7 @@ ec2_authorize_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL,
 
 #' Bundles an Amazon instance store-backed Windows instance
 #'
+#' @description
 #' Bundles an Amazon instance store-backed Windows instance.
 #' 
 #' During bundling, only the root device volume (C:\\) is bundled. Data on
@@ -2256,6 +2287,7 @@ ec2_bundle_instance <- function(InstanceId, Storage, DryRun = NULL) {
 #' Cancels a bundling operation for an instance store-backed Windows
 #' instance
 #'
+#' @description
 #' Cancels a bundling operation for an instance store-backed Windows
 #' instance.
 #'
@@ -2299,6 +2331,7 @@ ec2_cancel_bundle_task <- function(BundleId, DryRun = NULL) {
 #' Cancels the specified Capacity Reservation, releases the reserved
 #' capacity, and changes the Capacity Reservation's state to cancelled
 #'
+#' @description
 #' Cancels the specified Capacity Reservation, releases the reserved
 #' capacity, and changes the Capacity Reservation's state to `cancelled`.
 #' 
@@ -2348,6 +2381,7 @@ ec2_cancel_capacity_reservation <- function(CapacityReservationId, DryRun = NULL
 
 #' Cancels an active conversion task
 #'
+#' @description
 #' Cancels an active conversion task. The task can be the import of an
 #' instance or volume. The action removes all artifacts of the conversion,
 #' including a partially uploaded volume or instance. If the conversion is
@@ -2398,6 +2432,7 @@ ec2_cancel_conversion_task <- function(ConversionTaskId, DryRun = NULL, ReasonMe
 
 #' Cancels an active export task
 #'
+#' @description
 #' Cancels an active export task. The request removes all artifacts of the
 #' export, including any partially-created Amazon S3 objects. If the export
 #' task is complete or is in the process of transferring the final disk
@@ -2438,6 +2473,7 @@ ec2_cancel_export_task <- function(ExportTaskId) {
 
 #' Cancels an in-process import virtual machine or import snapshot task
 #'
+#' @description
 #' Cancels an in-process import virtual machine or import snapshot task.
 #'
 #' @usage
@@ -2482,6 +2518,7 @@ ec2_cancel_import_task <- function(CancelReason = NULL, DryRun = NULL, ImportTas
 #' Cancels the specified Reserved Instance listing in the Reserved Instance
 #' Marketplace
 #'
+#' @description
 #' Cancels the specified Reserved Instance listing in the Reserved Instance
 #' Marketplace.
 #' 
@@ -2523,6 +2560,7 @@ ec2_cancel_reserved_instances_listing <- function(ReservedInstancesListingId) {
 
 #' Cancels the specified Spot Fleet requests
 #'
+#' @description
 #' Cancels the specified Spot Fleet requests.
 #' 
 #' After you cancel a Spot Fleet request, the Spot Fleet launches no new
@@ -2599,6 +2637,7 @@ ec2_cancel_spot_fleet_requests <- function(DryRun = NULL, SpotFleetRequestIds, T
 
 #' Cancels one or more Spot Instance requests
 #'
+#' @description
 #' Cancels one or more Spot Instance requests.
 #' 
 #' Canceling a Spot Instance request does not terminate running Spot
@@ -2655,6 +2694,7 @@ ec2_cancel_spot_instance_requests <- function(DryRun = NULL, SpotInstanceRequest
 
 #' Determines whether a product code is associated with an instance
 #'
+#' @description
 #' Determines whether a product code is associated with an instance. This
 #' action can only be used by the owner of the product code. It is useful
 #' when a product code owner must verify whether another user's instance is
@@ -2711,6 +2751,7 @@ ec2_confirm_product_instance <- function(InstanceId, ProductCode, DryRun = NULL)
 
 #' Copies the specified Amazon FPGA Image (AFI) to the current Region
 #'
+#' @description
 #' Copies the specified Amazon FPGA Image (AFI) to the current Region.
 #'
 #' @usage
@@ -2764,6 +2805,7 @@ ec2_copy_fpga_image <- function(DryRun = NULL, SourceFpgaImageId, Description = 
 #' Initiates the copy of an AMI from the specified source Region to the
 #' current Region
 #'
+#' @description
 #' Initiates the copy of an AMI from the specified source Region to the
 #' current Region. You specify the destination Region by using its endpoint
 #' when making the request.
@@ -2876,6 +2918,7 @@ ec2_copy_image <- function(ClientToken = NULL, Description = NULL, Encrypted = N
 #' Copies a point-in-time snapshot of an EBS volume and stores it in Amazon
 #' S3
 #'
+#' @description
 #' Copies a point-in-time snapshot of an EBS volume and stores it in Amazon
 #' S3. You can copy the snapshot within the same Region or from one Region
 #' to another. You can use the snapshot to create EBS volumes or Amazon
@@ -3022,6 +3065,7 @@ ec2_copy_snapshot <- function(Description = NULL, DestinationRegion = NULL, Encr
 
 #' Creates a new Capacity Reservation with the specified attributes
 #'
+#' @description
 #' Creates a new Capacity Reservation with the specified attributes.
 #' 
 #' Capacity Reservations enable you to reserve capacity for your Amazon EC2
@@ -3180,6 +3224,7 @@ ec2_create_capacity_reservation <- function(ClientToken = NULL, InstanceType, In
 
 #' Creates a carrier gateway
 #'
+#' @description
 #' Creates a carrier gateway. For more information about carrier gateways,
 #' see [Carrier
 #' gateways](https://docs.aws.amazon.com/wavelength/latest/developerguide/how-wavelengths-work.html#wavelength-carrier-gateway)
@@ -3241,6 +3286,7 @@ ec2_create_carrier_gateway <- function(VpcId, TagSpecifications = NULL, DryRun =
 
 #' Creates a Client VPN endpoint
 #'
+#' @description
 #' Creates a Client VPN endpoint. A Client VPN endpoint is the resource you
 #' create and configure to enable and manage client VPN sessions. It is the
 #' destination endpoint at which all client VPN sessions are terminated.
@@ -3398,6 +3444,7 @@ ec2_create_client_vpn_endpoint <- function(ClientCidrBlock, ServerCertificateArn
 
 #' Adds a route to a network to a Client VPN endpoint
 #'
+#' @description
 #' Adds a route to a network to a Client VPN endpoint. Each Client VPN
 #' endpoint has a route table that describes the available destination
 #' network routes. Each route in the route table specifies the path for
@@ -3469,6 +3516,7 @@ ec2_create_client_vpn_route <- function(ClientVpnEndpointId, DestinationCidrBloc
 
 #' Provides information to AWS about your VPN customer gateway device
 #'
+#' @description
 #' Provides information to AWS about your VPN customer gateway device. The
 #' customer gateway is the appliance at your end of the VPN connection.
 #' (The device on the AWS side of the VPN connection is the virtual private
@@ -3579,6 +3627,7 @@ ec2_create_customer_gateway <- function(BgpAsn, PublicIp = NULL, CertificateArn 
 #' Creates a default subnet with a size /20 IPv4 CIDR block in the
 #' specified Availability Zone in your default VPC
 #'
+#' @description
 #' Creates a default subnet with a size `/20` IPv4 CIDR block in the
 #' specified Availability Zone in your default VPC. You can have only one
 #' default subnet per Availability Zone. For more information, see
@@ -3626,6 +3675,7 @@ ec2_create_default_subnet <- function(AvailabilityZone, DryRun = NULL) {
 #' Creates a default VPC with a size /16 IPv4 CIDR block and a default
 #' subnet in each Availability Zone
 #'
+#' @description
 #' Creates a default VPC with a size `/16` IPv4 CIDR block and a default
 #' subnet in each Availability Zone. For more information about the
 #' components of a default VPC, see [Default VPC and Default
@@ -3679,6 +3729,7 @@ ec2_create_default_vpc <- function(DryRun = NULL) {
 
 #' Creates a set of DHCP options for your VPC
 #'
+#' @description
 #' Creates a set of DHCP options for your VPC. After creating the set, you
 #' must associate it with the VPC, causing all existing and new instances
 #' that you launch in the VPC to use this set of DHCP options. The
@@ -3800,6 +3851,7 @@ ec2_create_dhcp_options <- function(DhcpConfigurations, TagSpecifications = NULL
 
 #' &#91;IPv6 only&#93; Creates an egress-only internet gateway for your VPC
 #'
+#' @description
 #' \[IPv6 only\] Creates an egress-only internet gateway for your VPC. An
 #' egress-only internet gateway is used to enable outbound communication
 #' over IPv6 from instances in your VPC to the internet, and prevents hosts
@@ -3862,6 +3914,7 @@ ec2_create_egress_only_internet_gateway <- function(ClientToken = NULL, DryRun =
 
 #' Launches an EC2 Fleet
 #'
+#' @description
 #' Launches an EC2 Fleet.
 #' 
 #' You can create a single EC2 Fleet that includes multiple launch
@@ -4038,6 +4091,7 @@ ec2_create_fleet <- function(DryRun = NULL, ClientToken = NULL, SpotOptions = NU
 #' Creates one or more flow logs to capture information about IP traffic
 #' for a specific network interface, subnet, or VPC
 #'
+#' @description
 #' Creates one or more flow logs to capture information about IP traffic
 #' for a specific network interface, subnet, or VPC.
 #' 
@@ -4191,6 +4245,7 @@ ec2_create_flow_logs <- function(DryRun = NULL, ClientToken = NULL, DeliverLogsP
 #' Creates an Amazon FPGA Image (AFI) from the specified design checkpoint
 #' (DCP)
 #'
+#' @description
 #' Creates an Amazon FPGA Image (AFI) from the specified design checkpoint
 #' (DCP).
 #' 
@@ -4272,6 +4327,7 @@ ec2_create_fpga_image <- function(DryRun = NULL, InputStorageLocation, LogsStora
 #' Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that
 #' is either running or stopped
 #'
+#' @description
 #' Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that
 #' is either running or stopped.
 #' 
@@ -4409,6 +4465,7 @@ ec2_create_image <- function(BlockDeviceMappings = NULL, Description = NULL, Dry
 
 #' Exports a running or stopped instance to an Amazon S3 bucket
 #'
+#' @description
 #' Exports a running or stopped instance to an Amazon S3 bucket.
 #' 
 #' For information about the supported operating systems, image formats,
@@ -4476,6 +4533,7 @@ ec2_create_instance_export_task <- function(Description = NULL, ExportToS3Task, 
 
 #' Creates an internet gateway for use with a VPC
 #'
+#' @description
 #' Creates an internet gateway for use with a VPC. After creating the
 #' internet gateway, you attach it to a VPC using AttachInternetGateway.
 #' 
@@ -4538,6 +4596,7 @@ ec2_create_internet_gateway <- function(TagSpecifications = NULL, DryRun = NULL)
 
 #' Creates a 2048-bit RSA key pair with the specified name
 #'
+#' @description
 #' Creates a 2048-bit RSA key pair with the specified name. Amazon EC2
 #' stores the public key and displays the private key for you to save to a
 #' file. The private key is returned as an unencrypted PEM encoded PKCS\\#1
@@ -4615,6 +4674,7 @@ ec2_create_key_pair <- function(KeyName, DryRun = NULL, TagSpecifications = NULL
 
 #' Creates a launch template
 #'
+#' @description
 #' Creates a launch template. A launch template contains the parameters to
 #' launch an instance. When you launch an instance using RunInstances, you
 #' can specify a launch template instead of providing the launch parameters
@@ -4863,6 +4923,7 @@ ec2_create_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 
 #' Creates a new version for a launch template
 #'
+#' @description
 #' Creates a new version for a launch template. You can specify an existing
 #' version of launch template from which to base the new version.
 #' 
@@ -5093,6 +5154,7 @@ ec2_create_launch_template_version <- function(DryRun = NULL, ClientToken = NULL
 
 #' Creates a static route for the specified local gateway route table
 #'
+#' @description
 #' Creates a static route for the specified local gateway route table.
 #'
 #' @usage
@@ -5141,6 +5203,7 @@ ec2_create_local_gateway_route <- function(DestinationCidrBlock, LocalGatewayRou
 #' Associates the specified VPC with the specified local gateway route
 #' table
 #'
+#' @description
 #' Associates the specified VPC with the specified local gateway route
 #' table.
 #'
@@ -5198,6 +5261,7 @@ ec2_create_local_gateway_route_table_vpc_association <- function(LocalGatewayRou
 
 #' Creates a managed prefix list
 #'
+#' @description
 #' Creates a managed prefix list. You can specify one or more entries for
 #' the prefix list. Each entry consists of a CIDR block and an optional
 #' description.
@@ -5279,6 +5343,7 @@ ec2_create_managed_prefix_list <- function(DryRun = NULL, PrefixListName, Entrie
 
 #' Creates a NAT gateway in the specified public subnet
 #'
+#' @description
 #' Creates a NAT gateway in the specified public subnet. This action
 #' creates a network interface in the specified subnet with a private IP
 #' address from the IP address range of the subnet. Internet-bound traffic
@@ -5361,6 +5426,7 @@ ec2_create_nat_gateway <- function(AllocationId, ClientToken = NULL, DryRun = NU
 
 #' Creates a network ACL in a VPC
 #'
+#' @description
 #' Creates a network ACL in a VPC. Network ACLs provide an optional layer
 #' of security (in addition to security groups) for the instances in your
 #' VPC.
@@ -5429,6 +5495,7 @@ ec2_create_network_acl <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
 #' Creates an entry (a rule) in a network ACL with the specified rule
 #' number
 #'
+#' @description
 #' Creates an entry (a rule) in a network ACL with the specified rule
 #' number. Each network ACL has a set of numbered ingress rules and a
 #' separate set of numbered egress rules. When determining whether a packet
@@ -5549,6 +5616,7 @@ ec2_create_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egress
 
 #' Creates a path to analyze for reachability
 #'
+#' @description
 #' Creates a path to analyze for reachability.
 #' 
 #' Reachability Analyzer enables you to analyze and debug network
@@ -5623,6 +5691,7 @@ ec2_create_network_insights_path <- function(SourceIp = NULL, DestinationIp = NU
 
 #' Creates a network interface in the specified subnet
 #'
+#' @description
 #' Creates a network interface in the specified subnet.
 #' 
 #' For more information about network interfaces, see [Elastic Network
@@ -5747,6 +5816,7 @@ ec2_create_network_interface <- function(Description = NULL, DryRun = NULL, Grou
 #' Grants an AWS-authorized account permission to attach the specified
 #' network interface to an instance in their account
 #'
+#' @description
 #' Grants an AWS-authorized account permission to attach the specified
 #' network interface to an instance in their account.
 #' 
@@ -5799,6 +5869,7 @@ ec2_create_network_interface_permission <- function(NetworkInterfaceId, AwsAccou
 
 #' Creates a placement group in which to launch instances
 #'
+#' @description
 #' Creates a placement group in which to launch instances. The strategy of
 #' the placement group determines how the instances are organized within
 #' the group.
@@ -5884,6 +5955,7 @@ ec2_create_placement_group <- function(DryRun = NULL, GroupName = NULL, Strategy
 #' Creates a listing for Amazon EC2 Standard Reserved Instances to be sold
 #' in the Reserved Instance Marketplace
 #'
+#' @description
 #' Creates a listing for Amazon EC2 Standard Reserved Instances to be sold
 #' in the Reserved Instance Marketplace. You can submit one Standard
 #' Reserved Instance listing at a time. To get a list of your Standard
@@ -5965,6 +6037,7 @@ ec2_create_reserved_instances_listing <- function(ClientToken, InstanceCount, Pr
 
 #' Creates a route in a route table within a VPC
 #'
+#' @description
 #' Creates a route in a route table within a VPC.
 #' 
 #' You must specify one of the following targets: internet gateway or
@@ -6080,6 +6153,7 @@ ec2_create_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlo
 
 #' Creates a route table for the specified VPC
 #'
+#' @description
 #' Creates a route table for the specified VPC. After you create a route
 #' table, you can add routes and associate the table with a subnet.
 #' 
@@ -6146,6 +6220,7 @@ ec2_create_route_table <- function(DryRun = NULL, VpcId, TagSpecifications = NUL
 
 #' Creates a security group
 #'
+#' @description
 #' Creates a security group.
 #' 
 #' A security group acts as a virtual firewall for your instance to control
@@ -6257,6 +6332,7 @@ ec2_create_security_group <- function(Description, GroupName, VpcId = NULL, TagS
 
 #' Creates a snapshot of an EBS volume and stores it in Amazon S3
 #'
+#' @description
 #' Creates a snapshot of an EBS volume and stores it in Amazon S3. You can
 #' use snapshots for backups, to make copies of EBS volumes, and to save
 #' data before shutting down an instance.
@@ -6359,6 +6435,7 @@ ec2_create_snapshot <- function(Description = NULL, VolumeId, TagSpecifications 
 #' Creates crash-consistent snapshots of multiple EBS volumes and stores
 #' the data in S3
 #'
+#' @description
 #' Creates crash-consistent snapshots of multiple EBS volumes and stores
 #' the data in S3. Volumes are chosen by specifying an instance. Any
 #' attached volumes will produce one snapshot each that is crash-consistent
@@ -6426,6 +6503,7 @@ ec2_create_snapshots <- function(Description = NULL, InstanceSpecification, TagS
 #' Creates a data feed for Spot Instances, enabling you to view Spot
 #' Instance usage logs
 #'
+#' @description
 #' Creates a data feed for Spot Instances, enabling you to view Spot
 #' Instance usage logs. You can create one data feed per AWS account. For
 #' more information, see [Spot Instance data
@@ -6486,6 +6564,7 @@ ec2_create_spot_datafeed_subscription <- function(Bucket, DryRun = NULL, Prefix 
 
 #' Creates a subnet in a specified VPC
 #'
+#' @description
 #' Creates a subnet in a specified VPC.
 #' 
 #' You must specify an IPv4 CIDR block for the subnet. After you create a
@@ -6603,6 +6682,7 @@ ec2_create_subnet <- function(TagSpecifications = NULL, AvailabilityZone = NULL,
 #' Adds or overwrites only the specified tags for the specified Amazon EC2
 #' resource or resources
 #'
+#' @description
 #' Adds or overwrites only the specified tags for the specified Amazon EC2
 #' resource or resources. When you specify an existing tag key, the value
 #' is overwritten with the new value. Each resource can have a maximum of
@@ -6688,6 +6768,7 @@ ec2_create_tags <- function(DryRun = NULL, Resources, Tags) {
 
 #' Creates a Traffic Mirror filter
 #'
+#' @description
 #' Creates a Traffic Mirror filter.
 #' 
 #' A Traffic Mirror filter is a set of rules that defines the traffic to
@@ -6756,6 +6837,7 @@ ec2_create_traffic_mirror_filter <- function(Description = NULL, TagSpecificatio
 
 #' Creates a Traffic Mirror filter rule
 #'
+#' @description
 #' Creates a Traffic Mirror filter rule.
 #' 
 #' A Traffic Mirror rule defines the Traffic Mirror source traffic to
@@ -6839,6 +6921,7 @@ ec2_create_traffic_mirror_filter_rule <- function(TrafficMirrorFilterId, Traffic
 
 #' Creates a Traffic Mirror session
 #'
+#' @description
 #' Creates a Traffic Mirror session.
 #' 
 #' A Traffic Mirror session actively copies packets from a Traffic Mirror
@@ -6939,6 +7022,7 @@ ec2_create_traffic_mirror_session <- function(NetworkInterfaceId, TrafficMirrorT
 
 #' Creates a target for your Traffic Mirror session
 #'
+#' @description
 #' Creates a target for your Traffic Mirror session.
 #' 
 #' A Traffic Mirror target is the destination for mirrored traffic. The
@@ -7014,6 +7098,7 @@ ec2_create_traffic_mirror_target <- function(NetworkInterfaceId = NULL, NetworkL
 
 #' Creates a transit gateway
 #'
+#' @description
 #' Creates a transit gateway.
 #' 
 #' You can use a transit gateway to interconnect your virtual private
@@ -7103,6 +7188,7 @@ ec2_create_transit_gateway <- function(Description = NULL, Options = NULL, TagSp
 
 #' Creates a Connect attachment from a specified transit gateway attachment
 #'
+#' @description
 #' Creates a Connect attachment from a specified transit gateway
 #' attachment. A Connect attachment is a GRE-based tunnel attachment that
 #' you can use to establish a connection between a transit gateway and an
@@ -7169,6 +7255,7 @@ ec2_create_transit_gateway_connect <- function(TransportTransitGatewayAttachment
 #' Creates a Connect peer for a specified transit gateway Connect
 #' attachment between a transit gateway and an appliance
 #'
+#' @description
 #' Creates a Connect peer for a specified transit gateway Connect
 #' attachment between a transit gateway and an appliance.
 #' 
@@ -7252,6 +7339,7 @@ ec2_create_transit_gateway_connect_peer <- function(TransitGatewayAttachmentId, 
 
 #' Creates a multicast domain using the specified transit gateway
 #'
+#' @description
 #' Creates a multicast domain using the specified transit gateway.
 #' 
 #' The transit gateway must be in the available state before you create a
@@ -7318,6 +7406,7 @@ ec2_create_transit_gateway_multicast_domain <- function(TransitGatewayId, Option
 #' Requests a transit gateway peering attachment between the specified
 #' transit gateway (requester) and a peer transit gateway (accepter)
 #'
+#' @description
 #' Requests a transit gateway peering attachment between the specified
 #' transit gateway (requester) and a peer transit gateway (accepter). The
 #' transit gateways must be in different Regions. The peer transit gateway
@@ -7387,6 +7476,7 @@ ec2_create_transit_gateway_peering_attachment <- function(TransitGatewayId, Peer
 #' Creates a reference (route) to a prefix list in a specified transit
 #' gateway route table
 #'
+#' @description
 #' Creates a reference (route) to a prefix list in a specified transit
 #' gateway route table.
 #'
@@ -7437,6 +7527,7 @@ ec2_create_transit_gateway_prefix_list_reference <- function(TransitGatewayRoute
 
 #' Creates a static route for the specified transit gateway route table
 #'
+#' @description
 #' Creates a static route for the specified transit gateway route table.
 #'
 #' @usage
@@ -7487,6 +7578,7 @@ ec2_create_transit_gateway_route <- function(DestinationCidrBlock, TransitGatewa
 
 #' Creates a route table for the specified transit gateway
 #'
+#' @description
 #' Creates a route table for the specified transit gateway.
 #'
 #' @usage
@@ -7541,6 +7633,7 @@ ec2_create_transit_gateway_route_table <- function(TransitGatewayId, TagSpecific
 
 #' Attaches the specified VPC to the specified transit gateway
 #'
+#' @description
 #' Attaches the specified VPC to the specified transit gateway.
 #' 
 #' If you attach a VPC with a CIDR range that overlaps the CIDR range of a
@@ -7618,6 +7711,7 @@ ec2_create_transit_gateway_vpc_attachment <- function(TransitGatewayId, VpcId, S
 #' Creates an EBS volume that can be attached to an instance in the same
 #' Availability Zone
 #'
+#' @description
 #' Creates an EBS volume that can be attached to an instance in the same
 #' Availability Zone.
 #' 
@@ -7824,6 +7918,7 @@ ec2_create_volume <- function(AvailabilityZone, Encrypted = NULL, Iops = NULL, K
 
 #' Creates a VPC with the specified IPv4 CIDR block
 #'
+#' @description
 #' Creates a VPC with the specified IPv4 CIDR block. The smallest VPC you
 #' can create uses a /28 netmask (16 IPv4 addresses), and the largest uses
 #' a /16 netmask (65,536 IPv4 addresses). For more information about how
@@ -7943,6 +8038,7 @@ ec2_create_vpc <- function(CidrBlock, AmazonProvidedIpv6CidrBlock = NULL, Ipv6Po
 
 #' Creates a VPC endpoint for a specified service
 #'
+#' @description
 #' Creates a VPC endpoint for a specified service. An endpoint enables you
 #' to create a private connection between your VPC and the service. The
 #' service may be provided by AWS, an AWS Marketplace Partner, or another
@@ -8068,6 +8164,7 @@ ec2_create_vpc_endpoint <- function(DryRun = NULL, VpcEndpointType = NULL, VpcId
 #' Creates a connection notification for a specified VPC endpoint or VPC
 #' endpoint service
 #'
+#' @description
 #' Creates a connection notification for a specified VPC endpoint or VPC
 #' endpoint service. A connection notification notifies you of specific
 #' endpoint events. You must create an SNS topic to receive notifications.
@@ -8131,6 +8228,7 @@ ec2_create_vpc_endpoint_connection_notification <- function(DryRun = NULL, Servi
 #' Creates a VPC endpoint service configuration to which service consumers
 #' (AWS accounts, IAM users, and IAM roles) can connect
 #'
+#' @description
 #' Creates a VPC endpoint service configuration to which service consumers
 #' (AWS accounts, IAM users, and IAM roles) can connect.
 #' 
@@ -8229,6 +8327,7 @@ ec2_create_vpc_endpoint_service_configuration <- function(DryRun = NULL, Accepta
 #' Requests a VPC peering connection between two VPCs: a requester VPC that
 #' you own and an accepter VPC with which to create the connection
 #'
+#' @description
 #' Requests a VPC peering connection between two VPCs: a requester VPC that
 #' you own and an accepter VPC with which to create the connection. The
 #' accepter VPC can belong to another AWS account and can be in a different
@@ -8314,6 +8413,7 @@ ec2_create_vpc_peering_connection <- function(DryRun = NULL, PeerOwnerId = NULL,
 #' Creates a VPN connection between an existing virtual private gateway or
 #' transit gateway and a customer gateway
 #'
+#' @description
 #' Creates a VPN connection between an existing virtual private gateway or
 #' transit gateway and a customer gateway. The supported connection type is
 #' `ipsec.1`.
@@ -8457,6 +8557,7 @@ ec2_create_vpn_connection <- function(CustomerGatewayId, Type, VpnGatewayId = NU
 #' Creates a static route associated with a VPN connection between an
 #' existing virtual private gateway and a VPN customer gateway
 #'
+#' @description
 #' Creates a static route associated with a VPN connection between an
 #' existing virtual private gateway and a VPN customer gateway. The static
 #' route allows traffic to be routed from the virtual private gateway to
@@ -8502,6 +8603,7 @@ ec2_create_vpn_connection_route <- function(DestinationCidrBlock, VpnConnectionI
 
 #' Creates a virtual private gateway
 #'
+#' @description
 #' Creates a virtual private gateway. A virtual private gateway is the
 #' endpoint on the VPC side of your VPN connection. You can create a
 #' virtual private gateway before creating the VPC itself.
@@ -8571,6 +8673,7 @@ ec2_create_vpn_gateway <- function(AvailabilityZone = NULL, Type, TagSpecificati
 
 #' Deletes a carrier gateway
 #'
+#' @description
 #' Deletes a carrier gateway.
 #' 
 #' If you do not delete the route that contains the carrier gateway as the
@@ -8617,6 +8720,7 @@ ec2_delete_carrier_gateway <- function(CarrierGatewayId, DryRun = NULL) {
 
 #' Deletes the specified Client VPN endpoint
 #'
+#' @description
 #' Deletes the specified Client VPN endpoint. You must disassociate all
 #' target networks before you can delete a Client VPN endpoint.
 #'
@@ -8659,6 +8763,7 @@ ec2_delete_client_vpn_endpoint <- function(ClientVpnEndpointId, DryRun = NULL) {
 
 #' Deletes a route from a Client VPN endpoint
 #'
+#' @description
 #' Deletes a route from a Client VPN endpoint. You can only delete routes
 #' that you manually added using the **CreateClientVpnRoute** action. You
 #' cannot delete routes that were automatically added when associating a
@@ -8709,6 +8814,7 @@ ec2_delete_client_vpn_route <- function(ClientVpnEndpointId, TargetVpcSubnetId =
 
 #' Deletes the specified customer gateway
 #'
+#' @description
 #' Deletes the specified customer gateway. You must delete the VPN
 #' connection before you can delete the customer gateway.
 #'
@@ -8759,6 +8865,7 @@ ec2_delete_customer_gateway <- function(CustomerGatewayId, DryRun = NULL) {
 
 #' Deletes the specified set of DHCP options
 #'
+#' @description
 #' Deletes the specified set of DHCP options. You must disassociate the set
 #' of DHCP options before you can delete it. You can disassociate the set
 #' of DHCP options by associating either a new set of options or the
@@ -8811,6 +8918,7 @@ ec2_delete_dhcp_options <- function(DhcpOptionsId, DryRun = NULL) {
 
 #' Deletes an egress-only internet gateway
 #'
+#' @description
 #' Deletes an egress-only internet gateway.
 #'
 #' @usage
@@ -8853,6 +8961,7 @@ ec2_delete_egress_only_internet_gateway <- function(DryRun = NULL, EgressOnlyInt
 
 #' Deletes the specified EC2 Fleet
 #'
+#' @description
 #' Deletes the specified EC2 Fleet.
 #' 
 #' After you delete an EC2 Fleet, it launches no new instances.
@@ -8932,6 +9041,7 @@ ec2_delete_fleets <- function(DryRun = NULL, FleetIds, TerminateInstances) {
 
 #' Deletes one or more flow logs
 #'
+#' @description
 #' Deletes one or more flow logs.
 #'
 #' @usage
@@ -8977,6 +9087,7 @@ ec2_delete_flow_logs <- function(DryRun = NULL, FlowLogIds) {
 
 #' Deletes the specified Amazon FPGA Image (AFI)
 #'
+#' @description
 #' Deletes the specified Amazon FPGA Image (AFI).
 #'
 #' @usage
@@ -9018,6 +9129,7 @@ ec2_delete_fpga_image <- function(DryRun = NULL, FpgaImageId) {
 
 #' Deletes the specified internet gateway
 #'
+#' @description
 #' Deletes the specified internet gateway. You must detach the internet
 #' gateway from the VPC before you can delete it.
 #'
@@ -9069,6 +9181,7 @@ ec2_delete_internet_gateway <- function(DryRun = NULL, InternetGatewayId) {
 #' Deletes the specified key pair, by removing the public key from Amazon
 #' EC2
 #'
+#' @description
 #' Deletes the specified key pair, by removing the public key from Amazon
 #' EC2.
 #'
@@ -9121,6 +9234,7 @@ ec2_delete_key_pair <- function(KeyName = NULL, KeyPairId = NULL, DryRun = NULL)
 
 #' Deletes a launch template
 #'
+#' @description
 #' Deletes a launch template. Deleting a launch template deletes all of its
 #' versions.
 #'
@@ -9175,6 +9289,7 @@ ec2_delete_launch_template <- function(DryRun = NULL, LaunchTemplateId = NULL, L
 
 #' Deletes one or more versions of a launch template
 #'
+#' @description
 #' Deletes one or more versions of a launch template. You cannot delete the
 #' default version of a launch template; you must first assign a different
 #' version as the default. If the default version is the only version for
@@ -9240,6 +9355,7 @@ ec2_delete_launch_template_versions <- function(DryRun = NULL, LaunchTemplateId 
 
 #' Deletes the specified route from the specified local gateway route table
 #'
+#' @description
 #' Deletes the specified route from the specified local gateway route
 #' table.
 #'
@@ -9287,6 +9403,7 @@ ec2_delete_local_gateway_route <- function(DestinationCidrBlock, LocalGatewayRou
 #' Deletes the specified association between a VPC and local gateway route
 #' table
 #'
+#' @description
 #' Deletes the specified association between a VPC and local gateway route
 #' table.
 #'
@@ -9330,6 +9447,7 @@ ec2_delete_local_gateway_route_table_vpc_association <- function(LocalGatewayRou
 
 #' Deletes the specified managed prefix list
 #'
+#' @description
 #' Deletes the specified managed prefix list. You must first remove all
 #' references to the prefix list in your resources.
 #'
@@ -9372,6 +9490,7 @@ ec2_delete_managed_prefix_list <- function(DryRun = NULL, PrefixListId) {
 
 #' Deletes the specified NAT gateway
 #'
+#' @description
 #' Deletes the specified NAT gateway. Deleting a NAT gateway disassociates
 #' its Elastic IP address, but does not release the address from your
 #' account. Deleting a NAT gateway does not delete any NAT gateway routes
@@ -9424,6 +9543,7 @@ ec2_delete_nat_gateway <- function(DryRun = NULL, NatGatewayId) {
 
 #' Deletes the specified network ACL
 #'
+#' @description
 #' Deletes the specified network ACL. You can't delete the ACL if it's
 #' associated with any subnets. You can't delete the default network ACL.
 #'
@@ -9475,6 +9595,7 @@ ec2_delete_network_acl <- function(DryRun = NULL, NetworkAclId) {
 #' Deletes the specified ingress or egress entry (rule) from the specified
 #' network ACL
 #'
+#' @description
 #' Deletes the specified ingress or egress entry (rule) from the specified
 #' network ACL.
 #'
@@ -9532,6 +9653,7 @@ ec2_delete_network_acl_entry <- function(DryRun = NULL, Egress, NetworkAclId, Ru
 
 #' Deletes the specified network insights analysis
 #'
+#' @description
 #' Deletes the specified network insights analysis.
 #'
 #' @usage
@@ -9573,6 +9695,7 @@ ec2_delete_network_insights_analysis <- function(DryRun = NULL, NetworkInsightsA
 
 #' Deletes the specified path
 #'
+#' @description
 #' Deletes the specified path.
 #'
 #' @usage
@@ -9614,6 +9737,7 @@ ec2_delete_network_insights_path <- function(DryRun = NULL, NetworkInsightsPathI
 
 #' Deletes the specified network interface
 #'
+#' @description
 #' Deletes the specified network interface. You must detach the network
 #' interface before you can delete it.
 #'
@@ -9664,6 +9788,7 @@ ec2_delete_network_interface <- function(DryRun = NULL, NetworkInterfaceId) {
 
 #' Deletes a permission for a network interface
 #'
+#' @description
 #' Deletes a permission for a network interface. By default, you cannot
 #' delete the permission if the account for which you're removing the
 #' permission has attached the network interface to an instance. However,
@@ -9712,6 +9837,7 @@ ec2_delete_network_interface_permission <- function(NetworkInterfacePermissionId
 
 #' Deletes the specified placement group
 #'
+#' @description
 #' Deletes the specified placement group. You must terminate all instances
 #' in the placement group before you can delete the placement group. For
 #' more information, see [Placement
@@ -9766,6 +9892,7 @@ ec2_delete_placement_group <- function(DryRun = NULL, GroupName) {
 
 #' Deletes the queued purchases for the specified Reserved Instances
 #'
+#' @description
 #' Deletes the queued purchases for the specified Reserved Instances.
 #'
 #' @usage
@@ -9809,6 +9936,7 @@ ec2_delete_queued_reserved_instances <- function(DryRun = NULL, ReservedInstance
 
 #' Deletes the specified route from the specified route table
 #'
+#' @description
 #' Deletes the specified route from the specified route table.
 #'
 #' @usage
@@ -9868,6 +9996,7 @@ ec2_delete_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBlo
 
 #' Deletes the specified route table
 #'
+#' @description
 #' Deletes the specified route table. You must disassociate the route table
 #' from any subnets before you can delete it. You can't delete the main
 #' route table.
@@ -9919,6 +10048,7 @@ ec2_delete_route_table <- function(DryRun = NULL, RouteTableId) {
 
 #' Deletes a security group
 #'
+#' @description
 #' Deletes a security group.
 #' 
 #' If you attempt to delete a security group that is associated with an
@@ -9976,6 +10106,7 @@ ec2_delete_security_group <- function(GroupId = NULL, GroupName = NULL, DryRun =
 
 #' Deletes the specified snapshot
 #'
+#' @description
 #' Deletes the specified snapshot.
 #' 
 #' When you make periodic snapshots of a volume, the snapshots are
@@ -10043,6 +10174,7 @@ ec2_delete_snapshot <- function(SnapshotId, DryRun = NULL) {
 
 #' Deletes the data feed for Spot Instances
 #'
+#' @description
 #' Deletes the data feed for Spot Instances.
 #'
 #' @usage
@@ -10088,6 +10220,7 @@ ec2_delete_spot_datafeed_subscription <- function(DryRun = NULL) {
 
 #' Deletes the specified subnet
 #'
+#' @description
 #' Deletes the specified subnet. You must terminate all running instances
 #' in the subnet before you can delete the subnet.
 #'
@@ -10138,6 +10271,7 @@ ec2_delete_subnet <- function(SubnetId, DryRun = NULL) {
 
 #' Deletes the specified set of tags from the specified set of resources
 #'
+#' @description
 #' Deletes the specified set of tags from the specified set of resources.
 #' 
 #' To list the current tags, use DescribeTags. For more information about
@@ -10220,6 +10354,7 @@ ec2_delete_tags <- function(DryRun = NULL, Resources, Tags = NULL) {
 
 #' Deletes the specified Traffic Mirror filter
 #'
+#' @description
 #' Deletes the specified Traffic Mirror filter.
 #' 
 #' You cannot delete a Traffic Mirror filter that is in use by a Traffic
@@ -10264,6 +10399,7 @@ ec2_delete_traffic_mirror_filter <- function(TrafficMirrorFilterId, DryRun = NUL
 
 #' Deletes the specified Traffic Mirror rule
 #'
+#' @description
 #' Deletes the specified Traffic Mirror rule.
 #'
 #' @usage
@@ -10305,6 +10441,7 @@ ec2_delete_traffic_mirror_filter_rule <- function(TrafficMirrorFilterRuleId, Dry
 
 #' Deletes the specified Traffic Mirror session
 #'
+#' @description
 #' Deletes the specified Traffic Mirror session.
 #'
 #' @usage
@@ -10346,6 +10483,7 @@ ec2_delete_traffic_mirror_session <- function(TrafficMirrorSessionId, DryRun = N
 
 #' Deletes the specified Traffic Mirror target
 #'
+#' @description
 #' Deletes the specified Traffic Mirror target.
 #' 
 #' You cannot delete a Traffic Mirror target that is in use by a Traffic
@@ -10390,6 +10528,7 @@ ec2_delete_traffic_mirror_target <- function(TrafficMirrorTargetId, DryRun = NUL
 
 #' Deletes the specified transit gateway
 #'
+#' @description
 #' Deletes the specified transit gateway.
 #'
 #' @usage
@@ -10431,6 +10570,7 @@ ec2_delete_transit_gateway <- function(TransitGatewayId, DryRun = NULL) {
 
 #' Deletes the specified Connect attachment
 #'
+#' @description
 #' Deletes the specified Connect attachment. You must first delete any
 #' Connect peers for the attachment.
 #'
@@ -10473,6 +10613,7 @@ ec2_delete_transit_gateway_connect <- function(TransitGatewayAttachmentId, DryRu
 
 #' Deletes the specified Connect peer
 #'
+#' @description
 #' Deletes the specified Connect peer.
 #'
 #' @usage
@@ -10515,6 +10656,7 @@ ec2_delete_transit_gateway_connect_peer <- function(TransitGatewayConnectPeerId,
 
 #' Deletes the specified transit gateway multicast domain
 #'
+#' @description
 #' Deletes the specified transit gateway multicast domain.
 #'
 #' @usage
@@ -10557,6 +10699,7 @@ ec2_delete_transit_gateway_multicast_domain <- function(TransitGatewayMulticastD
 
 #' Deletes a transit gateway peering attachment
 #'
+#' @description
 #' Deletes a transit gateway peering attachment.
 #'
 #' @usage
@@ -10600,6 +10743,7 @@ ec2_delete_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
 #' Deletes a reference (route) to a prefix list in a specified transit
 #' gateway route table
 #'
+#' @description
 #' Deletes a reference (route) to a prefix list in a specified transit
 #' gateway route table.
 #'
@@ -10646,6 +10790,7 @@ ec2_delete_transit_gateway_prefix_list_reference <- function(TransitGatewayRoute
 #' Deletes the specified route from the specified transit gateway route
 #' table
 #'
+#' @description
 #' Deletes the specified route from the specified transit gateway route
 #' table.
 #'
@@ -10692,6 +10837,7 @@ ec2_delete_transit_gateway_route <- function(TransitGatewayRouteTableId, Destina
 
 #' Deletes the specified transit gateway route table
 #'
+#' @description
 #' Deletes the specified transit gateway route table. You must disassociate
 #' the route table from any transit gateway route tables before you can
 #' delete it.
@@ -10736,6 +10882,7 @@ ec2_delete_transit_gateway_route_table <- function(TransitGatewayRouteTableId, D
 
 #' Deletes the specified VPC attachment
 #'
+#' @description
 #' Deletes the specified VPC attachment.
 #'
 #' @usage
@@ -10778,6 +10925,7 @@ ec2_delete_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 
 #' Deletes the specified EBS volume
 #'
+#' @description
 #' Deletes the specified EBS volume. The volume must be in the `available`
 #' state (not attached to an instance).
 #' 
@@ -10836,6 +10984,7 @@ ec2_delete_volume <- function(VolumeId, DryRun = NULL) {
 
 #' Deletes the specified VPC
 #'
+#' @description
 #' Deletes the specified VPC. You must detach or delete all gateways and
 #' resources that are associated with the VPC before you can delete it. For
 #' example, you must terminate all instances running in the VPC, delete all
@@ -10890,6 +11039,7 @@ ec2_delete_vpc <- function(VpcId, DryRun = NULL) {
 
 #' Deletes one or more VPC endpoint connection notifications
 #'
+#' @description
 #' Deletes one or more VPC endpoint connection notifications.
 #'
 #' @usage
@@ -10934,6 +11084,7 @@ ec2_delete_vpc_endpoint_connection_notifications <- function(DryRun = NULL, Conn
 
 #' Deletes one or more VPC endpoint service configurations in your account
 #'
+#' @description
 #' Deletes one or more VPC endpoint service configurations in your account.
 #' Before you delete the endpoint service configuration, you must reject
 #' any `Available` or `PendingAcceptance` interface endpoint connections
@@ -10980,6 +11131,7 @@ ec2_delete_vpc_endpoint_service_configurations <- function(DryRun = NULL, Servic
 
 #' Deletes one or more specified VPC endpoints
 #'
+#' @description
 #' Deletes one or more specified VPC endpoints. Deleting a gateway endpoint
 #' also deletes the endpoint routes in the route tables that were
 #' associated with the endpoint. Deleting an interface endpoint or a
@@ -11028,6 +11180,7 @@ ec2_delete_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds) {
 
 #' Deletes a VPC peering connection
 #'
+#' @description
 #' Deletes a VPC peering connection. Either the owner of the requester VPC
 #' or the owner of the accepter VPC can delete the VPC peering connection
 #' if it's in the `active` state. The owner of the requester VPC can delete
@@ -11073,6 +11226,7 @@ ec2_delete_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 
 #' Deletes the specified VPN connection
 #'
+#' @description
 #' Deletes the specified VPN connection.
 #' 
 #' If you're deleting the VPC and its associated components, we recommend
@@ -11129,6 +11283,7 @@ ec2_delete_vpn_connection <- function(VpnConnectionId, DryRun = NULL) {
 #' Deletes the specified static route associated with a VPN connection
 #' between an existing virtual private gateway and a VPN customer gateway
 #'
+#' @description
 #' Deletes the specified static route associated with a VPN connection
 #' between an existing virtual private gateway and a VPN customer gateway.
 #' The static route allows traffic to be routed from the virtual private
@@ -11170,6 +11325,7 @@ ec2_delete_vpn_connection_route <- function(DestinationCidrBlock, VpnConnectionI
 
 #' Deletes the specified virtual private gateway
 #'
+#' @description
 #' Deletes the specified virtual private gateway. You must first detach the
 #' virtual private gateway from the VPC. Note that you don't need to delete
 #' the virtual private gateway if you plan to delete and recreate the VPN
@@ -11216,6 +11372,7 @@ ec2_delete_vpn_gateway <- function(VpnGatewayId, DryRun = NULL) {
 #' your AWS resources through bring your own IP addresses (BYOIP) and
 #' deletes the corresponding address pool
 #'
+#' @description
 #' Releases the specified address range that you provisioned for use with
 #' your AWS resources through bring your own IP addresses (BYOIP) and
 #' deletes the corresponding address pool.
@@ -11264,6 +11421,7 @@ ec2_deprovision_byoip_cidr <- function(Cidr, DryRun = NULL) {
 
 #' Deregisters the specified AMI
 #'
+#' @description
 #' Deregisters the specified AMI. After you deregister an AMI, it can't be
 #' used to launch new instances; however, it doesn't affect any instances
 #' that you've already launched from the AMI. You'll continue to incur
@@ -11316,6 +11474,7 @@ ec2_deregister_image <- function(ImageId, DryRun = NULL) {
 #' from being included in scheduled event notifications for resources in
 #' the Region
 #'
+#' @description
 #' Deregisters tag keys to prevent tags that have the specified tag keys
 #' from being included in scheduled event notifications for resources in
 #' the Region.
@@ -11366,6 +11525,7 @@ ec2_deregister_instance_event_notification_attributes <- function(DryRun = NULL,
 #' Deregisters the specified members (network interfaces) from the transit
 #' gateway multicast group
 #'
+#' @description
 #' Deregisters the specified members (network interfaces) from the transit
 #' gateway multicast group.
 #'
@@ -11417,6 +11577,7 @@ ec2_deregister_transit_gateway_multicast_group_members <- function(TransitGatewa
 #' Deregisters the specified sources (network interfaces) from the transit
 #' gateway multicast group
 #'
+#' @description
 #' Deregisters the specified sources (network interfaces) from the transit
 #' gateway multicast group.
 #'
@@ -11467,6 +11628,7 @@ ec2_deregister_transit_gateway_multicast_group_sources <- function(TransitGatewa
 
 #' Describes attributes of your AWS account
 #'
+#' @description
 #' Describes attributes of your AWS account. The following are the
 #' supported account attributes:
 #' 
@@ -11547,6 +11709,7 @@ ec2_describe_account_attributes <- function(AttributeNames = NULL, DryRun = NULL
 #' Describes the specified Elastic IP addresses or all of your Elastic IP
 #' addresses
 #'
+#' @description
 #' Describes the specified Elastic IP addresses or all of your Elastic IP
 #' addresses.
 #' 
@@ -11677,6 +11840,7 @@ ec2_describe_addresses <- function(Filters = NULL, PublicIps = NULL, AllocationI
 #' Describes the longer ID format settings for all resource types in a
 #' specific Region
 #'
+#' @description
 #' Describes the longer ID format settings for all resource types in a
 #' specific Region. This request is useful for performing a quick audit to
 #' determine whether a specific Region is fully opted in for longer IDs
@@ -11734,6 +11898,7 @@ ec2_describe_aggregate_id_format <- function(DryRun = NULL) {
 #' Describes the Availability Zones, Local Zones, and Wavelength Zones that
 #' are available to you
 #'
+#' @description
 #' Describes the Availability Zones, Local Zones, and Wavelength Zones that
 #' are available to you. If there is an event impacting a zone, you can use
 #' this request to view the state and any provided messages for that zone.
@@ -11849,6 +12014,7 @@ ec2_describe_availability_zones <- function(Filters = NULL, ZoneNames = NULL, Zo
 
 #' Describes the specified bundle tasks or all of your bundle tasks
 #'
+#' @description
 #' Describes the specified bundle tasks or all of your bundle tasks.
 #' 
 #' Completed bundle tasks are listed for only a limited time. If your
@@ -11873,7 +12039,7 @@ ec2_describe_availability_zones <- function(Filters = NULL, ZoneNames = NULL, Zo
 #' -   `instance-id` - The ID of the instance.
 #' 
 #' -   `progress` - The level of task completion, as a percentage (for
-#'     example, 20%).
+#'     example, 20\%).
 #' 
 #' -   `s3-bucket` - The Amazon S3 bucket to store the AMI.
 #' 
@@ -11932,6 +12098,7 @@ ec2_describe_bundle_tasks <- function(BundleIds = NULL, Filters = NULL, DryRun =
 #' Describes the IP address ranges that were specified in calls to
 #' ProvisionByoipCidr
 #'
+#' @description
 #' Describes the IP address ranges that were specified in calls to
 #' ProvisionByoipCidr.
 #' 
@@ -11981,6 +12148,7 @@ ec2_describe_byoip_cidrs <- function(DryRun = NULL, MaxResults, NextToken = NULL
 
 #' Describes one or more of your Capacity Reservations
 #'
+#' @description
 #' Describes one or more of your Capacity Reservations. The results
 #' describe only the Capacity Reservations in the AWS Region that you're
 #' currently using.
@@ -12120,6 +12288,7 @@ ec2_describe_capacity_reservations <- function(CapacityReservationIds = NULL, Ne
 
 #' Describes one or more of your carrier gateways
 #'
+#' @description
 #' Describes one or more of your carrier gateways.
 #'
 #' @usage
@@ -12198,6 +12367,7 @@ ec2_describe_carrier_gateways <- function(CarrierGatewayIds = NULL, Filters = NU
 
 #' Describes one or more of your linked EC2-Classic instances
 #'
+#' @description
 #' Describes one or more of your linked EC2-Classic instances. This request
 #' only returns information about EC2-Classic instances linked to a VPC
 #' through ClassicLink. You cannot use this request to return information
@@ -12283,6 +12453,7 @@ ec2_describe_classic_link_instances <- function(Filters = NULL, DryRun = NULL, I
 
 #' Describes the authorization rules for a specified Client VPN endpoint
 #'
+#' @description
 #' Describes the authorization rules for a specified Client VPN endpoint.
 #'
 #' @usage
@@ -12350,6 +12521,7 @@ ec2_describe_client_vpn_authorization_rules <- function(ClientVpnEndpointId, Dry
 #' terminated within the last 60 minutes for the specified Client VPN
 #' endpoint
 #'
+#' @description
 #' Describes active client connections and connections that have been
 #' terminated within the last 60 minutes for the specified Client VPN
 #' endpoint.
@@ -12414,6 +12586,7 @@ ec2_describe_client_vpn_connections <- function(ClientVpnEndpointId, Filters = N
 
 #' Describes one or more Client VPN endpoints in the account
 #'
+#' @description
 #' Describes one or more Client VPN endpoints in the account.
 #'
 #' @usage
@@ -12477,6 +12650,7 @@ ec2_describe_client_vpn_endpoints <- function(ClientVpnEndpointIds = NULL, MaxRe
 
 #' Describes the routes for the specified Client VPN endpoint
 #'
+#' @description
 #' Describes the routes for the specified Client VPN endpoint.
 #'
 #' @usage
@@ -12543,6 +12717,7 @@ ec2_describe_client_vpn_routes <- function(ClientVpnEndpointId, Filters = NULL, 
 #' Describes the target networks associated with the specified Client VPN
 #' endpoint
 #'
+#' @description
 #' Describes the target networks associated with the specified Client VPN
 #' endpoint.
 #'
@@ -12613,6 +12788,7 @@ ec2_describe_client_vpn_target_networks <- function(ClientVpnEndpointId, Associa
 #' Describes the specified customer-owned address pools or all of your
 #' customer-owned address pools
 #'
+#' @description
 #' Describes the specified customer-owned address pools or all of your
 #' customer-owned address pools.
 #'
@@ -12678,6 +12854,7 @@ ec2_describe_coip_pools <- function(PoolIds = NULL, Filters = NULL, MaxResults =
 
 #' Describes the specified conversion tasks or all your conversion tasks
 #'
+#' @description
 #' Describes the specified conversion tasks or all your conversion tasks.
 #' For more information, see the [VM Import/Export User
 #' Guide](https://docs.aws.amazon.com/vm-import/latest/userguide/).
@@ -12727,6 +12904,7 @@ ec2_describe_conversion_tasks <- function(ConversionTaskIds = NULL, DryRun = NUL
 
 #' Describes one or more of your VPN customer gateways
 #'
+#' @description
 #' Describes one or more of your VPN customer gateways.
 #' 
 #' For more information, see [AWS Site-to-Site
@@ -12819,6 +12997,7 @@ ec2_describe_customer_gateways <- function(CustomerGatewayIds = NULL, Filters = 
 
 #' Describes one or more of your DHCP options sets
 #'
+#' @description
 #' Describes one or more of your DHCP options sets.
 #' 
 #' For more information, see [DHCP Options
@@ -12913,6 +13092,7 @@ ec2_describe_dhcp_options <- function(DhcpOptionsIds = NULL, Filters = NULL, Dry
 
 #' Describes one or more of your egress-only internet gateways
 #'
+#' @description
 #' Describes one or more of your egress-only internet gateways.
 #'
 #' @usage
@@ -12983,6 +13163,7 @@ ec2_describe_egress_only_internet_gateways <- function(DryRun = NULL, EgressOnly
 #' Describes the Elastic Graphics accelerator associated with your
 #' instances
 #'
+#' @description
 #' Describes the Elastic Graphics accelerator associated with your
 #' instances. For more information about Elastic Graphics, see [Amazon
 #' Elastic
@@ -13061,6 +13242,7 @@ ec2_describe_elastic_gpus <- function(ElasticGpuIds = NULL, DryRun = NULL, Filte
 #' Describes the specified export image tasks or all of your export image
 #' tasks
 #'
+#' @description
 #' Describes the specified export image tasks or all of your export image
 #' tasks.
 #'
@@ -13121,6 +13303,7 @@ ec2_describe_export_image_tasks <- function(DryRun = NULL, Filters = NULL, Expor
 #' Describes the specified export instance tasks or all of your export
 #' instance tasks
 #'
+#' @description
 #' Describes the specified export instance tasks or all of your export
 #' instance tasks.
 #'
@@ -13169,6 +13352,7 @@ ec2_describe_export_tasks <- function(ExportTaskIds = NULL, Filters = NULL) {
 
 #' Describes the state of fast snapshot restores for your snapshots
 #'
+#' @description
 #' Describes the state of fast snapshot restores for your snapshots.
 #'
 #' @usage
@@ -13235,6 +13419,7 @@ ec2_describe_fast_snapshot_restores <- function(Filters = NULL, MaxResults = NUL
 #' Describes the events for the specified EC2 Fleet during the specified
 #' time
 #'
+#' @description
 #' Describes the events for the specified EC2 Fleet during the specified
 #' time.
 #' 
@@ -13297,6 +13482,7 @@ ec2_describe_fleet_history <- function(DryRun = NULL, EventType = NULL, MaxResul
 
 #' Describes the running instances for the specified EC2 Fleet
 #'
+#' @description
 #' Describes the running instances for the specified EC2 Fleet.
 #'
 #' @usage
@@ -13357,6 +13543,7 @@ ec2_describe_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, NextT
 
 #' Describes the specified EC2 Fleets or all of your EC2 Fleets
 #'
+#' @description
 #' Describes the specified EC2 Fleets or all of your EC2 Fleets.
 #'
 #' @usage
@@ -13432,6 +13619,7 @@ ec2_describe_fleets <- function(DryRun = NULL, MaxResults = NULL, NextToken = NU
 
 #' Describes one or more flow logs
 #'
+#' @description
 #' Describes one or more flow logs. To view the information in your flow
 #' logs (the log streams for the network interfaces), you must use the
 #' CloudWatch Logs console or the CloudWatch Logs API.
@@ -13521,6 +13709,7 @@ ec2_describe_flow_logs <- function(DryRun = NULL, Filter = NULL, FlowLogIds = NU
 #' Describes the specified attribute of the specified Amazon FPGA Image
 #' (AFI)
 #'
+#' @description
 #' Describes the specified attribute of the specified Amazon FPGA Image
 #' (AFI).
 #'
@@ -13565,6 +13754,7 @@ ec2_describe_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attrib
 
 #' Describes the Amazon FPGA Images (AFIs) available to you
 #'
+#' @description
 #' Describes the Amazon FPGA Images (AFIs) available to you. These include
 #' public AFIs, private AFIs that you own, and AFIs owned by other AWS
 #' accounts for which you have load permissions.
@@ -13660,6 +13850,7 @@ ec2_describe_fpga_images <- function(DryRun = NULL, FpgaImageIds = NULL, Owners 
 
 #' Describes the Dedicated Host reservations that are available to purchase
 #'
+#' @description
 #' Describes the Dedicated Host reservations that are available to
 #' purchase.
 #' 
@@ -13742,6 +13933,7 @@ ec2_describe_host_reservation_offerings <- function(Filter = NULL, MaxDuration =
 #' Describes reservations that are associated with Dedicated Hosts in your
 #' account
 #'
+#' @description
 #' Describes reservations that are associated with Dedicated Hosts in your
 #' account.
 #'
@@ -13816,6 +14008,7 @@ ec2_describe_host_reservations <- function(Filter = NULL, HostReservationIdSet =
 
 #' Describes the specified Dedicated Hosts or all your Dedicated Hosts
 #'
+#' @description
 #' Describes the specified Dedicated Hosts or all your Dedicated Hosts.
 #' 
 #' The results describe only the Dedicated Hosts in the Region you're
@@ -13901,6 +14094,7 @@ ec2_describe_hosts <- function(Filter = NULL, HostIds = NULL, MaxResults = NULL,
 
 #' Describes your IAM instance profile associations
 #'
+#' @description
 #' Describes your IAM instance profile associations.
 #'
 #' @usage
@@ -13972,6 +14166,7 @@ ec2_describe_iam_instance_profile_associations <- function(AssociationIds = NULL
 #' basis, for example, to view which resource types are enabled for longer
 #' IDs
 #'
+#' @description
 #' Describes the ID format settings for your resources on a per-Region
 #' basis, for example, to view which resource types are enabled for longer
 #' IDs. This request only returns information about resource types whose ID
@@ -14041,6 +14236,7 @@ ec2_describe_id_format <- function(Resource = NULL) {
 #' Describes the ID format settings for resources for the specified IAM
 #' user, IAM role, or root user
 #'
+#' @description
 #' Describes the ID format settings for resources for the specified IAM
 #' user, IAM role, or root user. For example, you can view the resource
 #' types that are enabled for longer IDs. This request only returns
@@ -14110,6 +14306,7 @@ ec2_describe_identity_id_format <- function(PrincipalArn, Resource = NULL) {
 
 #' Describes the specified attribute of the specified AMI
 #'
+#' @description
 #' Describes the specified attribute of the specified AMI. You can specify
 #' only one attribute at a time.
 #'
@@ -14169,6 +14366,7 @@ ec2_describe_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
 #' Describes the specified images (AMIs, AKIs, and ARIs) available to you
 #' or all of the images available to you
 #'
+#' @description
 #' Describes the specified images (AMIs, AKIs, and ARIs) available to you
 #' or all of the images available to you.
 #' 
@@ -14346,6 +14544,7 @@ ec2_describe_images <- function(ExecutableUsers = NULL, Filters = NULL, ImageIds
 #' Displays details about an import virtual machine or import snapshot
 #' tasks that are already created
 #'
+#' @description
 #' Displays details about an import virtual machine or import snapshot
 #' tasks that are already created.
 #'
@@ -14405,6 +14604,7 @@ ec2_describe_import_image_tasks <- function(DryRun = NULL, Filters = NULL, Impor
 
 #' Describes your import snapshot tasks
 #'
+#' @description
 #' Describes your import snapshot tasks.
 #'
 #' @usage
@@ -14464,6 +14664,7 @@ ec2_describe_import_snapshot_tasks <- function(DryRun = NULL, Filters = NULL, Im
 
 #' Describes the specified attribute of the specified instance
 #'
+#' @description
 #' Describes the specified attribute of the specified instance. You can
 #' specify only one attribute at a time. Valid attribute values are:
 #' `instanceType` | `kernel` | `ramdisk` | `userData` |
@@ -14541,6 +14742,7 @@ ec2_describe_instance_attribute <- function(Attribute, DryRun = NULL, InstanceId
 #' Describes the credit option for CPU usage of the specified burstable
 #' performance instances
 #'
+#' @description
 #' Describes the credit option for CPU usage of the specified burstable
 #' performance instances. The credit options are `standard` and
 #' `unlimited`.
@@ -14634,6 +14836,7 @@ ec2_describe_instance_credit_specifications <- function(DryRun = NULL, Filters =
 #' Describes the tag keys that are registered to appear in scheduled event
 #' notifications for resources in the current Region
 #'
+#' @description
 #' Describes the tag keys that are registered to appear in scheduled event
 #' notifications for resources in the current Region.
 #'
@@ -14674,6 +14877,7 @@ ec2_describe_instance_event_notification_attributes <- function(DryRun = NULL) {
 
 #' Describes the status of the specified instances or all of your instances
 #'
+#' @description
 #' Describes the status of the specified instances or all of your
 #' instances. By default, only running instances are described, unless you
 #' specifically indicate to return the status of all instances.
@@ -14824,6 +15028,7 @@ ec2_describe_instance_status <- function(Filters = NULL, InstanceIds = NULL, Max
 
 #' Returns a list of all instance types offered
 #'
+#' @description
 #' Returns a list of all instance types offered. The results can be
 #' filtered by location (Region or Availability Zone). If no location is
 #' specified, the instance types offered in the current Region are
@@ -14891,6 +15096,7 @@ ec2_describe_instance_type_offerings <- function(DryRun = NULL, LocationType = N
 #' Describes the details of the instance types that are offered in a
 #' location
 #'
+#' @description
 #' Describes the details of the instance types that are offered in a
 #' location. The results can be filtered by the attributes of the instance
 #' types.
@@ -15084,6 +15290,7 @@ ec2_describe_instance_types <- function(DryRun = NULL, InstanceTypes = NULL, Fil
 
 #' Describes the specified instances or all instances
 #'
+#' @description
 #' Describes the specified instances or all instances.
 #' 
 #' If you specify instance IDs, the output includes information for only
@@ -15473,6 +15680,7 @@ ec2_describe_instances <- function(Filters = NULL, InstanceIds = NULL, DryRun = 
 
 #' Describes one or more of your internet gateways
 #'
+#' @description
 #' Describes one or more of your internet gateways.
 #'
 #' @usage
@@ -15570,6 +15778,7 @@ ec2_describe_internet_gateways <- function(Filters = NULL, DryRun = NULL, Intern
 
 #' Describes your IPv6 address pools
 #'
+#' @description
 #' Describes your IPv6 address pools.
 #'
 #' @usage
@@ -15639,6 +15848,7 @@ ec2_describe_ipv_6_pools <- function(PoolIds = NULL, NextToken = NULL, MaxResult
 
 #' Describes the specified key pairs or all of your key pairs
 #'
+#' @description
 #' Describes the specified key pairs or all of your key pairs.
 #' 
 #' For more information about key pairs, see [Key
@@ -15727,6 +15937,7 @@ ec2_describe_key_pairs <- function(Filters = NULL, KeyNames = NULL, KeyPairIds =
 
 #' Describes one or more versions of a specified launch template
 #'
+#' @description
 #' Describes one or more versions of a specified launch template. You can
 #' describe all versions, individual versions, or a range of versions. You
 #' can also describe all the latest versions or all the default versions of
@@ -15843,6 +16054,7 @@ ec2_describe_launch_template_versions <- function(DryRun = NULL, LaunchTemplateI
 
 #' Describes one or more launch templates
 #'
+#' @description
 #' Describes one or more launch templates.
 #'
 #' @usage
@@ -15931,6 +16143,7 @@ ec2_describe_launch_templates <- function(DryRun = NULL, LaunchTemplateIds = NUL
 #' Describes the associations between virtual interface groups and local
 #' gateway route tables
 #'
+#' @description
 #' Describes the associations between virtual interface groups and local
 #' gateway route tables.
 #'
@@ -16006,6 +16219,7 @@ ec2_describe_local_gateway_route_table_virtual_interface_group_associations <- f
 #' Describes the specified associations between VPCs and local gateway
 #' route tables
 #'
+#' @description
 #' Describes the specified associations between VPCs and local gateway
 #' route tables.
 #'
@@ -16079,6 +16293,7 @@ ec2_describe_local_gateway_route_table_vpc_associations <- function(LocalGateway
 
 #' Describes one or more local gateway route tables
 #'
+#' @description
 #' Describes one or more local gateway route tables. By default, all local
 #' gateway route tables are described. Alternatively, you can filter the
 #' results.
@@ -16149,6 +16364,7 @@ ec2_describe_local_gateway_route_tables <- function(LocalGatewayRouteTableIds = 
 
 #' Describes the specified local gateway virtual interface groups
 #'
+#' @description
 #' Describes the specified local gateway virtual interface groups.
 #'
 #' @usage
@@ -16217,6 +16433,7 @@ ec2_describe_local_gateway_virtual_interface_groups <- function(LocalGatewayVirt
 
 #' Describes the specified local gateway virtual interfaces
 #'
+#' @description
 #' Describes the specified local gateway virtual interfaces.
 #'
 #' @usage
@@ -16276,6 +16493,7 @@ ec2_describe_local_gateway_virtual_interfaces <- function(LocalGatewayVirtualInt
 
 #' Describes one or more local gateways
 #'
+#' @description
 #' Describes one or more local gateways. By default, all local gateways are
 #' described. Alternatively, you can filter the results.
 #'
@@ -16351,6 +16569,7 @@ ec2_describe_local_gateways <- function(LocalGatewayIds = NULL, Filters = NULL, 
 
 #' Describes your managed prefix lists and any AWS-managed prefix lists
 #'
+#' @description
 #' Describes your managed prefix lists and any AWS-managed prefix lists.
 #' 
 #' To view the entries for your prefix list, use
@@ -16420,6 +16639,7 @@ ec2_describe_managed_prefix_lists <- function(DryRun = NULL, Filters = NULL, Max
 #' Describes your Elastic IP addresses that are being moved to the EC2-VPC
 #' platform, or that are being restored to the EC2-Classic platform
 #'
+#' @description
 #' Describes your Elastic IP addresses that are being moved to the EC2-VPC
 #' platform, or that are being restored to the EC2-Classic platform. This
 #' request does not return information about any other Elastic IP addresses
@@ -16495,6 +16715,7 @@ ec2_describe_moving_addresses <- function(Filters = NULL, DryRun = NULL, MaxResu
 
 #' Describes one or more of your NAT gateways
 #'
+#' @description
 #' Describes one or more of your NAT gateways.
 #'
 #' @usage
@@ -16588,6 +16809,7 @@ ec2_describe_nat_gateways <- function(DryRun = NULL, Filter = NULL, MaxResults =
 
 #' Describes one or more of your network ACLs
 #'
+#' @description
 #' Describes one or more of your network ACLs.
 #' 
 #' For more information, see [Network
@@ -16714,6 +16936,7 @@ ec2_describe_network_acls <- function(Filters = NULL, DryRun = NULL, NetworkAclI
 
 #' Describes one or more of your network insights analyses
 #'
+#' @description
 #' Describes one or more of your network insights analyses.
 #'
 #' @usage
@@ -16790,6 +17013,7 @@ ec2_describe_network_insights_analyses <- function(NetworkInsightsAnalysisIds = 
 
 #' Describes one or more of your paths
 #'
+#' @description
 #' Describes one or more of your paths.
 #'
 #' @usage
@@ -16859,6 +17083,7 @@ ec2_describe_network_insights_paths <- function(NetworkInsightsPathIds = NULL, F
 
 #' Describes a network interface attribute
 #'
+#' @description
 #' Describes a network interface attribute. You can specify only one
 #' attribute at a time.
 #'
@@ -16935,6 +17160,7 @@ ec2_describe_network_interface_attribute <- function(Attribute = NULL, DryRun = 
 
 #' Describes the permissions for your network interfaces
 #'
+#' @description
 #' Describes the permissions for your network interfaces.
 #'
 #' @usage
@@ -17003,6 +17229,7 @@ ec2_describe_network_interface_permissions <- function(NetworkInterfacePermissio
 
 #' Describes one or more of your network interfaces
 #'
+#' @description
 #' Describes one or more of your network interfaces.
 #'
 #' @usage
@@ -17182,6 +17409,7 @@ ec2_describe_network_interfaces <- function(Filters = NULL, DryRun = NULL, Netwo
 
 #' Describes the specified placement groups or all of your placement groups
 #'
+#' @description
 #' Describes the specified placement groups or all of your placement
 #' groups. For more information, see [Placement
 #' groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
@@ -17264,6 +17492,7 @@ ec2_describe_placement_groups <- function(Filters = NULL, DryRun = NULL, GroupNa
 #' the prefix list name and prefix list ID of the service and the IP
 #' address range for the service
 #'
+#' @description
 #' Describes available AWS services in a prefix list format, which includes
 #' the prefix list name and prefix list ID of the service and the IP
 #' address range for the service.
@@ -17333,6 +17562,7 @@ ec2_describe_prefix_lists <- function(DryRun = NULL, Filters = NULL, MaxResults 
 #' IAM users that have explicitly specified a longer ID (17-character ID)
 #' preference
 #'
+#' @description
 #' Describes the ID format settings for the root user and all IAM roles and
 #' IAM users that have explicitly specified a longer ID (17-character ID)
 #' preference.
@@ -17410,6 +17640,7 @@ ec2_describe_principal_id_format <- function(DryRun = NULL, Resources = NULL, Ma
 
 #' Describes the specified IPv4 address pools
 #'
+#' @description
 #' Describes the specified IPv4 address pools.
 #'
 #' @usage
@@ -17473,6 +17704,7 @@ ec2_describe_public_ipv_4_pools <- function(PoolIds = NULL, NextToken = NULL, Ma
 
 #' Describes the Regions that are enabled for your account, or all Regions
 #'
+#' @description
 #' Describes the Regions that are enabled for your account, or all Regions.
 #' 
 #' For a list of the Regions supported by Amazon EC2, see [Regions and
@@ -17551,6 +17783,7 @@ ec2_describe_regions <- function(Filters = NULL, RegionNames = NULL, DryRun = NU
 
 #' Describes one or more of the Reserved Instances that you purchased
 #'
+#' @description
 #' Describes one or more of the Reserved Instances that you purchased.
 #' 
 #' For more information about Reserved Instances, see [Reserved
@@ -17671,6 +17904,7 @@ ec2_describe_reserved_instances <- function(Filters = NULL, OfferingClass = NULL
 #' Describes your account's Reserved Instance listings in the Reserved
 #' Instance Marketplace
 #'
+#' @description
 #' Describes your account's Reserved Instance listings in the Reserved
 #' Instance Marketplace.
 #' 
@@ -17752,6 +17986,7 @@ ec2_describe_reserved_instances_listings <- function(Filters = NULL, ReservedIns
 
 #' Describes the modifications made to your Reserved Instances
 #'
+#' @description
 #' Describes the modifications made to your Reserved Instances. If no
 #' parameter is specified, information about all your Reserved Instances
 #' modification requests is returned. If a modification ID is specified,
@@ -17845,6 +18080,7 @@ ec2_describe_reserved_instances_modifications <- function(Filters = NULL, Reserv
 
 #' Describes Reserved Instance offerings that are available for purchase
 #'
+#' @description
 #' Describes Reserved Instance offerings that are available for purchase.
 #' With Reserved Instances, you purchase the right to launch instances for
 #' a period of time. During that time period, you do not receive
@@ -18004,6 +18240,7 @@ ec2_describe_reserved_instances_offerings <- function(AvailabilityZone = NULL, F
 
 #' Describes one or more of your route tables
 #'
+#' @description
 #' Describes one or more of your route tables.
 #' 
 #' Each subnet in your VPC must be associated with a route table. If a
@@ -18151,6 +18388,7 @@ ec2_describe_route_tables <- function(Filters = NULL, DryRun = NULL, RouteTableI
 
 #' Finds available schedules that meet the specified criteria
 #'
+#' @description
 #' Finds available schedules that meet the specified criteria.
 #' 
 #' You can search for an available schedule no more than 3 months in
@@ -18276,6 +18514,7 @@ ec2_describe_scheduled_instance_availability <- function(DryRun = NULL, Filters 
 #' Describes the specified Scheduled Instances or all your Scheduled
 #' Instances
 #'
+#' @description
 #' Describes the specified Scheduled Instances or all your Scheduled
 #' Instances.
 #'
@@ -18368,6 +18607,7 @@ ec2_describe_scheduled_instances <- function(DryRun = NULL, Filters = NULL, MaxR
 #' connection that are referencing the security groups you've specified in
 #' this request
 #'
+#' @description
 #' \[VPC only\] Describes the VPCs on the other side of a VPC peering
 #' connection that are referencing the security groups you've specified in
 #' this request.
@@ -18424,6 +18664,7 @@ ec2_describe_security_group_references <- function(DryRun = NULL, GroupId) {
 
 #' Describes the specified security groups or all of your security groups
 #'
+#' @description
 #' Describes the specified security groups or all of your security groups.
 #' 
 #' A security group is for use with instances either in the EC2-Classic
@@ -18605,6 +18846,7 @@ ec2_describe_security_groups <- function(Filters = NULL, GroupIds = NULL, GroupN
 
 #' Describes the specified attribute of the specified snapshot
 #'
+#' @description
 #' Describes the specified attribute of the specified snapshot. You can
 #' specify only one attribute at a time.
 #' 
@@ -18664,6 +18906,7 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
 #' Describes the specified EBS snapshots available to you or all of the EBS
 #' snapshots available to you
 #'
+#' @description
 #' Describes the specified EBS snapshots available to you or all of the EBS
 #' snapshots available to you.
 #' 
@@ -18739,7 +18982,7 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
 #'     use the related parameter instead of this filter.
 #' 
 #' -   `progress` - The progress of the snapshot, as a percentage (for
-#'     example, 80%).
+#'     example, 80\%).
 #' 
 #' -   `snapshot-id` - The snapshot ID.
 #' 
@@ -18863,6 +19106,7 @@ ec2_describe_snapshots <- function(Filters = NULL, MaxResults = NULL, NextToken 
 
 #' Describes the data feed for Spot Instances
 #'
+#' @description
 #' Describes the data feed for Spot Instances. For more information, see
 #' [Spot Instance data
 #' feed](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html)
@@ -18912,6 +19156,7 @@ ec2_describe_spot_datafeed_subscription <- function(DryRun = NULL) {
 
 #' Describes the running instances for the specified Spot Fleet
 #'
+#' @description
 #' Describes the running instances for the specified Spot Fleet.
 #'
 #' @usage
@@ -18971,6 +19216,7 @@ ec2_describe_spot_fleet_instances <- function(DryRun = NULL, MaxResults = NULL, 
 #' Describes the events for the specified Spot Fleet request during the
 #' specified time
 #'
+#' @description
 #' Describes the events for the specified Spot Fleet request during the
 #' specified time.
 #' 
@@ -19043,6 +19289,7 @@ ec2_describe_spot_fleet_request_history <- function(DryRun = NULL, EventType = N
 
 #' Describes your Spot Fleet requests
 #'
+#' @description
 #' Describes your Spot Fleet requests.
 #' 
 #' Spot Fleet requests are deleted 48 hours after they are canceled and
@@ -19107,6 +19354,7 @@ ec2_describe_spot_fleet_requests <- function(DryRun = NULL, MaxResults = NULL, N
 
 #' Describes the specified Spot Instance requests
 #'
+#' @description
 #' Describes the specified Spot Instance requests.
 #' 
 #' You can use `DescribeSpotInstanceRequests` to find a running Spot
@@ -19312,6 +19560,7 @@ ec2_describe_spot_instance_requests <- function(Filters = NULL, DryRun = NULL, S
 
 #' Describes the Spot price history
 #'
+#' @description
 #' Describes the Spot price history. For more information, see [Spot
 #' Instance pricing
 #' history](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html)
@@ -19436,6 +19685,7 @@ ec2_describe_spot_price_history <- function(Filters = NULL, AvailabilityZone = N
 #' &#91;VPC only&#93; Describes the stale security group rules for security
 #' groups in a specified VPC
 #'
+#' @description
 #' \[VPC only\] Describes the stale security group rules for security
 #' groups in a specified VPC. Rules are stale when they reference a deleted
 #' security group in a peer VPC, or a security group in a peer VPC for
@@ -19487,6 +19737,7 @@ ec2_describe_stale_security_groups <- function(DryRun = NULL, MaxResults = NULL,
 
 #' Describes one or more of your subnets
 #'
+#' @description
 #' Describes one or more of your subnets.
 #' 
 #' For more information, see [Your VPC and
@@ -19613,6 +19864,7 @@ ec2_describe_subnets <- function(Filters = NULL, SubnetIds = NULL, DryRun = NULL
 
 #' Describes the specified tags for your EC2 resources
 #'
+#' @description
 #' Describes the specified tags for your EC2 resources.
 #' 
 #' For more information about tags, see [Tagging Your
@@ -19706,6 +19958,7 @@ ec2_describe_tags <- function(DryRun = NULL, Filters = NULL, MaxResults = NULL, 
 
 #' Describes one or more Traffic Mirror filters
 #'
+#' @description
 #' Describes one or more Traffic Mirror filters.
 #'
 #' @usage
@@ -19769,6 +20022,7 @@ ec2_describe_traffic_mirror_filters <- function(TrafficMirrorFilterIds = NULL, D
 
 #' Describes one or more Traffic Mirror sessions
 #'
+#' @description
 #' Describes one or more Traffic Mirror sessions. By default, all Traffic
 #' Mirror sessions are described. Alternatively, you can filter the
 #' results.
@@ -19851,6 +20105,7 @@ ec2_describe_traffic_mirror_sessions <- function(TrafficMirrorSessionIds = NULL,
 
 #' Information about one or more Traffic Mirror targets
 #'
+#' @description
 #' Information about one or more Traffic Mirror targets.
 #'
 #' @usage
@@ -19923,6 +20178,7 @@ ec2_describe_traffic_mirror_targets <- function(TrafficMirrorTargetIds = NULL, D
 
 #' Describes one or more attachments between resources and transit gateways
 #'
+#' @description
 #' Describes one or more attachments between resources and transit
 #' gateways. By default, all attachments are described. Alternatively, you
 #' can filter the results by attachment ID, attachment state, resource ID,
@@ -20011,6 +20267,7 @@ ec2_describe_transit_gateway_attachments <- function(TransitGatewayAttachmentIds
 
 #' Describes one or more Connect peers
 #'
+#' @description
 #' Describes one or more Connect peers.
 #'
 #' @usage
@@ -20077,6 +20334,7 @@ ec2_describe_transit_gateway_connect_peers <- function(TransitGatewayConnectPeer
 
 #' Describes one or more Connect attachments
 #'
+#' @description
 #' Describes one or more Connect attachments.
 #'
 #' @usage
@@ -20150,6 +20408,7 @@ ec2_describe_transit_gateway_connects <- function(TransitGatewayAttachmentIds = 
 
 #' Describes one or more transit gateway multicast domains
 #'
+#' @description
 #' Describes one or more transit gateway multicast domains.
 #'
 #' @usage
@@ -20218,6 +20477,7 @@ ec2_describe_transit_gateway_multicast_domains <- function(TransitGatewayMultica
 
 #' Describes your transit gateway peering attachments
 #'
+#' @description
 #' Describes your transit gateway peering attachments.
 #'
 #' @usage
@@ -20302,6 +20562,7 @@ ec2_describe_transit_gateway_peering_attachments <- function(TransitGatewayAttac
 
 #' Describes one or more transit gateway route tables
 #'
+#' @description
 #' Describes one or more transit gateway route tables. By default, all
 #' transit gateway route tables are described. Alternatively, you can
 #' filter the results.
@@ -20379,6 +20640,7 @@ ec2_describe_transit_gateway_route_tables <- function(TransitGatewayRouteTableId
 
 #' Describes one or more VPC attachments
 #'
+#' @description
 #' Describes one or more VPC attachments. By default, all VPC attachments
 #' are described. Alternatively, you can filter the results.
 #'
@@ -20450,6 +20712,7 @@ ec2_describe_transit_gateway_vpc_attachments <- function(TransitGatewayAttachmen
 
 #' Describes one or more transit gateways
 #'
+#' @description
 #' Describes one or more transit gateways. By default, all transit gateways
 #' are described. Alternatively, you can filter the results.
 #'
@@ -20545,6 +20808,7 @@ ec2_describe_transit_gateways <- function(TransitGatewayIds = NULL, Filters = NU
 
 #' Describes the specified attribute of the specified volume
 #'
+#' @description
 #' Describes the specified attribute of the specified volume. You can
 #' specify only one attribute at a time.
 #' 
@@ -20603,6 +20867,7 @@ ec2_describe_volume_attribute <- function(Attribute, VolumeId, DryRun = NULL) {
 
 #' Describes the status of the specified volumes
 #'
+#' @description
 #' Describes the status of the specified volumes. Volume status provides
 #' the result of the checks performed on your volumes to determine events
 #' that can impair the performance of your volumes. The performance of a
@@ -20768,6 +21033,7 @@ ec2_describe_volume_status <- function(Filters = NULL, MaxResults = NULL, NextTo
 
 #' Describes the specified EBS volumes or all of your EBS volumes
 #'
+#' @description
 #' Describes the specified EBS volumes or all of your EBS volumes.
 #' 
 #' If you are describing a long list of volumes, we recommend that you
@@ -20928,6 +21194,7 @@ ec2_describe_volumes <- function(Filters = NULL, VolumeIds = NULL, DryRun = NULL
 #' Describes the most recent volume modification request for the specified
 #' EBS volumes
 #'
+#' @description
 #' Describes the most recent volume modification request for the specified
 #' EBS volumes.
 #' 
@@ -21026,6 +21293,7 @@ ec2_describe_volumes_modifications <- function(DryRun = NULL, VolumeIds = NULL, 
 
 #' Describes the specified attribute of the specified VPC
 #'
+#' @description
 #' Describes the specified attribute of the specified VPC. You can specify
 #' only one attribute at a time.
 #'
@@ -21091,6 +21359,7 @@ ec2_describe_vpc_attribute <- function(Attribute, VpcId, DryRun = NULL) {
 
 #' Describes the ClassicLink status of one or more VPCs
 #'
+#' @description
 #' Describes the ClassicLink status of one or more VPCs.
 #'
 #' @usage
@@ -21156,6 +21425,7 @@ ec2_describe_vpc_classic_link <- function(Filters = NULL, DryRun = NULL, VpcIds 
 
 #' Describes the ClassicLink DNS support status of one or more VPCs
 #'
+#' @description
 #' Describes the ClassicLink DNS support status of one or more VPCs. If
 #' enabled, the DNS hostname of a linked EC2-Classic instance resolves to
 #' its private IP address when addressed from an instance in the VPC to
@@ -21208,6 +21478,7 @@ ec2_describe_vpc_classic_link_dns_support <- function(MaxResults = NULL, NextTok
 #' Describes the connection notifications for VPC endpoints and VPC
 #' endpoint services
 #'
+#' @description
 #' Describes the connection notifications for VPC endpoints and VPC
 #' endpoint services.
 #'
@@ -21281,6 +21552,7 @@ ec2_describe_vpc_endpoint_connection_notifications <- function(DryRun = NULL, Co
 #' Describes the VPC endpoint connections to your VPC endpoint services,
 #' including any endpoints that are pending your acceptance
 #'
+#' @description
 #' Describes the VPC endpoint connections to your VPC endpoint services,
 #' including any endpoints that are pending your acceptance.
 #'
@@ -21351,6 +21623,7 @@ ec2_describe_vpc_endpoint_connections <- function(DryRun = NULL, Filters = NULL,
 #' Describes the VPC endpoint service configurations in your account (your
 #' services)
 #'
+#' @description
 #' Describes the VPC endpoint service configurations in your account (your
 #' services).
 #'
@@ -21431,6 +21704,7 @@ ec2_describe_vpc_endpoint_service_configurations <- function(DryRun = NULL, Serv
 #' Describes the principals (service consumers) that are permitted to
 #' discover your VPC endpoint service
 #'
+#' @description
 #' Describes the principals (service consumers) that are permitted to
 #' discover your VPC endpoint service.
 #'
@@ -21496,6 +21770,7 @@ ec2_describe_vpc_endpoint_service_permissions <- function(DryRun = NULL, Service
 
 #' Describes available services to which you can create a VPC endpoint
 #'
+#' @description
 #' Describes available services to which you can create a VPC endpoint.
 #' 
 #' When the service provider and the consumer have different accounts
@@ -21579,6 +21854,7 @@ ec2_describe_vpc_endpoint_services <- function(DryRun = NULL, ServiceNames = NUL
 
 #' Describes one or more of your VPC endpoints
 #'
+#' @description
 #' Describes one or more of your VPC endpoints.
 #'
 #' @usage
@@ -21665,6 +21941,7 @@ ec2_describe_vpc_endpoints <- function(DryRun = NULL, VpcEndpointIds = NULL, Fil
 
 #' Describes one or more of your VPC peering connections
 #'
+#' @description
 #' Describes one or more of your VPC peering connections.
 #'
 #' @usage
@@ -21764,6 +22041,7 @@ ec2_describe_vpc_peering_connections <- function(Filters = NULL, DryRun = NULL, 
 
 #' Describes one or more of your VPCs
 #'
+#' @description
 #' Describes one or more of your VPCs.
 #'
 #' @usage
@@ -21880,6 +22158,7 @@ ec2_describe_vpcs <- function(Filters = NULL, VpcIds = NULL, DryRun = NULL, Next
 
 #' Describes one or more of your VPN connections
 #'
+#' @description
 #' Describes one or more of your VPN connections.
 #' 
 #' For more information, see [AWS Site-to-Site
@@ -21978,6 +22257,7 @@ ec2_describe_vpn_connections <- function(Filters = NULL, VpnConnectionIds = NULL
 
 #' Describes one or more of your virtual private gateways
 #'
+#' @description
 #' Describes one or more of your virtual private gateways.
 #' 
 #' For more information, see [AWS Site-to-Site
@@ -22066,6 +22346,7 @@ ec2_describe_vpn_gateways <- function(Filters = NULL, VpnGatewayIds = NULL, DryR
 
 #' Unlinks (detaches) a linked EC2-Classic instance from a VPC
 #'
+#' @description
 #' Unlinks (detaches) a linked EC2-Classic instance from a VPC. After the
 #' instance has been unlinked, the VPC security groups are no longer
 #' associated with it. An instance is automatically unlinked from a VPC
@@ -22113,6 +22394,7 @@ ec2_detach_classic_link_vpc <- function(DryRun = NULL, InstanceId, VpcId) {
 #' Detaches an internet gateway from a VPC, disabling connectivity between
 #' the internet and the VPC
 #'
+#' @description
 #' Detaches an internet gateway from a VPC, disabling connectivity between
 #' the internet and the VPC. The VPC must not contain any running instances
 #' with Elastic IP addresses or public IPv4 addresses.
@@ -22168,6 +22450,7 @@ ec2_detach_internet_gateway <- function(DryRun = NULL, InternetGatewayId, VpcId)
 
 #' Detaches a network interface from an instance
 #'
+#' @description
 #' Detaches a network interface from an instance.
 #'
 #' @usage
@@ -22235,6 +22518,7 @@ ec2_detach_network_interface <- function(AttachmentId, DryRun = NULL, Force = NU
 
 #' Detaches an EBS volume from an instance
 #'
+#' @description
 #' Detaches an EBS volume from an instance. Make sure to unmount any file
 #' systems on the device within your operating system before detaching the
 #' volume. Failure to do so can result in the volume becoming stuck in the
@@ -22312,6 +22596,7 @@ ec2_detach_volume <- function(Device = NULL, Force = NULL, InstanceId = NULL, Vo
 
 #' Detaches a virtual private gateway from a VPC
 #'
+#' @description
 #' Detaches a virtual private gateway from a VPC. You do this if you're
 #' planning to turn off the VPC and not use it anymore. You can confirm a
 #' virtual private gateway has been completely detached from a VPC by
@@ -22364,6 +22649,7 @@ ec2_detach_vpn_gateway <- function(VpcId, VpnGatewayId, DryRun = NULL) {
 #' Disables EBS encryption by default for your account in the current
 #' Region
 #'
+#' @description
 #' Disables EBS encryption by default for your account in the current
 #' Region.
 #' 
@@ -22415,6 +22701,7 @@ ec2_disable_ebs_encryption_by_default <- function(DryRun = NULL) {
 #' Disables fast snapshot restores for the specified snapshots in the
 #' specified Availability Zones
 #'
+#' @description
 #' Disables fast snapshot restores for the specified snapshots in the
 #' specified Availability Zones.
 #'
@@ -22465,6 +22752,7 @@ ec2_disable_fast_snapshot_restores <- function(AvailabilityZones, SourceSnapshot
 #' Disables the specified resource attachment from propagating routes to
 #' the specified propagation route table
 #'
+#' @description
 #' Disables the specified resource attachment from propagating routes to
 #' the specified propagation route table.
 #'
@@ -22511,6 +22799,7 @@ ec2_disable_transit_gateway_route_table_propagation <- function(TransitGatewayRo
 #' Disables a virtual private gateway (VGW) from propagating routes to a
 #' specified route table of a VPC
 #'
+#' @description
 #' Disables a virtual private gateway (VGW) from propagating routes to a
 #' specified route table of a VPC.
 #'
@@ -22565,6 +22854,7 @@ ec2_disable_vgw_route_propagation <- function(GatewayId, RouteTableId, DryRun = 
 
 #' Disables ClassicLink for a VPC
 #'
+#' @description
 #' Disables ClassicLink for a VPC. You cannot disable ClassicLink for a VPC
 #' that has EC2-Classic instances linked to it.
 #'
@@ -22607,6 +22897,7 @@ ec2_disable_vpc_classic_link <- function(DryRun = NULL, VpcId) {
 
 #' Disables ClassicLink DNS support for a VPC
 #'
+#' @description
 #' Disables ClassicLink DNS support for a VPC. If disabled, DNS hostnames
 #' resolve to public IP addresses when addressed between a linked
 #' EC2-Classic instance and instances in the VPC to which it's linked. For
@@ -22651,6 +22942,7 @@ ec2_disable_vpc_classic_link_dns_support <- function(VpcId = NULL) {
 #' Disassociates an Elastic IP address from the instance or network
 #' interface it's associated with
 #'
+#' @description
 #' Disassociates an Elastic IP address from the instance or network
 #' interface it's associated with.
 #' 
@@ -22718,6 +23010,7 @@ ec2_disassociate_address <- function(AssociationId = NULL, PublicIp = NULL, DryR
 
 #' Disassociates a target network from the specified Client VPN endpoint
 #'
+#' @description
 #' Disassociates a target network from the specified Client VPN endpoint.
 #' When you disassociate the last target network from a Client VPN, the
 #' following happens:
@@ -22774,6 +23067,7 @@ ec2_disassociate_client_vpn_target_network <- function(ClientVpnEndpointId, Asso
 #' Disassociates an IAM role from an AWS Certificate Manager (ACM)
 #' certificate
 #'
+#' @description
 #' Disassociates an IAM role from an AWS Certificate Manager (ACM)
 #' certificate. Disassociating an IAM role from an ACM certificate removes
 #' the Amazon S3 object that contains the certificate, certificate chain,
@@ -22824,6 +23118,7 @@ ec2_disassociate_enclave_certificate_iam_role <- function(CertificateArn = NULL,
 
 #' Disassociates an IAM instance profile from a running or stopped instance
 #'
+#' @description
 #' Disassociates an IAM instance profile from a running or stopped
 #' instance.
 #' 
@@ -22872,6 +23167,7 @@ ec2_disassociate_iam_instance_profile <- function(AssociationId) {
 
 #' Disassociates a subnet or gateway from a route table
 #'
+#' @description
 #' Disassociates a subnet or gateway from a route table.
 #' 
 #' After you perform this action, the subnet no longer uses the routes in
@@ -22929,6 +23225,7 @@ ec2_disassociate_route_table <- function(AssociationId, DryRun = NULL) {
 
 #' Disassociates a CIDR block from a subnet
 #'
+#' @description
 #' Disassociates a CIDR block from a subnet. Currently, you can
 #' disassociate an IPv6 CIDR block only. You must detach or delete all
 #' gateways and resources that are associated with the CIDR block before
@@ -22969,6 +23266,7 @@ ec2_disassociate_subnet_cidr_block <- function(AssociationId) {
 #' Disassociates the specified subnets from the transit gateway multicast
 #' domain
 #'
+#' @description
 #' Disassociates the specified subnets from the transit gateway multicast
 #' domain.
 #'
@@ -23019,6 +23317,7 @@ ec2_disassociate_transit_gateway_multicast_domain <- function(TransitGatewayMult
 
 #' Disassociates a resource attachment from a transit gateway route table
 #'
+#' @description
 #' Disassociates a resource attachment from a transit gateway route table.
 #'
 #' @usage
@@ -23063,6 +23362,7 @@ ec2_disassociate_transit_gateway_route_table <- function(TransitGatewayRouteTabl
 
 #' Disassociates a CIDR block from a VPC
 #'
+#' @description
 #' Disassociates a CIDR block from a VPC. To disassociate the CIDR block,
 #' you must specify its association ID. You can get the association ID by
 #' using DescribeVpcs. You must detach or delete all gateways and resources
@@ -23105,6 +23405,7 @@ ec2_disassociate_vpc_cidr_block <- function(AssociationId) {
 
 #' Enables EBS encryption by default for your account in the current Region
 #'
+#' @description
 #' Enables EBS encryption by default for your account in the current
 #' Region.
 #' 
@@ -23164,6 +23465,7 @@ ec2_enable_ebs_encryption_by_default <- function(DryRun = NULL) {
 #' Enables fast snapshot restores for the specified snapshots in the
 #' specified Availability Zones
 #'
+#' @description
 #' Enables fast snapshot restores for the specified snapshots in the
 #' specified Availability Zones.
 #' 
@@ -23225,6 +23527,7 @@ ec2_enable_fast_snapshot_restores <- function(AvailabilityZones, SourceSnapshotI
 #' Enables the specified attachment to propagate routes to the specified
 #' propagation route table
 #'
+#' @description
 #' Enables the specified attachment to propagate routes to the specified
 #' propagation route table.
 #'
@@ -23271,6 +23574,7 @@ ec2_enable_transit_gateway_route_table_propagation <- function(TransitGatewayRou
 #' Enables a virtual private gateway (VGW) to propagate routes to the
 #' specified route table of a VPC
 #'
+#' @description
 #' Enables a virtual private gateway (VGW) to propagate routes to the
 #' specified route table of a VPC.
 #'
@@ -23329,6 +23633,7 @@ ec2_enable_vgw_route_propagation <- function(GatewayId, RouteTableId, DryRun = N
 #' Enables I/O operations for a volume that had I/O operations disabled
 #' because the data on the volume was potentially inconsistent
 #'
+#' @description
 #' Enables I/O operations for a volume that had I/O operations disabled
 #' because the data on the volume was potentially inconsistent.
 #'
@@ -23379,6 +23684,7 @@ ec2_enable_volume_io <- function(DryRun = NULL, VolumeId) {
 
 #' Enables a VPC for ClassicLink
 #'
+#' @description
 #' Enables a VPC for ClassicLink. You can then link EC2-Classic instances
 #' to your ClassicLink-enabled VPC to allow communication over private IP
 #' addresses. You cannot enable your VPC for ClassicLink if any of your VPC
@@ -23428,6 +23734,7 @@ ec2_enable_vpc_classic_link <- function(DryRun = NULL, VpcId) {
 
 #' Enables a VPC to support DNS hostname resolution for ClassicLink
 #'
+#' @description
 #' Enables a VPC to support DNS hostname resolution for ClassicLink. If
 #' enabled, the DNS hostname of a linked EC2-Classic instance resolves to
 #' its private IP address when addressed from an instance in the VPC to
@@ -23474,6 +23781,7 @@ ec2_enable_vpc_classic_link_dns_support <- function(VpcId = NULL) {
 #' Downloads the client certificate revocation list for the specified
 #' Client VPN endpoint
 #'
+#' @description
 #' Downloads the client certificate revocation list for the specified
 #' Client VPN endpoint.
 #'
@@ -23518,6 +23826,7 @@ ec2_export_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
 #' Downloads the contents of the Client VPN endpoint configuration file for
 #' the specified Client VPN endpoint
 #'
+#' @description
 #' Downloads the contents of the Client VPN endpoint configuration file for
 #' the specified Client VPN endpoint. The Client VPN endpoint configuration
 #' file includes the Client VPN endpoint and certificate information
@@ -23562,6 +23871,7 @@ ec2_export_client_vpn_client_configuration <- function(ClientVpnEndpointId, DryR
 
 #' Exports an Amazon Machine Image (AMI) to a VM file
 #'
+#' @description
 #' Exports an Amazon Machine Image (AMI) to a VM file. For more
 #' information, see [Exporting a VM Directory from an Amazon Machine Image
 #' (AMI)](https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport_image.html)
@@ -23638,6 +23948,7 @@ ec2_export_image <- function(ClientToken = NULL, Description = NULL, DiskImageFo
 #' Exports routes from the specified transit gateway route table to the
 #' specified S3 bucket
 #'
+#' @description
 #' Exports routes from the specified transit gateway route table to the
 #' specified S3 bucket. By default, all routes are exported. Alternatively,
 #' you can filter by CIDR range.
@@ -23726,6 +24037,7 @@ ec2_export_transit_gateway_routes <- function(TransitGatewayRouteTableId, Filter
 #' Returns the IAM roles that are associated with the specified AWS
 #' Certificate Manager (ACM) certificate
 #'
+#' @description
 #' Returns the IAM roles that are associated with the specified AWS
 #' Certificate Manager (ACM) certificate. It also returns the name of the
 #' Amazon S3 bucket and the Amazon S3 object key where the certificate,
@@ -23774,6 +24086,7 @@ ec2_get_associated_enclave_certificate_iam_roles <- function(CertificateArn = NU
 #' Gets information about the IPv6 CIDR block associations for a specified
 #' IPv6 address pool
 #'
+#' @description
 #' Gets information about the IPv6 CIDR block associations for a specified
 #' IPv6 address pool.
 #'
@@ -23823,6 +24136,7 @@ ec2_get_associated_ipv_6_pool_cidrs <- function(PoolId, NextToken = NULL, MaxRes
 
 #' Gets usage information about a Capacity Reservation
 #'
+#' @description
 #' Gets usage information about a Capacity Reservation. If the Capacity
 #' Reservation is shared, it shows usage information for the Capacity
 #' Reservation owner and each AWS account that is currently using the
@@ -23878,6 +24192,7 @@ ec2_get_capacity_reservation_usage <- function(CapacityReservationId, NextToken 
 
 #' Describes the allocations from the specified customer-owned address pool
 #'
+#' @description
 #' Describes the allocations from the specified customer-owned address
 #' pool.
 #'
@@ -23949,6 +24264,7 @@ ec2_get_coip_pool_usage <- function(PoolId, Filters = NULL, MaxResults = NULL, N
 
 #' Gets the console output for the specified instance
 #'
+#' @description
 #' Gets the console output for the specified instance. For Linux instances,
 #' the instance console output displays the exact console output that would
 #' normally be displayed on a physical monitor attached to a computer. For
@@ -24021,6 +24337,7 @@ ec2_get_console_output <- function(InstanceId, DryRun = NULL, Latest = NULL) {
 #' Retrieve a JPG-format screenshot of a running instance to help with
 #' troubleshooting
 #'
+#' @description
 #' Retrieve a JPG-format screenshot of a running instance to help with
 #' troubleshooting.
 #' 
@@ -24069,6 +24386,7 @@ ec2_get_console_screenshot <- function(DryRun = NULL, InstanceId, WakeUp = NULL)
 #' Describes the default credit option for CPU usage of a burstable
 #' performance instance family
 #'
+#' @description
 #' Describes the default credit option for CPU usage of a burstable
 #' performance instance family.
 #' 
@@ -24116,6 +24434,7 @@ ec2_get_default_credit_specification <- function(DryRun = NULL, InstanceFamily) 
 #' Describes the default customer master key (CMK) for EBS encryption by
 #' default for your account in this Region
 #'
+#' @description
 #' Describes the default customer master key (CMK) for EBS encryption by
 #' default for your account in this Region. You can change the default CMK
 #' for encryption by default using ModifyEbsDefaultKmsKeyId or
@@ -24163,6 +24482,7 @@ ec2_get_ebs_default_kms_key_id <- function(DryRun = NULL) {
 #' Describes whether EBS encryption by default is enabled for your account
 #' in the current Region
 #'
+#' @description
 #' Describes whether EBS encryption by default is enabled for your account
 #' in the current Region.
 #' 
@@ -24207,6 +24527,7 @@ ec2_get_ebs_encryption_by_default <- function(DryRun = NULL) {
 
 #' Lists the resource groups to which a Capacity Reservation has been added
 #'
+#' @description
 #' Lists the resource groups to which a Capacity Reservation has been
 #' added.
 #'
@@ -24258,6 +24579,7 @@ ec2_get_groups_for_capacity_reservation <- function(CapacityReservationId, NextT
 #' Preview a reservation purchase with configurations that match those of
 #' your Dedicated Host
 #'
+#' @description
 #' Preview a reservation purchase with configurations that match those of
 #' your Dedicated Host. You must have active Dedicated Hosts in your
 #' account before you purchase a reservation.
@@ -24303,6 +24625,7 @@ ec2_get_host_reservation_purchase_preview <- function(HostIdSet, OfferingId) {
 
 #' Retrieves the configuration data of the specified instance
 #'
+#' @description
 #' Retrieves the configuration data of the specified instance. You can use
 #' this data to create a launch template.
 #' 
@@ -24361,6 +24684,7 @@ ec2_get_launch_template_data <- function(DryRun = NULL, InstanceId) {
 #' Gets information about the resources that are associated with the
 #' specified managed prefix list
 #'
+#' @description
 #' Gets information about the resources that are associated with the
 #' specified managed prefix list.
 #'
@@ -24410,6 +24734,7 @@ ec2_get_managed_prefix_list_associations <- function(DryRun = NULL, PrefixListId
 
 #' Gets information about the entries for a specified managed prefix list
 #'
+#' @description
 #' Gets information about the entries for a specified managed prefix list.
 #'
 #' @usage
@@ -24462,6 +24787,7 @@ ec2_get_managed_prefix_list_entries <- function(DryRun = NULL, PrefixListId, Tar
 #' Retrieves the encrypted administrator password for a running Windows
 #' instance
 #'
+#' @description
 #' Retrieves the encrypted administrator password for a running Windows
 #' instance.
 #' 
@@ -24527,6 +24853,7 @@ ec2_get_password_data <- function(InstanceId, DryRun = NULL) {
 #' specified Convertible Reserved Instances for a new Convertible Reserved
 #' Instance
 #'
+#' @description
 #' Returns a quote and exchange information for exchanging one or more
 #' specified Convertible Reserved Instances for a new Convertible Reserved
 #' Instance. If the exchange cannot be performed, the reason is returned in
@@ -24584,6 +24911,7 @@ ec2_get_reserved_instances_exchange_quote <- function(DryRun = NULL, ReservedIns
 #' Lists the route tables to which the specified resource attachment
 #' propagates routes
 #'
+#' @description
 #' Lists the route tables to which the specified resource attachment
 #' propagates routes.
 #'
@@ -24646,6 +24974,7 @@ ec2_get_transit_gateway_attachment_propagations <- function(TransitGatewayAttach
 #' Gets information about the associations for the transit gateway
 #' multicast domain
 #'
+#' @description
 #' Gets information about the associations for the transit gateway
 #' multicast domain.
 #'
@@ -24717,6 +25046,7 @@ ec2_get_transit_gateway_multicast_domain_associations <- function(TransitGateway
 #' Gets information about the prefix list references in a specified transit
 #' gateway route table
 #'
+#' @description
 #' Gets information about the prefix list references in a specified transit
 #' gateway route table.
 #'
@@ -24796,6 +25126,7 @@ ec2_get_transit_gateway_prefix_list_references <- function(TransitGatewayRouteTa
 #' Gets information about the associations for the specified transit
 #' gateway route table
 #'
+#' @description
 #' Gets information about the associations for the specified transit
 #' gateway route table.
 #'
@@ -24862,6 +25193,7 @@ ec2_get_transit_gateway_route_table_associations <- function(TransitGatewayRoute
 #' Gets information about the route table propagations for the specified
 #' transit gateway route table
 #'
+#' @description
 #' Gets information about the route table propagations for the specified
 #' transit gateway route table.
 #'
@@ -24928,6 +25260,7 @@ ec2_get_transit_gateway_route_table_propagations <- function(TransitGatewayRoute
 #' Uploads a client certificate revocation list to the specified Client VPN
 #' endpoint
 #'
+#' @description
 #' Uploads a client certificate revocation list to the specified Client VPN
 #' endpoint. Uploading a client certificate revocation list overwrites the
 #' existing client certificate revocation list.
@@ -24982,6 +25315,7 @@ ec2_import_client_vpn_client_certificate_revocation_list <- function(ClientVpnEn
 #' Import single or multi-volume disk images or EBS snapshots into an
 #' Amazon Machine Image (AMI)
 #'
+#' @description
 #' Import single or multi-volume disk images or EBS snapshots into an
 #' Amazon Machine Image (AMI). For more information, see [Importing a VM as
 #' an Image Using VM
@@ -25144,6 +25478,7 @@ ec2_import_image <- function(Architecture = NULL, ClientData = NULL, ClientToken
 #' Creates an import instance task using metadata from the specified disk
 #' image
 #'
+#' @description
 #' Creates an import instance task using metadata from the specified disk
 #' image. `ImportInstance` only supports single-volume VMs. To import
 #' multi-volume VMs, use ImportImage. For more information, see [Importing
@@ -25240,6 +25575,7 @@ ec2_import_instance <- function(Description = NULL, DiskImages = NULL, DryRun = 
 #' Imports the public key from an RSA key pair that you created with a
 #' third-party tool
 #'
+#' @description
 #' Imports the public key from an RSA key pair that you created with a
 #' third-party tool. Compare this with CreateKeyPair, in which AWS creates
 #' the key pair and gives the keys to you (AWS keeps a copy of the public
@@ -25305,6 +25641,7 @@ ec2_import_key_pair <- function(DryRun = NULL, KeyName, PublicKeyMaterial, TagSp
 
 #' Imports a disk into an EBS snapshot
 #'
+#' @description
 #' Imports a disk into an EBS snapshot.
 #'
 #' @usage
@@ -25427,6 +25764,7 @@ ec2_import_snapshot <- function(ClientData = NULL, ClientToken = NULL, Descripti
 #' Creates an import volume task using metadata from the specified disk
 #' image
 #'
+#' @description
 #' Creates an import volume task using metadata from the specified disk
 #' image.For more information, see [Importing Disks to Amazon
 #' EBS](http://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf).
@@ -25487,6 +25825,7 @@ ec2_import_volume <- function(AvailabilityZone, Description = NULL, DryRun = NUL
 #' Changes the opt-in status of the Local Zone and Wavelength Zone group
 #' for your account
 #'
+#' @description
 #' Changes the opt-in status of the Local Zone and Wavelength Zone group
 #' for your account.
 #' 
@@ -25500,9 +25839,8 @@ ec2_import_volume <- function(AvailabilityZone, Description = NULL, DryRun = NUL
 #' @param GroupName &#91;required&#93; The name of the Availability Zone group, Local Zone group, or Wavelength
 #' Zone group.
 #' @param OptInStatus &#91;required&#93; Indicates whether you are opted in to the Local Zone group or Wavelength
-#' Zone group. The only valid value is `opted-in`. You must contact [AWS
-#' Support](https://console.aws.amazon.com/support/home#/case/create?issueType=customer-service&serviceCode=general-info&getting-started&categoryCode=using-aws&services)
-#' to opt out of a Local Zone group, or Wavelength Zone group.
+#' Zone group. The only valid value is `opted-in`. You must contact AWS
+#' Support to opt out of a Local Zone group, or Wavelength Zone group.
 #' @param DryRun Checks whether you have the required permissions for the action, without
 #' actually making the request, and provides an error response. If you have
 #' the required permissions, the error response is `DryRunOperation`.
@@ -25540,6 +25878,7 @@ ec2_modify_availability_zone_group <- function(GroupName, OptInStatus, DryRun = 
 #' Modifies a Capacity Reservation's capacity and the conditions under
 #' which it is to be released
 #'
+#' @description
 #' Modifies a Capacity Reservation's capacity and the conditions under
 #' which it is to be released. You cannot change a Capacity Reservation's
 #' instance type, EBS optimization, instance store settings, platform,
@@ -25615,6 +25954,7 @@ ec2_modify_capacity_reservation <- function(CapacityReservationId, InstanceCount
 
 #' Modifies the specified Client VPN endpoint
 #'
+#' @description
 #' Modifies the specified Client VPN endpoint. Modifying the DNS server
 #' resets existing client connections.
 #'
@@ -25721,6 +26061,7 @@ ec2_modify_client_vpn_endpoint <- function(ClientVpnEndpointId, ServerCertificat
 #' Modifies the default credit option for CPU usage of burstable
 #' performance instances
 #'
+#' @description
 #' Modifies the default credit option for CPU usage of burstable
 #' performance instances. The default credit option is set at the account
 #' level per AWS Region, and is specified per instance family. All new
@@ -25785,6 +26126,7 @@ ec2_modify_default_credit_specification <- function(DryRun = NULL, InstanceFamil
 #' Changes the default customer master key (CMK) for EBS encryption by
 #' default for your account in this Region
 #'
+#' @description
 #' Changes the default customer master key (CMK) for EBS encryption by
 #' default for your account in this Region.
 #' 
@@ -25861,6 +26203,7 @@ ec2_modify_ebs_default_kms_key_id <- function(KmsKeyId, DryRun = NULL) {
 
 #' Modifies the specified EC2 Fleet
 #'
+#' @description
 #' Modifies the specified EC2 Fleet.
 #' 
 #' You can only modify an EC2 Fleet request of type `maintain`.
@@ -25975,6 +26318,7 @@ ec2_modify_fleet <- function(DryRun = NULL, ExcessCapacityTerminationPolicy = NU
 #' Modifies the specified attribute of the specified Amazon FPGA Image
 #' (AFI)
 #'
+#' @description
 #' Modifies the specified attribute of the specified Amazon FPGA Image
 #' (AFI).
 #'
@@ -26058,6 +26402,7 @@ ec2_modify_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribut
 
 #' Modify the auto-placement setting of a Dedicated Host
 #'
+#' @description
 #' Modify the auto-placement setting of a Dedicated Host. When
 #' auto-placement is enabled, any instances that you launch with a tenancy
 #' of `host` but without a specific host ID are placed onto any available
@@ -26132,6 +26477,7 @@ ec2_modify_hosts <- function(AutoPlacement = NULL, HostIds, HostRecovery = NULL,
 
 #' Modifies the ID format for the specified resource on a per-Region basis
 #'
+#' @description
 #' Modifies the ID format for the specified resource on a per-Region basis.
 #' You can specify that resources should receive longer IDs (17-character
 #' IDs) when they are created.
@@ -26210,6 +26556,7 @@ ec2_modify_id_format <- function(Resource, UseLongIds) {
 #' or the root user for an account; or all IAM users, IAM roles, and the
 #' root user for an account
 #'
+#' @description
 #' Modifies the ID format of a resource for a specified IAM user, IAM role,
 #' or the root user for an account; or all IAM users, IAM roles, and the
 #' root user for an account. You can specify that resources should receive
@@ -26289,6 +26636,7 @@ ec2_modify_identity_id_format <- function(PrincipalArn, Resource, UseLongIds) {
 
 #' Modifies the specified attribute of the specified AMI
 #'
+#' @description
 #' Modifies the specified attribute of the specified AMI. You can specify
 #' only one attribute at a time. You can use the `Attribute` parameter to
 #' specify the attribute or one of the following parameters: `Description`,
@@ -26413,6 +26761,7 @@ ec2_modify_image_attribute <- function(Attribute = NULL, Description = NULL, Ima
 
 #' Modifies the specified attribute of the specified instance
 #'
+#' @description
 #' Modifies the specified attribute of the specified instance. You can
 #' specify only one attribute at a time.
 #' 
@@ -26599,6 +26948,7 @@ ec2_modify_instance_attribute <- function(SourceDestCheck = NULL, Attribute = NU
 
 #' Modifies the Capacity Reservation settings for a stopped instance
 #'
+#' @description
 #' Modifies the Capacity Reservation settings for a stopped instance. Use
 #' this action to configure an instance to target a specific Capacity
 #' Reservation, run in any `open` Capacity Reservation with matching
@@ -26653,6 +27003,7 @@ ec2_modify_instance_capacity_reservation_attributes <- function(InstanceId, Capa
 #' Modifies the credit option for CPU usage on a running or stopped
 #' burstable performance instance
 #'
+#' @description
 #' Modifies the credit option for CPU usage on a running or stopped
 #' burstable performance instance. The credit options are `standard` and
 #' `unlimited`.
@@ -26710,6 +27061,7 @@ ec2_modify_instance_credit_specification <- function(DryRun = NULL, ClientToken 
 
 #' Modifies the start time for a scheduled Amazon EC2 instance event
 #'
+#' @description
 #' Modifies the start time for a scheduled Amazon EC2 instance event.
 #'
 #' @usage
@@ -26758,6 +27110,7 @@ ec2_modify_instance_event_start_time <- function(DryRun = NULL, InstanceId, Inst
 
 #' Modify the instance metadata parameters on a running or stopped instance
 #'
+#' @description
 #' Modify the instance metadata parameters on a running or stopped
 #' instance. When you modify the parameters on a stopped instance, they are
 #' applied when the instance is started. When you modify the parameters on
@@ -26836,6 +27189,7 @@ ec2_modify_instance_metadata_options <- function(InstanceId, HttpTokens = NULL, 
 
 #' Modifies the placement attributes for a specified instance
 #'
+#' @description
 #' Modifies the placement attributes for a specified instance. You can do
 #' the following:
 #' 
@@ -26915,6 +27269,7 @@ ec2_modify_instance_placement <- function(Affinity = NULL, GroupName = NULL, Hos
 
 #' Modifies a launch template
 #'
+#' @description
 #' Modifies a launch template. You can specify which version of the launch
 #' template to set as the default version. When launching an instance, the
 #' default version applies when a launch template version is not specified.
@@ -26981,6 +27336,7 @@ ec2_modify_launch_template <- function(DryRun = NULL, ClientToken = NULL, Launch
 
 #' Modifies the specified managed prefix list
 #'
+#' @description
 #' Modifies the specified managed prefix list.
 #' 
 #' Adding or removing entries in a prefix list creates a new version of the
@@ -27047,6 +27403,7 @@ ec2_modify_managed_prefix_list <- function(DryRun = NULL, PrefixListId, CurrentV
 
 #' Modifies the specified network interface attribute
 #'
+#' @description
 #' Modifies the specified network interface attribute. You can specify only
 #' one attribute at a time. You can use this action to attach and detach
 #' security groups from an existing EC2 instance.
@@ -27160,6 +27517,7 @@ ec2_modify_network_interface_attribute <- function(Attachment = NULL, Descriptio
 #' Modifies the Availability Zone, instance count, instance type, or
 #' network platform (EC2-Classic or EC2-VPC) of your Reserved Instances
 #'
+#' @description
 #' Modifies the Availability Zone, instance count, instance type, or
 #' network platform (EC2-Classic or EC2-VPC) of your Reserved Instances.
 #' The Reserved Instances to be modified must be identical, except for
@@ -27220,6 +27578,7 @@ ec2_modify_reserved_instances <- function(ReservedInstancesIds, ClientToken = NU
 
 #' Adds or removes permission settings for the specified snapshot
 #'
+#' @description
 #' Adds or removes permission settings for the specified snapshot. You may
 #' add or remove specified AWS account IDs from a snapshot's list of create
 #' volume permissions, but you cannot do both in a single operation. If you
@@ -27328,6 +27687,7 @@ ec2_modify_snapshot_attribute <- function(Attribute = NULL, CreateVolumePermissi
 
 #' Modifies the specified Spot Fleet request
 #'
+#' @description
 #' Modifies the specified Spot Fleet request.
 #' 
 #' You can only modify a Spot Fleet request of type `maintain`.
@@ -27447,6 +27807,7 @@ ec2_modify_spot_fleet_request <- function(ExcessCapacityTerminationPolicy = NULL
 
 #' Modifies a subnet attribute
 #'
+#' @description
 #' Modifies a subnet attribute. You can only modify one attribute at a
 #' time.
 #'
@@ -27529,6 +27890,7 @@ ec2_modify_subnet_attribute <- function(AssignIpv6AddressOnCreation = NULL, MapP
 
 #' Allows or restricts mirroring network services
 #'
+#' @description
 #' Allows or restricts mirroring network services.
 #' 
 #' By default, Amazon DNS network services are not eligible for Traffic
@@ -27592,6 +27954,7 @@ ec2_modify_traffic_mirror_filter_network_services <- function(TrafficMirrorFilte
 
 #' Modifies the specified Traffic Mirror rule
 #'
+#' @description
 #' Modifies the specified Traffic Mirror rule.
 #' 
 #' `DestinationCidrBlock` and `SourceCidrBlock` must both be an IPv4 range
@@ -27673,6 +28036,7 @@ ec2_modify_traffic_mirror_filter_rule <- function(TrafficMirrorFilterRuleId, Tra
 
 #' Modifies a Traffic Mirror session
 #'
+#' @description
 #' Modifies a Traffic Mirror session.
 #'
 #' @usage
@@ -27744,6 +28108,7 @@ ec2_modify_traffic_mirror_session <- function(TrafficMirrorSessionId, TrafficMir
 
 #' Modifies the specified transit gateway
 #'
+#' @description
 #' Modifies the specified transit gateway. When you modify a transit
 #' gateway, the modified options are applied to new transit gateway
 #' attachments only. Your existing transit gateway attachments are not
@@ -27808,6 +28173,7 @@ ec2_modify_transit_gateway <- function(TransitGatewayId, Description = NULL, Opt
 #' Modifies a reference (route) to a prefix list in a specified transit
 #' gateway route table
 #'
+#' @description
 #' Modifies a reference (route) to a prefix list in a specified transit
 #' gateway route table.
 #'
@@ -27858,6 +28224,7 @@ ec2_modify_transit_gateway_prefix_list_reference <- function(TransitGatewayRoute
 
 #' Modifies the specified VPC attachment
 #'
+#' @description
 #' Modifies the specified VPC attachment.
 #'
 #' @usage
@@ -27918,6 +28285,7 @@ ec2_modify_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #' You can modify several parameters of an existing EBS volume, including
 #' volume size, volume type, and IOPS capacity
 #'
+#' @description
 #' You can modify several parameters of an existing EBS volume, including
 #' volume size, volume type, and IOPS capacity. If your EBS volume is
 #' attached to a current-generation EC2 instance type, you might be able to
@@ -28051,6 +28419,7 @@ ec2_modify_volume <- function(DryRun = NULL, VolumeId, Size = NULL, VolumeType =
 
 #' Modifies a volume attribute
 #'
+#' @description
 #' Modifies a volume attribute.
 #' 
 #' By default, all I/O operations for the volume are suspended when the
@@ -28120,6 +28489,7 @@ ec2_modify_volume_attribute <- function(AutoEnableIO = NULL, VolumeId, DryRun = 
 
 #' Modifies the specified attribute of the specified VPC
 #'
+#' @description
 #' Modifies the specified attribute of the specified VPC.
 #'
 #' @usage
@@ -28204,6 +28574,7 @@ ec2_modify_vpc_attribute <- function(EnableDnsHostnames = NULL, EnableDnsSupport
 
 #' Modifies attributes of a specified VPC endpoint
 #'
+#' @description
 #' Modifies attributes of a specified VPC endpoint. The attributes that you
 #' can modify depend on the type of VPC endpoint (interface, gateway, or
 #' Gateway Load Balancer). For more information, see [VPC
@@ -28294,6 +28665,7 @@ ec2_modify_vpc_endpoint <- function(DryRun = NULL, VpcEndpointId, ResetPolicy = 
 #' Modifies a connection notification for VPC endpoint or VPC endpoint
 #' service
 #'
+#' @description
 #' Modifies a connection notification for VPC endpoint or VPC endpoint
 #' service. You can change the SNS topic for the notification, or the
 #' events for which to be notified.
@@ -28345,6 +28717,7 @@ ec2_modify_vpc_endpoint_connection_notification <- function(DryRun = NULL, Conne
 
 #' Modifies the attributes of your VPC endpoint service configuration
 #'
+#' @description
 #' Modifies the attributes of your VPC endpoint service configuration. You
 #' can change the Network Load Balancers or Gateway Load Balancers for your
 #' service, and you can specify whether acceptance is required for requests
@@ -28427,6 +28800,7 @@ ec2_modify_vpc_endpoint_service_configuration <- function(DryRun = NULL, Service
 
 #' Modifies the permissions for your VPC endpoint service
 #'
+#' @description
 #' Modifies the permissions for your [VPC endpoint
 #' service](https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html).
 #' You can add or remove permissions for service consumers (IAM users, IAM
@@ -28489,6 +28863,7 @@ ec2_modify_vpc_endpoint_service_permissions <- function(DryRun = NULL, ServiceId
 #' Modifies the VPC peering connection options on one side of a VPC peering
 #' connection
 #'
+#' @description
 #' Modifies the VPC peering connection options on one side of a VPC peering
 #' connection. You can do the following:
 #' 
@@ -28569,6 +28944,7 @@ ec2_modify_vpc_peering_connection_options <- function(AccepterPeeringConnectionO
 
 #' Modifies the instance tenancy attribute of the specified VPC
 #'
+#' @description
 #' Modifies the instance tenancy attribute of the specified VPC. You can
 #' change the instance tenancy attribute of a VPC to `default` only. You
 #' cannot change the instance tenancy attribute to `dedicated`.
@@ -28624,6 +29000,7 @@ ec2_modify_vpc_tenancy <- function(VpcId, InstanceTenancy, DryRun = NULL) {
 #' Modifies the customer gateway or the target gateway of an AWS
 #' Site-to-Site VPN connection
 #'
+#' @description
 #' Modifies the customer gateway or the target gateway of an AWS
 #' Site-to-Site VPN connection. To modify the target gateway, the following
 #' migration options are available:
@@ -28714,6 +29091,7 @@ ec2_modify_vpn_connection <- function(VpnConnectionId, TransitGatewayId = NULL, 
 
 #' Modifies the connection options for your Site-to-Site VPN connection
 #'
+#' @description
 #' Modifies the connection options for your Site-to-Site VPN connection.
 #' 
 #' When you modify the VPN connection options, the VPN endpoint IP
@@ -28780,6 +29158,7 @@ ec2_modify_vpn_connection_options <- function(VpnConnectionId, LocalIpv4NetworkC
 
 #' Modifies the VPN tunnel endpoint certificate
 #'
+#' @description
 #' Modifies the VPN tunnel endpoint certificate.
 #'
 #' @usage
@@ -28825,6 +29204,7 @@ ec2_modify_vpn_tunnel_certificate <- function(VpnConnectionId, VpnTunnelOutsideI
 #' Modifies the options for a VPN tunnel in an AWS Site-to-Site VPN
 #' connection
 #'
+#' @description
 #' Modifies the options for a VPN tunnel in an AWS Site-to-Site VPN
 #' connection. You can modify multiple options for a tunnel in a single
 #' request, but you can only modify one tunnel at a time. For more
@@ -28924,6 +29304,7 @@ ec2_modify_vpn_tunnel_options <- function(VpnConnectionId, VpnTunnelOutsideIpAdd
 
 #' Enables detailed monitoring for a running instance
 #'
+#' @description
 #' Enables detailed monitoring for a running instance. Otherwise, basic
 #' monitoring is enabled. For more information, see [Monitoring your
 #' instances and
@@ -28974,6 +29355,7 @@ ec2_monitor_instances <- function(InstanceIds, DryRun = NULL) {
 #' Moves an Elastic IP address from the EC2-Classic platform to the EC2-VPC
 #' platform
 #'
+#' @description
 #' Moves an Elastic IP address from the EC2-Classic platform to the EC2-VPC
 #' platform. The Elastic IP address must be allocated to your account for
 #' more than 24 hours, and it must not be associated with an instance.
@@ -29033,6 +29415,7 @@ ec2_move_address_to_vpc <- function(DryRun = NULL, PublicIp) {
 #' through bring your own IP addresses (BYOIP) and creates a corresponding
 #' address pool
 #'
+#' @description
 #' Provisions an IPv4 or IPv6 address range for use with your AWS resources
 #' through bring your own IP addresses (BYOIP) and creates a corresponding
 #' address pool. After the address range is provisioned, it is ready to be
@@ -29123,6 +29506,7 @@ ec2_provision_byoip_cidr <- function(Cidr, CidrAuthorizationContext = NULL, Publ
 #' Purchase a reservation with configurations that match those of your
 #' Dedicated Host
 #'
+#' @description
 #' Purchase a reservation with configurations that match those of your
 #' Dedicated Host. You must have active Dedicated Hosts in your account
 #' before you purchase a reservation. This action results in the specified
@@ -29196,6 +29580,7 @@ ec2_purchase_host_reservation <- function(ClientToken = NULL, CurrencyCode = NUL
 
 #' Purchases a Reserved Instance for use with your account
 #'
+#' @description
 #' Purchases a Reserved Instance for use with your account. With Reserved
 #' Instances, you pay a lower hourly rate compared to On-Demand instance
 #' pricing.
@@ -29268,6 +29653,7 @@ ec2_purchase_reserved_instances_offering <- function(InstanceCount, ReservedInst
 
 #' Purchases the Scheduled Instances with the specified schedule
 #'
+#' @description
 #' Purchases the Scheduled Instances with the specified schedule.
 #' 
 #' Scheduled Instances enable you to purchase Amazon EC2 compute capacity
@@ -29341,6 +29727,7 @@ ec2_purchase_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, 
 
 #' Requests a reboot of the specified instances
 #'
+#' @description
 #' Requests a reboot of the specified instances. This operation is
 #' asynchronous; it only queues a request to reboot the specified
 #' instances. The operation succeeds if the instances are valid and belong
@@ -29405,6 +29792,7 @@ ec2_reboot_instances <- function(InstanceIds, DryRun = NULL) {
 
 #' Registers an AMI
 #'
+#' @description
 #' Registers an AMI. When you're creating an AMI, this is the final step
 #' you must complete before you can launch an instance from the AMI. For
 #' more information about creating AMIs, see [Creating your own
@@ -29562,6 +29950,7 @@ ec2_register_image <- function(ImageLocation = NULL, Architecture = NULL, BlockD
 #' Registers a set of tag keys to include in scheduled event notifications
 #' for your resources
 #'
+#' @description
 #' Registers a set of tag keys to include in scheduled event notifications
 #' for your resources.
 #' 
@@ -29613,6 +30002,7 @@ ec2_register_instance_event_notification_attributes <- function(DryRun = NULL, I
 #' Registers members (network interfaces) with the transit gateway
 #' multicast group
 #'
+#' @description
 #' Registers members (network interfaces) with the transit gateway
 #' multicast group. A member is a network interface associated with a
 #' supported EC2 instance that receives multicast traffic. For information
@@ -29674,6 +30064,7 @@ ec2_register_transit_gateway_multicast_group_members <- function(TransitGatewayM
 #' Registers sources (network interfaces) with the specified transit
 #' gateway multicast group
 #'
+#' @description
 #' Registers sources (network interfaces) with the specified transit
 #' gateway multicast group.
 #' 
@@ -29736,6 +30127,7 @@ ec2_register_transit_gateway_multicast_group_sources <- function(TransitGatewayM
 #' Rejects a request to associate cross-account subnets with a transit
 #' gateway multicast domain
 #'
+#' @description
 #' Rejects a request to associate cross-account subnets with a transit
 #' gateway multicast domain.
 #'
@@ -29787,6 +30179,7 @@ ec2_reject_transit_gateway_multicast_domain_associations <- function(TransitGate
 
 #' Rejects a transit gateway peering attachment request
 #'
+#' @description
 #' Rejects a transit gateway peering attachment request.
 #'
 #' @usage
@@ -29829,6 +30222,7 @@ ec2_reject_transit_gateway_peering_attachment <- function(TransitGatewayAttachme
 
 #' Rejects a request to attach a VPC to a transit gateway
 #'
+#' @description
 #' Rejects a request to attach a VPC to a transit gateway.
 #' 
 #' The VPC attachment must be in the `pendingAcceptance` state. Use
@@ -29877,6 +30271,7 @@ ec2_reject_transit_gateway_vpc_attachment <- function(TransitGatewayAttachmentId
 #' Rejects one or more VPC endpoint connection requests to your VPC
 #' endpoint service
 #'
+#' @description
 #' Rejects one or more VPC endpoint connection requests to your VPC
 #' endpoint service.
 #'
@@ -29923,6 +30318,7 @@ ec2_reject_vpc_endpoint_connections <- function(DryRun = NULL, ServiceId, VpcEnd
 
 #' Rejects a VPC peering connection request
 #'
+#' @description
 #' Rejects a VPC peering connection request. The VPC peering connection
 #' must be in the `pending-acceptance` state. Use the
 #' DescribeVpcPeeringConnections request to view your outstanding VPC
@@ -29969,6 +30365,7 @@ ec2_reject_vpc_peering_connection <- function(DryRun = NULL, VpcPeeringConnectio
 
 #' Releases the specified Elastic IP address
 #'
+#' @description
 #' Releases the specified Elastic IP address.
 #' 
 #' \[EC2-Classic, default VPC\] Releasing an Elastic IP address
@@ -30059,6 +30456,7 @@ ec2_release_address <- function(AllocationId = NULL, PublicIp = NULL, NetworkBor
 #' When you no longer want to use an On-Demand Dedicated Host it can be
 #' released
 #'
+#' @description
 #' When you no longer want to use an On-Demand Dedicated Host it can be
 #' released. On-Demand billing is stopped and the host goes into `released`
 #' state. The host ID of Dedicated Hosts that have been released can no
@@ -30109,6 +30507,7 @@ ec2_release_hosts <- function(HostIds) {
 
 #' Replaces an IAM instance profile for the specified running instance
 #'
+#' @description
 #' Replaces an IAM instance profile for the specified running instance. You
 #' can use this action to change the IAM instance profile that's associated
 #' with an instance without having to disassociate the existing IAM
@@ -30156,6 +30555,7 @@ ec2_replace_iam_instance_profile_association <- function(IamInstanceProfile, Ass
 
 #' Changes which network ACL a subnet is associated with
 #'
+#' @description
 #' Changes which network ACL a subnet is associated with. By default when
 #' you create a subnet, it's automatically associated with the default
 #' network ACL. For more information, see [Network
@@ -30216,6 +30616,7 @@ ec2_replace_network_acl_association <- function(AssociationId, DryRun = NULL, Ne
 
 #' Replaces an entry (rule) in a network ACL
 #'
+#' @description
 #' Replaces an entry (rule) in a network ACL. For more information, see
 #' [Network ACLs](https://docs.aws.amazon.com/vpc/latest/userguide/) in the
 #' *Amazon Virtual Private Cloud User Guide*.
@@ -30315,6 +30716,7 @@ ec2_replace_network_acl_entry <- function(CidrBlock = NULL, DryRun = NULL, Egres
 
 #' Replaces an existing route within a route table in a VPC
 #'
+#' @description
 #' Replaces an existing route within a route table in a VPC. You must
 #' provide only one of the following: internet gateway, virtual private
 #' gateway, NAT instance, NAT gateway, VPC peering connection, network
@@ -30412,6 +30814,7 @@ ec2_replace_route <- function(DestinationCidrBlock = NULL, DestinationIpv6CidrBl
 #' Changes the route table associated with a given subnet, internet
 #' gateway, or virtual private gateway in a VPC
 #'
+#' @description
 #' Changes the route table associated with a given subnet, internet
 #' gateway, or virtual private gateway in a VPC. After the operation
 #' completes, the subnet or gateway uses the routes in the new route table.
@@ -30475,6 +30878,7 @@ ec2_replace_route_table_association <- function(AssociationId, DryRun = NULL, Ro
 #' Replaces the specified route in the specified transit gateway route
 #' table
 #'
+#' @description
 #' Replaces the specified route in the specified transit gateway route
 #' table.
 #'
@@ -30526,6 +30930,7 @@ ec2_replace_transit_gateway_route <- function(DestinationCidrBlock, TransitGatew
 
 #' Submits feedback about the status of an instance
 #'
+#' @description
 #' Submits feedback about the status of an instance. The instance must be
 #' in the `running` state. If your experience with the instance differs
 #' from the instance status returned by DescribeInstanceStatus, use
@@ -30618,6 +31023,7 @@ ec2_report_instance_status <- function(Description = NULL, DryRun = NULL, EndTim
 
 #' Creates a Spot Fleet request
 #'
+#' @description
 #' Creates a Spot Fleet request.
 #' 
 #' The Spot Fleet request specifies the total target capacity and the
@@ -30981,6 +31387,7 @@ ec2_request_spot_fleet <- function(DryRun = NULL, SpotFleetRequestConfig) {
 
 #' Creates a Spot Instance request
 #'
+#' @description
 #' Creates a Spot Instance request.
 #' 
 #' For more information, see [Spot Instance
@@ -31260,6 +31667,7 @@ ec2_request_spot_instances <- function(AvailabilityZoneGroup = NULL, BlockDurati
 #' Resets the default customer master key (CMK) for EBS encryption for your
 #' account in this Region to the AWS managed CMK for EBS
 #'
+#' @description
 #' Resets the default customer master key (CMK) for EBS encryption for your
 #' account in this Region to the AWS managed CMK for EBS.
 #' 
@@ -31307,6 +31715,7 @@ ec2_reset_ebs_default_kms_key_id <- function(DryRun = NULL) {
 #' Resets the specified attribute of the specified Amazon FPGA Image (AFI)
 #' to its default value
 #'
+#' @description
 #' Resets the specified attribute of the specified Amazon FPGA Image (AFI)
 #' to its default value. You can only reset the load permission attribute.
 #'
@@ -31351,6 +31760,7 @@ ec2_reset_fpga_image_attribute <- function(DryRun = NULL, FpgaImageId, Attribute
 
 #' Resets an attribute of an AMI to its default value
 #'
+#' @description
 #' Resets an attribute of an AMI to its default value.
 #' 
 #' The productCodes attribute can't be reset.
@@ -31407,6 +31817,7 @@ ec2_reset_image_attribute <- function(Attribute, ImageId, DryRun = NULL) {
 
 #' Resets an attribute of an instance to its default value
 #'
+#' @description
 #' Resets an attribute of an instance to its default value. To reset the
 #' `kernel` or `ramdisk`, the instance must be in a stopped state. To reset
 #' the `sourceDestCheck`, the instance can be either running or stopped.
@@ -31473,6 +31884,7 @@ ec2_reset_instance_attribute <- function(Attribute, DryRun = NULL, InstanceId) {
 
 #' Resets a network interface attribute
 #'
+#' @description
 #' Resets a network interface attribute. You can specify only one attribute
 #' at a time.
 #'
@@ -31518,6 +31930,7 @@ ec2_reset_network_interface_attribute <- function(DryRun = NULL, NetworkInterfac
 
 #' Resets permission settings for the specified snapshot
 #'
+#' @description
 #' Resets permission settings for the specified snapshot.
 #' 
 #' For more information about modifying snapshot permissions, see [Sharing
@@ -31578,6 +31991,7 @@ ec2_reset_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL) {
 #' Restores an Elastic IP address that was previously moved to the EC2-VPC
 #' platform back to the EC2-Classic platform
 #'
+#' @description
 #' Restores an Elastic IP address that was previously moved to the EC2-VPC
 #' platform back to the EC2-Classic platform. You cannot move an Elastic IP
 #' address that was originally allocated for use in EC2-VPC. The Elastic IP
@@ -31632,6 +32046,7 @@ ec2_restore_address_to_classic <- function(DryRun = NULL, PublicIp) {
 #' Restores the entries from a previous version of a managed prefix list to
 #' a new version of the prefix list
 #'
+#' @description
 #' Restores the entries from a previous version of a managed prefix list to
 #' a new version of the prefix list.
 #'
@@ -31679,6 +32094,7 @@ ec2_restore_managed_prefix_list_version <- function(DryRun = NULL, PrefixListId,
 
 #' Removes an ingress authorization rule from a Client VPN endpoint
 #'
+#' @description
 #' Removes an ingress authorization rule from a Client VPN endpoint.
 #'
 #' @usage
@@ -31730,6 +32146,7 @@ ec2_revoke_client_vpn_ingress <- function(ClientVpnEndpointId, TargetNetworkCidr
 #' &#91;VPC only&#93; Removes the specified egress rules from a security
 #' group for EC2-VPC
 #'
+#' @description
 #' \[VPC only\] Removes the specified egress rules from a security group
 #' for EC2-VPC. This action does not apply to security groups for use in
 #' EC2-Classic. To remove a rule, the values that you specify (for example,
@@ -31846,6 +32263,7 @@ ec2_revoke_security_group_egress <- function(DryRun = NULL, GroupId, IpPermissio
 
 #' Removes the specified ingress rules from a security group
 #'
+#' @description
 #' Removes the specified ingress rules from a security group. To remove a
 #' rule, the values that you specify (for example, ports) must match the
 #' existing rule's values exactly.
@@ -31981,6 +32399,7 @@ ec2_revoke_security_group_ingress <- function(CidrIp = NULL, FromPort = NULL, Gr
 #' Launches the specified number of instances using an AMI for which you
 #' have permissions
 #'
+#' @description
 #' Launches the specified number of instances using an AMI for which you
 #' have permissions.
 #' 
@@ -32486,6 +32905,7 @@ ec2_run_instances <- function(BlockDeviceMappings = NULL, ImageId = NULL, Instan
 
 #' Launches the specified Scheduled Instances
 #'
+#' @description
 #' Launches the specified Scheduled Instances.
 #' 
 #' Before you can launch a Scheduled Instance, you must purchase it and
@@ -32662,6 +33082,7 @@ ec2_run_scheduled_instances <- function(ClientToken = NULL, DryRun = NULL, Insta
 
 #' Searches for routes in the specified local gateway route table
 #'
+#' @description
 #' Searches for routes in the specified local gateway route table.
 #'
 #' @usage
@@ -32720,6 +33141,7 @@ ec2_search_local_gateway_routes <- function(LocalGatewayRouteTableId, Filters, M
 #' Searches one or more transit gateway multicast groups and returns the
 #' group membership information
 #'
+#' @description
 #' Searches one or more transit gateway multicast groups and returns the
 #' group membership information.
 #'
@@ -32804,6 +33226,7 @@ ec2_search_transit_gateway_multicast_groups <- function(TransitGatewayMulticastD
 
 #' Searches for routes in the specified transit gateway route table
 #'
+#' @description
 #' Searches for routes in the specified transit gateway route table.
 #'
 #' @usage
@@ -32890,6 +33313,7 @@ ec2_search_transit_gateway_routes <- function(TransitGatewayRouteTableId, Filter
 #' trigger a kernel panic (on Linux instances), or a blue screen/stop error
 #' (on Windows instances)
 #'
+#' @description
 #' Sends a diagnostic interrupt to the specified Amazon EC2 instance to
 #' trigger a *kernel panic* (on Linux instances), or a *blue screen*/*stop
 #' error* (on Windows instances). For instances based on Intel and AMD
@@ -32951,6 +33375,7 @@ ec2_send_diagnostic_interrupt <- function(InstanceId, DryRun = NULL) {
 
 #' Starts an Amazon EBS-backed instance that you've previously stopped
 #'
+#' @description
 #' Starts an Amazon EBS-backed instance that you've previously stopped.
 #' 
 #' Instances that use Amazon EBS volumes as their root devices can be
@@ -33030,6 +33455,7 @@ ec2_start_instances <- function(InstanceIds, AdditionalInfo = NULL, DryRun = NUL
 
 #' Starts analyzing the specified path
 #'
+#' @description
 #' Starts analyzing the specified path. If the path is reachable, the
 #' operation returns the shortest feasible path.
 #'
@@ -33095,6 +33521,7 @@ ec2_start_network_insights_analysis <- function(NetworkInsightsPathId, FilterInA
 #' Initiates the verification process to prove that the service provider
 #' owns the private DNS name domain for the endpoint service
 #'
+#' @description
 #' Initiates the verification process to prove that the service provider
 #' owns the private DNS name domain for the endpoint service.
 #' 
@@ -33147,6 +33574,7 @@ ec2_start_vpc_endpoint_service_private_dns_verification <- function(DryRun = NUL
 
 #' Stops an Amazon EBS-backed instance
 #'
+#' @description
 #' Stops an Amazon EBS-backed instance.
 #' 
 #' You can use the Stop action to hibernate an instance if the instance is
@@ -33266,6 +33694,7 @@ ec2_stop_instances <- function(InstanceIds, Hibernate = NULL, DryRun = NULL, For
 
 #' Terminates active Client VPN endpoint connections
 #'
+#' @description
 #' Terminates active Client VPN endpoint connections. This action can be
 #' used to terminate a specific client connection, or up to five
 #' connections established by a specific user.
@@ -33316,6 +33745,7 @@ ec2_terminate_client_vpn_connections <- function(ClientVpnEndpointId, Connection
 
 #' Shuts down the specified instances
 #'
+#' @description
 #' Shuts down the specified instances. This operation is idempotent; if you
 #' terminate an instance more than once, each call succeeds.
 #' 
@@ -33400,6 +33830,7 @@ ec2_terminate_instances <- function(InstanceIds, DryRun = NULL) {
 
 #' Unassigns one or more IPv6 addresses from a network interface
 #'
+#' @description
 #' Unassigns one or more IPv6 addresses from a network interface.
 #'
 #' @usage
@@ -33441,6 +33872,7 @@ ec2_unassign_ipv_6_addresses <- function(Ipv6Addresses, NetworkInterfaceId) {
 #' Unassigns one or more secondary private IP addresses from a network
 #' interface
 #'
+#' @description
 #' Unassigns one or more secondary private IP addresses from a network
 #' interface.
 #'
@@ -33497,6 +33929,7 @@ ec2_unassign_private_ip_addresses <- function(NetworkInterfaceId, PrivateIpAddre
 
 #' Disables detailed monitoring for a running instance
 #'
+#' @description
 #' Disables detailed monitoring for a running instance. For more
 #' information, see [Monitoring your instances and
 #' volumes](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html)
@@ -33544,6 +33977,7 @@ ec2_unmonitor_instances <- function(InstanceIds, DryRun = NULL) {
 #' &#91;VPC only&#93; Updates the description of an egress (outbound)
 #' security group rule
 #'
+#' @description
 #' \[VPC only\] Updates the description of an egress (outbound) security
 #' group rule. You can replace an existing description, or add a
 #' description to a rule that did not have one previously.
@@ -33656,6 +34090,7 @@ ec2_update_security_group_rule_descriptions_egress <- function(DryRun = NULL, Gr
 
 #' Updates the description of an ingress (inbound) security group rule
 #'
+#' @description
 #' Updates the description of an ingress (inbound) security group rule. You
 #' can replace an existing description, or add a description to a rule that
 #' did not have one previously.
@@ -33770,6 +34205,7 @@ ec2_update_security_group_rule_descriptions_ingress <- function(DryRun = NULL, G
 #' Stops advertising an address range that is provisioned as an address
 #' pool
 #'
+#' @description
 #' Stops advertising an address range that is provisioned as an address
 #' pool.
 #' 

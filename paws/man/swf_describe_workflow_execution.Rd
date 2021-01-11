@@ -15,8 +15,7 @@ swf_describe_workflow_execution(domain, execution)
 \description{
 Returns information about the specified workflow execution including its
 type and some statistics.
-}
-\details{
+
 This operation is eventually consistent. The results are best effort and
 may not exactly reflect recent updates and changes.
 

@@ -40,8 +40,7 @@ or 3). For example, specify 31536000 for one year.}
 \description{
 Describes the Dedicated Host reservations that are available to
 purchase.
-}
-\details{
+
 The results describe all of the Dedicated Host reservation offerings,
 including offerings that might not match the instance family and Region
 of your Dedicated Hosts. When purchasing an offering, ensure that the

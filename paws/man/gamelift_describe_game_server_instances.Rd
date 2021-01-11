@@ -28,8 +28,7 @@ value.}
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}
-}
-\details{
+
 Retrieves status information about the Amazon EC2 instances associated
 with a GameLift FleetIQ game server group. Use this operation to detect
 when instances are active or not available to host new game servers. If

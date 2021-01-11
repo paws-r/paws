@@ -22,8 +22,7 @@ of the offerings. You can call the DescribeReservedNodeOfferings API to
 obtain the available reserved node offerings. You can call this API by
 providing a specific reserved node offering and the number of nodes you
 want to reserve.
-}
-\details{
+
 For more information about reserved node offerings, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html}{Purchasing Reserved Nodes}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }

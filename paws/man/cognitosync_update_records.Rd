@@ -26,8 +26,7 @@ cognitosync_update_records(IdentityPoolId, IdentityId, DatasetName,
 \description{
 Posts updates to records and adds and deletes records for a dataset and
 user.
-}
-\details{
+
 The sync count in the record patch is your last known sync count for
 that record. The server will reject an UpdateRecords request with a
 ResourceConflictException if you try to patch a record with a new value

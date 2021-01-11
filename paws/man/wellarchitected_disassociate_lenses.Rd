@@ -13,8 +13,7 @@ wellarchitected_disassociate_lenses(WorkloadId, LensAliases)
 }
 \description{
 Disassociate a lens from a workload.
-}
-\details{
+
 The AWS Well-Architected Framework lens (\code{wellarchitected}) cannot be
 removed from a workload.
 }

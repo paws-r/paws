@@ -5,6 +5,7 @@ NULL
 
 #' Creates a device pool
 #'
+#' @description
 #' Creates a device pool.
 #'
 #' @usage
@@ -76,6 +77,7 @@ devicefarm_create_device_pool <- function(projectArn, name, description = NULL, 
 #' Creates a profile that can be applied to one or more private fleet
 #' device instances
 #'
+#' @description
 #' Creates a profile that can be applied to one or more private fleet
 #' device instances.
 #'
@@ -130,6 +132,7 @@ devicefarm_create_instance_profile <- function(name, description = NULL, package
 
 #' Creates a network profile
 #'
+#' @description
 #' Creates a network profile.
 #'
 #' @usage
@@ -200,6 +203,7 @@ devicefarm_create_network_profile <- function(projectArn, name, description = NU
 
 #' Creates a project
 #'
+#' @description
 #' Creates a project.
 #'
 #' @usage
@@ -248,6 +252,7 @@ devicefarm_create_project <- function(name, defaultJobTimeoutMinutes = NULL) {
 
 #' Specifies and starts a remote access session
 #'
+#' @description
 #' Specifies and starts a remote access session.
 #'
 #' @usage
@@ -363,6 +368,7 @@ devicefarm_create_remote_access_session <- function(projectArn, deviceArn, insta
 
 #' Creates a Selenium testing project
 #'
+#' @description
 #' Creates a Selenium testing project. Projects are used to track
 #' TestGridSession instances.
 #'
@@ -403,6 +409,7 @@ devicefarm_create_test_grid_project <- function(name, description = NULL) {
 #' Creates a signed, short-term URL that can be passed to a Selenium
 #' RemoteWebDriver constructor
 #'
+#' @description
 #' Creates a signed, short-term URL that can be passed to a Selenium
 #' `RemoteWebDriver` constructor.
 #'
@@ -443,6 +450,7 @@ devicefarm_create_test_grid_url <- function(projectArn, expiresInSeconds) {
 
 #' Uploads an app or test scripts
 #'
+#' @description
 #' Uploads an app or test scripts.
 #'
 #' @usage
@@ -570,6 +578,7 @@ devicefarm_create_upload <- function(projectArn, name, type, contentType = NULL)
 #' Creates a configuration record in Device Farm for your Amazon Virtual
 #' Private Cloud (VPC) endpoint
 #'
+#' @description
 #' Creates a configuration record in Device Farm for your Amazon Virtual
 #' Private Cloud (VPC) endpoint.
 #'
@@ -618,6 +627,7 @@ devicefarm_create_vpce_configuration <- function(vpceConfigurationName, vpceServ
 
 #' Deletes a device pool given the pool ARN
 #'
+#' @description
 #' Deletes a device pool given the pool ARN. Does not allow deletion of
 #' curated pools owned by the system.
 #'
@@ -665,6 +675,7 @@ devicefarm_delete_device_pool <- function(arn) {
 #' Deletes a profile that can be applied to one or more private device
 #' instances
 #'
+#' @description
 #' Deletes a profile that can be applied to one or more private device
 #' instances.
 #'
@@ -703,6 +714,7 @@ devicefarm_delete_instance_profile <- function(arn) {
 
 #' Deletes a network profile
 #'
+#' @description
 #' Deletes a network profile.
 #'
 #' @usage
@@ -739,6 +751,7 @@ devicefarm_delete_network_profile <- function(arn) {
 
 #' Deletes an AWS Device Farm project, given the project ARN
 #'
+#' @description
 #' Deletes an AWS Device Farm project, given the project ARN.
 #' 
 #' Deleting this resource does not stop an in-progress run.
@@ -786,6 +799,7 @@ devicefarm_delete_project <- function(arn) {
 
 #' Deletes a completed remote access session and its results
 #'
+#' @description
 #' Deletes a completed remote access session and its results.
 #'
 #' @usage
@@ -831,6 +845,7 @@ devicefarm_delete_remote_access_session <- function(arn) {
 
 #' Deletes the run, given the run ARN
 #'
+#' @description
 #' Deletes the run, given the run ARN.
 #' 
 #' Deleting this resource does not stop an in-progress run.
@@ -877,6 +892,7 @@ devicefarm_delete_run <- function(arn) {
 
 #' Deletes a Selenium testing project and all content generated under it
 #'
+#' @description
 #' Deletes a Selenium testing project and all content generated under it.
 #' 
 #' You cannot undo this operation.
@@ -918,6 +934,7 @@ devicefarm_delete_test_grid_project <- function(projectArn) {
 
 #' Deletes an upload given the upload ARN
 #'
+#' @description
 #' Deletes an upload given the upload ARN.
 #'
 #' @usage
@@ -964,6 +981,7 @@ devicefarm_delete_upload <- function(arn) {
 #' Deletes a configuration for your Amazon Virtual Private Cloud (VPC)
 #' endpoint
 #'
+#' @description
 #' Deletes a configuration for your Amazon Virtual Private Cloud (VPC)
 #' endpoint.
 #'
@@ -1003,6 +1021,7 @@ devicefarm_delete_vpce_configuration <- function(arn) {
 #' Returns the number of unmetered iOS or unmetered Android devices that
 #' have been purchased by the account
 #'
+#' @description
 #' Returns the number of unmetered iOS or unmetered Android devices that
 #' have been purchased by the account.
 #'
@@ -1043,6 +1062,7 @@ devicefarm_get_account_settings <- function() {
 
 #' Gets information about a unique device type
 #'
+#' @description
 #' Gets information about a unique device type.
 #'
 #' @usage
@@ -1088,6 +1108,7 @@ devicefarm_get_device <- function(arn) {
 #' Returns information about a device instance that belongs to a private
 #' device fleet
 #'
+#' @description
 #' Returns information about a device instance that belongs to a private
 #' device fleet.
 #'
@@ -1126,6 +1147,7 @@ devicefarm_get_device_instance <- function(arn) {
 
 #' Gets information about a device pool
 #'
+#' @description
 #' Gets information about a device pool.
 #'
 #' @usage
@@ -1171,6 +1193,7 @@ devicefarm_get_device_pool <- function(arn) {
 
 #' Gets information about compatibility with a device pool
 #'
+#' @description
 #' Gets information about compatibility with a device pool.
 #'
 #' @usage
@@ -1307,6 +1330,7 @@ devicefarm_get_device_pool_compatibility <- function(devicePoolArn, appArn = NUL
 
 #' Returns information about the specified instance profile
 #'
+#' @description
 #' Returns information about the specified instance profile.
 #'
 #' @usage
@@ -1343,6 +1367,7 @@ devicefarm_get_instance_profile <- function(arn) {
 
 #' Gets information about a job
 #'
+#' @description
 #' Gets information about a job.
 #'
 #' @usage
@@ -1387,6 +1412,7 @@ devicefarm_get_job <- function(arn) {
 
 #' Returns information about a network profile
 #'
+#' @description
 #' Returns information about a network profile.
 #'
 #' @usage
@@ -1424,6 +1450,7 @@ devicefarm_get_network_profile <- function(arn) {
 #' Gets the current status and future status of all offerings purchased by
 #' an AWS account
 #'
+#' @description
 #' Gets the current status and future status of all offerings purchased by
 #' an AWS account. The response indicates how many offerings are currently
 #' available and the offerings that will be available in the next period.
@@ -1476,6 +1503,7 @@ devicefarm_get_offering_status <- function(nextToken = NULL) {
 
 #' Gets information about a project
 #'
+#' @description
 #' Gets information about a project.
 #'
 #' @usage
@@ -1520,6 +1548,7 @@ devicefarm_get_project <- function(arn) {
 
 #' Returns a link to a currently running remote access session
 #'
+#' @description
 #' Returns a link to a currently running remote access session.
 #'
 #' @usage
@@ -1565,6 +1594,7 @@ devicefarm_get_remote_access_session <- function(arn) {
 
 #' Gets information about a run
 #'
+#' @description
 #' Gets information about a run.
 #'
 #' @usage
@@ -1609,6 +1639,7 @@ devicefarm_get_run <- function(arn) {
 
 #' Gets information about a suite
 #'
+#' @description
 #' Gets information about a suite.
 #'
 #' @usage
@@ -1653,6 +1684,7 @@ devicefarm_get_suite <- function(arn) {
 
 #' Gets information about a test
 #'
+#' @description
 #' Gets information about a test.
 #'
 #' @usage
@@ -1697,6 +1729,7 @@ devicefarm_get_test <- function(arn) {
 
 #' Retrieves information about a Selenium testing project
 #'
+#' @description
 #' Retrieves information about a Selenium testing project.
 #'
 #' @usage
@@ -1735,6 +1768,7 @@ devicefarm_get_test_grid_project <- function(projectArn) {
 #' A session is an instance of a browser created through a RemoteWebDriver
 #' with the URL from CreateTestGridUrlResult$url
 #'
+#' @description
 #' A session is an instance of a browser created through a
 #' `RemoteWebDriver` with the URL from CreateTestGridUrlResult$url. You can
 #' use the following to look up sessions:
@@ -1784,6 +1818,7 @@ devicefarm_get_test_grid_session <- function(projectArn = NULL, sessionId = NULL
 
 #' Gets information about an upload
 #'
+#' @description
 #' Gets information about an upload.
 #'
 #' @usage
@@ -1829,6 +1864,7 @@ devicefarm_get_upload <- function(arn) {
 #' Returns information about the configuration settings for your Amazon
 #' Virtual Private Cloud (VPC) endpoint
 #'
+#' @description
 #' Returns information about the configuration settings for your Amazon
 #' Virtual Private Cloud (VPC) endpoint.
 #'
@@ -1867,6 +1903,7 @@ devicefarm_get_vpce_configuration <- function(arn) {
 
 #' Installs an application to the device in a remote access session
 #'
+#' @description
 #' Installs an application to the device in a remote access session. For
 #' Android applications, the file must be in .apk format. For iOS
 #' applications, the file must be in .ipa format.
@@ -1919,6 +1956,7 @@ devicefarm_install_to_remote_access_session <- function(remoteAccessSessionArn, 
 
 #' Gets information about artifacts
 #'
+#' @description
 #' Gets information about artifacts.
 #'
 #' @usage
@@ -1979,6 +2017,7 @@ devicefarm_list_artifacts <- function(arn, type, nextToken = NULL) {
 #' Returns information about the private device instances associated with
 #' one or more AWS accounts
 #'
+#' @description
 #' Returns information about the private device instances associated with
 #' one or more AWS accounts.
 #'
@@ -2021,6 +2060,7 @@ devicefarm_list_device_instances <- function(maxResults = NULL, nextToken = NULL
 
 #' Gets information about device pools
 #'
+#' @description
 #' Gets information about device pools.
 #'
 #' @usage
@@ -2081,6 +2121,7 @@ devicefarm_list_device_pools <- function(arn, type = NULL, nextToken = NULL) {
 
 #' Gets information about unique device types
 #'
+#' @description
 #' Gets information about unique device types.
 #'
 #' @usage
@@ -2206,6 +2247,7 @@ devicefarm_list_devices <- function(arn = NULL, nextToken = NULL, filters = NULL
 
 #' Returns information about all the instance profiles in an AWS account
 #'
+#' @description
 #' Returns information about all the instance profiles in an AWS account.
 #'
 #' @usage
@@ -2247,6 +2289,7 @@ devicefarm_list_instance_profiles <- function(maxResults = NULL, nextToken = NUL
 
 #' Gets information about jobs for a given test run
 #'
+#' @description
 #' Gets information about jobs for a given test run.
 #'
 #' @usage
@@ -2296,6 +2339,7 @@ devicefarm_list_jobs <- function(arn, nextToken = NULL) {
 
 #' Returns the list of available network profiles
 #'
+#' @description
 #' Returns the list of available network profiles.
 #'
 #' @usage
@@ -2340,6 +2384,7 @@ devicefarm_list_network_profiles <- function(arn, type = NULL, nextToken = NULL)
 
 #' Returns a list of offering promotions
 #'
+#' @description
 #' Returns a list of offering promotions. Each offering promotion record
 #' contains the ID and description of the promotion. The API returns a
 #' `NotEligible` error if the caller is not permitted to invoke the
@@ -2383,6 +2428,7 @@ devicefarm_list_offering_promotions <- function(nextToken = NULL) {
 #' Returns a list of all historical purchases, renewals, and system renewal
 #' transactions for an AWS account
 #'
+#' @description
 #' Returns a list of all historical purchases, renewals, and system renewal
 #' transactions for an AWS account. The list is paginated and ordered by a
 #' descending timestamp (most recent transactions are first). The API
@@ -2436,6 +2482,7 @@ devicefarm_list_offering_transactions <- function(nextToken = NULL) {
 #' Returns a list of products or offerings that the user can manage through
 #' the API
 #'
+#' @description
 #' Returns a list of products or offerings that the user can manage through
 #' the API. Each offering record indicates the recurring price per unit and
 #' the frequency for that offering. The API returns a `NotEligible` error
@@ -2488,6 +2535,7 @@ devicefarm_list_offerings <- function(nextToken = NULL) {
 
 #' Gets information about projects
 #'
+#' @description
 #' Gets information about projects.
 #'
 #' @usage
@@ -2540,6 +2588,7 @@ devicefarm_list_projects <- function(arn = NULL, nextToken = NULL) {
 
 #' Returns a list of all currently running remote access sessions
 #'
+#' @description
 #' Returns a list of all currently running remote access sessions.
 #'
 #' @usage
@@ -2591,6 +2640,7 @@ devicefarm_list_remote_access_sessions <- function(arn, nextToken = NULL) {
 
 #' Gets information about runs, given an AWS Device Farm project ARN
 #'
+#' @description
 #' Gets information about runs, given an AWS Device Farm project ARN.
 #'
 #' @usage
@@ -2641,6 +2691,7 @@ devicefarm_list_runs <- function(arn, nextToken = NULL) {
 
 #' Gets information about samples, given an AWS Device Farm job ARN
 #'
+#' @description
 #' Gets information about samples, given an AWS Device Farm job ARN.
 #'
 #' @usage
@@ -2691,6 +2742,7 @@ devicefarm_list_samples <- function(arn, nextToken = NULL) {
 
 #' Gets information about test suites for a given job
 #'
+#' @description
 #' Gets information about test suites for a given job.
 #'
 #' @usage
@@ -2741,6 +2793,7 @@ devicefarm_list_suites <- function(arn, nextToken = NULL) {
 
 #' List the tags for an AWS Device Farm resource
 #'
+#' @description
 #' List the tags for an AWS Device Farm resource.
 #'
 #' @usage
@@ -2781,6 +2834,7 @@ devicefarm_list_tags_for_resource <- function(ResourceARN) {
 
 #' Gets a list of all Selenium testing projects in your account
 #'
+#' @description
 #' Gets a list of all Selenium testing projects in your account.
 #'
 #' @usage
@@ -2819,6 +2873,7 @@ devicefarm_list_test_grid_projects <- function(maxResult = NULL, nextToken = NUL
 
 #' Returns a list of the actions taken in a TestGridSession
 #'
+#' @description
 #' Returns a list of the actions taken in a TestGridSession.
 #'
 #' @usage
@@ -2860,6 +2915,7 @@ devicefarm_list_test_grid_session_actions <- function(sessionArn, maxResult = NU
 
 #' Retrieves a list of artifacts created during the session
 #'
+#' @description
 #' Retrieves a list of artifacts created during the session.
 #'
 #' @usage
@@ -2903,6 +2959,7 @@ devicefarm_list_test_grid_session_artifacts <- function(sessionArn, type = NULL,
 
 #' Retrieves a list of sessions for a TestGridProject
 #'
+#' @description
 #' Retrieves a list of sessions for a TestGridProject.
 #'
 #' @usage
@@ -2963,6 +3020,7 @@ devicefarm_list_test_grid_sessions <- function(projectArn, status = NULL, creati
 
 #' Gets information about tests in a given test suite
 #'
+#' @description
 #' Gets information about tests in a given test suite.
 #'
 #' @usage
@@ -3013,6 +3071,7 @@ devicefarm_list_tests <- function(arn, nextToken = NULL) {
 
 #' Gets information about unique problems, such as exceptions or crashes
 #'
+#' @description
 #' Gets information about unique problems, such as exceptions or crashes.
 #' 
 #' Unique problems are defined as a single instance of an error across a
@@ -3070,6 +3129,7 @@ devicefarm_list_unique_problems <- function(arn, nextToken = NULL) {
 
 #' Gets information about uploads, given an AWS Device Farm project ARN
 #'
+#' @description
 #' Gets information about uploads, given an AWS Device Farm project ARN.
 #'
 #' @usage
@@ -3190,6 +3250,7 @@ devicefarm_list_uploads <- function(arn, type = NULL, nextToken = NULL) {
 #' Returns information about all Amazon Virtual Private Cloud (VPC)
 #' endpoint configurations in the AWS account
 #'
+#' @description
 #' Returns information about all Amazon Virtual Private Cloud (VPC)
 #' endpoint configurations in the AWS account.
 #'
@@ -3232,6 +3293,7 @@ devicefarm_list_vpce_configurations <- function(maxResults = NULL, nextToken = N
 
 #' Immediately purchases offerings for an AWS account
 #'
+#' @description
 #' Immediately purchases offerings for an AWS account. Offerings renew with
 #' the latest total purchased quantity for an offering, unless the renewal
 #' was overridden. The API returns a `NotEligible` error if the user is not
@@ -3286,6 +3348,7 @@ devicefarm_purchase_offering <- function(offeringId = NULL, quantity = NULL, off
 #' Explicitly sets the quantity of devices to renew for an offering,
 #' starting from the effectiveDate of the next period
 #'
+#' @description
 #' Explicitly sets the quantity of devices to renew for an offering,
 #' starting from the `effectiveDate` of the next period. The API returns a
 #' `NotEligible` error if the user is not permitted to invoke the
@@ -3337,6 +3400,7 @@ devicefarm_renew_offering <- function(offeringId = NULL, quantity = NULL) {
 
 #' Schedules a run
 #'
+#' @description
 #' Schedules a run.
 #'
 #' @usage
@@ -3466,6 +3530,7 @@ devicefarm_schedule_run <- function(projectArn, appArn = NULL, devicePoolArn = N
 
 #' Initiates a stop request for the current job
 #'
+#' @description
 #' Initiates a stop request for the current job. AWS Device Farm
 #' immediately stops the job on the device where tests have not started.
 #' You are not billed for this device. On the device where tests have
@@ -3508,6 +3573,7 @@ devicefarm_stop_job <- function(arn) {
 
 #' Ends a specified remote access session
 #'
+#' @description
 #' Ends a specified remote access session.
 #'
 #' @usage
@@ -3544,6 +3610,7 @@ devicefarm_stop_remote_access_session <- function(arn) {
 
 #' Initiates a stop request for the current test run
 #'
+#' @description
 #' Initiates a stop request for the current test run. AWS Device Farm
 #' immediately stops the run on devices where tests have not started. You
 #' are not billed for these devices. On devices where tests have started
@@ -3595,6 +3662,7 @@ devicefarm_stop_run <- function(arn) {
 #' Associates the specified tags to a resource with the specified
 #' resourceArn
 #'
+#' @description
 #' Associates the specified tags to a resource with the specified
 #' `resourceArn`. If existing tags on a resource are not specified in the
 #' request parameters, they are not changed. When a resource is deleted,
@@ -3647,6 +3715,7 @@ devicefarm_tag_resource <- function(ResourceARN, Tags) {
 
 #' Deletes the specified tags from a resource
 #'
+#' @description
 #' Deletes the specified tags from a resource.
 #'
 #' @usage
@@ -3691,6 +3760,7 @@ devicefarm_untag_resource <- function(ResourceARN, TagKeys) {
 
 #' Updates information about a private device instance
 #'
+#' @description
 #' Updates information about a private device instance.
 #'
 #' @usage
@@ -3735,6 +3805,7 @@ devicefarm_update_device_instance <- function(arn, profileArn = NULL, labels = N
 #' Modifies the name, description, and rules in a device pool given the
 #' attributes and the pool ARN
 #'
+#' @description
 #' Modifies the name, description, and rules in a device pool given the
 #' attributes and the pool ARN. Rule updates are all-or-nothing, meaning
 #' they can only be updated as a whole (or not at all).
@@ -3828,6 +3899,7 @@ devicefarm_update_device_pool <- function(arn, name = NULL, description = NULL, 
 
 #' Updates information about an existing private device instance profile
 #'
+#' @description
 #' Updates information about an existing private device instance profile.
 #'
 #' @usage
@@ -3883,6 +3955,7 @@ devicefarm_update_instance_profile <- function(arn, name = NULL, description = N
 
 #' Updates the network profile
 #'
+#' @description
 #' Updates the network profile.
 #'
 #' @usage
@@ -3957,6 +4030,7 @@ devicefarm_update_network_profile <- function(arn, name = NULL, description = NU
 #' Modifies the specified project name, given the project ARN and a new
 #' name
 #'
+#' @description
 #' Modifies the specified project name, given the project ARN and a new
 #' name.
 #'
@@ -4009,6 +4083,7 @@ devicefarm_update_project <- function(arn, name = NULL, defaultJobTimeoutMinutes
 
 #' Change details of a project
 #'
+#' @description
 #' Change details of a project.
 #'
 #' @usage
@@ -4049,6 +4124,7 @@ devicefarm_update_test_grid_project <- function(projectArn, name = NULL, descrip
 
 #' Updates an uploaded test spec
 #'
+#' @description
 #' Updates an uploaded test spec.
 #'
 #' @usage
@@ -4095,6 +4171,7 @@ devicefarm_update_upload <- function(arn, name = NULL, contentType = NULL, editC
 #' Updates information about an Amazon Virtual Private Cloud (VPC) endpoint
 #' configuration
 #'
+#' @description
 #' Updates information about an Amazon Virtual Private Cloud (VPC) endpoint
 #' configuration.
 #'

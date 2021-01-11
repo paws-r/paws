@@ -35,8 +35,7 @@ you specify images with \code{imageIds}.}
 }
 \description{
 Returns metadata about the images in a repository in a public registry.
-}
-\details{
+
 Beginning with Docker version 1.9, the Docker client compresses image
 layers before pushing them to a V2 Docker registry. The output of the
 \verb{docker images} command shows the uncompressed image size, so it may

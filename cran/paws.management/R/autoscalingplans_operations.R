@@ -5,6 +5,7 @@ NULL
 
 #' Creates a scaling plan
 #'
+#' @description
 #' Creates a scaling plan.
 #'
 #' @usage
@@ -121,6 +122,7 @@ autoscalingplans_create_scaling_plan <- function(ScalingPlanName, ApplicationSou
 
 #' Deletes the specified scaling plan
 #'
+#' @description
 #' Deletes the specified scaling plan.
 #' 
 #' Deleting a scaling plan deletes the underlying ScalingInstruction for
@@ -167,6 +169,7 @@ autoscalingplans_delete_scaling_plan <- function(ScalingPlanName, ScalingPlanVer
 
 #' Describes the scalable resources in the specified scaling plan
 #'
+#' @description
 #' Describes the scalable resources in the specified scaling plan.
 #'
 #' @usage
@@ -212,6 +215,7 @@ autoscalingplans_describe_scaling_plan_resources <- function(ScalingPlanName, Sc
 
 #' Describes one or more of your scaling plans
 #'
+#' @description
 #' Describes one or more of your scaling plans.
 #'
 #' @usage
@@ -278,6 +282,7 @@ autoscalingplans_describe_scaling_plans <- function(ScalingPlanNames = NULL, Sca
 
 #' Retrieves the forecast data for a scalable resource
 #'
+#' @description
 #' Retrieves the forecast data for a scalable resource.
 #' 
 #' Capacity forecasts are represented as predicted values, or data points,
@@ -363,6 +368,7 @@ autoscalingplans_get_scaling_plan_resource_forecast_data <- function(ScalingPlan
 
 #' Updates the specified scaling plan
 #'
+#' @description
 #' Updates the specified scaling plan.
 #' 
 #' You cannot update a scaling plan if it is in the process of being

@@ -19,8 +19,7 @@ more tags than the number you specify, the response contains a
 }
 \description{
 Gets a list of tags for the specified AWS CloudHSM cluster.
-}
-\details{
+
 This is a paginated operation, which means that each response might
 contain only a subset of all the tags. When the response contains only a
 subset of tags, it includes a \code{NextToken} value. Use this value in a

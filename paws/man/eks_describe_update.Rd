@@ -21,8 +21,7 @@ eks_describe_update(name, updateId, nodegroupName, addonName)
 \description{
 Returns descriptive information about an update against your Amazon EKS
 cluster or associated managed node group.
-}
-\details{
+
 When the status of the update is \code{Succeeded}, the update is complete. If
 an update fails, the status is \code{Failed}, and an error detail explains
 the reason for the failure.

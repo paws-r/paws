@@ -14,8 +14,7 @@ lexmodelbuildingservice_get_bot_alias(name, botName)
 \description{
 Returns information about an Amazon Lex bot alias. For more information
 about aliases, see versioning-aliases.
-}
-\details{
+
 This operation requires permissions for the \code{lex:GetBotAlias} action.
 }
 \section{Request syntax}{

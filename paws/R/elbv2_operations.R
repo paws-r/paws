@@ -6,6 +6,7 @@ NULL
 #' Adds the specified SSL server certificate to the certificate list for
 #' the specified HTTPS or TLS listener
 #'
+#' @description
 #' Adds the specified SSL server certificate to the certificate list for
 #' the specified HTTPS or TLS listener.
 #' 
@@ -60,6 +61,7 @@ elbv2_add_listener_certificates <- function(ListenerArn, Certificates) {
 
 #' Adds the specified tags to the specified Elastic Load Balancing resource
 #'
+#' @description
 #' Adds the specified tags to the specified Elastic Load Balancing
 #' resource. You can tag your Application Load Balancers, Network Load
 #' Balancers, Gateway Load Balancers, target groups, listeners, and rules.
@@ -131,6 +133,7 @@ elbv2_add_tags <- function(ResourceArns, Tags) {
 #' Creates a listener for the specified Application Load Balancer, Network
 #' Load Balancer
 #'
+#' @description
 #' Creates a listener for the specified Application Load Balancer, Network
 #' Load Balancer. or Gateway Load Balancer.
 #' 
@@ -343,6 +346,7 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' Creates an Application Load Balancer, Network Load Balancer, or Gateway
 #' Load Balancer
 #'
+#' @description
 #' Creates an Application Load Balancer, Network Load Balancer, or Gateway
 #' Load Balancer.
 #' 
@@ -514,6 +518,7 @@ elbv2_create_load_balancer <- function(Name, Subnets = NULL, SubnetMappings = NU
 
 #' Creates a rule for the specified listener
 #'
+#' @description
 #' Creates a rule for the specified listener. The listener must be
 #' associated with an Application Load Balancer.
 #' 
@@ -699,6 +704,7 @@ elbv2_create_rule <- function(ListenerArn, Conditions, Priority, Actions, Tags =
 
 #' Creates a target group
 #'
+#' @description
 #' Creates a target group.
 #' 
 #' For more information, see the following:
@@ -872,6 +878,7 @@ elbv2_create_target_group <- function(Name, Protocol = NULL, ProtocolVersion = N
 
 #' Deletes the specified listener
 #'
+#' @description
 #' Deletes the specified listener.
 #' 
 #' Alternatively, your listener is deleted when you delete the load
@@ -920,6 +927,7 @@ elbv2_delete_listener <- function(ListenerArn) {
 #' Deletes the specified Application Load Balancer, Network Load Balancer,
 #' or Gateway Load Balancer
 #'
+#' @description
 #' Deletes the specified Application Load Balancer, Network Load Balancer,
 #' or Gateway Load Balancer. Deleting a load balancer also deletes its
 #' listeners.
@@ -975,6 +983,7 @@ elbv2_delete_load_balancer <- function(LoadBalancerArn) {
 
 #' Deletes the specified rule
 #'
+#' @description
 #' Deletes the specified rule.
 #' 
 #' You can't delete the default rule.
@@ -1021,6 +1030,7 @@ elbv2_delete_rule <- function(RuleArn) {
 
 #' Deletes the specified target group
 #'
+#' @description
 #' Deletes the specified target group.
 #' 
 #' You can delete a target group if it is not referenced by any actions.
@@ -1071,6 +1081,7 @@ elbv2_delete_target_group <- function(TargetGroupArn) {
 
 #' Deregisters the specified targets from the specified target group
 #'
+#' @description
 #' Deregisters the specified targets from the specified target group. After
 #' the targets are deregistered, they no longer receive traffic from the
 #' load balancer.
@@ -1134,6 +1145,7 @@ elbv2_deregister_targets <- function(TargetGroupArn, Targets) {
 #' Describes the current Elastic Load Balancing resource limits for your
 #' AWS account
 #'
+#' @description
 #' Describes the current Elastic Load Balancing resource limits for your
 #' AWS account.
 #' 
@@ -1186,6 +1198,7 @@ elbv2_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
 #' Describes the default certificate and the certificate list for the
 #' specified HTTPS or TLS listener
 #'
+#' @description
 #' Describes the default certificate and the certificate list for the
 #' specified HTTPS or TLS listener.
 #' 
@@ -1240,6 +1253,7 @@ elbv2_describe_listener_certificates <- function(ListenerArn, Marker = NULL, Pag
 #' Application Load Balancer, Network Load Balancer, or Gateway Load
 #' Balancer
 #'
+#' @description
 #' Describes the specified listeners or the listeners for the specified
 #' Application Load Balancer, Network Load Balancer, or Gateway Load
 #' Balancer. You must specify either a load balancer or one or more
@@ -1300,6 +1314,7 @@ elbv2_describe_listeners <- function(LoadBalancerArn = NULL, ListenerArns = NULL
 #' Describes the attributes for the specified Application Load Balancer,
 #' Network Load Balancer, or Gateway Load Balancer
 #'
+#' @description
 #' Describes the attributes for the specified Application Load Balancer,
 #' Network Load Balancer, or Gateway Load Balancer.
 #' 
@@ -1359,6 +1374,7 @@ elbv2_describe_load_balancer_attributes <- function(LoadBalancerArn) {
 
 #' Describes the specified load balancers or all of your load balancers
 #'
+#' @description
 #' Describes the specified load balancers or all of your load balancers.
 #'
 #' @usage
@@ -1417,6 +1433,7 @@ elbv2_describe_load_balancers <- function(LoadBalancerArns = NULL, Names = NULL,
 
 #' Describes the specified rules or the rules for the specified listener
 #'
+#' @description
 #' Describes the specified rules or the rules for the specified listener.
 #' You must specify either a listener or one or more rules.
 #'
@@ -1474,6 +1491,7 @@ elbv2_describe_rules <- function(ListenerArn = NULL, RuleArns = NULL, Marker = N
 #' Describes the specified policies or all policies used for SSL
 #' negotiation
 #'
+#' @description
 #' Describes the specified policies or all policies used for SSL
 #' negotiation.
 #' 
@@ -1534,6 +1552,7 @@ elbv2_describe_ssl_policies <- function(Names = NULL, Marker = NULL, PageSize = 
 
 #' Describes the tags for the specified Elastic Load Balancing resources
 #'
+#' @description
 #' Describes the tags for the specified Elastic Load Balancing resources.
 #' You can describe the tags for one or more Application Load Balancers,
 #' Network Load Balancers, Gateway Load Balancers, target groups,
@@ -1586,6 +1605,7 @@ elbv2_describe_tags <- function(ResourceArns) {
 
 #' Describes the attributes for the specified target group
 #'
+#' @description
 #' Describes the attributes for the specified target group.
 #' 
 #' For more information, see the following:
@@ -1644,6 +1664,7 @@ elbv2_describe_target_group_attributes <- function(TargetGroupArn) {
 
 #' Describes the specified target groups or all of your target groups
 #'
+#' @description
 #' Describes the specified target groups or all of your target groups. By
 #' default, all target groups are described. Alternatively, you can specify
 #' one of the following to filter the results: the ARN of the load
@@ -1708,6 +1729,7 @@ elbv2_describe_target_groups <- function(LoadBalancerArn = NULL, TargetGroupArns
 
 #' Describes the health of the specified targets or all of your targets
 #'
+#' @description
 #' Describes the health of the specified targets or all of your targets.
 #'
 #' @usage
@@ -1774,6 +1796,7 @@ elbv2_describe_target_health <- function(TargetGroupArn, Targets = NULL) {
 
 #' Replaces the specified properties of the specified listener
 #'
+#' @description
 #' Replaces the specified properties of the specified listener. Any
 #' properties that you do not specify remain unchanged.
 #' 
@@ -1955,6 +1978,7 @@ elbv2_modify_listener <- function(ListenerArn, Port = NULL, Protocol = NULL, Ssl
 #' Modifies the specified attributes of the specified Application Load
 #' Balancer, Network Load Balancer, or Gateway Load Balancer
 #'
+#' @description
 #' Modifies the specified attributes of the specified Application Load
 #' Balancer, Network Load Balancer, or Gateway Load Balancer.
 #' 
@@ -2052,6 +2076,7 @@ elbv2_modify_load_balancer_attributes <- function(LoadBalancerArn, Attributes) {
 
 #' Replaces the specified properties of the specified rule
 #'
+#' @description
 #' Replaces the specified properties of the specified rule. Any properties
 #' that you do not specify are unchanged.
 #' 
@@ -2214,6 +2239,7 @@ elbv2_modify_rule <- function(RuleArn, Conditions = NULL, Actions = NULL) {
 #' Modifies the health checks used when evaluating the health state of the
 #' targets in the specified target group
 #'
+#' @description
 #' Modifies the health checks used when evaluating the health state of the
 #' targets in the specified target group.
 #'
@@ -2311,6 +2337,7 @@ elbv2_modify_target_group <- function(TargetGroupArn, HealthCheckProtocol = NULL
 
 #' Modifies the specified attributes of the specified target group
 #'
+#' @description
 #' Modifies the specified attributes of the specified target group.
 #'
 #' @usage
@@ -2369,6 +2396,7 @@ elbv2_modify_target_group_attributes <- function(TargetGroupArn, Attributes) {
 
 #' Registers the specified targets with the specified target group
 #'
+#' @description
 #' Registers the specified targets with the specified target group.
 #' 
 #' If the target is an EC2 instance, it must be in the `running` state when
@@ -2462,6 +2490,7 @@ elbv2_register_targets <- function(TargetGroupArn, Targets) {
 #' Removes the specified certificate from the certificate list for the
 #' specified HTTPS or TLS listener
 #'
+#' @description
 #' Removes the specified certificate from the certificate list for the
 #' specified HTTPS or TLS listener.
 #'
@@ -2508,6 +2537,7 @@ elbv2_remove_listener_certificates <- function(ListenerArn, Certificates) {
 #' Removes the specified tags from the specified Elastic Load Balancing
 #' resources
 #'
+#' @description
 #' Removes the specified tags from the specified Elastic Load Balancing
 #' resources. You can remove the tags for one or more Application Load
 #' Balancers, Network Load Balancers, Gateway Load Balancers, target
@@ -2569,6 +2599,7 @@ elbv2_remove_tags <- function(ResourceArns, TagKeys) {
 #' Sets the type of IP addresses used by the subnets of the specified
 #' Application Load Balancer or Network Load Balancer
 #'
+#' @description
 #' Sets the type of IP addresses used by the subnets of the specified
 #' Application Load Balancer or Network Load Balancer.
 #'
@@ -2611,6 +2642,7 @@ elbv2_set_ip_address_type <- function(LoadBalancerArn, IpAddressType) {
 
 #' Sets the priorities of the specified rules
 #'
+#' @description
 #' Sets the priorities of the specified rules.
 #' 
 #' You can reorder the rules as long as there are no priority conflicts in
@@ -2670,6 +2702,7 @@ elbv2_set_rule_priorities <- function(RulePriorities) {
 #' Associates the specified security groups with the specified Application
 #' Load Balancer
 #'
+#' @description
 #' Associates the specified security groups with the specified Application
 #' Load Balancer. The specified security groups override the previously
 #' associated security groups.
@@ -2728,6 +2761,7 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
 #' Enables the Availability Zones for the specified public subnets for the
 #' specified Application Load Balancer or Network Load Balancer
 #'
+#' @description
 #' Enables the Availability Zones for the specified public subnets for the
 #' specified Application Load Balancer or Network Load Balancer. The
 #' specified subnets replace the previously enabled subnets.

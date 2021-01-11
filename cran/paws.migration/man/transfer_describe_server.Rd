@@ -13,8 +13,7 @@ transfer_describe_server(ServerId)
 \description{
 Describes a file transfer protocol-enabled server that you specify by
 passing the \code{ServerId} parameter.
-}
-\details{
+
 The response contains a description of a server's properties. When you
 set \code{EndpointType} to VPC, the response will contain the
 \code{EndpointDetails}.

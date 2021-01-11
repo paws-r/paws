@@ -23,8 +23,7 @@ join the network.}
 }
 \description{
 Creates a member within a Managed Blockchain network.
-}
-\details{
+
 Applies only to Hyperledger Fabric.
 }
 \section{Request syntax}{

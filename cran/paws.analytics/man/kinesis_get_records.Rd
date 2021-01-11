@@ -17,8 +17,7 @@ throws \code{InvalidArgumentException}. The default value is 10,000.}
 }
 \description{
 Gets data records from a Kinesis data stream's shard.
-}
-\details{
+
 Specify a shard iterator using the \code{ShardIterator} parameter. The shard
 iterator specifies the position in the shard from which you want to
 start reading data records sequentially. If there are no records

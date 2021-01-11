@@ -8,8 +8,7 @@ iam_list_saml_providers()
 }
 \description{
 Lists the SAML provider resource objects defined in IAM in the account.
-}
-\details{
+
 This operation requires \href{https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html}{Signature Version 4}.
 }
 \section{Request syntax}{

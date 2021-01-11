@@ -28,8 +28,7 @@ Initiative (OCI) formats.}
 }
 \description{
 Creates or updates the image manifest and tags associated with an image.
-}
-\details{
+
 When an image is pushed and all new image layers have been uploaded, the
 PutImage API is called once to create or update the image manifest and
 the tags associated with the image.

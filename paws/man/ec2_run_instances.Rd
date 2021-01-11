@@ -247,8 +247,7 @@ instance.}
 \description{
 Launches the specified number of instances using an AMI for which you
 have permissions.
-}
-\details{
+
 You can specify a number of options, or leave the default options. The
 following rules apply:
 \itemize{

@@ -24,8 +24,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Resets an attribute of an instance to its default value. To reset the
 \code{kernel} or \code{ramdisk}, the instance must be in a stopped state. To reset
 the \code{sourceDestCheck}, the instance can be either running or stopped.
-}
-\details{
+
 The \code{sourceDestCheck} attribute controls whether source/destination
 checking is enabled. The default value is \code{true}, which means checking
 is enabled. This value must be \code{false} for a NAT instance to perform

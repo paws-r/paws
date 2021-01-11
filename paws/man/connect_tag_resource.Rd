@@ -14,8 +14,7 @@ connect_tag_resource(resourceArn, tags)
 }
 \description{
 Adds the specified tags to the specified resource.
-}
-\details{
+
 The supported resource types are users, routing profiles, quick
 connects, and contact flows.
 

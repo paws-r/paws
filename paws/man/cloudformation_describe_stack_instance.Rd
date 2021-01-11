@@ -19,8 +19,7 @@ stack instance information for.}
 \description{
 Returns the stack instance that's associated with the specified stack
 set, AWS account, and Region.
-}
-\details{
+
 For a list of stack instances that are associated with a specific stack
 set, use ListStackInstances.
 }

@@ -38,8 +38,7 @@ reserved for you. These descriptions help you determine which reserve
 node offering you want to purchase. You then use the unique offering ID
 in you call to PurchaseReservedNodeOffering to reserve one or more nodes
 for your Amazon Redshift cluster.
-}
-\details{
+
 For more information about reserved node offerings, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/purchase-reserved-node-instance.html}{Purchasing Reserved Nodes}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }

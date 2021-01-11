@@ -26,8 +26,7 @@ deleted \code{instant} fleet with running instances is not supported.}
 }
 \description{
 Deletes the specified EC2 Fleet.
-}
-\details{
+
 After you delete an EC2 Fleet, it launches no new instances.
 
 You must specify whether a deleted EC2 Fleet should also terminate its

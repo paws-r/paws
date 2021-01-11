@@ -45,8 +45,7 @@ Creates a task. A task is a set of two locations (source and
 destination) and a set of Options that you use to control the behavior
 of a task. If you don't specify Options when you create a task, AWS
 DataSync populates them with service defaults.
-}
-\details{
+
 When you create a task, it first enters the CREATING state. During
 CREATING AWS DataSync attempts to mount the on-premises Network File
 System (NFS) location. The task transitions to the AVAILABLE state

@@ -5,6 +5,7 @@ NULL
 
 #' Accept an incoming input device transfer
 #'
+#' @description
 #' Accept an incoming input device transfer. The ownership of the device will transfer to your AWS account.
 #'
 #' @usage
@@ -41,6 +42,7 @@ medialive_accept_input_device_transfer <- function(InputDeviceId) {
 
 #' Starts delete of resources
 #'
+#' @description
 #' Starts delete of resources.
 #'
 #' @usage
@@ -92,6 +94,7 @@ medialive_batch_delete <- function(ChannelIds = NULL, InputIds = NULL, InputSecu
 
 #' Starts existing resources
 #'
+#' @description
 #' Starts existing resources
 #'
 #' @usage
@@ -134,6 +137,7 @@ medialive_batch_start <- function(ChannelIds = NULL, MultiplexIds = NULL) {
 
 #' Stops running resources
 #'
+#' @description
 #' Stops running resources
 #'
 #' @usage
@@ -176,6 +180,7 @@ medialive_batch_stop <- function(ChannelIds = NULL, MultiplexIds = NULL) {
 
 #' Update a channel schedule
 #'
+#' @description
 #' Update a channel schedule
 #'
 #' @usage
@@ -336,6 +341,7 @@ medialive_batch_update_schedule <- function(ChannelId, Creates = NULL, Deletes =
 
 #' Cancel an input device transfer that you have requested
 #'
+#' @description
 #' Cancel an input device transfer that you have requested.
 #'
 #' @usage
@@ -372,6 +378,7 @@ medialive_cancel_input_device_transfer <- function(InputDeviceId) {
 
 #' Creates a new channel
 #'
+#' @description
 #' Creates a new channel
 #'
 #' @usage
@@ -1306,6 +1313,7 @@ medialive_create_channel <- function(CdiInputSpecification = NULL, ChannelClass 
 
 #' Create an input
 #'
+#' @description
 #' Create an input
 #'
 #' @usage
@@ -1397,6 +1405,7 @@ medialive_create_input <- function(Destinations = NULL, InputDevices = NULL, Inp
 
 #' Creates a Input Security Group
 #'
+#' @description
 #' Creates a Input Security Group
 #'
 #' @usage
@@ -1441,6 +1450,7 @@ medialive_create_input_security_group <- function(Tags = NULL, WhitelistRules = 
 
 #' Create a new multiplex
 #'
+#' @description
 #' Create a new multiplex.
 #'
 #' @usage
@@ -1496,6 +1506,7 @@ medialive_create_multiplex <- function(AvailabilityZones, MultiplexSettings, Nam
 
 #' Create a new program in the multiplex
 #'
+#' @description
 #' Create a new program in the multiplex.
 #'
 #' @usage
@@ -1555,6 +1566,7 @@ medialive_create_multiplex_program <- function(MultiplexId, MultiplexProgramSett
 
 #' Create tags for a resource
 #'
+#' @description
 #' Create tags for a resource
 #'
 #' @usage
@@ -1595,6 +1607,7 @@ medialive_create_tags <- function(ResourceArn, Tags = NULL) {
 
 #' Starts deletion of channel
 #'
+#' @description
 #' Starts deletion of channel. The associated outputs are also deleted.
 #'
 #' @usage
@@ -1631,6 +1644,7 @@ medialive_delete_channel <- function(ChannelId) {
 
 #' Deletes the input end point
 #'
+#' @description
 #' Deletes the input end point
 #'
 #' @usage
@@ -1667,6 +1681,7 @@ medialive_delete_input <- function(InputId) {
 
 #' Deletes an Input Security Group
 #'
+#' @description
 #' Deletes an Input Security Group
 #'
 #' @usage
@@ -1703,6 +1718,7 @@ medialive_delete_input_security_group <- function(InputSecurityGroupId) {
 
 #' Delete a multiplex
 #'
+#' @description
 #' Delete a multiplex. The multiplex must be idle.
 #'
 #' @usage
@@ -1739,6 +1755,7 @@ medialive_delete_multiplex <- function(MultiplexId) {
 
 #' Delete a program from a multiplex
 #'
+#' @description
 #' Delete a program from a multiplex.
 #'
 #' @usage
@@ -1777,6 +1794,7 @@ medialive_delete_multiplex_program <- function(MultiplexId, ProgramName) {
 
 #' Delete an expired reservation
 #'
+#' @description
 #' Delete an expired reservation.
 #'
 #' @usage
@@ -1813,6 +1831,7 @@ medialive_delete_reservation <- function(ReservationId) {
 
 #' Delete all schedule actions on a channel
 #'
+#' @description
 #' Delete all schedule actions on a channel.
 #'
 #' @usage
@@ -1849,6 +1868,7 @@ medialive_delete_schedule <- function(ChannelId) {
 
 #' Removes tags for a resource
 #'
+#' @description
 #' Removes tags for a resource
 #'
 #' @usage
@@ -1889,6 +1909,7 @@ medialive_delete_tags <- function(ResourceArn, TagKeys) {
 
 #' Gets details about a channel
 #'
+#' @description
 #' Gets details about a channel
 #'
 #' @usage
@@ -1925,6 +1946,7 @@ medialive_describe_channel <- function(ChannelId) {
 
 #' Produces details about an input
 #'
+#' @description
 #' Produces details about an input
 #'
 #' @usage
@@ -1961,6 +1983,7 @@ medialive_describe_input <- function(InputId) {
 
 #' Gets the details for the input device
 #'
+#' @description
 #' Gets the details for the input device
 #'
 #' @usage
@@ -1997,6 +2020,7 @@ medialive_describe_input_device <- function(InputDeviceId) {
 
 #' Get the latest thumbnail data for the input device
 #'
+#' @description
 #' Get the latest thumbnail data for the input device.
 #'
 #' @usage
@@ -2035,6 +2059,7 @@ medialive_describe_input_device_thumbnail <- function(InputDeviceId, Accept) {
 
 #' Produces a summary of an Input Security Group
 #'
+#' @description
 #' Produces a summary of an Input Security Group
 #'
 #' @usage
@@ -2071,6 +2096,7 @@ medialive_describe_input_security_group <- function(InputSecurityGroupId) {
 
 #' Gets details about a multiplex
 #'
+#' @description
 #' Gets details about a multiplex.
 #'
 #' @usage
@@ -2107,6 +2133,7 @@ medialive_describe_multiplex <- function(MultiplexId) {
 
 #' Get the details for a program in a multiplex
 #'
+#' @description
 #' Get the details for a program in a multiplex.
 #'
 #' @usage
@@ -2145,6 +2172,7 @@ medialive_describe_multiplex_program <- function(MultiplexId, ProgramName) {
 
 #' Get details for an offering
 #'
+#' @description
 #' Get details for an offering.
 #'
 #' @usage
@@ -2181,6 +2209,7 @@ medialive_describe_offering <- function(OfferingId) {
 
 #' Get details for a reservation
 #'
+#' @description
 #' Get details for a reservation.
 #'
 #' @usage
@@ -2217,6 +2246,7 @@ medialive_describe_reservation <- function(ReservationId) {
 
 #' Get a channel schedule
 #'
+#' @description
 #' Get a channel schedule
 #'
 #' @usage
@@ -2257,6 +2287,7 @@ medialive_describe_schedule <- function(ChannelId, MaxResults = NULL, NextToken 
 
 #' Produces list of channels that have been created
 #'
+#' @description
 #' Produces list of channels that have been created
 #'
 #' @usage
@@ -2295,6 +2326,7 @@ medialive_list_channels <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' List input devices that are currently being transferred
 #'
+#' @description
 #' List input devices that are currently being transferred. List input devices that you are transferring from your AWS account or input devices that another AWS account is transferring to you.
 #'
 #' @usage
@@ -2336,6 +2368,7 @@ medialive_list_input_device_transfers <- function(MaxResults = NULL, NextToken =
 
 #' List input devices
 #'
+#' @description
 #' List input devices
 #'
 #' @usage
@@ -2374,6 +2407,7 @@ medialive_list_input_devices <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Produces a list of Input Security Groups for an account
 #'
+#' @description
 #' Produces a list of Input Security Groups for an account
 #'
 #' @usage
@@ -2412,6 +2446,7 @@ medialive_list_input_security_groups <- function(MaxResults = NULL, NextToken = 
 
 #' Produces list of inputs that have been created
 #'
+#' @description
 #' Produces list of inputs that have been created
 #'
 #' @usage
@@ -2450,6 +2485,7 @@ medialive_list_inputs <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' List the programs that currently exist for a specific multiplex
 #'
+#' @description
 #' List the programs that currently exist for a specific multiplex.
 #'
 #' @usage
@@ -2490,6 +2526,7 @@ medialive_list_multiplex_programs <- function(MaxResults = NULL, MultiplexId, Ne
 
 #' Retrieve a list of the existing multiplexes
 #'
+#' @description
 #' Retrieve a list of the existing multiplexes.
 #'
 #' @usage
@@ -2528,6 +2565,7 @@ medialive_list_multiplexes <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' List offerings available for purchase
 #'
+#' @description
 #' List offerings available for purchase.
 #'
 #' @usage
@@ -2588,6 +2626,7 @@ medialive_list_offerings <- function(ChannelClass = NULL, ChannelConfiguration =
 
 #' List purchased reservations
 #'
+#' @description
 #' List purchased reservations.
 #'
 #' @usage
@@ -2644,6 +2683,7 @@ medialive_list_reservations <- function(ChannelClass = NULL, Codec = NULL, MaxRe
 
 #' Produces list of tags that have been created for a resource
 #'
+#' @description
 #' Produces list of tags that have been created for a resource
 #'
 #' @usage
@@ -2680,6 +2720,7 @@ medialive_list_tags_for_resource <- function(ResourceArn) {
 
 #' Purchase an offering and create a reservation
 #'
+#' @description
 #' Purchase an offering and create a reservation.
 #'
 #' @usage
@@ -2729,6 +2770,7 @@ medialive_purchase_offering <- function(Count, Name = NULL, OfferingId, RequestI
 
 #' Reject the transfer of the specified input device to your AWS account
 #'
+#' @description
 #' Reject the transfer of the specified input device to your AWS account.
 #'
 #' @usage
@@ -2765,6 +2807,7 @@ medialive_reject_input_device_transfer <- function(InputDeviceId) {
 
 #' Starts an existing channel
 #'
+#' @description
 #' Starts an existing channel
 #'
 #' @usage
@@ -2801,6 +2844,7 @@ medialive_start_channel <- function(ChannelId) {
 
 #' Start (run) the multiplex
 #'
+#' @description
 #' Start (run) the multiplex. Starting the multiplex does not start the channels. You must explicitly start each channel.
 #'
 #' @usage
@@ -2837,6 +2881,7 @@ medialive_start_multiplex <- function(MultiplexId) {
 
 #' Stops a running channel
 #'
+#' @description
 #' Stops a running channel
 #'
 #' @usage
@@ -2873,6 +2918,7 @@ medialive_stop_channel <- function(ChannelId) {
 
 #' Stops a running multiplex
 #'
+#' @description
 #' Stops a running multiplex. If the multiplex isn't running, this action has no effect.
 #'
 #' @usage
@@ -2909,6 +2955,7 @@ medialive_stop_multiplex <- function(MultiplexId) {
 
 #' Start an input device transfer to another AWS account
 #'
+#' @description
 #' Start an input device transfer to another AWS account. After you make the request, the other account must accept or reject the transfer.
 #'
 #' @usage
@@ -2950,6 +2997,7 @@ medialive_transfer_input_device <- function(InputDeviceId, TargetCustomerId = NU
 
 #' Updates a channel
 #'
+#' @description
 #' Updates a channel.
 #'
 #' @usage
@@ -3875,6 +3923,7 @@ medialive_update_channel <- function(CdiInputSpecification = NULL, ChannelId, De
 
 #' Changes the class of the channel
 #'
+#' @description
 #' Changes the class of the channel.
 #'
 #' @usage
@@ -3936,6 +3985,7 @@ medialive_update_channel_class <- function(ChannelClass, ChannelId, Destinations
 
 #' Updates an input
 #'
+#' @description
 #' Updates an input.
 #'
 #' @usage
@@ -4011,6 +4061,7 @@ medialive_update_input <- function(Destinations = NULL, InputDevices = NULL, Inp
 
 #' Updates the parameters for the input device
 #'
+#' @description
 #' Updates the parameters for the input device.
 #'
 #' @usage
@@ -4060,6 +4111,7 @@ medialive_update_input_device <- function(HdDeviceSettings = NULL, InputDeviceId
 
 #' Update an Input Security Group's Whilelists
 #'
+#' @description
 #' Update an Input Security Group's Whilelists.
 #'
 #' @usage
@@ -4107,6 +4159,7 @@ medialive_update_input_security_group <- function(InputSecurityGroupId, Tags = N
 
 #' Updates a multiplex
 #'
+#' @description
 #' Updates a multiplex.
 #'
 #' @usage
@@ -4152,6 +4205,7 @@ medialive_update_multiplex <- function(MultiplexId, MultiplexSettings = NULL, Na
 
 #' Update a program in a multiplex
 #'
+#' @description
 #' Update a program in a multiplex.
 #'
 #' @usage
@@ -4208,6 +4262,7 @@ medialive_update_multiplex_program <- function(MultiplexId, MultiplexProgramSett
 
 #' Update reservation
 #'
+#' @description
 #' Update reservation.
 #'
 #' @usage

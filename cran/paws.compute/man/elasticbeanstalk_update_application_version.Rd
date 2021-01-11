@@ -24,8 +24,7 @@ returns an \code{InvalidParameterValue} error.}
 \description{
 Updates the specified application version to have the specified
 properties.
-}
-\details{
+
 If a property (for example, \code{description}) is not provided, the value
 remains unchanged. To clear properties, specify an empty string.
 }

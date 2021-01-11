@@ -25,8 +25,7 @@ The ARN must be in one of the following formats:
 This is the latest version of \strong{AWS WAF}, named AWS WAFV2, released in
 November, 2019. For information, including how to migrate your AWS WAF
 resources from the prior release, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-}
-\details{
+
 Disassociates a Web ACL from a regional application resource. A regional
 application can be an Application Load Balancer (ALB), an API Gateway
 REST API, or an AppSync GraphQL API.

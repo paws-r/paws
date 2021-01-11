@@ -11,8 +11,7 @@ workspaces_reboot_workspaces(RebootWorkspaceRequests)
 }
 \description{
 Reboots the specified WorkSpaces.
-}
-\details{
+
 You cannot reboot a WorkSpace unless its state is \code{AVAILABLE} or
 \code{UNHEALTHY}.
 

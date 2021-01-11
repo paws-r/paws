@@ -13,8 +13,7 @@ appregistry_untag_resource(resourceArn, tagKeys)
 }
 \description{
 Removes tags from a resource.
-}
-\details{
+
 This operation returns an empty response if the call was successful.
 }
 \section{Request syntax}{

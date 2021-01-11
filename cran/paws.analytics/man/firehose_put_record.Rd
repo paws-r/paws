@@ -17,8 +17,7 @@ Writes a single data record into an Amazon Kinesis Data Firehose
 delivery stream. To write multiple data records into a delivery stream,
 use PutRecordBatch. Applications using these operations are referred to
 as producers.
-}
-\details{
+
 By default, each delivery stream can take in up to 2,000 transactions
 per second, 5,000 records per second, or 5 MB per second. If you use
 PutRecord and PutRecordBatch, the limits are an aggregate across these

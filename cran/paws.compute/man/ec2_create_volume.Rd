@@ -115,8 +115,7 @@ Valid Range: Minimum value of 125. Maximum value of 1000.}
 \description{
 Creates an EBS volume that can be attached to an instance in the same
 Availability Zone.
-}
-\details{
+
 You can create a new empty volume or restore a volume from an EBS
 snapshot. Any AWS Marketplace product codes from the snapshot are
 propagated to the volume.

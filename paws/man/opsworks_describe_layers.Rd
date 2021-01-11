@@ -15,8 +15,7 @@ layer in the specified stack.}
 }
 \description{
 Requests a description of one or more layers in a specified stack.
-}
-\details{
+
 This call accepts only one resource-identifying parameter.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a

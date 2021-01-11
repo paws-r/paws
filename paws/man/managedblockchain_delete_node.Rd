@@ -26,8 +26,7 @@ Fabric.}
 \description{
 Deletes a node that your AWS account owns. All data on the node is lost
 and cannot be recovered.
-}
-\details{
+
 Applies to Hyperledger Fabric and Ethereum.
 }
 \section{Request syntax}{

@@ -142,8 +142,7 @@ upload part requests (see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}).
 You also include this upload ID in the final request to either complete
 or abort the multipart upload request.
-}
-\details{
+
 For more information about multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html}{Multipart Upload Overview}.
 
 If you have configured a lifecycle rule to abort incomplete multipart

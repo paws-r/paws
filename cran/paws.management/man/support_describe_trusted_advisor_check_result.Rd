@@ -18,8 +18,7 @@ parameters must be passed explicitly for operations that take them.}
 Returns the results of the AWS Trusted Advisor check that has the
 specified check ID. You can get the check IDs by calling the
 DescribeTrustedAdvisorChecks operation.
-}
-\details{
+
 The response contains a TrustedAdvisorCheckResult object, which contains
 these three objects:
 \itemize{

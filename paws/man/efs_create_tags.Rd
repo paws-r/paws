@@ -19,8 +19,7 @@ the file system, this operation overwrites its value with the value
 provided in the request. If you add the \code{Name} tag to your file system,
 Amazon EFS returns it in the response to the DescribeFileSystems
 operation.
-}
-\details{
+
 This operation requires permission for the
 \code{elasticfilesystem:CreateTags} action.
 }

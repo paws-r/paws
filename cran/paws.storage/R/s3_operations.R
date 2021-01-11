@@ -5,6 +5,7 @@ NULL
 
 #' This operation aborts a multipart upload
 #'
+#' @description
 #' This operation aborts a multipart upload. After a multipart upload is
 #' aborted, no additional parts can be uploaded using that upload ID. The
 #' storage consumed by any previously uploaded parts will be freed.
@@ -108,6 +109,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 
 #' Completes a multipart upload by assembling previously uploaded parts
 #'
+#' @description
 #' Completes a multipart upload by assembling previously uploaded parts.
 #' 
 #' You first initiate the multipart upload and then upload all parts using
@@ -265,6 +267,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 
 #' Creates a copy of an object that is already stored in Amazon S3
 #'
+#' @description
 #' Creates a copy of an object that is already stored in Amazon S3.
 #' 
 #' You can store individual objects of up to 5 TB in Amazon S3. You create
@@ -687,6 +690,7 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ContentDispo
 
 #' Creates a new S3 bucket
 #'
+#' @description
 #' Creates a new S3 bucket. To create a bucket, you must register with
 #' Amazon S3 and have a valid AWS Access Key ID to authenticate requests.
 #' Anonymous requests are never allowed to create buckets. By creating the
@@ -858,6 +862,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 
 #' This operation initiates a multipart upload and returns an upload ID
 #'
+#' @description
 #' This operation initiates a multipart upload and returns an upload ID.
 #' This upload ID is used to associate all of the parts in the specific
 #' multipart upload. You specify this upload ID in each of your subsequent
@@ -1257,6 +1262,7 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 
 #' Deletes the S3 bucket
 #'
+#' @description
 #' Deletes the S3 bucket. All objects (including all object versions and
 #' delete markers) in the bucket must be deleted before the bucket itself
 #' can be deleted.
@@ -1314,6 +1320,7 @@ s3_delete_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Deletes an analytics configuration for the bucket (specified by the
 #' analytics configuration ID)
 #'
+#' @description
 #' Deletes an analytics configuration for the bucket (specified by the
 #' analytics configuration ID).
 #' 
@@ -1380,6 +1387,7 @@ s3_delete_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketO
 
 #' Deletes the cors configuration information set for the bucket
 #'
+#' @description
 #' Deletes the `cors` configuration information set for the bucket.
 #' 
 #' To use this operation, you must have permission to perform the
@@ -1443,6 +1451,7 @@ s3_delete_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' This implementation of the DELETE operation removes default encryption
 #' from the bucket
 #'
+#' @description
 #' This implementation of the DELETE operation removes default encryption
 #' from the bucket. For information about the Amazon S3 default encryption
 #' feature, see [Amazon S3 Default Bucket
@@ -1505,6 +1514,7 @@ s3_delete_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Deletes the S3 Intelligent-Tiering configuration from the specified
 #' bucket
 #'
+#' @description
 #' Deletes the S3 Intelligent-Tiering configuration from the specified
 #' bucket.
 #' 
@@ -1573,6 +1583,7 @@ s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 #' Deletes an inventory configuration (identified by the inventory ID) from
 #' the bucket
 #'
+#' @description
 #' Deletes an inventory configuration (identified by the inventory ID) from
 #' the bucket.
 #' 
@@ -1637,6 +1648,7 @@ s3_delete_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketO
 
 #' Deletes the lifecycle configuration from the specified bucket
 #'
+#' @description
 #' Deletes the lifecycle configuration from the specified bucket. Amazon S3
 #' removes all the lifecycle configuration rules in the lifecycle
 #' subresource associated with the bucket. Your objects never expire, and
@@ -1708,6 +1720,7 @@ s3_delete_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Deletes a metrics configuration for the Amazon CloudWatch request
 #' metrics (specified by the metrics configuration ID) from the bucket
 #'
+#' @description
 #' Deletes a metrics configuration for the Amazon CloudWatch request
 #' metrics (specified by the metrics configuration ID) from the bucket.
 #' Note that this doesn't include the daily storage metrics.
@@ -1777,6 +1790,7 @@ s3_delete_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwn
 
 #' Removes OwnershipControls for an Amazon S3 bucket
 #'
+#' @description
 #' Removes `OwnershipControls` for an Amazon S3 bucket. To use this
 #' operation, you must have the `s3:PutBucketOwnershipControls` permission.
 #' For more information about Amazon S3 permissions, see [Specifying
@@ -1831,6 +1845,7 @@ s3_delete_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NU
 #' This implementation of the DELETE operation uses the policy subresource
 #' to delete the policy of a specified bucket
 #'
+#' @description
 #' This implementation of the DELETE operation uses the policy subresource
 #' to delete the policy of a specified bucket. If you are using an identity
 #' other than the root user of the AWS account that owns the bucket, the
@@ -1902,6 +1917,7 @@ s3_delete_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 
 #' Deletes the replication configuration from the bucket
 #'
+#' @description
 #' Deletes the replication configuration from the bucket.
 #' 
 #' To use this operation, you must have permissions to perform the
@@ -1970,6 +1986,7 @@ s3_delete_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 
 #' Deletes the tags from the bucket
 #'
+#' @description
 #' Deletes the tags from the bucket.
 #' 
 #' To use this operation, you must have permission to perform the
@@ -2028,6 +2045,7 @@ s3_delete_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
 
 #' This operation removes the website configuration for a bucket
 #'
+#' @description
 #' This operation removes the website configuration for a bucket. Amazon S3
 #' returns a `200 OK` response upon successfully deleting a website
 #' configuration on the specified bucket. You will get a `200 OK` response
@@ -2098,6 +2116,7 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Removes the null version (if there is one) of an object and inserts a
 #' delete marker, which becomes the latest version of the object
 #'
+#' @description
 #' Removes the null version (if there is one) of an object and inserts a
 #' delete marker, which becomes the latest version of the object. If there
 #' isn't a null version, Amazon S3 does not remove any objects.
@@ -2216,6 +2235,7 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 
 #' Removes the entire tag set from the specified object
 #'
+#' @description
 #' Removes the entire tag set from the specified object. For more
 #' information about managing object tags, see [Object
 #' Tagging](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html).
@@ -2316,6 +2336,7 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' This operation enables you to delete multiple objects from a bucket
 #' using a single HTTP request
 #'
+#' @description
 #' This operation enables you to delete multiple objects from a bucket
 #' using a single HTTP request. If you know the object keys that you want
 #' to delete, then this operation provides a suitable alternative to
@@ -2482,6 +2503,7 @@ s3_delete_objects <- function(Bucket, Delete, MFA = NULL, RequestPayer = NULL, B
 
 #' Removes the PublicAccessBlock configuration for an Amazon S3 bucket
 #'
+#' @description
 #' Removes the `PublicAccessBlock` configuration for an Amazon S3 bucket.
 #' To use this operation, you must have the `s3:PutBucketPublicAccessBlock`
 #' permission. For more information about permissions, see [Permissions
@@ -2542,6 +2564,7 @@ s3_delete_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' to return the Transfer Acceleration state of a bucket, which is either
 #' Enabled or Suspended
 #'
+#' @description
 #' This implementation of the GET operation uses the `accelerate`
 #' subresource to return the Transfer Acceleration state of a bucket, which
 #' is either `Enabled` or `Suspended`. Amazon S3 Transfer Acceleration is a
@@ -2615,6 +2638,7 @@ s3_get_bucket_accelerate_configuration <- function(Bucket, ExpectedBucketOwner =
 #' This implementation of the GET operation uses the acl subresource to
 #' return the access control list (ACL) of a bucket
 #'
+#' @description
 #' This implementation of the `GET` operation uses the `acl` subresource to
 #' return the access control list (ACL) of a bucket. To use `GET` to return
 #' the ACL of the bucket, you must have `READ_ACP` access to the bucket. If
@@ -2665,6 +2689,7 @@ s3_get_bucket_acl <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' configuration (identified by the analytics configuration ID) from the
 #' bucket
 #'
+#' @description
 #' This implementation of the GET operation returns an analytics
 #' configuration (identified by the analytics configuration ID) from the
 #' bucket.
@@ -2733,6 +2758,7 @@ s3_get_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketOwne
 
 #' Returns the cors configuration information set for the bucket
 #'
+#' @description
 #' Returns the cors configuration information set for the bucket.
 #' 
 #' To use this operation, you must have permission to perform the
@@ -2795,6 +2821,7 @@ s3_get_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 
 #' Returns the default encryption configuration for an Amazon S3 bucket
 #'
+#' @description
 #' Returns the default encryption configuration for an Amazon S3 bucket.
 #' For information about the Amazon S3 default encryption feature, see
 #' [Amazon S3 Default Bucket
@@ -2854,6 +2881,7 @@ s3_get_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 
 #' Gets the S3 Intelligent-Tiering configuration from the specified bucket
 #'
+#' @description
 #' Gets the S3 Intelligent-Tiering configuration from the specified bucket.
 #' 
 #' The S3 Intelligent-Tiering storage class is designed to optimize storage
@@ -2921,6 +2949,7 @@ s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 #' Returns an inventory configuration (identified by the inventory
 #' configuration ID) from the bucket
 #'
+#' @description
 #' Returns an inventory configuration (identified by the inventory
 #' configuration ID) from the bucket.
 #' 
@@ -2986,6 +3015,7 @@ s3_get_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketOwne
 
 #' For an updated version of this API, see GetBucketLifecycleConfiguration
 #'
+#' @description
 #' For an updated version of this API, see
 #' [GetBucketLifecycleConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketLifecycleConfiguration.html).
 #' If you configured a bucket lifecycle using the `filter` element, you
@@ -3071,6 +3101,7 @@ s3_get_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' using an object key name prefix, one or more object tags, or a
 #' combination of both
 #'
+#' @description
 #' Bucket lifecycle configuration now supports specifying a lifecycle rule
 #' using an object key name prefix, one or more object tags, or a
 #' combination of both. Accordingly, this section describes the latest API.
@@ -3159,6 +3190,7 @@ s3_get_bucket_lifecycle_configuration <- function(Bucket, ExpectedBucketOwner = 
 
 #' Returns the Region the bucket resides in
 #'
+#' @description
 #' Returns the Region the bucket resides in. You set the bucket's Region
 #' using the `LocationConstraint` request parameter in a `CreateBucket`
 #' request. For more information, see
@@ -3220,6 +3252,7 @@ s3_get_bucket_location <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Returns the logging status of a bucket and the permissions users have to
 #' view and modify that status
 #'
+#' @description
 #' Returns the logging status of a bucket and the permissions users have to
 #' view and modify that status. To use GET, you must be the bucket owner.
 #' 
@@ -3268,6 +3301,7 @@ s3_get_bucket_logging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Gets a metrics configuration (specified by the metrics configuration ID)
 #' from the bucket
 #'
+#' @description
 #' Gets a metrics configuration (specified by the metrics configuration ID)
 #' from the bucket. Note that this doesn't include the daily storage
 #' metrics.
@@ -3336,6 +3370,7 @@ s3_get_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwner 
 
 #' No longer used, see GetBucketNotificationConfiguration
 #'
+#' @description
 #' No longer used, see
 #' [GetBucketNotificationConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketNotificationConfiguration.html).
 #'
@@ -3392,6 +3427,7 @@ s3_get_bucket_notification <- function(Bucket, ExpectedBucketOwner = NULL) {
 
 #' Returns the notification configuration of a bucket
 #'
+#' @description
 #' Returns the notification configuration of a bucket.
 #' 
 #' If notifications are not enabled on the bucket, the operation returns an
@@ -3450,6 +3486,7 @@ s3_get_bucket_notification_configuration <- function(Bucket, ExpectedBucketOwner
 
 #' Retrieves OwnershipControls for an Amazon S3 bucket
 #'
+#' @description
 #' Retrieves `OwnershipControls` for an Amazon S3 bucket. To use this
 #' operation, you must have the `s3:GetBucketOwnershipControls` permission.
 #' For more information about Amazon S3 permissions, see [Specifying
@@ -3504,6 +3541,7 @@ s3_get_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL)
 
 #' Returns the policy of a specified bucket
 #'
+#' @description
 #' Returns the policy of a specified bucket. If you are using an identity
 #' other than the root user of the AWS account that owns the bucket, the
 #' calling identity must have the `GetBucketPolicy` permissions on the
@@ -3574,6 +3612,7 @@ s3_get_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Retrieves the policy status for an Amazon S3 bucket, indicating whether
 #' the bucket is public
 #'
+#' @description
 #' Retrieves the policy status for an Amazon S3 bucket, indicating whether
 #' the bucket is public. In order to use this operation, you must have the
 #' `s3:GetBucketPolicyStatus` permission. For more information about Amazon
@@ -3634,6 +3673,7 @@ s3_get_bucket_policy_status <- function(Bucket, ExpectedBucketOwner = NULL) {
 
 #' Returns the replication configuration of a bucket
 #'
+#' @description
 #' Returns the replication configuration of a bucket.
 #' 
 #' It can take a while to propagate the put or delete a replication
@@ -3709,6 +3749,7 @@ s3_get_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 
 #' Returns the request payment configuration of a bucket
 #'
+#' @description
 #' Returns the request payment configuration of a bucket. To use this
 #' version of the operation, you must be the bucket owner. For more
 #' information, see [Requester Pays
@@ -3765,6 +3806,7 @@ s3_get_bucket_request_payment <- function(Bucket, ExpectedBucketOwner = NULL) {
 
 #' Returns the tag set associated with the bucket
 #'
+#' @description
 #' Returns the tag set associated with the bucket.
 #' 
 #' To use this operation, you must have permission to perform the
@@ -3829,6 +3871,7 @@ s3_get_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
 
 #' Returns the versioning state of a bucket
 #'
+#' @description
 #' Returns the versioning state of a bucket.
 #' 
 #' To retrieve the versioning state of a bucket, you must be the bucket
@@ -3892,6 +3935,7 @@ s3_get_bucket_versioning <- function(Bucket, ExpectedBucketOwner = NULL) {
 
 #' Returns the website configuration for a bucket
 #'
+#' @description
 #' Returns the website configuration for a bucket. To host website on
 #' Amazon S3, you can configure a bucket as website by adding a website
 #' configuration. For more information about hosting websites, see [Hosting
@@ -3956,6 +4000,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 
 #' Retrieves objects from Amazon S3
 #'
+#' @description
 #' Retrieves objects from Amazon S3. To use `GET`, you must have `READ`
 #' access to the object. If you grant `READ` access to the anonymous user,
 #' you can return the object without using an authorization header.
@@ -4239,6 +4284,7 @@ s3_get_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNone
 
 #' Returns the access control list (ACL) of an object
 #'
+#' @description
 #' Returns the access control list (ACL) of an object. To use this
 #' operation, you must have `READ_ACP` access to the object.
 #' 
@@ -4322,6 +4368,7 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 
 #' Gets an object's current Legal Hold status
 #'
+#' @description
 #' Gets an object's current Legal Hold status. For more information, see
 #' [Locking
 #' Objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html).
@@ -4385,6 +4432,7 @@ s3_get_object_legal_hold <- function(Bucket, Key, VersionId = NULL, RequestPayer
 
 #' Gets the Object Lock configuration for a bucket
 #'
+#' @description
 #' Gets the Object Lock configuration for a bucket. The rule specified in
 #' the Object Lock configuration will be applied by default to every new
 #' object placed in the specified bucket. For more information, see
@@ -4438,6 +4486,7 @@ s3_get_object_lock_configuration <- function(Bucket, ExpectedBucketOwner = NULL)
 
 #' Retrieves an object's retention settings
 #'
+#' @description
 #' Retrieves an object's retention settings. For more information, see
 #' [Locking
 #' Objects](https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lock.html).
@@ -4501,6 +4550,7 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 
 #' Returns the tag-set of an object
 #'
+#' @description
 #' Returns the tag-set of an object. You send the GET request against the
 #' tagging subresource associated with the object.
 #' 
@@ -4600,6 +4650,7 @@ s3_get_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBucketO
 
 #' Returns torrent files from a bucket
 #'
+#' @description
 #' Returns torrent files from a bucket. BitTorrent can save you bandwidth
 #' when you're distributing large files. For more information about
 #' BitTorrent, see [Using BitTorrent with Amazon
@@ -4669,6 +4720,7 @@ s3_get_object_torrent <- function(Bucket, Key, RequestPayer = NULL, ExpectedBuck
 
 #' Retrieves the PublicAccessBlock configuration for an Amazon S3 bucket
 #'
+#' @description
 #' Retrieves the `PublicAccessBlock` configuration for an Amazon S3 bucket.
 #' To use this operation, you must have the `s3:GetBucketPublicAccessBlock`
 #' permission. For more information about Amazon S3 permissions, see
@@ -4737,6 +4789,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' This operation is useful to determine if a bucket exists and you have
 #' permission to access it
 #'
+#' @description
 #' This operation is useful to determine if a bucket exists and you have
 #' permission to access it. The operation returns a `200 OK` if the bucket
 #' exists and you have permission to access it. Otherwise, the operation
@@ -4816,6 +4869,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' The HEAD operation retrieves metadata from an object without returning
 #' the object itself
 #'
+#' @description
 #' The HEAD operation retrieves metadata from an object without returning
 #' the object itself. This operation is useful if you're only interested in
 #' an object's metadata. To use HEAD, you must have READ access to the
@@ -5007,6 +5061,7 @@ s3_head_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNon
 
 #' Lists the analytics configurations for the bucket
 #'
+#' @description
 #' Lists the analytics configurations for the bucket. You can have up to
 #' 1,000 analytics configurations per bucket.
 #' 
@@ -5084,6 +5139,7 @@ s3_list_bucket_analytics_configurations <- function(Bucket, ContinuationToken = 
 
 #' Lists the S3 Intelligent-Tiering configuration from the specified bucket
 #'
+#' @description
 #' Lists the S3 Intelligent-Tiering configuration from the specified
 #' bucket.
 #' 
@@ -5153,6 +5209,7 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 
 #' Returns a list of inventory configurations for the bucket
 #'
+#' @description
 #' Returns a list of inventory configurations for the bucket. You can have
 #' up to 1,000 analytics configurations per bucket.
 #' 
@@ -5231,6 +5288,7 @@ s3_list_bucket_inventory_configurations <- function(Bucket, ContinuationToken = 
 
 #' Lists the metrics configurations for the bucket
 #'
+#' @description
 #' Lists the metrics configurations for the bucket. The metrics
 #' configurations are only for the request metrics of the bucket and do not
 #' provide information on daily storage metrics. You can have up to 1,000
@@ -5313,6 +5371,7 @@ s3_list_bucket_metrics_configurations <- function(Bucket, ContinuationToken = NU
 #' Returns a list of all buckets owned by the authenticated sender of the
 #' request
 #'
+#' @description
 #' Returns a list of all buckets owned by the authenticated sender of the
 #' request.
 #'
@@ -5355,6 +5414,7 @@ s3_list_buckets <- function() {
 
 #' This operation lists in-progress multipart uploads
 #'
+#' @description
 #' This operation lists in-progress multipart uploads. An in-progress
 #' multipart upload is a multipart upload that has been initiated using the
 #' Initiate Multipart Upload request, but has not yet been completed or
@@ -5509,6 +5569,7 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 
 #' Returns metadata about all versions of the objects in a bucket
 #'
+#' @description
 #' Returns metadata about all versions of the objects in a bucket. You can
 #' also use request parameters as selection criteria to return metadata
 #' about a subset of all the object versions.
@@ -5610,6 +5671,7 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 
 #' Returns some or all (up to 1,000) of the objects in a bucket
 #'
+#' @description
 #' Returns some or all (up to 1,000) of the objects in a bucket. You can
 #' use the request parameters as selection criteria to return a subset of
 #' the objects in a bucket. A 200 OK response can contain valid or invalid
@@ -5716,6 +5778,7 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 
 #' Returns some or all (up to 1,000) of the objects in a bucket
 #'
+#' @description
 #' Returns some or all (up to 1,000) of the objects in a bucket. You can
 #' use the request parameters as selection criteria to return a subset of
 #' the objects in a bucket. A `200 OK` response can contain valid or
@@ -5845,6 +5908,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 
 #' Lists the parts that have been uploaded for a specific multipart upload
 #'
+#' @description
 #' Lists the parts that have been uploaded for a specific multipart upload.
 #' This operation must include the upload ID, which you obtain by sending
 #' the initiate multipart upload request (see
@@ -5959,6 +6023,7 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
 
 #' Sets the accelerate configuration of an existing bucket
 #'
+#' @description
 #' Sets the accelerate configuration of an existing bucket. Amazon S3
 #' Transfer Acceleration is a bucket-level feature that enables you to
 #' perform faster data transfers to Amazon S3.
@@ -6044,6 +6109,7 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' Sets the permissions on an existing bucket using access control lists
 #' (ACL)
 #'
+#' @description
 #' Sets the permissions on an existing bucket using access control lists
 #' (ACL). For more information, see [Using
 #' ACLs](https://docs.aws.amazon.com/AmazonS3/latest/dev/S3_ACLs_UsingACLs.html).
@@ -6282,6 +6348,7 @@ s3_put_bucket_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #' Sets an analytics configuration for the bucket (specified by the
 #' analytics configuration ID)
 #'
+#' @description
 #' Sets an analytics configuration for the bucket (specified by the
 #' analytics configuration ID). You can have up to 1,000 analytics
 #' configurations per bucket.
@@ -6417,6 +6484,7 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 
 #' Sets the cors configuration for your bucket
 #'
+#' @description
 #' Sets the `cors` configuration for your bucket. If the configuration
 #' exists, Amazon S3 replaces it.
 #' 
@@ -6578,6 +6646,7 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Exp
 #' This operation uses the encryption subresource to configure default
 #' encryption and Amazon S3 Bucket Key for an existing bucket
 #'
+#' @description
 #' This operation uses the `encryption` subresource to configure default
 #' encryption and Amazon S3 Bucket Key for an existing bucket.
 #' 
@@ -6673,6 +6742,7 @@ s3_put_bucket_encryption <- function(Bucket, ContentMD5 = NULL, ServerSideEncryp
 
 #' Puts a S3 Intelligent-Tiering configuration to the specified bucket
 #'
+#' @description
 #' Puts a S3 Intelligent-Tiering configuration to the specified bucket.
 #' 
 #' The S3 Intelligent-Tiering storage class is designed to optimize storage
@@ -6768,6 +6838,7 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Intellig
 #' This implementation of the PUT operation adds an inventory configuration
 #' (identified by the inventory ID) to the bucket
 #'
+#' @description
 #' This implementation of the `PUT` operation adds an inventory
 #' configuration (identified by the inventory ID) to the bucket. You can
 #' have up to 1,000 inventory configurations per bucket.
@@ -6905,6 +6976,7 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 
 #' For an updated version of this API, see PutBucketLifecycleConfiguration
 #'
+#' @description
 #' For an updated version of this API, see
 #' [PutBucketLifecycleConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html).
 #' This version has been deprecated. Existing lifecycle configurations will
@@ -7041,6 +7113,7 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, LifecycleConfigur
 #' Creates a new lifecycle configuration for the bucket or replaces an
 #' existing lifecycle configuration
 #'
+#' @description
 #' Creates a new lifecycle configuration for the bucket or replaces an
 #' existing lifecycle configuration. For information about lifecycle
 #' configuration, see [Managing Access Permissions to Your Amazon S3
@@ -7236,6 +7309,7 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, LifecycleConfiguration
 #' Set the logging parameters for a bucket and to specify permissions for
 #' who can view and modify the logging parameters
 #'
+#' @description
 #' Set the logging parameters for a bucket and to specify permissions for
 #' who can view and modify the logging parameters. All logs are saved to
 #' buckets in the same AWS Region as the source bucket. To set the logging
@@ -7381,6 +7455,7 @@ s3_put_bucket_logging <- function(Bucket, BucketLoggingStatus, ContentMD5 = NULL
 #' Sets a metrics configuration (specified by the metrics configuration ID)
 #' for the bucket
 #'
+#' @description
 #' Sets a metrics configuration (specified by the metrics configuration ID)
 #' for the bucket. You can have up to 1,000 metrics configurations per
 #' bucket. If you're updating an existing metrics configuration, note that
@@ -7478,6 +7553,7 @@ s3_put_bucket_metrics_configuration <- function(Bucket, Id, MetricsConfiguration
 
 #' No longer used, see the PutBucketNotificationConfiguration operation
 #'
+#' @description
 #' No longer used, see the
 #' [PutBucketNotificationConfiguration](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketNotificationConfiguration.html)
 #' operation.
@@ -7554,6 +7630,7 @@ s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, NotificationCo
 
 #' Enables notifications of specified events for a bucket
 #'
+#' @description
 #' Enables notifications of specified events for a bucket. For more
 #' information about event notifications, see [Configuring Event
 #' Notifications](https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html).
@@ -7731,6 +7808,7 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 
 #' Creates or modifies OwnershipControls for an Amazon S3 bucket
 #'
+#' @description
 #' Creates or modifies `OwnershipControls` for an Amazon S3 bucket. To use
 #' this operation, you must have the `s3:PutBucketOwnershipControls`
 #' permission. For more information about Amazon S3 permissions, see
@@ -7800,6 +7878,7 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 
 #' Applies an Amazon S3 bucket policy to an Amazon S3 bucket
 #'
+#' @description
 #' Applies an Amazon S3 bucket policy to an Amazon S3 bucket. If you are
 #' using an identity other than the root user of the AWS account that owns
 #' the bucket, the calling identity must have the `PutBucketPolicy`
@@ -7883,6 +7962,7 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ConfirmRemoveSelfBuc
 
 #' Creates a replication configuration or replaces an existing one
 #'
+#' @description
 #' Creates a replication configuration or replaces an existing one. For
 #' more information, see
 #' [Replication](https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html)
@@ -8082,6 +8162,7 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ReplicationConf
 
 #' Sets the request payment configuration for a bucket
 #'
+#' @description
 #' Sets the request payment configuration for a bucket. By default, the
 #' bucket owner pays for downloads from the bucket. This configuration
 #' parameter enables the bucket owner (only) to specify that the person
@@ -8158,6 +8239,7 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, RequestPaym
 
 #' Sets the tags for a bucket
 #'
+#' @description
 #' Sets the tags for a bucket.
 #' 
 #' Use tags to organize your AWS bill to reflect your own cost structure.
@@ -8290,6 +8372,7 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, Tagging, ExpectedBu
 
 #' Sets the versioning state of an existing bucket
 #'
+#' @description
 #' Sets the versioning state of an existing bucket. To set the versioning
 #' state, you must be the bucket owner.
 #' 
@@ -8397,6 +8480,7 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, MFA = NULL, Vers
 #' Sets the configuration of the website that is specified in the website
 #' subresource
 #'
+#' @description
 #' Sets the configuration of the website that is specified in the `website`
 #' subresource. To configure a bucket as a website, you can add this
 #' subresource on the bucket with website configuration information such as
@@ -8559,6 +8643,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, WebsiteConfiguratio
 
 #' Adds an object to a bucket
 #'
+#' @description
 #' Adds an object to a bucket. You must have WRITE permissions on a bucket
 #' to add an object to it.
 #' 
@@ -8936,6 +9021,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' Uses the acl subresource to set the access control list (ACL)
 #' permissions for a new or existing object in an S3 bucket
 #'
+#' @description
 #' Uses the `acl` subresource to set the access control list (ACL)
 #' permissions for a new or existing object in an S3 bucket. You must have
 #' `WRITE_ACP` permission to set the ACL of an object. For more
@@ -9223,6 +9309,7 @@ s3_put_object_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 
 #' Applies a Legal Hold configuration to the specified object
 #'
+#' @description
 #' Applies a Legal Hold configuration to the specified object.
 #' 
 #' This action is not supported by Amazon S3 on Outposts.
@@ -9297,6 +9384,7 @@ s3_put_object_legal_hold <- function(Bucket, Key, LegalHold = NULL, RequestPayer
 
 #' Places an Object Lock configuration on the specified bucket
 #'
+#' @description
 #' Places an Object Lock configuration on the specified bucket. The rule
 #' specified in the Object Lock configuration will be applied by default to
 #' every new object placed in the specified bucket.
@@ -9370,6 +9458,7 @@ s3_put_object_lock_configuration <- function(Bucket, ObjectLockConfiguration = N
 
 #' Places an Object Retention configuration on an object
 #'
+#' @description
 #' Places an Object Retention configuration on an object.
 #' 
 #' This action is not supported by Amazon S3 on Outposts.
@@ -9451,6 +9540,7 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 
 #' Sets the supplied tag-set to an object that already exists in a bucket
 #'
+#' @description
 #' Sets the supplied tag-set to an object that already exists in a bucket.
 #' 
 #' A tag is a key-value pair. You can associate tags with an object by
@@ -9600,6 +9690,7 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' Creates or modifies the PublicAccessBlock configuration for an Amazon S3
 #' bucket
 #'
+#' @description
 #' Creates or modifies the `PublicAccessBlock` configuration for an Amazon
 #' S3 bucket. To use this operation, you must have the
 #' `s3:PutBucketPublicAccessBlock` permission. For more information about
@@ -9686,6 +9777,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, PublicAccessBl
 #' Restores an archived copy of an object back into Amazon S3 This action
 #' is not supported by Amazon S3 on Outposts
 #'
+#' @description
 #' Restores an archived copy of an object back into Amazon S3
 #' 
 #' This action is not supported by Amazon S3 on Outposts.
@@ -10084,6 +10176,7 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' This operation filters the contents of an Amazon S3 object based on a
 #' simple structured query language (SQL) statement
 #'
+#' @description
 #' This operation filters the contents of an Amazon S3 object based on a
 #' simple structured query language (SQL) statement. In the request, along
 #' with the SQL expression, you must also specify a data serialization
@@ -10306,6 +10399,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 
 #' Uploads a part in a multipart upload
 #'
+#' @description
 #' Uploads a part in a multipart upload.
 #' 
 #' In this operation, you provide part data in your request. However, you
@@ -10514,6 +10608,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 
 #' Uploads a part by copying data from an existing object as data source
 #'
+#' @description
 #' Uploads a part by copying data from an existing object as data source.
 #' You specify the data source by adding the request header
 #' `x-amz-copy-source` in your request and a byte range by adding the

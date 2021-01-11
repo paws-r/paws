@@ -40,8 +40,7 @@ specified by \code{MaxRecords}.}
 \description{
 Returns the detailed parameter list for a particular DB cluster
 parameter group.
-}
-\details{
+
 For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
 

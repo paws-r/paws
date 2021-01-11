@@ -17,8 +17,6 @@ to, for example, \code{111122223333}.}
 \description{
 Transfers a domain from the current AWS account to another AWS account.
 Note the following:
-}
-\details{
 \itemize{
 \item The AWS account that you're transferring the domain to must accept
 the transfer. If the other account doesn't accept the transfer

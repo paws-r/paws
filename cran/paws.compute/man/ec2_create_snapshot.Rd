@@ -22,8 +22,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Creates a snapshot of an EBS volume and stores it in Amazon S3. You can
 use snapshots for backups, to make copies of EBS volumes, and to save
 data before shutting down an instance.
-}
-\details{
+
 When a snapshot is created, any AWS Marketplace product codes that are
 associated with the source volume are propagated to the snapshot.
 

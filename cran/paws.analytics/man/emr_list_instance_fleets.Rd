@@ -13,8 +13,7 @@ emr_list_instance_fleets(ClusterId, Marker)
 }
 \description{
 Lists all available details about the instance fleets in a cluster.
-}
-\details{
+
 The instance fleet configuration is available only in Amazon EMR
 versions 4.8.0 and later, excluding 5.0.x versions.
 }

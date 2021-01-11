@@ -35,8 +35,7 @@ List the specified metrics. You can use the returned metrics with
 or
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricStatistics.html}{GetMetricStatistics}
 to obtain statistical data.
-}
-\details{
+
 Up to 500 results are returned for any one call. To retrieve additional
 results, use the returned token with subsequent calls.
 

@@ -34,8 +34,7 @@ results, use null.}
 \description{
 Returns a summary of each of the portfolio shares that were created for
 the specified portfolio.
-}
-\details{
+
 You can use this API to determine which accounts or organizational nodes
 this portfolio have been shared, whether the recipient entity has
 imported the share, and whether TagOptions are included with the share.

@@ -32,8 +32,7 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the names of the inline policies that are embedded in the
 specified IAM role.
-}
-\details{
+
 An IAM role can also have managed policies attached to it. To list the
 managed policies that are attached to a role, use
 ListAttachedRolePolicies. For more information about policies, see

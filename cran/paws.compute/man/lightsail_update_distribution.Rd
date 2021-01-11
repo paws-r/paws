@@ -37,8 +37,7 @@ distribution.}
 \description{
 Updates an existing Amazon Lightsail content delivery network (CDN)
 distribution.
-}
-\details{
+
 Use this action to update the configuration of your existing
 distribution
 }

@@ -33,8 +33,7 @@ group.}
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.
-}
-\details{
+
 Removes a user or group from an Amazon EMR Studio.
 }
 \section{Request syntax}{

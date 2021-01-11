@@ -24,8 +24,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 Completes a multipart upload by assembling previously uploaded parts.
-}
-\details{
+
 You first initiate the multipart upload and then upload all parts using
 the
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html}{UploadPart}

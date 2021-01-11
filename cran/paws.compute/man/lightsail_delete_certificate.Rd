@@ -16,8 +16,7 @@ you can specify.}
 \description{
 Deletes an SSL/TLS certificate for your Amazon Lightsail content
 delivery network (CDN) distribution.
-}
-\details{
+
 Certificates that are currently attached to a distribution cannot be
 deleted. Use the \code{DetachCertificateFromDistribution} action to detach a
 certificate from a distribution.

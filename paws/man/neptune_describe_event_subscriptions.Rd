@@ -30,8 +30,7 @@ the value specified by \code{MaxRecords} .}
 Lists all the subscription descriptions for a customer account. The
 description for a subscription includes SubscriptionName, SNSTopicARN,
 CustomerID, SourceType, SourceID, CreationTime, and Status.
-}
-\details{
+
 If you specify a SubscriptionName, lists the description for that
 subscription.
 }

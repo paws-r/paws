@@ -15,8 +15,6 @@ Returns the current configuration for one or more requested resources.
 The operation also returns a list of resources that are not processed in
 the current request. If there are no unprocessed resources, the
 operation returns an empty unprocessedResourceKeys list.
-}
-\details{
 \itemize{
 \item The API does not return results for deleted resources.
 \item The API does not return any tags for the requested resources. This

@@ -65,8 +65,7 @@ code and ID when installing SSM Agent on machines in your hybrid
 environment. For more information about requirements for managing
 on-premises instances and VMs using Systems Manager, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html}{Setting up AWS Systems Manager for hybrid environments}
 in the \emph{AWS Systems Manager User Guide}.
-}
-\details{
+
 On-premises servers or VMs that are registered with Systems Manager and
 EC2 instances that you manage with Systems Manager are all called
 \emph{managed instances}.

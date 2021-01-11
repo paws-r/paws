@@ -39,8 +39,7 @@ subsequent call that tells the service where to continue from.}
 Lists the IAM users that have the specified path prefix. If no path
 prefix is specified, the operation returns all users in the AWS account.
 If there are none, the operation returns an empty list.
-}
-\details{
+
 You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }

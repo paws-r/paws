@@ -12,8 +12,7 @@ codestarconnections_delete_host(HostArn)
 \description{
 The host to be deleted. Before you delete a host, all connections
 associated to the host must be deleted.
-}
-\details{
+
 A host cannot be deleted if it is in the VPC\\_CONFIG\\_INITIALIZING or
 VPC\\_CONFIG\\_DELETING state.
 }

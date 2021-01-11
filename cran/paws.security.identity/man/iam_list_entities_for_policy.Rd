@@ -61,8 +61,7 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists all IAM users, groups, and roles that the specified managed policy
 is attached to.
-}
-\details{
+
 You can use the optional \code{EntityFilter} parameter to limit the results
 to a particular type of entity (users, groups, or roles). For example,
 to list only the roles that are attached to the specified policy, set

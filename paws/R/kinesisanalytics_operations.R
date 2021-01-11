@@ -6,6 +6,7 @@ NULL
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
@@ -62,6 +63,7 @@ kinesisanalytics_add_application_cloud_watch_logging_option <- function(Applicat
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
@@ -171,6 +173,7 @@ kinesisanalytics_add_application_input <- function(ApplicationName, CurrentAppli
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
@@ -243,6 +246,7 @@ kinesisanalytics_add_application_input_processing_configuration <- function(Appl
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
@@ -344,6 +348,7 @@ kinesisanalytics_add_application_output <- function(ApplicationName, CurrentAppl
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
@@ -446,6 +451,7 @@ kinesisanalytics_add_application_reference_data_source <- function(ApplicationNa
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
@@ -658,6 +664,7 @@ kinesisanalytics_create_application <- function(ApplicationName, ApplicationDesc
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
@@ -710,6 +717,7 @@ kinesisanalytics_delete_application <- function(ApplicationName, CreateTimestamp
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
@@ -763,6 +771,7 @@ kinesisanalytics_delete_application_cloud_watch_logging_option <- function(Appli
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
@@ -816,6 +825,7 @@ kinesisanalytics_delete_application_input_processing_configuration <- function(A
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
@@ -881,6 +891,7 @@ kinesisanalytics_delete_application_output <- function(ApplicationName, CurrentA
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
@@ -946,6 +957,7 @@ kinesisanalytics_delete_application_reference_data_source <- function(Applicatio
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
@@ -999,6 +1011,7 @@ kinesisanalytics_describe_application <- function(ApplicationName) {
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
@@ -1083,6 +1096,7 @@ kinesisanalytics_discover_input_schema <- function(ResourceARN = NULL, RoleARN =
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
@@ -1141,6 +1155,7 @@ kinesisanalytics_list_applications <- function(Limit = NULL, ExclusiveStartAppli
 
 #' Retrieves the list of key-value tags assigned to the application
 #'
+#' @description
 #' Retrieves the list of key-value tags assigned to the application. For
 #' more information, see [Using
 #' Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html).
@@ -1180,6 +1195,7 @@ kinesisanalytics_list_tags_for_resource <- function(ResourceARN) {
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
@@ -1252,6 +1268,7 @@ kinesisanalytics_start_application <- function(ApplicationName, InputConfigurati
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
@@ -1302,6 +1319,7 @@ kinesisanalytics_stop_application <- function(ApplicationName) {
 
 #' Adds one or more key-value tags to a Kinesis Analytics application
 #'
+#' @description
 #' Adds one or more key-value tags to a Kinesis Analytics application. Note
 #' that the maximum number of application tags includes system tags. The
 #' maximum number of user-defined application tags is 50. For more
@@ -1349,6 +1367,7 @@ kinesisanalytics_tag_resource <- function(ResourceARN, Tags) {
 
 #' Removes one or more tags from a Kinesis Analytics application
 #'
+#' @description
 #' Removes one or more tags from a Kinesis Analytics application. For more
 #' information, see [Using
 #' Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/dev/how-tagging.html).
@@ -1393,6 +1412,7 @@ kinesisanalytics_untag_resource <- function(ResourceARN, TagKeys) {
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications
 #'
+#' @description
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see

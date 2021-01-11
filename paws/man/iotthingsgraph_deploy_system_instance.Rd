@@ -17,8 +17,7 @@ The ID should be in the following format.
 }
 \description{
 \strong{Greengrass and Cloud Deployments}
-}
-\details{
+
 Deploys the system instance to the target specified in
 \code{CreateSystemInstance}.
 

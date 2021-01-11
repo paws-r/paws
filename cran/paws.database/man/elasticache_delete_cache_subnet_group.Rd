@@ -14,8 +14,7 @@ hyphens.}
 }
 \description{
 Deletes a cache subnet group.
-}
-\details{
+
 You cannot delete a cache subnet group if it is associated with any
 clusters.
 }

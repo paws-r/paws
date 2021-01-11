@@ -17,8 +17,7 @@ group by the number of instances moved to \code{Standby} mode.}
 }
 \description{
 Moves the specified instances into the standby state.
-}
-\details{
+
 If you choose to decrement the desired capacity of the Auto Scaling
 group, the instances can enter standby as long as the desired capacity
 of the Auto Scaling group after the instances are placed into standby is

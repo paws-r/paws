@@ -36,8 +36,7 @@ The default \code{Precedence} value is null.}
 }
 \description{
 Creates a new group in the specified user pool.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

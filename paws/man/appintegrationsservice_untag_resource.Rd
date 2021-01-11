@@ -15,8 +15,7 @@ appintegrationsservice_untag_resource(resourceArn, tagKeys)
 \description{
 The Amazon AppIntegrations APIs are in preview release and are subject
 to change.
-}
-\details{
+
 Removes the specified tags from the specified resource.
 }
 \section{Request syntax}{

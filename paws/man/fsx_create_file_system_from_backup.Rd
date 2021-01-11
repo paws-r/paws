@@ -59,8 +59,7 @@ GiB.}
 }
 \description{
 Creates a new Amazon FSx file system from an existing Amazon FSx backup.
-}
-\details{
+
 If a file system with the specified client request token exists and the
 parameters match, this operation returns the description of the file
 system. If a client request token specified by the file system exists

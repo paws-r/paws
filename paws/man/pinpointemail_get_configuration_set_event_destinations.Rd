@@ -14,8 +14,7 @@ pinpointemail_get_configuration_set_event_destinations(
 \description{
 Retrieve a list of event destinations that are associated with a
 configuration set.
-}
-\details{
+
 In Amazon Pinpoint, \emph{events} include message sends, deliveries, opens,
 clicks, bounces, and complaints. \emph{Event destinations} are places that
 you can send information about these events to. For example, you can

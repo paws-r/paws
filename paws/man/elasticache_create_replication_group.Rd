@@ -329,7 +329,7 @@ length.
 in the AUTH token.
 }
 
-For more information, see \href{https://redis.io/commands/AUTH}{AUTH password} at
+For more information, see AUTH password at
 http://redis.io/commands/AUTH.}
 
 \item{TransitEncryptionEnabled}{A flag that enables in-transit encryption when set to \code{true}.
@@ -372,8 +372,7 @@ Default: \code{false}}
 \description{
 Creates a Redis (cluster mode disabled) or a Redis (cluster mode
 enabled) replication group.
-}
-\details{
+
 This API can be used to create a standalone regional replication group
 or a secondary replication group associated with a Global Datastore.
 

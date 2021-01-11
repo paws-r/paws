@@ -13,8 +13,7 @@ workspaces_modify_workspace_state(WorkspaceId, WorkspaceState)
 }
 \description{
 Sets the state of the specified WorkSpace.
-}
-\details{
+
 To maintain a WorkSpace without being interrupted, set the WorkSpace
 state to \code{ADMIN_MAINTENANCE}. WorkSpaces in this state do not respond to
 requests to reboot, stop, start, rebuild, or restore. An AutoStop

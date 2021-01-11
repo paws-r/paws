@@ -237,8 +237,7 @@ parameter group. By default, the new DB instance is created as a
 Single-AZ deployment, except when the instance is a SQL Server instance
 that has an option group associated with mirroring. In this case, the
 instance becomes a Multi-AZ deployment, not a Single-AZ deployment.
-}
-\details{
+
 If you want to replace your original DB instance with the new, restored
 DB instance, then rename your original DB instance before you call the
 RestoreDBInstanceFromDBSnapshot action. RDS doesn't allow two DB

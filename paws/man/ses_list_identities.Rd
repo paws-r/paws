@@ -22,8 +22,7 @@ inclusive.}
 Returns a list containing all of the identities (email addresses and
 domains) for your AWS account in the current AWS Region, regardless of
 verification status.
-}
-\details{
+
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{

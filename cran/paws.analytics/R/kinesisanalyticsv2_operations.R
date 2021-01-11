@@ -6,6 +6,7 @@ NULL
 #' Adds an Amazon CloudWatch log stream to monitor application
 #' configuration errors
 #'
+#' @description
 #' Adds an Amazon CloudWatch log stream to monitor application
 #' configuration errors.
 #'
@@ -52,6 +53,7 @@ kinesisanalyticsv2_add_application_cloud_watch_logging_option <- function(Applic
 #' Adds a streaming source to your SQL-based Kinesis Data Analytics
 #' application
 #'
+#' @description
 #' Adds a streaming source to your SQL-based Kinesis Data Analytics
 #' application.
 #' 
@@ -143,6 +145,7 @@ kinesisanalyticsv2_add_application_input <- function(ApplicationName, CurrentApp
 #' Adds an InputProcessingConfiguration to a SQL-based Kinesis Data
 #' Analytics application
 #'
+#' @description
 #' Adds an InputProcessingConfiguration to a SQL-based Kinesis Data
 #' Analytics application. An input processor pre-processes records on the
 #' input stream before the application's SQL code executes. Currently, the
@@ -202,6 +205,7 @@ kinesisanalyticsv2_add_application_input_processing_configuration <- function(Ap
 #' Adds an external destination to your SQL-based Kinesis Data Analytics
 #' application
 #'
+#' @description
 #' Adds an external destination to your SQL-based Kinesis Data Analytics
 #' application.
 #' 
@@ -283,6 +287,7 @@ kinesisanalyticsv2_add_application_output <- function(ApplicationName, CurrentAp
 #' Adds a reference data source to an existing SQL-based Kinesis Data
 #' Analytics application
 #'
+#' @description
 #' Adds a reference data source to an existing SQL-based Kinesis Data
 #' Analytics application.
 #' 
@@ -366,6 +371,7 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
 
 #' Adds a Virtual Private Cloud (VPC) configuration to the application
 #'
+#' @description
 #' Adds a Virtual Private Cloud (VPC) configuration to the application.
 #' Applications can use VPCs to store and access resources securely.
 #' 
@@ -428,6 +434,7 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 
 #' Creates a Kinesis Data Analytics application
 #'
+#' @description
 #' Creates a Kinesis Data Analytics application. For information about
 #' creating a Kinesis Data Analytics application, see [Creating an
 #' Application](https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html).
@@ -644,6 +651,7 @@ kinesisanalyticsv2_create_application <- function(ApplicationName, ApplicationDe
 #' Creates and returns a URL that you can use to connect to an
 #' application's extension
 #'
+#' @description
 #' Creates and returns a URL that you can use to connect to an
 #' application's extension. Currently, the only available extension is the
 #' Apache Flink dashboard.
@@ -699,6 +707,7 @@ kinesisanalyticsv2_create_application_presigned_url <- function(ApplicationName,
 
 #' Creates a snapshot of the application's state data
 #'
+#' @description
 #' Creates a snapshot of the application's state data.
 #'
 #' @usage
@@ -738,6 +747,7 @@ kinesisanalyticsv2_create_application_snapshot <- function(ApplicationName, Snap
 
 #' Deletes the specified application
 #'
+#' @description
 #' Deletes the specified application. Kinesis Data Analytics halts
 #' application execution and deletes the application.
 #'
@@ -780,6 +790,7 @@ kinesisanalyticsv2_delete_application <- function(ApplicationName, CreateTimesta
 #' Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics
 #' application
 #'
+#' @description
 #' Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics
 #' application.
 #'
@@ -825,6 +836,7 @@ kinesisanalyticsv2_delete_application_cloud_watch_logging_option <- function(App
 
 #' Deletes an InputProcessingConfiguration from an input
 #'
+#' @description
 #' Deletes an InputProcessingConfiguration from an input.
 #'
 #' @usage
@@ -871,6 +883,7 @@ kinesisanalyticsv2_delete_application_input_processing_configuration <- function
 #' Deletes the output destination configuration from your SQL-based Kinesis
 #' Data Analytics application's configuration
 #'
+#' @description
 #' Deletes the output destination configuration from your SQL-based Kinesis
 #' Data Analytics application's configuration. Kinesis Data Analytics will
 #' no longer write data from the corresponding in-application stream to the
@@ -923,6 +936,7 @@ kinesisanalyticsv2_delete_application_output <- function(ApplicationName, Curren
 #' Deletes a reference data source configuration from the specified
 #' SQL-based Kinesis Data Analytics application's configuration
 #'
+#' @description
 #' Deletes a reference data source configuration from the specified
 #' SQL-based Kinesis Data Analytics application's configuration.
 #' 
@@ -975,6 +989,7 @@ kinesisanalyticsv2_delete_application_reference_data_source <- function(Applicat
 
 #' Deletes a snapshot of application state
 #'
+#' @description
 #' Deletes a snapshot of application state.
 #'
 #' @usage
@@ -1019,6 +1034,7 @@ kinesisanalyticsv2_delete_application_snapshot <- function(ApplicationName, Snap
 
 #' Removes a VPC configuration from a Kinesis Data Analytics application
 #'
+#' @description
 #' Removes a VPC configuration from a Kinesis Data Analytics application.
 #'
 #' @usage
@@ -1061,6 +1077,7 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
 
 #' Returns information about a specific Kinesis Data Analytics application
 #'
+#' @description
 #' Returns information about a specific Kinesis Data Analytics application.
 #' 
 #' If you want to retrieve a list of all applications in your account, use
@@ -1104,6 +1121,7 @@ kinesisanalyticsv2_describe_application <- function(ApplicationName, IncludeAddi
 
 #' Returns information about a snapshot of application state data
 #'
+#' @description
 #' Returns information about a snapshot of application state data.
 #'
 #' @usage
@@ -1147,6 +1165,7 @@ kinesisanalyticsv2_describe_application_snapshot <- function(ApplicationName, Sn
 #' data stream or Kinesis Data Firehose delivery stream) or Amazon S3
 #' object
 #'
+#' @description
 #' Infers a schema for a SQL-based Kinesis Data Analytics application by
 #' evaluating sample records on the specified streaming source (Kinesis
 #' data stream or Kinesis Data Firehose delivery stream) or Amazon S3
@@ -1214,6 +1233,7 @@ kinesisanalyticsv2_discover_input_schema <- function(ResourceARN = NULL, Service
 
 #' Lists information about the current application snapshots
 #'
+#' @description
 #' Lists information about the current application snapshots.
 #'
 #' @usage
@@ -1258,6 +1278,7 @@ kinesisanalyticsv2_list_application_snapshots <- function(ApplicationName, Limit
 
 #' Returns a list of Kinesis Data Analytics applications in your account
 #'
+#' @description
 #' Returns a list of Kinesis Data Analytics applications in your account.
 #' For each application, the response includes the application name, Amazon
 #' Resource Name (ARN), and status.
@@ -1304,6 +1325,7 @@ kinesisanalyticsv2_list_applications <- function(Limit = NULL, NextToken = NULL)
 
 #' Retrieves the list of key-value tags assigned to the application
 #'
+#' @description
 #' Retrieves the list of key-value tags assigned to the application. For
 #' more information, see [Using
 #' Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
@@ -1342,6 +1364,7 @@ kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
 
 #' Starts the specified Kinesis Data Analytics application
 #'
+#' @description
 #' Starts the specified Kinesis Data Analytics application. After creating
 #' an application, you must exclusively call this operation to start your
 #' application.
@@ -1399,6 +1422,7 @@ kinesisanalyticsv2_start_application <- function(ApplicationName, RunConfigurati
 
 #' Stops the application from processing data
 #'
+#' @description
 #' Stops the application from processing data. You can stop an application
 #' only if it is in the running status, unless you set the `Force`
 #' parameter to `true`.
@@ -1459,6 +1483,7 @@ kinesisanalyticsv2_stop_application <- function(ApplicationName, Force = NULL) {
 
 #' Adds one or more key-value tags to a Kinesis Data Analytics application
 #'
+#' @description
 #' Adds one or more key-value tags to a Kinesis Data Analytics application.
 #' Note that the maximum number of application tags includes system tags.
 #' The maximum number of user-defined application tags is 50. For more
@@ -1506,6 +1531,7 @@ kinesisanalyticsv2_tag_resource <- function(ResourceARN, Tags) {
 
 #' Removes one or more tags from a Kinesis Data Analytics application
 #'
+#' @description
 #' Removes one or more tags from a Kinesis Data Analytics application. For
 #' more information, see [Using
 #' Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
@@ -1549,6 +1575,7 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 
 #' Updates an existing Kinesis Data Analytics application
 #'
+#' @description
 #' Updates an existing Kinesis Data Analytics application. Using this
 #' operation, you can update application code, input configuration, and
 #' output configuration.

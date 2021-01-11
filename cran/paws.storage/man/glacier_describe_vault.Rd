@@ -29,8 +29,7 @@ contents will not be immediately reflected. If you want to retrieve the
 latest inventory of the vault, use InitiateJob. Amazon S3 Glacier
 generates vault inventories approximately daily. For more information,
 see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html}{Downloading a Vault Inventory in Amazon S3 Glacier}.
-}
-\details{
+
 An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to

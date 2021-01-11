@@ -170,8 +170,7 @@ enabled. By default, deletion protection is enabled.}
 }
 \description{
 Creates a new Amazon Neptune DB cluster.
-}
-\details{
+
 You can use the \code{ReplicationSourceIdentifier} parameter to create the DB
 cluster as a Read Replica of another DB cluster or Amazon Neptune DB
 instance.

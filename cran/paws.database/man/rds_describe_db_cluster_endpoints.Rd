@@ -42,8 +42,7 @@ specified by \code{MaxRecords}.}
 }
 \description{
 Returns information about endpoints for an Amazon Aurora DB cluster.
-}
-\details{
+
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{

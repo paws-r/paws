@@ -5,6 +5,7 @@ NULL
 
 #' Removes one or more documents from an index
 #'
+#' @description
 #' Removes one or more documents from an index. The documents must have
 #' been added with the BatchPutDocument operation.
 #' 
@@ -56,6 +57,7 @@ kendra_batch_delete_document <- function(IndexId, DocumentIdList, DataSourceSync
 
 #' Adds one or more documents to an index
 #'
+#' @description
 #' Adds one or more documents to an index.
 #' 
 #' The `BatchPutDocument` operation enables you to ingest inline documents
@@ -154,6 +156,7 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents) {
 
 #' Creates a data source that you use to with an Amazon Kendra index
 #'
+#' @description
 #' Creates a data source that you use to with an Amazon Kendra index.
 #' 
 #' You specify a name, data source connector type and description for your
@@ -575,6 +578,7 @@ kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL,
 #' Creates an new set of frequently asked question (FAQ) questions and
 #' answers
 #'
+#' @description
 #' Creates an new set of frequently asked question (FAQ) questions and
 #' answers.
 #'
@@ -649,6 +653,7 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
 
 #' Creates a new Amazon Kendra index
 #'
+#' @description
 #' Creates a new Amazon Kendra index. Index creation is an asynchronous
 #' operation. To determine if index creation has completed, check the
 #' `Status` field returned from a call to . The `Status` field is set to
@@ -759,6 +764,7 @@ kendra_create_index <- function(Name, Edition = NULL, RoleArn, ServerSideEncrypt
 
 #' Creates a thesaurus for an index
 #'
+#' @description
 #' Creates a thesaurus for an index. The thesaurus contains a list of
 #' synonyms in Solr format.
 #'
@@ -822,6 +828,7 @@ kendra_create_thesaurus <- function(IndexId, Name, Description = NULL, RoleArn, 
 
 #' Deletes an Amazon Kendra data source
 #'
+#' @description
 #' Deletes an Amazon Kendra data source. An exception is not thrown if the
 #' data source is already being deleted. While the data source is being
 #' deleted, the `Status` field returned by a call to the operation is set
@@ -864,6 +871,7 @@ kendra_delete_data_source <- function(Id, IndexId) {
 
 #' Removes an FAQ from an index
 #'
+#' @description
 #' Removes an FAQ from an index.
 #'
 #' @usage
@@ -902,6 +910,7 @@ kendra_delete_faq <- function(Id, IndexId) {
 
 #' Deletes an existing Amazon Kendra index
 #'
+#' @description
 #' Deletes an existing Amazon Kendra index. An exception is not thrown if
 #' the index is already being deleted. While the index is being deleted,
 #' the `Status` field returned by a call to the DescribeIndex operation is
@@ -941,6 +950,7 @@ kendra_delete_index <- function(Id) {
 
 #' Deletes an existing Amazon Kendra thesaurus
 #'
+#' @description
 #' Deletes an existing Amazon Kendra thesaurus.
 #'
 #' @usage
@@ -979,6 +989,7 @@ kendra_delete_thesaurus <- function(Id, IndexId) {
 
 #' Gets information about a Amazon Kendra data source
 #'
+#' @description
 #' Gets information about a Amazon Kendra data source.
 #'
 #' @usage
@@ -1017,6 +1028,7 @@ kendra_describe_data_source <- function(Id, IndexId) {
 
 #' Gets information about an FAQ list
 #'
+#' @description
 #' Gets information about an FAQ list.
 #'
 #' @usage
@@ -1055,6 +1067,7 @@ kendra_describe_faq <- function(Id, IndexId) {
 
 #' Describes an existing Amazon Kendra index
 #'
+#' @description
 #' Describes an existing Amazon Kendra index
 #'
 #' @usage
@@ -1091,6 +1104,7 @@ kendra_describe_index <- function(Id) {
 
 #' Describes an existing Amazon Kendra thesaurus
 #'
+#' @description
 #' Describes an existing Amazon Kendra thesaurus.
 #'
 #' @usage
@@ -1129,6 +1143,7 @@ kendra_describe_thesaurus <- function(Id, IndexId) {
 
 #' Gets statistics about synchronizing Amazon Kendra with a data source
 #'
+#' @description
 #' Gets statistics about synchronizing Amazon Kendra with a data source.
 #'
 #' @usage
@@ -1188,6 +1203,7 @@ kendra_list_data_source_sync_jobs <- function(Id, IndexId, NextToken = NULL, Max
 
 #' Lists the data sources that you have created
 #'
+#' @description
 #' Lists the data sources that you have created.
 #'
 #' @usage
@@ -1231,6 +1247,7 @@ kendra_list_data_sources <- function(IndexId, NextToken = NULL, MaxResults = NUL
 
 #' Gets a list of FAQ lists associated with an index
 #'
+#' @description
 #' Gets a list of FAQ lists associated with an index.
 #'
 #' @usage
@@ -1273,6 +1290,7 @@ kendra_list_faqs <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 
 #' Lists the Amazon Kendra indexes that you have created
 #'
+#' @description
 #' Lists the Amazon Kendra indexes that you have created.
 #'
 #' @usage
@@ -1314,6 +1332,7 @@ kendra_list_indices <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Gets a list of tags associated with a specified resource
 #'
+#' @description
 #' Gets a list of tags associated with a specified resource. Indexes, FAQs,
 #' and data sources can have tags associated with them.
 #'
@@ -1352,6 +1371,7 @@ kendra_list_tags_for_resource <- function(ResourceARN) {
 
 #' Lists the Amazon Kendra thesauri associated with an index
 #'
+#' @description
 #' Lists the Amazon Kendra thesauri associated with an index.
 #'
 #' @usage
@@ -1395,6 +1415,7 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 
 #' Searches an active index
 #'
+#' @description
 #' Searches an active index. Use this API to search your documents using
 #' query. The `Query` operation enables to do faceted search and to filter
 #' results based on document attributes.
@@ -1607,6 +1628,7 @@ kendra_query <- function(IndexId, QueryText, AttributeFilter = NULL, Facets = NU
 
 #' Starts a synchronization job for a data source
 #'
+#' @description
 #' Starts a synchronization job for a data source. If a synchronization job
 #' is already in progress, Amazon Kendra returns a `ResourceInUseException`
 #' exception.
@@ -1647,6 +1669,7 @@ kendra_start_data_source_sync_job <- function(Id, IndexId) {
 
 #' Stops a running synchronization job
 #'
+#' @description
 #' Stops a running synchronization job. You can't stop a scheduled
 #' synchronization job.
 #'
@@ -1688,6 +1711,7 @@ kendra_stop_data_source_sync_job <- function(Id, IndexId) {
 #' Enables you to provide feedback to Amazon Kendra to improve the
 #' performance of the service
 #'
+#' @description
 #' Enables you to provide feedback to Amazon Kendra to improve the
 #' performance of the service.
 #'
@@ -1748,6 +1772,7 @@ kendra_submit_feedback <- function(IndexId, QueryId, ClickFeedbackItems = NULL, 
 #' Adds the specified tag to the specified index, FAQ, or data source
 #' resource
 #'
+#' @description
 #' Adds the specified tag to the specified index, FAQ, or data source
 #' resource. If the tag already exists, the existing value is replaced with
 #' the new value.
@@ -1794,6 +1819,7 @@ kendra_tag_resource <- function(ResourceARN, Tags) {
 
 #' Removes a tag from an index, FAQ, or a data source
 #'
+#' @description
 #' Removes a tag from an index, FAQ, or a data source.
 #'
 #' @usage
@@ -1836,6 +1862,7 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
 
 #' Updates an existing Amazon Kendra data source
 #'
+#' @description
 #' Updates an existing Amazon Kendra data source.
 #'
 #' @usage
@@ -2214,6 +2241,7 @@ kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = 
 
 #' Updates an existing Amazon Kendra index
 #'
+#' @description
 #' Updates an existing Amazon Kendra index.
 #'
 #' @usage
@@ -2311,6 +2339,7 @@ kendra_update_index <- function(Id, Name = NULL, RoleArn = NULL, Description = N
 
 #' Updates a thesaurus file associated with an index
 #'
+#' @description
 #' Updates a thesaurus file associated with an index.
 #'
 #' @usage

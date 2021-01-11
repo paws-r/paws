@@ -15,8 +15,7 @@ operation. However, this total can include no more than one composite
 alarm. For example, you could delete 99 metric alarms and one composite
 alarms with one operation, but you can't delete two composite alarms
 with one operation.
-}
-\details{
+
 In the event of an error, no alarms are deleted.
 
 It is possible to create a loop or cycle of composite alarms, where

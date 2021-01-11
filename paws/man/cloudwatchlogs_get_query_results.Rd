@@ -11,8 +11,7 @@ cloudwatchlogs_get_query_results(queryId)
 }
 \description{
 Returns the results from the specified query.
-}
-\details{
+
 Only the fields requested in the query are returned, along with a \verb{@ptr}
 field, which is the identifier for the log record. You can use the value
 of \verb{@ptr} in a

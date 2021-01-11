@@ -30,8 +30,7 @@ information about resource types whose ID formats can be modified; it
 does not return information about other resource types. For more
 information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/resource-ids.html}{Resource IDs}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\details{
+
 The following resource types support longer IDs: \code{bundle} |
 \code{conversion-task} | \code{customer-gateway} | \code{dhcp-options} |
 \code{elastic-ip-allocation} | \code{elastic-ip-association} | \code{export-task} |

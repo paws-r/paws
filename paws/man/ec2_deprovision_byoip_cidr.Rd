@@ -21,8 +21,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Releases the specified address range that you provisioned for use with
 your AWS resources through bring your own IP addresses (BYOIP) and
 deletes the corresponding address pool.
-}
-\details{
+
 Before you can release an address range, you must stop advertising it
 using WithdrawByoipCidr and you must not have any IP addresses allocated
 from its address range.

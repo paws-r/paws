@@ -11,8 +11,7 @@ customerprofiles_get_profile_object_type_template(TemplateId)
 }
 \description{
 Returns the template information for a specific object type.
-}
-\details{
+
 A template is a predefined ProfileObjectType, such as
 “Salesforce-Account” or “Salesforce-Contact.” When a user sends a
 ProfileObject, using the PutProfileObject API, with an ObjectTypeName

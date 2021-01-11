@@ -31,8 +31,7 @@ organization alias must match the directory alias. If you choose not to
 associate an existing directory with your organization, then we create a
 new Amazon WorkMail directory for you. For more information, see \href{https://docs.aws.amazon.com/workmail/latest/adminguide/add_new_organization.html}{Adding an organization}
 in the \emph{Amazon WorkMail Administrator Guide}.
-}
-\details{
+
 You can associate multiple email domains with an organization, then set
 your default email domain from the Amazon WorkMail console. You can also
 associate a domain that is managed in an Amazon Route 53 public hosted

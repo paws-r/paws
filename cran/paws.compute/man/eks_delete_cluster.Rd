@@ -11,8 +11,7 @@ eks_delete_cluster(name)
 }
 \description{
 Deletes the Amazon EKS cluster control plane.
-}
-\details{
+
 If you have active services in your cluster that are associated with a
 load balancer, you must delete those services before deleting the
 cluster so that the load balancers are deleted properly. Otherwise, you

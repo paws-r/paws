@@ -16,8 +16,6 @@ of a key and a value that you define.}
 }
 \description{
 Applies one or more tags to the specified resources. Note the following:
-}
-\details{
 \itemize{
 \item Not all resources can have tags. For a list of services that support
 tagging, see \href{https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html}{this list}.

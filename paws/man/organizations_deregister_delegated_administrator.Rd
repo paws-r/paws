@@ -23,8 +23,7 @@ the operation also revokes Organizations read action permissions.}
 \description{
 Removes the specified member AWS account as a delegated administrator
 for the specified AWS service.
-}
-\details{
+
 Deregistering a delegated administrator can have unintended impacts on
 the functionality of the enabled AWS service. See the documentation for
 the enabled service before you deregister a delegated administrator so

@@ -17,8 +17,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified EBS volume. The volume must be in the \code{available}
 state (not attached to an instance).
-}
-\details{
+
 The volume can remain in the \code{deleting} state for several minutes.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html}{Deleting an Amazon EBS volume}

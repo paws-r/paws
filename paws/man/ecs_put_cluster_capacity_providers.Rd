@@ -50,8 +50,7 @@ cluster to be used.}
 \description{
 Modifies the available capacity providers and the default capacity
 provider strategy for a cluster.
-}
-\details{
+
 You must specify both the available capacity providers and a default
 capacity provider strategy for the cluster. If the specified cluster has
 existing capacity providers associated with it, you must specify all

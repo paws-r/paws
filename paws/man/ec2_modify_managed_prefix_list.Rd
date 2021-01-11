@@ -25,8 +25,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Modifies the specified managed prefix list.
-}
-\details{
+
 Adding or removing entries in a prefix list creates a new version of the
 prefix list. Changing the name of the prefix list does not affect the
 version.

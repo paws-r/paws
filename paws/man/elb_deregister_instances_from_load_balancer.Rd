@@ -15,8 +15,7 @@ elb_deregister_instances_from_load_balancer(LoadBalancerName, Instances)
 Deregisters the specified instances from the specified load balancer.
 After the instance is deregistered, it no longer receives traffic from
 the load balancer.
-}
-\details{
+
 You can use DescribeLoadBalancers to verify that the instance is
 deregistered from the load balancer.
 

@@ -25,8 +25,7 @@ Specify this parameter only if \code{ExistingVpnId} isn't specified.}
 }
 \description{
 Creates a custom Availability Zone (AZ).
-}
-\details{
+
 A custom AZ is an on-premises AZ that is integrated with a VMware
 vSphere cluster.
 

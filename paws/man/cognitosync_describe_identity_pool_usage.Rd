@@ -13,8 +13,7 @@ cognitosync_describe_identity_pool_usage(IdentityPoolId)
 \description{
 Gets usage details (for example, data storage) about a particular
 identity pool.
-}
-\details{
+
 This API can only be called with developer credentials. You cannot call
 this API with the temporary user credentials provided by Cognito
 Identity.

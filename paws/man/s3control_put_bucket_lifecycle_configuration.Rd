@@ -20,8 +20,7 @@ This action puts a lifecycle configuration to an Amazon S3 on Outposts
 bucket. To put a lifecycle configuration to an S3 bucket, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html}{PutBucketLifecycleConfiguration}
 in the \emph{Amazon Simple Storage Service API}.
-}
-\details{
+
 Creates a new lifecycle configuration for the Outposts bucket or
 replaces an existing lifecycle configuration. Outposts buckets only
 support lifecycle configurations that delete/expire objects after a

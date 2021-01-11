@@ -13,8 +13,7 @@ sns_opt_in_phone_number(phoneNumber)
 \description{
 Use this request to opt in a phone number that is opted out, which
 enables you to resume sending SMS messages to the number.
-}
-\details{
+
 You can opt in a phone number only once every 30 days.
 }
 \section{Request syntax}{

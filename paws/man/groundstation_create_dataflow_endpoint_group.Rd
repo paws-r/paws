@@ -15,8 +15,7 @@ groundstation_create_dataflow_endpoint_group(endpointDetails, tags)
 \description{
 Creates a \code{DataflowEndpoint} group containing the specified list of
 \code{DataflowEndpoint} objects.
-}
-\details{
+
 The \code{name} field in each endpoint is used in your mission profile
 \code{DataflowEndpointConfig} to specify which endpoints to use during a
 contact.

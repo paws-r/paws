@@ -22,8 +22,7 @@ instance or volume. The action removes all artifacts of the conversion,
 including a partially uploaded volume or instance. If the conversion is
 complete or is in the process of transferring the final disk image, the
 command fails and returns an exception.
-}
-\details{
+
 For more information, see \href{http://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf}{Importing a Virtual Machine Using the Amazon EC2 CLI}.
 }
 \section{Request syntax}{

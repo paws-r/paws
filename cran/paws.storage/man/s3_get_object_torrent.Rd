@@ -22,8 +22,7 @@ different account, the request will fail with an HTTP
 Returns torrent files from a bucket. BitTorrent can save you bandwidth
 when you're distributing large files. For more information about
 BitTorrent, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3Torrent.html}{Using BitTorrent with Amazon S3}.
-}
-\details{
+
 You can get torrent only for objects that are less than 5 GB in size,
 and that are not encrypted using server-side encryption with a
 customer-provided encryption key.

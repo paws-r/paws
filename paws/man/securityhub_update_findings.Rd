@@ -17,8 +17,7 @@ update.}
 \description{
 \code{UpdateFindings} is deprecated. Instead of \code{UpdateFindings}, use
 \code{BatchUpdateFindings}.
-}
-\details{
+
 Updates the \code{Note} and \code{RecordState} of the Security Hub-aggregated
 findings that the filter attributes specify. Any member account that can
 view the finding also sees the update to the finding.

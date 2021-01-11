@@ -91,8 +91,7 @@ from being accidentally deleted.}
 }
 \description{
 Creates a new cluster from a snapshot or cluster snapshot.
-}
-\details{
+
 If a snapshot is specified, the target cluster is created from the
 source DB snapshot with a default configuration and default security
 group.

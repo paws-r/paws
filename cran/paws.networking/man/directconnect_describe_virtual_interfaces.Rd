@@ -18,8 +18,7 @@ deleted fewer than 15 minutes before you make the request are also
 returned. If you specify a connection ID, only the virtual interfaces
 associated with the connection are returned. If you specify a virtual
 interface ID, then only a single virtual interface is returned.
-}
-\details{
+
 A virtual interface (VLAN) transmits the traffic between the AWS Direct
 Connect location and the customer network.
 }

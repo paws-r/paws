@@ -34,8 +34,7 @@ You can specify at most one of these in a request.}
 \description{
 Returns the number of open workflow executions within the given domain
 that meet the specified filtering criteria.
-}
-\details{
+
 This operation is eventually consistent. The results are best effort and
 may not exactly reflect recent updates and changes.
 

@@ -17,8 +17,7 @@ are more containers to list.}
 }
 \description{
 Lists the properties of all containers in AWS Elemental MediaStore.
-}
-\details{
+
 You can query to receive all the containers in one response. Or you can
 include the \code{MaxResults} parameter to receive a limited number of
 containers in each response. In this case, the response includes a

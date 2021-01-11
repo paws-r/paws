@@ -20,8 +20,7 @@ existing pipeline definition.}
 \description{
 Adds tasks, schedules, and preconditions to the specified pipeline. You
 can use \code{PutPipelineDefinition} to populate a new pipeline.
-}
-\details{
+
 \code{PutPipelineDefinition} also validates the configuration as it adds it
 to the pipeline. Changes to the pipeline are saved unless one of the
 following three validation errors exists in the pipeline.

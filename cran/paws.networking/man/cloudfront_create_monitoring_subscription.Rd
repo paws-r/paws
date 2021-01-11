@@ -18,8 +18,7 @@ distribution.}
 \description{
 Enables additional CloudWatch metrics for the specified CloudFront
 distribution. The additional metrics incur an additional cost.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/viewing-cloudfront-metrics.html#monitoring-console.distributions-additional}{Viewing additional CloudFront distribution metrics}
 in the \emph{Amazon CloudFront Developer Guide}.
 }

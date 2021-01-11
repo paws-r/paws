@@ -16,8 +16,7 @@ Amazon Elastic Compute Cloud (Amazon EC2). This operation results in an
 export snapshot record that can be used with the
 \verb{create cloud formation stack} operation to create new Amazon EC2
 instances.
-}
-\details{
+
 Exported instance snapshots appear in Amazon EC2 as Amazon Machine
 Images (AMIs), and the instance system disk appears as an Amazon Elastic
 Block Store (Amazon EBS) volume. Exported disk snapshots appear in
@@ -27,7 +26,8 @@ snapshot.
 
 The \verb{export snapshot} operation supports tag-based access control via
 resource tags applied to the resource identified by
-\verb{source snapshot name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{source snapshot name}. For more information, see the Lightsail Dev
+Guide.
 
 Use the \verb{get instance snapshots} or \verb{get disk snapshots} operations to
 get a list of snapshots that you can export to Amazon EC2.

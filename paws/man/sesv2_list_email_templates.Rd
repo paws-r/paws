@@ -21,8 +21,7 @@ The value you specify has to be at least 1, and can be no more than 10.}
 \description{
 Lists the email templates present in your Amazon SES account in the
 current AWS Region.
-}
-\details{
+
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{

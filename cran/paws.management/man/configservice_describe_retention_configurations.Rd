@@ -22,8 +22,7 @@ the next page of results in a paginated response.}
 Returns the details of one or more retention configurations. If the
 retention configuration name is not specified, this action returns the
 details for all the retention configurations for that account.
-}
-\details{
+
 Currently, AWS Config supports only one retention configuration per
 region in your account.
 }

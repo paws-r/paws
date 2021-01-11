@@ -34,8 +34,7 @@ multiple repositories across an organization. You can use a domain to
 apply permissions across many repositories owned by different AWS
 accounts. An asset is stored only once in a domain, even if it's in
 multiple repositories.
-}
-\details{
+
 Although you can have multiple domains, we recommend a single production
 domain that contains all published artifacts so that your development
 teams can find and share packages. You can use a second pre-production

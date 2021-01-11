@@ -35,8 +35,7 @@ The default value is -1.}
 \description{
 Creates a manual snapshot of the specified cluster. The cluster must be
 in the \code{available} state.
-}
-\details{
+
 For more information about working with snapshots, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }

@@ -21,8 +21,7 @@ Otherwise, it returns a description of every command.}
 }
 \description{
 Describes the results of specified commands.
-}
-\details{
+
 This call accepts only one resource-identifying parameter.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a

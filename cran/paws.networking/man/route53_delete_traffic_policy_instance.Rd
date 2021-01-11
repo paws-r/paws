@@ -17,8 +17,7 @@ traffic policy instance.}
 \description{
 Deletes a traffic policy instance and all of the resource record sets
 that Amazon Route 53 created when you created the instance.
-}
-\details{
+
 In the Route 53 console, traffic policy instances are known as policy
 records.
 }

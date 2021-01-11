@@ -8,8 +8,7 @@ opsworkscm_describe_account_attributes()
 }
 \description{
 Describes your OpsWorks-CM account attributes.
-}
-\details{
+
 This operation is synchronous.
 }
 \section{Request syntax}{

@@ -56,8 +56,7 @@ execution that is using the specified task list. The task includes a
 paginated view of the history of the workflow execution. The decider
 should use the workflow type and the history to determine how to
 properly handle the task.
-}
-\details{
+
 This action initiates a long poll, where the service holds the HTTP
 connection open and responds as soon a task becomes available. If no
 decision task is available in the specified task list before the timeout

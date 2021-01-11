@@ -23,8 +23,7 @@ your modification request. For more information, see \href{https://docs.aws.amaz
 Modifies the credit option for CPU usage on a running or stopped
 burstable performance instance. The credit options are \code{standard} and
 \code{unlimited}.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html}{Burstable performance instances}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }

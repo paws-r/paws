@@ -30,8 +30,7 @@ Creates a replication configuration or replaces an existing one. For
 more information, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html}{Replication}
 in the \emph{Amazon S3 Developer Guide}.
-}
-\details{
+
 To perform this operation, the user or role performing the operation
 must have the
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_passrole.html}{iam:PassRole}

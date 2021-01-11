@@ -20,8 +20,7 @@ different account, the request will fail with an HTTP
 \description{
 Deletes an analytics configuration for the bucket (specified by the
 analytics configuration ID).
-}
-\details{
+
 To use this operation, you must have permissions to perform the
 \code{s3:PutAnalyticsConfiguration} action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to

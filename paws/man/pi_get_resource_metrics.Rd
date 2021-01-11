@@ -62,8 +62,7 @@ token, up to the value specified by \code{MaxRecords}.}
 Retrieve Performance Insights metrics for a set of data sources, over a
 time period. You can provide specific dimension groups and dimensions,
 and provide aggregation and filtering criteria for each group.
-}
-\details{
+
 Each response element returns a maximum of 500 bytes. For larger
 elements, such as SQL statements, only the first 500 bytes are returned.
 }

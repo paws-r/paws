@@ -35,8 +35,7 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \description{
 Creates a VPC endpoint service configuration to which service consumers
 (AWS accounts, IAM users, and IAM roles) can connect.
-}
-\details{
+
 To create an endpoint service configuration, you must first create one
 of the following for your service:
 \itemize{

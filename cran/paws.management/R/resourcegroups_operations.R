@@ -5,6 +5,7 @@ NULL
 
 #' Creates a resource group with the specified name and description
 #'
+#' @description
 #' Creates a resource group with the specified name and description. You
 #' can optionally include a resource query, or a service configuration. For
 #' more information about constructing a resource query, see [Create a
@@ -100,6 +101,7 @@ resourcegroups_create_group <- function(Name, Description = NULL, ResourceQuery 
 
 #' Deletes the specified resource group
 #'
+#' @description
 #' Deletes the specified resource group. Deleting a resource group does not
 #' delete any resources that are members of the group; it only deletes the
 #' group structure.
@@ -146,6 +148,7 @@ resourcegroups_delete_group <- function(GroupName = NULL, Group = NULL) {
 
 #' Returns information about a specified resource group
 #'
+#' @description
 #' Returns information about a specified resource group.
 #' 
 #' **Minimum permissions**
@@ -191,6 +194,7 @@ resourcegroups_get_group <- function(GroupName = NULL, Group = NULL) {
 #' Returns the service configuration associated with the specified resource
 #' group
 #'
+#' @description
 #' Returns the service configuration associated with the specified resource
 #' group. For details about the service configuration syntax, see [Service
 #' configurations for resource
@@ -237,6 +241,7 @@ resourcegroups_get_group_configuration <- function(Group = NULL) {
 #' Retrieves the resource query associated with the specified resource
 #' group
 #'
+#' @description
 #' Retrieves the resource query associated with the specified resource
 #' group. For more information about resource queries, see [Create a
 #' tag-based group in Resource
@@ -285,6 +290,7 @@ resourcegroups_get_group_query <- function(GroupName = NULL, Group = NULL) {
 #' Returns a list of tags that are associated with a resource group,
 #' specified by an ARN
 #'
+#' @description
 #' Returns a list of tags that are associated with a resource group,
 #' specified by an ARN.
 #' 
@@ -328,6 +334,7 @@ resourcegroups_get_tags <- function(Arn) {
 
 #' Adds the specified resources to the specified group
 #'
+#' @description
 #' Adds the specified resources to the specified group.
 #' 
 #' **Minimum permissions**
@@ -375,6 +382,7 @@ resourcegroups_group_resources <- function(Group, ResourceArns) {
 #' Returns a list of ARNs of the resources that are members of a specified
 #' resource group
 #'
+#' @description
 #' Returns a list of ARNs of the resources that are members of a specified
 #' resource group.
 #' 
@@ -472,6 +480,7 @@ resourcegroups_list_group_resources <- function(GroupName = NULL, Group = NULL, 
 
 #' Returns a list of existing resource groups in your account
 #'
+#' @description
 #' Returns a list of existing resource groups in your account.
 #' 
 #' **Minimum permissions**
@@ -552,6 +561,7 @@ resourcegroups_list_groups <- function(Filters = NULL, MaxResults = NULL, NextTo
 
 #' Attaches a service configuration to the specified group
 #'
+#' @description
 #' Attaches a service configuration to the specified group. This occurs
 #' asynchronously, and can take time to complete. You can use
 #' GetGroupConfiguration to check the status of the update.
@@ -622,6 +632,7 @@ resourcegroups_put_group_configuration <- function(Group = NULL, Configuration =
 #' Returns a list of AWS resource identifiers that matches the specified
 #' query
 #'
+#' @description
 #' Returns a list of AWS resource identifiers that matches the specified
 #' query. The query uses the same format as a resource query in a
 #' CreateGroup or UpdateGroupQuery operation.
@@ -687,6 +698,7 @@ resourcegroups_search_resources <- function(ResourceQuery, MaxResults = NULL, Ne
 
 #' Adds tags to a resource group with the specified ARN
 #'
+#' @description
 #' Adds tags to a resource group with the specified ARN. Existing tags on a
 #' resource group are not changed if they are not specified in the request
 #' parameters.
@@ -741,6 +753,7 @@ resourcegroups_tag <- function(Arn, Tags) {
 
 #' Removes the specified resources from the specified group
 #'
+#' @description
 #' Removes the specified resources from the specified group.
 #' 
 #' **Minimum permissions**
@@ -788,6 +801,7 @@ resourcegroups_ungroup_resources <- function(Group, ResourceArns) {
 
 #' Deletes tags from a specified resource group
 #'
+#' @description
 #' Deletes tags from a specified resource group.
 #' 
 #' **Minimum permissions**
@@ -836,6 +850,7 @@ resourcegroups_untag <- function(Arn, Keys) {
 
 #' Updates the description for an existing group
 #'
+#' @description
 #' Updates the description for an existing group. You cannot update the
 #' name of a resource group.
 #' 
@@ -885,6 +900,7 @@ resourcegroups_update_group <- function(GroupName = NULL, Group = NULL, Descript
 
 #' Updates the resource query of a group
 #'
+#' @description
 #' Updates the resource query of a group. For more information about
 #' resource queries, see [Create a tag-based group in Resource
 #' Groups](https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).

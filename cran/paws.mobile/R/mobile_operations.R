@@ -5,6 +5,7 @@ NULL
 
 #' Creates an AWS Mobile Hub project
 #'
+#' @description
 #' Creates an AWS Mobile Hub project.
 #'
 #' @usage
@@ -51,6 +52,7 @@ mobile_create_project <- function(name = NULL, region = NULL, contents = NULL, s
 
 #' Delets a project in AWS Mobile Hub
 #'
+#' @description
 #' Delets a project in AWS Mobile Hub.
 #'
 #' @usage
@@ -87,6 +89,7 @@ mobile_delete_project <- function(projectId) {
 
 #' Get the bundle details for the requested bundle id
 #'
+#' @description
 #' Get the bundle details for the requested bundle id.
 #'
 #' @usage
@@ -123,6 +126,7 @@ mobile_describe_bundle <- function(bundleId) {
 
 #' Gets details about a project in AWS Mobile Hub
 #'
+#' @description
 #' Gets details about a project in AWS Mobile Hub.
 #'
 #' @usage
@@ -165,6 +169,7 @@ mobile_describe_project <- function(projectId, syncFromResources = NULL) {
 #' used to integrate mobile web or mobile app clients with backend AWS
 #' resources
 #'
+#' @description
 #' Generates customized software development kit (SDK) and or tool packages
 #' used to integrate mobile web or mobile app clients with backend AWS
 #' resources.
@@ -208,6 +213,7 @@ mobile_export_bundle <- function(bundleId, projectId = NULL, platform = NULL) {
 #' Exports project configuration to a snapshot which can be downloaded and
 #' shared
 #'
+#' @description
 #' Exports project configuration to a snapshot which can be downloaded and
 #' shared. Note that mobile app push credentials are encrypted in exported
 #' projects, so they can only be shared successfully within the same AWS
@@ -247,6 +253,7 @@ mobile_export_project <- function(projectId) {
 
 #' List all available bundles
 #'
+#' @description
 #' List all available bundles.
 #'
 #' @usage
@@ -287,6 +294,7 @@ mobile_list_bundles <- function(maxResults = NULL, nextToken = NULL) {
 
 #' Lists projects in AWS Mobile Hub
 #'
+#' @description
 #' Lists projects in AWS Mobile Hub.
 #'
 #' @usage
@@ -327,6 +335,7 @@ mobile_list_projects <- function(maxResults = NULL, nextToken = NULL) {
 
 #' Update an existing project
 #'
+#' @description
 #' Update an existing project.
 #'
 #' @usage

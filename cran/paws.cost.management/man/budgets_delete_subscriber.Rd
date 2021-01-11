@@ -19,8 +19,7 @@ want to delete.}
 }
 \description{
 Deletes a subscriber.
-}
-\details{
+
 Deleting the last subscriber to a notification also deletes the
 notification.
 }

@@ -20,8 +20,7 @@ return the access control list (ACL) of a bucket. To use \code{GET} to return
 the ACL of the bucket, you must have \code{READ_ACP} access to the bucket. If
 \code{READ_ACP} permission is granted to the anonymous user, you can return
 the ACL of the bucket without using an authorization header.
-}
-\details{
+
 \strong{Related Resources}
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjects.html}{ListObjects}

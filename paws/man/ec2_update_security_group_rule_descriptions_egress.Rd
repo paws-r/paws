@@ -27,8 +27,7 @@ the security group ID or the security group name in the request.}
 [VPC only] Updates the description of an egress (outbound) security
 group rule. You can replace an existing description, or add a
 description to a rule that did not have one previously.
-}
-\details{
+
 You specify the description as part of the IP permissions structure. You
 can remove a description for a security group rule by omitting the
 description parameter in the request.

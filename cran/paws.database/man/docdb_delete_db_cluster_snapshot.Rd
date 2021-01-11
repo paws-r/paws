@@ -15,8 +15,7 @@ Constraints: Must be the name of an existing cluster snapshot in the
 \description{
 Deletes a cluster snapshot. If the snapshot is being copied, the copy
 operation is terminated.
-}
-\details{
+
 The cluster snapshot must be in the \code{available} state to be deleted.
 }
 \section{Request syntax}{

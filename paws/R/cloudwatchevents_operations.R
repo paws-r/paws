@@ -5,6 +5,7 @@ NULL
 
 #' Activates a partner event source that has been deactivated
 #'
+#' @description
 #' Activates a partner event source that has been deactivated. Once
 #' activated, your matching event bus will start receiving events from the
 #' event source.
@@ -43,6 +44,7 @@ cloudwatchevents_activate_event_source <- function(Name) {
 
 #' Cancels the specified replay
 #'
+#' @description
 #' Cancels the specified replay.
 #'
 #' @usage
@@ -79,6 +81,7 @@ cloudwatchevents_cancel_replay <- function(ReplayName) {
 
 #' Creates an archive of events with the specified settings
 #'
+#' @description
 #' Creates an archive of events with the specified settings. When you
 #' create an archive, incoming events might not immediately start being
 #' sent to the archive. Allow a short period of time for changes to take
@@ -130,6 +133,7 @@ cloudwatchevents_create_archive <- function(ArchiveName, EventSourceArn, Descrip
 
 #' Creates a new event bus within your account
 #'
+#' @description
 #' Creates a new event bus within your account. This can be a custom event
 #' bus which you can use to receive events from your custom applications
 #' and services, or it can be a partner event bus which can be matched to a
@@ -186,6 +190,7 @@ cloudwatchevents_create_event_bus <- function(Name, EventSourceName = NULL, Tags
 
 #' Called by an SaaS partner to create a partner event source
 #'
+#' @description
 #' Called by an SaaS partner to create a partner event source. This
 #' operation is not used by AWS customers.
 #' 
@@ -256,6 +261,7 @@ cloudwatchevents_create_partner_event_source <- function(Name, Account) {
 #' You can use this operation to temporarily stop receiving events from the
 #' specified partner event source
 #'
+#' @description
 #' You can use this operation to temporarily stop receiving events from the
 #' specified partner event source. The matching event bus is not deleted.
 #' 
@@ -299,6 +305,7 @@ cloudwatchevents_deactivate_event_source <- function(Name) {
 
 #' Deletes the specified archive
 #'
+#' @description
 #' Deletes the specified archive.
 #'
 #' @usage
@@ -335,6 +342,7 @@ cloudwatchevents_delete_archive <- function(ArchiveName) {
 
 #' Deletes the specified custom event bus or partner event bus
 #'
+#' @description
 #' Deletes the specified custom event bus or partner event bus. All rules
 #' associated with this event bus need to be deleted. You can't delete your
 #' account's default event bus.
@@ -373,6 +381,7 @@ cloudwatchevents_delete_event_bus <- function(Name) {
 
 #' This operation is used by SaaS partners to delete a partner event source
 #'
+#' @description
 #' This operation is used by SaaS partners to delete a partner event
 #' source. This operation is not used by AWS customers.
 #' 
@@ -416,6 +425,7 @@ cloudwatchevents_delete_partner_event_source <- function(Name, Account) {
 
 #' Deletes the specified rule
 #'
+#' @description
 #' Deletes the specified rule.
 #' 
 #' Before you can delete the rule, you must remove all targets, using
@@ -473,6 +483,7 @@ cloudwatchevents_delete_rule <- function(Name, EventBusName = NULL, Force = NULL
 
 #' Retrieves details about an archive
 #'
+#' @description
 #' Retrieves details about an archive.
 #'
 #' @usage
@@ -509,6 +520,7 @@ cloudwatchevents_describe_archive <- function(ArchiveName) {
 
 #' Displays details about an event bus in your account
 #'
+#' @description
 #' Displays details about an event bus in your account. This can include
 #' the external AWS accounts that are permitted to write events to your
 #' default event bus, and the associated policy. For custom event buses and
@@ -556,6 +568,7 @@ cloudwatchevents_describe_event_bus <- function(Name = NULL) {
 #' This operation lists details about a partner event source that is shared
 #' with your account
 #'
+#' @description
 #' This operation lists details about a partner event source that is shared
 #' with your account.
 #'
@@ -594,6 +607,7 @@ cloudwatchevents_describe_event_source <- function(Name) {
 #' An SaaS partner can use this operation to list details about a partner
 #' event source that they have created
 #'
+#' @description
 #' An SaaS partner can use this operation to list details about a partner
 #' event source that they have created. AWS customers do not use this
 #' operation. Instead, AWS customers can use DescribeEventSource to see
@@ -633,6 +647,7 @@ cloudwatchevents_describe_partner_event_source <- function(Name) {
 
 #' Retrieves details about a replay
 #'
+#' @description
 #' Retrieves details about a replay. Use `DescribeReplay` to determine the
 #' progress of a running replay. A replay processes events to replay based
 #' on the time in the event, and replays them using 1 minute intervals. If
@@ -678,6 +693,7 @@ cloudwatchevents_describe_replay <- function(ReplayName) {
 
 #' Describes the specified rule
 #'
+#' @description
 #' Describes the specified rule.
 #' 
 #' DescribeRule does not list the targets of a rule. To see the targets
@@ -720,6 +736,7 @@ cloudwatchevents_describe_rule <- function(Name, EventBusName = NULL) {
 
 #' Disables the specified rule
 #'
+#' @description
 #' Disables the specified rule. A disabled rule won't match any events, and
 #' won't self-trigger if it has a schedule expression.
 #' 
@@ -763,6 +780,7 @@ cloudwatchevents_disable_rule <- function(Name, EventBusName = NULL) {
 
 #' Enables the specified rule
 #'
+#' @description
 #' Enables the specified rule. If the rule does not exist, the operation
 #' fails.
 #' 
@@ -807,6 +825,7 @@ cloudwatchevents_enable_rule <- function(Name, EventBusName = NULL) {
 
 #' Lists your archives
 #'
+#' @description
 #' Lists your archives. You can either list all the archives or you can
 #' provide a prefix to match to the archive names. Filter parameters are
 #' exclusive.
@@ -857,6 +876,7 @@ cloudwatchevents_list_archives <- function(NamePrefix = NULL, EventSourceArn = N
 #' Lists all the event buses in your account, including the default event
 #' bus, custom event buses, and partner event buses
 #'
+#' @description
 #' Lists all the event buses in your account, including the default event
 #' bus, custom event buses, and partner event buses.
 #'
@@ -903,6 +923,7 @@ cloudwatchevents_list_event_buses <- function(NamePrefix = NULL, NextToken = NUL
 #' You can use this to see all the partner event sources that have been
 #' shared with your AWS account
 #'
+#' @description
 #' You can use this to see all the partner event sources that have been
 #' shared with your AWS account. For more information about partner event
 #' sources, see CreateEventBus.
@@ -950,6 +971,7 @@ cloudwatchevents_list_event_sources <- function(NamePrefix = NULL, NextToken = N
 #' An SaaS partner can use this operation to display the AWS account ID
 #' that a particular partner event source name is associated with
 #'
+#' @description
 #' An SaaS partner can use this operation to display the AWS account ID
 #' that a particular partner event source name is associated with. This
 #' operation is not used by AWS customers.
@@ -998,6 +1020,7 @@ cloudwatchevents_list_partner_event_source_accounts <- function(EventSourceName,
 #' An SaaS partner can use this operation to list all the partner event
 #' source names that they have created
 #'
+#' @description
 #' An SaaS partner can use this operation to list all the partner event
 #' source names that they have created. This operation is not used by AWS
 #' customers.
@@ -1045,6 +1068,7 @@ cloudwatchevents_list_partner_event_sources <- function(NamePrefix, NextToken = 
 
 #' Lists your replays
 #'
+#' @description
 #' Lists your replays. You can either list all the replays or you can
 #' provide a prefix to match to the replay names. Filter parameters are
 #' exclusive.
@@ -1094,6 +1118,7 @@ cloudwatchevents_list_replays <- function(NamePrefix = NULL, State = NULL, Event
 
 #' Lists the rules for the specified target
 #'
+#' @description
 #' Lists the rules for the specified target. You can see which of the rules
 #' in Amazon EventBridge can invoke a specific target in your account.
 #'
@@ -1140,6 +1165,7 @@ cloudwatchevents_list_rule_names_by_target <- function(TargetArn, EventBusName =
 
 #' Lists your Amazon EventBridge rules
 #'
+#' @description
 #' Lists your Amazon EventBridge rules. You can either list all the rules
 #' or you can provide a prefix to match to the rule names.
 #' 
@@ -1188,6 +1214,7 @@ cloudwatchevents_list_rules <- function(NamePrefix = NULL, EventBusName = NULL, 
 
 #' Displays the tags associated with an EventBridge resource
 #'
+#' @description
 #' Displays the tags associated with an EventBridge resource. In
 #' EventBridge, rules and event buses can be tagged.
 #'
@@ -1225,6 +1252,7 @@ cloudwatchevents_list_tags_for_resource <- function(ResourceARN) {
 
 #' Lists the targets assigned to the specified rule
 #'
+#' @description
 #' Lists the targets assigned to the specified rule.
 #'
 #' @usage
@@ -1271,6 +1299,7 @@ cloudwatchevents_list_targets_by_rule <- function(Rule, EventBusName = NULL, Nex
 #' Sends custom events to Amazon EventBridge so that they can be matched to
 #' rules
 #'
+#' @description
 #' Sends custom events to Amazon EventBridge so that they can be matched to
 #' rules.
 #'
@@ -1324,6 +1353,7 @@ cloudwatchevents_put_events <- function(Entries) {
 #' This is used by SaaS partners to write events to a customer's partner
 #' event bus
 #'
+#' @description
 #' This is used by SaaS partners to write events to a customer's partner
 #' event bus. AWS customers do not use this operation.
 #'
@@ -1374,6 +1404,7 @@ cloudwatchevents_put_partner_events <- function(Entries) {
 #' Running PutPermission permits the specified AWS account or AWS
 #' organization to put events to the specified event bus
 #'
+#' @description
 #' Running `PutPermission` permits the specified AWS account or AWS
 #' organization to put events to the specified *event bus*. Amazon
 #' EventBridge (CloudWatch Events) rules in your account are triggered by
@@ -1476,6 +1507,7 @@ cloudwatchevents_put_permission <- function(EventBusName = NULL, Action = NULL, 
 
 #' Creates or updates the specified rule
 #'
+#' @description
 #' Creates or updates the specified rule. Rules are enabled by default, or
 #' based on value of the state. You can disable a rule using DisableRule.
 #' 
@@ -1596,6 +1628,7 @@ cloudwatchevents_put_rule <- function(Name, ScheduleExpression = NULL, EventPatt
 #' Adds the specified targets to the specified rule, or updates the targets
 #' if they are already associated with the rule
 #'
+#' @description
 #' Adds the specified targets to the specified rule, or updates the targets
 #' if they are already associated with the rule.
 #' 
@@ -1840,6 +1873,7 @@ cloudwatchevents_put_targets <- function(Rule, EventBusName = NULL, Targets) {
 #' Revokes the permission of another AWS account to be able to put events
 #' to the specified event bus
 #'
+#' @description
 #' Revokes the permission of another AWS account to be able to put events
 #' to the specified event bus. Specify the account to revoke by the
 #' `StatementId` value that you associated with the account when you
@@ -1887,6 +1921,7 @@ cloudwatchevents_remove_permission <- function(StatementId = NULL, RemoveAllPerm
 
 #' Removes the specified targets from the specified rule
 #'
+#' @description
 #' Removes the specified targets from the specified rule. When the rule is
 #' triggered, those targets are no longer be invoked.
 #' 
@@ -1946,6 +1981,7 @@ cloudwatchevents_remove_targets <- function(Rule, EventBusName = NULL, Ids, Forc
 
 #' Starts the specified replay
 #'
+#' @description
 #' Starts the specified replay. Events are not necessarily replayed in the
 #' exact same order that they were added to the archive. A replay processes
 #' events to replay based on the time in the event, and replays them using
@@ -2015,6 +2051,7 @@ cloudwatchevents_start_replay <- function(ReplayName, Description = NULL, EventS
 #' Assigns one or more tags (key-value pairs) to the specified EventBridge
 #' resource
 #'
+#' @description
 #' Assigns one or more tags (key-value pairs) to the specified EventBridge
 #' resource. Tags can help you organize and categorize your resources. You
 #' can also use them to scope user permissions by granting a user
@@ -2073,6 +2110,7 @@ cloudwatchevents_tag_resource <- function(ResourceARN, Tags) {
 
 #' Tests whether the specified event pattern matches the provided event
 #'
+#' @description
 #' Tests whether the specified event pattern matches the provided event.
 #' 
 #' Most services in AWS treat : or / as the same character in Amazon
@@ -2119,6 +2157,7 @@ cloudwatchevents_test_event_pattern <- function(EventPattern, Event) {
 
 #' Removes one or more tags from the specified EventBridge resource
 #'
+#' @description
 #' Removes one or more tags from the specified EventBridge resource. In
 #' Amazon EventBridge (CloudWatch Events, rules and event buses can be
 #' tagged.
@@ -2161,6 +2200,7 @@ cloudwatchevents_untag_resource <- function(ResourceARN, TagKeys) {
 
 #' Updates the specified archive
 #'
+#' @description
 #' Updates the specified archive.
 #'
 #' @usage

@@ -37,8 +37,7 @@ identity information provided by the NFS client. The file system path is
 exposed as the access point's root directory. Applications using the
 access point can only access data in its own directory and below. To
 learn more, see \href{https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html}{Mounting a File System Using EFS Access Points}.
-}
-\details{
+
 This operation requires permissions for the
 \code{elasticfilesystem:CreateAccessPoint} action.
 }

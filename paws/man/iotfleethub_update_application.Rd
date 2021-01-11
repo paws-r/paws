@@ -22,8 +22,7 @@ idempotent request is required.}
 \description{
 Updates information about a Fleet Hub for a AWS IoT Device Management
 web application.
-}
-\details{
+
 Fleet Hub for AWS IoT Device Management is in public preview and is
 subject to change.
 }

@@ -23,8 +23,7 @@ Streams the results of a single query execution specified by
 For more information, see \href{https://docs.aws.amazon.com/athena/latest/ug/querying.html}{Query Results} in
 the \emph{Amazon Athena User Guide}. This request does not execute the query
 but returns results. Use StartQueryExecution to run a query.
-}
-\details{
+
 To stream query results successfully, the IAM principal with permission
 to call \code{GetQueryResults} also must have permissions to the Amazon S3
 \code{GetObject} action for the Athena query results location.

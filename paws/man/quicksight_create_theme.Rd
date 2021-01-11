@@ -34,8 +34,7 @@ to add to the resource.}
 }
 \description{
 Creates a theme.
-}
-\details{
+
 A \emph{theme} is set of configuration options for color and layout. Themes
 apply to analyses and dashboards. For more information, see \href{https://docs.aws.amazon.com/quicksight/latest/user/themes-in-quicksight.html}{Using Themes in Amazon QuickSight}
 in the \emph{Amazon QuickSight User Guide}.

@@ -42,8 +42,7 @@ values must be database instance IDs.}
 }
 \description{
 Creates an AWS DMS event notification subscription.
-}
-\details{
+
 You can specify the type of source (\code{SourceType}) you want to be
 notified of, provide a list of AWS DMS source IDs (\code{SourceIds}) that
 triggers the events, and provide a list of event categories

@@ -78,8 +78,7 @@ a default.}
 \description{
 Creates a new \code{MLModel} using the \code{DataSource} and the recipe as
 information sources.
-}
-\details{
+
 An \code{MLModel} is nearly immutable. Users can update only the
 \code{MLModelName} and the \code{ScoreThreshold} in an \code{MLModel} without creating
 a new \code{MLModel}.

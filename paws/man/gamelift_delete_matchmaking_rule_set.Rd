@@ -15,8 +15,7 @@ set body.) You can use either the rule set name or ARN value.}
 Deletes an existing matchmaking rule set. To delete the rule set,
 provide the rule set name. Rule sets cannot be deleted if they are
 currently being used by a matchmaking configuration.
-}
-\details{
+
 \strong{Learn more}
 \itemize{
 \item \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html}{Build a Rule Set}

@@ -127,8 +127,7 @@ don't use it to provide sensitive information.
 }
 \description{
 Creates a new user in the specified user pool.
-}
-\details{
+
 If \code{MessageAction} is not set, the default is to send a welcome message
 via email or phone (SMS).
 

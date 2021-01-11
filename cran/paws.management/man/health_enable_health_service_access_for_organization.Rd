@@ -12,8 +12,7 @@ Organizations. This applies a service-linked role (SLR) to the master
 account in the organization. To call this operation, you must sign in as
 an IAM user, assume an IAM role, or sign in as the root user (not
 recommended) in the organization's master account.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html}{Aggregating AWS Health events}
 in the \emph{AWS Health User Guide}.
 }

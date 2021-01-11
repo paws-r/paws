@@ -19,8 +19,7 @@ Otherwise, it returns a description of every instance.}
 }
 \description{
 Requests a description of a set of instances.
-}
-\details{
+
 This call accepts only one resource-identifying parameter.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a

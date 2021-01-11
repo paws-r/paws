@@ -32,8 +32,7 @@ patches. You can use the reported properties in the filters you specify
 in requests for actions such as CreatePatchBaseline,
 UpdatePatchBaseline, DescribeAvailablePatches, and
 DescribePatchBaselines.
-}
-\details{
+
 The following section lists the properties that can be used in filters
 for each major operating system type:
 \subsection{AMAZON\\_LINUX}{

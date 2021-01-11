@@ -34,8 +34,7 @@ receive either a \emph{ResourceNotFoundException} or an
 Retrieves the details of a secret. It does not include the encrypted
 fields. Secrets Manager only returns fields populated with a value in
 the response.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

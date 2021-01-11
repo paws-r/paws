@@ -15,8 +15,7 @@ elbv2_add_tags(ResourceArns, Tags)
 Adds the specified tags to the specified Elastic Load Balancing
 resource. You can tag your Application Load Balancers, Network Load
 Balancers, Gateway Load Balancers, target groups, listeners, and rules.
-}
-\details{
+
 Each tag consists of a key and an optional value. If a resource already
 has a tag with the same key, \code{AddTags} updates its value.
 }

@@ -31,8 +31,7 @@ Streams by specifying the alias \code{aws/kinesis}.
 \description{
 Enables or updates server-side encryption using an AWS KMS key for a
 specified stream.
-}
-\details{
+
 Starting encryption is an asynchronous operation. Upon receiving the
 request, Kinesis Data Streams returns immediately and sets the status of
 the stream to \code{UPDATING}. After the update is complete, Kinesis Data

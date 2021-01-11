@@ -26,8 +26,7 @@ the worker as a mechanism to check if cancellation is being requested
 for the activity task. If a cancellation is being attempted for the
 specified task, then the boolean \code{cancelRequested} flag returned by the
 service is set to \code{true}.
-}
-\details{
+
 This action resets the \code{taskHeartbeatTimeout} clock. The
 \code{taskHeartbeatTimeout} is specified in RegisterActivityType.
 

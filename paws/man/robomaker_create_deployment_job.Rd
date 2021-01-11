@@ -22,8 +22,7 @@ deployment job.}
 }
 \description{
 Deploys a specific version of a robot application to robots in a fleet.
-}
-\details{
+
 The robot application must have a numbered \code{applicationVersion} for
 consistency reasons. To create a new version, use
 \code{CreateRobotApplicationVersion} or see \href{https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application-version.html}{Creating a Robot Application Version}.

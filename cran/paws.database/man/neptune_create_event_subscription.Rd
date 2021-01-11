@@ -58,8 +58,7 @@ ARN (Amazon Resource Name) created by either the Neptune console, the
 SNS console, or the SNS API. To obtain an ARN with SNS, you must create
 a topic in Amazon SNS and subscribe to the topic. The ARN is displayed
 in the SNS console.
-}
-\details{
+
 You can specify the type of source (SourceType) you want to be notified
 of, provide a list of Neptune sources (SourceIds) that triggers the
 events, and provide a list of event categories (EventCategories) for

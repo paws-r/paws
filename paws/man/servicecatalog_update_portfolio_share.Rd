@@ -30,8 +30,7 @@ on the portfolio share will not be modified.}
 \description{
 Updates the specified portfolio share. You can use this API to enable or
 disable TagOptions sharing for an existing portfolio share.
-}
-\details{
+
 The portfolio share cannot be updated if the \code{ CreatePortfolioShare}
 operation is \code{IN_PROGRESS}, as the share is not available to recipient
 entities. In this case, you must wait for the portfolio share to be

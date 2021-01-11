@@ -26,8 +26,7 @@ listing.
 \description{
 Describes your account's Reserved Instance listings in the Reserved
 Instance Marketplace.
-}
-\details{
+
 The Reserved Instance Marketplace matches sellers who want to resell
 Reserved Instance capacity that they no longer need with buyers who want
 to purchase additional capacity. Reserved Instances bought and sold

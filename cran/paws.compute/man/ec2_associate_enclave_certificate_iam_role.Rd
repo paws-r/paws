@@ -25,8 +25,7 @@ Certificate Manager (ACM) certificate. This enables the certificate to
 be used by the ACM for Nitro Enclaves application inside an enclave. For
 more information, see \href{https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-refapp.html}{AWS Certificate Manager for Nitro Enclaves}
 in the \emph{AWS Nitro Enclaves User Guide}.
-}
-\details{
+
 When the IAM role is associated with the ACM certificate, places the
 certificate, certificate chain, and encrypted private key in an Amazon
 S3 bucket that only the associated IAM role can access. The private key

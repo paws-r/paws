@@ -33,8 +33,7 @@ If you do not specify a \code{SourceSchemaName} value, the default is
 Creates a new table from a table in an Amazon Redshift cluster snapshot.
 You must create the new table within the Amazon Redshift cluster that
 the snapshot was taken from.
-}
-\details{
+
 You cannot use \code{RestoreTableFromClusterSnapshot} to restore a table with
 the same name as an existing table in an Amazon Redshift cluster. That
 is, you cannot overwrite an existing table in a cluster with a restored

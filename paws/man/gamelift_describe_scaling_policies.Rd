@@ -35,8 +35,7 @@ To start at the beginning of the result set, do not specify a value.}
 }
 \description{
 Retrieves all scaling policies applied to a fleet.
-}
-\details{
+
 To get a fleet's scaling policies, specify the fleet ID. You can filter
 this request by policy status, such as to retrieve only active scaling
 policies. Use the pagination parameters to retrieve results as a set of

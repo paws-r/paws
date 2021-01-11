@@ -30,8 +30,7 @@ value.}
 }
 \description{
 Describes your managed prefix lists and any AWS-managed prefix lists.
-}
-\details{
+
 To view the entries for your prefix list, use
 GetManagedPrefixListEntries.
 }

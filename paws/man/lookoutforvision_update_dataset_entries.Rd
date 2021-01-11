@@ -31,8 +31,7 @@ value for \code{ClientToken} is considered a new call to
 Adds one or more JSON Line entries to a dataset. A JSON Line includes
 information about an image used for training or testing an Amazon
 Lookout for Vision model. The following is an example JSON Line.
-}
-\details{
+
 Updating a dataset might take a while to complete. To check the current
 status, call DescribeDataset and check the \code{Status} field in the
 response.

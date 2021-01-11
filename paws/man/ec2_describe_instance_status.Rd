@@ -72,8 +72,7 @@ Default: \code{false}}
 Describes the status of the specified instances or all of your
 instances. By default, only running instances are described, unless you
 specifically indicate to return the status of all instances.
-}
-\details{
+
 Instance status includes the following components:
 \itemize{
 \item \strong{Status checks} - Amazon EC2 performs status checks on running EC2

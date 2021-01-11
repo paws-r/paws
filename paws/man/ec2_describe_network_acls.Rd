@@ -62,8 +62,7 @@ value.}
 }
 \description{
 Describes one or more of your network ACLs.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Network ACLs} in the \emph{Amazon
 Virtual Private Cloud User Guide}.
 }

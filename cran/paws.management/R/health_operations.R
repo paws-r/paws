@@ -6,6 +6,7 @@ NULL
 #' Returns a list of accounts in the organization from AWS Organizations
 #' that are affected by the provided event
 #'
+#' @description
 #' Returns a list of accounts in the organization from AWS Organizations
 #' that are affected by the provided event. For more information about the
 #' different types of AWS Health events, see
@@ -67,6 +68,7 @@ health_describe_affected_accounts_for_organization <- function(eventArn, nextTok
 #' Returns a list of entities that have been affected by the specified
 #' events, based on the specified filter criteria
 #'
+#' @description
 #' Returns a list of entities that have been affected by the specified
 #' events, based on the specified filter criteria. Entities can refer to
 #' individual customer resources, groups of customer resources, or any
@@ -157,6 +159,7 @@ health_describe_affected_entities <- function(filter, locale = NULL, nextToken =
 #' for one or more accounts in your organization in AWS Organizations,
 #' based on the filter criteria
 #'
+#' @description
 #' Returns a list of entities that have been affected by one or more events
 #' for one or more accounts in your organization in AWS Organizations,
 #' based on the filter criteria. Entities can refer to individual customer
@@ -228,6 +231,7 @@ health_describe_affected_entities_for_organization <- function(organizationEntit
 #' Returns the number of entities that are affected by each of the
 #' specified events
 #'
+#' @description
 #' Returns the number of entities that are affected by each of the
 #' specified events. If no events are specified, the counts of all affected
 #' entities are returned.
@@ -270,6 +274,7 @@ health_describe_entity_aggregates <- function(eventArns = NULL) {
 #' Returns the number of events of each event type (issue, scheduled
 #' change, and account notification)
 #'
+#' @description
 #' Returns the number of events of each event type (issue, scheduled
 #' change, and account notification). If no filter is specified, the counts
 #' of all events in each category are returned.
@@ -386,6 +391,7 @@ health_describe_event_aggregates <- function(filter = NULL, aggregateField, maxR
 
 #' Returns detailed information about one or more specified events
 #'
+#' @description
 #' Returns detailed information about one or more specified events.
 #' Information includes standard event data (Region, service, and so on, as
 #' returned by
@@ -440,6 +446,7 @@ health_describe_event_details <- function(eventArns, locale = NULL) {
 #' Returns detailed information about one or more specified events for one
 #' or more accounts in your organization
 #'
+#' @description
 #' Returns detailed information about one or more specified events for one
 #' or more accounts in your organization. Information includes standard
 #' event data (Region, service, and so on, as returned by
@@ -516,6 +523,7 @@ health_describe_event_details_for_organization <- function(organizationEventDeta
 
 #' Returns the event types that meet the specified filter criteria
 #'
+#' @description
 #' Returns the event types that meet the specified filter criteria. If no
 #' filter criteria are specified, all event types are returned, in no
 #' particular order.
@@ -579,6 +587,7 @@ health_describe_event_types <- function(filter = NULL, locale = NULL, nextToken 
 
 #' Returns information about events that meet the specified filter criteria
 #'
+#' @description
 #' Returns information about events that meet the specified filter
 #' criteria. Events are returned in a summary form and do not include the
 #' detailed description, any additional metadata that depends on the event
@@ -714,6 +723,7 @@ health_describe_events <- function(filter = NULL, nextToken = NULL, maxResults =
 #' Returns information about events across your organization in AWS
 #' Organizations
 #'
+#' @description
 #' Returns information about events across your organization in AWS
 #' Organizations. You can use the`filters` parameter to specify the events
 #' that you want to return. Events are returned in a summary form and don't
@@ -839,6 +849,7 @@ health_describe_events_for_organization <- function(filter = NULL, nextToken = N
 #' This operation provides status information on enabling or disabling AWS
 #' Health to work with your organization
 #'
+#' @description
 #' This operation provides status information on enabling or disabling AWS
 #' Health to work with your organization. To call this operation, you must
 #' sign in as an IAM user, assume an IAM role, or sign in as the root user
@@ -873,6 +884,7 @@ health_describe_health_service_status_for_organization <- function() {
 
 #' Disables AWS Health from working with AWS Organizations
 #'
+#' @description
 #' Disables AWS Health from working with AWS Organizations. To call this
 #' operation, you must sign in as an AWS Identity and Access Management
 #' (IAM) user, assume an IAM role, or sign in as the root user (not
@@ -926,6 +938,7 @@ health_disable_health_service_access_for_organization <- function() {
 
 #' Calling this operation enables AWS Health to work with AWS Organizations
 #'
+#' @description
 #' Calling this operation enables AWS Health to work with AWS
 #' Organizations. This applies a service-linked role (SLR) to the master
 #' account in the organization. To call this operation, you must sign in as

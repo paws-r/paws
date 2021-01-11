@@ -42,8 +42,7 @@ carriage return (\verb{U+000D})
 \description{
 Adds or updates an inline policy document that is embedded in the
 specified IAM role.
-}
-\details{
+
 When you embed an inline policy in a role, the inline policy is used as
 part of the role's access (permissions) policy. The role's trust policy
 is created at the same time as the role, using CreateRole. You can

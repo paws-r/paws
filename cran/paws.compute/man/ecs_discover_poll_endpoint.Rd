@@ -21,8 +21,7 @@ which the container instance belongs.}
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended
 for use outside of the agent.
-}
-\details{
+
 Returns an endpoint for the Amazon ECS agent to poll for updates.
 }
 \section{Request syntax}{

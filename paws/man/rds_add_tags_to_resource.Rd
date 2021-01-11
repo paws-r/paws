@@ -18,8 +18,7 @@ Adds metadata tags to an Amazon RDS resource. These tags can also be
 used with cost allocation reporting to track cost associated with Amazon
 RDS resources, or used in a Condition statement in an IAM policy for
 Amazon RDS.
-}
-\details{
+
 For an overview on tagging Amazon RDS resources, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html}{Tagging Amazon RDS Resources}.
 }
 \section{Request syntax}{

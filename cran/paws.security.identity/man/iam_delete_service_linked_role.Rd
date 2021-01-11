@@ -18,8 +18,7 @@ sessions and that any resources used by the role in the linked service
 are deleted. If you call this operation more than once for the same
 service-linked role and an earlier deletion task is not complete, then
 the \code{DeletionTaskId} of the earlier request is returned.
-}
-\details{
+
 If you submit a deletion request for a service-linked role whose linked
 service is still accessing a resource, then the deletion task fails. If
 it fails, the GetServiceLinkedRoleDeletionStatus API operation returns

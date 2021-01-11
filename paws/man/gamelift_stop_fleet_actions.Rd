@@ -18,8 +18,7 @@ a fleet's auto-scaling activity. It is used to temporarily stop
 triggering scaling events. The policies can be retained and auto-scaling
 activity can be restarted using StartFleetActions. You can view a
 fleet's stopped actions using DescribeFleetAttributes.
-}
-\details{
+
 To stop fleet actions, specify the fleet ID and the type of actions to
 suspend. When auto-scaling fleet actions are stopped, Amazon GameLift no
 longer initiates scaling events except in response to manual changes

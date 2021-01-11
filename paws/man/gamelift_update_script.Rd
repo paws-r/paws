@@ -39,8 +39,7 @@ indicate that the file data is a binary object. For example:
 }
 \description{
 Updates Realtime script metadata and content.
-}
-\details{
+
 To update script metadata, specify the script ID and provide updated
 name and/or version values.
 

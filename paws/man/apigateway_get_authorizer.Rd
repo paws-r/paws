@@ -12,10 +12,7 @@ apigateway_get_authorizer(restApiId, authorizerId)
 \item{authorizerId}{[required] [Required] The identifier of the Authorizer resource.}
 }
 \description{
-Describe an existing Authorizer resource.
-}
-\details{
-<div class="seeAlso">
+Describe an existing Authorizer resource.<div class="seeAlso">
 
 
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-authorizer.html}{AWS CLI}</div>

@@ -12,8 +12,7 @@ delete.}
 }
 \description{
 Deletes an AWS Device Farm project, given the project ARN.
-}
-\details{
+
 Deleting this resource does not stop an in-progress run.
 }
 \section{Request syntax}{

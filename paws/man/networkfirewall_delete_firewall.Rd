@@ -20,8 +20,7 @@ You must specify the ARN or the name, and you can specify both.}
 Deletes the specified Firewall and its FirewallStatus. This operation
 requires the firewall's \code{DeleteProtection} flag to be \code{FALSE}. You can't
 revert this operation.
-}
-\details{
+
 You can check whether a firewall is in use by reviewing the route tables
 for the Availability Zones where you have firewall subnet mappings.
 Retrieve the subnet mappings by calling DescribeFirewall. You define and

@@ -16,8 +16,7 @@ Maximum of 100 findings per request.}
 Imports security findings generated from an integrated third-party
 product into Security Hub. This action is requested by the integrated
 product to import its findings into Security Hub.
-}
-\details{
+
 The maximum allowed size for a finding is 240 Kb. An error is returned
 for any finding larger than 240 Kb.
 

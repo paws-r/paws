@@ -27,8 +27,7 @@ increase the stream's capacity to ingest and transport data.
 \code{SplitShard} is called when there is a need to increase the overall
 capacity of a stream because of an expected increase in the volume of
 data records being ingested.
-}
-\details{
+
 You can also use \code{SplitShard} when a shard appears to be approaching its
 maximum utilization; for example, the producers sending data into the
 specific shard are suddenly sending more than previously anticipated.

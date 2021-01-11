@@ -18,8 +18,7 @@ specified Amazon Chime \code{EnterpriseLWA} account. Only users on
 \code{EnterpriseLWA} accounts can be unsuspended using this action. For more
 information about different account types, see \href{https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html}{Managing Your Amazon Chime Accounts}
 in the \emph{Amazon Chime Administration Guide}.
-}
-\details{
+
 Previously suspended users who are unsuspended using this action are
 returned to \code{Registered} status. Users who are not previously suspended
 are ignored.

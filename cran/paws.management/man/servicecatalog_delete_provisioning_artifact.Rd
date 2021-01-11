@@ -23,8 +23,7 @@ servicecatalog_delete_provisioning_artifact(AcceptLanguage, ProductId,
 \description{
 Deletes the specified provisioning artifact (also known as a version)
 for the specified product.
-}
-\details{
+
 You cannot delete a provisioning artifact associated with a product that
 was shared with you. You cannot delete the last provisioning artifact
 for a product, because a product must have at least one provisioning

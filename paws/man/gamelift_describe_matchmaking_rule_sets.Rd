@@ -25,8 +25,7 @@ request all existing rule sets for the Region, or provide a list of one
 or more rule set names. When requesting multiple items, use the
 pagination parameters to retrieve results as a set of sequential pages.
 If successful, a rule set is returned for each requested name.
-}
-\details{
+
 \strong{Learn more}
 \itemize{
 \item \href{https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html}{Build a Rule Set}

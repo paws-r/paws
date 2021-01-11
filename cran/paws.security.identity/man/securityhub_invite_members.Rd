@@ -14,8 +14,7 @@ members.}
 \description{
 Invites other AWS accounts to become member accounts for the Security
 Hub master account that the invitation is sent from.
-}
-\details{
+
 This operation is only used to invite accounts that do not belong to an
 organization. Organization accounts do not receive invitations.
 

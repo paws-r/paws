@@ -17,8 +17,7 @@ workspaces_create_ip_group(GroupName, GroupDesc, UserRules, Tags)
 }
 \description{
 Creates an IP access control group.
-}
-\details{
+
 An IP access control group provides you with the ability to control the
 IP addresses from which users are allowed to access their WorkSpaces. To
 specify the CIDR address ranges, add rules to your IP access control

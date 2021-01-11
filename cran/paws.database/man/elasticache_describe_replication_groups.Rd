@@ -31,8 +31,7 @@ the value specified by \code{MaxRecords}.}
 Returns information about a particular replication group. If no
 identifier is specified, \code{DescribeReplicationGroups} returns information
 about all replication groups.
-}
-\details{
+
 This operation is valid for Redis only.
 }
 \section{Request syntax}{

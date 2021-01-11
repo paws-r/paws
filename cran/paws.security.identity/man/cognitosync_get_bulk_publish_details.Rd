@@ -11,8 +11,7 @@ cognitosync_get_bulk_publish_details(IdentityPoolId)
 }
 \description{
 Get the status of the last BulkPublish operation for an identity pool.
-}
-\details{
+
 This API can only be called with developer credentials. You cannot call
 this API with the temporary user credentials provided by Cognito
 Identity.

@@ -13,8 +13,7 @@ codecommit_update_default_branch(repositoryName, defaultBranchName)
 }
 \description{
 Sets or changes the default branch name for the specified repository.
-}
-\details{
+
 If you use this operation to change the default branch name to the
 current default branch name, a success message is returned even though
 the default branch did not change.

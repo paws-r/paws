@@ -20,8 +20,7 @@ results.}
 \description{
 The Amazon AppIntegrations APIs are in preview release and are subject
 to change.
-}
-\details{
+
 Returns a paginated list of event integration associations in the
 account.
 }

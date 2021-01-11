@@ -10,8 +10,7 @@ organizations_describe_organization()
 \description{
 Retrieves information about the organization that the user's account
 belongs to.
-}
-\details{
+
 This operation can be called from any account in the organization.
 
 Even if a policy type is shown as available in the organization, you can

@@ -28,8 +28,7 @@ can be used to configure the WebRTC connection. The ICE component uses
 this configuration information to setup the WebRTC connection, including
 authenticating with the Traversal Using Relays around NAT (TURN) relay
 server.
-}
-\details{
+
 TURN is a protocol that is used to improve the connectivity of
 peer-to-peer applications. By providing a cloud-based relay service,
 TURN ensures that a connection can be established even when one or more

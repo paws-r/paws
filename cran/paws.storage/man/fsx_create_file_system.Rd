@@ -76,8 +76,7 @@ later requests to describe the file system.}
 }
 \description{
 Creates a new, empty Amazon FSx file system.
-}
-\details{
+
 If a file system with the specified client request token exists and the
 parameters match, \code{CreateFileSystem} returns the description of the
 existing file system. If a file system specified client request token

@@ -22,8 +22,7 @@ omit this setting, Network Firewall disables logging for the firewall.}
 }
 \description{
 Sets the logging configuration for the specified firewall.
-}
-\details{
+
 To change the logging configuration, retrieve the LoggingConfiguration
 by calling DescribeLoggingConfiguration, then change it and provide the
 modified object to this update call. You must change the logging

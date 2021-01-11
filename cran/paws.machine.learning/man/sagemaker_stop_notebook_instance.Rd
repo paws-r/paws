@@ -15,8 +15,7 @@ Amazon SageMaker disconnects the ML storage volume from it. Amazon
 SageMaker preserves the ML storage volume. Amazon SageMaker stops
 charging you for the ML compute instance when you call
 \code{StopNotebookInstance}.
-}
-\details{
+
 To access data on the ML storage volume for a notebook instance that has
 been terminated, call the \code{StartNotebookInstance} API.
 \code{StartNotebookInstance} launches another ML compute instance, configures

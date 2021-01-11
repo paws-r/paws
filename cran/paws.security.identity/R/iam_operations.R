@@ -7,6 +7,7 @@ NULL
 #' already registered for the specified IAM OpenID Connect (OIDC) provider
 #' resource
 #'
+#' @description
 #' Adds a new client ID (also known as audience) to the list of client IDs
 #' already registered for the specified IAM OpenID Connect (OIDC) provider
 #' resource.
@@ -65,6 +66,7 @@ iam_add_client_id_to_open_id_connect_provider <- function(OpenIDConnectProviderA
 
 #' Adds the specified IAM role to the specified instance profile
 #'
+#' @description
 #' Adds the specified IAM role to the specified instance profile. An
 #' instance profile can contain only one role. (The number and size of IAM
 #' resources in an AWS account are limited. For more information, see [IAM
@@ -144,6 +146,7 @@ iam_add_role_to_instance_profile <- function(InstanceProfileName, RoleName) {
 
 #' Adds the specified user to the specified group
 #'
+#' @description
 #' Adds the specified user to the specified group.
 #'
 #' @usage
@@ -202,6 +205,7 @@ iam_add_user_to_group <- function(GroupName, UserName) {
 
 #' Attaches the specified managed policy to the specified IAM group
 #'
+#' @description
 #' Attaches the specified managed policy to the specified IAM group.
 #' 
 #' You use this API to attach a managed policy to a group. To embed an
@@ -267,6 +271,7 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
 
 #' Attaches the specified managed policy to the specified IAM role
 #'
+#' @description
 #' Attaches the specified managed policy to the specified IAM role. When
 #' you attach a managed policy to a role, the managed policy becomes part
 #' of the role's permission (access) policy.
@@ -337,6 +342,7 @@ iam_attach_role_policy <- function(RoleName, PolicyArn) {
 
 #' Attaches the specified managed policy to the specified user
 #'
+#' @description
 #' Attaches the specified managed policy to the specified user.
 #' 
 #' You use this API to attach a *managed* policy to a user. To embed an
@@ -403,6 +409,7 @@ iam_attach_user_policy <- function(UserName, PolicyArn) {
 
 #' Changes the password of the IAM user who is calling this operation
 #'
+#' @description
 #' Changes the password of the IAM user who is calling this operation. The
 #' AWS account root user password is not affected by this operation.
 #' 
@@ -468,6 +475,7 @@ iam_change_password <- function(OldPassword, NewPassword) {
 #' Creates a new AWS secret access key and corresponding AWS access key ID
 #' for the specified user
 #'
+#' @description
 #' Creates a new AWS secret access key and corresponding AWS access key ID
 #' for the specified user. The default status for new keys is `Active`.
 #' 
@@ -536,6 +544,7 @@ iam_create_access_key <- function(UserName = NULL) {
 
 #' Creates an alias for your AWS account
 #'
+#' @description
 #' Creates an alias for your AWS account. For information about using an
 #' AWS account alias, see [Using an Alias for Your AWS Account
 #' ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html)
@@ -589,6 +598,7 @@ iam_create_account_alias <- function(AccountAlias) {
 
 #' Creates a new group
 #'
+#' @description
 #' Creates a new group.
 #' 
 #' The number and size of IAM resources in an AWS account are limited. For
@@ -657,6 +667,7 @@ iam_create_group <- function(Path = NULL, GroupName) {
 
 #' Creates a new instance profile
 #'
+#' @description
 #' Creates a new instance profile. For information about instance profiles,
 #' go to [About Instance
 #' Profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
@@ -732,6 +743,7 @@ iam_create_instance_profile <- function(InstanceProfileName, Path = NULL) {
 #' Creates a password for the specified user, giving the user the ability
 #' to access AWS services through the AWS Management Console
 #'
+#' @description
 #' Creates a password for the specified user, giving the user the ability
 #' to access AWS services through the AWS Management Console. For more
 #' information about managing passwords, see [Managing
@@ -805,6 +817,7 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' Creates an IAM entity to describe an identity provider (IdP) that
 #' supports OpenID Connect (OIDC)
 #'
+#' @description
 #' Creates an IAM entity to describe an identity provider (IdP) that
 #' supports [OpenID Connect (OIDC)](https://openid.net/connect/).
 #' 
@@ -928,6 +941,7 @@ iam_create_open_id_connect_provider <- function(Url, ClientIDList = NULL, Thumbp
 
 #' Creates a new managed policy for your AWS account
 #'
+#' @description
 #' Creates a new managed policy for your AWS account.
 #' 
 #' This operation creates a policy version with a version identifier of
@@ -1025,6 +1039,7 @@ iam_create_policy <- function(PolicyName, Path = NULL, PolicyDocument, Descripti
 
 #' Creates a new version of the specified managed policy
 #'
+#' @description
 #' Creates a new version of the specified managed policy. To update a
 #' managed policy, you create a new policy version. A managed policy can
 #' have up to five versions. If the policy has five versions, you must
@@ -1112,6 +1127,7 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 
 #' Creates a new role for your AWS account
 #'
+#' @description
 #' Creates a new role for your AWS account. For more information about
 #' roles, go to [IAM
 #' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
@@ -1248,6 +1264,7 @@ iam_create_role <- function(Path = NULL, RoleName, AssumeRolePolicyDocument, Des
 #' Creates an IAM resource that describes an identity provider (IdP) that
 #' supports SAML 2
 #'
+#' @description
 #' Creates an IAM resource that describes an identity provider (IdP) that
 #' supports SAML 2.0.
 #' 
@@ -1325,6 +1342,7 @@ iam_create_saml_provider <- function(SAMLMetadataDocument, Name) {
 
 #' Creates an IAM role that is linked to a specific AWS service
 #'
+#' @description
 #' Creates an IAM role that is linked to a specific AWS service. The
 #' service controls the attached policies and when the role can be deleted.
 #' This helps ensure that the service is not broken by an unexpectedly
@@ -1396,6 +1414,7 @@ iam_create_service_linked_role <- function(AWSServiceName, Description = NULL, C
 #' Generates a set of credentials consisting of a user name and password
 #' that can be used to access the service specified in the request
 #'
+#' @description
 #' Generates a set of credentials consisting of a user name and password
 #' that can be used to access the service specified in the request. These
 #' credentials are generated by IAM, and can be used only for the specified
@@ -1460,6 +1479,7 @@ iam_create_service_specific_credential <- function(UserName, ServiceName) {
 
 #' Creates a new IAM user for your AWS account
 #'
+#' @description
 #' Creates a new IAM user for your AWS account.
 #' 
 #' The number and size of IAM resources in an AWS account are limited. For
@@ -1547,6 +1567,7 @@ iam_create_user <- function(Path = NULL, UserName, PermissionsBoundary = NULL, T
 
 #' Creates a new virtual MFA device for the AWS account
 #'
+#' @description
 #' Creates a new virtual MFA device for the AWS account. After creating the
 #' virtual MFA, use EnableMFADevice to attach the MFA device to an IAM
 #' user. For more information about creating and working with virtual MFA
@@ -1622,6 +1643,7 @@ iam_create_virtual_mfa_device <- function(Path = NULL, VirtualMFADeviceName) {
 #' Deactivates the specified MFA device and removes it from association
 #' with the user name for which it was originally enabled
 #'
+#' @description
 #' Deactivates the specified MFA device and removes it from association
 #' with the user name for which it was originally enabled.
 #' 
@@ -1677,6 +1699,7 @@ iam_deactivate_mfa_device <- function(UserName, SerialNumber) {
 
 #' Deletes the access key pair associated with the specified IAM user
 #'
+#' @description
 #' Deletes the access key pair associated with the specified IAM user.
 #' 
 #' If you do not specify a user name, IAM determines the user name
@@ -1741,6 +1764,7 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
 
 #' Deletes the specified AWS account alias
 #'
+#' @description
 #' Deletes the specified AWS account alias. For information about using an
 #' AWS account alias, see [Using an Alias for Your AWS Account
 #' ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html)
@@ -1794,6 +1818,7 @@ iam_delete_account_alias <- function(AccountAlias) {
 
 #' Deletes the password policy for the AWS account
 #'
+#' @description
 #' Deletes the password policy for the AWS account. There are no
 #' parameters.
 #'
@@ -1833,6 +1858,7 @@ iam_delete_account_password_policy <- function() {
 
 #' Deletes the specified IAM group
 #'
+#' @description
 #' Deletes the specified IAM group. The group must not contain any users or
 #' have any attached policies.
 #'
@@ -1876,6 +1902,7 @@ iam_delete_group <- function(GroupName) {
 #' Deletes the specified inline policy that is embedded in the specified
 #' IAM group
 #'
+#' @description
 #' Deletes the specified inline policy that is embedded in the specified
 #' IAM group.
 #' 
@@ -1942,6 +1969,7 @@ iam_delete_group_policy <- function(GroupName, PolicyName) {
 
 #' Deletes the specified instance profile
 #'
+#' @description
 #' Deletes the specified instance profile. The instance profile must not
 #' have an associated role.
 #' 
@@ -2002,6 +2030,7 @@ iam_delete_instance_profile <- function(InstanceProfileName) {
 #' Deletes the password for the specified IAM user, which terminates the
 #' user's ability to access AWS services through the AWS Management Console
 #'
+#' @description
 #' Deletes the password for the specified IAM user, which terminates the
 #' user's ability to access AWS services through the AWS Management
 #' Console.
@@ -2059,6 +2088,7 @@ iam_delete_login_profile <- function(UserName) {
 
 #' Deletes an OpenID Connect identity provider (IdP) resource object in IAM
 #'
+#' @description
 #' Deletes an OpenID Connect identity provider (IdP) resource object in
 #' IAM.
 #' 
@@ -2105,6 +2135,7 @@ iam_delete_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 
 #' Deletes the specified managed policy
 #'
+#' @description
 #' Deletes the specified managed policy.
 #' 
 #' Before you can delete a managed policy, you must first detach the policy
@@ -2169,6 +2200,7 @@ iam_delete_policy <- function(PolicyArn) {
 
 #' Deletes the specified version from the specified managed policy
 #'
+#' @description
 #' Deletes the specified version from the specified managed policy.
 #' 
 #' You cannot delete the default version from a policy using this API. To
@@ -2234,6 +2266,7 @@ iam_delete_policy_version <- function(PolicyArn, VersionId) {
 
 #' Deletes the specified role
 #'
+#' @description
 #' Deletes the specified role. The role must not have any policies
 #' attached. For more information about roles, go to [Working with
 #' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
@@ -2290,6 +2323,7 @@ iam_delete_role <- function(RoleName) {
 
 #' Deletes the permissions boundary for the specified IAM role
 #'
+#' @description
 #' Deletes the permissions boundary for the specified IAM role.
 #' 
 #' Deleting the permissions boundary for a role might increase its
@@ -2332,6 +2366,7 @@ iam_delete_role_permissions_boundary <- function(RoleName) {
 #' Deletes the specified inline policy that is embedded in the specified
 #' IAM role
 #'
+#' @description
 #' Deletes the specified inline policy that is embedded in the specified
 #' IAM role.
 #' 
@@ -2398,6 +2433,7 @@ iam_delete_role_policy <- function(RoleName, PolicyName) {
 
 #' Deletes a SAML provider resource in IAM
 #'
+#' @description
 #' Deletes a SAML provider resource in IAM.
 #' 
 #' Deleting the provider resource from IAM does not update any roles that
@@ -2442,6 +2478,7 @@ iam_delete_saml_provider <- function(SAMLProviderArn) {
 
 #' Deletes the specified SSH public key
 #'
+#' @description
 #' Deletes the specified SSH public key.
 #' 
 #' The SSH public key deleted by this operation is used only for
@@ -2496,6 +2533,7 @@ iam_delete_ssh_public_key <- function(UserName, SSHPublicKeyId) {
 
 #' Deletes the specified server certificate
 #'
+#' @description
 #' Deletes the specified server certificate.
 #' 
 #' For more information about working with server certificates, see
@@ -2555,6 +2593,7 @@ iam_delete_server_certificate <- function(ServerCertificateName) {
 #' Submits a service-linked role deletion request and returns a
 #' DeletionTaskId, which you can use to check the status of the deletion
 #'
+#' @description
 #' Submits a service-linked role deletion request and returns a
 #' `DeletionTaskId`, which you can use to check the status of the deletion.
 #' Before you call this operation, confirm that the role has no active
@@ -2612,6 +2651,7 @@ iam_delete_service_linked_role <- function(RoleName) {
 
 #' Deletes the specified service-specific credential
 #'
+#' @description
 #' Deletes the specified service-specific credential.
 #'
 #' @usage
@@ -2663,6 +2703,7 @@ iam_delete_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 
 #' Deletes a signing certificate associated with the specified IAM user
 #'
+#' @description
 #' Deletes a signing certificate associated with the specified IAM user.
 #' 
 #' If you do not specify a user name, IAM determines the user name
@@ -2726,6 +2767,7 @@ iam_delete_signing_certificate <- function(UserName = NULL, CertificateId) {
 
 #' Deletes the specified IAM user
 #'
+#' @description
 #' Deletes the specified IAM user. Unlike the AWS Management Console, when
 #' you delete a user programmatically, you must delete the items attached
 #' to the user manually, or the deletion fails. For more information, see
@@ -2800,6 +2842,7 @@ iam_delete_user <- function(UserName) {
 
 #' Deletes the permissions boundary for the specified IAM user
 #'
+#' @description
 #' Deletes the permissions boundary for the specified IAM user.
 #' 
 #' Deleting the permissions boundary for a user might increase its
@@ -2842,6 +2885,7 @@ iam_delete_user_permissions_boundary <- function(UserName) {
 #' Deletes the specified inline policy that is embedded in the specified
 #' IAM user
 #'
+#' @description
 #' Deletes the specified inline policy that is embedded in the specified
 #' IAM user.
 #' 
@@ -2908,6 +2952,7 @@ iam_delete_user_policy <- function(UserName, PolicyName) {
 
 #' Deletes a virtual MFA device
 #'
+#' @description
 #' Deletes a virtual MFA device.
 #' 
 #' You must deactivate a user's virtual MFA device before you can delete
@@ -2963,6 +3008,7 @@ iam_delete_virtual_mfa_device <- function(SerialNumber) {
 
 #' Removes the specified managed policy from the specified IAM group
 #'
+#' @description
 #' Removes the specified managed policy from the specified IAM group.
 #' 
 #' A group can also have inline policies embedded with it. To delete an
@@ -3018,6 +3064,7 @@ iam_detach_group_policy <- function(GroupName, PolicyArn) {
 
 #' Removes the specified managed policy from the specified role
 #'
+#' @description
 #' Removes the specified managed policy from the specified role.
 #' 
 #' A role can also have inline policies embedded with it. To delete an
@@ -3073,6 +3120,7 @@ iam_detach_role_policy <- function(RoleName, PolicyArn) {
 
 #' Removes the specified managed policy from the specified user
 #'
+#' @description
 #' Removes the specified managed policy from the specified user.
 #' 
 #' A user can also have inline policies embedded with it. To delete an
@@ -3129,6 +3177,7 @@ iam_detach_user_policy <- function(UserName, PolicyArn) {
 #' Enables the specified MFA device and associates it with the specified
 #' IAM user
 #'
+#' @description
 #' Enables the specified MFA device and associates it with the specified
 #' IAM user. When enabled, the MFA device is required for every subsequent
 #' login by the IAM user associated with the device.
@@ -3205,6 +3254,7 @@ iam_enable_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
 
 #' Generates a credential report for the AWS account
 #'
+#' @description
 #' Generates a credential report for the AWS account. For more information
 #' about the credential report, see [Getting Credential
 #' Reports](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html)
@@ -3239,6 +3289,7 @@ iam_generate_credential_report <- function() {
 
 #' Generates a report for service last accessed data for AWS Organizations
 #'
+#' @description
 #' Generates a report for service last accessed data for AWS Organizations.
 #' You can generate a report for any entities (organization root,
 #' organizational unit, or account) or policies in your organization.
@@ -3426,6 +3477,7 @@ iam_generate_organizations_access_report <- function(EntityPath, OrganizationsPo
 #' (user, group, role, or policy) was last used in an attempt to access AWS
 #' services
 #'
+#' @description
 #' Generates a report that includes details about when an IAM resource
 #' (user, group, role, or policy) was last used in an attempt to access AWS
 #' services. Recent activity usually appears within four hours. IAM reports
@@ -3539,6 +3591,7 @@ iam_generate_service_last_accessed_details <- function(Arn, Granularity = NULL) 
 
 #' Retrieves information about when the specified access key was last used
 #'
+#' @description
 #' Retrieves information about when the specified access key was last used.
 #' The information includes the date and time of last use, along with the
 #' AWS service and Region that were specified in the last request made with
@@ -3583,6 +3636,7 @@ iam_get_access_key_last_used <- function(AccessKeyId) {
 #' Retrieves information about all IAM users, groups, roles, and policies
 #' in your AWS account, including their relationships to one another
 #'
+#' @description
 #' Retrieves information about all IAM users, groups, roles, and policies
 #' in your AWS account, including their relationships to one another. Use
 #' this API to obtain a snapshot of the configuration of IAM permissions
@@ -3655,6 +3709,7 @@ iam_get_account_authorization_details <- function(Filter = NULL, MaxItems = NULL
 
 #' Retrieves the password policy for the AWS account
 #'
+#' @description
 #' Retrieves the password policy for the AWS account. For more information
 #' about using a password policy, go to [Managing an IAM Password
 #' Policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_account-policy.html).
@@ -3696,6 +3751,7 @@ iam_get_account_password_policy <- function() {
 #' Retrieves information about IAM entity usage and IAM quotas in the AWS
 #' account
 #'
+#' @description
 #' Retrieves information about IAM entity usage and IAM quotas in the AWS
 #' account.
 #' 
@@ -3740,6 +3796,7 @@ iam_get_account_summary <- function() {
 
 #' Gets a list of all of the context keys referenced in the input policies
 #'
+#' @description
 #' Gets a list of all of the context keys referenced in the input policies.
 #' The policies are supplied as a list of one or more strings. To get the
 #' context keys from policies associated with an IAM user, group, or role,
@@ -3805,6 +3862,7 @@ iam_get_context_keys_for_custom_policy <- function(PolicyInputList) {
 #' Gets a list of all of the context keys referenced in all the IAM
 #' policies that are attached to the specified IAM entity
 #'
+#' @description
 #' Gets a list of all of the context keys referenced in all the IAM
 #' policies that are attached to the specified IAM entity. The entity can
 #' be an IAM user, group, or role. If you specify a user, then the request
@@ -3891,6 +3949,7 @@ iam_get_context_keys_for_principal_policy <- function(PolicySourceArn, PolicyInp
 
 #' Retrieves a credential report for the AWS account
 #'
+#' @description
 #' Retrieves a credential report for the AWS account. For more information
 #' about the credential report, see [Getting Credential
 #' Reports](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_getting-report.html)
@@ -3925,6 +3984,7 @@ iam_get_credential_report <- function() {
 
 #' Returns a list of IAM users that are in the specified IAM group
 #'
+#' @description
 #' Returns a list of IAM users that are in the specified IAM group. You can
 #' paginate the results using the `MaxItems` and `Marker` parameters.
 #'
@@ -3983,6 +4043,7 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 #' Retrieves the specified inline policy document that is embedded in the
 #' specified IAM group
 #'
+#' @description
 #' Retrieves the specified inline policy document that is embedded in the
 #' specified IAM group.
 #' 
@@ -4049,6 +4110,7 @@ iam_get_group_policy <- function(GroupName, PolicyName) {
 #' Retrieves information about the specified instance profile, including
 #' the instance profile's path, GUID, ARN, and role
 #'
+#' @description
 #' Retrieves information about the specified instance profile, including
 #' the instance profile's path, GUID, ARN, and role. For more information
 #' about instance profiles, see [About Instance
@@ -4104,6 +4166,7 @@ iam_get_instance_profile <- function(InstanceProfileName) {
 #' Retrieves the user name and password-creation date for the specified IAM
 #' user
 #'
+#' @description
 #' Retrieves the user name and password-creation date for the specified IAM
 #' user. If the user has not been assigned a password, the operation
 #' returns a 404 (`NoSuchEntity`) error.
@@ -4157,6 +4220,7 @@ iam_get_login_profile <- function(UserName) {
 #' Returns information about the specified OpenID Connect (OIDC) provider
 #' resource object in IAM
 #'
+#' @description
 #' Returns information about the specified OpenID Connect (OIDC) provider
 #' resource object in IAM.
 #'
@@ -4203,6 +4267,7 @@ iam_get_open_id_connect_provider <- function(OpenIDConnectProviderArn) {
 #' that was previously generated using the
 #' GenerateOrganizationsAccessReport operation
 #'
+#' @description
 #' Retrieves the service last accessed data report for AWS Organizations
 #' that was previously generated using the
 #' ` <a>GenerateOrganizationsAccessReport</a> ` operation. This operation
@@ -4293,6 +4358,7 @@ iam_get_organizations_access_report <- function(JobId, MaxItems = NULL, Marker =
 #' policy's default version and the total number of IAM users, groups, and
 #' roles to which the policy is attached
 #'
+#' @description
 #' Retrieves information about the specified managed policy, including the
 #' policy's default version and the total number of IAM users, groups, and
 #' roles to which the policy is attached. To retrieve the list of the
@@ -4351,6 +4417,7 @@ iam_get_policy <- function(PolicyArn) {
 #' Retrieves information about the specified version of the specified
 #' managed policy, including the policy document
 #'
+#' @description
 #' Retrieves information about the specified version of the specified
 #' managed policy, including the policy document.
 #' 
@@ -4427,6 +4494,7 @@ iam_get_policy_version <- function(PolicyArn, VersionId) {
 #' path, GUID, ARN, and the role's trust policy that grants permission to
 #' assume the role
 #'
+#' @description
 #' Retrieves information about the specified role, including the role's
 #' path, GUID, ARN, and the role's trust policy that grants permission to
 #' assume the role. For more information about roles, see [Working with
@@ -4487,6 +4555,7 @@ iam_get_role <- function(RoleName) {
 #' Retrieves the specified inline policy document that is embedded with the
 #' specified IAM role
 #'
+#' @description
 #' Retrieves the specified inline policy document that is embedded with the
 #' specified IAM role.
 #' 
@@ -4557,6 +4626,7 @@ iam_get_role_policy <- function(RoleName, PolicyName) {
 #' Returns the SAML provider metadocument that was uploaded when the IAM
 #' SAML provider resource object was created or updated
 #'
+#' @description
 #' Returns the SAML provider metadocument that was uploaded when the IAM
 #' SAML provider resource object was created or updated.
 #' 
@@ -4603,6 +4673,7 @@ iam_get_saml_provider <- function(SAMLProviderArn) {
 
 #' Retrieves the specified SSH public key, including metadata about the key
 #'
+#' @description
 #' Retrieves the specified SSH public key, including metadata about the
 #' key.
 #' 
@@ -4663,6 +4734,7 @@ iam_get_ssh_public_key <- function(UserName, SSHPublicKeyId, Encoding) {
 #' Retrieves information about the specified server certificate stored in
 #' IAM
 #'
+#' @description
 #' Retrieves information about the specified server certificate stored in
 #' IAM.
 #' 
@@ -4713,6 +4785,7 @@ iam_get_server_certificate <- function(ServerCertificateName) {
 #' Retrieves a service last accessed report that was created using the
 #' GenerateServiceLastAccessedDetails operation
 #'
+#' @description
 #' Retrieves a service last accessed report that was created using the
 #' `GenerateServiceLastAccessedDetails` operation. You can use the `JobId`
 #' parameter in `GetServiceLastAccessedDetails` to retrieve the status of
@@ -4828,6 +4901,7 @@ iam_get_service_last_accessed_details <- function(JobId, MaxItems = NULL, Marker
 #' GenerateServiceLastAccessedDetails operation, you can use the JobId
 #' parameter in GetServiceLastAccessedDetailsWithEntities
 #'
+#' @description
 #' After you generate a group or policy report using the
 #' `GenerateServiceLastAccessedDetails` operation, you can use the `JobId`
 #' parameter in `GetServiceLastAccessedDetailsWithEntities`. This operation
@@ -4927,6 +5001,7 @@ iam_get_service_last_accessed_details_with_entities <- function(JobId, ServiceNa
 
 #' Retrieves the status of your service-linked role deletion
 #'
+#' @description
 #' Retrieves the status of your service-linked role deletion. After you use
 #' the DeleteServiceLinkedRole API operation to submit a service-linked
 #' role for deletion, you can use the `DeletionTaskId` parameter in
@@ -4971,6 +5046,7 @@ iam_get_service_linked_role_deletion_status <- function(DeletionTaskId) {
 #' Retrieves information about the specified IAM user, including the user's
 #' creation date, path, unique ID, and ARN
 #'
+#' @description
 #' Retrieves information about the specified IAM user, including the user's
 #' creation date, path, unique ID, and ARN.
 #' 
@@ -5027,6 +5103,7 @@ iam_get_user <- function(UserName = NULL) {
 #' Retrieves the specified inline policy document that is embedded in the
 #' specified IAM user
 #'
+#' @description
 #' Retrieves the specified inline policy document that is embedded in the
 #' specified IAM user.
 #' 
@@ -5093,6 +5170,7 @@ iam_get_user_policy <- function(UserName, PolicyName) {
 #' Returns information about the access key IDs associated with the
 #' specified IAM user
 #'
+#' @description
 #' Returns information about the access key IDs associated with the
 #' specified IAM user. If there is none, the operation returns an empty
 #' list.
@@ -5173,6 +5251,7 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #' Lists the account alias associated with the AWS account (Note: you can
 #' have only one)
 #'
+#' @description
 #' Lists the account alias associated with the AWS account (Note: you can
 #' have only one). For information about using an AWS account alias, see
 #' [Using an Alias for Your AWS Account
@@ -5232,6 +5311,7 @@ iam_list_account_aliases <- function(Marker = NULL, MaxItems = NULL) {
 
 #' Lists all managed policies that are attached to the specified IAM group
 #'
+#' @description
 #' Lists all managed policies that are attached to the specified IAM group.
 #' 
 #' An IAM group can also have inline policies embedded with it. To list the
@@ -5313,6 +5393,7 @@ iam_list_attached_group_policies <- function(GroupName, PathPrefix = NULL, Marke
 
 #' Lists all managed policies that are attached to the specified IAM role
 #'
+#' @description
 #' Lists all managed policies that are attached to the specified IAM role.
 #' 
 #' An IAM role can also have inline policies embedded with it. To list the
@@ -5393,6 +5474,7 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
 
 #' Lists all managed policies that are attached to the specified IAM user
 #'
+#' @description
 #' Lists all managed policies that are attached to the specified IAM user.
 #' 
 #' An IAM user can also have inline policies embedded with it. To list the
@@ -5474,6 +5556,7 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
 #' Lists all IAM users, groups, and roles that the specified managed policy
 #' is attached to
 #'
+#' @description
 #' Lists all IAM users, groups, and roles that the specified managed policy
 #' is attached to.
 #' 
@@ -5571,6 +5654,7 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
 #' Lists the names of the inline policies that are embedded in the
 #' specified IAM group
 #'
+#' @description
 #' Lists the names of the inline policies that are embedded in the
 #' specified IAM group.
 #' 
@@ -5648,6 +5732,7 @@ iam_list_group_policies <- function(GroupName, Marker = NULL, MaxItems = NULL) {
 
 #' Lists the IAM groups that have the specified path prefix
 #'
+#' @description
 #' Lists the IAM groups that have the specified path prefix.
 #' 
 #' You can paginate the results using the `MaxItems` and `Marker`
@@ -5719,6 +5804,7 @@ iam_list_groups <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 
 #' Lists the IAM groups that the specified IAM user belongs to
 #'
+#' @description
 #' Lists the IAM groups that the specified IAM user belongs to.
 #' 
 #' You can paginate the results using the `MaxItems` and `Marker`
@@ -5787,6 +5873,7 @@ iam_list_groups_for_user <- function(UserName, Marker = NULL, MaxItems = NULL) {
 
 #' Lists the instance profiles that have the specified path prefix
 #'
+#' @description
 #' Lists the instance profiles that have the specified path prefix. If
 #' there are none, the operation returns an empty list. For more
 #' information about instance profiles, go to [About Instance
@@ -5855,6 +5942,7 @@ iam_list_instance_profiles <- function(PathPrefix = NULL, Marker = NULL, MaxItem
 
 #' Lists the instance profiles that have the specified associated IAM role
 #'
+#' @description
 #' Lists the instance profiles that have the specified associated IAM role.
 #' If there are none, the operation returns an empty list. For more
 #' information about instance profiles, go to [About Instance
@@ -5917,6 +6005,7 @@ iam_list_instance_profiles_for_role <- function(RoleName, Marker = NULL, MaxItem
 
 #' Lists the MFA devices for an IAM user
 #'
+#' @description
 #' Lists the MFA devices for an IAM user. If the request includes a IAM
 #' user name, then this operation lists all the MFA devices associated with
 #' the specified user. If you do not specify a user name, IAM determines
@@ -5981,6 +6070,7 @@ iam_list_mfa_devices <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #' Lists information about the IAM OpenID Connect (OIDC) provider resource
 #' objects defined in the AWS account
 #'
+#' @description
 #' Lists information about the IAM OpenID Connect (OIDC) provider resource
 #' objects defined in the AWS account.
 #'
@@ -6016,6 +6106,7 @@ iam_list_open_id_connect_providers <- function() {
 #' including your own customer-defined managed policies and all AWS managed
 #' policies
 #'
+#' @description
 #' Lists all the managed policies that are available in your AWS account,
 #' including your own customer-defined managed policies and all AWS managed
 #' policies.
@@ -6118,6 +6209,7 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
 #' Retrieves a list of policies that the IAM identity (user, group, or
 #' role) can use to access each specified service
 #'
+#' @description
 #' Retrieves a list of policies that the IAM identity (user, group, or
 #' role) can use to access each specified service.
 #' 
@@ -6228,6 +6320,7 @@ iam_list_policies_granting_service_access <- function(Marker = NULL, Arn, Servic
 #' including the version that is currently set as the policy's default
 #' version
 #'
+#' @description
 #' Lists information about the versions of the specified managed policy,
 #' including the version that is currently set as the policy's default
 #' version.
@@ -6293,6 +6386,7 @@ iam_list_policy_versions <- function(PolicyArn, Marker = NULL, MaxItems = NULL) 
 #' Lists the names of the inline policies that are embedded in the
 #' specified IAM role
 #'
+#' @description
 #' Lists the names of the inline policies that are embedded in the
 #' specified IAM role.
 #' 
@@ -6361,6 +6455,7 @@ iam_list_role_policies <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 
 #' Lists the tags that are attached to the specified role
 #'
+#' @description
 #' Lists the tags that are attached to the specified role. The returned
 #' list of tags is sorted by tag key. For more information about tagging,
 #' see [Tagging IAM
@@ -6430,6 +6525,7 @@ iam_list_role_tags <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 
 #' Lists the IAM roles that have the specified path prefix
 #'
+#' @description
 #' Lists the IAM roles that have the specified path prefix. If there are
 #' none, the operation returns an empty list. For more information about
 #' roles, go to [Working with
@@ -6498,6 +6594,7 @@ iam_list_roles <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 
 #' Lists the SAML provider resource objects defined in IAM in the account
 #'
+#' @description
 #' Lists the SAML provider resource objects defined in IAM in the account.
 #' 
 #' This operation requires [Signature Version
@@ -6534,6 +6631,7 @@ iam_list_saml_providers <- function() {
 #' Returns information about the SSH public keys associated with the
 #' specified IAM user
 #'
+#' @description
 #' Returns information about the SSH public keys associated with the
 #' specified IAM user. If none exists, the operation returns an empty list.
 #' 
@@ -6604,6 +6702,7 @@ iam_list_ssh_public_keys <- function(UserName = NULL, Marker = NULL, MaxItems = 
 #' Lists the server certificates stored in IAM that have the specified path
 #' prefix
 #'
+#' @description
 #' Lists the server certificates stored in IAM that have the specified path
 #' prefix. If none exist, the operation returns an empty list.
 #' 
@@ -6677,6 +6776,7 @@ iam_list_server_certificates <- function(PathPrefix = NULL, Marker = NULL, MaxIt
 #' Returns information about the service-specific credentials associated
 #' with the specified IAM user
 #'
+#' @description
 #' Returns information about the service-specific credentials associated
 #' with the specified IAM user. If none exists, the operation returns an
 #' empty list. The service-specific credentials returned by this operation
@@ -6732,6 +6832,7 @@ iam_list_service_specific_credentials <- function(UserName = NULL, ServiceName =
 #' Returns information about the signing certificates associated with the
 #' specified IAM user
 #'
+#' @description
 #' Returns information about the signing certificates associated with the
 #' specified IAM user. If none exists, the operation returns an empty list.
 #' 
@@ -6809,6 +6910,7 @@ iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxIte
 #' Lists the names of the inline policies embedded in the specified IAM
 #' user
 #'
+#' @description
 #' Lists the names of the inline policies embedded in the specified IAM
 #' user.
 #' 
@@ -6877,6 +6979,7 @@ iam_list_user_policies <- function(UserName, Marker = NULL, MaxItems = NULL) {
 
 #' Lists the tags that are attached to the specified user
 #'
+#' @description
 #' Lists the tags that are attached to the specified user. The returned
 #' list of tags is sorted by tag key. For more information about tagging,
 #' see [Tagging IAM
@@ -6946,6 +7049,7 @@ iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
 
 #' Lists the IAM users that have the specified path prefix
 #'
+#' @description
 #' Lists the IAM users that have the specified path prefix. If no path
 #' prefix is specified, the operation returns all users in the AWS account.
 #' If there are none, the operation returns an empty list.
@@ -7020,6 +7124,7 @@ iam_list_users <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
 #' Lists the virtual MFA devices defined in the AWS account by assignment
 #' status
 #'
+#' @description
 #' Lists the virtual MFA devices defined in the AWS account by assignment
 #' status. If you do not specify an assignment status, the operation
 #' returns a list of all virtual MFA devices. Assignment status can be
@@ -7087,6 +7192,7 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' Adds or updates an inline policy document that is embedded in the
 #' specified IAM group
 #'
+#' @description
 #' Adds or updates an inline policy document that is embedded in the
 #' specified IAM group.
 #' 
@@ -7186,6 +7292,7 @@ iam_put_group_policy <- function(GroupName, PolicyName, PolicyDocument) {
 #' Adds or updates the policy that is specified as the IAM role's
 #' permissions boundary
 #'
+#' @description
 #' Adds or updates the policy that is specified as the IAM role's
 #' permissions boundary. You can use an AWS managed policy or a customer
 #' managed policy to set the boundary for a role. Use the boundary to
@@ -7241,6 +7348,7 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' Adds or updates an inline policy document that is embedded in the
 #' specified IAM role
 #'
+#' @description
 #' Adds or updates an inline policy document that is embedded in the
 #' specified IAM role.
 #' 
@@ -7348,6 +7456,7 @@ iam_put_role_policy <- function(RoleName, PolicyName, PolicyDocument) {
 #' Adds or updates the policy that is specified as the IAM user's
 #' permissions boundary
 #'
+#' @description
 #' Adds or updates the policy that is specified as the IAM user's
 #' permissions boundary. You can use an AWS managed policy or a customer
 #' managed policy to set the boundary for a user. Use the boundary to
@@ -7401,6 +7510,7 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #' Adds or updates an inline policy document that is embedded in the
 #' specified IAM user
 #'
+#' @description
 #' Adds or updates an inline policy document that is embedded in the
 #' specified IAM user.
 #' 
@@ -7500,6 +7610,7 @@ iam_put_user_policy <- function(UserName, PolicyName, PolicyDocument) {
 #' of client IDs registered for the specified IAM OpenID Connect (OIDC)
 #' provider resource object
 #'
+#' @description
 #' Removes the specified client ID (also known as audience) from the list
 #' of client IDs registered for the specified IAM OpenID Connect (OIDC)
 #' provider resource object.
@@ -7553,6 +7664,7 @@ iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProv
 
 #' Removes the specified IAM role from the specified EC2 instance profile
 #'
+#' @description
 #' Removes the specified IAM role from the specified EC2 instance profile.
 #' 
 #' Make sure that you do not have any Amazon EC2 instances running with the
@@ -7621,6 +7733,7 @@ iam_remove_role_from_instance_profile <- function(InstanceProfileName, RoleName)
 
 #' Removes the specified user from the specified group
 #'
+#' @description
 #' Removes the specified user from the specified group.
 #'
 #' @usage
@@ -7679,6 +7792,7 @@ iam_remove_user_from_group <- function(GroupName, UserName) {
 
 #' Resets the password for a service-specific credential
 #'
+#' @description
 #' Resets the password for a service-specific credential. The new password
 #' is AWS generated and cryptographically strong. It cannot be configured
 #' by the user. Resetting the password immediately invalidates the previous
@@ -7733,6 +7847,7 @@ iam_reset_service_specific_credential <- function(UserName = NULL, ServiceSpecif
 #' Synchronizes the specified MFA device with its IAM resource object on
 #' the AWS servers
 #'
+#' @description
 #' Synchronizes the specified MFA device with its IAM resource object on
 #' the AWS servers.
 #' 
@@ -7797,6 +7912,7 @@ iam_resync_mfa_device <- function(UserName, SerialNumber, AuthenticationCode1, A
 #' Sets the specified version of the specified policy as the policy's
 #' default (operative) version
 #'
+#' @description
 #' Sets the specified version of the specified policy as the policy's
 #' default (operative) version.
 #' 
@@ -7856,6 +7972,7 @@ iam_set_default_policy_version <- function(PolicyArn, VersionId) {
 #' Sets the specified version of the global endpoint token as the token
 #' version used for the AWS account
 #'
+#' @description
 #' Sets the specified version of the global endpoint token as the token
 #' version used for the AWS account.
 #' 
@@ -7936,6 +8053,7 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' policy works with a list of API operations and AWS resources to
 #' determine the policies' effective permissions
 #'
+#' @description
 #' Simulate how a set of IAM policies and optionally a resource-based
 #' policy works with a list of API operations and AWS resources to
 #' determine the policies' effective permissions. The policies are provided
@@ -8185,6 +8303,7 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' a list of API operations and AWS resources to determine the policies'
 #' effective permissions
 #'
+#' @description
 #' Simulate how a set of IAM policies attached to an IAM entity works with
 #' a list of API operations and AWS resources to determine the policies'
 #' effective permissions. The entity can be an IAM user, group, or role. If
@@ -8454,6 +8573,7 @@ iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NUL
 
 #' Adds one or more tags to an IAM role
 #'
+#' @description
 #' Adds one or more tags to an IAM role. The role can be a regular role or
 #' a service-linked role. If a tag with the same key name already exists,
 #' then that tag is overwritten with the new value.
@@ -8559,6 +8679,7 @@ iam_tag_role <- function(RoleName, Tags) {
 
 #' Adds one or more tags to an IAM user
 #'
+#' @description
 #' Adds one or more tags to an IAM user. If a tag with the same key name
 #' already exists, then that tag is overwritten with the new value.
 #' 
@@ -8662,6 +8783,7 @@ iam_tag_user <- function(UserName, Tags) {
 
 #' Removes the specified tags from the role
 #'
+#' @description
 #' Removes the specified tags from the role. For more information about
 #' tagging, see [Tagging IAM
 #' Identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
@@ -8723,6 +8845,7 @@ iam_untag_role <- function(RoleName, TagKeys) {
 
 #' Removes the specified tags from the user
 #'
+#' @description
 #' Removes the specified tags from the user. For more information about
 #' tagging, see [Tagging IAM
 #' Identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html)
@@ -8785,6 +8908,7 @@ iam_untag_user <- function(UserName, TagKeys) {
 #' Changes the status of the specified access key from Active to Inactive,
 #' or vice versa
 #'
+#' @description
 #' Changes the status of the specified access key from Active to Inactive,
 #' or vice versa. This operation can be used to disable a user's key as
 #' part of a key rotation workflow.
@@ -8859,6 +8983,7 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 
 #' Updates the password policy settings for the AWS account
 #'
+#' @description
 #' Updates the password policy settings for the AWS account.
 #' 
 #' -   This operation does not support partial updates. No parameters are
@@ -8887,7 +9012,7 @@ iam_update_access_key <- function(UserName = NULL, AccessKeyId, Status) {
 #' @param RequireSymbols Specifies whether IAM user passwords must contain at least one of the
 #' following non-alphanumeric characters:
 #' 
-#' ! @@ \\# $ % ^ & * ( ) \\_ + - = \[ \] \{ \} | '
+#' ! @@ \\# $ \% ^ & * ( ) \\_ + - = \[ \] \{ \} | '
 #' 
 #' If you do not specify a value for this parameter, then the operation
 #' uses the default value of `false`. The result is that passwords do not
@@ -8988,6 +9113,7 @@ iam_update_account_password_policy <- function(MinimumPasswordLength = NULL, Req
 
 #' Updates the policy that grants an IAM entity permission to assume a role
 #'
+#' @description
 #' Updates the policy that grants an IAM entity permission to assume a
 #' role. This is typically referred to as the "role trust policy". For more
 #' information about roles, go to [Using Roles to Delegate Permissions and
@@ -9063,6 +9189,7 @@ iam_update_assume_role_policy <- function(RoleName, PolicyDocument) {
 
 #' Updates the name and/or the path of the specified IAM group
 #'
+#' @description
 #' Updates the name and/or the path of the specified IAM group.
 #' 
 #' You should understand the implications of changing a group's path or
@@ -9146,6 +9273,7 @@ iam_update_group <- function(GroupName, NewPath = NULL, NewGroupName = NULL) {
 
 #' Changes the password for the specified IAM user
 #'
+#' @description
 #' Changes the password for the specified IAM user.
 #' 
 #' IAM users can change their own passwords by calling ChangePassword. For
@@ -9226,6 +9354,7 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
 #' with an OpenID Connect (OIDC) provider resource object with a new list
 #' of thumbprints
 #'
+#' @description
 #' Replaces the existing list of server certificate thumbprints associated
 #' with an OpenID Connect (OIDC) provider resource object with a new list
 #' of thumbprints.
@@ -9292,6 +9421,7 @@ iam_update_open_id_connect_provider_thumbprint <- function(OpenIDConnectProvider
 
 #' Updates the description or maximum session duration setting of a role
 #'
+#' @description
 #' Updates the description or maximum session duration setting of a role.
 #'
 #' @usage
@@ -9347,6 +9477,7 @@ iam_update_role <- function(RoleName, Description = NULL, MaxSessionDuration = N
 
 #' Use UpdateRole instead
 #'
+#' @description
 #' Use UpdateRole instead.
 #' 
 #' Modifies only the description of a role. This operation performs the
@@ -9390,6 +9521,7 @@ iam_update_role_description <- function(RoleName, Description) {
 #' Updates the metadata document for an existing SAML provider resource
 #' object
 #'
+#' @description
 #' Updates the metadata document for an existing SAML provider resource
 #' object.
 #' 
@@ -9442,6 +9574,7 @@ iam_update_saml_provider <- function(SAMLMetadataDocument, SAMLProviderArn) {
 
 #' Sets the status of an IAM user's SSH public key to active or inactive
 #'
+#' @description
 #' Sets the status of an IAM user's SSH public key to active or inactive.
 #' SSH public keys that are inactive cannot be used for authentication.
 #' This operation can be used to disable a user's SSH public key as part of
@@ -9504,6 +9637,7 @@ iam_update_ssh_public_key <- function(UserName, SSHPublicKeyId, Status) {
 #' Updates the name and/or the path of the specified server certificate
 #' stored in IAM
 #'
+#' @description
 #' Updates the name and/or the path of the specified server certificate
 #' stored in IAM.
 #' 
@@ -9588,6 +9722,7 @@ iam_update_server_certificate <- function(ServerCertificateName, NewPath = NULL,
 
 #' Sets the status of a service-specific credential to Active or Inactive
 #'
+#' @description
 #' Sets the status of a service-specific credential to `Active` or
 #' `Inactive`. Service-specific credentials that are inactive cannot be
 #' used for authentication to the service. This operation can be used to
@@ -9645,6 +9780,7 @@ iam_update_service_specific_credential <- function(UserName = NULL, ServiceSpeci
 #' Changes the status of the specified user signing certificate from active
 #' to disabled, or vice versa
 #'
+#' @description
 #' Changes the status of the specified user signing certificate from active
 #' to disabled, or vice versa. This operation can be used to disable an IAM
 #' user's signing certificate as part of a certificate rotation work flow.
@@ -9715,6 +9851,7 @@ iam_update_signing_certificate <- function(UserName = NULL, CertificateId, Statu
 
 #' Updates the name and/or the path of the specified IAM user
 #'
+#' @description
 #' Updates the name and/or the path of the specified IAM user.
 #' 
 #' You should understand the implications of changing an IAM user's path or
@@ -9799,6 +9936,7 @@ iam_update_user <- function(UserName, NewPath = NULL, NewUserName = NULL) {
 
 #' Uploads an SSH public key and associates it with the specified IAM user
 #'
+#' @description
 #' Uploads an SSH public key and associates it with the specified IAM user.
 #' 
 #' The SSH public key uploaded by this operation can be used only for
@@ -9865,6 +10003,7 @@ iam_upload_ssh_public_key <- function(UserName, SSHPublicKeyBody) {
 
 #' Uploads a server certificate entity for the AWS account
 #'
+#' @description
 #' Uploads a server certificate entity for the AWS account. The server
 #' certificate entity includes a public key certificate, a private key, and
 #' an optional certificate chain, which should all be PEM-encoded.
@@ -10016,6 +10155,7 @@ iam_upload_server_certificate <- function(Path = NULL, ServerCertificateName, Ce
 
 #' Uploads an X
 #'
+#' @description
 #' Uploads an X.509 signing certificate and associates it with the
 #' specified IAM user. Some AWS services use X.509 signing certificates to
 #' validate requests that are signed with a corresponding private key. When

@@ -19,8 +19,7 @@ customerprofiles_add_profile_key(ProfileId, KeyName, Values, DomainName)
 \description{
 Associates a new key value with a specific profile, such as a Contact
 Trace Record (CTR) ContactId.
-}
-\details{
+
 A profile object can have a single unique key and any number of
 additional keys that can be used to identify the profile that it belongs
 to.

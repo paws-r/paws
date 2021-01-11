@@ -13,8 +13,7 @@ cognitoidentityprovider_admin_enable_user(UserPoolId, Username)
 }
 \description{
 Enables the specified user as an administrator. Works on any user.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

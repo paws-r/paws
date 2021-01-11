@@ -43,8 +43,7 @@ Modifies the specified attribute of the specified AMI. You can specify
 only one attribute at a time. You can use the \code{Attribute} parameter to
 specify the attribute or one of the following parameters: \code{Description},
 \code{LaunchPermission}, or \code{ProductCode}.
-}
-\details{
+
 AWS Marketplace product codes cannot be modified. Images with an AWS
 Marketplace product code cannot be made public.
 

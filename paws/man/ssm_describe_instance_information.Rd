@@ -34,8 +34,7 @@ from a previous call.)}
 Describes one or more of your instances, including information about the
 operating system platform, the version of SSM Agent installed on the
 instance, instance status, and so on.
-}
-\details{
+
 If you specify one or more instance IDs, it returns information for
 those instances. If you do not specify instance IDs, it returns
 information for all your instances. If you specify an instance ID that

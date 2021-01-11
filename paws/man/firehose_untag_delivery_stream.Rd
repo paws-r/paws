@@ -16,8 +16,7 @@ stream.}
 Removes tags from the specified delivery stream. Removed tags are
 deleted, and you can't recover them after this operation successfully
 completes.
-}
-\details{
+
 If you specify a tag that doesn't exist, the operation ignores it.
 
 This operation has a limit of five transactions per second per account.

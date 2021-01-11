@@ -21,8 +21,7 @@ configservice_put_configuration_aggregator(ConfigurationAggregatorName,
 Creates and updates the configuration aggregator with the selected
 source accounts and regions. The source account can be individual
 account(s) or an organization.
-}
-\details{
+
 AWS Config should be enabled in source accounts and regions you want to
 aggregate.
 

@@ -94,8 +94,7 @@ base64-encoded text.}
 \description{
 Modifies the specified attribute of the specified instance. You can
 specify only one attribute at a time.
-}
-\details{
+
 \strong{Note:} Using this action to change the security groups associated
 with an elastic network interface (ENI) attached to an instance in a VPC
 can result in an error if the instance has more than one ENI. To change

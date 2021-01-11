@@ -88,8 +88,7 @@ default, the temporary credentials expire in 900 seconds. You can
 optionally specify a duration between 900 seconds (15 minutes) and 3600
 seconds (60 minutes). For more information, see \href{https://docs.aws.amazon.com/redshift/latest/mgmt/generating-user-credentials.html}{Using IAM Authentication to Generate Database User Credentials}
 in the Amazon Redshift Cluster Management Guide.
-}
-\details{
+
 The AWS Identity and Access Management (IAM)user or role that executes
 GetClusterCredentials must have an IAM policy attached that allows
 access to all necessary actions and resources. For more information

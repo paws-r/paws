@@ -33,8 +33,7 @@ as the \code{MediaType}.}
 }
 \description{
 Updates stream metadata, such as the device name and media type.
-}
-\details{
+
 You must provide the stream name or the Amazon Resource Name (ARN) of
 the stream.
 

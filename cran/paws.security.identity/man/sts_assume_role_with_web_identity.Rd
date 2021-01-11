@@ -116,8 +116,7 @@ Returns a set of temporary security credentials for users who have been
 authenticated in a mobile or web application with a web identity
 provider. Example providers include Amazon Cognito, Login with Amazon,
 Facebook, Google, or any OpenID Connect-compatible identity provider.
-}
-\details{
+
 For mobile applications, we recommend that you use Amazon Cognito. You
 can use Amazon Cognito with the \href{https://aws.amazon.com/amplify/}{AWS SDK for iOS Developer Guide} and the \href{https://aws.amazon.com/amplify/}{AWS SDK for Android Developer Guide} to uniquely identify a
 user. You can also supply the user with a consistent identity throughout

@@ -66,8 +66,7 @@ system issue, after the system is restored, there could be data
 inconsistencies on the volume. Volume events notify you if this occurs.
 Volume actions notify you if any action needs to be taken in response to
 the event.
-}
-\details{
+
 The \code{DescribeVolumeStatus} operation provides the following information
 about the specified volumes:
 

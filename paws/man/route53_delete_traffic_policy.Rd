@@ -13,8 +13,7 @@ route53_delete_traffic_policy(Id, Version)
 }
 \description{
 Deletes a traffic policy.
-}
-\details{
+
 When you delete a traffic policy, Route 53 sets a flag on the policy to
 indicate that it has been deleted. However, Route 53 never fully deletes
 the traffic policy. Note the following:

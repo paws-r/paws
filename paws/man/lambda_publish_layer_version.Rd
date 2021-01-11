@@ -30,8 +30,7 @@ example, \code{MIT}.
 Creates an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{AWS Lambda layer}
 from a ZIP archive. Each time you call \code{PublishLayerVersion} with the
 same layer name, a new version is created.
-}
-\details{
+
 Add layers to your function with CreateFunction or
 UpdateFunctionConfiguration.
 }

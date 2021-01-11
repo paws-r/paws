@@ -11,8 +11,7 @@ machinelearning_delete_data_source(DataSourceId)
 }
 \description{
 Assigns the DELETED status to a \code{DataSource}, rendering it unusable.
-}
-\details{
+
 After using the \code{DeleteDataSource} operation, you can use the
 GetDataSource operation to verify that the status of the \code{DataSource}
 changed to DELETED.

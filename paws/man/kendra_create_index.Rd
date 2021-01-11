@@ -60,8 +60,7 @@ Creates a new Amazon Kendra index. Index creation is an asynchronous
 operation. To determine if index creation has completed, check the
 \code{Status} field returned from a call to . The \code{Status} field is set to
 \code{ACTIVE} when the index is ready to use.
-}
-\details{
+
 Once the index is active you can index your documents using the
 operation or using one of the supported data sources.
 }

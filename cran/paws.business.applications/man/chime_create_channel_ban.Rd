@@ -16,8 +16,7 @@ Permanently bans a member from a channel. Moderators can't add banned
 members to a channel. To undo a ban, you first have to
 \code{DeleteChannelBan}, and then \code{CreateChannelMembership}. Bans are cleaned
 up when you delete users or channels.
-}
-\details{
+
 If you ban a user who is already part of a channel, that user is
 automatically kicked from the channel.
 }

@@ -30,8 +30,7 @@ version compatible with that DB parameter group family.}
 }
 \description{
 Creates a new DB parameter group.
-}
-\details{
+
 A DB parameter group is initially created with the default parameters
 for the database engine used by the DB instance. To provide custom
 values for any of the parameters, you must modify the group after

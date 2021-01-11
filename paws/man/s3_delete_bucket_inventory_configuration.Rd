@@ -20,8 +20,7 @@ different account, the request will fail with an HTTP
 \description{
 Deletes an inventory configuration (identified by the inventory ID) from
 the bucket.
-}
-\details{
+
 To use this operation, you must have permissions to perform the
 \code{s3:PutInventoryConfiguration} action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to

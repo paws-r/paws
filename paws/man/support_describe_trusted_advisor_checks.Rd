@@ -19,8 +19,6 @@ specify a language code. The AWS Support API currently supports English
 ("en") and Japanese ("ja"). The response contains a
 TrustedAdvisorCheckDescription object for each check. You must set the
 AWS Region to us-east-1.
-}
-\details{
 \itemize{
 \item You must have a Business or Enterprise support plan to use the AWS
 Support API.

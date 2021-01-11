@@ -42,8 +42,7 @@ specified by \code{MaxRecords}.}
 }
 \description{
 Returns information about endpoints for an Amazon Neptune DB cluster.
-}
-\details{
+
 This operation can also return information for Amazon RDS clusters and
 Amazon DocDB clusters.
 }

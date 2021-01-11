@@ -5,6 +5,7 @@ NULL
 
 #' Used to cancel an open change request
 #'
+#' @description
 #' Used to cancel an open change request. Must be sent before the status of
 #' the request changes to `APPLYING`, the final stage of completing your
 #' change request. You can describe a change during the 60-day request
@@ -48,6 +49,7 @@ marketplacecatalog_cancel_change_set <- function(Catalog, ChangeSetId) {
 
 #' Provides information about a given change set
 #'
+#' @description
 #' Provides information about a given change set.
 #'
 #' @usage
@@ -88,6 +90,7 @@ marketplacecatalog_describe_change_set <- function(Catalog, ChangeSetId) {
 
 #' Returns the metadata and content of the entity
 #'
+#' @description
 #' Returns the metadata and content of the entity.
 #'
 #' @usage
@@ -128,6 +131,7 @@ marketplacecatalog_describe_entity <- function(Catalog, EntityId) {
 #' Returns the list of change sets owned by the account being used to make
 #' the call
 #'
+#' @description
 #' Returns the list of change sets owned by the account being used to make
 #' the call. You can filter this list by providing any combination of
 #' `entityId`, `ChangeSetName`, and status. If you provide more than one
@@ -192,6 +196,7 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 
 #' Provides the list of entities of a given type
 #'
+#' @description
 #' Provides the list of entities of a given type.
 #'
 #' @usage
@@ -252,6 +257,7 @@ marketplacecatalog_list_entities <- function(Catalog, EntityType, FilterList = N
 
 #' This operation allows you to request changes for your entities
 #'
+#' @description
 #' This operation allows you to request changes for your entities. Within a
 #' single ChangeSet, you cannot start the same change type against the same
 #' entity multiple times. Additionally, when a ChangeSet is running, all

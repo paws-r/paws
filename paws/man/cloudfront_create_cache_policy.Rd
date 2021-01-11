@@ -11,8 +11,7 @@ cloudfront_create_cache_policy(CachePolicyConfig)
 }
 \description{
 Creates a cache policy.
-}
-\details{
+
 After you create a cache policy, you can attach it to one or more cache
 behaviors. When it’s attached to a cache behavior, the cache policy
 determines the following:

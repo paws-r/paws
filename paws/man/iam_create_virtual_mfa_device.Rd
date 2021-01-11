@@ -34,8 +34,7 @@ virtual MFA, use EnableMFADevice to attach the MFA device to an IAM
 user. For more information about creating and working with virtual MFA
 devices, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html}{Using a Virtual MFA Device}
 in the \emph{IAM User Guide}.
-}
-\details{
+
 The number and size of IAM resources in an AWS account are limited. For
 more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
 in the \emph{IAM User Guide}.

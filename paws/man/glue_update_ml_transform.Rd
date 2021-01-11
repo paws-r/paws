@@ -61,8 +61,7 @@ task run fails.}
 \description{
 Updates an existing machine learning transform. Call this operation to
 tune the algorithm parameters to achieve better results.
-}
-\details{
+
 After calling this operation, you can call the
 \code{StartMLEvaluationTaskRun} operation to assess how well your new
 parameters achieved your goals (such as improving the quality of your

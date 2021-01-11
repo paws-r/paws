@@ -30,8 +30,7 @@ Virginia) as follows:
 This is the latest version of \strong{AWS WAF}, named AWS WAFV2, released in
 November, 2019. For information, including how to migrate your AWS WAF
 resources from the prior release, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-}
-\details{
+
 Provides high-level information for a managed rule group, including
 descriptions of the rules.
 }

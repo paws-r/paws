@@ -13,8 +13,7 @@ storagegateway_notify_when_uploaded(FileShareARN)
 \description{
 Sends you notification through CloudWatch Events when all files written
 to your file share have been uploaded to Amazon S3.
-}
-\details{
+
 AWS Storage Gateway can send a notification through Amazon CloudWatch
 Events when all files written to your file share up to that point in
 time have been uploaded to Amazon S3. These files include files written

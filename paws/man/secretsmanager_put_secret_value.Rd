@@ -114,8 +114,7 @@ the operation creates a new version and attaches it to the secret. The
 version can contain a new \code{SecretString} value or a new \code{SecretBinary}
 value. You can also specify the staging labels that are initially
 attached to the new version.
-}
-\details{
+
 The Secrets Manager console uses only the \code{SecretString} field. To add
 binary data to a secret with the \code{SecretBinary} field you must use the
 AWS CLI or one of the AWS SDKs.

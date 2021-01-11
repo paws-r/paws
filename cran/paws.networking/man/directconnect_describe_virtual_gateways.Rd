@@ -8,8 +8,7 @@ directconnect_describe_virtual_gateways()
 }
 \description{
 Lists the virtual private gateways owned by the AWS account.
-}
-\details{
+
 You can create one or more AWS Direct Connect private virtual interfaces
 linked to a virtual private gateway.
 }

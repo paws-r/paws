@@ -14,8 +14,7 @@ to add tags to.}
 }
 \description{
 Adds tags to an AWS Cloud9 development environment.
-}
-\details{
+
 Tags that you add to an AWS Cloud9 environment by using this method will
 NOT be automatically propagated to underlying resources.
 }

@@ -31,8 +31,7 @@ Uses the join token and call metadata in a meeting request (From number,
 To number, and so forth) to initiate an outbound call to a public
 switched telephone network (PSTN) and joins them into Chime meeting.
 Also ensures that the From number belongs to the customer.
-}
-\details{
+
 To play welcome audio or implement an interactive voice response (IVR),
 use the \code{CreateSipMediaApplicationCall} API with the corresponding SIP
 media application ID.

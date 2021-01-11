@@ -5,6 +5,7 @@ NULL
 
 #' Associate a lens to a workload
 #'
+#' @description
 #' Associate a lens to a workload.
 #'
 #' @usage
@@ -45,6 +46,7 @@ wellarchitected_associate_lenses <- function(WorkloadId, LensAliases) {
 
 #' Create a milestone for an existing workload
 #'
+#' @description
 #' Create a milestone for an existing workload.
 #'
 #' @usage
@@ -86,6 +88,7 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 
 #' Create a new workload
 #'
+#' @description
 #' Create a new workload.
 #' 
 #' The owner of a workload can share the workload with other AWS accounts
@@ -169,6 +172,7 @@ wellarchitected_create_workload <- function(WorkloadName, Description, Environme
 
 #' Create a workload share
 #'
+#' @description
 #' Create a workload share.
 #' 
 #' The owner of a workload can share it with other AWS accounts and IAM
@@ -220,6 +224,7 @@ wellarchitected_create_workload_share <- function(WorkloadId, SharedWith, Permis
 
 #' Delete an existing workload
 #'
+#' @description
 #' Delete an existing workload.
 #'
 #' @usage
@@ -258,6 +263,7 @@ wellarchitected_delete_workload <- function(WorkloadId, ClientRequestToken) {
 
 #' Delete a workload share
 #'
+#' @description
 #' Delete a workload share.
 #'
 #' @usage
@@ -299,6 +305,7 @@ wellarchitected_delete_workload_share <- function(ShareId, WorkloadId, ClientReq
 
 #' Disassociate a lens from a workload
 #'
+#' @description
 #' Disassociate a lens from a workload.
 #' 
 #' The AWS Well-Architected Framework lens (`wellarchitected`) cannot be
@@ -342,6 +349,7 @@ wellarchitected_disassociate_lenses <- function(WorkloadId, LensAliases) {
 
 #' Get lens review
 #'
+#' @description
 #' Get lens review.
 #'
 #' @usage
@@ -385,6 +393,7 @@ wellarchitected_get_answer <- function(WorkloadId, LensAlias, QuestionId, Milest
 
 #' Get lens review
 #'
+#' @description
 #' Get lens review.
 #'
 #' @usage
@@ -425,6 +434,7 @@ wellarchitected_get_lens_review <- function(WorkloadId, LensAlias, MilestoneNumb
 
 #' Get lens review report
 #'
+#' @description
 #' Get lens review report.
 #'
 #' @usage
@@ -466,6 +476,7 @@ wellarchitected_get_lens_review_report <- function(WorkloadId, LensAlias, Milest
 
 #' Get lens version differences
 #'
+#' @description
 #' Get lens version differences.
 #'
 #' @usage
@@ -504,6 +515,7 @@ wellarchitected_get_lens_version_difference <- function(LensAlias, BaseLensVersi
 
 #' Get a milestone for an existing workload
 #'
+#' @description
 #' Get a milestone for an existing workload.
 #'
 #' @usage
@@ -542,6 +554,7 @@ wellarchitected_get_milestone <- function(WorkloadId, MilestoneNumber) {
 
 #' Get an existing workload
 #'
+#' @description
 #' Get an existing workload.
 #'
 #' @usage
@@ -578,6 +591,7 @@ wellarchitected_get_workload <- function(WorkloadId) {
 
 #' List of answers
 #'
+#' @description
 #' List of answers.
 #'
 #' @usage
@@ -625,6 +639,7 @@ wellarchitected_list_answers <- function(WorkloadId, LensAlias, PillarId = NULL,
 
 #' List lens review improvements
 #'
+#' @description
 #' List lens review improvements.
 #'
 #' @usage
@@ -672,6 +687,7 @@ wellarchitected_list_lens_review_improvements <- function(WorkloadId, LensAlias,
 
 #' List lens reviews
 #'
+#' @description
 #' List lens reviews.
 #'
 #' @usage
@@ -715,6 +731,7 @@ wellarchitected_list_lens_reviews <- function(WorkloadId, MilestoneNumber = NULL
 
 #' List the available lenses
 #'
+#' @description
 #' List the available lenses.
 #'
 #' @usage
@@ -753,6 +770,7 @@ wellarchitected_list_lenses <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' List all milestones for an existing workload
 #'
+#' @description
 #' List all milestones for an existing workload.
 #'
 #' @usage
@@ -793,6 +811,7 @@ wellarchitected_list_milestones <- function(WorkloadId, NextToken = NULL, MaxRes
 
 #' List lens notifications
 #'
+#' @description
 #' List lens notifications.
 #'
 #' @usage
@@ -833,6 +852,7 @@ wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NU
 
 #' List the workload invitations
 #'
+#' @description
 #' List the workload invitations.
 #'
 #' @usage
@@ -874,6 +894,7 @@ wellarchitected_list_share_invitations <- function(WorkloadNamePrefix = NULL, Ne
 
 #' List the workload shares associated with the workload
 #'
+#' @description
 #' List the workload shares associated with the workload.
 #'
 #' @usage
@@ -917,6 +938,7 @@ wellarchitected_list_workload_shares <- function(WorkloadId, SharedWithPrefix = 
 
 #' List workloads
 #'
+#' @description
 #' List workloads. Paginated.
 #'
 #' @usage
@@ -958,6 +980,7 @@ wellarchitected_list_workloads <- function(WorkloadNamePrefix = NULL, NextToken 
 
 #' Update the answer
 #'
+#' @description
 #' Update the answer.
 #'
 #' @usage
@@ -1007,6 +1030,7 @@ wellarchitected_update_answer <- function(WorkloadId, LensAlias, QuestionId, Sel
 
 #' Update lens review
 #'
+#' @description
 #' Update lens review.
 #'
 #' @usage
@@ -1052,6 +1076,7 @@ wellarchitected_update_lens_review <- function(WorkloadId, LensAlias, LensNotes 
 
 #' Update a workload invitation
 #'
+#' @description
 #' Update a workload invitation.
 #'
 #' @usage
@@ -1091,6 +1116,7 @@ wellarchitected_update_share_invitation <- function(ShareInvitationId, ShareInvi
 
 #' Update an existing workload
 #'
+#' @description
 #' Update an existing workload.
 #'
 #' @usage
@@ -1171,6 +1197,7 @@ wellarchitected_update_workload <- function(WorkloadId, WorkloadName = NULL, Des
 
 #' Update a workload share
 #'
+#' @description
 #' Update a workload share.
 #'
 #' @usage
@@ -1212,6 +1239,7 @@ wellarchitected_update_workload_share <- function(ShareId, WorkloadId, Permissio
 
 #' Upgrade lens review
 #'
+#' @description
 #' Upgrade lens review.
 #'
 #' @usage

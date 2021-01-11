@@ -13,8 +13,7 @@ timestreamwrite_delete_database(DatabaseName)
 Deletes a given Timestream database. \emph{This is an irreversible operation.
 After a database is deleted, the time series data from its tables cannot
 be recovered.}
-}
-\details{
+
 All tables in the database must be deleted first, or a
 ValidationException error will be thrown.
 

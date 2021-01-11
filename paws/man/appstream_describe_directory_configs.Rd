@@ -22,8 +22,7 @@ objects for AppStream 2.0, if the names for these objects are provided.
 Otherwise, all Directory Config objects in the account are described.
 These objects include the configuration information required to join
 fleets and image builders to Microsoft Active Directory domains.
-}
-\details{
+
 Although the response syntax in this topic includes the account
 password, this password is not returned in the actual response.
 }

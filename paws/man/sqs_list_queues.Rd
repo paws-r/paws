@@ -23,8 +23,7 @@ Returns a list of your queues in the current region. The response
 includes a maximum of 1,000 results. If you specify a value for the
 optional \code{QueueNamePrefix} parameter, only queues with a name that
 begins with the specified value are returned.
-}
-\details{
+
 The \code{listQueues} methods supports pagination. Set parameter \code{MaxResults}
 in the request to specify the maximum number of results to be returned
 in the response. If you do not set \code{MaxResults}, the response includes a

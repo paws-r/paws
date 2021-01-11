@@ -15,8 +15,7 @@ connect_associate_security_key(InstanceId, Key)
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Associates a security key to the instance.
 }
 \section{Request syntax}{

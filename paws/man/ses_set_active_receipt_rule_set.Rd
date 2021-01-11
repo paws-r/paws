@@ -12,8 +12,7 @@ null disables all email receiving.}
 }
 \description{
 Sets the specified receipt rule set as the active receipt rule set.
-}
-\details{
+
 To disable your email-receiving through Amazon SES completely, you can
 call this API with RuleSetName set to null.
 

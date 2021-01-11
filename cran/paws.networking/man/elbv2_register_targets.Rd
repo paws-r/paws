@@ -13,8 +13,7 @@ elbv2_register_targets(TargetGroupArn, Targets)
 }
 \description{
 Registers the specified targets with the specified target group.
-}
-\details{
+
 If the target is an EC2 instance, it must be in the \code{running} state when
 you register it.
 

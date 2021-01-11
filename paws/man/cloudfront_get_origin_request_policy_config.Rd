@@ -16,8 +16,7 @@ cache behavior, you can get the identifier using
 }
 \description{
 Gets an origin request policy configuration.
-}
-\details{
+
 To get an origin request policy configuration, you must provide the
 policy’s identifier. If the origin request policy is attached to a
 distribution’s cache behavior, you can get the policy’s identifier using

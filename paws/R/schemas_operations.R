@@ -5,6 +5,7 @@ NULL
 
 #' Creates a discoverer
 #'
+#' @description
 #' Creates a discoverer.
 #'
 #' @usage
@@ -47,6 +48,7 @@ schemas_create_discoverer <- function(Description = NULL, SourceArn, Tags = NULL
 
 #' Creates a registry
 #'
+#' @description
 #' Creates a registry.
 #'
 #' @usage
@@ -89,6 +91,7 @@ schemas_create_registry <- function(Description = NULL, RegistryName, Tags = NUL
 
 #' Creates a schema definition
 #'
+#' @description
 #' Creates a schema definition.
 #' 
 #' Inactive schemas will be deleted after two years.
@@ -140,6 +143,7 @@ schemas_create_schema <- function(Content, Description = NULL, RegistryName, Sch
 
 #' Deletes a discoverer
 #'
+#' @description
 #' Deletes a discoverer.
 #'
 #' @usage
@@ -176,6 +180,7 @@ schemas_delete_discoverer <- function(DiscovererId) {
 
 #' Deletes a Registry
 #'
+#' @description
 #' Deletes a Registry.
 #'
 #' @usage
@@ -212,6 +217,7 @@ schemas_delete_registry <- function(RegistryName) {
 
 #' Delete the resource-based policy attached to the specified registry
 #'
+#' @description
 #' Delete the resource-based policy attached to the specified registry.
 #'
 #' @usage
@@ -248,6 +254,7 @@ schemas_delete_resource_policy <- function(RegistryName = NULL) {
 
 #' Delete a schema definition
 #'
+#' @description
 #' Delete a schema definition.
 #'
 #' @usage
@@ -286,6 +293,7 @@ schemas_delete_schema <- function(RegistryName, SchemaName) {
 
 #' Delete the schema version definition
 #'
+#' @description
 #' Delete the schema version definition
 #'
 #' @usage
@@ -326,6 +334,7 @@ schemas_delete_schema_version <- function(RegistryName, SchemaName, SchemaVersio
 
 #' Describe the code binding URI
 #'
+#' @description
 #' Describe the code binding URI.
 #'
 #' @usage
@@ -369,6 +378,7 @@ schemas_describe_code_binding <- function(Language, RegistryName, SchemaName, Sc
 
 #' Describes the discoverer
 #'
+#' @description
 #' Describes the discoverer.
 #'
 #' @usage
@@ -405,6 +415,7 @@ schemas_describe_discoverer <- function(DiscovererId) {
 
 #' Describes the registry
 #'
+#' @description
 #' Describes the registry.
 #'
 #' @usage
@@ -441,6 +452,7 @@ schemas_describe_registry <- function(RegistryName) {
 
 #' Retrieve the schema definition
 #'
+#' @description
 #' Retrieve the schema definition.
 #'
 #' @usage
@@ -481,6 +493,7 @@ schemas_describe_schema <- function(RegistryName, SchemaName, SchemaVersion = NU
 
 #' Export schema
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -523,6 +536,7 @@ schemas_export_schema <- function(RegistryName, SchemaName, SchemaVersion = NULL
 
 #' Get the code binding source URI
 #'
+#' @description
 #' Get the code binding source URI.
 #'
 #' @usage
@@ -566,6 +580,7 @@ schemas_get_code_binding_source <- function(Language, RegistryName, SchemaName, 
 
 #' Get the discovered schema that was generated based on sampled events
 #'
+#' @description
 #' Get the discovered schema that was generated based on sampled events.
 #'
 #' @usage
@@ -608,6 +623,7 @@ schemas_get_discovered_schema <- function(Events, Type) {
 
 #' Retrieves the resource-based policy attached to a given registry
 #'
+#' @description
 #' Retrieves the resource-based policy attached to a given registry.
 #'
 #' @usage
@@ -644,6 +660,7 @@ schemas_get_resource_policy <- function(RegistryName = NULL) {
 
 #' List the discoverers
 #'
+#' @description
 #' List the discoverers.
 #'
 #' @usage
@@ -691,6 +708,7 @@ schemas_list_discoverers <- function(DiscovererIdPrefix = NULL, Limit = NULL, Ne
 
 #' List the registries
 #'
+#' @description
 #' List the registries.
 #'
 #' @usage
@@ -737,6 +755,7 @@ schemas_list_registries <- function(Limit = NULL, NextToken = NULL, RegistryName
 
 #' Provides a list of the schema versions and related information
 #'
+#' @description
 #' Provides a list of the schema versions and related information.
 #'
 #' @usage
@@ -781,6 +800,7 @@ schemas_list_schema_versions <- function(Limit = NULL, NextToken = NULL, Registr
 
 #' List the schemas
 #'
+#' @description
 #' List the schemas.
 #'
 #' @usage
@@ -826,6 +846,7 @@ schemas_list_schemas <- function(Limit = NULL, NextToken = NULL, RegistryName, S
 
 #' Get tags for resource
 #'
+#' @description
 #' Get tags for resource.
 #'
 #' @usage
@@ -862,6 +883,7 @@ schemas_list_tags_for_resource <- function(ResourceArn) {
 
 #' Put code binding URI
 #'
+#' @description
 #' Put code binding URI
 #'
 #' @usage
@@ -905,6 +927,7 @@ schemas_put_code_binding <- function(Language, RegistryName, SchemaName, SchemaV
 
 #' The name of the policy
 #'
+#' @description
 #' The name of the policy.
 #'
 #' @usage
@@ -945,6 +968,7 @@ schemas_put_resource_policy <- function(Policy, RegistryName = NULL, RevisionId 
 
 #' Search the schemas
 #'
+#' @description
 #' Search the schemas
 #'
 #' @usage
@@ -990,6 +1014,7 @@ schemas_search_schemas <- function(Keywords, Limit = NULL, NextToken = NULL, Reg
 
 #' Starts the discoverer
 #'
+#' @description
 #' Starts the discoverer
 #'
 #' @usage
@@ -1026,6 +1051,7 @@ schemas_start_discoverer <- function(DiscovererId) {
 
 #' Stops the discoverer
 #'
+#' @description
 #' Stops the discoverer
 #'
 #' @usage
@@ -1062,6 +1088,7 @@ schemas_stop_discoverer <- function(DiscovererId) {
 
 #' Add tags to a resource
 #'
+#' @description
 #' Add tags to a resource.
 #'
 #' @usage
@@ -1102,6 +1129,7 @@ schemas_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes tags from a resource
 #'
+#' @description
 #' Removes tags from a resource.
 #'
 #' @usage
@@ -1142,6 +1170,7 @@ schemas_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates the discoverer
 #'
+#' @description
 #' Updates the discoverer
 #'
 #' @usage
@@ -1180,6 +1209,7 @@ schemas_update_discoverer <- function(Description = NULL, DiscovererId) {
 
 #' Updates a registry
 #'
+#' @description
 #' Updates a registry.
 #'
 #' @usage
@@ -1219,6 +1249,7 @@ schemas_update_registry <- function(Description = NULL, RegistryName) {
 #' Updates the schema definition Inactive schemas will be deleted after two
 #' years
 #'
+#' @description
 #' Updates the schema definition
 #' 
 #' Inactive schemas will be deleted after two years.

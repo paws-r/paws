@@ -27,8 +27,7 @@ between the instance and the service.}
 \description{
 Registers instances that were created outside of AWS OpsWorks Stacks
 with a specified stack.
-}
-\details{
+
 We do not recommend using this action to register instances. The
 complete registration operation includes two tasks: installing the AWS
 OpsWorks Stacks agent on the instance, and registering the instance with

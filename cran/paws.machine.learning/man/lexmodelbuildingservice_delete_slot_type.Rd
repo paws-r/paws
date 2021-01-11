@@ -13,8 +13,7 @@ lexmodelbuildingservice_delete_slot_type(name)
 Deletes all versions of the slot type, including the \verb{$LATEST} version.
 To delete a specific version of the slot type, use the
 DeleteSlotTypeVersion operation.
-}
-\details{
+
 You can delete a version of a slot type only if it is not referenced. To
 delete a slot type that is referred to in one or more intents, you must
 remove those references first.

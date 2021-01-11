@@ -81,8 +81,7 @@ Valid Values: \code{true} | \code{false}}
 \description{
 Updates a Network File System (NFS) file share. This operation is only
 supported in the file gateway type.
-}
-\details{
+
 To leave a file share field unchanged, set the corresponding input field
 to null.
 

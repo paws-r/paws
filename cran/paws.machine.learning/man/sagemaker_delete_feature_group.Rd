@@ -15,8 +15,7 @@ unique within an AWS Region in an AWS account.}
 Delete the \code{FeatureGroup} and any data that was written to the
 \code{OnlineStore} of the \code{FeatureGroup}. Data cannot be accessed from the
 \code{OnlineStore} immediately after \code{DeleteFeatureGroup} is called.
-}
-\details{
+
 Data written into the \code{OfflineStore} will not be deleted. The AWS Glue
 database and tables that are automatically created for your
 \code{OfflineStore} are not deleted.

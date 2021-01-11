@@ -52,8 +52,7 @@ The \code{BatchWriteItem} operation puts or deletes multiple items in one or
 more tables. A single call to \code{BatchWriteItem} can write up to 16 MB of
 data, which can comprise as many as 25 put or delete requests.
 Individual items to be written can be as large as 400 KB.
-}
-\details{
+
 \code{BatchWriteItem} cannot update items. To update items, use the
 \code{UpdateItem} action.
 

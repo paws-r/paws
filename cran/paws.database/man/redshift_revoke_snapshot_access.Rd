@@ -23,8 +23,7 @@ the specified snapshot.}
 Removes the ability of the specified AWS customer account to restore the
 specified snapshot. If the account is currently restoring the snapshot,
 the restore will run to completion.
-}
-\details{
+
 For more information about working with snapshots, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }

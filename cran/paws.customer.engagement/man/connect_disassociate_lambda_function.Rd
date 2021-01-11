@@ -16,8 +16,7 @@ disassociated.}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Remove the Lambda function from the drop-down options available in the
 relevant contact flow blocks.
 }

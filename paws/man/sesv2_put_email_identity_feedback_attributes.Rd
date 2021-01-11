@@ -27,8 +27,7 @@ setting is disabled).}
 Used to enable or disable feedback forwarding for an identity. This
 setting determines what happens when an identity is used to send an
 email that results in a bounce or complaint event.
-}
-\details{
+
 If the value is \code{true}, you receive email notifications when bounce or
 complaint events occur. These notifications are sent to the address that
 you specified in the \code{Return-Path} header of the original email.

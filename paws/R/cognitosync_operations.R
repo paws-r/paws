@@ -6,6 +6,7 @@ NULL
 #' Initiates a bulk publish of all existing datasets for an Identity Pool
 #' to the configured stream
 #'
+#' @description
 #' Initiates a bulk publish of all existing datasets for an Identity Pool
 #' to the configured stream. Customers are limited to one successful bulk
 #' publish per 24 hours. Bulk publish is an asynchronous request, customers
@@ -50,6 +51,7 @@ cognitosync_bulk_publish <- function(IdentityPoolId) {
 
 #' Deletes the specific dataset
 #'
+#' @description
 #' Deletes the specific dataset. The dataset will be deleted permanently,
 #' and the action can't be undone. Datasets that this dataset was merged
 #' with will no longer report the merge. Any subsequent operation on this
@@ -96,6 +98,7 @@ cognitosync_delete_dataset <- function(IdentityPoolId, IdentityId, DatasetName) 
 
 #' Gets meta data about a dataset by identity and dataset name
 #'
+#' @description
 #' Gets meta data about a dataset by identity and dataset name. With Amazon
 #' Cognito Sync, each identity has access only to its own data. Thus, the
 #' credentials used to make this API call need to have access to the
@@ -144,6 +147,7 @@ cognitosync_describe_dataset <- function(IdentityPoolId, IdentityId, DatasetName
 #' Gets usage details (for example, data storage) about a particular
 #' identity pool
 #'
+#' @description
 #' Gets usage details (for example, data storage) about a particular
 #' identity pool.
 #' 
@@ -186,6 +190,7 @@ cognitosync_describe_identity_pool_usage <- function(IdentityPoolId) {
 #' Gets usage information for an identity, including number of datasets and
 #' data usage
 #'
+#' @description
 #' Gets usage information for an identity, including number of datasets and
 #' data usage.
 #' 
@@ -228,6 +233,7 @@ cognitosync_describe_identity_usage <- function(IdentityPoolId, IdentityId) {
 
 #' Get the status of the last BulkPublish operation for an identity pool
 #'
+#' @description
 #' Get the status of the last BulkPublish operation for an identity pool.
 #' 
 #' This API can only be called with developer credentials. You cannot call
@@ -269,6 +275,7 @@ cognitosync_get_bulk_publish_details <- function(IdentityPoolId) {
 #' Gets the events and the corresponding Lambda functions associated with
 #' an identity pool
 #'
+#' @description
 #' Gets the events and the corresponding Lambda functions associated with
 #' an identity pool.
 #' 
@@ -310,6 +317,7 @@ cognitosync_get_cognito_events <- function(IdentityPoolId) {
 
 #' Gets the configuration settings of an identity pool
 #'
+#' @description
 #' Gets the configuration settings of an identity pool.
 #' 
 #' This API can only be called with developer credentials. You cannot call
@@ -352,6 +360,7 @@ cognitosync_get_identity_pool_configuration <- function(IdentityPoolId) {
 
 #' Lists datasets for an identity
 #'
+#' @description
 #' Lists datasets for an identity. With Amazon Cognito Sync, each identity
 #' has access only to its own data. Thus, the credentials used to make this
 #' API call need to have access to the identity data.
@@ -401,6 +410,7 @@ cognitosync_list_datasets <- function(IdentityPoolId, IdentityId, NextToken = NU
 
 #' Gets a list of identity pools registered with Cognito
 #'
+#' @description
 #' Gets a list of identity pools registered with Cognito.
 #' 
 #' ListIdentityPoolUsage can only be called with developer credentials. You
@@ -444,6 +454,7 @@ cognitosync_list_identity_pool_usage <- function(NextToken = NULL, MaxResults = 
 #' Gets paginated records, optionally changed after a particular sync count
 #' for a dataset and identity
 #'
+#' @description
 #' Gets paginated records, optionally changed after a particular sync count
 #' for a dataset and identity. With Amazon Cognito Sync, each identity has
 #' access only to its own data. Thus, the credentials used to make this API
@@ -500,6 +511,7 @@ cognitosync_list_records <- function(IdentityPoolId, IdentityId, DatasetName, La
 
 #' Registers a device to receive push sync notifications
 #'
+#' @description
 #' Registers a device to receive push sync notifications.
 #' 
 #' This API can only be called with temporary credentials provided by
@@ -547,6 +559,7 @@ cognitosync_register_device <- function(IdentityPoolId, IdentityId, Platform, To
 
 #' Sets the AWS Lambda function for a given event type for an identity pool
 #'
+#' @description
 #' Sets the AWS Lambda function for a given event type for an identity
 #' pool. This request only updates the key/value pair specified. Other
 #' key/values pairs are not updated. To remove a key value pair, pass a
@@ -594,6 +607,7 @@ cognitosync_set_cognito_events <- function(IdentityPoolId, Events) {
 
 #' Sets the necessary configuration for push sync
 #'
+#' @description
 #' Sets the necessary configuration for push sync.
 #' 
 #' This API can only be called with developer credentials. You cannot call
@@ -651,6 +665,7 @@ cognitosync_set_identity_pool_configuration <- function(IdentityPoolId, PushSync
 #' Subscribes to receive notifications when a dataset is modified by
 #' another device
 #'
+#' @description
 #' Subscribes to receive notifications when a dataset is modified by
 #' another device.
 #' 
@@ -701,6 +716,7 @@ cognitosync_subscribe_to_dataset <- function(IdentityPoolId, IdentityId, Dataset
 #' Unsubscribes from receiving notifications when a dataset is modified by
 #' another device
 #'
+#' @description
 #' Unsubscribes from receiving notifications when a dataset is modified by
 #' another device.
 #' 
@@ -751,6 +767,7 @@ cognitosync_unsubscribe_from_dataset <- function(IdentityPoolId, IdentityId, Dat
 #' Posts updates to records and adds and deletes records for a dataset and
 #' user
 #'
+#' @description
 #' Posts updates to records and adds and deletes records for a dataset and
 #' user.
 #' 

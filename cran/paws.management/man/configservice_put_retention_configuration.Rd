@@ -20,8 +20,7 @@ information. The API creates the \code{RetentionConfiguration} object and
 names the object as \strong{default}. When you have a
 \code{RetentionConfiguration} object named \strong{default}, calling the API
 modifies the default object.
-}
-\details{
+
 Currently, AWS Config supports only one retention configuration per
 region in your account.
 }

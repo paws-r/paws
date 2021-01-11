@@ -15,8 +15,7 @@ Deletes the specified job queue. You must first disable submissions for
 a queue with the UpdateJobQueue operation. All jobs in the queue are
 eventually terminated when you delete a job queue. The jobs are
 terminated at a rate of about 16 jobs each second.
-}
-\details{
+
 It's not necessary to disassociate compute environments from a queue
 before submitting a \code{DeleteJobQueue} request.
 }

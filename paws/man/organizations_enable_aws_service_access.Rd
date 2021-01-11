@@ -18,8 +18,7 @@ by \code{ServicePrincipal}) with AWS Organizations. When you enable
 integration, you allow the specified service to create a \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{service-linked role}
 in all the accounts in your organization. This allows the service to
 perform operations on your behalf in your organization and its accounts.
-}
-\details{
+
 We recommend that you enable integration between AWS Organizations and
 the specified AWS service by using the console or commands that are
 provided by the specified service. Doing so ensures that the service is

@@ -26,8 +26,7 @@ The value must be URL encoded.}
 \description{
 Gets an Amazon S3 on Outposts bucket. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
-}
-\details{
+
 If you are using an identity other than the root user of the AWS account
 that owns the bucket, the calling identity must have the
 \code{s3-outposts:GetBucket} permissions on the specified bucket and belong

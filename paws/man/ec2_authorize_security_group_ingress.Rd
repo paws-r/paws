@@ -73,8 +73,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Adds the specified ingress rules to a security group.
-}
-\details{
+
 An inbound rule permits instances to receive traffic from the specified
 IPv4 or IPv6 CIDR address ranges, or from the instances associated with
 the specified destination security groups.

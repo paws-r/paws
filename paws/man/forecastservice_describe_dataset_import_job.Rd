@@ -13,8 +13,7 @@ forecastservice_describe_dataset_import_job(DatasetImportJobArn)
 \description{
 Describes a dataset import job created using the CreateDatasetImportJob
 operation.
-}
-\details{
+
 In addition to listing the parameters provided in the
 \code{CreateDatasetImportJob} request, this operation includes the following
 properties:

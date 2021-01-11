@@ -6,6 +6,7 @@ NULL
 #' Pushes an SSH public key to a particular OS user on a given EC2 instance
 #' for 60 seconds
 #'
+#' @description
 #' Pushes an SSH public key to a particular OS user on a given EC2 instance
 #' for 60 seconds.
 #'

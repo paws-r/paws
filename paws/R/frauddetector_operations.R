@@ -5,6 +5,7 @@ NULL
 
 #' Creates a batch of variables
 #'
+#' @description
 #' Creates a batch of variables.
 #'
 #' @usage
@@ -57,6 +58,7 @@ frauddetector_batch_create_variable <- function(variableEntries, tags = NULL) {
 
 #' Gets a batch of variables
 #'
+#' @description
 #' Gets a batch of variables.
 #'
 #' @usage
@@ -95,6 +97,7 @@ frauddetector_batch_get_variable <- function(names) {
 
 #' Creates a detector version
 #'
+#' @description
 #' Creates a detector version. The detector version starts in a `DRAFT`
 #' status.
 #'
@@ -177,6 +180,7 @@ frauddetector_create_detector_version <- function(detectorId, description = NULL
 
 #' Creates a model using the specified model type
 #'
+#' @description
 #' Creates a model using the specified model type.
 #'
 #' @usage
@@ -228,6 +232,7 @@ frauddetector_create_model <- function(modelId, modelType, description = NULL, e
 #' Creates a version of the model using the specified model type and model
 #' id
 #'
+#' @description
 #' Creates a version of the model using the specified model type and model
 #' id.
 #'
@@ -296,6 +301,7 @@ frauddetector_create_model_version <- function(modelId, modelType, trainingDataS
 
 #' Creates a rule for use with the specified detector
 #'
+#' @description
 #' Creates a rule for use with the specified detector.
 #'
 #' @usage
@@ -352,6 +358,7 @@ frauddetector_create_rule <- function(ruleId, detectorId, description = NULL, ex
 
 #' Creates a variable
 #'
+#' @description
 #' Creates a variable.
 #'
 #' @usage
@@ -410,6 +417,7 @@ frauddetector_create_variable <- function(name, dataType, dataSource, defaultVal
 
 #' Deletes the detector
 #'
+#' @description
 #' Deletes the detector. Before deleting a detector, you must first delete
 #' all detector versions and rule versions associated with the detector.
 #' 
@@ -450,6 +458,7 @@ frauddetector_delete_detector <- function(detectorId) {
 
 #' Deletes the detector version
 #'
+#' @description
 #' Deletes the detector version. You cannot delete detector versions that
 #' are in `ACTIVE` status.
 #' 
@@ -493,6 +502,7 @@ frauddetector_delete_detector_version <- function(detectorId, detectorVersionId)
 
 #' Deletes an entity type
 #'
+#' @description
 #' Deletes an entity type.
 #' 
 #' You cannot delete an entity type that is included in an event type.
@@ -535,6 +545,7 @@ frauddetector_delete_entity_type <- function(name) {
 
 #' Deletes the specified event
 #'
+#' @description
 #' Deletes the specified event.
 #' 
 #' When you delete an event, Amazon Fraud Detector permanently deletes that
@@ -577,6 +588,7 @@ frauddetector_delete_event <- function(eventId, eventTypeName) {
 
 #' Deletes an event type
 #'
+#' @description
 #' Deletes an event type.
 #' 
 #' You cannot delete an event type that is used in a detector or a model.
@@ -619,6 +631,7 @@ frauddetector_delete_event_type <- function(name) {
 
 #' Removes a SageMaker model from Amazon Fraud Detector
 #'
+#' @description
 #' Removes a SageMaker model from Amazon Fraud Detector.
 #' 
 #' You can remove an Amazon SageMaker model if it is not associated with a
@@ -659,6 +672,7 @@ frauddetector_delete_external_model <- function(modelEndpoint) {
 
 #' Deletes a label
 #'
+#' @description
 #' Deletes a label.
 #' 
 #' You cannot delete labels that are included in an event type in Amazon
@@ -705,6 +719,7 @@ frauddetector_delete_label <- function(name) {
 
 #' Deletes a model
 #'
+#' @description
 #' Deletes a model.
 #' 
 #' You can delete models and model versions in Amazon Fraud Detector,
@@ -750,6 +765,7 @@ frauddetector_delete_model <- function(modelId, modelType) {
 
 #' Deletes a model version
 #'
+#' @description
 #' Deletes a model version.
 #' 
 #' You can delete models and model versions in Amazon Fraud Detector,
@@ -798,6 +814,7 @@ frauddetector_delete_model_version <- function(modelId, modelType, modelVersionN
 
 #' Deletes an outcome
 #'
+#' @description
 #' Deletes an outcome.
 #' 
 #' You cannot delete an outcome that is used in a rule version.
@@ -840,6 +857,7 @@ frauddetector_delete_outcome <- function(name) {
 
 #' Deletes the rule
 #'
+#' @description
 #' Deletes the rule. You cannot delete a rule if it is used by an `ACTIVE`
 #' or `INACTIVE` detector version.
 #' 
@@ -885,6 +903,7 @@ frauddetector_delete_rule <- function(rule) {
 
 #' Deletes a variable
 #'
+#' @description
 #' Deletes a variable.
 #' 
 #' You can't delete variables that are included in an event type in Amazon
@@ -932,6 +951,7 @@ frauddetector_delete_variable <- function(name) {
 
 #' Gets all versions for a specified detector
 #'
+#' @description
 #' Gets all versions for a specified detector.
 #'
 #' @usage
@@ -973,6 +993,7 @@ frauddetector_describe_detector <- function(detectorId, nextToken = NULL, maxRes
 #' Gets all of the model versions for the specified model type or for the
 #' specified model type and model ID
 #'
+#' @description
 #' Gets all of the model versions for the specified model type or for the
 #' specified model type and model ID. You can also get details for a
 #' single, specified model version.
@@ -1020,6 +1041,7 @@ frauddetector_describe_model_versions <- function(modelId = NULL, modelVersionNu
 
 #' Gets a particular detector version
 #'
+#' @description
 #' Gets a particular detector version.
 #'
 #' @usage
@@ -1058,6 +1080,7 @@ frauddetector_get_detector_version <- function(detectorId, detectorVersionId) {
 
 #' Gets all detectors or a single detector if a detectorId is specified
 #'
+#' @description
 #' Gets all detectors or a single detector if a `detectorId` is specified.
 #' This is a paginated API. If you provide a null `maxResults`, this action
 #' retrieves a maximum of 10 records per page. If you provide a
@@ -1104,6 +1127,7 @@ frauddetector_get_detectors <- function(detectorId = NULL, nextToken = NULL, max
 
 #' Gets all entity types or a specific entity type if a name is specified
 #'
+#' @description
 #' Gets all entity types or a specific entity type if a name is specified.
 #' This is a paginated API. If you provide a null `maxResults`, this action
 #' retrieves a maximum of 10 records per page. If you provide a
@@ -1150,6 +1174,7 @@ frauddetector_get_entity_types <- function(name = NULL, nextToken = NULL, maxRes
 
 #' Evaluates an event against a detector version
 #'
+#' @description
 #' Evaluates an event against a detector version. If a version ID is not
 #' provided, the detector’s (`ACTIVE`) version is used.
 #'
@@ -1220,6 +1245,7 @@ frauddetector_get_event_prediction <- function(detectorId, detectorVersionId = N
 
 #' Gets all event types or a specific event type if name is provided
 #'
+#' @description
 #' Gets all event types or a specific event type if name is provided. This
 #' is a paginated API. If you provide a null `maxResults`, this action
 #' retrieves a maximum of 10 records per page. If you provide a
@@ -1267,6 +1293,7 @@ frauddetector_get_event_types <- function(name = NULL, nextToken = NULL, maxResu
 #' Gets the details for one or more Amazon SageMaker models that have been
 #' imported into the service
 #'
+#' @description
 #' Gets the details for one or more Amazon SageMaker models that have been
 #' imported into the service. This is a paginated API. If you provide a
 #' null `maxResults`, this actions retrieves a maximum of 10 records per
@@ -1315,6 +1342,7 @@ frauddetector_get_external_models <- function(modelEndpoint = NULL, nextToken = 
 #' master key (CMK) has been specified to be used to encrypt content in
 #' Amazon Fraud Detector
 #'
+#' @description
 #' Gets the encryption key if a Key Management Service (KMS) customer
 #' master key (CMK) has been specified to be used to encrypt content in
 #' Amazon Fraud Detector.
@@ -1348,6 +1376,7 @@ frauddetector_get_kms_encryption_key <- function() {
 
 #' Gets all labels or a specific label if name is provided
 #'
+#' @description
 #' Gets all labels or a specific label if name is provided. This is a
 #' paginated API. If you provide a null `maxResults`, this action retrieves
 #' a maximum of 50 records per page. If you provide a `maxResults`, the
@@ -1393,6 +1422,7 @@ frauddetector_get_labels <- function(name = NULL, nextToken = NULL, maxResults =
 
 #' Gets the details of the specified model version
 #'
+#' @description
 #' Gets the details of the specified model version.
 #'
 #' @usage
@@ -1433,6 +1463,7 @@ frauddetector_get_model_version <- function(modelId, modelType, modelVersionNumb
 
 #' Gets one or more models
 #'
+#' @description
 #' Gets one or more models. Gets all models for the AWS account if no model
 #' type and no model id provided. Gets all models for the AWS account and
 #' model type, if the model type is specified but model id is not provided.
@@ -1484,6 +1515,7 @@ frauddetector_get_models <- function(modelId = NULL, modelType = NULL, nextToken
 
 #' Gets one or more outcomes
 #'
+#' @description
 #' Gets one or more outcomes. This is a paginated API. If you provide a
 #' null `maxResults`, this actions retrieves a maximum of 100 records per
 #' page. If you provide a `maxResults`, the value must be between 50 and
@@ -1530,6 +1562,7 @@ frauddetector_get_outcomes <- function(name = NULL, nextToken = NULL, maxResults
 #' Get all rules for a detector (paginated) if ruleId and ruleVersion are
 #' not specified
 #'
+#' @description
 #' Get all rules for a detector (paginated) if `ruleId` and `ruleVersion`
 #' are not specified. Gets all rules for the detector and the `ruleId` if
 #' present (paginated). Gets a specific rule if both the `ruleId` and the
@@ -1584,6 +1617,7 @@ frauddetector_get_rules <- function(ruleId = NULL, detectorId, ruleVersion = NUL
 
 #' Gets all of the variables or the specific variable
 #'
+#' @description
 #' Gets all of the variables or the specific variable. This is a paginated
 #' API. Providing null `maxSizePerPage` results in retrieving maximum of
 #' 100 records per page. If you provide `maxSizePerPage` the value must be
@@ -1629,6 +1663,7 @@ frauddetector_get_variables <- function(name = NULL, nextToken = NULL, maxResult
 
 #' Lists all tags associated with the resource
 #'
+#' @description
 #' Lists all tags associated with the resource. This is a paginated API. To
 #' get the next page results, provide the pagination token from the
 #' response as part of your request. A null pagination token fetches the
@@ -1672,6 +1707,7 @@ frauddetector_list_tags_for_resource <- function(resourceARN, nextToken = NULL, 
 
 #' Creates or updates a detector
 #'
+#' @description
 #' Creates or updates a detector.
 #'
 #' @usage
@@ -1719,6 +1755,7 @@ frauddetector_put_detector <- function(detectorId, description = NULL, eventType
 
 #' Creates or updates an entity type
 #'
+#' @description
 #' Creates or updates an entity type. An entity represents who is
 #' performing the event. As part of a fraud prediction, you pass the entity
 #' ID to indicate the specific entity who performed the event. An entity
@@ -1768,6 +1805,7 @@ frauddetector_put_entity_type <- function(name, description = NULL, tags = NULL)
 
 #' Creates or updates an event type
 #'
+#' @description
 #' Creates or updates an event type. An event is a business activity that
 #' is evaluated for fraud risk. With Amazon Fraud Detector, you generate
 #' fraud predictions for events. An event type defines the structure for an
@@ -1833,6 +1871,7 @@ frauddetector_put_event_type <- function(name, description = NULL, eventVariable
 
 #' Creates or updates an Amazon SageMaker model endpoint
 #'
+#' @description
 #' Creates or updates an Amazon SageMaker model endpoint. You can also use
 #' this action to update the configuration of the model endpoint, including
 #' the IAM role and/or the mapped variables.
@@ -1905,6 +1944,7 @@ frauddetector_put_external_model <- function(modelEndpoint, modelSource, invokeM
 #' Specifies the Key Management Service (KMS) customer master key (CMK) to
 #' be used to encrypt content in Amazon Fraud Detector
 #'
+#' @description
 #' Specifies the Key Management Service (KMS) customer master key (CMK) to
 #' be used to encrypt content in Amazon Fraud Detector.
 #'
@@ -1942,6 +1982,7 @@ frauddetector_put_kms_encryption_key <- function(kmsEncryptionKeyArn) {
 
 #' Creates or updates label
 #'
+#' @description
 #' Creates or updates label. A label classifies an event as fraudulent or
 #' legitimate. Labels are associated with event types and used to train
 #' supervised machine learning models in Amazon Fraud Detector.
@@ -1989,6 +2030,7 @@ frauddetector_put_label <- function(name, description = NULL, tags = NULL) {
 
 #' Creates or updates an outcome
 #'
+#' @description
 #' Creates or updates an outcome.
 #'
 #' @usage
@@ -2034,6 +2076,7 @@ frauddetector_put_outcome <- function(name, description = NULL, tags = NULL) {
 
 #' Assigns tags to a resource
 #'
+#' @description
 #' Assigns tags to a resource.
 #'
 #' @usage
@@ -2077,6 +2120,7 @@ frauddetector_tag_resource <- function(resourceARN, tags) {
 
 #' Removes tags from a resource
 #'
+#' @description
 #' Removes tags from a resource.
 #'
 #' @usage
@@ -2117,6 +2161,7 @@ frauddetector_untag_resource <- function(resourceARN, tagKeys) {
 
 #' Updates a detector version
 #'
+#' @description
 #' Updates a detector version. The detector version attributes that you can
 #' update include models, external model endpoints, rules, rule execution
 #' mode, and description. You can only update a `DRAFT` detector version.
@@ -2194,6 +2239,7 @@ frauddetector_update_detector_version <- function(detectorId, detectorVersionId,
 
 #' Updates the detector version's description
 #'
+#' @description
 #' Updates the detector version's description. You can update the metadata
 #' for any detector version (`DRAFT, ACTIVE,` or `INACTIVE`).
 #'
@@ -2236,6 +2282,7 @@ frauddetector_update_detector_version_metadata <- function(detectorId, detectorV
 
 #' Updates the detector version’s status
 #'
+#' @description
 #' Updates the detector version’s status. You can perform the following
 #' promotions or demotions using `UpdateDetectorVersionStatus`: `DRAFT` to
 #' `ACTIVE`, `ACTIVE` to `INACTIVE`, and `INACTIVE` to `ACTIVE`.
@@ -2279,6 +2326,7 @@ frauddetector_update_detector_version_status <- function(detectorId, detectorVer
 
 #' Updates a model
 #'
+#' @description
 #' Updates a model. You can update the description attribute using this
 #' action.
 #'
@@ -2320,6 +2368,7 @@ frauddetector_update_model <- function(modelId, modelType, description = NULL) {
 
 #' Updates a model version
 #'
+#' @description
 #' Updates a model version. Updating a model version retrains an existing
 #' model version using updated training data and produces a new minor
 #' version of the model. You can update the training data set location and
@@ -2378,6 +2427,7 @@ frauddetector_update_model_version <- function(modelId, modelType, majorVersionN
 
 #' Updates the status of a model version
 #'
+#' @description
 #' Updates the status of a model version.
 #' 
 #' You can perform the following status updates:
@@ -2427,6 +2477,7 @@ frauddetector_update_model_version_status <- function(modelId, modelType, modelV
 
 #' Updates a rule's metadata
 #'
+#' @description
 #' Updates a rule's metadata. The description attribute can be updated.
 #'
 #' @usage
@@ -2469,6 +2520,7 @@ frauddetector_update_rule_metadata <- function(rule, description) {
 
 #' Updates a rule version resulting in a new rule version
 #'
+#' @description
 #' Updates a rule version resulting in a new rule version. Updates a rule
 #' version resulting in a new rule version (version 1, 2, 3 ...).
 #'
@@ -2528,6 +2580,7 @@ frauddetector_update_rule_version <- function(rule, description = NULL, expressi
 
 #' Updates a variable
 #'
+#' @description
 #' Updates a variable.
 #'
 #' @usage

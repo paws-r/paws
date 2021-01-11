@@ -13,8 +13,7 @@ locationservice_get_device_position(DeviceId, TrackerName)
 }
 \description{
 Retrieves the latest device position.
-}
-\details{
+
 Limitation — Device positions are deleted after one year.
 }
 \section{Request syntax}{

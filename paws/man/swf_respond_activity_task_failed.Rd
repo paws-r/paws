@@ -24,8 +24,7 @@ Used by workers to tell the service that the ActivityTask identified by
 the \code{taskToken} has failed with \code{reason} (if specified). The \code{reason}
 and \code{details} appear in the \code{ActivityTaskFailed} event added to the
 workflow history.
-}
-\details{
+
 A task is considered open from the time that it is scheduled until it is
 closed. Therefore a task is reported as open while a worker is
 processing it. A task is closed after it has been specified in a call to

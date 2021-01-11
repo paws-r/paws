@@ -21,8 +21,7 @@ the set of policies for this load balancer.}
 Generates a stickiness policy with sticky session lifetimes that follow
 that of an application-generated cookie. This policy can be associated
 only with HTTP/HTTPS listeners.
-}
-\details{
+
 This policy is similar to the policy created by
 CreateLBCookieStickinessPolicy, except that the lifetime of the special
 Elastic Load Balancing cookie, \code{AWSELB}, follows the lifetime of the

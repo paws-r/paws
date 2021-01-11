@@ -35,8 +35,7 @@ the virtual gateway resource.}
 }
 \description{
 Creates a gateway route.
-}
-\details{
+
 A gateway route is attached to a virtual gateway and routes traffic to
 an existing virtual service. If a route matches a request, it can
 distribute traffic to a target virtual service.

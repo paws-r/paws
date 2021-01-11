@@ -19,16 +19,14 @@ Returns the current list of AWS services and a list of service
 categories for each service. You then use service names and categories
 in your CreateCase requests. Each AWS service has its own set of
 categories.
-}
-\details{
+
 The service codes and category codes correspond to the values that
 appear in the \strong{Service} and \strong{Category} lists on the AWS Support
-Center \href{https://console.aws.amazon.com/support/home#/case/create}{Create Case} page.
-The values in those fields don't necessarily match the service codes and
-categories returned by the \code{DescribeServices} operation. Always use the
-service codes and categories that the \code{DescribeServices} operation
-returns, so that you have the most recent set of service and category
-codes.
+Center Create Case page. The values in those fields don't necessarily
+match the service codes and categories returned by the
+\code{DescribeServices} operation. Always use the service codes and
+categories that the \code{DescribeServices} operation returns, so that you
+have the most recent set of service and category codes.
 \itemize{
 \item You must have a Business or Enterprise support plan to use the AWS
 Support API.

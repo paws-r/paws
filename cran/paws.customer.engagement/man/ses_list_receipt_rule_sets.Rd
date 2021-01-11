@@ -16,8 +16,7 @@ Lists the receipt rule sets that exist under your AWS account in the
 current AWS Region. If there are additional receipt rule sets to be
 retrieved, you will receive a \code{NextToken} that you can provide to the
 next call to \code{ListReceiptRuleSets} to retrieve the additional entries.
-}
-\details{
+
 For information about managing receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rule-sets.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.

@@ -11,8 +11,7 @@ cloudwatchlogs_cancel_export_task(taskId)
 }
 \description{
 Cancels the specified export task.
-}
-\details{
+
 The task must be in the \code{PENDING} or \code{RUNNING} state.
 }
 \section{Request syntax}{

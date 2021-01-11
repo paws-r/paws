@@ -6,6 +6,7 @@ NULL
 #' Registers a player's acceptance or rejection of a proposed FlexMatch
 #' match
 #'
+#' @description
 #' Registers a player's acceptance or rejection of a proposed FlexMatch
 #' match. A matchmaking configuration may require player acceptance; if so,
 #' then matches built with that configuration cannot be completed unless
@@ -94,6 +95,7 @@ gamelift_accept_match <- function(TicketId, PlayerIds, AcceptanceType) {
 #' This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups
 #'
+#' @description
 #' **This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups.**
 #' 
@@ -197,6 +199,7 @@ gamelift_claim_game_server <- function(GameServerGroupName, GameServerId = NULL,
 
 #' Creates an alias for a fleet
 #'
+#' @description
 #' Creates an alias for a fleet. In most situations, you can use an alias
 #' ID in place of a fleet ID. An alias provides a level of abstraction for
 #' a fleet that is useful when redirecting player traffic from one fleet to
@@ -287,6 +290,7 @@ gamelift_create_alias <- function(Name, Description = NULL, RoutingStrategy, Tag
 #' Creates a new Amazon GameLift build resource for your game server binary
 #' files
 #'
+#' @description
 #' Creates a new Amazon GameLift build resource for your game server binary
 #' files. Game server binaries must be combined into a zip file for use
 #' with Amazon GameLift.
@@ -417,6 +421,7 @@ gamelift_create_build <- function(Name = NULL, Version = NULL, StorageLocation =
 
 #' Creates a new fleet to run your game servers
 #'
+#' @description
 #' Creates a new fleet to run your game servers. whether they are custom
 #' game builds or Realtime Servers with game-specific script. A fleet is a
 #' set of Amazon Elastic Compute Cloud (Amazon EC2) instances, each of
@@ -688,6 +693,7 @@ gamelift_create_fleet <- function(Name, Description = NULL, BuildId = NULL, Scri
 #' This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups
 #'
+#' @description
 #' **This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups.**
 #' 
@@ -907,6 +913,7 @@ gamelift_create_game_server_group <- function(GameServerGroupName, RoleArn, MinS
 
 #' Creates a multiplayer game session for players
 #'
+#' @description
 #' Creates a multiplayer game session for players. This operation creates a
 #' game session record and assigns an available server process in the
 #' specified fleet to host the game session. A fleet must have an `ACTIVE`
@@ -1047,6 +1054,7 @@ gamelift_create_game_session <- function(FleetId = NULL, AliasId = NULL, Maximum
 #' Establishes a new queue for processing requests to place new game
 #' sessions
 #'
+#' @description
 #' Establishes a new queue for processing requests to place new game
 #' sessions. A queue identifies where new game sessions can be hosted -- by
 #' specifying a list of destinations (fleets or aliases) -- and how long
@@ -1178,6 +1186,7 @@ gamelift_create_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 
 #' Defines a new matchmaking configuration for use with FlexMatch
 #'
+#' @description
 #' Defines a new matchmaking configuration for use with FlexMatch. Whether
 #' your are using FlexMatch with GameLift hosting or as a standalone
 #' matchmaking service, the matchmaking configuration sets out rules for
@@ -1373,6 +1382,7 @@ gamelift_create_matchmaking_configuration <- function(Name, Description = NULL, 
 
 #' Creates a new rule set for FlexMatch matchmaking
 #'
+#' @description
 #' Creates a new rule set for FlexMatch matchmaking. A rule set describes
 #' the type of match to create, such as the number and size of teams. It
 #' also sets the parameters for acceptable player matches, such as minimum
@@ -1471,6 +1481,7 @@ gamelift_create_matchmaking_rule_set <- function(Name, RuleSetBody, Tags = NULL)
 
 #' Reserves an open player slot in an active game session
 #'
+#' @description
 #' Reserves an open player slot in an active game session. Before a player
 #' can be added, a game session must have an `ACTIVE` status, have a
 #' creation policy of `ALLOW_ALL`, and have an open player slot. To add a
@@ -1539,6 +1550,7 @@ gamelift_create_player_session <- function(GameSessionId, PlayerId, PlayerData =
 
 #' Reserves open slots in a game session for a group of players
 #'
+#' @description
 #' Reserves open slots in a game session for a group of players. Before
 #' players can be added, a game session must have an `ACTIVE` status, have
 #' a creation policy of `ALLOW_ALL`, and have an open player slot. To add a
@@ -1614,6 +1626,7 @@ gamelift_create_player_sessions <- function(GameSessionId, PlayerIds, PlayerData
 
 #' Creates a new script record for your Realtime Servers script
 #'
+#' @description
 #' Creates a new script record for your Realtime Servers script. Realtime
 #' scripts are JavaScript that provide configuration settings and optional
 #' custom game logic for your game. The script is deployed when you create
@@ -1743,6 +1756,7 @@ gamelift_create_script <- function(Name = NULL, Version = NULL, StorageLocation 
 #' VPC for your Amazon GameLift fleet and a virtual private cloud (VPC) in
 #' your AWS account
 #'
+#' @description
 #' Requests authorization to create or delete a peer connection between the
 #' VPC for your Amazon GameLift fleet and a virtual private cloud (VPC) in
 #' your AWS account. VPC peering enables the game servers on your fleet to
@@ -1832,6 +1846,7 @@ gamelift_create_vpc_peering_authorization <- function(GameLiftAwsAccountId, Peer
 #' Establishes a VPC peering connection between a virtual private cloud
 #' (VPC) in an AWS account with the VPC for your Amazon GameLift fleet
 #'
+#' @description
 #' Establishes a VPC peering connection between a virtual private cloud
 #' (VPC) in an AWS account with the VPC for your Amazon GameLift fleet. VPC
 #' peering enables the game servers on your fleet to communicate directly
@@ -1918,6 +1933,7 @@ gamelift_create_vpc_peering_connection <- function(FleetId, PeerVpcAwsAccountId,
 
 #' Deletes an alias
 #'
+#' @description
 #' Deletes an alias. This operation removes all record of the alias. Game
 #' clients attempting to access a server process using the deleted alias
 #' receive an error. To delete an alias, specify the alias ID to be
@@ -1970,6 +1986,7 @@ gamelift_delete_alias <- function(AliasId) {
 
 #' Deletes a build
 #'
+#' @description
 #' Deletes a build. This operation permanently deletes the build resource
 #' and any uploaded build files. Deleting a build does not affect the
 #' status of any active fleets using the build, but you can no longer
@@ -2029,6 +2046,7 @@ gamelift_delete_build <- function(BuildId) {
 
 #' Deletes everything related to a fleet
 #'
+#' @description
 #' Deletes everything related to a fleet. Before deleting a fleet, you must
 #' set the fleet's desired capacity to zero. See UpdateFleetCapacity.
 #' 
@@ -2096,6 +2114,7 @@ gamelift_delete_fleet <- function(FleetId) {
 #' This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups
 #'
+#' @description
 #' **This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups.**
 #' 
@@ -2195,6 +2214,7 @@ gamelift_delete_game_server_group <- function(GameServerGroupName, DeleteOption 
 
 #' Deletes a game session queue
 #'
+#' @description
 #' Deletes a game session queue. Once a queue is successfully deleted,
 #' unfulfilled StartGameSessionPlacement requests that reference the queue
 #' will fail. To delete a queue, specify the queue name.
@@ -2250,6 +2270,7 @@ gamelift_delete_game_session_queue <- function(Name) {
 
 #' Permanently removes a FlexMatch matchmaking configuration
 #'
+#' @description
 #' Permanently removes a FlexMatch matchmaking configuration. To delete,
 #' specify the configuration name. A matchmaking configuration cannot be
 #' deleted if it is being used in any active matchmaking tickets.
@@ -2307,6 +2328,7 @@ gamelift_delete_matchmaking_configuration <- function(Name) {
 
 #' Deletes an existing matchmaking rule set
 #'
+#' @description
 #' Deletes an existing matchmaking rule set. To delete the rule set,
 #' provide the rule set name. Rule sets cannot be deleted if they are
 #' currently being used by a matchmaking configuration.
@@ -2370,6 +2392,7 @@ gamelift_delete_matchmaking_rule_set <- function(Name) {
 
 #' Deletes a fleet scaling policy
 #'
+#' @description
 #' Deletes a fleet scaling policy. Once deleted, the policy is no longer in
 #' force and GameLift removes all record of it. To delete a scaling policy,
 #' specify both the scaling policy name and the fleet ID it is associated
@@ -2436,6 +2459,7 @@ gamelift_delete_scaling_policy <- function(Name, FleetId) {
 
 #' Deletes a Realtime script
 #'
+#' @description
 #' Deletes a Realtime script. This operation permanently deletes the script
 #' record. If script files were uploaded, they are also deleted (files
 #' stored in an S3 bucket are not deleted).
@@ -2498,6 +2522,7 @@ gamelift_delete_script <- function(ScriptId) {
 
 #' Cancels a pending VPC peering authorization for the specified VPC
 #'
+#' @description
 #' Cancels a pending VPC peering authorization for the specified VPC. If
 #' you need to delete an existing VPC peering connection, call
 #' DeleteVpcPeeringConnection.
@@ -2559,6 +2584,7 @@ gamelift_delete_vpc_peering_authorization <- function(GameLiftAwsAccountId, Peer
 
 #' Removes a VPC peering connection
 #'
+#' @description
 #' Removes a VPC peering connection. To delete the connection, you must
 #' have a valid authorization for the VPC peering connection that you want
 #' to delete. You can check for an authorization by calling
@@ -2623,6 +2649,7 @@ gamelift_delete_vpc_peering_connection <- function(FleetId, VpcPeeringConnection
 #' This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups
 #'
+#' @description
 #' **This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups.**
 #' 
@@ -2690,6 +2717,7 @@ gamelift_deregister_game_server <- function(GameServerGroupName, GameServerId) {
 
 #' Retrieves properties for an alias
 #'
+#' @description
 #' Retrieves properties for an alias. This operation returns all alias
 #' metadata and settings. To get an alias's target fleet ID only, use
 #' `ResolveAlias`.
@@ -2744,6 +2772,7 @@ gamelift_describe_alias <- function(AliasId) {
 
 #' Retrieves properties for a custom game build
 #'
+#' @description
 #' Retrieves properties for a custom game build. To request a build
 #' resource, specify a build ID. If successful, an object containing the
 #' build properties is returned.
@@ -2801,6 +2830,7 @@ gamelift_describe_build <- function(BuildId) {
 #' Retrieves the following information for the specified EC2 instance type:
 #' - Maximum number of instances allowed per AWS account (service limit)
 #'
+#' @description
 #' Retrieves the following information for the specified EC2 instance type:
 #' 
 #' -   Maximum number of instances allowed per AWS account (service limit).
@@ -2871,6 +2901,7 @@ gamelift_describe_ec2_instance_limits <- function(EC2InstanceType = NULL) {
 #' Retrieves core properties, including configuration, status, and
 #' metadata, for a fleet
 #'
+#' @description
 #' Retrieves core properties, including configuration, status, and
 #' metadata, for a fleet.
 #' 
@@ -2968,6 +2999,7 @@ gamelift_describe_fleet_attributes <- function(FleetIds = NULL, Limit = NULL, Ne
 
 #' Retrieves the current capacity statistics for one or more fleets
 #'
+#' @description
 #' Retrieves the current capacity statistics for one or more fleets. These
 #' statistics present a snapshot of the fleet's instances and provide
 #' insight on current or imminent scaling activity. To get statistics on
@@ -3067,6 +3099,7 @@ gamelift_describe_fleet_capacity <- function(FleetIds = NULL, Limit = NULL, Next
 
 #' Retrieves entries from the specified fleet's event log
 #'
+#' @description
 #' Retrieves entries from the specified fleet's event log. You can specify
 #' a time range to limit the result set. Use the pagination parameters to
 #' retrieve results as a set of sequential pages. If successful, a
@@ -3162,6 +3195,7 @@ gamelift_describe_fleet_events <- function(FleetId, StartTime = NULL, EndTime = 
 
 #' Retrieves a fleet's inbound connection permissions
 #'
+#' @description
 #' Retrieves a fleet's inbound connection permissions. Connection
 #' permissions specify the range of IP addresses and port settings that
 #' incoming traffic can use to access server processes in the fleet. Game
@@ -3241,6 +3275,7 @@ gamelift_describe_fleet_port_settings <- function(FleetId) {
 
 #' Retrieves utilization statistics for one or more fleets
 #'
+#' @description
 #' Retrieves utilization statistics for one or more fleets. These
 #' statistics provide insight into how available hosting resources are
 #' currently being used. To get statistics on available hosting resources,
@@ -3343,6 +3378,7 @@ gamelift_describe_fleet_utilization <- function(FleetIds = NULL, Limit = NULL, N
 #' This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups
 #'
+#' @description
 #' **This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups.**
 #' 
@@ -3411,6 +3447,7 @@ gamelift_describe_game_server <- function(GameServerGroupName, GameServerId) {
 #' This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups
 #'
+#' @description
 #' **This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups.**
 #' 
@@ -3482,6 +3519,7 @@ gamelift_describe_game_server_group <- function(GameServerGroupName) {
 #' This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups
 #'
+#' @description
 #' **This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups.**
 #' 
@@ -3578,6 +3616,7 @@ gamelift_describe_game_server_instances <- function(GameServerGroupName, Instanc
 #' Retrieves properties, including the protection policy in force, for one
 #' or more game sessions
 #'
+#' @description
 #' Retrieves properties, including the protection policy in force, for one
 #' or more game sessions. This operation can be used in several ways: (1)
 #' provide a `GameSessionId` or `GameSessionArn` to request details for a
@@ -3663,6 +3702,7 @@ gamelift_describe_game_session_details <- function(FleetId = NULL, GameSessionId
 #' Retrieves properties and current status of a game session placement
 #' request
 #'
+#' @description
 #' Retrieves properties and current status of a game session placement
 #' request. To get game session placement details, specify the placement
 #' ID. If successful, a GameSessionPlacement object is returned.
@@ -3721,6 +3761,7 @@ gamelift_describe_game_session_placement <- function(PlacementId) {
 
 #' Retrieves the properties for one or more game session queues
 #'
+#' @description
 #' Retrieves the properties for one or more game session queues. When
 #' requesting multiple queues, use the pagination parameters to retrieve
 #' results as a set of sequential pages. If successful, a GameSessionQueue
@@ -3789,6 +3830,7 @@ gamelift_describe_game_session_queues <- function(Names = NULL, Limit = NULL, Ne
 
 #' Retrieves a set of one or more game sessions
 #'
+#' @description
 #' Retrieves a set of one or more game sessions. Request a specific game
 #' session or request all game sessions on a fleet. Alternatively, use
 #' SearchGameSessions to request a set of active game sessions that are
@@ -3875,6 +3917,7 @@ gamelift_describe_game_sessions <- function(FleetId = NULL, GameSessionId = NULL
 
 #' Retrieves information about a fleet's instances, including instance IDs
 #'
+#' @description
 #' Retrieves information about a fleet's instances, including instance IDs.
 #' Use this operation to get details on all instances in the fleet or get
 #' details on one specific instance.
@@ -3943,6 +3986,7 @@ gamelift_describe_instances <- function(FleetId, InstanceId = NULL, Limit = NULL
 
 #' Retrieves one or more matchmaking tickets
 #'
+#' @description
 #' Retrieves one or more matchmaking tickets. Use this operation to
 #' retrieve ticket information, including--after a successful match is
 #' made--connection information for the resulting new game session.
@@ -4016,6 +4060,7 @@ gamelift_describe_matchmaking <- function(TicketIds) {
 
 #' Retrieves the details of FlexMatch matchmaking configurations
 #'
+#' @description
 #' Retrieves the details of FlexMatch matchmaking configurations.
 #' 
 #' This operation offers the following options: (1) retrieve all
@@ -4102,6 +4147,7 @@ gamelift_describe_matchmaking_configurations <- function(Names = NULL, RuleSetNa
 
 #' Retrieves the details for FlexMatch matchmaking rule sets
 #'
+#' @description
 #' Retrieves the details for FlexMatch matchmaking rule sets. You can
 #' request all existing rule sets for the Region, or provide a list of one
 #' or more rule set names. When requesting multiple items, use the
@@ -4177,6 +4223,7 @@ gamelift_describe_matchmaking_rule_sets <- function(Names = NULL, Limit = NULL, 
 
 #' Retrieves properties for one or more player sessions
 #'
+#' @description
 #' Retrieves properties for one or more player sessions. This operation can
 #' be used in several ways: (1) provide a `PlayerSessionId` to request
 #' properties for a specific player session; (2) provide a `GameSessionId`
@@ -4272,6 +4319,7 @@ gamelift_describe_player_sessions <- function(GameSessionId = NULL, PlayerId = N
 
 #' Retrieves a fleet's runtime configuration settings
 #'
+#' @description
 #' Retrieves a fleet's runtime configuration settings. The runtime
 #' configuration tells Amazon GameLift which server processes to run (and
 #' how) on each instance in the fleet.
@@ -4352,6 +4400,7 @@ gamelift_describe_runtime_configuration <- function(FleetId) {
 
 #' Retrieves all scaling policies applied to a fleet
 #'
+#' @description
 #' Retrieves all scaling policies applied to a fleet.
 #' 
 #' To get a fleet's scaling policies, specify the fleet ID. You can filter
@@ -4449,6 +4498,7 @@ gamelift_describe_scaling_policies <- function(FleetId, StatusFilter = NULL, Lim
 
 #' Retrieves properties for a Realtime script
 #'
+#' @description
 #' Retrieves properties for a Realtime script.
 #' 
 #' To request a script record, specify the script ID. If successful, an
@@ -4507,6 +4557,7 @@ gamelift_describe_script <- function(ScriptId) {
 #' Retrieves valid VPC peering authorizations that are pending for the AWS
 #' account
 #'
+#' @description
 #' Retrieves valid VPC peering authorizations that are pending for the AWS
 #' account. This operation returns all VPC peering authorizations and
 #' requests for peering. This includes those initiated and received by this
@@ -4554,6 +4605,7 @@ gamelift_describe_vpc_peering_authorizations <- function() {
 
 #' Retrieves information on VPC peering connections
 #'
+#' @description
 #' Retrieves information on VPC peering connections. Use this operation to
 #' get peering information for all fleets or for one specific fleet ID.
 #' 
@@ -4612,6 +4664,7 @@ gamelift_describe_vpc_peering_connections <- function(FleetId = NULL) {
 #' Retrieves the location of stored game session logs for a specified game
 #' session
 #'
+#' @description
 #' Retrieves the location of stored game session logs for a specified game
 #' session. When a game session is terminated, Amazon GameLift
 #' automatically stores the logs in Amazon S3 and retains them for 14 days.
@@ -4676,6 +4729,7 @@ gamelift_get_game_session_log_url <- function(GameSessionId) {
 
 #' Requests remote access to a fleet instance
 #'
+#' @description
 #' Requests remote access to a fleet instance. Remote access is useful for
 #' debugging, gathering benchmarking data, or observing activity in real
 #' time.
@@ -4751,6 +4805,7 @@ gamelift_get_instance_access <- function(FleetId, InstanceId) {
 
 #' Retrieves all aliases for this AWS account
 #'
+#' @description
 #' Retrieves all aliases for this AWS account. You can filter the result
 #' set by alias name and/or routing strategy type. Use the pagination
 #' parameters to retrieve results in sequential pages.
@@ -4826,6 +4881,7 @@ gamelift_list_aliases <- function(RoutingStrategyType = NULL, Name = NULL, Limit
 #' Retrieves build resources for all builds associated with the AWS account
 #' in use
 #'
+#' @description
 #' Retrieves build resources for all builds associated with the AWS account
 #' in use. You can limit results to builds that are in a specific status by
 #' using the `Status` parameter. Use the pagination parameters to retrieve
@@ -4905,6 +4961,7 @@ gamelift_list_builds <- function(Status = NULL, Limit = NULL, NextToken = NULL) 
 
 #' Retrieves a collection of fleet resources for this AWS account
 #'
+#' @description
 #' Retrieves a collection of fleet resources for this AWS account. You can
 #' filter the result set to find only those fleets that are deployed with a
 #' specific build or script. Use the pagination parameters to retrieve
@@ -4981,6 +5038,7 @@ gamelift_list_fleets <- function(BuildId = NULL, ScriptId = NULL, Limit = NULL, 
 #' This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups
 #'
+#' @description
 #' **This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups.**
 #' 
@@ -5052,6 +5110,7 @@ gamelift_list_game_server_groups <- function(Limit = NULL, NextToken = NULL) {
 #' This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups
 #'
+#' @description
 #' **This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups.**
 #' 
@@ -5130,6 +5189,7 @@ gamelift_list_game_servers <- function(GameServerGroupName, SortOrder = NULL, Li
 #' Retrieves script records for all Realtime scripts that are associated
 #' with the AWS account in use
 #'
+#' @description
 #' Retrieves script records for all Realtime scripts that are associated
 #' with the AWS account in use.
 #' 
@@ -5189,6 +5249,7 @@ gamelift_list_scripts <- function(Limit = NULL, NextToken = NULL) {
 
 #' Retrieves all tags that are assigned to a GameLift resource
 #'
+#' @description
 #' Retrieves all tags that are assigned to a GameLift resource. Resource
 #' tags are used to organize AWS resources for a range of purposes. This
 #' operation handles the permissions necessary to manage tags for the
@@ -5267,6 +5328,7 @@ gamelift_list_tags_for_resource <- function(ResourceARN) {
 
 #' Creates or updates a scaling policy for a fleet
 #'
+#' @description
 #' Creates or updates a scaling policy for a fleet. Scaling policies are
 #' used to automatically scale a fleet's hosting capacity to meet player
 #' demand. An active scaling policy instructs Amazon GameLift to track a
@@ -5303,12 +5365,12 @@ gamelift_list_tags_for_resource <- function(ResourceARN) {
 #' Amazon GameLift to take whatever action is needed to maintain that
 #' target.
 #' 
-#' For example, you might choose to maintain a 10% buffer for a fleet that
+#' For example, you might choose to maintain a 10\% buffer for a fleet that
 #' has the capacity to host 100 simultaneous game sessions. This policy
 #' tells Amazon GameLift to take action whenever the fleet's available
 #' capacity falls below or rises above 10 game sessions. Amazon GameLift
 #' will start new instances or stop unused instances in order to return to
-#' the 10% buffer.
+#' the 10\% buffer.
 #' 
 #' To create or update a target-based policy, specify a fleet ID and name,
 #' and set the policy type to "TargetBased". Specify the metric to track
@@ -5328,8 +5390,8 @@ gamelift_list_tags_for_resource <- function(ResourceARN) {
 #' how much), so you need one policy for each type of action.
 #' 
 #' For example, a policy may make the following statement: "If the
-#' percentage of idle instances is greater than 20% for more than 15
-#' minutes, then reduce the fleet capacity by 10%."
+#' percentage of idle instances is greater than 20\% for more than 15
+#' minutes, then reduce the fleet capacity by 10\%."
 #' 
 #' A policy's rule statement has the following structure:
 #' 
@@ -5396,7 +5458,7 @@ gamelift_list_tags_for_resource <- function(ResourceARN) {
 #' -   **PercentChangeInCapacity** -- increase or reduce the current
 #'     instance count by the scaling adjustment, read as a percentage.
 #'     Positive values scale up while negative values scale down; for
-#'     example, a value of "-10" scales the fleet down by 10%.
+#'     example, a value of "-10" scales the fleet down by 10\%.
 #' @param Threshold Metric value used to trigger a scaling event.
 #' @param ComparisonOperator Comparison operator to use when measuring the metric against the
 #' threshold value.
@@ -5490,6 +5552,7 @@ gamelift_put_scaling_policy <- function(Name, FleetId, ScalingAdjustment = NULL,
 #' This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups
 #'
+#' @description
 #' **This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups.**
 #' 
@@ -5583,6 +5646,7 @@ gamelift_register_game_server <- function(GameServerGroupName, GameServerId, Ins
 #' Retrieves a fresh set of credentials for use when uploading a new set of
 #' game build files to Amazon GameLift's Amazon S3
 #'
+#' @description
 #' Retrieves a fresh set of credentials for use when uploading a new set of
 #' game build files to Amazon GameLift's Amazon S3. This is done as part of
 #' the build creation process; see CreateBuild.
@@ -5644,6 +5708,7 @@ gamelift_request_upload_credentials <- function(BuildId) {
 
 #' Retrieves the fleet ID that an alias is currently pointing to
 #'
+#' @description
 #' Retrieves the fleet ID that an alias is currently pointing to.
 #' 
 #' -   CreateAlias
@@ -5694,6 +5759,7 @@ gamelift_resolve_alias <- function(AliasId) {
 #' This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups
 #'
+#' @description
 #' **This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups.**
 #' 
@@ -5773,6 +5839,7 @@ gamelift_resume_game_server_group <- function(GameServerGroupName, ResumeActions
 #' Retrieves all active game sessions that match a set of search criteria
 #' and sorts them in a specified order
 #'
+#' @description
 #' Retrieves all active game sessions that match a set of search criteria
 #' and sorts them in a specified order. You can search or sort by the
 #' following game session attributes:
@@ -5960,6 +6027,7 @@ gamelift_search_game_sessions <- function(FleetId = NULL, AliasId = NULL, Filter
 
 #' Resumes activity on a fleet that was suspended with StopFleetActions
 #'
+#' @description
 #' Resumes activity on a fleet that was suspended with StopFleetActions.
 #' Currently, this operation is used to restart a fleet's auto-scaling
 #' activity.
@@ -6030,6 +6098,7 @@ gamelift_start_fleet_actions <- function(FleetId, Actions) {
 #' Places a request for a new game session in a queue (see
 #' CreateGameSessionQueue)
 #'
+#' @description
 #' Places a request for a new game session in a queue (see
 #' CreateGameSessionQueue). When processing a placement request, Amazon
 #' GameLift searches for available resources on the queue's destinations,
@@ -6178,6 +6247,7 @@ gamelift_start_game_session_placement <- function(PlacementId, GameSessionQueueN
 
 #' Finds new players to fill open slots in an existing game session
 #'
+#' @description
 #' Finds new players to fill open slots in an existing game session. This
 #' operation can be used to add players to matched games that start with
 #' fewer than the maximum number of players or to replace players when they
@@ -6308,6 +6378,7 @@ gamelift_start_match_backfill <- function(TicketId = NULL, ConfigurationName, Ga
 #' Uses FlexMatch to create a game match for a group of players based on
 #' custom matchmaking rules
 #'
+#' @description
 #' Uses FlexMatch to create a game match for a group of players based on
 #' custom matchmaking rules. If you're also using GameLift hosting, a new
 #' game session is started for the matched players. Each matchmaking
@@ -6422,6 +6493,7 @@ gamelift_start_matchmaking <- function(TicketId = NULL, ConfigurationName, Playe
 
 #' Suspends activity on a fleet
 #'
+#' @description
 #' Suspends activity on a fleet. Currently, this operation is used to stop
 #' a fleet's auto-scaling activity. It is used to temporarily stop
 #' triggering scaling events. The policies can be retained and auto-scaling
@@ -6491,6 +6563,7 @@ gamelift_stop_fleet_actions <- function(FleetId, Actions) {
 
 #' Cancels a game session placement that is in PENDING status
 #'
+#' @description
 #' Cancels a game session placement that is in `PENDING` status. To stop a
 #' placement, provide the placement ID values. If successful, the placement
 #' is moved to `CANCELLED` status.
@@ -6550,6 +6623,7 @@ gamelift_stop_game_session_placement <- function(PlacementId) {
 #' Cancels a matchmaking ticket or match backfill ticket that is currently
 #' being processed
 #'
+#' @description
 #' Cancels a matchmaking ticket or match backfill ticket that is currently
 #' being processed. To stop the matchmaking operation, specify the ticket
 #' ID. If successful, work on the ticket is stopped, and the ticket status
@@ -6616,6 +6690,7 @@ gamelift_stop_matchmaking <- function(TicketId) {
 #' This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups
 #'
+#' @description
 #' **This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups.**
 #' 
@@ -6699,6 +6774,7 @@ gamelift_suspend_game_server_group <- function(GameServerGroupName, SuspendActio
 
 #' Assigns a tag to a GameLift resource
 #'
+#' @description
 #' Assigns a tag to a GameLift resource. AWS resource tags provide an
 #' additional management tool set. You can use tags to organize resources,
 #' create IAM permissions policies to manage access to groups of resources,
@@ -6792,6 +6868,7 @@ gamelift_tag_resource <- function(ResourceARN, Tags) {
 
 #' Removes a tag that is assigned to a GameLift resource
 #'
+#' @description
 #' Removes a tag that is assigned to a GameLift resource. Resource tags are
 #' used to organize AWS resources for a range of purposes. This operation
 #' handles the permissions necessary to manage tags for the following
@@ -6878,6 +6955,7 @@ gamelift_untag_resource <- function(ResourceARN, TagKeys) {
 
 #' Updates properties for an alias
 #'
+#' @description
 #' Updates properties for an alias. To update properties, specify the alias
 #' ID to be updated and provide the information to be changed. To reassign
 #' an alias to another fleet, provide an updated routing strategy. If
@@ -6943,6 +7021,7 @@ gamelift_update_alias <- function(AliasId, Name = NULL, Description = NULL, Rout
 #' Updates metadata in a build resource, including the build name and
 #' version
 #'
+#' @description
 #' Updates metadata in a build resource, including the build name and
 #' version. To update the metadata, specify the build ID to update and
 #' provide the new values. If successful, a build object containing the
@@ -7006,6 +7085,7 @@ gamelift_update_build <- function(BuildId, Name = NULL, Version = NULL) {
 
 #' Updates fleet properties, including name and description, for a fleet
 #'
+#' @description
 #' Updates fleet properties, including name and description, for a fleet.
 #' To update metadata, specify the fleet ID and the property values that
 #' you want to change. If successful, the fleet ID for the updated fleet is
@@ -7104,6 +7184,7 @@ gamelift_update_fleet_attributes <- function(FleetId, Name = NULL, Description =
 
 #' Updates capacity settings for a fleet
 #'
+#' @description
 #' Updates capacity settings for a fleet. Use this operation to specify the
 #' number of EC2 instances (hosts) that you want this fleet to contain.
 #' Before calling this operation, you may want to call
@@ -7195,6 +7276,7 @@ gamelift_update_fleet_capacity <- function(FleetId, DesiredInstances = NULL, Min
 
 #' Updates port settings for a fleet
 #'
+#' @description
 #' Updates port settings for a fleet. To update settings, specify the fleet
 #' ID to be updated and list the permissions you want to update. List the
 #' permissions you want to add in `InboundPermissionAuthorizations`, and
@@ -7284,6 +7366,7 @@ gamelift_update_fleet_port_settings <- function(FleetId, InboundPermissionAuthor
 #' This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups
 #'
+#' @description
 #' **This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups.**
 #' 
@@ -7382,6 +7465,7 @@ gamelift_update_game_server <- function(GameServerGroupName, GameServerId, GameS
 #' This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups
 #'
+#' @description
 #' **This operation is used with the Amazon GameLift FleetIQ solution and
 #' game server groups.**
 #' 
@@ -7510,6 +7594,7 @@ gamelift_update_game_server_group <- function(GameServerGroupName, RoleArn = NUL
 
 #' Updates game session properties
 #'
+#' @description
 #' Updates game session properties. This includes the session name, maximum
 #' player count, protection policy, which controls whether or not an active
 #' game session can be terminated during a scale-down event, and the player
@@ -7590,6 +7675,7 @@ gamelift_update_game_session <- function(GameSessionId, MaximumPlayerSessionCoun
 #' Updates settings for a game session queue, which determines how new game
 #' session requests in the queue are processed
 #'
+#' @description
 #' Updates settings for a game session queue, which determines how new game
 #' session requests in the queue are processed. To update settings, specify
 #' the queue name to be updated and provide the new settings. When updating
@@ -7676,6 +7762,7 @@ gamelift_update_game_session_queue <- function(Name, TimeoutInSeconds = NULL, Pl
 
 #' Updates settings for a FlexMatch matchmaking configuration
 #'
+#' @description
 #' Updates settings for a FlexMatch matchmaking configuration. These
 #' changes affect all matches and game sessions that are created after the
 #' update. To update settings, specify the configuration name to be updated
@@ -7835,6 +7922,7 @@ gamelift_update_matchmaking_configuration <- function(Name, Description = NULL, 
 #' tells Amazon GameLift how to launch server processes on instances in the
 #' fleet
 #'
+#' @description
 #' Updates the current runtime configuration for the specified fleet, which
 #' tells Amazon GameLift how to launch server processes on instances in the
 #' fleet. You can update a fleet's runtime configuration at any time after
@@ -7932,6 +8020,7 @@ gamelift_update_runtime_configuration <- function(FleetId, RuntimeConfiguration)
 
 #' Updates Realtime script metadata and content
 #'
+#' @description
 #' Updates Realtime script metadata and content.
 #' 
 #' To update script metadata, specify the script ID and provide updated
@@ -8032,6 +8121,7 @@ gamelift_update_script <- function(ScriptId, Name = NULL, Version = NULL, Storag
 
 #' Validates the syntax of a matchmaking rule or rule set
 #'
+#' @description
 #' Validates the syntax of a matchmaking rule or rule set. This operation
 #' checks that the rule set is using syntactically correct JSON and that it
 #' conforms to allowed property expressions. To validate syntax, provide a

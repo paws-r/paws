@@ -8,8 +8,7 @@ autoscaling_describe_termination_policy_types()
 }
 \description{
 Describes the termination policies supported by Amazon EC2 Auto Scaling.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html}{Controlling which Auto Scaling instances terminate during scale in}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }

@@ -21,8 +21,7 @@ provider resource.}
 Adds a new client ID (also known as audience) to the list of client IDs
 already registered for the specified IAM OpenID Connect (OIDC) provider
 resource.
-}
-\details{
+
 This operation is idempotent; it does not fail or return an error if you
 add an existing client ID to the provider.
 }

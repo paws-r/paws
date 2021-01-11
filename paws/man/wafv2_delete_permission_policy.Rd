@@ -14,8 +14,7 @@ You must be the owner of the rule group to perform this operation.}
 }
 \description{
 Permanently deletes an IAM policy from the specified rule group.
-}
-\details{
+
 You must be the owner of the rule group to perform this operation.
 }
 \section{Request syntax}{

@@ -15,8 +15,7 @@ managedblockchain_list_proposals(NetworkId, MaxResults, NextToken)
 }
 \description{
 Returns a list of proposals for the network.
-}
-\details{
+
 Applies only to Hyperledger Fabric.
 }
 \section{Request syntax}{

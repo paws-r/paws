@@ -50,8 +50,7 @@ Auto Scaling only issues forecasts for periods of two days in advance.}
 }
 \description{
 Retrieves the forecast data for a scalable resource.
-}
-\details{
+
 Capacity forecasts are represented as predicted values, or data points,
 that are calculated using historical data points from a specified
 CloudWatch load metric. Data points are available for up to 56 days.

@@ -13,8 +13,7 @@ iotfleethub_list_applications(nextToken)
 \description{
 Gets a list of Fleet Hub for AWS IoT Device Management web applications
 for the current account.
-}
-\details{
+
 Fleet Hub for AWS IoT Device Management is in public preview and is
 subject to change.
 }

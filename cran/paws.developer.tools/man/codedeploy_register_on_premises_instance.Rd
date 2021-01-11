@@ -16,8 +16,7 @@ codedeploy_register_on_premises_instance(instanceName, iamSessionArn,
 }
 \description{
 Registers an on-premises instance.
-}
-\details{
+
 Only one IAM ARN (an IAM session ARN or IAM user ARN) is supported in
 the request. You cannot use both.
 }

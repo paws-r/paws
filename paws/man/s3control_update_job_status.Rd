@@ -22,8 +22,7 @@ Updates the status for the specified job. Use this operation to confirm
 that you want to run a job or to cancel an existing job. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-basics.html}{S3 Batch Operations}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
-}
-\details{
+
 Related actions include:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html}{CreateJob}

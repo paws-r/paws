@@ -6,6 +6,7 @@ NULL
 #' Associates a child asset with the given parent asset through a hierarchy
 #' defined in the parent asset's model
 #'
+#' @description
 #' Associates a child asset with the given parent asset through a hierarchy
 #' defined in the parent asset's model. For more information, see
 #' [Associating
@@ -60,6 +61,7 @@ iotsitewise_associate_assets <- function(assetId, hierarchyId, childAssetId, cli
 #' Associates a group (batch) of assets with an AWS IoT SiteWise Monitor
 #' project
 #'
+#' @description
 #' Associates a group (batch) of assets with an AWS IoT SiteWise Monitor
 #' project.
 #'
@@ -107,6 +109,7 @@ iotsitewise_batch_associate_project_assets <- function(projectId, assetIds, clie
 #' Disassociates a group (batch) of assets from an AWS IoT SiteWise Monitor
 #' project
 #'
+#' @description
 #' Disassociates a group (batch) of assets from an AWS IoT SiteWise Monitor
 #' project.
 #'
@@ -153,6 +156,7 @@ iotsitewise_batch_disassociate_project_assets <- function(projectId, assetIds, c
 
 #' Sends a list of asset property values to AWS IoT SiteWise
 #'
+#' @description
 #' Sends a list of asset property values to AWS IoT SiteWise. Each value is
 #' a timestamp-quality-value (TQV) data point. For more information, see
 #' [Ingesting data using the
@@ -244,6 +248,7 @@ iotsitewise_batch_put_asset_property_value <- function(entries) {
 #' user, AWS SSO group, or IAM user) access to the specified AWS IoT
 #' SiteWise Monitor portal or project resource
 #'
+#' @description
 #' Creates an access policy that grants the specified identity (AWS SSO
 #' user, AWS SSO group, or IAM user) access to the specified AWS IoT
 #' SiteWise Monitor portal or project resource.
@@ -318,6 +323,7 @@ iotsitewise_create_access_policy <- function(accessPolicyIdentity, accessPolicyR
 
 #' Creates an asset from an existing asset model
 #'
+#' @description
 #' Creates an asset from an existing asset model. For more information, see
 #' [Creating
 #' assets](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/create-assets.html)
@@ -370,6 +376,7 @@ iotsitewise_create_asset <- function(assetName, assetModelId, clientToken = NULL
 
 #' Creates an asset model from specified property and hierarchy definitions
 #'
+#' @description
 #' Creates an asset model from specified property and hierarchy
 #' definitions. You create assets from asset models. With asset models, you
 #' can easily create assets of the same type that have standardized
@@ -551,6 +558,7 @@ iotsitewise_create_asset_model <- function(assetModelName, assetModelDescription
 
 #' Creates a dashboard in an AWS IoT SiteWise Monitor project
 #'
+#' @description
 #' Creates a dashboard in an AWS IoT SiteWise Monitor project.
 #'
 #' @usage
@@ -609,6 +617,7 @@ iotsitewise_create_dashboard <- function(projectId, dashboardName, dashboardDesc
 #' Creates a gateway, which is a virtual or edge device that delivers
 #' industrial data streams from local servers to AWS IoT SiteWise
 #'
+#' @description
 #' Creates a gateway, which is a virtual or edge device that delivers
 #' industrial data streams from local servers to AWS IoT SiteWise. For more
 #' information, see [Ingesting data using a
@@ -662,6 +671,7 @@ iotsitewise_create_gateway <- function(gatewayName, gatewayPlatform, tags = NULL
 
 #' Creates a portal, which can contain projects and dashboards
 #'
+#' @description
 #' Creates a portal, which can contain projects and dashboards. AWS IoT
 #' SiteWise Monitor uses AWS SSO or IAM to authenticate portal users and
 #' manage user permissions.
@@ -756,6 +766,7 @@ iotsitewise_create_portal <- function(portalName, portalDescription = NULL, port
 
 #' Creates a project in the specified portal
 #'
+#' @description
 #' Creates a project in the specified portal.
 #'
 #' @usage
@@ -809,6 +820,7 @@ iotsitewise_create_project <- function(portalId, projectName, projectDescription
 #' Deletes an access policy that grants the specified identity access to
 #' the specified AWS IoT SiteWise Monitor resource
 #'
+#' @description
 #' Deletes an access policy that grants the specified identity access to
 #' the specified AWS IoT SiteWise Monitor resource. You can use this
 #' operation to revoke access to an AWS IoT SiteWise Monitor resource.
@@ -851,6 +863,7 @@ iotsitewise_delete_access_policy <- function(accessPolicyId, clientToken = NULL)
 
 #' Deletes an asset
 #'
+#' @description
 #' Deletes an asset. This action can't be undone. For more information, see
 #' [Deleting assets and
 #' models](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html)
@@ -898,6 +911,7 @@ iotsitewise_delete_asset <- function(assetId, clientToken = NULL) {
 
 #' Deletes an asset model
 #'
+#' @description
 #' Deletes an asset model. This action can't be undone. You must delete all
 #' assets created from an asset model before you can delete the model.
 #' Also, you can't delete an asset model if a parent asset model exists
@@ -945,6 +959,7 @@ iotsitewise_delete_asset_model <- function(assetModelId, clientToken = NULL) {
 
 #' Deletes a dashboard from AWS IoT SiteWise Monitor
 #'
+#' @description
 #' Deletes a dashboard from AWS IoT SiteWise Monitor.
 #'
 #' @usage
@@ -985,6 +1000,7 @@ iotsitewise_delete_dashboard <- function(dashboardId, clientToken = NULL) {
 
 #' Deletes a gateway from AWS IoT SiteWise
 #'
+#' @description
 #' Deletes a gateway from AWS IoT SiteWise. When you delete a gateway, some
 #' of the gateway's files remain in your gateway's file system.
 #'
@@ -1022,6 +1038,7 @@ iotsitewise_delete_gateway <- function(gatewayId) {
 
 #' Deletes a portal from AWS IoT SiteWise Monitor
 #'
+#' @description
 #' Deletes a portal from AWS IoT SiteWise Monitor.
 #'
 #' @usage
@@ -1062,6 +1079,7 @@ iotsitewise_delete_portal <- function(portalId, clientToken = NULL) {
 
 #' Deletes a project from AWS IoT SiteWise Monitor
 #'
+#' @description
 #' Deletes a project from AWS IoT SiteWise Monitor.
 #'
 #' @usage
@@ -1103,6 +1121,7 @@ iotsitewise_delete_project <- function(projectId, clientToken = NULL) {
 #' Describes an access policy, which specifies an identity's access to an
 #' AWS IoT SiteWise Monitor portal or project
 #'
+#' @description
 #' Describes an access policy, which specifies an identity's access to an
 #' AWS IoT SiteWise Monitor portal or project.
 #'
@@ -1140,6 +1159,7 @@ iotsitewise_describe_access_policy <- function(accessPolicyId) {
 
 #' Retrieves information about an asset
 #'
+#' @description
 #' Retrieves information about an asset.
 #'
 #' @usage
@@ -1176,6 +1196,7 @@ iotsitewise_describe_asset <- function(assetId) {
 
 #' Retrieves information about an asset model
 #'
+#' @description
 #' Retrieves information about an asset model.
 #'
 #' @usage
@@ -1212,6 +1233,7 @@ iotsitewise_describe_asset_model <- function(assetModelId) {
 
 #' Retrieves information about an asset property
 #'
+#' @description
 #' Retrieves information about an asset property.
 #' 
 #' When you call this operation for an attribute property, this response
@@ -1259,6 +1281,7 @@ iotsitewise_describe_asset_property <- function(assetId, propertyId) {
 
 #' Retrieves information about a dashboard
 #'
+#' @description
 #' Retrieves information about a dashboard.
 #'
 #' @usage
@@ -1296,6 +1319,7 @@ iotsitewise_describe_dashboard <- function(dashboardId) {
 #' Retrieves information about the default encryption configuration for the
 #' AWS account in the default or specified region
 #'
+#' @description
 #' Retrieves information about the default encryption configuration for the
 #' AWS account in the default or specified region. For more information,
 #' see [Key
@@ -1332,6 +1356,7 @@ iotsitewise_describe_default_encryption_configuration <- function() {
 
 #' Retrieves information about a gateway
 #'
+#' @description
 #' Retrieves information about a gateway.
 #'
 #' @usage
@@ -1368,6 +1393,7 @@ iotsitewise_describe_gateway <- function(gatewayId) {
 
 #' Retrieves information about a gateway capability configuration
 #'
+#' @description
 #' Retrieves information about a gateway capability configuration. Each
 #' gateway capability defines data sources for a gateway. A capability
 #' configuration can contain multiple data source configurations. If you
@@ -1417,6 +1443,7 @@ iotsitewise_describe_gateway_capability_configuration <- function(gatewayId, cap
 
 #' Retrieves the current AWS IoT SiteWise logging options
 #'
+#' @description
 #' Retrieves the current AWS IoT SiteWise logging options.
 #'
 #' @usage
@@ -1449,6 +1476,7 @@ iotsitewise_describe_logging_options <- function() {
 
 #' Retrieves information about a portal
 #'
+#' @description
 #' Retrieves information about a portal.
 #'
 #' @usage
@@ -1485,6 +1513,7 @@ iotsitewise_describe_portal <- function(portalId) {
 
 #' Retrieves information about a project
 #'
+#' @description
 #' Retrieves information about a project.
 #'
 #' @usage
@@ -1522,6 +1551,7 @@ iotsitewise_describe_project <- function(projectId) {
 #' Disassociates a child asset from the given parent asset through a
 #' hierarchy defined in the parent asset's model
 #'
+#' @description
 #' Disassociates a child asset from the given parent asset through a
 #' hierarchy defined in the parent asset's model.
 #'
@@ -1573,6 +1603,7 @@ iotsitewise_disassociate_assets <- function(assetId, hierarchyId, childAssetId, 
 
 #' Gets aggregated values for an asset property
 #'
+#' @description
 #' Gets aggregated values for an asset property. For more information, see
 #' [Querying
 #' aggregates](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#aggregates)
@@ -1662,6 +1693,7 @@ iotsitewise_get_asset_property_aggregates <- function(assetId = NULL, propertyId
 
 #' Gets an asset property's current value
 #'
+#' @description
 #' Gets an asset property's current value. For more information, see
 #' [Querying current
 #' values](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#current-values)
@@ -1719,6 +1751,7 @@ iotsitewise_get_asset_property_value <- function(assetId = NULL, propertyId = NU
 
 #' Gets the history of an asset property's values
 #'
+#' @description
 #' Gets the history of an asset property's values. For more information,
 #' see [Querying historical
 #' values](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#historical-values)
@@ -1804,6 +1837,7 @@ iotsitewise_get_asset_property_value_history <- function(assetId = NULL, propert
 #' SSO user, an AWS SSO group, or an IAM user) or an AWS IoT SiteWise
 #' Monitor resource (a portal or project)
 #'
+#' @description
 #' Retrieves a paginated list of access policies for an identity (an AWS
 #' SSO user, an AWS SSO group, or an IAM user) or an AWS IoT SiteWise
 #' Monitor resource (a portal or project).
@@ -1864,6 +1898,7 @@ iotsitewise_list_access_policies <- function(identityType = NULL, identityId = N
 
 #' Retrieves a paginated list of summaries of all asset models
 #'
+#' @description
 #' Retrieves a paginated list of summaries of all asset models.
 #'
 #' @usage
@@ -1904,6 +1939,7 @@ iotsitewise_list_asset_models <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Retrieves a paginated list of asset relationships for an asset
 #'
+#' @description
 #' Retrieves a paginated list of asset relationships for an asset. You can
 #' use this operation to identify an asset's root asset and all associated
 #' assets between that asset and its root.
@@ -1955,6 +1991,7 @@ iotsitewise_list_asset_relationships <- function(assetId, traversalType, nextTok
 
 #' Retrieves a paginated list of asset summaries
 #'
+#' @description
 #' Retrieves a paginated list of asset summaries.
 #' 
 #' You can use this operation to do the following:
@@ -2021,6 +2058,7 @@ iotsitewise_list_assets <- function(nextToken = NULL, maxResults = NULL, assetMo
 
 #' Retrieves a paginated list of associated assets
 #'
+#' @description
 #' Retrieves a paginated list of associated assets.
 #' 
 #' You can use this operation to do the following:
@@ -2095,6 +2133,7 @@ iotsitewise_list_associated_assets <- function(assetId, hierarchyId = NULL, trav
 #' Retrieves a paginated list of dashboards for an AWS IoT SiteWise Monitor
 #' project
 #'
+#' @description
 #' Retrieves a paginated list of dashboards for an AWS IoT SiteWise Monitor
 #' project.
 #'
@@ -2138,6 +2177,7 @@ iotsitewise_list_dashboards <- function(projectId, nextToken = NULL, maxResults 
 
 #' Retrieves a paginated list of gateways
 #'
+#' @description
 #' Retrieves a paginated list of gateways.
 #'
 #' @usage
@@ -2178,6 +2218,7 @@ iotsitewise_list_gateways <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Retrieves a paginated list of AWS IoT SiteWise Monitor portals
 #'
+#' @description
 #' Retrieves a paginated list of AWS IoT SiteWise Monitor portals.
 #'
 #' @usage
@@ -2219,6 +2260,7 @@ iotsitewise_list_portals <- function(nextToken = NULL, maxResults = NULL) {
 #' Retrieves a paginated list of assets associated with an AWS IoT SiteWise
 #' Monitor project
 #'
+#' @description
 #' Retrieves a paginated list of assets associated with an AWS IoT SiteWise
 #' Monitor project.
 #'
@@ -2263,6 +2305,7 @@ iotsitewise_list_project_assets <- function(projectId, nextToken = NULL, maxResu
 #' Retrieves a paginated list of projects for an AWS IoT SiteWise Monitor
 #' portal
 #'
+#' @description
 #' Retrieves a paginated list of projects for an AWS IoT SiteWise Monitor
 #' portal.
 #'
@@ -2306,6 +2349,7 @@ iotsitewise_list_projects <- function(portalId, nextToken = NULL, maxResults = N
 
 #' Retrieves the list of tags for an AWS IoT SiteWise resource
 #'
+#' @description
 #' Retrieves the list of tags for an AWS IoT SiteWise resource.
 #'
 #' @usage
@@ -2344,6 +2388,7 @@ iotsitewise_list_tags_for_resource <- function(resourceArn) {
 
 #' Sets the default encryption configuration for the AWS account
 #'
+#' @description
 #' Sets the default encryption configuration for the AWS account. For more
 #' information, see [Key
 #' management](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/key-management.html)
@@ -2387,6 +2432,7 @@ iotsitewise_put_default_encryption_configuration <- function(encryptionType, kms
 
 #' Sets logging options for AWS IoT SiteWise
 #'
+#' @description
 #' Sets logging options for AWS IoT SiteWise.
 #'
 #' @usage
@@ -2425,6 +2471,7 @@ iotsitewise_put_logging_options <- function(loggingOptions) {
 
 #' Adds tags to an AWS IoT SiteWise resource
 #'
+#' @description
 #' Adds tags to an AWS IoT SiteWise resource. If a tag already exists for
 #' the resource, this operation updates the tag's value.
 #'
@@ -2471,6 +2518,7 @@ iotsitewise_tag_resource <- function(resourceArn, tags) {
 
 #' Removes a tag from an AWS IoT SiteWise resource
 #'
+#' @description
 #' Removes a tag from an AWS IoT SiteWise resource.
 #'
 #' @usage
@@ -2514,6 +2562,7 @@ iotsitewise_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates an existing access policy that specifies an identity's access to
 #' an AWS IoT SiteWise Monitor portal or project resource
 #'
+#' @description
 #' Updates an existing access policy that specifies an identity's access to
 #' an AWS IoT SiteWise Monitor portal or project resource.
 #'
@@ -2582,6 +2631,7 @@ iotsitewise_update_access_policy <- function(accessPolicyId, accessPolicyIdentit
 
 #' Updates an asset's name
 #'
+#' @description
 #' Updates an asset's name. For more information, see [Updating assets and
 #' models](https://docs.aws.amazon.com/iot-sitewise/latest/userguide/update-assets-and-models.html)
 #' in the *AWS IoT SiteWise User Guide*.
@@ -2627,6 +2677,7 @@ iotsitewise_update_asset <- function(assetId, assetName, clientToken = NULL) {
 #' Updates an asset model and all of the assets that were created from the
 #' model
 #'
+#' @description
 #' Updates an asset model and all of the assets that were created from the
 #' model. Each asset created from the model inherits the updated asset
 #' model's property and hierarchy definitions. For more information, see
@@ -2816,6 +2867,7 @@ iotsitewise_update_asset_model <- function(assetModelId, assetModelName, assetMo
 
 #' Updates an asset property's alias and notification state
 #'
+#' @description
 #' Updates an asset property's alias and notification state.
 #' 
 #' This operation overwrites the property's existing alias and notification
@@ -2883,6 +2935,7 @@ iotsitewise_update_asset_property <- function(assetId, propertyId, propertyAlias
 
 #' Updates an AWS IoT SiteWise Monitor dashboard
 #'
+#' @description
 #' Updates an AWS IoT SiteWise Monitor dashboard.
 #'
 #' @usage
@@ -2933,6 +2986,7 @@ iotsitewise_update_dashboard <- function(dashboardId, dashboardName, dashboardDe
 
 #' Updates a gateway's name
 #'
+#' @description
 #' Updates a gateway's name.
 #'
 #' @usage
@@ -2972,6 +3026,7 @@ iotsitewise_update_gateway <- function(gatewayId, gatewayName) {
 #' Updates a gateway capability configuration or defines a new capability
 #' configuration
 #'
+#' @description
 #' Updates a gateway capability configuration or defines a new capability
 #' configuration. Each gateway capability defines data sources for a
 #' gateway. A capability configuration can contain multiple data source
@@ -3027,6 +3082,7 @@ iotsitewise_update_gateway_capability_configuration <- function(gatewayId, capab
 
 #' Updates an AWS IoT SiteWise Monitor portal
 #'
+#' @description
 #' Updates an AWS IoT SiteWise Monitor portal.
 #'
 #' @usage
@@ -3090,6 +3146,7 @@ iotsitewise_update_portal <- function(portalId, portalName, portalDescription = 
 
 #' Updates an AWS IoT SiteWise Monitor project
 #'
+#' @description
 #' Updates an AWS IoT SiteWise Monitor project.
 #'
 #' @usage

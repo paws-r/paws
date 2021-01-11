@@ -108,8 +108,7 @@ GiB) for brokers in an Amazon MSK cluster.
 \description{
 Deletes the specified scheduled action for an Application Auto Scaling
 scalable target.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-scheduled-scaling.html#delete-scheduled-action}{Delete a Scheduled Action}
 in the \emph{Application Auto Scaling User Guide}.
 }

@@ -15,8 +15,7 @@ connect_disassociate_approved_origin(InstanceId, Origin)
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Revokes access to integrated applications from Amazon Connect.
 }
 \section{Request syntax}{

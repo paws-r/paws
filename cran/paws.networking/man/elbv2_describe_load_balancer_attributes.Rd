@@ -13,8 +13,7 @@ elbv2_describe_load_balancer_attributes(LoadBalancerArn)
 \description{
 Describes the attributes for the specified Application Load Balancer,
 Network Load Balancer, or Gateway Load Balancer.
-}
-\details{
+
 For more information, see the following:
 \itemize{
 \item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/application-load-balancers.html#load-balancer-attributes}{Load balancer attributes}

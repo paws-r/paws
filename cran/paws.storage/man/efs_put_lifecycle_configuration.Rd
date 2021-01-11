@@ -22,8 +22,7 @@ object. A \code{LifecycleConfiguration} object defines when files in an
 Amazon EFS file system are automatically transitioned to the lower-cost
 EFS Infrequent Access (IA) storage class. A \code{LifecycleConfiguration}
 applies to all files in a file system.
-}
-\details{
+
 Each Amazon EFS file system supports one lifecycle configuration, which
 applies to all files in the file system. If a \code{LifecycleConfiguration}
 object already exists for the specified file system, a

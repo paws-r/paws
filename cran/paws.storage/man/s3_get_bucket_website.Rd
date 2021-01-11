@@ -17,8 +17,7 @@ different account, the request will fail with an HTTP
 Returns the website configuration for a bucket. To host website on
 Amazon S3, you can configure a bucket as website by adding a website
 configuration. For more information about hosting websites, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html}{Hosting Websites on Amazon S3}.
-}
-\details{
+
 This GET operation requires the \code{S3:GetBucketWebsite} permission. By
 default, only the bucket owner can read the bucket website
 configuration. However, bucket owners can allow other users to read the

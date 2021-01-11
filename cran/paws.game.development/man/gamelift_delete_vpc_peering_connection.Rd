@@ -21,8 +21,7 @@ have a valid authorization for the VPC peering connection that you want
 to delete. You can check for an authorization by calling
 DescribeVpcPeeringAuthorizations or request a new one using
 CreateVpcPeeringAuthorization.
-}
-\details{
+
 Once a valid authorization exists, call this operation from the AWS
 account that is used to manage the Amazon GameLift fleets. Identify the
 connection to delete by the connection ID and fleet ID. If successful,

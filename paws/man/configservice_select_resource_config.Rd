@@ -20,8 +20,7 @@ request the next page of results in a paginated response.}
 Accepts a structured query language (SQL) \code{SELECT} command, performs the
 corresponding search, and returns resource configurations matching the
 properties.
-}
-\details{
+
 For more information about query components, see the \href{https://docs.aws.amazon.com/config/latest/developerguide/query-components.html}{\strong{Query Components}}
 section in the AWS Config Developer Guide.
 }

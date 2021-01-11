@@ -228,8 +228,7 @@ If your alarm uses this parameter, it cannot have Auto Scaling actions.}
 \description{
 Creates or updates an alarm and associates it with the specified metric,
 metric math expression, or anomaly detection model.
-}
-\details{
+
 Alarms based on anomaly detection models cannot have Auto Scaling
 actions.
 

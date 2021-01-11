@@ -104,8 +104,7 @@ another call with the returned \code{NextToken} value.}
 }
 \description{
 Describes the specified Spot Instance requests.
-}
-\details{
+
 You can use \code{DescribeSpotInstanceRequests} to find a running Spot
 Instance by examining the response. If the status of the Spot Instance
 is \code{fulfilled}, the instance ID appears in the response and contains the

@@ -18,8 +18,7 @@ directconnect_confirm_private_virtual_interface(virtualInterfaceId,
 \description{
 Accepts ownership of a private virtual interface created by another AWS
 account.
-}
-\details{
+
 After the virtual interface owner makes this call, the virtual interface
 is created and attached to the specified virtual private gateway or
 Direct Connect gateway, and is made available to handle traffic.

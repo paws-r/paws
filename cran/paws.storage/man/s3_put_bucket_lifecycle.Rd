@@ -24,8 +24,7 @@ For an updated version of this API, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html}{PutBucketLifecycleConfiguration}.
 This version has been deprecated. Existing lifecycle configurations will
 work. For new lifecycle configurations, use the updated API.
-}
-\details{
+
 Creates a new lifecycle configuration for the bucket or replaces an
 existing lifecycle configuration. For information about lifecycle
 configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html}{Object Lifecycle Management}

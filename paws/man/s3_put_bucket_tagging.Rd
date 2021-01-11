@@ -24,8 +24,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 Sets the tags for a bucket.
-}
-\details{
+
 Use tags to organize your AWS bill to reflect your own cost structure.
 To do this, sign up to get your AWS account bill with tag key values
 included. Then, to see the cost of combined resources, organize your

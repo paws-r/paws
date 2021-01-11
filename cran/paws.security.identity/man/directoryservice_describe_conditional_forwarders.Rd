@@ -17,8 +17,7 @@ null, all conditional forwarders are returned.}
 }
 \description{
 Obtains information about the conditional forwarders for this account.
-}
-\details{
+
 If no input parameters are provided for RemoteDomainNames, this request
 describes all conditional forwarders for the specified directory ID.
 }

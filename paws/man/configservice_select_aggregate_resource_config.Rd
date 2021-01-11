@@ -28,8 +28,7 @@ Accepts a structured query language (SQL) SELECT command and an
 aggregator to query configuration state of AWS resources across multiple
 accounts and regions, performs the corresponding search, and returns
 resource configurations matching the properties.
-}
-\details{
+
 For more information about query components, see the \href{https://docs.aws.amazon.com/config/latest/developerguide/query-components.html}{\strong{Query Components}}
 section in the AWS Config Developer Guide.
 }

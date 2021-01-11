@@ -25,8 +25,7 @@ gateway.}
 \description{
 Creates a proposal to associate the specified virtual private gateway or
 transit gateway with the specified Direct Connect gateway.
-}
-\details{
+
 You can associate a Direct Connect gateway and virtual private gateway
 or transit gateway that is owned by any AWS account.
 }

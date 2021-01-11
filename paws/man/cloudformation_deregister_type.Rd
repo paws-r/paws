@@ -30,8 +30,7 @@ when it is registered.}
 Removes a type or type version from active use in the CloudFormation
 registry. If a type or type version is deregistered, it cannot be used
 in CloudFormation operations.
-}
-\details{
+
 To deregister a type, you must individually deregister all registered
 versions of that type. If a type has only a single registered version,
 deregistering that version results in the type itself being

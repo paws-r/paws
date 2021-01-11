@@ -45,8 +45,7 @@ environment. For more information, see \href{https://docs.aws.amazon.com/general
 Starts a model compilation job. After the model has been compiled,
 Amazon SageMaker saves the resulting model artifacts to an Amazon Simple
 Storage Service (Amazon S3) bucket that you specify.
-}
-\details{
+
 If you choose to host your model using Amazon SageMaker hosting
 services, you can use the resulting model artifacts as part of the
 model. You can also use the artifacts with AWS IoT Greengrass. In that

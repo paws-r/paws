@@ -30,8 +30,7 @@ see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-securit
 }
 \description{
 Specifies a user's permissions. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingsecurity.html}{Security and Permissions}.
-}
-\details{
+
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user permissions,

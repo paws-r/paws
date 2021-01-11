@@ -17,8 +17,7 @@ of the web site.}
 \description{
 The \code{RejectAssignment} operation rejects the results of a completed
 assignment.
-}
-\details{
+
 You can include an optional feedback message with the rejection, which
 the Worker can see in the Status section of the web site. When you
 include a feedback message with the rejection, it helps the Worker

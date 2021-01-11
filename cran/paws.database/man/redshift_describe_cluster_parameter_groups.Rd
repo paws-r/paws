@@ -53,8 +53,7 @@ groups you created and the default parameter group. For each parameter
 group, the response includes the parameter group name, description, and
 parameter group family name. You can optionally specify a name to
 retrieve the description of a specific parameter group.
-}
-\details{
+
 For more information about parameters and parameter groups, go to
 \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-parameter-groups.html}{Amazon Redshift Parameter Groups}
 in the \emph{Amazon Redshift Cluster Management Guide}.

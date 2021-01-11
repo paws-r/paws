@@ -12,8 +12,7 @@ iot1clickprojects_delete_project(projectName)
 \description{
 Deletes a project. To delete a project, it must not have any placements
 associated with it.
-}
-\details{
+
 When you delete a project, all associated data becomes irretrievable.
 }
 \section{Request syntax}{

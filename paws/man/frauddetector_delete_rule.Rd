@@ -12,8 +12,7 @@ frauddetector_delete_rule(rule)
 \description{
 Deletes the rule. You cannot delete a rule if it is used by an \code{ACTIVE}
 or \code{INACTIVE} detector version.
-}
-\details{
+
 When you delete a rule, Amazon Fraud Detector permanently deletes that
 rule from the evaluation history, and the data is no longer stored in
 Amazon Fraud Detector.

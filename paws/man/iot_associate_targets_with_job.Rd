@@ -27,8 +27,6 @@ The \code{namespaceId} feature is in public preview.}
 \description{
 Associates a group with a continuous job. The following criteria must be
 met:
-}
-\details{
 \itemize{
 \item The job must have been created with the \code{targetSelection} field set
 to "CONTINUOUS".

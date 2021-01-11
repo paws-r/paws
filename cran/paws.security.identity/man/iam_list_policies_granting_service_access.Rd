@@ -30,8 +30,7 @@ in the \emph{AWS General Reference}.}
 \description{
 Retrieves a list of policies that the IAM identity (user, group, or
 role) can use to access each specified service.
-}
-\details{
+
 This operation does not use other policy types when determining whether
 a resource could access a service. These other policy types include
 resource-based policies, access control lists, AWS Organizations

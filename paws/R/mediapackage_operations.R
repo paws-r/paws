@@ -5,6 +5,7 @@ NULL
 
 #' Changes the Channel's properities to configure log subscription
 #'
+#' @description
 #' Changes the Channel's properities to configure log subscription
 #'
 #' @usage
@@ -49,6 +50,7 @@ mediapackage_configure_logs <- function(EgressAccessLogs = NULL, Id, IngressAcce
 
 #' Creates a new Channel
 #'
+#' @description
 #' Creates a new Channel.
 #'
 #' @usage
@@ -92,6 +94,7 @@ mediapackage_create_channel <- function(Description = NULL, Id, Tags = NULL) {
 
 #' Creates a new HarvestJob record
 #'
+#' @description
 #' Creates a new HarvestJob record.
 #'
 #' @usage
@@ -143,6 +146,7 @@ mediapackage_create_harvest_job <- function(EndTime, Id, OriginEndpointId, S3Des
 
 #' Creates a new OriginEndpoint record
 #'
+#' @description
 #' Creates a new OriginEndpoint record.
 #'
 #' @usage
@@ -342,6 +346,7 @@ mediapackage_create_origin_endpoint <- function(Authorization = NULL, ChannelId,
 
 #' Deletes an existing Channel
 #'
+#' @description
 #' Deletes an existing Channel.
 #'
 #' @usage
@@ -378,6 +383,7 @@ mediapackage_delete_channel <- function(Id) {
 
 #' Deletes an existing OriginEndpoint
 #'
+#' @description
 #' Deletes an existing OriginEndpoint.
 #'
 #' @usage
@@ -414,6 +420,7 @@ mediapackage_delete_origin_endpoint <- function(Id) {
 
 #' Gets details about a Channel
 #'
+#' @description
 #' Gets details about a Channel.
 #'
 #' @usage
@@ -450,6 +457,7 @@ mediapackage_describe_channel <- function(Id) {
 
 #' Gets details about an existing HarvestJob
 #'
+#' @description
 #' Gets details about an existing HarvestJob.
 #'
 #' @usage
@@ -486,6 +494,7 @@ mediapackage_describe_harvest_job <- function(Id) {
 
 #' Gets details about an existing OriginEndpoint
 #'
+#' @description
 #' Gets details about an existing OriginEndpoint.
 #'
 #' @usage
@@ -522,6 +531,7 @@ mediapackage_describe_origin_endpoint <- function(Id) {
 
 #' Returns a collection of Channels
 #'
+#' @description
 #' Returns a collection of Channels.
 #'
 #' @usage
@@ -560,6 +570,7 @@ mediapackage_list_channels <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Returns a collection of HarvestJob records
 #'
+#' @description
 #' Returns a collection of HarvestJob records.
 #'
 #' @usage
@@ -603,6 +614,7 @@ mediapackage_list_harvest_jobs <- function(IncludeChannelId = NULL, IncludeStatu
 
 #' Returns a collection of OriginEndpoint records
 #'
+#' @description
 #' Returns a collection of OriginEndpoint records.
 #'
 #' @usage
@@ -643,6 +655,7 @@ mediapackage_list_origin_endpoints <- function(ChannelId = NULL, MaxResults = NU
 
 #' List tags for resource
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -679,6 +692,7 @@ mediapackage_list_tags_for_resource <- function(ResourceArn) {
 
 #' Changes the Channel's first IngestEndpoint's username and password
 #'
+#' @description
 #' Changes the Channel's first IngestEndpoint's username and password. WARNING - This API is deprecated. Please use RotateIngestEndpointCredentials instead
 #'
 #' @usage
@@ -716,6 +730,7 @@ mediapackage_rotate_channel_credentials <- function(Id) {
 #' Rotate the IngestEndpoint's username and password, as specified by the
 #' IngestEndpoint's id
 #'
+#' @description
 #' Rotate the IngestEndpoint's username and password, as specified by the IngestEndpoint's id.
 #'
 #' @usage
@@ -754,6 +769,7 @@ mediapackage_rotate_ingest_endpoint_credentials <- function(Id, IngestEndpointId
 
 #' Tag resource
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -794,6 +810,7 @@ mediapackage_tag_resource <- function(ResourceArn, Tags) {
 
 #' Untag resource
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -834,6 +851,7 @@ mediapackage_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates an existing Channel
 #'
+#' @description
 #' Updates an existing Channel.
 #'
 #' @usage
@@ -872,6 +890,7 @@ mediapackage_update_channel <- function(Description = NULL, Id) {
 
 #' Updates an existing OriginEndpoint
 #'
+#' @description
 #' Updates an existing OriginEndpoint.
 #'
 #' @usage

@@ -13,8 +13,7 @@ lexmodelbuildingservice_delete_intent(name)
 Deletes all versions of the intent, including the \verb{$LATEST} version. To
 delete a specific version of the intent, use the DeleteIntentVersion
 operation.
-}
-\details{
+
 You can delete a version of an intent only if it is not referenced. To
 delete an intent that is referred to in one or more bots (see
 how-it-works), you must remove those references first.

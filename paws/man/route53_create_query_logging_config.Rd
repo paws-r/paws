@@ -26,8 +26,7 @@ command, or the applicable command in one of the AWS SDKs.}
 Creates a configuration for DNS query logging. After you create a query
 logging configuration, Amazon Route 53 begins to publish log data to an
 Amazon CloudWatch Logs log group.
-}
-\details{
+
 DNS query logs contain information about the queries that Route 53
 receives for a specified public hosted zone, such as the following:
 \itemize{

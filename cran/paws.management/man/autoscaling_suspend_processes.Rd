@@ -28,8 +28,7 @@ If you omit this parameter, all processes are specified.}
 \description{
 Suspends the specified auto scaling processes, or all processes, for the
 specified Auto Scaling group.
-}
-\details{
+
 If you suspend either the \code{Launch} or \code{Terminate} process types, it can
 prevent other process types from functioning properly. For more
 information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html}{Suspending and resuming scaling processes}

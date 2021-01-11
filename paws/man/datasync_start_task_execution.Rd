@@ -20,8 +20,7 @@ consists of the patterns to include. The patterns are delimited by "|"
 Starts a specific invocation of a task. A \code{TaskExecution} value
 represents an individual run of a task. Each task can have at most one
 \code{TaskExecution} at a time.
-}
-\details{
+
 \code{TaskExecution} has the following transition phases: INITIALIZING |
 PREPARING | TRANSFERRING | VERIFYING | SUCCESS/FAILURE.
 

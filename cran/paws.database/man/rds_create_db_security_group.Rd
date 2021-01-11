@@ -28,8 +28,7 @@ Example: \code{mysecuritygroup}}
 \description{
 Creates a new DB security group. DB security groups control access to a
 DB instance.
-}
-\details{
+
 A DB security group controls access to EC2-Classic DB instances that are
 not in a VPC.
 }

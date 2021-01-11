@@ -31,8 +31,7 @@ Requests a transit gateway peering attachment between the specified
 transit gateway (requester) and a peer transit gateway (accepter). The
 transit gateways must be in different Regions. The peer transit gateway
 can be in your account or a different AWS account.
-}
-\details{
+
 After you create the peering attachment, the owner of the accepter
 transit gateway must accept the attachment request.
 }

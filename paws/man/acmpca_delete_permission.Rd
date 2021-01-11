@@ -24,8 +24,7 @@ At this time, the only valid service principal is \code{acm.amazonaws.com}}
 \description{
 Revokes permissions on a private CA granted to the AWS Certificate
 Manager (ACM) service principal (acm.amazonaws.com).
-}
-\details{
+
 These permissions allow ACM to issue and renew ACM certificates that
 reside in the same AWS account as the CA. If you revoke these
 permissions, ACM will no longer renew the affected certificates

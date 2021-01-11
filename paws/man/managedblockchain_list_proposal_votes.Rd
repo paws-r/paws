@@ -20,8 +20,7 @@ managedblockchain_list_proposal_votes(NetworkId, ProposalId, MaxResults,
 \description{
 Returns the list of votes for a specified proposal, including the value
 of each vote and the unique identifier of the member that cast the vote.
-}
-\details{
+
 Applies only to Hyperledger Fabric.
 }
 \section{Request syntax}{

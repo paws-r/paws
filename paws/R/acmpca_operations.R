@@ -5,6 +5,7 @@ NULL
 
 #' Creates a root or subordinate private certificate authority (CA)
 #'
+#' @description
 #' Creates a root or subordinate private certificate authority (CA). You
 #' must specify the CA configuration, the certificate revocation list (CRL)
 #' configuration, the CA type, and an optional idempotency token to avoid
@@ -170,6 +171,7 @@ acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguratio
 #' Creates an audit report that lists every time that your CA private key
 #' is used
 #'
+#' @description
 #' Creates an audit report that lists every time that your CA private key
 #' is used. The report is saved in the Amazon S3 bucket that you specify on
 #' input. The
@@ -232,6 +234,7 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
 #' Grants one or more permissions on a private CA to the AWS Certificate
 #' Manager (ACM) service principal (acm
 #'
+#' @description
 #' Grants one or more permissions on a private CA to the AWS Certificate
 #' Manager (ACM) service principal (`acm.amazonaws.com`). These permissions
 #' allow ACM to issue and renew ACM certificates that reside in the same
@@ -311,6 +314,7 @@ acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceA
 
 #' Deletes a private certificate authority (CA)
 #'
+#' @description
 #' Deletes a private certificate authority (CA). You must provide the
 #' Amazon Resource Name (ARN) of the private CA that you want to delete.
 #' You can find the ARN by calling the
@@ -388,6 +392,7 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
 #' Revokes permissions on a private CA granted to the AWS Certificate
 #' Manager (ACM) service principal (acm
 #'
+#' @description
 #' Revokes permissions on a private CA granted to the AWS Certificate
 #' Manager (ACM) service principal (acm.amazonaws.com).
 #' 
@@ -465,6 +470,7 @@ acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceA
 
 #' Deletes the resource-based policy attached to a private CA
 #'
+#' @description
 #' Deletes the resource-based policy attached to a private CA. Deletion
 #' will remove any access that the policy has granted. If there is no
 #' policy attached to the private CA, this action will return successful.
@@ -543,6 +549,7 @@ acmpca_delete_policy <- function(ResourceArn) {
 #' Lists information about your private certificate authority (CA) or one
 #' that has been shared with you
 #'
+#' @description
 #' Lists information about your private certificate authority (CA) or one
 #' that has been shared with you. You specify the private CA on input by
 #' its ARN (Amazon Resource Name). The output contains the status of your
@@ -609,6 +616,7 @@ acmpca_describe_certificate_authority <- function(CertificateAuthorityArn) {
 #' Lists information about a specific audit report created by calling the
 #' CreateCertificateAuthorityAuditReport action
 #'
+#' @description
 #' Lists information about a specific audit report created by calling the
 #' [CreateCertificateAuthorityAuditReport](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html)
 #' action. Audit information is created every time the certificate
@@ -662,6 +670,7 @@ acmpca_describe_certificate_authority_audit_report <- function(CertificateAuthor
 #' Retrieves a certificate from your private CA or one that has been shared
 #' with you
 #'
+#' @description
 #' Retrieves a certificate from your private CA or one that has been shared
 #' with you. The ARN of the certificate is returned when you call the
 #' [IssueCertificate](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_IssueCertificate.html)
@@ -717,6 +726,7 @@ acmpca_get_certificate <- function(CertificateAuthorityArn, CertificateArn) {
 #' Retrieves the certificate and certificate chain for your private
 #' certificate authority (CA) or one that has been shared with you
 #'
+#' @description
 #' Retrieves the certificate and certificate chain for your private
 #' certificate authority (CA) or one that has been shared with you. Both
 #' the certificate and the chain are base64 PEM-encoded. The chain does not
@@ -760,6 +770,7 @@ acmpca_get_certificate_authority_certificate <- function(CertificateAuthorityArn
 #' Retrieves the certificate signing request (CSR) for your private
 #' certificate authority (CA)
 #'
+#' @description
 #' Retrieves the certificate signing request (CSR) for your private
 #' certificate authority (CA). The CSR is created when you call the
 #' [CreateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html)
@@ -807,6 +818,7 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
 
 #' Retrieves the resource-based policy attached to a private CA
 #'
+#' @description
 #' Retrieves the resource-based policy attached to a private CA. If either
 #' the private CA resource or the policy cannot be found, this action
 #' returns a `ResourceNotFoundException`.
@@ -875,6 +887,7 @@ acmpca_get_policy <- function(ResourceArn) {
 
 #' Imports a signed private CA certificate into ACM Private CA
 #'
+#' @description
 #' Imports a signed private CA certificate into ACM Private CA. This action
 #' is used when you are using a chain of trust whose root is located
 #' outside ACM Private CA. Before you can call this action, the following
@@ -1022,6 +1035,7 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' Uses your private certificate authority (CA), or one that has been
 #' shared with you, to issue a client certificate
 #'
+#' @description
 #' Uses your private certificate authority (CA), or one that has been
 #' shared with you, to issue a client certificate. This action returns the
 #' Amazon Resource Name (ARN) of the certificate. You can retrieve the
@@ -1161,6 +1175,7 @@ acmpca_issue_certificate <- function(CertificateAuthorityArn, Csr, SigningAlgori
 #' Lists the private certificate authorities that you created by using the
 #' CreateCertificateAuthority action
 #'
+#' @description
 #' Lists the private certificate authorities that you created by using the
 #' [CreateCertificateAuthority](https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html)
 #' action.
@@ -1212,6 +1227,7 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
 #' List all permissions on a private CA, if any, granted to the AWS
 #' Certificate Manager (ACM) service principal (acm
 #'
+#' @description
 #' List all permissions on a private CA, if any, granted to the AWS
 #' Certificate Manager (ACM) service principal (acm.amazonaws.com).
 #' 
@@ -1294,6 +1310,7 @@ acmpca_list_permissions <- function(CertificateAuthorityArn, NextToken = NULL, M
 #' Lists the tags, if any, that are associated with your private CA or one
 #' that has been shared with you
 #'
+#' @description
 #' Lists the tags, if any, that are associated with your private CA or one
 #' that has been shared with you. Tags are labels that you can use to
 #' identify and organize your CAs. Each tag consists of a key and an
@@ -1351,6 +1368,7 @@ acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResul
 
 #' Attaches a resource-based policy to a private CA
 #'
+#' @description
 #' Attaches a resource-based policy to a private CA.
 #' 
 #' A policy can also be applied by sharing a private CA through AWS
@@ -1431,6 +1449,7 @@ acmpca_put_policy <- function(ResourceArn, Policy) {
 
 #' Restores a certificate authority (CA) that is in the DELETED state
 #'
+#' @description
 #' Restores a certificate authority (CA) that is in the `DELETED` state.
 #' You can restore a CA during the period that you defined in the
 #' **PermanentDeletionTimeInDays** parameter of the
@@ -1492,6 +1511,7 @@ acmpca_restore_certificate_authority <- function(CertificateAuthorityArn) {
 
 #' Revokes a certificate that was issued inside ACM Private CA
 #'
+#' @description
 #' Revokes a certificate that was issued inside ACM Private CA. If you
 #' enable a certificate revocation list (CRL) when you create or update
 #' your private CA, information about the revoked certificates will be
@@ -1571,6 +1591,7 @@ acmpca_revoke_certificate <- function(CertificateAuthorityArn, CertificateSerial
 
 #' Adds one or more tags to your private CA
 #'
+#' @description
 #' Adds one or more tags to your private CA. Tags are labels that you can
 #' use to identify and organize your AWS resources. Each tag consists of a
 #' key and an optional value. You specify the private CA on input by its
@@ -1629,6 +1650,7 @@ acmpca_tag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 
 #' Remove one or more tags from your private CA
 #'
+#' @description
 #' Remove one or more tags from your private CA. A tag consists of a
 #' key-value pair. If you do not specify the value portion of the tag when
 #' calling this action, the tag will be removed regardless of value. If you
@@ -1685,6 +1707,7 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' Updates the status or configuration of a private certificate authority
 #' (CA)
 #'
+#' @description
 #' Updates the status or configuration of a private certificate authority
 #' (CA). Your private CA must be in the `ACTIVE` or `DISABLED` state before
 #' you can update it. You can disable a private CA that is in the `ACTIVE`

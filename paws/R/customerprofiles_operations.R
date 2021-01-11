@@ -6,6 +6,7 @@ NULL
 #' Associates a new key value with a specific profile, such as a Contact
 #' Trace Record (CTR) ContactId
 #'
+#' @description
 #' Associates a new key value with a specific profile, such as a Contact
 #' Trace Record (CTR) ContactId.
 #' 
@@ -57,6 +58,7 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #' customer profile attributes, object types, profile keys, and encryption
 #' keys
 #'
+#' @description
 #' Creates a domain, which is a container for all customer data, such as
 #' customer profile attributes, object types, profile keys, and encryption
 #' keys. You can create multiple domains, and each domain can have multiple
@@ -116,6 +118,7 @@ customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, De
 
 #' Creates a standard profile
 #'
+#' @description
 #' Creates a standard profile.
 #' 
 #' A standard profile represents the following attributes for a customer
@@ -252,6 +255,7 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
 #' Deletes a specific domain and all of its customer data, such as customer
 #' profile attributes and their related objects
 #'
+#' @description
 #' Deletes a specific domain and all of its customer data, such as customer
 #' profile attributes and their related objects.
 #'
@@ -289,6 +293,7 @@ customerprofiles_delete_domain <- function(DomainName) {
 
 #' Removes an integration from a specific domain
 #'
+#' @description
 #' Removes an integration from a specific domain.
 #'
 #' @usage
@@ -328,6 +333,7 @@ customerprofiles_delete_integration <- function(DomainName, Uri = NULL) {
 #' Deletes the standard customer profile and all data pertaining to the
 #' profile
 #'
+#' @description
 #' Deletes the standard customer profile and all data pertaining to the
 #' profile.
 #'
@@ -367,6 +373,7 @@ customerprofiles_delete_profile <- function(ProfileId, DomainName) {
 
 #' Removes a searchable key from a customer profile
 #'
+#' @description
 #' Removes a searchable key from a customer profile.
 #'
 #' @usage
@@ -412,6 +419,7 @@ customerprofiles_delete_profile_key <- function(ProfileId, KeyName, Values, Doma
 
 #' Removes an object associated with a profile of a given ProfileObjectType
 #'
+#' @description
 #' Removes an object associated with a profile of a given
 #' ProfileObjectType.
 #'
@@ -457,6 +465,7 @@ customerprofiles_delete_profile_object <- function(ProfileId, ProfileObjectUniqu
 #' Removes a ProfileObjectType from a specific domain as well as removes
 #' all the ProfileObjects of that type
 #'
+#' @description
 #' Removes a ProfileObjectType from a specific domain as well as removes
 #' all the ProfileObjects of that type. It also disables integrations from
 #' this specific ProfileObjectType. In addition, it scrubs all of the
@@ -499,6 +508,7 @@ customerprofiles_delete_profile_object_type <- function(DomainName, ObjectTypeNa
 
 #' Returns information about a specific domain
 #'
+#' @description
 #' Returns information about a specific domain.
 #'
 #' @usage
@@ -535,6 +545,7 @@ customerprofiles_get_domain <- function(DomainName) {
 
 #' Returns an integration for a domain
 #'
+#' @description
 #' Returns an integration for a domain.
 #'
 #' @usage
@@ -573,6 +584,7 @@ customerprofiles_get_integration <- function(DomainName, Uri = NULL) {
 
 #' Returns the object types for a specific domain
 #'
+#' @description
 #' Returns the object types for a specific domain.
 #'
 #' @usage
@@ -611,6 +623,7 @@ customerprofiles_get_profile_object_type <- function(DomainName, ObjectTypeName)
 
 #' Returns the template information for a specific object type
 #'
+#' @description
 #' Returns the template information for a specific object type.
 #' 
 #' A template is a predefined ProfileObjectType, such as
@@ -654,6 +667,7 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 #' Lists all of the integrations associated to a specific URI in the AWS
 #' account
 #'
+#' @description
 #' Lists all of the integrations associated to a specific URI in the AWS
 #' account.
 #'
@@ -696,6 +710,7 @@ customerprofiles_list_account_integrations <- function(Uri, NextToken = NULL, Ma
 #' Returns a list of all the domains for an AWS account that have been
 #' created
 #'
+#' @description
 #' Returns a list of all the domains for an AWS account that have been
 #' created.
 #'
@@ -735,6 +750,7 @@ customerprofiles_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Lists all of the integrations in your domain
 #'
+#' @description
 #' Lists all of the integrations in your domain.
 #'
 #' @usage
@@ -775,6 +791,7 @@ customerprofiles_list_integrations <- function(DomainName, NextToken = NULL, Max
 
 #' Lists all of the template information for object types
 #'
+#' @description
 #' Lists all of the template information for object types.
 #'
 #' @usage
@@ -814,6 +831,7 @@ customerprofiles_list_profile_object_type_templates <- function(NextToken = NULL
 
 #' Lists all of the templates available within the service
 #'
+#' @description
 #' Lists all of the templates available within the service.
 #'
 #' @usage
@@ -856,6 +874,7 @@ customerprofiles_list_profile_object_types <- function(DomainName, NextToken = N
 #' Returns a list of objects associated with a profile of a given
 #' ProfileObjectType
 #'
+#' @description
 #' Returns a list of objects associated with a profile of a given
 #' ProfileObjectType.
 #'
@@ -903,6 +922,7 @@ customerprofiles_list_profile_objects <- function(NextToken = NULL, MaxResults =
 #' Displays the tags associated with an Amazon Connect Customer Profiles
 #' resource
 #'
+#' @description
 #' Displays the tags associated with an Amazon Connect Customer Profiles
 #' resource. In Connect Customer Profiles, domains, profile object types,
 #' and integrations can be tagged.
@@ -942,6 +962,7 @@ customerprofiles_list_tags_for_resource <- function(resourceArn) {
 #' Adds an integration between the service and a third-party service, which
 #' includes Amazon AppFlow and Amazon Connect
 #'
+#' @description
 #' Adds an integration between the service and a third-party service, which
 #' includes Amazon AppFlow and Amazon Connect.
 #' 
@@ -989,6 +1010,7 @@ customerprofiles_put_integration <- function(DomainName, Uri, ObjectTypeName, Ta
 
 #' Adds additional objects to customer profiles of a given ObjectType
 #'
+#' @description
 #' Adds additional objects to customer profiles of a given ObjectType.
 #' 
 #' When adding a specific profile object, like a Contact Trace Record
@@ -1042,6 +1064,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 
 #' Defines a ProfileObjectType
 #'
+#' @description
 #' Defines a ProfileObjectType.
 #'
 #' @usage
@@ -1124,6 +1147,7 @@ customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName,
 #' Searches for profiles within a specific domain name using name, phone
 #' number, email address, account number, or a custom defined index
 #'
+#' @description
 #' Searches for profiles within a specific domain name using name, phone
 #' number, email address, account number, or a custom defined index.
 #'
@@ -1177,6 +1201,7 @@ customerprofiles_search_profiles <- function(NextToken = NULL, MaxResults = NULL
 #' Assigns one or more tags (key-value pairs) to the specified Amazon
 #' Connect Customer Profiles resource
 #'
+#' @description
 #' Assigns one or more tags (key-value pairs) to the specified Amazon
 #' Connect Customer Profiles resource. Tags can help you organize and
 #' categorize your resources. You can also use them to scope user
@@ -1234,6 +1259,7 @@ customerprofiles_tag_resource <- function(resourceArn, tags) {
 #' Removes one or more tags from the specified Amazon Connect Customer
 #' Profiles resource
 #'
+#' @description
 #' Removes one or more tags from the specified Amazon Connect Customer
 #' Profiles resource. In Connect Customer Profiles, domains, profile object
 #' types, and integrations can be tagged.
@@ -1277,6 +1303,7 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #' Updates the properties of a domain, including creating or selecting a
 #' dead letter queue or an encryption key
 #'
+#' @description
 #' Updates the properties of a domain, including creating or selecting a
 #' dead letter queue or an encryption key.
 #' 
@@ -1335,6 +1362,7 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
 
 #' Updates the properties of a profile
 #'
+#' @description
 #' Updates the properties of a profile. The ProfileId is required for
 #' updating a customer profile.
 #' 

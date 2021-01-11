@@ -73,8 +73,7 @@ source mapping.}
 Updates an event source mapping. You can change the function that AWS
 Lambda invokes, or pause invocation and resume later from the same
 location.
-}
-\details{
+
 The following error handling options are only available for stream
 sources (DynamoDB and Kinesis):
 \itemize{

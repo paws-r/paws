@@ -13,8 +13,7 @@ securityhub_batch_disable_standards(StandardsSubscriptionArns)
 \description{
 Disables the standards specified by the provided
 \code{StandardsSubscriptionArns}.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-standards.html}{Security Standards}
 section of the \emph{AWS Security Hub User Guide}.
 }

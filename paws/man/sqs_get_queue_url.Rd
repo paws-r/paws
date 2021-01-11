@@ -17,8 +17,7 @@ Queue URLs and names are case-sensitive.}
 }
 \description{
 Returns the URL of an existing Amazon SQS queue.
-}
-\details{
+
 To access a queue that belongs to another AWS account, use the
 \code{QueueOwnerAWSAccountId} parameter to specify the account ID of the
 queue's owner. The queue's owner must grant you permission to access the

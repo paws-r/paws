@@ -24,8 +24,7 @@ the instance console output displays the exact console output that would
 normally be displayed on a physical monitor attached to a computer. For
 Windows instances, the instance console output includes the last three
 system event log errors.
-}
-\details{
+
 By default, the console output returns buffered information that was
 posted shortly after an instance transition state (start, stop, reboot,
 or terminate). This information is available for at least one hour after

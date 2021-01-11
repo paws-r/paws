@@ -13,7 +13,7 @@ apigateway_delete_documentation_version(restApiId, documentationVersion)
 snapshot.}
 }
 \description{
-Delete documentation version
+
 }
 \section{Request syntax}{
 \preformatted{svc$delete_documentation_version(

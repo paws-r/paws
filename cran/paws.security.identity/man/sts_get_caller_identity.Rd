@@ -10,8 +10,7 @@ sts_get_caller_identity()
 \description{
 Returns details about the IAM user or role whose credentials are used to
 call the operation.
-}
-\details{
+
 No permissions are required to perform this operation. If an
 administrator adds a policy to your IAM user or role that explicitly
 denies access to the \code{sts:GetCallerIdentity} action, you can still

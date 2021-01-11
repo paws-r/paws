@@ -28,8 +28,7 @@ Returns a list of accounts in the organization from AWS Organizations
 that are affected by the provided event. For more information about the
 different types of AWS Health events, see
 \href{https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html}{Event}.
-}
-\details{
+
 Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
 \href{https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html}{EnableHealthServiceAccessForOrganization}

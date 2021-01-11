@@ -20,8 +20,7 @@ current \code{TimeToLiveSpecification}. It can take up to one hour for the
 change to fully process. Any additional \code{UpdateTimeToLive} calls for the
 same table during this one hour duration result in a
 \code{ValidationException}.
-}
-\details{
+
 TTL compares the current time in epoch time format to the time stored in
 the TTL attribute of an item. If the epoch time value stored in the
 attribute is less than the current time, the item is marked as expired

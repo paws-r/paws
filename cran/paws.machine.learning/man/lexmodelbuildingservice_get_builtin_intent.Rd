@@ -13,8 +13,7 @@ in the \emph{Alexa Skills Kit}.}
 }
 \description{
 Returns information about a built-in intent.
-}
-\details{
+
 This operation requires permission for the \code{lex:GetBuiltinIntent}
 action.
 }

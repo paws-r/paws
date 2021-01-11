@@ -11,8 +11,7 @@ machinelearning_delete_evaluation(EvaluationId)
 }
 \description{
 Assigns the \code{DELETED} status to an \code{Evaluation}, rendering it unusable.
-}
-\details{
+
 After invoking the \code{DeleteEvaluation} operation, you can use the
 \code{GetEvaluation} operation to verify that the status of the \code{Evaluation}
 changed to \code{DELETED}.

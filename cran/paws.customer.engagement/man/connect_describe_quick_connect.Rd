@@ -15,8 +15,7 @@ connect_describe_quick_connect(InstanceId, QuickConnectId)
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Describes the quick connect.
 }
 \section{Request syntax}{

@@ -282,8 +282,7 @@ to null.
 \description{
 Updates an existing health check. Note that some values can't be
 updated.
-}
-\details{
+
 For more information about updating health checks, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/health-checks-creating-deleting.html}{Creating, Updating, and Deleting Health Checks}
 in the \emph{Amazon Route 53 Developer Guide}.
 }

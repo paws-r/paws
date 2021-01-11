@@ -5,6 +5,7 @@ NULL
 
 #' Creates a cache policy
 #'
+#' @description
 #' Creates a cache policy.
 #' 
 #' After you create a cache policy, you can attach it to one or more cache
@@ -101,6 +102,7 @@ cloudfront_create_cache_policy <- function(CachePolicyConfig) {
 
 #' Creates a new origin access identity
 #'
+#' @description
 #' Creates a new origin access identity. If you're using Amazon S3 for your
 #' origin, you can use an origin access identity to require users to access
 #' your content using a CloudFront URL instead of the Amazon S3 URL. For
@@ -147,6 +149,7 @@ cloudfront_create_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 
 #' Creates a new web distribution
 #'
+#' @description
 #' Creates a new web distribution. You create a CloudFront distribution to
 #' tell CloudFront where you want content to be delivered from, and the
 #' details about how to track and manage content delivery. Send a `POST`
@@ -465,6 +468,7 @@ cloudfront_create_distribution <- function(DistributionConfig) {
 
 #' Create a new distribution with tags
 #'
+#' @description
 #' Create a new distribution with tags.
 #'
 #' @usage
@@ -778,6 +782,7 @@ cloudfront_create_distribution_with_tags <- function(DistributionConfigWithTags)
 
 #' Create a new field-level encryption configuration
 #'
+#' @description
 #' Create a new field-level encryption configuration.
 #'
 #' @usage
@@ -843,6 +848,7 @@ cloudfront_create_field_level_encryption_config <- function(FieldLevelEncryption
 
 #' Create a field-level encryption profile
 #'
+#' @description
 #' Create a field-level encryption profile.
 #'
 #' @usage
@@ -899,6 +905,7 @@ cloudfront_create_field_level_encryption_profile <- function(FieldLevelEncryptio
 
 #' Create a new invalidation
 #'
+#' @description
 #' Create a new invalidation.
 #'
 #' @usage
@@ -946,6 +953,7 @@ cloudfront_create_invalidation <- function(DistributionId, InvalidationBatch) {
 #' Creates a key group that you can use with CloudFront signed URLs and
 #' signed cookies
 #'
+#' @description
 #' Creates a key group that you can use with [CloudFront signed URLs and
 #' signed
 #' cookies](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html).
@@ -1003,6 +1011,7 @@ cloudfront_create_key_group <- function(KeyGroupConfig) {
 #' Enables additional CloudWatch metrics for the specified CloudFront
 #' distribution
 #'
+#' @description
 #' Enables additional CloudWatch metrics for the specified CloudFront
 #' distribution. The additional metrics incur an additional cost.
 #' 
@@ -1053,6 +1062,7 @@ cloudfront_create_monitoring_subscription <- function(DistributionId, Monitoring
 
 #' Creates an origin request policy
 #'
+#' @description
 #' Creates an origin request policy.
 #' 
 #' After you create an origin request policy, you can attach it to one or
@@ -1146,6 +1156,7 @@ cloudfront_create_origin_request_policy <- function(OriginRequestPolicyConfig) {
 #' Uploads a public key to CloudFront that you can use with signed URLs and
 #' signed cookies, or with field-level encryption
 #'
+#' @description
 #' Uploads a public key to CloudFront that you can use with [signed URLs
 #' and signed
 #' cookies](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html),
@@ -1191,6 +1202,7 @@ cloudfront_create_public_key <- function(PublicKeyConfig) {
 
 #' Creates a real-time log configuration
 #'
+#' @description
 #' Creates a real-time log configuration.
 #' 
 #' After you create a real-time log configuration, you can attach it to one
@@ -1260,6 +1272,7 @@ cloudfront_create_realtime_log_config <- function(EndPoints, Fields, Name, Sampl
 
 #' This API is deprecated
 #'
+#' @description
 #' This API is deprecated. Amazon CloudFront is deprecating real-time
 #' messaging protocol (RTMP) distributions on December 31, 2020. For more
 #' information, [read the
@@ -1327,6 +1340,7 @@ cloudfront_create_streaming_distribution <- function(StreamingDistributionConfig
 
 #' This API is deprecated
 #'
+#' @description
 #' This API is deprecated. Amazon CloudFront is deprecating real-time
 #' messaging protocol (RTMP) distributions on December 31, 2020. For more
 #' information, [read the
@@ -1405,6 +1419,7 @@ cloudfront_create_streaming_distribution_with_tags <- function(StreamingDistribu
 
 #' Deletes a cache policy
 #'
+#' @description
 #' Deletes a cache policy.
 #' 
 #' You cannot delete a cache policy if it’s attached to a cache behavior.
@@ -1454,6 +1469,7 @@ cloudfront_delete_cache_policy <- function(Id, IfMatch = NULL) {
 
 #' Delete an origin access identity
 #'
+#' @description
 #' Delete an origin access identity.
 #'
 #' @usage
@@ -1493,6 +1509,7 @@ cloudfront_delete_cloud_front_origin_access_identity <- function(Id, IfMatch = N
 
 #' Delete a distribution
 #'
+#' @description
 #' Delete a distribution.
 #'
 #' @usage
@@ -1532,6 +1549,7 @@ cloudfront_delete_distribution <- function(Id, IfMatch = NULL) {
 
 #' Remove a field-level encryption configuration
 #'
+#' @description
 #' Remove a field-level encryption configuration.
 #'
 #' @usage
@@ -1571,6 +1589,7 @@ cloudfront_delete_field_level_encryption_config <- function(Id, IfMatch = NULL) 
 
 #' Remove a field-level encryption profile
 #'
+#' @description
 #' Remove a field-level encryption profile.
 #'
 #' @usage
@@ -1610,6 +1629,7 @@ cloudfront_delete_field_level_encryption_profile <- function(Id, IfMatch = NULL)
 
 #' Deletes a key group
 #'
+#' @description
 #' Deletes a key group.
 #' 
 #' You cannot delete a key group that is referenced in a cache behavior.
@@ -1660,6 +1680,7 @@ cloudfront_delete_key_group <- function(Id, IfMatch = NULL) {
 #' Disables additional CloudWatch metrics for the specified CloudFront
 #' distribution
 #'
+#' @description
 #' Disables additional CloudWatch metrics for the specified CloudFront
 #' distribution.
 #'
@@ -1697,6 +1718,7 @@ cloudfront_delete_monitoring_subscription <- function(DistributionId) {
 
 #' Deletes an origin request policy
 #'
+#' @description
 #' Deletes an origin request policy.
 #' 
 #' You cannot delete an origin request policy if it’s attached to any cache
@@ -1748,6 +1770,7 @@ cloudfront_delete_origin_request_policy <- function(Id, IfMatch = NULL) {
 
 #' Remove a public key you previously added to CloudFront
 #'
+#' @description
 #' Remove a public key you previously added to CloudFront.
 #'
 #' @usage
@@ -1787,6 +1810,7 @@ cloudfront_delete_public_key <- function(Id, IfMatch = NULL) {
 
 #' Deletes a real-time log configuration
 #'
+#' @description
 #' Deletes a real-time log configuration.
 #' 
 #' You cannot delete a real-time log configuration if it’s attached to a
@@ -1836,6 +1860,7 @@ cloudfront_delete_realtime_log_config <- function(Name = NULL, ARN = NULL) {
 
 #' Delete a streaming distribution
 #'
+#' @description
 #' Delete a streaming distribution. To delete an RTMP distribution using
 #' the CloudFront API, perform the following steps.
 #' 
@@ -1915,6 +1940,7 @@ cloudfront_delete_streaming_distribution <- function(Id, IfMatch = NULL) {
 #' Gets a cache policy, including the following metadata: - The policy’s
 #' identifier
 #'
+#' @description
 #' Gets a cache policy, including the following metadata:
 #' 
 #' -   The policy’s identifier.
@@ -1965,6 +1991,7 @@ cloudfront_get_cache_policy <- function(Id) {
 
 #' Gets a cache policy configuration
 #'
+#' @description
 #' Gets a cache policy configuration.
 #' 
 #' To get a cache policy configuration, you must provide the policy’s
@@ -2011,6 +2038,7 @@ cloudfront_get_cache_policy_config <- function(Id) {
 
 #' Get the information about an origin access identity
 #'
+#' @description
 #' Get the information about an origin access identity.
 #'
 #' @usage
@@ -2047,6 +2075,7 @@ cloudfront_get_cloud_front_origin_access_identity <- function(Id) {
 
 #' Get the configuration information about an origin access identity
 #'
+#' @description
 #' Get the configuration information about an origin access identity.
 #'
 #' @usage
@@ -2083,6 +2112,7 @@ cloudfront_get_cloud_front_origin_access_identity_config <- function(Id) {
 
 #' Get the information about a distribution
 #'
+#' @description
 #' Get the information about a distribution.
 #'
 #' @usage
@@ -2120,6 +2150,7 @@ cloudfront_get_distribution <- function(Id) {
 
 #' Get the configuration information about a distribution
 #'
+#' @description
 #' Get the configuration information about a distribution.
 #'
 #' @usage
@@ -2157,6 +2188,7 @@ cloudfront_get_distribution_config <- function(Id) {
 
 #' Get the field-level encryption configuration information
 #'
+#' @description
 #' Get the field-level encryption configuration information.
 #'
 #' @usage
@@ -2193,6 +2225,7 @@ cloudfront_get_field_level_encryption <- function(Id) {
 
 #' Get the field-level encryption configuration information
 #'
+#' @description
 #' Get the field-level encryption configuration information.
 #'
 #' @usage
@@ -2229,6 +2262,7 @@ cloudfront_get_field_level_encryption_config <- function(Id) {
 
 #' Get the field-level encryption profile information
 #'
+#' @description
 #' Get the field-level encryption profile information.
 #'
 #' @usage
@@ -2265,6 +2299,7 @@ cloudfront_get_field_level_encryption_profile <- function(Id) {
 
 #' Get the field-level encryption profile configuration information
 #'
+#' @description
 #' Get the field-level encryption profile configuration information.
 #'
 #' @usage
@@ -2302,6 +2337,7 @@ cloudfront_get_field_level_encryption_profile_config <- function(Id) {
 
 #' Get the information about an invalidation
 #'
+#' @description
 #' Get the information about an invalidation.
 #'
 #' @usage
@@ -2342,6 +2378,7 @@ cloudfront_get_invalidation <- function(DistributionId, Id) {
 #' Gets a key group, including the date and time when the key group was
 #' last modified
 #'
+#' @description
 #' Gets a key group, including the date and time when the key group was
 #' last modified.
 #' 
@@ -2386,6 +2423,7 @@ cloudfront_get_key_group <- function(Id) {
 
 #' Gets a key group configuration
 #'
+#' @description
 #' Gets a key group configuration.
 #' 
 #' To get a key group configuration, you must provide the key group’s
@@ -2431,6 +2469,7 @@ cloudfront_get_key_group_config <- function(Id) {
 #' Gets information about whether additional CloudWatch metrics are enabled
 #' for the specified CloudFront distribution
 #'
+#' @description
 #' Gets information about whether additional CloudWatch metrics are enabled
 #' for the specified CloudFront distribution.
 #'
@@ -2469,6 +2508,7 @@ cloudfront_get_monitoring_subscription <- function(DistributionId) {
 #' Gets an origin request policy, including the following metadata: - The
 #' policy’s identifier
 #'
+#' @description
 #' Gets an origin request policy, including the following metadata:
 #' 
 #' -   The policy’s identifier.
@@ -2521,6 +2561,7 @@ cloudfront_get_origin_request_policy <- function(Id) {
 
 #' Gets an origin request policy configuration
 #'
+#' @description
 #' Gets an origin request policy configuration.
 #' 
 #' To get an origin request policy configuration, you must provide the
@@ -2569,6 +2610,7 @@ cloudfront_get_origin_request_policy_config <- function(Id) {
 
 #' Gets a public key
 #'
+#' @description
 #' Gets a public key.
 #'
 #' @usage
@@ -2605,6 +2647,7 @@ cloudfront_get_public_key <- function(Id) {
 
 #' Gets a public key configuration
 #'
+#' @description
 #' Gets a public key configuration.
 #'
 #' @usage
@@ -2641,6 +2684,7 @@ cloudfront_get_public_key_config <- function(Id) {
 
 #' Gets a real-time log configuration
 #'
+#' @description
 #' Gets a real-time log configuration.
 #' 
 #' To get a real-time log configuration, you can provide the
@@ -2686,6 +2730,7 @@ cloudfront_get_realtime_log_config <- function(Name = NULL, ARN = NULL) {
 #' Gets information about a specified RTMP distribution, including the
 #' distribution configuration
 #'
+#' @description
 #' Gets information about a specified RTMP distribution, including the
 #' distribution configuration.
 #'
@@ -2723,6 +2768,7 @@ cloudfront_get_streaming_distribution <- function(Id) {
 
 #' Get the configuration information about a streaming distribution
 #'
+#' @description
 #' Get the configuration information about a streaming distribution.
 #'
 #' @usage
@@ -2759,6 +2805,7 @@ cloudfront_get_streaming_distribution_config <- function(Id) {
 
 #' Gets a list of cache policies
 #'
+#' @description
 #' Gets a list of cache policies.
 #' 
 #' You can optionally apply a filter to return only the managed policies
@@ -2819,6 +2866,7 @@ cloudfront_list_cache_policies <- function(Type = NULL, Marker = NULL, MaxItems 
 
 #' Lists origin access identities
 #'
+#' @description
 #' Lists origin access identities.
 #'
 #' @usage
@@ -2862,6 +2910,7 @@ cloudfront_list_cloud_front_origin_access_identities <- function(Marker = NULL, 
 
 #' List CloudFront distributions
 #'
+#' @description
 #' List CloudFront distributions.
 #'
 #' @usage
@@ -2905,6 +2954,7 @@ cloudfront_list_distributions <- function(Marker = NULL, MaxItems = NULL) {
 #' Gets a list of distribution IDs for distributions that have a cache
 #' behavior that’s associated with the specified cache policy
 #'
+#' @description
 #' Gets a list of distribution IDs for distributions that have a cache
 #' behavior that’s associated with the specified cache policy.
 #' 
@@ -2960,6 +3010,7 @@ cloudfront_list_distributions_by_cache_policy_id <- function(Marker = NULL, MaxI
 #' Gets a list of distribution IDs for distributions that have a cache
 #' behavior that references the specified key group
 #'
+#' @description
 #' Gets a list of distribution IDs for distributions that have a cache
 #' behavior that references the specified key group.
 #' 
@@ -3014,6 +3065,7 @@ cloudfront_list_distributions_by_key_group <- function(Marker = NULL, MaxItems =
 #' Gets a list of distribution IDs for distributions that have a cache
 #' behavior that’s associated with the specified origin request policy
 #'
+#' @description
 #' Gets a list of distribution IDs for distributions that have a cache
 #' behavior that’s associated with the specified origin request policy.
 #' 
@@ -3069,6 +3121,7 @@ cloudfront_list_distributions_by_origin_request_policy_id <- function(Marker = N
 #' Gets a list of distributions that have a cache behavior that’s
 #' associated with the specified real-time log configuration
 #'
+#' @description
 #' Gets a list of distributions that have a cache behavior that’s
 #' associated with the specified real-time log configuration.
 #' 
@@ -3132,6 +3185,7 @@ cloudfront_list_distributions_by_realtime_log_config <- function(Marker = NULL, 
 #' List the distributions that are associated with a specified AWS WAF web
 #' ACL
 #'
+#' @description
 #' List the distributions that are associated with a specified AWS WAF web
 #' ACL.
 #'
@@ -3182,6 +3236,7 @@ cloudfront_list_distributions_by_web_acl_id <- function(Marker = NULL, MaxItems 
 #' List all field-level encryption configurations that have been created in
 #' CloudFront for this account
 #'
+#' @description
 #' List all field-level encryption configurations that have been created in
 #' CloudFront for this account.
 #'
@@ -3227,6 +3282,7 @@ cloudfront_list_field_level_encryption_configs <- function(Marker = NULL, MaxIte
 #' Request a list of field-level encryption profiles that have been created
 #' in CloudFront for this account
 #'
+#' @description
 #' Request a list of field-level encryption profiles that have been created
 #' in CloudFront for this account.
 #'
@@ -3271,6 +3327,7 @@ cloudfront_list_field_level_encryption_profiles <- function(Marker = NULL, MaxIt
 
 #' Lists invalidation batches
 #'
+#' @description
 #' Lists invalidation batches.
 #'
 #' @usage
@@ -3318,6 +3375,7 @@ cloudfront_list_invalidations <- function(DistributionId, Marker = NULL, MaxItem
 
 #' Gets a list of key groups
 #'
+#' @description
 #' Gets a list of key groups.
 #' 
 #' You can optionally specify the maximum number of items to receive in the
@@ -3367,6 +3425,7 @@ cloudfront_list_key_groups <- function(Marker = NULL, MaxItems = NULL) {
 
 #' Gets a list of origin request policies
 #'
+#' @description
 #' Gets a list of origin request policies.
 #' 
 #' You can optionally apply a filter to return only the managed policies
@@ -3428,6 +3487,7 @@ cloudfront_list_origin_request_policies <- function(Type = NULL, Marker = NULL, 
 
 #' List all public keys that have been added to CloudFront for this account
 #'
+#' @description
 #' List all public keys that have been added to CloudFront for this
 #' account.
 #'
@@ -3471,6 +3531,7 @@ cloudfront_list_public_keys <- function(Marker = NULL, MaxItems = NULL) {
 
 #' Gets a list of real-time log configurations
 #'
+#' @description
 #' Gets a list of real-time log configurations.
 #' 
 #' You can optionally specify the maximum number of items to receive in the
@@ -3521,6 +3582,7 @@ cloudfront_list_realtime_log_configs <- function(MaxItems = NULL, Marker = NULL)
 
 #' List streaming distributions
 #'
+#' @description
 #' List streaming distributions.
 #'
 #' @usage
@@ -3559,6 +3621,7 @@ cloudfront_list_streaming_distributions <- function(Marker = NULL, MaxItems = NU
 
 #' List tags for a CloudFront resource
 #'
+#' @description
 #' List tags for a CloudFront resource.
 #'
 #' @usage
@@ -3595,6 +3658,7 @@ cloudfront_list_tags_for_resource <- function(Resource) {
 
 #' Add tags to a CloudFront resource
 #'
+#' @description
 #' Add tags to a CloudFront resource.
 #'
 #' @usage
@@ -3640,6 +3704,7 @@ cloudfront_tag_resource <- function(Resource, Tags) {
 
 #' Remove tags from a CloudFront resource
 #'
+#' @description
 #' Remove tags from a CloudFront resource.
 #'
 #' @usage
@@ -3682,6 +3747,7 @@ cloudfront_untag_resource <- function(Resource, TagKeys) {
 
 #' Updates a cache policy configuration
 #'
+#' @description
 #' Updates a cache policy configuration.
 #' 
 #' When you update a cache policy configuration, all the fields are updated
@@ -3776,6 +3842,7 @@ cloudfront_update_cache_policy <- function(CachePolicyConfig, Id, IfMatch = NULL
 
 #' Update an origin access identity
 #'
+#' @description
 #' Update an origin access identity.
 #'
 #' @usage
@@ -3821,6 +3888,7 @@ cloudfront_update_cloud_front_origin_access_identity <- function(CloudFrontOrigi
 
 #' Updates the configuration for a web distribution
 #'
+#' @description
 #' Updates the configuration for a web distribution.
 #' 
 #' When you update a distribution, there are more required fields than when
@@ -4200,6 +4268,7 @@ cloudfront_update_distribution <- function(DistributionConfig, Id, IfMatch = NUL
 
 #' Update a field-level encryption configuration
 #'
+#' @description
 #' Update a field-level encryption configuration.
 #'
 #' @usage
@@ -4270,6 +4339,7 @@ cloudfront_update_field_level_encryption_config <- function(FieldLevelEncryption
 
 #' Update a field-level encryption profile
 #'
+#' @description
 #' Update a field-level encryption profile.
 #'
 #' @usage
@@ -4331,6 +4401,7 @@ cloudfront_update_field_level_encryption_profile <- function(FieldLevelEncryptio
 
 #' Updates a key group
 #'
+#' @description
 #' Updates a key group.
 #' 
 #' When you update a key group, all the fields are updated with the values
@@ -4390,6 +4461,7 @@ cloudfront_update_key_group <- function(KeyGroupConfig, Id, IfMatch = NULL) {
 
 #' Updates an origin request policy configuration
 #'
+#' @description
 #' Updates an origin request policy configuration.
 #' 
 #' When you update an origin request policy configuration, all the fields
@@ -4480,6 +4552,7 @@ cloudfront_update_origin_request_policy <- function(OriginRequestPolicyConfig, I
 
 #' Update public key information
 #'
+#' @description
 #' Update public key information. Note that the only value you can change
 #' is the comment.
 #'
@@ -4527,6 +4600,7 @@ cloudfront_update_public_key <- function(PublicKeyConfig, Id, IfMatch = NULL) {
 
 #' Updates a real-time log configuration
 #'
+#' @description
 #' Updates a real-time log configuration.
 #' 
 #' When you update a real-time log configuration, all the parameters are
@@ -4607,6 +4681,7 @@ cloudfront_update_realtime_log_config <- function(EndPoints = NULL, Fields = NUL
 
 #' Update a streaming distribution
 #'
+#' @description
 #' Update a streaming distribution.
 #'
 #' @usage

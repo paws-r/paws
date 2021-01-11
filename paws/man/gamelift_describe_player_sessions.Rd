@@ -46,8 +46,7 @@ properties for a specific player session; (2) provide a \code{GameSessionId}
 to request properties for all player sessions in the specified game
 session; (3) provide a \code{PlayerId} to request properties for all player
 sessions of a specified player.
-}
-\details{
+
 To get game session record(s), specify only one of the following: a
 player session ID, a game session ID, or a player ID. You can filter
 this request by player session status. Use the pagination parameters to

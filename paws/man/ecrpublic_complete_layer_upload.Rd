@@ -26,8 +26,7 @@ Informs Amazon ECR that the image layer upload has completed for a
 specified public registry, repository name, and upload ID. You can
 optionally provide a \code{sha256} digest of the image layer for data
 validation purposes.
-}
-\details{
+
 When an image is pushed, the CompleteLayerUpload API is called once per
 each new image layer to verify that the upload has completed.
 

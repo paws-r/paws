@@ -21,8 +21,7 @@ email sending events to Amazon CloudWatch, Amazon Kinesis Firehose, or
 Amazon Simple Notification Service (Amazon SNS). For information about
 using configuration sets, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Monitoring Your Amazon SES Sending Activity}
 in the \emph{Amazon SES Developer Guide.}
-}
-\details{
+
 When you create or update an event destination, you must provide one,
 and only one, destination. The destination can be Amazon CloudWatch,
 Amazon Kinesis Firehose, or Amazon Simple Notification Service (Amazon

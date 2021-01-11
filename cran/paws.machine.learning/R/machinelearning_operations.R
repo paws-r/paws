@@ -5,6 +5,7 @@ NULL
 
 #' Adds one or more tags to an object, up to a limit of 10
 #'
+#' @description
 #' Adds one or more tags to an object, up to a limit of 10. Each tag
 #' consists of a key and an optional value. If you add a tag using a key
 #' that is already associated with the ML object, `AddTags` updates the
@@ -55,6 +56,7 @@ machinelearning_add_tags <- function(Tags, ResourceId, ResourceType) {
 
 #' Generates predictions for a group of observations
 #'
+#' @description
 #' Generates predictions for a group of observations. The observations to
 #' process exist in one or more data files referenced by a `DataSource`.
 #' This operation creates a new `BatchPrediction`, and uses an `MLModel`
@@ -126,6 +128,7 @@ machinelearning_create_batch_prediction <- function(BatchPredictionId, BatchPred
 #' Creates a DataSource object from an Amazon Relational Database Service
 #' (Amazon RDS)
 #'
+#' @description
 #' Creates a `DataSource` object from an [Amazon Relational Database
 #' Service](https://aws.amazon.com/rds/) (Amazon RDS). A `DataSource`
 #' references data that can be used to perform `CreateMLModel`,
@@ -261,6 +264,7 @@ machinelearning_create_data_source_from_rds <- function(DataSourceId, DataSource
 #' Creates a DataSource from a database hosted on an Amazon Redshift
 #' cluster
 #'
+#' @description
 #' Creates a `DataSource` from a database hosted on an Amazon Redshift
 #' cluster. A `DataSource` references data that can be used to perform
 #' either `CreateMLModel`, `CreateEvaluation`, or `CreateBatchPrediction`
@@ -396,6 +400,7 @@ machinelearning_create_data_source_from_redshift <- function(DataSourceId, DataS
 
 #' Creates a DataSource object
 #'
+#' @description
 #' Creates a `DataSource` object. A `DataSource` references data that can
 #' be used to perform `CreateMLModel`, `CreateEvaluation`, or
 #' `CreateBatchPrediction` operations.
@@ -492,6 +497,7 @@ machinelearning_create_data_source_from_s3 <- function(DataSourceId, DataSourceN
 
 #' Creates a new Evaluation of an MLModel
 #'
+#' @description
 #' Creates a new `Evaluation` of an `MLModel`. An `MLModel` is evaluated on
 #' a set of observations associated to a `DataSource`. Like a `DataSource`
 #' for an `MLModel`, the `DataSource` for an `Evaluation` contains values
@@ -557,6 +563,7 @@ machinelearning_create_evaluation <- function(EvaluationId, EvaluationName = NUL
 #' Creates a new MLModel using the DataSource and the recipe as information
 #' sources
 #'
+#' @description
 #' Creates a new `MLModel` using the `DataSource` and the recipe as
 #' information sources.
 #' 
@@ -681,6 +688,7 @@ machinelearning_create_ml_model <- function(MLModelId, MLModelName = NULL, MLMod
 
 #' Creates a real-time endpoint for the MLModel
 #'
+#' @description
 #' Creates a real-time endpoint for the `MLModel`. The endpoint contains
 #' the URI of the `MLModel`; that is, the location to send real-time
 #' prediction requests for the specified `MLModel`.
@@ -719,6 +727,7 @@ machinelearning_create_realtime_endpoint <- function(MLModelId) {
 
 #' Assigns the DELETED status to a BatchPrediction, rendering it unusable
 #'
+#' @description
 #' Assigns the DELETED status to a `BatchPrediction`, rendering it
 #' unusable.
 #' 
@@ -763,6 +772,7 @@ machinelearning_delete_batch_prediction <- function(BatchPredictionId) {
 
 #' Assigns the DELETED status to a DataSource, rendering it unusable
 #'
+#' @description
 #' Assigns the DELETED status to a `DataSource`, rendering it unusable.
 #' 
 #' After using the `DeleteDataSource` operation, you can use the
@@ -806,6 +816,7 @@ machinelearning_delete_data_source <- function(DataSourceId) {
 
 #' Assigns the DELETED status to an Evaluation, rendering it unusable
 #'
+#' @description
 #' Assigns the `DELETED` status to an `Evaluation`, rendering it unusable.
 #' 
 #' After invoking the `DeleteEvaluation` operation, you can use the
@@ -850,6 +861,7 @@ machinelearning_delete_evaluation <- function(EvaluationId) {
 
 #' Assigns the DELETED status to an MLModel, rendering it unusable
 #'
+#' @description
 #' Assigns the `DELETED` status to an `MLModel`, rendering it unusable.
 #' 
 #' After using the `DeleteMLModel` operation, you can use the `GetMLModel`
@@ -892,6 +904,7 @@ machinelearning_delete_ml_model <- function(MLModelId) {
 
 #' Deletes a real time endpoint of an MLModel
 #'
+#' @description
 #' Deletes a real time endpoint of an `MLModel`.
 #'
 #' @usage
@@ -928,6 +941,7 @@ machinelearning_delete_realtime_endpoint <- function(MLModelId) {
 
 #' Deletes the specified tags associated with an ML object
 #'
+#' @description
 #' Deletes the specified tags associated with an ML object. After this
 #' operation is complete, you can't recover deleted tags.
 #' 
@@ -974,6 +988,7 @@ machinelearning_delete_tags <- function(TagKeys, ResourceId, ResourceType) {
 #' Returns a list of BatchPrediction operations that match the search
 #' criteria in the request
 #'
+#' @description
 #' Returns a list of `BatchPrediction` operations that match the search
 #' criteria in the request.
 #'
@@ -1079,6 +1094,7 @@ machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ
 #' Returns a list of DataSource that match the search criteria in the
 #' request
 #'
+#' @description
 #' Returns a list of `DataSource` that match the search criteria in the
 #' request.
 #'
@@ -1178,6 +1194,7 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
 #' Returns a list of DescribeEvaluations that match the search criteria in
 #' the request
 #'
+#' @description
 #' Returns a list of `DescribeEvaluations` that match the search criteria
 #' in the request.
 #'
@@ -1281,6 +1298,7 @@ machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NUL
 
 #' Returns a list of MLModel that match the search criteria in the request
 #'
+#' @description
 #' Returns a list of `MLModel` that match the search criteria in the
 #' request.
 #'
@@ -1385,6 +1403,7 @@ machinelearning_describe_ml_models <- function(FilterVariable = NULL, EQ = NULL,
 
 #' Describes one or more of the tags for your Amazon ML object
 #'
+#' @description
 #' Describes one or more of the tags for your Amazon ML object.
 #'
 #' @usage
@@ -1424,6 +1443,7 @@ machinelearning_describe_tags <- function(ResourceId, ResourceType) {
 #' Returns a BatchPrediction that includes detailed metadata, status, and
 #' data file information for a Batch Prediction request
 #'
+#' @description
 #' Returns a `BatchPrediction` that includes detailed metadata, status, and
 #' data file information for a `Batch Prediction` request.
 #'
@@ -1462,6 +1482,7 @@ machinelearning_get_batch_prediction <- function(BatchPredictionId) {
 #' Returns a DataSource that includes metadata and data file information,
 #' as well as the current status of the DataSource
 #'
+#' @description
 #' Returns a `DataSource` that includes metadata and data file information,
 #' as well as the current status of the `DataSource`.
 #' 
@@ -1511,6 +1532,7 @@ machinelearning_get_data_source <- function(DataSourceId, Verbose = NULL) {
 #' Returns an Evaluation that includes metadata as well as the current
 #' status of the Evaluation
 #'
+#' @description
 #' Returns an `Evaluation` that includes metadata as well as the current
 #' status of the `Evaluation`.
 #'
@@ -1551,6 +1573,7 @@ machinelearning_get_evaluation <- function(EvaluationId) {
 #' Returns an MLModel that includes detailed metadata, data source
 #' information, and the current status of the MLModel
 #'
+#' @description
 #' Returns an `MLModel` that includes detailed metadata, data source
 #' information, and the current status of the `MLModel`.
 #' 
@@ -1596,6 +1619,7 @@ machinelearning_get_ml_model <- function(MLModelId, Verbose = NULL) {
 
 #' Generates a prediction for the observation using the specified ML Model
 #'
+#' @description
 #' Generates a prediction for the observation using the specified
 #' `ML Model`.
 #' 
@@ -1644,6 +1668,7 @@ machinelearning_predict <- function(MLModelId, Record, PredictEndpoint) {
 
 #' Updates the BatchPredictionName of a BatchPrediction
 #'
+#' @description
 #' Updates the `BatchPredictionName` of a `BatchPrediction`.
 #' 
 #' You can use the `GetBatchPrediction` operation to view the contents of
@@ -1686,6 +1711,7 @@ machinelearning_update_batch_prediction <- function(BatchPredictionId, BatchPred
 
 #' Updates the DataSourceName of a DataSource
 #'
+#' @description
 #' Updates the `DataSourceName` of a `DataSource`.
 #' 
 #' You can use the `GetDataSource` operation to view the contents of the
@@ -1728,6 +1754,7 @@ machinelearning_update_data_source <- function(DataSourceId, DataSourceName) {
 
 #' Updates the EvaluationName of an Evaluation
 #'
+#' @description
 #' Updates the `EvaluationName` of an `Evaluation`.
 #' 
 #' You can use the `GetEvaluation` operation to view the contents of the
@@ -1770,6 +1797,7 @@ machinelearning_update_evaluation <- function(EvaluationId, EvaluationName) {
 
 #' Updates the MLModelName and the ScoreThreshold of an MLModel
 #'
+#' @description
 #' Updates the `MLModelName` and the `ScoreThreshold` of an `MLModel`.
 #' 
 #' You can use the `GetMLModel` operation to view the contents of the

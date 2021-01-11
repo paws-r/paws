@@ -15,8 +15,7 @@ ses_get_identity_verification_attributes(Identities)
 Given a list of identities (email addresses and/or domains), returns the
 verification status and (for domain identities) the verification token
 for each identity.
-}
-\details{
+
 The verification status of an email address is "Pending" until the email
 address owner clicks the link within the verification email that Amazon
 SES sent to that address. If the email address owner clicks the link

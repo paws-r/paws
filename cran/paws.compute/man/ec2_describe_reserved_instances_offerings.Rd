@@ -109,8 +109,7 @@ With Reserved Instances, you purchase the right to launch instances for
 a period of time. During that time period, you do not receive
 insufficient capacity errors, and you pay a lower usage rate than the
 rate charged for On-Demand instances for the actual time used.
-}
-\details{
+
 If you have listed your own Reserved Instances for sale in the Reserved
 Instance Marketplace, they will be excluded from these results. This is
 to ensure that you do not purchase your own Reserved Instances.

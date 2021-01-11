@@ -30,8 +30,7 @@ type, or any affected resources. To retrieve that information, use the
 and
 \href{https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntities.html}{DescribeAffectedEntities}
 operations.
-}
-\details{
+
 If no filter criteria are specified, all events are returned. Results
 are sorted by \code{lastModifiedTime}, starting with the most recent event.
 \itemize{

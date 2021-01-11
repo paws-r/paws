@@ -16,8 +16,7 @@ contains the certificate ID.)}
 Rejects a pending certificate transfer. After AWS IoT rejects a
 certificate transfer, the certificate status changes from
 \strong{PENDING\\_TRANSFER} to \strong{INACTIVE}.
-}
-\details{
+
 To check for pending certificate transfers, call ListCertificates to
 enumerate your certificates.
 

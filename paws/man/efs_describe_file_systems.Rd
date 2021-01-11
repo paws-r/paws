@@ -30,8 +30,7 @@ the file system \code{CreationToken} or the \code{FileSystemId} is provided.
 Otherwise, it returns descriptions of all file systems owned by the
 caller's AWS account in the AWS Region of the endpoint that you're
 calling.
-}
-\details{
+
 When retrieving all file system descriptions, you can optionally specify
 the \code{MaxItems} parameter to limit the number of descriptions in a
 response. Currently, this number is automatically set to 10. If more

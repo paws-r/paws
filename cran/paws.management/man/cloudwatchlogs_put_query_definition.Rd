@@ -35,8 +35,7 @@ the updated definition will contain no log groups.}
 \description{
 Creates or updates a query definition for CloudWatch Logs Insights. For
 more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html}{Analyzing Log Data with CloudWatch Logs Insights}.
-}
-\details{
+
 To update a query definition, specify its \code{queryDefinitionId} in your
 request. The values of \code{name}, \code{queryString}, and \code{logGroupNames} are
 changed to the values that you specify in your update operation. No

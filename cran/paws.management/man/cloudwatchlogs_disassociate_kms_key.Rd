@@ -13,8 +13,7 @@ cloudwatchlogs_disassociate_kms_key(logGroupName)
 \description{
 Disassociates the associated AWS Key Management Service (AWS KMS)
 customer master key (CMK) from the specified log group.
-}
-\details{
+
 After the AWS KMS CMK is disassociated from the log group, AWS
 CloudWatch Logs stops encrypting newly ingested data for the log group.
 All previously ingested data remains encrypted, and AWS CloudWatch Logs

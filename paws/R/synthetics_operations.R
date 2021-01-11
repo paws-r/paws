@@ -5,6 +5,7 @@ NULL
 
 #' Creates a canary
 #'
+#' @description
 #' Creates a canary. Canaries are scripts that monitor your endpoints and
 #' APIs from the outside-in. Canaries help you check the availability and
 #' latency of your web services and troubleshoot anomalies by investigating
@@ -152,6 +153,7 @@ synthetics_create_canary <- function(Name, Code, ArtifactS3Location, ExecutionRo
 
 #' Permanently deletes the specified canary
 #'
+#' @description
 #' Permanently deletes the specified canary.
 #' 
 #' When you delete a canary, resources used and created by the canary are
@@ -216,6 +218,7 @@ synthetics_delete_canary <- function(Name) {
 #' This operation returns a list of the canaries in your account, along
 #' with full details about each canary
 #'
+#' @description
 #' This operation returns a list of the canaries in your account, along
 #' with full details about each canary.
 #' 
@@ -265,6 +268,7 @@ synthetics_describe_canaries <- function(NextToken = NULL, MaxResults = NULL) {
 #' Use this operation to see information from the most recent run of each
 #' canary that you have created
 #'
+#' @description
 #' Use this operation to see information from the most recent run of each
 #' canary that you have created.
 #'
@@ -308,6 +312,7 @@ synthetics_describe_canaries_last_run <- function(NextToken = NULL, MaxResults =
 
 #' Returns a list of Synthetics canary runtime versions
 #'
+#' @description
 #' Returns a list of Synthetics canary runtime versions. For more
 #' information, see [Canary Runtime
 #' Versions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch_Synthetics_Canaries_Library.html).
@@ -352,6 +357,7 @@ synthetics_describe_runtime_versions <- function(NextToken = NULL, MaxResults = 
 
 #' Retrieves complete information about one canary
 #'
+#' @description
 #' Retrieves complete information about one canary. You must specify the
 #' name of the canary that you want. To get a list of canaries and their
 #' names, use
@@ -391,6 +397,7 @@ synthetics_get_canary <- function(Name) {
 
 #' Retrieves a list of runs for a specified canary
 #'
+#' @description
 #' Retrieves a list of runs for a specified canary.
 #'
 #' @usage
@@ -435,6 +442,7 @@ synthetics_get_canary_runs <- function(Name, NextToken = NULL, MaxResults = NULL
 
 #' Displays the tags associated with a canary
 #'
+#' @description
 #' Displays the tags associated with a canary.
 #'
 #' @usage
@@ -474,6 +482,7 @@ synthetics_list_tags_for_resource <- function(ResourceArn) {
 
 #' Use this operation to run a canary that has already been created
 #'
+#' @description
 #' Use this operation to run a canary that has already been created. The
 #' frequency of the canary runs is determined by the value of the canary's
 #' `Schedule`. To see a canary's schedule, use
@@ -514,6 +523,7 @@ synthetics_start_canary <- function(Name) {
 
 #' Stops the canary to prevent all future runs
 #'
+#' @description
 #' Stops the canary to prevent all future runs. If the canary is currently
 #' running, Synthetics stops waiting for the current run of the specified
 #' canary to complete. The run that is in progress completes on its own,
@@ -559,6 +569,7 @@ synthetics_stop_canary <- function(Name) {
 
 #' Assigns one or more tags (key-value pairs) to the specified canary
 #'
+#' @description
 #' Assigns one or more tags (key-value pairs) to the specified canary.
 #' 
 #' Tags can help you organize and categorize your resources. You can also
@@ -617,6 +628,7 @@ synthetics_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes one or more tags from the specified canary
 #'
+#' @description
 #' Removes one or more tags from the specified canary.
 #'
 #' @usage
@@ -661,6 +673,7 @@ synthetics_untag_resource <- function(ResourceArn, TagKeys) {
 #' Use this operation to change the settings of a canary that has already
 #' been created
 #'
+#' @description
 #' Use this operation to change the settings of a canary that has already
 #' been created.
 #' 

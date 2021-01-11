@@ -45,8 +45,7 @@ Gets the readme file or descriptive text for a package version. For
 packages that do not contain a readme file, CodeArtifact extracts a
 description from a metadata file. For example, from the
 \verb{&lt;description&gt;} element in the \code{pom.xml} file of a Maven package.
-}
-\details{
+
 The returned text might contain formatting. For example, it might
 contain formatting for Markdown or reStructuredText.
 }

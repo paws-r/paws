@@ -15,8 +15,7 @@ configservice_delete_conformance_pack(ConformancePackName)
 Deletes the specified conformance pack and all the AWS Config rules,
 remediation actions, and all evaluation results within that conformance
 pack.
-}
-\details{
+
 AWS Config sets the conformance pack to \code{DELETE_IN_PROGRESS} until the
 deletion is complete. You cannot update a conformance pack while it is
 in this state.

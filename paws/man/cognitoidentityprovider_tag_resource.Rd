@@ -15,8 +15,7 @@ cognitoidentityprovider_tag_resource(ResourceArn, Tags)
 Assigns a set of tags to an Amazon Cognito user pool. A tag is a label
 that you can use to categorize and manage user pools in different ways,
 such as by purpose, owner, environment, or other criteria.
-}
-\details{
+
 Each tag consists of a key and value, both of which you define. A key is
 a general category for more specific values. For example, if you have
 two versions of a user pool, one for testing and another for production,

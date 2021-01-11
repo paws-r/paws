@@ -23,8 +23,6 @@ with a directory. If the association permission is granted, the
 connection alias is shared with that account. If the association
 permission is revoked, the connection alias is unshared with the
 account. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
-}
-\details{
 \itemize{
 \item Before performing this operation, call
 \href{https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeConnectionAliases.html}{DescribeConnectionAliases}

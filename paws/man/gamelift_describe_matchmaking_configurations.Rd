@@ -26,8 +26,7 @@ To start at the beginning of the result set, do not specify a value.}
 }
 \description{
 Retrieves the details of FlexMatch matchmaking configurations.
-}
-\details{
+
 This operation offers the following options: (1) retrieve all
 matchmaking configurations, (2) retrieve configurations for a specified
 list, or (3) retrieve all configurations that use a specified rule set

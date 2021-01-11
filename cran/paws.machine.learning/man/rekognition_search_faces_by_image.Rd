@@ -24,7 +24,7 @@ number of faces with the highest confidence in the match.}
 
 \item{FaceMatchThreshold}{(Optional) Specifies the minimum confidence in the face match to return.
 For example, don't return any matches where confidence in matches is
-less than 70\%. The default value is 80\%.}
+less than 70\\%. The default value is 80\\%.}
 
 \item{QualityFilter}{A filter that specifies a quality bar for how much filtering is done to
 identify faces. Filtered faces aren't searched for in the collection. If
@@ -45,8 +45,7 @@ For a given input image, first detects the largest face in the image,
 and then searches the specified collection for matching faces. The
 operation compares the features of the input face with faces in the
 specified collection.
-}
-\details{
+
 To search for all faces in an input image, you might first call the
 IndexFaces operation, and then use the face IDs returned in subsequent
 calls to the SearchFaces operation.

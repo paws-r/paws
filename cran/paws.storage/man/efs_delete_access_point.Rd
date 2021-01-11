@@ -14,8 +14,7 @@ Deletes the specified access point. After deletion is complete, new
 clients can no longer connect to the access points. Clients connected to
 the access point at the time of deletion will continue to function until
 they terminate their connection.
-}
-\details{
+
 This operation requires permissions for the
 \code{elasticfilesystem:DeleteAccessPoint} action.
 }

@@ -32,8 +32,7 @@ Enables AWS Shield Advanced for a specific AWS resource. The resource
 can be an Amazon CloudFront distribution, Elastic Load Balancing load
 balancer, AWS Global Accelerator accelerator, Elastic IP Address, or an
 Amazon Route 53 hosted zone.
-}
-\details{
+
 You can add protection to only a single resource with each
 CreateProtection request. If you want to add protection to multiple
 resources at once, use the \href{https://console.aws.amazon.com/waf/home}{AWS WAF console}. For more information

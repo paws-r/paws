@@ -5,6 +5,7 @@ NULL
 
 #' Creates an application
 #'
+#' @description
 #' Creates an application. An application consists of one or more server
 #' groups. Each server group contain one or more servers.
 #'
@@ -83,6 +84,7 @@ sms_create_app <- function(name = NULL, description = NULL, roleName = NULL, cli
 
 #' Creates a replication job
 #'
+#' @description
 #' Creates a replication job. The replication job schedules periodic
 #' replication runs to replicate your server to AWS. Each replication run
 #' creates an Amazon Machine Image (AMI).
@@ -157,6 +159,7 @@ sms_create_replication_job <- function(serverId, seedReplicationTime, frequency 
 
 #' Deletes the specified application
 #'
+#' @description
 #' Deletes the specified application. Optionally deletes the launched stack
 #' associated with the application and all AWS SMS replication jobs for
 #' servers in the application.
@@ -201,6 +204,7 @@ sms_delete_app <- function(appId = NULL, forceStopAppReplication = NULL, forceTe
 
 #' Deletes the launch configuration for the specified application
 #'
+#' @description
 #' Deletes the launch configuration for the specified application.
 #'
 #' @usage
@@ -237,6 +241,7 @@ sms_delete_app_launch_configuration <- function(appId = NULL) {
 
 #' Deletes the replication configuration for the specified application
 #'
+#' @description
 #' Deletes the replication configuration for the specified application.
 #'
 #' @usage
@@ -273,6 +278,7 @@ sms_delete_app_replication_configuration <- function(appId = NULL) {
 
 #' Deletes the validation configuration for the specified application
 #'
+#' @description
 #' Deletes the validation configuration for the specified application.
 #'
 #' @usage
@@ -309,6 +315,7 @@ sms_delete_app_validation_configuration <- function(appId) {
 
 #' Deletes the specified replication job
 #'
+#' @description
 #' Deletes the specified replication job.
 #' 
 #' After you delete a replication job, there are no further replication
@@ -349,6 +356,7 @@ sms_delete_replication_job <- function(replicationJobId) {
 
 #' Deletes all servers from your server catalog
 #'
+#' @description
 #' Deletes all servers from your server catalog.
 #'
 #' @usage
@@ -381,6 +389,7 @@ sms_delete_server_catalog <- function() {
 
 #' Disassociates the specified connector from AWS SMS
 #'
+#' @description
 #' Disassociates the specified connector from AWS SMS.
 #' 
 #' After you disassociate a connector, it is no longer available to support
@@ -421,6 +430,7 @@ sms_disassociate_connector <- function(connectorId) {
 #' Generates a target change set for a currently launched stack and writes
 #' it to an Amazon S3 object in the customer’s Amazon S3 bucket
 #'
+#' @description
 #' Generates a target change set for a currently launched stack and writes
 #' it to an Amazon S3 object in the customer’s Amazon S3 bucket.
 #'
@@ -462,6 +472,7 @@ sms_generate_change_set <- function(appId = NULL, changesetFormat = NULL) {
 #' configuration and writes it to an Amazon S3 object in the customer’s
 #' Amazon S3 bucket
 #'
+#' @description
 #' Generates an AWS CloudFormation template based on the current launch
 #' configuration and writes it to an Amazon S3 object in the customer’s
 #' Amazon S3 bucket.
@@ -503,6 +514,7 @@ sms_generate_template <- function(appId = NULL, templateFormat = NULL) {
 
 #' Retrieve information about the specified application
 #'
+#' @description
 #' Retrieve information about the specified application.
 #'
 #' @usage
@@ -540,6 +552,7 @@ sms_get_app <- function(appId = NULL) {
 #' Retrieves the application launch configuration associated with the
 #' specified application
 #'
+#' @description
 #' Retrieves the application launch configuration associated with the
 #' specified application.
 #'
@@ -578,6 +591,7 @@ sms_get_app_launch_configuration <- function(appId = NULL) {
 #' Retrieves the application replication configuration associated with the
 #' specified application
 #'
+#' @description
 #' Retrieves the application replication configuration associated with the
 #' specified application.
 #'
@@ -616,6 +630,7 @@ sms_get_app_replication_configuration <- function(appId = NULL) {
 #' Retrieves information about a configuration for validating an
 #' application
 #'
+#' @description
 #' Retrieves information about a configuration for validating an
 #' application.
 #'
@@ -653,6 +668,7 @@ sms_get_app_validation_configuration <- function(appId) {
 
 #' Retrieves output from validating an application
 #'
+#' @description
 #' Retrieves output from validating an application.
 #'
 #' @usage
@@ -689,6 +705,7 @@ sms_get_app_validation_output <- function(appId) {
 
 #' Describes the connectors registered with the AWS SMS
 #'
+#' @description
 #' Describes the connectors registered with the AWS SMS.
 #'
 #' @usage
@@ -729,6 +746,7 @@ sms_get_connectors <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Describes the specified replication job or all of your replication jobs
 #'
+#' @description
 #' Describes the specified replication job or all of your replication jobs.
 #'
 #' @usage
@@ -771,6 +789,7 @@ sms_get_replication_jobs <- function(replicationJobId = NULL, nextToken = NULL, 
 
 #' Describes the replication runs for the specified replication job
 #'
+#' @description
 #' Describes the replication runs for the specified replication job.
 #'
 #' @usage
@@ -813,6 +832,7 @@ sms_get_replication_runs <- function(replicationJobId, nextToken = NULL, maxResu
 
 #' Describes the servers in your server catalog
 #'
+#' @description
 #' Describes the servers in your server catalog.
 #' 
 #' Before you can describe your servers, you must import them using
@@ -863,6 +883,7 @@ sms_get_servers <- function(nextToken = NULL, maxResults = NULL, vmServerAddress
 
 #' Allows application import from AWS Migration Hub
 #'
+#' @description
 #' Allows application import from AWS Migration Hub.
 #'
 #' @usage
@@ -903,6 +924,7 @@ sms_import_app_catalog <- function(roleName = NULL) {
 
 #' Gathers a complete list of on-premises servers
 #'
+#' @description
 #' Gathers a complete list of on-premises servers. Connectors must be
 #' installed and monitoring all servers to import.
 #' 
@@ -939,6 +961,7 @@ sms_import_server_catalog <- function() {
 
 #' Launches the specified application as a stack in AWS CloudFormation
 #'
+#' @description
 #' Launches the specified application as a stack in AWS CloudFormation.
 #'
 #' @usage
@@ -975,6 +998,7 @@ sms_launch_app <- function(appId = NULL) {
 
 #' Retrieves summaries for all applications
 #'
+#' @description
 #' Retrieves summaries for all applications.
 #'
 #' @usage
@@ -1020,6 +1044,7 @@ sms_list_apps <- function(appIds = NULL, nextToken = NULL, maxResults = NULL) {
 #' Provides information to AWS SMS about whether application validation is
 #' successful
 #'
+#' @description
 #' Provides information to AWS SMS about whether application validation is
 #' successful.
 #'
@@ -1064,6 +1089,7 @@ sms_notify_app_validation_output <- function(appId, notificationContext = NULL) 
 #' Creates or updates the launch configuration for the specified
 #' application
 #'
+#' @description
 #' Creates or updates the launch configuration for the specified
 #' application.
 #'
@@ -1156,6 +1182,7 @@ sms_put_app_launch_configuration <- function(appId = NULL, roleName = NULL, auto
 #' Creates or updates the replication configuration for the specified
 #' application
 #'
+#' @description
 #' Creates or updates the replication configuration for the specified
 #' application.
 #'
@@ -1233,6 +1260,7 @@ sms_put_app_replication_configuration <- function(appId = NULL, serverGroupRepli
 #' Creates or updates a validation configuration for the specified
 #' application
 #'
+#' @description
 #' Creates or updates a validation configuration for the specified
 #' application.
 #'
@@ -1331,6 +1359,7 @@ sms_put_app_validation_configuration <- function(appId, appValidationConfigurati
 #' Starts replicating the specified application by creating replication
 #' jobs for each server in the application
 #'
+#' @description
 #' Starts replicating the specified application by creating replication
 #' jobs for each server in the application.
 #'
@@ -1368,6 +1397,7 @@ sms_start_app_replication <- function(appId = NULL) {
 
 #' Starts an on-demand replication run for the specified application
 #'
+#' @description
 #' Starts an on-demand replication run for the specified application.
 #'
 #' @usage
@@ -1406,6 +1436,7 @@ sms_start_on_demand_app_replication <- function(appId, description = NULL) {
 
 #' Starts an on-demand replication run for the specified replication job
 #'
+#' @description
 #' Starts an on-demand replication run for the specified replication job.
 #' This replication run starts immediately. This replication run is in
 #' addition to the ones already scheduled.
@@ -1450,6 +1481,7 @@ sms_start_on_demand_replication_run <- function(replicationJobId, description = 
 #' Stops replicating the specified application by deleting the replication
 #' job for each server in the application
 #'
+#' @description
 #' Stops replicating the specified application by deleting the replication
 #' job for each server in the application.
 #'
@@ -1487,6 +1519,7 @@ sms_stop_app_replication <- function(appId = NULL) {
 
 #' Terminates the stack for the specified application
 #'
+#' @description
 #' Terminates the stack for the specified application.
 #'
 #' @usage
@@ -1523,6 +1556,7 @@ sms_terminate_app <- function(appId = NULL) {
 
 #' Updates the specified application
 #'
+#' @description
 #' Updates the specified application.
 #'
 #' @usage
@@ -1597,6 +1631,7 @@ sms_update_app <- function(appId = NULL, name = NULL, description = NULL, roleNa
 
 #' Updates the specified settings for the specified replication job
 #'
+#' @description
 #' Updates the specified settings for the specified replication job.
 #'
 #' @usage

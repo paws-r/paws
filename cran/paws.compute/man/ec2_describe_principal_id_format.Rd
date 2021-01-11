@@ -36,8 +36,7 @@ value.}
 Describes the ID format settings for the root user and all IAM roles and
 IAM users that have explicitly specified a longer ID (17-character ID)
 preference.
-}
-\details{
+
 By default, all IAM roles and IAM users default to the same ID settings
 as the root user, unless they explicitly override the settings. This
 request is useful for identifying those IAM users and IAM roles that

@@ -31,8 +31,7 @@ option works with SMB clients on Microsoft Windows 8, Windows Server
 \description{
 Updates the SMB security strategy on a file gateway. This action is only
 supported in file gateways.
-}
-\details{
+
 This API is called Security level in the User Guide.
 
 A higher security level can affect performance of the gateway.

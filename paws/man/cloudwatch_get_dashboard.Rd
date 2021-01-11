@@ -11,8 +11,7 @@ cloudwatch_get_dashboard(DashboardName)
 }
 \description{
 Displays the details of the dashboard that you specify.
-}
-\details{
+
 To copy an existing dashboard, use \code{GetDashboard}, and then use the data
 returned within \code{DashboardBody} as the template for the new dashboard
 when you call \code{PutDashboard} to create the copy.

@@ -22,8 +22,7 @@ in the \emph{IAM User Guide}.}
 \description{
 Sets the specified version of the specified policy as the policy's
 default (operative) version.
-}
-\details{
+
 This operation affects all users, groups, and roles that the policy is
 attached to. To list the users, groups, and roles that the policy is
 attached to, use the ListEntitiesForPolicy API.

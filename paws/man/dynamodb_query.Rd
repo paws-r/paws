@@ -282,8 +282,7 @@ in the \emph{Amazon DynamoDB Developer Guide}.}
 The \code{Query} operation finds items based on primary key values. You can
 query any table or secondary index that has a composite primary key (a
 partition key and a sort key).
-}
-\details{
+
 Use the \code{KeyConditionExpression} parameter to provide a specific value
 for the partition key. The \code{Query} operation will return all of the
 items from the table or index with that partition key value. You can

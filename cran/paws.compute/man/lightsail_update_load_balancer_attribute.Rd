@@ -18,11 +18,10 @@ lightsail_update_load_balancer_attribute(loadBalancerName,
 \description{
 Updates the specified attribute for a load balancer. You can only update
 one attribute at a time.
-}
-\details{
+
 The \verb{update load balancer attribute} operation supports tag-based access
 control via resource tags applied to the resource identified by
-\verb{load balancer name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{load balancer name}. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$update_load_balancer_attribute(

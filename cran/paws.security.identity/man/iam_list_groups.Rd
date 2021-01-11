@@ -36,8 +36,7 @@ subsequent call that tells the service where to continue from.}
 }
 \description{
 Lists the IAM groups that have the specified path prefix.
-}
-\details{
+
 You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }

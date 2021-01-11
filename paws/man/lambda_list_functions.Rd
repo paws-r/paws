@@ -24,8 +24,7 @@ retrieve the next page of results.}
 \description{
 Returns a list of Lambda functions, with the version-specific
 configuration of each. Lambda returns up to 50 functions per call.
-}
-\details{
+
 Set \code{FunctionVersion} to \code{ALL} to include all published versions of each
 function in addition to the unpublished version. To get more information
 about a function or version, use GetFunction.

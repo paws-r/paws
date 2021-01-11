@@ -13,8 +13,7 @@ cognitosync_get_cognito_events(IdentityPoolId)
 \description{
 Gets the events and the corresponding Lambda functions associated with
 an identity pool.
-}
-\details{
+
 This API can only be called with developer credentials. You cannot call
 this API with the temporary user credentials provided by Cognito
 Identity.

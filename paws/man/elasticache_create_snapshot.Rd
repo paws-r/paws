@@ -22,8 +22,7 @@ cluster.}
 \description{
 Creates a copy of an entire cluster or replication group at a specific
 moment in time.
-}
-\details{
+
 This operation is valid for Redis only.
 }
 \section{Request syntax}{

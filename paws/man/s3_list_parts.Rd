@@ -56,8 +56,7 @@ an \code{IsTruncated} field with the value of true, and a
 can include the part-number-marker query string parameter and set its
 value to the \code{NextPartNumberMarker} field value from the previous
 response.
-}
-\details{
+
 For more information on multipart uploads, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/uploadobjusingmpu.html}{Uploading Objects Using Multipart Upload}.
 
 For information on permissions required to use the multipart upload API,

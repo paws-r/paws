@@ -28,8 +28,7 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 }
 \description{
 Creates a target for your Traffic Mirror session.
-}
-\details{
+
 A Traffic Mirror target is the destination for mirrored traffic. The
 Traffic Mirror source and the Traffic Mirror target (monitoring
 appliances) can be in the same VPC, or in different VPCs connected via

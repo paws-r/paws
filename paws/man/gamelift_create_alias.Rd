@@ -29,8 +29,7 @@ Creates an alias for a fleet. In most situations, you can use an alias
 ID in place of a fleet ID. An alias provides a level of abstraction for
 a fleet that is useful when redirecting player traffic from one fleet to
 another, such as when updating your game build.
-}
-\details{
+
 Amazon GameLift supports two types of routing strategies for aliases:
 simple and terminal. A simple alias points to an active fleet. A
 terminal alias is used to display messaging or link to a URL instead of

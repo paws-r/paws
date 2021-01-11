@@ -38,8 +38,7 @@ permissions granted in the \code{Privileges}.}
 \description{
 Grants permissions to the principal to access metadata in the Data
 Catalog and data organized in underlying data storage such as Amazon S3.
-}
-\details{
+
 For information about permissions, see Security and Access Control to
 Metadata and Data.
 }

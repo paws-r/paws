@@ -19,8 +19,7 @@ CloudFormation successfully received them.}
 Cancels an update on the specified stack. If the call completes
 successfully, the stack rolls back the update and reverts to the
 previous stack configuration.
-}
-\details{
+
 You can cancel only stacks that are in the UPDATE\\_IN\\_PROGRESS state.
 }
 \section{Request syntax}{

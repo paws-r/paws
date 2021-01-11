@@ -12,8 +12,7 @@ get the policy.}
 }
 \description{
 Returns the IAM policy that is attached to the specified rule group.
-}
-\details{
+
 You must be the owner of the rule group to perform this operation.
 }
 \section{Request syntax}{

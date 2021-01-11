@@ -55,8 +55,7 @@ properties, cluster database properties, maintenance and backup
 properties, and security and access properties. This operation supports
 pagination. For more information about managing clusters, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html}{Amazon Redshift Clusters}
 in the \emph{Amazon Redshift Cluster Management Guide}.
-}
-\details{
+
 If you specify both tag keys and tag values in the same request, Amazon
 Redshift returns all clusters that match any combination of the
 specified keys and values. For example, if you have \code{owner} and

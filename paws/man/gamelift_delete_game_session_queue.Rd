@@ -15,8 +15,7 @@ or ARN value.}
 Deletes a game session queue. Once a queue is successfully deleted,
 unfulfilled StartGameSessionPlacement requests that reference the queue
 will fail. To delete a queue, specify the queue name.
-}
-\details{
+
 \strong{Learn more}
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-intro.html}{Using Multi-Region Queues}

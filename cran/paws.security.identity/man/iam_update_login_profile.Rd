@@ -36,8 +36,7 @@ IAM user to set a new password on next sign-in.}
 }
 \description{
 Changes the password for the specified IAM user.
-}
-\details{
+
 IAM users can change their own passwords by calling ChangePassword. For
 more information about modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing Passwords}
 in the \emph{IAM User Guide}.

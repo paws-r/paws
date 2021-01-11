@@ -5,6 +5,7 @@ NULL
 
 #' Creates a Kinesis Data Firehose delivery stream
 #'
+#' @description
 #' Creates a Kinesis Data Firehose delivery stream.
 #' 
 #' By default, you can create up to 50 delivery streams per AWS Region.
@@ -562,6 +563,7 @@ firehose_create_delivery_stream <- function(DeliveryStreamName, DeliveryStreamTy
 
 #' Deletes a delivery stream and its data
 #'
+#' @description
 #' Deletes a delivery stream and its data.
 #' 
 #' To check the state of a delivery stream, use DescribeDeliveryStream. You
@@ -623,6 +625,7 @@ firehose_delete_delivery_stream <- function(DeliveryStreamName, AllowForceDelete
 
 #' Describes the specified delivery stream and its status
 #'
+#' @description
 #' Describes the specified delivery stream and its status. For example,
 #' after your delivery stream is created, call `DescribeDeliveryStream` to
 #' see whether the delivery stream is `ACTIVE` and therefore ready for data
@@ -677,6 +680,7 @@ firehose_describe_delivery_stream <- function(DeliveryStreamName, Limit = NULL, 
 
 #' Lists your delivery streams in alphabetical order of their names
 #'
+#' @description
 #' Lists your delivery streams in alphabetical order of their names.
 #' 
 #' The number of delivery streams might be too large to return using a
@@ -739,6 +743,7 @@ firehose_list_delivery_streams <- function(Limit = NULL, DeliveryStreamType = NU
 
 #' Lists the tags for the specified delivery stream
 #'
+#' @description
 #' Lists the tags for the specified delivery stream. This operation has a
 #' limit of five transactions per second per account.
 #'
@@ -787,6 +792,7 @@ firehose_list_tags_for_delivery_stream <- function(DeliveryStreamName, Exclusive
 #' Writes a single data record into an Amazon Kinesis Data Firehose
 #' delivery stream
 #'
+#' @description
 #' Writes a single data record into an Amazon Kinesis Data Firehose
 #' delivery stream. To write multiple data records into a delivery stream,
 #' use PutRecordBatch. Applications using these operations are referred to
@@ -869,6 +875,7 @@ firehose_put_record <- function(DeliveryStreamName, Record) {
 #' which can achieve higher throughput per producer than when writing
 #' single records
 #'
+#' @description
 #' Writes multiple data records into a delivery stream in a single call,
 #' which can achieve higher throughput per producer than when writing
 #' single records. To write single data records into a delivery stream, use
@@ -975,6 +982,7 @@ firehose_put_record_batch <- function(DeliveryStreamName, Records) {
 
 #' Enables server-side encryption (SSE) for the delivery stream
 #'
+#' @description
 #' Enables server-side encryption (SSE) for the delivery stream.
 #' 
 #' This operation is asynchronous. It returns immediately. When you invoke
@@ -1066,6 +1074,7 @@ firehose_start_delivery_stream_encryption <- function(DeliveryStreamName, Delive
 
 #' Disables server-side encryption (SSE) for the delivery stream
 #'
+#' @description
 #' Disables server-side encryption (SSE) for the delivery stream.
 #' 
 #' This operation is asynchronous. It returns immediately. When you invoke
@@ -1128,6 +1137,7 @@ firehose_stop_delivery_stream_encryption <- function(DeliveryStreamName) {
 
 #' Adds or updates tags for the specified delivery stream
 #'
+#' @description
 #' Adds or updates tags for the specified delivery stream. A tag is a
 #' key-value pair that you can define and assign to AWS resources. If you
 #' specify a tag that already exists, the tag value is replaced with the
@@ -1183,6 +1193,7 @@ firehose_tag_delivery_stream <- function(DeliveryStreamName, Tags) {
 
 #' Removes tags from the specified delivery stream
 #'
+#' @description
 #' Removes tags from the specified delivery stream. Removed tags are
 #' deleted, and you can't recover them after this operation successfully
 #' completes.
@@ -1230,6 +1241,7 @@ firehose_untag_delivery_stream <- function(DeliveryStreamName, TagKeys) {
 
 #' Updates the specified destination of the specified delivery stream
 #'
+#' @description
 #' Updates the specified destination of the specified delivery stream.
 #' 
 #' Use this operation to change the destination type (for example, to

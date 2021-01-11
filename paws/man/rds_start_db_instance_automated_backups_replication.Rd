@@ -28,8 +28,7 @@ instance.}
 }
 \description{
 Enables replication of automated backups to a different AWS Region.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html}{Replicating Automated Backups to Another AWS Region}
 in the \emph{Amazon RDS User Guide.}
 }

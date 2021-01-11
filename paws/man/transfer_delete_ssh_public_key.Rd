@@ -17,8 +17,7 @@ deleted.}
 }
 \description{
 Deletes a user's Secure Shell (SSH) public key.
-}
-\details{
+
 No response is returned from this operation.
 }
 \section{Request syntax}{

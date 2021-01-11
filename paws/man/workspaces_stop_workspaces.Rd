@@ -11,8 +11,7 @@ workspaces_stop_workspaces(StopWorkspaceRequests)
 }
 \description{
 Stops the specified WorkSpaces.
-}
-\details{
+
 You cannot stop a WorkSpace unless it has a running mode of \code{AutoStop}
 and a state of \code{AVAILABLE}, \code{IMPAIRED}, \code{UNHEALTHY}, or \code{ERROR}.
 }

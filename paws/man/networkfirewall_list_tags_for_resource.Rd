@@ -28,8 +28,7 @@ resources, for purposes like billing. For example, you might set the tag
 key to "customer" and the value to the customer name or ID. You can
 specify one or more tags to add to each AWS resource, up to 50 tags for
 a resource.
-}
-\details{
+
 You can tag the AWS resources that you manage through AWS Network
 Firewall: firewalls, firewall policies, and rule groups.
 }

@@ -6,6 +6,7 @@ NULL
 #' Associates an evidence folder to the specified assessment report in AWS
 #' Audit Manager
 #'
+#' @description
 #' Associates an evidence folder to the specified assessment report in AWS
 #' Audit Manager.
 #'
@@ -47,6 +48,7 @@ auditmanager_associate_assessment_report_evidence_folder <- function(assessmentI
 #' Associates a list of evidence to an assessment report in an AWS Audit
 #' Manager assessment
 #'
+#' @description
 #' Associates a list of evidence to an assessment report in an AWS Audit
 #' Manager assessment.
 #'
@@ -92,6 +94,7 @@ auditmanager_batch_associate_assessment_report_evidence <- function(assessmentId
 #' Create a batch of delegations for a specified assessment in AWS Audit
 #' Manager
 #'
+#' @description
 #' Create a batch of delegations for a specified assessment in AWS Audit
 #' Manager.
 #'
@@ -139,6 +142,7 @@ auditmanager_batch_create_delegation_by_assessment <- function(createDelegationR
 
 #' Deletes the delegations in the specified AWS Audit Manager assessment
 #'
+#' @description
 #' Deletes the delegations in the specified AWS Audit Manager assessment.
 #'
 #' @usage
@@ -181,6 +185,7 @@ auditmanager_batch_delete_delegation_by_assessment <- function(delegationIds, as
 #' Disassociates a list of evidence from the specified assessment report in
 #' AWS Audit Manager
 #'
+#' @description
 #' Disassociates a list of evidence from the specified assessment report in
 #' AWS Audit Manager.
 #'
@@ -226,6 +231,7 @@ auditmanager_batch_disassociate_assessment_report_evidence <- function(assessmen
 #' Uploads one or more pieces of evidence to the specified control in the
 #' assessment in AWS Audit Manager
 #'
+#' @description
 #' Uploads one or more pieces of evidence to the specified control in the
 #' assessment in AWS Audit Manager.
 #'
@@ -274,6 +280,7 @@ auditmanager_batch_import_evidence_to_assessment_control <- function(assessmentI
 
 #' Creates an assessment in AWS Audit Manager
 #'
+#' @description
 #' Creates an assessment in AWS Audit Manager.
 #'
 #' @usage
@@ -347,6 +354,7 @@ auditmanager_create_assessment <- function(name, description = NULL, assessmentR
 
 #' Creates a custom framework in AWS Audit Manager
 #'
+#' @description
 #' Creates a custom framework in AWS Audit Manager.
 #'
 #' @usage
@@ -400,6 +408,7 @@ auditmanager_create_assessment_framework <- function(name, description = NULL, c
 
 #' Creates an assessment report for the specified assessment
 #'
+#' @description
 #' Creates an assessment report for the specified assessment.
 #'
 #' @usage
@@ -440,6 +449,7 @@ auditmanager_create_assessment_report <- function(name, description = NULL, asse
 
 #' Creates a new custom control in AWS Audit Manager
 #'
+#' @description
 #' Creates a new custom control in AWS Audit Manager.
 #'
 #' @usage
@@ -505,6 +515,7 @@ auditmanager_create_control <- function(name, description = NULL, testingInforma
 
 #' Deletes an assessment in AWS Audit Manager
 #'
+#' @description
 #' Deletes an assessment in AWS Audit Manager.
 #'
 #' @usage
@@ -541,6 +552,7 @@ auditmanager_delete_assessment <- function(assessmentId) {
 
 #' Deletes a custom framework in AWS Audit Manager
 #'
+#' @description
 #' Deletes a custom framework in AWS Audit Manager.
 #'
 #' @usage
@@ -577,6 +589,7 @@ auditmanager_delete_assessment_framework <- function(frameworkId) {
 
 #' Deletes an assessment report from an assessment in AWS Audit Manager
 #'
+#' @description
 #' Deletes an assessment report from an assessment in AWS Audit Manager.
 #'
 #' @usage
@@ -615,6 +628,7 @@ auditmanager_delete_assessment_report <- function(assessmentId, assessmentReport
 
 #' Deletes a custom control in AWS Audit Manager
 #'
+#' @description
 #' Deletes a custom control in AWS Audit Manager.
 #'
 #' @usage
@@ -651,6 +665,7 @@ auditmanager_delete_control <- function(controlId) {
 
 #' Deregisters an account in AWS Audit Manager
 #'
+#' @description
 #' Deregisters an account in AWS Audit Manager.
 #'
 #' @usage
@@ -684,6 +699,7 @@ auditmanager_deregister_account <- function() {
 #' Deregisters the delegated AWS administrator account from the AWS
 #' organization
 #'
+#' @description
 #' Deregisters the delegated AWS administrator account from the AWS
 #' organization.
 #'
@@ -722,6 +738,7 @@ auditmanager_deregister_organization_admin_account <- function(adminAccountId = 
 #' Disassociates an evidence folder from the specified assessment report in
 #' AWS Audit Manager
 #'
+#' @description
 #' Disassociates an evidence folder from the specified assessment report in
 #' AWS Audit Manager.
 #'
@@ -762,6 +779,7 @@ auditmanager_disassociate_assessment_report_evidence_folder <- function(assessme
 
 #' Returns the registration status of an account in AWS Audit Manager
 #'
+#' @description
 #' Returns the registration status of an account in AWS Audit Manager.
 #'
 #' @usage
@@ -794,6 +812,7 @@ auditmanager_get_account_status <- function() {
 
 #' Returns an assessment from AWS Audit Manager
 #'
+#' @description
 #' Returns an assessment from AWS Audit Manager.
 #'
 #' @usage
@@ -830,6 +849,7 @@ auditmanager_get_assessment <- function(assessmentId) {
 
 #' Returns a framework from AWS Audit Manager
 #'
+#' @description
 #' Returns a framework from AWS Audit Manager.
 #'
 #' @usage
@@ -866,6 +886,7 @@ auditmanager_get_assessment_framework <- function(frameworkId) {
 
 #' Returns the URL of a specified assessment report in AWS Audit Manager
 #'
+#' @description
 #' Returns the URL of a specified assessment report in AWS Audit Manager.
 #'
 #' @usage
@@ -904,6 +925,7 @@ auditmanager_get_assessment_report_url <- function(assessmentReportId, assessmen
 
 #' Returns a list of changelogs from AWS Audit Manager
 #'
+#' @description
 #' Returns a list of changelogs from AWS Audit Manager.
 #'
 #' @usage
@@ -950,6 +972,7 @@ auditmanager_get_change_logs <- function(assessmentId, controlSetId = NULL, cont
 
 #' Returns a control from AWS Audit Manager
 #'
+#' @description
 #' Returns a control from AWS Audit Manager.
 #'
 #' @usage
@@ -986,6 +1009,7 @@ auditmanager_get_control <- function(controlId) {
 
 #' Returns a list of delegations from an audit owner to a delegate
 #'
+#' @description
 #' Returns a list of delegations from an audit owner to a delegate.
 #'
 #' @usage
@@ -1025,6 +1049,7 @@ auditmanager_get_delegations <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Returns evidence from AWS Audit Manager
 #'
+#' @description
 #' Returns evidence from AWS Audit Manager.
 #'
 #' @usage
@@ -1069,6 +1094,7 @@ auditmanager_get_evidence <- function(assessmentId, controlSetId, evidenceFolder
 #' Returns all evidence from a specified evidence folder in AWS Audit
 #' Manager
 #'
+#' @description
 #' Returns all evidence from a specified evidence folder in AWS Audit
 #' Manager.
 #'
@@ -1117,6 +1143,7 @@ auditmanager_get_evidence_by_evidence_folder <- function(assessmentId, controlSe
 #' Returns an evidence folder from the specified assessment in AWS Audit
 #' Manager
 #'
+#' @description
 #' Returns an evidence folder from the specified assessment in AWS Audit
 #' Manager.
 #'
@@ -1160,6 +1187,7 @@ auditmanager_get_evidence_folder <- function(assessmentId, controlSetId, evidenc
 #' Returns the evidence folders from a specified assessment in AWS Audit
 #' Manager
 #'
+#' @description
 #' Returns the evidence folders from a specified assessment in AWS Audit
 #' Manager.
 #'
@@ -1204,6 +1232,7 @@ auditmanager_get_evidence_folders_by_assessment <- function(assessmentId, nextTo
 #' Returns a list of evidence folders associated with a specified control
 #' of an assessment in AWS Audit Manager
 #'
+#' @description
 #' Returns a list of evidence folders associated with a specified control
 #' of an assessment in AWS Audit Manager.
 #'
@@ -1252,6 +1281,7 @@ auditmanager_get_evidence_folders_by_assessment_control <- function(assessmentId
 #' Returns the name of the delegated AWS administrator account for the AWS
 #' organization
 #'
+#' @description
 #' Returns the name of the delegated AWS administrator account for the AWS
 #' organization.
 #'
@@ -1285,6 +1315,7 @@ auditmanager_get_organization_admin_account <- function() {
 
 #' Returns a list of the in-scope AWS services for the specified assessment
 #'
+#' @description
 #' Returns a list of the in-scope AWS services for the specified
 #' assessment.
 #'
@@ -1318,6 +1349,7 @@ auditmanager_get_services_in_scope <- function() {
 
 #' Returns the settings for the specified AWS account
 #'
+#' @description
 #' Returns the settings for the specified AWS account.
 #'
 #' @usage
@@ -1355,6 +1387,7 @@ auditmanager_get_settings <- function(attribute) {
 #' Returns a list of the frameworks available in the AWS Audit Manager
 #' framework library
 #'
+#' @description
 #' Returns a list of the frameworks available in the AWS Audit Manager
 #' framework library.
 #'
@@ -1398,6 +1431,7 @@ auditmanager_list_assessment_frameworks <- function(frameworkType, nextToken = N
 
 #' Returns a list of assessment reports created in AWS Audit Manager
 #'
+#' @description
 #' Returns a list of assessment reports created in AWS Audit Manager.
 #'
 #' @usage
@@ -1437,6 +1471,7 @@ auditmanager_list_assessment_reports <- function(nextToken = NULL, maxResults = 
 
 #' Returns a list of current and past assessments from AWS Audit Manager
 #'
+#' @description
 #' Returns a list of current and past assessments from AWS Audit Manager.
 #'
 #' @usage
@@ -1476,6 +1511,7 @@ auditmanager_list_assessments <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Returns a list of controls from AWS Audit Manager
 #'
+#' @description
 #' Returns a list of controls from AWS Audit Manager.
 #'
 #' @usage
@@ -1518,6 +1554,7 @@ auditmanager_list_controls <- function(controlType, nextToken = NULL, maxResults
 #' Returns a list of keywords that pre-mapped to the specified control data
 #' source
 #'
+#' @description
 #' Returns a list of keywords that pre-mapped to the specified control data
 #' source.
 #'
@@ -1561,6 +1598,7 @@ auditmanager_list_keywords_for_data_source <- function(source, nextToken = NULL,
 
 #' Returns a list of all AWS Audit Manager notifications
 #'
+#' @description
 #' Returns a list of all AWS Audit Manager notifications.
 #'
 #' @usage
@@ -1600,6 +1638,7 @@ auditmanager_list_notifications <- function(nextToken = NULL, maxResults = NULL)
 
 #' Returns a list of tags for the specified resource in AWS Audit Manager
 #'
+#' @description
 #' Returns a list of tags for the specified resource in AWS Audit Manager.
 #'
 #' @usage
@@ -1636,6 +1675,7 @@ auditmanager_list_tags_for_resource <- function(resourceArn) {
 
 #' Enables AWS Audit Manager for the specified AWS account
 #'
+#' @description
 #' Enables AWS Audit Manager for the specified AWS account.
 #'
 #' @usage
@@ -1675,6 +1715,7 @@ auditmanager_register_account <- function(kmsKey = NULL, delegatedAdminAccount =
 #' Enables an AWS account within the organization as the delegated
 #' administrator for AWS Audit Manager
 #'
+#' @description
 #' Enables an AWS account within the organization as the delegated
 #' administrator for AWS Audit Manager.
 #'
@@ -1712,6 +1753,7 @@ auditmanager_register_organization_admin_account <- function(adminAccountId) {
 
 #' Tags the specified resource in AWS Audit Manager
 #'
+#' @description
 #' Tags the specified resource in AWS Audit Manager.
 #'
 #' @usage
@@ -1752,6 +1794,7 @@ auditmanager_tag_resource <- function(resourceArn, tags) {
 
 #' Removes a tag from a resource in AWS Audit Manager
 #'
+#' @description
 #' Removes a tag from a resource in AWS Audit Manager.
 #'
 #' @usage
@@ -1792,6 +1835,7 @@ auditmanager_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Edits an AWS Audit Manager assessment
 #'
+#' @description
 #' Edits an AWS Audit Manager assessment.
 #'
 #' @usage
@@ -1861,6 +1905,7 @@ auditmanager_update_assessment <- function(assessmentId, assessmentName = NULL, 
 
 #' Updates a control within an assessment in AWS Audit Manager
 #'
+#' @description
 #' Updates a control within an assessment in AWS Audit Manager.
 #'
 #' @usage
@@ -1906,6 +1951,7 @@ auditmanager_update_assessment_control <- function(assessmentId, controlSetId, c
 
 #' Updates the status of a control set in an AWS Audit Manager assessment
 #'
+#' @description
 #' Updates the status of a control set in an AWS Audit Manager assessment.
 #'
 #' @usage
@@ -1949,6 +1995,7 @@ auditmanager_update_assessment_control_set_status <- function(assessmentId, cont
 
 #' Updates a custom framework in AWS Audit Manager
 #'
+#' @description
 #' Updates a custom framework in AWS Audit Manager.
 #'
 #' @usage
@@ -2005,6 +2052,7 @@ auditmanager_update_assessment_framework <- function(frameworkId, name, descript
 
 #' Updates the status of an assessment in AWS Audit Manager
 #'
+#' @description
 #' Updates the status of an assessment in AWS Audit Manager.
 #'
 #' @usage
@@ -2043,6 +2091,7 @@ auditmanager_update_assessment_status <- function(assessmentId, status) {
 
 #' Updates a custom control in AWS Audit Manager
 #'
+#' @description
 #' Updates a custom control in AWS Audit Manager.
 #'
 #' @usage
@@ -2108,6 +2157,7 @@ auditmanager_update_control <- function(controlId, name, description = NULL, tes
 
 #' Updates AWS Audit Manager settings for the current user account
 #'
+#' @description
 #' Updates AWS Audit Manager settings for the current user account.
 #'
 #' @usage
@@ -2160,6 +2210,7 @@ auditmanager_update_settings <- function(snsTopic = NULL, defaultAssessmentRepor
 
 #' Validates the integrity of an assessment report in AWS Audit Manager
 #'
+#' @description
 #' Validates the integrity of an assessment report in AWS Audit Manager.
 #'
 #' @usage

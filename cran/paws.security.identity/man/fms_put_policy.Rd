@@ -13,8 +13,7 @@ fms_put_policy(Policy, TagList)
 }
 \description{
 Creates an AWS Firewall Manager policy.
-}
-\details{
+
 Firewall Manager provides the following types of policies:
 \itemize{
 \item An AWS WAF policy (type WAFV2), which defines rule groups to run

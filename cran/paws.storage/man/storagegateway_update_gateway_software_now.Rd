@@ -12,8 +12,7 @@ storagegateway_update_gateway_software_now(GatewayARN)
 \description{
 Updates the gateway virtual machine (VM) software. The request
 immediately triggers the software update.
-}
-\details{
+
 When you make this request, you get a \verb{200 OK} success response
 immediately. However, it might take some time for the update to
 complete. You can call DescribeGatewayInformation to verify the gateway

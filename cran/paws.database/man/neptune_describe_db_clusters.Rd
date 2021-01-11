@@ -48,8 +48,7 @@ records beyond the marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Returns information about provisioned DB clusters, and supports
 pagination.
-}
-\details{
+
 This operation can also return information for Amazon RDS clusters and
 Amazon DocDB clusters.
 }

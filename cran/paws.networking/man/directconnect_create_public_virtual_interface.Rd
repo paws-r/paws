@@ -16,8 +16,7 @@ directconnect_create_public_virtual_interface(connectionId,
 Creates a public virtual interface. A virtual interface is the VLAN that
 transports AWS Direct Connect traffic. A public virtual interface
 supports sending traffic to public services of AWS such as Amazon S3.
-}
-\details{
+
 When creating an IPv6 public virtual interface (\code{addressFamily} is
 \code{ipv6}), leave the \code{customer} and \code{amazon} address fields blank to use
 auto-assigned IPv6 space. Custom IPv6 addresses are not supported.

@@ -18,8 +18,7 @@ different account, the request will fail with an HTTP
 Returns the default encryption configuration for an Amazon S3 bucket.
 For information about the Amazon S3 default encryption feature, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-encryption.html}{Amazon S3 Default Bucket Encryption}.
-}
-\details{
+
 To use this operation, you must have permission to perform the
 \code{s3:GetEncryptionConfiguration} action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to

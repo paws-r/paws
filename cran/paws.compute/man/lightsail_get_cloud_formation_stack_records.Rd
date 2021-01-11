@@ -18,8 +18,7 @@ request.}
 \description{
 Returns the CloudFormation stack record created as a result of the
 \verb{create cloud formation stack} operation.
-}
-\details{
+
 An AWS CloudFormation stack is used to create a new Amazon EC2 instance
 from an exported Lightsail snapshot.
 }

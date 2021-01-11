@@ -14,8 +14,7 @@ resource ARNs by using the ListOpenIDConnectProviders operation.}
 \description{
 Deletes an OpenID Connect identity provider (IdP) resource object in
 IAM.
-}
-\details{
+
 Deleting an IAM OIDC provider resource does not update any roles that
 reference the provider as a principal in their trust policies. Any
 attempt to assume a role that references a deleted provider fails.

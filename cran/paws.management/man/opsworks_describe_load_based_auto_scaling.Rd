@@ -11,8 +11,7 @@ opsworks_describe_load_based_auto_scaling(LayerIds)
 }
 \description{
 Describes load-based auto scaling configurations for specified layers.
-}
-\details{
+
 You must specify at least one of the parameters.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a

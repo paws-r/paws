@@ -24,8 +24,7 @@ DescribeTrusts. Pass null if this is the first call.}
 }
 \description{
 Obtains information about the trust relationships for this account.
-}
-\details{
+
 If no input parameters are provided, such as DirectoryId or TrustIds,
 this request describes all the trust relationships belonging to the
 account.

@@ -29,8 +29,6 @@ Used to test if the caller has permission to make the call.}
 \description{
 Notifies Migration Hub of the current status, progress, or other detail
 regarding a migration task. This API has the following traits:
-}
-\details{
 \itemize{
 \item Migration tools will call the \code{NotifyMigrationTaskState} API to
 share the latest progress and status.

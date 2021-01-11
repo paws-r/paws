@@ -25,8 +25,7 @@ search on the tags.}
 Creates an Amazon SageMaker \emph{trial}. A trial is a set of steps called
 \emph{trial components} that produce a machine learning model. A trial is
 part of a single Amazon SageMaker \emph{experiment}.
-}
-\details{
+
 When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK,
 all experiments, trials, and trial components are automatically tracked,
 logged, and indexed. When you use the AWS SDK for Python (Boto), you

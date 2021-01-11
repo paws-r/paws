@@ -21,8 +21,7 @@ specify as the page token in a subsequent request.}
 \description{
 Returns all of the runtime parameters offered by the underlying database
 software, or engine, for a specific database in Amazon Lightsail.
-}
-\details{
+
 In addition to the parameter names and values, this operation returns
 other information about each parameter. This information includes
 whether changes require a reboot, whether the parameter is modifiable,

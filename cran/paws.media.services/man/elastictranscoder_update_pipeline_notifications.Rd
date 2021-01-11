@@ -36,8 +36,7 @@ is the ARN that Amazon SNS returned when you created the topic.
 \description{
 With the UpdatePipelineNotifications operation, you can update Amazon
 Simple Notification Service (Amazon SNS) notifications for a pipeline.
-}
-\details{
+
 When you update notifications for a pipeline, Elastic Transcoder returns
 the values that you specified in the request.
 }

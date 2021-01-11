@@ -34,8 +34,7 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 }
 \description{
 Gets a list of all grants for the specified customer master key (CMK).
-}
-\details{
+
 The \code{GranteePrincipal} field in the \code{ListGrants} response usually
 contains the user or role designated as the grantee principal in the
 grant. However, when the grantee principal in the grant is an AWS

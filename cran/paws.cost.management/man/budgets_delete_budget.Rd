@@ -14,8 +14,7 @@ delete.}
 }
 \description{
 Deletes a budget. You can delete your budget at any time.
-}
-\details{
+
 Deleting a budget also deletes the notifications and subscribers that
 are associated with that budget.
 }

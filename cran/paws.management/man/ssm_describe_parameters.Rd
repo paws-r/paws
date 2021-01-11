@@ -21,8 +21,7 @@ from a previous call.)}
 }
 \description{
 Get information about a parameter.
-}
-\details{
+
 Request results are returned on a best-effort basis. If you specify
 \code{MaxResults} in the request, the response includes information up to the
 limit specified. The number of items returned, however, can be between

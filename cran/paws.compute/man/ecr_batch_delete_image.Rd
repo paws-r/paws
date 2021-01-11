@@ -20,8 +20,7 @@ format of the \code{imageIds} reference is \code{imageTag=tag} or
 \description{
 Deletes a list of specified images within a repository. Images are
 specified with either an \code{imageTag} or \code{imageDigest}.
-}
-\details{
+
 You can remove a tag from an image by specifying the image's tag in your
 request. When you remove the last tag from an image, the image is
 deleted from your repository.

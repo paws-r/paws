@@ -20,8 +20,7 @@ associate with a private hosted zone.}
 }
 \description{
 Associates an Amazon VPC with a private hosted zone.
-}
-\details{
+
 To perform the association, the VPC and the private hosted zone must
 already exist. You can't convert a public hosted zone into a private
 hosted zone.

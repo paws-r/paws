@@ -25,8 +25,7 @@ be provisioned.}
 }
 \description{
 Deprecated. Use AllocateHostedConnection instead.
-}
-\details{
+
 Creates a hosted connection on an interconnect.
 
 Allocates a VLAN number and a specified amount of bandwidth for use by a

@@ -17,7 +17,7 @@ entity. Enclosed key-value pairs are API-specific, but only
 OpenAPI-compliant key-value pairs can be exported and, hence, published.}
 }
 \description{
-Create documentation part
+
 }
 \section{Request syntax}{
 \preformatted{svc$create_documentation_part(

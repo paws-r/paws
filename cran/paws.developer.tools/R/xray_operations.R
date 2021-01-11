@@ -5,6 +5,7 @@ NULL
 
 #' Retrieves a list of traces specified by ID
 #'
+#' @description
 #' Retrieves a list of traces specified by ID. Each trace is a collection
 #' of segment documents that originates from a single request. Use
 #' `GetTraceSummaries` to get a list of trace IDs.
@@ -47,6 +48,7 @@ xray_batch_get_traces <- function(TraceIds, NextToken = NULL) {
 
 #' Creates a group resource with a name and a filter expression
 #'
+#' @description
 #' Creates a group resource with a name and a filter expression.
 #'
 #' @usage
@@ -126,6 +128,7 @@ xray_create_group <- function(GroupName, FilterExpression = NULL, InsightsConfig
 #' Creates a rule to control sampling behavior for instrumented
 #' applications
 #'
+#' @description
 #' Creates a rule to control sampling behavior for instrumented
 #' applications. Services retrieve rules with GetSamplingRules, and
 #' evaluate each rule in ascending order of *priority* for each request. If
@@ -211,6 +214,7 @@ xray_create_sampling_rule <- function(SamplingRule, Tags = NULL) {
 
 #' Deletes a group resource
 #'
+#' @description
 #' Deletes a group resource.
 #'
 #' @usage
@@ -249,6 +253,7 @@ xray_delete_group <- function(GroupName = NULL, GroupARN = NULL) {
 
 #' Deletes a sampling rule
 #'
+#' @description
 #' Deletes a sampling rule.
 #'
 #' @usage
@@ -289,6 +294,7 @@ xray_delete_sampling_rule <- function(RuleName = NULL, RuleARN = NULL) {
 
 #' Retrieves the current encryption configuration for X-Ray data
 #'
+#' @description
 #' Retrieves the current encryption configuration for X-Ray data.
 #'
 #' @usage
@@ -321,6 +327,7 @@ xray_get_encryption_config <- function() {
 
 #' Retrieves group resource details
 #'
+#' @description
 #' Retrieves group resource details.
 #'
 #' @usage
@@ -359,6 +366,7 @@ xray_get_group <- function(GroupName = NULL, GroupARN = NULL) {
 
 #' Retrieves all active group details
 #'
+#' @description
 #' Retrieves all active group details.
 #'
 #' @usage
@@ -395,6 +403,7 @@ xray_get_groups <- function(NextToken = NULL) {
 
 #' Retrieves the summary information of an insight
 #'
+#' @description
 #' Retrieves the summary information of an insight. This includes impact to
 #' clients and root cause services, the top anomalous services, the
 #' category, the state of the insight, and the start and end time of the
@@ -436,6 +445,7 @@ xray_get_insight <- function(InsightId) {
 #' X-Ray reevaluates insights periodically until they're resolved, and
 #' records each intermediate state as an event
 #'
+#' @description
 #' X-Ray reevaluates insights periodically until they're resolved, and
 #' records each intermediate state as an event. You can review an insight's
 #' events in the Impact Timeline on the Inspect page in the X-Ray console.
@@ -480,6 +490,7 @@ xray_get_insight_events <- function(InsightId, MaxResults = NULL, NextToken = NU
 
 #' Retrieves a service graph structure filtered by the specified insight
 #'
+#' @description
 #' Retrieves a service graph structure filtered by the specified insight.
 #' The service graph is limited to only structural information. For a
 #' complete service graph, use this API with the GetServiceGraph API.
@@ -535,6 +546,7 @@ xray_get_insight_impact_graph <- function(InsightId, StartTime, EndTime, NextTok
 #' Retrieves the summaries of all insights in the specified group matching
 #' the provided filter values
 #'
+#' @description
 #' Retrieves the summaries of all insights in the specified group matching
 #' the provided filter values.
 #'
@@ -594,6 +606,7 @@ xray_get_insight_summaries <- function(States = NULL, GroupARN = NULL, GroupName
 
 #' Retrieves all sampling rules
 #'
+#' @description
 #' Retrieves all sampling rules.
 #'
 #' @usage
@@ -631,6 +644,7 @@ xray_get_sampling_rules <- function(NextToken = NULL) {
 #' Retrieves information about recent sampling results for all sampling
 #' rules
 #'
+#' @description
 #' Retrieves information about recent sampling results for all sampling
 #' rules.
 #'
@@ -669,6 +683,7 @@ xray_get_sampling_statistic_summaries <- function(NextToken = NULL) {
 #' Requests a sampling quota for rules that the service is using to sample
 #' requests
 #'
+#' @description
 #' Requests a sampling quota for rules that the service is using to sample
 #' requests.
 #'
@@ -718,6 +733,7 @@ xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
 #' Retrieves a document that describes services that process incoming
 #' requests, and downstream services that they call as a result
 #'
+#' @description
 #' Retrieves a document that describes services that process incoming
 #' requests, and downstream services that they call as a result. Root
 #' services process incoming requests and make calls to downstream
@@ -775,6 +791,7 @@ xray_get_service_graph <- function(StartTime, EndTime, GroupName = NULL, GroupAR
 #' Get an aggregation of service statistics defined by a specific time
 #' range
 #'
+#' @description
 #' Get an aggregation of service statistics defined by a specific time
 #' range.
 #'
@@ -836,6 +853,7 @@ xray_get_time_series_service_statistics <- function(StartTime, EndTime, GroupNam
 
 #' Retrieves a service graph for one or more specific trace IDs
 #'
+#' @description
 #' Retrieves a service graph for one or more specific trace IDs.
 #'
 #' @usage
@@ -877,6 +895,7 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 #' Retrieves IDs and annotations for traces available for a specified time
 #' frame using an optional filter
 #'
+#' @description
 #' Retrieves IDs and annotations for traces available for a specified time
 #' frame using an optional filter. To get the full traces, pass the trace
 #' IDs to `BatchGetTraces`.
@@ -957,6 +976,7 @@ xray_get_trace_summaries <- function(StartTime, EndTime, TimeRangeType = NULL, S
 #' Returns a list of tags that are applied to the specified AWS X-Ray group
 #' or sampling rule
 #'
+#' @description
 #' Returns a list of tags that are applied to the specified AWS X-Ray group
 #' or sampling rule.
 #'
@@ -998,6 +1018,7 @@ xray_list_tags_for_resource <- function(ResourceARN, NextToken = NULL) {
 
 #' Updates the encryption configuration for X-Ray data
 #'
+#' @description
 #' Updates the encryption configuration for X-Ray data.
 #'
 #' @usage
@@ -1050,6 +1071,7 @@ xray_put_encryption_config <- function(KeyId = NULL, Type) {
 
 #' Used by the AWS X-Ray daemon to upload telemetry
 #'
+#' @description
 #' Used by the AWS X-Ray daemon to upload telemetry.
 #'
 #' @usage
@@ -1111,6 +1133,7 @@ xray_put_telemetry_records <- function(TelemetryRecords, EC2InstanceId = NULL, H
 
 #' Uploads segment documents to AWS X-Ray
 #'
+#' @description
 #' Uploads segment documents to AWS X-Ray. The [X-Ray
 #' SDK](https://docs.aws.amazon.com/xray/index.html) generates segment
 #' documents and sends them to the X-Ray daemon, which uploads them in
@@ -1198,6 +1221,7 @@ xray_put_trace_segments <- function(TraceSegmentDocuments) {
 
 #' Applies tags to an existing AWS X-Ray group or sampling rule
 #'
+#' @description
 #' Applies tags to an existing AWS X-Ray group or sampling rule.
 #'
 #' @usage
@@ -1261,6 +1285,7 @@ xray_tag_resource <- function(ResourceARN, Tags) {
 
 #' Removes tags from an AWS X-Ray group or sampling rule
 #'
+#' @description
 #' Removes tags from an AWS X-Ray group or sampling rule. You cannot edit
 #' or delete system tags (those with an `aws:` prefix).
 #'
@@ -1303,6 +1328,7 @@ xray_untag_resource <- function(ResourceARN, TagKeys) {
 
 #' Updates a group resource
 #'
+#' @description
 #' Updates a group resource.
 #'
 #' @usage
@@ -1357,6 +1383,7 @@ xray_update_group <- function(GroupName = NULL, GroupARN = NULL, FilterExpressio
 
 #' Modifies a sampling rule's configuration
 #'
+#' @description
 #' Modifies a sampling rule's configuration.
 #'
 #' @usage

@@ -50,8 +50,7 @@ function.}
 Invokes a Lambda function. You can invoke a function synchronously (and
 wait for the response), or asynchronously. To invoke a function
 asynchronously, set \code{InvocationType} to \code{Event}.
-}
-\details{
+
 For \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-sync.html}{synchronous invocation},
 details about the function response, including errors, are included in
 the response body and headers. For either invocation type, you can find

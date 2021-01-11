@@ -33,8 +33,7 @@ can subscribe to be notified through an Amazon CloudWatch event when
 your RefreshCache operation completes. For more information, see
 \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/monitoring-file-gateway.html#get-notification}{Getting notified about file operations}
 in the \emph{AWS Storage Gateway User Guide}.
-}
-\details{
+
 When this API is called, it only initiates the refresh operation. When
 the API call completes and returns a success code, it doesn't
 necessarily mean that the file refresh has completed. You should use the

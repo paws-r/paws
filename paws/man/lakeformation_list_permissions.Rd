@@ -34,8 +34,7 @@ Returns a list of the principal permissions on the resource, filtered by
 the permissions of the caller. For example, if you are granted an ALTER
 permission, you are able to see only the principal permissions for
 ALTER.
-}
-\details{
+
 This operation returns only those permissions that have been explicitly
 granted.
 

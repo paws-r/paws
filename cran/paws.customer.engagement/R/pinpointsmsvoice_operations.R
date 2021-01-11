@@ -5,6 +5,7 @@ NULL
 
 #' Create a new configuration set
 #'
+#' @description
 #' Create a new configuration set. After you create the configuration set, you can add one or more event destinations to it.
 #'
 #' @usage
@@ -41,6 +42,7 @@ pinpointsmsvoice_create_configuration_set <- function(ConfigurationSetName = NUL
 
 #' Create a new event destination in a configuration set
 #'
+#' @description
 #' Create a new event destination in a configuration set.
 #'
 #' @usage
@@ -98,6 +100,7 @@ pinpointsmsvoice_create_configuration_set_event_destination <- function(Configur
 
 #' Deletes an existing configuration set
 #'
+#' @description
 #' Deletes an existing configuration set.
 #'
 #' @usage
@@ -134,6 +137,7 @@ pinpointsmsvoice_delete_configuration_set <- function(ConfigurationSetName) {
 
 #' Deletes an event destination in a configuration set
 #'
+#' @description
 #' Deletes an event destination in a configuration set.
 #'
 #' @usage
@@ -175,6 +179,7 @@ pinpointsmsvoice_delete_configuration_set_event_destination <- function(Configur
 #' events it reports, the Amazon Resource Name (ARN) of the destination,
 #' and the name of the event destination
 #'
+#' @description
 #' Obtain information about an event destination, including the types of events it reports, the Amazon Resource Name (ARN) of the destination, and the name of the event destination.
 #'
 #' @usage
@@ -213,6 +218,7 @@ pinpointsmsvoice_get_configuration_set_event_destinations <- function(Configurat
 #' List all of the configuration sets associated with your Amazon Pinpoint
 #' account in the current region
 #'
+#' @description
 #' List all of the configuration sets associated with your Amazon Pinpoint account in the current region.
 #'
 #' @usage
@@ -251,6 +257,7 @@ pinpointsmsvoice_list_configuration_sets <- function(NextToken = NULL, PageSize 
 
 #' Create a new voice message and send it to a recipient's phone number
 #'
+#' @description
 #' Create a new voice message and send it to a recipient's phone number.
 #'
 #' @usage
@@ -310,6 +317,7 @@ pinpointsmsvoice_send_voice_message <- function(CallerId = NULL, ConfigurationSe
 
 #' Update an event destination in a configuration set
 #'
+#' @description
 #' Update an event destination in a configuration set. An event destination is a location that you publish information about your voice calls to. For example, you can log an event to an Amazon CloudWatch destination when a call fails.
 #'
 #' @usage

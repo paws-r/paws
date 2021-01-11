@@ -32,8 +32,7 @@ Route 53 will return if you submit another request.}
 \description{
 Gets information about all of the versions for a specified traffic
 policy.
-}
-\details{
+
 Traffic policy versions are listed in numerical order by
 \code{VersionNumber}.
 }

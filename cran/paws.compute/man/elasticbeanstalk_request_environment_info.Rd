@@ -32,8 +32,7 @@ you do not specify either, AWS Elastic Beanstalk returns
 \description{
 Initiates a request to compile the specified type of information of the
 deployed environment.
-}
-\details{
+
 Setting the \code{InfoType} to \code{tail} compiles the last lines from the
 application server log files of every Amazon EC2 instance in your
 environment.

@@ -56,8 +56,7 @@ packages do not have a namespace.
 Deletes the assets in package versions and sets the package versions'
 status to \code{Disposed}. A disposed package version cannot be restored in
 your repository because its assets are deleted.
-}
-\details{
+
 To view all disposed package versions in a repository, use
 \href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html}{\code{ListPackageVersions}}
 and set the

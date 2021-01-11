@@ -23,8 +23,7 @@ depends upon the nature of the event. Affected entities are not
 included. To retrieve those, use the
 \href{https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntities.html}{DescribeAffectedEntities}
 operation.
-}
-\details{
+
 If a specified event cannot be retrieved, an error message is returned
 for that event.
 }

@@ -22,8 +22,7 @@ different account, the request will fail with an HTTP
 This implementation of the GET operation returns an analytics
 configuration (identified by the analytics configuration ID) from the
 bucket.
-}
-\details{
+
 To use this operation, you must have permissions to perform the
 \code{s3:GetAnalyticsConfiguration} action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to

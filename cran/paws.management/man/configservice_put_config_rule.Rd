@@ -15,8 +15,7 @@ configservice_put_config_rule(ConfigRule, Tags)
 \description{
 Adds or updates an AWS Config rule for evaluating whether your AWS
 resources comply with your desired configurations.
-}
-\details{
+
 You can use this action for custom AWS Config rules and AWS managed
 Config rules. A custom AWS Config rule is a rule that you develop and
 maintain. An AWS managed Config rule is a customizable, predefined rule

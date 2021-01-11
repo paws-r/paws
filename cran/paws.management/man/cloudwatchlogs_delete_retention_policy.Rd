@@ -11,8 +11,7 @@ cloudwatchlogs_delete_retention_policy(logGroupName)
 }
 \description{
 Deletes the specified retention policy.
-}
-\details{
+
 Log events do not expire if they belong to log groups without a
 retention policy.
 }

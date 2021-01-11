@@ -19,8 +19,7 @@ elastictranscoder_update_pipeline_status(Id, Status)
 \description{
 The UpdatePipelineStatus operation pauses or reactivates a pipeline, so
 that the pipeline stops or restarts the processing of jobs.
-}
-\details{
+
 Changing the pipeline status is useful if you want to cancel one or more
 jobs. You can't cancel jobs after Elastic Transcoder has started
 processing them; if you pause the pipeline to which you submitted the

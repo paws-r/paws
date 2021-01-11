@@ -36,8 +36,7 @@ the completion notification.}
 }
 \description{
 Starts asynchronous detection of labels in a stored video.
-}
-\details{
+
 Amazon Rekognition Video can detect labels in a video. Labels are
 instances of real-world entities. This includes objects like flower,
 tree, and table; events like wedding, graduation, and birthday party;

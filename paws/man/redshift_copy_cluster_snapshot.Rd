@@ -50,8 +50,7 @@ The default value is -1.}
 Copies the specified automated cluster snapshot to a new manual cluster
 snapshot. The source must be an automated snapshot and it must be in the
 available state.
-}
-\details{
+
 When you delete a cluster, Amazon Redshift deletes any automated
 snapshots of the cluster. Also, when the retention period of the
 snapshot expires, Amazon Redshift automatically deletes it. If you want

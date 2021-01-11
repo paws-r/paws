@@ -27,8 +27,7 @@ Set the logging parameters for a bucket and to specify permissions for
 who can view and modify the logging parameters. All logs are saved to
 buckets in the same AWS Region as the source bucket. To set the logging
 status of a bucket, you must be the bucket owner.
-}
-\details{
+
 The bucket owner is automatically granted FULL\\_CONTROL to all logs. You
 use the \code{Grantee} request element to grant access to other people. The
 \code{Permissions} request element specifies the kind of access the grantee

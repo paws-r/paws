@@ -86,8 +86,7 @@ permissions for a new or existing object in an S3 bucket. You must have
 \code{WRITE_ACP} permission to set the ACL of an object. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions}{What permissions can I grant?}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
-}
-\details{
+
 This action is not supported by Amazon S3 on Outposts.
 
 Depending on your application needs, you can choose to set the ACL on an

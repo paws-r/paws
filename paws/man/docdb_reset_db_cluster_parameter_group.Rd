@@ -26,8 +26,7 @@ value. To reset specific parameters, submit a list of the following:
 \code{ParameterName} and \code{ApplyMethod}. To reset the entire cluster parameter
 group, specify the \code{DBClusterParameterGroupName} and
 \code{ResetAllParameters} parameters.
-}
-\details{
+
 When you reset the entire group, dynamic parameters are updated
 immediately and static parameters are set to \code{pending-reboot} to take
 effect on the next DB instance reboot.

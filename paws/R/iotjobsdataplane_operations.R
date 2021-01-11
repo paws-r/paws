@@ -5,6 +5,7 @@ NULL
 
 #' Gets details of a job execution
 #'
+#' @description
 #' Gets details of a job execution.
 #'
 #' @usage
@@ -52,6 +53,7 @@ iotjobsdataplane_describe_job_execution <- function(jobId, thingName, includeJob
 
 #' Gets the list of all jobs for a thing that are not in a terminal status
 #'
+#' @description
 #' Gets the list of all jobs for a thing that are not in a terminal status.
 #'
 #' @usage
@@ -89,6 +91,7 @@ iotjobsdataplane_get_pending_job_executions <- function(thingName) {
 #' Gets and starts the next pending (status IN_PROGRESS or QUEUED) job
 #' execution for a thing
 #'
+#' @description
 #' Gets and starts the next pending (status IN\\_PROGRESS or QUEUED) job
 #' execution for a thing.
 #'
@@ -142,6 +145,7 @@ iotjobsdataplane_start_next_pending_job_execution <- function(thingName, statusD
 
 #' Updates the status of a job execution
 #'
+#' @description
 #' Updates the status of a job execution.
 #'
 #' @usage

@@ -17,8 +17,7 @@ connect_delete_use_case(InstanceId, IntegrationAssociationId, UseCaseId)
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Deletes a use case from an AppIntegration association.
 }
 \section{Request syntax}{

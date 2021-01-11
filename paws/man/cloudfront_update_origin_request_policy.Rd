@@ -21,8 +21,7 @@ response to \code{GetOriginRequestPolicyConfig}.}
 }
 \description{
 Updates an origin request policy configuration.
-}
-\details{
+
 When you update an origin request policy configuration, all the fields
 are updated with the values provided in the request. You cannot update
 some fields independent of others. To update an origin request policy

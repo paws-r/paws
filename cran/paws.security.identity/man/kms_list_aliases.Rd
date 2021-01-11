@@ -38,8 +38,7 @@ truncated response you just received.}
 \description{
 Gets a list of aliases in the caller's AWS account and region. For more
 information about aliases, see CreateAlias.
-}
-\details{
+
 By default, the \code{ListAliases} operation returns all aliases in the
 account and region. To get only the aliases associated with a particular
 customer master key (CMK), use the \code{KeyId} parameter.

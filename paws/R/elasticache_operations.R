@@ -5,6 +5,7 @@ NULL
 
 #' Adds up to 50 cost allocation tags to the named resource
 #'
+#' @description
 #' Adds up to 50 cost allocation tags to the named resource. A cost
 #' allocation tag is a key-value pair where the key and value are
 #' case-sensitive. You can use cost allocation tags to categorize and track
@@ -69,6 +70,7 @@ elasticache_add_tags_to_resource <- function(ResourceName, Tags) {
 
 #' Allows network ingress to a cache security group
 #'
+#' @description
 #' Allows network ingress to a cache security group. Applications using
 #' ElastiCache must be running on Amazon EC2, and Amazon EC2 security
 #' groups are used as the authorization mechanism.
@@ -118,6 +120,7 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
 
 #' Apply the service update
 #'
+#' @description
 #' Apply the service update. For more information on service updates and
 #' applying them, see [Applying Service
 #' Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/applying-updates.html).
@@ -165,6 +168,7 @@ elasticache_batch_apply_update_action <- function(ReplicationGroupIds = NULL, Ca
 
 #' Stop the service update
 #'
+#' @description
 #' Stop the service update. For more information on service updates and
 #' stopping them, see [Stopping Service
 #' Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/stopping-self-service-updates.html).
@@ -212,6 +216,7 @@ elasticache_batch_stop_update_action <- function(ReplicationGroupIds = NULL, Cac
 
 #' Complete the migration of data
 #'
+#' @description
 #' Complete the migration of data.
 #'
 #' @usage
@@ -252,6 +257,7 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
 
 #' Makes a copy of an existing snapshot
 #'
+#' @description
 #' Makes a copy of an existing snapshot.
 #' 
 #' This operation is valid for Redis only.
@@ -270,21 +276,21 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
 #' 
 #' **Error Messages**
 #' 
-#' -   **Error Message:** The S3 bucket %s is outside of the region.
+#' -   **Error Message:** The S3 bucket \%s is outside of the region.
 #' 
 #'     **Solution:** Create an Amazon S3 bucket in the same region as your
 #'     snapshot. For more information, see [Step 1: Create an Amazon S3
 #'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket)
 #'     in the ElastiCache User Guide.
 #' 
-#' -   **Error Message:** The S3 bucket %s does not exist.
+#' -   **Error Message:** The S3 bucket \%s does not exist.
 #' 
 #'     **Solution:** Create an Amazon S3 bucket in the same region as your
 #'     snapshot. For more information, see [Step 1: Create an Amazon S3
 #'     Bucket](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-exporting.html#backups-exporting-create-s3-bucket)
 #'     in the ElastiCache User Guide.
 #' 
-#' -   **Error Message:** The S3 bucket %s is not owned by the
+#' -   **Error Message:** The S3 bucket \%s is not owned by the
 #'     authenticated user.
 #' 
 #'     **Solution:** Create an Amazon S3 bucket in the same region as your
@@ -298,15 +304,15 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
 #'     **Solution:** Contact your system administrator to get the needed
 #'     permissions.
 #' 
-#' -   **Error Message:** The S3 bucket %s already contains an object with
-#'     key %s.
+#' -   **Error Message:** The S3 bucket \%s already contains an object with
+#'     key \%s.
 #' 
 #'     **Solution:** Give the `TargetSnapshotName` a new and unique value.
 #'     If exporting a snapshot, you could alternatively create a new Amazon
 #'     S3 bucket and use this same value for `TargetSnapshotName`.
 #' 
 #' -   **Error Message:** ElastiCache has not been granted READ permissions
-#'     %s on the S3 Bucket.
+#'     \%s on the S3 Bucket.
 #' 
 #'     **Solution:** Add List and Read permissions on the bucket. For more
 #'     information, see [Step 2: Grant ElastiCache Access to Your Amazon S3
@@ -314,7 +320,7 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
 #'     in the ElastiCache User Guide.
 #' 
 #' -   **Error Message:** ElastiCache has not been granted WRITE
-#'     permissions %s on the S3 Bucket.
+#'     permissions \%s on the S3 Bucket.
 #' 
 #'     **Solution:** Add Upload/Delete permissions on the bucket. For more
 #'     information, see [Step 2: Grant ElastiCache Access to Your Amazon S3
@@ -322,7 +328,7 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
 #'     in the ElastiCache User Guide.
 #' 
 #' -   **Error Message:** ElastiCache has not been granted READ\\_ACP
-#'     permissions %s on the S3 Bucket.
+#'     permissions \%s on the S3 Bucket.
 #' 
 #'     **Solution:** Add View Permissions on the bucket. For more
 #'     information, see [Step 2: Grant ElastiCache Access to Your Amazon S3
@@ -383,6 +389,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 
 #' Creates a cluster
 #'
+#' @description
 #' Creates a cluster. All nodes in the cluster run the same
 #' protocol-compliant cache engine software, either Memcached or Redis.
 #' 
@@ -459,7 +466,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' 
 #' If you need more than 20 nodes for your Memcached cluster, please fill
 #' out the ElastiCache Limit Increase Request form at
-#' [http://aws.amazon.com/contact-us/elasticache-node-limit-request/](https://console.aws.amazon.com/support/home#case/create?issueType=service-limit-increase&limitType=service-code-elasticache-nodes&type=service_limit_increase&serviceLimitIncreaseType=elasticache-nodes).
+#' http://aws.amazon.com/contact-us/elasticache-node-limit-request/.
 #' @param CacheNodeType The compute and memory capacity of the nodes in the node group (shard).
 #' 
 #' The following node types are supported by ElastiCache. Generally
@@ -668,8 +675,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #'     &lt;, &gt;, and -. Other printable special characters cannot be used
 #'     in the AUTH token.
 #' 
-#' For more information, see [AUTH
-#' password](https://redis.io/commands/AUTH) at
+#' For more information, see AUTH password at
 #' http://redis.io/commands/AUTH.
 #' @param OutpostMode Specifies whether the nodes in the cluster are created in a single
 #' outpost or across multiple outposts.
@@ -745,6 +751,7 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
 
 #' Creates a new Amazon ElastiCache cache parameter group
 #'
+#' @description
 #' Creates a new Amazon ElastiCache cache parameter group. An ElastiCache
 #' cache parameter group is a collection of parameters and their values
 #' that are applied to all of the nodes in any cluster or replication group
@@ -806,6 +813,7 @@ elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, Ca
 
 #' Creates a new cache security group
 #'
+#' @description
 #' Creates a new cache security group. Use a cache security group to
 #' control access to one or more clusters.
 #' 
@@ -858,6 +866,7 @@ elasticache_create_cache_security_group <- function(CacheSecurityGroupName, Desc
 
 #' Creates a new cache subnet group
 #'
+#' @description
 #' Creates a new cache subnet group.
 #' 
 #' Use this parameter only when you are creating a cluster in an Amazon
@@ -911,6 +920,7 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' Global Datastore for Redis offers fully managed, fast, reliable and
 #' secure cross-region replication
 #'
+#' @description
 #' Global Datastore for Redis offers fully managed, fast, reliable and
 #' secure cross-region replication. Using Global Datastore for Redis, you
 #' can create cross-region read replica clusters for ElastiCache for Redis
@@ -978,6 +988,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' Creates a Redis (cluster mode disabled) or a Redis (cluster mode
 #' enabled) replication group
 #'
+#' @description
 #' Creates a Redis (cluster mode disabled) or a Redis (cluster mode
 #' enabled) replication group.
 #' 
@@ -1317,8 +1328,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #'     &lt;, &gt;, and -. Other printable special characters cannot be used
 #'     in the AUTH token.
 #' 
-#' For more information, see [AUTH
-#' password](https://redis.io/commands/AUTH) at
+#' For more information, see AUTH password at
 #' http://redis.io/commands/AUTH.
 #' @param TransitEncryptionEnabled A flag that enables in-transit encryption when set to `true`.
 #' 
@@ -1444,6 +1454,7 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #' Creates a copy of an entire cluster or replication group at a specific
 #' moment in time
 #'
+#' @description
 #' Creates a copy of an entire cluster or replication group at a specific
 #' moment in time.
 #' 
@@ -1492,6 +1503,7 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 
 #' For Redis engine version 6
 #'
+#' @description
 #' For Redis engine version 6.x onwards: Creates a Redis user. For more
 #' information, see [Using Role Based Access Control
 #' (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
@@ -1544,6 +1556,7 @@ elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, 
 
 #' For Redis engine version 6
 #'
+#' @description
 #' For Redis engine version 6.x onwards: Creates a Redis user group. For
 #' more information, see [Using Role Based Access Control
 #' (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html)
@@ -1588,6 +1601,7 @@ elasticache_create_user_group <- function(UserGroupId, Engine, UserIds = NULL) {
 
 #' Decreases the number of node groups in a Global Datastore
 #'
+#' @description
 #' Decreases the number of node groups in a Global Datastore
 #'
 #' @usage
@@ -1651,6 +1665,7 @@ elasticache_decrease_node_groups_in_global_replication_group <- function(GlobalR
 #' more node groups (shards) of a Redis (cluster mode enabled) replication
 #' group
 #'
+#' @description
 #' Dynamically decreases the number of replicas in a Redis (cluster mode
 #' disabled) replication group or the number of replica nodes in one or
 #' more node groups (shards) of a Redis (cluster mode enabled) replication
@@ -1733,6 +1748,7 @@ elasticache_decrease_replica_count <- function(ReplicationGroupId, NewReplicaCou
 
 #' Deletes a previously provisioned cluster
 #'
+#' @description
 #' Deletes a previously provisioned cluster. `DeleteCacheCluster` deletes
 #' all associated cache nodes, node endpoints and the cluster itself. When
 #' you receive a successful response from this operation, Amazon
@@ -1791,6 +1807,7 @@ elasticache_delete_cache_cluster <- function(CacheClusterId, FinalSnapshotIdenti
 
 #' Deletes the specified cache parameter group
 #'
+#' @description
 #' Deletes the specified cache parameter group. You cannot delete a cache
 #' parameter group if it is associated with any cache clusters.
 #'
@@ -1831,6 +1848,7 @@ elasticache_delete_cache_parameter_group <- function(CacheParameterGroupName) {
 
 #' Deletes a cache security group
 #'
+#' @description
 #' Deletes a cache security group.
 #' 
 #' You cannot delete a cache security group if it is associated with any
@@ -1872,6 +1890,7 @@ elasticache_delete_cache_security_group <- function(CacheSecurityGroupName) {
 
 #' Deletes a cache subnet group
 #'
+#' @description
 #' Deletes a cache subnet group.
 #' 
 #' You cannot delete a cache subnet group if it is associated with any
@@ -1916,6 +1935,7 @@ elasticache_delete_cache_subnet_group <- function(CacheSubnetGroupName) {
 #' DisassociateGlobalReplicationGroup to remove the secondary clusters in
 #' the Global Datastore
 #'
+#' @description
 #' Deleting a Global Datastore is a two-step process:
 #' 
 #' -   First, you must DisassociateGlobalReplicationGroup to remove the
@@ -1971,6 +1991,7 @@ elasticache_delete_global_replication_group <- function(GlobalReplicationGroupId
 
 #' Deletes an existing replication group
 #'
+#' @description
 #' Deletes an existing replication group. By default, this operation
 #' deletes the entire replication group, including the primary/primaries
 #' and all of the read replicas. If the replication group has only one
@@ -2028,6 +2049,7 @@ elasticache_delete_replication_group <- function(ReplicationGroupId, RetainPrima
 
 #' Deletes an existing snapshot
 #'
+#' @description
 #' Deletes an existing snapshot. When you receive a successful response
 #' from this operation, ElastiCache immediately begins deleting the
 #' snapshot; you cannot cancel or revert this operation.
@@ -2068,6 +2090,7 @@ elasticache_delete_snapshot <- function(SnapshotName) {
 
 #' For Redis engine version 6
 #'
+#' @description
 #' For Redis engine version 6.x onwards: Deletes a user. The user will be
 #' removed from all user groups and in turn removed from all replication
 #' groups. For more information, see [Using Role Based Access Control
@@ -2107,6 +2130,7 @@ elasticache_delete_user <- function(UserId) {
 
 #' For Redis engine version 6
 #'
+#' @description
 #' For Redis engine version 6.x onwards: Deletes a ser group. The user
 #' group must first be disassociated from the replcation group before it
 #' can be deleted. For more information, see [Using Role Based Access
@@ -2149,6 +2173,7 @@ elasticache_delete_user_group <- function(UserGroupId) {
 #' identifier is specified, or about a specific cache cluster if a cluster
 #' identifier is supplied
 #'
+#' @description
 #' Returns information about all provisioned clusters if no cluster
 #' identifier is specified, or about a specific cache cluster if a cluster
 #' identifier is supplied.
@@ -2231,6 +2256,7 @@ elasticache_describe_cache_clusters <- function(CacheClusterId = NULL, MaxRecord
 
 #' Returns a list of the available cache engines and their versions
 #'
+#' @description
 #' Returns a list of the available cache engines and their versions.
 #'
 #' @usage
@@ -2303,6 +2329,7 @@ elasticache_describe_cache_engine_versions <- function(Engine = NULL, EngineVers
 
 #' Returns a list of cache parameter group descriptions
 #'
+#' @description
 #' Returns a list of cache parameter group descriptions. If a cache
 #' parameter group name is specified, the list contains only the
 #' descriptions for that group.
@@ -2356,6 +2383,7 @@ elasticache_describe_cache_parameter_groups <- function(CacheParameterGroupName 
 #' Returns the detailed parameter list for a particular cache parameter
 #' group
 #'
+#' @description
 #' Returns the detailed parameter list for a particular cache parameter
 #' group.
 #'
@@ -2411,6 +2439,7 @@ elasticache_describe_cache_parameters <- function(CacheParameterGroupName, Sourc
 
 #' Returns a list of cache security group descriptions
 #'
+#' @description
 #' Returns a list of cache security group descriptions. If a cache security
 #' group name is specified, the list contains only the description of that
 #' group. This applicable only when you have ElastiCache in Classic setup
@@ -2463,6 +2492,7 @@ elasticache_describe_cache_security_groups <- function(CacheSecurityGroupName = 
 
 #' Returns a list of cache subnet group descriptions
 #'
+#' @description
 #' Returns a list of cache subnet group descriptions. If a subnet group
 #' name is specified, the list contains only the description of that group.
 #' This is applicable only when you have ElastiCache in VPC setup. All
@@ -2517,6 +2547,7 @@ elasticache_describe_cache_subnet_groups <- function(CacheSubnetGroupName = NULL
 #' Returns the default engine and system parameter information for the
 #' specified cache engine
 #'
+#' @description
 #' Returns the default engine and system parameter information for the
 #' specified cache engine.
 #'
@@ -2573,6 +2604,7 @@ elasticache_describe_engine_default_parameters <- function(CacheParameterGroupFa
 #' Returns events related to clusters, cache security groups, and cache
 #' parameter groups
 #'
+#' @description
 #' Returns events related to clusters, cache security groups, and cache
 #' parameter groups. You can obtain events specific to a particular
 #' cluster, cache security group, or cache parameter group by providing the
@@ -2649,6 +2681,7 @@ elasticache_describe_events <- function(SourceIdentifier = NULL, SourceType = NU
 
 #' Returns information about a particular global replication group
 #'
+#' @description
 #' Returns information about a particular global replication group. If no
 #' identifier is specified, returns information about all Global
 #' Datastores.
@@ -2699,6 +2732,7 @@ elasticache_describe_global_replication_groups <- function(GlobalReplicationGrou
 
 #' Returns information about a particular replication group
 #'
+#' @description
 #' Returns information about a particular replication group. If no
 #' identifier is specified, `DescribeReplicationGroups` returns information
 #' about all replication groups.
@@ -2758,6 +2792,7 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #' Returns information about reserved cache nodes for this account, or
 #' about a specified reserved cache node
 #'
+#' @description
 #' Returns information about reserved cache nodes for this account, or
 #' about a specified reserved cache node.
 #'
@@ -2925,6 +2960,7 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 
 #' Lists available reserved cache node offerings
 #'
+#' @description
 #' Lists available reserved cache node offerings.
 #'
 #' @usage
@@ -3091,6 +3127,7 @@ elasticache_describe_reserved_cache_nodes_offerings <- function(ReservedCacheNod
 
 #' Returns details of the service updates
 #'
+#' @description
 #' Returns details of the service updates
 #'
 #' @usage
@@ -3139,6 +3176,7 @@ elasticache_describe_service_updates <- function(ServiceUpdateName = NULL, Servi
 
 #' Returns information about cluster or replication group snapshots
 #'
+#' @description
 #' Returns information about cluster or replication group snapshots. By
 #' default, `DescribeSnapshots` lists all of your snapshots; it can
 #' optionally describe a single snapshot, or just the snapshots associated
@@ -3210,6 +3248,7 @@ elasticache_describe_snapshots <- function(ReplicationGroupId = NULL, CacheClust
 
 #' Returns details of the update actions
 #'
+#' @description
 #' Returns details of the update actions
 #'
 #' @usage
@@ -3287,6 +3326,7 @@ elasticache_describe_update_actions <- function(ServiceUpdateName = NULL, Replic
 
 #' Returns a list of user groups
 #'
+#' @description
 #' Returns a list of user groups.
 #'
 #' @usage
@@ -3332,6 +3372,7 @@ elasticache_describe_user_groups <- function(UserGroupId = NULL, MaxRecords = NU
 
 #' Returns a list of users
 #'
+#' @description
 #' Returns a list of users.
 #'
 #' @usage
@@ -3389,6 +3430,7 @@ elasticache_describe_users <- function(Engine = NULL, UserId = NULL, Filters = N
 #' Remove a secondary cluster from the Global Datastore using the Global
 #' Datastore name
 #'
+#' @description
 #' Remove a secondary cluster from the Global Datastore using the Global
 #' Datastore name. The secondary cluster will no longer receive updates
 #' from the primary cluster, but will remain as a standalone cluster in
@@ -3435,6 +3477,7 @@ elasticache_disassociate_global_replication_group <- function(GlobalReplicationG
 
 #' Used to failover the primary region to a selected secondary region
 #'
+#' @description
 #' Used to failover the primary region to a selected secondary region. The
 #' selected secondary region will become primary, and all other clusters
 #' will become secondary.
@@ -3478,6 +3521,7 @@ elasticache_failover_global_replication_group <- function(GlobalReplicationGroup
 
 #' Increase the number of node groups in the Global Datastore
 #'
+#' @description
 #' Increase the number of node groups in the Global Datastore
 #'
 #' @usage
@@ -3541,6 +3585,7 @@ elasticache_increase_node_groups_in_global_replication_group <- function(GlobalR
 #' more node groups (shards) of a Redis (cluster mode enabled) replication
 #' group
 #'
+#' @description
 #' Dynamically increases the number of replics in a Redis (cluster mode
 #' disabled) replication group or the number of replica nodes in one or
 #' more node groups (shards) of a Redis (cluster mode enabled) replication
@@ -3607,6 +3652,7 @@ elasticache_increase_replica_count <- function(ReplicationGroupId, NewReplicaCou
 #' Lists all available node types that you can scale your Redis cluster's
 #' or replication group's current node type
 #'
+#' @description
 #' Lists all available node types that you can scale your Redis cluster's
 #' or replication group's current node type.
 #' 
@@ -3664,6 +3710,7 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
 
 #' Lists all cost allocation tags currently on the named resource
 #'
+#' @description
 #' Lists all cost allocation tags currently on the named resource. A
 #' `cost allocation tag` is a key-value pair where the key is
 #' case-sensitive and the value is optional. You can use cost allocation
@@ -3717,6 +3764,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 
 #' Modifies the settings for a cluster
 #'
+#' @description
 #' Modifies the settings for a cluster. You can use this operation to
 #' change one or more cluster configuration parameters by specifying the
 #' parameters and the new values.
@@ -3955,10 +4003,9 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #'     length
 #' 
 #' -   Cannot contain any of the following characters: '/', '"', or '@@',
-#'     '%'
+#'     '\%'
 #' 
-#' For more information, see AUTH password at
-#' [AUTH](https://redis.io/commands/AUTH).
+#' For more information, see AUTH password at AUTH.
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
 #' must be specified with the `auth-token` parameter. Possible values:
 #' 
@@ -4024,6 +4071,7 @@ elasticache_modify_cache_cluster <- function(CacheClusterId, NumCacheNodes = NUL
 
 #' Modifies the parameters of a cache parameter group
 #'
+#' @description
 #' Modifies the parameters of a cache parameter group. You can modify up to
 #' 20 parameters in a single request by submitting a list parameter name
 #' and value pairs.
@@ -4072,6 +4120,7 @@ elasticache_modify_cache_parameter_group <- function(CacheParameterGroupName, Pa
 
 #' Modifies an existing cache subnet group
 #'
+#' @description
 #' Modifies an existing cache subnet group.
 #'
 #' @usage
@@ -4121,6 +4170,7 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 
 #' Modifies the settings for a Global Datastore
 #'
+#' @description
 #' Modifies the settings for a Global Datastore.
 #'
 #' @usage
@@ -4174,6 +4224,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 
 #' Modifies the settings for a replication group
 #'
+#' @description
 #' Modifies the settings for a replication group.
 #' 
 #' -   [Scaling for Amazon ElastiCache for Redis (cluster mode
@@ -4312,10 +4363,9 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #'     length
 #' 
 #' -   Cannot contain any of the following characters: '/', '"', or '@@',
-#'     '%'
+#'     '\%'
 #' 
-#' For more information, see AUTH password at
-#' [AUTH](https://redis.io/commands/AUTH).
+#' For more information, see AUTH password at AUTH.
 #' @param AuthTokenUpdateStrategy Specifies the strategy to use to update the AUTH token. This parameter
 #' must be specified with the `auth-token` parameter. Possible values:
 #' 
@@ -4392,6 +4442,7 @@ elasticache_modify_replication_group <- function(ReplicationGroupId, Replication
 #' add shards, remove shards, or rebalance the keyspaces among exisiting
 #' shards
 #'
+#' @description
 #' Modifies a replication group's shards (node groups) by allowing you to
 #' add shards, remove shards, or rebalance the keyspaces among exisiting
 #' shards.
@@ -4477,6 +4528,7 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
 
 #' Changes user password(s) and/or access string
 #'
+#' @description
 #' Changes user password(s) and/or access string.
 #'
 #' @usage
@@ -4524,6 +4576,7 @@ elasticache_modify_user <- function(UserId, AccessString = NULL, AppendAccessStr
 
 #' Changes the list of users that belong to the user group
 #'
+#' @description
 #' Changes the list of users that belong to the user group.
 #'
 #' @usage
@@ -4569,6 +4622,7 @@ elasticache_modify_user_group <- function(UserGroupId, UserIdsToAdd = NULL, User
 
 #' Allows you to purchase a reserved cache node offering
 #'
+#' @description
 #' Allows you to purchase a reserved cache node offering.
 #'
 #' @usage
@@ -4621,6 +4675,7 @@ elasticache_purchase_reserved_cache_nodes_offering <- function(ReservedCacheNode
 #' Redistribute slots to ensure uniform distribution across existing shards
 #' in the cluster
 #'
+#' @description
 #' Redistribute slots to ensure uniform distribution across existing shards
 #' in the cluster.
 #'
@@ -4661,6 +4716,7 @@ elasticache_rebalance_slots_in_global_replication_group <- function(GlobalReplic
 
 #' Reboots some, or all, of the cache nodes within a provisioned cluster
 #'
+#' @description
 #' Reboots some, or all, of the cache nodes within a provisioned cluster.
 #' This operation applies any modified cache parameter groups to the
 #' cluster. The reboot operation takes place as soon as possible, and
@@ -4721,6 +4777,7 @@ elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboo
 
 #' Removes the tags identified by the TagKeys list from the named resource
 #'
+#' @description
 #' Removes the tags identified by the `TagKeys` list from the named
 #' resource.
 #'
@@ -4771,6 +4828,7 @@ elasticache_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' Modifies the parameters of a cache parameter group to the engine or
 #' system default value
 #'
+#' @description
 #' Modifies the parameters of a cache parameter group to the engine or
 #' system default value. You can reset specific parameters by submitting a
 #' list of parameter names. To reset the entire cache parameter group,
@@ -4828,6 +4886,7 @@ elasticache_reset_cache_parameter_group <- function(CacheParameterGroupName, Res
 
 #' Revokes ingress from a cache security group
 #'
+#' @description
 #' Revokes ingress from a cache security group. Use this operation to
 #' disallow access from an Amazon EC2 security group that had been
 #' previously authorized.
@@ -4873,6 +4932,7 @@ elasticache_revoke_cache_security_group_ingress <- function(CacheSecurityGroupNa
 
 #' Start the migration of data
 #'
+#' @description
 #' Start the migration of data.
 #'
 #' @usage
@@ -4920,6 +4980,7 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
 #' failover on a specified node group (called shard in the console) in a
 #' replication group (called cluster in the console)
 #'
+#' @description
 #' Represents the input of a `TestFailover` operation which test automatic
 #' failover on a specified node group (called shard in the console) in a
 #' replication group (called cluster in the console).

@@ -48,8 +48,7 @@ used, then \code{ListTaskDefinitionFamilies} returns up to 100 results and a
 Returns a list of task definition families that are registered to your
 account (which may include task definition families that no longer have
 any \code{ACTIVE} task definition revisions).
-}
-\details{
+
 You can filter out task definition families that do not contain any
 \code{ACTIVE} task definition revisions by setting the \code{status} parameter to
 \code{ACTIVE}. You can also filter the results with the \code{familyPrefix}

@@ -61,8 +61,7 @@ data capture on the endpoint. For information about data capture, see
 After you deploy a model into production using Amazon SageMaker hosting
 services, your client applications use this API to get inferences from
 the model hosted at the specified endpoint.
-}
-\details{
+
 For an overview of Amazon SageMaker, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/}{How It Works}.
 
 Amazon SageMaker strips all POST headers except those supported by the

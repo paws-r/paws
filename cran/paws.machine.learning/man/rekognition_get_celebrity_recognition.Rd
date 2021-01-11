@@ -28,8 +28,7 @@ the time the celebrity was recognized.}
 \description{
 Gets the celebrity recognition results for a Amazon Rekognition Video
 analysis started by StartCelebrityRecognition.
-}
-\details{
+
 Celebrity recognition in a video is an asynchronous operation. Analysis
 is started by a call to StartCelebrityRecognition which returns a job
 identifier (\code{JobId}). When the celebrity recognition operation finishes,

@@ -56,8 +56,7 @@ Internal load balancers must use \code{ipv4}.}
 Enables the Availability Zones for the specified public subnets for the
 specified Application Load Balancer or Network Load Balancer. The
 specified subnets replace the previously enabled subnets.
-}
-\details{
+
 When you specify subnets for a Network Load Balancer, you must include
 all subnets that were enabled previously, with their existing
 configurations, plus any additional subnets.

@@ -11,8 +11,7 @@ locationservice_delete_tracker(TrackerName)
 }
 \description{
 Deletes a tracker resource from your AWS account.
-}
-\details{
+
 This action deletes the resource permanently. You can't undo this
 action. If the tracker resource is in use, you may encounter an error.
 Make sure that the target resource is not a dependency for your

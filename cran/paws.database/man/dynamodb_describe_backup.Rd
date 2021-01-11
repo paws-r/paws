@@ -11,8 +11,7 @@ dynamodb_describe_backup(BackupArn)
 }
 \description{
 Describes an existing backup of a table.
-}
-\details{
+
 You can call \code{DescribeBackup} at a maximum rate of 10 times per second.
 }
 \section{Request syntax}{

@@ -14,8 +14,7 @@ the script ID or ARN value.}
 Deletes a Realtime script. This operation permanently deletes the script
 record. If script files were uploaded, they are also deleted (files
 stored in an S3 bucket are not deleted).
-}
-\details{
+
 To delete a script, specify the script ID. Before deleting a script, be
 sure to terminate all fleets that are deployed with the script being
 deleted. Fleet instances periodically check for script updates, and if

@@ -14,8 +14,7 @@ this, the default event bus is used.}
 }
 \description{
 Describes the specified rule.
-}
-\details{
+
 DescribeRule does not list the targets of a rule. To see the targets
 associated with a rule, use ListTargetsByRule.
 }

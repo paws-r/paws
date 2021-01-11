@@ -37,8 +37,7 @@ different account, the request will fail with an HTTP
 \description{
 Removes the entire tag set from the specified object. For more
 information about managing object tags, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html}{Object Tagging}.
-}
-\details{
+
 To use this operation, you must have permission to perform the
 \code{s3:DeleteObjectTagging} action.
 

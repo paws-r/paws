@@ -16,8 +16,7 @@ metric from all security profiles it's a part of. The security profile
 associated with the custom metric can be found using the
 \href{https://docs.aws.amazon.com/iot/latest/apireference/API_ListSecurityProfiles.html}{ListSecurityProfiles}
 API with \code{metricName} set to your custom metric name.
-}
-\details{
+
 Deletes a Device Defender detect custom metric.
 }
 \section{Request syntax}{

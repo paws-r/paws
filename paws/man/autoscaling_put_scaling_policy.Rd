@@ -111,8 +111,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 }
 \description{
 Creates or updates a scaling policy for an Auto Scaling group.
-}
-\details{
+
 For more information about using scaling policies to scale your Auto
 Scaling group, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-target-tracking.html}{Target tracking scaling policies}
 and \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html}{Step and simple scaling policies}

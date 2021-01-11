@@ -23,8 +23,7 @@ not be used.}
 \description{
 Updates the status of the specified certificate. This operation is
 idempotent.
-}
-\details{
+
 Certificates must be in the ACTIVE state to authenticate devices that
 use a certificate to connect to AWS IoT.
 

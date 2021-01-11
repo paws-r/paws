@@ -28,8 +28,7 @@ control resource policy on the provided repository.}
 \description{
 Sets the resource policy on a repository that specifies permissions to
 access it.
-}
-\details{
+
 When you call \code{PutRepositoryPermissionsPolicy}, the resource policy on
 the repository is ignored when evaluting permissions. This ensures that
 the owner of a repository cannot lock themselves out of the repository,

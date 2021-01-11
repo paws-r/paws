@@ -18,8 +18,7 @@ spaces. You can also include any of the following characters: \\_+=,.@-}
 \description{
 Retrieves information about the specified IAM user, including the user's
 creation date, path, unique ID, and ARN.
-}
-\details{
+
 If you do not specify a user name, IAM determines the user name
 implicitly based on the AWS access key ID used to sign the request to
 this API.

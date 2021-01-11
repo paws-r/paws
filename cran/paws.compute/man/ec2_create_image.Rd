@@ -52,8 +52,7 @@ To tag an AMI or snapshot after it has been created, see
 \description{
 Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that
 is either running or stopped.
-}
-\details{
+
 If you customized your instance with instance store volumes or EBS
 volumes in addition to the root device volume, the new AMI contains
 block device mapping information for those volumes. When you launch an

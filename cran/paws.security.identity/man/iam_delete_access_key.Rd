@@ -21,8 +21,7 @@ that can consist of any upper or lowercased letter or digit.}
 }
 \description{
 Deletes the access key pair associated with the specified IAM user.
-}
-\details{
+
 If you do not specify a user name, IAM determines the user name
 implicitly based on the AWS access key ID signing the request. This
 operation works for access keys under the AWS account. Consequently, you

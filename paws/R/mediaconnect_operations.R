@@ -5,6 +5,7 @@ NULL
 
 #' Adds outputs to an existing flow
 #'
+#' @description
 #' Adds outputs to an existing flow. You can create up to 50 outputs per flow.
 #'
 #' @usage
@@ -72,6 +73,7 @@ mediaconnect_add_flow_outputs <- function(FlowArn, Outputs) {
 
 #' Adds Sources to flow
 #'
+#' @description
 #' Adds Sources to flow
 #'
 #' @usage
@@ -134,6 +136,7 @@ mediaconnect_add_flow_sources <- function(FlowArn, Sources) {
 
 #' Adds VPC interfaces to flow
 #'
+#' @description
 #' Adds VPC interfaces to flow
 #'
 #' @usage
@@ -181,6 +184,7 @@ mediaconnect_add_flow_vpc_interfaces <- function(FlowArn, VpcInterfaces) {
 
 #' Creates a new flow
 #'
+#' @description
 #' Creates a new flow. The request must include one source. The request optionally can include outputs (up to 50) and entitlements (up to 50).
 #'
 #' @usage
@@ -340,6 +344,7 @@ mediaconnect_create_flow <- function(AvailabilityZone = NULL, Entitlements = NUL
 
 #' Deletes a flow
 #'
+#' @description
 #' Deletes a flow. Before you can delete a flow, you must stop the flow.
 #'
 #' @usage
@@ -376,6 +381,7 @@ mediaconnect_delete_flow <- function(FlowArn) {
 
 #' Displays the details of a flow
 #'
+#' @description
 #' Displays the details of a flow. The response includes the flow ARN, name, and Availability Zone, as well as details about the source, outputs, and entitlements.
 #'
 #' @usage
@@ -412,6 +418,7 @@ mediaconnect_describe_flow <- function(FlowArn) {
 
 #' Displays the details of an offering
 #'
+#' @description
 #' Displays the details of an offering. The response includes the offering description, duration, outbound bandwidth, price, and Amazon Resource Name (ARN).
 #'
 #' @usage
@@ -448,6 +455,7 @@ mediaconnect_describe_offering <- function(OfferingArn) {
 
 #' Displays the details of a reservation
 #'
+#' @description
 #' Displays the details of a reservation. The response includes the reservation name, state, start date and time, and the details of the offering that make up the rest of the reservation (such as price, duration, and outbound bandwidth).
 #'
 #' @usage
@@ -484,6 +492,7 @@ mediaconnect_describe_reservation <- function(ReservationArn) {
 
 #' Grants entitlements to an existing flow
 #'
+#' @description
 #' Grants entitlements to an existing flow.
 #'
 #' @usage
@@ -544,6 +553,7 @@ mediaconnect_grant_flow_entitlements <- function(Entitlements, FlowArn) {
 #' Displays a list of all entitlements that have been granted to this
 #' account
 #'
+#' @description
 #' Displays a list of all entitlements that have been granted to this account. This request returns 20 results per page.
 #'
 #' @usage
@@ -582,6 +592,7 @@ mediaconnect_list_entitlements <- function(MaxResults = NULL, NextToken = NULL) 
 
 #' Displays a list of flows that are associated with this account
 #'
+#' @description
 #' Displays a list of flows that are associated with this account. This request returns a paginated result.
 #'
 #' @usage
@@ -621,6 +632,7 @@ mediaconnect_list_flows <- function(MaxResults = NULL, NextToken = NULL) {
 #' Displays a list of all offerings that are available to this account in
 #' the current AWS Region
 #'
+#' @description
 #' Displays a list of all offerings that are available to this account in the current AWS Region. If you have an active reservation (which means you've purchased an offering that has already started and hasn't expired yet), your account isn't eligible for other offerings.
 #'
 #' @usage
@@ -660,6 +672,7 @@ mediaconnect_list_offerings <- function(MaxResults = NULL, NextToken = NULL) {
 #' Displays a list of all reservations that have been purchased by this
 #' account in the current AWS Region
 #'
+#' @description
 #' Displays a list of all reservations that have been purchased by this account in the current AWS Region. This list includes all reservations in all states (such as active and expired).
 #'
 #' @usage
@@ -698,6 +711,7 @@ mediaconnect_list_reservations <- function(MaxResults = NULL, NextToken = NULL) 
 
 #' List all tags on an AWS Elemental MediaConnect resource
 #'
+#' @description
 #' List all tags on an AWS Elemental MediaConnect resource
 #'
 #' @usage
@@ -734,6 +748,7 @@ mediaconnect_list_tags_for_resource <- function(ResourceArn) {
 
 #' Submits a request to purchase an offering
 #'
+#' @description
 #' Submits a request to purchase an offering. If you already have an active reservation, you can't purchase another offering.
 #'
 #' @usage
@@ -774,6 +789,7 @@ mediaconnect_purchase_offering <- function(OfferingArn, ReservationName, Start) 
 
 #' Removes an output from an existing flow
 #'
+#' @description
 #' Removes an output from an existing flow. This request can be made only on an output that does not have an entitlement associated with it. If the output has an entitlement, you must revoke the entitlement instead. When an entitlement is revoked from a flow, the service automatically removes the associated output.
 #'
 #' @usage
@@ -812,6 +828,7 @@ mediaconnect_remove_flow_output <- function(FlowArn, OutputArn) {
 
 #' Removes a source from an existing flow
 #'
+#' @description
 #' Removes a source from an existing flow. This request can be made only if there is more than one source on the flow.
 #'
 #' @usage
@@ -850,6 +867,7 @@ mediaconnect_remove_flow_source <- function(FlowArn, SourceArn) {
 
 #' Removes a VPC Interface from an existing flow
 #'
+#' @description
 #' Removes a VPC Interface from an existing flow. This request can be made only on a VPC interface that does not have a Source or Output associated with it. If the VPC interface is referenced by a Source or Output, you must first delete or update the Source or Output to no longer reference the VPC interface.
 #'
 #' @usage
@@ -888,6 +906,7 @@ mediaconnect_remove_flow_vpc_interface <- function(FlowArn, VpcInterfaceName) {
 
 #' Revokes an entitlement from a flow
 #'
+#' @description
 #' Revokes an entitlement from a flow. Once an entitlement is revoked, the content becomes unavailable to the subscriber and the associated output is removed.
 #'
 #' @usage
@@ -926,6 +945,7 @@ mediaconnect_revoke_flow_entitlement <- function(EntitlementArn, FlowArn) {
 
 #' Starts a flow
 #'
+#' @description
 #' Starts a flow.
 #'
 #' @usage
@@ -962,6 +982,7 @@ mediaconnect_start_flow <- function(FlowArn) {
 
 #' Stops a flow
 #'
+#' @description
 #' Stops a flow.
 #'
 #' @usage
@@ -999,6 +1020,7 @@ mediaconnect_stop_flow <- function(FlowArn) {
 #' Associates the specified tags to a resource with the specified
 #' resourceArn
 #'
+#' @description
 #' Associates the specified tags to a resource with the specified resourceArn. If existing tags on a resource are not specified in the request parameters, they are not changed. When a resource is deleted, the tags associated with that resource are deleted as well.
 #'
 #' @usage
@@ -1039,6 +1061,7 @@ mediaconnect_tag_resource <- function(ResourceArn, Tags) {
 
 #' Deletes specified tags from a resource
 #'
+#' @description
 #' Deletes specified tags from a resource.
 #'
 #' @usage
@@ -1079,6 +1102,7 @@ mediaconnect_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates flow
 #'
+#' @description
 #' Updates flow
 #'
 #' @usage
@@ -1120,6 +1144,7 @@ mediaconnect_update_flow <- function(FlowArn, SourceFailoverConfig = NULL) {
 
 #' You can change an entitlement's description, subscribers, and encryption
 #'
+#' @description
 #' You can change an entitlement's description, subscribers, and encryption. If you change the subscribers, the service will remove the outputs that are are used by the subscribers that are removed.
 #'
 #' @usage
@@ -1179,6 +1204,7 @@ mediaconnect_update_flow_entitlement <- function(Description = NULL, Encryption 
 
 #' Updates an existing flow output
 #'
+#' @description
 #' Updates an existing flow output.
 #'
 #' @usage
@@ -1255,6 +1281,7 @@ mediaconnect_update_flow_output <- function(CidrAllowList = NULL, Description = 
 
 #' Updates the source of a flow
 #'
+#' @description
 #' Updates the source of a flow.
 #'
 #' @usage

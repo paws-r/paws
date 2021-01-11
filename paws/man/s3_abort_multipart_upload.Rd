@@ -45,8 +45,7 @@ However, if any part uploads are currently in progress, those part
 uploads might or might not succeed. As a result, it might be necessary
 to abort a given multipart upload multiple times in order to completely
 free all storage consumed by all parts.
-}
-\details{
+
 To verify that all parts have been removed, so you don't get charged for
 the part storage, you should call the
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListParts.html}{ListParts}

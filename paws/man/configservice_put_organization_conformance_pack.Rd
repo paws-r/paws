@@ -38,8 +38,7 @@ pack while deploying a conformance pack.}
 }
 \description{
 Deploys conformance packs across member accounts in an AWS Organization.
-}
-\details{
+
 Only a master account and a delegated administrator can call this API.
 When calling this API with a delegated administrator, you must ensure
 AWS Organizations \code{ListDelegatedAdministrator} permissions are added.

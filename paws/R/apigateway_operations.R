@@ -5,6 +5,7 @@ NULL
 
 #' Create an ApiKey resource
 #'
+#' @description
 #' Create an ApiKey resource.
 #' 
 #' <div class="seeAlso">
@@ -76,6 +77,7 @@ apigateway_create_api_key <- function(name = NULL, description = NULL, enabled =
 
 #' Adds a new Authorizer resource to an existing RestApi resource
 #'
+#' @description
 #' Adds a new Authorizer resource to an existing RestApi resource.
 #' 
 #' <div class="seeAlso">
@@ -193,6 +195,7 @@ apigateway_create_authorizer <- function(restApiId, name, type, providerARNs = N
 
 #' Creates a new BasePathMapping resource
 #'
+#' @description
 #' Creates a new BasePathMapping resource.
 #'
 #' @usage
@@ -242,6 +245,7 @@ apigateway_create_base_path_mapping <- function(domainName, basePath = NULL, res
 #' Creates a Deployment resource, which makes a specified RestApi callable
 #' over the internet
 #'
+#' @description
 #' Creates a Deployment resource, which makes a specified RestApi callable
 #' over the internet.
 #'
@@ -311,6 +315,7 @@ apigateway_create_deployment <- function(restApiId, stageName = NULL, stageDescr
 
 #' Create documentation part
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -360,6 +365,7 @@ apigateway_create_documentation_part <- function(restApiId, location, properties
 
 #' Create documentation version
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -403,6 +409,7 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 
 #' Creates a new domain name
 #'
+#' @description
 #' Creates a new domain name.
 #'
 #' @usage
@@ -495,6 +502,7 @@ apigateway_create_domain_name <- function(domainName, certificateName = NULL, ce
 
 #' Adds a new Model resource to an existing RestApi resource
 #'
+#' @description
 #' Adds a new Model resource to an existing RestApi resource.
 #'
 #' @usage
@@ -543,6 +551,7 @@ apigateway_create_model <- function(restApiId, name, description = NULL, schema 
 
 #' Creates a ReqeustValidator of a given RestApi
 #'
+#' @description
 #' Creates a ReqeustValidator of a given RestApi.
 #'
 #' @usage
@@ -588,6 +597,7 @@ apigateway_create_request_validator <- function(restApiId, name = NULL, validate
 
 #' Creates a Resource resource
 #'
+#' @description
 #' Creates a Resource resource.
 #'
 #' @usage
@@ -628,6 +638,7 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 
 #' Creates a new RestApi resource
 #'
+#' @description
 #' Creates a new RestApi resource.
 #'
 #' @usage
@@ -717,6 +728,7 @@ apigateway_create_rest_api <- function(name, description = NULL, version = NULL,
 #' Creates a new Stage resource that references a pre-existing Deployment
 #' for the API
 #'
+#' @description
 #' Creates a new Stage resource that references a pre-existing Deployment
 #' for the API.
 #'
@@ -795,6 +807,7 @@ apigateway_create_stage <- function(restApiId, stageName, deploymentId, descript
 #' Creates a usage plan with the throttle and quota limits, as well as the
 #' associated API stages, specified in the payload
 #'
+#' @description
 #' Creates a usage plan with the throttle and quota limits, as well as the
 #' associated API stages, specified in the payload.
 #'
@@ -865,6 +878,7 @@ apigateway_create_usage_plan <- function(name, description = NULL, apiStages = N
 
 #' Creates a usage plan key for adding an existing API key to a usage plan
 #'
+#' @description
 #' Creates a usage plan key for adding an existing API key to a usage plan.
 #'
 #' @usage
@@ -910,6 +924,7 @@ apigateway_create_usage_plan_key <- function(usagePlanId, keyId, keyType) {
 #' an asynchronous operation that typically takes 2-4 minutes to complete
 #' and become operational
 #'
+#' @description
 #' Creates a VPC link, under the caller's account in a selected region, in
 #' an asynchronous operation that typically takes 2-4 minutes to complete
 #' and become operational. The caller must have permissions to create and
@@ -963,6 +978,7 @@ apigateway_create_vpc_link <- function(name, description = NULL, targetArns, tag
 
 #' Deletes the ApiKey resource
 #'
+#' @description
 #' Deletes the ApiKey resource.
 #'
 #' @usage
@@ -999,6 +1015,7 @@ apigateway_delete_api_key <- function(apiKey) {
 
 #' Deletes an existing Authorizer resource
 #'
+#' @description
 #' Deletes an existing Authorizer resource.
 #' 
 #' <div class="seeAlso">
@@ -1044,6 +1061,7 @@ apigateway_delete_authorizer <- function(restApiId, authorizerId) {
 
 #' Deletes the BasePathMapping resource
 #'
+#' @description
 #' Deletes the BasePathMapping resource.
 #'
 #' @usage
@@ -1085,6 +1103,7 @@ apigateway_delete_base_path_mapping <- function(domainName, basePath) {
 
 #' Deletes the ClientCertificate resource
 #'
+#' @description
 #' Deletes the ClientCertificate resource.
 #'
 #' @usage
@@ -1122,6 +1141,7 @@ apigateway_delete_client_certificate <- function(clientCertificateId) {
 
 #' Deletes a Deployment resource
 #'
+#' @description
 #' Deletes a Deployment resource. Deleting a deployment will only succeed
 #' if there are no Stage resources associated with it.
 #'
@@ -1161,6 +1181,7 @@ apigateway_delete_deployment <- function(restApiId, deploymentId) {
 
 #' Delete documentation part
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -1199,6 +1220,7 @@ apigateway_delete_documentation_part <- function(restApiId, documentationPartId)
 
 #' Delete documentation version
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -1238,6 +1260,7 @@ apigateway_delete_documentation_version <- function(restApiId, documentationVers
 
 #' Deletes the DomainName resource
 #'
+#' @description
 #' Deletes the DomainName resource.
 #'
 #' @usage
@@ -1275,6 +1298,7 @@ apigateway_delete_domain_name <- function(domainName) {
 #' Clears any customization of a GatewayResponse of a specified response
 #' type on the given RestApi and resets it with the default settings
 #'
+#' @description
 #' Clears any customization of a GatewayResponse of a specified response
 #' type on the given RestApi and resets it with the default settings.
 #'
@@ -1337,6 +1361,7 @@ apigateway_delete_gateway_response <- function(restApiId, responseType) {
 
 #' Represents a delete integration
 #'
+#' @description
 #' Represents a delete integration.
 #'
 #' @usage
@@ -1378,6 +1403,7 @@ apigateway_delete_integration <- function(restApiId, resourceId, httpMethod) {
 
 #' Represents a delete integration response
 #'
+#' @description
 #' Represents a delete integration response.
 #'
 #' @usage
@@ -1424,6 +1450,7 @@ apigateway_delete_integration_response <- function(restApiId, resourceId, httpMe
 
 #' Deletes an existing Method resource
 #'
+#' @description
 #' Deletes an existing Method resource.
 #'
 #' @usage
@@ -1464,6 +1491,7 @@ apigateway_delete_method <- function(restApiId, resourceId, httpMethod) {
 
 #' Deletes an existing MethodResponse resource
 #'
+#' @description
 #' Deletes an existing MethodResponse resource.
 #'
 #' @usage
@@ -1507,6 +1535,7 @@ apigateway_delete_method_response <- function(restApiId, resourceId, httpMethod,
 
 #' Deletes a model
 #'
+#' @description
 #' Deletes a model.
 #'
 #' @usage
@@ -1545,6 +1574,7 @@ apigateway_delete_model <- function(restApiId, modelName) {
 
 #' Deletes a RequestValidator of a given RestApi
 #'
+#' @description
 #' Deletes a RequestValidator of a given RestApi.
 #'
 #' @usage
@@ -1583,6 +1613,7 @@ apigateway_delete_request_validator <- function(restApiId, requestValidatorId) {
 
 #' Deletes a Resource resource
 #'
+#' @description
 #' Deletes a Resource resource.
 #'
 #' @usage
@@ -1621,6 +1652,7 @@ apigateway_delete_resource <- function(restApiId, resourceId) {
 
 #' Deletes the specified API
 #'
+#' @description
 #' Deletes the specified API.
 #'
 #' @usage
@@ -1657,6 +1689,7 @@ apigateway_delete_rest_api <- function(restApiId) {
 
 #' Deletes a Stage resource
 #'
+#' @description
 #' Deletes a Stage resource.
 #'
 #' @usage
@@ -1695,6 +1728,7 @@ apigateway_delete_stage <- function(restApiId, stageName) {
 
 #' Deletes a usage plan of a given plan Id
 #'
+#' @description
 #' Deletes a usage plan of a given plan Id.
 #'
 #' @usage
@@ -1732,6 +1766,7 @@ apigateway_delete_usage_plan <- function(usagePlanId) {
 #' Deletes a usage plan key and remove the underlying API key from the
 #' associated usage plan
 #'
+#' @description
 #' Deletes a usage plan key and remove the underlying API key from the
 #' associated usage plan.
 #'
@@ -1773,6 +1808,7 @@ apigateway_delete_usage_plan_key <- function(usagePlanId, keyId) {
 
 #' Deletes an existing VpcLink of a specified identifier
 #'
+#' @description
 #' Deletes an existing VpcLink of a specified identifier.
 #'
 #' @usage
@@ -1810,6 +1846,7 @@ apigateway_delete_vpc_link <- function(vpcLinkId) {
 
 #' Flushes all authorizer cache entries on a stage
 #'
+#' @description
 #' Flushes all authorizer cache entries on a stage.
 #'
 #' @usage
@@ -1848,6 +1885,7 @@ apigateway_flush_stage_authorizers_cache <- function(restApiId, stageName) {
 
 #' Flushes a stage's cache
 #'
+#' @description
 #' Flushes a stage's cache.
 #'
 #' @usage
@@ -1886,6 +1924,7 @@ apigateway_flush_stage_cache <- function(restApiId, stageName) {
 
 #' Generates a ClientCertificate resource
 #'
+#' @description
 #' Generates a ClientCertificate resource.
 #'
 #' @usage
@@ -1928,6 +1967,7 @@ apigateway_generate_client_certificate <- function(description = NULL, tags = NU
 
 #' Gets information about the current Account resource
 #'
+#' @description
 #' Gets information about the current Account resource.
 #'
 #' @usage
@@ -1960,6 +2000,7 @@ apigateway_get_account <- function() {
 
 #' Gets information about the current ApiKey resource
 #'
+#' @description
 #' Gets information about the current ApiKey resource.
 #'
 #' @usage
@@ -1999,6 +2040,7 @@ apigateway_get_api_key <- function(apiKey, includeValue = NULL) {
 
 #' Gets information about the current ApiKeys resource
 #'
+#' @description
 #' Gets information about the current ApiKeys resource.
 #'
 #' @usage
@@ -2047,6 +2089,7 @@ apigateway_get_api_keys <- function(position = NULL, limit = NULL, nameQuery = N
 
 #' Describe an existing Authorizer resource
 #'
+#' @description
 #' Describe an existing Authorizer resource.
 #' 
 #' <div class="seeAlso">
@@ -2092,6 +2135,7 @@ apigateway_get_authorizer <- function(restApiId, authorizerId) {
 
 #' Describe an existing Authorizers resource
 #'
+#' @description
 #' Describe an existing Authorizers resource.
 #' 
 #' <div class="seeAlso">
@@ -2140,6 +2184,7 @@ apigateway_get_authorizers <- function(restApiId, position = NULL, limit = NULL)
 
 #' Describe a BasePathMapping resource
 #'
+#' @description
 #' Describe a BasePathMapping resource.
 #'
 #' @usage
@@ -2182,6 +2227,7 @@ apigateway_get_base_path_mapping <- function(domainName, basePath) {
 
 #' Represents a collection of BasePathMapping resources
 #'
+#' @description
 #' Represents a collection of BasePathMapping resources.
 #'
 #' @usage
@@ -2223,6 +2269,7 @@ apigateway_get_base_path_mappings <- function(domainName, position = NULL, limit
 
 #' Gets information about the current ClientCertificate resource
 #'
+#' @description
 #' Gets information about the current ClientCertificate resource.
 #'
 #' @usage
@@ -2260,6 +2307,7 @@ apigateway_get_client_certificate <- function(clientCertificateId) {
 
 #' Gets a collection of ClientCertificate resources
 #'
+#' @description
 #' Gets a collection of ClientCertificate resources.
 #'
 #' @usage
@@ -2299,6 +2347,7 @@ apigateway_get_client_certificates <- function(position = NULL, limit = NULL) {
 
 #' Gets information about a Deployment resource
 #'
+#' @description
 #' Gets information about a Deployment resource.
 #'
 #' @usage
@@ -2351,6 +2400,7 @@ apigateway_get_deployment <- function(restApiId, deploymentId, embed = NULL) {
 
 #' Gets information about a Deployments collection
 #'
+#' @description
 #' Gets information about a Deployments collection.
 #'
 #' @usage
@@ -2392,6 +2442,7 @@ apigateway_get_deployments <- function(restApiId, position = NULL, limit = NULL)
 
 #' Get documentation part
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -2430,6 +2481,7 @@ apigateway_get_documentation_part <- function(restApiId, documentationPartId) {
 
 #' Get documentation parts
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -2482,6 +2534,7 @@ apigateway_get_documentation_parts <- function(restApiId, type = NULL, nameQuery
 
 #' Get documentation version
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -2521,6 +2574,7 @@ apigateway_get_documentation_version <- function(restApiId, documentationVersion
 
 #' Get documentation versions
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -2563,6 +2617,7 @@ apigateway_get_documentation_versions <- function(restApiId, position = NULL, li
 #' Represents a domain name that is contained in a simpler, more intuitive
 #' URL that can be called
 #'
+#' @description
 #' Represents a domain name that is contained in a simpler, more intuitive
 #' URL that can be called.
 #'
@@ -2600,6 +2655,7 @@ apigateway_get_domain_name <- function(domainName) {
 
 #' Represents a collection of DomainName resources
 #'
+#' @description
 #' Represents a collection of DomainName resources.
 #'
 #' @usage
@@ -2639,6 +2695,7 @@ apigateway_get_domain_names <- function(position = NULL, limit = NULL) {
 
 #' Exports a deployed version of a RestApi in a specified format
 #'
+#' @description
 #' Exports a deployed version of a RestApi in a specified format.
 #'
 #' @usage
@@ -2697,6 +2754,7 @@ apigateway_get_export <- function(restApiId, stageName, exportType, parameters =
 
 #' Gets a GatewayResponse of a specified response type on the given RestApi
 #'
+#' @description
 #' Gets a GatewayResponse of a specified response type on the given
 #' RestApi.
 #'
@@ -2759,6 +2817,7 @@ apigateway_get_gateway_response <- function(restApiId, responseType) {
 
 #' Gets the GatewayResponses collection on the given RestApi
 #'
+#' @description
 #' Gets the GatewayResponses collection on the given RestApi. If an API
 #' developer has not added any definitions for gateway responses, the
 #' result will be the API Gateway-generated default GatewayResponses
@@ -2806,6 +2865,7 @@ apigateway_get_gateway_responses <- function(restApiId, position = NULL, limit =
 
 #' Get the integration settings
 #'
+#' @description
 #' Get the integration settings.
 #'
 #' @usage
@@ -2846,6 +2906,7 @@ apigateway_get_integration <- function(restApiId, resourceId, httpMethod) {
 
 #' Represents a get integration response
 #'
+#' @description
 #' Represents a get integration response.
 #'
 #' @usage
@@ -2890,6 +2951,7 @@ apigateway_get_integration_response <- function(restApiId, resourceId, httpMetho
 
 #' Describe an existing Method resource
 #'
+#' @description
 #' Describe an existing Method resource.
 #'
 #' @usage
@@ -2930,6 +2992,7 @@ apigateway_get_method <- function(restApiId, resourceId, httpMethod) {
 
 #' Describes a MethodResponse resource
 #'
+#' @description
 #' Describes a MethodResponse resource.
 #'
 #' @usage
@@ -2973,6 +3036,7 @@ apigateway_get_method_response <- function(restApiId, resourceId, httpMethod, st
 
 #' Describes an existing model defined for a RestApi resource
 #'
+#' @description
 #' Describes an existing model defined for a RestApi resource.
 #'
 #' @usage
@@ -3016,6 +3080,7 @@ apigateway_get_model <- function(restApiId, modelName, flatten = NULL) {
 #' Generates a sample mapping template that can be used to transform a
 #' payload into the structure of a model
 #'
+#' @description
 #' Generates a sample mapping template that can be used to transform a
 #' payload into the structure of a model.
 #'
@@ -3055,6 +3120,7 @@ apigateway_get_model_template <- function(restApiId, modelName) {
 
 #' Describes existing Models defined for a RestApi resource
 #'
+#' @description
 #' Describes existing Models defined for a RestApi resource.
 #'
 #' @usage
@@ -3096,6 +3162,7 @@ apigateway_get_models <- function(restApiId, position = NULL, limit = NULL) {
 
 #' Gets a RequestValidator of a given RestApi
 #'
+#' @description
 #' Gets a RequestValidator of a given RestApi.
 #'
 #' @usage
@@ -3134,6 +3201,7 @@ apigateway_get_request_validator <- function(restApiId, requestValidatorId) {
 
 #' Gets the RequestValidators collection of a given RestApi
 #'
+#' @description
 #' Gets the RequestValidators collection of a given RestApi.
 #'
 #' @usage
@@ -3175,6 +3243,7 @@ apigateway_get_request_validators <- function(restApiId, position = NULL, limit 
 
 #' Lists information about a resource
 #'
+#' @description
 #' Lists information about a resource.
 #'
 #' @usage
@@ -3223,6 +3292,7 @@ apigateway_get_resource <- function(restApiId, resourceId, embed = NULL) {
 
 #' Lists information about a collection of Resource resources
 #'
+#' @description
 #' Lists information about a collection of Resource resources.
 #'
 #' @usage
@@ -3274,6 +3344,7 @@ apigateway_get_resources <- function(restApiId, position = NULL, limit = NULL, e
 
 #' Lists the RestApi resource in the collection
 #'
+#' @description
 #' Lists the RestApi resource in the collection.
 #'
 #' @usage
@@ -3310,6 +3381,7 @@ apigateway_get_rest_api <- function(restApiId) {
 
 #' Lists the RestApis resources for your collection
 #'
+#' @description
 #' Lists the RestApis resources for your collection.
 #'
 #' @usage
@@ -3349,6 +3421,7 @@ apigateway_get_rest_apis <- function(position = NULL, limit = NULL) {
 
 #' Generates a client SDK for a RestApi and Stage
 #'
+#' @description
 #' Generates a client SDK for a RestApi and Stage.
 #'
 #' @usage
@@ -3400,6 +3473,7 @@ apigateway_get_sdk <- function(restApiId, stageName, sdkType, parameters = NULL)
 
 #' Get sdk type
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -3436,6 +3510,7 @@ apigateway_get_sdk_type <- function(id) {
 
 #' Get sdk types
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -3475,6 +3550,7 @@ apigateway_get_sdk_types <- function(position = NULL, limit = NULL) {
 
 #' Gets information about a Stage resource
 #'
+#' @description
 #' Gets information about a Stage resource.
 #'
 #' @usage
@@ -3513,6 +3589,7 @@ apigateway_get_stage <- function(restApiId, stageName) {
 
 #' Gets information about one or more Stage resources
 #'
+#' @description
 #' Gets information about one or more Stage resources.
 #'
 #' @usage
@@ -3551,6 +3628,7 @@ apigateway_get_stages <- function(restApiId, deploymentId = NULL) {
 
 #' Gets the Tags collection for a given resource
 #'
+#' @description
 #' Gets the Tags collection for a given resource.
 #'
 #' @usage
@@ -3593,6 +3671,7 @@ apigateway_get_tags <- function(resourceArn, position = NULL, limit = NULL) {
 
 #' Gets the usage data of a usage plan in a specified time interval
 #'
+#' @description
 #' Gets the usage data of a usage plan in a specified time interval.
 #'
 #' @usage
@@ -3641,6 +3720,7 @@ apigateway_get_usage <- function(usagePlanId, keyId = NULL, startDate, endDate, 
 
 #' Gets a usage plan of a given plan identifier
 #'
+#' @description
 #' Gets a usage plan of a given plan identifier.
 #'
 #' @usage
@@ -3677,6 +3757,7 @@ apigateway_get_usage_plan <- function(usagePlanId) {
 
 #' Gets a usage plan key of a given key identifier
 #'
+#' @description
 #' Gets a usage plan key of a given key identifier.
 #'
 #' @usage
@@ -3719,6 +3800,7 @@ apigateway_get_usage_plan_key <- function(usagePlanId, keyId) {
 #' Gets all the usage plan keys representing the API keys added to a
 #' specified usage plan
 #'
+#' @description
 #' Gets all the usage plan keys representing the API keys added to a
 #' specified usage plan.
 #'
@@ -3766,6 +3848,7 @@ apigateway_get_usage_plan_keys <- function(usagePlanId, position = NULL, limit =
 
 #' Gets all the usage plans of the caller's account
 #'
+#' @description
 #' Gets all the usage plans of the caller's account.
 #'
 #' @usage
@@ -3807,6 +3890,7 @@ apigateway_get_usage_plans <- function(position = NULL, keyId = NULL, limit = NU
 
 #' Gets a specified VPC link under the caller's account in a region
 #'
+#' @description
 #' Gets a specified VPC link under the caller's account in a region.
 #'
 #' @usage
@@ -3845,6 +3929,7 @@ apigateway_get_vpc_link <- function(vpcLinkId) {
 #' Gets the VpcLinks collection under the caller's account in a selected
 #' region
 #'
+#' @description
 #' Gets the VpcLinks collection under the caller's account in a selected
 #' region.
 #'
@@ -3885,6 +3970,7 @@ apigateway_get_vpc_links <- function(position = NULL, limit = NULL) {
 
 #' Import API keys from an external source, such as a CSV-formatted file
 #'
+#' @description
 #' Import API keys from an external source, such as a CSV-formatted file.
 #'
 #' @usage
@@ -3929,6 +4015,7 @@ apigateway_import_api_keys <- function(body, format, failOnWarnings = NULL) {
 
 #' Import documentation parts
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -3979,6 +4066,7 @@ apigateway_import_documentation_parts <- function(restApiId, mode = NULL, failOn
 #' A feature of the API Gateway control service for creating a new API from
 #' an external API definition file
 #'
+#' @description
 #' A feature of the API Gateway control service for creating a new API from
 #' an external API definition file.
 #'
@@ -4050,6 +4138,7 @@ apigateway_import_rest_api <- function(failOnWarnings = NULL, parameters = NULL,
 #' Creates a customization of a GatewayResponse of a specified response
 #' type and status code on the given RestApi
 #'
+#' @description
 #' Creates a customization of a GatewayResponse of a specified response
 #' type and status code on the given RestApi.
 #'
@@ -4125,6 +4214,7 @@ apigateway_put_gateway_response <- function(restApiId, responseType, statusCode 
 
 #' Sets up a method's integration
 #'
+#' @description
 #' Sets up a method's integration.
 #'
 #' @usage
@@ -4283,6 +4373,7 @@ apigateway_put_integration <- function(restApiId, resourceId, httpMethod, type, 
 
 #' Represents a put integration
 #'
+#' @description
 #' Represents a put integration.
 #'
 #' @usage
@@ -4363,6 +4454,7 @@ apigateway_put_integration_response <- function(restApiId, resourceId, httpMetho
 
 #' Add a method to an existing Resource resource
 #'
+#' @description
 #' Add a method to an existing Resource resource.
 #'
 #' @usage
@@ -4452,6 +4544,7 @@ apigateway_put_method <- function(restApiId, resourceId, httpMethod, authorizati
 
 #' Adds a MethodResponse to an existing Method resource
 #'
+#' @description
 #' Adds a MethodResponse to an existing Method resource.
 #'
 #' @usage
@@ -4518,6 +4611,7 @@ apigateway_put_method_response <- function(restApiId, resourceId, httpMethod, st
 #' A feature of the API Gateway control service for updating an existing
 #' API with an input of external API definitions
 #'
+#' @description
 #' A feature of the API Gateway control service for updating an existing
 #' API with an input of external API definitions. The update can take the
 #' form of merging the supplied definition into the existing API or
@@ -4576,6 +4670,7 @@ apigateway_put_rest_api <- function(restApiId, mode = NULL, failOnWarnings = NUL
 
 #' Adds or updates a tag on a given resource
 #'
+#' @description
 #' Adds or updates a tag on a given resource.
 #'
 #' @usage
@@ -4619,6 +4714,7 @@ apigateway_tag_resource <- function(resourceArn, tags) {
 #' Simulate the execution of an Authorizer in your RestApi with headers,
 #' parameters, and an incoming request body
 #'
+#' @description
 #' Simulate the execution of an Authorizer in your RestApi with headers,
 #' parameters, and an incoming request body.
 #' 
@@ -4700,6 +4796,7 @@ apigateway_test_invoke_authorizer <- function(restApiId, authorizerId, headers =
 #' Simulate the execution of a Method in your RestApi with headers,
 #' parameters, and an incoming request body
 #'
+#' @description
 #' Simulate the execution of a Method in your RestApi with headers,
 #' parameters, and an incoming request body.
 #'
@@ -4769,6 +4866,7 @@ apigateway_test_invoke_method <- function(restApiId, resourceId, httpMethod, pat
 
 #' Removes a tag from a given resource
 #'
+#' @description
 #' Removes a tag from a given resource.
 #'
 #' @usage
@@ -4809,6 +4907,7 @@ apigateway_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Changes information about the current Account resource
 #'
+#' @description
 #' Changes information about the current Account resource.
 #'
 #' @usage
@@ -4853,6 +4952,7 @@ apigateway_update_account <- function(patchOperations = NULL) {
 
 #' Changes information about an ApiKey resource
 #'
+#' @description
 #' Changes information about an ApiKey resource.
 #'
 #' @usage
@@ -4899,6 +4999,7 @@ apigateway_update_api_key <- function(apiKey, patchOperations = NULL) {
 
 #' Updates an existing Authorizer resource
 #'
+#' @description
 #' Updates an existing Authorizer resource.
 #' 
 #' <div class="seeAlso">
@@ -4954,6 +5055,7 @@ apigateway_update_authorizer <- function(restApiId, authorizerId, patchOperation
 
 #' Changes information about the BasePathMapping resource
 #'
+#' @description
 #' Changes information about the BasePathMapping resource.
 #'
 #' @usage
@@ -5005,6 +5107,7 @@ apigateway_update_base_path_mapping <- function(domainName, basePath, patchOpera
 
 #' Changes information about an ClientCertificate resource
 #'
+#' @description
 #' Changes information about an ClientCertificate resource.
 #'
 #' @usage
@@ -5053,6 +5156,7 @@ apigateway_update_client_certificate <- function(clientCertificateId, patchOpera
 
 #' Changes information about a Deployment resource
 #'
+#' @description
 #' Changes information about a Deployment resource.
 #'
 #' @usage
@@ -5102,6 +5206,7 @@ apigateway_update_deployment <- function(restApiId, deploymentId, patchOperation
 
 #' Update documentation part
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -5151,6 +5256,7 @@ apigateway_update_documentation_part <- function(restApiId, documentationPartId,
 
 #' Update documentation version
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -5201,6 +5307,7 @@ apigateway_update_documentation_version <- function(restApiId, documentationVers
 
 #' Changes information about the DomainName resource
 #'
+#' @description
 #' Changes information about the DomainName resource.
 #'
 #' @usage
@@ -5248,6 +5355,7 @@ apigateway_update_domain_name <- function(domainName, patchOperations = NULL) {
 #' Updates a GatewayResponse of a specified response type on the given
 #' RestApi
 #'
+#' @description
 #' Updates a GatewayResponse of a specified response type on the given
 #' RestApi.
 #'
@@ -5321,6 +5429,7 @@ apigateway_update_gateway_response <- function(restApiId, responseType, patchOpe
 
 #' Represents an update integration
 #'
+#' @description
 #' Represents an update integration.
 #'
 #' @usage
@@ -5373,6 +5482,7 @@ apigateway_update_integration <- function(restApiId, resourceId, httpMethod, pat
 
 #' Represents an update integration response
 #'
+#' @description
 #' Represents an update integration response.
 #'
 #' @usage
@@ -5429,6 +5539,7 @@ apigateway_update_integration_response <- function(restApiId, resourceId, httpMe
 
 #' Updates an existing Method resource
 #'
+#' @description
 #' Updates an existing Method resource.
 #'
 #' @usage
@@ -5480,6 +5591,7 @@ apigateway_update_method <- function(restApiId, resourceId, httpMethod, patchOpe
 
 #' Updates an existing MethodResponse resource
 #'
+#' @description
 #' Updates an existing MethodResponse resource.
 #'
 #' @usage
@@ -5533,6 +5645,7 @@ apigateway_update_method_response <- function(restApiId, resourceId, httpMethod,
 
 #' Changes information about a model
 #'
+#' @description
 #' Changes information about a model.
 #'
 #' @usage
@@ -5581,6 +5694,7 @@ apigateway_update_model <- function(restApiId, modelName, patchOperations = NULL
 
 #' Updates a RequestValidator of a given RestApi
 #'
+#' @description
 #' Updates a RequestValidator of a given RestApi.
 #'
 #' @usage
@@ -5630,6 +5744,7 @@ apigateway_update_request_validator <- function(restApiId, requestValidatorId, p
 
 #' Changes information about a Resource resource
 #'
+#' @description
 #' Changes information about a Resource resource.
 #'
 #' @usage
@@ -5678,6 +5793,7 @@ apigateway_update_resource <- function(restApiId, resourceId, patchOperations = 
 
 #' Changes information about the specified API
 #'
+#' @description
 #' Changes information about the specified API.
 #'
 #' @usage
@@ -5724,6 +5840,7 @@ apigateway_update_rest_api <- function(restApiId, patchOperations = NULL) {
 
 #' Changes information about a Stage resource
 #'
+#' @description
 #' Changes information about a Stage resource.
 #'
 #' @usage
@@ -5773,6 +5890,7 @@ apigateway_update_stage <- function(restApiId, stageName, patchOperations = NULL
 #' Grants a temporary extension to the remaining quota of a usage plan
 #' associated with a specified API key
 #'
+#' @description
 #' Grants a temporary extension to the remaining quota of a usage plan
 #' associated with a specified API key.
 #'
@@ -5823,6 +5941,7 @@ apigateway_update_usage <- function(usagePlanId, keyId, patchOperations = NULL) 
 
 #' Updates a usage plan of a given plan Id
 #'
+#' @description
 #' Updates a usage plan of a given plan Id.
 #'
 #' @usage
@@ -5869,6 +5988,7 @@ apigateway_update_usage_plan <- function(usagePlanId, patchOperations = NULL) {
 
 #' Updates an existing VpcLink of a specified identifier
 #'
+#' @description
 #' Updates an existing VpcLink of a specified identifier.
 #'
 #' @usage

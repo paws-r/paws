@@ -31,8 +31,7 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \description{
 Creates an Amazon FPGA Image (AFI) from the specified design checkpoint
 (DCP).
-}
-\details{
+
 The create operation is asynchronous. To verify that the AFI is ready
 for use, check the output logs.
 

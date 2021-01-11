@@ -75,8 +75,7 @@ its ARN, including the version.}
 }
 \description{
 Modify the version-specific settings of a Lambda function.
-}
-\details{
+
 When you update a function, Lambda provisions an instance of the
 function and its supporting resources. If your function connects to a
 VPC, this process can take a minute. During this time, you can't modify

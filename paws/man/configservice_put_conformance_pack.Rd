@@ -36,8 +36,7 @@ template.}
 Creates or updates a conformance pack. A conformance pack is a
 collection of AWS Config rules that can be easily deployed in an account
 and a region and across AWS Organization.
-}
-\details{
+
 This API creates a service linked role \code{AWSServiceRoleForConfigConforms}
 in your account. The service linked role is created only when the role
 does not exist in your account.

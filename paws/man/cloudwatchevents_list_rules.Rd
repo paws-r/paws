@@ -20,8 +20,7 @@ results.}
 \description{
 Lists your Amazon EventBridge rules. You can either list all the rules
 or you can provide a prefix to match to the rule names.
-}
-\details{
+
 ListRules does not list the targets of a rule. To see the targets
 associated with a rule, use ListTargetsByRule.
 }

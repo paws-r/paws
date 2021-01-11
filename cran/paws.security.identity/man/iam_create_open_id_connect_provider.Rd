@@ -56,8 +56,7 @@ in the \emph{IAM User Guide}.}
 \description{
 Creates an IAM entity to describe an identity provider (IdP) that
 supports \href{https://openid.net/connect/}{OpenID Connect (OIDC)}.
-}
-\details{
+
 The OIDC provider that you create with this operation can be used as a
 principal in a role's trust policy. Such a policy establishes a trust
 relationship between AWS and the OIDC provider.

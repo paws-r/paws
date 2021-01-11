@@ -5,6 +5,7 @@ NULL
 
 #' Associates a FirewallPolicy to a Firewall
 #'
+#' @description
 #' Associates a FirewallPolicy to a Firewall.
 #' 
 #' A firewall policy defines how to monitor and manage your VPC network
@@ -74,6 +75,7 @@ networkfirewall_associate_firewall_policy <- function(UpdateToken = NULL, Firewa
 
 #' Associates the specified subnets in the Amazon VPC to the firewall
 #'
+#' @description
 #' Associates the specified subnets in the Amazon VPC to the firewall. You
 #' can specify one subnet for each of the Availability Zones that the VPC
 #' spans.
@@ -151,6 +153,7 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 #' Creates an AWS Network Firewall Firewall and accompanying FirewallStatus
 #' for a VPC
 #'
+#' @description
 #' Creates an AWS Network Firewall Firewall and accompanying FirewallStatus
 #' for a VPC.
 #' 
@@ -253,6 +256,7 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
 #' Creates the firewall policy for the firewall according to the
 #' specifications
 #'
+#' @description
 #' Creates the firewall policy for the firewall according to the
 #' specifications.
 #' 
@@ -354,6 +358,7 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #' Creates the specified stateless or stateful rule group, which includes
 #' the rules for network traffic inspection, a capacity setting, and tags
 #'
+#' @description
 #' Creates the specified stateless or stateful rule group, which includes
 #' the rules for network traffic inspection, a capacity setting, and tags.
 #' 
@@ -601,6 +606,7 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 
 #' Deletes the specified Firewall and its FirewallStatus
 #'
+#' @description
 #' Deletes the specified Firewall and its FirewallStatus. This operation
 #' requires the firewall's `DeleteProtection` flag to be `FALSE`. You can't
 #' revert this operation.
@@ -658,6 +664,7 @@ networkfirewall_delete_firewall <- function(FirewallName = NULL, FirewallArn = N
 
 #' Deletes the specified FirewallPolicy
 #'
+#' @description
 #' Deletes the specified FirewallPolicy.
 #'
 #' @usage
@@ -703,6 +710,7 @@ networkfirewall_delete_firewall_policy <- function(FirewallPolicyName = NULL, Fi
 #' Deletes a resource policy that you created in a PutResourcePolicy
 #' request
 #'
+#' @description
 #' Deletes a resource policy that you created in a PutResourcePolicy
 #' request.
 #'
@@ -741,6 +749,7 @@ networkfirewall_delete_resource_policy <- function(ResourceArn) {
 
 #' Deletes the specified RuleGroup
 #'
+#' @description
 #' Deletes the specified RuleGroup.
 #'
 #' @usage
@@ -791,6 +800,7 @@ networkfirewall_delete_rule_group <- function(RuleGroupName = NULL, RuleGroupArn
 
 #' Returns the data objects for the specified firewall
 #'
+#' @description
 #' Returns the data objects for the specified firewall.
 #'
 #' @usage
@@ -834,6 +844,7 @@ networkfirewall_describe_firewall <- function(FirewallName = NULL, FirewallArn =
 
 #' Returns the data objects for the specified firewall policy
 #'
+#' @description
 #' Returns the data objects for the specified firewall policy.
 #'
 #' @usage
@@ -878,6 +889,7 @@ networkfirewall_describe_firewall_policy <- function(FirewallPolicyName = NULL, 
 
 #' Returns the logging configuration for the specified firewall
 #'
+#' @description
 #' Returns the logging configuration for the specified firewall.
 #'
 #' @usage
@@ -923,6 +935,7 @@ networkfirewall_describe_logging_configuration <- function(FirewallArn = NULL, F
 #' Retrieves a resource policy that you created in a PutResourcePolicy
 #' request
 #'
+#' @description
 #' Retrieves a resource policy that you created in a PutResourcePolicy
 #' request.
 #'
@@ -961,6 +974,7 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
 
 #' Returns the data objects for the specified rule group
 #'
+#' @description
 #' Returns the data objects for the specified rule group.
 #'
 #' @usage
@@ -1011,6 +1025,7 @@ networkfirewall_describe_rule_group <- function(RuleGroupName = NULL, RuleGroupA
 
 #' Removes the specified subnet associations from the firewall
 #'
+#' @description
 #' Removes the specified subnet associations from the firewall. This
 #' removes the firewall endpoints from the subnets and removes any network
 #' filtering protections that the endpoints were providing.
@@ -1079,6 +1094,7 @@ networkfirewall_disassociate_subnets <- function(UpdateToken = NULL, FirewallArn
 
 #' Retrieves the metadata for the firewall policies that you have defined
 #'
+#' @description
 #' Retrieves the metadata for the firewall policies that you have defined.
 #' Depending on your setting for max results and the number of firewall
 #' policies, a single call might not return the full list.
@@ -1126,6 +1142,7 @@ networkfirewall_list_firewall_policies <- function(NextToken = NULL, MaxResults 
 
 #' Retrieves the metadata for the firewalls that you have defined
 #'
+#' @description
 #' Retrieves the metadata for the firewalls that you have defined. If you
 #' provide VPC identifiers in your request, this returns only the firewalls
 #' for those VPCs.
@@ -1182,6 +1199,7 @@ networkfirewall_list_firewalls <- function(NextToken = NULL, VpcIds = NULL, MaxR
 
 #' Retrieves the metadata for the rule groups that you have defined
 #'
+#' @description
 #' Retrieves the metadata for the rule groups that you have defined.
 #' Depending on your setting for max results and the number of rule groups,
 #' a single call might not return the full list.
@@ -1229,6 +1247,7 @@ networkfirewall_list_rule_groups <- function(NextToken = NULL, MaxResults = NULL
 
 #' Retrieves the tags associated with the specified resource
 #'
+#' @description
 #' Retrieves the tags associated with the specified resource. Tags are
 #' key:value pairs that you can use to categorize and manage your
 #' resources, for purposes like billing. For example, you might set the tag
@@ -1286,6 +1305,7 @@ networkfirewall_list_tags_for_resource <- function(NextToken = NULL, MaxResults 
 #' Creates or updates an AWS Identity and Access Management policy for your
 #' rule group or firewall policy
 #'
+#' @description
 #' Creates or updates an AWS Identity and Access Management policy for your
 #' rule group or firewall policy. Use this to share rule groups and
 #' firewall policies between accounts. This operation works in conjunction
@@ -1375,6 +1395,7 @@ networkfirewall_put_resource_policy <- function(ResourceArn, Policy) {
 
 #' Adds the specified tags to the specified resource
 #'
+#' @description
 #' Adds the specified tags to the specified resource. Tags are key:value
 #' pairs that you can use to categorize and manage your resources, for
 #' purposes like billing. For example, you might set the tag key to
@@ -1425,6 +1446,7 @@ networkfirewall_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes the tags with the specified keys from the specified resource
 #'
+#' @description
 #' Removes the tags with the specified keys from the specified resource.
 #' Tags are key:value pairs that you can use to categorize and manage your
 #' resources, for purposes like billing. For example, you might set the tag
@@ -1474,6 +1496,7 @@ networkfirewall_untag_resource <- function(ResourceArn, TagKeys) {
 #' Modifies the flag, DeleteProtection, which indicates whether it is
 #' possible to delete the firewall
 #'
+#' @description
 #' Modifies the flag, `DeleteProtection`, which indicates whether it is
 #' possible to delete the firewall. If the flag is set to `TRUE`, the
 #' firewall is protected against deletion. This setting helps protect
@@ -1545,6 +1568,7 @@ networkfirewall_update_firewall_delete_protection <- function(UpdateToken = NULL
 
 #' Modifies the description for the specified firewall
 #'
+#' @description
 #' Modifies the description for the specified firewall. Use the description
 #' to help you identify the firewall when you're working with it.
 #'
@@ -1611,6 +1635,7 @@ networkfirewall_update_firewall_description <- function(UpdateToken = NULL, Fire
 
 #' Updates the properties of the specified firewall policy
 #'
+#' @description
 #' Updates the properties of the specified firewall policy.
 #'
 #' @usage
@@ -1717,6 +1742,7 @@ networkfirewall_update_firewall_policy <- function(UpdateToken, FirewallPolicyAr
 
 #' Update firewall policy change protection
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -1785,6 +1811,7 @@ networkfirewall_update_firewall_policy_change_protection <- function(UpdateToken
 
 #' Sets the logging configuration for the specified firewall
 #'
+#' @description
 #' Sets the logging configuration for the specified firewall.
 #' 
 #' To change the logging configuration, retrieve the LoggingConfiguration
@@ -1865,6 +1892,7 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 
 #' Updates the rule settings for the specified rule group
 #'
+#' @description
 #' Updates the rule settings for the specified rule group. You use a rule
 #' group by reference in one or more firewall policies. When you modify a
 #' rule group, you modify all firewall policies that use the rule group.
@@ -2084,6 +2112,7 @@ networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, 
 
 #' Update subnet change protection
 #'
+#' @description
 #' 
 #'
 #' @usage

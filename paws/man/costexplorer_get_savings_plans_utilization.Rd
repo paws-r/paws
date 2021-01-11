@@ -55,8 +55,7 @@ ranges with daily or monthly granularity. Management account in an
 organization have access to member accounts. You can use
 \code{GetDimensionValues} in \code{SAVINGS_PLANS} to determine the possible
 dimension values.
-}
-\details{
+
 You cannot group by any dimension values for
 \code{GetSavingsPlansUtilization}.
 }

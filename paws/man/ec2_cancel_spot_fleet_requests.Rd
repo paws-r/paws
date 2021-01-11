@@ -20,8 +20,7 @@ is canceled successfully.}
 }
 \description{
 Cancels the specified Spot Fleet requests.
-}
-\details{
+
 After you cancel a Spot Fleet request, the Spot Fleet launches no new
 Spot Instances. You must specify whether the Spot Fleet should also
 terminate its Spot Instances. If you terminate the instances, the Spot

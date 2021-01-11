@@ -5,6 +5,7 @@ NULL
 
 #' Deletes one or more builds
 #'
+#' @description
 #' Deletes one or more builds.
 #'
 #' @usage
@@ -43,6 +44,7 @@ codebuild_batch_delete_builds <- function(ids) {
 
 #' Retrieves information about one or more batch builds
 #'
+#' @description
 #' Retrieves information about one or more batch builds.
 #'
 #' @usage
@@ -81,6 +83,7 @@ codebuild_batch_get_build_batches <- function(ids) {
 
 #' Gets information about one or more builds
 #'
+#' @description
 #' Gets information about one or more builds.
 #'
 #' @usage
@@ -131,6 +134,7 @@ codebuild_batch_get_builds <- function(ids) {
 
 #' Gets information about one or more build projects
 #'
+#' @description
 #' Gets information about one or more build projects.
 #'
 #' @usage
@@ -171,6 +175,7 @@ codebuild_batch_get_projects <- function(names) {
 
 #' Returns an array of report groups
 #'
+#' @description
 #' Returns an array of report groups.
 #'
 #' @usage
@@ -209,6 +214,7 @@ codebuild_batch_get_report_groups <- function(reportGroupArns) {
 
 #' Returns an array of reports
 #'
+#' @description
 #' Returns an array of reports.
 #'
 #' @usage
@@ -247,6 +253,7 @@ codebuild_batch_get_reports <- function(reportArns) {
 
 #' Creates a build project
 #'
+#' @description
 #' Creates a build project.
 #'
 #' @usage
@@ -508,6 +515,7 @@ codebuild_create_project <- function(name, description = NULL, source, secondary
 
 #' Creates a report group
 #'
+#' @description
 #' Creates a report group. A report group contains a collection of reports.
 #'
 #' @usage
@@ -571,6 +579,7 @@ codebuild_create_report_group <- function(name, type, exportConfig, tags = NULL)
 #' start rebuilding the source code every time a code change is pushed to
 #' the repository
 #'
+#' @description
 #' For an existing AWS CodeBuild build project that has its source code
 #' stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to
 #' start rebuilding the source code every time a code change is pushed to
@@ -646,6 +655,7 @@ codebuild_create_webhook <- function(projectName, branchFilter = NULL, filterGro
 
 #' Deletes a batch build
 #'
+#' @description
 #' Deletes a batch build.
 #'
 #' @usage
@@ -682,6 +692,7 @@ codebuild_delete_build_batch <- function(id) {
 
 #' Deletes a build project
 #'
+#' @description
 #' Deletes a build project. When you delete a project, its builds are not
 #' deleted.
 #'
@@ -719,6 +730,7 @@ codebuild_delete_project <- function(name) {
 
 #' Deletes a report
 #'
+#' @description
 #' Deletes a report.
 #'
 #' @usage
@@ -755,6 +767,7 @@ codebuild_delete_report <- function(arn) {
 
 #' Deletes a report group
 #'
+#' @description
 #' Deletes a report group. Before you delete a report group, you must
 #' delete its reports.
 #'
@@ -802,6 +815,7 @@ codebuild_delete_report_group <- function(arn, deleteReports = NULL) {
 
 #' Deletes a resource policy that is identified by its resource ARN
 #'
+#' @description
 #' Deletes a resource policy that is identified by its resource ARN.
 #'
 #' @usage
@@ -839,6 +853,7 @@ codebuild_delete_resource_policy <- function(resourceArn) {
 #' Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source
 #' credentials
 #'
+#' @description
 #' Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source
 #' credentials.
 #'
@@ -879,6 +894,7 @@ codebuild_delete_source_credentials <- function(arn) {
 #' rebuilding the source code every time a code change is pushed to the
 #' repository
 #'
+#' @description
 #' For an existing AWS CodeBuild build project that has its source code
 #' stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from
 #' rebuilding the source code every time a code change is pushed to the
@@ -918,6 +934,7 @@ codebuild_delete_webhook <- function(projectName) {
 
 #' Retrieves one or more code coverage reports
 #'
+#' @description
 #' Retrieves one or more code coverage reports.
 #'
 #' @usage
@@ -977,6 +994,7 @@ codebuild_describe_code_coverages <- function(reportArn, nextToken = NULL, maxRe
 
 #' Returns a list of details about test cases for a report
 #'
+#' @description
 #' Returns a list of details about test cases for a report.
 #'
 #' @usage
@@ -1030,6 +1048,7 @@ codebuild_describe_test_cases <- function(reportArn, nextToken = NULL, maxResult
 
 #' Get report group trend
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -1071,6 +1090,7 @@ codebuild_get_report_group_trend <- function(reportGroupArn, numOfReports = NULL
 
 #' Gets a resource policy that is identified by its resource ARN
 #'
+#' @description
 #' Gets a resource policy that is identified by its resource ARN.
 #'
 #' @usage
@@ -1109,6 +1129,7 @@ codebuild_get_resource_policy <- function(resourceArn) {
 #' that has its source code stored in a GitHub, GitHub Enterprise, or
 #' Bitbucket repository
 #'
+#' @description
 #' Imports the source repository credentials for an AWS CodeBuild project
 #' that has its source code stored in a GitHub, GitHub Enterprise, or
 #' Bitbucket repository.
@@ -1164,6 +1185,7 @@ codebuild_import_source_credentials <- function(username = NULL, token, serverTy
 
 #' Resets the cache for a project
 #'
+#' @description
 #' Resets the cache for a project.
 #'
 #' @usage
@@ -1200,6 +1222,7 @@ codebuild_invalidate_project_cache <- function(projectName) {
 
 #' Retrieves the identifiers of your build batches in the current region
 #'
+#' @description
 #' Retrieves the identifiers of your build batches in the current region.
 #'
 #' @usage
@@ -1252,6 +1275,7 @@ codebuild_list_build_batches <- function(filter = NULL, maxResults = NULL, sortO
 
 #' Retrieves the identifiers of the build batches for a specific project
 #'
+#' @description
 #' Retrieves the identifiers of the build batches for a specific project.
 #'
 #' @usage
@@ -1307,6 +1331,7 @@ codebuild_list_build_batches_for_project <- function(projectName = NULL, filter 
 
 #' Gets a list of build IDs, with each build ID representing a single build
 #'
+#' @description
 #' Gets a list of build IDs, with each build ID representing a single
 #' build.
 #'
@@ -1356,6 +1381,7 @@ codebuild_list_builds <- function(sortOrder = NULL, nextToken = NULL) {
 #' Gets a list of build IDs for the specified build project, with each
 #' build ID representing a single build
 #'
+#' @description
 #' Gets a list of build IDs for the specified build project, with each
 #' build ID representing a single build.
 #'
@@ -1406,6 +1432,7 @@ codebuild_list_builds_for_project <- function(projectName, sortOrder = NULL, nex
 
 #' Gets information about Docker images that are managed by AWS CodeBuild
 #'
+#' @description
 #' Gets information about Docker images that are managed by AWS CodeBuild.
 #'
 #' @usage
@@ -1439,6 +1466,7 @@ codebuild_list_curated_environment_images <- function() {
 #' Gets a list of build project names, with each build project name
 #' representing a single build project
 #'
+#' @description
 #' Gets a list of build project names, with each build project name
 #' representing a single build project.
 #'
@@ -1503,6 +1531,7 @@ codebuild_list_projects <- function(sortBy = NULL, sortOrder = NULL, nextToken =
 
 #' Gets a list ARNs for the report groups in the current AWS account
 #'
+#' @description
 #' Gets a list ARNs for the report groups in the current AWS account.
 #'
 #' @usage
@@ -1562,6 +1591,7 @@ codebuild_list_report_groups <- function(sortOrder = NULL, sortBy = NULL, nextTo
 
 #' Returns a list of ARNs for the reports in the current AWS account
 #'
+#' @description
 #' Returns a list of ARNs for the reports in the current AWS account.
 #'
 #' @usage
@@ -1621,6 +1651,7 @@ codebuild_list_reports <- function(sortOrder = NULL, nextToken = NULL, maxResult
 
 #' Returns a list of ARNs for the reports that belong to a ReportGroup
 #'
+#' @description
 #' Returns a list of ARNs for the reports that belong to a `ReportGroup`.
 #'
 #' @usage
@@ -1677,6 +1708,7 @@ codebuild_list_reports_for_report_group <- function(reportGroupArn, nextToken = 
 
 #' Gets a list of projects that are shared with other AWS accounts or users
 #'
+#' @description
 #' Gets a list of projects that are shared with other AWS accounts or
 #' users.
 #'
@@ -1739,6 +1771,7 @@ codebuild_list_shared_projects <- function(sortBy = NULL, sortOrder = NULL, maxR
 #' Gets a list of report groups that are shared with other AWS accounts or
 #' users
 #'
+#' @description
 #' Gets a list of report groups that are shared with other AWS accounts or
 #' users.
 #'
@@ -1801,6 +1834,7 @@ codebuild_list_shared_report_groups <- function(sortOrder = NULL, sortBy = NULL,
 
 #' Returns a list of SourceCredentialsInfo objects
 #'
+#' @description
 #' Returns a list of `SourceCredentialsInfo` objects.
 #'
 #' @usage
@@ -1833,6 +1867,7 @@ codebuild_list_source_credentials <- function() {
 
 #' Stores a resource policy for the ARN of a Project or ReportGroup object
 #'
+#' @description
 #' Stores a resource policy for the ARN of a `Project` or `ReportGroup`
 #' object.
 #'
@@ -1877,6 +1912,7 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 
 #' Restarts a build
 #'
+#' @description
 #' Restarts a build.
 #'
 #' @usage
@@ -1919,6 +1955,7 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 
 #' Restarts a failed batch build
 #'
+#' @description
 #' Restarts a failed batch build. Only batch builds that have failed can be
 #' retried.
 #'
@@ -1964,6 +2001,7 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 
 #' Starts running a build
 #'
+#' @description
 #' Starts running a build.
 #'
 #' @usage
@@ -2261,6 +2299,7 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 
 #' Starts a batch build for a project
 #'
+#' @description
 #' Starts a batch build for a project.
 #'
 #' @usage
@@ -2559,6 +2598,7 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 
 #' Attempts to stop running a build
 #'
+#' @description
 #' Attempts to stop running a build.
 #'
 #' @usage
@@ -2595,6 +2635,7 @@ codebuild_stop_build <- function(id) {
 
 #' Stops a running batch build
 #'
+#' @description
 #' Stops a running batch build.
 #'
 #' @usage
@@ -2631,6 +2672,7 @@ codebuild_stop_build_batch <- function(id) {
 
 #' Changes the settings of a build project
 #'
+#' @description
 #' Changes the settings of a build project.
 #'
 #' @usage
@@ -2897,6 +2939,7 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 
 #' Updates a report group
 #'
+#' @description
 #' Updates a report group.
 #'
 #' @usage
@@ -2959,6 +3002,7 @@ codebuild_update_report_group <- function(arn, exportConfig = NULL, tags = NULL)
 
 #' Updates the webhook associated with an AWS CodeBuild build project
 #'
+#' @description
 #' Updates the webhook associated with an AWS CodeBuild build project.
 #' 
 #' If you use Bitbucket for your repository, `rotateSecret` is ignored.

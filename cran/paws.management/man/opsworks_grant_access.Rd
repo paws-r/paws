@@ -16,8 +16,7 @@ or she automatically will be logged out.}
 }
 \description{
 This action can be used only with Windows stacks.
-}
-\details{
+
 Grants RDP access to a Windows instance for a specified time period.
 }
 \section{Request syntax}{

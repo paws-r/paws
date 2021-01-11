@@ -20,8 +20,7 @@ An empty list results in an \code{InvalidParameterException} being thrown.}
 \description{
 Obtains information about which SNS topics receive status messages from
 the specified directory.
-}
-\details{
+
 If no input parameters are provided, such as DirectoryId or TopicName,
 this request describes all of the associations in the account.
 }

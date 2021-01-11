@@ -25,8 +25,7 @@ number of EC2 instances (hosts) that you want this fleet to contain.
 Before calling this operation, you may want to call
 DescribeEC2InstanceLimits to get the maximum capacity based on the
 fleet's EC2 instance type.
-}
-\details{
+
 Specify minimum and maximum number of instances. Amazon GameLift will
 not change fleet capacity to values fall outside of this range. This is
 particularly important when using auto-scaling (see PutScalingPolicy) to

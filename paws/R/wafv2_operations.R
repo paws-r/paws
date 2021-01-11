@@ -6,6 +6,7 @@ NULL
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -71,6 +72,7 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -324,6 +326,7 @@ wafv2_check_capacity <- function(Scope, Rules) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -426,6 +429,7 @@ wafv2_create_ip_set <- function(Name, Scope, Description = NULL, IPAddressVersio
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -500,6 +504,7 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -787,6 +792,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -1068,6 +1074,7 @@ wafv2_create_web_acl <- function(Name, Scope, DefaultAction, Description = NULL,
 #' Deletes all rule groups that are managed by AWS Firewall Manager for the
 #' specified web ACL
 #'
+#' @description
 #' Deletes all rule groups that are managed by AWS Firewall Manager for the
 #' specified web ACL.
 #' 
@@ -1118,6 +1125,7 @@ wafv2_delete_firewall_manager_rule_groups <- function(WebACLArn, WebACLLockToken
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -1186,6 +1194,7 @@ wafv2_delete_ip_set <- function(Name, Scope, Id, LockToken) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -1228,6 +1237,7 @@ wafv2_delete_logging_configuration <- function(ResourceArn) {
 
 #' Permanently deletes an IAM policy from the specified rule group
 #'
+#' @description
 #' Permanently deletes an IAM policy from the specified rule group.
 #' 
 #' You must be the owner of the rule group to perform this operation.
@@ -1270,6 +1280,7 @@ wafv2_delete_permission_policy <- function(ResourceArn) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -1338,6 +1349,7 @@ wafv2_delete_regex_pattern_set <- function(Name, Scope, Id, LockToken) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -1406,6 +1418,7 @@ wafv2_delete_rule_group <- function(Name, Scope, Id, LockToken) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -1477,6 +1490,7 @@ wafv2_delete_web_acl <- function(Name, Scope, Id, LockToken) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -1536,6 +1550,7 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -1598,6 +1613,7 @@ wafv2_disassociate_web_acl <- function(ResourceArn) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -1657,6 +1673,7 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -1699,6 +1716,7 @@ wafv2_get_logging_configuration <- function(ResourceArn) {
 
 #' Returns the IAM policy that is attached to the specified rule group
 #'
+#' @description
 #' Returns the IAM policy that is attached to the specified rule group.
 #' 
 #' You must be the owner of the rule group to perform this operation.
@@ -1739,6 +1757,7 @@ wafv2_get_permission_policy <- function(ResourceArn) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -1804,6 +1823,7 @@ wafv2_get_rate_based_statement_managed_keys <- function(Scope, WebACLName, WebAC
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -1863,6 +1883,7 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -1922,6 +1943,7 @@ wafv2_get_rule_group <- function(Name, Scope, Id) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -2011,6 +2033,7 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -2070,6 +2093,7 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -2112,6 +2136,7 @@ wafv2_get_web_acl_for_resource <- function(ResourceArn) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -2177,6 +2202,7 @@ wafv2_list_available_managed_rule_groups <- function(Scope, NextMarker = NULL, L
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -2241,6 +2267,7 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -2304,6 +2331,7 @@ wafv2_list_logging_configurations <- function(Scope = NULL, NextMarker = NULL, L
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -2368,6 +2396,7 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -2417,6 +2446,7 @@ wafv2_list_resources_for_web_acl <- function(WebACLArn, ResourceType = NULL) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -2481,6 +2511,7 @@ wafv2_list_rule_groups <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -2543,6 +2574,7 @@ wafv2_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resour
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -2607,6 +2639,7 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -2695,6 +2728,7 @@ wafv2_put_logging_configuration <- function(LoggingConfiguration) {
 
 #' Attaches an IAM policy to the specified resource
 #'
+#' @description
 #' Attaches an IAM policy to the specified resource. Use this to share a
 #' rule group across accounts.
 #' 
@@ -2767,6 +2801,7 @@ wafv2_put_permission_policy <- function(ResourceArn, Policy) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -2824,6 +2859,7 @@ wafv2_tag_resource <- function(ResourceARN, Tags) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -2874,6 +2910,7 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -2975,6 +3012,7 @@ wafv2_update_ip_set <- function(Name, Scope, Id, Description = NULL, Addresses, 
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -3053,6 +3091,7 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer
@@ -3330,6 +3369,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' This is the latest version of AWS WAF, named AWS WAFV2, released in
 #' November, 2019
 #'
+#' @description
 #' This is the latest version of **AWS WAF**, named AWS WAFV2, released in
 #' November, 2019. For information, including how to migrate your AWS WAF
 #' resources from the prior release, see the [AWS WAF Developer

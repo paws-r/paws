@@ -93,8 +93,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Creates a new Capacity Reservation with the specified attributes.
-}
-\details{
+
 Capacity Reservations enable you to reserve capacity for your Amazon EC2
 instances in a specific Availability Zone for any duration. This gives
 you the flexibility to selectively add capacity reservations and still

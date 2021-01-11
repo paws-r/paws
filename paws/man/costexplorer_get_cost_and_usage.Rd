@@ -66,8 +66,7 @@ see the
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_GetDimensionValues.html}{GetDimensionValues}
 operation. Management account in an organization in AWS Organizations
 have access to all member accounts.
-}
-\details{
+
 For information about filter limitations, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-limits.html}{Quotas and restrictions}
 in the \emph{Billing and Cost Management User Guide}.
 }

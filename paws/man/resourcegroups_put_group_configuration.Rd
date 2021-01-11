@@ -25,8 +25,7 @@ A resource group can contain either a \code{Configuration} or a
 Attaches a service configuration to the specified group. This occurs
 asynchronously, and can take time to complete. You can use
 GetGroupConfiguration to check the status of the update.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

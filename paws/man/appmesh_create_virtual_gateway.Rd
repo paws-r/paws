@@ -31,8 +31,7 @@ length of 256 characters.}
 }
 \description{
 Creates a virtual gateway.
-}
-\details{
+
 A virtual gateway allows resources outside your mesh to communicate to
 resources that are inside your mesh. The virtual gateway represents an
 Envoy proxy running in an Amazon ECS task, in a Kubernetes service, or

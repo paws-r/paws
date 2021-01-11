@@ -25,8 +25,7 @@ within that tool.}
 \description{
 Changes the password of the IAM user who is calling this operation. The
 AWS account root user password is not affected by this operation.
-}
-\details{
+
 To change the password for a different user, see UpdateLoginProfile. For
 more information about modifying passwords, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing Passwords}
 in the \emph{IAM User Guide}.

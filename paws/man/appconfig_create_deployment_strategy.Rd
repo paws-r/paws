@@ -31,7 +31,7 @@ dividing the total number of targets by the value specified for
 \verb{Step percentage}. For example, a linear deployment that uses a
 \verb{Step percentage} of 10 deploys the configuration to 10 percent of the
 hosts. After those deployments are complete, the system deploys the
-configuration to the next 10 percent. This continues until 100\% of the
+configuration to the next 10 percent. This continues until 100\\% of the
 targets have successfully received the configuration.
 
 \strong{Exponential}: For this type, AppConfig processes the deployment
@@ -47,8 +47,8 @@ configuration as follows:
 
 \code{2*(2^2)}
 
-Expressed numerically, the deployment rolls out as follows: 2\% of the
-targets, 4\% of the targets, 8\% of the targets, and continues until the
+Expressed numerically, the deployment rolls out as follows: 2\\% of the
+targets, 4\\% of the targets, 8\\% of the targets, and continues until the
 configuration has been deployed to all targets.}
 
 \item{ReplicateTo}{[required] Save the deployment strategy to a Systems Manager (SSM) document.}

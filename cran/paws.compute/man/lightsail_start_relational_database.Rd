@@ -12,11 +12,11 @@ lightsail_start_relational_database(relationalDatabaseName)
 \description{
 Starts a specific database from a stopped state in Amazon Lightsail. To
 restart a database, use the \verb{reboot relational database} operation.
-}
-\details{
+
 The \verb{start relational database} operation supports tag-based access
 control via resource tags applied to the resource identified by
-relationalDatabaseName. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+relationalDatabaseName. For more information, see the Lightsail Dev
+Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$start_relational_database(

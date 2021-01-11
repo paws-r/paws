@@ -17,8 +17,7 @@ shards are returned.}
 }
 \description{
 Describes the specified Kinesis data stream.
-}
-\details{
+
 The information returned includes the stream name, Amazon Resource Name
 (ARN), creation time, enhanced metric configuration, and shard map. The
 shard map is an array of shard objects. For each shard object, there is

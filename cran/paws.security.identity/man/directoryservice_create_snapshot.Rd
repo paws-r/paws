@@ -15,8 +15,7 @@ directoryservice_create_snapshot(DirectoryId, Name)
 \description{
 Creates a snapshot of a Simple AD or Microsoft AD directory in the AWS
 cloud.
-}
-\details{
+
 You cannot take snapshots of AD Connector directories.
 }
 \section{Request syntax}{

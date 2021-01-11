@@ -19,8 +19,7 @@ current retention period.}
 Decreases the Kinesis data stream's retention period, which is the
 length of time data records are accessible after they are added to the
 stream. The minimum value of a stream's retention period is 24 hours.
-}
-\details{
+
 This operation may result in lost data. For example, if the stream's
 retention period is 48 hours and is decreased to 24 hours, any data
 already in the stream that is older than 24 hours is inaccessible.

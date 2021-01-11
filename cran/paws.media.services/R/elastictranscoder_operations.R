@@ -5,6 +5,7 @@ NULL
 
 #' The CancelJob operation cancels an unfinished job
 #'
+#' @description
 #' The CancelJob operation cancels an unfinished job.
 #' 
 #' You can only cancel a job that has a status of `Submitted`. To prevent a
@@ -50,6 +51,7 @@ elastictranscoder_cancel_job <- function(Id) {
 #' includes the values that you specified plus information about the job
 #' that is created
 #'
+#' @description
 #' When you create a job, Elastic Transcoder returns JSON data that
 #' includes the values that you specified plus information about the job
 #' that is created.
@@ -413,6 +415,7 @@ elastictranscoder_create_job <- function(PipelineId, Input = NULL, Inputs = NULL
 #' The CreatePipeline operation creates a pipeline with settings that you
 #' specify
 #'
+#' @description
 #' The CreatePipeline operation creates a pipeline with settings that you
 #' specify.
 #'
@@ -692,6 +695,7 @@ elastictranscoder_create_pipeline <- function(Name, InputBucket, OutputBucket = 
 #' The CreatePreset operation creates a preset with settings that you
 #' specify
 #'
+#' @description
 #' The CreatePreset operation creates a preset with settings that you
 #' specify.
 #' 
@@ -812,6 +816,7 @@ elastictranscoder_create_preset <- function(Name, Description = NULL, Container,
 
 #' The DeletePipeline operation removes a pipeline
 #'
+#' @description
 #' The DeletePipeline operation removes a pipeline.
 #' 
 #' You can only delete a pipeline that has never been used or that is not
@@ -853,6 +858,7 @@ elastictranscoder_delete_pipeline <- function(Id) {
 #' The DeletePreset operation removes a preset that you've added in an AWS
 #' region
 #'
+#' @description
 #' The DeletePreset operation removes a preset that you've added in an AWS
 #' region.
 #' 
@@ -895,6 +901,7 @@ elastictranscoder_delete_preset <- function(Id) {
 #' The ListJobsByPipeline operation gets a list of the jobs currently in a
 #' pipeline
 #'
+#' @description
 #' The ListJobsByPipeline operation gets a list of the jobs currently in a
 #' pipeline.
 #' 
@@ -946,6 +953,7 @@ elastictranscoder_list_jobs_by_pipeline <- function(PipelineId, Ascending = NULL
 #' The ListJobsByStatus operation gets a list of jobs that have a specified
 #' status
 #'
+#' @description
 #' The ListJobsByStatus operation gets a list of jobs that have a specified
 #' status. The response body contains one element for each job that
 #' satisfies the search criteria.
@@ -995,6 +1003,7 @@ elastictranscoder_list_jobs_by_status <- function(Status, Ascending = NULL, Page
 #' The ListPipelines operation gets a list of the pipelines associated with
 #' the current AWS account
 #'
+#' @description
 #' The ListPipelines operation gets a list of the pipelines associated with
 #' the current AWS account.
 #'
@@ -1040,6 +1049,7 @@ elastictranscoder_list_pipelines <- function(Ascending = NULL, PageToken = NULL)
 #' with Elastic Transcoder and the presets that you've added in an AWS
 #' region
 #'
+#' @description
 #' The ListPresets operation gets a list of the default presets included
 #' with Elastic Transcoder and the presets that you've added in an AWS
 #' region.
@@ -1084,6 +1094,7 @@ elastictranscoder_list_presets <- function(Ascending = NULL, PageToken = NULL) {
 
 #' The ReadJob operation returns detailed information about a job
 #'
+#' @description
 #' The ReadJob operation returns detailed information about a job.
 #'
 #' @usage
@@ -1121,6 +1132,7 @@ elastictranscoder_read_job <- function(Id) {
 
 #' The ReadPipeline operation gets detailed information about a pipeline
 #'
+#' @description
 #' The ReadPipeline operation gets detailed information about a pipeline.
 #'
 #' @usage
@@ -1157,6 +1169,7 @@ elastictranscoder_read_pipeline <- function(Id) {
 
 #' The ReadPreset operation gets detailed information about a preset
 #'
+#' @description
 #' The ReadPreset operation gets detailed information about a preset.
 #'
 #' @usage
@@ -1194,6 +1207,7 @@ elastictranscoder_read_preset <- function(Id) {
 
 #' The TestRole operation tests the IAM role used to create the pipeline
 #'
+#' @description
 #' The TestRole operation tests the IAM role used to create the pipeline.
 #' 
 #' The `TestRole` action lets you determine whether the IAM role you are
@@ -1249,6 +1263,7 @@ elastictranscoder_test_role <- function(Role, InputBucket, OutputBucket, Topics)
 
 #' Use the UpdatePipeline operation to update settings for a pipeline
 #'
+#' @description
 #' Use the `UpdatePipeline` operation to update settings for a pipeline.
 #' 
 #' When you change pipeline settings, your changes take effect immediately.
@@ -1502,6 +1517,7 @@ elastictranscoder_update_pipeline <- function(Id, Name = NULL, InputBucket = NUL
 #' With the UpdatePipelineNotifications operation, you can update Amazon
 #' Simple Notification Service (Amazon SNS) notifications for a pipeline
 #'
+#' @description
 #' With the UpdatePipelineNotifications operation, you can update Amazon
 #' Simple Notification Service (Amazon SNS) notifications for a pipeline.
 #' 
@@ -1573,6 +1589,7 @@ elastictranscoder_update_pipeline_notifications <- function(Id, Notifications) {
 #' The UpdatePipelineStatus operation pauses or reactivates a pipeline, so
 #' that the pipeline stops or restarts the processing of jobs
 #'
+#' @description
 #' The UpdatePipelineStatus operation pauses or reactivates a pipeline, so
 #' that the pipeline stops or restarts the processing of jobs.
 #' 

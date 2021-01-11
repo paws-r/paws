@@ -33,8 +33,7 @@ Only one account ID can be specified per request.}
 }
 \description{
 Returns Amazon EC2 instance recommendations.
-}
-\details{
+
 AWS Compute Optimizer generates recommendations for Amazon Elastic
 Compute Cloud (Amazon EC2) instances that meet a specific set of
 requirements. For more information, see the \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html}{Supported resources and requirements}

@@ -35,8 +35,7 @@ an Amazon Redshift cluster to store and use database encryption keys in
 a Hardware Security Module (HSM). After creating the HSM configuration,
 you can specify it as a parameter when creating a cluster. The cluster
 will then store its encryption keys in the HSM.
-}
-\details{
+
 In addition to creating an HSM configuration, you must also create an
 HSM client certificate. For more information, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/}{Hardware Security Modules} in the
 Amazon Redshift Cluster Management Guide.

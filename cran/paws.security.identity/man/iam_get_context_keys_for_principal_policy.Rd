@@ -42,8 +42,7 @@ policies that are attached to the specified IAM entity. The entity can
 be an IAM user, group, or role. If you specify a user, then the request
 also includes all of the policies attached to groups that the user is a
 member of.
-}
-\details{
+
 You can optionally include a list of one or more additional policies,
 specified as strings. If you want to include \emph{only} a list of policies
 by string, use GetContextKeysForCustomPolicy instead.

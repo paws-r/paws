@@ -20,8 +20,7 @@ ValidationException error occurs. The default value is 100.}
 \description{
 Lists and gets information about your Amazon Rekognition Custom Labels
 projects.
-}
-\details{
+
 This operation requires permissions to perform the
 \code{rekognition:DescribeProjects} action.
 }

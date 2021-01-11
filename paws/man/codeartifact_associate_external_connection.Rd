@@ -30,8 +30,7 @@ following values are supported:
 \description{
 Adds an existing external connection to a repository. One external
 connection is allowed per repository.
-}
-\details{
+
 A repository can have one or more upstream repositories, or an external
 connection.
 }

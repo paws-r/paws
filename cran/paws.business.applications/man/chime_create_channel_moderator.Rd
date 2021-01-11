@@ -13,8 +13,6 @@ chime_create_channel_moderator(ChannelArn, ChannelModeratorArn)
 }
 \description{
 Creates a new \code{ChannelModerator}. A channel moderator can:
-}
-\details{
 \itemize{
 \item Add and remove other members of the channel.
 \item Add and remove other moderators of the channel.

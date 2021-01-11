@@ -97,8 +97,7 @@ specify up to 50 \code{Destination} objects within a \code{Destinations} array.}
 \description{
 Composes an email message to multiple destinations. The message body is
 created using an email template.
-}
-\details{
+
 In order to send email using the \code{SendBulkTemplatedEmail} operation,
 your call to the API must meet the following requirements:
 \itemize{

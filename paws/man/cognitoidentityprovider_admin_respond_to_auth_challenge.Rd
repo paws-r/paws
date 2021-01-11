@@ -84,8 +84,7 @@ don't use it to provide sensitive information.
 }
 \description{
 Responds to an authentication challenge, as an administrator.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

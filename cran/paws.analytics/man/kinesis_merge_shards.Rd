@@ -26,8 +26,7 @@ For example, if you have two shards, one with a hash key range of
 could merge these two shards into a single shard that would have a hash
 key range of 276...454. After the merge, the single child shard receives
 data for all hash key values covered by the two parent shards.
-}
-\details{
+
 \code{MergeShards} is called when there is a need to reduce the overall
 capacity of a stream because of excess capacity that is not being used.
 You must specify the shard to be merged and the adjacent shard for a

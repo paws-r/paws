@@ -8,8 +8,7 @@ ses_get_send_quota()
 }
 \description{
 Provides the sending limits for the Amazon SES account.
-}
-\details{
+
 You can execute this operation no more than once per second.
 }
 \examples{

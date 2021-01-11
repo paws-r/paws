@@ -46,8 +46,6 @@ parameter in \code{GetServiceLastAccessedDetailsWithEntities}. This operation
 retrieves the status of your report job and a list of entities that
 could have used group or policy permissions to access the specified
 service.
-}
-\details{
 \itemize{
 \item \strong{Group} – For a group report, this operation returns a list of
 users in the group that could have used the group’s policies in an

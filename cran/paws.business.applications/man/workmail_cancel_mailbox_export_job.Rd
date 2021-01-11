@@ -15,8 +15,7 @@ workmail_cancel_mailbox_export_job(ClientToken, JobId, OrganizationId)
 }
 \description{
 Cancels a mailbox export job.
-}
-\details{
+
 If the mailbox export job is near completion, it might not be possible
 to cancel it.
 }

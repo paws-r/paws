@@ -19,8 +19,7 @@ For an updated version of this API, see
 If you configured a bucket lifecycle using the \code{filter} element, you
 should see the updated version of this topic. This topic is provided for
 backward compatibility.
-}
-\details{
+
 Returns the lifecycle configuration information set on the bucket. For
 information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html}{Object Lifecycle Management}.
 

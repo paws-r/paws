@@ -41,8 +41,7 @@ IDs. You can use the \code{afterTime} and \code{beforeTime} parameters to filter
 the cases by date. You can set values for the \code{includeResolvedCases} and
 \code{includeCommunications} parameters to specify how much information to
 return.
-}
-\details{
+
 The response returns the following in JSON format:
 \itemize{
 \item One or more

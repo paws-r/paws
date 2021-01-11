@@ -26,8 +26,7 @@ value is 2018-05-29.}
 }
 \description{
 Creates a \code{Function} object.
-}
-\details{
+
 A function is a reusable entity. Multiple functions can be used to
 compose the resolver logic.
 }

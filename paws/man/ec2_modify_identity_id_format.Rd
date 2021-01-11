@@ -33,8 +33,7 @@ Modifies the ID format of a resource for a specified IAM user, IAM role,
 or the root user for an account; or all IAM users, IAM roles, and the
 root user for an account. You can specify that resources should receive
 longer IDs (17-character IDs) when they are created.
-}
-\details{
+
 This request can only be used to modify longer ID settings for resource
 types that are within the opt-in period. Resources currently in their
 opt-in period include: \code{bundle} | \code{conversion-task} | \code{customer-gateway}

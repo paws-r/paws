@@ -16,8 +16,7 @@ specified VPC.}
 \description{
 Removes the association between a specified Resolver rule and a
 specified VPC.
-}
-\details{
+
 If you disassociate a Resolver rule from a VPC, Resolver stops
 forwarding DNS queries for the domain name that you specified in the
 Resolver rule.

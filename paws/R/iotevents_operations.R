@@ -5,6 +5,7 @@ NULL
 
 #' Creates a detector model
 #'
+#' @description
 #' Creates a detector model.
 #'
 #' @usage
@@ -521,6 +522,7 @@ iotevents_create_detector_model <- function(detectorModelName, detectorModelDefi
 
 #' Creates an input
 #'
+#' @description
 #' Creates an input.
 #'
 #' @usage
@@ -575,6 +577,7 @@ iotevents_create_input <- function(inputName, inputDescription = NULL, inputDefi
 
 #' Deletes a detector model
 #'
+#' @description
 #' Deletes a detector model. Any active instances of the detector model are
 #' also deleted.
 #'
@@ -612,6 +615,7 @@ iotevents_delete_detector_model <- function(detectorModelName) {
 
 #' Deletes an input
 #'
+#' @description
 #' Deletes an input.
 #'
 #' @usage
@@ -648,6 +652,7 @@ iotevents_delete_input <- function(inputName) {
 
 #' Describes a detector model
 #'
+#' @description
 #' Describes a detector model. If the `version` parameter is not specified,
 #' information about the latest version is returned.
 #'
@@ -688,6 +693,7 @@ iotevents_describe_detector_model <- function(detectorModelName, detectorModelVe
 
 #' Describes an input
 #'
+#' @description
 #' Describes an input.
 #'
 #' @usage
@@ -724,6 +730,7 @@ iotevents_describe_input <- function(inputName) {
 
 #' Retrieves the current settings of the AWS IoT Events logging options
 #'
+#' @description
 #' Retrieves the current settings of the AWS IoT Events logging options.
 #'
 #' @usage
@@ -756,6 +763,7 @@ iotevents_describe_logging_options <- function() {
 
 #' Lists all the versions of a detector model
 #'
+#' @description
 #' Lists all the versions of a detector model. Only the metadata associated
 #' with each detector model version is returned.
 #'
@@ -798,6 +806,7 @@ iotevents_list_detector_model_versions <- function(detectorModelName, nextToken 
 
 #' Lists the detector models you have created
 #'
+#' @description
 #' Lists the detector models you have created. Only the metadata associated
 #' with each detector model is returned.
 #'
@@ -837,6 +846,7 @@ iotevents_list_detector_models <- function(nextToken = NULL, maxResults = NULL) 
 
 #' Lists the inputs you have created
 #'
+#' @description
 #' Lists the inputs you have created.
 #'
 #' @usage
@@ -875,6 +885,7 @@ iotevents_list_inputs <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Lists the tags (metadata) you have assigned to the resource
 #'
+#' @description
 #' Lists the tags (metadata) you have assigned to the resource.
 #'
 #' @usage
@@ -911,6 +922,7 @@ iotevents_list_tags_for_resource <- function(resourceArn) {
 
 #' Sets or updates the AWS IoT Events logging options
 #'
+#' @description
 #' Sets or updates the AWS IoT Events logging options.
 #' 
 #' If you update the value of any `loggingOptions` field, it takes up to
@@ -963,6 +975,7 @@ iotevents_put_logging_options <- function(loggingOptions) {
 
 #' Adds to or modifies the tags of the given resource
 #'
+#' @description
 #' Adds to or modifies the tags of the given resource. Tags are metadata
 #' that can be used to manage a resource.
 #'
@@ -1007,6 +1020,7 @@ iotevents_tag_resource <- function(resourceArn, tags) {
 
 #' Removes the given tags (metadata) from the resource
 #'
+#' @description
 #' Removes the given tags (metadata) from the resource.
 #'
 #' @usage
@@ -1047,6 +1061,7 @@ iotevents_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates a detector model
 #'
+#' @description
 #' Updates a detector model. Detectors (instances) spawned by the previous
 #' version are deleted and then re-created as new inputs arrive.
 #'
@@ -1550,6 +1565,7 @@ iotevents_update_detector_model <- function(detectorModelName, detectorModelDefi
 
 #' Updates an input
 #'
+#' @description
 #' Updates an input.
 #'
 #' @usage

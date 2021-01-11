@@ -14,8 +14,7 @@ delete.}
 }
 \description{
 Deletes the specified receipt rule.
-}
-\details{
+
 For information about managing receipt rules, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-managing-receipt-rules.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.

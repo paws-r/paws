@@ -20,8 +20,7 @@ this association is being made.}
 \description{
 Returns information about the association between an Amazon Lex bot and
 a messaging platform.
-}
-\details{
+
 This operation requires permissions for the
 \code{lex:GetBotChannelAssociation} action.
 }

@@ -14,8 +14,7 @@ iot_create_certificate_from_csr(certificateSigningRequest, setAsActive)
 \description{
 Creates an X.509 certificate using the specified certificate signing
 request.
-}
-\details{
+
 \strong{Note:} The CSR must include a public key that is either an RSA key
 with a length of at least 2048 bits or an ECC key from NIST P-256 or
 NIST P-384 curves.
@@ -50,7 +49,7 @@ file://my-csr-directory/\{\}
 On Windows PowerShell, the command to create certificates for all CSRs
 in my-csr-directory is:
 
-> ls -Name my-csr-directory | \%\{aws iot create-certificate-from-csr
+> ls -Name my-csr-directory | \\%\{aws iot create-certificate-from-csr
 --certificate-signing-request file://my-csr-directory/$\\_\}
 
 On a Windows command prompt, the command to create certificates for all

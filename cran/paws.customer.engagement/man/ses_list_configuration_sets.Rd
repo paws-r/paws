@@ -19,8 +19,7 @@ Provides a list of the configuration sets associated with your Amazon
 SES account in the current AWS Region. For information about using
 configuration sets, see \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Monitoring Your Amazon SES Sending Activity}
 in the \emph{Amazon SES Developer Guide.}
-}
-\details{
+
 You can execute this operation no more than once per second. This
 operation will return up to 1,000 configuration sets each time it is
 run. If your Amazon SES account has more than 1,000 configuration sets,

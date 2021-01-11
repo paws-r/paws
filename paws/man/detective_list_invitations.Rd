@@ -20,8 +20,7 @@ results to return, which is currently 200.}
 Retrieves the list of open and accepted behavior graph invitations for
 the member account. This operation can only be called by a member
 account.
-}
-\details{
+
 Open invitations are invitations that the member account has not
 responded to.
 

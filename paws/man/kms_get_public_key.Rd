@@ -39,8 +39,7 @@ asymmetric CMK. You can share the public key to allow others to encrypt
 messages and verify signatures outside of AWS KMS. For information about
 symmetric and asymmetric CMKs, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Using Symmetric and Asymmetric CMKs}
 in the \emph{AWS Key Management Service Developer Guide}.
-}
-\details{
+
 You do not need to download the public key. Instead, you can use the
 public key within AWS KMS by calling the Encrypt, ReEncrypt, or Verify
 operations with the identifier of an asymmetric CMK. When you use the

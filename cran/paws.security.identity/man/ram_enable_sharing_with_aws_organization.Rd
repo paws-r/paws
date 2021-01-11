@@ -8,8 +8,7 @@ ram_enable_sharing_with_aws_organization()
 }
 \description{
 Enables resource sharing within your AWS Organization.
-}
-\details{
+
 The caller must be the master account for the AWS Organization.
 }
 \section{Request syntax}{

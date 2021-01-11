@@ -18,8 +18,7 @@ Creates an event tracker that you use when sending event data to the
 specified dataset group using the
 \href{https://docs.aws.amazon.com/personalize/latest/dg/API_UBS_PutEvents.html}{PutEvents}
 API.
-}
-\details{
+
 When Amazon Personalize creates an event tracker, it also creates an
 \emph{event-interactions} dataset in the dataset group associated with the
 event tracker. The event-interactions dataset stores the event data from

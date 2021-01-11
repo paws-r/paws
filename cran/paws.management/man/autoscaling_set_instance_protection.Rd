@@ -17,8 +17,7 @@ EC2 Auto Scaling when scaling in.}
 }
 \description{
 Updates the instance protection settings of the specified instances.
-}
-\details{
+
 For more information about preventing instances that are part of an Auto
 Scaling group from terminating on scale in, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection}{Instance scale-in protection}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.

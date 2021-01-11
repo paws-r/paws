@@ -26,8 +26,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Creates an import instance task using metadata from the specified disk
 image. \code{ImportInstance} only supports single-volume VMs. To import
 multi-volume VMs, use ImportImage. For more information, see \href{http://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf}{Importing a Virtual Machine Using the Amazon EC2 CLI}.
-}
-\details{
+
 For information about the import manifest referenced by this API action,
 see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html}{VM Import Manifest}.
 }

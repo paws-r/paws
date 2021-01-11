@@ -29,8 +29,7 @@ This API action deletes an Amazon S3 on Outposts bucket's lifecycle
 configuration. To delete an S3 bucket's lifecycle configuration, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html}{DeleteBucketLifecycle}
 in the \emph{Amazon Simple Storage Service API}.
-}
-\details{
+
 Deletes the lifecycle configuration from the specified Outposts bucket.
 Amazon S3 on Outposts removes all the lifecycle configuration rules in
 the lifecycle subresource associated with the bucket. Your objects never

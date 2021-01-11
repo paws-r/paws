@@ -11,8 +11,7 @@ iotanalytics_put_logging_options(loggingOptions)
 }
 \description{
 Sets or updates the AWS IoT Analytics logging options.
-}
-\details{
+
 If you update the value of any \code{loggingOptions} field, it takes up to
 one minute for the change to take effect. Also, if you change the policy
 attached to the role you specified in the \code{roleArn} field (for example,

@@ -31,8 +31,7 @@ information on game servers using ListGameServers or ClaimGameServer.}
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}
-}
-\details{
+
 Creates a new game server resource and notifies GameLift FleetIQ that
 the game server is ready to host gameplay and players. This operation is
 called by a game server process that is running on an instance in a game

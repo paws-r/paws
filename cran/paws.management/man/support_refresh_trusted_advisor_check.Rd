@@ -16,8 +16,7 @@ refreshed causes an \code{InvalidParameterValue} error.}
 Refreshes the AWS Trusted Advisor check that you specify using the check
 ID. You can get the check IDs by calling the
 DescribeTrustedAdvisorChecks operation.
-}
-\details{
+
 Some checks are refreshed automatically. If you call the
 \code{RefreshTrustedAdvisorCheck} operation to refresh them, you might see
 the \code{InvalidParameterValue} error.

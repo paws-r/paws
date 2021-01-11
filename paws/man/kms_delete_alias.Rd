@@ -12,8 +12,7 @@ followed by the alias name, such as \code{alias/ExampleAlias}.}
 }
 \description{
 Deletes the specified alias.
-}
-\details{
+
 Because an alias is not a property of a CMK, you can delete and change
 the aliases of a CMK without affecting the CMK. Also, aliases do not
 appear in the response from the DescribeKey operation. To get the

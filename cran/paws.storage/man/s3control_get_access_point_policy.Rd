@@ -27,8 +27,7 @@ The value must be URL encoded.}
 \description{
 Returns the access point policy associated with the specified access
 point.
-}
-\details{
+
 The following actions are related to \code{GetAccessPointPolicy}:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_PutAccessPointPolicy.html}{PutAccessPointPolicy}

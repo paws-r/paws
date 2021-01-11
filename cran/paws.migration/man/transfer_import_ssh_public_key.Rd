@@ -19,8 +19,7 @@ transfer_import_ssh_public_key(ServerId, SshPublicKeyBody, UserName)
 Adds a Secure Shell (SSH) public key to a user account identified by a
 \code{UserName} value assigned to the specific file transfer protocol-enabled
 server, identified by \code{ServerId}.
-}
-\details{
+
 The response returns the \code{UserName} value, the \code{ServerId} value, and the
 name of the \code{SshPublicKeyId}.
 }

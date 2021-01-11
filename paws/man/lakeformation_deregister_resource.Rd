@@ -12,8 +12,7 @@ deregister.}
 }
 \description{
 Deregisters the resource as managed by the Data Catalog.
-}
-\details{
+
 When you deregister a path, Lake Formation removes the path from the
 inline policy attached to your service-linked role.
 }

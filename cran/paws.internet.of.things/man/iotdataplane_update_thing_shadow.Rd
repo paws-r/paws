@@ -15,8 +15,7 @@ iotdataplane_update_thing_shadow(thingName, shadowName, payload)
 }
 \description{
 Updates the shadow for the specified thing.
-}
-\details{
+
 For more information, see
 \href{https://docs.aws.amazon.com/iot/latest/developerguide/device-shadow-rest-api.html#API_UpdateThingShadow}{UpdateThingShadow}
 in the AWS IoT Developer Guide.

@@ -16,8 +16,7 @@ to. You have to specify an IP pool that already exists.}
 }
 \description{
 Move a dedicated IP address to an existing dedicated IP pool.
-}
-\details{
+
 The dedicated IP address that you specify must already exist, and must
 be associated with your Amazon Pinpoint account.
 

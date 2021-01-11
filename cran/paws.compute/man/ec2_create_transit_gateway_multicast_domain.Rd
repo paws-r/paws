@@ -21,8 +21,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Creates a multicast domain using the specified transit gateway.
-}
-\details{
+
 The transit gateway must be in the available state before you create a
 domain. Use
 \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGateways.html}{DescribeTransitGateways}

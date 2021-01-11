@@ -26,8 +26,7 @@ blocks.}
 Gets the results for an Amazon Textract asynchronous operation that
 detects text in a document. Amazon Textract can detect lines of text and
 the words that make up a line of text.
-}
-\details{
+
 You start asynchronous text detection by calling
 StartDocumentTextDetection, which returns a job identifier (\code{JobId}).
 When the text detection operation finishes, Amazon Textract publishes a

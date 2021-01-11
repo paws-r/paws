@@ -18,8 +18,7 @@ customizations for.}
 \description{
 Updates Amazon QuickSight customizations the current AWS Region.
 Currently, the only customization you can use is a theme.
-}
-\details{
+
 You can use customizations for your AWS account or, if you specify a
 namespace, for a QuickSight namespace instead. Customizations that apply
 to a namespace override customizations that apply to an AWS account. To

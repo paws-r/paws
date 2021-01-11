@@ -15,8 +15,7 @@ required key and an optional value.}
 \description{
 Add tags to the specified Amazon SNS topic. For an overview, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-tags.html}{Amazon SNS Tags} in
 the \emph{Amazon SNS Developer Guide}.
-}
-\details{
+
 When you use topic tags, keep the following guidelines in mind:
 \itemize{
 \item Adding more than 50 tags to a topic isn't recommended.
@@ -27,7 +26,7 @@ character strings.
 the existing tag.
 \item Tagging actions are limited to 10 TPS per AWS account, per AWS
 region. If your application requires a higher throughput, file a
-\href{https://console.aws.amazon.com/support/home#/case/create?issueType=technical}{technical support request}.
+technical support request.
 }
 }
 \section{Request syntax}{

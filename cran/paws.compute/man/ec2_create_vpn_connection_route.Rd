@@ -17,8 +17,7 @@ Creates a static route associated with a VPN connection between an
 existing virtual private gateway and a VPN customer gateway. The static
 route allows traffic to be routed from the virtual private gateway to
 the VPN customer gateway.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the
 \emph{AWS Site-to-Site VPN User Guide}.
 }

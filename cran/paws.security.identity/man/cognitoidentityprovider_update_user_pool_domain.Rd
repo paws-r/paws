@@ -26,8 +26,7 @@ certificate that is managed by ACM.}
 \description{
 Updates the Secure Sockets Layer (SSL) certificate for the custom domain
 for your user pool.
-}
-\details{
+
 You can use this operation to provide the Amazon Resource Name (ARN) of
 a new certificate to Amazon Cognito. You cannot use it to change the
 domain for a user pool.

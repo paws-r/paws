@@ -14,10 +14,10 @@ being updated.}
 }
 \description{
 Updates execution of a task.
-}
-\details{
+
 You can modify bandwidth throttling for a task execution that is running
-or queued. For more information, see \href{https://docs.aws.amazon.com/datasync/latest/#adjust-bandwidth-throttling}{Adjusting Bandwidth Throttling for a Task Execution}.
+or queued. For more information, see Adjusting Bandwidth Throttling for
+a Task Execution.
 
 The only \code{Option} that can be modified by \code{UpdateTaskExecution} is
 \verb{<a href="https://docs.aws.amazon.com/datasync/latest/userguide/API_Options.html#DataSync-Type-Options-BytesPerSecond">BytesPerSecond</a>}.

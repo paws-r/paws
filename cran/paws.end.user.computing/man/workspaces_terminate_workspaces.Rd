@@ -11,8 +11,7 @@ workspaces_terminate_workspaces(TerminateWorkspaceRequests)
 }
 \description{
 Terminates the specified WorkSpaces.
-}
-\details{
+
 Terminating a WorkSpace is a permanent action and cannot be undone. The
 user's data is destroyed. If you need to archive any user data, contact
 AWS Support before terminating the WorkSpace.

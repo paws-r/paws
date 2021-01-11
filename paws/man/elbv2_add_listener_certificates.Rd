@@ -16,8 +16,7 @@ elbv2_add_listener_certificates(ListenerArn, Certificates)
 \description{
 Adds the specified SSL server certificate to the certificate list for
 the specified HTTPS or TLS listener.
-}
-\details{
+
 If the certificate in already in the certificate list, the call is
 successful but the certificate is not added again.
 

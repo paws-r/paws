@@ -21,8 +21,7 @@ Creates a new version of the bot based on the \verb{$LATEST} version. If the
 \verb{$LATEST} version of this resource hasn't changed since you created the
 last version, Amazon Lex doesn't create a new version. It returns the
 last created version.
-}
-\details{
+
 You can update only the \verb{$LATEST} version of the bot. You can't update
 the numbered versions that you create with the \code{CreateBotVersion}
 operation.

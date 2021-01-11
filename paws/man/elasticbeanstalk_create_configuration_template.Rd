@@ -73,8 +73,7 @@ a specific Elastic Beanstalk application. You define application
 configuration settings in a configuration template. You can then use the
 configuration template to deploy different versions of the application
 with the same configuration settings.
-}
-\details{
+
 Templates aren't associated with any environment. The \code{EnvironmentName}
 response element is always \code{null}.
 

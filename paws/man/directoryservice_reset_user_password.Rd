@@ -18,8 +18,7 @@ which the user resides.}
 \description{
 Resets the password for any user in your AWS Managed Microsoft AD or
 Simple AD directory.
-}
-\details{
+
 You can reset the password for any user in your directory with the
 following exceptions:
 \itemize{

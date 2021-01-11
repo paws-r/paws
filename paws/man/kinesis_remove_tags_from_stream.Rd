@@ -15,8 +15,7 @@ kinesis_remove_tags_from_stream(StreamName, TagKeys)
 Removes tags from the specified Kinesis data stream. Removed tags are
 deleted and cannot be recovered after this operation successfully
 completes.
-}
-\details{
+
 If you specify a tag that does not exist, it is ignored.
 
 RemoveTagsFromStream has a limit of five transactions per second per

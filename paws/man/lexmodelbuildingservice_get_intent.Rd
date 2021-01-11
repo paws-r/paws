@@ -14,8 +14,7 @@ lexmodelbuildingservice_get_intent(name, version)
 \description{
 Returns information about an intent. In addition to the intent name, you
 must specify the intent version.
-}
-\details{
+
 This operation requires permissions to perform the \code{lex:GetIntent}
 action.
 }

@@ -42,8 +42,7 @@ snapshot.}
 \description{
 Adds an attribute and values to, or removes an attribute and values
 from, a manual DB cluster snapshot.
-}
-\details{
+
 To share a manual DB cluster snapshot with other AWS accounts, specify
 \code{restore} as the \code{AttributeName} and use the \code{ValuesToAdd} parameter to
 add a list of IDs of the AWS accounts that are authorized to restore the

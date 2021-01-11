@@ -23,8 +23,7 @@ in the \code{Locked} state. If the vault lock is in the \code{Locked} state when
 this operation is requested, the operation returns an
 \code{AccessDeniedException} error. Aborting the vault locking process
 removes the vault lock policy from the specified vault.
-}
-\details{
+
 A vault lock is put into the \code{InProgress} state by calling
 InitiateVaultLock. A vault lock is put into the \code{Locked} state by
 calling CompleteVaultLock. You can get the state of a vault lock by

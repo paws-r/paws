@@ -122,8 +122,7 @@ in the \emph{Amazon SWF Developer Guide}.}
 \description{
 Starts an execution of the workflow type in the specified domain using
 the provided \code{workflowId} and input data.
-}
-\details{
+
 This action returns the newly started workflow execution.
 
 \strong{Access Control}

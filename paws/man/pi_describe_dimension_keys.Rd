@@ -93,8 +93,7 @@ token, up to the value specified by \code{MaxRecords}.}
 \description{
 For a specific time period, retrieve the top \code{N} dimension keys for a
 metric.
-}
-\details{
+
 Each response element returns a maximum of 500 bytes. For larger
 elements, such as SQL statements, only the first 500 bytes are returned.
 }

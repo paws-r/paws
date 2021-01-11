@@ -61,8 +61,7 @@ output should continue from.}
 \description{
 Returns a list of ARNs of the resources that are members of a specified
 resource group.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

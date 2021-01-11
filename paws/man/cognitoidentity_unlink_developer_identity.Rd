@@ -23,8 +23,7 @@ developer users will be considered new identities next time they are
 seen. If, for a given Cognito identity, you remove all federated
 identities as well as the developer user identifier, the Cognito
 identity becomes inaccessible.
-}
-\details{
+
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{

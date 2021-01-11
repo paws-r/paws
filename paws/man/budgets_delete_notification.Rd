@@ -16,8 +16,7 @@ you want to delete.}
 }
 \description{
 Deletes a notification.
-}
-\details{
+
 Deleting a notification also deletes the subscribers that are associated
 with the notification.
 }

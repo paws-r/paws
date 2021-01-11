@@ -17,8 +17,7 @@ balancers.}
 \description{
 Detaches one or more Classic Load Balancers from the specified Auto
 Scaling group.
-}
-\details{
+
 This operation detaches only Classic Load Balancers. If you have
 Application Load Balancers, Network Load Balancers, or Gateway Load
 Balancers, use the DetachLoadBalancerTargetGroups API instead.

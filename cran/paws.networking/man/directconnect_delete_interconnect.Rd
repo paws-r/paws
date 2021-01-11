@@ -11,8 +11,7 @@ directconnect_delete_interconnect(interconnectId)
 }
 \description{
 Deletes the specified interconnect.
-}
-\details{
+
 Intended for use by AWS Direct Connect Partners only.
 }
 \section{Request syntax}{

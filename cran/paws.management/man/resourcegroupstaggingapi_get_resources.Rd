@@ -108,8 +108,7 @@ parameter is also set to \code{true}.}
 \description{
 Returns all the tagged or previously tagged resources that are located
 in the specified Region for the AWS account.
-}
-\details{
+
 Depending on what information you want returned, you can also specify
 the following:
 \itemize{

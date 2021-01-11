@@ -25,8 +25,7 @@ To get the names of key policies, use ListKeyPolicies.}
 }
 \description{
 Gets a key policy attached to the specified customer master key (CMK).
-}
-\details{
+
 \strong{Cross-account use}: No. You cannot perform this operation on a CMK in
 a different AWS account.
 

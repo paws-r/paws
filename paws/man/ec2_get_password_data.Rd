@@ -18,8 +18,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Retrieves the encrypted administrator password for a running Windows
 instance.
-}
-\details{
+
 The Windows password is generated at boot by the \code{EC2Config} service or
 \code{EC2Launch} scripts (Windows Server 2016 and later). This usually only
 happens the first time an instance is launched. For more information,

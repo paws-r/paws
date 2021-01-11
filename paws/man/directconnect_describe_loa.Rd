@@ -20,8 +20,7 @@ value is application/pdf.}
 \description{
 Gets the LOA-CFA for a connection, interconnect, or link aggregation
 group (LAG).
-}
-\details{
+
 The Letter of Authorization - Connecting Facility Assignment (LOA-CFA)
 is a document that is used when establishing your cross connect to AWS
 at the colocation facility. For more information, see \href{https://docs.aws.amazon.com/directconnect/latest/UserGuide/Colocation.html}{Requesting Cross Connects at AWS Direct Connect Locations}

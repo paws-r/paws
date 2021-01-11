@@ -25,8 +25,7 @@ the EC2 Fleet.}
 }
 \description{
 Modifies the specified EC2 Fleet.
-}
-\details{
+
 You can only modify an EC2 Fleet request of type \code{maintain}.
 
 While the EC2 Fleet is being modified, it is in the \code{modifying} state.

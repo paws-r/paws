@@ -20,8 +20,7 @@ Applies only to Hyperledger Fabric.}
 }
 \description{
 Updates a node configuration with new parameters.
-}
-\details{
+
 Applies only to Hyperledger Fabric.
 }
 \section{Request syntax}{

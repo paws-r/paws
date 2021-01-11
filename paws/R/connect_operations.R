@@ -6,6 +6,7 @@ NULL
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -48,6 +49,7 @@ connect_associate_approved_origin <- function(InstanceId, Origin) {
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -126,6 +128,7 @@ connect_associate_instance_storage_config <- function(InstanceId, ResourceType, 
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -170,6 +173,7 @@ connect_associate_lambda_function <- function(InstanceId, FunctionArn) {
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -215,6 +219,7 @@ connect_associate_lex_bot <- function(InstanceId, LexBot) {
 
 #' Associates a set of queues with a routing profile
 #'
+#' @description
 #' Associates a set of queues with a routing profile.
 #'
 #' @usage
@@ -266,6 +271,7 @@ connect_associate_routing_profile_queues <- function(InstanceId, RoutingProfileI
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -307,6 +313,7 @@ connect_associate_security_key <- function(InstanceId, Key) {
 
 #' Creates a contact flow for the specified Amazon Connect instance
 #'
+#' @description
 #' Creates a contact flow for the specified Amazon Connect instance.
 #' 
 #' You can also create and update contact flows using the [Amazon Connect
@@ -364,6 +371,7 @@ connect_create_contact_flow <- function(InstanceId, Name, Type, Description = NU
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -418,6 +426,7 @@ connect_create_instance <- function(ClientToken = NULL, IdentityManagementType, 
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -469,6 +478,7 @@ connect_create_integration_association <- function(InstanceId, IntegrationType, 
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -532,6 +542,7 @@ connect_create_quick_connect <- function(InstanceId, Name, Description = NULL, Q
 
 #' Creates a new routing profile
 #'
+#' @description
 #' Creates a new routing profile.
 #'
 #' @usage
@@ -601,6 +612,7 @@ connect_create_routing_profile <- function(InstanceId, Name, Description, Defaul
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -646,6 +658,7 @@ connect_create_use_case <- function(InstanceId, IntegrationAssociationId, UseCas
 
 #' Creates a user account for the specified Amazon Connect instance
 #'
+#' @description
 #' Creates a user account for the specified Amazon Connect instance.
 #' 
 #' For information about how to create user accounts using the Amazon
@@ -735,6 +748,7 @@ connect_create_user <- function(Username, Password = NULL, IdentityInfo = NULL, 
 
 #' Creates a new user hierarchy group
 #'
+#' @description
 #' Creates a new user hierarchy group.
 #'
 #' @usage
@@ -778,6 +792,7 @@ connect_create_user_hierarchy_group <- function(Name, ParentGroupId = NULL, Inst
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -818,6 +833,7 @@ connect_delete_instance <- function(InstanceId) {
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -862,6 +878,7 @@ connect_delete_integration_association <- function(InstanceId, IntegrationAssoci
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -904,6 +921,7 @@ connect_delete_quick_connect <- function(InstanceId, QuickConnectId) {
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -947,6 +965,7 @@ connect_delete_use_case <- function(InstanceId, IntegrationAssociationId, UseCas
 
 #' Deletes a user account from the specified Amazon Connect instance
 #'
+#' @description
 #' Deletes a user account from the specified Amazon Connect instance.
 #' 
 #' For information about what happens to a user's data when their account
@@ -990,6 +1009,7 @@ connect_delete_user <- function(InstanceId, UserId) {
 
 #' Deletes an existing user hierarchy group
 #'
+#' @description
 #' Deletes an existing user hierarchy group. It must not be associated with
 #' any agents or have any active child groups.
 #'
@@ -1029,6 +1049,7 @@ connect_delete_user_hierarchy_group <- function(HierarchyGroupId, InstanceId) {
 
 #' Describes the specified contact flow
 #'
+#' @description
 #' Describes the specified contact flow.
 #' 
 #' You can also create and update contact flows using the [Amazon Connect
@@ -1072,6 +1093,7 @@ connect_describe_contact_flow <- function(InstanceId, ContactFlowId) {
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -1119,6 +1141,7 @@ connect_describe_instance <- function(InstanceId) {
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -1161,6 +1184,7 @@ connect_describe_instance_attribute <- function(InstanceId, AttributeType) {
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -1208,6 +1232,7 @@ connect_describe_instance_storage_config <- function(InstanceId, AssociationId, 
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -1249,6 +1274,7 @@ connect_describe_quick_connect <- function(InstanceId, QuickConnectId) {
 
 #' Describes the specified routing profile
 #'
+#' @description
 #' Describes the specified routing profile.
 #'
 #' @usage
@@ -1287,6 +1313,7 @@ connect_describe_routing_profile <- function(InstanceId, RoutingProfileId) {
 
 #' Describes the specified user account
 #'
+#' @description
 #' Describes the specified user account. You can find the instance ID in
 #' the console (it’s the final part of the ARN). The console does not
 #' display the user IDs. Instead, list the users and note the IDs provided
@@ -1328,6 +1355,7 @@ connect_describe_user <- function(UserId, InstanceId) {
 
 #' Describes the specified hierarchy group
 #'
+#' @description
 #' Describes the specified hierarchy group.
 #'
 #' @usage
@@ -1367,6 +1395,7 @@ connect_describe_user_hierarchy_group <- function(HierarchyGroupId, InstanceId) 
 #' Describes the hierarchy structure of the specified Amazon Connect
 #' instance
 #'
+#' @description
 #' Describes the hierarchy structure of the specified Amazon Connect
 #' instance.
 #'
@@ -1405,6 +1434,7 @@ connect_describe_user_hierarchy_structure <- function(InstanceId) {
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -1447,6 +1477,7 @@ connect_disassociate_approved_origin <- function(InstanceId, Origin) {
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -1494,6 +1525,7 @@ connect_disassociate_instance_storage_config <- function(InstanceId, Association
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -1538,6 +1570,7 @@ connect_disassociate_lambda_function <- function(InstanceId, FunctionArn) {
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -1582,6 +1615,7 @@ connect_disassociate_lex_bot <- function(InstanceId, BotName, LexRegion) {
 
 #' Disassociates a set of queues from a routing profile
 #'
+#' @description
 #' Disassociates a set of queues from a routing profile.
 #'
 #' @usage
@@ -1629,6 +1663,7 @@ connect_disassociate_routing_profile_queues <- function(InstanceId, RoutingProfi
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -1671,6 +1706,7 @@ connect_disassociate_security_key <- function(InstanceId, AssociationId) {
 
 #' Retrieves the contact attributes for the specified contact
 #'
+#' @description
 #' Retrieves the contact attributes for the specified contact.
 #'
 #' @usage
@@ -1710,6 +1746,7 @@ connect_get_contact_attributes <- function(InstanceId, InitialContactId) {
 #' Gets the real-time metric data from the specified Amazon Connect
 #' instance
 #'
+#' @description
 #' Gets the real-time metric data from the specified Amazon Connect
 #' instance.
 #' 
@@ -1894,6 +1931,7 @@ connect_get_current_metric_data <- function(InstanceId, Filters, Groupings = NUL
 
 #' Retrieves a token for federation
 #'
+#' @description
 #' Retrieves a token for federation.
 #'
 #' @usage
@@ -1930,6 +1968,7 @@ connect_get_federation_token <- function(InstanceId) {
 
 #' Gets historical metric data from the specified Amazon Connect instance
 #'
+#' @description
 #' Gets historical metric data from the specified Amazon Connect instance.
 #' 
 #' For a description of each historical metric, see [Historical Metrics
@@ -2193,6 +2232,7 @@ connect_get_metric_data <- function(InstanceId, StartTime, EndTime, Filters, Gro
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -2240,6 +2280,7 @@ connect_list_approved_origins <- function(InstanceId, NextToken = NULL, MaxResul
 #' Provides information about the contact flows for the specified Amazon
 #' Connect instance
 #'
+#' @description
 #' Provides information about the contact flows for the specified Amazon
 #' Connect instance.
 #' 
@@ -2297,6 +2338,7 @@ connect_list_contact_flows <- function(InstanceId, ContactFlowTypes = NULL, Next
 #' Provides information about the hours of operation for the specified
 #' Amazon Connect instance
 #'
+#' @description
 #' Provides information about the hours of operation for the specified
 #' Amazon Connect instance.
 #' 
@@ -2346,6 +2388,7 @@ connect_list_hours_of_operations <- function(InstanceId, NextToken = NULL, MaxRe
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -2392,6 +2435,7 @@ connect_list_instance_attributes <- function(InstanceId, NextToken = NULL, MaxRe
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -2442,6 +2486,7 @@ connect_list_instance_storage_configs <- function(InstanceId, ResourceType, Next
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -2489,6 +2534,7 @@ connect_list_instances <- function(NextToken = NULL, MaxResults = NULL) {
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -2536,6 +2582,7 @@ connect_list_integration_associations <- function(InstanceId, NextToken = NULL, 
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -2583,6 +2630,7 @@ connect_list_lambda_functions <- function(InstanceId, NextToken = NULL, MaxResul
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -2630,6 +2678,7 @@ connect_list_lex_bots <- function(InstanceId, NextToken = NULL, MaxResults = NUL
 #' Provides information about the phone numbers for the specified Amazon
 #' Connect instance
 #'
+#' @description
 #' Provides information about the phone numbers for the specified Amazon
 #' Connect instance.
 #' 
@@ -2688,6 +2737,7 @@ connect_list_phone_numbers <- function(InstanceId, PhoneNumberTypes = NULL, Phon
 #' Provides information about the prompts for the specified Amazon Connect
 #' instance
 #'
+#' @description
 #' Provides information about the prompts for the specified Amazon Connect
 #' instance.
 #'
@@ -2732,6 +2782,7 @@ connect_list_prompts <- function(InstanceId, NextToken = NULL, MaxResults = NULL
 #' Provides information about the queues for the specified Amazon Connect
 #' instance
 #'
+#' @description
 #' Provides information about the queues for the specified Amazon Connect
 #' instance.
 #' 
@@ -2784,6 +2835,7 @@ connect_list_queues <- function(InstanceId, QueueTypes = NULL, NextToken = NULL,
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -2837,6 +2889,7 @@ connect_list_quick_connects <- function(InstanceId, NextToken = NULL, MaxResults
 
 #' List the queues associated with a routing profile
 #'
+#' @description
 #' List the queues associated with a routing profile.
 #'
 #' @usage
@@ -2883,6 +2936,7 @@ connect_list_routing_profile_queues <- function(InstanceId, RoutingProfileId, Ne
 #' Provides summary information about the routing profiles for the
 #' specified Amazon Connect instance
 #'
+#' @description
 #' Provides summary information about the routing profiles for the
 #' specified Amazon Connect instance.
 #' 
@@ -2933,6 +2987,7 @@ connect_list_routing_profiles <- function(InstanceId, NextToken = NULL, MaxResul
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -2980,6 +3035,7 @@ connect_list_security_keys <- function(InstanceId, NextToken = NULL, MaxResults 
 #' Provides summary information about the security profiles for the
 #' specified Amazon Connect instance
 #'
+#' @description
 #' Provides summary information about the security profiles for the
 #' specified Amazon Connect instance.
 #' 
@@ -3027,6 +3083,7 @@ connect_list_security_profiles <- function(InstanceId, NextToken = NULL, MaxResu
 
 #' Lists the tags for the specified resource
 #'
+#' @description
 #' Lists the tags for the specified resource.
 #' 
 #' For sample policies that use tags, see [Amazon Connect Identity-Based
@@ -3069,6 +3126,7 @@ connect_list_tags_for_resource <- function(resourceArn) {
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -3118,6 +3176,7 @@ connect_list_use_cases <- function(InstanceId, IntegrationAssociationId, NextTok
 #' Provides summary information about the hierarchy groups for the
 #' specified Amazon Connect instance
 #'
+#' @description
 #' Provides summary information about the hierarchy groups for the
 #' specified Amazon Connect instance.
 #' 
@@ -3166,6 +3225,7 @@ connect_list_user_hierarchy_groups <- function(InstanceId, NextToken = NULL, Max
 #' Provides summary information about the users for the specified Amazon
 #' Connect instance
 #'
+#' @description
 #' Provides summary information about the users for the specified Amazon
 #' Connect instance.
 #'
@@ -3210,6 +3270,7 @@ connect_list_users <- function(InstanceId, NextToken = NULL, MaxResults = NULL) 
 #' When a contact is being recorded, and the recording has been suspended
 #' using SuspendContactRecording, this API resumes recording the call
 #'
+#' @description
 #' When a contact is being recorded, and the recording has been suspended
 #' using SuspendContactRecording, this API resumes recording the call.
 #' 
@@ -3255,6 +3316,7 @@ connect_resume_contact_recording <- function(InstanceId, ContactId, InitialConta
 
 #' Initiates a contact flow to start a new chat for the customer
 #'
+#' @description
 #' Initiates a contact flow to start a new chat for the customer. Response
 #' of this API provides a token required to obtain credentials from the
 #' [CreateParticipantConnection](https://docs.aws.amazon.com/connect-participant/latest/APIReference/API_CreateParticipantConnection.html)
@@ -3346,6 +3408,7 @@ connect_start_chat_contact <- function(InstanceId, ContactFlowId, Attributes = N
 
 #' This API starts recording the contact when the agent joins the call
 #'
+#' @description
 #' This API starts recording the contact when the agent joins the call.
 #' StartContactRecording is a one-time action. For example, if you use
 #' StopContactRecording to stop recording an ongoing call, you can't use
@@ -3406,6 +3469,7 @@ connect_start_contact_recording <- function(InstanceId, ContactId, InitialContac
 #' This API places an outbound call to a contact, and then initiates the
 #' contact flow
 #'
+#' @description
 #' This API places an outbound call to a contact, and then initiates the
 #' contact flow. It performs the actions in the contact flow that's
 #' specified (in `ContactFlowId`).
@@ -3495,6 +3559,7 @@ connect_start_outbound_voice_contact <- function(DestinationPhoneNumber, Contact
 
 #' Initiates a contact flow to start a new task
 #'
+#' @description
 #' Initiates a contact flow to start a new task.
 #'
 #' @usage
@@ -3570,6 +3635,7 @@ connect_start_task_contact <- function(InstanceId, PreviousContactId = NULL, Con
 
 #' Ends the specified contact
 #'
+#' @description
 #' Ends the specified contact.
 #'
 #' @usage
@@ -3608,6 +3674,7 @@ connect_stop_contact <- function(ContactId, InstanceId) {
 
 #' When a contact is being recorded, this API stops recording the call
 #'
+#' @description
 #' When a contact is being recorded, this API stops recording the call.
 #' StopContactRecording is a one-time action. If you use
 #' StopContactRecording to stop recording an ongoing call, you can't use
@@ -3657,6 +3724,7 @@ connect_stop_contact_recording <- function(InstanceId, ContactId, InitialContact
 
 #' When a contact is being recorded, this API suspends recording the call
 #'
+#' @description
 #' When a contact is being recorded, this API suspends recording the call.
 #' For example, you might suspend the call recording while collecting
 #' sensitive information, such as a credit card number. Then use
@@ -3707,6 +3775,7 @@ connect_suspend_contact_recording <- function(InstanceId, ContactId, InitialCont
 
 #' Adds the specified tags to the specified resource
 #'
+#' @description
 #' Adds the specified tags to the specified resource.
 #' 
 #' The supported resource types are users, routing profiles, quick
@@ -3756,6 +3825,7 @@ connect_tag_resource <- function(resourceArn, tags) {
 
 #' Removes the specified tags from the specified resource
 #'
+#' @description
 #' Removes the specified tags from the specified resource.
 #'
 #' @usage
@@ -3797,6 +3867,7 @@ connect_untag_resource <- function(resourceArn, tagKeys) {
 #' Creates or updates the contact attributes associated with the specified
 #' contact
 #'
+#' @description
 #' Creates or updates the contact attributes associated with the specified
 #' contact.
 #' 
@@ -3867,6 +3938,7 @@ connect_update_contact_attributes <- function(InitialContactId, InstanceId, Attr
 
 #' Updates the specified contact flow
 #'
+#' @description
 #' Updates the specified contact flow.
 #' 
 #' You can also create and update contact flows using the [Amazon Connect
@@ -3914,6 +3986,7 @@ connect_update_contact_flow_content <- function(InstanceId, ContactFlowId, Conte
 
 #' The name of the contact flow
 #'
+#' @description
 #' The name of the contact flow.
 #' 
 #' You can also create and update contact flows using the [Amazon Connect
@@ -3962,6 +4035,7 @@ connect_update_contact_flow_name <- function(InstanceId, ContactFlowId, Name = N
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -4006,6 +4080,7 @@ connect_update_instance_attribute <- function(InstanceId, AttributeType, Value) 
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -4080,6 +4155,7 @@ connect_update_instance_storage_config <- function(InstanceId, AssociationId, Re
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -4138,6 +4214,7 @@ connect_update_quick_connect_config <- function(InstanceId, QuickConnectId, Quic
 #' This API is in preview release for Amazon Connect and is subject to
 #' change
 #'
+#' @description
 #' This API is in preview release for Amazon Connect and is subject to
 #' change.
 #' 
@@ -4187,6 +4264,7 @@ connect_update_quick_connect_name <- function(InstanceId, QuickConnectId, Name =
 #' Updates the channels that agents can handle in the Contact Control Panel
 #' (CCP) for a routing profile
 #'
+#' @description
 #' Updates the channels that agents can handle in the Contact Control Panel
 #' (CCP) for a routing profile.
 #'
@@ -4234,6 +4312,7 @@ connect_update_routing_profile_concurrency <- function(InstanceId, RoutingProfil
 
 #' Updates the default outbound queue of a routing profile
 #'
+#' @description
 #' Updates the default outbound queue of a routing profile.
 #'
 #' @usage
@@ -4275,6 +4354,7 @@ connect_update_routing_profile_default_outbound_queue <- function(InstanceId, Ro
 
 #' Updates the name and description of a routing profile
 #'
+#' @description
 #' Updates the name and description of a routing profile. The request
 #' accepts the following data in JSON format. At least `Name` or
 #' `Description` must be provided.
@@ -4322,6 +4402,7 @@ connect_update_routing_profile_name <- function(InstanceId, RoutingProfileId, Na
 #' Updates the properties associated with a set of queues for a routing
 #' profile
 #'
+#' @description
 #' Updates the properties associated with a set of queues for a routing
 #' profile.
 #'
@@ -4375,6 +4456,7 @@ connect_update_routing_profile_queues <- function(InstanceId, RoutingProfileId, 
 
 #' Assigns the specified hierarchy group to the specified user
 #'
+#' @description
 #' Assigns the specified hierarchy group to the specified user.
 #'
 #' @usage
@@ -4415,6 +4497,7 @@ connect_update_user_hierarchy <- function(HierarchyGroupId = NULL, UserId, Insta
 
 #' Updates the name of the user hierarchy group
 #'
+#' @description
 #' Updates the name of the user hierarchy group.
 #'
 #' @usage
@@ -4457,6 +4540,7 @@ connect_update_user_hierarchy_group_name <- function(Name, HierarchyGroupId, Ins
 #' Updates the user hierarchy structure: add, remove, and rename user
 #' hierarchy levels
 #'
+#' @description
 #' Updates the user hierarchy structure: add, remove, and rename user
 #' hierarchy levels.
 #'
@@ -4512,6 +4596,7 @@ connect_update_user_hierarchy_structure <- function(HierarchyStructure, Instance
 
 #' Updates the identity information for the specified user
 #'
+#' @description
 #' Updates the identity information for the specified user.
 #' 
 #' Someone with the ability to invoke `UpdateUserIndentityInfo` can change
@@ -4566,6 +4651,7 @@ connect_update_user_identity_info <- function(IdentityInfo, UserId, InstanceId) 
 
 #' Updates the phone configuration settings for the specified user
 #'
+#' @description
 #' Updates the phone configuration settings for the specified user.
 #'
 #' @usage
@@ -4611,6 +4697,7 @@ connect_update_user_phone_config <- function(PhoneConfig, UserId, InstanceId) {
 
 #' Assigns the specified routing profile to the specified user
 #'
+#' @description
 #' Assigns the specified routing profile to the specified user.
 #'
 #' @usage
@@ -4652,6 +4739,7 @@ connect_update_user_routing_profile <- function(RoutingProfileId, UserId, Instan
 
 #' Assigns the specified security profiles to the specified user
 #'
+#' @description
 #' Assigns the specified security profiles to the specified user.
 #'
 #' @usage

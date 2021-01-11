@@ -24,8 +24,7 @@ Provides a list of available query execution IDs for the queries in the
 specified workgroup. If a workgroup is not specified, returns a list of
 query execution IDs for the primary workgroup. Requires you to have
 access to the workgroup in which the queries ran.
-}
-\details{
+
 For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
 in the \emph{Amazon Athena User Guide}.
 }

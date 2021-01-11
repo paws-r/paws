@@ -49,8 +49,7 @@ requests can wait in the queue before timing out. You can set up a queue
 to try to place game sessions on fleets in multiple Regions. To add
 placement requests to a queue, call StartGameSessionPlacement and
 reference the queue name.
-}
-\details{
+
 \strong{Destination order.} When processing a request for a game session,
 Amazon GameLift tries each destination in order until it finds one with
 available resources to host the new game session. A queue's default

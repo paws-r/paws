@@ -13,8 +13,7 @@ You cannot delete the default security group.}
 }
 \description{
 Deletes a cache security group.
-}
-\details{
+
 You cannot delete a cache security group if it is associated with any
 clusters.
 }

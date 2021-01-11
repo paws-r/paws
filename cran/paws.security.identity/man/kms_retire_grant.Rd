@@ -26,8 +26,6 @@ Retires a grant. To clean up, you can retire a grant when you're done
 using it. You should revoke a grant when you intend to actively deny
 operations that depend on it. The following are permitted to call this
 API:
-}
-\details{
 \itemize{
 \item The AWS account (root user) under which the grant was created
 \item The \code{RetiringPrincipal}, if present in the grant

@@ -16,8 +16,7 @@ ec2_get_host_reservation_purchase_preview(HostIdSet, OfferingId)
 Preview a reservation purchase with configurations that match those of
 your Dedicated Host. You must have active Dedicated Hosts in your
 account before you purchase a reservation.
-}
-\details{
+
 This is a preview of the PurchaseHostReservation action and does not
 result in the offering being purchased.
 }

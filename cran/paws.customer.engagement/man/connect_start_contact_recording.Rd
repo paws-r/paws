@@ -25,8 +25,7 @@ StartContactRecording to restart it. For scenarios where the recording
 has started and you want to suspend and resume it, such as when
 collecting sensitive information (for example, a credit card number),
 use SuspendContactRecording and ResumeContactRecording.
-}
-\details{
+
 You can use this API to override the recording behavior configured in
 the \href{https://docs.aws.amazon.com/connect/latest/adminguide/set-recording-behavior.html}{Set recording behavior}
 block.

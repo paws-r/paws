@@ -20,8 +20,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Modifies the instance tenancy attribute of the specified VPC. You can
 change the instance tenancy attribute of a VPC to \code{default} only. You
 cannot change the instance tenancy attribute to \code{dedicated}.
-}
-\details{
+
 After you modify the tenancy of the VPC, any new instances that you
 launch into the VPC have a tenancy of \code{default}, unless you specify
 otherwise during launch. The tenancy of any existing instances in the

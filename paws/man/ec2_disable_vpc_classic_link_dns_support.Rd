@@ -16,8 +16,7 @@ EC2-Classic instance and instances in the VPC to which it's linked. For
 more information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html}{ClassicLink}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\details{
+
 You must specify a VPC ID in the request.
 }
 \section{Request syntax}{

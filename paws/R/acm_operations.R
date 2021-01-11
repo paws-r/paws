@@ -5,6 +5,7 @@ NULL
 
 #' Adds one or more tags to an ACM certificate
 #'
+#' @description
 #' Adds one or more tags to an ACM certificate. Tags are labels that you
 #' can use to identify and organize your AWS resources. Each tag consists
 #' of a `key` and an optional `value`. You specify the certificate on input
@@ -74,6 +75,7 @@ acm_add_tags_to_certificate <- function(CertificateArn, Tags) {
 
 #' Deletes a certificate and its associated private key
 #'
+#' @description
 #' Deletes a certificate and its associated private key. If this action
 #' succeeds, the certificate no longer appears in the list that can be
 #' displayed by calling the ListCertificates action or be retrieved by
@@ -125,6 +127,7 @@ acm_delete_certificate <- function(CertificateArn) {
 
 #' Returns detailed metadata about the specified ACM certificate
 #'
+#' @description
 #' Returns detailed metadata about the specified ACM certificate.
 #'
 #' @usage
@@ -169,6 +172,7 @@ acm_describe_certificate <- function(CertificateArn) {
 #' Exports a private certificate issued by a private certificate authority
 #' (CA) for use anywhere
 #'
+#' @description
 #' Exports a private certificate issued by a private certificate authority
 #' (CA) for use anywhere. The exported file contains the certificate, the
 #' certificate chain, and the encrypted private 2048-bit RSA key associated
@@ -222,6 +226,7 @@ acm_export_certificate <- function(CertificateArn, Passphrase) {
 
 #' Retrieves an Amazon-issued certificate and its certificate chain
 #'
+#' @description
 #' Retrieves an Amazon-issued certificate and its certificate chain. The
 #' chain consists of the certificate of the issuing CA and the intermediate
 #' certificates of any other subordinate CAs. All of the certificates are
@@ -270,6 +275,7 @@ acm_get_certificate <- function(CertificateArn) {
 #' Imports a certificate into AWS Certificate Manager (ACM) to use with
 #' services that are integrated with ACM
 #'
+#' @description
 #' Imports a certificate into AWS Certificate Manager (ACM) to use with
 #' services that are integrated with ACM. Note that [integrated
 #' services](https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html)
@@ -385,6 +391,7 @@ acm_import_certificate <- function(CertificateArn = NULL, Certificate, PrivateKe
 
 #' Retrieves a list of certificate ARNs and domain names
 #'
+#' @description
 #' Retrieves a list of certificate ARNs and domain names. You can request
 #' that only certificates that match a specific status be listed. You can
 #' also filter by specific attributes of the certificate. Default filtering
@@ -450,6 +457,7 @@ acm_list_certificates <- function(CertificateStatuses = NULL, Includes = NULL, N
 
 #' Lists the tags that have been applied to the ACM certificate
 #'
+#' @description
 #' Lists the tags that have been applied to the ACM certificate. Use the
 #' certificate's Amazon Resource Name (ARN) to specify the certificate. To
 #' add a tag to an ACM certificate, use the AddTagsToCertificate action. To
@@ -496,6 +504,7 @@ acm_list_tags_for_certificate <- function(CertificateArn) {
 
 #' Remove one or more tags from an ACM certificate
 #'
+#' @description
 #' Remove one or more tags from an ACM certificate. A tag consists of a
 #' key-value pair. If you do not specify the value portion of the tag when
 #' calling this function, the tag will be removed regardless of value. If
@@ -554,6 +563,7 @@ acm_remove_tags_from_certificate <- function(CertificateArn, Tags) {
 
 #' Renews an eligable ACM certificate
 #'
+#' @description
 #' Renews an eligable ACM certificate. At this time, only exported private
 #' certificates can be renewed with this operation. In order to renew your
 #' ACM PCA certificates with ACM, you must first [grant the ACM service
@@ -604,6 +614,7 @@ acm_renew_certificate <- function(CertificateArn) {
 
 #' Requests an ACM certificate for use with other AWS services
 #'
+#' @description
 #' Requests an ACM certificate for use with other AWS services. To request
 #' an ACM certificate, you must specify a fully qualified domain name
 #' (FQDN) in the `DomainName` parameter. You can also specify additional
@@ -741,6 +752,7 @@ acm_request_certificate <- function(DomainName, ValidationMethod = NULL, Subject
 
 #' Resends the email that requests domain ownership validation
 #'
+#' @description
 #' Resends the email that requests domain ownership validation. The domain
 #' owner or an authorized representative must approve the ACM certificate
 #' before it can be issued. The certificate can be approved by clicking a
@@ -815,6 +827,7 @@ acm_resend_validation_email <- function(CertificateArn, Domain, ValidationDomain
 
 #' Updates a certificate
 #'
+#' @description
 #' Updates a certificate. Currently, you can use this function to specify
 #' whether to opt in to or out of recording your certificate in a
 #' certificate transparency log. For more information, see [Opting Out of

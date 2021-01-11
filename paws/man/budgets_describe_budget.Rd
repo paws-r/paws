@@ -14,8 +14,7 @@ description of.}
 }
 \description{
 Describes a budget.
-}
-\details{
+
 The Request Syntax section shows the \code{BudgetLimit} syntax. For
 \code{PlannedBudgetLimits}, see the
 \href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudget.html#API_DescribeBudget_Examples}{Examples}

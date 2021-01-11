@@ -65,8 +65,7 @@ not include the configuration parameters, the operation starts a
 rotation with the values already stored in the secret. After the
 rotation completes, the protected service and its clients all use the
 new version of the secret.
-}
-\details{
+
 This required configuration information includes the ARN of an AWS
 Lambda function and the time between scheduled rotations. The Lambda
 rotation function creates a new version of the secret and creates or

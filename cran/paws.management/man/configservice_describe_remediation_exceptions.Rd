@@ -26,8 +26,7 @@ view of a remediation exception for a set of resources that includes an
 explanation of an exception and the time when the exception will be
 deleted. When you specify the limit and the next token, you receive a
 paginated response.
-}
-\details{
+
 AWS Config generates a remediation exception when a problem occurs
 executing a remediation action to a specific resource. Remediation
 exceptions blocks auto-remediation until the exception is cleared.

@@ -15,8 +15,7 @@ to retrieve the IDs of your saved query definitions.}
 Deletes a saved CloudWatch Logs Insights query definition. A query
 definition contains details about a saved CloudWatch Logs Insights
 query.
-}
-\details{
+
 Each \code{DeleteQueryDefinition} operation can delete one query definition.
 
 You must have the \code{logs:DeleteQueryDefinition} permission to be able to

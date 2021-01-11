@@ -53,8 +53,7 @@ stack-related events.}
 }
 \description{
 Provisions the specified product.
-}
-\details{
+
 A provisioned product is a resourced instance of a product. For example,
 provisioning a product based on a CloudFormation template launches a
 CloudFormation stack and its underlying resources. You can check the

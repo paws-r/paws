@@ -114,8 +114,7 @@ not copied.}
 }
 \description{
 Copies a snapshot of a DB cluster.
-}
-\details{
+
 To copy a DB cluster snapshot from a shared manual DB cluster snapshot,
 \code{SourceDBClusterSnapshotIdentifier} must be the Amazon Resource Name
 (ARN) of the shared DB cluster snapshot.

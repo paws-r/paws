@@ -21,8 +21,7 @@ other than the root user of the AWS account that owns the bucket, the
 calling identity must have the \code{DeleteBucketPolicy} permissions on the
 specified bucket and belong to the bucket owner's account to use this
 operation.
-}
-\details{
+
 If you don't have \code{DeleteBucketPolicy} permissions, Amazon S3 returns a
 \verb{403 Access Denied} error. If you have the correct permissions, but
 you're not using an identity that belongs to the bucket owner's account,

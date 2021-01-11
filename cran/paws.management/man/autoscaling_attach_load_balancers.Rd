@@ -19,8 +19,7 @@ balancers.}
 To attach an Application Load Balancer, Network Load Balancer, or
 Gateway Load Balancer, use the AttachLoadBalancerTargetGroups API
 operation instead.
-}
-\details{
+
 Attaches one or more Classic Load Balancers to the specified Auto
 Scaling group. Amazon EC2 Auto Scaling registers the running instances
 with these Classic Load Balancers.

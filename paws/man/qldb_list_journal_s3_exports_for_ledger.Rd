@@ -22,8 +22,7 @@ that value as input here.}
 \description{
 Returns an array of journal export job descriptions for a specified
 ledger.
-}
-\details{
+
 This action returns a maximum of \code{MaxResults} items, and is paginated so
 that you can retrieve all the items by calling
 \code{ListJournalS3ExportsForLedger} multiple times.

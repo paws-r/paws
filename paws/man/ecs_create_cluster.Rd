@@ -89,8 +89,7 @@ Creates a new Amazon ECS cluster. By default, your account receives a
 \code{default} cluster when you launch your first container instance.
 However, you can create your own cluster with a unique name with the
 \code{CreateCluster} action.
-}
-\details{
+
 When you call the CreateCluster API operation, Amazon ECS attempts to
 create the Amazon ECS service-linked role for your account so that
 required resources in other AWS services can be managed on your behalf.

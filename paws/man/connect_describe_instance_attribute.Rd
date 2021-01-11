@@ -15,8 +15,7 @@ connect_describe_instance_attribute(InstanceId, AttributeType)
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Describes the specified instance attribute.
 }
 \section{Request syntax}{

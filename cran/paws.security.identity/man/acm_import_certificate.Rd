@@ -32,8 +32,7 @@ certificate is imported into IAM or into ACM. For more information, see
 the documentation for each service. For more information about importing
 certificates into ACM, see \href{https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html}{Importing Certificates}
 in the \emph{AWS Certificate Manager User Guide}.
-}
-\details{
+
 ACM does not provide \href{https://docs.aws.amazon.com/acm/latest/userguide/managed-renewal.html}{managed renewal}
 for certificates that you import.
 

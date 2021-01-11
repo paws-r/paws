@@ -28,8 +28,7 @@ specify a recovery window value, the operation defaults to 30 days.
 QuickSight attaches a \code{DeletionTime} stamp to the response that
 specifies the end of the recovery window. At the end of the recovery
 window, QuickSight deletes the analysis permanently.
-}
-\details{
+
 At any time before recovery window ends, you can use the
 \code{RestoreAnalysis} API operation to remove the \code{DeletionTime} stamp and
 cancel the deletion of the analysis. The analysis remains visible in the

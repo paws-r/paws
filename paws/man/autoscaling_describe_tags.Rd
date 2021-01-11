@@ -18,8 +18,7 @@ is \code{50} and the maximum value is \code{100}.}
 }
 \description{
 Describes the specified tags.
-}
-\details{
+
 You can use filters to limit the results. For example, you can query for
 the tags for a specific Auto Scaling group. You can specify multiple
 values for a filter. A tag must match at least one of the specified

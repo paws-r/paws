@@ -5,6 +5,7 @@ NULL
 
 #' Creates a member within a Managed Blockchain network
 #'
+#' @description
 #' Creates a member within a Managed Blockchain network.
 #' 
 #' Applies only to Hyperledger Fabric.
@@ -73,6 +74,7 @@ managedblockchain_create_member <- function(ClientRequestToken, InvitationId, Ne
 
 #' Creates a new blockchain network using Amazon Managed Blockchain
 #'
+#' @description
 #' Creates a new blockchain network using Amazon Managed Blockchain.
 #' 
 #' Applies only to Hyperledger Fabric.
@@ -161,6 +163,7 @@ managedblockchain_create_network <- function(ClientRequestToken, Name, Descripti
 
 #' Creates a node on the specified blockchain network
 #'
+#' @description
 #' Creates a node on the specified blockchain network.
 #' 
 #' Applies to Hyperledger Fabric and Ethereum.
@@ -240,6 +243,7 @@ managedblockchain_create_node <- function(ClientRequestToken, NetworkId, MemberI
 #' network can vote on, for example, a proposal to add a new member to the
 #' network
 #'
+#' @description
 #' Creates a proposal for a change to the network that other members of the
 #' network can vote on, for example, a proposal to add a new member to the
 #' network. Any member can create a proposal.
@@ -310,6 +314,7 @@ managedblockchain_create_proposal <- function(ClientRequestToken, NetworkId, Mem
 
 #' Deletes a member
 #'
+#' @description
 #' Deletes a member. Deleting a member removes the member and all
 #' associated resources from the network. `DeleteMember` can only be called
 #' for a specified `MemberId` if the principal performing the action is
@@ -357,6 +362,7 @@ managedblockchain_delete_member <- function(NetworkId, MemberId) {
 
 #' Deletes a node that your AWS account owns
 #'
+#' @description
 #' Deletes a node that your AWS account owns. All data on the node is lost
 #' and cannot be recovered.
 #' 
@@ -411,6 +417,7 @@ managedblockchain_delete_node <- function(NetworkId, MemberId = NULL, NodeId) {
 
 #' Returns detailed information about a member
 #'
+#' @description
 #' Returns detailed information about a member.
 #' 
 #' Applies only to Hyperledger Fabric.
@@ -451,6 +458,7 @@ managedblockchain_get_member <- function(NetworkId, MemberId) {
 
 #' Returns detailed information about a network
 #'
+#' @description
 #' Returns detailed information about a network.
 #' 
 #' Applies to Hyperledger Fabric and Ethereum.
@@ -489,6 +497,7 @@ managedblockchain_get_network <- function(NetworkId) {
 
 #' Returns detailed information about a node
 #'
+#' @description
 #' Returns detailed information about a node.
 #' 
 #' Applies to Hyperledger Fabric and Ethereum.
@@ -534,6 +543,7 @@ managedblockchain_get_node <- function(NetworkId, MemberId = NULL, NodeId) {
 
 #' Returns detailed information about a proposal
 #'
+#' @description
 #' Returns detailed information about a proposal.
 #' 
 #' Applies only to Hyperledger Fabric.
@@ -574,6 +584,7 @@ managedblockchain_get_proposal <- function(NetworkId, ProposalId) {
 
 #' Returns a list of all invitations for the current AWS account
 #'
+#' @description
 #' Returns a list of all invitations for the current AWS account.
 #' 
 #' Applies only to Hyperledger Fabric.
@@ -615,6 +626,7 @@ managedblockchain_list_invitations <- function(MaxResults = NULL, NextToken = NU
 #' Returns a list of the members in a network and properties of their
 #' configurations
 #'
+#' @description
 #' Returns a list of the members in a network and properties of their
 #' configurations.
 #' 
@@ -669,6 +681,7 @@ managedblockchain_list_members <- function(NetworkId, Name = NULL, Status = NULL
 #' Returns information about the networks in which the current AWS account
 #' participates
 #'
+#' @description
 #' Returns information about the networks in which the current AWS account
 #' participates.
 #' 
@@ -721,6 +734,7 @@ managedblockchain_list_networks <- function(Name = NULL, Framework = NULL, Statu
 
 #' Returns information about the nodes within a network
 #'
+#' @description
 #' Returns information about the nodes within a network.
 #' 
 #' Applies to Hyperledger Fabric and Ethereum.
@@ -773,6 +787,7 @@ managedblockchain_list_nodes <- function(NetworkId, MemberId = NULL, Status = NU
 #' Returns the list of votes for a specified proposal, including the value
 #' of each vote and the unique identifier of the member that cast the vote
 #'
+#' @description
 #' Returns the list of votes for a specified proposal, including the value
 #' of each vote and the unique identifier of the member that cast the vote.
 #' 
@@ -819,6 +834,7 @@ managedblockchain_list_proposal_votes <- function(NetworkId, ProposalId, MaxResu
 
 #' Returns a list of proposals for the network
 #'
+#' @description
 #' Returns a list of proposals for the network.
 #' 
 #' Applies only to Hyperledger Fabric.
@@ -861,6 +877,7 @@ managedblockchain_list_proposals <- function(NetworkId, MaxResults = NULL, NextT
 
 #' Rejects an invitation to join a network
 #'
+#' @description
 #' Rejects an invitation to join a network. This action can be called by a
 #' principal in an AWS account that has received an invitation to create a
 #' member and join a network.
@@ -901,6 +918,7 @@ managedblockchain_reject_invitation <- function(InvitationId) {
 
 #' Updates a member configuration with new parameters
 #'
+#' @description
 #' Updates a member configuration with new parameters.
 #' 
 #' Applies only to Hyperledger Fabric.
@@ -953,6 +971,7 @@ managedblockchain_update_member <- function(NetworkId, MemberId, LogPublishingCo
 
 #' Updates a node configuration with new parameters
 #'
+#' @description
 #' Updates a node configuration with new parameters.
 #' 
 #' Applies only to Hyperledger Fabric.
@@ -1013,6 +1032,7 @@ managedblockchain_update_node <- function(NetworkId, MemberId = NULL, NodeId, Lo
 
 #' Casts a vote for a specified ProposalId on behalf of a member
 #'
+#' @description
 #' Casts a vote for a specified `ProposalId` on behalf of a member. The
 #' member to vote as, specified by `VoterMemberId`, must be in the same AWS
 #' account as the principal that calls the action.

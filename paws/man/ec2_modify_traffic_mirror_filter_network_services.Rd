@@ -22,8 +22,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Allows or restricts mirroring network services.
-}
-\details{
+
 By default, Amazon DNS network services are not eligible for Traffic
 Mirror. Use \code{AddNetworkServices} to add network services to a Traffic
 Mirror filter. When a network service is added to the Traffic Mirror

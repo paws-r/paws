@@ -33,8 +33,7 @@ the completion notification.}
 }
 \description{
 Starts asynchronous detection of faces in a stored video.
-}
-\details{
+
 Amazon Rekognition Video can detect faces in a video stored in an Amazon
 S3 bucket. Use Video to specify the bucket name and the filename of the
 video. \code{StartFaceDetection} returns a job identifier (\code{JobId}) that you

@@ -64,8 +64,7 @@ use the request parameters as selection criteria to return a subset of
 the objects in a bucket. A \verb{200 OK} response can contain valid or
 invalid XML. Make sure to design your application to parse the contents
 of the response and handle it appropriately.
-}
-\details{
+
 To use this operation, you must have READ access to the bucket.
 
 To use this operation in an AWS Identity and Access Management (IAM)

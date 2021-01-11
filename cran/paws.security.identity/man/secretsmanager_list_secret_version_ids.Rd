@@ -57,8 +57,7 @@ Lists all of the versions attached to the specified secret. The output
 does not include the \code{SecretString} or \code{SecretBinary} fields. By
 default, the list includes only versions that have at least one staging
 label in \code{VersionStage} attached.
-}
-\details{
+
 Always check the \code{NextToken} response parameter when calling any of the
 \verb{List*} operations. These operations can occasionally return an empty or
 shorter than expected list of results even when there more results

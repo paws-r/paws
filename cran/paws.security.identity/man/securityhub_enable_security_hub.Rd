@@ -19,8 +19,7 @@ automatically enabled standards, set \code{EnableDefaultStandards} to
 \description{
 Enables Security Hub for your account in the current Region or the
 Region you specify in the request.
-}
-\details{
+
 When you enable Security Hub, you grant to Security Hub the permissions
 necessary to gather findings from other services that are integrated
 with Security Hub.

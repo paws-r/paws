@@ -49,8 +49,7 @@ in the \emph{Network Load Balancers Guide}.}
 \description{
 Replaces the specified properties of the specified listener. Any
 properties that you do not specify remain unchanged.
-}
-\details{
+
 Changing the protocol from HTTPS to HTTP, or from TLS to TCP, removes
 the security policy and default certificate properties. If you change
 the protocol from HTTP to HTTPS, or from TCP to TLS, you must add the

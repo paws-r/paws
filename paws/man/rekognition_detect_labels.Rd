@@ -32,8 +32,7 @@ Detects instances of real-world entities within an image (JPEG or PNG)
 provided as input. This includes objects like flower, tree, and table;
 events like wedding, graduation, and birthday party; and concepts like
 landscape, evening, and nature.
-}
-\details{
+
 For an example, see Analyzing Images Stored in an Amazon S3 Bucket in
 the Amazon Rekognition Developer Guide.
 
@@ -77,7 +76,7 @@ flower as a tulip.
 In response, the API returns an array of labels. In addition, the
 response also includes the orientation correction. Optionally, you can
 specify \code{MinConfidence} to control the confidence threshold for the
-labels returned. The default is 55\%. You can also add the \code{MaxLabels}
+labels returned. The default is 55\\%. You can also add the \code{MaxLabels}
 parameter to limit the number of labels returned.
 
 If the object detected is a person, the operation doesn't provide the

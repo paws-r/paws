@@ -20,8 +20,7 @@ If false, \code{DataSourceSchema} is not returned.}
 \description{
 Returns a \code{DataSource} that includes metadata and data file information,
 as well as the current status of the \code{DataSource}.
-}
-\details{
+
 \code{GetDataSource} provides results in normal or verbose format. The
 verbose format adds the schema description and the list of files pointed
 to by the DataSource to the normal format.

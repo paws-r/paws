@@ -57,8 +57,7 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 }
 \description{
 Creates a network interface in the specified subnet.
-}
-\details{
+
 For more information about network interfaces, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html}{Elastic Network Interfaces}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }

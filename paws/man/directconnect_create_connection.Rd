@@ -25,8 +25,7 @@ connection.}
 \description{
 Creates a connection between a customer network and a specific AWS
 Direct Connect location.
-}
-\details{
+
 A connection links your internal network to an AWS Direct Connect
 location over a standard Ethernet fiber-optic cable. One end of the
 cable is connected to your router, the other to an AWS Direct Connect

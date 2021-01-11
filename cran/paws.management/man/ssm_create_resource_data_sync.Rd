@@ -30,8 +30,7 @@ parameter is required if the \code{SyncType} value is SyncFromSource.}
 A resource data sync helps you view data from multiple sources in a
 single location. Systems Manager offers two types of resource data sync:
 \code{SyncToDestination} and \code{SyncFromSource}.
-}
-\details{
+
 You can configure Systems Manager Inventory to use the
 \code{SyncToDestination} type to synchronize Inventory data from multiple AWS
 Regions to a single S3 bucket. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-inventory-datasync.html}{Configuring Resource Data Sync for Inventory}

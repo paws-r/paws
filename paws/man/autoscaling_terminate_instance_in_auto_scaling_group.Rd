@@ -17,8 +17,7 @@ the Auto Scaling group.}
 \description{
 Terminates the specified instance and optionally adjusts the desired
 group size.
-}
-\details{
+
 This call simply makes a termination request. The instance is not
 terminated immediately. When an instance is terminated, the instance
 status changes to \code{terminated}. You can't connect to or start an

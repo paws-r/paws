@@ -32,8 +32,7 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the names of the inline policies embedded in the specified IAM
 user.
-}
-\details{
+
 An IAM user can also have managed policies attached to it. To list the
 managed policies that are attached to a user, use
 ListAttachedUserPolicies. For more information about policies, see

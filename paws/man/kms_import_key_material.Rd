@@ -50,8 +50,7 @@ Imports key material into an existing symmetric AWS KMS customer master
 key (CMK) that was created without key material. After you successfully
 import key material into a CMK, you can \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#reimport-key-material}{reimport the same key material}
 into that CMK, but you cannot import different key material.
-}
-\details{
+
 You cannot perform this operation on an asymmetric CMK or on any CMK in
 a different AWS account. For more information about creating CMKs with
 no key material and then importing key material, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}

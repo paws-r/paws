@@ -18,8 +18,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Modifies a volume attribute.
-}
-\details{
+
 By default, all I/O operations for the volume are suspended when the
 data on the volume is determined to be potentially inconsistent, to
 prevent undetectable, latent data corruption. The I/O access to the

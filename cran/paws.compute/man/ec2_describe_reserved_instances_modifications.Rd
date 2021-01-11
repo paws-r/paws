@@ -44,8 +44,7 @@ Describes the modifications made to your Reserved Instances. If no
 parameter is specified, information about all your Reserved Instances
 modification requests is returned. If a modification ID is specified,
 only information about the specific modification is returned.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html}{Modifying Reserved Instances}
 in the Amazon Elastic Compute Cloud User Guide.
 }

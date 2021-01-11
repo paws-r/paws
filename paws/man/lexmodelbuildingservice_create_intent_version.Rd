@@ -23,8 +23,7 @@ Creates a new version of an intent based on the \verb{$LATEST} version of the
 intent. If the \verb{$LATEST} version of this intent hasn't changed since you
 last updated it, Amazon Lex doesn't create a new version. It returns the
 last version you created.
-}
-\details{
+
 You can update only the \verb{$LATEST} version of the intent. You can't
 update the numbered versions that you create with the
 \code{CreateIntentVersion} operation.

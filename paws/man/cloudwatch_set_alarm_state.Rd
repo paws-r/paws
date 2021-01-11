@@ -28,8 +28,7 @@ updated state differs from the previous value, the action configured for
 the appropriate state is invoked. For example, if your alarm is
 configured to send an Amazon SNS message when an alarm is triggered,
 temporarily changing the alarm state to \code{ALARM} sends an SNS message.
-}
-\details{
+
 Metric alarms returns to their actual state quickly, often within
 seconds. Because the metric alarm state change happens quickly, it is
 typically only visible in the alarm's \strong{History} tab in the Amazon

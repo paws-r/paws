@@ -180,8 +180,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 \strong{We strongly recommend using a launch template when calling this
 operation to ensure full functionality for Amazon EC2 Auto Scaling and
 Amazon EC2.}
-}
-\details{
+
 Creates an Auto Scaling group with the specified name and attributes.
 
 If you exceed your maximum limit of Auto Scaling groups, the call fails.

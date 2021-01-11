@@ -11,8 +11,7 @@ directconnect_describe_connections_on_interconnect(interconnectId)
 }
 \description{
 Deprecated. Use DescribeHostedConnections instead.
-}
-\details{
+
 Lists the connections that have been provisioned on the specified
 interconnect.
 

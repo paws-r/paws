@@ -8,8 +8,7 @@ autoscaling_describe_lifecycle_hook_types()
 }
 \description{
 Describes the available types of lifecycle hooks.
-}
-\details{
+
 The following hook types are supported:
 \itemize{
 \item autoscaling:EC2\\_INSTANCE\\_LAUNCHING

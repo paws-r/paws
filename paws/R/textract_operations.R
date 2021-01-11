@@ -5,6 +5,7 @@ NULL
 
 #' Analyzes an input document for relationships between detected items
 #'
+#' @description
 #' Analyzes an input document for relationships between detected items.
 #' 
 #' The types of information returned are as follows:
@@ -106,6 +107,7 @@ textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = 
 
 #' Detects text in the input document
 #'
+#' @description
 #' Detects text in the input document. Amazon Textract can detect lines of
 #' text and the words that make up a line of text. The input document must
 #' be an image in JPEG or PNG format. `DetectDocumentText` returns the
@@ -170,6 +172,7 @@ textract_detect_document_text <- function(Document) {
 #' Gets the results for an Amazon Textract asynchronous operation that
 #' analyzes text in a document
 #'
+#' @description
 #' Gets the results for an Amazon Textract asynchronous operation that
 #' analyzes text in a document.
 #' 
@@ -264,6 +267,7 @@ textract_get_document_analysis <- function(JobId, MaxResults = NULL, NextToken =
 #' Gets the results for an Amazon Textract asynchronous operation that
 #' detects text in a document
 #'
+#' @description
 #' Gets the results for an Amazon Textract asynchronous operation that
 #' detects text in a document. Amazon Textract can detect lines of text and
 #' the words that make up a line of text.
@@ -346,6 +350,7 @@ textract_get_document_text_detection <- function(JobId, MaxResults = NULL, NextT
 #' between detected items such as key-value pairs, tables, and selection
 #' elements
 #'
+#' @description
 #' Starts the asynchronous analysis of an input document for relationships
 #' between detected items such as key-value pairs, tables, and selection
 #' elements.
@@ -448,6 +453,7 @@ textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, Cli
 
 #' Starts the asynchronous detection of text in a document
 #'
+#' @description
 #' Starts the asynchronous detection of text in a document. Amazon Textract
 #' can detect lines of text and the words that make up a line of text.
 #' 

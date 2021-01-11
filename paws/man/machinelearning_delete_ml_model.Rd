@@ -11,8 +11,7 @@ machinelearning_delete_ml_model(MLModelId)
 }
 \description{
 Assigns the \code{DELETED} status to an \code{MLModel}, rendering it unusable.
-}
-\details{
+
 After using the \code{DeleteMLModel} operation, you can use the \code{GetMLModel}
 operation to verify that the status of the \code{MLModel} changed to DELETED.
 

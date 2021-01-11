@@ -49,8 +49,7 @@ well as the tables in yor local account.
 Searches a set of tables based on properties in the table metadata as
 well as on the parent database. You can search against text or filter
 conditions.
-}
-\details{
+
 You can only get tables that you have access to based on the security
 policies defined in Lake Formation. You need at least a read-only access
 to the table for it to be returned. If you do not have access to all the

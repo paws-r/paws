@@ -23,8 +23,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Enables fast snapshot restores for the specified snapshots in the
 specified Availability Zones.
-}
-\details{
+
 You get the full benefit of fast snapshot restores after they enter the
 \code{enabled} state. To get the current state of fast snapshot restores, use
 DescribeFastSnapshotRestores. To disable fast snapshot restores, use

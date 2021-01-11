@@ -48,8 +48,7 @@ either or both of these tag values associated with them.}
 \description{
 Returns a list of snapshot copy grants owned by the AWS account in the
 destination region.
-}
-\details{
+
 For more information about managing snapshot copy grants, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html}{Amazon Redshift Database Encryption}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }

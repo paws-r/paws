@@ -108,8 +108,7 @@ GiB) for brokers in an Amazon MSK cluster.
 \description{
 Deletes the specified scaling policy for an Application Auto Scaling
 scalable target.
-}
-\details{
+
 Deleting a step scaling policy deletes the underlying alarm action, but
 does not delete the CloudWatch alarm associated with the scaling policy,
 even if it no longer has an associated action.

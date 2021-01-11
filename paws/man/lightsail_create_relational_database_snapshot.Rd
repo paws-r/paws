@@ -26,11 +26,10 @@ Use the \code{TagResource} action to tag a resource after it's created.}
 Creates a snapshot of your database in Amazon Lightsail. You can use
 snapshots for backups, to make copies of a database, and to save data
 before deleting a database.
-}
-\details{
+
 The \verb{create relational database snapshot} operation supports tag-based
-access control via request tags. For more information, see the
-\href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+access control via request tags. For more information, see the Lightsail
+Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$create_relational_database_snapshot(

@@ -29,8 +29,7 @@ bucket owner pays for downloads from the bucket. This configuration
 parameter enables the bucket owner (only) to specify that the person
 requesting the download will be charged for the download. For more
 information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/RequesterPaysBuckets.html}{Requester Pays Buckets}.
-}
-\details{
+
 The following operations are related to \code{PutBucketRequestPayment}:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}

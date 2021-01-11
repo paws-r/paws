@@ -28,8 +28,7 @@ specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
 \description{
 Creates a hosted connection on the specified interconnect or a link
 aggregation group (LAG) of interconnects.
-}
-\details{
+
 Allocates a VLAN number and a specified amount of capacity (bandwidth)
 for use by a hosted connection on the specified interconnect or LAG of
 interconnects. AWS polices the hosted connection for the specified

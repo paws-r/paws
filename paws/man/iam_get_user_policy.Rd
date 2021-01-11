@@ -23,8 +23,7 @@ spaces. You can also include any of the following characters: \\_+=,.@-}
 \description{
 Retrieves the specified inline policy document that is embedded in the
 specified IAM user.
-}
-\details{
+
 Policies returned by this API are URL-encoded compliant with \href{https://tools.ietf.org/html/rfc3986}{RFC 3986}. You can use a URL decoding
 method to convert the policy back to plain JSON text. For example, if
 you use Java, you can use the \code{decode} method of the

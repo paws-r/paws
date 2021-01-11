@@ -22,8 +22,7 @@ are returned.}
 Retrieves the names of all trigger resources in this AWS account, or the
 resources with the specified tag. This operation allows you to see which
 resources are available in your account, and their names.
-}
-\details{
+
 This operation takes the optional \code{Tags} field, which you can use as a
 filter on the response so that tagged resources can be retrieved as a
 group. If you choose to use tags filtering, only resources with the tag

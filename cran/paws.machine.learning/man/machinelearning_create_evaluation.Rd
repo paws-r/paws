@@ -30,8 +30,7 @@ so that you know how effective the \code{MLModel} functions on the test data.
 Evaluation generates a relevant performance metric, such as BinaryAUC,
 RegressionRMSE or MulticlassAvgFScore based on the corresponding
 \code{MLModelType}: \code{BINARY}, \code{REGRESSION} or \code{MULTICLASS}.
-}
-\details{
+
 \code{CreateEvaluation} is an asynchronous operation. In response to
 \code{CreateEvaluation}, Amazon Machine Learning (Amazon ML) immediately
 returns and sets the evaluation status to \code{PENDING}. After the

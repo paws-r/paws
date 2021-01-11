@@ -21,8 +21,7 @@ configuration.}
 \description{
 Deletes the specified BGP peer on the specified virtual interface with
 the specified customer address and ASN.
-}
-\details{
+
 You cannot delete the last BGP peer from a virtual interface.
 }
 \section{Request syntax}{

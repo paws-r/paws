@@ -6,6 +6,7 @@ NULL
 #' Deletes the specified scaling policy for an Application Auto Scaling
 #' scalable target
 #'
+#' @description
 #' Deletes the specified scaling policy for an Application Auto Scaling
 #' scalable target.
 #' 
@@ -189,6 +190,7 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' Deletes the specified scheduled action for an Application Auto Scaling
 #' scalable target
 #'
+#' @description
 #' Deletes the specified scheduled action for an Application Auto Scaling
 #' scalable target.
 #' 
@@ -354,6 +356,7 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' Deregisters an Application Auto Scaling scalable target when you have
 #' finished using it
 #'
+#' @description
 #' Deregisters an Application Auto Scaling scalable target when you have
 #' finished using it. To see which resources have been registered, use
 #' [DescribeScalableTargets](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_DescribeScalableTargets.html).
@@ -527,6 +530,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 
 #' Gets information about the scalable targets in the specified namespace
 #'
+#' @description
 #' Gets information about the scalable targets in the specified namespace.
 #' 
 #' You can filter the results using `ResourceIds` and `ScalableDimension`.
@@ -712,6 +716,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' Provides descriptive information about the scaling activities in the
 #' specified namespace from the previous six weeks
 #'
+#' @description
 #' Provides descriptive information about the scaling activities in the
 #' specified namespace from the previous six weeks.
 #' 
@@ -897,6 +902,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' Describes the Application Auto Scaling scaling policies for the
 #' specified service namespace
 #'
+#' @description
 #' Describes the Application Auto Scaling scaling policies for the
 #' specified service namespace.
 #' 
@@ -1091,6 +1097,7 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' Describes the Application Auto Scaling scheduled actions for the
 #' specified service namespace
 #'
+#' @description
 #' Describes the Application Auto Scaling scheduled actions for the
 #' specified service namespace.
 #' 
@@ -1274,6 +1281,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' Creates or updates a scaling policy for an Application Auto Scaling
 #' scalable target
 #'
+#' @description
 #' Creates or updates a scaling policy for an Application Auto Scaling
 #' scalable target.
 #' 
@@ -1291,7 +1299,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' both scale out and scale in. For example, if one policy increases
 #' capacity by 3, another policy increases capacity by 200 percent, and the
 #' current capacity is 10, Application Auto Scaling uses the policy with
-#' the highest calculated capacity (200% of 10 = 20) and scales out to 30.
+#' the highest calculated capacity (200\% of 10 = 20) and scales out to 30.
 #' 
 #' We recommend caution, however, when using target tracking scaling
 #' policies with step scaling policies because conflicts between these
@@ -1555,6 +1563,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' Creates or updates a scheduled action for an Application Auto Scaling
 #' scalable target
 #'
+#' @description
 #' Creates or updates a scheduled action for an Application Auto Scaling
 #' scalable target.
 #' 
@@ -1779,6 +1788,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 
 #' Registers or updates a scalable target
 #'
+#' @description
 #' Registers or updates a scalable target.
 #' 
 #' A scalable target is a resource that Application Auto Scaling can scale

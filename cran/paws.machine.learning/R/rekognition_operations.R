@@ -6,6 +6,7 @@ NULL
 #' Compares a face in the source input image with each of the 100 largest
 #' faces detected in the target input image
 #'
+#' @description
 #' Compares a face in the *source* input image with each of the 100 largest
 #' faces detected in the *target* input image.
 #' 
@@ -27,7 +28,7 @@ NULL
 #' which indicates how closely the faces match.
 #' 
 #' By default, only faces with a similarity score of greater than or equal
-#' to 80% are returned in the response. You can change this value by
+#' to 80\% are returned in the response. You can change this value by
 #' specifying the `SimilarityThreshold` parameter.
 #' 
 #' `CompareFaces` also returns an array of faces that don't match the
@@ -158,6 +159,7 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 
 #' Creates a collection in an AWS Region
 #'
+#' @description
 #' Creates a collection in an AWS Region. You can add faces to the
 #' collection using the IndexFaces operation.
 #' 
@@ -216,6 +218,7 @@ rekognition_create_collection <- function(CollectionId) {
 
 #' Creates a new Amazon Rekognition Custom Labels project
 #'
+#' @description
 #' Creates a new Amazon Rekognition Custom Labels project. A project is a
 #' logical grouping of resources (images, Labels, models) and operations
 #' (training, evaluation and detection).
@@ -257,6 +260,7 @@ rekognition_create_project <- function(ProjectName) {
 
 #' Creates a new version of a model and begins training
 #'
+#' @description
 #' Creates a new version of a model and begins training. Models are managed
 #' as part of an Amazon Rekognition Custom Labels project. You can specify
 #' one training dataset and one testing dataset. The response from
@@ -348,6 +352,7 @@ rekognition_create_project_version <- function(ProjectArn, VersionName, OutputCo
 #' Creates an Amazon Rekognition stream processor that you can use to
 #' detect and recognize faces in a streaming video
 #'
+#' @description
 #' Creates an Amazon Rekognition stream processor that you can use to
 #' detect and recognize faces in a streaming video.
 #' 
@@ -431,6 +436,7 @@ rekognition_create_stream_processor <- function(Input, Output, Name, Settings, R
 
 #' Deletes the specified collection
 #'
+#' @description
 #' Deletes the specified collection. Note that this operation removes all
 #' faces in the collection. For an example, see
 #' delete-collection-procedure.
@@ -480,6 +486,7 @@ rekognition_delete_collection <- function(CollectionId) {
 
 #' Deletes faces from a collection
 #'
+#' @description
 #' Deletes faces from a collection. You specify a collection ID and an
 #' array of face IDs to remove from the collection.
 #' 
@@ -535,6 +542,7 @@ rekognition_delete_faces <- function(CollectionId, FaceIds) {
 
 #' Deletes an Amazon Rekognition Custom Labels project
 #'
+#' @description
 #' Deletes an Amazon Rekognition Custom Labels project. To delete a project
 #' you must first delete all models associated with the project. To delete
 #' a model, see DeleteProjectVersion.
@@ -576,6 +584,7 @@ rekognition_delete_project <- function(ProjectArn) {
 
 #' Deletes an Amazon Rekognition Custom Labels model
 #'
+#' @description
 #' Deletes an Amazon Rekognition Custom Labels model.
 #' 
 #' You can't delete a model if it is running or if it is training. To check
@@ -621,6 +630,7 @@ rekognition_delete_project_version <- function(ProjectVersionArn) {
 
 #' Deletes the stream processor identified by Name
 #'
+#' @description
 #' Deletes the stream processor identified by `Name`. You assign the value
 #' for `Name` when you create the stream processor with
 #' CreateStreamProcessor. You might not be able to use the same name for a
@@ -661,6 +671,7 @@ rekognition_delete_stream_processor <- function(Name) {
 
 #' Describes the specified collection
 #'
+#' @description
 #' Describes the specified collection. You can use `DescribeCollection` to
 #' get information, such as the number of faces indexed into a collection
 #' and the version of the model used by the collection for face detection.
@@ -703,6 +714,7 @@ rekognition_describe_collection <- function(CollectionId) {
 #' Lists and describes the models in an Amazon Rekognition Custom Labels
 #' project
 #'
+#' @description
 #' Lists and describes the models in an Amazon Rekognition Custom Labels
 #' project. You can specify up to 10 model versions in
 #' `ProjectVersionArns`. If you don't specify a value, descriptions for all
@@ -766,6 +778,7 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
 #' Lists and gets information about your Amazon Rekognition Custom Labels
 #' projects
 #'
+#' @description
 #' Lists and gets information about your Amazon Rekognition Custom Labels
 #' projects.
 #' 
@@ -814,6 +827,7 @@ rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL) {
 #' Provides information about a stream processor created by
 #' CreateStreamProcessor
 #'
+#' @description
 #' Provides information about a stream processor created by
 #' CreateStreamProcessor. You can get information about the input and
 #' output streams, the input parameters for the face recognition being
@@ -854,6 +868,7 @@ rekognition_describe_stream_processor <- function(Name) {
 #' Detects custom labels in a supplied image by using an Amazon Rekognition
 #' Custom Labels model
 #'
+#' @description
 #' Detects custom labels in a supplied image by using an Amazon Rekognition
 #' Custom Labels model.
 #' 
@@ -944,6 +959,7 @@ rekognition_detect_custom_labels <- function(ProjectVersionArn, Image, MaxResult
 
 #' Detects faces within an image that is provided as input
 #'
+#' @description
 #' Detects faces within an image that is provided as input.
 #' 
 #' `DetectFaces` detects the 100 largest faces in the image. For each face
@@ -1043,6 +1059,7 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' Detects instances of real-world entities within an image (JPEG or PNG)
 #' provided as input
 #'
+#' @description
 #' Detects instances of real-world entities within an image (JPEG or PNG)
 #' provided as input. This includes objects like flower, tree, and table;
 #' events like wedding, graduation, and birthday party; and concepts like
@@ -1091,7 +1108,7 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' In response, the API returns an array of labels. In addition, the
 #' response also includes the orientation correction. Optionally, you can
 #' specify `MinConfidence` to control the confidence threshold for the
-#' labels returned. The default is 55%. You can also add the `MaxLabels`
+#' labels returned. The default is 55\%. You can also add the `MaxLabels`
 #' parameter to limit the number of labels returned.
 #' 
 #' If the object detected is a person, the operation doesn't provide the
@@ -1189,6 +1206,7 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 
 #' Detects unsafe content in a specified JPEG or PNG format image
 #'
+#' @description
 #' Detects unsafe content in a specified JPEG or PNG format image. Use
 #' `DetectModerationLabels` to moderate images depending on your
 #' requirements. For example, you might want to filter images that contain
@@ -1272,6 +1290,7 @@ rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, Hu
 #' Detects Personal Protective Equipment (PPE) worn by people detected in
 #' an image
 #'
+#' @description
 #' Detects Personal Protective Equipment (PPE) worn by people detected in
 #' an image. Amazon Rekognition can detect the following types of PPE.
 #' 
@@ -1365,6 +1384,7 @@ rekognition_detect_protective_equipment <- function(Image, SummarizationAttribut
 #' Detects text in the input image and converts it into machine-readable
 #' text
 #'
+#' @description
 #' Detects text in the input image and converts it into machine-readable
 #' text.
 #' 
@@ -1467,6 +1487,7 @@ rekognition_detect_text <- function(Image, Filters = NULL) {
 #' Gets the name and additional information about a celebrity based on his
 #' or her Amazon Rekognition ID
 #'
+#' @description
 #' Gets the name and additional information about a celebrity based on his
 #' or her Amazon Rekognition ID. The additional information is returned as
 #' an array of URLs. If there is no additional information about the
@@ -1515,6 +1536,7 @@ rekognition_get_celebrity_info <- function(Id) {
 #' Gets the celebrity recognition results for a Amazon Rekognition Video
 #' analysis started by StartCelebrityRecognition
 #'
+#' @description
 #' Gets the celebrity recognition results for a Amazon Rekognition Video
 #' analysis started by StartCelebrityRecognition.
 #' 
@@ -1613,6 +1635,7 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 #' Gets the unsafe content analysis results for a Amazon Rekognition Video
 #' analysis started by StartContentModeration
 #'
+#' @description
 #' Gets the unsafe content analysis results for a Amazon Rekognition Video
 #' analysis started by StartContentModeration.
 #' 
@@ -1700,6 +1723,7 @@ rekognition_get_content_moderation <- function(JobId, MaxResults = NULL, NextTok
 #' Gets face detection results for a Amazon Rekognition Video analysis
 #' started by StartFaceDetection
 #'
+#' @description
 #' Gets face detection results for a Amazon Rekognition Video analysis
 #' started by StartFaceDetection.
 #' 
@@ -1768,6 +1792,7 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' Gets the face search results for Amazon Rekognition Video face search
 #' started by StartFaceSearch
 #'
+#' @description
 #' Gets the face search results for Amazon Rekognition Video face search
 #' started by StartFaceSearch. The search returns faces in a collection
 #' that match the faces of persons detected in a video. It also includes
@@ -1850,6 +1875,7 @@ rekognition_get_face_search <- function(JobId, MaxResults = NULL, NextToken = NU
 #' Gets the label detection results of a Amazon Rekognition Video analysis
 #' started by StartLabelDetection
 #'
+#' @description
 #' Gets the label detection results of a Amazon Rekognition Video analysis
 #' started by StartLabelDetection.
 #' 
@@ -1934,6 +1960,7 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
 #' Gets the path tracking results of a Amazon Rekognition Video analysis
 #' started by StartPersonTracking
 #'
+#' @description
 #' Gets the path tracking results of a Amazon Rekognition Video analysis
 #' started by StartPersonTracking.
 #' 
@@ -2021,6 +2048,7 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #' Gets the segment detection results of a Amazon Rekognition Video
 #' analysis started by StartSegmentDetection
 #'
+#' @description
 #' Gets the segment detection results of a Amazon Rekognition Video
 #' analysis started by StartSegmentDetection.
 #' 
@@ -2101,6 +2129,7 @@ rekognition_get_segment_detection <- function(JobId, MaxResults = NULL, NextToke
 #' Gets the text detection results of a Amazon Rekognition Video analysis
 #' started by StartTextDetection
 #'
+#' @description
 #' Gets the text detection results of a Amazon Rekognition Video analysis
 #' started by StartTextDetection.
 #' 
@@ -2176,6 +2205,7 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' Detects faces in the input image and adds them to the specified
 #' collection
 #'
+#' @description
 #' Detects faces in the input image and adds them to the specified
 #' collection.
 #' 
@@ -2391,6 +2421,7 @@ rekognition_index_faces <- function(CollectionId, Image, ExternalImageId = NULL,
 
 #' Returns list of collection IDs in your account
 #'
+#' @description
 #' Returns list of collection IDs in your account. If the result is
 #' truncated, the response also provides a `NextToken` that you can use in
 #' the subsequent request to fetch the next set of collection IDs.
@@ -2443,6 +2474,7 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Returns metadata for faces in the specified collection
 #'
+#' @description
 #' Returns metadata for faces in the specified collection. This metadata
 #' includes information such as the bounding box coordinates, the
 #' confidence (that the bounding box contains a face), and face ID. For an
@@ -2503,6 +2535,7 @@ rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = 
 #' Gets a list of stream processors that you have created with
 #' CreateStreamProcessor
 #'
+#' @description
 #' Gets a list of stream processors that you have created with
 #' CreateStreamProcessor.
 #'
@@ -2546,6 +2579,7 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
 
 #' Returns an array of celebrities recognized in the input image
 #'
+#' @description
 #' Returns an array of celebrities recognized in the input image. For more
 #' information, see Recognizing Celebrities in the Amazon Rekognition
 #' Developer Guide.
@@ -2629,6 +2663,7 @@ rekognition_recognize_celebrities <- function(Image) {
 #' For a given input face ID, searches for matching faces in the collection
 #' the face belongs to
 #'
+#' @description
 #' For a given input face ID, searches for matching faces in the collection
 #' the face belongs to. You get a face ID when you add a face to the
 #' collection using the IndexFaces operation. The operation compares the
@@ -2660,7 +2695,7 @@ rekognition_recognize_celebrities <- function(Image) {
 #' number of faces with the highest confidence in the match.
 #' @param FaceMatchThreshold Optional value specifying the minimum confidence in the face match to
 #' return. For example, don't return any matches where confidence in
-#' matches is less than 70%. The default value is 80%.
+#' matches is less than 70\%. The default value is 80\%.
 #'
 #' @section Request syntax:
 #' ```
@@ -2707,6 +2742,7 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' For a given input image, first detects the largest face in the image,
 #' and then searches the specified collection for matching faces
 #'
+#' @description
 #' For a given input image, first detects the largest face in the image,
 #' and then searches the specified collection for matching faces. The
 #' operation compares the features of the input face with faces in the
@@ -2766,7 +2802,7 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' number of faces with the highest confidence in the match.
 #' @param FaceMatchThreshold (Optional) Specifies the minimum confidence in the face match to return.
 #' For example, don't return any matches where confidence in matches is
-#' less than 70%. The default value is 80%.
+#' less than 70\%. The default value is 80\%.
 #' @param QualityFilter A filter that specifies a quality bar for how much filtering is done to
 #' identify faces. Filtered faces aren't searched for in the collection. If
 #' you specify `AUTO`, Amazon Rekognition chooses the quality bar. If you
@@ -2838,6 +2874,7 @@ rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NU
 
 #' Starts asynchronous recognition of celebrities in a stored video
 #'
+#' @description
 #' Starts asynchronous recognition of celebrities in a stored video.
 #' 
 #' Amazon Rekognition Video can detect celebrities in a video must be
@@ -2913,6 +2950,7 @@ rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = 
 
 #' Starts asynchronous detection of unsafe content in a stored video
 #'
+#' @description
 #' Starts asynchronous detection of unsafe content in a stored video.
 #' 
 #' Amazon Rekognition Video can moderate content in a video stored in an
@@ -2998,6 +3036,7 @@ rekognition_start_content_moderation <- function(Video, MinConfidence = NULL, Cl
 
 #' Starts asynchronous detection of faces in a stored video
 #'
+#' @description
 #' Starts asynchronous detection of faces in a stored video.
 #' 
 #' Amazon Rekognition Video can detect faces in a video stored in an Amazon
@@ -3080,6 +3119,7 @@ rekognition_start_face_detection <- function(Video, ClientRequestToken = NULL, N
 #' Starts the asynchronous search for faces in a collection that match the
 #' faces of persons detected in a stored video
 #'
+#' @description
 #' Starts the asynchronous search for faces in a collection that match the
 #' faces of persons detected in a stored video.
 #' 
@@ -3105,8 +3145,8 @@ rekognition_start_face_detection <- function(Video, ClientRequestToken = NULL, N
 #' returned. Use `ClientRequestToken` to prevent the same job from being
 #' accidently started more than once.
 #' @param FaceMatchThreshold The minimum confidence in the person match to return. For example, don't
-#' return any matches where confidence in matches is less than 70%. The
-#' default value is 80%.
+#' return any matches where confidence in matches is less than 70\%. The
+#' default value is 80\%.
 #' @param CollectionId &#91;required&#93; ID of the collection that contains the faces you want to search for.
 #' @param NotificationChannel The ARN of the Amazon SNS topic to which you want Amazon Rekognition
 #' Video to publish the completion status of the search.
@@ -3158,6 +3198,7 @@ rekognition_start_face_search <- function(Video, ClientRequestToken = NULL, Face
 
 #' Starts asynchronous detection of labels in a stored video
 #'
+#' @description
 #' Starts asynchronous detection of labels in a stored video.
 #' 
 #' Amazon Rekognition Video can detect labels in a video. Labels are
@@ -3246,6 +3287,7 @@ rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, 
 
 #' Starts the asynchronous tracking of a person's path in a stored video
 #'
+#' @description
 #' Starts the asynchronous tracking of a person's path in a stored video.
 #' 
 #' Amazon Rekognition Video can track the path of people in a video stored
@@ -3319,6 +3361,7 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
 
 #' Starts the running of the version of a model
 #'
+#' @description
 #' Starts the running of the version of a model. Starting a model takes a
 #' while to complete. To check the current state of the model, use
 #' DescribeProjectVersions.
@@ -3372,6 +3415,7 @@ rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUni
 
 #' Starts asynchronous detection of segment detection in a stored video
 #'
+#' @description
 #' Starts asynchronous detection of segment detection in a stored video.
 #' 
 #' Amazon Rekognition Video can detect segments in a video stored in an
@@ -3468,6 +3512,7 @@ rekognition_start_segment_detection <- function(Video, ClientRequestToken = NULL
 
 #' Starts processing a stream processor
 #'
+#' @description
 #' Starts processing a stream processor. You create a stream processor by
 #' calling CreateStreamProcessor. To tell `StartStreamProcessor` which
 #' stream processor to start, use the value of the `Name` field specified
@@ -3507,6 +3552,7 @@ rekognition_start_stream_processor <- function(Name) {
 
 #' Starts asynchronous detection of text in a stored video
 #'
+#' @description
 #' Starts asynchronous detection of text in a stored video.
 #' 
 #' Amazon Rekognition Video can detect text in a video stored in an Amazon
@@ -3596,6 +3642,7 @@ rekognition_start_text_detection <- function(Video, ClientRequestToken = NULL, N
 
 #' Stops a running model
 #'
+#' @description
 #' Stops a running model. The operation might take a while to complete. To
 #' check the current status, call DescribeProjectVersions.
 #'
@@ -3638,6 +3685,7 @@ rekognition_stop_project_version <- function(ProjectVersionArn) {
 #' Stops a running stream processor that was created by
 #' CreateStreamProcessor
 #'
+#' @description
 #' Stops a running stream processor that was created by
 #' CreateStreamProcessor.
 #'

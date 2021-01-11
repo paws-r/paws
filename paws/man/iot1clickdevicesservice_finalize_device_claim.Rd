@@ -16,8 +16,7 @@ see \href{https://d1.awsstatic.com/whitepapers/aws-tagging-best-practices.pdf}{A
 \description{
 Given a device ID, finalizes the claim request for the associated
 device.
-}
-\details{
+
 Claiming a device consists of initiating a claim, then publishing a
 device event, and finalizing the claim. For a device of type button, a
 device event can be published by simply clicking the device.

@@ -16,8 +16,7 @@ associated with the account.}
 Returns the current status of the specified configuration recorder. If a
 configuration recorder is not specified, this action returns the status
 of all configuration recorders associated with the account.
-}
-\details{
+
 Currently, you can specify only one configuration recorder per region in
 your account.
 }

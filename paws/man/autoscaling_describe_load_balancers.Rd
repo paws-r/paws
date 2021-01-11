@@ -18,8 +18,7 @@ is \code{100} and the maximum value is \code{100}.}
 }
 \description{
 Describes the load balancers for the specified Auto Scaling group.
-}
-\details{
+
 This operation describes only Classic Load Balancers. If you have
 Application Load Balancers, Network Load Balancers, or Gateway Load
 Balancers, use the DescribeLoadBalancerTargetGroups API instead.

@@ -55,8 +55,7 @@ request.}
 \description{
 Requests updates to the configuration of the specified provisioned
 product.
-}
-\details{
+
 If there are tags associated with the object, they cannot be updated or
 added. Depending on the specific updates requested, this operation can
 update with no interruption, with some interruption, or replace the

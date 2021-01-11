@@ -16,8 +16,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Deletes a carrier gateway.
-}
-\details{
+
 If you do not delete the route that contains the carrier gateway as the
 Target, the route is a blackhole route. For information about how to
 delete a route, see

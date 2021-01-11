@@ -37,8 +37,7 @@ Puppet, this parameter is ignored.
 Exports a specified server engine attribute as a base64-encoded string.
 For example, you can export user data that you can use in EC2 to
 associate nodes with a server.
-}
-\details{
+
 This operation is synchronous.
 
 A \code{ValidationException} is raised when parameters of the request are not

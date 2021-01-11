@@ -32,8 +32,7 @@ empty result. An empty result, in this context, means that an
 ActivityTask is returned, but that the value of taskToken is an empty
 string. If a task is returned, the worker should use its type to
 identify and process it correctly.
-}
-\details{
+
 Workers should set their client side socket timeout to at least 70
 seconds (10 seconds higher than the maximum time service may hold the
 poll request).

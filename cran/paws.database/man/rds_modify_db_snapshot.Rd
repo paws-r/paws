@@ -42,8 +42,7 @@ in the \emph{Amazon RDS User Guide.}}
 \description{
 Updates a manual DB snapshot with a new engine version. The snapshot can
 be encrypted or unencrypted, but not shared or public.
-}
-\details{
+
 Amazon RDS supports upgrading DB snapshots for MySQL, Oracle, and
 PostgreSQL.
 }

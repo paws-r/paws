@@ -15,8 +15,7 @@ including the application's job plan.}
 }
 \description{
 Returns information about a specific Kinesis Data Analytics application.
-}
-\details{
+
 If you want to retrieve a list of all applications in your account, use
 the ListApplications operation.
 }

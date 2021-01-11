@@ -17,8 +17,7 @@ must already exist to be able to use this operation. Any replica to be
 added must be empty, have the same name as the global table, have the
 same key schema, have DynamoDB Streams enabled, and have the same
 provisioned and maximum write capacity units.
-}
-\details{
+
 Although you can use \code{UpdateGlobalTable} to add replicas and remove
 replicas in a single request, for simplicity we recommend that you issue
 separate requests for adding or removing replicas.

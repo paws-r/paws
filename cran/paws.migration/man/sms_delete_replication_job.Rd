@@ -11,8 +11,7 @@ sms_delete_replication_job(replicationJobId)
 }
 \description{
 Deletes the specified replication job.
-}
-\details{
+
 After you delete a replication job, there are no further replication
 runs. AWS deletes the contents of the Amazon S3 bucket used to store AWS
 SMS artifacts. The AMIs created by the replication runs are not deleted.

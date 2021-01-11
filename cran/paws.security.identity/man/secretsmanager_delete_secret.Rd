@@ -59,8 +59,7 @@ you don't specify a recovery window value, the operation defaults to 30
 days. Secrets Manager attaches a \code{DeletionDate} stamp to the secret that
 specifies the end of the recovery window. At the end of the recovery
 window, Secrets Manager deletes the secret permanently.
-}
-\details{
+
 At any time before recovery window ends, you can use RestoreSecret to
 remove the \code{DeletionDate} and cancel the deletion of the secret.
 

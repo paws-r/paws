@@ -6,6 +6,7 @@ NULL
 #' Creates an association between an approval rule template and a specified
 #' repository
 #'
+#' @description
 #' Creates an association between an approval rule template and a specified
 #' repository. Then, the next time a pull request is created in the
 #' repository where the destination reference (if specified) matches the
@@ -53,6 +54,7 @@ codecommit_associate_approval_rule_template_with_repository <- function(approval
 #' Creates an association between an approval rule template and one or more
 #' specified repositories
 #'
+#' @description
 #' Creates an association between an approval rule template and one or more
 #' specified repositories.
 #'
@@ -101,6 +103,7 @@ codecommit_batch_associate_approval_rule_template_with_repositories <- function(
 #' merge of two commit specifiers using the squash or three-way merge
 #' strategy
 #'
+#' @description
 #' Returns information about one or more merge conflicts in the attempted
 #' merge of two commit specifiers using the squash or three-way merge
 #' strategy.
@@ -175,6 +178,7 @@ codecommit_batch_describe_merge_conflicts <- function(repositoryName, destinatio
 #' Removes the association between an approval rule template and one or
 #' more specified repositories
 #'
+#' @description
 #' Removes the association between an approval rule template and one or
 #' more specified repositories.
 #'
@@ -223,6 +227,7 @@ codecommit_batch_disassociate_approval_rule_template_from_repositories <- functi
 #' Returns information about the contents of one or more commits in a
 #' repository
 #'
+#' @description
 #' Returns information about the contents of one or more commits in a
 #' repository.
 #'
@@ -267,6 +272,7 @@ codecommit_batch_get_commits <- function(commitIds, repositoryName) {
 
 #' Returns information about one or more repositories
 #'
+#' @description
 #' Returns information about one or more repositories.
 #' 
 #' The description field for a repository accepts all HTML characters and
@@ -316,6 +322,7 @@ codecommit_batch_get_repositories <- function(repositoryNames) {
 #' Creates a template for approval rules that can then be associated with
 #' one or more repositories in your AWS account
 #'
+#' @description
 #' Creates a template for approval rules that can then be associated with
 #' one or more repositories in your AWS account. When you associate a
 #' template with a repository, AWS CodeCommit creates an approval rule that
@@ -400,6 +407,7 @@ codecommit_create_approval_rule_template <- function(approvalRuleTemplateName, a
 
 #' Creates a branch in a repository and points the branch to a commit
 #'
+#' @description
 #' Creates a branch in a repository and points the branch to a commit.
 #' 
 #' Calling the create branch operation does not set a repository's default
@@ -443,6 +451,7 @@ codecommit_create_branch <- function(repositoryName, branchName, commitId) {
 
 #' Creates a commit for a repository on the tip of a specified branch
 #'
+#' @description
 #' Creates a commit for a repository on the tip of a specified branch.
 #'
 #' @usage
@@ -525,6 +534,7 @@ codecommit_create_commit <- function(repositoryName, branchName, parentCommitId 
 
 #' Creates a pull request in the specified repository
 #'
+#' @description
 #' Creates a pull request in the specified repository.
 #'
 #' @usage
@@ -585,6 +595,7 @@ codecommit_create_pull_request <- function(title, description = NULL, targets, c
 
 #' Creates an approval rule for a pull request
 #'
+#' @description
 #' Creates an approval rule for a pull request.
 #'
 #' @usage
@@ -660,6 +671,7 @@ codecommit_create_pull_request_approval_rule <- function(pullRequestId, approval
 
 #' Creates a new, empty repository
 #'
+#' @description
 #' Creates a new, empty repository.
 #'
 #' @usage
@@ -718,6 +730,7 @@ codecommit_create_repository <- function(repositoryName, repositoryDescription =
 #' Creates an unreferenced commit that represents the result of merging two
 #' branches using a specified merge strategy
 #'
+#' @description
 #' Creates an unreferenced commit that represents the result of merging two
 #' branches using a specified merge strategy. This can help you determine
 #' the outcome of a potential merge. This API cannot be used with the
@@ -820,6 +833,7 @@ codecommit_create_unreferenced_merge_commit <- function(repositoryName, sourceCo
 
 #' Deletes a specified approval rule template
 #'
+#' @description
 #' Deletes a specified approval rule template. Deleting a template does not
 #' remove approval rules on pull requests already created with the
 #' template.
@@ -859,6 +873,7 @@ codecommit_delete_approval_rule_template <- function(approvalRuleTemplateName) {
 #' Deletes a branch from a repository, unless that branch is the default
 #' branch for the repository
 #'
+#' @description
 #' Deletes a branch from a repository, unless that branch is the default
 #' branch for the repository.
 #'
@@ -899,6 +914,7 @@ codecommit_delete_branch <- function(repositoryName, branchName) {
 #' Deletes the content of a comment made on a change, file, or commit in a
 #' repository
 #'
+#' @description
 #' Deletes the content of a comment made on a change, file, or commit in a
 #' repository.
 #'
@@ -937,6 +953,7 @@ codecommit_delete_comment_content <- function(commentId) {
 
 #' Deletes a specified file from a specified branch
 #'
+#' @description
 #' Deletes a specified file from a specified branch. A commit is created on
 #' the branch that contains the revision. The file still exists in the
 #' commits earlier to the commit that contains the deletion.
@@ -1006,6 +1023,7 @@ codecommit_delete_file <- function(repositoryName, branchName, filePath, parentC
 
 #' Deletes an approval rule from a specified pull request
 #'
+#' @description
 #' Deletes an approval rule from a specified pull request. Approval rules
 #' can be deleted from a pull request only if the pull request is open, and
 #' if the approval rule was created specifically for a pull request and not
@@ -1051,6 +1069,7 @@ codecommit_delete_pull_request_approval_rule <- function(pullRequestId, approval
 
 #' Deletes a repository
 #'
+#' @description
 #' Deletes a repository. If a specified repository was already deleted, a
 #' null repository ID is returned.
 #' 
@@ -1094,6 +1113,7 @@ codecommit_delete_repository <- function(repositoryName) {
 #' merge of two commit specifiers using the squash or three-way merge
 #' strategy
 #'
+#' @description
 #' Returns information about one or more merge conflicts in the attempted
 #' merge of two commit specifiers using the squash or three-way merge
 #' strategy. If the merge option for the attempted merge is specified as
@@ -1163,6 +1183,7 @@ codecommit_describe_merge_conflicts <- function(repositoryName, destinationCommi
 
 #' Returns information about one or more pull request events
 #'
+#' @description
 #' Returns information about one or more pull request events.
 #'
 #' @usage
@@ -1217,6 +1238,7 @@ codecommit_describe_pull_request_events <- function(pullRequestId, pullRequestEv
 #' approval rules based on the template are not automatically created when
 #' pull requests are created in the specified repository
 #'
+#' @description
 #' Removes the association between a template and a repository so that
 #' approval rules based on the template are not automatically created when
 #' pull requests are created in the specified repository. This does not
@@ -1262,6 +1284,7 @@ codecommit_disassociate_approval_rule_template_from_repository <- function(appro
 #' Evaluates whether a pull request has met all the conditions specified in
 #' its associated approval rules
 #'
+#' @description
 #' Evaluates whether a pull request has met all the conditions specified in
 #' its associated approval rules.
 #'
@@ -1303,6 +1326,7 @@ codecommit_evaluate_pull_request_approval_rules <- function(pullRequestId, revis
 
 #' Returns information about a specified approval rule template
 #'
+#' @description
 #' Returns information about a specified approval rule template.
 #'
 #' @usage
@@ -1341,6 +1365,7 @@ codecommit_get_approval_rule_template <- function(approvalRuleTemplateName) {
 #' Returns the base-64 encoded content of an individual blob in a
 #' repository
 #'
+#' @description
 #' Returns the base-64 encoded content of an individual blob in a
 #' repository.
 #'
@@ -1381,6 +1406,7 @@ codecommit_get_blob <- function(repositoryName, blobId) {
 #' Returns information about a repository branch, including its name and
 #' the last commit ID
 #'
+#' @description
 #' Returns information about a repository branch, including its name and
 #' the last commit ID.
 #'
@@ -1422,6 +1448,7 @@ codecommit_get_branch <- function(repositoryName = NULL, branchName = NULL) {
 #' Returns the content of a comment made on a change, file, or commit in a
 #' repository
 #'
+#' @description
 #' Returns the content of a comment made on a change, file, or commit in a
 #' repository.
 #' 
@@ -1464,6 +1491,7 @@ codecommit_get_comment <- function(commentId) {
 
 #' Returns information about reactions to a specified comment ID
 #'
+#' @description
 #' Returns information about reactions to a specified comment ID. Reactions
 #' from users who have been deleted will not be included in the count.
 #'
@@ -1512,6 +1540,7 @@ codecommit_get_comment_reactions <- function(commentId, reactionUserArn = NULL, 
 #' Returns information about comments made on the comparison between two
 #' commits
 #'
+#' @description
 #' Returns information about comments made on the comparison between two
 #' commits.
 #' 
@@ -1566,6 +1595,7 @@ codecommit_get_comments_for_compared_commit <- function(repositoryName, beforeCo
 
 #' Returns comments made on a pull request
 #'
+#' @description
 #' Returns comments made on a pull request.
 #' 
 #' Reaction counts might include numbers from user identities who were
@@ -1624,6 +1654,7 @@ codecommit_get_comments_for_pull_request <- function(pullRequestId, repositoryNa
 #' Returns information about a commit, including commit message and
 #' committer information
 #'
+#' @description
 #' Returns information about a commit, including commit message and
 #' committer information.
 #'
@@ -1665,6 +1696,7 @@ codecommit_get_commit <- function(repositoryName, commitId) {
 #' (such as a branch, tag, HEAD, commit ID, or other fully qualified
 #' reference)
 #'
+#' @description
 #' Returns information about the differences in a valid commit specifier
 #' (such as a branch, tag, HEAD, commit ID, or other fully qualified
 #' reference). Results can be limited to a specified path.
@@ -1730,6 +1762,7 @@ codecommit_get_differences <- function(repositoryName, beforeCommitSpecifier = N
 #' Returns the base-64 encoded contents of a specified file and its
 #' metadata
 #'
+#' @description
 #' Returns the base-64 encoded contents of a specified file and its
 #' metadata.
 #'
@@ -1776,6 +1809,7 @@ codecommit_get_file <- function(repositoryName, commitSpecifier = NULL, filePath
 
 #' Returns the contents of a specified folder in a repository
 #'
+#' @description
 #' Returns the contents of a specified folder in a repository.
 #'
 #' @usage
@@ -1823,6 +1857,7 @@ codecommit_get_folder <- function(repositoryName, commitSpecifier = NULL, folder
 
 #' Returns information about a specified merge commit
 #'
+#' @description
 #' Returns information about a specified merge commit.
 #'
 #' @usage
@@ -1880,6 +1915,7 @@ codecommit_get_merge_commit <- function(repositoryName, sourceCommitSpecifier, d
 #' Returns information about merge conflicts between the before and after
 #' commit IDs for a pull request in a repository
 #'
+#' @description
 #' Returns information about merge conflicts between the before and after
 #' commit IDs for a pull request in a repository.
 #'
@@ -1945,6 +1981,7 @@ codecommit_get_merge_conflicts <- function(repositoryName, destinationCommitSpec
 #' Returns information about the merge options available for merging two
 #' specified branches
 #'
+#' @description
 #' Returns information about the merge options available for merging two
 #' specified branches. For details about why a merge option is not
 #' available, use GetMergeConflicts or DescribeMergeConflicts.
@@ -2003,6 +2040,7 @@ codecommit_get_merge_options <- function(repositoryName, sourceCommitSpecifier, 
 
 #' Gets information about a pull request in a specified repository
 #'
+#' @description
 #' Gets information about a pull request in a specified repository.
 #'
 #' @usage
@@ -2040,6 +2078,7 @@ codecommit_get_pull_request <- function(pullRequestId) {
 
 #' Gets information about the approval states for a specified pull request
 #'
+#' @description
 #' Gets information about the approval states for a specified pull request.
 #' Approval states only apply to pull requests that have one or more
 #' approval rules applied to them.
@@ -2083,6 +2122,7 @@ codecommit_get_pull_request_approval_states <- function(pullRequestId, revisionI
 #' (ARN) of the user or identity that overrode the rules and their
 #' requirements for the pull request
 #'
+#' @description
 #' Returns information about whether approval rules have been set aside
 #' (overridden) for a pull request, and if so, the Amazon Resource Name
 #' (ARN) of the user or identity that overrode the rules and their
@@ -2126,6 +2166,7 @@ codecommit_get_pull_request_override_state <- function(pullRequestId, revisionId
 
 #' Returns information about a repository
 #'
+#' @description
 #' Returns information about a repository.
 #' 
 #' The description field for a repository accepts all HTML characters and
@@ -2169,6 +2210,7 @@ codecommit_get_repository <- function(repositoryName) {
 
 #' Gets information about triggers configured for a repository
 #'
+#' @description
 #' Gets information about triggers configured for a repository.
 #'
 #' @usage
@@ -2206,6 +2248,7 @@ codecommit_get_repository_triggers <- function(repositoryName) {
 #' Lists all approval rule templates in the specified AWS Region in your
 #' AWS account
 #'
+#' @description
 #' Lists all approval rule templates in the specified AWS Region in your
 #' AWS account. If an AWS Region is not specified, the AWS Region where you
 #' are signed in is used.
@@ -2249,6 +2292,7 @@ codecommit_list_approval_rule_templates <- function(nextToken = NULL, maxResults
 #' Lists all approval rule templates that are associated with a specified
 #' repository
 #'
+#' @description
 #' Lists all approval rule templates that are associated with a specified
 #' repository.
 #'
@@ -2294,6 +2338,7 @@ codecommit_list_associated_approval_rule_templates_for_repository <- function(re
 
 #' Gets information about one or more branches in a repository
 #'
+#' @description
 #' Gets information about one or more branches in a repository.
 #'
 #' @usage
@@ -2332,6 +2377,7 @@ codecommit_list_branches <- function(repositoryName, nextToken = NULL) {
 
 #' Returns a list of pull requests for a specified repository
 #'
+#' @description
 #' Returns a list of pull requests for a specified repository. The return
 #' list can be refined by pull request status or pull request author ARN.
 #'
@@ -2383,6 +2429,7 @@ codecommit_list_pull_requests <- function(repositoryName, authorArn = NULL, pull
 
 #' Gets information about one or more repositories
 #'
+#' @description
 #' Gets information about one or more repositories.
 #'
 #' @usage
@@ -2427,6 +2474,7 @@ codecommit_list_repositories <- function(nextToken = NULL, sortBy = NULL, order 
 #' Lists all repositories associated with the specified approval rule
 #' template
 #'
+#' @description
 #' Lists all repositories associated with the specified approval rule
 #' template.
 #'
@@ -2473,6 +2521,7 @@ codecommit_list_repositories_for_approval_rule_template <- function(approvalRule
 #' Gets information about AWS tags for a specified Amazon Resource Name
 #' (ARN) in AWS CodeCommit
 #'
+#' @description
 #' Gets information about AWS tags for a specified Amazon Resource Name
 #' (ARN) in AWS CodeCommit. For a list of valid resources in AWS
 #' CodeCommit, see [CodeCommit Resources and
@@ -2517,6 +2566,7 @@ codecommit_list_tags_for_resource <- function(resourceArn, nextToken = NULL) {
 
 #' Merges two branches using the fast-forward merge strategy
 #'
+#' @description
 #' Merges two branches using the fast-forward merge strategy.
 #'
 #' @usage
@@ -2562,6 +2612,7 @@ codecommit_merge_branches_by_fast_forward <- function(repositoryName, sourceComm
 
 #' Merges two branches using the squash merge strategy
 #'
+#' @description
 #' Merges two branches using the squash merge strategy.
 #'
 #' @usage
@@ -2656,6 +2707,7 @@ codecommit_merge_branches_by_squash <- function(repositoryName, sourceCommitSpec
 
 #' Merges two specified branches using the three-way merge strategy
 #'
+#' @description
 #' Merges two specified branches using the three-way merge strategy.
 #'
 #' @usage
@@ -2751,6 +2803,7 @@ codecommit_merge_branches_by_three_way <- function(repositoryName, sourceCommitS
 #' destination branch for that pull request at the specified commit using
 #' the fast-forward merge strategy
 #'
+#' @description
 #' Attempts to merge the source commit of a pull request into the specified
 #' destination branch for that pull request at the specified commit using
 #' the fast-forward merge strategy. If the merge is successful, it closes
@@ -2801,6 +2854,7 @@ codecommit_merge_pull_request_by_fast_forward <- function(pullRequestId, reposit
 #' destination branch for that pull request at the specified commit using
 #' the squash merge strategy
 #'
+#' @description
 #' Attempts to merge the source commit of a pull request into the specified
 #' destination branch for that pull request at the specified commit using
 #' the squash merge strategy. If the merge is successful, it closes the
@@ -2898,6 +2952,7 @@ codecommit_merge_pull_request_by_squash <- function(pullRequestId, repositoryNam
 #' destination branch for that pull request at the specified commit using
 #' the three-way merge strategy
 #'
+#' @description
 #' Attempts to merge the source commit of a pull request into the specified
 #' destination branch for that pull request at the specified commit using
 #' the three-way merge strategy. If the merge is successful, it closes the
@@ -2995,6 +3050,7 @@ codecommit_merge_pull_request_by_three_way <- function(pullRequestId, repository
 #' Sets aside (overrides) all approval rule requirements for a specified
 #' pull request
 #'
+#' @description
 #' Sets aside (overrides) all approval rule requirements for a specified
 #' pull request.
 #'
@@ -3043,6 +3099,7 @@ codecommit_override_pull_request_approval_rules <- function(pullRequestId, revis
 
 #' Posts a comment on the comparison between two commits
 #'
+#' @description
 #' Posts a comment on the comparison between two commits.
 #'
 #' @usage
@@ -3102,6 +3159,7 @@ codecommit_post_comment_for_compared_commit <- function(repositoryName, beforeCo
 
 #' Posts a comment on a pull request
 #'
+#' @description
 #' Posts a comment on a pull request.
 #'
 #' @usage
@@ -3168,6 +3226,7 @@ codecommit_post_comment_for_pull_request <- function(pullRequestId, repositoryNa
 #' Posts a comment in reply to an existing comment on a comparison between
 #' commits or a pull request
 #'
+#' @description
 #' Posts a comment in reply to an existing comment on a comparison between
 #' commits or a pull request.
 #'
@@ -3216,6 +3275,7 @@ codecommit_post_comment_reply <- function(inReplyTo, clientRequestToken = NULL, 
 #' Adds or updates a reaction to a specified comment for the user whose
 #' identity is used to make the request
 #'
+#' @description
 #' Adds or updates a reaction to a specified comment for the user whose
 #' identity is used to make the request. You can only add or update a
 #' reaction for yourself. You cannot add, modify, or delete a reaction for
@@ -3262,6 +3322,7 @@ codecommit_put_comment_reaction <- function(commentId, reactionValue) {
 #' Adds or updates a file in a branch in an AWS CodeCommit repository, and
 #' generates a commit for the addition in the specified branch
 #'
+#' @description
 #' Adds or updates a file in a branch in an AWS CodeCommit repository, and
 #' generates a commit for the addition in the specified branch.
 #'
@@ -3332,6 +3393,7 @@ codecommit_put_file <- function(repositoryName, branchName, fileContent, filePat
 
 #' Replaces all triggers for a repository
 #'
+#' @description
 #' Replaces all triggers for a repository. Used to create or delete
 #' triggers.
 #'
@@ -3384,6 +3446,7 @@ codecommit_put_repository_triggers <- function(repositoryName, triggers) {
 
 #' Adds or updates tags for a resource in AWS CodeCommit
 #'
+#' @description
 #' Adds or updates tags for a resource in AWS CodeCommit. For a list of
 #' valid resources in AWS CodeCommit, see [CodeCommit Resources and
 #' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats)
@@ -3429,6 +3492,7 @@ codecommit_tag_resource <- function(resourceArn, tags) {
 #' Tests the functionality of repository triggers by sending information to
 #' the trigger target
 #'
+#' @description
 #' Tests the functionality of repository triggers by sending information to
 #' the trigger target. If real data is available in the repository, the
 #' test sends data from the last commit. If no data is available, sample
@@ -3482,6 +3546,7 @@ codecommit_test_repository_triggers <- function(repositoryName, triggers) {
 
 #' Removes tags for a resource in AWS CodeCommit
 #'
+#' @description
 #' Removes tags for a resource in AWS CodeCommit. For a list of valid
 #' resources in AWS CodeCommit, see [CodeCommit Resources and
 #' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats)
@@ -3526,6 +3591,7 @@ codecommit_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates the content of an approval rule template
 #'
+#' @description
 #' Updates the content of an approval rule template. You can change the
 #' number of required approvals, the membership of the approval rule, and
 #' whether an approval pool is defined.
@@ -3572,6 +3638,7 @@ codecommit_update_approval_rule_template_content <- function(approvalRuleTemplat
 
 #' Updates the description for a specified approval rule template
 #'
+#' @description
 #' Updates the description for a specified approval rule template.
 #'
 #' @usage
@@ -3611,6 +3678,7 @@ codecommit_update_approval_rule_template_description <- function(approvalRuleTem
 
 #' Updates the name of a specified approval rule template
 #'
+#' @description
 #' Updates the name of a specified approval rule template.
 #'
 #' @usage
@@ -3650,6 +3718,7 @@ codecommit_update_approval_rule_template_name <- function(oldApprovalRuleTemplat
 
 #' Replaces the contents of a comment
 #'
+#' @description
 #' Replaces the contents of a comment.
 #'
 #' @usage
@@ -3689,6 +3758,7 @@ codecommit_update_comment <- function(commentId, content) {
 
 #' Sets or changes the default branch name for the specified repository
 #'
+#' @description
 #' Sets or changes the default branch name for the specified repository.
 #' 
 #' If you use this operation to change the default branch name to the
@@ -3732,6 +3802,7 @@ codecommit_update_default_branch <- function(repositoryName, defaultBranchName) 
 #' Updates the structure of an approval rule created specifically for a
 #' pull request
 #'
+#' @description
 #' Updates the structure of an approval rule created specifically for a
 #' pull request. For example, you can change the number of required
 #' approvers and the approval pool for approvers.
@@ -3808,6 +3879,7 @@ codecommit_update_pull_request_approval_rule_content <- function(pullRequestId, 
 
 #' Updates the state of a user's approval on a pull request
 #'
+#' @description
 #' Updates the state of a user's approval on a pull request. The user is
 #' derived from the signed-in account when the request is made.
 #'
@@ -3850,6 +3922,7 @@ codecommit_update_pull_request_approval_state <- function(pullRequestId, revisio
 
 #' Replaces the contents of the description of a pull request
 #'
+#' @description
 #' Replaces the contents of the description of a pull request.
 #'
 #' @usage
@@ -3890,6 +3963,7 @@ codecommit_update_pull_request_description <- function(pullRequestId, descriptio
 
 #' Updates the status of a pull request
 #'
+#' @description
 #' Updates the status of a pull request.
 #'
 #' @usage
@@ -3931,6 +4005,7 @@ codecommit_update_pull_request_status <- function(pullRequestId, pullRequestStat
 
 #' Replaces the title of a pull request
 #'
+#' @description
 #' Replaces the title of a pull request.
 #'
 #' @usage
@@ -3970,6 +4045,7 @@ codecommit_update_pull_request_title <- function(pullRequestId, title) {
 
 #' Sets or changes the comment or description for a repository
 #'
+#' @description
 #' Sets or changes the comment or description for a repository.
 #' 
 #' The description field for a repository accepts all HTML characters and
@@ -4018,6 +4094,7 @@ codecommit_update_repository_description <- function(repositoryName, repositoryD
 
 #' Renames a repository
 #'
+#' @description
 #' Renames a repository. The repository name must be unique across the
 #' calling AWS account. Repository names are limited to 100 alphanumeric,
 #' dash, and underscore characters, and cannot include certain characters.

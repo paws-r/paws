@@ -22,8 +22,7 @@ be a base64-encoded string.}
 Creates a lifecycle configuration that you can associate with a notebook
 instance. A \emph{lifecycle configuration} is a collection of shell scripts
 that run when you create or start a notebook instance.
-}
-\details{
+
 Each lifecycle configuration script has a limit of 16384 characters.
 
 The value of the \verb{$PATH} environment variable that is available to both

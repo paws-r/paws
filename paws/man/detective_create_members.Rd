@@ -22,8 +22,7 @@ account identifier and the AWS account root user email address.}
 Sends a request to invite the specified AWS accounts to be member
 accounts in the behavior graph. This operation can only be called by the
 master account for a behavior graph.
-}
-\details{
+
 \code{CreateMembers} verifies the accounts and then sends invitations to the
 verified accounts.
 

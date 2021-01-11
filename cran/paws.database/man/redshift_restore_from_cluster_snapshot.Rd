@@ -191,8 +191,7 @@ ModifyCluster API to associate a different security group and different
 parameter group with the restored cluster. If you are using a DS node
 type, you can also choose to change to another DS node type of the same
 size during restore.
-}
-\details{
+
 If you restore a cluster into a VPC, you must provide a cluster subnet
 group where you want the cluster restored.
 

@@ -90,8 +90,7 @@ This operation registers a domain. Domains are registered either by
 Amazon Registrar (for .com, .net, and .org domains) or by our registrar
 associate, Gandi (for all other domains). For some top-level domains
 (TLDs), this operation requires extra parameters.
-}
-\details{
+
 When you register a domain, Amazon Route 53 does the following:
 \itemize{
 \item Creates a Route 53 hosted zone that has the same name as the domain.

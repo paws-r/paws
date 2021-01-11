@@ -6,6 +6,7 @@ NULL
 #' Creates a new cost anomaly detection monitor with the requested type and
 #' monitor specification
 #'
+#' @description
 #' Creates a new cost anomaly detection monitor with the requested type and
 #' monitor specification.
 #'
@@ -88,6 +89,7 @@ costexplorer_create_anomaly_monitor <- function(AnomalyMonitor) {
 
 #' Adds a subscription to a cost anomaly detection monitor
 #'
+#' @description
 #' Adds a subscription to a cost anomaly detection monitor. You can use
 #' each subscription to define subscribers with email or SNS notifications.
 #' Email subscribers can set a dollar threshold and a time frequency for
@@ -143,6 +145,7 @@ costexplorer_create_anomaly_subscription <- function(AnomalySubscription) {
 
 #' Creates a new Cost Category with the requested name and rules
 #'
+#' @description
 #' Creates a new Cost Category with the requested name and rules.
 #'
 #' @usage
@@ -225,6 +228,7 @@ costexplorer_create_cost_category_definition <- function(Name, RuleVersion, Rule
 
 #' Deletes a cost anomaly monitor
 #'
+#' @description
 #' Deletes a cost anomaly monitor.
 #'
 #' @usage
@@ -262,6 +266,7 @@ costexplorer_delete_anomaly_monitor <- function(MonitorArn) {
 
 #' Deletes a cost anomaly subscription
 #'
+#' @description
 #' Deletes a cost anomaly subscription.
 #'
 #' @usage
@@ -299,6 +304,7 @@ costexplorer_delete_anomaly_subscription <- function(SubscriptionArn) {
 
 #' Deletes a Cost Category
 #'
+#' @description
 #' Deletes a Cost Category. Expenses from this month going forward will no
 #' longer be categorized with this Cost Category.
 #'
@@ -337,6 +343,7 @@ costexplorer_delete_cost_category_definition <- function(CostCategoryArn) {
 #' Returns the name, ARN, rules, definition, and effective dates of a Cost
 #' Category that's defined in the account
 #'
+#' @description
 #' Returns the name, ARN, rules, definition, and effective dates of a Cost
 #' Category that's defined in the account.
 #' 
@@ -384,6 +391,7 @@ costexplorer_describe_cost_category_definition <- function(CostCategoryArn, Effe
 #' Retrieves all of the cost anomalies detected on your account, during the
 #' time period specified by the DateInterval object
 #'
+#' @description
 #' Retrieves all of the cost anomalies detected on your account, during the
 #' time period specified by the `DateInterval` object.
 #'
@@ -446,6 +454,7 @@ costexplorer_get_anomalies <- function(MonitorArn = NULL, DateInterval, Feedback
 
 #' Retrieves the cost anomaly monitor definitions for your account
 #'
+#' @description
 #' Retrieves the cost anomaly monitor definitions for your account. You can
 #' filter using a list of cost anomaly monitor Amazon Resource Names
 #' (ARNs).
@@ -493,6 +502,7 @@ costexplorer_get_anomaly_monitors <- function(MonitorArnList = NULL, NextPageTok
 
 #' Retrieves the cost anomaly subscription objects for your account
 #'
+#' @description
 #' Retrieves the cost anomaly subscription objects for your account. You
 #' can filter using a list of cost anomaly monitor Amazon Resource Names
 #' (ARNs).
@@ -542,6 +552,7 @@ costexplorer_get_anomaly_subscriptions <- function(SubscriptionArnList = NULL, M
 
 #' Retrieves cost and usage metrics for your account
 #'
+#' @description
 #' Retrieves cost and usage metrics for your account. You can specify which
 #' cost and usage-related metric, such as `BlendedCosts` or
 #' `UsageQuantity`, that you want the request to return. You can also
@@ -684,6 +695,7 @@ costexplorer_get_cost_and_usage <- function(TimePeriod, Granularity = NULL, Filt
 
 #' Retrieves cost and usage metrics with resources for your account
 #'
+#' @description
 #' Retrieves cost and usage metrics with resources for your account. You
 #' can specify which cost and usage-related metric, such as `BlendedCosts`
 #' or `UsageQuantity`, that you want the request to return. You can also
@@ -829,6 +841,7 @@ costexplorer_get_cost_and_usage_with_resources <- function(TimePeriod, Granulari
 
 #' Retrieves an array of Cost Category names and values incurred cost
 #'
+#' @description
 #' Retrieves an array of Cost Category names and values incurred cost.
 #' 
 #' If some Cost Category names and values are not associated with any cost,
@@ -960,6 +973,7 @@ costexplorer_get_cost_categories <- function(SearchString = NULL, TimePeriod, Co
 #' will spend over the forecast time period that you select, based on your
 #' past costs
 #'
+#' @description
 #' Retrieves a forecast for how much Amazon Web Services predicts that you
 #' will spend over the forecast time period that you select, based on your
 #' past costs.
@@ -1072,6 +1086,7 @@ costexplorer_get_cost_forecast <- function(TimePeriod, Metric, Granularity, Filt
 #' Retrieves all available filter values for a specified filter over a
 #' period of time
 #'
+#' @description
 #' Retrieves all available filter values for a specified filter over a
 #' period of time. You can search the dimension values for an arbitrary
 #' string.
@@ -1307,6 +1322,7 @@ costexplorer_get_dimension_values <- function(SearchString = NULL, TimePeriod, D
 
 #' Retrieves the reservation coverage for your account
 #'
+#' @description
 #' Retrieves the reservation coverage for your account. This enables you to
 #' see how much of your Amazon Elastic Compute Cloud, Amazon ElastiCache,
 #' Amazon Relational Database Service, or Amazon Redshift usage is covered
@@ -1540,9 +1556,10 @@ costexplorer_get_reservation_coverage <- function(TimePeriod, GroupBy = NULL, Gr
 
 #' Gets recommendations for which reservations to purchase
 #'
+#' @description
 #' Gets recommendations for which reservations to purchase. These
 #' recommendations could help you reduce your costs. Reservations provide a
-#' discounted hourly rate (up to 75%) compared to On-Demand pricing.
+#' discounted hourly rate (up to 75\%) compared to On-Demand pricing.
 #' 
 #' AWS generates your recommendations by identifying your On-Demand usage
 #' during a specific time period and collecting your usage into categories
@@ -1663,6 +1680,7 @@ costexplorer_get_reservation_purchase_recommendation <- function(AccountId = NUL
 
 #' Retrieves the reservation utilization for your account
 #'
+#' @description
 #' Retrieves the reservation utilization for your account. Management
 #' account in an organization have access to member accounts. You can
 #' filter data by dimensions in a time period. You can use
@@ -1845,6 +1863,7 @@ costexplorer_get_reservation_utilization <- function(TimePeriod, GroupBy = NULL,
 #' Creates recommendations that help you save cost by identifying idle and
 #' underutilized Amazon EC2 instances
 #'
+#' @description
 #' Creates recommendations that help you save cost by identifying idle and
 #' underutilized Amazon EC2 instances.
 #' 
@@ -1942,6 +1961,7 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
 
 #' Retrieves the Savings Plans covered for your account
 #'
+#' @description
 #' Retrieves the Savings Plans covered for your account. This enables you
 #' to see how much of your cost is covered by a Savings Plan. An
 #' organization’s management account can see the coverage of the associated
@@ -2105,6 +2125,7 @@ costexplorer_get_savings_plans_coverage <- function(TimePeriod, GroupBy = NULL, 
 #' Retrieves your request parameters, Savings Plan Recommendations Summary
 #' and Details
 #'
+#' @description
 #' Retrieves your request parameters, Savings Plan Recommendations Summary
 #' and Details.
 #'
@@ -2213,6 +2234,7 @@ costexplorer_get_savings_plans_purchase_recommendation <- function(SavingsPlansT
 #' Retrieves the Savings Plans utilization for your account across date
 #' ranges with daily or monthly granularity
 #'
+#' @description
 #' Retrieves the Savings Plans utilization for your account across date
 #' ranges with daily or monthly granularity. Management account in an
 #' organization have access to member accounts. You can use
@@ -2344,6 +2366,7 @@ costexplorer_get_savings_plans_utilization <- function(TimePeriod, Granularity =
 #' Retrieves attribute data along with aggregate utilization and savings
 #' data for a given time period
 #'
+#' @description
 #' Retrieves attribute data along with aggregate utilization and savings
 #' data for a given time period. This doesn't support granular or grouped
 #' data (daily/monthly) in response. You can't retrieve data by dates in a
@@ -2483,6 +2506,7 @@ costexplorer_get_savings_plans_utilization_details <- function(TimePeriod, Filte
 
 #' Queries for available tag keys and tag values for a specified period
 #'
+#' @description
 #' Queries for available tag keys and tag values for a specified period.
 #' You can search the tag values for an arbitrary string.
 #'
@@ -2609,6 +2633,7 @@ costexplorer_get_tags <- function(SearchString = NULL, TimePeriod, TagKey = NULL
 #' will use over the forecast time period that you select, based on your
 #' past usage
 #'
+#' @description
 #' Retrieves a forecast for how much Amazon Web Services predicts that you
 #' will use over the forecast time period that you select, based on your
 #' past usage.
@@ -2716,6 +2741,7 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
 #' Returns the name, ARN, NumberOfRules and effective dates of all Cost
 #' Categories defined in the account
 #'
+#' @description
 #' Returns the name, ARN, `NumberOfRules` and effective dates of all Cost
 #' Categories defined in the account. You have the option to use
 #' `EffectiveOn` to return a list of Cost Categories that were active on a
@@ -2766,6 +2792,7 @@ costexplorer_list_cost_category_definitions <- function(EffectiveOn = NULL, Next
 
 #' Modifies the feedback property of a given cost anomaly
 #'
+#' @description
 #' Modifies the feedback property of a given cost anomaly.
 #'
 #' @usage
@@ -2805,6 +2832,7 @@ costexplorer_provide_anomaly_feedback <- function(AnomalyId, Feedback) {
 
 #' Updates an existing cost anomaly monitor
 #'
+#' @description
 #' Updates an existing cost anomaly monitor. The changes made are applied
 #' going forward, and does not change anomalies detected in the past.
 #'
@@ -2844,6 +2872,7 @@ costexplorer_update_anomaly_monitor <- function(MonitorArn, MonitorName = NULL) 
 
 #' Updates an existing cost anomaly monitor subscription
 #'
+#' @description
 #' Updates an existing cost anomaly monitor subscription.
 #'
 #' @usage
@@ -2900,6 +2929,7 @@ costexplorer_update_anomaly_subscription <- function(SubscriptionArn, Threshold 
 
 #' Updates an existing Cost Category
 #'
+#' @description
 #' Updates an existing Cost Category. Changes made to the Cost Category
 #' rules will be used to categorize the current month’s expenses and future
 #' expenses. This won’t change categorization for the previous months.

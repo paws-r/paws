@@ -17,8 +17,6 @@ Amazon S3 bucket.}
 \description{
 Detects Personal Protective Equipment (PPE) worn by people detected in
 an image. Amazon Rekognition can detect the following types of PPE.
-}
-\details{
 \itemize{
 \item Face cover
 \item Hand cover

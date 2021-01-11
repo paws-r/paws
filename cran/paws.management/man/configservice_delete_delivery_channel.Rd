@@ -11,8 +11,7 @@ configservice_delete_delivery_channel(DeliveryChannelName)
 }
 \description{
 Deletes the delivery channel.
-}
-\details{
+
 Before you can delete the delivery channel, you must stop the
 configuration recorder by using the StopConfigurationRecorder action.
 }

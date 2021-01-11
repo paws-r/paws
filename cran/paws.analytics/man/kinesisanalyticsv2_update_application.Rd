@@ -30,8 +30,7 @@ AddApplicationCloudWatchLoggingOption.}
 Updates an existing Kinesis Data Analytics application. Using this
 operation, you can update application code, input configuration, and
 output configuration.
-}
-\details{
+
 Kinesis Data Analytics updates the \code{ApplicationVersionId} each time you
 update your application.
 

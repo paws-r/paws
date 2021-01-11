@@ -24,8 +24,7 @@ stores the public key and displays the private key for you to save to a
 file. The private key is returned as an unencrypted PEM encoded PKCS\\#1
 private key. If a key with the specified name already exists, Amazon EC2
 returns an error.
-}
-\details{
+
 You can have up to five thousand key pairs per Region.
 
 The key pair returned to you is available only in the Region in which

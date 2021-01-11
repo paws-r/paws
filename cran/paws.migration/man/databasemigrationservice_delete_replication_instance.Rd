@@ -13,8 +13,7 @@ deleted.}
 }
 \description{
 Deletes the specified replication instance.
-}
-\details{
+
 You must delete any migration tasks that are associated with the
 replication instance before you can delete it.
 }

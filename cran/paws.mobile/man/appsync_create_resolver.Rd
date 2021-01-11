@@ -48,8 +48,7 @@ data sources.
 }
 \description{
 Creates a \code{Resolver} object.
-}
-\details{
+
 A resolver converts incoming requests into a format that a data source
 can understand and converts the data source's responses into GraphQL.
 }

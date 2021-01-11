@@ -13,8 +13,7 @@ groundstation_get_config(configId, configType)
 }
 \description{
 Returns \code{Config} information.
-}
-\details{
+
 Only one \code{Config} response can be returned.
 }
 \section{Request syntax}{

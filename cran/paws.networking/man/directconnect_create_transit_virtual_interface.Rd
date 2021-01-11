@@ -17,8 +17,7 @@ Creates a transit virtual interface. A transit virtual interface should
 be used to access one or more transit gateways associated with Direct
 Connect gateways. A transit virtual interface enables the connection of
 multiple VPCs attached to a transit gateway to a Direct Connect gateway.
-}
-\details{
+
 If you associate your transit gateway with one or more Direct Connect
 gateways, the Autonomous System Number (ASN) used by the transit gateway
 and the Direct Connect gateway must be different. For example, if you

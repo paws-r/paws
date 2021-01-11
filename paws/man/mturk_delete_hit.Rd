@@ -12,8 +12,7 @@ mturk_delete_hit(HITId)
 \description{
 The \code{DeleteHIT} operation is used to delete HIT that is no longer
 needed. Only the Requester who created the HIT can delete it.
-}
-\details{
+
 You can only dispose of HITs that are in the \code{Reviewable} state, with
 all of their submitted assignments already either approved or rejected.
 If you call the DeleteHIT operation on a HIT that is not in the

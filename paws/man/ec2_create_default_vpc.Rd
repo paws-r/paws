@@ -19,8 +19,7 @@ subnet in each Availability Zone. For more information about the
 components of a default VPC, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html}{Default VPC and Default Subnets}
 in the \emph{Amazon Virtual Private Cloud User Guide}. You cannot specify the
 components of the default VPC yourself.
-}
-\details{
+
 If you deleted your previous default VPC, you can create a default VPC.
 You cannot have more than one default VPC per Region.
 

@@ -12,8 +12,7 @@ opsworks_deregister_elastic_ip(ElasticIp)
 \description{
 Deregisters a specified Elastic IP address. The address can then be
 registered by another stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
-}
-\details{
+
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user permissions,

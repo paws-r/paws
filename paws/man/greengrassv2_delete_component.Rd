@@ -13,8 +13,7 @@ of the component version.}
 }
 \description{
 Deletes a version of a component from AWS IoT Greengrass.
-}
-\details{
+
 This operation deletes the component's recipe and artifacts. As a
 result, deployments that refer to this component version will fail. If
 you have deployments that use this component version, you can remove the

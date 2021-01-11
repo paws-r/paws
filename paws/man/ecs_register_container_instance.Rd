@@ -63,8 +63,7 @@ limit.
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended
 for use outside of the agent.
-}
-\details{
+
 Registers an EC2 instance into the specified cluster. This instance
 becomes available to place containers on.
 }

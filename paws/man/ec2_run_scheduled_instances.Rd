@@ -27,8 +27,7 @@ Zone, network, and platform of the schedule that you purchased.}
 }
 \description{
 Launches the specified Scheduled Instances.
-}
-\details{
+
 Before you can launch a Scheduled Instance, you must purchase it and
 obtain an identifier using PurchaseScheduledInstances.
 

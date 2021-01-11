@@ -28,8 +28,7 @@ the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/sending-authoriz
 \description{
 Adds or updates a sending authorization policy for the specified
 identity (an email address or a domain).
-}
-\details{
+
 This API is for the identity owner only. If you have not verified the
 identity, this API will return an error.
 

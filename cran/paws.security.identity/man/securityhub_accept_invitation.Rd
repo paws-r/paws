@@ -16,8 +16,7 @@ invitation.}
 \description{
 Accepts the invitation to be a member account and be monitored by the
 Security Hub master account that the invitation was sent from.
-}
-\details{
+
 This operation is only used by member accounts that are not added
 through Organizations.
 

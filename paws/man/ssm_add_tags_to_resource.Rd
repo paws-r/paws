@@ -46,8 +46,7 @@ define a set of tags for your account's managed instances that helps you
 track each instance's owner and stack level. For example: Key=Owner and
 Value=DbAdmin, SysAdmin, or Dev. Or Key=Stack and Value=Production,
 Pre-Production, or Test.
-}
-\details{
+
 Each resource can have a maximum of 50 tags.
 
 We recommend that you devise a set of tag keys that meets your needs for

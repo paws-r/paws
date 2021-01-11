@@ -48,8 +48,7 @@ Service (AWS KMS) for server-side encryption of your exported data.
 Exports journal contents within a date and time range from a ledger into
 a specified Amazon Simple Storage Service (Amazon S3) bucket. The data
 is written as files in Amazon Ion format.
-}
-\details{
+
 If the ledger with the given \code{Name} doesn't exist, then throws
 \code{ResourceNotFoundException}.
 

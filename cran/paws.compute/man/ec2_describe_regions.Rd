@@ -29,8 +29,7 @@ disabled for your account.}
 }
 \description{
 Describes the Regions that are enabled for your account, or all Regions.
-}
-\details{
+
 For a list of the Regions supported by Amazon EC2, see \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#ec2_region}{Regions and Endpoints}.
 
 For information about enabling and disabling Regions for your account,

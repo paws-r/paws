@@ -16,8 +16,7 @@ cognitoidentityprovider_admin_forget_device(UserPoolId, Username,
 }
 \description{
 Forgets the device, as an administrator.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

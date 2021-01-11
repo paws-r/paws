@@ -97,8 +97,7 @@ perform unit conversions.}
 }
 \description{
 Gets statistics for the specified metric.
-}
-\details{
+
 The maximum number of data points returned from a single call is 1,440.
 If you request more than 1,440 data points, CloudWatch returns an error.
 To reduce the number of data points, you can narrow the specified time

@@ -18,8 +18,7 @@ simpledb_select(SelectExpression, NextToken, ConsistentRead)
 The \code{Select} operation returns a set of attributes for \code{ItemNames} that
 match the select expression. \code{Select} is similar to the standard SQL
 SELECT statement.
-}
-\details{
+
 The total size of the response cannot exceed 1 MB in total size. Amazon
 SimpleDB automatically adjusts the number of items returned per page to
 enforce this limit. For example, if the client asks to retrieve 2500

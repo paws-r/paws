@@ -17,8 +17,7 @@ from its associated AWS CloudHSM cluster. While a custom key store is
 disconnected, you can manage the custom key store and its customer
 master keys (CMKs), but you cannot create or use CMKs in the custom key
 store. You can reconnect the custom key store at any time.
-}
-\details{
+
 While a custom key store is disconnected, all attempts to create
 customer master keys (CMKs) in the custom key store or to use existing
 CMKs in \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations}{cryptographic operations}

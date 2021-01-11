@@ -24,8 +24,7 @@ Up to 25 rules can be specified per identity provider.}
 \description{
 Sets the roles for an identity pool. These roles are used when making
 calls to GetCredentialsForIdentity action.
-}
-\details{
+
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{

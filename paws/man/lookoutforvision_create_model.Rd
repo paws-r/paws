@@ -34,8 +34,7 @@ Creates a new version of a model within an an Amazon Lookout for Vision
 project. \code{CreateModel} is an asynchronous operation in which Amazon
 Lookout for Vision trains, tests, and evaluates a new version of a
 model.
-}
-\details{
+
 To get the current status, check the \code{Status} field returned in the
 response from DescribeModel.
 

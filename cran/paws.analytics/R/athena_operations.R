@@ -6,6 +6,7 @@ NULL
 #' Returns the details of a single named query or a list of up to 50
 #' queries, which you provide as an array of query ID strings
 #'
+#' @description
 #' Returns the details of a single named query or a list of up to 50
 #' queries, which you provide as an array of query ID strings. Requires you
 #' to have access to the workgroup in which the queries were saved. Use
@@ -55,6 +56,7 @@ athena_batch_get_named_query <- function(NamedQueryIds) {
 #' query executions, which you provide as an array of query execution ID
 #' strings
 #'
+#' @description
 #' Returns the details of a single query execution or a list of up to 50
 #' query executions, which you provide as an array of query execution ID
 #' strings. Requires you to have access to the workgroup in which the
@@ -100,6 +102,7 @@ athena_batch_get_query_execution <- function(QueryExecutionIds) {
 #' Creates (registers) a data catalog with the specified name and
 #' properties
 #'
+#' @description
 #' Creates (registers) a data catalog with the specified name and
 #' properties. Catalogs created are visible to all users of the same AWS
 #' account.
@@ -182,6 +185,7 @@ athena_create_data_catalog <- function(Name, Type, Description = NULL, Parameter
 
 #' Creates a named query in the specified workgroup
 #'
+#' @description
 #' Creates a named query in the specified workgroup. Requires that you have
 #' access to the workgroup.
 #' 
@@ -243,6 +247,7 @@ athena_create_named_query <- function(Name, Description = NULL, Database, QueryS
 
 #' Creates a workgroup with the specified name
 #'
+#' @description
 #' Creates a workgroup with the specified name.
 #'
 #' @usage
@@ -309,6 +314,7 @@ athena_create_work_group <- function(Name, Configuration = NULL, Description = N
 
 #' Deletes a data catalog
 #'
+#' @description
 #' Deletes a data catalog.
 #'
 #' @usage
@@ -346,6 +352,7 @@ athena_delete_data_catalog <- function(Name) {
 #' Deletes the named query if you have access to the workgroup in which the
 #' query was saved
 #'
+#' @description
 #' Deletes the named query if you have access to the workgroup in which the
 #' query was saved.
 #' 
@@ -387,6 +394,7 @@ athena_delete_named_query <- function(NamedQueryId) {
 
 #' Deletes the workgroup with the specified name
 #'
+#' @description
 #' Deletes the workgroup with the specified name. The primary workgroup
 #' cannot be deleted.
 #'
@@ -427,6 +435,7 @@ athena_delete_work_group <- function(WorkGroup, RecursiveDeleteOption = NULL) {
 
 #' Returns the specified data catalog
 #'
+#' @description
 #' Returns the specified data catalog.
 #'
 #' @usage
@@ -463,6 +472,7 @@ athena_get_data_catalog <- function(Name) {
 
 #' Returns a database object for the specfied database and data catalog
 #'
+#' @description
 #' Returns a database object for the specfied database and data catalog.
 #'
 #' @usage
@@ -501,6 +511,7 @@ athena_get_database <- function(CatalogName, DatabaseName) {
 
 #' Returns information about a single query
 #'
+#' @description
 #' Returns information about a single query. Requires that you have access
 #' to the workgroup in which the query was saved.
 #'
@@ -539,6 +550,7 @@ athena_get_named_query <- function(NamedQueryId) {
 #' Returns information about a single execution of a query if you have
 #' access to the workgroup in which the query ran
 #'
+#' @description
 #' Returns information about a single execution of a query if you have
 #' access to the workgroup in which the query ran. Each time a query
 #' executes, information about the query execution is saved with a unique
@@ -579,6 +591,7 @@ athena_get_query_execution <- function(QueryExecutionId) {
 #' Streams the results of a single query execution specified by
 #' QueryExecutionId from the Athena query results location in Amazon S3
 #'
+#' @description
 #' Streams the results of a single query execution specified by
 #' `QueryExecutionId` from the Athena query results location in Amazon S3.
 #' For more information, see [Query
@@ -637,6 +650,7 @@ athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResu
 
 #' Returns table metadata for the specified catalog, database, and table
 #'
+#' @description
 #' Returns table metadata for the specified catalog, database, and table.
 #'
 #' @usage
@@ -678,6 +692,7 @@ athena_get_table_metadata <- function(CatalogName, DatabaseName, TableName) {
 
 #' Returns information about the workgroup with the specified name
 #'
+#' @description
 #' Returns information about the workgroup with the specified name.
 #'
 #' @usage
@@ -714,6 +729,7 @@ athena_get_work_group <- function(WorkGroup) {
 
 #' Lists the data catalogs in the current AWS account
 #'
+#' @description
 #' Lists the data catalogs in the current AWS account.
 #'
 #' @usage
@@ -755,6 +771,7 @@ athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Lists the databases in the specified data catalog
 #'
+#' @description
 #' Lists the databases in the specified data catalog.
 #'
 #' @usage
@@ -799,6 +816,7 @@ athena_list_databases <- function(CatalogName, NextToken = NULL, MaxResults = NU
 #' Provides a list of available query IDs only for queries saved in the
 #' specified workgroup
 #'
+#' @description
 #' Provides a list of available query IDs only for queries saved in the
 #' specified workgroup. Requires that you have access to the specified
 #' workgroup. If a workgroup is not specified, lists the saved queries for
@@ -852,6 +870,7 @@ athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkG
 #' Provides a list of available query execution IDs for the queries in the
 #' specified workgroup
 #'
+#' @description
 #' Provides a list of available query execution IDs for the queries in the
 #' specified workgroup. If a workgroup is not specified, returns a list of
 #' query execution IDs for the primary workgroup. Requires you to have
@@ -904,6 +923,7 @@ athena_list_query_executions <- function(NextToken = NULL, MaxResults = NULL, Wo
 
 #' Lists the metadata for the tables in the specified data catalog database
 #'
+#' @description
 #' Lists the metadata for the tables in the specified data catalog
 #' database.
 #'
@@ -956,6 +976,7 @@ athena_list_table_metadata <- function(CatalogName, DatabaseName, Expression = N
 #' Lists the tags associated with an Athena workgroup or data catalog
 #' resource
 #'
+#' @description
 #' Lists the tags associated with an Athena workgroup or data catalog
 #' resource.
 #'
@@ -1000,6 +1021,7 @@ athena_list_tags_for_resource <- function(ResourceARN, NextToken = NULL, MaxResu
 
 #' Lists available workgroups for the account
 #'
+#' @description
 #' Lists available workgroups for the account.
 #'
 #' @usage
@@ -1041,6 +1063,7 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Runs the SQL query statements contained in the Query
 #'
+#' @description
 #' Runs the SQL query statements contained in the `Query`. Requires you to
 #' have access to the workgroup in which the query ran. Running queries
 #' against an external catalog requires GetDataCatalog permission to the
@@ -1116,6 +1139,7 @@ athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL,
 
 #' Stops a query execution
 #'
+#' @description
 #' Stops a query execution. Requires you to have access to the workgroup in
 #' which the query ran.
 #' 
@@ -1157,6 +1181,7 @@ athena_stop_query_execution <- function(QueryExecutionId) {
 
 #' Adds one or more tags to an Athena resource
 #'
+#' @description
 #' Adds one or more tags to an Athena resource. A tag is a label that you
 #' assign to a resource. In Athena, a resource can be a workgroup or data
 #' catalog. Each tag consists of a key and an optional value, both of which
@@ -1215,6 +1240,7 @@ athena_tag_resource <- function(ResourceARN, Tags) {
 
 #' Removes one or more tags from a data catalog or workgroup resource
 #'
+#' @description
 #' Removes one or more tags from a data catalog or workgroup resource.
 #'
 #' @usage
@@ -1256,6 +1282,7 @@ athena_untag_resource <- function(ResourceARN, TagKeys) {
 
 #' Updates the data catalog that has the specified name
 #'
+#' @description
 #' Updates the data catalog that has the specified name.
 #'
 #' @usage
@@ -1329,6 +1356,7 @@ athena_update_data_catalog <- function(Name, Type, Description = NULL, Parameter
 
 #' Updates the workgroup with the specified name
 #'
+#' @description
 #' Updates the workgroup with the specified name. The workgroup's name
 #' cannot be changed.
 #'

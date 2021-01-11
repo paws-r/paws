@@ -13,8 +13,7 @@ in the \emph{Amazon Elastic Container Registry User Guide}.}
 }
 \description{
 Creates or updates the permissions policy for your registry.
-}
-\details{
+
 A registry policy is used to specify permissions for another AWS account
 and is used when configuring cross-account replication. For more
 information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry-permissions.html}{Registry permissions}

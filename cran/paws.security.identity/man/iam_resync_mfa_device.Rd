@@ -32,8 +32,7 @@ The format for this parameter is a sequence of six digits.}
 \description{
 Synchronizes the specified MFA device with its IAM resource object on
 the AWS servers.
-}
-\details{
+
 For more information about creating and working with virtual MFA
 devices, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html}{Using a Virtual MFA Device}
 in the \emph{IAM User Guide}.

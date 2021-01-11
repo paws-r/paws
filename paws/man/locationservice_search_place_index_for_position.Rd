@@ -27,8 +27,7 @@ For example, \verb{position=xLongitude&amp;position=yLatitude} .}
 Reverse geocodes a given coordinate and returns a legible address.
 Allows you to search for Places or points of interest near a given
 position.
-}
-\details{
+
 By using Places, you agree that AWS may transmit your API queries to
 your selected third party provider for processing, which may be outside
 the AWS region you are currently using.

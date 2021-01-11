@@ -34,8 +34,7 @@ receive either a \emph{ResourceNotFoundException} or an
 \description{
 Cancels the scheduled deletion of a secret by removing the \code{DeletedDate}
 time stamp. This makes the secret accessible to query once again.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

@@ -18,8 +18,7 @@ simpledb_delete_attributes(DomainName, ItemName, Attributes, Expected)
 \description{
 Deletes one or more attributes associated with an item. If all
 attributes of the item are deleted, the item is deleted.
-}
-\details{
+
 If \code{DeleteAttributes} is called without being passed any attributes or
 values specified, all the attributes for the item are deleted.
 

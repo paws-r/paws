@@ -22,8 +22,7 @@ The client may specify new attributes using a combination of the
 specifies the first attribute by the parameters \code{Attribute.0.Name} and
 \code{Attribute.0.Value}, the second attribute by the parameters
 \code{Attribute.1.Name} and \code{Attribute.1.Value}, and so on.
-}
-\details{
+
 Attributes are uniquely identified in an item by their name/value
 combination. For example, a single item can have the attributes
 \verb{\\\{ "first_name", "first_value" \\\}} and

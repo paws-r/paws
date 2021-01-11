@@ -6,6 +6,7 @@ NULL
 #' BatchMeterUsage is called from a SaaS application listed on the AWS
 #' Marketplace to post metering records for a set of customers
 #'
+#' @description
 #' BatchMeterUsage is called from a SaaS application listed on the AWS
 #' Marketplace to post metering records for a set of customers.
 #' 
@@ -83,6 +84,7 @@ marketplacemetering_batch_meter_usage <- function(UsageRecords, ProductCode) {
 
 #' API to emit metering records
 #'
+#' @description
 #' API to emit metering records. For identical requests, the API is
 #' idempotent. It simply returns the metering record ID.
 #' 
@@ -164,6 +166,7 @@ marketplacemetering_meter_usage <- function(ProductCode, Timestamp, UsageDimensi
 #' integrate with the AWS Marketplace Metering Service and call the
 #' RegisterUsage operation for software entitlement and metering
 #'
+#' @description
 #' Paid container software products sold through AWS Marketplace must
 #' integrate with the AWS Marketplace Metering Service and call the
 #' RegisterUsage operation for software entitlement and metering. Free and
@@ -243,6 +246,7 @@ marketplacemetering_register_usage <- function(ProductCode, PublicKeyVersion, No
 #' ResolveCustomer is called by a SaaS application during the registration
 #' process
 #'
+#' @description
 #' ResolveCustomer is called by a SaaS application during the registration
 #' process. When a buyer visits your website during the registration
 #' process, the buyer submits a registration token through their browser.

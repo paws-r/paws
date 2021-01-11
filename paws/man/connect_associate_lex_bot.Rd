@@ -15,8 +15,7 @@ connect_associate_lex_bot(InstanceId, LexBot)
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Allows the specified Amazon Connect instance to access the specified
 Amazon Lex bot.
 }

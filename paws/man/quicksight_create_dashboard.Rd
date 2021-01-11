@@ -67,8 +67,7 @@ AWS account where you create the dashboard.}
 \description{
 Creates a dashboard from a template. To first create a template, see the
 \verb{<a>CreateTemplate</a>} API operation.
-}
-\details{
+
 A dashboard is an entity in QuickSight that identifies QuickSight
 reports, created from analyses. You can share QuickSight dashboards.
 With the right permissions, you can create scheduled email reports from

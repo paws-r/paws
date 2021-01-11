@@ -23,8 +23,7 @@ attribute name.}
 \description{
 Deletes the user attributes in a user pool as an administrator. Works on
 any user.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

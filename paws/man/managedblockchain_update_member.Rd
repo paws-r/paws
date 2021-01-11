@@ -17,8 +17,7 @@ member belongs.}
 }
 \description{
 Updates a member configuration with new parameters.
-}
-\details{
+
 Applies only to Hyperledger Fabric.
 }
 \section{Request syntax}{

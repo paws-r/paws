@@ -79,8 +79,7 @@ divide the Errors metric by the Invocations metric to get an error rate
 time series. For more information about metric math expressions, see
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/using-metric-math.html#metric-math-syntax}{Metric Math Syntax and Functions}
 in the \emph{Amazon CloudWatch User Guide}.
-}
-\details{
+
 Calls to the \code{GetMetricData} API have a different pricing structure than
 calls to \code{GetMetricStatistics}. For more information about pricing, see
 \href{https://aws.amazon.com/cloudwatch/pricing/}{Amazon CloudWatch Pricing}.

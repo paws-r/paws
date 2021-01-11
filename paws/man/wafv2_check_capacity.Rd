@@ -27,8 +27,7 @@ ACL.}
 This is the latest version of \strong{AWS WAF}, named AWS WAFV2, released in
 November, 2019. For information, including how to migrate your AWS WAF
 resources from the prior release, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-}
-\details{
+
 Returns the web ACL capacity unit (WCU) requirements for a specified
 scope and set of rules. You can use this to check the capacity
 requirements for the rules you want to use in a RuleGroup or WebACL.

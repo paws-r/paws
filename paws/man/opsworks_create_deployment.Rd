@@ -34,8 +34,7 @@ and \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-
 \description{
 Runs deployment or stack commands. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingapps-deploying.html}{Deploying Apps}
 and \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-commands.html}{Run Stack Commands}.
-}
-\details{
+
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Deploy or Manage permissions level for the stack, or an attached policy
 that explicitly grants permissions. For more information on user

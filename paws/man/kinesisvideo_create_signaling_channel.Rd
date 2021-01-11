@@ -22,8 +22,7 @@ channel.}
 }
 \description{
 Creates a signaling channel.
-}
-\details{
+
 \code{CreateSignalingChannel} is an asynchronous operation.
 }
 \section{Request syntax}{

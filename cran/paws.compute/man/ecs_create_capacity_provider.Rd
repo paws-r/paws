@@ -42,8 +42,7 @@ limit.
 Creates a new capacity provider. Capacity providers are associated with
 an Amazon ECS cluster and are used in capacity provider strategies to
 facilitate cluster auto scaling.
-}
-\details{
+
 Only capacity providers using an Auto Scaling group can be created.
 Amazon ECS tasks on AWS Fargate use the \code{FARGATE} and \code{FARGATE_SPOT}
 capacity providers which are already created and available to all

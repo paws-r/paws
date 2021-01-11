@@ -5,6 +5,7 @@ NULL
 
 #' Adds tags to on-premises instances
 #'
+#' @description
 #' Adds tags to on-premises instances.
 #'
 #' @usage
@@ -53,6 +54,7 @@ codedeploy_add_tags_to_on_premises_instances <- function(tags, instanceNames) {
 
 #' Gets information about one or more application revisions
 #'
+#' @description
 #' Gets information about one or more application revisions. The maximum
 #' number of application revisions that can be returned is 25.
 #'
@@ -118,6 +120,7 @@ codedeploy_batch_get_application_revisions <- function(applicationName, revision
 
 #' Gets information about one or more applications
 #'
+#' @description
 #' Gets information about one or more applications. The maximum number of
 #' applications that can be returned is 100.
 #'
@@ -158,6 +161,7 @@ codedeploy_batch_get_applications <- function(applicationNames) {
 
 #' Gets information about one or more deployment groups
 #'
+#' @description
 #' Gets information about one or more deployment groups.
 #'
 #' @usage
@@ -200,6 +204,7 @@ codedeploy_batch_get_deployment_groups <- function(applicationName, deploymentGr
 
 #' This method works, but is deprecated
 #'
+#' @description
 #' This method works, but is deprecated. Use `BatchGetDeploymentTargets`
 #' instead.
 #' 
@@ -247,6 +252,7 @@ codedeploy_batch_get_deployment_instances <- function(deploymentId, instanceIds)
 
 #' Returns an array of one or more targets associated with a deployment
 #'
+#' @description
 #' Returns an array of one or more targets associated with a deployment.
 #' This method works with all compute types and should be used instead of
 #' the deprecated `BatchGetDeploymentInstances`. The maximum number of
@@ -321,6 +327,7 @@ codedeploy_batch_get_deployment_targets <- function(deploymentId = NULL, targetI
 
 #' Gets information about one or more deployments
 #'
+#' @description
 #' Gets information about one or more deployments. The maximum number of
 #' deployments that can be returned is 25.
 #'
@@ -361,6 +368,7 @@ codedeploy_batch_get_deployments <- function(deploymentIds) {
 
 #' Gets information about one or more on-premises instances
 #'
+#' @description
 #' Gets information about one or more on-premises instances. The maximum
 #' number of on-premises instances that can be returned is 25.
 #'
@@ -404,6 +412,7 @@ codedeploy_batch_get_on_premises_instances <- function(instanceNames) {
 #' replacement environment without waiting for a specified wait time to
 #' elapse
 #'
+#' @description
 #' For a blue/green deployment, starts the process of rerouting traffic
 #' from instances in the original environment to instances in the
 #' replacement environment without waiting for a specified wait time to
@@ -451,6 +460,7 @@ codedeploy_continue_deployment <- function(deploymentId = NULL, deploymentWaitTy
 
 #' Creates an application
 #'
+#' @description
 #' Creates an application.
 #'
 #' @usage
@@ -500,6 +510,7 @@ codedeploy_create_application <- function(applicationName, computePlatform = NUL
 
 #' Deploys an application revision through the specified deployment group
 #'
+#' @description
 #' Deploys an application revision through the specified deployment group.
 #'
 #' @usage
@@ -655,6 +666,7 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
 
 #' Creates a deployment configuration
 #'
+#' @description
 #' Creates a deployment configuration.
 #'
 #' @usage
@@ -679,7 +691,7 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
 #' 
 #' The value parameter takes an integer.
 #' 
-#' For example, to set a minimum of 95% healthy instance, specify a type of
+#' For example, to set a minimum of 95\% healthy instance, specify a type of
 #' FLEET\\_PERCENT and a value of 95.
 #' @param trafficRoutingConfig The configuration that specifies how the deployment traffic is routed.
 #' @param computePlatform The destination platform type for the deployment (`Lambda`, `Server`, or
@@ -730,6 +742,7 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 
 #' Creates a deployment group to which application revisions are deployed
 #'
+#' @description
 #' Creates a deployment group to which application revisions are deployed.
 #'
 #' @usage
@@ -949,6 +962,7 @@ codedeploy_create_deployment_group <- function(applicationName, deploymentGroupN
 
 #' Deletes an application
 #'
+#' @description
 #' Deletes an application.
 #'
 #' @usage
@@ -986,6 +1000,7 @@ codedeploy_delete_application <- function(applicationName) {
 
 #' Deletes a deployment configuration
 #'
+#' @description
 #' Deletes a deployment configuration.
 #' 
 #' A deployment configuration cannot be deleted if it is currently in use.
@@ -1026,6 +1041,7 @@ codedeploy_delete_deployment_config <- function(deploymentConfigName) {
 
 #' Deletes a deployment group
 #'
+#' @description
 #' Deletes a deployment group.
 #'
 #' @usage
@@ -1065,6 +1081,7 @@ codedeploy_delete_deployment_group <- function(applicationName, deploymentGroupN
 
 #' Deletes a GitHub account connection
 #'
+#' @description
 #' Deletes a GitHub account connection.
 #'
 #' @usage
@@ -1101,6 +1118,7 @@ codedeploy_delete_git_hub_account_token <- function(tokenName = NULL) {
 
 #' Deletes resources linked to an external ID
 #'
+#' @description
 #' Deletes resources linked to an external ID.
 #'
 #' @usage
@@ -1138,6 +1156,7 @@ codedeploy_delete_resources_by_external_id <- function(externalId = NULL) {
 
 #' Deregisters an on-premises instance
 #'
+#' @description
 #' Deregisters an on-premises instance.
 #'
 #' @usage
@@ -1174,6 +1193,7 @@ codedeploy_deregister_on_premises_instance <- function(instanceName) {
 
 #' Gets information about an application
 #'
+#' @description
 #' Gets information about an application.
 #'
 #' @usage
@@ -1211,6 +1231,7 @@ codedeploy_get_application <- function(applicationName) {
 
 #' Gets information about an application revision
 #'
+#' @description
 #' Gets information about an application revision.
 #'
 #' @usage
@@ -1271,6 +1292,7 @@ codedeploy_get_application_revision <- function(applicationName, revision) {
 
 #' Gets information about a deployment
 #'
+#' @description
 #' Gets information about a deployment.
 #' 
 #' The `content` property of the `appSpecContent` object in the returned
@@ -1313,6 +1335,7 @@ codedeploy_get_deployment <- function(deploymentId) {
 
 #' Gets information about a deployment configuration
 #'
+#' @description
 #' Gets information about a deployment configuration.
 #'
 #' @usage
@@ -1350,6 +1373,7 @@ codedeploy_get_deployment_config <- function(deploymentConfigName) {
 
 #' Gets information about a deployment group
 #'
+#' @description
 #' Gets information about a deployment group.
 #'
 #' @usage
@@ -1389,6 +1413,7 @@ codedeploy_get_deployment_group <- function(applicationName, deploymentGroupName
 
 #' Gets information about an instance as part of a deployment
 #'
+#' @description
 #' Gets information about an instance as part of a deployment.
 #'
 #' @usage
@@ -1427,6 +1452,7 @@ codedeploy_get_deployment_instance <- function(deploymentId, instanceId) {
 
 #' Returns information about a deployment target
 #'
+#' @description
 #' Returns information about a deployment target.
 #'
 #' @usage
@@ -1465,6 +1491,7 @@ codedeploy_get_deployment_target <- function(deploymentId = NULL, targetId = NUL
 
 #' Gets information about an on-premises instance
 #'
+#' @description
 #' Gets information about an on-premises instance.
 #'
 #' @usage
@@ -1501,6 +1528,7 @@ codedeploy_get_on_premises_instance <- function(instanceName) {
 
 #' Lists information about revisions for an application
 #'
+#' @description
 #' Lists information about revisions for an application.
 #'
 #' @usage
@@ -1584,6 +1612,7 @@ codedeploy_list_application_revisions <- function(applicationName, sortBy = NULL
 
 #' Lists the applications registered with the IAM user or AWS account
 #'
+#' @description
 #' Lists the applications registered with the IAM user or AWS account.
 #'
 #' @usage
@@ -1621,6 +1650,7 @@ codedeploy_list_applications <- function(nextToken = NULL) {
 
 #' Lists the deployment configurations with the IAM user or AWS account
 #'
+#' @description
 #' Lists the deployment configurations with the IAM user or AWS account.
 #'
 #' @usage
@@ -1660,6 +1690,7 @@ codedeploy_list_deployment_configs <- function(nextToken = NULL) {
 #' Lists the deployment groups for an application registered with the IAM
 #' user or AWS account
 #'
+#' @description
 #' Lists the deployment groups for an application registered with the IAM
 #' user or AWS account.
 #'
@@ -1702,6 +1733,7 @@ codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL)
 #' The newer BatchGetDeploymentTargets should be used instead because it
 #' works with all compute types
 #'
+#' @description
 #' The newer `BatchGetDeploymentTargets` should be used instead because it
 #' works with all compute types. `ListDeploymentInstances` throws an
 #' exception if it is used with a compute platform other than
@@ -1773,6 +1805,7 @@ codedeploy_list_deployment_instances <- function(deploymentId, nextToken = NULL,
 
 #' Returns an array of target IDs that are associated a deployment
 #'
+#' @description
 #' Returns an array of target IDs that are associated a deployment.
 #'
 #' @usage
@@ -1828,6 +1861,7 @@ codedeploy_list_deployment_targets <- function(deploymentId = NULL, nextToken = 
 #' Lists the deployments in a deployment group for an application
 #' registered with the IAM user or AWS account
 #'
+#' @description
 #' Lists the deployments in a deployment group for an application
 #' registered with the IAM user or AWS account.
 #'
@@ -1910,6 +1944,7 @@ codedeploy_list_deployments <- function(applicationName = NULL, deploymentGroupN
 
 #' Lists the names of stored connections to GitHub accounts
 #'
+#' @description
 #' Lists the names of stored connections to GitHub accounts.
 #'
 #' @usage
@@ -1947,6 +1982,7 @@ codedeploy_list_git_hub_account_token_names <- function(nextToken = NULL) {
 
 #' Gets a list of names for one or more on-premises instances
 #'
+#' @description
 #' Gets a list of names for one or more on-premises instances.
 #' 
 #' Unless otherwise specified, both registered and deregistered on-premises
@@ -2008,6 +2044,7 @@ codedeploy_list_on_premises_instances <- function(registrationStatus = NULL, tag
 #' Returns a list of tags for the resource identified by a specified Amazon
 #' Resource Name (ARN)
 #'
+#' @description
 #' Returns a list of tags for the resource identified by a specified Amazon
 #' Resource Name (ARN). Tags are used to organize and categorize your
 #' CodeDeploy resources.
@@ -2051,6 +2088,7 @@ codedeploy_list_tags_for_resource <- function(ResourceArn, NextToken = NULL) {
 
 #' Sets the result of a Lambda validation function
 #'
+#' @description
 #' Sets the result of a Lambda validation function. The function validates
 #' lifecycle hooks during a deployment that uses the AWS Lambda or Amazon
 #' ECS compute platform. For AWS Lambda deployments, the available
@@ -2106,6 +2144,7 @@ codedeploy_put_lifecycle_event_hook_execution_status <- function(deploymentId = 
 
 #' Registers with AWS CodeDeploy a revision for the specified application
 #'
+#' @description
 #' Registers with AWS CodeDeploy a revision for the specified application.
 #'
 #' @usage
@@ -2170,6 +2209,7 @@ codedeploy_register_application_revision <- function(applicationName, descriptio
 
 #' Registers an on-premises instance
 #'
+#' @description
 #' Registers an on-premises instance.
 #' 
 #' Only one IAM ARN (an IAM session ARN or IAM user ARN) is supported in
@@ -2214,6 +2254,7 @@ codedeploy_register_on_premises_instance <- function(instanceName, iamSessionArn
 
 #' Removes one or more tags from one or more on-premises instances
 #'
+#' @description
 #' Removes one or more tags from one or more on-premises instances.
 #'
 #' @usage
@@ -2260,6 +2301,7 @@ codedeploy_remove_tags_from_on_premises_instances <- function(tags, instanceName
 #' In a blue/green deployment, overrides any specified wait time and starts
 #' terminating instances immediately after the traffic routing is complete
 #'
+#' @description
 #' In a blue/green deployment, overrides any specified wait time and starts
 #' terminating instances immediately after the traffic routing is complete.
 #'
@@ -2298,6 +2340,7 @@ codedeploy_skip_wait_time_for_instance_termination <- function(deploymentId = NU
 
 #' Attempts to stop an ongoing deployment
 #'
+#' @description
 #' Attempts to stop an ongoing deployment.
 #'
 #' @usage
@@ -2339,6 +2382,7 @@ codedeploy_stop_deployment <- function(deploymentId, autoRollbackEnabled = NULL)
 #' Associates the list of tags in the input Tags parameter with the
 #' resource identified by the ResourceArn input parameter
 #'
+#' @description
 #' Associates the list of tags in the input `Tags` parameter with the
 #' resource identified by the `ResourceArn` input parameter.
 #'
@@ -2385,6 +2429,7 @@ codedeploy_tag_resource <- function(ResourceArn, Tags) {
 
 #' Disassociates a resource from a list of tags
 #'
+#' @description
 #' Disassociates a resource from a list of tags. The resource is identified
 #' by the `ResourceArn` input parameter. The tags are identified by the
 #' list of keys in the `TagKeys` input parameter.
@@ -2430,6 +2475,7 @@ codedeploy_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Changes the name of an application
 #'
+#' @description
 #' Changes the name of an application.
 #'
 #' @usage
@@ -2468,6 +2514,7 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 
 #' Changes information about a deployment group
 #'
+#' @description
 #' Changes information about a deployment group.
 #'
 #' @usage

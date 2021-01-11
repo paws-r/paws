@@ -14,8 +14,7 @@ machinelearning_update_batch_prediction(BatchPredictionId,
 }
 \description{
 Updates the \code{BatchPredictionName} of a \code{BatchPrediction}.
-}
-\details{
+
 You can use the \code{GetBatchPrediction} operation to view the contents of
 the updated data element.
 }

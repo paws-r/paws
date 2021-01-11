@@ -15,8 +15,7 @@ ListCertificateAuthorities action.}
 Retrieves the resource-based policy attached to a private CA. If either
 the private CA resource or the policy cannot be found, this action
 returns a \code{ResourceNotFoundException}.
-}
-\details{
+
 The policy can be attached or updated with
 \href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_PutPolicy.html}{PutPolicy}
 and removed with

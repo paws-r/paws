@@ -19,8 +19,7 @@ results.}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Returns a paginated list of all security keys associated with the
 instance.
 }

@@ -51,8 +51,6 @@ associated with them.}
 Shows usage limits on a cluster. Results are filtered based on the
 combination of input usage limit identifier, cluster identifier, and
 feature type parameters:
-}
-\details{
 \itemize{
 \item If usage limit identifier, cluster identifier, and feature type are
 not provided, then all usage limit objects for the current account

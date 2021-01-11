@@ -134,8 +134,7 @@ gateway. In Storage Gateway, a file share is a file system mount point
 backed by Amazon S3 cloud storage. Storage Gateway exposes file shares
 using an SMB interface. This operation is only supported for file
 gateways.
-}
-\details{
+
 File gateways require AWS Security Token Service (AWS STS) to be
 activated to enable you to create a file share. Make sure that AWS STS
 is activated in the AWS Region you are creating your file gateway in. If

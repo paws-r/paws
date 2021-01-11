@@ -35,8 +35,7 @@ For an existing AWS CodeBuild build project that has its source code
 stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to
 start rebuilding the source code every time a code change is pushed to
 the repository.
-}
-\details{
+
 If you enable webhooks for an AWS CodeBuild project, and the project is
 used as a build step in AWS CodePipeline, then two identical builds are
 created for each commit. One build is triggered through webhooks, and

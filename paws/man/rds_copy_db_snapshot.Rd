@@ -144,8 +144,7 @@ Example: \code{rds-caz-aiqhTgQv}.}
 \description{
 Copies the specified DB snapshot. The source DB snapshot must be in the
 \code{available} state.
-}
-\details{
+
 You can copy a snapshot from one AWS Region to another. In that case,
 the AWS Region where you call the \code{CopyDBSnapshot} action is the
 destination AWS Region for the DB snapshot copy.

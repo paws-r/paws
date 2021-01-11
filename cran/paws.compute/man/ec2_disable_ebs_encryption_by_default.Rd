@@ -16,8 +16,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Disables EBS encryption by default for your account in the current
 Region.
-}
-\details{
+
 After you disable encryption by default, you can still create encrypted
 volumes by enabling encryption when you create each volume.
 

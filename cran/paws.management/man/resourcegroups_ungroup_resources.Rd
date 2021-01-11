@@ -14,8 +14,7 @@ resources.}
 }
 \description{
 Removes the specified resources from the specified group.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

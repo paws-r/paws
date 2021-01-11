@@ -19,8 +19,7 @@ disk is corrupted or removed from the gateway. When a cache is reset,
 the gateway loses its cache storage. At this point, you can reconfigure
 the disks as cache disks. This operation is only supported in the cached
 volume and tape types.
-}
-\details{
+
 If the cache disk you are resetting contains data that has not been
 uploaded to Amazon S3 yet, that data can be lost. After you reset cache
 disks, there will be no configured cache disks left in the gateway, so

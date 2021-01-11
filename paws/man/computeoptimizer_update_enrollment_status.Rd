@@ -19,8 +19,7 @@ your account is the management account of an organization.}
 \description{
 Updates the enrollment (opt in) status of an account to the AWS Compute
 Optimizer service.
-}
-\details{
+
 If the account is a management account of an organization, this action
 can also be used to enroll member accounts within the organization.
 }

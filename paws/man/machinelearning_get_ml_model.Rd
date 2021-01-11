@@ -19,8 +19,7 @@ If false, \code{Recipe} is not returned.}
 \description{
 Returns an \code{MLModel} that includes detailed metadata, data source
 information, and the current status of the \code{MLModel}.
-}
-\details{
+
 \code{GetMLModel} provides results in normal or verbose format.
 }
 \section{Request syntax}{

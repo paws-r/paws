@@ -172,8 +172,7 @@ of video on streams with 10-second fragments.}
 \description{
 Retrieves an HTTP Live Streaming (HLS) URL for the stream. You can then
 open the URL in a browser or media player to view the stream contents.
-}
-\details{
+
 Both the \code{StreamName} and the \code{StreamARN} parameters are optional, but
 you must specify either the \code{StreamName} or the \code{StreamARN} when
 invoking this API operation.

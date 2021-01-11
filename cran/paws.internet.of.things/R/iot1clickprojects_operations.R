@@ -5,6 +5,7 @@ NULL
 
 #' Associates a physical device with a placement
 #'
+#' @description
 #' Associates a physical device with a placement.
 #'
 #' @usage
@@ -51,6 +52,7 @@ iot1clickprojects_associate_device_with_placement <- function(projectName, place
 
 #' Creates an empty placement
 #'
+#' @description
 #' Creates an empty placement.
 #'
 #' @usage
@@ -95,6 +97,7 @@ iot1clickprojects_create_placement <- function(placementName, projectName, attri
 
 #' Creates an empty project with a placement template
 #'
+#' @description
 #' Creates an empty project with a placement template. A project contains
 #' zero or more placements that adhere to the placement template defined in
 #' the project.
@@ -161,6 +164,7 @@ iot1clickprojects_create_project <- function(projectName, description = NULL, pl
 
 #' Deletes a placement
 #'
+#' @description
 #' Deletes a placement. To delete a placement, it must not have any devices
 #' associated with it.
 #' 
@@ -202,6 +206,7 @@ iot1clickprojects_delete_placement <- function(placementName, projectName) {
 
 #' Deletes a project
 #'
+#' @description
 #' Deletes a project. To delete a project, it must not have any placements
 #' associated with it.
 #' 
@@ -241,6 +246,7 @@ iot1clickprojects_delete_project <- function(projectName) {
 
 #' Describes a placement in a project
 #'
+#' @description
 #' Describes a placement in a project.
 #'
 #' @usage
@@ -279,6 +285,7 @@ iot1clickprojects_describe_placement <- function(placementName, projectName) {
 
 #' Returns an object describing a project
 #'
+#' @description
 #' Returns an object describing a project.
 #'
 #' @usage
@@ -315,6 +322,7 @@ iot1clickprojects_describe_project <- function(projectName) {
 
 #' Removes a physical device from a placement
 #'
+#' @description
 #' Removes a physical device from a placement.
 #'
 #' @usage
@@ -356,6 +364,7 @@ iot1clickprojects_disassociate_device_from_placement <- function(projectName, pl
 
 #' Returns an object enumerating the devices in a placement
 #'
+#' @description
 #' Returns an object enumerating the devices in a placement.
 #'
 #' @usage
@@ -394,6 +403,7 @@ iot1clickprojects_get_devices_in_placement <- function(projectName, placementNam
 
 #' Lists the placement(s) of a project
 #'
+#' @description
 #' Lists the placement(s) of a project.
 #'
 #' @usage
@@ -436,6 +446,7 @@ iot1clickprojects_list_placements <- function(projectName, nextToken = NULL, max
 #' Lists the AWS IoT 1-Click project(s) associated with your AWS account
 #' and region
 #'
+#' @description
 #' Lists the AWS IoT 1-Click project(s) associated with your AWS account
 #' and region.
 #'
@@ -477,6 +488,7 @@ iot1clickprojects_list_projects <- function(nextToken = NULL, maxResults = NULL)
 #' Lists the tags (metadata key/value pairs) which you have assigned to the
 #' resource
 #'
+#' @description
 #' Lists the tags (metadata key/value pairs) which you have assigned to the
 #' resource.
 #'
@@ -514,6 +526,7 @@ iot1clickprojects_list_tags_for_resource <- function(resourceArn) {
 
 #' Creates or modifies tags for a resource
 #'
+#' @description
 #' Creates or modifies tags for a resource. Tags are key/value pairs
 #' (metadata) that can be used to manage a resource. For more information,
 #' see [AWS Tagging
@@ -560,6 +573,7 @@ iot1clickprojects_tag_resource <- function(resourceArn, tags) {
 
 #' Removes one or more tags (metadata key/value pairs) from a resource
 #'
+#' @description
 #' Removes one or more tags (metadata key/value pairs) from a resource.
 #'
 #' @usage
@@ -600,6 +614,7 @@ iot1clickprojects_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates a placement with the given attributes
 #'
+#' @description
 #' Updates a placement with the given attributes. To clear an attribute,
 #' pass an empty value (i.e., "").
 #'
@@ -645,6 +660,7 @@ iot1clickprojects_update_placement <- function(placementName, projectName, attri
 
 #' Updates a project associated with your AWS account and region
 #'
+#' @description
 #' Updates a project associated with your AWS account and region. With the
 #' exception of device template names, you can pass just the values that
 #' need to be updated because the update request will change only the

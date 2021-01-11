@@ -21,8 +21,7 @@ in the \emph{AWS General Reference}.}
 }
 \description{
 Attaches the specified managed policy to the specified user.
-}
-\details{
+
 You use this API to attach a \emph{managed} policy to a user. To embed an
 inline policy in a user, use PutUserPolicy.
 

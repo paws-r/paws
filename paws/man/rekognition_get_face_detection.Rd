@@ -23,8 +23,7 @@ faces.}
 \description{
 Gets face detection results for a Amazon Rekognition Video analysis
 started by StartFaceDetection.
-}
-\details{
+
 Face detection with Amazon Rekognition Video is an asynchronous
 operation. You start face detection by calling StartFaceDetection which
 returns a job identifier (\code{JobId}). When the face detection operation

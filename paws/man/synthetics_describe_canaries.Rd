@@ -19,8 +19,7 @@ the default of 100 is used.}
 \description{
 This operation returns a list of the canaries in your account, along
 with full details about each canary.
-}
-\details{
+
 This operation does not have resource-level authorization, so if a user
 is able to use \code{DescribeCanaries}, the user can see all of the canaries
 in the account. A deny policy can only be used to restrict access to all

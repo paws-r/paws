@@ -26,8 +26,7 @@ results.}
 }
 \description{
 Lists the roots that are defined in the current organization.
-}
-\details{
+
 Always check the \code{NextToken} response parameter for a \code{null} value when
 calling a \verb{List*} operation. These operations can occasionally return an
 empty set of results even when there are more results available. The

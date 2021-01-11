@@ -39,8 +39,7 @@ unknown state. Allowing the service to control the role helps improve
 service stability and proper cleanup when a service and its role are no
 longer needed. For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{Using Service-Linked Roles}
 in the \emph{IAM User Guide}.
-}
-\details{
+
 To attach a policy to this service-linked role, you must make the
 request using the AWS service that depends on this role.
 }

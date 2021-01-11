@@ -28,8 +28,7 @@ change the number or type of nodes. The default behavior is to use the
 elastic resize method. With an elastic resize, your cluster is available
 for read and write operations more quickly than with the classic resize
 method.
-}
-\details{
+
 Elastic resize operations have the following restrictions:
 \itemize{
 \item You can only resize clusters of the following types:

@@ -17,8 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes attributes of your AWS account. The following are the
 supported account attributes:
-}
-\details{
 \itemize{
 \item \code{supported-platforms}: Indicates whether your account can launch
 instances into EC2-Classic and EC2-VPC, or only into EC2-VPC.

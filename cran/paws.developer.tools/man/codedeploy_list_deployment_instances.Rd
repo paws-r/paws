@@ -36,8 +36,7 @@ The newer \code{BatchGetDeploymentTargets} should be used instead because it
 works with all compute types. \code{ListDeploymentInstances} throws an
 exception if it is used with a compute platform other than
 EC2/On-premises or AWS Lambda.
-}
-\details{
+
 Lists the instance for a deployment associated with the IAM user or AWS
 account.
 }

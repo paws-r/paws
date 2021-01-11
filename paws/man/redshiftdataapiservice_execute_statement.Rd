@@ -34,8 +34,6 @@ Runs an SQL statement, which can be data manipulation language (DML) or
 data definition language (DDL). This statement must be a single SQL
 statement. Depending on the authorization method, use one of the
 following combinations of request parameters:
-}
-\details{
 \itemize{
 \item AWS Secrets Manager - specify the Amazon Resource Name (ARN) of the
 secret and the cluster identifier that matches the cluster in the

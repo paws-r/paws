@@ -19,8 +19,7 @@ Default value: \code{us-east-1}.}
 Creates an Amazon Chime Voice Connector under the administrator's AWS
 account. You can choose to create an Amazon Chime Voice Connector in a
 specific AWS Region.
-}
-\details{
+
 Enabling CreateVoiceConnectorRequest$RequireEncryption configures your
 Amazon Chime Voice Connector to use TLS transport for SIP signaling and
 Secure RTP (SRTP) for media. Inbound calls use TLS transport, and

@@ -81,8 +81,7 @@ Transfers a domain from another registrar to Amazon Route 53. When the
 transfer is complete, the domain is registered either with Amazon
 Registrar (for .com, .net, and .org domains) or with our registrar
 associate, Gandi (for all other TLDs).
-}
-\details{
+
 For more information about transferring domains, see the following
 topics:
 \itemize{

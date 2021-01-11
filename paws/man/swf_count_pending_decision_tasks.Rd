@@ -17,8 +17,7 @@ Returns the estimated number of decision tasks in the specified task
 list. The count returned is an approximation and isn't guaranteed to be
 exact. If you specify a task list that no decision task was ever
 scheduled in then \code{0} is returned.
-}
-\details{
+
 \strong{Access Control}
 
 You can use IAM policies to control this action's access to Amazon SWF

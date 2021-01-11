@@ -24,8 +24,7 @@ To share a snapshot with AWS support, specify amazon-redshift-support.}
 \description{
 Authorizes the specified AWS customer account to restore the specified
 snapshot.
-}
-\details{
+
 For more information about working with snapshots, go to \href{https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-snapshots.html}{Amazon Redshift Snapshots}
 in the \emph{Amazon Redshift Cluster Management Guide}.
 }

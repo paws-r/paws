@@ -24,8 +24,7 @@ spaces. You can also include any of the following characters: =,.@:/-}
 \description{
 Deactivates the specified MFA device and removes it from association
 with the user name for which it was originally enabled.
-}
-\details{
+
 For more information about creating and working with virtual MFA
 devices, go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable_virtual.html}{Enabling a Virtual Multi-factor Authentication (MFA) Device}
 in the \emph{IAM User Guide}.

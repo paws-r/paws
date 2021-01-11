@@ -92,8 +92,7 @@ data into the \code{OfflineStore} if an \code{OfflineStoreConfig} is provided.}
 \description{
 Create a new \code{FeatureGroup}. A \code{FeatureGroup} is a group of \code{Features}
 defined in the \code{FeatureStore} to describe a \code{Record}.
-}
-\details{
+
 The \code{FeatureGroup} defines the schema and features contained in the
 FeatureGroup. A \code{FeatureGroup} definition is composed of a list of
 \code{Features}, a \code{RecordIdentifierFeatureName}, an \code{EventTimeFeatureName}

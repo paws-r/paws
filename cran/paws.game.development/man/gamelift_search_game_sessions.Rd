@@ -87,8 +87,6 @@ To start at the beginning of the result set, do not specify a value.}
 Retrieves all active game sessions that match a set of search criteria
 and sorts them in a specified order. You can search or sort by the
 following game session attributes:
-}
-\details{
 \itemize{
 \item \strong{gameSessionId} -- A unique identifier for the game session. You
 can use either a \code{GameSessionId} or \code{GameSessionArn} value.

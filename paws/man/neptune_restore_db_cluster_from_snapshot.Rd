@@ -110,8 +110,7 @@ enabled. By default, deletion protection is disabled.}
 }
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot.
-}
-\details{
+
 If a DB snapshot is specified, the target DB cluster is created from the
 source DB snapshot with a default configuration and default security
 group.

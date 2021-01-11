@@ -57,8 +57,7 @@ can create uses a /28 netmask (16 IPv4 addresses), and the largest uses
 a /16 netmask (65,536 IPv4 addresses). For more information about how
 large to make your VPC, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{Your VPC and Subnets}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
-}
-\details{
+
 You can optionally request an IPv6 CIDR block for the VPC. You can
 request an Amazon-provided IPv6 CIDR block from Amazon's pool of IPv6
 addresses, or an IPv6 CIDR block from an IPv6 address pool that you

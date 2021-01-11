@@ -22,8 +22,7 @@ subsequent PollForTask call. After this initial acknowledgement, the
 task runner only needs to report progress every 15 minutes to maintain
 its ownership of the task. You can change this reporting time from 15
 minutes by specifying a \code{reportProgressTimeout} field in your pipeline.
-}
-\details{
+
 If a task runner does not report its status after 5 minutes, AWS Data
 Pipeline assumes that the task runner is unable to process the task and
 reassigns the task in a subsequent response to PollForTask. Task runners

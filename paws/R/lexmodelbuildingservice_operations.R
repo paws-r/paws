@@ -5,6 +5,7 @@ NULL
 
 #' Creates a new version of the bot based on the $LATEST version
 #'
+#' @description
 #' Creates a new version of the bot based on the `$LATEST` version. If the
 #' `$LATEST` version of this resource hasn't changed since you created the
 #' last version, Amazon Lex doesn't create a new version. It returns the
@@ -63,6 +64,7 @@ lexmodelbuildingservice_create_bot_version <- function(name, checksum = NULL) {
 #' Creates a new version of an intent based on the $LATEST version of the
 #' intent
 #'
+#' @description
 #' Creates a new version of an intent based on the `$LATEST` version of the
 #' intent. If the `$LATEST` version of this intent hasn't changed since you
 #' last updated it, Amazon Lex doesn't create a new version. It returns the
@@ -122,6 +124,7 @@ lexmodelbuildingservice_create_intent_version <- function(name, checksum = NULL)
 #' Creates a new version of a slot type based on the $LATEST version of the
 #' specified slot type
 #'
+#' @description
 #' Creates a new version of a slot type based on the `$LATEST` version of
 #' the specified slot type. If the `$LATEST` version of this resource has
 #' not changed since the last version that you created, Amazon Lex doesn't
@@ -180,6 +183,7 @@ lexmodelbuildingservice_create_slot_type_version <- function(name, checksum = NU
 
 #' Deletes all versions of the bot, including the $LATEST version
 #'
+#' @description
 #' Deletes all versions of the bot, including the `$LATEST` version. To
 #' delete a specific version of the bot, use the DeleteBotVersion
 #' operation. The `DeleteBot` operation doesn't immediately remove the bot
@@ -233,6 +237,7 @@ lexmodelbuildingservice_delete_bot <- function(name) {
 
 #' Deletes an alias for the specified bot
 #'
+#' @description
 #' Deletes an alias for the specified bot.
 #' 
 #' You can't delete an alias that is used in the association between a bot
@@ -280,6 +285,7 @@ lexmodelbuildingservice_delete_bot_alias <- function(name, botName) {
 #' Deletes the association between an Amazon Lex bot and a messaging
 #' platform
 #'
+#' @description
 #' Deletes the association between an Amazon Lex bot and a messaging
 #' platform.
 #' 
@@ -326,6 +332,7 @@ lexmodelbuildingservice_delete_bot_channel_association <- function(name, botName
 
 #' Deletes a specific version of a bot
 #'
+#' @description
 #' Deletes a specific version of a bot. To delete all versions of a bot,
 #' use the DeleteBot operation.
 #' 
@@ -370,6 +377,7 @@ lexmodelbuildingservice_delete_bot_version <- function(name, version) {
 
 #' Deletes all versions of the intent, including the $LATEST version
 #'
+#' @description
 #' Deletes all versions of the intent, including the `$LATEST` version. To
 #' delete a specific version of the intent, use the DeleteIntentVersion
 #' operation.
@@ -421,6 +429,7 @@ lexmodelbuildingservice_delete_intent <- function(name) {
 
 #' Deletes a specific version of an intent
 #'
+#' @description
 #' Deletes a specific version of an intent. To delete all versions of a
 #' intent, use the DeleteIntent operation.
 #' 
@@ -465,6 +474,7 @@ lexmodelbuildingservice_delete_intent_version <- function(name, version) {
 
 #' Deletes all versions of the slot type, including the $LATEST version
 #'
+#' @description
 #' Deletes all versions of the slot type, including the `$LATEST` version.
 #' To delete a specific version of the slot type, use the
 #' DeleteSlotTypeVersion operation.
@@ -516,6 +526,7 @@ lexmodelbuildingservice_delete_slot_type <- function(name) {
 
 #' Deletes a specific version of a slot type
 #'
+#' @description
 #' Deletes a specific version of a slot type. To delete all versions of a
 #' slot type, use the DeleteSlotType operation.
 #' 
@@ -560,6 +571,7 @@ lexmodelbuildingservice_delete_slot_type_version <- function(name, version) {
 
 #' Deletes stored utterances
 #'
+#' @description
 #' Deletes stored utterances.
 #' 
 #' Amazon Lex stores the utterances that users send to your bot. Utterances
@@ -617,6 +629,7 @@ lexmodelbuildingservice_delete_utterances <- function(botName, userId) {
 
 #' Returns metadata information for a specific bot
 #'
+#' @description
 #' Returns metadata information for a specific bot. You must provide the
 #' bot name and the bot version or alias.
 #' 
@@ -667,6 +680,7 @@ lexmodelbuildingservice_get_bot <- function(name, versionOrAlias) {
 
 #' Returns information about an Amazon Lex bot alias
 #'
+#' @description
 #' Returns information about an Amazon Lex bot alias. For more information
 #' about aliases, see versioning-aliases.
 #' 
@@ -708,6 +722,7 @@ lexmodelbuildingservice_get_bot_alias <- function(name, botName) {
 
 #' Returns a list of aliases for a specified Amazon Lex bot
 #'
+#' @description
 #' Returns a list of aliases for a specified Amazon Lex bot.
 #' 
 #' This operation requires permissions for the `lex:GetBotAliases` action.
@@ -760,6 +775,7 @@ lexmodelbuildingservice_get_bot_aliases <- function(botName, nextToken = NULL, m
 #' Returns information about the association between an Amazon Lex bot and
 #' a messaging platform
 #'
+#' @description
 #' Returns information about the association between an Amazon Lex bot and
 #' a messaging platform.
 #' 
@@ -807,6 +823,7 @@ lexmodelbuildingservice_get_bot_channel_association <- function(name, botName, b
 
 #' Returns a list of all of the channels associated with the specified bot
 #'
+#' @description
 #' Returns a list of all of the channels associated with the specified bot.
 #' 
 #' The `GetBotChannelAssociations` operation requires permissions for the
@@ -863,6 +880,7 @@ lexmodelbuildingservice_get_bot_channel_associations <- function(botName, botAli
 
 #' Gets information about all of the versions of a bot
 #'
+#' @description
 #' Gets information about all of the versions of a bot.
 #' 
 #' The `GetBotVersions` operation returns a `BotMetadata` object for each
@@ -920,6 +938,7 @@ lexmodelbuildingservice_get_bot_versions <- function(name, nextToken = NULL, max
 #' field, the response includes information for the $LATEST version of all
 #' bots whose name contains the specified string
 #'
+#' @description
 #' Returns bot information as follows:
 #' 
 #' -   If you provide the `nameContains` field, the response includes
@@ -984,6 +1003,7 @@ lexmodelbuildingservice_get_bots <- function(nextToken = NULL, maxResults = NULL
 
 #' Returns information about a built-in intent
 #'
+#' @description
 #' Returns information about a built-in intent.
 #' 
 #' This operation requires permission for the `lex:GetBuiltinIntent`
@@ -1026,6 +1046,7 @@ lexmodelbuildingservice_get_builtin_intent <- function(signature) {
 
 #' Gets a list of built-in intents that meet the specified criteria
 #'
+#' @description
 #' Gets a list of built-in intents that meet the specified criteria.
 #' 
 #' This operation requires permission for the `lex:GetBuiltinIntents`
@@ -1081,6 +1102,7 @@ lexmodelbuildingservice_get_builtin_intents <- function(locale = NULL, signature
 
 #' Gets a list of built-in slot types that meet the specified criteria
 #'
+#' @description
 #' Gets a list of built-in slot types that meet the specified criteria.
 #' 
 #' For a list of built-in slot types, see [Slot Type
@@ -1137,6 +1159,7 @@ lexmodelbuildingservice_get_builtin_slot_types <- function(locale = NULL, signat
 
 #' Exports the contents of a Amazon Lex resource in a specified format
 #'
+#' @description
 #' Exports the contents of a Amazon Lex resource in a specified format.
 #'
 #' @usage
@@ -1181,6 +1204,7 @@ lexmodelbuildingservice_get_export <- function(name, version, resourceType, expo
 #' Gets information about an import job started with the StartImport
 #' operation
 #'
+#' @description
 #' Gets information about an import job started with the `StartImport`
 #' operation.
 #'
@@ -1218,6 +1242,7 @@ lexmodelbuildingservice_get_import <- function(importId) {
 
 #' Returns information about an intent
 #'
+#' @description
 #' Returns information about an intent. In addition to the intent name, you
 #' must specify the intent version.
 #' 
@@ -1269,6 +1294,7 @@ lexmodelbuildingservice_get_intent <- function(name, version) {
 
 #' Gets information about all of the versions of an intent
 #'
+#' @description
 #' Gets information about all of the versions of an intent.
 #' 
 #' The `GetIntentVersions` operation returns an `IntentMetadata` object for
@@ -1327,6 +1353,7 @@ lexmodelbuildingservice_get_intent_versions <- function(name, nextToken = NULL, 
 #' field, returns the $LATEST version of all intents that contain the
 #' specified string
 #'
+#' @description
 #' Returns intent information as follows:
 #' 
 #' -   If you specify the `nameContains` field, returns the `$LATEST`
@@ -1391,6 +1418,7 @@ lexmodelbuildingservice_get_intents <- function(nextToken = NULL, maxResults = N
 
 #' Returns information about a specific version of a slot type
 #'
+#' @description
 #' Returns information about a specific version of a slot type. In addition
 #' to specifying the slot type name, you must specify the slot type
 #' version.
@@ -1442,6 +1470,7 @@ lexmodelbuildingservice_get_slot_type <- function(name, version) {
 
 #' Gets information about all versions of a slot type
 #'
+#' @description
 #' Gets information about all versions of a slot type.
 #' 
 #' The `GetSlotTypeVersions` operation returns a `SlotTypeMetadata` object
@@ -1501,6 +1530,7 @@ lexmodelbuildingservice_get_slot_type_versions <- function(name, nextToken = NUL
 #' nameContains field, returns the $LATEST version of all slot types that
 #' contain the specified string
 #'
+#' @description
 #' Returns slot type information as follows:
 #' 
 #' -   If you specify the `nameContains` field, returns the `$LATEST`
@@ -1567,6 +1597,7 @@ lexmodelbuildingservice_get_slot_types <- function(nextToken = NULL, maxResults 
 #' Use the GetUtterancesView operation to get information about the
 #' utterances that your users have made to your bot
 #'
+#' @description
 #' Use the `GetUtterancesView` operation to get information about the
 #' utterances that your users have made to your bot. You can use this list
 #' to tune the utterances that your bot responds to.
@@ -1638,6 +1669,7 @@ lexmodelbuildingservice_get_utterances_view <- function(botName, botVersions, st
 
 #' Gets a list of tags associated with the specified resource
 #'
+#' @description
 #' Gets a list of tags associated with the specified resource. Only bots,
 #' bot aliases, and bot channels can have tags associated with them.
 #'
@@ -1676,6 +1708,7 @@ lexmodelbuildingservice_list_tags_for_resource <- function(resourceArn) {
 
 #' Creates an Amazon Lex conversational bot or replaces an existing bot
 #'
+#' @description
 #' Creates an Amazon Lex conversational bot or replaces an existing bot.
 #' When you create or update a bot you are only required to specify a name,
 #' a locale, and whether the bot is directed toward children under age 13.
@@ -2017,6 +2050,7 @@ lexmodelbuildingservice_put_bot <- function(name, description = NULL, intents = 
 #' Creates an alias for the specified version of the bot or replaces an
 #' alias for the specified bot
 #'
+#' @description
 #' Creates an alias for the specified version of the bot or replaces an
 #' alias for the specified bot. To change the version of the bot that the
 #' alias points to, replace the alias. For more information about aliases,
@@ -2097,6 +2131,7 @@ lexmodelbuildingservice_put_bot_alias <- function(name, description = NULL, botV
 
 #' Creates an intent or replaces an existing intent
 #'
+#' @description
 #' Creates an intent or replaces an existing intent.
 #' 
 #' To define the interaction between the user and your bot, you use one or
@@ -2549,6 +2584,7 @@ lexmodelbuildingservice_put_intent <- function(name, description = NULL, slots =
 
 #' Creates a custom slot type or replaces an existing custom slot type
 #'
+#' @description
 #' Creates a custom slot type or replaces an existing custom slot type.
 #' 
 #' To create a custom slot type, specify a name for the slot type and a set
@@ -2696,6 +2732,7 @@ lexmodelbuildingservice_put_slot_type <- function(name, description = NULL, enum
 
 #' Starts a job to import a resource to Amazon Lex
 #'
+#' @description
 #' Starts a job to import a resource to Amazon Lex.
 #'
 #' @usage
@@ -2762,6 +2799,7 @@ lexmodelbuildingservice_start_import <- function(payload, resourceType, mergeStr
 
 #' Adds the specified tags to the specified resource
 #'
+#' @description
 #' Adds the specified tags to the specified resource. If a tag key already
 #' exists, the existing value is replaced with the new value.
 #'
@@ -2808,6 +2846,7 @@ lexmodelbuildingservice_tag_resource <- function(resourceArn, tags) {
 
 #' Removes tags from a bot, bot alias or bot channel
 #'
+#' @description
 #' Removes tags from a bot, bot alias or bot channel.
 #'
 #' @usage

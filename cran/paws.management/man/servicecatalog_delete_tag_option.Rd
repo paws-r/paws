@@ -11,8 +11,7 @@ servicecatalog_delete_tag_option(Id)
 }
 \description{
 Deletes the specified TagOption.
-}
-\details{
+
 You cannot delete a TagOption if it is associated with a product or
 portfolio.
 }

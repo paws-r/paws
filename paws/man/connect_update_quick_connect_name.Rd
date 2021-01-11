@@ -20,8 +20,7 @@ connect_update_quick_connect_name(InstanceId, QuickConnectId, Name,
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Updates the name and description of a quick connect. The request accepts
 the following data in JSON format. At least Name or Description must be
 provided.

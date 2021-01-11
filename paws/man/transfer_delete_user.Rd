@@ -17,8 +17,7 @@ server.}
 \description{
 Deletes the user belonging to a file transfer protocol-enabled server
 you specify.
-}
-\details{
+
 No response returns from this operation.
 
 When you delete a user from a server, the user's information is lost.

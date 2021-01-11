@@ -24,8 +24,7 @@ operations).}
 Returns a list of \code{connector-profile} details matching the provided
 \code{connector-profile} names and \code{connector-types}. Both input lists are
 optional, and you can use them to filter the result.
-}
-\details{
+
 If no names or \code{connector-types} are provided, returns all connector
 profiles in a paginated form. If there is no match, this operation
 returns an empty list.

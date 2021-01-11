@@ -83,8 +83,7 @@ Requests an ACM certificate for use with other AWS services. To request
 an ACM certificate, you must specify a fully qualified domain name
 (FQDN) in the \code{DomainName} parameter. You can also specify additional
 FQDNs in the \code{SubjectAlternativeNames} parameter.
-}
-\details{
+
 If you are requesting a private certificate, domain validation is not
 required. If you are requesting a public certificate, each domain name
 that you specify must be validated to verify that you own or control the

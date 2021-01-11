@@ -81,8 +81,7 @@ This documentation is for version 1 of the Amazon Kinesis Data Analytics
 API, which only supports SQL applications. Version 2 of the API supports
 SQL and Java applications. For more information about version 2, see
 Amazon Kinesis Data Analytics API V2 Documentation.
-}
-\details{
+
 Creates an Amazon Kinesis Analytics application. You can configure each
 application with one streaming source as input, application code to
 process the input, and up to three destinations where you want Amazon

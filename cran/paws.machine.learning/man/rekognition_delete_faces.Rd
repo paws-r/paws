@@ -14,8 +14,7 @@ rekognition_delete_faces(CollectionId, FaceIds)
 \description{
 Deletes faces from a collection. You specify a collection ID and an
 array of face IDs to remove from the collection.
-}
-\details{
+
 This operation requires permissions to perform the
 \code{rekognition:DeleteFaces} action.
 }

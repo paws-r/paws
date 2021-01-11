@@ -5,6 +5,7 @@ NULL
 
 #' Sets the AWS Firewall Manager administrator account
 #'
+#' @description
 #' Sets the AWS Firewall Manager administrator account. AWS Firewall
 #' Manager must be associated with the master account of your AWS
 #' organization or associated with a member account that has the
@@ -54,6 +55,7 @@ fms_associate_admin_account <- function(AdminAccount) {
 
 #' Permanently deletes an AWS Firewall Manager applications list
 #'
+#' @description
 #' Permanently deletes an AWS Firewall Manager applications list.
 #'
 #' @usage
@@ -93,6 +95,7 @@ fms_delete_apps_list <- function(ListId) {
 #' Amazon Simple Notification Service (SNS) topic that is used to record
 #' AWS Firewall Manager SNS logs
 #'
+#' @description
 #' Deletes an AWS Firewall Manager association with the IAM role and the
 #' Amazon Simple Notification Service (SNS) topic that is used to record
 #' AWS Firewall Manager SNS logs.
@@ -127,6 +130,7 @@ fms_delete_notification_channel <- function() {
 
 #' Permanently deletes an AWS Firewall Manager policy
 #'
+#' @description
 #' Permanently deletes an AWS Firewall Manager policy.
 #'
 #' @usage
@@ -193,6 +197,7 @@ fms_delete_policy <- function(PolicyId, DeleteAllPolicyResources = NULL) {
 
 #' Permanently deletes an AWS Firewall Manager protocols list
 #'
+#' @description
 #' Permanently deletes an AWS Firewall Manager protocols list.
 #'
 #' @usage
@@ -232,6 +237,7 @@ fms_delete_protocols_list <- function(ListId) {
 #' Disassociates the account that has been set as the AWS Firewall Manager
 #' administrator account
 #'
+#' @description
 #' Disassociates the account that has been set as the AWS Firewall Manager
 #' administrator account. To set a different account as the administrator
 #' account, you must submit an `AssociateAdminAccount` request.
@@ -267,6 +273,7 @@ fms_disassociate_admin_account <- function() {
 #' Returns the AWS Organizations master account that is associated with AWS
 #' Firewall Manager as the AWS Firewall Manager administrator
 #'
+#' @description
 #' Returns the AWS Organizations master account that is associated with AWS
 #' Firewall Manager as the AWS Firewall Manager administrator.
 #'
@@ -301,6 +308,7 @@ fms_get_admin_account <- function() {
 #' Returns information about the specified AWS Firewall Manager
 #' applications list
 #'
+#' @description
 #' Returns information about the specified AWS Firewall Manager
 #' applications list.
 #'
@@ -343,6 +351,7 @@ fms_get_apps_list <- function(ListId, DefaultList = NULL) {
 #' Returns detailed compliance information about the specified member
 #' account
 #'
+#' @description
 #' Returns detailed compliance information about the specified member
 #' account. Details include resources that are in and out of compliance
 #' with the specified policy. Resources are considered noncompliant for AWS
@@ -396,6 +405,7 @@ fms_get_compliance_detail <- function(PolicyId, MemberAccount) {
 #' Information about the Amazon Simple Notification Service (SNS) topic
 #' that is used to record AWS Firewall Manager SNS logs
 #'
+#' @description
 #' Information about the Amazon Simple Notification Service (SNS) topic
 #' that is used to record AWS Firewall Manager SNS logs.
 #'
@@ -429,6 +439,7 @@ fms_get_notification_channel <- function() {
 
 #' Returns information about the specified AWS Firewall Manager policy
 #'
+#' @description
 #' Returns information about the specified AWS Firewall Manager policy.
 #'
 #' @usage
@@ -466,6 +477,7 @@ fms_get_policy <- function(PolicyId) {
 #' If you created a Shield Advanced policy, returns policy-level attack
 #' summary information in the event of a potential DDoS attack
 #'
+#' @description
 #' If you created a Shield Advanced policy, returns policy-level attack
 #' summary information in the event of a potential DDoS attack. Other
 #' policy types are currently unsupported.
@@ -535,6 +547,7 @@ fms_get_protection_status <- function(PolicyId, MemberAccountId = NULL, StartTim
 #' Returns information about the specified AWS Firewall Manager protocols
 #' list
 #'
+#' @description
 #' Returns information about the specified AWS Firewall Manager protocols
 #' list.
 #'
@@ -577,6 +590,7 @@ fms_get_protocols_list <- function(ListId, DefaultList = NULL) {
 #' Retrieves violations for a resource based on the specified AWS Firewall
 #' Manager policy and AWS account
 #'
+#' @description
 #' Retrieves violations for a resource based on the specified AWS Firewall
 #' Manager policy and AWS account.
 #'
@@ -627,6 +641,7 @@ fms_get_violation_details <- function(PolicyId, MemberAccount, ResourceId, Resou
 
 #' Returns an array of AppsListDataSummary objects
 #'
+#' @description
 #' Returns an array of `AppsListDataSummary` objects.
 #'
 #' @usage
@@ -678,6 +693,7 @@ fms_list_apps_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxResult
 
 #' Returns an array of PolicyComplianceStatus objects
 #'
+#' @description
 #' Returns an array of `PolicyComplianceStatus` objects. Use
 #' `PolicyComplianceStatus` to get a summary of which member accounts are
 #' protected by the specified policy.
@@ -732,6 +748,7 @@ fms_list_compliance_status <- function(PolicyId, NextToken = NULL, MaxResults = 
 #' Returns a MemberAccounts object that lists the member accounts in the
 #' administrator's AWS organization
 #'
+#' @description
 #' Returns a `MemberAccounts` object that lists the member accounts in the
 #' administrator's AWS organization.
 #' 
@@ -783,6 +800,7 @@ fms_list_member_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Returns an array of PolicySummary objects
 #'
+#' @description
 #' Returns an array of `PolicySummary` objects.
 #'
 #' @usage
@@ -831,6 +849,7 @@ fms_list_policies <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Returns an array of ProtocolsListDataSummary objects
 #'
+#' @description
 #' Returns an array of `ProtocolsListDataSummary` objects.
 #'
 #' @usage
@@ -882,6 +901,7 @@ fms_list_protocols_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxR
 
 #' Retrieves the list of tags for the specified AWS resource
 #'
+#' @description
 #' Retrieves the list of tags for the specified AWS resource.
 #'
 #' @usage
@@ -920,6 +940,7 @@ fms_list_tags_for_resource <- function(ResourceArn) {
 
 #' Creates an AWS Firewall Manager applications list
 #'
+#' @description
 #' Creates an AWS Firewall Manager applications list.
 #'
 #' @usage
@@ -990,6 +1011,7 @@ fms_put_apps_list <- function(AppsList, TagList = NULL) {
 #' Designates the IAM role and Amazon Simple Notification Service (SNS)
 #' topic that AWS Firewall Manager uses to record SNS logs
 #'
+#' @description
 #' Designates the IAM role and Amazon Simple Notification Service (SNS)
 #' topic that AWS Firewall Manager uses to record SNS logs.
 #' 
@@ -1038,6 +1060,7 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 
 #' Creates an AWS Firewall Manager policy
 #'
+#' @description
 #' Creates an AWS Firewall Manager policy.
 #' 
 #' Firewall Manager provides the following types of policies:
@@ -1136,6 +1159,7 @@ fms_put_policy <- function(Policy, TagList = NULL) {
 
 #' Creates an AWS Firewall Manager protocols list
 #'
+#' @description
 #' Creates an AWS Firewall Manager protocols list.
 #'
 #' @usage
@@ -1197,6 +1221,7 @@ fms_put_protocols_list <- function(ProtocolsList, TagList = NULL) {
 
 #' Adds one or more tags to an AWS resource
 #'
+#' @description
 #' Adds one or more tags to an AWS resource.
 #'
 #' @usage
@@ -1242,6 +1267,7 @@ fms_tag_resource <- function(ResourceArn, TagList) {
 
 #' Removes one or more tags from an AWS resource
 #'
+#' @description
 #' Removes one or more tags from an AWS resource.
 #'
 #' @usage

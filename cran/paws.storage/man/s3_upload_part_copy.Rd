@@ -134,8 +134,7 @@ Uploads a part by copying data from an existing object as data source.
 You specify the data source by adding the request header
 \code{x-amz-copy-source} in your request and a byte range by adding the
 request header \code{x-amz-copy-source-range} in your request.
-}
-\details{
+
 The minimum allowable part size for a multipart upload is 5 MB. For more
 information about multipart upload limits, go to \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/qfacts.html}{Quick Facts} in
 the \emph{Amazon Simple Storage Service Developer Guide}.

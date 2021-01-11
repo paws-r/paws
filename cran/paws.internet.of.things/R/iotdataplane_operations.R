@@ -5,6 +5,7 @@ NULL
 
 #' Deletes the shadow for the specified thing
 #'
+#' @description
 #' Deletes the shadow for the specified thing.
 #' 
 #' For more information, see
@@ -47,6 +48,7 @@ iotdataplane_delete_thing_shadow <- function(thingName, shadowName = NULL) {
 
 #' Gets the shadow for the specified thing
 #'
+#' @description
 #' Gets the shadow for the specified thing.
 #' 
 #' For more information, see
@@ -89,6 +91,7 @@ iotdataplane_get_thing_shadow <- function(thingName, shadowName = NULL) {
 
 #' Lists the shadows for the specified thing
 #'
+#' @description
 #' Lists the shadows for the specified thing.
 #'
 #' @usage
@@ -130,6 +133,7 @@ iotdataplane_list_named_shadows_for_thing <- function(thingName, nextToken = NUL
 
 #' Publishes state information
 #'
+#' @description
 #' Publishes state information.
 #' 
 #' For more information, see [HTTP
@@ -174,6 +178,7 @@ iotdataplane_publish <- function(topic, qos = NULL, payload = NULL) {
 
 #' Updates the shadow for the specified thing
 #'
+#' @description
 #' Updates the shadow for the specified thing.
 #' 
 #' For more information, see

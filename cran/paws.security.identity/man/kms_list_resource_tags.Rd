@@ -36,8 +36,7 @@ Do not attempt to construct this value. Use only the value of
 }
 \description{
 Returns all tags on the specified customer master key (CMK).
-}
-\details{
+
 For general information about tags, including the format and syntax, see
 \href{https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html}{Tagging AWS resources}
 in the \emph{Amazon Web Services General Reference}. For information about

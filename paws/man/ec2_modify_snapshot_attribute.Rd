@@ -33,8 +33,7 @@ volume permissions, but you cannot do both in a single operation. If you
 need to both add and remove account IDs for a snapshot, you must use
 multiple operations. You can make up to 500 modifications to a snapshot
 in a single operation.
-}
-\details{
+
 Encrypted snapshots and snapshots with AWS Marketplace product codes
 cannot be made public. Snapshots encrypted with your default CMK cannot
 be shared with other accounts.

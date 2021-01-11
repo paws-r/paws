@@ -6,6 +6,7 @@ NULL
 #' Describes the locations in which a given accelerator type or set of
 #' types is present in a given region
 #'
+#' @description
 #' Describes the locations in which a given accelerator type or set of
 #' types is present in a given region.
 #'
@@ -54,6 +55,7 @@ elasticinference_describe_accelerator_offerings <- function(locationType, accele
 #' Describes the accelerator types available in a given region, as well as
 #' their characteristics, such as memory and throughput
 #'
+#' @description
 #' Describes the accelerator types available in a given region, as well as
 #' their characteristics, such as memory and throughput.
 #'
@@ -88,6 +90,7 @@ elasticinference_describe_accelerator_types <- function() {
 #' Describes information over a provided set of accelerators belonging to
 #' an account
 #'
+#' @description
 #' Describes information over a provided set of accelerators belonging to
 #' an account.
 #'
@@ -150,6 +153,7 @@ elasticinference_describe_accelerators <- function(acceleratorIds = NULL, filter
 
 #' Returns all tags of an Elastic Inference Accelerator
 #'
+#' @description
 #' Returns all tags of an Elastic Inference Accelerator.
 #'
 #' @usage
@@ -186,6 +190,7 @@ elasticinference_list_tags_for_resource <- function(resourceArn) {
 
 #' Adds the specified tags to an Elastic Inference Accelerator
 #'
+#' @description
 #' Adds the specified tags to an Elastic Inference Accelerator.
 #'
 #' @usage
@@ -226,6 +231,7 @@ elasticinference_tag_resource <- function(resourceArn, tags) {
 
 #' Removes the specified tags from an Elastic Inference Accelerator
 #'
+#' @description
 #' Removes the specified tags from an Elastic Inference Accelerator.
 #'
 #' @usage

@@ -45,8 +45,7 @@ drop out. By backfilling with the same matchmaker used to create the
 original match, you ensure that new players meet the match criteria and
 maintain a consistent experience throughout the game session. You can
 backfill a match anytime after a game session has been created.
-}
-\details{
+
 To request a match backfill, specify a unique ticket ID, the existing
 game session's ARN, a matchmaking configuration, and a set of data that
 describes all current players in the game session. If successful, a

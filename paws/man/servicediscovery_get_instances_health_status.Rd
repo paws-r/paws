@@ -37,8 +37,7 @@ response in the next request.}
 \description{
 Gets the current health status (\code{Healthy}, \code{Unhealthy}, or \code{Unknown}) of
 one or more instances that are associated with a specified service.
-}
-\details{
+
 There is a brief delay between when you register an instance and when
 the health status for the instance is available.
 }

@@ -25,8 +25,7 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.}
 \description{
 Deletes tags from a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed CMK}.
 To delete a tag, specify the tag key and the CMK.
-}
-\details{
+
 When it succeeds, the \code{UntagResource} operation doesn't return any
 output. Also, if the specified tag key isn't found on the CMK, it
 doesn't throw an exception or return a response. To confirm that the

@@ -17,8 +17,7 @@ different account, the request will fail with an HTTP
 \description{
 Returns the logging status of a bucket and the permissions users have to
 view and modify that status. To use GET, you must be the bucket owner.
-}
-\details{
+
 The following operations are related to \code{GetBucketLogging}:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}

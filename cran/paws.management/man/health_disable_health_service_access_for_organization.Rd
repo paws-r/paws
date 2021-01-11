@@ -13,8 +13,7 @@ operation, you must sign in as an AWS Identity and Access Management
 recommended) in the organization's master AWS account. For more
 information, see \href{https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html}{Aggregating AWS Health events}
 in the \emph{AWS Health User Guide}.
-}
-\details{
+
 This operation doesn't remove the service-linked role (SLR) from the AWS
 master account in your organization. You must use the IAM console, API,
 or AWS Command Line Interface (AWS CLI) to remove the SLR. For more

@@ -20,8 +20,7 @@ simpledb_get_attributes(DomainName, ItemName, AttributeNames,
 Returns all of the attributes associated with the specified item.
 Optionally, the attributes returned can be limited to one or more
 attributes by specifying an attribute name parameter.
-}
-\details{
+
 If the item does not exist on the replica that was accessed for this
 operation, an empty set is returned. The system does not return an error
 as it cannot guarantee the item does not exist on other replicas.

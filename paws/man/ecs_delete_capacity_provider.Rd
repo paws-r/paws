@@ -12,8 +12,7 @@ provider to delete.}
 }
 \description{
 Deletes the specified capacity provider.
-}
-\details{
+
 The \code{FARGATE} and \code{FARGATE_SPOT} capacity providers are reserved and
 cannot be deleted. You can disassociate them from a cluster using either
 the PutClusterCapacityProviders API or by deleting the cluster.

@@ -42,8 +42,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 Restores an archived copy of an object back into Amazon S3
-}
-\details{
+
 This action is not supported by Amazon S3 on Outposts.
 
 This action performs the following types of requests:

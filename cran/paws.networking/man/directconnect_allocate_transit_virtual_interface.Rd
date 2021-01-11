@@ -20,8 +20,7 @@ provisioned.}
 Provisions a transit virtual interface to be owned by the specified AWS
 account. Use this type of interface to connect a transit gateway to your
 Direct Connect gateway.
-}
-\details{
+
 The owner of a connection provisions a transit virtual interface to be
 owned by the specified AWS account.
 

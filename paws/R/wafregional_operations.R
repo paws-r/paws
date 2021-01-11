@@ -5,6 +5,7 @@ NULL
 
 #' This is AWS WAF Classic Regional documentation
 #'
+#' @description
 #' This is **AWS WAF Classic Regional** documentation. For more
 #' information, see [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -64,6 +65,7 @@ wafregional_associate_web_acl <- function(WebACLId, ResourceArn) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -137,6 +139,7 @@ wafregional_create_byte_match_set <- function(Name, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -209,6 +212,7 @@ wafregional_create_geo_match_set <- function(Name, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -291,6 +295,7 @@ wafregional_create_ip_set <- function(Name, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -435,6 +440,7 @@ wafregional_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLi
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -510,6 +516,7 @@ wafregional_create_regex_match_set <- function(Name, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -581,6 +588,7 @@ wafregional_create_regex_pattern_set <- function(Name, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -691,6 +699,7 @@ wafregional_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) 
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -770,6 +779,7 @@ wafregional_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = 
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -854,6 +864,7 @@ wafregional_create_size_constraint_set <- function(Name, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -937,6 +948,7 @@ wafregional_create_sql_injection_match_set <- function(Name, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -1055,6 +1067,7 @@ wafregional_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeTo
 #' Creates an AWS CloudFormation WAFV2 template for the specified web ACL
 #' in the specified Amazon S3 bucket
 #'
+#' @description
 #' Creates an AWS CloudFormation WAFV2 template for the specified web ACL
 #' in the specified Amazon S3 bucket. Then, in CloudFormation, you create a
 #' stack from the template, to create the web ACL and its resources in AWS
@@ -1124,6 +1137,7 @@ wafregional_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, I
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -1205,6 +1219,7 @@ wafregional_create_xss_match_set <- function(Name, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -1281,6 +1296,7 @@ wafregional_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -1347,6 +1363,7 @@ wafregional_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -1421,6 +1438,7 @@ wafregional_delete_ip_set <- function(IPSetId, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -1469,6 +1487,7 @@ wafregional_delete_logging_configuration <- function(ResourceArn) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -1521,6 +1540,7 @@ wafregional_delete_permission_policy <- function(ResourceArn) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -1586,6 +1606,7 @@ wafregional_delete_rate_based_rule <- function(RuleId, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -1652,6 +1673,7 @@ wafregional_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -1705,6 +1727,7 @@ wafregional_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken)
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -1779,6 +1802,7 @@ wafregional_delete_rule <- function(RuleId, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -1844,6 +1868,7 @@ wafregional_delete_rule_group <- function(RuleGroupId, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -1921,6 +1946,7 @@ wafregional_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -1999,6 +2025,7 @@ wafregional_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -2070,6 +2097,7 @@ wafregional_delete_web_acl <- function(WebACLId, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -2147,6 +2175,7 @@ wafregional_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
 
 #' This is AWS WAF Classic Regional documentation
 #'
+#' @description
 #' This is **AWS WAF Classic Regional** documentation. For more
 #' information, see [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -2205,6 +2234,7 @@ wafregional_disassociate_web_acl <- function(ResourceArn) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -2263,6 +2293,7 @@ wafregional_get_byte_match_set <- function(ByteMatchSetId) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -2327,6 +2358,7 @@ wafregional_get_change_token <- function() {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -2394,6 +2426,7 @@ wafregional_get_change_token_status <- function(ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -2443,6 +2476,7 @@ wafregional_get_geo_match_set <- function(GeoMatchSetId) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -2500,6 +2534,7 @@ wafregional_get_ip_set <- function(IPSetId) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -2548,6 +2583,7 @@ wafregional_get_logging_configuration <- function(ResourceArn) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -2596,6 +2632,7 @@ wafregional_get_permission_policy <- function(ResourceArn) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -2645,6 +2682,7 @@ wafregional_get_rate_based_rule <- function(RuleId) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -2701,6 +2739,7 @@ wafregional_get_rate_based_rule_managed_keys <- function(RuleId, NextMarker = NU
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -2750,6 +2789,7 @@ wafregional_get_regex_match_set <- function(RegexMatchSetId) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -2799,6 +2839,7 @@ wafregional_get_regex_pattern_set <- function(RegexPatternSetId) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -2857,6 +2898,7 @@ wafregional_get_rule <- function(RuleId) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -2908,6 +2950,7 @@ wafregional_get_rule_group <- function(RuleGroupId) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3013,6 +3056,7 @@ wafregional_get_sampled_requests <- function(WebAclId, RuleId, TimeWindow, MaxIt
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3071,6 +3115,7 @@ wafregional_get_size_constraint_set <- function(SizeConstraintSetId) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3130,6 +3175,7 @@ wafregional_get_sql_injection_match_set <- function(SqlInjectionMatchSetId) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3187,6 +3233,7 @@ wafregional_get_web_acl <- function(WebACLId) {
 
 #' This is AWS WAF Classic Regional documentation
 #'
+#' @description
 #' This is **AWS WAF Classic Regional** documentation. For more
 #' information, see [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3244,6 +3291,7 @@ wafregional_get_web_acl_for_resource <- function(ResourceArn) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3302,6 +3350,7 @@ wafregional_get_xss_match_set <- function(XssMatchSetId) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3363,6 +3412,7 @@ wafregional_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, N
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3420,6 +3470,7 @@ wafregional_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3477,6 +3528,7 @@ wafregional_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3540,6 +3592,7 @@ wafregional_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3599,6 +3652,7 @@ wafregional_list_logging_configurations <- function(NextMarker = NULL, Limit = N
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3656,6 +3710,7 @@ wafregional_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3713,6 +3768,7 @@ wafregional_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3772,6 +3828,7 @@ wafregional_list_regex_pattern_sets <- function(NextMarker = NULL, Limit = NULL)
 
 #' This is AWS WAF Classic Regional documentation
 #'
+#' @description
 #' This is **AWS WAF Classic Regional** documentation. For more
 #' information, see [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3823,6 +3880,7 @@ wafregional_list_resources_for_web_acl <- function(WebACLId, ResourceType = NULL
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3880,6 +3938,7 @@ wafregional_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -3944,6 +4003,7 @@ wafregional_list_rules <- function(NextMarker = NULL, Limit = NULL) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -4012,6 +4072,7 @@ wafregional_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NUL
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -4079,6 +4140,7 @@ wafregional_list_sql_injection_match_sets <- function(NextMarker = NULL, Limit =
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -4137,6 +4199,7 @@ wafregional_list_subscribed_rule_groups <- function(NextMarker = NULL, Limit = N
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -4198,6 +4261,7 @@ wafregional_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, 
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -4263,6 +4327,7 @@ wafregional_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -4328,6 +4393,7 @@ wafregional_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -4413,6 +4479,7 @@ wafregional_put_logging_configuration <- function(LoggingConfiguration) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -4493,6 +4560,7 @@ wafregional_put_permission_policy <- function(ResourceArn, Policy) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -4556,6 +4624,7 @@ wafregional_tag_resource <- function(ResourceARN, Tags) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -4605,6 +4674,7 @@ wafregional_untag_resource <- function(ResourceARN, TagKeys) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -4744,6 +4814,7 @@ wafregional_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updat
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -4844,6 +4915,7 @@ wafregional_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -4985,6 +5057,7 @@ wafregional_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -5094,6 +5167,7 @@ wafregional_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, Rat
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -5199,6 +5273,7 @@ wafregional_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeT
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -5292,6 +5367,7 @@ wafregional_update_regex_pattern_set <- function(RegexPatternSetId, Updates, Cha
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -5417,6 +5493,7 @@ wafregional_update_rule <- function(RuleId, ChangeToken, Updates) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -5523,6 +5600,7 @@ wafregional_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -5670,6 +5748,7 @@ wafregional_update_size_constraint_set <- function(SizeConstraintSetId, ChangeTo
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -5806,6 +5885,7 @@ wafregional_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, C
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
@@ -5986,6 +6066,7 @@ wafregional_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, De
 
 #' This is AWS WAF Classic documentation
 #'
+#' @description
 #' This is **AWS WAF Classic** documentation. For more information, see
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)

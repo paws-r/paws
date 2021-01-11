@@ -22,8 +22,6 @@ This operation deletes an archive from a vault. Subsequent requests to
 initiate a retrieval of this archive will fail. Archive retrievals that
 are in progress for this archive ID may or may not succeed according to
 the following scenarios:
-}
-\details{
 \itemize{
 \item If the archive retrieval job is actively preparing the data for
 download when Amazon S3 Glacier receives the delete archive request,

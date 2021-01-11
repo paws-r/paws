@@ -6,6 +6,7 @@ NULL
 #' Allows you to confirm that the attachment has been uploaded using the
 #' pre-signed URL provided in StartAttachmentUpload API
 #'
+#' @description
 #' Allows you to confirm that the attachment has been uploaded using the
 #' pre-signed URL provided in StartAttachmentUpload API.
 #'
@@ -51,6 +52,7 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 
 #' Creates the participant's connection
 #'
+#' @description
 #' Creates the participant's connection. Note that ParticipantToken is used
 #' for invoking this API instead of ConnectionToken.
 #' 
@@ -116,6 +118,7 @@ connectparticipant_create_participant_connection <- function(Type, ParticipantTo
 
 #' Disconnects a participant
 #'
+#' @description
 #' Disconnects a participant. Note that ConnectionToken is used for
 #' invoking this API instead of ParticipantToken.
 #' 
@@ -160,6 +163,7 @@ connectparticipant_disconnect_participant <- function(ClientToken = NULL, Connec
 
 #' Provides a pre-signed URL for download of a completed attachment
 #'
+#' @description
 #' Provides a pre-signed URL for download of a completed attachment. This
 #' is an asynchronous API for use with active contacts.
 #'
@@ -200,6 +204,7 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
 #' Retrieves a transcript of the session, including details about any
 #' attachments
 #'
+#' @description
 #' Retrieves a transcript of the session, including details about any
 #' attachments. Note that ConnectionToken is used for invoking this API
 #' instead of ParticipantToken.
@@ -263,6 +268,7 @@ connectparticipant_get_transcript <- function(ContactId = NULL, MaxResults = NUL
 
 #' Sends an event
 #'
+#' @description
 #' Sends an event. Note that ConnectionToken is used for invoking this API
 #' instead of ParticipantToken.
 #' 
@@ -317,6 +323,7 @@ connectparticipant_send_event <- function(ContentType, Content = NULL, ClientTok
 
 #' Sends a message
 #'
+#' @description
 #' Sends a message. Note that ConnectionToken is used for invoking this API
 #' instead of ParticipantToken.
 #' 
@@ -367,6 +374,7 @@ connectparticipant_send_message <- function(ContentType, Content, ClientToken = 
 #' Provides a pre-signed Amazon S3 URL in response for uploading the file
 #' directly to S3
 #'
+#' @description
 #' Provides a pre-signed Amazon S3 URL in response for uploading the file
 #' directly to S3.
 #'

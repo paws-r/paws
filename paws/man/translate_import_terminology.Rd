@@ -29,8 +29,7 @@ with the same name as an existing one will merge the terminologies based
 on the chosen merge strategy. Currently, the only supported merge
 strategy is OVERWRITE, and so the imported terminology will overwrite an
 existing terminology of the same name.
-}
-\details{
+
 If you import a terminology that overwrites an existing one, the new
 terminology take up to 10 minutes to fully propagate and be available
 for use in a translation due to cache policies with the DataPlane

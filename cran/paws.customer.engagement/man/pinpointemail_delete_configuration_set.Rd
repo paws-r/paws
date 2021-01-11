@@ -11,8 +11,7 @@ pinpointemail_delete_configuration_set(ConfigurationSetName)
 }
 \description{
 Delete an existing configuration set.
-}
-\details{
+
 In Amazon Pinpoint, \emph{configuration sets} are groups of rules that you
 can apply to the emails you send. You apply a configuration set to an
 email by including a reference to the configuration set in the headers

@@ -222,8 +222,7 @@ existing bot. When you create a bot with the minimum information, the
 bot is created or updated but Amazon Lex returns the `` response
 \code{FAILED}. You can build the bot after you add one or more intents. For
 more information about Amazon Lex bots, see how-it-works.
-}
-\details{
+
 If you specify the name of an existing bot, the fields in the request
 replace the existing values in the \verb{$LATEST} version of the bot. Amazon
 Lex removes any fields that you don't provide values for in the request,

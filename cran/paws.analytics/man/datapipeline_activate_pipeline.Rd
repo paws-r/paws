@@ -18,8 +18,7 @@ resumes from the last completed execution.}
 \description{
 Validates the specified pipeline and starts processing pipeline tasks.
 If the pipeline does not pass validation, activation fails.
-}
-\details{
+
 If you need to pause the pipeline to investigate an issue with a
 component, such as a data source or script, call DeactivatePipeline.
 

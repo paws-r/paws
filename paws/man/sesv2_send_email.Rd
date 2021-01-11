@@ -70,8 +70,6 @@ which will be used when a contact chooses to unsubscribe.}
 \description{
 Sends an email message. You can use the Amazon SES API v2 to send two
 types of messages:
-}
-\details{
 \itemize{
 \item \strong{Simple} – A standard email message. When you create this type of
 message, you specify the sender, the recipient, and the message

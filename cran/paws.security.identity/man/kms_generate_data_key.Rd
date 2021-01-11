@@ -65,8 +65,7 @@ operation returns a plaintext copy of the data key and a copy that is
 encrypted under a customer master key (CMK) that you specify. You can
 use the plaintext key to encrypt your data outside of AWS KMS and store
 the encrypted data key with the encrypted data.
-}
-\details{
+
 \code{GenerateDataKey} returns a unique data key for each request. The bytes
 in the plaintext key are not related to the caller or the CMK.
 

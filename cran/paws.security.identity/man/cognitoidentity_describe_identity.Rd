@@ -13,8 +13,7 @@ cognitoidentity_describe_identity(IdentityId)
 \description{
 Returns metadata related to the given identity, including when the
 identity was created and any associated linked logins.
-}
-\details{
+
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{

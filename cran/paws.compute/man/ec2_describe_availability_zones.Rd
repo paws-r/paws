@@ -59,8 +59,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Describes the Availability Zones, Local Zones, and Wavelength Zones that
 are available to you. If there is an event impacting a zone, you can use
 this request to view the state and any provided messages for that zone.
-}
-\details{
+
 For more information about Availability Zones, Local Zones, and
 Wavelength Zones, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html}{Regions, Zones and Outposts}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.

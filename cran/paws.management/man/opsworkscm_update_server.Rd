@@ -21,8 +21,7 @@ backups. Automated backups are enabled by default.}
 }
 \description{
 Updates settings for a server.
-}
-\details{
+
 This operation is synchronous.
 }
 \section{Request syntax}{

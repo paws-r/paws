@@ -29,8 +29,7 @@ Streams by specifying the alias \code{aws/kinesis}.
 }
 \description{
 Disables server-side encryption for a specified stream.
-}
-\details{
+
 Stopping encryption is an asynchronous operation. Upon receiving the
 request, Kinesis Data Streams returns immediately and sets the status of
 the stream to \code{UPDATING}. After the update is complete, Kinesis Data

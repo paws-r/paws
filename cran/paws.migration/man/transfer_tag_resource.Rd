@@ -19,8 +19,7 @@ any purpose.}
 Attaches a key-value pair to a resource, as identified by its Amazon
 Resource Name (ARN). Resources are users, servers, roles, and other
 entities.
-}
-\details{
+
 There is no response returned from this call.
 }
 \section{Request syntax}{

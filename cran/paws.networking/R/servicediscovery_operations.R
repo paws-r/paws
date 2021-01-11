@@ -5,6 +5,7 @@ NULL
 
 #' Creates an HTTP namespace
 #'
+#' @description
 #' Creates an HTTP namespace. Service instances that you register using an
 #' HTTP namespace can be discovered using a `DiscoverInstances` request but
 #' can't be discovered using DNS.
@@ -77,6 +78,7 @@ servicediscovery_create_http_namespace <- function(Name, CreatorRequestId = NULL
 #' Creates a private namespace based on DNS, which will be visible only
 #' inside a specified Amazon VPC
 #'
+#' @description
 #' Creates a private namespace based on DNS, which will be visible only
 #' inside a specified Amazon VPC. The namespace defines your service naming
 #' scheme. For example, if you name your namespace `example.com` and name
@@ -153,6 +155,7 @@ servicediscovery_create_private_dns_namespace <- function(Name, CreatorRequestId
 #' Creates a public namespace based on DNS, which will be visible on the
 #' internet
 #'
+#' @description
 #' Creates a public namespace based on DNS, which will be visible on the
 #' internet. The namespace defines your service naming scheme. For example,
 #' if you name your namespace `example.com` and name your service
@@ -229,6 +232,7 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
 #' you can submit a RegisterInstance request, and AWS Cloud Map uses the
 #' values in the configuration to create the specified entities
 #'
+#' @description
 #' Creates a service, which defines the configuration for the following
 #' entities:
 #' 
@@ -386,6 +390,7 @@ servicediscovery_create_service <- function(Name, NamespaceId = NULL, CreatorReq
 
 #' Deletes a namespace from the current account
 #'
+#' @description
 #' Deletes a namespace from the current account. If the namespace still
 #' contains one or more services, the request fails.
 #'
@@ -431,6 +436,7 @@ servicediscovery_delete_namespace <- function(Id) {
 
 #' Deletes a specified service
 #'
+#' @description
 #' Deletes a specified service. If the service still contains one or more
 #' registered instances, the request fails.
 #'
@@ -477,6 +483,7 @@ servicediscovery_delete_service <- function(Id) {
 #' Deletes the Amazon Route 53 DNS records and health check, if any, that
 #' AWS Cloud Map created for the specified instance
 #'
+#' @description
 #' Deletes the Amazon Route 53 DNS records and health check, if any, that
 #' AWS Cloud Map created for the specified instance.
 #'
@@ -527,6 +534,7 @@ servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
 
 #' Discovers registered instances for a specified namespace and service
 #'
+#' @description
 #' Discovers registered instances for a specified namespace and service.
 #' You can use `DiscoverInstances` to discover instances for any type of
 #' namespace. For public and private DNS namespaces, you can also use DNS
@@ -602,6 +610,7 @@ servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxR
 
 #' Gets information about a specified instance
 #'
+#' @description
 #' Gets information about a specified instance.
 #'
 #' @usage
@@ -650,6 +659,7 @@ servicediscovery_get_instance <- function(ServiceId, InstanceId) {
 #' Gets the current health status (Healthy, Unhealthy, or Unknown) of one
 #' or more instances that are associated with a specified service
 #'
+#' @description
 #' Gets the current health status (`Healthy`, `Unhealthy`, or `Unknown`) of
 #' one or more instances that are associated with a specified service.
 #' 
@@ -725,6 +735,7 @@ servicediscovery_get_instances_health_status <- function(ServiceId, Instances = 
 
 #' Gets information about a namespace
 #'
+#' @description
 #' Gets information about a namespace.
 #'
 #' @usage
@@ -770,6 +781,7 @@ servicediscovery_get_namespace <- function(Id) {
 #' Gets information about any operation that returns an operation ID in the
 #' response, such as a CreateService request
 #'
+#' @description
 #' Gets information about any operation that returns an operation ID in the
 #' response, such as a `CreateService` request.
 #' 
@@ -818,6 +830,7 @@ servicediscovery_get_operation <- function(OperationId) {
 
 #' Gets the settings for a specified service
 #'
+#' @description
 #' Gets the settings for a specified service.
 #'
 #' @usage
@@ -863,6 +876,7 @@ servicediscovery_get_service <- function(Id) {
 #' Lists summary information about the instances that you registered by
 #' using a specified service
 #'
+#' @description
 #' Lists summary information about the instances that you registered by
 #' using a specified service.
 #'
@@ -920,6 +934,7 @@ servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResu
 #' Lists summary information about the namespaces that were created by the
 #' current AWS account
 #'
+#' @description
 #' Lists summary information about the namespaces that were created by the
 #' current AWS account.
 #'
@@ -991,6 +1006,7 @@ servicediscovery_list_namespaces <- function(NextToken = NULL, MaxResults = NULL
 
 #' Lists operations that match the criteria that you specify
 #'
+#' @description
 #' Lists operations that match the criteria that you specify.
 #'
 #' @usage
@@ -1075,6 +1091,7 @@ servicediscovery_list_operations <- function(NextToken = NULL, MaxResults = NULL
 #' Lists summary information for all the services that are associated with
 #' one or more specified namespaces
 #'
+#' @description
 #' Lists summary information for all the services that are associated with
 #' one or more specified namespaces.
 #'
@@ -1146,6 +1163,7 @@ servicediscovery_list_services <- function(NextToken = NULL, MaxResults = NULL, 
 
 #' Lists tags for the specified resource
 #'
+#' @description
 #' Lists tags for the specified resource.
 #'
 #' @usage
@@ -1192,6 +1210,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' Creates or updates one or more records and, optionally, creates a health
 #' check based on the settings in a specified service
 #'
+#' @description
 #' Creates or updates one or more records and, optionally, creates a health
 #' check based on the settings in a specified service. When you submit a
 #' `RegisterInstance` request, the following occurs:
@@ -1415,6 +1434,7 @@ servicediscovery_register_instance <- function(ServiceId, InstanceId, CreatorReq
 
 #' Adds one or more tags to the specified resource
 #'
+#' @description
 #' Adds one or more tags to the specified resource.
 #'
 #' @usage
@@ -1479,6 +1499,7 @@ servicediscovery_tag_resource <- function(ResourceARN, Tags) {
 
 #' Removes one or more tags from the specified resource
 #'
+#' @description
 #' Removes one or more tags from the specified resource.
 #'
 #' @usage
@@ -1534,6 +1555,7 @@ servicediscovery_untag_resource <- function(ResourceARN, TagKeys) {
 #' Submits a request to change the health status of a custom health check
 #' to healthy or unhealthy
 #'
+#' @description
 #' Submits a request to change the health status of a custom health check
 #' to healthy or unhealthy.
 #' 
@@ -1601,6 +1623,7 @@ servicediscovery_update_instance_custom_health_status <- function(ServiceId, Ins
 #' HealthCheckConfig for a specified service You can't add, update, or
 #' delete a HealthCheckCustomConfig configuration
 #'
+#' @description
 #' Submits a request to perform the following operations:
 #' 
 #' -   Update the TTL setting for existing `DnsRecords` configurations

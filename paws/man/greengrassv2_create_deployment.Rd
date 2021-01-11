@@ -32,16 +32,15 @@ for the deployment configuration.}
 the deployment updates components and handles failure.}
 
 \item{tags}{A list of key-value pairs that contain metadata for the resource. For
-more information, see \href{https://docs.aws.amazon.com/greengrass/v2/}{Tag your resources} in the \emph{AWS IoT
-Greengrass V2 Developer Guide}.}
+more information, see Tag your resources in the \emph{AWS IoT Greengrass V2
+Developer Guide}.}
 }
 \description{
 Creates a continuous deployment for a target, which is a AWS IoT
 Greengrass core device or group of core devices. When you add a new core
 device to a group of core devices that has a deployment, AWS IoT
 Greengrass deploys that group's deployment to the new device.
-}
-\details{
+
 You can define one deployment for each target. When you create a new
 deployment for a target that has an existing deployment, you replace the
 previous deployment. AWS IoT Greengrass applies the new deployment to

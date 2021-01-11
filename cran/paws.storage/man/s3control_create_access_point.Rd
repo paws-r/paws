@@ -40,8 +40,7 @@ buckets.}
 Creates an access point and associates it with the specified bucket. For
 more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/access-points.html}{Managing Data Access with Amazon S3 Access Points}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
-}
-\details{
+
 \strong{Using this action with Amazon S3 on Outposts}
 
 This action:

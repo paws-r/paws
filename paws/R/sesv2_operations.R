@@ -5,6 +5,7 @@ NULL
 
 #' Create a configuration set
 #'
+#' @description
 #' Create a configuration set. *Configuration sets* are groups of rules
 #' that you can apply to the emails that you send. You apply a
 #' configuration set to an email by specifying the name of the
@@ -86,6 +87,7 @@ sesv2_create_configuration_set <- function(ConfigurationSetName, TrackingOptions
 
 #' Create an event destination
 #'
+#' @description
 #' Create an event destination. *Events* include message sends, deliveries,
 #' opens, clicks, bounces, and complaints. *Event destinations* are places
 #' that you can send information about these events to. For example, you
@@ -161,6 +163,7 @@ sesv2_create_configuration_set_event_destination <- function(ConfigurationSetNam
 #' Creates a contact, which is an end-user who is receiving the email, and
 #' adds them to a contact list
 #'
+#' @description
 #' Creates a contact, which is an end-user who is receiving the email, and
 #' adds them to a contact list.
 #'
@@ -213,6 +216,7 @@ sesv2_create_contact <- function(ContactListName, EmailAddress, TopicPreferences
 
 #' Creates a contact list
 #'
+#' @description
 #' Creates a contact list.
 #'
 #' @usage
@@ -268,6 +272,7 @@ sesv2_create_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 
 #' Creates a new custom verification email template
 #'
+#' @description
 #' Creates a new custom verification email template.
 #' 
 #' For more information about custom verification email templates, see
@@ -330,6 +335,7 @@ sesv2_create_custom_verification_email_template <- function(TemplateName, FromEm
 
 #' Create a new pool of dedicated IP addresses
 #'
+#' @description
 #' Create a new pool of dedicated IP addresses. A pool can include one or
 #' more dedicated IP addresses that are associated with your AWS account.
 #' You can associate a pool with a configuration set. When you send an
@@ -378,6 +384,7 @@ sesv2_create_dedicated_ip_pool <- function(PoolName, Tags = NULL) {
 
 #' Create a new predictive inbox placement test
 #'
+#' @description
 #' Create a new predictive inbox placement test. Predictive inbox placement
 #' tests can help you predict how your messages will be handled by various
 #' email providers around the world. When you perform a predictive inbox
@@ -463,6 +470,7 @@ sesv2_create_deliverability_test_report <- function(ReportName = NULL, FromEmail
 
 #' Starts the process of verifying an email identity
 #'
+#' @description
 #' Starts the process of verifying an email identity. An *identity* is an
 #' email address or domain that you use when you send email. Before you can
 #' use an identity to send email, you first have to verify it. By verifying
@@ -545,6 +553,7 @@ sesv2_create_email_identity <- function(EmailIdentity, Tags = NULL, DkimSigningA
 #' Creates the specified sending authorization policy for the given
 #' identity (an email address or a domain)
 #'
+#' @description
 #' Creates the specified sending authorization policy for the given
 #' identity (an email address or a domain).
 #' 
@@ -603,6 +612,7 @@ sesv2_create_email_identity_policy <- function(EmailIdentity, PolicyName, Policy
 
 #' Creates an email template
 #'
+#' @description
 #' Creates an email template. Email templates enable you to send
 #' personalized email to one or more destinations in a single API
 #' operation. For more information, see the [Amazon SES Developer
@@ -651,6 +661,7 @@ sesv2_create_email_template <- function(TemplateName, TemplateContent) {
 
 #' Creates an import job for a data destination
 #'
+#' @description
 #' Creates an import job for a data destination.
 #'
 #' @usage
@@ -700,6 +711,7 @@ sesv2_create_import_job <- function(ImportDestination, ImportDataSource) {
 
 #' Delete an existing configuration set
 #'
+#' @description
 #' Delete an existing configuration set.
 #' 
 #' *Configuration sets* are groups of rules that you can apply to the
@@ -742,6 +754,7 @@ sesv2_delete_configuration_set <- function(ConfigurationSetName) {
 
 #' Delete an event destination
 #'
+#' @description
 #' Delete an event destination.
 #' 
 #' *Events* include message sends, deliveries, opens, clicks, bounces, and
@@ -789,6 +802,7 @@ sesv2_delete_configuration_set_event_destination <- function(ConfigurationSetNam
 
 #' Removes a contact from a contact list
 #'
+#' @description
 #' Removes a contact from a contact list.
 #'
 #' @usage
@@ -827,6 +841,7 @@ sesv2_delete_contact <- function(ContactListName, EmailAddress) {
 
 #' Deletes a contact list and all of the contacts on that list
 #'
+#' @description
 #' Deletes a contact list and all of the contacts on that list.
 #'
 #' @usage
@@ -863,6 +878,7 @@ sesv2_delete_contact_list <- function(ContactListName) {
 
 #' Deletes an existing custom verification email template
 #'
+#' @description
 #' Deletes an existing custom verification email template.
 #' 
 #' For more information about custom verification email templates, see
@@ -906,6 +922,7 @@ sesv2_delete_custom_verification_email_template <- function(TemplateName) {
 
 #' Delete a dedicated IP pool
 #'
+#' @description
 #' Delete a dedicated IP pool.
 #'
 #' @usage
@@ -942,6 +959,7 @@ sesv2_delete_dedicated_ip_pool <- function(PoolName) {
 
 #' Deletes an email identity
 #'
+#' @description
 #' Deletes an email identity. An identity can be either an email address or
 #' a domain name.
 #'
@@ -981,6 +999,7 @@ sesv2_delete_email_identity <- function(EmailIdentity) {
 #' Deletes the specified sending authorization policy for the given
 #' identity (an email address or a domain)
 #'
+#' @description
 #' Deletes the specified sending authorization policy for the given
 #' identity (an email address or a domain). This API returns successfully
 #' even if a policy with the specified name does not exist.
@@ -1034,6 +1053,7 @@ sesv2_delete_email_identity_policy <- function(EmailIdentity, PolicyName) {
 
 #' Deletes an email template
 #'
+#' @description
 #' Deletes an email template.
 #' 
 #' You can execute this operation no more than once per second.
@@ -1072,6 +1092,7 @@ sesv2_delete_email_template <- function(TemplateName) {
 
 #' Removes an email address from the suppression list for your account
 #'
+#' @description
 #' Removes an email address from the suppression list for your account.
 #'
 #' @usage
@@ -1110,6 +1131,7 @@ sesv2_delete_suppressed_destination <- function(EmailAddress) {
 #' Obtain information about the email-sending status and capabilities of
 #' your Amazon SES account in the current AWS Region
 #'
+#' @description
 #' Obtain information about the email-sending status and capabilities of
 #' your Amazon SES account in the current AWS Region.
 #'
@@ -1144,6 +1166,7 @@ sesv2_get_account <- function() {
 #' Retrieve a list of the blacklists that your dedicated IP addresses
 #' appear on
 #'
+#' @description
 #' Retrieve a list of the blacklists that your dedicated IP addresses
 #' appear on.
 #'
@@ -1187,6 +1210,7 @@ sesv2_get_blacklist_reports <- function(BlacklistItemNames) {
 #' dedicated IP pool that it's associated with, whether or not it's enabled
 #' for sending email, and more
 #'
+#' @description
 #' Get information about an existing configuration set, including the
 #' dedicated IP pool that it's associated with, whether or not it's enabled
 #' for sending email, and more.
@@ -1233,6 +1257,7 @@ sesv2_get_configuration_set <- function(ConfigurationSetName) {
 #' Retrieve a list of event destinations that are associated with a
 #' configuration set
 #'
+#' @description
 #' Retrieve a list of event destinations that are associated with a
 #' configuration set.
 #' 
@@ -1277,6 +1302,7 @@ sesv2_get_configuration_set_event_destinations <- function(ConfigurationSetName)
 
 #' Returns a contact from a contact list
 #'
+#' @description
 #' Returns a contact from a contact list.
 #'
 #' @usage
@@ -1315,6 +1341,7 @@ sesv2_get_contact <- function(ContactListName, EmailAddress) {
 
 #' Returns contact list metadata
 #'
+#' @description
 #' Returns contact list metadata. It does not return any information about
 #' the contacts present in the list.
 #'
@@ -1353,6 +1380,7 @@ sesv2_get_contact_list <- function(ContactListName) {
 #' Returns the custom email verification template for the template name you
 #' specify
 #'
+#' @description
 #' Returns the custom email verification template for the template name you
 #' specify.
 #' 
@@ -1400,6 +1428,7 @@ sesv2_get_custom_verification_email_template <- function(TemplateName) {
 #' dedicated IP pool that it's associated with, as well information about
 #' the automatic warm-up process for the address
 #'
+#' @description
 #' Get information about a dedicated IP address, including the name of the
 #' dedicated IP pool that it's associated with, as well information about
 #' the automatic warm-up process for the address.
@@ -1441,6 +1470,7 @@ sesv2_get_dedicated_ip <- function(Ip) {
 #' List the dedicated IP addresses that are associated with your AWS
 #' account
 #'
+#' @description
 #' List the dedicated IP addresses that are associated with your AWS
 #' account.
 #'
@@ -1488,6 +1518,7 @@ sesv2_get_dedicated_ips <- function(PoolName = NULL, NextToken = NULL, PageSize 
 #' Retrieve information about the status of the Deliverability dashboard
 #' for your account
 #'
+#' @description
 #' Retrieve information about the status of the Deliverability dashboard
 #' for your account. When the Deliverability dashboard is enabled, you gain
 #' access to reputation, deliverability, and other metrics for the domains
@@ -1530,6 +1561,7 @@ sesv2_get_deliverability_dashboard_options <- function() {
 
 #' Retrieve the results of a predictive inbox placement test
 #'
+#' @description
 #' Retrieve the results of a predictive inbox placement test.
 #'
 #' @usage
@@ -1566,6 +1598,7 @@ sesv2_get_deliverability_test_report <- function(ReportId) {
 
 #' Retrieve all the deliverability data for a specific campaign
 #'
+#' @description
 #' Retrieve all the deliverability data for a specific campaign. This data
 #' is available for a campaign only if the campaign sent email by using a
 #' domain that the Deliverability dashboard is enabled for.
@@ -1606,6 +1639,7 @@ sesv2_get_domain_deliverability_campaign <- function(CampaignId) {
 #' Retrieve inbox placement and engagement rates for the domains that you
 #' use to send email
 #'
+#' @description
 #' Retrieve inbox placement and engagement rates for the domains that you
 #' use to send email.
 #'
@@ -1656,6 +1690,7 @@ sesv2_get_domain_statistics_report <- function(Domain, StartDate, EndDate) {
 #' verification status, sending authorization policies, its DKIM
 #' authentication status, and its custom Mail-From settings
 #'
+#' @description
 #' Provides information about a specific identity, including the identity's
 #' verification status, sending authorization policies, its DKIM
 #' authentication status, and its custom Mail-From settings.
@@ -1695,6 +1730,7 @@ sesv2_get_email_identity <- function(EmailIdentity) {
 #' Returns the requested sending authorization policies for the given
 #' identity (an email address or a domain)
 #'
+#' @description
 #' Returns the requested sending authorization policies for the given
 #' identity (an email address or a domain). The policies are returned as a
 #' map of policy names to policy contents. You can retrieve a maximum of 20
@@ -1745,6 +1781,7 @@ sesv2_get_email_identity_policies <- function(EmailIdentity) {
 #' Displays the template object (which includes the subject line, HTML part
 #' and text part) for the template you specify
 #'
+#' @description
 #' Displays the template object (which includes the subject line, HTML part
 #' and text part) for the template you specify.
 #' 
@@ -1784,6 +1821,7 @@ sesv2_get_email_template <- function(TemplateName) {
 
 #' Provides information about an import job
 #'
+#' @description
 #' Provides information about an import job.
 #'
 #' @usage
@@ -1821,6 +1859,7 @@ sesv2_get_import_job <- function(JobId) {
 #' Retrieves information about a specific email address that's on the
 #' suppression list for your account
 #'
+#' @description
 #' Retrieves information about a specific email address that's on the
 #' suppression list for your account.
 #'
@@ -1859,6 +1898,7 @@ sesv2_get_suppressed_destination <- function(EmailAddress) {
 #' List all of the configuration sets associated with your account in the
 #' current region
 #'
+#' @description
 #' List all of the configuration sets associated with your account in the
 #' current region.
 #' 
@@ -1908,6 +1948,7 @@ sesv2_list_configuration_sets <- function(NextToken = NULL, PageSize = NULL) {
 
 #' Lists all of the contact lists available
 #'
+#' @description
 #' Lists all of the contact lists available.
 #'
 #' @usage
@@ -1952,6 +1993,7 @@ sesv2_list_contact_lists <- function(PageSize = NULL, NextToken = NULL) {
 
 #' Lists the contacts present in a specific contact list
 #'
+#' @description
 #' Lists the contacts present in a specific contact list.
 #'
 #' @usage
@@ -2009,6 +2051,7 @@ sesv2_list_contacts <- function(ContactListName, Filter = NULL, PageSize = NULL,
 #' Lists the existing custom verification email templates for your account
 #' in the current AWS Region
 #'
+#' @description
 #' Lists the existing custom verification email templates for your account
 #' in the current AWS Region.
 #' 
@@ -2064,6 +2107,7 @@ sesv2_list_custom_verification_email_templates <- function(NextToken = NULL, Pag
 #' List all of the dedicated IP pools that exist in your AWS account in the
 #' current Region
 #'
+#' @description
 #' List all of the dedicated IP pools that exist in your AWS account in the
 #' current Region.
 #'
@@ -2108,6 +2152,7 @@ sesv2_list_dedicated_ip_pools <- function(NextToken = NULL, PageSize = NULL) {
 #' Show a list of the predictive inbox placement tests that you've
 #' performed, regardless of their statuses
 #'
+#' @description
 #' Show a list of the predictive inbox placement tests that you've
 #' performed, regardless of their statuses. For predictive inbox placement
 #' tests that are complete, you can use the `GetDeliverabilityTestReport`
@@ -2158,6 +2203,7 @@ sesv2_list_deliverability_test_reports <- function(NextToken = NULL, PageSize = 
 #' Retrieve deliverability data for all the campaigns that used a specific
 #' domain to send email during a specified time range
 #'
+#' @description
 #' Retrieve deliverability data for all the campaigns that used a specific
 #' domain to send email during a specified time range. This data is
 #' available for a domain only if you enabled the Deliverability dashboard
@@ -2220,6 +2266,7 @@ sesv2_list_domain_deliverability_campaigns <- function(StartDate, EndDate, Subsc
 #' Returns a list of all of the email identities that are associated with
 #' your AWS account
 #'
+#' @description
 #' Returns a list of all of the email identities that are associated with
 #' your AWS account. An identity can be either an email address or a
 #' domain. This operation returns identities that are verified as well as
@@ -2270,6 +2317,7 @@ sesv2_list_email_identities <- function(NextToken = NULL, PageSize = NULL) {
 #' Lists the email templates present in your Amazon SES account in the
 #' current AWS Region
 #'
+#' @description
 #' Lists the email templates present in your Amazon SES account in the
 #' current AWS Region.
 #' 
@@ -2317,6 +2365,7 @@ sesv2_list_email_templates <- function(NextToken = NULL, PageSize = NULL) {
 
 #' Lists all of the import jobs
 #'
+#' @description
 #' Lists all of the import jobs.
 #'
 #' @usage
@@ -2366,6 +2415,7 @@ sesv2_list_import_jobs <- function(ImportDestinationType = NULL, NextToken = NUL
 #' Retrieves a list of email addresses that are on the suppression list for
 #' your account
 #'
+#' @description
 #' Retrieves a list of email addresses that are on the suppression list for
 #' your account.
 #'
@@ -2427,6 +2477,7 @@ sesv2_list_suppressed_destinations <- function(Reasons = NULL, StartDate = NULL,
 #' Retrieve a list of the tags (keys and values) that are associated with a
 #' specified resource
 #'
+#' @description
 #' Retrieve a list of the tags (keys and values) that are associated with a
 #' specified resource. A *tag* is a label that you optionally define and
 #' associate with a resource. Each tag consists of a required *tag key* and
@@ -2470,6 +2521,7 @@ sesv2_list_tags_for_resource <- function(ResourceArn) {
 #' Enable or disable the automatic warm-up feature for dedicated IP
 #' addresses
 #'
+#' @description
 #' Enable or disable the automatic warm-up feature for dedicated IP
 #' addresses.
 #'
@@ -2510,6 +2562,7 @@ sesv2_put_account_dedicated_ip_warmup_attributes <- function(AutoWarmupEnabled =
 
 #' Update your Amazon SES account details
 #'
+#' @description
 #' Update your Amazon SES account details.
 #'
 #' @usage
@@ -2574,6 +2627,7 @@ sesv2_put_account_details <- function(MailType, WebsiteURL, ContactLanguage = NU
 
 #' Enable or disable the ability of your account to send email
 #'
+#' @description
 #' Enable or disable the ability of your account to send email.
 #'
 #' @usage
@@ -2614,6 +2668,7 @@ sesv2_put_account_sending_attributes <- function(SendingEnabled = NULL) {
 
 #' Change the settings for the account-level suppression list
 #'
+#' @description
 #' Change the settings for the account-level suppression list.
 #'
 #' @usage
@@ -2662,6 +2717,7 @@ sesv2_put_account_suppression_attributes <- function(SuppressedReasons = NULL) {
 
 #' Associate a configuration set with a dedicated IP pool
 #'
+#' @description
 #' Associate a configuration set with a dedicated IP pool. You can use
 #' dedicated IP pools to create groups of dedicated IP addresses for
 #' sending specific types of email.
@@ -2712,6 +2768,7 @@ sesv2_put_configuration_set_delivery_options <- function(ConfigurationSetName, T
 #' Enable or disable collection of reputation metrics for emails that you
 #' send using a particular configuration set in a specific AWS Region
 #'
+#' @description
 #' Enable or disable collection of reputation metrics for emails that you
 #' send using a particular configuration set in a specific AWS Region.
 #'
@@ -2756,6 +2813,7 @@ sesv2_put_configuration_set_reputation_options <- function(ConfigurationSetName,
 #' Enable or disable email sending for messages that use a particular
 #' configuration set in a specific AWS Region
 #'
+#' @description
 #' Enable or disable email sending for messages that use a particular
 #' configuration set in a specific AWS Region.
 #'
@@ -2798,6 +2856,7 @@ sesv2_put_configuration_set_sending_options <- function(ConfigurationSetName, Se
 
 #' Specify the account suppression list preferences for a configuration set
 #'
+#' @description
 #' Specify the account suppression list preferences for a configuration
 #' set.
 #'
@@ -2852,6 +2911,7 @@ sesv2_put_configuration_set_suppression_options <- function(ConfigurationSetName
 #' Specify a custom domain to use for open and click tracking elements in
 #' email that you send
 #'
+#' @description
 #' Specify a custom domain to use for open and click tracking elements in
 #' email that you send.
 #'
@@ -2893,6 +2953,7 @@ sesv2_put_configuration_set_tracking_options <- function(ConfigurationSetName, C
 
 #' Move a dedicated IP address to an existing dedicated IP pool
 #'
+#' @description
 #' Move a dedicated IP address to an existing dedicated IP pool.
 #' 
 #' The dedicated IP address that you specify must already exist, and must
@@ -2940,6 +3001,7 @@ sesv2_put_dedicated_ip_in_pool <- function(Ip, DestinationPoolName) {
 
 #' Put dedicated ip warmup attributes
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -2980,6 +3042,7 @@ sesv2_put_dedicated_ip_warmup_attributes <- function(Ip, WarmupPercentage) {
 
 #' Enable or disable the Deliverability dashboard
 #'
+#' @description
 #' Enable or disable the Deliverability dashboard. When you enable the
 #' Deliverability dashboard, you gain access to reputation, deliverability,
 #' and other metrics for the domains that you use to send email. You also
@@ -3043,6 +3106,7 @@ sesv2_put_deliverability_dashboard_option <- function(DashboardEnabled, Subscrib
 
 #' Used to enable or disable DKIM authentication for an email identity
 #'
+#' @description
 #' Used to enable or disable DKIM authentication for an email identity.
 #'
 #' @usage
@@ -3086,6 +3150,7 @@ sesv2_put_email_identity_dkim_attributes <- function(EmailIdentity, SigningEnabl
 #' Used to configure or change the DKIM authentication settings for an
 #' email domain identity
 #'
+#' @description
 #' Used to configure or change the DKIM authentication settings for an
 #' email domain identity. You can use this operation to do any of the
 #' following:
@@ -3153,6 +3218,7 @@ sesv2_put_email_identity_dkim_signing_attributes <- function(EmailIdentity, Sign
 
 #' Used to enable or disable feedback forwarding for an identity
 #'
+#' @description
 #' Used to enable or disable feedback forwarding for an identity. This
 #' setting determines what happens when an identity is used to send an
 #' email that results in a bounce or complaint event.
@@ -3216,6 +3282,7 @@ sesv2_put_email_identity_feedback_attributes <- function(EmailIdentity, EmailFor
 #' Used to enable or disable the custom Mail-From domain configuration for
 #' an email identity
 #'
+#' @description
 #' Used to enable or disable the custom Mail-From domain configuration for
 #' an email identity.
 #'
@@ -3275,6 +3342,7 @@ sesv2_put_email_identity_mail_from_attributes <- function(EmailIdentity, MailFro
 
 #' Adds an email address to the suppression list for your account
 #'
+#' @description
 #' Adds an email address to the suppression list for your account.
 #'
 #' @usage
@@ -3315,6 +3383,7 @@ sesv2_put_suppressed_destination <- function(EmailAddress, Reason) {
 
 #' Composes an email message to multiple destinations
 #'
+#' @description
 #' Composes an email message to multiple destinations.
 #'
 #' @usage
@@ -3445,6 +3514,7 @@ sesv2_send_bulk_email <- function(FromEmailAddress = NULL, FromEmailAddressIdent
 #' Adds an email address to the list of identities for your Amazon SES
 #' account in the current AWS Region and attempts to verify it
 #'
+#' @description
 #' Adds an email address to the list of identities for your Amazon SES
 #' account in the current AWS Region and attempts to verify it. As a result
 #' of executing this operation, a customized verification email is sent to
@@ -3498,6 +3568,7 @@ sesv2_send_custom_verification_email <- function(EmailAddress, TemplateName, Con
 
 #' Sends an email message
 #'
+#' @description
 #' Sends an email message. You can use the Amazon SES API v2 to send two
 #' types of messages:
 #' 
@@ -3656,6 +3727,7 @@ sesv2_send_email <- function(FromEmailAddress = NULL, FromEmailAddressIdentityAr
 
 #' Add one or more tags (keys and values) to a specified resource
 #'
+#' @description
 #' Add one or more tags (keys and values) to a specified resource. A
 #' *tag* is a label that you optionally define and associate with a
 #' resource. Tags can help you categorize and manage resources in different
@@ -3713,6 +3785,7 @@ sesv2_tag_resource <- function(ResourceArn, Tags) {
 #' Creates a preview of the MIME content of an email when provided with a
 #' template and a set of replacement data
 #'
+#' @description
 #' Creates a preview of the MIME content of an email when provided with a
 #' template and a set of replacement data.
 #' 
@@ -3756,6 +3829,7 @@ sesv2_test_render_email_template <- function(TemplateName, TemplateData) {
 
 #' Remove one or more tags (keys and values) from a specified resource
 #'
+#' @description
 #' Remove one or more tags (keys and values) from a specified resource.
 #'
 #' @usage
@@ -3804,6 +3878,7 @@ sesv2_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Update the configuration of an event destination for a configuration set
 #'
+#' @description
 #' Update the configuration of an event destination for a configuration
 #' set.
 #' 
@@ -3878,6 +3953,7 @@ sesv2_update_configuration_set_event_destination <- function(ConfigurationSetNam
 
 #' Updates a contact's preferences for a list
 #'
+#' @description
 #' Updates a contact's preferences for a list. It is not necessary to
 #' specify all existing topic preferences in the TopicPreferences object,
 #' just the ones that need updating.
@@ -3931,6 +4007,7 @@ sesv2_update_contact <- function(ContactListName, EmailAddress, TopicPreferences
 
 #' Updates contact list metadata
 #'
+#' @description
 #' Updates contact list metadata. This operation does a complete
 #' replacement.
 #'
@@ -3980,6 +4057,7 @@ sesv2_update_contact_list <- function(ContactListName, Topics = NULL, Descriptio
 
 #' Updates an existing custom verification email template
 #'
+#' @description
 #' Updates an existing custom verification email template.
 #' 
 #' For more information about custom verification email templates, see
@@ -4044,6 +4122,7 @@ sesv2_update_custom_verification_email_template <- function(TemplateName, FromEm
 #' Updates the specified sending authorization policy for the given
 #' identity (an email address or a domain)
 #'
+#' @description
 #' Updates the specified sending authorization policy for the given
 #' identity (an email address or a domain). This API returns successfully
 #' even if a policy with the specified name does not exist.
@@ -4103,6 +4182,7 @@ sesv2_update_email_identity_policy <- function(EmailIdentity, PolicyName, Policy
 
 #' Updates an email template
 #'
+#' @description
 #' Updates an email template. Email templates enable you to send
 #' personalized email to one or more destinations in a single API
 #' operation. For more information, see the [Amazon SES Developer

@@ -161,11 +161,11 @@ The options you can configure vary according to which parser you use:
 terms in the search string. For example: \code{defaultOperator: 'or'}.
 For the \code{dismax} parser, you specify a percentage that represents
 the percentage of terms in the search string (rounded down) that
-must match, rather than a default operator. A value of \verb{0\%} is the
-equivalent to OR, and a value of \verb{100\%} is equivalent to AND. The
+must match, rather than a default operator. A value of \verb{0\\\%} is the
+equivalent to OR, and a value of \verb{100\\\%} is equivalent to AND. The
 percentage must be specified as a value in the range 0-100 followed
-by the percent (\%) symbol. For example, \verb{defaultOperator: 50\%}.
-Valid values: \code{and}, \code{or}, a percentage in the range 0\%-100\%
+by the percent (\\%) symbol. For example, \verb{defaultOperator: 50\\\%}.
+Valid values: \code{and}, \code{or}, a percentage in the range 0\\%-100\\%
 (\code{dismax}). Default: \code{and} (\code{simple}, \code{structured}, \code{lucene}) or
 \code{100} (\code{dismax}). Valid for: \code{simple}, \code{structured}, \code{lucene}, and
 \code{dismax}.
@@ -322,8 +322,6 @@ There are currently no options supported for statistics.}
 Retrieves a list of documents that match the specified search criteria.
 How you specify the search criteria depends on which query parser you
 use. Amazon CloudSearch supports four query parsers:
-}
-\details{
 \itemize{
 \item \code{simple}: search all \code{text} and \code{text-array} fields for the
 specified string. Search for phrases, individual terms, and

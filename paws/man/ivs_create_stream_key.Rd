@@ -15,8 +15,7 @@ ivs_create_stream_key(channelArn, tags)
 \description{
 Creates a stream key, used to initiate a stream, for the specified
 channel ARN.
-}
-\details{
+
 Note that CreateChannel creates a stream key. If you subsequently use
 CreateStreamKey on the same channel, it will fail because a stream key
 already exists and there is a limit of 1 stream key per channel. To

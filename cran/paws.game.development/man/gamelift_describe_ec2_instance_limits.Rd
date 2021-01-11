@@ -19,8 +19,6 @@ all types.}
 }
 \description{
 Retrieves the following information for the specified EC2 instance type:
-}
-\details{
 \itemize{
 \item Maximum number of instances allowed per AWS account (service limit).
 \item Current usage for the AWS account.

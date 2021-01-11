@@ -19,8 +19,7 @@ Resource Name (ARN), and, if applicable, allowed IP address ranges
 (\href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{CIDRs}).
 Allowable IP address ranges are the IP addresses that workers can use to
 access tasks.
-}
-\details{
+
 This operation applies only to private workforces.
 }
 \section{Request syntax}{

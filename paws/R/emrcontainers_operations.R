@@ -5,6 +5,7 @@ NULL
 
 #' Cancels a job run
 #'
+#' @description
 #' Cancels a job run. A job run is a unit of work, such as a Spark jar,
 #' PySpark script, or SparkSQL query, that you submit to Amazon EMR on EKS.
 #'
@@ -44,6 +45,7 @@ emrcontainers_cancel_job_run <- function(id, virtualClusterId) {
 
 #' Creates a managed endpoint
 #'
+#' @description
 #' Creates a managed endpoint. A managed endpoint is a gateway that
 #' connects EMR Studio to Amazon EMR on EKS so that EMR Studio can
 #' communicate with your virtual cluster.
@@ -123,6 +125,7 @@ emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, 
 
 #' Creates a virtual cluster
 #'
+#' @description
 #' Creates a virtual cluster. Virtual cluster is a managed entity on Amazon
 #' EMR on EKS. You can create, describe, list and delete virtual clusters.
 #' They do not consume any additional resource in your system. A single
@@ -181,6 +184,7 @@ emrcontainers_create_virtual_cluster <- function(name, containerProvider, client
 
 #' Deletes a managed endpoint
 #'
+#' @description
 #' Deletes a managed endpoint. A managed endpoint is a gateway that
 #' connects EMR Studio to Amazon EMR on EKS so that EMR Studio can
 #' communicate with your virtual cluster.
@@ -221,6 +225,7 @@ emrcontainers_delete_managed_endpoint <- function(id, virtualClusterId) {
 
 #' Deletes a virtual cluster
 #'
+#' @description
 #' Deletes a virtual cluster. Virtual cluster is a managed entity on Amazon
 #' EMR on EKS. You can create, describe, list and delete virtual clusters.
 #' They do not consume any additional resource in your system. A single
@@ -262,6 +267,7 @@ emrcontainers_delete_virtual_cluster <- function(id) {
 
 #' Displays detailed information about a job run
 #'
+#' @description
 #' Displays detailed information about a job run. A job run is a unit of
 #' work, such as a Spark jar, PySpark script, or SparkSQL query, that you
 #' submit to Amazon EMR on EKS.
@@ -302,6 +308,7 @@ emrcontainers_describe_job_run <- function(id, virtualClusterId) {
 
 #' Displays detailed information about a managed endpoint
 #'
+#' @description
 #' Displays detailed information about a managed endpoint. A managed
 #' endpoint is a gateway that connects EMR Studio to Amazon EMR on EKS so
 #' that EMR Studio can communicate with your virtual cluster.
@@ -342,6 +349,7 @@ emrcontainers_describe_managed_endpoint <- function(id, virtualClusterId) {
 
 #' Displays detailed information about a specified virtual cluster
 #'
+#' @description
 #' Displays detailed information about a specified virtual cluster. Virtual
 #' cluster is a managed entity on Amazon EMR on EKS. You can create,
 #' describe, list and delete virtual clusters. They do not consume any
@@ -384,6 +392,7 @@ emrcontainers_describe_virtual_cluster <- function(id) {
 
 #' Lists job runs based on a set of parameters
 #'
+#' @description
 #' Lists job runs based on a set of parameters. A job run is a unit of
 #' work, such as a Spark jar, PySpark script, or SparkSQL query, that you
 #' submit to Amazon EMR on EKS.
@@ -441,6 +450,7 @@ emrcontainers_list_job_runs <- function(virtualClusterId, createdBefore = NULL, 
 
 #' Lists managed endpoints based on a set of parameters
 #'
+#' @description
 #' Lists managed endpoints based on a set of parameters. A managed endpoint
 #' is a gateway that connects EMR Studio to Amazon EMR on EKS so that EMR
 #' Studio can communicate with your virtual cluster.
@@ -500,6 +510,7 @@ emrcontainers_list_managed_endpoints <- function(virtualClusterId, createdBefore
 
 #' Lists the tags assigned to the resources
 #'
+#' @description
 #' Lists the tags assigned to the resources.
 #'
 #' @usage
@@ -536,6 +547,7 @@ emrcontainers_list_tags_for_resource <- function(resourceArn) {
 
 #' Lists information about the specified virtual cluster
 #'
+#' @description
 #' Lists information about the specified virtual cluster. Virtual cluster
 #' is a managed entity on Amazon EMR on EKS. You can create, describe, list
 #' and delete virtual clusters. They do not consume any additional resource
@@ -598,6 +610,7 @@ emrcontainers_list_virtual_clusters <- function(containerProviderId = NULL, cont
 
 #' Starts a job run
 #'
+#' @description
 #' Starts a job run. A job run is a unit of work, such as a Spark jar,
 #' PySpark script, or SparkSQL query, that you submit to Amazon EMR on EKS.
 #'
@@ -680,6 +693,7 @@ emrcontainers_start_job_run <- function(name = NULL, virtualClusterId, clientTok
 
 #' Assigns tags to resources
 #'
+#' @description
 #' Assigns tags to resources. A tag is a label that you assign to an AWS
 #' resource. Each tag consists of a key and an optional value, both of
 #' which you define. Tags enable you to categorize your AWS resources by
@@ -729,6 +743,7 @@ emrcontainers_tag_resource <- function(resourceArn, tags) {
 
 #' Removes tags from resources
 #'
+#' @description
 #' Removes tags from resources.
 #'
 #' @usage

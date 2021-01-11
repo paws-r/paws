@@ -22,8 +22,7 @@ connect_create_quick_connect(InstanceId, Name, Description,
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Creates a quick connect for the specified Amazon Connect instance.
 }
 \section{Request syntax}{

@@ -148,9 +148,43 @@ can perform a conditional put operation (add a new item if one with the
 specified primary key doesn't exist), or replace an existing item if it
 has certain attribute values. You can return the item's attribute values
 in the same operation, using the \code{ReturnValues} parameter.
-}
-\details{
 
+This topic provides general information about the \code{PutItem} API.
+
+For information on how to call the \code{PutItem} API using the AWS SDK in
+specific languages, see the following:
+\itemize{
+\item \href{https://docs.aws.amazon.com/cli/latest/reference/dynamodb/put-item.html}{PutItem in the AWS Command Line Interface}
+\item \href{https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=DynamoDBv2\%2FMDynamoDBPutItemPutItemRequest.html}{PutItem in the AWS SDK for .NET}
+\item \href{https://sdk.amazonaws.com/cpp/api/crosslink_redirect.html?uid=dynamodb-2012-08-10&type=PutItem}{PutItem in the AWS SDK for C++}
+\item \href{https://docs.aws.amazon.com/sdk-for-go/api/service/dynamodb/#DynamoDB.PutItem}{PutItem in the AWS SDK for Go}
+\item \href{https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDB.html#putItem-com.amazonaws.services.dynamodbv2.model.PutItemRequest-}{PutItem in the AWS SDK for Java}
+\item \href{https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB.html#putItem-property}{PutItem in the AWS SDK for JavaScript}
+\item \href{https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-dynamodb-2012-08-10.html#putitem}{PutItem in the AWS SDK for PHP V3}
+\item \href{https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/dynamodb.html}{PutItem in the AWS SDK for Python}
+\item \href{https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/DynamoDB/Client.html#put_item-instance_method}{PutItem in the AWS SDK for Ruby V2}
+}
+
+When you add an item, the primary key attributes are the only required
+attributes. Attribute values cannot be null.
+
+Empty String and Binary attribute values are allowed. Attribute values
+of type String and Binary must have a length greater than zero if the
+attribute is used as a key attribute for a table or index. Set type
+attributes cannot be empty.
+
+Invalid Requests with empty values will be rejected with a
+\code{ValidationException} exception.
+
+To prevent a new item from replacing an existing item, use a conditional
+expression that contains the \code{attribute_not_exists} function with the
+name of the attribute being used as the partition key for the table.
+Since every record must contain that attribute, the
+\code{attribute_not_exists} function will only succeed if no matching item
+exists.
+
+For more information about \code{PutItem}, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html}{Working with Items}
+in the \emph{Amazon DynamoDB Developer Guide}.
 }
 \section{Request syntax}{
 \preformatted{svc$put_item(

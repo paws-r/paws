@@ -215,8 +215,7 @@ instance, which overrides the stack's default setting.}
 }
 \description{
 Creates a new stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html}{Create a New Stack}.
-}
-\details{
+
 \strong{Required Permissions}: To use this action, an IAM user must have an
 attached policy that explicitly grants permissions. For more information
 about user permissions, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html}{Managing User Permissions}.

@@ -18,8 +18,7 @@ ID string requires exactly 12 digits.}
 \description{
 Retrieves AWS Organizations-related information about the specified
 account.
-}
-\details{
+
 This operation can be called only from the organization's management
 account or by a member account that is a delegated administrator for an
 AWS service.

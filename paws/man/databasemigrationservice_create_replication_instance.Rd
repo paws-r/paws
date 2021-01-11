@@ -107,8 +107,7 @@ identifier value for the end of \code{EndpointArn}.}
 }
 \description{
 Creates the replication instance using the specified parameters.
-}
-\details{
+
 AWS DMS requires that your account have certain roles with appropriate
 permissions before you can create a replication instance. For
 information on the required roles, see \href{https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.APIRole}{Creating the IAM Roles to Use With the AWS CLI and AWS DMS API}.

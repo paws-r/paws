@@ -38,8 +38,7 @@ different account, the request will fail with an HTTP
 \description{
 Returns the tag-set of an object. You send the GET request against the
 tagging subresource associated with the object.
-}
-\details{
+
 To use this operation, you must have permission to perform the
 \code{s3:GetObjectTagging} action. By default, the GET operation returns
 information about current version of an object. For a versioned bucket,

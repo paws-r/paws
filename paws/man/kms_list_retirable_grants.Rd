@@ -32,8 +32,7 @@ Reference}.}
 \description{
 Returns all grants in which the specified principal is the
 \code{RetiringPrincipal} in the grant.
-}
-\details{
+
 You can specify any principal in your AWS account. The grants that are
 returned include grants for CMKs in your AWS account and other AWS
 accounts.

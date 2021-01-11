@@ -22,8 +22,7 @@ the next page of results in a paginated response.}
 \description{
 Returns a list of compliant and noncompliant rules with the number of
 resources for compliant and noncompliant rules.
-}
-\details{
+
 The results can return an empty result page, but if you have a
 \code{nextToken}, the results are displayed on the next page.
 }

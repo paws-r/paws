@@ -11,8 +11,7 @@ ses_create_configuration_set(ConfigurationSet)
 }
 \description{
 Creates a configuration set.
-}
-\details{
+
 Configuration sets enable you to publish email sending events. For
 information about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.
 

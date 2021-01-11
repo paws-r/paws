@@ -54,8 +54,7 @@ the operation.}
 \description{
 Creates a Simple AD directory. For more information, see \href{https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html}{Simple Active Directory}
 in the \emph{AWS Directory Service Admin Guide}.
-}
-\details{
+
 Before you call \code{CreateDirectory}, ensure that all of the required
 permissions have been explicitly granted through a policy. For details
 about what permissions are required to run the \code{CreateDirectory}

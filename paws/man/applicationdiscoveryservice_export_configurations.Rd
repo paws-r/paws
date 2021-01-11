@@ -8,8 +8,7 @@ applicationdiscoveryservice_export_configurations()
 }
 \description{
 Deprecated. Use \code{StartExportTask} instead.
-}
-\details{
+
 Exports all discovered configuration data to an Amazon S3 bucket or an
 application that enables you to view and evaluate the data. Data
 includes tags and tag associations, processes, connections, servers, and

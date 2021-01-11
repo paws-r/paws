@@ -5,6 +5,7 @@ NULL
 
 #' Specifies a domain to be associated to Amazon WorkLink
 #'
+#' @description
 #' Specifies a domain to be associated to Amazon WorkLink.
 #'
 #' @usage
@@ -49,6 +50,7 @@ worklink_associate_domain <- function(FleetArn, DomainName, DisplayName = NULL, 
 
 #' Associates a website authorization provider with a specified fleet
 #'
+#' @description
 #' Associates a website authorization provider with a specified fleet. This
 #' is used to authorize users against associated websites in the company
 #' network.
@@ -95,6 +97,7 @@ worklink_associate_website_authorization_provider <- function(FleetArn, Authoriz
 #' obtain TLS certificates used by associated websites within the company
 #' network
 #'
+#' @description
 #' Imports the root certificate of a certificate authority (CA) used to
 #' obtain TLS certificates used by associated websites within the company
 #' network.
@@ -138,6 +141,7 @@ worklink_associate_website_certificate_authority <- function(FleetArn, Certifica
 
 #' Creates a fleet
 #'
+#' @description
 #' Creates a fleet. A fleet consists of resources and the configuration
 #' that delivers associated websites to authorized users who download and
 #' set up the Amazon WorkLink app.
@@ -187,6 +191,7 @@ worklink_create_fleet <- function(FleetName, DisplayName = NULL, OptimizeForEndU
 
 #' Deletes a fleet
 #'
+#' @description
 #' Deletes a fleet. Prevents users from accessing previously associated
 #' websites.
 #'
@@ -225,6 +230,7 @@ worklink_delete_fleet <- function(FleetArn) {
 #' Describes the configuration for delivering audit streams to the customer
 #' account
 #'
+#' @description
 #' Describes the configuration for delivering audit streams to the customer
 #' account.
 #'
@@ -263,6 +269,7 @@ worklink_describe_audit_stream_configuration <- function(FleetArn) {
 #' Describes the networking configuration to access the internal websites
 #' associated with the specified fleet
 #'
+#' @description
 #' Describes the networking configuration to access the internal websites
 #' associated with the specified fleet.
 #'
@@ -300,6 +307,7 @@ worklink_describe_company_network_configuration <- function(FleetArn) {
 
 #' Provides information about a user's device
 #'
+#' @description
 #' Provides information about a user's device.
 #'
 #' @usage
@@ -338,6 +346,7 @@ worklink_describe_device <- function(FleetArn, DeviceId) {
 
 #' Describes the device policy configuration for the specified fleet
 #'
+#' @description
 #' Describes the device policy configuration for the specified fleet.
 #'
 #' @usage
@@ -374,6 +383,7 @@ worklink_describe_device_policy_configuration <- function(FleetArn) {
 
 #' Provides information about the domain
 #'
+#' @description
 #' Provides information about the domain.
 #'
 #' @usage
@@ -413,6 +423,7 @@ worklink_describe_domain <- function(FleetArn, DomainName) {
 #' Provides basic information for the specified fleet, excluding identity
 #' provider, networking, and device configuration details
 #'
+#' @description
 #' Provides basic information for the specified fleet, excluding identity
 #' provider, networking, and device configuration details.
 #'
@@ -450,6 +461,7 @@ worklink_describe_fleet_metadata <- function(FleetArn) {
 
 #' Describes the identity provider configuration of the specified fleet
 #'
+#' @description
 #' Describes the identity provider configuration of the specified fleet.
 #'
 #' @usage
@@ -486,6 +498,7 @@ worklink_describe_identity_provider_configuration <- function(FleetArn) {
 
 #' Provides information about the certificate authority
 #'
+#' @description
 #' Provides information about the certificate authority.
 #'
 #' @usage
@@ -524,6 +537,7 @@ worklink_describe_website_certificate_authority <- function(FleetArn, WebsiteCaI
 
 #' Disassociates a domain from Amazon WorkLink
 #'
+#' @description
 #' Disassociates a domain from Amazon WorkLink. End users lose the ability
 #' to access the domain with Amazon WorkLink.
 #'
@@ -563,6 +577,7 @@ worklink_disassociate_domain <- function(FleetArn, DomainName) {
 
 #' Disassociates a website authorization provider from a specified fleet
 #'
+#' @description
 #' Disassociates a website authorization provider from a specified fleet.
 #' After the disassociation, users can't load any associated websites that
 #' require this authorization provider.
@@ -604,6 +619,7 @@ worklink_disassociate_website_authorization_provider <- function(FleetArn, Autho
 
 #' Removes a certificate authority (CA)
 #'
+#' @description
 #' Removes a certificate authority (CA).
 #'
 #' @usage
@@ -643,6 +659,7 @@ worklink_disassociate_website_certificate_authority <- function(FleetArn, Websit
 
 #' Retrieves a list of devices registered with the specified fleet
 #'
+#' @description
 #' Retrieves a list of devices registered with the specified fleet.
 #'
 #' @usage
@@ -684,6 +701,7 @@ worklink_list_devices <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
 
 #' Retrieves a list of domains associated to a specified fleet
 #'
+#' @description
 #' Retrieves a list of domains associated to a specified fleet.
 #'
 #' @usage
@@ -725,6 +743,7 @@ worklink_list_domains <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
 
 #' Retrieves a list of fleets for the current account and Region
 #'
+#' @description
 #' Retrieves a list of fleets for the current account and Region.
 #'
 #' @usage
@@ -764,6 +783,7 @@ worklink_list_fleets <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Retrieves a list of tags for the specified resource
 #'
+#' @description
 #' Retrieves a list of tags for the specified resource.
 #'
 #' @usage
@@ -801,6 +821,7 @@ worklink_list_tags_for_resource <- function(ResourceArn) {
 #' Retrieves a list of website authorization providers associated with a
 #' specified fleet
 #'
+#' @description
 #' Retrieves a list of website authorization providers associated with a
 #' specified fleet.
 #'
@@ -845,6 +866,7 @@ worklink_list_website_authorization_providers <- function(FleetArn, NextToken = 
 #' Retrieves a list of certificate authorities added for the current
 #' account and Region
 #'
+#' @description
 #' Retrieves a list of certificate authorities added for the current
 #' account and Region.
 #'
@@ -888,6 +910,7 @@ worklink_list_website_certificate_authorities <- function(FleetArn, MaxResults =
 
 #' Moves a domain to ACTIVE status if it was in the INACTIVE status
 #'
+#' @description
 #' Moves a domain to ACTIVE status if it was in the INACTIVE status.
 #'
 #' @usage
@@ -926,6 +949,7 @@ worklink_restore_domain_access <- function(FleetArn, DomainName) {
 
 #' Moves a domain to INACTIVE status if it was in the ACTIVE status
 #'
+#' @description
 #' Moves a domain to INACTIVE status if it was in the ACTIVE status.
 #'
 #' @usage
@@ -964,6 +988,7 @@ worklink_revoke_domain_access <- function(FleetArn, DomainName) {
 
 #' Signs the user out from all of their devices
 #'
+#' @description
 #' Signs the user out from all of their devices. The user can sign in again
 #' if they have valid credentials.
 #'
@@ -1004,6 +1029,7 @@ worklink_sign_out_user <- function(FleetArn, Username) {
 #' Adds or overwrites one or more tags for the specified resource, such as
 #' a fleet
 #'
+#' @description
 #' Adds or overwrites one or more tags for the specified resource, such as
 #' a fleet. Each tag consists of a key and an optional value. If a resource
 #' already has a tag with the same key, this operation updates its value.
@@ -1046,6 +1072,7 @@ worklink_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes one or more tags from the specified resource
 #'
+#' @description
 #' Removes one or more tags from the specified resource.
 #'
 #' @usage
@@ -1086,6 +1113,7 @@ worklink_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates the audit stream configuration for the fleet
 #'
+#' @description
 #' Updates the audit stream configuration for the fleet.
 #'
 #' @usage
@@ -1125,6 +1153,7 @@ worklink_update_audit_stream_configuration <- function(FleetArn, AuditStreamArn 
 
 #' Updates the company network configuration for the fleet
 #'
+#' @description
 #' Updates the company network configuration for the fleet.
 #'
 #' @usage
@@ -1173,6 +1202,7 @@ worklink_update_company_network_configuration <- function(FleetArn, VpcId, Subne
 
 #' Updates the device policy configuration for the fleet
 #'
+#' @description
 #' Updates the device policy configuration for the fleet.
 #'
 #' @usage
@@ -1213,6 +1243,7 @@ worklink_update_device_policy_configuration <- function(FleetArn, DeviceCaCertif
 
 #' Updates domain metadata, such as DisplayName
 #'
+#' @description
 #' Updates domain metadata, such as DisplayName.
 #'
 #' @usage
@@ -1253,6 +1284,7 @@ worklink_update_domain_metadata <- function(FleetArn, DomainName, DisplayName = 
 
 #' Updates fleet metadata, such as DisplayName
 #'
+#' @description
 #' Updates fleet metadata, such as DisplayName.
 #'
 #' @usage
@@ -1297,6 +1329,7 @@ worklink_update_fleet_metadata <- function(FleetArn, DisplayName = NULL, Optimiz
 
 #' Updates the identity provider configuration for the fleet
 #'
+#' @description
 #' Updates the identity provider configuration for the fleet.
 #'
 #' @usage

@@ -11,8 +11,7 @@ cloudfront_create_origin_request_policy(OriginRequestPolicyConfig)
 }
 \description{
 Creates an origin request policy.
-}
-\details{
+
 After you create an origin request policy, you can attach it to one or
 more cache behaviors. When it’s attached to a cache behavior, the origin
 request policy determines the values that CloudFront includes in

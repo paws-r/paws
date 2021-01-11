@@ -30,8 +30,7 @@ retrieve the next page of results.}
 \description{
 Retrieves a list of configurations for asynchronous invocation for a
 function.
-}
-\details{
+
 To configure options for asynchronous invocation, use
 PutFunctionEventInvokeConfig.
 }

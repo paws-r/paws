@@ -45,8 +45,7 @@ Use event selectors or advanced event selectors to specify management
 and data event settings for your trail. By default, trails created
 without specific event selectors are configured to log all read and
 write management events, and no data events.
-}
-\details{
+
 When an event occurs in your account, CloudTrail evaluates the event
 selectors or advanced event selectors in all trails. For each trail, if
 the event matches any event selector, the trail processes and logs the

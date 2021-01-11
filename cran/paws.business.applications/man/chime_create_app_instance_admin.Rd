@@ -14,8 +14,6 @@ chime_create_app_instance_admin(AppInstanceAdminArn, AppInstanceArn)
 \description{
 Promotes an \code{AppInstanceUser} to an \code{AppInstanceAdmin}. The promoted
 user can perform the following actions.
-}
-\details{
 \itemize{
 \item \code{ChannelModerator} actions across all channels in the app instance.
 \item \code{DeleteChannelMessage} actions.

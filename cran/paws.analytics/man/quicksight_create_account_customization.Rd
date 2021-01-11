@@ -30,8 +30,7 @@ Currently, you can add a custom default theme by using the
 operation. To further customize QuickSight by removing QuickSight sample
 assets and videos for all new users, see \href{https://docs.aws.amazon.com/quicksight/latest/user/customizing-quicksight.html}{Customizing QuickSight}
 in the \emph{Amazon QuickSight User Guide.}
-}
-\details{
+
 You can create customizations for your AWS account or, if you specify a
 namespace, for a QuickSight namespace instead. Customizations that apply
 to a namespace always override customizations that apply to an AWS

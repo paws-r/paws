@@ -55,8 +55,7 @@ record set in the next group of \code{maxitems} resource record sets.}
 }
 \description{
 Lists the resource record sets in a specified hosted zone.
-}
-\details{
+
 \code{ListResourceRecordSets} returns up to 100 resource record sets at a
 time in ASCII order, beginning at a position specified by the \code{name} and
 \code{type} elements.
@@ -71,7 +70,7 @@ reversed, for example:
 Note the trailing dot, which can change the sort order when the record
 name contains characters that appear before \code{.} (decimal 46) in the
 ASCII table. These characters include the following:
-\verb{! \\" # $ \% &amp; \\' ( ) * + , -}
+\verb{! \\" # $ \\\% &amp; \\' ( ) * + , -}
 
 When multiple records have the same DNS name, \code{ListResourceRecordSets}
 sorts results by the record type.

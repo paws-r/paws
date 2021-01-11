@@ -23,8 +23,7 @@ template configuration. Only resource properties explicitly defined in
 the stack template are checked for drift. A stack is considered to have
 drifted if one or more of its resources differ from their expected
 template configurations. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html}{Detecting Unregulated Configuration Changes to Stacks and Resources}.
-}
-\details{
+
 Use \code{DetectStackDrift} to detect drift on all supported resources for a
 given stack, or DetectStackResourceDrift to detect drift on individual
 resources.

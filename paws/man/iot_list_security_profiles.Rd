@@ -20,8 +20,7 @@ dimension. Cannot be used with \code{metricName}}
 \description{
 Lists the Device Defender security profiles you've created. You can
 filter security profiles by dimension or custom metric.
-}
-\details{
+
 \code{dimensionName} and \code{metricName} cannot be used in the same request.
 }
 \section{Request syntax}{

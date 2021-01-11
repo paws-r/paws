@@ -18,8 +18,7 @@ get the next page of the list, set this field’s value to the value of
 }
 \description{
 Gets a list of real-time log configurations.
-}
-\details{
+
 You can optionally specify the maximum number of items to receive in the
 response. If the total number of items in the list exceeds the maximum
 that you specify, or the default maximum, the response is paginated. To

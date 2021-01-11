@@ -5,6 +5,7 @@ NULL
 
 #' This operation clones an existing backend
 #'
+#' @description
 #' This operation clones an existing backend.
 #'
 #' @usage
@@ -46,6 +47,7 @@ amplifybackend_clone_backend <- function(AppId, BackendEnvironmentName, TargetEn
 
 #' This operation creates a backend for an Amplify app
 #'
+#' @description
 #' This operation creates a backend for an Amplify app. Backends are
 #' automatically created at the time of app creation.
 #'
@@ -92,6 +94,7 @@ amplifybackend_create_backend <- function(AppId, AppName, BackendEnvironmentName
 
 #' Creates a new backend API resource
 #'
+#' @description
 #' Creates a new backend API resource.
 #'
 #' @usage
@@ -170,6 +173,7 @@ amplifybackend_create_backend_api <- function(AppId, BackendEnvironmentName, Res
 
 #' Creates a new backend authentication resource
 #'
+#' @description
 #' Creates a new backend authentication resource.
 #'
 #' @usage
@@ -279,6 +283,7 @@ amplifybackend_create_backend_auth <- function(AppId, BackendEnvironmentName, Re
 
 #' Creates a config object for a backend
 #'
+#' @description
 #' Creates a config object for a backend.
 #'
 #' @usage
@@ -318,6 +323,7 @@ amplifybackend_create_backend_config <- function(AppId, BackendManagerAppId = NU
 #' Generates a one-time challenge code to authenticate a user into your
 #' Amplify Admin UI
 #'
+#' @description
 #' Generates a one-time challenge code to authenticate a user into your
 #' Amplify Admin UI.
 #'
@@ -355,6 +361,7 @@ amplifybackend_create_token <- function(AppId) {
 
 #' Removes an existing environment from your Amplify project
 #'
+#' @description
 #' Removes an existing environment from your Amplify project.
 #'
 #' @usage
@@ -393,6 +400,7 @@ amplifybackend_delete_backend <- function(AppId, BackendEnvironmentName) {
 
 #' Deletes an existing backend API resource
 #'
+#' @description
 #' Deletes an existing backend API resource.
 #'
 #' @usage
@@ -472,6 +480,7 @@ amplifybackend_delete_backend_api <- function(AppId, BackendEnvironmentName, Res
 
 #' Deletes an existing backend authentication resource
 #'
+#' @description
 #' Deletes an existing backend authentication resource.
 #'
 #' @usage
@@ -513,6 +522,7 @@ amplifybackend_delete_backend_auth <- function(AppId, BackendEnvironmentName, Re
 
 #' Deletes the challenge token based on the given appId and sessionId
 #'
+#' @description
 #' Deletes the challenge token based on the given appId and sessionId.
 #'
 #' @usage
@@ -551,6 +561,7 @@ amplifybackend_delete_token <- function(AppId, SessionId) {
 
 #' Generates a model schema for an existing backend API resource
 #'
+#' @description
 #' Generates a model schema for an existing backend API resource.
 #'
 #' @usage
@@ -592,6 +603,7 @@ amplifybackend_generate_backend_api_models <- function(AppId, BackendEnvironment
 
 #' Provides project-level details for your Amplify UI project
 #'
+#' @description
 #' Provides project-level details for your Amplify UI project.
 #'
 #' @usage
@@ -630,6 +642,7 @@ amplifybackend_get_backend <- function(AppId, BackendEnvironmentName = NULL) {
 
 #' Gets the details for a backend API
 #'
+#' @description
 #' Gets the details for a backend API.
 #'
 #' @usage
@@ -709,6 +722,7 @@ amplifybackend_get_backend_api <- function(AppId, BackendEnvironmentName, Resour
 
 #' Generates a model schema for existing backend API resource
 #'
+#' @description
 #' Generates a model schema for existing backend API resource.
 #'
 #' @usage
@@ -750,6 +764,7 @@ amplifybackend_get_backend_api_models <- function(AppId, BackendEnvironmentName,
 
 #' Gets backend auth details
 #'
+#' @description
 #' Gets backend auth details.
 #'
 #' @usage
@@ -791,6 +806,7 @@ amplifybackend_get_backend_auth <- function(AppId, BackendEnvironmentName, Resou
 
 #' Returns information about a specific job
 #'
+#' @description
 #' Returns information about a specific job.
 #'
 #' @usage
@@ -831,6 +847,7 @@ amplifybackend_get_backend_job <- function(AppId, BackendEnvironmentName, JobId)
 
 #' Gets the challenge token based on the given appId and sessionId
 #'
+#' @description
 #' Gets the challenge token based on the given appId and sessionId.
 #'
 #' @usage
@@ -869,6 +886,7 @@ amplifybackend_get_token <- function(AppId, SessionId) {
 
 #' Lists the jobs for the backend of an Amplify app
 #'
+#' @description
 #' Lists the jobs for the backend of an Amplify app.
 #'
 #' @usage
@@ -920,6 +938,7 @@ amplifybackend_list_backend_jobs <- function(AppId, BackendEnvironmentName, JobI
 
 #' Removes all backend environments from your Amplify project
 #'
+#' @description
 #' Removes all backend environments from your Amplify project.
 #'
 #' @usage
@@ -959,6 +978,7 @@ amplifybackend_remove_all_backends <- function(AppId, CleanAmplifyApp = NULL) {
 #' Removes the AWS resources that are required to access the Amplify Admin
 #' UI
 #'
+#' @description
 #' Removes the AWS resources that are required to access the Amplify Admin
 #' UI.
 #'
@@ -996,6 +1016,7 @@ amplifybackend_remove_backend_config <- function(AppId) {
 
 #' Updates an existing backend API resource
 #'
+#' @description
 #' Updates an existing backend API resource.
 #'
 #' @usage
@@ -1075,6 +1096,7 @@ amplifybackend_update_backend_api <- function(AppId, BackendEnvironmentName, Res
 
 #' Updates an existing backend authentication resource
 #'
+#' @description
 #' Updates an existing backend authentication resource.
 #'
 #' @usage
@@ -1179,6 +1201,7 @@ amplifybackend_update_backend_auth <- function(AppId, BackendEnvironmentName, Re
 #' Updates the AWS resources that are required to access the Amplify Admin
 #' UI
 #'
+#' @description
 #' Updates the AWS resources that are required to access the Amplify Admin
 #' UI.
 #'
@@ -1223,6 +1246,7 @@ amplifybackend_update_backend_config <- function(AppId, LoginAuthConfig = NULL) 
 
 #' Updates a specific job
 #'
+#' @description
 #' Updates a specific job.
 #'
 #' @usage

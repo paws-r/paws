@@ -5,6 +5,7 @@ NULL
 
 #' Performs GetChannel on multiple ARNs simultaneously
 #'
+#' @description
 #' Performs GetChannel on multiple ARNs simultaneously.
 #'
 #' @usage
@@ -43,6 +44,7 @@ ivs_batch_get_channel <- function(arns) {
 
 #' Performs GetStreamKey on multiple ARNs simultaneously
 #'
+#' @description
 #' Performs GetStreamKey on multiple ARNs simultaneously.
 #'
 #' @usage
@@ -81,6 +83,7 @@ ivs_batch_get_stream_key <- function(arns) {
 
 #' Creates a new channel and an associated stream key to start streaming
 #'
+#' @description
 #' Creates a new channel and an associated stream key to start streaming.
 #'
 #' @usage
@@ -142,6 +145,7 @@ ivs_create_channel <- function(name = NULL, latencyMode = NULL, type = NULL, aut
 #' Creates a stream key, used to initiate a stream, for the specified
 #' channel ARN
 #'
+#' @description
 #' Creates a stream key, used to initiate a stream, for the specified
 #' channel ARN.
 #' 
@@ -189,6 +193,7 @@ ivs_create_stream_key <- function(channelArn, tags = NULL) {
 
 #' Deletes the specified channel and its associated stream keys
 #'
+#' @description
 #' Deletes the specified channel and its associated stream keys.
 #'
 #' @usage
@@ -225,6 +230,7 @@ ivs_delete_channel <- function(arn) {
 
 #' Deletes a specified authorization key pair
 #'
+#' @description
 #' Deletes a specified authorization key pair. This invalidates future
 #' viewer tokens generated using the key pair’s `privateKey`.
 #'
@@ -263,6 +269,7 @@ ivs_delete_playback_key_pair <- function(arn) {
 #' Deletes the stream key for the specified ARN, so it can no longer be
 #' used to stream
 #'
+#' @description
 #' Deletes the stream key for the specified ARN, so it can no longer be
 #' used to stream.
 #'
@@ -300,6 +307,7 @@ ivs_delete_stream_key <- function(arn) {
 
 #' Gets the channel configuration for the specified channel ARN
 #'
+#' @description
 #' Gets the channel configuration for the specified channel ARN. See also
 #' BatchGetChannel.
 #'
@@ -338,6 +346,7 @@ ivs_get_channel <- function(arn) {
 #' Gets a specified playback authorization key pair and returns the arn and
 #' fingerprint
 #'
+#' @description
 #' Gets a specified playback authorization key pair and returns the `arn`
 #' and `fingerprint`. The `privateKey` held by the caller can be used to
 #' generate viewer authorization tokens, to grant viewers access to
@@ -377,6 +386,7 @@ ivs_get_playback_key_pair <- function(arn) {
 
 #' Gets information about the active (live) stream on a specified channel
 #'
+#' @description
 #' Gets information about the active (live) stream on a specified channel.
 #'
 #' @usage
@@ -413,6 +423,7 @@ ivs_get_stream <- function(channelArn) {
 
 #' Gets stream-key information for a specified ARN
 #'
+#' @description
 #' Gets stream-key information for a specified ARN.
 #'
 #' @usage
@@ -450,6 +461,7 @@ ivs_get_stream_key <- function(arn) {
 #' Imports the public portion of a new key pair and returns its arn and
 #' fingerprint
 #'
+#' @description
 #' Imports the public portion of a new key pair and returns its `arn` and
 #' `fingerprint`. The `privateKey` can then be used to generate viewer
 #' authorization tokens, to grant viewers access to authorized channels.
@@ -498,6 +510,7 @@ ivs_import_playback_key_pair <- function(publicKeyMaterial, name = NULL, tags = 
 #' Gets summary information about all channels in your account, in the AWS
 #' region where the API request is processed
 #'
+#' @description
 #' Gets summary information about all channels in your account, in the AWS
 #' region where the API request is processed. This list can be filtered to
 #' match a specified string.
@@ -541,6 +554,7 @@ ivs_list_channels <- function(filterByName = NULL, nextToken = NULL, maxResults 
 
 #' Gets summary information about playback key pairs
 #'
+#' @description
 #' Gets summary information about playback key pairs.
 #'
 #' @usage
@@ -580,6 +594,7 @@ ivs_list_playback_key_pairs <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Gets summary information about stream keys for the specified channel
 #'
+#' @description
 #' Gets summary information about stream keys for the specified channel.
 #'
 #' @usage
@@ -622,6 +637,7 @@ ivs_list_stream_keys <- function(channelArn, nextToken = NULL, maxResults = NULL
 #' Gets summary information about live streams in your account, in the AWS
 #' region where the API request is processed
 #'
+#' @description
 #' Gets summary information about live streams in your account, in the AWS
 #' region where the API request is processed.
 #'
@@ -662,6 +678,7 @@ ivs_list_streams <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Gets information about AWS tags for the specified ARN
 #'
+#' @description
 #' Gets information about AWS tags for the specified ARN.
 #'
 #' @usage
@@ -703,6 +720,7 @@ ivs_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxResults
 
 #' Inserts metadata into an RTMPS stream for the specified channel
 #'
+#' @description
 #' Inserts metadata into an RTMPS stream for the specified channel. A
 #' maximum of 5 requests per second per channel is allowed, each with a
 #' maximum 1KB payload.
@@ -744,6 +762,7 @@ ivs_put_metadata <- function(channelArn, metadata) {
 
 #' Disconnects the incoming RTMPS stream for the specified channel
 #'
+#' @description
 #' Disconnects the incoming RTMPS stream for the specified channel. Can be
 #' used in conjunction with DeleteStreamKey to prevent further streaming to
 #' a channel.
@@ -786,6 +805,7 @@ ivs_stop_stream <- function(channelArn) {
 
 #' Adds or updates tags for the AWS resource with the specified ARN
 #'
+#' @description
 #' Adds or updates tags for the AWS resource with the specified ARN.
 #'
 #' @usage
@@ -826,6 +846,7 @@ ivs_tag_resource <- function(resourceArn, tags) {
 
 #' Removes tags from the resource with the specified ARN
 #'
+#' @description
 #' Removes tags from the resource with the specified ARN.
 #'
 #' @usage
@@ -866,6 +887,7 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates a channel's configuration
 #'
+#' @description
 #' Updates a channel's configuration. This does not affect an ongoing
 #' stream of this channel. You must stop and restart the stream for the
 #' changes to take effect.

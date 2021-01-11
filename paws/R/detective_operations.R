@@ -6,6 +6,7 @@ NULL
 #' Accepts an invitation for the member account to contribute data to a
 #' behavior graph
 #'
+#' @description
 #' Accepts an invitation for the member account to contribute data to a
 #' behavior graph. This operation can only be called by an invited member
 #' account.
@@ -52,6 +53,7 @@ detective_accept_invitation <- function(GraphArn) {
 #' Creates a new behavior graph for the calling account, and sets that
 #' account as the master account
 #'
+#' @description
 #' Creates a new behavior graph for the calling account, and sets that
 #' account as the master account. This operation is called by the account
 #' that is enabling Detective.
@@ -104,6 +106,7 @@ detective_create_graph <- function() {
 #' Sends a request to invite the specified AWS accounts to be member
 #' accounts in the behavior graph
 #'
+#' @description
 #' Sends a request to invite the specified AWS accounts to be member
 #' accounts in the behavior graph. This operation can only be called by the
 #' master account for a behavior graph.
@@ -172,6 +175,7 @@ detective_create_members <- function(GraphArn, Message = NULL, Accounts) {
 
 #' Disables the specified behavior graph and queues it to be deleted
 #'
+#' @description
 #' Disables the specified behavior graph and queues it to be deleted. This
 #' operation removes the graph from each member account's list of behavior
 #' graphs.
@@ -214,6 +218,7 @@ detective_delete_graph <- function(GraphArn) {
 #' Deletes one or more member accounts from the master account behavior
 #' graph
 #'
+#' @description
 #' Deletes one or more member accounts from the master account behavior
 #' graph. This operation can only be called by a Detective master account.
 #' That account cannot use `DeleteMembers` to delete their own account from
@@ -259,6 +264,7 @@ detective_delete_members <- function(GraphArn, AccountIds) {
 
 #' Removes the member account from the specified behavior graph
 #'
+#' @description
 #' Removes the member account from the specified behavior graph. This
 #' operation can only be called by a member account that has the `ENABLED`
 #' status.
@@ -301,6 +307,7 @@ detective_disassociate_membership <- function(GraphArn) {
 #' Returns the membership details for specified member accounts for a
 #' behavior graph
 #'
+#' @description
 #' Returns the membership details for specified member accounts for a
 #' behavior graph.
 #'
@@ -347,6 +354,7 @@ detective_get_members <- function(GraphArn, AccountIds) {
 #' Returns the list of behavior graphs that the calling account is a master
 #' of
 #'
+#' @description
 #' Returns the list of behavior graphs that the calling account is a master
 #' of. This operation can only be called by a master account.
 #' 
@@ -394,6 +402,7 @@ detective_list_graphs <- function(NextToken = NULL, MaxResults = NULL) {
 #' Retrieves the list of open and accepted behavior graph invitations for
 #' the member account
 #'
+#' @description
 #' Retrieves the list of open and accepted behavior graph invitations for
 #' the member account. This operation can only be called by a member
 #' account.
@@ -445,6 +454,7 @@ detective_list_invitations <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Retrieves the list of member accounts for a behavior graph
 #'
+#' @description
 #' Retrieves the list of member accounts for a behavior graph. Does not
 #' return member accounts that were removed from the behavior graph.
 #'
@@ -491,6 +501,7 @@ detective_list_members <- function(GraphArn, NextToken = NULL, MaxResults = NULL
 
 #' Rejects an invitation to contribute the account data to a behavior graph
 #'
+#' @description
 #' Rejects an invitation to contribute the account data to a behavior
 #' graph. This operation must be called by a member account that has the
 #' `INVITED` status.
@@ -533,6 +544,7 @@ detective_reject_invitation <- function(GraphArn) {
 #' Sends a request to enable data ingest for a member account that has a
 #' status of ACCEPTED_BUT_DISABLED
 #'
+#' @description
 #' Sends a request to enable data ingest for a member account that has a
 #' status of `ACCEPTED_BUT_DISABLED`.
 #' 

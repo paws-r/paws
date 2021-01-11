@@ -54,8 +54,7 @@ additional page of data.}
 \description{
 Returns a table that shows counts of resources that are noncompliant
 with their tag policies.
-}
-\details{
+
 For more information on tag policies, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html}{Tag Policies}
 in the \emph{AWS Organizations User Guide.}
 

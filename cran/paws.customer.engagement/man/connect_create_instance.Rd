@@ -24,8 +24,7 @@ connect_create_instance(ClientToken, IdentityManagementType,
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Initiates an Amazon Connect instance with all the supported channels
 enabled. It does not attach any storage (such as Amazon S3, or Kinesis)
 or allow for any configurations on features such as Contact Lens for

@@ -14,8 +14,7 @@ account.}
 \description{
 Disassociates the specified member accounts from the associated master
 account.
-}
-\details{
+
 Can be used to disassociate both accounts that are in an organization
 and accounts that were invited manually.
 }

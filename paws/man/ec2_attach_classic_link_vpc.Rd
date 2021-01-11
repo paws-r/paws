@@ -28,8 +28,7 @@ instance to more than one VPC at a time. You can only link an instance
 that's in the \code{running} state. An instance is automatically unlinked
 from a VPC when it's stopped - you can link it to the VPC again when you
 restart it.
-}
-\details{
+
 After you've linked an instance, you cannot change the VPC security
 groups that are associated with it. To change the security groups, you
 must first unlink the instance, and then link it again.

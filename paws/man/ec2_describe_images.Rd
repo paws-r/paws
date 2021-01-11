@@ -91,8 +91,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified images (AMIs, AKIs, and ARIs) available to you
 or all of the images available to you.
-}
-\details{
+
 The images available to you include public images, private images that
 you own, and private images owned by other AWS accounts for which you
 have explicit launch permissions.

@@ -19,8 +19,7 @@ default is 10.}
 }
 \description{
 Gets information about all of the versions of a bot.
-}
-\details{
+
 The \code{GetBotVersions} operation returns a \code{BotMetadata} object for each
 version of a bot. For example, if a bot has three numbered versions, the
 \code{GetBotVersions} operation returns four \code{BotMetadata} objects in the

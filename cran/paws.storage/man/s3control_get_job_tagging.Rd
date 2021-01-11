@@ -16,8 +16,7 @@ Returns the tags on an S3 Batch Operations job. To use this operation,
 you must have permission to perform the \code{s3:GetJobTagging} action. For
 more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-managing-jobs.html#batch-ops-job-tags}{Controlling access and labeling jobs using tags}
 in the \emph{Amazon Simple Storage Service Developer Guide}.
-}
-\details{
+
 Related actions include:
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateJob.html}{CreateJob}

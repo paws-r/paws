@@ -49,8 +49,6 @@ For more information, see \href{https://docs.aws.amazon.com/personalize/latest/d
 Returns a list of recommended items. The required input depends on the
 recipe type used to create the solution backing the campaign, as
 follows:
-}
-\details{
 \itemize{
 \item RELATED\\_ITEMS - \code{itemId} required, \code{userId} not used
 \item USER\\_PERSONALIZATION - \code{itemId} optional, \code{userId} required

@@ -31,8 +31,7 @@ you do not specify either, AWS Elastic Beanstalk returns
 \description{
 Retrieves the compiled information from a RequestEnvironmentInfo
 request.
-}
-\details{
+
 Related Topics
 \itemize{
 \item RequestEnvironmentInfo

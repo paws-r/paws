@@ -57,8 +57,7 @@ are SUM and MAXIMUM.}
 This operation returns the time series data collected by a Contributor
 Insights rule. The data includes the identity and number of contributors
 to the log group.
-}
-\details{
+
 You can also optionally return one or more statistics about each data
 point in the time series. These statistics can include the following:
 \itemize{

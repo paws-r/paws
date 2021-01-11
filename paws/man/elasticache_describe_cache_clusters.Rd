@@ -39,8 +39,7 @@ Redis clusters.}
 Returns information about all provisioned clusters if no cluster
 identifier is specified, or about a specific cache cluster if a cluster
 identifier is supplied.
-}
-\details{
+
 By default, abbreviated information about the clusters is returned. You
 can use the optional \emph{ShowCacheNodeInfo} flag to retrieve detailed
 information about the cache nodes associated with the clusters. These

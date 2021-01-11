@@ -24,8 +24,7 @@ is mapped to the amr claim of the JWT token.}
 }
 \description{
 Creates a long-lived token.
-}
-\details{
+
 A refresh token is a JWT token used to get an access token. With an
 access token, you can call AssumeRoleWithWebIdentity to get role
 credentials that you can use to call License Manager to manage the

@@ -19,8 +19,7 @@ described be limited to the specified number.}
 \description{
 Returns a list of virtual tape recovery points that are available for
 the specified tape gateway.
-}
-\details{
+
 A recovery point is a point-in-time view of a virtual tape at which all
 the data on the virtual tape is consistent. If your gateway crashes,
 virtual tapes that have recovery points can be recovered to a new

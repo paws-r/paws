@@ -14,8 +14,6 @@ when you submitted the request.}
 \description{
 Returns the current status of a change batch request. The status is one
 of the following values:
-}
-\details{
 \itemize{
 \item \code{PENDING} indicates that the changes in this request have not
 propagated to all Amazon Route 53 DNS servers. This is the initial

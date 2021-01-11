@@ -35,8 +35,7 @@ To start at the beginning of the result set, do not specify a value.}
 Retrieves all aliases for this AWS account. You can filter the result
 set by alias name and/or routing strategy type. Use the pagination
 parameters to retrieve results in sequential pages.
-}
-\details{
+
 Returned aliases are not listed in any particular order.
 \itemize{
 \item CreateAlias

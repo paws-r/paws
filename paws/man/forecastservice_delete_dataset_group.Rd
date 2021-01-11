@@ -14,8 +14,7 @@ Deletes a dataset group created using the CreateDatasetGroup operation.
 You can only delete dataset groups that have a status of \code{ACTIVE},
 \code{CREATE_FAILED}, or \code{UPDATE_FAILED}. To get the status, use the
 DescribeDatasetGroup operation.
-}
-\details{
+
 This operation deletes only the dataset group, not the datasets in the
 group.
 }

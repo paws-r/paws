@@ -19,8 +19,7 @@ accounts and the account used to make the request, which is the master
 account. If you are integrated with Organizations, then the master
 account is the Security Hub administrator account that is designated by
 the organization management account.
-}
-\details{
+
 \code{CreateMembers} is always used to add accounts that are not organization
 members.
 

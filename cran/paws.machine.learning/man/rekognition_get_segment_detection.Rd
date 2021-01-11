@@ -22,8 +22,7 @@ set of text.}
 \description{
 Gets the segment detection results of a Amazon Rekognition Video
 analysis started by StartSegmentDetection.
-}
-\details{
+
 Segment detection with Amazon Rekognition Video is an asynchronous
 operation. You start segment detection by calling StartSegmentDetection
 which returns a job identifier (\code{JobId}). When the segment detection

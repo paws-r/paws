@@ -14,8 +14,7 @@ does not include dashes or spaces.}
 }
 \description{
 Returns the resource policy attached to the specified domain.
-}
-\details{
+
 The policy is a resource-based policy, not an identity-based policy. For
 more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html}{Identity-based policies and resource-based policies}
 in the \emph{AWS Identity and Access Management User Guide}.

@@ -13,8 +13,7 @@ directoryservice_verify_trust(TrustId)
 \description{
 AWS Directory Service for Microsoft Active Directory allows you to
 configure and verify trust relationships.
-}
-\details{
+
 This action verifies a trust relationship between your AWS Managed
 Microsoft AD directory and an external domain.
 }

@@ -18,8 +18,7 @@ To start at the beginning of the result set, do not specify a value.}
 \description{
 Retrieves script records for all Realtime scripts that are associated
 with the AWS account in use.
-}
-\details{
+
 \strong{Learn more}
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/realtime-intro.html}{Amazon GameLift Realtime Servers}

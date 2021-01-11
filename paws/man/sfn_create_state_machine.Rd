@@ -15,7 +15,7 @@ A name must \emph{not} contain:
 \item white space
 \item brackets \verb{&lt; &gt; \\\{ \\\} \\\[ \\\]}
 \item wildcard characters \verb{? *}
-\item special characters \verb{\\" # \% \\\\ ^ | ~ \\` $ &amp; , ; : /}
+\item special characters \verb{\\" # \\\% \\\\ ^ | ~ \\` $ &amp; , ; : /}
 \item control characters (\verb{U+0000-001F}, \verb{U+007F-009F})
 }
 
@@ -54,8 +54,7 @@ transition next (\code{Choice} states), stop an execution with an error
 (\code{Fail} states), and so on. State machines are specified using a
 JSON-based, structured language. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-amazon-states-language.html}{Amazon States Language}
 in the AWS Step Functions User Guide.
-}
-\details{
+
 This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
 

@@ -62,8 +62,7 @@ Creates an application version for the specified application. You can
 create an application version from a source bundle in Amazon S3, a
 commit in AWS CodeCommit, or the output of an AWS CodeBuild build as
 follows:
-}
-\details{
+
 Specify a commit in an AWS CodeCommit repository with
 \code{SourceBuildInformation}.
 

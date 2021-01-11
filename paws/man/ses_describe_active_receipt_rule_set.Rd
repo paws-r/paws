@@ -10,8 +10,7 @@ ses_describe_active_receipt_rule_set()
 \description{
 Returns the metadata and receipt rules for the receipt rule set that is
 currently active.
-}
-\details{
+
 For information about setting up receipt rule sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/receiving-email-receipt-rule-set.html}{Amazon SES Developer Guide}.
 
 You can execute this operation no more than once per second.

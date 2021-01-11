@@ -19,8 +19,7 @@ health check that you want to change the status for.}
 \description{
 Submits a request to change the health status of a custom health check
 to healthy or unhealthy.
-}
-\details{
+
 You can use \code{UpdateInstanceCustomHealthStatus} to change the status only
 for custom health checks, which you define using
 \code{HealthCheckCustomConfig} when you create a service. You can't use it to

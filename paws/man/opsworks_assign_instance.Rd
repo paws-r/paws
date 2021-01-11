@@ -14,8 +14,6 @@ a registered instance to a built-in layer.}
 }
 \description{
 Assign a registered instance to a layer.
-}
-\details{
 \itemize{
 \item You can assign registered on-premises instances to any layer type.
 \item You can assign registered Amazon EC2 instances only to custom

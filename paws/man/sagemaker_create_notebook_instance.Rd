@@ -86,8 +86,7 @@ root access for users.}
 \description{
 Creates an Amazon SageMaker notebook instance. A notebook instance is a
 machine learning (ML) compute instance running on a Jupyter notebook.
-}
-\details{
+
 In a \code{CreateNotebookInstance} request, specify the type of ML compute
 instance that you want to run. Amazon SageMaker launches the instance,
 installs common libraries that you can use to explore datasets for model

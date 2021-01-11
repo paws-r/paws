@@ -11,8 +11,7 @@ Removes a member account from its parent organization. This version of
 the operation is performed by the account that wants to leave. To remove
 a member account as a user in the management account, use
 RemoveAccountFromOrganization instead.
-}
-\details{
+
 This operation can be called only from a member account in the
 organization.
 \itemize{

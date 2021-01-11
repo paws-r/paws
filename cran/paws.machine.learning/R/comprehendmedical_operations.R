@@ -5,6 +5,7 @@ NULL
 
 #' Gets the properties associated with a medical entities detection job
 #'
+#' @description
 #' Gets the properties associated with a medical entities detection job.
 #' Use this operation to get the status of a detection job.
 #'
@@ -44,6 +45,7 @@ comprehendmedical_describe_entities_detection_v2_job <- function(JobId) {
 
 #' Gets the properties associated with an InferICD10CM job
 #'
+#' @description
 #' Gets the properties associated with an InferICD10CM job. Use this
 #' operation to get the status of an inference job.
 #'
@@ -84,6 +86,7 @@ comprehendmedical_describe_icd10cm_inference_job <- function(JobId) {
 #' Gets the properties associated with a protected health information (PHI)
 #' detection job
 #'
+#' @description
 #' Gets the properties associated with a protected health information (PHI)
 #' detection job. Use this operation to get the status of a detection job.
 #'
@@ -123,6 +126,7 @@ comprehendmedical_describe_phi_detection_job <- function(JobId) {
 
 #' Gets the properties associated with an InferRxNorm job
 #'
+#' @description
 #' Gets the properties associated with an InferRxNorm job. Use this
 #' operation to get the status of an inference job.
 #'
@@ -162,6 +166,7 @@ comprehendmedical_describe_rx_norm_inference_job <- function(JobId) {
 
 #' The DetectEntities operation is deprecated
 #'
+#' @description
 #' The `DetectEntities` operation is deprecated. You should use the
 #' DetectEntitiesV2 operation instead.
 #' 
@@ -207,6 +212,7 @@ comprehendmedical_detect_entities <- function(Text) {
 #' specific information about them such as entity category, location, and
 #' confidence score on that information
 #'
+#' @description
 #' Inspects the clinical text for a variety of medical entities and returns
 #' specific information about them such as entity category, location, and
 #' confidence score on that information. Amazon Comprehend Medical only
@@ -259,6 +265,7 @@ comprehendmedical_detect_entities_v2 <- function(Text) {
 #' entities and returns the entity category, location, and confidence score
 #' for each entity
 #'
+#' @description
 #' Inspects the clinical text for protected health information (PHI)
 #' entities and returns the entity category, location, and confidence score
 #' for each entity. Amazon Comprehend Medical only detects entities in
@@ -302,6 +309,7 @@ comprehendmedical_detect_phi <- function(Text) {
 #' record and links those entities to normalized concept identifiers in the
 #' ICD-10-CM knowledge base from the Centers for Disease Control
 #'
+#' @description
 #' InferICD10CM detects medical conditions as entities listed in a patient
 #' record and links those entities to normalized concept identifiers in the
 #' ICD-10-CM knowledge base from the Centers for Disease Control. Amazon
@@ -345,6 +353,7 @@ comprehendmedical_infer_icd10cm <- function(Text) {
 #' and links to the normalized concept identifiers in the RxNorm database
 #' from the National Library of Medicine
 #'
+#' @description
 #' InferRxNorm detects medications as entities listed in a patient record
 #' and links to the normalized concept identifiers in the RxNorm database
 #' from the National Library of Medicine. Amazon Comprehend Medical only
@@ -385,6 +394,7 @@ comprehendmedical_infer_rx_norm <- function(Text) {
 
 #' Gets a list of medical entity detection jobs that you have submitted
 #'
+#' @description
 #' Gets a list of medical entity detection jobs that you have submitted.
 #'
 #' @usage
@@ -438,6 +448,7 @@ comprehendmedical_list_entities_detection_v2_jobs <- function(Filter = NULL, Nex
 
 #' Gets a list of InferICD10CM jobs that you have submitted
 #'
+#' @description
 #' Gets a list of InferICD10CM jobs that you have submitted.
 #'
 #' @usage
@@ -492,6 +503,7 @@ comprehendmedical_list_icd10cm_inference_jobs <- function(Filter = NULL, NextTok
 #' Gets a list of protected health information (PHI) detection jobs that
 #' you have submitted
 #'
+#' @description
 #' Gets a list of protected health information (PHI) detection jobs that
 #' you have submitted.
 #'
@@ -545,6 +557,7 @@ comprehendmedical_list_phi_detection_jobs <- function(Filter = NULL, NextToken =
 
 #' Gets a list of InferRxNorm jobs that you have submitted
 #'
+#' @description
 #' Gets a list of InferRxNorm jobs that you have submitted.
 #'
 #' @usage
@@ -598,6 +611,7 @@ comprehendmedical_list_rx_norm_inference_jobs <- function(Filter = NULL, NextTok
 #' Starts an asynchronous medical entity detection job for a collection of
 #' documents
 #'
+#' @description
 #' Starts an asynchronous medical entity detection job for a collection of
 #' documents. Use the `DescribeEntitiesDetectionV2Job` operation to track
 #' the status of a job.
@@ -664,6 +678,7 @@ comprehendmedical_start_entities_detection_v2_job <- function(InputDataConfig, O
 #' Starts an asynchronous job to detect medical conditions and link them to
 #' the ICD-10-CM ontology
 #'
+#' @description
 #' Starts an asynchronous job to detect medical conditions and link them to
 #' the ICD-10-CM ontology. Use the `DescribeICD10CMInferenceJob` operation
 #' to track the status of a job.
@@ -729,6 +744,7 @@ comprehendmedical_start_icd10cm_inference_job <- function(InputDataConfig, Outpu
 
 #' Starts an asynchronous job to detect protected health information (PHI)
 #'
+#' @description
 #' Starts an asynchronous job to detect protected health information (PHI).
 #' Use the `DescribePHIDetectionJob` operation to track the status of a
 #' job.
@@ -795,6 +811,7 @@ comprehendmedical_start_phi_detection_job <- function(InputDataConfig, OutputDat
 #' Starts an asynchronous job to detect medication entities and link them
 #' to the RxNorm ontology
 #'
+#' @description
 #' Starts an asynchronous job to detect medication entities and link them
 #' to the RxNorm ontology. Use the `DescribeRxNormInferenceJob` operation
 #' to track the status of a job.
@@ -860,6 +877,7 @@ comprehendmedical_start_rx_norm_inference_job <- function(InputDataConfig, Outpu
 
 #' Stops a medical entities detection job in progress
 #'
+#' @description
 #' Stops a medical entities detection job in progress.
 #'
 #' @usage
@@ -896,6 +914,7 @@ comprehendmedical_stop_entities_detection_v2_job <- function(JobId) {
 
 #' Stops an InferICD10CM inference job in progress
 #'
+#' @description
 #' Stops an InferICD10CM inference job in progress.
 #'
 #' @usage
@@ -932,6 +951,7 @@ comprehendmedical_stop_icd10cm_inference_job <- function(JobId) {
 
 #' Stops a protected health information (PHI) detection job in progress
 #'
+#' @description
 #' Stops a protected health information (PHI) detection job in progress.
 #'
 #' @usage
@@ -968,6 +988,7 @@ comprehendmedical_stop_phi_detection_job <- function(JobId) {
 
 #' Stops an InferRxNorm inference job in progress
 #'
+#' @description
 #' Stops an InferRxNorm inference job in progress.
 #'
 #' @usage

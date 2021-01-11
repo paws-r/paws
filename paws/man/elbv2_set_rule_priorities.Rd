@@ -11,8 +11,7 @@ elbv2_set_rule_priorities(RulePriorities)
 }
 \description{
 Sets the priorities of the specified rules.
-}
-\details{
+
 You can reorder the rules as long as there are no priority conflicts in
 the new order. Any existing rules that you do not specify retain their
 current priority.

@@ -13,8 +13,7 @@ Cognito. This is the ID of the pool for which to return a configuration.}
 }
 \description{
 Gets the configuration settings of an identity pool.
-}
-\details{
+
 This API can only be called with developer credentials. You cannot call
 this API with the temporary user credentials provided by Cognito
 Identity.

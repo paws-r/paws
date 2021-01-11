@@ -18,8 +18,7 @@ Describes the longer ID format settings for all resource types in a
 specific Region. This request is useful for performing a quick audit to
 determine whether a specific Region is fully opted in for longer IDs
 (17-character IDs).
-}
-\details{
+
 This request only returns information about resource types that support
 longer IDs.
 

@@ -28,8 +28,6 @@ API request. Optional fields that are not specified are set to null.}
 \description{
 Modifies the target of an existing maintenance window. You can change
 the following:
-}
-\details{
 \itemize{
 \item Name
 \item Description

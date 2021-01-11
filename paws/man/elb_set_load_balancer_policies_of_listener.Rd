@@ -20,8 +20,7 @@ If the list is empty, all current policies are disabled.}
 \description{
 Replaces the current set of policies for the specified load balancer
 port with the specified set of policies.
-}
-\details{
+
 To enable back-end server authentication, use
 SetLoadBalancerPoliciesForBackendServer.
 

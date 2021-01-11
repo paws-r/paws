@@ -25,8 +25,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Retrieves a list that describes the UserStackAssociation objects. You
 must specify either or both of the following:
-}
-\details{
 \itemize{
 \item The stack name
 \item The user name (email address of the user associated with the stack)

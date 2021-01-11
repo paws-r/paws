@@ -125,8 +125,7 @@ Sends user input (text or speech) to Amazon Lex. Clients use this API to
 send text and audio requests to Amazon Lex at runtime. Amazon Lex
 interprets the user input using the machine learning model that it built
 for the bot.
-}
-\details{
+
 The \code{PostContent} operation supports audio input at 8kHz and 16kHz. You
 can use 8kHz audio to achieve higher speech recognition accuracy in
 telephone audio applications.

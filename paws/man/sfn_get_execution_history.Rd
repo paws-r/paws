@@ -34,8 +34,7 @@ Returns the history of the specified execution as a list of events. By
 default, the results are returned in ascending order of the \code{timeStamp}
 of the events. Use the \code{reverseOrder} parameter to get the latest events
 first.
-}
-\details{
+
 If \code{nextToken} is returned, there are more results available. The value
 of \code{nextToken} is a unique pagination token for each page. Make the call
 again using the returned token to retrieve the next page. Keep all other

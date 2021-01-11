@@ -42,8 +42,7 @@ using the Amazon Translate SDK.}
 Starts an asynchronous batch translation job. Batch translation jobs can
 be used to translate large volumes of text across multiple documents at
 once. For more information, see async.
-}
-\details{
+
 Batch translation jobs can be described with the
 DescribeTextTranslationJob operation, listed with the
 ListTextTranslationJobs operation, and stopped with the

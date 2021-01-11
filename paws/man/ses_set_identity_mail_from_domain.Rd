@@ -33,8 +33,7 @@ MAIL FROM domain setup is in the \code{Pending}, \code{Failed}, and
 \description{
 Enables or disables the custom MAIL FROM domain setup for a verified
 identity (an email address or a domain).
-}
-\details{
+
 To send emails using the specified MAIL FROM domain, you must add an MX
 record to your MAIL FROM domain's DNS settings. If you want your emails
 to pass Sender Policy Framework (SPF) checks, you must also add or

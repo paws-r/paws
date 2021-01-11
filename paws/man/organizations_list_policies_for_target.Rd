@@ -54,8 +54,7 @@ results.}
 Lists the policies that are directly attached to the specified target
 root, organizational unit (OU), or account. You must specify the policy
 type that you want included in the returned list.
-}
-\details{
+
 Always check the \code{NextToken} response parameter for a \code{null} value when
 calling a \verb{List*} operation. These operations can occasionally return an
 empty set of results even when there are more results available. The

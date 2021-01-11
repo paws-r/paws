@@ -234,8 +234,7 @@ to true, you will receive a \code{ValidationException}.}
 The \code{Scan} operation returns one or more items and item attributes by
 accessing every item in a table or a secondary index. To have DynamoDB
 return fewer items, you can provide a \code{FilterExpression} operation.
-}
-\details{
+
 If the total number of scanned items exceeds the maximum dataset size
 limit of 1 MB, the scan stops and results are returned to the user as a
 \code{LastEvaluatedKey} value to continue the scan in a subsequent operation.

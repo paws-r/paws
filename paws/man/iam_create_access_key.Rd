@@ -17,8 +17,7 @@ spaces. You can also include any of the following characters: \\_+=,.@-}
 \description{
 Creates a new AWS secret access key and corresponding AWS access key ID
 for the specified user. The default status for new keys is \code{Active}.
-}
-\details{
+
 If you do not specify a user name, IAM determines the user name
 implicitly based on the AWS access key ID signing the request. This
 operation works for access keys under the AWS account. Consequently, you

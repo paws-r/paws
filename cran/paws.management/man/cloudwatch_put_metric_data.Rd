@@ -22,8 +22,7 @@ not exist, CloudWatch creates the metric. When CloudWatch creates a
 metric, it can take up to fifteen minutes for the metric to appear in
 calls to
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_ListMetrics.html}{ListMetrics}.
-}
-\details{
+
 You can publish either individual data points in the \code{Value} field, or
 arrays of values and the number of times each value occurred during the
 period by using the \code{Values} and \code{Counts} fields in the \code{MetricDatum}

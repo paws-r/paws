@@ -39,8 +39,7 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the server certificates stored in IAM that have the specified path
 prefix. If none exist, the operation returns an empty list.
-}
-\details{
+
 You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 

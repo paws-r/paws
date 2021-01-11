@@ -13,8 +13,7 @@ efs_delete_file_system(FileSystemId)
 Deletes a file system, permanently severing access to its contents. Upon
 return, the file system no longer exists and you can't access any
 contents of the deleted file system.
-}
-\details{
+
 You can't delete a file system that is in use. That is, if the file
 system has any mount targets, you must first delete them. For more
 information, see DescribeMountTargets and DeleteMountTarget.

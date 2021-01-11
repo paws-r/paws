@@ -19,8 +19,6 @@ Lists information about your private certificate authority (CA) or one
 that has been shared with you. You specify the private CA on input by
 its ARN (Amazon Resource Name). The output contains the status of your
 CA. This can be any of the following:
-}
-\details{
 \itemize{
 \item \code{CREATING} - ACM Private CA is creating your private certificate
 authority.

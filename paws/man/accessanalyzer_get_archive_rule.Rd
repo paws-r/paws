@@ -13,8 +13,7 @@ accessanalyzer_get_archive_rule(analyzerName, ruleName)
 }
 \description{
 Retrieves information about an archive rule.
-}
-\details{
+
 To learn about filter keys that you can use to create an archive rule,
 see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-filter-keys.html}{Access Analyzer filter keys}
 in the \strong{IAM User Guide}.

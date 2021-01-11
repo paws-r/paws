@@ -19,8 +19,7 @@ customerprofiles_put_integration(DomainName, Uri, ObjectTypeName, Tags)
 \description{
 Adds an integration between the service and a third-party service, which
 includes Amazon AppFlow and Amazon Connect.
-}
-\details{
+
 An integration can belong to only one domain.
 }
 \section{Request syntax}{

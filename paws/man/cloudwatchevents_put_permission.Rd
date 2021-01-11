@@ -51,8 +51,7 @@ Running \code{PutPermission} permits the specified AWS account or AWS
 organization to put events to the specified \emph{event bus}. Amazon
 EventBridge (CloudWatch Events) rules in your account are triggered by
 these events arriving to an event bus in your account.
-}
-\details{
+
 For another account to send events to your account, that external
 account must have an EventBridge rule with your account's event bus as a
 target.

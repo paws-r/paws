@@ -16,8 +16,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Cancels one or more Spot Instance requests.
-}
-\details{
+
 Canceling a Spot Instance request does not terminate running Spot
 Instances associated with the request.
 }

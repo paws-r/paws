@@ -19,8 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Resets permission settings for the specified snapshot.
-}
-\details{
+
 For more information about modifying snapshot permissions, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html}{Sharing snapshots}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }

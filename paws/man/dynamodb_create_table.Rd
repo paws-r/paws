@@ -172,8 +172,7 @@ The \code{CreateTable} operation adds a new table to your account. In an AWS
 account, table names must be unique within each Region. That is, you can
 have two tables with same name if you create the tables in different
 Regions.
-}
-\details{
+
 \code{CreateTable} is an asynchronous operation. Upon receiving a
 \code{CreateTable} request, DynamoDB immediately returns a response with a
 \code{TableStatus} of \code{CREATING}. After the table is created, DynamoDB sets

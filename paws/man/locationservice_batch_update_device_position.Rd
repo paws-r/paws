@@ -15,8 +15,7 @@ locationservice_batch_update_device_position(TrackerName, Updates)
 Uploads a position update for one or more devices to a tracker resource.
 The data is used for API queries requesting the device position and
 position history.
-}
-\details{
+
 Limitation — Location data is sampled at a fixed rate of 1 position per
 30 second interval, and retained for 1 year before it is deleted.
 }

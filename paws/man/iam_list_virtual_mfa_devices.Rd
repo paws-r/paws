@@ -32,8 +32,7 @@ Lists the virtual MFA devices defined in the AWS account by assignment
 status. If you do not specify an assignment status, the operation
 returns a list of all virtual MFA devices. Assignment status can be
 \code{Assigned}, \code{Unassigned}, or \code{Any}.
-}
-\details{
+
 You can paginate the results using the \code{MaxItems} and \code{Marker}
 parameters.
 }

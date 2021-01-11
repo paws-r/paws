@@ -11,8 +11,7 @@ codecommit_get_repository(repositoryName)
 }
 \description{
 Returns information about a repository.
-}
-\details{
+
 The description field for a repository accepts all HTML characters and
 all valid Unicode characters. Applications that do not HTML-encode the
 description and display it in a webpage can expose users to potentially

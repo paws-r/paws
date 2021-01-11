@@ -20,8 +20,7 @@ bus for this partner event source.}
 \description{
 Called by an SaaS partner to create a partner event source. This
 operation is not used by AWS customers.
-}
-\details{
+
 Each partner event source can be used by one AWS account to create a
 matching partner event bus in that AWS account. A SaaS partner must
 create one partner event source for each AWS account that wants to

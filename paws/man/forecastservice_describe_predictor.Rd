@@ -12,8 +12,7 @@ information about.}
 }
 \description{
 Describes a predictor created using the CreatePredictor operation.
-}
-\details{
+
 In addition to listing the properties provided in the \code{CreatePredictor}
 request, this operation lists the following properties:
 \itemize{

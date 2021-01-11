@@ -14,8 +14,7 @@ to delete.}
 }
 \description{
 Deletes an AWS Fargate profile.
-}
-\details{
+
 When you delete a Fargate profile, any pods running on Fargate that were
 created with the profile are deleted. If those pods match another
 Fargate profile, then they are scheduled on Fargate with that profile.

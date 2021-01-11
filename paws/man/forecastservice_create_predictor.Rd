@@ -127,8 +127,7 @@ count against your tags per resource limit.
 }
 \description{
 Creates an Amazon Forecast predictor.
-}
-\details{
+
 In the request, provide a dataset group and either specify an algorithm
 or let Amazon Forecast choose an algorithm for you using AutoML. If you
 specify an algorithm, you also can override algorithm-specific

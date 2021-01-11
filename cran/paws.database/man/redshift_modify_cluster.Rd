@@ -218,8 +218,7 @@ target Availability Zone.}
 }
 \description{
 Modifies the settings for a cluster.
-}
-\details{
+
 You can also change node type and the number of nodes to scale up or
 down the cluster. When resizing a cluster, you must specify both the
 number of nodes and the node type even if one of the parameters does not

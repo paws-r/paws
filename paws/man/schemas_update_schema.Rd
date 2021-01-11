@@ -23,8 +23,7 @@ schemas_update_schema(ClientTokenId, Content, Description, RegistryName,
 }
 \description{
 Updates the schema definition
-}
-\details{
+
 Inactive schemas will be deleted after two years.
 }
 \section{Request syntax}{

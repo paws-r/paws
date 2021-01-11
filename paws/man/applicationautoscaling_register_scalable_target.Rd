@@ -158,8 +158,7 @@ in the \emph{Application Auto Scaling User Guide}.}
 }
 \description{
 Registers or updates a scalable target.
-}
-\details{
+
 A scalable target is a resource that Application Auto Scaling can scale
 out and scale in. Scalable targets are uniquely identified by the
 combination of resource ID, scalable dimension, and namespace.

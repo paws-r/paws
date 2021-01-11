@@ -12,8 +12,7 @@ lightsail_delete_disk_snapshot(diskSnapshotName)
 }
 \description{
 Deletes the specified disk snapshot.
-}
-\details{
+
 When you make periodic snapshots of a disk, the snapshots are
 incremental, and only the blocks on the device that have changed since
 your last snapshot are saved in the new snapshot. When you delete a
@@ -24,7 +23,7 @@ disk.
 
 The \verb{delete disk snapshot} operation supports tag-based access control
 via resource tags applied to the resource identified by
-\verb{disk snapshot name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{disk snapshot name}. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_disk_snapshot(

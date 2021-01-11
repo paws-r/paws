@@ -93,8 +93,7 @@ Amazon Resource Name (ARN) of the certificate. You can retrieve the
 certificate by calling the
 \href{https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetCertificate.html}{GetCertificate}
 action and specifying the ARN.
-}
-\details{
+
 You cannot use the ACM \strong{ListCertificateAuthorities} action to retrieve
 the ARNs of the certificates that you issue by using ACM Private CA.
 }

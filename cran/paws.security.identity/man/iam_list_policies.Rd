@@ -64,8 +64,7 @@ subsequent call that tells the service where to continue from.}
 Lists all the managed policies that are available in your AWS account,
 including your own customer-defined managed policies and all AWS managed
 policies.
-}
-\details{
+
 You can filter the list of policies that is returned using the optional
 \code{OnlyAttached}, \code{Scope}, and \code{PathPrefix} parameters. For example, to
 list only the customer managed policies in your AWS account, set \code{Scope}

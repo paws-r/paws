@@ -19,8 +19,7 @@ results.}
 \description{
 Provides summary information about the hierarchy groups for the
 specified Amazon Connect instance.
-}
-\details{
+
 For more information about agent hierarchies, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/agent-hierarchy.html}{Set Up Agent Hierarchies}
 in the \emph{Amazon Connect Administrator Guide}.
 }

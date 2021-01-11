@@ -94,8 +94,7 @@ target cluster snapshot, and otherwise \code{false}. The default is \code{false}
 }
 \description{
 Copies a snapshot of a cluster.
-}
-\details{
+
 To copy a cluster snapshot from a shared manual cluster snapshot,
 \code{SourceDBClusterSnapshotIdentifier} must be the Amazon Resource Name
 (ARN) of the shared cluster snapshot. You can only copy a shared DB

@@ -20,8 +20,7 @@ information, see \href{https://docs.aws.amazon.com/service-authorization/latest/
 \description{
 Associates a customer gateway with a device and optionally, with a link.
 If you specify a link, it must be associated with the specified device.
-}
-\details{
+
 You can only associate customer gateways that are connected to a VPN
 attachment on a transit gateway. The transit gateway must be registered
 in your global network. When you register a transit gateway, customer

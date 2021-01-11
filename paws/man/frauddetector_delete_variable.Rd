@@ -11,8 +11,7 @@ frauddetector_delete_variable(name)
 }
 \description{
 Deletes a variable.
-}
-\details{
+
 You can't delete variables that are included in an event type in Amazon
 Fraud Detector.
 

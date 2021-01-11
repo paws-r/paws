@@ -5,6 +5,7 @@ NULL
 
 #' Adds a notification channel to DevOps Guru
 #'
+#' @description
 #' Adds a notification channel to DevOps Guru. A notification channel is
 #' used to notify you about important DevOps Guru events, such as when an
 #' insight is generated.
@@ -64,6 +65,7 @@ devopsguru_add_notification_channel <- function(Config) {
 #' proactive insights, and the number of metrics analyzed in your AWS
 #' account
 #'
+#' @description
 #' Returns the number of open reactive insights, the number of open
 #' proactive insights, and the number of metrics analyzed in your AWS
 #' account. Use these numbers to gauge the health of operations in your AWS
@@ -102,6 +104,7 @@ devopsguru_describe_account_health <- function() {
 #' were created, and the Mean Time to Recover (MTTR) for all closed
 #' reactive insights
 #'
+#' @description
 #' For the time range passed in, returns the number of open reactive
 #' insight that were created, the number of open proactive insights that
 #' were created, and the Mean Time to Recover (MTTR) for all closed
@@ -152,6 +155,7 @@ devopsguru_describe_account_overview <- function(FromTime, ToTime = NULL) {
 
 #' Returns details about an anomaly that you specify using its ID
 #'
+#' @description
 #' Returns details about an anomaly that you specify using its ID.
 #'
 #' @usage
@@ -188,6 +192,7 @@ devopsguru_describe_anomaly <- function(Id) {
 
 #' Returns details about an insight that you specify using its ID
 #'
+#' @description
 #' Returns details about an insight that you specify using its ID.
 #'
 #' @usage
@@ -226,6 +231,7 @@ devopsguru_describe_insight <- function(Id) {
 #' and the Mean Time to Recover (MTTR) for all closed insights in resource
 #' collections in your account
 #'
+#' @description
 #' Returns the number of open proactive insights, open reactive insights,
 #' and the Mean Time to Recover (MTTR) for all closed insights in resource
 #' collections in your account. You specify the type of AWS resources
@@ -275,6 +281,7 @@ devopsguru_describe_resource_collection_health <- function(ResourceCollectionTyp
 #' Returns the integration status of services that are integrated with
 #' DevOps Guru
 #'
+#' @description
 #' Returns the integration status of services that are integrated with
 #' DevOps Guru. The one service that can be integrated with DevOps Guru is
 #' AWS Systems Manager, which can be used to create an OpsItem for each
@@ -311,6 +318,7 @@ devopsguru_describe_service_integration <- function() {
 #' Returns lists AWS resources that are of the specified resource
 #' collection type
 #'
+#' @description
 #' Returns lists AWS resources that are of the specified resource
 #' collection type. The one type of AWS resource collection supported is
 #' AWS CloudFormation stacks. DevOps Guru can be configured to analyze only
@@ -355,6 +363,7 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #' Returns a list of the anomalies that belong to an insight that you
 #' specify using its ID
 #'
+#' @description
 #' Returns a list of the anomalies that belong to an insight that you
 #' specify using its ID.
 #'
@@ -411,6 +420,7 @@ devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NU
 #' Returns a list of the events emitted by the resources that are evaluated
 #' by DevOps Guru
 #'
+#' @description
 #' Returns a list of the events emitted by the resources that are evaluated
 #' by DevOps Guru. You can use filters to specify which events are
 #' returned.
@@ -476,6 +486,7 @@ devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL)
 
 #' Returns a list of insights in your AWS account
 #'
+#' @description
 #' Returns a list of insights in your AWS account. You can specify which
 #' insights are returned by their start time and status (`ONGOING`,
 #' `CLOSED`, or `ANY`).
@@ -548,6 +559,7 @@ devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken 
 
 #' Returns a list of notification channels configured for DevOps Guru
 #'
+#' @description
 #' Returns a list of notification channels configured for DevOps Guru. Each
 #' notification channel is used to notify you when DevOps Guru generates an
 #' insight that contains information about how to improve your operations.
@@ -589,6 +601,7 @@ devopsguru_list_notification_channels <- function(NextToken = NULL) {
 
 #' Returns a list of a specified insight's recommendations
 #'
+#' @description
 #' Returns a list of a specified insight's recommendations. Each
 #' recommendation includes a list of related metrics and a list of related
 #' events.
@@ -630,6 +643,7 @@ devopsguru_list_recommendations <- function(InsightId, NextToken = NULL) {
 
 #' Collects customer feedback about the specified insight
 #'
+#' @description
 #' Collects customer feedback about the specified insight.
 #'
 #' @usage
@@ -670,6 +684,7 @@ devopsguru_put_feedback <- function(InsightFeedback = NULL) {
 
 #' Removes a notification channel from DevOps Guru
 #'
+#' @description
 #' Removes a notification channel from DevOps Guru. A notification channel
 #' is used to notify you when DevOps Guru generates an insight that
 #' contains information about how to improve your operations.
@@ -708,6 +723,7 @@ devopsguru_remove_notification_channel <- function(Id) {
 
 #' Returns a list of insights in your AWS account
 #'
+#' @description
 #' Returns a list of insights in your AWS account. You can specify which
 #' insights are returned by their start time, one or more statuses
 #' (`ONGOING`, `CLOSED`, and `CLOSED`), one or more severities (`LOW`,
@@ -786,6 +802,7 @@ devopsguru_search_insights <- function(StartTimeRange, Filters = NULL, MaxResult
 
 #' Updates the collection of resources that DevOps Guru analyzes
 #'
+#' @description
 #' Updates the collection of resources that DevOps Guru analyzes. The one
 #' type of AWS resource collection supported is AWS CloudFormation stacks.
 #' DevOps Guru can be configured to analyze only the AWS resources that are
@@ -836,6 +853,7 @@ devopsguru_update_resource_collection <- function(Action, ResourceCollection) {
 #' Enables or disables integration with a service that can be integrated
 #' with DevOps Guru
 #'
+#' @description
 #' Enables or disables integration with a service that can be integrated
 #' with DevOps Guru. The one service that can be integrated with DevOps
 #' Guru is AWS Systems Manager, which can be used to create an OpsItem for

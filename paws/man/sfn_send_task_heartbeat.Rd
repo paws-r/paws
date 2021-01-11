@@ -28,8 +28,7 @@ for tasks using the \href{https://docs.aws.amazon.com/step-functions/latest/dg/c
 or
 \href{https://docs.aws.amazon.com/step-functions/latest/dg/connect-to-resource.html#connect-wait-token}{callback}
 pattern.
-}
-\details{
+
 The \code{Timeout} of a task, defined in the state machine's Amazon States
 Language definition, is its maximum allowed duration, regardless of the
 number of SendTaskHeartbeat requests received. Use \code{HeartbeatSeconds} to

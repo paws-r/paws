@@ -16,8 +16,7 @@ DeleteSlotType operation.}
 \description{
 Deletes a specific version of a slot type. To delete all versions of a
 slot type, use the DeleteSlotType operation.
-}
-\details{
+
 This operation requires permissions for the \code{lex:DeleteSlotTypeVersion}
 action.
 }

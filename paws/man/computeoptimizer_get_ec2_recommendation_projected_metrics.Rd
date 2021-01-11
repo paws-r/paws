@@ -23,8 +23,7 @@ recommendation projected metrics.}
 \description{
 Returns the projected utilization metrics of Amazon EC2 instance
 recommendations.
-}
-\details{
+
 The \code{Cpu} and \code{Memory} metrics are the only projected utilization
 metrics returned when you run this action. Additionally, the \code{Memory}
 metric is returned only for resources that have the unified CloudWatch

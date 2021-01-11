@@ -12,8 +12,7 @@ delete.}
 }
 \description{
 Deletes an existing custom verification email template.
-}
-\details{
+
 For more information about custom verification email templates, see
 Using Custom Verification Email Templates in the \emph{Amazon SES Developer
 Guide}.

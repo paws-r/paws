@@ -17,8 +17,7 @@ emr_modify_instance_fleet(ClusterId, InstanceFleet)
 Modifies the target On-Demand and target Spot capacities for the
 instance fleet with the specified InstanceFleetID within the cluster
 specified using ClusterID. The call either succeeds or fails atomically.
-}
-\details{
+
 The instance fleet configuration is available only in Amazon EMR
 versions 4.8.0 and later, excluding 5.0.x versions.
 }

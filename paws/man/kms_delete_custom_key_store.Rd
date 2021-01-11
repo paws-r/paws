@@ -15,8 +15,7 @@ Deletes a \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key
 This operation does not delete the AWS CloudHSM cluster that is
 associated with the custom key store, or affect any users or keys in the
 cluster.
-}
-\details{
+
 The custom key store that you delete cannot contain any AWS KMS
 \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#master_keys}{customer master keys (CMKs)}.
 Before deleting the key store, verify that you will never need to use

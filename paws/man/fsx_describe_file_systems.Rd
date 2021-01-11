@@ -25,8 +25,7 @@ Returns the description of specific Amazon FSx file systems, if a
 \code{FileSystemIds} value is provided for that file system. Otherwise, it
 returns descriptions of all file systems owned by your AWS account in
 the AWS Region of the endpoint that you're calling.
-}
-\details{
+
 When retrieving all file system descriptions, you can optionally specify
 the \code{MaxResults} parameter to limit the number of descriptions in a
 response. If more file system descriptions remain, Amazon FSx returns a

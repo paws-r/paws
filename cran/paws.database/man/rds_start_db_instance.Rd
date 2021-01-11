@@ -13,8 +13,7 @@ rds_start_db_instance(DBInstanceIdentifier)
 \description{
 Starts an Amazon RDS DB instance that was stopped using the AWS console,
 the stop-db-instance AWS CLI command, or the StopDBInstance action.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StartInstance.html}{Starting an Amazon RDS DB instance That Was Previously Stopped}
 in the \emph{Amazon RDS User Guide.}
 

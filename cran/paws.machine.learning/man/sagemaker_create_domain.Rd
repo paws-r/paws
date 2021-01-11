@@ -46,8 +46,7 @@ authorized users, and a variety of security, application, policy, and
 Amazon Virtual Private Cloud (VPC) configurations. An AWS account is
 limited to one domain per region. Users within a domain can share
 notebook files and other artifacts with each other.
-}
-\details{
+
 \strong{EFS storage}
 
 When a domain is created, an EFS volume is created for use by all of the

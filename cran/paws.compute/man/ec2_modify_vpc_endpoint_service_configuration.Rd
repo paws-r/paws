@@ -43,8 +43,7 @@ Modifies the attributes of your VPC endpoint service configuration. You
 can change the Network Load Balancers or Gateway Load Balancers for your
 service, and you can specify whether acceptance is required for requests
 to connect to your endpoint service through an interface VPC endpoint.
-}
-\details{
+
 If you set or modify the private DNS name, you must prove that you own
 the private DNS domain name. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-dns-validation.html}{VPC Endpoint Service Private DNS Name Verification}
 in the \emph{Amazon Virtual Private Cloud User Guide}.

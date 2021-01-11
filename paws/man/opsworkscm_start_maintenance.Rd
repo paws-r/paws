@@ -25,8 +25,7 @@ Manually starts server maintenance. This command can be useful if an
 earlier maintenance attempt failed, and the underlying cause of
 maintenance failure has been resolved. The server is in an
 \code{UNDER_MAINTENANCE} state while maintenance is in progress.
-}
-\details{
+
 Maintenance can only be started on servers in \code{HEALTHY} and \code{UNHEALTHY}
 states. Otherwise, an \code{InvalidStateException} is thrown. A
 \code{ResourceNotFoundException} is thrown when the server does not exist. A

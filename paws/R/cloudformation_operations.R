@@ -5,6 +5,7 @@ NULL
 
 #' Cancels an update on the specified stack
 #'
+#' @description
 #' Cancels an update on the specified stack. If the call completes
 #' successfully, the stack rolls back the update and reverts to the
 #' previous stack configuration.
@@ -52,6 +53,7 @@ cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = N
 #' For a specified stack that is in the UPDATE_ROLLBACK_FAILED state,
 #' continues rolling it back to the UPDATE_ROLLBACK_COMPLETE state
 #'
+#' @description
 #' For a specified stack that is in the `UPDATE_ROLLBACK_FAILED` state,
 #' continues rolling it back to the `UPDATE_ROLLBACK_COMPLETE` state.
 #' Depending on the cause of the failure, you can manually [fix the
@@ -169,6 +171,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' Creates a list of changes that will be applied to a stack so that you
 #' can review the changes before executing them
 #'
+#' @description
 #' Creates a list of changes that will be applied to a stack so that you
 #' can review the changes before executing them. You can create a change
 #' set for a stack that doesn't exist or an existing stack. If you create a
@@ -440,6 +443,7 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 
 #' Creates a stack as specified in the template
 #'
+#' @description
 #' Creates a stack as specified in the template. After the call completes
 #' successfully, the stack creation starts. You can check the status of the
 #' stack via the DescribeStacks API.
@@ -717,6 +721,7 @@ cloudformation_create_stack <- function(StackName, TemplateBody = NULL, Template
 #' Creates stack instances for the specified accounts, within the specified
 #' Regions
 #'
+#' @description
 #' Creates stack instances for the specified accounts, within the specified
 #' Regions. A stack instance refers to a stack in a specific account and
 #' Region. You must specify at least one value for either `Accounts` or
@@ -851,6 +856,7 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 
 #' Creates a stack set
 #'
+#' @description
 #' Creates a stack set.
 #'
 #' @usage
@@ -1054,6 +1060,7 @@ cloudformation_create_stack_set <- function(StackSetName, Description = NULL, Te
 
 #' Deletes the specified change set
 #'
+#' @description
 #' Deletes the specified change set. Deleting change sets ensures that no
 #' one executes the wrong change set.
 #' 
@@ -1103,6 +1110,7 @@ cloudformation_delete_change_set <- function(ChangeSetName, StackName = NULL) {
 
 #' Deletes a specified stack
 #'
+#' @description
 #' Deletes a specified stack. Once the call completes successfully, stack
 #' deletion starts. Deleted stacks do not show up in the DescribeStacks API
 #' if the deletion has been completed successfully.
@@ -1182,6 +1190,7 @@ cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleA
 #' Deletes stack instances for the specified accounts, in the specified
 #' Regions
 #'
+#' @description
 #' Deletes stack instances for the specified accounts, in the specified
 #' Regions.
 #'
@@ -1276,6 +1285,7 @@ cloudformation_delete_stack_instances <- function(StackSetName, Accounts = NULL,
 
 #' Deletes a stack set
 #'
+#' @description
 #' Deletes a stack set. Before you can delete a stack set, all of its
 #' member stack instances must be deleted. For more information about how
 #' to do this, see DeleteStackInstances.
@@ -1316,6 +1326,7 @@ cloudformation_delete_stack_set <- function(StackSetName) {
 #' Removes a type or type version from active use in the CloudFormation
 #' registry
 #'
+#' @description
 #' Removes a type or type version from active use in the CloudFormation
 #' registry. If a type or type version is deregistered, it cannot be used
 #' in CloudFormation operations.
@@ -1380,6 +1391,7 @@ cloudformation_deregister_type <- function(Arn = NULL, Type = NULL, TypeName = N
 #' Retrieves your account's AWS CloudFormation limits, such as the maximum
 #' number of stacks that you can create in your account
 #'
+#' @description
 #' Retrieves your account's AWS CloudFormation limits, such as the maximum
 #' number of stacks that you can create in your account. For more
 #' information about account limits, see [AWS CloudFormation
@@ -1422,6 +1434,7 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #' Returns the inputs for the change set and a list of changes that AWS
 #' CloudFormation will make if you execute the change set
 #'
+#' @description
 #' Returns the inputs for the change set and a list of changes that AWS
 #' CloudFormation will make if you execute the change set. For more
 #' information, see [Updating Stacks Using Change
@@ -1469,6 +1482,7 @@ cloudformation_describe_change_set <- function(ChangeSetName, StackName = NULL, 
 
 #' Returns information about a stack drift detection operation
 #'
+#' @description
 #' Returns information about a stack drift detection operation. A stack
 #' drift detection operation detects whether a stack's actual configuration
 #' differs, or has *drifted*, from it's expected configuration, as defined
@@ -1526,6 +1540,7 @@ cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetec
 #' Returns all stack related events for a specified stack in reverse
 #' chronological order
 #'
+#' @description
 #' Returns all stack related events for a specified stack in reverse
 #' chronological order. For more information about a stack's event history,
 #' go to
@@ -1581,6 +1596,7 @@ cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = N
 #' Returns the stack instance that's associated with the specified stack
 #' set, AWS account, and Region
 #'
+#' @description
 #' Returns the stack instance that's associated with the specified stack
 #' set, AWS account, and Region.
 #' 
@@ -1627,6 +1643,7 @@ cloudformation_describe_stack_instance <- function(StackSetName, StackInstanceAc
 
 #' Returns a description of the specified resource in the specified stack
 #'
+#' @description
 #' Returns a description of the specified resource in the specified stack.
 #' 
 #' For deleted stacks, DescribeStackResource returns resource information
@@ -1679,6 +1696,7 @@ cloudformation_describe_stack_resource <- function(StackName, LogicalResourceId)
 #' Returns drift information for the resources that have been checked for
 #' drift in the specified stack
 #'
+#' @description
 #' Returns drift information for the resources that have been checked for
 #' drift in the specified stack. This includes actual and expected
 #' configuration values for resources where AWS CloudFormation detects
@@ -1755,6 +1773,7 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
 
 #' Returns AWS resource descriptions for running and deleted stacks
 #'
+#' @description
 #' Returns AWS resource descriptions for running and deleted stacks. If
 #' `StackName` is specified, all the associated resources that are part of
 #' the stack are returned. If `PhysicalResourceId` is specified, the
@@ -1840,6 +1859,7 @@ cloudformation_describe_stack_resources <- function(StackName = NULL, LogicalRes
 
 #' Returns the description of the specified stack set
 #'
+#' @description
 #' Returns the description of the specified stack set.
 #'
 #' @usage
@@ -1876,6 +1896,7 @@ cloudformation_describe_stack_set <- function(StackSetName) {
 
 #' Returns the description of the specified stack set operation
 #'
+#' @description
 #' Returns the description of the specified stack set operation.
 #'
 #' @usage
@@ -1916,6 +1937,7 @@ cloudformation_describe_stack_set_operation <- function(StackSetName, OperationI
 #' Returns the description for the specified stack; if no stack name was
 #' specified, then it returns the description for all the stacks created
 #'
+#' @description
 #' Returns the description for the specified stack; if no stack name was
 #' specified, then it returns the description for all the stacks created.
 #' 
@@ -1967,6 +1989,7 @@ cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
 
 #' Returns detailed information about a type that has been registered
 #'
+#' @description
 #' Returns detailed information about a type that has been registered.
 #' 
 #' If you specify a `VersionId`, `DescribeType` returns information about
@@ -2028,6 +2051,7 @@ cloudformation_describe_type <- function(Type = NULL, TypeName = NULL, Arn = NUL
 #' Returns information about a type's registration, including its current
 #' status and type and version identifiers
 #'
+#' @description
 #' Returns information about a type's registration, including its current
 #' status and type and version identifiers.
 #' 
@@ -2077,6 +2101,7 @@ cloudformation_describe_type_registration <- function(RegistrationToken) {
 #' from it's expected configuration, as defined in the stack template and
 #' any values specified as template parameters
 #'
+#' @description
 #' Detects whether a stack's actual configuration differs, or has
 #' *drifted*, from it's expected configuration, as defined in the stack
 #' template and any values specified as template parameters. For each
@@ -2148,6 +2173,7 @@ cloudformation_detect_stack_drift <- function(StackName, LogicalResourceIds = NU
 #' differs, or has drifted, from it's expected configuration, as defined in
 #' the stack template and any values specified as template parameters
 #'
+#' @description
 #' Returns information about whether a resource's actual configuration
 #' differs, or has *drifted*, from it's expected configuration, as defined
 #' in the stack template and any values specified as template parameters.
@@ -2203,6 +2229,7 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
 
 #' Detect drift on a stack set
 #'
+#' @description
 #' Detect drift on a stack set. When CloudFormation performs drift
 #' detection on a stack set, it performs drift detection on the stack
 #' associated with each stack instance in the stack set. For more
@@ -2290,6 +2317,7 @@ cloudformation_detect_stack_set_drift <- function(StackSetName, OperationPrefere
 
 #' Returns the estimated monthly cost of a template
 #'
+#' @description
 #' Returns the estimated monthly cost of a template. The return value is an
 #' AWS Simple Monthly Calculator URL with a query string that describes the
 #' resources required to run the template.
@@ -2355,6 +2383,7 @@ cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateU
 #' Updates a stack using the input information that was provided when the
 #' specified change set was created
 #'
+#' @description
 #' Updates a stack using the input information that was provided when the
 #' specified change set was created. After the call successfully completes,
 #' AWS CloudFormation starts updating the stack. Use the DescribeStacks
@@ -2416,6 +2445,7 @@ cloudformation_execute_change_set <- function(ChangeSetName, StackName = NULL, C
 
 #' Returns the stack policy for a specified stack
 #'
+#' @description
 #' Returns the stack policy for a specified stack. If a stack doesn't have
 #' a policy, a null value is returned.
 #'
@@ -2454,6 +2484,7 @@ cloudformation_get_stack_policy <- function(StackName) {
 
 #' Returns the template body for a specified stack
 #'
+#' @description
 #' Returns the template body for a specified stack. You can get the
 #' template for running or deleted stacks.
 #' 
@@ -2517,6 +2548,7 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 
 #' Returns information about a new or existing template
 #'
+#' @description
 #' Returns information about a new or existing template. The
 #' `GetTemplateSummary` action is useful for viewing parameter information,
 #' such as default parameter values and parameter types, before you create
@@ -2594,6 +2626,7 @@ cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL
 
 #' Returns the ID and status of each active change set for a stack
 #'
+#' @description
 #' Returns the ID and status of each active change set for a stack. For
 #' example, AWS CloudFormation lists change sets that are in the
 #' `CREATE_IN_PROGRESS` or `CREATE_PENDING` state.
@@ -2637,6 +2670,7 @@ cloudformation_list_change_sets <- function(StackName, NextToken = NULL) {
 #' Lists all exported output values in the account and Region in which you
 #' call this action
 #'
+#' @description
 #' Lists all exported output values in the account and Region in which you
 #' call this action. Use this action to see the exported output values that
 #' you can import into other stacks. To import values, use the
@@ -2681,6 +2715,7 @@ cloudformation_list_exports <- function(NextToken = NULL) {
 
 #' Lists all stacks that are importing an exported output value
 #'
+#' @description
 #' Lists all stacks that are importing an exported output value. To modify
 #' or remove an exported output value, first use this action to see which
 #' stacks are using it. To see the exported output values in your account,
@@ -2730,6 +2765,7 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
 #' Returns summary information about stack instances that are associated
 #' with the specified stack set
 #'
+#' @description
 #' Returns summary information about stack instances that are associated
 #' with the specified stack set. You can filter for stack instances that
 #' are associated with a specific AWS account name or Region, or that have
@@ -2794,6 +2830,7 @@ cloudformation_list_stack_instances <- function(StackSetName, NextToken = NULL, 
 
 #' Returns descriptions of all resources of the specified stack
 #'
+#' @description
 #' Returns descriptions of all resources of the specified stack.
 #' 
 #' For deleted stacks, ListStackResources returns resource information for
@@ -2844,6 +2881,7 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
 
 #' Returns summary information about the results of a stack set operation
 #'
+#' @description
 #' Returns summary information about the results of a stack set operation.
 #'
 #' @usage
@@ -2896,6 +2934,7 @@ cloudformation_list_stack_set_operation_results <- function(StackSetName, Operat
 
 #' Returns summary information about operations performed on a stack set
 #'
+#' @description
 #' Returns summary information about operations performed on a stack set.
 #'
 #' @usage
@@ -2947,6 +2986,7 @@ cloudformation_list_stack_set_operations <- function(StackSetName, NextToken = N
 #' Returns summary information about stack sets that are associated with
 #' the user
 #'
+#' @description
 #' Returns summary information about stack sets that are associated with
 #' the user.
 #'
@@ -2998,6 +3038,7 @@ cloudformation_list_stack_sets <- function(NextToken = NULL, MaxResults = NULL, 
 #' Returns the summary information for stacks whose status matches the
 #' specified StackStatusFilter
 #'
+#' @description
 #' Returns the summary information for stacks whose status matches the
 #' specified StackStatusFilter. Summary information for stacks that have
 #' been deleted is kept for 90 days after the stack is deleted. If no
@@ -3046,6 +3087,7 @@ cloudformation_list_stacks <- function(NextToken = NULL, StackStatusFilter = NUL
 
 #' Returns a list of registration tokens for the specified type(s)
 #'
+#' @description
 #' Returns a list of registration tokens for the specified type(s).
 #'
 #' @usage
@@ -3111,6 +3153,7 @@ cloudformation_list_type_registrations <- function(Type = NULL, TypeName = NULL,
 
 #' Returns summary information about the versions of a type
 #'
+#' @description
 #' Returns summary information about the versions of a type.
 #'
 #' @usage
@@ -3188,6 +3231,7 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
 #' Returns summary information about types that have been registered with
 #' CloudFormation
 #'
+#' @description
 #' Returns summary information about types that have been registered with
 #' CloudFormation.
 #'
@@ -3278,6 +3322,7 @@ cloudformation_list_types <- function(Visibility = NULL, ProvisioningType = NULL
 
 #' Reports progress of a resource handler to CloudFormation
 #'
+#' @description
 #' Reports progress of a resource handler to CloudFormation.
 #' 
 #' Reserved for use by the [CloudFormation
@@ -3339,6 +3384,7 @@ cloudformation_record_handler_progress <- function(BearerToken, OperationStatus,
 
 #' Registers a type with the CloudFormation service
 #'
+#' @description
 #' Registers a type with the CloudFormation service. Registering a type
 #' makes it available for use in CloudFormation templates in your AWS
 #' account, and includes:
@@ -3460,6 +3506,7 @@ cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPac
 
 #' Sets a stack policy for a specified stack
 #'
+#' @description
 #' Sets a stack policy for a specified stack.
 #'
 #' @usage
@@ -3508,6 +3555,7 @@ cloudformation_set_stack_policy <- function(StackName, StackPolicyBody = NULL, S
 
 #' Specify the default version of a type
 #'
+#' @description
 #' Specify the default version of a type. The default version of a type
 #' will be used in CloudFormation operations.
 #'
@@ -3561,6 +3609,7 @@ cloudformation_set_type_default_version <- function(Arn = NULL, Type = NULL, Typ
 #' Sends a signal to the specified resource with a success or failure
 #' status
 #'
+#' @description
 #' Sends a signal to the specified resource with a success or failure
 #' status. You can use the SignalResource API in conjunction with a
 #' creation policy or update policy. AWS CloudFormation doesn't proceed
@@ -3618,6 +3667,7 @@ cloudformation_signal_resource <- function(StackName, LogicalResourceId, UniqueI
 #' Stops an in-progress operation on a stack set and its associated stack
 #' instances
 #'
+#' @description
 #' Stops an in-progress operation on a stack set and its associated stack
 #' instances.
 #'
@@ -3658,6 +3708,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId) {
 
 #' Updates a stack as specified in the template
 #'
+#' @description
 #' Updates a stack as specified in the template. After the call completes
 #' successfully, the stack update starts. You can check the status of the
 #' stack via the DescribeStacks action.
@@ -3943,6 +3994,7 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
 #' Updates the parameter values for stack instances for the specified
 #' accounts, within the specified Regions
 #'
+#' @description
 #' Updates the parameter values for stack instances for the specified
 #' accounts, within the specified Regions. A stack instance refers to a
 #' stack in a specific account and Region.
@@ -4105,6 +4157,7 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' Updates the stack set, and associated stack instances in the specified
 #' accounts and Regions
 #'
+#' @description
 #' Updates the stack set, and associated stack instances in the specified
 #' accounts and Regions.
 #' 
@@ -4426,6 +4479,7 @@ cloudformation_update_stack_set <- function(StackSetName, Description = NULL, Te
 
 #' Updates termination protection for the specified stack
 #'
+#' @description
 #' Updates termination protection for the specified stack. If a user
 #' attempts to delete a stack with termination protection enabled, the
 #' operation fails and the stack remains unchanged. For more information,
@@ -4476,6 +4530,7 @@ cloudformation_update_termination_protection <- function(EnableTerminationProtec
 
 #' Validates a specified template
 #'
+#' @description
 #' Validates a specified template. AWS CloudFormation first checks if the
 #' template is valid JSON. If it isn't, AWS CloudFormation checks if the
 #' template is valid YAML. If both these checks fail, AWS CloudFormation

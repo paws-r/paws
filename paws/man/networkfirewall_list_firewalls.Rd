@@ -26,8 +26,7 @@ subsequent call to get the next batch of objects.}
 Retrieves the metadata for the firewalls that you have defined. If you
 provide VPC identifiers in your request, this returns only the firewalls
 for those VPCs.
-}
-\details{
+
 Depending on your setting for max results and the number of firewalls, a
 single call might not return the full list.
 }

@@ -13,8 +13,7 @@ autoscaling_attach_instances(InstanceIds, AutoScalingGroupName)
 }
 \description{
 Attaches one or more EC2 instances to the specified Auto Scaling group.
-}
-\details{
+
 When you attach instances, Amazon EC2 Auto Scaling increases the desired
 capacity of the group by the number of instances being attached. If the
 number of instances being attached plus the desired capacity of the

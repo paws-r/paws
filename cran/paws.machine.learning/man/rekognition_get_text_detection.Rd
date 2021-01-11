@@ -23,8 +23,7 @@ text.}
 \description{
 Gets the text detection results of a Amazon Rekognition Video analysis
 started by StartTextDetection.
-}
-\details{
+
 Text detection with Amazon Rekognition Video is an asynchronous
 operation. You start text detection by calling StartTextDetection which
 returns a job identifier (\code{JobId}) When the text detection operation

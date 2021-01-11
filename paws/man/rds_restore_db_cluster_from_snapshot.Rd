@@ -183,8 +183,7 @@ Directory Service.}
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot. This
 action only applies to Aurora DB clusters.
-}
-\details{
+
 The target DB cluster is created from the source snapshot with a default
 configuration. If you don't specify a security group, the new DB cluster
 is associated with the default security group.

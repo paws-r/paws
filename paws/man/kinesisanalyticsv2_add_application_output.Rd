@@ -26,8 +26,7 @@ use when writing to the destination.}
 \description{
 Adds an external destination to your SQL-based Kinesis Data Analytics
 application.
-}
-\details{
+
 If you want Kinesis Data Analytics to deliver data from an
 in-application stream within your application to an external destination
 (such as an Kinesis data stream, a Kinesis Data Firehose delivery

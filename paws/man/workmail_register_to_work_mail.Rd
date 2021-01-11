@@ -23,8 +23,7 @@ if the user, group, or resource is deleted. This operation results in
 the accumulation of costs. For more information, see
 \href{https://aws.amazon.com/workmail/pricing/}{Pricing}. The equivalent
 console functionality for this operation is \emph{Enable}.
-}
-\details{
+
 Users can either be created by calling the CreateUser API operation or
 they can be synchronized from your directory. For more information, see
 DeregisterFromWorkMail.

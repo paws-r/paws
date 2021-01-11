@@ -39,8 +39,7 @@ block from an IPv6 address pool that you provisioned through bring your
 own IP addresses
 (\href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html}{BYOIP}).
 The IPv6 CIDR block size is fixed at /56.
-}
-\details{
+
 You must specify one of the following in the request: an IPv4 CIDR
 block, an IPv6 pool, or an Amazon-provided IPv6 CIDR block.
 

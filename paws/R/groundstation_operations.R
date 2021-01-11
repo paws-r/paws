@@ -5,6 +5,7 @@ NULL
 
 #' Cancels a contact with a specified contact ID
 #'
+#' @description
 #' Cancels a contact with a specified contact ID.
 #'
 #' @usage
@@ -41,6 +42,7 @@ groundstation_cancel_contact <- function(contactId) {
 
 #' Creates a Config with the specified configData parameters
 #'
+#' @description
 #' Creates a `Config` with the specified `configData` parameters.
 #' 
 #' Only one type of `configData` can be specified.
@@ -144,6 +146,7 @@ groundstation_create_config <- function(configData, name, tags = NULL) {
 #' Creates a DataflowEndpoint group containing the specified list of
 #' DataflowEndpoint objects
 #'
+#' @description
 #' Creates a `DataflowEndpoint` group containing the specified list of
 #' `DataflowEndpoint` objects.
 #' 
@@ -213,6 +216,7 @@ groundstation_create_dataflow_endpoint_group <- function(endpointDetails, tags =
 
 #' Creates a mission profile
 #'
+#' @description
 #' Creates a mission profile.
 #' 
 #' `dataflowEdges` is a list of lists of strings. Each lower level list of
@@ -277,6 +281,7 @@ groundstation_create_mission_profile <- function(contactPostPassDurationSeconds 
 
 #' Deletes a Config
 #'
+#' @description
 #' Deletes a `Config`.
 #'
 #' @usage
@@ -315,6 +320,7 @@ groundstation_delete_config <- function(configId, configType) {
 
 #' Deletes a dataflow endpoint group
 #'
+#' @description
 #' Deletes a dataflow endpoint group.
 #'
 #' @usage
@@ -351,6 +357,7 @@ groundstation_delete_dataflow_endpoint_group <- function(dataflowEndpointGroupId
 
 #' Deletes a mission profile
 #'
+#' @description
 #' Deletes a mission profile.
 #'
 #' @usage
@@ -387,6 +394,7 @@ groundstation_delete_mission_profile <- function(missionProfileId) {
 
 #' Describes an existing contact
 #'
+#' @description
 #' Describes an existing contact.
 #'
 #' @usage
@@ -423,6 +431,7 @@ groundstation_describe_contact <- function(contactId) {
 
 #' Returns Config information
 #'
+#' @description
 #' Returns `Config` information.
 #' 
 #' Only one `Config` response can be returned.
@@ -463,6 +472,7 @@ groundstation_get_config <- function(configId, configType) {
 
 #' Returns the dataflow endpoint group
 #'
+#' @description
 #' Returns the dataflow endpoint group.
 #'
 #' @usage
@@ -499,6 +509,7 @@ groundstation_get_dataflow_endpoint_group <- function(dataflowEndpointGroupId) {
 
 #' Returns the number of minutes used by account
 #'
+#' @description
 #' Returns the number of minutes used by account.
 #'
 #' @usage
@@ -537,6 +548,7 @@ groundstation_get_minute_usage <- function(month, year) {
 
 #' Returns a mission profile
 #'
+#' @description
 #' Returns a mission profile.
 #'
 #' @usage
@@ -573,6 +585,7 @@ groundstation_get_mission_profile <- function(missionProfileId) {
 
 #' Returns a satellite
 #'
+#' @description
 #' Returns a satellite.
 #'
 #' @usage
@@ -609,6 +622,7 @@ groundstation_get_satellite <- function(satelliteId) {
 
 #' Returns a list of Config objects
 #'
+#' @description
 #' Returns a list of `Config` objects.
 #'
 #' @usage
@@ -648,6 +662,7 @@ groundstation_list_configs <- function(maxResults = NULL, nextToken = NULL) {
 
 #' Returns a list of contacts
 #'
+#' @description
 #' Returns a list of contacts.
 #' 
 #' If `statusList` contains AVAILABLE, the request must include
@@ -709,6 +724,7 @@ groundstation_list_contacts <- function(endTime, groundStation = NULL, maxResult
 
 #' Returns a list of DataflowEndpoint groups
 #'
+#' @description
 #' Returns a list of `DataflowEndpoint` groups.
 #'
 #' @usage
@@ -748,6 +764,7 @@ groundstation_list_dataflow_endpoint_groups <- function(maxResults = NULL, nextT
 
 #' Returns a list of ground stations
 #'
+#' @description
 #' Returns a list of ground stations.
 #'
 #' @usage
@@ -789,6 +806,7 @@ groundstation_list_ground_stations <- function(maxResults = NULL, nextToken = NU
 
 #' Returns a list of mission profiles
 #'
+#' @description
 #' Returns a list of mission profiles.
 #'
 #' @usage
@@ -828,6 +846,7 @@ groundstation_list_mission_profiles <- function(maxResults = NULL, nextToken = N
 
 #' Returns a list of satellites
 #'
+#' @description
 #' Returns a list of satellites.
 #'
 #' @usage
@@ -867,6 +886,7 @@ groundstation_list_satellites <- function(maxResults = NULL, nextToken = NULL) {
 
 #' Returns a list of tags for a specified resource
 #'
+#' @description
 #' Returns a list of tags for a specified resource.
 #'
 #' @usage
@@ -903,6 +923,7 @@ groundstation_list_tags_for_resource <- function(resourceArn) {
 
 #' Reserves a contact using specified parameters
 #'
+#' @description
 #' Reserves a contact using specified parameters.
 #'
 #' @usage
@@ -956,6 +977,7 @@ groundstation_reserve_contact <- function(endTime, groundStation, missionProfile
 
 #' Assigns a tag to a resource
 #'
+#' @description
 #' Assigns a tag to a resource.
 #'
 #' @usage
@@ -996,6 +1018,7 @@ groundstation_tag_resource <- function(resourceArn, tags) {
 
 #' Deassigns a resource tag
 #'
+#' @description
 #' Deassigns a resource tag.
 #'
 #' @usage
@@ -1036,6 +1059,7 @@ groundstation_untag_resource <- function(resourceArn, tagKeys) {
 
 #' Updates the Config used when scheduling contacts
 #'
+#' @description
 #' Updates the `Config` used when scheduling contacts.
 #' 
 #' Updating a `Config` will not update the execution parameters for
@@ -1139,6 +1163,7 @@ groundstation_update_config <- function(configData, configId, configType, name) 
 
 #' Updates a mission profile
 #'
+#' @description
 #' Updates a mission profile.
 #' 
 #' Updating a mission profile will not update the execution parameters for

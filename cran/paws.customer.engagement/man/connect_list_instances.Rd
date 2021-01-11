@@ -17,8 +17,7 @@ results.}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Return a list of instances which are in active state,
 creation-in-progress state, and failed state. Instances that aren't
 successfully created (they are in a failed state) are returned only for

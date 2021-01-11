@@ -20,8 +20,7 @@ as possible, regardless of the maintenance window for the database.}
 Stops a database activity stream that was started using the AWS console,
 the \code{start-activity-stream} AWS CLI command, or the
 \code{StartActivityStream} action.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/DBActivityStreams.html}{Database Activity Streams}
 in the \emph{Amazon Aurora User Guide}.
 }

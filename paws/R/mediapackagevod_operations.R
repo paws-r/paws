@@ -5,6 +5,7 @@ NULL
 
 #' Creates a new MediaPackage VOD Asset resource
 #'
+#' @description
 #' Creates a new MediaPackage VOD Asset resource.
 #'
 #' @usage
@@ -54,6 +55,7 @@ mediapackagevod_create_asset <- function(Id, PackagingGroupId, ResourceId = NULL
 
 #' Creates a new MediaPackage VOD PackagingConfiguration resource
 #'
+#' @description
 #' Creates a new MediaPackage VOD PackagingConfiguration resource.
 #'
 #' @usage
@@ -207,6 +209,7 @@ mediapackagevod_create_packaging_configuration <- function(CmafPackage = NULL, D
 
 #' Creates a new MediaPackage VOD PackagingGroup resource
 #'
+#' @description
 #' Creates a new MediaPackage VOD PackagingGroup resource.
 #'
 #' @usage
@@ -252,6 +255,7 @@ mediapackagevod_create_packaging_group <- function(Authorization = NULL, Id, Tag
 
 #' Deletes an existing MediaPackage VOD Asset resource
 #'
+#' @description
 #' Deletes an existing MediaPackage VOD Asset resource.
 #'
 #' @usage
@@ -288,6 +292,7 @@ mediapackagevod_delete_asset <- function(Id) {
 
 #' Deletes a MediaPackage VOD PackagingConfiguration resource
 #'
+#' @description
 #' Deletes a MediaPackage VOD PackagingConfiguration resource.
 #'
 #' @usage
@@ -324,6 +329,7 @@ mediapackagevod_delete_packaging_configuration <- function(Id) {
 
 #' Deletes a MediaPackage VOD PackagingGroup resource
 #'
+#' @description
 #' Deletes a MediaPackage VOD PackagingGroup resource.
 #'
 #' @usage
@@ -360,6 +366,7 @@ mediapackagevod_delete_packaging_group <- function(Id) {
 
 #' Returns a description of a MediaPackage VOD Asset resource
 #'
+#' @description
 #' Returns a description of a MediaPackage VOD Asset resource.
 #'
 #' @usage
@@ -397,6 +404,7 @@ mediapackagevod_describe_asset <- function(Id) {
 #' Returns a description of a MediaPackage VOD PackagingConfiguration
 #' resource
 #'
+#' @description
 #' Returns a description of a MediaPackage VOD PackagingConfiguration resource.
 #'
 #' @usage
@@ -433,6 +441,7 @@ mediapackagevod_describe_packaging_configuration <- function(Id) {
 
 #' Returns a description of a MediaPackage VOD PackagingGroup resource
 #'
+#' @description
 #' Returns a description of a MediaPackage VOD PackagingGroup resource.
 #'
 #' @usage
@@ -469,6 +478,7 @@ mediapackagevod_describe_packaging_group <- function(Id) {
 
 #' Returns a collection of MediaPackage VOD Asset resources
 #'
+#' @description
 #' Returns a collection of MediaPackage VOD Asset resources.
 #'
 #' @usage
@@ -510,6 +520,7 @@ mediapackagevod_list_assets <- function(MaxResults = NULL, NextToken = NULL, Pac
 #' Returns a collection of MediaPackage VOD PackagingConfiguration
 #' resources
 #'
+#' @description
 #' Returns a collection of MediaPackage VOD PackagingConfiguration resources.
 #'
 #' @usage
@@ -551,6 +562,7 @@ mediapackagevod_list_packaging_configurations <- function(MaxResults = NULL, Nex
 
 #' Returns a collection of MediaPackage VOD PackagingGroup resources
 #'
+#' @description
 #' Returns a collection of MediaPackage VOD PackagingGroup resources.
 #'
 #' @usage
@@ -589,6 +601,7 @@ mediapackagevod_list_packaging_groups <- function(MaxResults = NULL, NextToken =
 
 #' Returns a list of the tags assigned to the specified resource
 #'
+#' @description
 #' Returns a list of the tags assigned to the specified resource.
 #'
 #' @usage
@@ -625,6 +638,7 @@ mediapackagevod_list_tags_for_resource <- function(ResourceArn) {
 
 #' Adds tags to the specified resource
 #'
+#' @description
 #' Adds tags to the specified resource. You can specify one or more tags to add.
 #'
 #' @usage
@@ -665,6 +679,7 @@ mediapackagevod_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes tags from the specified resource
 #'
+#' @description
 #' Removes tags from the specified resource. You can specify one or more tags to remove.
 #'
 #' @usage
@@ -705,6 +720,7 @@ mediapackagevod_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates a specific packaging group
 #'
+#' @description
 #' Updates a specific packaging group. You can't change the id attribute or any other system-generated attributes.
 #'
 #' @usage

@@ -13,8 +13,7 @@ autoscaling_cancel_instance_refresh(AutoScalingGroupName)
 Cancels an instance refresh operation in progress. Cancellation does not
 roll back any replacements that have already been completed, but it
 prevents new replacements from being started.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html}{Replacing Auto Scaling Instances Based on an Instance Refresh}.
 }
 \section{Request syntax}{

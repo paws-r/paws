@@ -13,8 +13,7 @@ sagemaker_delete_endpoint_config(EndpointConfigName)
 Deletes an endpoint configuration. The \code{DeleteEndpointConfig} API
 deletes only the specified configuration. It does not delete endpoints
 created using the configuration.
-}
-\details{
+
 You must not delete an \code{EndpointConfig} in use by an endpoint that is
 live or while the \code{UpdateEndpoint} or \code{CreateEndpoint} operations are
 being performed on the endpoint. If you delete the \code{EndpointConfig} of

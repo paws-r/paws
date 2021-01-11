@@ -5,6 +5,7 @@ NULL
 
 #' Create a CLI token to use Airflow CLI
 #'
+#' @description
 #' Create a CLI token to use Airflow CLI.
 #'
 #' @usage
@@ -41,6 +42,7 @@ mwaa_create_cli_token <- function(Name) {
 
 #' JSON blob that describes the environment to create
 #'
+#' @description
 #' JSON blob that describes the environment to create.
 #'
 #' @usage
@@ -192,6 +194,7 @@ mwaa_create_environment <- function(AirflowConfigurationOptions = NULL, AirflowV
 #' Create a JWT token to be used to login to Airflow Web UI with claims
 #' based Authentication
 #'
+#' @description
 #' Create a JWT token to be used to login to Airflow Web UI with claims
 #' based Authentication.
 #'
@@ -229,6 +232,7 @@ mwaa_create_web_login_token <- function(Name) {
 
 #' Delete an existing environment
 #'
+#' @description
 #' Delete an existing environment.
 #'
 #' @usage
@@ -265,6 +269,7 @@ mwaa_delete_environment <- function(Name) {
 
 #' Get details of an existing environment
 #'
+#' @description
 #' Get details of an existing environment.
 #'
 #' @usage
@@ -301,6 +306,7 @@ mwaa_get_environment <- function(Name) {
 
 #' List Amazon MWAA Environments
 #'
+#' @description
 #' List Amazon MWAA Environments.
 #'
 #' @usage
@@ -339,6 +345,7 @@ mwaa_list_environments <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' List the tags for MWAA environments
 #'
+#' @description
 #' List the tags for MWAA environments.
 #'
 #' @usage
@@ -375,6 +382,7 @@ mwaa_list_tags_for_resource <- function(ResourceArn) {
 
 #' An operation for publishing metrics from the customers to the Ops plane
 #'
+#' @description
 #' An operation for publishing metrics from the customers to the Ops plane.
 #'
 #' @usage
@@ -435,6 +443,7 @@ mwaa_publish_metrics <- function(EnvironmentName, MetricData) {
 
 #' Add tag to the MWAA environments
 #'
+#' @description
 #' Add tag to the MWAA environments.
 #'
 #' @usage
@@ -475,6 +484,7 @@ mwaa_tag_resource <- function(ResourceArn, Tags) {
 
 #' Remove a tag from the MWAA environments
 #'
+#' @description
 #' Remove a tag from the MWAA environments.
 #'
 #' @usage
@@ -515,6 +525,7 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 
 #' Update an MWAA environment
 #'
+#' @description
 #' Update an MWAA environment.
 #'
 #' @usage

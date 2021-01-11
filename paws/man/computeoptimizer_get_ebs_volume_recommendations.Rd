@@ -32,8 +32,7 @@ Only one account ID can be specified per request.}
 }
 \description{
 Returns Amazon Elastic Block Store (Amazon EBS) volume recommendations.
-}
-\details{
+
 AWS Compute Optimizer generates recommendations for Amazon EBS volumes
 that meet a specific set of requirements. For more information, see the
 \href{https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html}{Supported resources and requirements}

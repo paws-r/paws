@@ -26,8 +26,7 @@ documents.}
 }
 \description{
 Analyzes an input document for relationships between detected items.
-}
-\details{
+
 The types of information returned are as follows:
 \itemize{
 \item Form data (key-value pairs). The related information is returned in

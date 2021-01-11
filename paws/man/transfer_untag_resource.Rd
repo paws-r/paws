@@ -20,8 +20,7 @@ resources for any purpose.}
 Detaches a key-value pair from a resource, as identified by its Amazon
 Resource Name (ARN). Resources are users, servers, roles, and other
 entities.
-}
-\details{
+
 No response is returned from this call.
 }
 \section{Request syntax}{

@@ -38,8 +38,7 @@ Associates an existing AWS KMS alias with a different customer master
 key (CMK). Each alias is associated with only one CMK at a time,
 although a CMK can have multiple aliases. The alias and the CMK must be
 in the same AWS account and region.
-}
-\details{
+
 The current and new CMK must be the same type (both symmetric or both
 asymmetric), and they must have the same key usage (\code{ENCRYPT_DECRYPT} or
 \code{SIGN_VERIFY}). This restriction prevents errors in code that uses

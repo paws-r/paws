@@ -20,8 +20,7 @@ enters the \code{MODIFYING} state when this operation is in progress. Only
 one update can occur at a time. You can use this command to reset a Chef
 server's public key (\code{CHEF_PIVOTAL_KEY}) or a Puppet server's admin
 password (\code{PUPPET_ADMIN_PASSWORD}).
-}
-\details{
+
 This operation is asynchronous.
 
 This operation can only be called for servers in \code{HEALTHY} or

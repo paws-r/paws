@@ -13,8 +13,7 @@ the name of your configuration recorder by using the
 }
 \description{
 Deletes the configuration recorder.
-}
-\details{
+
 After the configuration recorder is deleted, AWS Config will not record
 resource configuration changes until you create a new configuration
 recorder.

@@ -23,8 +23,7 @@ Used by workers to tell the service that the ActivityTask identified by
 the \code{taskToken} completed successfully with a \code{result} (if provided).
 The \code{result} appears in the \code{ActivityTaskCompleted} event in the
 workflow history.
-}
-\details{
+
 If the requested task doesn't complete successfully, use
 RespondActivityTaskFailed instead. If the worker finds that the task is
 canceled through the \code{canceled} flag returned by

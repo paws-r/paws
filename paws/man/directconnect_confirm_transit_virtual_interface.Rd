@@ -16,8 +16,7 @@ directconnect_confirm_transit_virtual_interface(virtualInterfaceId,
 \description{
 Accepts ownership of a transit virtual interface created by another AWS
 account.
-}
-\details{
+
 After the owner of the transit virtual interface makes this call, the
 specified transit virtual interface is created and made available to
 handle traffic.

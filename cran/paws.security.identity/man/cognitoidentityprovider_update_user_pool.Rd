@@ -69,8 +69,7 @@ recovery method where SMS is preferred over email.}
 Updates the specified user pool with the specified attributes. You can
 get a list of the current user pool settings using
 \href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_DescribeUserPool.html}{DescribeUserPool}.
-}
-\details{
+
 If you don't provide a value for an attribute, it will be set to the
 default value.
 }

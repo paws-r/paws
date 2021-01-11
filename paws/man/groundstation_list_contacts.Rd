@@ -27,8 +27,7 @@ Used to get the next page of results.}
 }
 \description{
 Returns a list of contacts.
-}
-\details{
+
 If \code{statusList} contains AVAILABLE, the request must include
 \code{groundStation}, \code{missionprofileArn}, and \code{satelliteArn}.
 }

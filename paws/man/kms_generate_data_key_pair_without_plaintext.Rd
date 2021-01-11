@@ -61,8 +61,7 @@ Generates a unique asymmetric data key pair. The
 public key and a copy of the private key that is encrypted under the
 symmetric CMK you specify. Unlike GenerateDataKeyPair, this operation
 does not return a plaintext private key.
-}
-\details{
+
 To generate a data key pair, you must specify a symmetric customer
 master key (CMK) to encrypt the private key in the data key pair. You
 cannot use an asymmetric CMK or a CMK in a custom key store. To get the

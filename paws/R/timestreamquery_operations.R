@@ -5,6 +5,7 @@ NULL
 
 #' Cancels a query that has been issued
 #'
+#' @description
 #' Cancels a query that has been issued. Cancellation is guaranteed only if
 #' the query has not completed execution before the cancellation request
 #' was issued. Because cancellation is an idempotent operation, subsequent
@@ -47,6 +48,7 @@ timestreamquery_cancel_query <- function(QueryId) {
 #' DescribeEndpoints returns a list of available endpoints to make
 #' Timestream API calls against
 #'
+#' @description
 #' DescribeEndpoints returns a list of available endpoints to make
 #' Timestream API calls against. This API is available through both Write
 #' and Query.
@@ -94,6 +96,7 @@ timestreamquery_describe_endpoints <- function() {
 
 #' Query is a synchronous operation that enables you to execute a query
 #'
+#' @description
 #' Query is a synchronous operation that enables you to execute a query.
 #' Query will timeout after 60 seconds. You must update the default timeout
 #' in the SDK to support a timeout of 60 seconds. The result set will be

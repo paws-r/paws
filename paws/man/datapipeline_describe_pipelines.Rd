@@ -19,8 +19,7 @@ account credentials, you can retrieve metadata about pipelines that you
 or your IAM users have created. If you are using an IAM user account,
 you can retrieve metadata about only those pipelines for which you have
 read permissions.
-}
-\details{
+
 To retrieve the full pipeline definition instead of metadata about the
 pipeline, call GetPipelineDefinition.
 }

@@ -153,8 +153,7 @@ characters: + - = . \\_ : / @.
 Creates a new secret. A secret in Secrets Manager consists of both the
 protected secret data and the important information needed to manage the
 secret.
-}
-\details{
+
 Secrets Manager stores the encrypted secret data in one of a collection
 of "versions" associated with the secret. Each version contains a copy
 of the encrypted secret data. Each version is associated with one or

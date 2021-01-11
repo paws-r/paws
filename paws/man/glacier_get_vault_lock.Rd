@@ -20,8 +20,6 @@ account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation retrieves the following attributes from the \code{lock-policy}
 subresource set on the specified vault:
-}
-\details{
 \itemize{
 \item The vault lock policy set on the vault.
 \item The state of the vault lock, which is either \code{InProgess} or

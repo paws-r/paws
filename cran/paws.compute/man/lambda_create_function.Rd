@@ -93,8 +93,7 @@ The deployment package is a .zip file archive or container image that
 contains your function code. The execution role grants the function
 permission to use AWS services, such as Amazon CloudWatch Logs for log
 streaming and AWS X-Ray for request tracing.
-}
-\details{
+
 When you create a function, Lambda provisions an instance of the
 function and its supporting resources. If your function connects to a
 VPC, this process can take a minute or so. During this time, you can't

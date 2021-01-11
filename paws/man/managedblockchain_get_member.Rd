@@ -13,8 +13,7 @@ managedblockchain_get_member(NetworkId, MemberId)
 }
 \description{
 Returns detailed information about a member.
-}
-\details{
+
 Applies only to Hyperledger Fabric.
 }
 \section{Request syntax}{

@@ -13,8 +13,7 @@ canceled.}
 }
 \description{
 Cancels a single premigration assessment run.
-}
-\details{
+
 This operation prevents any individual assessments from running if they
 haven't started running. It also attempts to cancel any individual
 assessments that are currently running.

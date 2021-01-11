@@ -11,8 +11,7 @@ workspaces_create_workspaces(Workspaces)
 }
 \description{
 Creates one or more WorkSpaces.
-}
-\details{
+
 This operation is asynchronous and returns before the WorkSpaces are
 created.
 }

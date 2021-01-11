@@ -10,7 +10,7 @@ mediapackage_list_tags_for_resource(ResourceArn)
 \item{ResourceArn}{[required]}
 }
 \description{
-List tags for resource
+
 }
 \section{Request syntax}{
 \preformatted{svc$list_tags_for_resource(

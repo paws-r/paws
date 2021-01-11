@@ -13,8 +13,6 @@ account and in each region.}
 \description{
 Creates a new schema in a development state. A schema can exist in three
 phases:
-}
-\details{
 \itemize{
 \item \emph{Development:} This is a mutable phase of the schema. All new
 schemas are in the development phase. Once the schema is finalized,

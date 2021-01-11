@@ -49,8 +49,7 @@ earliest backtrack time, an error occurs.}
 \description{
 Backtracks a DB cluster to a specific time, without creating a new DB
 cluster.
-}
-\details{
+
 For more information on backtracking, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Managing.Backtrack.html}{Backtracking an Aurora DB Cluster}
 in the \emph{Amazon Aurora User Guide.}
 

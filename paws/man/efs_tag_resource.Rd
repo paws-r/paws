@@ -14,8 +14,7 @@ efs_tag_resource(ResourceId, Tags)
 \description{
 Creates a tag for an EFS resource. You can create tags for EFS file
 systems and access points using this API operation.
-}
-\details{
+
 This operation requires permissions for the
 \code{elasticfilesystem:TagResource} action.
 }

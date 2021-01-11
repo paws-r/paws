@@ -36,8 +36,7 @@ history.}
 \description{
 Retrieves the device position history from a tracker resource within a
 specified range of time.
-}
-\details{
+
 Limitation — Device positions are deleted after one year.
 }
 \section{Request syntax}{

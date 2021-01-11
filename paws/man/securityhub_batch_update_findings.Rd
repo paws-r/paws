@@ -73,8 +73,7 @@ investigation into a finding. Requested by master accounts or member
 accounts. Master accounts can update findings for their account and
 their member accounts. Member accounts can update findings for their
 account.
-}
-\details{
+
 Updates from \code{BatchUpdateFindings} do not affect the value of
 \code{UpdatedAt} for a finding.
 

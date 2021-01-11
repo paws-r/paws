@@ -20,8 +20,7 @@ request the next page of results in a paginated response.}
 }
 \description{
 Returns compliance details for each rule in that conformance pack.
-}
-\details{
+
 You must provide exact rule names.
 }
 \section{Request syntax}{

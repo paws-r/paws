@@ -67,8 +67,7 @@ topic Amazon Resource Name (ARN) created by either the RDS console, the
 SNS console, or the SNS API. To obtain an ARN with SNS, you must create
 a topic in Amazon SNS and subscribe to the topic. The ARN is displayed
 in the SNS console.
-}
-\details{
+
 You can specify the type of source (\code{SourceType}) that you want to be
 notified of and provide a list of RDS sources (\code{SourceIds}) that
 triggers the events. You can also provide a list of event categories

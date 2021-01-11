@@ -45,8 +45,7 @@ The DeleteDBCluster action deletes a previously provisioned DB cluster.
 When you delete a DB cluster, all automated backups for that DB cluster
 are deleted and can't be recovered. Manual DB cluster snapshots of the
 specified DB cluster are not deleted.
-}
-\details{
+
 For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What Is Amazon Aurora?}
 in the \emph{Amazon Aurora User Guide.}
 

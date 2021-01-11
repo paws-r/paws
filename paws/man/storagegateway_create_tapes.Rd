@@ -64,8 +64,7 @@ the maximum length for a tag's value is 256.}
 Creates one or more virtual tapes. You write data to the virtual tapes
 and then archive the tapes. This operation is only supported in the tape
 gateway type.
-}
-\details{
+
 Cache storage must be allocated to the gateway before you can create
 virtual tapes. Use the AddCache operation to add cache storage to a
 gateway.

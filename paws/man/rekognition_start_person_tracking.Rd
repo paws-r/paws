@@ -26,8 +26,7 @@ the completion notification.}
 }
 \description{
 Starts the asynchronous tracking of a person's path in a stored video.
-}
-\details{
+
 Amazon Rekognition Video can track the path of people in a video stored
 in an Amazon S3 bucket. Use Video to specify the bucket name and the
 filename of the video. \code{StartPersonTracking} returns a job identifier

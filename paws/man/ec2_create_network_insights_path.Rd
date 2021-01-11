@@ -33,8 +33,7 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 }
 \description{
 Creates a path to analyze for reachability.
-}
-\details{
+
 Reachability Analyzer enables you to analyze and debug network
 reachability between two resources in your virtual private cloud (VPC).
 For more information, see \href{https://docs.aws.amazon.com/vpc/latest/reachability/}{What is Reachability Analyzer}.

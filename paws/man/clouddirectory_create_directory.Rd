@@ -15,8 +15,7 @@ copied into the data Directory. For more information, see arns.}
 \description{
 Creates a Directory by copying the published schema into the directory.
 A directory cannot be created without a schema.
-}
-\details{
+
 You can also quickly create a directory using a managed schema, called
 the \code{QuickStartSchema}. For more information, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_managed.html}{Managed Schema}
 in the \emph{Amazon Cloud Directory Developer Guide}.

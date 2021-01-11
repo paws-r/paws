@@ -12,8 +12,7 @@ opsworks_unassign_volume(VolumeId)
 \description{
 Unassigns an assigned Amazon EBS volume. The volume remains registered
 with the stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
-}
-\details{
+
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user permissions,

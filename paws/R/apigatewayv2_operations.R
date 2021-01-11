@@ -5,6 +5,7 @@ NULL
 
 #' Creates an Api resource
 #'
+#' @description
 #' Creates an Api resource.
 #'
 #' @usage
@@ -115,6 +116,7 @@ apigatewayv2_create_api <- function(ApiKeySelectionExpression = NULL, CorsConfig
 
 #' Creates an API mapping
 #'
+#' @description
 #' Creates an API mapping.
 #'
 #' @usage
@@ -157,6 +159,7 @@ apigatewayv2_create_api_mapping <- function(ApiId, ApiMappingKey = NULL, DomainN
 
 #' Creates an Authorizer for an API
 #'
+#' @description
 #' Creates an Authorizer for an API.
 #'
 #' @usage
@@ -275,6 +278,7 @@ apigatewayv2_create_authorizer <- function(ApiId, AuthorizerCredentialsArn = NUL
 
 #' Creates a Deployment for an API
 #'
+#' @description
 #' Creates a Deployment for an API.
 #'
 #' @usage
@@ -315,6 +319,7 @@ apigatewayv2_create_deployment <- function(ApiId, Description = NULL, StageName 
 
 #' Creates a domain name
 #'
+#' @description
 #' Creates a domain name.
 #'
 #' @usage
@@ -377,6 +382,7 @@ apigatewayv2_create_domain_name <- function(DomainName, DomainNameConfigurations
 
 #' Creates an Integration
 #'
+#' @description
 #' Creates an Integration.
 #'
 #' @usage
@@ -579,6 +585,7 @@ apigatewayv2_create_integration <- function(ApiId, ConnectionId = NULL, Connecti
 
 #' Creates an IntegrationResponses
 #'
+#' @description
 #' Creates an IntegrationResponses.
 #'
 #' @usage
@@ -659,6 +666,7 @@ apigatewayv2_create_integration_response <- function(ApiId, ContentHandlingStrat
 
 #' Creates a Model for an API
 #'
+#' @description
 #' Creates a Model for an API.
 #'
 #' @usage
@@ -704,6 +712,7 @@ apigatewayv2_create_model <- function(ApiId, ContentType = NULL, Description = N
 
 #' Creates a Route for an API
 #'
+#' @description
 #' Creates a Route for an API.
 #'
 #' @usage
@@ -782,6 +791,7 @@ apigatewayv2_create_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
 
 #' Creates a RouteResponse for a Route
 #'
+#' @description
 #' Creates a RouteResponse for a Route.
 #'
 #' @usage
@@ -836,6 +846,7 @@ apigatewayv2_create_route_response <- function(ApiId, ModelSelectionExpression =
 
 #' Creates a Stage for an API
 #'
+#' @description
 #' Creates a Stage for an API.
 #'
 #' @usage
@@ -920,6 +931,7 @@ apigatewayv2_create_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeplo
 
 #' Creates a VPC link
 #'
+#' @description
 #' Creates a VPC link.
 #'
 #' @usage
@@ -968,6 +980,7 @@ apigatewayv2_create_vpc_link <- function(Name, SecurityGroupIds = NULL, SubnetId
 
 #' Deletes the AccessLogSettings for a Stage
 #'
+#' @description
 #' Deletes the AccessLogSettings for a Stage. To disable access logging for
 #' a Stage, delete its AccessLogSettings.
 #'
@@ -1008,6 +1021,7 @@ apigatewayv2_delete_access_log_settings <- function(ApiId, StageName) {
 
 #' Deletes an Api resource
 #'
+#' @description
 #' Deletes an Api resource.
 #'
 #' @usage
@@ -1044,6 +1058,7 @@ apigatewayv2_delete_api <- function(ApiId) {
 
 #' Deletes an API mapping
 #'
+#' @description
 #' Deletes an API mapping.
 #'
 #' @usage
@@ -1082,6 +1097,7 @@ apigatewayv2_delete_api_mapping <- function(ApiMappingId, DomainName) {
 
 #' Deletes an Authorizer
 #'
+#' @description
 #' Deletes an Authorizer.
 #'
 #' @usage
@@ -1120,6 +1136,7 @@ apigatewayv2_delete_authorizer <- function(ApiId, AuthorizerId) {
 
 #' Deletes a CORS configuration
 #'
+#' @description
 #' Deletes a CORS configuration.
 #'
 #' @usage
@@ -1156,6 +1173,7 @@ apigatewayv2_delete_cors_configuration <- function(ApiId) {
 
 #' Deletes a Deployment
 #'
+#' @description
 #' Deletes a Deployment.
 #'
 #' @usage
@@ -1194,6 +1212,7 @@ apigatewayv2_delete_deployment <- function(ApiId, DeploymentId) {
 
 #' Deletes a domain name
 #'
+#' @description
 #' Deletes a domain name.
 #'
 #' @usage
@@ -1230,6 +1249,7 @@ apigatewayv2_delete_domain_name <- function(DomainName) {
 
 #' Deletes an Integration
 #'
+#' @description
 #' Deletes an Integration.
 #'
 #' @usage
@@ -1268,6 +1288,7 @@ apigatewayv2_delete_integration <- function(ApiId, IntegrationId) {
 
 #' Deletes an IntegrationResponses
 #'
+#' @description
 #' Deletes an IntegrationResponses.
 #'
 #' @usage
@@ -1309,6 +1330,7 @@ apigatewayv2_delete_integration_response <- function(ApiId, IntegrationId, Integ
 
 #' Deletes a Model
 #'
+#' @description
 #' Deletes a Model.
 #'
 #' @usage
@@ -1347,6 +1369,7 @@ apigatewayv2_delete_model <- function(ApiId, ModelId) {
 
 #' Deletes a Route
 #'
+#' @description
 #' Deletes a Route.
 #'
 #' @usage
@@ -1385,6 +1408,7 @@ apigatewayv2_delete_route <- function(ApiId, RouteId) {
 
 #' Deletes a route request parameter
 #'
+#' @description
 #' Deletes a route request parameter.
 #'
 #' @usage
@@ -1426,6 +1450,7 @@ apigatewayv2_delete_route_request_parameter <- function(ApiId, RequestParameterK
 
 #' Deletes a RouteResponse
 #'
+#' @description
 #' Deletes a RouteResponse.
 #'
 #' @usage
@@ -1466,6 +1491,7 @@ apigatewayv2_delete_route_response <- function(ApiId, RouteId, RouteResponseId) 
 
 #' Deletes the RouteSettings for a stage
 #'
+#' @description
 #' Deletes the RouteSettings for a stage.
 #'
 #' @usage
@@ -1507,6 +1533,7 @@ apigatewayv2_delete_route_settings <- function(ApiId, RouteKey, StageName) {
 
 #' Deletes a Stage
 #'
+#' @description
 #' Deletes a Stage.
 #'
 #' @usage
@@ -1546,6 +1573,7 @@ apigatewayv2_delete_stage <- function(ApiId, StageName) {
 
 #' Deletes a VPC link
 #'
+#' @description
 #' Deletes a VPC link.
 #'
 #' @usage
@@ -1582,6 +1610,7 @@ apigatewayv2_delete_vpc_link <- function(VpcLinkId) {
 
 #' Export api
 #'
+#' @description
 #' 
 #'
 #' @usage
@@ -1636,6 +1665,7 @@ apigatewayv2_export_api <- function(ApiId, ExportVersion = NULL, IncludeExtensio
 
 #' Resets all authorizer cache entries on a stage
 #'
+#' @description
 #' Resets all authorizer cache entries on a stage. Supported only for HTTP
 #' APIs.
 #'
@@ -1677,6 +1707,7 @@ apigatewayv2_reset_authorizers_cache <- function(ApiId, StageName) {
 
 #' Gets an Api resource
 #'
+#' @description
 #' Gets an Api resource.
 #'
 #' @usage
@@ -1713,6 +1744,7 @@ apigatewayv2_get_api <- function(ApiId) {
 
 #' Gets an API mapping
 #'
+#' @description
 #' Gets an API mapping.
 #'
 #' @usage
@@ -1751,6 +1783,7 @@ apigatewayv2_get_api_mapping <- function(ApiMappingId, DomainName) {
 
 #' Gets API mappings
 #'
+#' @description
 #' Gets API mappings.
 #'
 #' @usage
@@ -1792,6 +1825,7 @@ apigatewayv2_get_api_mappings <- function(DomainName, MaxResults = NULL, NextTok
 
 #' Gets a collection of Api resources
 #'
+#' @description
 #' Gets a collection of Api resources.
 #'
 #' @usage
@@ -1831,6 +1865,7 @@ apigatewayv2_get_apis <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Gets an Authorizer
 #'
+#' @description
 #' Gets an Authorizer.
 #'
 #' @usage
@@ -1869,6 +1904,7 @@ apigatewayv2_get_authorizer <- function(ApiId, AuthorizerId) {
 
 #' Gets the Authorizers for an API
 #'
+#' @description
 #' Gets the Authorizers for an API.
 #'
 #' @usage
@@ -1910,6 +1946,7 @@ apigatewayv2_get_authorizers <- function(ApiId, MaxResults = NULL, NextToken = N
 
 #' Gets a Deployment
 #'
+#' @description
 #' Gets a Deployment.
 #'
 #' @usage
@@ -1948,6 +1985,7 @@ apigatewayv2_get_deployment <- function(ApiId, DeploymentId) {
 
 #' Gets the Deployments for an API
 #'
+#' @description
 #' Gets the Deployments for an API.
 #'
 #' @usage
@@ -1989,6 +2027,7 @@ apigatewayv2_get_deployments <- function(ApiId, MaxResults = NULL, NextToken = N
 
 #' Gets a domain name
 #'
+#' @description
 #' Gets a domain name.
 #'
 #' @usage
@@ -2025,6 +2064,7 @@ apigatewayv2_get_domain_name <- function(DomainName) {
 
 #' Gets the domain names for an AWS account
 #'
+#' @description
 #' Gets the domain names for an AWS account.
 #'
 #' @usage
@@ -2064,6 +2104,7 @@ apigatewayv2_get_domain_names <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Gets an Integration
 #'
+#' @description
 #' Gets an Integration.
 #'
 #' @usage
@@ -2102,6 +2143,7 @@ apigatewayv2_get_integration <- function(ApiId, IntegrationId) {
 
 #' Gets an IntegrationResponses
 #'
+#' @description
 #' Gets an IntegrationResponses.
 #'
 #' @usage
@@ -2143,6 +2185,7 @@ apigatewayv2_get_integration_response <- function(ApiId, IntegrationId, Integrat
 
 #' Gets the IntegrationResponses for an Integration
 #'
+#' @description
 #' Gets the IntegrationResponses for an Integration.
 #'
 #' @usage
@@ -2187,6 +2230,7 @@ apigatewayv2_get_integration_responses <- function(ApiId, IntegrationId, MaxResu
 
 #' Gets the Integrations for an API
 #'
+#' @description
 #' Gets the Integrations for an API.
 #'
 #' @usage
@@ -2228,6 +2272,7 @@ apigatewayv2_get_integrations <- function(ApiId, MaxResults = NULL, NextToken = 
 
 #' Gets a Model
 #'
+#' @description
 #' Gets a Model.
 #'
 #' @usage
@@ -2266,6 +2311,7 @@ apigatewayv2_get_model <- function(ApiId, ModelId) {
 
 #' Gets a model template
 #'
+#' @description
 #' Gets a model template.
 #'
 #' @usage
@@ -2304,6 +2350,7 @@ apigatewayv2_get_model_template <- function(ApiId, ModelId) {
 
 #' Gets the Models for an API
 #'
+#' @description
 #' Gets the Models for an API.
 #'
 #' @usage
@@ -2345,6 +2392,7 @@ apigatewayv2_get_models <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 
 #' Gets a Route
 #'
+#' @description
 #' Gets a Route.
 #'
 #' @usage
@@ -2383,6 +2431,7 @@ apigatewayv2_get_route <- function(ApiId, RouteId) {
 
 #' Gets a RouteResponse
 #'
+#' @description
 #' Gets a RouteResponse.
 #'
 #' @usage
@@ -2423,6 +2472,7 @@ apigatewayv2_get_route_response <- function(ApiId, RouteId, RouteResponseId) {
 
 #' Gets the RouteResponses for a Route
 #'
+#' @description
 #' Gets the RouteResponses for a Route.
 #'
 #' @usage
@@ -2466,6 +2516,7 @@ apigatewayv2_get_route_responses <- function(ApiId, MaxResults = NULL, NextToken
 
 #' Gets the Routes for an API
 #'
+#' @description
 #' Gets the Routes for an API.
 #'
 #' @usage
@@ -2507,6 +2558,7 @@ apigatewayv2_get_routes <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 
 #' Gets a Stage
 #'
+#' @description
 #' Gets a Stage.
 #'
 #' @usage
@@ -2546,6 +2598,7 @@ apigatewayv2_get_stage <- function(ApiId, StageName) {
 
 #' Gets the Stages for an API
 #'
+#' @description
 #' Gets the Stages for an API.
 #'
 #' @usage
@@ -2587,6 +2640,7 @@ apigatewayv2_get_stages <- function(ApiId, MaxResults = NULL, NextToken = NULL) 
 
 #' Gets a collection of Tag resources
 #'
+#' @description
 #' Gets a collection of Tag resources.
 #'
 #' @usage
@@ -2623,6 +2677,7 @@ apigatewayv2_get_tags <- function(ResourceArn) {
 
 #' Gets a VPC link
 #'
+#' @description
 #' Gets a VPC link.
 #'
 #' @usage
@@ -2659,6 +2714,7 @@ apigatewayv2_get_vpc_link <- function(VpcLinkId) {
 
 #' Gets a collection of VPC links
 #'
+#' @description
 #' Gets a collection of VPC links.
 #'
 #' @usage
@@ -2698,6 +2754,7 @@ apigatewayv2_get_vpc_links <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Imports an API
 #'
+#' @description
 #' Imports an API.
 #'
 #' @usage
@@ -2744,6 +2801,7 @@ apigatewayv2_import_api <- function(Basepath = NULL, Body, FailOnWarnings = NULL
 
 #' Puts an Api resource
 #'
+#' @description
 #' Puts an Api resource.
 #'
 #' @usage
@@ -2792,6 +2850,7 @@ apigatewayv2_reimport_api <- function(ApiId, Basepath = NULL, Body, FailOnWarnin
 
 #' Creates a new Tag resource to represent a tag
 #'
+#' @description
 #' Creates a new Tag resource to represent a tag.
 #'
 #' @usage
@@ -2833,6 +2892,7 @@ apigatewayv2_tag_resource <- function(ResourceArn, Tags = NULL) {
 
 #' Deletes a Tag
 #'
+#' @description
 #' Deletes a Tag.
 #'
 #' @usage
@@ -2873,6 +2933,7 @@ apigatewayv2_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates an Api resource
 #'
+#' @description
 #' Updates an Api resource.
 #'
 #' @usage
@@ -2976,6 +3037,7 @@ apigatewayv2_update_api <- function(ApiId, ApiKeySelectionExpression = NULL, Cor
 
 #' The API mapping
 #'
+#' @description
 #' The API mapping.
 #'
 #' @usage
@@ -3021,6 +3083,7 @@ apigatewayv2_update_api_mapping <- function(ApiId, ApiMappingId, ApiMappingKey =
 
 #' Updates an Authorizer
 #'
+#' @description
 #' Updates an Authorizer.
 #'
 #' @usage
@@ -3141,6 +3204,7 @@ apigatewayv2_update_authorizer <- function(ApiId, AuthorizerCredentialsArn = NUL
 
 #' Updates a Deployment
 #'
+#' @description
 #' Updates a Deployment.
 #'
 #' @usage
@@ -3181,6 +3245,7 @@ apigatewayv2_update_deployment <- function(ApiId, DeploymentId, Description = NU
 
 #' Updates a domain name
 #'
+#' @description
 #' Updates a domain name.
 #'
 #' @usage
@@ -3239,6 +3304,7 @@ apigatewayv2_update_domain_name <- function(DomainName, DomainNameConfigurations
 
 #' Updates an Integration
 #'
+#' @description
 #' Updates an Integration.
 #'
 #' @usage
@@ -3442,6 +3508,7 @@ apigatewayv2_update_integration <- function(ApiId, ConnectionId = NULL, Connecti
 
 #' Updates an IntegrationResponses
 #'
+#' @description
 #' Updates an IntegrationResponses.
 #'
 #' @usage
@@ -3524,6 +3591,7 @@ apigatewayv2_update_integration_response <- function(ApiId, ContentHandlingStrat
 
 #' Updates a Model
 #'
+#' @description
 #' Updates a Model.
 #'
 #' @usage
@@ -3572,6 +3640,7 @@ apigatewayv2_update_model <- function(ApiId, ContentType = NULL, Description = N
 
 #' Updates a Route
 #'
+#' @description
 #' Updates a Route.
 #'
 #' @usage
@@ -3652,6 +3721,7 @@ apigatewayv2_update_route <- function(ApiId, ApiKeyRequired = NULL, Authorizatio
 
 #' Updates a RouteResponse
 #'
+#' @description
 #' Updates a RouteResponse.
 #'
 #' @usage
@@ -3709,6 +3779,7 @@ apigatewayv2_update_route_response <- function(ApiId, ModelSelectionExpression =
 
 #' Updates a Stage
 #'
+#' @description
 #' Updates a Stage.
 #'
 #' @usage
@@ -3790,6 +3861,7 @@ apigatewayv2_update_stage <- function(AccessLogSettings = NULL, ApiId, AutoDeplo
 
 #' Updates a VPC link
 #'
+#' @description
 #' Updates a VPC link.
 #'
 #' @usage

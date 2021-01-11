@@ -14,8 +14,7 @@ stored as a lowercase string.}
 \description{
 Deletes a custom endpoint and removes it from an Amazon Aurora DB
 cluster.
-}
-\details{
+
 This action only applies to Aurora DB clusters.
 }
 \section{Request syntax}{

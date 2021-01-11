@@ -17,8 +17,7 @@ call this action. Use this action to see the exported output values that
 you can import into other stacks. To import values, use the
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html}{\code{Fn::ImportValue}}
 function.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-exports.html}{AWS CloudFormation Export Stack Output Values}.
 }
 \section{Request syntax}{

@@ -51,8 +51,7 @@ in the \emph{Classic Load Balancers Guide}.}
 }
 \description{
 Creates a Classic Load Balancer.
-}
-\details{
+
 You can add listeners, security groups, subnets, and tags when you
 create your load balancer, or you can add them later using
 CreateLoadBalancerListeners, ApplySecurityGroupsToLoadBalancer,

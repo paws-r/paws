@@ -11,8 +11,7 @@ directconnect_delete_connection(connectionId)
 }
 \description{
 Deletes the specified connection.
-}
-\details{
+
 Deleting a connection only stops the AWS Direct Connect port hour and
 data transfer charges. If you are partnering with any third parties to
 connect with the AWS Direct Connect location, you must cancel your

@@ -13,8 +13,7 @@ kinesis_list_streams(Limit, ExclusiveStartStreamName)
 }
 \description{
 Lists your Kinesis data streams.
-}
-\details{
+
 The number of streams may be too large to return from a single call to
 \code{ListStreams}. You can limit the number of returned streams using the
 \code{Limit} parameter. If you do not specify a value for the \code{Limit}

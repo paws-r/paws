@@ -20,8 +20,7 @@ different account, the request will fail with an HTTP
 Gets a metrics configuration (specified by the metrics configuration ID)
 from the bucket. Note that this doesn't include the daily storage
 metrics.
-}
-\details{
+
 To use this operation, you must have permissions to perform the
 \code{s3:GetMetricsConfiguration} action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to

@@ -15,8 +15,7 @@ dynamodb_create_global_table(GlobalTableName, ReplicationGroup)
 Creates a global table from an existing table. A global table creates a
 replication relationship between two or more DynamoDB tables with the
 same table name in the provided Regions.
-}
-\details{
+
 This operation only applies to \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html}{Version 2017.11.29}
 of global tables.
 

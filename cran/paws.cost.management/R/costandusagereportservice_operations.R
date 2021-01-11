@@ -5,6 +5,7 @@ NULL
 
 #' Deletes the specified report
 #'
+#' @description
 #' Deletes the specified report.
 #'
 #' @usage
@@ -51,6 +52,7 @@ costandusagereportservice_delete_report_definition <- function(ReportName = NULL
 
 #' Lists the AWS Cost and Usage reports available to this account
 #'
+#' @description
 #' Lists the AWS Cost and Usage reports available to this account.
 #'
 #' @usage
@@ -99,6 +101,7 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
 
 #' Allows you to programatically update your report preferences
 #'
+#' @description
 #' Allows you to programatically update your report preferences.
 #'
 #' @usage
@@ -154,6 +157,7 @@ costandusagereportservice_modify_report_definition <- function(ReportName, Repor
 
 #' Creates a new report using the description that you provide
 #'
+#' @description
 #' Creates a new report using the description that you provide.
 #'
 #' @usage

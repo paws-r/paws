@@ -20,8 +20,6 @@ supported by moderators.}
 \description{
 Adds a user to a channel. The \code{InvitedBy} response field is derived from
 the request header. A channel member can:
-}
-\details{
 \itemize{
 \item List messages
 \item Send messages

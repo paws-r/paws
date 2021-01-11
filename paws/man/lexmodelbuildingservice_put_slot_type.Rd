@@ -76,8 +76,7 @@ The configuration is added to the settings for the parent slot type.}
 }
 \description{
 Creates a custom slot type or replaces an existing custom slot type.
-}
-\details{
+
 To create a custom slot type, specify a name for the slot type and a set
 of enumeration values, which are the values that a slot of this type can
 assume. For more information, see how-it-works.

@@ -22,8 +22,7 @@ operation.}
 }
 \description{
 Obtains information about the directories that belong to this account.
-}
-\details{
+
 You can retrieve information about specific directories by passing the
 directory identifiers in the \code{DirectoryIds} parameter. Otherwise, all
 directories that belong to the current account are returned.

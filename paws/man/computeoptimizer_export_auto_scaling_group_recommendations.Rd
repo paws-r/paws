@@ -65,8 +65,7 @@ this parameter, or the account IDs parameter, is omitted.}
 }
 \description{
 Exports optimization recommendations for Auto Scaling groups.
-}
-\details{
+
 Recommendations are exported in a comma-separated values (.csv) file,
 and its metadata in a JavaScript Object Notation (.json) file, to an
 existing Amazon Simple Storage Service (Amazon S3) bucket that you

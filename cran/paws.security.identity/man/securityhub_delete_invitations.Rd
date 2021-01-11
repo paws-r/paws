@@ -13,8 +13,7 @@ securityhub_delete_invitations(AccountIds)
 \description{
 Deletes invitations received by the AWS account to become a member
 account.
-}
-\details{
+
 This operation is only used by accounts that are not part of an
 organization. Organization accounts do not receive invitations.
 }

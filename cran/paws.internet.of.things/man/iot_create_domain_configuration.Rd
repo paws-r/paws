@@ -40,8 +40,7 @@ For the cli-input-json file use format: "tags":
 }
 \description{
 Creates a domain configuration.
-}
-\details{
+
 The domain configuration feature is in public preview and is subject to
 change.
 }

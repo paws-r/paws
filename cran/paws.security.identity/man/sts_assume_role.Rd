@@ -195,8 +195,7 @@ with other API operations that produce temporary credentials, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials}
 and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison}{Comparing the AWS STS API operations}
 in the \emph{IAM User Guide}.
-}
-\details{
+
 You cannot use AWS account root user credentials to call \code{AssumeRole}.
 You must use credentials for an IAM user or an IAM role to call
 \code{AssumeRole}.

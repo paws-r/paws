@@ -20,8 +20,7 @@ information about IAM policy and statement structure, see \href{https://docs.aws
 }
 \description{
 Attaches a resource-based policy to a private CA.
-}
-\details{
+
 A policy can also be applied by sharing a private CA through AWS
 Resource Access Manager (RAM). For more information, see \href{https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-ram.html}{Attach a Policy for Cross-Account Access}.
 

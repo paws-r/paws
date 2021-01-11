@@ -13,8 +13,7 @@ route53domains_list_tags_for_domain(DomainName)
 \description{
 This operation returns all of the tags that are associated with the
 specified domain.
-}
-\details{
+
 All tag operations are eventually consistent; subsequent operations
 might not immediately represent all issued operations.
 }

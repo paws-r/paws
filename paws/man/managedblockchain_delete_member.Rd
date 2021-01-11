@@ -20,8 +20,7 @@ cases, the \code{DeleteMember} action is carried out as the result of an
 approved proposal to remove a member. If \code{MemberId} is the last member
 in a network specified by the last AWS account, the network is deleted
 also.
-}
-\details{
+
 Applies only to Hyperledger Fabric.
 }
 \section{Request syntax}{

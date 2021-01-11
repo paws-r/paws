@@ -18,8 +18,7 @@ connect_update_quick_connect_config(InstanceId, QuickConnectId,
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Updates the configuration settings for the specified quick connect.
 }
 \section{Request syntax}{

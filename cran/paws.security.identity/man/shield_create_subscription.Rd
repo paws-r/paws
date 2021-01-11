@@ -8,8 +8,7 @@ shield_create_subscription()
 }
 \description{
 Activates AWS Shield Advanced for an account.
-}
-\details{
+
 When you initally create a subscription, your subscription is set to be
 automatically renewed at the end of the existing subscription period.
 You can change this by submitting an \code{UpdateSubscription} request.

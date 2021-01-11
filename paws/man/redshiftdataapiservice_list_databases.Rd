@@ -35,8 +35,6 @@ parameter is required when authenticating using AWS Secrets Manager.}
 List the databases in a cluster. A token is returned to page through the
 database list. Depending on the authorization method, use one of the
 following combinations of request parameters:
-}
-\details{
 \itemize{
 \item AWS Secrets Manager - specify the Amazon Resource Name (ARN) of the
 secret and the cluster identifier that matches the cluster in the

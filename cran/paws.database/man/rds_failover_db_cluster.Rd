@@ -22,8 +22,7 @@ cluster. For example, \code{mydbcluster-replica1}.}
 }
 \description{
 Forces a failover for a DB cluster.
-}
-\details{
+
 A failover for a DB cluster promotes one of the Aurora Replicas
 (read-only instances) in the DB cluster to be the primary instance (the
 cluster writer).

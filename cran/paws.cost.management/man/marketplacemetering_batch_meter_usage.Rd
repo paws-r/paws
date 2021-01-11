@@ -18,8 +18,7 @@ publishing of a new product.}
 \description{
 BatchMeterUsage is called from a SaaS application listed on the AWS
 Marketplace to post metering records for a set of customers.
-}
-\details{
+
 For identical requests, the API is idempotent; requests can be retried
 with the same records or a subset of the input records.
 

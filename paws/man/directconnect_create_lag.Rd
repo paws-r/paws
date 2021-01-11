@@ -35,8 +35,7 @@ bundled physical dedicated connections between the customer network and
 a specific AWS Direct Connect location. A LAG is a logical interface
 that uses the Link Aggregation Control Protocol (LACP) to aggregate
 multiple interfaces, enabling you to treat them as a single interface.
-}
-\details{
+
 All connections in a LAG must use the same bandwidth (either 1Gbps or
 10Gbps) and must terminate at the same AWS Direct Connect endpoint.
 

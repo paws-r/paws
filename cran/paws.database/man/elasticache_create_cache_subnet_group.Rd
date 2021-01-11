@@ -22,8 +22,7 @@ Example: \code{mysubnetgroup}}
 }
 \description{
 Creates a new cache subnet group.
-}
-\details{
+
 Use this parameter only when you are creating a cluster in an Amazon
 Virtual Private Cloud (Amazon VPC).
 }

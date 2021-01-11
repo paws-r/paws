@@ -13,8 +13,7 @@ athena_delete_named_query(NamedQueryId)
 \description{
 Deletes the named query if you have access to the workgroup in which the
 query was saved.
-}
-\details{
+
 For code samples using the AWS SDK for Java, see \href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples}
 in the \emph{Amazon Athena User Guide}.
 }

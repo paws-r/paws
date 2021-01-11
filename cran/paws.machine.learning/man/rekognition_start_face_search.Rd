@@ -18,8 +18,8 @@ returned. Use \code{ClientRequestToken} to prevent the same job from being
 accidently started more than once.}
 
 \item{FaceMatchThreshold}{The minimum confidence in the person match to return. For example, don't
-return any matches where confidence in matches is less than 70\%. The
-default value is 80\%.}
+return any matches where confidence in matches is less than 70\\%. The
+default value is 80\\%.}
 
 \item{CollectionId}{[required] ID of the collection that contains the faces you want to search for.}
 
@@ -34,8 +34,7 @@ the completion notification.}
 \description{
 Starts the asynchronous search for faces in a collection that match the
 faces of persons detected in a stored video.
-}
-\details{
+
 The video must be stored in an Amazon S3 bucket. Use Video to specify
 the bucket name and the filename of the video. \code{StartFaceSearch} returns
 a job identifier (\code{JobId}) which you use to get the search results once

@@ -16,8 +16,7 @@ the LAG itself to be operational.}
 }
 \description{
 Updates the attributes of the specified link aggregation group (LAG).
-}
-\details{
+
 You can update the following attributes:
 \itemize{
 \item The name of the LAG.

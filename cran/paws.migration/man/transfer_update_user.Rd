@@ -83,8 +83,7 @@ sign.}
 Assigns new properties to a user. Parameters you pass modify any or all
 of the following: the home directory, role, and policy for the
 \code{UserName} and \code{ServerId} you specify.
-}
-\details{
+
 The response returns the \code{ServerId} and the \code{UserName} for the updated
 user.
 }

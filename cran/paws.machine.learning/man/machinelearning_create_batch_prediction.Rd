@@ -33,8 +33,7 @@ process exist in one or more data files referenced by a \code{DataSource}.
 This operation creates a new \code{BatchPrediction}, and uses an \code{MLModel}
 and the data files referenced by the \code{DataSource} as information
 sources.
-}
-\details{
+
 \code{CreateBatchPrediction} is an asynchronous operation. In response to
 \code{CreateBatchPrediction}, Amazon Machine Learning (Amazon ML) immediately
 returns and sets the \code{BatchPrediction} status to \code{PENDING}. After the

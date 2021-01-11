@@ -27,8 +27,7 @@ One of \code{SchemaArn} or \code{SchemaName} has to be provided.
 \description{
 Fetches the schema version difference in the specified difference type
 between two stored schema versions in the Schema Registry.
-}
-\details{
+
 This API allows you to compare two schema versions between two schema
 definitions under the same schema.
 }

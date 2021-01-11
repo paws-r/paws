@@ -31,8 +31,7 @@ Insights event logging is enabled on the trail, and if it is, which
 insight types are enabled. If you run \code{GetInsightSelectors} on a trail
 that does not have Insights events enabled, the operation throws the
 exception \code{InsightNotEnabledException}
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html}{Logging CloudTrail Insights Events for Trails}
 in the \emph{AWS CloudTrail User Guide}.
 }

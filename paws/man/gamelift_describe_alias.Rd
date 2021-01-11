@@ -14,8 +14,7 @@ can use either the alias ID or ARN value.}
 Retrieves properties for an alias. This operation returns all alias
 metadata and settings. To get an alias's target fleet ID only, use
 \code{ResolveAlias}.
-}
-\details{
+
 To get alias properties, specify the alias ID. If successful, the
 requested alias record is returned.
 \itemize{

@@ -26,8 +26,7 @@ results as a set of sequential pages. If successful, a GameSessionQueue
 object is returned for each requested queue. When specifying a list of
 queues, objects are returned only for queues that currently exist in the
 Region.
-}
-\details{
+
 \strong{Learn more}
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/queues-console.html}{View Your Queues}

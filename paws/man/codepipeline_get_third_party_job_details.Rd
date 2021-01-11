@@ -16,8 +16,7 @@ details.}
 \description{
 Requests the details of a job for a third party action. Used for partner
 actions only.
-}
-\details{
+
 When this API is called, AWS CodePipeline returns temporary credentials
 for the S3 bucket used to store artifacts for the pipeline, if the
 action requires access to that S3 bucket for input or output artifacts.

@@ -46,8 +46,7 @@ supported algorithm is \code{SHA256}.}
 Writes a block of data to a snapshot. If the specified block contains
 data, the existing data is overwritten. The target snapshot must be in
 the \code{pending} state.
-}
-\details{
+
 Data written to a snapshot must be aligned with 512-byte sectors.
 }
 \section{Request syntax}{

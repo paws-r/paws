@@ -31,8 +31,7 @@ length of 256 characters.}
 }
 \description{
 Creates a virtual service within a service mesh.
-}
-\details{
+
 A virtual service is an abstraction of a real service that is provided
 by a virtual node directly or indirectly by means of a virtual router.
 Dependent services call your virtual service by its

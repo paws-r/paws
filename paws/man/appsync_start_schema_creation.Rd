@@ -13,8 +13,7 @@ appsync_start_schema_creation(apiId, definition)
 }
 \description{
 Adds a new schema to your GraphQL API.
-}
-\details{
+
 This operation is asynchronous. Use to determine when it has completed.
 }
 \section{Request syntax}{

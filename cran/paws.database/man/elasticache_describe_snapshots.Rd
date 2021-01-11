@@ -44,8 +44,7 @@ Returns information about cluster or replication group snapshots. By
 default, \code{DescribeSnapshots} lists all of your snapshots; it can
 optionally describe a single snapshot, or just the snapshots associated
 with a particular cache cluster.
-}
-\details{
+
 This operation is valid for Redis only.
 }
 \section{Request syntax}{

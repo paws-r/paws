@@ -18,8 +18,7 @@ Easy DKIM signing is enabled for a domain, then Amazon SES uses DKIM to
 sign all email that it sends from addresses on that domain. If Easy DKIM
 signing is enabled for an email address, then Amazon SES uses DKIM to
 sign all email it sends from that address.
-}
-\details{
+
 For email addresses (for example, \code{user@example.com}), you can only
 enable DKIM signing if the corresponding domain (in this case,
 \code{example.com}) has been set up to use Easy DKIM.

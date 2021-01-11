@@ -37,8 +37,6 @@ Attaches a policy to a root, an organizational unit (OU), or an
 individual account. How the policy affects accounts depends on the type
 of policy. Refer to the \emph{AWS Organizations User Guide} for information
 about each policy type:
-}
-\details{
 \itemize{
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html}{AISERVICES\\_OPT\\_OUT\\_POLICY}
 \item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html}{BACKUP\\_POLICY}

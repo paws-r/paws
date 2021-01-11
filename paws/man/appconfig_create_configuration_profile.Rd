@@ -38,8 +38,6 @@ Information that enables AppConfig to access the configuration source.
 Valid configuration sources include Systems Manager (SSM) documents, SSM
 Parameter Store parameters, and Amazon S3 objects. A configuration
 profile includes the following information.
-}
-\details{
 \itemize{
 \item The Uri location of the configuration data.
 \item The AWS Identity and Access Management (IAM) role that provides

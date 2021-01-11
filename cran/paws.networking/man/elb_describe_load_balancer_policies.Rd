@@ -13,8 +13,7 @@ elb_describe_load_balancer_policies(LoadBalancerName, PolicyNames)
 }
 \description{
 Describes the specified policies.
-}
-\details{
+
 If you specify a load balancer name, the action returns the descriptions
 of all policies created for the load balancer. If you specify a policy
 name associated with your load balancer, the action returns the

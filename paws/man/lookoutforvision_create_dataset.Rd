@@ -39,8 +39,7 @@ new call to \code{CreateDataset}. An idempotency token is active for 8 hours.}
 Creates a new dataset in an Amazon Lookout for Vision project.
 \code{CreateDataset} can create a training or a test dataset from a valid
 dataset source (\code{DatasetSource}).
-}
-\details{
+
 If you want a single dataset project, specify \code{train} for the value of
 \code{DatasetType}.
 

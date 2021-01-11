@@ -26,8 +26,7 @@ source document.}
 }
 \description{
 Retrieves the document versions for the specified document.
-}
-\details{
+
 By default, only active versions are returned.
 }
 \section{Request syntax}{

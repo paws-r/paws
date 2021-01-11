@@ -6,6 +6,7 @@ NULL
 #' Returns the number of closed workflow executions within the given domain
 #' that meet the specified filtering criteria
 #'
+#' @description
 #' Returns the number of closed workflow executions within the given domain
 #' that meet the specified filtering criteria.
 #' 
@@ -140,6 +141,7 @@ swf_count_closed_workflow_executions <- function(domain, startTimeFilter = NULL,
 #' Returns the number of open workflow executions within the given domain
 #' that meet the specified filtering criteria
 #'
+#' @description
 #' Returns the number of open workflow executions within the given domain
 #' that meet the specified filtering criteria.
 #' 
@@ -247,6 +249,7 @@ swf_count_open_workflow_executions <- function(domain, startTimeFilter, typeFilt
 #' Returns the estimated number of activity tasks in the specified task
 #' list
 #'
+#' @description
 #' Returns the estimated number of activity tasks in the specified task
 #' list. The count returned is an approximation and isn't guaranteed to be
 #' exact. If you specify a task list that no activity task was ever
@@ -314,6 +317,7 @@ swf_count_pending_activity_tasks <- function(domain, taskList) {
 #' Returns the estimated number of decision tasks in the specified task
 #' list
 #'
+#' @description
 #' Returns the estimated number of decision tasks in the specified task
 #' list. The count returned is an approximation and isn't guaranteed to be
 #' exact. If you specify a task list that no decision task was ever
@@ -380,6 +384,7 @@ swf_count_pending_decision_tasks <- function(domain, taskList) {
 
 #' Deprecates the specified activity type
 #'
+#' @description
 #' Deprecates the specified *activity type*. After an activity type has
 #' been deprecated, you cannot create new tasks of that activity type.
 #' Tasks of this type that were scheduled before the type was deprecated
@@ -455,6 +460,7 @@ swf_deprecate_activity_type <- function(domain, activityType) {
 
 #' Deprecates the specified domain
 #'
+#' @description
 #' Deprecates the specified domain. After a domain has been deprecated it
 #' cannot be used to create new workflow executions or register new types.
 #' However, you can still use visibility actions on this domain.
@@ -520,6 +526,7 @@ swf_deprecate_domain <- function(name) {
 
 #' Deprecates the specified workflow type
 #'
+#' @description
 #' Deprecates the specified *workflow type*. After a workflow type has been
 #' deprecated, you cannot create new executions of that type. Executions
 #' that were started before the type was deprecated continues to run. A
@@ -596,6 +603,7 @@ swf_deprecate_workflow_type <- function(domain, workflowType) {
 
 #' Returns information about the specified activity type
 #'
+#' @description
 #' Returns information about the specified activity type. This includes
 #' configuration settings provided when the type was registered and other
 #' general information about the type.
@@ -670,6 +678,7 @@ swf_describe_activity_type <- function(domain, activityType) {
 #' Returns information about the specified domain, including description
 #' and status
 #'
+#' @description
 #' Returns information about the specified domain, including description
 #' and status.
 #' 
@@ -729,6 +738,7 @@ swf_describe_domain <- function(name) {
 #' Returns information about the specified workflow execution including its
 #' type and some statistics
 #'
+#' @description
 #' Returns information about the specified workflow execution including its
 #' type and some statistics.
 #' 
@@ -795,6 +805,7 @@ swf_describe_workflow_execution <- function(domain, execution) {
 
 #' Returns information about the specified workflow type
 #'
+#' @description
 #' Returns information about the specified *workflow type*. This includes
 #' configuration settings specified when the type was registered and other
 #' information such as creation date, current status, etc.
@@ -866,6 +877,7 @@ swf_describe_workflow_type <- function(domain, workflowType) {
 
 #' Returns the history of the specified workflow execution
 #'
+#' @description
 #' Returns the history of the specified workflow execution. The results may
 #' be split into multiple pages. To retrieve subsequent pages, make the
 #' call again using the `nextPageToken` returned by the initial call.
@@ -952,6 +964,7 @@ swf_get_workflow_execution_history <- function(domain, execution, nextPageToken 
 #' Returns information about all activities registered in the specified
 #' domain that match the specified name and registration status
 #'
+#' @description
 #' Returns information about all activities registered in the specified
 #' domain that match the specified name and registration status. The result
 #' includes information like creation date, current status of the activity,
@@ -1037,6 +1050,7 @@ swf_list_activity_types <- function(domain, name = NULL, registrationStatus, nex
 #' Returns a list of closed workflow executions in the specified domain
 #' that meet the filtering criteria
 #'
+#' @description
 #' Returns a list of closed workflow executions in the specified domain
 #' that meet the filtering criteria. The results may be split into multiple
 #' pages. To retrieve subsequent pages, make the call again using the
@@ -1192,6 +1206,7 @@ swf_list_closed_workflow_executions <- function(domain, startTimeFilter = NULL, 
 
 #' Returns the list of domains registered in the account
 #'
+#' @description
 #' Returns the list of domains registered in the account. The results may
 #' be split into multiple pages. To retrieve subsequent pages, make the
 #' call again using the nextPageToken returned by the initial call.
@@ -1275,6 +1290,7 @@ swf_list_domains <- function(nextPageToken = NULL, registrationStatus, maximumPa
 #' Returns a list of open workflow executions in the specified domain that
 #' meet the filtering criteria
 #'
+#' @description
 #' Returns a list of open workflow executions in the specified domain that
 #' meet the filtering criteria. The results may be split into multiple
 #' pages. To retrieve subsequent pages, make the call again using the
@@ -1401,6 +1417,7 @@ swf_list_open_workflow_executions <- function(domain, startTimeFilter, typeFilte
 
 #' List tags for a given domain
 #'
+#' @description
 #' List tags for a given domain.
 #'
 #' @usage
@@ -1437,6 +1454,7 @@ swf_list_tags_for_resource <- function(resourceArn) {
 
 #' Returns information about workflow types in the specified domain
 #'
+#' @description
 #' Returns information about workflow types in the specified domain. The
 #' results may be split into multiple pages that can be retrieved by making
 #' the call repeatedly.
@@ -1519,6 +1537,7 @@ swf_list_workflow_types <- function(domain, name = NULL, registrationStatus, nex
 #' Used by workers to get an ActivityTask from the specified activity
 #' taskList
 #'
+#' @description
 #' Used by workers to get an ActivityTask from the specified activity
 #' `taskList`. This initiates a long poll, where the service holds the HTTP
 #' connection open and responds as soon as a task becomes available. The
@@ -1605,6 +1624,7 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #' Used by deciders to get a DecisionTask from the specified decision
 #' taskList
 #'
+#' @description
 #' Used by deciders to get a DecisionTask from the specified decision
 #' `taskList`. A decision task may be returned for any open workflow
 #' execution that is using the specified task list. The task includes a
@@ -1728,6 +1748,7 @@ swf_poll_for_decision_task <- function(domain, taskList, identity = NULL, nextPa
 #' Used by activity workers to report to the service that the ActivityTask
 #' represented by the specified taskToken is still making progress
 #'
+#' @description
 #' Used by activity workers to report to the service that the ActivityTask
 #' represented by the specified `taskToken` is still making progress. The
 #' worker can also specify details of the progress, for example percent
@@ -1822,6 +1843,7 @@ swf_record_activity_task_heartbeat <- function(taskToken, details = NULL) {
 #' Registers a new activity type along with its configuration settings in
 #' the specified domain
 #'
+#' @description
 #' Registers a new *activity type* along with its configuration settings in
 #' the specified domain.
 #' 
@@ -1965,6 +1987,7 @@ swf_register_activity_type <- function(domain, name, version, description = NULL
 
 #' Registers a new domain
 #'
+#' @description
 #' Registers a new domain.
 #' 
 #' **Access Control**
@@ -2057,6 +2080,7 @@ swf_register_domain <- function(name, description = NULL, workflowExecutionReten
 #' Registers a new workflow type and its configuration settings in the
 #' specified domain
 #'
+#' @description
 #' Registers a new *workflow type* and its configuration settings in the
 #' specified domain.
 #' 
@@ -2219,6 +2243,7 @@ swf_register_workflow_type <- function(domain, name, version, description = NULL
 #' running workflow execution identified by the given domain, workflowId,
 #' and runId
 #'
+#' @description
 #' Records a `WorkflowExecutionCancelRequested` event in the currently
 #' running workflow execution identified by the given domain, workflowId,
 #' and runId. This logically requests the cancellation of the workflow
@@ -2293,6 +2318,7 @@ swf_request_cancel_workflow_execution <- function(domain, workflowId, runId = NU
 #' Used by workers to tell the service that the ActivityTask identified by
 #' the taskToken was successfully canceled
 #'
+#' @description
 #' Used by workers to tell the service that the ActivityTask identified by
 #' the `taskToken` was successfully canceled. Additional `details` can be
 #' provided using the `details` argument.
@@ -2374,6 +2400,7 @@ swf_respond_activity_task_canceled <- function(taskToken, details = NULL) {
 #' Used by workers to tell the service that the ActivityTask identified by
 #' the taskToken completed successfully with a result (if provided)
 #'
+#' @description
 #' Used by workers to tell the service that the ActivityTask identified by
 #' the `taskToken` completed successfully with a `result` (if provided).
 #' The `result` appears in the `ActivityTaskCompleted` event in the
@@ -2456,6 +2483,7 @@ swf_respond_activity_task_completed <- function(taskToken, result = NULL) {
 #' Used by workers to tell the service that the ActivityTask identified by
 #' the taskToken has failed with reason (if specified)
 #'
+#' @description
 #' Used by workers to tell the service that the ActivityTask identified by
 #' the `taskToken` has failed with `reason` (if specified). The `reason`
 #' and `details` appear in the `ActivityTaskFailed` event added to the
@@ -2533,6 +2561,7 @@ swf_respond_activity_task_failed <- function(taskToken, reason = NULL, details =
 #' Used by deciders to tell the service that the DecisionTask identified by
 #' the taskToken has successfully completed
 #'
+#' @description
 #' Used by deciders to tell the service that the DecisionTask identified by
 #' the `taskToken` has successfully completed. The `decisions` argument
 #' specifies the list of decisions made while processing the task.
@@ -2702,6 +2731,7 @@ swf_respond_decision_task_completed <- function(taskToken, decisions = NULL, exe
 #' history and creates a decision task for the workflow execution
 #' identified by the given domain, workflowId and runId
 #'
+#' @description
 #' Records a `WorkflowExecutionSignaled` event in the workflow execution
 #' history and creates a decision task for the workflow execution
 #' identified by the given domain, workflowId and runId. The event is
@@ -2782,6 +2812,7 @@ swf_signal_workflow_execution <- function(domain, workflowId, runId = NULL, sign
 #' Starts an execution of the workflow type in the specified domain using
 #' the provided workflowId and input data
 #'
+#' @description
 #' Starts an execution of the workflow type in the specified domain using
 #' the provided `workflowId` and input data.
 #' 
@@ -2979,6 +3010,7 @@ swf_start_workflow_execution <- function(domain, workflowId, workflowType, taskL
 
 #' Add a tag to a Amazon SWF domain
 #'
+#' @description
 #' Add a tag to a Amazon SWF domain.
 #' 
 #' Amazon SWF supports a maximum of 50 tags per resource.
@@ -3028,6 +3060,7 @@ swf_tag_resource <- function(resourceArn, tags) {
 #' Records a WorkflowExecutionTerminated event and forces closure of the
 #' workflow execution identified by the given domain, runId, and workflowId
 #'
+#' @description
 #' Records a `WorkflowExecutionTerminated` event and forces closure of the
 #' workflow execution identified by the given domain, runId, and
 #' workflowId. The child policy, registered with the workflow type or
@@ -3131,6 +3164,7 @@ swf_terminate_workflow_execution <- function(domain, workflowId, runId = NULL, r
 
 #' Undeprecates a previously deprecated activity type
 #'
+#' @description
 #' Undeprecates a previously deprecated *activity type*. After an activity
 #' type has been undeprecated, you can create new tasks of that activity
 #' type.
@@ -3205,6 +3239,7 @@ swf_undeprecate_activity_type <- function(domain, activityType) {
 
 #' Undeprecates a previously deprecated domain
 #'
+#' @description
 #' Undeprecates a previously deprecated domain. After a domain has been
 #' undeprecated it can be used to create new workflow executions or
 #' register new types.
@@ -3267,6 +3302,7 @@ swf_undeprecate_domain <- function(name) {
 
 #' Undeprecates a previously deprecated workflow type
 #'
+#' @description
 #' Undeprecates a previously deprecated *workflow type*. After a workflow
 #' type has been undeprecated, you can create new executions of that type.
 #' 
@@ -3340,6 +3376,7 @@ swf_undeprecate_workflow_type <- function(domain, workflowType) {
 
 #' Remove a tag from a Amazon SWF domain
 #'
+#' @description
 #' Remove a tag from a Amazon SWF domain.
 #'
 #' @usage

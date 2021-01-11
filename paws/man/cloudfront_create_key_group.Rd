@@ -12,8 +12,7 @@ cloudfront_create_key_group(KeyGroupConfig)
 }
 \description{
 Creates a key group that you can use with \href{https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html}{CloudFront signed URLs and signed cookies}.
-}
-\details{
+
 To create a key group, you must specify at least one public key for the
 key group. After you create a key group, you can reference it from one
 or more cache behaviors. When you reference a key group in a cache

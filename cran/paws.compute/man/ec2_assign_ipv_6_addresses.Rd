@@ -27,8 +27,7 @@ addresses to a network interface as you can assign private IPv4
 addresses, and the limit varies per instance type. For information, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI}{IP Addresses Per Network Interface Per Instance Type}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\details{
+
 You must specify either the IPv6 addresses or the IPv6 address count in
 the request.
 }

@@ -19,8 +19,7 @@ account ID, do not include any hyphens ('-') in the ID.}
 }
 \description{
 This operation aborts a multipart upload identified by the upload ID.
-}
-\details{
+
 After the Abort Multipart Upload request succeeds, you cannot upload any
 more parts to the multipart upload or complete the multipart upload.
 Aborting a completed upload fails. However, aborting an already-aborted

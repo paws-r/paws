@@ -15,8 +15,7 @@ lexmodelbuildingservice_get_slot_type(name, version)
 Returns information about a specific version of a slot type. In addition
 to specifying the slot type name, you must specify the slot type
 version.
-}
-\details{
+
 This operation requires permissions for the \code{lex:GetSlotType} action.
 }
 \section{Request syntax}{

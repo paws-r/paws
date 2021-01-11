@@ -15,8 +15,7 @@ s3control_put_job_tagging(AccountId, JobId, Tags)
 }
 \description{
 Sets the supplied tag-set on an S3 Batch Operations job.
-}
-\details{
+
 A tag is a key-value pair. You can associate S3 Batch Operations tags
 with any job by sending a PUT request against the tagging subresource
 that is associated with the job. To modify the existing tag set, you can

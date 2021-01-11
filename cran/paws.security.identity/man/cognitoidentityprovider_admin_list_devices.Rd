@@ -18,8 +18,7 @@ cognitoidentityprovider_admin_list_devices(UserPoolId, Username, Limit,
 }
 \description{
 Lists devices, as an administrator.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

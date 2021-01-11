@@ -43,8 +43,7 @@ results.}
 \description{
 Lists the organizational units (OUs) in a parent organizational unit or
 root.
-}
-\details{
+
 Always check the \code{NextToken} response parameter for a \code{null} value when
 calling a \verb{List*} operation. These operations can occasionally return an
 empty set of results even when there are more results available. The

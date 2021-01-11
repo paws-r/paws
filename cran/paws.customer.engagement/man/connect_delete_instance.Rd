@@ -13,8 +13,7 @@ connect_delete_instance(InstanceId)
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Deletes the Amazon Connect instance.
 }
 \section{Request syntax}{

@@ -17,8 +17,7 @@ Puts retention settings for the specified Amazon Chime Enterprise
 account. We recommend using AWS CloudTrail to monitor usage of this API
 for your account. For more information, see \href{https://docs.aws.amazon.com/chime/latest/ag/cloudtrail.html}{Logging Amazon Chime API Calls with AWS CloudTrail}
 in the \emph{Amazon Chime Administration Guide}.
-}
-\details{
+
 To turn off existing retention settings, remove the number of days from
 the corresponding \strong{RetentionDays} field in the \strong{RetentionSettings}
 object. For more information about retention settings, see \href{https://docs.aws.amazon.com/chime/latest/ag/}{Managing Chat Retention Policies}

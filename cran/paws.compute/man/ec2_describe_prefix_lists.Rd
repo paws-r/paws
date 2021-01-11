@@ -33,8 +33,7 @@ value.}
 Describes available AWS services in a prefix list format, which includes
 the prefix list name and prefix list ID of the service and the IP
 address range for the service.
-}
-\details{
+
 We recommend that you use DescribeManagedPrefixLists instead.
 }
 \section{Request syntax}{

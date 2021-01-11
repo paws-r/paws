@@ -33,8 +33,7 @@ session or request all game sessions on a fleet. Alternatively, use
 SearchGameSessions to request a set of active game sessions that are
 filtered by certain criteria. To retrieve protection policy settings for
 game sessions, use DescribeGameSessionDetails.
-}
-\details{
+
 To get game sessions, specify one of the following: game session ID,
 fleet ID, or alias ID. You can filter this request by game session
 status. Use the pagination parameters to retrieve results as a set of

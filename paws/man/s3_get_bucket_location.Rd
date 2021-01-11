@@ -18,8 +18,7 @@ Returns the Region the bucket resides in. You set the bucket's Region
 using the \code{LocationConstraint} request parameter in a \code{CreateBucket}
 request. For more information, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html}{CreateBucket}.
-}
-\details{
+
 To use this implementation of the operation, you must be the bucket
 owner.
 

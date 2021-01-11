@@ -31,10 +31,7 @@ SaaS Marketplace.}
 start with \verb{aws:}. The tag value can be up to 256 characters.}
 }
 \description{
-Create an ApiKey resource.
-}
-\details{
-<div class="seeAlso">
+Create an ApiKey resource.<div class="seeAlso">
 
 
 \href{https://docs.aws.amazon.com/cli/latest/reference/apigateway/create-api-key.html}{AWS CLI}</div>

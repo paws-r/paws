@@ -28,8 +28,7 @@ results, use null.}
 }
 \description{
 Lists the account IDs that have access to the specified portfolio.
-}
-\details{
+
 A delegated admin can list the accounts that have access to the shared
 portfolio. Note that if a delegated admin is de-registered, they can no
 longer perform this operation.

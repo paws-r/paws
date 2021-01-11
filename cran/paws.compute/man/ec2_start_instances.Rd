@@ -18,8 +18,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Starts an Amazon EBS-backed instance that you've previously stopped.
-}
-\details{
+
 Instances that use Amazon EBS volumes as their root devices can be
 quickly stopped and started. When an instance is stopped, the compute
 resources are released and you are not billed for instance usage.

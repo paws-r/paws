@@ -17,8 +17,7 @@ balancer.}
 \description{
 Adds the specified Availability Zones to the set of Availability Zones
 for the specified load balancer in EC2-Classic or a default VPC.
-}
-\details{
+
 For load balancers in a non-default VPC, use
 AttachLoadBalancerToSubnets.
 

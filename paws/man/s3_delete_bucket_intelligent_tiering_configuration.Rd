@@ -16,8 +16,7 @@ or retrieve.}
 \description{
 Deletes the S3 Intelligent-Tiering configuration from the specified
 bucket.
-}
-\details{
+
 The S3 Intelligent-Tiering storage class is designed to optimize storage
 costs by automatically moving data to the most cost-effective storage
 access tier, without additional operational overhead. S3

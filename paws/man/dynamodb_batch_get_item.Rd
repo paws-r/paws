@@ -83,8 +83,7 @@ in the \emph{Amazon DynamoDB Developer Guide}.
 \description{
 The \code{BatchGetItem} operation returns the attributes of one or more items
 from one or more tables. You identify requested items by primary key.
-}
-\details{
+
 A single operation can retrieve up to 16 MB of data, which can contain
 as many as 100 items. \code{BatchGetItem} returns a partial result if the
 response size limit is exceeded, the table's provisioned throughput is

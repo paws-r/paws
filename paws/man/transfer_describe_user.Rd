@@ -18,8 +18,7 @@ and perform file transfer tasks.}
 \description{
 Describes the user assigned to the specific file transfer
 protocol-enabled server, as identified by its \code{ServerId} property.
-}
-\details{
+
 The response from this call returns the properties of the user
 associated with the \code{ServerId} value that was specified.
 }

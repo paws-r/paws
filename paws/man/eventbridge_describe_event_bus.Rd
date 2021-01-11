@@ -16,8 +16,7 @@ the external AWS accounts that are permitted to write events to your
 default event bus, and the associated policy. For custom event buses and
 partner event buses, it displays the name, ARN, policy, state, and
 creation time.
-}
-\details{
+
 To enable your account to receive events from other accounts on its
 default event bus, use PutPermission.
 

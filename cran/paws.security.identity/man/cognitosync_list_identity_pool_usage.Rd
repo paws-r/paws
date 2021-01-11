@@ -13,8 +13,7 @@ cognitosync_list_identity_pool_usage(NextToken, MaxResults)
 }
 \description{
 Gets a list of identity pools registered with Cognito.
-}
-\details{
+
 ListIdentityPoolUsage can only be called with developer credentials. You
 cannot make this API call with the temporary user credentials provided
 by Cognito Identity.

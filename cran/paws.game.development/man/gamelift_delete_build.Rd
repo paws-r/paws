@@ -15,8 +15,7 @@ Deletes a build. This operation permanently deletes the build resource
 and any uploaded build files. Deleting a build does not affect the
 status of any active fleets using the build, but you can no longer
 create new fleets with the deleted build.
-}
-\details{
+
 To delete a build, specify the build ID.
 
 \strong{Learn more}

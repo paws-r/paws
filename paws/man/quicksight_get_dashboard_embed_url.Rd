@@ -67,8 +67,7 @@ Generates a session URL and authorization code that you can use to embed
 an Amazon QuickSight read-only dashboard in your web server code. Before
 you use this command, make sure that you have configured the dashboards
 and permissions.
-}
-\details{
+
 Currently, you can use \code{GetDashboardEmbedURL} only from the server, not
 from the user's browser. The following rules apply to the combination of
 URL and authorization code:

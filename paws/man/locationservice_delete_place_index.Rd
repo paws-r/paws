@@ -11,8 +11,7 @@ locationservice_delete_place_index(IndexName)
 }
 \description{
 Deletes a Place index resource from your AWS account.
-}
-\details{
+
 This action deletes the resource permanently. You cannot undo this
 action.
 }

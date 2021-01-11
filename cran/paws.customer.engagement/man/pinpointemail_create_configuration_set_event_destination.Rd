@@ -24,8 +24,7 @@ these events to. For example, you can send event data to Amazon SNS to
 receive notifications when you receive bounces or complaints, or you can
 use Amazon Kinesis Data Firehose to stream data to Amazon S3 for
 long-term storage.
-}
-\details{
+
 A single configuration set can include more than one event destination.
 }
 \section{Request syntax}{

@@ -26,8 +26,7 @@ Applies only to Hyperledger Fabric.}
 \description{
 Returns information about the networks in which the current AWS account
 participates.
-}
-\details{
+
 Applies to Hyperledger Fabric and Ethereum.
 }
 \section{Request syntax}{

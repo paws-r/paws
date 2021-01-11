@@ -61,8 +61,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 Initiates the copy of an AMI from the specified source Region to the
 current Region. You specify the destination Region by using its endpoint
 when making the request.
-}
-\details{
+
 Copies of encrypted backing snapshots for the AMI are encrypted. Copies
 of unencrypted backing snapshots remain unencrypted, unless you set
 \code{Encrypted} during the copy operation. You cannot create an unencrypted

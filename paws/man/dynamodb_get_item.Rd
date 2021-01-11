@@ -83,8 +83,7 @@ in the \emph{Amazon DynamoDB Developer Guide}.}
 The \code{GetItem} operation returns a set of attributes for the item with
 the given primary key. If there is no matching item, \code{GetItem} does not
 return any data and there will be no \code{Item} element in the response.
-}
-\details{
+
 \code{GetItem} provides an eventually consistent read by default. If your
 application requires a strongly consistent read, set \code{ConsistentRead} to
 \code{true}. Although a strongly consistent read might take more time than an

@@ -75,8 +75,7 @@ action.}
 }
 \description{
 Creates a new maintenance window.
-}
-\details{
+
 The value you specify for \code{Duration} determines the specific end time
 for the maintenance window based on the time it begins. No maintenance
 window tasks are permitted to start after the resulting endtime minus

@@ -14,8 +14,7 @@ GameServerGroup name or ARN value.}
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}
-}
-\details{
+
 Retrieves information on a game server group. This operation returns
 only properties related to GameLift FleetIQ. To view or update
 properties for the corresponding Auto Scaling group, such as launch

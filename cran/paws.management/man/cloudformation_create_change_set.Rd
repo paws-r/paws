@@ -185,8 +185,7 @@ set and lists the differences. Use change sets to understand which
 resources AWS CloudFormation will create or change, and how it will
 change resources in an existing stack, before you create or update a
 stack.
-}
-\details{
+
 To create a change set for a stack that doesn't exist, for the
 \code{ChangeSetType} parameter, specify \code{CREATE}. To create a change set for
 an existing stack, specify \code{UPDATE} for the \code{ChangeSetType} parameter.

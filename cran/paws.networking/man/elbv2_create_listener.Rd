@@ -53,8 +53,7 @@ in the \emph{Network Load Balancers Guide}.}
 \description{
 Creates a listener for the specified Application Load Balancer, Network
 Load Balancer. or Gateway Load Balancer.
-}
-\details{
+
 For more information, see the following:
 \itemize{
 \item \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html}{Listeners for your Application Load Balancers}

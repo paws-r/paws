@@ -42,8 +42,7 @@ purposes.}
 }
 \description{
 Returns a list of AWS Batch jobs.
-}
-\details{
+
 You must specify only one of the following items:
 \itemize{
 \item A job queue ID to return a list of jobs in that job queue

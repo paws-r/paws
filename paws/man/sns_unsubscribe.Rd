@@ -17,8 +17,7 @@ does not require authentication and the requester is not the
 subscription owner, a final cancellation message is delivered to the
 endpoint, so that the endpoint owner can easily resubscribe to the topic
 if the \code{Unsubscribe} request was unintended.
-}
-\details{
+
 This action is throttled at 100 transactions per second (TPS).
 }
 \section{Request syntax}{

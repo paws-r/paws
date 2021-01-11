@@ -17,8 +17,7 @@ Suspends up to 50 users from a \code{Team} or \code{EnterpriseLWA} Amazon Chime
 account. For more information about different account types, see
 \href{https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html}{Managing Your Amazon Chime Accounts}
 in the \emph{Amazon Chime Administration Guide}.
-}
-\details{
+
 Users suspended from a \code{Team} account are disassociated from the
 account, but they can continue to use Amazon Chime as free users. To
 remove the suspension from suspended \code{Team} account users, invite them

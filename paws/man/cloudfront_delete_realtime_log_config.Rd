@@ -14,8 +14,7 @@ delete.}
 }
 \description{
 Deletes a real-time log configuration.
-}
-\details{
+
 You cannot delete a real-time log configuration if it’s attached to a
 cache behavior. First update your distributions to remove the real-time
 log configuration from all cache behaviors, then delete the real-time

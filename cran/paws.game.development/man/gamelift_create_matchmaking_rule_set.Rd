@@ -30,8 +30,7 @@ the type of match to create, such as the number and size of teams. It
 also sets the parameters for acceptable player matches, such as minimum
 skill level or character type. A rule set is used by a
 MatchmakingConfiguration.
-}
-\details{
+
 To create a matchmaking rule set, provide unique rule set name and the
 rule set body in JSON format. Rule sets must be defined in the same
 Region as the matchmaking configuration they are used with.

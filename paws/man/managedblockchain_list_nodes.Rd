@@ -24,8 +24,7 @@ status are listed.}
 }
 \description{
 Returns information about the nodes within a network.
-}
-\details{
+
 Applies to Hyperledger Fabric and Ethereum.
 }
 \section{Request syntax}{

@@ -19,8 +19,7 @@ letters, digits, or the underscore character (\\_).}
 Deletes the specified policy from your organization. Before you perform
 this operation, you must first detach the policy from all organizational
 units (OUs), roots, and accounts.
-}
-\details{
+
 This operation can be called only from the organization's management
 account.
 }

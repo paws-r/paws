@@ -103,8 +103,7 @@ account is assigned to.}
 \description{
 Updates the file transfer protocol-enabled server's properties after
 that server has been created.
-}
-\details{
+
 The \code{UpdateServer} call returns the \code{ServerId} of the server you
 updated.
 }

@@ -14,8 +14,7 @@ certificate.}
 \description{
 Returns information about the TLS certificates that are associated with
 the specified Lightsail load balancer.
-}
-\details{
+
 TLS is just an updated, more secure version of Secure Socket Layer
 (SSL).
 

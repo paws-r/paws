@@ -28,8 +28,7 @@ Gets a list of all of the context keys referenced in the input policies.
 The policies are supplied as a list of one or more strings. To get the
 context keys from policies associated with an IAM user, group, or role,
 use GetContextKeysForPrincipalPolicy.
-}
-\details{
+
 Context keys are variables maintained by AWS and its services that
 provide details about the context of an API query request. Context keys
 can be evaluated by testing against a value specified in an IAM policy.

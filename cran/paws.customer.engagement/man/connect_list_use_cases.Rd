@@ -22,8 +22,7 @@ results.}
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 List the use cases.
 }
 \section{Request syntax}{

@@ -28,8 +28,7 @@ for example,
 \description{
 Generates (or retrieves) a Cognito ID. Supplying multiple logins will
 create an implicit linked account.
-}
-\details{
+
 This is a public API. You do not need any credentials to call this API.
 }
 \section{Request syntax}{

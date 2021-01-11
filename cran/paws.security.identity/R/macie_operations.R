@@ -6,6 +6,7 @@ NULL
 #' Associates a specified AWS account with Amazon Macie Classic as a member
 #' account
 #'
+#' @description
 #' Associates a specified AWS account with Amazon Macie Classic as a member
 #' account.
 #'
@@ -45,6 +46,7 @@ macie_associate_member_account <- function(memberAccountId) {
 #' Associates specified S3 resources with Amazon Macie Classic for
 #' monitoring and data classification
 #'
+#' @description
 #' Associates specified S3 resources with Amazon Macie Classic for
 #' monitoring and data classification. If memberAccountId isn't specified,
 #' the action associates specified S3 resources with Macie Classic for the
@@ -99,6 +101,7 @@ macie_associate_s3_resources <- function(memberAccountId = NULL, s3Resources) {
 
 #' Removes the specified member account from Amazon Macie Classic
 #'
+#' @description
 #' Removes the specified member account from Amazon Macie Classic.
 #'
 #' @usage
@@ -137,6 +140,7 @@ macie_disassociate_member_account <- function(memberAccountId) {
 #' Removes specified S3 resources from being monitored by Amazon Macie
 #' Classic
 #'
+#' @description
 #' Removes specified S3 resources from being monitored by Amazon Macie
 #' Classic. If memberAccountId isn't specified, the action removes
 #' specified S3 resources from Macie Classic for the current master
@@ -187,6 +191,7 @@ macie_disassociate_s3_resources <- function(memberAccountId = NULL, associatedS3
 #' Lists all Amazon Macie Classic member accounts for the current Amazon
 #' Macie Classic master account
 #'
+#' @description
 #' Lists all Amazon Macie Classic member accounts for the current Amazon
 #' Macie Classic master account.
 #'
@@ -230,6 +235,7 @@ macie_list_member_accounts <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Lists all the S3 resources associated with Amazon Macie Classic
 #'
+#' @description
 #' Lists all the S3 resources associated with Amazon Macie Classic. If
 #' memberAccountId isn't specified, the action lists the S3 resources
 #' associated with Amazon Macie Classic for the current master account. If
@@ -279,6 +285,7 @@ macie_list_s3_resources <- function(memberAccountId = NULL, nextToken = NULL, ma
 
 #' Updates the classification types for the specified S3 resources
 #'
+#' @description
 #' Updates the classification types for the specified S3 resources. If
 #' memberAccountId isn't specified, the action updates the classification
 #' types of the S3 resources associated with Amazon Macie Classic for the

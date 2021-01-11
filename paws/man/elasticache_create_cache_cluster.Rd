@@ -78,7 +78,7 @@ Memcached, this value must be between 1 and 20.
 
 If you need more than 20 nodes for your Memcached cluster, please fill
 out the ElastiCache Limit Increase Request form at
-\href{https://console.aws.amazon.com/support/home#case/create?issueType=service-limit-increase&limitType=service-code-elasticache-nodes&type=service_limit_increase&serviceLimitIncreaseType=elasticache-nodes}{http://aws.amazon.com/contact-us/elasticache-node-limit-request/}.}
+http://aws.amazon.com/contact-us/elasticache-node-limit-request/.}
 
 \item{CacheNodeType}{The compute and memory capacity of the nodes in the node group (shard).
 
@@ -293,7 +293,7 @@ length.
 in the AUTH token.
 }
 
-For more information, see \href{https://redis.io/commands/AUTH}{AUTH password} at
+For more information, see AUTH password at
 http://redis.io/commands/AUTH.}
 
 \item{OutpostMode}{Specifies whether the nodes in the cluster are created in a single
@@ -306,8 +306,7 @@ outpost or across multiple outposts.}
 \description{
 Creates a cluster. All nodes in the cluster run the same
 protocol-compliant cache engine software, either Memcached or Redis.
-}
-\details{
+
 This operation is not supported for Redis (cluster mode enabled)
 clusters.
 }

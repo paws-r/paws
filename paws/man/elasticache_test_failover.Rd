@@ -21,8 +21,7 @@ period.}
 Represents the input of a \code{TestFailover} operation which test automatic
 failover on a specified node group (called shard in the console) in a
 replication group (called cluster in the console).
-}
-\details{
+
 \strong{Note the following}
 \itemize{
 \item A customer can use this operation to test automatic failover on up

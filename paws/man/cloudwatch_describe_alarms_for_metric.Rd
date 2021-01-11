@@ -29,8 +29,7 @@ succeed.}
 \description{
 Retrieves the alarms for the specified metric. To filter the results,
 specify a statistic, period, or unit.
-}
-\details{
+
 This operation retrieves only standard alarms that are based on the
 specified metric. It does not return alarms based on math expressions
 that use the specified metric, or composite alarms that use the

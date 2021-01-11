@@ -39,8 +39,7 @@ Creates a
 from the current code and configuration of a function. Use versions to
 create a snapshot of your function code and configuration that doesn't
 change.
-}
-\details{
+
 AWS Lambda doesn't publish a version if the function's configuration and
 code haven't changed since the last version. Use UpdateFunctionCode or
 UpdateFunctionConfiguration to update the function before publishing a

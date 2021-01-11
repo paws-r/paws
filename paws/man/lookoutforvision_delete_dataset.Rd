@@ -25,8 +25,7 @@ new call to \code{DeleteDataset}. An idempotency token is active for 8 hours.}
 }
 \description{
 Deletes an existing Amazon Lookout for Vision \code{dataset}.
-}
-\details{
+
 If your the project has a single dataset, you must create a new dataset
 before you can create a model.
 

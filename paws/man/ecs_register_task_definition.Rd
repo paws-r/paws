@@ -228,8 +228,7 @@ Registers a new task definition from the supplied \code{family} and
 containers with the \code{volumes} parameter. For more information about task
 definition parameters and defaults, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html}{Amazon ECS Task Definitions}
 in the \emph{Amazon Elastic Container Service Developer Guide}.
-}
-\details{
+
 You can specify an IAM role for your task with the \code{taskRoleArn}
 parameter. When you specify an IAM role for a task, its containers can
 then use the latest versions of the AWS CLI or SDKs to make API requests

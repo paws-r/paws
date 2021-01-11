@@ -14,8 +14,7 @@ AWS Region for each AWS account.}
 }
 \description{
 Describes the permissions on a dataset.
-}
-\details{
+
 The permissions resource is
 \code{arn:aws:quicksight:region:aws-account-id:dataset/data-set-id}.
 }

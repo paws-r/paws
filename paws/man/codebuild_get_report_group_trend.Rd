@@ -15,7 +15,7 @@ codebuild_get_report_group_trend(reportGroupArn, numOfReports,
 \item{trendField}{[required]}
 }
 \description{
-Get report group trend
+
 }
 \section{Request syntax}{
 \preformatted{svc$get_report_group_trend(

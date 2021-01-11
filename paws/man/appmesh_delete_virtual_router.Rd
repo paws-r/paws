@@ -17,8 +17,7 @@ your account. For more information about mesh sharing, see \href{https://docs.aw
 }
 \description{
 Deletes an existing virtual router.
-}
-\details{
+
 You must delete any routes associated with the virtual router before you
 can delete the router itself.
 }

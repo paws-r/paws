@@ -5,6 +5,7 @@ NULL
 
 #' Deletes an object at the specified path
 #'
+#' @description
 #' Deletes an object at the specified path.
 #'
 #' @usage
@@ -43,6 +44,7 @@ mediastoredata_delete_object <- function(Path) {
 
 #' Gets the headers for an object at the specified path
 #'
+#' @description
 #' Gets the headers for an object at the specified path.
 #'
 #' @usage
@@ -81,6 +83,7 @@ mediastoredata_describe_object <- function(Path) {
 
 #' Downloads the object at the specified path
 #'
+#' @description
 #' Downloads the object at the specified path. If the object’s upload
 #' availability is set to `streaming`, AWS Elemental MediaStore downloads
 #' the object even if it’s still uploading the object.
@@ -152,6 +155,7 @@ mediastoredata_get_object <- function(Path, Range = NULL) {
 #' Provides a list of metadata entries about folders and objects in the
 #' specified folder
 #'
+#' @description
 #' Provides a list of metadata entries about folders and objects in the
 #' specified folder.
 #'
@@ -208,6 +212,7 @@ mediastoredata_list_items <- function(Path = NULL, MaxResults = NULL, NextToken 
 
 #' Uploads an object to the specified path
 #'
+#' @description
 #' Uploads an object to the specified path. Object sizes are limited to 25
 #' MB for standard upload availability and 10 MB for streaming upload
 #' availability.

@@ -26,8 +26,7 @@ for the operation.}
 }
 \description{
 Creates an AD Connector to connect to an on-premises directory.
-}
-\details{
+
 Before you call \code{ConnectDirectory}, ensure that all of the required
 permissions have been explicitly granted through a policy. For details
 about what permissions are required to run the \code{ConnectDirectory}

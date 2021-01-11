@@ -26,8 +26,7 @@ that is limited by the SCP attempted to access an AWS service.}
 Generates a report for service last accessed data for AWS Organizations.
 You can generate a report for any entities (organization root,
 organizational unit, or account) or policies in your organization.
-}
-\details{
+
 To call this operation, you must be signed in using your AWS
 Organizations master account credentials. You can use your long-term IAM
 user or root user credentials, or temporary credentials from assuming an

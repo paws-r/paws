@@ -132,8 +132,7 @@ The default value is \code{APP}.}
 }
 \description{
 Updates the specified fleet.
-}
-\details{
+
 If the fleet is in the \code{STOPPED} state, you can update any attribute
 except the fleet name. If the fleet is in the \code{RUNNING} state, you can
 update the \code{DisplayName}, \code{ComputeCapacity}, \code{ImageARN}, \code{ImageName},

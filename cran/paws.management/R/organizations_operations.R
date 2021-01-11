@@ -6,6 +6,7 @@ NULL
 #' Sends a response to the originator of a handshake agreeing to the action
 #' proposed by the handshake request
 #'
+#' @description
 #' Sends a response to the originator of a handshake agreeing to the action
 #' proposed by the handshake request.
 #' 
@@ -90,6 +91,7 @@ organizations_accept_handshake <- function(HandshakeId) {
 #' Attaches a policy to a root, an organizational unit (OU), or an
 #' individual account
 #'
+#' @description
 #' Attaches a policy to a root, an organizational unit (OU), or an
 #' individual account. How the policy affects accounts depends on the type
 #' of policy. Refer to the *AWS Organizations User Guide* for information
@@ -182,6 +184,7 @@ organizations_attach_policy <- function(PolicyId, TargetId) {
 
 #' Cancels a handshake
 #'
+#' @description
 #' Cancels a handshake. Canceling a handshake sets the handshake state to
 #' `CANCELED`.
 #' 
@@ -245,6 +248,7 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #' Creates an AWS account that is automatically a member of the
 #' organization whose credentials made the request
 #'
+#' @description
 #' Creates an AWS account that is automatically a member of the
 #' organization whose credentials made the request. This is an asynchronous
 #' request that AWS performs in the background. Because `CreateAccount`
@@ -301,13 +305,11 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #'     in the *AWS Organizations User Guide*.
 #' 
 #' -   If you get an exception that indicates that you exceeded your
-#'     account limits for the organization, contact [AWS
-#'     Support](https://console.aws.amazon.com/support/home#/).
+#'     account limits for the organization, contact AWS Support.
 #' 
 #' -   If you get an exception that indicates that the operation failed
 #'     because your organization is still initializing, wait one hour and
-#'     then try again. If the error persists, contact [AWS
-#'     Support](https://console.aws.amazon.com/support/home#/).
+#'     then try again. If the error persists, contact AWS Support.
 #' 
 #' -   Using `CreateAccount` to create multiple temporary accounts isn't
 #'     recommended. You can only close an account from the Billing and Cost
@@ -441,6 +443,7 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' This action is available if all of the following are true: - You're
 #' authorized to create accounts in the AWS GovCloud (US) Region
 #'
+#' @description
 #' This action is available if all of the following are true:
 #' 
 #' -   You're authorized to create accounts in the AWS GovCloud (US)
@@ -541,13 +544,11 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #'     in the *AWS Organizations User Guide.*
 #' 
 #' -   If you get an exception that indicates that you exceeded your
-#'     account limits for the organization, contact [AWS
-#'     Support](https://console.aws.amazon.com/support/home#/).
+#'     account limits for the organization, contact AWS Support.
 #' 
 #' -   If you get an exception that indicates that the operation failed
 #'     because your organization is still initializing, wait one hour and
-#'     then try again. If the error persists, contact [AWS
-#'     Support](https://console.aws.amazon.com/support/home#/).
+#'     then try again. If the error persists, contact AWS Support.
 #' 
 #' -   Using `CreateGovCloudAccount` to create multiple temporary accounts
 #'     isn't recommended. You can only close an account from the AWS
@@ -669,6 +670,7 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 
 #' Creates an AWS organization
 #'
+#' @description
 #' Creates an AWS organization. The account whose user is calling the
 #' `CreateOrganization` operation automatically becomes the [management
 #' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#account)
@@ -758,6 +760,7 @@ organizations_create_organization <- function(FeatureSet = NULL) {
 
 #' Creates an organizational unit (OU) within a root or parent OU
 #'
+#' @description
 #' Creates an organizational unit (OU) within a root or parent OU. An OU is
 #' a container for accounts that enables you to organize your accounts to
 #' apply policies according to your business requirements. The number of
@@ -850,6 +853,7 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #' Creates a policy of a specified type that you can attach to a root, an
 #' organizational unit (OU), or an individual AWS account
 #'
+#' @description
 #' Creates a policy of a specified type that you can attach to a root, an
 #' organizational unit (OU), or an individual AWS account.
 #' 
@@ -952,6 +956,7 @@ organizations_create_policy <- function(Content, Description, Name, Type, Tags =
 
 #' Declines a handshake request
 #'
+#' @description
 #' Declines a handshake request. This sets the handshake state to
 #' `DECLINED` and effectively deactivates the request.
 #' 
@@ -1012,6 +1017,7 @@ organizations_decline_handshake <- function(HandshakeId) {
 
 #' Deletes the organization
 #'
+#' @description
 #' Deletes the organization. You can delete an organization only by using
 #' credentials from the management account. The organization must be empty
 #' of member accounts.
@@ -1045,6 +1051,7 @@ organizations_delete_organization <- function() {
 
 #' Deletes an organizational unit (OU) from a root or another OU
 #'
+#' @description
 #' Deletes an organizational unit (OU) from a root or another OU. You must
 #' first remove all accounts and child OUs from the OU that you want to
 #' delete.
@@ -1105,6 +1112,7 @@ organizations_delete_organizational_unit <- function(OrganizationalUnitId) {
 
 #' Deletes the specified policy from your organization
 #'
+#' @description
 #' Deletes the specified policy from your organization. Before you perform
 #' this operation, you must first detach the policy from all organizational
 #' units (OUs), roots, and accounts.
@@ -1165,6 +1173,7 @@ organizations_delete_policy <- function(PolicyId) {
 #' Removes the specified member AWS account as a delegated administrator
 #' for the specified AWS service
 #'
+#' @description
 #' Removes the specified member AWS account as a delegated administrator
 #' for the specified AWS service.
 #' 
@@ -1228,6 +1237,7 @@ organizations_deregister_delegated_administrator <- function(AccountId, ServiceP
 #' Retrieves AWS Organizations-related information about the specified
 #' account
 #'
+#' @description
 #' Retrieves AWS Organizations-related information about the specified
 #' account.
 #' 
@@ -1284,6 +1294,7 @@ organizations_describe_account <- function(AccountId) {
 #' Retrieves the current status of an asynchronous request to create an
 #' account
 #'
+#' @description
 #' Retrieves the current status of an asynchronous request to create an
 #' account.
 #' 
@@ -1345,6 +1356,7 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #' Returns the contents of the effective policy for specified policy type
 #' and account
 #'
+#' @description
 #' Returns the contents of the effective policy for specified policy type
 #' and account. The effective policy is the aggregation of any policies of
 #' the specified type that the account inherits, plus any policy of that
@@ -1407,6 +1419,7 @@ organizations_describe_effective_policy <- function(PolicyType, TargetId = NULL)
 
 #' Retrieves information about a previously requested handshake
 #'
+#' @description
 #' Retrieves information about a previously requested handshake. The
 #' handshake ID comes from the response to the original
 #' InviteAccountToOrganization operation that generated the handshake.
@@ -1470,6 +1483,7 @@ organizations_describe_handshake <- function(HandshakeId) {
 #' Retrieves information about the organization that the user's account
 #' belongs to
 #'
+#' @description
 #' Retrieves information about the organization that the user's account
 #' belongs to.
 #' 
@@ -1515,6 +1529,7 @@ organizations_describe_organization <- function() {
 
 #' Retrieves information about an organizational unit (OU)
 #'
+#' @description
 #' Retrieves information about an organizational unit (OU).
 #' 
 #' This operation can be called only from the organization's management
@@ -1571,6 +1586,7 @@ organizations_describe_organizational_unit <- function(OrganizationalUnitId) {
 
 #' Retrieves information about a policy
 #'
+#' @description
 #' Retrieves information about a policy.
 #' 
 #' This operation can be called only from the organization's management
@@ -1627,6 +1643,7 @@ organizations_describe_policy <- function(PolicyId) {
 #' Detaches a policy from a target root, organizational unit (OU), or
 #' account
 #'
+#' @description
 #' Detaches a policy from a target root, organizational unit (OU), or
 #' account.
 #' 
@@ -1715,6 +1732,7 @@ organizations_detach_policy <- function(PolicyId, TargetId) {
 #' Disables the integration of an AWS service (the service that is
 #' specified by ServicePrincipal) with AWS Organizations
 #'
+#' @description
 #' Disables the integration of an AWS service (the service that is
 #' specified by `ServicePrincipal`) with AWS Organizations. When you
 #' disable integration, the specified service no longer can create a
@@ -1783,6 +1801,7 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 
 #' Disables an organizational policy type in a root
 #'
+#' @description
 #' Disables an organizational policy type in a root. A policy of a certain
 #' type can be attached to entities in a root only if that type is enabled
 #' in the root. After you perform this operation, you no longer can attach
@@ -1866,6 +1885,7 @@ organizations_disable_policy_type <- function(RootId, PolicyType) {
 #' Enables the integration of an AWS service (the service that is specified
 #' by ServicePrincipal) with AWS Organizations
 #'
+#' @description
 #' Enables the integration of an AWS service (the service that is specified
 #' by `ServicePrincipal`) with AWS Organizations. When you enable
 #' integration, you allow the specified service to create a [service-linked
@@ -1926,6 +1946,7 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
 
 #' Enables all features in an organization
 #'
+#' @description
 #' Enables all features in an organization. This enables the use of
 #' organization policies that can restrict the services and actions that
 #' can be called in each account. Until you enable all features, you have
@@ -2004,6 +2025,7 @@ organizations_enable_all_features <- function() {
 
 #' Enables a policy type in a root
 #'
+#' @description
 #' Enables a policy type in a root. After you enable a policy type in a
 #' root, you can attach policies of that type to the root, any
 #' organizational unit (OU), or account in that root. You can undo this by
@@ -2082,6 +2104,7 @@ organizations_enable_policy_type <- function(RootId, PolicyType) {
 #' Sends an invitation to another account to join your organization as a
 #' member account
 #'
+#' @description
 #' Sends an invitation to another account to join your organization as a
 #' member account. AWS Organizations sends email on your behalf to the
 #' email address that is associated with the other account's owner. The
@@ -2100,8 +2123,8 @@ organizations_enable_policy_type <- function(RootId, PolicyType) {
 #' -   If you receive an exception that indicates that you exceeded your
 #'     account limits for the organization or that the operation failed
 #'     because your organization is still initializing, wait one hour and
-#'     then try again. If the error persists after an hour, contact [AWS
-#'     Support](https://console.aws.amazon.com/support/home#/).
+#'     then try again. If the error persists after an hour, contact AWS
+#'     Support.
 #' 
 #' If the request includes tags, then the requester must have the
 #' `organizations:TagResource` permission.
@@ -2204,6 +2227,7 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL, T
 
 #' Removes a member account from its parent organization
 #'
+#' @description
 #' Removes a member account from its parent organization. This version of
 #' the operation is performed by the account that wants to leave. To remove
 #' a member account as a user in the management account, use
@@ -2287,6 +2311,7 @@ organizations_leave_organization <- function() {
 #' Returns a list of the AWS services that you enabled to integrate with
 #' your organization
 #'
+#' @description
 #' Returns a list of the AWS services that you enabled to integrate with
 #' your organization. After a service on this list creates the resources
 #' that it requires for the integration, it can perform operations on your
@@ -2352,6 +2377,7 @@ organizations_list_aws_service_access_for_organization <- function(NextToken = N
 
 #' Lists all the accounts in the organization
 #'
+#' @description
 #' Lists all the accounts in the organization. To request only the accounts
 #' in a specified root or organizational unit (OU), use the
 #' ListAccountsForParent operation instead.
@@ -2423,6 +2449,7 @@ organizations_list_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #' Lists the accounts in an organization that are contained by the
 #' specified target root or organizational unit (OU)
 #'
+#' @description
 #' Lists the accounts in an organization that are contained by the
 #' specified target root or organizational unit (OU). If you specify the
 #' root, you get a list of all the accounts that aren't in any OU. If you
@@ -2502,6 +2529,7 @@ organizations_list_accounts_for_parent <- function(ParentId, NextToken = NULL, M
 #' Lists all of the organizational units (OUs) or accounts that are
 #' contained in the specified parent OU or root
 #'
+#' @description
 #' Lists all of the organizational units (OUs) or accounts that are
 #' contained in the specified parent OU or root. This operation, along with
 #' ListParents enables you to traverse the tree structure that makes up
@@ -2593,6 +2621,7 @@ organizations_list_children <- function(ParentId, ChildType, NextToken = NULL, M
 #' Lists the account creation requests that match the specified status that
 #' is currently being tracked for the organization
 #'
+#' @description
 #' Lists the account creation requests that match the specified status that
 #' is currently being tracked for the organization.
 #' 
@@ -2680,6 +2709,7 @@ organizations_list_create_account_status <- function(States = NULL, NextToken = 
 #' Lists the AWS accounts that are designated as delegated administrators
 #' in this organization
 #'
+#' @description
 #' Lists the AWS accounts that are designated as delegated administrators
 #' in this organization.
 #' 
@@ -2744,6 +2774,7 @@ organizations_list_delegated_administrators <- function(ServicePrincipal = NULL,
 #' List the AWS services for which the specified account is a delegated
 #' administrator
 #'
+#' @description
 #' List the AWS services for which the specified account is a delegated
 #' administrator.
 #' 
@@ -2805,6 +2836,7 @@ organizations_list_delegated_services_for_account <- function(AccountId, NextTok
 #' Lists the current handshakes that are associated with the account of the
 #' requesting user
 #'
+#' @description
 #' Lists the current handshakes that are associated with the account of the
 #' requesting user.
 #' 
@@ -2889,6 +2921,7 @@ organizations_list_handshakes_for_account <- function(Filter = NULL, NextToken =
 #' Lists the handshakes that are associated with the organization that the
 #' requesting user is part of
 #'
+#' @description
 #' Lists the handshakes that are associated with the organization that the
 #' requesting user is part of. The `ListHandshakesForOrganization`
 #' operation returns a list of handshake structures. Each structure
@@ -2977,6 +3010,7 @@ organizations_list_handshakes_for_organization <- function(Filter = NULL, NextTo
 #' Lists the organizational units (OUs) in a parent organizational unit or
 #' root
 #'
+#' @description
 #' Lists the organizational units (OUs) in a parent organizational unit or
 #' root.
 #' 
@@ -3064,6 +3098,7 @@ organizations_list_organizational_units_for_parent <- function(ParentId, NextTok
 #' Lists the root or organizational units (OUs) that serve as the immediate
 #' parent of the specified child OU or account
 #'
+#' @description
 #' Lists the root or organizational units (OUs) that serve as the immediate
 #' parent of the specified child OU or account. This operation, along with
 #' ListChildren enables you to traverse the tree structure that makes up
@@ -3153,6 +3188,7 @@ organizations_list_parents <- function(ChildId, NextToken = NULL, MaxResults = N
 #' Retrieves the list of all policies in an organization of a specified
 #' type
 #'
+#' @description
 #' Retrieves the list of all policies in an organization of a specified
 #' type.
 #' 
@@ -3236,6 +3272,7 @@ organizations_list_policies <- function(Filter, NextToken = NULL, MaxResults = N
 #' Lists the policies that are directly attached to the specified target
 #' root, organizational unit (OU), or account
 #'
+#' @description
 #' Lists the policies that are directly attached to the specified target
 #' root, organizational unit (OU), or account. You must specify the policy
 #' type that you want included in the returned list.
@@ -3340,6 +3377,7 @@ organizations_list_policies_for_target <- function(TargetId, Filter, NextToken =
 
 #' Lists the roots that are defined in the current organization
 #'
+#' @description
 #' Lists the roots that are defined in the current organization.
 #' 
 #' Always check the `NextToken` response parameter for a `null` value when
@@ -3415,6 +3453,7 @@ organizations_list_roots <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Lists tags that are attached to the specified resource
 #'
+#' @description
 #' Lists tags that are attached to the specified resource.
 #' 
 #' You can attach tags to the following resources in AWS Organizations.
@@ -3485,6 +3524,7 @@ organizations_list_tags_for_resource <- function(ResourceId, NextToken = NULL) {
 #' Lists all the roots, organizational units (OUs), and accounts that the
 #' specified policy is attached to
 #'
+#' @description
 #' Lists all the roots, organizational units (OUs), and accounts that the
 #' specified policy is attached to.
 #' 
@@ -3564,6 +3604,7 @@ organizations_list_targets_for_policy <- function(PolicyId, NextToken = NULL, Ma
 #' Moves an account from its current source parent root or organizational
 #' unit (OU) to the specified destination parent root or OU
 #'
+#' @description
 #' Moves an account from its current source parent root or organizational
 #' unit (OU) to the specified destination parent root or OU.
 #' 
@@ -3648,6 +3689,7 @@ organizations_move_account <- function(AccountId, SourceParentId, DestinationPar
 #' Enables the specified member account to administer the Organizations
 #' features of the specified AWS service
 #'
+#' @description
 #' Enables the specified member account to administer the Organizations
 #' features of the specified AWS service. It grants read-only access to AWS
 #' Organizations service data. The account still requires IAM permissions
@@ -3702,6 +3744,7 @@ organizations_register_delegated_administrator <- function(AccountId, ServicePri
 
 #' Removes the specified account from the organization
 #'
+#' @description
 #' Removes the specified account from the organization.
 #' 
 #' The removed account becomes a standalone account that isn't a member of
@@ -3782,6 +3825,7 @@ organizations_remove_account_from_organization <- function(AccountId) {
 
 #' Adds one or more tags to the specified resource
 #'
+#' @description
 #' Adds one or more tags to the specified resource.
 #' 
 #' Currently, you can attach tags to the following resources in AWS
@@ -3860,6 +3904,7 @@ organizations_tag_resource <- function(ResourceId, Tags) {
 
 #' Removes any tags with the specified keys from the specified resource
 #'
+#' @description
 #' Removes any tags with the specified keys from the specified resource.
 #' 
 #' You can attach tags to the following resources in AWS Organizations.
@@ -3926,6 +3971,7 @@ organizations_untag_resource <- function(ResourceId, TagKeys) {
 
 #' Renames the specified organizational unit (OU)
 #'
+#' @description
 #' Renames the specified organizational unit (OU). The ID and ARN don't
 #' change. The child OUs and accounts remain in place, and any attached
 #' policies of the OU remain attached.
@@ -3990,6 +4036,7 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 
 #' Updates an existing policy with a new name, description, or content
 #'
+#' @description
 #' Updates an existing policy with a new name, description, or content. If
 #' you don't supply any parameter, that value remains unchanged. You can't
 #' change a policy's type.

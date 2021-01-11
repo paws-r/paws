@@ -5,6 +5,7 @@ NULL
 
 #' Deletes the specified alarms
 #'
+#' @description
 #' Deletes the specified alarms. You can delete up to 100 alarms in one
 #' operation. However, this total can include no more than one composite
 #' alarm. For example, you could delete 99 metric alarms and one composite
@@ -64,6 +65,7 @@ cloudwatch_delete_alarms <- function(AlarmNames) {
 
 #' Deletes the specified anomaly detection model from your account
 #'
+#' @description
 #' Deletes the specified anomaly detection model from your account.
 #'
 #' @usage
@@ -113,6 +115,7 @@ cloudwatch_delete_anomaly_detector <- function(Namespace, MetricName, Dimensions
 
 #' Deletes all dashboards that you specify
 #'
+#' @description
 #' Deletes all dashboards that you specify. You can specify up to 100
 #' dashboards to delete. If there is an error during this call, no
 #' dashboards are deleted.
@@ -153,6 +156,7 @@ cloudwatch_delete_dashboards <- function(DashboardNames) {
 
 #' Permanently deletes the specified Contributor Insights rules
 #'
+#' @description
 #' Permanently deletes the specified Contributor Insights rules.
 #' 
 #' If you create a rule, delete it, and then re-create it with the same
@@ -197,6 +201,7 @@ cloudwatch_delete_insight_rules <- function(RuleNames) {
 
 #' Retrieves the history for the specified alarm
 #'
+#' @description
 #' Retrieves the history for the specified alarm. You can filter the
 #' results by date range or item type. If an alarm name is not specified,
 #' the histories for either all metric alarms or all composite alarms are
@@ -265,6 +270,7 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NUL
 
 #' Retrieves the specified alarms
 #'
+#' @description
 #' Retrieves the specified alarms. You can filter the results by specifying
 #' a prefix for the alarm name, the alarm state, or a prefix for any
 #' action.
@@ -366,6 +372,7 @@ cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL
 
 #' Retrieves the alarms for the specified metric
 #'
+#' @description
 #' Retrieves the alarms for the specified metric. To filter the results,
 #' specify a statistic, period, or unit.
 #' 
@@ -430,6 +437,7 @@ cloudwatch_describe_alarms_for_metric <- function(MetricName, Namespace, Statist
 
 #' Lists the anomaly detection models that you have created in your account
 #'
+#' @description
 #' Lists the anomaly detection models that you have created in your
 #' account. You can list all models in your account or filter the results
 #' to only the models that are related to a certain namespace, metric name,
@@ -495,6 +503,7 @@ cloudwatch_describe_anomaly_detectors <- function(NextToken = NULL, MaxResults =
 
 #' Returns a list of all the Contributor Insights rules in your account
 #'
+#' @description
 #' Returns a list of all the Contributor Insights rules in your account.
 #' 
 #' For more information about Contributor Insights, see [Using Contributor
@@ -539,6 +548,7 @@ cloudwatch_describe_insight_rules <- function(NextToken = NULL, MaxResults = NUL
 
 #' Disables the actions for the specified alarms
 #'
+#' @description
 #' Disables the actions for the specified alarms. When an alarm's actions
 #' are disabled, the alarm actions do not execute when the alarm state
 #' changes.
@@ -579,6 +589,7 @@ cloudwatch_disable_alarm_actions <- function(AlarmNames) {
 
 #' Disables the specified Contributor Insights rules
 #'
+#' @description
 #' Disables the specified Contributor Insights rules. When rules are
 #' disabled, they do not analyze log groups and do not incur costs.
 #'
@@ -620,6 +631,7 @@ cloudwatch_disable_insight_rules <- function(RuleNames) {
 
 #' Enables the actions for the specified alarms
 #'
+#' @description
 #' Enables the actions for the specified alarms.
 #'
 #' @usage
@@ -658,6 +670,7 @@ cloudwatch_enable_alarm_actions <- function(AlarmNames) {
 
 #' Enables the specified Contributor Insights rules
 #'
+#' @description
 #' Enables the specified Contributor Insights rules. When rules are
 #' enabled, they immediately begin analyzing log data.
 #'
@@ -699,6 +712,7 @@ cloudwatch_enable_insight_rules <- function(RuleNames) {
 
 #' Displays the details of the dashboard that you specify
 #'
+#' @description
 #' Displays the details of the dashboard that you specify.
 #' 
 #' To copy an existing dashboard, use `GetDashboard`, and then use the data
@@ -740,6 +754,7 @@ cloudwatch_get_dashboard <- function(DashboardName) {
 #' This operation returns the time series data collected by a Contributor
 #' Insights rule
 #'
+#' @description
 #' This operation returns the time series data collected by a Contributor
 #' Insights rule. The data includes the identity and number of contributors
 #' to the log group.
@@ -864,6 +879,7 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
 #' metrics in a single request, with a total of as many as 100,800 data
 #' points
 #'
+#' @description
 #' You can use the `GetMetricData` API to retrieve as many as 500 different
 #' metrics in a single request, with a total of as many as 100,800 data
 #' points. You can also optionally perform math expressions on the values
@@ -1031,6 +1047,7 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
 
 #' Gets statistics for the specified metric
 #'
+#' @description
 #' Gets statistics for the specified metric.
 #' 
 #' The maximum number of data points returned from a single call is 1,440.
@@ -1228,6 +1245,7 @@ cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions =
 #' You can use the GetMetricWidgetImage API to retrieve a snapshot graph of
 #' one or more Amazon CloudWatch metrics as a bitmap image
 #'
+#' @description
 #' You can use the `GetMetricWidgetImage` API to retrieve a snapshot graph
 #' of one or more Amazon CloudWatch metrics as a bitmap image. You can then
 #' embed this image into your services and products, such as wiki pages,
@@ -1320,6 +1338,7 @@ cloudwatch_get_metric_widget_image <- function(MetricWidget, OutputFormat = NULL
 
 #' Returns a list of the dashboards for your account
 #'
+#' @description
 #' Returns a list of the dashboards for your account. If you include
 #' `DashboardNamePrefix`, only those dashboards with names starting with
 #' the prefix are listed. Otherwise, all dashboards in your account are
@@ -1369,6 +1388,7 @@ cloudwatch_list_dashboards <- function(DashboardNamePrefix = NULL, NextToken = N
 
 #' List the specified metrics
 #'
+#' @description
 #' List the specified metrics. You can use the returned metrics with
 #' [GetMetricData](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetMetricData.html)
 #' or
@@ -1450,6 +1470,7 @@ cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensi
 
 #' Displays the tags associated with a CloudWatch resource
 #'
+#' @description
 #' Displays the tags associated with a CloudWatch resource. Currently,
 #' alarms and Contributor Insights rules support tagging.
 #'
@@ -1498,6 +1519,7 @@ cloudwatch_list_tags_for_resource <- function(ResourceARN) {
 
 #' Creates an anomaly detection model for a CloudWatch metric
 #'
+#' @description
 #' Creates an anomaly detection model for a CloudWatch metric. You can use
 #' the model to display a band of expected normal values when the metric is
 #' graphed.
@@ -1569,6 +1591,7 @@ cloudwatch_put_anomaly_detector <- function(Namespace, MetricName, Dimensions = 
 
 #' Creates or updates a composite alarm
 #'
+#' @description
 #' Creates or updates a *composite alarm*. When you create a composite
 #' alarm, you specify a rule expression for the alarm that takes into
 #' account the alarm states of other alarms that you have created. The
@@ -1754,6 +1777,7 @@ cloudwatch_put_composite_alarm <- function(ActionsEnabled = NULL, AlarmActions =
 #' Creates a dashboard if it does not already exist, or updates an existing
 #' dashboard
 #'
+#' @description
 #' Creates a dashboard if it does not already exist, or updates an existing
 #' dashboard. If you update a dashboard, the entire contents are replaced
 #' with what you specify here.
@@ -1820,6 +1844,7 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 
 #' Creates a Contributor Insights rule
 #'
+#' @description
 #' Creates a Contributor Insights rule. Rules evaluate log events in a
 #' CloudWatch Logs log group, enabling you to find contributor data for the
 #' log events in that log group. For more information, see [Using
@@ -1892,6 +1917,7 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' Creates or updates an alarm and associates it with the specified metric,
 #' metric math expression, or anomaly detection model
 #'
+#' @description
 #' Creates or updates an alarm and associates it with the specified metric,
 #' metric math expression, or anomaly detection model.
 #' 
@@ -2214,6 +2240,7 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 
 #' Publishes metric data points to Amazon CloudWatch
 #'
+#' @description
 #' Publishes metric data points to Amazon CloudWatch. CloudWatch associates
 #' the data points with the specified metric. If the specified metric does
 #' not exist, CloudWatch creates the metric. When CloudWatch creates a
@@ -2337,6 +2364,7 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 
 #' Temporarily sets the state of an alarm for testing purposes
 #'
+#' @description
 #' Temporarily sets the state of an alarm for testing purposes. When the
 #' updated state differs from the previous value, the action configured for
 #' the appropriate state is invoked. For example, if your alarm is
@@ -2406,6 +2434,7 @@ cloudwatch_set_alarm_state <- function(AlarmName, StateValue, StateReason, State
 #' Assigns one or more tags (key-value pairs) to the specified CloudWatch
 #' resource
 #'
+#' @description
 #' Assigns one or more tags (key-value pairs) to the specified CloudWatch
 #' resource. Currently, the only CloudWatch resources that can be tagged
 #' are alarms and Contributor Insights rules.
@@ -2477,6 +2506,7 @@ cloudwatch_tag_resource <- function(ResourceARN, Tags) {
 
 #' Removes one or more tags from the specified resource
 #'
+#' @description
 #' Removes one or more tags from the specified resource.
 #'
 #' @usage

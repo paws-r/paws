@@ -18,8 +18,7 @@ previous call.)}
 \description{
 Describes the specified policies or all policies used for SSL
 negotiation.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies}{Security policies}
 in the \emph{Application Load Balancers Guide} or \href{https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies}{Security policies}
 in the \emph{Network Load Balancers Guide}.

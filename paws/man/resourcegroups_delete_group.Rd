@@ -15,8 +15,7 @@ resourcegroups_delete_group(GroupName, Group)
 Deletes the specified resource group. Deleting a resource group does not
 delete any resources that are members of the group; it only deletes the
 group structure.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

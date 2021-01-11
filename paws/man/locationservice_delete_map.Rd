@@ -11,8 +11,7 @@ locationservice_delete_map(MapName)
 }
 \description{
 Deletes a map resource from your AWS account.
-}
-\details{
+
 This action deletes the resource permanently. You cannot undo this
 action. If the map is being used in an application, the map may not
 render.

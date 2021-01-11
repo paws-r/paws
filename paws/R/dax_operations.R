@@ -5,6 +5,7 @@ NULL
 
 #' Creates a DAX cluster
 #'
+#' @description
 #' Creates a DAX cluster. All nodes in the cluster run the same DAX caching
 #' software.
 #'
@@ -136,6 +137,7 @@ dax_create_cluster <- function(ClusterName, NodeType, Description = NULL, Replic
 
 #' Creates a new parameter group
 #'
+#' @description
 #' Creates a new parameter group. A parameter group is a collection of
 #' parameters that you apply to all of the nodes in a DAX cluster.
 #'
@@ -176,6 +178,7 @@ dax_create_parameter_group <- function(ParameterGroupName, Description = NULL) {
 
 #' Creates a new subnet group
 #'
+#' @description
 #' Creates a new subnet group.
 #'
 #' @usage
@@ -218,6 +221,7 @@ dax_create_subnet_group <- function(SubnetGroupName, Description = NULL, SubnetI
 
 #' Removes one or more nodes from a DAX cluster
 #'
+#' @description
 #' Removes one or more nodes from a DAX cluster.
 #' 
 #' You cannot use `DecreaseReplicationFactor` to remove the last node in a
@@ -268,6 +272,7 @@ dax_decrease_replication_factor <- function(ClusterName, NewReplicationFactor, A
 
 #' Deletes a previously provisioned DAX cluster
 #'
+#' @description
 #' Deletes a previously provisioned DAX cluster. *DeleteCluster* deletes
 #' all associated nodes, node endpoints and the DAX cluster itself. When
 #' you receive a successful response from this action, DAX immediately
@@ -307,6 +312,7 @@ dax_delete_cluster <- function(ClusterName) {
 
 #' Deletes the specified parameter group
 #'
+#' @description
 #' Deletes the specified parameter group. You cannot delete a parameter
 #' group if it is associated with any DAX clusters.
 #'
@@ -344,6 +350,7 @@ dax_delete_parameter_group <- function(ParameterGroupName) {
 
 #' Deletes a subnet group
 #'
+#' @description
 #' Deletes a subnet group.
 #' 
 #' You cannot delete a subnet group if it is associated with any DAX
@@ -385,6 +392,7 @@ dax_delete_subnet_group <- function(SubnetGroupName) {
 #' identifier is specified, or about a specific DAX cluster if a cluster
 #' identifier is supplied
 #'
+#' @description
 #' Returns information about all provisioned DAX clusters if no cluster
 #' identifier is specified, or about a specific DAX cluster if a cluster
 #' identifier is supplied.
@@ -451,6 +459,7 @@ dax_describe_clusters <- function(ClusterNames = NULL, MaxResults = NULL, NextTo
 #' Returns the default system parameter information for the DAX caching
 #' software
 #'
+#' @description
 #' Returns the default system parameter information for the DAX caching
 #' software.
 #'
@@ -497,6 +506,7 @@ dax_describe_default_parameters <- function(MaxResults = NULL, NextToken = NULL)
 
 #' Returns events related to DAX clusters and parameter groups
 #'
+#' @description
 #' Returns events related to DAX clusters and parameter groups. You can
 #' obtain events specific to a particular DAX cluster or parameter group by
 #' providing the name as a parameter.
@@ -567,6 +577,7 @@ dax_describe_events <- function(SourceName = NULL, SourceType = NULL, StartTime 
 
 #' Returns a list of parameter group descriptions
 #'
+#' @description
 #' Returns a list of parameter group descriptions. If a parameter group
 #' name is specified, the list will contain only the descriptions for that
 #' group.
@@ -619,6 +630,7 @@ dax_describe_parameter_groups <- function(ParameterGroupNames = NULL, MaxResults
 
 #' Returns the detailed parameter list for a particular parameter group
 #'
+#' @description
 #' Returns the detailed parameter list for a particular parameter group.
 #'
 #' @usage
@@ -670,6 +682,7 @@ dax_describe_parameters <- function(ParameterGroupName, Source = NULL, MaxResult
 
 #' Returns a list of subnet group descriptions
 #'
+#' @description
 #' Returns a list of subnet group descriptions. If a subnet group name is
 #' specified, the list will contain only the description of that group.
 #'
@@ -720,6 +733,7 @@ dax_describe_subnet_groups <- function(SubnetGroupNames = NULL, MaxResults = NUL
 
 #' Adds one or more nodes to a DAX cluster
 #'
+#' @description
 #' Adds one or more nodes to a DAX cluster.
 #'
 #' @usage
@@ -766,6 +780,7 @@ dax_increase_replication_factor <- function(ClusterName, NewReplicationFactor, A
 
 #' List all of the tags for a DAX cluster
 #'
+#' @description
 #' List all of the tags for a DAX cluster. You can call `ListTags` up to 10
 #' times per second, per account.
 #'
@@ -807,6 +822,7 @@ dax_list_tags <- function(ResourceName, NextToken = NULL) {
 
 #' Reboots a single node of a DAX cluster
 #'
+#' @description
 #' Reboots a single node of a DAX cluster. The reboot action takes place as
 #' soon as possible. During the reboot, the node status is set to
 #' REBOOTING.
@@ -850,6 +866,7 @@ dax_reboot_node <- function(ClusterName, NodeId) {
 
 #' Associates a set of tags with a DAX resource
 #'
+#' @description
 #' Associates a set of tags with a DAX resource. You can call `TagResource`
 #' up to 5 times per second, per account.
 #'
@@ -894,6 +911,7 @@ dax_tag_resource <- function(ResourceName, Tags) {
 
 #' Removes the association of tags from a DAX resource
 #'
+#' @description
 #' Removes the association of tags from a DAX resource. You can call
 #' `UntagResource` up to 5 times per second, per account.
 #'
@@ -936,6 +954,7 @@ dax_untag_resource <- function(ResourceName, TagKeys) {
 
 #' Modifies the settings for a DAX cluster
 #'
+#' @description
 #' Modifies the settings for a DAX cluster. You can use this action to
 #' change one or more cluster configuration parameters by specifying the
 #' parameters and the new values.
@@ -995,6 +1014,7 @@ dax_update_cluster <- function(ClusterName, Description = NULL, PreferredMainten
 
 #' Modifies the parameters of a parameter group
 #'
+#' @description
 #' Modifies the parameters of a parameter group. You can modify up to 20
 #' parameters in a single request by submitting a list parameter name and
 #' value pairs.
@@ -1041,6 +1061,7 @@ dax_update_parameter_group <- function(ParameterGroupName, ParameterNameValues) 
 
 #' Modifies an existing subnet group
 #'
+#' @description
 #' Modifies an existing subnet group.
 #'
 #' @usage

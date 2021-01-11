@@ -23,8 +23,7 @@ single request.}
 \description{
 Modifies the list of AWS Identity and Access Management (IAM) roles that
 can be used by the cluster to access other AWS services.
-}
-\details{
+
 A cluster can have up to 10 IAM roles associated at any time.
 }
 \section{Request syntax}{

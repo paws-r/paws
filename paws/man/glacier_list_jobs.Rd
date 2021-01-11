@@ -36,8 +36,7 @@ request.}
 This operation lists jobs for a vault, including jobs that are
 in-progress and jobs that have recently finished. The List Job operation
 returns a list of these jobs sorted by job initiation time.
-}
-\details{
+
 Amazon Glacier retains recently completed jobs for a period before
 deleting them; however, it eventually removes completed jobs. The output
 of completed jobs can be retrieved. Retaining completed jobs for a

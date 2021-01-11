@@ -11,8 +11,7 @@ iot_delete_policy(policyName)
 }
 \description{
 Deletes the specified policy.
-}
-\details{
+
 A policy cannot be deleted if it has non-default versions or it is
 attached to any certificate.
 

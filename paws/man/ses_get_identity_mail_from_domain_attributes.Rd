@@ -13,8 +13,7 @@ ses_get_identity_mail_from_domain_attributes(Identities)
 \description{
 Returns the custom MAIL FROM attributes for a list of identities (email
 addresses : domains).
-}
-\details{
+
 This operation is throttled at one request per second and can only get
 custom MAIL FROM attributes for up to 100 identities at a time.
 }

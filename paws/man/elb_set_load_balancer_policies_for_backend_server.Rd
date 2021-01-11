@@ -22,8 +22,7 @@ the EC2 instance is listening with a new set of policies. At this time,
 only the back-end server authentication policy type can be applied to
 the instance ports; this policy type is composed of multiple public key
 policies.
-}
-\details{
+
 Each time you use \code{SetLoadBalancerPoliciesForBackendServer} to enable
 the policies, use the \code{PolicyNames} parameter to list the policies that
 you want to enable.

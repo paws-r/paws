@@ -19,8 +19,7 @@ Used to test if the caller has permission to make the call.}
 \description{
 Registers a new migration task which represents a server, database,
 etc., being migrated to AWS by a migration tool.
-}
-\details{
+
 This API is a prerequisite to calling the \code{NotifyMigrationTaskState} API
 as the migration tool must first register the migration task with
 Migration Hub.

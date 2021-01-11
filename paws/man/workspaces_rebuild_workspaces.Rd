@@ -11,8 +11,7 @@ workspaces_rebuild_workspaces(RebuildWorkspaceRequests)
 }
 \description{
 Rebuilds the specified WorkSpace.
-}
-\details{
+
 You cannot rebuild a WorkSpace unless its state is \code{AVAILABLE}, \code{ERROR},
 \code{UNHEALTHY}, \code{STOPPED}, or \code{REBOOTING}.
 

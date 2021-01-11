@@ -30,8 +30,7 @@ lowercased letters.}
 \description{
 Creates a new instance profile. For information about instance profiles,
 go to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About Instance Profiles}.
-}
-\details{
+
 The number and size of IAM resources in an AWS account are limited. For
 more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS Quotas}
 in the \emph{IAM User Guide}.

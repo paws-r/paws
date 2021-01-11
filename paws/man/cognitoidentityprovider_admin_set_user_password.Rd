@@ -20,8 +20,7 @@ password.}
 \description{
 Sets the specified user's password in a user pool as an administrator.
 Works on any user.
-}
-\details{
+
 The password can be temporary or permanent. If it is temporary, the user
 status will be placed into the \code{FORCE_CHANGE_PASSWORD} state. When the
 user next tries to sign in, the InitiateAuth/AdminInitiateAuth response

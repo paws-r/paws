@@ -19,8 +19,7 @@ default is 10.}
 }
 \description{
 Gets information about all of the versions of an intent.
-}
-\details{
+
 The \code{GetIntentVersions} operation returns an \code{IntentMetadata} object for
 each version of an intent. For example, if an intent has three numbered
 versions, the \code{GetIntentVersions} operation returns four

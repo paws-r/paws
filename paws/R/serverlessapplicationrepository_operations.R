@@ -6,6 +6,7 @@ NULL
 #' Creates an application, optionally including an AWS SAM file to create
 #' the first application version in the same call
 #'
+#' @description
 #' Creates an application, optionally including an AWS SAM file to create
 #' the first application version in the same call.
 #'
@@ -131,6 +132,7 @@ serverlessapplicationrepository_create_application <- function(Author, Descripti
 
 #' Creates an application version
 #'
+#' @description
 #' Creates an application version.
 #'
 #' @usage
@@ -183,6 +185,7 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 
 #' Creates an AWS CloudFormation change set for the given application
 #'
+#' @description
 #' Creates an AWS CloudFormation change set for the given application.
 #'
 #' @usage
@@ -337,6 +340,7 @@ serverlessapplicationrepository_create_cloud_formation_change_set <- function(Ap
 
 #' Creates an AWS CloudFormation template
 #'
+#' @description
 #' Creates an AWS CloudFormation template.
 #'
 #' @usage
@@ -378,6 +382,7 @@ serverlessapplicationrepository_create_cloud_formation_template <- function(Appl
 
 #' Deletes the specified application
 #'
+#' @description
 #' Deletes the specified application.
 #'
 #' @usage
@@ -414,6 +419,7 @@ serverlessapplicationrepository_delete_application <- function(ApplicationId) {
 
 #' Gets the specified application
 #'
+#' @description
 #' Gets the specified application.
 #'
 #' @usage
@@ -453,6 +459,7 @@ serverlessapplicationrepository_get_application <- function(ApplicationId, Seman
 
 #' Retrieves the policy for the application
 #'
+#' @description
 #' Retrieves the policy for the application.
 #'
 #' @usage
@@ -489,6 +496,7 @@ serverlessapplicationrepository_get_application_policy <- function(ApplicationId
 
 #' Gets the specified AWS CloudFormation template
 #'
+#' @description
 #' Gets the specified AWS CloudFormation template.
 #'
 #' @usage
@@ -531,6 +539,7 @@ serverlessapplicationrepository_get_cloud_formation_template <- function(Applica
 
 #' Retrieves the list of applications nested in the containing application
 #'
+#' @description
 #' Retrieves the list of applications nested in the containing application.
 #'
 #' @usage
@@ -574,6 +583,7 @@ serverlessapplicationrepository_list_application_dependencies <- function(Applic
 
 #' Lists versions for the specified application
 #'
+#' @description
 #' Lists versions for the specified application.
 #'
 #' @usage
@@ -615,6 +625,7 @@ serverlessapplicationrepository_list_application_versions <- function(Applicatio
 
 #' Lists applications owned by the requester
 #'
+#' @description
 #' Lists applications owned by the requester.
 #'
 #' @usage
@@ -653,6 +664,7 @@ serverlessapplicationrepository_list_applications <- function(MaxItems = NULL, N
 
 #' Sets the permission policy for an application
 #'
+#' @description
 #' Sets the permission policy for an application. For the list of actions
 #' supported for this operation, see [Application
 #' Permissions](https://docs.aws.amazon.com/serverlessrepo/latest/devguide/security_iam_resource-based-policy-examples.html#application-permissions)
@@ -708,6 +720,7 @@ serverlessapplicationrepository_put_application_policy <- function(ApplicationId
 
 #' Unshares an application from an AWS Organization
 #'
+#' @description
 #' Unshares an application from an AWS Organization.
 #' 
 #' This operation can be called only from the organization's master
@@ -750,6 +763,7 @@ serverlessapplicationrepository_unshare_application <- function(ApplicationId, O
 
 #' Updates the specified application
 #'
+#' @description
 #' Updates the specified application.
 #'
 #' @usage

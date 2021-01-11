@@ -25,8 +25,7 @@ that specifies an item to retrieve from a table in the account and
 Region. A call to \code{TransactGetItems} cannot retrieve items from tables
 in more than one AWS account or Region. The aggregate size of the items
 in the transaction cannot exceed 4 MB.
-}
-\details{
+
 DynamoDB rejects the entire \code{TransactGetItems} request if any of the
 following is true:
 \itemize{

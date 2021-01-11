@@ -5,6 +5,7 @@ NULL
 
 #' Adds a permission to a queue for a specific principal
 #'
+#' @description
 #' Adds a permission to a queue for a specific
 #' [principal](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P).
 #' This allows sharing access to the queue.
@@ -108,6 +109,7 @@ sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
 #' Changes the visibility timeout of a specified message in a queue to a
 #' new value
 #'
+#' @description
 #' Changes the visibility timeout of a specified message in a queue to a
 #' new value. The default visibility timeout for a message is 30 seconds.
 #' The minimum is 0 seconds. The maximum is 12 hours. For more information,
@@ -147,8 +149,7 @@ sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
 #' error message. To avoid reaching the limit, you should delete messages
 #' from the queue after they're processed. You can also increase the number
 #' of queues you use to process your messages. To request a limit increase,
-#' [file a support
-#' request](https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-sqs).
+#' file a support request.
 #' 
 #' For FIFO queues, there can be a maximum of 20,000 inflight messages
 #' (received from a queue by a consumer, but not yet deleted from the
@@ -210,6 +211,7 @@ sqs_change_message_visibility <- function(QueueUrl, ReceiptHandle, VisibilityTim
 
 #' Changes the visibility timeout of multiple messages
 #'
+#' @description
 #' Changes the visibility timeout of multiple messages. This is a batch
 #' version of ` <a>ChangeMessageVisibility</a>.` The result of the action
 #' on each message is reported individually in the response. You can send
@@ -273,6 +275,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 
 #' Creates a new standard or FIFO queue
 #'
+#' @description
 #' Creates a new standard or FIFO queue. You can pass one or more
 #' attributes in the request. Keep the following in mind:
 #' 
@@ -575,6 +578,7 @@ sqs_create_queue <- function(QueueName, Attributes = NULL, tags = NULL) {
 
 #' Deletes the specified message from the specified queue
 #'
+#' @description
 #' Deletes the specified message from the specified queue. To select the
 #' message to delete, use the `ReceiptHandle` of the message (*not* the
 #' `MessageId` which you receive when you send the message). Amazon SQS can
@@ -636,6 +640,7 @@ sqs_delete_message <- function(QueueUrl, ReceiptHandle) {
 
 #' Deletes up to ten messages from the specified queue
 #'
+#' @description
 #' Deletes up to ten messages from the specified queue. This is a batch
 #' version of ` <a>DeleteMessage</a>.` The result of the action on each
 #' message is reported individually in the response.
@@ -696,6 +701,7 @@ sqs_delete_message_batch <- function(QueueUrl, Entries) {
 #' Deletes the queue specified by the QueueUrl, regardless of the queue's
 #' contents
 #'
+#' @description
 #' Deletes the queue specified by the `QueueUrl`, regardless of the queue's
 #' contents.
 #' 
@@ -751,6 +757,7 @@ sqs_delete_queue <- function(QueueUrl) {
 
 #' Gets attributes for the specified queue
 #'
+#' @description
 #' Gets attributes for the specified queue.
 #' 
 #' To determine whether a queue is
@@ -949,6 +956,7 @@ sqs_get_queue_attributes <- function(QueueUrl, AttributeNames = NULL) {
 
 #' Returns the URL of an existing Amazon SQS queue
 #'
+#' @description
 #' Returns the URL of an existing Amazon SQS queue.
 #' 
 #' To access a queue that belongs to another AWS account, use the
@@ -1001,6 +1009,7 @@ sqs_get_queue_url <- function(QueueName, QueueOwnerAWSAccountId = NULL) {
 #' Returns a list of your queues that have the RedrivePolicy queue
 #' attribute configured with a dead-letter queue
 #'
+#' @description
 #' Returns a list of your queues that have the `RedrivePolicy` queue
 #' attribute configured with a dead-letter queue.
 #' 
@@ -1060,6 +1069,7 @@ sqs_list_dead_letter_source_queues <- function(QueueUrl, NextToken = NULL, MaxRe
 
 #' List all cost allocation tags added to the specified Amazon SQS queue
 #'
+#' @description
 #' List all cost allocation tags added to the specified Amazon SQS queue.
 #' For an overview, see [Tagging Your Amazon SQS
 #' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html)
@@ -1104,6 +1114,7 @@ sqs_list_queue_tags <- function(QueueUrl) {
 
 #' Returns a list of your queues in the current region
 #'
+#' @description
 #' Returns a list of your queues in the current region. The response
 #' includes a maximum of 1,000 results. If you specify a value for the
 #' optional `QueueNamePrefix` parameter, only queues with a name that
@@ -1165,6 +1176,7 @@ sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults
 
 #' Deletes the messages in a queue specified by the QueueURL parameter
 #'
+#' @description
 #' Deletes the messages in a queue specified by the `QueueURL` parameter.
 #' 
 #' When you use the `PurgeQueue` action, you can't retrieve any messages
@@ -1216,6 +1228,7 @@ sqs_purge_queue <- function(QueueUrl) {
 
 #' Retrieves one or more messages (up to 10), from the specified queue
 #'
+#' @description
 #' Retrieves one or more messages (up to 10), from the specified queue.
 #' Using the `WaitTimeSeconds` parameter enables long-poll support. For
 #' more information, see [Amazon SQS Long
@@ -1403,7 +1416,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #' The maximum length of `ReceiveRequestAttemptId` is 128 characters.
 #' `ReceiveRequestAttemptId` can contain alphanumeric characters (`a-z`,
 #' `A-Z`, `0-9`) and punctuation
-#' (`` !\"#$%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~ ``).
+#' (`` !\"#$\%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~ ``).
 #' 
 #' For best practices of using `ReceiveRequestAttemptId`, see [Using the
 #' ReceiveRequestAttemptId Request
@@ -1450,6 +1463,7 @@ sqs_receive_message <- function(QueueUrl, AttributeNames = NULL, MessageAttribut
 #' Revokes any permissions in the queue policy that matches the specified
 #' Label parameter
 #'
+#' @description
 #' Revokes any permissions in the queue policy that matches the specified
 #' `Label` parameter.
 #' 
@@ -1504,6 +1518,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 
 #' Delivers a message to the specified queue
 #'
+#' @description
 #' Delivers a message to the specified queue.
 #' 
 #' A message can include only XML, JSON, and unformatted text. The
@@ -1606,7 +1621,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' The maximum length of `MessageDeduplicationId` is 128 characters.
 #' `MessageDeduplicationId` can contain alphanumeric characters (`a-z`,
 #' `A-Z`, `0-9`) and punctuation
-#' (`` !\"#$%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~ ``).
+#' (`` !\"#$\%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~ ``).
 #' 
 #' For best practices of using `MessageDeduplicationId`, see [Using the
 #' MessageDeduplicationId
@@ -1631,7 +1646,7 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' 
 #' The length of `MessageGroupId` is 128 characters. Valid values:
 #' alphanumeric characters and punctuation
-#' `` (!\"#$%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~) ``.
+#' `` (!\"#$\%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~) ``.
 #' 
 #' For best practices of using `MessageGroupId`, see [Using the
 #' MessageGroupId
@@ -1700,6 +1715,7 @@ sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, Message
 
 #' Delivers up to ten messages to the specified queue
 #'
+#' @description
 #' Delivers up to ten messages to the specified queue. This is a batch
 #' version of ` <a>SendMessage</a>.` For a FIFO queue, multiple messages
 #' within a single batch are enqueued in the order they are sent.
@@ -1806,6 +1822,7 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 
 #' Sets the value of one or more queue attributes
 #'
+#' @description
 #' Sets the value of one or more queue attributes. When you change a
 #' queue's attributes, the change can take up to 60 seconds for most of the
 #' attributes to propagate throughout the Amazon SQS system. Changes made
@@ -2025,6 +2042,7 @@ sqs_set_queue_attributes <- function(QueueUrl, Attributes) {
 
 #' Add cost allocation tags to the specified Amazon SQS queue
 #'
+#' @description
 #' Add cost allocation tags to the specified Amazon SQS queue. For an
 #' overview, see [Tagging Your Amazon SQS
 #' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html)
@@ -2089,6 +2107,7 @@ sqs_tag_queue <- function(QueueUrl, Tags) {
 
 #' Remove cost allocation tags from the specified Amazon SQS queue
 #'
+#' @description
 #' Remove cost allocation tags from the specified Amazon SQS queue. For an
 #' overview, see [Tagging Your Amazon SQS
 #' Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html)

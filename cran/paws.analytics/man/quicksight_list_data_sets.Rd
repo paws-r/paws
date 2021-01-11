@@ -18,8 +18,7 @@ results.}
 \description{
 Lists all of the datasets belonging to the current AWS account in an AWS
 Region.
-}
-\details{
+
 The permissions resource is
 \verb{arn:aws:quicksight:region:aws-account-id:dataset/*}.
 }

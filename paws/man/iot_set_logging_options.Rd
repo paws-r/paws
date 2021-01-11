@@ -11,8 +11,7 @@ iot_set_logging_options(loggingOptionsPayload)
 }
 \description{
 Sets the logging options.
-}
-\details{
+
 NOTE: use of this command is not recommended. Use \code{SetV2LoggingOptions}
 instead.
 }

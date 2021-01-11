@@ -18,8 +18,7 @@ request.}
 \description{
 Returns the export snapshot record created as a result of the
 \verb{export snapshot} operation.
-}
-\details{
+
 An export snapshot record can be used to create a new Amazon EC2
 instance and its related resources with the
 \verb{create cloud formation stack} operation.

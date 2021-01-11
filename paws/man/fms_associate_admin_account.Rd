@@ -19,8 +19,7 @@ organization or associated with a member account that has the
 appropriate permissions. If the account ID that you submit is not an AWS
 Organizations master account, AWS Firewall Manager will set the
 appropriate permissions for the given member account.
-}
-\details{
+
 The account that you associate with AWS Firewall Manager is called the
 AWS Firewall Manager administrator account.
 }

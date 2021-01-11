@@ -11,8 +11,7 @@ workspaces_start_workspaces(StartWorkspaceRequests)
 }
 \description{
 Starts the specified WorkSpaces.
-}
-\details{
+
 You cannot start a WorkSpace unless it has a running mode of \code{AutoStop}
 and a state of \code{STOPPED}.
 }

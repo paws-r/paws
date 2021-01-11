@@ -12,8 +12,7 @@ iotthingsgraph_delete_system_instance(id)
 \description{
 Deletes a system instance. Only system instances that have never been
 deployed, or that have been undeployed can be deleted.
-}
-\details{
+
 Users can create a new system instance that has the same ID as a deleted
 system instance.
 }

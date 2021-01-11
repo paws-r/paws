@@ -39,8 +39,7 @@ Creates a resource group with the specified name and description. You
 can optionally include a resource query, or a service configuration. For
 more information about constructing a resource query, see \href{https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag}{Create a tag-based group in Resource Groups}.
 For more information about service configurations, see \href{https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html}{Service configurations for resource groups}.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

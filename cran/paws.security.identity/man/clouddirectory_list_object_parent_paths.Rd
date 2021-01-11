@@ -22,8 +22,7 @@ approximate number.}
 Retrieves all available parent paths for any object type such as node,
 leaf node, policy node, and index node objects. For more information
 about objects, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html}{Directory Structure}.
-}
-\details{
+
 Use this API to evaluate all parents for an object. The call returns all
 objects from the root of the directory up to the requested object. The
 API returns the number of paths based on user-defined \code{MaxResults}, in

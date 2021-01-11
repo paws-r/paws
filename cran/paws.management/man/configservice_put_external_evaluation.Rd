@@ -13,7 +13,7 @@ configservice_put_external_evaluation(ConfigRuleName,
 \item{ExternalEvaluation}{[required]}
 }
 \description{
-Put external evaluation
+
 }
 \section{Request syntax}{
 \preformatted{svc$put_external_evaluation(

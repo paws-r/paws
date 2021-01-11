@@ -14,8 +14,7 @@ that you want to put them.}
 }
 \description{
 Reorders the receipt rules within a receipt rule set.
-}
-\details{
+
 All of the rules in the rule set must be represented in this request.
 That is, this API will return an error if the reorder request doesn't
 explicitly position all of the rules.

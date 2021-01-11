@@ -14,8 +14,7 @@ identifier, use \code{ListKeyGroups}.}
 \description{
 Gets a key group, including the date and time when the key group was
 last modified.
-}
-\details{
+
 To get a key group, you must provide the key group’s identifier. If the
 key group is referenced in a distribution’s cache behavior, you can get
 the key group’s identifier using \code{ListDistributions} or

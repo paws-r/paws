@@ -15,8 +15,7 @@ sqs_tag_queue(QueueUrl, Tags)
 Add cost allocation tags to the specified Amazon SQS queue. For an
 overview, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html}{Tagging Your Amazon SQS Queues}
 in the \emph{Amazon Simple Queue Service Developer Guide}.
-}
-\details{
+
 When you use queue tags, keep the following guidelines in mind:
 \itemize{
 \item Adding more than 50 tags to a queue isn't recommended.

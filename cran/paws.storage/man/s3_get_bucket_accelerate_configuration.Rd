@@ -22,8 +22,7 @@ subresource to return the Transfer Acceleration state of a bucket, which
 is either \code{Enabled} or \code{Suspended}. Amazon S3 Transfer Acceleration is a
 bucket-level feature that enables you to perform faster data transfers
 to and from Amazon S3.
-}
-\details{
+
 To use this operation, you must have permission to perform the
 \code{s3:GetAccelerateConfiguration} action. The bucket owner has this
 permission by default. The bucket owner can grant this permission to

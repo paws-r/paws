@@ -24,8 +24,7 @@ blocks.}
 \description{
 Gets the results for an Amazon Textract asynchronous operation that
 analyzes text in a document.
-}
-\details{
+
 You start asynchronous text analysis by calling StartDocumentAnalysis,
 which returns a job identifier (\code{JobId}). When the text analysis
 operation finishes, Amazon Textract publishes a completion status to the

@@ -5,6 +5,7 @@ NULL
 
 #' Accepts a pending certificate transfer
 #'
+#' @description
 #' Accepts a pending certificate transfer. The default state of the
 #' certificate is INACTIVE.
 #' 
@@ -48,6 +49,7 @@ iot_accept_certificate_transfer <- function(certificateId, setAsActive = NULL) {
 
 #' Adds a thing to a billing group
 #'
+#' @description
 #' Adds a thing to a billing group.
 #'
 #' @usage
@@ -91,6 +93,7 @@ iot_add_thing_to_billing_group <- function(billingGroupName = NULL, billingGroup
 
 #' Adds a thing to a thing group
 #'
+#' @description
 #' Adds a thing to a thing group.
 #'
 #' @usage
@@ -139,6 +142,7 @@ iot_add_thing_to_thing_group <- function(thingGroupName = NULL, thingGroupArn = 
 
 #' Associates a group with a continuous job
 #'
+#' @description
 #' Associates a group with a continuous job. The following criteria must be
 #' met:
 #' 
@@ -201,6 +205,7 @@ iot_associate_targets_with_job <- function(targets, jobId, comment = NULL, names
 
 #' Attaches a policy to the specified target
 #'
+#' @description
 #' Attaches a policy to the specified target.
 #'
 #' @usage
@@ -242,6 +247,7 @@ iot_attach_policy <- function(policyName, target) {
 #' Attaches the specified policy to the specified principal (certificate or
 #' other credential)
 #'
+#' @description
 #' Attaches the specified policy to the specified principal (certificate or
 #' other credential).
 #' 
@@ -285,6 +291,7 @@ iot_attach_principal_policy <- function(policyName, principal) {
 #' Associates a Device Defender security profile with a thing group or this
 #' account
 #'
+#' @description
 #' Associates a Device Defender security profile with a thing group or this
 #' account. Each thing group or account can have up to five security
 #' profiles associated with it.
@@ -327,6 +334,7 @@ iot_attach_security_profile <- function(securityProfileName, securityProfileTarg
 
 #' Attaches the specified principal to the specified thing
 #'
+#' @description
 #' Attaches the specified principal to the specified thing. A principal can
 #' be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
 #' identities or federated identities.
@@ -368,6 +376,7 @@ iot_attach_thing_principal <- function(thingName, principal) {
 
 #' Cancels a mitigation action task that is in progress
 #'
+#' @description
 #' Cancels a mitigation action task that is in progress. If the task is not
 #' in progress, an InvalidRequestException occurs.
 #'
@@ -405,6 +414,7 @@ iot_cancel_audit_mitigation_actions_task <- function(taskId) {
 
 #' Cancels an audit that is in progress
 #'
+#' @description
 #' Cancels an audit that is in progress. The audit can be either scheduled
 #' or on demand. If the audit isn't in progress, an
 #' "InvalidRequestException" occurs.
@@ -444,6 +454,7 @@ iot_cancel_audit_task <- function(taskId) {
 
 #' Cancels a pending transfer for the specified certificate
 #'
+#' @description
 #' Cancels a pending transfer for the specified certificate.
 #' 
 #' **Note** Only the transfer source account can use this operation to
@@ -491,6 +502,7 @@ iot_cancel_certificate_transfer <- function(certificateId) {
 
 #' Cancels a Device Defender ML Detect mitigation action
 #'
+#' @description
 #' Cancels a Device Defender ML Detect mitigation action.
 #'
 #' @usage
@@ -527,6 +539,7 @@ iot_cancel_detect_mitigation_actions_task <- function(taskId) {
 
 #' Cancels a job
 #'
+#' @description
 #' Cancels a job.
 #'
 #' @usage
@@ -576,6 +589,7 @@ iot_cancel_job <- function(jobId, reasonCode = NULL, comment = NULL, force = NUL
 
 #' Cancels the execution of a job for a given thing
 #'
+#' @description
 #' Cancels the execution of a job for a given thing.
 #'
 #' @usage
@@ -640,6 +654,7 @@ iot_cancel_job_execution <- function(jobId, thingName, force = NULL, expectedVer
 
 #' Clears the default authorizer
 #'
+#' @description
 #' Clears the default authorizer.
 #'
 #' @usage
@@ -672,6 +687,7 @@ iot_clear_default_authorizer <- function() {
 
 #' Confirms a topic rule destination
 #'
+#' @description
 #' Confirms a topic rule destination. When you create a rule requiring a
 #' destination, AWS IoT sends a confirmation message to the endpoint or
 #' base address you specify. The message includes a token which you pass
@@ -713,6 +729,7 @@ iot_confirm_topic_rule_destination <- function(confirmationToken) {
 
 #' Creates a Device Defender audit suppression
 #'
+#' @description
 #' Creates a Device Defender audit suppression.
 #'
 #' @usage
@@ -774,6 +791,7 @@ iot_create_audit_suppression <- function(checkName, resourceIdentifier, expirati
 
 #' Creates an authorizer
 #'
+#' @description
 #' Creates an authorizer.
 #'
 #' @usage
@@ -841,6 +859,7 @@ iot_create_authorizer <- function(authorizerName, authorizerFunctionArn, tokenKe
 
 #' Creates a billing group
 #'
+#' @description
 #' Creates a billing group.
 #'
 #' @usage
@@ -888,6 +907,7 @@ iot_create_billing_group <- function(billingGroupName, billingGroupProperties = 
 
 #' Creates an X
 #'
+#' @description
 #' Creates an X.509 certificate using the specified certificate signing
 #' request.
 #' 
@@ -925,7 +945,7 @@ iot_create_billing_group <- function(billingGroupName, billingGroupProperties = 
 #' On Windows PowerShell, the command to create certificates for all CSRs
 #' in my-csr-directory is:
 #' 
-#' &gt; ls -Name my-csr-directory | %\{aws iot create-certificate-from-csr
+#' &gt; ls -Name my-csr-directory | \%\{aws iot create-certificate-from-csr
 #' --certificate-signing-request file://my-csr-directory/$\\_\}
 #' 
 #' On a Windows command prompt, the command to create certificates for all
@@ -971,6 +991,7 @@ iot_create_certificate_from_csr <- function(certificateSigningRequest, setAsActi
 #' Use this API to define a Custom Metric published by your devices to
 #' Device Defender
 #'
+#' @description
 #' Use this API to define a Custom Metric published by your devices to
 #' Device Defender.
 #'
@@ -1031,6 +1052,7 @@ iot_create_custom_metric <- function(metricName, displayName = NULL, metricType,
 #' Create a dimension that you can use to limit the scope of a metric used
 #' in a security profile for AWS IoT Device Defender
 #'
+#' @description
 #' Create a dimension that you can use to limit the scope of a metric used
 #' in a security profile for AWS IoT Device Defender. For example, using a
 #' `TOPIC_FILTER` dimension, you can narrow down the scope of the metric
@@ -1092,6 +1114,7 @@ iot_create_dimension <- function(name, type, stringValues, tags = NULL, clientRe
 
 #' Creates a domain configuration
 #'
+#' @description
 #' Creates a domain configuration.
 #' 
 #' The domain configuration feature is in public preview and is subject to
@@ -1170,6 +1193,7 @@ iot_create_domain_configuration <- function(domainConfigurationName, domainName 
 
 #' Creates a dynamic thing group
 #'
+#' @description
 #' Creates a dynamic thing group.
 #'
 #' @usage
@@ -1239,6 +1263,7 @@ iot_create_dynamic_thing_group <- function(thingGroupName, thingGroupProperties 
 
 #' Creates a job
 #'
+#' @description
 #' Creates a job.
 #'
 #' @usage
@@ -1359,6 +1384,7 @@ iot_create_job <- function(jobId, targets, documentSource = NULL, document = NUL
 
 #' Creates a 2048-bit RSA key pair and issues an X
 #'
+#' @description
 #' Creates a 2048-bit RSA key pair and issues an X.509 certificate using
 #' the issued public key. You can also call `CreateKeysAndCertificate` over
 #' MQTT from a device, for more information, see [Provisioning MQTT
@@ -1402,6 +1428,7 @@ iot_create_keys_and_certificate <- function(setAsActive = NULL) {
 #' Defines an action that can be applied to audit findings by using
 #' StartAuditMitigationActionsTask
 #'
+#' @description
 #' Defines an action that can be applied to audit findings by using
 #' StartAuditMitigationActionsTask. Only certain types of mitigation
 #' actions can be applied to specific check names. For more information,
@@ -1478,6 +1505,7 @@ iot_create_mitigation_action <- function(actionName, roleArn, actionParams, tags
 
 #' Creates an AWS IoT OTAUpdate on a target group of things or groups
 #'
+#' @description
 #' Creates an AWS IoT OTAUpdate on a target group of things or groups.
 #'
 #' @usage
@@ -1636,6 +1664,7 @@ iot_create_ota_update <- function(otaUpdateId, description = NULL, targets, prot
 
 #' Creates an AWS IoT policy
 #'
+#' @description
 #' Creates an AWS IoT policy.
 #' 
 #' The created policy is the default version for the policy. This operation
@@ -1695,6 +1724,7 @@ iot_create_policy <- function(policyName, policyDocument, tags = NULL) {
 
 #' Creates a new version of the specified AWS IoT policy
 #'
+#' @description
 #' Creates a new version of the specified AWS IoT policy. To update a
 #' policy, create a new policy version. A managed policy can have up to
 #' five versions. If the policy has five versions, you must use
@@ -1747,6 +1777,7 @@ iot_create_policy_version <- function(policyName, policyDocument, setAsDefault =
 
 #' Creates a provisioning claim
 #'
+#' @description
 #' Creates a provisioning claim.
 #'
 #' @usage
@@ -1783,6 +1814,7 @@ iot_create_provisioning_claim <- function(templateName) {
 
 #' Creates a fleet provisioning template
 #'
+#' @description
 #' Creates a fleet provisioning template.
 #'
 #' @usage
@@ -1849,6 +1881,7 @@ iot_create_provisioning_template <- function(templateName, description = NULL, t
 
 #' Creates a new version of a fleet provisioning template
 #'
+#' @description
 #' Creates a new version of a fleet provisioning template.
 #'
 #' @usage
@@ -1890,6 +1923,7 @@ iot_create_provisioning_template_version <- function(templateName, templateBody,
 
 #' Creates a role alias
 #'
+#' @description
 #' Creates a role alias.
 #'
 #' @usage
@@ -1947,6 +1981,7 @@ iot_create_role_alias <- function(roleAlias, roleArn, credentialDurationSeconds 
 
 #' Creates a scheduled audit that is run at a specified time interval
 #'
+#' @description
 #' Creates a scheduled audit that is run at a specified time interval.
 #'
 #' @usage
@@ -2012,6 +2047,7 @@ iot_create_scheduled_audit <- function(frequency, dayOfMonth = NULL, dayOfWeek =
 
 #' Creates a Device Defender security profile
 #'
+#' @description
 #' Creates a Device Defender security profile.
 #'
 #' @usage
@@ -2133,6 +2169,7 @@ iot_create_security_profile <- function(securityProfileName, securityProfileDesc
 #' Creates a stream for delivering one or more large files in chunks over
 #' MQTT
 #'
+#' @description
 #' Creates a stream for delivering one or more large files in chunks over
 #' MQTT. A stream transports data bytes in chunks or blocks packaged as
 #' MQTT messages from a source like S3. You can have one or more files
@@ -2195,6 +2232,7 @@ iot_create_stream <- function(streamId, description = NULL, files, roleArn, tags
 
 #' Creates a thing record in the registry
 #'
+#' @description
 #' Creates a thing record in the registry. If this call is made multiple
 #' times using the same thing name and configuration, the call will
 #' succeed. If this call is made with the same thing name but different
@@ -2257,6 +2295,7 @@ iot_create_thing <- function(thingName, thingTypeName = NULL, attributePayload =
 
 #' Create a thing group
 #'
+#' @description
 #' Create a thing group.
 #' 
 #' This is a control plane operation. See
@@ -2317,6 +2356,7 @@ iot_create_thing_group <- function(thingGroupName, parentGroupName = NULL, thing
 
 #' Creates a new thing type
 #'
+#' @description
 #' Creates a new thing type.
 #'
 #' @usage
@@ -2369,6 +2409,7 @@ iot_create_thing_type <- function(thingTypeName, thingTypeProperties = NULL, tag
 
 #' Creates a rule
 #'
+#' @description
 #' Creates a rule. Creating rules is an administrator-level action. Any
 #' user who has permission to create rules will be able to access data
 #' processed by the rule.
@@ -2762,6 +2803,7 @@ iot_create_topic_rule <- function(ruleName, topicRulePayload, tags = NULL) {
 
 #' Creates a topic rule destination
 #'
+#' @description
 #' Creates a topic rule destination. The destination must be confirmed
 #' prior to use.
 #'
@@ -2814,6 +2856,7 @@ iot_create_topic_rule_destination <- function(destinationConfiguration) {
 #' Restores the default settings for Device Defender audits for this
 #' account
 #'
+#' @description
 #' Restores the default settings for Device Defender audits for this
 #' account. Any configuration data you entered is deleted and all audit
 #' checks are reset to disabled.
@@ -2852,6 +2895,7 @@ iot_delete_account_audit_configuration <- function(deleteScheduledAudits = NULL)
 
 #' Deletes a Device Defender audit suppression
 #'
+#' @description
 #' Deletes a Device Defender audit suppression.
 #'
 #' @usage
@@ -2902,6 +2946,7 @@ iot_delete_audit_suppression <- function(checkName, resourceIdentifier) {
 
 #' Deletes an authorizer
 #'
+#' @description
 #' Deletes an authorizer.
 #'
 #' @usage
@@ -2938,6 +2983,7 @@ iot_delete_authorizer <- function(authorizerName) {
 
 #' Deletes the billing group
 #'
+#' @description
 #' Deletes the billing group.
 #'
 #' @usage
@@ -2979,6 +3025,7 @@ iot_delete_billing_group <- function(billingGroupName, expectedVersion = NULL) {
 
 #' Deletes a registered CA certificate
 #'
+#' @description
 #' Deletes a registered CA certificate.
 #'
 #' @usage
@@ -3016,6 +3063,7 @@ iot_delete_ca_certificate <- function(certificateId) {
 
 #' Deletes the specified certificate
 #'
+#' @description
 #' Deletes the specified certificate.
 #' 
 #' A certificate cannot be deleted if it has a policy or IoT thing attached
@@ -3062,6 +3110,7 @@ iot_delete_certificate <- function(certificateId, forceDelete = NULL) {
 #' Before you can delete a custom metric, you must first remove the custom
 #' metric from all security profiles it's a part of
 #'
+#' @description
 #' Before you can delete a custom metric, you must first remove the custom
 #' metric from all security profiles it's a part of. The security profile
 #' associated with the custom metric can be found using the
@@ -3104,6 +3153,7 @@ iot_delete_custom_metric <- function(metricName) {
 
 #' Removes the specified dimension from your AWS account
 #'
+#' @description
 #' Removes the specified dimension from your AWS account.
 #'
 #' @usage
@@ -3140,6 +3190,7 @@ iot_delete_dimension <- function(name) {
 
 #' Deletes the specified domain configuration
 #'
+#' @description
 #' Deletes the specified domain configuration.
 #' 
 #' The domain configuration feature is in public preview and is subject to
@@ -3179,6 +3230,7 @@ iot_delete_domain_configuration <- function(domainConfigurationName) {
 
 #' Deletes a dynamic thing group
 #'
+#' @description
 #' Deletes a dynamic thing group.
 #'
 #' @usage
@@ -3217,6 +3269,7 @@ iot_delete_dynamic_thing_group <- function(thingGroupName, expectedVersion = NUL
 
 #' Deletes a job and its related job executions
 #'
+#' @description
 #' Deletes a job and its related job executions.
 #' 
 #' Deleting a job may take time, depending on the number of job executions
@@ -3286,6 +3339,7 @@ iot_delete_job <- function(jobId, force = NULL, namespaceId = NULL) {
 
 #' Deletes a job execution
 #'
+#' @description
 #' Deletes a job execution.
 #'
 #' @usage
@@ -3352,6 +3406,7 @@ iot_delete_job_execution <- function(jobId, thingName, executionNumber, force = 
 
 #' Deletes a defined mitigation action from your AWS account
 #'
+#' @description
 #' Deletes a defined mitigation action from your AWS account.
 #'
 #' @usage
@@ -3388,6 +3443,7 @@ iot_delete_mitigation_action <- function(actionName) {
 
 #' Delete an OTA update
 #'
+#' @description
 #' Delete an OTA update.
 #'
 #' @usage
@@ -3430,6 +3486,7 @@ iot_delete_ota_update <- function(otaUpdateId, deleteStream = NULL, forceDeleteA
 
 #' Deletes the specified policy
 #'
+#' @description
 #' Deletes the specified policy.
 #' 
 #' A policy cannot be deleted if it has non-default versions or it is
@@ -3477,6 +3534,7 @@ iot_delete_policy <- function(policyName) {
 
 #' Deletes the specified version of the specified policy
 #'
+#' @description
 #' Deletes the specified version of the specified policy. You cannot delete
 #' the default version of a policy using this API. To delete the default
 #' version of a policy, use DeletePolicy. To find out which version of a
@@ -3518,6 +3576,7 @@ iot_delete_policy_version <- function(policyName, policyVersionId) {
 
 #' Deletes a fleet provisioning template
 #'
+#' @description
 #' Deletes a fleet provisioning template.
 #'
 #' @usage
@@ -3554,6 +3613,7 @@ iot_delete_provisioning_template <- function(templateName) {
 
 #' Deletes a fleet provisioning template version
 #'
+#' @description
 #' Deletes a fleet provisioning template version.
 #'
 #' @usage
@@ -3592,6 +3652,7 @@ iot_delete_provisioning_template_version <- function(templateName, versionId) {
 
 #' Deletes a CA certificate registration code
 #'
+#' @description
 #' Deletes a CA certificate registration code.
 #'
 #' @usage
@@ -3624,6 +3685,7 @@ iot_delete_registration_code <- function() {
 
 #' Deletes a role alias
 #'
+#' @description
 #' Deletes a role alias
 #'
 #' @usage
@@ -3660,6 +3722,7 @@ iot_delete_role_alias <- function(roleAlias) {
 
 #' Deletes a scheduled audit
 #'
+#' @description
 #' Deletes a scheduled audit.
 #'
 #' @usage
@@ -3696,6 +3759,7 @@ iot_delete_scheduled_audit <- function(scheduledAuditName) {
 
 #' Deletes a Device Defender security profile
 #'
+#' @description
 #' Deletes a Device Defender security profile.
 #'
 #' @usage
@@ -3737,6 +3801,7 @@ iot_delete_security_profile <- function(securityProfileName, expectedVersion = N
 
 #' Deletes a stream
 #'
+#' @description
 #' Deletes a stream.
 #'
 #' @usage
@@ -3773,6 +3838,7 @@ iot_delete_stream <- function(streamId) {
 
 #' Deletes the specified thing
 #'
+#' @description
 #' Deletes the specified thing. Returns successfully with no error if the
 #' deletion is successful or you specify a thing that doesn't exist.
 #'
@@ -3815,6 +3881,7 @@ iot_delete_thing <- function(thingName, expectedVersion = NULL) {
 
 #' Deletes a thing group
 #'
+#' @description
 #' Deletes a thing group.
 #'
 #' @usage
@@ -3853,6 +3920,7 @@ iot_delete_thing_group <- function(thingGroupName, expectedVersion = NULL) {
 
 #' Deletes the specified thing type
 #'
+#' @description
 #' Deletes the specified thing type. You cannot delete a thing type if it
 #' has things associated with it. To delete a thing type, first mark it as
 #' deprecated by calling DeprecateThingType, then remove any associated
@@ -3893,6 +3961,7 @@ iot_delete_thing_type <- function(thingTypeName) {
 
 #' Deletes the rule
 #'
+#' @description
 #' Deletes the rule.
 #'
 #' @usage
@@ -3929,6 +3998,7 @@ iot_delete_topic_rule <- function(ruleName) {
 
 #' Deletes a topic rule destination
 #'
+#' @description
 #' Deletes a topic rule destination.
 #'
 #' @usage
@@ -3965,6 +4035,7 @@ iot_delete_topic_rule_destination <- function(arn) {
 
 #' Deletes a logging level
 #'
+#' @description
 #' Deletes a logging level.
 #'
 #' @usage
@@ -4004,6 +4075,7 @@ iot_delete_v2_logging_level <- function(targetType, targetName) {
 
 #' Deprecates a thing type
 #'
+#' @description
 #' Deprecates a thing type. You can not associate new things with
 #' deprecated thing type.
 #'
@@ -4046,6 +4118,7 @@ iot_deprecate_thing_type <- function(thingTypeName, undoDeprecate = NULL) {
 #' Gets information about the Device Defender audit settings for this
 #' account
 #'
+#' @description
 #' Gets information about the Device Defender audit settings for this
 #' account. Settings include how audit notifications are sent and which
 #' audit checks are enabled or disabled.
@@ -4080,6 +4153,7 @@ iot_describe_account_audit_configuration <- function() {
 
 #' Gets information about a single audit finding
 #'
+#' @description
 #' Gets information about a single audit finding. Properties include the
 #' reason for noncompliance, the severity of the issue, and the start time
 #' when the audit that returned the finding.
@@ -4120,6 +4194,7 @@ iot_describe_audit_finding <- function(findingId) {
 #' Gets information about an audit mitigation task that is used to apply
 #' mitigation actions to a set of audit findings
 #'
+#' @description
 #' Gets information about an audit mitigation task that is used to apply
 #' mitigation actions to a set of audit findings. Properties include the
 #' actions being applied, the audit checks to which they're being applied,
@@ -4159,6 +4234,7 @@ iot_describe_audit_mitigation_actions_task <- function(taskId) {
 
 #' Gets information about a Device Defender audit suppression
 #'
+#' @description
 #' Gets information about a Device Defender audit suppression.
 #'
 #' @usage
@@ -4209,6 +4285,7 @@ iot_describe_audit_suppression <- function(checkName, resourceIdentifier) {
 
 #' Gets information about a Device Defender audit
 #'
+#' @description
 #' Gets information about a Device Defender audit.
 #'
 #' @usage
@@ -4245,6 +4322,7 @@ iot_describe_audit_task <- function(taskId) {
 
 #' Describes an authorizer
 #'
+#' @description
 #' Describes an authorizer.
 #'
 #' @usage
@@ -4281,6 +4359,7 @@ iot_describe_authorizer <- function(authorizerName) {
 
 #' Returns information about a billing group
 #'
+#' @description
 #' Returns information about a billing group.
 #'
 #' @usage
@@ -4317,6 +4396,7 @@ iot_describe_billing_group <- function(billingGroupName) {
 
 #' Describes a registered CA certificate
 #'
+#' @description
 #' Describes a registered CA certificate.
 #'
 #' @usage
@@ -4353,6 +4433,7 @@ iot_describe_ca_certificate <- function(certificateId) {
 
 #' Gets information about the specified certificate
 #'
+#' @description
 #' Gets information about the specified certificate.
 #'
 #' @usage
@@ -4390,6 +4471,7 @@ iot_describe_certificate <- function(certificateId) {
 
 #' Gets information about a Device Defender detect custom metric
 #'
+#' @description
 #' Gets information about a Device Defender detect custom metric.
 #'
 #' @usage
@@ -4426,6 +4508,7 @@ iot_describe_custom_metric <- function(metricName) {
 
 #' Describes the default authorizer
 #'
+#' @description
 #' Describes the default authorizer.
 #'
 #' @usage
@@ -4458,6 +4541,7 @@ iot_describe_default_authorizer <- function() {
 
 #' Gets information about a Device Defender ML Detect mitigation action
 #'
+#' @description
 #' Gets information about a Device Defender ML Detect mitigation action.
 #'
 #' @usage
@@ -4494,6 +4578,7 @@ iot_describe_detect_mitigation_actions_task <- function(taskId) {
 
 #' Provides details about a dimension that is defined in your AWS account
 #'
+#' @description
 #' Provides details about a dimension that is defined in your AWS account.
 #'
 #' @usage
@@ -4530,6 +4615,7 @@ iot_describe_dimension <- function(name) {
 
 #' Gets summary information about a domain configuration
 #'
+#' @description
 #' Gets summary information about a domain configuration.
 #' 
 #' The domain configuration feature is in public preview and is subject to
@@ -4569,6 +4655,7 @@ iot_describe_domain_configuration <- function(domainConfigurationName) {
 
 #' Returns a unique endpoint specific to the AWS account making the call
 #'
+#' @description
 #' Returns a unique endpoint specific to the AWS account making the call.
 #'
 #' @usage
@@ -4624,6 +4711,7 @@ iot_describe_endpoint <- function(endpointType = NULL) {
 
 #' Describes event configurations
 #'
+#' @description
 #' Describes event configurations.
 #'
 #' @usage
@@ -4656,6 +4744,7 @@ iot_describe_event_configurations <- function() {
 
 #' Describes a search index
 #'
+#' @description
 #' Describes a search index.
 #'
 #' @usage
@@ -4692,6 +4781,7 @@ iot_describe_index <- function(indexName) {
 
 #' Describes a job
 #'
+#' @description
 #' Describes a job.
 #'
 #' @usage
@@ -4728,6 +4818,7 @@ iot_describe_job <- function(jobId) {
 
 #' Describes a job execution
 #'
+#' @description
 #' Describes a job execution.
 #'
 #' @usage
@@ -4769,6 +4860,7 @@ iot_describe_job_execution <- function(jobId, thingName, executionNumber = NULL)
 
 #' Gets information about a mitigation action
 #'
+#' @description
 #' Gets information about a mitigation action.
 #'
 #' @usage
@@ -4805,6 +4897,7 @@ iot_describe_mitigation_action <- function(actionName) {
 
 #' Returns information about a fleet provisioning template
 #'
+#' @description
 #' Returns information about a fleet provisioning template.
 #'
 #' @usage
@@ -4841,6 +4934,7 @@ iot_describe_provisioning_template <- function(templateName) {
 
 #' Returns information about a fleet provisioning template version
 #'
+#' @description
 #' Returns information about a fleet provisioning template version.
 #'
 #' @usage
@@ -4879,6 +4973,7 @@ iot_describe_provisioning_template_version <- function(templateName, versionId) 
 
 #' Describes a role alias
 #'
+#' @description
 #' Describes a role alias.
 #'
 #' @usage
@@ -4915,6 +5010,7 @@ iot_describe_role_alias <- function(roleAlias) {
 
 #' Gets information about a scheduled audit
 #'
+#' @description
 #' Gets information about a scheduled audit.
 #'
 #' @usage
@@ -4951,6 +5047,7 @@ iot_describe_scheduled_audit <- function(scheduledAuditName) {
 
 #' Gets information about a Device Defender security profile
 #'
+#' @description
 #' Gets information about a Device Defender security profile.
 #'
 #' @usage
@@ -4987,6 +5084,7 @@ iot_describe_security_profile <- function(securityProfileName) {
 
 #' Gets information about a stream
 #'
+#' @description
 #' Gets information about a stream.
 #'
 #' @usage
@@ -5023,6 +5121,7 @@ iot_describe_stream <- function(streamId) {
 
 #' Gets information about the specified thing
 #'
+#' @description
 #' Gets information about the specified thing.
 #'
 #' @usage
@@ -5059,6 +5158,7 @@ iot_describe_thing <- function(thingName) {
 
 #' Describe a thing group
 #'
+#' @description
 #' Describe a thing group.
 #'
 #' @usage
@@ -5095,6 +5195,7 @@ iot_describe_thing_group <- function(thingGroupName) {
 
 #' Describes a bulk thing provisioning task
 #'
+#' @description
 #' Describes a bulk thing provisioning task.
 #'
 #' @usage
@@ -5131,6 +5232,7 @@ iot_describe_thing_registration_task <- function(taskId) {
 
 #' Gets information about the specified thing type
 #'
+#' @description
 #' Gets information about the specified thing type.
 #'
 #' @usage
@@ -5167,6 +5269,7 @@ iot_describe_thing_type <- function(thingTypeName) {
 
 #' Detaches a policy from the specified target
 #'
+#' @description
 #' Detaches a policy from the specified target.
 #'
 #' @usage
@@ -5205,6 +5308,7 @@ iot_detach_policy <- function(policyName, target) {
 
 #' Removes the specified policy from the specified certificate
 #'
+#' @description
 #' Removes the specified policy from the specified certificate.
 #' 
 #' **Note:** This API is deprecated. Please use DetachPolicy instead.
@@ -5251,6 +5355,7 @@ iot_detach_principal_policy <- function(policyName, principal) {
 #' Disassociates a Device Defender security profile from a thing group or
 #' from this account
 #'
+#' @description
 #' Disassociates a Device Defender security profile from a thing group or
 #' from this account.
 #'
@@ -5291,6 +5396,7 @@ iot_detach_security_profile <- function(securityProfileName, securityProfileTarg
 
 #' Detaches the specified principal from the specified thing
 #'
+#' @description
 #' Detaches the specified principal from the specified thing. A principal
 #' can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
 #' identities or federated identities.
@@ -5336,6 +5442,7 @@ iot_detach_thing_principal <- function(thingName, principal) {
 
 #' Disables the rule
 #'
+#' @description
 #' Disables the rule.
 #'
 #' @usage
@@ -5372,6 +5479,7 @@ iot_disable_topic_rule <- function(ruleName) {
 
 #' Enables the rule
 #'
+#' @description
 #' Enables the rule.
 #'
 #' @usage
@@ -5409,6 +5517,7 @@ iot_enable_topic_rule <- function(ruleName) {
 #' Returns a Device Defender's ML Detect Security Profile training model's
 #' status
 #'
+#' @description
 #' Returns a Device Defender's ML Detect Security Profile training model's
 #' status.
 #'
@@ -5451,6 +5560,7 @@ iot_get_behavior_model_training_summaries <- function(securityProfileName = NULL
 
 #' Returns the approximate count of unique values that match the query
 #'
+#' @description
 #' Returns the approximate count of unique values that match the query.
 #'
 #' @usage
@@ -5496,6 +5606,7 @@ iot_get_cardinality <- function(indexName = NULL, queryString, aggregationField 
 #' behavior of the specified device when it connects to the AWS IoT device
 #' gateway
 #'
+#' @description
 #' Gets a list of the policies that have an effect on the authorization
 #' behavior of the specified device when it connects to the AWS IoT device
 #' gateway.
@@ -5541,6 +5652,7 @@ iot_get_effective_policies <- function(principal = NULL, cognitoIdentityPoolId =
 
 #' Gets the indexing configuration
 #'
+#' @description
 #' Gets the indexing configuration.
 #'
 #' @usage
@@ -5573,6 +5685,7 @@ iot_get_indexing_configuration <- function() {
 
 #' Gets a job document
 #'
+#' @description
 #' Gets a job document.
 #'
 #' @usage
@@ -5609,6 +5722,7 @@ iot_get_job_document <- function(jobId) {
 
 #' Gets the logging options
 #'
+#' @description
 #' Gets the logging options.
 #' 
 #' NOTE: use of this command is not recommended. Use `GetV2LoggingOptions`
@@ -5644,6 +5758,7 @@ iot_get_logging_options <- function() {
 
 #' Gets an OTA update
 #'
+#' @description
 #' Gets an OTA update.
 #'
 #' @usage
@@ -5681,6 +5796,7 @@ iot_get_ota_update <- function(otaUpdateId) {
 #' Groups the aggregated values that match the query into percentile
 #' groupings
 #'
+#' @description
 #' Groups the aggregated values that match the query into percentile
 #' groupings. The default percentile groupings are: 1,5,25,50,75,95,99,
 #' although you can specify your own when you call `GetPercentiles`. This
@@ -5739,6 +5855,7 @@ iot_get_percentiles <- function(indexName = NULL, queryString, aggregationField 
 #' Gets information about the specified policy with the policy document of
 #' the default version
 #'
+#' @description
 #' Gets information about the specified policy with the policy document of
 #' the default version.
 #'
@@ -5776,6 +5893,7 @@ iot_get_policy <- function(policyName) {
 
 #' Gets information about the specified policy version
 #'
+#' @description
 #' Gets information about the specified policy version.
 #'
 #' @usage
@@ -5814,6 +5932,7 @@ iot_get_policy_version <- function(policyName, policyVersionId) {
 
 #' Gets a registration code used to register a CA certificate with AWS IoT
 #'
+#' @description
 #' Gets a registration code used to register a CA certificate with AWS IoT.
 #'
 #' @usage
@@ -5847,6 +5966,7 @@ iot_get_registration_code <- function() {
 #' Returns the count, average, sum, minimum, maximum, sum of squares,
 #' variance, and standard deviation for the specified aggregated field
 #'
+#' @description
 #' Returns the count, average, sum, minimum, maximum, sum of squares,
 #' variance, and standard deviation for the specified aggregated field. If
 #' the aggregation field is of type `String`, only the count statistic is
@@ -5894,6 +6014,7 @@ iot_get_statistics <- function(indexName = NULL, queryString, aggregationField =
 
 #' Gets information about the rule
 #'
+#' @description
 #' Gets information about the rule.
 #'
 #' @usage
@@ -5930,6 +6051,7 @@ iot_get_topic_rule <- function(ruleName) {
 
 #' Gets information about a topic rule destination
 #'
+#' @description
 #' Gets information about a topic rule destination.
 #'
 #' @usage
@@ -5966,6 +6088,7 @@ iot_get_topic_rule_destination <- function(arn) {
 
 #' Gets the fine grained logging options
 #'
+#' @description
 #' Gets the fine grained logging options.
 #'
 #' @usage
@@ -5998,6 +6121,7 @@ iot_get_v2_logging_options <- function() {
 
 #' Lists the active violations for a given Device Defender security profile
 #'
+#' @description
 #' Lists the active violations for a given Device Defender security
 #' profile.
 #'
@@ -6047,6 +6171,7 @@ iot_list_active_violations <- function(thingName = NULL, securityProfileName = N
 
 #' Lists the policies attached to the specified thing group
 #'
+#' @description
 #' Lists the policies attached to the specified thing group.
 #'
 #' @usage
@@ -6094,6 +6219,7 @@ iot_list_attached_policies <- function(target, recursive = NULL, marker = NULL, 
 #' Lists the findings (results) of a Device Defender audit or of the audits
 #' performed during a specified time period
 #'
+#' @description
 #' Lists the findings (results) of a Device Defender audit or of the audits
 #' performed during a specified time period. (Findings are retained for 90
 #' days.)
@@ -6171,6 +6297,7 @@ iot_list_audit_findings <- function(taskId = NULL, checkName = NULL, resourceIde
 
 #' Gets the status of audit mitigation action tasks that were executed
 #'
+#' @description
 #' Gets the status of audit mitigation action tasks that were executed.
 #'
 #' @usage
@@ -6219,6 +6346,7 @@ iot_list_audit_mitigation_actions_executions <- function(taskId, actionStatus = 
 #' Gets a list of audit mitigation action tasks that match the specified
 #' filters
 #'
+#' @description
 #' Gets a list of audit mitigation action tasks that match the specified
 #' filters.
 #'
@@ -6278,6 +6406,7 @@ iot_list_audit_mitigation_actions_tasks <- function(auditTaskId = NULL, findingI
 
 #' Lists your Device Defender audit listings
 #'
+#' @description
 #' Lists your Device Defender audit listings.
 #'
 #' @usage
@@ -6338,6 +6467,7 @@ iot_list_audit_suppressions <- function(checkName = NULL, resourceIdentifier = N
 #' Lists the Device Defender audits that have been performed during a given
 #' time period
 #'
+#' @description
 #' Lists the Device Defender audits that have been performed during a given
 #' time period.
 #'
@@ -6395,6 +6525,7 @@ iot_list_audit_tasks <- function(startTime, endTime, taskType = NULL, taskStatus
 
 #' Lists the authorizers registered in your account
 #'
+#' @description
 #' Lists the authorizers registered in your account.
 #'
 #' @usage
@@ -6437,6 +6568,7 @@ iot_list_authorizers <- function(pageSize = NULL, marker = NULL, ascendingOrder 
 
 #' Lists the billing groups you have created
 #'
+#' @description
 #' Lists the billing groups you have created.
 #'
 #' @usage
@@ -6479,6 +6611,7 @@ iot_list_billing_groups <- function(nextToken = NULL, maxResults = NULL, namePre
 
 #' Lists the CA certificates registered for your AWS account
 #'
+#' @description
 #' Lists the CA certificates registered for your AWS account.
 #' 
 #' The results are paginated with a default page size of 25. You can use
@@ -6522,6 +6655,7 @@ iot_list_ca_certificates <- function(pageSize = NULL, marker = NULL, ascendingOr
 
 #' Lists the certificates registered in your AWS account
 #'
+#' @description
 #' Lists the certificates registered in your AWS account.
 #' 
 #' The results are paginated with a default page size of 25. You can use
@@ -6566,6 +6700,7 @@ iot_list_certificates <- function(pageSize = NULL, marker = NULL, ascendingOrder
 
 #' List the device certificates signed by the specified CA certificate
 #'
+#' @description
 #' List the device certificates signed by the specified CA certificate.
 #'
 #' @usage
@@ -6611,6 +6746,7 @@ iot_list_certificates_by_ca <- function(caCertificateId, pageSize = NULL, marker
 
 #' Lists your Device Defender detect custom metrics
 #'
+#' @description
 #' Lists your Device Defender detect custom metrics.
 #'
 #' @usage
@@ -6650,6 +6786,7 @@ iot_list_custom_metrics <- function(nextToken = NULL, maxResults = NULL) {
 #' Lists mitigation actions executions for a Device Defender ML Detect
 #' Security Profile
 #'
+#' @description
 #' Lists mitigation actions executions for a Device Defender ML Detect
 #' Security Profile.
 #'
@@ -6707,6 +6844,7 @@ iot_list_detect_mitigation_actions_executions <- function(taskId = NULL, violati
 
 #' List of Device Defender ML Detect mitigation actions tasks
 #'
+#' @description
 #' List of Device Defender ML Detect mitigation actions tasks.
 #'
 #' @usage
@@ -6757,6 +6895,7 @@ iot_list_detect_mitigation_actions_tasks <- function(maxResults = NULL, nextToke
 
 #' List the set of dimensions that are defined for your AWS account
 #'
+#' @description
 #' List the set of dimensions that are defined for your AWS account.
 #'
 #' @usage
@@ -6795,6 +6934,7 @@ iot_list_dimensions <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Gets a list of domain configurations for the user
 #'
+#' @description
 #' Gets a list of domain configurations for the user. This list is sorted
 #' alphabetically by domain configuration name.
 #' 
@@ -6839,6 +6979,7 @@ iot_list_domain_configurations <- function(marker = NULL, pageSize = NULL, servi
 
 #' Lists the search indices
 #'
+#' @description
 #' Lists the search indices.
 #'
 #' @usage
@@ -6878,6 +7019,7 @@ iot_list_indices <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Lists the job executions for a job
 #'
+#' @description
 #' Lists the job executions for a job.
 #'
 #' @usage
@@ -6920,6 +7062,7 @@ iot_list_job_executions_for_job <- function(jobId, status = NULL, maxResults = N
 
 #' Lists the job executions for the specified thing
 #'
+#' @description
 #' Lists the job executions for the specified thing.
 #'
 #' @usage
@@ -6974,6 +7117,7 @@ iot_list_job_executions_for_thing <- function(thingName, status = NULL, namespac
 
 #' Lists jobs
 #'
+#' @description
 #' Lists jobs.
 #'
 #' @usage
@@ -7038,6 +7182,7 @@ iot_list_jobs <- function(status = NULL, targetSelection = NULL, maxResults = NU
 #' Gets a list of all mitigation actions that match the specified filter
 #' criteria
 #'
+#' @description
 #' Gets a list of all mitigation actions that match the specified filter
 #' criteria.
 #'
@@ -7080,6 +7225,7 @@ iot_list_mitigation_actions <- function(actionType = NULL, maxResults = NULL, ne
 
 #' Lists OTA updates
 #'
+#' @description
 #' Lists OTA updates.
 #'
 #' @usage
@@ -7120,6 +7266,7 @@ iot_list_ota_updates <- function(maxResults = NULL, nextToken = NULL, otaUpdateS
 
 #' Lists certificates that are being transferred but not yet accepted
 #'
+#' @description
 #' Lists certificates that are being transferred but not yet accepted.
 #'
 #' @usage
@@ -7161,6 +7308,7 @@ iot_list_outgoing_certificates <- function(pageSize = NULL, marker = NULL, ascen
 
 #' Lists your policies
 #'
+#' @description
 #' Lists your policies.
 #'
 #' @usage
@@ -7202,6 +7350,7 @@ iot_list_policies <- function(marker = NULL, pageSize = NULL, ascendingOrder = N
 
 #' Lists the principals associated with the specified policy
 #'
+#' @description
 #' Lists the principals associated with the specified policy.
 #' 
 #' **Note:** This API is deprecated. Please use ListTargetsForPolicy
@@ -7249,6 +7398,7 @@ iot_list_policy_principals <- function(policyName, marker = NULL, pageSize = NUL
 #' Lists the versions of the specified policy and identifies the default
 #' version
 #'
+#' @description
 #' Lists the versions of the specified policy and identifies the default
 #' version.
 #'
@@ -7286,6 +7436,7 @@ iot_list_policy_versions <- function(policyName) {
 
 #' Lists the policies attached to the specified principal
 #'
+#' @description
 #' Lists the policies attached to the specified principal. If you use an
 #' Cognito identity, the ID must be in [AmazonCognito Identity
 #' format](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/API_GetCredentialsForIdentity.html#API_GetCredentialsForIdentity_RequestSyntax).
@@ -7337,6 +7488,7 @@ iot_list_principal_policies <- function(principal, marker = NULL, pageSize = NUL
 
 #' Lists the things associated with the specified principal
 #'
+#' @description
 #' Lists the things associated with the specified principal. A principal
 #' can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
 #' identities or federated identities.
@@ -7381,6 +7533,7 @@ iot_list_principal_things <- function(nextToken = NULL, maxResults = NULL, princ
 
 #' A list of fleet provisioning template versions
 #'
+#' @description
 #' A list of fleet provisioning template versions.
 #'
 #' @usage
@@ -7422,6 +7575,7 @@ iot_list_provisioning_template_versions <- function(templateName, maxResults = N
 
 #' Lists the fleet provisioning templates in your AWS account
 #'
+#' @description
 #' Lists the fleet provisioning templates in your AWS account.
 #'
 #' @usage
@@ -7460,6 +7614,7 @@ iot_list_provisioning_templates <- function(maxResults = NULL, nextToken = NULL)
 
 #' Lists the role aliases registered in your account
 #'
+#' @description
 #' Lists the role aliases registered in your account.
 #'
 #' @usage
@@ -7500,6 +7655,7 @@ iot_list_role_aliases <- function(pageSize = NULL, marker = NULL, ascendingOrder
 
 #' Lists all of your scheduled audits
 #'
+#' @description
 #' Lists all of your scheduled audits.
 #'
 #' @usage
@@ -7538,6 +7694,7 @@ iot_list_scheduled_audits <- function(nextToken = NULL, maxResults = NULL) {
 
 #' Lists the Device Defender security profiles you've created
 #'
+#' @description
 #' Lists the Device Defender security profiles you've created. You can
 #' filter security profiles by dimension or custom metric.
 #' 
@@ -7586,6 +7743,7 @@ iot_list_security_profiles <- function(nextToken = NULL, maxResults = NULL, dime
 #' Lists the Device Defender security profiles attached to a target (thing
 #' group)
 #'
+#' @description
 #' Lists the Device Defender security profiles attached to a target (thing
 #' group).
 #'
@@ -7631,6 +7789,7 @@ iot_list_security_profiles_for_target <- function(nextToken = NULL, maxResults =
 
 #' Lists all of the streams in your AWS account
 #'
+#' @description
 #' Lists all of the streams in your AWS account.
 #'
 #' @usage
@@ -7671,6 +7830,7 @@ iot_list_streams <- function(maxResults = NULL, nextToken = NULL, ascendingOrder
 
 #' Lists the tags (metadata) you have assigned to the resource
 #'
+#' @description
 #' Lists the tags (metadata) you have assigned to the resource.
 #'
 #' @usage
@@ -7711,6 +7871,7 @@ iot_list_tags_for_resource <- function(resourceArn, nextToken = NULL) {
 
 #' List targets for the specified policy
 #'
+#' @description
 #' List targets for the specified policy.
 #'
 #' @usage
@@ -7752,6 +7913,7 @@ iot_list_targets_for_policy <- function(policyName, marker = NULL, pageSize = NU
 #' Lists the targets (thing groups) associated with a given Device Defender
 #' security profile
 #'
+#' @description
 #' Lists the targets (thing groups) associated with a given Device Defender
 #' security profile.
 #'
@@ -7794,6 +7956,7 @@ iot_list_targets_for_security_profile <- function(securityProfileName, nextToken
 
 #' List the thing groups in your account
 #'
+#' @description
 #' List the thing groups in your account.
 #'
 #' @usage
@@ -7843,6 +8006,7 @@ iot_list_thing_groups <- function(nextToken = NULL, maxResults = NULL, parentGro
 
 #' List the thing groups to which the specified thing belongs
 #'
+#' @description
 #' List the thing groups to which the specified thing belongs.
 #'
 #' @usage
@@ -7885,6 +8049,7 @@ iot_list_thing_groups_for_thing <- function(thingName, nextToken = NULL, maxResu
 
 #' Lists the principals associated with the specified thing
 #'
+#' @description
 #' Lists the principals associated with the specified thing. A principal
 #' can be X.509 certificates, IAM users, groups, and roles, Amazon Cognito
 #' identities or federated identities.
@@ -7929,6 +8094,7 @@ iot_list_thing_principals <- function(nextToken = NULL, maxResults = NULL, thing
 
 #' Information about the thing registration tasks
 #'
+#' @description
 #' Information about the thing registration tasks.
 #'
 #' @usage
@@ -7974,6 +8140,7 @@ iot_list_thing_registration_task_reports <- function(taskId, reportType, nextTok
 
 #' List bulk thing provisioning tasks
 #'
+#' @description
 #' List bulk thing provisioning tasks.
 #'
 #' @usage
@@ -8016,6 +8183,7 @@ iot_list_thing_registration_tasks <- function(nextToken = NULL, maxResults = NUL
 
 #' Lists the existing thing types
 #'
+#' @description
 #' Lists the existing thing types.
 #'
 #' @usage
@@ -8058,6 +8226,7 @@ iot_list_thing_types <- function(nextToken = NULL, maxResults = NULL, thingTypeN
 
 #' Lists your things
 #'
+#' @description
 #' Lists your things. Use the **attributeName** and **attributeValue**
 #' parameters to filter your things. For example, calling `ListThings` with
 #' attributeName=Color and attributeValue=Red retrieves all things in the
@@ -8113,6 +8282,7 @@ iot_list_things <- function(nextToken = NULL, maxResults = NULL, attributeName =
 
 #' Lists the things you have added to the given billing group
 #'
+#' @description
 #' Lists the things you have added to the given billing group.
 #'
 #' @usage
@@ -8156,6 +8326,7 @@ iot_list_things_in_billing_group <- function(billingGroupName, nextToken = NULL,
 
 #' Lists the things in the specified group
 #'
+#' @description
 #' Lists the things in the specified group.
 #'
 #' @usage
@@ -8202,6 +8373,7 @@ iot_list_things_in_thing_group <- function(thingGroupName, recursive = NULL, nex
 
 #' Lists all the topic rule destinations in your AWS account
 #'
+#' @description
 #' Lists all the topic rule destinations in your AWS account.
 #'
 #' @usage
@@ -8242,6 +8414,7 @@ iot_list_topic_rule_destinations <- function(maxResults = NULL, nextToken = NULL
 
 #' Lists the rules for the specific topic
 #'
+#' @description
 #' Lists the rules for the specific topic.
 #'
 #' @usage
@@ -8286,6 +8459,7 @@ iot_list_topic_rules <- function(topic = NULL, maxResults = NULL, nextToken = NU
 
 #' Lists logging levels
 #'
+#' @description
 #' Lists logging levels.
 #'
 #' @usage
@@ -8330,6 +8504,7 @@ iot_list_v2_logging_levels <- function(targetType = NULL, nextToken = NULL, maxR
 #' Lists the Device Defender security profile violations discovered during
 #' the given time period
 #'
+#' @description
 #' Lists the Device Defender security profile violations discovered during
 #' the given time period. You can use filters to limit the results to those
 #' alerts issued for a particular security profile, behavior, or thing
@@ -8390,6 +8565,7 @@ iot_list_violation_events <- function(startTime, endTime, thingName = NULL, secu
 
 #' Registers a CA certificate with AWS IoT
 #'
+#' @description
 #' Registers a CA certificate with AWS IoT. This CA certificate can then be
 #' used to sign device certificates, which can be then registered with AWS
 #' IoT. You can register up to 10 CA certificates per AWS account that have
@@ -8460,6 +8636,7 @@ iot_register_ca_certificate <- function(caCertificate, verificationCertificate, 
 
 #' Registers a device certificate with AWS IoT
 #'
+#' @description
 #' Registers a device certificate with AWS IoT. If you have more than one
 #' CA certificate that has the same subject field, you must specify the CA
 #' certificate that was used to sign the device certificate being
@@ -8506,6 +8683,7 @@ iot_register_certificate <- function(certificatePem, caCertificatePem = NULL, se
 
 #' Register a certificate that does not have a certificate authority (CA)
 #'
+#' @description
 #' Register a certificate that does not have a certificate authority (CA).
 #'
 #' @usage
@@ -8544,13 +8722,13 @@ iot_register_certificate_without_ca <- function(certificatePem, status = NULL) {
 
 #' Provisions a thing in the device registry
 #'
+#' @description
 #' Provisions a thing in the device registry. RegisterThing calls other AWS
 #' IoT control plane APIs. These calls might exceed your account level [AWS
 #' IoT Throttling
 #' Limits](https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_iot)
-#' and cause throttle errors. Please contact [AWS Customer
-#' Support](https://console.aws.amazon.com/support/home) to raise your
-#' throttling limits if necessary.
+#' and cause throttle errors. Please contact AWS Customer Support to raise
+#' your throttling limits if necessary.
 #'
 #' @usage
 #' iot_register_thing(templateBody, parameters)
@@ -8594,6 +8772,7 @@ iot_register_thing <- function(templateBody, parameters = NULL) {
 
 #' Rejects a pending certificate transfer
 #'
+#' @description
 #' Rejects a pending certificate transfer. After AWS IoT rejects a
 #' certificate transfer, the certificate status changes from
 #' **PENDING\\_TRANSFER** to **INACTIVE**.
@@ -8642,6 +8821,7 @@ iot_reject_certificate_transfer <- function(certificateId, rejectReason = NULL) 
 
 #' Removes the given thing from the billing group
 #'
+#' @description
 #' Removes the given thing from the billing group.
 #'
 #' @usage
@@ -8685,6 +8865,7 @@ iot_remove_thing_from_billing_group <- function(billingGroupName = NULL, billing
 
 #' Remove the specified thing from the specified group
 #'
+#' @description
 #' Remove the specified thing from the specified group.
 #' 
 #' You must specify either a `thingGroupArn` or a `thingGroupName` to
@@ -8732,6 +8913,7 @@ iot_remove_thing_from_thing_group <- function(thingGroupName = NULL, thingGroupA
 
 #' Replaces the rule
 #'
+#' @description
 #' Replaces the rule. You must specify all parameters for the new rule.
 #' Creating rules is an administrator-level action. Any user who has
 #' permission to create rules will be able to access data processed by the
@@ -9116,6 +9298,7 @@ iot_replace_topic_rule <- function(ruleName, topicRulePayload) {
 
 #' The query search index
 #'
+#' @description
 #' The query search index.
 #'
 #' @usage
@@ -9162,6 +9345,7 @@ iot_search_index <- function(indexName = NULL, queryString, nextToken = NULL, ma
 
 #' Sets the default authorizer
 #'
+#' @description
 #' Sets the default authorizer. This will be used if a websocket connection
 #' is made without specifying an authorizer.
 #'
@@ -9200,6 +9384,7 @@ iot_set_default_authorizer <- function(authorizerName) {
 #' Sets the specified version of the specified policy as the policy's
 #' default (operative) version
 #'
+#' @description
 #' Sets the specified version of the specified policy as the policy's
 #' default (operative) version. This action affects all certificates to
 #' which the policy is attached. To list the principals the policy is
@@ -9241,6 +9426,7 @@ iot_set_default_policy_version <- function(policyName, policyVersionId) {
 
 #' Sets the logging options
 #'
+#' @description
 #' Sets the logging options.
 #' 
 #' NOTE: use of this command is not recommended. Use `SetV2LoggingOptions`
@@ -9283,6 +9469,7 @@ iot_set_logging_options <- function(loggingOptionsPayload) {
 
 #' Sets the logging level
 #'
+#' @description
 #' Sets the logging level.
 #'
 #' @usage
@@ -9324,6 +9511,7 @@ iot_set_v2_logging_level <- function(logTarget, logLevel) {
 
 #' Sets the logging options for the V2 logging service
 #'
+#' @description
 #' Sets the logging options for the V2 logging service.
 #'
 #' @usage
@@ -9365,6 +9553,7 @@ iot_set_v2_logging_options <- function(roleArn = NULL, defaultLogLevel = NULL, d
 #' Starts a task that applies a set of mitigation actions to the specified
 #' target
 #'
+#' @description
 #' Starts a task that applies a set of mitigation actions to the specified
 #' target.
 #'
@@ -9430,6 +9619,7 @@ iot_start_audit_mitigation_actions_task <- function(taskId, target, auditCheckTo
 
 #' Starts a Device Defender ML Detect mitigation actions task
 #'
+#' @description
 #' Starts a Device Defender ML Detect mitigation actions task.
 #'
 #' @usage
@@ -9499,6 +9689,7 @@ iot_start_detect_mitigation_actions_task <- function(taskId, target, actions, vi
 
 #' Starts an on-demand Device Defender audit
 #'
+#' @description
 #' Starts an on-demand Device Defender audit.
 #'
 #' @usage
@@ -9541,6 +9732,7 @@ iot_start_on_demand_audit_task <- function(targetCheckNames) {
 
 #' Creates a bulk thing provisioning task
 #'
+#' @description
 #' Creates a bulk thing provisioning task.
 #'
 #' @usage
@@ -9586,6 +9778,7 @@ iot_start_thing_registration_task <- function(templateBody, inputFileBucket, inp
 
 #' Cancels a bulk thing provisioning task
 #'
+#' @description
 #' Cancels a bulk thing provisioning task.
 #'
 #' @usage
@@ -9622,6 +9815,7 @@ iot_stop_thing_registration_task <- function(taskId) {
 
 #' Adds to or modifies the tags of the given resource
 #'
+#' @description
 #' Adds to or modifies the tags of the given resource. Tags are metadata
 #' which can be used to manage a resource.
 #'
@@ -9667,6 +9861,7 @@ iot_tag_resource <- function(resourceArn, tags) {
 #' Tests if a specified principal is authorized to perform an AWS IoT
 #' action on a specified resource
 #'
+#' @description
 #' Tests if a specified principal is authorized to perform an AWS IoT
 #' action on a specified resource. Use this to test and debug the
 #' authorization behavior of devices that connect to the AWS IoT device
@@ -9735,6 +9930,7 @@ iot_test_authorization <- function(principal = NULL, cognitoIdentityPoolId = NUL
 #' Tests a custom authorization behavior by invoking a specified custom
 #' authorizer
 #'
+#' @description
 #' Tests a custom authorization behavior by invoking a specified custom
 #' authorizer. Use this to test and debug the custom authorization behavior
 #' of devices that connect to the AWS IoT device gateway.
@@ -9796,6 +9992,7 @@ iot_test_invoke_authorizer <- function(authorizerName, token = NULL, tokenSignat
 
 #' Transfers the specified certificate to the specified AWS account
 #'
+#' @description
 #' Transfers the specified certificate to the specified AWS account.
 #' 
 #' You can cancel the transfer until it is acknowledged by the recipient.
@@ -9849,6 +10046,7 @@ iot_transfer_certificate <- function(certificateId, targetAwsAccount, transferMe
 
 #' Removes the given tags (metadata) from the resource
 #'
+#' @description
 #' Removes the given tags (metadata) from the resource.
 #'
 #' @usage
@@ -9890,6 +10088,7 @@ iot_untag_resource <- function(resourceArn, tagKeys) {
 #' Configures or reconfigures the Device Defender audit settings for this
 #' account
 #'
+#' @description
 #' Configures or reconfigures the Device Defender audit settings for this
 #' account. Settings include how audit notifications are sent and which
 #' audit checks are enabled or disabled.
@@ -9958,6 +10157,7 @@ iot_update_account_audit_configuration <- function(roleArn = NULL, auditNotifica
 
 #' Updates a Device Defender audit suppression
 #'
+#' @description
 #' Updates a Device Defender audit suppression.
 #'
 #' @usage
@@ -10018,6 +10218,7 @@ iot_update_audit_suppression <- function(checkName, resourceIdentifier, expirati
 
 #' Updates an authorizer
 #'
+#' @description
 #' Updates an authorizer.
 #'
 #' @usage
@@ -10065,6 +10266,7 @@ iot_update_authorizer <- function(authorizerName, authorizerFunctionArn = NULL, 
 
 #' Updates information about the billing group
 #'
+#' @description
 #' Updates information about the billing group.
 #'
 #' @usage
@@ -10111,6 +10313,7 @@ iot_update_billing_group <- function(billingGroupName, billingGroupProperties, e
 
 #' Updates a registered CA certificate
 #'
+#' @description
 #' Updates a registered CA certificate.
 #'
 #' @usage
@@ -10163,6 +10366,7 @@ iot_update_ca_certificate <- function(certificateId, newStatus = NULL, newAutoRe
 
 #' Updates the status of the specified certificate
 #'
+#' @description
 #' Updates the status of the specified certificate. This operation is
 #' idempotent.
 #' 
@@ -10219,6 +10423,7 @@ iot_update_certificate <- function(certificateId, newStatus) {
 
 #' Updates a Device Defender detect custom metric
 #'
+#' @description
 #' Updates a Device Defender detect custom metric.
 #'
 #' @usage
@@ -10259,6 +10464,7 @@ iot_update_custom_metric <- function(metricName, displayName) {
 
 #' Updates the definition for a dimension
 #'
+#' @description
 #' Updates the definition for a dimension. You cannot change the type of a
 #' dimension after it is created (you can delete it and recreate it).
 #'
@@ -10303,6 +10509,7 @@ iot_update_dimension <- function(name, stringValues) {
 
 #' Updates values stored in the domain configuration
 #'
+#' @description
 #' Updates values stored in the domain configuration. Domain configurations
 #' for default endpoints can't be updated.
 #' 
@@ -10353,6 +10560,7 @@ iot_update_domain_configuration <- function(domainConfigurationName, authorizerC
 
 #' Updates a dynamic thing group
 #'
+#' @description
 #' Updates a dynamic thing group.
 #'
 #' @usage
@@ -10413,6 +10621,7 @@ iot_update_dynamic_thing_group <- function(thingGroupName, thingGroupProperties,
 
 #' Updates the event configurations
 #'
+#' @description
 #' Updates the event configurations.
 #'
 #' @usage
@@ -10453,6 +10662,7 @@ iot_update_event_configurations <- function(eventConfigurations = NULL) {
 
 #' Updates the search configuration
 #'
+#' @description
 #' Updates the search configuration.
 #'
 #' @usage
@@ -10521,6 +10731,7 @@ iot_update_indexing_configuration <- function(thingIndexingConfiguration = NULL,
 
 #' Updates supported fields of the specified job
 #'
+#' @description
 #' Updates supported fields of the specified job.
 #'
 #' @usage
@@ -10606,6 +10817,7 @@ iot_update_job <- function(jobId, description = NULL, presignedUrlConfig = NULL,
 
 #' Updates the definition for the specified mitigation action
 #'
+#' @description
 #' Updates the definition for the specified mitigation action.
 #'
 #' @usage
@@ -10671,6 +10883,7 @@ iot_update_mitigation_action <- function(actionName, roleArn = NULL, actionParam
 
 #' Updates a fleet provisioning template
 #'
+#' @description
 #' Updates a fleet provisioning template.
 #'
 #' @usage
@@ -10725,6 +10938,7 @@ iot_update_provisioning_template <- function(templateName, description = NULL, e
 
 #' Updates a role alias
 #'
+#' @description
 #' Updates a role alias.
 #'
 #' @usage
@@ -10766,6 +10980,7 @@ iot_update_role_alias <- function(roleAlias, roleArn = NULL, credentialDurationS
 #' Updates a scheduled audit, including which checks are performed and how
 #' often the audit takes place
 #'
+#' @description
 #' Updates a scheduled audit, including which checks are performed and how
 #' often the audit takes place.
 #'
@@ -10826,6 +11041,7 @@ iot_update_scheduled_audit <- function(frequency = NULL, dayOfMonth = NULL, dayO
 
 #' Updates a Device Defender security profile
 #'
+#' @description
 #' Updates a Device Defender security profile.
 #'
 #' @usage
@@ -10955,6 +11171,7 @@ iot_update_security_profile <- function(securityProfileName, securityProfileDesc
 
 #' Updates an existing stream
 #'
+#' @description
 #' Updates an existing stream. The stream version will be incremented by
 #' one.
 #'
@@ -11008,6 +11225,7 @@ iot_update_stream <- function(streamId, description = NULL, files = NULL, roleAr
 
 #' Updates the data for a thing
 #'
+#' @description
 #' Updates the data for a thing.
 #'
 #' @usage
@@ -11070,6 +11288,7 @@ iot_update_thing <- function(thingName, thingTypeName = NULL, attributePayload =
 
 #' Update a thing group
 #'
+#' @description
 #' Update a thing group.
 #'
 #' @usage
@@ -11120,6 +11339,7 @@ iot_update_thing_group <- function(thingGroupName, thingGroupProperties, expecte
 
 #' Updates the groups to which the thing belongs
 #'
+#' @description
 #' Updates the groups to which the thing belongs.
 #'
 #' @usage
@@ -11170,6 +11390,7 @@ iot_update_thing_groups_for_thing <- function(thingName = NULL, thingGroupsToAdd
 
 #' Updates a topic rule destination
 #'
+#' @description
 #' Updates a topic rule destination. You use this to change the status,
 #' endpoint URL, or confirmation URL of the destination.
 #'
@@ -11237,6 +11458,7 @@ iot_update_topic_rule_destination <- function(arn, status) {
 
 #' Validates a Device Defender security profile behaviors specification
 #'
+#' @description
 #' Validates a Device Defender security profile behaviors specification.
 #'
 #' @usage

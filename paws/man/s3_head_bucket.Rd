@@ -36,8 +36,7 @@ This operation is useful to determine if a bucket exists and you have
 permission to access it. The operation returns a \verb{200 OK} if the bucket
 exists and you have permission to access it. Otherwise, the operation
 might return responses such as \verb{404 Not Found} and \verb{403 Forbidden}.
-}
-\details{
+
 To use this operation, you must have permissions to perform the
 \code{s3:ListBucket} action. The bucket owner has this permission by default
 and can grant this permission to others. For more information about

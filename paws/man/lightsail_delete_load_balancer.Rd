@@ -15,11 +15,10 @@ Deletes a Lightsail load balancer and all its associated SSL/TLS
 certificates. Once the load balancer is deleted, you will need to create
 a new load balancer, create a new certificate, and verify domain
 ownership again.
-}
-\details{
+
 The \verb{delete load balancer} operation supports tag-based access control
 via resource tags applied to the resource identified by
-\verb{load balancer name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{load balancer name}. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$delete_load_balancer(

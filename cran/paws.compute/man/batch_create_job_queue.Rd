@@ -46,8 +46,7 @@ in \emph{AWS Batch User Guide}.}
 Creates an AWS Batch job queue. When you create a job queue, you
 associate one or more compute environments to the queue and assign an
 order of preference for the compute environments.
-}
-\details{
+
 You also set a priority to the job queue that determines the order in
 which the AWS Batch scheduler places jobs onto its associated compute
 environments. For example, if a compute environment is associated with

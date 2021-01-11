@@ -24,8 +24,6 @@ Used to test if the caller has permission to make the call.}
 Disassociates a created artifact of an AWS resource with a migration
 task performed by a migration tool that was previously associated. This
 API has the following traits:
-}
-\details{
 \itemize{
 \item A migration user can call the \code{DisassociateCreatedArtifacts}
 operation to disassociate a created AWS Artifact from a migration

@@ -233,8 +233,7 @@ results.}
 }
 \description{
 Gets historical metric data from the specified Amazon Connect instance.
-}
-\details{
+
 For a description of each historical metric, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html}{Historical Metrics Definitions}
 in the \emph{Amazon Connect Administrator Guide}.
 }

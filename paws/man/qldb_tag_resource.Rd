@@ -19,8 +19,7 @@ case sensitive and can be null.}
 }
 \description{
 Adds one or more tags to a specified Amazon QLDB resource.
-}
-\details{
+
 A resource can have up to 50 tags. If you try to create more than 50
 tags for a resource, your request fails and returns an error.
 }

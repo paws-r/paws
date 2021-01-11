@@ -13,8 +13,7 @@ forecastservice_describe_dataset(DatasetArn)
 \description{
 Describes an Amazon Forecast dataset created using the CreateDataset
 operation.
-}
-\details{
+
 In addition to listing the parameters specified in the \code{CreateDataset}
 request, this operation includes the following dataset properties:
 \itemize{

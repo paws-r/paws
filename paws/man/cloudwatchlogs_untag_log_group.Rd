@@ -13,8 +13,7 @@ cloudwatchlogs_untag_log_group(logGroupName, tags)
 }
 \description{
 Removes the specified tags from the specified log group.
-}
-\details{
+
 To list the tags for a log group, use
 \href{https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_ListTagsLogGroup.html}{ListTagsLogGroup}.
 To add tags, use

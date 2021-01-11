@@ -14,8 +14,7 @@ the dataset group.}
 }
 \description{
 Replaces the datasets in a dataset group with the specified datasets.
-}
-\details{
+
 The \code{Status} of the dataset group must be \code{ACTIVE} before you can use
 the dataset group to create a predictor. Use the DescribeDatasetGroup
 operation to get the status.

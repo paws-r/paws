@@ -118,8 +118,7 @@ parameter is not used, the operation returns up to 50 results and a
 }
 \description{
 Gets information about the scalable targets in the specified namespace.
-}
-\details{
+
 You can filter the results using \code{ResourceIds} and \code{ScalableDimension}.
 }
 \section{Request syntax}{

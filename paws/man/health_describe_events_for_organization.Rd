@@ -30,8 +30,6 @@ that you want to return. Events are returned in a summary form and don't
 include the affected accounts, detailed description, any additional
 metadata that depends on the event type, or any affected resources. To
 retrieve that information, use the following operations:
-}
-\details{
 \itemize{
 \item \href{https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedAccountsForOrganization.html}{DescribeAffectedAccountsForOrganization}
 \item \href{https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventDetailsForOrganization.html}{DescribeEventDetailsForOrganization}

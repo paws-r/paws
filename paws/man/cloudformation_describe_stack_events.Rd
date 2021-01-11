@@ -27,8 +27,7 @@ chronological order. For more information about a stack's event history,
 go to
 \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html}{Stacks}
 in the AWS CloudFormation User Guide.
-}
-\details{
+
 You can list events for stacks that have failed to create or have been
 deleted by specifying the unique stack identifier (stack ID).
 }

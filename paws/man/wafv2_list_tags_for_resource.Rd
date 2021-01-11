@@ -25,8 +25,7 @@ get the next batch of objects.}
 This is the latest version of \strong{AWS WAF}, named AWS WAFV2, released in
 November, 2019. For information, including how to migrate your AWS WAF
 resources from the prior release, see the \href{https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html}{AWS WAF Developer Guide}.
-}
-\details{
+
 Retrieves the TagInfoForResource for the specified resource. Tags are
 key:value pairs that you can use to categorize and manage your
 resources, for purposes like billing. For example, you might set the tag

@@ -5,6 +5,7 @@ NULL
 
 #' Creates one or more partitions in a batch operation
 #'
+#' @description
 #' Creates one or more partitions in a batch operation.
 #'
 #' @usage
@@ -123,6 +124,7 @@ glue_batch_create_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 
 #' Deletes a list of connection definitions from the Data Catalog
 #'
+#' @description
 #' Deletes a list of connection definitions from the Data Catalog.
 #'
 #' @usage
@@ -164,6 +166,7 @@ glue_batch_delete_connection <- function(CatalogId = NULL, ConnectionNameList) {
 
 #' Deletes one or more partitions in a batch operation
 #'
+#' @description
 #' Deletes one or more partitions in a batch operation.
 #'
 #' @usage
@@ -215,6 +218,7 @@ glue_batch_delete_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 
 #' Deletes multiple tables at once
 #'
+#' @description
 #' Deletes multiple tables at once.
 #' 
 #' After completing this operation, you no longer have access to the table
@@ -270,6 +274,7 @@ glue_batch_delete_table <- function(CatalogId = NULL, DatabaseName, TablesToDele
 
 #' Deletes a specified batch of versions of a table
 #'
+#' @description
 #' Deletes a specified batch of versions of a table.
 #'
 #' @usage
@@ -319,6 +324,7 @@ glue_batch_delete_table_version <- function(CatalogId = NULL, DatabaseName, Tabl
 
 #' Returns a list of resource metadata for a given list of crawler names
 #'
+#' @description
 #' Returns a list of resource metadata for a given list of crawler names.
 #' After calling the `ListCrawlers` operation, you can call this operation
 #' to access the data to which you have been granted permissions. This
@@ -363,6 +369,7 @@ glue_batch_get_crawlers <- function(CrawlerNames) {
 #' Returns a list of resource metadata for a given list of development
 #' endpoint names
 #'
+#' @description
 #' Returns a list of resource metadata for a given list of development
 #' endpoint names. After calling the `ListDevEndpoints` operation, you can
 #' call this operation to access the data to which you have been granted
@@ -406,6 +413,7 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 
 #' Returns a list of resource metadata for a given list of job names
 #'
+#' @description
 #' Returns a list of resource metadata for a given list of job names. After
 #' calling the `ListJobs` operation, you can call this operation to access
 #' the data to which you have been granted permissions. This operation
@@ -449,6 +457,7 @@ glue_batch_get_jobs <- function(JobNames) {
 
 #' Retrieves partitions in a batch request
 #'
+#' @description
 #' Retrieves partitions in a batch request.
 #'
 #' @usage
@@ -499,6 +508,7 @@ glue_batch_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, 
 
 #' Returns a list of resource metadata for a given list of trigger names
 #'
+#' @description
 #' Returns a list of resource metadata for a given list of trigger names.
 #' After calling the `ListTriggers` operation, you can call this operation
 #' to access the data to which you have been granted permissions. This
@@ -542,6 +552,7 @@ glue_batch_get_triggers <- function(TriggerNames) {
 
 #' Returns a list of resource metadata for a given list of workflow names
 #'
+#' @description
 #' Returns a list of resource metadata for a given list of workflow names.
 #' After calling the `ListWorkflows` operation, you can call this operation
 #' to access the data to which you have been granted permissions. This
@@ -588,6 +599,7 @@ glue_batch_get_workflows <- function(Names, IncludeGraph = NULL) {
 
 #' Stops one or more job runs for a specified job definition
 #'
+#' @description
 #' Stops one or more job runs for a specified job definition.
 #'
 #' @usage
@@ -629,6 +641,7 @@ glue_batch_stop_job_run <- function(JobName, JobRunIds) {
 
 #' Updates one or more partitions in a batch operation
 #'
+#' @description
 #' Updates one or more partitions in a batch operation.
 #'
 #' @usage
@@ -751,6 +764,7 @@ glue_batch_update_partition <- function(CatalogId = NULL, DatabaseName, TableNam
 
 #' Cancels (stops) a task run
 #'
+#' @description
 #' Cancels (stops) a task run. Machine learning task runs are asynchronous
 #' tasks that AWS Glue runs on your behalf as part of various machine
 #' learning workflows. You can cancel a machine learning task run at any
@@ -793,6 +807,7 @@ glue_cancel_ml_task_run <- function(TransformId, TaskRunId) {
 
 #' Validates the supplied schema
 #'
+#' @description
 #' Validates the supplied schema. This call has no side effects, it simply
 #' validates using the supplied schema using `DataFormat` as the format.
 #' Since it does not take a schema set name, no compatibility checks are
@@ -835,6 +850,7 @@ glue_check_schema_version_validity <- function(DataFormat, SchemaDefinition) {
 
 #' Creates a classifier in the user's account
 #'
+#' @description
 #' Creates a classifier in the user's account. This can be a
 #' `GrokClassifier`, an `XMLClassifier`, a `JsonClassifier`, or a
 #' `CsvClassifier`, depending on which field of the request is present.
@@ -902,6 +918,7 @@ glue_create_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 
 #' Creates a connection definition in the Data Catalog
 #'
+#' @description
 #' Creates a connection definition in the Data Catalog.
 #'
 #' @usage
@@ -959,6 +976,7 @@ glue_create_connection <- function(CatalogId = NULL, ConnectionInput) {
 #' Creates a new crawler with specified targets, role, configuration, and
 #' optional schedule
 #'
+#' @description
 #' Creates a new crawler with specified targets, role, configuration, and
 #' optional schedule. At least one crawl target must be specified, in the
 #' `s3Targets` field, the `jdbcTargets` field, or the `DynamoDBTargets`
@@ -1096,6 +1114,7 @@ glue_create_crawler <- function(Name, Role, DatabaseName = NULL, Description = N
 
 #' Creates a new database in a Data Catalog
 #'
+#' @description
 #' Creates a new database in a Data Catalog.
 #'
 #' @usage
@@ -1156,6 +1175,7 @@ glue_create_database <- function(CatalogId = NULL, DatabaseInput) {
 
 #' Creates a new development endpoint
 #'
+#' @description
 #' Creates a new development endpoint.
 #'
 #' @usage
@@ -1292,6 +1312,7 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 
 #' Creates a new job definition
 #'
+#' @description
 #' Creates a new job definition.
 #'
 #' @usage
@@ -1459,6 +1480,7 @@ glue_create_job <- function(Name, Description = NULL, LogUri = NULL, Role, Execu
 
 #' Creates an AWS Glue machine learning transform
 #'
+#' @description
 #' Creates an AWS Glue machine learning transform. This operation creates
 #' the transform and all the necessary parameters to train it.
 #' 
@@ -1639,6 +1661,7 @@ glue_create_ml_transform <- function(Name, Description = NULL, InputRecordTables
 
 #' Creates a new partition
 #'
+#' @description
 #' Creates a new partition.
 #'
 #' @usage
@@ -1754,6 +1777,7 @@ glue_create_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 
 #' Creates a specified partition index in an existing table
 #'
+#' @description
 #' Creates a specified partition index in an existing table.
 #'
 #' @usage
@@ -1805,6 +1829,7 @@ glue_create_partition_index <- function(CatalogId = NULL, DatabaseName, TableNam
 
 #' Creates a new registry which may be used to hold a collection of schemas
 #'
+#' @description
 #' Creates a new registry which may be used to hold a collection of
 #' schemas.
 #'
@@ -1852,6 +1877,7 @@ glue_create_registry <- function(RegistryName, Description = NULL, Tags = NULL) 
 
 #' Creates a new schema set and registers the schema definition
 #'
+#' @description
 #' Creates a new schema set and registers the schema definition. Returns an
 #' error if the schema set already exists without actually registering the
 #' version.
@@ -1970,6 +1996,7 @@ glue_create_schema <- function(RegistryId = NULL, SchemaName, DataFormat, Compat
 
 #' Transforms a directed acyclic graph (DAG) into code
 #'
+#' @description
 #' Transforms a directed acyclic graph (DAG) into code.
 #'
 #' @usage
@@ -2029,6 +2056,7 @@ glue_create_script <- function(DagNodes = NULL, DagEdges = NULL, Language = NULL
 
 #' Creates a new security configuration
 #'
+#' @description
 #' Creates a new security configuration. A security configuration is a set
 #' of security properties that can be used by AWS Glue. You can use a
 #' security configuration to encrypt data at rest. For information about
@@ -2087,6 +2115,7 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 
 #' Creates a new table definition in the Data Catalog
 #'
+#' @description
 #' Creates a new table definition in the Data Catalog.
 #'
 #' @usage
@@ -2229,6 +2258,7 @@ glue_create_table <- function(CatalogId = NULL, DatabaseName, TableInput, Partit
 
 #' Creates a new trigger
 #'
+#' @description
 #' Creates a new trigger.
 #'
 #' @usage
@@ -2321,6 +2351,7 @@ glue_create_trigger <- function(Name, WorkflowName = NULL, Type, Schedule = NULL
 
 #' Creates a new function definition in the Data Catalog
 #'
+#' @description
 #' Creates a new function definition in the Data Catalog.
 #'
 #' @usage
@@ -2375,6 +2406,7 @@ glue_create_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 
 #' Creates a new workflow
 #'
+#' @description
 #' Creates a new workflow.
 #'
 #' @usage
@@ -2430,6 +2462,7 @@ glue_create_workflow <- function(Name, Description = NULL, DefaultRunProperties 
 
 #' Removes a classifier from the Data Catalog
 #'
+#' @description
 #' Removes a classifier from the Data Catalog.
 #'
 #' @usage
@@ -2466,6 +2499,7 @@ glue_delete_classifier <- function(Name) {
 
 #' Delete the partition column statistics of a column
 #'
+#' @description
 #' Delete the partition column statistics of a column.
 #' 
 #' The Identity and Access Management (IAM) permission required for this
@@ -2517,6 +2551,7 @@ glue_delete_column_statistics_for_partition <- function(CatalogId = NULL, Databa
 
 #' Retrieves table statistics of columns
 #'
+#' @description
 #' Retrieves table statistics of columns.
 #' 
 #' The Identity and Access Management (IAM) permission required for this
@@ -2564,6 +2599,7 @@ glue_delete_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
 
 #' Deletes a connection from the Data Catalog
 #'
+#' @description
 #' Deletes a connection from the Data Catalog.
 #'
 #' @usage
@@ -2604,6 +2640,7 @@ glue_delete_connection <- function(CatalogId = NULL, ConnectionName) {
 #' Removes a specified crawler from the AWS Glue Data Catalog, unless the
 #' crawler state is RUNNING
 #'
+#' @description
 #' Removes a specified crawler from the AWS Glue Data Catalog, unless the
 #' crawler state is `RUNNING`.
 #'
@@ -2641,6 +2678,7 @@ glue_delete_crawler <- function(Name) {
 
 #' Removes a specified database from a Data Catalog
 #'
+#' @description
 #' Removes a specified database from a Data Catalog.
 #' 
 #' After completing this operation, you no longer have access to the tables
@@ -2693,6 +2731,7 @@ glue_delete_database <- function(CatalogId = NULL, Name) {
 
 #' Deletes a specified development endpoint
 #'
+#' @description
 #' Deletes a specified development endpoint.
 #'
 #' @usage
@@ -2729,6 +2768,7 @@ glue_delete_dev_endpoint <- function(EndpointName) {
 
 #' Deletes a specified job definition
 #'
+#' @description
 #' Deletes a specified job definition. If the job definition is not found,
 #' no exception is thrown.
 #'
@@ -2766,6 +2806,7 @@ glue_delete_job <- function(JobName) {
 
 #' Deletes an AWS Glue machine learning transform
 #'
+#' @description
 #' Deletes an AWS Glue machine learning transform. Machine learning
 #' transforms are a special type of transform that use machine learning to
 #' learn the details of the transformation to be performed by learning from
@@ -2808,6 +2849,7 @@ glue_delete_ml_transform <- function(TransformId) {
 
 #' Deletes a specified partition
 #'
+#' @description
 #' Deletes a specified partition.
 #'
 #' @usage
@@ -2854,6 +2896,7 @@ glue_delete_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 
 #' Deletes a specified partition index from an existing table
 #'
+#' @description
 #' Deletes a specified partition index from an existing table.
 #'
 #' @usage
@@ -2899,6 +2942,7 @@ glue_delete_partition_index <- function(CatalogId = NULL, DatabaseName, TableNam
 
 #' Delete the entire registry including schema and all of its versions
 #'
+#' @description
 #' Delete the entire registry including schema and all of its versions. To
 #' get the status of the delete operation, you can call the `GetRegistry`
 #' API after the asynchronous call. Deleting a registry will disable all
@@ -2943,6 +2987,7 @@ glue_delete_registry <- function(RegistryId) {
 
 #' Deletes a specified policy
 #'
+#' @description
 #' Deletes a specified policy.
 #'
 #' @usage
@@ -2982,6 +3027,7 @@ glue_delete_resource_policy <- function(PolicyHashCondition = NULL, ResourceArn 
 #' Deletes the entire schema set, including the schema set and all of its
 #' versions
 #'
+#' @description
 #' Deletes the entire schema set, including the schema set and all of its
 #' versions. To get the status of the delete operation, you can call
 #' `GetSchema` API after the asynchronous call. Deleting a registry will
@@ -3027,6 +3073,7 @@ glue_delete_schema <- function(SchemaId) {
 
 #' Remove versions from the specified schema
 #'
+#' @description
 #' Remove versions from the specified schema. A version number or range may
 #' be supplied. If the compatibility mode forbids deleting of a version
 #' that is necessary, such as BACKWARDS\\_FULL, an error is returned.
@@ -3092,6 +3139,7 @@ glue_delete_schema_versions <- function(SchemaId, Versions) {
 
 #' Deletes a specified security configuration
 #'
+#' @description
 #' Deletes a specified security configuration.
 #'
 #' @usage
@@ -3128,6 +3176,7 @@ glue_delete_security_configuration <- function(Name) {
 
 #' Removes a table definition from the Data Catalog
 #'
+#' @description
 #' Removes a table definition from the Data Catalog.
 #' 
 #' After completing this operation, you no longer have access to the table
@@ -3182,6 +3231,7 @@ glue_delete_table <- function(CatalogId = NULL, DatabaseName, Name) {
 
 #' Deletes a specified version of a table
 #'
+#' @description
 #' Deletes a specified version of a table.
 #'
 #' @usage
@@ -3228,6 +3278,7 @@ glue_delete_table_version <- function(CatalogId = NULL, DatabaseName, TableName,
 
 #' Deletes a specified trigger
 #'
+#' @description
 #' Deletes a specified trigger. If the trigger is not found, no exception
 #' is thrown.
 #'
@@ -3265,6 +3316,7 @@ glue_delete_trigger <- function(Name) {
 
 #' Deletes an existing function definition from the Data Catalog
 #'
+#' @description
 #' Deletes an existing function definition from the Data Catalog.
 #'
 #' @usage
@@ -3306,6 +3358,7 @@ glue_delete_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 
 #' Deletes a workflow
 #'
+#' @description
 #' Deletes a workflow.
 #'
 #' @usage
@@ -3342,6 +3395,7 @@ glue_delete_workflow <- function(Name) {
 
 #' Retrieves the status of a migration operation
 #'
+#' @description
 #' Retrieves the status of a migration operation.
 #'
 #' @usage
@@ -3379,6 +3433,7 @@ glue_get_catalog_import_status <- function(CatalogId = NULL) {
 
 #' Retrieve a classifier by name
 #'
+#' @description
 #' Retrieve a classifier by name.
 #'
 #' @usage
@@ -3415,6 +3470,7 @@ glue_get_classifier <- function(Name) {
 
 #' Lists all classifier objects in the Data Catalog
 #'
+#' @description
 #' Lists all classifier objects in the Data Catalog.
 #'
 #' @usage
@@ -3453,6 +3509,7 @@ glue_get_classifiers <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Retrieves partition statistics of columns
 #'
+#' @description
 #' Retrieves partition statistics of columns.
 #' 
 #' The Identity and Access Management (IAM) permission required for this
@@ -3506,6 +3563,7 @@ glue_get_column_statistics_for_partition <- function(CatalogId = NULL, DatabaseN
 
 #' Retrieves table statistics of columns
 #'
+#' @description
 #' Retrieves table statistics of columns.
 #' 
 #' The Identity and Access Management (IAM) permission required for this
@@ -3555,6 +3613,7 @@ glue_get_column_statistics_for_table <- function(CatalogId = NULL, DatabaseName,
 
 #' Retrieves a connection definition from the Data Catalog
 #'
+#' @description
 #' Retrieves a connection definition from the Data Catalog.
 #'
 #' @usage
@@ -3601,6 +3660,7 @@ glue_get_connection <- function(CatalogId = NULL, Name, HidePassword = NULL) {
 
 #' Retrieves a list of connection definitions from the Data Catalog
 #'
+#' @description
 #' Retrieves a list of connection definitions from the Data Catalog.
 #'
 #' @usage
@@ -3657,6 +3717,7 @@ glue_get_connections <- function(CatalogId = NULL, Filter = NULL, HidePassword =
 
 #' Retrieves metadata for a specified crawler
 #'
+#' @description
 #' Retrieves metadata for a specified crawler.
 #'
 #' @usage
@@ -3693,6 +3754,7 @@ glue_get_crawler <- function(Name) {
 
 #' Retrieves metrics about specified crawlers
 #'
+#' @description
 #' Retrieves metrics about specified crawlers.
 #'
 #' @usage
@@ -3735,6 +3797,7 @@ glue_get_crawler_metrics <- function(CrawlerNameList = NULL, MaxResults = NULL, 
 
 #' Retrieves metadata for all crawlers defined in the customer account
 #'
+#' @description
 #' Retrieves metadata for all crawlers defined in the customer account.
 #'
 #' @usage
@@ -3773,6 +3836,7 @@ glue_get_crawlers <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Retrieves the security configuration for a specified catalog
 #'
+#' @description
 #' Retrieves the security configuration for a specified catalog.
 #'
 #' @usage
@@ -3810,6 +3874,7 @@ glue_get_data_catalog_encryption_settings <- function(CatalogId = NULL) {
 
 #' Retrieves the definition of a specified database
 #'
+#' @description
 #' Retrieves the definition of a specified database.
 #'
 #' @usage
@@ -3850,6 +3915,7 @@ glue_get_database <- function(CatalogId = NULL, Name) {
 
 #' Retrieves all databases defined in a given Data Catalog
 #'
+#' @description
 #' Retrieves all databases defined in a given Data Catalog.
 #'
 #' @usage
@@ -3900,6 +3966,7 @@ glue_get_databases <- function(CatalogId = NULL, NextToken = NULL, MaxResults = 
 
 #' Transforms a Python script into a directed acyclic graph (DAG)
 #'
+#' @description
 #' Transforms a Python script into a directed acyclic graph (DAG).
 #'
 #' @usage
@@ -3936,6 +4003,7 @@ glue_get_dataflow_graph <- function(PythonScript = NULL) {
 
 #' Retrieves information about a specified development endpoint
 #'
+#' @description
 #' Retrieves information about a specified development endpoint.
 #' 
 #' When you create a development endpoint in a virtual private cloud (VPC),
@@ -3977,6 +4045,7 @@ glue_get_dev_endpoint <- function(EndpointName) {
 
 #' Retrieves all the development endpoints in this AWS account
 #'
+#' @description
 #' Retrieves all the development endpoints in this AWS account.
 #' 
 #' When you create a development endpoint in a virtual private cloud (VPC),
@@ -4020,6 +4089,7 @@ glue_get_dev_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Retrieves an existing job definition
 #'
+#' @description
 #' Retrieves an existing job definition.
 #'
 #' @usage
@@ -4056,6 +4126,7 @@ glue_get_job <- function(JobName) {
 
 #' Returns information on a job bookmark entry
 #'
+#' @description
 #' Returns information on a job bookmark entry.
 #'
 #' @usage
@@ -4094,6 +4165,7 @@ glue_get_job_bookmark <- function(JobName, RunId = NULL) {
 
 #' Retrieves the metadata for a given job run
 #'
+#' @description
 #' Retrieves the metadata for a given job run.
 #'
 #' @usage
@@ -4134,6 +4206,7 @@ glue_get_job_run <- function(JobName, RunId, PredecessorsIncluded = NULL) {
 
 #' Retrieves metadata for all runs of a given job definition
 #'
+#' @description
 #' Retrieves metadata for all runs of a given job definition.
 #'
 #' @usage
@@ -4174,6 +4247,7 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 
 #' Retrieves all current job definitions
 #'
+#' @description
 #' Retrieves all current job definitions.
 #'
 #' @usage
@@ -4212,6 +4286,7 @@ glue_get_jobs <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Gets details for a specific task run on a machine learning transform
 #'
+#' @description
 #' Gets details for a specific task run on a machine learning transform.
 #' Machine learning task runs are asynchronous tasks that AWS Glue runs on
 #' your behalf as part of various machine learning workflows. You can check
@@ -4254,6 +4329,7 @@ glue_get_ml_task_run <- function(TransformId, TaskRunId) {
 
 #' Gets a list of runs for a machine learning transform
 #'
+#' @description
 #' Gets a list of runs for a machine learning transform. Machine learning
 #' task runs are asynchronous tasks that AWS Glue runs on your behalf as
 #' part of various machine learning workflows. You can get a sortable,
@@ -4320,6 +4396,7 @@ glue_get_ml_task_runs <- function(TransformId, NextToken = NULL, MaxResults = NU
 #' Gets an AWS Glue machine learning transform artifact and all its
 #' corresponding metadata
 #'
+#' @description
 #' Gets an AWS Glue machine learning transform artifact and all its
 #' corresponding metadata. Machine learning transforms are a special type
 #' of transform that use machine learning to learn the details of the
@@ -4363,6 +4440,7 @@ glue_get_ml_transform <- function(TransformId) {
 #' Gets a sortable, filterable list of existing AWS Glue machine learning
 #' transforms
 #'
+#' @description
 #' Gets a sortable, filterable list of existing AWS Glue machine learning
 #' transforms. Machine learning transforms are a special type of transform
 #' that use machine learning to learn the details of the transformation to
@@ -4436,6 +4514,7 @@ glue_get_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter =
 
 #' Creates mappings
 #'
+#' @description
 #' Creates mappings.
 #'
 #' @usage
@@ -4506,6 +4585,7 @@ glue_get_mapping <- function(Source, Sinks = NULL, Location = NULL) {
 
 #' Retrieves information about a specified partition
 #'
+#' @description
 #' Retrieves information about a specified partition.
 #'
 #' @usage
@@ -4551,6 +4631,7 @@ glue_get_partition <- function(CatalogId = NULL, DatabaseName, TableName, Partit
 
 #' Retrieves the partition indexes associated with a table
 #'
+#' @description
 #' Retrieves the partition indexes associated with a table.
 #'
 #' @usage
@@ -4596,6 +4677,7 @@ glue_get_partition_indexes <- function(CatalogId = NULL, DatabaseName, TableName
 
 #' Retrieves information about the partitions in a table
 #'
+#' @description
 #' Retrieves information about the partitions in a table.
 #'
 #' @usage
@@ -4735,6 +4817,7 @@ glue_get_partitions <- function(CatalogId = NULL, DatabaseName, TableName, Expre
 
 #' Gets code to perform a specified mapping
 #'
+#' @description
 #' Gets code to perform a specified mapping.
 #'
 #' @usage
@@ -4832,6 +4915,7 @@ glue_get_plan <- function(Mapping, Source, Sinks = NULL, Location = NULL, Langua
 
 #' Describes the specified registry in detail
 #'
+#' @description
 #' Describes the specified registry in detail.
 #'
 #' @usage
@@ -4873,6 +4957,7 @@ glue_get_registry <- function(RegistryId) {
 #' Retrieves the security configurations for the resource policies set on
 #' individual resources, and also the account-level policy
 #'
+#' @description
 #' Retrieves the security configurations for the resource policies set on
 #' individual resources, and also the account-level policy.
 #' 
@@ -4917,6 +5002,7 @@ glue_get_resource_policies <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Retrieves a specified resource policy
 #'
+#' @description
 #' Retrieves a specified resource policy.
 #'
 #' @usage
@@ -4956,6 +5042,7 @@ glue_get_resource_policy <- function(ResourceArn = NULL) {
 
 #' Describes the specified schema in detail
 #'
+#' @description
 #' Describes the specified schema in detail.
 #'
 #' @usage
@@ -5004,6 +5091,7 @@ glue_get_schema <- function(SchemaId) {
 
 #' Retrieves a schema by the SchemaDefinition
 #'
+#' @description
 #' Retrieves a schema by the `SchemaDefinition`. The schema definition is
 #' sent to the Schema Registry, canonicalized, and hashed. If the hash is
 #' matched within the scope of the `SchemaName` or ARN (or the default
@@ -5059,6 +5147,7 @@ glue_get_schema_by_definition <- function(SchemaId, SchemaDefinition) {
 #' Get the specified schema by its unique ID assigned when a version of the
 #' schema is created or registered
 #'
+#' @description
 #' Get the specified schema by its unique ID assigned when a version of the
 #' schema is created or registered. Schema versions in Deleted status will
 #' not be included in the results.
@@ -5119,6 +5208,7 @@ glue_get_schema_version <- function(SchemaId = NULL, SchemaVersionId = NULL, Sch
 #' Fetches the schema version difference in the specified difference type
 #' between two stored schema versions in the Schema Registry
 #'
+#' @description
 #' Fetches the schema version difference in the specified difference type
 #' between two stored schema versions in the Schema Registry.
 #' 
@@ -5183,6 +5273,7 @@ glue_get_schema_versions_diff <- function(SchemaId, FirstSchemaVersionNumber, Se
 
 #' Retrieves a specified security configuration
 #'
+#' @description
 #' Retrieves a specified security configuration.
 #'
 #' @usage
@@ -5219,6 +5310,7 @@ glue_get_security_configuration <- function(Name) {
 
 #' Retrieves a list of all security configurations
 #'
+#' @description
 #' Retrieves a list of all security configurations.
 #'
 #' @usage
@@ -5257,6 +5349,7 @@ glue_get_security_configurations <- function(MaxResults = NULL, NextToken = NULL
 
 #' Retrieves the Table definition in a Data Catalog for a specified table
 #'
+#' @description
 #' Retrieves the `Table` definition in a Data Catalog for a specified
 #' table.
 #'
@@ -5301,6 +5394,7 @@ glue_get_table <- function(CatalogId = NULL, DatabaseName, Name) {
 
 #' Retrieves a specified version of a table
 #'
+#' @description
 #' Retrieves a specified version of a table.
 #'
 #' @usage
@@ -5348,6 +5442,7 @@ glue_get_table_version <- function(CatalogId = NULL, DatabaseName, TableName, Ve
 #' Retrieves a list of strings that identify available versions of a
 #' specified table
 #'
+#' @description
 #' Retrieves a list of strings that identify available versions of a
 #' specified table.
 #'
@@ -5398,6 +5493,7 @@ glue_get_table_versions <- function(CatalogId = NULL, DatabaseName, TableName, N
 #' Retrieves the definitions of some or all of the tables in a given
 #' Database
 #'
+#' @description
 #' Retrieves the definitions of some or all of the tables in a given
 #' `Database`.
 #'
@@ -5447,6 +5543,7 @@ glue_get_tables <- function(CatalogId = NULL, DatabaseName, Expression = NULL, N
 
 #' Retrieves a list of tags associated with a resource
 #'
+#' @description
 #' Retrieves a list of tags associated with a resource.
 #'
 #' @usage
@@ -5484,6 +5581,7 @@ glue_get_tags <- function(ResourceArn) {
 
 #' Retrieves the definition of a trigger
 #'
+#' @description
 #' Retrieves the definition of a trigger.
 #'
 #' @usage
@@ -5520,6 +5618,7 @@ glue_get_trigger <- function(Name) {
 
 #' Gets all the triggers associated with a job
 #'
+#' @description
 #' Gets all the triggers associated with a job.
 #'
 #' @usage
@@ -5562,6 +5661,7 @@ glue_get_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxResu
 
 #' Retrieves a specified function definition from the Data Catalog
 #'
+#' @description
 #' Retrieves a specified function definition from the Data Catalog.
 #'
 #' @usage
@@ -5603,6 +5703,7 @@ glue_get_user_defined_function <- function(CatalogId = NULL, DatabaseName, Funct
 
 #' Retrieves multiple function definitions from the Data Catalog
 #'
+#' @description
 #' Retrieves multiple function definitions from the Data Catalog.
 #'
 #' @usage
@@ -5652,6 +5753,7 @@ glue_get_user_defined_functions <- function(CatalogId = NULL, DatabaseName = NUL
 
 #' Retrieves resource metadata for a workflow
 #'
+#' @description
 #' Retrieves resource metadata for a workflow.
 #'
 #' @usage
@@ -5691,6 +5793,7 @@ glue_get_workflow <- function(Name, IncludeGraph = NULL) {
 
 #' Retrieves the metadata for a given workflow run
 #'
+#' @description
 #' Retrieves the metadata for a given workflow run.
 #'
 #' @usage
@@ -5731,6 +5834,7 @@ glue_get_workflow_run <- function(Name, RunId, IncludeGraph = NULL) {
 
 #' Retrieves the workflow run properties which were set during the run
 #'
+#' @description
 #' Retrieves the workflow run properties which were set during the run.
 #'
 #' @usage
@@ -5769,6 +5873,7 @@ glue_get_workflow_run_properties <- function(Name, RunId) {
 
 #' Retrieves metadata for all runs of a given workflow
 #'
+#' @description
 #' Retrieves metadata for all runs of a given workflow.
 #'
 #' @usage
@@ -5811,6 +5916,7 @@ glue_get_workflow_runs <- function(Name, IncludeGraph = NULL, NextToken = NULL, 
 
 #' Imports an existing Amazon Athena Data Catalog to AWS Glue
 #'
+#' @description
 #' Imports an existing Amazon Athena Data Catalog to AWS Glue
 #'
 #' @usage
@@ -5849,6 +5955,7 @@ glue_import_catalog_to_glue <- function(CatalogId = NULL) {
 #' Retrieves the names of all crawler resources in this AWS account, or the
 #' resources with the specified tag
 #'
+#' @description
 #' Retrieves the names of all crawler resources in this AWS account, or the
 #' resources with the specified tag. This operation allows you to see which
 #' resources are available in your account, and their names.
@@ -5899,6 +6006,7 @@ glue_list_crawlers <- function(MaxResults = NULL, NextToken = NULL, Tags = NULL)
 #' Retrieves the names of all DevEndpoint resources in this AWS account, or
 #' the resources with the specified tag
 #'
+#' @description
 #' Retrieves the names of all `DevEndpoint` resources in this AWS account,
 #' or the resources with the specified tag. This operation allows you to
 #' see which resources are available in your account, and their names.
@@ -5949,6 +6057,7 @@ glue_list_dev_endpoints <- function(NextToken = NULL, MaxResults = NULL, Tags = 
 #' Retrieves the names of all job resources in this AWS account, or the
 #' resources with the specified tag
 #'
+#' @description
 #' Retrieves the names of all job resources in this AWS account, or the
 #' resources with the specified tag. This operation allows you to see which
 #' resources are available in your account, and their names.
@@ -6000,6 +6109,7 @@ glue_list_jobs <- function(NextToken = NULL, MaxResults = NULL, Tags = NULL) {
 #' learning transforms in this AWS account, or the resources with the
 #' specified tag
 #'
+#' @description
 #' Retrieves a sortable, filterable list of existing AWS Glue machine
 #' learning transforms in this AWS account, or the resources with the
 #' specified tag. This operation takes the optional `Tags` field, which you
@@ -6079,6 +6189,7 @@ glue_list_ml_transforms <- function(NextToken = NULL, MaxResults = NULL, Filter 
 #' Returns a list of registries that you have created, with minimal
 #' registry information
 #'
+#' @description
 #' Returns a list of registries that you have created, with minimal
 #' registry information. Registries in the `Deleting` status will not be
 #' included in the results. Empty results will be returned if there are no
@@ -6122,6 +6233,7 @@ glue_list_registries <- function(MaxResults = NULL, NextToken = NULL) {
 #' Returns a list of schema versions that you have created, with minimal
 #' information
 #'
+#' @description
 #' Returns a list of schema versions that you have created, with minimal
 #' information. Schema versions in Deleted status will not be included in
 #' the results. Empty results will be returned if there are no schema
@@ -6178,6 +6290,7 @@ glue_list_schema_versions <- function(SchemaId, MaxResults = NULL, NextToken = N
 
 #' Returns a list of schemas with minimal details
 #'
+#' @description
 #' Returns a list of schemas with minimal details. Schemas in Deleting
 #' status will not be included in the results. Empty results will be
 #' returned if there are no schemas available.
@@ -6229,6 +6342,7 @@ glue_list_schemas <- function(RegistryId = NULL, MaxResults = NULL, NextToken = 
 #' Retrieves the names of all trigger resources in this AWS account, or the
 #' resources with the specified tag
 #'
+#' @description
 #' Retrieves the names of all trigger resources in this AWS account, or the
 #' resources with the specified tag. This operation allows you to see which
 #' resources are available in your account, and their names.
@@ -6282,6 +6396,7 @@ glue_list_triggers <- function(NextToken = NULL, DependentJobName = NULL, MaxRes
 
 #' Lists names of workflows created in the account
 #'
+#' @description
 #' Lists names of workflows created in the account.
 #'
 #' @usage
@@ -6320,6 +6435,7 @@ glue_list_workflows <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Sets the security configuration for a specified catalog
 #'
+#' @description
 #' Sets the security configuration for a specified catalog. After the
 #' configuration has been set, the specified encryption is applied to every
 #' catalog write thereafter.
@@ -6371,6 +6487,7 @@ glue_put_data_catalog_encryption_settings <- function(CatalogId = NULL, DataCata
 
 #' Sets the Data Catalog resource policy for access control
 #'
+#' @description
 #' Sets the Data Catalog resource policy for access control.
 #'
 #' @usage
@@ -6432,6 +6549,7 @@ glue_put_resource_policy <- function(PolicyInJson, ResourceArn = NULL, PolicyHas
 
 #' Puts the metadata key value pair for a specified schema version ID
 #'
+#' @description
 #' Puts the metadata key value pair for a specified schema version ID. A
 #' maximum of 10 key value pairs will be allowed per schema version. They
 #' can be added over one or more calls.
@@ -6487,6 +6605,7 @@ glue_put_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNumbe
 
 #' Puts the specified workflow run properties for the given workflow run
 #'
+#' @description
 #' Puts the specified workflow run properties for the given workflow run.
 #' If a property already exists for the specified run, then it overrides
 #' the value otherwise adds the property to existing properties.
@@ -6532,6 +6651,7 @@ glue_put_workflow_run_properties <- function(Name, RunId, RunProperties) {
 
 #' Queries for the schema version metadata information
 #'
+#' @description
 #' Queries for the schema version metadata information.
 #'
 #' @usage
@@ -6594,6 +6714,7 @@ glue_query_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNum
 
 #' Adds a new version to the existing schema
 #'
+#' @description
 #' Adds a new version to the existing schema. Returns an error if new
 #' version of schema does not meet the compatibility requirements of the
 #' schema set. This API will not create a new schema set and will return a
@@ -6660,6 +6781,7 @@ glue_register_schema_version <- function(SchemaId, SchemaDefinition) {
 #' Removes a key value pair from the schema version metadata for the
 #' specified schema version ID
 #'
+#' @description
 #' Removes a key value pair from the schema version metadata for the
 #' specified schema version ID.
 #'
@@ -6715,6 +6837,7 @@ glue_remove_schema_version_metadata <- function(SchemaId = NULL, SchemaVersionNu
 
 #' Resets a bookmark entry
 #'
+#' @description
 #' Resets a bookmark entry.
 #'
 #' @usage
@@ -6754,6 +6877,7 @@ glue_reset_job_bookmark <- function(JobName, RunId = NULL) {
 #' Restarts selected nodes of a previous partially completed workflow run
 #' and resumes the workflow run
 #'
+#' @description
 #' Restarts selected nodes of a previous partially completed workflow run
 #' and resumes the workflow run. The selected nodes and all nodes that are
 #' downstream from the selected nodes are run.
@@ -6800,6 +6924,7 @@ glue_resume_workflow_run <- function(Name, RunId, NodeIds) {
 #' Searches a set of tables based on properties in the table metadata as
 #' well as on the parent database
 #'
+#' @description
 #' Searches a set of tables based on properties in the table metadata as
 #' well as on the parent database. You can search against text or filter
 #' conditions.
@@ -6893,6 +7018,7 @@ glue_search_tables <- function(CatalogId = NULL, NextToken = NULL, Filters = NUL
 #' Starts a crawl using the specified crawler, regardless of what is
 #' scheduled
 #'
+#' @description
 #' Starts a crawl using the specified crawler, regardless of what is
 #' scheduled. If the crawler is already running, returns a
 #' [CrawlerRunningException](https://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-exceptions.html#aws-glue-api-exceptions-CrawlerRunningException).
@@ -6933,6 +7059,7 @@ glue_start_crawler <- function(Name) {
 #' the crawler is already running or the schedule state is already
 #' SCHEDULED
 #'
+#' @description
 #' Changes the schedule state of the specified crawler to `SCHEDULED`,
 #' unless the crawler is already running or the schedule state is already
 #' `SCHEDULED`.
@@ -6972,6 +7099,7 @@ glue_start_crawler_schedule <- function(CrawlerName) {
 #' Begins an asynchronous task to export all labeled data for a particular
 #' transform
 #'
+#' @description
 #' Begins an asynchronous task to export all labeled data for a particular
 #' transform. This task is the only label-related API call that is not part
 #' of the typical active learning workflow. You typically use
@@ -7020,6 +7148,7 @@ glue_start_export_labels_task_run <- function(TransformId, OutputS3Path) {
 #' Enables you to provide additional labels (examples of truth) to be used
 #' to teach the machine learning transform and improve its quality
 #'
+#' @description
 #' Enables you to provide additional labels (examples of truth) to be used
 #' to teach the machine learning transform and improve its quality. This
 #' API operation is generally used as part of the active learning workflow
@@ -7089,6 +7218,7 @@ glue_start_import_labels_task_run <- function(TransformId, InputS3Path, ReplaceA
 
 #' Starts a job run using a job definition
 #'
+#' @description
 #' Starts a job run using a job definition.
 #'
 #' @usage
@@ -7204,6 +7334,7 @@ glue_start_job_run <- function(JobName, JobRunId = NULL, Arguments = NULL, Alloc
 
 #' Starts a task to estimate the quality of the transform
 #'
+#' @description
 #' Starts a task to estimate the quality of the transform.
 #' 
 #' When you provide label sets as examples of truth, AWS Glue machine
@@ -7249,6 +7380,7 @@ glue_start_ml_evaluation_task_run <- function(TransformId) {
 #' to improve the transform's quality by generating label sets and adding
 #' labels
 #'
+#' @description
 #' Starts the active learning workflow for your machine learning transform
 #' to improve the transform's quality by generating label sets and adding
 #' labels.
@@ -7304,6 +7436,7 @@ glue_start_ml_labeling_set_generation_task_run <- function(TransformId, OutputS3
 
 #' Starts an existing trigger
 #'
+#' @description
 #' Starts an existing trigger. See [Triggering
 #' Jobs](https://docs.aws.amazon.com/glue/latest/dg/trigger-job.html) for
 #' information about how different types of trigger are started.
@@ -7342,6 +7475,7 @@ glue_start_trigger <- function(Name) {
 
 #' Starts a new run of the specified workflow
 #'
+#' @description
 #' Starts a new run of the specified workflow.
 #'
 #' @usage
@@ -7378,6 +7512,7 @@ glue_start_workflow_run <- function(Name) {
 
 #' If the specified crawler is running, stops the crawl
 #'
+#' @description
 #' If the specified crawler is running, stops the crawl.
 #'
 #' @usage
@@ -7415,6 +7550,7 @@ glue_stop_crawler <- function(Name) {
 #' Sets the schedule state of the specified crawler to NOT_SCHEDULED, but
 #' does not stop the crawler if it is already running
 #'
+#' @description
 #' Sets the schedule state of the specified crawler to `NOT_SCHEDULED`, but
 #' does not stop the crawler if it is already running.
 #'
@@ -7452,6 +7588,7 @@ glue_stop_crawler_schedule <- function(CrawlerName) {
 
 #' Stops a specified trigger
 #'
+#' @description
 #' Stops a specified trigger.
 #'
 #' @usage
@@ -7488,6 +7625,7 @@ glue_stop_trigger <- function(Name) {
 
 #' Stops the execution of the specified workflow run
 #'
+#' @description
 #' Stops the execution of the specified workflow run.
 #'
 #' @usage
@@ -7526,6 +7664,7 @@ glue_stop_workflow_run <- function(Name, RunId) {
 
 #' Adds tags to a resource
 #'
+#' @description
 #' Adds tags to a resource. A tag is a label you can assign to an AWS
 #' resource. In AWS Glue, you can tag only certain resources. For
 #' information about what resources you can tag, see [AWS Tags in AWS
@@ -7571,6 +7710,7 @@ glue_tag_resource <- function(ResourceArn, TagsToAdd) {
 
 #' Removes tags from a resource
 #'
+#' @description
 #' Removes tags from a resource.
 #'
 #' @usage
@@ -7613,6 +7753,7 @@ glue_untag_resource <- function(ResourceArn, TagsToRemove) {
 #' Modifies an existing classifier (a GrokClassifier, an XMLClassifier, a
 #' JsonClassifier, or a CsvClassifier, depending on which field is present)
 #'
+#' @description
 #' Modifies an existing classifier (a `GrokClassifier`, an `XMLClassifier`,
 #' a `JsonClassifier`, or a `CsvClassifier`, depending on which field is
 #' present).
@@ -7680,6 +7821,7 @@ glue_update_classifier <- function(GrokClassifier = NULL, XMLClassifier = NULL, 
 
 #' Creates or updates partition statistics of columns
 #'
+#' @description
 #' Creates or updates partition statistics of columns.
 #' 
 #' The Identity and Access Management (IAM) permission required for this
@@ -7792,6 +7934,7 @@ glue_update_column_statistics_for_partition <- function(CatalogId = NULL, Databa
 
 #' Creates or updates table statistics of columns
 #'
+#' @description
 #' Creates or updates table statistics of columns.
 #' 
 #' The Identity and Access Management (IAM) permission required for this
@@ -7900,6 +8043,7 @@ glue_update_column_statistics_for_table <- function(CatalogId = NULL, DatabaseNa
 
 #' Updates a connection definition in the Data Catalog
 #'
+#' @description
 #' Updates a connection definition in the Data Catalog.
 #'
 #' @usage
@@ -7958,6 +8102,7 @@ glue_update_connection <- function(CatalogId = NULL, Name, ConnectionInput) {
 
 #' Updates a crawler
 #'
+#' @description
 #' Updates a crawler. If a crawler is running, you must stop it using
 #' `StopCrawler` before updating it.
 #'
@@ -8085,6 +8230,7 @@ glue_update_crawler <- function(Name, Role = NULL, DatabaseName = NULL, Descript
 
 #' Updates the schedule of a crawler using a cron expression
 #'
+#' @description
 #' Updates the schedule of a crawler using a `cron` expression.
 #'
 #' @usage
@@ -8127,6 +8273,7 @@ glue_update_crawler_schedule <- function(CrawlerName, Schedule = NULL) {
 
 #' Updates an existing database definition in a Data Catalog
 #'
+#' @description
 #' Updates an existing database definition in a Data Catalog.
 #'
 #' @usage
@@ -8191,6 +8338,7 @@ glue_update_database <- function(CatalogId = NULL, Name, DatabaseInput) {
 
 #' Updates a specified development endpoint
 #'
+#' @description
 #' Updates a specified development endpoint.
 #'
 #' @usage
@@ -8270,6 +8418,7 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
 
 #' Updates an existing job definition
 #'
+#' @description
 #' Updates an existing job definition.
 #'
 #' @usage
@@ -8342,6 +8491,7 @@ glue_update_job <- function(JobName, JobUpdate) {
 
 #' Updates an existing machine learning transform
 #'
+#' @description
 #' Updates an existing machine learning transform. Call this operation to
 #' tune the algorithm parameters to achieve better results.
 #' 
@@ -8444,6 +8594,7 @@ glue_update_ml_transform <- function(TransformId, Name = NULL, Description = NUL
 
 #' Updates a partition
 #'
+#' @description
 #' Updates a partition.
 #'
 #' @usage
@@ -8566,6 +8717,7 @@ glue_update_partition <- function(CatalogId = NULL, DatabaseName, TableName, Par
 #' Updates an existing registry which is used to hold a collection of
 #' schemas
 #'
+#' @description
 #' Updates an existing registry which is used to hold a collection of
 #' schemas. The updated properties relate to the registry, and do not
 #' modify any of the schemas within the registry.
@@ -8612,6 +8764,7 @@ glue_update_registry <- function(RegistryId, Description) {
 #' Updates the description, compatibility setting, or version checkpoint
 #' for a schema set
 #'
+#' @description
 #' Updates the description, compatibility setting, or version checkpoint
 #' for a schema set.
 #' 
@@ -8683,6 +8836,7 @@ glue_update_schema <- function(SchemaId, SchemaVersionNumber = NULL, Compatibili
 
 #' Updates a metadata table in the Data Catalog
 #'
+#' @description
 #' Updates a metadata table in the Data Catalog.
 #'
 #' @usage
@@ -8819,6 +8973,7 @@ glue_update_table <- function(CatalogId = NULL, DatabaseName, TableInput, SkipAr
 
 #' Updates a trigger definition
 #'
+#' @description
 #' Updates a trigger definition.
 #'
 #' @usage
@@ -8887,6 +9042,7 @@ glue_update_trigger <- function(Name, TriggerUpdate) {
 
 #' Updates an existing function definition in the Data Catalog
 #'
+#' @description
 #' Updates an existing function definition in the Data Catalog.
 #'
 #' @usage
@@ -8944,6 +9100,7 @@ glue_update_user_defined_function <- function(CatalogId = NULL, DatabaseName, Fu
 
 #' Updates an existing workflow
 #'
+#' @description
 #' Updates an existing workflow.
 #'
 #' @usage

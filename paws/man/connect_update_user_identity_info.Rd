@@ -15,8 +15,7 @@ connect_update_user_identity_info(IdentityInfo, UserId, InstanceId)
 }
 \description{
 Updates the identity information for the specified user.
-}
-\details{
+
 Someone with the ability to invoke \code{UpdateUserIndentityInfo} can change
 the login credentials of other users by changing their email address.
 This poses a security risk to your organization. They can change the

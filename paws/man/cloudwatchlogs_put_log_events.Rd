@@ -24,8 +24,7 @@ might be rejected.}
 }
 \description{
 Uploads a batch of log events to the specified log stream.
-}
-\details{
+
 You must include the sequence token obtained from the response of the
 previous call. An upload in a newly created log stream does not require
 a sequence token. You can also get the sequence token in the

@@ -27,8 +27,7 @@ Trains or retrains an active solution. A solution is created using the
 CreateSolution operation and must be in the ACTIVE state before calling
 \code{CreateSolutionVersion}. A new version of the solution is created every
 time you call this operation.
-}
-\details{
+
 \strong{Status}
 
 A solution version can be in one of the following states:

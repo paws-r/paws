@@ -20,8 +20,7 @@ version, the \code{ConcurrentModificationException} is returned.}
 \description{
 Adds a Virtual Private Cloud (VPC) configuration to the application.
 Applications can use VPCs to store and access resources securely.
-}
-\details{
+
 Note the following about VPC configurations for Kinesis Data Analytics
 applications:
 \itemize{

@@ -19,8 +19,7 @@ example, you might want to enable a request whose origin is
 http://www.example.com to access your AWS Elemental MediaStore container
 at my.example.container.com by using the browser's XMLHttpRequest
 capability.
-}
-\details{
+
 To enable CORS on a container, you attach a CORS policy to the
 container. In the CORS policy, you configure rules that identify origins
 and the HTTP methods that can be executed on your container. The policy

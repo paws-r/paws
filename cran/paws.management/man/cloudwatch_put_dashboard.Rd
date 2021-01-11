@@ -24,8 +24,7 @@ For more information about the syntax, see \href{https://docs.aws.amazon.com/Ama
 Creates a dashboard if it does not already exist, or updates an existing
 dashboard. If you update a dashboard, the entire contents are replaced
 with what you specify here.
-}
-\details{
+
 All dashboards in your account are global, not region-specific.
 
 A simple way to create a dashboard using \code{PutDashboard} is to copy an

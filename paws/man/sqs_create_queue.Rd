@@ -197,8 +197,6 @@ in the \emph{Amazon Simple Queue Service Developer Guide}.}
 \description{
 Creates a new standard or FIFO queue. You can pass one or more
 attributes in the request. Keep the following in mind:
-}
-\details{
 \itemize{
 \item If you don't specify the \code{FifoQueue} attribute, Amazon SQS creates a
 standard queue.

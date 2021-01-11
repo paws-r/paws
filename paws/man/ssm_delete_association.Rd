@@ -17,8 +17,7 @@ ssm_delete_association(Name, InstanceId, AssociationId)
 \description{
 Disassociates the specified Systems Manager document from the specified
 instance.
-}
-\details{
+
 When you disassociate a document from an instance, it does not change
 the configuration of the instance. To change the configuration state of
 an instance after you disassociate a document, you must create a new

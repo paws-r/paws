@@ -138,8 +138,7 @@ to any point in time before \code{LatestRestorableTime} for up to
 source DB cluster with the same configuration as the original DB
 cluster, except that the new DB cluster is created with the default DB
 security group.
-}
-\details{
+
 This action only restores the DB cluster, not the DB instances for that
 DB cluster. You must invoke the CreateDBInstance action to create DB
 instances for the restored DB cluster, specifying the identifier of the

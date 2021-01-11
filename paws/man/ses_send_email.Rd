@@ -86,8 +86,6 @@ the email that you define, so that you can publish email sending events.}
 Composes an email message and immediately queues it for sending. In
 order to send email using the \code{SendEmail} operation, your message must
 meet the following requirements:
-}
-\details{
 \itemize{
 \item The message must be sent from a verified email address or domain. If
 you attempt to send email using a non-verified address or domain,

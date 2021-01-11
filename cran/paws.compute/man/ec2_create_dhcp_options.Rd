@@ -22,8 +22,6 @@ must associate it with the VPC, causing all existing and new instances
 that you launch in the VPC to use this set of DHCP options. The
 following are the individual DHCP options you can specify. For more
 information about the options, see \href{https://www.ietf.org/rfc/rfc2132.txt}{RFC 2132}.
-}
-\details{
 \itemize{
 \item \code{domain-name-servers} - The IP addresses of up to four domain name
 servers, or AmazonProvidedDNS. The default DHCP option set specifies

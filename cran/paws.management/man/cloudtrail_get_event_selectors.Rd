@@ -28,8 +28,6 @@ If you specify a trail ARN, it must be in the format:
 Describes the settings for the event selectors that you configured for
 your trail. The information returned for your event selectors includes
 the following:
-}
-\details{
 \itemize{
 \item If your event selector includes read-only events, write-only events,
 or all events. This applies to both management events and data

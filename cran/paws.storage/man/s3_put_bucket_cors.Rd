@@ -28,8 +28,7 @@ different account, the request will fail with an HTTP
 \description{
 Sets the \code{cors} configuration for your bucket. If the configuration
 exists, Amazon S3 replaces it.
-}
-\details{
+
 To use this operation, you must be allowed to perform the
 \code{s3:PutBucketCORS} action. By default, the bucket owner has this
 permission and can grant it to others.

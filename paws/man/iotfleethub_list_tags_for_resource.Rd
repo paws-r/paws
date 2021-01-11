@@ -11,8 +11,7 @@ iotfleethub_list_tags_for_resource(resourceArn)
 }
 \description{
 Lists the tags for the specified resource.
-}
-\details{
+
 Fleet Hub for AWS IoT Device Management is in public preview and is
 subject to change.
 }

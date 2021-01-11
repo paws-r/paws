@@ -6,6 +6,7 @@ NULL
 #' Adds metadata tags to an AWS DMS resource, including replication
 #' instance, endpoint, security group, and migration task
 #'
+#' @description
 #' Adds metadata tags to an AWS DMS resource, including replication
 #' instance, endpoint, security group, and migration task. These tags can
 #' also be used with cost allocation reporting to track cost associated
@@ -78,6 +79,7 @@ databasemigrationservice_add_tags_to_resource <- function(ResourceArn, Tags) {
 #' Applies a pending maintenance action to a resource (for example, to a
 #' replication instance)
 #'
+#' @description
 #' Applies a pending maintenance action to a resource (for example, to a
 #' replication instance).
 #'
@@ -132,6 +134,7 @@ databasemigrationservice_apply_pending_maintenance_action <- function(Replicatio
 
 #' Cancels a single premigration assessment run
 #'
+#' @description
 #' Cancels a single premigration assessment run.
 #' 
 #' This operation prevents any individual assessments from running if they
@@ -174,6 +177,7 @@ databasemigrationservice_cancel_replication_task_assessment_run <- function(Repl
 
 #' Creates an endpoint using the provided settings
 #'
+#' @description
 #' Creates an endpoint using the provided settings.
 #'
 #' @usage
@@ -646,6 +650,7 @@ databasemigrationservice_create_endpoint <- function(EndpointIdentifier, Endpoin
 
 #' Creates an AWS DMS event notification subscription
 #'
+#' @description
 #' Creates an AWS DMS event notification subscription.
 #' 
 #' You can specify the type of source (`SourceType`) you want to be
@@ -741,6 +746,7 @@ databasemigrationservice_create_event_subscription <- function(SubscriptionName,
 
 #' Creates the replication instance using the specified parameters
 #'
+#' @description
 #' Creates the replication instance using the specified parameters.
 #' 
 #' AWS DMS requires that your account have certain roles with appropriate
@@ -918,6 +924,7 @@ databasemigrationservice_create_replication_instance <- function(ReplicationInst
 #' Creates a replication subnet group given a list of the subnet IDs in a
 #' VPC
 #'
+#' @description
 #' Creates a replication subnet group given a list of the subnet IDs in a
 #' VPC.
 #'
@@ -996,6 +1003,7 @@ databasemigrationservice_create_replication_subnet_group <- function(Replication
 
 #' Creates a replication task using the specified parameters
 #'
+#' @description
 #' Creates a replication task using the specified parameters.
 #'
 #' @usage
@@ -1148,6 +1156,7 @@ databasemigrationservice_create_replication_task <- function(ReplicationTaskIden
 
 #' Deletes the specified certificate
 #'
+#' @description
 #' Deletes the specified certificate.
 #'
 #' @usage
@@ -1192,6 +1201,7 @@ databasemigrationservice_delete_certificate <- function(CertificateArn) {
 
 #' Deletes the connection between a replication instance and an endpoint
 #'
+#' @description
 #' Deletes the connection between a replication instance and an endpoint.
 #'
 #' @usage
@@ -1242,6 +1252,7 @@ databasemigrationservice_delete_connection <- function(EndpointArn, ReplicationI
 
 #' Deletes the specified endpoint
 #'
+#' @description
 #' Deletes the specified endpoint.
 #' 
 #' All tasks associated with the endpoint must be deleted before you can
@@ -1292,6 +1303,7 @@ databasemigrationservice_delete_endpoint <- function(EndpointArn) {
 
 #' Deletes an AWS DMS event subscription
 #'
+#' @description
 #' Deletes an AWS DMS event subscription.
 #'
 #' @usage
@@ -1328,6 +1340,7 @@ databasemigrationservice_delete_event_subscription <- function(SubscriptionName)
 
 #' Deletes the specified replication instance
 #'
+#' @description
 #' Deletes the specified replication instance.
 #' 
 #' You must delete any migration tasks that are associated with the
@@ -1381,6 +1394,7 @@ databasemigrationservice_delete_replication_instance <- function(ReplicationInst
 
 #' Deletes a subnet group
 #'
+#' @description
 #' Deletes a subnet group.
 #'
 #' @usage
@@ -1426,6 +1440,7 @@ databasemigrationservice_delete_replication_subnet_group <- function(Replication
 
 #' Deletes the specified replication task
 #'
+#' @description
 #' Deletes the specified replication task.
 #'
 #' @usage
@@ -1470,6 +1485,7 @@ databasemigrationservice_delete_replication_task <- function(ReplicationTaskArn)
 
 #' Deletes the record of a single premigration assessment run
 #'
+#' @description
 #' Deletes the record of a single premigration assessment run.
 #' 
 #' This operation removes all metadata that AWS DMS maintains about this
@@ -1512,6 +1528,7 @@ databasemigrationservice_delete_replication_task_assessment_run <- function(Repl
 
 #' Lists all of the AWS DMS attributes for a customer account
 #'
+#' @description
 #' Lists all of the AWS DMS attributes for a customer account. These
 #' attributes include AWS DMS quotas for the account and a unique account
 #' identifier in a particular DMS region. DMS quotas include a list of
@@ -1564,6 +1581,7 @@ databasemigrationservice_describe_account_attributes <- function() {
 #' Provides a list of individual assessments that you can specify for a new
 #' premigration assessment run, given one or more parameters
 #'
+#' @description
 #' Provides a list of individual assessments that you can specify for a new
 #' premigration assessment run, given one or more parameters.
 #' 
@@ -1645,6 +1663,7 @@ databasemigrationservice_describe_applicable_individual_assessments <- function(
 
 #' Provides a description of the certificate
 #'
+#' @description
 #' Provides a description of the certificate.
 #'
 #' @usage
@@ -1720,6 +1739,7 @@ databasemigrationservice_describe_certificates <- function(Filters = NULL, MaxRe
 #' Describes the status of the connections that have been made between the
 #' replication instance and an endpoint
 #'
+#' @description
 #' Describes the status of the connections that have been made between the
 #' replication instance and an endpoint. Connections are created when you
 #' test an endpoint.
@@ -1801,6 +1821,7 @@ databasemigrationservice_describe_connections <- function(Filters = NULL, MaxRec
 
 #' Returns information about the type of endpoints available
 #'
+#' @description
 #' Returns information about the type of endpoints available.
 #'
 #' @usage
@@ -1879,6 +1900,7 @@ databasemigrationservice_describe_endpoint_types <- function(Filters = NULL, Max
 #' Returns information about the endpoints for your account in the current
 #' region
 #'
+#' @description
 #' Returns information about the endpoints for your account in the current
 #' region.
 #'
@@ -1959,6 +1981,7 @@ databasemigrationservice_describe_endpoints <- function(Filters = NULL, MaxRecor
 #' Lists categories for all event source types, or, if specified, for a
 #' specified source type
 #'
+#' @description
 #' Lists categories for all event source types, or, if specified, for a
 #' specified source type. You can see a list of the event categories and
 #' source types in [Working with Events and
@@ -2010,6 +2033,7 @@ databasemigrationservice_describe_event_categories <- function(SourceType = NULL
 
 #' Lists all the event subscriptions for a customer account
 #'
+#' @description
 #' Lists all the event subscriptions for a customer account. The
 #' description of a subscription includes `SubscriptionName`,
 #' `SNSTopicARN`, `CustomerID`, `SourceType`, `SourceID`, `CreationTime`,
@@ -2075,6 +2099,7 @@ databasemigrationservice_describe_event_subscriptions <- function(SubscriptionNa
 
 #' Lists events for a given source identifier and source type
 #'
+#' @description
 #' Lists events for a given source identifier and source type. You can also
 #' specify a start and end time. For more information on AWS DMS events,
 #' see [Working with Events and
@@ -2158,6 +2183,7 @@ databasemigrationservice_describe_events <- function(SourceIdentifier = NULL, So
 #' Returns information about the replication instance types that can be
 #' created in the specified region
 #'
+#' @description
 #' Returns information about the replication instance types that can be
 #' created in the specified region.
 #'
@@ -2217,6 +2243,7 @@ databasemigrationservice_describe_orderable_replication_instances <- function(Ma
 
 #' For internal use only
 #'
+#' @description
 #' For internal use only
 #'
 #' @usage
@@ -2276,6 +2303,7 @@ databasemigrationservice_describe_pending_maintenance_actions <- function(Replic
 
 #' Returns the status of the RefreshSchemas operation
 #'
+#' @description
 #' Returns the status of the RefreshSchemas operation.
 #'
 #' @usage
@@ -2321,6 +2349,7 @@ databasemigrationservice_describe_refresh_schemas_status <- function(EndpointArn
 
 #' Returns information about the task logs for the specified task
 #'
+#' @description
 #' Returns information about the task logs for the specified task.
 #'
 #' @usage
@@ -2372,6 +2401,7 @@ databasemigrationservice_describe_replication_instance_task_logs <- function(Rep
 #' Returns information about replication instances for your account in the
 #' current region
 #'
+#' @description
 #' Returns information about replication instances for your account in the
 #' current region.
 #'
@@ -2451,6 +2481,7 @@ databasemigrationservice_describe_replication_instances <- function(Filters = NU
 
 #' Returns information about the replication subnet groups
 #'
+#' @description
 #' Returns information about the replication subnet groups.
 #'
 #' @usage
@@ -2528,6 +2559,7 @@ databasemigrationservice_describe_replication_subnet_groups <- function(Filters 
 
 #' Returns the task assessment results from Amazon S3
 #'
+#' @description
 #' Returns the task assessment results from Amazon S3. This action always
 #' returns the latest results.
 #'
@@ -2582,6 +2614,7 @@ databasemigrationservice_describe_replication_task_assessment_results <- functio
 #' Returns a paginated list of premigration assessment runs based on filter
 #' settings
 #'
+#' @description
 #' Returns a paginated list of premigration assessment runs based on filter
 #' settings.
 #' 
@@ -2649,6 +2682,7 @@ databasemigrationservice_describe_replication_task_assessment_runs <- function(F
 #' Returns a paginated list of individual assessments based on filter
 #' settings
 #'
+#' @description
 #' Returns a paginated list of individual assessments based on filter
 #' settings.
 #' 
@@ -2711,6 +2745,7 @@ databasemigrationservice_describe_replication_task_individual_assessments <- fun
 #' Returns information about replication tasks for your account in the
 #' current region
 #'
+#' @description
 #' Returns information about replication tasks for your account in the
 #' current region.
 #'
@@ -2795,6 +2830,7 @@ databasemigrationservice_describe_replication_tasks <- function(Filters = NULL, 
 
 #' Returns information about the schema for the specified endpoint
 #'
+#' @description
 #' Returns information about the schema for the specified endpoint.
 #'
 #' @usage
@@ -2857,6 +2893,7 @@ databasemigrationservice_describe_schemas <- function(EndpointArn, MaxRecords = 
 #' Returns table statistics on the database migration task, including table
 #' name, rows inserted, rows updated, and rows deleted
 #'
+#' @description
 #' Returns table statistics on the database migration task, including table
 #' name, rows inserted, rows updated, and rows deleted.
 #' 
@@ -2937,6 +2974,7 @@ databasemigrationservice_describe_table_statistics <- function(ReplicationTaskAr
 
 #' Uploads the specified certificate
 #'
+#' @description
 #' Uploads the specified certificate.
 #'
 #' @usage
@@ -2997,6 +3035,7 @@ databasemigrationservice_import_certificate <- function(CertificateIdentifier, C
 #' Lists all metadata tags attached to an AWS DMS resource, including
 #' replication instance, endpoint, security group, and migration task
 #'
+#' @description
 #' Lists all metadata tags attached to an AWS DMS resource, including
 #' replication instance, endpoint, security group, and migration task. For
 #' more information, see
@@ -3046,6 +3085,7 @@ databasemigrationservice_list_tags_for_resource <- function(ResourceArn) {
 
 #' Modifies the specified endpoint
 #'
+#' @description
 #' Modifies the specified endpoint.
 #'
 #' @usage
@@ -3476,6 +3516,7 @@ databasemigrationservice_modify_endpoint <- function(EndpointArn, EndpointIdenti
 
 #' Modifies an existing AWS DMS event notification subscription
 #'
+#' @description
 #' Modifies an existing AWS DMS event notification subscription.
 #'
 #' @usage
@@ -3530,6 +3571,7 @@ databasemigrationservice_modify_event_subscription <- function(SubscriptionName,
 
 #' Modifies the replication instance to apply new settings
 #'
+#' @description
 #' Modifies the replication instance to apply new settings. You can change
 #' one or more parameters by specifying these parameters and the new values
 #' in the request.
@@ -3665,6 +3707,7 @@ databasemigrationservice_modify_replication_instance <- function(ReplicationInst
 
 #' Modifies the settings for the specified replication subnet group
 #'
+#' @description
 #' Modifies the settings for the specified replication subnet group.
 #'
 #' @usage
@@ -3719,6 +3762,7 @@ databasemigrationservice_modify_replication_subnet_group <- function(Replication
 
 #' Modifies the specified replication task
 #'
+#' @description
 #' Modifies the specified replication task.
 #' 
 #' You can't modify the task endpoints. The task must be stopped before you
@@ -3831,6 +3875,7 @@ databasemigrationservice_modify_replication_task <- function(ReplicationTaskArn,
 #' Moves a replication task from its current replication instance to a
 #' different target replication instance using the specified parameters
 #'
+#' @description
 #' Moves a replication task from its current replication instance to a
 #' different target replication instance using the specified parameters.
 #' The target replication instance must be created with the same or later
@@ -3873,6 +3918,7 @@ databasemigrationservice_move_replication_task <- function(ReplicationTaskArn, T
 
 #' Reboots a replication instance
 #'
+#' @description
 #' Reboots a replication instance. Rebooting results in a momentary outage,
 #' until the replication instance becomes available again.
 #'
@@ -3915,6 +3961,7 @@ databasemigrationservice_reboot_replication_instance <- function(ReplicationInst
 
 #' Populates the schema for the specified endpoint
 #'
+#' @description
 #' Populates the schema for the specified endpoint. This is an asynchronous
 #' operation and can take several minutes. You can check the status of this
 #' operation by calling the DescribeRefreshSchemasStatus operation.
@@ -3968,6 +4015,7 @@ databasemigrationservice_refresh_schemas <- function(EndpointArn, ReplicationIns
 
 #' Reloads the target database table with the source data
 #'
+#' @description
 #' Reloads the target database table with the source data.
 #'
 #' @usage
@@ -4022,6 +4070,7 @@ databasemigrationservice_reload_tables <- function(ReplicationTaskArn, TablesToR
 #' Removes metadata tags from an AWS DMS resource, including replication
 #' instance, endpoint, security group, and migration task
 #'
+#' @description
 #' Removes metadata tags from an AWS DMS resource, including replication
 #' instance, endpoint, security group, and migration task. For more
 #' information, see
@@ -4076,6 +4125,7 @@ databasemigrationservice_remove_tags_from_resource <- function(ResourceArn, TagK
 
 #' Starts the replication task
 #'
+#' @description
 #' Starts the replication task.
 #' 
 #' For more information about AWS DMS tasks, see [Working with Migration
@@ -4169,6 +4219,7 @@ databasemigrationservice_start_replication_task <- function(ReplicationTaskArn, 
 #' Starts the replication task assessment for unsupported data types in the
 #' source database
 #'
+#' @description
 #' Starts the replication task assessment for unsupported data types in the
 #' source database.
 #'
@@ -4208,6 +4259,7 @@ databasemigrationservice_start_replication_task_assessment <- function(Replicati
 #' Starts a new premigration assessment run for one or more individual
 #' assessments of a migration task
 #'
+#' @description
 #' Starts a new premigration assessment run for one or more individual
 #' assessments of a migration task.
 #' 
@@ -4311,6 +4363,7 @@ databasemigrationservice_start_replication_task_assessment_run <- function(Repli
 
 #' Stops the replication task
 #'
+#' @description
 #' Stops the replication task.
 #'
 #' @usage
@@ -4355,6 +4408,7 @@ databasemigrationservice_stop_replication_task <- function(ReplicationTaskArn) {
 
 #' Tests the connection between the replication instance and the endpoint
 #'
+#' @description
 #' Tests the connection between the replication instance and the endpoint.
 #'
 #' @usage

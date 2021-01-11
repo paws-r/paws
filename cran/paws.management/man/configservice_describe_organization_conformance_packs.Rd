@@ -19,8 +19,7 @@ next page of results in a paginated response.}
 }
 \description{
 Returns a list of organization conformance packs.
-}
-\details{
+
 When you specify the limit and the next token, you receive a paginated
 response.
 

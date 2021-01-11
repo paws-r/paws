@@ -54,8 +54,7 @@ characters.}
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.
-}
-\details{
+
 Creates a new Amazon EMR Studio.
 }
 \section{Request syntax}{

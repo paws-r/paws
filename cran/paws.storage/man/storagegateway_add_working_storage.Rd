@@ -19,8 +19,7 @@ Configures one or more gateway local disks as working storage for a
 gateway. This operation is only supported in the stored volume gateway
 type. This operation is deprecated in cached volume API version
 20120630. Use AddUploadBuffer instead.
-}
-\details{
+
 Working storage is also referred to as upload buffer. You can also use
 the AddUploadBuffer operation to add upload buffer to a stored volume
 gateway.

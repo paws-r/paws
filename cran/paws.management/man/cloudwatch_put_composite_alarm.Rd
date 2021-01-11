@@ -105,8 +105,7 @@ alarm, you specify a rule expression for the alarm that takes into
 account the alarm states of other alarms that you have created. The
 composite alarm goes into ALARM state only if all conditions of the rule
 are met.
-}
-\details{
+
 The alarms specified in a composite alarm's rule expression can include
 metric alarms and other composite alarms.
 

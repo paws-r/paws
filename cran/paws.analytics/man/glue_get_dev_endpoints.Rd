@@ -13,8 +13,7 @@ glue_get_dev_endpoints(MaxResults, NextToken)
 }
 \description{
 Retrieves all the development endpoints in this AWS account.
-}
-\details{
+
 When you create a development endpoint in a virtual private cloud (VPC),
 AWS Glue returns only a private IP address and the public IP address
 field is not populated. When you create a non-VPC development endpoint,

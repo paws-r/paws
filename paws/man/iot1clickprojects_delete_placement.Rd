@@ -14,8 +14,7 @@ iot1clickprojects_delete_placement(placementName, projectName)
 \description{
 Deletes a placement. To delete a placement, it must not have any devices
 associated with it.
-}
-\details{
+
 When you delete a placement, all associated data becomes irretrievable.
 }
 \section{Request syntax}{

@@ -6,6 +6,7 @@ NULL
 #' For a specific time period, retrieve the top N dimension keys for a
 #' metric
 #'
+#' @description
 #' For a specific time period, retrieve the top `N` dimension keys for a
 #' metric.
 #' 
@@ -148,6 +149,7 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
 #' Retrieve Performance Insights metrics for a set of data sources, over a
 #' time period
 #'
+#' @description
 #' Retrieve Performance Insights metrics for a set of data sources, over a
 #' time period. You can provide specific dimension groups and dimensions,
 #' and provide aggregation and filtering criteria for each group.

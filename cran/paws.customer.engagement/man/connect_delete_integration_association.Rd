@@ -16,8 +16,7 @@ connect_delete_integration_association(InstanceId,
 \description{
 This API is in preview release for Amazon Connect and is subject to
 change.
-}
-\details{
+
 Deletes an AppIntegration association from an Amazon Connect instance.
 The association must not have any use cases associated with it.
 }

@@ -27,8 +27,7 @@ see \href{https://docs.aws.amazon.com/kendra/latest/dg/quotas.html}{Quotas}.}
 }
 \description{
 Adds one or more documents to an index.
-}
-\details{
+
 The \code{BatchPutDocument} operation enables you to ingest inline documents
 or a set of documents stored in an Amazon S3 bucket. Use this operation
 to ingest your text and unstructured text into an index, add custom

@@ -59,8 +59,7 @@ activation process, you specify information such as the AWS Region that
 you want to activate the agent in. You activate the agent in the AWS
 Region where your target locations (in Amazon S3 or Amazon EFS) reside.
 Your tasks are created in this AWS Region.
-}
-\details{
+
 You can activate the agent in a VPC (virtual private cloud) or provide
 the agent access to a VPC endpoint so you can run tasks without going
 over the public internet.

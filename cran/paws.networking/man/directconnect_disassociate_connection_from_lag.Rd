@@ -19,8 +19,7 @@ DeleteConnection request). If the LAG has associated virtual interfaces
 or hosted connections, they remain associated with the LAG. A
 disassociated connection owned by an AWS Direct Connect Partner is
 automatically converted to an interconnect.
-}
-\details{
+
 If disassociating the connection would cause the LAG to fall below its
 setting for minimum number of operational connections, the request
 fails, except when it's the last member of the LAG. If all connections

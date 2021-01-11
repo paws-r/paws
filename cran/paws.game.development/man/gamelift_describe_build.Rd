@@ -14,8 +14,7 @@ either the build ID or ARN value.}
 Retrieves properties for a custom game build. To request a build
 resource, specify a build ID. If successful, an object containing the
 build properties is returned.
-}
-\details{
+
 \strong{Learn more}
 
 \href{https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-build-intro.html}{Upload a Custom Server Build}

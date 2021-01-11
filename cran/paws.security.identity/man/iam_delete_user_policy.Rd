@@ -24,8 +24,7 @@ spaces. You can also include any of the following characters: \\_+=,.@-}
 \description{
 Deletes the specified inline policy that is embedded in the specified
 IAM user.
-}
-\details{
+
 A user can also have managed policies attached to it. To detach a
 managed policy from a user, use DetachUserPolicy. For more information
 about policies, refer to \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html}{Managed Policies and Inline Policies}

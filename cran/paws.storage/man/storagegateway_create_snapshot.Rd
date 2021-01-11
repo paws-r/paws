@@ -25,8 +25,7 @@ the maximum length for a tag's value is 256.}
 }
 \description{
 Initiates a snapshot of a volume.
-}
-\details{
+
 AWS Storage Gateway provides the ability to back up point-in-time
 snapshots of your data to Amazon Simple Storage (Amazon S3) for durable
 off-site recovery, as well as import the data to an Amazon Elastic Block

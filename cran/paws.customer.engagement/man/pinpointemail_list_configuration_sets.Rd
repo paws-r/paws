@@ -19,8 +19,7 @@ number you specified in this parameter, then the response includes a
 \description{
 List all of the configuration sets associated with your Amazon Pinpoint
 account in the current region.
-}
-\details{
+
 In Amazon Pinpoint, \emph{configuration sets} are groups of rules that you
 can apply to the emails you send. You apply a configuration set to an
 email by including a reference to the configuration set in the headers

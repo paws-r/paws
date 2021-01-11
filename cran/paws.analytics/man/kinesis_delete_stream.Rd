@@ -18,8 +18,7 @@ Deletes a Kinesis data stream and all its shards and data. You must shut
 down any applications that are operating on the stream before you delete
 the stream. If an application attempts to operate on a deleted stream,
 it receives the exception \code{ResourceNotFoundException}.
-}
-\details{
+
 If the stream is in the \code{ACTIVE} state, you can delete it. After a
 \code{DeleteStream} request, the specified stream is in the \code{DELETING} state
 until Kinesis Data Streams completes the deletion.

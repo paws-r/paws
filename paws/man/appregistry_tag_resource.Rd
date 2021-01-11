@@ -13,8 +13,7 @@ appregistry_tag_resource(resourceArn, tags)
 }
 \description{
 Assigns one or more tags (key-value pairs) to the specified resource.
-}
-\details{
+
 Each tag consists of a key and an optional value. If a tag with the same
 key is already associated with the resource, this action updates its
 value.

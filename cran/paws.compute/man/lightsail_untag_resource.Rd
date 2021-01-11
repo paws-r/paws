@@ -18,11 +18,10 @@ remove a tag.}
 \description{
 Deletes the specified set of tag keys and their values from the
 specified Amazon Lightsail resource.
-}
-\details{
+
 The \verb{untag resource} operation supports tag-based access control via
 request tags and resource tags applied to the resource identified by
-\verb{resource name}. For more information, see the \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-controlling-access-using-tags}{Lightsail Dev Guide}.
+\verb{resource name}. For more information, see the Lightsail Dev Guide.
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

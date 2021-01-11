@@ -70,8 +70,7 @@ volume from it. For more information about modifying an EBS volume
 running Linux, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html}{Modifying the size, IOPS, or type of an EBS volume on Linux}.
 For more information about modifying an EBS volume running Windows, see
 \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-modify-volume.html}{Modifying the size, IOPS, or type of an EBS volume on Windows}.
-}
-\details{
+
 When you complete a resize operation on your volume, you need to extend
 the volume's file-system size to take advantage of the new storage
 capacity. For information about extending a Linux file system, see

@@ -44,8 +44,7 @@ different account, the request will fail with an HTTP
 }
 \description{
 Sets the supplied tag-set to an object that already exists in a bucket.
-}
-\details{
+
 A tag is a key-value pair. You can associate tags with an object by
 sending a PUT request against the tagging subresource that is associated
 with the object. You can retrieve tags by sending a GET request. For

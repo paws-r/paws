@@ -13,8 +13,7 @@ mturk_delete_qualification_type(QualificationTypeId)
 \description{
 The \code{DeleteQualificationType} deletes a Qualification type and deletes
 any HIT types that are associated with the Qualification type.
-}
-\details{
+
 This operation does not revoke Qualifications already assigned to
 Workers because the Qualifications might be needed for active HITs. If
 there are any pending requests for the Qualification type, Amazon

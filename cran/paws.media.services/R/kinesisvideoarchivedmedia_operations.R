@@ -6,6 +6,7 @@ NULL
 #' Downloads an MP4 file (clip) containing the archived, on-demand media
 #' from the specified video stream over the specified time range
 #'
+#' @description
 #' Downloads an MP4 file (clip) containing the archived, on-demand media
 #' from the specified video stream over the specified time range.
 #' 
@@ -104,6 +105,7 @@ kinesisvideoarchivedmedia_get_clip <- function(StreamName = NULL, StreamARN = NU
 #' Retrieves an MPEG Dynamic Adaptive Streaming over HTTP (DASH) URL for
 #' the stream
 #'
+#' @description
 #' Retrieves an MPEG Dynamic Adaptive Streaming over HTTP (DASH) URL for
 #' the stream. You can then open the URL in a media player to view the
 #' stream contents.
@@ -429,6 +431,7 @@ kinesisvideoarchivedmedia_get_dash_streaming_session_url <- function(StreamName 
 
 #' Retrieves an HTTP Live Streaming (HLS) URL for the stream
 #'
+#' @description
 #' Retrieves an HTTP Live Streaming (HLS) URL for the stream. You can then
 #' open the URL in a browser or media player to view the stream contents.
 #' 
@@ -817,6 +820,7 @@ kinesisvideoarchivedmedia_get_hls_streaming_session_url <- function(StreamName =
 #' Gets media for a list of fragments (specified by fragment number) from
 #' the archived data in an Amazon Kinesis video stream
 #'
+#' @description
 #' Gets media for a list of fragments (specified by fragment number) from
 #' the archived data in an Amazon Kinesis video stream.
 #' 
@@ -896,6 +900,7 @@ kinesisvideoarchivedmedia_get_media_for_fragment_list <- function(StreamName, Fr
 #' Returns a list of Fragment objects from the specified stream and
 #' timestamp range within the archived data
 #'
+#' @description
 #' Returns a list of Fragment objects from the specified stream and
 #' timestamp range within the archived data.
 #' 

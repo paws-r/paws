@@ -22,8 +22,7 @@ workspaces_copy_workspace_image(Name, Description, SourceImageId,
 \description{
 Copies the specified image from the specified Region to the current
 Region. For more information about copying images, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/copy-custom-image.html}{Copy a Custom WorkSpaces Image}.
-}
-\details{
+
 In the China (Ningxia) Region, you can copy images only within the same
 Region.
 

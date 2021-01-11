@@ -13,8 +13,7 @@ frauddetector_delete_model(modelId, modelType)
 }
 \description{
 Deletes a model.
-}
-\details{
+
 You can delete models and model versions in Amazon Fraud Detector,
 provided that they are not associated with a detector version.
 

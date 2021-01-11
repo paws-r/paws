@@ -5,6 +5,7 @@ NULL
 
 #' Associates one or more Scram Secrets with an Amazon MSK cluster
 #'
+#' @description
 #' 
 #'             <p>Associates one or more Scram Secrets with an Amazon MSK cluster.</p>
 #'          
@@ -51,6 +52,7 @@ kafka_batch_associate_scram_secret <- function(ClusterArn, SecretArnList) {
 
 #' Creates a new MSK cluster
 #'
+#' @description
 #' 
 #'             <p>Creates a new MSK cluster.</p>
 #'          
@@ -194,6 +196,7 @@ kafka_create_cluster <- function(BrokerNodeGroupInfo, ClientAuthentication = NUL
 
 #' Creates a new MSK configuration
 #'
+#' @description
 #' 
 #'             <p>Creates a new MSK configuration.</p>
 #'          
@@ -251,6 +254,7 @@ kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL,
 #' Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in
 #' the request
 #'
+#' @description
 #' 
 #'             <p>Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request.</p>
 #'          
@@ -295,6 +299,7 @@ kafka_delete_cluster <- function(ClusterArn, CurrentVersion = NULL) {
 
 #' Deletes an MSK Configuration
 #'
+#' @description
 #' 
 #'             <p>Deletes an MSK Configuration.</p>
 #'          
@@ -336,6 +341,7 @@ kafka_delete_configuration <- function(Arn) {
 #' Returns a description of the MSK cluster whose Amazon Resource Name
 #' (ARN) is specified in the request
 #'
+#' @description
 #' 
 #'             <p>Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request.</p>
 #'          
@@ -376,6 +382,7 @@ kafka_describe_cluster <- function(ClusterArn) {
 
 #' Returns a description of the cluster operation specified by the ARN
 #'
+#' @description
 #' 
 #'             <p>Returns a description of the cluster operation specified by the ARN.</p>
 #'          
@@ -416,6 +423,7 @@ kafka_describe_cluster_operation <- function(ClusterOperationArn) {
 
 #' Returns a description of this MSK configuration
 #'
+#' @description
 #' 
 #'             <p>Returns a description of this MSK configuration.</p>
 #'          
@@ -456,6 +464,7 @@ kafka_describe_configuration <- function(Arn) {
 
 #' Returns a description of this revision of the configuration
 #'
+#' @description
 #' 
 #'             <p>Returns a description of this revision of the configuration.</p>
 #'          
@@ -500,6 +509,7 @@ kafka_describe_configuration_revision <- function(Arn, Revision) {
 
 #' Disassociates one or more Scram Secrets from an Amazon MSK cluster
 #'
+#' @description
 #' 
 #'             <p>Disassociates one or more Scram Secrets from an Amazon MSK cluster.</p>
 #'          
@@ -546,6 +556,7 @@ kafka_batch_disassociate_scram_secret <- function(ClusterArn, SecretArnList) {
 
 #' A list of brokers that a client application can use to bootstrap
 #'
+#' @description
 #' 
 #'             <p>A list of brokers that a client application can use to bootstrap.</p>
 #'          
@@ -586,6 +597,7 @@ kafka_get_bootstrap_brokers <- function(ClusterArn) {
 
 #' Gets the Apache Kafka versions to which you can update the MSK cluster
 #'
+#' @description
 #' 
 #'             <p>Gets the Apache Kafka versions to which you can update the MSK cluster.</p>
 #'          
@@ -627,6 +639,7 @@ kafka_get_compatible_kafka_versions <- function(ClusterArn = NULL) {
 #' Returns a list of all the operations that have been performed on the
 #' specified MSK cluster
 #'
+#' @description
 #' 
 #'             <p>Returns a list of all the operations that have been performed on the specified MSK cluster.</p>
 #'          
@@ -676,6 +689,7 @@ kafka_list_cluster_operations <- function(ClusterArn, MaxResults = NULL, NextTok
 
 #' Returns a list of all the MSK clusters in the current Region
 #'
+#' @description
 #' 
 #'             <p>Returns a list of all the MSK clusters in the current Region.</p>
 #'          
@@ -725,6 +739,7 @@ kafka_list_clusters <- function(ClusterNameFilter = NULL, MaxResults = NULL, Nex
 
 #' Returns a list of all the MSK configurations in this Region
 #'
+#' @description
 #' 
 #'             <p>Returns a list of all the MSK configurations in this Region.</p>
 #'          
@@ -774,6 +789,7 @@ kafka_list_configuration_revisions <- function(Arn, MaxResults = NULL, NextToken
 
 #' Returns a list of all the MSK configurations in this Region
 #'
+#' @description
 #' 
 #'             <p>Returns a list of all the MSK configurations in this Region.</p>
 #'          
@@ -819,6 +835,7 @@ kafka_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Returns a list of Kafka versions
 #'
+#' @description
 #' 
 #'             <p>Returns a list of Kafka versions.</p>
 #'          
@@ -861,6 +878,7 @@ kafka_list_kafka_versions <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Returns a list of the broker nodes in the cluster
 #'
+#' @description
 #' 
 #'             <p>Returns a list of the broker nodes in the cluster.</p>
 #'          
@@ -911,6 +929,7 @@ kafka_list_nodes <- function(ClusterArn, MaxResults = NULL, NextToken = NULL) {
 #' Returns a list of the Scram Secrets associated with an Amazon MSK
 #' cluster
 #'
+#' @description
 #' 
 #'             <p>Returns a list of the Scram Secrets associated with an Amazon MSK cluster.</p>
 #'          
@@ -959,6 +978,7 @@ kafka_list_scram_secrets <- function(ClusterArn, MaxResults = NULL, NextToken = 
 
 #' Returns a list of the tags associated with the specified resource
 #'
+#' @description
 #' 
 #'             <p>Returns a list of the tags associated with the specified resource.</p>
 #'          
@@ -999,6 +1019,7 @@ kafka_list_tags_for_resource <- function(ResourceArn) {
 
 #' Reboots brokers
 #'
+#' @description
 #' Reboots brokers.
 #'
 #' @usage
@@ -1043,6 +1064,7 @@ kafka_reboot_broker <- function(BrokerIds, ClusterArn) {
 
 #' Adds tags to the specified MSK resource
 #'
+#' @description
 #' 
 #'             <p>Adds tags to the specified MSK resource.</p>
 #'          
@@ -1089,6 +1111,7 @@ kafka_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes the tags associated with the keys that are provided in the query
 #'
+#' @description
 #' 
 #'             <p>Removes the tags associated with the keys that are provided in the query.</p>
 #'          
@@ -1154,6 +1177,7 @@ kafka_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates the number of broker nodes in the cluster
 #'
+#' @description
 #' 
 #'             <p>Updates the number of broker nodes in the cluster.</p>
 #'          
@@ -1203,6 +1227,7 @@ kafka_update_broker_count <- function(ClusterArn, CurrentVersion, TargetNumberOf
 
 #' Updates the EBS storage associated with MSK brokers
 #'
+#' @description
 #' 
 #'             <p>Updates the EBS storage associated with MSK brokers.</p>
 #'          
@@ -1257,6 +1282,7 @@ kafka_update_broker_storage <- function(ClusterArn, CurrentVersion, TargetBroker
 
 #' Updates an MSK configuration
 #'
+#' @description
 #' 
 #'             <p>Updates an MSK configuration.</p>
 #'          
@@ -1307,6 +1333,7 @@ kafka_update_configuration <- function(Arn, Description = NULL, ServerProperties
 #' Updates the cluster with the configuration that is specified in the
 #' request body
 #'
+#' @description
 #' 
 #'             <p>Updates the cluster with the configuration that is specified in the request body.</p>
 #'          
@@ -1359,6 +1386,7 @@ kafka_update_cluster_configuration <- function(ClusterArn, ConfigurationInfo, Cu
 
 #' Updates the Apache Kafka version for the cluster
 #'
+#' @description
 #' 
 #'             <p>Updates the Apache Kafka version for the cluster.</p>
 #'          
@@ -1415,6 +1443,7 @@ kafka_update_cluster_kafka_version <- function(ClusterArn, ConfigurationInfo = N
 
 #' Updates the monitoring settings for the cluster
 #'
+#' @description
 #' 
 #'             <p>Updates the monitoring settings for the cluster. You can use this operation to specify which Apache Kafka metrics you want Amazon MSK to send to Amazon CloudWatch. You can also specify settings for open monitoring with Prometheus.</p>
 #'          

@@ -67,8 +67,6 @@ times.}
 Registers a type with the CloudFormation service. Registering a type
 makes it available for use in CloudFormation templates in your AWS
 account, and includes:
-}
-\details{
 \itemize{
 \item Validating the resource schema
 \item Determining which handlers have been specified for the resource

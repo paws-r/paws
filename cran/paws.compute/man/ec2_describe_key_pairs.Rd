@@ -35,8 +35,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Describes the specified key pairs or all of your key pairs.
-}
-\details{
+
 For more information about key pairs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html}{Key Pairs}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
 }

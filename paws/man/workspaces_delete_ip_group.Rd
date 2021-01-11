@@ -11,8 +11,7 @@ workspaces_delete_ip_group(GroupId)
 }
 \description{
 Deletes the specified IP access control group.
-}
-\details{
+
 You cannot delete an IP access control group that is associated with a
 directory.
 }

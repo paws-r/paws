@@ -61,8 +61,7 @@ either or both of these tag values associated with them.}
 Returns a list of tags. You can return tags from a specific resource by
 specifying an ARN, or you can return all tags for a given type of
 resource, such as clusters, snapshots, and so on.
-}
-\details{
+
 The following are limitations for \code{DescribeTags}:
 \itemize{
 \item You cannot specify an ARN and a resource-type value together in the

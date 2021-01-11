@@ -14,8 +14,7 @@ replace the current content.}
 }
 \description{
 Updates the \code{EvaluationName} of an \code{Evaluation}.
-}
-\details{
+
 You can use the \code{GetEvaluation} operation to view the contents of the
 updated data element.
 }

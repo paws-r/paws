@@ -18,8 +18,7 @@ Beanstalk and the source bundle remains in Amazon S3.}
 }
 \description{
 Deletes the specified version from the specified application.
-}
-\details{
+
 You cannot delete an application version that is associated with a
 running environment.
 }

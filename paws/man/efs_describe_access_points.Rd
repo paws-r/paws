@@ -29,8 +29,7 @@ Returns the description of a specific Amazon EFS access point if the
 returns descriptions of all access points for that file system. You can
 provide either an \code{AccessPointId} or a \code{FileSystemId} in the request,
 but not both.
-}
-\details{
+
 This operation requires permissions for the
 \code{elasticfilesystem:DescribeAccessPoints} action.
 }

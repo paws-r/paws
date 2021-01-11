@@ -45,8 +45,7 @@ don't use it to provide sensitive information.
 \description{
 Resets the specified user's password in a user pool as an administrator.
 Works on any user.
-}
-\details{
+
 When a developer calls this API, the current password is invalidated, so
 it must be changed. If a user tries to sign in after the API is called,
 the app will get a PasswordResetRequiredException exception back and

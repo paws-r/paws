@@ -67,8 +67,7 @@ see the
 operation. Management account in an organization in AWS Organizations
 have access to all member accounts. This API is currently available for
 the Amazon Elastic Compute Cloud – Compute service only.
-}
-\details{
+
 This is an opt-in only feature. You can enable this feature from the
 Cost Explorer Settings page. For information on how to access the
 Settings page, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/ce-access.html}{Controlling Access for Cost Explorer}

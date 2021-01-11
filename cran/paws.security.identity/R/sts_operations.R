@@ -6,6 +6,7 @@ NULL
 #' Returns a set of temporary security credentials that you can use to
 #' access AWS resources that you might not normally have access to
 #'
+#' @description
 #' Returns a set of temporary security credentials that you can use to
 #' access AWS resources that you might not normally have access to. These
 #' temporary credentials consist of an access key ID, a secret access key,
@@ -404,6 +405,7 @@ sts_assume_role <- function(RoleArn, RoleSessionName, PolicyArns = NULL, Policy 
 #' Returns a set of temporary security credentials for users who have been
 #' authenticated via a SAML authentication response
 #'
+#' @description
 #' Returns a set of temporary security credentials for users who have been
 #' authenticated via a SAML authentication response. This operation
 #' provides a mechanism for tying an enterprise identity store or directory
@@ -684,6 +686,7 @@ sts_assume_role_with_saml <- function(RoleArn, PrincipalArn, SAMLAssertion, Poli
 #' authenticated in a mobile or web application with a web identity
 #' provider
 #'
+#' @description
 #' Returns a set of temporary security credentials for users who have been
 #' authenticated in a mobile or web application with a web identity
 #' provider. Example providers include Amazon Cognito, Login with Amazon,
@@ -1003,6 +1006,7 @@ sts_assume_role_with_web_identity <- function(RoleArn, RoleSessionName, WebIdent
 #' Decodes additional information about the authorization status of a
 #' request from an encoded message returned in response to an AWS request
 #'
+#' @description
 #' Decodes additional information about the authorization status of a
 #' request from an encoded message returned in response to an AWS request.
 #' 
@@ -1081,6 +1085,7 @@ sts_decode_authorization_message <- function(EncodedMessage) {
 
 #' Returns the account identifier for the specified access key ID
 #'
+#' @description
 #' Returns the account identifier for the specified access key ID.
 #' 
 #' Access keys consist of two parts: an access key ID (for example,
@@ -1147,6 +1152,7 @@ sts_get_access_key_info <- function(AccessKeyId) {
 #' Returns details about the IAM user or role whose credentials are used to
 #' call the operation
 #'
+#' @description
 #' Returns details about the IAM user or role whose credentials are used to
 #' call the operation.
 #' 
@@ -1207,6 +1213,7 @@ sts_get_caller_identity <- function() {
 #' Returns a set of temporary security credentials (consisting of an access
 #' key ID, a secret access key, and a security token) for a federated user
 #'
+#' @description
 #' Returns a set of temporary security credentials (consisting of an access
 #' key ID, a secret access key, and a security token) for a federated user.
 #' A typical use is in a proxy application that gets temporary security
@@ -1501,6 +1508,7 @@ sts_get_federation_token <- function(Name, Policy = NULL, PolicyArns = NULL, Dur
 
 #' Returns a set of temporary credentials for an AWS account or IAM user
 #'
+#' @description
 #' Returns a set of temporary credentials for an AWS account or IAM user.
 #' The credentials consist of an access key ID, a secret access key, and a
 #' security token. Typically, you use `GetSessionToken` if you want to use

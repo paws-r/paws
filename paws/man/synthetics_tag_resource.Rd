@@ -16,8 +16,7 @@ The ARN format of a canary is
 }
 \description{
 Assigns one or more tags (key-value pairs) to the specified canary.
-}
-\details{
+
 Tags can help you organize and categorize your resources. You can also
 use them to scope user permissions, by granting a user permission to
 access or change only resources with certain tag values.

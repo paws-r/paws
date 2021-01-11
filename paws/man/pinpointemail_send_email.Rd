@@ -34,8 +34,6 @@ email.}
 \description{
 Sends an email message. You can use the Amazon Pinpoint Email API to
 send two types of messages:
-}
-\details{
 \itemize{
 \item \strong{Simple} – A standard email message. When you create this type of
 message, you specify the sender, the recipient, and the message

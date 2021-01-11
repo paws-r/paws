@@ -10,8 +10,7 @@ lightsail_get_distribution_bundles()
 \description{
 Returns the list bundles that can be applied to you Amazon Lightsail
 content delivery network (CDN) distributions.
-}
-\details{
+
 A distribution bundle specifies the monthly network transfer quota and
 monthly cost of your dsitribution.
 }

@@ -24,8 +24,7 @@ Use this operation to update your workforce. You can use this operation
 to require that workers use specific IP addresses to work on tasks and
 to update your OpenID Connect (OIDC) Identity Provider (IdP) workforce
 configuration.
-}
-\details{
+
 Use \code{SourceIpConfig} to restrict worker access to tasks to a specific
 range of IP addresses. You specify allowed IP addresses by creating a
 list of up to ten

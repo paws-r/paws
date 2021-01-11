@@ -23,8 +23,7 @@ servicecatalog_associate_product_with_portfolio(AcceptLanguage,
 }
 \description{
 Associates the specified product with the specified portfolio.
-}
-\details{
+
 A delegated admin is authorized to invoke this command.
 }
 \section{Request syntax}{

@@ -20,8 +20,7 @@ of access point descriptions if the response payload was paginated.}
 \description{
 Lists all tags for a top-level EFS resource. You must provide the ID of
 the resource that you want to retrieve the tags for.
-}
-\details{
+
 This operation requires permissions for the
 \code{elasticfilesystem:DescribeAccessPoints} action.
 }

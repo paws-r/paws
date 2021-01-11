@@ -21,8 +21,7 @@ bucket policy, see the example S3 bucket policy on this page.}
 Generates a report that lists all tagged resources in accounts across
 your organization and tells whether each resource is compliant with the
 effective tag policy. Compliance data is refreshed daily.
-}
-\details{
+
 The generated report is saved to the following location:
 
 \verb{s3://example-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv}

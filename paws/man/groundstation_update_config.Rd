@@ -17,8 +17,7 @@ groundstation_update_config(configData, configId, configType, name)
 }
 \description{
 Updates the \code{Config} used when scheduling contacts.
-}
-\details{
+
 Updating a \code{Config} will not update the execution parameters for
 existing future contacts scheduled with this \code{Config}.
 }

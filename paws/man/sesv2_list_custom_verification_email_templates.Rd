@@ -23,8 +23,7 @@ The value you specify has to be at least 1, and can be no more than 50.}
 \description{
 Lists the existing custom verification email templates for your account
 in the current AWS Region.
-}
-\details{
+
 For more information about custom verification email templates, see
 \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-verify-address-custom.html}{Using Custom Verification Email Templates}
 in the \emph{Amazon SES Developer Guide}.

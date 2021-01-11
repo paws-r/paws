@@ -30,8 +30,7 @@ Modifies the parameters of a DB parameter group. To modify more than one
 parameter, submit a list of the following: \code{ParameterName},
 \code{ParameterValue}, and \code{ApplyMethod}. A maximum of 20 parameters can be
 modified in a single request.
-}
-\details{
+
 Changes to dynamic parameters are applied immediately. Changes to static
 parameters require a reboot without failover to the DB instance
 associated with the parameter group before the change can take effect.

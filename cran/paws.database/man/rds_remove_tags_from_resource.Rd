@@ -16,8 +16,7 @@ in the \emph{Amazon RDS User Guide.}}
 }
 \description{
 Removes metadata tags from an Amazon RDS resource.
-}
-\details{
+
 For an overview on tagging an Amazon RDS resource, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.html}{Tagging Amazon RDS Resources}
 in the \emph{Amazon RDS User Guide.}
 }

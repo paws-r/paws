@@ -94,8 +94,7 @@ cluster snapshots. By default, this operation returns information about
 all snapshots of all clusters that are owned by you AWS customer
 account. No information is returned for snapshots owned by inactive AWS
 customer accounts.
-}
-\details{
+
 If you specify both tag keys and tag values in the same request, Amazon
 Redshift returns all snapshots that match any combination of the
 specified keys and values. For example, if you have \code{owner} and

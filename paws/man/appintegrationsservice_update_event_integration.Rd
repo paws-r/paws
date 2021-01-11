@@ -15,8 +15,7 @@ appintegrationsservice_update_event_integration(Name, Description)
 \description{
 The Amazon AppIntegrations APIs are in preview release and are subject
 to change.
-}
-\details{
+
 Updates the description of an event integration.
 }
 \section{Request syntax}{

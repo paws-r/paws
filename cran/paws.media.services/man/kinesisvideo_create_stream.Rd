@@ -55,8 +55,7 @@ key-value pair (the value is optional).}
 }
 \description{
 Creates a new Kinesis video stream.
-}
-\details{
+
 When you create a new stream, Kinesis Video Streams assigns it a version
 number. When you change the stream's metadata, Kinesis Video Streams
 updates the version.

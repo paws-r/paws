@@ -14,8 +14,7 @@ delete.}
 }
 \description{
 Deletes the specified tags from an Amazon SageMaker resource.
-}
-\details{
+
 To list a resource's tags, use the \code{ListTags} API.
 
 When you call this API to delete tags from a hyperparameter tuning job,

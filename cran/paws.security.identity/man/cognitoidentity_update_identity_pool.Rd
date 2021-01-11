@@ -39,8 +39,7 @@ criteria.}
 }
 \description{
 Updates an identity pool.
-}
-\details{
+
 You must use AWS Developer credentials to call this API.
 }
 \section{Request syntax}{

@@ -37,8 +37,7 @@ returned \code{EndpointArn} to send a message to a mobile app or by the
 already owns an endpoint with the same device token and attributes, that
 endpoint's ARN is returned without creating a new endpoint. For more
 information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.
-}
-\details{
+
 When using \code{CreatePlatformEndpoint} with Baidu, two attributes must be
 provided: ChannelId and UserId. The token field must also contain the
 ChannelId. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Creating an Amazon SNS Endpoint for Baidu}.

@@ -46,8 +46,7 @@ CreateGameSessionQueue). When processing a placement request, Amazon
 GameLift searches for available resources on the queue's destinations,
 scanning each until it finds resources or the placement request times
 out.
-}
-\details{
+
 A game session placement request can also request player sessions. When
 a new game session is successfully created, Amazon GameLift creates a
 player session for each player included in the request.

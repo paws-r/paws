@@ -11,8 +11,7 @@ storagegateway_delete_snapshot_schedule(VolumeARN)
 }
 \description{
 Deletes a snapshot of a volume.
-}
-\details{
+
 You can take snapshots of your gateway volumes on a scheduled or ad hoc
 basis. This API action enables you to delete a snapshot schedule for a
 volume. For more information, see \href{https://docs.aws.amazon.com/storagegateway/latest/userguide/backing-up-volumes.html}{Backing up your volumes}.

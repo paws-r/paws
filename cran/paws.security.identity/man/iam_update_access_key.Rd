@@ -27,8 +27,7 @@ that the key cannot be used.}
 Changes the status of the specified access key from Active to Inactive,
 or vice versa. This operation can be used to disable a user's key as
 part of a key rotation workflow.
-}
-\details{
+
 If the \code{UserName} is not specified, the user name is determined
 implicitly based on the AWS access key ID used to sign the request. This
 operation works for access keys under the AWS account. Consequently, you

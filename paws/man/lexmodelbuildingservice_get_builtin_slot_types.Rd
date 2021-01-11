@@ -24,8 +24,7 @@ is 10.}
 }
 \description{
 Gets a list of built-in slot types that meet the specified criteria.
-}
-\details{
+
 For a list of built-in slot types, see \href{https://developer.amazon.com/en-US/docs/alexa/custom-skills/slot-type-reference.html}{Slot Type Reference}
 in the \emph{Alexa Skills Kit}.
 

@@ -16,8 +16,7 @@ key group’s \code{ETag} value.}
 }
 \description{
 Updates a key group.
-}
-\details{
+
 When you update a key group, all the fields are updated with the values
 provided in the request. You cannot update some fields independent of
 others. To update a key group:

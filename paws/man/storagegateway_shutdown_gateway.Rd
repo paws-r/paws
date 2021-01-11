@@ -12,8 +12,7 @@ storagegateway_shutdown_gateway(GatewayARN)
 \description{
 Shuts down a gateway. To specify which gateway to shut down, use the
 Amazon Resource Name (ARN) of the gateway in the body of your request.
-}
-\details{
+
 The operation shuts down the gateway service component running in the
 gateway's virtual machine (VM) and not the host VM.
 

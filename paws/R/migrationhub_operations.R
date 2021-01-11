@@ -7,6 +7,7 @@ NULL
 #' receiving the migration, with the migration task performed by a
 #' migration tool
 #'
+#' @description
 #' Associates a created artifact of an AWS cloud resource, the target
 #' receiving the migration, with the migration task performed by a
 #' migration tool. This API has the following traits:
@@ -70,6 +71,7 @@ migrationhub_associate_created_artifact <- function(ProgressUpdateStream, Migrat
 #' Associates a discovered resource ID from Application Discovery Service
 #' with a migration task
 #'
+#' @description
 #' Associates a discovered resource ID from Application Discovery Service
 #' with a migration task.
 #'
@@ -121,6 +123,7 @@ migrationhub_associate_discovered_resource <- function(ProgressUpdateStream, Mig
 #' access control as well as a namespace for migration task names that is
 #' implicitly linked to your AWS account
 #'
+#' @description
 #' Creates a progress update stream which is an AWS resource used for
 #' access control as well as a namespace for migration task names that is
 #' implicitly linked to your AWS account. It must uniquely identify the
@@ -168,6 +171,7 @@ migrationhub_create_progress_update_stream <- function(ProgressUpdateStreamName,
 #' Deletes a progress update stream, including all of its tasks, which was
 #' previously created as an AWS resource used for access control
 #'
+#' @description
 #' Deletes a progress update stream, including all of its tasks, which was
 #' previously created as an AWS resource used for access control. This API
 #' has the following traits:
@@ -231,6 +235,7 @@ migrationhub_delete_progress_update_stream <- function(ProgressUpdateStreamName,
 
 #' Gets the migration status of an application
 #'
+#' @description
 #' Gets the migration status of an application.
 #'
 #' @usage
@@ -269,6 +274,7 @@ migrationhub_describe_application_state <- function(ApplicationId) {
 #' Retrieves a list of all attributes associated with a specific migration
 #' task
 #'
+#' @description
 #' Retrieves a list of all attributes associated with a specific migration
 #' task.
 #'
@@ -311,6 +317,7 @@ migrationhub_describe_migration_task <- function(ProgressUpdateStream, Migration
 #' Disassociates a created artifact of an AWS resource with a migration
 #' task performed by a migration tool that was previously associated
 #'
+#' @description
 #' Disassociates a created artifact of an AWS resource with a migration
 #' task performed by a migration tool that was previously associated. This
 #' API has the following traits:
@@ -372,6 +379,7 @@ migrationhub_disassociate_created_artifact <- function(ProgressUpdateStream, Mig
 #' Disassociate an Application Discovery Service discovered resource from a
 #' migration task
 #'
+#' @description
 #' Disassociate an Application Discovery Service discovered resource from a
 #' migration task.
 #'
@@ -419,6 +427,7 @@ migrationhub_disassociate_discovered_resource <- function(ProgressUpdateStream, 
 
 #' Registers a new migration task which represents a server, database, etc
 #'
+#' @description
 #' Registers a new migration task which represents a server, database,
 #' etc., being migrated to AWS by a migration tool.
 #' 
@@ -467,6 +476,7 @@ migrationhub_import_migration_task <- function(ProgressUpdateStream, MigrationTa
 
 #' Lists all the migration statuses for your applications
 #'
+#' @description
 #' Lists all the migration statuses for your applications. If you use the
 #' optional `ApplicationIds` parameter, only the migration statuses for
 #' those applications will be returned.
@@ -516,6 +526,7 @@ migrationhub_list_application_states <- function(ApplicationIds = NULL, NextToke
 #' Lists the created artifacts attached to a given migration task in an
 #' update stream
 #'
+#' @description
 #' Lists the created artifacts attached to a given migration task in an
 #' update stream. This API has the following traits:
 #' 
@@ -571,6 +582,7 @@ migrationhub_list_created_artifacts <- function(ProgressUpdateStream, MigrationT
 
 #' Lists discovered resources associated with the given MigrationTask
 #'
+#' @description
 #' Lists discovered resources associated with the given `MigrationTask`.
 #'
 #' @usage
@@ -618,6 +630,7 @@ migrationhub_list_discovered_resources <- function(ProgressUpdateStream, Migrati
 #' Lists all, or filtered by resource name, migration tasks associated with
 #' the user account making this call
 #'
+#' @description
 #' Lists all, or filtered by resource name, migration tasks associated with
 #' the user account making this call. This API has the following traits:
 #' 
@@ -669,6 +682,7 @@ migrationhub_list_migration_tasks <- function(NextToken = NULL, MaxResults = NUL
 #' Lists progress update streams associated with the user account making
 #' this call
 #'
+#' @description
 #' Lists progress update streams associated with the user account making
 #' this call.
 #'
@@ -710,6 +724,7 @@ migrationhub_list_progress_update_streams <- function(NextToken = NULL, MaxResul
 
 #' Sets the migration state of an application
 #'
+#' @description
 #' Sets the migration state of an application. For a given application
 #' identified by the value passed to `ApplicationId`, its status is set or
 #' updated by passing one of three values to `Status`:
@@ -761,6 +776,7 @@ migrationhub_notify_application_state <- function(ApplicationId, Status, UpdateD
 #' Notifies Migration Hub of the current status, progress, or other detail
 #' regarding a migration task
 #'
+#' @description
 #' Notifies Migration Hub of the current status, progress, or other detail
 #' regarding a migration task. This API has the following traits:
 #' 
@@ -830,6 +846,7 @@ migrationhub_notify_migration_task_state <- function(ProgressUpdateStream, Migra
 #' Provides identifying details of the resource being migrated so that it
 #' can be associated in the Application Discovery Service repository
 #'
+#' @description
 #' Provides identifying details of the resource being migrated so that it
 #' can be associated in the Application Discovery Service repository. This
 #' association occurs asynchronously after `PutResourceAttributes` returns.

@@ -16,8 +16,7 @@ that you can specify.}
 \description{
 Deletes currently cached content from your Amazon Lightsail content
 delivery network (CDN) distribution.
-}
-\details{
+
 After resetting the cache, the next time a content request is made, your
 distribution pulls, serves, and caches it from the origin.
 }

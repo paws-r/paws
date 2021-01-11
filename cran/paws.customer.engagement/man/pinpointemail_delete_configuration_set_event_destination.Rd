@@ -15,8 +15,7 @@ that you want to delete.}
 }
 \description{
 Delete an event destination.
-}
-\details{
+
 In Amazon Pinpoint, \emph{events} include message sends, deliveries, opens,
 clicks, bounces, and complaints. \emph{Event destinations} are places that
 you can send information about these events to. For example, you can

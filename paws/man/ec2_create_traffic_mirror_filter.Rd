@@ -22,8 +22,7 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 }
 \description{
 Creates a Traffic Mirror filter.
-}
-\details{
+
 A Traffic Mirror filter is a set of rules that defines the traffic to
 mirror.
 

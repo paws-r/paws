@@ -26,8 +26,7 @@ Deletes key material that you previously imported. This operation makes
 the specified customer master key (CMK) unusable. For more information
 about importing key material into AWS KMS, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html}{Importing Key Material}
 in the \emph{AWS Key Management Service Developer Guide}.
-}
-\details{
+
 When the specified CMK is in the \code{PendingDeletion} state, this operation
 does not change the CMK's state. Otherwise, it changes the CMK's state
 to \code{PendingImport}.

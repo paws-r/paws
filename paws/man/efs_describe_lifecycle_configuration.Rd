@@ -18,8 +18,7 @@ Amazon EFS file system. EFS lifecycle management uses the
 EFS Infrequent Access (IA) storage class. For a file system without a
 \code{LifecycleConfiguration} object, the call returns an empty array in the
 response.
-}
-\details{
+
 This operation requires permissions for the
 \code{elasticfilesystem:DescribeLifecycleConfiguration} operation.
 }

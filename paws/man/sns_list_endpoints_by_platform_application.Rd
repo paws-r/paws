@@ -27,8 +27,7 @@ be returned. To receive the next page, you call
 \code{ListEndpointsByPlatformApplication} again using the NextToken string
 received from the previous call. When there are no more records to
 return, NextToken will be null. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.
-}
-\details{
+
 This action is throttled at 30 transactions per second (TPS).
 }
 \section{Request syntax}{

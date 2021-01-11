@@ -37,8 +37,7 @@ consist of resources that AWS Config has discovered, including those
 that AWS Config is not currently recording. You can narrow the results
 to include only resources that have specific resource IDs or a resource
 name.
-}
-\details{
+
 You can specify either resource IDs or a resource name, but not both, in
 the same request.
 

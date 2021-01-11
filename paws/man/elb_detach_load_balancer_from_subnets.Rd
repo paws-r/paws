@@ -15,8 +15,7 @@ elb_detach_load_balancer_from_subnets(LoadBalancerName, Subnets)
 \description{
 Removes the specified subnets from the set of configured subnets for the
 load balancer.
-}
-\details{
+
 After a subnet is removed, all EC2 instances registered with the load
 balancer in the removed subnet go into the \code{OutOfService} state. Then,
 the load balancer balances the traffic among the remaining routable

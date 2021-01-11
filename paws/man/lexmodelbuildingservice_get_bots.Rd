@@ -23,8 +23,6 @@ and "abcxyz."}
 }
 \description{
 Returns bot information as follows:
-}
-\details{
 \itemize{
 \item If you provide the \code{nameContains} field, the response includes
 information for the \verb{$LATEST} version of all bots whose name

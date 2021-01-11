@@ -26,8 +26,7 @@ in the \emph{Amazon EC2 Auto Scaling API Reference}.}
 }
 \description{
 Sets the health status of the specified instance.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html}{Health checks for Auto Scaling instances}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 }

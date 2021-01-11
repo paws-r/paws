@@ -51,8 +51,7 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 }
 \description{
 Creates a Traffic Mirror session.
-}
-\details{
+
 A Traffic Mirror session actively copies packets from a Traffic Mirror
 source to a Traffic Mirror target. Create a filter, and then assign it
 to the session to define a subset of the traffic to mirror, for example

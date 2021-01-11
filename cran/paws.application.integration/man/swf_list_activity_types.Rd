@@ -39,8 +39,7 @@ includes information like creation date, current status of the activity,
 etc. The results may be split into multiple pages. To retrieve
 subsequent pages, make the call again using the \code{nextPageToken} returned
 by the initial call.
-}
-\details{
+
 \strong{Access Control}
 
 You can use IAM policies to control this action's access to Amazon SWF

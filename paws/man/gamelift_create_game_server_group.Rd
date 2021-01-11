@@ -108,8 +108,7 @@ stated. See the AWS General Reference for actual tagging limits.}
 \description{
 \strong{This operation is used with the Amazon GameLift FleetIQ solution and
 game server groups.}
-}
-\details{
+
 Creates a GameLift FleetIQ game server group for managing game hosting
 on a collection of Amazon EC2 instances for game hosting. This operation
 creates the game server group, creates an Auto Scaling group in your AWS

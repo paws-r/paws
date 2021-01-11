@@ -42,8 +42,7 @@ Dedicated Host in your account that has auto-placement enabled. When
 auto-placement is disabled, you need to provide a host ID to have the
 instance launch onto a specific host. If no host ID is provided, the
 instance is launched onto a suitable host with auto-placement enabled.
-}
-\details{
+
 You can also use this API action to modify a Dedicated Host to support
 either multiple instance types in an instance family, or to support a
 specific instance type only.

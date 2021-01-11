@@ -31,8 +31,7 @@ This operation initiates a multipart upload. Amazon S3 Glacier creates a
 multipart upload resource and returns its ID in the response. The
 multipart upload ID is used in subsequent requests to upload parts of an
 archive (see UploadMultipartPart).
-}
-\details{
+
 When you initiate a multipart upload, you specify the part size in
 number of bytes. The part size must be a megabyte (1024 KB) multiplied
 by a power of 2-for example, 1048576 (1 MB), 2097152 (2 MB), 4194304 (4

@@ -54,8 +54,7 @@ Default: \code{SSO}}
 Creates a portal, which can contain projects and dashboards. AWS IoT
 SiteWise Monitor uses AWS SSO or IAM to authenticate portal users and
 manage user permissions.
-}
-\details{
+
 Before you can sign in to a new portal, you must add at least one
 identity to that portal. For more information, see \href{https://docs.aws.amazon.com/iot-sitewise/latest/userguide/administer-portals.html#portal-change-admins}{Adding or removing portal administrators}
 in the \emph{AWS IoT SiteWise User Guide}.

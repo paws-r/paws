@@ -16,8 +16,7 @@ kinesis_put_records(Records, StreamName)
 Writes multiple data records into a Kinesis data stream in a single call
 (also referred to as a \code{PutRecords} request). Use this operation to send
 data into the stream for data ingestion and processing.
-}
-\details{
+
 Each \code{PutRecords} request can support up to 500 records. Each record in
 the request can be as large as 1 MiB, up to a limit of 5 MiB for the
 entire request, including partition keys. Each shard can support writes

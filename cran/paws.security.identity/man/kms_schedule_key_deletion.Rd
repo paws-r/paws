@@ -35,8 +35,7 @@ this operation is successful, the key state of the CMK changes to
 CancelKeyDeletion to cancel the deletion of the CMK. After the waiting
 period ends, AWS KMS deletes the CMK and all AWS KMS data associated
 with it, including all aliases that refer to it.
-}
-\details{
+
 Deleting a CMK is a destructive and potentially dangerous operation.
 When a CMK is deleted, all data that was encrypted under the CMK is
 unrecoverable. To prevent the use of a CMK without deleting it, use

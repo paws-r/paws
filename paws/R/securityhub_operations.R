@@ -6,6 +6,7 @@ NULL
 #' Accepts the invitation to be a member account and be monitored by the
 #' Security Hub master account that the invitation was sent from
 #'
+#' @description
 #' Accepts the invitation to be a member account and be monitored by the
 #' Security Hub master account that the invitation was sent from.
 #' 
@@ -53,6 +54,7 @@ securityhub_accept_invitation <- function(MasterId, InvitationId) {
 #' Disables the standards specified by the provided
 #' StandardsSubscriptionArns
 #'
+#' @description
 #' Disables the standards specified by the provided
 #' `StandardsSubscriptionArns`.
 #' 
@@ -96,6 +98,7 @@ securityhub_batch_disable_standards <- function(StandardsSubscriptionArns) {
 
 #' Enables the standards specified by the provided StandardsArn
 #'
+#' @description
 #' Enables the standards specified by the provided `StandardsArn`. To
 #' obtain the ARN for a standard, use the ` <a>DescribeStandards</a> `
 #' operation.
@@ -146,6 +149,7 @@ securityhub_batch_enable_standards <- function(StandardsSubscriptionRequests) {
 #' Imports security findings generated from an integrated third-party
 #' product into Security Hub
 #'
+#' @description
 #' Imports security findings generated from an integrated third-party
 #' product into Security Hub. This action is requested by the integrated
 #' product to import its findings into Security Hub.
@@ -1846,6 +1850,7 @@ securityhub_batch_import_findings <- function(Findings) {
 #' Used by Security Hub customers to update information about their
 #' investigation into a finding
 #'
+#' @description
 #' Used by Security Hub customers to update information about their
 #' investigation into a finding. Requested by master accounts or member
 #' accounts. Master accounts can update findings for their account and
@@ -2002,6 +2007,7 @@ securityhub_batch_update_findings <- function(FindingIdentifiers, Note = NULL, S
 
 #' Creates a custom action target in Security Hub
 #'
+#' @description
 #' Creates a custom action target in Security Hub.
 #' 
 #' You can use custom actions on findings and insights in Security Hub to
@@ -2045,6 +2051,7 @@ securityhub_create_action_target <- function(Name, Description, Id) {
 
 #' Creates a custom insight in Security Hub
 #'
+#' @description
 #' Creates a custom insight in Security Hub. An insight is a consolidation
 #' of findings that relate to a security issue that requires attention or
 #' remediation.
@@ -2651,6 +2658,7 @@ securityhub_create_insight <- function(Name, Filters, GroupByAttribute) {
 #' accounts and the account used to make the request, which is the master
 #' account
 #'
+#' @description
 #' Creates a member association in Security Hub between the specified
 #' accounts and the account used to make the request, which is the master
 #' account. If you are integrated with Organizations, then the master
@@ -2731,6 +2739,7 @@ securityhub_create_members <- function(AccountDetails) {
 
 #' Declines invitations to become a member account
 #'
+#' @description
 #' Declines invitations to become a member account.
 #' 
 #' This operation is only used by accounts that are not part of an
@@ -2773,6 +2782,7 @@ securityhub_decline_invitations <- function(AccountIds) {
 
 #' Deletes a custom action target from Security Hub
 #'
+#' @description
 #' Deletes a custom action target from Security Hub.
 #' 
 #' Deleting a custom action target does not affect any findings or insights
@@ -2813,6 +2823,7 @@ securityhub_delete_action_target <- function(ActionTargetArn) {
 
 #' Deletes the insight specified by the InsightArn
 #'
+#' @description
 #' Deletes the insight specified by the `InsightArn`.
 #'
 #' @usage
@@ -2850,6 +2861,7 @@ securityhub_delete_insight <- function(InsightArn) {
 #' Deletes invitations received by the AWS account to become a member
 #' account
 #'
+#' @description
 #' Deletes invitations received by the AWS account to become a member
 #' account.
 #' 
@@ -2892,6 +2904,7 @@ securityhub_delete_invitations <- function(AccountIds) {
 
 #' Deletes the specified member accounts from Security Hub
 #'
+#' @description
 #' Deletes the specified member accounts from Security Hub.
 #' 
 #' Can be used to delete member accounts that belong to an organization as
@@ -2934,6 +2947,7 @@ securityhub_delete_members <- function(AccountIds) {
 #' Returns a list of the custom action targets in Security Hub in your
 #' account
 #'
+#' @description
 #' Returns a list of the custom action targets in Security Hub in your
 #' account.
 #'
@@ -2986,6 +3000,7 @@ securityhub_describe_action_targets <- function(ActionTargetArns = NULL, NextTok
 #' Returns details about the Hub resource in your account, including the
 #' HubArn and the time when you enabled Security Hub
 #'
+#' @description
 #' Returns details about the Hub resource in your account, including the
 #' `HubArn` and the time when you enabled Security Hub.
 #'
@@ -3024,6 +3039,7 @@ securityhub_describe_hub <- function(HubArn = NULL) {
 #' Returns information about the Organizations configuration for Security
 #' Hub
 #'
+#' @description
 #' Returns information about the Organizations configuration for Security
 #' Hub. Can only be called from a Security Hub administrator account.
 #'
@@ -3058,6 +3074,7 @@ securityhub_describe_organization_configuration <- function() {
 #' Returns information about the available products that you can subscribe
 #' to and integrate with Security Hub in order to consolidate findings
 #'
+#' @description
 #' Returns information about the available products that you can subscribe
 #' to and integrate with Security Hub in order to consolidate findings.
 #'
@@ -3102,6 +3119,7 @@ securityhub_describe_products <- function(NextToken = NULL, MaxResults = NULL) {
 
 #' Returns a list of the available standards in Security Hub
 #'
+#' @description
 #' Returns a list of the available standards in Security Hub.
 #' 
 #' For each standard, the results include the standard ARN, the name, and a
@@ -3149,6 +3167,7 @@ securityhub_describe_standards <- function(NextToken = NULL, MaxResults = NULL) 
 
 #' Returns a list of security standards controls
 #'
+#' @description
 #' Returns a list of security standards controls.
 #' 
 #' For each control, the results include information about whether it is
@@ -3201,6 +3220,7 @@ securityhub_describe_standards_controls <- function(StandardsSubscriptionArn, Ne
 
 #' Disables the integration of the specified product with Security Hub
 #'
+#' @description
 #' Disables the integration of the specified product with Security Hub.
 #' After the integration is disabled, findings from that product are no
 #' longer sent to Security Hub.
@@ -3239,6 +3259,7 @@ securityhub_disable_import_findings_for_product <- function(ProductSubscriptionA
 
 #' Disables a Security Hub administrator account
 #'
+#' @description
 #' Disables a Security Hub administrator account. Can only be called by the
 #' organization management account.
 #'
@@ -3276,6 +3297,7 @@ securityhub_disable_organization_admin_account <- function(AdminAccountId) {
 
 #' Disables Security Hub in your account only in the current Region
 #'
+#' @description
 #' Disables Security Hub in your account only in the current Region. To
 #' disable Security Hub in all Regions, you must submit one request per
 #' Region where you have enabled Security Hub.
@@ -3322,6 +3344,7 @@ securityhub_disable_security_hub <- function() {
 #' Disassociates the current Security Hub member account from the
 #' associated master account
 #'
+#' @description
 #' Disassociates the current Security Hub member account from the
 #' associated master account.
 #' 
@@ -3361,6 +3384,7 @@ securityhub_disassociate_from_master_account <- function() {
 #' Disassociates the specified member accounts from the associated master
 #' account
 #'
+#' @description
 #' Disassociates the specified member accounts from the associated master
 #' account.
 #' 
@@ -3404,6 +3428,7 @@ securityhub_disassociate_members <- function(AccountIds) {
 
 #' Enables the integration of a partner product with Security Hub
 #'
+#' @description
 #' Enables the integration of a partner product with Security Hub.
 #' Integrated products send findings to Security Hub.
 #' 
@@ -3444,6 +3469,7 @@ securityhub_enable_import_findings_for_product <- function(ProductArn) {
 
 #' Designates the Security Hub administrator account for an organization
 #'
+#' @description
 #' Designates the Security Hub administrator account for an organization.
 #' Can only be called by the organization management account.
 #'
@@ -3483,6 +3509,7 @@ securityhub_enable_organization_admin_account <- function(AdminAccountId) {
 #' Enables Security Hub for your account in the current Region or the
 #' Region you specify in the request
 #'
+#' @description
 #' Enables Security Hub for your account in the current Region or the
 #' Region you specify in the request.
 #' 
@@ -3553,6 +3580,7 @@ securityhub_enable_security_hub <- function(Tags = NULL, EnableDefaultStandards 
 
 #' Returns a list of the standards that are currently enabled
 #'
+#' @description
 #' Returns a list of the standards that are currently enabled.
 #'
 #' @usage
@@ -3603,6 +3631,7 @@ securityhub_get_enabled_standards <- function(StandardsSubscriptionArns = NULL, 
 
 #' Returns a list of findings that match the specified criteria
 #'
+#' @description
 #' Returns a list of findings that match the specified criteria.
 #'
 #' @usage
@@ -4218,6 +4247,7 @@ securityhub_get_findings <- function(Filters = NULL, SortCriteria = NULL, NextTo
 #' Lists the results of the Security Hub insight specified by the insight
 #' ARN
 #'
+#' @description
 #' Lists the results of the Security Hub insight specified by the insight
 #' ARN.
 #'
@@ -4255,6 +4285,7 @@ securityhub_get_insight_results <- function(InsightArn) {
 
 #' Lists and describes insights for the specified insight ARNs
 #'
+#' @description
 #' Lists and describes insights for the specified insight ARNs.
 #'
 #' @usage
@@ -4306,6 +4337,7 @@ securityhub_get_insights <- function(InsightArns = NULL, NextToken = NULL, MaxRe
 #' sent to the current member account, not including the currently accepted
 #' invitation
 #'
+#' @description
 #' Returns the count of all Security Hub membership invitations that were
 #' sent to the current member account, not including the currently accepted
 #' invitation.
@@ -4341,6 +4373,7 @@ securityhub_get_invitations_count <- function() {
 #' Provides the details for the Security Hub master account for the current
 #' member account
 #'
+#' @description
 #' Provides the details for the Security Hub master account for the current
 #' member account.
 #' 
@@ -4378,6 +4411,7 @@ securityhub_get_master_account <- function() {
 #' Returns the details for the Security Hub member accounts for the
 #' specified account IDs
 #'
+#' @description
 #' Returns the details for the Security Hub member accounts for the
 #' specified account IDs.
 #' 
@@ -4426,6 +4460,7 @@ securityhub_get_members <- function(AccountIds) {
 #' Invites other AWS accounts to become member accounts for the Security
 #' Hub master account that the invitation is sent from
 #'
+#' @description
 #' Invites other AWS accounts to become member accounts for the Security
 #' Hub master account that the invitation is sent from.
 #' 
@@ -4478,6 +4513,7 @@ securityhub_invite_members <- function(AccountIds) {
 #' Lists all findings-generating solutions (products) that you are
 #' subscribed to receive findings from in Security Hub
 #'
+#' @description
 #' Lists all findings-generating solutions (products) that you are
 #' subscribed to receive findings from in Security Hub.
 #'
@@ -4524,6 +4560,7 @@ securityhub_list_enabled_products_for_import <- function(NextToken = NULL, MaxRe
 #' Lists all Security Hub membership invitations that were sent to the
 #' current AWS account
 #'
+#' @description
 #' Lists all Security Hub membership invitations that were sent to the
 #' current AWS account.
 #' 
@@ -4572,6 +4609,7 @@ securityhub_list_invitations <- function(MaxResults = NULL, NextToken = NULL) {
 #' Lists details about all member accounts for the current Security Hub
 #' master account
 #'
+#' @description
 #' Lists details about all member accounts for the current Security Hub
 #' master account.
 #' 
@@ -4629,6 +4667,7 @@ securityhub_list_members <- function(OnlyAssociated = NULL, MaxResults = NULL, N
 
 #' Lists the Security Hub administrator accounts
 #'
+#' @description
 #' Lists the Security Hub administrator accounts. Can only be called by the
 #' organization management account.
 #'
@@ -4672,6 +4711,7 @@ securityhub_list_organization_admin_accounts <- function(MaxResults = NULL, Next
 
 #' Returns a list of tags associated with a resource
 #'
+#' @description
 #' Returns a list of tags associated with a resource.
 #'
 #' @usage
@@ -4708,6 +4748,7 @@ securityhub_list_tags_for_resource <- function(ResourceArn) {
 
 #' Adds one or more tags to a resource
 #'
+#' @description
 #' Adds one or more tags to a resource.
 #'
 #' @usage
@@ -4748,6 +4789,7 @@ securityhub_tag_resource <- function(ResourceArn, Tags) {
 
 #' Removes one or more tags from a resource
 #'
+#' @description
 #' Removes one or more tags from a resource.
 #'
 #' @usage
@@ -4789,6 +4831,7 @@ securityhub_untag_resource <- function(ResourceArn, TagKeys) {
 #' Updates the name and description of a custom action target in Security
 #' Hub
 #'
+#' @description
 #' Updates the name and description of a custom action target in Security
 #' Hub.
 #'
@@ -4830,6 +4873,7 @@ securityhub_update_action_target <- function(ActionTargetArn, Name = NULL, Descr
 
 #' UpdateFindings is deprecated
 #'
+#' @description
 #' `UpdateFindings` is deprecated. Instead of `UpdateFindings`, use
 #' `BatchUpdateFindings`.
 #' 
@@ -5433,6 +5477,7 @@ securityhub_update_findings <- function(Filters, Note = NULL, RecordState = NULL
 
 #' Updates the Security Hub insight identified by the specified insight ARN
 #'
+#' @description
 #' Updates the Security Hub insight identified by the specified insight
 #' ARN.
 #'
@@ -6030,6 +6075,7 @@ securityhub_update_insight <- function(InsightArn, Name = NULL, Filters = NULL, 
 
 #' Used to update the configuration related to Organizations
 #'
+#' @description
 #' Used to update the configuration related to Organizations. Can only be
 #' called from a Security Hub administrator account.
 #'
@@ -6074,6 +6120,7 @@ securityhub_update_organization_configuration <- function(AutoEnable) {
 
 #' Updates configuration options for Security Hub
 #'
+#' @description
 #' Updates configuration options for Security Hub.
 #'
 #' @usage
@@ -6116,6 +6163,7 @@ securityhub_update_security_hub_configuration <- function(AutoEnableControls = N
 #' Used to control whether an individual security standard control is
 #' enabled or disabled
 #'
+#' @description
 #' Used to control whether an individual security standard control is
 #' enabled or disabled.
 #'

@@ -39,8 +39,7 @@ returned for each repeated request.}
 \description{
 Copies the specified source product to the specified target product or a
 new product.
-}
-\details{
+
 You can copy a product to the same account or another account. You can
 copy a product to the same region or another region.
 

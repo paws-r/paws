@@ -60,8 +60,7 @@ value.}
 }
 \description{
 Describes one or more of your subnets.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html}{Your VPC and Subnets}
 in the \emph{Amazon Virtual Private Cloud User Guide}.
 }

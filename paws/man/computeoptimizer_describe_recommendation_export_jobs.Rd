@@ -29,8 +29,7 @@ returned \code{NextToken} value.}
 }
 \description{
 Describes recommendation export jobs created in the last seven days.
-}
-\details{
+
 Use the \code{ExportAutoScalingGroupRecommendations} or
 \code{ExportEC2InstanceRecommendations} actions to request an export of your
 recommendations. Then use the \code{DescribeRecommendationExportJobs} action

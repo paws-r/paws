@@ -13,8 +13,7 @@ ses_get_template(TemplateName)
 \description{
 Displays the template object (which includes the Subject line, HTML part
 and text part) for the template you specify.
-}
-\details{
+
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{

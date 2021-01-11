@@ -27,8 +27,7 @@ in the real-time log data. You must provide an integer between 1 and
 }
 \description{
 Updates a real-time log configuration.
-}
-\details{
+
 When you update a real-time log configuration, all the parameters are
 updated with the values provided in the request. You cannot update some
 parameters independent of others. To update a real-time log

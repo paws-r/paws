@@ -21,8 +21,7 @@ The operation is eventually consistent; that is, it might take some time
 for Amazon S3 Glacier to completely disable the notifications and you
 might still receive some notifications for a short time after you send
 the delete request.
-}
-\details{
+
 An AWS account has full permission to perform all operations (actions).
 However, AWS Identity and Access Management (IAM) users don't have any
 permissions by default. You must grant them explicit permission to

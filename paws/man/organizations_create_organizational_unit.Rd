@@ -38,8 +38,7 @@ a container for accounts that enables you to organize your accounts to
 apply policies according to your business requirements. The number of
 levels deep that you can nest OUs is dependent upon the policy types
 enabled for that root. For service control policies, the limit is five.
-}
-\details{
+
 For more information about OUs, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html}{Managing Organizational Units}
 in the \emph{AWS Organizations User Guide.}
 

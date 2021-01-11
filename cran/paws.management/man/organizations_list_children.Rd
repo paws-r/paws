@@ -46,8 +46,7 @@ Lists all of the organizational units (OUs) or accounts that are
 contained in the specified parent OU or root. This operation, along with
 ListParents enables you to traverse the tree structure that makes up
 this root.
-}
-\details{
+
 Always check the \code{NextToken} response parameter for a \code{null} value when
 calling a \verb{List*} operation. These operations can occasionally return an
 empty set of results even when there are more results available. The

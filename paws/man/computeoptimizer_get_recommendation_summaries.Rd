@@ -27,8 +27,7 @@ returned \code{NextToken} value.}
 }
 \description{
 Returns the optimization findings for an account.
-}
-\details{
+
 For example, it returns the number of Amazon EC2 instances in an account
 that are under-provisioned, over-provisioned, or optimized. It also
 returns the number of Auto Scaling groups in an account that are not

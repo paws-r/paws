@@ -28,8 +28,7 @@ This operation deletes an Amazon S3 on Outposts bucket's tags. To delete
 an S3 bucket tags, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html}{DeleteBucketTagging}
 in the \emph{Amazon Simple Storage Service API}.
-}
-\details{
+
 Deletes the tags from the Outposts bucket. For more information, see
 \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/S3onOutposts.html}{Using Amazon S3 on Outposts}
 in \emph{Amazon Simple Storage Service Developer Guide}.

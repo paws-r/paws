@@ -12,8 +12,7 @@ workspaces_delete_connection_alias(AliasId)
 \description{
 Deletes the specified connection alias. For more information, see
 \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
-}
-\details{
+
 \strong{If you will no longer be using a fully qualified domain name (FQDN) as
 the registration code for your WorkSpaces users, you must take certain
 precautions to prevent potential security issues.} For more

@@ -19,8 +19,7 @@ provisioned.}
 \description{
 Provisions a public virtual interface to be owned by the specified AWS
 account.
-}
-\details{
+
 The owner of a connection calls this function to provision a public
 virtual interface to be owned by the specified AWS account.
 

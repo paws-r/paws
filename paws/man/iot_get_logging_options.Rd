@@ -8,8 +8,7 @@ iot_get_logging_options()
 }
 \description{
 Gets the logging options.
-}
-\details{
+
 NOTE: use of this command is not recommended. Use \code{GetV2LoggingOptions}
 instead.
 }

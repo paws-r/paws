@@ -13,8 +13,7 @@ resourcegroups_get_tags(Arn)
 \description{
 Returns a list of tags that are associated with a resource group,
 specified by an ARN.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

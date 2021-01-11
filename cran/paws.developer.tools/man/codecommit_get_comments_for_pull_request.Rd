@@ -28,8 +28,7 @@ with a single request.}
 }
 \description{
 Returns comments made on a pull request.
-}
-\details{
+
 Reaction counts might include numbers from user identities who were
 deleted after the reaction was made. For a count of reactions from
 active identities, use GetCommentReactions.

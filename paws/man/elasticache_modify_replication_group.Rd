@@ -140,11 +140,10 @@ server. This parameter must be specified with the
 \item Must be at least 16 characters and no more than 128 characters in
 length
 \item Cannot contain any of the following characters: '/', '"', or '@',
-'\%'
+'\\%'
 }
 
-For more information, see AUTH password at
-\href{https://redis.io/commands/AUTH}{AUTH}.}
+For more information, see AUTH password at AUTH.}
 
 \item{AuthTokenUpdateStrategy}{Specifies the strategy to use to update the AUTH token. This parameter
 must be specified with the \code{auth-token} parameter. Possible values:
@@ -164,8 +163,6 @@ longer can access thereplication group.}
 }
 \description{
 Modifies the settings for a replication group.
-}
-\details{
 \itemize{
 \item \href{https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/scaling-redis-cluster-mode-enabled.html}{Scaling for Amazon ElastiCache for Redis (cluster mode enabled)}
 in the ElastiCache User Guide

@@ -42,8 +42,7 @@ carriage return (\verb{U+000D})
 \description{
 Adds or updates an inline policy document that is embedded in the
 specified IAM group.
-}
-\details{
+
 A user can also have managed policies attached to it. To attach a
 managed policy to a group, use AttachGroupPolicy. To create a new
 managed policy, use CreatePolicy. For information about policies, see

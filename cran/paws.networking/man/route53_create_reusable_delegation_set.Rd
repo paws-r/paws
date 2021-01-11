@@ -23,8 +23,7 @@ reusable, the ID for that hosted zone.}
 Creates a delegation set (a group of four name servers) that can be
 reused by multiple hosted zones that were created by the same AWS
 account.
-}
-\details{
+
 You can also create a reusable delegation set that uses the four name
 servers that are associated with an existing hosted zone. Specify the
 hosted zone ID in the \code{CreateReusableDelegationSet} request.

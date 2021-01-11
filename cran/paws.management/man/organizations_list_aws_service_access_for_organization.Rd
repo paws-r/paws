@@ -31,8 +31,7 @@ Returns a list of the AWS services that you enabled to integrate with
 your organization. After a service on this list creates the resources
 that it requires for the integration, it can perform operations on your
 organization and its accounts.
-}
-\details{
+
 For more information about integrating other services with AWS
 Organizations, including the list of services that currently work with
 Organizations, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html}{Integrating AWS Organizations with Other AWS Services}

@@ -15,8 +15,7 @@ ram_promote_resource_share_created_from_policy(resourceShareArn)
 Resource shares that were created by attaching a policy to a resource
 are visible only to the resource share owner, and the resource share
 cannot be modified in AWS RAM.
-}
-\details{
+
 Use this API action to promote the resource share. When you promote the
 resource share, it becomes:
 \itemize{

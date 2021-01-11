@@ -12,8 +12,7 @@ contains the certificate ID.)}
 }
 \description{
 Cancels a pending transfer for the specified certificate.
-}
-\details{
+
 \strong{Note} Only the transfer source account can use this operation to
 cancel a transfer. (Transfer destinations can use
 RejectCertificateTransfer instead.) After transfer, AWS IoT returns the

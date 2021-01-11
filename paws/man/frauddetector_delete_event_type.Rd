@@ -11,8 +11,7 @@ frauddetector_delete_event_type(name)
 }
 \description{
 Deletes an event type.
-}
-\details{
+
 You cannot delete an event type that is used in a detector or a model.
 
 When you delete an entity type, Amazon Fraud Detector permanently

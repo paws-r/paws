@@ -12,8 +12,6 @@ for. You can use either the alias ID or ARN value.}
 }
 \description{
 Retrieves the fleet ID that an alias is currently pointing to.
-}
-\details{
 \itemize{
 \item CreateAlias
 \item ListAliases

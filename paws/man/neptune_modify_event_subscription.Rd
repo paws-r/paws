@@ -34,8 +34,7 @@ can't modify the source identifiers using this call; to change source
 identifiers for a subscription, use the
 AddSourceIdentifierToSubscription and
 RemoveSourceIdentifierFromSubscription calls.
-}
-\details{
+
 You can see a list of the event categories for a given SourceType by
 using the \strong{DescribeEventCategories} action.
 }

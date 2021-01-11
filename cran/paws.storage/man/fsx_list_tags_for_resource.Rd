@@ -22,8 +22,7 @@ from where the returning call left off.}
 \description{
 Lists tags for an Amazon FSx file systems and backups in the case of
 Amazon FSx for Windows File Server.
-}
-\details{
+
 When retrieving all tags, you can optionally specify the \code{MaxResults}
 parameter to limit the number of tags in a response. If more tags
 remain, Amazon FSx returns a \code{NextToken} value in the response. In this

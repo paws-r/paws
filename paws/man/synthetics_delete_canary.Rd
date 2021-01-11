@@ -13,8 +13,7 @@ your canaries, use
 }
 \description{
 Permanently deletes the specified canary.
-}
-\details{
+
 When you delete a canary, resources used and created by the canary are
 not automatically deleted. After you delete a canary that you do not
 intend to use again, you should also delete the following:

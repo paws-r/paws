@@ -21,8 +21,7 @@ The maximum length is 255 characters.}
 }
 \description{
 Exports a running or stopped instance to an Amazon S3 bucket.
-}
-\details{
+
 For information about the supported operating systems, image formats,
 and known limitations for the types of instances you can export, see
 \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html}{Exporting an Instance as a VM Using VM Import/Export}

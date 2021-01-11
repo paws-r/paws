@@ -49,8 +49,7 @@ specified by \code{MaxRecords}.}
 \description{
 Returns information about provisioned instances, and supports
 pagination.
-}
-\details{
+
 This operation can also return information for Amazon RDS instances and
 Amazon DocDB instances.
 }

@@ -72,8 +72,7 @@ your instances have the latest security updates.}
 }
 \description{
 Updates a specified layer.
-}
-\details{
+
 \strong{Required Permissions}: To use this action, an IAM user must have a
 Manage permissions level for the stack, or an attached policy that
 explicitly grants permissions. For more information on user permissions,

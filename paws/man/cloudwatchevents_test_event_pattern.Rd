@@ -14,8 +14,7 @@ in the \emph{Amazon EventBridge User Guide}.}
 }
 \description{
 Tests whether the specified event pattern matches the provided event.
-}
-\details{
+
 Most services in AWS treat : or / as the same character in Amazon
 Resource Names (ARNs). However, EventBridge uses an exact match in event
 patterns and rules. Be sure to use the correct ARN characters when

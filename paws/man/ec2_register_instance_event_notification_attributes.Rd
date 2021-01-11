@@ -19,8 +19,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Registers a set of tag keys to include in scheduled event notifications
 for your resources.
-}
-\details{
+
 To remove tags, use .
 }
 \section{Request syntax}{

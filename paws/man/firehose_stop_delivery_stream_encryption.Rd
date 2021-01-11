@@ -12,8 +12,7 @@ server-side encryption (SSE).}
 }
 \description{
 Disables server-side encryption (SSE) for the delivery stream.
-}
-\details{
+
 This operation is asynchronous. It returns immediately. When you invoke
 it, Kinesis Data Firehose first sets the encryption status of the stream
 to \code{DISABLING}, and then to \code{DISABLED}. You can continue to read and

@@ -16,8 +16,7 @@ cognitoidentityprovider_admin_remove_user_from_group(UserPoolId,
 }
 \description{
 Removes the specified user from the specified group.
-}
-\details{
+
 Calling this action requires developer credentials.
 }
 \section{Request syntax}{

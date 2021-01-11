@@ -43,8 +43,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Describes one or more of your virtual private gateways.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html}{AWS Site-to-Site VPN} in the
 \emph{AWS Site-to-Site VPN User Guide}.
 }

@@ -100,7 +100,7 @@ Valid value: \code{json}}
 \item{MessageDeduplicationId}{This parameter applies only to FIFO (first-in-first-out) topics. The
 \code{MessageDeduplicationId} can contain up to 128 alphanumeric characters
 (a-z, A-Z, 0-9) and punctuation
-\verb{(!\\"#$\%&amp;\\'()*+,-./:;&lt;=&gt;?@\\\[\\\\\]^_\\`\\\{|\\\}~)}.
+\verb{(!\\"#$\\\%&amp;\\'()*+,-./:;&lt;=&gt;?@\\\[\\\\\]^_\\`\\\{|\\\}~)}.
 
 Every message must have a unique \code{MessageDeduplicationId}, which is a
 token used for deduplication of sent messages. If a message with a
@@ -115,7 +115,7 @@ If the topic has \code{ContentBasedDeduplication} set, the system generates a
 \item{MessageGroupId}{This parameter applies only to FIFO (first-in-first-out) topics. The
 \code{MessageGroupId} can contain up to 128 alphanumeric characters (a-z,
 A-Z, 0-9) and punctuation
-\verb{(!\\"#$\%&amp;\\'()*+,-./:;&lt;=&gt;?@\\\[\\\\\]^_\\`\\\{|\\\}~)}.
+\verb{(!\\"#$\\\%&amp;\\'()*+,-./:;&lt;=&gt;?@\\\[\\\\\]^_\\`\\\{|\\\}~)}.
 
 The \code{MessageGroupId} is a tag that specifies that a message belongs to a
 specific message group. Messages that belong to the same message group
@@ -127,8 +127,7 @@ groups might be processed out of order). Every message must include a
 Sends a message to an Amazon SNS topic, a text message (SMS message)
 directly to a phone number, or a message to a mobile platform endpoint
 (when you specify the \code{TargetArn}).
-}
-\details{
+
 If you send a message to a topic, Amazon SNS delivers the message to
 each endpoint that is subscribed to the topic. The format of the message
 depends on the notification protocol for each subscribed endpoint.

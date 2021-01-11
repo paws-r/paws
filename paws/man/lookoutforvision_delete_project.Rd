@@ -20,8 +20,7 @@ new call to \code{DeleteProject}. An idempotency token is active for 8 hours.}
 }
 \description{
 Deletes an Amazon Lookout for Vision project.
-}
-\details{
+
 To delete a project, you must first delete each version of the model
 associated with the project. To delete a model use the DeleteModel
 operation.

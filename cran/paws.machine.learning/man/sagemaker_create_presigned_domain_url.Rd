@@ -21,8 +21,7 @@ SageMaker Studio, and granted access to all of the Apps and files
 associated with the Domain's Amazon Elastic File System (EFS) volume.
 This operation can only be called when the authentication mode equals
 IAM.
-}
-\details{
+
 The URL that you get from a call to \code{CreatePresignedDomainUrl} is valid
 only for 5 minutes. If you try to use the URL after the 5-minute limit
 expires, you are directed to the AWS console sign-in page.

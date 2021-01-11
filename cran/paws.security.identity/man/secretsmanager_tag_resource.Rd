@@ -47,8 +47,7 @@ the specified secret. Tags are part of the secret's overall metadata,
 and are not associated with any specific version of the secret. This
 operation only appends tags to the existing list of tags. To remove
 tags, you must use UntagResource.
-}
-\details{
+
 The following basic restrictions apply to tags:
 \itemize{
 \item Maximum number of tags per secret—50

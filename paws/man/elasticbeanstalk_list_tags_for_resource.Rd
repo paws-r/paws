@@ -15,8 +15,7 @@ Must be the ARN of an Elastic Beanstalk resource.}
 \description{
 Return the tags applied to an AWS Elastic Beanstalk resource. The
 response contains a list of tag key-value pairs.
-}
-\details{
+
 Elastic Beanstalk supports tagging of all of its resources. For details
 about resource tagging, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/applications-tagging-resources.html}{Tagging Application Resources}.
 }

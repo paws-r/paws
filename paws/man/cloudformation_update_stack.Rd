@@ -212,8 +212,7 @@ following format:
 Updates a stack as specified in the template. After the call completes
 successfully, the stack update starts. You can check the status of the
 stack via the DescribeStacks action.
-}
-\details{
+
 To get a copy of the template for an existing stack, you can use the
 GetTemplate action.
 

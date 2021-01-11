@@ -26,8 +26,7 @@ associated distributions you want to list.}
 \description{
 Gets a list of distributions that have a cache behavior that’s
 associated with the specified real-time log configuration.
-}
-\details{
+
 You can specify the real-time log configuration by its name or its
 Amazon Resource Name (ARN). You must provide at least one. If you
 provide both, CloudFront uses the name to identify the real-time log

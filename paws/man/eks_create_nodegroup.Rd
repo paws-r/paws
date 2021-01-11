@@ -119,8 +119,7 @@ Kubernetes version for the cluster. All node groups are created with the
 latest AMI release version for the respective minor Kubernetes version
 of the cluster, unless you deploy a custom AMI using a launch template.
 For more information about using launch templates, see \href{https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html}{Launch template support}.
-}
-\details{
+
 An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group and
 associated Amazon EC2 instances that are managed by AWS for an Amazon
 EKS cluster. Each node group uses a version of the Amazon EKS optimized

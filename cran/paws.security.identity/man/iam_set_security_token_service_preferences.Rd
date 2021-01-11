@@ -20,8 +20,7 @@ in the \emph{IAM User Guide}.}
 \description{
 Sets the specified version of the global endpoint token as the token
 version used for the AWS account.
-}
-\details{
+
 By default, AWS Security Token Service (STS) is available as a global
 service, and all STS requests go to a single endpoint at
 \verb{https://sts.amazonaws.com}. AWS recommends using Regional STS endpoints

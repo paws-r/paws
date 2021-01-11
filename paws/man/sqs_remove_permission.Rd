@@ -18,8 +18,6 @@ using the \verb{<a>AddPermission</a>} action.}
 \description{
 Revokes any permissions in the queue policy that matches the specified
 \code{Label} parameter.
-}
-\details{
 \itemize{
 \item Only the owner of a queue can remove permissions from it.
 \item Cross-account permissions don't apply to this action. For more

@@ -25,8 +25,7 @@ Exports a private certificate issued by a private certificate authority
 certificate chain, and the encrypted private 2048-bit RSA key associated
 with the public key that is embedded in the certificate. For security,
 you must assign a passphrase for the private key when exporting it.
-}
-\details{
+
 For information about exporting and formatting a certificate using the
 ACM console or CLI, see \href{https://docs.aws.amazon.com/acm/latest/userguide/}{Export a Private Certificate}.
 }

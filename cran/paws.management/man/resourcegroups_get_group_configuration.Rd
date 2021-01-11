@@ -13,8 +13,7 @@ resourcegroups_get_group_configuration(Group)
 \description{
 Returns the service configuration associated with the specified resource
 group. For details about the service configuration syntax, see \href{https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html}{Service configurations for resource groups}.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

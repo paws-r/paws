@@ -23,8 +23,7 @@ list.}
 \description{
 Gets a list of distribution IDs for distributions that have a cache
 behavior that’s associated with the specified cache policy.
-}
-\details{
+
 You can optionally specify the maximum number of items to receive in the
 response. If the total number of items in the list exceeds the maximum
 that you specify, or the default maximum, the response is paginated. To

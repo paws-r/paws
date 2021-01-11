@@ -29,8 +29,7 @@ case, all attributes).}
 }
 \description{
 Detects faces within an image that is provided as input.
-}
-\details{
+
 \code{DetectFaces} detects the 100 largest faces in the image. For each face
 detected, the operation returns face details. These details include a
 bounding box of the face, a confidence value (that the bounding box

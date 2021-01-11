@@ -16,8 +16,7 @@ instance the attachment belongs to.}
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended
 for use outside of the agent.
-}
-\details{
+
 Sent to acknowledge that an attachment changed states.
 }
 \section{Request syntax}{

@@ -37,8 +37,7 @@ permissions without the need to use multiple IAM user roles.}
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.
-}
-\details{
+
 Maps a user or group to the Amazon EMR Studio specified by \code{StudioId},
 and applies a session policy to refine Studio permissions for that user
 or group.

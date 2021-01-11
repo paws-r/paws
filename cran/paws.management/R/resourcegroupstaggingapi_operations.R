@@ -5,6 +5,7 @@ NULL
 
 #' Describes the status of the StartReportCreation operation
 #'
+#' @description
 #' Describes the status of the `StartReportCreation` operation.
 #' 
 #' You can call this operation only from the organization's master account
@@ -41,6 +42,7 @@ resourcegroupstaggingapi_describe_report_creation <- function() {
 #' Returns a table that shows counts of resources that are noncompliant
 #' with their tag policies
 #'
+#' @description
 #' Returns a table that shows counts of resources that are noncompliant
 #' with their tag policies.
 #' 
@@ -142,6 +144,7 @@ resourcegroupstaggingapi_get_compliance_summary <- function(TargetIdFilters = NU
 #' Returns all the tagged or previously tagged resources that are located
 #' in the specified Region for the AWS account
 #'
+#' @description
 #' Returns all the tagged or previously tagged resources that are located
 #' in the specified Region for the AWS account.
 #' 
@@ -310,6 +313,7 @@ resourcegroupstaggingapi_get_resources <- function(PaginationToken = NULL, TagFi
 
 #' Returns all tag keys in the specified Region for the AWS account
 #'
+#' @description
 #' Returns all tag keys in the specified Region for the AWS account.
 #'
 #' @usage
@@ -350,6 +354,7 @@ resourcegroupstaggingapi_get_tag_keys <- function(PaginationToken = NULL) {
 #' Returns all tag values for the specified key in the specified Region for
 #' the AWS account
 #'
+#' @description
 #' Returns all tag values for the specified key in the specified Region for
 #' the AWS account.
 #'
@@ -395,6 +400,7 @@ resourcegroupstaggingapi_get_tag_values <- function(PaginationToken = NULL, Key)
 #' your organization and tells whether each resource is compliant with the
 #' effective tag policy
 #'
+#' @description
 #' Generates a report that lists all tagged resources in accounts across
 #' your organization and tells whether each resource is compliant with the
 #' effective tag policy. Compliance data is refreshed daily.
@@ -446,6 +452,7 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 
 #' Applies one or more tags to the specified resources
 #'
+#' @description
 #' Applies one or more tags to the specified resources. Note the following:
 #' 
 #' -   Not all resources can have tags. For a list of services that support
@@ -515,6 +522,7 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
 
 #' Removes the specified tags from the specified resources
 #'
+#' @description
 #' Removes the specified tags from the specified resources. When you
 #' specify a tag key, the action removes both that key and its associated
 #' value. The operation succeeds even if you attempt to remove tags from a

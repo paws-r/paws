@@ -11,8 +11,7 @@ datasync_cancel_task_execution(TaskExecutionArn)
 }
 \description{
 Cancels execution of a task.
-}
-\details{
+
 When you cancel a task execution, the transfer of some files is abruptly
 interrupted. The contents of files that are transferred to the
 destination might be incomplete or inconsistent with the source files.

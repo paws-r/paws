@@ -38,8 +38,7 @@ operation.}
 Changes the properties of a custom key store. Use the \code{CustomKeyStoreId}
 parameter to identify the custom key store you want to edit. Use the
 remaining parameters to change the properties of the custom key store.
-}
-\details{
+
 You can only update a custom key store that is disconnected. To
 disconnect the custom key store, use DisconnectCustomKeyStore. To
 reconnect the custom key store after the update completes, use

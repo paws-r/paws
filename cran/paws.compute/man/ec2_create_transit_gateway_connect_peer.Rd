@@ -38,8 +38,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a Connect peer for a specified transit gateway Connect
 attachment between a transit gateway and an appliance.
-}
-\details{
+
 The peer address and transit gateway address must be the same IP address
 family (IPv4 or IPv6).
 

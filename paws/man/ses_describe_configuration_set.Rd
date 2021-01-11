@@ -15,8 +15,7 @@ ses_describe_configuration_set(ConfigurationSetName,
 \description{
 Returns the details of the specified configuration set. For information
 about using configuration sets, see the \href{https://docs.aws.amazon.com/ses/latest/DeveloperGuide/monitor-sending-activity.html}{Amazon SES Developer Guide}.
-}
-\details{
+
 You can execute this operation no more than once per second.
 }
 \section{Request syntax}{

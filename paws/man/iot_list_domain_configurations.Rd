@@ -16,8 +16,7 @@ iot_list_domain_configurations(marker, pageSize, serviceType)
 \description{
 Gets a list of domain configurations for the user. This list is sorted
 alphabetically by domain configuration name.
-}
-\details{
+
 The domain configuration feature is in public preview and is subject to
 change.
 }

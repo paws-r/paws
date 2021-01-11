@@ -22,8 +22,7 @@ use the new token returned by that operation.}
 \description{
 Deletes all rule groups that are managed by AWS Firewall Manager for the
 specified web ACL.
-}
-\details{
+
 You can only use this if \code{ManagedByFirewallManager} is false in the
 specified WebACL.
 }

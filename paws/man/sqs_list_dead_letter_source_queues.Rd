@@ -21,8 +21,7 @@ the response.}
 \description{
 Returns a list of your queues that have the \code{RedrivePolicy} queue
 attribute configured with a dead-letter queue.
-}
-\details{
+
 The \code{ListDeadLetterSourceQueues} methods supports pagination. Set
 parameter \code{MaxResults} in the request to specify the maximum number of
 results to be returned in the response. If you do not set \code{MaxResults},

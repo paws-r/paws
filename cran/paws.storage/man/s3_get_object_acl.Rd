@@ -32,8 +32,7 @@ different account, the request will fail with an HTTP
 \description{
 Returns the access control list (ACL) of an object. To use this
 operation, you must have \code{READ_ACP} access to the object.
-}
-\details{
+
 This action is not supported by Amazon S3 on Outposts.
 
 \strong{Versioning}

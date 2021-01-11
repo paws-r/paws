@@ -13,8 +13,7 @@ rekognition_create_project(ProjectName)
 Creates a new Amazon Rekognition Custom Labels project. A project is a
 logical grouping of resources (images, Labels, models) and operations
 (training, evaluation and detection).
-}
-\details{
+
 This operation requires permissions to perform the
 \code{rekognition:CreateProject} action.
 }

@@ -34,8 +34,7 @@ the specified user or group.}
 \description{
 The Amazon EMR Studio APIs are in preview release for Amazon EMR and are
 subject to change.
-}
-\details{
+
 Updates the session policy attached to the user or group for the
 specified Amazon EMR Studio.
 }

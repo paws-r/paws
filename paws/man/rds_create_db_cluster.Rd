@@ -335,8 +335,7 @@ operations for secondary clusters.}
 }
 \description{
 Creates a new Amazon Aurora DB cluster.
-}
-\details{
+
 You can use the \code{ReplicationSourceIdentifier} parameter to create the DB
 cluster as a read replica of another DB cluster or Amazon RDS MySQL DB
 instance. For cross-region replication where the DB cluster identified

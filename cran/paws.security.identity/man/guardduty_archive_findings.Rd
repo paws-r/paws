@@ -16,8 +16,7 @@ findings you want to archive.}
 \description{
 Archives GuardDuty findings that are specified by the list of finding
 IDs.
-}
-\details{
+
 Only the administrator account can archive findings. Member accounts
 don't have permission to archive findings from their accounts.
 }

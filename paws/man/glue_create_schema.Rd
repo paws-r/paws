@@ -71,8 +71,7 @@ pattern.}
 Creates a new schema set and registers the schema definition. Returns an
 error if the schema set already exists without actually registering the
 version.
-}
-\details{
+
 When the schema set is created, a version checkpoint will be set to the
 first version. Compatibility mode "DISABLED" restricts any additional
 schema versions from being added after the first schema version. For all

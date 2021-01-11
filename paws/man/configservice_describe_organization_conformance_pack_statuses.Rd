@@ -23,8 +23,7 @@ next page of results in a paginated response.}
 \description{
 Provides organization conformance pack deployment status for an
 organization.
-}
-\details{
+
 The status is not considered successful until organization conformance
 pack is successfully deployed in all the member accounts with an
 exception of excluded accounts.

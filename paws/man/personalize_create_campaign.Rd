@@ -25,8 +25,7 @@ the
 and
 \href{https://docs.aws.amazon.com/personalize/latest/dg/API_RS_GetPersonalizedRanking.html}{GetPersonalizedRanking}
 APIs, a campaign is specified in the request.
-}
-\details{
+
 \strong{Minimum Provisioned TPS and Auto-Scaling}
 
 A transaction is a single \code{GetRecommendations} or
@@ -36,7 +35,7 @@ provisioned TPS (\code{minProvisionedTPS}) specifies the baseline throughput
 provisioned by Amazon Personalize, and thus, the minimum billing charge.
 If your TPS increases beyond \code{minProvisionedTPS}, Amazon Personalize
 auto-scales the provisioned capacity up and down, but never below
-\code{minProvisionedTPS}, to maintain a 70\% utilization. There's a short time
+\code{minProvisionedTPS}, to maintain a 70\\% utilization. There's a short time
 delay while the capacity is increased that might cause loss of
 transactions. It's recommended to start with a low \code{minProvisionedTPS},
 track your usage using Amazon CloudWatch metrics, and then increase the

@@ -12,8 +12,7 @@ information for.}
 }
 \description{
 Describes the state machine associated with a specific execution.
-}
-\details{
+
 This operation is eventually consistent. The results are best effort and
 may not reflect very recent updates and changes.
 

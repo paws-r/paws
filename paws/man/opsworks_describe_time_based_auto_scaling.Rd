@@ -12,8 +12,7 @@ opsworks_describe_time_based_auto_scaling(InstanceIds)
 \description{
 Describes time-based auto scaling configurations for specified
 instances.
-}
-\details{
+
 You must specify at least one of the parameters.
 
 \strong{Required Permissions}: To use this action, an IAM user must have a

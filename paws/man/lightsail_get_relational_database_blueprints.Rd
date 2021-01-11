@@ -17,8 +17,7 @@ specify as the page token in a subsequent request.}
 \description{
 Returns a list of available database blueprints in Amazon Lightsail. A
 blueprint describes the major engine version of a database.
-}
-\details{
+
 You can use a blueprint ID to create a new database that runs a specific
 database engine.
 }

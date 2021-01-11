@@ -57,8 +57,7 @@ You can apply the policy at the function level, or specify a qualifier
 to restrict access to a single version or alias. If you use a qualifier,
 the invoker must use the full Amazon Resource Name (ARN) of that version
 or alias to invoke the function.
-}
-\details{
+
 To grant permission to another account, specify the account ID as the
 \code{Principal}. For AWS services, the principal is a domain-style
 identifier defined by the service, like \code{s3.amazonaws.com} or

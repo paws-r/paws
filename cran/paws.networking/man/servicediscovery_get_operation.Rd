@@ -13,8 +13,7 @@ servicediscovery_get_operation(OperationId)
 \description{
 Gets information about any operation that returns an operation ID in the
 response, such as a \code{CreateService} request.
-}
-\details{
+
 To get a list of operations that match specified criteria, see
 \href{https://docs.aws.amazon.com/cloud-map/latest/api/API_ListOperations.html}{ListOperations}.
 }

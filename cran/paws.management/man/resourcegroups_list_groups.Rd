@@ -42,8 +42,7 @@ output should continue from.}
 }
 \description{
 Returns a list of existing resource groups in your account.
-}
-\details{
+
 \strong{Minimum permissions}
 
 To run this command, you must have the following permissions:

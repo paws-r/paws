@@ -6,6 +6,7 @@ NULL
 #' The BatchCreateTableRows API allows you to create one or more rows at
 #' the end of a table in a workbook
 #'
+#' @description
 #' The BatchCreateTableRows API allows you to create one or more rows at
 #' the end of a table in a workbook. The API allows you to specify the
 #' values to set in some or all of the columns in the new rows.
@@ -89,6 +90,7 @@ honeycode_batch_create_table_rows <- function(workbookId, tableId, rowsToCreate,
 #' The BatchDeleteTableRows API allows you to delete one or more rows from
 #' a table in a workbook
 #'
+#' @description
 #' The BatchDeleteTableRows API allows you to delete one or more rows from
 #' a table in a workbook. You need to specify the ids of the rows that you
 #' want to delete from the table.
@@ -156,6 +158,7 @@ honeycode_batch_delete_table_rows <- function(workbookId, tableId, rowIds, clien
 #' The BatchUpdateTableRows API allows you to update one or more rows in a
 #' table in a workbook
 #'
+#' @description
 #' The BatchUpdateTableRows API allows you to update one or more rows in a
 #' table in a workbook.
 #' 
@@ -238,6 +241,7 @@ honeycode_batch_update_table_rows <- function(workbookId, tableId, rowsToUpdate,
 #' The BatchUpsertTableRows API allows you to upsert one or more rows in a
 #' table
 #'
+#' @description
 #' The BatchUpsertTableRows API allows you to upsert one or more rows in a
 #' table. The upsert operation takes a filter expression as input and
 #' evaluates it to find matching rows on the destination table. If matching
@@ -330,6 +334,7 @@ honeycode_batch_upsert_table_rows <- function(workbookId, tableId, rowsToUpsert,
 #' The DescribeTableDataImportJob API allows you to retrieve the status and
 #' details of a table data import job
 #'
+#' @description
 #' The DescribeTableDataImportJob API allows you to retrieve the status and
 #' details of a table data import job.
 #'
@@ -382,6 +387,7 @@ honeycode_describe_table_data_import_job <- function(workbookId, tableId, jobId)
 #' The GetScreenData API allows retrieval of data from a screen in a
 #' Honeycode app
 #'
+#' @description
 #' The GetScreenData API allows retrieval of data from a screen in a
 #' Honeycode app. The API allows setting local variables in the screen to
 #' filter, sort or otherwise affect what will be displayed on the screen.
@@ -448,6 +454,7 @@ honeycode_get_screen_data <- function(workbookId, appId, screenId, variables = N
 #' The InvokeScreenAutomation API allows invoking an action defined in a
 #' screen in a Honeycode app
 #'
+#' @description
 #' The InvokeScreenAutomation API allows invoking an action defined in a
 #' screen in a Honeycode app. The API allows setting local variables, which
 #' can then be used in the automation being invoked. This allows automating
@@ -520,6 +527,7 @@ honeycode_invoke_screen_automation <- function(workbookId, appId, screenId, scre
 #' The ListTableColumns API allows you to retrieve a list of all the
 #' columns in a table in a workbook
 #'
+#' @description
 #' The ListTableColumns API allows you to retrieve a list of all the
 #' columns in a table in a workbook.
 #'
@@ -573,6 +581,7 @@ honeycode_list_table_columns <- function(workbookId, tableId, nextToken = NULL) 
 #' The ListTableRows API allows you to retrieve a list of all the rows in a
 #' table in a workbook
 #'
+#' @description
 #' The ListTableRows API allows you to retrieve a list of all the rows in a
 #' table in a workbook.
 #'
@@ -635,6 +644,7 @@ honeycode_list_table_rows <- function(workbookId, tableId, rowIds = NULL, maxRes
 #' The ListTables API allows you to retrieve a list of all the tables in a
 #' workbook
 #'
+#' @description
 #' The ListTables API allows you to retrieve a list of all the tables in a
 #' workbook.
 #'
@@ -684,6 +694,7 @@ honeycode_list_tables <- function(workbookId, maxResults = NULL, nextToken = NUL
 #' The QueryTableRows API allows you to use a filter formula to query for
 #' specific rows in a table
 #'
+#' @description
 #' The QueryTableRows API allows you to use a filter formula to query for
 #' specific rows in a table.
 #'
@@ -745,6 +756,7 @@ honeycode_query_table_rows <- function(workbookId, tableId, filterFormula, maxRe
 #' The StartTableDataImportJob API allows you to start an import job on a
 #' table
 #'
+#' @description
 #' The StartTableDataImportJob API allows you to start an import job on a
 #' table. This API will only return the id of the job that was started. To
 #' find out the status of the import request, you need to call the

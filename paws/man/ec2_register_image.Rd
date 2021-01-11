@@ -69,8 +69,7 @@ Registers an AMI. When you're creating an AMI, this is the final step
 you must complete before you can launch an instance from the AMI. For
 more information about creating AMIs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami}{Creating your own AMIs}
 in the \emph{Amazon Elastic Compute Cloud User Guide}.
-}
-\details{
+
 For Amazon EBS-backed instances, CreateImage creates and registers the
 AMI in a single request, so you don't have to register the AMI yourself.
 

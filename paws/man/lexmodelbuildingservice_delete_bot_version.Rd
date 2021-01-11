@@ -16,8 +16,7 @@ operation.}
 \description{
 Deletes a specific version of a bot. To delete all versions of a bot,
 use the DeleteBot operation.
-}
-\details{
+
 This operation requires permissions for the \code{lex:DeleteBotVersion}
 action.
 }

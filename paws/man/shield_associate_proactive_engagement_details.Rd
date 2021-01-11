@@ -24,8 +24,7 @@ then provide it here.}
 Initializes proactive engagement and sets the list of contacts for the
 DDoS Response Team (DRT) to use. You must provide at least one phone
 number in the emergency contact list.
-}
-\details{
+
 After you have initialized proactive engagement using this call, to
 disable or enable proactive engagement, use the calls
 \code{DisableProactiveEngagement} and \code{EnableProactiveEngagement}.

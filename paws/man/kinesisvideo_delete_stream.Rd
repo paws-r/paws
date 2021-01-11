@@ -19,8 +19,7 @@ stream.}
 }
 \description{
 Deletes a Kinesis video stream and the data contained in the stream.
-}
-\details{
+
 This method marks the stream for deletion, and makes the data in the
 stream inaccessible immediately.
 

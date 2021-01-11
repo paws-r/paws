@@ -45,8 +45,6 @@ as by purpose, owner, environment, or other criteria.}
 Creates a new identity pool. The identity pool is a store of user
 identity information that is specific to your AWS account. The keys for
 \code{SupportedLoginProviders} are as follows:
-}
-\details{
 \itemize{
 \item Facebook: \code{graph.facebook.com}
 \item Google: \code{accounts.google.com}

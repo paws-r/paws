@@ -5,6 +5,7 @@ NULL
 
 #' Associates a role with a group
 #'
+#' @description
 #' Associates a role with a group. Your Greengrass core will use the role to access AWS cloud services. The role's permissions should allow Greengrass core Lambda functions to perform actions against the cloud.
 #'
 #' @usage
@@ -43,6 +44,7 @@ greengrass_associate_role_to_group <- function(GroupId, RoleArn) {
 
 #' Associates a role with your account
 #'
+#' @description
 #' Associates a role with your account. AWS IoT Greengrass will use the role to access your Lambda functions and AWS IoT resources. This is necessary for deployments to succeed. The role must have at least minimum permissions in the policy ''AWSGreengrassResourceAccessRolePolicy''.
 #'
 #' @usage
@@ -79,6 +81,7 @@ greengrass_associate_service_role_to_account <- function(RoleArn) {
 
 #' Creates a connector definition
 #'
+#' @description
 #' Creates a connector definition. You may provide the initial version of the connector definition now or use ''CreateConnectorDefinitionVersion'' at a later time.
 #'
 #' @usage
@@ -135,6 +138,7 @@ greengrass_create_connector_definition <- function(AmznClientToken = NULL, Initi
 #' Creates a version of a connector definition which has already been
 #' defined
 #'
+#' @description
 #' Creates a version of a connector definition which has already been defined.
 #'
 #' @usage
@@ -184,6 +188,7 @@ greengrass_create_connector_definition_version <- function(AmznClientToken = NUL
 
 #' Creates a core definition
 #'
+#' @description
 #' Creates a core definition. You may provide the initial version of the core definition now or use ''CreateCoreDefinitionVersion'' at a later time. Greengrass groups must each contain exactly one Greengrass core.
 #'
 #' @usage
@@ -238,6 +243,7 @@ greengrass_create_core_definition <- function(AmznClientToken = NULL, InitialVer
 
 #' Creates a version of a core definition that has already been defined
 #'
+#' @description
 #' Creates a version of a core definition that has already been defined. Greengrass groups must each contain exactly one Greengrass core.
 #'
 #' @usage
@@ -286,6 +292,7 @@ greengrass_create_core_definition_version <- function(AmznClientToken = NULL, Co
 
 #' Creates a deployment
 #'
+#' @description
 #' Creates a deployment. ''CreateDeployment'' requests are idempotent with respect to the ''X-Amzn-Client-Token'' token and the request parameters.
 #'
 #' @usage
@@ -331,6 +338,7 @@ greengrass_create_deployment <- function(AmznClientToken = NULL, DeploymentId = 
 
 #' Creates a device definition
 #'
+#' @description
 #' Creates a device definition. You may provide the initial version of the device definition now or use ''CreateDeviceDefinitionVersion'' at a later time.
 #'
 #' @usage
@@ -385,6 +393,7 @@ greengrass_create_device_definition <- function(AmznClientToken = NULL, InitialV
 
 #' Creates a version of a device definition that has already been defined
 #'
+#' @description
 #' Creates a version of a device definition that has already been defined.
 #'
 #' @usage
@@ -434,6 +443,7 @@ greengrass_create_device_definition_version <- function(AmznClientToken = NULL, 
 #' Creates a Lambda function definition which contains a list of Lambda
 #' functions and their configurations to be used in a group
 #'
+#' @description
 #' Creates a Lambda function definition which contains a list of Lambda functions and their configurations to be used in a group. You can create an initial version of the definition by providing a list of Lambda functions and their configurations now, or use ''CreateFunctionDefinitionVersion'' later.
 #'
 #' @usage
@@ -523,6 +533,7 @@ greengrass_create_function_definition <- function(AmznClientToken = NULL, Initia
 #' Creates a version of a Lambda function definition that has already been
 #' defined
 #'
+#' @description
 #' Creates a version of a Lambda function definition that has already been defined.
 #'
 #' @usage
@@ -606,6 +617,7 @@ greengrass_create_function_definition_version <- function(AmznClientToken = NULL
 
 #' Creates a group
 #'
+#' @description
 #' Creates a group. You may provide the initial version of the group or use ''CreateGroupVersion'' at a later time. Tip: You can use the ''gg_group_setup'' package (https://github.com/awslabs/aws-greengrass-group-setup) as a library or command-line application to create and deploy Greengrass groups.
 #'
 #' @usage
@@ -658,6 +670,7 @@ greengrass_create_group <- function(AmznClientToken = NULL, InitialVersion = NUL
 
 #' Creates a CA for the group
 #'
+#' @description
 #' Creates a CA for the group. If a CA already exists, it will rotate the existing CA.
 #'
 #' @usage
@@ -696,6 +709,7 @@ greengrass_create_group_certificate_authority <- function(AmznClientToken = NULL
 
 #' Creates a version of a group which has already been defined
 #'
+#' @description
 #' Creates a version of a group which has already been defined.
 #'
 #' @usage
@@ -752,6 +766,7 @@ greengrass_create_group_version <- function(AmznClientToken = NULL, ConnectorDef
 
 #' Creates a logger definition
 #'
+#' @description
 #' Creates a logger definition. You may provide the initial version of the logger definition now or use ''CreateLoggerDefinitionVersion'' at a later time.
 #'
 #' @usage
@@ -807,6 +822,7 @@ greengrass_create_logger_definition <- function(AmznClientToken = NULL, InitialV
 
 #' Creates a version of a logger definition that has already been defined
 #'
+#' @description
 #' Creates a version of a logger definition that has already been defined.
 #'
 #' @usage
@@ -857,6 +873,7 @@ greengrass_create_logger_definition_version <- function(AmznClientToken = NULL, 
 #' Creates a resource definition which contains a list of resources to be
 #' used in a group
 #'
+#' @description
 #' Creates a resource definition which contains a list of resources to be used in a group. You can create an initial version of the definition by providing a list of resources now, or use ''CreateResourceDefinitionVersion'' later.
 #'
 #' @usage
@@ -948,6 +965,7 @@ greengrass_create_resource_definition <- function(AmznClientToken = NULL, Initia
 
 #' Creates a version of a resource definition that has already been defined
 #'
+#' @description
 #' Creates a version of a resource definition that has already been defined.
 #'
 #' @usage
@@ -1034,6 +1052,7 @@ greengrass_create_resource_definition_version <- function(AmznClientToken = NULL
 #' Creates a software update for a core or group of cores (specified as an
 #' IoT thing group
 #'
+#' @description
 #' Creates a software update for a core or group of cores (specified as an IoT thing group.) Use this to update the OTA Agent as well as the Greengrass core software. It makes use of the IoT Jobs feature which provides additional commands to manage a Greengrass core software update job.
 #'
 #' @usage
@@ -1086,6 +1105,7 @@ greengrass_create_software_update_job <- function(AmznClientToken = NULL, S3UrlS
 
 #' Creates a subscription definition
 #'
+#' @description
 #' Creates a subscription definition. You may provide the initial version of the subscription definition now or use ''CreateSubscriptionDefinitionVersion'' at a later time.
 #'
 #' @usage
@@ -1141,6 +1161,7 @@ greengrass_create_subscription_definition <- function(AmznClientToken = NULL, In
 #' Creates a version of a subscription definition which has already been
 #' defined
 #'
+#' @description
 #' Creates a version of a subscription definition which has already been defined.
 #'
 #' @usage
@@ -1189,6 +1210,7 @@ greengrass_create_subscription_definition_version <- function(AmznClientToken = 
 
 #' Deletes a connector definition
 #'
+#' @description
 #' Deletes a connector definition.
 #'
 #' @usage
@@ -1225,6 +1247,7 @@ greengrass_delete_connector_definition <- function(ConnectorDefinitionId) {
 
 #' Deletes a core definition
 #'
+#' @description
 #' Deletes a core definition.
 #'
 #' @usage
@@ -1261,6 +1284,7 @@ greengrass_delete_core_definition <- function(CoreDefinitionId) {
 
 #' Deletes a device definition
 #'
+#' @description
 #' Deletes a device definition.
 #'
 #' @usage
@@ -1297,6 +1321,7 @@ greengrass_delete_device_definition <- function(DeviceDefinitionId) {
 
 #' Deletes a Lambda function definition
 #'
+#' @description
 #' Deletes a Lambda function definition.
 #'
 #' @usage
@@ -1333,6 +1358,7 @@ greengrass_delete_function_definition <- function(FunctionDefinitionId) {
 
 #' Deletes a group
 #'
+#' @description
 #' Deletes a group.
 #'
 #' @usage
@@ -1369,6 +1395,7 @@ greengrass_delete_group <- function(GroupId) {
 
 #' Deletes a logger definition
 #'
+#' @description
 #' Deletes a logger definition.
 #'
 #' @usage
@@ -1405,6 +1432,7 @@ greengrass_delete_logger_definition <- function(LoggerDefinitionId) {
 
 #' Deletes a resource definition
 #'
+#' @description
 #' Deletes a resource definition.
 #'
 #' @usage
@@ -1441,6 +1469,7 @@ greengrass_delete_resource_definition <- function(ResourceDefinitionId) {
 
 #' Deletes a subscription definition
 #'
+#' @description
 #' Deletes a subscription definition.
 #'
 #' @usage
@@ -1477,6 +1506,7 @@ greengrass_delete_subscription_definition <- function(SubscriptionDefinitionId) 
 
 #' Disassociates the role from a group
 #'
+#' @description
 #' Disassociates the role from a group.
 #'
 #' @usage
@@ -1513,6 +1543,7 @@ greengrass_disassociate_role_from_group <- function(GroupId) {
 
 #' Disassociates the service role from your account
 #'
+#' @description
 #' Disassociates the service role from your account. Without a service role, deployments will not work.
 #'
 #' @usage
@@ -1545,6 +1576,7 @@ greengrass_disassociate_service_role_from_account <- function() {
 
 #' Retrieves the role associated with a particular group
 #'
+#' @description
 #' Retrieves the role associated with a particular group.
 #'
 #' @usage
@@ -1581,6 +1613,7 @@ greengrass_get_associated_role <- function(GroupId) {
 
 #' Returns the status of a bulk deployment
 #'
+#' @description
 #' Returns the status of a bulk deployment.
 #'
 #' @usage
@@ -1617,6 +1650,7 @@ greengrass_get_bulk_deployment_status <- function(BulkDeploymentId) {
 
 #' Retrieves the connectivity information for a core
 #'
+#' @description
 #' Retrieves the connectivity information for a core.
 #'
 #' @usage
@@ -1653,6 +1687,7 @@ greengrass_get_connectivity_info <- function(ThingName) {
 
 #' Retrieves information about a connector definition
 #'
+#' @description
 #' Retrieves information about a connector definition.
 #'
 #' @usage
@@ -1690,6 +1725,7 @@ greengrass_get_connector_definition <- function(ConnectorDefinitionId) {
 #' Retrieves information about a connector definition version, including
 #' the connectors that the version contains
 #'
+#' @description
 #' Retrieves information about a connector definition version, including the connectors that the version contains. Connectors are prebuilt modules that interact with local infrastructure, device protocols, AWS, and other cloud services.
 #'
 #' @usage
@@ -1731,6 +1767,7 @@ greengrass_get_connector_definition_version <- function(ConnectorDefinitionId, C
 
 #' Retrieves information about a core definition version
 #'
+#' @description
 #' Retrieves information about a core definition version.
 #'
 #' @usage
@@ -1767,6 +1804,7 @@ greengrass_get_core_definition <- function(CoreDefinitionId) {
 
 #' Retrieves information about a core definition version
 #'
+#' @description
 #' Retrieves information about a core definition version.
 #'
 #' @usage
@@ -1806,6 +1844,7 @@ greengrass_get_core_definition_version <- function(CoreDefinitionId, CoreDefinit
 
 #' Returns the status of a deployment
 #'
+#' @description
 #' Returns the status of a deployment.
 #'
 #' @usage
@@ -1844,6 +1883,7 @@ greengrass_get_deployment_status <- function(DeploymentId, GroupId) {
 
 #' Retrieves information about a device definition
 #'
+#' @description
 #' Retrieves information about a device definition.
 #'
 #' @usage
@@ -1880,6 +1920,7 @@ greengrass_get_device_definition <- function(DeviceDefinitionId) {
 
 #' Retrieves information about a device definition version
 #'
+#' @description
 #' Retrieves information about a device definition version.
 #'
 #' @usage
@@ -1922,6 +1963,7 @@ greengrass_get_device_definition_version <- function(DeviceDefinitionId, DeviceD
 #' Retrieves information about a Lambda function definition, including its
 #' creation time and latest version
 #'
+#' @description
 #' Retrieves information about a Lambda function definition, including its creation time and latest version.
 #'
 #' @usage
@@ -1960,6 +2002,7 @@ greengrass_get_function_definition <- function(FunctionDefinitionId) {
 #' including which Lambda functions are included in the version and their
 #' configurations
 #'
+#' @description
 #' Retrieves information about a Lambda function definition version, including which Lambda functions are included in the version and their configurations.
 #'
 #' @usage
@@ -2001,6 +2044,7 @@ greengrass_get_function_definition_version <- function(FunctionDefinitionId, Fun
 
 #' Retrieves information about a group
 #'
+#' @description
 #' Retrieves information about a group.
 #'
 #' @usage
@@ -2037,6 +2081,7 @@ greengrass_get_group <- function(GroupId) {
 
 #' Retreives the CA associated with a group
 #'
+#' @description
 #' Retreives the CA associated with a group. Returns the public key of the CA.
 #'
 #' @usage
@@ -2076,6 +2121,7 @@ greengrass_get_group_certificate_authority <- function(CertificateAuthorityId, G
 
 #' Retrieves the current configuration for the CA used by the group
 #'
+#' @description
 #' Retrieves the current configuration for the CA used by the group.
 #'
 #' @usage
@@ -2112,6 +2158,7 @@ greengrass_get_group_certificate_configuration <- function(GroupId) {
 
 #' Retrieves information about a group version
 #'
+#' @description
 #' Retrieves information about a group version.
 #'
 #' @usage
@@ -2150,6 +2197,7 @@ greengrass_get_group_version <- function(GroupId, GroupVersionId) {
 
 #' Retrieves information about a logger definition
 #'
+#' @description
 #' Retrieves information about a logger definition.
 #'
 #' @usage
@@ -2186,6 +2234,7 @@ greengrass_get_logger_definition <- function(LoggerDefinitionId) {
 
 #' Retrieves information about a logger definition version
 #'
+#' @description
 #' Retrieves information about a logger definition version.
 #'
 #' @usage
@@ -2228,6 +2277,7 @@ greengrass_get_logger_definition_version <- function(LoggerDefinitionId, LoggerD
 #' Retrieves information about a resource definition, including its
 #' creation time and latest version
 #'
+#' @description
 #' Retrieves information about a resource definition, including its creation time and latest version.
 #'
 #' @usage
@@ -2265,6 +2315,7 @@ greengrass_get_resource_definition <- function(ResourceDefinitionId) {
 #' Retrieves information about a resource definition version, including
 #' which resources are included in the version
 #'
+#' @description
 #' Retrieves information about a resource definition version, including which resources are included in the version.
 #'
 #' @usage
@@ -2304,6 +2355,7 @@ greengrass_get_resource_definition_version <- function(ResourceDefinitionId, Res
 
 #' Retrieves the service role that is attached to your account
 #'
+#' @description
 #' Retrieves the service role that is attached to your account.
 #'
 #' @usage
@@ -2336,6 +2388,7 @@ greengrass_get_service_role_for_account <- function() {
 
 #' Retrieves information about a subscription definition
 #'
+#' @description
 #' Retrieves information about a subscription definition.
 #'
 #' @usage
@@ -2372,6 +2425,7 @@ greengrass_get_subscription_definition <- function(SubscriptionDefinitionId) {
 
 #' Retrieves information about a subscription definition version
 #'
+#' @description
 #' Retrieves information about a subscription definition version.
 #'
 #' @usage
@@ -2413,6 +2467,7 @@ greengrass_get_subscription_definition_version <- function(NextToken = NULL, Sub
 
 #' Get the runtime configuration of a thing
 #'
+#' @description
 #' Get the runtime configuration of a thing.
 #'
 #' @usage
@@ -2450,6 +2505,7 @@ greengrass_get_thing_runtime_configuration <- function(ThingName) {
 #' Gets a paginated list of the deployments that have been started in a
 #' bulk deployment operation, and their current deployment status
 #'
+#' @description
 #' Gets a paginated list of the deployments that have been started in a bulk deployment operation, and their current deployment status.
 #'
 #' @usage
@@ -2491,6 +2547,7 @@ greengrass_list_bulk_deployment_detailed_reports <- function(BulkDeploymentId, M
 
 #' Returns a list of bulk deployments
 #'
+#' @description
 #' Returns a list of bulk deployments.
 #'
 #' @usage
@@ -2530,6 +2587,7 @@ greengrass_list_bulk_deployments <- function(MaxResults = NULL, NextToken = NULL
 #' Lists the versions of a connector definition, which are containers for
 #' connectors
 #'
+#' @description
 #' Lists the versions of a connector definition, which are containers for connectors. Connectors run on the Greengrass core and contain built-in integration with local infrastructure, device protocols, AWS, and other cloud services.
 #'
 #' @usage
@@ -2571,6 +2629,7 @@ greengrass_list_connector_definition_versions <- function(ConnectorDefinitionId,
 
 #' Retrieves a list of connector definitions
 #'
+#' @description
 #' Retrieves a list of connector definitions.
 #'
 #' @usage
@@ -2609,6 +2668,7 @@ greengrass_list_connector_definitions <- function(MaxResults = NULL, NextToken =
 
 #' Lists the versions of a core definition
 #'
+#' @description
 #' Lists the versions of a core definition.
 #'
 #' @usage
@@ -2650,6 +2710,7 @@ greengrass_list_core_definition_versions <- function(CoreDefinitionId, MaxResult
 
 #' Retrieves a list of core definitions
 #'
+#' @description
 #' Retrieves a list of core definitions.
 #'
 #' @usage
@@ -2688,6 +2749,7 @@ greengrass_list_core_definitions <- function(MaxResults = NULL, NextToken = NULL
 
 #' Returns a history of deployments for the group
 #'
+#' @description
 #' Returns a history of deployments for the group.
 #'
 #' @usage
@@ -2728,6 +2790,7 @@ greengrass_list_deployments <- function(GroupId, MaxResults = NULL, NextToken = 
 
 #' Lists the versions of a device definition
 #'
+#' @description
 #' Lists the versions of a device definition.
 #'
 #' @usage
@@ -2769,6 +2832,7 @@ greengrass_list_device_definition_versions <- function(DeviceDefinitionId, MaxRe
 
 #' Retrieves a list of device definitions
 #'
+#' @description
 #' Retrieves a list of device definitions.
 #'
 #' @usage
@@ -2807,6 +2871,7 @@ greengrass_list_device_definitions <- function(MaxResults = NULL, NextToken = NU
 
 #' Lists the versions of a Lambda function definition
 #'
+#' @description
 #' Lists the versions of a Lambda function definition.
 #'
 #' @usage
@@ -2848,6 +2913,7 @@ greengrass_list_function_definition_versions <- function(FunctionDefinitionId, M
 
 #' Retrieves a list of Lambda function definitions
 #'
+#' @description
 #' Retrieves a list of Lambda function definitions.
 #'
 #' @usage
@@ -2886,6 +2952,7 @@ greengrass_list_function_definitions <- function(MaxResults = NULL, NextToken = 
 
 #' Retrieves the current CAs for a group
 #'
+#' @description
 #' Retrieves the current CAs for a group.
 #'
 #' @usage
@@ -2922,6 +2989,7 @@ greengrass_list_group_certificate_authorities <- function(GroupId) {
 
 #' Lists the versions of a group
 #'
+#' @description
 #' Lists the versions of a group.
 #'
 #' @usage
@@ -2962,6 +3030,7 @@ greengrass_list_group_versions <- function(GroupId, MaxResults = NULL, NextToken
 
 #' Retrieves a list of groups
 #'
+#' @description
 #' Retrieves a list of groups.
 #'
 #' @usage
@@ -3000,6 +3069,7 @@ greengrass_list_groups <- function(MaxResults = NULL, NextToken = NULL) {
 
 #' Lists the versions of a logger definition
 #'
+#' @description
 #' Lists the versions of a logger definition.
 #'
 #' @usage
@@ -3041,6 +3111,7 @@ greengrass_list_logger_definition_versions <- function(LoggerDefinitionId, MaxRe
 
 #' Retrieves a list of logger definitions
 #'
+#' @description
 #' Retrieves a list of logger definitions.
 #'
 #' @usage
@@ -3079,6 +3150,7 @@ greengrass_list_logger_definitions <- function(MaxResults = NULL, NextToken = NU
 
 #' Lists the versions of a resource definition
 #'
+#' @description
 #' Lists the versions of a resource definition.
 #'
 #' @usage
@@ -3120,6 +3192,7 @@ greengrass_list_resource_definition_versions <- function(MaxResults = NULL, Next
 
 #' Retrieves a list of resource definitions
 #'
+#' @description
 #' Retrieves a list of resource definitions.
 #'
 #' @usage
@@ -3158,6 +3231,7 @@ greengrass_list_resource_definitions <- function(MaxResults = NULL, NextToken = 
 
 #' Lists the versions of a subscription definition
 #'
+#' @description
 #' Lists the versions of a subscription definition.
 #'
 #' @usage
@@ -3199,6 +3273,7 @@ greengrass_list_subscription_definition_versions <- function(MaxResults = NULL, 
 
 #' Retrieves a list of subscription definitions
 #'
+#' @description
 #' Retrieves a list of subscription definitions.
 #'
 #' @usage
@@ -3237,6 +3312,7 @@ greengrass_list_subscription_definitions <- function(MaxResults = NULL, NextToke
 
 #' Retrieves a list of resource tags for a resource arn
 #'
+#' @description
 #' Retrieves a list of resource tags for a resource arn.
 #'
 #' @usage
@@ -3273,6 +3349,7 @@ greengrass_list_tags_for_resource <- function(ResourceArn) {
 
 #' Resets a group's deployments
 #'
+#' @description
 #' Resets a group's deployments.
 #'
 #' @usage
@@ -3313,6 +3390,7 @@ greengrass_reset_deployments <- function(AmznClientToken = NULL, Force = NULL, G
 
 #' Deploys multiple groups in one operation
 #'
+#' @description
 #' Deploys multiple groups in one operation. This action starts the bulk deployment of a specified set of group versions. Each group version deployment will be triggered with an adaptive rate that has a fixed upper limit. We recommend that you include an ''X-Amzn-Client-Token'' token in every ''StartBulkDeployment'' request. These requests are idempotent with respect to the token and the request parameters.
 #'
 #' @usage
@@ -3358,6 +3436,7 @@ greengrass_start_bulk_deployment <- function(AmznClientToken = NULL, ExecutionRo
 
 #' Stops the execution of a bulk deployment
 #'
+#' @description
 #' Stops the execution of a bulk deployment. This action returns a status of ''Stopping'' until the deployment is stopped. You cannot start a new bulk deployment while a previous deployment is in the ''Stopping'' state. This action doesn't rollback completed deployments or cancel pending deployments.
 #'
 #' @usage
@@ -3394,6 +3473,7 @@ greengrass_stop_bulk_deployment <- function(BulkDeploymentId) {
 
 #' Adds tags to a Greengrass resource
 #'
+#' @description
 #' Adds tags to a Greengrass resource. Valid resources are 'Group', 'ConnectorDefinition', 'CoreDefinition', 'DeviceDefinition', 'FunctionDefinition', 'LoggerDefinition', 'SubscriptionDefinition', 'ResourceDefinition', and 'BulkDeployment'.
 #'
 #' @usage
@@ -3434,6 +3514,7 @@ greengrass_tag_resource <- function(ResourceArn, tags = NULL) {
 
 #' Remove resource tags from a Greengrass Resource
 #'
+#' @description
 #' Remove resource tags from a Greengrass Resource.
 #'
 #' @usage
@@ -3474,6 +3555,7 @@ greengrass_untag_resource <- function(ResourceArn, TagKeys) {
 
 #' Updates the connectivity information for the core
 #'
+#' @description
 #' Updates the connectivity information for the core. Any devices that belong to the group which has this core will receive this information in order to find the location of the core and connect to it.
 #'
 #' @usage
@@ -3519,6 +3601,7 @@ greengrass_update_connectivity_info <- function(ConnectivityInfo = NULL, ThingNa
 
 #' Updates a connector definition
 #'
+#' @description
 #' Updates a connector definition.
 #'
 #' @usage
@@ -3557,6 +3640,7 @@ greengrass_update_connector_definition <- function(ConnectorDefinitionId, Name =
 
 #' Updates a core definition
 #'
+#' @description
 #' Updates a core definition.
 #'
 #' @usage
@@ -3595,6 +3679,7 @@ greengrass_update_core_definition <- function(CoreDefinitionId, Name = NULL) {
 
 #' Updates a device definition
 #'
+#' @description
 #' Updates a device definition.
 #'
 #' @usage
@@ -3633,6 +3718,7 @@ greengrass_update_device_definition <- function(DeviceDefinitionId, Name = NULL)
 
 #' Updates a Lambda function definition
 #'
+#' @description
 #' Updates a Lambda function definition.
 #'
 #' @usage
@@ -3671,6 +3757,7 @@ greengrass_update_function_definition <- function(FunctionDefinitionId, Name = N
 
 #' Updates a group
 #'
+#' @description
 #' Updates a group.
 #'
 #' @usage
@@ -3709,6 +3796,7 @@ greengrass_update_group <- function(GroupId, Name = NULL) {
 
 #' Updates the Certificate expiry time for a group
 #'
+#' @description
 #' Updates the Certificate expiry time for a group.
 #'
 #' @usage
@@ -3748,6 +3836,7 @@ greengrass_update_group_certificate_configuration <- function(CertificateExpiryI
 
 #' Updates a logger definition
 #'
+#' @description
 #' Updates a logger definition.
 #'
 #' @usage
@@ -3786,6 +3875,7 @@ greengrass_update_logger_definition <- function(LoggerDefinitionId, Name = NULL)
 
 #' Updates a resource definition
 #'
+#' @description
 #' Updates a resource definition.
 #'
 #' @usage
@@ -3824,6 +3914,7 @@ greengrass_update_resource_definition <- function(Name = NULL, ResourceDefinitio
 
 #' Updates a subscription definition
 #'
+#' @description
 #' Updates a subscription definition.
 #'
 #' @usage
@@ -3863,6 +3954,7 @@ greengrass_update_subscription_definition <- function(Name = NULL, SubscriptionD
 
 #' Updates the runtime configuration of a thing
 #'
+#' @description
 #' Updates the runtime configuration of a thing.
 #'
 #' @usage

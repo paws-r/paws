@@ -18,8 +18,7 @@ iot_create_thing_group(thingGroupName, parentGroupName,
 }
 \description{
 Create a thing group.
-}
-\details{
+
 This is a control plane operation. See
 \href{https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html}{Authorization}
 for information about authorizing control plane actions.

@@ -26,8 +26,7 @@ part of various machine learning workflows. You can get a sortable,
 filterable list of machine learning task runs by calling \code{GetMLTaskRuns}
 with their parent transform's \code{TransformID} and other optional
 parameters as documented in this section.
-}
-\details{
+
 This operation returns a list of historic runs and must be paginated.
 }
 \section{Request syntax}{

@@ -28,8 +28,7 @@ exported data includes the most recent data collected by the agent.}
 }
 \description{
 Begins the export of discovered data to an S3 bucket.
-}
-\details{
+
 If you specify \code{agentIds} in a filter, the task exports up to 72 hours
 of detailed data collected by the identified Application Discovery
 Agent, including network, process, and performance details. A time range

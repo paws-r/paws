@@ -53,8 +53,7 @@ comparison of \code{GetSessionToken} with the other API operations that
 produce temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials}
 and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison}{Comparing the AWS STS API operations}
 in the \emph{IAM User Guide}.
-}
-\details{
+
 \strong{Session Duration}
 
 The \code{GetSessionToken} operation must be called by using the long-term

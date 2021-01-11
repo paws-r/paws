@@ -15,8 +15,7 @@ iotdataplane_publish(topic, qos, payload)
 }
 \description{
 Publishes state information.
-}
-\details{
+
 For more information, see \href{https://docs.aws.amazon.com/iot/latest/developerguide/protocols.html#http}{HTTP Protocol}
 in the AWS IoT Developer Guide.
 }

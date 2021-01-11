@@ -5,6 +5,7 @@ NULL
 
 #' Adds one or more tags to a trail, up to a limit of 50
 #'
+#' @description
 #' Adds one or more tags to a trail, up to a limit of 50. Overwrites an
 #' existing tag's value when a new value is specified for an existing tag
 #' key. Tag key names must be unique for a trail; you cannot have two keys
@@ -58,6 +59,7 @@ cloudtrail_add_tags <- function(ResourceId, TagsList = NULL) {
 #' Creates a trail that specifies the settings for delivery of log data to
 #' an Amazon S3 bucket
 #'
+#' @description
 #' Creates a trail that specifies the settings for delivery of log data to
 #' an Amazon S3 bucket.
 #'
@@ -180,6 +182,7 @@ cloudtrail_create_trail <- function(Name, S3BucketName, S3KeyPrefix = NULL, SnsT
 
 #' Deletes a trail
 #'
+#' @description
 #' Deletes a trail. This operation must be called from the region in which
 #' the trail was created. `DeleteTrail` cannot be called on the shadow
 #' trails (replicated trails in other regions) of a trail that is enabled
@@ -222,6 +225,7 @@ cloudtrail_delete_trail <- function(Name) {
 #' Retrieves settings for one or more trails associated with the current
 #' region for your account
 #'
+#' @description
 #' Retrieves settings for one or more trails associated with the current
 #' region for your account.
 #'
@@ -287,6 +291,7 @@ cloudtrail_describe_trails <- function(trailNameList = NULL, includeShadowTrails
 #' Describes the settings for the event selectors that you configured for
 #' your trail
 #'
+#' @description
 #' Describes the settings for the event selectors that you configured for
 #' your trail. The information returned for your event selectors includes
 #' the following:
@@ -356,6 +361,7 @@ cloudtrail_get_event_selectors <- function(TrailName) {
 #' Describes the settings for the Insights event selectors that you
 #' configured for your trail
 #'
+#' @description
 #' Describes the settings for the Insights event selectors that you
 #' configured for your trail. `GetInsightSelectors` shows if CloudTrail
 #' Insights event logging is enabled on the trail, and if it is, which
@@ -418,6 +424,7 @@ cloudtrail_get_insight_selectors <- function(TrailName) {
 
 #' Returns settings information for a specified trail
 #'
+#' @description
 #' Returns settings information for a specified trail.
 #'
 #' @usage
@@ -455,6 +462,7 @@ cloudtrail_get_trail <- function(Name) {
 
 #' Returns a JSON-formatted list of information about the specified trail
 #'
+#' @description
 #' Returns a JSON-formatted list of information about the specified trail.
 #' Fields include information on delivery errors, Amazon SNS and Amazon S3
 #' errors, and start and stop logging times for each trail. This operation
@@ -501,6 +509,7 @@ cloudtrail_get_trail_status <- function(Name) {
 #' Returns all public keys whose private keys were used to sign the digest
 #' files within the specified time range
 #'
+#' @description
 #' Returns all public keys whose private keys were used to sign the digest
 #' files within the specified time range. The public key is needed to
 #' validate digest files that were signed with its corresponding private
@@ -557,6 +566,7 @@ cloudtrail_list_public_keys <- function(StartTime = NULL, EndTime = NULL, NextTo
 
 #' Lists the tags for the trail in the current region
 #'
+#' @description
 #' Lists the tags for the trail in the current region.
 #'
 #' @usage
@@ -600,6 +610,7 @@ cloudtrail_list_tags <- function(ResourceIdList, NextToken = NULL) {
 
 #' Lists trails that are in the current account
 #'
+#' @description
 #' Lists trails that are in the current account.
 #'
 #' @usage
@@ -641,6 +652,7 @@ cloudtrail_list_trails <- function(NextToken = NULL) {
 #' Looks up management events or CloudTrail Insights events that are
 #' captured by CloudTrail
 #'
+#' @description
 #' Looks up [management
 #' events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-management-events)
 #' or [CloudTrail Insights
@@ -747,6 +759,7 @@ cloudtrail_lookup_events <- function(LookupAttributes = NULL, StartTime = NULL, 
 
 #' Configures an event selector or advanced event selectors for your trail
 #'
+#' @description
 #' Configures an event selector or advanced event selectors for your trail.
 #' Use event selectors or advanced event selectors to specify management
 #' and data event settings for your trail. By default, trails created
@@ -907,6 +920,7 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 #' Lets you enable Insights event logging by specifying the Insights
 #' selectors that you want to enable on an existing trail
 #'
+#' @description
 #' Lets you enable Insights event logging by specifying the Insights
 #' selectors that you want to enable on an existing trail. You also use
 #' `PutInsightSelectors` to turn off Insights event logging, by passing an
@@ -956,6 +970,7 @@ cloudtrail_put_insight_selectors <- function(TrailName, InsightSelectors) {
 
 #' Removes the specified tags from a trail
 #'
+#' @description
 #' Removes the specified tags from a trail.
 #'
 #' @usage
@@ -1002,6 +1017,7 @@ cloudtrail_remove_tags <- function(ResourceId, TagsList = NULL) {
 
 #' Starts the recording of AWS API calls and log file delivery for a trail
 #'
+#' @description
 #' Starts the recording of AWS API calls and log file delivery for a trail.
 #' For a trail that is enabled in all regions, this operation must be
 #' called from the region in which the trail was created. This operation
@@ -1046,6 +1062,7 @@ cloudtrail_start_logging <- function(Name) {
 #' Suspends the recording of AWS API calls and log file delivery for the
 #' specified trail
 #'
+#' @description
 #' Suspends the recording of AWS API calls and log file delivery for the
 #' specified trail. Under most circumstances, there is no need to use this
 #' action. You can update a trail without stopping it first. This action is
@@ -1093,6 +1110,7 @@ cloudtrail_stop_logging <- function(Name) {
 
 #' Updates the settings that specify delivery of log files
 #'
+#' @description
 #' Updates the settings that specify delivery of log files. Changes to a
 #' trail do not require stopping the CloudTrail service. Use this action to
 #' designate an existing bucket for log delivery. If the existing bucket

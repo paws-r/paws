@@ -237,8 +237,7 @@ other stack instances with their existing stack instance status.}
 \description{
 Updates the stack set, and associated stack instances in the specified
 accounts and Regions.
-}
-\details{
+
 Even if the stack set operation created by updating the stack set fails
 (completely or partially, below or above a specified failure tolerance),
 the stack set is updated with your changes. Subsequent

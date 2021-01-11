@@ -95,8 +95,7 @@ correspond to replacement tags in the email template.}
 \description{
 Composes an email message using an email template and immediately queues
 it for sending.
-}
-\details{
+
 In order to send email using the \code{SendTemplatedEmail} operation, your
 call to the API must meet the following requirements:
 \itemize{

@@ -40,8 +40,7 @@ If you don't specify a value for \code{MaxResults}, Route 53 returns up to
 Lists the configurations for DNS query logging that are associated with
 the current AWS account or the configuration that is associated with a
 specified hosted zone.
-}
-\details{
+
 For more information about DNS query logs, see
 \href{https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html}{CreateQueryLoggingConfig}.
 Additional information, including the format of DNS query logs, appears

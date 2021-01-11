@@ -40,11 +40,11 @@ Use the \code{TagResource} action to tag a resource after it's created.}
 }
 \description{
 Creates an Amazon Lightsail content delivery network (CDN) distribution.
-}
-\details{
+
 A distribution is a globally distributed network of caching servers that
 improve the performance of your website or web application hosted on a
-Lightsail instance. For more information, see \href{https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-content-delivery-network-distributions}{Content delivery networks in Amazon Lightsail}.
+Lightsail instance. For more information, see Content delivery networks
+in Amazon Lightsail.
 }
 \section{Request syntax}{
 \preformatted{svc$create_distribution(

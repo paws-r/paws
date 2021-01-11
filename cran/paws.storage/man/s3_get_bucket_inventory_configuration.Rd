@@ -20,8 +20,7 @@ different account, the request will fail with an HTTP
 \description{
 Returns an inventory configuration (identified by the inventory
 configuration ID) from the bucket.
-}
-\details{
+
 To use this operation, you must have permissions to perform the
 \code{s3:GetInventoryConfiguration} action. The bucket owner has this
 permission by default and can grant this permission to others. For more

@@ -75,8 +75,6 @@ token in the request that Amazon EFS uses to ensure idempotent creation
 file system does not currently exist that is owned by the caller's AWS
 account with the specified creation token, this operation does the
 following:
-}
-\details{
 \itemize{
 \item Creates a new, empty file system. The file system will have an
 Amazon EFS assigned ID, and an initial lifecycle state \code{creating}.

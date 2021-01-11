@@ -18,8 +18,7 @@ The account must be an invited member account with a status of
 \description{
 Sends a request to enable data ingest for a member account that has a
 status of \code{ACCEPTED_BUT_DISABLED}.
-}
-\details{
+
 For valid member accounts, the status is updated as follows.
 \itemize{
 \item If Detective enabled the member account, then the new status is

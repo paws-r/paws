@@ -16,8 +16,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
 Deletes the specified Traffic Mirror target.
-}
-\details{
+
 You cannot delete a Traffic Mirror target that is in use by a Traffic
 Mirror session.
 }

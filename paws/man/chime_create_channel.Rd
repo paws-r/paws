@@ -29,8 +29,7 @@ discoverable by anyone in the app instance.}
 }
 \description{
 Creates a channel to which you can add users and send messages.
-}
-\details{
+
 \strong{Restriction}: You can't change a channel's privacy.
 }
 \section{Request syntax}{

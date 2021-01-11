@@ -30,8 +30,7 @@ each subnet endpoint that you add, Global Accelerator creates a new
 static port mapping for the accelerator. The port mappings don't change
 after Global Accelerator generates them, so you can retrieve and cache
 the full mapping on your servers.
-}
-\details{
+
 If you remove a subnet from your accelerator, Global Accelerator removes
 (reclaims) the port mappings. If you add a subnet to your accelerator,
 Global Accelerator creates new port mappings (the existing ones don't
