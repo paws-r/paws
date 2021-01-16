@@ -4,6 +4,28 @@ NULL
 
 ################################################################################
 
+convert_file_to_raw <- function(request) {
+  operation_name <- request$operation$name
+  if (operation_name != "PutObject") return(request)
+
+  request_params <- request$params
+  body <- request_params["Body"][[1]]
+  if (!is.character(body)) return(request)
+
+  file_name <- body[[1]]
+  if (!file.exists(file_name)) {
+    stop(sprintf("Unable to find file: %s", file_name))
+  }
+  binary_body <- file(file_name, "rb")
+  raw_body <- readBin(binary_body, "raw", n = file.size(file_name))
+  close(binary_body)
+
+  request$params["Body"][[1]] <- raw_body
+  return(request)
+}
+
+################################################################################
+
 bucket_name_from_req_params <- function(request) {
   request_params <- request$params
   bucket <- request_params["Bucket"]
@@ -140,14 +162,16 @@ s3_unmarshal_error <- function(request) {
   return(request)
 }
 
-
 ################################################################################
+
 
 customizations$s3 <- function(handlers) {
   handlers$build <- handlers_add_front(handlers$build,
                                        update_endpoint_for_s3_config)
   handlers$build <- handlers_add_front(handlers$build,
                                        populate_location_constraint)
+  handlers$build <- handlers_add_front(handlers$build,
+                                       convert_file_to_raw)
   handlers$build <- handlers_add_back(handlers$build,
                                       content_md5)
   handlers$unmarshal <- handlers_add_front(handlers$unmarshal,
