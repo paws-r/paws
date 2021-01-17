@@ -9,17 +9,18 @@ convert_file_to_raw <- function(request) {
   if (operation_name != "PutObject") return(request)
 
   request_params <- request$params
-  body <- request_params["Body"][[1]]
-  if (!is.character(body)) return(request)
+  content_body <- request_params["Body"][[1]]
+  if (!is.character(content_body)) return(request)
 
-  file_name <- body[[1]]
+  file_name <- content_body[[1]]
   if (!file.exists(file_name)) {
     stop(sprintf("Unable to find file: %s", file_name))
   }
-  binary_body <- file(file_name, "rb")
-  raw_body <- readBin(binary_body, "raw", n = file.size(file_name))
-  close(binary_body)
+  file_connection <- file(file_name, "rb")
+  raw_body <- readBin(file_connection, "raw", n = file.size(file_name))
+  close(file_connection)
 
+  attributes(raw_body) <- attributes(content_body)
   request$params["Body"][[1]] <- raw_body
   return(request)
 }
@@ -163,7 +164,6 @@ s3_unmarshal_error <- function(request) {
 }
 
 ################################################################################
-
 
 customizations$s3 <- function(handlers) {
   handlers$build <- handlers_add_front(handlers$build,
