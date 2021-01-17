@@ -155,7 +155,7 @@ For information on how to call the \code{PutItem} API using the AWS SDK in
 specific languages, see the following:
 \itemize{
 \item \href{https://docs.aws.amazon.com/cli/latest/reference/dynamodb/put-item.html}{PutItem in the AWS Command Line Interface}
-\item \href{https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=DynamoDBv2\%2FMDynamoDBPutItemPutItemRequest.html}{PutItem in the AWS SDK for .NET}
+\item \href{https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=DynamoDBv2/MDynamoDBPutItemPutItemRequest.html}{PutItem in the AWS SDK for .NET}
 \item \href{https://sdk.amazonaws.com/cpp/api/crosslink_redirect.html?uid=dynamodb-2012-08-10&type=PutItem}{PutItem in the AWS SDK for C++}
 \item \href{https://docs.aws.amazon.com/sdk-for-go/api/service/dynamodb/#DynamoDB.PutItem}{PutItem in the AWS SDK for Go}
 \item \href{https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/dynamodbv2/AmazonDynamoDB.html#putItem-com.amazonaws.services.dynamodbv2.model.PutItemRequest-}{PutItem in the AWS SDK for Java}

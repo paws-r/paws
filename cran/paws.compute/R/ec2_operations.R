@@ -12039,7 +12039,7 @@ ec2_describe_availability_zones <- function(Filters = NULL, ZoneNames = NULL, Zo
 #' -   `instance-id` - The ID of the instance.
 #' 
 #' -   `progress` - The level of task completion, as a percentage (for
-#'     example, 20\%).
+#'     example, 20%).
 #' 
 #' -   `s3-bucket` - The Amazon S3 bucket to store the AMI.
 #' 
@@ -18982,7 +18982,7 @@ ec2_describe_snapshot_attribute <- function(Attribute, SnapshotId, DryRun = NULL
 #'     use the related parameter instead of this filter.
 #' 
 #' -   `progress` - The progress of the snapshot, as a percentage (for
-#'     example, 80\%).
+#'     example, 80%).
 #' 
 #' -   `snapshot-id` - The snapshot ID.
 #' 

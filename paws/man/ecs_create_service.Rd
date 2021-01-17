@@ -296,8 +296,8 @@ You can optionally specify a deployment configuration for your service.
 The deployment is triggered by changing properties, such as the task
 definition or the desired count of a service, with an UpdateService
 operation. The default value for a replica service for
-\code{minimumHealthyPercent} is 100\\%. The default value for a daemon service
-for \code{minimumHealthyPercent} is 0\\%.
+\code{minimumHealthyPercent} is 100\%. The default value for a daemon service
+for \code{minimumHealthyPercent} is 0\%.
 
 If a service is using the \code{ECS} deployment controller, the minimum
 healthy percent represents a lower limit on the number of tasks in a
@@ -307,13 +307,13 @@ integer), and while any container instances are in the \code{DRAINING} state
 if the service contains tasks using the EC2 launch type. This parameter
 enables you to deploy without using additional cluster capacity. For
 example, if your service has a desired number of four tasks and a
-minimum healthy percent of 50\\%, the scheduler might stop two existing
+minimum healthy percent of 50\%, the scheduler might stop two existing
 tasks to free up cluster capacity before starting two new tasks. Tasks
 for services that \emph{do not} use a load balancer are considered healthy if
 they're in the \code{RUNNING} state. Tasks for services that \emph{do} use a load
 balancer are considered healthy if they're in the \code{RUNNING} state and
 they're reported as healthy by the load balancer. The default value for
-minimum healthy percent is 100\\%.
+minimum healthy percent is 100\%.
 
 If a service is using the \code{ECS} deployment controller, the \strong{maximum
 percent} parameter represents an upper limit on the number of tasks in
@@ -323,10 +323,10 @@ to the nearest integer), and while any container instances are in the
 \code{DRAINING} state if the service contains tasks using the EC2 launch
 type. This parameter enables you to define the deployment batch size.
 For example, if your service has a desired number of four tasks and a
-maximum percent value of 200\\%, the scheduler may start four new tasks
+maximum percent value of 200\%, the scheduler may start four new tasks
 before stopping the four older tasks (provided that the cluster
 resources required to do this are available). The default value for
-maximum percent is 200\\%.
+maximum percent is 200\%.
 
 If a service is using either the \code{CODE_DEPLOY} or \code{EXTERNAL} deployment
 controller types and tasks that use the EC2 launch type, the \strong{minimum

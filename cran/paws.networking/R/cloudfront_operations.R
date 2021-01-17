@@ -1276,8 +1276,8 @@ cloudfront_create_realtime_log_config <- function(EndPoints, Fields, Name, Sampl
 #' This API is deprecated. Amazon CloudFront is deprecating real-time
 #' messaging protocol (RTMP) distributions on December 31, 2020. For more
 #' information, [read the
-#' announcement](https://forums.aws.amazon.com/ann.jspa?annID=7356) on the
-#' Amazon CloudFront discussion forum.
+#' announcement](https://forums.aws.amazon.com:443/ann.jspa?annID=7356) on
+#' the Amazon CloudFront discussion forum.
 #'
 #' @usage
 #' cloudfront_create_streaming_distribution(StreamingDistributionConfig)
@@ -1344,8 +1344,8 @@ cloudfront_create_streaming_distribution <- function(StreamingDistributionConfig
 #' This API is deprecated. Amazon CloudFront is deprecating real-time
 #' messaging protocol (RTMP) distributions on December 31, 2020. For more
 #' information, [read the
-#' announcement](https://forums.aws.amazon.com/ann.jspa?annID=7356) on the
-#' Amazon CloudFront discussion forum.
+#' announcement](https://forums.aws.amazon.com:443/ann.jspa?annID=7356) on
+#' the Amazon CloudFront discussion forum.
 #'
 #' @usage
 #' cloudfront_create_streaming_distribution_with_tags(

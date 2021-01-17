@@ -3663,7 +3663,7 @@ configservice_put_evaluations <- function(Evaluations = NULL, ResultToken, TestM
 #' Put external evaluation
 #'
 #' @description
-#' 
+#' Put external evaluation
 #'
 #' @usage
 #' configservice_put_external_evaluation(ConfigRuleName,

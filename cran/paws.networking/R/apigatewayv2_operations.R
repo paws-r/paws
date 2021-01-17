@@ -1611,7 +1611,7 @@ apigatewayv2_delete_vpc_link <- function(VpcLinkId) {
 #' Export api
 #'
 #' @description
-#' 
+#' Export api
 #'
 #' @usage
 #' apigatewayv2_export_api(ApiId, ExportVersion, IncludeExtensions,

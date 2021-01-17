@@ -21,7 +21,7 @@ parameter instead of this filter.
 \item \code{owner-id} - The AWS account ID of the owner. We recommend that you
 use the related parameter instead of this filter.
 \item \code{progress} - The progress of the snapshot, as a percentage (for
-example, 80\\%).
+example, 80\%).
 \item \code{snapshot-id} - The snapshot ID.
 \item \code{start-time} - The time stamp when the snapshot was initiated.
 \item \code{status} - The status of the snapshot (\code{pending} | \code{completed} |

@@ -316,7 +316,7 @@ apigateway_create_deployment <- function(restApiId, stageName = NULL, stageDescr
 #' Create documentation part
 #'
 #' @description
-#' 
+#' Create documentation part
 #'
 #' @usage
 #' apigateway_create_documentation_part(restApiId, location, properties)
@@ -366,7 +366,7 @@ apigateway_create_documentation_part <- function(restApiId, location, properties
 #' Create documentation version
 #'
 #' @description
-#' 
+#' Create documentation version
 #'
 #' @usage
 #' apigateway_create_documentation_version(restApiId, documentationVersion,
@@ -1182,7 +1182,7 @@ apigateway_delete_deployment <- function(restApiId, deploymentId) {
 #' Delete documentation part
 #'
 #' @description
-#' 
+#' Delete documentation part
 #'
 #' @usage
 #' apigateway_delete_documentation_part(restApiId, documentationPartId)
@@ -1221,7 +1221,7 @@ apigateway_delete_documentation_part <- function(restApiId, documentationPartId)
 #' Delete documentation version
 #'
 #' @description
-#' 
+#' Delete documentation version
 #'
 #' @usage
 #' apigateway_delete_documentation_version(restApiId, documentationVersion)
@@ -2443,7 +2443,7 @@ apigateway_get_deployments <- function(restApiId, position = NULL, limit = NULL)
 #' Get documentation part
 #'
 #' @description
-#' 
+#' Get documentation part
 #'
 #' @usage
 #' apigateway_get_documentation_part(restApiId, documentationPartId)
@@ -2482,7 +2482,7 @@ apigateway_get_documentation_part <- function(restApiId, documentationPartId) {
 #' Get documentation parts
 #'
 #' @description
-#' 
+#' Get documentation parts
 #'
 #' @usage
 #' apigateway_get_documentation_parts(restApiId, type, nameQuery, path,
@@ -2535,7 +2535,7 @@ apigateway_get_documentation_parts <- function(restApiId, type = NULL, nameQuery
 #' Get documentation version
 #'
 #' @description
-#' 
+#' Get documentation version
 #'
 #' @usage
 #' apigateway_get_documentation_version(restApiId, documentationVersion)
@@ -2575,7 +2575,7 @@ apigateway_get_documentation_version <- function(restApiId, documentationVersion
 #' Get documentation versions
 #'
 #' @description
-#' 
+#' Get documentation versions
 #'
 #' @usage
 #' apigateway_get_documentation_versions(restApiId, position, limit)
@@ -3474,7 +3474,7 @@ apigateway_get_sdk <- function(restApiId, stageName, sdkType, parameters = NULL)
 #' Get sdk type
 #'
 #' @description
-#' 
+#' Get sdk type
 #'
 #' @usage
 #' apigateway_get_sdk_type(id)
@@ -3511,7 +3511,7 @@ apigateway_get_sdk_type <- function(id) {
 #' Get sdk types
 #'
 #' @description
-#' 
+#' Get sdk types
 #'
 #' @usage
 #' apigateway_get_sdk_types(position, limit)
@@ -4016,7 +4016,7 @@ apigateway_import_api_keys <- function(body, format, failOnWarnings = NULL) {
 #' Import documentation parts
 #'
 #' @description
-#' 
+#' Import documentation parts
 #'
 #' @usage
 #' apigateway_import_documentation_parts(restApiId, mode, failOnWarnings,
@@ -5207,7 +5207,7 @@ apigateway_update_deployment <- function(restApiId, deploymentId, patchOperation
 #' Update documentation part
 #'
 #' @description
-#' 
+#' Update documentation part
 #'
 #' @usage
 #' apigateway_update_documentation_part(restApiId, documentationPartId,
@@ -5257,7 +5257,7 @@ apigateway_update_documentation_part <- function(restApiId, documentationPartId,
 #' Update documentation version
 #'
 #' @description
-#' 
+#' Update documentation version
 #'
 #' @usage
 #' apigateway_update_documentation_version(restApiId, documentationVersion,

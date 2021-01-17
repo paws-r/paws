@@ -30,7 +30,7 @@ increments of the growth factor evenly distributed over the deployment
 time. For example, a linear deployment that uses a growth factor of 20
 initially makes the configuration available to 20 percent of the
 targets. After 1/5th of the deployment time has passed, the system
-updates the percentage to 40 percent. This continues until 100\\% of the
+updates the percentage to 40 percent. This continues until 100\% of the
 targets are set to receive the deployed configuration.
 
 \strong{Exponential}: For this type, AppConfig processes the deployment
@@ -46,8 +46,8 @@ configuration as follows:
 
 \code{2*(2^2)}
 
-Expressed numerically, the deployment rolls out as follows: 2\\% of the
-targets, 4\\% of the targets, 8\\% of the targets, and continues until the
+Expressed numerically, the deployment rolls out as follows: 2\% of the
+targets, 4\% of the targets, 8\% of the targets, and continues until the
 configuration has been deployed to all targets.}
 }
 \description{

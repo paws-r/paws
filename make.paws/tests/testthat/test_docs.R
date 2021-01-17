@@ -38,7 +38,7 @@ test_that("make_doc_desc with special characters", {
   operation <- list(documentation = "<body><p>Foo%</p><p>Bar{</p><p>}Baz</p><p>\\Qux</p></body>")
   expected <- paste(
     "#' @description",
-    "#' Foo\\%",
+    "#' Foo%",
     "#' ",
     "#' Bar\\{",
     "#' ",
@@ -457,11 +457,11 @@ test_that("convert", {
   expect_equal(convert(text), expected)
 
   text <- "<body>%{}\\</body>"
-  expected <- "\\%\\{\\}\\\\"
+  expected <- "%\\{\\}\\\\"
   expect_equal(convert(text), expected)
 
   text <- "<body>123%{}</body>"
-  expected <- "123\\%\\{\\}"
+  expected <- "123%\\{\\}"
   expect_equal(convert(text), expected)
 
   text <- "<body>*</body>"

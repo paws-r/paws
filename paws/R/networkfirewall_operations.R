@@ -1743,7 +1743,7 @@ networkfirewall_update_firewall_policy <- function(UpdateToken, FirewallPolicyAr
 #' Update firewall policy change protection
 #'
 #' @description
-#' 
+#' Update firewall policy change protection
 #'
 #' @usage
 #' networkfirewall_update_firewall_policy_change_protection(UpdateToken,
@@ -2113,7 +2113,7 @@ networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, 
 #' Update subnet change protection
 #'
 #' @description
-#' 
+#' Update subnet change protection
 #'
 #' @usage
 #' networkfirewall_update_subnet_change_protection(UpdateToken,

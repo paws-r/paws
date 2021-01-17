@@ -28,7 +28,7 @@ NextToken value in the next NextToken parameter and retrying the
 command. If the NextToken field is empty, all response records have been
 retrieved for the request.}
 
-\item{SchemaPattern}{A pattern to filter results by schema name. Within a schema pattern, "\\%"
+\item{SchemaPattern}{A pattern to filter results by schema name. Within a schema pattern, "\%"
 means match any substring of 0 or more characters and "\\_" means match
 any one character. Only schema name entries matching the search pattern
 are returned.}

@@ -1230,7 +1230,7 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' @param MessageDeduplicationId This parameter applies only to FIFO (first-in-first-out) topics. The
 #' `MessageDeduplicationId` can contain up to 128 alphanumeric characters
 #' (a-z, A-Z, 0-9) and punctuation
-#' `` (!\"#$\%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~) ``.
+#' `` (!\"#$%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~) ``.
 #' 
 #' Every message must have a unique `MessageDeduplicationId`, which is a
 #' token used for deduplication of sent messages. If a message with a
@@ -1244,7 +1244,7 @@ sns_opt_in_phone_number <- function(phoneNumber) {
 #' @param MessageGroupId This parameter applies only to FIFO (first-in-first-out) topics. The
 #' `MessageGroupId` can contain up to 128 alphanumeric characters (a-z,
 #' A-Z, 0-9) and punctuation
-#' `` (!\"#$\%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~) ``.
+#' `` (!\"#$%&amp;\'()*+,-./:;&lt;=&gt;?@@\\[\\\]^_\`\{|\}~) ``.
 #' 
 #' The `MessageGroupId` is a tag that specifies that a message belongs to a
 #' specific message group. Messages that belong to the same message group
@@ -1520,7 +1520,7 @@ sns_set_platform_application_attributes <- function(PlatformApplicationArn, Attr
 #' `DeliveryStatusSuccessSamplingRate` – The percentage of successful SMS
 #' deliveries for which Amazon SNS will write logs in CloudWatch Logs. The
 #' value can be an integer from 0 - 100. For example, to write logs only
-#' for failed deliveries, set this value to `0`. To write logs for 10\% of
+#' for failed deliveries, set this value to `0`. To write logs for 10% of
 #' your successful deliveries, set it to `10`.
 #' 
 #' `DefaultSenderID` – A string, such as your business brand, that is

@@ -35,6 +35,7 @@ make_doc_title <- function(operation) {
 # Make the description and details documentation.
 make_doc_desc <- function(operation) {
   docs <- convert(operation$documentation)
+  if (length(docs) == 1 && docs == "") docs <- get_operation_title(operation)
   description <- glue::glue("#' {docs}")
   description <- glue::glue_collapse(description, sep = "\n")
   description <- paste("#' @description", description, sep = "\n")
@@ -279,26 +280,27 @@ clean_html_a <- function(node) {
   if (startsWith(url, "mailto:")) return()
 
   # Add hostname to relative AWS documentation links.
-  if (grepl("^[a-zA-Z0-9\\-]+/", url)) {
+  if (!is.null(url) && grepl("^[a-zA-Z0-9\\-]+/", url)) {
     url <- sprintf("https://docs.aws.amazon.com/%s", url)
-    xml2::xml_attr(node, "href") <- url
   }
 
-  if (!startsWith(url, "http")) {
+  if (!is.null(url) && !startsWith(url, "http")) {
     url <- sprintf("https://%s", url)
-    xml2::xml_attr(node, "href") <- url
   }
 
-  # Decode encoded ? and & in URLs.
-  if (grepl("%", url, fixed = TRUE)) {
+  # Check that the URL is valid.
+  # Get the new URL if redirected.
+  # Delete the URL if unreachable or not found.
+  url <- get_url(url)
+
+  # Decode encoded ?, &, and / in URLs.
+  if (!is.null(url) && grepl("%", url, fixed = TRUE)) {
     url <- gsub("%3F", "?", url, fixed = TRUE)
     url <- gsub("%26", "&", url, fixed = TRUE)
-    xml2::xml_attr(node, "href") <- url
+    url <- gsub("%2F", "/", url, fixed = TRUE)
   }
 
-  # Get the URL, if available.
-  # Delete URLs when the page is unreachable or explicitly missing.
-  xml2::xml_attr(node, "href") <- get_url(url)
+  xml2::xml_attr(node, "href") <- url
 }
 
 # Replace definition title nodes with header nodes.
@@ -328,7 +330,7 @@ escape_special_chars <- function(text) {
   result <- gsub("`\\`", "`\\\\`", result, fixed = TRUE)
 
   # Special characters -- not already escaped
-  for (char in c("{", "}", "%")) {
+  for (char in c("{", "}")) {
     result <- gsub(paste0("(?<!\\\\)", char), paste0("\\\\", char), result, perl = TRUE)
   }
 

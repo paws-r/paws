@@ -190,11 +190,11 @@ NULL
 #'     terms in the search string. For example: `defaultOperator: 'or'`.
 #'     For the `dismax` parser, you specify a percentage that represents
 #'     the percentage of terms in the search string (rounded down) that
-#'     must match, rather than a default operator. A value of `0\%` is the
-#'     equivalent to OR, and a value of `100\%` is equivalent to AND. The
+#'     must match, rather than a default operator. A value of `0%` is the
+#'     equivalent to OR, and a value of `100%` is equivalent to AND. The
 #'     percentage must be specified as a value in the range 0-100 followed
-#'     by the percent (\%) symbol. For example, `defaultOperator: 50\%`.
-#'     Valid values: `and`, `or`, a percentage in the range 0\%-100\%
+#'     by the percent (%) symbol. For example, `defaultOperator: 50%`.
+#'     Valid values: `and`, `or`, a percentage in the range 0%-100%
 #'     (`dismax`). Default: `and` (`simple`, `structured`, `lucene`) or
 #'     `100` (`dismax`). Valid for: `simple`, `structured`, `lucene`, and
 #'     `dismax`.

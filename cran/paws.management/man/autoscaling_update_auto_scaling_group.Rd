@@ -123,8 +123,8 @@ Existing instances continue to run with the configuration that they were
 originally launched with. When you update a group to specify a mixed
 instances policy instead of a launch configuration or template, existing
 instances may be replaced to match the new purchasing options that you
-specified in the policy. For example, if the group currently has 100\\%
-On-Demand capacity and the policy specifies 50\\% Spot capacity, this
+specified in the policy. For example, if the group currently has 100\%
+On-Demand capacity and the policy specifies 50\% Spot capacity, this
 means that half of your instances will be gradually terminated and
 relaunched as Spot Instances. When replacing instances, Amazon EC2 Auto
 Scaling launches new instances before terminating the old ones, so that

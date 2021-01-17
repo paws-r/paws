@@ -163,7 +163,7 @@ Amazon SageMaker to save the results of model training.
 and ML storage volumes to deploy for model training. In distributed
 training, you specify more than one instance.
 \item \code{EnableManagedSpotTraining} - Optimize the cost of training machine
-learning models by up to 80\\% by using Amazon EC2 Spot instances. For
+learning models by up to 80\% by using Amazon EC2 Spot instances. For
 more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html}{Managed Spot Training}.
 \item \code{RoleArn} - The Amazon Resource Number (ARN) that Amazon SageMaker
 assumes to perform tasks on your behalf during model training. You

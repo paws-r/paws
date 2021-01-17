@@ -63,7 +63,7 @@ box contains a face). The response also provides a similarity score,
 which indicates how closely the faces match.
 
 By default, only faces with a similarity score of greater than or equal
-to 80\\% are returned in the response. You can change this value by
+to 80\% are returned in the response. You can change this value by
 specifying the \code{SimilarityThreshold} parameter.
 
 \code{CompareFaces} also returns an array of faces that don't match the

@@ -14,7 +14,7 @@ for.}
 address.}
 }
 \description{
-
+Put dedicated ip warmup attributes
 }
 \section{Request syntax}{
 \preformatted{svc$put_dedicated_ip_warmup_attributes(

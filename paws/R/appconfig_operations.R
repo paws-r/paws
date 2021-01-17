@@ -167,7 +167,7 @@ appconfig_create_configuration_profile <- function(ApplicationId, Name, Descript
 #' `Step percentage`. For example, a linear deployment that uses a
 #' `Step percentage` of 10 deploys the configuration to 10 percent of the
 #' hosts. After those deployments are complete, the system deploys the
-#' configuration to the next 10 percent. This continues until 100\% of the
+#' configuration to the next 10 percent. This continues until 100% of the
 #' targets have successfully received the configuration.
 #' 
 #' **Exponential**: For this type, AppConfig processes the deployment
@@ -183,8 +183,8 @@ appconfig_create_configuration_profile <- function(ApplicationId, Name, Descript
 #' 
 #' `2*(2^2)`
 #' 
-#' Expressed numerically, the deployment rolls out as follows: 2\% of the
-#' targets, 4\% of the targets, 8\% of the targets, and continues until the
+#' Expressed numerically, the deployment rolls out as follows: 2% of the
+#' targets, 4% of the targets, 8% of the targets, and continues until the
 #' configuration has been deployed to all targets.
 #' @param ReplicateTo &#91;required&#93; Save the deployment strategy to a Systems Manager (SSM) document.
 #' @param Tags Metadata to assign to the deployment strategy. Tags help organize and
@@ -1485,7 +1485,7 @@ appconfig_update_configuration_profile <- function(ApplicationId, ConfigurationP
 #' time. For example, a linear deployment that uses a growth factor of 20
 #' initially makes the configuration available to 20 percent of the
 #' targets. After 1/5th of the deployment time has passed, the system
-#' updates the percentage to 40 percent. This continues until 100\% of the
+#' updates the percentage to 40 percent. This continues until 100% of the
 #' targets are set to receive the deployed configuration.
 #' 
 #' **Exponential**: For this type, AppConfig processes the deployment
@@ -1501,8 +1501,8 @@ appconfig_update_configuration_profile <- function(ApplicationId, ConfigurationP
 #' 
 #' `2*(2^2)`
 #' 
-#' Expressed numerically, the deployment rolls out as follows: 2\% of the
-#' targets, 4\% of the targets, 8\% of the targets, and continues until the
+#' Expressed numerically, the deployment rolls out as follows: 2% of the
+#' targets, 4% of the targets, 8% of the targets, and continues until the
 #' configuration has been deployed to all targets.
 #'
 #' @section Request syntax:

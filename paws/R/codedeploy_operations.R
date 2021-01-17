@@ -691,7 +691,7 @@ codedeploy_create_deployment <- function(applicationName, deploymentGroupName = 
 #' 
 #' The value parameter takes an integer.
 #' 
-#' For example, to set a minimum of 95\% healthy instance, specify a type of
+#' For example, to set a minimum of 95% healthy instance, specify a type of
 #' FLEET\\_PERCENT and a value of 95.
 #' @param trafficRoutingConfig The configuration that specifies how the deployment traffic is routed.
 #' @param computePlatform The destination platform type for the deployment (`Lambda`, `Server`, or

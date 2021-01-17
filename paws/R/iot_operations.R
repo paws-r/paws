@@ -945,7 +945,7 @@ iot_create_billing_group <- function(billingGroupName, billingGroupProperties = 
 #' On Windows PowerShell, the command to create certificates for all CSRs
 #' in my-csr-directory is:
 #' 
-#' &gt; ls -Name my-csr-directory | \%\{aws iot create-certificate-from-csr
+#' &gt; ls -Name my-csr-directory | %\{aws iot create-certificate-from-csr
 #' --certificate-signing-request file://my-csr-directory/$\\_\}
 #' 
 #' On a Windows command prompt, the command to create certificates for all
