@@ -1,3 +1,8 @@
+# paws.common 0.3.7
+
+* `s3$put_object` will now read in files when given file paths for the `Body`
+  parameter. Previously it would accept only blobs, e.g. from `readBin`.
+
 # paws.common 0.3.6
 
 * Add the error response and HTTP status code to the condition object, in 
