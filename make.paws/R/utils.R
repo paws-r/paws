@@ -87,7 +87,7 @@ quietly <- function(expr) {
 # Returns the URL if valid. If invalid, returns NULL. If redirected, return
 # the new URL.
 get_url <- function(url, tries = 3) {
-  if (url == "" || tries <= 0) {
+  if (length(url) == 0 || url == "" || tries <= 0) {
     return(NULL)
   }
 
