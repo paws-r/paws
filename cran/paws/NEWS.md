@@ -1,3 +1,8 @@
+# paws 0.1.10
+
+* Update Paws with the latest AWS features.
+* Remove some extra backslashes mistakenly included in documentation.
+
 # paws 0.1.9
 
 * Support the S3 operation `SelectObjectContent` in `s3$select_object_content`.
