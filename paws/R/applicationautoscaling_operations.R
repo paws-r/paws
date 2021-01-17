@@ -1299,7 +1299,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' both scale out and scale in. For example, if one policy increases
 #' capacity by 3, another policy increases capacity by 200 percent, and the
 #' current capacity is 10, Application Auto Scaling uses the policy with
-#' the highest calculated capacity (200\% of 10 = 20) and scales out to 30.
+#' the highest calculated capacity (200% of 10 = 20) and scales out to 30.
 #' 
 #' We recommend caution, however, when using target tracking scaling
 #' policies with step scaling policies because conflicts between these

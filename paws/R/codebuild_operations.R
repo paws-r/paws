@@ -1049,7 +1049,7 @@ codebuild_describe_test_cases <- function(reportArn, nextToken = NULL, maxResult
 #' Get report group trend
 #'
 #' @description
-#' 
+#' Get report group trend
 #'
 #' @usage
 #' codebuild_get_report_group_trend(reportGroupArn, numOfReports,

@@ -17,7 +17,7 @@ apigateway_create_documentation_version(restApiId, documentationVersion,
 \item{description}{A description about the new documentation snapshot.}
 }
 \description{
-
+Create documentation version
 }
 \section{Request syntax}{
 \preformatted{svc$create_documentation_version(

@@ -238,7 +238,7 @@ parameter. Password constraints:
 \item Must be at least 16 characters and no more than 128 characters in
 length
 \item Cannot contain any of the following characters: '/', '"', or '@',
-'\\%'
+'\%'
 }
 
 For more information, see AUTH password at AUTH.}

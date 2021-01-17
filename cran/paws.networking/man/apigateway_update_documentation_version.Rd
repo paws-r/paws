@@ -17,7 +17,7 @@ version.}
 in the order specified in this list.}
 }
 \description{
-
+Update documentation version
 }
 \section{Request syntax}{
 \preformatted{svc$update_documentation_version(

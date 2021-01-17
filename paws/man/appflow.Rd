@@ -38,8 +38,8 @@ Amazon AppFlow API users can use vendor-specific mechanisms for OAuth,
 and include applicable OAuth attributes (such as \code{auth-code} and
 \code{redirecturi}) with the connector-specific \code{ConnectorProfileProperties}
 when creating a new connector profile using Amazon AppFlow API
-operations. For example, Salesforce users can refer to the \emph{Authorize
-Apps with OAuth} documentation.
+operations. For example, Salesforce users can refer to the \href{https://help.salesforce.com/articleView?id=remoteaccess_authenticate.htm}{\emph{Authorize Apps with OAuth}}
+documentation.
 }
 \section{Service syntax}{
 \preformatted{svc <- appflow(

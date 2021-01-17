@@ -3002,7 +3002,7 @@ sesv2_put_dedicated_ip_in_pool <- function(Ip, DestinationPoolName) {
 #' Put dedicated ip warmup attributes
 #'
 #' @description
-#' 
+#' Put dedicated ip warmup attributes
 #'
 #' @usage
 #' sesv2_put_dedicated_ip_warmup_attributes(Ip, WarmupPercentage)

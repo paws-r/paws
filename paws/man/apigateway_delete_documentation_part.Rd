@@ -12,7 +12,7 @@ apigateway_delete_documentation_part(restApiId, documentationPartId)
 \item{documentationPartId}{[required] [Required] The identifier of the to-be-deleted documentation part.}
 }
 \description{
-
+Delete documentation part
 }
 \section{Request syntax}{
 \preformatted{svc$delete_documentation_part(

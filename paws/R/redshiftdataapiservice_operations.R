@@ -388,7 +388,7 @@ redshiftdataapiservice_list_databases <- function(ClusterIdentifier, Database = 
 #' NextToken value in the next NextToken parameter and retrying the
 #' command. If the NextToken field is empty, all response records have been
 #' retrieved for the request.
-#' @param SchemaPattern A pattern to filter results by schema name. Within a schema pattern, "\%"
+#' @param SchemaPattern A pattern to filter results by schema name. Within a schema pattern, "%"
 #' means match any substring of 0 or more characters and "\\_" means match
 #' any one character. Only schema name entries matching the search pattern
 #' are returned.
@@ -538,7 +538,7 @@ redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken 
 #' NextToken value in the next NextToken parameter and retrying the
 #' command. If the NextToken field is empty, all response records have been
 #' retrieved for the request.
-#' @param SchemaPattern A pattern to filter results by schema name. Within a schema pattern, "\%"
+#' @param SchemaPattern A pattern to filter results by schema name. Within a schema pattern, "%"
 #' means match any substring of 0 or more characters and "\\_" means match
 #' any one character. Only schema name entries matching the search pattern
 #' are returned. If `SchemaPattern` is not specified, then all tables that
@@ -546,7 +546,7 @@ redshiftdataapiservice_list_statements <- function(MaxResults = NULL, NextToken 
 #' `TablePattern` are specified, then all tables are returned.
 #' @param SecretArn The name or ARN of the secret that enables access to the database. This
 #' parameter is required when authenticating using AWS Secrets Manager.
-#' @param TablePattern A pattern to filter results by table name. Within a table pattern, "\%"
+#' @param TablePattern A pattern to filter results by table name. Within a table pattern, "%"
 #' means match any substring of 0 or more characters and "\\_" means match
 #' any one character. Only table name entries matching the search pattern
 #' are returned. If `TablePattern` is not specified, then all tables that

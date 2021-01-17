@@ -656,7 +656,7 @@ mediapackage_list_origin_endpoints <- function(ChannelId = NULL, MaxResults = NU
 #' List tags for resource
 #'
 #' @description
-#' 
+#' List tags for resource
 #'
 #' @usage
 #' mediapackage_list_tags_for_resource(ResourceArn)
@@ -770,7 +770,7 @@ mediapackage_rotate_ingest_endpoint_credentials <- function(Id, IngestEndpointId
 #' Tag resource
 #'
 #' @description
-#' 
+#' Tag resource
 #'
 #' @usage
 #' mediapackage_tag_resource(ResourceArn, Tags)
@@ -811,7 +811,7 @@ mediapackage_tag_resource <- function(ResourceArn, Tags) {
 #' Untag resource
 #'
 #' @description
-#' 
+#' Untag resource
 #'
 #' @usage
 #' mediapackage_untag_resource(ResourceArn, TagKeys)

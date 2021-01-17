@@ -2806,7 +2806,7 @@ dynamodb_list_tags_of_resource <- function(ResourceArn, NextToken = NULL) {
 #'     Interface](https://docs.aws.amazon.com/cli/latest/reference/dynamodb/put-item.html)
 #' 
 #' -   [PutItem in the AWS SDK for
-#'     .NET](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=DynamoDBv2\%2FMDynamoDBPutItemPutItemRequest.html)
+#'     .NET](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/index.html?page=DynamoDBv2/MDynamoDBPutItemPutItemRequest.html)
 #' 
 #' -   [PutItem in the AWS SDK for
 #'     C++](https://sdk.amazonaws.com/cpp/api/crosslink_redirect.html?uid=dynamodb-2012-08-10&type=PutItem)

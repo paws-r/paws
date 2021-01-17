@@ -494,7 +494,7 @@ schemas_describe_schema <- function(RegistryName, SchemaName, SchemaVersion = NU
 #' Export schema
 #'
 #' @description
-#' 
+#' Export schema
 #'
 #' @usage
 #' schemas_export_schema(RegistryName, SchemaName, SchemaVersion, Type)

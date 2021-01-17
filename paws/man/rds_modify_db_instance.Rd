@@ -32,9 +32,9 @@ Constraints:
 instance.
 
 For MariaDB, MySQL, Oracle, and PostgreSQL, the value supplied must be
-at least 10\\% greater than the current value. Values that are not at
-least 10\\% greater than the existing value are rounded up so that they
-are 10\\% greater than the current value.
+at least 10\% greater than the current value. Values that are not at
+least 10\% greater than the existing value are rounded up so that they
+are 10\% greater than the current value.
 
 For the valid values for allocated storage for each engine, see
 \code{CreateDBInstance}.}
@@ -284,9 +284,9 @@ deleting the instance, creating a read replica for the instance, and
 creating a DB snapshot of the instance.
 
 Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL, the value
-supplied must be at least 10\\% greater than the current value. Values
-that are not at least 10\\% greater than the existing value are rounded up
-so that they are 10\\% greater than the current value.
+supplied must be at least 10\% greater than the current value. Values
+that are not at least 10\% greater than the existing value are rounded up
+so that they are 10\% greater than the current value.
 
 Default: Uses existing setting}
 

@@ -16,7 +16,7 @@ apigateway_update_documentation_part(restApiId, documentationPartId,
 in the order specified in this list.}
 }
 \description{
-
+Update documentation part
 }
 \section{Request syntax}{
 \preformatted{svc$update_documentation_part(

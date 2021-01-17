@@ -22,7 +22,7 @@ resource that were already removed. Note the following:
 \itemize{
 \item To remove tags from a resource, you need the necessary permissions
 for the service that the resource belongs to as well as permissions
-for removing tags. For more information, see \href{https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html}{this list}.
+for removing tags. For more information, see \href{https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/}{this list}.
 \item You can only tag resources that are located in the specified Region
 for the AWS account.
 }

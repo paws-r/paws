@@ -12,7 +12,7 @@ mediapackage_tag_resource(ResourceArn, Tags)
 \item{Tags}{[required]}
 }
 \description{
-
+Tag resource
 }
 \section{Request syntax}{
 \preformatted{svc$tag_resource(

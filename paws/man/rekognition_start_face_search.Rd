@@ -18,8 +18,8 @@ returned. Use \code{ClientRequestToken} to prevent the same job from being
 accidently started more than once.}
 
 \item{FaceMatchThreshold}{The minimum confidence in the person match to return. For example, don't
-return any matches where confidence in matches is less than 70\\%. The
-default value is 80\\%.}
+return any matches where confidence in matches is less than 70\%. The
+default value is 80\%.}
 
 \item{CollectionId}{[required] ID of the collection that contains the faces you want to search for.}
 

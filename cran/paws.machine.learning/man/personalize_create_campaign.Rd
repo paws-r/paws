@@ -35,7 +35,7 @@ provisioned TPS (\code{minProvisionedTPS}) specifies the baseline throughput
 provisioned by Amazon Personalize, and thus, the minimum billing charge.
 If your TPS increases beyond \code{minProvisionedTPS}, Amazon Personalize
 auto-scales the provisioned capacity up and down, but never below
-\code{minProvisionedTPS}, to maintain a 70\\% utilization. There's a short time
+\code{minProvisionedTPS}, to maintain a 70\% utilization. There's a short time
 delay while the capacity is increased that might cause loss of
 transactions. It's recommended to start with a low \code{minProvisionedTPS},
 track your usage using Amazon CloudWatch metrics, and then increase the

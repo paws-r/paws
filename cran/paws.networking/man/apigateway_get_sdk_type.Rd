@@ -10,7 +10,7 @@ apigateway_get_sdk_type(id)
 \item{id}{[required] [Required] The identifier of the queried SdkType instance.}
 }
 \description{
-
+Get sdk type
 }
 \section{Request syntax}{
 \preformatted{svc$get_sdk_type(

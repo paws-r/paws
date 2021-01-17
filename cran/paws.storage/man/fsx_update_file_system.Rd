@@ -22,7 +22,7 @@ You cannot make a storage capacity increase request if there is an
 existing storage capacity increase request in progress.
 
 For Windows file systems, the storage capacity target value must be at
-least 10 percent (\\%) greater than the current storage capacity value. In
+least 10 percent (\%) greater than the current storage capacity value. In
 order to increase storage capacity, the file system must have at least
 16 MB/s of throughput capacity.
 

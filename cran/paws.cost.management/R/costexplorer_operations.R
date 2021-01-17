@@ -1559,7 +1559,7 @@ costexplorer_get_reservation_coverage <- function(TimePeriod, GroupBy = NULL, Gr
 #' @description
 #' Gets recommendations for which reservations to purchase. These
 #' recommendations could help you reduce your costs. Reservations provide a
-#' discounted hourly rate (up to 75\%) compared to On-Demand pricing.
+#' discounted hourly rate (up to 75%) compared to On-Demand pricing.
 #' 
 #' AWS generates your recommendations by identifying your On-Demand usage
 #' during a specific time period and collecting your usage into categories

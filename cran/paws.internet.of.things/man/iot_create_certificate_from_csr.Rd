@@ -49,7 +49,7 @@ file://my-csr-directory/\{\}
 On Windows PowerShell, the command to create certificates for all CSRs
 in my-csr-directory is:
 
-> ls -Name my-csr-directory | \\%\{aws iot create-certificate-from-csr
+> ls -Name my-csr-directory | \%\{aws iot create-certificate-from-csr
 --certificate-signing-request file://my-csr-directory/$\\_\}
 
 On a Windows command prompt, the command to create certificates for all

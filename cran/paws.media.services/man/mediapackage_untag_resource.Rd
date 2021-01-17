@@ -12,7 +12,7 @@ mediapackage_untag_resource(ResourceArn, TagKeys)
 \item{TagKeys}{[required] The key(s) of tag to be deleted}
 }
 \description{
-
+Untag resource
 }
 \section{Request syntax}{
 \preformatted{svc$untag_resource(

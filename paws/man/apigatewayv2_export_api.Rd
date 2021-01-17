@@ -27,7 +27,7 @@ the only supported value.}
 a representation of the latest API configuration is exported.}
 }
 \description{
-
+Export api
 }
 \section{Request syntax}{
 \preformatted{svc$export_api(

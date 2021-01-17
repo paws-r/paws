@@ -13,7 +13,7 @@ apigateway_get_sdk_types(position, limit)
 and the maximum value is 500.}
 }
 \description{
-
+Get sdk types
 }
 \section{Request syntax}{
 \preformatted{svc$get_sdk_types(

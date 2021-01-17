@@ -160,9 +160,9 @@ the service scheduler uses the deployment configuration parameters,
 \code{minimumHealthyPercent} and \code{maximumPercent}, to determine the
 deployment strategy.
 \itemize{
-\item If \code{minimumHealthyPercent} is below 100\\%, the scheduler can ignore
+\item If \code{minimumHealthyPercent} is below 100\%, the scheduler can ignore
 \code{desiredCount} temporarily during a deployment. For example, if
-\code{desiredCount} is four tasks, a minimum of 50\\% allows the scheduler
+\code{desiredCount} is four tasks, a minimum of 50\% allows the scheduler
 to stop two existing tasks before starting two new tasks. Tasks for
 services that do not use a load balancer are considered healthy if
 they are in the \code{RUNNING} state. Tasks for services that use a load
@@ -172,7 +172,7 @@ by the load balancer.
 \item The \code{maximumPercent} parameter represents an upper limit on the
 number of running tasks during a deployment, which enables you to
 define the deployment batch size. For example, if \code{desiredCount} is
-four tasks, a maximum of 200\\% starts four new tasks before stopping
+four tasks, a maximum of 200\% starts four new tasks before stopping
 the four older tasks (provided that the cluster resources required
 to do this are available).
 }

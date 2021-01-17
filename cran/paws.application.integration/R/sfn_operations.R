@@ -41,7 +41,7 @@ NULL
 #' 
 #' -   wildcard characters `? *`
 #' 
-#' -   special characters `` \" # \% \\ ^ | ~ \` $ &amp; , ; : / ``
+#' -   special characters `` \" # % \\ ^ | ~ \` $ &amp; , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
 #' 
@@ -130,7 +130,7 @@ sfn_create_activity <- function(name, tags = NULL) {
 #' 
 #' -   wildcard characters `? *`
 #' 
-#' -   special characters `` \" # \% \\ ^ | ~ \` $ &amp; , ; : / ``
+#' -   special characters `` \" # % \\ ^ | ~ \` $ &amp; , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
 #' 
@@ -999,7 +999,7 @@ sfn_send_task_success <- function(taskToken, output) {
 #' 
 #' -   wildcard characters `? *`
 #' 
-#' -   special characters `` \" # \% \\ ^ | ~ \` $ &amp; , ; : / ``
+#' -   special characters `` \" # % \\ ^ | ~ \` $ &amp; , ; : / ``
 #' 
 #' -   control characters (`U+0000-001F`, `U+007F-009F`)
 #' 

@@ -20,7 +20,7 @@ Valid instance metric names are listed below, along with the most useful
 available for your instance to burst above its baseline. Your
 instance continuously accrues and consumes burst capacity. Burst
 capacity stops accruing when your instance's
-\code{BurstCapacityPercentage} reaches 100\\%. For more information, see
+\code{BurstCapacityPercentage} reaches 100\%. For more information, see
 Viewing instance burst capacity in Amazon Lightsail.
 
 \code{Statistics}: The most useful statistics are \code{Maximum} and
@@ -28,16 +28,16 @@ Viewing instance burst capacity in Amazon Lightsail.
 
 \code{Unit}: The published unit is \code{Percent}.
 \item \strong{\code{BurstCapacityTime}} - The available amount of time for your
-instance to burst at 100\\% CPU utilization. Your instance
+instance to burst at 100\% CPU utilization. Your instance
 continuously accrues and consumes burst capacity. Burst capacity
 time stops accruing when your instance's \code{BurstCapacityPercentage}
-metric reaches 100\\%.
+metric reaches 100\%.
 
 Burst capacity time is consumed at the full rate only when your
-instance operates at 100\\% CPU utilization. For example, if your
-instance operates at 50\\% CPU utilization in the burstable zone for a
+instance operates at 100\% CPU utilization. For example, if your
+instance operates at 50\% CPU utilization in the burstable zone for a
 5-minute period, then it consumes CPU burst capacity minutes at a
-50\\% rate in that period. Your instance consumed 2 minutes and 30
+50\% rate in that period. Your instance consumed 2 minutes and 30
 seconds of CPU burst capacity minutes in the 5-minute period. For
 more information, see Viewing instance burst capacity in Amazon
 Lightsail.

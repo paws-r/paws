@@ -457,7 +457,7 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #' 
 #' -   Not all resources can have tags. For a list of services that support
 #'     tagging, see [this
-#'     list](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
+#'     list](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/).
 #' 
 #' -   Each resource can have up to 50 tags. For other limits, see [Tag
 #'     Naming and Usage
@@ -470,7 +470,7 @@ resourcegroupstaggingapi_start_report_creation <- function(S3Bucket) {
 #' -   To add tags to a resource, you need the necessary permissions for
 #'     the service that the resource belongs to as well as permissions for
 #'     adding tags. For more information, see [this
-#'     list](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
+#'     list](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/).
 #' 
 #' Do not store personally identifiable information (PII) or other
 #' confidential or sensitive information in tags. We use tags to provide
@@ -531,7 +531,7 @@ resourcegroupstaggingapi_tag_resources <- function(ResourceARNList, Tags) {
 #' -   To remove tags from a resource, you need the necessary permissions
 #'     for the service that the resource belongs to as well as permissions
 #'     for removing tags. For more information, see [this
-#'     list](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
+#'     list](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/).
 #' 
 #' -   You can only tag resources that are located in the specified Region
 #'     for the AWS account.
