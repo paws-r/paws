@@ -18,6 +18,7 @@ s3$list_buckets()
 # Create a data.frame that we will upload to S3
 example_df <- data.frame(foo = c("hello", "world"), bar = c(1, 2))
 
+# Save it as an RDS file
 file_name <- "s3_example.rds"
 saveRDS(example_df, file = file_name)
 
@@ -32,7 +33,6 @@ saveRDS(example_df, file = file_name)
 # for versions greater or equal to 0.3.7.                                      #
 ################################################################################
 
-# Save it as an RDS file
 # Load the file as a raw binary
 read_file <- file(file_name, "rb")
 s3_example <- readBin(read_file, "raw", n = file.size(file_name))
