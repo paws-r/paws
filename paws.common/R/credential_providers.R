@@ -1,6 +1,15 @@
 #' @include net.R
 #' @include credential_sts.R
+#' @include dateutil.R
 NULL
+
+Creds <- struct(
+  access_key_id = "",
+  secret_access_key = "",
+  session_token = "",
+  provider_name = "",
+  expiration = Inf
+)
 
 # Retrieve credentials stored in R environment variables.
 r_env_provider <- function() {
@@ -8,11 +17,11 @@ r_env_provider <- function() {
   secret_access_key <- Sys.getenv("AWS_SECRET_ACCESS_KEY")
   session_token <- Sys.getenv("AWS_SESSION_TOKEN")
   if (access_key_id != "" && secret_access_key != "") {
-    creds <- list(
+    creds <- Creds(
       access_key_id = access_key_id,
       secret_access_key = secret_access_key,
       session_token = session_token,
-      provider_name = ""
+      expiration = Inf
     )
   } else {
     creds <- NULL
@@ -28,11 +37,11 @@ os_env_provider <- function() {
   session_token <- get_os_env_variable("AWS_SESSION_TOKEN")
 
   if (access_key_id != "" && secret_access_key != "") {
-    creds <- list(
+    creds <- Creds(
       access_key_id = access_key_id,
       secret_access_key = secret_access_key,
       session_token = session_token,
-      provider_name = ""
+      expiration = Inf
     )
   } else {
     creds <- NULL
@@ -64,11 +73,11 @@ credentials_file_provider <- function(profile = "") {
   }
 
   if (access_key_id != "" && secret_access_key != "") {
-    creds <- list(
+    creds <- Creds(
       access_key_id = access_key_id,
       secret_access_key = secret_access_key,
       session_token = session_token,
-      provider_name = ""
+      expiration = Inf,
     )
   } else {
     creds <- NULL
@@ -133,11 +142,14 @@ config_file_credential_process <- function(command) {
   session_token <- data$SessionToken
   if (is.null(session_token)) session_token <- ""
 
-  creds <- list(
+  expiration <- as_timestamp(data$Expiration, "iso8601")
+  if (length(expiration) == 0) expiration <- 0
+
+  creds <- Creds(
     access_key_id = access_key_id,
     secret_access_key = secret_access_key,
     session_token = session_token,
-    provider_name = ""
+    expiration = expiration
   )
   return(creds)
 }
@@ -158,11 +170,11 @@ config_file_credential_source <- function(role_arn, role_session_name, credentia
   svc <- sts(config = list(credentials = list(creds = creds), region = "us-east-1"))
   resp <- svc$assume_role(role_arn, role_session_name)
   if (is.null(resp)) return(NULL)
-  role_creds <- list(
+  role_creds <- Creds(
     access_key_id = resp$Credentials$AccessKeyId,
     secret_access_key = resp$Credentials$SecretAccessKey,
     session_token = resp$Credentials$SessionToken,
-    provider_name = ""
+    expiration = resp$Credentials$Expiration
   )
   return(role_creds)
 }
@@ -177,11 +189,11 @@ config_file_source_profile <- function(role_arn, role_session_name, source_profi
   svc <- sts(config = list(credentials = list(creds = creds), region = "us-east-1"))
   resp <- svc$assume_role(role_arn, role_session_name)
   if (is.null(resp)) return(NULL)
-  role_creds <- list(
+  role_creds <- Creds(
     access_key_id = resp$Credentials$AccessKeyId,
     secret_access_key = resp$Credentials$SecretAccessKey,
     session_token = resp$Credentials$SessionToken,
-    provider_name = ""
+    expiration = resp$Credentials$Expiration
   )
   return(role_creds)
 }
@@ -208,17 +220,18 @@ container_credentials_provider <- function() {
   access_key_id <- credentials_response_body$AccessKeyId
   secret_access_key <- credentials_response_body$SecretAccessKey
   session_token <- credentials_response_body$Token
+  expiration <- as_timestamp(credentials_response_body$Expiration, "iso8601")
 
   if (is.null(access_key_id) || is.null(secret_access_key) ||
       is.null(session_token)) return(NULL)
 
   if (access_key_id != "" && secret_access_key != "" &&
       session_token != "") {
-    creds <- list(
+    creds <- Creds(
       access_key_id = access_key_id,
       secret_access_key = secret_access_key,
       session_token = session_token,
-      provider_name = ""
+      expiration = expiration
     )
   } else {
     creds <- NULL
@@ -243,17 +256,18 @@ iam_credentials_provider <- function() {
   access_key_id <- credentials_response_body$AccessKeyId
   secret_access_key <- credentials_response_body$SecretAccessKey
   session_token <- credentials_response_body$Token
+  expiration <- as_timestamp(credentials_response_body$Expiration, "iso8601")
 
   if (is.null(access_key_id) || is.null(secret_access_key) ||
       is.null(session_token)) return(NULL)
 
   if (access_key_id != "" && secret_access_key != "" &&
       session_token != "") {
-    creds <- list(
+    creds <- Creds(
       access_key_id = access_key_id,
       secret_access_key = secret_access_key,
       session_token = session_token,
-      provider_name = ""
+      expiration = expiration
     )
   } else {
     creds <- NULL

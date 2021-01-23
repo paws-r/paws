@@ -2,17 +2,10 @@
 #' @include credential_providers.R
 NULL
 
-Creds <- struct(
-  access_key_id = "",
-  secret_access_key = "",
-  session_token = "",
-  provider_name = ""
-)
-
 Credentials <- struct(
   creds = Creds(),
   profile = "",
-  force_refresh = TRUE,
+  force_refresh = FALSE,
   provider = list(
     r_env_provider,
     os_env_provider,
@@ -47,6 +40,9 @@ is_credentials_provided <- function(creds){
     return(FALSE)
   }
   if (is.null(creds$secret_access_key) || creds$secret_access_key == "") {
+    return(FALSE)
+  }
+  if (length(creds$expiration) > 0 && Sys.time() > creds$expiration) {
     return(FALSE)
   }
   return(TRUE)

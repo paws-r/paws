@@ -69,6 +69,7 @@ get_config <- function() {
 set_config <- function(svc, cfgs = list()) {
   shape <- tag_annotate(Config())
   config <- populate(cfgs, shape)
+  config$credentials <- as.environment(config$credentials)
   svc$.internal <- list(config = config)
   return(svc)
 }
