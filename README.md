@@ -138,6 +138,9 @@ such as performing bulk uploads.
 * [AWS AI Services for R Users](https://github.com/alex23lemm/AWS-AI-Services-R-Workshop)
 shows how to use AWS to add deep learning capabilities like image recognition,
 text translation, and text-to-speech conversion to R and Shiny applications.
+* [Using Amazon Rekognition from R](https://alex23lemm.github.io/posts/2021-01-03-using-amazon-rekognition-custom-labels-from-r/)
+is an end to end example of how to build and deploy a model to detect Nike
+swooshes in images using the Rekognition computer vision service.
 
 ## Credits
 
