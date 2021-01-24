@@ -42,7 +42,7 @@ is_credentials_provided <- function(creds){
   if (is.null(creds$secret_access_key) || creds$secret_access_key == "") {
     return(FALSE)
   }
-  if (length(creds$expiration) > 0 && Sys.time() > creds$expiration) {
+  if (length(creds$expiration) == 1 && !is.na(creds$expiration) && Sys.time() > creds$expiration) {
     return(FALSE)
   }
   return(TRUE)

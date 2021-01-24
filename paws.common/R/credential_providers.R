@@ -143,7 +143,7 @@ config_file_credential_process <- function(command) {
   if (is.null(session_token)) session_token <- ""
 
   expiration <- as_timestamp(data$Expiration, "iso8601")
-  if (length(expiration) == 0) expiration <- 0
+  if (length(expiration) == 0) expiration <- Inf
 
   creds <- Creds(
     access_key_id = access_key_id,
