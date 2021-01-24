@@ -7,8 +7,8 @@ Creds <- struct(
   access_key_id = "",
   secret_access_key = "",
   session_token = "",
-  provider_name = "",
-  expiration = Inf
+  expiration = Inf,
+  provider_name = ""
 )
 
 # Retrieve credentials stored in R environment variables.
