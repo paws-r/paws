@@ -5,7 +5,8 @@
 
 ## R CMD check results
 
-There were no ERRORs or WARNINGs.
+This package was updated on CRAN less than 30 days ago. This release fixes a
+serious bug that was introduced in that release.
 
 ## Downstream dependencies
 

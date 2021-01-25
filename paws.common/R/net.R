@@ -23,7 +23,7 @@ HttpRequest <- struct(
   request_uri = "",
   tls = NULL,
   cancel = NULL,
-  timeout = 10,
+  timeout = NULL,
   response = NULL,
   ctx = list()
 )
@@ -47,7 +47,7 @@ HttpResponse <- struct(
 )
 
 # Returns an HTTP request given a method, URL, and an optional body.
-new_http_request <- function(method, url, body = NULL, timeout = 10) {
+new_http_request <- function(method, url, body = NULL, timeout = NULL) {
   if (method == "") {
     method <- "GET"
   }
