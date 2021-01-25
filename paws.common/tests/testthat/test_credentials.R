@@ -14,26 +14,53 @@ test_that("credentials not provided", {
 
   expect_false(is_credentials_provided(creds))
 
-  creds <- list(
+  creds <- Creds(
     access_key_id = "",
     secret_access_key = "bar"
   )
 
   expect_false(is_credentials_provided(creds))
 
-  creds <- list(
+  creds <- Creds(
     access_key_id = "foo",
     secret_access_key = ""
   )
 
   expect_false(is_credentials_provided(creds))
 
-  creds <- list(
+  creds <- Creds(
     access_key_id = "",
     secret_access_key = ""
   )
 
   expect_false(is_credentials_provided(creds))
+})
+
+test_that("credentials expired", {
+  creds <- Creds(
+    access_key_id = "foo",
+    secret_access_key = "bar",
+    expiration = 0
+  )
+
+  expect_false(is_credentials_provided(creds))
+
+  creds <- Creds(
+    access_key_id = "foo",
+    secret_access_key = "bar",
+    expiration = Inf
+  )
+
+  expect_true(is_credentials_provided(creds))
+
+  creds <- Creds(
+    access_key_id = "foo",
+    secret_access_key = "bar",
+    expiration = NA
+  )
+
+  expect_true(is_credentials_provided(creds))
+
 })
 
 #-------------------------------------------------------------------------------
