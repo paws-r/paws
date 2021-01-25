@@ -69,7 +69,7 @@ test_that("credentials expired", {
 # returns the credentials.
 f_get_credentials <- function() {
   cfg <- get_config()
-  if (!is_credentials_provided(cfg$credentials$creds)) {
+  if (!is_credentials_provided(cfg$credentials$creds, window = 0)) {
     foo <- get_credentials(cfg$credentials)
   }
   return(cfg)
@@ -124,18 +124,20 @@ test_that("credentials are cached", {
 
 test_that("credentials refresh when expired", {
   svc <- service()
+
+  # get and then use cached credentials
   f1 <- svc$get_credentials() # get the credentials
   expiration1 <- f1$credentials$creds$expiration
+  Sys.sleep(1) # add a time gap between successive calls
   f2 <- svc$get_credentials() # access the credentials found above
   expiration2 <- f2$credentials$creds$expiration
 
   expect_equal(expiration1, expiration2)
 
+  # wait until credentials expire then refresh
   Sys.sleep(5) # these credentials are set to expire after 5 seconds
-
   f3 <- svc$get_credentials() # refresh the credentials
   expiration3 <- f3$credentials$creds$expiration
 
   expect_true(expiration1 != expiration3)
-
 })
