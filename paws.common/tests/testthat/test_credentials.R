@@ -131,7 +131,7 @@ test_that("credentials refresh when expired", {
 
   expect_equal(expiration1, expiration2)
 
-  Sys.sleep(5) # credentials expire after 5 seconds
+  Sys.sleep(5) # these credentials are set to expire after 5 seconds
 
   f3 <- svc$get_credentials() # refresh the credentials
   expiration3 <- f3$credentials$creds$expiration
