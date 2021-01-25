@@ -1,3 +1,9 @@
+# paws.common 0.3.8
+
+* Use no timeout by default when making HTTP requests. The previous release set
+  the default timeout to 10 seconds, which prevented users from downloading
+  large files.
+
 # paws.common 0.3.7
 
 * `s3$put_object` will now read in files when given file paths for the `Body`
