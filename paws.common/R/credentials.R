@@ -2,17 +2,10 @@
 #' @include credential_providers.R
 NULL
 
-Creds <- struct(
-  access_key_id = "",
-  secret_access_key = "",
-  session_token = "",
-  provider_name = ""
-)
-
 Credentials <- struct(
   creds = Creds(),
   profile = "",
-  force_refresh = TRUE,
+  force_refresh = FALSE,
   provider = list(
     r_env_provider,
     os_env_provider,
@@ -41,12 +34,15 @@ get_credentials <- function(credentials) {
 
 # Return whether a creds object has at least the minimum data needed to
 # authenticate.
-is_credentials_provided <- function(creds){
+is_credentials_provided <- function(creds, window = 5 * 60){
   if (is.null(creds)) return(FALSE)
   if (is.null(creds$access_key_id) || creds$access_key_id == "") {
     return(FALSE)
   }
   if (is.null(creds$secret_access_key) || creds$secret_access_key == "") {
+    return(FALSE)
+  }
+  if (length(creds$expiration) == 1 && is.finite(creds$expiration) && Sys.time() > creds$expiration - window) {
     return(FALSE)
   }
   return(TRUE)

@@ -12,9 +12,17 @@ set_config(svc, cfgs = list())
 \item{cfgs}{A list of optional configuration settings.}
 }
 \description{
-Add configuration settings to a service object.
+\code{set_config} adds a given set of configuration settings in \code{cfgs} to a
+service object, i.e. the service object for S3. Configuration settings can
+include credentials, region, endpoint, etc. These configuration settings
+will be used whenever an operation is called from that service object.
 }
 \details{
+\code{set_config} explicitly makes the \code{credentials} property mutable, such that
+when the SDK retrieves credentials later on, it will save them in the
+service object. This means that credentials don't need to be fetched on each
+operation, only if and when the saved credentials expire.
+
 The optional configuration settings can include the following:\preformatted{list(
   credentials = list(
     creds = list(
