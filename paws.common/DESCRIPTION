@@ -33,6 +33,7 @@ RoxygenNote: 7.1.1
 Collate: 
     'struct.R'
     'handlers.R'
+    'dateutil.R'
     'credential_sts.R'
     'url.R'
     'net.R'
@@ -48,7 +49,6 @@ Collate:
     'util.R'
     'stream.R'
     'custom_s3.R'
-    'dateutil.R'
     'error.R'
     'handlers_core.R'
     'handlers_ec2query.R'

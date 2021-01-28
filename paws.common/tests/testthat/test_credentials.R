@@ -70,7 +70,7 @@ test_that("credentials expired", {
 f_get_credentials <- function() {
   cfg <- get_config()
   if (!is_credentials_provided(cfg$credentials$creds, window = 0)) {
-    foo <- get_credentials(cfg$credentials)
+    get_credentials(cfg$credentials) # sets credentials in service object as a side effect.
   }
   return(cfg)
 }
