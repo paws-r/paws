@@ -169,16 +169,7 @@ config_file_credential_source <- function(role_arn, role_session_name, mfa_seria
     creds <- container_credentials_provider()
   }
   if (is.null(creds)) return(NULL)
-
-  resp <- get_assumed_role_creds(role_arn, role_session_name, mfa_serial, creds)
-
-  if (is.null(resp)) return(NULL)
-  role_creds <- Creds(
-    access_key_id = resp$Credentials$AccessKeyId,
-    secret_access_key = resp$Credentials$SecretAccessKey,
-    session_token = resp$Credentials$SessionToken,
-    expiration = resp$Credentials$Expiration
-  )
+  role_creds <- get_assumed_role_creds(role_arn, role_session_name, mfa_serial, creds)
   return(role_creds)
 }
 
@@ -189,9 +180,30 @@ config_file_source_profile <- function(role_arn, role_session_name, mfa_serial, 
   creds <- credentials_file_provider(source_profile)
   if (is.null(creds)) creds <- config_file_provider(source_profile)
   if (is.null(creds)) return(NULL)
+  role_creds <- get_assumed_role_creds(role_arn, role_session_name, mfa_serial, creds)
+  return(role_creds)
+}
 
-  resp <- get_assumed_role_creds(role_arn, role_session_name, mfa_serial, creds)
-
+# Get credentials from assumed role `role_arn`, using credentials in `creds`.
+# If the role requires MFA, the MFA device's serial number must be provided in
+# `mfa_serial`, and the user will be prompted interactively to provide the
+# current MFA token code.
+get_assumed_role_creds <- function(role_arn, role_session_name, mfa_serial, creds) {
+  svc <- sts(config = list(credentials = list(creds = creds), region = "us-east-1"))
+  if (is.null(mfa_serial) || mfa_serial == "") {
+    resp <- svc$assume_role(
+      RoleArn = role_arn,
+      RoleSessionName = role_session_name
+    )
+  } else {
+    token_code <- get_token_code()
+    resp <- svc$assume_role(
+      RoleArn = role_arn,
+      RoleSessionName = role_session_name,
+      SerialNumber = mfa_serial,
+      TokenCode = token_code
+    )
+  }
   if (is.null(resp)) return(NULL)
   role_creds <- Creds(
     access_key_id = resp$Credentials$AccessKeyId,
@@ -202,23 +214,16 @@ config_file_source_profile <- function(role_arn, role_session_name, mfa_serial, 
   return(role_creds)
 }
 
-get_assumed_role_creds <- function(role_arn, role_session_name, mfa_serial, creds) {
-  svc <- sts(config = list(credentials = list(creds = creds), region = "us-east-1"))
-  if (is.null(mfa_serial) || mfa_serial == "") {
-    resp <- svc$assume_role(
-      RoleArn = role_arn,
-      RoleSessionName = role_session_name
-    )
+# Get the user's MFA token code from a prompt.
+# Use an RStudio prompt if running in RStudio.
+# Otherwise use a text prompt in the console.
+get_token_code <- function() {
+  if ("rstudioapi" %in% utils::installed.packages()[,1] && rstudioapi::isAvailable()) {
+    token_code <- rstudioapi::showPrompt("MFA", "Enter MFA token code")
   } else {
     token_code <- readline("Enter MFA token code: ")
-    resp <- svc$assume_role(
-      RoleArn = role_arn,
-      RoleSessionName = role_session_name,
-      SerialNumber = mfa_serial,
-      TokenCode = token_code
-    )
   }
-  return(resp)
+  return(token_code)
 }
 
 # Retrieve container job role credentials

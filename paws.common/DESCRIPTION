@@ -26,6 +26,7 @@ Imports:
     xml2
 Suggests:
     covr,
+    rstudioapi,
     testthat
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
