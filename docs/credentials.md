@@ -122,6 +122,14 @@ file. The profile, e.g. `my_profile`, should appear as follows.
     [profile my_profile]
     key1=value1
     key2=value2
+
+### Multifactor authentication
+
+You can use multifactor authentication by specifying the `mfa_serial` parameter
+along with `role_arn` and either `credential_source` or `source_profile`. Paws
+will prompt you to provide your MFA token code, and once you provide it the
+temporary credentials it retrieves will be valid for one hour.
+
     
 ## Region
 
