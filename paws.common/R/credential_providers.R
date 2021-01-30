@@ -184,7 +184,7 @@ config_file_source_profile <- function(role_arn, role_session_name, mfa_serial, 
   return(role_creds)
 }
 
-# Get credentials from assumed role `role_arn`, using credentials in `creds`.
+# Get credentials for assumed role `role_arn`, using credentials in `creds`.
 # If the role requires MFA, the MFA device's serial number must be provided in
 # `mfa_serial`, and the user will be prompted interactively to provide the
 # current MFA token code.
