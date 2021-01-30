@@ -218,7 +218,7 @@ get_assumed_role_creds <- function(role_arn, role_session_name, mfa_serial, cred
 # Use an RStudio prompt if running in RStudio.
 # Otherwise use a text prompt in the console.
 get_token_code <- function() {
-  if ("rstudioapi" %in% utils::installed.packages()[,1] && rstudioapi::isAvailable()) {
+  if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
     token_code <- rstudioapi::showPrompt("MFA", "Enter MFA token code")
   } else {
     token_code <- readline("Enter MFA token code: ")
