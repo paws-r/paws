@@ -23,6 +23,7 @@ test_that("make_doc_title", {
 })
 
 test_that("make_doc_desc", {
+  api <- list(metadata = list(serviceAbbreviation = "api"))
   operation <- list(documentation = "<body><p>Foo.</p><p>Bar.</p></body>")
   expected <- paste(
     "#' @description",
@@ -31,10 +32,11 @@ test_that("make_doc_desc", {
     "#' Bar.",
     sep = "\n"
   )
-  expect_equal(make_doc_desc(operation), expected)
+  expect_equal(make_doc_desc(operation, api), expected)
 })
 
 test_that("make_doc_desc with special characters", {
+  api <- list(metadata = list(serviceAbbreviation = "api"))
   operation <- list(documentation = "<body><p>Foo%</p><p>Bar{</p><p>}Baz</p><p>\\Qux</p></body>")
   expected <- paste(
     "#' @description",
@@ -47,7 +49,7 @@ test_that("make_doc_desc with special characters", {
     "#' \\\\Qux",
     sep = "\n"
   )
-  expect_equal(make_doc_desc(operation), expected)
+  expect_equal(make_doc_desc(operation, api), expected)
 })
 
 test_that("make_doc_request", {
@@ -522,6 +524,40 @@ test_that("convert", {
 
   text <- "<dt>Description</dt><dd>Definition.</dd>"
   expected <- c("### Description", "", "Definition.")
+  expect_equal(convert(text), expected)
+
+  text <- "<a>Foo</a>"
+  links <- list(Foo = list(r_name = "foo", internal_r_name = "bar_foo"))
+  expected <- c("[`foo`][bar_foo]")
+  expect_equal(convert(text, links = links), expected)
+
+  text <- "<code>Foo</code>"
+  links <- list(Foo = list(r_name = "foo", internal_r_name = "bar_foo"))
+  expected <- c("[`foo`][bar_foo]")
+  expect_equal(convert(text, links = links), expected)
+
+  text <- "<a><code>Foo</code></a>"
+  links <- list(Foo = list(r_name = "foo", internal_r_name = "bar_foo"))
+  expected <- c("[`foo`][bar_foo]")
+  expect_equal(convert(text, links = links), expected)
+
+  text <- "<code><a>Foo</a></code>"
+  links <- list(Foo = list(r_name = "foo", internal_r_name = "bar_foo"))
+  expected <- c("[`foo`][bar_foo]")
+  expect_equal(convert(text, links = links), expected)
+
+  text <- "<span><a>Foo</a></span>"
+  links <- list(Foo = list(r_name = "foo", internal_r_name = "bar_foo"))
+  expected <- c("[`foo`][bar_foo]")
+  expect_equal(convert(text, links = links), expected)
+
+  text <- "<span><a>Food</a></span>"
+  links <- list(Foo = list(r_name = "foo", internal_r_name = "bar_foo"))
+  expected <- c("Food")
+  expect_equal(convert(text, links = links), expected)
+
+  text <- "<code>metadata-function=<i>lambda_arn</i>, sdk-version=<i>version_number</i></code>"
+  expected <- "`metadata-function=lambda_arn, sdk-version=version_number`"
   expect_equal(convert(text), expected)
 })
 

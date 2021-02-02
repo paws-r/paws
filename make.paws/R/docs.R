@@ -4,7 +4,7 @@ NULL
 # Make an operation's Roxygen documentation.
 make_docs <- function(operation, api) {
   title <- make_doc_title(operation)
-  description <- make_doc_desc(operation)
+  description <- make_doc_desc(operation, api)
   usage <- make_doc_usage(operation, api)
   params <- make_doc_params(operation, api)
   request <- make_doc_request(operation, api)
@@ -32,9 +32,9 @@ make_doc_title <- function(operation) {
   return(as.character(title))
 }
 
-# Make the description and details documentation.
-make_doc_desc <- function(operation) {
-  docs <- convert(operation$documentation)
+# Make the description documentation.
+make_doc_desc <- function(operation, api) {
+  docs <- convert(operation$documentation, package_name(api), links = get_links(api))
   if (length(docs) == 1 && docs == "") docs <- get_operation_title(operation)
   description <- glue::glue("#' {docs}")
   description <- glue::glue_collapse(description, sep = "\n")
@@ -72,7 +72,7 @@ make_doc_params <- function(operation, api) {
     params <- sapply(inputs, function(input) {
       param <- input$member_name
       required <- input$required
-      documentation <- convert(input$documentation)
+      documentation <- convert(input$documentation, package_name(api), links = get_links(api))
       documentation <- glue::glue_collapse(documentation, sep = "\n")
       if (required) {
         documentation <- glue::glue("&#91;required&#93; {documentation}")
@@ -199,67 +199,105 @@ comment <- function(s, char = "#") {
   return(result)
 }
 
-# Convert documentation to Markdown.
-#
-# The conversion pipeline goes
-# 1. raw html
-# 2. escape unmatched quotes in code snippets
-# 3. check whether links are valid and delete dead links
-# 4. convert html to markdown with Pandoc
-# 5. escape special characters
-# 6. finished documentation added to generated R code
-#
-# Unmatched quotes are escaped while still in html because it is easier to
-# identify code snippets as they are all in <code></code> nodes.
-#
-# Likewise, we check the validity of links while in html because it is easy
-# to find all <a> nodes.
-#
-# Special characters % { } \ are escaped after converting to html because
-# this avoids any changes that would otherwise be made by Pandoc.
-convert <- function(docs) {
+#' Convert documentation to Markdown.
+#'
+#' The conversion pipeline goes
+#' 1. raw html
+#' 2. escape unmatched quotes in code snippets
+#' 3. check whether links are valid and delete dead links
+#' 4. convert html to markdown with Pandoc
+#' 5. escape special characters
+#' 6. fix links within package documentation
+#' 6. finished documentation added to generated R code
+#'
+#' Unmatched quotes are escaped while still in html because it is easier to
+#' identify code snippets as they are all in <code></code> nodes.
+#'
+#' Likewise, we check the validity of links while in html because it is easy
+#' to find all <a> nodes.
+#'
+#' Special characters % { } \ are escaped after converting to html because
+#' this avoids any changes that would otherwise be made by Pandoc.
+#'
+#' @param docs An HTML string to be converted to Roxygen markdown.
+#' @param links An optional list of operation names, made with `get_links`.
+#'   If any links in the provided document have link text that matches one of
+#'   the operation names, the link will be changed to point to the operation's
+#'   R help topic.
+#' @param service An optional service name which is currently only used to
+#'   distinguish converted text between services in the cache. On rare
+#'   occasions, two services have identical inputs to `convert` but have
+#'   different outputs due to internal links with different targets,
+#'   e.g. "[foo][svc1_foo]" vs "[foo][svc2_foo]".
+#'
+#' @noRd
+convert <- function(docs, service = "", links = c()) {
   if (is.null(docs) || docs == "") return("")
-  cached_expr(list("convert", docs = docs), {
+  cached_expr(list("convert", docs = docs, service = service), {
     if (grepl("^<", docs)) {
-      html <- clean_html(docs)
+      html <- clean_html(docs, links)
       result <- html_to_markdown(html)
     } else {
       result <- strsplit(docs, "\n")[[1]]
     }
     result <- escape_special_chars(result)
+    result <- fix_internal_links(result)
     result
   })
 }
 
 # Clean an HTML string to avoid issues that result in invalid Rd
 # R documentation files.
-clean_html <- function(text) {
+clean_html <- function(text, links = c()) {
   if (length(text) == 1 && text == "") return("")
   html <- xml2::read_html(text)
-  as.character(clean_html_node(html))
+  as.character(clean_html_node(html, links))
 }
 
 # Clean an HTML node.
 # Note: This function, and all the clean_html functions, modify their inputs.
-clean_html_node <- function(node) {
+clean_html_node <- function(node, links = c()) {
   switch(
     xml2::xml_name(node),
-    code = clean_html_code(node),
-    a = clean_html_a(node),
+    code = clean_html_code(node, links),
+    a = clean_html_a(node, links),
     dt = clean_html_dt(node),
     dd = clean_html_dd(node)
   )
   for (child in xml2::xml_children(node)) {
-    child <- clean_html_node(child)
+    child <- clean_html_node(child, links)
   }
   node
 }
 
-# Escape unmatched quotes in code snippets, which are invalid in Rd files.
-# See https://developer.r-project.org/parseRd.pdf.
-clean_html_code <- function(node) {
-  text <- as.character(node)
-  text <- gsub("^<code>(.*)</code>$", "\\1", text)
+# Clean code elements.
+clean_html_code <- function(node, links = c()) {
+  text <- xml2::xml_text(node)
+
+  # Replace API operation names with links to corresponding R function names.
+  internal_link <- links[[trimws(text)]]
+  if (!is.null(internal_link)) {
+
+    # Don't add a link if this node is already within a link.
+    parent <- xml2::xml_parent(node)
+    if (xml2::xml_name(parent) == "a") {
+      xml2::xml_text(node) <- internal_link$r_name
+      return()
+    }
+
+    # Do add a link if this node is not within a link, or if the link is
+    # a child of this node.
+    link <- xml2::xml_new_root("a")
+    xml2::xml_attr(link, "href") <- internal_link$internal_r_name
+    code <- xml2::xml_new_root("code")
+    xml2::xml_text(code) <- internal_link$r_name
+    xml2::xml_add_child(link, code)
+    xml2::xml_replace(node, link)
+    return()
+  }
+
+  # Escape unmatched quotes in code snippets, which are invalid in Rd files.
+  # See https://developer.r-project.org/parseRd.pdf.
   text <- escape_unmatched_quotes(text)
 
   # R's Rd generator inserts garbage when it sees some un-escaped brackets
@@ -267,13 +305,32 @@ clean_html_code <- function(node) {
   # backslashes instead of one, since Pandoc converts "\[" to "[".
   text <- mask(text, c("[" = "\\\\[", "]" = "\\\\]"))
 
-  new_node <- xml2::xml_new_root("code")
-  xml2::xml_text(new_node) <- text
-  xml2::xml_replace(node, new_node)
+  # Keep only the text of the code node, and not any children, e.g. <i> nodes.
+  code <- xml2::xml_new_root("code")
+  xml2::xml_text(code) <- text
+  xml2::xml_replace(node, code)
 }
 
-# Check that links are valid, and if not replace them with the link text.
-clean_html_a <- function(node) {
+# Clean link elements.
+# Use package documentation for links to other operations.
+# Check that external links are valid, and if not replace them with the link text.
+clean_html_a <- function(node, links = c()) {
+
+  # If the link appears to be to another operation, make it point to the
+  # package's documentation for the operation.
+  text <- xml2::xml_text(node)
+  internal_link <- links[[text]]
+  if (!is.null(internal_link)) {
+    link <- xml2::xml_new_root("a")
+    xml2::xml_attr(link, "href") <- internal_link$internal_r_name
+    code <- xml2::xml_new_root("code")
+    xml2::xml_text(code) <- internal_link$r_name
+    xml2::xml_add_child(link, code)
+    xml2::xml_replace(node, link)
+    return()
+  }
+
+
   url <- xml2::xml_attr(node, "href")
   if (length(url) == 0 || is.na(url)) return()
 
@@ -357,6 +414,16 @@ escape_unmatched_quotes <- function(x) {
       result <- gsub(char, paste0("\\", char), result, fixed = TRUE)
     }
   }
+  result
+}
+
+# Pandoc cannot create reference links (e.g. [foo][help_url]) from HTML. To do
+# that, we search for what look like package reference links, e.g.
+# [foo](help_url), and change them to [foo][help_url].
+fix_internal_links <- function(x) {
+  link_text <- "(\\[.+\\])"
+  link_url <- "\\(([a-z0-9_]+)\\)"
+  result <- gsub(paste0(link_text, link_url), "\\1[\\2]", x)
   result
 }
 
@@ -512,4 +579,17 @@ clean_example <- function(s) {
   }
 
   cleaned
+}
+
+# Create a list of an API's operations and the corresponding R function names.
+get_links <- function(api) {
+  links <- list()
+  for (operation in api$operations) {
+    operation_name <- get_operation_name(operation)
+    links[[operation$name]] <- list(
+      r_name = sprintf("%s", operation_name),
+      internal_r_name = sprintf("%s_%s", package_name(api), operation_name)
+    )
+  }
+  return(links)
 }
